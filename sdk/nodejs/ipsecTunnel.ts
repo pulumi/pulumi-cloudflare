@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * const example = new cloudflare.IpsecTunnel("example", {
  *     accountId: "c4a7362d577a6c3019a474fd6f485821",
+ *     allowNullCipher: false,
  *     cloudflareEndpoint: "203.0.113.1",
  *     customerEndpoint: "203.0.113.1",
  *     description: "Tunnel for ISP X",
@@ -65,6 +66,10 @@ export class IpsecTunnel extends pulumi.CustomResource {
      * The account identifier to target for the resource.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
+    /**
+     * Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2.
+     */
+    public readonly allowNullCipher!: pulumi.Output<boolean | undefined>;
     /**
      * IP address assigned to the Cloudflare side of the IPsec tunnel.
      */
@@ -133,6 +138,7 @@ export class IpsecTunnel extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as IpsecTunnelState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["allowNullCipher"] = state ? state.allowNullCipher : undefined;
             resourceInputs["cloudflareEndpoint"] = state ? state.cloudflareEndpoint : undefined;
             resourceInputs["customerEndpoint"] = state ? state.customerEndpoint : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -161,6 +167,7 @@ export class IpsecTunnel extends pulumi.CustomResource {
                 throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["allowNullCipher"] = args ? args.allowNullCipher : undefined;
             resourceInputs["cloudflareEndpoint"] = args ? args.cloudflareEndpoint : undefined;
             resourceInputs["customerEndpoint"] = args ? args.customerEndpoint : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -188,6 +195,10 @@ export interface IpsecTunnelState {
      * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2.
+     */
+    allowNullCipher?: pulumi.Input<boolean>;
     /**
      * IP address assigned to the Cloudflare side of the IPsec tunnel.
      */
@@ -251,6 +262,10 @@ export interface IpsecTunnelArgs {
      * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2.
+     */
+    allowNullCipher?: pulumi.Input<boolean>;
     /**
      * IP address assigned to the Cloudflare side of the IPsec tunnel.
      */

@@ -35,7 +35,9 @@ class ProviderArgs:
                the `CLOUDFLARE_API_CLIENT_LOGGING` environment variable.
         :param pulumi.Input[str] api_hostname: Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
                environment variable.
-        :param pulumi.Input[str] api_key: The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
+        :param pulumi.Input[str] api_key: The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
+               keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
+               should be used instead.
         :param pulumi.Input[str] api_token: The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
         :param pulumi.Input[str] api_user_service_key: A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
                `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
@@ -144,7 +146,9 @@ class ProviderArgs:
     @pulumi.getter(name="apiKey")
     def api_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
+        The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
+        keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
+        should be used instead.
         """
         return pulumi.get(self, "api_key")
 
@@ -277,7 +281,9 @@ class Provider(pulumi.ProviderResource):
                the `CLOUDFLARE_API_CLIENT_LOGGING` environment variable.
         :param pulumi.Input[str] api_hostname: Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
                environment variable.
-        :param pulumi.Input[str] api_key: The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
+        :param pulumi.Input[str] api_key: The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
+               keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
+               should be used instead.
         :param pulumi.Input[str] api_token: The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
         :param pulumi.Input[str] api_user_service_key: A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
                `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
@@ -405,7 +411,9 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="apiKey")
     def api_key(self) -> pulumi.Output[Optional[str]]:
         """
-        The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
+        The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
+        keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
+        should be used instead.
         """
         return pulumi.get(self, "api_key")
 

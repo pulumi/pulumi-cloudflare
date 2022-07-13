@@ -36,6 +36,11 @@ import * as utilities from "./utilities";
  *         name: "MY_EXAMPLE_WASM",
  *         module: Buffer.from(fs.readFileSync("example.wasm"), 'binary').toString('base64'),
  *     }],
+ *     serviceBindings: [{
+ *         name: "MY_SERVICE_BINDING",
+ *         service: "MY_SERVICE",
+ *         environment: "production",
+ *     }],
  * });
  * ```
  *
@@ -88,6 +93,7 @@ export class WorkerScript extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly plainTextBindings!: pulumi.Output<outputs.WorkerScriptPlainTextBinding[] | undefined>;
     public readonly secretTextBindings!: pulumi.Output<outputs.WorkerScriptSecretTextBinding[] | undefined>;
+    public readonly serviceBindings!: pulumi.Output<outputs.WorkerScriptServiceBinding[] | undefined>;
     public readonly webassemblyBindings!: pulumi.Output<outputs.WorkerScriptWebassemblyBinding[] | undefined>;
 
     /**
@@ -108,6 +114,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["plainTextBindings"] = state ? state.plainTextBindings : undefined;
             resourceInputs["secretTextBindings"] = state ? state.secretTextBindings : undefined;
+            resourceInputs["serviceBindings"] = state ? state.serviceBindings : undefined;
             resourceInputs["webassemblyBindings"] = state ? state.webassemblyBindings : undefined;
         } else {
             const args = argsOrState as WorkerScriptArgs | undefined;
@@ -122,6 +129,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["plainTextBindings"] = args ? args.plainTextBindings : undefined;
             resourceInputs["secretTextBindings"] = args ? args.secretTextBindings : undefined;
+            resourceInputs["serviceBindings"] = args ? args.serviceBindings : undefined;
             resourceInputs["webassemblyBindings"] = args ? args.webassemblyBindings : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -144,6 +152,7 @@ export interface WorkerScriptState {
     name?: pulumi.Input<string>;
     plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlainTextBinding>[]>;
     secretTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptSecretTextBinding>[]>;
+    serviceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptServiceBinding>[]>;
     webassemblyBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptWebassemblyBinding>[]>;
 }
 
@@ -162,5 +171,6 @@ export interface WorkerScriptArgs {
     name: pulumi.Input<string>;
     plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlainTextBinding>[]>;
     secretTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptSecretTextBinding>[]>;
+    serviceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptServiceBinding>[]>;
     webassemblyBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptWebassemblyBinding>[]>;
 }

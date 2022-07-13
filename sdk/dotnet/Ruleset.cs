@@ -300,6 +300,7 @@ namespace Pulumi.Cloudflare
     ///             },
     ///             ZoneId = "cb029e245cfdd66dc8d2e570d5dd3322",
     ///         });
+    ///         // Custom cache keys + settings
     ///         var cacheSettingsExample = new Cloudflare.Ruleset("cacheSettingsExample", new Cloudflare.RulesetArgs
     ///         {
     ///             Description = "set cache settings for the request",
@@ -407,6 +408,33 @@ namespace Pulumi.Cloudflare
     ///             },
     ///             ZoneId = "cb029e245cfdd66dc8d2e570d5dd3322",
     ///         });
+    ///         // Redirects based on a List resource
+    ///         var redirectFromListExample = new Cloudflare.Ruleset("redirectFromListExample", new Cloudflare.RulesetArgs
+    ///         {
+    ///             AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///             Description = "Redirect ruleset",
+    ///             Kind = "root",
+    ///             Name = "redirects",
+    ///             Phase = "http_request_redirect",
+    ///             Rules = 
+    ///             {
+    ///                 new Cloudflare.Inputs.RulesetRuleArgs
+    ///                 {
+    ///                     Action = "redirect",
+    ///                     ActionParameters = new Cloudflare.Inputs.RulesetRuleActionParametersArgs
+    ///                     {
+    ///                         FromList = new Cloudflare.Inputs.RulesetRuleActionParametersFromListArgs
+    ///                         {
+    ///                             Key = "http.request.full_uri",
+    ///                             Name = "redirect_list",
+    ///                         },
+    ///                     },
+    ///                     Description = "Apply redirects from redirect_list",
+    ///                     Enabled = true,
+    ///                     Expression = "http.request.full_uri in $redirect_list",
+    ///                 },
+    ///             },
+    ///         });
     ///     }
     /// 
     /// }
@@ -448,8 +476,8 @@ namespace Pulumi.Cloudflare
         /// `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
         /// `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
         /// `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-        /// `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
-        /// `http_request_sbfm`
+        /// `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
+        /// `magic_transit`, `http_ratelimit`, `http_request_sbfm`
         /// </summary>
         [Output("phase")]
         public Output<string> Phase { get; private set; } = null!;
@@ -547,8 +575,8 @@ namespace Pulumi.Cloudflare
         /// `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
         /// `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
         /// `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-        /// `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
-        /// `http_request_sbfm`
+        /// `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
+        /// `magic_transit`, `http_ratelimit`, `http_request_sbfm`
         /// </summary>
         [Input("phase", required: true)]
         public Input<string> Phase { get; set; } = null!;
@@ -613,8 +641,8 @@ namespace Pulumi.Cloudflare
         /// `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
         /// `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
         /// `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-        /// `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
-        /// `http_request_sbfm`
+        /// `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
+        /// `magic_transit`, `http_ratelimit`, `http_request_sbfm`
         /// </summary>
         [Input("phase")]
         public Input<string>? Phase { get; set; }

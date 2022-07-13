@@ -28,7 +28,9 @@ type Provider struct {
 	// Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
 	// environment variable.
 	ApiHostname pulumi.StringPtrOutput `pulumi:"apiHostname"`
-	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
+	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
+	// keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
+	// should be used instead.
 	ApiKey pulumi.StringPtrOutput `pulumi:"apiKey"`
 	// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
 	ApiToken pulumi.StringPtrOutput `pulumi:"apiToken"`
@@ -85,7 +87,9 @@ type providerArgs struct {
 	// Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
 	// environment variable.
 	ApiHostname *string `pulumi:"apiHostname"`
-	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
+	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
+	// keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
+	// should be used instead.
 	ApiKey *string `pulumi:"apiKey"`
 	// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
 	ApiToken *string `pulumi:"apiToken"`
@@ -125,7 +129,9 @@ type ProviderArgs struct {
 	// Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
 	// environment variable.
 	ApiHostname pulumi.StringPtrInput
-	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
+	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
+	// keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
+	// should be used instead.
 	ApiKey pulumi.StringPtrInput
 	// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
 	ApiToken pulumi.StringPtrInput
@@ -206,7 +212,9 @@ func (o ProviderOutput) ApiHostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiHostname }).(pulumi.StringPtrOutput)
 }
 
-// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
+// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
+// keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
+// should be used instead.
 func (o ProviderOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiKey }).(pulumi.StringPtrOutput)
 }

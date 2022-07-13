@@ -8154,13 +8154,13 @@ func (o ListItemValueOutput) Redirects() ListItemValueRedirectArrayOutput {
 }
 
 type ListItemValueRedirect struct {
-	IncludeSubdomains   *bool  `pulumi:"includeSubdomains"`
-	PreservePathSuffix  *bool  `pulumi:"preservePathSuffix"`
-	PreserveQueryString *bool  `pulumi:"preserveQueryString"`
-	SourceUrl           string `pulumi:"sourceUrl"`
-	StatusCode          *int   `pulumi:"statusCode"`
-	SubpathMatching     *bool  `pulumi:"subpathMatching"`
-	TargetUrl           string `pulumi:"targetUrl"`
+	IncludeSubdomains   *string `pulumi:"includeSubdomains"`
+	PreservePathSuffix  *string `pulumi:"preservePathSuffix"`
+	PreserveQueryString *string `pulumi:"preserveQueryString"`
+	SourceUrl           string  `pulumi:"sourceUrl"`
+	StatusCode          *int    `pulumi:"statusCode"`
+	SubpathMatching     *string `pulumi:"subpathMatching"`
+	TargetUrl           string  `pulumi:"targetUrl"`
 }
 
 // ListItemValueRedirectInput is an input type that accepts ListItemValueRedirectArgs and ListItemValueRedirectOutput values.
@@ -8175,13 +8175,13 @@ type ListItemValueRedirectInput interface {
 }
 
 type ListItemValueRedirectArgs struct {
-	IncludeSubdomains   pulumi.BoolPtrInput `pulumi:"includeSubdomains"`
-	PreservePathSuffix  pulumi.BoolPtrInput `pulumi:"preservePathSuffix"`
-	PreserveQueryString pulumi.BoolPtrInput `pulumi:"preserveQueryString"`
-	SourceUrl           pulumi.StringInput  `pulumi:"sourceUrl"`
-	StatusCode          pulumi.IntPtrInput  `pulumi:"statusCode"`
-	SubpathMatching     pulumi.BoolPtrInput `pulumi:"subpathMatching"`
-	TargetUrl           pulumi.StringInput  `pulumi:"targetUrl"`
+	IncludeSubdomains   pulumi.StringPtrInput `pulumi:"includeSubdomains"`
+	PreservePathSuffix  pulumi.StringPtrInput `pulumi:"preservePathSuffix"`
+	PreserveQueryString pulumi.StringPtrInput `pulumi:"preserveQueryString"`
+	SourceUrl           pulumi.StringInput    `pulumi:"sourceUrl"`
+	StatusCode          pulumi.IntPtrInput    `pulumi:"statusCode"`
+	SubpathMatching     pulumi.StringPtrInput `pulumi:"subpathMatching"`
+	TargetUrl           pulumi.StringInput    `pulumi:"targetUrl"`
 }
 
 func (ListItemValueRedirectArgs) ElementType() reflect.Type {
@@ -8235,16 +8235,16 @@ func (o ListItemValueRedirectOutput) ToListItemValueRedirectOutputWithContext(ct
 	return o
 }
 
-func (o ListItemValueRedirectOutput) IncludeSubdomains() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ListItemValueRedirect) *bool { return v.IncludeSubdomains }).(pulumi.BoolPtrOutput)
+func (o ListItemValueRedirectOutput) IncludeSubdomains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListItemValueRedirect) *string { return v.IncludeSubdomains }).(pulumi.StringPtrOutput)
 }
 
-func (o ListItemValueRedirectOutput) PreservePathSuffix() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ListItemValueRedirect) *bool { return v.PreservePathSuffix }).(pulumi.BoolPtrOutput)
+func (o ListItemValueRedirectOutput) PreservePathSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListItemValueRedirect) *string { return v.PreservePathSuffix }).(pulumi.StringPtrOutput)
 }
 
-func (o ListItemValueRedirectOutput) PreserveQueryString() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ListItemValueRedirect) *bool { return v.PreserveQueryString }).(pulumi.BoolPtrOutput)
+func (o ListItemValueRedirectOutput) PreserveQueryString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListItemValueRedirect) *string { return v.PreserveQueryString }).(pulumi.StringPtrOutput)
 }
 
 func (o ListItemValueRedirectOutput) SourceUrl() pulumi.StringOutput {
@@ -8255,8 +8255,8 @@ func (o ListItemValueRedirectOutput) StatusCode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ListItemValueRedirect) *int { return v.StatusCode }).(pulumi.IntPtrOutput)
 }
 
-func (o ListItemValueRedirectOutput) SubpathMatching() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ListItemValueRedirect) *bool { return v.SubpathMatching }).(pulumi.BoolPtrOutput)
+func (o ListItemValueRedirectOutput) SubpathMatching() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListItemValueRedirect) *string { return v.SubpathMatching }).(pulumi.StringPtrOutput)
 }
 
 func (o ListItemValueRedirectOutput) TargetUrl() pulumi.StringOutput {
@@ -14644,6 +14644,7 @@ type RulesetRuleActionParameters struct {
 	CacheKey                *RulesetRuleActionParametersCacheKey    `pulumi:"cacheKey"`
 	CookieFields            []string                                `pulumi:"cookieFields"`
 	EdgeTtl                 *RulesetRuleActionParametersEdgeTtl     `pulumi:"edgeTtl"`
+	FromList                *RulesetRuleActionParametersFromList    `pulumi:"fromList"`
 	Headers                 []RulesetRuleActionParametersHeader     `pulumi:"headers"`
 	HostHeader              *string                                 `pulumi:"hostHeader"`
 	Id                      *string                                 `pulumi:"id"`
@@ -14683,6 +14684,7 @@ type RulesetRuleActionParametersArgs struct {
 	CacheKey                RulesetRuleActionParametersCacheKeyPtrInput    `pulumi:"cacheKey"`
 	CookieFields            pulumi.StringArrayInput                        `pulumi:"cookieFields"`
 	EdgeTtl                 RulesetRuleActionParametersEdgeTtlPtrInput     `pulumi:"edgeTtl"`
+	FromList                RulesetRuleActionParametersFromListPtrInput    `pulumi:"fromList"`
 	Headers                 RulesetRuleActionParametersHeaderArrayInput    `pulumi:"headers"`
 	HostHeader              pulumi.StringPtrInput                          `pulumi:"hostHeader"`
 	Id                      pulumi.StringPtrInput                          `pulumi:"id"`
@@ -14800,6 +14802,10 @@ func (o RulesetRuleActionParametersOutput) CookieFields() pulumi.StringArrayOutp
 
 func (o RulesetRuleActionParametersOutput) EdgeTtl() RulesetRuleActionParametersEdgeTtlPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersEdgeTtl { return v.EdgeTtl }).(RulesetRuleActionParametersEdgeTtlPtrOutput)
+}
+
+func (o RulesetRuleActionParametersOutput) FromList() RulesetRuleActionParametersFromListPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersFromList { return v.FromList }).(RulesetRuleActionParametersFromListPtrOutput)
 }
 
 func (o RulesetRuleActionParametersOutput) Headers() RulesetRuleActionParametersHeaderArrayOutput {
@@ -14949,6 +14955,15 @@ func (o RulesetRuleActionParametersPtrOutput) EdgeTtl() RulesetRuleActionParamet
 		}
 		return v.EdgeTtl
 	}).(RulesetRuleActionParametersEdgeTtlPtrOutput)
+}
+
+func (o RulesetRuleActionParametersPtrOutput) FromList() RulesetRuleActionParametersFromListPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersFromList {
+		if v == nil {
+			return nil
+		}
+		return v.FromList
+	}).(RulesetRuleActionParametersFromListPtrOutput)
 }
 
 func (o RulesetRuleActionParametersPtrOutput) Headers() RulesetRuleActionParametersHeaderArrayOutput {
@@ -16788,6 +16803,154 @@ func (o RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
 		return vs[0].([]RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange)[vs[1].(int)]
 	}).(RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput)
+}
+
+type RulesetRuleActionParametersFromList struct {
+	Key  string `pulumi:"key"`
+	Name string `pulumi:"name"`
+}
+
+// RulesetRuleActionParametersFromListInput is an input type that accepts RulesetRuleActionParametersFromListArgs and RulesetRuleActionParametersFromListOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersFromListInput` via:
+//
+//          RulesetRuleActionParametersFromListArgs{...}
+type RulesetRuleActionParametersFromListInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersFromListOutput() RulesetRuleActionParametersFromListOutput
+	ToRulesetRuleActionParametersFromListOutputWithContext(context.Context) RulesetRuleActionParametersFromListOutput
+}
+
+type RulesetRuleActionParametersFromListArgs struct {
+	Key  pulumi.StringInput `pulumi:"key"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (RulesetRuleActionParametersFromListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersFromList)(nil)).Elem()
+}
+
+func (i RulesetRuleActionParametersFromListArgs) ToRulesetRuleActionParametersFromListOutput() RulesetRuleActionParametersFromListOutput {
+	return i.ToRulesetRuleActionParametersFromListOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersFromListArgs) ToRulesetRuleActionParametersFromListOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersFromListOutput)
+}
+
+func (i RulesetRuleActionParametersFromListArgs) ToRulesetRuleActionParametersFromListPtrOutput() RulesetRuleActionParametersFromListPtrOutput {
+	return i.ToRulesetRuleActionParametersFromListPtrOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersFromListArgs) ToRulesetRuleActionParametersFromListPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersFromListOutput).ToRulesetRuleActionParametersFromListPtrOutputWithContext(ctx)
+}
+
+// RulesetRuleActionParametersFromListPtrInput is an input type that accepts RulesetRuleActionParametersFromListArgs, RulesetRuleActionParametersFromListPtr and RulesetRuleActionParametersFromListPtrOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersFromListPtrInput` via:
+//
+//          RulesetRuleActionParametersFromListArgs{...}
+//
+//  or:
+//
+//          nil
+type RulesetRuleActionParametersFromListPtrInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersFromListPtrOutput() RulesetRuleActionParametersFromListPtrOutput
+	ToRulesetRuleActionParametersFromListPtrOutputWithContext(context.Context) RulesetRuleActionParametersFromListPtrOutput
+}
+
+type rulesetRuleActionParametersFromListPtrType RulesetRuleActionParametersFromListArgs
+
+func RulesetRuleActionParametersFromListPtr(v *RulesetRuleActionParametersFromListArgs) RulesetRuleActionParametersFromListPtrInput {
+	return (*rulesetRuleActionParametersFromListPtrType)(v)
+}
+
+func (*rulesetRuleActionParametersFromListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersFromList)(nil)).Elem()
+}
+
+func (i *rulesetRuleActionParametersFromListPtrType) ToRulesetRuleActionParametersFromListPtrOutput() RulesetRuleActionParametersFromListPtrOutput {
+	return i.ToRulesetRuleActionParametersFromListPtrOutputWithContext(context.Background())
+}
+
+func (i *rulesetRuleActionParametersFromListPtrType) ToRulesetRuleActionParametersFromListPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersFromListPtrOutput)
+}
+
+type RulesetRuleActionParametersFromListOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersFromListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersFromList)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersFromListOutput) ToRulesetRuleActionParametersFromListOutput() RulesetRuleActionParametersFromListOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersFromListOutput) ToRulesetRuleActionParametersFromListOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromListOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersFromListOutput) ToRulesetRuleActionParametersFromListPtrOutput() RulesetRuleActionParametersFromListPtrOutput {
+	return o.ToRulesetRuleActionParametersFromListPtrOutputWithContext(context.Background())
+}
+
+func (o RulesetRuleActionParametersFromListOutput) ToRulesetRuleActionParametersFromListPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromListPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersFromList) *RulesetRuleActionParametersFromList {
+		return &v
+	}).(RulesetRuleActionParametersFromListPtrOutput)
+}
+
+func (o RulesetRuleActionParametersFromListOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersFromList) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o RulesetRuleActionParametersFromListOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersFromList) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type RulesetRuleActionParametersFromListPtrOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersFromListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersFromList)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersFromListPtrOutput) ToRulesetRuleActionParametersFromListPtrOutput() RulesetRuleActionParametersFromListPtrOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersFromListPtrOutput) ToRulesetRuleActionParametersFromListPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromListPtrOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersFromListPtrOutput) Elem() RulesetRuleActionParametersFromListOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersFromList) RulesetRuleActionParametersFromList {
+		if v != nil {
+			return *v
+		}
+		var ret RulesetRuleActionParametersFromList
+		return ret
+	}).(RulesetRuleActionParametersFromListOutput)
+}
+
+func (o RulesetRuleActionParametersFromListPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersFromList) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RulesetRuleActionParametersFromListPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersFromList) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 type RulesetRuleActionParametersHeader struct {
@@ -22099,6 +22262,121 @@ func (o WorkerScriptSecretTextBindingArrayOutput) Index(i pulumi.IntInput) Worke
 	}).(WorkerScriptSecretTextBindingOutput)
 }
 
+type WorkerScriptServiceBinding struct {
+	// The name of the Worker environment to bind to.
+	Environment *string `pulumi:"environment"`
+	// The global variable for the binding in your Worker code.
+	Name string `pulumi:"name"`
+	// The name of the Worker to bind to.
+	Service string `pulumi:"service"`
+}
+
+// WorkerScriptServiceBindingInput is an input type that accepts WorkerScriptServiceBindingArgs and WorkerScriptServiceBindingOutput values.
+// You can construct a concrete instance of `WorkerScriptServiceBindingInput` via:
+//
+//          WorkerScriptServiceBindingArgs{...}
+type WorkerScriptServiceBindingInput interface {
+	pulumi.Input
+
+	ToWorkerScriptServiceBindingOutput() WorkerScriptServiceBindingOutput
+	ToWorkerScriptServiceBindingOutputWithContext(context.Context) WorkerScriptServiceBindingOutput
+}
+
+type WorkerScriptServiceBindingArgs struct {
+	// The name of the Worker environment to bind to.
+	Environment pulumi.StringPtrInput `pulumi:"environment"`
+	// The global variable for the binding in your Worker code.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Worker to bind to.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (WorkerScriptServiceBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptServiceBinding)(nil)).Elem()
+}
+
+func (i WorkerScriptServiceBindingArgs) ToWorkerScriptServiceBindingOutput() WorkerScriptServiceBindingOutput {
+	return i.ToWorkerScriptServiceBindingOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptServiceBindingArgs) ToWorkerScriptServiceBindingOutputWithContext(ctx context.Context) WorkerScriptServiceBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptServiceBindingOutput)
+}
+
+// WorkerScriptServiceBindingArrayInput is an input type that accepts WorkerScriptServiceBindingArray and WorkerScriptServiceBindingArrayOutput values.
+// You can construct a concrete instance of `WorkerScriptServiceBindingArrayInput` via:
+//
+//          WorkerScriptServiceBindingArray{ WorkerScriptServiceBindingArgs{...} }
+type WorkerScriptServiceBindingArrayInput interface {
+	pulumi.Input
+
+	ToWorkerScriptServiceBindingArrayOutput() WorkerScriptServiceBindingArrayOutput
+	ToWorkerScriptServiceBindingArrayOutputWithContext(context.Context) WorkerScriptServiceBindingArrayOutput
+}
+
+type WorkerScriptServiceBindingArray []WorkerScriptServiceBindingInput
+
+func (WorkerScriptServiceBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerScriptServiceBinding)(nil)).Elem()
+}
+
+func (i WorkerScriptServiceBindingArray) ToWorkerScriptServiceBindingArrayOutput() WorkerScriptServiceBindingArrayOutput {
+	return i.ToWorkerScriptServiceBindingArrayOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptServiceBindingArray) ToWorkerScriptServiceBindingArrayOutputWithContext(ctx context.Context) WorkerScriptServiceBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptServiceBindingArrayOutput)
+}
+
+type WorkerScriptServiceBindingOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptServiceBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptServiceBinding)(nil)).Elem()
+}
+
+func (o WorkerScriptServiceBindingOutput) ToWorkerScriptServiceBindingOutput() WorkerScriptServiceBindingOutput {
+	return o
+}
+
+func (o WorkerScriptServiceBindingOutput) ToWorkerScriptServiceBindingOutputWithContext(ctx context.Context) WorkerScriptServiceBindingOutput {
+	return o
+}
+
+// The name of the Worker environment to bind to.
+func (o WorkerScriptServiceBindingOutput) Environment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerScriptServiceBinding) *string { return v.Environment }).(pulumi.StringPtrOutput)
+}
+
+// The global variable for the binding in your Worker code.
+func (o WorkerScriptServiceBindingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerScriptServiceBinding) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Worker to bind to.
+func (o WorkerScriptServiceBindingOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerScriptServiceBinding) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type WorkerScriptServiceBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptServiceBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerScriptServiceBinding)(nil)).Elem()
+}
+
+func (o WorkerScriptServiceBindingArrayOutput) ToWorkerScriptServiceBindingArrayOutput() WorkerScriptServiceBindingArrayOutput {
+	return o
+}
+
+func (o WorkerScriptServiceBindingArrayOutput) ToWorkerScriptServiceBindingArrayOutputWithContext(ctx context.Context) WorkerScriptServiceBindingArrayOutput {
+	return o
+}
+
+func (o WorkerScriptServiceBindingArrayOutput) Index(i pulumi.IntInput) WorkerScriptServiceBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerScriptServiceBinding {
+		return vs[0].([]WorkerScriptServiceBinding)[vs[1].(int)]
+	}).(WorkerScriptServiceBindingOutput)
+}
+
 type WorkerScriptWebassemblyBinding struct {
 	// The base64 encoded wasm module you want to store.
 	Module string `pulumi:"module"`
@@ -22350,6 +22628,8 @@ type ZoneSettingsOverrideInitialSetting struct {
 	OpportunisticOnion      *string                                           `pulumi:"opportunisticOnion"`
 	OrangeToOrange          *string                                           `pulumi:"orangeToOrange"`
 	OriginErrorPagePassThru *string                                           `pulumi:"originErrorPagePassThru"`
+	// Allowed values: "1" (default on Enterprise), "2" (default)
+	OriginMaxHttpVersion *string `pulumi:"originMaxHttpVersion"`
 	// Allowed values: "off" (default), "lossless", "lossy".
 	Polish           *string `pulumi:"polish"`
 	PrefetchPreload  *string `pulumi:"prefetchPreload"`
@@ -22431,6 +22711,8 @@ type ZoneSettingsOverrideInitialSettingArgs struct {
 	OpportunisticOnion      pulumi.StringPtrInput                                    `pulumi:"opportunisticOnion"`
 	OrangeToOrange          pulumi.StringPtrInput                                    `pulumi:"orangeToOrange"`
 	OriginErrorPagePassThru pulumi.StringPtrInput                                    `pulumi:"originErrorPagePassThru"`
+	// Allowed values: "1" (default on Enterprise), "2" (default)
+	OriginMaxHttpVersion pulumi.StringPtrInput `pulumi:"originMaxHttpVersion"`
 	// Allowed values: "off" (default), "lossless", "lossy".
 	Polish           pulumi.StringPtrInput `pulumi:"polish"`
 	PrefetchPreload  pulumi.StringPtrInput `pulumi:"prefetchPreload"`
@@ -22647,6 +22929,11 @@ func (o ZoneSettingsOverrideInitialSettingOutput) OrangeToOrange() pulumi.String
 
 func (o ZoneSettingsOverrideInitialSettingOutput) OriginErrorPagePassThru() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.OriginErrorPagePassThru }).(pulumi.StringPtrOutput)
+}
+
+// Allowed values: "1" (default on Enterprise), "2" (default)
+func (o ZoneSettingsOverrideInitialSettingOutput) OriginMaxHttpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.OriginMaxHttpVersion }).(pulumi.StringPtrOutput)
 }
 
 // Allowed values: "off" (default), "lossless", "lossy".
@@ -23368,6 +23655,8 @@ type ZoneSettingsOverrideSettings struct {
 	OpportunisticOnion      *string                                     `pulumi:"opportunisticOnion"`
 	OrangeToOrange          *string                                     `pulumi:"orangeToOrange"`
 	OriginErrorPagePassThru *string                                     `pulumi:"originErrorPagePassThru"`
+	// Allowed values: "1" (default on Enterprise), "2" (default)
+	OriginMaxHttpVersion *string `pulumi:"originMaxHttpVersion"`
 	// Allowed values: "off" (default), "lossless", "lossy".
 	Polish           *string `pulumi:"polish"`
 	PrefetchPreload  *string `pulumi:"prefetchPreload"`
@@ -23449,6 +23738,8 @@ type ZoneSettingsOverrideSettingsArgs struct {
 	OpportunisticOnion      pulumi.StringPtrInput                              `pulumi:"opportunisticOnion"`
 	OrangeToOrange          pulumi.StringPtrInput                              `pulumi:"orangeToOrange"`
 	OriginErrorPagePassThru pulumi.StringPtrInput                              `pulumi:"originErrorPagePassThru"`
+	// Allowed values: "1" (default on Enterprise), "2" (default)
+	OriginMaxHttpVersion pulumi.StringPtrInput `pulumi:"originMaxHttpVersion"`
 	// Allowed values: "off" (default), "lossless", "lossy".
 	Polish           pulumi.StringPtrInput `pulumi:"polish"`
 	PrefetchPreload  pulumi.StringPtrInput `pulumi:"prefetchPreload"`
@@ -23691,6 +23982,11 @@ func (o ZoneSettingsOverrideSettingsOutput) OrangeToOrange() pulumi.StringPtrOut
 
 func (o ZoneSettingsOverrideSettingsOutput) OriginErrorPagePassThru() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.OriginErrorPagePassThru }).(pulumi.StringPtrOutput)
+}
+
+// Allowed values: "1" (default on Enterprise), "2" (default)
+func (o ZoneSettingsOverrideSettingsOutput) OriginMaxHttpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.OriginMaxHttpVersion }).(pulumi.StringPtrOutput)
 }
 
 // Allowed values: "off" (default), "lossless", "lossy".
@@ -24105,6 +24401,16 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) OriginErrorPagePassThru() pulumi.
 			return nil
 		}
 		return v.OriginErrorPagePassThru
+	}).(pulumi.StringPtrOutput)
+}
+
+// Allowed values: "1" (default on Enterprise), "2" (default)
+func (o ZoneSettingsOverrideSettingsPtrOutput) OriginMaxHttpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OriginMaxHttpVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -26446,6 +26752,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput)(nil)).Elem(), RulesetRuleActionParametersEdgeTtlStatusCodeTtlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeInput)(nil)).Elem(), RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayInput)(nil)).Elem(), RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersFromListInput)(nil)).Elem(), RulesetRuleActionParametersFromListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersFromListPtrInput)(nil)).Elem(), RulesetRuleActionParametersFromListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersHeaderInput)(nil)).Elem(), RulesetRuleActionParametersHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersHeaderArrayInput)(nil)).Elem(), RulesetRuleActionParametersHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersMatchedDataInput)(nil)).Elem(), RulesetRuleActionParametersMatchedDataArgs{})
@@ -26516,6 +26824,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptPlainTextBindingArrayInput)(nil)).Elem(), WorkerScriptPlainTextBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptSecretTextBindingInput)(nil)).Elem(), WorkerScriptSecretTextBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptSecretTextBindingArrayInput)(nil)).Elem(), WorkerScriptSecretTextBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptServiceBindingInput)(nil)).Elem(), WorkerScriptServiceBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptServiceBindingArrayInput)(nil)).Elem(), WorkerScriptServiceBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptWebassemblyBindingInput)(nil)).Elem(), WorkerScriptWebassemblyBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptWebassemblyBindingArrayInput)(nil)).Elem(), WorkerScriptWebassemblyBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneLockdownConfigurationInput)(nil)).Elem(), ZoneLockdownConfigurationArgs{})
@@ -26782,6 +27092,8 @@ func init() {
 	pulumi.RegisterOutputType(RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersFromListOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersFromListPtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersHeaderOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersHeaderArrayOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersMatchedDataOutput{})
@@ -26852,6 +27164,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkerScriptPlainTextBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptSecretTextBindingOutput{})
 	pulumi.RegisterOutputType(WorkerScriptSecretTextBindingArrayOutput{})
+	pulumi.RegisterOutputType(WorkerScriptServiceBindingOutput{})
+	pulumi.RegisterOutputType(WorkerScriptServiceBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptWebassemblyBindingOutput{})
 	pulumi.RegisterOutputType(WorkerScriptWebassemblyBindingArrayOutput{})
 	pulumi.RegisterOutputType(ZoneLockdownConfigurationOutput{})

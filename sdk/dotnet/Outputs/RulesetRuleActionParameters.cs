@@ -18,6 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.RulesetRuleActionParametersCacheKey? CacheKey;
         public readonly ImmutableArray<string> CookieFields;
         public readonly Outputs.RulesetRuleActionParametersEdgeTtl? EdgeTtl;
+        public readonly Outputs.RulesetRuleActionParametersFromList? FromList;
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersHeader> Headers;
         public readonly string? HostHeader;
         public readonly string? Id;
@@ -50,6 +51,8 @@ namespace Pulumi.Cloudflare.Outputs
             ImmutableArray<string> cookieFields,
 
             Outputs.RulesetRuleActionParametersEdgeTtl? edgeTtl,
+
+            Outputs.RulesetRuleActionParametersFromList? fromList,
 
             ImmutableArray<Outputs.RulesetRuleActionParametersHeader> headers,
 
@@ -96,6 +99,7 @@ namespace Pulumi.Cloudflare.Outputs
             CacheKey = cacheKey;
             CookieFields = cookieFields;
             EdgeTtl = edgeTtl;
+            FromList = fromList;
             Headers = headers;
             HostHeader = hostHeader;
             Id = id;

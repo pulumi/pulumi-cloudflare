@@ -215,12 +215,12 @@ class List(pulumi.CustomResource):
                     comment="two",
                     value=cloudflare.ListItemValueArgs(
                         redirect=[{
-                            "includeSubdomains": True,
-                            "preservePathSuffix": False,
-                            "preserveQueryString": True,
+                            "includeSubdomains": "enabled",
+                            "preservePathSuffix": "disabled",
+                            "preserveQueryString": "enabled",
                             "sourceUrl": "example.com/foo",
                             "statusCode": 301,
-                            "subpathMatching": True,
+                            "subpathMatching": "enabled",
                             "targetUrl": "https://foo.example.com",
                         }],
                     ),
@@ -276,12 +276,12 @@ class List(pulumi.CustomResource):
                     comment="two",
                     value=cloudflare.ListItemValueArgs(
                         redirect=[{
-                            "includeSubdomains": True,
-                            "preservePathSuffix": False,
-                            "preserveQueryString": True,
+                            "includeSubdomains": "enabled",
+                            "preservePathSuffix": "disabled",
+                            "preserveQueryString": "enabled",
                             "sourceUrl": "example.com/foo",
                             "statusCode": 301,
-                            "subpathMatching": True,
+                            "subpathMatching": "enabled",
                             "targetUrl": "https://foo.example.com",
                         }],
                     ),

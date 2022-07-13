@@ -13,27 +13,27 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ListItemValueRedirect
     {
-        public readonly bool? IncludeSubdomains;
-        public readonly bool? PreservePathSuffix;
-        public readonly bool? PreserveQueryString;
+        public readonly string? IncludeSubdomains;
+        public readonly string? PreservePathSuffix;
+        public readonly string? PreserveQueryString;
         public readonly string SourceUrl;
         public readonly int? StatusCode;
-        public readonly bool? SubpathMatching;
+        public readonly string? SubpathMatching;
         public readonly string TargetUrl;
 
         [OutputConstructor]
         private ListItemValueRedirect(
-            bool? includeSubdomains,
+            string? includeSubdomains,
 
-            bool? preservePathSuffix,
+            string? preservePathSuffix,
 
-            bool? preserveQueryString,
+            string? preserveQueryString,
 
             string sourceUrl,
 
             int? statusCode,
 
-            bool? subpathMatching,
+            string? subpathMatching,
 
             string targetUrl)
         {

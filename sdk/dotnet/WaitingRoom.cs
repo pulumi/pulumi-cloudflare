@@ -110,6 +110,12 @@ namespace Pulumi.Cloudflare
         public Output<bool?> QueueAll { get; private set; } = null!;
 
         /// <summary>
+        /// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+        /// </summary>
+        [Output("queueingMethod")]
+        public Output<string?> QueueingMethod { get; private set; } = null!;
+
+        /// <summary>
         /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
         /// </summary>
         [Output("sessionDuration")]
@@ -241,6 +247,12 @@ namespace Pulumi.Cloudflare
         public Input<bool>? QueueAll { get; set; }
 
         /// <summary>
+        /// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+        /// </summary>
+        [Input("queueingMethod")]
+        public Input<string>? QueueingMethod { get; set; }
+
+        /// <summary>
         /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
         /// </summary>
         [Input("sessionDuration")]
@@ -331,6 +343,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("queueAll")]
         public Input<bool>? QueueAll { get; set; }
+
+        /// <summary>
+        /// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+        /// </summary>
+        [Input("queueingMethod")]
+        public Input<string>? QueueingMethod { get; set; }
 
         /// <summary>
         /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.

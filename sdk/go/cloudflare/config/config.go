@@ -38,7 +38,9 @@ func GetApiHostname(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:apiHostname")
 }
 
-// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
+// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
+// keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
+// should be used instead.
 func GetApiKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:apiKey")
 }

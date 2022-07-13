@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork cloudflare_tunnel_virtual_network <account_id>/<vnet_id>
+ *  $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example <account_id>/<vnet_id>
  * ```
  */
 export class TunnelVirtualNetwork extends pulumi.CustomResource {

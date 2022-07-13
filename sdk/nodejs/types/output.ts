@@ -712,12 +712,12 @@ export interface ListItemValue {
 }
 
 export interface ListItemValueRedirect {
-    includeSubdomains?: boolean;
-    preservePathSuffix?: boolean;
-    preserveQueryString?: boolean;
+    includeSubdomains?: string;
+    preservePathSuffix?: string;
+    preserveQueryString?: string;
     sourceUrl: string;
     statusCode?: number;
-    subpathMatching?: boolean;
+    subpathMatching?: string;
     targetUrl: string;
 }
 
@@ -1389,6 +1389,7 @@ export interface RulesetRuleActionParameters {
     cacheKey?: outputs.RulesetRuleActionParametersCacheKey;
     cookieFields?: string[];
     edgeTtl?: outputs.RulesetRuleActionParametersEdgeTtl;
+    fromList?: outputs.RulesetRuleActionParametersFromList;
     headers?: outputs.RulesetRuleActionParametersHeader[];
     hostHeader?: string;
     id?: string;
@@ -1472,6 +1473,11 @@ export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
 export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
     from?: number;
     to?: number;
+}
+
+export interface RulesetRuleActionParametersFromList {
+    key: string;
+    name: string;
 }
 
 export interface RulesetRuleActionParametersHeader {
@@ -1831,6 +1837,21 @@ export interface WorkerScriptSecretTextBinding {
     text: string;
 }
 
+export interface WorkerScriptServiceBinding {
+    /**
+     * The name of the Worker environment to bind to.
+     */
+    environment?: string;
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: string;
+    /**
+     * The name of the Worker to bind to.
+     */
+    service: string;
+}
+
 export interface WorkerScriptWebassemblyBinding {
     /**
      * The base64 encoded wasm module you want to store.
@@ -1904,6 +1925,10 @@ export interface ZoneSettingsOverrideInitialSetting {
     opportunisticOnion: string;
     orangeToOrange: string;
     originErrorPagePassThru: string;
+    /**
+     * Allowed values: "1" (default on Enterprise), "2" (default)
+     */
+    originMaxHttpVersion: string;
     /**
      * Allowed values: "off" (default), "lossless", "lossy".
      */
@@ -2054,6 +2079,10 @@ export interface ZoneSettingsOverrideSettings {
     orangeToOrange: string;
     originErrorPagePassThru: string;
     /**
+     * Allowed values: "1" (default on Enterprise), "2" (default)
+     */
+    originMaxHttpVersion: string;
+    /**
      * Allowed values: "off" (default), "lossless", "lossy".
      */
     polish: string;
@@ -2150,4 +2179,3 @@ export interface ZoneSettingsOverrideSettingsSecurityHeader {
      */
     preload: boolean;
 }
-

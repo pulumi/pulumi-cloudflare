@@ -25,6 +25,7 @@ namespace Pulumi.Cloudflare
     ///         var example = new Cloudflare.IpsecTunnel("example", new Cloudflare.IpsecTunnelArgs
     ///         {
     ///             AccountId = "c4a7362d577a6c3019a474fd6f485821",
+    ///             AllowNullCipher = false,
     ///             CloudflareEndpoint = "203.0.113.1",
     ///             CustomerEndpoint = "203.0.113.1",
     ///             Description = "Tunnel for ISP X",
@@ -54,6 +55,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2.
+        /// </summary>
+        [Output("allowNullCipher")]
+        public Output<bool?> AllowNullCipher { get; private set; } = null!;
 
         /// <summary>
         /// IP address assigned to the Cloudflare side of the IPsec tunnel.
@@ -187,6 +194,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
+        /// Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2.
+        /// </summary>
+        [Input("allowNullCipher")]
+        public Input<bool>? AllowNullCipher { get; set; }
+
+        /// <summary>
         /// IP address assigned to the Cloudflare side of the IPsec tunnel.
         /// </summary>
         [Input("cloudflareEndpoint", required: true)]
@@ -277,6 +290,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2.
+        /// </summary>
+        [Input("allowNullCipher")]
+        public Input<bool>? AllowNullCipher { get; set; }
 
         /// <summary>
         /// IP address assigned to the Cloudflare side of the IPsec tunnel.

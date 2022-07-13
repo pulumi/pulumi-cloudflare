@@ -123,6 +123,7 @@ __all__ = [
     'RulesetRuleActionParametersEdgeTtlArgs',
     'RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs',
     'RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs',
+    'RulesetRuleActionParametersFromListArgs',
     'RulesetRuleActionParametersHeaderArgs',
     'RulesetRuleActionParametersMatchedDataArgs',
     'RulesetRuleActionParametersOriginArgs',
@@ -158,6 +159,7 @@ __all__ = [
     'WorkerScriptKvNamespaceBindingArgs',
     'WorkerScriptPlainTextBindingArgs',
     'WorkerScriptSecretTextBindingArgs',
+    'WorkerScriptServiceBindingArgs',
     'WorkerScriptWebassemblyBindingArgs',
     'ZoneLockdownConfigurationArgs',
     'ZoneSettingsOverrideInitialSettingArgs',
@@ -4355,11 +4357,11 @@ class ListItemValueRedirectArgs:
     def __init__(__self__, *,
                  source_url: pulumi.Input[str],
                  target_url: pulumi.Input[str],
-                 include_subdomains: Optional[pulumi.Input[bool]] = None,
-                 preserve_path_suffix: Optional[pulumi.Input[bool]] = None,
-                 preserve_query_string: Optional[pulumi.Input[bool]] = None,
+                 include_subdomains: Optional[pulumi.Input[str]] = None,
+                 preserve_path_suffix: Optional[pulumi.Input[str]] = None,
+                 preserve_query_string: Optional[pulumi.Input[str]] = None,
                  status_code: Optional[pulumi.Input[int]] = None,
-                 subpath_matching: Optional[pulumi.Input[bool]] = None):
+                 subpath_matching: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "source_url", source_url)
         pulumi.set(__self__, "target_url", target_url)
         if include_subdomains is not None:
@@ -4393,29 +4395,29 @@ class ListItemValueRedirectArgs:
 
     @property
     @pulumi.getter(name="includeSubdomains")
-    def include_subdomains(self) -> Optional[pulumi.Input[bool]]:
+    def include_subdomains(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "include_subdomains")
 
     @include_subdomains.setter
-    def include_subdomains(self, value: Optional[pulumi.Input[bool]]):
+    def include_subdomains(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "include_subdomains", value)
 
     @property
     @pulumi.getter(name="preservePathSuffix")
-    def preserve_path_suffix(self) -> Optional[pulumi.Input[bool]]:
+    def preserve_path_suffix(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "preserve_path_suffix")
 
     @preserve_path_suffix.setter
-    def preserve_path_suffix(self, value: Optional[pulumi.Input[bool]]):
+    def preserve_path_suffix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "preserve_path_suffix", value)
 
     @property
     @pulumi.getter(name="preserveQueryString")
-    def preserve_query_string(self) -> Optional[pulumi.Input[bool]]:
+    def preserve_query_string(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "preserve_query_string")
 
     @preserve_query_string.setter
-    def preserve_query_string(self, value: Optional[pulumi.Input[bool]]):
+    def preserve_query_string(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "preserve_query_string", value)
 
     @property
@@ -4429,11 +4431,11 @@ class ListItemValueRedirectArgs:
 
     @property
     @pulumi.getter(name="subpathMatching")
-    def subpath_matching(self) -> Optional[pulumi.Input[bool]]:
+    def subpath_matching(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "subpath_matching")
 
     @subpath_matching.setter
-    def subpath_matching(self, value: Optional[pulumi.Input[bool]]):
+    def subpath_matching(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subpath_matching", value)
 
 
@@ -7379,6 +7381,7 @@ class RulesetRuleActionParametersArgs:
                  cache_key: Optional[pulumi.Input['RulesetRuleActionParametersCacheKeyArgs']] = None,
                  cookie_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  edge_ttl: Optional[pulumi.Input['RulesetRuleActionParametersEdgeTtlArgs']] = None,
+                 from_list: Optional[pulumi.Input['RulesetRuleActionParametersFromListArgs']] = None,
                  headers: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersHeaderArgs']]]] = None,
                  host_header: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -7409,6 +7412,8 @@ class RulesetRuleActionParametersArgs:
             pulumi.set(__self__, "cookie_fields", cookie_fields)
         if edge_ttl is not None:
             pulumi.set(__self__, "edge_ttl", edge_ttl)
+        if from_list is not None:
+            pulumi.set(__self__, "from_list", from_list)
         if headers is not None:
             pulumi.set(__self__, "headers", headers)
         if host_header is not None:
@@ -7494,6 +7499,15 @@ class RulesetRuleActionParametersArgs:
     @edge_ttl.setter
     def edge_ttl(self, value: Optional[pulumi.Input['RulesetRuleActionParametersEdgeTtlArgs']]):
         pulumi.set(self, "edge_ttl", value)
+
+    @property
+    @pulumi.getter(name="fromList")
+    def from_list(self) -> Optional[pulumi.Input['RulesetRuleActionParametersFromListArgs']]:
+        return pulumi.get(self, "from_list")
+
+    @from_list.setter
+    def from_list(self, value: Optional[pulumi.Input['RulesetRuleActionParametersFromListArgs']]):
+        pulumi.set(self, "from_list", value)
 
     @property
     @pulumi.getter
@@ -8085,6 +8099,33 @@ class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs:
     @to.setter
     def to(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "to", value)
+
+
+@pulumi.input_type
+class RulesetRuleActionParametersFromListArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
@@ -9665,6 +9706,59 @@ class WorkerScriptSecretTextBindingArgs:
 
 
 @pulumi.input_type
+class WorkerScriptServiceBindingArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 service: pulumi.Input[str],
+                 environment: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        :param pulumi.Input[str] service: The name of the Worker to bind to.
+        :param pulumi.Input[str] environment: The name of the Worker environment to bind to.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "service", service)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[str]:
+        """
+        The name of the Worker to bind to.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Worker environment to bind to.
+        """
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
+
+
+@pulumi.input_type
 class WorkerScriptWebassemblyBindingArgs:
     def __init__(__self__, *,
                  module: pulumi.Input[str],
@@ -9773,6 +9867,7 @@ class ZoneSettingsOverrideInitialSettingArgs:
                  opportunistic_onion: Optional[pulumi.Input[str]] = None,
                  orange_to_orange: Optional[pulumi.Input[str]] = None,
                  origin_error_page_pass_thru: Optional[pulumi.Input[str]] = None,
+                 origin_max_http_version: Optional[pulumi.Input[str]] = None,
                  polish: Optional[pulumi.Input[str]] = None,
                  prefetch_preload: Optional[pulumi.Input[str]] = None,
                  privacy_pass: Optional[pulumi.Input[str]] = None,
@@ -9802,6 +9897,7 @@ class ZoneSettingsOverrideInitialSettingArgs:
         :param pulumi.Input[str] h2_prioritization: Allowed values: "on", "off" (default), "custom".
         :param pulumi.Input[str] image_resizing: Allowed values: "on", "off" (default), "open".
         :param pulumi.Input[str] min_tls_version: Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
+        :param pulumi.Input[str] origin_max_http_version: Allowed values: "1" (default on Enterprise), "2" (default)
         :param pulumi.Input[str] polish: Allowed values: "off" (default), "lossless", "lossy".
         :param pulumi.Input[str] pseudo_ipv4: Allowed values: "off" (default), "add_header", "overwrite_header".
         :param pulumi.Input[str] security_level: Allowed values: "off" (Enterprise only), "essentially_off", "low", "medium" (default), "high", "under_attack".
@@ -9873,6 +9969,8 @@ class ZoneSettingsOverrideInitialSettingArgs:
             pulumi.set(__self__, "orange_to_orange", orange_to_orange)
         if origin_error_page_pass_thru is not None:
             pulumi.set(__self__, "origin_error_page_pass_thru", origin_error_page_pass_thru)
+        if origin_max_http_version is not None:
+            pulumi.set(__self__, "origin_max_http_version", origin_max_http_version)
         if polish is not None:
             pulumi.set(__self__, "polish", polish)
         if prefetch_preload is not None:
@@ -10226,6 +10324,18 @@ class ZoneSettingsOverrideInitialSettingArgs:
     @origin_error_page_pass_thru.setter
     def origin_error_page_pass_thru(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "origin_error_page_pass_thru", value)
+
+    @property
+    @pulumi.getter(name="originMaxHttpVersion")
+    def origin_max_http_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Allowed values: "1" (default on Enterprise), "2" (default)
+        """
+        return pulumi.get(self, "origin_max_http_version")
+
+    @origin_max_http_version.setter
+    def origin_max_http_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "origin_max_http_version", value)
 
     @property
     @pulumi.getter
@@ -10670,6 +10780,7 @@ class ZoneSettingsOverrideSettingsArgs:
                  opportunistic_onion: Optional[pulumi.Input[str]] = None,
                  orange_to_orange: Optional[pulumi.Input[str]] = None,
                  origin_error_page_pass_thru: Optional[pulumi.Input[str]] = None,
+                 origin_max_http_version: Optional[pulumi.Input[str]] = None,
                  polish: Optional[pulumi.Input[str]] = None,
                  prefetch_preload: Optional[pulumi.Input[str]] = None,
                  privacy_pass: Optional[pulumi.Input[str]] = None,
@@ -10699,6 +10810,7 @@ class ZoneSettingsOverrideSettingsArgs:
         :param pulumi.Input[str] h2_prioritization: Allowed values: "on", "off" (default), "custom".
         :param pulumi.Input[str] image_resizing: Allowed values: "on", "off" (default), "open".
         :param pulumi.Input[str] min_tls_version: Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
+        :param pulumi.Input[str] origin_max_http_version: Allowed values: "1" (default on Enterprise), "2" (default)
         :param pulumi.Input[str] polish: Allowed values: "off" (default), "lossless", "lossy".
         :param pulumi.Input[str] pseudo_ipv4: Allowed values: "off" (default), "add_header", "overwrite_header".
         :param pulumi.Input[str] security_level: Allowed values: "off" (Enterprise only), "essentially_off", "low", "medium" (default), "high", "under_attack".
@@ -10770,6 +10882,8 @@ class ZoneSettingsOverrideSettingsArgs:
             pulumi.set(__self__, "orange_to_orange", orange_to_orange)
         if origin_error_page_pass_thru is not None:
             pulumi.set(__self__, "origin_error_page_pass_thru", origin_error_page_pass_thru)
+        if origin_max_http_version is not None:
+            pulumi.set(__self__, "origin_max_http_version", origin_max_http_version)
         if polish is not None:
             pulumi.set(__self__, "polish", polish)
         if prefetch_preload is not None:
@@ -11123,6 +11237,18 @@ class ZoneSettingsOverrideSettingsArgs:
     @origin_error_page_pass_thru.setter
     def origin_error_page_pass_thru(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "origin_error_page_pass_thru", value)
+
+    @property
+    @pulumi.getter(name="originMaxHttpVersion")
+    def origin_max_http_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Allowed values: "1" (default on Enterprise), "2" (default)
+        """
+        return pulumi.get(self, "origin_max_http_version")
+
+    @origin_max_http_version.setter
+    def origin_max_http_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "origin_max_http_version", value)
 
     @property
     @pulumi.getter
