@@ -63,7 +63,7 @@ import (
 // # Use account ID, network CIDR and virtual network ID.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute cloudflare_tunnel_route <account_id/<network_cidr>/<virtual_network_id>
+//  $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example <account_id/<network_cidr>/<virtual_network_id>
 // ```
 type TunnelRoute struct {
 	pulumi.CustomResourceState

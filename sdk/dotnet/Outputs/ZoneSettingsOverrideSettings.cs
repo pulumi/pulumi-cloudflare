@@ -64,6 +64,10 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? OrangeToOrange;
         public readonly string? OriginErrorPagePassThru;
         /// <summary>
+        /// Allowed values: "1" (default on Enterprise), "2" (default)
+        /// </summary>
+        public readonly string? OriginMaxHttpVersion;
+        /// <summary>
         /// Allowed values: "off" (default), "lossless", "lossy".
         /// </summary>
         public readonly string? Polish;
@@ -170,6 +174,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? originErrorPagePassThru,
 
+            string? originMaxHttpVersion,
+
             string? polish,
 
             string? prefetchPreload,
@@ -246,6 +252,7 @@ namespace Pulumi.Cloudflare.Outputs
             OpportunisticOnion = opportunisticOnion;
             OrangeToOrange = orangeToOrange;
             OriginErrorPagePassThru = originErrorPagePassThru;
+            OriginMaxHttpVersion = originMaxHttpVersion;
             Polish = polish;
             PrefetchPreload = prefetchPreload;
             PrivacyPass = privacyPass;

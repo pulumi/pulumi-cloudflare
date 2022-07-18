@@ -27,6 +27,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cloudflare.NewIpsecTunnel(ctx, "example", &cloudflare.IpsecTunnelArgs{
 // 			AccountId:          pulumi.String("c4a7362d577a6c3019a474fd6f485821"),
+// 			AllowNullCipher:    pulumi.Bool(false),
 // 			CloudflareEndpoint: pulumi.String("203.0.113.1"),
 // 			CustomerEndpoint:   pulumi.String("203.0.113.1"),
 // 			Description:        pulumi.String("Tunnel for ISP X"),
@@ -55,6 +56,8 @@ type IpsecTunnel struct {
 
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2.
+	AllowNullCipher pulumi.BoolPtrOutput `pulumi:"allowNullCipher"`
 	// IP address assigned to the Cloudflare side of the IPsec tunnel.
 	CloudflareEndpoint pulumi.StringOutput `pulumi:"cloudflareEndpoint"`
 	// IP address assigned to the customer side of the IPsec tunnel.
@@ -127,6 +130,8 @@ func GetIpsecTunnel(ctx *pulumi.Context,
 type ipsecTunnelState struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
+	// Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2.
+	AllowNullCipher *bool `pulumi:"allowNullCipher"`
 	// IP address assigned to the Cloudflare side of the IPsec tunnel.
 	CloudflareEndpoint *string `pulumi:"cloudflareEndpoint"`
 	// IP address assigned to the customer side of the IPsec tunnel.
@@ -159,6 +164,8 @@ type ipsecTunnelState struct {
 type IpsecTunnelState struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
+	// Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2.
+	AllowNullCipher pulumi.BoolPtrInput
 	// IP address assigned to the Cloudflare side of the IPsec tunnel.
 	CloudflareEndpoint pulumi.StringPtrInput
 	// IP address assigned to the customer side of the IPsec tunnel.
@@ -195,6 +202,8 @@ func (IpsecTunnelState) ElementType() reflect.Type {
 type ipsecTunnelArgs struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
+	// Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2.
+	AllowNullCipher *bool `pulumi:"allowNullCipher"`
 	// IP address assigned to the Cloudflare side of the IPsec tunnel.
 	CloudflareEndpoint string `pulumi:"cloudflareEndpoint"`
 	// IP address assigned to the customer side of the IPsec tunnel.
@@ -228,6 +237,8 @@ type ipsecTunnelArgs struct {
 type IpsecTunnelArgs struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
+	// Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2.
+	AllowNullCipher pulumi.BoolPtrInput
 	// IP address assigned to the Cloudflare side of the IPsec tunnel.
 	CloudflareEndpoint pulumi.StringInput
 	// IP address assigned to the customer side of the IPsec tunnel.
@@ -347,6 +358,11 @@ func (o IpsecTunnelOutput) ToIpsecTunnelOutputWithContext(ctx context.Context) I
 // The account identifier to target for the resource.
 func (o IpsecTunnelOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpsecTunnel) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2.
+func (o IpsecTunnelOutput) AllowNullCipher() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IpsecTunnel) pulumi.BoolPtrOutput { return v.AllowNullCipher }).(pulumi.BoolPtrOutput)
 }
 
 // IP address assigned to the Cloudflare side of the IPsec tunnel.

@@ -32,6 +32,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("edgeTtl")]
         public Input<Inputs.RulesetRuleActionParametersEdgeTtlArgs>? EdgeTtl { get; set; }
 
+        [Input("fromList")]
+        public Input<Inputs.RulesetRuleActionParametersFromListArgs>? FromList { get; set; }
+
         [Input("headers")]
         private InputList<Inputs.RulesetRuleActionParametersHeaderArgs>? _headers;
         public InputList<Inputs.RulesetRuleActionParametersHeaderArgs> Headers

@@ -102,6 +102,10 @@ export class WaitingRoom extends pulumi.CustomResource {
      */
     public readonly queueAll!: pulumi.Output<boolean | undefined>;
     /**
+     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+     */
+    public readonly queueingMethod!: pulumi.Output<string | undefined>;
+    /**
      * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
      */
     public readonly sessionDuration!: pulumi.Output<number | undefined>;
@@ -141,6 +145,7 @@ export class WaitingRoom extends pulumi.CustomResource {
             resourceInputs["newUsersPerMinute"] = state ? state.newUsersPerMinute : undefined;
             resourceInputs["path"] = state ? state.path : undefined;
             resourceInputs["queueAll"] = state ? state.queueAll : undefined;
+            resourceInputs["queueingMethod"] = state ? state.queueingMethod : undefined;
             resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
             resourceInputs["suspended"] = state ? state.suspended : undefined;
             resourceInputs["totalActiveUsers"] = state ? state.totalActiveUsers : undefined;
@@ -172,6 +177,7 @@ export class WaitingRoom extends pulumi.CustomResource {
             resourceInputs["newUsersPerMinute"] = args ? args.newUsersPerMinute : undefined;
             resourceInputs["path"] = args ? args.path : undefined;
             resourceInputs["queueAll"] = args ? args.queueAll : undefined;
+            resourceInputs["queueingMethod"] = args ? args.queueingMethod : undefined;
             resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
             resourceInputs["suspended"] = args ? args.suspended : undefined;
             resourceInputs["totalActiveUsers"] = args ? args.totalActiveUsers : undefined;
@@ -227,6 +233,10 @@ export interface WaitingRoomState {
      * If queue_all is true, then all traffic will be sent to the waiting room.
      */
     queueAll?: pulumi.Input<boolean>;
+    /**
+     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+     */
+    queueingMethod?: pulumi.Input<string>;
     /**
      * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
      */
@@ -290,6 +300,10 @@ export interface WaitingRoomArgs {
      * If queue_all is true, then all traffic will be sent to the waiting room.
      */
     queueAll?: pulumi.Input<boolean>;
+    /**
+     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+     */
+    queueingMethod?: pulumi.Input<string>;
     /**
      * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
      */

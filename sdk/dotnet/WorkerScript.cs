@@ -69,6 +69,15 @@ namespace Pulumi.Cloudflare
     ///                     Module = ReadFileBase64("example.wasm"),
     ///                 },
     ///             },
+    ///             ServiceBindings = 
+    ///             {
+    ///                 new Cloudflare.Inputs.WorkerScriptServiceBindingArgs
+    ///                 {
+    ///                     Name = "MY_SERVICE_BINDING",
+    ///                     Service = "MY_SERVICE",
+    ///                     Environment = "production",
+    ///                 },
+    ///             },
     ///         });
     ///     }
     /// 
@@ -108,6 +117,9 @@ namespace Pulumi.Cloudflare
 
         [Output("secretTextBindings")]
         public Output<ImmutableArray<Outputs.WorkerScriptSecretTextBinding>> SecretTextBindings { get; private set; } = null!;
+
+        [Output("serviceBindings")]
+        public Output<ImmutableArray<Outputs.WorkerScriptServiceBinding>> ServiceBindings { get; private set; } = null!;
 
         [Output("webassemblyBindings")]
         public Output<ImmutableArray<Outputs.WorkerScriptWebassemblyBinding>> WebassemblyBindings { get; private set; } = null!;
@@ -194,6 +206,14 @@ namespace Pulumi.Cloudflare
             set => _secretTextBindings = value;
         }
 
+        [Input("serviceBindings")]
+        private InputList<Inputs.WorkerScriptServiceBindingArgs>? _serviceBindings;
+        public InputList<Inputs.WorkerScriptServiceBindingArgs> ServiceBindings
+        {
+            get => _serviceBindings ?? (_serviceBindings = new InputList<Inputs.WorkerScriptServiceBindingArgs>());
+            set => _serviceBindings = value;
+        }
+
         [Input("webassemblyBindings")]
         private InputList<Inputs.WorkerScriptWebassemblyBindingArgs>? _webassemblyBindings;
         public InputList<Inputs.WorkerScriptWebassemblyBindingArgs> WebassemblyBindings
@@ -243,6 +263,14 @@ namespace Pulumi.Cloudflare
         {
             get => _secretTextBindings ?? (_secretTextBindings = new InputList<Inputs.WorkerScriptSecretTextBindingGetArgs>());
             set => _secretTextBindings = value;
+        }
+
+        [Input("serviceBindings")]
+        private InputList<Inputs.WorkerScriptServiceBindingGetArgs>? _serviceBindings;
+        public InputList<Inputs.WorkerScriptServiceBindingGetArgs> ServiceBindings
+        {
+            get => _serviceBindings ?? (_serviceBindings = new InputList<Inputs.WorkerScriptServiceBindingGetArgs>());
+            set => _serviceBindings = value;
         }
 
         [Input("webassemblyBindings")]

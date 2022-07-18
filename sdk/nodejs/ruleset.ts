@@ -222,6 +222,7 @@ import * as utilities from "./utilities";
  *     }],
  *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
  * });
+ * // Custom cache keys + settings
  * const cacheSettingsExample = new cloudflare.Ruleset("cache_settings_example", {
  *     description: "set cache settings for the request",
  *     kind: "zone",
@@ -299,6 +300,26 @@ import * as utilities from "./utilities";
  *     }],
  *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
  * });
+ * // Redirects based on a List resource
+ * const redirectFromListExample = new cloudflare.Ruleset("redirect_from_list_example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     description: "Redirect ruleset",
+ *     kind: "root",
+ *     name: "redirects",
+ *     phase: "http_request_redirect",
+ *     rules: [{
+ *         action: "redirect",
+ *         actionParameters: {
+ *             fromList: {
+ *                 key: "http.request.full_uri",
+ *                 name: "redirect_list",
+ *             },
+ *         },
+ *         description: "Apply redirects from redirect_list",
+ *         enabled: true,
+ *         expression: "http.request.full_uri in $redirect_list",
+ *     }],
+ * });
  * ```
  *
  * ## Import
@@ -354,8 +375,8 @@ export class Ruleset extends pulumi.CustomResource {
      * `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
      * `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
      * `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-     * `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
-     * `http_request_sbfm`
+     * `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
+     * `magic_transit`, `http_ratelimit`, `http_request_sbfm`
      */
     public readonly phase!: pulumi.Output<string>;
     /**
@@ -442,8 +463,8 @@ export interface RulesetState {
      * `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
      * `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
      * `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-     * `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
-     * `http_request_sbfm`
+     * `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
+     * `magic_transit`, `http_ratelimit`, `http_request_sbfm`
      */
     phase?: pulumi.Input<string>;
     /**
@@ -485,8 +506,8 @@ export interface RulesetArgs {
      * `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
      * `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
      * `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-     * `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
-     * `http_request_sbfm`
+     * `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
+     * `magic_transit`, `http_ratelimit`, `http_request_sbfm`
      */
     phase: pulumi.Input<string>;
     /**

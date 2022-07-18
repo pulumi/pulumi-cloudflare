@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ListItemValueRedirectGetArgs : Pulumi.ResourceArgs
     {
         [Input("includeSubdomains")]
-        public Input<bool>? IncludeSubdomains { get; set; }
+        public Input<string>? IncludeSubdomains { get; set; }
 
         [Input("preservePathSuffix")]
-        public Input<bool>? PreservePathSuffix { get; set; }
+        public Input<string>? PreservePathSuffix { get; set; }
 
         [Input("preserveQueryString")]
-        public Input<bool>? PreserveQueryString { get; set; }
+        public Input<string>? PreserveQueryString { get; set; }
 
         [Input("sourceUrl", required: true)]
         public Input<string> SourceUrl { get; set; } = null!;
@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<int>? StatusCode { get; set; }
 
         [Input("subpathMatching")]
-        public Input<bool>? SubpathMatching { get; set; }
+        public Input<string>? SubpathMatching { get; set; }
 
         [Input("targetUrl", required: true)]
         public Input<string> TargetUrl { get; set; } = null!;

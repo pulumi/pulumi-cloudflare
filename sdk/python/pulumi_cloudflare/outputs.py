@@ -124,6 +124,7 @@ __all__ = [
     'RulesetRuleActionParametersEdgeTtl',
     'RulesetRuleActionParametersEdgeTtlStatusCodeTtl',
     'RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange',
+    'RulesetRuleActionParametersFromList',
     'RulesetRuleActionParametersHeader',
     'RulesetRuleActionParametersMatchedData',
     'RulesetRuleActionParametersOrigin',
@@ -159,6 +160,7 @@ __all__ = [
     'WorkerScriptKvNamespaceBinding',
     'WorkerScriptPlainTextBinding',
     'WorkerScriptSecretTextBinding',
+    'WorkerScriptServiceBinding',
     'WorkerScriptWebassemblyBinding',
     'ZoneLockdownConfiguration',
     'ZoneSettingsOverrideInitialSetting',
@@ -4339,11 +4341,11 @@ class ListItemValueRedirect(dict):
     def __init__(__self__, *,
                  source_url: str,
                  target_url: str,
-                 include_subdomains: Optional[bool] = None,
-                 preserve_path_suffix: Optional[bool] = None,
-                 preserve_query_string: Optional[bool] = None,
+                 include_subdomains: Optional[str] = None,
+                 preserve_path_suffix: Optional[str] = None,
+                 preserve_query_string: Optional[str] = None,
                  status_code: Optional[int] = None,
-                 subpath_matching: Optional[bool] = None):
+                 subpath_matching: Optional[str] = None):
         pulumi.set(__self__, "source_url", source_url)
         pulumi.set(__self__, "target_url", target_url)
         if include_subdomains is not None:
@@ -4369,17 +4371,17 @@ class ListItemValueRedirect(dict):
 
     @property
     @pulumi.getter(name="includeSubdomains")
-    def include_subdomains(self) -> Optional[bool]:
+    def include_subdomains(self) -> Optional[str]:
         return pulumi.get(self, "include_subdomains")
 
     @property
     @pulumi.getter(name="preservePathSuffix")
-    def preserve_path_suffix(self) -> Optional[bool]:
+    def preserve_path_suffix(self) -> Optional[str]:
         return pulumi.get(self, "preserve_path_suffix")
 
     @property
     @pulumi.getter(name="preserveQueryString")
-    def preserve_query_string(self) -> Optional[bool]:
+    def preserve_query_string(self) -> Optional[str]:
         return pulumi.get(self, "preserve_query_string")
 
     @property
@@ -4389,7 +4391,7 @@ class ListItemValueRedirect(dict):
 
     @property
     @pulumi.getter(name="subpathMatching")
-    def subpath_matching(self) -> Optional[bool]:
+    def subpath_matching(self) -> Optional[str]:
         return pulumi.get(self, "subpath_matching")
 
 
@@ -7052,6 +7054,8 @@ class RulesetRuleActionParameters(dict):
             suggest = "cookie_fields"
         elif key == "edgeTtl":
             suggest = "edge_ttl"
+        elif key == "fromList":
+            suggest = "from_list"
         elif key == "hostHeader":
             suggest = "host_header"
         elif key == "matchedData":
@@ -7084,6 +7088,7 @@ class RulesetRuleActionParameters(dict):
                  cache_key: Optional['outputs.RulesetRuleActionParametersCacheKey'] = None,
                  cookie_fields: Optional[Sequence[str]] = None,
                  edge_ttl: Optional['outputs.RulesetRuleActionParametersEdgeTtl'] = None,
+                 from_list: Optional['outputs.RulesetRuleActionParametersFromList'] = None,
                  headers: Optional[Sequence['outputs.RulesetRuleActionParametersHeader']] = None,
                  host_header: Optional[str] = None,
                  id: Optional[str] = None,
@@ -7114,6 +7119,8 @@ class RulesetRuleActionParameters(dict):
             pulumi.set(__self__, "cookie_fields", cookie_fields)
         if edge_ttl is not None:
             pulumi.set(__self__, "edge_ttl", edge_ttl)
+        if from_list is not None:
+            pulumi.set(__self__, "from_list", from_list)
         if headers is not None:
             pulumi.set(__self__, "headers", headers)
         if host_header is not None:
@@ -7179,6 +7186,11 @@ class RulesetRuleActionParameters(dict):
     @pulumi.getter(name="edgeTtl")
     def edge_ttl(self) -> Optional['outputs.RulesetRuleActionParametersEdgeTtl']:
         return pulumi.get(self, "edge_ttl")
+
+    @property
+    @pulumi.getter(name="fromList")
+    def from_list(self) -> Optional['outputs.RulesetRuleActionParametersFromList']:
+        return pulumi.get(self, "from_list")
 
     @property
     @pulumi.getter
@@ -7716,6 +7728,25 @@ class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange(dict):
     @pulumi.getter
     def to(self) -> Optional[int]:
         return pulumi.get(self, "to")
+
+
+@pulumi.output_type
+class RulesetRuleActionParametersFromList(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 name: str):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -9191,6 +9222,47 @@ class WorkerScriptSecretTextBinding(dict):
 
 
 @pulumi.output_type
+class WorkerScriptServiceBinding(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 service: str,
+                 environment: Optional[str] = None):
+        """
+        :param str name: The global variable for the binding in your Worker code.
+        :param str service: The name of the Worker to bind to.
+        :param str environment: The name of the Worker environment to bind to.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "service", service)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        The name of the Worker to bind to.
+        """
+        return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[str]:
+        """
+        The name of the Worker environment to bind to.
+        """
+        return pulumi.get(self, "environment")
+
+
+@pulumi.output_type
 class WorkerScriptWebassemblyBinding(dict):
     def __init__(__self__, *,
                  module: str,
@@ -9303,6 +9375,8 @@ class ZoneSettingsOverrideInitialSetting(dict):
             suggest = "orange_to_orange"
         elif key == "originErrorPagePassThru":
             suggest = "origin_error_page_pass_thru"
+        elif key == "originMaxHttpVersion":
+            suggest = "origin_max_http_version"
         elif key == "prefetchPreload":
             suggest = "prefetch_preload"
         elif key == "privacyPass":
@@ -9380,6 +9454,7 @@ class ZoneSettingsOverrideInitialSetting(dict):
                  opportunistic_onion: Optional[str] = None,
                  orange_to_orange: Optional[str] = None,
                  origin_error_page_pass_thru: Optional[str] = None,
+                 origin_max_http_version: Optional[str] = None,
                  polish: Optional[str] = None,
                  prefetch_preload: Optional[str] = None,
                  privacy_pass: Optional[str] = None,
@@ -9409,6 +9484,7 @@ class ZoneSettingsOverrideInitialSetting(dict):
         :param str h2_prioritization: Allowed values: "on", "off" (default), "custom".
         :param str image_resizing: Allowed values: "on", "off" (default), "open".
         :param str min_tls_version: Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
+        :param str origin_max_http_version: Allowed values: "1" (default on Enterprise), "2" (default)
         :param str polish: Allowed values: "off" (default), "lossless", "lossy".
         :param str pseudo_ipv4: Allowed values: "off" (default), "add_header", "overwrite_header".
         :param str security_level: Allowed values: "off" (Enterprise only), "essentially_off", "low", "medium" (default), "high", "under_attack".
@@ -9480,6 +9556,8 @@ class ZoneSettingsOverrideInitialSetting(dict):
             pulumi.set(__self__, "orange_to_orange", orange_to_orange)
         if origin_error_page_pass_thru is not None:
             pulumi.set(__self__, "origin_error_page_pass_thru", origin_error_page_pass_thru)
+        if origin_max_http_version is not None:
+            pulumi.set(__self__, "origin_max_http_version", origin_max_http_version)
         if polish is not None:
             pulumi.set(__self__, "polish", polish)
         if prefetch_preload is not None:
@@ -9702,6 +9780,14 @@ class ZoneSettingsOverrideInitialSetting(dict):
     @pulumi.getter(name="originErrorPagePassThru")
     def origin_error_page_pass_thru(self) -> Optional[str]:
         return pulumi.get(self, "origin_error_page_pass_thru")
+
+    @property
+    @pulumi.getter(name="originMaxHttpVersion")
+    def origin_max_http_version(self) -> Optional[str]:
+        """
+        Allowed values: "1" (default on Enterprise), "2" (default)
+        """
+        return pulumi.get(self, "origin_max_http_version")
 
     @property
     @pulumi.getter
@@ -10072,6 +10158,8 @@ class ZoneSettingsOverrideSettings(dict):
             suggest = "orange_to_orange"
         elif key == "originErrorPagePassThru":
             suggest = "origin_error_page_pass_thru"
+        elif key == "originMaxHttpVersion":
+            suggest = "origin_max_http_version"
         elif key == "prefetchPreload":
             suggest = "prefetch_preload"
         elif key == "privacyPass":
@@ -10149,6 +10237,7 @@ class ZoneSettingsOverrideSettings(dict):
                  opportunistic_onion: Optional[str] = None,
                  orange_to_orange: Optional[str] = None,
                  origin_error_page_pass_thru: Optional[str] = None,
+                 origin_max_http_version: Optional[str] = None,
                  polish: Optional[str] = None,
                  prefetch_preload: Optional[str] = None,
                  privacy_pass: Optional[str] = None,
@@ -10178,6 +10267,7 @@ class ZoneSettingsOverrideSettings(dict):
         :param str h2_prioritization: Allowed values: "on", "off" (default), "custom".
         :param str image_resizing: Allowed values: "on", "off" (default), "open".
         :param str min_tls_version: Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
+        :param str origin_max_http_version: Allowed values: "1" (default on Enterprise), "2" (default)
         :param str polish: Allowed values: "off" (default), "lossless", "lossy".
         :param str pseudo_ipv4: Allowed values: "off" (default), "add_header", "overwrite_header".
         :param str security_level: Allowed values: "off" (Enterprise only), "essentially_off", "low", "medium" (default), "high", "under_attack".
@@ -10249,6 +10339,8 @@ class ZoneSettingsOverrideSettings(dict):
             pulumi.set(__self__, "orange_to_orange", orange_to_orange)
         if origin_error_page_pass_thru is not None:
             pulumi.set(__self__, "origin_error_page_pass_thru", origin_error_page_pass_thru)
+        if origin_max_http_version is not None:
+            pulumi.set(__self__, "origin_max_http_version", origin_max_http_version)
         if polish is not None:
             pulumi.set(__self__, "polish", polish)
         if prefetch_preload is not None:
@@ -10471,6 +10563,14 @@ class ZoneSettingsOverrideSettings(dict):
     @pulumi.getter(name="originErrorPagePassThru")
     def origin_error_page_pass_thru(self) -> Optional[str]:
         return pulumi.get(self, "origin_error_page_pass_thru")
+
+    @property
+    @pulumi.getter(name="originMaxHttpVersion")
+    def origin_max_http_version(self) -> Optional[str]:
+        """
+        Allowed values: "1" (default on Enterprise), "2" (default)
+        """
+        return pulumi.get(self, "origin_max_http_version")
 
     @property
     @pulumi.getter

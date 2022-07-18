@@ -38,7 +38,7 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork cloudflare_tunnel_virtual_network &lt;account_id&gt;/&lt;vnet_id&gt;
+    ///  $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example &lt;account_id&gt;/&lt;vnet_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork")]

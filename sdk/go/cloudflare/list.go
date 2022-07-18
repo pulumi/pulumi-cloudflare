@@ -45,12 +45,12 @@ import (
 // 					Value: &ListItemValueArgs{
 // 						Redirect: []map[string]interface{}{
 // 							map[string]interface{}{
-// 								"includeSubdomains":   true,
-// 								"preservePathSuffix":  false,
-// 								"preserveQueryString": true,
+// 								"includeSubdomains":   "enabled",
+// 								"preservePathSuffix":  "disabled",
+// 								"preserveQueryString": "enabled",
 // 								"sourceUrl":           "example.com/foo",
 // 								"statusCode":          301,
-// 								"subpathMatching":     true,
+// 								"subpathMatching":     "enabled",
 // 								"targetUrl":           "https://foo.example.com",
 // 							},
 // 						},

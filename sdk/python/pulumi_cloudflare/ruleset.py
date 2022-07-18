@@ -31,8 +31,8 @@ class RulesetArgs:
                `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
                `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
                `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-               `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
-               `http_request_sbfm`
+               `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
+               `magic_transit`, `http_ratelimit`, `http_request_sbfm`
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: Brief summary of the ruleset and its intended use.
         :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]] rules: List of rules to apply to the ruleset.
@@ -85,8 +85,8 @@ class RulesetArgs:
         `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
         `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
         `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-        `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
-        `http_request_sbfm`
+        `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
+        `magic_transit`, `http_ratelimit`, `http_request_sbfm`
         """
         return pulumi.get(self, "phase")
 
@@ -176,8 +176,8 @@ class _RulesetState:
                `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
                `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
                `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-               `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
-               `http_request_sbfm`
+               `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
+               `magic_transit`, `http_ratelimit`, `http_request_sbfm`
         :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]] rules: List of rules to apply to the ruleset.
         :param pulumi.Input[str] shareable_entitlement_name: Name of entitlement that is shareable between entities.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
@@ -255,8 +255,8 @@ class _RulesetState:
         `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
         `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
         `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-        `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
-        `http_request_sbfm`
+        `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
+        `magic_transit`, `http_ratelimit`, `http_request_sbfm`
         """
         return pulumi.get(self, "phase")
 
@@ -523,6 +523,7 @@ class Ruleset(pulumi.CustomResource):
                 expression="true",
             )],
             zone_id="cb029e245cfdd66dc8d2e570d5dd3322")
+        # Custom cache keys + settings
         cache_settings_example = cloudflare.Ruleset("cacheSettingsExample",
             description="set cache settings for the request",
             kind="zone",
@@ -599,6 +600,25 @@ class Ruleset(pulumi.CustomResource):
                 expression="true",
             )],
             zone_id="cb029e245cfdd66dc8d2e570d5dd3322")
+        # Redirects based on a List resource
+        redirect_from_list_example = cloudflare.Ruleset("redirectFromListExample",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            description="Redirect ruleset",
+            kind="root",
+            name="redirects",
+            phase="http_request_redirect",
+            rules=[cloudflare.RulesetRuleArgs(
+                action="redirect",
+                action_parameters=cloudflare.RulesetRuleActionParametersArgs(
+                    from_list=cloudflare.RulesetRuleActionParametersFromListArgs(
+                        key="http.request.full_uri",
+                        name="redirect_list",
+                    ),
+                ),
+                description="Apply redirects from redirect_list",
+                enabled=True,
+                expression="http.request.full_uri in $redirect_list",
+            )])
         ```
 
         ## Import
@@ -615,8 +635,8 @@ class Ruleset(pulumi.CustomResource):
                `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
                `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
                `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-               `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
-               `http_request_sbfm`
+               `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
+               `magic_transit`, `http_ratelimit`, `http_request_sbfm`
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesetRuleArgs']]]] rules: List of rules to apply to the ruleset.
         :param pulumi.Input[str] shareable_entitlement_name: Name of entitlement that is shareable between entities.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
@@ -835,6 +855,7 @@ class Ruleset(pulumi.CustomResource):
                 expression="true",
             )],
             zone_id="cb029e245cfdd66dc8d2e570d5dd3322")
+        # Custom cache keys + settings
         cache_settings_example = cloudflare.Ruleset("cacheSettingsExample",
             description="set cache settings for the request",
             kind="zone",
@@ -911,6 +932,25 @@ class Ruleset(pulumi.CustomResource):
                 expression="true",
             )],
             zone_id="cb029e245cfdd66dc8d2e570d5dd3322")
+        # Redirects based on a List resource
+        redirect_from_list_example = cloudflare.Ruleset("redirectFromListExample",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            description="Redirect ruleset",
+            kind="root",
+            name="redirects",
+            phase="http_request_redirect",
+            rules=[cloudflare.RulesetRuleArgs(
+                action="redirect",
+                action_parameters=cloudflare.RulesetRuleActionParametersArgs(
+                    from_list=cloudflare.RulesetRuleActionParametersFromListArgs(
+                        key="http.request.full_uri",
+                        name="redirect_list",
+                    ),
+                ),
+                description="Apply redirects from redirect_list",
+                enabled=True,
+                expression="http.request.full_uri in $redirect_list",
+            )])
         ```
 
         ## Import
@@ -999,8 +1039,8 @@ class Ruleset(pulumi.CustomResource):
                `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
                `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
                `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-               `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
-               `http_request_sbfm`
+               `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
+               `magic_transit`, `http_ratelimit`, `http_request_sbfm`
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesetRuleArgs']]]] rules: List of rules to apply to the ruleset.
         :param pulumi.Input[str] shareable_entitlement_name: Name of entitlement that is shareable between entities.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
@@ -1059,8 +1099,8 @@ class Ruleset(pulumi.CustomResource):
         `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
         `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
         `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-        `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
-        `http_request_sbfm`
+        `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
+        `magic_transit`, `http_ratelimit`, `http_request_sbfm`
         """
         return pulumi.get(self, "phase")
 

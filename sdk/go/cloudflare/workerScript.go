@@ -77,6 +77,13 @@ import (
 // 					Module: filebase64OrPanic("example.wasm"),
 // 				},
 // 			},
+// 			ServiceBindings: WorkerScriptServiceBindingArray{
+// 				&WorkerScriptServiceBindingArgs{
+// 					Name:        pulumi.String("MY_SERVICE_BINDING"),
+// 					Service:     pulumi.String("MY_SERVICE"),
+// 					Environment: pulumi.String("production"),
+// 				},
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -105,6 +112,7 @@ type WorkerScript struct {
 	Name                pulumi.StringOutput                       `pulumi:"name"`
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayOutput   `pulumi:"plainTextBindings"`
 	SecretTextBindings  WorkerScriptSecretTextBindingArrayOutput  `pulumi:"secretTextBindings"`
+	ServiceBindings     WorkerScriptServiceBindingArrayOutput     `pulumi:"serviceBindings"`
 	WebassemblyBindings WorkerScriptWebassemblyBindingArrayOutput `pulumi:"webassemblyBindings"`
 }
 
@@ -150,6 +158,7 @@ type workerScriptState struct {
 	Name                *string                          `pulumi:"name"`
 	PlainTextBindings   []WorkerScriptPlainTextBinding   `pulumi:"plainTextBindings"`
 	SecretTextBindings  []WorkerScriptSecretTextBinding  `pulumi:"secretTextBindings"`
+	ServiceBindings     []WorkerScriptServiceBinding     `pulumi:"serviceBindings"`
 	WebassemblyBindings []WorkerScriptWebassemblyBinding `pulumi:"webassemblyBindings"`
 }
 
@@ -161,6 +170,7 @@ type WorkerScriptState struct {
 	Name                pulumi.StringPtrInput
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayInput
 	SecretTextBindings  WorkerScriptSecretTextBindingArrayInput
+	ServiceBindings     WorkerScriptServiceBindingArrayInput
 	WebassemblyBindings WorkerScriptWebassemblyBindingArrayInput
 }
 
@@ -176,6 +186,7 @@ type workerScriptArgs struct {
 	Name                string                           `pulumi:"name"`
 	PlainTextBindings   []WorkerScriptPlainTextBinding   `pulumi:"plainTextBindings"`
 	SecretTextBindings  []WorkerScriptSecretTextBinding  `pulumi:"secretTextBindings"`
+	ServiceBindings     []WorkerScriptServiceBinding     `pulumi:"serviceBindings"`
 	WebassemblyBindings []WorkerScriptWebassemblyBinding `pulumi:"webassemblyBindings"`
 }
 
@@ -188,6 +199,7 @@ type WorkerScriptArgs struct {
 	Name                pulumi.StringInput
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayInput
 	SecretTextBindings  WorkerScriptSecretTextBindingArrayInput
+	ServiceBindings     WorkerScriptServiceBindingArrayInput
 	WebassemblyBindings WorkerScriptWebassemblyBindingArrayInput
 }
 
@@ -298,6 +310,10 @@ func (o WorkerScriptOutput) PlainTextBindings() WorkerScriptPlainTextBindingArra
 
 func (o WorkerScriptOutput) SecretTextBindings() WorkerScriptSecretTextBindingArrayOutput {
 	return o.ApplyT(func(v *WorkerScript) WorkerScriptSecretTextBindingArrayOutput { return v.SecretTextBindings }).(WorkerScriptSecretTextBindingArrayOutput)
+}
+
+func (o WorkerScriptOutput) ServiceBindings() WorkerScriptServiceBindingArrayOutput {
+	return o.ApplyT(func(v *WorkerScript) WorkerScriptServiceBindingArrayOutput { return v.ServiceBindings }).(WorkerScriptServiceBindingArrayOutput)
 }
 
 func (o WorkerScriptOutput) WebassemblyBindings() WorkerScriptWebassemblyBindingArrayOutput {

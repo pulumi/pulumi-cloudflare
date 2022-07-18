@@ -17,6 +17,8 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
+//
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
@@ -355,6 +357,30 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		_, err = cloudflare.NewRuleset(ctx, "redirectFromListExample", &cloudflare.RulesetArgs{
+// 			AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
+// 			Description: pulumi.String("Redirect ruleset"),
+// 			Kind:        pulumi.String("root"),
+// 			Name:        pulumi.String("redirects"),
+// 			Phase:       pulumi.String("http_request_redirect"),
+// 			Rules: RulesetRuleArray{
+// 				&RulesetRuleArgs{
+// 					Action: pulumi.String("redirect"),
+// 					ActionParameters: &RulesetRuleActionParametersArgs{
+// 						FromList: &RulesetRuleActionParametersFromListArgs{
+// 							Key:  pulumi.String("http.request.full_uri"),
+// 							Name: pulumi.String("redirect_list"),
+// 						},
+// 					},
+// 					Description: pulumi.String("Apply redirects from redirect_list"),
+// 					Enabled:     pulumi.Bool(true),
+// 					Expression:  pulumi.String(fmt.Sprintf("%v%v%v", "http.request.full_uri in ", "$", "redirect_list")),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
 // 		return nil
 // 	})
 // }
@@ -378,8 +404,8 @@ type Ruleset struct {
 	// `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
 	// `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
 	// `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-	// `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
-	// `http_request_sbfm`
+	// `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
+	// `magic_transit`, `http_ratelimit`, `http_request_sbfm`
 	Phase pulumi.StringOutput `pulumi:"phase"`
 	// List of rules to apply to the ruleset.
 	Rules RulesetRuleArrayOutput `pulumi:"rules"`
@@ -439,8 +465,8 @@ type rulesetState struct {
 	// `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
 	// `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
 	// `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-	// `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
-	// `http_request_sbfm`
+	// `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
+	// `magic_transit`, `http_ratelimit`, `http_request_sbfm`
 	Phase *string `pulumi:"phase"`
 	// List of rules to apply to the ruleset.
 	Rules []RulesetRule `pulumi:"rules"`
@@ -463,8 +489,8 @@ type RulesetState struct {
 	// `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
 	// `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
 	// `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-	// `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
-	// `http_request_sbfm`
+	// `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
+	// `magic_transit`, `http_ratelimit`, `http_request_sbfm`
 	Phase pulumi.StringPtrInput
 	// List of rules to apply to the ruleset.
 	Rules RulesetRuleArrayInput
@@ -491,8 +517,8 @@ type rulesetArgs struct {
 	// `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
 	// `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
 	// `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-	// `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
-	// `http_request_sbfm`
+	// `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
+	// `magic_transit`, `http_ratelimit`, `http_request_sbfm`
 	Phase string `pulumi:"phase"`
 	// List of rules to apply to the ruleset.
 	Rules []RulesetRule `pulumi:"rules"`
@@ -516,8 +542,8 @@ type RulesetArgs struct {
 	// `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
 	// `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
 	// `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-	// `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
-	// `http_request_sbfm`
+	// `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
+	// `magic_transit`, `http_ratelimit`, `http_request_sbfm`
 	Phase pulumi.StringInput
 	// List of rules to apply to the ruleset.
 	Rules RulesetRuleArrayInput
@@ -638,8 +664,8 @@ func (o RulesetOutput) Name() pulumi.StringOutput {
 // `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
 // `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
 // `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-// `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
-// `http_request_sbfm`
+// `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
+// `magic_transit`, `http_ratelimit`, `http_request_sbfm`
 func (o RulesetOutput) Phase() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.Phase }).(pulumi.StringOutput)
 }

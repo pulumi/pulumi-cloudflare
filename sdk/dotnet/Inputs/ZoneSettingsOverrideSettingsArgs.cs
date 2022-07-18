@@ -133,6 +133,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? OriginErrorPagePassThru { get; set; }
 
         /// <summary>
+        /// Allowed values: "1" (default on Enterprise), "2" (default)
+        /// </summary>
+        [Input("originMaxHttpVersion")]
+        public Input<string>? OriginMaxHttpVersion { get; set; }
+
+        /// <summary>
         /// Allowed values: "off" (default), "lossless", "lossy".
         /// </summary>
         [Input("polish")]

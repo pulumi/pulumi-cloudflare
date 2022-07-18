@@ -72,6 +72,8 @@ type WaitingRoom struct {
 	Path pulumi.StringPtrOutput `pulumi:"path"`
 	// If queue_all is true, then all traffic will be sent to the waiting room.
 	QueueAll pulumi.BoolPtrOutput `pulumi:"queueAll"`
+	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+	QueueingMethod pulumi.StringPtrOutput `pulumi:"queueingMethod"`
 	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
 	SessionDuration pulumi.IntPtrOutput `pulumi:"sessionDuration"`
 	// Suspends the waiting room.
@@ -147,6 +149,8 @@ type waitingRoomState struct {
 	Path *string `pulumi:"path"`
 	// If queue_all is true, then all traffic will be sent to the waiting room.
 	QueueAll *bool `pulumi:"queueAll"`
+	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+	QueueingMethod *string `pulumi:"queueingMethod"`
 	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
 	SessionDuration *int `pulumi:"sessionDuration"`
 	// Suspends the waiting room.
@@ -179,6 +183,8 @@ type WaitingRoomState struct {
 	Path pulumi.StringPtrInput
 	// If queue_all is true, then all traffic will be sent to the waiting room.
 	QueueAll pulumi.BoolPtrInput
+	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+	QueueingMethod pulumi.StringPtrInput
 	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
 	SessionDuration pulumi.IntPtrInput
 	// Suspends the waiting room.
@@ -215,6 +221,8 @@ type waitingRoomArgs struct {
 	Path *string `pulumi:"path"`
 	// If queue_all is true, then all traffic will be sent to the waiting room.
 	QueueAll *bool `pulumi:"queueAll"`
+	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+	QueueingMethod *string `pulumi:"queueingMethod"`
 	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
 	SessionDuration *int `pulumi:"sessionDuration"`
 	// Suspends the waiting room.
@@ -248,6 +256,8 @@ type WaitingRoomArgs struct {
 	Path pulumi.StringPtrInput
 	// If queue_all is true, then all traffic will be sent to the waiting room.
 	QueueAll pulumi.BoolPtrInput
+	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+	QueueingMethod pulumi.StringPtrInput
 	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
 	SessionDuration pulumi.IntPtrInput
 	// Suspends the waiting room.
@@ -394,6 +404,11 @@ func (o WaitingRoomOutput) Path() pulumi.StringPtrOutput {
 // If queue_all is true, then all traffic will be sent to the waiting room.
 func (o WaitingRoomOutput) QueueAll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolPtrOutput { return v.QueueAll }).(pulumi.BoolPtrOutput)
+}
+
+// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+func (o WaitingRoomOutput) QueueingMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.QueueingMethod }).(pulumi.StringPtrOutput)
 }
 
 // Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.

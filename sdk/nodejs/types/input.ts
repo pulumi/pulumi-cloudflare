@@ -680,12 +680,12 @@ export interface ListItemValue {
 }
 
 export interface ListItemValueRedirect {
-    includeSubdomains?: pulumi.Input<boolean>;
-    preservePathSuffix?: pulumi.Input<boolean>;
-    preserveQueryString?: pulumi.Input<boolean>;
+    includeSubdomains?: pulumi.Input<string>;
+    preservePathSuffix?: pulumi.Input<string>;
+    preserveQueryString?: pulumi.Input<string>;
     sourceUrl: pulumi.Input<string>;
     statusCode?: pulumi.Input<number>;
-    subpathMatching?: pulumi.Input<boolean>;
+    subpathMatching?: pulumi.Input<string>;
     targetUrl: pulumi.Input<string>;
 }
 
@@ -1357,6 +1357,7 @@ export interface RulesetRuleActionParameters {
     cacheKey?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKey>;
     cookieFields?: pulumi.Input<pulumi.Input<string>[]>;
     edgeTtl?: pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtl>;
+    fromList?: pulumi.Input<inputs.RulesetRuleActionParametersFromList>;
     headers?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersHeader>[]>;
     hostHeader?: pulumi.Input<string>;
     id?: pulumi.Input<string>;
@@ -1440,6 +1441,11 @@ export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
 export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
     from?: pulumi.Input<number>;
     to?: pulumi.Input<number>;
+}
+
+export interface RulesetRuleActionParametersFromList {
+    key: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersHeader {
@@ -1799,6 +1805,21 @@ export interface WorkerScriptSecretTextBinding {
     text: pulumi.Input<string>;
 }
 
+export interface WorkerScriptServiceBinding {
+    /**
+     * The name of the Worker environment to bind to.
+     */
+    environment?: pulumi.Input<string>;
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Worker to bind to.
+     */
+    service: pulumi.Input<string>;
+}
+
 export interface WorkerScriptWebassemblyBinding {
     /**
      * The base64 encoded wasm module you want to store.
@@ -1872,6 +1893,10 @@ export interface ZoneSettingsOverrideInitialSetting {
     opportunisticOnion?: pulumi.Input<string>;
     orangeToOrange?: pulumi.Input<string>;
     originErrorPagePassThru?: pulumi.Input<string>;
+    /**
+     * Allowed values: "1" (default on Enterprise), "2" (default)
+     */
+    originMaxHttpVersion?: pulumi.Input<string>;
     /**
      * Allowed values: "off" (default), "lossless", "lossy".
      */
@@ -2021,6 +2046,10 @@ export interface ZoneSettingsOverrideSettings {
     opportunisticOnion?: pulumi.Input<string>;
     orangeToOrange?: pulumi.Input<string>;
     originErrorPagePassThru?: pulumi.Input<string>;
+    /**
+     * Allowed values: "1" (default on Enterprise), "2" (default)
+     */
+    originMaxHttpVersion?: pulumi.Input<string>;
     /**
      * Allowed values: "off" (default), "lossless", "lossy".
      */

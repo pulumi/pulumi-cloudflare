@@ -20,6 +20,7 @@ class WorkerScriptArgs:
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]] = None,
                  plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlainTextBindingArgs']]]] = None,
                  secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptSecretTextBindingArgs']]]] = None,
+                 service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptServiceBindingArgs']]]] = None,
                  webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptWebassemblyBindingArgs']]]] = None):
         """
         The set of arguments for constructing a WorkerScript resource.
@@ -34,6 +35,8 @@ class WorkerScriptArgs:
             pulumi.set(__self__, "plain_text_bindings", plain_text_bindings)
         if secret_text_bindings is not None:
             pulumi.set(__self__, "secret_text_bindings", secret_text_bindings)
+        if service_bindings is not None:
+            pulumi.set(__self__, "service_bindings", service_bindings)
         if webassembly_bindings is not None:
             pulumi.set(__self__, "webassembly_bindings", webassembly_bindings)
 
@@ -89,6 +92,15 @@ class WorkerScriptArgs:
         pulumi.set(self, "secret_text_bindings", value)
 
     @property
+    @pulumi.getter(name="serviceBindings")
+    def service_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptServiceBindingArgs']]]]:
+        return pulumi.get(self, "service_bindings")
+
+    @service_bindings.setter
+    def service_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptServiceBindingArgs']]]]):
+        pulumi.set(self, "service_bindings", value)
+
+    @property
     @pulumi.getter(name="webassemblyBindings")
     def webassembly_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptWebassemblyBindingArgs']]]]:
         return pulumi.get(self, "webassembly_bindings")
@@ -106,6 +118,7 @@ class _WorkerScriptState:
                  name: Optional[pulumi.Input[str]] = None,
                  plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlainTextBindingArgs']]]] = None,
                  secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptSecretTextBindingArgs']]]] = None,
+                 service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptServiceBindingArgs']]]] = None,
                  webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptWebassemblyBindingArgs']]]] = None):
         """
         Input properties used for looking up and filtering WorkerScript resources.
@@ -122,6 +135,8 @@ class _WorkerScriptState:
             pulumi.set(__self__, "plain_text_bindings", plain_text_bindings)
         if secret_text_bindings is not None:
             pulumi.set(__self__, "secret_text_bindings", secret_text_bindings)
+        if service_bindings is not None:
+            pulumi.set(__self__, "service_bindings", service_bindings)
         if webassembly_bindings is not None:
             pulumi.set(__self__, "webassembly_bindings", webassembly_bindings)
 
@@ -177,6 +192,15 @@ class _WorkerScriptState:
         pulumi.set(self, "secret_text_bindings", value)
 
     @property
+    @pulumi.getter(name="serviceBindings")
+    def service_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptServiceBindingArgs']]]]:
+        return pulumi.get(self, "service_bindings")
+
+    @service_bindings.setter
+    def service_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptServiceBindingArgs']]]]):
+        pulumi.set(self, "service_bindings", value)
+
+    @property
     @pulumi.getter(name="webassemblyBindings")
     def webassembly_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptWebassemblyBindingArgs']]]]:
         return pulumi.get(self, "webassembly_bindings")
@@ -196,6 +220,7 @@ class WorkerScript(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptPlainTextBindingArgs']]]]] = None,
                  secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptSecretTextBindingArgs']]]]] = None,
+                 service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptServiceBindingArgs']]]]] = None,
                  webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptWebassemblyBindingArgs']]]]] = None,
                  __props__=None):
         """
@@ -228,6 +253,11 @@ class WorkerScript(pulumi.CustomResource):
             webassembly_bindings=[cloudflare.WorkerScriptWebassemblyBindingArgs(
                 name="MY_EXAMPLE_WASM",
                 module=(lambda path: base64.b64encode(open(path).read().encode()).decode())("example.wasm"),
+            )],
+            service_bindings=[cloudflare.WorkerScriptServiceBindingArgs(
+                name="MY_SERVICE_BINDING",
+                service="MY_SERVICE",
+                environment="production",
             )])
         ```
 
@@ -282,6 +312,11 @@ class WorkerScript(pulumi.CustomResource):
             webassembly_bindings=[cloudflare.WorkerScriptWebassemblyBindingArgs(
                 name="MY_EXAMPLE_WASM",
                 module=(lambda path: base64.b64encode(open(path).read().encode()).decode())("example.wasm"),
+            )],
+            service_bindings=[cloudflare.WorkerScriptServiceBindingArgs(
+                name="MY_SERVICE_BINDING",
+                service="MY_SERVICE",
+                environment="production",
             )])
         ```
 
@@ -315,6 +350,7 @@ class WorkerScript(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptPlainTextBindingArgs']]]]] = None,
                  secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptSecretTextBindingArgs']]]]] = None,
+                 service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptServiceBindingArgs']]]]] = None,
                  webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptWebassemblyBindingArgs']]]]] = None,
                  __props__=None):
         if opts is None:
@@ -337,6 +373,7 @@ class WorkerScript(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["plain_text_bindings"] = plain_text_bindings
             __props__.__dict__["secret_text_bindings"] = secret_text_bindings
+            __props__.__dict__["service_bindings"] = service_bindings
             __props__.__dict__["webassembly_bindings"] = webassembly_bindings
         super(WorkerScript, __self__).__init__(
             'cloudflare:index/workerScript:WorkerScript',
@@ -353,6 +390,7 @@ class WorkerScript(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptPlainTextBindingArgs']]]]] = None,
             secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptSecretTextBindingArgs']]]]] = None,
+            service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptServiceBindingArgs']]]]] = None,
             webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptWebassemblyBindingArgs']]]]] = None) -> 'WorkerScript':
         """
         Get an existing WorkerScript resource's state with the given name, id, and optional extra
@@ -373,6 +411,7 @@ class WorkerScript(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["plain_text_bindings"] = plain_text_bindings
         __props__.__dict__["secret_text_bindings"] = secret_text_bindings
+        __props__.__dict__["service_bindings"] = service_bindings
         __props__.__dict__["webassembly_bindings"] = webassembly_bindings
         return WorkerScript(resource_name, opts=opts, __props__=__props__)
 
@@ -406,6 +445,11 @@ class WorkerScript(pulumi.CustomResource):
     @pulumi.getter(name="secretTextBindings")
     def secret_text_bindings(self) -> pulumi.Output[Optional[Sequence['outputs.WorkerScriptSecretTextBinding']]]:
         return pulumi.get(self, "secret_text_bindings")
+
+    @property
+    @pulumi.getter(name="serviceBindings")
+    def service_bindings(self) -> pulumi.Output[Optional[Sequence['outputs.WorkerScriptServiceBinding']]]:
+        return pulumi.get(self, "service_bindings")
 
     @property
     @pulumi.getter(name="webassemblyBindings")

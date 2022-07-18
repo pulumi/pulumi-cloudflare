@@ -25,6 +25,7 @@ class WaitingRoomArgs:
                  json_response_enabled: Optional[pulumi.Input[bool]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  queue_all: Optional[pulumi.Input[bool]] = None,
+                 queueing_method: Optional[pulumi.Input[str]] = None,
                  session_duration: Optional[pulumi.Input[int]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None):
         """
@@ -42,6 +43,7 @@ class WaitingRoomArgs:
         :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
         :param pulumi.Input[str] path: The path within the host to enable the waiting room on.
         :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
+        :param pulumi.Input[str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
         :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
         :param pulumi.Input[bool] suspended: Suspends the waiting room.
         """
@@ -64,6 +66,8 @@ class WaitingRoomArgs:
             pulumi.set(__self__, "path", path)
         if queue_all is not None:
             pulumi.set(__self__, "queue_all", queue_all)
+        if queueing_method is not None:
+            pulumi.set(__self__, "queueing_method", queueing_method)
         if session_duration is not None:
             pulumi.set(__self__, "session_duration", session_duration)
         if suspended is not None:
@@ -215,6 +219,18 @@ class WaitingRoomArgs:
         pulumi.set(self, "queue_all", value)
 
     @property
+    @pulumi.getter(name="queueingMethod")
+    def queueing_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+        """
+        return pulumi.get(self, "queueing_method")
+
+    @queueing_method.setter
+    def queueing_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "queueing_method", value)
+
+    @property
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[int]]:
         """
@@ -252,6 +268,7 @@ class _WaitingRoomState:
                  new_users_per_minute: Optional[pulumi.Input[int]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  queue_all: Optional[pulumi.Input[bool]] = None,
+                 queueing_method: Optional[pulumi.Input[str]] = None,
                  session_duration: Optional[pulumi.Input[int]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  total_active_users: Optional[pulumi.Input[int]] = None,
@@ -269,6 +286,7 @@ class _WaitingRoomState:
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
         :param pulumi.Input[str] path: The path within the host to enable the waiting room on.
         :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
+        :param pulumi.Input[str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
         :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
         :param pulumi.Input[bool] suspended: Suspends the waiting room.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
@@ -294,6 +312,8 @@ class _WaitingRoomState:
             pulumi.set(__self__, "path", path)
         if queue_all is not None:
             pulumi.set(__self__, "queue_all", queue_all)
+        if queueing_method is not None:
+            pulumi.set(__self__, "queueing_method", queueing_method)
         if session_duration is not None:
             pulumi.set(__self__, "session_duration", session_duration)
         if suspended is not None:
@@ -425,6 +445,18 @@ class _WaitingRoomState:
         pulumi.set(self, "queue_all", value)
 
     @property
+    @pulumi.getter(name="queueingMethod")
+    def queueing_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+        """
+        return pulumi.get(self, "queueing_method")
+
+    @queueing_method.setter
+    def queueing_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "queueing_method", value)
+
+    @property
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[int]]:
         """
@@ -488,6 +520,7 @@ class WaitingRoom(pulumi.CustomResource):
                  new_users_per_minute: Optional[pulumi.Input[int]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  queue_all: Optional[pulumi.Input[bool]] = None,
+                 queueing_method: Optional[pulumi.Input[str]] = None,
                  session_duration: Optional[pulumi.Input[int]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  total_active_users: Optional[pulumi.Input[int]] = None,
@@ -533,6 +566,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
         :param pulumi.Input[str] path: The path within the host to enable the waiting room on.
         :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
+        :param pulumi.Input[str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
         :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
         :param pulumi.Input[bool] suspended: Suspends the waiting room.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
@@ -596,6 +630,7 @@ class WaitingRoom(pulumi.CustomResource):
                  new_users_per_minute: Optional[pulumi.Input[int]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  queue_all: Optional[pulumi.Input[bool]] = None,
+                 queueing_method: Optional[pulumi.Input[str]] = None,
                  session_duration: Optional[pulumi.Input[int]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  total_active_users: Optional[pulumi.Input[int]] = None,
@@ -628,6 +663,7 @@ class WaitingRoom(pulumi.CustomResource):
             __props__.__dict__["new_users_per_minute"] = new_users_per_minute
             __props__.__dict__["path"] = path
             __props__.__dict__["queue_all"] = queue_all
+            __props__.__dict__["queueing_method"] = queueing_method
             __props__.__dict__["session_duration"] = session_duration
             __props__.__dict__["suspended"] = suspended
             if total_active_users is None and not opts.urn:
@@ -656,6 +692,7 @@ class WaitingRoom(pulumi.CustomResource):
             new_users_per_minute: Optional[pulumi.Input[int]] = None,
             path: Optional[pulumi.Input[str]] = None,
             queue_all: Optional[pulumi.Input[bool]] = None,
+            queueing_method: Optional[pulumi.Input[str]] = None,
             session_duration: Optional[pulumi.Input[int]] = None,
             suspended: Optional[pulumi.Input[bool]] = None,
             total_active_users: Optional[pulumi.Input[int]] = None,
@@ -678,6 +715,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
         :param pulumi.Input[str] path: The path within the host to enable the waiting room on.
         :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
+        :param pulumi.Input[str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
         :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
         :param pulumi.Input[bool] suspended: Suspends the waiting room.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
@@ -697,6 +735,7 @@ class WaitingRoom(pulumi.CustomResource):
         __props__.__dict__["new_users_per_minute"] = new_users_per_minute
         __props__.__dict__["path"] = path
         __props__.__dict__["queue_all"] = queue_all
+        __props__.__dict__["queueing_method"] = queueing_method
         __props__.__dict__["session_duration"] = session_duration
         __props__.__dict__["suspended"] = suspended
         __props__.__dict__["total_active_users"] = total_active_users
@@ -783,6 +822,14 @@ class WaitingRoom(pulumi.CustomResource):
         If queue_all is true, then all traffic will be sent to the waiting room.
         """
         return pulumi.get(self, "queue_all")
+
+    @property
+    @pulumi.getter(name="queueingMethod")
+    def queueing_method(self) -> pulumi.Output[Optional[str]]:
+        """
+        The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+        """
+        return pulumi.get(self, "queueing_method")
 
     @property
     @pulumi.getter(name="sessionDuration")

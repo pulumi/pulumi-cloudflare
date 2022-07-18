@@ -78,7 +78,9 @@ namespace Pulumi.Cloudflare
 
         private static readonly __Value<string?> _apiKey = new __Value<string?>(() => __config.Get("apiKey"));
         /// <summary>
-        /// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
+        /// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
+        /// keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
+        /// should be used instead.
         /// </summary>
         public static string? ApiKey
         {

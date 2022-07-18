@@ -56,7 +56,7 @@ namespace Pulumi.Cloudflare
     /// # Use account ID, network CIDR and virtual network ID.
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute cloudflare_tunnel_route &lt;account_id/&lt;network_cidr&gt;/&lt;virtual_network_id&gt;
+    ///  $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example &lt;account_id/&lt;network_cidr&gt;/&lt;virtual_network_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/tunnelRoute:TunnelRoute")]
