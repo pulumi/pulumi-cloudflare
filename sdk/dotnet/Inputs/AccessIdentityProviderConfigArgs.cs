@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class AccessIdentityProviderConfigArgs : Pulumi.ResourceArgs
+    public sealed class AccessIdentityProviderConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("apiToken")]
         public Input<string>? ApiToken { get; set; }
@@ -83,5 +83,6 @@ namespace Pulumi.Cloudflare.Inputs
         public AccessIdentityProviderConfigArgs()
         {
         }
+        public static new AccessIdentityProviderConfigArgs Empty => new AccessIdentityProviderConfigArgs();
     }
 }

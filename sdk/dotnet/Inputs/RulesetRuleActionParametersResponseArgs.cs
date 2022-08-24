@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RulesetRuleActionParametersResponseArgs : Pulumi.ResourceArgs
+    public sealed class RulesetRuleActionParametersResponseArgs : global::Pulumi.ResourceArgs
     {
         [Input("content")]
         public Input<string>? Content { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RulesetRuleActionParametersResponseArgs()
         {
         }
+        public static new RulesetRuleActionParametersResponseArgs Empty => new RulesetRuleActionParametersResponseArgs();
     }
 }

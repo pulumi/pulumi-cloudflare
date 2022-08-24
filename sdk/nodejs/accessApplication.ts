@@ -38,7 +38,7 @@ import * as utilities from "./utilities";
  *     name: "staging application",
  *     sessionDuration: "24h",
  *     type: "self_hosted",
- *     zoneId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  *
@@ -77,7 +77,7 @@ export class AccessApplication extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -85,7 +85,7 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly allowedIdps!: pulumi.Output<string[] | undefined>;
     /**
-     * Option to show/hide applications in App Launcher.
+     * Option to show/hide applications in App Launcher. Defaults to `true`.
      */
     public readonly appLauncherVisible!: pulumi.Output<boolean | undefined>;
     /**
@@ -93,7 +93,7 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public /*out*/ readonly aud!: pulumi.Output<string>;
     /**
-     * Option to skip identity provider selection if only one is configured in `allowed_idps`.
+     * Option to skip identity provider selection if only one is configured in `allowedIdps`. Defaults to `false`.
      */
     public readonly autoRedirectToIdentity!: pulumi.Output<boolean | undefined>;
     /**
@@ -113,8 +113,7 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly domain!: pulumi.Output<string>;
     /**
-     * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an
-     * additional "binding" cookie on requests.
+     * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
      */
     public readonly enableBindingCookie!: pulumi.Output<boolean | undefined>;
     /**
@@ -130,27 +129,31 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`
+     * SaaS configuration for the Access Application.
+     */
+    public readonly saasApp!: pulumi.Output<outputs.AccessApplicationSaasApp | undefined>;
+    /**
+     * Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
      */
     public readonly sameSiteCookieAttribute!: pulumi.Output<string | undefined>;
     /**
-     * Option to return a 401 status code in service authentication rules on failed requests.
+     * Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
      */
     public readonly serviceAuth401Redirect!: pulumi.Output<boolean | undefined>;
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`
+     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
      */
     public readonly sessionDuration!: pulumi.Output<string | undefined>;
     /**
-     * Option to skip the authorization interstitial when using the CLI.
+     * Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
      */
     public readonly skipInterstitial!: pulumi.Output<boolean | undefined>;
     /**
-     * The application type. Available values: `self_hosted`, `ssh`, `vnc`, `file`
+     * The application type. Available values: `selfHosted`, `saas`, `ssh`, `vnc`, `file`. Defaults to `selfHosted`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -180,6 +183,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["httpOnlyCookieAttribute"] = state ? state.httpOnlyCookieAttribute : undefined;
             resourceInputs["logoUrl"] = state ? state.logoUrl : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["saasApp"] = state ? state.saasApp : undefined;
             resourceInputs["sameSiteCookieAttribute"] = state ? state.sameSiteCookieAttribute : undefined;
             resourceInputs["serviceAuth401Redirect"] = state ? state.serviceAuth401Redirect : undefined;
             resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
@@ -188,9 +192,6 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessApplicationArgs | undefined;
-            if ((!args || args.domain === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'domain'");
-            }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -206,6 +207,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["httpOnlyCookieAttribute"] = args ? args.httpOnlyCookieAttribute : undefined;
             resourceInputs["logoUrl"] = args ? args.logoUrl : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["saasApp"] = args ? args.saasApp : undefined;
             resourceInputs["sameSiteCookieAttribute"] = args ? args.sameSiteCookieAttribute : undefined;
             resourceInputs["serviceAuth401Redirect"] = args ? args.serviceAuth401Redirect : undefined;
             resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
@@ -224,7 +226,7 @@ export class AccessApplication extends pulumi.CustomResource {
  */
 export interface AccessApplicationState {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -232,7 +234,7 @@ export interface AccessApplicationState {
      */
     allowedIdps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Option to show/hide applications in App Launcher.
+     * Option to show/hide applications in App Launcher. Defaults to `true`.
      */
     appLauncherVisible?: pulumi.Input<boolean>;
     /**
@@ -240,7 +242,7 @@ export interface AccessApplicationState {
      */
     aud?: pulumi.Input<string>;
     /**
-     * Option to skip identity provider selection if only one is configured in `allowed_idps`.
+     * Option to skip identity provider selection if only one is configured in `allowedIdps`. Defaults to `false`.
      */
     autoRedirectToIdentity?: pulumi.Input<boolean>;
     /**
@@ -260,8 +262,7 @@ export interface AccessApplicationState {
      */
     domain?: pulumi.Input<string>;
     /**
-     * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an
-     * additional "binding" cookie on requests.
+     * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
      */
     enableBindingCookie?: pulumi.Input<boolean>;
     /**
@@ -277,27 +278,31 @@ export interface AccessApplicationState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`
+     * SaaS configuration for the Access Application.
+     */
+    saasApp?: pulumi.Input<inputs.AccessApplicationSaasApp>;
+    /**
+     * Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
      */
     sameSiteCookieAttribute?: pulumi.Input<string>;
     /**
-     * Option to return a 401 status code in service authentication rules on failed requests.
+     * Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
      */
     serviceAuth401Redirect?: pulumi.Input<boolean>;
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`
+     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
      */
     sessionDuration?: pulumi.Input<string>;
     /**
-     * Option to skip the authorization interstitial when using the CLI.
+     * Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
      */
     skipInterstitial?: pulumi.Input<boolean>;
     /**
-     * The application type. Available values: `self_hosted`, `ssh`, `vnc`, `file`
+     * The application type. Available values: `selfHosted`, `saas`, `ssh`, `vnc`, `file`. Defaults to `selfHosted`.
      */
     type?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -307,7 +312,7 @@ export interface AccessApplicationState {
  */
 export interface AccessApplicationArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -315,11 +320,11 @@ export interface AccessApplicationArgs {
      */
     allowedIdps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Option to show/hide applications in App Launcher.
+     * Option to show/hide applications in App Launcher. Defaults to `true`.
      */
     appLauncherVisible?: pulumi.Input<boolean>;
     /**
-     * Option to skip identity provider selection if only one is configured in `allowed_idps`.
+     * Option to skip identity provider selection if only one is configured in `allowedIdps`. Defaults to `false`.
      */
     autoRedirectToIdentity?: pulumi.Input<boolean>;
     /**
@@ -337,10 +342,9 @@ export interface AccessApplicationArgs {
     /**
      * The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
      */
-    domain: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
-     * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an
-     * additional "binding" cookie on requests.
+     * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
      */
     enableBindingCookie?: pulumi.Input<boolean>;
     /**
@@ -356,27 +360,31 @@ export interface AccessApplicationArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`
+     * SaaS configuration for the Access Application.
+     */
+    saasApp?: pulumi.Input<inputs.AccessApplicationSaasApp>;
+    /**
+     * Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
      */
     sameSiteCookieAttribute?: pulumi.Input<string>;
     /**
-     * Option to return a 401 status code in service authentication rules on failed requests.
+     * Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
      */
     serviceAuth401Redirect?: pulumi.Input<boolean>;
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`
+     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
      */
     sessionDuration?: pulumi.Input<string>;
     /**
-     * Option to skip the authorization interstitial when using the CLI.
+     * Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
      */
     skipInterstitial?: pulumi.Input<boolean>;
     /**
-     * The application type. Available values: `self_hosted`, `ssh`, `vnc`, `file`
+     * The application type. Available values: `selfHosted`, `saas`, `ssh`, `vnc`, `file`. Defaults to `selfHosted`.
      */
     type?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
 }

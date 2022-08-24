@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RulesetRuleActionParametersMatchedDataGetArgs : Pulumi.ResourceArgs
+    public sealed class RulesetRuleActionParametersMatchedDataGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("publicKey")]
         public Input<string>? PublicKey { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RulesetRuleActionParametersMatchedDataGetArgs()
         {
         }
+        public static new RulesetRuleActionParametersMatchedDataGetArgs Empty => new RulesetRuleActionParametersMatchedDataGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RulesetRuleActionParametersOverridesGetArgs : Pulumi.ResourceArgs
+    public sealed class RulesetRuleActionParametersOverridesGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -28,6 +28,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("rules")]
         private InputList<Inputs.RulesetRuleActionParametersOverridesRuleGetArgs>? _rules;
+
+        /// <summary>
+        /// List of rules to apply to the ruleset.
+        /// </summary>
         public InputList<Inputs.RulesetRuleActionParametersOverridesRuleGetArgs> Rules
         {
             get => _rules ?? (_rules = new InputList<Inputs.RulesetRuleActionParametersOverridesRuleGetArgs>());
@@ -40,5 +44,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RulesetRuleActionParametersOverridesGetArgs()
         {
         }
+        public static new RulesetRuleActionParametersOverridesGetArgs Empty => new RulesetRuleActionParametersOverridesGetArgs();
     }
 }

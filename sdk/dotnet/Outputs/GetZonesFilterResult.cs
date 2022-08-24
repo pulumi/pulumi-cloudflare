@@ -13,10 +13,19 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetZonesFilterResult
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         public readonly string? AccountId;
+        /// <summary>
+        /// Defaults to `exact`.
+        /// </summary>
         public readonly string? LookupType;
         public readonly string? Match;
         public readonly string? Name;
+        /// <summary>
+        /// Defaults to `false`.
+        /// </summary>
         public readonly bool? Paused;
         public readonly string? Status;
 

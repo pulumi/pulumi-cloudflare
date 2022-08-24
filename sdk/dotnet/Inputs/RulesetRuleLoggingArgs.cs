@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RulesetRuleLoggingArgs : Pulumi.ResourceArgs
+    public sealed class RulesetRuleLoggingArgs : global::Pulumi.ResourceArgs
     {
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RulesetRuleLoggingArgs()
         {
         }
+        public static new RulesetRuleLoggingArgs Empty => new RulesetRuleLoggingArgs();
     }
 }

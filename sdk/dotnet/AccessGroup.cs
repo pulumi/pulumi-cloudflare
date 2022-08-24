@@ -10,68 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Access Group resource. Access Groups are used in conjunction with Access Policies to restrict access to a particular resource based on group membership.
+    /// Provides a Cloudflare Access Group resource. Access Groups are used
+    /// in conjunction with Access Policies to restrict access to a
+    /// particular resource based on group membership.
     /// 
     /// &gt; It's required that an `account_id` or `zone_id` is provided and in
     /// most cases using either is fine. However, if you're using a scoped
     /// access token, you must provide the argument that matches the token's
     /// scope. For example, an access token that is scoped to the "example.com"
     /// zone needs to use the `zone_id` argument.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Allowing access to `test@example.com` email address only
-    ///         var testGroupAccessGroup = new Cloudflare.AccessGroup("testGroupAccessGroup", new Cloudflare.AccessGroupArgs
-    ///         {
-    ///             AccountId = "975ecf5a45e3bcb680dba0722a420ad9",
-    ///             Name = "staging group",
-    ///             Includes = 
-    ///             {
-    ///                 new Cloudflare.Inputs.AccessGroupIncludeArgs
-    ///                 {
-    ///                     Emails = 
-    ///                     {
-    ///                         "test@example.com",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///         // Allowing `test@example.com` to access but only when coming from a
-    ///         // specific IP.
-    ///         var testGroupIndex_accessGroupAccessGroup = new Cloudflare.AccessGroup("testGroupIndex/accessGroupAccessGroup", new Cloudflare.AccessGroupArgs
-    ///         {
-    ///             AccountId = "975ecf5a45e3bcb680dba0722a420ad9",
-    ///             Name = "staging group",
-    ///             Includes = 
-    ///             {
-    ///                 new Cloudflare.Inputs.AccessGroupIncludeArgs
-    ///                 {
-    ///                     Emails = 
-    ///                     {
-    ///                         "test@example.com",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Requires = 
-    ///             {
-    ///                 { "ips", 
-    ///                 {
-    ///                     @var.Office_ip,
-    ///                 } },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// 
     /// ## Import
     /// 
@@ -80,10 +27,10 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accessGroup:AccessGroup")]
-    public partial class AccessGroup : Pulumi.CustomResource
+    public partial class AccessGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
@@ -101,7 +48,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.AccessGroupRequire>> Requires { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -150,10 +97,10 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class AccessGroupArgs : Pulumi.ResourceArgs
+    public sealed class AccessGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -186,7 +133,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -194,12 +141,13 @@ namespace Pulumi.Cloudflare
         public AccessGroupArgs()
         {
         }
+        public static new AccessGroupArgs Empty => new AccessGroupArgs();
     }
 
-    public sealed class AccessGroupState : Pulumi.ResourceArgs
+    public sealed class AccessGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -232,7 +180,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -240,5 +188,6 @@ namespace Pulumi.Cloudflare
         public AccessGroupState()
         {
         }
+        public static new AccessGroupState Empty => new AccessGroupState();
     }
 }

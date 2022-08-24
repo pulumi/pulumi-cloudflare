@@ -15,42 +15,41 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Add a record to the domain
+    ///     var foobar = new Cloudflare.Record("foobar", new()
     ///     {
-    ///         // Add a record to the domain
-    ///         var foobar = new Cloudflare.Record("foobar", new Cloudflare.RecordArgs
-    ///         {
-    ///             ZoneId = @var.Cloudflare_zone_id,
-    ///             Name = "terraform",
-    ///             Value = "192.168.0.11",
-    ///             Type = "A",
-    ///             Ttl = 3600,
-    ///         });
-    ///         // Add a record requiring a data map
-    ///         var _sipTls = new Cloudflare.Record("_sipTls", new Cloudflare.RecordArgs
-    ///         {
-    ///             ZoneId = @var.Cloudflare_zone_id,
-    ///             Name = "_sip._tls",
-    ///             Type = "SRV",
-    ///             Data = new Cloudflare.Inputs.RecordDataArgs
-    ///             {
-    ///                 Service = "_sip",
-    ///                 Proto = "_tls",
-    ///                 Name = "terraform-srv",
-    ///                 Priority = 0,
-    ///                 Weight = 0,
-    ///                 Port = 443,
-    ///                 Target = "example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         Name = "terraform",
+    ///         Value = "192.168.0.11",
+    ///         Type = "A",
+    ///         Ttl = 3600,
+    ///     });
     /// 
-    /// }
+    ///     // Add a record requiring a data map
+    ///     var _sipTls = new Cloudflare.Record("_sipTls", new()
+    ///     {
+    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         Name = "_sip._tls",
+    ///         Type = "SRV",
+    ///         Data = new Cloudflare.Inputs.RecordDataArgs
+    ///         {
+    ///             Service = "_sip",
+    ///             Proto = "_tls",
+    ///             Name = "terraform-srv",
+    ///             Priority = 0,
+    ///             Weight = 0,
+    ///             Port = 443,
+    ///             Target = "example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -64,7 +63,7 @@ namespace Pulumi.Cloudflare
     ///  where- `ae36f999674d196762efcc5abb06b345` - the zone ID - `d41d8cd98f00b204e9800998ecf8427e` - record ID as returned by [API](https://api.cloudflare.com/#dns-records-for-a-zone-list-dns-records)
     /// </summary>
     [CloudflareResourceType("cloudflare:index/record:Record")]
-    public partial class Record : Pulumi.CustomResource
+    public partial class Record : global::Pulumi.CustomResource
     {
         [Output("allowOverwrite")]
         public Output<bool?> AllowOverwrite { get; private set; } = null!;
@@ -191,7 +190,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class RecordArgs : Pulumi.ResourceArgs
+    public sealed class RecordArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowOverwrite")]
         public Input<bool>? AllowOverwrite { get; set; }
@@ -247,9 +246,10 @@ namespace Pulumi.Cloudflare
         public RecordArgs()
         {
         }
+        public static new RecordArgs Empty => new RecordArgs();
     }
 
-    public sealed class RecordState : Pulumi.ResourceArgs
+    public sealed class RecordState : global::Pulumi.ResourceArgs
     {
         [Input("allowOverwrite")]
         public Input<bool>? AllowOverwrite { get; set; }
@@ -341,5 +341,6 @@ namespace Pulumi.Cloudflare
         public RecordState()
         {
         }
+        public static new RecordState Empty => new RecordState();
     }
 }

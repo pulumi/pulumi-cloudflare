@@ -15,25 +15,23 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleUser = new Cloudflare.AccountMember("exampleUser", new()
     ///     {
-    ///         var exampleUser = new Cloudflare.AccountMember("exampleUser", new Cloudflare.AccountMemberArgs
+    ///         EmailAddress = "user@example.com",
+    ///         RoleIds = new[]
     ///         {
-    ///             EmailAddress = "user@example.com",
-    ///             RoleIds = 
-    ///             {
-    ///                 "68b329da9893e34099c7d8ad5cb9c940",
-    ///                 "d784fa8b6d98d27699781bd9a7cf19f0",
-    ///             },
-    ///         });
-    ///     }
+    ///             "68b329da9893e34099c7d8ad5cb9c940",
+    ///             "d784fa8b6d98d27699781bd9a7cf19f0",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,11 +41,16 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accountMember:AccountMember")]
-    public partial class AccountMember : Pulumi.CustomResource
+    public partial class AccountMember : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
-        /// cannot be updated.
+        /// Account ID to create the account member in.
+        /// </summary>
+        [Output("accountId")]
+        public Output<string?> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
         /// </summary>
         [Output("emailAddress")]
         public Output<string> EmailAddress { get; private set; } = null!;
@@ -102,11 +105,16 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class AccountMemberArgs : Pulumi.ResourceArgs
+    public sealed class AccountMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
-        /// cannot be updated.
+        /// Account ID to create the account member in.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
         /// </summary>
         [Input("emailAddress", required: true)]
         public Input<string> EmailAddress { get; set; } = null!;
@@ -126,13 +134,19 @@ namespace Pulumi.Cloudflare
         public AccountMemberArgs()
         {
         }
+        public static new AccountMemberArgs Empty => new AccountMemberArgs();
     }
 
-    public sealed class AccountMemberState : Pulumi.ResourceArgs
+    public sealed class AccountMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
-        /// cannot be updated.
+        /// Account ID to create the account member in.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
         /// </summary>
         [Input("emailAddress")]
         public Input<string>? EmailAddress { get; set; }
@@ -152,5 +166,6 @@ namespace Pulumi.Cloudflare
         public AccountMemberState()
         {
         }
+        public static new AccountMemberState Empty => new AccountMemberState();
     }
 }

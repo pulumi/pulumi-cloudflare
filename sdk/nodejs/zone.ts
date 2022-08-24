@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Provides a Cloudflare Zone resource. Zone is the basic resource for
+ * working with Cloudflare and is roughly equivalent to a domain name
+ * that the user purchases.
+ *
+ * > If you are attempting to sign up a subdomain of a zone you must first have Subdomain Support entitlement for your account.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -12,19 +18,16 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.Zone("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     zone: "example.com",
  * });
  * ```
  *
  * ## Import
  *
- * Zone resource can be imported using a zone ID, e.g.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/zone:Zone example d41d8cd98f00b204e9800998ecf8427e
+ *  $ pulumi import cloudflare:index/zone:Zone example <zone_id>
  * ```
- *
- *  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
  */
 export class Zone extends pulumi.CustomResource {
     /**
@@ -55,7 +58,11 @@ export class Zone extends pulumi.CustomResource {
     }
 
     /**
-     * Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
+     * Account ID to manage the zone resource in.
+     */
+    public readonly accountId!: pulumi.Output<string | undefined>;
+    /**
+     * Wwhether to scan for DNS records on creation. Ignored after zone is created.
      */
     public readonly jumpStart!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly meta!: pulumi.Output<{[key: string]: boolean}>;
@@ -64,25 +71,23 @@ export class Zone extends pulumi.CustomResource {
      */
     public /*out*/ readonly nameServers!: pulumi.Output<string[]>;
     /**
-     * Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
+     * Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
      */
     public readonly paused!: pulumi.Output<boolean | undefined>;
     /**
-     * The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`, `partnersFree`, `partnersPro`, `partnersBusiness`, `partnersEnterprise`, `partnersWorkersSs`, `imageResizingEnterprise`.
+     * The name of the commercial plan to apply to the zone. Available values: `free`, `pro`, `business`, `enterprise`, `partnersFree`, `partnersPro`, `partnersBusiness`, `partnersEnterprise`.
      */
     public readonly plan!: pulumi.Output<string>;
     /**
-     * Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
+     * Status of the zone. Available values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
+     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
      * List of Vanity Nameservers (if set).
-     * - `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
-     * - `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
      */
     public /*out*/ readonly vanityNameServers!: pulumi.Output<string[]>;
     /**
@@ -107,6 +112,7 @@ export class Zone extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneState | undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["jumpStart"] = state ? state.jumpStart : undefined;
             resourceInputs["meta"] = state ? state.meta : undefined;
             resourceInputs["nameServers"] = state ? state.nameServers : undefined;
@@ -122,6 +128,7 @@ export class Zone extends pulumi.CustomResource {
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["jumpStart"] = args ? args.jumpStart : undefined;
             resourceInputs["paused"] = args ? args.paused : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
@@ -143,7 +150,11 @@ export class Zone extends pulumi.CustomResource {
  */
 export interface ZoneState {
     /**
-     * Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
+     * Account ID to manage the zone resource in.
+     */
+    accountId?: pulumi.Input<string>;
+    /**
+     * Wwhether to scan for DNS records on creation. Ignored after zone is created.
      */
     jumpStart?: pulumi.Input<boolean>;
     meta?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
@@ -152,25 +163,23 @@ export interface ZoneState {
      */
     nameServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
+     * Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
      */
     paused?: pulumi.Input<boolean>;
     /**
-     * The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`, `partnersFree`, `partnersPro`, `partnersBusiness`, `partnersEnterprise`, `partnersWorkersSs`, `imageResizingEnterprise`.
+     * The name of the commercial plan to apply to the zone. Available values: `free`, `pro`, `business`, `enterprise`, `partnersFree`, `partnersPro`, `partnersBusiness`, `partnersEnterprise`.
      */
     plan?: pulumi.Input<string>;
     /**
-     * Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
+     * Status of the zone. Available values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
      */
     status?: pulumi.Input<string>;
     /**
-     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
+     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
      */
     type?: pulumi.Input<string>;
     /**
      * List of Vanity Nameservers (if set).
-     * - `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
-     * - `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
      */
     vanityNameServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -188,19 +197,23 @@ export interface ZoneState {
  */
 export interface ZoneArgs {
     /**
-     * Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
+     * Account ID to manage the zone resource in.
+     */
+    accountId?: pulumi.Input<string>;
+    /**
+     * Wwhether to scan for DNS records on creation. Ignored after zone is created.
      */
     jumpStart?: pulumi.Input<boolean>;
     /**
-     * Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
+     * Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
      */
     paused?: pulumi.Input<boolean>;
     /**
-     * The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`, `partnersFree`, `partnersPro`, `partnersBusiness`, `partnersEnterprise`, `partnersWorkersSs`, `imageResizingEnterprise`.
+     * The name of the commercial plan to apply to the zone. Available values: `free`, `pro`, `business`, `enterprise`, `partnersFree`, `partnersPro`, `partnersBusiness`, `partnersEnterprise`.
      */
     plan?: pulumi.Input<string>;
     /**
-     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
+     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
      */
     type?: pulumi.Input<string>;
     /**

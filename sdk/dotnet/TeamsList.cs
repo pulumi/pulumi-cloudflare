@@ -15,29 +15,27 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var corporateDevices = new Cloudflare.TeamsList("corporateDevices", new()
     ///     {
-    ///         var corporateDevices = new Cloudflare.TeamsList("corporateDevices", new Cloudflare.TeamsListArgs
+    ///         AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         Description = "Serial numbers for all corporate devices.",
+    ///         Items = new[]
     ///         {
-    ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
-    ///             Description = "Serial numbers for all corporate devices.",
-    ///             Items = 
-    ///             {
-    ///                 "8GE8721REF",
-    ///                 "5RE8543EGG",
-    ///                 "1YE2880LNP",
-    ///             },
-    ///             Name = "Corporate devices",
-    ///             Type = "SERIAL",
-    ///         });
-    ///     }
+    ///             "8GE8721REF",
+    ///             "5RE8543EGG",
+    ///             "1YE2880LNP",
+    ///         },
+    ///         Name = "Corporate devices",
+    ///         Type = "SERIAL",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/teamsList:TeamsList")]
-    public partial class TeamsList : Pulumi.CustomResource
+    public partial class TeamsList : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account to which the teams list should be added.
@@ -125,7 +123,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class TeamsListArgs : Pulumi.ResourceArgs
+    public sealed class TeamsListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account to which the teams list should be added.
@@ -166,9 +164,10 @@ namespace Pulumi.Cloudflare
         public TeamsListArgs()
         {
         }
+        public static new TeamsListArgs Empty => new TeamsListArgs();
     }
 
-    public sealed class TeamsListState : Pulumi.ResourceArgs
+    public sealed class TeamsListState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account to which the teams list should be added.
@@ -209,5 +208,6 @@ namespace Pulumi.Cloudflare
         public TeamsListState()
         {
         }
+        public static new TeamsListState Empty => new TeamsListState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RateLimitActionGetArgs : Pulumi.ResourceArgs
+    public sealed class RateLimitActionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge', 'js_challenge' and 'managed_challenge'.
@@ -33,5 +33,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RateLimitActionGetArgs()
         {
         }
+        public static new RateLimitActionGetArgs Empty => new RateLimitActionGetArgs();
     }
 }

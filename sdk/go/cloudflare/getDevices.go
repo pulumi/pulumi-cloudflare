@@ -21,11 +21,13 @@ func GetDevices(ctx *pulumi.Context, args *GetDevicesArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getDevices.
 type GetDevicesArgs struct {
+	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getDevices.
 type GetDevicesResult struct {
+	// The account identifier to target for the resource.
 	AccountId string             `pulumi:"accountId"`
 	Devices   []GetDevicesDevice `pulumi:"devices"`
 	// The provider-assigned unique ID for this managed resource.
@@ -47,6 +49,7 @@ func GetDevicesOutput(ctx *pulumi.Context, args GetDevicesOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getDevices.
 type GetDevicesOutputArgs struct {
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 }
 
@@ -69,6 +72,7 @@ func (o GetDevicesResultOutput) ToGetDevicesResultOutputWithContext(ctx context.
 	return o
 }
 
+// The account identifier to target for the resource.
 func (o GetDevicesResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

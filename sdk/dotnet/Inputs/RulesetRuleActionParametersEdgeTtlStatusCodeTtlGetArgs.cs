@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RulesetRuleActionParametersEdgeTtlStatusCodeTtlGetArgs : Pulumi.ResourceArgs
+    public sealed class RulesetRuleActionParametersEdgeTtlStatusCodeTtlGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("statusCode")]
         public Input<int>? StatusCode { get; set; }
@@ -29,5 +29,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RulesetRuleActionParametersEdgeTtlStatusCodeTtlGetArgs()
         {
         }
+        public static new RulesetRuleActionParametersEdgeTtlStatusCodeTtlGetArgs Empty => new RulesetRuleActionParametersEdgeTtlStatusCodeTtlGetArgs();
     }
 }

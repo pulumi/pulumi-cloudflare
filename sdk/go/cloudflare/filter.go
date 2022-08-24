@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Filter expressions that can be referenced across multiple features, e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/) for more details and available fields and operators.
+// Filter expressions that can be referenced across multiple features,
+// e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/)
+// for more details and available fields and operators.
 //
 // ## Example Usage
 //
@@ -19,29 +21,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewFilter(ctx, "wordpress", &cloudflare.FilterArgs{
-// 			Description: pulumi.String("Wordpress break-in attempts that are outside of the office"),
-// 			Expression:  pulumi.String("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1"),
-// 			ZoneId:      pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewFilter(ctx, "wordpress", &cloudflare.FilterArgs{
+//				Description: pulumi.String("Wordpress break-in attempts that are outside of the office"),
+//				Expression:  pulumi.String("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1"),
+//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
 // ```sh
-//  $ pulumi import cloudflare:index/filter:Filter example <zone_id>/<filter_id>
+//
+//	$ pulumi import cloudflare:index/filter:Filter example <zone_id>/<filter_id>
+//
 // ```
 type Filter struct {
 	pulumi.CustomResourceState
@@ -175,7 +182,7 @@ func (i *Filter) ToFilterOutputWithContext(ctx context.Context) FilterOutput {
 // FilterArrayInput is an input type that accepts FilterArray and FilterArrayOutput values.
 // You can construct a concrete instance of `FilterArrayInput` via:
 //
-//          FilterArray{ FilterArgs{...} }
+//	FilterArray{ FilterArgs{...} }
 type FilterArrayInput interface {
 	pulumi.Input
 
@@ -200,7 +207,7 @@ func (i FilterArray) ToFilterArrayOutputWithContext(ctx context.Context) FilterA
 // FilterMapInput is an input type that accepts FilterMap and FilterMapOutput values.
 // You can construct a concrete instance of `FilterMapInput` via:
 //
-//          FilterMap{ "key": FilterArgs{...} }
+//	FilterMap{ "key": FilterArgs{...} }
 type FilterMapInput interface {
 	pulumi.Input
 

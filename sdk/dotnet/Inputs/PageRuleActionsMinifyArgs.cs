@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class PageRuleActionsMinifyArgs : Pulumi.ResourceArgs
+    public sealed class PageRuleActionsMinifyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether CSS should be minified. Valid values are `"on"` or `"off"`.
@@ -33,5 +33,6 @@ namespace Pulumi.Cloudflare.Inputs
         public PageRuleActionsMinifyArgs()
         {
         }
+        public static new PageRuleActionsMinifyArgs Empty => new PageRuleActionsMinifyArgs();
     }
 }

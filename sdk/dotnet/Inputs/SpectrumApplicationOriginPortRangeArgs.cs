@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class SpectrumApplicationOriginPortRangeArgs : Pulumi.ResourceArgs
+    public sealed class SpectrumApplicationOriginPortRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Upper bound of the origin port range, e.g. `2000`
@@ -27,5 +27,6 @@ namespace Pulumi.Cloudflare.Inputs
         public SpectrumApplicationOriginPortRangeArgs()
         {
         }
+        public static new SpectrumApplicationOriginPortRangeArgs Empty => new SpectrumApplicationOriginPortRangeArgs();
     }
 }

@@ -13,7 +13,13 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ManagedHeadersManagedRequestHeader
     {
+        /// <summary>
+        /// Whether the headers rule is active.
+        /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Unique headers rule identifier.
+        /// </summary>
         public readonly string Id;
 
         [OutputConstructor]

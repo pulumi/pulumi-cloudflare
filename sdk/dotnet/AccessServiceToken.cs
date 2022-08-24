@@ -10,28 +10,27 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Access Service Tokens are used for service-to-service communication when an application is behind Cloudflare Access.
+    /// Access Service Tokens are used for service-to-service communication
+    /// when an application is behind Cloudflare Access.
     /// 
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Generate a service token that will renew if terraform is ran within 30 days of expiration
+    ///     var myApp = new Cloudflare.AccessServiceToken("myApp", new()
     ///     {
-    ///         // Generate a service token that will renew if terraform is ran within 30 days of expiration
-    ///         var myApp = new Cloudflare.AccessServiceToken("myApp", new Cloudflare.AccessServiceTokenArgs
-    ///         {
-    ///             AccountId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///             MinDaysForRenewal = 30,
-    ///             Name = "CI/CD app renewed",
-    ///         });
-    ///     }
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         MinDaysForRenewal = 30,
+    ///         Name = "CI/CD app renewed",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,10 +42,10 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accessServiceToken:AccessServiceToken")]
-    public partial class AccessServiceToken : Pulumi.CustomResource
+    public partial class AccessServiceToken : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
@@ -64,7 +63,7 @@ namespace Pulumi.Cloudflare
         public Output<string> ClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// Date when the token expires
+        /// Date when the token expires.
         /// </summary>
         [Output("expiresAt")]
         public Output<string> ExpiresAt { get; private set; } = null!;
@@ -82,7 +81,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Output("zoneId")]
         public Output<string?> ZoneId { get; private set; } = null!;
@@ -131,10 +130,10 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class AccessServiceTokenArgs : Pulumi.ResourceArgs
+    public sealed class AccessServiceTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -152,7 +151,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -160,12 +159,13 @@ namespace Pulumi.Cloudflare
         public AccessServiceTokenArgs()
         {
         }
+        public static new AccessServiceTokenArgs Empty => new AccessServiceTokenArgs();
     }
 
-    public sealed class AccessServiceTokenState : Pulumi.ResourceArgs
+    public sealed class AccessServiceTokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -183,7 +183,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? ClientSecret { get; set; }
 
         /// <summary>
-        /// Date when the token expires
+        /// Date when the token expires.
         /// </summary>
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
@@ -201,7 +201,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -209,5 +209,6 @@ namespace Pulumi.Cloudflare
         public AccessServiceTokenState()
         {
         }
+        public static new AccessServiceTokenState Empty => new AccessServiceTokenState();
     }
 }

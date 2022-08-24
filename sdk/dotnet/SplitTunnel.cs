@@ -16,44 +16,43 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Excluding *.example.com from WARP routes
+    ///     var exampleSplitTunnelExclude = new Cloudflare.SplitTunnel("exampleSplitTunnelExclude", new()
     ///     {
-    ///         // Excluding *.example.com from WARP routes
-    ///         var exampleSplitTunnelExclude = new Cloudflare.SplitTunnel("exampleSplitTunnelExclude", new Cloudflare.SplitTunnelArgs
+    ///         AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         Mode = "exclude",
+    ///         Tunnels = new[]
     ///         {
-    ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
-    ///             Mode = "exclude",
-    ///             Tunnels = 
+    ///             new Cloudflare.Inputs.SplitTunnelTunnelArgs
     ///             {
-    ///                 new Cloudflare.Inputs.SplitTunnelTunnelArgs
-    ///                 {
-    ///                     Description = "example domain",
-    ///                     Host = "*.example.com",
-    ///                 },
+    ///                 Description = "example domain",
+    ///                 Host = "*.example.com",
     ///             },
-    ///         });
-    ///         // Including *.example.com in WARP routes
-    ///         var exampleSplitTunnelInclude = new Cloudflare.SplitTunnel("exampleSplitTunnelInclude", new Cloudflare.SplitTunnelArgs
-    ///         {
-    ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
-    ///             Mode = "include",
-    ///             Tunnels = 
-    ///             {
-    ///                 new Cloudflare.Inputs.SplitTunnelTunnelArgs
-    ///                 {
-    ///                     Description = "example domain",
-    ///                     Host = "*.example.com",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     // Including *.example.com in WARP routes
+    ///     var exampleSplitTunnelInclude = new Cloudflare.SplitTunnel("exampleSplitTunnelInclude", new()
+    ///     {
+    ///         AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         Mode = "include",
+    ///         Tunnels = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.SplitTunnelTunnelArgs
+    ///             {
+    ///                 Description = "example domain",
+    ///                 Host = "*.example.com",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -65,7 +64,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/splitTunnel:SplitTunnel")]
-    public partial class SplitTunnel : Pulumi.CustomResource
+    public partial class SplitTunnel : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account to which the device posture rule should be added.
@@ -129,7 +128,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class SplitTunnelArgs : Pulumi.ResourceArgs
+    public sealed class SplitTunnelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account to which the device posture rule should be added.
@@ -158,9 +157,10 @@ namespace Pulumi.Cloudflare
         public SplitTunnelArgs()
         {
         }
+        public static new SplitTunnelArgs Empty => new SplitTunnelArgs();
     }
 
-    public sealed class SplitTunnelState : Pulumi.ResourceArgs
+    public sealed class SplitTunnelState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account to which the device posture rule should be added.
@@ -189,5 +189,6 @@ namespace Pulumi.Cloudflare
         public SplitTunnelState()
         {
         }
+        public static new SplitTunnelState Empty => new SplitTunnelState();
     }
 }

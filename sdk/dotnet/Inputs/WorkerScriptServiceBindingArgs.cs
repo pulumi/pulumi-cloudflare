@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class WorkerScriptServiceBindingArgs : Pulumi.ResourceArgs
+    public sealed class WorkerScriptServiceBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Worker environment to bind to.
@@ -33,5 +33,6 @@ namespace Pulumi.Cloudflare.Inputs
         public WorkerScriptServiceBindingArgs()
         {
         }
+        public static new WorkerScriptServiceBindingArgs Empty => new WorkerScriptServiceBindingArgs();
     }
 }

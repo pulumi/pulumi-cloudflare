@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class TeamsAccountLoggingSettingsByRuleTypeL4GetArgs : Pulumi.ResourceArgs
+    public sealed class TeamsAccountLoggingSettingsByRuleTypeL4GetArgs : global::Pulumi.ResourceArgs
     {
         [Input("logAll", required: true)]
         public Input<bool> LogAll { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.Cloudflare.Inputs
         public TeamsAccountLoggingSettingsByRuleTypeL4GetArgs()
         {
         }
+        public static new TeamsAccountLoggingSettingsByRuleTypeL4GetArgs Empty => new TeamsAccountLoggingSettingsByRuleTypeL4GetArgs();
     }
 }

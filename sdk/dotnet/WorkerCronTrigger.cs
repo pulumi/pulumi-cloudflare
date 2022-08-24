@@ -18,31 +18,30 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleScript = new Cloudflare.WorkerScript("exampleScript", new()
     ///     {
-    ///         var exampleScript = new Cloudflare.WorkerScript("exampleScript", new Cloudflare.WorkerScriptArgs
-    ///         {
-    ///             Name = "example-script",
-    ///             Content = File.ReadAllText("path/to/my.js"),
-    ///         });
-    ///         var exampleTrigger = new Cloudflare.WorkerCronTrigger("exampleTrigger", new Cloudflare.WorkerCronTriggerArgs
-    ///         {
-    ///             ScriptName = exampleScript.Name,
-    ///             Schedules = 
-    ///             {
-    ///                 "*/5 * * * *",
-    ///                 "10 7 * * mon-fri",
-    ///             },
-    ///         });
-    ///     }
+    ///         Name = "example-script",
+    ///         Content = File.ReadAllText("path/to/my.js"),
+    ///     });
     /// 
-    /// }
+    ///     var exampleTrigger = new Cloudflare.WorkerCronTrigger("exampleTrigger", new()
+    ///     {
+    ///         ScriptName = exampleScript.Name,
+    ///         Schedules = new[]
+    ///         {
+    ///             "*/5 * * * *",
+    ///             "10 7 * * mon-fri",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +53,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workerCronTrigger:WorkerCronTrigger")]
-    public partial class WorkerCronTrigger : Pulumi.CustomResource
+    public partial class WorkerCronTrigger : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -118,7 +117,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class WorkerCronTriggerArgs : Pulumi.ResourceArgs
+    public sealed class WorkerCronTriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -147,9 +146,10 @@ namespace Pulumi.Cloudflare
         public WorkerCronTriggerArgs()
         {
         }
+        public static new WorkerCronTriggerArgs Empty => new WorkerCronTriggerArgs();
     }
 
-    public sealed class WorkerCronTriggerState : Pulumi.ResourceArgs
+    public sealed class WorkerCronTriggerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -178,5 +178,6 @@ namespace Pulumi.Cloudflare
         public WorkerCronTriggerState()
         {
         }
+        public static new WorkerCronTriggerState Empty => new WorkerCronTriggerState();
     }
 }

@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource, that manages Cloudflare tunnel routes for Zero Trust. Tunnel routes are used to direct IP traffic through Cloudflare Tunnels.
+ * Provides a resource, that manages Cloudflare tunnel routes for Zero
+ * Trust. Tunnel routes are used to direct IP traffic through
+ * Cloudflare Tunnels.
  *
  * ## Example Usage
  *
@@ -15,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * // Tunnel route
  * const exampleTunnelRoute = new cloudflare.TunnelRoute("exampleTunnelRoute", {
- *     accountId: "c4a7362d577a6c3019a474fd6f485821",
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  *     network: "192.0.2.24/32",
  *     comment: "New tunnel route for documentation",
@@ -23,12 +25,12 @@ import * as utilities from "./utilities";
  * });
  * // Tunnel with tunnel route
  * const tunnel = new cloudflare.ArgoTunnel("tunnel", {
- *     accountId: "c4a7362d577a6c3019a474fd6f485821",
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "my_tunnel",
  *     secret: "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
  * });
  * const exampleIndex_tunnelRouteTunnelRoute = new cloudflare.TunnelRoute("exampleIndex/tunnelRouteTunnelRoute", {
- *     accountId: "c4a7362d577a6c3019a474fd6f485821",
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     tunnelId: tunnel.id,
  *     network: "192.0.2.24/32",
  *     comment: "New tunnel route for documentation",
@@ -89,8 +91,7 @@ export class TunnelRoute extends pulumi.CustomResource {
      */
     public readonly tunnelId!: pulumi.Output<string>;
     /**
-     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if
-     * none is provided.
+     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
      */
     public readonly virtualNetworkId!: pulumi.Output<string | undefined>;
 
@@ -155,8 +156,7 @@ export interface TunnelRouteState {
      */
     tunnelId?: pulumi.Input<string>;
     /**
-     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if
-     * none is provided.
+     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
      */
     virtualNetworkId?: pulumi.Input<string>;
 }
@@ -182,8 +182,7 @@ export interface TunnelRouteArgs {
      */
     tunnelId: pulumi.Input<string>;
     /**
-     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if
-     * none is provided.
+     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
      */
     virtualNetworkId?: pulumi.Input<string>;
 }

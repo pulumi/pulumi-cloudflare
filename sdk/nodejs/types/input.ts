@@ -5,14 +5,53 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
 export interface AccessApplicationCorsHeader {
+    /**
+     * Value to determine whether all HTTP headers are exposed.
+     */
     allowAllHeaders?: pulumi.Input<boolean>;
+    /**
+     * Value to determine whether all methods are exposed.
+     */
     allowAllMethods?: pulumi.Input<boolean>;
+    /**
+     * Value to determine whether all origins are permitted to make CORS requests.
+     */
     allowAllOrigins?: pulumi.Input<boolean>;
+    /**
+     * Value to determine if credentials (cookies, authorization headers, or TLS client certificates) are included with requests.
+     */
     allowCredentials?: pulumi.Input<boolean>;
+    /**
+     * List of HTTP headers to expose via CORS.
+     */
     allowedHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of methods to expose via CORS.
+     */
     allowedMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of origins permitted to make CORS requests.
+     */
     allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The maximum time a preflight request will be cached.
+     */
     maxAge?: pulumi.Input<number>;
+}
+
+export interface AccessApplicationSaasApp {
+    /**
+     * The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
+     */
+    consumerServiceUrl: pulumi.Input<string>;
+    /**
+     * The format of the name identifier sent to the SaaS application. Defaults to `email`.
+     */
+    nameIdFormat?: pulumi.Input<string>;
+    /**
+     * A globally unique name for an identity or service provider.
+     */
+    spEntityId: pulumi.Input<string>;
 }
 
 export interface AccessGroupExclude {
@@ -39,6 +78,9 @@ export interface AccessGroupExclude {
 
 export interface AccessGroupExcludeAzure {
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -93,6 +135,9 @@ export interface AccessGroupInclude {
 
 export interface AccessGroupIncludeAzure {
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -147,6 +192,9 @@ export interface AccessGroupRequire {
 
 export interface AccessGroupRequireAzure {
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -202,7 +250,13 @@ export interface AccessIdentityProviderConfig {
 }
 
 export interface AccessPolicyApprovalGroup {
+    /**
+     * Number of approvals needed.
+     */
     approvalsNeeded: pulumi.Input<number>;
+    /**
+     * List of emails to request approval from.
+     */
     emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     emailListUuid?: pulumi.Input<string>;
 }
@@ -231,6 +285,9 @@ export interface AccessPolicyExclude {
 
 export interface AccessPolicyExcludeAzure {
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -241,6 +298,9 @@ export interface AccessPolicyExcludeExternalEvaluation {
 
 export interface AccessPolicyExcludeGithub {
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * Friendly name of the Access Policy.
+     */
     name?: pulumi.Input<string>;
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -252,6 +312,9 @@ export interface AccessPolicyExcludeGsuite {
 
 export interface AccessPolicyExcludeOkta {
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * Friendly name of the Access Policy.
+     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -285,6 +348,9 @@ export interface AccessPolicyInclude {
 
 export interface AccessPolicyIncludeAzure {
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -295,6 +361,9 @@ export interface AccessPolicyIncludeExternalEvaluation {
 
 export interface AccessPolicyIncludeGithub {
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * Friendly name of the Access Policy.
+     */
     name?: pulumi.Input<string>;
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -306,6 +375,9 @@ export interface AccessPolicyIncludeGsuite {
 
 export interface AccessPolicyIncludeOkta {
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * Friendly name of the Access Policy.
+     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -339,6 +411,9 @@ export interface AccessPolicyRequire {
 
 export interface AccessPolicyRequireAzure {
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -349,6 +424,9 @@ export interface AccessPolicyRequireExternalEvaluation {
 
 export interface AccessPolicyRequireGithub {
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * Friendly name of the Access Policy.
+     */
     name?: pulumi.Input<string>;
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -360,6 +438,9 @@ export interface AccessPolicyRequireGsuite {
 
 export interface AccessPolicyRequireOkta {
     identityProviderId?: pulumi.Input<string>;
+    /**
+     * Friendly name of the Access Policy.
+     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -370,11 +451,20 @@ export interface AccessPolicyRequireSaml {
 }
 
 export interface AccessRuleConfiguration {
+    /**
+     * The request property to target. Available values: `ip`, `ip6`, `ipRange`, `asn`, `country`.
+     */
     target: pulumi.Input<string>;
+    /**
+     * The value to target. Depends on target's type.
+     */
     value: pulumi.Input<string>;
 }
 
 export interface ApiTokenCondition {
+    /**
+     * Request IP related conditions.
+     */
     requestIp?: pulumi.Input<inputs.ApiTokenConditionRequestIp>;
 }
 
@@ -384,8 +474,17 @@ export interface ApiTokenConditionRequestIp {
 }
 
 export interface ApiTokenPolicy {
+    /**
+     * Effect of the policy. Available values: `allow`, `deny`. Defaults to `allow`.
+     */
     effect?: pulumi.Input<string>;
+    /**
+     * List of permissions groups IDs. See [documentation](https://developers.cloudflare.com/api/tokens/create/permissions) for more information.
+     */
     permissionGroups: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Describes what operations against which resources are allowed or denied.
+     */
     resources: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -414,17 +513,19 @@ export interface CustomHostnameSsl {
      */
     customKey?: pulumi.Input<string>;
     /**
-     * Domain control validation (DCV) method used for this
-     * hostname. Valid values are `"txt"`, `"http"` and `"email"`.
+     * Domain control validation (DCV) method used for this hostname. Available values: `http`, `txt`, `email`.
      */
     method?: pulumi.Input<string>;
     /**
-     * SSL/TLS settings for the certificate. See further notes below.
+     * SSL/TLS settings for the certificate.
      */
     settings?: pulumi.Input<pulumi.Input<inputs.CustomHostnameSslSetting>[]>;
+    /**
+     * Status of the certificate.
+     */
     status?: pulumi.Input<string>;
     /**
-     * Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+     * Level of validation to be used for this hostname. Available values: `dv`. Defaults to `dv`.
      */
     type?: pulumi.Input<string>;
     validationErrors?: pulumi.Input<pulumi.Input<inputs.CustomHostnameSslValidationError>[]>;
@@ -436,26 +537,10 @@ export interface CustomHostnameSsl {
 }
 
 export interface CustomHostnameSslSetting {
-    /**
-     * List of SSL/TLS ciphers to associate with this certificate.
-     */
     ciphers?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Whether or not early hints should be supported. Valid values are `"on"` or `"off"`.
-     */
     earlyHints?: pulumi.Input<string>;
-    /**
-     * Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
-     */
     http2?: pulumi.Input<string>;
-    /**
-     * Lowest version of TLS this certificate should
-     * support. Valid values are `"1.0"`, `"1.1"`, `"1.2"` and `"1.3"`.
-     */
     minTlsVersion?: pulumi.Input<string>;
-    /**
-     * Whether or not TLSv1.3 should be supported. Valid values are `"on"` or `"off"`.
-     */
     tls13?: pulumi.Input<string>;
 }
 
@@ -623,38 +708,62 @@ export interface GetWafPackagesFilterArgs {
     sensitivity?: pulumi.Input<string>;
 }
 
-export interface GetWafRulesFilterArgs {
-    description?: pulumi.Input<string>;
-    groupId?: pulumi.Input<string>;
-    mode?: pulumi.Input<string>;
-}
-
 export interface GetWafRulesFilter {
     description?: string;
     groupId?: string;
     mode?: string;
 }
 
+export interface GetWafRulesFilterArgs {
+    description?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
+}
+
 export interface GetZonesFilterArgs {
+    /**
+     * The account identifier to target for the resource.
+     */
     accountId?: pulumi.Input<string>;
+    /**
+     * Defaults to `exact`.
+     */
     lookupType?: pulumi.Input<string>;
     match?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
+    /**
+     * Defaults to `false`.
+     */
     paused?: pulumi.Input<boolean>;
     status?: pulumi.Input<string>;
 }
 
 export interface GetZonesFilter {
+    /**
+     * The account identifier to target for the resource.
+     */
     accountId?: string;
+    /**
+     * Defaults to `exact`.
+     */
     lookupType?: string;
     match?: string;
     name?: string;
+    /**
+     * Defaults to `false`.
+     */
     paused?: boolean;
     status?: string;
 }
 
 export interface HealthcheckHeader {
+    /**
+     * The header name.
+     */
     header: pulumi.Input<string>;
+    /**
+     * A list of string values for the header.
+     */
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -670,6 +779,9 @@ export interface IpListItem {
 }
 
 export interface ListItem {
+    /**
+     * An optional comment for the item.
+     */
     comment?: pulumi.Input<string>;
     value: pulumi.Input<inputs.ListItemValue>;
 }
@@ -687,6 +799,17 @@ export interface ListItemValueRedirect {
     statusCode?: pulumi.Input<number>;
     subpathMatching?: pulumi.Input<string>;
     targetUrl: pulumi.Input<string>;
+}
+
+export interface LoadBalancerCountryPool {
+    /**
+     * A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+     */
+    country: pulumi.Input<string>;
+    /**
+     * A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     */
+    poolIds: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface LoadBalancerMonitorHeader {
@@ -777,7 +900,7 @@ export interface LoadBalancerRegionPool {
      */
     poolIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
+     * A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
      */
     region: pulumi.Input<string>;
 }
@@ -834,6 +957,10 @@ export interface LoadBalancerRuleFixedResponse {
 
 export interface LoadBalancerRuleOverride {
     /**
+     * See countryPools above.
+     */
+    countryPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRuleOverrideCountryPool>[]>;
+    /**
      * See defaultPoolIds above.
      */
     defaultPools?: pulumi.Input<pulumi.Input<string>[]>;
@@ -871,6 +998,17 @@ export interface LoadBalancerRuleOverride {
     ttl?: pulumi.Input<number>;
 }
 
+export interface LoadBalancerRuleOverrideCountryPool {
+    /**
+     * A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+     */
+    country: pulumi.Input<string>;
+    /**
+     * A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     */
+    poolIds: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface LoadBalancerRuleOverridePopPool {
     /**
      * A list of pool IDs in failover priority to use for traffic reaching the given PoP.
@@ -888,53 +1026,142 @@ export interface LoadBalancerRuleOverrideRegionPool {
      */
     poolIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
+     * A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
      */
     region: pulumi.Input<string>;
 }
 
 export interface ManagedHeadersManagedRequestHeader {
+    /**
+     * Whether the headers rule is active.
+     */
     enabled: pulumi.Input<boolean>;
+    /**
+     * Unique headers rule identifier.
+     */
     id: pulumi.Input<string>;
 }
 
 export interface ManagedHeadersManagedResponseHeader {
+    /**
+     * Whether the headers rule is active.
+     */
     enabled: pulumi.Input<boolean>;
+    /**
+     * Unique headers rule identifier.
+     */
     id: pulumi.Input<string>;
 }
 
 export interface NotificationPolicyEmailIntegration {
+    /**
+     * The ID of this resource.
+     */
     id: pulumi.Input<string>;
+    /**
+     * The name of the notification policy.
+     */
     name?: pulumi.Input<string>;
 }
 
 export interface NotificationPolicyFilters {
+    /**
+     * State of the pool to alert on.
+     */
     enableds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Source configuration to alert on for pool or origin.
+     */
+    eventSources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Stream event type to alert on.
+     */
+    eventTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Identifier health check.
+     */
     healthCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Stream input id to alert on.
+     */
+    inputIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A numerical limit. Example: `100`.
+     */
     limits?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Health status to alert on for pool or origin.
+     */
+    newHealths?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Packets per second threshold for dos alert.
+     */
+    packetsPerSeconds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Load balancer pool identifier.
+     */
     poolIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Product name. Available values: `workerRequests`, `workerDurableObjectsRequests`, `workerDurableObjectsDuration`, `workerDurableObjectsDataTransfer`, `workerDurableObjectsStoredData`, `workerDurableObjectsStorageDeletes`, `workerDurableObjectsStorageWrites`, `workerDurableObjectsStorageReads`.
+     */
     products?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Protocol to alert on for dos.
+     */
+    protocols?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Requests per second threshold for dos alert.
+     */
+    requestsPerSeconds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of clickhouse services to alert on.
+     */
     services?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A numerical limit. Example: `99.9`.
+     */
     slos?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Status to alert on.
+     */
     statuses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Target host to alert on for dos.
+     */
+    targetHosts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Target domain to alert on.
+     */
+    targetZoneNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of zone identifiers.
+     */
     zones?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface NotificationPolicyPagerdutyIntegration {
+    /**
+     * The ID of this resource.
+     */
     id: pulumi.Input<string>;
+    /**
+     * The name of the notification policy.
+     */
     name?: pulumi.Input<string>;
 }
 
 export interface NotificationPolicyWebhooksIntegration {
+    /**
+     * The ID of this resource.
+     */
     id: pulumi.Input<string>;
+    /**
+     * The name of the notification policy.
+     */
     name?: pulumi.Input<string>;
 }
 
 export interface PageRuleActions {
-    /**
-     * Whether this action is `"on"` or `"off"`.
-     */
-    alwaysOnline?: pulumi.Input<string>;
     /**
      * Boolean of whether this action is enabled. Default: false.
      */
@@ -1338,46 +1565,112 @@ export interface RecordData {
 }
 
 export interface RulesetRule {
+    /**
+     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `serveError`, `skip`.
+     */
     action?: pulumi.Input<string>;
+    /**
+     * List of parameters that configure the behavior of the ruleset rule action.
+     */
     actionParameters?: pulumi.Input<inputs.RulesetRuleActionParameters>;
+    /**
+     * Brief summary of the ruleset rule and its intended use.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Whether the rule is active.
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * List of parameters that configure exposed credential checks.
+     */
     exposedCredentialCheck?: pulumi.Input<inputs.RulesetRuleExposedCredentialCheck>;
+    /**
+     * Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     */
     expression: pulumi.Input<string>;
+    /**
+     * Unique rule identifier.
+     */
     id?: pulumi.Input<string>;
+    /**
+     * List parameters to configure how the rule generates logs.
+     */
     logging?: pulumi.Input<inputs.RulesetRuleLogging>;
+    /**
+     * List of parameters that configure HTTP rate limiting behaviour.
+     */
     ratelimit?: pulumi.Input<inputs.RulesetRuleRatelimit>;
+    /**
+     * Rule reference.
+     */
     ref?: pulumi.Input<string>;
+    /**
+     * Version of the ruleset to deploy.
+     */
     version?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParameters {
+    automaticHttpsRewrites?: pulumi.Input<boolean>;
+    autominifies?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersAutominify>[]>;
+    bic?: pulumi.Input<boolean>;
     browserTtl?: pulumi.Input<inputs.RulesetRuleActionParametersBrowserTtl>;
-    bypassCache?: pulumi.Input<boolean>;
+    cache?: pulumi.Input<boolean>;
     cacheKey?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKey>;
+    content?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string>;
     cookieFields?: pulumi.Input<pulumi.Input<string>[]>;
+    disableApps?: pulumi.Input<boolean>;
+    disableRailgun?: pulumi.Input<boolean>;
+    disableZaraz?: pulumi.Input<boolean>;
     edgeTtl?: pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtl>;
+    emailObfuscation?: pulumi.Input<boolean>;
     fromList?: pulumi.Input<inputs.RulesetRuleActionParametersFromList>;
+    fromValue?: pulumi.Input<inputs.RulesetRuleActionParametersFromValue>;
     headers?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersHeader>[]>;
     hostHeader?: pulumi.Input<string>;
+    hotlinkProtection?: pulumi.Input<boolean>;
+    /**
+     * The ID of this resource.
+     */
     id?: pulumi.Input<string>;
     increment?: pulumi.Input<number>;
     matchedData?: pulumi.Input<inputs.RulesetRuleActionParametersMatchedData>;
+    mirage?: pulumi.Input<boolean>;
+    opportunisticEncryption?: pulumi.Input<boolean>;
     origin?: pulumi.Input<inputs.RulesetRuleActionParametersOrigin>;
     originErrorPagePassthru?: pulumi.Input<boolean>;
     overrides?: pulumi.Input<inputs.RulesetRuleActionParametersOverrides>;
     phases?: pulumi.Input<pulumi.Input<string>[]>;
+    polish?: pulumi.Input<string>;
     products?: pulumi.Input<pulumi.Input<string>[]>;
     requestFields?: pulumi.Input<pulumi.Input<string>[]>;
     respectStrongEtags?: pulumi.Input<boolean>;
     responseFields?: pulumi.Input<pulumi.Input<string>[]>;
     responses?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersResponse>[]>;
+    rocketLoader?: pulumi.Input<boolean>;
+    /**
+     * List of rules to apply to the ruleset.
+     */
     rules?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     ruleset?: pulumi.Input<string>;
     rulesets?: pulumi.Input<pulumi.Input<string>[]>;
+    securityLevel?: pulumi.Input<string>;
     serveStale?: pulumi.Input<inputs.RulesetRuleActionParametersServeStale>;
+    serverSideExcludes?: pulumi.Input<boolean>;
+    sni?: pulumi.Input<inputs.RulesetRuleActionParametersSni>;
+    ssl?: pulumi.Input<string>;
+    statusCode?: pulumi.Input<number>;
+    sxg?: pulumi.Input<boolean>;
     uri?: pulumi.Input<inputs.RulesetRuleActionParametersUri>;
     version?: pulumi.Input<string>;
+}
+
+export interface RulesetRuleActionParametersAutominify {
+    css?: pulumi.Input<boolean>;
+    html?: pulumi.Input<boolean>;
+    js?: pulumi.Input<boolean>;
 }
 
 export interface RulesetRuleActionParametersBrowserTtl {
@@ -1445,11 +1738,28 @@ export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange 
 
 export interface RulesetRuleActionParametersFromList {
     key: pulumi.Input<string>;
+    /**
+     * Name of the ruleset.
+     */
     name: pulumi.Input<string>;
+}
+
+export interface RulesetRuleActionParametersFromValue {
+    preserveQueryString?: pulumi.Input<boolean>;
+    statusCode?: pulumi.Input<number>;
+    targetUrl?: pulumi.Input<inputs.RulesetRuleActionParametersFromValueTargetUrl>;
+}
+
+export interface RulesetRuleActionParametersFromValueTargetUrl {
+    expression?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersHeader {
     expression?: pulumi.Input<string>;
+    /**
+     * Name of the ruleset.
+     */
     name?: pulumi.Input<string>;
     operation?: pulumi.Input<string>;
     value?: pulumi.Input<string>;
@@ -1471,6 +1781,9 @@ export interface RulesetRuleActionParametersOverrides {
      * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * List of rules to apply to the ruleset.
+     */
     rules?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOverridesRule>[]>;
     status?: pulumi.Input<string>;
 }
@@ -1486,11 +1799,19 @@ export interface RulesetRuleActionParametersOverridesCategory {
 }
 
 export interface RulesetRuleActionParametersOverridesRule {
+    /**
+     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `serveError`, `skip`.
+     */
     action?: pulumi.Input<string>;
     /**
+     * Whether the rule is active.
+     *
      * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Unique rule identifier.
+     */
     id?: pulumi.Input<string>;
     scoreThreshold?: pulumi.Input<number>;
     sensitivityLevel?: pulumi.Input<string>;
@@ -1505,6 +1826,10 @@ export interface RulesetRuleActionParametersResponse {
 
 export interface RulesetRuleActionParametersServeStale {
     disableStaleWhileUpdating?: pulumi.Input<boolean>;
+}
+
+export interface RulesetRuleActionParametersSni {
+    value?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersUri {
@@ -1792,6 +2117,17 @@ export interface WorkerScriptPlainTextBinding {
      * The secret text you want to store.
      */
     text: pulumi.Input<string>;
+}
+
+export interface WorkerScriptR2BucketBinding {
+    /**
+     * The name of the Bucket to bind to.
+     */
+    bucketName: pulumi.Input<string>;
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface WorkerScriptSecretTextBinding {
@@ -2147,4 +2483,3 @@ export interface ZoneSettingsOverrideSettingsSecurityHeader {
      */
     preload?: pulumi.Input<boolean>;
 }
-

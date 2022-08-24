@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * import * from "fs";
+ * import * as fs from "fs";
  *
  * const myNamespace = new cloudflare.WorkersKvNamespace("myNamespace", {title: "example"});
  * // Sets the script with the name "script_1"
@@ -40,6 +40,10 @@ import * as utilities from "./utilities";
  *         name: "MY_SERVICE_BINDING",
  *         service: "MY_SERVICE",
  *         environment: "production",
+ *     }],
+ *     r2BucketBindings: [{
+ *         name: "MY_BUCKET",
+ *         bucketName: "MY_BUCKET_NAME",
  *     }],
  * });
  * ```
@@ -92,6 +96,7 @@ export class WorkerScript extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     public readonly plainTextBindings!: pulumi.Output<outputs.WorkerScriptPlainTextBinding[] | undefined>;
+    public readonly r2BucketBindings!: pulumi.Output<outputs.WorkerScriptR2BucketBinding[] | undefined>;
     public readonly secretTextBindings!: pulumi.Output<outputs.WorkerScriptSecretTextBinding[] | undefined>;
     public readonly serviceBindings!: pulumi.Output<outputs.WorkerScriptServiceBinding[] | undefined>;
     public readonly webassemblyBindings!: pulumi.Output<outputs.WorkerScriptWebassemblyBinding[] | undefined>;
@@ -113,6 +118,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["kvNamespaceBindings"] = state ? state.kvNamespaceBindings : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["plainTextBindings"] = state ? state.plainTextBindings : undefined;
+            resourceInputs["r2BucketBindings"] = state ? state.r2BucketBindings : undefined;
             resourceInputs["secretTextBindings"] = state ? state.secretTextBindings : undefined;
             resourceInputs["serviceBindings"] = state ? state.serviceBindings : undefined;
             resourceInputs["webassemblyBindings"] = state ? state.webassemblyBindings : undefined;
@@ -128,6 +134,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["kvNamespaceBindings"] = args ? args.kvNamespaceBindings : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["plainTextBindings"] = args ? args.plainTextBindings : undefined;
+            resourceInputs["r2BucketBindings"] = args ? args.r2BucketBindings : undefined;
             resourceInputs["secretTextBindings"] = args ? args.secretTextBindings : undefined;
             resourceInputs["serviceBindings"] = args ? args.serviceBindings : undefined;
             resourceInputs["webassemblyBindings"] = args ? args.webassemblyBindings : undefined;
@@ -151,6 +158,7 @@ export interface WorkerScriptState {
      */
     name?: pulumi.Input<string>;
     plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlainTextBinding>[]>;
+    r2BucketBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptR2BucketBinding>[]>;
     secretTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptSecretTextBinding>[]>;
     serviceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptServiceBinding>[]>;
     webassemblyBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptWebassemblyBinding>[]>;
@@ -170,6 +178,7 @@ export interface WorkerScriptArgs {
      */
     name: pulumi.Input<string>;
     plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlainTextBinding>[]>;
+    r2BucketBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptR2BucketBinding>[]>;
     secretTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptSecretTextBinding>[]>;
     serviceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptServiceBinding>[]>;
     webassemblyBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptWebassemblyBinding>[]>;

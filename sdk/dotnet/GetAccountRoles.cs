@@ -19,30 +19,41 @@ namespace Pulumi.Cloudflare
     }
 
 
-    public sealed class GetAccountRolesArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountRolesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         public GetAccountRolesArgs()
         {
         }
+        public static new GetAccountRolesArgs Empty => new GetAccountRolesArgs();
     }
 
-    public sealed class GetAccountRolesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountRolesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         public GetAccountRolesInvokeArgs()
         {
         }
+        public static new GetAccountRolesInvokeArgs Empty => new GetAccountRolesInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetAccountRolesResult
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         public readonly string AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

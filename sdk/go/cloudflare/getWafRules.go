@@ -23,7 +23,8 @@ func GetWafRules(ctx *pulumi.Context, args *GetWafRulesArgs, opts ...pulumi.Invo
 type GetWafRulesArgs struct {
 	Filter    *GetWafRulesFilter `pulumi:"filter"`
 	PackageId *string            `pulumi:"packageId"`
-	ZoneId    string             `pulumi:"zoneId"`
+	// The zone identifier to target for the resource.
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getWafRules.
@@ -33,7 +34,8 @@ type GetWafRulesResult struct {
 	Id        string            `pulumi:"id"`
 	PackageId *string           `pulumi:"packageId"`
 	Rules     []GetWafRulesRule `pulumi:"rules"`
-	ZoneId    string            `pulumi:"zoneId"`
+	// The zone identifier to target for the resource.
+	ZoneId string `pulumi:"zoneId"`
 }
 
 func GetWafRulesOutput(ctx *pulumi.Context, args GetWafRulesOutputArgs, opts ...pulumi.InvokeOption) GetWafRulesResultOutput {
@@ -53,7 +55,8 @@ func GetWafRulesOutput(ctx *pulumi.Context, args GetWafRulesOutputArgs, opts ...
 type GetWafRulesOutputArgs struct {
 	Filter    GetWafRulesFilterPtrInput `pulumi:"filter"`
 	PackageId pulumi.StringPtrInput     `pulumi:"packageId"`
-	ZoneId    pulumi.StringInput        `pulumi:"zoneId"`
+	// The zone identifier to target for the resource.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
 func (GetWafRulesOutputArgs) ElementType() reflect.Type {
@@ -92,6 +95,7 @@ func (o GetWafRulesResultOutput) Rules() GetWafRulesRuleArrayOutput {
 	return o.ApplyT(func(v GetWafRulesResult) []GetWafRulesRule { return v.Rules }).(GetWafRulesRuleArrayOutput)
 }
 
+// The zone identifier to target for the resource.
 func (o GetWafRulesResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWafRulesResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

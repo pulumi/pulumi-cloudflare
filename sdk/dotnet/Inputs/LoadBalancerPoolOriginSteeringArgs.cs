@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class LoadBalancerPoolOriginSteeringArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerPoolOriginSteeringArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Either "random" (default) or "hash".
@@ -21,5 +21,6 @@ namespace Pulumi.Cloudflare.Inputs
         public LoadBalancerPoolOriginSteeringArgs()
         {
         }
+        public static new LoadBalancerPoolOriginSteeringArgs Empty => new LoadBalancerPoolOriginSteeringArgs();
     }
 }

@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Access Bookmark resource. Access Bookmark applications are not protected behind Access but are displayed in the App Launcher.
+ * Provides a Cloudflare Access Bookmark resource. Access Bookmark
+ * applications are not protected behind Access but are displayed in
+ * the App Launcher.
  *
  * > It's required that an `accountId` or `zoneId` is provided and in
  * most cases using either is fine. However, if you're using a scoped
@@ -20,7 +22,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const myBookmarkApp = new cloudflare.AccessBookmark("my_bookmark_app", {
- *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     appLauncherVisible: true,
  *     domain: "example.com",
  *     logoUrl: "https://example.com/example.png",
@@ -63,11 +65,11 @@ export class AccessBookmark extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Option to show/hide the bookmark in the app launcher.
+     * Option to show/hide the bookmark in the app launcher. Defaults to `true`.
      */
     public readonly appLauncherVisible!: pulumi.Output<boolean | undefined>;
     /**
@@ -83,7 +85,7 @@ export class AccessBookmark extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -131,11 +133,11 @@ export class AccessBookmark extends pulumi.CustomResource {
  */
 export interface AccessBookmarkState {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Option to show/hide the bookmark in the app launcher.
+     * Option to show/hide the bookmark in the app launcher. Defaults to `true`.
      */
     appLauncherVisible?: pulumi.Input<boolean>;
     /**
@@ -151,7 +153,7 @@ export interface AccessBookmarkState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -161,11 +163,11 @@ export interface AccessBookmarkState {
  */
 export interface AccessBookmarkArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Option to show/hide the bookmark in the app launcher.
+     * Option to show/hide the bookmark in the app launcher. Defaults to `true`.
      */
     appLauncherVisible?: pulumi.Input<boolean>;
     /**
@@ -181,7 +183,7 @@ export interface AccessBookmarkArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
 }

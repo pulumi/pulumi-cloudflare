@@ -37,6 +37,10 @@ import * as utilities from "./utilities";
  *         pop: "LAX",
  *         poolIds: [foo.id],
  *     }],
+ *     countryPools: [{
+ *         country: "US",
+ *         poolIds: [foo.id],
+ *     }],
  *     regionPools: [{
  *         region: "WNAM",
  *         poolIds: [foo.id],
@@ -82,6 +86,10 @@ export class LoadBalancer extends pulumi.CustomResource {
         return obj['__pulumiType'] === LoadBalancer.__pulumiType;
     }
 
+    /**
+     * See countryPools above.
+     */
+    public readonly countryPools!: pulumi.Output<outputs.LoadBalancerCountryPool[]>;
     /**
      * The RFC3339 timestamp of when the load balancer was created.
      */
@@ -164,6 +172,7 @@ export class LoadBalancer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
+            resourceInputs["countryPools"] = state ? state.countryPools : undefined;
             resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["defaultPoolIds"] = state ? state.defaultPoolIds : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -195,6 +204,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            resourceInputs["countryPools"] = args ? args.countryPools : undefined;
             resourceInputs["defaultPoolIds"] = args ? args.defaultPoolIds : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
@@ -222,6 +232,10 @@ export class LoadBalancer extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LoadBalancer resources.
  */
 export interface LoadBalancerState {
+    /**
+     * See countryPools above.
+     */
+    countryPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerCountryPool>[]>;
     /**
      * The RFC3339 timestamp of when the load balancer was created.
      */
@@ -296,6 +310,10 @@ export interface LoadBalancerState {
  * The set of arguments for constructing a LoadBalancer resource.
  */
 export interface LoadBalancerArgs {
+    /**
+     * See countryPools above.
+     */
+    countryPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerCountryPool>[]>;
     /**
      * A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
      */

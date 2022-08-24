@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Access Policy resource. Access Policies are used in conjunction with Access Applications to restrict access to a particular resource.
+    /// Provides a Cloudflare Access Policy resource. Access Policies are
+    /// used in conjunction with Access Applications to restrict access to
+    /// a particular resource.
     /// 
     /// &gt; It's required that an `account_id` or `zone_id` is provided and in
     /// most cases using either is fine. However, if you're using a scoped
@@ -21,75 +23,74 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Allowing access to `test@example.com` email address only
+    ///     var testPolicyAccessPolicy = new Cloudflare.AccessPolicy("testPolicyAccessPolicy", new()
     ///     {
-    ///         // Allowing access to `test@example.com` email address only
-    ///         var testPolicyAccessPolicy = new Cloudflare.AccessPolicy("testPolicyAccessPolicy", new Cloudflare.AccessPolicyArgs
+    ///         ApplicationId = "cb029e245cfdd66dc8d2e570d5dd3322",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Name = "staging policy",
+    ///         Precedence = 1,
+    ///         Decision = "allow",
+    ///         Includes = new[]
     ///         {
-    ///             ApplicationId = "cb029e245cfdd66dc8d2e570d5dd3322",
-    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///             Name = "staging policy",
-    ///             Precedence = 1,
-    ///             Decision = "allow",
-    ///             Includes = 
+    ///             new Cloudflare.Inputs.AccessPolicyIncludeArgs
     ///             {
-    ///                 new Cloudflare.Inputs.AccessPolicyIncludeArgs
+    ///                 Emails = new[]
     ///                 {
-    ///                     Emails = 
-    ///                     {
-    ///                         "test@example.com",
-    ///                     },
+    ///                     "test@example.com",
     ///                 },
     ///             },
-    ///             Requires = 
-    ///             {
-    ///                 new Cloudflare.Inputs.AccessPolicyRequireArgs
-    ///                 {
-    ///                     Emails = 
-    ///                     {
-    ///                         "test@example.com",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///         // Allowing `test@example.com` to access but only when coming from a
-    ///         // specific IP.
-    ///         var testPolicyIndex_accessPolicyAccessPolicy = new Cloudflare.AccessPolicy("testPolicyIndex/accessPolicyAccessPolicy", new Cloudflare.AccessPolicyArgs
+    ///         },
+    ///         Requires = new[]
     ///         {
-    ///             ApplicationId = "cb029e245cfdd66dc8d2e570d5dd3322",
-    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///             Name = "staging policy",
-    ///             Precedence = 1,
-    ///             Decision = "allow",
-    ///             Includes = 
+    ///             new Cloudflare.Inputs.AccessPolicyRequireArgs
     ///             {
-    ///                 new Cloudflare.Inputs.AccessPolicyIncludeArgs
+    ///                 Emails = new[]
     ///                 {
-    ///                     Emails = 
-    ///                     {
-    ///                         "test@example.com",
-    ///                     },
+    ///                     "test@example.com",
     ///                 },
     ///             },
-    ///             Requires = 
-    ///             {
-    ///                 new Cloudflare.Inputs.AccessPolicyRequireArgs
-    ///                 {
-    ///                     Ips = 
-    ///                     {
-    ///                         @var.Office_ip,
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     // Allowing `test@example.com` to access but only when coming from a
+    ///     // specific IP.
+    ///     var testPolicyIndex_accessPolicyAccessPolicy = new Cloudflare.AccessPolicy("testPolicyIndex/accessPolicyAccessPolicy", new()
+    ///     {
+    ///         ApplicationId = "cb029e245cfdd66dc8d2e570d5dd3322",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Name = "staging policy",
+    ///         Precedence = 1,
+    ///         Decision = "allow",
+    ///         Includes = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.AccessPolicyIncludeArgs
+    ///             {
+    ///                 Emails = new[]
+    ///                 {
+    ///                     "test@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Requires = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.AccessPolicyRequireArgs
+    ///             {
+    ///                 Ips = new[]
+    ///                 {
+    ///                     @var.Office_ip,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -107,10 +108,10 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accessPolicy:AccessPolicy")]
-    public partial class AccessPolicy : Pulumi.CustomResource
+    public partial class AccessPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -128,8 +129,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> ApprovalRequired { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
-        /// `bypass`
+        /// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
         /// </summary>
         [Output("decision")]
         public Output<string> Decision { get; private set; } = null!;
@@ -180,7 +180,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.AccessPolicyRequire>> Requires { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -229,10 +229,10 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class AccessPolicyArgs : Pulumi.ResourceArgs
+    public sealed class AccessPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -255,8 +255,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? ApprovalRequired { get; set; }
 
         /// <summary>
-        /// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
-        /// `bypass`
+        /// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
         /// </summary>
         [Input("decision", required: true)]
         public Input<string> Decision { get; set; } = null!;
@@ -325,7 +324,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -333,12 +332,13 @@ namespace Pulumi.Cloudflare
         public AccessPolicyArgs()
         {
         }
+        public static new AccessPolicyArgs Empty => new AccessPolicyArgs();
     }
 
-    public sealed class AccessPolicyState : Pulumi.ResourceArgs
+    public sealed class AccessPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -361,8 +361,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? ApprovalRequired { get; set; }
 
         /// <summary>
-        /// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
-        /// `bypass`
+        /// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
         /// </summary>
         [Input("decision")]
         public Input<string>? Decision { get; set; }
@@ -431,7 +430,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -439,5 +438,6 @@ namespace Pulumi.Cloudflare
         public AccessPolicyState()
         {
         }
+        public static new AccessPolicyState Empty => new AccessPolicyState();
     }
 }

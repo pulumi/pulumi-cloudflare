@@ -15,22 +15,20 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var rule100000 = new Cloudflare.WafRule("rule100000", new()
     ///     {
-    ///         var rule100000 = new Cloudflare.WafRule("rule100000", new Cloudflare.WafRuleArgs
-    ///         {
-    ///             Mode = "simulate",
-    ///             RuleId = "100000",
-    ///             ZoneId = "ae36f999674d196762efcc5abb06b345",
-    ///         });
-    ///     }
+    ///         Mode = "simulate",
+    ///         RuleId = "100000",
+    ///         ZoneId = "ae36f999674d196762efcc5abb06b345",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +40,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/wafRule:WafRule")]
-    public partial class WafRule : Pulumi.CustomResource
+    public partial class WafRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the WAF Rule Group that contains the rule.
@@ -118,7 +116,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class WafRuleArgs : Pulumi.ResourceArgs
+    public sealed class WafRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
@@ -147,9 +145,10 @@ namespace Pulumi.Cloudflare
         public WafRuleArgs()
         {
         }
+        public static new WafRuleArgs Empty => new WafRuleArgs();
     }
 
-    public sealed class WafRuleState : Pulumi.ResourceArgs
+    public sealed class WafRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the WAF Rule Group that contains the rule.
@@ -184,5 +183,6 @@ namespace Pulumi.Cloudflare
         public WafRuleState()
         {
         }
+        public static new WafRuleState Empty => new WafRuleState();
     }
 }

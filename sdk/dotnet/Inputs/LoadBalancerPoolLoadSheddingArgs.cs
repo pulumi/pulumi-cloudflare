@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class LoadBalancerPoolLoadSheddingArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerPoolLoadSheddingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Percent of traffic to shed 0 - 100.
@@ -39,5 +39,6 @@ namespace Pulumi.Cloudflare.Inputs
         public LoadBalancerPoolLoadSheddingArgs()
         {
         }
+        public static new LoadBalancerPoolLoadSheddingArgs Empty => new LoadBalancerPoolLoadSheddingArgs();
     }
 }

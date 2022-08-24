@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Filter expressions that can be referenced across multiple features, e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/) for more details and available fields and operators.
+ * Filter expressions that can be referenced across multiple features,
+ * e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/)
+ * for more details and available fields and operators.
  *
  * ## Example Usage
  *
@@ -16,7 +18,7 @@ import * as utilities from "./utilities";
  * const wordpress = new cloudflare.Filter("wordpress", {
  *     description: "Wordpress break-in attempts that are outside of the office",
  *     expression: "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1",
- *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  *

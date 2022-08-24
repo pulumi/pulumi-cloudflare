@@ -16,72 +16,79 @@ namespace Pulumi.Cloudflare
     /// 
     /// ```csharp
     /// using System;
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
-    /// {
     /// 	private static string ReadFileBase64(string path) {
     /// 		return Convert.ToBase64String(Encoding.UTF8.GetBytes(File.ReadAllText(path)))
     /// 	}
     /// 
-    ///     public MyStack()
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myNamespace = new Cloudflare.WorkersKvNamespace("myNamespace", new()
     ///     {
-    ///         var myNamespace = new Cloudflare.WorkersKvNamespace("myNamespace", new Cloudflare.WorkersKvNamespaceArgs
-    ///         {
-    ///             Title = "example",
-    ///         });
-    ///         // Sets the script with the name "script_1"
-    ///         var myScript = new Cloudflare.WorkerScript("myScript", new Cloudflare.WorkerScriptArgs
-    ///         {
-    ///             Name = "script_1",
-    ///             Content = File.ReadAllText("script.js"),
-    ///             KvNamespaceBindings = 
-    ///             {
-    ///                 new Cloudflare.Inputs.WorkerScriptKvNamespaceBindingArgs
-    ///                 {
-    ///                     Name = "MY_EXAMPLE_KV_NAMESPACE",
-    ///                     NamespaceId = myNamespace.Id,
-    ///                 },
-    ///             },
-    ///             PlainTextBindings = 
-    ///             {
-    ///                 new Cloudflare.Inputs.WorkerScriptPlainTextBindingArgs
-    ///                 {
-    ///                     Name = "MY_EXAMPLE_PLAIN_TEXT",
-    ///                     Text = "foobar",
-    ///                 },
-    ///             },
-    ///             SecretTextBindings = 
-    ///             {
-    ///                 new Cloudflare.Inputs.WorkerScriptSecretTextBindingArgs
-    ///                 {
-    ///                     Name = "MY_EXAMPLE_SECRET_TEXT",
-    ///                     Text = @var.Secret_foo_value,
-    ///                 },
-    ///             },
-    ///             WebassemblyBindings = 
-    ///             {
-    ///                 new Cloudflare.Inputs.WorkerScriptWebassemblyBindingArgs
-    ///                 {
-    ///                     Name = "MY_EXAMPLE_WASM",
-    ///                     Module = ReadFileBase64("example.wasm"),
-    ///                 },
-    ///             },
-    ///             ServiceBindings = 
-    ///             {
-    ///                 new Cloudflare.Inputs.WorkerScriptServiceBindingArgs
-    ///                 {
-    ///                     Name = "MY_SERVICE_BINDING",
-    ///                     Service = "MY_SERVICE",
-    ///                     Environment = "production",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         Title = "example",
+    ///     });
     /// 
-    /// }
+    ///     // Sets the script with the name "script_1"
+    ///     var myScript = new Cloudflare.WorkerScript("myScript", new()
+    ///     {
+    ///         Name = "script_1",
+    ///         Content = File.ReadAllText("script.js"),
+    ///         KvNamespaceBindings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerScriptKvNamespaceBindingArgs
+    ///             {
+    ///                 Name = "MY_EXAMPLE_KV_NAMESPACE",
+    ///                 NamespaceId = myNamespace.Id,
+    ///             },
+    ///         },
+    ///         PlainTextBindings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerScriptPlainTextBindingArgs
+    ///             {
+    ///                 Name = "MY_EXAMPLE_PLAIN_TEXT",
+    ///                 Text = "foobar",
+    ///             },
+    ///         },
+    ///         SecretTextBindings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerScriptSecretTextBindingArgs
+    ///             {
+    ///                 Name = "MY_EXAMPLE_SECRET_TEXT",
+    ///                 Text = @var.Secret_foo_value,
+    ///             },
+    ///         },
+    ///         WebassemblyBindings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerScriptWebassemblyBindingArgs
+    ///             {
+    ///                 Name = "MY_EXAMPLE_WASM",
+    ///                 Module = ReadFileBase64("example.wasm"),
+    ///             },
+    ///         },
+    ///         ServiceBindings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerScriptServiceBindingArgs
+    ///             {
+    ///                 Name = "MY_SERVICE_BINDING",
+    ///                 Service = "MY_SERVICE",
+    ///                 Environment = "production",
+    ///             },
+    ///         },
+    ///         R2BucketBindings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerScriptR2BucketBindingArgs
+    ///             {
+    ///                 Name = "MY_BUCKET",
+    ///                 BucketName = "MY_BUCKET_NAME",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -95,7 +102,7 @@ namespace Pulumi.Cloudflare
     ///  where- `script_name` - the script name
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workerScript:WorkerScript")]
-    public partial class WorkerScript : Pulumi.CustomResource
+    public partial class WorkerScript : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The script content.
@@ -114,6 +121,9 @@ namespace Pulumi.Cloudflare
 
         [Output("plainTextBindings")]
         public Output<ImmutableArray<Outputs.WorkerScriptPlainTextBinding>> PlainTextBindings { get; private set; } = null!;
+
+        [Output("r2BucketBindings")]
+        public Output<ImmutableArray<Outputs.WorkerScriptR2BucketBinding>> R2BucketBindings { get; private set; } = null!;
 
         [Output("secretTextBindings")]
         public Output<ImmutableArray<Outputs.WorkerScriptSecretTextBinding>> SecretTextBindings { get; private set; } = null!;
@@ -168,7 +178,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class WorkerScriptArgs : Pulumi.ResourceArgs
+    public sealed class WorkerScriptArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The script content.
@@ -198,6 +208,14 @@ namespace Pulumi.Cloudflare
             set => _plainTextBindings = value;
         }
 
+        [Input("r2BucketBindings")]
+        private InputList<Inputs.WorkerScriptR2BucketBindingArgs>? _r2BucketBindings;
+        public InputList<Inputs.WorkerScriptR2BucketBindingArgs> R2BucketBindings
+        {
+            get => _r2BucketBindings ?? (_r2BucketBindings = new InputList<Inputs.WorkerScriptR2BucketBindingArgs>());
+            set => _r2BucketBindings = value;
+        }
+
         [Input("secretTextBindings")]
         private InputList<Inputs.WorkerScriptSecretTextBindingArgs>? _secretTextBindings;
         public InputList<Inputs.WorkerScriptSecretTextBindingArgs> SecretTextBindings
@@ -225,9 +243,10 @@ namespace Pulumi.Cloudflare
         public WorkerScriptArgs()
         {
         }
+        public static new WorkerScriptArgs Empty => new WorkerScriptArgs();
     }
 
-    public sealed class WorkerScriptState : Pulumi.ResourceArgs
+    public sealed class WorkerScriptState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The script content.
@@ -257,6 +276,14 @@ namespace Pulumi.Cloudflare
             set => _plainTextBindings = value;
         }
 
+        [Input("r2BucketBindings")]
+        private InputList<Inputs.WorkerScriptR2BucketBindingGetArgs>? _r2BucketBindings;
+        public InputList<Inputs.WorkerScriptR2BucketBindingGetArgs> R2BucketBindings
+        {
+            get => _r2BucketBindings ?? (_r2BucketBindings = new InputList<Inputs.WorkerScriptR2BucketBindingGetArgs>());
+            set => _r2BucketBindings = value;
+        }
+
         [Input("secretTextBindings")]
         private InputList<Inputs.WorkerScriptSecretTextBindingGetArgs>? _secretTextBindings;
         public InputList<Inputs.WorkerScriptSecretTextBindingGetArgs> SecretTextBindings
@@ -284,5 +311,6 @@ namespace Pulumi.Cloudflare
         public WorkerScriptState()
         {
         }
+        public static new WorkerScriptState Empty => new WorkerScriptState();
     }
 }

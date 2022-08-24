@@ -14,6 +14,9 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessPolicyExcludeGithub
     {
         public readonly string? IdentityProviderId;
+        /// <summary>
+        /// Friendly name of the Access Policy.
+        /// </summary>
         public readonly string? Name;
         public readonly ImmutableArray<string> Teams;
 

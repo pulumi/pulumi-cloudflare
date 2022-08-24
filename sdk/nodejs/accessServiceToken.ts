@@ -5,7 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Access Service Tokens are used for service-to-service communication when an application is behind Cloudflare Access.
+ * Access Service Tokens are used for service-to-service communication
+ * when an application is behind Cloudflare Access.
  *
  * ## Example Usage
  *
@@ -15,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * // Generate a service token that will renew if terraform is ran within 30 days of expiration
  * const myApp = new cloudflare.AccessServiceToken("my_app", {
- *     accountId: "d41d8cd98f00b204e9800998ecf8427e",
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     minDaysForRenewal: 30,
  *     name: "CI/CD app renewed",
  * });
@@ -58,7 +59,7 @@ export class AccessServiceToken extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
@@ -70,7 +71,7 @@ export class AccessServiceToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly clientSecret!: pulumi.Output<string>;
     /**
-     * Date when the token expires
+     * Date when the token expires.
      */
     public /*out*/ readonly expiresAt!: pulumi.Output<string>;
     /**
@@ -82,7 +83,7 @@ export class AccessServiceToken extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
 
@@ -129,7 +130,7 @@ export class AccessServiceToken extends pulumi.CustomResource {
  */
 export interface AccessServiceTokenState {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -141,7 +142,7 @@ export interface AccessServiceTokenState {
      */
     clientSecret?: pulumi.Input<string>;
     /**
-     * Date when the token expires
+     * Date when the token expires.
      */
     expiresAt?: pulumi.Input<string>;
     /**
@@ -153,7 +154,7 @@ export interface AccessServiceTokenState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -163,7 +164,7 @@ export interface AccessServiceTokenState {
  */
 export interface AccessServiceTokenArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -175,7 +176,7 @@ export interface AccessServiceTokenArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
 }

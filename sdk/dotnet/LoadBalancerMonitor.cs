@@ -18,70 +18,66 @@ namespace Pulumi.Cloudflare
     /// ### HTTP Monitor
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var httpMonitor = new Cloudflare.LoadBalancerMonitor("httpMonitor", new()
     ///     {
-    ///         var httpMonitor = new Cloudflare.LoadBalancerMonitor("httpMonitor", new Cloudflare.LoadBalancerMonitorArgs
+    ///         AllowInsecure = false,
+    ///         Description = "example http load balancer",
+    ///         ExpectedBody = "alive",
+    ///         ExpectedCodes = "2xx",
+    ///         FollowRedirects = true,
+    ///         Headers = new[]
     ///         {
-    ///             AllowInsecure = false,
-    ///             Description = "example http load balancer",
-    ///             ExpectedBody = "alive",
-    ///             ExpectedCodes = "2xx",
-    ///             FollowRedirects = true,
-    ///             Headers = 
+    ///             new Cloudflare.Inputs.LoadBalancerMonitorHeaderArgs
     ///             {
-    ///                 new Cloudflare.Inputs.LoadBalancerMonitorHeaderArgs
+    ///                 Header = "Host",
+    ///                 Values = new[]
     ///                 {
-    ///                     Header = "Host",
-    ///                     Values = 
-    ///                     {
-    ///                         "example.com",
-    ///                     },
+    ///                     "example.com",
     ///                 },
     ///             },
-    ///             Interval = 60,
-    ///             Method = "GET",
-    ///             Path = "/health",
-    ///             ProbeZone = "example.com",
-    ///             Retries = 5,
-    ///             Timeout = 7,
-    ///             Type = "http",
-    ///         });
-    ///     }
+    ///         },
+    ///         Interval = 60,
+    ///         Method = "GET",
+    ///         Path = "/health",
+    ///         ProbeZone = "example.com",
+    ///         Retries = 5,
+    ///         Timeout = 7,
+    ///         Type = "http",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### TCP Monitor
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var tcpMonitor = new Cloudflare.LoadBalancerMonitor("tcpMonitor", new()
     ///     {
-    ///         var tcpMonitor = new Cloudflare.LoadBalancerMonitor("tcpMonitor", new Cloudflare.LoadBalancerMonitorArgs
-    ///         {
-    ///             Description = "example tcp load balancer",
-    ///             Interval = 60,
-    ///             Method = "connection_established",
-    ///             Port = 8080,
-    ///             Retries = 5,
-    ///             Timeout = 7,
-    ///             Type = "tcp",
-    ///         });
-    ///     }
+    ///         Description = "example tcp load balancer",
+    ///         Interval = 60,
+    ///         Method = "connection_established",
+    ///         Port = 8080,
+    ///         Retries = 5,
+    ///         Timeout = 7,
+    ///         Type = "tcp",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor")]
-    public partial class LoadBalancerMonitor : Pulumi.CustomResource
+    public partial class LoadBalancerMonitor : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
@@ -223,7 +219,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class LoadBalancerMonitorArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerMonitorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
@@ -318,9 +314,10 @@ namespace Pulumi.Cloudflare
         public LoadBalancerMonitorArgs()
         {
         }
+        public static new LoadBalancerMonitorArgs Empty => new LoadBalancerMonitorArgs();
     }
 
-    public sealed class LoadBalancerMonitorState : Pulumi.ResourceArgs
+    public sealed class LoadBalancerMonitorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
@@ -427,5 +424,6 @@ namespace Pulumi.Cloudflare
         public LoadBalancerMonitorState()
         {
         }
+        public static new LoadBalancerMonitorState Empty => new LoadBalancerMonitorState();
     }
 }

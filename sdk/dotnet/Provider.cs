@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [CloudflareResourceType("pulumi:providers:cloudflare")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
         /// Configure API client to always use a specific account. Alternatively, can be configured using the
@@ -93,7 +93,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configure API client to always use a specific account. Alternatively, can be configured using the
@@ -187,5 +187,6 @@ namespace Pulumi.Cloudflare
             Retries = Utilities.GetEnvInt32("CLOUDFLARE_RETRIES") ?? 3;
             Rps = Utilities.GetEnvInt32("CLOUDFLARE_RPS") ?? 4;
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

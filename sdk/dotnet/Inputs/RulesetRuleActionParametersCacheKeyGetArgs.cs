@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RulesetRuleActionParametersCacheKeyGetArgs : Pulumi.ResourceArgs
+    public sealed class RulesetRuleActionParametersCacheKeyGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("cacheByDeviceType")]
         public Input<bool>? CacheByDeviceType { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RulesetRuleActionParametersCacheKeyGetArgs()
         {
         }
+        public static new RulesetRuleActionParametersCacheKeyGetArgs Empty => new RulesetRuleActionParametersCacheKeyGetArgs();
     }
 }

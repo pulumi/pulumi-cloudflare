@@ -6,7 +6,8 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Provides Lists (IPs, Redirects) to be used in Edge Rules Engine across all zones within the same account.
+ * Provides Lists (IPs, Redirects) to be used in Edge Rules Engine
+ * across all zones within the same account.
  *
  * ## Example Usage
  *
@@ -16,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * // Redirect list
  * const example = new cloudflare.List("example", {
- *     accountId: "919f297a62fdfb28844177128ed4d331",
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     description: "example redirects for a list",
  *     items: [
  *         {

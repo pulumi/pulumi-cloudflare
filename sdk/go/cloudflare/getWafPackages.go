@@ -22,7 +22,8 @@ func GetWafPackages(ctx *pulumi.Context, args *GetWafPackagesArgs, opts ...pulum
 // A collection of arguments for invoking getWafPackages.
 type GetWafPackagesArgs struct {
 	Filter *GetWafPackagesFilter `pulumi:"filter"`
-	ZoneId string                `pulumi:"zoneId"`
+	// The zone identifier to target for the resource.
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getWafPackages.
@@ -31,7 +32,8 @@ type GetWafPackagesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id       string                  `pulumi:"id"`
 	Packages []GetWafPackagesPackage `pulumi:"packages"`
-	ZoneId   string                  `pulumi:"zoneId"`
+	// The zone identifier to target for the resource.
+	ZoneId string `pulumi:"zoneId"`
 }
 
 func GetWafPackagesOutput(ctx *pulumi.Context, args GetWafPackagesOutputArgs, opts ...pulumi.InvokeOption) GetWafPackagesResultOutput {
@@ -50,7 +52,8 @@ func GetWafPackagesOutput(ctx *pulumi.Context, args GetWafPackagesOutputArgs, op
 // A collection of arguments for invoking getWafPackages.
 type GetWafPackagesOutputArgs struct {
 	Filter GetWafPackagesFilterPtrInput `pulumi:"filter"`
-	ZoneId pulumi.StringInput           `pulumi:"zoneId"`
+	// The zone identifier to target for the resource.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
 func (GetWafPackagesOutputArgs) ElementType() reflect.Type {
@@ -85,6 +88,7 @@ func (o GetWafPackagesResultOutput) Packages() GetWafPackagesPackageArrayOutput 
 	return o.ApplyT(func(v GetWafPackagesResult) []GetWafPackagesPackage { return v.Packages }).(GetWafPackagesPackageArrayOutput)
 }
 
+// The zone identifier to target for the resource.
 func (o GetWafPackagesResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWafPackagesResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

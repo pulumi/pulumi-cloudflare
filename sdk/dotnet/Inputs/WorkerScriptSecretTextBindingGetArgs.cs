@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class WorkerScriptSecretTextBindingGetArgs : Pulumi.ResourceArgs
+    public sealed class WorkerScriptSecretTextBindingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The global variable for the binding in your Worker code.
@@ -27,5 +27,6 @@ namespace Pulumi.Cloudflare.Inputs
         public WorkerScriptSecretTextBindingGetArgs()
         {
         }
+        public static new WorkerScriptSecretTextBindingGetArgs Empty => new WorkerScriptSecretTextBindingGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class WorkerScriptWebassemblyBindingArgs : Pulumi.ResourceArgs
+    public sealed class WorkerScriptWebassemblyBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The base64 encoded wasm module you want to store.
@@ -27,5 +27,6 @@ namespace Pulumi.Cloudflare.Inputs
         public WorkerScriptWebassemblyBindingArgs()
         {
         }
+        public static new WorkerScriptWebassemblyBindingArgs Empty => new WorkerScriptWebassemblyBindingArgs();
     }
 }

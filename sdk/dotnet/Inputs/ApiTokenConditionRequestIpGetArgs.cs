@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class ApiTokenConditionRequestIpGetArgs : Pulumi.ResourceArgs
+    public sealed class ApiTokenConditionRequestIpGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("ins")]
         private InputList<string>? _ins;
@@ -31,5 +31,6 @@ namespace Pulumi.Cloudflare.Inputs
         public ApiTokenConditionRequestIpGetArgs()
         {
         }
+        public static new ApiTokenConditionRequestIpGetArgs Empty => new ApiTokenConditionRequestIpGetArgs();
     }
 }

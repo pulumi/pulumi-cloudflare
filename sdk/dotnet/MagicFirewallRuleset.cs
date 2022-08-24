@@ -17,39 +17,37 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Cloudflare.MagicFirewallRuleset("example", new()
     ///     {
-    ///         var example = new Cloudflare.MagicFirewallRuleset("example", new Cloudflare.MagicFirewallRulesetArgs
+    ///         AccountId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///         Description = "Global mitigations",
+    ///         Name = "Magic Transit Ruleset",
+    ///         Rules = new[]
     ///         {
-    ///             AccountId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///             Description = "Global mitigations",
-    ///             Name = "Magic Transit Ruleset",
-    ///             Rules = 
+    ///             
     ///             {
-    ///                 
-    ///                 {
-    ///                     { "action", "allow" },
-    ///                     { "description", "Allow TCP Ephemeral Ports" },
-    ///                     { "enabled", "true" },
-    ///                     { "expression", "tcp.dstport in { 32768..65535 }" },
-    ///                 },
-    ///                 
-    ///                 {
-    ///                     { "action", "block" },
-    ///                     { "description", "Block all" },
-    ///                     { "enabled", "true" },
-    ///                     { "expression", "ip.len &gt;= 0" },
-    ///                 },
+    ///                 { "action", "allow" },
+    ///                 { "description", "Allow TCP Ephemeral Ports" },
+    ///                 { "enabled", "true" },
+    ///                 { "expression", "tcp.dstport in { 32768..65535 }" },
     ///             },
-    ///         });
-    ///     }
+    ///             
+    ///             {
+    ///                 { "action", "block" },
+    ///                 { "description", "Block all" },
+    ///                 { "enabled", "true" },
+    ///                 { "expression", "ip.len &gt;= 0" },
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -61,7 +59,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset")]
-    public partial class MagicFirewallRuleset : Pulumi.CustomResource
+    public partial class MagicFirewallRuleset : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the account where the ruleset is being created.
@@ -128,7 +126,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class MagicFirewallRulesetArgs : Pulumi.ResourceArgs
+    public sealed class MagicFirewallRulesetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the account where the ruleset is being created.
@@ -159,9 +157,10 @@ namespace Pulumi.Cloudflare
         public MagicFirewallRulesetArgs()
         {
         }
+        public static new MagicFirewallRulesetArgs Empty => new MagicFirewallRulesetArgs();
     }
 
-    public sealed class MagicFirewallRulesetState : Pulumi.ResourceArgs
+    public sealed class MagicFirewallRulesetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the account where the ruleset is being created.
@@ -192,5 +191,6 @@ namespace Pulumi.Cloudflare
         public MagicFirewallRulesetState()
         {
         }
+        public static new MagicFirewallRulesetState Empty => new MagicFirewallRulesetState();
     }
 }

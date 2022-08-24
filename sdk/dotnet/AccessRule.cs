@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare IP Firewall Access Rule resource. Access control can be applied on basis of IP addresses, IP ranges, AS numbers or countries.
+    /// Provides a Cloudflare IP Firewall Access Rule resource. Access
+    /// control can be applied on basis of IP addresses, IP ranges, AS
+    /// numbers or countries.
     /// 
     /// ## Example Usage
     /// 
@@ -19,58 +21,58 @@ namespace Pulumi.Cloudflare
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Challenge requests coming from known Tor exit nodes.
+    ///     var torExitNodes = new Cloudflare.AccessRule("torExitNodes", new()
     ///     {
-    ///         // Challenge requests coming from known Tor exit nodes.
-    ///         var torExitNodes = new Cloudflare.AccessRule("torExitNodes", new Cloudflare.AccessRuleArgs
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Notes = "Requests coming from known Tor exit nodes",
+    ///         Mode = "challenge",
+    ///         Configuration = new Cloudflare.Inputs.AccessRuleConfigurationArgs
     ///         {
-    ///             Notes = "Requests coming from known Tor exit nodes",
-    ///             Mode = "challenge",
-    ///             Configuration = new Cloudflare.Inputs.AccessRuleConfigurationArgs
-    ///             {
-    ///                 Target = "country",
-    ///                 Value = "T1",
-    ///             },
-    ///         });
-    ///         // Whitelist (sic!) requests coming from Antarctica, but only for single zone.
-    ///         var antarctica = new Cloudflare.AccessRule("antarctica", new Cloudflare.AccessRuleArgs
+    ///             Target = "country",
+    ///             Value = "T1",
+    ///         },
+    ///     });
+    /// 
+    ///     // Allowlist requests coming from Antarctica, but only for single zone.
+    ///     var antarctica = new Cloudflare.AccessRule("antarctica", new()
+    ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Notes = "Requests coming from Antarctica",
+    ///         Mode = "whitelist",
+    ///         Configuration = new Cloudflare.Inputs.AccessRuleConfigurationArgs
     ///         {
-    ///             Notes = "Requests coming from Antarctica",
+    ///             Target = "country",
+    ///             Value = "AQ",
+    ///         },
+    ///     });
+    /// 
+    ///     var config = new Config();
+    ///     var myOffice = config.GetObject&lt;dynamic&gt;("myOffice") ?? new[]
+    ///     {
+    ///         "192.0.2.0/24",
+    ///         "198.51.100.0/24",
+    ///         "2001:db8::/56",
+    ///     };
+    ///     var officeNetwork = new List&lt;Cloudflare.AccessRule&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; myOffice.Length; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         officeNetwork.Add(new Cloudflare.AccessRule($"officeNetwork-{range.Value}", new()
+    ///         {
+    ///             AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///             Notes = "Requests coming from office network",
     ///             Mode = "whitelist",
     ///             Configuration = new Cloudflare.Inputs.AccessRuleConfigurationArgs
     ///             {
-    ///                 Target = "country",
-    ///                 Value = "AQ",
+    ///                 Target = "ip_range",
+    ///                 Value = myOffice[count.Index],
     ///             },
-    ///             ZoneId = "cb029e245cfdd66dc8d2e570d5dd3322",
-    ///         });
-    ///         var config = new Config();
-    ///         var myOffice = config.GetObject&lt;dynamic&gt;("myOffice") ?? 
-    ///         {
-    ///             "192.0.2.0/24",
-    ///             "198.51.100.0/24",
-    ///             "2001:db8::/56",
-    ///         };
-    ///         var officeNetwork = new List&lt;Cloudflare.AccessRule&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; myOffice.Length; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             officeNetwork.Add(new Cloudflare.AccessRule($"officeNetwork-{range.Value}", new Cloudflare.AccessRuleArgs
-    ///             {
-    ///                 Notes = "Requests coming from office network",
-    ///                 Mode = "whitelist",
-    ///                 Configuration = new Cloudflare.Inputs.AccessRuleConfigurationArgs
-    ///                 {
-    ///                     Target = "ip_range",
-    ///                     Value = myOffice[count.Index],
-    ///                 },
-    ///             }));
-    ///         }
+    ///         }));
     ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -94,8 +96,14 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accessRule:AccessRule")]
-    public partial class AccessRule : Pulumi.CustomResource
+    public partial class AccessRule : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
+        [Output("accountId")]
+        public Output<string> AccountId { get; private set; } = null!;
+
         /// <summary>
         /// Rule configuration to apply to a matched request.
         /// </summary>
@@ -103,8 +111,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.AccessRuleConfiguration> Configuration { get; private set; } = null!;
 
         /// <summary>
-        /// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
-        /// `managed_challenge`
+        /// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
         /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
@@ -165,8 +172,14 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class AccessRuleArgs : Pulumi.ResourceArgs
+    public sealed class AccessRuleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
         /// <summary>
         /// Rule configuration to apply to a matched request.
         /// </summary>
@@ -174,8 +187,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.AccessRuleConfigurationArgs> Configuration { get; set; } = null!;
 
         /// <summary>
-        /// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
-        /// `managed_challenge`
+        /// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
         /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;
@@ -195,10 +207,17 @@ namespace Pulumi.Cloudflare
         public AccessRuleArgs()
         {
         }
+        public static new AccessRuleArgs Empty => new AccessRuleArgs();
     }
 
-    public sealed class AccessRuleState : Pulumi.ResourceArgs
+    public sealed class AccessRuleState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
         /// <summary>
         /// Rule configuration to apply to a matched request.
         /// </summary>
@@ -206,8 +225,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.AccessRuleConfigurationGetArgs>? Configuration { get; set; }
 
         /// <summary>
-        /// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
-        /// `managed_challenge`
+        /// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -227,5 +245,6 @@ namespace Pulumi.Cloudflare
         public AccessRuleState()
         {
         }
+        public static new AccessRuleState Empty => new AccessRuleState();
     }
 }

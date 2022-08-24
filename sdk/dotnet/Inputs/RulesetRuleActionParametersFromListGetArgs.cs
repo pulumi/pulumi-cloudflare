@@ -10,16 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RulesetRuleActionParametersFromListGetArgs : Pulumi.ResourceArgs
+    public sealed class RulesetRuleActionParametersFromListGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// Name of the ruleset.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         public RulesetRuleActionParametersFromListGetArgs()
         {
         }
+        public static new RulesetRuleActionParametersFromListGetArgs Empty => new RulesetRuleActionParametersFromListGetArgs();
     }
 }

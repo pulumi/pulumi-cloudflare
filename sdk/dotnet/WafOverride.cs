@@ -16,38 +16,36 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var shopEcxample = new Cloudflare.WafOverride("shopEcxample", new()
     ///     {
-    ///         var shopEcxample = new Cloudflare.WafOverride("shopEcxample", new Cloudflare.WafOverrideArgs
+    ///         ZoneId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         Urls = new[]
     ///         {
-    ///             ZoneId = "1d5fdc9e88c8a8c4518b068cd94331fe",
-    ///             Urls = 
-    ///             {
-    ///                 "example.com/no-waf-here",
-    ///                 "example.com/another/path/*",
-    ///             },
-    ///             Rules = 
-    ///             {
-    ///                 { "100015", "disable" },
-    ///             },
-    ///             Groups = 
-    ///             {
-    ///                 { "ea8687e59929c1fd05ba97574ad43f77", "default" },
-    ///             },
-    ///             RewriteAction = 
-    ///             {
-    ///                 { "default", "block" },
-    ///                 { "challenge", "block" },
-    ///             },
-    ///         });
-    ///     }
+    ///             "example.com/no-waf-here",
+    ///             "example.com/another/path/*",
+    ///         },
+    ///         Rules = 
+    ///         {
+    ///             { "100015", "disable" },
+    ///         },
+    ///         Groups = 
+    ///         {
+    ///             { "ea8687e59929c1fd05ba97574ad43f77", "default" },
+    ///         },
+    ///         RewriteAction = 
+    ///         {
+    ///             { "default", "block" },
+    ///             { "challenge", "block" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -59,7 +57,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/wafOverride:WafOverride")]
-    public partial class WafOverride : Pulumi.CustomResource
+    public partial class WafOverride : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Description of what the WAF override does.
@@ -156,7 +154,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class WafOverrideArgs : Pulumi.ResourceArgs
+    public sealed class WafOverrideArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of what the WAF override does.
@@ -233,9 +231,10 @@ namespace Pulumi.Cloudflare
         public WafOverrideArgs()
         {
         }
+        public static new WafOverrideArgs Empty => new WafOverrideArgs();
     }
 
-    public sealed class WafOverrideState : Pulumi.ResourceArgs
+    public sealed class WafOverrideState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of what the WAF override does.
@@ -315,5 +314,6 @@ namespace Pulumi.Cloudflare
         public WafOverrideState()
         {
         }
+        public static new WafOverrideState Empty => new WafOverrideState();
     }
 }

@@ -10,14 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RulesetRuleActionParametersOverridesRuleArgs : Pulumi.ResourceArgs
+    public sealed class RulesetRuleActionParametersOverridesRuleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `serve_error`, `skip`.
+        /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
+        /// <summary>
+        /// Whether the rule is active.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Unique rule identifier.
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
@@ -33,5 +42,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RulesetRuleActionParametersOverridesRuleArgs()
         {
         }
+        public static new RulesetRuleActionParametersOverridesRuleArgs Empty => new RulesetRuleActionParametersOverridesRuleArgs();
     }
 }

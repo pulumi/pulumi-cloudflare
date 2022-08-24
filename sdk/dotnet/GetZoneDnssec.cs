@@ -19,24 +19,32 @@ namespace Pulumi.Cloudflare
     }
 
 
-    public sealed class GetZoneDnssecArgs : Pulumi.InvokeArgs
+    public sealed class GetZoneDnssecArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The zone identifier to target for the resource.
+        /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
 
         public GetZoneDnssecArgs()
         {
         }
+        public static new GetZoneDnssecArgs Empty => new GetZoneDnssecArgs();
     }
 
-    public sealed class GetZoneDnssecInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetZoneDnssecInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The zone identifier to target for the resource.
+        /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
 
         public GetZoneDnssecInvokeArgs()
         {
         }
+        public static new GetZoneDnssecInvokeArgs Empty => new GetZoneDnssecInvokeArgs();
     }
 
 
@@ -57,6 +65,9 @@ namespace Pulumi.Cloudflare
         public readonly string KeyType;
         public readonly string PublicKey;
         public readonly string Status;
+        /// <summary>
+        /// The zone identifier to target for the resource.
+        /// </summary>
         public readonly string ZoneId;
 
         [OutputConstructor]

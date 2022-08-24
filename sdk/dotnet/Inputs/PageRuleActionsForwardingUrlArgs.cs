@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class PageRuleActionsForwardingUrlArgs : Pulumi.ResourceArgs
+    public sealed class PageRuleActionsForwardingUrlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The status code to use for the redirection.
@@ -27,5 +27,6 @@ namespace Pulumi.Cloudflare.Inputs
         public PageRuleActionsForwardingUrlArgs()
         {
         }
+        public static new PageRuleActionsForwardingUrlArgs Empty => new PageRuleActionsForwardingUrlArgs();
     }
 }

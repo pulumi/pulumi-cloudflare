@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class SplitTunnelTunnelArgs : Pulumi.ResourceArgs
+    public sealed class SplitTunnelTunnelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The address in CIDR format to include in the tunnel configuration. Conflicts with `"host"`.
@@ -33,5 +33,6 @@ namespace Pulumi.Cloudflare.Inputs
         public SplitTunnelTunnelArgs()
         {
         }
+        public static new SplitTunnelTunnelArgs Empty => new SplitTunnelTunnelArgs();
     }
 }

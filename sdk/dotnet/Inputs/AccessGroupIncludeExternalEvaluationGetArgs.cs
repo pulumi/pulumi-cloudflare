@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class AccessGroupIncludeExternalEvaluationGetArgs : Pulumi.ResourceArgs
+    public sealed class AccessGroupIncludeExternalEvaluationGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("evaluateUrl")]
         public Input<string>? EvaluateUrl { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Cloudflare.Inputs
         public AccessGroupIncludeExternalEvaluationGetArgs()
         {
         }
+        public static new AccessGroupIncludeExternalEvaluationGetArgs Empty => new AccessGroupIncludeExternalEvaluationGetArgs();
     }
 }

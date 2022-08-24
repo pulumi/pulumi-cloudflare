@@ -21,11 +21,13 @@ func GetAccountRoles(ctx *pulumi.Context, args *GetAccountRolesArgs, opts ...pul
 
 // A collection of arguments for invoking getAccountRoles.
 type GetAccountRolesArgs struct {
+	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getAccountRoles.
 type GetAccountRolesResult struct {
+	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id    string                `pulumi:"id"`
@@ -47,6 +49,7 @@ func GetAccountRolesOutput(ctx *pulumi.Context, args GetAccountRolesOutputArgs, 
 
 // A collection of arguments for invoking getAccountRoles.
 type GetAccountRolesOutputArgs struct {
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 }
 
@@ -69,6 +72,7 @@ func (o GetAccountRolesResultOutput) ToGetAccountRolesResultOutputWithContext(ct
 	return o
 }
 
+// The account identifier to target for the resource.
 func (o GetAccountRolesResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountRolesResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

@@ -13,7 +13,13 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class HealthcheckHeader
     {
+        /// <summary>
+        /// The header name.
+        /// </summary>
         public readonly string Header;
+        /// <summary>
+        /// A list of string values for the header.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

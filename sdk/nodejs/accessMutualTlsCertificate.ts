@@ -5,7 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Access Mutual TLS Certificate resource. Mutual TLS authentication ensures that the traffic is secure and trusted in both directions between a client and server and can be used with Access to only allows requests from devices with a corresponding client certificate.
+ * Provides a Cloudflare Access Mutual TLS Certificate resource.
+ * Mutual TLS authentication ensures that the traffic is secure and
+ * trusted in both directions between a client and server and can be
+ *  used with Access to only allows requests from devices with a
+ *  corresponding client certificate.
  *
  * > It's required that an `accountId` or `zoneId` is provided and in
  * most cases using either is fine. However, if you're using a scoped
@@ -20,7 +24,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const myCert = new cloudflare.AccessMutualTlsCertificate("myCert", {
- *     zoneId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     name: "My Root Cert",
  *     certificate: _var.ca_pem,
  *     associatedHostnames: ["staging.example.com"],
@@ -70,7 +74,7 @@ export class AccessMutualTlsCertificate extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -87,7 +91,7 @@ export class AccessMutualTlsCertificate extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -132,7 +136,7 @@ export class AccessMutualTlsCertificate extends pulumi.CustomResource {
  */
 export interface AccessMutualTlsCertificateState {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -149,7 +153,7 @@ export interface AccessMutualTlsCertificateState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -159,7 +163,7 @@ export interface AccessMutualTlsCertificateState {
  */
 export interface AccessMutualTlsCertificateArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -175,7 +179,7 @@ export interface AccessMutualTlsCertificateArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
 }

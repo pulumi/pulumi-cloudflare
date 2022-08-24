@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class TeamsAccountBlockPageArgs : Pulumi.ResourceArgs
+    public sealed class TeamsAccountBlockPageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Hex code of block page background color.
@@ -51,5 +51,6 @@ namespace Pulumi.Cloudflare.Inputs
         public TeamsAccountBlockPageArgs()
         {
         }
+        public static new TeamsAccountBlockPageArgs Empty => new TeamsAccountBlockPageArgs();
     }
 }

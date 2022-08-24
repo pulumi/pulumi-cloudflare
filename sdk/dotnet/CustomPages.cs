@@ -15,23 +15,21 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basicChallenge = new Cloudflare.CustomPages("basicChallenge", new()
     ///     {
-    ///         var basicChallenge = new Cloudflare.CustomPages("basicChallenge", new Cloudflare.CustomPagesArgs
-    ///         {
-    ///             State = "customized",
-    ///             Type = "basic_challenge",
-    ///             Url = "https://example.com/challenge.html",
-    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///         });
-    ///     }
+    ///         State = "customized",
+    ///         Type = "basic_challenge",
+    ///         Url = "https://example.com/challenge.html",
+    ///         ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/customPages:CustomPages")]
-    public partial class CustomPages : Pulumi.CustomResource
+    public partial class CustomPages : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account ID where the custom pages should be
@@ -128,7 +126,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class CustomPagesArgs : Pulumi.ResourceArgs
+    public sealed class CustomPagesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account ID where the custom pages should be
@@ -166,9 +164,10 @@ namespace Pulumi.Cloudflare
         public CustomPagesArgs()
         {
         }
+        public static new CustomPagesArgs Empty => new CustomPagesArgs();
     }
 
-    public sealed class CustomPagesState : Pulumi.ResourceArgs
+    public sealed class CustomPagesState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account ID where the custom pages should be
@@ -206,5 +205,6 @@ namespace Pulumi.Cloudflare
         public CustomPagesState()
         {
         }
+        public static new CustomPagesState Empty => new CustomPagesState();
     }
 }

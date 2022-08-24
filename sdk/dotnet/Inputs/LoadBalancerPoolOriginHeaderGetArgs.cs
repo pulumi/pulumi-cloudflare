@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class LoadBalancerPoolOriginHeaderGetArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerPoolOriginHeaderGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The header name.
@@ -33,5 +33,6 @@ namespace Pulumi.Cloudflare.Inputs
         public LoadBalancerPoolOriginHeaderGetArgs()
         {
         }
+        public static new LoadBalancerPoolOriginHeaderGetArgs Empty => new LoadBalancerPoolOriginHeaderGetArgs();
     }
 }

@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Access Group resource. Access Groups are used in conjunction with Access Policies to restrict access to a particular resource based on group membership.
+// Provides a Cloudflare Access Group resource. Access Groups are used
+// in conjunction with Access Policies to restrict access to a
+// particular resource based on group membership.
 //
 // > It's required that an `accountId` or `zoneId` is provided and in
 // most cases using either is fine. However, if you're using a scoped
@@ -19,71 +21,23 @@ import (
 // scope. For example, an access token that is scoped to the "example.com"
 // zone needs to use the `zoneId` argument.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewAccessGroup(ctx, "testGroupAccessGroup", &cloudflare.AccessGroupArgs{
-// 			AccountId: pulumi.String("975ecf5a45e3bcb680dba0722a420ad9"),
-// 			Name:      pulumi.String("staging group"),
-// 			Includes: AccessGroupIncludeArray{
-// 				&AccessGroupIncludeArgs{
-// 					Emails: pulumi.StringArray{
-// 						pulumi.String("test@example.com"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewAccessGroup(ctx, "testGroupIndex/accessGroupAccessGroup", &cloudflare.AccessGroupArgs{
-// 			AccountId: pulumi.String("975ecf5a45e3bcb680dba0722a420ad9"),
-// 			Name:      pulumi.String("staging group"),
-// 			Includes: AccessGroupIncludeArray{
-// 				&AccessGroupIncludeArgs{
-// 					Emails: pulumi.StringArray{
-// 						pulumi.String("test@example.com"),
-// 					},
-// 				},
-// 			},
-// 			Requires: AccessGroupRequireArray{
-// 				Ips: AccessGroupRequireArgs{
-// 					_var.Office_ip,
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // ```sh
-//  $ pulumi import cloudflare:index/accessGroup:AccessGroup example <account_id>/<group_id>
+//
+//	$ pulumi import cloudflare:index/accessGroup:AccessGroup example <account_id>/<group_id>
+//
 // ```
 type AccessGroup struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrOutput        `pulumi:"accountId"`
 	Excludes  AccessGroupExcludeArrayOutput `pulumi:"excludes"`
 	Includes  AccessGroupIncludeArrayOutput `pulumi:"includes"`
 	Name      pulumi.StringOutput           `pulumi:"name"`
 	Requires  AccessGroupRequireArrayOutput `pulumi:"requires"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -122,24 +76,24 @@ func GetAccessGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessGroup resources.
 type accessGroupState struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId *string              `pulumi:"accountId"`
 	Excludes  []AccessGroupExclude `pulumi:"excludes"`
 	Includes  []AccessGroupInclude `pulumi:"includes"`
 	Name      *string              `pulumi:"name"`
 	Requires  []AccessGroupRequire `pulumi:"requires"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessGroupState struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
 	Excludes  AccessGroupExcludeArrayInput
 	Includes  AccessGroupIncludeArrayInput
 	Name      pulumi.StringPtrInput
 	Requires  AccessGroupRequireArrayInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -148,25 +102,25 @@ func (AccessGroupState) ElementType() reflect.Type {
 }
 
 type accessGroupArgs struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId *string              `pulumi:"accountId"`
 	Excludes  []AccessGroupExclude `pulumi:"excludes"`
 	Includes  []AccessGroupInclude `pulumi:"includes"`
 	Name      string               `pulumi:"name"`
 	Requires  []AccessGroupRequire `pulumi:"requires"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessGroup resource.
 type AccessGroupArgs struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
 	Excludes  AccessGroupExcludeArrayInput
 	Includes  AccessGroupIncludeArrayInput
 	Name      pulumi.StringInput
 	Requires  AccessGroupRequireArrayInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -196,7 +150,7 @@ func (i *AccessGroup) ToAccessGroupOutputWithContext(ctx context.Context) Access
 // AccessGroupArrayInput is an input type that accepts AccessGroupArray and AccessGroupArrayOutput values.
 // You can construct a concrete instance of `AccessGroupArrayInput` via:
 //
-//          AccessGroupArray{ AccessGroupArgs{...} }
+//	AccessGroupArray{ AccessGroupArgs{...} }
 type AccessGroupArrayInput interface {
 	pulumi.Input
 
@@ -221,7 +175,7 @@ func (i AccessGroupArray) ToAccessGroupArrayOutputWithContext(ctx context.Contex
 // AccessGroupMapInput is an input type that accepts AccessGroupMap and AccessGroupMapOutput values.
 // You can construct a concrete instance of `AccessGroupMapInput` via:
 //
-//          AccessGroupMap{ "key": AccessGroupArgs{...} }
+//	AccessGroupMap{ "key": AccessGroupArgs{...} }
 type AccessGroupMapInput interface {
 	pulumi.Input
 
@@ -257,7 +211,7 @@ func (o AccessGroupOutput) ToAccessGroupOutputWithContext(ctx context.Context) A
 	return o
 }
 
-// The account identifier to target for the resource.
+// The account identifier to target for the resource. Conflicts with `zoneId`.
 func (o AccessGroupOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessGroup) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -278,7 +232,7 @@ func (o AccessGroupOutput) Requires() AccessGroupRequireArrayOutput {
 	return o.ApplyT(func(v *AccessGroup) AccessGroupRequireArrayOutput { return v.Requires }).(AccessGroupRequireArrayOutput)
 }
 
-// The zone identifier to target for the resource.
+// The zone identifier to target for the resource. Conflicts with `accountId`.
 func (o AccessGroupOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessGroup) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

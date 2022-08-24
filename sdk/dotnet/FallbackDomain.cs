@@ -21,7 +21,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/fallbackDomain:FallbackDomain")]
-    public partial class FallbackDomain : Pulumi.CustomResource
+    public partial class FallbackDomain : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account to which the device posture rule should be added.
@@ -79,7 +79,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class FallbackDomainArgs : Pulumi.ResourceArgs
+    public sealed class FallbackDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account to which the device posture rule should be added.
@@ -102,9 +102,10 @@ namespace Pulumi.Cloudflare
         public FallbackDomainArgs()
         {
         }
+        public static new FallbackDomainArgs Empty => new FallbackDomainArgs();
     }
 
-    public sealed class FallbackDomainState : Pulumi.ResourceArgs
+    public sealed class FallbackDomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account to which the device posture rule should be added.
@@ -127,5 +128,6 @@ namespace Pulumi.Cloudflare
         public FallbackDomainState()
         {
         }
+        public static new FallbackDomainState Empty => new FallbackDomainState();
     }
 }

@@ -10,13 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class AccessPolicyApprovalGroupArgs : Pulumi.ResourceArgs
+    public sealed class AccessPolicyApprovalGroupArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Number of approvals needed.
+        /// </summary>
         [Input("approvalsNeeded", required: true)]
         public Input<int> ApprovalsNeeded { get; set; } = null!;
 
         [Input("emailAddresses")]
         private InputList<string>? _emailAddresses;
+
+        /// <summary>
+        /// List of emails to request approval from.
+        /// </summary>
         public InputList<string> EmailAddresses
         {
             get => _emailAddresses ?? (_emailAddresses = new InputList<string>());
@@ -29,5 +36,6 @@ namespace Pulumi.Cloudflare.Inputs
         public AccessPolicyApprovalGroupArgs()
         {
         }
+        public static new AccessPolicyApprovalGroupArgs Empty => new AccessPolicyApprovalGroupArgs();
     }
 }

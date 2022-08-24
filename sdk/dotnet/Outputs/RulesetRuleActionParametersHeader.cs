@@ -14,6 +14,9 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersHeader
     {
         public readonly string? Expression;
+        /// <summary>
+        /// Name of the ruleset.
+        /// </summary>
         public readonly string? Name;
         public readonly string? Operation;
         public readonly string? Value;

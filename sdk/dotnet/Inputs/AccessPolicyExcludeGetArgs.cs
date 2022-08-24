@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class AccessPolicyExcludeGetArgs : Pulumi.ResourceArgs
+    public sealed class AccessPolicyExcludeGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("anyValidServiceToken")]
         public Input<bool>? AnyValidServiceToken { get; set; }
@@ -137,5 +137,6 @@ namespace Pulumi.Cloudflare.Inputs
         public AccessPolicyExcludeGetArgs()
         {
         }
+        public static new AccessPolicyExcludeGetArgs Empty => new AccessPolicyExcludeGetArgs();
     }
 }

@@ -20,35 +20,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewWafOverride(ctx, "shopEcxample", &cloudflare.WafOverrideArgs{
-// 			ZoneId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-// 			Urls: pulumi.StringArray{
-// 				pulumi.String("example.com/no-waf-here"),
-// 				pulumi.String("example.com/another/path/*"),
-// 			},
-// 			Rules: pulumi.StringMap{
-// 				"100015": pulumi.String("disable"),
-// 			},
-// 			Groups: pulumi.StringMap{
-// 				"ea8687e59929c1fd05ba97574ad43f77": pulumi.String("default"),
-// 			},
-// 			RewriteAction: pulumi.StringMap{
-// 				"default":   pulumi.String("block"),
-// 				"challenge": pulumi.String("block"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewWafOverride(ctx, "shopEcxample", &cloudflare.WafOverrideArgs{
+//				ZoneId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+//				Urls: pulumi.StringArray{
+//					pulumi.String("example.com/no-waf-here"),
+//					pulumi.String("example.com/another/path/*"),
+//				},
+//				Rules: pulumi.StringMap{
+//					"100015": pulumi.String("disable"),
+//				},
+//				Groups: pulumi.StringMap{
+//					"ea8687e59929c1fd05ba97574ad43f77": pulumi.String("default"),
+//				},
+//				RewriteAction: pulumi.StringMap{
+//					"default":   pulumi.String("block"),
+//					"challenge": pulumi.String("block"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -56,7 +59,9 @@ import (
 // WAF Overrides can be imported using a composite ID formed of zone ID and override ID.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/wafOverride:WafOverride my_example_waf_override 3abe5b950053dbddf1516d89f9ef1e8a/9d4e66d7649c178663bf62e06dbacb23
+//
+//	$ pulumi import cloudflare:index/wafOverride:WafOverride my_example_waf_override 3abe5b950053dbddf1516d89f9ef1e8a/9d4e66d7649c178663bf62e06dbacb23
+//
 // ```
 type WafOverride struct {
 	pulumi.CustomResourceState
@@ -223,7 +228,7 @@ func (i *WafOverride) ToWafOverrideOutputWithContext(ctx context.Context) WafOve
 // WafOverrideArrayInput is an input type that accepts WafOverrideArray and WafOverrideArrayOutput values.
 // You can construct a concrete instance of `WafOverrideArrayInput` via:
 //
-//          WafOverrideArray{ WafOverrideArgs{...} }
+//	WafOverrideArray{ WafOverrideArgs{...} }
 type WafOverrideArrayInput interface {
 	pulumi.Input
 
@@ -248,7 +253,7 @@ func (i WafOverrideArray) ToWafOverrideArrayOutputWithContext(ctx context.Contex
 // WafOverrideMapInput is an input type that accepts WafOverrideMap and WafOverrideMapOutput values.
 // You can construct a concrete instance of `WafOverrideMapInput` via:
 //
-//          WafOverrideMap{ "key": WafOverrideArgs{...} }
+//	WafOverrideMap{ "key": WafOverrideArgs{...} }
 type WafOverrideMapInput interface {
 	pulumi.Input
 

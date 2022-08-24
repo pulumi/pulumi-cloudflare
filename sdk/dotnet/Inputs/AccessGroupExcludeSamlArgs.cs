@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class AccessGroupExcludeSamlArgs : Pulumi.ResourceArgs
+    public sealed class AccessGroupExcludeSamlArgs : global::Pulumi.ResourceArgs
     {
         [Input("attributeName")]
         public Input<string>? AttributeName { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Cloudflare.Inputs
         public AccessGroupExcludeSamlArgs()
         {
         }
+        public static new AccessGroupExcludeSamlArgs Empty => new AccessGroupExcludeSamlArgs();
     }
 }

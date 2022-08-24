@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class CustomSslCustomSslOptionsArgs : Pulumi.ResourceArgs
+    public sealed class CustomSslCustomSslOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
@@ -45,5 +45,6 @@ namespace Pulumi.Cloudflare.Inputs
         public CustomSslCustomSslOptionsArgs()
         {
         }
+        public static new CustomSslCustomSslOptionsArgs Empty => new CustomSslCustomSslOptionsArgs();
     }
 }

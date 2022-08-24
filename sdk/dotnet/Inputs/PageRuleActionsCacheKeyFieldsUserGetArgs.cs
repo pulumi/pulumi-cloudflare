@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class PageRuleActionsCacheKeyFieldsUserGetArgs : Pulumi.ResourceArgs
+    public sealed class PageRuleActionsCacheKeyFieldsUserGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
@@ -33,5 +33,6 @@ namespace Pulumi.Cloudflare.Inputs
         public PageRuleActionsCacheKeyFieldsUserGetArgs()
         {
         }
+        public static new PageRuleActionsCacheKeyFieldsUserGetArgs Empty => new PageRuleActionsCacheKeyFieldsUserGetArgs();
     }
 }

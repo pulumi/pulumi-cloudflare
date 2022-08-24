@@ -15,25 +15,23 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Waiting Room Event
+    ///     var example = new Cloudflare.WaitingRoomEvent("example", new()
     ///     {
-    ///         // Waiting Room Event
-    ///         var example = new Cloudflare.WaitingRoomEvent("example", new Cloudflare.WaitingRoomEventArgs
-    ///         {
-    ///             EventEndTime = "2006-01-02T20:04:05Z",
-    ///             EventStartTime = "2006-01-02T15:04:05Z",
-    ///             Name = "foo",
-    ///             WaitingRoomId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///             ZoneId = "ae36f999674d196762efcc5abb06b345",
-    ///         });
-    ///     }
+    ///         EventEndTime = "2006-01-02T20:04:05Z",
+    ///         EventStartTime = "2006-01-02T15:04:05Z",
+    ///         Name = "foo",
+    ///         WaitingRoomId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -45,7 +43,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/waitingRoomEvent:WaitingRoomEvent")]
-    public partial class WaitingRoomEvent : Pulumi.CustomResource
+    public partial class WaitingRoomEvent : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation time.
@@ -102,14 +100,13 @@ namespace Pulumi.Cloudflare
         public Output<int?> NewUsersPerMinute { get; private set; } = null!;
 
         /// <summary>
-        /// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes
-        /// before `event_start_time`.
+        /// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `event_start_time`.
         /// </summary>
         [Output("prequeueStartTime")]
         public Output<string?> PrequeueStartTime { get; private set; } = null!;
 
         /// <summary>
-        /// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+        /// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
         /// </summary>
         [Output("queueingMethod")]
         public Output<string?> QueueingMethod { get; private set; } = null!;
@@ -121,8 +118,7 @@ namespace Pulumi.Cloudflare
         public Output<int?> SessionDuration { get; private set; } = null!;
 
         /// <summary>
-        /// Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not
-        /// null.
+        /// Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Defaults to `false`.
         /// </summary>
         [Output("shuffleAtEventStart")]
         public Output<bool?> ShuffleAtEventStart { get; private set; } = null!;
@@ -195,7 +191,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class WaitingRoomEventArgs : Pulumi.ResourceArgs
+    public sealed class WaitingRoomEventArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is a templated html file that will be rendered at the edge.
@@ -240,14 +236,13 @@ namespace Pulumi.Cloudflare
         public Input<int>? NewUsersPerMinute { get; set; }
 
         /// <summary>
-        /// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes
-        /// before `event_start_time`.
+        /// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `event_start_time`.
         /// </summary>
         [Input("prequeueStartTime")]
         public Input<string>? PrequeueStartTime { get; set; }
 
         /// <summary>
-        /// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+        /// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
         /// </summary>
         [Input("queueingMethod")]
         public Input<string>? QueueingMethod { get; set; }
@@ -259,8 +254,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? SessionDuration { get; set; }
 
         /// <summary>
-        /// Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not
-        /// null.
+        /// Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Defaults to `false`.
         /// </summary>
         [Input("shuffleAtEventStart")]
         public Input<bool>? ShuffleAtEventStart { get; set; }
@@ -292,9 +286,10 @@ namespace Pulumi.Cloudflare
         public WaitingRoomEventArgs()
         {
         }
+        public static new WaitingRoomEventArgs Empty => new WaitingRoomEventArgs();
     }
 
-    public sealed class WaitingRoomEventState : Pulumi.ResourceArgs
+    public sealed class WaitingRoomEventState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation time.
@@ -351,14 +346,13 @@ namespace Pulumi.Cloudflare
         public Input<int>? NewUsersPerMinute { get; set; }
 
         /// <summary>
-        /// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes
-        /// before `event_start_time`.
+        /// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `event_start_time`.
         /// </summary>
         [Input("prequeueStartTime")]
         public Input<string>? PrequeueStartTime { get; set; }
 
         /// <summary>
-        /// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+        /// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
         /// </summary>
         [Input("queueingMethod")]
         public Input<string>? QueueingMethod { get; set; }
@@ -370,8 +364,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? SessionDuration { get; set; }
 
         /// <summary>
-        /// Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not
-        /// null.
+        /// Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Defaults to `false`.
         /// </summary>
         [Input("shuffleAtEventStart")]
         public Input<bool>? ShuffleAtEventStart { get; set; }
@@ -403,5 +396,6 @@ namespace Pulumi.Cloudflare
         public WaitingRoomEventState()
         {
         }
+        public static new WaitingRoomEventState Empty => new WaitingRoomEventState();
     }
 }

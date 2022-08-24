@@ -19,6 +19,9 @@ export function getZoneDnssec(args: GetZoneDnssecArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getZoneDnssec.
  */
 export interface GetZoneDnssecArgs {
+    /**
+     * The zone identifier to target for the resource.
+     */
     zoneId: string;
 }
 
@@ -40,6 +43,9 @@ export interface GetZoneDnssecResult {
     readonly keyType: string;
     readonly publicKey: string;
     readonly status: string;
+    /**
+     * The zone identifier to target for the resource.
+     */
     readonly zoneId: string;
 }
 
@@ -51,5 +57,8 @@ export function getZoneDnssecOutput(args: GetZoneDnssecOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getZoneDnssec.
  */
 export interface GetZoneDnssecOutputArgs {
+    /**
+     * The zone identifier to target for the resource.
+     */
     zoneId: pulumi.Input<string>;
 }

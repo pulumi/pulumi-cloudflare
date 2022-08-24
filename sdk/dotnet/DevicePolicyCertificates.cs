@@ -15,21 +15,19 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Cloudflare.DevicePolicyCertificates("example", new()
     ///     {
-    ///         var example = new Cloudflare.DevicePolicyCertificates("example", new Cloudflare.DevicePolicyCertificatesArgs
-    ///         {
-    ///             Enabled = true,
-    ///             ZoneId = "1d5fdc9e88c8a8c4518b068cd94331fe",
-    ///         });
-    ///     }
+    ///         Enabled = true,
+    ///         ZoneId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -41,7 +39,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates")]
-    public partial class DevicePolicyCertificates : Pulumi.CustomResource
+    public partial class DevicePolicyCertificates : global::Pulumi.CustomResource
     {
         /// <summary>
         /// True if certificate generation is enabled.
@@ -99,7 +97,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class DevicePolicyCertificatesArgs : Pulumi.ResourceArgs
+    public sealed class DevicePolicyCertificatesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// True if certificate generation is enabled.
@@ -116,9 +114,10 @@ namespace Pulumi.Cloudflare
         public DevicePolicyCertificatesArgs()
         {
         }
+        public static new DevicePolicyCertificatesArgs Empty => new DevicePolicyCertificatesArgs();
     }
 
-    public sealed class DevicePolicyCertificatesState : Pulumi.ResourceArgs
+    public sealed class DevicePolicyCertificatesState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// True if certificate generation is enabled.
@@ -135,5 +134,6 @@ namespace Pulumi.Cloudflare
         public DevicePolicyCertificatesState()
         {
         }
+        public static new DevicePolicyCertificatesState Empty => new DevicePolicyCertificatesState();
     }
 }

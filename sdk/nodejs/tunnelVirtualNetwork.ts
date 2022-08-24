@@ -5,9 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource, that manages Cloudflare tunnel virtual networks for Zero Trust. Tunnel
- * virtual networks are used for segregation of Tunnel IP Routes via Virtualized Networks to
- * handle overlapping private IPs in your origins.
+ * Provides a resource, that manages Cloudflare tunnel virtual networks
+ * for Zero Trust. Tunnel virtual networks are used for segregation of
+ * Tunnel IP Routes via Virtualized Networks to handle overlapping
+ * private IPs in your origins.
  *
  * ## Example Usage
  *
@@ -16,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.TunnelVirtualNetwork("example", {
- *     accountId: "c4a7362d577a6c3019a474fd6f485821",
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     comment: "New tunnel virtual network for documentation",
  *     name: "vnet-for-documentation",
  * });
@@ -65,8 +66,7 @@ export class TunnelVirtualNetwork extends pulumi.CustomResource {
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
-     * Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and
-     * Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+     * Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
      */
     public readonly isDefaultNetwork!: pulumi.Output<boolean | undefined>;
     /**
@@ -122,8 +122,7 @@ export interface TunnelVirtualNetworkState {
      */
     comment?: pulumi.Input<string>;
     /**
-     * Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and
-     * Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+     * Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
      */
     isDefaultNetwork?: pulumi.Input<boolean>;
     /**
@@ -145,8 +144,7 @@ export interface TunnelVirtualNetworkArgs {
      */
     comment?: pulumi.Input<string>;
     /**
-     * Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and
-     * Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+     * Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
      */
     isDefaultNetwork?: pulumi.Input<boolean>;
     /**

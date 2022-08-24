@@ -15,86 +15,84 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new Cloudflare.LoadBalancerPool("foo", new()
     ///     {
-    ///         var foo = new Cloudflare.LoadBalancerPool("foo", new Cloudflare.LoadBalancerPoolArgs
+    ///         Description = "example load balancer pool",
+    ///         Enabled = false,
+    ///         Latitude = 55,
+    ///         LoadSheddings = new[]
     ///         {
-    ///             Description = "example load balancer pool",
-    ///             Enabled = false,
-    ///             Latitude = 55,
-    ///             LoadSheddings = 
+    ///             new Cloudflare.Inputs.LoadBalancerPoolLoadSheddingArgs
     ///             {
-    ///                 new Cloudflare.Inputs.LoadBalancerPoolLoadSheddingArgs
-    ///                 {
-    ///                     DefaultPercent = 55,
-    ///                     DefaultPolicy = "random",
-    ///                     SessionPercent = 12,
-    ///                     SessionPolicy = "hash",
-    ///                 },
+    ///                 DefaultPercent = 55,
+    ///                 DefaultPolicy = "random",
+    ///                 SessionPercent = 12,
+    ///                 SessionPolicy = "hash",
     ///             },
-    ///             Longitude = -12,
-    ///             MinimumOrigins = 1,
-    ///             Name = "example-pool",
-    ///             NotificationEmail = "someone@example.com",
-    ///             OriginSteerings = 
+    ///         },
+    ///         Longitude = -12,
+    ///         MinimumOrigins = 1,
+    ///         Name = "example-pool",
+    ///         NotificationEmail = "someone@example.com",
+    ///         OriginSteerings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.LoadBalancerPoolOriginSteeringArgs
     ///             {
-    ///                 new Cloudflare.Inputs.LoadBalancerPoolOriginSteeringArgs
-    ///                 {
-    ///                     Policy = "random",
-    ///                 },
+    ///                 Policy = "random",
     ///             },
-    ///             Origins = 
+    ///         },
+    ///         Origins = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.LoadBalancerPoolOriginArgs
     ///             {
-    ///                 new Cloudflare.Inputs.LoadBalancerPoolOriginArgs
+    ///                 Address = "192.0.2.1",
+    ///                 Enabled = false,
+    ///                 Headers = new[]
     ///                 {
-    ///                     Address = "192.0.2.1",
-    ///                     Enabled = false,
-    ///                     Headers = 
+    ///                     new Cloudflare.Inputs.LoadBalancerPoolOriginHeaderArgs
     ///                     {
-    ///                         new Cloudflare.Inputs.LoadBalancerPoolOriginHeaderArgs
+    ///                         Header = "Host",
+    ///                         Values = new[]
     ///                         {
-    ///                             Header = "Host",
-    ///                             Values = 
-    ///                             {
-    ///                                 "example-1",
-    ///                             },
+    ///                             "example-1",
     ///                         },
     ///                     },
-    ///                     Name = "example-1",
     ///                 },
-    ///                 new Cloudflare.Inputs.LoadBalancerPoolOriginArgs
+    ///                 Name = "example-1",
+    ///             },
+    ///             new Cloudflare.Inputs.LoadBalancerPoolOriginArgs
+    ///             {
+    ///                 Address = "192.0.2.2",
+    ///                 Headers = new[]
     ///                 {
-    ///                     Address = "192.0.2.2",
-    ///                     Headers = 
+    ///                     new Cloudflare.Inputs.LoadBalancerPoolOriginHeaderArgs
     ///                     {
-    ///                         new Cloudflare.Inputs.LoadBalancerPoolOriginHeaderArgs
+    ///                         Header = "Host",
+    ///                         Values = new[]
     ///                         {
-    ///                             Header = "Host",
-    ///                             Values = 
-    ///                             {
-    ///                                 "example-2",
-    ///                             },
+    ///                             "example-2",
     ///                         },
     ///                     },
-    ///                     Name = "example-2",
     ///                 },
+    ///                 Name = "example-2",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/loadBalancerPool:LoadBalancerPool")]
-    public partial class LoadBalancerPool : Pulumi.CustomResource
+    public partial class LoadBalancerPool : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+        /// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
         /// </summary>
         [Output("checkRegions")]
         public Output<ImmutableArray<string>> CheckRegions { get; private set; } = null!;
@@ -221,13 +219,13 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class LoadBalancerPoolArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerPoolArgs : global::Pulumi.ResourceArgs
     {
         [Input("checkRegions")]
         private InputList<string>? _checkRegions;
 
         /// <summary>
-        /// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+        /// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
         /// </summary>
         public InputList<string> CheckRegions
         {
@@ -322,15 +320,16 @@ namespace Pulumi.Cloudflare
         public LoadBalancerPoolArgs()
         {
         }
+        public static new LoadBalancerPoolArgs Empty => new LoadBalancerPoolArgs();
     }
 
-    public sealed class LoadBalancerPoolState : Pulumi.ResourceArgs
+    public sealed class LoadBalancerPoolState : global::Pulumi.ResourceArgs
     {
         [Input("checkRegions")]
         private InputList<string>? _checkRegions;
 
         /// <summary>
-        /// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+        /// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
         /// </summary>
         public InputList<string> CheckRegions
         {
@@ -437,5 +436,6 @@ namespace Pulumi.Cloudflare
         public LoadBalancerPoolState()
         {
         }
+        public static new LoadBalancerPoolState Empty => new LoadBalancerPoolState();
     }
 }

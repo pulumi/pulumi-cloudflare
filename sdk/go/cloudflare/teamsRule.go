@@ -19,33 +19,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewTeamsRule(ctx, "rule1", &cloudflare.TeamsRuleArgs{
-// 			AccountId:   pulumi.String("d57c3de47a013c03ca7e237dd3e61d7d"),
-// 			Action:      pulumi.String("block"),
-// 			Description: pulumi.String("desc"),
-// 			Filters: pulumi.StringArray{
-// 				pulumi.String("http"),
-// 			},
-// 			Name:       pulumi.String("office"),
-// 			Precedence: pulumi.Int(1),
-// 			RuleSettings: &TeamsRuleRuleSettingsArgs{
-// 				BlockPageEnabled: pulumi.Bool(true),
-// 				BlockPageReason:  pulumi.String("access not permitted"),
-// 			},
-// 			Traffic: pulumi.String("http.request.uri == \"https://www.example.com/malicious\""),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewTeamsRule(ctx, "rule1", &cloudflare.TeamsRuleArgs{
+//				AccountId:   pulumi.String("d57c3de47a013c03ca7e237dd3e61d7d"),
+//				Action:      pulumi.String("block"),
+//				Description: pulumi.String("desc"),
+//				Filters: pulumi.StringArray{
+//					pulumi.String("http"),
+//				},
+//				Name:       pulumi.String("office"),
+//				Precedence: pulumi.Int(1),
+//				RuleSettings: &TeamsRuleRuleSettingsArgs{
+//					BlockPageEnabled: pulumi.Bool(true),
+//					BlockPageReason:  pulumi.String("access not permitted"),
+//				},
+//				Traffic: pulumi.String("http.request.uri == \"https://www.example.com/malicious\""),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -53,7 +56,9 @@ import (
 // Teams Rules can be imported using a composite ID formed of account ID and teams rule ID.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/teamsRule:TeamsRule rule1 cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+//
+//	$ pulumi import cloudflare:index/teamsRule:TeamsRule rule1 cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+//
 // ```
 type TeamsRule struct {
 	pulumi.CustomResourceState
@@ -259,7 +264,7 @@ func (i *TeamsRule) ToTeamsRuleOutputWithContext(ctx context.Context) TeamsRuleO
 // TeamsRuleArrayInput is an input type that accepts TeamsRuleArray and TeamsRuleArrayOutput values.
 // You can construct a concrete instance of `TeamsRuleArrayInput` via:
 //
-//          TeamsRuleArray{ TeamsRuleArgs{...} }
+//	TeamsRuleArray{ TeamsRuleArgs{...} }
 type TeamsRuleArrayInput interface {
 	pulumi.Input
 
@@ -284,7 +289,7 @@ func (i TeamsRuleArray) ToTeamsRuleArrayOutputWithContext(ctx context.Context) T
 // TeamsRuleMapInput is an input type that accepts TeamsRuleMap and TeamsRuleMapOutput values.
 // You can construct a concrete instance of `TeamsRuleMapInput` via:
 //
-//          TeamsRuleMap{ "key": TeamsRuleArgs{...} }
+//	TeamsRuleMap{ "key": TeamsRuleArgs{...} }
 type TeamsRuleMapInput interface {
 	pulumi.Input
 

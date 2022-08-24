@@ -19,74 +19,87 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := cloudflare.NewLoadBalancerPool(ctx, "foo", &cloudflare.LoadBalancerPoolArgs{
-// 			Name: pulumi.String("example-lb-pool"),
-// 			Origins: LoadBalancerPoolOriginArray{
-// 				&LoadBalancerPoolOriginArgs{
-// 					Name:    pulumi.String("example-1"),
-// 					Address: pulumi.String("192.0.2.1"),
-// 					Enabled: pulumi.Bool(false),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewLoadBalancer(ctx, "bar", &cloudflare.LoadBalancerArgs{
-// 			ZoneId:         pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-// 			Name:           pulumi.String("example-load-balancer.example.com"),
-// 			FallbackPoolId: foo.ID(),
-// 			DefaultPoolIds: pulumi.StringArray{
-// 				foo.ID(),
-// 			},
-// 			Description:    pulumi.String("example load balancer using geo-balancing"),
-// 			Proxied:        pulumi.Bool(true),
-// 			SteeringPolicy: pulumi.String("geo"),
-// 			PopPools: LoadBalancerPopPoolArray{
-// 				&LoadBalancerPopPoolArgs{
-// 					Pop: pulumi.String("LAX"),
-// 					PoolIds: pulumi.StringArray{
-// 						foo.ID(),
-// 					},
-// 				},
-// 			},
-// 			RegionPools: LoadBalancerRegionPoolArray{
-// 				&LoadBalancerRegionPoolArgs{
-// 					Region: pulumi.String("WNAM"),
-// 					PoolIds: pulumi.StringArray{
-// 						foo.ID(),
-// 					},
-// 				},
-// 			},
-// 			Rules: LoadBalancerRuleArray{
-// 				&LoadBalancerRuleArgs{
-// 					Name:      pulumi.String("example rule"),
-// 					Condition: pulumi.String("http.request.uri.path contains \"testing\""),
-// 					FixedResponse: &LoadBalancerRuleFixedResponseArgs{
-// 						MessageBody: pulumi.String("hello"),
-// 						StatusCode:  pulumi.Int(200),
-// 						ContentType: pulumi.String("html"),
-// 						Location:    pulumi.String("www.example.com"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := cloudflare.NewLoadBalancerPool(ctx, "foo", &cloudflare.LoadBalancerPoolArgs{
+//				Name: pulumi.String("example-lb-pool"),
+//				Origins: LoadBalancerPoolOriginArray{
+//					&LoadBalancerPoolOriginArgs{
+//						Name:    pulumi.String("example-1"),
+//						Address: pulumi.String("192.0.2.1"),
+//						Enabled: pulumi.Bool(false),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewLoadBalancer(ctx, "bar", &cloudflare.LoadBalancerArgs{
+//				ZoneId:         pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+//				Name:           pulumi.String("example-load-balancer.example.com"),
+//				FallbackPoolId: foo.ID(),
+//				DefaultPoolIds: pulumi.StringArray{
+//					foo.ID(),
+//				},
+//				Description:    pulumi.String("example load balancer using geo-balancing"),
+//				Proxied:        pulumi.Bool(true),
+//				SteeringPolicy: pulumi.String("geo"),
+//				PopPools: LoadBalancerPopPoolArray{
+//					&LoadBalancerPopPoolArgs{
+//						Pop: pulumi.String("LAX"),
+//						PoolIds: pulumi.StringArray{
+//							foo.ID(),
+//						},
+//					},
+//				},
+//				CountryPools: LoadBalancerCountryPoolArray{
+//					&LoadBalancerCountryPoolArgs{
+//						Country: pulumi.String("US"),
+//						PoolIds: pulumi.StringArray{
+//							foo.ID(),
+//						},
+//					},
+//				},
+//				RegionPools: LoadBalancerRegionPoolArray{
+//					&LoadBalancerRegionPoolArgs{
+//						Region: pulumi.String("WNAM"),
+//						PoolIds: pulumi.StringArray{
+//							foo.ID(),
+//						},
+//					},
+//				},
+//				Rules: LoadBalancerRuleArray{
+//					&LoadBalancerRuleArgs{
+//						Name:      pulumi.String("example rule"),
+//						Condition: pulumi.String("http.request.uri.path contains \"testing\""),
+//						FixedResponse: &LoadBalancerRuleFixedResponseArgs{
+//							MessageBody: pulumi.String("hello"),
+//							StatusCode:  pulumi.Int(200),
+//							ContentType: pulumi.String("html"),
+//							Location:    pulumi.String("www.example.com"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 
+	// See countryPools above.
+	CountryPools LoadBalancerCountryPoolArrayOutput `pulumi:"countryPools"`
 	// The RFC3339 timestamp of when the load balancer was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
@@ -164,6 +177,8 @@ func GetLoadBalancer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoadBalancer resources.
 type loadBalancerState struct {
+	// See countryPools above.
+	CountryPools []LoadBalancerCountryPool `pulumi:"countryPools"`
 	// The RFC3339 timestamp of when the load balancer was created.
 	CreatedOn *string `pulumi:"createdOn"`
 	// A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
@@ -201,6 +216,8 @@ type loadBalancerState struct {
 }
 
 type LoadBalancerState struct {
+	// See countryPools above.
+	CountryPools LoadBalancerCountryPoolArrayInput
 	// The RFC3339 timestamp of when the load balancer was created.
 	CreatedOn pulumi.StringPtrInput
 	// A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
@@ -242,6 +259,8 @@ func (LoadBalancerState) ElementType() reflect.Type {
 }
 
 type loadBalancerArgs struct {
+	// See countryPools above.
+	CountryPools []LoadBalancerCountryPool `pulumi:"countryPools"`
 	// A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
 	DefaultPoolIds []string `pulumi:"defaultPoolIds"`
 	// Free text description.
@@ -276,6 +295,8 @@ type loadBalancerArgs struct {
 
 // The set of arguments for constructing a LoadBalancer resource.
 type LoadBalancerArgs struct {
+	// See countryPools above.
+	CountryPools LoadBalancerCountryPoolArrayInput
 	// A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
 	DefaultPoolIds pulumi.StringArrayInput
 	// Free text description.
@@ -334,7 +355,7 @@ func (i *LoadBalancer) ToLoadBalancerOutputWithContext(ctx context.Context) Load
 // LoadBalancerArrayInput is an input type that accepts LoadBalancerArray and LoadBalancerArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerArrayInput` via:
 //
-//          LoadBalancerArray{ LoadBalancerArgs{...} }
+//	LoadBalancerArray{ LoadBalancerArgs{...} }
 type LoadBalancerArrayInput interface {
 	pulumi.Input
 
@@ -359,7 +380,7 @@ func (i LoadBalancerArray) ToLoadBalancerArrayOutputWithContext(ctx context.Cont
 // LoadBalancerMapInput is an input type that accepts LoadBalancerMap and LoadBalancerMapOutput values.
 // You can construct a concrete instance of `LoadBalancerMapInput` via:
 //
-//          LoadBalancerMap{ "key": LoadBalancerArgs{...} }
+//	LoadBalancerMap{ "key": LoadBalancerArgs{...} }
 type LoadBalancerMapInput interface {
 	pulumi.Input
 
@@ -393,6 +414,11 @@ func (o LoadBalancerOutput) ToLoadBalancerOutput() LoadBalancerOutput {
 
 func (o LoadBalancerOutput) ToLoadBalancerOutputWithContext(ctx context.Context) LoadBalancerOutput {
 	return o
+}
+
+// See countryPools above.
+func (o LoadBalancerOutput) CountryPools() LoadBalancerCountryPoolArrayOutput {
+	return o.ApplyT(func(v *LoadBalancer) LoadBalancerCountryPoolArrayOutput { return v.CountryPools }).(LoadBalancerCountryPoolArrayOutput)
 }
 
 // The RFC3339 timestamp of when the load balancer was created.

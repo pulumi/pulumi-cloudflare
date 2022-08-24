@@ -6,7 +6,9 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare IP Firewall Access Rule resource. Access control can be applied on basis of IP addresses, IP ranges, AS numbers or countries.
+ * Provides a Cloudflare IP Firewall Access Rule resource. Access
+ * control can be applied on basis of IP addresses, IP ranges, AS
+ * numbers or countries.
  *
  * ## Example Usage
  *
@@ -16,6 +18,7 @@ import * as utilities from "./utilities";
  *
  * // Challenge requests coming from known Tor exit nodes.
  * const torExitNodes = new cloudflare.AccessRule("torExitNodes", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     notes: "Requests coming from known Tor exit nodes",
  *     mode: "challenge",
  *     configuration: {
@@ -23,15 +26,15 @@ import * as utilities from "./utilities";
  *         value: "T1",
  *     },
  * });
- * // Whitelist (sic!) requests coming from Antarctica, but only for single zone.
+ * // Allowlist requests coming from Antarctica, but only for single zone.
  * const antarctica = new cloudflare.AccessRule("antarctica", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     notes: "Requests coming from Antarctica",
  *     mode: "whitelist",
  *     configuration: {
  *         target: "country",
  *         value: "AQ",
  *     },
- *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
  * });
  * const config = new pulumi.Config();
  * const myOffice = config.getObject("myOffice") || [
@@ -42,6 +45,7 @@ import * as utilities from "./utilities";
  * const officeNetwork: cloudflare.AccessRule[];
  * for (const range = {value: 0}; range.value < myOffice.length; range.value++) {
  *     officeNetwork.push(new cloudflare.AccessRule(`officeNetwork-${range.value}`, {
+ *         accountId: "f037e56e89293a057740de681ac9abbe",
  *         notes: "Requests coming from office network",
  *         mode: "whitelist",
  *         configuration: {
@@ -101,12 +105,15 @@ export class AccessRule extends pulumi.CustomResource {
     }
 
     /**
+     * The account identifier to target for the resource.
+     */
+    public readonly accountId!: pulumi.Output<string>;
+    /**
      * Rule configuration to apply to a matched request.
      */
     public readonly configuration!: pulumi.Output<outputs.AccessRuleConfiguration>;
     /**
-     * The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
-     * `managed_challenge`
+     * The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `jsChallenge`, `managedChallenge`.
      */
     public readonly mode!: pulumi.Output<string>;
     /**
@@ -131,6 +138,7 @@ export class AccessRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessRuleState | undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["configuration"] = state ? state.configuration : undefined;
             resourceInputs["mode"] = state ? state.mode : undefined;
             resourceInputs["notes"] = state ? state.notes : undefined;
@@ -143,6 +151,7 @@ export class AccessRule extends pulumi.CustomResource {
             if ((!args || args.mode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'mode'");
             }
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["configuration"] = args ? args.configuration : undefined;
             resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["notes"] = args ? args.notes : undefined;
@@ -158,12 +167,15 @@ export class AccessRule extends pulumi.CustomResource {
  */
 export interface AccessRuleState {
     /**
+     * The account identifier to target for the resource.
+     */
+    accountId?: pulumi.Input<string>;
+    /**
      * Rule configuration to apply to a matched request.
      */
     configuration?: pulumi.Input<inputs.AccessRuleConfiguration>;
     /**
-     * The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
-     * `managed_challenge`
+     * The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `jsChallenge`, `managedChallenge`.
      */
     mode?: pulumi.Input<string>;
     /**
@@ -181,12 +193,15 @@ export interface AccessRuleState {
  */
 export interface AccessRuleArgs {
     /**
+     * The account identifier to target for the resource.
+     */
+    accountId?: pulumi.Input<string>;
+    /**
      * Rule configuration to apply to a matched request.
      */
     configuration: pulumi.Input<inputs.AccessRuleConfiguration>;
     /**
-     * The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
-     * `managed_challenge`
+     * The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `jsChallenge`, `managedChallenge`.
      */
     mode: pulumi.Input<string>;
     /**

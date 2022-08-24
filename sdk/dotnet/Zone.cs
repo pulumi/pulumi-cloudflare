@@ -10,40 +10,47 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Provides a Cloudflare Zone resource. Zone is the basic resource for
+    /// working with Cloudflare and is roughly equivalent to a domain name
+    /// that the user purchases.
+    /// 
+    /// &gt; If you are attempting to sign up a subdomain of a zone you must first have Subdomain Support entitlement for your account.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Cloudflare.Zone("example", new()
     ///     {
-    ///         var example = new Cloudflare.Zone("example", new Cloudflare.ZoneArgs
-    ///         {
-    ///             Zone = "example.com",
-    ///         });
-    ///     }
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         ZoneName = "example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// Zone resource can be imported using a zone ID, e.g.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/zone:Zone example d41d8cd98f00b204e9800998ecf8427e
+    ///  $ pulumi import cloudflare:index/zone:Zone example &lt;zone_id&gt;
     /// ```
-    /// 
-    ///  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zone:Zone")]
-    public partial class Zone : Pulumi.CustomResource
+    public partial class Zone : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
+        /// Account ID to manage the zone resource in.
+        /// </summary>
+        [Output("accountId")]
+        public Output<string?> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// Wwhether to scan for DNS records on creation. Ignored after zone is created.
         /// </summary>
         [Output("jumpStart")]
         public Output<bool?> JumpStart { get; private set; } = null!;
@@ -58,33 +65,31 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> NameServers { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
+        /// Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
         /// </summary>
         [Output("paused")]
         public Output<bool?> Paused { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`, `partners_workers_ss`, `image_resizing_enterprise`.
+        /// The name of the commercial plan to apply to the zone. Available values: `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
         /// </summary>
         [Output("plan")]
         public Output<string> Plan { get; private set; } = null!;
 
         /// <summary>
-        /// Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
+        /// Status of the zone. Available values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
+        /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
 
         /// <summary>
         /// List of Vanity Nameservers (if set).
-        /// - `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
-        /// - `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
         /// </summary>
         [Output("vanityNameServers")]
         public Output<ImmutableArray<string>> VanityNameServers { get; private set; } = null!;
@@ -145,28 +150,34 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class ZoneArgs : Pulumi.ResourceArgs
+    public sealed class ZoneArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
+        /// Account ID to manage the zone resource in.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Wwhether to scan for DNS records on creation. Ignored after zone is created.
         /// </summary>
         [Input("jumpStart")]
         public Input<bool>? JumpStart { get; set; }
 
         /// <summary>
-        /// Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
+        /// Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
         /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
         /// <summary>
-        /// The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`, `partners_workers_ss`, `image_resizing_enterprise`.
+        /// The name of the commercial plan to apply to the zone. Available values: `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }
 
         /// <summary>
-        /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
+        /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -180,12 +191,19 @@ namespace Pulumi.Cloudflare
         public ZoneArgs()
         {
         }
+        public static new ZoneArgs Empty => new ZoneArgs();
     }
 
-    public sealed class ZoneState : Pulumi.ResourceArgs
+    public sealed class ZoneState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
+        /// Account ID to manage the zone resource in.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Wwhether to scan for DNS records on creation. Ignored after zone is created.
         /// </summary>
         [Input("jumpStart")]
         public Input<bool>? JumpStart { get; set; }
@@ -211,25 +229,25 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
+        /// Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
         /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
         /// <summary>
-        /// The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`, `partners_workers_ss`, `image_resizing_enterprise`.
+        /// The name of the commercial plan to apply to the zone. Available values: `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }
 
         /// <summary>
-        /// Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
+        /// Status of the zone. Available values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
+        /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -239,8 +257,6 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// List of Vanity Nameservers (if set).
-        /// - `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
-        /// - `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
         /// </summary>
         public InputList<string> VanityNameServers
         {
@@ -263,5 +279,6 @@ namespace Pulumi.Cloudflare
         public ZoneState()
         {
         }
+        public static new ZoneState Empty => new ZoneState();
     }
 }

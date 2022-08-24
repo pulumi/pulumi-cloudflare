@@ -16,6 +16,9 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? ActionMode;
         public readonly string? Description;
         public readonly string? DetectionMode;
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         public readonly string? Id;
         public readonly string? Name;
         public readonly string? Sensitivity;

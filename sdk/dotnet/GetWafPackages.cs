@@ -19,30 +19,38 @@ namespace Pulumi.Cloudflare
     }
 
 
-    public sealed class GetWafPackagesArgs : Pulumi.InvokeArgs
+    public sealed class GetWafPackagesArgs : global::Pulumi.InvokeArgs
     {
         [Input("filter")]
         public Inputs.GetWafPackagesFilterArgs? Filter { get; set; }
 
+        /// <summary>
+        /// The zone identifier to target for the resource.
+        /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
 
         public GetWafPackagesArgs()
         {
         }
+        public static new GetWafPackagesArgs Empty => new GetWafPackagesArgs();
     }
 
-    public sealed class GetWafPackagesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetWafPackagesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filter")]
         public Input<Inputs.GetWafPackagesFilterInputArgs>? Filter { get; set; }
 
+        /// <summary>
+        /// The zone identifier to target for the resource.
+        /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
 
         public GetWafPackagesInvokeArgs()
         {
         }
+        public static new GetWafPackagesInvokeArgs Empty => new GetWafPackagesInvokeArgs();
     }
 
 
@@ -55,6 +63,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetWafPackagesPackageResult> Packages;
+        /// <summary>
+        /// The zone identifier to target for the resource.
+        /// </summary>
         public readonly string ZoneId;
 
         [OutputConstructor]

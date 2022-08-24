@@ -11,20 +11,28 @@ import (
 )
 
 type AccessApplicationCorsHeader struct {
-	AllowAllHeaders  *bool    `pulumi:"allowAllHeaders"`
-	AllowAllMethods  *bool    `pulumi:"allowAllMethods"`
-	AllowAllOrigins  *bool    `pulumi:"allowAllOrigins"`
-	AllowCredentials *bool    `pulumi:"allowCredentials"`
-	AllowedHeaders   []string `pulumi:"allowedHeaders"`
-	AllowedMethods   []string `pulumi:"allowedMethods"`
-	AllowedOrigins   []string `pulumi:"allowedOrigins"`
-	MaxAge           *int     `pulumi:"maxAge"`
+	// Value to determine whether all HTTP headers are exposed.
+	AllowAllHeaders *bool `pulumi:"allowAllHeaders"`
+	// Value to determine whether all methods are exposed.
+	AllowAllMethods *bool `pulumi:"allowAllMethods"`
+	// Value to determine whether all origins are permitted to make CORS requests.
+	AllowAllOrigins *bool `pulumi:"allowAllOrigins"`
+	// Value to determine if credentials (cookies, authorization headers, or TLS client certificates) are included with requests.
+	AllowCredentials *bool `pulumi:"allowCredentials"`
+	// List of HTTP headers to expose via CORS.
+	AllowedHeaders []string `pulumi:"allowedHeaders"`
+	// List of methods to expose via CORS.
+	AllowedMethods []string `pulumi:"allowedMethods"`
+	// List of origins permitted to make CORS requests.
+	AllowedOrigins []string `pulumi:"allowedOrigins"`
+	// The maximum time a preflight request will be cached.
+	MaxAge *int `pulumi:"maxAge"`
 }
 
 // AccessApplicationCorsHeaderInput is an input type that accepts AccessApplicationCorsHeaderArgs and AccessApplicationCorsHeaderOutput values.
 // You can construct a concrete instance of `AccessApplicationCorsHeaderInput` via:
 //
-//          AccessApplicationCorsHeaderArgs{...}
+//	AccessApplicationCorsHeaderArgs{...}
 type AccessApplicationCorsHeaderInput interface {
 	pulumi.Input
 
@@ -33,14 +41,22 @@ type AccessApplicationCorsHeaderInput interface {
 }
 
 type AccessApplicationCorsHeaderArgs struct {
-	AllowAllHeaders  pulumi.BoolPtrInput     `pulumi:"allowAllHeaders"`
-	AllowAllMethods  pulumi.BoolPtrInput     `pulumi:"allowAllMethods"`
-	AllowAllOrigins  pulumi.BoolPtrInput     `pulumi:"allowAllOrigins"`
-	AllowCredentials pulumi.BoolPtrInput     `pulumi:"allowCredentials"`
-	AllowedHeaders   pulumi.StringArrayInput `pulumi:"allowedHeaders"`
-	AllowedMethods   pulumi.StringArrayInput `pulumi:"allowedMethods"`
-	AllowedOrigins   pulumi.StringArrayInput `pulumi:"allowedOrigins"`
-	MaxAge           pulumi.IntPtrInput      `pulumi:"maxAge"`
+	// Value to determine whether all HTTP headers are exposed.
+	AllowAllHeaders pulumi.BoolPtrInput `pulumi:"allowAllHeaders"`
+	// Value to determine whether all methods are exposed.
+	AllowAllMethods pulumi.BoolPtrInput `pulumi:"allowAllMethods"`
+	// Value to determine whether all origins are permitted to make CORS requests.
+	AllowAllOrigins pulumi.BoolPtrInput `pulumi:"allowAllOrigins"`
+	// Value to determine if credentials (cookies, authorization headers, or TLS client certificates) are included with requests.
+	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
+	// List of HTTP headers to expose via CORS.
+	AllowedHeaders pulumi.StringArrayInput `pulumi:"allowedHeaders"`
+	// List of methods to expose via CORS.
+	AllowedMethods pulumi.StringArrayInput `pulumi:"allowedMethods"`
+	// List of origins permitted to make CORS requests.
+	AllowedOrigins pulumi.StringArrayInput `pulumi:"allowedOrigins"`
+	// The maximum time a preflight request will be cached.
+	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
 }
 
 func (AccessApplicationCorsHeaderArgs) ElementType() reflect.Type {
@@ -58,7 +74,7 @@ func (i AccessApplicationCorsHeaderArgs) ToAccessApplicationCorsHeaderOutputWith
 // AccessApplicationCorsHeaderArrayInput is an input type that accepts AccessApplicationCorsHeaderArray and AccessApplicationCorsHeaderArrayOutput values.
 // You can construct a concrete instance of `AccessApplicationCorsHeaderArrayInput` via:
 //
-//          AccessApplicationCorsHeaderArray{ AccessApplicationCorsHeaderArgs{...} }
+//	AccessApplicationCorsHeaderArray{ AccessApplicationCorsHeaderArgs{...} }
 type AccessApplicationCorsHeaderArrayInput interface {
 	pulumi.Input
 
@@ -94,34 +110,42 @@ func (o AccessApplicationCorsHeaderOutput) ToAccessApplicationCorsHeaderOutputWi
 	return o
 }
 
+// Value to determine whether all HTTP headers are exposed.
 func (o AccessApplicationCorsHeaderOutput) AllowAllHeaders() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessApplicationCorsHeader) *bool { return v.AllowAllHeaders }).(pulumi.BoolPtrOutput)
 }
 
+// Value to determine whether all methods are exposed.
 func (o AccessApplicationCorsHeaderOutput) AllowAllMethods() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessApplicationCorsHeader) *bool { return v.AllowAllMethods }).(pulumi.BoolPtrOutput)
 }
 
+// Value to determine whether all origins are permitted to make CORS requests.
 func (o AccessApplicationCorsHeaderOutput) AllowAllOrigins() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessApplicationCorsHeader) *bool { return v.AllowAllOrigins }).(pulumi.BoolPtrOutput)
 }
 
+// Value to determine if credentials (cookies, authorization headers, or TLS client certificates) are included with requests.
 func (o AccessApplicationCorsHeaderOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessApplicationCorsHeader) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
 
+// List of HTTP headers to expose via CORS.
 func (o AccessApplicationCorsHeaderOutput) AllowedHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessApplicationCorsHeader) []string { return v.AllowedHeaders }).(pulumi.StringArrayOutput)
 }
 
+// List of methods to expose via CORS.
 func (o AccessApplicationCorsHeaderOutput) AllowedMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessApplicationCorsHeader) []string { return v.AllowedMethods }).(pulumi.StringArrayOutput)
 }
 
+// List of origins permitted to make CORS requests.
 func (o AccessApplicationCorsHeaderOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessApplicationCorsHeader) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
 }
 
+// The maximum time a preflight request will be cached.
 func (o AccessApplicationCorsHeaderOutput) MaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AccessApplicationCorsHeader) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
 }
@@ -144,6 +168,181 @@ func (o AccessApplicationCorsHeaderArrayOutput) Index(i pulumi.IntInput) AccessA
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessApplicationCorsHeader {
 		return vs[0].([]AccessApplicationCorsHeader)[vs[1].(int)]
 	}).(AccessApplicationCorsHeaderOutput)
+}
+
+type AccessApplicationSaasApp struct {
+	// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
+	ConsumerServiceUrl string `pulumi:"consumerServiceUrl"`
+	// The format of the name identifier sent to the SaaS application. Defaults to `email`.
+	NameIdFormat *string `pulumi:"nameIdFormat"`
+	// A globally unique name for an identity or service provider.
+	SpEntityId string `pulumi:"spEntityId"`
+}
+
+// AccessApplicationSaasAppInput is an input type that accepts AccessApplicationSaasAppArgs and AccessApplicationSaasAppOutput values.
+// You can construct a concrete instance of `AccessApplicationSaasAppInput` via:
+//
+//	AccessApplicationSaasAppArgs{...}
+type AccessApplicationSaasAppInput interface {
+	pulumi.Input
+
+	ToAccessApplicationSaasAppOutput() AccessApplicationSaasAppOutput
+	ToAccessApplicationSaasAppOutputWithContext(context.Context) AccessApplicationSaasAppOutput
+}
+
+type AccessApplicationSaasAppArgs struct {
+	// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
+	ConsumerServiceUrl pulumi.StringInput `pulumi:"consumerServiceUrl"`
+	// The format of the name identifier sent to the SaaS application. Defaults to `email`.
+	NameIdFormat pulumi.StringPtrInput `pulumi:"nameIdFormat"`
+	// A globally unique name for an identity or service provider.
+	SpEntityId pulumi.StringInput `pulumi:"spEntityId"`
+}
+
+func (AccessApplicationSaasAppArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationSaasApp)(nil)).Elem()
+}
+
+func (i AccessApplicationSaasAppArgs) ToAccessApplicationSaasAppOutput() AccessApplicationSaasAppOutput {
+	return i.ToAccessApplicationSaasAppOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationSaasAppArgs) ToAccessApplicationSaasAppOutputWithContext(ctx context.Context) AccessApplicationSaasAppOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationSaasAppOutput)
+}
+
+func (i AccessApplicationSaasAppArgs) ToAccessApplicationSaasAppPtrOutput() AccessApplicationSaasAppPtrOutput {
+	return i.ToAccessApplicationSaasAppPtrOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationSaasAppArgs) ToAccessApplicationSaasAppPtrOutputWithContext(ctx context.Context) AccessApplicationSaasAppPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationSaasAppOutput).ToAccessApplicationSaasAppPtrOutputWithContext(ctx)
+}
+
+// AccessApplicationSaasAppPtrInput is an input type that accepts AccessApplicationSaasAppArgs, AccessApplicationSaasAppPtr and AccessApplicationSaasAppPtrOutput values.
+// You can construct a concrete instance of `AccessApplicationSaasAppPtrInput` via:
+//
+//	        AccessApplicationSaasAppArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessApplicationSaasAppPtrInput interface {
+	pulumi.Input
+
+	ToAccessApplicationSaasAppPtrOutput() AccessApplicationSaasAppPtrOutput
+	ToAccessApplicationSaasAppPtrOutputWithContext(context.Context) AccessApplicationSaasAppPtrOutput
+}
+
+type accessApplicationSaasAppPtrType AccessApplicationSaasAppArgs
+
+func AccessApplicationSaasAppPtr(v *AccessApplicationSaasAppArgs) AccessApplicationSaasAppPtrInput {
+	return (*accessApplicationSaasAppPtrType)(v)
+}
+
+func (*accessApplicationSaasAppPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationSaasApp)(nil)).Elem()
+}
+
+func (i *accessApplicationSaasAppPtrType) ToAccessApplicationSaasAppPtrOutput() AccessApplicationSaasAppPtrOutput {
+	return i.ToAccessApplicationSaasAppPtrOutputWithContext(context.Background())
+}
+
+func (i *accessApplicationSaasAppPtrType) ToAccessApplicationSaasAppPtrOutputWithContext(ctx context.Context) AccessApplicationSaasAppPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationSaasAppPtrOutput)
+}
+
+type AccessApplicationSaasAppOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationSaasAppOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationSaasApp)(nil)).Elem()
+}
+
+func (o AccessApplicationSaasAppOutput) ToAccessApplicationSaasAppOutput() AccessApplicationSaasAppOutput {
+	return o
+}
+
+func (o AccessApplicationSaasAppOutput) ToAccessApplicationSaasAppOutputWithContext(ctx context.Context) AccessApplicationSaasAppOutput {
+	return o
+}
+
+func (o AccessApplicationSaasAppOutput) ToAccessApplicationSaasAppPtrOutput() AccessApplicationSaasAppPtrOutput {
+	return o.ToAccessApplicationSaasAppPtrOutputWithContext(context.Background())
+}
+
+func (o AccessApplicationSaasAppOutput) ToAccessApplicationSaasAppPtrOutputWithContext(ctx context.Context) AccessApplicationSaasAppPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessApplicationSaasApp) *AccessApplicationSaasApp {
+		return &v
+	}).(AccessApplicationSaasAppPtrOutput)
+}
+
+// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
+func (o AccessApplicationSaasAppOutput) ConsumerServiceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) string { return v.ConsumerServiceUrl }).(pulumi.StringOutput)
+}
+
+// The format of the name identifier sent to the SaaS application. Defaults to `email`.
+func (o AccessApplicationSaasAppOutput) NameIdFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.NameIdFormat }).(pulumi.StringPtrOutput)
+}
+
+// A globally unique name for an identity or service provider.
+func (o AccessApplicationSaasAppOutput) SpEntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) string { return v.SpEntityId }).(pulumi.StringOutput)
+}
+
+type AccessApplicationSaasAppPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationSaasAppPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationSaasApp)(nil)).Elem()
+}
+
+func (o AccessApplicationSaasAppPtrOutput) ToAccessApplicationSaasAppPtrOutput() AccessApplicationSaasAppPtrOutput {
+	return o
+}
+
+func (o AccessApplicationSaasAppPtrOutput) ToAccessApplicationSaasAppPtrOutputWithContext(ctx context.Context) AccessApplicationSaasAppPtrOutput {
+	return o
+}
+
+func (o AccessApplicationSaasAppPtrOutput) Elem() AccessApplicationSaasAppOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) AccessApplicationSaasApp {
+		if v != nil {
+			return *v
+		}
+		var ret AccessApplicationSaasApp
+		return ret
+	}).(AccessApplicationSaasAppOutput)
+}
+
+// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
+func (o AccessApplicationSaasAppPtrOutput) ConsumerServiceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConsumerServiceUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The format of the name identifier sent to the SaaS application. Defaults to `email`.
+func (o AccessApplicationSaasAppPtrOutput) NameIdFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameIdFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// A globally unique name for an identity or service provider.
+func (o AccessApplicationSaasAppPtrOutput) SpEntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SpEntityId
+	}).(pulumi.StringPtrOutput)
 }
 
 type AccessGroupExclude struct {
@@ -171,7 +370,7 @@ type AccessGroupExclude struct {
 // AccessGroupExcludeInput is an input type that accepts AccessGroupExcludeArgs and AccessGroupExcludeOutput values.
 // You can construct a concrete instance of `AccessGroupExcludeInput` via:
 //
-//          AccessGroupExcludeArgs{...}
+//	AccessGroupExcludeArgs{...}
 type AccessGroupExcludeInput interface {
 	pulumi.Input
 
@@ -216,7 +415,7 @@ func (i AccessGroupExcludeArgs) ToAccessGroupExcludeOutputWithContext(ctx contex
 // AccessGroupExcludeArrayInput is an input type that accepts AccessGroupExcludeArray and AccessGroupExcludeArrayOutput values.
 // You can construct a concrete instance of `AccessGroupExcludeArrayInput` via:
 //
-//          AccessGroupExcludeArray{ AccessGroupExcludeArgs{...} }
+//	AccessGroupExcludeArray{ AccessGroupExcludeArgs{...} }
 type AccessGroupExcludeArrayInput interface {
 	pulumi.Input
 
@@ -349,14 +548,15 @@ func (o AccessGroupExcludeArrayOutput) Index(i pulumi.IntInput) AccessGroupExclu
 }
 
 type AccessGroupExcludeAzure struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Ids                []string `pulumi:"ids"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The ID of this resource.
+	Ids []string `pulumi:"ids"`
 }
 
 // AccessGroupExcludeAzureInput is an input type that accepts AccessGroupExcludeAzureArgs and AccessGroupExcludeAzureOutput values.
 // You can construct a concrete instance of `AccessGroupExcludeAzureInput` via:
 //
-//          AccessGroupExcludeAzureArgs{...}
+//	AccessGroupExcludeAzureArgs{...}
 type AccessGroupExcludeAzureInput interface {
 	pulumi.Input
 
@@ -365,8 +565,9 @@ type AccessGroupExcludeAzureInput interface {
 }
 
 type AccessGroupExcludeAzureArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Ids                pulumi.StringArrayInput `pulumi:"ids"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The ID of this resource.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
 }
 
 func (AccessGroupExcludeAzureArgs) ElementType() reflect.Type {
@@ -384,7 +585,7 @@ func (i AccessGroupExcludeAzureArgs) ToAccessGroupExcludeAzureOutputWithContext(
 // AccessGroupExcludeAzureArrayInput is an input type that accepts AccessGroupExcludeAzureArray and AccessGroupExcludeAzureArrayOutput values.
 // You can construct a concrete instance of `AccessGroupExcludeAzureArrayInput` via:
 //
-//          AccessGroupExcludeAzureArray{ AccessGroupExcludeAzureArgs{...} }
+//	AccessGroupExcludeAzureArray{ AccessGroupExcludeAzureArgs{...} }
 type AccessGroupExcludeAzureArrayInput interface {
 	pulumi.Input
 
@@ -424,6 +625,7 @@ func (o AccessGroupExcludeAzureOutput) IdentityProviderId() pulumi.StringPtrOutp
 	return o.ApplyT(func(v AccessGroupExcludeAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The ID of this resource.
 func (o AccessGroupExcludeAzureOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExcludeAzure) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -456,7 +658,7 @@ type AccessGroupExcludeExternalEvaluation struct {
 // AccessGroupExcludeExternalEvaluationInput is an input type that accepts AccessGroupExcludeExternalEvaluationArgs and AccessGroupExcludeExternalEvaluationOutput values.
 // You can construct a concrete instance of `AccessGroupExcludeExternalEvaluationInput` via:
 //
-//          AccessGroupExcludeExternalEvaluationArgs{...}
+//	AccessGroupExcludeExternalEvaluationArgs{...}
 type AccessGroupExcludeExternalEvaluationInput interface {
 	pulumi.Input
 
@@ -492,11 +694,11 @@ func (i AccessGroupExcludeExternalEvaluationArgs) ToAccessGroupExcludeExternalEv
 // AccessGroupExcludeExternalEvaluationPtrInput is an input type that accepts AccessGroupExcludeExternalEvaluationArgs, AccessGroupExcludeExternalEvaluationPtr and AccessGroupExcludeExternalEvaluationPtrOutput values.
 // You can construct a concrete instance of `AccessGroupExcludeExternalEvaluationPtrInput` via:
 //
-//          AccessGroupExcludeExternalEvaluationArgs{...}
+//	        AccessGroupExcludeExternalEvaluationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccessGroupExcludeExternalEvaluationPtrInput interface {
 	pulumi.Input
 
@@ -605,7 +807,7 @@ type AccessGroupExcludeGithub struct {
 // AccessGroupExcludeGithubInput is an input type that accepts AccessGroupExcludeGithubArgs and AccessGroupExcludeGithubOutput values.
 // You can construct a concrete instance of `AccessGroupExcludeGithubInput` via:
 //
-//          AccessGroupExcludeGithubArgs{...}
+//	AccessGroupExcludeGithubArgs{...}
 type AccessGroupExcludeGithubInput interface {
 	pulumi.Input
 
@@ -634,7 +836,7 @@ func (i AccessGroupExcludeGithubArgs) ToAccessGroupExcludeGithubOutputWithContex
 // AccessGroupExcludeGithubArrayInput is an input type that accepts AccessGroupExcludeGithubArray and AccessGroupExcludeGithubArrayOutput values.
 // You can construct a concrete instance of `AccessGroupExcludeGithubArrayInput` via:
 //
-//          AccessGroupExcludeGithubArray{ AccessGroupExcludeGithubArgs{...} }
+//	AccessGroupExcludeGithubArray{ AccessGroupExcludeGithubArgs{...} }
 type AccessGroupExcludeGithubArrayInput interface {
 	pulumi.Input
 
@@ -710,7 +912,7 @@ type AccessGroupExcludeGsuite struct {
 // AccessGroupExcludeGsuiteInput is an input type that accepts AccessGroupExcludeGsuiteArgs and AccessGroupExcludeGsuiteOutput values.
 // You can construct a concrete instance of `AccessGroupExcludeGsuiteInput` via:
 //
-//          AccessGroupExcludeGsuiteArgs{...}
+//	AccessGroupExcludeGsuiteArgs{...}
 type AccessGroupExcludeGsuiteInput interface {
 	pulumi.Input
 
@@ -738,7 +940,7 @@ func (i AccessGroupExcludeGsuiteArgs) ToAccessGroupExcludeGsuiteOutputWithContex
 // AccessGroupExcludeGsuiteArrayInput is an input type that accepts AccessGroupExcludeGsuiteArray and AccessGroupExcludeGsuiteArrayOutput values.
 // You can construct a concrete instance of `AccessGroupExcludeGsuiteArrayInput` via:
 //
-//          AccessGroupExcludeGsuiteArray{ AccessGroupExcludeGsuiteArgs{...} }
+//	AccessGroupExcludeGsuiteArray{ AccessGroupExcludeGsuiteArgs{...} }
 type AccessGroupExcludeGsuiteArrayInput interface {
 	pulumi.Input
 
@@ -810,7 +1012,7 @@ type AccessGroupExcludeOkta struct {
 // AccessGroupExcludeOktaInput is an input type that accepts AccessGroupExcludeOktaArgs and AccessGroupExcludeOktaOutput values.
 // You can construct a concrete instance of `AccessGroupExcludeOktaInput` via:
 //
-//          AccessGroupExcludeOktaArgs{...}
+//	AccessGroupExcludeOktaArgs{...}
 type AccessGroupExcludeOktaInput interface {
 	pulumi.Input
 
@@ -838,7 +1040,7 @@ func (i AccessGroupExcludeOktaArgs) ToAccessGroupExcludeOktaOutputWithContext(ct
 // AccessGroupExcludeOktaArrayInput is an input type that accepts AccessGroupExcludeOktaArray and AccessGroupExcludeOktaArrayOutput values.
 // You can construct a concrete instance of `AccessGroupExcludeOktaArrayInput` via:
 //
-//          AccessGroupExcludeOktaArray{ AccessGroupExcludeOktaArgs{...} }
+//	AccessGroupExcludeOktaArray{ AccessGroupExcludeOktaArgs{...} }
 type AccessGroupExcludeOktaArrayInput interface {
 	pulumi.Input
 
@@ -911,7 +1113,7 @@ type AccessGroupExcludeSaml struct {
 // AccessGroupExcludeSamlInput is an input type that accepts AccessGroupExcludeSamlArgs and AccessGroupExcludeSamlOutput values.
 // You can construct a concrete instance of `AccessGroupExcludeSamlInput` via:
 //
-//          AccessGroupExcludeSamlArgs{...}
+//	AccessGroupExcludeSamlArgs{...}
 type AccessGroupExcludeSamlInput interface {
 	pulumi.Input
 
@@ -940,7 +1142,7 @@ func (i AccessGroupExcludeSamlArgs) ToAccessGroupExcludeSamlOutputWithContext(ct
 // AccessGroupExcludeSamlArrayInput is an input type that accepts AccessGroupExcludeSamlArray and AccessGroupExcludeSamlArrayOutput values.
 // You can construct a concrete instance of `AccessGroupExcludeSamlArrayInput` via:
 //
-//          AccessGroupExcludeSamlArray{ AccessGroupExcludeSamlArgs{...} }
+//	AccessGroupExcludeSamlArray{ AccessGroupExcludeSamlArgs{...} }
 type AccessGroupExcludeSamlArrayInput interface {
 	pulumi.Input
 
@@ -1033,7 +1235,7 @@ type AccessGroupInclude struct {
 // AccessGroupIncludeInput is an input type that accepts AccessGroupIncludeArgs and AccessGroupIncludeOutput values.
 // You can construct a concrete instance of `AccessGroupIncludeInput` via:
 //
-//          AccessGroupIncludeArgs{...}
+//	AccessGroupIncludeArgs{...}
 type AccessGroupIncludeInput interface {
 	pulumi.Input
 
@@ -1078,7 +1280,7 @@ func (i AccessGroupIncludeArgs) ToAccessGroupIncludeOutputWithContext(ctx contex
 // AccessGroupIncludeArrayInput is an input type that accepts AccessGroupIncludeArray and AccessGroupIncludeArrayOutput values.
 // You can construct a concrete instance of `AccessGroupIncludeArrayInput` via:
 //
-//          AccessGroupIncludeArray{ AccessGroupIncludeArgs{...} }
+//	AccessGroupIncludeArray{ AccessGroupIncludeArgs{...} }
 type AccessGroupIncludeArrayInput interface {
 	pulumi.Input
 
@@ -1211,14 +1413,15 @@ func (o AccessGroupIncludeArrayOutput) Index(i pulumi.IntInput) AccessGroupInclu
 }
 
 type AccessGroupIncludeAzure struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Ids                []string `pulumi:"ids"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The ID of this resource.
+	Ids []string `pulumi:"ids"`
 }
 
 // AccessGroupIncludeAzureInput is an input type that accepts AccessGroupIncludeAzureArgs and AccessGroupIncludeAzureOutput values.
 // You can construct a concrete instance of `AccessGroupIncludeAzureInput` via:
 //
-//          AccessGroupIncludeAzureArgs{...}
+//	AccessGroupIncludeAzureArgs{...}
 type AccessGroupIncludeAzureInput interface {
 	pulumi.Input
 
@@ -1227,8 +1430,9 @@ type AccessGroupIncludeAzureInput interface {
 }
 
 type AccessGroupIncludeAzureArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Ids                pulumi.StringArrayInput `pulumi:"ids"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The ID of this resource.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
 }
 
 func (AccessGroupIncludeAzureArgs) ElementType() reflect.Type {
@@ -1246,7 +1450,7 @@ func (i AccessGroupIncludeAzureArgs) ToAccessGroupIncludeAzureOutputWithContext(
 // AccessGroupIncludeAzureArrayInput is an input type that accepts AccessGroupIncludeAzureArray and AccessGroupIncludeAzureArrayOutput values.
 // You can construct a concrete instance of `AccessGroupIncludeAzureArrayInput` via:
 //
-//          AccessGroupIncludeAzureArray{ AccessGroupIncludeAzureArgs{...} }
+//	AccessGroupIncludeAzureArray{ AccessGroupIncludeAzureArgs{...} }
 type AccessGroupIncludeAzureArrayInput interface {
 	pulumi.Input
 
@@ -1286,6 +1490,7 @@ func (o AccessGroupIncludeAzureOutput) IdentityProviderId() pulumi.StringPtrOutp
 	return o.ApplyT(func(v AccessGroupIncludeAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The ID of this resource.
 func (o AccessGroupIncludeAzureOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupIncludeAzure) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -1318,7 +1523,7 @@ type AccessGroupIncludeExternalEvaluation struct {
 // AccessGroupIncludeExternalEvaluationInput is an input type that accepts AccessGroupIncludeExternalEvaluationArgs and AccessGroupIncludeExternalEvaluationOutput values.
 // You can construct a concrete instance of `AccessGroupIncludeExternalEvaluationInput` via:
 //
-//          AccessGroupIncludeExternalEvaluationArgs{...}
+//	AccessGroupIncludeExternalEvaluationArgs{...}
 type AccessGroupIncludeExternalEvaluationInput interface {
 	pulumi.Input
 
@@ -1354,11 +1559,11 @@ func (i AccessGroupIncludeExternalEvaluationArgs) ToAccessGroupIncludeExternalEv
 // AccessGroupIncludeExternalEvaluationPtrInput is an input type that accepts AccessGroupIncludeExternalEvaluationArgs, AccessGroupIncludeExternalEvaluationPtr and AccessGroupIncludeExternalEvaluationPtrOutput values.
 // You can construct a concrete instance of `AccessGroupIncludeExternalEvaluationPtrInput` via:
 //
-//          AccessGroupIncludeExternalEvaluationArgs{...}
+//	        AccessGroupIncludeExternalEvaluationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccessGroupIncludeExternalEvaluationPtrInput interface {
 	pulumi.Input
 
@@ -1467,7 +1672,7 @@ type AccessGroupIncludeGithub struct {
 // AccessGroupIncludeGithubInput is an input type that accepts AccessGroupIncludeGithubArgs and AccessGroupIncludeGithubOutput values.
 // You can construct a concrete instance of `AccessGroupIncludeGithubInput` via:
 //
-//          AccessGroupIncludeGithubArgs{...}
+//	AccessGroupIncludeGithubArgs{...}
 type AccessGroupIncludeGithubInput interface {
 	pulumi.Input
 
@@ -1496,7 +1701,7 @@ func (i AccessGroupIncludeGithubArgs) ToAccessGroupIncludeGithubOutputWithContex
 // AccessGroupIncludeGithubArrayInput is an input type that accepts AccessGroupIncludeGithubArray and AccessGroupIncludeGithubArrayOutput values.
 // You can construct a concrete instance of `AccessGroupIncludeGithubArrayInput` via:
 //
-//          AccessGroupIncludeGithubArray{ AccessGroupIncludeGithubArgs{...} }
+//	AccessGroupIncludeGithubArray{ AccessGroupIncludeGithubArgs{...} }
 type AccessGroupIncludeGithubArrayInput interface {
 	pulumi.Input
 
@@ -1572,7 +1777,7 @@ type AccessGroupIncludeGsuite struct {
 // AccessGroupIncludeGsuiteInput is an input type that accepts AccessGroupIncludeGsuiteArgs and AccessGroupIncludeGsuiteOutput values.
 // You can construct a concrete instance of `AccessGroupIncludeGsuiteInput` via:
 //
-//          AccessGroupIncludeGsuiteArgs{...}
+//	AccessGroupIncludeGsuiteArgs{...}
 type AccessGroupIncludeGsuiteInput interface {
 	pulumi.Input
 
@@ -1600,7 +1805,7 @@ func (i AccessGroupIncludeGsuiteArgs) ToAccessGroupIncludeGsuiteOutputWithContex
 // AccessGroupIncludeGsuiteArrayInput is an input type that accepts AccessGroupIncludeGsuiteArray and AccessGroupIncludeGsuiteArrayOutput values.
 // You can construct a concrete instance of `AccessGroupIncludeGsuiteArrayInput` via:
 //
-//          AccessGroupIncludeGsuiteArray{ AccessGroupIncludeGsuiteArgs{...} }
+//	AccessGroupIncludeGsuiteArray{ AccessGroupIncludeGsuiteArgs{...} }
 type AccessGroupIncludeGsuiteArrayInput interface {
 	pulumi.Input
 
@@ -1672,7 +1877,7 @@ type AccessGroupIncludeOkta struct {
 // AccessGroupIncludeOktaInput is an input type that accepts AccessGroupIncludeOktaArgs and AccessGroupIncludeOktaOutput values.
 // You can construct a concrete instance of `AccessGroupIncludeOktaInput` via:
 //
-//          AccessGroupIncludeOktaArgs{...}
+//	AccessGroupIncludeOktaArgs{...}
 type AccessGroupIncludeOktaInput interface {
 	pulumi.Input
 
@@ -1700,7 +1905,7 @@ func (i AccessGroupIncludeOktaArgs) ToAccessGroupIncludeOktaOutputWithContext(ct
 // AccessGroupIncludeOktaArrayInput is an input type that accepts AccessGroupIncludeOktaArray and AccessGroupIncludeOktaArrayOutput values.
 // You can construct a concrete instance of `AccessGroupIncludeOktaArrayInput` via:
 //
-//          AccessGroupIncludeOktaArray{ AccessGroupIncludeOktaArgs{...} }
+//	AccessGroupIncludeOktaArray{ AccessGroupIncludeOktaArgs{...} }
 type AccessGroupIncludeOktaArrayInput interface {
 	pulumi.Input
 
@@ -1773,7 +1978,7 @@ type AccessGroupIncludeSaml struct {
 // AccessGroupIncludeSamlInput is an input type that accepts AccessGroupIncludeSamlArgs and AccessGroupIncludeSamlOutput values.
 // You can construct a concrete instance of `AccessGroupIncludeSamlInput` via:
 //
-//          AccessGroupIncludeSamlArgs{...}
+//	AccessGroupIncludeSamlArgs{...}
 type AccessGroupIncludeSamlInput interface {
 	pulumi.Input
 
@@ -1802,7 +2007,7 @@ func (i AccessGroupIncludeSamlArgs) ToAccessGroupIncludeSamlOutputWithContext(ct
 // AccessGroupIncludeSamlArrayInput is an input type that accepts AccessGroupIncludeSamlArray and AccessGroupIncludeSamlArrayOutput values.
 // You can construct a concrete instance of `AccessGroupIncludeSamlArrayInput` via:
 //
-//          AccessGroupIncludeSamlArray{ AccessGroupIncludeSamlArgs{...} }
+//	AccessGroupIncludeSamlArray{ AccessGroupIncludeSamlArgs{...} }
 type AccessGroupIncludeSamlArrayInput interface {
 	pulumi.Input
 
@@ -1895,7 +2100,7 @@ type AccessGroupRequire struct {
 // AccessGroupRequireInput is an input type that accepts AccessGroupRequireArgs and AccessGroupRequireOutput values.
 // You can construct a concrete instance of `AccessGroupRequireInput` via:
 //
-//          AccessGroupRequireArgs{...}
+//	AccessGroupRequireArgs{...}
 type AccessGroupRequireInput interface {
 	pulumi.Input
 
@@ -1940,7 +2145,7 @@ func (i AccessGroupRequireArgs) ToAccessGroupRequireOutputWithContext(ctx contex
 // AccessGroupRequireArrayInput is an input type that accepts AccessGroupRequireArray and AccessGroupRequireArrayOutput values.
 // You can construct a concrete instance of `AccessGroupRequireArrayInput` via:
 //
-//          AccessGroupRequireArray{ AccessGroupRequireArgs{...} }
+//	AccessGroupRequireArray{ AccessGroupRequireArgs{...} }
 type AccessGroupRequireArrayInput interface {
 	pulumi.Input
 
@@ -2073,14 +2278,15 @@ func (o AccessGroupRequireArrayOutput) Index(i pulumi.IntInput) AccessGroupRequi
 }
 
 type AccessGroupRequireAzure struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Ids                []string `pulumi:"ids"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The ID of this resource.
+	Ids []string `pulumi:"ids"`
 }
 
 // AccessGroupRequireAzureInput is an input type that accepts AccessGroupRequireAzureArgs and AccessGroupRequireAzureOutput values.
 // You can construct a concrete instance of `AccessGroupRequireAzureInput` via:
 //
-//          AccessGroupRequireAzureArgs{...}
+//	AccessGroupRequireAzureArgs{...}
 type AccessGroupRequireAzureInput interface {
 	pulumi.Input
 
@@ -2089,8 +2295,9 @@ type AccessGroupRequireAzureInput interface {
 }
 
 type AccessGroupRequireAzureArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Ids                pulumi.StringArrayInput `pulumi:"ids"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The ID of this resource.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
 }
 
 func (AccessGroupRequireAzureArgs) ElementType() reflect.Type {
@@ -2108,7 +2315,7 @@ func (i AccessGroupRequireAzureArgs) ToAccessGroupRequireAzureOutputWithContext(
 // AccessGroupRequireAzureArrayInput is an input type that accepts AccessGroupRequireAzureArray and AccessGroupRequireAzureArrayOutput values.
 // You can construct a concrete instance of `AccessGroupRequireAzureArrayInput` via:
 //
-//          AccessGroupRequireAzureArray{ AccessGroupRequireAzureArgs{...} }
+//	AccessGroupRequireAzureArray{ AccessGroupRequireAzureArgs{...} }
 type AccessGroupRequireAzureArrayInput interface {
 	pulumi.Input
 
@@ -2148,6 +2355,7 @@ func (o AccessGroupRequireAzureOutput) IdentityProviderId() pulumi.StringPtrOutp
 	return o.ApplyT(func(v AccessGroupRequireAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The ID of this resource.
 func (o AccessGroupRequireAzureOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequireAzure) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -2180,7 +2388,7 @@ type AccessGroupRequireExternalEvaluation struct {
 // AccessGroupRequireExternalEvaluationInput is an input type that accepts AccessGroupRequireExternalEvaluationArgs and AccessGroupRequireExternalEvaluationOutput values.
 // You can construct a concrete instance of `AccessGroupRequireExternalEvaluationInput` via:
 //
-//          AccessGroupRequireExternalEvaluationArgs{...}
+//	AccessGroupRequireExternalEvaluationArgs{...}
 type AccessGroupRequireExternalEvaluationInput interface {
 	pulumi.Input
 
@@ -2216,11 +2424,11 @@ func (i AccessGroupRequireExternalEvaluationArgs) ToAccessGroupRequireExternalEv
 // AccessGroupRequireExternalEvaluationPtrInput is an input type that accepts AccessGroupRequireExternalEvaluationArgs, AccessGroupRequireExternalEvaluationPtr and AccessGroupRequireExternalEvaluationPtrOutput values.
 // You can construct a concrete instance of `AccessGroupRequireExternalEvaluationPtrInput` via:
 //
-//          AccessGroupRequireExternalEvaluationArgs{...}
+//	        AccessGroupRequireExternalEvaluationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccessGroupRequireExternalEvaluationPtrInput interface {
 	pulumi.Input
 
@@ -2329,7 +2537,7 @@ type AccessGroupRequireGithub struct {
 // AccessGroupRequireGithubInput is an input type that accepts AccessGroupRequireGithubArgs and AccessGroupRequireGithubOutput values.
 // You can construct a concrete instance of `AccessGroupRequireGithubInput` via:
 //
-//          AccessGroupRequireGithubArgs{...}
+//	AccessGroupRequireGithubArgs{...}
 type AccessGroupRequireGithubInput interface {
 	pulumi.Input
 
@@ -2358,7 +2566,7 @@ func (i AccessGroupRequireGithubArgs) ToAccessGroupRequireGithubOutputWithContex
 // AccessGroupRequireGithubArrayInput is an input type that accepts AccessGroupRequireGithubArray and AccessGroupRequireGithubArrayOutput values.
 // You can construct a concrete instance of `AccessGroupRequireGithubArrayInput` via:
 //
-//          AccessGroupRequireGithubArray{ AccessGroupRequireGithubArgs{...} }
+//	AccessGroupRequireGithubArray{ AccessGroupRequireGithubArgs{...} }
 type AccessGroupRequireGithubArrayInput interface {
 	pulumi.Input
 
@@ -2434,7 +2642,7 @@ type AccessGroupRequireGsuite struct {
 // AccessGroupRequireGsuiteInput is an input type that accepts AccessGroupRequireGsuiteArgs and AccessGroupRequireGsuiteOutput values.
 // You can construct a concrete instance of `AccessGroupRequireGsuiteInput` via:
 //
-//          AccessGroupRequireGsuiteArgs{...}
+//	AccessGroupRequireGsuiteArgs{...}
 type AccessGroupRequireGsuiteInput interface {
 	pulumi.Input
 
@@ -2462,7 +2670,7 @@ func (i AccessGroupRequireGsuiteArgs) ToAccessGroupRequireGsuiteOutputWithContex
 // AccessGroupRequireGsuiteArrayInput is an input type that accepts AccessGroupRequireGsuiteArray and AccessGroupRequireGsuiteArrayOutput values.
 // You can construct a concrete instance of `AccessGroupRequireGsuiteArrayInput` via:
 //
-//          AccessGroupRequireGsuiteArray{ AccessGroupRequireGsuiteArgs{...} }
+//	AccessGroupRequireGsuiteArray{ AccessGroupRequireGsuiteArgs{...} }
 type AccessGroupRequireGsuiteArrayInput interface {
 	pulumi.Input
 
@@ -2534,7 +2742,7 @@ type AccessGroupRequireOkta struct {
 // AccessGroupRequireOktaInput is an input type that accepts AccessGroupRequireOktaArgs and AccessGroupRequireOktaOutput values.
 // You can construct a concrete instance of `AccessGroupRequireOktaInput` via:
 //
-//          AccessGroupRequireOktaArgs{...}
+//	AccessGroupRequireOktaArgs{...}
 type AccessGroupRequireOktaInput interface {
 	pulumi.Input
 
@@ -2562,7 +2770,7 @@ func (i AccessGroupRequireOktaArgs) ToAccessGroupRequireOktaOutputWithContext(ct
 // AccessGroupRequireOktaArrayInput is an input type that accepts AccessGroupRequireOktaArray and AccessGroupRequireOktaArrayOutput values.
 // You can construct a concrete instance of `AccessGroupRequireOktaArrayInput` via:
 //
-//          AccessGroupRequireOktaArray{ AccessGroupRequireOktaArgs{...} }
+//	AccessGroupRequireOktaArray{ AccessGroupRequireOktaArgs{...} }
 type AccessGroupRequireOktaArrayInput interface {
 	pulumi.Input
 
@@ -2635,7 +2843,7 @@ type AccessGroupRequireSaml struct {
 // AccessGroupRequireSamlInput is an input type that accepts AccessGroupRequireSamlArgs and AccessGroupRequireSamlOutput values.
 // You can construct a concrete instance of `AccessGroupRequireSamlInput` via:
 //
-//          AccessGroupRequireSamlArgs{...}
+//	AccessGroupRequireSamlArgs{...}
 type AccessGroupRequireSamlInput interface {
 	pulumi.Input
 
@@ -2664,7 +2872,7 @@ func (i AccessGroupRequireSamlArgs) ToAccessGroupRequireSamlOutputWithContext(ct
 // AccessGroupRequireSamlArrayInput is an input type that accepts AccessGroupRequireSamlArray and AccessGroupRequireSamlArrayOutput values.
 // You can construct a concrete instance of `AccessGroupRequireSamlArrayInput` via:
 //
-//          AccessGroupRequireSamlArray{ AccessGroupRequireSamlArgs{...} }
+//	AccessGroupRequireSamlArray{ AccessGroupRequireSamlArgs{...} }
 type AccessGroupRequireSamlArrayInput interface {
 	pulumi.Input
 
@@ -2759,7 +2967,7 @@ type AccessIdentityProviderConfig struct {
 // AccessIdentityProviderConfigInput is an input type that accepts AccessIdentityProviderConfigArgs and AccessIdentityProviderConfigOutput values.
 // You can construct a concrete instance of `AccessIdentityProviderConfigInput` via:
 //
-//          AccessIdentityProviderConfigArgs{...}
+//	AccessIdentityProviderConfigArgs{...}
 type AccessIdentityProviderConfigInput interface {
 	pulumi.Input
 
@@ -2806,7 +3014,7 @@ func (i AccessIdentityProviderConfigArgs) ToAccessIdentityProviderConfigOutputWi
 // AccessIdentityProviderConfigArrayInput is an input type that accepts AccessIdentityProviderConfigArray and AccessIdentityProviderConfigArrayOutput values.
 // You can construct a concrete instance of `AccessIdentityProviderConfigArrayInput` via:
 //
-//          AccessIdentityProviderConfigArray{ AccessIdentityProviderConfigArgs{...} }
+//	AccessIdentityProviderConfigArray{ AccessIdentityProviderConfigArgs{...} }
 type AccessIdentityProviderConfigArrayInput interface {
 	pulumi.Input
 
@@ -2947,15 +3155,17 @@ func (o AccessIdentityProviderConfigArrayOutput) Index(i pulumi.IntInput) Access
 }
 
 type AccessPolicyApprovalGroup struct {
-	ApprovalsNeeded int      `pulumi:"approvalsNeeded"`
-	EmailAddresses  []string `pulumi:"emailAddresses"`
-	EmailListUuid   *string  `pulumi:"emailListUuid"`
+	// Number of approvals needed.
+	ApprovalsNeeded int `pulumi:"approvalsNeeded"`
+	// List of emails to request approval from.
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	EmailListUuid  *string  `pulumi:"emailListUuid"`
 }
 
 // AccessPolicyApprovalGroupInput is an input type that accepts AccessPolicyApprovalGroupArgs and AccessPolicyApprovalGroupOutput values.
 // You can construct a concrete instance of `AccessPolicyApprovalGroupInput` via:
 //
-//          AccessPolicyApprovalGroupArgs{...}
+//	AccessPolicyApprovalGroupArgs{...}
 type AccessPolicyApprovalGroupInput interface {
 	pulumi.Input
 
@@ -2964,9 +3174,11 @@ type AccessPolicyApprovalGroupInput interface {
 }
 
 type AccessPolicyApprovalGroupArgs struct {
-	ApprovalsNeeded pulumi.IntInput         `pulumi:"approvalsNeeded"`
-	EmailAddresses  pulumi.StringArrayInput `pulumi:"emailAddresses"`
-	EmailListUuid   pulumi.StringPtrInput   `pulumi:"emailListUuid"`
+	// Number of approvals needed.
+	ApprovalsNeeded pulumi.IntInput `pulumi:"approvalsNeeded"`
+	// List of emails to request approval from.
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	EmailListUuid  pulumi.StringPtrInput   `pulumi:"emailListUuid"`
 }
 
 func (AccessPolicyApprovalGroupArgs) ElementType() reflect.Type {
@@ -2984,7 +3196,7 @@ func (i AccessPolicyApprovalGroupArgs) ToAccessPolicyApprovalGroupOutputWithCont
 // AccessPolicyApprovalGroupArrayInput is an input type that accepts AccessPolicyApprovalGroupArray and AccessPolicyApprovalGroupArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyApprovalGroupArrayInput` via:
 //
-//          AccessPolicyApprovalGroupArray{ AccessPolicyApprovalGroupArgs{...} }
+//	AccessPolicyApprovalGroupArray{ AccessPolicyApprovalGroupArgs{...} }
 type AccessPolicyApprovalGroupArrayInput interface {
 	pulumi.Input
 
@@ -3020,10 +3232,12 @@ func (o AccessPolicyApprovalGroupOutput) ToAccessPolicyApprovalGroupOutputWithCo
 	return o
 }
 
+// Number of approvals needed.
 func (o AccessPolicyApprovalGroupOutput) ApprovalsNeeded() pulumi.IntOutput {
 	return o.ApplyT(func(v AccessPolicyApprovalGroup) int { return v.ApprovalsNeeded }).(pulumi.IntOutput)
 }
 
+// List of emails to request approval from.
 func (o AccessPolicyApprovalGroupOutput) EmailAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyApprovalGroup) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
 }
@@ -3077,7 +3291,7 @@ type AccessPolicyExclude struct {
 // AccessPolicyExcludeInput is an input type that accepts AccessPolicyExcludeArgs and AccessPolicyExcludeOutput values.
 // You can construct a concrete instance of `AccessPolicyExcludeInput` via:
 //
-//          AccessPolicyExcludeArgs{...}
+//	AccessPolicyExcludeArgs{...}
 type AccessPolicyExcludeInput interface {
 	pulumi.Input
 
@@ -3122,7 +3336,7 @@ func (i AccessPolicyExcludeArgs) ToAccessPolicyExcludeOutputWithContext(ctx cont
 // AccessPolicyExcludeArrayInput is an input type that accepts AccessPolicyExcludeArray and AccessPolicyExcludeArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyExcludeArrayInput` via:
 //
-//          AccessPolicyExcludeArray{ AccessPolicyExcludeArgs{...} }
+//	AccessPolicyExcludeArray{ AccessPolicyExcludeArgs{...} }
 type AccessPolicyExcludeArrayInput interface {
 	pulumi.Input
 
@@ -3255,14 +3469,15 @@ func (o AccessPolicyExcludeArrayOutput) Index(i pulumi.IntInput) AccessPolicyExc
 }
 
 type AccessPolicyExcludeAzure struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Ids                []string `pulumi:"ids"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The ID of this resource.
+	Ids []string `pulumi:"ids"`
 }
 
 // AccessPolicyExcludeAzureInput is an input type that accepts AccessPolicyExcludeAzureArgs and AccessPolicyExcludeAzureOutput values.
 // You can construct a concrete instance of `AccessPolicyExcludeAzureInput` via:
 //
-//          AccessPolicyExcludeAzureArgs{...}
+//	AccessPolicyExcludeAzureArgs{...}
 type AccessPolicyExcludeAzureInput interface {
 	pulumi.Input
 
@@ -3271,8 +3486,9 @@ type AccessPolicyExcludeAzureInput interface {
 }
 
 type AccessPolicyExcludeAzureArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Ids                pulumi.StringArrayInput `pulumi:"ids"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The ID of this resource.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
 }
 
 func (AccessPolicyExcludeAzureArgs) ElementType() reflect.Type {
@@ -3290,7 +3506,7 @@ func (i AccessPolicyExcludeAzureArgs) ToAccessPolicyExcludeAzureOutputWithContex
 // AccessPolicyExcludeAzureArrayInput is an input type that accepts AccessPolicyExcludeAzureArray and AccessPolicyExcludeAzureArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyExcludeAzureArrayInput` via:
 //
-//          AccessPolicyExcludeAzureArray{ AccessPolicyExcludeAzureArgs{...} }
+//	AccessPolicyExcludeAzureArray{ AccessPolicyExcludeAzureArgs{...} }
 type AccessPolicyExcludeAzureArrayInput interface {
 	pulumi.Input
 
@@ -3330,6 +3546,7 @@ func (o AccessPolicyExcludeAzureOutput) IdentityProviderId() pulumi.StringPtrOut
 	return o.ApplyT(func(v AccessPolicyExcludeAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The ID of this resource.
 func (o AccessPolicyExcludeAzureOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeAzure) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -3362,7 +3579,7 @@ type AccessPolicyExcludeExternalEvaluation struct {
 // AccessPolicyExcludeExternalEvaluationInput is an input type that accepts AccessPolicyExcludeExternalEvaluationArgs and AccessPolicyExcludeExternalEvaluationOutput values.
 // You can construct a concrete instance of `AccessPolicyExcludeExternalEvaluationInput` via:
 //
-//          AccessPolicyExcludeExternalEvaluationArgs{...}
+//	AccessPolicyExcludeExternalEvaluationArgs{...}
 type AccessPolicyExcludeExternalEvaluationInput interface {
 	pulumi.Input
 
@@ -3398,11 +3615,11 @@ func (i AccessPolicyExcludeExternalEvaluationArgs) ToAccessPolicyExcludeExternal
 // AccessPolicyExcludeExternalEvaluationPtrInput is an input type that accepts AccessPolicyExcludeExternalEvaluationArgs, AccessPolicyExcludeExternalEvaluationPtr and AccessPolicyExcludeExternalEvaluationPtrOutput values.
 // You can construct a concrete instance of `AccessPolicyExcludeExternalEvaluationPtrInput` via:
 //
-//          AccessPolicyExcludeExternalEvaluationArgs{...}
+//	        AccessPolicyExcludeExternalEvaluationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccessPolicyExcludeExternalEvaluationPtrInput interface {
 	pulumi.Input
 
@@ -3503,15 +3720,16 @@ func (o AccessPolicyExcludeExternalEvaluationPtrOutput) KeysUrl() pulumi.StringP
 }
 
 type AccessPolicyExcludeGithub struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Name               *string  `pulumi:"name"`
-	Teams              []string `pulumi:"teams"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// Friendly name of the Access Policy.
+	Name  *string  `pulumi:"name"`
+	Teams []string `pulumi:"teams"`
 }
 
 // AccessPolicyExcludeGithubInput is an input type that accepts AccessPolicyExcludeGithubArgs and AccessPolicyExcludeGithubOutput values.
 // You can construct a concrete instance of `AccessPolicyExcludeGithubInput` via:
 //
-//          AccessPolicyExcludeGithubArgs{...}
+//	AccessPolicyExcludeGithubArgs{...}
 type AccessPolicyExcludeGithubInput interface {
 	pulumi.Input
 
@@ -3520,9 +3738,10 @@ type AccessPolicyExcludeGithubInput interface {
 }
 
 type AccessPolicyExcludeGithubArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Name               pulumi.StringPtrInput   `pulumi:"name"`
-	Teams              pulumi.StringArrayInput `pulumi:"teams"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// Friendly name of the Access Policy.
+	Name  pulumi.StringPtrInput   `pulumi:"name"`
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (AccessPolicyExcludeGithubArgs) ElementType() reflect.Type {
@@ -3540,7 +3759,7 @@ func (i AccessPolicyExcludeGithubArgs) ToAccessPolicyExcludeGithubOutputWithCont
 // AccessPolicyExcludeGithubArrayInput is an input type that accepts AccessPolicyExcludeGithubArray and AccessPolicyExcludeGithubArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyExcludeGithubArrayInput` via:
 //
-//          AccessPolicyExcludeGithubArray{ AccessPolicyExcludeGithubArgs{...} }
+//	AccessPolicyExcludeGithubArray{ AccessPolicyExcludeGithubArgs{...} }
 type AccessPolicyExcludeGithubArrayInput interface {
 	pulumi.Input
 
@@ -3580,6 +3799,7 @@ func (o AccessPolicyExcludeGithubOutput) IdentityProviderId() pulumi.StringPtrOu
 	return o.ApplyT(func(v AccessPolicyExcludeGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// Friendly name of the Access Policy.
 func (o AccessPolicyExcludeGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -3616,7 +3836,7 @@ type AccessPolicyExcludeGsuite struct {
 // AccessPolicyExcludeGsuiteInput is an input type that accepts AccessPolicyExcludeGsuiteArgs and AccessPolicyExcludeGsuiteOutput values.
 // You can construct a concrete instance of `AccessPolicyExcludeGsuiteInput` via:
 //
-//          AccessPolicyExcludeGsuiteArgs{...}
+//	AccessPolicyExcludeGsuiteArgs{...}
 type AccessPolicyExcludeGsuiteInput interface {
 	pulumi.Input
 
@@ -3644,7 +3864,7 @@ func (i AccessPolicyExcludeGsuiteArgs) ToAccessPolicyExcludeGsuiteOutputWithCont
 // AccessPolicyExcludeGsuiteArrayInput is an input type that accepts AccessPolicyExcludeGsuiteArray and AccessPolicyExcludeGsuiteArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyExcludeGsuiteArrayInput` via:
 //
-//          AccessPolicyExcludeGsuiteArray{ AccessPolicyExcludeGsuiteArgs{...} }
+//	AccessPolicyExcludeGsuiteArray{ AccessPolicyExcludeGsuiteArgs{...} }
 type AccessPolicyExcludeGsuiteArrayInput interface {
 	pulumi.Input
 
@@ -3709,14 +3929,15 @@ func (o AccessPolicyExcludeGsuiteArrayOutput) Index(i pulumi.IntInput) AccessPol
 }
 
 type AccessPolicyExcludeOkta struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Names              []string `pulumi:"names"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// Friendly name of the Access Policy.
+	Names []string `pulumi:"names"`
 }
 
 // AccessPolicyExcludeOktaInput is an input type that accepts AccessPolicyExcludeOktaArgs and AccessPolicyExcludeOktaOutput values.
 // You can construct a concrete instance of `AccessPolicyExcludeOktaInput` via:
 //
-//          AccessPolicyExcludeOktaArgs{...}
+//	AccessPolicyExcludeOktaArgs{...}
 type AccessPolicyExcludeOktaInput interface {
 	pulumi.Input
 
@@ -3725,8 +3946,9 @@ type AccessPolicyExcludeOktaInput interface {
 }
 
 type AccessPolicyExcludeOktaArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Names              pulumi.StringArrayInput `pulumi:"names"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// Friendly name of the Access Policy.
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (AccessPolicyExcludeOktaArgs) ElementType() reflect.Type {
@@ -3744,7 +3966,7 @@ func (i AccessPolicyExcludeOktaArgs) ToAccessPolicyExcludeOktaOutputWithContext(
 // AccessPolicyExcludeOktaArrayInput is an input type that accepts AccessPolicyExcludeOktaArray and AccessPolicyExcludeOktaArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyExcludeOktaArrayInput` via:
 //
-//          AccessPolicyExcludeOktaArray{ AccessPolicyExcludeOktaArgs{...} }
+//	AccessPolicyExcludeOktaArray{ AccessPolicyExcludeOktaArgs{...} }
 type AccessPolicyExcludeOktaArrayInput interface {
 	pulumi.Input
 
@@ -3784,6 +4006,7 @@ func (o AccessPolicyExcludeOktaOutput) IdentityProviderId() pulumi.StringPtrOutp
 	return o.ApplyT(func(v AccessPolicyExcludeOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// Friendly name of the Access Policy.
 func (o AccessPolicyExcludeOktaOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -3817,7 +4040,7 @@ type AccessPolicyExcludeSaml struct {
 // AccessPolicyExcludeSamlInput is an input type that accepts AccessPolicyExcludeSamlArgs and AccessPolicyExcludeSamlOutput values.
 // You can construct a concrete instance of `AccessPolicyExcludeSamlInput` via:
 //
-//          AccessPolicyExcludeSamlArgs{...}
+//	AccessPolicyExcludeSamlArgs{...}
 type AccessPolicyExcludeSamlInput interface {
 	pulumi.Input
 
@@ -3846,7 +4069,7 @@ func (i AccessPolicyExcludeSamlArgs) ToAccessPolicyExcludeSamlOutputWithContext(
 // AccessPolicyExcludeSamlArrayInput is an input type that accepts AccessPolicyExcludeSamlArray and AccessPolicyExcludeSamlArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyExcludeSamlArrayInput` via:
 //
-//          AccessPolicyExcludeSamlArray{ AccessPolicyExcludeSamlArgs{...} }
+//	AccessPolicyExcludeSamlArray{ AccessPolicyExcludeSamlArgs{...} }
 type AccessPolicyExcludeSamlArrayInput interface {
 	pulumi.Input
 
@@ -3939,7 +4162,7 @@ type AccessPolicyInclude struct {
 // AccessPolicyIncludeInput is an input type that accepts AccessPolicyIncludeArgs and AccessPolicyIncludeOutput values.
 // You can construct a concrete instance of `AccessPolicyIncludeInput` via:
 //
-//          AccessPolicyIncludeArgs{...}
+//	AccessPolicyIncludeArgs{...}
 type AccessPolicyIncludeInput interface {
 	pulumi.Input
 
@@ -3984,7 +4207,7 @@ func (i AccessPolicyIncludeArgs) ToAccessPolicyIncludeOutputWithContext(ctx cont
 // AccessPolicyIncludeArrayInput is an input type that accepts AccessPolicyIncludeArray and AccessPolicyIncludeArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyIncludeArrayInput` via:
 //
-//          AccessPolicyIncludeArray{ AccessPolicyIncludeArgs{...} }
+//	AccessPolicyIncludeArray{ AccessPolicyIncludeArgs{...} }
 type AccessPolicyIncludeArrayInput interface {
 	pulumi.Input
 
@@ -4117,14 +4340,15 @@ func (o AccessPolicyIncludeArrayOutput) Index(i pulumi.IntInput) AccessPolicyInc
 }
 
 type AccessPolicyIncludeAzure struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Ids                []string `pulumi:"ids"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The ID of this resource.
+	Ids []string `pulumi:"ids"`
 }
 
 // AccessPolicyIncludeAzureInput is an input type that accepts AccessPolicyIncludeAzureArgs and AccessPolicyIncludeAzureOutput values.
 // You can construct a concrete instance of `AccessPolicyIncludeAzureInput` via:
 //
-//          AccessPolicyIncludeAzureArgs{...}
+//	AccessPolicyIncludeAzureArgs{...}
 type AccessPolicyIncludeAzureInput interface {
 	pulumi.Input
 
@@ -4133,8 +4357,9 @@ type AccessPolicyIncludeAzureInput interface {
 }
 
 type AccessPolicyIncludeAzureArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Ids                pulumi.StringArrayInput `pulumi:"ids"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The ID of this resource.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
 }
 
 func (AccessPolicyIncludeAzureArgs) ElementType() reflect.Type {
@@ -4152,7 +4377,7 @@ func (i AccessPolicyIncludeAzureArgs) ToAccessPolicyIncludeAzureOutputWithContex
 // AccessPolicyIncludeAzureArrayInput is an input type that accepts AccessPolicyIncludeAzureArray and AccessPolicyIncludeAzureArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyIncludeAzureArrayInput` via:
 //
-//          AccessPolicyIncludeAzureArray{ AccessPolicyIncludeAzureArgs{...} }
+//	AccessPolicyIncludeAzureArray{ AccessPolicyIncludeAzureArgs{...} }
 type AccessPolicyIncludeAzureArrayInput interface {
 	pulumi.Input
 
@@ -4192,6 +4417,7 @@ func (o AccessPolicyIncludeAzureOutput) IdentityProviderId() pulumi.StringPtrOut
 	return o.ApplyT(func(v AccessPolicyIncludeAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The ID of this resource.
 func (o AccessPolicyIncludeAzureOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeAzure) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -4224,7 +4450,7 @@ type AccessPolicyIncludeExternalEvaluation struct {
 // AccessPolicyIncludeExternalEvaluationInput is an input type that accepts AccessPolicyIncludeExternalEvaluationArgs and AccessPolicyIncludeExternalEvaluationOutput values.
 // You can construct a concrete instance of `AccessPolicyIncludeExternalEvaluationInput` via:
 //
-//          AccessPolicyIncludeExternalEvaluationArgs{...}
+//	AccessPolicyIncludeExternalEvaluationArgs{...}
 type AccessPolicyIncludeExternalEvaluationInput interface {
 	pulumi.Input
 
@@ -4260,11 +4486,11 @@ func (i AccessPolicyIncludeExternalEvaluationArgs) ToAccessPolicyIncludeExternal
 // AccessPolicyIncludeExternalEvaluationPtrInput is an input type that accepts AccessPolicyIncludeExternalEvaluationArgs, AccessPolicyIncludeExternalEvaluationPtr and AccessPolicyIncludeExternalEvaluationPtrOutput values.
 // You can construct a concrete instance of `AccessPolicyIncludeExternalEvaluationPtrInput` via:
 //
-//          AccessPolicyIncludeExternalEvaluationArgs{...}
+//	        AccessPolicyIncludeExternalEvaluationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccessPolicyIncludeExternalEvaluationPtrInput interface {
 	pulumi.Input
 
@@ -4365,15 +4591,16 @@ func (o AccessPolicyIncludeExternalEvaluationPtrOutput) KeysUrl() pulumi.StringP
 }
 
 type AccessPolicyIncludeGithub struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Name               *string  `pulumi:"name"`
-	Teams              []string `pulumi:"teams"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// Friendly name of the Access Policy.
+	Name  *string  `pulumi:"name"`
+	Teams []string `pulumi:"teams"`
 }
 
 // AccessPolicyIncludeGithubInput is an input type that accepts AccessPolicyIncludeGithubArgs and AccessPolicyIncludeGithubOutput values.
 // You can construct a concrete instance of `AccessPolicyIncludeGithubInput` via:
 //
-//          AccessPolicyIncludeGithubArgs{...}
+//	AccessPolicyIncludeGithubArgs{...}
 type AccessPolicyIncludeGithubInput interface {
 	pulumi.Input
 
@@ -4382,9 +4609,10 @@ type AccessPolicyIncludeGithubInput interface {
 }
 
 type AccessPolicyIncludeGithubArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Name               pulumi.StringPtrInput   `pulumi:"name"`
-	Teams              pulumi.StringArrayInput `pulumi:"teams"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// Friendly name of the Access Policy.
+	Name  pulumi.StringPtrInput   `pulumi:"name"`
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (AccessPolicyIncludeGithubArgs) ElementType() reflect.Type {
@@ -4402,7 +4630,7 @@ func (i AccessPolicyIncludeGithubArgs) ToAccessPolicyIncludeGithubOutputWithCont
 // AccessPolicyIncludeGithubArrayInput is an input type that accepts AccessPolicyIncludeGithubArray and AccessPolicyIncludeGithubArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyIncludeGithubArrayInput` via:
 //
-//          AccessPolicyIncludeGithubArray{ AccessPolicyIncludeGithubArgs{...} }
+//	AccessPolicyIncludeGithubArray{ AccessPolicyIncludeGithubArgs{...} }
 type AccessPolicyIncludeGithubArrayInput interface {
 	pulumi.Input
 
@@ -4442,6 +4670,7 @@ func (o AccessPolicyIncludeGithubOutput) IdentityProviderId() pulumi.StringPtrOu
 	return o.ApplyT(func(v AccessPolicyIncludeGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// Friendly name of the Access Policy.
 func (o AccessPolicyIncludeGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -4478,7 +4707,7 @@ type AccessPolicyIncludeGsuite struct {
 // AccessPolicyIncludeGsuiteInput is an input type that accepts AccessPolicyIncludeGsuiteArgs and AccessPolicyIncludeGsuiteOutput values.
 // You can construct a concrete instance of `AccessPolicyIncludeGsuiteInput` via:
 //
-//          AccessPolicyIncludeGsuiteArgs{...}
+//	AccessPolicyIncludeGsuiteArgs{...}
 type AccessPolicyIncludeGsuiteInput interface {
 	pulumi.Input
 
@@ -4506,7 +4735,7 @@ func (i AccessPolicyIncludeGsuiteArgs) ToAccessPolicyIncludeGsuiteOutputWithCont
 // AccessPolicyIncludeGsuiteArrayInput is an input type that accepts AccessPolicyIncludeGsuiteArray and AccessPolicyIncludeGsuiteArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyIncludeGsuiteArrayInput` via:
 //
-//          AccessPolicyIncludeGsuiteArray{ AccessPolicyIncludeGsuiteArgs{...} }
+//	AccessPolicyIncludeGsuiteArray{ AccessPolicyIncludeGsuiteArgs{...} }
 type AccessPolicyIncludeGsuiteArrayInput interface {
 	pulumi.Input
 
@@ -4571,14 +4800,15 @@ func (o AccessPolicyIncludeGsuiteArrayOutput) Index(i pulumi.IntInput) AccessPol
 }
 
 type AccessPolicyIncludeOkta struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Names              []string `pulumi:"names"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// Friendly name of the Access Policy.
+	Names []string `pulumi:"names"`
 }
 
 // AccessPolicyIncludeOktaInput is an input type that accepts AccessPolicyIncludeOktaArgs and AccessPolicyIncludeOktaOutput values.
 // You can construct a concrete instance of `AccessPolicyIncludeOktaInput` via:
 //
-//          AccessPolicyIncludeOktaArgs{...}
+//	AccessPolicyIncludeOktaArgs{...}
 type AccessPolicyIncludeOktaInput interface {
 	pulumi.Input
 
@@ -4587,8 +4817,9 @@ type AccessPolicyIncludeOktaInput interface {
 }
 
 type AccessPolicyIncludeOktaArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Names              pulumi.StringArrayInput `pulumi:"names"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// Friendly name of the Access Policy.
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (AccessPolicyIncludeOktaArgs) ElementType() reflect.Type {
@@ -4606,7 +4837,7 @@ func (i AccessPolicyIncludeOktaArgs) ToAccessPolicyIncludeOktaOutputWithContext(
 // AccessPolicyIncludeOktaArrayInput is an input type that accepts AccessPolicyIncludeOktaArray and AccessPolicyIncludeOktaArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyIncludeOktaArrayInput` via:
 //
-//          AccessPolicyIncludeOktaArray{ AccessPolicyIncludeOktaArgs{...} }
+//	AccessPolicyIncludeOktaArray{ AccessPolicyIncludeOktaArgs{...} }
 type AccessPolicyIncludeOktaArrayInput interface {
 	pulumi.Input
 
@@ -4646,6 +4877,7 @@ func (o AccessPolicyIncludeOktaOutput) IdentityProviderId() pulumi.StringPtrOutp
 	return o.ApplyT(func(v AccessPolicyIncludeOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// Friendly name of the Access Policy.
 func (o AccessPolicyIncludeOktaOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -4679,7 +4911,7 @@ type AccessPolicyIncludeSaml struct {
 // AccessPolicyIncludeSamlInput is an input type that accepts AccessPolicyIncludeSamlArgs and AccessPolicyIncludeSamlOutput values.
 // You can construct a concrete instance of `AccessPolicyIncludeSamlInput` via:
 //
-//          AccessPolicyIncludeSamlArgs{...}
+//	AccessPolicyIncludeSamlArgs{...}
 type AccessPolicyIncludeSamlInput interface {
 	pulumi.Input
 
@@ -4708,7 +4940,7 @@ func (i AccessPolicyIncludeSamlArgs) ToAccessPolicyIncludeSamlOutputWithContext(
 // AccessPolicyIncludeSamlArrayInput is an input type that accepts AccessPolicyIncludeSamlArray and AccessPolicyIncludeSamlArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyIncludeSamlArrayInput` via:
 //
-//          AccessPolicyIncludeSamlArray{ AccessPolicyIncludeSamlArgs{...} }
+//	AccessPolicyIncludeSamlArray{ AccessPolicyIncludeSamlArgs{...} }
 type AccessPolicyIncludeSamlArrayInput interface {
 	pulumi.Input
 
@@ -4801,7 +5033,7 @@ type AccessPolicyRequire struct {
 // AccessPolicyRequireInput is an input type that accepts AccessPolicyRequireArgs and AccessPolicyRequireOutput values.
 // You can construct a concrete instance of `AccessPolicyRequireInput` via:
 //
-//          AccessPolicyRequireArgs{...}
+//	AccessPolicyRequireArgs{...}
 type AccessPolicyRequireInput interface {
 	pulumi.Input
 
@@ -4846,7 +5078,7 @@ func (i AccessPolicyRequireArgs) ToAccessPolicyRequireOutputWithContext(ctx cont
 // AccessPolicyRequireArrayInput is an input type that accepts AccessPolicyRequireArray and AccessPolicyRequireArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyRequireArrayInput` via:
 //
-//          AccessPolicyRequireArray{ AccessPolicyRequireArgs{...} }
+//	AccessPolicyRequireArray{ AccessPolicyRequireArgs{...} }
 type AccessPolicyRequireArrayInput interface {
 	pulumi.Input
 
@@ -4979,14 +5211,15 @@ func (o AccessPolicyRequireArrayOutput) Index(i pulumi.IntInput) AccessPolicyReq
 }
 
 type AccessPolicyRequireAzure struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Ids                []string `pulumi:"ids"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// The ID of this resource.
+	Ids []string `pulumi:"ids"`
 }
 
 // AccessPolicyRequireAzureInput is an input type that accepts AccessPolicyRequireAzureArgs and AccessPolicyRequireAzureOutput values.
 // You can construct a concrete instance of `AccessPolicyRequireAzureInput` via:
 //
-//          AccessPolicyRequireAzureArgs{...}
+//	AccessPolicyRequireAzureArgs{...}
 type AccessPolicyRequireAzureInput interface {
 	pulumi.Input
 
@@ -4995,8 +5228,9 @@ type AccessPolicyRequireAzureInput interface {
 }
 
 type AccessPolicyRequireAzureArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Ids                pulumi.StringArrayInput `pulumi:"ids"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// The ID of this resource.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
 }
 
 func (AccessPolicyRequireAzureArgs) ElementType() reflect.Type {
@@ -5014,7 +5248,7 @@ func (i AccessPolicyRequireAzureArgs) ToAccessPolicyRequireAzureOutputWithContex
 // AccessPolicyRequireAzureArrayInput is an input type that accepts AccessPolicyRequireAzureArray and AccessPolicyRequireAzureArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyRequireAzureArrayInput` via:
 //
-//          AccessPolicyRequireAzureArray{ AccessPolicyRequireAzureArgs{...} }
+//	AccessPolicyRequireAzureArray{ AccessPolicyRequireAzureArgs{...} }
 type AccessPolicyRequireAzureArrayInput interface {
 	pulumi.Input
 
@@ -5054,6 +5288,7 @@ func (o AccessPolicyRequireAzureOutput) IdentityProviderId() pulumi.StringPtrOut
 	return o.ApplyT(func(v AccessPolicyRequireAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// The ID of this resource.
 func (o AccessPolicyRequireAzureOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequireAzure) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -5086,7 +5321,7 @@ type AccessPolicyRequireExternalEvaluation struct {
 // AccessPolicyRequireExternalEvaluationInput is an input type that accepts AccessPolicyRequireExternalEvaluationArgs and AccessPolicyRequireExternalEvaluationOutput values.
 // You can construct a concrete instance of `AccessPolicyRequireExternalEvaluationInput` via:
 //
-//          AccessPolicyRequireExternalEvaluationArgs{...}
+//	AccessPolicyRequireExternalEvaluationArgs{...}
 type AccessPolicyRequireExternalEvaluationInput interface {
 	pulumi.Input
 
@@ -5122,11 +5357,11 @@ func (i AccessPolicyRequireExternalEvaluationArgs) ToAccessPolicyRequireExternal
 // AccessPolicyRequireExternalEvaluationPtrInput is an input type that accepts AccessPolicyRequireExternalEvaluationArgs, AccessPolicyRequireExternalEvaluationPtr and AccessPolicyRequireExternalEvaluationPtrOutput values.
 // You can construct a concrete instance of `AccessPolicyRequireExternalEvaluationPtrInput` via:
 //
-//          AccessPolicyRequireExternalEvaluationArgs{...}
+//	        AccessPolicyRequireExternalEvaluationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccessPolicyRequireExternalEvaluationPtrInput interface {
 	pulumi.Input
 
@@ -5227,15 +5462,16 @@ func (o AccessPolicyRequireExternalEvaluationPtrOutput) KeysUrl() pulumi.StringP
 }
 
 type AccessPolicyRequireGithub struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Name               *string  `pulumi:"name"`
-	Teams              []string `pulumi:"teams"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// Friendly name of the Access Policy.
+	Name  *string  `pulumi:"name"`
+	Teams []string `pulumi:"teams"`
 }
 
 // AccessPolicyRequireGithubInput is an input type that accepts AccessPolicyRequireGithubArgs and AccessPolicyRequireGithubOutput values.
 // You can construct a concrete instance of `AccessPolicyRequireGithubInput` via:
 //
-//          AccessPolicyRequireGithubArgs{...}
+//	AccessPolicyRequireGithubArgs{...}
 type AccessPolicyRequireGithubInput interface {
 	pulumi.Input
 
@@ -5244,9 +5480,10 @@ type AccessPolicyRequireGithubInput interface {
 }
 
 type AccessPolicyRequireGithubArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Name               pulumi.StringPtrInput   `pulumi:"name"`
-	Teams              pulumi.StringArrayInput `pulumi:"teams"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// Friendly name of the Access Policy.
+	Name  pulumi.StringPtrInput   `pulumi:"name"`
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (AccessPolicyRequireGithubArgs) ElementType() reflect.Type {
@@ -5264,7 +5501,7 @@ func (i AccessPolicyRequireGithubArgs) ToAccessPolicyRequireGithubOutputWithCont
 // AccessPolicyRequireGithubArrayInput is an input type that accepts AccessPolicyRequireGithubArray and AccessPolicyRequireGithubArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyRequireGithubArrayInput` via:
 //
-//          AccessPolicyRequireGithubArray{ AccessPolicyRequireGithubArgs{...} }
+//	AccessPolicyRequireGithubArray{ AccessPolicyRequireGithubArgs{...} }
 type AccessPolicyRequireGithubArrayInput interface {
 	pulumi.Input
 
@@ -5304,6 +5541,7 @@ func (o AccessPolicyRequireGithubOutput) IdentityProviderId() pulumi.StringPtrOu
 	return o.ApplyT(func(v AccessPolicyRequireGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// Friendly name of the Access Policy.
 func (o AccessPolicyRequireGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequireGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -5340,7 +5578,7 @@ type AccessPolicyRequireGsuite struct {
 // AccessPolicyRequireGsuiteInput is an input type that accepts AccessPolicyRequireGsuiteArgs and AccessPolicyRequireGsuiteOutput values.
 // You can construct a concrete instance of `AccessPolicyRequireGsuiteInput` via:
 //
-//          AccessPolicyRequireGsuiteArgs{...}
+//	AccessPolicyRequireGsuiteArgs{...}
 type AccessPolicyRequireGsuiteInput interface {
 	pulumi.Input
 
@@ -5368,7 +5606,7 @@ func (i AccessPolicyRequireGsuiteArgs) ToAccessPolicyRequireGsuiteOutputWithCont
 // AccessPolicyRequireGsuiteArrayInput is an input type that accepts AccessPolicyRequireGsuiteArray and AccessPolicyRequireGsuiteArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyRequireGsuiteArrayInput` via:
 //
-//          AccessPolicyRequireGsuiteArray{ AccessPolicyRequireGsuiteArgs{...} }
+//	AccessPolicyRequireGsuiteArray{ AccessPolicyRequireGsuiteArgs{...} }
 type AccessPolicyRequireGsuiteArrayInput interface {
 	pulumi.Input
 
@@ -5433,14 +5671,15 @@ func (o AccessPolicyRequireGsuiteArrayOutput) Index(i pulumi.IntInput) AccessPol
 }
 
 type AccessPolicyRequireOkta struct {
-	IdentityProviderId *string  `pulumi:"identityProviderId"`
-	Names              []string `pulumi:"names"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// Friendly name of the Access Policy.
+	Names []string `pulumi:"names"`
 }
 
 // AccessPolicyRequireOktaInput is an input type that accepts AccessPolicyRequireOktaArgs and AccessPolicyRequireOktaOutput values.
 // You can construct a concrete instance of `AccessPolicyRequireOktaInput` via:
 //
-//          AccessPolicyRequireOktaArgs{...}
+//	AccessPolicyRequireOktaArgs{...}
 type AccessPolicyRequireOktaInput interface {
 	pulumi.Input
 
@@ -5449,8 +5688,9 @@ type AccessPolicyRequireOktaInput interface {
 }
 
 type AccessPolicyRequireOktaArgs struct {
-	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
-	Names              pulumi.StringArrayInput `pulumi:"names"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// Friendly name of the Access Policy.
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (AccessPolicyRequireOktaArgs) ElementType() reflect.Type {
@@ -5468,7 +5708,7 @@ func (i AccessPolicyRequireOktaArgs) ToAccessPolicyRequireOktaOutputWithContext(
 // AccessPolicyRequireOktaArrayInput is an input type that accepts AccessPolicyRequireOktaArray and AccessPolicyRequireOktaArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyRequireOktaArrayInput` via:
 //
-//          AccessPolicyRequireOktaArray{ AccessPolicyRequireOktaArgs{...} }
+//	AccessPolicyRequireOktaArray{ AccessPolicyRequireOktaArgs{...} }
 type AccessPolicyRequireOktaArrayInput interface {
 	pulumi.Input
 
@@ -5508,6 +5748,7 @@ func (o AccessPolicyRequireOktaOutput) IdentityProviderId() pulumi.StringPtrOutp
 	return o.ApplyT(func(v AccessPolicyRequireOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }
 
+// Friendly name of the Access Policy.
 func (o AccessPolicyRequireOktaOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequireOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -5541,7 +5782,7 @@ type AccessPolicyRequireSaml struct {
 // AccessPolicyRequireSamlInput is an input type that accepts AccessPolicyRequireSamlArgs and AccessPolicyRequireSamlOutput values.
 // You can construct a concrete instance of `AccessPolicyRequireSamlInput` via:
 //
-//          AccessPolicyRequireSamlArgs{...}
+//	AccessPolicyRequireSamlArgs{...}
 type AccessPolicyRequireSamlInput interface {
 	pulumi.Input
 
@@ -5570,7 +5811,7 @@ func (i AccessPolicyRequireSamlArgs) ToAccessPolicyRequireSamlOutputWithContext(
 // AccessPolicyRequireSamlArrayInput is an input type that accepts AccessPolicyRequireSamlArray and AccessPolicyRequireSamlArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyRequireSamlArrayInput` via:
 //
-//          AccessPolicyRequireSamlArray{ AccessPolicyRequireSamlArgs{...} }
+//	AccessPolicyRequireSamlArray{ AccessPolicyRequireSamlArgs{...} }
 type AccessPolicyRequireSamlArrayInput interface {
 	pulumi.Input
 
@@ -5639,14 +5880,16 @@ func (o AccessPolicyRequireSamlArrayOutput) Index(i pulumi.IntInput) AccessPolic
 }
 
 type AccessRuleConfiguration struct {
+	// The request property to target. Available values: `ip`, `ip6`, `ipRange`, `asn`, `country`.
 	Target string `pulumi:"target"`
-	Value  string `pulumi:"value"`
+	// The value to target. Depends on target's type.
+	Value string `pulumi:"value"`
 }
 
 // AccessRuleConfigurationInput is an input type that accepts AccessRuleConfigurationArgs and AccessRuleConfigurationOutput values.
 // You can construct a concrete instance of `AccessRuleConfigurationInput` via:
 //
-//          AccessRuleConfigurationArgs{...}
+//	AccessRuleConfigurationArgs{...}
 type AccessRuleConfigurationInput interface {
 	pulumi.Input
 
@@ -5655,8 +5898,10 @@ type AccessRuleConfigurationInput interface {
 }
 
 type AccessRuleConfigurationArgs struct {
+	// The request property to target. Available values: `ip`, `ip6`, `ipRange`, `asn`, `country`.
 	Target pulumi.StringInput `pulumi:"target"`
-	Value  pulumi.StringInput `pulumi:"value"`
+	// The value to target. Depends on target's type.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (AccessRuleConfigurationArgs) ElementType() reflect.Type {
@@ -5682,11 +5927,11 @@ func (i AccessRuleConfigurationArgs) ToAccessRuleConfigurationPtrOutputWithConte
 // AccessRuleConfigurationPtrInput is an input type that accepts AccessRuleConfigurationArgs, AccessRuleConfigurationPtr and AccessRuleConfigurationPtrOutput values.
 // You can construct a concrete instance of `AccessRuleConfigurationPtrInput` via:
 //
-//          AccessRuleConfigurationArgs{...}
+//	        AccessRuleConfigurationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccessRuleConfigurationPtrInput interface {
 	pulumi.Input
 
@@ -5736,10 +5981,12 @@ func (o AccessRuleConfigurationOutput) ToAccessRuleConfigurationPtrOutputWithCon
 	}).(AccessRuleConfigurationPtrOutput)
 }
 
+// The request property to target. Available values: `ip`, `ip6`, `ipRange`, `asn`, `country`.
 func (o AccessRuleConfigurationOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessRuleConfiguration) string { return v.Target }).(pulumi.StringOutput)
 }
 
+// The value to target. Depends on target's type.
 func (o AccessRuleConfigurationOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessRuleConfiguration) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -5768,6 +6015,7 @@ func (o AccessRuleConfigurationPtrOutput) Elem() AccessRuleConfigurationOutput {
 	}).(AccessRuleConfigurationOutput)
 }
 
+// The request property to target. Available values: `ip`, `ip6`, `ipRange`, `asn`, `country`.
 func (o AccessRuleConfigurationPtrOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessRuleConfiguration) *string {
 		if v == nil {
@@ -5777,6 +6025,7 @@ func (o AccessRuleConfigurationPtrOutput) Target() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The value to target. Depends on target's type.
 func (o AccessRuleConfigurationPtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessRuleConfiguration) *string {
 		if v == nil {
@@ -5787,13 +6036,14 @@ func (o AccessRuleConfigurationPtrOutput) Value() pulumi.StringPtrOutput {
 }
 
 type ApiTokenCondition struct {
+	// Request IP related conditions.
 	RequestIp *ApiTokenConditionRequestIp `pulumi:"requestIp"`
 }
 
 // ApiTokenConditionInput is an input type that accepts ApiTokenConditionArgs and ApiTokenConditionOutput values.
 // You can construct a concrete instance of `ApiTokenConditionInput` via:
 //
-//          ApiTokenConditionArgs{...}
+//	ApiTokenConditionArgs{...}
 type ApiTokenConditionInput interface {
 	pulumi.Input
 
@@ -5802,6 +6052,7 @@ type ApiTokenConditionInput interface {
 }
 
 type ApiTokenConditionArgs struct {
+	// Request IP related conditions.
 	RequestIp ApiTokenConditionRequestIpPtrInput `pulumi:"requestIp"`
 }
 
@@ -5828,11 +6079,11 @@ func (i ApiTokenConditionArgs) ToApiTokenConditionPtrOutputWithContext(ctx conte
 // ApiTokenConditionPtrInput is an input type that accepts ApiTokenConditionArgs, ApiTokenConditionPtr and ApiTokenConditionPtrOutput values.
 // You can construct a concrete instance of `ApiTokenConditionPtrInput` via:
 //
-//          ApiTokenConditionArgs{...}
+//	        ApiTokenConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApiTokenConditionPtrInput interface {
 	pulumi.Input
 
@@ -5882,6 +6133,7 @@ func (o ApiTokenConditionOutput) ToApiTokenConditionPtrOutputWithContext(ctx con
 	}).(ApiTokenConditionPtrOutput)
 }
 
+// Request IP related conditions.
 func (o ApiTokenConditionOutput) RequestIp() ApiTokenConditionRequestIpPtrOutput {
 	return o.ApplyT(func(v ApiTokenCondition) *ApiTokenConditionRequestIp { return v.RequestIp }).(ApiTokenConditionRequestIpPtrOutput)
 }
@@ -5910,6 +6162,7 @@ func (o ApiTokenConditionPtrOutput) Elem() ApiTokenConditionOutput {
 	}).(ApiTokenConditionOutput)
 }
 
+// Request IP related conditions.
 func (o ApiTokenConditionPtrOutput) RequestIp() ApiTokenConditionRequestIpPtrOutput {
 	return o.ApplyT(func(v *ApiTokenCondition) *ApiTokenConditionRequestIp {
 		if v == nil {
@@ -5927,7 +6180,7 @@ type ApiTokenConditionRequestIp struct {
 // ApiTokenConditionRequestIpInput is an input type that accepts ApiTokenConditionRequestIpArgs and ApiTokenConditionRequestIpOutput values.
 // You can construct a concrete instance of `ApiTokenConditionRequestIpInput` via:
 //
-//          ApiTokenConditionRequestIpArgs{...}
+//	ApiTokenConditionRequestIpArgs{...}
 type ApiTokenConditionRequestIpInput interface {
 	pulumi.Input
 
@@ -5963,11 +6216,11 @@ func (i ApiTokenConditionRequestIpArgs) ToApiTokenConditionRequestIpPtrOutputWit
 // ApiTokenConditionRequestIpPtrInput is an input type that accepts ApiTokenConditionRequestIpArgs, ApiTokenConditionRequestIpPtr and ApiTokenConditionRequestIpPtrOutput values.
 // You can construct a concrete instance of `ApiTokenConditionRequestIpPtrInput` via:
 //
-//          ApiTokenConditionRequestIpArgs{...}
+//	        ApiTokenConditionRequestIpArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApiTokenConditionRequestIpPtrInput interface {
 	pulumi.Input
 
@@ -6068,15 +6321,18 @@ func (o ApiTokenConditionRequestIpPtrOutput) NotIns() pulumi.StringArrayOutput {
 }
 
 type ApiTokenPolicy struct {
-	Effect           *string           `pulumi:"effect"`
-	PermissionGroups []string          `pulumi:"permissionGroups"`
-	Resources        map[string]string `pulumi:"resources"`
+	// Effect of the policy. Available values: `allow`, `deny`. Defaults to `allow`.
+	Effect *string `pulumi:"effect"`
+	// List of permissions groups IDs. See [documentation](https://developers.cloudflare.com/api/tokens/create/permissions) for more information.
+	PermissionGroups []string `pulumi:"permissionGroups"`
+	// Describes what operations against which resources are allowed or denied.
+	Resources map[string]string `pulumi:"resources"`
 }
 
 // ApiTokenPolicyInput is an input type that accepts ApiTokenPolicyArgs and ApiTokenPolicyOutput values.
 // You can construct a concrete instance of `ApiTokenPolicyInput` via:
 //
-//          ApiTokenPolicyArgs{...}
+//	ApiTokenPolicyArgs{...}
 type ApiTokenPolicyInput interface {
 	pulumi.Input
 
@@ -6085,9 +6341,12 @@ type ApiTokenPolicyInput interface {
 }
 
 type ApiTokenPolicyArgs struct {
-	Effect           pulumi.StringPtrInput   `pulumi:"effect"`
+	// Effect of the policy. Available values: `allow`, `deny`. Defaults to `allow`.
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	// List of permissions groups IDs. See [documentation](https://developers.cloudflare.com/api/tokens/create/permissions) for more information.
 	PermissionGroups pulumi.StringArrayInput `pulumi:"permissionGroups"`
-	Resources        pulumi.StringMapInput   `pulumi:"resources"`
+	// Describes what operations against which resources are allowed or denied.
+	Resources pulumi.StringMapInput `pulumi:"resources"`
 }
 
 func (ApiTokenPolicyArgs) ElementType() reflect.Type {
@@ -6105,7 +6364,7 @@ func (i ApiTokenPolicyArgs) ToApiTokenPolicyOutputWithContext(ctx context.Contex
 // ApiTokenPolicyArrayInput is an input type that accepts ApiTokenPolicyArray and ApiTokenPolicyArrayOutput values.
 // You can construct a concrete instance of `ApiTokenPolicyArrayInput` via:
 //
-//          ApiTokenPolicyArray{ ApiTokenPolicyArgs{...} }
+//	ApiTokenPolicyArray{ ApiTokenPolicyArgs{...} }
 type ApiTokenPolicyArrayInput interface {
 	pulumi.Input
 
@@ -6141,14 +6400,17 @@ func (o ApiTokenPolicyOutput) ToApiTokenPolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Effect of the policy. Available values: `allow`, `deny`. Defaults to `allow`.
 func (o ApiTokenPolicyOutput) Effect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiTokenPolicy) *string { return v.Effect }).(pulumi.StringPtrOutput)
 }
 
+// List of permissions groups IDs. See [documentation](https://developers.cloudflare.com/api/tokens/create/permissions) for more information.
 func (o ApiTokenPolicyOutput) PermissionGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApiTokenPolicy) []string { return v.PermissionGroups }).(pulumi.StringArrayOutput)
 }
 
+// Describes what operations against which resources are allowed or denied.
 func (o ApiTokenPolicyOutput) Resources() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ApiTokenPolicy) map[string]string { return v.Resources }).(pulumi.StringMapOutput)
 }
@@ -6180,7 +6442,7 @@ type CertificatePackValidationError struct {
 // CertificatePackValidationErrorInput is an input type that accepts CertificatePackValidationErrorArgs and CertificatePackValidationErrorOutput values.
 // You can construct a concrete instance of `CertificatePackValidationErrorInput` via:
 //
-//          CertificatePackValidationErrorArgs{...}
+//	CertificatePackValidationErrorArgs{...}
 type CertificatePackValidationErrorInput interface {
 	pulumi.Input
 
@@ -6207,7 +6469,7 @@ func (i CertificatePackValidationErrorArgs) ToCertificatePackValidationErrorOutp
 // CertificatePackValidationErrorArrayInput is an input type that accepts CertificatePackValidationErrorArray and CertificatePackValidationErrorArrayOutput values.
 // You can construct a concrete instance of `CertificatePackValidationErrorArrayInput` via:
 //
-//          CertificatePackValidationErrorArray{ CertificatePackValidationErrorArgs{...} }
+//	CertificatePackValidationErrorArray{ CertificatePackValidationErrorArgs{...} }
 type CertificatePackValidationErrorArrayInput interface {
 	pulumi.Input
 
@@ -6280,7 +6542,7 @@ type CertificatePackValidationRecord struct {
 // CertificatePackValidationRecordInput is an input type that accepts CertificatePackValidationRecordArgs and CertificatePackValidationRecordOutput values.
 // You can construct a concrete instance of `CertificatePackValidationRecordInput` via:
 //
-//          CertificatePackValidationRecordArgs{...}
+//	CertificatePackValidationRecordArgs{...}
 type CertificatePackValidationRecordInput interface {
 	pulumi.Input
 
@@ -6313,7 +6575,7 @@ func (i CertificatePackValidationRecordArgs) ToCertificatePackValidationRecordOu
 // CertificatePackValidationRecordArrayInput is an input type that accepts CertificatePackValidationRecordArray and CertificatePackValidationRecordArrayOutput values.
 // You can construct a concrete instance of `CertificatePackValidationRecordArrayInput` via:
 //
-//          CertificatePackValidationRecordArray{ CertificatePackValidationRecordArgs{...} }
+//	CertificatePackValidationRecordArray{ CertificatePackValidationRecordArgs{...} }
 type CertificatePackValidationRecordArrayInput interface {
 	pulumi.Input
 
@@ -6403,13 +6665,13 @@ type CustomHostnameSsl struct {
 	CustomCertificate *string `pulumi:"customCertificate"`
 	// The key for a custom uploaded certificate.
 	CustomKey *string `pulumi:"customKey"`
-	// Domain control validation (DCV) method used for this
-	// hostname. Valid values are `"txt"`, `"http"` and `"email"`.
+	// Domain control validation (DCV) method used for this hostname. Available values: `http`, `txt`, `email`.
 	Method *string `pulumi:"method"`
-	// SSL/TLS settings for the certificate. See further notes below.
+	// SSL/TLS settings for the certificate.
 	Settings []CustomHostnameSslSetting `pulumi:"settings"`
-	Status   *string                    `pulumi:"status"`
-	// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+	// Status of the certificate.
+	Status *string `pulumi:"status"`
+	// Level of validation to be used for this hostname. Available values: `dv`. Defaults to `dv`.
 	Type              *string                             `pulumi:"type"`
 	ValidationErrors  []CustomHostnameSslValidationError  `pulumi:"validationErrors"`
 	ValidationRecords []CustomHostnameSslValidationRecord `pulumi:"validationRecords"`
@@ -6420,7 +6682,7 @@ type CustomHostnameSsl struct {
 // CustomHostnameSslInput is an input type that accepts CustomHostnameSslArgs and CustomHostnameSslOutput values.
 // You can construct a concrete instance of `CustomHostnameSslInput` via:
 //
-//          CustomHostnameSslArgs{...}
+//	CustomHostnameSslArgs{...}
 type CustomHostnameSslInput interface {
 	pulumi.Input
 
@@ -6434,13 +6696,13 @@ type CustomHostnameSslArgs struct {
 	CustomCertificate pulumi.StringPtrInput `pulumi:"customCertificate"`
 	// The key for a custom uploaded certificate.
 	CustomKey pulumi.StringPtrInput `pulumi:"customKey"`
-	// Domain control validation (DCV) method used for this
-	// hostname. Valid values are `"txt"`, `"http"` and `"email"`.
+	// Domain control validation (DCV) method used for this hostname. Available values: `http`, `txt`, `email`.
 	Method pulumi.StringPtrInput `pulumi:"method"`
-	// SSL/TLS settings for the certificate. See further notes below.
+	// SSL/TLS settings for the certificate.
 	Settings CustomHostnameSslSettingArrayInput `pulumi:"settings"`
-	Status   pulumi.StringPtrInput              `pulumi:"status"`
-	// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+	// Status of the certificate.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Level of validation to be used for this hostname. Available values: `dv`. Defaults to `dv`.
 	Type              pulumi.StringPtrInput                       `pulumi:"type"`
 	ValidationErrors  CustomHostnameSslValidationErrorArrayInput  `pulumi:"validationErrors"`
 	ValidationRecords CustomHostnameSslValidationRecordArrayInput `pulumi:"validationRecords"`
@@ -6463,7 +6725,7 @@ func (i CustomHostnameSslArgs) ToCustomHostnameSslOutputWithContext(ctx context.
 // CustomHostnameSslArrayInput is an input type that accepts CustomHostnameSslArray and CustomHostnameSslArrayOutput values.
 // You can construct a concrete instance of `CustomHostnameSslArrayInput` via:
 //
-//          CustomHostnameSslArray{ CustomHostnameSslArgs{...} }
+//	CustomHostnameSslArray{ CustomHostnameSslArgs{...} }
 type CustomHostnameSslArrayInput interface {
 	pulumi.Input
 
@@ -6513,22 +6775,22 @@ func (o CustomHostnameSslOutput) CustomKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomHostnameSsl) *string { return v.CustomKey }).(pulumi.StringPtrOutput)
 }
 
-// Domain control validation (DCV) method used for this
-// hostname. Valid values are `"txt"`, `"http"` and `"email"`.
+// Domain control validation (DCV) method used for this hostname. Available values: `http`, `txt`, `email`.
 func (o CustomHostnameSslOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomHostnameSsl) *string { return v.Method }).(pulumi.StringPtrOutput)
 }
 
-// SSL/TLS settings for the certificate. See further notes below.
+// SSL/TLS settings for the certificate.
 func (o CustomHostnameSslOutput) Settings() CustomHostnameSslSettingArrayOutput {
 	return o.ApplyT(func(v CustomHostnameSsl) []CustomHostnameSslSetting { return v.Settings }).(CustomHostnameSslSettingArrayOutput)
 }
 
+// Status of the certificate.
 func (o CustomHostnameSslOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomHostnameSsl) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+// Level of validation to be used for this hostname. Available values: `dv`. Defaults to `dv`.
 func (o CustomHostnameSslOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomHostnameSsl) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -6567,23 +6829,17 @@ func (o CustomHostnameSslArrayOutput) Index(i pulumi.IntInput) CustomHostnameSsl
 }
 
 type CustomHostnameSslSetting struct {
-	// List of SSL/TLS ciphers to associate with this certificate.
-	Ciphers []string `pulumi:"ciphers"`
-	// Whether or not early hints should be supported. Valid values are `"on"` or `"off"`.
-	EarlyHints *string `pulumi:"earlyHints"`
-	// Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
-	Http2 *string `pulumi:"http2"`
-	// Lowest version of TLS this certificate should
-	// support. Valid values are `"1.0"`, `"1.1"`, `"1.2"` and `"1.3"`.
-	MinTlsVersion *string `pulumi:"minTlsVersion"`
-	// Whether or not TLSv1.3 should be supported. Valid values are `"on"` or `"off"`.
-	Tls13 *string `pulumi:"tls13"`
+	Ciphers       []string `pulumi:"ciphers"`
+	EarlyHints    *string  `pulumi:"earlyHints"`
+	Http2         *string  `pulumi:"http2"`
+	MinTlsVersion *string  `pulumi:"minTlsVersion"`
+	Tls13         *string  `pulumi:"tls13"`
 }
 
 // CustomHostnameSslSettingInput is an input type that accepts CustomHostnameSslSettingArgs and CustomHostnameSslSettingOutput values.
 // You can construct a concrete instance of `CustomHostnameSslSettingInput` via:
 //
-//          CustomHostnameSslSettingArgs{...}
+//	CustomHostnameSslSettingArgs{...}
 type CustomHostnameSslSettingInput interface {
 	pulumi.Input
 
@@ -6592,17 +6848,11 @@ type CustomHostnameSslSettingInput interface {
 }
 
 type CustomHostnameSslSettingArgs struct {
-	// List of SSL/TLS ciphers to associate with this certificate.
-	Ciphers pulumi.StringArrayInput `pulumi:"ciphers"`
-	// Whether or not early hints should be supported. Valid values are `"on"` or `"off"`.
-	EarlyHints pulumi.StringPtrInput `pulumi:"earlyHints"`
-	// Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
-	Http2 pulumi.StringPtrInput `pulumi:"http2"`
-	// Lowest version of TLS this certificate should
-	// support. Valid values are `"1.0"`, `"1.1"`, `"1.2"` and `"1.3"`.
-	MinTlsVersion pulumi.StringPtrInput `pulumi:"minTlsVersion"`
-	// Whether or not TLSv1.3 should be supported. Valid values are `"on"` or `"off"`.
-	Tls13 pulumi.StringPtrInput `pulumi:"tls13"`
+	Ciphers       pulumi.StringArrayInput `pulumi:"ciphers"`
+	EarlyHints    pulumi.StringPtrInput   `pulumi:"earlyHints"`
+	Http2         pulumi.StringPtrInput   `pulumi:"http2"`
+	MinTlsVersion pulumi.StringPtrInput   `pulumi:"minTlsVersion"`
+	Tls13         pulumi.StringPtrInput   `pulumi:"tls13"`
 }
 
 func (CustomHostnameSslSettingArgs) ElementType() reflect.Type {
@@ -6620,7 +6870,7 @@ func (i CustomHostnameSslSettingArgs) ToCustomHostnameSslSettingOutputWithContex
 // CustomHostnameSslSettingArrayInput is an input type that accepts CustomHostnameSslSettingArray and CustomHostnameSslSettingArrayOutput values.
 // You can construct a concrete instance of `CustomHostnameSslSettingArrayInput` via:
 //
-//          CustomHostnameSslSettingArray{ CustomHostnameSslSettingArgs{...} }
+//	CustomHostnameSslSettingArray{ CustomHostnameSslSettingArgs{...} }
 type CustomHostnameSslSettingArrayInput interface {
 	pulumi.Input
 
@@ -6656,28 +6906,22 @@ func (o CustomHostnameSslSettingOutput) ToCustomHostnameSslSettingOutputWithCont
 	return o
 }
 
-// List of SSL/TLS ciphers to associate with this certificate.
 func (o CustomHostnameSslSettingOutput) Ciphers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CustomHostnameSslSetting) []string { return v.Ciphers }).(pulumi.StringArrayOutput)
 }
 
-// Whether or not early hints should be supported. Valid values are `"on"` or `"off"`.
 func (o CustomHostnameSslSettingOutput) EarlyHints() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomHostnameSslSetting) *string { return v.EarlyHints }).(pulumi.StringPtrOutput)
 }
 
-// Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
 func (o CustomHostnameSslSettingOutput) Http2() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomHostnameSslSetting) *string { return v.Http2 }).(pulumi.StringPtrOutput)
 }
 
-// Lowest version of TLS this certificate should
-// support. Valid values are `"1.0"`, `"1.1"`, `"1.2"` and `"1.3"`.
 func (o CustomHostnameSslSettingOutput) MinTlsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomHostnameSslSetting) *string { return v.MinTlsVersion }).(pulumi.StringPtrOutput)
 }
 
-// Whether or not TLSv1.3 should be supported. Valid values are `"on"` or `"off"`.
 func (o CustomHostnameSslSettingOutput) Tls13() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomHostnameSslSetting) *string { return v.Tls13 }).(pulumi.StringPtrOutput)
 }
@@ -6709,7 +6953,7 @@ type CustomHostnameSslValidationError struct {
 // CustomHostnameSslValidationErrorInput is an input type that accepts CustomHostnameSslValidationErrorArgs and CustomHostnameSslValidationErrorOutput values.
 // You can construct a concrete instance of `CustomHostnameSslValidationErrorInput` via:
 //
-//          CustomHostnameSslValidationErrorArgs{...}
+//	CustomHostnameSslValidationErrorArgs{...}
 type CustomHostnameSslValidationErrorInput interface {
 	pulumi.Input
 
@@ -6736,7 +6980,7 @@ func (i CustomHostnameSslValidationErrorArgs) ToCustomHostnameSslValidationError
 // CustomHostnameSslValidationErrorArrayInput is an input type that accepts CustomHostnameSslValidationErrorArray and CustomHostnameSslValidationErrorArrayOutput values.
 // You can construct a concrete instance of `CustomHostnameSslValidationErrorArrayInput` via:
 //
-//          CustomHostnameSslValidationErrorArray{ CustomHostnameSslValidationErrorArgs{...} }
+//	CustomHostnameSslValidationErrorArray{ CustomHostnameSslValidationErrorArgs{...} }
 type CustomHostnameSslValidationErrorArrayInput interface {
 	pulumi.Input
 
@@ -6809,7 +7053,7 @@ type CustomHostnameSslValidationRecord struct {
 // CustomHostnameSslValidationRecordInput is an input type that accepts CustomHostnameSslValidationRecordArgs and CustomHostnameSslValidationRecordOutput values.
 // You can construct a concrete instance of `CustomHostnameSslValidationRecordInput` via:
 //
-//          CustomHostnameSslValidationRecordArgs{...}
+//	CustomHostnameSslValidationRecordArgs{...}
 type CustomHostnameSslValidationRecordInput interface {
 	pulumi.Input
 
@@ -6842,7 +7086,7 @@ func (i CustomHostnameSslValidationRecordArgs) ToCustomHostnameSslValidationReco
 // CustomHostnameSslValidationRecordArrayInput is an input type that accepts CustomHostnameSslValidationRecordArray and CustomHostnameSslValidationRecordArrayOutput values.
 // You can construct a concrete instance of `CustomHostnameSslValidationRecordArrayInput` via:
 //
-//          CustomHostnameSslValidationRecordArray{ CustomHostnameSslValidationRecordArgs{...} }
+//	CustomHostnameSslValidationRecordArray{ CustomHostnameSslValidationRecordArgs{...} }
 type CustomHostnameSslValidationRecordArrayInput interface {
 	pulumi.Input
 
@@ -6942,7 +7186,7 @@ type CustomSslCustomSslOptions struct {
 // CustomSslCustomSslOptionsInput is an input type that accepts CustomSslCustomSslOptionsArgs and CustomSslCustomSslOptionsOutput values.
 // You can construct a concrete instance of `CustomSslCustomSslOptionsInput` via:
 //
-//          CustomSslCustomSslOptionsArgs{...}
+//	CustomSslCustomSslOptionsArgs{...}
 type CustomSslCustomSslOptionsInput interface {
 	pulumi.Input
 
@@ -6986,11 +7230,11 @@ func (i CustomSslCustomSslOptionsArgs) ToCustomSslCustomSslOptionsPtrOutputWithC
 // CustomSslCustomSslOptionsPtrInput is an input type that accepts CustomSslCustomSslOptionsArgs, CustomSslCustomSslOptionsPtr and CustomSslCustomSslOptionsPtrOutput values.
 // You can construct a concrete instance of `CustomSslCustomSslOptionsPtrInput` via:
 //
-//          CustomSslCustomSslOptionsArgs{...}
+//	        CustomSslCustomSslOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CustomSslCustomSslOptionsPtrInput interface {
 	pulumi.Input
 
@@ -7147,7 +7391,7 @@ type CustomSslCustomSslPriority struct {
 // CustomSslCustomSslPriorityInput is an input type that accepts CustomSslCustomSslPriorityArgs and CustomSslCustomSslPriorityOutput values.
 // You can construct a concrete instance of `CustomSslCustomSslPriorityInput` via:
 //
-//          CustomSslCustomSslPriorityArgs{...}
+//	CustomSslCustomSslPriorityArgs{...}
 type CustomSslCustomSslPriorityInput interface {
 	pulumi.Input
 
@@ -7175,7 +7419,7 @@ func (i CustomSslCustomSslPriorityArgs) ToCustomSslCustomSslPriorityOutputWithCo
 // CustomSslCustomSslPriorityArrayInput is an input type that accepts CustomSslCustomSslPriorityArray and CustomSslCustomSslPriorityArrayOutput values.
 // You can construct a concrete instance of `CustomSslCustomSslPriorityArrayInput` via:
 //
-//          CustomSslCustomSslPriorityArray{ CustomSslCustomSslPriorityArgs{...} }
+//	CustomSslCustomSslPriorityArray{ CustomSslCustomSslPriorityArgs{...} }
 type CustomSslCustomSslPriorityArrayInput interface {
 	pulumi.Input
 
@@ -7257,7 +7501,7 @@ type DevicePostureIntegrationConfig struct {
 // DevicePostureIntegrationConfigInput is an input type that accepts DevicePostureIntegrationConfigArgs and DevicePostureIntegrationConfigOutput values.
 // You can construct a concrete instance of `DevicePostureIntegrationConfigInput` via:
 //
-//          DevicePostureIntegrationConfigArgs{...}
+//	DevicePostureIntegrationConfigArgs{...}
 type DevicePostureIntegrationConfigInput interface {
 	pulumi.Input
 
@@ -7295,7 +7539,7 @@ func (i DevicePostureIntegrationConfigArgs) ToDevicePostureIntegrationConfigOutp
 // DevicePostureIntegrationConfigArrayInput is an input type that accepts DevicePostureIntegrationConfigArray and DevicePostureIntegrationConfigArrayOutput values.
 // You can construct a concrete instance of `DevicePostureIntegrationConfigArrayInput` via:
 //
-//          DevicePostureIntegrationConfigArray{ DevicePostureIntegrationConfigArgs{...} }
+//	DevicePostureIntegrationConfigArray{ DevicePostureIntegrationConfigArgs{...} }
 type DevicePostureIntegrationConfigArrayInput interface {
 	pulumi.Input
 
@@ -7411,7 +7655,7 @@ type DevicePostureRuleInputType struct {
 // DevicePostureRuleInputTypeInput is an input type that accepts DevicePostureRuleInputTypeArgs and DevicePostureRuleInputTypeOutput values.
 // You can construct a concrete instance of `DevicePostureRuleInputTypeInput` via:
 //
-//          DevicePostureRuleInputTypeArgs{...}
+//	DevicePostureRuleInputTypeArgs{...}
 type DevicePostureRuleInputTypeInput interface {
 	pulumi.Input
 
@@ -7461,7 +7705,7 @@ func (i DevicePostureRuleInputTypeArgs) ToDevicePostureRuleInputTypeOutputWithCo
 // DevicePostureRuleInputTypeArrayInput is an input type that accepts DevicePostureRuleInputTypeArray and DevicePostureRuleInputTypeArrayOutput values.
 // You can construct a concrete instance of `DevicePostureRuleInputTypeArrayInput` via:
 //
-//          DevicePostureRuleInputTypeArray{ DevicePostureRuleInputTypeArgs{...} }
+//	DevicePostureRuleInputTypeArray{ DevicePostureRuleInputTypeArgs{...} }
 type DevicePostureRuleInputTypeArrayInput interface {
 	pulumi.Input
 
@@ -7588,7 +7832,7 @@ type DevicePostureRuleMatch struct {
 // DevicePostureRuleMatchInput is an input type that accepts DevicePostureRuleMatchArgs and DevicePostureRuleMatchOutput values.
 // You can construct a concrete instance of `DevicePostureRuleMatchInput` via:
 //
-//          DevicePostureRuleMatchArgs{...}
+//	DevicePostureRuleMatchArgs{...}
 type DevicePostureRuleMatchInput interface {
 	pulumi.Input
 
@@ -7616,7 +7860,7 @@ func (i DevicePostureRuleMatchArgs) ToDevicePostureRuleMatchOutputWithContext(ct
 // DevicePostureRuleMatchArrayInput is an input type that accepts DevicePostureRuleMatchArray and DevicePostureRuleMatchArrayOutput values.
 // You can construct a concrete instance of `DevicePostureRuleMatchArrayInput` via:
 //
-//          DevicePostureRuleMatchArray{ DevicePostureRuleMatchArgs{...} }
+//	DevicePostureRuleMatchArray{ DevicePostureRuleMatchArgs{...} }
 type DevicePostureRuleMatchArrayInput interface {
 	pulumi.Input
 
@@ -7689,7 +7933,7 @@ type FallbackDomainDomain struct {
 // FallbackDomainDomainInput is an input type that accepts FallbackDomainDomainArgs and FallbackDomainDomainOutput values.
 // You can construct a concrete instance of `FallbackDomainDomainInput` via:
 //
-//          FallbackDomainDomainArgs{...}
+//	FallbackDomainDomainArgs{...}
 type FallbackDomainDomainInput interface {
 	pulumi.Input
 
@@ -7721,7 +7965,7 @@ func (i FallbackDomainDomainArgs) ToFallbackDomainDomainOutputWithContext(ctx co
 // FallbackDomainDomainArrayInput is an input type that accepts FallbackDomainDomainArray and FallbackDomainDomainArrayOutput values.
 // You can construct a concrete instance of `FallbackDomainDomainArrayInput` via:
 //
-//          FallbackDomainDomainArray{ FallbackDomainDomainArgs{...} }
+//	FallbackDomainDomainArray{ FallbackDomainDomainArgs{...} }
 type FallbackDomainDomainArrayInput interface {
 	pulumi.Input
 
@@ -7793,14 +8037,16 @@ func (o FallbackDomainDomainArrayOutput) Index(i pulumi.IntInput) FallbackDomain
 }
 
 type HealthcheckHeader struct {
-	Header string   `pulumi:"header"`
+	// The header name.
+	Header string `pulumi:"header"`
+	// A list of string values for the header.
 	Values []string `pulumi:"values"`
 }
 
 // HealthcheckHeaderInput is an input type that accepts HealthcheckHeaderArgs and HealthcheckHeaderOutput values.
 // You can construct a concrete instance of `HealthcheckHeaderInput` via:
 //
-//          HealthcheckHeaderArgs{...}
+//	HealthcheckHeaderArgs{...}
 type HealthcheckHeaderInput interface {
 	pulumi.Input
 
@@ -7809,7 +8055,9 @@ type HealthcheckHeaderInput interface {
 }
 
 type HealthcheckHeaderArgs struct {
-	Header pulumi.StringInput      `pulumi:"header"`
+	// The header name.
+	Header pulumi.StringInput `pulumi:"header"`
+	// A list of string values for the header.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -7828,7 +8076,7 @@ func (i HealthcheckHeaderArgs) ToHealthcheckHeaderOutputWithContext(ctx context.
 // HealthcheckHeaderArrayInput is an input type that accepts HealthcheckHeaderArray and HealthcheckHeaderArrayOutput values.
 // You can construct a concrete instance of `HealthcheckHeaderArrayInput` via:
 //
-//          HealthcheckHeaderArray{ HealthcheckHeaderArgs{...} }
+//	HealthcheckHeaderArray{ HealthcheckHeaderArgs{...} }
 type HealthcheckHeaderArrayInput interface {
 	pulumi.Input
 
@@ -7864,10 +8112,12 @@ func (o HealthcheckHeaderOutput) ToHealthcheckHeaderOutputWithContext(ctx contex
 	return o
 }
 
+// The header name.
 func (o HealthcheckHeaderOutput) Header() pulumi.StringOutput {
 	return o.ApplyT(func(v HealthcheckHeader) string { return v.Header }).(pulumi.StringOutput)
 }
 
+// A list of string values for the header.
 func (o HealthcheckHeaderOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v HealthcheckHeader) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -7902,7 +8152,7 @@ type IpListItem struct {
 // IpListItemInput is an input type that accepts IpListItemArgs and IpListItemOutput values.
 // You can construct a concrete instance of `IpListItemInput` via:
 //
-//          IpListItemArgs{...}
+//	IpListItemArgs{...}
 type IpListItemInput interface {
 	pulumi.Input
 
@@ -7932,7 +8182,7 @@ func (i IpListItemArgs) ToIpListItemOutputWithContext(ctx context.Context) IpLis
 // IpListItemArrayInput is an input type that accepts IpListItemArray and IpListItemArrayOutput values.
 // You can construct a concrete instance of `IpListItemArrayInput` via:
 //
-//          IpListItemArray{ IpListItemArgs{...} }
+//	IpListItemArray{ IpListItemArgs{...} }
 type IpListItemArrayInput interface {
 	pulumi.Input
 
@@ -7999,6 +8249,7 @@ func (o IpListItemArrayOutput) Index(i pulumi.IntInput) IpListItemOutput {
 }
 
 type ListItem struct {
+	// An optional comment for the item.
 	Comment *string       `pulumi:"comment"`
 	Value   ListItemValue `pulumi:"value"`
 }
@@ -8006,7 +8257,7 @@ type ListItem struct {
 // ListItemInput is an input type that accepts ListItemArgs and ListItemOutput values.
 // You can construct a concrete instance of `ListItemInput` via:
 //
-//          ListItemArgs{...}
+//	ListItemArgs{...}
 type ListItemInput interface {
 	pulumi.Input
 
@@ -8015,6 +8266,7 @@ type ListItemInput interface {
 }
 
 type ListItemArgs struct {
+	// An optional comment for the item.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
 	Value   ListItemValueInput    `pulumi:"value"`
 }
@@ -8034,7 +8286,7 @@ func (i ListItemArgs) ToListItemOutputWithContext(ctx context.Context) ListItemO
 // ListItemArrayInput is an input type that accepts ListItemArray and ListItemArrayOutput values.
 // You can construct a concrete instance of `ListItemArrayInput` via:
 //
-//          ListItemArray{ ListItemArgs{...} }
+//	ListItemArray{ ListItemArgs{...} }
 type ListItemArrayInput interface {
 	pulumi.Input
 
@@ -8070,6 +8322,7 @@ func (o ListItemOutput) ToListItemOutputWithContext(ctx context.Context) ListIte
 	return o
 }
 
+// An optional comment for the item.
 func (o ListItemOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListItem) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
@@ -8106,7 +8359,7 @@ type ListItemValue struct {
 // ListItemValueInput is an input type that accepts ListItemValueArgs and ListItemValueOutput values.
 // You can construct a concrete instance of `ListItemValueInput` via:
 //
-//          ListItemValueArgs{...}
+//	ListItemValueArgs{...}
 type ListItemValueInput interface {
 	pulumi.Input
 
@@ -8166,7 +8419,7 @@ type ListItemValueRedirect struct {
 // ListItemValueRedirectInput is an input type that accepts ListItemValueRedirectArgs and ListItemValueRedirectOutput values.
 // You can construct a concrete instance of `ListItemValueRedirectInput` via:
 //
-//          ListItemValueRedirectArgs{...}
+//	ListItemValueRedirectArgs{...}
 type ListItemValueRedirectInput interface {
 	pulumi.Input
 
@@ -8199,7 +8452,7 @@ func (i ListItemValueRedirectArgs) ToListItemValueRedirectOutputWithContext(ctx 
 // ListItemValueRedirectArrayInput is an input type that accepts ListItemValueRedirectArray and ListItemValueRedirectArrayOutput values.
 // You can construct a concrete instance of `ListItemValueRedirectArrayInput` via:
 //
-//          ListItemValueRedirectArray{ ListItemValueRedirectArgs{...} }
+//	ListItemValueRedirectArray{ ListItemValueRedirectArgs{...} }
 type ListItemValueRedirectArrayInput interface {
 	pulumi.Input
 
@@ -8283,6 +8536,112 @@ func (o ListItemValueRedirectArrayOutput) Index(i pulumi.IntInput) ListItemValue
 	}).(ListItemValueRedirectOutput)
 }
 
+type LoadBalancerCountryPool struct {
+	// A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+	Country string `pulumi:"country"`
+	// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+	PoolIds []string `pulumi:"poolIds"`
+}
+
+// LoadBalancerCountryPoolInput is an input type that accepts LoadBalancerCountryPoolArgs and LoadBalancerCountryPoolOutput values.
+// You can construct a concrete instance of `LoadBalancerCountryPoolInput` via:
+//
+//	LoadBalancerCountryPoolArgs{...}
+type LoadBalancerCountryPoolInput interface {
+	pulumi.Input
+
+	ToLoadBalancerCountryPoolOutput() LoadBalancerCountryPoolOutput
+	ToLoadBalancerCountryPoolOutputWithContext(context.Context) LoadBalancerCountryPoolOutput
+}
+
+type LoadBalancerCountryPoolArgs struct {
+	// A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+	Country pulumi.StringInput `pulumi:"country"`
+	// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+	PoolIds pulumi.StringArrayInput `pulumi:"poolIds"`
+}
+
+func (LoadBalancerCountryPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerCountryPool)(nil)).Elem()
+}
+
+func (i LoadBalancerCountryPoolArgs) ToLoadBalancerCountryPoolOutput() LoadBalancerCountryPoolOutput {
+	return i.ToLoadBalancerCountryPoolOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerCountryPoolArgs) ToLoadBalancerCountryPoolOutputWithContext(ctx context.Context) LoadBalancerCountryPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerCountryPoolOutput)
+}
+
+// LoadBalancerCountryPoolArrayInput is an input type that accepts LoadBalancerCountryPoolArray and LoadBalancerCountryPoolArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerCountryPoolArrayInput` via:
+//
+//	LoadBalancerCountryPoolArray{ LoadBalancerCountryPoolArgs{...} }
+type LoadBalancerCountryPoolArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerCountryPoolArrayOutput() LoadBalancerCountryPoolArrayOutput
+	ToLoadBalancerCountryPoolArrayOutputWithContext(context.Context) LoadBalancerCountryPoolArrayOutput
+}
+
+type LoadBalancerCountryPoolArray []LoadBalancerCountryPoolInput
+
+func (LoadBalancerCountryPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerCountryPool)(nil)).Elem()
+}
+
+func (i LoadBalancerCountryPoolArray) ToLoadBalancerCountryPoolArrayOutput() LoadBalancerCountryPoolArrayOutput {
+	return i.ToLoadBalancerCountryPoolArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerCountryPoolArray) ToLoadBalancerCountryPoolArrayOutputWithContext(ctx context.Context) LoadBalancerCountryPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerCountryPoolArrayOutput)
+}
+
+type LoadBalancerCountryPoolOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerCountryPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerCountryPool)(nil)).Elem()
+}
+
+func (o LoadBalancerCountryPoolOutput) ToLoadBalancerCountryPoolOutput() LoadBalancerCountryPoolOutput {
+	return o
+}
+
+func (o LoadBalancerCountryPoolOutput) ToLoadBalancerCountryPoolOutputWithContext(ctx context.Context) LoadBalancerCountryPoolOutput {
+	return o
+}
+
+// A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+func (o LoadBalancerCountryPoolOutput) Country() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerCountryPool) string { return v.Country }).(pulumi.StringOutput)
+}
+
+// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+func (o LoadBalancerCountryPoolOutput) PoolIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerCountryPool) []string { return v.PoolIds }).(pulumi.StringArrayOutput)
+}
+
+type LoadBalancerCountryPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerCountryPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerCountryPool)(nil)).Elem()
+}
+
+func (o LoadBalancerCountryPoolArrayOutput) ToLoadBalancerCountryPoolArrayOutput() LoadBalancerCountryPoolArrayOutput {
+	return o
+}
+
+func (o LoadBalancerCountryPoolArrayOutput) ToLoadBalancerCountryPoolArrayOutputWithContext(ctx context.Context) LoadBalancerCountryPoolArrayOutput {
+	return o
+}
+
+func (o LoadBalancerCountryPoolArrayOutput) Index(i pulumi.IntInput) LoadBalancerCountryPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerCountryPool {
+		return vs[0].([]LoadBalancerCountryPool)[vs[1].(int)]
+	}).(LoadBalancerCountryPoolOutput)
+}
+
 type LoadBalancerMonitorHeader struct {
 	// The header name.
 	Header string `pulumi:"header"`
@@ -8293,7 +8652,7 @@ type LoadBalancerMonitorHeader struct {
 // LoadBalancerMonitorHeaderInput is an input type that accepts LoadBalancerMonitorHeaderArgs and LoadBalancerMonitorHeaderOutput values.
 // You can construct a concrete instance of `LoadBalancerMonitorHeaderInput` via:
 //
-//          LoadBalancerMonitorHeaderArgs{...}
+//	LoadBalancerMonitorHeaderArgs{...}
 type LoadBalancerMonitorHeaderInput interface {
 	pulumi.Input
 
@@ -8323,7 +8682,7 @@ func (i LoadBalancerMonitorHeaderArgs) ToLoadBalancerMonitorHeaderOutputWithCont
 // LoadBalancerMonitorHeaderArrayInput is an input type that accepts LoadBalancerMonitorHeaderArray and LoadBalancerMonitorHeaderArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerMonitorHeaderArrayInput` via:
 //
-//          LoadBalancerMonitorHeaderArray{ LoadBalancerMonitorHeaderArgs{...} }
+//	LoadBalancerMonitorHeaderArray{ LoadBalancerMonitorHeaderArgs{...} }
 type LoadBalancerMonitorHeaderArrayInput interface {
 	pulumi.Input
 
@@ -8403,7 +8762,7 @@ type LoadBalancerPoolLoadShedding struct {
 // LoadBalancerPoolLoadSheddingInput is an input type that accepts LoadBalancerPoolLoadSheddingArgs and LoadBalancerPoolLoadSheddingOutput values.
 // You can construct a concrete instance of `LoadBalancerPoolLoadSheddingInput` via:
 //
-//          LoadBalancerPoolLoadSheddingArgs{...}
+//	LoadBalancerPoolLoadSheddingArgs{...}
 type LoadBalancerPoolLoadSheddingInput interface {
 	pulumi.Input
 
@@ -8437,7 +8796,7 @@ func (i LoadBalancerPoolLoadSheddingArgs) ToLoadBalancerPoolLoadSheddingOutputWi
 // LoadBalancerPoolLoadSheddingArrayInput is an input type that accepts LoadBalancerPoolLoadSheddingArray and LoadBalancerPoolLoadSheddingArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerPoolLoadSheddingArrayInput` via:
 //
-//          LoadBalancerPoolLoadSheddingArray{ LoadBalancerPoolLoadSheddingArgs{...} }
+//	LoadBalancerPoolLoadSheddingArray{ LoadBalancerPoolLoadSheddingArgs{...} }
 type LoadBalancerPoolLoadSheddingArrayInput interface {
 	pulumi.Input
 
@@ -8529,7 +8888,7 @@ type LoadBalancerPoolOrigin struct {
 // LoadBalancerPoolOriginInput is an input type that accepts LoadBalancerPoolOriginArgs and LoadBalancerPoolOriginOutput values.
 // You can construct a concrete instance of `LoadBalancerPoolOriginInput` via:
 //
-//          LoadBalancerPoolOriginArgs{...}
+//	LoadBalancerPoolOriginArgs{...}
 type LoadBalancerPoolOriginInput interface {
 	pulumi.Input
 
@@ -8565,7 +8924,7 @@ func (i LoadBalancerPoolOriginArgs) ToLoadBalancerPoolOriginOutputWithContext(ct
 // LoadBalancerPoolOriginArrayInput is an input type that accepts LoadBalancerPoolOriginArray and LoadBalancerPoolOriginArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerPoolOriginArrayInput` via:
 //
-//          LoadBalancerPoolOriginArray{ LoadBalancerPoolOriginArgs{...} }
+//	LoadBalancerPoolOriginArray{ LoadBalancerPoolOriginArgs{...} }
 type LoadBalancerPoolOriginArrayInput interface {
 	pulumi.Input
 
@@ -8656,7 +9015,7 @@ type LoadBalancerPoolOriginHeader struct {
 // LoadBalancerPoolOriginHeaderInput is an input type that accepts LoadBalancerPoolOriginHeaderArgs and LoadBalancerPoolOriginHeaderOutput values.
 // You can construct a concrete instance of `LoadBalancerPoolOriginHeaderInput` via:
 //
-//          LoadBalancerPoolOriginHeaderArgs{...}
+//	LoadBalancerPoolOriginHeaderArgs{...}
 type LoadBalancerPoolOriginHeaderInput interface {
 	pulumi.Input
 
@@ -8686,7 +9045,7 @@ func (i LoadBalancerPoolOriginHeaderArgs) ToLoadBalancerPoolOriginHeaderOutputWi
 // LoadBalancerPoolOriginHeaderArrayInput is an input type that accepts LoadBalancerPoolOriginHeaderArray and LoadBalancerPoolOriginHeaderArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerPoolOriginHeaderArrayInput` via:
 //
-//          LoadBalancerPoolOriginHeaderArray{ LoadBalancerPoolOriginHeaderArgs{...} }
+//	LoadBalancerPoolOriginHeaderArray{ LoadBalancerPoolOriginHeaderArgs{...} }
 type LoadBalancerPoolOriginHeaderArrayInput interface {
 	pulumi.Input
 
@@ -8760,7 +9119,7 @@ type LoadBalancerPoolOriginSteering struct {
 // LoadBalancerPoolOriginSteeringInput is an input type that accepts LoadBalancerPoolOriginSteeringArgs and LoadBalancerPoolOriginSteeringOutput values.
 // You can construct a concrete instance of `LoadBalancerPoolOriginSteeringInput` via:
 //
-//          LoadBalancerPoolOriginSteeringArgs{...}
+//	LoadBalancerPoolOriginSteeringArgs{...}
 type LoadBalancerPoolOriginSteeringInput interface {
 	pulumi.Input
 
@@ -8788,7 +9147,7 @@ func (i LoadBalancerPoolOriginSteeringArgs) ToLoadBalancerPoolOriginSteeringOutp
 // LoadBalancerPoolOriginSteeringArrayInput is an input type that accepts LoadBalancerPoolOriginSteeringArray and LoadBalancerPoolOriginSteeringArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerPoolOriginSteeringArrayInput` via:
 //
-//          LoadBalancerPoolOriginSteeringArray{ LoadBalancerPoolOriginSteeringArgs{...} }
+//	LoadBalancerPoolOriginSteeringArray{ LoadBalancerPoolOriginSteeringArgs{...} }
 type LoadBalancerPoolOriginSteeringArrayInput interface {
 	pulumi.Input
 
@@ -8859,7 +9218,7 @@ type LoadBalancerPopPool struct {
 // LoadBalancerPopPoolInput is an input type that accepts LoadBalancerPopPoolArgs and LoadBalancerPopPoolOutput values.
 // You can construct a concrete instance of `LoadBalancerPopPoolInput` via:
 //
-//          LoadBalancerPopPoolArgs{...}
+//	LoadBalancerPopPoolArgs{...}
 type LoadBalancerPopPoolInput interface {
 	pulumi.Input
 
@@ -8889,7 +9248,7 @@ func (i LoadBalancerPopPoolArgs) ToLoadBalancerPopPoolOutputWithContext(ctx cont
 // LoadBalancerPopPoolArrayInput is an input type that accepts LoadBalancerPopPoolArray and LoadBalancerPopPoolArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerPopPoolArrayInput` via:
 //
-//          LoadBalancerPopPoolArray{ LoadBalancerPopPoolArgs{...} }
+//	LoadBalancerPopPoolArray{ LoadBalancerPopPoolArgs{...} }
 type LoadBalancerPopPoolArrayInput interface {
 	pulumi.Input
 
@@ -8958,14 +9317,14 @@ func (o LoadBalancerPopPoolArrayOutput) Index(i pulumi.IntInput) LoadBalancerPop
 type LoadBalancerRegionPool struct {
 	// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
 	PoolIds []string `pulumi:"poolIds"`
-	// A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
+	// A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
 	Region string `pulumi:"region"`
 }
 
 // LoadBalancerRegionPoolInput is an input type that accepts LoadBalancerRegionPoolArgs and LoadBalancerRegionPoolOutput values.
 // You can construct a concrete instance of `LoadBalancerRegionPoolInput` via:
 //
-//          LoadBalancerRegionPoolArgs{...}
+//	LoadBalancerRegionPoolArgs{...}
 type LoadBalancerRegionPoolInput interface {
 	pulumi.Input
 
@@ -8976,7 +9335,7 @@ type LoadBalancerRegionPoolInput interface {
 type LoadBalancerRegionPoolArgs struct {
 	// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
 	PoolIds pulumi.StringArrayInput `pulumi:"poolIds"`
-	// A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
+	// A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
 	Region pulumi.StringInput `pulumi:"region"`
 }
 
@@ -8995,7 +9354,7 @@ func (i LoadBalancerRegionPoolArgs) ToLoadBalancerRegionPoolOutputWithContext(ct
 // LoadBalancerRegionPoolArrayInput is an input type that accepts LoadBalancerRegionPoolArray and LoadBalancerRegionPoolArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerRegionPoolArrayInput` via:
 //
-//          LoadBalancerRegionPoolArray{ LoadBalancerRegionPoolArgs{...} }
+//	LoadBalancerRegionPoolArray{ LoadBalancerRegionPoolArgs{...} }
 type LoadBalancerRegionPoolArrayInput interface {
 	pulumi.Input
 
@@ -9036,7 +9395,7 @@ func (o LoadBalancerRegionPoolOutput) PoolIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LoadBalancerRegionPool) []string { return v.PoolIds }).(pulumi.StringArrayOutput)
 }
 
-// A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
+// A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
 func (o LoadBalancerRegionPoolOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerRegionPool) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -9081,7 +9440,7 @@ type LoadBalancerRule struct {
 // LoadBalancerRuleInput is an input type that accepts LoadBalancerRuleArgs and LoadBalancerRuleOutput values.
 // You can construct a concrete instance of `LoadBalancerRuleInput` via:
 //
-//          LoadBalancerRuleArgs{...}
+//	LoadBalancerRuleArgs{...}
 type LoadBalancerRuleInput interface {
 	pulumi.Input
 
@@ -9121,7 +9480,7 @@ func (i LoadBalancerRuleArgs) ToLoadBalancerRuleOutputWithContext(ctx context.Co
 // LoadBalancerRuleArrayInput is an input type that accepts LoadBalancerRuleArray and LoadBalancerRuleArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerRuleArrayInput` via:
 //
-//          LoadBalancerRuleArray{ LoadBalancerRuleArgs{...} }
+//	LoadBalancerRuleArray{ LoadBalancerRuleArgs{...} }
 type LoadBalancerRuleArrayInput interface {
 	pulumi.Input
 
@@ -9226,7 +9585,7 @@ type LoadBalancerRuleFixedResponse struct {
 // LoadBalancerRuleFixedResponseInput is an input type that accepts LoadBalancerRuleFixedResponseArgs and LoadBalancerRuleFixedResponseOutput values.
 // You can construct a concrete instance of `LoadBalancerRuleFixedResponseInput` via:
 //
-//          LoadBalancerRuleFixedResponseArgs{...}
+//	LoadBalancerRuleFixedResponseArgs{...}
 type LoadBalancerRuleFixedResponseInput interface {
 	pulumi.Input
 
@@ -9268,11 +9627,11 @@ func (i LoadBalancerRuleFixedResponseArgs) ToLoadBalancerRuleFixedResponsePtrOut
 // LoadBalancerRuleFixedResponsePtrInput is an input type that accepts LoadBalancerRuleFixedResponseArgs, LoadBalancerRuleFixedResponsePtr and LoadBalancerRuleFixedResponsePtrOutput values.
 // You can construct a concrete instance of `LoadBalancerRuleFixedResponsePtrInput` via:
 //
-//          LoadBalancerRuleFixedResponseArgs{...}
+//	        LoadBalancerRuleFixedResponseArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LoadBalancerRuleFixedResponsePtrInput interface {
 	pulumi.Input
 
@@ -9407,6 +9766,8 @@ func (o LoadBalancerRuleFixedResponsePtrOutput) StatusCode() pulumi.IntPtrOutput
 }
 
 type LoadBalancerRuleOverride struct {
+	// See countryPools above.
+	CountryPools []LoadBalancerRuleOverrideCountryPool `pulumi:"countryPools"`
 	// See defaultPoolIds above.
 	DefaultPools []string `pulumi:"defaultPools"`
 	// See fallbackPoolId above.
@@ -9430,7 +9791,7 @@ type LoadBalancerRuleOverride struct {
 // LoadBalancerRuleOverrideInput is an input type that accepts LoadBalancerRuleOverrideArgs and LoadBalancerRuleOverrideOutput values.
 // You can construct a concrete instance of `LoadBalancerRuleOverrideInput` via:
 //
-//          LoadBalancerRuleOverrideArgs{...}
+//	LoadBalancerRuleOverrideArgs{...}
 type LoadBalancerRuleOverrideInput interface {
 	pulumi.Input
 
@@ -9439,6 +9800,8 @@ type LoadBalancerRuleOverrideInput interface {
 }
 
 type LoadBalancerRuleOverrideArgs struct {
+	// See countryPools above.
+	CountryPools LoadBalancerRuleOverrideCountryPoolArrayInput `pulumi:"countryPools"`
 	// See defaultPoolIds above.
 	DefaultPools pulumi.StringArrayInput `pulumi:"defaultPools"`
 	// See fallbackPoolId above.
@@ -9474,7 +9837,7 @@ func (i LoadBalancerRuleOverrideArgs) ToLoadBalancerRuleOverrideOutputWithContex
 // LoadBalancerRuleOverrideArrayInput is an input type that accepts LoadBalancerRuleOverrideArray and LoadBalancerRuleOverrideArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerRuleOverrideArrayInput` via:
 //
-//          LoadBalancerRuleOverrideArray{ LoadBalancerRuleOverrideArgs{...} }
+//	LoadBalancerRuleOverrideArray{ LoadBalancerRuleOverrideArgs{...} }
 type LoadBalancerRuleOverrideArrayInput interface {
 	pulumi.Input
 
@@ -9508,6 +9871,11 @@ func (o LoadBalancerRuleOverrideOutput) ToLoadBalancerRuleOverrideOutput() LoadB
 
 func (o LoadBalancerRuleOverrideOutput) ToLoadBalancerRuleOverrideOutputWithContext(ctx context.Context) LoadBalancerRuleOverrideOutput {
 	return o
+}
+
+// See countryPools above.
+func (o LoadBalancerRuleOverrideOutput) CountryPools() LoadBalancerRuleOverrideCountryPoolArrayOutput {
+	return o.ApplyT(func(v LoadBalancerRuleOverride) []LoadBalancerRuleOverrideCountryPool { return v.CountryPools }).(LoadBalancerRuleOverrideCountryPoolArrayOutput)
 }
 
 // See defaultPoolIds above.
@@ -9575,6 +9943,112 @@ func (o LoadBalancerRuleOverrideArrayOutput) Index(i pulumi.IntInput) LoadBalanc
 	}).(LoadBalancerRuleOverrideOutput)
 }
 
+type LoadBalancerRuleOverrideCountryPool struct {
+	// A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+	Country string `pulumi:"country"`
+	// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+	PoolIds []string `pulumi:"poolIds"`
+}
+
+// LoadBalancerRuleOverrideCountryPoolInput is an input type that accepts LoadBalancerRuleOverrideCountryPoolArgs and LoadBalancerRuleOverrideCountryPoolOutput values.
+// You can construct a concrete instance of `LoadBalancerRuleOverrideCountryPoolInput` via:
+//
+//	LoadBalancerRuleOverrideCountryPoolArgs{...}
+type LoadBalancerRuleOverrideCountryPoolInput interface {
+	pulumi.Input
+
+	ToLoadBalancerRuleOverrideCountryPoolOutput() LoadBalancerRuleOverrideCountryPoolOutput
+	ToLoadBalancerRuleOverrideCountryPoolOutputWithContext(context.Context) LoadBalancerRuleOverrideCountryPoolOutput
+}
+
+type LoadBalancerRuleOverrideCountryPoolArgs struct {
+	// A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+	Country pulumi.StringInput `pulumi:"country"`
+	// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+	PoolIds pulumi.StringArrayInput `pulumi:"poolIds"`
+}
+
+func (LoadBalancerRuleOverrideCountryPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerRuleOverrideCountryPool)(nil)).Elem()
+}
+
+func (i LoadBalancerRuleOverrideCountryPoolArgs) ToLoadBalancerRuleOverrideCountryPoolOutput() LoadBalancerRuleOverrideCountryPoolOutput {
+	return i.ToLoadBalancerRuleOverrideCountryPoolOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerRuleOverrideCountryPoolArgs) ToLoadBalancerRuleOverrideCountryPoolOutputWithContext(ctx context.Context) LoadBalancerRuleOverrideCountryPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRuleOverrideCountryPoolOutput)
+}
+
+// LoadBalancerRuleOverrideCountryPoolArrayInput is an input type that accepts LoadBalancerRuleOverrideCountryPoolArray and LoadBalancerRuleOverrideCountryPoolArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerRuleOverrideCountryPoolArrayInput` via:
+//
+//	LoadBalancerRuleOverrideCountryPoolArray{ LoadBalancerRuleOverrideCountryPoolArgs{...} }
+type LoadBalancerRuleOverrideCountryPoolArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerRuleOverrideCountryPoolArrayOutput() LoadBalancerRuleOverrideCountryPoolArrayOutput
+	ToLoadBalancerRuleOverrideCountryPoolArrayOutputWithContext(context.Context) LoadBalancerRuleOverrideCountryPoolArrayOutput
+}
+
+type LoadBalancerRuleOverrideCountryPoolArray []LoadBalancerRuleOverrideCountryPoolInput
+
+func (LoadBalancerRuleOverrideCountryPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerRuleOverrideCountryPool)(nil)).Elem()
+}
+
+func (i LoadBalancerRuleOverrideCountryPoolArray) ToLoadBalancerRuleOverrideCountryPoolArrayOutput() LoadBalancerRuleOverrideCountryPoolArrayOutput {
+	return i.ToLoadBalancerRuleOverrideCountryPoolArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerRuleOverrideCountryPoolArray) ToLoadBalancerRuleOverrideCountryPoolArrayOutputWithContext(ctx context.Context) LoadBalancerRuleOverrideCountryPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRuleOverrideCountryPoolArrayOutput)
+}
+
+type LoadBalancerRuleOverrideCountryPoolOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerRuleOverrideCountryPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerRuleOverrideCountryPool)(nil)).Elem()
+}
+
+func (o LoadBalancerRuleOverrideCountryPoolOutput) ToLoadBalancerRuleOverrideCountryPoolOutput() LoadBalancerRuleOverrideCountryPoolOutput {
+	return o
+}
+
+func (o LoadBalancerRuleOverrideCountryPoolOutput) ToLoadBalancerRuleOverrideCountryPoolOutputWithContext(ctx context.Context) LoadBalancerRuleOverrideCountryPoolOutput {
+	return o
+}
+
+// A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+func (o LoadBalancerRuleOverrideCountryPoolOutput) Country() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerRuleOverrideCountryPool) string { return v.Country }).(pulumi.StringOutput)
+}
+
+// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+func (o LoadBalancerRuleOverrideCountryPoolOutput) PoolIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerRuleOverrideCountryPool) []string { return v.PoolIds }).(pulumi.StringArrayOutput)
+}
+
+type LoadBalancerRuleOverrideCountryPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerRuleOverrideCountryPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerRuleOverrideCountryPool)(nil)).Elem()
+}
+
+func (o LoadBalancerRuleOverrideCountryPoolArrayOutput) ToLoadBalancerRuleOverrideCountryPoolArrayOutput() LoadBalancerRuleOverrideCountryPoolArrayOutput {
+	return o
+}
+
+func (o LoadBalancerRuleOverrideCountryPoolArrayOutput) ToLoadBalancerRuleOverrideCountryPoolArrayOutputWithContext(ctx context.Context) LoadBalancerRuleOverrideCountryPoolArrayOutput {
+	return o
+}
+
+func (o LoadBalancerRuleOverrideCountryPoolArrayOutput) Index(i pulumi.IntInput) LoadBalancerRuleOverrideCountryPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerRuleOverrideCountryPool {
+		return vs[0].([]LoadBalancerRuleOverrideCountryPool)[vs[1].(int)]
+	}).(LoadBalancerRuleOverrideCountryPoolOutput)
+}
+
 type LoadBalancerRuleOverridePopPool struct {
 	// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
 	PoolIds []string `pulumi:"poolIds"`
@@ -9585,7 +10059,7 @@ type LoadBalancerRuleOverridePopPool struct {
 // LoadBalancerRuleOverridePopPoolInput is an input type that accepts LoadBalancerRuleOverridePopPoolArgs and LoadBalancerRuleOverridePopPoolOutput values.
 // You can construct a concrete instance of `LoadBalancerRuleOverridePopPoolInput` via:
 //
-//          LoadBalancerRuleOverridePopPoolArgs{...}
+//	LoadBalancerRuleOverridePopPoolArgs{...}
 type LoadBalancerRuleOverridePopPoolInput interface {
 	pulumi.Input
 
@@ -9615,7 +10089,7 @@ func (i LoadBalancerRuleOverridePopPoolArgs) ToLoadBalancerRuleOverridePopPoolOu
 // LoadBalancerRuleOverridePopPoolArrayInput is an input type that accepts LoadBalancerRuleOverridePopPoolArray and LoadBalancerRuleOverridePopPoolArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerRuleOverridePopPoolArrayInput` via:
 //
-//          LoadBalancerRuleOverridePopPoolArray{ LoadBalancerRuleOverridePopPoolArgs{...} }
+//	LoadBalancerRuleOverridePopPoolArray{ LoadBalancerRuleOverridePopPoolArgs{...} }
 type LoadBalancerRuleOverridePopPoolArrayInput interface {
 	pulumi.Input
 
@@ -9684,14 +10158,14 @@ func (o LoadBalancerRuleOverridePopPoolArrayOutput) Index(i pulumi.IntInput) Loa
 type LoadBalancerRuleOverrideRegionPool struct {
 	// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
 	PoolIds []string `pulumi:"poolIds"`
-	// A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
+	// A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
 	Region string `pulumi:"region"`
 }
 
 // LoadBalancerRuleOverrideRegionPoolInput is an input type that accepts LoadBalancerRuleOverrideRegionPoolArgs and LoadBalancerRuleOverrideRegionPoolOutput values.
 // You can construct a concrete instance of `LoadBalancerRuleOverrideRegionPoolInput` via:
 //
-//          LoadBalancerRuleOverrideRegionPoolArgs{...}
+//	LoadBalancerRuleOverrideRegionPoolArgs{...}
 type LoadBalancerRuleOverrideRegionPoolInput interface {
 	pulumi.Input
 
@@ -9702,7 +10176,7 @@ type LoadBalancerRuleOverrideRegionPoolInput interface {
 type LoadBalancerRuleOverrideRegionPoolArgs struct {
 	// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
 	PoolIds pulumi.StringArrayInput `pulumi:"poolIds"`
-	// A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
+	// A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
 	Region pulumi.StringInput `pulumi:"region"`
 }
 
@@ -9721,7 +10195,7 @@ func (i LoadBalancerRuleOverrideRegionPoolArgs) ToLoadBalancerRuleOverrideRegion
 // LoadBalancerRuleOverrideRegionPoolArrayInput is an input type that accepts LoadBalancerRuleOverrideRegionPoolArray and LoadBalancerRuleOverrideRegionPoolArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerRuleOverrideRegionPoolArrayInput` via:
 //
-//          LoadBalancerRuleOverrideRegionPoolArray{ LoadBalancerRuleOverrideRegionPoolArgs{...} }
+//	LoadBalancerRuleOverrideRegionPoolArray{ LoadBalancerRuleOverrideRegionPoolArgs{...} }
 type LoadBalancerRuleOverrideRegionPoolArrayInput interface {
 	pulumi.Input
 
@@ -9762,7 +10236,7 @@ func (o LoadBalancerRuleOverrideRegionPoolOutput) PoolIds() pulumi.StringArrayOu
 	return o.ApplyT(func(v LoadBalancerRuleOverrideRegionPool) []string { return v.PoolIds }).(pulumi.StringArrayOutput)
 }
 
-// A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
+// A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
 func (o LoadBalancerRuleOverrideRegionPoolOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverrideRegionPool) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -9788,14 +10262,16 @@ func (o LoadBalancerRuleOverrideRegionPoolArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type ManagedHeadersManagedRequestHeader struct {
-	Enabled bool   `pulumi:"enabled"`
-	Id      string `pulumi:"id"`
+	// Whether the headers rule is active.
+	Enabled bool `pulumi:"enabled"`
+	// Unique headers rule identifier.
+	Id string `pulumi:"id"`
 }
 
 // ManagedHeadersManagedRequestHeaderInput is an input type that accepts ManagedHeadersManagedRequestHeaderArgs and ManagedHeadersManagedRequestHeaderOutput values.
 // You can construct a concrete instance of `ManagedHeadersManagedRequestHeaderInput` via:
 //
-//          ManagedHeadersManagedRequestHeaderArgs{...}
+//	ManagedHeadersManagedRequestHeaderArgs{...}
 type ManagedHeadersManagedRequestHeaderInput interface {
 	pulumi.Input
 
@@ -9804,8 +10280,10 @@ type ManagedHeadersManagedRequestHeaderInput interface {
 }
 
 type ManagedHeadersManagedRequestHeaderArgs struct {
-	Enabled pulumi.BoolInput   `pulumi:"enabled"`
-	Id      pulumi.StringInput `pulumi:"id"`
+	// Whether the headers rule is active.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Unique headers rule identifier.
+	Id pulumi.StringInput `pulumi:"id"`
 }
 
 func (ManagedHeadersManagedRequestHeaderArgs) ElementType() reflect.Type {
@@ -9823,7 +10301,7 @@ func (i ManagedHeadersManagedRequestHeaderArgs) ToManagedHeadersManagedRequestHe
 // ManagedHeadersManagedRequestHeaderArrayInput is an input type that accepts ManagedHeadersManagedRequestHeaderArray and ManagedHeadersManagedRequestHeaderArrayOutput values.
 // You can construct a concrete instance of `ManagedHeadersManagedRequestHeaderArrayInput` via:
 //
-//          ManagedHeadersManagedRequestHeaderArray{ ManagedHeadersManagedRequestHeaderArgs{...} }
+//	ManagedHeadersManagedRequestHeaderArray{ ManagedHeadersManagedRequestHeaderArgs{...} }
 type ManagedHeadersManagedRequestHeaderArrayInput interface {
 	pulumi.Input
 
@@ -9859,10 +10337,12 @@ func (o ManagedHeadersManagedRequestHeaderOutput) ToManagedHeadersManagedRequest
 	return o
 }
 
+// Whether the headers rule is active.
 func (o ManagedHeadersManagedRequestHeaderOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ManagedHeadersManagedRequestHeader) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Unique headers rule identifier.
 func (o ManagedHeadersManagedRequestHeaderOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedHeadersManagedRequestHeader) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -9888,14 +10368,16 @@ func (o ManagedHeadersManagedRequestHeaderArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type ManagedHeadersManagedResponseHeader struct {
-	Enabled bool   `pulumi:"enabled"`
-	Id      string `pulumi:"id"`
+	// Whether the headers rule is active.
+	Enabled bool `pulumi:"enabled"`
+	// Unique headers rule identifier.
+	Id string `pulumi:"id"`
 }
 
 // ManagedHeadersManagedResponseHeaderInput is an input type that accepts ManagedHeadersManagedResponseHeaderArgs and ManagedHeadersManagedResponseHeaderOutput values.
 // You can construct a concrete instance of `ManagedHeadersManagedResponseHeaderInput` via:
 //
-//          ManagedHeadersManagedResponseHeaderArgs{...}
+//	ManagedHeadersManagedResponseHeaderArgs{...}
 type ManagedHeadersManagedResponseHeaderInput interface {
 	pulumi.Input
 
@@ -9904,8 +10386,10 @@ type ManagedHeadersManagedResponseHeaderInput interface {
 }
 
 type ManagedHeadersManagedResponseHeaderArgs struct {
-	Enabled pulumi.BoolInput   `pulumi:"enabled"`
-	Id      pulumi.StringInput `pulumi:"id"`
+	// Whether the headers rule is active.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Unique headers rule identifier.
+	Id pulumi.StringInput `pulumi:"id"`
 }
 
 func (ManagedHeadersManagedResponseHeaderArgs) ElementType() reflect.Type {
@@ -9923,7 +10407,7 @@ func (i ManagedHeadersManagedResponseHeaderArgs) ToManagedHeadersManagedResponse
 // ManagedHeadersManagedResponseHeaderArrayInput is an input type that accepts ManagedHeadersManagedResponseHeaderArray and ManagedHeadersManagedResponseHeaderArrayOutput values.
 // You can construct a concrete instance of `ManagedHeadersManagedResponseHeaderArrayInput` via:
 //
-//          ManagedHeadersManagedResponseHeaderArray{ ManagedHeadersManagedResponseHeaderArgs{...} }
+//	ManagedHeadersManagedResponseHeaderArray{ ManagedHeadersManagedResponseHeaderArgs{...} }
 type ManagedHeadersManagedResponseHeaderArrayInput interface {
 	pulumi.Input
 
@@ -9959,10 +10443,12 @@ func (o ManagedHeadersManagedResponseHeaderOutput) ToManagedHeadersManagedRespon
 	return o
 }
 
+// Whether the headers rule is active.
 func (o ManagedHeadersManagedResponseHeaderOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ManagedHeadersManagedResponseHeader) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Unique headers rule identifier.
 func (o ManagedHeadersManagedResponseHeaderOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedHeadersManagedResponseHeader) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -9988,14 +10474,16 @@ func (o ManagedHeadersManagedResponseHeaderArrayOutput) Index(i pulumi.IntInput)
 }
 
 type NotificationPolicyEmailIntegration struct {
-	Id   string  `pulumi:"id"`
+	// The ID of this resource.
+	Id string `pulumi:"id"`
+	// The name of the notification policy.
 	Name *string `pulumi:"name"`
 }
 
 // NotificationPolicyEmailIntegrationInput is an input type that accepts NotificationPolicyEmailIntegrationArgs and NotificationPolicyEmailIntegrationOutput values.
 // You can construct a concrete instance of `NotificationPolicyEmailIntegrationInput` via:
 //
-//          NotificationPolicyEmailIntegrationArgs{...}
+//	NotificationPolicyEmailIntegrationArgs{...}
 type NotificationPolicyEmailIntegrationInput interface {
 	pulumi.Input
 
@@ -10004,7 +10492,9 @@ type NotificationPolicyEmailIntegrationInput interface {
 }
 
 type NotificationPolicyEmailIntegrationArgs struct {
-	Id   pulumi.StringInput    `pulumi:"id"`
+	// The ID of this resource.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the notification policy.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -10023,7 +10513,7 @@ func (i NotificationPolicyEmailIntegrationArgs) ToNotificationPolicyEmailIntegra
 // NotificationPolicyEmailIntegrationArrayInput is an input type that accepts NotificationPolicyEmailIntegrationArray and NotificationPolicyEmailIntegrationArrayOutput values.
 // You can construct a concrete instance of `NotificationPolicyEmailIntegrationArrayInput` via:
 //
-//          NotificationPolicyEmailIntegrationArray{ NotificationPolicyEmailIntegrationArgs{...} }
+//	NotificationPolicyEmailIntegrationArray{ NotificationPolicyEmailIntegrationArgs{...} }
 type NotificationPolicyEmailIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -10059,10 +10549,12 @@ func (o NotificationPolicyEmailIntegrationOutput) ToNotificationPolicyEmailInteg
 	return o
 }
 
+// The ID of this resource.
 func (o NotificationPolicyEmailIntegrationOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v NotificationPolicyEmailIntegration) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the notification policy.
 func (o NotificationPolicyEmailIntegrationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationPolicyEmailIntegration) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -10088,21 +10580,48 @@ func (o NotificationPolicyEmailIntegrationArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type NotificationPolicyFilters struct {
-	Enableds       []string `pulumi:"enableds"`
+	// State of the pool to alert on.
+	Enableds []string `pulumi:"enableds"`
+	// Source configuration to alert on for pool or origin.
+	EventSources []string `pulumi:"eventSources"`
+	// Stream event type to alert on.
+	EventTypes []string `pulumi:"eventTypes"`
+	// Identifier health check.
 	HealthCheckIds []string `pulumi:"healthCheckIds"`
-	Limits         []string `pulumi:"limits"`
-	PoolIds        []string `pulumi:"poolIds"`
-	Products       []string `pulumi:"products"`
-	Services       []string `pulumi:"services"`
-	Slos           []string `pulumi:"slos"`
-	Statuses       []string `pulumi:"statuses"`
-	Zones          []string `pulumi:"zones"`
+	// Stream input id to alert on.
+	InputIds []string `pulumi:"inputIds"`
+	// A numerical limit. Example: `100`.
+	Limits []string `pulumi:"limits"`
+	// Health status to alert on for pool or origin.
+	NewHealths []string `pulumi:"newHealths"`
+	// Packets per second threshold for dos alert.
+	PacketsPerSeconds []string `pulumi:"packetsPerSeconds"`
+	// Load balancer pool identifier.
+	PoolIds []string `pulumi:"poolIds"`
+	// Product name. Available values: `workerRequests`, `workerDurableObjectsRequests`, `workerDurableObjectsDuration`, `workerDurableObjectsDataTransfer`, `workerDurableObjectsStoredData`, `workerDurableObjectsStorageDeletes`, `workerDurableObjectsStorageWrites`, `workerDurableObjectsStorageReads`.
+	Products []string `pulumi:"products"`
+	// Protocol to alert on for dos.
+	Protocols []string `pulumi:"protocols"`
+	// Requests per second threshold for dos alert.
+	RequestsPerSeconds []string `pulumi:"requestsPerSeconds"`
+	// A list of clickhouse services to alert on.
+	Services []string `pulumi:"services"`
+	// A numerical limit. Example: `99.9`.
+	Slos []string `pulumi:"slos"`
+	// Status to alert on.
+	Statuses []string `pulumi:"statuses"`
+	// Target host to alert on for dos.
+	TargetHosts []string `pulumi:"targetHosts"`
+	// Target domain to alert on.
+	TargetZoneNames []string `pulumi:"targetZoneNames"`
+	// A list of zone identifiers.
+	Zones []string `pulumi:"zones"`
 }
 
 // NotificationPolicyFiltersInput is an input type that accepts NotificationPolicyFiltersArgs and NotificationPolicyFiltersOutput values.
 // You can construct a concrete instance of `NotificationPolicyFiltersInput` via:
 //
-//          NotificationPolicyFiltersArgs{...}
+//	NotificationPolicyFiltersArgs{...}
 type NotificationPolicyFiltersInput interface {
 	pulumi.Input
 
@@ -10111,15 +10630,42 @@ type NotificationPolicyFiltersInput interface {
 }
 
 type NotificationPolicyFiltersArgs struct {
-	Enableds       pulumi.StringArrayInput `pulumi:"enableds"`
+	// State of the pool to alert on.
+	Enableds pulumi.StringArrayInput `pulumi:"enableds"`
+	// Source configuration to alert on for pool or origin.
+	EventSources pulumi.StringArrayInput `pulumi:"eventSources"`
+	// Stream event type to alert on.
+	EventTypes pulumi.StringArrayInput `pulumi:"eventTypes"`
+	// Identifier health check.
 	HealthCheckIds pulumi.StringArrayInput `pulumi:"healthCheckIds"`
-	Limits         pulumi.StringArrayInput `pulumi:"limits"`
-	PoolIds        pulumi.StringArrayInput `pulumi:"poolIds"`
-	Products       pulumi.StringArrayInput `pulumi:"products"`
-	Services       pulumi.StringArrayInput `pulumi:"services"`
-	Slos           pulumi.StringArrayInput `pulumi:"slos"`
-	Statuses       pulumi.StringArrayInput `pulumi:"statuses"`
-	Zones          pulumi.StringArrayInput `pulumi:"zones"`
+	// Stream input id to alert on.
+	InputIds pulumi.StringArrayInput `pulumi:"inputIds"`
+	// A numerical limit. Example: `100`.
+	Limits pulumi.StringArrayInput `pulumi:"limits"`
+	// Health status to alert on for pool or origin.
+	NewHealths pulumi.StringArrayInput `pulumi:"newHealths"`
+	// Packets per second threshold for dos alert.
+	PacketsPerSeconds pulumi.StringArrayInput `pulumi:"packetsPerSeconds"`
+	// Load balancer pool identifier.
+	PoolIds pulumi.StringArrayInput `pulumi:"poolIds"`
+	// Product name. Available values: `workerRequests`, `workerDurableObjectsRequests`, `workerDurableObjectsDuration`, `workerDurableObjectsDataTransfer`, `workerDurableObjectsStoredData`, `workerDurableObjectsStorageDeletes`, `workerDurableObjectsStorageWrites`, `workerDurableObjectsStorageReads`.
+	Products pulumi.StringArrayInput `pulumi:"products"`
+	// Protocol to alert on for dos.
+	Protocols pulumi.StringArrayInput `pulumi:"protocols"`
+	// Requests per second threshold for dos alert.
+	RequestsPerSeconds pulumi.StringArrayInput `pulumi:"requestsPerSeconds"`
+	// A list of clickhouse services to alert on.
+	Services pulumi.StringArrayInput `pulumi:"services"`
+	// A numerical limit. Example: `99.9`.
+	Slos pulumi.StringArrayInput `pulumi:"slos"`
+	// Status to alert on.
+	Statuses pulumi.StringArrayInput `pulumi:"statuses"`
+	// Target host to alert on for dos.
+	TargetHosts pulumi.StringArrayInput `pulumi:"targetHosts"`
+	// Target domain to alert on.
+	TargetZoneNames pulumi.StringArrayInput `pulumi:"targetZoneNames"`
+	// A list of zone identifiers.
+	Zones pulumi.StringArrayInput `pulumi:"zones"`
 }
 
 func (NotificationPolicyFiltersArgs) ElementType() reflect.Type {
@@ -10145,11 +10691,11 @@ func (i NotificationPolicyFiltersArgs) ToNotificationPolicyFiltersPtrOutputWithC
 // NotificationPolicyFiltersPtrInput is an input type that accepts NotificationPolicyFiltersArgs, NotificationPolicyFiltersPtr and NotificationPolicyFiltersPtrOutput values.
 // You can construct a concrete instance of `NotificationPolicyFiltersPtrInput` via:
 //
-//          NotificationPolicyFiltersArgs{...}
+//	        NotificationPolicyFiltersArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NotificationPolicyFiltersPtrInput interface {
 	pulumi.Input
 
@@ -10199,38 +10745,92 @@ func (o NotificationPolicyFiltersOutput) ToNotificationPolicyFiltersPtrOutputWit
 	}).(NotificationPolicyFiltersPtrOutput)
 }
 
+// State of the pool to alert on.
 func (o NotificationPolicyFiltersOutput) Enableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Enableds }).(pulumi.StringArrayOutput)
 }
 
+// Source configuration to alert on for pool or origin.
+func (o NotificationPolicyFiltersOutput) EventSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.EventSources }).(pulumi.StringArrayOutput)
+}
+
+// Stream event type to alert on.
+func (o NotificationPolicyFiltersOutput) EventTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.EventTypes }).(pulumi.StringArrayOutput)
+}
+
+// Identifier health check.
 func (o NotificationPolicyFiltersOutput) HealthCheckIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.HealthCheckIds }).(pulumi.StringArrayOutput)
 }
 
+// Stream input id to alert on.
+func (o NotificationPolicyFiltersOutput) InputIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.InputIds }).(pulumi.StringArrayOutput)
+}
+
+// A numerical limit. Example: `100`.
 func (o NotificationPolicyFiltersOutput) Limits() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Limits }).(pulumi.StringArrayOutput)
 }
 
+// Health status to alert on for pool or origin.
+func (o NotificationPolicyFiltersOutput) NewHealths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.NewHealths }).(pulumi.StringArrayOutput)
+}
+
+// Packets per second threshold for dos alert.
+func (o NotificationPolicyFiltersOutput) PacketsPerSeconds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.PacketsPerSeconds }).(pulumi.StringArrayOutput)
+}
+
+// Load balancer pool identifier.
 func (o NotificationPolicyFiltersOutput) PoolIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.PoolIds }).(pulumi.StringArrayOutput)
 }
 
+// Product name. Available values: `workerRequests`, `workerDurableObjectsRequests`, `workerDurableObjectsDuration`, `workerDurableObjectsDataTransfer`, `workerDurableObjectsStoredData`, `workerDurableObjectsStorageDeletes`, `workerDurableObjectsStorageWrites`, `workerDurableObjectsStorageReads`.
 func (o NotificationPolicyFiltersOutput) Products() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Products }).(pulumi.StringArrayOutput)
 }
 
+// Protocol to alert on for dos.
+func (o NotificationPolicyFiltersOutput) Protocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Protocols }).(pulumi.StringArrayOutput)
+}
+
+// Requests per second threshold for dos alert.
+func (o NotificationPolicyFiltersOutput) RequestsPerSeconds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.RequestsPerSeconds }).(pulumi.StringArrayOutput)
+}
+
+// A list of clickhouse services to alert on.
 func (o NotificationPolicyFiltersOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Services }).(pulumi.StringArrayOutput)
 }
 
+// A numerical limit. Example: `99.9`.
 func (o NotificationPolicyFiltersOutput) Slos() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Slos }).(pulumi.StringArrayOutput)
 }
 
+// Status to alert on.
 func (o NotificationPolicyFiltersOutput) Statuses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Statuses }).(pulumi.StringArrayOutput)
 }
 
+// Target host to alert on for dos.
+func (o NotificationPolicyFiltersOutput) TargetHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.TargetHosts }).(pulumi.StringArrayOutput)
+}
+
+// Target domain to alert on.
+func (o NotificationPolicyFiltersOutput) TargetZoneNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.TargetZoneNames }).(pulumi.StringArrayOutput)
+}
+
+// A list of zone identifiers.
 func (o NotificationPolicyFiltersOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
@@ -10259,6 +10859,7 @@ func (o NotificationPolicyFiltersPtrOutput) Elem() NotificationPolicyFiltersOutp
 	}).(NotificationPolicyFiltersOutput)
 }
 
+// State of the pool to alert on.
 func (o NotificationPolicyFiltersPtrOutput) Enableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
 		if v == nil {
@@ -10268,6 +10869,27 @@ func (o NotificationPolicyFiltersPtrOutput) Enableds() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
+// Source configuration to alert on for pool or origin.
+func (o NotificationPolicyFiltersPtrOutput) EventSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EventSources
+	}).(pulumi.StringArrayOutput)
+}
+
+// Stream event type to alert on.
+func (o NotificationPolicyFiltersPtrOutput) EventTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EventTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Identifier health check.
 func (o NotificationPolicyFiltersPtrOutput) HealthCheckIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
 		if v == nil {
@@ -10277,6 +10899,17 @@ func (o NotificationPolicyFiltersPtrOutput) HealthCheckIds() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
+// Stream input id to alert on.
+func (o NotificationPolicyFiltersPtrOutput) InputIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InputIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// A numerical limit. Example: `100`.
 func (o NotificationPolicyFiltersPtrOutput) Limits() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
 		if v == nil {
@@ -10286,6 +10919,27 @@ func (o NotificationPolicyFiltersPtrOutput) Limits() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Health status to alert on for pool or origin.
+func (o NotificationPolicyFiltersPtrOutput) NewHealths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NewHealths
+	}).(pulumi.StringArrayOutput)
+}
+
+// Packets per second threshold for dos alert.
+func (o NotificationPolicyFiltersPtrOutput) PacketsPerSeconds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PacketsPerSeconds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Load balancer pool identifier.
 func (o NotificationPolicyFiltersPtrOutput) PoolIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
 		if v == nil {
@@ -10295,6 +10949,7 @@ func (o NotificationPolicyFiltersPtrOutput) PoolIds() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Product name. Available values: `workerRequests`, `workerDurableObjectsRequests`, `workerDurableObjectsDuration`, `workerDurableObjectsDataTransfer`, `workerDurableObjectsStoredData`, `workerDurableObjectsStorageDeletes`, `workerDurableObjectsStorageWrites`, `workerDurableObjectsStorageReads`.
 func (o NotificationPolicyFiltersPtrOutput) Products() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
 		if v == nil {
@@ -10304,6 +10959,27 @@ func (o NotificationPolicyFiltersPtrOutput) Products() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
+// Protocol to alert on for dos.
+func (o NotificationPolicyFiltersPtrOutput) Protocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocols
+	}).(pulumi.StringArrayOutput)
+}
+
+// Requests per second threshold for dos alert.
+func (o NotificationPolicyFiltersPtrOutput) RequestsPerSeconds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestsPerSeconds
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of clickhouse services to alert on.
 func (o NotificationPolicyFiltersPtrOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
 		if v == nil {
@@ -10313,6 +10989,7 @@ func (o NotificationPolicyFiltersPtrOutput) Services() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
+// A numerical limit. Example: `99.9`.
 func (o NotificationPolicyFiltersPtrOutput) Slos() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
 		if v == nil {
@@ -10322,6 +10999,7 @@ func (o NotificationPolicyFiltersPtrOutput) Slos() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Status to alert on.
 func (o NotificationPolicyFiltersPtrOutput) Statuses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
 		if v == nil {
@@ -10331,6 +11009,27 @@ func (o NotificationPolicyFiltersPtrOutput) Statuses() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
+// Target host to alert on for dos.
+func (o NotificationPolicyFiltersPtrOutput) TargetHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// Target domain to alert on.
+func (o NotificationPolicyFiltersPtrOutput) TargetZoneNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetZoneNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of zone identifiers.
 func (o NotificationPolicyFiltersPtrOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
 		if v == nil {
@@ -10341,14 +11040,16 @@ func (o NotificationPolicyFiltersPtrOutput) Zones() pulumi.StringArrayOutput {
 }
 
 type NotificationPolicyPagerdutyIntegration struct {
-	Id   string  `pulumi:"id"`
+	// The ID of this resource.
+	Id string `pulumi:"id"`
+	// The name of the notification policy.
 	Name *string `pulumi:"name"`
 }
 
 // NotificationPolicyPagerdutyIntegrationInput is an input type that accepts NotificationPolicyPagerdutyIntegrationArgs and NotificationPolicyPagerdutyIntegrationOutput values.
 // You can construct a concrete instance of `NotificationPolicyPagerdutyIntegrationInput` via:
 //
-//          NotificationPolicyPagerdutyIntegrationArgs{...}
+//	NotificationPolicyPagerdutyIntegrationArgs{...}
 type NotificationPolicyPagerdutyIntegrationInput interface {
 	pulumi.Input
 
@@ -10357,7 +11058,9 @@ type NotificationPolicyPagerdutyIntegrationInput interface {
 }
 
 type NotificationPolicyPagerdutyIntegrationArgs struct {
-	Id   pulumi.StringInput    `pulumi:"id"`
+	// The ID of this resource.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the notification policy.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -10376,7 +11079,7 @@ func (i NotificationPolicyPagerdutyIntegrationArgs) ToNotificationPolicyPagerdut
 // NotificationPolicyPagerdutyIntegrationArrayInput is an input type that accepts NotificationPolicyPagerdutyIntegrationArray and NotificationPolicyPagerdutyIntegrationArrayOutput values.
 // You can construct a concrete instance of `NotificationPolicyPagerdutyIntegrationArrayInput` via:
 //
-//          NotificationPolicyPagerdutyIntegrationArray{ NotificationPolicyPagerdutyIntegrationArgs{...} }
+//	NotificationPolicyPagerdutyIntegrationArray{ NotificationPolicyPagerdutyIntegrationArgs{...} }
 type NotificationPolicyPagerdutyIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -10412,10 +11115,12 @@ func (o NotificationPolicyPagerdutyIntegrationOutput) ToNotificationPolicyPagerd
 	return o
 }
 
+// The ID of this resource.
 func (o NotificationPolicyPagerdutyIntegrationOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v NotificationPolicyPagerdutyIntegration) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the notification policy.
 func (o NotificationPolicyPagerdutyIntegrationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationPolicyPagerdutyIntegration) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -10441,14 +11146,16 @@ func (o NotificationPolicyPagerdutyIntegrationArrayOutput) Index(i pulumi.IntInp
 }
 
 type NotificationPolicyWebhooksIntegration struct {
-	Id   string  `pulumi:"id"`
+	// The ID of this resource.
+	Id string `pulumi:"id"`
+	// The name of the notification policy.
 	Name *string `pulumi:"name"`
 }
 
 // NotificationPolicyWebhooksIntegrationInput is an input type that accepts NotificationPolicyWebhooksIntegrationArgs and NotificationPolicyWebhooksIntegrationOutput values.
 // You can construct a concrete instance of `NotificationPolicyWebhooksIntegrationInput` via:
 //
-//          NotificationPolicyWebhooksIntegrationArgs{...}
+//	NotificationPolicyWebhooksIntegrationArgs{...}
 type NotificationPolicyWebhooksIntegrationInput interface {
 	pulumi.Input
 
@@ -10457,7 +11164,9 @@ type NotificationPolicyWebhooksIntegrationInput interface {
 }
 
 type NotificationPolicyWebhooksIntegrationArgs struct {
-	Id   pulumi.StringInput    `pulumi:"id"`
+	// The ID of this resource.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the notification policy.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -10476,7 +11185,7 @@ func (i NotificationPolicyWebhooksIntegrationArgs) ToNotificationPolicyWebhooksI
 // NotificationPolicyWebhooksIntegrationArrayInput is an input type that accepts NotificationPolicyWebhooksIntegrationArray and NotificationPolicyWebhooksIntegrationArrayOutput values.
 // You can construct a concrete instance of `NotificationPolicyWebhooksIntegrationArrayInput` via:
 //
-//          NotificationPolicyWebhooksIntegrationArray{ NotificationPolicyWebhooksIntegrationArgs{...} }
+//	NotificationPolicyWebhooksIntegrationArray{ NotificationPolicyWebhooksIntegrationArgs{...} }
 type NotificationPolicyWebhooksIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -10512,10 +11221,12 @@ func (o NotificationPolicyWebhooksIntegrationOutput) ToNotificationPolicyWebhook
 	return o
 }
 
+// The ID of this resource.
 func (o NotificationPolicyWebhooksIntegrationOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v NotificationPolicyWebhooksIntegration) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the notification policy.
 func (o NotificationPolicyWebhooksIntegrationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationPolicyWebhooksIntegration) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -10541,8 +11252,6 @@ func (o NotificationPolicyWebhooksIntegrationArrayOutput) Index(i pulumi.IntInpu
 }
 
 type PageRuleActions struct {
-	// Whether this action is `"on"` or `"off"`.
-	AlwaysOnline *string `pulumi:"alwaysOnline"`
 	// Boolean of whether this action is enabled. Default: false.
 	AlwaysUseHttps *bool `pulumi:"alwaysUseHttps"`
 	// Whether this action is `"on"` or `"off"`.
@@ -10622,7 +11331,7 @@ type PageRuleActions struct {
 // PageRuleActionsInput is an input type that accepts PageRuleActionsArgs and PageRuleActionsOutput values.
 // You can construct a concrete instance of `PageRuleActionsInput` via:
 //
-//          PageRuleActionsArgs{...}
+//	PageRuleActionsArgs{...}
 type PageRuleActionsInput interface {
 	pulumi.Input
 
@@ -10631,8 +11340,6 @@ type PageRuleActionsInput interface {
 }
 
 type PageRuleActionsArgs struct {
-	// Whether this action is `"on"` or `"off"`.
-	AlwaysOnline pulumi.StringPtrInput `pulumi:"alwaysOnline"`
 	// Boolean of whether this action is enabled. Default: false.
 	AlwaysUseHttps pulumi.BoolPtrInput `pulumi:"alwaysUseHttps"`
 	// Whether this action is `"on"` or `"off"`.
@@ -10732,11 +11439,11 @@ func (i PageRuleActionsArgs) ToPageRuleActionsPtrOutputWithContext(ctx context.C
 // PageRuleActionsPtrInput is an input type that accepts PageRuleActionsArgs, PageRuleActionsPtr and PageRuleActionsPtrOutput values.
 // You can construct a concrete instance of `PageRuleActionsPtrInput` via:
 //
-//          PageRuleActionsArgs{...}
+//	        PageRuleActionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PageRuleActionsPtrInput interface {
 	pulumi.Input
 
@@ -10784,11 +11491,6 @@ func (o PageRuleActionsOutput) ToPageRuleActionsPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PageRuleActions) *PageRuleActions {
 		return &v
 	}).(PageRuleActionsPtrOutput)
-}
-
-// Whether this action is `"on"` or `"off"`.
-func (o PageRuleActionsOutput) AlwaysOnline() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.AlwaysOnline }).(pulumi.StringPtrOutput)
 }
 
 // Boolean of whether this action is enabled. Default: false.
@@ -10998,16 +11700,6 @@ func (o PageRuleActionsPtrOutput) Elem() PageRuleActionsOutput {
 		var ret PageRuleActions
 		return ret
 	}).(PageRuleActionsOutput)
-}
-
-// Whether this action is `"on"` or `"off"`.
-func (o PageRuleActionsPtrOutput) AlwaysOnline() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PageRuleActions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AlwaysOnline
-	}).(pulumi.StringPtrOutput)
 }
 
 // Boolean of whether this action is enabled. Default: false.
@@ -11396,7 +12088,7 @@ type PageRuleActionsCacheKeyFields struct {
 // PageRuleActionsCacheKeyFieldsInput is an input type that accepts PageRuleActionsCacheKeyFieldsArgs and PageRuleActionsCacheKeyFieldsOutput values.
 // You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsInput` via:
 //
-//          PageRuleActionsCacheKeyFieldsArgs{...}
+//	PageRuleActionsCacheKeyFieldsArgs{...}
 type PageRuleActionsCacheKeyFieldsInput interface {
 	pulumi.Input
 
@@ -11440,11 +12132,11 @@ func (i PageRuleActionsCacheKeyFieldsArgs) ToPageRuleActionsCacheKeyFieldsPtrOut
 // PageRuleActionsCacheKeyFieldsPtrInput is an input type that accepts PageRuleActionsCacheKeyFieldsArgs, PageRuleActionsCacheKeyFieldsPtr and PageRuleActionsCacheKeyFieldsPtrOutput values.
 // You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsPtrInput` via:
 //
-//          PageRuleActionsCacheKeyFieldsArgs{...}
+//	        PageRuleActionsCacheKeyFieldsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PageRuleActionsCacheKeyFieldsPtrInput interface {
 	pulumi.Input
 
@@ -11603,7 +12295,7 @@ type PageRuleActionsCacheKeyFieldsCookie struct {
 // PageRuleActionsCacheKeyFieldsCookieInput is an input type that accepts PageRuleActionsCacheKeyFieldsCookieArgs and PageRuleActionsCacheKeyFieldsCookieOutput values.
 // You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsCookieInput` via:
 //
-//          PageRuleActionsCacheKeyFieldsCookieArgs{...}
+//	PageRuleActionsCacheKeyFieldsCookieArgs{...}
 type PageRuleActionsCacheKeyFieldsCookieInput interface {
 	pulumi.Input
 
@@ -11641,11 +12333,11 @@ func (i PageRuleActionsCacheKeyFieldsCookieArgs) ToPageRuleActionsCacheKeyFields
 // PageRuleActionsCacheKeyFieldsCookiePtrInput is an input type that accepts PageRuleActionsCacheKeyFieldsCookieArgs, PageRuleActionsCacheKeyFieldsCookiePtr and PageRuleActionsCacheKeyFieldsCookiePtrOutput values.
 // You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsCookiePtrInput` via:
 //
-//          PageRuleActionsCacheKeyFieldsCookieArgs{...}
+//	        PageRuleActionsCacheKeyFieldsCookieArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PageRuleActionsCacheKeyFieldsCookiePtrInput interface {
 	pulumi.Input
 
@@ -11761,7 +12453,7 @@ type PageRuleActionsCacheKeyFieldsHeader struct {
 // PageRuleActionsCacheKeyFieldsHeaderInput is an input type that accepts PageRuleActionsCacheKeyFieldsHeaderArgs and PageRuleActionsCacheKeyFieldsHeaderOutput values.
 // You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsHeaderInput` via:
 //
-//          PageRuleActionsCacheKeyFieldsHeaderArgs{...}
+//	PageRuleActionsCacheKeyFieldsHeaderArgs{...}
 type PageRuleActionsCacheKeyFieldsHeaderInput interface {
 	pulumi.Input
 
@@ -11801,11 +12493,11 @@ func (i PageRuleActionsCacheKeyFieldsHeaderArgs) ToPageRuleActionsCacheKeyFields
 // PageRuleActionsCacheKeyFieldsHeaderPtrInput is an input type that accepts PageRuleActionsCacheKeyFieldsHeaderArgs, PageRuleActionsCacheKeyFieldsHeaderPtr and PageRuleActionsCacheKeyFieldsHeaderPtrOutput values.
 // You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsHeaderPtrInput` via:
 //
-//          PageRuleActionsCacheKeyFieldsHeaderArgs{...}
+//	        PageRuleActionsCacheKeyFieldsHeaderArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PageRuleActionsCacheKeyFieldsHeaderPtrInput interface {
 	pulumi.Input
 
@@ -11932,7 +12624,7 @@ type PageRuleActionsCacheKeyFieldsHost struct {
 // PageRuleActionsCacheKeyFieldsHostInput is an input type that accepts PageRuleActionsCacheKeyFieldsHostArgs and PageRuleActionsCacheKeyFieldsHostOutput values.
 // You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsHostInput` via:
 //
-//          PageRuleActionsCacheKeyFieldsHostArgs{...}
+//	PageRuleActionsCacheKeyFieldsHostArgs{...}
 type PageRuleActionsCacheKeyFieldsHostInput interface {
 	pulumi.Input
 
@@ -11968,11 +12660,11 @@ func (i PageRuleActionsCacheKeyFieldsHostArgs) ToPageRuleActionsCacheKeyFieldsHo
 // PageRuleActionsCacheKeyFieldsHostPtrInput is an input type that accepts PageRuleActionsCacheKeyFieldsHostArgs, PageRuleActionsCacheKeyFieldsHostPtr and PageRuleActionsCacheKeyFieldsHostPtrOutput values.
 // You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsHostPtrInput` via:
 //
-//          PageRuleActionsCacheKeyFieldsHostArgs{...}
+//	        PageRuleActionsCacheKeyFieldsHostArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PageRuleActionsCacheKeyFieldsHostPtrInput interface {
 	pulumi.Input
 
@@ -12073,7 +12765,7 @@ type PageRuleActionsCacheKeyFieldsQueryString struct {
 // PageRuleActionsCacheKeyFieldsQueryStringInput is an input type that accepts PageRuleActionsCacheKeyFieldsQueryStringArgs and PageRuleActionsCacheKeyFieldsQueryStringOutput values.
 // You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsQueryStringInput` via:
 //
-//          PageRuleActionsCacheKeyFieldsQueryStringArgs{...}
+//	PageRuleActionsCacheKeyFieldsQueryStringArgs{...}
 type PageRuleActionsCacheKeyFieldsQueryStringInput interface {
 	pulumi.Input
 
@@ -12113,11 +12805,11 @@ func (i PageRuleActionsCacheKeyFieldsQueryStringArgs) ToPageRuleActionsCacheKeyF
 // PageRuleActionsCacheKeyFieldsQueryStringPtrInput is an input type that accepts PageRuleActionsCacheKeyFieldsQueryStringArgs, PageRuleActionsCacheKeyFieldsQueryStringPtr and PageRuleActionsCacheKeyFieldsQueryStringPtrOutput values.
 // You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsQueryStringPtrInput` via:
 //
-//          PageRuleActionsCacheKeyFieldsQueryStringArgs{...}
+//	        PageRuleActionsCacheKeyFieldsQueryStringArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PageRuleActionsCacheKeyFieldsQueryStringPtrInput interface {
 	pulumi.Input
 
@@ -12248,7 +12940,7 @@ type PageRuleActionsCacheKeyFieldsUser struct {
 // PageRuleActionsCacheKeyFieldsUserInput is an input type that accepts PageRuleActionsCacheKeyFieldsUserArgs and PageRuleActionsCacheKeyFieldsUserOutput values.
 // You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsUserInput` via:
 //
-//          PageRuleActionsCacheKeyFieldsUserArgs{...}
+//	PageRuleActionsCacheKeyFieldsUserArgs{...}
 type PageRuleActionsCacheKeyFieldsUserInput interface {
 	pulumi.Input
 
@@ -12288,11 +12980,11 @@ func (i PageRuleActionsCacheKeyFieldsUserArgs) ToPageRuleActionsCacheKeyFieldsUs
 // PageRuleActionsCacheKeyFieldsUserPtrInput is an input type that accepts PageRuleActionsCacheKeyFieldsUserArgs, PageRuleActionsCacheKeyFieldsUserPtr and PageRuleActionsCacheKeyFieldsUserPtrOutput values.
 // You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsUserPtrInput` via:
 //
-//          PageRuleActionsCacheKeyFieldsUserArgs{...}
+//	        PageRuleActionsCacheKeyFieldsUserArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PageRuleActionsCacheKeyFieldsUserPtrInput interface {
 	pulumi.Input
 
@@ -12422,7 +13114,7 @@ type PageRuleActionsCacheTtlByStatus struct {
 // PageRuleActionsCacheTtlByStatusInput is an input type that accepts PageRuleActionsCacheTtlByStatusArgs and PageRuleActionsCacheTtlByStatusOutput values.
 // You can construct a concrete instance of `PageRuleActionsCacheTtlByStatusInput` via:
 //
-//          PageRuleActionsCacheTtlByStatusArgs{...}
+//	PageRuleActionsCacheTtlByStatusArgs{...}
 type PageRuleActionsCacheTtlByStatusInput interface {
 	pulumi.Input
 
@@ -12453,7 +13145,7 @@ func (i PageRuleActionsCacheTtlByStatusArgs) ToPageRuleActionsCacheTtlByStatusOu
 // PageRuleActionsCacheTtlByStatusArrayInput is an input type that accepts PageRuleActionsCacheTtlByStatusArray and PageRuleActionsCacheTtlByStatusArrayOutput values.
 // You can construct a concrete instance of `PageRuleActionsCacheTtlByStatusArrayInput` via:
 //
-//          PageRuleActionsCacheTtlByStatusArray{ PageRuleActionsCacheTtlByStatusArgs{...} }
+//	PageRuleActionsCacheTtlByStatusArray{ PageRuleActionsCacheTtlByStatusArgs{...} }
 type PageRuleActionsCacheTtlByStatusArrayInput interface {
 	pulumi.Input
 
@@ -12530,7 +13222,7 @@ type PageRuleActionsForwardingUrl struct {
 // PageRuleActionsForwardingUrlInput is an input type that accepts PageRuleActionsForwardingUrlArgs and PageRuleActionsForwardingUrlOutput values.
 // You can construct a concrete instance of `PageRuleActionsForwardingUrlInput` via:
 //
-//          PageRuleActionsForwardingUrlArgs{...}
+//	PageRuleActionsForwardingUrlArgs{...}
 type PageRuleActionsForwardingUrlInput interface {
 	pulumi.Input
 
@@ -12568,11 +13260,11 @@ func (i PageRuleActionsForwardingUrlArgs) ToPageRuleActionsForwardingUrlPtrOutpu
 // PageRuleActionsForwardingUrlPtrInput is an input type that accepts PageRuleActionsForwardingUrlArgs, PageRuleActionsForwardingUrlPtr and PageRuleActionsForwardingUrlPtrOutput values.
 // You can construct a concrete instance of `PageRuleActionsForwardingUrlPtrInput` via:
 //
-//          PageRuleActionsForwardingUrlArgs{...}
+//	        PageRuleActionsForwardingUrlArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PageRuleActionsForwardingUrlPtrInput interface {
 	pulumi.Input
 
@@ -12688,7 +13380,7 @@ type PageRuleActionsMinify struct {
 // PageRuleActionsMinifyInput is an input type that accepts PageRuleActionsMinifyArgs and PageRuleActionsMinifyOutput values.
 // You can construct a concrete instance of `PageRuleActionsMinifyInput` via:
 //
-//          PageRuleActionsMinifyArgs{...}
+//	PageRuleActionsMinifyArgs{...}
 type PageRuleActionsMinifyInput interface {
 	pulumi.Input
 
@@ -12720,7 +13412,7 @@ func (i PageRuleActionsMinifyArgs) ToPageRuleActionsMinifyOutputWithContext(ctx 
 // PageRuleActionsMinifyArrayInput is an input type that accepts PageRuleActionsMinifyArray and PageRuleActionsMinifyArrayOutput values.
 // You can construct a concrete instance of `PageRuleActionsMinifyArrayInput` via:
 //
-//          PageRuleActionsMinifyArray{ PageRuleActionsMinifyArgs{...} }
+//	PageRuleActionsMinifyArray{ PageRuleActionsMinifyArgs{...} }
 type PageRuleActionsMinifyArrayInput interface {
 	pulumi.Input
 
@@ -12803,7 +13495,7 @@ type RateLimitAction struct {
 // RateLimitActionInput is an input type that accepts RateLimitActionArgs and RateLimitActionOutput values.
 // You can construct a concrete instance of `RateLimitActionInput` via:
 //
-//          RateLimitActionArgs{...}
+//	RateLimitActionArgs{...}
 type RateLimitActionInput interface {
 	pulumi.Input
 
@@ -12843,11 +13535,11 @@ func (i RateLimitActionArgs) ToRateLimitActionPtrOutputWithContext(ctx context.C
 // RateLimitActionPtrInput is an input type that accepts RateLimitActionArgs, RateLimitActionPtr and RateLimitActionPtrOutput values.
 // You can construct a concrete instance of `RateLimitActionPtrInput` via:
 //
-//          RateLimitActionArgs{...}
+//	        RateLimitActionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RateLimitActionPtrInput interface {
 	pulumi.Input
 
@@ -12976,7 +13668,7 @@ type RateLimitActionResponse struct {
 // RateLimitActionResponseInput is an input type that accepts RateLimitActionResponseArgs and RateLimitActionResponseOutput values.
 // You can construct a concrete instance of `RateLimitActionResponseInput` via:
 //
-//          RateLimitActionResponseArgs{...}
+//	RateLimitActionResponseArgs{...}
 type RateLimitActionResponseInput interface {
 	pulumi.Input
 
@@ -13014,11 +13706,11 @@ func (i RateLimitActionResponseArgs) ToRateLimitActionResponsePtrOutputWithConte
 // RateLimitActionResponsePtrInput is an input type that accepts RateLimitActionResponseArgs, RateLimitActionResponsePtr and RateLimitActionResponsePtrOutput values.
 // You can construct a concrete instance of `RateLimitActionResponsePtrInput` via:
 //
-//          RateLimitActionResponseArgs{...}
+//	        RateLimitActionResponseArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RateLimitActionResponsePtrInput interface {
 	pulumi.Input
 
@@ -13130,7 +13822,7 @@ type RateLimitCorrelate struct {
 // RateLimitCorrelateInput is an input type that accepts RateLimitCorrelateArgs and RateLimitCorrelateOutput values.
 // You can construct a concrete instance of `RateLimitCorrelateInput` via:
 //
-//          RateLimitCorrelateArgs{...}
+//	RateLimitCorrelateArgs{...}
 type RateLimitCorrelateInput interface {
 	pulumi.Input
 
@@ -13166,11 +13858,11 @@ func (i RateLimitCorrelateArgs) ToRateLimitCorrelatePtrOutputWithContext(ctx con
 // RateLimitCorrelatePtrInput is an input type that accepts RateLimitCorrelateArgs, RateLimitCorrelatePtr and RateLimitCorrelatePtrOutput values.
 // You can construct a concrete instance of `RateLimitCorrelatePtrInput` via:
 //
-//          RateLimitCorrelateArgs{...}
+//	        RateLimitCorrelateArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RateLimitCorrelatePtrInput interface {
 	pulumi.Input
 
@@ -13269,7 +13961,7 @@ type RateLimitMatch struct {
 // RateLimitMatchInput is an input type that accepts RateLimitMatchArgs and RateLimitMatchOutput values.
 // You can construct a concrete instance of `RateLimitMatchInput` via:
 //
-//          RateLimitMatchArgs{...}
+//	RateLimitMatchArgs{...}
 type RateLimitMatchInput interface {
 	pulumi.Input
 
@@ -13307,11 +13999,11 @@ func (i RateLimitMatchArgs) ToRateLimitMatchPtrOutputWithContext(ctx context.Con
 // RateLimitMatchPtrInput is an input type that accepts RateLimitMatchArgs, RateLimitMatchPtr and RateLimitMatchPtrOutput values.
 // You can construct a concrete instance of `RateLimitMatchPtrInput` via:
 //
-//          RateLimitMatchArgs{...}
+//	        RateLimitMatchArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RateLimitMatchPtrInput interface {
 	pulumi.Input
 
@@ -13427,7 +14119,7 @@ type RateLimitMatchRequest struct {
 // RateLimitMatchRequestInput is an input type that accepts RateLimitMatchRequestArgs and RateLimitMatchRequestOutput values.
 // You can construct a concrete instance of `RateLimitMatchRequestInput` via:
 //
-//          RateLimitMatchRequestArgs{...}
+//	RateLimitMatchRequestArgs{...}
 type RateLimitMatchRequestInput interface {
 	pulumi.Input
 
@@ -13467,11 +14159,11 @@ func (i RateLimitMatchRequestArgs) ToRateLimitMatchRequestPtrOutputWithContext(c
 // RateLimitMatchRequestPtrInput is an input type that accepts RateLimitMatchRequestArgs, RateLimitMatchRequestPtr and RateLimitMatchRequestPtrOutput values.
 // You can construct a concrete instance of `RateLimitMatchRequestPtrInput` via:
 //
-//          RateLimitMatchRequestArgs{...}
+//	        RateLimitMatchRequestArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RateLimitMatchRequestPtrInput interface {
 	pulumi.Input
 
@@ -13602,7 +14294,7 @@ type RateLimitMatchResponse struct {
 // RateLimitMatchResponseInput is an input type that accepts RateLimitMatchResponseArgs and RateLimitMatchResponseOutput values.
 // You can construct a concrete instance of `RateLimitMatchResponseInput` via:
 //
-//          RateLimitMatchResponseArgs{...}
+//	RateLimitMatchResponseArgs{...}
 type RateLimitMatchResponseInput interface {
 	pulumi.Input
 
@@ -13642,11 +14334,11 @@ func (i RateLimitMatchResponseArgs) ToRateLimitMatchResponsePtrOutputWithContext
 // RateLimitMatchResponsePtrInput is an input type that accepts RateLimitMatchResponseArgs, RateLimitMatchResponsePtr and RateLimitMatchResponsePtrOutput values.
 // You can construct a concrete instance of `RateLimitMatchResponsePtrInput` via:
 //
-//          RateLimitMatchResponseArgs{...}
+//	        RateLimitMatchResponseArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RateLimitMatchResponsePtrInput interface {
 	pulumi.Input
 
@@ -13814,7 +14506,7 @@ type RecordData struct {
 // RecordDataInput is an input type that accepts RecordDataArgs and RecordDataOutput values.
 // You can construct a concrete instance of `RecordDataInput` via:
 //
-//          RecordDataArgs{...}
+//	RecordDataArgs{...}
 type RecordDataInput interface {
 	pulumi.Input
 
@@ -13891,11 +14583,11 @@ func (i RecordDataArgs) ToRecordDataPtrOutputWithContext(ctx context.Context) Re
 // RecordDataPtrInput is an input type that accepts RecordDataArgs, RecordDataPtr and RecordDataPtrOutput values.
 // You can construct a concrete instance of `RecordDataPtrInput` via:
 //
-//          RecordDataArgs{...}
+//	        RecordDataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RecordDataPtrInput interface {
 	pulumi.Input
 
@@ -14485,23 +15177,34 @@ func (o RecordDataPtrOutput) Weight() pulumi.IntPtrOutput {
 }
 
 type RulesetRule struct {
-	Action                 *string                            `pulumi:"action"`
-	ActionParameters       *RulesetRuleActionParameters       `pulumi:"actionParameters"`
-	Description            *string                            `pulumi:"description"`
-	Enabled                *bool                              `pulumi:"enabled"`
+	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `serveError`, `skip`.
+	Action *string `pulumi:"action"`
+	// List of parameters that configure the behavior of the ruleset rule action.
+	ActionParameters *RulesetRuleActionParameters `pulumi:"actionParameters"`
+	// Brief summary of the ruleset rule and its intended use.
+	Description *string `pulumi:"description"`
+	// Whether the rule is active.
+	Enabled *bool `pulumi:"enabled"`
+	// List of parameters that configure exposed credential checks.
 	ExposedCredentialCheck *RulesetRuleExposedCredentialCheck `pulumi:"exposedCredentialCheck"`
-	Expression             string                             `pulumi:"expression"`
-	Id                     *string                            `pulumi:"id"`
-	Logging                *RulesetRuleLogging                `pulumi:"logging"`
-	Ratelimit              *RulesetRuleRatelimit              `pulumi:"ratelimit"`
-	Ref                    *string                            `pulumi:"ref"`
-	Version                *string                            `pulumi:"version"`
+	// Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+	Expression string `pulumi:"expression"`
+	// Unique rule identifier.
+	Id *string `pulumi:"id"`
+	// List parameters to configure how the rule generates logs.
+	Logging *RulesetRuleLogging `pulumi:"logging"`
+	// List of parameters that configure HTTP rate limiting behaviour.
+	Ratelimit *RulesetRuleRatelimit `pulumi:"ratelimit"`
+	// Rule reference.
+	Ref *string `pulumi:"ref"`
+	// Version of the ruleset to deploy.
+	Version *string `pulumi:"version"`
 }
 
 // RulesetRuleInput is an input type that accepts RulesetRuleArgs and RulesetRuleOutput values.
 // You can construct a concrete instance of `RulesetRuleInput` via:
 //
-//          RulesetRuleArgs{...}
+//	RulesetRuleArgs{...}
 type RulesetRuleInput interface {
 	pulumi.Input
 
@@ -14510,17 +15213,28 @@ type RulesetRuleInput interface {
 }
 
 type RulesetRuleArgs struct {
-	Action                 pulumi.StringPtrInput                     `pulumi:"action"`
-	ActionParameters       RulesetRuleActionParametersPtrInput       `pulumi:"actionParameters"`
-	Description            pulumi.StringPtrInput                     `pulumi:"description"`
-	Enabled                pulumi.BoolPtrInput                       `pulumi:"enabled"`
+	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `serveError`, `skip`.
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// List of parameters that configure the behavior of the ruleset rule action.
+	ActionParameters RulesetRuleActionParametersPtrInput `pulumi:"actionParameters"`
+	// Brief summary of the ruleset rule and its intended use.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Whether the rule is active.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// List of parameters that configure exposed credential checks.
 	ExposedCredentialCheck RulesetRuleExposedCredentialCheckPtrInput `pulumi:"exposedCredentialCheck"`
-	Expression             pulumi.StringInput                        `pulumi:"expression"`
-	Id                     pulumi.StringPtrInput                     `pulumi:"id"`
-	Logging                RulesetRuleLoggingPtrInput                `pulumi:"logging"`
-	Ratelimit              RulesetRuleRatelimitPtrInput              `pulumi:"ratelimit"`
-	Ref                    pulumi.StringPtrInput                     `pulumi:"ref"`
-	Version                pulumi.StringPtrInput                     `pulumi:"version"`
+	// Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Unique rule identifier.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// List parameters to configure how the rule generates logs.
+	Logging RulesetRuleLoggingPtrInput `pulumi:"logging"`
+	// List of parameters that configure HTTP rate limiting behaviour.
+	Ratelimit RulesetRuleRatelimitPtrInput `pulumi:"ratelimit"`
+	// Rule reference.
+	Ref pulumi.StringPtrInput `pulumi:"ref"`
+	// Version of the ruleset to deploy.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (RulesetRuleArgs) ElementType() reflect.Type {
@@ -14538,7 +15252,7 @@ func (i RulesetRuleArgs) ToRulesetRuleOutputWithContext(ctx context.Context) Rul
 // RulesetRuleArrayInput is an input type that accepts RulesetRuleArray and RulesetRuleArrayOutput values.
 // You can construct a concrete instance of `RulesetRuleArrayInput` via:
 //
-//          RulesetRuleArray{ RulesetRuleArgs{...} }
+//	RulesetRuleArray{ RulesetRuleArgs{...} }
 type RulesetRuleArrayInput interface {
 	pulumi.Input
 
@@ -14574,46 +15288,57 @@ func (o RulesetRuleOutput) ToRulesetRuleOutputWithContext(ctx context.Context) R
 	return o
 }
 
+// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `serveError`, `skip`.
 func (o RulesetRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
+// List of parameters that configure the behavior of the ruleset rule action.
 func (o RulesetRuleOutput) ActionParameters() RulesetRuleActionParametersPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *RulesetRuleActionParameters { return v.ActionParameters }).(RulesetRuleActionParametersPtrOutput)
 }
 
+// Brief summary of the ruleset rule and its intended use.
 func (o RulesetRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Whether the rule is active.
 func (o RulesetRuleOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// List of parameters that configure exposed credential checks.
 func (o RulesetRuleOutput) ExposedCredentialCheck() RulesetRuleExposedCredentialCheckPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *RulesetRuleExposedCredentialCheck { return v.ExposedCredentialCheck }).(RulesetRuleExposedCredentialCheckPtrOutput)
 }
 
+// Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
 func (o RulesetRuleOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v RulesetRule) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// Unique rule identifier.
 func (o RulesetRuleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// List parameters to configure how the rule generates logs.
 func (o RulesetRuleOutput) Logging() RulesetRuleLoggingPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *RulesetRuleLogging { return v.Logging }).(RulesetRuleLoggingPtrOutput)
 }
 
+// List of parameters that configure HTTP rate limiting behaviour.
 func (o RulesetRuleOutput) Ratelimit() RulesetRuleRatelimitPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *RulesetRuleRatelimit { return v.Ratelimit }).(RulesetRuleRatelimitPtrOutput)
 }
 
+// Rule reference.
 func (o RulesetRuleOutput) Ref() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *string { return v.Ref }).(pulumi.StringPtrOutput)
 }
 
+// Version of the ruleset to deploy.
 func (o RulesetRuleOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -14639,38 +15364,61 @@ func (o RulesetRuleArrayOutput) Index(i pulumi.IntInput) RulesetRuleOutput {
 }
 
 type RulesetRuleActionParameters struct {
-	BrowserTtl              *RulesetRuleActionParametersBrowserTtl  `pulumi:"browserTtl"`
-	BypassCache             *bool                                   `pulumi:"bypassCache"`
-	CacheKey                *RulesetRuleActionParametersCacheKey    `pulumi:"cacheKey"`
-	CookieFields            []string                                `pulumi:"cookieFields"`
-	EdgeTtl                 *RulesetRuleActionParametersEdgeTtl     `pulumi:"edgeTtl"`
-	FromList                *RulesetRuleActionParametersFromList    `pulumi:"fromList"`
-	Headers                 []RulesetRuleActionParametersHeader     `pulumi:"headers"`
-	HostHeader              *string                                 `pulumi:"hostHeader"`
+	AutomaticHttpsRewrites *bool                                   `pulumi:"automaticHttpsRewrites"`
+	Autominifies           []RulesetRuleActionParametersAutominify `pulumi:"autominifies"`
+	Bic                    *bool                                   `pulumi:"bic"`
+	BrowserTtl             *RulesetRuleActionParametersBrowserTtl  `pulumi:"browserTtl"`
+	Cache                  *bool                                   `pulumi:"cache"`
+	CacheKey               *RulesetRuleActionParametersCacheKey    `pulumi:"cacheKey"`
+	Content                *string                                 `pulumi:"content"`
+	ContentType            *string                                 `pulumi:"contentType"`
+	CookieFields           []string                                `pulumi:"cookieFields"`
+	DisableApps            *bool                                   `pulumi:"disableApps"`
+	DisableRailgun         *bool                                   `pulumi:"disableRailgun"`
+	DisableZaraz           *bool                                   `pulumi:"disableZaraz"`
+	EdgeTtl                *RulesetRuleActionParametersEdgeTtl     `pulumi:"edgeTtl"`
+	EmailObfuscation       *bool                                   `pulumi:"emailObfuscation"`
+	FromList               *RulesetRuleActionParametersFromList    `pulumi:"fromList"`
+	FromValue              *RulesetRuleActionParametersFromValue   `pulumi:"fromValue"`
+	Headers                []RulesetRuleActionParametersHeader     `pulumi:"headers"`
+	HostHeader             *string                                 `pulumi:"hostHeader"`
+	HotlinkProtection      *bool                                   `pulumi:"hotlinkProtection"`
+	// The ID of this resource.
 	Id                      *string                                 `pulumi:"id"`
 	Increment               *int                                    `pulumi:"increment"`
 	MatchedData             *RulesetRuleActionParametersMatchedData `pulumi:"matchedData"`
+	Mirage                  *bool                                   `pulumi:"mirage"`
+	OpportunisticEncryption *bool                                   `pulumi:"opportunisticEncryption"`
 	Origin                  *RulesetRuleActionParametersOrigin      `pulumi:"origin"`
 	OriginErrorPagePassthru *bool                                   `pulumi:"originErrorPagePassthru"`
 	Overrides               *RulesetRuleActionParametersOverrides   `pulumi:"overrides"`
 	Phases                  []string                                `pulumi:"phases"`
+	Polish                  *string                                 `pulumi:"polish"`
 	Products                []string                                `pulumi:"products"`
 	RequestFields           []string                                `pulumi:"requestFields"`
 	RespectStrongEtags      *bool                                   `pulumi:"respectStrongEtags"`
 	ResponseFields          []string                                `pulumi:"responseFields"`
 	Responses               []RulesetRuleActionParametersResponse   `pulumi:"responses"`
-	Rules                   map[string]string                       `pulumi:"rules"`
-	Ruleset                 *string                                 `pulumi:"ruleset"`
-	Rulesets                []string                                `pulumi:"rulesets"`
-	ServeStale              *RulesetRuleActionParametersServeStale  `pulumi:"serveStale"`
-	Uri                     *RulesetRuleActionParametersUri         `pulumi:"uri"`
-	Version                 *string                                 `pulumi:"version"`
+	RocketLoader            *bool                                   `pulumi:"rocketLoader"`
+	// List of rules to apply to the ruleset.
+	Rules              map[string]string                      `pulumi:"rules"`
+	Ruleset            *string                                `pulumi:"ruleset"`
+	Rulesets           []string                               `pulumi:"rulesets"`
+	SecurityLevel      *string                                `pulumi:"securityLevel"`
+	ServeStale         *RulesetRuleActionParametersServeStale `pulumi:"serveStale"`
+	ServerSideExcludes *bool                                  `pulumi:"serverSideExcludes"`
+	Sni                *RulesetRuleActionParametersSni        `pulumi:"sni"`
+	Ssl                *string                                `pulumi:"ssl"`
+	StatusCode         *int                                   `pulumi:"statusCode"`
+	Sxg                *bool                                  `pulumi:"sxg"`
+	Uri                *RulesetRuleActionParametersUri        `pulumi:"uri"`
+	Version            *string                                `pulumi:"version"`
 }
 
 // RulesetRuleActionParametersInput is an input type that accepts RulesetRuleActionParametersArgs and RulesetRuleActionParametersOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersInput` via:
 //
-//          RulesetRuleActionParametersArgs{...}
+//	RulesetRuleActionParametersArgs{...}
 type RulesetRuleActionParametersInput interface {
 	pulumi.Input
 
@@ -14679,32 +15427,55 @@ type RulesetRuleActionParametersInput interface {
 }
 
 type RulesetRuleActionParametersArgs struct {
-	BrowserTtl              RulesetRuleActionParametersBrowserTtlPtrInput  `pulumi:"browserTtl"`
-	BypassCache             pulumi.BoolPtrInput                            `pulumi:"bypassCache"`
-	CacheKey                RulesetRuleActionParametersCacheKeyPtrInput    `pulumi:"cacheKey"`
-	CookieFields            pulumi.StringArrayInput                        `pulumi:"cookieFields"`
-	EdgeTtl                 RulesetRuleActionParametersEdgeTtlPtrInput     `pulumi:"edgeTtl"`
-	FromList                RulesetRuleActionParametersFromListPtrInput    `pulumi:"fromList"`
-	Headers                 RulesetRuleActionParametersHeaderArrayInput    `pulumi:"headers"`
-	HostHeader              pulumi.StringPtrInput                          `pulumi:"hostHeader"`
+	AutomaticHttpsRewrites pulumi.BoolPtrInput                             `pulumi:"automaticHttpsRewrites"`
+	Autominifies           RulesetRuleActionParametersAutominifyArrayInput `pulumi:"autominifies"`
+	Bic                    pulumi.BoolPtrInput                             `pulumi:"bic"`
+	BrowserTtl             RulesetRuleActionParametersBrowserTtlPtrInput   `pulumi:"browserTtl"`
+	Cache                  pulumi.BoolPtrInput                             `pulumi:"cache"`
+	CacheKey               RulesetRuleActionParametersCacheKeyPtrInput     `pulumi:"cacheKey"`
+	Content                pulumi.StringPtrInput                           `pulumi:"content"`
+	ContentType            pulumi.StringPtrInput                           `pulumi:"contentType"`
+	CookieFields           pulumi.StringArrayInput                         `pulumi:"cookieFields"`
+	DisableApps            pulumi.BoolPtrInput                             `pulumi:"disableApps"`
+	DisableRailgun         pulumi.BoolPtrInput                             `pulumi:"disableRailgun"`
+	DisableZaraz           pulumi.BoolPtrInput                             `pulumi:"disableZaraz"`
+	EdgeTtl                RulesetRuleActionParametersEdgeTtlPtrInput      `pulumi:"edgeTtl"`
+	EmailObfuscation       pulumi.BoolPtrInput                             `pulumi:"emailObfuscation"`
+	FromList               RulesetRuleActionParametersFromListPtrInput     `pulumi:"fromList"`
+	FromValue              RulesetRuleActionParametersFromValuePtrInput    `pulumi:"fromValue"`
+	Headers                RulesetRuleActionParametersHeaderArrayInput     `pulumi:"headers"`
+	HostHeader             pulumi.StringPtrInput                           `pulumi:"hostHeader"`
+	HotlinkProtection      pulumi.BoolPtrInput                             `pulumi:"hotlinkProtection"`
+	// The ID of this resource.
 	Id                      pulumi.StringPtrInput                          `pulumi:"id"`
 	Increment               pulumi.IntPtrInput                             `pulumi:"increment"`
 	MatchedData             RulesetRuleActionParametersMatchedDataPtrInput `pulumi:"matchedData"`
+	Mirage                  pulumi.BoolPtrInput                            `pulumi:"mirage"`
+	OpportunisticEncryption pulumi.BoolPtrInput                            `pulumi:"opportunisticEncryption"`
 	Origin                  RulesetRuleActionParametersOriginPtrInput      `pulumi:"origin"`
 	OriginErrorPagePassthru pulumi.BoolPtrInput                            `pulumi:"originErrorPagePassthru"`
 	Overrides               RulesetRuleActionParametersOverridesPtrInput   `pulumi:"overrides"`
 	Phases                  pulumi.StringArrayInput                        `pulumi:"phases"`
+	Polish                  pulumi.StringPtrInput                          `pulumi:"polish"`
 	Products                pulumi.StringArrayInput                        `pulumi:"products"`
 	RequestFields           pulumi.StringArrayInput                        `pulumi:"requestFields"`
 	RespectStrongEtags      pulumi.BoolPtrInput                            `pulumi:"respectStrongEtags"`
 	ResponseFields          pulumi.StringArrayInput                        `pulumi:"responseFields"`
 	Responses               RulesetRuleActionParametersResponseArrayInput  `pulumi:"responses"`
-	Rules                   pulumi.StringMapInput                          `pulumi:"rules"`
-	Ruleset                 pulumi.StringPtrInput                          `pulumi:"ruleset"`
-	Rulesets                pulumi.StringArrayInput                        `pulumi:"rulesets"`
-	ServeStale              RulesetRuleActionParametersServeStalePtrInput  `pulumi:"serveStale"`
-	Uri                     RulesetRuleActionParametersUriPtrInput         `pulumi:"uri"`
-	Version                 pulumi.StringPtrInput                          `pulumi:"version"`
+	RocketLoader            pulumi.BoolPtrInput                            `pulumi:"rocketLoader"`
+	// List of rules to apply to the ruleset.
+	Rules              pulumi.StringMapInput                         `pulumi:"rules"`
+	Ruleset            pulumi.StringPtrInput                         `pulumi:"ruleset"`
+	Rulesets           pulumi.StringArrayInput                       `pulumi:"rulesets"`
+	SecurityLevel      pulumi.StringPtrInput                         `pulumi:"securityLevel"`
+	ServeStale         RulesetRuleActionParametersServeStalePtrInput `pulumi:"serveStale"`
+	ServerSideExcludes pulumi.BoolPtrInput                           `pulumi:"serverSideExcludes"`
+	Sni                RulesetRuleActionParametersSniPtrInput        `pulumi:"sni"`
+	Ssl                pulumi.StringPtrInput                         `pulumi:"ssl"`
+	StatusCode         pulumi.IntPtrInput                            `pulumi:"statusCode"`
+	Sxg                pulumi.BoolPtrInput                           `pulumi:"sxg"`
+	Uri                RulesetRuleActionParametersUriPtrInput        `pulumi:"uri"`
+	Version            pulumi.StringPtrInput                         `pulumi:"version"`
 }
 
 func (RulesetRuleActionParametersArgs) ElementType() reflect.Type {
@@ -14730,11 +15501,11 @@ func (i RulesetRuleActionParametersArgs) ToRulesetRuleActionParametersPtrOutputW
 // RulesetRuleActionParametersPtrInput is an input type that accepts RulesetRuleActionParametersArgs, RulesetRuleActionParametersPtr and RulesetRuleActionParametersPtrOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersPtrInput` via:
 //
-//          RulesetRuleActionParametersArgs{...}
+//	        RulesetRuleActionParametersArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleActionParametersPtrInput interface {
 	pulumi.Input
 
@@ -14784,28 +15555,68 @@ func (o RulesetRuleActionParametersOutput) ToRulesetRuleActionParametersPtrOutpu
 	}).(RulesetRuleActionParametersPtrOutput)
 }
 
+func (o RulesetRuleActionParametersOutput) AutomaticHttpsRewrites() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.AutomaticHttpsRewrites }).(pulumi.BoolPtrOutput)
+}
+
+func (o RulesetRuleActionParametersOutput) Autominifies() RulesetRuleActionParametersAutominifyArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) []RulesetRuleActionParametersAutominify { return v.Autominifies }).(RulesetRuleActionParametersAutominifyArrayOutput)
+}
+
+func (o RulesetRuleActionParametersOutput) Bic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.Bic }).(pulumi.BoolPtrOutput)
+}
+
 func (o RulesetRuleActionParametersOutput) BrowserTtl() RulesetRuleActionParametersBrowserTtlPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersBrowserTtl { return v.BrowserTtl }).(RulesetRuleActionParametersBrowserTtlPtrOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) BypassCache() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.BypassCache }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParametersOutput) Cache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.Cache }).(pulumi.BoolPtrOutput)
 }
 
 func (o RulesetRuleActionParametersOutput) CacheKey() RulesetRuleActionParametersCacheKeyPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersCacheKey { return v.CacheKey }).(RulesetRuleActionParametersCacheKeyPtrOutput)
 }
 
+func (o RulesetRuleActionParametersOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+func (o RulesetRuleActionParametersOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.ContentType }).(pulumi.StringPtrOutput)
+}
+
 func (o RulesetRuleActionParametersOutput) CookieFields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.CookieFields }).(pulumi.StringArrayOutput)
+}
+
+func (o RulesetRuleActionParametersOutput) DisableApps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.DisableApps }).(pulumi.BoolPtrOutput)
+}
+
+func (o RulesetRuleActionParametersOutput) DisableRailgun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.DisableRailgun }).(pulumi.BoolPtrOutput)
+}
+
+func (o RulesetRuleActionParametersOutput) DisableZaraz() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.DisableZaraz }).(pulumi.BoolPtrOutput)
 }
 
 func (o RulesetRuleActionParametersOutput) EdgeTtl() RulesetRuleActionParametersEdgeTtlPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersEdgeTtl { return v.EdgeTtl }).(RulesetRuleActionParametersEdgeTtlPtrOutput)
 }
 
+func (o RulesetRuleActionParametersOutput) EmailObfuscation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.EmailObfuscation }).(pulumi.BoolPtrOutput)
+}
+
 func (o RulesetRuleActionParametersOutput) FromList() RulesetRuleActionParametersFromListPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersFromList { return v.FromList }).(RulesetRuleActionParametersFromListPtrOutput)
+}
+
+func (o RulesetRuleActionParametersOutput) FromValue() RulesetRuleActionParametersFromValuePtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersFromValue { return v.FromValue }).(RulesetRuleActionParametersFromValuePtrOutput)
 }
 
 func (o RulesetRuleActionParametersOutput) Headers() RulesetRuleActionParametersHeaderArrayOutput {
@@ -14816,6 +15627,11 @@ func (o RulesetRuleActionParametersOutput) HostHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.HostHeader }).(pulumi.StringPtrOutput)
 }
 
+func (o RulesetRuleActionParametersOutput) HotlinkProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.HotlinkProtection }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of this resource.
 func (o RulesetRuleActionParametersOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -14826,6 +15642,14 @@ func (o RulesetRuleActionParametersOutput) Increment() pulumi.IntPtrOutput {
 
 func (o RulesetRuleActionParametersOutput) MatchedData() RulesetRuleActionParametersMatchedDataPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersMatchedData { return v.MatchedData }).(RulesetRuleActionParametersMatchedDataPtrOutput)
+}
+
+func (o RulesetRuleActionParametersOutput) Mirage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.Mirage }).(pulumi.BoolPtrOutput)
+}
+
+func (o RulesetRuleActionParametersOutput) OpportunisticEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.OpportunisticEncryption }).(pulumi.BoolPtrOutput)
 }
 
 func (o RulesetRuleActionParametersOutput) Origin() RulesetRuleActionParametersOriginPtrOutput {
@@ -14842,6 +15666,10 @@ func (o RulesetRuleActionParametersOutput) Overrides() RulesetRuleActionParamete
 
 func (o RulesetRuleActionParametersOutput) Phases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.Phases }).(pulumi.StringArrayOutput)
+}
+
+func (o RulesetRuleActionParametersOutput) Polish() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.Polish }).(pulumi.StringPtrOutput)
 }
 
 func (o RulesetRuleActionParametersOutput) Products() pulumi.StringArrayOutput {
@@ -14864,6 +15692,11 @@ func (o RulesetRuleActionParametersOutput) Responses() RulesetRuleActionParamete
 	return o.ApplyT(func(v RulesetRuleActionParameters) []RulesetRuleActionParametersResponse { return v.Responses }).(RulesetRuleActionParametersResponseArrayOutput)
 }
 
+func (o RulesetRuleActionParametersOutput) RocketLoader() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.RocketLoader }).(pulumi.BoolPtrOutput)
+}
+
+// List of rules to apply to the ruleset.
 func (o RulesetRuleActionParametersOutput) Rules() pulumi.StringMapOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) map[string]string { return v.Rules }).(pulumi.StringMapOutput)
 }
@@ -14876,8 +15709,32 @@ func (o RulesetRuleActionParametersOutput) Rulesets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.Rulesets }).(pulumi.StringArrayOutput)
 }
 
+func (o RulesetRuleActionParametersOutput) SecurityLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
+}
+
 func (o RulesetRuleActionParametersOutput) ServeStale() RulesetRuleActionParametersServeStalePtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersServeStale { return v.ServeStale }).(RulesetRuleActionParametersServeStalePtrOutput)
+}
+
+func (o RulesetRuleActionParametersOutput) ServerSideExcludes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.ServerSideExcludes }).(pulumi.BoolPtrOutput)
+}
+
+func (o RulesetRuleActionParametersOutput) Sni() RulesetRuleActionParametersSniPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersSni { return v.Sni }).(RulesetRuleActionParametersSniPtrOutput)
+}
+
+func (o RulesetRuleActionParametersOutput) Ssl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.Ssl }).(pulumi.StringPtrOutput)
+}
+
+func (o RulesetRuleActionParametersOutput) StatusCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *int { return v.StatusCode }).(pulumi.IntPtrOutput)
+}
+
+func (o RulesetRuleActionParametersOutput) Sxg() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.Sxg }).(pulumi.BoolPtrOutput)
 }
 
 func (o RulesetRuleActionParametersOutput) Uri() RulesetRuleActionParametersUriPtrOutput {
@@ -14912,6 +15769,33 @@ func (o RulesetRuleActionParametersPtrOutput) Elem() RulesetRuleActionParameters
 	}).(RulesetRuleActionParametersOutput)
 }
 
+func (o RulesetRuleActionParametersPtrOutput) AutomaticHttpsRewrites() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutomaticHttpsRewrites
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o RulesetRuleActionParametersPtrOutput) Autominifies() RulesetRuleActionParametersAutominifyArrayOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) []RulesetRuleActionParametersAutominify {
+		if v == nil {
+			return nil
+		}
+		return v.Autominifies
+	}).(RulesetRuleActionParametersAutominifyArrayOutput)
+}
+
+func (o RulesetRuleActionParametersPtrOutput) Bic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Bic
+	}).(pulumi.BoolPtrOutput)
+}
+
 func (o RulesetRuleActionParametersPtrOutput) BrowserTtl() RulesetRuleActionParametersBrowserTtlPtrOutput {
 	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersBrowserTtl {
 		if v == nil {
@@ -14921,12 +15805,12 @@ func (o RulesetRuleActionParametersPtrOutput) BrowserTtl() RulesetRuleActionPara
 	}).(RulesetRuleActionParametersBrowserTtlPtrOutput)
 }
 
-func (o RulesetRuleActionParametersPtrOutput) BypassCache() pulumi.BoolPtrOutput {
+func (o RulesetRuleActionParametersPtrOutput) Cache() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.BypassCache
+		return v.Cache
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -14939,6 +15823,24 @@ func (o RulesetRuleActionParametersPtrOutput) CacheKey() RulesetRuleActionParame
 	}).(RulesetRuleActionParametersCacheKeyPtrOutput)
 }
 
+func (o RulesetRuleActionParametersPtrOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RulesetRuleActionParametersPtrOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentType
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o RulesetRuleActionParametersPtrOutput) CookieFields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RulesetRuleActionParameters) []string {
 		if v == nil {
@@ -14946,6 +15848,33 @@ func (o RulesetRuleActionParametersPtrOutput) CookieFields() pulumi.StringArrayO
 		}
 		return v.CookieFields
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o RulesetRuleActionParametersPtrOutput) DisableApps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableApps
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o RulesetRuleActionParametersPtrOutput) DisableRailgun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableRailgun
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o RulesetRuleActionParametersPtrOutput) DisableZaraz() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableZaraz
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o RulesetRuleActionParametersPtrOutput) EdgeTtl() RulesetRuleActionParametersEdgeTtlPtrOutput {
@@ -14957,6 +15886,15 @@ func (o RulesetRuleActionParametersPtrOutput) EdgeTtl() RulesetRuleActionParamet
 	}).(RulesetRuleActionParametersEdgeTtlPtrOutput)
 }
 
+func (o RulesetRuleActionParametersPtrOutput) EmailObfuscation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EmailObfuscation
+	}).(pulumi.BoolPtrOutput)
+}
+
 func (o RulesetRuleActionParametersPtrOutput) FromList() RulesetRuleActionParametersFromListPtrOutput {
 	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersFromList {
 		if v == nil {
@@ -14964,6 +15902,15 @@ func (o RulesetRuleActionParametersPtrOutput) FromList() RulesetRuleActionParame
 		}
 		return v.FromList
 	}).(RulesetRuleActionParametersFromListPtrOutput)
+}
+
+func (o RulesetRuleActionParametersPtrOutput) FromValue() RulesetRuleActionParametersFromValuePtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersFromValue {
+		if v == nil {
+			return nil
+		}
+		return v.FromValue
+	}).(RulesetRuleActionParametersFromValuePtrOutput)
 }
 
 func (o RulesetRuleActionParametersPtrOutput) Headers() RulesetRuleActionParametersHeaderArrayOutput {
@@ -14984,6 +15931,16 @@ func (o RulesetRuleActionParametersPtrOutput) HostHeader() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o RulesetRuleActionParametersPtrOutput) HotlinkProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HotlinkProtection
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ID of this resource.
 func (o RulesetRuleActionParametersPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
 		if v == nil {
@@ -15009,6 +15966,24 @@ func (o RulesetRuleActionParametersPtrOutput) MatchedData() RulesetRuleActionPar
 		}
 		return v.MatchedData
 	}).(RulesetRuleActionParametersMatchedDataPtrOutput)
+}
+
+func (o RulesetRuleActionParametersPtrOutput) Mirage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Mirage
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o RulesetRuleActionParametersPtrOutput) OpportunisticEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OpportunisticEncryption
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o RulesetRuleActionParametersPtrOutput) Origin() RulesetRuleActionParametersOriginPtrOutput {
@@ -15045,6 +16020,15 @@ func (o RulesetRuleActionParametersPtrOutput) Phases() pulumi.StringArrayOutput 
 		}
 		return v.Phases
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o RulesetRuleActionParametersPtrOutput) Polish() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Polish
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o RulesetRuleActionParametersPtrOutput) Products() pulumi.StringArrayOutput {
@@ -15092,6 +16076,16 @@ func (o RulesetRuleActionParametersPtrOutput) Responses() RulesetRuleActionParam
 	}).(RulesetRuleActionParametersResponseArrayOutput)
 }
 
+func (o RulesetRuleActionParametersPtrOutput) RocketLoader() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RocketLoader
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of rules to apply to the ruleset.
 func (o RulesetRuleActionParametersPtrOutput) Rules() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RulesetRuleActionParameters) map[string]string {
 		if v == nil {
@@ -15119,6 +16113,15 @@ func (o RulesetRuleActionParametersPtrOutput) Rulesets() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
+func (o RulesetRuleActionParametersPtrOutput) SecurityLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityLevel
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o RulesetRuleActionParametersPtrOutput) ServeStale() RulesetRuleActionParametersServeStalePtrOutput {
 	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersServeStale {
 		if v == nil {
@@ -15126,6 +16129,51 @@ func (o RulesetRuleActionParametersPtrOutput) ServeStale() RulesetRuleActionPara
 		}
 		return v.ServeStale
 	}).(RulesetRuleActionParametersServeStalePtrOutput)
+}
+
+func (o RulesetRuleActionParametersPtrOutput) ServerSideExcludes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServerSideExcludes
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o RulesetRuleActionParametersPtrOutput) Sni() RulesetRuleActionParametersSniPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersSni {
+		if v == nil {
+			return nil
+		}
+		return v.Sni
+	}).(RulesetRuleActionParametersSniPtrOutput)
+}
+
+func (o RulesetRuleActionParametersPtrOutput) Ssl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ssl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RulesetRuleActionParametersPtrOutput) StatusCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StatusCode
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o RulesetRuleActionParametersPtrOutput) Sxg() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Sxg
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o RulesetRuleActionParametersPtrOutput) Uri() RulesetRuleActionParametersUriPtrOutput {
@@ -15146,6 +16194,112 @@ func (o RulesetRuleActionParametersPtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type RulesetRuleActionParametersAutominify struct {
+	Css  *bool `pulumi:"css"`
+	Html *bool `pulumi:"html"`
+	Js   *bool `pulumi:"js"`
+}
+
+// RulesetRuleActionParametersAutominifyInput is an input type that accepts RulesetRuleActionParametersAutominifyArgs and RulesetRuleActionParametersAutominifyOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersAutominifyInput` via:
+//
+//	RulesetRuleActionParametersAutominifyArgs{...}
+type RulesetRuleActionParametersAutominifyInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersAutominifyOutput() RulesetRuleActionParametersAutominifyOutput
+	ToRulesetRuleActionParametersAutominifyOutputWithContext(context.Context) RulesetRuleActionParametersAutominifyOutput
+}
+
+type RulesetRuleActionParametersAutominifyArgs struct {
+	Css  pulumi.BoolPtrInput `pulumi:"css"`
+	Html pulumi.BoolPtrInput `pulumi:"html"`
+	Js   pulumi.BoolPtrInput `pulumi:"js"`
+}
+
+func (RulesetRuleActionParametersAutominifyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersAutominify)(nil)).Elem()
+}
+
+func (i RulesetRuleActionParametersAutominifyArgs) ToRulesetRuleActionParametersAutominifyOutput() RulesetRuleActionParametersAutominifyOutput {
+	return i.ToRulesetRuleActionParametersAutominifyOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersAutominifyArgs) ToRulesetRuleActionParametersAutominifyOutputWithContext(ctx context.Context) RulesetRuleActionParametersAutominifyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersAutominifyOutput)
+}
+
+// RulesetRuleActionParametersAutominifyArrayInput is an input type that accepts RulesetRuleActionParametersAutominifyArray and RulesetRuleActionParametersAutominifyArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersAutominifyArrayInput` via:
+//
+//	RulesetRuleActionParametersAutominifyArray{ RulesetRuleActionParametersAutominifyArgs{...} }
+type RulesetRuleActionParametersAutominifyArrayInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersAutominifyArrayOutput() RulesetRuleActionParametersAutominifyArrayOutput
+	ToRulesetRuleActionParametersAutominifyArrayOutputWithContext(context.Context) RulesetRuleActionParametersAutominifyArrayOutput
+}
+
+type RulesetRuleActionParametersAutominifyArray []RulesetRuleActionParametersAutominifyInput
+
+func (RulesetRuleActionParametersAutominifyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParametersAutominify)(nil)).Elem()
+}
+
+func (i RulesetRuleActionParametersAutominifyArray) ToRulesetRuleActionParametersAutominifyArrayOutput() RulesetRuleActionParametersAutominifyArrayOutput {
+	return i.ToRulesetRuleActionParametersAutominifyArrayOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersAutominifyArray) ToRulesetRuleActionParametersAutominifyArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersAutominifyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersAutominifyArrayOutput)
+}
+
+type RulesetRuleActionParametersAutominifyOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersAutominifyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersAutominify)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersAutominifyOutput) ToRulesetRuleActionParametersAutominifyOutput() RulesetRuleActionParametersAutominifyOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersAutominifyOutput) ToRulesetRuleActionParametersAutominifyOutputWithContext(ctx context.Context) RulesetRuleActionParametersAutominifyOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersAutominifyOutput) Css() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersAutominify) *bool { return v.Css }).(pulumi.BoolPtrOutput)
+}
+
+func (o RulesetRuleActionParametersAutominifyOutput) Html() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersAutominify) *bool { return v.Html }).(pulumi.BoolPtrOutput)
+}
+
+func (o RulesetRuleActionParametersAutominifyOutput) Js() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersAutominify) *bool { return v.Js }).(pulumi.BoolPtrOutput)
+}
+
+type RulesetRuleActionParametersAutominifyArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersAutominifyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParametersAutominify)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersAutominifyArrayOutput) ToRulesetRuleActionParametersAutominifyArrayOutput() RulesetRuleActionParametersAutominifyArrayOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersAutominifyArrayOutput) ToRulesetRuleActionParametersAutominifyArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersAutominifyArrayOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersAutominifyArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParametersAutominifyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParametersAutominify {
+		return vs[0].([]RulesetRuleActionParametersAutominify)[vs[1].(int)]
+	}).(RulesetRuleActionParametersAutominifyOutput)
+}
+
 type RulesetRuleActionParametersBrowserTtl struct {
 	Default *int   `pulumi:"default"`
 	Mode    string `pulumi:"mode"`
@@ -15154,7 +16308,7 @@ type RulesetRuleActionParametersBrowserTtl struct {
 // RulesetRuleActionParametersBrowserTtlInput is an input type that accepts RulesetRuleActionParametersBrowserTtlArgs and RulesetRuleActionParametersBrowserTtlOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersBrowserTtlInput` via:
 //
-//          RulesetRuleActionParametersBrowserTtlArgs{...}
+//	RulesetRuleActionParametersBrowserTtlArgs{...}
 type RulesetRuleActionParametersBrowserTtlInput interface {
 	pulumi.Input
 
@@ -15190,11 +16344,11 @@ func (i RulesetRuleActionParametersBrowserTtlArgs) ToRulesetRuleActionParameters
 // RulesetRuleActionParametersBrowserTtlPtrInput is an input type that accepts RulesetRuleActionParametersBrowserTtlArgs, RulesetRuleActionParametersBrowserTtlPtr and RulesetRuleActionParametersBrowserTtlPtrOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersBrowserTtlPtrInput` via:
 //
-//          RulesetRuleActionParametersBrowserTtlArgs{...}
+//	        RulesetRuleActionParametersBrowserTtlArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleActionParametersBrowserTtlPtrInput interface {
 	pulumi.Input
 
@@ -15304,7 +16458,7 @@ type RulesetRuleActionParametersCacheKey struct {
 // RulesetRuleActionParametersCacheKeyInput is an input type that accepts RulesetRuleActionParametersCacheKeyArgs and RulesetRuleActionParametersCacheKeyOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyInput` via:
 //
-//          RulesetRuleActionParametersCacheKeyArgs{...}
+//	RulesetRuleActionParametersCacheKeyArgs{...}
 type RulesetRuleActionParametersCacheKeyInput interface {
 	pulumi.Input
 
@@ -15342,11 +16496,11 @@ func (i RulesetRuleActionParametersCacheKeyArgs) ToRulesetRuleActionParametersCa
 // RulesetRuleActionParametersCacheKeyPtrInput is an input type that accepts RulesetRuleActionParametersCacheKeyArgs, RulesetRuleActionParametersCacheKeyPtr and RulesetRuleActionParametersCacheKeyPtrOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyPtrInput` via:
 //
-//          RulesetRuleActionParametersCacheKeyArgs{...}
+//	        RulesetRuleActionParametersCacheKeyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleActionParametersCacheKeyPtrInput interface {
 	pulumi.Input
 
@@ -15485,7 +16639,7 @@ type RulesetRuleActionParametersCacheKeyCustomKey struct {
 // RulesetRuleActionParametersCacheKeyCustomKeyInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyArgs and RulesetRuleActionParametersCacheKeyCustomKeyOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyInput` via:
 //
-//          RulesetRuleActionParametersCacheKeyCustomKeyArgs{...}
+//	RulesetRuleActionParametersCacheKeyCustomKeyArgs{...}
 type RulesetRuleActionParametersCacheKeyCustomKeyInput interface {
 	pulumi.Input
 
@@ -15524,11 +16678,11 @@ func (i RulesetRuleActionParametersCacheKeyCustomKeyArgs) ToRulesetRuleActionPar
 // RulesetRuleActionParametersCacheKeyCustomKeyPtrInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyArgs, RulesetRuleActionParametersCacheKeyCustomKeyPtr and RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyPtrInput` via:
 //
-//          RulesetRuleActionParametersCacheKeyCustomKeyArgs{...}
+//	        RulesetRuleActionParametersCacheKeyCustomKeyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleActionParametersCacheKeyCustomKeyPtrInput interface {
 	pulumi.Input
 
@@ -15685,7 +16839,7 @@ type RulesetRuleActionParametersCacheKeyCustomKeyCookie struct {
 // RulesetRuleActionParametersCacheKeyCustomKeyCookieInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs and RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyCookieInput` via:
 //
-//          RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs{...}
+//	RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs{...}
 type RulesetRuleActionParametersCacheKeyCustomKeyCookieInput interface {
 	pulumi.Input
 
@@ -15721,11 +16875,11 @@ func (i RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs) ToRulesetRuleAct
 // RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs, RulesetRuleActionParametersCacheKeyCustomKeyCookiePtr and RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrInput` via:
 //
-//          RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs{...}
+//	        RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrInput interface {
 	pulumi.Input
 
@@ -15834,7 +16988,7 @@ type RulesetRuleActionParametersCacheKeyCustomKeyHeader struct {
 // RulesetRuleActionParametersCacheKeyCustomKeyHeaderInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs and RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyHeaderInput` via:
 //
-//          RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs{...}
+//	RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs{...}
 type RulesetRuleActionParametersCacheKeyCustomKeyHeaderInput interface {
 	pulumi.Input
 
@@ -15871,11 +17025,11 @@ func (i RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs) ToRulesetRuleAct
 // RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs, RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtr and RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrInput` via:
 //
-//          RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs{...}
+//	        RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrInput interface {
 	pulumi.Input
 
@@ -15995,7 +17149,7 @@ type RulesetRuleActionParametersCacheKeyCustomKeyHost struct {
 // RulesetRuleActionParametersCacheKeyCustomKeyHostInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyHostArgs and RulesetRuleActionParametersCacheKeyCustomKeyHostOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyHostInput` via:
 //
-//          RulesetRuleActionParametersCacheKeyCustomKeyHostArgs{...}
+//	RulesetRuleActionParametersCacheKeyCustomKeyHostArgs{...}
 type RulesetRuleActionParametersCacheKeyCustomKeyHostInput interface {
 	pulumi.Input
 
@@ -16030,11 +17184,11 @@ func (i RulesetRuleActionParametersCacheKeyCustomKeyHostArgs) ToRulesetRuleActio
 // RulesetRuleActionParametersCacheKeyCustomKeyHostPtrInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyHostArgs, RulesetRuleActionParametersCacheKeyCustomKeyHostPtr and RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyHostPtrInput` via:
 //
-//          RulesetRuleActionParametersCacheKeyCustomKeyHostArgs{...}
+//	        RulesetRuleActionParametersCacheKeyCustomKeyHostArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleActionParametersCacheKeyCustomKeyHostPtrInput interface {
 	pulumi.Input
 
@@ -16129,7 +17283,7 @@ type RulesetRuleActionParametersCacheKeyCustomKeyQueryString struct {
 // RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs and RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInput` via:
 //
-//          RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs{...}
+//	RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs{...}
 type RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInput interface {
 	pulumi.Input
 
@@ -16165,11 +17319,11 @@ func (i RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs) ToRulesetRu
 // RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs, RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtr and RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrInput` via:
 //
-//          RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs{...}
+//	        RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrInput interface {
 	pulumi.Input
 
@@ -16278,7 +17432,7 @@ type RulesetRuleActionParametersCacheKeyCustomKeyUser struct {
 // RulesetRuleActionParametersCacheKeyCustomKeyUserInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyUserArgs and RulesetRuleActionParametersCacheKeyCustomKeyUserOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyUserInput` via:
 //
-//          RulesetRuleActionParametersCacheKeyCustomKeyUserArgs{...}
+//	RulesetRuleActionParametersCacheKeyCustomKeyUserArgs{...}
 type RulesetRuleActionParametersCacheKeyCustomKeyUserInput interface {
 	pulumi.Input
 
@@ -16315,11 +17469,11 @@ func (i RulesetRuleActionParametersCacheKeyCustomKeyUserArgs) ToRulesetRuleActio
 // RulesetRuleActionParametersCacheKeyCustomKeyUserPtrInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyUserArgs, RulesetRuleActionParametersCacheKeyCustomKeyUserPtr and RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyUserPtrInput` via:
 //
-//          RulesetRuleActionParametersCacheKeyCustomKeyUserArgs{...}
+//	        RulesetRuleActionParametersCacheKeyCustomKeyUserArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleActionParametersCacheKeyCustomKeyUserPtrInput interface {
 	pulumi.Input
 
@@ -16441,7 +17595,7 @@ type RulesetRuleActionParametersEdgeTtl struct {
 // RulesetRuleActionParametersEdgeTtlInput is an input type that accepts RulesetRuleActionParametersEdgeTtlArgs and RulesetRuleActionParametersEdgeTtlOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersEdgeTtlInput` via:
 //
-//          RulesetRuleActionParametersEdgeTtlArgs{...}
+//	RulesetRuleActionParametersEdgeTtlArgs{...}
 type RulesetRuleActionParametersEdgeTtlInput interface {
 	pulumi.Input
 
@@ -16478,11 +17632,11 @@ func (i RulesetRuleActionParametersEdgeTtlArgs) ToRulesetRuleActionParametersEdg
 // RulesetRuleActionParametersEdgeTtlPtrInput is an input type that accepts RulesetRuleActionParametersEdgeTtlArgs, RulesetRuleActionParametersEdgeTtlPtr and RulesetRuleActionParametersEdgeTtlPtrOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersEdgeTtlPtrInput` via:
 //
-//          RulesetRuleActionParametersEdgeTtlArgs{...}
+//	        RulesetRuleActionParametersEdgeTtlArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleActionParametersEdgeTtlPtrInput interface {
 	pulumi.Input
 
@@ -16606,7 +17760,7 @@ type RulesetRuleActionParametersEdgeTtlStatusCodeTtl struct {
 // RulesetRuleActionParametersEdgeTtlStatusCodeTtlInput is an input type that accepts RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs and RulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersEdgeTtlStatusCodeTtlInput` via:
 //
-//          RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs{...}
+//	RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs{...}
 type RulesetRuleActionParametersEdgeTtlStatusCodeTtlInput interface {
 	pulumi.Input
 
@@ -16635,7 +17789,7 @@ func (i RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs) ToRulesetRuleAction
 // RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput is an input type that accepts RulesetRuleActionParametersEdgeTtlStatusCodeTtlArray and RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput` via:
 //
-//          RulesetRuleActionParametersEdgeTtlStatusCodeTtlArray{ RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs{...} }
+//	RulesetRuleActionParametersEdgeTtlStatusCodeTtlArray{ RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs{...} }
 type RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput interface {
 	pulumi.Input
 
@@ -16713,7 +17867,7 @@ type RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange struct {
 // RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeInput is an input type that accepts RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs and RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeInput` via:
 //
-//          RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs{...}
+//	RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs{...}
 type RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeInput interface {
 	pulumi.Input
 
@@ -16741,7 +17895,7 @@ func (i RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs) ToRu
 // RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayInput is an input type that accepts RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArray and RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayInput` via:
 //
-//          RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArray{ RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs{...} }
+//	RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArray{ RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs{...} }
 type RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayInput interface {
 	pulumi.Input
 
@@ -16806,14 +17960,15 @@ func (o RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutpu
 }
 
 type RulesetRuleActionParametersFromList struct {
-	Key  string `pulumi:"key"`
+	Key string `pulumi:"key"`
+	// Name of the ruleset.
 	Name string `pulumi:"name"`
 }
 
 // RulesetRuleActionParametersFromListInput is an input type that accepts RulesetRuleActionParametersFromListArgs and RulesetRuleActionParametersFromListOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersFromListInput` via:
 //
-//          RulesetRuleActionParametersFromListArgs{...}
+//	RulesetRuleActionParametersFromListArgs{...}
 type RulesetRuleActionParametersFromListInput interface {
 	pulumi.Input
 
@@ -16822,7 +17977,8 @@ type RulesetRuleActionParametersFromListInput interface {
 }
 
 type RulesetRuleActionParametersFromListArgs struct {
-	Key  pulumi.StringInput `pulumi:"key"`
+	Key pulumi.StringInput `pulumi:"key"`
+	// Name of the ruleset.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -16849,11 +18005,11 @@ func (i RulesetRuleActionParametersFromListArgs) ToRulesetRuleActionParametersFr
 // RulesetRuleActionParametersFromListPtrInput is an input type that accepts RulesetRuleActionParametersFromListArgs, RulesetRuleActionParametersFromListPtr and RulesetRuleActionParametersFromListPtrOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersFromListPtrInput` via:
 //
-//          RulesetRuleActionParametersFromListArgs{...}
+//	        RulesetRuleActionParametersFromListArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleActionParametersFromListPtrInput interface {
 	pulumi.Input
 
@@ -16907,6 +18063,7 @@ func (o RulesetRuleActionParametersFromListOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersFromList) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Name of the ruleset.
 func (o RulesetRuleActionParametersFromListOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersFromList) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -16944,6 +18101,7 @@ func (o RulesetRuleActionParametersFromListPtrOutput) Key() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of the ruleset.
 func (o RulesetRuleActionParametersFromListPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RulesetRuleActionParametersFromList) *string {
 		if v == nil {
@@ -16953,17 +18111,331 @@ func (o RulesetRuleActionParametersFromListPtrOutput) Name() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type RulesetRuleActionParametersFromValue struct {
+	PreserveQueryString *bool                                          `pulumi:"preserveQueryString"`
+	StatusCode          *int                                           `pulumi:"statusCode"`
+	TargetUrl           *RulesetRuleActionParametersFromValueTargetUrl `pulumi:"targetUrl"`
+}
+
+// RulesetRuleActionParametersFromValueInput is an input type that accepts RulesetRuleActionParametersFromValueArgs and RulesetRuleActionParametersFromValueOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersFromValueInput` via:
+//
+//	RulesetRuleActionParametersFromValueArgs{...}
+type RulesetRuleActionParametersFromValueInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersFromValueOutput() RulesetRuleActionParametersFromValueOutput
+	ToRulesetRuleActionParametersFromValueOutputWithContext(context.Context) RulesetRuleActionParametersFromValueOutput
+}
+
+type RulesetRuleActionParametersFromValueArgs struct {
+	PreserveQueryString pulumi.BoolPtrInput                                   `pulumi:"preserveQueryString"`
+	StatusCode          pulumi.IntPtrInput                                    `pulumi:"statusCode"`
+	TargetUrl           RulesetRuleActionParametersFromValueTargetUrlPtrInput `pulumi:"targetUrl"`
+}
+
+func (RulesetRuleActionParametersFromValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersFromValue)(nil)).Elem()
+}
+
+func (i RulesetRuleActionParametersFromValueArgs) ToRulesetRuleActionParametersFromValueOutput() RulesetRuleActionParametersFromValueOutput {
+	return i.ToRulesetRuleActionParametersFromValueOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersFromValueArgs) ToRulesetRuleActionParametersFromValueOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersFromValueOutput)
+}
+
+func (i RulesetRuleActionParametersFromValueArgs) ToRulesetRuleActionParametersFromValuePtrOutput() RulesetRuleActionParametersFromValuePtrOutput {
+	return i.ToRulesetRuleActionParametersFromValuePtrOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersFromValueArgs) ToRulesetRuleActionParametersFromValuePtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersFromValueOutput).ToRulesetRuleActionParametersFromValuePtrOutputWithContext(ctx)
+}
+
+// RulesetRuleActionParametersFromValuePtrInput is an input type that accepts RulesetRuleActionParametersFromValueArgs, RulesetRuleActionParametersFromValuePtr and RulesetRuleActionParametersFromValuePtrOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersFromValuePtrInput` via:
+//
+//	        RulesetRuleActionParametersFromValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type RulesetRuleActionParametersFromValuePtrInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersFromValuePtrOutput() RulesetRuleActionParametersFromValuePtrOutput
+	ToRulesetRuleActionParametersFromValuePtrOutputWithContext(context.Context) RulesetRuleActionParametersFromValuePtrOutput
+}
+
+type rulesetRuleActionParametersFromValuePtrType RulesetRuleActionParametersFromValueArgs
+
+func RulesetRuleActionParametersFromValuePtr(v *RulesetRuleActionParametersFromValueArgs) RulesetRuleActionParametersFromValuePtrInput {
+	return (*rulesetRuleActionParametersFromValuePtrType)(v)
+}
+
+func (*rulesetRuleActionParametersFromValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersFromValue)(nil)).Elem()
+}
+
+func (i *rulesetRuleActionParametersFromValuePtrType) ToRulesetRuleActionParametersFromValuePtrOutput() RulesetRuleActionParametersFromValuePtrOutput {
+	return i.ToRulesetRuleActionParametersFromValuePtrOutputWithContext(context.Background())
+}
+
+func (i *rulesetRuleActionParametersFromValuePtrType) ToRulesetRuleActionParametersFromValuePtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersFromValuePtrOutput)
+}
+
+type RulesetRuleActionParametersFromValueOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersFromValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersFromValue)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersFromValueOutput) ToRulesetRuleActionParametersFromValueOutput() RulesetRuleActionParametersFromValueOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersFromValueOutput) ToRulesetRuleActionParametersFromValueOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValueOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersFromValueOutput) ToRulesetRuleActionParametersFromValuePtrOutput() RulesetRuleActionParametersFromValuePtrOutput {
+	return o.ToRulesetRuleActionParametersFromValuePtrOutputWithContext(context.Background())
+}
+
+func (o RulesetRuleActionParametersFromValueOutput) ToRulesetRuleActionParametersFromValuePtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersFromValue) *RulesetRuleActionParametersFromValue {
+		return &v
+	}).(RulesetRuleActionParametersFromValuePtrOutput)
+}
+
+func (o RulesetRuleActionParametersFromValueOutput) PreserveQueryString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersFromValue) *bool { return v.PreserveQueryString }).(pulumi.BoolPtrOutput)
+}
+
+func (o RulesetRuleActionParametersFromValueOutput) StatusCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersFromValue) *int { return v.StatusCode }).(pulumi.IntPtrOutput)
+}
+
+func (o RulesetRuleActionParametersFromValueOutput) TargetUrl() RulesetRuleActionParametersFromValueTargetUrlPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersFromValue) *RulesetRuleActionParametersFromValueTargetUrl {
+		return v.TargetUrl
+	}).(RulesetRuleActionParametersFromValueTargetUrlPtrOutput)
+}
+
+type RulesetRuleActionParametersFromValuePtrOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersFromValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersFromValue)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersFromValuePtrOutput) ToRulesetRuleActionParametersFromValuePtrOutput() RulesetRuleActionParametersFromValuePtrOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersFromValuePtrOutput) ToRulesetRuleActionParametersFromValuePtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValuePtrOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersFromValuePtrOutput) Elem() RulesetRuleActionParametersFromValueOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersFromValue) RulesetRuleActionParametersFromValue {
+		if v != nil {
+			return *v
+		}
+		var ret RulesetRuleActionParametersFromValue
+		return ret
+	}).(RulesetRuleActionParametersFromValueOutput)
+}
+
+func (o RulesetRuleActionParametersFromValuePtrOutput) PreserveQueryString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersFromValue) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreserveQueryString
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o RulesetRuleActionParametersFromValuePtrOutput) StatusCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersFromValue) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StatusCode
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o RulesetRuleActionParametersFromValuePtrOutput) TargetUrl() RulesetRuleActionParametersFromValueTargetUrlPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersFromValue) *RulesetRuleActionParametersFromValueTargetUrl {
+		if v == nil {
+			return nil
+		}
+		return v.TargetUrl
+	}).(RulesetRuleActionParametersFromValueTargetUrlPtrOutput)
+}
+
+type RulesetRuleActionParametersFromValueTargetUrl struct {
+	Expression *string `pulumi:"expression"`
+	Value      *string `pulumi:"value"`
+}
+
+// RulesetRuleActionParametersFromValueTargetUrlInput is an input type that accepts RulesetRuleActionParametersFromValueTargetUrlArgs and RulesetRuleActionParametersFromValueTargetUrlOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersFromValueTargetUrlInput` via:
+//
+//	RulesetRuleActionParametersFromValueTargetUrlArgs{...}
+type RulesetRuleActionParametersFromValueTargetUrlInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersFromValueTargetUrlOutput() RulesetRuleActionParametersFromValueTargetUrlOutput
+	ToRulesetRuleActionParametersFromValueTargetUrlOutputWithContext(context.Context) RulesetRuleActionParametersFromValueTargetUrlOutput
+}
+
+type RulesetRuleActionParametersFromValueTargetUrlArgs struct {
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	Value      pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RulesetRuleActionParametersFromValueTargetUrlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersFromValueTargetUrl)(nil)).Elem()
+}
+
+func (i RulesetRuleActionParametersFromValueTargetUrlArgs) ToRulesetRuleActionParametersFromValueTargetUrlOutput() RulesetRuleActionParametersFromValueTargetUrlOutput {
+	return i.ToRulesetRuleActionParametersFromValueTargetUrlOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersFromValueTargetUrlArgs) ToRulesetRuleActionParametersFromValueTargetUrlOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValueTargetUrlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersFromValueTargetUrlOutput)
+}
+
+func (i RulesetRuleActionParametersFromValueTargetUrlArgs) ToRulesetRuleActionParametersFromValueTargetUrlPtrOutput() RulesetRuleActionParametersFromValueTargetUrlPtrOutput {
+	return i.ToRulesetRuleActionParametersFromValueTargetUrlPtrOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersFromValueTargetUrlArgs) ToRulesetRuleActionParametersFromValueTargetUrlPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValueTargetUrlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersFromValueTargetUrlOutput).ToRulesetRuleActionParametersFromValueTargetUrlPtrOutputWithContext(ctx)
+}
+
+// RulesetRuleActionParametersFromValueTargetUrlPtrInput is an input type that accepts RulesetRuleActionParametersFromValueTargetUrlArgs, RulesetRuleActionParametersFromValueTargetUrlPtr and RulesetRuleActionParametersFromValueTargetUrlPtrOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersFromValueTargetUrlPtrInput` via:
+//
+//	        RulesetRuleActionParametersFromValueTargetUrlArgs{...}
+//
+//	or:
+//
+//	        nil
+type RulesetRuleActionParametersFromValueTargetUrlPtrInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersFromValueTargetUrlPtrOutput() RulesetRuleActionParametersFromValueTargetUrlPtrOutput
+	ToRulesetRuleActionParametersFromValueTargetUrlPtrOutputWithContext(context.Context) RulesetRuleActionParametersFromValueTargetUrlPtrOutput
+}
+
+type rulesetRuleActionParametersFromValueTargetUrlPtrType RulesetRuleActionParametersFromValueTargetUrlArgs
+
+func RulesetRuleActionParametersFromValueTargetUrlPtr(v *RulesetRuleActionParametersFromValueTargetUrlArgs) RulesetRuleActionParametersFromValueTargetUrlPtrInput {
+	return (*rulesetRuleActionParametersFromValueTargetUrlPtrType)(v)
+}
+
+func (*rulesetRuleActionParametersFromValueTargetUrlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersFromValueTargetUrl)(nil)).Elem()
+}
+
+func (i *rulesetRuleActionParametersFromValueTargetUrlPtrType) ToRulesetRuleActionParametersFromValueTargetUrlPtrOutput() RulesetRuleActionParametersFromValueTargetUrlPtrOutput {
+	return i.ToRulesetRuleActionParametersFromValueTargetUrlPtrOutputWithContext(context.Background())
+}
+
+func (i *rulesetRuleActionParametersFromValueTargetUrlPtrType) ToRulesetRuleActionParametersFromValueTargetUrlPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValueTargetUrlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersFromValueTargetUrlPtrOutput)
+}
+
+type RulesetRuleActionParametersFromValueTargetUrlOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersFromValueTargetUrlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersFromValueTargetUrl)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersFromValueTargetUrlOutput) ToRulesetRuleActionParametersFromValueTargetUrlOutput() RulesetRuleActionParametersFromValueTargetUrlOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersFromValueTargetUrlOutput) ToRulesetRuleActionParametersFromValueTargetUrlOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValueTargetUrlOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersFromValueTargetUrlOutput) ToRulesetRuleActionParametersFromValueTargetUrlPtrOutput() RulesetRuleActionParametersFromValueTargetUrlPtrOutput {
+	return o.ToRulesetRuleActionParametersFromValueTargetUrlPtrOutputWithContext(context.Background())
+}
+
+func (o RulesetRuleActionParametersFromValueTargetUrlOutput) ToRulesetRuleActionParametersFromValueTargetUrlPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValueTargetUrlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersFromValueTargetUrl) *RulesetRuleActionParametersFromValueTargetUrl {
+		return &v
+	}).(RulesetRuleActionParametersFromValueTargetUrlPtrOutput)
+}
+
+func (o RulesetRuleActionParametersFromValueTargetUrlOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersFromValueTargetUrl) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+func (o RulesetRuleActionParametersFromValueTargetUrlOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersFromValueTargetUrl) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RulesetRuleActionParametersFromValueTargetUrlPtrOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersFromValueTargetUrlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersFromValueTargetUrl)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersFromValueTargetUrlPtrOutput) ToRulesetRuleActionParametersFromValueTargetUrlPtrOutput() RulesetRuleActionParametersFromValueTargetUrlPtrOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersFromValueTargetUrlPtrOutput) ToRulesetRuleActionParametersFromValueTargetUrlPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValueTargetUrlPtrOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersFromValueTargetUrlPtrOutput) Elem() RulesetRuleActionParametersFromValueTargetUrlOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersFromValueTargetUrl) RulesetRuleActionParametersFromValueTargetUrl {
+		if v != nil {
+			return *v
+		}
+		var ret RulesetRuleActionParametersFromValueTargetUrl
+		return ret
+	}).(RulesetRuleActionParametersFromValueTargetUrlOutput)
+}
+
+func (o RulesetRuleActionParametersFromValueTargetUrlPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersFromValueTargetUrl) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RulesetRuleActionParametersFromValueTargetUrlPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersFromValueTargetUrl) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
 type RulesetRuleActionParametersHeader struct {
 	Expression *string `pulumi:"expression"`
-	Name       *string `pulumi:"name"`
-	Operation  *string `pulumi:"operation"`
-	Value      *string `pulumi:"value"`
+	// Name of the ruleset.
+	Name      *string `pulumi:"name"`
+	Operation *string `pulumi:"operation"`
+	Value     *string `pulumi:"value"`
 }
 
 // RulesetRuleActionParametersHeaderInput is an input type that accepts RulesetRuleActionParametersHeaderArgs and RulesetRuleActionParametersHeaderOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersHeaderInput` via:
 //
-//          RulesetRuleActionParametersHeaderArgs{...}
+//	RulesetRuleActionParametersHeaderArgs{...}
 type RulesetRuleActionParametersHeaderInput interface {
 	pulumi.Input
 
@@ -16973,9 +18445,10 @@ type RulesetRuleActionParametersHeaderInput interface {
 
 type RulesetRuleActionParametersHeaderArgs struct {
 	Expression pulumi.StringPtrInput `pulumi:"expression"`
-	Name       pulumi.StringPtrInput `pulumi:"name"`
-	Operation  pulumi.StringPtrInput `pulumi:"operation"`
-	Value      pulumi.StringPtrInput `pulumi:"value"`
+	// Name of the ruleset.
+	Name      pulumi.StringPtrInput `pulumi:"name"`
+	Operation pulumi.StringPtrInput `pulumi:"operation"`
+	Value     pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (RulesetRuleActionParametersHeaderArgs) ElementType() reflect.Type {
@@ -16993,7 +18466,7 @@ func (i RulesetRuleActionParametersHeaderArgs) ToRulesetRuleActionParametersHead
 // RulesetRuleActionParametersHeaderArrayInput is an input type that accepts RulesetRuleActionParametersHeaderArray and RulesetRuleActionParametersHeaderArrayOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersHeaderArrayInput` via:
 //
-//          RulesetRuleActionParametersHeaderArray{ RulesetRuleActionParametersHeaderArgs{...} }
+//	RulesetRuleActionParametersHeaderArray{ RulesetRuleActionParametersHeaderArgs{...} }
 type RulesetRuleActionParametersHeaderArrayInput interface {
 	pulumi.Input
 
@@ -17033,6 +18506,7 @@ func (o RulesetRuleActionParametersHeaderOutput) Expression() pulumi.StringPtrOu
 	return o.ApplyT(func(v RulesetRuleActionParametersHeader) *string { return v.Expression }).(pulumi.StringPtrOutput)
 }
 
+// Name of the ruleset.
 func (o RulesetRuleActionParametersHeaderOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -17072,7 +18546,7 @@ type RulesetRuleActionParametersMatchedData struct {
 // RulesetRuleActionParametersMatchedDataInput is an input type that accepts RulesetRuleActionParametersMatchedDataArgs and RulesetRuleActionParametersMatchedDataOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersMatchedDataInput` via:
 //
-//          RulesetRuleActionParametersMatchedDataArgs{...}
+//	RulesetRuleActionParametersMatchedDataArgs{...}
 type RulesetRuleActionParametersMatchedDataInput interface {
 	pulumi.Input
 
@@ -17107,11 +18581,11 @@ func (i RulesetRuleActionParametersMatchedDataArgs) ToRulesetRuleActionParameter
 // RulesetRuleActionParametersMatchedDataPtrInput is an input type that accepts RulesetRuleActionParametersMatchedDataArgs, RulesetRuleActionParametersMatchedDataPtr and RulesetRuleActionParametersMatchedDataPtrOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersMatchedDataPtrInput` via:
 //
-//          RulesetRuleActionParametersMatchedDataArgs{...}
+//	        RulesetRuleActionParametersMatchedDataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleActionParametersMatchedDataPtrInput interface {
 	pulumi.Input
 
@@ -17206,7 +18680,7 @@ type RulesetRuleActionParametersOrigin struct {
 // RulesetRuleActionParametersOriginInput is an input type that accepts RulesetRuleActionParametersOriginArgs and RulesetRuleActionParametersOriginOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersOriginInput` via:
 //
-//          RulesetRuleActionParametersOriginArgs{...}
+//	RulesetRuleActionParametersOriginArgs{...}
 type RulesetRuleActionParametersOriginInput interface {
 	pulumi.Input
 
@@ -17242,11 +18716,11 @@ func (i RulesetRuleActionParametersOriginArgs) ToRulesetRuleActionParametersOrig
 // RulesetRuleActionParametersOriginPtrInput is an input type that accepts RulesetRuleActionParametersOriginArgs, RulesetRuleActionParametersOriginPtr and RulesetRuleActionParametersOriginPtrOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersOriginPtrInput` via:
 //
-//          RulesetRuleActionParametersOriginArgs{...}
+//	        RulesetRuleActionParametersOriginArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleActionParametersOriginPtrInput interface {
 	pulumi.Input
 
@@ -17350,15 +18824,16 @@ type RulesetRuleActionParametersOverrides struct {
 	Action     *string                                        `pulumi:"action"`
 	Categories []RulesetRuleActionParametersOverridesCategory `pulumi:"categories"`
 	// Deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-	Enabled *bool                                      `pulumi:"enabled"`
-	Rules   []RulesetRuleActionParametersOverridesRule `pulumi:"rules"`
-	Status  *string                                    `pulumi:"status"`
+	Enabled *bool `pulumi:"enabled"`
+	// List of rules to apply to the ruleset.
+	Rules  []RulesetRuleActionParametersOverridesRule `pulumi:"rules"`
+	Status *string                                    `pulumi:"status"`
 }
 
 // RulesetRuleActionParametersOverridesInput is an input type that accepts RulesetRuleActionParametersOverridesArgs and RulesetRuleActionParametersOverridesOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersOverridesInput` via:
 //
-//          RulesetRuleActionParametersOverridesArgs{...}
+//	RulesetRuleActionParametersOverridesArgs{...}
 type RulesetRuleActionParametersOverridesInput interface {
 	pulumi.Input
 
@@ -17370,9 +18845,10 @@ type RulesetRuleActionParametersOverridesArgs struct {
 	Action     pulumi.StringPtrInput                                  `pulumi:"action"`
 	Categories RulesetRuleActionParametersOverridesCategoryArrayInput `pulumi:"categories"`
 	// Deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-	Enabled pulumi.BoolPtrInput                                `pulumi:"enabled"`
-	Rules   RulesetRuleActionParametersOverridesRuleArrayInput `pulumi:"rules"`
-	Status  pulumi.StringPtrInput                              `pulumi:"status"`
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// List of rules to apply to the ruleset.
+	Rules  RulesetRuleActionParametersOverridesRuleArrayInput `pulumi:"rules"`
+	Status pulumi.StringPtrInput                              `pulumi:"status"`
 }
 
 func (RulesetRuleActionParametersOverridesArgs) ElementType() reflect.Type {
@@ -17398,11 +18874,11 @@ func (i RulesetRuleActionParametersOverridesArgs) ToRulesetRuleActionParametersO
 // RulesetRuleActionParametersOverridesPtrInput is an input type that accepts RulesetRuleActionParametersOverridesArgs, RulesetRuleActionParametersOverridesPtr and RulesetRuleActionParametersOverridesPtrOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersOverridesPtrInput` via:
 //
-//          RulesetRuleActionParametersOverridesArgs{...}
+//	        RulesetRuleActionParametersOverridesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleActionParametersOverridesPtrInput interface {
 	pulumi.Input
 
@@ -17467,6 +18943,7 @@ func (o RulesetRuleActionParametersOverridesOutput) Enabled() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v RulesetRuleActionParametersOverrides) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// List of rules to apply to the ruleset.
 func (o RulesetRuleActionParametersOverridesOutput) Rules() RulesetRuleActionParametersOverridesRuleArrayOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersOverrides) []RulesetRuleActionParametersOverridesRule {
 		return v.Rules
@@ -17529,6 +19006,7 @@ func (o RulesetRuleActionParametersOverridesPtrOutput) Enabled() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
+// List of rules to apply to the ruleset.
 func (o RulesetRuleActionParametersOverridesPtrOutput) Rules() RulesetRuleActionParametersOverridesRuleArrayOutput {
 	return o.ApplyT(func(v *RulesetRuleActionParametersOverrides) []RulesetRuleActionParametersOverridesRule {
 		if v == nil {
@@ -17558,7 +19036,7 @@ type RulesetRuleActionParametersOverridesCategory struct {
 // RulesetRuleActionParametersOverridesCategoryInput is an input type that accepts RulesetRuleActionParametersOverridesCategoryArgs and RulesetRuleActionParametersOverridesCategoryOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersOverridesCategoryInput` via:
 //
-//          RulesetRuleActionParametersOverridesCategoryArgs{...}
+//	RulesetRuleActionParametersOverridesCategoryArgs{...}
 type RulesetRuleActionParametersOverridesCategoryInput interface {
 	pulumi.Input
 
@@ -17589,7 +19067,7 @@ func (i RulesetRuleActionParametersOverridesCategoryArgs) ToRulesetRuleActionPar
 // RulesetRuleActionParametersOverridesCategoryArrayInput is an input type that accepts RulesetRuleActionParametersOverridesCategoryArray and RulesetRuleActionParametersOverridesCategoryArrayOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersOverridesCategoryArrayInput` via:
 //
-//          RulesetRuleActionParametersOverridesCategoryArray{ RulesetRuleActionParametersOverridesCategoryArgs{...} }
+//	RulesetRuleActionParametersOverridesCategoryArray{ RulesetRuleActionParametersOverridesCategoryArgs{...} }
 type RulesetRuleActionParametersOverridesCategoryArrayInput interface {
 	pulumi.Input
 
@@ -17663,9 +19141,13 @@ func (o RulesetRuleActionParametersOverridesCategoryArrayOutput) Index(i pulumi.
 }
 
 type RulesetRuleActionParametersOverridesRule struct {
+	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `serveError`, `skip`.
 	Action *string `pulumi:"action"`
+	// Whether the rule is active.
+	//
 	// Deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-	Enabled          *bool   `pulumi:"enabled"`
+	Enabled *bool `pulumi:"enabled"`
+	// Unique rule identifier.
 	Id               *string `pulumi:"id"`
 	ScoreThreshold   *int    `pulumi:"scoreThreshold"`
 	SensitivityLevel *string `pulumi:"sensitivityLevel"`
@@ -17675,7 +19157,7 @@ type RulesetRuleActionParametersOverridesRule struct {
 // RulesetRuleActionParametersOverridesRuleInput is an input type that accepts RulesetRuleActionParametersOverridesRuleArgs and RulesetRuleActionParametersOverridesRuleOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersOverridesRuleInput` via:
 //
-//          RulesetRuleActionParametersOverridesRuleArgs{...}
+//	RulesetRuleActionParametersOverridesRuleArgs{...}
 type RulesetRuleActionParametersOverridesRuleInput interface {
 	pulumi.Input
 
@@ -17684,9 +19166,13 @@ type RulesetRuleActionParametersOverridesRuleInput interface {
 }
 
 type RulesetRuleActionParametersOverridesRuleArgs struct {
+	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `serveError`, `skip`.
 	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Whether the rule is active.
+	//
 	// Deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-	Enabled          pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Unique rule identifier.
 	Id               pulumi.StringPtrInput `pulumi:"id"`
 	ScoreThreshold   pulumi.IntPtrInput    `pulumi:"scoreThreshold"`
 	SensitivityLevel pulumi.StringPtrInput `pulumi:"sensitivityLevel"`
@@ -17708,7 +19194,7 @@ func (i RulesetRuleActionParametersOverridesRuleArgs) ToRulesetRuleActionParamet
 // RulesetRuleActionParametersOverridesRuleArrayInput is an input type that accepts RulesetRuleActionParametersOverridesRuleArray and RulesetRuleActionParametersOverridesRuleArrayOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersOverridesRuleArrayInput` via:
 //
-//          RulesetRuleActionParametersOverridesRuleArray{ RulesetRuleActionParametersOverridesRuleArgs{...} }
+//	RulesetRuleActionParametersOverridesRuleArray{ RulesetRuleActionParametersOverridesRuleArgs{...} }
 type RulesetRuleActionParametersOverridesRuleArrayInput interface {
 	pulumi.Input
 
@@ -17744,15 +19230,19 @@ func (o RulesetRuleActionParametersOverridesRuleOutput) ToRulesetRuleActionParam
 	return o
 }
 
+// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `serveError`, `skip`.
 func (o RulesetRuleActionParametersOverridesRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersOverridesRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
+// Whether the rule is active.
+//
 // Deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
 func (o RulesetRuleActionParametersOverridesRuleOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersOverridesRule) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Unique rule identifier.
 func (o RulesetRuleActionParametersOverridesRuleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersOverridesRule) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -17798,7 +19288,7 @@ type RulesetRuleActionParametersResponse struct {
 // RulesetRuleActionParametersResponseInput is an input type that accepts RulesetRuleActionParametersResponseArgs and RulesetRuleActionParametersResponseOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersResponseInput` via:
 //
-//          RulesetRuleActionParametersResponseArgs{...}
+//	RulesetRuleActionParametersResponseArgs{...}
 type RulesetRuleActionParametersResponseInput interface {
 	pulumi.Input
 
@@ -17827,7 +19317,7 @@ func (i RulesetRuleActionParametersResponseArgs) ToRulesetRuleActionParametersRe
 // RulesetRuleActionParametersResponseArrayInput is an input type that accepts RulesetRuleActionParametersResponseArray and RulesetRuleActionParametersResponseArrayOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersResponseArrayInput` via:
 //
-//          RulesetRuleActionParametersResponseArray{ RulesetRuleActionParametersResponseArgs{...} }
+//	RulesetRuleActionParametersResponseArray{ RulesetRuleActionParametersResponseArgs{...} }
 type RulesetRuleActionParametersResponseArrayInput interface {
 	pulumi.Input
 
@@ -17902,7 +19392,7 @@ type RulesetRuleActionParametersServeStale struct {
 // RulesetRuleActionParametersServeStaleInput is an input type that accepts RulesetRuleActionParametersServeStaleArgs and RulesetRuleActionParametersServeStaleOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersServeStaleInput` via:
 //
-//          RulesetRuleActionParametersServeStaleArgs{...}
+//	RulesetRuleActionParametersServeStaleArgs{...}
 type RulesetRuleActionParametersServeStaleInput interface {
 	pulumi.Input
 
@@ -17937,11 +19427,11 @@ func (i RulesetRuleActionParametersServeStaleArgs) ToRulesetRuleActionParameters
 // RulesetRuleActionParametersServeStalePtrInput is an input type that accepts RulesetRuleActionParametersServeStaleArgs, RulesetRuleActionParametersServeStalePtr and RulesetRuleActionParametersServeStalePtrOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersServeStalePtrInput` via:
 //
-//          RulesetRuleActionParametersServeStaleArgs{...}
+//	        RulesetRuleActionParametersServeStaleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleActionParametersServeStalePtrInput interface {
 	pulumi.Input
 
@@ -18028,6 +19518,139 @@ func (o RulesetRuleActionParametersServeStalePtrOutput) DisableStaleWhileUpdatin
 	}).(pulumi.BoolPtrOutput)
 }
 
+type RulesetRuleActionParametersSni struct {
+	Value *string `pulumi:"value"`
+}
+
+// RulesetRuleActionParametersSniInput is an input type that accepts RulesetRuleActionParametersSniArgs and RulesetRuleActionParametersSniOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersSniInput` via:
+//
+//	RulesetRuleActionParametersSniArgs{...}
+type RulesetRuleActionParametersSniInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersSniOutput() RulesetRuleActionParametersSniOutput
+	ToRulesetRuleActionParametersSniOutputWithContext(context.Context) RulesetRuleActionParametersSniOutput
+}
+
+type RulesetRuleActionParametersSniArgs struct {
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RulesetRuleActionParametersSniArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersSni)(nil)).Elem()
+}
+
+func (i RulesetRuleActionParametersSniArgs) ToRulesetRuleActionParametersSniOutput() RulesetRuleActionParametersSniOutput {
+	return i.ToRulesetRuleActionParametersSniOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersSniArgs) ToRulesetRuleActionParametersSniOutputWithContext(ctx context.Context) RulesetRuleActionParametersSniOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersSniOutput)
+}
+
+func (i RulesetRuleActionParametersSniArgs) ToRulesetRuleActionParametersSniPtrOutput() RulesetRuleActionParametersSniPtrOutput {
+	return i.ToRulesetRuleActionParametersSniPtrOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersSniArgs) ToRulesetRuleActionParametersSniPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersSniPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersSniOutput).ToRulesetRuleActionParametersSniPtrOutputWithContext(ctx)
+}
+
+// RulesetRuleActionParametersSniPtrInput is an input type that accepts RulesetRuleActionParametersSniArgs, RulesetRuleActionParametersSniPtr and RulesetRuleActionParametersSniPtrOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersSniPtrInput` via:
+//
+//	        RulesetRuleActionParametersSniArgs{...}
+//
+//	or:
+//
+//	        nil
+type RulesetRuleActionParametersSniPtrInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersSniPtrOutput() RulesetRuleActionParametersSniPtrOutput
+	ToRulesetRuleActionParametersSniPtrOutputWithContext(context.Context) RulesetRuleActionParametersSniPtrOutput
+}
+
+type rulesetRuleActionParametersSniPtrType RulesetRuleActionParametersSniArgs
+
+func RulesetRuleActionParametersSniPtr(v *RulesetRuleActionParametersSniArgs) RulesetRuleActionParametersSniPtrInput {
+	return (*rulesetRuleActionParametersSniPtrType)(v)
+}
+
+func (*rulesetRuleActionParametersSniPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersSni)(nil)).Elem()
+}
+
+func (i *rulesetRuleActionParametersSniPtrType) ToRulesetRuleActionParametersSniPtrOutput() RulesetRuleActionParametersSniPtrOutput {
+	return i.ToRulesetRuleActionParametersSniPtrOutputWithContext(context.Background())
+}
+
+func (i *rulesetRuleActionParametersSniPtrType) ToRulesetRuleActionParametersSniPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersSniPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersSniPtrOutput)
+}
+
+type RulesetRuleActionParametersSniOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersSniOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersSni)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersSniOutput) ToRulesetRuleActionParametersSniOutput() RulesetRuleActionParametersSniOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersSniOutput) ToRulesetRuleActionParametersSniOutputWithContext(ctx context.Context) RulesetRuleActionParametersSniOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersSniOutput) ToRulesetRuleActionParametersSniPtrOutput() RulesetRuleActionParametersSniPtrOutput {
+	return o.ToRulesetRuleActionParametersSniPtrOutputWithContext(context.Background())
+}
+
+func (o RulesetRuleActionParametersSniOutput) ToRulesetRuleActionParametersSniPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersSniPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersSni) *RulesetRuleActionParametersSni {
+		return &v
+	}).(RulesetRuleActionParametersSniPtrOutput)
+}
+
+func (o RulesetRuleActionParametersSniOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersSni) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RulesetRuleActionParametersSniPtrOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersSniPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersSni)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersSniPtrOutput) ToRulesetRuleActionParametersSniPtrOutput() RulesetRuleActionParametersSniPtrOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersSniPtrOutput) ToRulesetRuleActionParametersSniPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersSniPtrOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersSniPtrOutput) Elem() RulesetRuleActionParametersSniOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersSni) RulesetRuleActionParametersSni {
+		if v != nil {
+			return *v
+		}
+		var ret RulesetRuleActionParametersSni
+		return ret
+	}).(RulesetRuleActionParametersSniOutput)
+}
+
+func (o RulesetRuleActionParametersSniPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersSni) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
 type RulesetRuleActionParametersUri struct {
 	Origin *bool                                `pulumi:"origin"`
 	Path   *RulesetRuleActionParametersUriPath  `pulumi:"path"`
@@ -18037,7 +19660,7 @@ type RulesetRuleActionParametersUri struct {
 // RulesetRuleActionParametersUriInput is an input type that accepts RulesetRuleActionParametersUriArgs and RulesetRuleActionParametersUriOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersUriInput` via:
 //
-//          RulesetRuleActionParametersUriArgs{...}
+//	RulesetRuleActionParametersUriArgs{...}
 type RulesetRuleActionParametersUriInput interface {
 	pulumi.Input
 
@@ -18074,11 +19697,11 @@ func (i RulesetRuleActionParametersUriArgs) ToRulesetRuleActionParametersUriPtrO
 // RulesetRuleActionParametersUriPtrInput is an input type that accepts RulesetRuleActionParametersUriArgs, RulesetRuleActionParametersUriPtr and RulesetRuleActionParametersUriPtrOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersUriPtrInput` via:
 //
-//          RulesetRuleActionParametersUriArgs{...}
+//	        RulesetRuleActionParametersUriArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleActionParametersUriPtrInput interface {
 	pulumi.Input
 
@@ -18199,7 +19822,7 @@ type RulesetRuleActionParametersUriPath struct {
 // RulesetRuleActionParametersUriPathInput is an input type that accepts RulesetRuleActionParametersUriPathArgs and RulesetRuleActionParametersUriPathOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersUriPathInput` via:
 //
-//          RulesetRuleActionParametersUriPathArgs{...}
+//	RulesetRuleActionParametersUriPathArgs{...}
 type RulesetRuleActionParametersUriPathInput interface {
 	pulumi.Input
 
@@ -18235,11 +19858,11 @@ func (i RulesetRuleActionParametersUriPathArgs) ToRulesetRuleActionParametersUri
 // RulesetRuleActionParametersUriPathPtrInput is an input type that accepts RulesetRuleActionParametersUriPathArgs, RulesetRuleActionParametersUriPathPtr and RulesetRuleActionParametersUriPathPtrOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersUriPathPtrInput` via:
 //
-//          RulesetRuleActionParametersUriPathArgs{...}
+//	        RulesetRuleActionParametersUriPathArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleActionParametersUriPathPtrInput interface {
 	pulumi.Input
 
@@ -18347,7 +19970,7 @@ type RulesetRuleActionParametersUriQuery struct {
 // RulesetRuleActionParametersUriQueryInput is an input type that accepts RulesetRuleActionParametersUriQueryArgs and RulesetRuleActionParametersUriQueryOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersUriQueryInput` via:
 //
-//          RulesetRuleActionParametersUriQueryArgs{...}
+//	RulesetRuleActionParametersUriQueryArgs{...}
 type RulesetRuleActionParametersUriQueryInput interface {
 	pulumi.Input
 
@@ -18383,11 +20006,11 @@ func (i RulesetRuleActionParametersUriQueryArgs) ToRulesetRuleActionParametersUr
 // RulesetRuleActionParametersUriQueryPtrInput is an input type that accepts RulesetRuleActionParametersUriQueryArgs, RulesetRuleActionParametersUriQueryPtr and RulesetRuleActionParametersUriQueryPtrOutput values.
 // You can construct a concrete instance of `RulesetRuleActionParametersUriQueryPtrInput` via:
 //
-//          RulesetRuleActionParametersUriQueryArgs{...}
+//	        RulesetRuleActionParametersUriQueryArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleActionParametersUriQueryPtrInput interface {
 	pulumi.Input
 
@@ -18495,7 +20118,7 @@ type RulesetRuleExposedCredentialCheck struct {
 // RulesetRuleExposedCredentialCheckInput is an input type that accepts RulesetRuleExposedCredentialCheckArgs and RulesetRuleExposedCredentialCheckOutput values.
 // You can construct a concrete instance of `RulesetRuleExposedCredentialCheckInput` via:
 //
-//          RulesetRuleExposedCredentialCheckArgs{...}
+//	RulesetRuleExposedCredentialCheckArgs{...}
 type RulesetRuleExposedCredentialCheckInput interface {
 	pulumi.Input
 
@@ -18531,11 +20154,11 @@ func (i RulesetRuleExposedCredentialCheckArgs) ToRulesetRuleExposedCredentialChe
 // RulesetRuleExposedCredentialCheckPtrInput is an input type that accepts RulesetRuleExposedCredentialCheckArgs, RulesetRuleExposedCredentialCheckPtr and RulesetRuleExposedCredentialCheckPtrOutput values.
 // You can construct a concrete instance of `RulesetRuleExposedCredentialCheckPtrInput` via:
 //
-//          RulesetRuleExposedCredentialCheckArgs{...}
+//	        RulesetRuleExposedCredentialCheckArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleExposedCredentialCheckPtrInput interface {
 	pulumi.Input
 
@@ -18644,7 +20267,7 @@ type RulesetRuleLogging struct {
 // RulesetRuleLoggingInput is an input type that accepts RulesetRuleLoggingArgs and RulesetRuleLoggingOutput values.
 // You can construct a concrete instance of `RulesetRuleLoggingInput` via:
 //
-//          RulesetRuleLoggingArgs{...}
+//	RulesetRuleLoggingArgs{...}
 type RulesetRuleLoggingInput interface {
 	pulumi.Input
 
@@ -18681,11 +20304,11 @@ func (i RulesetRuleLoggingArgs) ToRulesetRuleLoggingPtrOutputWithContext(ctx con
 // RulesetRuleLoggingPtrInput is an input type that accepts RulesetRuleLoggingArgs, RulesetRuleLoggingPtr and RulesetRuleLoggingPtrOutput values.
 // You can construct a concrete instance of `RulesetRuleLoggingPtrInput` via:
 //
-//          RulesetRuleLoggingArgs{...}
+//	        RulesetRuleLoggingArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleLoggingPtrInput interface {
 	pulumi.Input
 
@@ -18799,7 +20422,7 @@ type RulesetRuleRatelimit struct {
 // RulesetRuleRatelimitInput is an input type that accepts RulesetRuleRatelimitArgs and RulesetRuleRatelimitOutput values.
 // You can construct a concrete instance of `RulesetRuleRatelimitInput` via:
 //
-//          RulesetRuleRatelimitArgs{...}
+//	RulesetRuleRatelimitArgs{...}
 type RulesetRuleRatelimitInput interface {
 	pulumi.Input
 
@@ -18839,11 +20462,11 @@ func (i RulesetRuleRatelimitArgs) ToRulesetRuleRatelimitPtrOutputWithContext(ctx
 // RulesetRuleRatelimitPtrInput is an input type that accepts RulesetRuleRatelimitArgs, RulesetRuleRatelimitPtr and RulesetRuleRatelimitPtrOutput values.
 // You can construct a concrete instance of `RulesetRuleRatelimitPtrInput` via:
 //
-//          RulesetRuleRatelimitArgs{...}
+//	        RulesetRuleRatelimitArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RulesetRuleRatelimitPtrInput interface {
 	pulumi.Input
 
@@ -19005,7 +20628,7 @@ type SpectrumApplicationDns struct {
 // SpectrumApplicationDnsInput is an input type that accepts SpectrumApplicationDnsArgs and SpectrumApplicationDnsOutput values.
 // You can construct a concrete instance of `SpectrumApplicationDnsInput` via:
 //
-//          SpectrumApplicationDnsArgs{...}
+//	SpectrumApplicationDnsArgs{...}
 type SpectrumApplicationDnsInput interface {
 	pulumi.Input
 
@@ -19043,11 +20666,11 @@ func (i SpectrumApplicationDnsArgs) ToSpectrumApplicationDnsPtrOutputWithContext
 // SpectrumApplicationDnsPtrInput is an input type that accepts SpectrumApplicationDnsArgs, SpectrumApplicationDnsPtr and SpectrumApplicationDnsPtrOutput values.
 // You can construct a concrete instance of `SpectrumApplicationDnsPtrInput` via:
 //
-//          SpectrumApplicationDnsArgs{...}
+//	        SpectrumApplicationDnsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SpectrumApplicationDnsPtrInput interface {
 	pulumi.Input
 
@@ -19159,7 +20782,7 @@ type SpectrumApplicationOriginDns struct {
 // SpectrumApplicationOriginDnsInput is an input type that accepts SpectrumApplicationOriginDnsArgs and SpectrumApplicationOriginDnsOutput values.
 // You can construct a concrete instance of `SpectrumApplicationOriginDnsInput` via:
 //
-//          SpectrumApplicationOriginDnsArgs{...}
+//	SpectrumApplicationOriginDnsArgs{...}
 type SpectrumApplicationOriginDnsInput interface {
 	pulumi.Input
 
@@ -19195,11 +20818,11 @@ func (i SpectrumApplicationOriginDnsArgs) ToSpectrumApplicationOriginDnsPtrOutpu
 // SpectrumApplicationOriginDnsPtrInput is an input type that accepts SpectrumApplicationOriginDnsArgs, SpectrumApplicationOriginDnsPtr and SpectrumApplicationOriginDnsPtrOutput values.
 // You can construct a concrete instance of `SpectrumApplicationOriginDnsPtrInput` via:
 //
-//          SpectrumApplicationOriginDnsArgs{...}
+//	        SpectrumApplicationOriginDnsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SpectrumApplicationOriginDnsPtrInput interface {
 	pulumi.Input
 
@@ -19298,7 +20921,7 @@ type SpectrumApplicationOriginPortRange struct {
 // SpectrumApplicationOriginPortRangeInput is an input type that accepts SpectrumApplicationOriginPortRangeArgs and SpectrumApplicationOriginPortRangeOutput values.
 // You can construct a concrete instance of `SpectrumApplicationOriginPortRangeInput` via:
 //
-//          SpectrumApplicationOriginPortRangeArgs{...}
+//	SpectrumApplicationOriginPortRangeArgs{...}
 type SpectrumApplicationOriginPortRangeInput interface {
 	pulumi.Input
 
@@ -19336,11 +20959,11 @@ func (i SpectrumApplicationOriginPortRangeArgs) ToSpectrumApplicationOriginPortR
 // SpectrumApplicationOriginPortRangePtrInput is an input type that accepts SpectrumApplicationOriginPortRangeArgs, SpectrumApplicationOriginPortRangePtr and SpectrumApplicationOriginPortRangePtrOutput values.
 // You can construct a concrete instance of `SpectrumApplicationOriginPortRangePtrInput` via:
 //
-//          SpectrumApplicationOriginPortRangeArgs{...}
+//	        SpectrumApplicationOriginPortRangeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SpectrumApplicationOriginPortRangePtrInput interface {
 	pulumi.Input
 
@@ -19456,7 +21079,7 @@ type SplitTunnelTunnel struct {
 // SplitTunnelTunnelInput is an input type that accepts SplitTunnelTunnelArgs and SplitTunnelTunnelOutput values.
 // You can construct a concrete instance of `SplitTunnelTunnelInput` via:
 //
-//          SplitTunnelTunnelArgs{...}
+//	SplitTunnelTunnelArgs{...}
 type SplitTunnelTunnelInput interface {
 	pulumi.Input
 
@@ -19488,7 +21111,7 @@ func (i SplitTunnelTunnelArgs) ToSplitTunnelTunnelOutputWithContext(ctx context.
 // SplitTunnelTunnelArrayInput is an input type that accepts SplitTunnelTunnelArray and SplitTunnelTunnelArrayOutput values.
 // You can construct a concrete instance of `SplitTunnelTunnelArrayInput` via:
 //
-//          SplitTunnelTunnelArray{ SplitTunnelTunnelArgs{...} }
+//	SplitTunnelTunnelArray{ SplitTunnelTunnelArgs{...} }
 type SplitTunnelTunnelArrayInput interface {
 	pulumi.Input
 
@@ -19571,7 +21194,7 @@ type TeamsAccountAntivirus struct {
 // TeamsAccountAntivirusInput is an input type that accepts TeamsAccountAntivirusArgs and TeamsAccountAntivirusOutput values.
 // You can construct a concrete instance of `TeamsAccountAntivirusInput` via:
 //
-//          TeamsAccountAntivirusArgs{...}
+//	TeamsAccountAntivirusArgs{...}
 type TeamsAccountAntivirusInput interface {
 	pulumi.Input
 
@@ -19611,11 +21234,11 @@ func (i TeamsAccountAntivirusArgs) ToTeamsAccountAntivirusPtrOutputWithContext(c
 // TeamsAccountAntivirusPtrInput is an input type that accepts TeamsAccountAntivirusArgs, TeamsAccountAntivirusPtr and TeamsAccountAntivirusPtrOutput values.
 // You can construct a concrete instance of `TeamsAccountAntivirusPtrInput` via:
 //
-//          TeamsAccountAntivirusArgs{...}
+//	        TeamsAccountAntivirusArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TeamsAccountAntivirusPtrInput interface {
 	pulumi.Input
 
@@ -19752,7 +21375,7 @@ type TeamsAccountBlockPage struct {
 // TeamsAccountBlockPageInput is an input type that accepts TeamsAccountBlockPageArgs and TeamsAccountBlockPageOutput values.
 // You can construct a concrete instance of `TeamsAccountBlockPageInput` via:
 //
-//          TeamsAccountBlockPageArgs{...}
+//	TeamsAccountBlockPageArgs{...}
 type TeamsAccountBlockPageInput interface {
 	pulumi.Input
 
@@ -19798,11 +21421,11 @@ func (i TeamsAccountBlockPageArgs) ToTeamsAccountBlockPagePtrOutputWithContext(c
 // TeamsAccountBlockPagePtrInput is an input type that accepts TeamsAccountBlockPageArgs, TeamsAccountBlockPagePtr and TeamsAccountBlockPagePtrOutput values.
 // You can construct a concrete instance of `TeamsAccountBlockPagePtrInput` via:
 //
-//          TeamsAccountBlockPageArgs{...}
+//	        TeamsAccountBlockPageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TeamsAccountBlockPagePtrInput interface {
 	pulumi.Input
 
@@ -19974,7 +21597,7 @@ type TeamsAccountFips struct {
 // TeamsAccountFipsInput is an input type that accepts TeamsAccountFipsArgs and TeamsAccountFipsOutput values.
 // You can construct a concrete instance of `TeamsAccountFipsInput` via:
 //
-//          TeamsAccountFipsArgs{...}
+//	TeamsAccountFipsArgs{...}
 type TeamsAccountFipsInput interface {
 	pulumi.Input
 
@@ -20010,11 +21633,11 @@ func (i TeamsAccountFipsArgs) ToTeamsAccountFipsPtrOutputWithContext(ctx context
 // TeamsAccountFipsPtrInput is an input type that accepts TeamsAccountFipsArgs, TeamsAccountFipsPtr and TeamsAccountFipsPtrOutput values.
 // You can construct a concrete instance of `TeamsAccountFipsPtrInput` via:
 //
-//          TeamsAccountFipsArgs{...}
+//	        TeamsAccountFipsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TeamsAccountFipsPtrInput interface {
 	pulumi.Input
 
@@ -20115,7 +21738,7 @@ type TeamsAccountLogging struct {
 // TeamsAccountLoggingInput is an input type that accepts TeamsAccountLoggingArgs and TeamsAccountLoggingOutput values.
 // You can construct a concrete instance of `TeamsAccountLoggingInput` via:
 //
-//          TeamsAccountLoggingArgs{...}
+//	TeamsAccountLoggingArgs{...}
 type TeamsAccountLoggingInput interface {
 	pulumi.Input
 
@@ -20155,11 +21778,11 @@ func (i TeamsAccountLoggingArgs) ToTeamsAccountLoggingPtrOutputWithContext(ctx c
 // TeamsAccountLoggingPtrInput is an input type that accepts TeamsAccountLoggingArgs, TeamsAccountLoggingPtr and TeamsAccountLoggingPtrOutput values.
 // You can construct a concrete instance of `TeamsAccountLoggingPtrInput` via:
 //
-//          TeamsAccountLoggingArgs{...}
+//	        TeamsAccountLoggingArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TeamsAccountLoggingPtrInput interface {
 	pulumi.Input
 
@@ -20276,7 +21899,7 @@ type TeamsAccountLoggingSettingsByRuleType struct {
 // TeamsAccountLoggingSettingsByRuleTypeInput is an input type that accepts TeamsAccountLoggingSettingsByRuleTypeArgs and TeamsAccountLoggingSettingsByRuleTypeOutput values.
 // You can construct a concrete instance of `TeamsAccountLoggingSettingsByRuleTypeInput` via:
 //
-//          TeamsAccountLoggingSettingsByRuleTypeArgs{...}
+//	TeamsAccountLoggingSettingsByRuleTypeArgs{...}
 type TeamsAccountLoggingSettingsByRuleTypeInput interface {
 	pulumi.Input
 
@@ -20313,11 +21936,11 @@ func (i TeamsAccountLoggingSettingsByRuleTypeArgs) ToTeamsAccountLoggingSettings
 // TeamsAccountLoggingSettingsByRuleTypePtrInput is an input type that accepts TeamsAccountLoggingSettingsByRuleTypeArgs, TeamsAccountLoggingSettingsByRuleTypePtr and TeamsAccountLoggingSettingsByRuleTypePtrOutput values.
 // You can construct a concrete instance of `TeamsAccountLoggingSettingsByRuleTypePtrInput` via:
 //
-//          TeamsAccountLoggingSettingsByRuleTypeArgs{...}
+//	        TeamsAccountLoggingSettingsByRuleTypeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TeamsAccountLoggingSettingsByRuleTypePtrInput interface {
 	pulumi.Input
 
@@ -20438,7 +22061,7 @@ type TeamsAccountLoggingSettingsByRuleTypeDns struct {
 // TeamsAccountLoggingSettingsByRuleTypeDnsInput is an input type that accepts TeamsAccountLoggingSettingsByRuleTypeDnsArgs and TeamsAccountLoggingSettingsByRuleTypeDnsOutput values.
 // You can construct a concrete instance of `TeamsAccountLoggingSettingsByRuleTypeDnsInput` via:
 //
-//          TeamsAccountLoggingSettingsByRuleTypeDnsArgs{...}
+//	TeamsAccountLoggingSettingsByRuleTypeDnsArgs{...}
 type TeamsAccountLoggingSettingsByRuleTypeDnsInput interface {
 	pulumi.Input
 
@@ -20474,11 +22097,11 @@ func (i TeamsAccountLoggingSettingsByRuleTypeDnsArgs) ToTeamsAccountLoggingSetti
 // TeamsAccountLoggingSettingsByRuleTypeDnsPtrInput is an input type that accepts TeamsAccountLoggingSettingsByRuleTypeDnsArgs, TeamsAccountLoggingSettingsByRuleTypeDnsPtr and TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput values.
 // You can construct a concrete instance of `TeamsAccountLoggingSettingsByRuleTypeDnsPtrInput` via:
 //
-//          TeamsAccountLoggingSettingsByRuleTypeDnsArgs{...}
+//	        TeamsAccountLoggingSettingsByRuleTypeDnsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TeamsAccountLoggingSettingsByRuleTypeDnsPtrInput interface {
 	pulumi.Input
 
@@ -20586,7 +22209,7 @@ type TeamsAccountLoggingSettingsByRuleTypeHttp struct {
 // TeamsAccountLoggingSettingsByRuleTypeHttpInput is an input type that accepts TeamsAccountLoggingSettingsByRuleTypeHttpArgs and TeamsAccountLoggingSettingsByRuleTypeHttpOutput values.
 // You can construct a concrete instance of `TeamsAccountLoggingSettingsByRuleTypeHttpInput` via:
 //
-//          TeamsAccountLoggingSettingsByRuleTypeHttpArgs{...}
+//	TeamsAccountLoggingSettingsByRuleTypeHttpArgs{...}
 type TeamsAccountLoggingSettingsByRuleTypeHttpInput interface {
 	pulumi.Input
 
@@ -20622,11 +22245,11 @@ func (i TeamsAccountLoggingSettingsByRuleTypeHttpArgs) ToTeamsAccountLoggingSett
 // TeamsAccountLoggingSettingsByRuleTypeHttpPtrInput is an input type that accepts TeamsAccountLoggingSettingsByRuleTypeHttpArgs, TeamsAccountLoggingSettingsByRuleTypeHttpPtr and TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput values.
 // You can construct a concrete instance of `TeamsAccountLoggingSettingsByRuleTypeHttpPtrInput` via:
 //
-//          TeamsAccountLoggingSettingsByRuleTypeHttpArgs{...}
+//	        TeamsAccountLoggingSettingsByRuleTypeHttpArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TeamsAccountLoggingSettingsByRuleTypeHttpPtrInput interface {
 	pulumi.Input
 
@@ -20734,7 +22357,7 @@ type TeamsAccountLoggingSettingsByRuleTypeL4 struct {
 // TeamsAccountLoggingSettingsByRuleTypeL4Input is an input type that accepts TeamsAccountLoggingSettingsByRuleTypeL4Args and TeamsAccountLoggingSettingsByRuleTypeL4Output values.
 // You can construct a concrete instance of `TeamsAccountLoggingSettingsByRuleTypeL4Input` via:
 //
-//          TeamsAccountLoggingSettingsByRuleTypeL4Args{...}
+//	TeamsAccountLoggingSettingsByRuleTypeL4Args{...}
 type TeamsAccountLoggingSettingsByRuleTypeL4Input interface {
 	pulumi.Input
 
@@ -20770,11 +22393,11 @@ func (i TeamsAccountLoggingSettingsByRuleTypeL4Args) ToTeamsAccountLoggingSettin
 // TeamsAccountLoggingSettingsByRuleTypeL4PtrInput is an input type that accepts TeamsAccountLoggingSettingsByRuleTypeL4Args, TeamsAccountLoggingSettingsByRuleTypeL4Ptr and TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput values.
 // You can construct a concrete instance of `TeamsAccountLoggingSettingsByRuleTypeL4PtrInput` via:
 //
-//          TeamsAccountLoggingSettingsByRuleTypeL4Args{...}
+//	        TeamsAccountLoggingSettingsByRuleTypeL4Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TeamsAccountLoggingSettingsByRuleTypeL4PtrInput interface {
 	pulumi.Input
 
@@ -20884,7 +22507,7 @@ type TeamsAccountProxy struct {
 // TeamsAccountProxyInput is an input type that accepts TeamsAccountProxyArgs and TeamsAccountProxyOutput values.
 // You can construct a concrete instance of `TeamsAccountProxyInput` via:
 //
-//          TeamsAccountProxyArgs{...}
+//	TeamsAccountProxyArgs{...}
 type TeamsAccountProxyInput interface {
 	pulumi.Input
 
@@ -20922,11 +22545,11 @@ func (i TeamsAccountProxyArgs) ToTeamsAccountProxyPtrOutputWithContext(ctx conte
 // TeamsAccountProxyPtrInput is an input type that accepts TeamsAccountProxyArgs, TeamsAccountProxyPtr and TeamsAccountProxyPtrOutput values.
 // You can construct a concrete instance of `TeamsAccountProxyPtrInput` via:
 //
-//          TeamsAccountProxyArgs{...}
+//	        TeamsAccountProxyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TeamsAccountProxyPtrInput interface {
 	pulumi.Input
 
@@ -21039,7 +22662,7 @@ type TeamsLocationNetwork struct {
 // TeamsLocationNetworkInput is an input type that accepts TeamsLocationNetworkArgs and TeamsLocationNetworkOutput values.
 // You can construct a concrete instance of `TeamsLocationNetworkInput` via:
 //
-//          TeamsLocationNetworkArgs{...}
+//	TeamsLocationNetworkArgs{...}
 type TeamsLocationNetworkInput interface {
 	pulumi.Input
 
@@ -21068,7 +22691,7 @@ func (i TeamsLocationNetworkArgs) ToTeamsLocationNetworkOutputWithContext(ctx co
 // TeamsLocationNetworkArrayInput is an input type that accepts TeamsLocationNetworkArray and TeamsLocationNetworkArrayOutput values.
 // You can construct a concrete instance of `TeamsLocationNetworkArrayInput` via:
 //
-//          TeamsLocationNetworkArray{ TeamsLocationNetworkArgs{...} }
+//	TeamsLocationNetworkArray{ TeamsLocationNetworkArgs{...} }
 type TeamsLocationNetworkArrayInput interface {
 	pulumi.Input
 
@@ -21157,7 +22780,7 @@ type TeamsRuleRuleSettings struct {
 // TeamsRuleRuleSettingsInput is an input type that accepts TeamsRuleRuleSettingsArgs and TeamsRuleRuleSettingsOutput values.
 // You can construct a concrete instance of `TeamsRuleRuleSettingsInput` via:
 //
-//          TeamsRuleRuleSettingsArgs{...}
+//	TeamsRuleRuleSettingsArgs{...}
 type TeamsRuleRuleSettingsInput interface {
 	pulumi.Input
 
@@ -21209,11 +22832,11 @@ func (i TeamsRuleRuleSettingsArgs) ToTeamsRuleRuleSettingsPtrOutputWithContext(c
 // TeamsRuleRuleSettingsPtrInput is an input type that accepts TeamsRuleRuleSettingsArgs, TeamsRuleRuleSettingsPtr and TeamsRuleRuleSettingsPtrOutput values.
 // You can construct a concrete instance of `TeamsRuleRuleSettingsPtrInput` via:
 //
-//          TeamsRuleRuleSettingsArgs{...}
+//	        TeamsRuleRuleSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TeamsRuleRuleSettingsPtrInput interface {
 	pulumi.Input
 
@@ -21438,7 +23061,7 @@ type TeamsRuleRuleSettingsBisoAdminControls struct {
 // TeamsRuleRuleSettingsBisoAdminControlsInput is an input type that accepts TeamsRuleRuleSettingsBisoAdminControlsArgs and TeamsRuleRuleSettingsBisoAdminControlsOutput values.
 // You can construct a concrete instance of `TeamsRuleRuleSettingsBisoAdminControlsInput` via:
 //
-//          TeamsRuleRuleSettingsBisoAdminControlsArgs{...}
+//	TeamsRuleRuleSettingsBisoAdminControlsArgs{...}
 type TeamsRuleRuleSettingsBisoAdminControlsInput interface {
 	pulumi.Input
 
@@ -21482,11 +23105,11 @@ func (i TeamsRuleRuleSettingsBisoAdminControlsArgs) ToTeamsRuleRuleSettingsBisoA
 // TeamsRuleRuleSettingsBisoAdminControlsPtrInput is an input type that accepts TeamsRuleRuleSettingsBisoAdminControlsArgs, TeamsRuleRuleSettingsBisoAdminControlsPtr and TeamsRuleRuleSettingsBisoAdminControlsPtrOutput values.
 // You can construct a concrete instance of `TeamsRuleRuleSettingsBisoAdminControlsPtrInput` via:
 //
-//          TeamsRuleRuleSettingsBisoAdminControlsArgs{...}
+//	        TeamsRuleRuleSettingsBisoAdminControlsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TeamsRuleRuleSettingsBisoAdminControlsPtrInput interface {
 	pulumi.Input
 
@@ -21645,7 +23268,7 @@ type TeamsRuleRuleSettingsCheckSession struct {
 // TeamsRuleRuleSettingsCheckSessionInput is an input type that accepts TeamsRuleRuleSettingsCheckSessionArgs and TeamsRuleRuleSettingsCheckSessionOutput values.
 // You can construct a concrete instance of `TeamsRuleRuleSettingsCheckSessionInput` via:
 //
-//          TeamsRuleRuleSettingsCheckSessionArgs{...}
+//	TeamsRuleRuleSettingsCheckSessionArgs{...}
 type TeamsRuleRuleSettingsCheckSessionInput interface {
 	pulumi.Input
 
@@ -21683,11 +23306,11 @@ func (i TeamsRuleRuleSettingsCheckSessionArgs) ToTeamsRuleRuleSettingsCheckSessi
 // TeamsRuleRuleSettingsCheckSessionPtrInput is an input type that accepts TeamsRuleRuleSettingsCheckSessionArgs, TeamsRuleRuleSettingsCheckSessionPtr and TeamsRuleRuleSettingsCheckSessionPtrOutput values.
 // You can construct a concrete instance of `TeamsRuleRuleSettingsCheckSessionPtrInput` via:
 //
-//          TeamsRuleRuleSettingsCheckSessionArgs{...}
+//	        TeamsRuleRuleSettingsCheckSessionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TeamsRuleRuleSettingsCheckSessionPtrInput interface {
 	pulumi.Input
 
@@ -21801,7 +23424,7 @@ type TeamsRuleRuleSettingsL4override struct {
 // TeamsRuleRuleSettingsL4overrideInput is an input type that accepts TeamsRuleRuleSettingsL4overrideArgs and TeamsRuleRuleSettingsL4overrideOutput values.
 // You can construct a concrete instance of `TeamsRuleRuleSettingsL4overrideInput` via:
 //
-//          TeamsRuleRuleSettingsL4overrideArgs{...}
+//	TeamsRuleRuleSettingsL4overrideArgs{...}
 type TeamsRuleRuleSettingsL4overrideInput interface {
 	pulumi.Input
 
@@ -21839,11 +23462,11 @@ func (i TeamsRuleRuleSettingsL4overrideArgs) ToTeamsRuleRuleSettingsL4overridePt
 // TeamsRuleRuleSettingsL4overridePtrInput is an input type that accepts TeamsRuleRuleSettingsL4overrideArgs, TeamsRuleRuleSettingsL4overridePtr and TeamsRuleRuleSettingsL4overridePtrOutput values.
 // You can construct a concrete instance of `TeamsRuleRuleSettingsL4overridePtrInput` via:
 //
-//          TeamsRuleRuleSettingsL4overrideArgs{...}
+//	        TeamsRuleRuleSettingsL4overrideArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TeamsRuleRuleSettingsL4overridePtrInput interface {
 	pulumi.Input
 
@@ -21956,7 +23579,7 @@ type WorkerScriptKvNamespaceBinding struct {
 // WorkerScriptKvNamespaceBindingInput is an input type that accepts WorkerScriptKvNamespaceBindingArgs and WorkerScriptKvNamespaceBindingOutput values.
 // You can construct a concrete instance of `WorkerScriptKvNamespaceBindingInput` via:
 //
-//          WorkerScriptKvNamespaceBindingArgs{...}
+//	WorkerScriptKvNamespaceBindingArgs{...}
 type WorkerScriptKvNamespaceBindingInput interface {
 	pulumi.Input
 
@@ -21985,7 +23608,7 @@ func (i WorkerScriptKvNamespaceBindingArgs) ToWorkerScriptKvNamespaceBindingOutp
 // WorkerScriptKvNamespaceBindingArrayInput is an input type that accepts WorkerScriptKvNamespaceBindingArray and WorkerScriptKvNamespaceBindingArrayOutput values.
 // You can construct a concrete instance of `WorkerScriptKvNamespaceBindingArrayInput` via:
 //
-//          WorkerScriptKvNamespaceBindingArray{ WorkerScriptKvNamespaceBindingArgs{...} }
+//	WorkerScriptKvNamespaceBindingArray{ WorkerScriptKvNamespaceBindingArgs{...} }
 type WorkerScriptKvNamespaceBindingArrayInput interface {
 	pulumi.Input
 
@@ -22060,7 +23683,7 @@ type WorkerScriptPlainTextBinding struct {
 // WorkerScriptPlainTextBindingInput is an input type that accepts WorkerScriptPlainTextBindingArgs and WorkerScriptPlainTextBindingOutput values.
 // You can construct a concrete instance of `WorkerScriptPlainTextBindingInput` via:
 //
-//          WorkerScriptPlainTextBindingArgs{...}
+//	WorkerScriptPlainTextBindingArgs{...}
 type WorkerScriptPlainTextBindingInput interface {
 	pulumi.Input
 
@@ -22090,7 +23713,7 @@ func (i WorkerScriptPlainTextBindingArgs) ToWorkerScriptPlainTextBindingOutputWi
 // WorkerScriptPlainTextBindingArrayInput is an input type that accepts WorkerScriptPlainTextBindingArray and WorkerScriptPlainTextBindingArrayOutput values.
 // You can construct a concrete instance of `WorkerScriptPlainTextBindingArrayInput` via:
 //
-//          WorkerScriptPlainTextBindingArray{ WorkerScriptPlainTextBindingArgs{...} }
+//	WorkerScriptPlainTextBindingArray{ WorkerScriptPlainTextBindingArgs{...} }
 type WorkerScriptPlainTextBindingArrayInput interface {
 	pulumi.Input
 
@@ -22156,6 +23779,112 @@ func (o WorkerScriptPlainTextBindingArrayOutput) Index(i pulumi.IntInput) Worker
 	}).(WorkerScriptPlainTextBindingOutput)
 }
 
+type WorkerScriptR2BucketBinding struct {
+	// The name of the Bucket to bind to.
+	BucketName string `pulumi:"bucketName"`
+	// The global variable for the binding in your Worker code.
+	Name string `pulumi:"name"`
+}
+
+// WorkerScriptR2BucketBindingInput is an input type that accepts WorkerScriptR2BucketBindingArgs and WorkerScriptR2BucketBindingOutput values.
+// You can construct a concrete instance of `WorkerScriptR2BucketBindingInput` via:
+//
+//	WorkerScriptR2BucketBindingArgs{...}
+type WorkerScriptR2BucketBindingInput interface {
+	pulumi.Input
+
+	ToWorkerScriptR2BucketBindingOutput() WorkerScriptR2BucketBindingOutput
+	ToWorkerScriptR2BucketBindingOutputWithContext(context.Context) WorkerScriptR2BucketBindingOutput
+}
+
+type WorkerScriptR2BucketBindingArgs struct {
+	// The name of the Bucket to bind to.
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// The global variable for the binding in your Worker code.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkerScriptR2BucketBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptR2BucketBinding)(nil)).Elem()
+}
+
+func (i WorkerScriptR2BucketBindingArgs) ToWorkerScriptR2BucketBindingOutput() WorkerScriptR2BucketBindingOutput {
+	return i.ToWorkerScriptR2BucketBindingOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptR2BucketBindingArgs) ToWorkerScriptR2BucketBindingOutputWithContext(ctx context.Context) WorkerScriptR2BucketBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptR2BucketBindingOutput)
+}
+
+// WorkerScriptR2BucketBindingArrayInput is an input type that accepts WorkerScriptR2BucketBindingArray and WorkerScriptR2BucketBindingArrayOutput values.
+// You can construct a concrete instance of `WorkerScriptR2BucketBindingArrayInput` via:
+//
+//	WorkerScriptR2BucketBindingArray{ WorkerScriptR2BucketBindingArgs{...} }
+type WorkerScriptR2BucketBindingArrayInput interface {
+	pulumi.Input
+
+	ToWorkerScriptR2BucketBindingArrayOutput() WorkerScriptR2BucketBindingArrayOutput
+	ToWorkerScriptR2BucketBindingArrayOutputWithContext(context.Context) WorkerScriptR2BucketBindingArrayOutput
+}
+
+type WorkerScriptR2BucketBindingArray []WorkerScriptR2BucketBindingInput
+
+func (WorkerScriptR2BucketBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerScriptR2BucketBinding)(nil)).Elem()
+}
+
+func (i WorkerScriptR2BucketBindingArray) ToWorkerScriptR2BucketBindingArrayOutput() WorkerScriptR2BucketBindingArrayOutput {
+	return i.ToWorkerScriptR2BucketBindingArrayOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptR2BucketBindingArray) ToWorkerScriptR2BucketBindingArrayOutputWithContext(ctx context.Context) WorkerScriptR2BucketBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptR2BucketBindingArrayOutput)
+}
+
+type WorkerScriptR2BucketBindingOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptR2BucketBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptR2BucketBinding)(nil)).Elem()
+}
+
+func (o WorkerScriptR2BucketBindingOutput) ToWorkerScriptR2BucketBindingOutput() WorkerScriptR2BucketBindingOutput {
+	return o
+}
+
+func (o WorkerScriptR2BucketBindingOutput) ToWorkerScriptR2BucketBindingOutputWithContext(ctx context.Context) WorkerScriptR2BucketBindingOutput {
+	return o
+}
+
+// The name of the Bucket to bind to.
+func (o WorkerScriptR2BucketBindingOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerScriptR2BucketBinding) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// The global variable for the binding in your Worker code.
+func (o WorkerScriptR2BucketBindingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerScriptR2BucketBinding) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkerScriptR2BucketBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptR2BucketBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerScriptR2BucketBinding)(nil)).Elem()
+}
+
+func (o WorkerScriptR2BucketBindingArrayOutput) ToWorkerScriptR2BucketBindingArrayOutput() WorkerScriptR2BucketBindingArrayOutput {
+	return o
+}
+
+func (o WorkerScriptR2BucketBindingArrayOutput) ToWorkerScriptR2BucketBindingArrayOutputWithContext(ctx context.Context) WorkerScriptR2BucketBindingArrayOutput {
+	return o
+}
+
+func (o WorkerScriptR2BucketBindingArrayOutput) Index(i pulumi.IntInput) WorkerScriptR2BucketBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerScriptR2BucketBinding {
+		return vs[0].([]WorkerScriptR2BucketBinding)[vs[1].(int)]
+	}).(WorkerScriptR2BucketBindingOutput)
+}
+
 type WorkerScriptSecretTextBinding struct {
 	// The global variable for the binding in your Worker code.
 	Name string `pulumi:"name"`
@@ -22166,7 +23895,7 @@ type WorkerScriptSecretTextBinding struct {
 // WorkerScriptSecretTextBindingInput is an input type that accepts WorkerScriptSecretTextBindingArgs and WorkerScriptSecretTextBindingOutput values.
 // You can construct a concrete instance of `WorkerScriptSecretTextBindingInput` via:
 //
-//          WorkerScriptSecretTextBindingArgs{...}
+//	WorkerScriptSecretTextBindingArgs{...}
 type WorkerScriptSecretTextBindingInput interface {
 	pulumi.Input
 
@@ -22196,7 +23925,7 @@ func (i WorkerScriptSecretTextBindingArgs) ToWorkerScriptSecretTextBindingOutput
 // WorkerScriptSecretTextBindingArrayInput is an input type that accepts WorkerScriptSecretTextBindingArray and WorkerScriptSecretTextBindingArrayOutput values.
 // You can construct a concrete instance of `WorkerScriptSecretTextBindingArrayInput` via:
 //
-//          WorkerScriptSecretTextBindingArray{ WorkerScriptSecretTextBindingArgs{...} }
+//	WorkerScriptSecretTextBindingArray{ WorkerScriptSecretTextBindingArgs{...} }
 type WorkerScriptSecretTextBindingArrayInput interface {
 	pulumi.Input
 
@@ -22274,7 +24003,7 @@ type WorkerScriptServiceBinding struct {
 // WorkerScriptServiceBindingInput is an input type that accepts WorkerScriptServiceBindingArgs and WorkerScriptServiceBindingOutput values.
 // You can construct a concrete instance of `WorkerScriptServiceBindingInput` via:
 //
-//          WorkerScriptServiceBindingArgs{...}
+//	WorkerScriptServiceBindingArgs{...}
 type WorkerScriptServiceBindingInput interface {
 	pulumi.Input
 
@@ -22306,7 +24035,7 @@ func (i WorkerScriptServiceBindingArgs) ToWorkerScriptServiceBindingOutputWithCo
 // WorkerScriptServiceBindingArrayInput is an input type that accepts WorkerScriptServiceBindingArray and WorkerScriptServiceBindingArrayOutput values.
 // You can construct a concrete instance of `WorkerScriptServiceBindingArrayInput` via:
 //
-//          WorkerScriptServiceBindingArray{ WorkerScriptServiceBindingArgs{...} }
+//	WorkerScriptServiceBindingArray{ WorkerScriptServiceBindingArgs{...} }
 type WorkerScriptServiceBindingArrayInput interface {
 	pulumi.Input
 
@@ -22387,7 +24116,7 @@ type WorkerScriptWebassemblyBinding struct {
 // WorkerScriptWebassemblyBindingInput is an input type that accepts WorkerScriptWebassemblyBindingArgs and WorkerScriptWebassemblyBindingOutput values.
 // You can construct a concrete instance of `WorkerScriptWebassemblyBindingInput` via:
 //
-//          WorkerScriptWebassemblyBindingArgs{...}
+//	WorkerScriptWebassemblyBindingArgs{...}
 type WorkerScriptWebassemblyBindingInput interface {
 	pulumi.Input
 
@@ -22417,7 +24146,7 @@ func (i WorkerScriptWebassemblyBindingArgs) ToWorkerScriptWebassemblyBindingOutp
 // WorkerScriptWebassemblyBindingArrayInput is an input type that accepts WorkerScriptWebassemblyBindingArray and WorkerScriptWebassemblyBindingArrayOutput values.
 // You can construct a concrete instance of `WorkerScriptWebassemblyBindingArrayInput` via:
 //
-//          WorkerScriptWebassemblyBindingArray{ WorkerScriptWebassemblyBindingArgs{...} }
+//	WorkerScriptWebassemblyBindingArray{ WorkerScriptWebassemblyBindingArgs{...} }
 type WorkerScriptWebassemblyBindingArrayInput interface {
 	pulumi.Input
 
@@ -22493,7 +24222,7 @@ type ZoneLockdownConfiguration struct {
 // ZoneLockdownConfigurationInput is an input type that accepts ZoneLockdownConfigurationArgs and ZoneLockdownConfigurationOutput values.
 // You can construct a concrete instance of `ZoneLockdownConfigurationInput` via:
 //
-//          ZoneLockdownConfigurationArgs{...}
+//	ZoneLockdownConfigurationArgs{...}
 type ZoneLockdownConfigurationInput interface {
 	pulumi.Input
 
@@ -22523,7 +24252,7 @@ func (i ZoneLockdownConfigurationArgs) ToZoneLockdownConfigurationOutputWithCont
 // ZoneLockdownConfigurationArrayInput is an input type that accepts ZoneLockdownConfigurationArray and ZoneLockdownConfigurationArrayOutput values.
 // You can construct a concrete instance of `ZoneLockdownConfigurationArrayInput` via:
 //
-//          ZoneLockdownConfigurationArray{ ZoneLockdownConfigurationArgs{...} }
+//	ZoneLockdownConfigurationArray{ ZoneLockdownConfigurationArgs{...} }
 type ZoneLockdownConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -22664,7 +24393,7 @@ type ZoneSettingsOverrideInitialSetting struct {
 // ZoneSettingsOverrideInitialSettingInput is an input type that accepts ZoneSettingsOverrideInitialSettingArgs and ZoneSettingsOverrideInitialSettingOutput values.
 // You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingInput` via:
 //
-//          ZoneSettingsOverrideInitialSettingArgs{...}
+//	ZoneSettingsOverrideInitialSettingArgs{...}
 type ZoneSettingsOverrideInitialSettingInput interface {
 	pulumi.Input
 
@@ -22759,7 +24488,7 @@ func (i ZoneSettingsOverrideInitialSettingArgs) ToZoneSettingsOverrideInitialSet
 // ZoneSettingsOverrideInitialSettingArrayInput is an input type that accepts ZoneSettingsOverrideInitialSettingArray and ZoneSettingsOverrideInitialSettingArrayOutput values.
 // You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingArrayInput` via:
 //
-//          ZoneSettingsOverrideInitialSettingArray{ ZoneSettingsOverrideInitialSettingArgs{...} }
+//	ZoneSettingsOverrideInitialSettingArray{ ZoneSettingsOverrideInitialSettingArgs{...} }
 type ZoneSettingsOverrideInitialSettingArrayInput interface {
 	pulumi.Input
 
@@ -23065,7 +24794,7 @@ type ZoneSettingsOverrideInitialSettingMinify struct {
 // ZoneSettingsOverrideInitialSettingMinifyInput is an input type that accepts ZoneSettingsOverrideInitialSettingMinifyArgs and ZoneSettingsOverrideInitialSettingMinifyOutput values.
 // You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingMinifyInput` via:
 //
-//          ZoneSettingsOverrideInitialSettingMinifyArgs{...}
+//	ZoneSettingsOverrideInitialSettingMinifyArgs{...}
 type ZoneSettingsOverrideInitialSettingMinifyInput interface {
 	pulumi.Input
 
@@ -23105,11 +24834,11 @@ func (i ZoneSettingsOverrideInitialSettingMinifyArgs) ToZoneSettingsOverrideInit
 // ZoneSettingsOverrideInitialSettingMinifyPtrInput is an input type that accepts ZoneSettingsOverrideInitialSettingMinifyArgs, ZoneSettingsOverrideInitialSettingMinifyPtr and ZoneSettingsOverrideInitialSettingMinifyPtrOutput values.
 // You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingMinifyPtrInput` via:
 //
-//          ZoneSettingsOverrideInitialSettingMinifyArgs{...}
+//	        ZoneSettingsOverrideInitialSettingMinifyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ZoneSettingsOverrideInitialSettingMinifyPtrInput interface {
 	pulumi.Input
 
@@ -23240,7 +24969,7 @@ type ZoneSettingsOverrideInitialSettingMobileRedirect struct {
 // ZoneSettingsOverrideInitialSettingMobileRedirectInput is an input type that accepts ZoneSettingsOverrideInitialSettingMobileRedirectArgs and ZoneSettingsOverrideInitialSettingMobileRedirectOutput values.
 // You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingMobileRedirectInput` via:
 //
-//          ZoneSettingsOverrideInitialSettingMobileRedirectArgs{...}
+//	ZoneSettingsOverrideInitialSettingMobileRedirectArgs{...}
 type ZoneSettingsOverrideInitialSettingMobileRedirectInput interface {
 	pulumi.Input
 
@@ -23280,11 +25009,11 @@ func (i ZoneSettingsOverrideInitialSettingMobileRedirectArgs) ToZoneSettingsOver
 // ZoneSettingsOverrideInitialSettingMobileRedirectPtrInput is an input type that accepts ZoneSettingsOverrideInitialSettingMobileRedirectArgs, ZoneSettingsOverrideInitialSettingMobileRedirectPtr and ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput values.
 // You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingMobileRedirectPtrInput` via:
 //
-//          ZoneSettingsOverrideInitialSettingMobileRedirectArgs{...}
+//	        ZoneSettingsOverrideInitialSettingMobileRedirectArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ZoneSettingsOverrideInitialSettingMobileRedirectPtrInput interface {
 	pulumi.Input
 
@@ -23419,7 +25148,7 @@ type ZoneSettingsOverrideInitialSettingSecurityHeader struct {
 // ZoneSettingsOverrideInitialSettingSecurityHeaderInput is an input type that accepts ZoneSettingsOverrideInitialSettingSecurityHeaderArgs and ZoneSettingsOverrideInitialSettingSecurityHeaderOutput values.
 // You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingSecurityHeaderInput` via:
 //
-//          ZoneSettingsOverrideInitialSettingSecurityHeaderArgs{...}
+//	ZoneSettingsOverrideInitialSettingSecurityHeaderArgs{...}
 type ZoneSettingsOverrideInitialSettingSecurityHeaderInput interface {
 	pulumi.Input
 
@@ -23463,11 +25192,11 @@ func (i ZoneSettingsOverrideInitialSettingSecurityHeaderArgs) ToZoneSettingsOver
 // ZoneSettingsOverrideInitialSettingSecurityHeaderPtrInput is an input type that accepts ZoneSettingsOverrideInitialSettingSecurityHeaderArgs, ZoneSettingsOverrideInitialSettingSecurityHeaderPtr and ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput values.
 // You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingSecurityHeaderPtrInput` via:
 //
-//          ZoneSettingsOverrideInitialSettingSecurityHeaderArgs{...}
+//	        ZoneSettingsOverrideInitialSettingSecurityHeaderArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ZoneSettingsOverrideInitialSettingSecurityHeaderPtrInput interface {
 	pulumi.Input
 
@@ -23691,7 +25420,7 @@ type ZoneSettingsOverrideSettings struct {
 // ZoneSettingsOverrideSettingsInput is an input type that accepts ZoneSettingsOverrideSettingsArgs and ZoneSettingsOverrideSettingsOutput values.
 // You can construct a concrete instance of `ZoneSettingsOverrideSettingsInput` via:
 //
-//          ZoneSettingsOverrideSettingsArgs{...}
+//	ZoneSettingsOverrideSettingsArgs{...}
 type ZoneSettingsOverrideSettingsInput interface {
 	pulumi.Input
 
@@ -23794,11 +25523,11 @@ func (i ZoneSettingsOverrideSettingsArgs) ToZoneSettingsOverrideSettingsPtrOutpu
 // ZoneSettingsOverrideSettingsPtrInput is an input type that accepts ZoneSettingsOverrideSettingsArgs, ZoneSettingsOverrideSettingsPtr and ZoneSettingsOverrideSettingsPtrOutput values.
 // You can construct a concrete instance of `ZoneSettingsOverrideSettingsPtrInput` via:
 //
-//          ZoneSettingsOverrideSettingsArgs{...}
+//	        ZoneSettingsOverrideSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ZoneSettingsOverrideSettingsPtrInput interface {
 	pulumi.Input
 
@@ -24631,7 +26360,7 @@ type ZoneSettingsOverrideSettingsMinify struct {
 // ZoneSettingsOverrideSettingsMinifyInput is an input type that accepts ZoneSettingsOverrideSettingsMinifyArgs and ZoneSettingsOverrideSettingsMinifyOutput values.
 // You can construct a concrete instance of `ZoneSettingsOverrideSettingsMinifyInput` via:
 //
-//          ZoneSettingsOverrideSettingsMinifyArgs{...}
+//	ZoneSettingsOverrideSettingsMinifyArgs{...}
 type ZoneSettingsOverrideSettingsMinifyInput interface {
 	pulumi.Input
 
@@ -24671,11 +26400,11 @@ func (i ZoneSettingsOverrideSettingsMinifyArgs) ToZoneSettingsOverrideSettingsMi
 // ZoneSettingsOverrideSettingsMinifyPtrInput is an input type that accepts ZoneSettingsOverrideSettingsMinifyArgs, ZoneSettingsOverrideSettingsMinifyPtr and ZoneSettingsOverrideSettingsMinifyPtrOutput values.
 // You can construct a concrete instance of `ZoneSettingsOverrideSettingsMinifyPtrInput` via:
 //
-//          ZoneSettingsOverrideSettingsMinifyArgs{...}
+//	        ZoneSettingsOverrideSettingsMinifyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ZoneSettingsOverrideSettingsMinifyPtrInput interface {
 	pulumi.Input
 
@@ -24806,7 +26535,7 @@ type ZoneSettingsOverrideSettingsMobileRedirect struct {
 // ZoneSettingsOverrideSettingsMobileRedirectInput is an input type that accepts ZoneSettingsOverrideSettingsMobileRedirectArgs and ZoneSettingsOverrideSettingsMobileRedirectOutput values.
 // You can construct a concrete instance of `ZoneSettingsOverrideSettingsMobileRedirectInput` via:
 //
-//          ZoneSettingsOverrideSettingsMobileRedirectArgs{...}
+//	ZoneSettingsOverrideSettingsMobileRedirectArgs{...}
 type ZoneSettingsOverrideSettingsMobileRedirectInput interface {
 	pulumi.Input
 
@@ -24846,11 +26575,11 @@ func (i ZoneSettingsOverrideSettingsMobileRedirectArgs) ToZoneSettingsOverrideSe
 // ZoneSettingsOverrideSettingsMobileRedirectPtrInput is an input type that accepts ZoneSettingsOverrideSettingsMobileRedirectArgs, ZoneSettingsOverrideSettingsMobileRedirectPtr and ZoneSettingsOverrideSettingsMobileRedirectPtrOutput values.
 // You can construct a concrete instance of `ZoneSettingsOverrideSettingsMobileRedirectPtrInput` via:
 //
-//          ZoneSettingsOverrideSettingsMobileRedirectArgs{...}
+//	        ZoneSettingsOverrideSettingsMobileRedirectArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ZoneSettingsOverrideSettingsMobileRedirectPtrInput interface {
 	pulumi.Input
 
@@ -24985,7 +26714,7 @@ type ZoneSettingsOverrideSettingsSecurityHeader struct {
 // ZoneSettingsOverrideSettingsSecurityHeaderInput is an input type that accepts ZoneSettingsOverrideSettingsSecurityHeaderArgs and ZoneSettingsOverrideSettingsSecurityHeaderOutput values.
 // You can construct a concrete instance of `ZoneSettingsOverrideSettingsSecurityHeaderInput` via:
 //
-//          ZoneSettingsOverrideSettingsSecurityHeaderArgs{...}
+//	ZoneSettingsOverrideSettingsSecurityHeaderArgs{...}
 type ZoneSettingsOverrideSettingsSecurityHeaderInput interface {
 	pulumi.Input
 
@@ -25029,11 +26758,11 @@ func (i ZoneSettingsOverrideSettingsSecurityHeaderArgs) ToZoneSettingsOverrideSe
 // ZoneSettingsOverrideSettingsSecurityHeaderPtrInput is an input type that accepts ZoneSettingsOverrideSettingsSecurityHeaderArgs, ZoneSettingsOverrideSettingsSecurityHeaderPtr and ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput values.
 // You can construct a concrete instance of `ZoneSettingsOverrideSettingsSecurityHeaderPtrInput` via:
 //
-//          ZoneSettingsOverrideSettingsSecurityHeaderArgs{...}
+//	        ZoneSettingsOverrideSettingsSecurityHeaderArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ZoneSettingsOverrideSettingsSecurityHeaderPtrInput interface {
 	pulumi.Input
 
@@ -25184,14 +26913,15 @@ func (o ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput) Preload() pulumi.Bo
 
 type GetAccountRolesRole struct {
 	Description *string `pulumi:"description"`
-	Id          *string `pulumi:"id"`
-	Name        *string `pulumi:"name"`
+	// The ID of this resource.
+	Id   *string `pulumi:"id"`
+	Name *string `pulumi:"name"`
 }
 
 // GetAccountRolesRoleInput is an input type that accepts GetAccountRolesRoleArgs and GetAccountRolesRoleOutput values.
 // You can construct a concrete instance of `GetAccountRolesRoleInput` via:
 //
-//          GetAccountRolesRoleArgs{...}
+//	GetAccountRolesRoleArgs{...}
 type GetAccountRolesRoleInput interface {
 	pulumi.Input
 
@@ -25201,8 +26931,9 @@ type GetAccountRolesRoleInput interface {
 
 type GetAccountRolesRoleArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Id          pulumi.StringPtrInput `pulumi:"id"`
-	Name        pulumi.StringPtrInput `pulumi:"name"`
+	// The ID of this resource.
+	Id   pulumi.StringPtrInput `pulumi:"id"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (GetAccountRolesRoleArgs) ElementType() reflect.Type {
@@ -25220,7 +26951,7 @@ func (i GetAccountRolesRoleArgs) ToGetAccountRolesRoleOutputWithContext(ctx cont
 // GetAccountRolesRoleArrayInput is an input type that accepts GetAccountRolesRoleArray and GetAccountRolesRoleArrayOutput values.
 // You can construct a concrete instance of `GetAccountRolesRoleArrayInput` via:
 //
-//          GetAccountRolesRoleArray{ GetAccountRolesRoleArgs{...} }
+//	GetAccountRolesRoleArray{ GetAccountRolesRoleArgs{...} }
 type GetAccountRolesRoleArrayInput interface {
 	pulumi.Input
 
@@ -25260,6 +26991,7 @@ func (o GetAccountRolesRoleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountRolesRole) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The ID of this resource.
 func (o GetAccountRolesRoleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountRolesRole) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -25291,24 +27023,25 @@ func (o GetAccountRolesRoleArrayOutput) Index(i pulumi.IntInput) GetAccountRoles
 type GetDevicesDevice struct {
 	Created    *string `pulumi:"created"`
 	DeviceType *string `pulumi:"deviceType"`
-	Id         *string `pulumi:"id"`
-	Ip         *string `pulumi:"ip"`
-	Key        *string `pulumi:"key"`
-	LastSeen   *string `pulumi:"lastSeen"`
-	Model      *string `pulumi:"model"`
-	Name       *string `pulumi:"name"`
-	OsVersion  *string `pulumi:"osVersion"`
-	Updated    *string `pulumi:"updated"`
-	UserEmail  *string `pulumi:"userEmail"`
-	UserId     *string `pulumi:"userId"`
-	UserName   *string `pulumi:"userName"`
-	Version    *string `pulumi:"version"`
+	// The ID of this resource.
+	Id        *string `pulumi:"id"`
+	Ip        *string `pulumi:"ip"`
+	Key       *string `pulumi:"key"`
+	LastSeen  *string `pulumi:"lastSeen"`
+	Model     *string `pulumi:"model"`
+	Name      *string `pulumi:"name"`
+	OsVersion *string `pulumi:"osVersion"`
+	Updated   *string `pulumi:"updated"`
+	UserEmail *string `pulumi:"userEmail"`
+	UserId    *string `pulumi:"userId"`
+	UserName  *string `pulumi:"userName"`
+	Version   *string `pulumi:"version"`
 }
 
 // GetDevicesDeviceInput is an input type that accepts GetDevicesDeviceArgs and GetDevicesDeviceOutput values.
 // You can construct a concrete instance of `GetDevicesDeviceInput` via:
 //
-//          GetDevicesDeviceArgs{...}
+//	GetDevicesDeviceArgs{...}
 type GetDevicesDeviceInput interface {
 	pulumi.Input
 
@@ -25319,18 +27052,19 @@ type GetDevicesDeviceInput interface {
 type GetDevicesDeviceArgs struct {
 	Created    pulumi.StringPtrInput `pulumi:"created"`
 	DeviceType pulumi.StringPtrInput `pulumi:"deviceType"`
-	Id         pulumi.StringPtrInput `pulumi:"id"`
-	Ip         pulumi.StringPtrInput `pulumi:"ip"`
-	Key        pulumi.StringPtrInput `pulumi:"key"`
-	LastSeen   pulumi.StringPtrInput `pulumi:"lastSeen"`
-	Model      pulumi.StringPtrInput `pulumi:"model"`
-	Name       pulumi.StringPtrInput `pulumi:"name"`
-	OsVersion  pulumi.StringPtrInput `pulumi:"osVersion"`
-	Updated    pulumi.StringPtrInput `pulumi:"updated"`
-	UserEmail  pulumi.StringPtrInput `pulumi:"userEmail"`
-	UserId     pulumi.StringPtrInput `pulumi:"userId"`
-	UserName   pulumi.StringPtrInput `pulumi:"userName"`
-	Version    pulumi.StringPtrInput `pulumi:"version"`
+	// The ID of this resource.
+	Id        pulumi.StringPtrInput `pulumi:"id"`
+	Ip        pulumi.StringPtrInput `pulumi:"ip"`
+	Key       pulumi.StringPtrInput `pulumi:"key"`
+	LastSeen  pulumi.StringPtrInput `pulumi:"lastSeen"`
+	Model     pulumi.StringPtrInput `pulumi:"model"`
+	Name      pulumi.StringPtrInput `pulumi:"name"`
+	OsVersion pulumi.StringPtrInput `pulumi:"osVersion"`
+	Updated   pulumi.StringPtrInput `pulumi:"updated"`
+	UserEmail pulumi.StringPtrInput `pulumi:"userEmail"`
+	UserId    pulumi.StringPtrInput `pulumi:"userId"`
+	UserName  pulumi.StringPtrInput `pulumi:"userName"`
+	Version   pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (GetDevicesDeviceArgs) ElementType() reflect.Type {
@@ -25348,7 +27082,7 @@ func (i GetDevicesDeviceArgs) ToGetDevicesDeviceOutputWithContext(ctx context.Co
 // GetDevicesDeviceArrayInput is an input type that accepts GetDevicesDeviceArray and GetDevicesDeviceArrayOutput values.
 // You can construct a concrete instance of `GetDevicesDeviceArrayInput` via:
 //
-//          GetDevicesDeviceArray{ GetDevicesDeviceArgs{...} }
+//	GetDevicesDeviceArray{ GetDevicesDeviceArgs{...} }
 type GetDevicesDeviceArrayInput interface {
 	pulumi.Input
 
@@ -25392,6 +27126,7 @@ func (o GetDevicesDeviceOutput) DeviceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDevicesDevice) *string { return v.DeviceType }).(pulumi.StringPtrOutput)
 }
 
+// The ID of this resource.
 func (o GetDevicesDeviceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDevicesDevice) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -25468,7 +27203,7 @@ type GetWafGroupsFilter struct {
 // GetWafGroupsFilterInput is an input type that accepts GetWafGroupsFilterArgs and GetWafGroupsFilterOutput values.
 // You can construct a concrete instance of `GetWafGroupsFilterInput` via:
 //
-//          GetWafGroupsFilterArgs{...}
+//	GetWafGroupsFilterArgs{...}
 type GetWafGroupsFilterInput interface {
 	pulumi.Input
 
@@ -25504,11 +27239,11 @@ func (i GetWafGroupsFilterArgs) ToGetWafGroupsFilterPtrOutputWithContext(ctx con
 // GetWafGroupsFilterPtrInput is an input type that accepts GetWafGroupsFilterArgs, GetWafGroupsFilterPtr and GetWafGroupsFilterPtrOutput values.
 // You can construct a concrete instance of `GetWafGroupsFilterPtrInput` via:
 //
-//          GetWafGroupsFilterArgs{...}
+//	        GetWafGroupsFilterArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetWafGroupsFilterPtrInput interface {
 	pulumi.Input
 
@@ -25609,7 +27344,8 @@ func (o GetWafGroupsFilterPtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 type GetWafGroupsGroup struct {
-	Description        *string `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// The ID of this resource.
 	Id                 *string `pulumi:"id"`
 	Mode               *string `pulumi:"mode"`
 	ModifiedRulesCount *int    `pulumi:"modifiedRulesCount"`
@@ -25621,7 +27357,7 @@ type GetWafGroupsGroup struct {
 // GetWafGroupsGroupInput is an input type that accepts GetWafGroupsGroupArgs and GetWafGroupsGroupOutput values.
 // You can construct a concrete instance of `GetWafGroupsGroupInput` via:
 //
-//          GetWafGroupsGroupArgs{...}
+//	GetWafGroupsGroupArgs{...}
 type GetWafGroupsGroupInput interface {
 	pulumi.Input
 
@@ -25630,7 +27366,8 @@ type GetWafGroupsGroupInput interface {
 }
 
 type GetWafGroupsGroupArgs struct {
-	Description        pulumi.StringPtrInput `pulumi:"description"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The ID of this resource.
 	Id                 pulumi.StringPtrInput `pulumi:"id"`
 	Mode               pulumi.StringPtrInput `pulumi:"mode"`
 	ModifiedRulesCount pulumi.IntPtrInput    `pulumi:"modifiedRulesCount"`
@@ -25654,7 +27391,7 @@ func (i GetWafGroupsGroupArgs) ToGetWafGroupsGroupOutputWithContext(ctx context.
 // GetWafGroupsGroupArrayInput is an input type that accepts GetWafGroupsGroupArray and GetWafGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetWafGroupsGroupArrayInput` via:
 //
-//          GetWafGroupsGroupArray{ GetWafGroupsGroupArgs{...} }
+//	GetWafGroupsGroupArray{ GetWafGroupsGroupArgs{...} }
 type GetWafGroupsGroupArrayInput interface {
 	pulumi.Input
 
@@ -25694,6 +27431,7 @@ func (o GetWafGroupsGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafGroupsGroup) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The ID of this resource.
 func (o GetWafGroupsGroupOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafGroupsGroup) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -25748,7 +27486,7 @@ type GetWafPackagesFilter struct {
 // GetWafPackagesFilterInput is an input type that accepts GetWafPackagesFilterArgs and GetWafPackagesFilterOutput values.
 // You can construct a concrete instance of `GetWafPackagesFilterInput` via:
 //
-//          GetWafPackagesFilterArgs{...}
+//	GetWafPackagesFilterArgs{...}
 type GetWafPackagesFilterInput interface {
 	pulumi.Input
 
@@ -25786,11 +27524,11 @@ func (i GetWafPackagesFilterArgs) ToGetWafPackagesFilterPtrOutputWithContext(ctx
 // GetWafPackagesFilterPtrInput is an input type that accepts GetWafPackagesFilterArgs, GetWafPackagesFilterPtr and GetWafPackagesFilterPtrOutput values.
 // You can construct a concrete instance of `GetWafPackagesFilterPtrInput` via:
 //
-//          GetWafPackagesFilterArgs{...}
+//	        GetWafPackagesFilterArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetWafPackagesFilterPtrInput interface {
 	pulumi.Input
 
@@ -25920,15 +27658,16 @@ type GetWafPackagesPackage struct {
 	ActionMode    *string `pulumi:"actionMode"`
 	Description   *string `pulumi:"description"`
 	DetectionMode *string `pulumi:"detectionMode"`
-	Id            *string `pulumi:"id"`
-	Name          *string `pulumi:"name"`
-	Sensitivity   *string `pulumi:"sensitivity"`
+	// The ID of this resource.
+	Id          *string `pulumi:"id"`
+	Name        *string `pulumi:"name"`
+	Sensitivity *string `pulumi:"sensitivity"`
 }
 
 // GetWafPackagesPackageInput is an input type that accepts GetWafPackagesPackageArgs and GetWafPackagesPackageOutput values.
 // You can construct a concrete instance of `GetWafPackagesPackageInput` via:
 //
-//          GetWafPackagesPackageArgs{...}
+//	GetWafPackagesPackageArgs{...}
 type GetWafPackagesPackageInput interface {
 	pulumi.Input
 
@@ -25940,9 +27679,10 @@ type GetWafPackagesPackageArgs struct {
 	ActionMode    pulumi.StringPtrInput `pulumi:"actionMode"`
 	Description   pulumi.StringPtrInput `pulumi:"description"`
 	DetectionMode pulumi.StringPtrInput `pulumi:"detectionMode"`
-	Id            pulumi.StringPtrInput `pulumi:"id"`
-	Name          pulumi.StringPtrInput `pulumi:"name"`
-	Sensitivity   pulumi.StringPtrInput `pulumi:"sensitivity"`
+	// The ID of this resource.
+	Id          pulumi.StringPtrInput `pulumi:"id"`
+	Name        pulumi.StringPtrInput `pulumi:"name"`
+	Sensitivity pulumi.StringPtrInput `pulumi:"sensitivity"`
 }
 
 func (GetWafPackagesPackageArgs) ElementType() reflect.Type {
@@ -25960,7 +27700,7 @@ func (i GetWafPackagesPackageArgs) ToGetWafPackagesPackageOutputWithContext(ctx 
 // GetWafPackagesPackageArrayInput is an input type that accepts GetWafPackagesPackageArray and GetWafPackagesPackageArrayOutput values.
 // You can construct a concrete instance of `GetWafPackagesPackageArrayInput` via:
 //
-//          GetWafPackagesPackageArray{ GetWafPackagesPackageArgs{...} }
+//	GetWafPackagesPackageArray{ GetWafPackagesPackageArgs{...} }
 type GetWafPackagesPackageArrayInput interface {
 	pulumi.Input
 
@@ -26008,6 +27748,7 @@ func (o GetWafPackagesPackageOutput) DetectionMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafPackagesPackage) *string { return v.DetectionMode }).(pulumi.StringPtrOutput)
 }
 
+// The ID of this resource.
 func (o GetWafPackagesPackageOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafPackagesPackage) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -26049,7 +27790,7 @@ type GetWafRulesFilter struct {
 // GetWafRulesFilterInput is an input type that accepts GetWafRulesFilterArgs and GetWafRulesFilterOutput values.
 // You can construct a concrete instance of `GetWafRulesFilterInput` via:
 //
-//          GetWafRulesFilterArgs{...}
+//	GetWafRulesFilterArgs{...}
 type GetWafRulesFilterInput interface {
 	pulumi.Input
 
@@ -26086,11 +27827,11 @@ func (i GetWafRulesFilterArgs) ToGetWafRulesFilterPtrOutputWithContext(ctx conte
 // GetWafRulesFilterPtrInput is an input type that accepts GetWafRulesFilterArgs, GetWafRulesFilterPtr and GetWafRulesFilterPtrOutput values.
 // You can construct a concrete instance of `GetWafRulesFilterPtrInput` via:
 //
-//          GetWafRulesFilterArgs{...}
+//	        GetWafRulesFilterArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetWafRulesFilterPtrInput interface {
 	pulumi.Input
 
@@ -26209,16 +27950,17 @@ type GetWafRulesRule struct {
 	Description  *string  `pulumi:"description"`
 	GroupId      *string  `pulumi:"groupId"`
 	GroupName    *string  `pulumi:"groupName"`
-	Id           *string  `pulumi:"id"`
-	Mode         *string  `pulumi:"mode"`
-	PackageId    *string  `pulumi:"packageId"`
-	Priority     *string  `pulumi:"priority"`
+	// The ID of this resource.
+	Id        *string `pulumi:"id"`
+	Mode      *string `pulumi:"mode"`
+	PackageId *string `pulumi:"packageId"`
+	Priority  *string `pulumi:"priority"`
 }
 
 // GetWafRulesRuleInput is an input type that accepts GetWafRulesRuleArgs and GetWafRulesRuleOutput values.
 // You can construct a concrete instance of `GetWafRulesRuleInput` via:
 //
-//          GetWafRulesRuleArgs{...}
+//	GetWafRulesRuleArgs{...}
 type GetWafRulesRuleInput interface {
 	pulumi.Input
 
@@ -26232,10 +27974,11 @@ type GetWafRulesRuleArgs struct {
 	Description  pulumi.StringPtrInput   `pulumi:"description"`
 	GroupId      pulumi.StringPtrInput   `pulumi:"groupId"`
 	GroupName    pulumi.StringPtrInput   `pulumi:"groupName"`
-	Id           pulumi.StringPtrInput   `pulumi:"id"`
-	Mode         pulumi.StringPtrInput   `pulumi:"mode"`
-	PackageId    pulumi.StringPtrInput   `pulumi:"packageId"`
-	Priority     pulumi.StringPtrInput   `pulumi:"priority"`
+	// The ID of this resource.
+	Id        pulumi.StringPtrInput `pulumi:"id"`
+	Mode      pulumi.StringPtrInput `pulumi:"mode"`
+	PackageId pulumi.StringPtrInput `pulumi:"packageId"`
+	Priority  pulumi.StringPtrInput `pulumi:"priority"`
 }
 
 func (GetWafRulesRuleArgs) ElementType() reflect.Type {
@@ -26253,7 +27996,7 @@ func (i GetWafRulesRuleArgs) ToGetWafRulesRuleOutputWithContext(ctx context.Cont
 // GetWafRulesRuleArrayInput is an input type that accepts GetWafRulesRuleArray and GetWafRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetWafRulesRuleArrayInput` via:
 //
-//          GetWafRulesRuleArray{ GetWafRulesRuleArgs{...} }
+//	GetWafRulesRuleArray{ GetWafRulesRuleArgs{...} }
 type GetWafRulesRuleArrayInput interface {
 	pulumi.Input
 
@@ -26309,6 +28052,7 @@ func (o GetWafRulesRuleOutput) GroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafRulesRule) *string { return v.GroupName }).(pulumi.StringPtrOutput)
 }
 
+// The ID of this resource.
 func (o GetWafRulesRuleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafRulesRule) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -26346,18 +28090,21 @@ func (o GetWafRulesRuleArrayOutput) Index(i pulumi.IntInput) GetWafRulesRuleOutp
 }
 
 type GetZonesFilter struct {
-	AccountId  *string `pulumi:"accountId"`
+	// The account identifier to target for the resource.
+	AccountId *string `pulumi:"accountId"`
+	// Defaults to `exact`.
 	LookupType *string `pulumi:"lookupType"`
 	Match      *string `pulumi:"match"`
 	Name       *string `pulumi:"name"`
-	Paused     *bool   `pulumi:"paused"`
-	Status     *string `pulumi:"status"`
+	// Defaults to `false`.
+	Paused *bool   `pulumi:"paused"`
+	Status *string `pulumi:"status"`
 }
 
 // GetZonesFilterInput is an input type that accepts GetZonesFilterArgs and GetZonesFilterOutput values.
 // You can construct a concrete instance of `GetZonesFilterInput` via:
 //
-//          GetZonesFilterArgs{...}
+//	GetZonesFilterArgs{...}
 type GetZonesFilterInput interface {
 	pulumi.Input
 
@@ -26366,12 +28113,15 @@ type GetZonesFilterInput interface {
 }
 
 type GetZonesFilterArgs struct {
-	AccountId  pulumi.StringPtrInput `pulumi:"accountId"`
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// Defaults to `exact`.
 	LookupType pulumi.StringPtrInput `pulumi:"lookupType"`
 	Match      pulumi.StringPtrInput `pulumi:"match"`
 	Name       pulumi.StringPtrInput `pulumi:"name"`
-	Paused     pulumi.BoolPtrInput   `pulumi:"paused"`
-	Status     pulumi.StringPtrInput `pulumi:"status"`
+	// Defaults to `false`.
+	Paused pulumi.BoolPtrInput   `pulumi:"paused"`
+	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (GetZonesFilterArgs) ElementType() reflect.Type {
@@ -26400,10 +28150,12 @@ func (o GetZonesFilterOutput) ToGetZonesFilterOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The account identifier to target for the resource.
 func (o GetZonesFilterOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesFilter) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
+// Defaults to `exact`.
 func (o GetZonesFilterOutput) LookupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesFilter) *string { return v.LookupType }).(pulumi.StringPtrOutput)
 }
@@ -26416,6 +28168,7 @@ func (o GetZonesFilterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Defaults to `false`.
 func (o GetZonesFilterOutput) Paused() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetZonesFilter) *bool { return v.Paused }).(pulumi.BoolPtrOutput)
 }
@@ -26425,6 +28178,7 @@ func (o GetZonesFilterOutput) Status() pulumi.StringPtrOutput {
 }
 
 type GetZonesZone struct {
+	// The ID of this resource.
 	Id   *string `pulumi:"id"`
 	Name *string `pulumi:"name"`
 }
@@ -26432,7 +28186,7 @@ type GetZonesZone struct {
 // GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
 // You can construct a concrete instance of `GetZonesZoneInput` via:
 //
-//          GetZonesZoneArgs{...}
+//	GetZonesZoneArgs{...}
 type GetZonesZoneInput interface {
 	pulumi.Input
 
@@ -26441,6 +28195,7 @@ type GetZonesZoneInput interface {
 }
 
 type GetZonesZoneArgs struct {
+	// The ID of this resource.
 	Id   pulumi.StringPtrInput `pulumi:"id"`
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -26460,7 +28215,7 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
-//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
+//	GetZonesZoneArray{ GetZonesZoneArgs{...} }
 type GetZonesZoneArrayInput interface {
 	pulumi.Input
 
@@ -26496,6 +28251,7 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The ID of this resource.
 func (o GetZonesZoneOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesZone) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -26527,6 +28283,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeaderInput)(nil)).Elem(), AccessApplicationCorsHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeaderArrayInput)(nil)).Elem(), AccessApplicationCorsHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppInput)(nil)).Elem(), AccessApplicationSaasAppArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppPtrInput)(nil)).Elem(), AccessApplicationSaasAppArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeInput)(nil)).Elem(), AccessGroupExcludeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeArrayInput)(nil)).Elem(), AccessGroupExcludeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeAzureInput)(nil)).Elem(), AccessGroupExcludeAzureArgs{})
@@ -26656,6 +28414,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemValueInput)(nil)).Elem(), ListItemValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemValueRedirectInput)(nil)).Elem(), ListItemValueRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemValueRedirectArrayInput)(nil)).Elem(), ListItemValueRedirectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerCountryPoolInput)(nil)).Elem(), LoadBalancerCountryPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerCountryPoolArrayInput)(nil)).Elem(), LoadBalancerCountryPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerMonitorHeaderInput)(nil)).Elem(), LoadBalancerMonitorHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerMonitorHeaderArrayInput)(nil)).Elem(), LoadBalancerMonitorHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPoolLoadSheddingInput)(nil)).Elem(), LoadBalancerPoolLoadSheddingArgs{})
@@ -26676,6 +28436,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleFixedResponsePtrInput)(nil)).Elem(), LoadBalancerRuleFixedResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleOverrideInput)(nil)).Elem(), LoadBalancerRuleOverrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleOverrideArrayInput)(nil)).Elem(), LoadBalancerRuleOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleOverrideCountryPoolInput)(nil)).Elem(), LoadBalancerRuleOverrideCountryPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleOverrideCountryPoolArrayInput)(nil)).Elem(), LoadBalancerRuleOverrideCountryPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleOverridePopPoolInput)(nil)).Elem(), LoadBalancerRuleOverridePopPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleOverridePopPoolArrayInput)(nil)).Elem(), LoadBalancerRuleOverridePopPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleOverrideRegionPoolInput)(nil)).Elem(), LoadBalancerRuleOverrideRegionPoolArgs{})
@@ -26730,6 +28492,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleArrayInput)(nil)).Elem(), RulesetRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersInput)(nil)).Elem(), RulesetRuleActionParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersPtrInput)(nil)).Elem(), RulesetRuleActionParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersAutominifyInput)(nil)).Elem(), RulesetRuleActionParametersAutominifyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersAutominifyArrayInput)(nil)).Elem(), RulesetRuleActionParametersAutominifyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersBrowserTtlInput)(nil)).Elem(), RulesetRuleActionParametersBrowserTtlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersBrowserTtlPtrInput)(nil)).Elem(), RulesetRuleActionParametersBrowserTtlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersCacheKeyInput)(nil)).Elem(), RulesetRuleActionParametersCacheKeyArgs{})
@@ -26754,6 +28518,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayInput)(nil)).Elem(), RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersFromListInput)(nil)).Elem(), RulesetRuleActionParametersFromListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersFromListPtrInput)(nil)).Elem(), RulesetRuleActionParametersFromListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersFromValueInput)(nil)).Elem(), RulesetRuleActionParametersFromValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersFromValuePtrInput)(nil)).Elem(), RulesetRuleActionParametersFromValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersFromValueTargetUrlInput)(nil)).Elem(), RulesetRuleActionParametersFromValueTargetUrlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersFromValueTargetUrlPtrInput)(nil)).Elem(), RulesetRuleActionParametersFromValueTargetUrlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersHeaderInput)(nil)).Elem(), RulesetRuleActionParametersHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersHeaderArrayInput)(nil)).Elem(), RulesetRuleActionParametersHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersMatchedDataInput)(nil)).Elem(), RulesetRuleActionParametersMatchedDataArgs{})
@@ -26770,6 +28538,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersResponseArrayInput)(nil)).Elem(), RulesetRuleActionParametersResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersServeStaleInput)(nil)).Elem(), RulesetRuleActionParametersServeStaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersServeStalePtrInput)(nil)).Elem(), RulesetRuleActionParametersServeStaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersSniInput)(nil)).Elem(), RulesetRuleActionParametersSniArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersSniPtrInput)(nil)).Elem(), RulesetRuleActionParametersSniArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriInput)(nil)).Elem(), RulesetRuleActionParametersUriArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriPtrInput)(nil)).Elem(), RulesetRuleActionParametersUriArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriPathInput)(nil)).Elem(), RulesetRuleActionParametersUriPathArgs{})
@@ -26822,6 +28592,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptKvNamespaceBindingArrayInput)(nil)).Elem(), WorkerScriptKvNamespaceBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptPlainTextBindingInput)(nil)).Elem(), WorkerScriptPlainTextBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptPlainTextBindingArrayInput)(nil)).Elem(), WorkerScriptPlainTextBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptR2BucketBindingInput)(nil)).Elem(), WorkerScriptR2BucketBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptR2BucketBindingArrayInput)(nil)).Elem(), WorkerScriptR2BucketBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptSecretTextBindingInput)(nil)).Elem(), WorkerScriptSecretTextBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptSecretTextBindingArrayInput)(nil)).Elem(), WorkerScriptSecretTextBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptServiceBindingInput)(nil)).Elem(), WorkerScriptServiceBindingArgs{})
@@ -26867,6 +28639,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeaderOutput{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeaderArrayOutput{})
+	pulumi.RegisterOutputType(AccessApplicationSaasAppOutput{})
+	pulumi.RegisterOutputType(AccessApplicationSaasAppPtrOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeAzureOutput{})
@@ -26996,6 +28770,8 @@ func init() {
 	pulumi.RegisterOutputType(ListItemValueOutput{})
 	pulumi.RegisterOutputType(ListItemValueRedirectOutput{})
 	pulumi.RegisterOutputType(ListItemValueRedirectArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerCountryPoolOutput{})
+	pulumi.RegisterOutputType(LoadBalancerCountryPoolArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerMonitorHeaderOutput{})
 	pulumi.RegisterOutputType(LoadBalancerMonitorHeaderArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPoolLoadSheddingOutput{})
@@ -27016,6 +28792,8 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerRuleFixedResponsePtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerRuleOverrideOutput{})
 	pulumi.RegisterOutputType(LoadBalancerRuleOverrideArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerRuleOverrideCountryPoolOutput{})
+	pulumi.RegisterOutputType(LoadBalancerRuleOverrideCountryPoolArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerRuleOverridePopPoolOutput{})
 	pulumi.RegisterOutputType(LoadBalancerRuleOverridePopPoolArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerRuleOverrideRegionPoolOutput{})
@@ -27070,6 +28848,8 @@ func init() {
 	pulumi.RegisterOutputType(RulesetRuleArrayOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersPtrOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersAutominifyOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersAutominifyArrayOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersBrowserTtlOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersBrowserTtlPtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersCacheKeyOutput{})
@@ -27094,6 +28874,10 @@ func init() {
 	pulumi.RegisterOutputType(RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersFromListOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersFromListPtrOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersFromValueOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersFromValuePtrOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersFromValueTargetUrlOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersFromValueTargetUrlPtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersHeaderOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersHeaderArrayOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersMatchedDataOutput{})
@@ -27110,6 +28894,8 @@ func init() {
 	pulumi.RegisterOutputType(RulesetRuleActionParametersResponseArrayOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersServeStaleOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersServeStalePtrOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersSniOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersSniPtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersUriOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersUriPtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersUriPathOutput{})
@@ -27162,6 +28948,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkerScriptKvNamespaceBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptPlainTextBindingOutput{})
 	pulumi.RegisterOutputType(WorkerScriptPlainTextBindingArrayOutput{})
+	pulumi.RegisterOutputType(WorkerScriptR2BucketBindingOutput{})
+	pulumi.RegisterOutputType(WorkerScriptR2BucketBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptSecretTextBindingOutput{})
 	pulumi.RegisterOutputType(WorkerScriptSecretTextBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptServiceBindingOutput{})

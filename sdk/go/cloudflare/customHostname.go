@@ -19,35 +19,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewCustomHostname(ctx, "exampleHostname", &cloudflare.CustomHostnameArgs{
-// 			Hostname: pulumi.String("hostname.example.com"),
-// 			Ssls: CustomHostnameSslArray{
-// 				&CustomHostnameSslArgs{
-// 					Method: pulumi.String("txt"),
-// 				},
-// 			},
-// 			ZoneId: pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewCustomHostname(ctx, "example", &cloudflare.CustomHostnameArgs{
+//				Hostname: pulumi.String("hostname.example.com"),
+//				Ssls: CustomHostnameSslArray{
+//					&CustomHostnameSslArgs{
+//						Method: pulumi.String("txt"),
+//					},
+//				},
+//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Custom hostname certificates can be imported using a composite ID formed of the zone ID and [hostname ID](https://api.cloudflare.com/#custom-hostname-for-a-zone-properties), separated by a "/" e.g.
-//
 // ```sh
-//  $ pulumi import cloudflare:index/customHostname:CustomHostname example d41d8cd98f00b204e9800998ecf8427e/0d89c70d-ad9f-4843-b99f-6cc0252067e9
+//
+//	$ pulumi import cloudflare:index/customHostname:CustomHostname example 1d5fdc9e88c8a8c4518b068cd94331fe/0d89c70d-ad9f-4843-b99f-6cc0252067e9
+//
 // ```
 type CustomHostname struct {
 	pulumi.CustomResourceState
@@ -60,10 +63,11 @@ type CustomHostname struct {
 	Hostname                  pulumi.StringOutput    `pulumi:"hostname"`
 	OwnershipVerification     pulumi.StringMapOutput `pulumi:"ownershipVerification"`
 	OwnershipVerificationHttp pulumi.StringMapOutput `pulumi:"ownershipVerificationHttp"`
-	// SSL configuration of the certificate. See further notes below.
-	Ssls   CustomHostnameSslArrayOutput `pulumi:"ssls"`
-	Status pulumi.StringOutput          `pulumi:"status"`
-	// The DNS zone ID where the custom hostname should be assigned.
+	// SSL configuration of the certificate.
+	Ssls CustomHostnameSslArrayOutput `pulumi:"ssls"`
+	// Status of the certificate.
+	Status pulumi.StringOutput `pulumi:"status"`
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -110,10 +114,11 @@ type customHostnameState struct {
 	Hostname                  *string           `pulumi:"hostname"`
 	OwnershipVerification     map[string]string `pulumi:"ownershipVerification"`
 	OwnershipVerificationHttp map[string]string `pulumi:"ownershipVerificationHttp"`
-	// SSL configuration of the certificate. See further notes below.
-	Ssls   []CustomHostnameSsl `pulumi:"ssls"`
-	Status *string             `pulumi:"status"`
-	// The DNS zone ID where the custom hostname should be assigned.
+	// SSL configuration of the certificate.
+	Ssls []CustomHostnameSsl `pulumi:"ssls"`
+	// Status of the certificate.
+	Status *string `pulumi:"status"`
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -126,10 +131,11 @@ type CustomHostnameState struct {
 	Hostname                  pulumi.StringPtrInput
 	OwnershipVerification     pulumi.StringMapInput
 	OwnershipVerificationHttp pulumi.StringMapInput
-	// SSL configuration of the certificate. See further notes below.
-	Ssls   CustomHostnameSslArrayInput
+	// SSL configuration of the certificate.
+	Ssls CustomHostnameSslArrayInput
+	// Status of the certificate.
 	Status pulumi.StringPtrInput
-	// The DNS zone ID where the custom hostname should be assigned.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -144,9 +150,9 @@ type customHostnameArgs struct {
 	CustomOriginSni *string `pulumi:"customOriginSni"`
 	// Hostname you intend to request a certificate for.
 	Hostname string `pulumi:"hostname"`
-	// SSL configuration of the certificate. See further notes below.
+	// SSL configuration of the certificate.
 	Ssls []CustomHostnameSsl `pulumi:"ssls"`
-	// The DNS zone ID where the custom hostname should be assigned.
+	// The zone identifier to target for the resource.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -158,9 +164,9 @@ type CustomHostnameArgs struct {
 	CustomOriginSni pulumi.StringPtrInput
 	// Hostname you intend to request a certificate for.
 	Hostname pulumi.StringInput
-	// SSL configuration of the certificate. See further notes below.
+	// SSL configuration of the certificate.
 	Ssls CustomHostnameSslArrayInput
-	// The DNS zone ID where the custom hostname should be assigned.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringInput
 }
 
@@ -190,7 +196,7 @@ func (i *CustomHostname) ToCustomHostnameOutputWithContext(ctx context.Context) 
 // CustomHostnameArrayInput is an input type that accepts CustomHostnameArray and CustomHostnameArrayOutput values.
 // You can construct a concrete instance of `CustomHostnameArrayInput` via:
 //
-//          CustomHostnameArray{ CustomHostnameArgs{...} }
+//	CustomHostnameArray{ CustomHostnameArgs{...} }
 type CustomHostnameArrayInput interface {
 	pulumi.Input
 
@@ -215,7 +221,7 @@ func (i CustomHostnameArray) ToCustomHostnameArrayOutputWithContext(ctx context.
 // CustomHostnameMapInput is an input type that accepts CustomHostnameMap and CustomHostnameMapOutput values.
 // You can construct a concrete instance of `CustomHostnameMapInput` via:
 //
-//          CustomHostnameMap{ "key": CustomHostnameArgs{...} }
+//	CustomHostnameMap{ "key": CustomHostnameArgs{...} }
 type CustomHostnameMapInput interface {
 	pulumi.Input
 
@@ -274,16 +280,17 @@ func (o CustomHostnameOutput) OwnershipVerificationHttp() pulumi.StringMapOutput
 	return o.ApplyT(func(v *CustomHostname) pulumi.StringMapOutput { return v.OwnershipVerificationHttp }).(pulumi.StringMapOutput)
 }
 
-// SSL configuration of the certificate. See further notes below.
+// SSL configuration of the certificate.
 func (o CustomHostnameOutput) Ssls() CustomHostnameSslArrayOutput {
 	return o.ApplyT(func(v *CustomHostname) CustomHostnameSslArrayOutput { return v.Ssls }).(CustomHostnameSslArrayOutput)
 }
 
+// Status of the certificate.
 func (o CustomHostnameOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomHostname) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The DNS zone ID where the custom hostname should be assigned.
+// The zone identifier to target for the resource.
 func (o CustomHostnameOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomHostname) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

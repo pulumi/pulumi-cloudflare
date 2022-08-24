@@ -19,30 +19,41 @@ namespace Pulumi.Cloudflare
     }
 
 
-    public sealed class GetDevicesArgs : Pulumi.InvokeArgs
+    public sealed class GetDevicesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         public GetDevicesArgs()
         {
         }
+        public static new GetDevicesArgs Empty => new GetDevicesArgs();
     }
 
-    public sealed class GetDevicesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDevicesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         public GetDevicesInvokeArgs()
         {
         }
+        public static new GetDevicesInvokeArgs Empty => new GetDevicesInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetDevicesResult
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         public readonly string AccountId;
         public readonly ImmutableArray<Outputs.GetDevicesDeviceResult> Devices;
         /// <summary>

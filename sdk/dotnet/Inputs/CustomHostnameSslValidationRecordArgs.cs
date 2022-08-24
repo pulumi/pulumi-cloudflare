@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class CustomHostnameSslValidationRecordArgs : Pulumi.ResourceArgs
+    public sealed class CustomHostnameSslValidationRecordArgs : global::Pulumi.ResourceArgs
     {
         [Input("cnameName")]
         public Input<string>? CnameName { get; set; }
@@ -41,5 +41,6 @@ namespace Pulumi.Cloudflare.Inputs
         public CustomHostnameSslValidationRecordArgs()
         {
         }
+        public static new CustomHostnameSslValidationRecordArgs Empty => new CustomHostnameSslValidationRecordArgs();
     }
 }

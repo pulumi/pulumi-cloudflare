@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare
     }
 
 
-    public sealed class GetOriginCaRootCertificateArgs : Pulumi.InvokeArgs
+    public sealed class GetOriginCaRootCertificateArgs : global::Pulumi.InvokeArgs
     {
         [Input("algorithm", required: true)]
         public string Algorithm { get; set; } = null!;
@@ -27,9 +27,10 @@ namespace Pulumi.Cloudflare
         public GetOriginCaRootCertificateArgs()
         {
         }
+        public static new GetOriginCaRootCertificateArgs Empty => new GetOriginCaRootCertificateArgs();
     }
 
-    public sealed class GetOriginCaRootCertificateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOriginCaRootCertificateInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("algorithm", required: true)]
         public Input<string> Algorithm { get; set; } = null!;
@@ -37,6 +38,7 @@ namespace Pulumi.Cloudflare
         public GetOriginCaRootCertificateInvokeArgs()
         {
         }
+        public static new GetOriginCaRootCertificateInvokeArgs Empty => new GetOriginCaRootCertificateInvokeArgs();
     }
 
 

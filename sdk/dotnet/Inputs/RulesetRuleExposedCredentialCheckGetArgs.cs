@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RulesetRuleExposedCredentialCheckGetArgs : Pulumi.ResourceArgs
+    public sealed class RulesetRuleExposedCredentialCheckGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("passwordExpression")]
         public Input<string>? PasswordExpression { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RulesetRuleExposedCredentialCheckGetArgs()
         {
         }
+        public static new RulesetRuleExposedCredentialCheckGetArgs Empty => new RulesetRuleExposedCredentialCheckGetArgs();
     }
 }

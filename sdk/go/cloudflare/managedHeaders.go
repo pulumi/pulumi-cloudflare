@@ -17,33 +17,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewManagedHeaders(ctx, "example", &cloudflare.ManagedHeadersArgs{
-// 			ManagedRequestHeaders: ManagedHeadersManagedRequestHeaderArray{
-// 				&ManagedHeadersManagedRequestHeaderArgs{
-// 					Enabled: pulumi.Bool(true),
-// 					Id:      pulumi.String("add_true_client_ip_headers"),
-// 				},
-// 			},
-// 			ManagedResponseHeaders: ManagedHeadersManagedResponseHeaderArray{
-// 				&ManagedHeadersManagedResponseHeaderArgs{
-// 					Enabled: pulumi.Bool(true),
-// 					Id:      pulumi.String("remove_x-powered-by_header"),
-// 				},
-// 			},
-// 			ZoneId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewManagedHeaders(ctx, "example", &cloudflare.ManagedHeadersArgs{
+//				ManagedRequestHeaders: ManagedHeadersManagedRequestHeaderArray{
+//					&ManagedHeadersManagedRequestHeaderArgs{
+//						Enabled: pulumi.Bool(true),
+//						Id:      pulumi.String("add_true_client_ip_headers"),
+//					},
+//				},
+//				ManagedResponseHeaders: ManagedHeadersManagedResponseHeaderArray{
+//					&ManagedHeadersManagedResponseHeaderArgs{
+//						Enabled: pulumi.Bool(true),
+//						Id:      pulumi.String("remove_x-powered-by_header"),
+//					},
+//				},
+//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -52,9 +55,9 @@ import (
 type ManagedHeaders struct {
 	pulumi.CustomResourceState
 
-	// The list of managed request headers
+	// The list of managed request headers.
 	ManagedRequestHeaders ManagedHeadersManagedRequestHeaderArrayOutput `pulumi:"managedRequestHeaders"`
-	// The list of managed response headers
+	// The list of managed response headers.
 	ManagedResponseHeaders ManagedHeadersManagedResponseHeaderArrayOutput `pulumi:"managedResponseHeaders"`
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -92,18 +95,18 @@ func GetManagedHeaders(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ManagedHeaders resources.
 type managedHeadersState struct {
-	// The list of managed request headers
+	// The list of managed request headers.
 	ManagedRequestHeaders []ManagedHeadersManagedRequestHeader `pulumi:"managedRequestHeaders"`
-	// The list of managed response headers
+	// The list of managed response headers.
 	ManagedResponseHeaders []ManagedHeadersManagedResponseHeader `pulumi:"managedResponseHeaders"`
 	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ManagedHeadersState struct {
-	// The list of managed request headers
+	// The list of managed request headers.
 	ManagedRequestHeaders ManagedHeadersManagedRequestHeaderArrayInput
-	// The list of managed response headers
+	// The list of managed response headers.
 	ManagedResponseHeaders ManagedHeadersManagedResponseHeaderArrayInput
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
@@ -114,9 +117,9 @@ func (ManagedHeadersState) ElementType() reflect.Type {
 }
 
 type managedHeadersArgs struct {
-	// The list of managed request headers
+	// The list of managed request headers.
 	ManagedRequestHeaders []ManagedHeadersManagedRequestHeader `pulumi:"managedRequestHeaders"`
-	// The list of managed response headers
+	// The list of managed response headers.
 	ManagedResponseHeaders []ManagedHeadersManagedResponseHeader `pulumi:"managedResponseHeaders"`
 	// The zone identifier to target for the resource.
 	ZoneId string `pulumi:"zoneId"`
@@ -124,9 +127,9 @@ type managedHeadersArgs struct {
 
 // The set of arguments for constructing a ManagedHeaders resource.
 type ManagedHeadersArgs struct {
-	// The list of managed request headers
+	// The list of managed request headers.
 	ManagedRequestHeaders ManagedHeadersManagedRequestHeaderArrayInput
-	// The list of managed response headers
+	// The list of managed response headers.
 	ManagedResponseHeaders ManagedHeadersManagedResponseHeaderArrayInput
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringInput
@@ -158,7 +161,7 @@ func (i *ManagedHeaders) ToManagedHeadersOutputWithContext(ctx context.Context) 
 // ManagedHeadersArrayInput is an input type that accepts ManagedHeadersArray and ManagedHeadersArrayOutput values.
 // You can construct a concrete instance of `ManagedHeadersArrayInput` via:
 //
-//          ManagedHeadersArray{ ManagedHeadersArgs{...} }
+//	ManagedHeadersArray{ ManagedHeadersArgs{...} }
 type ManagedHeadersArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +186,7 @@ func (i ManagedHeadersArray) ToManagedHeadersArrayOutputWithContext(ctx context.
 // ManagedHeadersMapInput is an input type that accepts ManagedHeadersMap and ManagedHeadersMapOutput values.
 // You can construct a concrete instance of `ManagedHeadersMapInput` via:
 //
-//          ManagedHeadersMap{ "key": ManagedHeadersArgs{...} }
+//	ManagedHeadersMap{ "key": ManagedHeadersArgs{...} }
 type ManagedHeadersMapInput interface {
 	pulumi.Input
 
@@ -219,12 +222,12 @@ func (o ManagedHeadersOutput) ToManagedHeadersOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The list of managed request headers
+// The list of managed request headers.
 func (o ManagedHeadersOutput) ManagedRequestHeaders() ManagedHeadersManagedRequestHeaderArrayOutput {
 	return o.ApplyT(func(v *ManagedHeaders) ManagedHeadersManagedRequestHeaderArrayOutput { return v.ManagedRequestHeaders }).(ManagedHeadersManagedRequestHeaderArrayOutput)
 }
 
-// The list of managed response headers
+// The list of managed response headers.
 func (o ManagedHeadersOutput) ManagedResponseHeaders() ManagedHeadersManagedResponseHeaderArrayOutput {
 	return o.ApplyT(func(v *ManagedHeaders) ManagedHeadersManagedResponseHeaderArrayOutput {
 		return v.ManagedResponseHeaders

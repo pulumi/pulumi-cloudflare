@@ -15,33 +15,31 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var thirdPartyDevicesPostureIntegration = new Cloudflare.DevicePostureIntegration("thirdPartyDevicesPostureIntegration", new()
     ///     {
-    ///         var thirdPartyDevicesPostureIntegration = new Cloudflare.DevicePostureIntegration("thirdPartyDevicesPostureIntegration", new Cloudflare.DevicePostureIntegrationArgs
+    ///         AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         Configs = new[]
     ///         {
-    ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
-    ///             Configs = 
+    ///             new Cloudflare.Inputs.DevicePostureIntegrationConfigArgs
     ///             {
-    ///                 new Cloudflare.Inputs.DevicePostureIntegrationConfigArgs
-    ///                 {
-    ///                     ApiUrl = "https://example.com/api",
-    ///                     AuthUrl = "https://example.com/connect/token",
-    ///                     ClientId = "client-id",
-    ///                     ClientSecret = "client-secret",
-    ///                 },
+    ///                 ApiUrl = "https://example.com/api",
+    ///                 AuthUrl = "https://example.com/connect/token",
+    ///                 ClientId = "client-id",
+    ///                 ClientSecret = "client-secret",
     ///             },
-    ///             Interval = "24h",
-    ///             Name = "Device posture integration",
-    ///             Type = "workspace_one",
-    ///         });
-    ///     }
+    ///         },
+    ///         Interval = "24h",
+    ///         Name = "Device posture integration",
+    ///         Type = "workspace_one",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -53,7 +51,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/devicePostureIntegration:DevicePostureIntegration")]
-    public partial class DevicePostureIntegration : Pulumi.CustomResource
+    public partial class DevicePostureIntegration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account to which the device posture integration should be added.
@@ -133,7 +131,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class DevicePostureIntegrationArgs : Pulumi.ResourceArgs
+    public sealed class DevicePostureIntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account to which the device posture integration should be added.
@@ -178,9 +176,10 @@ namespace Pulumi.Cloudflare
         public DevicePostureIntegrationArgs()
         {
         }
+        public static new DevicePostureIntegrationArgs Empty => new DevicePostureIntegrationArgs();
     }
 
-    public sealed class DevicePostureIntegrationState : Pulumi.ResourceArgs
+    public sealed class DevicePostureIntegrationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account to which the device posture integration should be added.
@@ -225,5 +224,6 @@ namespace Pulumi.Cloudflare
         public DevicePostureIntegrationState()
         {
         }
+        public static new DevicePostureIntegrationState Empty => new DevicePostureIntegrationState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class TeamsLocationNetworkGetArgs : Pulumi.ResourceArgs
+    public sealed class TeamsLocationNetworkGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the teams location.
@@ -24,5 +24,6 @@ namespace Pulumi.Cloudflare.Inputs
         public TeamsLocationNetworkGetArgs()
         {
         }
+        public static new TeamsLocationNetworkGetArgs Empty => new TeamsLocationNetworkGetArgs();
     }
 }

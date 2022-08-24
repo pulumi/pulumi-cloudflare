@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *     newUsersPerMinute: 200,
  *     path: "/",
  *     totalActiveUsers: 200,
- *     zoneId: "ae36f999674d196762efcc5abb06b345",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  *
@@ -65,8 +65,7 @@ export class WaitingRoom extends pulumi.CustomResource {
      */
     public readonly customPageHtml!: pulumi.Output<string | undefined>;
     /**
-     * The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
-     * `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+     * The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`. Defaults to `en-US`.
      */
     public readonly defaultTemplateLanguage!: pulumi.Output<string | undefined>;
     /**
@@ -78,7 +77,7 @@ export class WaitingRoom extends pulumi.CustomResource {
      */
     public readonly disableSessionRenewal!: pulumi.Output<boolean | undefined>;
     /**
-     * Host name for which the waiting room will be applied (no wildcards)
+     * Host name for which the waiting room will be applied (no wildcards).
      */
     public readonly host!: pulumi.Output<string>;
     /**
@@ -94,19 +93,19 @@ export class WaitingRoom extends pulumi.CustomResource {
      */
     public readonly newUsersPerMinute!: pulumi.Output<number>;
     /**
-     * The path within the host to enable the waiting room on.
+     * The path within the host to enable the waiting room on. Defaults to `/`.
      */
     public readonly path!: pulumi.Output<string | undefined>;
     /**
-     * If queue_all is true, then all traffic will be sent to the waiting room.
+     * If queueAll is true, then all traffic will be sent to the waiting room.
      */
     public readonly queueAll!: pulumi.Output<boolean | undefined>;
     /**
-     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
      */
     public readonly queueingMethod!: pulumi.Output<string | undefined>;
     /**
-     * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+     * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
      */
     public readonly sessionDuration!: pulumi.Output<number | undefined>;
     /**
@@ -197,8 +196,7 @@ export interface WaitingRoomState {
      */
     customPageHtml?: pulumi.Input<string>;
     /**
-     * The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
-     * `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+     * The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`. Defaults to `en-US`.
      */
     defaultTemplateLanguage?: pulumi.Input<string>;
     /**
@@ -210,7 +208,7 @@ export interface WaitingRoomState {
      */
     disableSessionRenewal?: pulumi.Input<boolean>;
     /**
-     * Host name for which the waiting room will be applied (no wildcards)
+     * Host name for which the waiting room will be applied (no wildcards).
      */
     host?: pulumi.Input<string>;
     /**
@@ -226,19 +224,19 @@ export interface WaitingRoomState {
      */
     newUsersPerMinute?: pulumi.Input<number>;
     /**
-     * The path within the host to enable the waiting room on.
+     * The path within the host to enable the waiting room on. Defaults to `/`.
      */
     path?: pulumi.Input<string>;
     /**
-     * If queue_all is true, then all traffic will be sent to the waiting room.
+     * If queueAll is true, then all traffic will be sent to the waiting room.
      */
     queueAll?: pulumi.Input<boolean>;
     /**
-     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
      */
     queueingMethod?: pulumi.Input<string>;
     /**
-     * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+     * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
      */
     sessionDuration?: pulumi.Input<number>;
     /**
@@ -264,8 +262,7 @@ export interface WaitingRoomArgs {
      */
     customPageHtml?: pulumi.Input<string>;
     /**
-     * The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
-     * `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+     * The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`. Defaults to `en-US`.
      */
     defaultTemplateLanguage?: pulumi.Input<string>;
     /**
@@ -277,7 +274,7 @@ export interface WaitingRoomArgs {
      */
     disableSessionRenewal?: pulumi.Input<boolean>;
     /**
-     * Host name for which the waiting room will be applied (no wildcards)
+     * Host name for which the waiting room will be applied (no wildcards).
      */
     host: pulumi.Input<string>;
     /**
@@ -293,19 +290,19 @@ export interface WaitingRoomArgs {
      */
     newUsersPerMinute: pulumi.Input<number>;
     /**
-     * The path within the host to enable the waiting room on.
+     * The path within the host to enable the waiting room on. Defaults to `/`.
      */
     path?: pulumi.Input<string>;
     /**
-     * If queue_all is true, then all traffic will be sent to the waiting room.
+     * If queueAll is true, then all traffic will be sent to the waiting room.
      */
     queueAll?: pulumi.Input<boolean>;
     /**
-     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
      */
     queueingMethod?: pulumi.Input<string>;
     /**
-     * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+     * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
      */
     sessionDuration?: pulumi.Input<number>;
     /**

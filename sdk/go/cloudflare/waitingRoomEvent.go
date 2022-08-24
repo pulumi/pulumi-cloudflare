@@ -19,25 +19,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewWaitingRoomEvent(ctx, "example", &cloudflare.WaitingRoomEventArgs{
-// 			EventEndTime:   pulumi.String("2006-01-02T20:04:05Z"),
-// 			EventStartTime: pulumi.String("2006-01-02T15:04:05Z"),
-// 			Name:           pulumi.String("foo"),
-// 			WaitingRoomId:  pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-// 			ZoneId:         pulumi.String("ae36f999674d196762efcc5abb06b345"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewWaitingRoomEvent(ctx, "example", &cloudflare.WaitingRoomEventArgs{
+//				EventEndTime:   pulumi.String("2006-01-02T20:04:05Z"),
+//				EventStartTime: pulumi.String("2006-01-02T15:04:05Z"),
+//				Name:           pulumi.String("foo"),
+//				WaitingRoomId:  pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+//				ZoneId:         pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -45,7 +48,9 @@ import (
 // # Use the Zone ID, Waiting Room ID, and Event ID to import.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent default <zone_id>/<waiting_room_id>/<waiting_room_event_id>
+//
+//	$ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent default <zone_id>/<waiting_room_id>/<waiting_room_event_id>
+//
 // ```
 type WaitingRoomEvent struct {
 	pulumi.CustomResourceState
@@ -60,7 +65,7 @@ type WaitingRoomEvent struct {
 	DisableSessionRenewal pulumi.BoolPtrOutput `pulumi:"disableSessionRenewal"`
 	// ISO 8601 timestamp that marks the end of the event.
 	EventEndTime pulumi.StringOutput `pulumi:"eventEndTime"`
-	// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+	// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`.
 	EventStartTime pulumi.StringOutput `pulumi:"eventStartTime"`
 	// Last modified time.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
@@ -68,15 +73,13 @@ type WaitingRoomEvent struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute pulumi.IntPtrOutput `pulumi:"newUsersPerMinute"`
-	// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes
-	// before `event_start_time`.
+	// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `eventStartTime`.
 	PrequeueStartTime pulumi.StringPtrOutput `pulumi:"prequeueStartTime"`
-	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
 	QueueingMethod pulumi.StringPtrOutput `pulumi:"queueingMethod"`
 	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
 	SessionDuration pulumi.IntPtrOutput `pulumi:"sessionDuration"`
-	// Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not
-	// null.
+	// Users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. Defaults to `false`.
 	ShuffleAtEventStart pulumi.BoolPtrOutput `pulumi:"shuffleAtEventStart"`
 	// If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
 	Suspended pulumi.BoolPtrOutput `pulumi:"suspended"`
@@ -142,7 +145,7 @@ type waitingRoomEventState struct {
 	DisableSessionRenewal *bool `pulumi:"disableSessionRenewal"`
 	// ISO 8601 timestamp that marks the end of the event.
 	EventEndTime *string `pulumi:"eventEndTime"`
-	// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+	// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`.
 	EventStartTime *string `pulumi:"eventStartTime"`
 	// Last modified time.
 	ModifiedOn *string `pulumi:"modifiedOn"`
@@ -150,15 +153,13 @@ type waitingRoomEventState struct {
 	Name *string `pulumi:"name"`
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute *int `pulumi:"newUsersPerMinute"`
-	// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes
-	// before `event_start_time`.
+	// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `eventStartTime`.
 	PrequeueStartTime *string `pulumi:"prequeueStartTime"`
-	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
 	QueueingMethod *string `pulumi:"queueingMethod"`
 	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
 	SessionDuration *int `pulumi:"sessionDuration"`
-	// Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not
-	// null.
+	// Users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. Defaults to `false`.
 	ShuffleAtEventStart *bool `pulumi:"shuffleAtEventStart"`
 	// If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
 	Suspended *bool `pulumi:"suspended"`
@@ -181,7 +182,7 @@ type WaitingRoomEventState struct {
 	DisableSessionRenewal pulumi.BoolPtrInput
 	// ISO 8601 timestamp that marks the end of the event.
 	EventEndTime pulumi.StringPtrInput
-	// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+	// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`.
 	EventStartTime pulumi.StringPtrInput
 	// Last modified time.
 	ModifiedOn pulumi.StringPtrInput
@@ -189,15 +190,13 @@ type WaitingRoomEventState struct {
 	Name pulumi.StringPtrInput
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute pulumi.IntPtrInput
-	// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes
-	// before `event_start_time`.
+	// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `eventStartTime`.
 	PrequeueStartTime pulumi.StringPtrInput
-	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
 	QueueingMethod pulumi.StringPtrInput
 	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
 	SessionDuration pulumi.IntPtrInput
-	// Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not
-	// null.
+	// Users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. Defaults to `false`.
 	ShuffleAtEventStart pulumi.BoolPtrInput
 	// If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
 	Suspended pulumi.BoolPtrInput
@@ -222,21 +221,19 @@ type waitingRoomEventArgs struct {
 	DisableSessionRenewal *bool `pulumi:"disableSessionRenewal"`
 	// ISO 8601 timestamp that marks the end of the event.
 	EventEndTime string `pulumi:"eventEndTime"`
-	// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+	// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`.
 	EventStartTime string `pulumi:"eventStartTime"`
 	// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
 	Name string `pulumi:"name"`
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute *int `pulumi:"newUsersPerMinute"`
-	// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes
-	// before `event_start_time`.
+	// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `eventStartTime`.
 	PrequeueStartTime *string `pulumi:"prequeueStartTime"`
-	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
 	QueueingMethod *string `pulumi:"queueingMethod"`
 	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
 	SessionDuration *int `pulumi:"sessionDuration"`
-	// Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not
-	// null.
+	// Users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. Defaults to `false`.
 	ShuffleAtEventStart *bool `pulumi:"shuffleAtEventStart"`
 	// If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
 	Suspended *bool `pulumi:"suspended"`
@@ -258,21 +255,19 @@ type WaitingRoomEventArgs struct {
 	DisableSessionRenewal pulumi.BoolPtrInput
 	// ISO 8601 timestamp that marks the end of the event.
 	EventEndTime pulumi.StringInput
-	// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+	// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`.
 	EventStartTime pulumi.StringInput
 	// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
 	Name pulumi.StringInput
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute pulumi.IntPtrInput
-	// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes
-	// before `event_start_time`.
+	// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `eventStartTime`.
 	PrequeueStartTime pulumi.StringPtrInput
-	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
 	QueueingMethod pulumi.StringPtrInput
 	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
 	SessionDuration pulumi.IntPtrInput
-	// Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not
-	// null.
+	// Users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. Defaults to `false`.
 	ShuffleAtEventStart pulumi.BoolPtrInput
 	// If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
 	Suspended pulumi.BoolPtrInput
@@ -310,7 +305,7 @@ func (i *WaitingRoomEvent) ToWaitingRoomEventOutputWithContext(ctx context.Conte
 // WaitingRoomEventArrayInput is an input type that accepts WaitingRoomEventArray and WaitingRoomEventArrayOutput values.
 // You can construct a concrete instance of `WaitingRoomEventArrayInput` via:
 //
-//          WaitingRoomEventArray{ WaitingRoomEventArgs{...} }
+//	WaitingRoomEventArray{ WaitingRoomEventArgs{...} }
 type WaitingRoomEventArrayInput interface {
 	pulumi.Input
 
@@ -335,7 +330,7 @@ func (i WaitingRoomEventArray) ToWaitingRoomEventArrayOutputWithContext(ctx cont
 // WaitingRoomEventMapInput is an input type that accepts WaitingRoomEventMap and WaitingRoomEventMapOutput values.
 // You can construct a concrete instance of `WaitingRoomEventMapInput` via:
 //
-//          WaitingRoomEventMap{ "key": WaitingRoomEventArgs{...} }
+//	WaitingRoomEventMap{ "key": WaitingRoomEventArgs{...} }
 type WaitingRoomEventMapInput interface {
 	pulumi.Input
 
@@ -396,7 +391,7 @@ func (o WaitingRoomEventOutput) EventEndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringOutput { return v.EventEndTime }).(pulumi.StringOutput)
 }
 
-// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`.
 func (o WaitingRoomEventOutput) EventStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringOutput { return v.EventStartTime }).(pulumi.StringOutput)
 }
@@ -416,13 +411,12 @@ func (o WaitingRoomEventOutput) NewUsersPerMinute() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.IntPtrOutput { return v.NewUsersPerMinute }).(pulumi.IntPtrOutput)
 }
 
-// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes
-// before `event_start_time`.
+// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `eventStartTime`.
 func (o WaitingRoomEventOutput) PrequeueStartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringPtrOutput { return v.PrequeueStartTime }).(pulumi.StringPtrOutput)
 }
 
-// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
 func (o WaitingRoomEventOutput) QueueingMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringPtrOutput { return v.QueueingMethod }).(pulumi.StringPtrOutput)
 }
@@ -432,8 +426,7 @@ func (o WaitingRoomEventOutput) SessionDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.IntPtrOutput { return v.SessionDuration }).(pulumi.IntPtrOutput)
 }
 
-// Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not
-// null.
+// Users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. Defaults to `false`.
 func (o WaitingRoomEventOutput) ShuffleAtEventStart() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.BoolPtrOutput { return v.ShuffleAtEventStart }).(pulumi.BoolPtrOutput)
 }

@@ -19,32 +19,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewNotificationPolicyWebhooks(ctx, "example", &cloudflare.NotificationPolicyWebhooksArgs{
-// 			AccountId: pulumi.String("c4a7362d577a6c3019a474fd6f485821"),
-// 			Name:      pulumi.String("Webhooks destination"),
-// 			Secret:    pulumi.String("my-secret"),
-// 			Url:       pulumi.String("https://example.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewNotificationPolicyWebhooks(ctx, "example", &cloudflare.NotificationPolicyWebhooksArgs{
+//				AccountId: pulumi.String("c4a7362d577a6c3019a474fd6f485821"),
+//				Name:      pulumi.String("Webhooks destination"),
+//				Secret:    pulumi.String("my-secret"),
+//				Url:       pulumi.String("https://example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// An existing notification policy can be imported using the account ID and the webhook ID
+// # An existing notification policy can be imported using the account ID and the webhook ID
 //
 // ```sh
-//  $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example 72c379d136459405d964d27aa0f18605/c4a7362d577a6c3019a474fd6f485821
+//
+//	$ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example 72c379d136459405d964d27aa0f18605/c4a7362d577a6c3019a474fd6f485821
+//
 // ```
 type NotificationPolicyWebhooks struct {
 	pulumi.CustomResourceState
@@ -190,7 +195,7 @@ func (i *NotificationPolicyWebhooks) ToNotificationPolicyWebhooksOutputWithConte
 // NotificationPolicyWebhooksArrayInput is an input type that accepts NotificationPolicyWebhooksArray and NotificationPolicyWebhooksArrayOutput values.
 // You can construct a concrete instance of `NotificationPolicyWebhooksArrayInput` via:
 //
-//          NotificationPolicyWebhooksArray{ NotificationPolicyWebhooksArgs{...} }
+//	NotificationPolicyWebhooksArray{ NotificationPolicyWebhooksArgs{...} }
 type NotificationPolicyWebhooksArrayInput interface {
 	pulumi.Input
 
@@ -215,7 +220,7 @@ func (i NotificationPolicyWebhooksArray) ToNotificationPolicyWebhooksArrayOutput
 // NotificationPolicyWebhooksMapInput is an input type that accepts NotificationPolicyWebhooksMap and NotificationPolicyWebhooksMapOutput values.
 // You can construct a concrete instance of `NotificationPolicyWebhooksMapInput` via:
 //
-//          NotificationPolicyWebhooksMap{ "key": NotificationPolicyWebhooksArgs{...} }
+//	NotificationPolicyWebhooksMap{ "key": NotificationPolicyWebhooksArgs{...} }
 type NotificationPolicyWebhooksMapInput interface {
 	pulumi.Input
 

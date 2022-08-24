@@ -14,6 +14,9 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersFromList
     {
         public readonly string Key;
+        /// <summary>
+        /// Name of the ruleset.
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

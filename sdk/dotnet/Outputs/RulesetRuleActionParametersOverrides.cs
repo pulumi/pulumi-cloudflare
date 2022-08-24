@@ -16,6 +16,9 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Action;
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersOverridesCategory> Categories;
         public readonly bool? Enabled;
+        /// <summary>
+        /// List of rules to apply to the ruleset.
+        /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersOverridesRule> Rules;
         public readonly string? Status;
 

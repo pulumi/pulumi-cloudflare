@@ -16,36 +16,34 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Cloudflare.IpList("example", new()
     ///     {
-    ///         var example = new Cloudflare.IpList("example", new Cloudflare.IpListArgs
+    ///         AccountId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///         Description = "list description",
+    ///         Items = new[]
     ///         {
-    ///             AccountId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///             Description = "list description",
-    ///             Items = 
+    ///             new Cloudflare.Inputs.IpListItemArgs
     ///             {
-    ///                 new Cloudflare.Inputs.IpListItemArgs
-    ///                 {
-    ///                     Comment = "Office IP",
-    ///                     Value = "192.0.2.1",
-    ///                 },
-    ///                 new Cloudflare.Inputs.IpListItemArgs
-    ///                 {
-    ///                     Comment = "Datacenter range",
-    ///                     Value = "203.0.113.0/24",
-    ///                 },
+    ///                 Comment = "Office IP",
+    ///                 Value = "192.0.2.1",
     ///             },
-    ///             Kind = "ip",
-    ///             Name = "example_list",
-    ///         });
-    ///     }
+    ///             new Cloudflare.Inputs.IpListItemArgs
+    ///             {
+    ///                 Comment = "Datacenter range",
+    ///                 Value = "203.0.113.0/24",
+    ///             },
+    ///         },
+    ///         Kind = "ip",
+    ///         Name = "example_list",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +55,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/ipList:IpList")]
-    public partial class IpList : Pulumi.CustomResource
+    public partial class IpList : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the account where the IP List is being created.
@@ -130,7 +128,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class IpListArgs : Pulumi.ResourceArgs
+    public sealed class IpListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the account where the IP List is being created.
@@ -167,9 +165,10 @@ namespace Pulumi.Cloudflare
         public IpListArgs()
         {
         }
+        public static new IpListArgs Empty => new IpListArgs();
     }
 
-    public sealed class IpListState : Pulumi.ResourceArgs
+    public sealed class IpListState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the account where the IP List is being created.
@@ -206,5 +205,6 @@ namespace Pulumi.Cloudflare
         public IpListState()
         {
         }
+        public static new IpListState Empty => new IpListState();
     }
 }

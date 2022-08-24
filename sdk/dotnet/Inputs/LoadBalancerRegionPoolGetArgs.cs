@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class LoadBalancerRegionPoolGetArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerRegionPoolGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("poolIds", required: true)]
         private InputList<string>? _poolIds;
@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
+        /// A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -33,5 +33,6 @@ namespace Pulumi.Cloudflare.Inputs
         public LoadBalancerRegionPoolGetArgs()
         {
         }
+        public static new LoadBalancerRegionPoolGetArgs Empty => new LoadBalancerRegionPoolGetArgs();
     }
 }

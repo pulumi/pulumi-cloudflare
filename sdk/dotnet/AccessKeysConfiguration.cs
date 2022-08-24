@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     [CloudflareResourceType("cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration")]
-    public partial class AccessKeysConfiguration : Pulumi.CustomResource
+    public partial class AccessKeysConfiguration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class AccessKeysConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class AccessKeysConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -85,9 +85,10 @@ namespace Pulumi.Cloudflare
         public AccessKeysConfigurationArgs()
         {
         }
+        public static new AccessKeysConfigurationArgs Empty => new AccessKeysConfigurationArgs();
     }
 
-    public sealed class AccessKeysConfigurationState : Pulumi.ResourceArgs
+    public sealed class AccessKeysConfigurationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -104,5 +105,6 @@ namespace Pulumi.Cloudflare
         public AccessKeysConfigurationState()
         {
         }
+        public static new AccessKeysConfigurationState Empty => new AccessKeysConfigurationState();
     }
 }

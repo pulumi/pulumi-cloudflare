@@ -10,8 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class LoadBalancerRuleOverrideGetArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerRuleOverrideGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("countryPools")]
+        private InputList<Inputs.LoadBalancerRuleOverrideCountryPoolGetArgs>? _countryPools;
+
+        /// <summary>
+        /// See country_pools above.
+        /// </summary>
+        public InputList<Inputs.LoadBalancerRuleOverrideCountryPoolGetArgs> CountryPools
+        {
+            get => _countryPools ?? (_countryPools = new InputList<Inputs.LoadBalancerRuleOverrideCountryPoolGetArgs>());
+            set => _countryPools = value;
+        }
+
         [Input("defaultPools")]
         private InputList<string>? _defaultPools;
 
@@ -93,5 +105,6 @@ namespace Pulumi.Cloudflare.Inputs
         public LoadBalancerRuleOverrideGetArgs()
         {
         }
+        public static new LoadBalancerRuleOverrideGetArgs Empty => new LoadBalancerRuleOverrideGetArgs();
     }
 }

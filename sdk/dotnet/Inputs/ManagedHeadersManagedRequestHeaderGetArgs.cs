@@ -10,16 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class ManagedHeadersManagedRequestHeaderGetArgs : Pulumi.ResourceArgs
+    public sealed class ManagedHeadersManagedRequestHeaderGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the headers rule is active.
+        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
+        /// <summary>
+        /// Unique headers rule identifier.
+        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
         public ManagedHeadersManagedRequestHeaderGetArgs()
         {
         }
+        public static new ManagedHeadersManagedRequestHeaderGetArgs Empty => new ManagedHeadersManagedRequestHeaderGetArgs();
     }
 }

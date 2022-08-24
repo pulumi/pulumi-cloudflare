@@ -15,40 +15,36 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Cloudflare.CustomHostname("example", new()
     ///     {
-    ///         var exampleHostname = new Cloudflare.CustomHostname("exampleHostname", new Cloudflare.CustomHostnameArgs
+    ///         Hostname = "hostname.example.com",
+    ///         Ssls = new[]
     ///         {
-    ///             Hostname = "hostname.example.com",
-    ///             Ssls = 
+    ///             new Cloudflare.Inputs.CustomHostnameSslArgs
     ///             {
-    ///                 new Cloudflare.Inputs.CustomHostnameSslArgs
-    ///                 {
-    ///                     Method = "txt",
-    ///                 },
+    ///                 Method = "txt",
     ///             },
-    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///         });
-    ///     }
+    ///         },
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// Custom hostname certificates can be imported using a composite ID formed of the zone ID and [hostname ID](https://api.cloudflare.com/#custom-hostname-for-a-zone-properties), separated by a "/" e.g.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/customHostname:CustomHostname example d41d8cd98f00b204e9800998ecf8427e/0d89c70d-ad9f-4843-b99f-6cc0252067e9
+    ///  $ pulumi import cloudflare:index/customHostname:CustomHostname example 1d5fdc9e88c8a8c4518b068cd94331fe/0d89c70d-ad9f-4843-b99f-6cc0252067e9
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/customHostname:CustomHostname")]
-    public partial class CustomHostname : Pulumi.CustomResource
+    public partial class CustomHostname : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The custom origin server used for certificates.
@@ -75,16 +71,19 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableDictionary<string, string>> OwnershipVerificationHttp { get; private set; } = null!;
 
         /// <summary>
-        /// SSL configuration of the certificate. See further notes below.
+        /// SSL configuration of the certificate.
         /// </summary>
         [Output("ssls")]
         public Output<ImmutableArray<Outputs.CustomHostnameSsl>> Ssls { get; private set; } = null!;
 
+        /// <summary>
+        /// Status of the certificate.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS zone ID where the custom hostname should be assigned.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -133,7 +132,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class CustomHostnameArgs : Pulumi.ResourceArgs
+    public sealed class CustomHostnameArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The custom origin server used for certificates.
@@ -157,7 +156,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.CustomHostnameSslArgs>? _ssls;
 
         /// <summary>
-        /// SSL configuration of the certificate. See further notes below.
+        /// SSL configuration of the certificate.
         /// </summary>
         public InputList<Inputs.CustomHostnameSslArgs> Ssls
         {
@@ -166,7 +165,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The DNS zone ID where the custom hostname should be assigned.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -174,9 +173,10 @@ namespace Pulumi.Cloudflare
         public CustomHostnameArgs()
         {
         }
+        public static new CustomHostnameArgs Empty => new CustomHostnameArgs();
     }
 
-    public sealed class CustomHostnameState : Pulumi.ResourceArgs
+    public sealed class CustomHostnameState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The custom origin server used for certificates.
@@ -216,7 +216,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.CustomHostnameSslGetArgs>? _ssls;
 
         /// <summary>
-        /// SSL configuration of the certificate. See further notes below.
+        /// SSL configuration of the certificate.
         /// </summary>
         public InputList<Inputs.CustomHostnameSslGetArgs> Ssls
         {
@@ -224,11 +224,14 @@ namespace Pulumi.Cloudflare
             set => _ssls = value;
         }
 
+        /// <summary>
+        /// Status of the certificate.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The DNS zone ID where the custom hostname should be assigned.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -236,5 +239,6 @@ namespace Pulumi.Cloudflare
         public CustomHostnameState()
         {
         }
+        public static new CustomHostnameState Empty => new CustomHostnameState();
     }
 }

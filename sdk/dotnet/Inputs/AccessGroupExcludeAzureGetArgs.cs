@@ -10,13 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class AccessGroupExcludeAzureGetArgs : Pulumi.ResourceArgs
+    public sealed class AccessGroupExcludeAzureGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("identityProviderId")]
         public Input<string>? IdentityProviderId { get; set; }
 
         [Input("ids")]
         private InputList<string>? _ids;
+
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         public InputList<string> Ids
         {
             get => _ids ?? (_ids = new InputList<string>());
@@ -26,5 +30,6 @@ namespace Pulumi.Cloudflare.Inputs
         public AccessGroupExcludeAzureGetArgs()
         {
         }
+        public static new AccessGroupExcludeAzureGetArgs Empty => new AccessGroupExcludeAzureGetArgs();
     }
 }

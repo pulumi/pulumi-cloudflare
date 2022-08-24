@@ -15,26 +15,25 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleNs = new Cloudflare.WorkersKvNamespace("exampleNs", new()
     ///     {
-    ///         var exampleNs = new Cloudflare.WorkersKvNamespace("exampleNs", new Cloudflare.WorkersKvNamespaceArgs
-    ///         {
-    ///             Title = "test-namespace",
-    ///         });
-    ///         var example = new Cloudflare.WorkersKv("example", new Cloudflare.WorkersKvArgs
-    ///         {
-    ///             NamespaceId = exampleNs.Id,
-    ///             Key = "test-key",
-    ///             Value = "test value",
-    ///         });
-    ///     }
+    ///         Title = "test-namespace",
+    ///     });
     /// 
-    /// }
+    ///     var example = new Cloudflare.WorkersKv("example", new()
+    ///     {
+    ///         NamespaceId = exampleNs.Id,
+    ///         Key = "test-key",
+    ///         Value = "test value",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +45,7 @@ namespace Pulumi.Cloudflare
     ///  where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace and `test-key` is the key
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workersKv:WorkersKv")]
-    public partial class WorkersKv : Pulumi.CustomResource
+    public partial class WorkersKv : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The key name
@@ -110,7 +109,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class WorkersKvArgs : Pulumi.ResourceArgs
+    public sealed class WorkersKvArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key name
@@ -133,9 +132,10 @@ namespace Pulumi.Cloudflare
         public WorkersKvArgs()
         {
         }
+        public static new WorkersKvArgs Empty => new WorkersKvArgs();
     }
 
-    public sealed class WorkersKvState : Pulumi.ResourceArgs
+    public sealed class WorkersKvState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key name
@@ -158,5 +158,6 @@ namespace Pulumi.Cloudflare
         public WorkersKvState()
         {
         }
+        public static new WorkersKvState Empty => new WorkersKvState();
     }
 }

@@ -15,30 +15,28 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Cloudflare.IpsecTunnel("example", new()
     ///     {
-    ///         var example = new Cloudflare.IpsecTunnel("example", new Cloudflare.IpsecTunnelArgs
-    ///         {
-    ///             AccountId = "c4a7362d577a6c3019a474fd6f485821",
-    ///             AllowNullCipher = false,
-    ///             CloudflareEndpoint = "203.0.113.1",
-    ///             CustomerEndpoint = "203.0.113.1",
-    ///             Description = "Tunnel for ISP X",
-    ///             HealthCheckEnabled = true,
-    ///             HealthCheckTarget = "203.0.113.1",
-    ///             HealthCheckType = "reply",
-    ///             InterfaceAddress = "192.0.2.0/31",
-    ///             Name = "IPsec_1",
-    ///             Psk = "asdf12341234",
-    ///         });
-    ///     }
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         AllowNullCipher = false,
+    ///         CloudflareEndpoint = "203.0.113.1",
+    ///         CustomerEndpoint = "203.0.113.1",
+    ///         Description = "Tunnel for ISP X",
+    ///         HealthCheckEnabled = true,
+    ///         HealthCheckTarget = "203.0.113.1",
+    ///         HealthCheckType = "reply",
+    ///         InterfaceAddress = "192.0.2.0/31",
+    ///         Name = "IPsec_1",
+    ///         Psk = "asdf12341234",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/ipsecTunnel:IpsecTunnel")]
-    public partial class IpsecTunnel : Pulumi.CustomResource
+    public partial class IpsecTunnel : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -57,7 +55,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2.
+        /// Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2. Defaults to `false`.
         /// </summary>
         [Output("allowNullCipher")]
         public Output<bool?> AllowNullCipher { get; private set; } = null!;
@@ -99,8 +97,7 @@ namespace Pulumi.Cloudflare
         public Output<string> HealthCheckTarget { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the ICMP echo type for the health check (`request` or `reply`). Available values: `request`, `reply` Default:
-        /// `reply`.
+        /// Specifies the ICMP echo type for the health check (`request` or `reply`). Available values: `request`, `reply` Default: `reply`.
         /// </summary>
         [Output("healthCheckType")]
         public Output<string> HealthCheckType { get; private set; } = null!;
@@ -185,7 +182,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class IpsecTunnelArgs : Pulumi.ResourceArgs
+    public sealed class IpsecTunnelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -194,7 +191,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2.
+        /// Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2. Defaults to `false`.
         /// </summary>
         [Input("allowNullCipher")]
         public Input<bool>? AllowNullCipher { get; set; }
@@ -236,8 +233,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? HealthCheckTarget { get; set; }
 
         /// <summary>
-        /// Specifies the ICMP echo type for the health check (`request` or `reply`). Available values: `request`, `reply` Default:
-        /// `reply`.
+        /// Specifies the ICMP echo type for the health check (`request` or `reply`). Available values: `request`, `reply` Default: `reply`.
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
@@ -281,9 +277,10 @@ namespace Pulumi.Cloudflare
         public IpsecTunnelArgs()
         {
         }
+        public static new IpsecTunnelArgs Empty => new IpsecTunnelArgs();
     }
 
-    public sealed class IpsecTunnelState : Pulumi.ResourceArgs
+    public sealed class IpsecTunnelState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -292,7 +289,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2.
+        /// Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2. Defaults to `false`.
         /// </summary>
         [Input("allowNullCipher")]
         public Input<bool>? AllowNullCipher { get; set; }
@@ -334,8 +331,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? HealthCheckTarget { get; set; }
 
         /// <summary>
-        /// Specifies the ICMP echo type for the health check (`request` or `reply`). Available values: `request`, `reply` Default:
-        /// `reply`.
+        /// Specifies the ICMP echo type for the health check (`request` or `reply`). Available values: `request`, `reply` Default: `reply`.
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
@@ -379,5 +375,6 @@ namespace Pulumi.Cloudflare
         public IpsecTunnelState()
         {
         }
+        public static new IpsecTunnelState Empty => new IpsecTunnelState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class GetWafPackagesFilterArgs : Pulumi.InvokeArgs
+    public sealed class GetWafPackagesFilterArgs : global::Pulumi.InvokeArgs
     {
         [Input("actionMode")]
         public string? ActionMode { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Cloudflare.Inputs
         public GetWafPackagesFilterArgs()
         {
         }
+        public static new GetWafPackagesFilterArgs Empty => new GetWafPackagesFilterArgs();
     }
 }

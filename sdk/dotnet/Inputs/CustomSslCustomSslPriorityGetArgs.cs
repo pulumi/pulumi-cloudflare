@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class CustomSslCustomSslPriorityGetArgs : Pulumi.ResourceArgs
+    public sealed class CustomSslCustomSslPriorityGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Cloudflare.Inputs
         public CustomSslCustomSslPriorityGetArgs()
         {
         }
+        public static new CustomSslCustomSslPriorityGetArgs Empty => new CustomSslCustomSslPriorityGetArgs();
     }
 }

@@ -14,6 +14,9 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetAccountRolesRoleResult
     {
         public readonly string? Description;
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         public readonly string? Id;
         public readonly string? Name;
 

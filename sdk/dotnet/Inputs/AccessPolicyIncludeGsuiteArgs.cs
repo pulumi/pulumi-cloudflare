@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class AccessPolicyIncludeGsuiteArgs : Pulumi.ResourceArgs
+    public sealed class AccessPolicyIncludeGsuiteArgs : global::Pulumi.ResourceArgs
     {
         [Input("emails")]
         private InputList<string>? _emails;
@@ -26,5 +26,6 @@ namespace Pulumi.Cloudflare.Inputs
         public AccessPolicyIncludeGsuiteArgs()
         {
         }
+        public static new AccessPolicyIncludeGsuiteArgs Empty => new AccessPolicyIncludeGsuiteArgs();
     }
 }

@@ -19,30 +19,33 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewSpectrumApplication(ctx, "sshProxy", &cloudflare.SpectrumApplicationArgs{
-// 			ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
-// 			Protocol:    pulumi.String("tcp/22"),
-// 			TrafficType: pulumi.String("direct"),
-// 			Dns: &SpectrumApplicationDnsArgs{
-// 				Type: pulumi.String("CNAME"),
-// 				Name: pulumi.String("ssh.example.com"),
-// 			},
-// 			OriginDirects: pulumi.StringArray{
-// 				pulumi.String("tcp://109.151.40.129:22"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewSpectrumApplication(ctx, "sshProxy", &cloudflare.SpectrumApplicationArgs{
+//				ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
+//				Protocol:    pulumi.String("tcp/22"),
+//				TrafficType: pulumi.String("direct"),
+//				Dns: &SpectrumApplicationDnsArgs{
+//					Type: pulumi.String("CNAME"),
+//					Name: pulumi.String("ssh.example.com"),
+//				},
+//				OriginDirects: pulumi.StringArray{
+//					pulumi.String("tcp://109.151.40.129:22"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,10 +53,12 @@ import (
 // Spectrum resource can be imported using a zone ID and Application ID, e.g.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac
+//
+//	$ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac
+//
 // ```
 //
-//  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones) - `9a7806061c88ada191ed06f989cc3dac` - Application ID
+//	where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones) - `9a7806061c88ada191ed06f989cc3dac` - Application ID
 type SpectrumApplication struct {
 	pulumi.CustomResourceState
 
@@ -279,7 +284,7 @@ func (i *SpectrumApplication) ToSpectrumApplicationOutputWithContext(ctx context
 // SpectrumApplicationArrayInput is an input type that accepts SpectrumApplicationArray and SpectrumApplicationArrayOutput values.
 // You can construct a concrete instance of `SpectrumApplicationArrayInput` via:
 //
-//          SpectrumApplicationArray{ SpectrumApplicationArgs{...} }
+//	SpectrumApplicationArray{ SpectrumApplicationArgs{...} }
 type SpectrumApplicationArrayInput interface {
 	pulumi.Input
 
@@ -304,7 +309,7 @@ func (i SpectrumApplicationArray) ToSpectrumApplicationArrayOutputWithContext(ct
 // SpectrumApplicationMapInput is an input type that accepts SpectrumApplicationMap and SpectrumApplicationMapOutput values.
 // You can construct a concrete instance of `SpectrumApplicationMapInput` via:
 //
-//          SpectrumApplicationMap{ "key": SpectrumApplicationArgs{...} }
+//	SpectrumApplicationMap{ "key": SpectrumApplicationArgs{...} }
 type SpectrumApplicationMapInput interface {
 	pulumi.Input
 

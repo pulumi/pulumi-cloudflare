@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class ZoneLockdownConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class ZoneLockdownConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The request property to target. Allowed values: "ip", "ip_range"
@@ -27,5 +27,6 @@ namespace Pulumi.Cloudflare.Inputs
         public ZoneLockdownConfigurationArgs()
         {
         }
+        public static new ZoneLockdownConfigurationArgs Empty => new ZoneLockdownConfigurationArgs();
     }
 }

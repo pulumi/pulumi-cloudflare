@@ -13,6 +13,9 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ListItem
     {
+        /// <summary>
+        /// An optional comment for the item.
+        /// </summary>
         public readonly string? Comment;
         public readonly Outputs.ListItemValue Value;
 

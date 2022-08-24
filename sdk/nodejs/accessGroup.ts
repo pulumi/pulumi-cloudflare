@@ -6,41 +6,15 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Access Group resource. Access Groups are used in conjunction with Access Policies to restrict access to a particular resource based on group membership.
+ * Provides a Cloudflare Access Group resource. Access Groups are used
+ * in conjunction with Access Policies to restrict access to a
+ * particular resource based on group membership.
  *
  * > It's required that an `accountId` or `zoneId` is provided and in
  * most cases using either is fine. However, if you're using a scoped
  * access token, you must provide the argument that matches the token's
  * scope. For example, an access token that is scoped to the "example.com"
  * zone needs to use the `zoneId` argument.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // Allowing access to `test@example.com` email address only
- * const testGroupAccessGroup = new cloudflare.AccessGroup("testGroupAccessGroup", {
- *     accountId: "975ecf5a45e3bcb680dba0722a420ad9",
- *     name: "staging group",
- *     includes: [{
- *         emails: ["test@example.com"],
- *     }],
- * });
- * // Allowing `test@example.com` to access but only when coming from a
- * // specific IP.
- * const testGroupIndex_accessGroupAccessGroup = new cloudflare.AccessGroup("testGroupIndex/accessGroupAccessGroup", {
- *     accountId: "975ecf5a45e3bcb680dba0722a420ad9",
- *     name: "staging group",
- *     includes: [{
- *         emails: ["test@example.com"],
- *     }],
- *     requires: {
- *         ips: [_var.office_ip],
- *     },
- * });
- * ```
  *
  * ## Import
  *
@@ -77,7 +51,7 @@ export class AccessGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     public readonly excludes!: pulumi.Output<outputs.AccessGroupExclude[] | undefined>;
@@ -85,7 +59,7 @@ export class AccessGroup extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly requires!: pulumi.Output<outputs.AccessGroupRequire[] | undefined>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -133,7 +107,7 @@ export class AccessGroup extends pulumi.CustomResource {
  */
 export interface AccessGroupState {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
     excludes?: pulumi.Input<pulumi.Input<inputs.AccessGroupExclude>[]>;
@@ -141,7 +115,7 @@ export interface AccessGroupState {
     name?: pulumi.Input<string>;
     requires?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequire>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -151,7 +125,7 @@ export interface AccessGroupState {
  */
 export interface AccessGroupArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
     excludes?: pulumi.Input<pulumi.Input<inputs.AccessGroupExclude>[]>;
@@ -159,7 +133,7 @@ export interface AccessGroupArgs {
     name: pulumi.Input<string>;
     requires?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequire>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
 }

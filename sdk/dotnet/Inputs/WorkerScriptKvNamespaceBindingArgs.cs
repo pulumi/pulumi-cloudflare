@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class WorkerScriptKvNamespaceBindingArgs : Pulumi.ResourceArgs
+    public sealed class WorkerScriptKvNamespaceBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The global variable for the binding in your Worker code.
@@ -24,5 +24,6 @@ namespace Pulumi.Cloudflare.Inputs
         public WorkerScriptKvNamespaceBindingArgs()
         {
         }
+        public static new WorkerScriptKvNamespaceBindingArgs Empty => new WorkerScriptKvNamespaceBindingArgs();
     }
 }

@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *     eventStartTime: "2006-01-02T15:04:05Z",
  *     name: "foo",
  *     waitingRoomId: "d41d8cd98f00b204e9800998ecf8427e",
- *     zoneId: "ae36f999674d196762efcc5abb06b345",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  *
@@ -80,7 +80,7 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
      */
     public readonly eventEndTime!: pulumi.Output<string>;
     /**
-     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`.
      */
     public readonly eventStartTime!: pulumi.Output<string>;
     /**
@@ -96,12 +96,11 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
      */
     public readonly newUsersPerMinute!: pulumi.Output<number | undefined>;
     /**
-     * ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes
-     * before `event_start_time`.
+     * ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `eventStartTime`.
      */
     public readonly prequeueStartTime!: pulumi.Output<string | undefined>;
     /**
-     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
      */
     public readonly queueingMethod!: pulumi.Output<string | undefined>;
     /**
@@ -109,8 +108,7 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
      */
     public readonly sessionDuration!: pulumi.Output<number | undefined>;
     /**
-     * Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not
-     * null.
+     * Users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. Defaults to `false`.
      */
     public readonly shuffleAtEventStart!: pulumi.Output<boolean | undefined>;
     /**
@@ -225,7 +223,7 @@ export interface WaitingRoomEventState {
      */
     eventEndTime?: pulumi.Input<string>;
     /**
-     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`.
      */
     eventStartTime?: pulumi.Input<string>;
     /**
@@ -241,12 +239,11 @@ export interface WaitingRoomEventState {
      */
     newUsersPerMinute?: pulumi.Input<number>;
     /**
-     * ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes
-     * before `event_start_time`.
+     * ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `eventStartTime`.
      */
     prequeueStartTime?: pulumi.Input<string>;
     /**
-     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
      */
     queueingMethod?: pulumi.Input<string>;
     /**
@@ -254,8 +251,7 @@ export interface WaitingRoomEventState {
      */
     sessionDuration?: pulumi.Input<number>;
     /**
-     * Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not
-     * null.
+     * Users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. Defaults to `false`.
      */
     shuffleAtEventStart?: pulumi.Input<boolean>;
     /**
@@ -297,7 +293,7 @@ export interface WaitingRoomEventArgs {
      */
     eventEndTime: pulumi.Input<string>;
     /**
-     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`.
      */
     eventStartTime: pulumi.Input<string>;
     /**
@@ -309,12 +305,11 @@ export interface WaitingRoomEventArgs {
      */
     newUsersPerMinute?: pulumi.Input<number>;
     /**
-     * ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes
-     * before `event_start_time`.
+     * ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `eventStartTime`.
      */
     prequeueStartTime?: pulumi.Input<string>;
     /**
-     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
      */
     queueingMethod?: pulumi.Input<string>;
     /**
@@ -322,8 +317,7 @@ export interface WaitingRoomEventArgs {
      */
     sessionDuration?: pulumi.Input<number>;
     /**
-     * Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not
-     * null.
+     * Users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. Defaults to `false`.
      */
     shuffleAtEventStart?: pulumi.Input<boolean>;
     /**

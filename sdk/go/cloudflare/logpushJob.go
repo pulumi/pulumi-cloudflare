@@ -16,48 +16,40 @@ import (
 // # Import an account-scoped job.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/logpushJob:LogpushJob example account/<account_id>/<job_id>
+//
+//	$ pulumi import cloudflare:index/logpushJob:LogpushJob example account/<account_id>/<job_id>
+//
 // ```
 //
 // # Import a zone-scoped job.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/logpushJob:LogpushJob example zone/<zone_id>/<job_id>
+//
+//	$ pulumi import cloudflare:index/logpushJob:LogpushJob example zone/<zone_id>/<job_id>
+//
 // ```
 type LogpushJob struct {
 	pulumi.CustomResourceState
 
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters
-	// supported by the destination may be included. See [Logpush destination
-	// documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available
-	// values: `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`,
-	// `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`
+	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`.
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters
-	// supported by the destination may be included. See [Logpush destination
-	// documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
+	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
 	DestinationConf pulumi.StringOutput `pulumi:"destinationConf"`
 	// Whether to enable the job.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// Use filters to select the events to include and/or remove from your logs. For more information, refer to
-	// [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
+	// Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
 	Filter pulumi.StringPtrOutput `pulumi:"filter"`
-	// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less
-	// often with larger files. Available values: `high`, `low`
+	// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
 	Frequency pulumi.StringPtrOutput `pulumi:"frequency"`
-	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
-	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
-	// options
-	// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrOutput `pulumi:"logpullOptions"`
 	// The name of the logpush job to create.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
-	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
-	// Microsoft Azure or Sumo Logic. See [Developer
-	// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 	OwnershipChallenge pulumi.StringPtrOutput `pulumi:"ownershipChallenge"`
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
@@ -100,35 +92,23 @@ func GetLogpushJob(ctx *pulumi.Context,
 type logpushJobState struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters
-	// supported by the destination may be included. See [Logpush destination
-	// documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available
-	// values: `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`,
-	// `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`
+	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`.
 	Dataset *string `pulumi:"dataset"`
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters
-	// supported by the destination may be included. See [Logpush destination
-	// documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
+	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
 	DestinationConf *string `pulumi:"destinationConf"`
 	// Whether to enable the job.
 	Enabled *bool `pulumi:"enabled"`
-	// Use filters to select the events to include and/or remove from your logs. For more information, refer to
-	// [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
+	// Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
 	Filter *string `pulumi:"filter"`
-	// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less
-	// often with larger files. Available values: `high`, `low`
+	// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
 	Frequency *string `pulumi:"frequency"`
-	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
 	Kind *string `pulumi:"kind"`
-	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
-	// options
-	// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions *string `pulumi:"logpullOptions"`
 	// The name of the logpush job to create.
 	Name *string `pulumi:"name"`
-	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
-	// Microsoft Azure or Sumo Logic. See [Developer
-	// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 	OwnershipChallenge *string `pulumi:"ownershipChallenge"`
 	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
@@ -137,35 +117,23 @@ type logpushJobState struct {
 type LogpushJobState struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters
-	// supported by the destination may be included. See [Logpush destination
-	// documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available
-	// values: `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`,
-	// `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`
+	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`.
 	Dataset pulumi.StringPtrInput
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters
-	// supported by the destination may be included. See [Logpush destination
-	// documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
+	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
 	DestinationConf pulumi.StringPtrInput
 	// Whether to enable the job.
 	Enabled pulumi.BoolPtrInput
-	// Use filters to select the events to include and/or remove from your logs. For more information, refer to
-	// [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
+	// Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
 	Filter pulumi.StringPtrInput
-	// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less
-	// often with larger files. Available values: `high`, `low`
+	// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
 	Frequency pulumi.StringPtrInput
-	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
 	Kind pulumi.StringPtrInput
-	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
-	// options
-	// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrInput
 	// The name of the logpush job to create.
 	Name pulumi.StringPtrInput
-	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
-	// Microsoft Azure or Sumo Logic. See [Developer
-	// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 	OwnershipChallenge pulumi.StringPtrInput
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
@@ -178,35 +146,23 @@ func (LogpushJobState) ElementType() reflect.Type {
 type logpushJobArgs struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters
-	// supported by the destination may be included. See [Logpush destination
-	// documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available
-	// values: `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`,
-	// `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`
+	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`.
 	Dataset string `pulumi:"dataset"`
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters
-	// supported by the destination may be included. See [Logpush destination
-	// documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
+	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
 	DestinationConf string `pulumi:"destinationConf"`
 	// Whether to enable the job.
 	Enabled *bool `pulumi:"enabled"`
-	// Use filters to select the events to include and/or remove from your logs. For more information, refer to
-	// [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
+	// Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
 	Filter *string `pulumi:"filter"`
-	// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less
-	// often with larger files. Available values: `high`, `low`
+	// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
 	Frequency *string `pulumi:"frequency"`
-	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
 	Kind *string `pulumi:"kind"`
-	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
-	// options
-	// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions *string `pulumi:"logpullOptions"`
 	// The name of the logpush job to create.
 	Name *string `pulumi:"name"`
-	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
-	// Microsoft Azure or Sumo Logic. See [Developer
-	// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 	OwnershipChallenge *string `pulumi:"ownershipChallenge"`
 	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
@@ -216,35 +172,23 @@ type logpushJobArgs struct {
 type LogpushJobArgs struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters
-	// supported by the destination may be included. See [Logpush destination
-	// documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available
-	// values: `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`,
-	// `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`
+	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`.
 	Dataset pulumi.StringInput
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters
-	// supported by the destination may be included. See [Logpush destination
-	// documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
+	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
 	DestinationConf pulumi.StringInput
 	// Whether to enable the job.
 	Enabled pulumi.BoolPtrInput
-	// Use filters to select the events to include and/or remove from your logs. For more information, refer to
-	// [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
+	// Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
 	Filter pulumi.StringPtrInput
-	// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less
-	// often with larger files. Available values: `high`, `low`
+	// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
 	Frequency pulumi.StringPtrInput
-	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
 	Kind pulumi.StringPtrInput
-	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
-	// options
-	// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrInput
 	// The name of the logpush job to create.
 	Name pulumi.StringPtrInput
-	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
-	// Microsoft Azure or Sumo Logic. See [Developer
-	// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 	OwnershipChallenge pulumi.StringPtrInput
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
@@ -276,7 +220,7 @@ func (i *LogpushJob) ToLogpushJobOutputWithContext(ctx context.Context) LogpushJ
 // LogpushJobArrayInput is an input type that accepts LogpushJobArray and LogpushJobArrayOutput values.
 // You can construct a concrete instance of `LogpushJobArrayInput` via:
 //
-//          LogpushJobArray{ LogpushJobArgs{...} }
+//	LogpushJobArray{ LogpushJobArgs{...} }
 type LogpushJobArrayInput interface {
 	pulumi.Input
 
@@ -301,7 +245,7 @@ func (i LogpushJobArray) ToLogpushJobArrayOutputWithContext(ctx context.Context)
 // LogpushJobMapInput is an input type that accepts LogpushJobMap and LogpushJobMapOutput values.
 // You can construct a concrete instance of `LogpushJobMapInput` via:
 //
-//          LogpushJobMap{ "key": LogpushJobArgs{...} }
+//	LogpushJobMap{ "key": LogpushJobArgs{...} }
 type LogpushJobMapInput interface {
 	pulumi.Input
 
@@ -342,18 +286,12 @@ func (o LogpushJobOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters
-// supported by the destination may be included. See [Logpush destination
-// documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available
-// values: `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`,
-// `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`
+// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`.
 func (o LogpushJobOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringOutput { return v.Dataset }).(pulumi.StringOutput)
 }
 
-// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters
-// supported by the destination may be included. See [Logpush destination
-// documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
+// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
 func (o LogpushJobOutput) DestinationConf() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringOutput { return v.DestinationConf }).(pulumi.StringOutput)
 }
@@ -363,26 +301,22 @@ func (o LogpushJobOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Use filters to select the events to include and/or remove from your logs. For more information, refer to
-// [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
+// Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
 func (o LogpushJobOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
-// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less
-// often with larger files. Available values: `high`, `low`
+// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
 func (o LogpushJobOutput) Frequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.Frequency }).(pulumi.StringPtrOutput)
 }
 
-// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
 func (o LogpushJobOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
-// options
-// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 func (o LogpushJobOutput) LogpullOptions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.LogpullOptions }).(pulumi.StringPtrOutput)
 }
@@ -392,9 +326,7 @@ func (o LogpushJobOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
-// Microsoft Azure or Sumo Logic. See [Developer
-// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 func (o LogpushJobOutput) OwnershipChallenge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.OwnershipChallenge }).(pulumi.StringPtrOutput)
 }

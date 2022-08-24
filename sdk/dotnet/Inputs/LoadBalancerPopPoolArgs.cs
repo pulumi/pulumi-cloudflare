@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class LoadBalancerPopPoolArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerPopPoolArgs : global::Pulumi.ResourceArgs
     {
         [Input("poolIds", required: true)]
         private InputList<string>? _poolIds;
@@ -33,5 +33,6 @@ namespace Pulumi.Cloudflare.Inputs
         public LoadBalancerPopPoolArgs()
         {
         }
+        public static new LoadBalancerPopPoolArgs Empty => new LoadBalancerPopPoolArgs();
     }
 }

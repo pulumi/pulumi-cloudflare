@@ -15,79 +15,77 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Cloudflare.ZoneCacheVariants("example", new()
     ///     {
-    ///         var example = new Cloudflare.ZoneCacheVariants("example", new Cloudflare.ZoneCacheVariantsArgs
+    ///         Avifs = new[]
     ///         {
-    ///             Avifs = 
-    ///             {
-    ///                 "image/avif",
-    ///                 "image/webp",
-    ///             },
-    ///             Bmps = 
-    ///             {
-    ///                 "image/bmp",
-    ///                 "image/webp",
-    ///             },
-    ///             Gifs = 
-    ///             {
-    ///                 "image/gif",
-    ///                 "image/webp",
-    ///             },
-    ///             Jp2s = 
-    ///             {
-    ///                 "image/jp2",
-    ///                 "image/webp",
-    ///             },
-    ///             Jpegs = 
-    ///             {
-    ///                 "image/jpeg",
-    ///                 "image/webp",
-    ///             },
-    ///             Jpgs = 
-    ///             {
-    ///                 "image/jpg",
-    ///                 "image/webp",
-    ///             },
-    ///             Jpg2s = 
-    ///             {
-    ///                 "image/jpg2",
-    ///                 "image/webp",
-    ///             },
-    ///             Pngs = 
-    ///             {
-    ///                 "image/png",
-    ///                 "image/webp",
-    ///             },
-    ///             Tifs = 
-    ///             {
-    ///                 "image/tif",
-    ///                 "image/webp",
-    ///             },
-    ///             Tiffs = 
-    ///             {
-    ///                 "image/tiff",
-    ///                 "image/webp",
-    ///             },
-    ///             Webps = 
-    ///             {
-    ///                 "image/jpeg",
-    ///                 "image/webp",
-    ///             },
-    ///             ZoneId = "7df50664b7f90274f4d77cdfee701380",
-    ///         });
-    ///     }
+    ///             "image/avif",
+    ///             "image/webp",
+    ///         },
+    ///         Bmps = new[]
+    ///         {
+    ///             "image/bmp",
+    ///             "image/webp",
+    ///         },
+    ///         Gifs = new[]
+    ///         {
+    ///             "image/gif",
+    ///             "image/webp",
+    ///         },
+    ///         Jp2s = new[]
+    ///         {
+    ///             "image/jp2",
+    ///             "image/webp",
+    ///         },
+    ///         Jpegs = new[]
+    ///         {
+    ///             "image/jpeg",
+    ///             "image/webp",
+    ///         },
+    ///         Jpgs = new[]
+    ///         {
+    ///             "image/jpg",
+    ///             "image/webp",
+    ///         },
+    ///         Jpg2s = new[]
+    ///         {
+    ///             "image/jpg2",
+    ///             "image/webp",
+    ///         },
+    ///         Pngs = new[]
+    ///         {
+    ///             "image/png",
+    ///             "image/webp",
+    ///         },
+    ///         Tifs = new[]
+    ///         {
+    ///             "image/tif",
+    ///             "image/webp",
+    ///         },
+    ///         Tiffs = new[]
+    ///         {
+    ///             "image/tiff",
+    ///             "image/webp",
+    ///         },
+    ///         Webps = new[]
+    ///         {
+    ///             "image/jpeg",
+    ///             "image/webp",
+    ///         },
+    ///         ZoneId = "7df50664b7f90274f4d77cdfee701380",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zoneCacheVariants:ZoneCacheVariants")]
-    public partial class ZoneCacheVariants : Pulumi.CustomResource
+    public partial class ZoneCacheVariants : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List of strings with the MIME types of all the variants that should be served for avif
@@ -205,7 +203,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class ZoneCacheVariantsArgs : Pulumi.ResourceArgs
+    public sealed class ZoneCacheVariantsArgs : global::Pulumi.ResourceArgs
     {
         [Input("avifs")]
         private InputList<string>? _avifs;
@@ -348,9 +346,10 @@ namespace Pulumi.Cloudflare
         public ZoneCacheVariantsArgs()
         {
         }
+        public static new ZoneCacheVariantsArgs Empty => new ZoneCacheVariantsArgs();
     }
 
-    public sealed class ZoneCacheVariantsState : Pulumi.ResourceArgs
+    public sealed class ZoneCacheVariantsState : global::Pulumi.ResourceArgs
     {
         [Input("avifs")]
         private InputList<string>? _avifs;
@@ -493,5 +492,6 @@ namespace Pulumi.Cloudflare
         public ZoneCacheVariantsState()
         {
         }
+        public static new ZoneCacheVariantsState Empty => new ZoneCacheVariantsState();
     }
 }

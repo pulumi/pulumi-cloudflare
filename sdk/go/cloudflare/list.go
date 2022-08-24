@@ -11,67 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides Lists (IPs, Redirects) to be used in Edge Rules Engine across all zones within the same account.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewList(ctx, "example", &cloudflare.ListArgs{
-// 			AccountId:   pulumi.String("919f297a62fdfb28844177128ed4d331"),
-// 			Description: pulumi.String("example redirects for a list"),
-// 			Items: ListItemArray{
-// 				&ListItemArgs{
-// 					Comment: pulumi.String("one"),
-// 					Value: &ListItemValueArgs{
-// 						Redirect: []map[string]interface{}{
-// 							map[string]interface{}{
-// 								"sourceUrl": "example.com/blog",
-// 								"targetUrl": "https://blog.example.com",
-// 							},
-// 						},
-// 					},
-// 				},
-// 				&ListItemArgs{
-// 					Comment: pulumi.String("two"),
-// 					Value: &ListItemValueArgs{
-// 						Redirect: []map[string]interface{}{
-// 							map[string]interface{}{
-// 								"includeSubdomains":   "enabled",
-// 								"preservePathSuffix":  "disabled",
-// 								"preserveQueryString": "enabled",
-// 								"sourceUrl":           "example.com/foo",
-// 								"statusCode":          301,
-// 								"subpathMatching":     "enabled",
-// 								"targetUrl":           "https://foo.example.com",
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 			Kind: pulumi.String("redirect"),
-// 			Name: pulumi.String("example list"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
+// Provides Lists (IPs, Redirects) to be used in Edge Rules Engine
+// across all zones within the same account.
 //
 // ## Import
 //
 // ```sh
-//  $ pulumi import cloudflare:index/list:List example <account_id>/<list_id>
+//
+//	$ pulumi import cloudflare:index/list:List example <account_id>/<list_id>
+//
 // ```
 type List struct {
 	pulumi.CustomResourceState
@@ -203,7 +151,7 @@ func (i *List) ToListOutputWithContext(ctx context.Context) ListOutput {
 // ListArrayInput is an input type that accepts ListArray and ListArrayOutput values.
 // You can construct a concrete instance of `ListArrayInput` via:
 //
-//          ListArray{ ListArgs{...} }
+//	ListArray{ ListArgs{...} }
 type ListArrayInput interface {
 	pulumi.Input
 
@@ -228,7 +176,7 @@ func (i ListArray) ToListArrayOutputWithContext(ctx context.Context) ListArrayOu
 // ListMapInput is an input type that accepts ListMap and ListMapOutput values.
 // You can construct a concrete instance of `ListMapInput` via:
 //
-//          ListMap{ "key": ListArgs{...} }
+//	ListMap{ "key": ListArgs{...} }
 type ListMapInput interface {
 	pulumi.Input
 

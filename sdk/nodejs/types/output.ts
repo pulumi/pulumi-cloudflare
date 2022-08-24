@@ -5,14 +5,53 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
 export interface AccessApplicationCorsHeader {
+    /**
+     * Value to determine whether all HTTP headers are exposed.
+     */
     allowAllHeaders?: boolean;
+    /**
+     * Value to determine whether all methods are exposed.
+     */
     allowAllMethods?: boolean;
+    /**
+     * Value to determine whether all origins are permitted to make CORS requests.
+     */
     allowAllOrigins?: boolean;
+    /**
+     * Value to determine if credentials (cookies, authorization headers, or TLS client certificates) are included with requests.
+     */
     allowCredentials?: boolean;
+    /**
+     * List of HTTP headers to expose via CORS.
+     */
     allowedHeaders?: string[];
+    /**
+     * List of methods to expose via CORS.
+     */
     allowedMethods?: string[];
+    /**
+     * List of origins permitted to make CORS requests.
+     */
     allowedOrigins?: string[];
+    /**
+     * The maximum time a preflight request will be cached.
+     */
     maxAge?: number;
+}
+
+export interface AccessApplicationSaasApp {
+    /**
+     * The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
+     */
+    consumerServiceUrl: string;
+    /**
+     * The format of the name identifier sent to the SaaS application. Defaults to `email`.
+     */
+    nameIdFormat?: string;
+    /**
+     * A globally unique name for an identity or service provider.
+     */
+    spEntityId: string;
 }
 
 export interface AccessGroupExclude {
@@ -39,6 +78,9 @@ export interface AccessGroupExclude {
 
 export interface AccessGroupExcludeAzure {
     identityProviderId?: string;
+    /**
+     * The ID of this resource.
+     */
     ids?: string[];
 }
 
@@ -93,6 +135,9 @@ export interface AccessGroupInclude {
 
 export interface AccessGroupIncludeAzure {
     identityProviderId?: string;
+    /**
+     * The ID of this resource.
+     */
     ids?: string[];
 }
 
@@ -147,6 +192,9 @@ export interface AccessGroupRequire {
 
 export interface AccessGroupRequireAzure {
     identityProviderId?: string;
+    /**
+     * The ID of this resource.
+     */
     ids?: string[];
 }
 
@@ -202,7 +250,13 @@ export interface AccessIdentityProviderConfig {
 }
 
 export interface AccessPolicyApprovalGroup {
+    /**
+     * Number of approvals needed.
+     */
     approvalsNeeded: number;
+    /**
+     * List of emails to request approval from.
+     */
     emailAddresses?: string[];
     emailListUuid?: string;
 }
@@ -231,6 +285,9 @@ export interface AccessPolicyExclude {
 
 export interface AccessPolicyExcludeAzure {
     identityProviderId?: string;
+    /**
+     * The ID of this resource.
+     */
     ids?: string[];
 }
 
@@ -241,6 +298,9 @@ export interface AccessPolicyExcludeExternalEvaluation {
 
 export interface AccessPolicyExcludeGithub {
     identityProviderId?: string;
+    /**
+     * Friendly name of the Access Policy.
+     */
     name?: string;
     teams?: string[];
 }
@@ -252,6 +312,9 @@ export interface AccessPolicyExcludeGsuite {
 
 export interface AccessPolicyExcludeOkta {
     identityProviderId?: string;
+    /**
+     * Friendly name of the Access Policy.
+     */
     names?: string[];
 }
 
@@ -285,6 +348,9 @@ export interface AccessPolicyInclude {
 
 export interface AccessPolicyIncludeAzure {
     identityProviderId?: string;
+    /**
+     * The ID of this resource.
+     */
     ids?: string[];
 }
 
@@ -295,6 +361,9 @@ export interface AccessPolicyIncludeExternalEvaluation {
 
 export interface AccessPolicyIncludeGithub {
     identityProviderId?: string;
+    /**
+     * Friendly name of the Access Policy.
+     */
     name?: string;
     teams?: string[];
 }
@@ -306,6 +375,9 @@ export interface AccessPolicyIncludeGsuite {
 
 export interface AccessPolicyIncludeOkta {
     identityProviderId?: string;
+    /**
+     * Friendly name of the Access Policy.
+     */
     names?: string[];
 }
 
@@ -339,6 +411,9 @@ export interface AccessPolicyRequire {
 
 export interface AccessPolicyRequireAzure {
     identityProviderId?: string;
+    /**
+     * The ID of this resource.
+     */
     ids?: string[];
 }
 
@@ -349,6 +424,9 @@ export interface AccessPolicyRequireExternalEvaluation {
 
 export interface AccessPolicyRequireGithub {
     identityProviderId?: string;
+    /**
+     * Friendly name of the Access Policy.
+     */
     name?: string;
     teams?: string[];
 }
@@ -360,6 +438,9 @@ export interface AccessPolicyRequireGsuite {
 
 export interface AccessPolicyRequireOkta {
     identityProviderId?: string;
+    /**
+     * Friendly name of the Access Policy.
+     */
     names?: string[];
 }
 
@@ -370,11 +451,20 @@ export interface AccessPolicyRequireSaml {
 }
 
 export interface AccessRuleConfiguration {
+    /**
+     * The request property to target. Available values: `ip`, `ip6`, `ipRange`, `asn`, `country`.
+     */
     target: string;
+    /**
+     * The value to target. Depends on target's type.
+     */
     value: string;
 }
 
 export interface ApiTokenCondition {
+    /**
+     * Request IP related conditions.
+     */
     requestIp?: outputs.ApiTokenConditionRequestIp;
 }
 
@@ -384,8 +474,17 @@ export interface ApiTokenConditionRequestIp {
 }
 
 export interface ApiTokenPolicy {
+    /**
+     * Effect of the policy. Available values: `allow`, `deny`. Defaults to `allow`.
+     */
     effect?: string;
+    /**
+     * List of permissions groups IDs. See [documentation](https://developers.cloudflare.com/api/tokens/create/permissions) for more information.
+     */
     permissionGroups: string[];
+    /**
+     * Describes what operations against which resources are allowed or denied.
+     */
     resources: {[key: string]: string};
 }
 
@@ -414,17 +513,19 @@ export interface CustomHostnameSsl {
      */
     customKey?: string;
     /**
-     * Domain control validation (DCV) method used for this
-     * hostname. Valid values are `"txt"`, `"http"` and `"email"`.
+     * Domain control validation (DCV) method used for this hostname. Available values: `http`, `txt`, `email`.
      */
     method?: string;
     /**
-     * SSL/TLS settings for the certificate. See further notes below.
+     * SSL/TLS settings for the certificate.
      */
     settings: outputs.CustomHostnameSslSetting[];
+    /**
+     * Status of the certificate.
+     */
     status: string;
     /**
-     * Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+     * Level of validation to be used for this hostname. Available values: `dv`. Defaults to `dv`.
      */
     type?: string;
     validationErrors: outputs.CustomHostnameSslValidationError[];
@@ -436,26 +537,10 @@ export interface CustomHostnameSsl {
 }
 
 export interface CustomHostnameSslSetting {
-    /**
-     * List of SSL/TLS ciphers to associate with this certificate.
-     */
     ciphers?: string[];
-    /**
-     * Whether or not early hints should be supported. Valid values are `"on"` or `"off"`.
-     */
     earlyHints?: string;
-    /**
-     * Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
-     */
     http2?: string;
-    /**
-     * Lowest version of TLS this certificate should
-     * support. Valid values are `"1.0"`, `"1.1"`, `"1.2"` and `"1.3"`.
-     */
     minTlsVersion?: string;
-    /**
-     * Whether or not TLSv1.3 should be supported. Valid values are `"on"` or `"off"`.
-     */
     tls13?: string;
 }
 
@@ -601,6 +686,9 @@ export interface FallbackDomainDomain {
 
 export interface GetAccountRolesRole {
     description?: string;
+    /**
+     * The ID of this resource.
+     */
     id?: string;
     name?: string;
 }
@@ -608,6 +696,9 @@ export interface GetAccountRolesRole {
 export interface GetDevicesDevice {
     created?: string;
     deviceType?: string;
+    /**
+     * The ID of this resource.
+     */
     id?: string;
     ip?: string;
     key?: string;
@@ -629,6 +720,9 @@ export interface GetWafGroupsFilter {
 
 export interface GetWafGroupsGroup {
     description?: string;
+    /**
+     * The ID of this resource.
+     */
     id?: string;
     mode?: string;
     modifiedRulesCount?: number;
@@ -648,6 +742,9 @@ export interface GetWafPackagesPackage {
     actionMode?: string;
     description?: string;
     detectionMode?: string;
+    /**
+     * The ID of this resource.
+     */
     id?: string;
     name?: string;
     sensitivity?: string;
@@ -665,6 +762,9 @@ export interface GetWafRulesRule {
     description?: string;
     groupId?: string;
     groupName?: string;
+    /**
+     * The ID of this resource.
+     */
     id?: string;
     mode?: string;
     packageId?: string;
@@ -672,21 +772,39 @@ export interface GetWafRulesRule {
 }
 
 export interface GetZonesFilter {
+    /**
+     * The account identifier to target for the resource.
+     */
     accountId?: string;
+    /**
+     * Defaults to `exact`.
+     */
     lookupType?: string;
     match?: string;
     name?: string;
+    /**
+     * Defaults to `false`.
+     */
     paused?: boolean;
     status?: string;
 }
 
 export interface GetZonesZone {
+    /**
+     * The ID of this resource.
+     */
     id?: string;
     name?: string;
 }
 
 export interface HealthcheckHeader {
+    /**
+     * The header name.
+     */
     header: string;
+    /**
+     * A list of string values for the header.
+     */
     values: string[];
 }
 
@@ -702,6 +820,9 @@ export interface IpListItem {
 }
 
 export interface ListItem {
+    /**
+     * An optional comment for the item.
+     */
     comment?: string;
     value: outputs.ListItemValue;
 }
@@ -719,6 +840,17 @@ export interface ListItemValueRedirect {
     statusCode?: number;
     subpathMatching?: string;
     targetUrl: string;
+}
+
+export interface LoadBalancerCountryPool {
+    /**
+     * A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+     */
+    country: string;
+    /**
+     * A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     */
+    poolIds: string[];
 }
 
 export interface LoadBalancerMonitorHeader {
@@ -809,7 +941,7 @@ export interface LoadBalancerRegionPool {
      */
     poolIds: string[];
     /**
-     * A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
+     * A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
      */
     region: string;
 }
@@ -866,6 +998,10 @@ export interface LoadBalancerRuleFixedResponse {
 
 export interface LoadBalancerRuleOverride {
     /**
+     * See countryPools above.
+     */
+    countryPools?: outputs.LoadBalancerRuleOverrideCountryPool[];
+    /**
      * See defaultPoolIds above.
      */
     defaultPools?: string[];
@@ -903,6 +1039,17 @@ export interface LoadBalancerRuleOverride {
     ttl?: number;
 }
 
+export interface LoadBalancerRuleOverrideCountryPool {
+    /**
+     * A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+     */
+    country: string;
+    /**
+     * A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     */
+    poolIds: string[];
+}
+
 export interface LoadBalancerRuleOverridePopPool {
     /**
      * A list of pool IDs in failover priority to use for traffic reaching the given PoP.
@@ -920,53 +1067,142 @@ export interface LoadBalancerRuleOverrideRegionPool {
      */
     poolIds: string[];
     /**
-     * A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
+     * A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
      */
     region: string;
 }
 
 export interface ManagedHeadersManagedRequestHeader {
+    /**
+     * Whether the headers rule is active.
+     */
     enabled: boolean;
+    /**
+     * Unique headers rule identifier.
+     */
     id: string;
 }
 
 export interface ManagedHeadersManagedResponseHeader {
+    /**
+     * Whether the headers rule is active.
+     */
     enabled: boolean;
+    /**
+     * Unique headers rule identifier.
+     */
     id: string;
 }
 
 export interface NotificationPolicyEmailIntegration {
+    /**
+     * The ID of this resource.
+     */
     id: string;
+    /**
+     * The name of the notification policy.
+     */
     name?: string;
 }
 
 export interface NotificationPolicyFilters {
+    /**
+     * State of the pool to alert on.
+     */
     enableds?: string[];
+    /**
+     * Source configuration to alert on for pool or origin.
+     */
+    eventSources?: string[];
+    /**
+     * Stream event type to alert on.
+     */
+    eventTypes?: string[];
+    /**
+     * Identifier health check.
+     */
     healthCheckIds?: string[];
+    /**
+     * Stream input id to alert on.
+     */
+    inputIds?: string[];
+    /**
+     * A numerical limit. Example: `100`.
+     */
     limits?: string[];
+    /**
+     * Health status to alert on for pool or origin.
+     */
+    newHealths?: string[];
+    /**
+     * Packets per second threshold for dos alert.
+     */
+    packetsPerSeconds?: string[];
+    /**
+     * Load balancer pool identifier.
+     */
     poolIds?: string[];
+    /**
+     * Product name. Available values: `workerRequests`, `workerDurableObjectsRequests`, `workerDurableObjectsDuration`, `workerDurableObjectsDataTransfer`, `workerDurableObjectsStoredData`, `workerDurableObjectsStorageDeletes`, `workerDurableObjectsStorageWrites`, `workerDurableObjectsStorageReads`.
+     */
     products?: string[];
+    /**
+     * Protocol to alert on for dos.
+     */
+    protocols?: string[];
+    /**
+     * Requests per second threshold for dos alert.
+     */
+    requestsPerSeconds?: string[];
+    /**
+     * A list of clickhouse services to alert on.
+     */
     services?: string[];
+    /**
+     * A numerical limit. Example: `99.9`.
+     */
     slos?: string[];
+    /**
+     * Status to alert on.
+     */
     statuses?: string[];
+    /**
+     * Target host to alert on for dos.
+     */
+    targetHosts?: string[];
+    /**
+     * Target domain to alert on.
+     */
+    targetZoneNames?: string[];
+    /**
+     * A list of zone identifiers.
+     */
     zones?: string[];
 }
 
 export interface NotificationPolicyPagerdutyIntegration {
+    /**
+     * The ID of this resource.
+     */
     id: string;
+    /**
+     * The name of the notification policy.
+     */
     name?: string;
 }
 
 export interface NotificationPolicyWebhooksIntegration {
+    /**
+     * The ID of this resource.
+     */
     id: string;
+    /**
+     * The name of the notification policy.
+     */
     name?: string;
 }
 
 export interface PageRuleActions {
-    /**
-     * Whether this action is `"on"` or `"off"`.
-     */
-    alwaysOnline?: string;
     /**
      * Boolean of whether this action is enabled. Default: false.
      */
@@ -1370,46 +1606,112 @@ export interface RecordData {
 }
 
 export interface RulesetRule {
+    /**
+     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `serveError`, `skip`.
+     */
     action?: string;
+    /**
+     * List of parameters that configure the behavior of the ruleset rule action.
+     */
     actionParameters?: outputs.RulesetRuleActionParameters;
+    /**
+     * Brief summary of the ruleset rule and its intended use.
+     */
     description?: string;
+    /**
+     * Whether the rule is active.
+     */
     enabled?: boolean;
+    /**
+     * List of parameters that configure exposed credential checks.
+     */
     exposedCredentialCheck?: outputs.RulesetRuleExposedCredentialCheck;
+    /**
+     * Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     */
     expression: string;
+    /**
+     * Unique rule identifier.
+     */
     id: string;
+    /**
+     * List parameters to configure how the rule generates logs.
+     */
     logging?: outputs.RulesetRuleLogging;
+    /**
+     * List of parameters that configure HTTP rate limiting behaviour.
+     */
     ratelimit?: outputs.RulesetRuleRatelimit;
+    /**
+     * Rule reference.
+     */
     ref: string;
+    /**
+     * Version of the ruleset to deploy.
+     */
     version: string;
 }
 
 export interface RulesetRuleActionParameters {
+    automaticHttpsRewrites?: boolean;
+    autominifies?: outputs.RulesetRuleActionParametersAutominify[];
+    bic?: boolean;
     browserTtl?: outputs.RulesetRuleActionParametersBrowserTtl;
-    bypassCache?: boolean;
+    cache?: boolean;
     cacheKey?: outputs.RulesetRuleActionParametersCacheKey;
+    content?: string;
+    contentType?: string;
     cookieFields?: string[];
+    disableApps?: boolean;
+    disableRailgun?: boolean;
+    disableZaraz?: boolean;
     edgeTtl?: outputs.RulesetRuleActionParametersEdgeTtl;
+    emailObfuscation?: boolean;
     fromList?: outputs.RulesetRuleActionParametersFromList;
+    fromValue?: outputs.RulesetRuleActionParametersFromValue;
     headers?: outputs.RulesetRuleActionParametersHeader[];
     hostHeader?: string;
+    hotlinkProtection?: boolean;
+    /**
+     * The ID of this resource.
+     */
     id?: string;
     increment?: number;
     matchedData?: outputs.RulesetRuleActionParametersMatchedData;
+    mirage?: boolean;
+    opportunisticEncryption?: boolean;
     origin?: outputs.RulesetRuleActionParametersOrigin;
     originErrorPagePassthru?: boolean;
     overrides?: outputs.RulesetRuleActionParametersOverrides;
     phases?: string[];
+    polish?: string;
     products?: string[];
     requestFields?: string[];
     respectStrongEtags?: boolean;
     responseFields?: string[];
     responses?: outputs.RulesetRuleActionParametersResponse[];
+    rocketLoader?: boolean;
+    /**
+     * List of rules to apply to the ruleset.
+     */
     rules?: {[key: string]: string};
     ruleset?: string;
     rulesets?: string[];
+    securityLevel?: string;
     serveStale?: outputs.RulesetRuleActionParametersServeStale;
+    serverSideExcludes?: boolean;
+    sni?: outputs.RulesetRuleActionParametersSni;
+    ssl?: string;
+    statusCode?: number;
+    sxg?: boolean;
     uri?: outputs.RulesetRuleActionParametersUri;
     version: string;
+}
+
+export interface RulesetRuleActionParametersAutominify {
+    css?: boolean;
+    html?: boolean;
+    js?: boolean;
 }
 
 export interface RulesetRuleActionParametersBrowserTtl {
@@ -1477,11 +1779,28 @@ export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange 
 
 export interface RulesetRuleActionParametersFromList {
     key: string;
+    /**
+     * Name of the ruleset.
+     */
     name: string;
+}
+
+export interface RulesetRuleActionParametersFromValue {
+    preserveQueryString?: boolean;
+    statusCode?: number;
+    targetUrl?: outputs.RulesetRuleActionParametersFromValueTargetUrl;
+}
+
+export interface RulesetRuleActionParametersFromValueTargetUrl {
+    expression?: string;
+    value?: string;
 }
 
 export interface RulesetRuleActionParametersHeader {
     expression?: string;
+    /**
+     * Name of the ruleset.
+     */
     name?: string;
     operation?: string;
     value?: string;
@@ -1503,6 +1822,9 @@ export interface RulesetRuleActionParametersOverrides {
      * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      */
     enabled?: boolean;
+    /**
+     * List of rules to apply to the ruleset.
+     */
     rules?: outputs.RulesetRuleActionParametersOverridesRule[];
     status?: string;
 }
@@ -1518,11 +1840,19 @@ export interface RulesetRuleActionParametersOverridesCategory {
 }
 
 export interface RulesetRuleActionParametersOverridesRule {
+    /**
+     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `serveError`, `skip`.
+     */
     action?: string;
     /**
+     * Whether the rule is active.
+     *
      * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      */
     enabled?: boolean;
+    /**
+     * Unique rule identifier.
+     */
     id?: string;
     scoreThreshold?: number;
     sensitivityLevel?: string;
@@ -1537,6 +1867,10 @@ export interface RulesetRuleActionParametersResponse {
 
 export interface RulesetRuleActionParametersServeStale {
     disableStaleWhileUpdating?: boolean;
+}
+
+export interface RulesetRuleActionParametersSni {
+    value?: string;
 }
 
 export interface RulesetRuleActionParametersUri {
@@ -1824,6 +2158,17 @@ export interface WorkerScriptPlainTextBinding {
      * The secret text you want to store.
      */
     text: string;
+}
+
+export interface WorkerScriptR2BucketBinding {
+    /**
+     * The name of the Bucket to bind to.
+     */
+    bucketName: string;
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: string;
 }
 
 export interface WorkerScriptSecretTextBinding {
@@ -2179,3 +2524,4 @@ export interface ZoneSettingsOverrideSettingsSecurityHeader {
      */
     preload: boolean;
 }
+

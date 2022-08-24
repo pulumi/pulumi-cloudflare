@@ -19,42 +19,59 @@ namespace Pulumi.Cloudflare
     }
 
 
-    public sealed class GetZoneArgs : Pulumi.InvokeArgs
+    public sealed class GetZoneArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
         [Input("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// The zone identifier to target for the resource.
+        /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
 
         public GetZoneArgs()
         {
         }
+        public static new GetZoneArgs Empty => new GetZoneArgs();
     }
 
-    public sealed class GetZoneInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetZoneInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The zone identifier to target for the resource.
+        /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 
         public GetZoneInvokeArgs()
         {
         }
+        public static new GetZoneInvokeArgs Empty => new GetZoneInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetZoneResult
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         public readonly string AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -66,6 +83,9 @@ namespace Pulumi.Cloudflare
         public readonly string Plan;
         public readonly string Status;
         public readonly ImmutableArray<string> VanityNameServers;
+        /// <summary>
+        /// The zone identifier to target for the resource.
+        /// </summary>
         public readonly string ZoneId;
 
         [OutputConstructor]

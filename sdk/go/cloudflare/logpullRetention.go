@@ -19,22 +19,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewLogpullRetention(ctx, "example", &cloudflare.LogpullRetentionArgs{
-// 			Enabled: pulumi.Bool(true),
-// 			ZoneId:  pulumi.String("fb54f084ca7f7b732d3d3ecbd8ef7bf2"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewLogpullRetention(ctx, "example", &cloudflare.LogpullRetentionArgs{
+//				Enabled: pulumi.Bool(true),
+//				ZoneId:  pulumi.String("fb54f084ca7f7b732d3d3ecbd8ef7bf2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -42,7 +45,9 @@ import (
 // You can import existing Logpull Retention using the zone ID as the identifier.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example fb54f084ca7f7b732d3d3ecbd8ef7bf2
+//
+//	$ pulumi import cloudflare:index/logpullRetention:LogpullRetention example fb54f084ca7f7b732d3d3ecbd8ef7bf2
+//
 // ```
 type LogpullRetention struct {
 	pulumi.CustomResourceState
@@ -146,7 +151,7 @@ func (i *LogpullRetention) ToLogpullRetentionOutputWithContext(ctx context.Conte
 // LogpullRetentionArrayInput is an input type that accepts LogpullRetentionArray and LogpullRetentionArrayOutput values.
 // You can construct a concrete instance of `LogpullRetentionArrayInput` via:
 //
-//          LogpullRetentionArray{ LogpullRetentionArgs{...} }
+//	LogpullRetentionArray{ LogpullRetentionArgs{...} }
 type LogpullRetentionArrayInput interface {
 	pulumi.Input
 
@@ -171,7 +176,7 @@ func (i LogpullRetentionArray) ToLogpullRetentionArrayOutputWithContext(ctx cont
 // LogpullRetentionMapInput is an input type that accepts LogpullRetentionMap and LogpullRetentionMapOutput values.
 // You can construct a concrete instance of `LogpullRetentionMapInput` via:
 //
-//          LogpullRetentionMap{ "key": LogpullRetentionArgs{...} }
+//	LogpullRetentionMap{ "key": LogpullRetentionArgs{...} }
 type LogpullRetentionMapInput interface {
 	pulumi.Input
 

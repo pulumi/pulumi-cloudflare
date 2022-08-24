@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class TeamsRuleRuleSettingsCheckSessionGetArgs : Pulumi.ResourceArgs
+    public sealed class TeamsRuleRuleSettingsCheckSessionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configure how fresh the session needs to be to be considered valid.
@@ -27,5 +27,6 @@ namespace Pulumi.Cloudflare.Inputs
         public TeamsRuleRuleSettingsCheckSessionGetArgs()
         {
         }
+        public static new TeamsRuleRuleSettingsCheckSessionGetArgs Empty => new TeamsRuleRuleSettingsCheckSessionGetArgs();
     }
 }

@@ -10,16 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class NotificationPolicyWebhooksIntegrationArgs : Pulumi.ResourceArgs
+    public sealed class NotificationPolicyWebhooksIntegrationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the notification policy.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         public NotificationPolicyWebhooksIntegrationArgs()
         {
         }
+        public static new NotificationPolicyWebhooksIntegrationArgs Empty => new NotificationPolicyWebhooksIntegrationArgs();
     }
 }

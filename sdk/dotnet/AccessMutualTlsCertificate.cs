@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Access Mutual TLS Certificate resource. Mutual TLS authentication ensures that the traffic is secure and trusted in both directions between a client and server and can be used with Access to only allows requests from devices with a corresponding client certificate.
+    /// Provides a Cloudflare Access Mutual TLS Certificate resource.
+    /// Mutual TLS authentication ensures that the traffic is secure and
+    /// trusted in both directions between a client and server and can be
+    ///  used with Access to only allows requests from devices with a
+    ///  corresponding client certificate.
     /// 
     /// &gt; It's required that an `account_id` or `zone_id` is provided and in
     /// most cases using either is fine. However, if you're using a scoped
@@ -21,26 +25,24 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myCert = new Cloudflare.AccessMutualTlsCertificate("myCert", new()
     ///     {
-    ///         var myCert = new Cloudflare.AccessMutualTlsCertificate("myCert", new Cloudflare.AccessMutualTlsCertificateArgs
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Name = "My Root Cert",
+    ///         Certificate = @var.Ca_pem,
+    ///         AssociatedHostnames = new[]
     ///         {
-    ///             ZoneId = "1d5fdc9e88c8a8c4518b068cd94331fe",
-    ///             Name = "My Root Cert",
-    ///             Certificate = @var.Ca_pem,
-    ///             AssociatedHostnames = 
-    ///             {
-    ///                 "staging.example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "staging.example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -58,10 +60,10 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate")]
-    public partial class AccessMutualTlsCertificate : Pulumi.CustomResource
+    public partial class AccessMutualTlsCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -88,7 +90,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -137,10 +139,10 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class AccessMutualTlsCertificateArgs : Pulumi.ResourceArgs
+    public sealed class AccessMutualTlsCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -170,7 +172,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -178,12 +180,13 @@ namespace Pulumi.Cloudflare
         public AccessMutualTlsCertificateArgs()
         {
         }
+        public static new AccessMutualTlsCertificateArgs Empty => new AccessMutualTlsCertificateArgs();
     }
 
-    public sealed class AccessMutualTlsCertificateState : Pulumi.ResourceArgs
+    public sealed class AccessMutualTlsCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -216,7 +219,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -224,5 +227,6 @@ namespace Pulumi.Cloudflare
         public AccessMutualTlsCertificateState()
         {
         }
+        public static new AccessMutualTlsCertificateState Empty => new AccessMutualTlsCertificateState();
     }
 }

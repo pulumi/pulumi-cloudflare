@@ -14,6 +14,9 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessGroupExcludeAzure
     {
         public readonly string? IdentityProviderId;
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
 
         [OutputConstructor]

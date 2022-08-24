@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RulesetRuleActionParametersCacheKeyCustomKeyArgs : Pulumi.ResourceArgs
+    public sealed class RulesetRuleActionParametersCacheKeyCustomKeyArgs : global::Pulumi.ResourceArgs
     {
         [Input("cookie")]
         public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs>? Cookie { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RulesetRuleActionParametersCacheKeyCustomKeyArgs()
         {
         }
+        public static new RulesetRuleActionParametersCacheKeyCustomKeyArgs Empty => new RulesetRuleActionParametersCacheKeyCustomKeyArgs();
     }
 }

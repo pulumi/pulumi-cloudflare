@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class SpectrumApplicationDnsArgs : Pulumi.ResourceArgs
+    public sealed class SpectrumApplicationDnsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Fully qualified domain name of the origin e.g. origin-ssh.example.com.
@@ -27,5 +27,6 @@ namespace Pulumi.Cloudflare.Inputs
         public SpectrumApplicationDnsArgs()
         {
         }
+        public static new SpectrumApplicationDnsArgs Empty => new SpectrumApplicationDnsArgs();
     }
 }

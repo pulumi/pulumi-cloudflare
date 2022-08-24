@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * // Magic Transit
  * const magicTransitExample = new cloudflare.Ruleset("magic_transit_example", {
- *     accountId: "d41d8cd98f00b204e9800998ecf8427e",
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     description: "example magic transit ruleset description",
  *     kind: "root",
  *     name: "account magic transit",
@@ -40,7 +40,7 @@ import * as utilities from "./utilities";
  *         enabled: true,
  *         expression: "true",
  *     }],
- *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * // Zone-level WAF with tag-based overrides
  * const zoneLevelManagedWafWithCategoryBasedOverrides = new cloudflare.Ruleset("zone_level_managed_waf_with_category_based_overrides", {
@@ -71,7 +71,7 @@ import * as utilities from "./utilities";
  *         enabled: false,
  *         expression: "true",
  *     }],
- *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * // Rewrite the URI path component to a static path
  * const transformUriRulePath = new cloudflare.Ruleset("transform_uri_rule_path", {
@@ -92,7 +92,7 @@ import * as utilities from "./utilities";
  *         enabled: true,
  *         expression: "(http.host eq \"example.com\" and http.request.uri.path eq \"/old-path\")",
  *     }],
- *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * // Rewrite the URI query component to a static query
  * const transformUriRuleQuery = new cloudflare.Ruleset("transform_uri_rule_query", {
@@ -113,7 +113,7 @@ import * as utilities from "./utilities";
  *         enabled: true,
  *         expression: "true",
  *     }],
- *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * // Rewrite HTTP headers to a modified values
  * const transformUriHttpHeaders = new cloudflare.Ruleset("transform_uri_http_headers", {
@@ -145,7 +145,7 @@ import * as utilities from "./utilities";
  *         enabled: false,
  *         expression: "true",
  *     }],
- *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * // HTTP rate limit for an API route
  * const rateLimitingExample = new cloudflare.Ruleset("rate_limiting_example", {
@@ -168,7 +168,7 @@ import * as utilities from "./utilities";
  *             requestsPerPeriod: 100,
  *         },
  *     }],
- *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * // Change origin for an API route
  * const httpOriginExample = new cloudflare.Ruleset("http_origin_example", {
@@ -189,7 +189,7 @@ import * as utilities from "./utilities";
  *         enabled: true,
  *         expression: "(http.request.uri.path matches \"^/api/\")",
  *     }],
- *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * // Custom fields logging
  * const customFieldsLoggingExample = new cloudflare.Ruleset("custom_fields_logging_example", {
@@ -220,7 +220,7 @@ import * as utilities from "./utilities";
  *         enabled: true,
  *         expression: "true",
  *     }],
- *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * // Custom cache keys + settings
  * const cacheSettingsExample = new cloudflare.Ruleset("cache_settings_example", {
@@ -298,7 +298,7 @@ import * as utilities from "./utilities";
  *         enabled: true,
  *         expression: "true",
  *     }],
- *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * // Redirects based on a List resource
  * const redirectFromListExample = new cloudflare.Ruleset("redirect_from_list_example", {
@@ -319,6 +319,48 @@ import * as utilities from "./utilities";
  *         enabled: true,
  *         expression: "http.request.full_uri in $redirect_list",
  *     }],
+ * });
+ * // Dynamic Redirects from value resource
+ * const redirectFromValueExample = new cloudflare.Ruleset("redirect_from_value_example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     description: "Redirect ruleset",
+ *     kind: "root",
+ *     name: "redirects",
+ *     phase: "http_request_dynamic_redirect",
+ *     rules: [{
+ *         action: "redirect",
+ *         actionParameters: {
+ *             fromValue: {
+ *                 preserveQueryString: true,
+ *                 statusCode: 301,
+ *                 targetUrl: {
+ *                     value: "some_host.com",
+ *                 },
+ *             },
+ *         },
+ *         description: "Apply redirect from value",
+ *         enabled: true,
+ *         expression: "true",
+ *     }],
+ * });
+ * // Serve some custom error response
+ * const httpCustomErrorExample = new cloudflare.Ruleset("http_custom_error_example", {
+ *     description: "Serve some error response",
+ *     kind: "zone",
+ *     name: "Serve some error response",
+ *     phase: "http_custom_errors",
+ *     rules: [{
+ *         action: "serve_error",
+ *         actionParameters: {
+ *             content: "some error html",
+ *             contentType: "text/html",
+ *             statusCode: 530,
+ *         },
+ *         description: "serve some error response",
+ *         enabled: true,
+ *         expression: "(http.request.uri.path matches \"^/api/\")",
+ *     }],
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  *
@@ -355,7 +397,7 @@ export class Ruleset extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
@@ -363,7 +405,7 @@ export class Ruleset extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`
+     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
      */
     public readonly kind!: pulumi.Output<string>;
     /**
@@ -371,12 +413,7 @@ export class Ruleset extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`,
-     * `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
-     * `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
-     * `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-     * `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
-     * `magic_transit`, `http_ratelimit`, `http_request_sbfm`
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`.
      */
     public readonly phase!: pulumi.Output<string>;
     /**
@@ -388,7 +425,7 @@ export class Ruleset extends pulumi.CustomResource {
      */
     public readonly shareableEntitlementName!: pulumi.Output<string | undefined>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
 
@@ -443,7 +480,7 @@ export class Ruleset extends pulumi.CustomResource {
  */
 export interface RulesetState {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -451,7 +488,7 @@ export interface RulesetState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`
+     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
      */
     kind?: pulumi.Input<string>;
     /**
@@ -459,12 +496,7 @@ export interface RulesetState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`,
-     * `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
-     * `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
-     * `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-     * `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
-     * `magic_transit`, `http_ratelimit`, `http_request_sbfm`
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`.
      */
     phase?: pulumi.Input<string>;
     /**
@@ -476,7 +508,7 @@ export interface RulesetState {
      */
     shareableEntitlementName?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -486,7 +518,7 @@ export interface RulesetState {
  */
 export interface RulesetArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -494,7 +526,7 @@ export interface RulesetArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`
+     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
      */
     kind: pulumi.Input<string>;
     /**
@@ -502,12 +534,7 @@ export interface RulesetArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`,
-     * `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
-     * `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
-     * `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
-     * `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`,
-     * `magic_transit`, `http_ratelimit`, `http_request_sbfm`
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`.
      */
     phase: pulumi.Input<string>;
     /**
@@ -519,7 +546,7 @@ export interface RulesetArgs {
      */
     shareableEntitlementName?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
 }

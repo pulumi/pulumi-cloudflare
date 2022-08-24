@@ -24,6 +24,9 @@ export function getWafRules(args: GetWafRulesArgs, opts?: pulumi.InvokeOptions):
 export interface GetWafRulesArgs {
     filter?: inputs.GetWafRulesFilter;
     packageId?: string;
+    /**
+     * The zone identifier to target for the resource.
+     */
     zoneId: string;
 }
 
@@ -38,6 +41,9 @@ export interface GetWafRulesResult {
     readonly id: string;
     readonly packageId?: string;
     readonly rules: outputs.GetWafRulesRule[];
+    /**
+     * The zone identifier to target for the resource.
+     */
     readonly zoneId: string;
 }
 
@@ -51,5 +57,8 @@ export function getWafRulesOutput(args: GetWafRulesOutputArgs, opts?: pulumi.Inv
 export interface GetWafRulesOutputArgs {
     filter?: pulumi.Input<inputs.GetWafRulesFilterArgs>;
     packageId?: pulumi.Input<string>;
+    /**
+     * The zone identifier to target for the resource.
+     */
     zoneId: pulumi.Input<string>;
 }

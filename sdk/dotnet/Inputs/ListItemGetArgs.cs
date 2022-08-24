@@ -10,8 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class ListItemGetArgs : Pulumi.ResourceArgs
+    public sealed class ListItemGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An optional comment for the item.
+        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
@@ -21,5 +24,6 @@ namespace Pulumi.Cloudflare.Inputs
         public ListItemGetArgs()
         {
         }
+        public static new ListItemGetArgs Empty => new ListItemGetArgs();
     }
 }

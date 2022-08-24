@@ -57,8 +57,11 @@ export class AccountMember extends pulumi.CustomResource {
     }
 
     /**
-     * The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
-     * cannot be updated.
+     * Account ID to create the account member in.
+     */
+    public readonly accountId!: pulumi.Output<string | undefined>;
+    /**
+     * The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
      */
     public readonly emailAddress!: pulumi.Output<string>;
     /**
@@ -79,6 +82,7 @@ export class AccountMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountMemberState | undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["emailAddress"] = state ? state.emailAddress : undefined;
             resourceInputs["roleIds"] = state ? state.roleIds : undefined;
         } else {
@@ -89,6 +93,7 @@ export class AccountMember extends pulumi.CustomResource {
             if ((!args || args.roleIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'roleIds'");
             }
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["emailAddress"] = args ? args.emailAddress : undefined;
             resourceInputs["roleIds"] = args ? args.roleIds : undefined;
         }
@@ -102,8 +107,11 @@ export class AccountMember extends pulumi.CustomResource {
  */
 export interface AccountMemberState {
     /**
-     * The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
-     * cannot be updated.
+     * Account ID to create the account member in.
+     */
+    accountId?: pulumi.Input<string>;
+    /**
+     * The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
      */
     emailAddress?: pulumi.Input<string>;
     /**
@@ -117,8 +125,11 @@ export interface AccountMemberState {
  */
 export interface AccountMemberArgs {
     /**
-     * The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
-     * cannot be updated.
+     * Account ID to create the account member in.
+     */
+    accountId?: pulumi.Input<string>;
+    /**
+     * The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
      */
     emailAddress: pulumi.Input<string>;
     /**

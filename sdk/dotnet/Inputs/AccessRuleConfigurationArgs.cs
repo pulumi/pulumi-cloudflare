@@ -10,16 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class AccessRuleConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class AccessRuleConfigurationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`.
+        /// </summary>
         [Input("target", required: true)]
         public Input<string> Target { get; set; } = null!;
 
+        /// <summary>
+        /// The value to target. Depends on target's type.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
         public AccessRuleConfigurationArgs()
         {
         }
+        public static new AccessRuleConfigurationArgs Empty => new AccessRuleConfigurationArgs();
     }
 }

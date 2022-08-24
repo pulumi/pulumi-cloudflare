@@ -19,72 +19,75 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewLoadBalancerPool(ctx, "foo", &cloudflare.LoadBalancerPoolArgs{
-// 			Description: pulumi.String("example load balancer pool"),
-// 			Enabled:     pulumi.Bool(false),
-// 			Latitude:    pulumi.Float64(55),
-// 			LoadSheddings: LoadBalancerPoolLoadSheddingArray{
-// 				&LoadBalancerPoolLoadSheddingArgs{
-// 					DefaultPercent: pulumi.Float64(55),
-// 					DefaultPolicy:  pulumi.String("random"),
-// 					SessionPercent: pulumi.Float64(12),
-// 					SessionPolicy:  pulumi.String("hash"),
-// 				},
-// 			},
-// 			Longitude:         -12,
-// 			MinimumOrigins:    pulumi.Int(1),
-// 			Name:              pulumi.String("example-pool"),
-// 			NotificationEmail: pulumi.String("someone@example.com"),
-// 			OriginSteerings: LoadBalancerPoolOriginSteeringArray{
-// 				&LoadBalancerPoolOriginSteeringArgs{
-// 					Policy: pulumi.String("random"),
-// 				},
-// 			},
-// 			Origins: LoadBalancerPoolOriginArray{
-// 				&LoadBalancerPoolOriginArgs{
-// 					Address: pulumi.String("192.0.2.1"),
-// 					Enabled: pulumi.Bool(false),
-// 					Headers: LoadBalancerPoolOriginHeaderArray{
-// 						&LoadBalancerPoolOriginHeaderArgs{
-// 							Header: pulumi.String("Host"),
-// 							Values: pulumi.StringArray{
-// 								pulumi.String("example-1"),
-// 							},
-// 						},
-// 					},
-// 					Name: pulumi.String("example-1"),
-// 				},
-// 				&LoadBalancerPoolOriginArgs{
-// 					Address: pulumi.String("192.0.2.2"),
-// 					Headers: LoadBalancerPoolOriginHeaderArray{
-// 						&LoadBalancerPoolOriginHeaderArgs{
-// 							Header: pulumi.String("Host"),
-// 							Values: pulumi.StringArray{
-// 								pulumi.String("example-2"),
-// 							},
-// 						},
-// 					},
-// 					Name: pulumi.String("example-2"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewLoadBalancerPool(ctx, "foo", &cloudflare.LoadBalancerPoolArgs{
+//				Description: pulumi.String("example load balancer pool"),
+//				Enabled:     pulumi.Bool(false),
+//				Latitude:    pulumi.Float64(55),
+//				LoadSheddings: LoadBalancerPoolLoadSheddingArray{
+//					&LoadBalancerPoolLoadSheddingArgs{
+//						DefaultPercent: pulumi.Float64(55),
+//						DefaultPolicy:  pulumi.String("random"),
+//						SessionPercent: pulumi.Float64(12),
+//						SessionPolicy:  pulumi.String("hash"),
+//					},
+//				},
+//				Longitude:         -12,
+//				MinimumOrigins:    pulumi.Int(1),
+//				Name:              pulumi.String("example-pool"),
+//				NotificationEmail: pulumi.String("someone@example.com"),
+//				OriginSteerings: LoadBalancerPoolOriginSteeringArray{
+//					&LoadBalancerPoolOriginSteeringArgs{
+//						Policy: pulumi.String("random"),
+//					},
+//				},
+//				Origins: LoadBalancerPoolOriginArray{
+//					&LoadBalancerPoolOriginArgs{
+//						Address: pulumi.String("192.0.2.1"),
+//						Enabled: pulumi.Bool(false),
+//						Headers: LoadBalancerPoolOriginHeaderArray{
+//							&LoadBalancerPoolOriginHeaderArgs{
+//								Header: pulumi.String("Host"),
+//								Values: pulumi.StringArray{
+//									pulumi.String("example-1"),
+//								},
+//							},
+//						},
+//						Name: pulumi.String("example-1"),
+//					},
+//					&LoadBalancerPoolOriginArgs{
+//						Address: pulumi.String("192.0.2.2"),
+//						Headers: LoadBalancerPoolOriginHeaderArray{
+//							&LoadBalancerPoolOriginHeaderArgs{
+//								Header: pulumi.String("Host"),
+//								Values: pulumi.StringArray{
+//									pulumi.String("example-2"),
+//								},
+//							},
+//						},
+//						Name: pulumi.String("example-2"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type LoadBalancerPool struct {
 	pulumi.CustomResourceState
 
-	// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+	// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
 	CheckRegions pulumi.StringArrayOutput `pulumi:"checkRegions"`
 	// The RFC3339 timestamp of when the load balancer was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
@@ -149,7 +152,7 @@ func GetLoadBalancerPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoadBalancerPool resources.
 type loadBalancerPoolState struct {
-	// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+	// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
 	CheckRegions []string `pulumi:"checkRegions"`
 	// The RFC3339 timestamp of when the load balancer was created.
 	CreatedOn *string `pulumi:"createdOn"`
@@ -180,7 +183,7 @@ type loadBalancerPoolState struct {
 }
 
 type LoadBalancerPoolState struct {
-	// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+	// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
 	CheckRegions pulumi.StringArrayInput
 	// The RFC3339 timestamp of when the load balancer was created.
 	CreatedOn pulumi.StringPtrInput
@@ -215,7 +218,7 @@ func (LoadBalancerPoolState) ElementType() reflect.Type {
 }
 
 type loadBalancerPoolArgs struct {
-	// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+	// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
 	CheckRegions []string `pulumi:"checkRegions"`
 	// Free text description.
 	Description *string `pulumi:"description"`
@@ -243,7 +246,7 @@ type loadBalancerPoolArgs struct {
 
 // The set of arguments for constructing a LoadBalancerPool resource.
 type LoadBalancerPoolArgs struct {
-	// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+	// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
 	CheckRegions pulumi.StringArrayInput
 	// Free text description.
 	Description pulumi.StringPtrInput
@@ -295,7 +298,7 @@ func (i *LoadBalancerPool) ToLoadBalancerPoolOutputWithContext(ctx context.Conte
 // LoadBalancerPoolArrayInput is an input type that accepts LoadBalancerPoolArray and LoadBalancerPoolArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerPoolArrayInput` via:
 //
-//          LoadBalancerPoolArray{ LoadBalancerPoolArgs{...} }
+//	LoadBalancerPoolArray{ LoadBalancerPoolArgs{...} }
 type LoadBalancerPoolArrayInput interface {
 	pulumi.Input
 
@@ -320,7 +323,7 @@ func (i LoadBalancerPoolArray) ToLoadBalancerPoolArrayOutputWithContext(ctx cont
 // LoadBalancerPoolMapInput is an input type that accepts LoadBalancerPoolMap and LoadBalancerPoolMapOutput values.
 // You can construct a concrete instance of `LoadBalancerPoolMapInput` via:
 //
-//          LoadBalancerPoolMap{ "key": LoadBalancerPoolArgs{...} }
+//	LoadBalancerPoolMap{ "key": LoadBalancerPoolArgs{...} }
 type LoadBalancerPoolMapInput interface {
 	pulumi.Input
 
@@ -356,7 +359,7 @@ func (o LoadBalancerPoolOutput) ToLoadBalancerPoolOutputWithContext(ctx context.
 	return o
 }
 
-// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
 func (o LoadBalancerPoolOutput) CheckRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringArrayOutput { return v.CheckRegions }).(pulumi.StringArrayOutput)
 }

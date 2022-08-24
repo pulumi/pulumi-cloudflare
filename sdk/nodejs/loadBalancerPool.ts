@@ -82,7 +82,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
     }
 
     /**
-     * A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+     * A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
      */
     public readonly checkRegions!: pulumi.Output<string[]>;
     /**
@@ -198,7 +198,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
  */
 export interface LoadBalancerPoolState {
     /**
-     * A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+     * A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
      */
     checkRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -260,7 +260,7 @@ export interface LoadBalancerPoolState {
  */
 export interface LoadBalancerPoolArgs {
     /**
-     * A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+     * A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
      */
     checkRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**

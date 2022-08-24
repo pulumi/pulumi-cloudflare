@@ -14,21 +14,19 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleHostname = new cloudflare.CustomHostname("example_hostname", {
+ * const example = new cloudflare.CustomHostname("example", {
  *     hostname: "hostname.example.com",
  *     ssls: [{
  *         method: "txt",
  *     }],
- *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  *
  * ## Import
  *
- * Custom hostname certificates can be imported using a composite ID formed of the zone ID and [hostname ID](https://api.cloudflare.com/#custom-hostname-for-a-zone-properties), separated by a "/" e.g.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/customHostname:CustomHostname example d41d8cd98f00b204e9800998ecf8427e/0d89c70d-ad9f-4843-b99f-6cc0252067e9
+ *  $ pulumi import cloudflare:index/customHostname:CustomHostname example 1d5fdc9e88c8a8c4518b068cd94331fe/0d89c70d-ad9f-4843-b99f-6cc0252067e9
  * ```
  */
 export class CustomHostname extends pulumi.CustomResource {
@@ -74,12 +72,15 @@ export class CustomHostname extends pulumi.CustomResource {
     public /*out*/ readonly ownershipVerification!: pulumi.Output<{[key: string]: string}>;
     public /*out*/ readonly ownershipVerificationHttp!: pulumi.Output<{[key: string]: string}>;
     /**
-     * SSL configuration of the certificate. See further notes below.
+     * SSL configuration of the certificate.
      */
     public readonly ssls!: pulumi.Output<outputs.CustomHostnameSsl[] | undefined>;
+    /**
+     * Status of the certificate.
+     */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The DNS zone ID where the custom hostname should be assigned.
+     * The zone identifier to target for the resource.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -145,12 +146,15 @@ export interface CustomHostnameState {
     ownershipVerification?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     ownershipVerificationHttp?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * SSL configuration of the certificate. See further notes below.
+     * SSL configuration of the certificate.
      */
     ssls?: pulumi.Input<pulumi.Input<inputs.CustomHostnameSsl>[]>;
+    /**
+     * Status of the certificate.
+     */
     status?: pulumi.Input<string>;
     /**
-     * The DNS zone ID where the custom hostname should be assigned.
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -172,11 +176,11 @@ export interface CustomHostnameArgs {
      */
     hostname: pulumi.Input<string>;
     /**
-     * SSL configuration of the certificate. See further notes below.
+     * SSL configuration of the certificate.
      */
     ssls?: pulumi.Input<pulumi.Input<inputs.CustomHostnameSsl>[]>;
     /**
-     * The DNS zone ID where the custom hostname should be assigned.
+     * The zone identifier to target for the resource.
      */
     zoneId: pulumi.Input<string>;
 }

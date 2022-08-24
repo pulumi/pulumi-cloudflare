@@ -10,11 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class GetZonesFilterInputArgs : Pulumi.ResourceArgs
+    public sealed class GetZonesFilterInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// Defaults to `exact`.
+        /// </summary>
         [Input("lookupType")]
         public Input<string>? LookupType { get; set; }
 
@@ -24,6 +30,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Defaults to `false`.
+        /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
@@ -33,5 +42,6 @@ namespace Pulumi.Cloudflare.Inputs
         public GetZonesFilterInputArgs()
         {
         }
+        public static new GetZonesFilterInputArgs Empty => new GetZonesFilterInputArgs();
     }
 }
