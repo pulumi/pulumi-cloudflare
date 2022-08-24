@@ -359,7 +359,6 @@ require (
 replace (
 	cloud.google.com/go/storage => cloud.google.com/go/storage v1.16.1
 	github.com/cloudflare/terraform-provider-cloudflare/shim => ./shim
-	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220824175045-450992f2f5b9
 	google.golang.org/genproto => google.golang.org/genproto v0.0.0-20210831024726-fe130286e0e2
 )
