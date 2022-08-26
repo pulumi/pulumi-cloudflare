@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class ListItemValueRedirectArgs : Pulumi.ResourceArgs
+    public sealed class ListItemValueRedirectArgs : global::Pulumi.ResourceArgs
     {
         [Input("includeSubdomains")]
         public Input<string>? IncludeSubdomains { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.Cloudflare.Inputs
         public ListItemValueRedirectArgs()
         {
         }
+        public static new ListItemValueRedirectArgs Empty => new ListItemValueRedirectArgs();
     }
 }

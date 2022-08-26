@@ -19,42 +19,59 @@ namespace Pulumi.Cloudflare
     }
 
 
-    public sealed class GetAccessIdentityProviderArgs : Pulumi.InvokeArgs
+    public sealed class GetAccessIdentityProviderArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The zone identifier to target for the resource.
+        /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
 
         public GetAccessIdentityProviderArgs()
         {
         }
+        public static new GetAccessIdentityProviderArgs Empty => new GetAccessIdentityProviderArgs();
     }
 
-    public sealed class GetAccessIdentityProviderInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccessIdentityProviderInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The zone identifier to target for the resource.
+        /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 
         public GetAccessIdentityProviderInvokeArgs()
         {
         }
+        public static new GetAccessIdentityProviderInvokeArgs Empty => new GetAccessIdentityProviderInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetAccessIdentityProviderResult
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -62,6 +79,9 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         public readonly string Name;
         public readonly string Type;
+        /// <summary>
+        /// The zone identifier to target for the resource.
+        /// </summary>
         public readonly string? ZoneId;
 
         [OutputConstructor]

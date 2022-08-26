@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs : Pulumi.ResourceArgs
+    public sealed class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs : global::Pulumi.ResourceArgs
     {
         [Input("checkPresences")]
         private InputList<string>? _checkPresences;
@@ -34,5 +34,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs()
         {
         }
+        public static new RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs Empty => new RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs();
     }
 }

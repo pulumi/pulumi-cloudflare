@@ -23,17 +23,19 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? CustomKey;
         /// <summary>
-        /// Domain control validation (DCV) method used for this
-        /// hostname. Valid values are `"txt"`, `"http"` and `"email"`.
+        /// Domain control validation (DCV) method used for this hostname. Available values: `http`, `txt`, `email`.
         /// </summary>
         public readonly string? Method;
         /// <summary>
-        /// SSL/TLS settings for the certificate. See further notes below.
+        /// SSL/TLS settings for the certificate.
         /// </summary>
         public readonly ImmutableArray<Outputs.CustomHostnameSslSetting> Settings;
+        /// <summary>
+        /// Status of the certificate.
+        /// </summary>
         public readonly string? Status;
         /// <summary>
-        /// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+        /// Level of validation to be used for this hostname. Available values: `dv`. Defaults to `dv`.
         /// </summary>
         public readonly string? Type;
         public readonly ImmutableArray<Outputs.CustomHostnameSslValidationError> ValidationErrors;

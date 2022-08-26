@@ -110,7 +110,7 @@ func (i *AccessKeysConfiguration) ToAccessKeysConfigurationOutputWithContext(ctx
 // AccessKeysConfigurationArrayInput is an input type that accepts AccessKeysConfigurationArray and AccessKeysConfigurationArrayOutput values.
 // You can construct a concrete instance of `AccessKeysConfigurationArrayInput` via:
 //
-//          AccessKeysConfigurationArray{ AccessKeysConfigurationArgs{...} }
+//	AccessKeysConfigurationArray{ AccessKeysConfigurationArgs{...} }
 type AccessKeysConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -135,7 +135,7 @@ func (i AccessKeysConfigurationArray) ToAccessKeysConfigurationArrayOutputWithCo
 // AccessKeysConfigurationMapInput is an input type that accepts AccessKeysConfigurationMap and AccessKeysConfigurationMapOutput values.
 // You can construct a concrete instance of `AccessKeysConfigurationMapInput` via:
 //
-//          AccessKeysConfigurationMap{ "key": AccessKeysConfigurationArgs{...} }
+//	AccessKeysConfigurationMap{ "key": AccessKeysConfigurationArgs{...} }
 type AccessKeysConfigurationMapInput interface {
 	pulumi.Input
 

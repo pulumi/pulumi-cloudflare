@@ -16,25 +16,23 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var corporateOffice = new Cloudflare.TeamsProxyEndpoint("corporateOffice", new()
     ///     {
-    ///         var corporateOffice = new Cloudflare.TeamsProxyEndpoint("corporateOffice", new Cloudflare.TeamsProxyEndpointArgs
+    ///         AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         Ips = new[]
     ///         {
-    ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
-    ///             Ips = 
-    ///             {
-    ///                 "192.0.2.0/24",
-    ///             },
-    ///             Name = "office",
-    ///         });
-    ///     }
+    ///             "192.0.2.0/24",
+    ///         },
+    ///         Name = "office",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint")]
-    public partial class TeamsProxyEndpoint : Pulumi.CustomResource
+    public partial class TeamsProxyEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account to which the teams proxy endpoint should be added.
@@ -116,7 +114,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class TeamsProxyEndpointArgs : Pulumi.ResourceArgs
+    public sealed class TeamsProxyEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account to which the teams proxy endpoint should be added.
@@ -145,9 +143,10 @@ namespace Pulumi.Cloudflare
         public TeamsProxyEndpointArgs()
         {
         }
+        public static new TeamsProxyEndpointArgs Empty => new TeamsProxyEndpointArgs();
     }
 
-    public sealed class TeamsProxyEndpointState : Pulumi.ResourceArgs
+    public sealed class TeamsProxyEndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account to which the teams proxy endpoint should be added.
@@ -182,5 +181,6 @@ namespace Pulumi.Cloudflare
         public TeamsProxyEndpointState()
         {
         }
+        public static new TeamsProxyEndpointState Empty => new TeamsProxyEndpointState();
     }
 }

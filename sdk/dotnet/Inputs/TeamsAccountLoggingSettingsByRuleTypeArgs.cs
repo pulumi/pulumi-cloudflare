@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class TeamsAccountLoggingSettingsByRuleTypeArgs : Pulumi.ResourceArgs
+    public sealed class TeamsAccountLoggingSettingsByRuleTypeArgs : global::Pulumi.ResourceArgs
     {
         [Input("dns", required: true)]
         public Input<Inputs.TeamsAccountLoggingSettingsByRuleTypeDnsArgs> Dns { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.Cloudflare.Inputs
         public TeamsAccountLoggingSettingsByRuleTypeArgs()
         {
         }
+        public static new TeamsAccountLoggingSettingsByRuleTypeArgs Empty => new TeamsAccountLoggingSettingsByRuleTypeArgs();
     }
 }

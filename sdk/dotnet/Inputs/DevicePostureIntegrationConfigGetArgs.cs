@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class DevicePostureIntegrationConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class DevicePostureIntegrationConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The third-party API's URL.
@@ -51,5 +51,6 @@ namespace Pulumi.Cloudflare.Inputs
         public DevicePostureIntegrationConfigGetArgs()
         {
         }
+        public static new DevicePostureIntegrationConfigGetArgs Empty => new DevicePostureIntegrationConfigGetArgs();
     }
 }

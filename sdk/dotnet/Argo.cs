@@ -10,27 +10,26 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Cloudflare Argo controls the routing to your origin and tiered caching options to speed up your website browsing experience.
+    /// Cloudflare Argo controls the routing to your origin and tiered
+    /// caching options to speed up your website browsing experience.
     /// 
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Cloudflare.Argo("example", new()
     ///     {
-    ///         var example = new Cloudflare.Argo("example", new Cloudflare.ArgoArgs
-    ///         {
-    ///             SmartRouting = "on",
-    ///             TieredCaching = "on",
-    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///         });
-    ///     }
+    ///         SmartRouting = "on",
+    ///         TieredCaching = "on",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -40,16 +39,16 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/argo:Argo")]
-    public partial class Argo : Pulumi.CustomResource
+    public partial class Argo : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether smart routing is enabled. Available values: `on`, `off`
+        /// Whether smart routing is enabled. Available values: `on`, `off`.
         /// </summary>
         [Output("smartRouting")]
         public Output<string?> SmartRouting { get; private set; } = null!;
 
         /// <summary>
-        /// Whether tiered caching is enabled. Available values: `on`, `off`
+        /// Whether tiered caching is enabled. Available values: `on`, `off`.
         /// </summary>
         [Output("tieredCaching")]
         public Output<string?> TieredCaching { get; private set; } = null!;
@@ -104,16 +103,16 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class ArgoArgs : Pulumi.ResourceArgs
+    public sealed class ArgoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether smart routing is enabled. Available values: `on`, `off`
+        /// Whether smart routing is enabled. Available values: `on`, `off`.
         /// </summary>
         [Input("smartRouting")]
         public Input<string>? SmartRouting { get; set; }
 
         /// <summary>
-        /// Whether tiered caching is enabled. Available values: `on`, `off`
+        /// Whether tiered caching is enabled. Available values: `on`, `off`.
         /// </summary>
         [Input("tieredCaching")]
         public Input<string>? TieredCaching { get; set; }
@@ -127,18 +126,19 @@ namespace Pulumi.Cloudflare
         public ArgoArgs()
         {
         }
+        public static new ArgoArgs Empty => new ArgoArgs();
     }
 
-    public sealed class ArgoState : Pulumi.ResourceArgs
+    public sealed class ArgoState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether smart routing is enabled. Available values: `on`, `off`
+        /// Whether smart routing is enabled. Available values: `on`, `off`.
         /// </summary>
         [Input("smartRouting")]
         public Input<string>? SmartRouting { get; set; }
 
         /// <summary>
-        /// Whether tiered caching is enabled. Available values: `on`, `off`
+        /// Whether tiered caching is enabled. Available values: `on`, `off`.
         /// </summary>
         [Input("tieredCaching")]
         public Input<string>? TieredCaching { get; set; }
@@ -152,5 +152,6 @@ namespace Pulumi.Cloudflare
         public ArgoState()
         {
         }
+        public static new ArgoState Empty => new ArgoState();
     }
 }

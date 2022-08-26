@@ -15,22 +15,20 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Cloudflare.ArgoTunnel("example", new()
     ///     {
-    ///         var example = new Cloudflare.ArgoTunnel("example", new Cloudflare.ArgoTunnelArgs
-    ///         {
-    ///             AccountId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///             Name = "my-tunnel",
-    ///             Secret = "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
-    ///         });
-    ///     }
+    ///         AccountId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///         Name = "my-tunnel",
+    ///         Secret = "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -44,7 +42,7 @@ namespace Pulumi.Cloudflare
     ///  where - `d41d8cd98f00b204e9800998ecf8427e` is the account ID - `fd2455cb-5fcc-4c13-8738-8d8d2605237f` is the Argo Tunnel UUID
     /// </summary>
     [CloudflareResourceType("cloudflare:index/argoTunnel:ArgoTunnel")]
-    public partial class ArgoTunnel : Pulumi.CustomResource
+    public partial class ArgoTunnel : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Cloudflare account ID that you wish to manage the Argo Tunnel on.
@@ -120,7 +118,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class ArgoTunnelArgs : Pulumi.ResourceArgs
+    public sealed class ArgoTunnelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Cloudflare account ID that you wish to manage the Argo Tunnel on.
@@ -143,9 +141,10 @@ namespace Pulumi.Cloudflare
         public ArgoTunnelArgs()
         {
         }
+        public static new ArgoTunnelArgs Empty => new ArgoTunnelArgs();
     }
 
-    public sealed class ArgoTunnelState : Pulumi.ResourceArgs
+    public sealed class ArgoTunnelState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Cloudflare account ID that you wish to manage the Argo Tunnel on.
@@ -180,5 +179,6 @@ namespace Pulumi.Cloudflare
         public ArgoTunnelState()
         {
         }
+        public static new ArgoTunnelState Empty => new ArgoTunnelState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RulesetRuleActionParametersEdgeTtlGetArgs : Pulumi.ResourceArgs
+    public sealed class RulesetRuleActionParametersEdgeTtlGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("default", required: true)]
         public Input<int> Default { get; set; } = null!;
@@ -29,5 +29,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RulesetRuleActionParametersEdgeTtlGetArgs()
         {
         }
+        public static new RulesetRuleActionParametersEdgeTtlGetArgs Empty => new RulesetRuleActionParametersEdgeTtlGetArgs();
     }
 }

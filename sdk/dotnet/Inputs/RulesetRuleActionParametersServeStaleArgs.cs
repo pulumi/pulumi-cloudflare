@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RulesetRuleActionParametersServeStaleArgs : Pulumi.ResourceArgs
+    public sealed class RulesetRuleActionParametersServeStaleArgs : global::Pulumi.ResourceArgs
     {
         [Input("disableStaleWhileUpdating")]
         public Input<bool>? DisableStaleWhileUpdating { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RulesetRuleActionParametersServeStaleArgs()
         {
         }
+        public static new RulesetRuleActionParametersServeStaleArgs Empty => new RulesetRuleActionParametersServeStaleArgs();
     }
 }

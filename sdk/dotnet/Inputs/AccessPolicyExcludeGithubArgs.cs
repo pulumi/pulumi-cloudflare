@@ -10,11 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class AccessPolicyExcludeGithubArgs : Pulumi.ResourceArgs
+    public sealed class AccessPolicyExcludeGithubArgs : global::Pulumi.ResourceArgs
     {
         [Input("identityProviderId")]
         public Input<string>? IdentityProviderId { get; set; }
 
+        /// <summary>
+        /// Friendly name of the Access Policy.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -29,5 +32,6 @@ namespace Pulumi.Cloudflare.Inputs
         public AccessPolicyExcludeGithubArgs()
         {
         }
+        public static new AccessPolicyExcludeGithubArgs Empty => new AccessPolicyExcludeGithubArgs();
     }
 }

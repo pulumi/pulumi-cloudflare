@@ -15,27 +15,24 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myScript = new Cloudflare.WorkerScript("myScript", new Cloudflare.WorkerScriptArgs
-    ///         {
-    ///         });
-    ///         // see "cloudflare_worker_script" documentation ...
-    ///         // Runs the specified worker script for all URLs that match `example.com/*`
-    ///         var myRoute = new Cloudflare.WorkerRoute("myRoute", new Cloudflare.WorkerRouteArgs
-    ///         {
-    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///             Pattern = "example.com/*",
-    ///             ScriptName = myScript.Name,
-    ///         });
-    ///     }
+    ///     var myScript = new Cloudflare.WorkerScript("myScript");
     /// 
-    /// }
+    ///     // see "cloudflare_worker_script" documentation ...
+    ///     // Runs the specified worker script for all URLs that match `example.com/*`
+    ///     var myRoute = new Cloudflare.WorkerRoute("myRoute", new()
+    ///     {
+    ///         ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///         Pattern = "example.com/*",
+    ///         ScriptName = myScript.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +46,7 @@ namespace Pulumi.Cloudflare
     ///  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `9a7806061c88ada191ed06f989cc3dac` - route ID as returned by [API](https://api.cloudflare.com/#worker-filters-list-filters)
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workerRoute:WorkerRoute")]
-    public partial class WorkerRoute : Pulumi.CustomResource
+    public partial class WorkerRoute : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
@@ -113,7 +110,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class WorkerRouteArgs : Pulumi.ResourceArgs
+    public sealed class WorkerRouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
@@ -136,9 +133,10 @@ namespace Pulumi.Cloudflare
         public WorkerRouteArgs()
         {
         }
+        public static new WorkerRouteArgs Empty => new WorkerRouteArgs();
     }
 
-    public sealed class WorkerRouteState : Pulumi.ResourceArgs
+    public sealed class WorkerRouteState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
@@ -161,5 +159,6 @@ namespace Pulumi.Cloudflare
         public WorkerRouteState()
         {
         }
+        public static new WorkerRouteState Empty => new WorkerRouteState();
     }
 }

@@ -15,21 +15,19 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Cloudflare.LogpullRetention("example", new()
     ///     {
-    ///         var example = new Cloudflare.LogpullRetention("example", new Cloudflare.LogpullRetentionArgs
-    ///         {
-    ///             Enabled = true,
-    ///             ZoneId = "fb54f084ca7f7b732d3d3ecbd8ef7bf2",
-    ///         });
-    ///     }
+    ///         Enabled = true,
+    ///         ZoneId = "fb54f084ca7f7b732d3d3ecbd8ef7bf2",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -41,7 +39,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/logpullRetention:LogpullRetention")]
-    public partial class LogpullRetention : Pulumi.CustomResource
+    public partial class LogpullRetention : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether you wish to retain logs or not.
@@ -99,7 +97,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class LogpullRetentionArgs : Pulumi.ResourceArgs
+    public sealed class LogpullRetentionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether you wish to retain logs or not.
@@ -116,9 +114,10 @@ namespace Pulumi.Cloudflare
         public LogpullRetentionArgs()
         {
         }
+        public static new LogpullRetentionArgs Empty => new LogpullRetentionArgs();
     }
 
-    public sealed class LogpullRetentionState : Pulumi.ResourceArgs
+    public sealed class LogpullRetentionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether you wish to retain logs or not.
@@ -135,5 +134,6 @@ namespace Pulumi.Cloudflare
         public LogpullRetentionState()
         {
         }
+        public static new LogpullRetentionState Empty => new LogpullRetentionState();
     }
 }

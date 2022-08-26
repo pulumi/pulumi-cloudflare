@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class TeamsRuleRuleSettingsL4overrideGetArgs : Pulumi.ResourceArgs
+    public sealed class TeamsRuleRuleSettingsL4overrideGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Override IP to forward traffic to.
@@ -27,5 +27,6 @@ namespace Pulumi.Cloudflare.Inputs
         public TeamsRuleRuleSettingsL4overrideGetArgs()
         {
         }
+        public static new TeamsRuleRuleSettingsL4overrideGetArgs Empty => new TeamsRuleRuleSettingsL4overrideGetArgs();
     }
 }

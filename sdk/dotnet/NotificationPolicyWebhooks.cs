@@ -15,23 +15,21 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Cloudflare.NotificationPolicyWebhooks("example", new()
     ///     {
-    ///         var example = new Cloudflare.NotificationPolicyWebhooks("example", new Cloudflare.NotificationPolicyWebhooksArgs
-    ///         {
-    ///             AccountId = "c4a7362d577a6c3019a474fd6f485821",
-    ///             Name = "Webhooks destination",
-    ///             Secret = "my-secret",
-    ///             Url = "https://example.com",
-    ///         });
-    ///     }
+    ///         AccountId = "c4a7362d577a6c3019a474fd6f485821",
+    ///         Name = "Webhooks destination",
+    ///         Secret = "my-secret",
+    ///         Url = "https://example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,7 +41,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks")]
-    public partial class NotificationPolicyWebhooks : Pulumi.CustomResource
+    public partial class NotificationPolicyWebhooks : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the account for which the webhook destination has to be connected.
@@ -127,7 +125,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class NotificationPolicyWebhooksArgs : Pulumi.ResourceArgs
+    public sealed class NotificationPolicyWebhooksArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the account for which the webhook destination has to be connected.
@@ -158,9 +156,10 @@ namespace Pulumi.Cloudflare
         public NotificationPolicyWebhooksArgs()
         {
         }
+        public static new NotificationPolicyWebhooksArgs Empty => new NotificationPolicyWebhooksArgs();
     }
 
-    public sealed class NotificationPolicyWebhooksState : Pulumi.ResourceArgs
+    public sealed class NotificationPolicyWebhooksState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the account for which the webhook destination has to be connected.
@@ -203,5 +202,6 @@ namespace Pulumi.Cloudflare
         public NotificationPolicyWebhooksState()
         {
         }
+        public static new NotificationPolicyWebhooksState Empty => new NotificationPolicyWebhooksState();
     }
 }

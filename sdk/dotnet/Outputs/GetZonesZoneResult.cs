@@ -13,6 +13,9 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetZonesZoneResult
     {
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         public readonly string? Id;
         public readonly string? Name;
 

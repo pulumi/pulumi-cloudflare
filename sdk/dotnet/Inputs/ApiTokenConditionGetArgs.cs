@@ -10,13 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class ApiTokenConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class ApiTokenConditionGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Request IP related conditions.
+        /// </summary>
         [Input("requestIp")]
         public Input<Inputs.ApiTokenConditionRequestIpGetArgs>? RequestIp { get; set; }
 
         public ApiTokenConditionGetArgs()
         {
         }
+        public static new ApiTokenConditionGetArgs Empty => new ApiTokenConditionGetArgs();
     }
 }

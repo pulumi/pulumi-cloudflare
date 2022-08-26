@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class CertificatePackValidationErrorArgs : Pulumi.ResourceArgs
+    public sealed class CertificatePackValidationErrorArgs : global::Pulumi.ResourceArgs
     {
         [Input("message")]
         public Input<string>? Message { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Cloudflare.Inputs
         public CertificatePackValidationErrorArgs()
         {
         }
+        public static new CertificatePackValidationErrorArgs Empty => new CertificatePackValidationErrorArgs();
     }
 }

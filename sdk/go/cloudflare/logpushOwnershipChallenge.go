@@ -21,44 +21,50 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewLogpushOwnershipChallenge(ctx, "example", &cloudflare.LogpushOwnershipChallengeArgs{
-// 			DestinationConf: pulumi.String("s3://my-bucket-path?region=us-west-2"),
-// 			ZoneId:          pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewLogpushOwnershipChallenge(ctx, "example", &cloudflare.LogpushOwnershipChallengeArgs{
+//				DestinationConf: pulumi.String("s3://my-bucket-path?region=us-west-2"),
+//				ZoneId:          pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewLogpushOwnershipChallenge(ctx, "example", &cloudflare.LogpushOwnershipChallengeArgs{
-// 			AccountId:       pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-// 			DestinationConf: pulumi.String("s3://my-bucket-path?region=us-west-2"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewLogpushOwnershipChallenge(ctx, "example", &cloudflare.LogpushOwnershipChallengeArgs{
+//				AccountId:       pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+//				DestinationConf: pulumi.String("s3://my-bucket-path?region=us-west-2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type LogpushOwnershipChallenge struct {
 	pulumi.CustomResourceState
@@ -178,7 +184,7 @@ func (i *LogpushOwnershipChallenge) ToLogpushOwnershipChallengeOutputWithContext
 // LogpushOwnershipChallengeArrayInput is an input type that accepts LogpushOwnershipChallengeArray and LogpushOwnershipChallengeArrayOutput values.
 // You can construct a concrete instance of `LogpushOwnershipChallengeArrayInput` via:
 //
-//          LogpushOwnershipChallengeArray{ LogpushOwnershipChallengeArgs{...} }
+//	LogpushOwnershipChallengeArray{ LogpushOwnershipChallengeArgs{...} }
 type LogpushOwnershipChallengeArrayInput interface {
 	pulumi.Input
 
@@ -203,7 +209,7 @@ func (i LogpushOwnershipChallengeArray) ToLogpushOwnershipChallengeArrayOutputWi
 // LogpushOwnershipChallengeMapInput is an input type that accepts LogpushOwnershipChallengeMap and LogpushOwnershipChallengeMapOutput values.
 // You can construct a concrete instance of `LogpushOwnershipChallengeMapInput` via:
 //
-//          LogpushOwnershipChallengeMap{ "key": LogpushOwnershipChallengeArgs{...} }
+//	LogpushOwnershipChallengeMap{ "key": LogpushOwnershipChallengeArgs{...} }
 type LogpushOwnershipChallengeMapInput interface {
 	pulumi.Input
 

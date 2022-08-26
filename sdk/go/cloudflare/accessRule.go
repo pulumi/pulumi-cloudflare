@@ -11,34 +11,43 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare IP Firewall Access Rule resource. Access control can be applied on basis of IP addresses, IP ranges, AS numbers or countries.
+// Provides a Cloudflare IP Firewall Access Rule resource. Access
+// control can be applied on basis of IP addresses, IP ranges, AS
+// numbers or countries.
 //
 // ## Import
 //
 // # User level access rule import.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/accessRule:AccessRule default user/<user_id>/<rule_id>
+//
+//	$ pulumi import cloudflare:index/accessRule:AccessRule default user/<user_id>/<rule_id>
+//
 // ```
 //
 // # Zone level access rule import.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/accessRule:AccessRule default zone/<zone_id>/<rule_id>
+//
+//	$ pulumi import cloudflare:index/accessRule:AccessRule default zone/<zone_id>/<rule_id>
+//
 // ```
 //
 // # Account level access rule import.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/accessRule:AccessRule default account/<account_id>/<rule_id>
+//
+//	$ pulumi import cloudflare:index/accessRule:AccessRule default account/<account_id>/<rule_id>
+//
 // ```
 type AccessRule struct {
 	pulumi.CustomResourceState
 
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Rule configuration to apply to a matched request.
 	Configuration AccessRuleConfigurationOutput `pulumi:"configuration"`
-	// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
-	// `managed_challenge`
+	// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `jsChallenge`, `managedChallenge`.
 	Mode pulumi.StringOutput `pulumi:"mode"`
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes pulumi.StringPtrOutput `pulumi:"notes"`
@@ -81,10 +90,11 @@ func GetAccessRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessRule resources.
 type accessRuleState struct {
+	// The account identifier to target for the resource.
+	AccountId *string `pulumi:"accountId"`
 	// Rule configuration to apply to a matched request.
 	Configuration *AccessRuleConfiguration `pulumi:"configuration"`
-	// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
-	// `managed_challenge`
+	// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `jsChallenge`, `managedChallenge`.
 	Mode *string `pulumi:"mode"`
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes *string `pulumi:"notes"`
@@ -93,10 +103,11 @@ type accessRuleState struct {
 }
 
 type AccessRuleState struct {
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringPtrInput
 	// Rule configuration to apply to a matched request.
 	Configuration AccessRuleConfigurationPtrInput
-	// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
-	// `managed_challenge`
+	// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `jsChallenge`, `managedChallenge`.
 	Mode pulumi.StringPtrInput
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes pulumi.StringPtrInput
@@ -109,10 +120,11 @@ func (AccessRuleState) ElementType() reflect.Type {
 }
 
 type accessRuleArgs struct {
+	// The account identifier to target for the resource.
+	AccountId *string `pulumi:"accountId"`
 	// Rule configuration to apply to a matched request.
 	Configuration AccessRuleConfiguration `pulumi:"configuration"`
-	// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
-	// `managed_challenge`
+	// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `jsChallenge`, `managedChallenge`.
 	Mode string `pulumi:"mode"`
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes *string `pulumi:"notes"`
@@ -122,10 +134,11 @@ type accessRuleArgs struct {
 
 // The set of arguments for constructing a AccessRule resource.
 type AccessRuleArgs struct {
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringPtrInput
 	// Rule configuration to apply to a matched request.
 	Configuration AccessRuleConfigurationInput
-	// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
-	// `managed_challenge`
+	// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `jsChallenge`, `managedChallenge`.
 	Mode pulumi.StringInput
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes pulumi.StringPtrInput
@@ -159,7 +172,7 @@ func (i *AccessRule) ToAccessRuleOutputWithContext(ctx context.Context) AccessRu
 // AccessRuleArrayInput is an input type that accepts AccessRuleArray and AccessRuleArrayOutput values.
 // You can construct a concrete instance of `AccessRuleArrayInput` via:
 //
-//          AccessRuleArray{ AccessRuleArgs{...} }
+//	AccessRuleArray{ AccessRuleArgs{...} }
 type AccessRuleArrayInput interface {
 	pulumi.Input
 
@@ -184,7 +197,7 @@ func (i AccessRuleArray) ToAccessRuleArrayOutputWithContext(ctx context.Context)
 // AccessRuleMapInput is an input type that accepts AccessRuleMap and AccessRuleMapOutput values.
 // You can construct a concrete instance of `AccessRuleMapInput` via:
 //
-//          AccessRuleMap{ "key": AccessRuleArgs{...} }
+//	AccessRuleMap{ "key": AccessRuleArgs{...} }
 type AccessRuleMapInput interface {
 	pulumi.Input
 
@@ -220,13 +233,17 @@ func (o AccessRuleOutput) ToAccessRuleOutputWithContext(ctx context.Context) Acc
 	return o
 }
 
+// The account identifier to target for the resource.
+func (o AccessRuleOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
 // Rule configuration to apply to a matched request.
 func (o AccessRuleOutput) Configuration() AccessRuleConfigurationOutput {
 	return o.ApplyT(func(v *AccessRule) AccessRuleConfigurationOutput { return v.Configuration }).(AccessRuleConfigurationOutput)
 }
 
-// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
-// `managed_challenge`
+// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `jsChallenge`, `managedChallenge`.
 func (o AccessRuleOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }

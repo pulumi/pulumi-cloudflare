@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class LoadBalancerPoolOriginArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerPoolOriginArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.
@@ -51,5 +51,6 @@ namespace Pulumi.Cloudflare.Inputs
         public LoadBalancerPoolOriginArgs()
         {
         }
+        public static new LoadBalancerPoolOriginArgs Empty => new LoadBalancerPoolOriginArgs();
     }
 }

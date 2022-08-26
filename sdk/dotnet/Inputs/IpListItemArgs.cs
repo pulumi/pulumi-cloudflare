@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class IpListItemArgs : Pulumi.ResourceArgs
+    public sealed class IpListItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A note that can be used to annotate the item.
@@ -27,5 +27,6 @@ namespace Pulumi.Cloudflare.Inputs
         public IpListItemArgs()
         {
         }
+        public static new IpListItemArgs Empty => new IpListItemArgs();
     }
 }

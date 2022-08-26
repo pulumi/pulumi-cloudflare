@@ -18,6 +18,9 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Description;
         public readonly string? GroupId;
         public readonly string? GroupName;
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         public readonly string? Id;
         public readonly string? Mode;
         public readonly string? PackageId;

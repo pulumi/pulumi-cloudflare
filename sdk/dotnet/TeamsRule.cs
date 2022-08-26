@@ -15,34 +15,32 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var rule1 = new Cloudflare.TeamsRule("rule1", new()
     ///     {
-    ///         var rule1 = new Cloudflare.TeamsRule("rule1", new Cloudflare.TeamsRuleArgs
+    ///         AccountId = "d57c3de47a013c03ca7e237dd3e61d7d",
+    ///         Action = "block",
+    ///         Description = "desc",
+    ///         Filters = new[]
     ///         {
-    ///             AccountId = "d57c3de47a013c03ca7e237dd3e61d7d",
-    ///             Action = "block",
-    ///             Description = "desc",
-    ///             Filters = 
-    ///             {
-    ///                 "http",
-    ///             },
-    ///             Name = "office",
-    ///             Precedence = 1,
-    ///             RuleSettings = new Cloudflare.Inputs.TeamsRuleRuleSettingsArgs
-    ///             {
-    ///                 BlockPageEnabled = true,
-    ///                 BlockPageReason = "access not permitted",
-    ///             },
-    ///             Traffic = "http.request.uri == \"https://www.example.com/malicious\"",
-    ///         });
-    ///     }
+    ///             "http",
+    ///         },
+    ///         Name = "office",
+    ///         Precedence = 1,
+    ///         RuleSettings = new Cloudflare.Inputs.TeamsRuleRuleSettingsArgs
+    ///         {
+    ///             BlockPageEnabled = true,
+    ///             BlockPageReason = "access not permitted",
+    ///         },
+    ///         Traffic = "http.request.uri == \"https://www.example.com/malicious\"",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +52,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/teamsRule:TeamsRule")]
-    public partial class TeamsRule : Pulumi.CustomResource
+    public partial class TeamsRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account to which the teams rule should be added.
@@ -169,7 +167,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class TeamsRuleArgs : Pulumi.ResourceArgs
+    public sealed class TeamsRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account to which the teams rule should be added.
@@ -246,9 +244,10 @@ namespace Pulumi.Cloudflare
         public TeamsRuleArgs()
         {
         }
+        public static new TeamsRuleArgs Empty => new TeamsRuleArgs();
     }
 
-    public sealed class TeamsRuleState : Pulumi.ResourceArgs
+    public sealed class TeamsRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account to which the teams rule should be added.
@@ -328,5 +327,6 @@ namespace Pulumi.Cloudflare
         public TeamsRuleState()
         {
         }
+        public static new TeamsRuleState Empty => new TeamsRuleState();
     }
 }

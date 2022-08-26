@@ -5,7 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Cloudflare Argo controls the routing to your origin and tiered caching options to speed up your website browsing experience.
+ * Cloudflare Argo controls the routing to your origin and tiered
+ * caching options to speed up your website browsing experience.
  *
  * ## Example Usage
  *
@@ -16,7 +17,7 @@ import * as utilities from "./utilities";
  * const example = new cloudflare.Argo("example", {
  *     smartRouting: "on",
  *     tieredCaching: "on",
- *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  *
@@ -55,11 +56,11 @@ export class Argo extends pulumi.CustomResource {
     }
 
     /**
-     * Whether smart routing is enabled. Available values: `on`, `off`
+     * Whether smart routing is enabled. Available values: `on`, `off`.
      */
     public readonly smartRouting!: pulumi.Output<string | undefined>;
     /**
-     * Whether tiered caching is enabled. Available values: `on`, `off`
+     * Whether tiered caching is enabled. Available values: `on`, `off`.
      */
     public readonly tieredCaching!: pulumi.Output<string | undefined>;
     /**
@@ -102,11 +103,11 @@ export class Argo extends pulumi.CustomResource {
  */
 export interface ArgoState {
     /**
-     * Whether smart routing is enabled. Available values: `on`, `off`
+     * Whether smart routing is enabled. Available values: `on`, `off`.
      */
     smartRouting?: pulumi.Input<string>;
     /**
-     * Whether tiered caching is enabled. Available values: `on`, `off`
+     * Whether tiered caching is enabled. Available values: `on`, `off`.
      */
     tieredCaching?: pulumi.Input<string>;
     /**
@@ -120,11 +121,11 @@ export interface ArgoState {
  */
 export interface ArgoArgs {
     /**
-     * Whether smart routing is enabled. Available values: `on`, `off`
+     * Whether smart routing is enabled. Available values: `on`, `off`.
      */
     smartRouting?: pulumi.Input<string>;
     /**
-     * Whether tiered caching is enabled. Available values: `on`, `off`
+     * Whether tiered caching is enabled. Available values: `on`, `off`.
      */
     tieredCaching?: pulumi.Input<string>;
     /**

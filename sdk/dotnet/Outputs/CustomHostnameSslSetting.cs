@@ -13,26 +13,10 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class CustomHostnameSslSetting
     {
-        /// <summary>
-        /// List of SSL/TLS ciphers to associate with this certificate.
-        /// </summary>
         public readonly ImmutableArray<string> Ciphers;
-        /// <summary>
-        /// Whether or not early hints should be supported. Valid values are `"on"` or `"off"`.
-        /// </summary>
         public readonly string? EarlyHints;
-        /// <summary>
-        /// Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
-        /// </summary>
         public readonly string? Http2;
-        /// <summary>
-        /// Lowest version of TLS this certificate should
-        /// support. Valid values are `"1.0"`, `"1.1"`, `"1.2"` and `"1.3"`.
-        /// </summary>
         public readonly string? MinTlsVersion;
-        /// <summary>
-        /// Whether or not TLSv1.3 should be supported. Valid values are `"on"` or `"off"`.
-        /// </summary>
         public readonly string? Tls13;
 
         [OutputConstructor]

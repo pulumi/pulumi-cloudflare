@@ -15,22 +15,20 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var honeyPot = new Cloudflare.WafGroup("honeyPot", new()
     ///     {
-    ///         var honeyPot = new Cloudflare.WafGroup("honeyPot", new Cloudflare.WafGroupArgs
-    ///         {
-    ///             GroupId = "de677e5818985db1285d0e80225f06e5",
-    ///             Mode = "on",
-    ///             ZoneId = "ae36f999674d196762efcc5abb06b345",
-    ///         });
-    ///     }
+    ///         GroupId = "de677e5818985db1285d0e80225f06e5",
+    ///         Mode = "on",
+    ///         ZoneId = "ae36f999674d196762efcc5abb06b345",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +40,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/wafGroup:WafGroup")]
-    public partial class WafGroup : Pulumi.CustomResource
+    public partial class WafGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The WAF Rule Group ID.
@@ -112,7 +110,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class WafGroupArgs : Pulumi.ResourceArgs
+    public sealed class WafGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The WAF Rule Group ID.
@@ -141,9 +139,10 @@ namespace Pulumi.Cloudflare
         public WafGroupArgs()
         {
         }
+        public static new WafGroupArgs Empty => new WafGroupArgs();
     }
 
-    public sealed class WafGroupState : Pulumi.ResourceArgs
+    public sealed class WafGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The WAF Rule Group ID.
@@ -172,5 +171,6 @@ namespace Pulumi.Cloudflare
         public WafGroupState()
         {
         }
+        public static new WafGroupState Empty => new WafGroupState();
     }
 }

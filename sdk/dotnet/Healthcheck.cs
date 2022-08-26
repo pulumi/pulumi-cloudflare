@@ -10,85 +10,85 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Standalone Health Checks provide a way to monitor origin servers without needing a Cloudflare Load Balancer.
+    /// Standalone Health Checks provide a way to monitor origin servers
+    /// without needing a Cloudflare Load Balancer.
     /// 
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // HTTPS Healthcheck
+    ///     var httpHealthCheck = new Cloudflare.Healthcheck("httpHealthCheck", new()
     ///     {
-    ///         // HTTPS Healthcheck
-    ///         var httpHealthCheck = new Cloudflare.Healthcheck("httpHealthCheck", new Cloudflare.HealthcheckArgs
+    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         Name = "http-health-check",
+    ///         Description = "example http health check",
+    ///         Address = "example.com",
+    ///         Suspended = false,
+    ///         CheckRegions = new[]
     ///         {
-    ///             ZoneId = @var.Cloudflare_zone_id,
-    ///             Name = "http-health-check",
-    ///             Description = "example http health check",
-    ///             Address = "example.com",
-    ///             Suspended = false,
-    ///             CheckRegions = 
+    ///             "WEU",
+    ///             "EEU",
+    ///         },
+    ///         Type = "HTTPS",
+    ///         Port = 443,
+    ///         Method = "GET",
+    ///         Path = "/health",
+    ///         ExpectedBody = "alive",
+    ///         ExpectedCodes = new[]
+    ///         {
+    ///             "2xx",
+    ///             "301",
+    ///         },
+    ///         FollowRedirects = true,
+    ///         AllowInsecure = false,
+    ///         Headers = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.HealthcheckHeaderArgs
     ///             {
-    ///                 "WEU",
-    ///                 "EEU",
-    ///             },
-    ///             Type = "HTTPS",
-    ///             Port = 443,
-    ///             Method = "GET",
-    ///             Path = "/health",
-    ///             ExpectedBody = "alive",
-    ///             ExpectedCodes = 
-    ///             {
-    ///                 "2xx",
-    ///                 "301",
-    ///             },
-    ///             FollowRedirects = true,
-    ///             AllowInsecure = false,
-    ///             Headers = 
-    ///             {
-    ///                 new Cloudflare.Inputs.HealthcheckHeaderArgs
+    ///                 Header = "Host",
+    ///                 Values = new[]
     ///                 {
-    ///                     Header = "Host",
-    ///                     Values = 
-    ///                     {
-    ///                         "example.com",
-    ///                     },
+    ///                     "example.com",
     ///                 },
     ///             },
-    ///             Timeout = 10,
-    ///             Retries = 2,
-    ///             Interval = 60,
-    ///             ConsecutiveFails = 3,
-    ///             ConsecutiveSuccesses = 2,
-    ///         });
-    ///         // TCP Healthcheck
-    ///         var tcpHealthCheck = new Cloudflare.Healthcheck("tcpHealthCheck", new Cloudflare.HealthcheckArgs
-    ///         {
-    ///             ZoneId = @var.Cloudflare_zone_id,
-    ///             Name = "tcp-health-check",
-    ///             Description = "example tcp health check",
-    ///             Address = "example.com",
-    ///             Suspended = false,
-    ///             CheckRegions = 
-    ///             {
-    ///                 "WEU",
-    ///                 "EEU",
-    ///             },
-    ///             Type = "TCP",
-    ///             Port = 22,
-    ///             Method = "connection_established",
-    ///             Timeout = 10,
-    ///             Retries = 2,
-    ///             Interval = 60,
-    ///             ConsecutiveFails = 3,
-    ///             ConsecutiveSuccesses = 2,
-    ///         });
-    ///     }
+    ///         },
+    ///         Timeout = 10,
+    ///         Retries = 2,
+    ///         Interval = 60,
+    ///         ConsecutiveFails = 3,
+    ///         ConsecutiveSuccesses = 2,
+    ///     });
     /// 
-    /// }
+    ///     // TCP Healthcheck
+    ///     var tcpHealthCheck = new Cloudflare.Healthcheck("tcpHealthCheck", new()
+    ///     {
+    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         Name = "tcp-health-check",
+    ///         Description = "example tcp health check",
+    ///         Address = "example.com",
+    ///         Suspended = false,
+    ///         CheckRegions = new[]
+    ///         {
+    ///             "WEU",
+    ///             "EEU",
+    ///         },
+    ///         Type = "TCP",
+    ///         Port = 22,
+    ///         Method = "connection_established",
+    ///         Timeout = 10,
+    ///         Retries = 2,
+    ///         Interval = 60,
+    ///         ConsecutiveFails = 3,
+    ///         ConsecutiveSuccesses = 2,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -100,7 +100,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/healthcheck:Healthcheck")]
-    public partial class Healthcheck : Pulumi.CustomResource
+    public partial class Healthcheck : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The hostname or IP address of the origin server to run health checks on.
@@ -109,26 +109,25 @@ namespace Pulumi.Cloudflare
         public Output<string> Address { get; private set; } = null!;
 
         /// <summary>
-        /// Do not validate the certificate when the health check uses HTTPS.
+        /// Do not validate the certificate when the health check uses HTTPS. Defaults to `false`.
         /// </summary>
         [Output("allowInsecure")]
         public Output<bool?> AllowInsecure { get; private set; } = null!;
 
         /// <summary>
-        /// A list of regions from which to run health checks. If not set, Cloudflare will pick a default region. Available values:
-        /// `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`
+        /// A list of regions from which to run health checks. If not set, Cloudflare will pick a default region. Available values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
         /// </summary>
         [Output("checkRegions")]
         public Output<ImmutableArray<string>> CheckRegions { get; private set; } = null!;
 
         /// <summary>
-        /// The number of consecutive fails required from a health check before changing the health to unhealthy.
+        /// The number of consecutive fails required from a health check before changing the health to unhealthy. Defaults to `1`.
         /// </summary>
         [Output("consecutiveFails")]
         public Output<int?> ConsecutiveFails { get; private set; } = null!;
 
         /// <summary>
-        /// The number of consecutive successes required from a health check before changing the health to healthy.
+        /// The number of consecutive successes required from a health check before changing the health to healthy. Defaults to `1`.
         /// </summary>
         [Output("consecutiveSuccesses")]
         public Output<int?> ConsecutiveSuccesses { get; private set; } = null!;
@@ -146,41 +145,37 @@ namespace Pulumi.Cloudflare
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A case-insensitive sub-string to look for in the response body. If this string is not found the origin will be marked as
-        /// unhealthy.
+        /// A case-insensitive sub-string to look for in the response body. If this string is not found the origin will be marked as unhealthy.
         /// </summary>
         [Output("expectedBody")]
         public Output<string?> ExpectedBody { get; private set; } = null!;
 
         /// <summary>
-        /// The expected HTTP response codes (e.g. '200') or code ranges (e.g. '2xx' for all codes starting with 2) of the health
-        /// check.
+        /// The expected HTTP response codes (e.g. '200') or code ranges (e.g. '2xx' for all codes starting with 2) of the health check.
         /// </summary>
         [Output("expectedCodes")]
         public Output<ImmutableArray<string>> ExpectedCodes { get; private set; } = null!;
 
         /// <summary>
-        /// Follow redirects if the origin returns a 3xx status code.
+        /// Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
         /// </summary>
         [Output("followRedirects")]
         public Output<bool?> FollowRedirects { get; private set; } = null!;
 
         /// <summary>
-        /// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent
-        /// header cannot be overridden.
+        /// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
         /// </summary>
         [Output("headers")]
         public Output<ImmutableArray<Outputs.HealthcheckHeader>> Headers { get; private set; } = null!;
 
         /// <summary>
-        /// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes,
-        /// but will increase the load on the origin as we check from multiple locations.
+        /// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
         /// </summary>
         [Output("interval")]
         public Output<int?> Interval { get; private set; } = null!;
 
         /// <summary>
-        /// The HTTP method to use for the health check. Available values: `connection_established`, `GET`, `HEAD`
+        /// The HTTP method to use for the health check. Available values: `connection_established`, `GET`, `HEAD`.
         /// </summary>
         [Output("method")]
         public Output<string> Method { get; private set; } = null!;
@@ -198,50 +193,37 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A list of email addresses we want to send the notifications to. Deprecated, use cloudflare_notification_policy instead.
-        /// </summary>
-        [Output("notificationEmailAddresses")]
-        public Output<ImmutableArray<string>> NotificationEmailAddresses { get; private set; } = null!;
-
-        /// <summary>
-        /// Whether the notifications are suspended or not. Useful for maintenance periods.
-        /// </summary>
-        [Output("notificationSuspended")]
-        public Output<bool?> NotificationSuspended { get; private set; } = null!;
-
-        /// <summary>
-        /// The endpoint path to health check against.
+        /// The endpoint path to health check against. Defaults to `/`.
         /// </summary>
         [Output("path")]
         public Output<string?> Path { get; private set; } = null!;
 
         /// <summary>
-        /// Port number to connect to for the health check.
+        /// Port number to connect to for the health check. Defaults to `80`.
         /// </summary>
         [Output("port")]
         public Output<int?> Port { get; private set; } = null!;
 
         /// <summary>
-        /// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted
-        /// immediately.
+        /// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
         /// </summary>
         [Output("retries")]
         public Output<int?> Retries { get; private set; } = null!;
 
         /// <summary>
-        /// If suspended, no health checks are sent to the origin.
+        /// If suspended, no health checks are sent to the origin. Defaults to `false`.
         /// </summary>
         [Output("suspended")]
         public Output<bool?> Suspended { get; private set; } = null!;
 
         /// <summary>
-        /// The timeout (in seconds) before marking the health check as failed.
+        /// The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
         /// </summary>
         [Output("timeout")]
         public Output<int?> Timeout { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`
+        /// The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -296,7 +278,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class HealthcheckArgs : Pulumi.ResourceArgs
+    public sealed class HealthcheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The hostname or IP address of the origin server to run health checks on.
@@ -305,7 +287,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Address { get; set; } = null!;
 
         /// <summary>
-        /// Do not validate the certificate when the health check uses HTTPS.
+        /// Do not validate the certificate when the health check uses HTTPS. Defaults to `false`.
         /// </summary>
         [Input("allowInsecure")]
         public Input<bool>? AllowInsecure { get; set; }
@@ -314,8 +296,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _checkRegions;
 
         /// <summary>
-        /// A list of regions from which to run health checks. If not set, Cloudflare will pick a default region. Available values:
-        /// `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`
+        /// A list of regions from which to run health checks. If not set, Cloudflare will pick a default region. Available values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
         /// </summary>
         public InputList<string> CheckRegions
         {
@@ -324,13 +305,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The number of consecutive fails required from a health check before changing the health to unhealthy.
+        /// The number of consecutive fails required from a health check before changing the health to unhealthy. Defaults to `1`.
         /// </summary>
         [Input("consecutiveFails")]
         public Input<int>? ConsecutiveFails { get; set; }
 
         /// <summary>
-        /// The number of consecutive successes required from a health check before changing the health to healthy.
+        /// The number of consecutive successes required from a health check before changing the health to healthy. Defaults to `1`.
         /// </summary>
         [Input("consecutiveSuccesses")]
         public Input<int>? ConsecutiveSuccesses { get; set; }
@@ -342,8 +323,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A case-insensitive sub-string to look for in the response body. If this string is not found the origin will be marked as
-        /// unhealthy.
+        /// A case-insensitive sub-string to look for in the response body. If this string is not found the origin will be marked as unhealthy.
         /// </summary>
         [Input("expectedBody")]
         public Input<string>? ExpectedBody { get; set; }
@@ -352,8 +332,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _expectedCodes;
 
         /// <summary>
-        /// The expected HTTP response codes (e.g. '200') or code ranges (e.g. '2xx' for all codes starting with 2) of the health
-        /// check.
+        /// The expected HTTP response codes (e.g. '200') or code ranges (e.g. '2xx' for all codes starting with 2) of the health check.
         /// </summary>
         public InputList<string> ExpectedCodes
         {
@@ -362,7 +341,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Follow redirects if the origin returns a 3xx status code.
+        /// Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
         /// </summary>
         [Input("followRedirects")]
         public Input<bool>? FollowRedirects { get; set; }
@@ -371,8 +350,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.HealthcheckHeaderArgs>? _headers;
 
         /// <summary>
-        /// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent
-        /// header cannot be overridden.
+        /// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
         /// </summary>
         public InputList<Inputs.HealthcheckHeaderArgs> Headers
         {
@@ -381,14 +359,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes,
-        /// but will increase the load on the origin as we check from multiple locations.
+        /// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
         /// </summary>
         [Input("interval")]
         public Input<int>? Interval { get; set; }
 
         /// <summary>
-        /// The HTTP method to use for the health check. Available values: `connection_established`, `GET`, `HEAD`
+        /// The HTTP method to use for the health check. Available values: `connection_established`, `GET`, `HEAD`.
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
@@ -399,58 +376,38 @@ namespace Pulumi.Cloudflare
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        [Input("notificationEmailAddresses")]
-        private InputList<string>? _notificationEmailAddresses;
-
         /// <summary>
-        /// A list of email addresses we want to send the notifications to. Deprecated, use cloudflare_notification_policy instead.
-        /// </summary>
-        [Obsolete(@"Use `cloudflare_notification_policy` instead.")]
-        public InputList<string> NotificationEmailAddresses
-        {
-            get => _notificationEmailAddresses ?? (_notificationEmailAddresses = new InputList<string>());
-            set => _notificationEmailAddresses = value;
-        }
-
-        /// <summary>
-        /// Whether the notifications are suspended or not. Useful for maintenance periods.
-        /// </summary>
-        [Input("notificationSuspended")]
-        public Input<bool>? NotificationSuspended { get; set; }
-
-        /// <summary>
-        /// The endpoint path to health check against.
+        /// The endpoint path to health check against. Defaults to `/`.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// Port number to connect to for the health check.
+        /// Port number to connect to for the health check. Defaults to `80`.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted
-        /// immediately.
+        /// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
         /// </summary>
         [Input("retries")]
         public Input<int>? Retries { get; set; }
 
         /// <summary>
-        /// If suspended, no health checks are sent to the origin.
+        /// If suspended, no health checks are sent to the origin. Defaults to `false`.
         /// </summary>
         [Input("suspended")]
         public Input<bool>? Suspended { get; set; }
 
         /// <summary>
-        /// The timeout (in seconds) before marking the health check as failed.
+        /// The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
         /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
 
         /// <summary>
-        /// The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`
+        /// The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -464,9 +421,10 @@ namespace Pulumi.Cloudflare
         public HealthcheckArgs()
         {
         }
+        public static new HealthcheckArgs Empty => new HealthcheckArgs();
     }
 
-    public sealed class HealthcheckState : Pulumi.ResourceArgs
+    public sealed class HealthcheckState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The hostname or IP address of the origin server to run health checks on.
@@ -475,7 +433,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// Do not validate the certificate when the health check uses HTTPS.
+        /// Do not validate the certificate when the health check uses HTTPS. Defaults to `false`.
         /// </summary>
         [Input("allowInsecure")]
         public Input<bool>? AllowInsecure { get; set; }
@@ -484,8 +442,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _checkRegions;
 
         /// <summary>
-        /// A list of regions from which to run health checks. If not set, Cloudflare will pick a default region. Available values:
-        /// `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`
+        /// A list of regions from which to run health checks. If not set, Cloudflare will pick a default region. Available values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
         /// </summary>
         public InputList<string> CheckRegions
         {
@@ -494,13 +451,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The number of consecutive fails required from a health check before changing the health to unhealthy.
+        /// The number of consecutive fails required from a health check before changing the health to unhealthy. Defaults to `1`.
         /// </summary>
         [Input("consecutiveFails")]
         public Input<int>? ConsecutiveFails { get; set; }
 
         /// <summary>
-        /// The number of consecutive successes required from a health check before changing the health to healthy.
+        /// The number of consecutive successes required from a health check before changing the health to healthy. Defaults to `1`.
         /// </summary>
         [Input("consecutiveSuccesses")]
         public Input<int>? ConsecutiveSuccesses { get; set; }
@@ -518,8 +475,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A case-insensitive sub-string to look for in the response body. If this string is not found the origin will be marked as
-        /// unhealthy.
+        /// A case-insensitive sub-string to look for in the response body. If this string is not found the origin will be marked as unhealthy.
         /// </summary>
         [Input("expectedBody")]
         public Input<string>? ExpectedBody { get; set; }
@@ -528,8 +484,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _expectedCodes;
 
         /// <summary>
-        /// The expected HTTP response codes (e.g. '200') or code ranges (e.g. '2xx' for all codes starting with 2) of the health
-        /// check.
+        /// The expected HTTP response codes (e.g. '200') or code ranges (e.g. '2xx' for all codes starting with 2) of the health check.
         /// </summary>
         public InputList<string> ExpectedCodes
         {
@@ -538,7 +493,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Follow redirects if the origin returns a 3xx status code.
+        /// Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
         /// </summary>
         [Input("followRedirects")]
         public Input<bool>? FollowRedirects { get; set; }
@@ -547,8 +502,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.HealthcheckHeaderGetArgs>? _headers;
 
         /// <summary>
-        /// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent
-        /// header cannot be overridden.
+        /// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
         /// </summary>
         public InputList<Inputs.HealthcheckHeaderGetArgs> Headers
         {
@@ -557,14 +511,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes,
-        /// but will increase the load on the origin as we check from multiple locations.
+        /// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
         /// </summary>
         [Input("interval")]
         public Input<int>? Interval { get; set; }
 
         /// <summary>
-        /// The HTTP method to use for the health check. Available values: `connection_established`, `GET`, `HEAD`
+        /// The HTTP method to use for the health check. Available values: `connection_established`, `GET`, `HEAD`.
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
@@ -581,58 +534,38 @@ namespace Pulumi.Cloudflare
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("notificationEmailAddresses")]
-        private InputList<string>? _notificationEmailAddresses;
-
         /// <summary>
-        /// A list of email addresses we want to send the notifications to. Deprecated, use cloudflare_notification_policy instead.
-        /// </summary>
-        [Obsolete(@"Use `cloudflare_notification_policy` instead.")]
-        public InputList<string> NotificationEmailAddresses
-        {
-            get => _notificationEmailAddresses ?? (_notificationEmailAddresses = new InputList<string>());
-            set => _notificationEmailAddresses = value;
-        }
-
-        /// <summary>
-        /// Whether the notifications are suspended or not. Useful for maintenance periods.
-        /// </summary>
-        [Input("notificationSuspended")]
-        public Input<bool>? NotificationSuspended { get; set; }
-
-        /// <summary>
-        /// The endpoint path to health check against.
+        /// The endpoint path to health check against. Defaults to `/`.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// Port number to connect to for the health check.
+        /// Port number to connect to for the health check. Defaults to `80`.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted
-        /// immediately.
+        /// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
         /// </summary>
         [Input("retries")]
         public Input<int>? Retries { get; set; }
 
         /// <summary>
-        /// If suspended, no health checks are sent to the origin.
+        /// If suspended, no health checks are sent to the origin. Defaults to `false`.
         /// </summary>
         [Input("suspended")]
         public Input<bool>? Suspended { get; set; }
 
         /// <summary>
-        /// The timeout (in seconds) before marking the health check as failed.
+        /// The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
         /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
 
         /// <summary>
-        /// The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`
+        /// The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -646,5 +579,6 @@ namespace Pulumi.Cloudflare
         public HealthcheckState()
         {
         }
+        public static new HealthcheckState Empty => new HealthcheckState();
     }
 }

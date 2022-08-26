@@ -15,24 +15,23 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleZone = new Cloudflare.Zone("exampleZone", new()
     ///     {
-    ///         var exampleZone = new Cloudflare.Zone("exampleZone", new Cloudflare.ZoneArgs
-    ///         {
-    ///             Zone = "example.com",
-    ///         });
-    ///         var exampleZoneDnssec = new Cloudflare.ZoneDnssec("exampleZoneDnssec", new Cloudflare.ZoneDnssecArgs
-    ///         {
-    ///             ZoneId = exampleZone.Id,
-    ///         });
-    ///     }
+    ///         ZoneName = "example.com",
+    ///     });
     /// 
-    /// }
+    ///     var exampleZoneDnssec = new Cloudflare.ZoneDnssec("exampleZoneDnssec", new()
+    ///     {
+    ///         ZoneId = exampleZone.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +45,7 @@ namespace Pulumi.Cloudflare
     ///  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zoneDnssec:ZoneDnssec")]
-    public partial class ZoneDnssec : Pulumi.CustomResource
+    public partial class ZoneDnssec : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Zone DNSSEC algorithm.
@@ -164,7 +163,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class ZoneDnssecArgs : Pulumi.ResourceArgs
+    public sealed class ZoneDnssecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Zone DNSSEC updated time.
@@ -181,9 +180,10 @@ namespace Pulumi.Cloudflare
         public ZoneDnssecArgs()
         {
         }
+        public static new ZoneDnssecArgs Empty => new ZoneDnssecArgs();
     }
 
-    public sealed class ZoneDnssecState : Pulumi.ResourceArgs
+    public sealed class ZoneDnssecState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Zone DNSSEC algorithm.
@@ -260,5 +260,6 @@ namespace Pulumi.Cloudflare
         public ZoneDnssecState()
         {
         }
+        public static new ZoneDnssecState Empty => new ZoneDnssecState();
     }
 }

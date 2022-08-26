@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class LoadBalancerRuleOverride
     {
         /// <summary>
+        /// See country_pools above.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.LoadBalancerRuleOverrideCountryPool> CountryPools;
+        /// <summary>
         /// See default_pool_ids above.
         /// </summary>
         public readonly ImmutableArray<string> DefaultPools;
@@ -52,6 +56,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private LoadBalancerRuleOverride(
+            ImmutableArray<Outputs.LoadBalancerRuleOverrideCountryPool> countryPools,
+
             ImmutableArray<string> defaultPools,
 
             string? fallbackPool,
@@ -70,6 +76,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             int? ttl)
         {
+            CountryPools = countryPools;
             DefaultPools = defaultPools;
             FallbackPool = fallbackPool;
             PopPools = popPools;

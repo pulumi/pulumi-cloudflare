@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Access Bookmark resource. Access Bookmark applications are not protected behind Access but are displayed in the App Launcher.
+    /// Provides a Cloudflare Access Bookmark resource. Access Bookmark
+    /// applications are not protected behind Access but are displayed in
+    /// the App Launcher.
     /// 
     /// &gt; It's required that an `account_id` or `zone_id` is provided and in
     /// most cases using either is fine. However, if you're using a scoped
@@ -21,24 +23,22 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myBookmarkApp = new Cloudflare.AccessBookmark("myBookmarkApp", new()
     ///     {
-    ///         var myBookmarkApp = new Cloudflare.AccessBookmark("myBookmarkApp", new Cloudflare.AccessBookmarkArgs
-    ///         {
-    ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
-    ///             AppLauncherVisible = true,
-    ///             Domain = "example.com",
-    ///             LogoUrl = "https://example.com/example.png",
-    ///             Name = "My Bookmark App",
-    ///         });
-    ///     }
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         AppLauncherVisible = true,
+    ///         Domain = "example.com",
+    ///         LogoUrl = "https://example.com/example.png",
+    ///         Name = "My Bookmark App",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,16 +48,16 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accessBookmark:AccessBookmark")]
-    public partial class AccessBookmark : Pulumi.CustomResource
+    public partial class AccessBookmark : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Option to show/hide the bookmark in the app launcher.
+        /// Option to show/hide the bookmark in the app launcher. Defaults to `true`.
         /// </summary>
         [Output("appLauncherVisible")]
         public Output<bool?> AppLauncherVisible { get; private set; } = null!;
@@ -81,7 +81,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -130,16 +130,16 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class AccessBookmarkArgs : Pulumi.ResourceArgs
+    public sealed class AccessBookmarkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Option to show/hide the bookmark in the app launcher.
+        /// Option to show/hide the bookmark in the app launcher. Defaults to `true`.
         /// </summary>
         [Input("appLauncherVisible")]
         public Input<bool>? AppLauncherVisible { get; set; }
@@ -163,7 +163,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -171,18 +171,19 @@ namespace Pulumi.Cloudflare
         public AccessBookmarkArgs()
         {
         }
+        public static new AccessBookmarkArgs Empty => new AccessBookmarkArgs();
     }
 
-    public sealed class AccessBookmarkState : Pulumi.ResourceArgs
+    public sealed class AccessBookmarkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Option to show/hide the bookmark in the app launcher.
+        /// Option to show/hide the bookmark in the app launcher. Defaults to `true`.
         /// </summary>
         [Input("appLauncherVisible")]
         public Input<bool>? AppLauncherVisible { get; set; }
@@ -206,7 +207,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -214,5 +215,6 @@ namespace Pulumi.Cloudflare
         public AccessBookmarkState()
         {
         }
+        public static new AccessBookmarkState Empty => new AccessBookmarkState();
     }
 }

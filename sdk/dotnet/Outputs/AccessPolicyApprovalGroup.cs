@@ -13,7 +13,13 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class AccessPolicyApprovalGroup
     {
+        /// <summary>
+        /// Number of approvals needed.
+        /// </summary>
         public readonly int ApprovalsNeeded;
+        /// <summary>
+        /// List of emails to request approval from.
+        /// </summary>
         public readonly ImmutableArray<string> EmailAddresses;
         public readonly string? EmailListUuid;
 

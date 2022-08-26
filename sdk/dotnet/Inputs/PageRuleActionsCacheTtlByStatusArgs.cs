@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class PageRuleActionsCacheTtlByStatusArgs : Pulumi.ResourceArgs
+    public sealed class PageRuleActionsCacheTtlByStatusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A HTTP code (e.g. `404`) or range of codes (e.g. `400-499`)
@@ -28,5 +28,6 @@ namespace Pulumi.Cloudflare.Inputs
         public PageRuleActionsCacheTtlByStatusArgs()
         {
         }
+        public static new PageRuleActionsCacheTtlByStatusArgs Empty => new PageRuleActionsCacheTtlByStatusArgs();
     }
 }

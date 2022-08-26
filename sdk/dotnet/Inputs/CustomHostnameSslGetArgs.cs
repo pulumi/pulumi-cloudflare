@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class CustomHostnameSslGetArgs : Pulumi.ResourceArgs
+    public sealed class CustomHostnameSslGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("certificateAuthority")]
         public Input<string>? CertificateAuthority { get; set; }
@@ -28,8 +28,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? CustomKey { get; set; }
 
         /// <summary>
-        /// Domain control validation (DCV) method used for this
-        /// hostname. Valid values are `"txt"`, `"http"` and `"email"`.
+        /// Domain control validation (DCV) method used for this hostname. Available values: `http`, `txt`, `email`.
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
@@ -38,7 +37,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<Inputs.CustomHostnameSslSettingGetArgs>? _settings;
 
         /// <summary>
-        /// SSL/TLS settings for the certificate. See further notes below.
+        /// SSL/TLS settings for the certificate.
         /// </summary>
         public InputList<Inputs.CustomHostnameSslSettingGetArgs> Settings
         {
@@ -46,11 +45,14 @@ namespace Pulumi.Cloudflare.Inputs
             set => _settings = value;
         }
 
+        /// <summary>
+        /// Status of the certificate.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+        /// Level of validation to be used for this hostname. Available values: `dv`. Defaults to `dv`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -80,5 +82,6 @@ namespace Pulumi.Cloudflare.Inputs
         public CustomHostnameSslGetArgs()
         {
         }
+        public static new CustomHostnameSslGetArgs Empty => new CustomHostnameSslGetArgs();
     }
 }

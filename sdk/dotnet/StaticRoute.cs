@@ -16,33 +16,31 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Cloudflare.StaticRoute("example", new()
     ///     {
-    ///         var example = new Cloudflare.StaticRoute("example", new Cloudflare.StaticRouteArgs
+    ///         AccountId = "c4a7362d577a6c3019a474fd6f485821",
+    ///         ColoNames = new[]
     ///         {
-    ///             AccountId = "c4a7362d577a6c3019a474fd6f485821",
-    ///             ColoNames = 
-    ///             {
-    ///                 "den01",
-    ///             },
-    ///             ColoRegions = 
-    ///             {
-    ///                 "APAC",
-    ///             },
-    ///             Description = "New route for new prefix 192.0.2.0/24",
-    ///             Nexthop = "10.0.0.0",
-    ///             Prefix = "192.0.2.0/24",
-    ///             Priority = 100,
-    ///             Weight = 10,
-    ///         });
-    ///     }
+    ///             "den01",
+    ///         },
+    ///         ColoRegions = new[]
+    ///         {
+    ///             "APAC",
+    ///         },
+    ///         Description = "New route for new prefix 192.0.2.0/24",
+    ///         Nexthop = "10.0.0.0",
+    ///         Prefix = "192.0.2.0/24",
+    ///         Priority = 100,
+    ///         Weight = 10,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +52,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/staticRoute:StaticRoute")]
-    public partial class StaticRoute : Pulumi.CustomResource
+    public partial class StaticRoute : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the account where the static route is being created.
@@ -148,7 +146,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class StaticRouteArgs : Pulumi.ResourceArgs
+    public sealed class StaticRouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the account where the static route is being created.
@@ -213,9 +211,10 @@ namespace Pulumi.Cloudflare
         public StaticRouteArgs()
         {
         }
+        public static new StaticRouteArgs Empty => new StaticRouteArgs();
     }
 
-    public sealed class StaticRouteState : Pulumi.ResourceArgs
+    public sealed class StaticRouteState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the account where the static route is being created.
@@ -280,5 +279,6 @@ namespace Pulumi.Cloudflare
         public StaticRouteState()
         {
         }
+        public static new StaticRouteState Empty => new StaticRouteState();
     }
 }

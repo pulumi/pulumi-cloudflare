@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RecordDataArgs : Pulumi.ResourceArgs
+    public sealed class RecordDataArgs : global::Pulumi.ResourceArgs
     {
         [Input("algorithm")]
         public Input<int>? Algorithm { get; set; }
@@ -144,5 +144,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RecordDataArgs()
         {
         }
+        public static new RecordDataArgs Empty => new RecordDataArgs();
     }
 }

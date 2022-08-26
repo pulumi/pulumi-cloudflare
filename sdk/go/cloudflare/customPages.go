@@ -19,24 +19,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewCustomPages(ctx, "basicChallenge", &cloudflare.CustomPagesArgs{
-// 			State:  pulumi.String("customized"),
-// 			Type:   pulumi.String("basic_challenge"),
-// 			Url:    pulumi.String("https://example.com/challenge.html"),
-// 			ZoneId: pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewCustomPages(ctx, "basicChallenge", &cloudflare.CustomPagesArgs{
+//				State:  pulumi.String("customized"),
+//				Type:   pulumi.String("basic_challenge"),
+//				Url:    pulumi.String("https://example.com/challenge.html"),
+//				ZoneId: pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -44,13 +47,17 @@ import (
 // Custom pages can be imported using a composite ID formed of- `customPageLevel` - Either `account` or `zone`. - `identifier` - The ID of the account or zone you intend to manage. - `pageType` - The value from the `type` argument. Example for a zone
 //
 // ```sh
-//  $ pulumi import cloudflare:index/customPages:CustomPages basic_challenge zone/d41d8cd98f00b204e9800998ecf8427e/basic_challenge
+//
+//	$ pulumi import cloudflare:index/customPages:CustomPages basic_challenge zone/d41d8cd98f00b204e9800998ecf8427e/basic_challenge
+//
 // ```
 //
-//  Example for an account
+//	Example for an account
 //
 // ```sh
-//  $ pulumi import cloudflare:index/customPages:CustomPages basic_challenge account/e268443e43d93dab7ebef303bbe9642f/basic_challenge
+//
+//	$ pulumi import cloudflare:index/customPages:CustomPages basic_challenge account/e268443e43d93dab7ebef303bbe9642f/basic_challenge
+//
 // ```
 type CustomPages struct {
 	pulumi.CustomResourceState
@@ -209,7 +216,7 @@ func (i *CustomPages) ToCustomPagesOutputWithContext(ctx context.Context) Custom
 // CustomPagesArrayInput is an input type that accepts CustomPagesArray and CustomPagesArrayOutput values.
 // You can construct a concrete instance of `CustomPagesArrayInput` via:
 //
-//          CustomPagesArray{ CustomPagesArgs{...} }
+//	CustomPagesArray{ CustomPagesArgs{...} }
 type CustomPagesArrayInput interface {
 	pulumi.Input
 
@@ -234,7 +241,7 @@ func (i CustomPagesArray) ToCustomPagesArrayOutputWithContext(ctx context.Contex
 // CustomPagesMapInput is an input type that accepts CustomPagesMap and CustomPagesMapOutput values.
 // You can construct a concrete instance of `CustomPagesMapInput` via:
 //
-//          CustomPagesMap{ "key": CustomPagesArgs{...} }
+//	CustomPagesMap{ "key": CustomPagesArgs{...} }
 type CustomPagesMapInput interface {
 	pulumi.Input
 

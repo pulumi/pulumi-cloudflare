@@ -17,45 +17,45 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// using Tls = Pulumi.Tls;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a CSR and generate a CA certificate
+    ///     var examplePrivateKey = new Tls.PrivateKey("examplePrivateKey", new()
     ///     {
-    ///         // Create a CSR and generate a CA certificate
-    ///         var examplePrivateKey = new Tls.PrivateKey("examplePrivateKey", new Tls.PrivateKeyArgs
-    ///         {
-    ///             Algorithm = "RSA",
-    ///         });
-    ///         var exampleCertRequest = new Tls.CertRequest("exampleCertRequest", new Tls.CertRequestArgs
-    ///         {
-    ///             KeyAlgorithm = examplePrivateKey.Algorithm,
-    ///             PrivateKeyPem = examplePrivateKey.PrivateKeyPem,
-    ///             Subjects = 
-    ///             {
-    ///                 new Tls.Inputs.CertRequestSubjectArgs
-    ///                 {
-    ///                     CommonName = "",
-    ///                     Organization = "Terraform Test",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var exampleOriginCaCertificate = new Cloudflare.OriginCaCertificate("exampleOriginCaCertificate", new Cloudflare.OriginCaCertificateArgs
-    ///         {
-    ///             Csr = exampleCertRequest.CertRequestPem,
-    ///             Hostnames = 
-    ///             {
-    ///                 "example.com",
-    ///             },
-    ///             RequestType = "origin-rsa",
-    ///             RequestedValidity = 7,
-    ///         });
-    ///     }
+    ///         Algorithm = "RSA",
+    ///     });
     /// 
-    /// }
+    ///     var exampleCertRequest = new Tls.CertRequest("exampleCertRequest", new()
+    ///     {
+    ///         KeyAlgorithm = examplePrivateKey.Algorithm,
+    ///         PrivateKeyPem = examplePrivateKey.PrivateKeyPem,
+    ///         Subjects = new[]
+    ///         {
+    ///             new Tls.Inputs.CertRequestSubjectArgs
+    ///             {
+    ///                 CommonName = "",
+    ///                 Organization = "Terraform Test",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleOriginCaCertificate = new Cloudflare.OriginCaCertificate("exampleOriginCaCertificate", new()
+    ///     {
+    ///         Csr = exampleCertRequest.CertRequestPem,
+    ///         Hostnames = new[]
+    ///         {
+    ///             "example.com",
+    ///         },
+    ///         RequestType = "origin-rsa",
+    ///         RequestedValidity = 7,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -67,7 +67,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/originCaCertificate:OriginCaCertificate")]
-    public partial class OriginCaCertificate : Pulumi.CustomResource
+    public partial class OriginCaCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Origin CA certificate
@@ -149,7 +149,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class OriginCaCertificateArgs : Pulumi.ResourceArgs
+    public sealed class OriginCaCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Certificate Signing Request. Must be newline-encoded.
@@ -184,9 +184,10 @@ namespace Pulumi.Cloudflare
         public OriginCaCertificateArgs()
         {
         }
+        public static new OriginCaCertificateArgs Empty => new OriginCaCertificateArgs();
     }
 
-    public sealed class OriginCaCertificateState : Pulumi.ResourceArgs
+    public sealed class OriginCaCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Origin CA certificate
@@ -233,5 +234,6 @@ namespace Pulumi.Cloudflare
         public OriginCaCertificateState()
         {
         }
+        public static new OriginCaCertificateState Empty => new OriginCaCertificateState();
     }
 }

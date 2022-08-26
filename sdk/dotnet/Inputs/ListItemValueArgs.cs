@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class ListItemValueArgs : Pulumi.ResourceArgs
+    public sealed class ListItemValueArgs : global::Pulumi.ResourceArgs
     {
         [Input("ip")]
         public Input<string>? Ip { get; set; }
@@ -26,5 +26,6 @@ namespace Pulumi.Cloudflare.Inputs
         public ListItemValueArgs()
         {
         }
+        public static new ListItemValueArgs Empty => new ListItemValueArgs();
     }
 }

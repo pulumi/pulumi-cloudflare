@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringGetArgs : Pulumi.ResourceArgs
+    public sealed class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("excludes")]
         private InputList<string>? _excludes;
@@ -31,5 +31,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RulesetRuleActionParametersCacheKeyCustomKeyQueryStringGetArgs()
         {
         }
+        public static new RulesetRuleActionParametersCacheKeyCustomKeyQueryStringGetArgs Empty => new RulesetRuleActionParametersCacheKeyCustomKeyQueryStringGetArgs();
     }
 }

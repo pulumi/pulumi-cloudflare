@@ -17,7 +17,13 @@ yarn.lock
 **/pulumiManifest.go
 
 ci-scripts
-**/schema.go
+**/schema-embed.json
 **/version.txt
 **/nuget
 **/dist
+
+sdk/java/build
+sdk/java/.gradle
+sdk/java/gradle
+sdk/java/gradlew
+sdk/java/gradlew.bat

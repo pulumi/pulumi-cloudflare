@@ -11,7 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Cloudflare Argo controls the routing to your origin and tiered caching options to speed up your website browsing experience.
+// Cloudflare Argo controls the routing to your origin and tiered
+// caching options to speed up your website browsing experience.
 //
 // ## Example Usage
 //
@@ -19,36 +20,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewArgo(ctx, "example", &cloudflare.ArgoArgs{
-// 			SmartRouting:  pulumi.String("on"),
-// 			TieredCaching: pulumi.String("on"),
-// 			ZoneId:        pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewArgo(ctx, "example", &cloudflare.ArgoArgs{
+//				SmartRouting:  pulumi.String("on"),
+//				TieredCaching: pulumi.String("on"),
+//				ZoneId:        pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
 // ```sh
-//  $ pulumi import cloudflare:index/argo:Argo example <zone_id>
+//
+//	$ pulumi import cloudflare:index/argo:Argo example <zone_id>
+//
 // ```
 type Argo struct {
 	pulumi.CustomResourceState
 
-	// Whether smart routing is enabled. Available values: `on`, `off`
+	// Whether smart routing is enabled. Available values: `on`, `off`.
 	SmartRouting pulumi.StringPtrOutput `pulumi:"smartRouting"`
-	// Whether tiered caching is enabled. Available values: `on`, `off`
+	// Whether tiered caching is enabled. Available values: `on`, `off`.
 	TieredCaching pulumi.StringPtrOutput `pulumi:"tieredCaching"`
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -86,18 +92,18 @@ func GetArgo(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Argo resources.
 type argoState struct {
-	// Whether smart routing is enabled. Available values: `on`, `off`
+	// Whether smart routing is enabled. Available values: `on`, `off`.
 	SmartRouting *string `pulumi:"smartRouting"`
-	// Whether tiered caching is enabled. Available values: `on`, `off`
+	// Whether tiered caching is enabled. Available values: `on`, `off`.
 	TieredCaching *string `pulumi:"tieredCaching"`
 	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ArgoState struct {
-	// Whether smart routing is enabled. Available values: `on`, `off`
+	// Whether smart routing is enabled. Available values: `on`, `off`.
 	SmartRouting pulumi.StringPtrInput
-	// Whether tiered caching is enabled. Available values: `on`, `off`
+	// Whether tiered caching is enabled. Available values: `on`, `off`.
 	TieredCaching pulumi.StringPtrInput
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
@@ -108,9 +114,9 @@ func (ArgoState) ElementType() reflect.Type {
 }
 
 type argoArgs struct {
-	// Whether smart routing is enabled. Available values: `on`, `off`
+	// Whether smart routing is enabled. Available values: `on`, `off`.
 	SmartRouting *string `pulumi:"smartRouting"`
-	// Whether tiered caching is enabled. Available values: `on`, `off`
+	// Whether tiered caching is enabled. Available values: `on`, `off`.
 	TieredCaching *string `pulumi:"tieredCaching"`
 	// The zone identifier to target for the resource.
 	ZoneId string `pulumi:"zoneId"`
@@ -118,9 +124,9 @@ type argoArgs struct {
 
 // The set of arguments for constructing a Argo resource.
 type ArgoArgs struct {
-	// Whether smart routing is enabled. Available values: `on`, `off`
+	// Whether smart routing is enabled. Available values: `on`, `off`.
 	SmartRouting pulumi.StringPtrInput
-	// Whether tiered caching is enabled. Available values: `on`, `off`
+	// Whether tiered caching is enabled. Available values: `on`, `off`.
 	TieredCaching pulumi.StringPtrInput
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringInput
@@ -152,7 +158,7 @@ func (i *Argo) ToArgoOutputWithContext(ctx context.Context) ArgoOutput {
 // ArgoArrayInput is an input type that accepts ArgoArray and ArgoArrayOutput values.
 // You can construct a concrete instance of `ArgoArrayInput` via:
 //
-//          ArgoArray{ ArgoArgs{...} }
+//	ArgoArray{ ArgoArgs{...} }
 type ArgoArrayInput interface {
 	pulumi.Input
 
@@ -177,7 +183,7 @@ func (i ArgoArray) ToArgoArrayOutputWithContext(ctx context.Context) ArgoArrayOu
 // ArgoMapInput is an input type that accepts ArgoMap and ArgoMapOutput values.
 // You can construct a concrete instance of `ArgoMapInput` via:
 //
-//          ArgoMap{ "key": ArgoArgs{...} }
+//	ArgoMap{ "key": ArgoArgs{...} }
 type ArgoMapInput interface {
 	pulumi.Input
 
@@ -213,12 +219,12 @@ func (o ArgoOutput) ToArgoOutputWithContext(ctx context.Context) ArgoOutput {
 	return o
 }
 
-// Whether smart routing is enabled. Available values: `on`, `off`
+// Whether smart routing is enabled. Available values: `on`, `off`.
 func (o ArgoOutput) SmartRouting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Argo) pulumi.StringPtrOutput { return v.SmartRouting }).(pulumi.StringPtrOutput)
 }
 
-// Whether tiered caching is enabled. Available values: `on`, `off`
+// Whether tiered caching is enabled. Available values: `on`, `off`.
 func (o ArgoOutput) TieredCaching() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Argo) pulumi.StringPtrOutput { return v.TieredCaching }).(pulumi.StringPtrOutput)
 }

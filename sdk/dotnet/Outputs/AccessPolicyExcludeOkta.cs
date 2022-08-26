@@ -14,6 +14,9 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessPolicyExcludeOkta
     {
         public readonly string? IdentityProviderId;
+        /// <summary>
+        /// Friendly name of the Access Policy.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
 
         [OutputConstructor]

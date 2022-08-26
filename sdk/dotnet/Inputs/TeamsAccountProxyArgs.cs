@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class TeamsAccountProxyArgs : Pulumi.ResourceArgs
+    public sealed class TeamsAccountProxyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether gateway proxy is enabled on gateway devices for tcp traffic.
@@ -27,5 +27,6 @@ namespace Pulumi.Cloudflare.Inputs
         public TeamsAccountProxyArgs()
         {
         }
+        public static new TeamsAccountProxyArgs Empty => new TeamsAccountProxyArgs();
     }
 }

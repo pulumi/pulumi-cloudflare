@@ -17,97 +17,65 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewCertificatePack(ctx, "dedicatedCustomExample", &cloudflare.CertificatePackArgs{
-// 			Hosts: pulumi.StringArray{
-// 				pulumi.String("example.com"),
-// 				pulumi.String("sub.example.com"),
-// 			},
-// 			Type:   pulumi.String("dedicated_custom"),
-// 			ZoneId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewCertificatePack(ctx, "advancedExampleForDigicert", &cloudflare.CertificatePackArgs{
-// 			CertificateAuthority: pulumi.String("digicert"),
-// 			CloudflareBranding:   pulumi.Bool(false),
-// 			Hosts: pulumi.StringArray{
-// 				pulumi.String("example.com"),
-// 				pulumi.String("sub.example.com"),
-// 			},
-// 			Type:             pulumi.String("advanced"),
-// 			ValidationMethod: pulumi.String("txt"),
-// 			ValidityDays:     pulumi.Int(30),
-// 			ZoneId:           pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewCertificatePack(ctx, "advancedExampleForLetsEncrypt", &cloudflare.CertificatePackArgs{
-// 			CertificateAuthority: pulumi.String("lets_encrypt"),
-// 			CloudflareBranding:   pulumi.Bool(false),
-// 			Hosts: pulumi.StringArray{
-// 				pulumi.String("example.com"),
-// 				pulumi.String("*.example.com"),
-// 			},
-// 			Type:                pulumi.String("advanced"),
-// 			ValidationMethod:    pulumi.String("http"),
-// 			ValidityDays:        pulumi.Int(90),
-// 			WaitForActiveStatus: pulumi.Bool(true),
-// 			ZoneId:              pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewCertificatePack(ctx, "example", &cloudflare.CertificatePackArgs{
+//				CertificateAuthority: pulumi.String("lets_encrypt"),
+//				CloudflareBranding:   pulumi.Bool(false),
+//				Hosts: pulumi.StringArray{
+//					pulumi.String("example.com"),
+//					pulumi.String("*.example.com"),
+//				},
+//				Type:                pulumi.String("advanced"),
+//				ValidationMethod:    pulumi.String("http"),
+//				ValidityDays:        pulumi.Int(90),
+//				WaitForActiveStatus: pulumi.Bool(true),
+//				ZoneId:              pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Certificate packs can be imported using a composite ID of the zone ID and certificate pack ID. This isn't recommended and it is advised to replace the certificate entirely instead.
-//
 // ```sh
-//  $ pulumi import cloudflare:index/certificatePack:CertificatePack example cb029e245cfdd66dc8d2e570d5dd3322/8fda82e2-6af9-4eb2-992a-5ab65b792ef1
+//
+//	$ pulumi import cloudflare:index/certificatePack:CertificatePack example 1d5fdc9e88c8a8c4518b068cd94331fe/8fda82e2-6af9-4eb2-992a-5ab65b792ef1
+//
 // ```
+//
+//	While supported, importing isn't recommended and it is advised to replace the certificate entirely instead.
 type CertificatePack struct {
 	pulumi.CustomResourceState
 
-	// Which certificate
-	// authority to issue the certificate pack. Allowed values: `"digicert"`,
-	// `"letsEncrypt"`.
+	// Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`.
 	CertificateAuthority pulumi.StringOutput `pulumi:"certificateAuthority"`
-	// Whether or not to include
-	// Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name
-	// if set to `true`.
+	// Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`.
 	CloudflareBranding pulumi.BoolPtrOutput `pulumi:"cloudflareBranding"`
-	// List of hostnames to provision the certificate pack for.
-	// The zone name must be included as a host. Note: If using Let's Encrypt, you
-	// cannot use individual subdomains and only a wildcard for subdomain is available.
+	// List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available.
 	Hosts pulumi.StringArrayOutput `pulumi:"hosts"`
-	// Certificate pack configuration type.
-	// Allowed values: `"custom"`, `"dedicatedCustom"`, `"advanced"`.
+	// Certificate pack configuration type. Available values: `advanced`.
 	Type             pulumi.StringOutput                       `pulumi:"type"`
 	ValidationErrors CertificatePackValidationErrorArrayOutput `pulumi:"validationErrors"`
-	// Which validation method to
-	// use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
-	ValidationMethod  pulumi.StringPtrOutput                     `pulumi:"validationMethod"`
+	// Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`.
+	ValidationMethod  pulumi.StringOutput                        `pulumi:"validationMethod"`
 	ValidationRecords CertificatePackValidationRecordArrayOutput `pulumi:"validationRecords"`
-	// How long the certificate is valid
-	// for. Note: If using Let's Encrypt, this value can only be 90 days.
-	// Allowed values: 14, 30, 90, 365.
-	ValidityDays pulumi.IntPtrOutput `pulumi:"validityDays"`
-	// Whether or not to wait for a certificate
-	// pack to reach status `active` during creation. Defaults to `false`.
+	// How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`.
+	ValidityDays pulumi.IntOutput `pulumi:"validityDays"`
+	// Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`.
 	WaitForActiveStatus pulumi.BoolPtrOutput `pulumi:"waitForActiveStatus"`
-	// The DNS zone to which the certificate pack should be added.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -118,11 +86,20 @@ func NewCertificatePack(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.CertificateAuthority == nil {
+		return nil, errors.New("invalid value for required argument 'CertificateAuthority'")
+	}
 	if args.Hosts == nil {
 		return nil, errors.New("invalid value for required argument 'Hosts'")
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
+	}
+	if args.ValidationMethod == nil {
+		return nil, errors.New("invalid value for required argument 'ValidationMethod'")
+	}
+	if args.ValidityDays == nil {
+		return nil, errors.New("invalid value for required argument 'ValidityDays'")
 	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
@@ -149,66 +126,44 @@ func GetCertificatePack(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CertificatePack resources.
 type certificatePackState struct {
-	// Which certificate
-	// authority to issue the certificate pack. Allowed values: `"digicert"`,
-	// `"letsEncrypt"`.
+	// Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`.
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
-	// Whether or not to include
-	// Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name
-	// if set to `true`.
+	// Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`.
 	CloudflareBranding *bool `pulumi:"cloudflareBranding"`
-	// List of hostnames to provision the certificate pack for.
-	// The zone name must be included as a host. Note: If using Let's Encrypt, you
-	// cannot use individual subdomains and only a wildcard for subdomain is available.
+	// List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available.
 	Hosts []string `pulumi:"hosts"`
-	// Certificate pack configuration type.
-	// Allowed values: `"custom"`, `"dedicatedCustom"`, `"advanced"`.
+	// Certificate pack configuration type. Available values: `advanced`.
 	Type             *string                          `pulumi:"type"`
 	ValidationErrors []CertificatePackValidationError `pulumi:"validationErrors"`
-	// Which validation method to
-	// use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
+	// Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`.
 	ValidationMethod  *string                           `pulumi:"validationMethod"`
 	ValidationRecords []CertificatePackValidationRecord `pulumi:"validationRecords"`
-	// How long the certificate is valid
-	// for. Note: If using Let's Encrypt, this value can only be 90 days.
-	// Allowed values: 14, 30, 90, 365.
+	// How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`.
 	ValidityDays *int `pulumi:"validityDays"`
-	// Whether or not to wait for a certificate
-	// pack to reach status `active` during creation. Defaults to `false`.
+	// Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`.
 	WaitForActiveStatus *bool `pulumi:"waitForActiveStatus"`
-	// The DNS zone to which the certificate pack should be added.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type CertificatePackState struct {
-	// Which certificate
-	// authority to issue the certificate pack. Allowed values: `"digicert"`,
-	// `"letsEncrypt"`.
+	// Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`.
 	CertificateAuthority pulumi.StringPtrInput
-	// Whether or not to include
-	// Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name
-	// if set to `true`.
+	// Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`.
 	CloudflareBranding pulumi.BoolPtrInput
-	// List of hostnames to provision the certificate pack for.
-	// The zone name must be included as a host. Note: If using Let's Encrypt, you
-	// cannot use individual subdomains and only a wildcard for subdomain is available.
+	// List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available.
 	Hosts pulumi.StringArrayInput
-	// Certificate pack configuration type.
-	// Allowed values: `"custom"`, `"dedicatedCustom"`, `"advanced"`.
+	// Certificate pack configuration type. Available values: `advanced`.
 	Type             pulumi.StringPtrInput
 	ValidationErrors CertificatePackValidationErrorArrayInput
-	// Which validation method to
-	// use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
+	// Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`.
 	ValidationMethod  pulumi.StringPtrInput
 	ValidationRecords CertificatePackValidationRecordArrayInput
-	// How long the certificate is valid
-	// for. Note: If using Let's Encrypt, this value can only be 90 days.
-	// Allowed values: 14, 30, 90, 365.
+	// How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`.
 	ValidityDays pulumi.IntPtrInput
-	// Whether or not to wait for a certificate
-	// pack to reach status `active` during creation. Defaults to `false`.
+	// Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`.
 	WaitForActiveStatus pulumi.BoolPtrInput
-	// The DNS zone to which the certificate pack should be added.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -217,67 +172,45 @@ func (CertificatePackState) ElementType() reflect.Type {
 }
 
 type certificatePackArgs struct {
-	// Which certificate
-	// authority to issue the certificate pack. Allowed values: `"digicert"`,
-	// `"letsEncrypt"`.
-	CertificateAuthority *string `pulumi:"certificateAuthority"`
-	// Whether or not to include
-	// Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name
-	// if set to `true`.
+	// Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`.
+	CertificateAuthority string `pulumi:"certificateAuthority"`
+	// Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`.
 	CloudflareBranding *bool `pulumi:"cloudflareBranding"`
-	// List of hostnames to provision the certificate pack for.
-	// The zone name must be included as a host. Note: If using Let's Encrypt, you
-	// cannot use individual subdomains and only a wildcard for subdomain is available.
+	// List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available.
 	Hosts []string `pulumi:"hosts"`
-	// Certificate pack configuration type.
-	// Allowed values: `"custom"`, `"dedicatedCustom"`, `"advanced"`.
+	// Certificate pack configuration type. Available values: `advanced`.
 	Type             string                           `pulumi:"type"`
 	ValidationErrors []CertificatePackValidationError `pulumi:"validationErrors"`
-	// Which validation method to
-	// use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
-	ValidationMethod  *string                           `pulumi:"validationMethod"`
+	// Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`.
+	ValidationMethod  string                            `pulumi:"validationMethod"`
 	ValidationRecords []CertificatePackValidationRecord `pulumi:"validationRecords"`
-	// How long the certificate is valid
-	// for. Note: If using Let's Encrypt, this value can only be 90 days.
-	// Allowed values: 14, 30, 90, 365.
-	ValidityDays *int `pulumi:"validityDays"`
-	// Whether or not to wait for a certificate
-	// pack to reach status `active` during creation. Defaults to `false`.
+	// How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`.
+	ValidityDays int `pulumi:"validityDays"`
+	// Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`.
 	WaitForActiveStatus *bool `pulumi:"waitForActiveStatus"`
-	// The DNS zone to which the certificate pack should be added.
+	// The zone identifier to target for the resource.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a CertificatePack resource.
 type CertificatePackArgs struct {
-	// Which certificate
-	// authority to issue the certificate pack. Allowed values: `"digicert"`,
-	// `"letsEncrypt"`.
-	CertificateAuthority pulumi.StringPtrInput
-	// Whether or not to include
-	// Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name
-	// if set to `true`.
+	// Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`.
+	CertificateAuthority pulumi.StringInput
+	// Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`.
 	CloudflareBranding pulumi.BoolPtrInput
-	// List of hostnames to provision the certificate pack for.
-	// The zone name must be included as a host. Note: If using Let's Encrypt, you
-	// cannot use individual subdomains and only a wildcard for subdomain is available.
+	// List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available.
 	Hosts pulumi.StringArrayInput
-	// Certificate pack configuration type.
-	// Allowed values: `"custom"`, `"dedicatedCustom"`, `"advanced"`.
+	// Certificate pack configuration type. Available values: `advanced`.
 	Type             pulumi.StringInput
 	ValidationErrors CertificatePackValidationErrorArrayInput
-	// Which validation method to
-	// use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
-	ValidationMethod  pulumi.StringPtrInput
+	// Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`.
+	ValidationMethod  pulumi.StringInput
 	ValidationRecords CertificatePackValidationRecordArrayInput
-	// How long the certificate is valid
-	// for. Note: If using Let's Encrypt, this value can only be 90 days.
-	// Allowed values: 14, 30, 90, 365.
-	ValidityDays pulumi.IntPtrInput
-	// Whether or not to wait for a certificate
-	// pack to reach status `active` during creation. Defaults to `false`.
+	// How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`.
+	ValidityDays pulumi.IntInput
+	// Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`.
 	WaitForActiveStatus pulumi.BoolPtrInput
-	// The DNS zone to which the certificate pack should be added.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringInput
 }
 
@@ -307,7 +240,7 @@ func (i *CertificatePack) ToCertificatePackOutputWithContext(ctx context.Context
 // CertificatePackArrayInput is an input type that accepts CertificatePackArray and CertificatePackArrayOutput values.
 // You can construct a concrete instance of `CertificatePackArrayInput` via:
 //
-//          CertificatePackArray{ CertificatePackArgs{...} }
+//	CertificatePackArray{ CertificatePackArgs{...} }
 type CertificatePackArrayInput interface {
 	pulumi.Input
 
@@ -332,7 +265,7 @@ func (i CertificatePackArray) ToCertificatePackArrayOutputWithContext(ctx contex
 // CertificatePackMapInput is an input type that accepts CertificatePackMap and CertificatePackMapOutput values.
 // You can construct a concrete instance of `CertificatePackMapInput` via:
 //
-//          CertificatePackMap{ "key": CertificatePackArgs{...} }
+//	CertificatePackMap{ "key": CertificatePackArgs{...} }
 type CertificatePackMapInput interface {
 	pulumi.Input
 
@@ -368,29 +301,22 @@ func (o CertificatePackOutput) ToCertificatePackOutputWithContext(ctx context.Co
 	return o
 }
 
-// Which certificate
-// authority to issue the certificate pack. Allowed values: `"digicert"`,
-// `"letsEncrypt"`.
+// Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`.
 func (o CertificatePackOutput) CertificateAuthority() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.StringOutput { return v.CertificateAuthority }).(pulumi.StringOutput)
 }
 
-// Whether or not to include
-// Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name
-// if set to `true`.
+// Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`.
 func (o CertificatePackOutput) CloudflareBranding() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.BoolPtrOutput { return v.CloudflareBranding }).(pulumi.BoolPtrOutput)
 }
 
-// List of hostnames to provision the certificate pack for.
-// The zone name must be included as a host. Note: If using Let's Encrypt, you
-// cannot use individual subdomains and only a wildcard for subdomain is available.
+// List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available.
 func (o CertificatePackOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.StringArrayOutput { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
-// Certificate pack configuration type.
-// Allowed values: `"custom"`, `"dedicatedCustom"`, `"advanced"`.
+// Certificate pack configuration type. Available values: `advanced`.
 func (o CertificatePackOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -399,30 +325,26 @@ func (o CertificatePackOutput) ValidationErrors() CertificatePackValidationError
 	return o.ApplyT(func(v *CertificatePack) CertificatePackValidationErrorArrayOutput { return v.ValidationErrors }).(CertificatePackValidationErrorArrayOutput)
 }
 
-// Which validation method to
-// use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
-func (o CertificatePackOutput) ValidationMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CertificatePack) pulumi.StringPtrOutput { return v.ValidationMethod }).(pulumi.StringPtrOutput)
+// Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`.
+func (o CertificatePackOutput) ValidationMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificatePack) pulumi.StringOutput { return v.ValidationMethod }).(pulumi.StringOutput)
 }
 
 func (o CertificatePackOutput) ValidationRecords() CertificatePackValidationRecordArrayOutput {
 	return o.ApplyT(func(v *CertificatePack) CertificatePackValidationRecordArrayOutput { return v.ValidationRecords }).(CertificatePackValidationRecordArrayOutput)
 }
 
-// How long the certificate is valid
-// for. Note: If using Let's Encrypt, this value can only be 90 days.
-// Allowed values: 14, 30, 90, 365.
-func (o CertificatePackOutput) ValidityDays() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *CertificatePack) pulumi.IntPtrOutput { return v.ValidityDays }).(pulumi.IntPtrOutput)
+// How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`.
+func (o CertificatePackOutput) ValidityDays() pulumi.IntOutput {
+	return o.ApplyT(func(v *CertificatePack) pulumi.IntOutput { return v.ValidityDays }).(pulumi.IntOutput)
 }
 
-// Whether or not to wait for a certificate
-// pack to reach status `active` during creation. Defaults to `false`.
+// Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`.
 func (o CertificatePackOutput) WaitForActiveStatus() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.BoolPtrOutput { return v.WaitForActiveStatus }).(pulumi.BoolPtrOutput)
 }
 
-// The DNS zone to which the certificate pack should be added.
+// The zone identifier to target for the resource.
 func (o CertificatePackOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

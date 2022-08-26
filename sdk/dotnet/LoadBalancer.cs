@@ -15,87 +15,103 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new Cloudflare.LoadBalancerPool("foo", new()
     ///     {
-    ///         var foo = new Cloudflare.LoadBalancerPool("foo", new Cloudflare.LoadBalancerPoolArgs
+    ///         Name = "example-lb-pool",
+    ///         Origins = new[]
     ///         {
-    ///             Name = "example-lb-pool",
-    ///             Origins = 
+    ///             new Cloudflare.Inputs.LoadBalancerPoolOriginArgs
     ///             {
-    ///                 new Cloudflare.Inputs.LoadBalancerPoolOriginArgs
-    ///                 {
-    ///                     Name = "example-1",
-    ///                     Address = "192.0.2.1",
-    ///                     Enabled = false,
-    ///                 },
+    ///                 Name = "example-1",
+    ///                 Address = "192.0.2.1",
+    ///                 Enabled = false,
     ///             },
-    ///         });
-    ///         // Define a load balancer which always points to a pool we define below
-    ///         // In normal usage, would have different pools set for different pops (cloudflare points-of-presence) and/or for different regions
-    ///         // Within each pop or region we can define multiple pools in failover order
-    ///         var bar = new Cloudflare.LoadBalancer("bar", new Cloudflare.LoadBalancerArgs
-    ///         {
-    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///             Name = "example-load-balancer.example.com",
-    ///             FallbackPoolId = foo.Id,
-    ///             DefaultPoolIds = 
-    ///             {
-    ///                 foo.Id,
-    ///             },
-    ///             Description = "example load balancer using geo-balancing",
-    ///             Proxied = true,
-    ///             SteeringPolicy = "geo",
-    ///             PopPools = 
-    ///             {
-    ///                 new Cloudflare.Inputs.LoadBalancerPopPoolArgs
-    ///                 {
-    ///                     Pop = "LAX",
-    ///                     PoolIds = 
-    ///                     {
-    ///                         foo.Id,
-    ///                     },
-    ///                 },
-    ///             },
-    ///             RegionPools = 
-    ///             {
-    ///                 new Cloudflare.Inputs.LoadBalancerRegionPoolArgs
-    ///                 {
-    ///                     Region = "WNAM",
-    ///                     PoolIds = 
-    ///                     {
-    ///                         foo.Id,
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Rules = 
-    ///             {
-    ///                 new Cloudflare.Inputs.LoadBalancerRuleArgs
-    ///                 {
-    ///                     Name = "example rule",
-    ///                     Condition = "http.request.uri.path contains \"testing\"",
-    ///                     FixedResponse = new Cloudflare.Inputs.LoadBalancerRuleFixedResponseArgs
-    ///                     {
-    ///                         MessageBody = "hello",
-    ///                         StatusCode = 200,
-    ///                         ContentType = "html",
-    ///                         Location = "www.example.com",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     // Define a load balancer which always points to a pool we define below
+    ///     // In normal usage, would have different pools set for different pops (cloudflare points-of-presence) and/or for different regions
+    ///     // Within each pop or region we can define multiple pools in failover order
+    ///     var bar = new Cloudflare.LoadBalancer("bar", new()
+    ///     {
+    ///         ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///         Name = "example-load-balancer.example.com",
+    ///         FallbackPoolId = foo.Id,
+    ///         DefaultPoolIds = new[]
+    ///         {
+    ///             foo.Id,
+    ///         },
+    ///         Description = "example load balancer using geo-balancing",
+    ///         Proxied = true,
+    ///         SteeringPolicy = "geo",
+    ///         PopPools = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.LoadBalancerPopPoolArgs
+    ///             {
+    ///                 Pop = "LAX",
+    ///                 PoolIds = new[]
+    ///                 {
+    ///                     foo.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///         CountryPools = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.LoadBalancerCountryPoolArgs
+    ///             {
+    ///                 Country = "US",
+    ///                 PoolIds = new[]
+    ///                 {
+    ///                     foo.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///         RegionPools = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.LoadBalancerRegionPoolArgs
+    ///             {
+    ///                 Region = "WNAM",
+    ///                 PoolIds = new[]
+    ///                 {
+    ///                     foo.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///         Rules = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.LoadBalancerRuleArgs
+    ///             {
+    ///                 Name = "example rule",
+    ///                 Condition = "http.request.uri.path contains \"testing\"",
+    ///                 FixedResponse = new Cloudflare.Inputs.LoadBalancerRuleFixedResponseArgs
+    ///                 {
+    ///                     MessageBody = "hello",
+    ///                     StatusCode = 200,
+    ///                     ContentType = "html",
+    ///                     Location = "www.example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/loadBalancer:LoadBalancer")]
-    public partial class LoadBalancer : Pulumi.CustomResource
+    public partial class LoadBalancer : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// See country_pools above.
+        /// </summary>
+        [Output("countryPools")]
+        public Output<ImmutableArray<Outputs.LoadBalancerCountryPool>> CountryPools { get; private set; } = null!;
+
         /// <summary>
         /// The RFC3339 timestamp of when the load balancer was created.
         /// </summary>
@@ -242,8 +258,20 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class LoadBalancerArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerArgs : global::Pulumi.ResourceArgs
     {
+        [Input("countryPools")]
+        private InputList<Inputs.LoadBalancerCountryPoolArgs>? _countryPools;
+
+        /// <summary>
+        /// See country_pools above.
+        /// </summary>
+        public InputList<Inputs.LoadBalancerCountryPoolArgs> CountryPools
+        {
+            get => _countryPools ?? (_countryPools = new InputList<Inputs.LoadBalancerCountryPoolArgs>());
+            set => _countryPools = value;
+        }
+
         [Input("defaultPoolIds", required: true)]
         private InputList<string>? _defaultPoolIds;
 
@@ -367,10 +395,23 @@ namespace Pulumi.Cloudflare
         public LoadBalancerArgs()
         {
         }
+        public static new LoadBalancerArgs Empty => new LoadBalancerArgs();
     }
 
-    public sealed class LoadBalancerState : Pulumi.ResourceArgs
+    public sealed class LoadBalancerState : global::Pulumi.ResourceArgs
     {
+        [Input("countryPools")]
+        private InputList<Inputs.LoadBalancerCountryPoolGetArgs>? _countryPools;
+
+        /// <summary>
+        /// See country_pools above.
+        /// </summary>
+        public InputList<Inputs.LoadBalancerCountryPoolGetArgs> CountryPools
+        {
+            get => _countryPools ?? (_countryPools = new InputList<Inputs.LoadBalancerCountryPoolGetArgs>());
+            set => _countryPools = value;
+        }
+
         /// <summary>
         /// The RFC3339 timestamp of when the load balancer was created.
         /// </summary>
@@ -506,5 +547,6 @@ namespace Pulumi.Cloudflare
         public LoadBalancerState()
         {
         }
+        public static new LoadBalancerState Empty => new LoadBalancerState();
     }
 }

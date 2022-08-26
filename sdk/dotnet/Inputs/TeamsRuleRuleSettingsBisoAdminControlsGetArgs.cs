@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class TeamsRuleRuleSettingsBisoAdminControlsGetArgs : Pulumi.ResourceArgs
+    public sealed class TeamsRuleRuleSettingsBisoAdminControlsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Disable copy-paste.
@@ -45,5 +45,6 @@ namespace Pulumi.Cloudflare.Inputs
         public TeamsRuleRuleSettingsBisoAdminControlsGetArgs()
         {
         }
+        public static new TeamsRuleRuleSettingsBisoAdminControlsGetArgs Empty => new TeamsRuleRuleSettingsBisoAdminControlsGetArgs();
     }
 }

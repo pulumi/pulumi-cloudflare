@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RateLimitMatchResponseArgs : Pulumi.ResourceArgs
+    public sealed class RateLimitMatchResponseArgs : global::Pulumi.ResourceArgs
     {
         [Input("headers")]
         private InputList<ImmutableDictionary<string, string>>? _headers;
@@ -45,5 +45,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RateLimitMatchResponseArgs()
         {
         }
+        public static new RateLimitMatchResponseArgs Empty => new RateLimitMatchResponseArgs();
     }
 }

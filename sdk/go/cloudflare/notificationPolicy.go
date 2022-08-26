@@ -11,45 +11,41 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource, that manages a notification policy for Cloudflare's products. The delivery mechanisms supported are email, webhooks, and PagerDuty.
+// Provides a resource, that manages a notification policy for
+// Cloudflare's products. The delivery mechanisms supported are email,
+// webhooks, and PagerDuty.
 //
 // ## Import
 //
 // ```sh
-//  $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example <account_id>/<policy_id>
+//
+//	$ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example <account_id>/<policy_id>
+//
 // ```
 type NotificationPolicy struct {
 	pulumi.CustomResourceState
 
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of
-	// [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available
-	// values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`,
-	// `universal_ssl_event_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`,
-	// `weekly_account_overview`
+	// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available values: `billingUsageAlert`, `healthCheckStatusNotification`, `g6PoolToggleAlert`, `realOriginMonitoring`, `universalSslEventType`, `bgpHijackNotification`, `httpAlertOriginError`, `workersAlert`, `weeklyAccountOverview`, `expiringServiceTokenAlert`, `secondaryDnsAllPrimariesFailing`, `secondaryDnsZoneValidationWarning`, `secondaryDnsPrimariesFailing`, `secondaryDnsZoneSuccessfullyUpdated`, `dosAttackL7`, `dosAttackL4`, `advancedDdosAttackL7Alert`, `advancedDdosAttackL4Alert`, `fbmVolumetricAttack`, `fbmAutoAdvertisement`, `loadBalancingPoolEnablementAlert`, `loadBalancingHealthAlert`, `g6HealthAlert`, `httpAlertEdgeError`, `clickhouseAlertFwAnomaly`, `clickhouseAlertFwEntAnomaly`, `failingLogpushJobDisabledAlert`, `scriptmonitorAlertNewHosts`, `scriptmonitorAlertNewScripts`, `scriptmonitorAlertNewMaliciousScripts`, `scriptmonitorAlertNewMaliciousUrl`, `scriptmonitorAlertNewCodeChangeDetections`, `scriptmonitorAlertNewMaxLengthScriptUrl`, `scriptmonitorAlertNewMaliciousHosts`, `sentinelAlert`, `hostnameAopCustomCertificateExpirationType`, `streamLiveNotifications`, `blockNotificationNewBlock`, `blockNotificationReviewRejected`, `blockNotificationReviewAccepted`, `webAnalyticsMetricsUpdate`, `workersUptime`.
 	AlertType pulumi.StringOutput `pulumi:"alertType"`
 	// When the notification policy was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// Description of the notification policy.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is
-	// required.
+	// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
 	EmailIntegrations NotificationPolicyEmailIntegrationArrayOutput `pulumi:"emailIntegrations"`
 	// The status of the notification policy.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type
-	// of filter and the values to match against (refer to the alert type block for available fields).
+	// An optional nested block of filters that applies to the selected `alertType`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
 	Filters NotificationPolicyFiltersPtrOutput `pulumi:"filters"`
 	// When the notification policy was last modified.
 	Modified pulumi.StringOutput `pulumi:"modified"`
 	// The name of the notification policy.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks,
-	// or PagerDuty mechanisms is required.
+	// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
 	PagerdutyIntegrations NotificationPolicyPagerdutyIntegrationArrayOutput `pulumi:"pagerdutyIntegrations"`
-	// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks,
-	// or PagerDuty mechanisms is required.
+	// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
 	WebhooksIntegrations NotificationPolicyWebhooksIntegrationArrayOutput `pulumi:"webhooksIntegrations"`
 }
 
@@ -96,66 +92,50 @@ func GetNotificationPolicy(ctx *pulumi.Context,
 type notificationPolicyState struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of
-	// [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available
-	// values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`,
-	// `universal_ssl_event_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`,
-	// `weekly_account_overview`
+	// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available values: `billingUsageAlert`, `healthCheckStatusNotification`, `g6PoolToggleAlert`, `realOriginMonitoring`, `universalSslEventType`, `bgpHijackNotification`, `httpAlertOriginError`, `workersAlert`, `weeklyAccountOverview`, `expiringServiceTokenAlert`, `secondaryDnsAllPrimariesFailing`, `secondaryDnsZoneValidationWarning`, `secondaryDnsPrimariesFailing`, `secondaryDnsZoneSuccessfullyUpdated`, `dosAttackL7`, `dosAttackL4`, `advancedDdosAttackL7Alert`, `advancedDdosAttackL4Alert`, `fbmVolumetricAttack`, `fbmAutoAdvertisement`, `loadBalancingPoolEnablementAlert`, `loadBalancingHealthAlert`, `g6HealthAlert`, `httpAlertEdgeError`, `clickhouseAlertFwAnomaly`, `clickhouseAlertFwEntAnomaly`, `failingLogpushJobDisabledAlert`, `scriptmonitorAlertNewHosts`, `scriptmonitorAlertNewScripts`, `scriptmonitorAlertNewMaliciousScripts`, `scriptmonitorAlertNewMaliciousUrl`, `scriptmonitorAlertNewCodeChangeDetections`, `scriptmonitorAlertNewMaxLengthScriptUrl`, `scriptmonitorAlertNewMaliciousHosts`, `sentinelAlert`, `hostnameAopCustomCertificateExpirationType`, `streamLiveNotifications`, `blockNotificationNewBlock`, `blockNotificationReviewRejected`, `blockNotificationReviewAccepted`, `webAnalyticsMetricsUpdate`, `workersUptime`.
 	AlertType *string `pulumi:"alertType"`
 	// When the notification policy was created.
 	Created *string `pulumi:"created"`
 	// Description of the notification policy.
 	Description *string `pulumi:"description"`
-	// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is
-	// required.
+	// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
 	EmailIntegrations []NotificationPolicyEmailIntegration `pulumi:"emailIntegrations"`
 	// The status of the notification policy.
 	Enabled *bool `pulumi:"enabled"`
-	// An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type
-	// of filter and the values to match against (refer to the alert type block for available fields).
+	// An optional nested block of filters that applies to the selected `alertType`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
 	Filters *NotificationPolicyFilters `pulumi:"filters"`
 	// When the notification policy was last modified.
 	Modified *string `pulumi:"modified"`
 	// The name of the notification policy.
 	Name *string `pulumi:"name"`
-	// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks,
-	// or PagerDuty mechanisms is required.
+	// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
 	PagerdutyIntegrations []NotificationPolicyPagerdutyIntegration `pulumi:"pagerdutyIntegrations"`
-	// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks,
-	// or PagerDuty mechanisms is required.
+	// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
 	WebhooksIntegrations []NotificationPolicyWebhooksIntegration `pulumi:"webhooksIntegrations"`
 }
 
 type NotificationPolicyState struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of
-	// [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available
-	// values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`,
-	// `universal_ssl_event_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`,
-	// `weekly_account_overview`
+	// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available values: `billingUsageAlert`, `healthCheckStatusNotification`, `g6PoolToggleAlert`, `realOriginMonitoring`, `universalSslEventType`, `bgpHijackNotification`, `httpAlertOriginError`, `workersAlert`, `weeklyAccountOverview`, `expiringServiceTokenAlert`, `secondaryDnsAllPrimariesFailing`, `secondaryDnsZoneValidationWarning`, `secondaryDnsPrimariesFailing`, `secondaryDnsZoneSuccessfullyUpdated`, `dosAttackL7`, `dosAttackL4`, `advancedDdosAttackL7Alert`, `advancedDdosAttackL4Alert`, `fbmVolumetricAttack`, `fbmAutoAdvertisement`, `loadBalancingPoolEnablementAlert`, `loadBalancingHealthAlert`, `g6HealthAlert`, `httpAlertEdgeError`, `clickhouseAlertFwAnomaly`, `clickhouseAlertFwEntAnomaly`, `failingLogpushJobDisabledAlert`, `scriptmonitorAlertNewHosts`, `scriptmonitorAlertNewScripts`, `scriptmonitorAlertNewMaliciousScripts`, `scriptmonitorAlertNewMaliciousUrl`, `scriptmonitorAlertNewCodeChangeDetections`, `scriptmonitorAlertNewMaxLengthScriptUrl`, `scriptmonitorAlertNewMaliciousHosts`, `sentinelAlert`, `hostnameAopCustomCertificateExpirationType`, `streamLiveNotifications`, `blockNotificationNewBlock`, `blockNotificationReviewRejected`, `blockNotificationReviewAccepted`, `webAnalyticsMetricsUpdate`, `workersUptime`.
 	AlertType pulumi.StringPtrInput
 	// When the notification policy was created.
 	Created pulumi.StringPtrInput
 	// Description of the notification policy.
 	Description pulumi.StringPtrInput
-	// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is
-	// required.
+	// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
 	EmailIntegrations NotificationPolicyEmailIntegrationArrayInput
 	// The status of the notification policy.
 	Enabled pulumi.BoolPtrInput
-	// An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type
-	// of filter and the values to match against (refer to the alert type block for available fields).
+	// An optional nested block of filters that applies to the selected `alertType`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
 	Filters NotificationPolicyFiltersPtrInput
 	// When the notification policy was last modified.
 	Modified pulumi.StringPtrInput
 	// The name of the notification policy.
 	Name pulumi.StringPtrInput
-	// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks,
-	// or PagerDuty mechanisms is required.
+	// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
 	PagerdutyIntegrations NotificationPolicyPagerdutyIntegrationArrayInput
-	// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks,
-	// or PagerDuty mechanisms is required.
+	// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
 	WebhooksIntegrations NotificationPolicyWebhooksIntegrationArrayInput
 }
 
@@ -166,29 +146,21 @@ func (NotificationPolicyState) ElementType() reflect.Type {
 type notificationPolicyArgs struct {
 	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
-	// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of
-	// [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available
-	// values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`,
-	// `universal_ssl_event_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`,
-	// `weekly_account_overview`
+	// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available values: `billingUsageAlert`, `healthCheckStatusNotification`, `g6PoolToggleAlert`, `realOriginMonitoring`, `universalSslEventType`, `bgpHijackNotification`, `httpAlertOriginError`, `workersAlert`, `weeklyAccountOverview`, `expiringServiceTokenAlert`, `secondaryDnsAllPrimariesFailing`, `secondaryDnsZoneValidationWarning`, `secondaryDnsPrimariesFailing`, `secondaryDnsZoneSuccessfullyUpdated`, `dosAttackL7`, `dosAttackL4`, `advancedDdosAttackL7Alert`, `advancedDdosAttackL4Alert`, `fbmVolumetricAttack`, `fbmAutoAdvertisement`, `loadBalancingPoolEnablementAlert`, `loadBalancingHealthAlert`, `g6HealthAlert`, `httpAlertEdgeError`, `clickhouseAlertFwAnomaly`, `clickhouseAlertFwEntAnomaly`, `failingLogpushJobDisabledAlert`, `scriptmonitorAlertNewHosts`, `scriptmonitorAlertNewScripts`, `scriptmonitorAlertNewMaliciousScripts`, `scriptmonitorAlertNewMaliciousUrl`, `scriptmonitorAlertNewCodeChangeDetections`, `scriptmonitorAlertNewMaxLengthScriptUrl`, `scriptmonitorAlertNewMaliciousHosts`, `sentinelAlert`, `hostnameAopCustomCertificateExpirationType`, `streamLiveNotifications`, `blockNotificationNewBlock`, `blockNotificationReviewRejected`, `blockNotificationReviewAccepted`, `webAnalyticsMetricsUpdate`, `workersUptime`.
 	AlertType string `pulumi:"alertType"`
 	// Description of the notification policy.
 	Description *string `pulumi:"description"`
-	// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is
-	// required.
+	// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
 	EmailIntegrations []NotificationPolicyEmailIntegration `pulumi:"emailIntegrations"`
 	// The status of the notification policy.
 	Enabled bool `pulumi:"enabled"`
-	// An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type
-	// of filter and the values to match against (refer to the alert type block for available fields).
+	// An optional nested block of filters that applies to the selected `alertType`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
 	Filters *NotificationPolicyFilters `pulumi:"filters"`
 	// The name of the notification policy.
 	Name string `pulumi:"name"`
-	// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks,
-	// or PagerDuty mechanisms is required.
+	// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
 	PagerdutyIntegrations []NotificationPolicyPagerdutyIntegration `pulumi:"pagerdutyIntegrations"`
-	// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks,
-	// or PagerDuty mechanisms is required.
+	// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
 	WebhooksIntegrations []NotificationPolicyWebhooksIntegration `pulumi:"webhooksIntegrations"`
 }
 
@@ -196,29 +168,21 @@ type notificationPolicyArgs struct {
 type NotificationPolicyArgs struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of
-	// [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available
-	// values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`,
-	// `universal_ssl_event_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`,
-	// `weekly_account_overview`
+	// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available values: `billingUsageAlert`, `healthCheckStatusNotification`, `g6PoolToggleAlert`, `realOriginMonitoring`, `universalSslEventType`, `bgpHijackNotification`, `httpAlertOriginError`, `workersAlert`, `weeklyAccountOverview`, `expiringServiceTokenAlert`, `secondaryDnsAllPrimariesFailing`, `secondaryDnsZoneValidationWarning`, `secondaryDnsPrimariesFailing`, `secondaryDnsZoneSuccessfullyUpdated`, `dosAttackL7`, `dosAttackL4`, `advancedDdosAttackL7Alert`, `advancedDdosAttackL4Alert`, `fbmVolumetricAttack`, `fbmAutoAdvertisement`, `loadBalancingPoolEnablementAlert`, `loadBalancingHealthAlert`, `g6HealthAlert`, `httpAlertEdgeError`, `clickhouseAlertFwAnomaly`, `clickhouseAlertFwEntAnomaly`, `failingLogpushJobDisabledAlert`, `scriptmonitorAlertNewHosts`, `scriptmonitorAlertNewScripts`, `scriptmonitorAlertNewMaliciousScripts`, `scriptmonitorAlertNewMaliciousUrl`, `scriptmonitorAlertNewCodeChangeDetections`, `scriptmonitorAlertNewMaxLengthScriptUrl`, `scriptmonitorAlertNewMaliciousHosts`, `sentinelAlert`, `hostnameAopCustomCertificateExpirationType`, `streamLiveNotifications`, `blockNotificationNewBlock`, `blockNotificationReviewRejected`, `blockNotificationReviewAccepted`, `webAnalyticsMetricsUpdate`, `workersUptime`.
 	AlertType pulumi.StringInput
 	// Description of the notification policy.
 	Description pulumi.StringPtrInput
-	// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is
-	// required.
+	// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
 	EmailIntegrations NotificationPolicyEmailIntegrationArrayInput
 	// The status of the notification policy.
 	Enabled pulumi.BoolInput
-	// An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type
-	// of filter and the values to match against (refer to the alert type block for available fields).
+	// An optional nested block of filters that applies to the selected `alertType`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
 	Filters NotificationPolicyFiltersPtrInput
 	// The name of the notification policy.
 	Name pulumi.StringInput
-	// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks,
-	// or PagerDuty mechanisms is required.
+	// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
 	PagerdutyIntegrations NotificationPolicyPagerdutyIntegrationArrayInput
-	// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks,
-	// or PagerDuty mechanisms is required.
+	// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
 	WebhooksIntegrations NotificationPolicyWebhooksIntegrationArrayInput
 }
 
@@ -248,7 +212,7 @@ func (i *NotificationPolicy) ToNotificationPolicyOutputWithContext(ctx context.C
 // NotificationPolicyArrayInput is an input type that accepts NotificationPolicyArray and NotificationPolicyArrayOutput values.
 // You can construct a concrete instance of `NotificationPolicyArrayInput` via:
 //
-//          NotificationPolicyArray{ NotificationPolicyArgs{...} }
+//	NotificationPolicyArray{ NotificationPolicyArgs{...} }
 type NotificationPolicyArrayInput interface {
 	pulumi.Input
 
@@ -273,7 +237,7 @@ func (i NotificationPolicyArray) ToNotificationPolicyArrayOutputWithContext(ctx 
 // NotificationPolicyMapInput is an input type that accepts NotificationPolicyMap and NotificationPolicyMapOutput values.
 // You can construct a concrete instance of `NotificationPolicyMapInput` via:
 //
-//          NotificationPolicyMap{ "key": NotificationPolicyArgs{...} }
+//	NotificationPolicyMap{ "key": NotificationPolicyArgs{...} }
 type NotificationPolicyMapInput interface {
 	pulumi.Input
 
@@ -314,11 +278,7 @@ func (o NotificationPolicyOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationPolicy) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of
-// [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available
-// values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`,
-// `universal_ssl_event_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`,
-// `weekly_account_overview`
+// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available values: `billingUsageAlert`, `healthCheckStatusNotification`, `g6PoolToggleAlert`, `realOriginMonitoring`, `universalSslEventType`, `bgpHijackNotification`, `httpAlertOriginError`, `workersAlert`, `weeklyAccountOverview`, `expiringServiceTokenAlert`, `secondaryDnsAllPrimariesFailing`, `secondaryDnsZoneValidationWarning`, `secondaryDnsPrimariesFailing`, `secondaryDnsZoneSuccessfullyUpdated`, `dosAttackL7`, `dosAttackL4`, `advancedDdosAttackL7Alert`, `advancedDdosAttackL4Alert`, `fbmVolumetricAttack`, `fbmAutoAdvertisement`, `loadBalancingPoolEnablementAlert`, `loadBalancingHealthAlert`, `g6HealthAlert`, `httpAlertEdgeError`, `clickhouseAlertFwAnomaly`, `clickhouseAlertFwEntAnomaly`, `failingLogpushJobDisabledAlert`, `scriptmonitorAlertNewHosts`, `scriptmonitorAlertNewScripts`, `scriptmonitorAlertNewMaliciousScripts`, `scriptmonitorAlertNewMaliciousUrl`, `scriptmonitorAlertNewCodeChangeDetections`, `scriptmonitorAlertNewMaxLengthScriptUrl`, `scriptmonitorAlertNewMaliciousHosts`, `sentinelAlert`, `hostnameAopCustomCertificateExpirationType`, `streamLiveNotifications`, `blockNotificationNewBlock`, `blockNotificationReviewRejected`, `blockNotificationReviewAccepted`, `webAnalyticsMetricsUpdate`, `workersUptime`.
 func (o NotificationPolicyOutput) AlertType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationPolicy) pulumi.StringOutput { return v.AlertType }).(pulumi.StringOutput)
 }
@@ -333,8 +293,7 @@ func (o NotificationPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NotificationPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is
-// required.
+// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
 func (o NotificationPolicyOutput) EmailIntegrations() NotificationPolicyEmailIntegrationArrayOutput {
 	return o.ApplyT(func(v *NotificationPolicy) NotificationPolicyEmailIntegrationArrayOutput { return v.EmailIntegrations }).(NotificationPolicyEmailIntegrationArrayOutput)
 }
@@ -344,8 +303,7 @@ func (o NotificationPolicyOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *NotificationPolicy) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type
-// of filter and the values to match against (refer to the alert type block for available fields).
+// An optional nested block of filters that applies to the selected `alertType`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
 func (o NotificationPolicyOutput) Filters() NotificationPolicyFiltersPtrOutput {
 	return o.ApplyT(func(v *NotificationPolicy) NotificationPolicyFiltersPtrOutput { return v.Filters }).(NotificationPolicyFiltersPtrOutput)
 }
@@ -360,16 +318,14 @@ func (o NotificationPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks,
-// or PagerDuty mechanisms is required.
+// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
 func (o NotificationPolicyOutput) PagerdutyIntegrations() NotificationPolicyPagerdutyIntegrationArrayOutput {
 	return o.ApplyT(func(v *NotificationPolicy) NotificationPolicyPagerdutyIntegrationArrayOutput {
 		return v.PagerdutyIntegrations
 	}).(NotificationPolicyPagerdutyIntegrationArrayOutput)
 }
 
-// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks,
-// or PagerDuty mechanisms is required.
+// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
 func (o NotificationPolicyOutput) WebhooksIntegrations() NotificationPolicyWebhooksIntegrationArrayOutput {
 	return o.ApplyT(func(v *NotificationPolicy) NotificationPolicyWebhooksIntegrationArrayOutput {
 		return v.WebhooksIntegrations

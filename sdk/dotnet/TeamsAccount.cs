@@ -15,66 +15,64 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var main = new Cloudflare.TeamsAccount("main", new()
     ///     {
-    ///         var main = new Cloudflare.TeamsAccount("main", new Cloudflare.TeamsAccountArgs
+    ///         AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         Antivirus = new Cloudflare.Inputs.TeamsAccountAntivirusArgs
     ///         {
-    ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
-    ///             Antivirus = new Cloudflare.Inputs.TeamsAccountAntivirusArgs
+    ///             EnabledDownloadPhase = true,
+    ///             EnabledUploadPhase = false,
+    ///             FailClosed = true,
+    ///         },
+    ///         BlockPage = new Cloudflare.Inputs.TeamsAccountBlockPageArgs
+    ///         {
+    ///             BackgroundColor = "#000000",
+    ///             FooterText = "hello",
+    ///             HeaderText = "hello",
+    ///             LogoPath = "https://google.com",
+    ///         },
+    ///         Fips = new Cloudflare.Inputs.TeamsAccountFipsArgs
+    ///         {
+    ///             Tls = true,
+    ///         },
+    ///         Logging = new Cloudflare.Inputs.TeamsAccountLoggingArgs
+    ///         {
+    ///             RedactPii = true,
+    ///             SettingsByRuleType = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeArgs
     ///             {
-    ///                 EnabledDownloadPhase = true,
-    ///                 EnabledUploadPhase = false,
-    ///                 FailClosed = true,
-    ///             },
-    ///             BlockPage = new Cloudflare.Inputs.TeamsAccountBlockPageArgs
-    ///             {
-    ///                 BackgroundColor = "#000000",
-    ///                 FooterText = "hello",
-    ///                 HeaderText = "hello",
-    ///                 LogoPath = "https://google.com",
-    ///             },
-    ///             Fips = new Cloudflare.Inputs.TeamsAccountFipsArgs
-    ///             {
-    ///                 Tls = true,
-    ///             },
-    ///             Logging = new Cloudflare.Inputs.TeamsAccountLoggingArgs
-    ///             {
-    ///                 RedactPii = true,
-    ///                 SettingsByRuleType = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeArgs
+    ///                 Dns = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeDnsArgs
     ///                 {
-    ///                     Dns = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeDnsArgs
-    ///                     {
-    ///                         LogAll = false,
-    ///                         LogBlocks = true,
-    ///                     },
-    ///                     Http = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeHttpArgs
-    ///                     {
-    ///                         LogAll = true,
-    ///                         LogBlocks = true,
-    ///                     },
-    ///                     L4 = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeL4Args
-    ///                     {
-    ///                         LogAll = false,
-    ///                         LogBlocks = true,
-    ///                     },
+    ///                     LogAll = false,
+    ///                     LogBlocks = true,
+    ///                 },
+    ///                 Http = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeHttpArgs
+    ///                 {
+    ///                     LogAll = true,
+    ///                     LogBlocks = true,
+    ///                 },
+    ///                 L4 = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeL4Args
+    ///                 {
+    ///                     LogAll = false,
+    ///                     LogBlocks = true,
     ///                 },
     ///             },
-    ///             Proxy = new Cloudflare.Inputs.TeamsAccountProxyArgs
-    ///             {
-    ///                 Tcp = true,
-    ///                 Udp = true,
-    ///             },
-    ///             TlsDecryptEnabled = true,
-    ///             UrlBrowserIsolationEnabled = true,
-    ///         });
-    ///     }
+    ///         },
+    ///         Proxy = new Cloudflare.Inputs.TeamsAccountProxyArgs
+    ///         {
+    ///             Tcp = true,
+    ///             Udp = true,
+    ///         },
+    ///         TlsDecryptEnabled = true,
+    ///         UrlBrowserIsolationEnabled = true,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -86,7 +84,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/teamsAccount:TeamsAccount")]
-    public partial class TeamsAccount : Pulumi.CustomResource
+    public partial class TeamsAccount : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account to which the teams location should be added.
@@ -180,7 +178,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class TeamsAccountArgs : Pulumi.ResourceArgs
+    public sealed class TeamsAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account to which the teams location should be added.
@@ -233,9 +231,10 @@ namespace Pulumi.Cloudflare
         public TeamsAccountArgs()
         {
         }
+        public static new TeamsAccountArgs Empty => new TeamsAccountArgs();
     }
 
-    public sealed class TeamsAccountState : Pulumi.ResourceArgs
+    public sealed class TeamsAccountState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account to which the teams location should be added.
@@ -288,5 +287,6 @@ namespace Pulumi.Cloudflare
         public TeamsAccountState()
         {
         }
+        public static new TeamsAccountState Empty => new TeamsAccountState();
     }
 }

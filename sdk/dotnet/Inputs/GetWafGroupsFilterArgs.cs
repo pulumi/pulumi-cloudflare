@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class GetWafGroupsFilterInputArgs : Pulumi.ResourceArgs
+    public sealed class GetWafGroupsFilterInputArgs : global::Pulumi.ResourceArgs
     {
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Cloudflare.Inputs
         public GetWafGroupsFilterInputArgs()
         {
         }
+        public static new GetWafGroupsFilterInputArgs Empty => new GetWafGroupsFilterInputArgs();
     }
 }

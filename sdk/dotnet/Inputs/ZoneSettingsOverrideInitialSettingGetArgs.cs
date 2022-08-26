@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class ZoneSettingsOverrideInitialSettingGetArgs : Pulumi.ResourceArgs
+    public sealed class ZoneSettingsOverrideInitialSettingGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("alwaysOnline")]
         public Input<string>? AlwaysOnline { get; set; }
@@ -225,5 +225,6 @@ namespace Pulumi.Cloudflare.Inputs
         public ZoneSettingsOverrideInitialSettingGetArgs()
         {
         }
+        public static new ZoneSettingsOverrideInitialSettingGetArgs Empty => new ZoneSettingsOverrideInitialSettingGetArgs();
     }
 }

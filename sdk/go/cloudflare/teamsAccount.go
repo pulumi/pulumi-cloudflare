@@ -19,58 +19,61 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewTeamsAccount(ctx, "main", &cloudflare.TeamsAccountArgs{
-// 			AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-// 			Antivirus: &TeamsAccountAntivirusArgs{
-// 				EnabledDownloadPhase: pulumi.Bool(true),
-// 				EnabledUploadPhase:   pulumi.Bool(false),
-// 				FailClosed:           pulumi.Bool(true),
-// 			},
-// 			BlockPage: &TeamsAccountBlockPageArgs{
-// 				BackgroundColor: pulumi.String("#000000"),
-// 				FooterText:      pulumi.String("hello"),
-// 				HeaderText:      pulumi.String("hello"),
-// 				LogoPath:        pulumi.String("https://google.com"),
-// 			},
-// 			Fips: &TeamsAccountFipsArgs{
-// 				Tls: pulumi.Bool(true),
-// 			},
-// 			Logging: &TeamsAccountLoggingArgs{
-// 				RedactPii: pulumi.Bool(true),
-// 				SettingsByRuleType: &TeamsAccountLoggingSettingsByRuleTypeArgs{
-// 					Dns: &TeamsAccountLoggingSettingsByRuleTypeDnsArgs{
-// 						LogAll:    pulumi.Bool(false),
-// 						LogBlocks: pulumi.Bool(true),
-// 					},
-// 					Http: &TeamsAccountLoggingSettingsByRuleTypeHttpArgs{
-// 						LogAll:    pulumi.Bool(true),
-// 						LogBlocks: pulumi.Bool(true),
-// 					},
-// 					L4: &TeamsAccountLoggingSettingsByRuleTypeL4Args{
-// 						LogAll:    pulumi.Bool(false),
-// 						LogBlocks: pulumi.Bool(true),
-// 					},
-// 				},
-// 			},
-// 			Proxy: &TeamsAccountProxyArgs{
-// 				Tcp: pulumi.Bool(true),
-// 				Udp: pulumi.Bool(true),
-// 			},
-// 			TlsDecryptEnabled:          pulumi.Bool(true),
-// 			UrlBrowserIsolationEnabled: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewTeamsAccount(ctx, "main", &cloudflare.TeamsAccountArgs{
+//				AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+//				Antivirus: &TeamsAccountAntivirusArgs{
+//					EnabledDownloadPhase: pulumi.Bool(true),
+//					EnabledUploadPhase:   pulumi.Bool(false),
+//					FailClosed:           pulumi.Bool(true),
+//				},
+//				BlockPage: &TeamsAccountBlockPageArgs{
+//					BackgroundColor: pulumi.String("#000000"),
+//					FooterText:      pulumi.String("hello"),
+//					HeaderText:      pulumi.String("hello"),
+//					LogoPath:        pulumi.String("https://google.com"),
+//				},
+//				Fips: &TeamsAccountFipsArgs{
+//					Tls: pulumi.Bool(true),
+//				},
+//				Logging: &TeamsAccountLoggingArgs{
+//					RedactPii: pulumi.Bool(true),
+//					SettingsByRuleType: &TeamsAccountLoggingSettingsByRuleTypeArgs{
+//						Dns: &TeamsAccountLoggingSettingsByRuleTypeDnsArgs{
+//							LogAll:    pulumi.Bool(false),
+//							LogBlocks: pulumi.Bool(true),
+//						},
+//						Http: &TeamsAccountLoggingSettingsByRuleTypeHttpArgs{
+//							LogAll:    pulumi.Bool(true),
+//							LogBlocks: pulumi.Bool(true),
+//						},
+//						L4: &TeamsAccountLoggingSettingsByRuleTypeL4Args{
+//							LogAll:    pulumi.Bool(false),
+//							LogBlocks: pulumi.Bool(true),
+//						},
+//					},
+//				},
+//				Proxy: &TeamsAccountProxyArgs{
+//					Tcp: pulumi.Bool(true),
+//					Udp: pulumi.Bool(true),
+//				},
+//				TlsDecryptEnabled:          pulumi.Bool(true),
+//				UrlBrowserIsolationEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -78,7 +81,9 @@ import (
 // Since a Teams account does not have a unique resource ID, configuration can be imported using the account ID.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example cb029e245cfdd66dc8d2e570d5dd3322
+//
+//	$ pulumi import cloudflare:index/teamsAccount:TeamsAccount example cb029e245cfdd66dc8d2e570d5dd3322
+//
 // ```
 type TeamsAccount struct {
 	pulumi.CustomResourceState
@@ -239,7 +244,7 @@ func (i *TeamsAccount) ToTeamsAccountOutputWithContext(ctx context.Context) Team
 // TeamsAccountArrayInput is an input type that accepts TeamsAccountArray and TeamsAccountArrayOutput values.
 // You can construct a concrete instance of `TeamsAccountArrayInput` via:
 //
-//          TeamsAccountArray{ TeamsAccountArgs{...} }
+//	TeamsAccountArray{ TeamsAccountArgs{...} }
 type TeamsAccountArrayInput interface {
 	pulumi.Input
 
@@ -264,7 +269,7 @@ func (i TeamsAccountArray) ToTeamsAccountArrayOutputWithContext(ctx context.Cont
 // TeamsAccountMapInput is an input type that accepts TeamsAccountMap and TeamsAccountMapOutput values.
 // You can construct a concrete instance of `TeamsAccountMapInput` via:
 //
-//          TeamsAccountMap{ "key": TeamsAccountArgs{...} }
+//	TeamsAccountMap{ "key": TeamsAccountArgs{...} }
 type TeamsAccountMapInput interface {
 	pulumi.Input
 

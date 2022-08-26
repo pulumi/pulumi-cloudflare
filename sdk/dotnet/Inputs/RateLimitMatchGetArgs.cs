@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RateLimitMatchGetArgs : Pulumi.ResourceArgs
+    public sealed class RateLimitMatchGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Matches HTTP requests (from the client to Cloudflare). See definition below.
@@ -27,5 +27,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RateLimitMatchGetArgs()
         {
         }
+        public static new RateLimitMatchGetArgs Empty => new RateLimitMatchGetArgs();
     }
 }

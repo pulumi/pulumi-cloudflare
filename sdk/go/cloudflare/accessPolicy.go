@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Access Policy resource. Access Policies are used in conjunction with Access Applications to restrict access to a particular resource.
+// Provides a Cloudflare Access Policy resource. Access Policies are
+// used in conjunction with Access Applications to restrict access to
+// a particular resource.
 //
 // > It's required that an `accountId` or `zoneId` is provided and in
 // most cases using either is fine. However, if you're using a scoped
@@ -25,63 +27,66 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewAccessPolicy(ctx, "testPolicyAccessPolicy", &cloudflare.AccessPolicyArgs{
-// 			ApplicationId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
-// 			ZoneId:        pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-// 			Name:          pulumi.String("staging policy"),
-// 			Precedence:    pulumi.Int(1),
-// 			Decision:      pulumi.String("allow"),
-// 			Includes: AccessPolicyIncludeArray{
-// 				&AccessPolicyIncludeArgs{
-// 					Emails: pulumi.StringArray{
-// 						pulumi.String("test@example.com"),
-// 					},
-// 				},
-// 			},
-// 			Requires: AccessPolicyRequireArray{
-// 				&AccessPolicyRequireArgs{
-// 					Emails: pulumi.StringArray{
-// 						pulumi.String("test@example.com"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewAccessPolicy(ctx, "testPolicyIndex/accessPolicyAccessPolicy", &cloudflare.AccessPolicyArgs{
-// 			ApplicationId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
-// 			ZoneId:        pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-// 			Name:          pulumi.String("staging policy"),
-// 			Precedence:    pulumi.Int(1),
-// 			Decision:      pulumi.String("allow"),
-// 			Includes: AccessPolicyIncludeArray{
-// 				&AccessPolicyIncludeArgs{
-// 					Emails: pulumi.StringArray{
-// 						pulumi.String("test@example.com"),
-// 					},
-// 				},
-// 			},
-// 			Requires: AccessPolicyRequireArray{
-// 				&AccessPolicyRequireArgs{
-// 					Ips: pulumi.StringArray{
-// 						pulumi.Any(_var.Office_ip),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewAccessPolicy(ctx, "testPolicyAccessPolicy", &cloudflare.AccessPolicyArgs{
+//				ApplicationId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
+//				ZoneId:        pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Name:          pulumi.String("staging policy"),
+//				Precedence:    pulumi.Int(1),
+//				Decision:      pulumi.String("allow"),
+//				Includes: AccessPolicyIncludeArray{
+//					&AccessPolicyIncludeArgs{
+//						Emails: pulumi.StringArray{
+//							pulumi.String("test@example.com"),
+//						},
+//					},
+//				},
+//				Requires: AccessPolicyRequireArray{
+//					&AccessPolicyRequireArgs{
+//						Emails: pulumi.StringArray{
+//							pulumi.String("test@example.com"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewAccessPolicy(ctx, "testPolicyIndex/accessPolicyAccessPolicy", &cloudflare.AccessPolicyArgs{
+//				ApplicationId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
+//				ZoneId:        pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Name:          pulumi.String("staging policy"),
+//				Precedence:    pulumi.Int(1),
+//				Decision:      pulumi.String("allow"),
+//				Includes: AccessPolicyIncludeArray{
+//					&AccessPolicyIncludeArgs{
+//						Emails: pulumi.StringArray{
+//							pulumi.String("test@example.com"),
+//						},
+//					},
+//				},
+//				Requires: AccessPolicyRequireArray{
+//					&AccessPolicyRequireArgs{
+//						Ips: pulumi.StringArray{
+//							pulumi.Any(_var.Office_ip),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -89,25 +94,28 @@ import (
 // # Account level import.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/<account_id>/<application_id>/<policy_id>
+//
+//	$ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/<account_id>/<application_id>/<policy_id>
+//
 // ```
 //
 // # Zone level import.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example zone/<zone_id>/<application_id>/<policy_id>
+//
+//	$ pulumi import cloudflare:index/accessPolicy:AccessPolicy example zone/<zone_id>/<application_id>/<policy_id>
+//
 // ```
 type AccessPolicy struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The ID of the application the policy is associated with.
 	ApplicationId    pulumi.StringOutput                  `pulumi:"applicationId"`
 	ApprovalGroups   AccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
 	ApprovalRequired pulumi.BoolPtrOutput                 `pulumi:"approvalRequired"`
-	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
-	// `bypass`
+	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision pulumi.StringOutput `pulumi:"decision"`
 	// A series of access conditions, see [Access
 	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
@@ -126,7 +134,7 @@ type AccessPolicy struct {
 	// A series of access conditions, see [Access
 	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires AccessPolicyRequireArrayOutput `pulumi:"requires"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -174,14 +182,13 @@ func GetAccessPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessPolicy resources.
 type accessPolicyState struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId *string `pulumi:"accountId"`
 	// The ID of the application the policy is associated with.
 	ApplicationId    *string                     `pulumi:"applicationId"`
 	ApprovalGroups   []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	ApprovalRequired *bool                       `pulumi:"approvalRequired"`
-	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
-	// `bypass`
+	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision *string `pulumi:"decision"`
 	// A series of access conditions, see [Access
 	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
@@ -200,19 +207,18 @@ type accessPolicyState struct {
 	// A series of access conditions, see [Access
 	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires []AccessPolicyRequire `pulumi:"requires"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessPolicyState struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
 	// The ID of the application the policy is associated with.
 	ApplicationId    pulumi.StringPtrInput
 	ApprovalGroups   AccessPolicyApprovalGroupArrayInput
 	ApprovalRequired pulumi.BoolPtrInput
-	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
-	// `bypass`
+	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision pulumi.StringPtrInput
 	// A series of access conditions, see [Access
 	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
@@ -231,7 +237,7 @@ type AccessPolicyState struct {
 	// A series of access conditions, see [Access
 	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires AccessPolicyRequireArrayInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -240,14 +246,13 @@ func (AccessPolicyState) ElementType() reflect.Type {
 }
 
 type accessPolicyArgs struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId *string `pulumi:"accountId"`
 	// The ID of the application the policy is associated with.
 	ApplicationId    string                      `pulumi:"applicationId"`
 	ApprovalGroups   []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	ApprovalRequired *bool                       `pulumi:"approvalRequired"`
-	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
-	// `bypass`
+	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision string `pulumi:"decision"`
 	// A series of access conditions, see [Access
 	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
@@ -266,20 +271,19 @@ type accessPolicyArgs struct {
 	// A series of access conditions, see [Access
 	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires []AccessPolicyRequire `pulumi:"requires"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessPolicy resource.
 type AccessPolicyArgs struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
 	// The ID of the application the policy is associated with.
 	ApplicationId    pulumi.StringInput
 	ApprovalGroups   AccessPolicyApprovalGroupArrayInput
 	ApprovalRequired pulumi.BoolPtrInput
-	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
-	// `bypass`
+	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 	Decision pulumi.StringInput
 	// A series of access conditions, see [Access
 	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
@@ -298,7 +302,7 @@ type AccessPolicyArgs struct {
 	// A series of access conditions, see [Access
 	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires AccessPolicyRequireArrayInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -328,7 +332,7 @@ func (i *AccessPolicy) ToAccessPolicyOutputWithContext(ctx context.Context) Acce
 // AccessPolicyArrayInput is an input type that accepts AccessPolicyArray and AccessPolicyArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyArrayInput` via:
 //
-//          AccessPolicyArray{ AccessPolicyArgs{...} }
+//	AccessPolicyArray{ AccessPolicyArgs{...} }
 type AccessPolicyArrayInput interface {
 	pulumi.Input
 
@@ -353,7 +357,7 @@ func (i AccessPolicyArray) ToAccessPolicyArrayOutputWithContext(ctx context.Cont
 // AccessPolicyMapInput is an input type that accepts AccessPolicyMap and AccessPolicyMapOutput values.
 // You can construct a concrete instance of `AccessPolicyMapInput` via:
 //
-//          AccessPolicyMap{ "key": AccessPolicyArgs{...} }
+//	AccessPolicyMap{ "key": AccessPolicyArgs{...} }
 type AccessPolicyMapInput interface {
 	pulumi.Input
 
@@ -389,7 +393,7 @@ func (o AccessPolicyOutput) ToAccessPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The account identifier to target for the resource.
+// The account identifier to target for the resource. Conflicts with `zoneId`.
 func (o AccessPolicyOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -407,8 +411,7 @@ func (o AccessPolicyOutput) ApprovalRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.BoolPtrOutput { return v.ApprovalRequired }).(pulumi.BoolPtrOutput)
 }
 
-// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
-// `bypass`
+// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
 func (o AccessPolicyOutput) Decision() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.Decision }).(pulumi.StringOutput)
 }
@@ -451,7 +454,7 @@ func (o AccessPolicyOutput) Requires() AccessPolicyRequireArrayOutput {
 	return o.ApplyT(func(v *AccessPolicy) AccessPolicyRequireArrayOutput { return v.Requires }).(AccessPolicyRequireArrayOutput)
 }
 
-// The zone identifier to target for the resource.
+// The zone identifier to target for the resource. Conflicts with `accountId`.
 func (o AccessPolicyOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

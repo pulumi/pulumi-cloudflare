@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *         enabled: true,
  *         id: "remove_x-powered-by_header",
  *     }],
- *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  *
@@ -59,11 +59,11 @@ export class ManagedHeaders extends pulumi.CustomResource {
     }
 
     /**
-     * The list of managed request headers
+     * The list of managed request headers.
      */
     public readonly managedRequestHeaders!: pulumi.Output<outputs.ManagedHeadersManagedRequestHeader[] | undefined>;
     /**
-     * The list of managed response headers
+     * The list of managed response headers.
      */
     public readonly managedResponseHeaders!: pulumi.Output<outputs.ManagedHeadersManagedResponseHeader[] | undefined>;
     /**
@@ -106,11 +106,11 @@ export class ManagedHeaders extends pulumi.CustomResource {
  */
 export interface ManagedHeadersState {
     /**
-     * The list of managed request headers
+     * The list of managed request headers.
      */
     managedRequestHeaders?: pulumi.Input<pulumi.Input<inputs.ManagedHeadersManagedRequestHeader>[]>;
     /**
-     * The list of managed response headers
+     * The list of managed response headers.
      */
     managedResponseHeaders?: pulumi.Input<pulumi.Input<inputs.ManagedHeadersManagedResponseHeader>[]>;
     /**
@@ -124,11 +124,11 @@ export interface ManagedHeadersState {
  */
 export interface ManagedHeadersArgs {
     /**
-     * The list of managed request headers
+     * The list of managed request headers.
      */
     managedRequestHeaders?: pulumi.Input<pulumi.Input<inputs.ManagedHeadersManagedRequestHeader>[]>;
     /**
-     * The list of managed response headers
+     * The list of managed response headers.
      */
     managedResponseHeaders?: pulumi.Input<pulumi.Input<inputs.ManagedHeadersManagedResponseHeader>[]>;
     /**

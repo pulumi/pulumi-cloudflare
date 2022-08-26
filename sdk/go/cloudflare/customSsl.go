@@ -19,34 +19,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		cloudflareZoneId := "1d5fdc9e88c8a8c4518b068cd94331fe"
-// 		if param := cfg.Get("cloudflareZoneId"); param != "" {
-// 			cloudflareZoneId = param
-// 		}
-// 		_, err := cloudflare.NewCustomSsl(ctx, "foossl", &cloudflare.CustomSslArgs{
-// 			CustomSslOptions: &CustomSslCustomSslOptionsArgs{
-// 				BundleMethod:    pulumi.String("ubiquitous"),
-// 				Certificate:     pulumi.String("-----INSERT CERTIFICATE-----"),
-// 				GeoRestrictions: pulumi.String("us"),
-// 				PrivateKey:      pulumi.String("-----INSERT PRIVATE KEY-----"),
-// 				Type:            pulumi.String("legacy_custom"),
-// 			},
-// 			ZoneId: pulumi.String(cloudflareZoneId),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			cloudflareZoneId := "1d5fdc9e88c8a8c4518b068cd94331fe"
+//			if param := cfg.Get("cloudflareZoneId"); param != "" {
+//				cloudflareZoneId = param
+//			}
+//			_, err := cloudflare.NewCustomSsl(ctx, "foossl", &cloudflare.CustomSslArgs{
+//				CustomSslOptions: &CustomSslCustomSslOptionsArgs{
+//					BundleMethod:    pulumi.String("ubiquitous"),
+//					Certificate:     pulumi.String("-----INSERT CERTIFICATE-----"),
+//					GeoRestrictions: pulumi.String("us"),
+//					PrivateKey:      pulumi.String("-----INSERT PRIVATE KEY-----"),
+//					Type:            pulumi.String("legacy_custom"),
+//				},
+//				ZoneId: pulumi.String(cloudflareZoneId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -54,7 +57,9 @@ import (
 // Custom SSL Certs can be imported using a composite ID formed of the zone ID and [certificate ID](https://api.cloudflare.com/#custom-ssl-for-a-zone-properties), separated by a "/" e.g.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/customSsl:CustomSsl default 1d5fdc9e88c8a8c4518b068cd94331fe/0123f0ab-9cde-45b2-80bd-4da3010f1337
+//
+//	$ pulumi import cloudflare:index/customSsl:CustomSsl default 1d5fdc9e88c8a8c4518b068cd94331fe/0123f0ab-9cde-45b2-80bd-4da3010f1337
+//
 // ```
 type CustomSsl struct {
 	pulumi.CustomResourceState
@@ -184,7 +189,7 @@ func (i *CustomSsl) ToCustomSslOutputWithContext(ctx context.Context) CustomSslO
 // CustomSslArrayInput is an input type that accepts CustomSslArray and CustomSslArrayOutput values.
 // You can construct a concrete instance of `CustomSslArrayInput` via:
 //
-//          CustomSslArray{ CustomSslArgs{...} }
+//	CustomSslArray{ CustomSslArgs{...} }
 type CustomSslArrayInput interface {
 	pulumi.Input
 
@@ -209,7 +214,7 @@ func (i CustomSslArray) ToCustomSslArrayOutputWithContext(ctx context.Context) C
 // CustomSslMapInput is an input type that accepts CustomSslMap and CustomSslMapOutput values.
 // You can construct a concrete instance of `CustomSslMapInput` via:
 //
-//          CustomSslMap{ "key": CustomSslArgs{...} }
+//	CustomSslMap{ "key": CustomSslArgs{...} }
 type CustomSslMapInput interface {
 	pulumi.Input
 

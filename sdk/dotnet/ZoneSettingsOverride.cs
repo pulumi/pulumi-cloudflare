@@ -15,44 +15,42 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var test = new Cloudflare.ZoneSettingsOverride("test", new()
     ///     {
-    ///         var test = new Cloudflare.ZoneSettingsOverride("test", new Cloudflare.ZoneSettingsOverrideArgs
+    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         Settings = new Cloudflare.Inputs.ZoneSettingsOverrideSettingsArgs
     ///         {
-    ///             ZoneId = @var.Cloudflare_zone_id,
-    ///             Settings = new Cloudflare.Inputs.ZoneSettingsOverrideSettingsArgs
+    ///             Brotli = "on",
+    ///             ChallengeTtl = 2700,
+    ///             SecurityLevel = "high",
+    ///             OpportunisticEncryption = "on",
+    ///             AutomaticHttpsRewrites = "on",
+    ///             Mirage = "on",
+    ///             Waf = "on",
+    ///             Minify = new Cloudflare.Inputs.ZoneSettingsOverrideSettingsMinifyArgs
     ///             {
-    ///                 Brotli = "on",
-    ///                 ChallengeTtl = 2700,
-    ///                 SecurityLevel = "high",
-    ///                 OpportunisticEncryption = "on",
-    ///                 AutomaticHttpsRewrites = "on",
-    ///                 Mirage = "on",
-    ///                 Waf = "on",
-    ///                 Minify = new Cloudflare.Inputs.ZoneSettingsOverrideSettingsMinifyArgs
-    ///                 {
-    ///                     Css = "on",
-    ///                     Js = "off",
-    ///                     Html = "off",
-    ///                 },
-    ///                 SecurityHeader = new Cloudflare.Inputs.ZoneSettingsOverrideSettingsSecurityHeaderArgs
-    ///                 {
-    ///                     Enabled = true,
-    ///                 },
+    ///                 Css = "on",
+    ///                 Js = "off",
+    ///                 Html = "off",
     ///             },
-    ///         });
-    ///     }
+    ///             SecurityHeader = new Cloudflare.Inputs.ZoneSettingsOverrideSettingsSecurityHeaderArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride")]
-    public partial class ZoneSettingsOverride : Pulumi.CustomResource
+    public partial class ZoneSettingsOverride : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
@@ -136,7 +134,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class ZoneSettingsOverrideArgs : Pulumi.ResourceArgs
+    public sealed class ZoneSettingsOverrideArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
@@ -153,9 +151,10 @@ namespace Pulumi.Cloudflare
         public ZoneSettingsOverrideArgs()
         {
         }
+        public static new ZoneSettingsOverrideArgs Empty => new ZoneSettingsOverrideArgs();
     }
 
-    public sealed class ZoneSettingsOverrideState : Pulumi.ResourceArgs
+    public sealed class ZoneSettingsOverrideState : global::Pulumi.ResourceArgs
     {
         [Input("initialSettings")]
         private InputList<Inputs.ZoneSettingsOverrideInitialSettingGetArgs>? _initialSettings;
@@ -210,5 +209,6 @@ namespace Pulumi.Cloudflare
         public ZoneSettingsOverrideState()
         {
         }
+        public static new ZoneSettingsOverrideState Empty => new ZoneSettingsOverrideState();
     }
 }

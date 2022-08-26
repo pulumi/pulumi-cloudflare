@@ -22,8 +22,14 @@ export function getZone(args?: GetZoneArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getZone.
  */
 export interface GetZoneArgs {
+    /**
+     * The account identifier to target for the resource.
+     */
     accountId?: string;
     name?: string;
+    /**
+     * The zone identifier to target for the resource.
+     */
     zoneId?: string;
 }
 
@@ -31,6 +37,9 @@ export interface GetZoneArgs {
  * A collection of values returned by getZone.
  */
 export interface GetZoneResult {
+    /**
+     * The account identifier to target for the resource.
+     */
     readonly accountId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -42,6 +51,9 @@ export interface GetZoneResult {
     readonly plan: string;
     readonly status: string;
     readonly vanityNameServers: string[];
+    /**
+     * The zone identifier to target for the resource.
+     */
     readonly zoneId: string;
 }
 
@@ -53,7 +65,13 @@ export function getZoneOutput(args?: GetZoneOutputArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getZone.
  */
 export interface GetZoneOutputArgs {
+    /**
+     * The account identifier to target for the resource.
+     */
     accountId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
+    /**
+     * The zone identifier to target for the resource.
+     */
     zoneId?: pulumi.Input<string>;
 }

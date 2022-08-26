@@ -20,25 +20,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewTeamsProxyEndpoint(ctx, "corporateOffice", &cloudflare.TeamsProxyEndpointArgs{
-// 			AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-// 			Ips: pulumi.StringArray{
-// 				pulumi.String("192.0.2.0/24"),
-// 			},
-// 			Name: pulumi.String("office"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewTeamsProxyEndpoint(ctx, "corporateOffice", &cloudflare.TeamsProxyEndpointArgs{
+//				AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+//				Ips: pulumi.StringArray{
+//					pulumi.String("192.0.2.0/24"),
+//				},
+//				Name: pulumi.String("office"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -46,7 +49,9 @@ import (
 // Teams Proxy Endpoints can be imported using a composite ID formed of account ID and teams proxy_endpoint ID.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint corporate_office cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+//
+//	$ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint corporate_office cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+//
 // ```
 type TeamsProxyEndpoint struct {
 	pulumi.CustomResourceState
@@ -169,7 +174,7 @@ func (i *TeamsProxyEndpoint) ToTeamsProxyEndpointOutputWithContext(ctx context.C
 // TeamsProxyEndpointArrayInput is an input type that accepts TeamsProxyEndpointArray and TeamsProxyEndpointArrayOutput values.
 // You can construct a concrete instance of `TeamsProxyEndpointArrayInput` via:
 //
-//          TeamsProxyEndpointArray{ TeamsProxyEndpointArgs{...} }
+//	TeamsProxyEndpointArray{ TeamsProxyEndpointArgs{...} }
 type TeamsProxyEndpointArrayInput interface {
 	pulumi.Input
 
@@ -194,7 +199,7 @@ func (i TeamsProxyEndpointArray) ToTeamsProxyEndpointArrayOutputWithContext(ctx 
 // TeamsProxyEndpointMapInput is an input type that accepts TeamsProxyEndpointMap and TeamsProxyEndpointMapOutput values.
 // You can construct a concrete instance of `TeamsProxyEndpointMapInput` via:
 //
-//          TeamsProxyEndpointMap{ "key": TeamsProxyEndpointArgs{...} }
+//	TeamsProxyEndpointMap{ "key": TeamsProxyEndpointArgs{...} }
 type TeamsProxyEndpointMapInput interface {
 	pulumi.Input
 

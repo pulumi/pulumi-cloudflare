@@ -23,43 +23,41 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // With CORS configuration
+    ///     var stagingApp = new Cloudflare.AccessApplication("stagingApp", new()
     ///     {
-    ///         // With CORS configuration
-    ///         var stagingApp = new Cloudflare.AccessApplication("stagingApp", new Cloudflare.AccessApplicationArgs
+    ///         CorsHeaders = new[]
     ///         {
-    ///             CorsHeaders = 
+    ///             new Cloudflare.Inputs.AccessApplicationCorsHeaderArgs
     ///             {
-    ///                 new Cloudflare.Inputs.AccessApplicationCorsHeaderArgs
+    ///                 AllowCredentials = true,
+    ///                 AllowedMethods = new[]
     ///                 {
-    ///                     AllowCredentials = true,
-    ///                     AllowedMethods = 
-    ///                     {
-    ///                         "GET",
-    ///                         "POST",
-    ///                         "OPTIONS",
-    ///                     },
-    ///                     AllowedOrigins = 
-    ///                     {
-    ///                         "https://example.com",
-    ///                     },
-    ///                     MaxAge = 10,
+    ///                     "GET",
+    ///                     "POST",
+    ///                     "OPTIONS",
     ///                 },
+    ///                 AllowedOrigins = new[]
+    ///                 {
+    ///                     "https://example.com",
+    ///                 },
+    ///                 MaxAge = 10,
     ///             },
-    ///             Domain = "staging.example.com",
-    ///             Name = "staging application",
-    ///             SessionDuration = "24h",
-    ///             Type = "self_hosted",
-    ///             ZoneId = "1d5fdc9e88c8a8c4518b068cd94331fe",
-    ///         });
-    ///     }
+    ///         },
+    ///         Domain = "staging.example.com",
+    ///         Name = "staging application",
+    ///         SessionDuration = "24h",
+    ///         Type = "self_hosted",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -69,10 +67,10 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accessApplication:AccessApplication")]
-    public partial class AccessApplication : Pulumi.CustomResource
+    public partial class AccessApplication : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -84,7 +82,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> AllowedIdps { get; private set; } = null!;
 
         /// <summary>
-        /// Option to show/hide applications in App Launcher.
+        /// Option to show/hide applications in App Launcher. Defaults to `true`.
         /// </summary>
         [Output("appLauncherVisible")]
         public Output<bool?> AppLauncherVisible { get; private set; } = null!;
@@ -96,7 +94,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Aud { get; private set; } = null!;
 
         /// <summary>
-        /// Option to skip identity provider selection if only one is configured in `allowed_idps`.
+        /// Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
         /// </summary>
         [Output("autoRedirectToIdentity")]
         public Output<bool?> AutoRedirectToIdentity { get; private set; } = null!;
@@ -126,8 +124,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an
-        /// additional "binding" cookie on requests.
+        /// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
         /// </summary>
         [Output("enableBindingCookie")]
         public Output<bool?> EnableBindingCookie { get; private set; } = null!;
@@ -151,37 +148,43 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`
+        /// SaaS configuration for the Access Application.
+        /// </summary>
+        [Output("saasApp")]
+        public Output<Outputs.AccessApplicationSaasApp?> SaasApp { get; private set; } = null!;
+
+        /// <summary>
+        /// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
         /// </summary>
         [Output("sameSiteCookieAttribute")]
         public Output<string?> SameSiteCookieAttribute { get; private set; } = null!;
 
         /// <summary>
-        /// Option to return a 401 status code in service authentication rules on failed requests.
+        /// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         /// </summary>
         [Output("serviceAuth401Redirect")]
         public Output<bool?> ServiceAuth401Redirect { get; private set; } = null!;
 
         /// <summary>
-        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`
+        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         /// </summary>
         [Output("sessionDuration")]
         public Output<string?> SessionDuration { get; private set; } = null!;
 
         /// <summary>
-        /// Option to skip the authorization interstitial when using the CLI.
+        /// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
         /// </summary>
         [Output("skipInterstitial")]
         public Output<bool?> SkipInterstitial { get; private set; } = null!;
 
         /// <summary>
-        /// The application type. Available values: `self_hosted`, `ssh`, `vnc`, `file`
+        /// The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `file`. Defaults to `self_hosted`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -230,10 +233,10 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class AccessApplicationArgs : Pulumi.ResourceArgs
+    public sealed class AccessApplicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -251,13 +254,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Option to show/hide applications in App Launcher.
+        /// Option to show/hide applications in App Launcher. Defaults to `true`.
         /// </summary>
         [Input("appLauncherVisible")]
         public Input<bool>? AppLauncherVisible { get; set; }
 
         /// <summary>
-        /// Option to skip identity provider selection if only one is configured in `allowed_idps`.
+        /// Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
         /// </summary>
         [Input("autoRedirectToIdentity")]
         public Input<bool>? AutoRedirectToIdentity { get; set; }
@@ -289,12 +292,11 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
         /// </summary>
-        [Input("domain", required: true)]
-        public Input<string> Domain { get; set; } = null!;
+        [Input("domain")]
+        public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an
-        /// additional "binding" cookie on requests.
+        /// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
         /// </summary>
         [Input("enableBindingCookie")]
         public Input<bool>? EnableBindingCookie { get; set; }
@@ -318,37 +320,43 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`
+        /// SaaS configuration for the Access Application.
+        /// </summary>
+        [Input("saasApp")]
+        public Input<Inputs.AccessApplicationSaasAppArgs>? SaasApp { get; set; }
+
+        /// <summary>
+        /// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
         /// </summary>
         [Input("sameSiteCookieAttribute")]
         public Input<string>? SameSiteCookieAttribute { get; set; }
 
         /// <summary>
-        /// Option to return a 401 status code in service authentication rules on failed requests.
+        /// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         /// </summary>
         [Input("serviceAuth401Redirect")]
         public Input<bool>? ServiceAuth401Redirect { get; set; }
 
         /// <summary>
-        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`
+        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
 
         /// <summary>
-        /// Option to skip the authorization interstitial when using the CLI.
+        /// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
         /// </summary>
         [Input("skipInterstitial")]
         public Input<bool>? SkipInterstitial { get; set; }
 
         /// <summary>
-        /// The application type. Available values: `self_hosted`, `ssh`, `vnc`, `file`
+        /// The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `file`. Defaults to `self_hosted`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -356,12 +364,13 @@ namespace Pulumi.Cloudflare
         public AccessApplicationArgs()
         {
         }
+        public static new AccessApplicationArgs Empty => new AccessApplicationArgs();
     }
 
-    public sealed class AccessApplicationState : Pulumi.ResourceArgs
+    public sealed class AccessApplicationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -379,7 +388,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Option to show/hide applications in App Launcher.
+        /// Option to show/hide applications in App Launcher. Defaults to `true`.
         /// </summary>
         [Input("appLauncherVisible")]
         public Input<bool>? AppLauncherVisible { get; set; }
@@ -391,7 +400,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Aud { get; set; }
 
         /// <summary>
-        /// Option to skip identity provider selection if only one is configured in `allowed_idps`.
+        /// Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
         /// </summary>
         [Input("autoRedirectToIdentity")]
         public Input<bool>? AutoRedirectToIdentity { get; set; }
@@ -427,8 +436,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an
-        /// additional "binding" cookie on requests.
+        /// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
         /// </summary>
         [Input("enableBindingCookie")]
         public Input<bool>? EnableBindingCookie { get; set; }
@@ -452,37 +460,43 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`
+        /// SaaS configuration for the Access Application.
+        /// </summary>
+        [Input("saasApp")]
+        public Input<Inputs.AccessApplicationSaasAppGetArgs>? SaasApp { get; set; }
+
+        /// <summary>
+        /// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
         /// </summary>
         [Input("sameSiteCookieAttribute")]
         public Input<string>? SameSiteCookieAttribute { get; set; }
 
         /// <summary>
-        /// Option to return a 401 status code in service authentication rules on failed requests.
+        /// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         /// </summary>
         [Input("serviceAuth401Redirect")]
         public Input<bool>? ServiceAuth401Redirect { get; set; }
 
         /// <summary>
-        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`
+        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
 
         /// <summary>
-        /// Option to skip the authorization interstitial when using the CLI.
+        /// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
         /// </summary>
         [Input("skipInterstitial")]
         public Input<bool>? SkipInterstitial { get; set; }
 
         /// <summary>
-        /// The application type. Available values: `self_hosted`, `ssh`, `vnc`, `file`
+        /// The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `file`. Defaults to `self_hosted`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -490,5 +504,6 @@ namespace Pulumi.Cloudflare
         public AccessApplicationState()
         {
         }
+        public static new AccessApplicationState Empty => new AccessApplicationState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class TeamsRuleRuleSettingsArgs : Pulumi.ResourceArgs
+    public sealed class TeamsRuleRuleSettingsArgs : global::Pulumi.ResourceArgs
     {
         [Input("addHeaders")]
         private InputMap<string>? _addHeaders;
@@ -81,5 +81,6 @@ namespace Pulumi.Cloudflare.Inputs
         public TeamsRuleRuleSettingsArgs()
         {
         }
+        public static new TeamsRuleRuleSettingsArgs Empty => new TeamsRuleRuleSettingsArgs();
     }
 }

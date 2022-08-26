@@ -13,18 +13,23 @@ import (
 
 // Provides a resource which manages Cloudflare API tokens.
 //
-// Read more about permission groups and their applicable scopes in the [developer documentation](https://developers.cloudflare.com/api/tokens/create/permissions).
+// Read more about permission groups and their applicable scopes in the
+// [developer documentation](https://developers.cloudflare.com/api/tokens/create/permissions).
 type ApiToken struct {
 	pulumi.CustomResourceState
 
 	// Conditions under which the token should be considered valid.
 	Condition ApiTokenConditionPtrOutput `pulumi:"condition"`
+	// The expiration time on or after which the token MUST NOT be accepted for processing.
+	ExpiresOn pulumi.StringPtrOutput `pulumi:"expiresOn"`
 	// Timestamp of when the token was issued.
 	IssuedOn pulumi.StringOutput `pulumi:"issuedOn"`
 	// Timestamp of when the token was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// Name of the API Token.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The time before which the token MUST NOT be accepted for processing.
+	NotBefore pulumi.StringPtrOutput `pulumi:"notBefore"`
 	// Permissions policy. Multiple policy blocks can be defined.
 	Policies ApiTokenPolicyArrayOutput `pulumi:"policies"`
 	Status   pulumi.StringOutput       `pulumi:"status"`
@@ -69,12 +74,16 @@ func GetApiToken(ctx *pulumi.Context,
 type apiTokenState struct {
 	// Conditions under which the token should be considered valid.
 	Condition *ApiTokenCondition `pulumi:"condition"`
+	// The expiration time on or after which the token MUST NOT be accepted for processing.
+	ExpiresOn *string `pulumi:"expiresOn"`
 	// Timestamp of when the token was issued.
 	IssuedOn *string `pulumi:"issuedOn"`
 	// Timestamp of when the token was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// Name of the API Token.
 	Name *string `pulumi:"name"`
+	// The time before which the token MUST NOT be accepted for processing.
+	NotBefore *string `pulumi:"notBefore"`
 	// Permissions policy. Multiple policy blocks can be defined.
 	Policies []ApiTokenPolicy `pulumi:"policies"`
 	Status   *string          `pulumi:"status"`
@@ -85,12 +94,16 @@ type apiTokenState struct {
 type ApiTokenState struct {
 	// Conditions under which the token should be considered valid.
 	Condition ApiTokenConditionPtrInput
+	// The expiration time on or after which the token MUST NOT be accepted for processing.
+	ExpiresOn pulumi.StringPtrInput
 	// Timestamp of when the token was issued.
 	IssuedOn pulumi.StringPtrInput
 	// Timestamp of when the token was last modified.
 	ModifiedOn pulumi.StringPtrInput
 	// Name of the API Token.
 	Name pulumi.StringPtrInput
+	// The time before which the token MUST NOT be accepted for processing.
+	NotBefore pulumi.StringPtrInput
 	// Permissions policy. Multiple policy blocks can be defined.
 	Policies ApiTokenPolicyArrayInput
 	Status   pulumi.StringPtrInput
@@ -105,8 +118,12 @@ func (ApiTokenState) ElementType() reflect.Type {
 type apiTokenArgs struct {
 	// Conditions under which the token should be considered valid.
 	Condition *ApiTokenCondition `pulumi:"condition"`
+	// The expiration time on or after which the token MUST NOT be accepted for processing.
+	ExpiresOn *string `pulumi:"expiresOn"`
 	// Name of the API Token.
 	Name string `pulumi:"name"`
+	// The time before which the token MUST NOT be accepted for processing.
+	NotBefore *string `pulumi:"notBefore"`
 	// Permissions policy. Multiple policy blocks can be defined.
 	Policies []ApiTokenPolicy `pulumi:"policies"`
 }
@@ -115,8 +132,12 @@ type apiTokenArgs struct {
 type ApiTokenArgs struct {
 	// Conditions under which the token should be considered valid.
 	Condition ApiTokenConditionPtrInput
+	// The expiration time on or after which the token MUST NOT be accepted for processing.
+	ExpiresOn pulumi.StringPtrInput
 	// Name of the API Token.
 	Name pulumi.StringInput
+	// The time before which the token MUST NOT be accepted for processing.
+	NotBefore pulumi.StringPtrInput
 	// Permissions policy. Multiple policy blocks can be defined.
 	Policies ApiTokenPolicyArrayInput
 }
@@ -147,7 +168,7 @@ func (i *ApiToken) ToApiTokenOutputWithContext(ctx context.Context) ApiTokenOutp
 // ApiTokenArrayInput is an input type that accepts ApiTokenArray and ApiTokenArrayOutput values.
 // You can construct a concrete instance of `ApiTokenArrayInput` via:
 //
-//          ApiTokenArray{ ApiTokenArgs{...} }
+//	ApiTokenArray{ ApiTokenArgs{...} }
 type ApiTokenArrayInput interface {
 	pulumi.Input
 
@@ -172,7 +193,7 @@ func (i ApiTokenArray) ToApiTokenArrayOutputWithContext(ctx context.Context) Api
 // ApiTokenMapInput is an input type that accepts ApiTokenMap and ApiTokenMapOutput values.
 // You can construct a concrete instance of `ApiTokenMapInput` via:
 //
-//          ApiTokenMap{ "key": ApiTokenArgs{...} }
+//	ApiTokenMap{ "key": ApiTokenArgs{...} }
 type ApiTokenMapInput interface {
 	pulumi.Input
 
@@ -213,6 +234,11 @@ func (o ApiTokenOutput) Condition() ApiTokenConditionPtrOutput {
 	return o.ApplyT(func(v *ApiToken) ApiTokenConditionPtrOutput { return v.Condition }).(ApiTokenConditionPtrOutput)
 }
 
+// The expiration time on or after which the token MUST NOT be accepted for processing.
+func (o ApiTokenOutput) ExpiresOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiToken) pulumi.StringPtrOutput { return v.ExpiresOn }).(pulumi.StringPtrOutput)
+}
+
 // Timestamp of when the token was issued.
 func (o ApiTokenOutput) IssuedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiToken) pulumi.StringOutput { return v.IssuedOn }).(pulumi.StringOutput)
@@ -226,6 +252,11 @@ func (o ApiTokenOutput) ModifiedOn() pulumi.StringOutput {
 // Name of the API Token.
 func (o ApiTokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiToken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The time before which the token MUST NOT be accepted for processing.
+func (o ApiTokenOutput) NotBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiToken) pulumi.StringPtrOutput { return v.NotBefore }).(pulumi.StringPtrOutput)
 }
 
 // Permissions policy. Multiple policy blocks can be defined.

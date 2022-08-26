@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class TeamsAccountFipsGetArgs : Pulumi.ResourceArgs
+    public sealed class TeamsAccountFipsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Only allow FIPS-compliant TLS configuration.
@@ -21,5 +21,6 @@ namespace Pulumi.Cloudflare.Inputs
         public TeamsAccountFipsGetArgs()
         {
         }
+        public static new TeamsAccountFipsGetArgs Empty => new TeamsAccountFipsGetArgs();
     }
 }

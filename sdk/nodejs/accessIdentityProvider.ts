@@ -6,7 +6,9 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Access Identity Provider resource. Identity Providers are used as an authentication or authorisation source within Access.
+ * Provides a Cloudflare Access Identity Provider resource. Identity
+ * Providers are used as an authentication or authorisation source
+ * within Access.
  *
  * > It's required that an `accountId` or `zoneId` is provided and in
  * most cases using either is fine. However, if you're using a scoped
@@ -22,13 +24,13 @@ import * as utilities from "./utilities";
  *
  * // one time pin
  * const pinLogin = new cloudflare.AccessIdentityProvider("pin_login", {
- *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "PIN login",
  *     type: "onetimepin",
  * });
  * // oauth
  * const githubOauth = new cloudflare.AccessIdentityProvider("github_oauth", {
- *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     configs: [{
  *         clientId: "example",
  *         clientSecret: "secret_key",
@@ -38,7 +40,7 @@ import * as utilities from "./utilities";
  * });
  * // saml
  * const jumpcloudSaml = new cloudflare.AccessIdentityProvider("jumpcloud_saml", {
- *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     configs: [{
  *         attributes: [
  *             "email",
@@ -55,11 +57,12 @@ import * as utilities from "./utilities";
  * });
  * // okta
  * const okta = new cloudflare.AccessIdentityProvider("okta", {
- *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     configs: [{
  *         apiToken: "okta_api_token",
  *         clientId: "example",
  *         clientSecret: "secret_key",
+ *         oktaAccount: "https://example.com",
  *     }],
  *     name: "Okta",
  *     type: "okta",
@@ -101,12 +104,11 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * Provider configuration from the [developer
-     * documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+     * Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
      */
     public readonly configs!: pulumi.Output<outputs.AccessIdentityProviderConfig[] | undefined>;
     /**
@@ -114,12 +116,11 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`,
-     * `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`
+     * The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
 
@@ -165,12 +166,11 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
  */
 export interface AccessIdentityProviderState {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Provider configuration from the [developer
-     * documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+     * Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
      */
     configs?: pulumi.Input<pulumi.Input<inputs.AccessIdentityProviderConfig>[]>;
     /**
@@ -178,12 +178,11 @@ export interface AccessIdentityProviderState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`,
-     * `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`
+     * The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
      */
     type?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -193,12 +192,11 @@ export interface AccessIdentityProviderState {
  */
 export interface AccessIdentityProviderArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Provider configuration from the [developer
-     * documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+     * Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
      */
     configs?: pulumi.Input<pulumi.Input<inputs.AccessIdentityProviderConfig>[]>;
     /**
@@ -206,12 +204,11 @@ export interface AccessIdentityProviderArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`,
-     * `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`
+     * The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
      */
     type: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
 }

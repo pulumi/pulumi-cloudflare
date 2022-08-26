@@ -10,13 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class HealthcheckHeaderArgs : Pulumi.ResourceArgs
+    public sealed class HealthcheckHeaderArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The header name.
+        /// </summary>
         [Input("header", required: true)]
         public Input<string> Header { get; set; } = null!;
 
         [Input("values", required: true)]
         private InputList<string>? _values;
+
+        /// <summary>
+        /// A list of string values for the header.
+        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());
@@ -26,5 +33,6 @@ namespace Pulumi.Cloudflare.Inputs
         public HealthcheckHeaderArgs()
         {
         }
+        public static new HealthcheckHeaderArgs Empty => new HealthcheckHeaderArgs();
     }
 }

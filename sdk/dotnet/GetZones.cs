@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare
     }
 
 
-    public sealed class GetZonesArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
         [Input("filter", required: true)]
         public Inputs.GetZonesFilterArgs Filter { get; set; } = null!;
@@ -27,9 +27,10 @@ namespace Pulumi.Cloudflare
         public GetZonesArgs()
         {
         }
+        public static new GetZonesArgs Empty => new GetZonesArgs();
     }
 
-    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filter", required: true)]
         public Input<Inputs.GetZonesFilterInputArgs> Filter { get; set; } = null!;
@@ -37,6 +38,7 @@ namespace Pulumi.Cloudflare
         public GetZonesInvokeArgs()
         {
         }
+        public static new GetZonesInvokeArgs Empty => new GetZonesInvokeArgs();
     }
 
 

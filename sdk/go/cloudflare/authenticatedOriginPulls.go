@@ -21,57 +21,60 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewAuthenticatedOriginPulls(ctx, "myAop", &cloudflare.AuthenticatedOriginPullsArgs{
-// 			ZoneId:  pulumi.Any(_var.Cloudflare_zone_id),
-// 			Enabled: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		myPerZoneAopCert, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "myPerZoneAopCert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
-// 			ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
-// 			Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
-// 			PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
-// 			Type:        pulumi.String("per-zone"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewAuthenticatedOriginPulls(ctx, "myPerZoneAop", &cloudflare.AuthenticatedOriginPullsArgs{
-// 			ZoneId:                              pulumi.Any(_var.Cloudflare_zone_id),
-// 			AuthenticatedOriginPullsCertificate: myPerZoneAopCert.ID(),
-// 			Enabled:                             pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		myPerHostnameAopCert, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "myPerHostnameAopCert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
-// 			ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
-// 			Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
-// 			PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
-// 			Type:        pulumi.String("per-hostname"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewAuthenticatedOriginPulls(ctx, "myPerHostnameAop", &cloudflare.AuthenticatedOriginPullsArgs{
-// 			ZoneId:                              pulumi.Any(_var.Cloudflare_zone_id),
-// 			AuthenticatedOriginPullsCertificate: myPerHostnameAopCert.ID(),
-// 			Hostname:                            pulumi.String("aop.example.com"),
-// 			Enabled:                             pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewAuthenticatedOriginPulls(ctx, "myAop", &cloudflare.AuthenticatedOriginPullsArgs{
+//				ZoneId:  pulumi.Any(_var.Cloudflare_zone_id),
+//				Enabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myPerZoneAopCert, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "myPerZoneAopCert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
+//				ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
+//				Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
+//				PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
+//				Type:        pulumi.String("per-zone"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewAuthenticatedOriginPulls(ctx, "myPerZoneAop", &cloudflare.AuthenticatedOriginPullsArgs{
+//				ZoneId:                              pulumi.Any(_var.Cloudflare_zone_id),
+//				AuthenticatedOriginPullsCertificate: myPerZoneAopCert.ID(),
+//				Enabled:                             pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myPerHostnameAopCert, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "myPerHostnameAopCert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
+//				ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
+//				Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
+//				PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
+//				Type:        pulumi.String("per-hostname"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewAuthenticatedOriginPulls(ctx, "myPerHostnameAop", &cloudflare.AuthenticatedOriginPullsArgs{
+//				ZoneId:                              pulumi.Any(_var.Cloudflare_zone_id),
+//				AuthenticatedOriginPullsCertificate: myPerHostnameAopCert.ID(),
+//				Hostname:                            pulumi.String("aop.example.com"),
+//				Enabled:                             pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -79,19 +82,25 @@ import (
 // Authenticated Origin Pull configuration can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, with each section filled or left blank e.g. # Import Authenticated Origin Pull configuration
 //
 // ```sh
-//  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_aop 023e105f4ecef8ad9ca31a8372d0c353//
+//
+//	$ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_aop 023e105f4ecef8ad9ca31a8372d0c353//
+//
 // ```
 //
 // # Import Per-Zone Authenticated Origin Pull configuration
 //
 // ```sh
-//  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_zone_aop 023e105f4ecef8ad9ca31a8372d0c353/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60/
+//
+//	$ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_zone_aop 023e105f4ecef8ad9ca31a8372d0c353/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60/
+//
 // ```
 //
 // # Import Per-Hostname Authenticated Origin Pull configuration
 //
 // ```sh
-//  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_hostname_aop 023e105f4ecef8ad9ca31a8372d0c353/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60/aop.example.com
+//
+//	$ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_hostname_aop 023e105f4ecef8ad9ca31a8372d0c353/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60/aop.example.com
+//
 // ```
 type AuthenticatedOriginPulls struct {
 	pulumi.CustomResourceState
@@ -215,7 +224,7 @@ func (i *AuthenticatedOriginPulls) ToAuthenticatedOriginPullsOutputWithContext(c
 // AuthenticatedOriginPullsArrayInput is an input type that accepts AuthenticatedOriginPullsArray and AuthenticatedOriginPullsArrayOutput values.
 // You can construct a concrete instance of `AuthenticatedOriginPullsArrayInput` via:
 //
-//          AuthenticatedOriginPullsArray{ AuthenticatedOriginPullsArgs{...} }
+//	AuthenticatedOriginPullsArray{ AuthenticatedOriginPullsArgs{...} }
 type AuthenticatedOriginPullsArrayInput interface {
 	pulumi.Input
 
@@ -240,7 +249,7 @@ func (i AuthenticatedOriginPullsArray) ToAuthenticatedOriginPullsArrayOutputWith
 // AuthenticatedOriginPullsMapInput is an input type that accepts AuthenticatedOriginPullsMap and AuthenticatedOriginPullsMapOutput values.
 // You can construct a concrete instance of `AuthenticatedOriginPullsMapInput` via:
 //
-//          AuthenticatedOriginPullsMap{ "key": AuthenticatedOriginPullsArgs{...} }
+//	AuthenticatedOriginPullsMap{ "key": AuthenticatedOriginPullsArgs{...} }
 type AuthenticatedOriginPullsMapInput interface {
 	pulumi.Input
 

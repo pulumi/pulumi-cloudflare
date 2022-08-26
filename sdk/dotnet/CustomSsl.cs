@@ -15,31 +15,29 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var cloudflareZoneId = config.Get("cloudflareZoneId") ?? "1d5fdc9e88c8a8c4518b068cd94331fe";
+    ///     // Add a custom ssl certificate to the domain
+    ///     var foossl = new Cloudflare.CustomSsl("foossl", new()
     ///     {
-    ///         var config = new Config();
-    ///         var cloudflareZoneId = config.Get("cloudflareZoneId") ?? "1d5fdc9e88c8a8c4518b068cd94331fe";
-    ///         // Add a custom ssl certificate to the domain
-    ///         var foossl = new Cloudflare.CustomSsl("foossl", new Cloudflare.CustomSslArgs
+    ///         CustomSslOptions = new Cloudflare.Inputs.CustomSslCustomSslOptionsArgs
     ///         {
-    ///             CustomSslOptions = new Cloudflare.Inputs.CustomSslCustomSslOptionsArgs
-    ///             {
-    ///                 BundleMethod = "ubiquitous",
-    ///                 Certificate = "-----INSERT CERTIFICATE-----",
-    ///                 GeoRestrictions = "us",
-    ///                 PrivateKey = "-----INSERT PRIVATE KEY-----",
-    ///                 Type = "legacy_custom",
-    ///             },
-    ///             ZoneId = cloudflareZoneId,
-    ///         });
-    ///     }
+    ///             BundleMethod = "ubiquitous",
+    ///             Certificate = "-----INSERT CERTIFICATE-----",
+    ///             GeoRestrictions = "us",
+    ///             PrivateKey = "-----INSERT PRIVATE KEY-----",
+    ///             Type = "legacy_custom",
+    ///         },
+    ///         ZoneId = cloudflareZoneId,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,7 +49,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/customSsl:CustomSsl")]
-    public partial class CustomSsl : Pulumi.CustomResource
+    public partial class CustomSsl : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
@@ -136,7 +134,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class CustomSslArgs : Pulumi.ResourceArgs
+    public sealed class CustomSslArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
@@ -161,9 +159,10 @@ namespace Pulumi.Cloudflare
         public CustomSslArgs()
         {
         }
+        public static new CustomSslArgs Empty => new CustomSslArgs();
     }
 
-    public sealed class CustomSslState : Pulumi.ResourceArgs
+    public sealed class CustomSslState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
@@ -217,5 +216,6 @@ namespace Pulumi.Cloudflare
         public CustomSslState()
         {
         }
+        public static new CustomSslState Empty => new CustomSslState();
     }
 }

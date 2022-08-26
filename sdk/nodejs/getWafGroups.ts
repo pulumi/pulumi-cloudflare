@@ -24,6 +24,9 @@ export function getWafGroups(args: GetWafGroupsArgs, opts?: pulumi.InvokeOptions
 export interface GetWafGroupsArgs {
     filter?: inputs.GetWafGroupsFilter;
     packageId?: string;
+    /**
+     * The zone identifier to target for the resource.
+     */
     zoneId: string;
 }
 
@@ -38,6 +41,9 @@ export interface GetWafGroupsResult {
      */
     readonly id: string;
     readonly packageId?: string;
+    /**
+     * The zone identifier to target for the resource.
+     */
     readonly zoneId: string;
 }
 
@@ -51,5 +57,8 @@ export function getWafGroupsOutput(args: GetWafGroupsOutputArgs, opts?: pulumi.I
 export interface GetWafGroupsOutputArgs {
     filter?: pulumi.Input<inputs.GetWafGroupsFilterArgs>;
     packageId?: pulumi.Input<string>;
+    /**
+     * The zone identifier to target for the resource.
+     */
     zoneId: pulumi.Input<string>;
 }

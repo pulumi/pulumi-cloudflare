@@ -12,16 +12,23 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a resource which manages Cloudflare API tokens.
     /// 
-    /// Read more about permission groups and their applicable scopes in the [developer documentation](https://developers.cloudflare.com/api/tokens/create/permissions).
+    /// Read more about permission groups and their applicable scopes in the
+    /// [developer documentation](https://developers.cloudflare.com/api/tokens/create/permissions).
     /// </summary>
     [CloudflareResourceType("cloudflare:index/apiToken:ApiToken")]
-    public partial class ApiToken : Pulumi.CustomResource
+    public partial class ApiToken : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Conditions under which the token should be considered valid.
         /// </summary>
         [Output("condition")]
         public Output<Outputs.ApiTokenCondition?> Condition { get; private set; } = null!;
+
+        /// <summary>
+        /// The expiration time on or after which the token MUST NOT be accepted for processing.
+        /// </summary>
+        [Output("expiresOn")]
+        public Output<string?> ExpiresOn { get; private set; } = null!;
 
         /// <summary>
         /// Timestamp of when the token was issued.
@@ -40,6 +47,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The time before which the token MUST NOT be accepted for processing.
+        /// </summary>
+        [Output("notBefore")]
+        public Output<string?> NotBefore { get; private set; } = null!;
 
         /// <summary>
         /// Permissions policy. Multiple policy blocks can be defined.
@@ -100,7 +113,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class ApiTokenArgs : Pulumi.ResourceArgs
+    public sealed class ApiTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Conditions under which the token should be considered valid.
@@ -109,10 +122,22 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.ApiTokenConditionArgs>? Condition { get; set; }
 
         /// <summary>
+        /// The expiration time on or after which the token MUST NOT be accepted for processing.
+        /// </summary>
+        [Input("expiresOn")]
+        public Input<string>? ExpiresOn { get; set; }
+
+        /// <summary>
         /// Name of the API Token.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The time before which the token MUST NOT be accepted for processing.
+        /// </summary>
+        [Input("notBefore")]
+        public Input<string>? NotBefore { get; set; }
 
         [Input("policies", required: true)]
         private InputList<Inputs.ApiTokenPolicyArgs>? _policies;
@@ -129,15 +154,22 @@ namespace Pulumi.Cloudflare
         public ApiTokenArgs()
         {
         }
+        public static new ApiTokenArgs Empty => new ApiTokenArgs();
     }
 
-    public sealed class ApiTokenState : Pulumi.ResourceArgs
+    public sealed class ApiTokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Conditions under which the token should be considered valid.
         /// </summary>
         [Input("condition")]
         public Input<Inputs.ApiTokenConditionGetArgs>? Condition { get; set; }
+
+        /// <summary>
+        /// The expiration time on or after which the token MUST NOT be accepted for processing.
+        /// </summary>
+        [Input("expiresOn")]
+        public Input<string>? ExpiresOn { get; set; }
 
         /// <summary>
         /// Timestamp of when the token was issued.
@@ -156,6 +188,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The time before which the token MUST NOT be accepted for processing.
+        /// </summary>
+        [Input("notBefore")]
+        public Input<string>? NotBefore { get; set; }
 
         [Input("policies")]
         private InputList<Inputs.ApiTokenPolicyGetArgs>? _policies;
@@ -181,5 +219,6 @@ namespace Pulumi.Cloudflare
         public ApiTokenState()
         {
         }
+        public static new ApiTokenState Empty => new ApiTokenState();
     }
 }

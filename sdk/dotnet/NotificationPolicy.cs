@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource, that manages a notification policy for Cloudflare's products. The delivery mechanisms supported are email, webhooks, and PagerDuty.
+    /// Provides a resource, that manages a notification policy for
+    /// Cloudflare's products. The delivery mechanisms supported are email,
+    /// webhooks, and PagerDuty.
     /// 
     /// ## Import
     /// 
@@ -19,7 +21,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/notificationPolicy:NotificationPolicy")]
-    public partial class NotificationPolicy : Pulumi.CustomResource
+    public partial class NotificationPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -28,11 +30,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of
-        /// [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available
-        /// values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`,
-        /// `universal_ssl_event_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`,
-        /// `weekly_account_overview`
+        /// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`, `universal_ssl_event_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`, `weekly_account_overview`, `expiring_service_token_alert`, `secondary_dns_all_primaries_failing`, `secondary_dns_zone_validation_warning`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `dos_attack_l7`, `dos_attack_l4`, `advanced_ddos_attack_l7_alert`, `advanced_ddos_attack_l4_alert`, `fbm_volumetric_attack`, `fbm_auto_advertisement`, `load_balancing_pool_enablement_alert`, `load_balancing_health_alert`, `g6_health_alert`, `http_alert_edge_error`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `failing_logpush_job_disabled_alert`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_scripts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_max_length_script_url`, `scriptmonitor_alert_new_malicious_hosts`, `sentinel_alert`, `hostname_aop_custom_certificate_expiration_type`, `stream_live_notifications`, `block_notification_new_block`, `block_notification_review_rejected`, `block_notification_review_accepted`, `web_analytics_metrics_update`, `workers_uptime`.
         /// </summary>
         [Output("alertType")]
         public Output<string> AlertType { get; private set; } = null!;
@@ -50,8 +48,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is
-        /// required.
+        /// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
         /// </summary>
         [Output("emailIntegrations")]
         public Output<ImmutableArray<Outputs.NotificationPolicyEmailIntegration>> EmailIntegrations { get; private set; } = null!;
@@ -63,8 +60,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type
-        /// of filter and the values to match against (refer to the alert type block for available fields).
+        /// An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
         /// </summary>
         [Output("filters")]
         public Output<Outputs.NotificationPolicyFilters?> Filters { get; private set; } = null!;
@@ -82,15 +78,13 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks,
-        /// or PagerDuty mechanisms is required.
+        /// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
         /// </summary>
         [Output("pagerdutyIntegrations")]
         public Output<ImmutableArray<Outputs.NotificationPolicyPagerdutyIntegration>> PagerdutyIntegrations { get; private set; } = null!;
 
         /// <summary>
-        /// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks,
-        /// or PagerDuty mechanisms is required.
+        /// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
         /// </summary>
         [Output("webhooksIntegrations")]
         public Output<ImmutableArray<Outputs.NotificationPolicyWebhooksIntegration>> WebhooksIntegrations { get; private set; } = null!;
@@ -139,7 +133,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class NotificationPolicyArgs : Pulumi.ResourceArgs
+    public sealed class NotificationPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -148,11 +142,7 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of
-        /// [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available
-        /// values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`,
-        /// `universal_ssl_event_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`,
-        /// `weekly_account_overview`
+        /// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`, `universal_ssl_event_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`, `weekly_account_overview`, `expiring_service_token_alert`, `secondary_dns_all_primaries_failing`, `secondary_dns_zone_validation_warning`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `dos_attack_l7`, `dos_attack_l4`, `advanced_ddos_attack_l7_alert`, `advanced_ddos_attack_l4_alert`, `fbm_volumetric_attack`, `fbm_auto_advertisement`, `load_balancing_pool_enablement_alert`, `load_balancing_health_alert`, `g6_health_alert`, `http_alert_edge_error`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `failing_logpush_job_disabled_alert`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_scripts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_max_length_script_url`, `scriptmonitor_alert_new_malicious_hosts`, `sentinel_alert`, `hostname_aop_custom_certificate_expiration_type`, `stream_live_notifications`, `block_notification_new_block`, `block_notification_review_rejected`, `block_notification_review_accepted`, `web_analytics_metrics_update`, `workers_uptime`.
         /// </summary>
         [Input("alertType", required: true)]
         public Input<string> AlertType { get; set; } = null!;
@@ -167,8 +157,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.NotificationPolicyEmailIntegrationArgs>? _emailIntegrations;
 
         /// <summary>
-        /// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is
-        /// required.
+        /// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
         /// </summary>
         public InputList<Inputs.NotificationPolicyEmailIntegrationArgs> EmailIntegrations
         {
@@ -183,8 +172,7 @@ namespace Pulumi.Cloudflare
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type
-        /// of filter and the values to match against (refer to the alert type block for available fields).
+        /// An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
         /// </summary>
         [Input("filters")]
         public Input<Inputs.NotificationPolicyFiltersArgs>? Filters { get; set; }
@@ -199,8 +187,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.NotificationPolicyPagerdutyIntegrationArgs>? _pagerdutyIntegrations;
 
         /// <summary>
-        /// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks,
-        /// or PagerDuty mechanisms is required.
+        /// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
         /// </summary>
         public InputList<Inputs.NotificationPolicyPagerdutyIntegrationArgs> PagerdutyIntegrations
         {
@@ -212,8 +199,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.NotificationPolicyWebhooksIntegrationArgs>? _webhooksIntegrations;
 
         /// <summary>
-        /// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks,
-        /// or PagerDuty mechanisms is required.
+        /// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
         /// </summary>
         public InputList<Inputs.NotificationPolicyWebhooksIntegrationArgs> WebhooksIntegrations
         {
@@ -224,9 +210,10 @@ namespace Pulumi.Cloudflare
         public NotificationPolicyArgs()
         {
         }
+        public static new NotificationPolicyArgs Empty => new NotificationPolicyArgs();
     }
 
-    public sealed class NotificationPolicyState : Pulumi.ResourceArgs
+    public sealed class NotificationPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -235,11 +222,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of
-        /// [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available
-        /// values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`,
-        /// `universal_ssl_event_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`,
-        /// `weekly_account_overview`
+        /// The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`, `universal_ssl_event_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`, `weekly_account_overview`, `expiring_service_token_alert`, `secondary_dns_all_primaries_failing`, `secondary_dns_zone_validation_warning`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `dos_attack_l7`, `dos_attack_l4`, `advanced_ddos_attack_l7_alert`, `advanced_ddos_attack_l4_alert`, `fbm_volumetric_attack`, `fbm_auto_advertisement`, `load_balancing_pool_enablement_alert`, `load_balancing_health_alert`, `g6_health_alert`, `http_alert_edge_error`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `failing_logpush_job_disabled_alert`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_scripts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_max_length_script_url`, `scriptmonitor_alert_new_malicious_hosts`, `sentinel_alert`, `hostname_aop_custom_certificate_expiration_type`, `stream_live_notifications`, `block_notification_new_block`, `block_notification_review_rejected`, `block_notification_review_accepted`, `web_analytics_metrics_update`, `workers_uptime`.
         /// </summary>
         [Input("alertType")]
         public Input<string>? AlertType { get; set; }
@@ -260,8 +243,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.NotificationPolicyEmailIntegrationGetArgs>? _emailIntegrations;
 
         /// <summary>
-        /// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is
-        /// required.
+        /// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
         /// </summary>
         public InputList<Inputs.NotificationPolicyEmailIntegrationGetArgs> EmailIntegrations
         {
@@ -276,8 +258,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type
-        /// of filter and the values to match against (refer to the alert type block for available fields).
+        /// An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
         /// </summary>
         [Input("filters")]
         public Input<Inputs.NotificationPolicyFiltersGetArgs>? Filters { get; set; }
@@ -298,8 +279,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.NotificationPolicyPagerdutyIntegrationGetArgs>? _pagerdutyIntegrations;
 
         /// <summary>
-        /// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks,
-        /// or PagerDuty mechanisms is required.
+        /// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
         /// </summary>
         public InputList<Inputs.NotificationPolicyPagerdutyIntegrationGetArgs> PagerdutyIntegrations
         {
@@ -311,8 +291,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.NotificationPolicyWebhooksIntegrationGetArgs>? _webhooksIntegrations;
 
         /// <summary>
-        /// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks,
-        /// or PagerDuty mechanisms is required.
+        /// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
         /// </summary>
         public InputList<Inputs.NotificationPolicyWebhooksIntegrationGetArgs> WebhooksIntegrations
         {
@@ -323,5 +302,6 @@ namespace Pulumi.Cloudflare
         public NotificationPolicyState()
         {
         }
+        public static new NotificationPolicyState Empty => new NotificationPolicyState();
     }
 }

@@ -10,13 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class AccessPolicyExcludeOktaArgs : Pulumi.ResourceArgs
+    public sealed class AccessPolicyExcludeOktaArgs : global::Pulumi.ResourceArgs
     {
         [Input("identityProviderId")]
         public Input<string>? IdentityProviderId { get; set; }
 
         [Input("names")]
         private InputList<string>? _names;
+
+        /// <summary>
+        /// Friendly name of the Access Policy.
+        /// </summary>
         public InputList<string> Names
         {
             get => _names ?? (_names = new InputList<string>());
@@ -26,5 +30,6 @@ namespace Pulumi.Cloudflare.Inputs
         public AccessPolicyExcludeOktaArgs()
         {
         }
+        public static new AccessPolicyExcludeOktaArgs Empty => new AccessPolicyExcludeOktaArgs();
     }
 }

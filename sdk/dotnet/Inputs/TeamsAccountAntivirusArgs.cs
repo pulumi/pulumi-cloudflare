@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class TeamsAccountAntivirusArgs : Pulumi.ResourceArgs
+    public sealed class TeamsAccountAntivirusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Scan on file download.
@@ -33,5 +33,6 @@ namespace Pulumi.Cloudflare.Inputs
         public TeamsAccountAntivirusArgs()
         {
         }
+        public static new TeamsAccountAntivirusArgs Empty => new TeamsAccountAntivirusArgs();
     }
 }

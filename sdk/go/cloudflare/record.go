@@ -19,42 +19,45 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewRecord(ctx, "foobar", &cloudflare.RecordArgs{
-// 			ZoneId: pulumi.Any(_var.Cloudflare_zone_id),
-// 			Name:   pulumi.String("terraform"),
-// 			Value:  pulumi.String("192.168.0.11"),
-// 			Type:   pulumi.String("A"),
-// 			Ttl:    pulumi.Int(3600),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewRecord(ctx, "_sipTls", &cloudflare.RecordArgs{
-// 			ZoneId: pulumi.Any(_var.Cloudflare_zone_id),
-// 			Name:   pulumi.String("_sip._tls"),
-// 			Type:   pulumi.String("SRV"),
-// 			Data: &RecordDataArgs{
-// 				Service:  pulumi.String("_sip"),
-// 				Proto:    pulumi.String("_tls"),
-// 				Name:     pulumi.String("terraform-srv"),
-// 				Priority: pulumi.Int(0),
-// 				Weight:   pulumi.Int(0),
-// 				Port:     pulumi.Int(443),
-// 				Target:   pulumi.String("example.com"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewRecord(ctx, "foobar", &cloudflare.RecordArgs{
+//				ZoneId: pulumi.Any(_var.Cloudflare_zone_id),
+//				Name:   pulumi.String("terraform"),
+//				Value:  pulumi.String("192.168.0.11"),
+//				Type:   pulumi.String("A"),
+//				Ttl:    pulumi.Int(3600),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewRecord(ctx, "_sipTls", &cloudflare.RecordArgs{
+//				ZoneId: pulumi.Any(_var.Cloudflare_zone_id),
+//				Name:   pulumi.String("_sip._tls"),
+//				Type:   pulumi.String("SRV"),
+//				Data: &RecordDataArgs{
+//					Service:  pulumi.String("_sip"),
+//					Proto:    pulumi.String("_tls"),
+//					Name:     pulumi.String("terraform-srv"),
+//					Priority: pulumi.Int(0),
+//					Weight:   pulumi.Int(0),
+//					Port:     pulumi.Int(443),
+//					Target:   pulumi.String("example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -62,10 +65,12 @@ import (
 // Records can be imported using a composite ID formed of zone ID and record ID, e.g.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/record:Record default ae36f999674d196762efcc5abb06b345/d41d8cd98f00b204e9800998ecf8427e
+//
+//	$ pulumi import cloudflare:index/record:Record default ae36f999674d196762efcc5abb06b345/d41d8cd98f00b204e9800998ecf8427e
+//
 // ```
 //
-//  where- `ae36f999674d196762efcc5abb06b345` - the zone ID - `d41d8cd98f00b204e9800998ecf8427e` - record ID as returned by [API](https://api.cloudflare.com/#dns-records-for-a-zone-list-dns-records)
+//	where- `ae36f999674d196762efcc5abb06b345` - the zone ID - `d41d8cd98f00b204e9800998ecf8427e` - record ID as returned by [API](https://api.cloudflare.com/#dns-records-for-a-zone-list-dns-records)
 type Record struct {
 	pulumi.CustomResourceState
 
@@ -266,7 +271,7 @@ func (i *Record) ToRecordOutputWithContext(ctx context.Context) RecordOutput {
 // RecordArrayInput is an input type that accepts RecordArray and RecordArrayOutput values.
 // You can construct a concrete instance of `RecordArrayInput` via:
 //
-//          RecordArray{ RecordArgs{...} }
+//	RecordArray{ RecordArgs{...} }
 type RecordArrayInput interface {
 	pulumi.Input
 
@@ -291,7 +296,7 @@ func (i RecordArray) ToRecordArrayOutputWithContext(ctx context.Context) RecordA
 // RecordMapInput is an input type that accepts RecordMap and RecordMapOutput values.
 // You can construct a concrete instance of `RecordMapInput` via:
 //
-//          RecordMap{ "key": RecordArgs{...} }
+//	RecordMap{ "key": RecordArgs{...} }
 type RecordMapInput interface {
 	pulumi.Input
 

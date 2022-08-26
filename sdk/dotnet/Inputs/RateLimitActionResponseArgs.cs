@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RateLimitActionResponseArgs : Pulumi.ResourceArgs
+    public sealed class RateLimitActionResponseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The body to return, the content here should conform to the content_type.
@@ -27,5 +27,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RateLimitActionResponseArgs()
         {
         }
+        public static new RateLimitActionResponseArgs Empty => new RateLimitActionResponseArgs();
     }
 }

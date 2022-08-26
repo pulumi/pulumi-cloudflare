@@ -10,27 +10,27 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Filter expressions that can be referenced across multiple features, e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/) for more details and available fields and operators.
+    /// Filter expressions that can be referenced across multiple features,
+    /// e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/)
+    /// for more details and available fields and operators.
     /// 
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var wordpress = new Cloudflare.Filter("wordpress", new()
     ///     {
-    ///         var wordpress = new Cloudflare.Filter("wordpress", new Cloudflare.FilterArgs
-    ///         {
-    ///             Description = "Wordpress break-in attempts that are outside of the office",
-    ///             Expression = "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1",
-    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///         });
-    ///     }
+    ///         Description = "Wordpress break-in attempts that are outside of the office",
+    ///         Expression = "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -40,7 +40,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/filter:Filter")]
-    public partial class Filter : Pulumi.CustomResource
+    public partial class Filter : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A note that you can use to describe the purpose of the filter.
@@ -116,7 +116,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class FilterArgs : Pulumi.ResourceArgs
+    public sealed class FilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A note that you can use to describe the purpose of the filter.
@@ -151,9 +151,10 @@ namespace Pulumi.Cloudflare
         public FilterArgs()
         {
         }
+        public static new FilterArgs Empty => new FilterArgs();
     }
 
-    public sealed class FilterState : Pulumi.ResourceArgs
+    public sealed class FilterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A note that you can use to describe the purpose of the filter.
@@ -188,5 +189,6 @@ namespace Pulumi.Cloudflare
         public FilterState()
         {
         }
+        public static new FilterState Empty => new FilterState();
     }
 }

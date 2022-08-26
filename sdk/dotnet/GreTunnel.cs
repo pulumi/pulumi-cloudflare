@@ -15,30 +15,28 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Cloudflare.GreTunnel("example", new()
     ///     {
-    ///         var example = new Cloudflare.GreTunnel("example", new Cloudflare.GreTunnelArgs
-    ///         {
-    ///             AccountId = "c4a7362d577a6c3019a474fd6f485821",
-    ///             CloudflareGreEndpoint = "203.0.113.1",
-    ///             CustomerGreEndpoint = "203.0.113.1",
-    ///             Description = "Tunnel for ISP X",
-    ///             HealthCheckEnabled = true,
-    ///             HealthCheckTarget = "203.0.113.1",
-    ///             HealthCheckType = "reply",
-    ///             InterfaceAddress = "192.0.2.0/31",
-    ///             Mtu = 1476,
-    ///             Name = "GRE_1",
-    ///             Ttl = 64,
-    ///         });
-    ///     }
+    ///         AccountId = "c4a7362d577a6c3019a474fd6f485821",
+    ///         CloudflareGreEndpoint = "203.0.113.1",
+    ///         CustomerGreEndpoint = "203.0.113.1",
+    ///         Description = "Tunnel for ISP X",
+    ///         HealthCheckEnabled = true,
+    ///         HealthCheckTarget = "203.0.113.1",
+    ///         HealthCheckType = "reply",
+    ///         InterfaceAddress = "192.0.2.0/31",
+    ///         Mtu = 1476,
+    ///         Name = "GRE_1",
+    ///         Ttl = 64,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/greTunnel:GreTunnel")]
-    public partial class GreTunnel : Pulumi.CustomResource
+    public partial class GreTunnel : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the account where the tunnel is being created.
@@ -162,7 +160,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class GreTunnelArgs : Pulumi.ResourceArgs
+    public sealed class GreTunnelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the account where the tunnel is being created.
@@ -233,9 +231,10 @@ namespace Pulumi.Cloudflare
         public GreTunnelArgs()
         {
         }
+        public static new GreTunnelArgs Empty => new GreTunnelArgs();
     }
 
-    public sealed class GreTunnelState : Pulumi.ResourceArgs
+    public sealed class GreTunnelState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the account where the tunnel is being created.
@@ -306,5 +305,6 @@ namespace Pulumi.Cloudflare
         public GreTunnelState()
         {
         }
+        public static new GreTunnelState Empty => new GreTunnelState();
     }
 }

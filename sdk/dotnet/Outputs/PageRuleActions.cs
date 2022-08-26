@@ -14,10 +14,6 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class PageRuleActions
     {
         /// <summary>
-        /// Whether this action is `"on"` or `"off"`.
-        /// </summary>
-        public readonly string? AlwaysOnline;
-        /// <summary>
         /// Boolean of whether this action is enabled. Default: false.
         /// </summary>
         public readonly bool? AlwaysUseHttps;
@@ -168,8 +164,6 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private PageRuleActions(
-            string? alwaysOnline,
-
             bool? alwaysUseHttps,
 
             string? automaticHttpsRewrites,
@@ -244,7 +238,6 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? waf)
         {
-            AlwaysOnline = alwaysOnline;
             AlwaysUseHttps = alwaysUseHttps;
             AutomaticHttpsRewrites = automaticHttpsRewrites;
             BrowserCacheTtl = browserCacheTtl;

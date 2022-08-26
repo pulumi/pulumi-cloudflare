@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class TeamsAccountLoggingGetArgs : Pulumi.ResourceArgs
+    public sealed class TeamsAccountLoggingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Redact personally identifiable information from activity logging (PII fields are: source IP,
@@ -29,5 +29,6 @@ namespace Pulumi.Cloudflare.Inputs
         public TeamsAccountLoggingGetArgs()
         {
         }
+        public static new TeamsAccountLoggingGetArgs Empty => new TeamsAccountLoggingGetArgs();
     }
 }

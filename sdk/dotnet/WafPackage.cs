@@ -15,23 +15,21 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var owasp = new Cloudflare.WafPackage("owasp", new()
     ///     {
-    ///         var owasp = new Cloudflare.WafPackage("owasp", new Cloudflare.WafPackageArgs
-    ///         {
-    ///             ActionMode = "simulate",
-    ///             PackageId = "a25a9a7e9c00afc1fb2e0245519d725b",
-    ///             Sensitivity = "medium",
-    ///             ZoneId = "ae36f999674d196762efcc5abb06b345",
-    ///         });
-    ///     }
+    ///         ActionMode = "simulate",
+    ///         PackageId = "a25a9a7e9c00afc1fb2e0245519d725b",
+    ///         Sensitivity = "medium",
+    ///         ZoneId = "ae36f999674d196762efcc5abb06b345",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,7 +41,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/wafPackage:WafPackage")]
-    public partial class WafPackage : Pulumi.CustomResource
+    public partial class WafPackage : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The action mode of the package, can be one of ["block", "challenge", "simulate"].
@@ -113,7 +111,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class WafPackageArgs : Pulumi.ResourceArgs
+    public sealed class WafPackageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The action mode of the package, can be one of ["block", "challenge", "simulate"].
@@ -142,9 +140,10 @@ namespace Pulumi.Cloudflare
         public WafPackageArgs()
         {
         }
+        public static new WafPackageArgs Empty => new WafPackageArgs();
     }
 
-    public sealed class WafPackageState : Pulumi.ResourceArgs
+    public sealed class WafPackageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The action mode of the package, can be one of ["block", "challenge", "simulate"].
@@ -173,5 +172,6 @@ namespace Pulumi.Cloudflare
         public WafPackageState()
         {
         }
+        public static new WafPackageState Empty => new WafPackageState();
     }
 }

@@ -22,6 +22,9 @@ export function getWafPackages(args: GetWafPackagesArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetWafPackagesArgs {
     filter?: inputs.GetWafPackagesFilter;
+    /**
+     * The zone identifier to target for the resource.
+     */
     zoneId: string;
 }
 
@@ -35,6 +38,9 @@ export interface GetWafPackagesResult {
      */
     readonly id: string;
     readonly packages: outputs.GetWafPackagesPackage[];
+    /**
+     * The zone identifier to target for the resource.
+     */
     readonly zoneId: string;
 }
 
@@ -47,5 +53,8 @@ export function getWafPackagesOutput(args: GetWafPackagesOutputArgs, opts?: pulu
  */
 export interface GetWafPackagesOutputArgs {
     filter?: pulumi.Input<inputs.GetWafPackagesFilterArgs>;
+    /**
+     * The zone identifier to target for the resource.
+     */
     zoneId: pulumi.Input<string>;
 }

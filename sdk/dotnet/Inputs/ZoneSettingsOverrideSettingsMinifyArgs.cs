@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class ZoneSettingsOverrideSettingsMinifyArgs : Pulumi.ResourceArgs
+    public sealed class ZoneSettingsOverrideSettingsMinifyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// "on"/"off"
@@ -33,5 +33,6 @@ namespace Pulumi.Cloudflare.Inputs
         public ZoneSettingsOverrideSettingsMinifyArgs()
         {
         }
+        public static new ZoneSettingsOverrideSettingsMinifyArgs Empty => new ZoneSettingsOverrideSettingsMinifyArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RateLimitCorrelateArgs : Pulumi.ResourceArgs
+    public sealed class RateLimitCorrelateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set to 'nat', NAT support will be enabled for rate limiting.
@@ -21,5 +21,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RateLimitCorrelateArgs()
         {
         }
+        public static new RateLimitCorrelateArgs Empty => new RateLimitCorrelateArgs();
     }
 }

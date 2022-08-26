@@ -15,37 +15,35 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Add a page rule to the domain
+    ///     var foobar = new Cloudflare.PageRule("foobar", new()
     ///     {
-    ///         // Add a page rule to the domain
-    ///         var foobar = new Cloudflare.PageRule("foobar", new Cloudflare.PageRuleArgs
+    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         Target = $"sub.{@var.Cloudflare_zone}/page",
+    ///         Priority = 1,
+    ///         Actions = new Cloudflare.Inputs.PageRuleActionsArgs
     ///         {
-    ///             ZoneId = @var.Cloudflare_zone_id,
-    ///             Target = $"sub.{@var.Cloudflare_zone}/page",
-    ///             Priority = 1,
-    ///             Actions = new Cloudflare.Inputs.PageRuleActionsArgs
+    ///             Ssl = "flexible",
+    ///             EmailObfuscation = "on",
+    ///             Minifies = new[]
     ///             {
-    ///                 Ssl = "flexible",
-    ///                 EmailObfuscation = "on",
-    ///                 Minifies = 
+    ///                 new Cloudflare.Inputs.PageRuleActionsMinifyArgs
     ///                 {
-    ///                     new Cloudflare.Inputs.PageRuleActionsMinifyArgs
-    ///                     {
-    ///                         Html = "off",
-    ///                         Css = "on",
-    ///                         Js = "on",
-    ///                     },
+    ///                     Html = "off",
+    ///                     Css = "on",
+    ///                     Js = "on",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +55,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/pageRule:PageRule")]
-    public partial class PageRule : Pulumi.CustomResource
+    public partial class PageRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The actions taken by the page rule, options given below.
@@ -133,7 +131,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class PageRuleArgs : Pulumi.ResourceArgs
+    public sealed class PageRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The actions taken by the page rule, options given below.
@@ -168,9 +166,10 @@ namespace Pulumi.Cloudflare
         public PageRuleArgs()
         {
         }
+        public static new PageRuleArgs Empty => new PageRuleArgs();
     }
 
-    public sealed class PageRuleState : Pulumi.ResourceArgs
+    public sealed class PageRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The actions taken by the page rule, options given below.
@@ -205,5 +204,6 @@ namespace Pulumi.Cloudflare
         public PageRuleState()
         {
         }
+        public static new PageRuleState Empty => new PageRuleState();
     }
 }

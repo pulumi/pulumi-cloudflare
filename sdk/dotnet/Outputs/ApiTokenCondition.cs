@@ -13,6 +13,9 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ApiTokenCondition
     {
+        /// <summary>
+        /// Request IP related conditions.
+        /// </summary>
         public readonly Outputs.ApiTokenConditionRequestIp? RequestIp;
 
         [OutputConstructor]

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class PageRuleActionsCacheKeyFieldsCookieArgs : Pulumi.ResourceArgs
+    public sealed class PageRuleActionsCacheKeyFieldsCookieArgs : global::Pulumi.ResourceArgs
     {
         [Input("checkPresences")]
         private InputList<string>? _checkPresences;
@@ -39,5 +39,6 @@ namespace Pulumi.Cloudflare.Inputs
         public PageRuleActionsCacheKeyFieldsCookieArgs()
         {
         }
+        public static new PageRuleActionsCacheKeyFieldsCookieArgs Empty => new PageRuleActionsCacheKeyFieldsCookieArgs();
     }
 }

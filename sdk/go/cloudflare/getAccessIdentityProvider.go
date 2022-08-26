@@ -21,18 +21,22 @@ func LookupAccessIdentityProvider(ctx *pulumi.Context, args *LookupAccessIdentit
 
 // A collection of arguments for invoking getAccessIdentityProvider.
 type LookupAccessIdentityProviderArgs struct {
+	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
 	Name      string  `pulumi:"name"`
-	ZoneId    *string `pulumi:"zoneId"`
+	// The zone identifier to target for the resource.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getAccessIdentityProvider.
 type LookupAccessIdentityProviderResult struct {
+	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string  `pulumi:"id"`
-	Name   string  `pulumi:"name"`
-	Type   string  `pulumi:"type"`
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+	Type string `pulumi:"type"`
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -51,9 +55,11 @@ func LookupAccessIdentityProviderOutput(ctx *pulumi.Context, args LookupAccessId
 
 // A collection of arguments for invoking getAccessIdentityProvider.
 type LookupAccessIdentityProviderOutputArgs struct {
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	Name      pulumi.StringInput    `pulumi:"name"`
-	ZoneId    pulumi.StringPtrInput `pulumi:"zoneId"`
+	// The zone identifier to target for the resource.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupAccessIdentityProviderOutputArgs) ElementType() reflect.Type {
@@ -75,6 +81,7 @@ func (o LookupAccessIdentityProviderResultOutput) ToLookupAccessIdentityProvider
 	return o
 }
 
+// The account identifier to target for the resource.
 func (o LookupAccessIdentityProviderResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccessIdentityProviderResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -92,6 +99,7 @@ func (o LookupAccessIdentityProviderResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessIdentityProviderResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The zone identifier to target for the resource.
 func (o LookupAccessIdentityProviderResultOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccessIdentityProviderResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

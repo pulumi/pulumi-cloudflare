@@ -21,8 +21,14 @@ export function getAccessIdentityProvider(args: GetAccessIdentityProviderArgs, o
  * A collection of arguments for invoking getAccessIdentityProvider.
  */
 export interface GetAccessIdentityProviderArgs {
+    /**
+     * The account identifier to target for the resource.
+     */
     accountId?: string;
     name: string;
+    /**
+     * The zone identifier to target for the resource.
+     */
     zoneId?: string;
 }
 
@@ -30,6 +36,9 @@ export interface GetAccessIdentityProviderArgs {
  * A collection of values returned by getAccessIdentityProvider.
  */
 export interface GetAccessIdentityProviderResult {
+    /**
+     * The account identifier to target for the resource.
+     */
     readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -37,6 +46,9 @@ export interface GetAccessIdentityProviderResult {
     readonly id: string;
     readonly name: string;
     readonly type: string;
+    /**
+     * The zone identifier to target for the resource.
+     */
     readonly zoneId?: string;
 }
 
@@ -48,7 +60,13 @@ export function getAccessIdentityProviderOutput(args: GetAccessIdentityProviderO
  * A collection of arguments for invoking getAccessIdentityProvider.
  */
 export interface GetAccessIdentityProviderOutputArgs {
+    /**
+     * The account identifier to target for the resource.
+     */
     accountId?: pulumi.Input<string>;
     name: pulumi.Input<string>;
+    /**
+     * The zone identifier to target for the resource.
+     */
     zoneId?: pulumi.Input<string>;
 }

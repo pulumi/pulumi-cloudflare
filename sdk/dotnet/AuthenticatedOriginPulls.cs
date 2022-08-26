@@ -17,51 +17,53 @@ namespace Pulumi.Cloudflare
     /// The arguments that you provide determine which form of Authenticated Origin Pulls to use:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Authenticated Origin Pulls
+    ///     var myAop = new Cloudflare.AuthenticatedOriginPulls("myAop", new()
     ///     {
-    ///         // Authenticated Origin Pulls
-    ///         var myAop = new Cloudflare.AuthenticatedOriginPulls("myAop", new Cloudflare.AuthenticatedOriginPullsArgs
-    ///         {
-    ///             ZoneId = @var.Cloudflare_zone_id,
-    ///             Enabled = true,
-    ///         });
-    ///         // Per-Zone Authenticated Origin Pulls
-    ///         var myPerZoneAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert", new Cloudflare.AuthenticatedOriginPullsCertificateArgs
-    ///         {
-    ///             ZoneId = @var.Cloudflare_zone_id,
-    ///             Certificate = "-----INSERT CERTIFICATE-----",
-    ///             PrivateKey = "-----INSERT PRIVATE KEY-----",
-    ///             Type = "per-zone",
-    ///         });
-    ///         var myPerZoneAop = new Cloudflare.AuthenticatedOriginPulls("myPerZoneAop", new Cloudflare.AuthenticatedOriginPullsArgs
-    ///         {
-    ///             ZoneId = @var.Cloudflare_zone_id,
-    ///             AuthenticatedOriginPullsCertificate = myPerZoneAopCert.Id,
-    ///             Enabled = true,
-    ///         });
-    ///         // Per-Hostname Authenticated Origin Pulls
-    ///         var myPerHostnameAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", new Cloudflare.AuthenticatedOriginPullsCertificateArgs
-    ///         {
-    ///             ZoneId = @var.Cloudflare_zone_id,
-    ///             Certificate = "-----INSERT CERTIFICATE-----",
-    ///             PrivateKey = "-----INSERT PRIVATE KEY-----",
-    ///             Type = "per-hostname",
-    ///         });
-    ///         var myPerHostnameAop = new Cloudflare.AuthenticatedOriginPulls("myPerHostnameAop", new Cloudflare.AuthenticatedOriginPullsArgs
-    ///         {
-    ///             ZoneId = @var.Cloudflare_zone_id,
-    ///             AuthenticatedOriginPullsCertificate = myPerHostnameAopCert.Id,
-    ///             Hostname = "aop.example.com",
-    ///             Enabled = true,
-    ///         });
-    ///     }
+    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         Enabled = true,
+    ///     });
     /// 
-    /// }
+    ///     // Per-Zone Authenticated Origin Pulls
+    ///     var myPerZoneAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert", new()
+    ///     {
+    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         Certificate = "-----INSERT CERTIFICATE-----",
+    ///         PrivateKey = "-----INSERT PRIVATE KEY-----",
+    ///         Type = "per-zone",
+    ///     });
+    /// 
+    ///     var myPerZoneAop = new Cloudflare.AuthenticatedOriginPulls("myPerZoneAop", new()
+    ///     {
+    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         AuthenticatedOriginPullsCertificate = myPerZoneAopCert.Id,
+    ///         Enabled = true,
+    ///     });
+    /// 
+    ///     // Per-Hostname Authenticated Origin Pulls
+    ///     var myPerHostnameAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", new()
+    ///     {
+    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         Certificate = "-----INSERT CERTIFICATE-----",
+    ///         PrivateKey = "-----INSERT PRIVATE KEY-----",
+    ///         Type = "per-hostname",
+    ///     });
+    /// 
+    ///     var myPerHostnameAop = new Cloudflare.AuthenticatedOriginPulls("myPerHostnameAop", new()
+    ///     {
+    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         AuthenticatedOriginPullsCertificate = myPerHostnameAopCert.Id,
+    ///         Hostname = "aop.example.com",
+    ///         Enabled = true,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -85,7 +87,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls")]
-    public partial class AuthenticatedOriginPulls : Pulumi.CustomResource
+    public partial class AuthenticatedOriginPulls : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
@@ -155,7 +157,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class AuthenticatedOriginPullsArgs : Pulumi.ResourceArgs
+    public sealed class AuthenticatedOriginPullsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
@@ -184,9 +186,10 @@ namespace Pulumi.Cloudflare
         public AuthenticatedOriginPullsArgs()
         {
         }
+        public static new AuthenticatedOriginPullsArgs Empty => new AuthenticatedOriginPullsArgs();
     }
 
-    public sealed class AuthenticatedOriginPullsState : Pulumi.ResourceArgs
+    public sealed class AuthenticatedOriginPullsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
@@ -215,5 +218,6 @@ namespace Pulumi.Cloudflare
         public AuthenticatedOriginPullsState()
         {
         }
+        public static new AuthenticatedOriginPullsState Empty => new AuthenticatedOriginPullsState();
     }
 }

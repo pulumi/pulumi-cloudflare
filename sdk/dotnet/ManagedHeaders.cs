@@ -13,37 +13,35 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Enable security headers using Managed Meaders
+    ///     var example = new Cloudflare.ManagedHeaders("example", new()
     ///     {
-    ///         // Enable security headers using Managed Meaders
-    ///         var example = new Cloudflare.ManagedHeaders("example", new Cloudflare.ManagedHeadersArgs
+    ///         ManagedRequestHeaders = new[]
     ///         {
-    ///             ManagedRequestHeaders = 
+    ///             new Cloudflare.Inputs.ManagedHeadersManagedRequestHeaderArgs
     ///             {
-    ///                 new Cloudflare.Inputs.ManagedHeadersManagedRequestHeaderArgs
-    ///                 {
-    ///                     Enabled = true,
-    ///                     Id = "add_true_client_ip_headers",
-    ///                 },
+    ///                 Enabled = true,
+    ///                 Id = "add_true_client_ip_headers",
     ///             },
-    ///             ManagedResponseHeaders = 
+    ///         },
+    ///         ManagedResponseHeaders = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ManagedHeadersManagedResponseHeaderArgs
     ///             {
-    ///                 new Cloudflare.Inputs.ManagedHeadersManagedResponseHeaderArgs
-    ///                 {
-    ///                     Enabled = true,
-    ///                     Id = "remove_x-powered-by_header",
-    ///                 },
+    ///                 Enabled = true,
+    ///                 Id = "remove_x-powered-by_header",
     ///             },
-    ///             ZoneId = "cb029e245cfdd66dc8d2e570d5dd3322",
-    ///         });
-    ///     }
+    ///         },
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,16 +49,16 @@ namespace Pulumi.Cloudflare
     /// Import is not supported for this resource.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/managedHeaders:ManagedHeaders")]
-    public partial class ManagedHeaders : Pulumi.CustomResource
+    public partial class ManagedHeaders : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The list of managed request headers
+        /// The list of managed request headers.
         /// </summary>
         [Output("managedRequestHeaders")]
         public Output<ImmutableArray<Outputs.ManagedHeadersManagedRequestHeader>> ManagedRequestHeaders { get; private set; } = null!;
 
         /// <summary>
-        /// The list of managed response headers
+        /// The list of managed response headers.
         /// </summary>
         [Output("managedResponseHeaders")]
         public Output<ImmutableArray<Outputs.ManagedHeadersManagedResponseHeader>> ManagedResponseHeaders { get; private set; } = null!;
@@ -115,13 +113,13 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class ManagedHeadersArgs : Pulumi.ResourceArgs
+    public sealed class ManagedHeadersArgs : global::Pulumi.ResourceArgs
     {
         [Input("managedRequestHeaders")]
         private InputList<Inputs.ManagedHeadersManagedRequestHeaderArgs>? _managedRequestHeaders;
 
         /// <summary>
-        /// The list of managed request headers
+        /// The list of managed request headers.
         /// </summary>
         public InputList<Inputs.ManagedHeadersManagedRequestHeaderArgs> ManagedRequestHeaders
         {
@@ -133,7 +131,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ManagedHeadersManagedResponseHeaderArgs>? _managedResponseHeaders;
 
         /// <summary>
-        /// The list of managed response headers
+        /// The list of managed response headers.
         /// </summary>
         public InputList<Inputs.ManagedHeadersManagedResponseHeaderArgs> ManagedResponseHeaders
         {
@@ -150,15 +148,16 @@ namespace Pulumi.Cloudflare
         public ManagedHeadersArgs()
         {
         }
+        public static new ManagedHeadersArgs Empty => new ManagedHeadersArgs();
     }
 
-    public sealed class ManagedHeadersState : Pulumi.ResourceArgs
+    public sealed class ManagedHeadersState : global::Pulumi.ResourceArgs
     {
         [Input("managedRequestHeaders")]
         private InputList<Inputs.ManagedHeadersManagedRequestHeaderGetArgs>? _managedRequestHeaders;
 
         /// <summary>
-        /// The list of managed request headers
+        /// The list of managed request headers.
         /// </summary>
         public InputList<Inputs.ManagedHeadersManagedRequestHeaderGetArgs> ManagedRequestHeaders
         {
@@ -170,7 +169,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ManagedHeadersManagedResponseHeaderGetArgs>? _managedResponseHeaders;
 
         /// <summary>
-        /// The list of managed response headers
+        /// The list of managed response headers.
         /// </summary>
         public InputList<Inputs.ManagedHeadersManagedResponseHeaderGetArgs> ManagedResponseHeaders
         {
@@ -187,5 +186,6 @@ namespace Pulumi.Cloudflare
         public ManagedHeadersState()
         {
         }
+        public static new ManagedHeadersState Empty => new ManagedHeadersState();
     }
 }

@@ -10,16 +10,36 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RulesetRuleActionParametersGetArgs : Pulumi.ResourceArgs
+    public sealed class RulesetRuleActionParametersGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("automaticHttpsRewrites")]
+        public Input<bool>? AutomaticHttpsRewrites { get; set; }
+
+        [Input("autominifies")]
+        private InputList<Inputs.RulesetRuleActionParametersAutominifyGetArgs>? _autominifies;
+        public InputList<Inputs.RulesetRuleActionParametersAutominifyGetArgs> Autominifies
+        {
+            get => _autominifies ?? (_autominifies = new InputList<Inputs.RulesetRuleActionParametersAutominifyGetArgs>());
+            set => _autominifies = value;
+        }
+
+        [Input("bic")]
+        public Input<bool>? Bic { get; set; }
+
         [Input("browserTtl")]
         public Input<Inputs.RulesetRuleActionParametersBrowserTtlGetArgs>? BrowserTtl { get; set; }
 
-        [Input("bypassCache")]
-        public Input<bool>? BypassCache { get; set; }
+        [Input("cache")]
+        public Input<bool>? Cache { get; set; }
 
         [Input("cacheKey")]
         public Input<Inputs.RulesetRuleActionParametersCacheKeyGetArgs>? CacheKey { get; set; }
+
+        [Input("content")]
+        public Input<string>? Content { get; set; }
+
+        [Input("contentType")]
+        public Input<string>? ContentType { get; set; }
 
         [Input("cookieFields")]
         private InputList<string>? _cookieFields;
@@ -29,11 +49,26 @@ namespace Pulumi.Cloudflare.Inputs
             set => _cookieFields = value;
         }
 
+        [Input("disableApps")]
+        public Input<bool>? DisableApps { get; set; }
+
+        [Input("disableRailgun")]
+        public Input<bool>? DisableRailgun { get; set; }
+
+        [Input("disableZaraz")]
+        public Input<bool>? DisableZaraz { get; set; }
+
         [Input("edgeTtl")]
         public Input<Inputs.RulesetRuleActionParametersEdgeTtlGetArgs>? EdgeTtl { get; set; }
 
+        [Input("emailObfuscation")]
+        public Input<bool>? EmailObfuscation { get; set; }
+
         [Input("fromList")]
         public Input<Inputs.RulesetRuleActionParametersFromListGetArgs>? FromList { get; set; }
+
+        [Input("fromValue")]
+        public Input<Inputs.RulesetRuleActionParametersFromValueGetArgs>? FromValue { get; set; }
 
         [Input("headers")]
         private InputList<Inputs.RulesetRuleActionParametersHeaderGetArgs>? _headers;
@@ -46,6 +81,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("hostHeader")]
         public Input<string>? HostHeader { get; set; }
 
+        [Input("hotlinkProtection")]
+        public Input<bool>? HotlinkProtection { get; set; }
+
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
@@ -54,6 +95,12 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("matchedData")]
         public Input<Inputs.RulesetRuleActionParametersMatchedDataGetArgs>? MatchedData { get; set; }
+
+        [Input("mirage")]
+        public Input<bool>? Mirage { get; set; }
+
+        [Input("opportunisticEncryption")]
+        public Input<bool>? OpportunisticEncryption { get; set; }
 
         [Input("origin")]
         public Input<Inputs.RulesetRuleActionParametersOriginGetArgs>? Origin { get; set; }
@@ -71,6 +118,9 @@ namespace Pulumi.Cloudflare.Inputs
             get => _phases ?? (_phases = new InputList<string>());
             set => _phases = value;
         }
+
+        [Input("polish")]
+        public Input<string>? Polish { get; set; }
 
         [Input("products")]
         private InputList<string>? _products;
@@ -107,8 +157,15 @@ namespace Pulumi.Cloudflare.Inputs
             set => _responses = value;
         }
 
+        [Input("rocketLoader")]
+        public Input<bool>? RocketLoader { get; set; }
+
         [Input("rules")]
         private InputMap<string>? _rules;
+
+        /// <summary>
+        /// List of rules to apply to the ruleset.
+        /// </summary>
         public InputMap<string> Rules
         {
             get => _rules ?? (_rules = new InputMap<string>());
@@ -126,8 +183,26 @@ namespace Pulumi.Cloudflare.Inputs
             set => _rulesets = value;
         }
 
+        [Input("securityLevel")]
+        public Input<string>? SecurityLevel { get; set; }
+
         [Input("serveStale")]
         public Input<Inputs.RulesetRuleActionParametersServeStaleGetArgs>? ServeStale { get; set; }
+
+        [Input("serverSideExcludes")]
+        public Input<bool>? ServerSideExcludes { get; set; }
+
+        [Input("sni")]
+        public Input<Inputs.RulesetRuleActionParametersSniGetArgs>? Sni { get; set; }
+
+        [Input("ssl")]
+        public Input<string>? Ssl { get; set; }
+
+        [Input("statusCode")]
+        public Input<int>? StatusCode { get; set; }
+
+        [Input("sxg")]
+        public Input<bool>? Sxg { get; set; }
 
         [Input("uri")]
         public Input<Inputs.RulesetRuleActionParametersUriGetArgs>? Uri { get; set; }
@@ -138,5 +213,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RulesetRuleActionParametersGetArgs()
         {
         }
+        public static new RulesetRuleActionParametersGetArgs Empty => new RulesetRuleActionParametersGetArgs();
     }
 }

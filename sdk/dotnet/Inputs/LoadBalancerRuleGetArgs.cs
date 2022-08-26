@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class LoadBalancerRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The statement to evaluate to determine if this rules effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
@@ -63,5 +63,6 @@ namespace Pulumi.Cloudflare.Inputs
         public LoadBalancerRuleGetArgs()
         {
         }
+        public static new LoadBalancerRuleGetArgs Empty => new LoadBalancerRuleGetArgs();
     }
 }

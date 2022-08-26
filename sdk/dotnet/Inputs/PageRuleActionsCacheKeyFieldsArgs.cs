@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class PageRuleActionsCacheKeyFieldsArgs : Pulumi.ResourceArgs
+    public sealed class PageRuleActionsCacheKeyFieldsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Controls what cookies go into Cache Key:
@@ -45,5 +45,6 @@ namespace Pulumi.Cloudflare.Inputs
         public PageRuleActionsCacheKeyFieldsArgs()
         {
         }
+        public static new PageRuleActionsCacheKeyFieldsArgs Empty => new PageRuleActionsCacheKeyFieldsArgs();
     }
 }

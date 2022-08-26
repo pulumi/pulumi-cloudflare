@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class PageRuleActionsCacheKeyFieldsHostGetArgs : Pulumi.ResourceArgs
+    public sealed class PageRuleActionsCacheKeyFieldsHostGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
@@ -21,5 +21,6 @@ namespace Pulumi.Cloudflare.Inputs
         public PageRuleActionsCacheKeyFieldsHostGetArgs()
         {
         }
+        public static new PageRuleActionsCacheKeyFieldsHostGetArgs Empty => new PageRuleActionsCacheKeyFieldsHostGetArgs();
     }
 }

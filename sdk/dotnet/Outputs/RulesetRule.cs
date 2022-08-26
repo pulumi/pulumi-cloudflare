@@ -13,16 +13,49 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRule
     {
+        /// <summary>
+        /// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `serve_error`, `skip`.
+        /// </summary>
         public readonly string? Action;
+        /// <summary>
+        /// List of parameters that configure the behavior of the ruleset rule action.
+        /// </summary>
         public readonly Outputs.RulesetRuleActionParameters? ActionParameters;
+        /// <summary>
+        /// Brief summary of the ruleset rule and its intended use.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// Whether the rule is active.
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// List of parameters that configure exposed credential checks.
+        /// </summary>
         public readonly Outputs.RulesetRuleExposedCredentialCheck? ExposedCredentialCheck;
+        /// <summary>
+        /// Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        /// </summary>
         public readonly string Expression;
+        /// <summary>
+        /// Unique rule identifier.
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// List parameters to configure how the rule generates logs.
+        /// </summary>
         public readonly Outputs.RulesetRuleLogging? Logging;
+        /// <summary>
+        /// List of parameters that configure HTTP rate limiting behaviour.
+        /// </summary>
         public readonly Outputs.RulesetRuleRatelimit? Ratelimit;
+        /// <summary>
+        /// Rule reference.
+        /// </summary>
         public readonly string? Ref;
+        /// <summary>
+        /// Version of the ruleset to deploy.
+        /// </summary>
         public readonly string? Version;
 
         [OutputConstructor]

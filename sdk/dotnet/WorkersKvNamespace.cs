@@ -15,20 +15,18 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Cloudflare.WorkersKvNamespace("example", new()
     ///     {
-    ///         var example = new Cloudflare.WorkersKvNamespace("example", new Cloudflare.WorkersKvNamespaceArgs
-    ///         {
-    ///             Title = "test-namespace",
-    ///         });
-    ///     }
+    ///         Title = "test-namespace",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +40,7 @@ namespace Pulumi.Cloudflare
     ///  where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workersKvNamespace:WorkersKvNamespace")]
-    public partial class WorkersKvNamespace : Pulumi.CustomResource
+    public partial class WorkersKvNamespace : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the namespace you wish to create.
@@ -94,7 +92,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class WorkersKvNamespaceArgs : Pulumi.ResourceArgs
+    public sealed class WorkersKvNamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the namespace you wish to create.
@@ -105,9 +103,10 @@ namespace Pulumi.Cloudflare
         public WorkersKvNamespaceArgs()
         {
         }
+        public static new WorkersKvNamespaceArgs Empty => new WorkersKvNamespaceArgs();
     }
 
-    public sealed class WorkersKvNamespaceState : Pulumi.ResourceArgs
+    public sealed class WorkersKvNamespaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the namespace you wish to create.
@@ -118,5 +117,6 @@ namespace Pulumi.Cloudflare
         public WorkersKvNamespaceState()
         {
         }
+        public static new WorkersKvNamespaceState Empty => new WorkersKvNamespaceState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class DevicePostureRuleMatchArgs : Pulumi.ResourceArgs
+    public sealed class DevicePostureRuleMatchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The platform of the device. Valid values are `windows`, `mac`, `linux`, `android`, and `ios`.
@@ -21,5 +21,6 @@ namespace Pulumi.Cloudflare.Inputs
         public DevicePostureRuleMatchArgs()
         {
         }
+        public static new DevicePostureRuleMatchArgs Empty => new DevicePostureRuleMatchArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class AccessGroupExcludeOktaArgs : Pulumi.ResourceArgs
+    public sealed class AccessGroupExcludeOktaArgs : global::Pulumi.ResourceArgs
     {
         [Input("identityProviderId")]
         public Input<string>? IdentityProviderId { get; set; }
@@ -26,5 +26,6 @@ namespace Pulumi.Cloudflare.Inputs
         public AccessGroupExcludeOktaArgs()
         {
         }
+        public static new AccessGroupExcludeOktaArgs Empty => new AccessGroupExcludeOktaArgs();
     }
 }

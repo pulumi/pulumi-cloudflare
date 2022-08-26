@@ -5,10 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Define Firewall rules using filter expressions for more control over how traffic is matched to the rule.
- * A filter expression permits selecting traffic by multiple criteria allowing greater freedom in rule creation.
+ * Define Firewall rules using filter expressions for more control over
+ * how traffic is matched to the rule. A filter expression permits
+ * selecting traffic by multiple criteria allowing greater freedom in
+ * rule creation.
  *
- * Filter expressions needs to be created first before using Firewall Rule.
+ * Filter expressions needs to be created first before using Firewall
+ * Rule.
  *
  * > If you want to configure Custom Firewall rules, you need to use
  * `cloudflare.Ruleset`, because Custom Rules are built upon the
@@ -21,12 +24,12 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const wordpressFilter = new cloudflare.Filter("wordpressFilter", {
- *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     description: "Wordpress break-in attempts that are outside of the office",
  *     expression: "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1",
  * });
  * const wordpressFirewallRule = new cloudflare.FirewallRule("wordpressFirewallRule", {
- *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     description: "Block wordpress break-in attempts",
  *     filterId: wordpressFilter.id,
  *     action: "block",
@@ -68,8 +71,7 @@ export class FirewallRule extends pulumi.CustomResource {
     }
 
     /**
-     * The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`,
-     * `managed_challenge`, `log`, `bypass`
+     * The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `jsChallenge`, `managedChallenge`, `log`, `bypass`.
      */
     public readonly action!: pulumi.Output<string>;
     /**
@@ -85,13 +87,11 @@ export class FirewallRule extends pulumi.CustomResource {
      */
     public readonly paused!: pulumi.Output<boolean | undefined>;
     /**
-     * The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided,
-     * any rules with a priority will be sequenced before those without.
+     * The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
      */
     public readonly priority!: pulumi.Output<number | undefined>;
     /**
-     * List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`,
-     * `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`
+     * List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
      */
     public readonly products!: pulumi.Output<string[] | undefined>;
     /**
@@ -148,8 +148,7 @@ export class FirewallRule extends pulumi.CustomResource {
  */
 export interface FirewallRuleState {
     /**
-     * The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`,
-     * `managed_challenge`, `log`, `bypass`
+     * The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `jsChallenge`, `managedChallenge`, `log`, `bypass`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -165,13 +164,11 @@ export interface FirewallRuleState {
      */
     paused?: pulumi.Input<boolean>;
     /**
-     * The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided,
-     * any rules with a priority will be sequenced before those without.
+     * The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
      */
     priority?: pulumi.Input<number>;
     /**
-     * List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`,
-     * `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`
+     * List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
      */
     products?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -185,8 +182,7 @@ export interface FirewallRuleState {
  */
 export interface FirewallRuleArgs {
     /**
-     * The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`,
-     * `managed_challenge`, `log`, `bypass`
+     * The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `jsChallenge`, `managedChallenge`, `log`, `bypass`.
      */
     action: pulumi.Input<string>;
     /**
@@ -202,13 +198,11 @@ export interface FirewallRuleArgs {
      */
     paused?: pulumi.Input<boolean>;
     /**
-     * The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided,
-     * any rules with a priority will be sequenced before those without.
+     * The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
      */
     priority?: pulumi.Input<number>;
     /**
-     * List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`,
-     * `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`
+     * List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
      */
     products?: pulumi.Input<pulumi.Input<string>[]>;
     /**

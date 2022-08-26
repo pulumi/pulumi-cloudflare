@@ -10,14 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class PageRuleActionsGetArgs : Pulumi.ResourceArgs
+    public sealed class PageRuleActionsGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether this action is `"on"` or `"off"`.
-        /// </summary>
-        [Input("alwaysOnline")]
-        public Input<string>? AlwaysOnline { get; set; }
-
         /// <summary>
         /// Boolean of whether this action is enabled. Default: false.
         /// </summary>
@@ -255,5 +249,6 @@ namespace Pulumi.Cloudflare.Inputs
         public PageRuleActionsGetArgs()
         {
         }
+        public static new PageRuleActionsGetArgs Empty => new PageRuleActionsGetArgs();
     }
 }

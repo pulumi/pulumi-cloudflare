@@ -15,22 +15,20 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Cloudflare.ByoIpPrefix("example", new()
     ///     {
-    ///         var example = new Cloudflare.ByoIpPrefix("example", new Cloudflare.ByoIpPrefixArgs
-    ///         {
-    ///             Advertisement = "on",
-    ///             Description = "Example IP Prefix",
-    ///             PrefixId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///         });
-    ///     }
+    ///         Advertisement = "on",
+    ///         Description = "Example IP Prefix",
+    ///         PrefixId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +40,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/byoIpPrefix:ByoIpPrefix")]
-    public partial class ByoIpPrefix : Pulumi.CustomResource
+    public partial class ByoIpPrefix : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -112,7 +110,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class ByoIpPrefixArgs : Pulumi.ResourceArgs
+    public sealed class ByoIpPrefixArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -141,9 +139,10 @@ namespace Pulumi.Cloudflare
         public ByoIpPrefixArgs()
         {
         }
+        public static new ByoIpPrefixArgs Empty => new ByoIpPrefixArgs();
     }
 
-    public sealed class ByoIpPrefixState : Pulumi.ResourceArgs
+    public sealed class ByoIpPrefixState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -172,5 +171,6 @@ namespace Pulumi.Cloudflare
         public ByoIpPrefixState()
         {
         }
+        public static new ByoIpPrefixState Empty => new ByoIpPrefixState();
     }
 }

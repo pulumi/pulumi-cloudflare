@@ -15,35 +15,33 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Restrict access to these endpoints to requests from a known IP address range.
+    ///     var endpointLockdown = new Cloudflare.ZoneLockdown("endpointLockdown", new()
     ///     {
-    ///         // Restrict access to these endpoints to requests from a known IP address range.
-    ///         var endpointLockdown = new Cloudflare.ZoneLockdown("endpointLockdown", new Cloudflare.ZoneLockdownArgs
+    ///         Configurations = new[]
     ///         {
-    ///             Configurations = 
+    ///             new Cloudflare.Inputs.ZoneLockdownConfigurationArgs
     ///             {
-    ///                 new Cloudflare.Inputs.ZoneLockdownConfigurationArgs
-    ///                 {
-    ///                     Target = "ip_range",
-    ///                     Value = "198.51.100.0/16",
-    ///                 },
+    ///                 Target = "ip_range",
+    ///                 Value = "198.51.100.0/16",
     ///             },
-    ///             Description = "Restrict access to these endpoints to requests from a known IP address range",
-    ///             Paused = false,
-    ///             Urls = 
-    ///             {
-    ///                 "api.mysite.com/some/endpoint*",
-    ///             },
-    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///         });
-    ///     }
+    ///         },
+    ///         Description = "Restrict access to these endpoints to requests from a known IP address range",
+    ///         Paused = false,
+    ///         Urls = new[]
+    ///         {
+    ///             "api.mysite.com/some/endpoint*",
+    ///         },
+    ///         ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +55,7 @@ namespace Pulumi.Cloudflare
     ///  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules)
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zoneLockdown:ZoneLockdown")]
-    public partial class ZoneLockdown : Pulumi.CustomResource
+    public partial class ZoneLockdown : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
@@ -136,7 +134,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class ZoneLockdownArgs : Pulumi.ResourceArgs
+    public sealed class ZoneLockdownArgs : global::Pulumi.ResourceArgs
     {
         [Input("configurations", required: true)]
         private InputList<Inputs.ZoneLockdownConfigurationArgs>? _configurations;
@@ -186,9 +184,10 @@ namespace Pulumi.Cloudflare
         public ZoneLockdownArgs()
         {
         }
+        public static new ZoneLockdownArgs Empty => new ZoneLockdownArgs();
     }
 
-    public sealed class ZoneLockdownState : Pulumi.ResourceArgs
+    public sealed class ZoneLockdownState : global::Pulumi.ResourceArgs
     {
         [Input("configurations")]
         private InputList<Inputs.ZoneLockdownConfigurationGetArgs>? _configurations;
@@ -238,5 +237,6 @@ namespace Pulumi.Cloudflare
         public ZoneLockdownState()
         {
         }
+        public static new ZoneLockdownState Empty => new ZoneLockdownState();
     }
 }

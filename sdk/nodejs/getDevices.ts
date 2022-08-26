@@ -20,6 +20,9 @@ export function getDevices(args: GetDevicesArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getDevices.
  */
 export interface GetDevicesArgs {
+    /**
+     * The account identifier to target for the resource.
+     */
     accountId: string;
 }
 
@@ -27,6 +30,9 @@ export interface GetDevicesArgs {
  * A collection of values returned by getDevices.
  */
 export interface GetDevicesResult {
+    /**
+     * The account identifier to target for the resource.
+     */
     readonly accountId: string;
     readonly devices: outputs.GetDevicesDevice[];
     /**
@@ -43,5 +49,8 @@ export function getDevicesOutput(args: GetDevicesOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getDevices.
  */
 export interface GetDevicesOutputArgs {
+    /**
+     * The account identifier to target for the resource.
+     */
     accountId: pulumi.Input<string>;
 }

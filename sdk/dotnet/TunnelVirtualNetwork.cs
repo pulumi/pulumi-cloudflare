@@ -10,29 +10,28 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource, that manages Cloudflare tunnel virtual networks for Zero Trust. Tunnel
-    /// virtual networks are used for segregation of Tunnel IP Routes via Virtualized Networks to
-    /// handle overlapping private IPs in your origins.
+    /// Provides a resource, that manages Cloudflare tunnel virtual networks
+    /// for Zero Trust. Tunnel virtual networks are used for segregation of
+    /// Tunnel IP Routes via Virtualized Networks to handle overlapping
+    /// private IPs in your origins.
     /// 
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Cloudflare.TunnelVirtualNetwork("example", new()
     ///     {
-    ///         var example = new Cloudflare.TunnelVirtualNetwork("example", new Cloudflare.TunnelVirtualNetworkArgs
-    ///         {
-    ///             AccountId = "c4a7362d577a6c3019a474fd6f485821",
-    ///             Comment = "New tunnel virtual network for documentation",
-    ///             Name = "vnet-for-documentation",
-    ///         });
-    ///     }
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Comment = "New tunnel virtual network for documentation",
+    ///         Name = "vnet-for-documentation",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +41,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork")]
-    public partial class TunnelVirtualNetwork : Pulumi.CustomResource
+    public partial class TunnelVirtualNetwork : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -57,8 +56,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and
-        /// Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+        /// Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
         /// </summary>
         [Output("isDefaultNetwork")]
         public Output<bool?> IsDefaultNetwork { get; private set; } = null!;
@@ -113,7 +111,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class TunnelVirtualNetworkArgs : Pulumi.ResourceArgs
+    public sealed class TunnelVirtualNetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -128,8 +126,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and
-        /// Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+        /// Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
         /// </summary>
         [Input("isDefaultNetwork")]
         public Input<bool>? IsDefaultNetwork { get; set; }
@@ -143,9 +140,10 @@ namespace Pulumi.Cloudflare
         public TunnelVirtualNetworkArgs()
         {
         }
+        public static new TunnelVirtualNetworkArgs Empty => new TunnelVirtualNetworkArgs();
     }
 
-    public sealed class TunnelVirtualNetworkState : Pulumi.ResourceArgs
+    public sealed class TunnelVirtualNetworkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -160,8 +158,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and
-        /// Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+        /// Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
         /// </summary>
         [Input("isDefaultNetwork")]
         public Input<bool>? IsDefaultNetwork { get; set; }
@@ -175,5 +172,6 @@ namespace Pulumi.Cloudflare
         public TunnelVirtualNetworkState()
         {
         }
+        public static new TunnelVirtualNetworkState Empty => new TunnelVirtualNetworkState();
     }
 }

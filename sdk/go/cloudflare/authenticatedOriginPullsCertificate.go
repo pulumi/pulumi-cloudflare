@@ -19,33 +19,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "myPerZoneAopCert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
-// 			Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
-// 			PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
-// 			Type:        pulumi.String("per-zone"),
-// 			ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "myPerHostnameAopCert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
-// 			Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
-// 			PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
-// 			Type:        pulumi.String("per-hostname"),
-// 			ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "myPerZoneAopCert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
+//				Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
+//				PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
+//				Type:        pulumi.String("per-zone"),
+//				ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "myPerHostnameAopCert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
+//				Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
+//				PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
+//				Type:        pulumi.String("per-hostname"),
+//				ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -53,13 +56,17 @@ import (
 // Authenticated Origin Pull certificates can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, e.g. # Import Per-Zone Authenticated Origin Pull certificate
 //
 // ```sh
-//  $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-zone/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
+//
+//	$ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-zone/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
+//
 // ```
 //
 // # Import Per-Hostname Authenticated Origin Pull certificate
 //
 // ```sh
-//  $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-hostname/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
+//
+//	$ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-hostname/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
+//
 // ```
 type AuthenticatedOriginPullsCertificate struct {
 	pulumi.CustomResourceState
@@ -207,7 +214,7 @@ func (i *AuthenticatedOriginPullsCertificate) ToAuthenticatedOriginPullsCertific
 // AuthenticatedOriginPullsCertificateArrayInput is an input type that accepts AuthenticatedOriginPullsCertificateArray and AuthenticatedOriginPullsCertificateArrayOutput values.
 // You can construct a concrete instance of `AuthenticatedOriginPullsCertificateArrayInput` via:
 //
-//          AuthenticatedOriginPullsCertificateArray{ AuthenticatedOriginPullsCertificateArgs{...} }
+//	AuthenticatedOriginPullsCertificateArray{ AuthenticatedOriginPullsCertificateArgs{...} }
 type AuthenticatedOriginPullsCertificateArrayInput interface {
 	pulumi.Input
 
@@ -232,7 +239,7 @@ func (i AuthenticatedOriginPullsCertificateArray) ToAuthenticatedOriginPullsCert
 // AuthenticatedOriginPullsCertificateMapInput is an input type that accepts AuthenticatedOriginPullsCertificateMap and AuthenticatedOriginPullsCertificateMapOutput values.
 // You can construct a concrete instance of `AuthenticatedOriginPullsCertificateMapInput` via:
 //
-//          AuthenticatedOriginPullsCertificateMap{ "key": AuthenticatedOriginPullsCertificateArgs{...} }
+//	AuthenticatedOriginPullsCertificateMap{ "key": AuthenticatedOriginPullsCertificateArgs{...} }
 type AuthenticatedOriginPullsCertificateMapInput interface {
 	pulumi.Input
 

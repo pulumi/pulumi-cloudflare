@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class LoadBalancerRuleFixedResponseGetArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerRuleFixedResponseGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The value of the HTTP context-type header for this fixed response.
@@ -39,5 +39,6 @@ namespace Pulumi.Cloudflare.Inputs
         public LoadBalancerRuleFixedResponseGetArgs()
         {
         }
+        public static new LoadBalancerRuleFixedResponseGetArgs Empty => new LoadBalancerRuleFixedResponseGetArgs();
     }
 }

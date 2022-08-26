@@ -19,78 +19,87 @@ import (
 // package main
 //
 // import (
-// 	"encoding/base64"
-// 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"encoding/base64"
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func filebase64OrPanic(path string) pulumi.StringPtrInput {
-// 	if fileData, err := ioutil.ReadFile(path); err == nil {
-// 		return pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))
-// 	} else {
-// 		panic(err.Error())
-// 	}
-// }
+//	func filebase64OrPanic(path string) pulumi.StringPtrInput {
+//		if fileData, err := ioutil.ReadFile(path); err == nil {
+//			return pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))
+//		} else {
+//			panic(err.Error())
+//		}
+//	}
 //
-// func readFileOrPanic(path string) pulumi.StringPtrInput {
-// 	data, err := ioutil.ReadFile(path)
-// 	if err != nil {
-// 		panic(err.Error())
-// 	}
-// 	return pulumi.String(string(data))
-// }
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myNamespace, err := cloudflare.NewWorkersKvNamespace(ctx, "myNamespace", &cloudflare.WorkersKvNamespaceArgs{
-// 			Title: pulumi.String("example"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewWorkerScript(ctx, "myScript", &cloudflare.WorkerScriptArgs{
-// 			Name:    pulumi.String("script_1"),
-// 			Content: readFileOrPanic("script.js"),
-// 			KvNamespaceBindings: WorkerScriptKvNamespaceBindingArray{
-// 				&WorkerScriptKvNamespaceBindingArgs{
-// 					Name:        pulumi.String("MY_EXAMPLE_KV_NAMESPACE"),
-// 					NamespaceId: myNamespace.ID(),
-// 				},
-// 			},
-// 			PlainTextBindings: WorkerScriptPlainTextBindingArray{
-// 				&WorkerScriptPlainTextBindingArgs{
-// 					Name: pulumi.String("MY_EXAMPLE_PLAIN_TEXT"),
-// 					Text: pulumi.String("foobar"),
-// 				},
-// 			},
-// 			SecretTextBindings: WorkerScriptSecretTextBindingArray{
-// 				&WorkerScriptSecretTextBindingArgs{
-// 					Name: pulumi.String("MY_EXAMPLE_SECRET_TEXT"),
-// 					Text: pulumi.Any(_var.Secret_foo_value),
-// 				},
-// 			},
-// 			WebassemblyBindings: WorkerScriptWebassemblyBindingArray{
-// 				&WorkerScriptWebassemblyBindingArgs{
-// 					Name:   pulumi.String("MY_EXAMPLE_WASM"),
-// 					Module: filebase64OrPanic("example.wasm"),
-// 				},
-// 			},
-// 			ServiceBindings: WorkerScriptServiceBindingArray{
-// 				&WorkerScriptServiceBindingArgs{
-// 					Name:        pulumi.String("MY_SERVICE_BINDING"),
-// 					Service:     pulumi.String("MY_SERVICE"),
-// 					Environment: pulumi.String("production"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myNamespace, err := cloudflare.NewWorkersKvNamespace(ctx, "myNamespace", &cloudflare.WorkersKvNamespaceArgs{
+//				Title: pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewWorkerScript(ctx, "myScript", &cloudflare.WorkerScriptArgs{
+//				Name:    pulumi.String("script_1"),
+//				Content: readFileOrPanic("script.js"),
+//				KvNamespaceBindings: WorkerScriptKvNamespaceBindingArray{
+//					&WorkerScriptKvNamespaceBindingArgs{
+//						Name:        pulumi.String("MY_EXAMPLE_KV_NAMESPACE"),
+//						NamespaceId: myNamespace.ID(),
+//					},
+//				},
+//				PlainTextBindings: WorkerScriptPlainTextBindingArray{
+//					&WorkerScriptPlainTextBindingArgs{
+//						Name: pulumi.String("MY_EXAMPLE_PLAIN_TEXT"),
+//						Text: pulumi.String("foobar"),
+//					},
+//				},
+//				SecretTextBindings: WorkerScriptSecretTextBindingArray{
+//					&WorkerScriptSecretTextBindingArgs{
+//						Name: pulumi.String("MY_EXAMPLE_SECRET_TEXT"),
+//						Text: pulumi.Any(_var.Secret_foo_value),
+//					},
+//				},
+//				WebassemblyBindings: WorkerScriptWebassemblyBindingArray{
+//					&WorkerScriptWebassemblyBindingArgs{
+//						Name:   pulumi.String("MY_EXAMPLE_WASM"),
+//						Module: filebase64OrPanic("example.wasm"),
+//					},
+//				},
+//				ServiceBindings: WorkerScriptServiceBindingArray{
+//					&WorkerScriptServiceBindingArgs{
+//						Name:        pulumi.String("MY_SERVICE_BINDING"),
+//						Service:     pulumi.String("MY_SERVICE"),
+//						Environment: pulumi.String("production"),
+//					},
+//				},
+//				R2BucketBindings: WorkerScriptR2BucketBindingArray{
+//					&WorkerScriptR2BucketBindingArgs{
+//						Name:       pulumi.String("MY_BUCKET"),
+//						BucketName: pulumi.String("MY_BUCKET_NAME"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -98,10 +107,12 @@ import (
 // To import a script, use a script name, e.g. `script_name`
 //
 // ```sh
-//  $ pulumi import cloudflare:index/workerScript:WorkerScript default script_name
+//
+//	$ pulumi import cloudflare:index/workerScript:WorkerScript default script_name
+//
 // ```
 //
-//  where- `script_name` - the script name
+//	where- `script_name` - the script name
 type WorkerScript struct {
 	pulumi.CustomResourceState
 
@@ -111,6 +122,7 @@ type WorkerScript struct {
 	// The global variable for the binding in your Worker code.
 	Name                pulumi.StringOutput                       `pulumi:"name"`
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayOutput   `pulumi:"plainTextBindings"`
+	R2BucketBindings    WorkerScriptR2BucketBindingArrayOutput    `pulumi:"r2BucketBindings"`
 	SecretTextBindings  WorkerScriptSecretTextBindingArrayOutput  `pulumi:"secretTextBindings"`
 	ServiceBindings     WorkerScriptServiceBindingArrayOutput     `pulumi:"serviceBindings"`
 	WebassemblyBindings WorkerScriptWebassemblyBindingArrayOutput `pulumi:"webassemblyBindings"`
@@ -157,6 +169,7 @@ type workerScriptState struct {
 	// The global variable for the binding in your Worker code.
 	Name                *string                          `pulumi:"name"`
 	PlainTextBindings   []WorkerScriptPlainTextBinding   `pulumi:"plainTextBindings"`
+	R2BucketBindings    []WorkerScriptR2BucketBinding    `pulumi:"r2BucketBindings"`
 	SecretTextBindings  []WorkerScriptSecretTextBinding  `pulumi:"secretTextBindings"`
 	ServiceBindings     []WorkerScriptServiceBinding     `pulumi:"serviceBindings"`
 	WebassemblyBindings []WorkerScriptWebassemblyBinding `pulumi:"webassemblyBindings"`
@@ -169,6 +182,7 @@ type WorkerScriptState struct {
 	// The global variable for the binding in your Worker code.
 	Name                pulumi.StringPtrInput
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayInput
+	R2BucketBindings    WorkerScriptR2BucketBindingArrayInput
 	SecretTextBindings  WorkerScriptSecretTextBindingArrayInput
 	ServiceBindings     WorkerScriptServiceBindingArrayInput
 	WebassemblyBindings WorkerScriptWebassemblyBindingArrayInput
@@ -185,6 +199,7 @@ type workerScriptArgs struct {
 	// The global variable for the binding in your Worker code.
 	Name                string                           `pulumi:"name"`
 	PlainTextBindings   []WorkerScriptPlainTextBinding   `pulumi:"plainTextBindings"`
+	R2BucketBindings    []WorkerScriptR2BucketBinding    `pulumi:"r2BucketBindings"`
 	SecretTextBindings  []WorkerScriptSecretTextBinding  `pulumi:"secretTextBindings"`
 	ServiceBindings     []WorkerScriptServiceBinding     `pulumi:"serviceBindings"`
 	WebassemblyBindings []WorkerScriptWebassemblyBinding `pulumi:"webassemblyBindings"`
@@ -198,6 +213,7 @@ type WorkerScriptArgs struct {
 	// The global variable for the binding in your Worker code.
 	Name                pulumi.StringInput
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayInput
+	R2BucketBindings    WorkerScriptR2BucketBindingArrayInput
 	SecretTextBindings  WorkerScriptSecretTextBindingArrayInput
 	ServiceBindings     WorkerScriptServiceBindingArrayInput
 	WebassemblyBindings WorkerScriptWebassemblyBindingArrayInput
@@ -229,7 +245,7 @@ func (i *WorkerScript) ToWorkerScriptOutputWithContext(ctx context.Context) Work
 // WorkerScriptArrayInput is an input type that accepts WorkerScriptArray and WorkerScriptArrayOutput values.
 // You can construct a concrete instance of `WorkerScriptArrayInput` via:
 //
-//          WorkerScriptArray{ WorkerScriptArgs{...} }
+//	WorkerScriptArray{ WorkerScriptArgs{...} }
 type WorkerScriptArrayInput interface {
 	pulumi.Input
 
@@ -254,7 +270,7 @@ func (i WorkerScriptArray) ToWorkerScriptArrayOutputWithContext(ctx context.Cont
 // WorkerScriptMapInput is an input type that accepts WorkerScriptMap and WorkerScriptMapOutput values.
 // You can construct a concrete instance of `WorkerScriptMapInput` via:
 //
-//          WorkerScriptMap{ "key": WorkerScriptArgs{...} }
+//	WorkerScriptMap{ "key": WorkerScriptArgs{...} }
 type WorkerScriptMapInput interface {
 	pulumi.Input
 
@@ -306,6 +322,10 @@ func (o WorkerScriptOutput) Name() pulumi.StringOutput {
 
 func (o WorkerScriptOutput) PlainTextBindings() WorkerScriptPlainTextBindingArrayOutput {
 	return o.ApplyT(func(v *WorkerScript) WorkerScriptPlainTextBindingArrayOutput { return v.PlainTextBindings }).(WorkerScriptPlainTextBindingArrayOutput)
+}
+
+func (o WorkerScriptOutput) R2BucketBindings() WorkerScriptR2BucketBindingArrayOutput {
+	return o.ApplyT(func(v *WorkerScript) WorkerScriptR2BucketBindingArrayOutput { return v.R2BucketBindings }).(WorkerScriptR2BucketBindingArrayOutput)
 }
 
 func (o WorkerScriptOutput) SecretTextBindings() WorkerScriptSecretTextBindingArrayOutput {

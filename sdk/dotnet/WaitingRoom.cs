@@ -15,26 +15,24 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Waiting Room
+    ///     var example = new Cloudflare.WaitingRoom("example", new()
     ///     {
-    ///         // Waiting Room
-    ///         var example = new Cloudflare.WaitingRoom("example", new Cloudflare.WaitingRoomArgs
-    ///         {
-    ///             Host = "foo.example.com",
-    ///             Name = "foo",
-    ///             NewUsersPerMinute = 200,
-    ///             Path = "/",
-    ///             TotalActiveUsers = 200,
-    ///             ZoneId = "ae36f999674d196762efcc5abb06b345",
-    ///         });
-    ///     }
+    ///         Host = "foo.example.com",
+    ///         Name = "foo",
+    ///         NewUsersPerMinute = 200,
+    ///         Path = "/",
+    ///         TotalActiveUsers = 200,
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/waitingRoom:WaitingRoom")]
-    public partial class WaitingRoom : Pulumi.CustomResource
+    public partial class WaitingRoom : global::Pulumi.CustomResource
     {
         /// <summary>
         /// This is a templated html file that will be rendered at the edge.
@@ -55,8 +53,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> CustomPageHtml { get; private set; } = null!;
 
         /// <summary>
-        /// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
-        /// `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+        /// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`. Defaults to `en-US`.
         /// </summary>
         [Output("defaultTemplateLanguage")]
         public Output<string?> DefaultTemplateLanguage { get; private set; } = null!;
@@ -74,7 +71,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> DisableSessionRenewal { get; private set; } = null!;
 
         /// <summary>
-        /// Host name for which the waiting room will be applied (no wildcards)
+        /// Host name for which the waiting room will be applied (no wildcards).
         /// </summary>
         [Output("host")]
         public Output<string> Host { get; private set; } = null!;
@@ -98,7 +95,7 @@ namespace Pulumi.Cloudflare
         public Output<int> NewUsersPerMinute { get; private set; } = null!;
 
         /// <summary>
-        /// The path within the host to enable the waiting room on.
+        /// The path within the host to enable the waiting room on. Defaults to `/`.
         /// </summary>
         [Output("path")]
         public Output<string?> Path { get; private set; } = null!;
@@ -110,13 +107,13 @@ namespace Pulumi.Cloudflare
         public Output<bool?> QueueAll { get; private set; } = null!;
 
         /// <summary>
-        /// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+        /// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
         /// </summary>
         [Output("queueingMethod")]
         public Output<string?> QueueingMethod { get; private set; } = null!;
 
         /// <summary>
-        /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+        /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
         /// </summary>
         [Output("sessionDuration")]
         public Output<int?> SessionDuration { get; private set; } = null!;
@@ -183,7 +180,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class WaitingRoomArgs : Pulumi.ResourceArgs
+    public sealed class WaitingRoomArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is a templated html file that will be rendered at the edge.
@@ -192,8 +189,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CustomPageHtml { get; set; }
 
         /// <summary>
-        /// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
-        /// `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+        /// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`. Defaults to `en-US`.
         /// </summary>
         [Input("defaultTemplateLanguage")]
         public Input<string>? DefaultTemplateLanguage { get; set; }
@@ -211,7 +207,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? DisableSessionRenewal { get; set; }
 
         /// <summary>
-        /// Host name for which the waiting room will be applied (no wildcards)
+        /// Host name for which the waiting room will be applied (no wildcards).
         /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
@@ -235,7 +231,7 @@ namespace Pulumi.Cloudflare
         public Input<int> NewUsersPerMinute { get; set; } = null!;
 
         /// <summary>
-        /// The path within the host to enable the waiting room on.
+        /// The path within the host to enable the waiting room on. Defaults to `/`.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
@@ -247,13 +243,13 @@ namespace Pulumi.Cloudflare
         public Input<bool>? QueueAll { get; set; }
 
         /// <summary>
-        /// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+        /// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
         /// </summary>
         [Input("queueingMethod")]
         public Input<string>? QueueingMethod { get; set; }
 
         /// <summary>
-        /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+        /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
         /// </summary>
         [Input("sessionDuration")]
         public Input<int>? SessionDuration { get; set; }
@@ -279,9 +275,10 @@ namespace Pulumi.Cloudflare
         public WaitingRoomArgs()
         {
         }
+        public static new WaitingRoomArgs Empty => new WaitingRoomArgs();
     }
 
-    public sealed class WaitingRoomState : Pulumi.ResourceArgs
+    public sealed class WaitingRoomState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is a templated html file that will be rendered at the edge.
@@ -290,8 +287,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CustomPageHtml { get; set; }
 
         /// <summary>
-        /// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
-        /// `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+        /// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`. Defaults to `en-US`.
         /// </summary>
         [Input("defaultTemplateLanguage")]
         public Input<string>? DefaultTemplateLanguage { get; set; }
@@ -309,7 +305,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? DisableSessionRenewal { get; set; }
 
         /// <summary>
-        /// Host name for which the waiting room will be applied (no wildcards)
+        /// Host name for which the waiting room will be applied (no wildcards).
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
@@ -333,7 +329,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? NewUsersPerMinute { get; set; }
 
         /// <summary>
-        /// The path within the host to enable the waiting room on.
+        /// The path within the host to enable the waiting room on. Defaults to `/`.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
@@ -345,13 +341,13 @@ namespace Pulumi.Cloudflare
         public Input<bool>? QueueAll { get; set; }
 
         /// <summary>
-        /// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
+        /// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
         /// </summary>
         [Input("queueingMethod")]
         public Input<string>? QueueingMethod { get; set; }
 
         /// <summary>
-        /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+        /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
         /// </summary>
         [Input("sessionDuration")]
         public Input<int>? SessionDuration { get; set; }
@@ -377,5 +373,6 @@ namespace Pulumi.Cloudflare
         public WaitingRoomState()
         {
         }
+        public static new WaitingRoomState Empty => new WaitingRoomState();
     }
 }

@@ -19,22 +19,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewCustomHostnameFallbackOrigin(ctx, "fallbackOrigin", &cloudflare.CustomHostnameFallbackOriginArgs{
-// 			Origin: pulumi.String("fallback.example.com"),
-// 			ZoneId: pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewCustomHostnameFallbackOrigin(ctx, "fallbackOrigin", &cloudflare.CustomHostnameFallbackOriginArgs{
+//				Origin: pulumi.String("fallback.example.com"),
+//				ZoneId: pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -42,7 +45,9 @@ import (
 // Custom hostname fallback origins can be imported using a composite ID formed of the zone ID and [fallback origin](https://api.cloudflare.com/#custom-hostname-fallback-origin-for-a-zone-properties), separated by a "/" e.g.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example d41d8cd98f00b204e9800998ecf8427e/fallback.example.com
+//
+//	$ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example d41d8cd98f00b204e9800998ecf8427e/fallback.example.com
+//
 // ```
 type CustomHostnameFallbackOrigin struct {
 	pulumi.CustomResourceState
@@ -152,7 +157,7 @@ func (i *CustomHostnameFallbackOrigin) ToCustomHostnameFallbackOriginOutputWithC
 // CustomHostnameFallbackOriginArrayInput is an input type that accepts CustomHostnameFallbackOriginArray and CustomHostnameFallbackOriginArrayOutput values.
 // You can construct a concrete instance of `CustomHostnameFallbackOriginArrayInput` via:
 //
-//          CustomHostnameFallbackOriginArray{ CustomHostnameFallbackOriginArgs{...} }
+//	CustomHostnameFallbackOriginArray{ CustomHostnameFallbackOriginArgs{...} }
 type CustomHostnameFallbackOriginArrayInput interface {
 	pulumi.Input
 
@@ -177,7 +182,7 @@ func (i CustomHostnameFallbackOriginArray) ToCustomHostnameFallbackOriginArrayOu
 // CustomHostnameFallbackOriginMapInput is an input type that accepts CustomHostnameFallbackOriginMap and CustomHostnameFallbackOriginMapOutput values.
 // You can construct a concrete instance of `CustomHostnameFallbackOriginMapInput` via:
 //
-//          CustomHostnameFallbackOriginMap{ "key": CustomHostnameFallbackOriginArgs{...} }
+//	CustomHostnameFallbackOriginMap{ "key": CustomHostnameFallbackOriginArgs{...} }
 type CustomHostnameFallbackOriginMapInput interface {
 	pulumi.Input
 

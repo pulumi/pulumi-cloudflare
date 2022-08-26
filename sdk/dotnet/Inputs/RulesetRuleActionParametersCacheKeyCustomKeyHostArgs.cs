@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RulesetRuleActionParametersCacheKeyCustomKeyHostArgs : Pulumi.ResourceArgs
+    public sealed class RulesetRuleActionParametersCacheKeyCustomKeyHostArgs : global::Pulumi.ResourceArgs
     {
         [Input("resolved")]
         public Input<bool>? Resolved { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Cloudflare.Inputs
         public RulesetRuleActionParametersCacheKeyCustomKeyHostArgs()
         {
         }
+        public static new RulesetRuleActionParametersCacheKeyCustomKeyHostArgs Empty => new RulesetRuleActionParametersCacheKeyCustomKeyHostArgs();
     }
 }

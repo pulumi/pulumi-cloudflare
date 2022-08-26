@@ -15,32 +15,30 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Define a spectrum application proxies ssh traffic
+    ///     var sshProxy = new Cloudflare.SpectrumApplication("sshProxy", new()
     ///     {
-    ///         // Define a spectrum application proxies ssh traffic
-    ///         var sshProxy = new Cloudflare.SpectrumApplication("sshProxy", new Cloudflare.SpectrumApplicationArgs
+    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         Protocol = "tcp/22",
+    ///         TrafficType = "direct",
+    ///         Dns = new Cloudflare.Inputs.SpectrumApplicationDnsArgs
     ///         {
-    ///             ZoneId = @var.Cloudflare_zone_id,
-    ///             Protocol = "tcp/22",
-    ///             TrafficType = "direct",
-    ///             Dns = new Cloudflare.Inputs.SpectrumApplicationDnsArgs
-    ///             {
-    ///                 Type = "CNAME",
-    ///                 Name = "ssh.example.com",
-    ///             },
-    ///             OriginDirects = 
-    ///             {
-    ///                 "tcp://109.151.40.129:22",
-    ///             },
-    ///         });
-    ///     }
+    ///             Type = "CNAME",
+    ///             Name = "ssh.example.com",
+    ///         },
+    ///         OriginDirects = new[]
+    ///         {
+    ///             "tcp://109.151.40.129:22",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +52,7 @@ namespace Pulumi.Cloudflare
     ///  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones) - `9a7806061c88ada191ed06f989cc3dac` - Application ID
     /// </summary>
     [CloudflareResourceType("cloudflare:index/spectrumApplication:SpectrumApplication")]
-    public partial class SpectrumApplication : Pulumi.CustomResource
+    public partial class SpectrumApplication : global::Pulumi.CustomResource
     {
         /// <summary>
         /// . Enables Argo Smart Routing. Defaults to `false`.
@@ -184,7 +182,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class SpectrumApplicationArgs : Pulumi.ResourceArgs
+    public sealed class SpectrumApplicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// . Enables Argo Smart Routing. Defaults to `false`.
@@ -285,9 +283,10 @@ namespace Pulumi.Cloudflare
         public SpectrumApplicationArgs()
         {
         }
+        public static new SpectrumApplicationArgs Empty => new SpectrumApplicationArgs();
     }
 
-    public sealed class SpectrumApplicationState : Pulumi.ResourceArgs
+    public sealed class SpectrumApplicationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// . Enables Argo Smart Routing. Defaults to `false`.
@@ -388,5 +387,6 @@ namespace Pulumi.Cloudflare
         public SpectrumApplicationState()
         {
         }
+        public static new SpectrumApplicationState Empty => new SpectrumApplicationState();
     }
 }

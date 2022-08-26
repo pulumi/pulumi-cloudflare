@@ -6,7 +6,9 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Access Policy resource. Access Policies are used in conjunction with Access Applications to restrict access to a particular resource.
+ * Provides a Cloudflare Access Policy resource. Access Policies are
+ * used in conjunction with Access Applications to restrict access to
+ * a particular resource.
  *
  * > It's required that an `accountId` or `zoneId` is provided and in
  * most cases using either is fine. However, if you're using a scoped
@@ -23,7 +25,7 @@ import * as utilities from "./utilities";
  * // Allowing access to `test@example.com` email address only
  * const testPolicyAccessPolicy = new cloudflare.AccessPolicy("testPolicyAccessPolicy", {
  *     applicationId: "cb029e245cfdd66dc8d2e570d5dd3322",
- *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     name: "staging policy",
  *     precedence: 1,
  *     decision: "allow",
@@ -38,7 +40,7 @@ import * as utilities from "./utilities";
  * // specific IP.
  * const testPolicyIndex_accessPolicyAccessPolicy = new cloudflare.AccessPolicy("testPolicyIndex/accessPolicyAccessPolicy", {
  *     applicationId: "cb029e245cfdd66dc8d2e570d5dd3322",
- *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     name: "staging policy",
  *     precedence: 1,
  *     decision: "allow",
@@ -94,7 +96,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -104,8 +106,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     public readonly approvalGroups!: pulumi.Output<outputs.AccessPolicyApprovalGroup[] | undefined>;
     public readonly approvalRequired!: pulumi.Output<boolean | undefined>;
     /**
-     * Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
-     * `bypass`
+     * Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
      */
     public readonly decision!: pulumi.Output<string>;
     /**
@@ -140,7 +141,7 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public readonly requires!: pulumi.Output<outputs.AccessPolicyRequire[] | undefined>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -211,7 +212,7 @@ export class AccessPolicy extends pulumi.CustomResource {
  */
 export interface AccessPolicyState {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -221,8 +222,7 @@ export interface AccessPolicyState {
     approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[]>;
     approvalRequired?: pulumi.Input<boolean>;
     /**
-     * Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
-     * `bypass`
+     * Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
      */
     decision?: pulumi.Input<string>;
     /**
@@ -257,7 +257,7 @@ export interface AccessPolicyState {
      */
     requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -267,7 +267,7 @@ export interface AccessPolicyState {
  */
 export interface AccessPolicyArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -277,8 +277,7 @@ export interface AccessPolicyArgs {
     approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[]>;
     approvalRequired?: pulumi.Input<boolean>;
     /**
-     * Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
-     * `bypass`
+     * Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
      */
     decision: pulumi.Input<string>;
     /**
@@ -313,7 +312,7 @@ export interface AccessPolicyArgs {
      */
     requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
 }

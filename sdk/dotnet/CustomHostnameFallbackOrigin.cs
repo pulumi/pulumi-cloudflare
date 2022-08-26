@@ -15,21 +15,19 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fallbackOrigin = new Cloudflare.CustomHostnameFallbackOrigin("fallbackOrigin", new()
     ///     {
-    ///         var fallbackOrigin = new Cloudflare.CustomHostnameFallbackOrigin("fallbackOrigin", new Cloudflare.CustomHostnameFallbackOriginArgs
-    ///         {
-    ///             Origin = "fallback.example.com",
-    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///         });
-    ///     }
+    ///         Origin = "fallback.example.com",
+    ///         ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -41,7 +39,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin")]
-    public partial class CustomHostnameFallbackOrigin : Pulumi.CustomResource
+    public partial class CustomHostnameFallbackOrigin : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
@@ -105,7 +103,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class CustomHostnameFallbackOriginArgs : Pulumi.ResourceArgs
+    public sealed class CustomHostnameFallbackOriginArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
@@ -122,9 +120,10 @@ namespace Pulumi.Cloudflare
         public CustomHostnameFallbackOriginArgs()
         {
         }
+        public static new CustomHostnameFallbackOriginArgs Empty => new CustomHostnameFallbackOriginArgs();
     }
 
-    public sealed class CustomHostnameFallbackOriginState : Pulumi.ResourceArgs
+    public sealed class CustomHostnameFallbackOriginState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
@@ -147,5 +146,6 @@ namespace Pulumi.Cloudflare
         public CustomHostnameFallbackOriginState()
         {
         }
+        public static new CustomHostnameFallbackOriginState Empty => new CustomHostnameFallbackOriginState();
     }
 }

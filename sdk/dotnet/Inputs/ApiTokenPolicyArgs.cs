@@ -10,13 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class ApiTokenPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ApiTokenPolicyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Effect of the policy. Available values: `allow`, `deny`. Defaults to `allow`.
+        /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }
 
         [Input("permissionGroups", required: true)]
         private InputList<string>? _permissionGroups;
+
+        /// <summary>
+        /// List of permissions groups IDs. See [documentation](https://developers.cloudflare.com/api/tokens/create/permissions) for more information.
+        /// </summary>
         public InputList<string> PermissionGroups
         {
             get => _permissionGroups ?? (_permissionGroups = new InputList<string>());
@@ -25,6 +32,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("resources", required: true)]
         private InputMap<string>? _resources;
+
+        /// <summary>
+        /// Describes what operations against which resources are allowed or denied.
+        /// </summary>
         public InputMap<string> Resources
         {
             get => _resources ?? (_resources = new InputMap<string>());
@@ -34,5 +45,6 @@ namespace Pulumi.Cloudflare.Inputs
         public ApiTokenPolicyArgs()
         {
         }
+        public static new ApiTokenPolicyArgs Empty => new ApiTokenPolicyArgs();
     }
 }

@@ -10,68 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides Lists (IPs, Redirects) to be used in Edge Rules Engine across all zones within the same account.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Redirect list
-    ///         var example = new Cloudflare.List("example", new Cloudflare.ListArgs
-    ///         {
-    ///             AccountId = "919f297a62fdfb28844177128ed4d331",
-    ///             Description = "example redirects for a list",
-    ///             Items = 
-    ///             {
-    ///                 new Cloudflare.Inputs.ListItemArgs
-    ///                 {
-    ///                     Comment = "one",
-    ///                     Value = new Cloudflare.Inputs.ListItemValueArgs
-    ///                     {
-    ///                         Redirect = 
-    ///                         {
-    ///                             
-    ///                             {
-    ///                                 { "sourceUrl", "example.com/blog" },
-    ///                                 { "targetUrl", "https://blog.example.com" },
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 new Cloudflare.Inputs.ListItemArgs
-    ///                 {
-    ///                     Comment = "two",
-    ///                     Value = new Cloudflare.Inputs.ListItemValueArgs
-    ///                     {
-    ///                         Redirect = 
-    ///                         {
-    ///                             
-    ///                             {
-    ///                                 { "includeSubdomains", "enabled" },
-    ///                                 { "preservePathSuffix", "disabled" },
-    ///                                 { "preserveQueryString", "enabled" },
-    ///                                 { "sourceUrl", "example.com/foo" },
-    ///                                 { "statusCode", 301 },
-    ///                                 { "subpathMatching", "enabled" },
-    ///                                 { "targetUrl", "https://foo.example.com" },
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Kind = "redirect",
-    ///             Name = "example list",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
+    /// Provides Lists (IPs, Redirects) to be used in Edge Rules Engine
+    /// across all zones within the same account.
     /// 
     /// ## Import
     /// 
@@ -80,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/list:List")]
-    public partial class List : Pulumi.CustomResource
+    public partial class List : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -153,7 +93,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class ListArgs : Pulumi.ResourceArgs
+    public sealed class ListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -190,9 +130,10 @@ namespace Pulumi.Cloudflare
         public ListArgs()
         {
         }
+        public static new ListArgs Empty => new ListArgs();
     }
 
-    public sealed class ListState : Pulumi.ResourceArgs
+    public sealed class ListState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account identifier to target for the resource.
@@ -229,5 +170,6 @@ namespace Pulumi.Cloudflare
         public ListState()
         {
         }
+        public static new ListState Empty => new ListState();
     }
 }

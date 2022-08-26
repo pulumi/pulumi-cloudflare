@@ -15,39 +15,37 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var corporateDevicesPostureRule = new Cloudflare.DevicePostureRule("corporateDevicesPostureRule", new()
     ///     {
-    ///         var corporateDevicesPostureRule = new Cloudflare.DevicePostureRule("corporateDevicesPostureRule", new Cloudflare.DevicePostureRuleArgs
+    ///         AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         Name = "Corporate devices posture rule",
+    ///         Type = "serial_number",
+    ///         Description = "Device posture rule for corporate devices.",
+    ///         Schedule = "24h",
+    ///         Expiration = "24h",
+    ///         Matches = new[]
     ///         {
-    ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
-    ///             Name = "Corporate devices posture rule",
-    ///             Type = "serial_number",
-    ///             Description = "Device posture rule for corporate devices.",
-    ///             Schedule = "24h",
-    ///             Expiration = "24h",
-    ///             Matches = 
+    ///             new Cloudflare.Inputs.DevicePostureRuleMatchArgs
     ///             {
-    ///                 new Cloudflare.Inputs.DevicePostureRuleMatchArgs
-    ///                 {
-    ///                     Platform = "mac",
-    ///                 },
+    ///                 Platform = "mac",
     ///             },
-    ///             Inputs = 
+    ///         },
+    ///         Inputs = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.DevicePostureRuleInputArgs
     ///             {
-    ///                 new Cloudflare.Inputs.DevicePostureRuleInputArgs
-    ///                 {
-    ///                     Id = cloudflare_teams_list.Corporate_devices.Id,
-    ///                 },
+    ///                 Id = cloudflare_teams_list.Corporate_devices.Id,
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -59,7 +57,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/devicePostureRule:DevicePostureRule")]
-    public partial class DevicePostureRule : Pulumi.CustomResource
+    public partial class DevicePostureRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account to which the device posture rule should be added.
@@ -156,7 +154,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class DevicePostureRuleArgs : Pulumi.ResourceArgs
+    public sealed class DevicePostureRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account to which the device posture rule should be added.
@@ -224,9 +222,10 @@ namespace Pulumi.Cloudflare
         public DevicePostureRuleArgs()
         {
         }
+        public static new DevicePostureRuleArgs Empty => new DevicePostureRuleArgs();
     }
 
-    public sealed class DevicePostureRuleState : Pulumi.ResourceArgs
+    public sealed class DevicePostureRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account to which the device posture rule should be added.
@@ -294,5 +293,6 @@ namespace Pulumi.Cloudflare
         public DevicePostureRuleState()
         {
         }
+        public static new DevicePostureRuleState Empty => new DevicePostureRuleState();
     }
 }

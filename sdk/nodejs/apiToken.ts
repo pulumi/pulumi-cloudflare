@@ -8,7 +8,8 @@ import * as utilities from "./utilities";
 /**
  * Provides a resource which manages Cloudflare API tokens.
  *
- * Read more about permission groups and their applicable scopes in the [developer documentation](https://developers.cloudflare.com/api/tokens/create/permissions).
+ * Read more about permission groups and their applicable scopes in the
+ * [developer documentation](https://developers.cloudflare.com/api/tokens/create/permissions).
  */
 export class ApiToken extends pulumi.CustomResource {
     /**
@@ -43,6 +44,10 @@ export class ApiToken extends pulumi.CustomResource {
      */
     public readonly condition!: pulumi.Output<outputs.ApiTokenCondition | undefined>;
     /**
+     * The expiration time on or after which the token MUST NOT be accepted for processing.
+     */
+    public readonly expiresOn!: pulumi.Output<string | undefined>;
+    /**
      * Timestamp of when the token was issued.
      */
     public /*out*/ readonly issuedOn!: pulumi.Output<string>;
@@ -54,6 +59,10 @@ export class ApiToken extends pulumi.CustomResource {
      * Name of the API Token.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The time before which the token MUST NOT be accepted for processing.
+     */
+    public readonly notBefore!: pulumi.Output<string | undefined>;
     /**
      * Permissions policy. Multiple policy blocks can be defined.
      */
@@ -78,9 +87,11 @@ export class ApiToken extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ApiTokenState | undefined;
             resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
             resourceInputs["issuedOn"] = state ? state.issuedOn : undefined;
             resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notBefore"] = state ? state.notBefore : undefined;
             resourceInputs["policies"] = state ? state.policies : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["value"] = state ? state.value : undefined;
@@ -93,7 +104,9 @@ export class ApiToken extends pulumi.CustomResource {
                 throw new Error("Missing required property 'policies'");
             }
             resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["expiresOn"] = args ? args.expiresOn : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notBefore"] = args ? args.notBefore : undefined;
             resourceInputs["policies"] = args ? args.policies : undefined;
             resourceInputs["issuedOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
@@ -114,6 +127,10 @@ export interface ApiTokenState {
      */
     condition?: pulumi.Input<inputs.ApiTokenCondition>;
     /**
+     * The expiration time on or after which the token MUST NOT be accepted for processing.
+     */
+    expiresOn?: pulumi.Input<string>;
+    /**
      * Timestamp of when the token was issued.
      */
     issuedOn?: pulumi.Input<string>;
@@ -125,6 +142,10 @@ export interface ApiTokenState {
      * Name of the API Token.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The time before which the token MUST NOT be accepted for processing.
+     */
+    notBefore?: pulumi.Input<string>;
     /**
      * Permissions policy. Multiple policy blocks can be defined.
      */
@@ -145,9 +166,17 @@ export interface ApiTokenArgs {
      */
     condition?: pulumi.Input<inputs.ApiTokenCondition>;
     /**
+     * The expiration time on or after which the token MUST NOT be accepted for processing.
+     */
+    expiresOn?: pulumi.Input<string>;
+    /**
      * Name of the API Token.
      */
     name: pulumi.Input<string>;
+    /**
+     * The time before which the token MUST NOT be accepted for processing.
+     */
+    notBefore?: pulumi.Input<string>;
     /**
      * Permissions policy. Multiple policy blocks can be defined.
      */

@@ -16,33 +16,31 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var corporateOffice = new Cloudflare.TeamsLocation("corporateOffice", new()
     ///     {
-    ///         var corporateOffice = new Cloudflare.TeamsLocation("corporateOffice", new Cloudflare.TeamsLocationArgs
+    ///         AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         ClientDefault = true,
+    ///         Name = "office",
+    ///         Networks = new[]
     ///         {
-    ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
-    ///             ClientDefault = true,
-    ///             Name = "office",
-    ///             Networks = 
+    ///             new Cloudflare.Inputs.TeamsLocationNetworkArgs
     ///             {
-    ///                 new Cloudflare.Inputs.TeamsLocationNetworkArgs
-    ///                 {
-    ///                     Network = "203.0.113.1/32",
-    ///                 },
-    ///                 new Cloudflare.Inputs.TeamsLocationNetworkArgs
-    ///                 {
-    ///                     Network = "203.0.113.2/32",
-    ///                 },
+    ///                 Network = "203.0.113.1/32",
     ///             },
-    ///         });
-    ///     }
+    ///             new Cloudflare.Inputs.TeamsLocationNetworkArgs
+    ///             {
+    ///                 Network = "203.0.113.2/32",
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +52,7 @@ namespace Pulumi.Cloudflare
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/teamsLocation:TeamsLocation")]
-    public partial class TeamsLocation : Pulumi.CustomResource
+    public partial class TeamsLocation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account to which the teams location should be added.
@@ -151,7 +149,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class TeamsLocationArgs : Pulumi.ResourceArgs
+    public sealed class TeamsLocationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account to which the teams location should be added.
@@ -186,9 +184,10 @@ namespace Pulumi.Cloudflare
         public TeamsLocationArgs()
         {
         }
+        public static new TeamsLocationArgs Empty => new TeamsLocationArgs();
     }
 
-    public sealed class TeamsLocationState : Pulumi.ResourceArgs
+    public sealed class TeamsLocationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account to which the teams location should be added.
@@ -255,5 +254,6 @@ namespace Pulumi.Cloudflare
         public TeamsLocationState()
         {
         }
+        public static new TeamsLocationState Empty => new TeamsLocationState();
     }
 }

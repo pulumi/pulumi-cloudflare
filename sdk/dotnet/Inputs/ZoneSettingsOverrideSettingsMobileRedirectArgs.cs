@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class ZoneSettingsOverrideSettingsMobileRedirectArgs : Pulumi.ResourceArgs
+    public sealed class ZoneSettingsOverrideSettingsMobileRedirectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String value
@@ -33,5 +33,6 @@ namespace Pulumi.Cloudflare.Inputs
         public ZoneSettingsOverrideSettingsMobileRedirectArgs()
         {
         }
+        public static new ZoneSettingsOverrideSettingsMobileRedirectArgs Empty => new ZoneSettingsOverrideSettingsMobileRedirectArgs();
     }
 }

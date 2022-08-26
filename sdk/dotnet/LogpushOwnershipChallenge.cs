@@ -17,43 +17,39 @@ namespace Pulumi.Cloudflare
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Cloudflare.LogpushOwnershipChallenge("example", new()
     ///     {
-    ///         var example = new Cloudflare.LogpushOwnershipChallenge("example", new Cloudflare.LogpushOwnershipChallengeArgs
-    ///         {
-    ///             DestinationConf = "s3://my-bucket-path?region=us-west-2",
-    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///         });
-    ///     }
+    ///         DestinationConf = "s3://my-bucket-path?region=us-west-2",
+    ///         ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Cloudflare.LogpushOwnershipChallenge("example", new()
     ///     {
-    ///         var example = new Cloudflare.LogpushOwnershipChallenge("example", new Cloudflare.LogpushOwnershipChallengeArgs
-    ///         {
-    ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
-    ///             DestinationConf = "s3://my-bucket-path?region=us-west-2",
-    ///         });
-    ///     }
+    ///         AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         DestinationConf = "s3://my-bucket-path?region=us-west-2",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge")]
-    public partial class LogpushOwnershipChallenge : Pulumi.CustomResource
+    public partial class LogpushOwnershipChallenge : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
@@ -124,7 +120,7 @@ namespace Pulumi.Cloudflare
         }
     }
 
-    public sealed class LogpushOwnershipChallengeArgs : Pulumi.ResourceArgs
+    public sealed class LogpushOwnershipChallengeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
@@ -147,9 +143,10 @@ namespace Pulumi.Cloudflare
         public LogpushOwnershipChallengeArgs()
         {
         }
+        public static new LogpushOwnershipChallengeArgs Empty => new LogpushOwnershipChallengeArgs();
     }
 
-    public sealed class LogpushOwnershipChallengeState : Pulumi.ResourceArgs
+    public sealed class LogpushOwnershipChallengeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
@@ -179,5 +176,6 @@ namespace Pulumi.Cloudflare
         public LogpushOwnershipChallengeState()
         {
         }
+        public static new LogpushOwnershipChallengeState Empty => new LogpushOwnershipChallengeState();
     }
 }

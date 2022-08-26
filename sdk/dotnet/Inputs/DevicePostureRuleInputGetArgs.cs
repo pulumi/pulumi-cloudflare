@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class DevicePostureRuleInputGetArgs : Pulumi.ResourceArgs
+    public sealed class DevicePostureRuleInputGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("complianceStatus")]
         public Input<string>? ComplianceStatus { get; set; }
@@ -87,5 +87,6 @@ namespace Pulumi.Cloudflare.Inputs
         public DevicePostureRuleInputGetArgs()
         {
         }
+        public static new DevicePostureRuleInputGetArgs Empty => new DevicePostureRuleInputGetArgs();
     }
 }

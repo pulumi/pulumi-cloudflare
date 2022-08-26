@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class AccessGroupRequireArgs : Pulumi.ResourceArgs
+    public sealed class AccessGroupRequireArgs : global::Pulumi.ResourceArgs
     {
         [Input("anyValidServiceToken")]
         public Input<bool>? AnyValidServiceToken { get; set; }
@@ -137,5 +137,6 @@ namespace Pulumi.Cloudflare.Inputs
         public AccessGroupRequireArgs()
         {
         }
+        public static new AccessGroupRequireArgs Empty => new AccessGroupRequireArgs();
     }
 }

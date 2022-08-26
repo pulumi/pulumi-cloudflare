@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class FallbackDomainDomainArgs : Pulumi.ResourceArgs
+    public sealed class FallbackDomainDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the domain.
@@ -39,5 +39,6 @@ namespace Pulumi.Cloudflare.Inputs
         public FallbackDomainDomainArgs()
         {
         }
+        public static new FallbackDomainDomainArgs Empty => new FallbackDomainDomainArgs();
     }
 }
