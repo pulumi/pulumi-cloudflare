@@ -16,14 +16,14 @@ public final class GetAccessIdentityProviderArgs extends com.pulumi.resources.In
     public static final GetAccessIdentityProviderArgs Empty = new GetAccessIdentityProviderArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -38,14 +38,14 @@ public final class GetAccessIdentityProviderArgs extends com.pulumi.resources.In
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -79,7 +79,7 @@ public final class GetAccessIdentityProviderArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class GetAccessIdentityProviderArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class GetAccessIdentityProviderArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class GetAccessIdentityProviderArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
          * 
          * @return builder
          * 

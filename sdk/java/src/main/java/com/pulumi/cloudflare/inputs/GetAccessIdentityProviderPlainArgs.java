@@ -15,14 +15,14 @@ public final class GetAccessIdentityProviderPlainArgs extends com.pulumi.resourc
     public static final GetAccessIdentityProviderPlainArgs Empty = new GetAccessIdentityProviderPlainArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
      * 
      */
     @Import(name="accountId")
     private @Nullable String accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
      * 
      */
     public Optional<String> accountId() {
@@ -37,14 +37,14 @@ public final class GetAccessIdentityProviderPlainArgs extends com.pulumi.resourc
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
      * 
      */
     @Import(name="zoneId")
     private @Nullable String zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
      * 
      */
     public Optional<String> zoneId() {
@@ -78,7 +78,7 @@ public final class GetAccessIdentityProviderPlainArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class GetAccessIdentityProviderPlainArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
          * 
          * @return builder
          * 

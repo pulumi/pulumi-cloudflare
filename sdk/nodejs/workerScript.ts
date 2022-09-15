@@ -6,7 +6,10 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
+ * Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`.
+ *
+ * > This resource uses the Cloudflare account APIs. This requires setting the
+ *   `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
  *
  * ## Example Usage
  *
@@ -50,13 +53,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * To import a script, use a script name, e.g. `script_name`
- *
  * ```sh
- *  $ pulumi import cloudflare:index/workerScript:WorkerScript default script_name
+ *  $ pulumi import cloudflare:index/workerScript:WorkerScript example <script_name>
  * ```
- *
- *  where- `script_name` - the script name
  */
 export class WorkerScript extends pulumi.CustomResource {
     /**
@@ -92,7 +91,11 @@ export class WorkerScript extends pulumi.CustomResource {
     public readonly content!: pulumi.Output<string>;
     public readonly kvNamespaceBindings!: pulumi.Output<outputs.WorkerScriptKvNamespaceBinding[] | undefined>;
     /**
-     * The global variable for the binding in your Worker code.
+     * Whether to upload Worker as a module.
+     */
+    public readonly module!: pulumi.Output<boolean | undefined>;
+    /**
+     * The name for the script.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly plainTextBindings!: pulumi.Output<outputs.WorkerScriptPlainTextBinding[] | undefined>;
@@ -116,6 +119,7 @@ export class WorkerScript extends pulumi.CustomResource {
             const state = argsOrState as WorkerScriptState | undefined;
             resourceInputs["content"] = state ? state.content : undefined;
             resourceInputs["kvNamespaceBindings"] = state ? state.kvNamespaceBindings : undefined;
+            resourceInputs["module"] = state ? state.module : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["plainTextBindings"] = state ? state.plainTextBindings : undefined;
             resourceInputs["r2BucketBindings"] = state ? state.r2BucketBindings : undefined;
@@ -132,6 +136,7 @@ export class WorkerScript extends pulumi.CustomResource {
             }
             resourceInputs["content"] = args ? args.content : undefined;
             resourceInputs["kvNamespaceBindings"] = args ? args.kvNamespaceBindings : undefined;
+            resourceInputs["module"] = args ? args.module : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["plainTextBindings"] = args ? args.plainTextBindings : undefined;
             resourceInputs["r2BucketBindings"] = args ? args.r2BucketBindings : undefined;
@@ -154,7 +159,11 @@ export interface WorkerScriptState {
     content?: pulumi.Input<string>;
     kvNamespaceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptKvNamespaceBinding>[]>;
     /**
-     * The global variable for the binding in your Worker code.
+     * Whether to upload Worker as a module.
+     */
+    module?: pulumi.Input<boolean>;
+    /**
+     * The name for the script.
      */
     name?: pulumi.Input<string>;
     plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlainTextBinding>[]>;
@@ -174,7 +183,11 @@ export interface WorkerScriptArgs {
     content: pulumi.Input<string>;
     kvNamespaceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptKvNamespaceBinding>[]>;
     /**
-     * The global variable for the binding in your Worker code.
+     * Whether to upload Worker as a module.
+     */
+    module?: pulumi.Input<boolean>;
+    /**
+     * The name for the script.
      */
     name: pulumi.Input<string>;
     plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlainTextBinding>[]>;

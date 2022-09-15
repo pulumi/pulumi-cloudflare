@@ -16,13 +16,17 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare worker script resource. In order for a script to be active, you&#39;ll also need to setup a `cloudflare.WorkerRoute`. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+ * Provides a Cloudflare worker script resource. In order for a script to be active, you&#39;ll also need to setup a `cloudflare.WorkerRoute`.
+ * 
+ * &gt; This resource uses the Cloudflare account APIs. This requires setting the
+ *   `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
  * 
  * ## Example Usage
  * ```java
@@ -94,13 +98,9 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * To import a script, use a script name, e.g. `script_name`
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/workerScript:WorkerScript default script_name
+ *  $ pulumi import cloudflare:index/workerScript:WorkerScript example &lt;script_name&gt;
  * ```
- * 
- *  where- `script_name` - the script name
  * 
  */
 @ResourceType(type="cloudflare:index/workerScript:WorkerScript")
@@ -126,14 +126,28 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kvNamespaceBindings);
     }
     /**
-     * The global variable for the binding in your Worker code.
+     * Whether to upload Worker as a module.
+     * 
+     */
+    @Export(name="module", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> module;
+
+    /**
+     * @return Whether to upload Worker as a module.
+     * 
+     */
+    public Output<Optional<Boolean>> module() {
+        return Codegen.optional(this.module);
+    }
+    /**
+     * The name for the script.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The global variable for the binding in your Worker code.
+     * @return The name for the script.
      * 
      */
     public Output<String> name() {

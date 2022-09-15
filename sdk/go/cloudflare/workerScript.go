@@ -11,7 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
+// Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`.
+//
+// > This resource uses the Cloudflare account APIs. This requires setting the
+//
+//	`CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
 //
 // ## Example Usage
 //
@@ -104,22 +108,20 @@ import (
 //
 // ## Import
 //
-// To import a script, use a script name, e.g. `script_name`
-//
 // ```sh
 //
-//	$ pulumi import cloudflare:index/workerScript:WorkerScript default script_name
+//	$ pulumi import cloudflare:index/workerScript:WorkerScript example <script_name>
 //
 // ```
-//
-//	where- `script_name` - the script name
 type WorkerScript struct {
 	pulumi.CustomResourceState
 
 	// The script content.
 	Content             pulumi.StringOutput                       `pulumi:"content"`
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayOutput `pulumi:"kvNamespaceBindings"`
-	// The global variable for the binding in your Worker code.
+	// Whether to upload Worker as a module.
+	Module pulumi.BoolPtrOutput `pulumi:"module"`
+	// The name for the script.
 	Name                pulumi.StringOutput                       `pulumi:"name"`
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayOutput   `pulumi:"plainTextBindings"`
 	R2BucketBindings    WorkerScriptR2BucketBindingArrayOutput    `pulumi:"r2BucketBindings"`
@@ -166,7 +168,9 @@ type workerScriptState struct {
 	// The script content.
 	Content             *string                          `pulumi:"content"`
 	KvNamespaceBindings []WorkerScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
-	// The global variable for the binding in your Worker code.
+	// Whether to upload Worker as a module.
+	Module *bool `pulumi:"module"`
+	// The name for the script.
 	Name                *string                          `pulumi:"name"`
 	PlainTextBindings   []WorkerScriptPlainTextBinding   `pulumi:"plainTextBindings"`
 	R2BucketBindings    []WorkerScriptR2BucketBinding    `pulumi:"r2BucketBindings"`
@@ -179,7 +183,9 @@ type WorkerScriptState struct {
 	// The script content.
 	Content             pulumi.StringPtrInput
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayInput
-	// The global variable for the binding in your Worker code.
+	// Whether to upload Worker as a module.
+	Module pulumi.BoolPtrInput
+	// The name for the script.
 	Name                pulumi.StringPtrInput
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayInput
 	R2BucketBindings    WorkerScriptR2BucketBindingArrayInput
@@ -196,7 +202,9 @@ type workerScriptArgs struct {
 	// The script content.
 	Content             string                           `pulumi:"content"`
 	KvNamespaceBindings []WorkerScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
-	// The global variable for the binding in your Worker code.
+	// Whether to upload Worker as a module.
+	Module *bool `pulumi:"module"`
+	// The name for the script.
 	Name                string                           `pulumi:"name"`
 	PlainTextBindings   []WorkerScriptPlainTextBinding   `pulumi:"plainTextBindings"`
 	R2BucketBindings    []WorkerScriptR2BucketBinding    `pulumi:"r2BucketBindings"`
@@ -210,7 +218,9 @@ type WorkerScriptArgs struct {
 	// The script content.
 	Content             pulumi.StringInput
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayInput
-	// The global variable for the binding in your Worker code.
+	// Whether to upload Worker as a module.
+	Module pulumi.BoolPtrInput
+	// The name for the script.
 	Name                pulumi.StringInput
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayInput
 	R2BucketBindings    WorkerScriptR2BucketBindingArrayInput
@@ -315,7 +325,12 @@ func (o WorkerScriptOutput) KvNamespaceBindings() WorkerScriptKvNamespaceBinding
 	return o.ApplyT(func(v *WorkerScript) WorkerScriptKvNamespaceBindingArrayOutput { return v.KvNamespaceBindings }).(WorkerScriptKvNamespaceBindingArrayOutput)
 }
 
-// The global variable for the binding in your Worker code.
+// Whether to upload Worker as a module.
+func (o WorkerScriptOutput) Module() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.BoolPtrOutput { return v.Module }).(pulumi.BoolPtrOutput)
+}
+
+// The name for the script.
 func (o WorkerScriptOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -5593,7 +5593,7 @@ class NotificationPolicyFilters(dict):
         :param Sequence[str] enableds: State of the pool to alert on.
         :param Sequence[str] event_sources: Source configuration to alert on for pool or origin.
         :param Sequence[str] event_types: Stream event type to alert on.
-        :param Sequence[str] health_check_ids: Identifier health check.
+        :param Sequence[str] health_check_ids: Identifier health check. Required when using `filters.0.status`.
         :param Sequence[str] input_ids: Stream input id to alert on.
         :param Sequence[str] limits: A numerical limit. Example: `100`.
         :param Sequence[str] new_healths: Health status to alert on for pool or origin.
@@ -5602,7 +5602,6 @@ class NotificationPolicyFilters(dict):
         :param Sequence[str] products: Product name. Available values: `worker_requests`, `worker_durable_objects_requests`, `worker_durable_objects_duration`, `worker_durable_objects_data_transfer`, `worker_durable_objects_stored_data`, `worker_durable_objects_storage_deletes`, `worker_durable_objects_storage_writes`, `worker_durable_objects_storage_reads`.
         :param Sequence[str] protocols: Protocol to alert on for dos.
         :param Sequence[str] requests_per_seconds: Requests per second threshold for dos alert.
-        :param Sequence[str] services: A list of clickhouse services to alert on.
         :param Sequence[str] slos: A numerical limit. Example: `99.9`.
         :param Sequence[str] statuses: Status to alert on.
         :param Sequence[str] target_hosts: Target host to alert on for dos.
@@ -5674,7 +5673,7 @@ class NotificationPolicyFilters(dict):
     @pulumi.getter(name="healthCheckIds")
     def health_check_ids(self) -> Optional[Sequence[str]]:
         """
-        Identifier health check.
+        Identifier health check. Required when using `filters.0.status`.
         """
         return pulumi.get(self, "health_check_ids")
 
@@ -5745,9 +5744,6 @@ class NotificationPolicyFilters(dict):
     @property
     @pulumi.getter
     def services(self) -> Optional[Sequence[str]]:
-        """
-        A list of clickhouse services to alert on.
-        """
         return pulumi.get(self, "services")
 
     @property
@@ -7478,7 +7474,7 @@ class RulesetRule(dict):
                  version: Optional[str] = None):
         """
         :param str expression: Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
-        :param str action: Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `serve_error`, `skip`.
+        :param str action: Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
         :param 'RulesetRuleActionParametersArgs' action_parameters: List of parameters that configure the behavior of the ruleset rule action.
         :param str description: Brief summary of the ruleset rule and its intended use.
         :param bool enabled: Whether the rule is active.
@@ -7523,7 +7519,7 @@ class RulesetRule(dict):
     @pulumi.getter
     def action(self) -> Optional[str]:
         """
-        Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `serve_error`, `skip`.
+        Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
         """
         return pulumi.get(self, "action")
 
@@ -8829,7 +8825,7 @@ class RulesetRuleActionParametersOverridesRule(dict):
                  sensitivity_level: Optional[str] = None,
                  status: Optional[str] = None):
         """
-        :param str action: Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `serve_error`, `skip`.
+        :param str action: Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
         :param bool enabled: Whether the rule is active.
         :param str id: Unique rule identifier.
         """
@@ -8850,7 +8846,7 @@ class RulesetRuleActionParametersOverridesRule(dict):
     @pulumi.getter
     def action(self) -> Optional[str]:
         """
-        Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `serve_error`, `skip`.
+        Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
         """
         return pulumi.get(self, "action")
 
@@ -10053,6 +10049,7 @@ class WorkerScriptKvNamespaceBinding(dict):
                  namespace_id: str):
         """
         :param str name: The global variable for the binding in your Worker code.
+        :param str namespace_id: ID of the KV namespace you want to use.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "namespace_id", namespace_id)
@@ -10068,6 +10065,9 @@ class WorkerScriptKvNamespaceBinding(dict):
     @property
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> str:
+        """
+        ID of the KV namespace you want to use.
+        """
         return pulumi.get(self, "namespace_id")
 
 
@@ -10078,7 +10078,7 @@ class WorkerScriptPlainTextBinding(dict):
                  text: str):
         """
         :param str name: The global variable for the binding in your Worker code.
-        :param str text: The secret text you want to store.
+        :param str text: The plain text you want to store.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "text", text)
@@ -10095,7 +10095,7 @@ class WorkerScriptPlainTextBinding(dict):
     @pulumi.getter
     def text(self) -> str:
         """
-        The secret text you want to store.
+        The plain text you want to store.
         """
         return pulumi.get(self, "text")
 

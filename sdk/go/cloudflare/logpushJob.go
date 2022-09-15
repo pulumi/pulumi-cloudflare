@@ -31,7 +31,7 @@ import (
 type LogpushJob struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`.
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
@@ -51,7 +51,7 @@ type LogpushJob struct {
 	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 	OwnershipChallenge pulumi.StringPtrOutput `pulumi:"ownershipChallenge"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
@@ -90,7 +90,7 @@ func GetLogpushJob(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LogpushJob resources.
 type logpushJobState struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 	AccountId *string `pulumi:"accountId"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`.
 	Dataset *string `pulumi:"dataset"`
@@ -110,12 +110,12 @@ type logpushJobState struct {
 	Name *string `pulumi:"name"`
 	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 	OwnershipChallenge *string `pulumi:"ownershipChallenge"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type LogpushJobState struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 	AccountId pulumi.StringPtrInput
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`.
 	Dataset pulumi.StringPtrInput
@@ -135,7 +135,7 @@ type LogpushJobState struct {
 	Name pulumi.StringPtrInput
 	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 	OwnershipChallenge pulumi.StringPtrInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -144,7 +144,7 @@ func (LogpushJobState) ElementType() reflect.Type {
 }
 
 type logpushJobArgs struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 	AccountId *string `pulumi:"accountId"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`.
 	Dataset string `pulumi:"dataset"`
@@ -164,13 +164,13 @@ type logpushJobArgs struct {
 	Name *string `pulumi:"name"`
 	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 	OwnershipChallenge *string `pulumi:"ownershipChallenge"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a LogpushJob resource.
 type LogpushJobArgs struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 	AccountId pulumi.StringPtrInput
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`.
 	Dataset pulumi.StringInput
@@ -190,7 +190,7 @@ type LogpushJobArgs struct {
 	Name pulumi.StringPtrInput
 	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 	OwnershipChallenge pulumi.StringPtrInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -281,7 +281,7 @@ func (o LogpushJobOutput) ToLogpushJobOutputWithContext(ctx context.Context) Log
 	return o
 }
 
-// The account identifier to target for the resource.
+// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 func (o LogpushJobOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -331,7 +331,7 @@ func (o LogpushJobOutput) OwnershipChallenge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.OwnershipChallenge }).(pulumi.StringPtrOutput)
 }
 
-// The zone identifier to target for the resource.
+// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 func (o LogpushJobOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
     public partial class LogpushJob : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> OwnershipChallenge { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         /// </summary>
         [Output("zoneId")]
         public Output<string?> ZoneId { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.Cloudflare
     public sealed class LogpushJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -200,7 +200,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? OwnershipChallenge { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -214,7 +214,7 @@ namespace Pulumi.Cloudflare
     public sealed class LogpushJobState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -274,7 +274,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? OwnershipChallenge { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

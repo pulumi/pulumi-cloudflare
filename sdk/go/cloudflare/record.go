@@ -29,7 +29,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewRecord(ctx, "foobar", &cloudflare.RecordArgs{
 //				ZoneId: pulumi.Any(_var.Cloudflare_zone_id),
-//				Name:   pulumi.String("terraform"),
+//				Name:   pulumi.String("example"),
 //				Value:  pulumi.String("192.168.0.11"),
 //				Type:   pulumi.String("A"),
 //				Ttl:    pulumi.Int(3600),
@@ -44,7 +44,7 @@ import (
 //				Data: &RecordDataArgs{
 //					Service:  pulumi.String("_sip"),
 //					Proto:    pulumi.String("_tls"),
-//					Name:     pulumi.String("terraform-srv"),
+//					Name:     pulumi.String("example-srv"),
 //					Priority: pulumi.Int(0),
 //					Weight:   pulumi.Int(0),
 //					Port:     pulumi.Int(443),

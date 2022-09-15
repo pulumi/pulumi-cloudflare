@@ -1119,7 +1119,7 @@ export interface NotificationPolicyFilters {
      */
     eventTypes?: string[];
     /**
-     * Identifier health check.
+     * Identifier health check. Required when using `filters.0.status`.
      */
     healthCheckIds?: string[];
     /**
@@ -1154,9 +1154,6 @@ export interface NotificationPolicyFilters {
      * Requests per second threshold for dos alert.
      */
     requestsPerSeconds?: string[];
-    /**
-     * A list of clickhouse services to alert on.
-     */
     services?: string[];
     /**
      * A numerical limit. Example: `99.9`.
@@ -1607,7 +1604,7 @@ export interface RecordData {
 
 export interface RulesetRule {
     /**
-     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `serveError`, `skip`.
+     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
      */
     action?: string;
     /**
@@ -1841,7 +1838,7 @@ export interface RulesetRuleActionParametersOverridesCategory {
 
 export interface RulesetRuleActionParametersOverridesRule {
     /**
-     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `serveError`, `skip`.
+     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
      */
     action?: string;
     /**
@@ -2146,6 +2143,9 @@ export interface WorkerScriptKvNamespaceBinding {
      * The global variable for the binding in your Worker code.
      */
     name: string;
+    /**
+     * ID of the KV namespace you want to use.
+     */
     namespaceId: string;
 }
 
@@ -2155,7 +2155,7 @@ export interface WorkerScriptPlainTextBinding {
      */
     name: string;
     /**
-     * The secret text you want to store.
+     * The plain text you want to store.
      */
     text: string;
 }

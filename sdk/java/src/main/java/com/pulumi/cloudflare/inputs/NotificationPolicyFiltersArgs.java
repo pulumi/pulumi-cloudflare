@@ -62,14 +62,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Identifier health check.
+     * Identifier health check. Required when using `filters.0.status`.
      * 
      */
     @Import(name="healthCheckIds")
     private @Nullable Output<List<String>> healthCheckIds;
 
     /**
-     * @return Identifier health check.
+     * @return Identifier health check. Required when using `filters.0.status`.
      * 
      */
     public Optional<Output<List<String>>> healthCheckIds() {
@@ -196,17 +196,9 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.requestsPerSeconds);
     }
 
-    /**
-     * A list of clickhouse services to alert on.
-     * 
-     */
     @Import(name="services")
     private @Nullable Output<List<String>> services;
 
-    /**
-     * @return A list of clickhouse services to alert on.
-     * 
-     */
     public Optional<Output<List<String>>> services() {
         return Optional.ofNullable(this.services);
     }
@@ -421,7 +413,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param healthCheckIds Identifier health check.
+         * @param healthCheckIds Identifier health check. Required when using `filters.0.status`.
          * 
          * @return builder
          * 
@@ -432,7 +424,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param healthCheckIds Identifier health check.
+         * @param healthCheckIds Identifier health check. Required when using `filters.0.status`.
          * 
          * @return builder
          * 
@@ -442,7 +434,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param healthCheckIds Identifier health check.
+         * @param healthCheckIds Identifier health check. Required when using `filters.0.status`.
          * 
          * @return builder
          * 
@@ -699,33 +691,15 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
             return requestsPerSeconds(List.of(requestsPerSeconds));
         }
 
-        /**
-         * @param services A list of clickhouse services to alert on.
-         * 
-         * @return builder
-         * 
-         */
         public Builder services(@Nullable Output<List<String>> services) {
             $.services = services;
             return this;
         }
 
-        /**
-         * @param services A list of clickhouse services to alert on.
-         * 
-         * @return builder
-         * 
-         */
         public Builder services(List<String> services) {
             return services(Output.of(services));
         }
 
-        /**
-         * @param services A list of clickhouse services to alert on.
-         * 
-         * @return builder
-         * 
-         */
         public Builder services(String... services) {
             return services(List.of(services));
         }

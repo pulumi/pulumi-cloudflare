@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * // Add a record to the domain
  * const foobar = new cloudflare.Record("foobar", {
  *     zoneId: _var.cloudflare_zone_id,
- *     name: "terraform",
+ *     name: "example",
  *     value: "192.168.0.11",
  *     type: "A",
  *     ttl: 3600,
@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *     data: {
  *         service: "_sip",
  *         proto: "_tls",
- *         name: "terraform-srv",
+ *         name: "example-srv",
  *         priority: 0,
  *         weight: 0,
  *         port: 443,

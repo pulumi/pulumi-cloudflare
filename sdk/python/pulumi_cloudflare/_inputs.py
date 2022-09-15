@@ -5609,7 +5609,7 @@ class NotificationPolicyFiltersArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enableds: State of the pool to alert on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] event_sources: Source configuration to alert on for pool or origin.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] event_types: Stream event type to alert on.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_ids: Identifier health check.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_ids: Identifier health check. Required when using `filters.0.status`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] input_ids: Stream input id to alert on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] limits: A numerical limit. Example: `100`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] new_healths: Health status to alert on for pool or origin.
@@ -5618,7 +5618,6 @@ class NotificationPolicyFiltersArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] products: Product name. Available values: `worker_requests`, `worker_durable_objects_requests`, `worker_durable_objects_duration`, `worker_durable_objects_data_transfer`, `worker_durable_objects_stored_data`, `worker_durable_objects_storage_deletes`, `worker_durable_objects_storage_writes`, `worker_durable_objects_storage_reads`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] protocols: Protocol to alert on for dos.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] requests_per_seconds: Requests per second threshold for dos alert.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: A list of clickhouse services to alert on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] slos: A numerical limit. Example: `99.9`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: Status to alert on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_hosts: Target host to alert on for dos.
@@ -5702,7 +5701,7 @@ class NotificationPolicyFiltersArgs:
     @pulumi.getter(name="healthCheckIds")
     def health_check_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Identifier health check.
+        Identifier health check. Required when using `filters.0.status`.
         """
         return pulumi.get(self, "health_check_ids")
 
@@ -5809,9 +5808,6 @@ class NotificationPolicyFiltersArgs:
     @property
     @pulumi.getter
     def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of clickhouse services to alert on.
-        """
         return pulumi.get(self, "services")
 
     @services.setter
@@ -7761,7 +7757,7 @@ class RulesetRuleArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] expression: Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
-        :param pulumi.Input[str] action: Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `serve_error`, `skip`.
+        :param pulumi.Input[str] action: Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
         :param pulumi.Input['RulesetRuleActionParametersArgs'] action_parameters: List of parameters that configure the behavior of the ruleset rule action.
         :param pulumi.Input[str] description: Brief summary of the ruleset rule and its intended use.
         :param pulumi.Input[bool] enabled: Whether the rule is active.
@@ -7810,7 +7806,7 @@ class RulesetRuleArgs:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
         """
-        Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `serve_error`, `skip`.
+        Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
         """
         return pulumi.get(self, "action")
 
@@ -9306,7 +9302,7 @@ class RulesetRuleActionParametersOverridesRuleArgs:
                  sensitivity_level: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] action: Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `serve_error`, `skip`.
+        :param pulumi.Input[str] action: Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
         :param pulumi.Input[bool] enabled: Whether the rule is active.
         :param pulumi.Input[str] id: Unique rule identifier.
         """
@@ -9330,7 +9326,7 @@ class RulesetRuleActionParametersOverridesRuleArgs:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
         """
-        Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `serve_error`, `skip`.
+        Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
         """
         return pulumi.get(self, "action")
 
@@ -10581,6 +10577,7 @@ class WorkerScriptKvNamespaceBindingArgs:
                  namespace_id: pulumi.Input[str]):
         """
         :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        :param pulumi.Input[str] namespace_id: ID of the KV namespace you want to use.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "namespace_id", namespace_id)
@@ -10600,6 +10597,9 @@ class WorkerScriptKvNamespaceBindingArgs:
     @property
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> pulumi.Input[str]:
+        """
+        ID of the KV namespace you want to use.
+        """
         return pulumi.get(self, "namespace_id")
 
     @namespace_id.setter
@@ -10614,7 +10614,7 @@ class WorkerScriptPlainTextBindingArgs:
                  text: pulumi.Input[str]):
         """
         :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
-        :param pulumi.Input[str] text: The secret text you want to store.
+        :param pulumi.Input[str] text: The plain text you want to store.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "text", text)
@@ -10635,7 +10635,7 @@ class WorkerScriptPlainTextBindingArgs:
     @pulumi.getter
     def text(self) -> pulumi.Input[str]:
         """
-        The secret text you want to store.
+        The plain text you want to store.
         """
         return pulumi.get(self, "text")
 

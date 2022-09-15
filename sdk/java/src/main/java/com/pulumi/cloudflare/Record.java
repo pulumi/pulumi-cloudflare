@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var foobar = new Record(&#34;foobar&#34;, RecordArgs.builder()        
  *             .zoneId(var_.cloudflare_zone_id())
- *             .name(&#34;terraform&#34;)
+ *             .name(&#34;example&#34;)
  *             .value(&#34;192.168.0.11&#34;)
  *             .type(&#34;A&#34;)
  *             .ttl(3600)
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .data(RecordDataArgs.builder()
  *                 .service(&#34;_sip&#34;)
  *                 .proto(&#34;_tls&#34;)
- *                 .name(&#34;terraform-srv&#34;)
+ *                 .name(&#34;example-srv&#34;)
  *                 .priority(0)
  *                 .weight(0)
  *                 .port(443)

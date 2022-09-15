@@ -119,14 +119,14 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
         return this.expiresAt;
     }
     /**
-     * Regenerates the token if terraform is run within the specified amount of days before expiration
+     * Refresh the token if terraform is run within the specified amount of days before expiration
      * 
      */
     @Export(name="minDaysForRenewal", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> minDaysForRenewal;
 
     /**
-     * @return Regenerates the token if terraform is run within the specified amount of days before expiration
+     * @return Refresh the token if terraform is run within the specified amount of days before expiration
      * 
      */
     public Output<Optional<Integer>> minDaysForRenewal() {

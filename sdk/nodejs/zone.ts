@@ -62,7 +62,7 @@ export class Zone extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * Wwhether to scan for DNS records on creation. Ignored after zone is created.
+     * Whether to scan for DNS records on creation. Ignored after zone is created.
      */
     public readonly jumpStart!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly meta!: pulumi.Output<{[key: string]: boolean}>;
@@ -154,7 +154,7 @@ export interface ZoneState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Wwhether to scan for DNS records on creation. Ignored after zone is created.
+     * Whether to scan for DNS records on creation. Ignored after zone is created.
      */
     jumpStart?: pulumi.Input<boolean>;
     meta?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
@@ -201,7 +201,7 @@ export interface ZoneArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Wwhether to scan for DNS records on creation. Ignored after zone is created.
+     * Whether to scan for DNS records on creation. Ignored after zone is created.
      */
     jumpStart?: pulumi.Input<boolean>;
     /**

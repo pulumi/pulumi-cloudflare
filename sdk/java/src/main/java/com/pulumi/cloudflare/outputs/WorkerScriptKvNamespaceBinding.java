@@ -14,6 +14,10 @@ public final class WorkerScriptKvNamespaceBinding {
      * 
      */
     private String name;
+    /**
+     * @return ID of the KV namespace you want to use.
+     * 
+     */
     private String namespaceId;
 
     private WorkerScriptKvNamespaceBinding() {}
@@ -24,6 +28,10 @@ public final class WorkerScriptKvNamespaceBinding {
     public String name() {
         return this.name;
     }
+    /**
+     * @return ID of the KV namespace you want to use.
+     * 
+     */
     public String namespaceId() {
         return this.namespaceId;
     }

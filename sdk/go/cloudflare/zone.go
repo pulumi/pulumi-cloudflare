@@ -56,7 +56,7 @@ type Zone struct {
 
 	// Account ID to manage the zone resource in.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// Wwhether to scan for DNS records on creation. Ignored after zone is created.
+	// Whether to scan for DNS records on creation. Ignored after zone is created.
 	JumpStart pulumi.BoolPtrOutput `pulumi:"jumpStart"`
 	Meta      pulumi.BoolMapOutput `pulumi:"meta"`
 	// Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
@@ -111,7 +111,7 @@ func GetZone(ctx *pulumi.Context,
 type zoneState struct {
 	// Account ID to manage the zone resource in.
 	AccountId *string `pulumi:"accountId"`
-	// Wwhether to scan for DNS records on creation. Ignored after zone is created.
+	// Whether to scan for DNS records on creation. Ignored after zone is created.
 	JumpStart *bool           `pulumi:"jumpStart"`
 	Meta      map[string]bool `pulumi:"meta"`
 	// Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
@@ -135,7 +135,7 @@ type zoneState struct {
 type ZoneState struct {
 	// Account ID to manage the zone resource in.
 	AccountId pulumi.StringPtrInput
-	// Wwhether to scan for DNS records on creation. Ignored after zone is created.
+	// Whether to scan for DNS records on creation. Ignored after zone is created.
 	JumpStart pulumi.BoolPtrInput
 	Meta      pulumi.BoolMapInput
 	// Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
@@ -163,7 +163,7 @@ func (ZoneState) ElementType() reflect.Type {
 type zoneArgs struct {
 	// Account ID to manage the zone resource in.
 	AccountId *string `pulumi:"accountId"`
-	// Wwhether to scan for DNS records on creation. Ignored after zone is created.
+	// Whether to scan for DNS records on creation. Ignored after zone is created.
 	JumpStart *bool `pulumi:"jumpStart"`
 	// Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
 	Paused *bool `pulumi:"paused"`
@@ -179,7 +179,7 @@ type zoneArgs struct {
 type ZoneArgs struct {
 	// Account ID to manage the zone resource in.
 	AccountId pulumi.StringPtrInput
-	// Wwhether to scan for DNS records on creation. Ignored after zone is created.
+	// Whether to scan for DNS records on creation. Ignored after zone is created.
 	JumpStart pulumi.BoolPtrInput
 	// Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
 	Paused pulumi.BoolPtrInput
@@ -283,7 +283,7 @@ func (o ZoneOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Wwhether to scan for DNS records on creation. Ignored after zone is created.
+// Whether to scan for DNS records on creation. Ignored after zone is created.
 func (o ZoneOutput) JumpStart() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Zone) pulumi.BoolPtrOutput { return v.JumpStart }).(pulumi.BoolPtrOutput)
 }

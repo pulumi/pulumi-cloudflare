@@ -220,14 +220,14 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
         return this.precedence;
     }
     /**
-     * The prompt to display to the user for a justification for accessing the resource.
+     * The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
      * 
      */
     @Export(name="purposeJustificationPrompt", type=String.class, parameters={})
     private Output</* @Nullable */ String> purposeJustificationPrompt;
 
     /**
-     * @return The prompt to display to the user for a justification for accessing the resource.
+     * @return The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
      * 
      */
     public Output<Optional<String>> purposeJustificationPrompt() {

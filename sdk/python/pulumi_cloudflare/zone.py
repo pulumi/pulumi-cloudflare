@@ -24,7 +24,7 @@ class ZoneArgs:
         The set of arguments for constructing a Zone resource.
         :param pulumi.Input[str] zone: The DNS zone name which will be added.
         :param pulumi.Input[str] account_id: Account ID to manage the zone resource in.
-        :param pulumi.Input[bool] jump_start: Wwhether to scan for DNS records on creation. Ignored after zone is created.
+        :param pulumi.Input[bool] jump_start: Whether to scan for DNS records on creation. Ignored after zone is created.
         :param pulumi.Input[bool] paused: Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
         :param pulumi.Input[str] plan: The name of the commercial plan to apply to the zone. Available values: `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
         :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
@@ -69,7 +69,7 @@ class ZoneArgs:
     @pulumi.getter(name="jumpStart")
     def jump_start(self) -> Optional[pulumi.Input[bool]]:
         """
-        Wwhether to scan for DNS records on creation. Ignored after zone is created.
+        Whether to scan for DNS records on creation. Ignored after zone is created.
         """
         return pulumi.get(self, "jump_start")
 
@@ -131,7 +131,7 @@ class _ZoneState:
         """
         Input properties used for looking up and filtering Zone resources.
         :param pulumi.Input[str] account_id: Account ID to manage the zone resource in.
-        :param pulumi.Input[bool] jump_start: Wwhether to scan for DNS records on creation. Ignored after zone is created.
+        :param pulumi.Input[bool] jump_start: Whether to scan for DNS records on creation. Ignored after zone is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
         :param pulumi.Input[bool] paused: Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
         :param pulumi.Input[str] plan: The name of the commercial plan to apply to the zone. Available values: `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
@@ -180,7 +180,7 @@ class _ZoneState:
     @pulumi.getter(name="jumpStart")
     def jump_start(self) -> Optional[pulumi.Input[bool]]:
         """
-        Wwhether to scan for DNS records on creation. Ignored after zone is created.
+        Whether to scan for DNS records on creation. Ignored after zone is created.
         """
         return pulumi.get(self, "jump_start")
 
@@ -333,7 +333,7 @@ class Zone(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account ID to manage the zone resource in.
-        :param pulumi.Input[bool] jump_start: Wwhether to scan for DNS records on creation. Ignored after zone is created.
+        :param pulumi.Input[bool] jump_start: Whether to scan for DNS records on creation. Ignored after zone is created.
         :param pulumi.Input[bool] paused: Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
         :param pulumi.Input[str] plan: The name of the commercial plan to apply to the zone. Available values: `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
         :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
@@ -441,7 +441,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account ID to manage the zone resource in.
-        :param pulumi.Input[bool] jump_start: Wwhether to scan for DNS records on creation. Ignored after zone is created.
+        :param pulumi.Input[bool] jump_start: Whether to scan for DNS records on creation. Ignored after zone is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
         :param pulumi.Input[bool] paused: Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
         :param pulumi.Input[str] plan: The name of the commercial plan to apply to the zone. Available values: `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
@@ -480,7 +480,7 @@ class Zone(pulumi.CustomResource):
     @pulumi.getter(name="jumpStart")
     def jump_start(self) -> pulumi.Output[Optional[bool]]:
         """
-        Wwhether to scan for DNS records on creation. Ignored after zone is created.
+        Whether to scan for DNS records on creation. Ignored after zone is created.
         """
         return pulumi.get(self, "jump_start")
 

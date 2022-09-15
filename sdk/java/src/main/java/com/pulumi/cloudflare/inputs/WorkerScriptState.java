@@ -11,6 +11,7 @@ import com.pulumi.cloudflare.inputs.WorkerScriptServiceBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptWebassemblyBindingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -45,14 +46,29 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The global variable for the binding in your Worker code.
+     * Whether to upload Worker as a module.
+     * 
+     */
+    @Import(name="module")
+    private @Nullable Output<Boolean> module;
+
+    /**
+     * @return Whether to upload Worker as a module.
+     * 
+     */
+    public Optional<Output<Boolean>> module() {
+        return Optional.ofNullable(this.module);
+    }
+
+    /**
+     * The name for the script.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The global variable for the binding in your Worker code.
+     * @return The name for the script.
      * 
      */
     public Optional<Output<String>> name() {
@@ -99,6 +115,7 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
     private WorkerScriptState(WorkerScriptState $) {
         this.content = $.content;
         this.kvNamespaceBindings = $.kvNamespaceBindings;
+        this.module = $.module;
         this.name = $.name;
         this.plainTextBindings = $.plainTextBindings;
         this.r2BucketBindings = $.r2BucketBindings;
@@ -160,7 +177,28 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The global variable for the binding in your Worker code.
+         * @param module Whether to upload Worker as a module.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder module(@Nullable Output<Boolean> module) {
+            $.module = module;
+            return this;
+        }
+
+        /**
+         * @param module Whether to upload Worker as a module.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder module(Boolean module) {
+            return module(Output.of(module));
+        }
+
+        /**
+         * @param name The name for the script.
          * 
          * @return builder
          * 
@@ -171,7 +209,7 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The global variable for the binding in your Worker code.
+         * @param name The name for the script.
          * 
          * @return builder
          * 

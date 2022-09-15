@@ -10586,7 +10586,7 @@ type NotificationPolicyFilters struct {
 	EventSources []string `pulumi:"eventSources"`
 	// Stream event type to alert on.
 	EventTypes []string `pulumi:"eventTypes"`
-	// Identifier health check.
+	// Identifier health check. Required when using `filters.0.status`.
 	HealthCheckIds []string `pulumi:"healthCheckIds"`
 	// Stream input id to alert on.
 	InputIds []string `pulumi:"inputIds"`
@@ -10604,8 +10604,7 @@ type NotificationPolicyFilters struct {
 	Protocols []string `pulumi:"protocols"`
 	// Requests per second threshold for dos alert.
 	RequestsPerSeconds []string `pulumi:"requestsPerSeconds"`
-	// A list of clickhouse services to alert on.
-	Services []string `pulumi:"services"`
+	Services           []string `pulumi:"services"`
 	// A numerical limit. Example: `99.9`.
 	Slos []string `pulumi:"slos"`
 	// Status to alert on.
@@ -10636,7 +10635,7 @@ type NotificationPolicyFiltersArgs struct {
 	EventSources pulumi.StringArrayInput `pulumi:"eventSources"`
 	// Stream event type to alert on.
 	EventTypes pulumi.StringArrayInput `pulumi:"eventTypes"`
-	// Identifier health check.
+	// Identifier health check. Required when using `filters.0.status`.
 	HealthCheckIds pulumi.StringArrayInput `pulumi:"healthCheckIds"`
 	// Stream input id to alert on.
 	InputIds pulumi.StringArrayInput `pulumi:"inputIds"`
@@ -10654,8 +10653,7 @@ type NotificationPolicyFiltersArgs struct {
 	Protocols pulumi.StringArrayInput `pulumi:"protocols"`
 	// Requests per second threshold for dos alert.
 	RequestsPerSeconds pulumi.StringArrayInput `pulumi:"requestsPerSeconds"`
-	// A list of clickhouse services to alert on.
-	Services pulumi.StringArrayInput `pulumi:"services"`
+	Services           pulumi.StringArrayInput `pulumi:"services"`
 	// A numerical limit. Example: `99.9`.
 	Slos pulumi.StringArrayInput `pulumi:"slos"`
 	// Status to alert on.
@@ -10760,7 +10758,7 @@ func (o NotificationPolicyFiltersOutput) EventTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.EventTypes }).(pulumi.StringArrayOutput)
 }
 
-// Identifier health check.
+// Identifier health check. Required when using `filters.0.status`.
 func (o NotificationPolicyFiltersOutput) HealthCheckIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.HealthCheckIds }).(pulumi.StringArrayOutput)
 }
@@ -10805,7 +10803,6 @@ func (o NotificationPolicyFiltersOutput) RequestsPerSeconds() pulumi.StringArray
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.RequestsPerSeconds }).(pulumi.StringArrayOutput)
 }
 
-// A list of clickhouse services to alert on.
 func (o NotificationPolicyFiltersOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Services }).(pulumi.StringArrayOutput)
 }
@@ -10889,7 +10886,7 @@ func (o NotificationPolicyFiltersPtrOutput) EventTypes() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
-// Identifier health check.
+// Identifier health check. Required when using `filters.0.status`.
 func (o NotificationPolicyFiltersPtrOutput) HealthCheckIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
 		if v == nil {
@@ -10979,7 +10976,6 @@ func (o NotificationPolicyFiltersPtrOutput) RequestsPerSeconds() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
-// A list of clickhouse services to alert on.
 func (o NotificationPolicyFiltersPtrOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
 		if v == nil {
@@ -15177,7 +15173,7 @@ func (o RecordDataPtrOutput) Weight() pulumi.IntPtrOutput {
 }
 
 type RulesetRule struct {
-	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `serveError`, `skip`.
+	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
 	Action *string `pulumi:"action"`
 	// List of parameters that configure the behavior of the ruleset rule action.
 	ActionParameters *RulesetRuleActionParameters `pulumi:"actionParameters"`
@@ -15213,7 +15209,7 @@ type RulesetRuleInput interface {
 }
 
 type RulesetRuleArgs struct {
-	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `serveError`, `skip`.
+	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// List of parameters that configure the behavior of the ruleset rule action.
 	ActionParameters RulesetRuleActionParametersPtrInput `pulumi:"actionParameters"`
@@ -15288,7 +15284,7 @@ func (o RulesetRuleOutput) ToRulesetRuleOutputWithContext(ctx context.Context) R
 	return o
 }
 
-// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `serveError`, `skip`.
+// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
 func (o RulesetRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -19141,7 +19137,7 @@ func (o RulesetRuleActionParametersOverridesCategoryArrayOutput) Index(i pulumi.
 }
 
 type RulesetRuleActionParametersOverridesRule struct {
-	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `serveError`, `skip`.
+	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
 	Action *string `pulumi:"action"`
 	// Whether the rule is active.
 	//
@@ -19166,7 +19162,7 @@ type RulesetRuleActionParametersOverridesRuleInput interface {
 }
 
 type RulesetRuleActionParametersOverridesRuleArgs struct {
-	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `serveError`, `skip`.
+	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// Whether the rule is active.
 	//
@@ -19230,7 +19226,7 @@ func (o RulesetRuleActionParametersOverridesRuleOutput) ToRulesetRuleActionParam
 	return o
 }
 
-// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `serveError`, `skip`.
+// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
 func (o RulesetRuleActionParametersOverridesRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersOverridesRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -23572,7 +23568,8 @@ func (o TeamsRuleRuleSettingsL4overridePtrOutput) Port() pulumi.IntPtrOutput {
 
 type WorkerScriptKvNamespaceBinding struct {
 	// The global variable for the binding in your Worker code.
-	Name        string `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// ID of the KV namespace you want to use.
 	NamespaceId string `pulumi:"namespaceId"`
 }
 
@@ -23589,7 +23586,8 @@ type WorkerScriptKvNamespaceBindingInput interface {
 
 type WorkerScriptKvNamespaceBindingArgs struct {
 	// The global variable for the binding in your Worker code.
-	Name        pulumi.StringInput `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// ID of the KV namespace you want to use.
 	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
 }
 
@@ -23649,6 +23647,7 @@ func (o WorkerScriptKvNamespaceBindingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkerScriptKvNamespaceBinding) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// ID of the KV namespace you want to use.
 func (o WorkerScriptKvNamespaceBindingOutput) NamespaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkerScriptKvNamespaceBinding) string { return v.NamespaceId }).(pulumi.StringOutput)
 }
@@ -23676,7 +23675,7 @@ func (o WorkerScriptKvNamespaceBindingArrayOutput) Index(i pulumi.IntInput) Work
 type WorkerScriptPlainTextBinding struct {
 	// The global variable for the binding in your Worker code.
 	Name string `pulumi:"name"`
-	// The secret text you want to store.
+	// The plain text you want to store.
 	Text string `pulumi:"text"`
 }
 
@@ -23694,7 +23693,7 @@ type WorkerScriptPlainTextBindingInput interface {
 type WorkerScriptPlainTextBindingArgs struct {
 	// The global variable for the binding in your Worker code.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The secret text you want to store.
+	// The plain text you want to store.
 	Text pulumi.StringInput `pulumi:"text"`
 }
 
@@ -23754,7 +23753,7 @@ func (o WorkerScriptPlainTextBindingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkerScriptPlainTextBinding) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The secret text you want to store.
+// The plain text you want to store.
 func (o WorkerScriptPlainTextBindingOutput) Text() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkerScriptPlainTextBinding) string { return v.Text }).(pulumi.StringOutput)
 }

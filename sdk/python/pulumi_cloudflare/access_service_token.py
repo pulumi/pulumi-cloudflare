@@ -22,7 +22,7 @@ class AccessServiceTokenArgs:
         The set of arguments for constructing a AccessServiceToken resource.
         :param pulumi.Input[str] name: Friendly name of the token's intent.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[int] min_days_for_renewal: Regenerates the token if terraform is run within the specified amount of days before expiration
+        :param pulumi.Input[int] min_days_for_renewal: Refresh the token if terraform is run within the specified amount of days before expiration
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         pulumi.set(__self__, "name", name)
@@ -61,7 +61,7 @@ class AccessServiceTokenArgs:
     @pulumi.getter(name="minDaysForRenewal")
     def min_days_for_renewal(self) -> Optional[pulumi.Input[int]]:
         """
-        Regenerates the token if terraform is run within the specified amount of days before expiration
+        Refresh the token if terraform is run within the specified amount of days before expiration
         """
         return pulumi.get(self, "min_days_for_renewal")
 
@@ -98,7 +98,7 @@ class _AccessServiceTokenState:
         :param pulumi.Input[str] client_id: UUID client ID associated with the Service Token.
         :param pulumi.Input[str] client_secret: A secret for interacting with Access protocols.
         :param pulumi.Input[str] expires_at: Date when the token expires.
-        :param pulumi.Input[int] min_days_for_renewal: Regenerates the token if terraform is run within the specified amount of days before expiration
+        :param pulumi.Input[int] min_days_for_renewal: Refresh the token if terraform is run within the specified amount of days before expiration
         :param pulumi.Input[str] name: Friendly name of the token's intent.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
@@ -169,7 +169,7 @@ class _AccessServiceTokenState:
     @pulumi.getter(name="minDaysForRenewal")
     def min_days_for_renewal(self) -> Optional[pulumi.Input[int]]:
         """
-        Regenerates the token if terraform is run within the specified amount of days before expiration
+        Refresh the token if terraform is run within the specified amount of days before expiration
         """
         return pulumi.get(self, "min_days_for_renewal")
 
@@ -240,7 +240,7 @@ class AccessServiceToken(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[int] min_days_for_renewal: Regenerates the token if terraform is run within the specified amount of days before expiration
+        :param pulumi.Input[int] min_days_for_renewal: Refresh the token if terraform is run within the specified amount of days before expiration
         :param pulumi.Input[str] name: Friendly name of the token's intent.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
@@ -340,7 +340,7 @@ class AccessServiceToken(pulumi.CustomResource):
         :param pulumi.Input[str] client_id: UUID client ID associated with the Service Token.
         :param pulumi.Input[str] client_secret: A secret for interacting with Access protocols.
         :param pulumi.Input[str] expires_at: Date when the token expires.
-        :param pulumi.Input[int] min_days_for_renewal: Regenerates the token if terraform is run within the specified amount of days before expiration
+        :param pulumi.Input[int] min_days_for_renewal: Refresh the token if terraform is run within the specified amount of days before expiration
         :param pulumi.Input[str] name: Friendly name of the token's intent.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
@@ -393,7 +393,7 @@ class AccessServiceToken(pulumi.CustomResource):
     @pulumi.getter(name="minDaysForRenewal")
     def min_days_for_renewal(self) -> pulumi.Output[Optional[int]]:
         """
-        Regenerates the token if terraform is run within the specified amount of days before expiration
+        Refresh the token if terraform is run within the specified amount of days before expiration
         """
         return pulumi.get(self, "min_days_for_renewal")
 

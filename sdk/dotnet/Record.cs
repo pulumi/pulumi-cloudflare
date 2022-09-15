@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     ///     var foobar = new Cloudflare.Record("foobar", new()
     ///     {
     ///         ZoneId = @var.Cloudflare_zone_id,
-    ///         Name = "terraform",
+    ///         Name = "example",
     ///         Value = "192.168.0.11",
     ///         Type = "A",
     ///         Ttl = 3600,
@@ -41,7 +41,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             Service = "_sip",
     ///             Proto = "_tls",
-    ///             Name = "terraform-srv",
+    ///             Name = "example-srv",
     ///             Priority = 0,
     ///             Weight = 0,
     ///             Port = 443,

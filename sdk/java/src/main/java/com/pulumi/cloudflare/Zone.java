@@ -79,14 +79,14 @@ public class Zone extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accountId);
     }
     /**
-     * Wwhether to scan for DNS records on creation. Ignored after zone is created.
+     * Whether to scan for DNS records on creation. Ignored after zone is created.
      * 
      */
     @Export(name="jumpStart", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> jumpStart;
 
     /**
-     * @return Wwhether to scan for DNS records on creation. Ignored after zone is created.
+     * @return Whether to scan for DNS records on creation. Ignored after zone is created.
      * 
      */
     public Output<Optional<Boolean>> jumpStart() {

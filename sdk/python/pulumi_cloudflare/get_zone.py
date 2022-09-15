@@ -69,6 +69,9 @@ class GetZoneResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Must provide only one of `zone_id`, `name`.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -100,7 +103,7 @@ class GetZoneResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
         """
         return pulumi.get(self, "zone_id")
 
@@ -130,7 +133,8 @@ def get_zone(account_id: Optional[str] = None,
     Use this data source to access information about an existing resource.
 
     :param str account_id: The account identifier to target for the resource.
-    :param str zone_id: The zone identifier to target for the resource.
+    :param str name: Must provide only one of `zone_id`, `name`.
+    :param str zone_id: The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -160,6 +164,7 @@ def get_zone_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
     Use this data source to access information about an existing resource.
 
     :param str account_id: The account identifier to target for the resource.
-    :param str zone_id: The zone identifier to target for the resource.
+    :param str name: Must provide only one of `zone_id`, `name`.
+    :param str zone_id: The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
     """
     ...

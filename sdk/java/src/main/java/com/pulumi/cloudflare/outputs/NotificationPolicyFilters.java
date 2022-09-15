@@ -27,7 +27,7 @@ public final class NotificationPolicyFilters {
      */
     private @Nullable List<String> eventTypes;
     /**
-     * @return Identifier health check.
+     * @return Identifier health check. Required when using `filters.0.status`.
      * 
      */
     private @Nullable List<String> healthCheckIds;
@@ -71,10 +71,6 @@ public final class NotificationPolicyFilters {
      * 
      */
     private @Nullable List<String> requestsPerSeconds;
-    /**
-     * @return A list of clickhouse services to alert on.
-     * 
-     */
     private @Nullable List<String> services;
     /**
      * @return A numerical limit. Example: `99.9`.
@@ -125,7 +121,7 @@ public final class NotificationPolicyFilters {
         return this.eventTypes == null ? List.of() : this.eventTypes;
     }
     /**
-     * @return Identifier health check.
+     * @return Identifier health check. Required when using `filters.0.status`.
      * 
      */
     public List<String> healthCheckIds() {
@@ -187,10 +183,6 @@ public final class NotificationPolicyFilters {
     public List<String> requestsPerSeconds() {
         return this.requestsPerSeconds == null ? List.of() : this.requestsPerSeconds;
     }
-    /**
-     * @return A list of clickhouse services to alert on.
-     * 
-     */
     public List<String> services() {
         return this.services == null ? List.of() : this.services;
     }
