@@ -34,14 +34,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/logpushJob:LogpushJob")
 public class LogpushJob extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
      * 
      */
     public Output<Optional<String>> accountId() {
@@ -174,14 +174,14 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ownershipChallenge);
     }
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
      * 
      */
     public Output<Optional<String>> zoneId() {

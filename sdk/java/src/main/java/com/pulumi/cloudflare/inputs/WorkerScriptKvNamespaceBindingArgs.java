@@ -28,9 +28,17 @@ public final class WorkerScriptKvNamespaceBindingArgs extends com.pulumi.resourc
         return this.name;
     }
 
+    /**
+     * ID of the KV namespace you want to use.
+     * 
+     */
     @Import(name="namespaceId", required=true)
     private Output<String> namespaceId;
 
+    /**
+     * @return ID of the KV namespace you want to use.
+     * 
+     */
     public Output<String> namespaceId() {
         return this.namespaceId;
     }
@@ -81,11 +89,23 @@ public final class WorkerScriptKvNamespaceBindingArgs extends com.pulumi.resourc
             return name(Output.of(name));
         }
 
+        /**
+         * @param namespaceId ID of the KV namespace you want to use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespaceId(Output<String> namespaceId) {
             $.namespaceId = namespaceId;
             return this;
         }
 
+        /**
+         * @param namespaceId ID of the KV namespace you want to use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespaceId(String namespaceId) {
             return namespaceId(Output.of(namespaceId));
         }

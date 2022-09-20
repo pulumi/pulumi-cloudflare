@@ -146,14 +146,14 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The prompt to display to the user for a justification for accessing the resource.
+     * The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
      * 
      */
     @Import(name="purposeJustificationPrompt")
     private @Nullable Output<String> purposeJustificationPrompt;
 
     /**
-     * @return The prompt to display to the user for a justification for accessing the resource.
+     * @return The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
      * 
      */
     public Optional<Output<String>> purposeJustificationPrompt() {
@@ -439,7 +439,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param purposeJustificationPrompt The prompt to display to the user for a justification for accessing the resource.
+         * @param purposeJustificationPrompt The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
          * 
          * @return builder
          * 
@@ -450,7 +450,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param purposeJustificationPrompt The prompt to display to the user for a justification for accessing the resource.
+         * @param purposeJustificationPrompt The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
          * 
          * @return builder
          * 

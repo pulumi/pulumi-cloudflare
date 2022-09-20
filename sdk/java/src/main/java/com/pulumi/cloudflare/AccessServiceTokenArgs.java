@@ -32,14 +32,14 @@ public final class AccessServiceTokenArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Regenerates the token if terraform is run within the specified amount of days before expiration
+     * Refresh the token if terraform is run within the specified amount of days before expiration
      * 
      */
     @Import(name="minDaysForRenewal")
     private @Nullable Output<Integer> minDaysForRenewal;
 
     /**
-     * @return Regenerates the token if terraform is run within the specified amount of days before expiration
+     * @return Refresh the token if terraform is run within the specified amount of days before expiration
      * 
      */
     public Optional<Output<Integer>> minDaysForRenewal() {
@@ -125,7 +125,7 @@ public final class AccessServiceTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param minDaysForRenewal Regenerates the token if terraform is run within the specified amount of days before expiration
+         * @param minDaysForRenewal Refresh the token if terraform is run within the specified amount of days before expiration
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class AccessServiceTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param minDaysForRenewal Regenerates the token if terraform is run within the specified amount of days before expiration
+         * @param minDaysForRenewal Refresh the token if terraform is run within the specified amount of days before expiration
          * 
          * @return builder
          * 

@@ -27,11 +27,14 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public string? AccountId { get; set; }
 
+        /// <summary>
+        /// Must provide only one of `zone_id`, `name`.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
         /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
@@ -50,11 +53,14 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// Must provide only one of `zone_id`, `name`.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -77,6 +83,9 @@ namespace Pulumi.Cloudflare
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Must provide only one of `zone_id`, `name`.
+        /// </summary>
         public readonly string Name;
         public readonly ImmutableArray<string> NameServers;
         public readonly bool Paused;
@@ -84,7 +93,7 @@ namespace Pulumi.Cloudflare
         public readonly string Status;
         public readonly ImmutableArray<string> VanityNameServers;
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
         /// </summary>
         public readonly string ZoneId;
 

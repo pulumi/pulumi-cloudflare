@@ -15,7 +15,7 @@ public final class WorkerScriptPlainTextBinding {
      */
     private String name;
     /**
-     * @return The secret text you want to store.
+     * @return The plain text you want to store.
      * 
      */
     private String text;
@@ -29,7 +29,7 @@ public final class WorkerScriptPlainTextBinding {
         return this.name;
     }
     /**
-     * @return The secret text you want to store.
+     * @return The plain text you want to store.
      * 
      */
     public String text() {

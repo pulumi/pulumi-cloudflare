@@ -1078,7 +1078,7 @@ export interface NotificationPolicyFilters {
      */
     eventTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Identifier health check.
+     * Identifier health check. Required when using `filters.0.status`.
      */
     healthCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1113,9 +1113,6 @@ export interface NotificationPolicyFilters {
      * Requests per second threshold for dos alert.
      */
     requestsPerSeconds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of clickhouse services to alert on.
-     */
     services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A numerical limit. Example: `99.9`.
@@ -1566,7 +1563,7 @@ export interface RecordData {
 
 export interface RulesetRule {
     /**
-     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `serveError`, `skip`.
+     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -1800,7 +1797,7 @@ export interface RulesetRuleActionParametersOverridesCategory {
 
 export interface RulesetRuleActionParametersOverridesRule {
     /**
-     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `serveError`, `skip`.
+     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -2105,6 +2102,9 @@ export interface WorkerScriptKvNamespaceBinding {
      * The global variable for the binding in your Worker code.
      */
     name: pulumi.Input<string>;
+    /**
+     * ID of the KV namespace you want to use.
+     */
     namespaceId: pulumi.Input<string>;
 }
 
@@ -2114,7 +2114,7 @@ export interface WorkerScriptPlainTextBinding {
      */
     name: pulumi.Input<string>;
     /**
-     * The secret text you want to store.
+     * The plain text you want to store.
      */
     text: pulumi.Input<string>;
 }

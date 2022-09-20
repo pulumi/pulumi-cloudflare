@@ -128,7 +128,7 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public readonly precedence!: pulumi.Output<number>;
     /**
-     * The prompt to display to the user for a justification for accessing the resource.
+     * The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
      */
     public readonly purposeJustificationPrompt!: pulumi.Output<string | undefined>;
     /**
@@ -244,7 +244,7 @@ export interface AccessPolicyState {
      */
     precedence?: pulumi.Input<number>;
     /**
-     * The prompt to display to the user for a justification for accessing the resource.
+     * The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
      */
     purposeJustificationPrompt?: pulumi.Input<string>;
     /**
@@ -299,7 +299,7 @@ export interface AccessPolicyArgs {
      */
     precedence: pulumi.Input<number>;
     /**
-     * The prompt to display to the user for a justification for accessing the resource.
+     * The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
      */
     purposeJustificationPrompt?: pulumi.Input<string>;
     /**

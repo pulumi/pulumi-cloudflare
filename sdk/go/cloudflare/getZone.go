@@ -23,8 +23,9 @@ func LookupZone(ctx *pulumi.Context, args *LookupZoneArgs, opts ...pulumi.Invoke
 type LookupZoneArgs struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	Name      *string `pulumi:"name"`
-	// The zone identifier to target for the resource.
+	// Must provide only one of `zoneId`, `name`.
+	Name *string `pulumi:"name"`
+	// The zone identifier to target for the resource. Must provide only one of `zoneId`, `name`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -33,14 +34,15 @@ type LookupZoneResult struct {
 	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Must provide only one of `zoneId`, `name`.
 	Name              string   `pulumi:"name"`
 	NameServers       []string `pulumi:"nameServers"`
 	Paused            bool     `pulumi:"paused"`
 	Plan              string   `pulumi:"plan"`
 	Status            string   `pulumi:"status"`
 	VanityNameServers []string `pulumi:"vanityNameServers"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. Must provide only one of `zoneId`, `name`.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -61,8 +63,9 @@ func LookupZoneOutput(ctx *pulumi.Context, args LookupZoneOutputArgs, opts ...pu
 type LookupZoneOutputArgs struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	Name      pulumi.StringPtrInput `pulumi:"name"`
-	// The zone identifier to target for the resource.
+	// Must provide only one of `zoneId`, `name`.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The zone identifier to target for the resource. Must provide only one of `zoneId`, `name`.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
@@ -95,6 +98,7 @@ func (o LookupZoneResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Must provide only one of `zoneId`, `name`.
 func (o LookupZoneResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -119,7 +123,7 @@ func (o LookupZoneResultOutput) VanityNameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupZoneResult) []string { return v.VanityNameServers }).(pulumi.StringArrayOutput)
 }
 
-// The zone identifier to target for the resource.
+// The zone identifier to target for the resource. Must provide only one of `zoneId`, `name`.
 func (o LookupZoneResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

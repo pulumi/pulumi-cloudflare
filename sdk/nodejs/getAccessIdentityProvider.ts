@@ -22,12 +22,12 @@ export function getAccessIdentityProvider(args: GetAccessIdentityProviderArgs, o
  */
 export interface GetAccessIdentityProviderArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
      */
     accountId?: string;
     name: string;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
      */
     zoneId?: string;
 }
@@ -37,7 +37,7 @@ export interface GetAccessIdentityProviderArgs {
  */
 export interface GetAccessIdentityProviderResult {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
      */
     readonly accountId?: string;
     /**
@@ -47,7 +47,7 @@ export interface GetAccessIdentityProviderResult {
     readonly name: string;
     readonly type: string;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
      */
     readonly zoneId?: string;
 }
@@ -61,12 +61,12 @@ export function getAccessIdentityProviderOutput(args: GetAccessIdentityProviderO
  */
 export interface GetAccessIdentityProviderOutputArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
      */
     accountId?: pulumi.Input<string>;
     name: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
      */
     zoneId?: pulumi.Input<string>;
 }

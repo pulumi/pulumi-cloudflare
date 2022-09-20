@@ -26,9 +26,12 @@ export interface GetZoneArgs {
      * The account identifier to target for the resource.
      */
     accountId?: string;
+    /**
+     * Must provide only one of `zoneId`, `name`.
+     */
     name?: string;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Must provide only one of `zoneId`, `name`.
      */
     zoneId?: string;
 }
@@ -45,6 +48,9 @@ export interface GetZoneResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Must provide only one of `zoneId`, `name`.
+     */
     readonly name: string;
     readonly nameServers: string[];
     readonly paused: boolean;
@@ -52,7 +58,7 @@ export interface GetZoneResult {
     readonly status: string;
     readonly vanityNameServers: string[];
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Must provide only one of `zoneId`, `name`.
      */
     readonly zoneId: string;
 }
@@ -69,9 +75,12 @@ export interface GetZoneOutputArgs {
      * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * Must provide only one of `zoneId`, `name`.
+     */
     name?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Must provide only one of `zoneId`, `name`.
      */
     zoneId?: pulumi.Input<string>;
 }

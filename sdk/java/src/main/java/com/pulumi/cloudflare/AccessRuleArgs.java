@@ -17,14 +17,14 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
     public static final AccessRuleArgs Empty = new AccessRuleArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -77,14 +77,14 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -120,7 +120,7 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
          * 
          * @return builder
          * 

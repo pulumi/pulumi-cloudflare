@@ -29,22 +29,30 @@ public final class GetZonePlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * Must provide only one of `zone_id`, `name`.
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return Must provide only one of `zone_id`, `name`.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
      * 
      */
     @Import(name="zoneId")
     private @Nullable String zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
      * 
      */
     public Optional<String> zoneId() {
@@ -88,13 +96,19 @@ public final class GetZonePlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param name Must provide only one of `zone_id`, `name`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
          * 
          * @return builder
          * 

@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAccessIdentityProviderResult {
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
      * 
      */
     private @Nullable String accountId;
@@ -24,14 +24,14 @@ public final class GetAccessIdentityProviderResult {
     private String name;
     private String type;
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
      * 
      */
     private @Nullable String zoneId;
 
     private GetAccessIdentityProviderResult() {}
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
      * 
      */
     public Optional<String> accountId() {
@@ -51,7 +51,7 @@ public final class GetAccessIdentityProviderResult {
         return this.type;
     }
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
      * 
      */
     public Optional<String> zoneId() {

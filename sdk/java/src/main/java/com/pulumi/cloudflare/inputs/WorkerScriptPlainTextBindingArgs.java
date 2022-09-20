@@ -29,14 +29,14 @@ public final class WorkerScriptPlainTextBindingArgs extends com.pulumi.resources
     }
 
     /**
-     * The secret text you want to store.
+     * The plain text you want to store.
      * 
      */
     @Import(name="text", required=true)
     private Output<String> text;
 
     /**
-     * @return The secret text you want to store.
+     * @return The plain text you want to store.
      * 
      */
     public Output<String> text() {
@@ -90,7 +90,7 @@ public final class WorkerScriptPlainTextBindingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param text The secret text you want to store.
+         * @param text The plain text you want to store.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class WorkerScriptPlainTextBindingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param text The secret text you want to store.
+         * @param text The plain text you want to store.
          * 
          * @return builder
          * 

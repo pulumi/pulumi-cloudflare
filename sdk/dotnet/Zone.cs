@@ -50,7 +50,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Wwhether to scan for DNS records on creation. Ignored after zone is created.
+        /// Whether to scan for DNS records on creation. Ignored after zone is created.
         /// </summary>
         [Output("jumpStart")]
         public Output<bool?> JumpStart { get; private set; } = null!;
@@ -159,7 +159,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Wwhether to scan for DNS records on creation. Ignored after zone is created.
+        /// Whether to scan for DNS records on creation. Ignored after zone is created.
         /// </summary>
         [Input("jumpStart")]
         public Input<bool>? JumpStart { get; set; }
@@ -203,7 +203,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Wwhether to scan for DNS records on creation. Ignored after zone is created.
+        /// Whether to scan for DNS records on creation. Ignored after zone is created.
         /// </summary>
         [Input("jumpStart")]
         public Input<bool>? JumpStart { get; set; }

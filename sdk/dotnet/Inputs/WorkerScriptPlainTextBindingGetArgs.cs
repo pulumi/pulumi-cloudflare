@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The secret text you want to store.
+        /// The plain text you want to store.
         /// </summary>
         [Input("text", required: true)]
         public Input<string> Text { get; set; } = null!;

@@ -10,7 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+    /// Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`.
+    /// 
+    /// &gt; This resource uses the Cloudflare account APIs. This requires setting the
+    ///   `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
     /// 
     /// ## Example Usage
     /// 
@@ -93,13 +96,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// To import a script, use a script name, e.g. `script_name`
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/workerScript:WorkerScript default script_name
+    ///  $ pulumi import cloudflare:index/workerScript:WorkerScript example &lt;script_name&gt;
     /// ```
-    /// 
-    ///  where- `script_name` - the script name
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workerScript:WorkerScript")]
     public partial class WorkerScript : global::Pulumi.CustomResource
@@ -114,7 +113,13 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.WorkerScriptKvNamespaceBinding>> KvNamespaceBindings { get; private set; } = null!;
 
         /// <summary>
-        /// The global variable for the binding in your Worker code.
+        /// Whether to upload Worker as a module.
+        /// </summary>
+        [Output("module")]
+        public Output<bool?> Module { get; private set; } = null!;
+
+        /// <summary>
+        /// The name for the script.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -195,7 +200,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The global variable for the binding in your Worker code.
+        /// Whether to upload Worker as a module.
+        /// </summary>
+        [Input("module")]
+        public Input<bool>? Module { get; set; }
+
+        /// <summary>
+        /// The name for the script.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -263,7 +274,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The global variable for the binding in your Worker code.
+        /// Whether to upload Worker as a module.
+        /// </summary>
+        [Input("module")]
+        public Input<bool>? Module { get; set; }
+
+        /// <summary>
+        /// The name for the script.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

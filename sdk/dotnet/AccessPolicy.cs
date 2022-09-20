@@ -161,7 +161,7 @@ namespace Pulumi.Cloudflare
         public Output<int> Precedence { get; private set; } = null!;
 
         /// <summary>
-        /// The prompt to display to the user for a justification for accessing the resource.
+        /// The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         /// </summary>
         [Output("purposeJustificationPrompt")]
         public Output<string?> PurposeJustificationPrompt { get; private set; } = null!;
@@ -299,7 +299,7 @@ namespace Pulumi.Cloudflare
         public Input<int> Precedence { get; set; } = null!;
 
         /// <summary>
-        /// The prompt to display to the user for a justification for accessing the resource.
+        /// The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         /// </summary>
         [Input("purposeJustificationPrompt")]
         public Input<string>? PurposeJustificationPrompt { get; set; }
@@ -405,7 +405,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? Precedence { get; set; }
 
         /// <summary>
-        /// The prompt to display to the user for a justification for accessing the resource.
+        /// The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         /// </summary>
         [Input("purposeJustificationPrompt")]
         public Input<string>? PurposeJustificationPrompt { get; set; }

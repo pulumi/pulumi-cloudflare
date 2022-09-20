@@ -30,22 +30,30 @@ public final class GetZoneArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * Must provide only one of `zone_id`, `name`.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Must provide only one of `zone_id`, `name`.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -99,17 +107,29 @@ public final class GetZoneArgs extends com.pulumi.resources.InvokeArgs {
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param name Must provide only one of `zone_id`, `name`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Must provide only one of `zone_id`, `name`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
          * 
          * @return builder
          * 
@@ -120,7 +140,7 @@ public final class GetZoneArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
          * 
          * @return builder
          * 

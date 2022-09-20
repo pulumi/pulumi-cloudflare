@@ -42,7 +42,7 @@ class GetAccessIdentityProviderResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[str]:
         """
-        The account identifier to target for the resource.
+        The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
         """
         return pulumi.get(self, "account_id")
 
@@ -68,7 +68,7 @@ class GetAccessIdentityProviderResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[str]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
         """
         return pulumi.get(self, "zone_id")
 
@@ -93,8 +93,8 @@ def get_access_identity_provider(account_id: Optional[str] = None,
     """
     Use this data source to access information about an existing resource.
 
-    :param str account_id: The account identifier to target for the resource.
-    :param str zone_id: The zone identifier to target for the resource.
+    :param str account_id: The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+    :param str zone_id: The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -119,7 +119,7 @@ def get_access_identity_provider_output(account_id: Optional[pulumi.Input[Option
     """
     Use this data source to access information about an existing resource.
 
-    :param str account_id: The account identifier to target for the resource.
-    :param str zone_id: The zone identifier to target for the resource.
+    :param str account_id: The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+    :param str zone_id: The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
     """
     ...

@@ -127,7 +127,7 @@ type AccessPolicy struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The unique precedence for policies on a single application.
 	Precedence pulumi.IntOutput `pulumi:"precedence"`
-	// The prompt to display to the user for a justification for accessing the resource.
+	// The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
 	PurposeJustificationPrompt pulumi.StringPtrOutput `pulumi:"purposeJustificationPrompt"`
 	// Whether to prompt the user for a justification for accessing the resource.
 	PurposeJustificationRequired pulumi.BoolPtrOutput `pulumi:"purposeJustificationRequired"`
@@ -200,7 +200,7 @@ type accessPolicyState struct {
 	Name *string `pulumi:"name"`
 	// The unique precedence for policies on a single application.
 	Precedence *int `pulumi:"precedence"`
-	// The prompt to display to the user for a justification for accessing the resource.
+	// The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
 	PurposeJustificationPrompt *string `pulumi:"purposeJustificationPrompt"`
 	// Whether to prompt the user for a justification for accessing the resource.
 	PurposeJustificationRequired *bool `pulumi:"purposeJustificationRequired"`
@@ -230,7 +230,7 @@ type AccessPolicyState struct {
 	Name pulumi.StringPtrInput
 	// The unique precedence for policies on a single application.
 	Precedence pulumi.IntPtrInput
-	// The prompt to display to the user for a justification for accessing the resource.
+	// The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
 	PurposeJustificationPrompt pulumi.StringPtrInput
 	// Whether to prompt the user for a justification for accessing the resource.
 	PurposeJustificationRequired pulumi.BoolPtrInput
@@ -264,7 +264,7 @@ type accessPolicyArgs struct {
 	Name string `pulumi:"name"`
 	// The unique precedence for policies on a single application.
 	Precedence int `pulumi:"precedence"`
-	// The prompt to display to the user for a justification for accessing the resource.
+	// The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
 	PurposeJustificationPrompt *string `pulumi:"purposeJustificationPrompt"`
 	// Whether to prompt the user for a justification for accessing the resource.
 	PurposeJustificationRequired *bool `pulumi:"purposeJustificationRequired"`
@@ -295,7 +295,7 @@ type AccessPolicyArgs struct {
 	Name pulumi.StringInput
 	// The unique precedence for policies on a single application.
 	Precedence pulumi.IntInput
-	// The prompt to display to the user for a justification for accessing the resource.
+	// The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
 	PurposeJustificationPrompt pulumi.StringPtrInput
 	// Whether to prompt the user for a justification for accessing the resource.
 	PurposeJustificationRequired pulumi.BoolPtrInput
@@ -438,7 +438,7 @@ func (o AccessPolicyOutput) Precedence() pulumi.IntOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.IntOutput { return v.Precedence }).(pulumi.IntOutput)
 }
 
-// The prompt to display to the user for a justification for accessing the resource.
+// The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
 func (o AccessPolicyOutput) PurposeJustificationPrompt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringPtrOutput { return v.PurposeJustificationPrompt }).(pulumi.StringPtrOutput)
 }

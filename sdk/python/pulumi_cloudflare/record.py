@@ -413,7 +413,7 @@ class Record(pulumi.CustomResource):
         # Add a record to the domain
         foobar = cloudflare.Record("foobar",
             zone_id=var["cloudflare_zone_id"],
-            name="terraform",
+            name="example",
             value="192.168.0.11",
             type="A",
             ttl=3600)
@@ -425,7 +425,7 @@ class Record(pulumi.CustomResource):
             data=cloudflare.RecordDataArgs(
                 service="_sip",
                 proto="_tls",
-                name="terraform-srv",
+                name="example-srv",
                 priority=0,
                 weight=0,
                 port=443,
@@ -472,7 +472,7 @@ class Record(pulumi.CustomResource):
         # Add a record to the domain
         foobar = cloudflare.Record("foobar",
             zone_id=var["cloudflare_zone_id"],
-            name="terraform",
+            name="example",
             value="192.168.0.11",
             type="A",
             ttl=3600)
@@ -484,7 +484,7 @@ class Record(pulumi.CustomResource):
             data=cloudflare.RecordDataArgs(
                 service="_sip",
                 proto="_tls",
-                name="terraform-srv",
+                name="example-srv",
                 priority=0,
                 weight=0,
                 port=443,

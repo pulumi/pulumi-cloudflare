@@ -21,6 +21,10 @@ public final class GetZoneResult {
      * 
      */
     private String id;
+    /**
+     * @return Must provide only one of `zone_id`, `name`.
+     * 
+     */
     private String name;
     private List<String> nameServers;
     private Boolean paused;
@@ -28,7 +32,7 @@ public final class GetZoneResult {
     private String status;
     private List<String> vanityNameServers;
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
      * 
      */
     private String zoneId;
@@ -48,6 +52,10 @@ public final class GetZoneResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Must provide only one of `zone_id`, `name`.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -67,7 +75,7 @@ public final class GetZoneResult {
         return this.vanityNameServers;
     }
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
      * 
      */
     public String zoneId() {

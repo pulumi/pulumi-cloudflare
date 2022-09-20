@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> EventTypes;
         /// <summary>
-        /// Identifier health check.
+        /// Identifier health check. Required when using `filters.0.status`.
         /// </summary>
         public readonly ImmutableArray<string> HealthCheckIds;
         /// <summary>
@@ -61,9 +61,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// Requests per second threshold for dos alert.
         /// </summary>
         public readonly ImmutableArray<string> RequestsPerSeconds;
-        /// <summary>
-        /// A list of clickhouse services to alert on.
-        /// </summary>
         public readonly ImmutableArray<string> Services;
         /// <summary>
         /// A numerical limit. Example: `99.9`.

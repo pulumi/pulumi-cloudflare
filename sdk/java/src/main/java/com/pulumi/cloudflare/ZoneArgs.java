@@ -32,14 +32,14 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Wwhether to scan for DNS records on creation. Ignored after zone is created.
+     * Whether to scan for DNS records on creation. Ignored after zone is created.
      * 
      */
     @Import(name="jumpStart")
     private @Nullable Output<Boolean> jumpStart;
 
     /**
-     * @return Wwhether to scan for DNS records on creation. Ignored after zone is created.
+     * @return Whether to scan for DNS records on creation. Ignored after zone is created.
      * 
      */
     public Optional<Output<Boolean>> jumpStart() {
@@ -157,7 +157,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jumpStart Wwhether to scan for DNS records on creation. Ignored after zone is created.
+         * @param jumpStart Whether to scan for DNS records on creation. Ignored after zone is created.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jumpStart Wwhether to scan for DNS records on creation. Ignored after zone is created.
+         * @param jumpStart Whether to scan for DNS records on creation. Ignored after zone is created.
          * 
          * @return builder
          * 

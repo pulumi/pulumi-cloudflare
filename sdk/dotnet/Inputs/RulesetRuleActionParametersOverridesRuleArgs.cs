@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersOverridesRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `serve_error`, `skip`.
+        /// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

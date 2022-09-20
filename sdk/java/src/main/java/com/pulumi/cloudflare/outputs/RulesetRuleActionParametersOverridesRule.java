@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersOverridesRule {
     /**
-     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `serve_error`, `skip`.
+     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
      * 
      */
     private @Nullable String action;
@@ -38,7 +38,7 @@ public final class RulesetRuleActionParametersOverridesRule {
 
     private RulesetRuleActionParametersOverridesRule() {}
     /**
-     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `serve_error`, `skip`.
+     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
      * 
      */
     public Optional<String> action() {

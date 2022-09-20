@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The secret text you want to store.
+        /// The plain text you want to store.
         /// </summary>
         public readonly string Text;
 

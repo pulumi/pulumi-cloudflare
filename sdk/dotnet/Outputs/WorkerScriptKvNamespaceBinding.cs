@@ -17,6 +17,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// The global variable for the binding in your Worker code.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// ID of the KV namespace you want to use.
+        /// </summary>
         public readonly string NamespaceId;
 
         [OutputConstructor]

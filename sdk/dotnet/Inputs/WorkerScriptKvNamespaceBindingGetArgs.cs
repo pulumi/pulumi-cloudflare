@@ -18,6 +18,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// ID of the KV namespace you want to use.
+        /// </summary>
         [Input("namespaceId", required: true)]
         public Input<string> NamespaceId { get; set; } = null!;
 

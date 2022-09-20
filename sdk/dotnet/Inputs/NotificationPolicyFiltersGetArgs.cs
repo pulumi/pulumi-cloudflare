@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _healthCheckIds;
 
         /// <summary>
-        /// Identifier health check.
+        /// Identifier health check. Required when using `filters.0.status`.
         /// </summary>
         public InputList<string> HealthCheckIds
         {
@@ -158,10 +158,6 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("services")]
         private InputList<string>? _services;
-
-        /// <summary>
-        /// A list of clickhouse services to alert on.
-        /// </summary>
         public InputList<string> Services
         {
             get => _services ?? (_services = new InputList<string>());

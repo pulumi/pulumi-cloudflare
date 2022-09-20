@@ -40,7 +40,7 @@ class AccessPolicyArgs:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]] excludes: A series of access conditions, see [Access
                Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
-        :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource.
+        :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         :param pulumi.Input[bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]] requires: A series of access conditions, see [Access
                Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
@@ -176,7 +176,7 @@ class AccessPolicyArgs:
     @pulumi.getter(name="purposeJustificationPrompt")
     def purpose_justification_prompt(self) -> Optional[pulumi.Input[str]]:
         """
-        The prompt to display to the user for a justification for accessing the resource.
+        The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         """
         return pulumi.get(self, "purpose_justification_prompt")
 
@@ -249,7 +249,7 @@ class _AccessPolicyState:
                Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         :param pulumi.Input[str] name: Friendly name of the Access Policy.
         :param pulumi.Input[int] precedence: The unique precedence for policies on a single application.
-        :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource.
+        :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         :param pulumi.Input[bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]] requires: A series of access conditions, see [Access
                Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
@@ -390,7 +390,7 @@ class _AccessPolicyState:
     @pulumi.getter(name="purposeJustificationPrompt")
     def purpose_justification_prompt(self) -> Optional[pulumi.Input[str]]:
         """
-        The prompt to display to the user for a justification for accessing the resource.
+        The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         """
         return pulumi.get(self, "purpose_justification_prompt")
 
@@ -526,7 +526,7 @@ class AccessPolicy(pulumi.CustomResource):
                Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         :param pulumi.Input[str] name: Friendly name of the Access Policy.
         :param pulumi.Input[int] precedence: The unique precedence for policies on a single application.
-        :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource.
+        :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         :param pulumi.Input[bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see [Access
                Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
@@ -697,7 +697,7 @@ class AccessPolicy(pulumi.CustomResource):
                Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         :param pulumi.Input[str] name: Friendly name of the Access Policy.
         :param pulumi.Input[int] precedence: The unique precedence for policies on a single application.
-        :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource.
+        :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         :param pulumi.Input[bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see [Access
                Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
@@ -794,7 +794,7 @@ class AccessPolicy(pulumi.CustomResource):
     @pulumi.getter(name="purposeJustificationPrompt")
     def purpose_justification_prompt(self) -> pulumi.Output[Optional[str]]:
         """
-        The prompt to display to the user for a justification for accessing the resource.
+        The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         """
         return pulumi.get(self, "purpose_justification_prompt")
 

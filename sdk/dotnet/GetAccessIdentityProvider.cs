@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccessIdentityProviderArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
         /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
         /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccessIdentityProviderInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -70,7 +70,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccessIdentityProviderResult
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
@@ -80,7 +80,7 @@ namespace Pulumi.Cloudflare
         public readonly string Name;
         public readonly string Type;
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
         /// </summary>
         public readonly string? ZoneId;
 

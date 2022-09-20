@@ -19,6 +19,7 @@ class WorkerScriptArgs:
                  content: pulumi.Input[str],
                  name: pulumi.Input[str],
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]] = None,
+                 module: Optional[pulumi.Input[bool]] = None,
                  plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlainTextBindingArgs']]]] = None,
                  r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptR2BucketBindingArgs']]]] = None,
                  secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptSecretTextBindingArgs']]]] = None,
@@ -27,12 +28,15 @@ class WorkerScriptArgs:
         """
         The set of arguments for constructing a WorkerScript resource.
         :param pulumi.Input[str] content: The script content.
-        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        :param pulumi.Input[str] name: The name for the script.
+        :param pulumi.Input[bool] module: Whether to upload Worker as a module.
         """
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "name", name)
         if kv_namespace_bindings is not None:
             pulumi.set(__self__, "kv_namespace_bindings", kv_namespace_bindings)
+        if module is not None:
+            pulumi.set(__self__, "module", module)
         if plain_text_bindings is not None:
             pulumi.set(__self__, "plain_text_bindings", plain_text_bindings)
         if r2_bucket_bindings is not None:
@@ -60,7 +64,7 @@ class WorkerScriptArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The global variable for the binding in your Worker code.
+        The name for the script.
         """
         return pulumi.get(self, "name")
 
@@ -76,6 +80,18 @@ class WorkerScriptArgs:
     @kv_namespace_bindings.setter
     def kv_namespace_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]]):
         pulumi.set(self, "kv_namespace_bindings", value)
+
+    @property
+    @pulumi.getter
+    def module(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to upload Worker as a module.
+        """
+        return pulumi.get(self, "module")
+
+    @module.setter
+    def module(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "module", value)
 
     @property
     @pulumi.getter(name="plainTextBindings")
@@ -128,6 +144,7 @@ class _WorkerScriptState:
     def __init__(__self__, *,
                  content: Optional[pulumi.Input[str]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]] = None,
+                 module: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlainTextBindingArgs']]]] = None,
                  r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptR2BucketBindingArgs']]]] = None,
@@ -137,12 +154,15 @@ class _WorkerScriptState:
         """
         Input properties used for looking up and filtering WorkerScript resources.
         :param pulumi.Input[str] content: The script content.
-        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        :param pulumi.Input[bool] module: Whether to upload Worker as a module.
+        :param pulumi.Input[str] name: The name for the script.
         """
         if content is not None:
             pulumi.set(__self__, "content", content)
         if kv_namespace_bindings is not None:
             pulumi.set(__self__, "kv_namespace_bindings", kv_namespace_bindings)
+        if module is not None:
+            pulumi.set(__self__, "module", module)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if plain_text_bindings is not None:
@@ -179,9 +199,21 @@ class _WorkerScriptState:
 
     @property
     @pulumi.getter
+    def module(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to upload Worker as a module.
+        """
+        return pulumi.get(self, "module")
+
+    @module.setter
+    def module(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "module", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The global variable for the binding in your Worker code.
+        The name for the script.
         """
         return pulumi.get(self, "name")
 
@@ -242,6 +274,7 @@ class WorkerScript(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
+                 module: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptPlainTextBindingArgs']]]]] = None,
                  r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptR2BucketBindingArgs']]]]] = None,
@@ -250,7 +283,10 @@ class WorkerScript(pulumi.CustomResource):
                  webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptWebassemblyBindingArgs']]]]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+        Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`.
+
+        > This resource uses the Cloudflare account APIs. This requires setting the
+          `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
 
         ## Example Usage
 
@@ -293,18 +329,15 @@ class WorkerScript(pulumi.CustomResource):
 
         ## Import
 
-        To import a script, use a script name, e.g. `script_name`
-
         ```sh
-         $ pulumi import cloudflare:index/workerScript:WorkerScript default script_name
+         $ pulumi import cloudflare:index/workerScript:WorkerScript example <script_name>
         ```
-
-         where- `script_name` - the script name
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content: The script content.
-        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        :param pulumi.Input[bool] module: Whether to upload Worker as a module.
+        :param pulumi.Input[str] name: The name for the script.
         """
         ...
     @overload
@@ -313,7 +346,10 @@ class WorkerScript(pulumi.CustomResource):
                  args: WorkerScriptArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+        Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`.
+
+        > This resource uses the Cloudflare account APIs. This requires setting the
+          `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
 
         ## Example Usage
 
@@ -356,13 +392,9 @@ class WorkerScript(pulumi.CustomResource):
 
         ## Import
 
-        To import a script, use a script name, e.g. `script_name`
-
         ```sh
-         $ pulumi import cloudflare:index/workerScript:WorkerScript default script_name
+         $ pulumi import cloudflare:index/workerScript:WorkerScript example <script_name>
         ```
-
-         where- `script_name` - the script name
 
         :param str resource_name: The name of the resource.
         :param WorkerScriptArgs args: The arguments to use to populate this resource's properties.
@@ -381,6 +413,7 @@ class WorkerScript(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
+                 module: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptPlainTextBindingArgs']]]]] = None,
                  r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptR2BucketBindingArgs']]]]] = None,
@@ -400,6 +433,7 @@ class WorkerScript(pulumi.CustomResource):
                 raise TypeError("Missing required property 'content'")
             __props__.__dict__["content"] = content
             __props__.__dict__["kv_namespace_bindings"] = kv_namespace_bindings
+            __props__.__dict__["module"] = module
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
@@ -420,6 +454,7 @@ class WorkerScript(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             content: Optional[pulumi.Input[str]] = None,
             kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
+            module: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptPlainTextBindingArgs']]]]] = None,
             r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptR2BucketBindingArgs']]]]] = None,
@@ -434,7 +469,8 @@ class WorkerScript(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content: The script content.
-        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        :param pulumi.Input[bool] module: Whether to upload Worker as a module.
+        :param pulumi.Input[str] name: The name for the script.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -442,6 +478,7 @@ class WorkerScript(pulumi.CustomResource):
 
         __props__.__dict__["content"] = content
         __props__.__dict__["kv_namespace_bindings"] = kv_namespace_bindings
+        __props__.__dict__["module"] = module
         __props__.__dict__["name"] = name
         __props__.__dict__["plain_text_bindings"] = plain_text_bindings
         __props__.__dict__["r2_bucket_bindings"] = r2_bucket_bindings
@@ -465,9 +502,17 @@ class WorkerScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def module(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to upload Worker as a module.
+        """
+        return pulumi.get(self, "module")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The global variable for the binding in your Worker code.
+        The name for the script.
         """
         return pulumi.get(self, "name")
 

@@ -48,7 +48,7 @@ export class LogpushJob extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
@@ -88,7 +88,7 @@ export class LogpushJob extends pulumi.CustomResource {
      */
     public readonly ownershipChallenge!: pulumi.Output<string | undefined>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
 
@@ -146,7 +146,7 @@ export class LogpushJob extends pulumi.CustomResource {
  */
 export interface LogpushJobState {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -186,7 +186,7 @@ export interface LogpushJobState {
      */
     ownershipChallenge?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -196,7 +196,7 @@ export interface LogpushJobState {
  */
 export interface LogpushJobArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -236,7 +236,7 @@ export interface LogpushJobArgs {
      */
     ownershipChallenge?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
      */
     zoneId?: pulumi.Input<string>;
 }
