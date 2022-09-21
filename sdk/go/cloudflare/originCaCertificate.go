@@ -21,49 +21,46 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi-tls/sdk/v4/go/tls"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi-tls/sdk/v4/go/tls"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			examplePrivateKey, err := tls.NewPrivateKey(ctx, "examplePrivateKey", &tls.PrivateKeyArgs{
-//				Algorithm: pulumi.String("RSA"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleCertRequest, err := tls.NewCertRequest(ctx, "exampleCertRequest", &tls.CertRequestArgs{
-//				KeyAlgorithm:  examplePrivateKey.Algorithm,
-//				PrivateKeyPem: examplePrivateKey.PrivateKeyPem,
-//				Subjects: CertRequestSubjectArray{
-//					&CertRequestSubjectArgs{
-//						CommonName:   pulumi.String(""),
-//						Organization: pulumi.String("Terraform Test"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewOriginCaCertificate(ctx, "exampleOriginCaCertificate", &cloudflare.OriginCaCertificateArgs{
-//				Csr: exampleCertRequest.CertRequestPem,
-//				Hostnames: pulumi.StringArray{
-//					pulumi.String("example.com"),
-//				},
-//				RequestType:       pulumi.String("origin-rsa"),
-//				RequestedValidity: pulumi.Int(7),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		examplePrivateKey, err := tls.NewPrivateKey(ctx, "examplePrivateKey", &tls.PrivateKeyArgs{
+// 			Algorithm: pulumi.String("RSA"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleCertRequest, err := tls.NewCertRequest(ctx, "exampleCertRequest", &tls.CertRequestArgs{
+// 			KeyAlgorithm:  examplePrivateKey.Algorithm,
+// 			PrivateKeyPem: examplePrivateKey.PrivateKeyPem,
+// 			Subjects: CertRequestSubjectArray{
+// 				&CertRequestSubjectArgs{
+// 					CommonName:   pulumi.String(""),
+// 					Organization: pulumi.String("Terraform Test"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewOriginCaCertificate(ctx, "exampleOriginCaCertificate", &cloudflare.OriginCaCertificateArgs{
+// 			Csr: exampleCertRequest.CertRequestPem,
+// 			Hostnames: pulumi.StringArray{
+// 				pulumi.String("example.com"),
+// 			},
+// 			RequestType:       pulumi.String("origin-rsa"),
+// 			RequestedValidity: pulumi.Int(7),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -71,9 +68,7 @@ import (
 // Origin CA certificate resource can be imported using an ID, e.g.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example 276266538771611802607153687288146423901027769273
-//
+//  $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example 276266538771611802607153687288146423901027769273
 // ```
 type OriginCaCertificate struct {
 	pulumi.CustomResourceState
@@ -209,7 +204,7 @@ func (i *OriginCaCertificate) ToOriginCaCertificateOutputWithContext(ctx context
 // OriginCaCertificateArrayInput is an input type that accepts OriginCaCertificateArray and OriginCaCertificateArrayOutput values.
 // You can construct a concrete instance of `OriginCaCertificateArrayInput` via:
 //
-//	OriginCaCertificateArray{ OriginCaCertificateArgs{...} }
+//          OriginCaCertificateArray{ OriginCaCertificateArgs{...} }
 type OriginCaCertificateArrayInput interface {
 	pulumi.Input
 
@@ -234,7 +229,7 @@ func (i OriginCaCertificateArray) ToOriginCaCertificateArrayOutputWithContext(ct
 // OriginCaCertificateMapInput is an input type that accepts OriginCaCertificateMap and OriginCaCertificateMapOutput values.
 // You can construct a concrete instance of `OriginCaCertificateMapInput` via:
 //
-//	OriginCaCertificateMap{ "key": OriginCaCertificateArgs{...} }
+//          OriginCaCertificateMap{ "key": OriginCaCertificateArgs{...} }
 type OriginCaCertificateMapInput interface {
 	pulumi.Input
 

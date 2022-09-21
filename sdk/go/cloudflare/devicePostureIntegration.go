@@ -19,35 +19,32 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewDevicePostureIntegration(ctx, "thirdPartyDevicesPostureIntegration", &cloudflare.DevicePostureIntegrationArgs{
-//				AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-//				Configs: DevicePostureIntegrationConfigArray{
-//					&DevicePostureIntegrationConfigArgs{
-//						ApiUrl:       pulumi.String("https://example.com/api"),
-//						AuthUrl:      pulumi.String("https://example.com/connect/token"),
-//						ClientId:     pulumi.String("client-id"),
-//						ClientSecret: pulumi.String("client-secret"),
-//					},
-//				},
-//				Interval: pulumi.String("24h"),
-//				Name:     pulumi.String("Device posture integration"),
-//				Type:     pulumi.String("workspace_one"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewDevicePostureIntegration(ctx, "thirdPartyDevicesPostureIntegration", &cloudflare.DevicePostureIntegrationArgs{
+// 			AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+// 			Configs: DevicePostureIntegrationConfigArray{
+// 				&DevicePostureIntegrationConfigArgs{
+// 					ApiUrl:       pulumi.String("https://example.com/api"),
+// 					AuthUrl:      pulumi.String("https://example.com/connect/token"),
+// 					ClientId:     pulumi.String("client-id"),
+// 					ClientSecret: pulumi.String("client-secret"),
+// 				},
+// 			},
+// 			Interval: pulumi.String("24h"),
+// 			Name:     pulumi.String("Device posture integration"),
+// 			Type:     pulumi.String("workspace_one"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -55,9 +52,7 @@ import (
 // Device posture integrations can be imported using a composite ID formed of account ID and device posture integration ID.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/0ade592a-62d6-46ab-bac8-01f47c7fa792
-//
+//  $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/0ade592a-62d6-46ab-bac8-01f47c7fa792
 // ```
 type DevicePostureIntegration struct {
 	pulumi.CustomResourceState
@@ -204,7 +199,7 @@ func (i *DevicePostureIntegration) ToDevicePostureIntegrationOutputWithContext(c
 // DevicePostureIntegrationArrayInput is an input type that accepts DevicePostureIntegrationArray and DevicePostureIntegrationArrayOutput values.
 // You can construct a concrete instance of `DevicePostureIntegrationArrayInput` via:
 //
-//	DevicePostureIntegrationArray{ DevicePostureIntegrationArgs{...} }
+//          DevicePostureIntegrationArray{ DevicePostureIntegrationArgs{...} }
 type DevicePostureIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -229,7 +224,7 @@ func (i DevicePostureIntegrationArray) ToDevicePostureIntegrationArrayOutputWith
 // DevicePostureIntegrationMapInput is an input type that accepts DevicePostureIntegrationMap and DevicePostureIntegrationMapOutput values.
 // You can construct a concrete instance of `DevicePostureIntegrationMapInput` via:
 //
-//	DevicePostureIntegrationMap{ "key": DevicePostureIntegrationArgs{...} }
+//          DevicePostureIntegrationMap{ "key": DevicePostureIntegrationArgs{...} }
 type DevicePostureIntegrationMapInput interface {
 	pulumi.Input
 

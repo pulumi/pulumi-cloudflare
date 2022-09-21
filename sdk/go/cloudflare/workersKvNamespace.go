@@ -19,37 +19,32 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWorkersKvNamespace(ctx, "example", &cloudflare.WorkersKvNamespaceArgs{
-//				Title: pulumi.String("test-namespace"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewWorkersKvNamespace(ctx, "example", &cloudflare.WorkersKvNamespaceArgs{
+// 			Title: pulumi.String("test-namespace"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # Workers KV Namespace settings can be imported using it's ID
+// Workers KV Namespace settings can be imported using it's ID
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example beaeb6716c9443eaa4deef11763ccca6
-//
+//  $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example beaeb6716c9443eaa4deef11763ccca6
 // ```
 //
-//	where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace
+//  where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace
 type WorkersKvNamespace struct {
 	pulumi.CustomResourceState
 
@@ -139,7 +134,7 @@ func (i *WorkersKvNamespace) ToWorkersKvNamespaceOutputWithContext(ctx context.C
 // WorkersKvNamespaceArrayInput is an input type that accepts WorkersKvNamespaceArray and WorkersKvNamespaceArrayOutput values.
 // You can construct a concrete instance of `WorkersKvNamespaceArrayInput` via:
 //
-//	WorkersKvNamespaceArray{ WorkersKvNamespaceArgs{...} }
+//          WorkersKvNamespaceArray{ WorkersKvNamespaceArgs{...} }
 type WorkersKvNamespaceArrayInput interface {
 	pulumi.Input
 
@@ -164,7 +159,7 @@ func (i WorkersKvNamespaceArray) ToWorkersKvNamespaceArrayOutputWithContext(ctx 
 // WorkersKvNamespaceMapInput is an input type that accepts WorkersKvNamespaceMap and WorkersKvNamespaceMapOutput values.
 // You can construct a concrete instance of `WorkersKvNamespaceMapInput` via:
 //
-//	WorkersKvNamespaceMap{ "key": WorkersKvNamespaceArgs{...} }
+//          WorkersKvNamespaceMap{ "key": WorkersKvNamespaceArgs{...} }
 type WorkersKvNamespaceMapInput interface {
 	pulumi.Input
 

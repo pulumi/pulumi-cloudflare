@@ -19,30 +19,27 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myScript, err := cloudflare.NewWorkerScript(ctx, "myScript", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewWorkerRoute(ctx, "myRoute", &cloudflare.WorkerRouteArgs{
-//				ZoneId:     pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-//				Pattern:    pulumi.String("example.com/*"),
-//				ScriptName: myScript.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myScript, err := cloudflare.NewWorkerScript(ctx, "myScript", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewWorkerRoute(ctx, "myRoute", &cloudflare.WorkerRouteArgs{
+// 			ZoneId:     pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+// 			Pattern:    pulumi.String("example.com/*"),
+// 			ScriptName: myScript.Name,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -50,12 +47,10 @@ import (
 // Records can be imported using a composite ID formed of zone ID and route ID, e.g.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/workerRoute:WorkerRoute default d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac
-//
+//  $ pulumi import cloudflare:index/workerRoute:WorkerRoute default d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac
 // ```
 //
-//	where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `9a7806061c88ada191ed06f989cc3dac` - route ID as returned by [API](https://api.cloudflare.com/#worker-filters-list-filters)
+//  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `9a7806061c88ada191ed06f989cc3dac` - route ID as returned by [API](https://api.cloudflare.com/#worker-filters-list-filters)
 type WorkerRoute struct {
 	pulumi.CustomResourceState
 
@@ -168,7 +163,7 @@ func (i *WorkerRoute) ToWorkerRouteOutputWithContext(ctx context.Context) Worker
 // WorkerRouteArrayInput is an input type that accepts WorkerRouteArray and WorkerRouteArrayOutput values.
 // You can construct a concrete instance of `WorkerRouteArrayInput` via:
 //
-//	WorkerRouteArray{ WorkerRouteArgs{...} }
+//          WorkerRouteArray{ WorkerRouteArgs{...} }
 type WorkerRouteArrayInput interface {
 	pulumi.Input
 
@@ -193,7 +188,7 @@ func (i WorkerRouteArray) ToWorkerRouteArrayOutputWithContext(ctx context.Contex
 // WorkerRouteMapInput is an input type that accepts WorkerRouteMap and WorkerRouteMapOutput values.
 // You can construct a concrete instance of `WorkerRouteMapInput` via:
 //
-//	WorkerRouteMap{ "key": WorkerRouteArgs{...} }
+//          WorkerRouteMap{ "key": WorkerRouteArgs{...} }
 type WorkerRouteMapInput interface {
 	pulumi.Input
 

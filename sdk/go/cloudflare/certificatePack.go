@@ -17,45 +17,40 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewCertificatePack(ctx, "example", &cloudflare.CertificatePackArgs{
-//				CertificateAuthority: pulumi.String("lets_encrypt"),
-//				CloudflareBranding:   pulumi.Bool(false),
-//				Hosts: pulumi.StringArray{
-//					pulumi.String("example.com"),
-//					pulumi.String("*.example.com"),
-//				},
-//				Type:                pulumi.String("advanced"),
-//				ValidationMethod:    pulumi.String("http"),
-//				ValidityDays:        pulumi.Int(90),
-//				WaitForActiveStatus: pulumi.Bool(true),
-//				ZoneId:              pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewCertificatePack(ctx, "example", &cloudflare.CertificatePackArgs{
+// 			CertificateAuthority: pulumi.String("lets_encrypt"),
+// 			CloudflareBranding:   pulumi.Bool(false),
+// 			Hosts: pulumi.StringArray{
+// 				pulumi.String("example.com"),
+// 				pulumi.String("*.example.com"),
+// 			},
+// 			Type:                pulumi.String("advanced"),
+// 			ValidationMethod:    pulumi.String("http"),
+// 			ValidityDays:        pulumi.Int(90),
+// 			WaitForActiveStatus: pulumi.Bool(true),
+// 			ZoneId:              pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/certificatePack:CertificatePack example 1d5fdc9e88c8a8c4518b068cd94331fe/8fda82e2-6af9-4eb2-992a-5ab65b792ef1
-//
+//  $ pulumi import cloudflare:index/certificatePack:CertificatePack example 1d5fdc9e88c8a8c4518b068cd94331fe/8fda82e2-6af9-4eb2-992a-5ab65b792ef1
 // ```
 //
-//	While supported, importing isn't recommended and it is advised to replace the certificate entirely instead.
+//  While supported, importing isn't recommended and it is advised to replace the certificate entirely instead.
 type CertificatePack struct {
 	pulumi.CustomResourceState
 
@@ -240,7 +235,7 @@ func (i *CertificatePack) ToCertificatePackOutputWithContext(ctx context.Context
 // CertificatePackArrayInput is an input type that accepts CertificatePackArray and CertificatePackArrayOutput values.
 // You can construct a concrete instance of `CertificatePackArrayInput` via:
 //
-//	CertificatePackArray{ CertificatePackArgs{...} }
+//          CertificatePackArray{ CertificatePackArgs{...} }
 type CertificatePackArrayInput interface {
 	pulumi.Input
 
@@ -265,7 +260,7 @@ func (i CertificatePackArray) ToCertificatePackArrayOutputWithContext(ctx contex
 // CertificatePackMapInput is an input type that accepts CertificatePackMap and CertificatePackMapOutput values.
 // You can construct a concrete instance of `CertificatePackMapInput` via:
 //
-//	CertificatePackMap{ "key": CertificatePackArgs{...} }
+//          CertificatePackMap{ "key": CertificatePackArgs{...} }
 type CertificatePackMapInput interface {
 	pulumi.Input
 

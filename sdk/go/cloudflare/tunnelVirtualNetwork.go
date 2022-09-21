@@ -22,34 +22,29 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTunnelVirtualNetwork(ctx, "example", &cloudflare.TunnelVirtualNetworkArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Comment:   pulumi.String("New tunnel virtual network for documentation"),
-//				Name:      pulumi.String("vnet-for-documentation"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewTunnelVirtualNetwork(ctx, "example", &cloudflare.TunnelVirtualNetworkArgs{
+// 			AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+// 			Comment:   pulumi.String("New tunnel virtual network for documentation"),
+// 			Name:      pulumi.String("vnet-for-documentation"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example <account_id>/<vnet_id>
-//
+//  $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example <account_id>/<vnet_id>
 // ```
 type TunnelVirtualNetwork struct {
 	pulumi.CustomResourceState
@@ -173,7 +168,7 @@ func (i *TunnelVirtualNetwork) ToTunnelVirtualNetworkOutputWithContext(ctx conte
 // TunnelVirtualNetworkArrayInput is an input type that accepts TunnelVirtualNetworkArray and TunnelVirtualNetworkArrayOutput values.
 // You can construct a concrete instance of `TunnelVirtualNetworkArrayInput` via:
 //
-//	TunnelVirtualNetworkArray{ TunnelVirtualNetworkArgs{...} }
+//          TunnelVirtualNetworkArray{ TunnelVirtualNetworkArgs{...} }
 type TunnelVirtualNetworkArrayInput interface {
 	pulumi.Input
 
@@ -198,7 +193,7 @@ func (i TunnelVirtualNetworkArray) ToTunnelVirtualNetworkArrayOutputWithContext(
 // TunnelVirtualNetworkMapInput is an input type that accepts TunnelVirtualNetworkMap and TunnelVirtualNetworkMapOutput values.
 // You can construct a concrete instance of `TunnelVirtualNetworkMapInput` via:
 //
-//	TunnelVirtualNetworkMap{ "key": TunnelVirtualNetworkArgs{...} }
+//          TunnelVirtualNetworkMap{ "key": TunnelVirtualNetworkArgs{...} }
 type TunnelVirtualNetworkMapInput interface {
 	pulumi.Input
 

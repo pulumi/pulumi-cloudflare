@@ -20,78 +20,75 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewHealthcheck(ctx, "httpHealthCheck", &cloudflare.HealthcheckArgs{
-//				ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
-//				Name:        pulumi.String("http-health-check"),
-//				Description: pulumi.String("example http health check"),
-//				Address:     pulumi.String("example.com"),
-//				Suspended:   pulumi.Bool(false),
-//				CheckRegions: pulumi.StringArray{
-//					pulumi.String("WEU"),
-//					pulumi.String("EEU"),
-//				},
-//				Type:         pulumi.String("HTTPS"),
-//				Port:         pulumi.Int(443),
-//				Method:       pulumi.String("GET"),
-//				Path:         pulumi.String("/health"),
-//				ExpectedBody: pulumi.String("alive"),
-//				ExpectedCodes: pulumi.StringArray{
-//					pulumi.String("2xx"),
-//					pulumi.String("301"),
-//				},
-//				FollowRedirects: pulumi.Bool(true),
-//				AllowInsecure:   pulumi.Bool(false),
-//				Headers: HealthcheckHeaderArray{
-//					&HealthcheckHeaderArgs{
-//						Header: pulumi.String("Host"),
-//						Values: pulumi.StringArray{
-//							pulumi.String("example.com"),
-//						},
-//					},
-//				},
-//				Timeout:              pulumi.Int(10),
-//				Retries:              pulumi.Int(2),
-//				Interval:             pulumi.Int(60),
-//				ConsecutiveFails:     pulumi.Int(3),
-//				ConsecutiveSuccesses: pulumi.Int(2),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewHealthcheck(ctx, "tcpHealthCheck", &cloudflare.HealthcheckArgs{
-//				ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
-//				Name:        pulumi.String("tcp-health-check"),
-//				Description: pulumi.String("example tcp health check"),
-//				Address:     pulumi.String("example.com"),
-//				Suspended:   pulumi.Bool(false),
-//				CheckRegions: pulumi.StringArray{
-//					pulumi.String("WEU"),
-//					pulumi.String("EEU"),
-//				},
-//				Type:                 pulumi.String("TCP"),
-//				Port:                 pulumi.Int(22),
-//				Method:               pulumi.String("connection_established"),
-//				Timeout:              pulumi.Int(10),
-//				Retries:              pulumi.Int(2),
-//				Interval:             pulumi.Int(60),
-//				ConsecutiveFails:     pulumi.Int(3),
-//				ConsecutiveSuccesses: pulumi.Int(2),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewHealthcheck(ctx, "httpHealthCheck", &cloudflare.HealthcheckArgs{
+// 			ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
+// 			Name:        pulumi.String("http-health-check"),
+// 			Description: pulumi.String("example http health check"),
+// 			Address:     pulumi.String("example.com"),
+// 			Suspended:   pulumi.Bool(false),
+// 			CheckRegions: pulumi.StringArray{
+// 				pulumi.String("WEU"),
+// 				pulumi.String("EEU"),
+// 			},
+// 			Type:         pulumi.String("HTTPS"),
+// 			Port:         pulumi.Int(443),
+// 			Method:       pulumi.String("GET"),
+// 			Path:         pulumi.String("/health"),
+// 			ExpectedBody: pulumi.String("alive"),
+// 			ExpectedCodes: pulumi.StringArray{
+// 				pulumi.String("2xx"),
+// 				pulumi.String("301"),
+// 			},
+// 			FollowRedirects: pulumi.Bool(true),
+// 			AllowInsecure:   pulumi.Bool(false),
+// 			Headers: HealthcheckHeaderArray{
+// 				&HealthcheckHeaderArgs{
+// 					Header: pulumi.String("Host"),
+// 					Values: pulumi.StringArray{
+// 						pulumi.String("example.com"),
+// 					},
+// 				},
+// 			},
+// 			Timeout:              pulumi.Int(10),
+// 			Retries:              pulumi.Int(2),
+// 			Interval:             pulumi.Int(60),
+// 			ConsecutiveFails:     pulumi.Int(3),
+// 			ConsecutiveSuccesses: pulumi.Int(2),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewHealthcheck(ctx, "tcpHealthCheck", &cloudflare.HealthcheckArgs{
+// 			ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
+// 			Name:        pulumi.String("tcp-health-check"),
+// 			Description: pulumi.String("example tcp health check"),
+// 			Address:     pulumi.String("example.com"),
+// 			Suspended:   pulumi.Bool(false),
+// 			CheckRegions: pulumi.StringArray{
+// 				pulumi.String("WEU"),
+// 				pulumi.String("EEU"),
+// 			},
+// 			Type:                 pulumi.String("TCP"),
+// 			Port:                 pulumi.Int(22),
+// 			Method:               pulumi.String("connection_established"),
+// 			Timeout:              pulumi.Int(10),
+// 			Retries:              pulumi.Int(2),
+// 			Interval:             pulumi.Int(60),
+// 			ConsecutiveFails:     pulumi.Int(3),
+// 			ConsecutiveSuccesses: pulumi.Int(2),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -99,9 +96,7 @@ import (
 // # Use the Zone ID and Healthcheck ID to import.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/healthcheck:Healthcheck example <zone_id>/<healthcheck_id>
-//
+//  $ pulumi import cloudflare:index/healthcheck:Healthcheck example <zone_id>/<healthcheck_id>
 // ```
 type Healthcheck struct {
 	pulumi.CustomResourceState
@@ -403,7 +398,7 @@ func (i *Healthcheck) ToHealthcheckOutputWithContext(ctx context.Context) Health
 // HealthcheckArrayInput is an input type that accepts HealthcheckArray and HealthcheckArrayOutput values.
 // You can construct a concrete instance of `HealthcheckArrayInput` via:
 //
-//	HealthcheckArray{ HealthcheckArgs{...} }
+//          HealthcheckArray{ HealthcheckArgs{...} }
 type HealthcheckArrayInput interface {
 	pulumi.Input
 
@@ -428,7 +423,7 @@ func (i HealthcheckArray) ToHealthcheckArrayOutputWithContext(ctx context.Contex
 // HealthcheckMapInput is an input type that accepts HealthcheckMap and HealthcheckMapOutput values.
 // You can construct a concrete instance of `HealthcheckMapInput` via:
 //
-//	HealthcheckMap{ "key": HealthcheckArgs{...} }
+//          HealthcheckMap{ "key": HealthcheckArgs{...} }
 type HealthcheckMapInput interface {
 	pulumi.Input
 

@@ -19,42 +19,37 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewIpsecTunnel(ctx, "example", &cloudflare.IpsecTunnelArgs{
-//				AccountId:          pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				AllowNullCipher:    pulumi.Bool(false),
-//				CloudflareEndpoint: pulumi.String("203.0.113.1"),
-//				CustomerEndpoint:   pulumi.String("203.0.113.1"),
-//				Description:        pulumi.String("Tunnel for ISP X"),
-//				HealthCheckEnabled: pulumi.Bool(true),
-//				HealthCheckTarget:  pulumi.String("203.0.113.1"),
-//				HealthCheckType:    pulumi.String("reply"),
-//				InterfaceAddress:   pulumi.String("192.0.2.0/31"),
-//				Name:               pulumi.String("IPsec_1"),
-//				Psk:                pulumi.String("asdf12341234"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewIpsecTunnel(ctx, "example", &cloudflare.IpsecTunnelArgs{
+// 			AccountId:          pulumi.String("f037e56e89293a057740de681ac9abbe"),
+// 			AllowNullCipher:    pulumi.Bool(false),
+// 			CloudflareEndpoint: pulumi.String("203.0.113.1"),
+// 			CustomerEndpoint:   pulumi.String("203.0.113.1"),
+// 			Description:        pulumi.String("Tunnel for ISP X"),
+// 			HealthCheckEnabled: pulumi.Bool(true),
+// 			HealthCheckTarget:  pulumi.String("203.0.113.1"),
+// 			HealthCheckType:    pulumi.String("reply"),
+// 			InterfaceAddress:   pulumi.String("192.0.2.0/31"),
+// 			Name:               pulumi.String("IPsec_1"),
+// 			Psk:                pulumi.String("asdf12341234"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/ipsecTunnel:IpsecTunnel example <account_id>/<tunnel_id>
-//
+//  $ pulumi import cloudflare:index/ipsecTunnel:IpsecTunnel example <account_id>/<tunnel_id>
 // ```
 type IpsecTunnel struct {
 	pulumi.CustomResourceState
@@ -294,7 +289,7 @@ func (i *IpsecTunnel) ToIpsecTunnelOutputWithContext(ctx context.Context) IpsecT
 // IpsecTunnelArrayInput is an input type that accepts IpsecTunnelArray and IpsecTunnelArrayOutput values.
 // You can construct a concrete instance of `IpsecTunnelArrayInput` via:
 //
-//	IpsecTunnelArray{ IpsecTunnelArgs{...} }
+//          IpsecTunnelArray{ IpsecTunnelArgs{...} }
 type IpsecTunnelArrayInput interface {
 	pulumi.Input
 
@@ -319,7 +314,7 @@ func (i IpsecTunnelArray) ToIpsecTunnelArrayOutputWithContext(ctx context.Contex
 // IpsecTunnelMapInput is an input type that accepts IpsecTunnelMap and IpsecTunnelMapOutput values.
 // You can construct a concrete instance of `IpsecTunnelMapInput` via:
 //
-//	IpsecTunnelMap{ "key": IpsecTunnelArgs{...} }
+//          IpsecTunnelMap{ "key": IpsecTunnelArgs{...} }
 type IpsecTunnelMapInput interface {
 	pulumi.Input
 

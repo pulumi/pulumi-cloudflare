@@ -22,45 +22,42 @@ import (
 // package main
 //
 // import (
+// 	"io/ioutil"
 //
-//	"io/ioutil"
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := ioutil.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
+// func readFileOrPanic(path string) pulumi.StringPtrInput {
+// 	data, err := ioutil.ReadFile(path)
+// 	if err != nil {
+// 		panic(err.Error())
+// 	}
+// 	return pulumi.String(string(data))
+// }
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleScript, err := cloudflare.NewWorkerScript(ctx, "exampleScript", &cloudflare.WorkerScriptArgs{
-//				Name:    pulumi.String("example-script"),
-//				Content: readFileOrPanic("path/to/my.js"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewWorkerCronTrigger(ctx, "exampleTrigger", &cloudflare.WorkerCronTriggerArgs{
-//				ScriptName: exampleScript.Name,
-//				Schedules: pulumi.StringArray{
-//					pulumi.String("*/5 * * * *"),
-//					pulumi.String("10 7 * * mon-fri"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleScript, err := cloudflare.NewWorkerScript(ctx, "exampleScript", &cloudflare.WorkerScriptArgs{
+// 			Name:    pulumi.String("example-script"),
+// 			Content: readFileOrPanic("path/to/my.js"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewWorkerCronTrigger(ctx, "exampleTrigger", &cloudflare.WorkerCronTriggerArgs{
+// 			ScriptName: exampleScript.Name,
+// 			Schedules: pulumi.StringArray{
+// 				pulumi.String("*/5 * * * *"),
+// 				pulumi.String("10 7 * * mon-fri"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -68,9 +65,7 @@ import (
 // Worker Cron Triggers can be imported using the script name of the Worker they are targeting.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example my-script
-//
+//  $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example my-script
 // ```
 type WorkerCronTrigger struct {
 	pulumi.CustomResourceState
@@ -187,7 +182,7 @@ func (i *WorkerCronTrigger) ToWorkerCronTriggerOutputWithContext(ctx context.Con
 // WorkerCronTriggerArrayInput is an input type that accepts WorkerCronTriggerArray and WorkerCronTriggerArrayOutput values.
 // You can construct a concrete instance of `WorkerCronTriggerArrayInput` via:
 //
-//	WorkerCronTriggerArray{ WorkerCronTriggerArgs{...} }
+//          WorkerCronTriggerArray{ WorkerCronTriggerArgs{...} }
 type WorkerCronTriggerArrayInput interface {
 	pulumi.Input
 
@@ -212,7 +207,7 @@ func (i WorkerCronTriggerArray) ToWorkerCronTriggerArrayOutputWithContext(ctx co
 // WorkerCronTriggerMapInput is an input type that accepts WorkerCronTriggerMap and WorkerCronTriggerMapOutput values.
 // You can construct a concrete instance of `WorkerCronTriggerMapInput` via:
 //
-//	WorkerCronTriggerMap{ "key": WorkerCronTriggerArgs{...} }
+//          WorkerCronTriggerMap{ "key": WorkerCronTriggerArgs{...} }
 type WorkerCronTriggerMapInput interface {
 	pulumi.Input
 

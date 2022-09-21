@@ -19,39 +19,36 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
-//				ZoneId:   pulumi.Any(_var.Cloudflare_zone_id),
-//				Target:   pulumi.String(fmt.Sprintf("sub.%v/page", _var.Cloudflare_zone)),
-//				Priority: pulumi.Int(1),
-//				Actions: &PageRuleActionsArgs{
-//					Ssl:              pulumi.String("flexible"),
-//					EmailObfuscation: pulumi.String("on"),
-//					Minifies: PageRuleActionsMinifyArray{
-//						&PageRuleActionsMinifyArgs{
-//							Html: pulumi.String("off"),
-//							Css:  pulumi.String("on"),
-//							Js:   pulumi.String("on"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
+// 			ZoneId:   pulumi.Any(_var.Cloudflare_zone_id),
+// 			Target:   pulumi.String(fmt.Sprintf("sub.%v/page", _var.Cloudflare_zone)),
+// 			Priority: pulumi.Int(1),
+// 			Actions: &PageRuleActionsArgs{
+// 				Ssl:              pulumi.String("flexible"),
+// 				EmailObfuscation: pulumi.String("on"),
+// 				Minifies: PageRuleActionsMinifyArray{
+// 					&PageRuleActionsMinifyArgs{
+// 						Html: pulumi.String("off"),
+// 						Css:  pulumi.String("on"),
+// 						Js:   pulumi.String("on"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -59,9 +56,7 @@ import (
 // Page rules can be imported using a composite ID formed of zone ID and page rule ID, e.g.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/pageRule:PageRule default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
-//
+//  $ pulumi import cloudflare:index/pageRule:PageRule default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
 // ```
 type PageRule struct {
 	pulumi.CustomResourceState
@@ -198,7 +193,7 @@ func (i *PageRule) ToPageRuleOutputWithContext(ctx context.Context) PageRuleOutp
 // PageRuleArrayInput is an input type that accepts PageRuleArray and PageRuleArrayOutput values.
 // You can construct a concrete instance of `PageRuleArrayInput` via:
 //
-//	PageRuleArray{ PageRuleArgs{...} }
+//          PageRuleArray{ PageRuleArgs{...} }
 type PageRuleArrayInput interface {
 	pulumi.Input
 
@@ -223,7 +218,7 @@ func (i PageRuleArray) ToPageRuleArrayOutputWithContext(ctx context.Context) Pag
 // PageRuleMapInput is an input type that accepts PageRuleMap and PageRuleMapOutput values.
 // You can construct a concrete instance of `PageRuleMapInput` via:
 //
-//	PageRuleMap{ "key": PageRuleArgs{...} }
+//          PageRuleMap{ "key": PageRuleArgs{...} }
 type PageRuleMapInput interface {
 	pulumi.Input
 

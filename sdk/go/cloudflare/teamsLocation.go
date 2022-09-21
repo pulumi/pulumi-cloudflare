@@ -20,34 +20,31 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTeamsLocation(ctx, "corporateOffice", &cloudflare.TeamsLocationArgs{
-//				AccountId:     pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-//				ClientDefault: pulumi.Bool(true),
-//				Name:          pulumi.String("office"),
-//				Networks: TeamsLocationNetworkArray{
-//					&TeamsLocationNetworkArgs{
-//						Network: pulumi.String("203.0.113.1/32"),
-//					},
-//					&TeamsLocationNetworkArgs{
-//						Network: pulumi.String("203.0.113.2/32"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewTeamsLocation(ctx, "corporateOffice", &cloudflare.TeamsLocationArgs{
+// 			AccountId:     pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+// 			ClientDefault: pulumi.Bool(true),
+// 			Name:          pulumi.String("office"),
+// 			Networks: TeamsLocationNetworkArray{
+// 				&TeamsLocationNetworkArgs{
+// 					Network: pulumi.String("203.0.113.1/32"),
+// 				},
+// 				&TeamsLocationNetworkArgs{
+// 					Network: pulumi.String("203.0.113.2/32"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -55,9 +52,7 @@ import (
 // Teams locations can be imported using a composite ID formed of account ID and teams location ID.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/teamsLocation:TeamsLocation corporate_office cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
-//
+//  $ pulumi import cloudflare:index/teamsLocation:TeamsLocation corporate_office cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
 // ```
 type TeamsLocation struct {
 	pulumi.CustomResourceState
@@ -208,7 +203,7 @@ func (i *TeamsLocation) ToTeamsLocationOutputWithContext(ctx context.Context) Te
 // TeamsLocationArrayInput is an input type that accepts TeamsLocationArray and TeamsLocationArrayOutput values.
 // You can construct a concrete instance of `TeamsLocationArrayInput` via:
 //
-//	TeamsLocationArray{ TeamsLocationArgs{...} }
+//          TeamsLocationArray{ TeamsLocationArgs{...} }
 type TeamsLocationArrayInput interface {
 	pulumi.Input
 
@@ -233,7 +228,7 @@ func (i TeamsLocationArray) ToTeamsLocationArrayOutputWithContext(ctx context.Co
 // TeamsLocationMapInput is an input type that accepts TeamsLocationMap and TeamsLocationMapOutput values.
 // You can construct a concrete instance of `TeamsLocationMapInput` via:
 //
-//	TeamsLocationMap{ "key": TeamsLocationArgs{...} }
+//          TeamsLocationMap{ "key": TeamsLocationArgs{...} }
 type TeamsLocationMapInput interface {
 	pulumi.Input
 

@@ -19,29 +19,26 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWaitingRoom(ctx, "example", &cloudflare.WaitingRoomArgs{
-//				Host:              pulumi.String("foo.example.com"),
-//				Name:              pulumi.String("foo"),
-//				NewUsersPerMinute: pulumi.Int(200),
-//				Path:              pulumi.String("/"),
-//				TotalActiveUsers:  pulumi.Int(200),
-//				ZoneId:            pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewWaitingRoom(ctx, "example", &cloudflare.WaitingRoomArgs{
+// 			Host:              pulumi.String("foo.example.com"),
+// 			Name:              pulumi.String("foo"),
+// 			NewUsersPerMinute: pulumi.Int(200),
+// 			Path:              pulumi.String("/"),
+// 			TotalActiveUsers:  pulumi.Int(200),
+// 			ZoneId:            pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -49,9 +46,7 @@ import (
 // # Use the Zone ID and Waiting Room ID to import.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/waitingRoom:WaitingRoom default <zone_id>/<waiting_room_id>
-//
+//  $ pulumi import cloudflare:index/waitingRoom:WaitingRoom default <zone_id>/<waiting_room_id>
 // ```
 type WaitingRoom struct {
 	pulumi.CustomResourceState
@@ -294,7 +289,7 @@ func (i *WaitingRoom) ToWaitingRoomOutputWithContext(ctx context.Context) Waitin
 // WaitingRoomArrayInput is an input type that accepts WaitingRoomArray and WaitingRoomArrayOutput values.
 // You can construct a concrete instance of `WaitingRoomArrayInput` via:
 //
-//	WaitingRoomArray{ WaitingRoomArgs{...} }
+//          WaitingRoomArray{ WaitingRoomArgs{...} }
 type WaitingRoomArrayInput interface {
 	pulumi.Input
 
@@ -319,7 +314,7 @@ func (i WaitingRoomArray) ToWaitingRoomArrayOutputWithContext(ctx context.Contex
 // WaitingRoomMapInput is an input type that accepts WaitingRoomMap and WaitingRoomMapOutput values.
 // You can construct a concrete instance of `WaitingRoomMapInput` via:
 //
-//	WaitingRoomMap{ "key": WaitingRoomArgs{...} }
+//          WaitingRoomMap{ "key": WaitingRoomArgs{...} }
 type WaitingRoomMapInput interface {
 	pulumi.Input
 

@@ -19,26 +19,23 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWafRule(ctx, "rule100000", &cloudflare.WafRuleArgs{
-//				Mode:   pulumi.String("simulate"),
-//				RuleId: pulumi.String("100000"),
-//				ZoneId: pulumi.String("ae36f999674d196762efcc5abb06b345"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewWafRule(ctx, "rule100000", &cloudflare.WafRuleArgs{
+// 			Mode:   pulumi.String("simulate"),
+// 			RuleId: pulumi.String("100000"),
+// 			ZoneId: pulumi.String("ae36f999674d196762efcc5abb06b345"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -46,9 +43,7 @@ import (
 // Rules can be imported using a composite ID formed of zone ID and the WAF Rule ID, e.g.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/wafRule:WafRule 100000 ae36f999674d196762efcc5abb06b345/100000
-//
+//  $ pulumi import cloudflare:index/wafRule:WafRule 100000 ae36f999674d196762efcc5abb06b345/100000
 // ```
 type WafRule struct {
 	pulumi.CustomResourceState
@@ -181,7 +176,7 @@ func (i *WafRule) ToWafRuleOutputWithContext(ctx context.Context) WafRuleOutput 
 // WafRuleArrayInput is an input type that accepts WafRuleArray and WafRuleArrayOutput values.
 // You can construct a concrete instance of `WafRuleArrayInput` via:
 //
-//	WafRuleArray{ WafRuleArgs{...} }
+//          WafRuleArray{ WafRuleArgs{...} }
 type WafRuleArrayInput interface {
 	pulumi.Input
 
@@ -206,7 +201,7 @@ func (i WafRuleArray) ToWafRuleArrayOutputWithContext(ctx context.Context) WafRu
 // WafRuleMapInput is an input type that accepts WafRuleMap and WafRuleMapOutput values.
 // You can construct a concrete instance of `WafRuleMapInput` via:
 //
-//	WafRuleMap{ "key": WafRuleArgs{...} }
+//          WafRuleMap{ "key": WafRuleArgs{...} }
 type WafRuleMapInput interface {
 	pulumi.Input
 

@@ -20,26 +20,23 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAccessServiceToken(ctx, "myApp", &cloudflare.AccessServiceTokenArgs{
-//				AccountId:         pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				MinDaysForRenewal: pulumi.Int(30),
-//				Name:              pulumi.String("CI/CD app renewed"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewAccessServiceToken(ctx, "myApp", &cloudflare.AccessServiceTokenArgs{
+// 			AccountId:         pulumi.String("f037e56e89293a057740de681ac9abbe"),
+// 			MinDaysForRenewal: pulumi.Int(30),
+// 			Name:              pulumi.String("CI/CD app renewed"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -47,9 +44,7 @@ import (
 // # If you are importing an Access Service Token you will not have the # client_secret available in the state for use. The client_secret is only # available once, at creation. In most cases, it is better to just create a new # resource should you need to reference it in other resources.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken example <account_id>/<service_token_id>
-//
+//  $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken example <account_id>/<service_token_id>
 // ```
 type AccessServiceToken struct {
 	pulumi.CustomResourceState
@@ -188,7 +183,7 @@ func (i *AccessServiceToken) ToAccessServiceTokenOutputWithContext(ctx context.C
 // AccessServiceTokenArrayInput is an input type that accepts AccessServiceTokenArray and AccessServiceTokenArrayOutput values.
 // You can construct a concrete instance of `AccessServiceTokenArrayInput` via:
 //
-//	AccessServiceTokenArray{ AccessServiceTokenArgs{...} }
+//          AccessServiceTokenArray{ AccessServiceTokenArgs{...} }
 type AccessServiceTokenArrayInput interface {
 	pulumi.Input
 
@@ -213,7 +208,7 @@ func (i AccessServiceTokenArray) ToAccessServiceTokenArrayOutputWithContext(ctx 
 // AccessServiceTokenMapInput is an input type that accepts AccessServiceTokenMap and AccessServiceTokenMapOutput values.
 // You can construct a concrete instance of `AccessServiceTokenMapInput` via:
 //
-//	AccessServiceTokenMap{ "key": AccessServiceTokenArgs{...} }
+//          AccessServiceTokenMap{ "key": AccessServiceTokenArgs{...} }
 type AccessServiceTokenMapInput interface {
 	pulumi.Input
 

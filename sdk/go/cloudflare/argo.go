@@ -20,34 +20,29 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewArgo(ctx, "example", &cloudflare.ArgoArgs{
-//				SmartRouting:  pulumi.String("on"),
-//				TieredCaching: pulumi.String("on"),
-//				ZoneId:        pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewArgo(ctx, "example", &cloudflare.ArgoArgs{
+// 			SmartRouting:  pulumi.String("on"),
+// 			TieredCaching: pulumi.String("on"),
+// 			ZoneId:        pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/argo:Argo example <zone_id>
-//
+//  $ pulumi import cloudflare:index/argo:Argo example <zone_id>
 // ```
 type Argo struct {
 	pulumi.CustomResourceState
@@ -158,7 +153,7 @@ func (i *Argo) ToArgoOutputWithContext(ctx context.Context) ArgoOutput {
 // ArgoArrayInput is an input type that accepts ArgoArray and ArgoArrayOutput values.
 // You can construct a concrete instance of `ArgoArrayInput` via:
 //
-//	ArgoArray{ ArgoArgs{...} }
+//          ArgoArray{ ArgoArgs{...} }
 type ArgoArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +178,7 @@ func (i ArgoArray) ToArgoArrayOutputWithContext(ctx context.Context) ArgoArrayOu
 // ArgoMapInput is an input type that accepts ArgoMap and ArgoMapOutput values.
 // You can construct a concrete instance of `ArgoMapInput` via:
 //
-//	ArgoMap{ "key": ArgoArgs{...} }
+//          ArgoMap{ "key": ArgoArgs{...} }
 type ArgoMapInput interface {
 	pulumi.Input
 

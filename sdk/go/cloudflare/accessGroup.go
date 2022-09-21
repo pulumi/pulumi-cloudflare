@@ -24,9 +24,7 @@ import (
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/accessGroup:AccessGroup example <account_id>/<group_id>
-//
+//  $ pulumi import cloudflare:index/accessGroup:AccessGroup example <account_id>/<group_id>
 // ```
 type AccessGroup struct {
 	pulumi.CustomResourceState
@@ -150,7 +148,7 @@ func (i *AccessGroup) ToAccessGroupOutputWithContext(ctx context.Context) Access
 // AccessGroupArrayInput is an input type that accepts AccessGroupArray and AccessGroupArrayOutput values.
 // You can construct a concrete instance of `AccessGroupArrayInput` via:
 //
-//	AccessGroupArray{ AccessGroupArgs{...} }
+//          AccessGroupArray{ AccessGroupArgs{...} }
 type AccessGroupArrayInput interface {
 	pulumi.Input
 
@@ -175,7 +173,7 @@ func (i AccessGroupArray) ToAccessGroupArrayOutputWithContext(ctx context.Contex
 // AccessGroupMapInput is an input type that accepts AccessGroupMap and AccessGroupMapOutput values.
 // You can construct a concrete instance of `AccessGroupMapInput` via:
 //
-//	AccessGroupMap{ "key": AccessGroupArgs{...} }
+//          AccessGroupMap{ "key": AccessGroupArgs{...} }
 type AccessGroupMapInput interface {
 	pulumi.Input
 

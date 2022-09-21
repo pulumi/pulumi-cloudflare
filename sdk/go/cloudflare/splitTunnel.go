@@ -20,44 +20,41 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewSplitTunnel(ctx, "exampleSplitTunnelExclude", &cloudflare.SplitTunnelArgs{
-//				AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-//				Mode:      pulumi.String("exclude"),
-//				Tunnels: SplitTunnelTunnelArray{
-//					&SplitTunnelTunnelArgs{
-//						Description: pulumi.String("example domain"),
-//						Host:        pulumi.String("*.example.com"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewSplitTunnel(ctx, "exampleSplitTunnelInclude", &cloudflare.SplitTunnelArgs{
-//				AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-//				Mode:      pulumi.String("include"),
-//				Tunnels: SplitTunnelTunnelArray{
-//					&SplitTunnelTunnelArgs{
-//						Description: pulumi.String("example domain"),
-//						Host:        pulumi.String("*.example.com"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewSplitTunnel(ctx, "exampleSplitTunnelExclude", &cloudflare.SplitTunnelArgs{
+// 			AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+// 			Mode:      pulumi.String("exclude"),
+// 			Tunnels: SplitTunnelTunnelArray{
+// 				&SplitTunnelTunnelArgs{
+// 					Description: pulumi.String("example domain"),
+// 					Host:        pulumi.String("*.example.com"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewSplitTunnel(ctx, "exampleSplitTunnelInclude", &cloudflare.SplitTunnelArgs{
+// 			AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+// 			Mode:      pulumi.String("include"),
+// 			Tunnels: SplitTunnelTunnelArray{
+// 				&SplitTunnelTunnelArgs{
+// 					Description: pulumi.String("example domain"),
+// 					Host:        pulumi.String("*.example.com"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -65,9 +62,7 @@ import (
 // Split Tunnels can be imported using the account identifer and mode.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/splitTunnel:SplitTunnel example 1d5fdc9e88c8a8c4518b068cd94331fe/exclude
-//
+//  $ pulumi import cloudflare:index/splitTunnel:SplitTunnel example 1d5fdc9e88c8a8c4518b068cd94331fe/exclude
 // ```
 type SplitTunnel struct {
 	pulumi.CustomResourceState
@@ -184,7 +179,7 @@ func (i *SplitTunnel) ToSplitTunnelOutputWithContext(ctx context.Context) SplitT
 // SplitTunnelArrayInput is an input type that accepts SplitTunnelArray and SplitTunnelArrayOutput values.
 // You can construct a concrete instance of `SplitTunnelArrayInput` via:
 //
-//	SplitTunnelArray{ SplitTunnelArgs{...} }
+//          SplitTunnelArray{ SplitTunnelArgs{...} }
 type SplitTunnelArrayInput interface {
 	pulumi.Input
 
@@ -209,7 +204,7 @@ func (i SplitTunnelArray) ToSplitTunnelArrayOutputWithContext(ctx context.Contex
 // SplitTunnelMapInput is an input type that accepts SplitTunnelMap and SplitTunnelMapOutput values.
 // You can construct a concrete instance of `SplitTunnelMapInput` via:
 //
-//	SplitTunnelMap{ "key": SplitTunnelArgs{...} }
+//          SplitTunnelMap{ "key": SplitTunnelArgs{...} }
 type SplitTunnelMapInput interface {
 	pulumi.Input
 

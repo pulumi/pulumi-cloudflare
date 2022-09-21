@@ -1487,6 +1487,86 @@ export interface PageRuleActionsMinify {
     js: string;
 }
 
+export interface PagesProjectBuildConfig {
+    /**
+     * Command used to build project.
+     */
+    buildCommand?: string;
+    /**
+     * Output directory of the build.
+     */
+    destinationDir?: string;
+    /**
+     * Directory to run the command.
+     */
+    rootDir?: string;
+    /**
+     * The classifying tag for analytics.
+     */
+    webAnalyticsTag?: string;
+    /**
+     * The auth token for analytics.
+     */
+    webAnalyticsToken?: string;
+}
+
+export interface PagesProjectDeploymentConfigs {
+    /**
+     * Configuration for preview deploys.
+     */
+    preview?: outputs.PagesProjectDeploymentConfigsPreview;
+    /**
+     * Configuration for production deploys.
+     */
+    production?: outputs.PagesProjectDeploymentConfigsProduction;
+}
+
+export interface PagesProjectDeploymentConfigsPreview {
+    compatibilityDate: string;
+    compatibilityFlags: string[];
+    d1Databases?: {[key: string]: any};
+    durableObjectNamespaces?: {[key: string]: any};
+    environmentVariables?: {[key: string]: any};
+    kvNamespaces?: {[key: string]: any};
+    r2Buckets?: {[key: string]: any};
+}
+
+export interface PagesProjectDeploymentConfigsProduction {
+    compatibilityDate: string;
+    compatibilityFlags: string[];
+    d1Databases?: {[key: string]: any};
+    durableObjectNamespaces?: {[key: string]: any};
+    environmentVariables?: {[key: string]: any};
+    kvNamespaces?: {[key: string]: any};
+    r2Buckets?: {[key: string]: any};
+}
+
+export interface PagesProjectSource {
+    /**
+     * Configuration for the source of the Cloudflare Pages project.
+     */
+    config?: outputs.PagesProjectSourceConfig;
+    /**
+     * Project host type.
+     */
+    type?: string;
+}
+
+export interface PagesProjectSourceConfig {
+    deploymentsEnabled: boolean;
+    owner?: string;
+    prCommentsEnabled: boolean;
+    previewBranchExcludes?: string[];
+    previewBranchIncludes?: string[];
+    previewDeploymentSetting?: string;
+    /**
+     * The name of the branch that is used for the production environment.
+     */
+    productionBranch: string;
+    productionDeploymentEnabled: boolean;
+    repoName?: string;
+}
+
 export interface RateLimitAction {
     /**
      * The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge', 'js_challenge' and 'managed_challenge'.

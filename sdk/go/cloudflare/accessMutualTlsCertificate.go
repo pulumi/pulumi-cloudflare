@@ -14,9 +14,8 @@ import (
 // Provides a Cloudflare Access Mutual TLS Certificate resource.
 // Mutual TLS authentication ensures that the traffic is secure and
 // trusted in both directions between a client and server and can be
-//
-//	used with Access to only allows requests from devices with a
-//	corresponding client certificate.
+//  used with Access to only allows requests from devices with a
+//  corresponding client certificate.
 //
 // > It's required that an `accountId` or `zoneId` is provided and in
 // most cases using either is fine. However, if you're using a scoped
@@ -30,29 +29,26 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAccessMutualTlsCertificate(ctx, "myCert", &cloudflare.AccessMutualTlsCertificateArgs{
-//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Name:        pulumi.String("My Root Cert"),
-//				Certificate: pulumi.Any(_var.Ca_pem),
-//				AssociatedHostnames: pulumi.StringArray{
-//					pulumi.String("staging.example.com"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewAccessMutualTlsCertificate(ctx, "myCert", &cloudflare.AccessMutualTlsCertificateArgs{
+// 			ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+// 			Name:        pulumi.String("My Root Cert"),
+// 			Certificate: pulumi.Any(_var.Ca_pem),
+// 			AssociatedHostnames: pulumi.StringArray{
+// 				pulumi.String("staging.example.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -60,17 +56,13 @@ import (
 // # Account level import.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example account/<account_id>/<mutual_tls_certificate_id>
-//
+//  $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example account/<account_id>/<mutual_tls_certificate_id>
 // ```
 //
 // # Zone level import.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example zone/<zone_id>/<mutual_tls_certificate_id>
-//
+//  $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example zone/<zone_id>/<mutual_tls_certificate_id>
 // ```
 type AccessMutualTlsCertificate struct {
 	pulumi.CustomResourceState
@@ -204,7 +196,7 @@ func (i *AccessMutualTlsCertificate) ToAccessMutualTlsCertificateOutputWithConte
 // AccessMutualTlsCertificateArrayInput is an input type that accepts AccessMutualTlsCertificateArray and AccessMutualTlsCertificateArrayOutput values.
 // You can construct a concrete instance of `AccessMutualTlsCertificateArrayInput` via:
 //
-//	AccessMutualTlsCertificateArray{ AccessMutualTlsCertificateArgs{...} }
+//          AccessMutualTlsCertificateArray{ AccessMutualTlsCertificateArgs{...} }
 type AccessMutualTlsCertificateArrayInput interface {
 	pulumi.Input
 
@@ -229,7 +221,7 @@ func (i AccessMutualTlsCertificateArray) ToAccessMutualTlsCertificateArrayOutput
 // AccessMutualTlsCertificateMapInput is an input type that accepts AccessMutualTlsCertificateMap and AccessMutualTlsCertificateMapOutput values.
 // You can construct a concrete instance of `AccessMutualTlsCertificateMapInput` via:
 //
-//	AccessMutualTlsCertificateMap{ "key": AccessMutualTlsCertificateArgs{...} }
+//          AccessMutualTlsCertificateMap{ "key": AccessMutualTlsCertificateArgs{...} }
 type AccessMutualTlsCertificateMapInput interface {
 	pulumi.Input
 

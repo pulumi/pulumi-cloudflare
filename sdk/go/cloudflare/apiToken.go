@@ -168,7 +168,7 @@ func (i *ApiToken) ToApiTokenOutputWithContext(ctx context.Context) ApiTokenOutp
 // ApiTokenArrayInput is an input type that accepts ApiTokenArray and ApiTokenArrayOutput values.
 // You can construct a concrete instance of `ApiTokenArrayInput` via:
 //
-//	ApiTokenArray{ ApiTokenArgs{...} }
+//          ApiTokenArray{ ApiTokenArgs{...} }
 type ApiTokenArrayInput interface {
 	pulumi.Input
 
@@ -193,7 +193,7 @@ func (i ApiTokenArray) ToApiTokenArrayOutputWithContext(ctx context.Context) Api
 // ApiTokenMapInput is an input type that accepts ApiTokenMap and ApiTokenMapOutput values.
 // You can construct a concrete instance of `ApiTokenMapInput` via:
 //
-//	ApiTokenMap{ "key": ApiTokenArgs{...} }
+//          ApiTokenMap{ "key": ApiTokenArgs{...} }
 type ApiTokenMapInput interface {
 	pulumi.Input
 

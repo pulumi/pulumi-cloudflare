@@ -18,9 +18,7 @@ import (
 // Fallback Domains can be imported using the account identifer.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/fallbackDomain:FallbackDomain example 1d5fdc9e88c8a8c4518b068cd94331fe
-//
+//  $ pulumi import cloudflare:index/fallbackDomain:FallbackDomain example 1d5fdc9e88c8a8c4518b068cd94331fe
 // ```
 type FallbackDomain struct {
 	pulumi.CustomResourceState
@@ -124,7 +122,7 @@ func (i *FallbackDomain) ToFallbackDomainOutputWithContext(ctx context.Context) 
 // FallbackDomainArrayInput is an input type that accepts FallbackDomainArray and FallbackDomainArrayOutput values.
 // You can construct a concrete instance of `FallbackDomainArrayInput` via:
 //
-//	FallbackDomainArray{ FallbackDomainArgs{...} }
+//          FallbackDomainArray{ FallbackDomainArgs{...} }
 type FallbackDomainArrayInput interface {
 	pulumi.Input
 
@@ -149,7 +147,7 @@ func (i FallbackDomainArray) ToFallbackDomainArrayOutputWithContext(ctx context.
 // FallbackDomainMapInput is an input type that accepts FallbackDomainMap and FallbackDomainMapOutput values.
 // You can construct a concrete instance of `FallbackDomainMapInput` via:
 //
-//	FallbackDomainMap{ "key": FallbackDomainArgs{...} }
+//          FallbackDomainMap{ "key": FallbackDomainArgs{...} }
 type FallbackDomainMapInput interface {
 	pulumi.Input
 

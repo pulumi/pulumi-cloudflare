@@ -19,43 +19,38 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleNs, err := cloudflare.NewWorkersKvNamespace(ctx, "exampleNs", &cloudflare.WorkersKvNamespaceArgs{
-//				Title: pulumi.String("test-namespace"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewWorkersKv(ctx, "example", &cloudflare.WorkersKvArgs{
-//				NamespaceId: exampleNs.ID(),
-//				Key:         pulumi.String("test-key"),
-//				Value:       pulumi.String("test value"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleNs, err := cloudflare.NewWorkersKvNamespace(ctx, "exampleNs", &cloudflare.WorkersKvNamespaceArgs{
+// 			Title: pulumi.String("test-namespace"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewWorkersKv(ctx, "example", &cloudflare.WorkersKvArgs{
+// 			NamespaceId: exampleNs.ID(),
+// 			Key:         pulumi.String("test-key"),
+// 			Value:       pulumi.String("test value"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/workersKv:WorkersKv example beaeb6716c9443eaa4deef11763ccca6/test-key
-//
+//  $ pulumi import cloudflare:index/workersKv:WorkersKv example beaeb6716c9443eaa4deef11763ccca6/test-key
 // ```
 //
-//	where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace and `test-key` is the key
+//  where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace and `test-key` is the key
 type WorkersKv struct {
 	pulumi.CustomResourceState
 
@@ -171,7 +166,7 @@ func (i *WorkersKv) ToWorkersKvOutputWithContext(ctx context.Context) WorkersKvO
 // WorkersKvArrayInput is an input type that accepts WorkersKvArray and WorkersKvArrayOutput values.
 // You can construct a concrete instance of `WorkersKvArrayInput` via:
 //
-//	WorkersKvArray{ WorkersKvArgs{...} }
+//          WorkersKvArray{ WorkersKvArgs{...} }
 type WorkersKvArrayInput interface {
 	pulumi.Input
 
@@ -196,7 +191,7 @@ func (i WorkersKvArray) ToWorkersKvArrayOutputWithContext(ctx context.Context) W
 // WorkersKvMapInput is an input type that accepts WorkersKvMap and WorkersKvMapOutput values.
 // You can construct a concrete instance of `WorkersKvMapInput` via:
 //
-//	WorkersKvMap{ "key": WorkersKvArgs{...} }
+//          WorkersKvMap{ "key": WorkersKvArgs{...} }
 type WorkersKvMapInput interface {
 	pulumi.Input
 

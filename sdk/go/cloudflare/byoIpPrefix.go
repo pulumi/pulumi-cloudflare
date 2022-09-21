@@ -19,26 +19,23 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewByoIpPrefix(ctx, "example", &cloudflare.ByoIpPrefixArgs{
-//				Advertisement: pulumi.String("on"),
-//				Description:   pulumi.String("Example IP Prefix"),
-//				PrefixId:      pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewByoIpPrefix(ctx, "example", &cloudflare.ByoIpPrefixArgs{
+// 			Advertisement: pulumi.String("on"),
+// 			Description:   pulumi.String("Example IP Prefix"),
+// 			PrefixId:      pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -46,9 +43,7 @@ import (
 // The current settings for Bring-Your-Own-IP prefixes can be imported using the prefix ID.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example d41d8cd98f00b204e9800998ecf8427e
-//
+//  $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example d41d8cd98f00b204e9800998ecf8427e
 // ```
 type ByoIpPrefix struct {
 	pulumi.CustomResourceState
@@ -172,7 +167,7 @@ func (i *ByoIpPrefix) ToByoIpPrefixOutputWithContext(ctx context.Context) ByoIpP
 // ByoIpPrefixArrayInput is an input type that accepts ByoIpPrefixArray and ByoIpPrefixArrayOutput values.
 // You can construct a concrete instance of `ByoIpPrefixArrayInput` via:
 //
-//	ByoIpPrefixArray{ ByoIpPrefixArgs{...} }
+//          ByoIpPrefixArray{ ByoIpPrefixArgs{...} }
 type ByoIpPrefixArrayInput interface {
 	pulumi.Input
 
@@ -197,7 +192,7 @@ func (i ByoIpPrefixArray) ToByoIpPrefixArrayOutputWithContext(ctx context.Contex
 // ByoIpPrefixMapInput is an input type that accepts ByoIpPrefixMap and ByoIpPrefixMapOutput values.
 // You can construct a concrete instance of `ByoIpPrefixMapInput` via:
 //
-//	ByoIpPrefixMap{ "key": ByoIpPrefixArgs{...} }
+//          ByoIpPrefixMap{ "key": ByoIpPrefixArgs{...} }
 type ByoIpPrefixMapInput interface {
 	pulumi.Input
 

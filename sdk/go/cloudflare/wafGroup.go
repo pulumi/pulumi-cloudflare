@@ -19,26 +19,23 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWafGroup(ctx, "honeyPot", &cloudflare.WafGroupArgs{
-//				GroupId: pulumi.String("de677e5818985db1285d0e80225f06e5"),
-//				Mode:    pulumi.String("on"),
-//				ZoneId:  pulumi.String("ae36f999674d196762efcc5abb06b345"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewWafGroup(ctx, "honeyPot", &cloudflare.WafGroupArgs{
+// 			GroupId: pulumi.String("de677e5818985db1285d0e80225f06e5"),
+// 			Mode:    pulumi.String("on"),
+// 			ZoneId:  pulumi.String("ae36f999674d196762efcc5abb06b345"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -46,9 +43,7 @@ import (
 // WAF Rule Groups can be imported using a composite ID formed of zone ID and the WAF Rule Group ID, e.g.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/wafGroup:WafGroup honey_pot ae36f999674d196762efcc5abb06b345/de677e5818985db1285d0e80225f06e5
-//
+//  $ pulumi import cloudflare:index/wafGroup:WafGroup honey_pot ae36f999674d196762efcc5abb06b345/de677e5818985db1285d0e80225f06e5
 // ```
 type WafGroup struct {
 	pulumi.CustomResourceState
@@ -172,7 +167,7 @@ func (i *WafGroup) ToWafGroupOutputWithContext(ctx context.Context) WafGroupOutp
 // WafGroupArrayInput is an input type that accepts WafGroupArray and WafGroupArrayOutput values.
 // You can construct a concrete instance of `WafGroupArrayInput` via:
 //
-//	WafGroupArray{ WafGroupArgs{...} }
+//          WafGroupArray{ WafGroupArgs{...} }
 type WafGroupArrayInput interface {
 	pulumi.Input
 
@@ -197,7 +192,7 @@ func (i WafGroupArray) ToWafGroupArrayOutputWithContext(ctx context.Context) Waf
 // WafGroupMapInput is an input type that accepts WafGroupMap and WafGroupMapOutput values.
 // You can construct a concrete instance of `WafGroupMapInput` via:
 //
-//	WafGroupMap{ "key": WafGroupArgs{...} }
+//          WafGroupMap{ "key": WafGroupArgs{...} }
 type WafGroupMapInput interface {
 	pulumi.Input
 

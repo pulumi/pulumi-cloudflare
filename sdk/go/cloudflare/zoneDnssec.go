@@ -19,30 +19,27 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZone, err := cloudflare.NewZone(ctx, "exampleZone", &cloudflare.ZoneArgs{
-//				Zone: pulumi.String("example.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewZoneDnssec(ctx, "exampleZoneDnssec", &cloudflare.ZoneDnssecArgs{
-//				ZoneId: exampleZone.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleZone, err := cloudflare.NewZone(ctx, "exampleZone", &cloudflare.ZoneArgs{
+// 			Zone: pulumi.String("example.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewZoneDnssec(ctx, "exampleZoneDnssec", &cloudflare.ZoneDnssecArgs{
+// 			ZoneId: exampleZone.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -50,12 +47,10 @@ import (
 // Zone DNSSEC resource can be imported using a zone ID, e.g.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example d41d8cd98f00b204e9800998ecf8427e
-//
+//  $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example d41d8cd98f00b204e9800998ecf8427e
 // ```
 //
-//	where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
+//  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
 type ZoneDnssec struct {
 	pulumi.CustomResourceState
 
@@ -215,7 +210,7 @@ func (i *ZoneDnssec) ToZoneDnssecOutputWithContext(ctx context.Context) ZoneDnss
 // ZoneDnssecArrayInput is an input type that accepts ZoneDnssecArray and ZoneDnssecArrayOutput values.
 // You can construct a concrete instance of `ZoneDnssecArrayInput` via:
 //
-//	ZoneDnssecArray{ ZoneDnssecArgs{...} }
+//          ZoneDnssecArray{ ZoneDnssecArgs{...} }
 type ZoneDnssecArrayInput interface {
 	pulumi.Input
 
@@ -240,7 +235,7 @@ func (i ZoneDnssecArray) ToZoneDnssecArrayOutputWithContext(ctx context.Context)
 // ZoneDnssecMapInput is an input type that accepts ZoneDnssecMap and ZoneDnssecMapOutput values.
 // You can construct a concrete instance of `ZoneDnssecMapInput` via:
 //
-//	ZoneDnssecMap{ "key": ZoneDnssecArgs{...} }
+//          ZoneDnssecMap{ "key": ZoneDnssecArgs{...} }
 type ZoneDnssecMapInput interface {
 	pulumi.Input
 

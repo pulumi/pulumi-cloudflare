@@ -17,9 +17,7 @@ import (
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/list:List example <account_id>/<list_id>
-//
+//  $ pulumi import cloudflare:index/list:List example <account_id>/<list_id>
 // ```
 type List struct {
 	pulumi.CustomResourceState
@@ -151,7 +149,7 @@ func (i *List) ToListOutputWithContext(ctx context.Context) ListOutput {
 // ListArrayInput is an input type that accepts ListArray and ListArrayOutput values.
 // You can construct a concrete instance of `ListArrayInput` via:
 //
-//	ListArray{ ListArgs{...} }
+//          ListArray{ ListArgs{...} }
 type ListArrayInput interface {
 	pulumi.Input
 
@@ -176,7 +174,7 @@ func (i ListArray) ToListArrayOutputWithContext(ctx context.Context) ListArrayOu
 // ListMapInput is an input type that accepts ListMap and ListMapOutput values.
 // You can construct a concrete instance of `ListMapInput` via:
 //
-//	ListMap{ "key": ListArgs{...} }
+//          ListMap{ "key": ListArgs{...} }
 type ListMapInput interface {
 	pulumi.Input
 

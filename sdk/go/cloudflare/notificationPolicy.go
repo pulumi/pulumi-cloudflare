@@ -18,9 +18,7 @@ import (
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example <account_id>/<policy_id>
-//
+//  $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example <account_id>/<policy_id>
 // ```
 type NotificationPolicy struct {
 	pulumi.CustomResourceState
@@ -212,7 +210,7 @@ func (i *NotificationPolicy) ToNotificationPolicyOutputWithContext(ctx context.C
 // NotificationPolicyArrayInput is an input type that accepts NotificationPolicyArray and NotificationPolicyArrayOutput values.
 // You can construct a concrete instance of `NotificationPolicyArrayInput` via:
 //
-//	NotificationPolicyArray{ NotificationPolicyArgs{...} }
+//          NotificationPolicyArray{ NotificationPolicyArgs{...} }
 type NotificationPolicyArrayInput interface {
 	pulumi.Input
 
@@ -237,7 +235,7 @@ func (i NotificationPolicyArray) ToNotificationPolicyArrayOutputWithContext(ctx 
 // NotificationPolicyMapInput is an input type that accepts NotificationPolicyMap and NotificationPolicyMapOutput values.
 // You can construct a concrete instance of `NotificationPolicyMapInput` via:
 //
-//	NotificationPolicyMap{ "key": NotificationPolicyArgs{...} }
+//          NotificationPolicyMap{ "key": NotificationPolicyArgs{...} }
 type NotificationPolicyMapInput interface {
 	pulumi.Input
 

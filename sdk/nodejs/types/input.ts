@@ -684,11 +684,6 @@ export interface FallbackDomainDomain {
     suffix?: pulumi.Input<string>;
 }
 
-export interface GetWafGroupsFilter {
-    mode?: string;
-    name?: string;
-}
-
 export interface GetWafGroupsFilterArgs {
     mode?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
@@ -1431,6 +1426,86 @@ export interface PageRuleActionsMinify {
      * Whether Javascript should be minified. Valid values are `"on"` or `"off"`.
      */
     js: pulumi.Input<string>;
+}
+
+export interface PagesProjectBuildConfig {
+    /**
+     * Command used to build project.
+     */
+    buildCommand?: pulumi.Input<string>;
+    /**
+     * Output directory of the build.
+     */
+    destinationDir?: pulumi.Input<string>;
+    /**
+     * Directory to run the command.
+     */
+    rootDir?: pulumi.Input<string>;
+    /**
+     * The classifying tag for analytics.
+     */
+    webAnalyticsTag?: pulumi.Input<string>;
+    /**
+     * The auth token for analytics.
+     */
+    webAnalyticsToken?: pulumi.Input<string>;
+}
+
+export interface PagesProjectDeploymentConfigs {
+    /**
+     * Configuration for preview deploys.
+     */
+    preview?: pulumi.Input<inputs.PagesProjectDeploymentConfigsPreview>;
+    /**
+     * Configuration for production deploys.
+     */
+    production?: pulumi.Input<inputs.PagesProjectDeploymentConfigsProduction>;
+}
+
+export interface PagesProjectDeploymentConfigsPreview {
+    compatibilityDate?: pulumi.Input<string>;
+    compatibilityFlags?: pulumi.Input<pulumi.Input<string>[]>;
+    d1Databases?: pulumi.Input<{[key: string]: any}>;
+    durableObjectNamespaces?: pulumi.Input<{[key: string]: any}>;
+    environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    kvNamespaces?: pulumi.Input<{[key: string]: any}>;
+    r2Buckets?: pulumi.Input<{[key: string]: any}>;
+}
+
+export interface PagesProjectDeploymentConfigsProduction {
+    compatibilityDate?: pulumi.Input<string>;
+    compatibilityFlags?: pulumi.Input<pulumi.Input<string>[]>;
+    d1Databases?: pulumi.Input<{[key: string]: any}>;
+    durableObjectNamespaces?: pulumi.Input<{[key: string]: any}>;
+    environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    kvNamespaces?: pulumi.Input<{[key: string]: any}>;
+    r2Buckets?: pulumi.Input<{[key: string]: any}>;
+}
+
+export interface PagesProjectSource {
+    /**
+     * Configuration for the source of the Cloudflare Pages project.
+     */
+    config?: pulumi.Input<inputs.PagesProjectSourceConfig>;
+    /**
+     * Project host type.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface PagesProjectSourceConfig {
+    deploymentsEnabled?: pulumi.Input<boolean>;
+    owner?: pulumi.Input<string>;
+    prCommentsEnabled?: pulumi.Input<boolean>;
+    previewBranchExcludes?: pulumi.Input<pulumi.Input<string>[]>;
+    previewBranchIncludes?: pulumi.Input<pulumi.Input<string>[]>;
+    previewDeploymentSetting?: pulumi.Input<string>;
+    /**
+     * The name of the branch that is used for the production environment.
+     */
+    productionBranch: pulumi.Input<string>;
+    productionDeploymentEnabled?: pulumi.Input<boolean>;
+    repoName?: pulumi.Input<string>;
 }
 
 export interface RateLimitAction {
@@ -2494,3 +2569,4 @@ export interface ZoneSettingsOverrideSettingsSecurityHeader {
      */
     preload?: pulumi.Input<boolean>;
 }
+

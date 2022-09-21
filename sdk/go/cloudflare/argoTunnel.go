@@ -19,26 +19,23 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewArgoTunnel(ctx, "example", &cloudflare.ArgoTunnelArgs{
-//				AccountId: pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-//				Name:      pulumi.String("my-tunnel"),
-//				Secret:    pulumi.String("AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg="),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewArgoTunnel(ctx, "example", &cloudflare.ArgoTunnelArgs{
+// 			AccountId: pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+// 			Name:      pulumi.String("my-tunnel"),
+// 			Secret:    pulumi.String("AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg="),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -46,12 +43,10 @@ import (
 // Argo Tunnels can be imported a composite ID of the account ID and tunnel UUID.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/argoTunnel:ArgoTunnel example d41d8cd98f00b204e9800998ecf8427e/fd2455cb-5fcc-4c13-8738-8d8d2605237f
-//
+//  $ pulumi import cloudflare:index/argoTunnel:ArgoTunnel example d41d8cd98f00b204e9800998ecf8427e/fd2455cb-5fcc-4c13-8738-8d8d2605237f
 // ```
 //
-//	where - `d41d8cd98f00b204e9800998ecf8427e` is the account ID - `fd2455cb-5fcc-4c13-8738-8d8d2605237f` is the Argo Tunnel UUID
+//  where - `d41d8cd98f00b204e9800998ecf8427e` is the account ID - `fd2455cb-5fcc-4c13-8738-8d8d2605237f` is the Argo Tunnel UUID
 type ArgoTunnel struct {
 	pulumi.CustomResourceState
 
@@ -179,7 +174,7 @@ func (i *ArgoTunnel) ToArgoTunnelOutputWithContext(ctx context.Context) ArgoTunn
 // ArgoTunnelArrayInput is an input type that accepts ArgoTunnelArray and ArgoTunnelArrayOutput values.
 // You can construct a concrete instance of `ArgoTunnelArrayInput` via:
 //
-//	ArgoTunnelArray{ ArgoTunnelArgs{...} }
+//          ArgoTunnelArray{ ArgoTunnelArgs{...} }
 type ArgoTunnelArrayInput interface {
 	pulumi.Input
 
@@ -204,7 +199,7 @@ func (i ArgoTunnelArray) ToArgoTunnelArrayOutputWithContext(ctx context.Context)
 // ArgoTunnelMapInput is an input type that accepts ArgoTunnelMap and ArgoTunnelMapOutput values.
 // You can construct a concrete instance of `ArgoTunnelMapInput` via:
 //
-//	ArgoTunnelMap{ "key": ArgoTunnelArgs{...} }
+//          ArgoTunnelMap{ "key": ArgoTunnelArgs{...} }
 type ArgoTunnelMapInput interface {
 	pulumi.Input
 

@@ -20,47 +20,42 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewIpList(ctx, "example", &cloudflare.IpListArgs{
-//				AccountId:   pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-//				Description: pulumi.String("list description"),
-//				Items: IpListItemArray{
-//					&IpListItemArgs{
-//						Comment: pulumi.String("Office IP"),
-//						Value:   pulumi.String("192.0.2.1"),
-//					},
-//					&IpListItemArgs{
-//						Comment: pulumi.String("Datacenter range"),
-//						Value:   pulumi.String("203.0.113.0/24"),
-//					},
-//				},
-//				Kind: pulumi.String("ip"),
-//				Name: pulumi.String("example_list"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewIpList(ctx, "example", &cloudflare.IpListArgs{
+// 			AccountId:   pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+// 			Description: pulumi.String("list description"),
+// 			Items: IpListItemArray{
+// 				&IpListItemArgs{
+// 					Comment: pulumi.String("Office IP"),
+// 					Value:   pulumi.String("192.0.2.1"),
+// 				},
+// 				&IpListItemArgs{
+// 					Comment: pulumi.String("Datacenter range"),
+// 					Value:   pulumi.String("203.0.113.0/24"),
+// 				},
+// 			},
+// 			Kind: pulumi.String("ip"),
+// 			Name: pulumi.String("example_list"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # An existing IP List can be imported using the account ID and list ID
+// An existing IP List can be imported using the account ID and list ID
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/ipList:IpList example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
-//
+//  $ pulumi import cloudflare:index/ipList:IpList example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
 // ```
 type IpList struct {
 	pulumi.CustomResourceState
@@ -192,7 +187,7 @@ func (i *IpList) ToIpListOutputWithContext(ctx context.Context) IpListOutput {
 // IpListArrayInput is an input type that accepts IpListArray and IpListArrayOutput values.
 // You can construct a concrete instance of `IpListArrayInput` via:
 //
-//	IpListArray{ IpListArgs{...} }
+//          IpListArray{ IpListArgs{...} }
 type IpListArrayInput interface {
 	pulumi.Input
 
@@ -217,7 +212,7 @@ func (i IpListArray) ToIpListArrayOutputWithContext(ctx context.Context) IpListA
 // IpListMapInput is an input type that accepts IpListMap and IpListMapOutput values.
 // You can construct a concrete instance of `IpListMapInput` via:
 //
-//	IpListMap{ "key": IpListArgs{...} }
+//          IpListMap{ "key": IpListArgs{...} }
 type IpListMapInput interface {
 	pulumi.Input
 

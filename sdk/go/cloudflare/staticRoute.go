@@ -20,45 +20,40 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewStaticRoute(ctx, "example", &cloudflare.StaticRouteArgs{
-//				AccountId: pulumi.String("c4a7362d577a6c3019a474fd6f485821"),
-//				ColoNames: pulumi.StringArray{
-//					pulumi.String("den01"),
-//				},
-//				ColoRegions: pulumi.StringArray{
-//					pulumi.String("APAC"),
-//				},
-//				Description: pulumi.String("New route for new prefix 192.0.2.0/24"),
-//				Nexthop:     pulumi.String("10.0.0.0"),
-//				Prefix:      pulumi.String("192.0.2.0/24"),
-//				Priority:    pulumi.Int(100),
-//				Weight:      pulumi.Int(10),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewStaticRoute(ctx, "example", &cloudflare.StaticRouteArgs{
+// 			AccountId: pulumi.String("c4a7362d577a6c3019a474fd6f485821"),
+// 			ColoNames: pulumi.StringArray{
+// 				pulumi.String("den01"),
+// 			},
+// 			ColoRegions: pulumi.StringArray{
+// 				pulumi.String("APAC"),
+// 			},
+// 			Description: pulumi.String("New route for new prefix 192.0.2.0/24"),
+// 			Nexthop:     pulumi.String("10.0.0.0"),
+// 			Prefix:      pulumi.String("192.0.2.0/24"),
+// 			Priority:    pulumi.Int(100),
+// 			Weight:      pulumi.Int(10),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # An existing static route can be imported using the account ID and static route ID
+// An existing static route can be imported using the account ID and static route ID
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/staticRoute:StaticRoute example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
-//
+//  $ pulumi import cloudflare:index/staticRoute:StaticRoute example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
 // ```
 type StaticRoute struct {
 	pulumi.CustomResourceState
@@ -225,7 +220,7 @@ func (i *StaticRoute) ToStaticRouteOutputWithContext(ctx context.Context) Static
 // StaticRouteArrayInput is an input type that accepts StaticRouteArray and StaticRouteArrayOutput values.
 // You can construct a concrete instance of `StaticRouteArrayInput` via:
 //
-//	StaticRouteArray{ StaticRouteArgs{...} }
+//          StaticRouteArray{ StaticRouteArgs{...} }
 type StaticRouteArrayInput interface {
 	pulumi.Input
 
@@ -250,7 +245,7 @@ func (i StaticRouteArray) ToStaticRouteArrayOutputWithContext(ctx context.Contex
 // StaticRouteMapInput is an input type that accepts StaticRouteMap and StaticRouteMapOutput values.
 // You can construct a concrete instance of `StaticRouteMapInput` via:
 //
-//	StaticRouteMap{ "key": StaticRouteArgs{...} }
+//          StaticRouteMap{ "key": StaticRouteArgs{...} }
 type StaticRouteMapInput interface {
 	pulumi.Input
 

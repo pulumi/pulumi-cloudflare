@@ -19,39 +19,36 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewDevicePostureRule(ctx, "corporateDevicesPostureRule", &cloudflare.DevicePostureRuleArgs{
-//				AccountId:   pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-//				Name:        pulumi.String("Corporate devices posture rule"),
-//				Type:        pulumi.String("serial_number"),
-//				Description: pulumi.String("Device posture rule for corporate devices."),
-//				Schedule:    pulumi.String("24h"),
-//				Expiration:  pulumi.String("24h"),
-//				Matches: DevicePostureRuleMatchArray{
-//					&DevicePostureRuleMatchArgs{
-//						Platform: pulumi.String("mac"),
-//					},
-//				},
-//				Inputs: DevicePostureRuleInputTypeArray{
-//					&DevicePostureRuleInputTypeArgs{
-//						Id: pulumi.Any(cloudflare_teams_list.Corporate_devices.Id),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewDevicePostureRule(ctx, "corporateDevicesPostureRule", &cloudflare.DevicePostureRuleArgs{
+// 			AccountId:   pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+// 			Name:        pulumi.String("Corporate devices posture rule"),
+// 			Type:        pulumi.String("serial_number"),
+// 			Description: pulumi.String("Device posture rule for corporate devices."),
+// 			Schedule:    pulumi.String("24h"),
+// 			Expiration:  pulumi.String("24h"),
+// 			Matches: DevicePostureRuleMatchArray{
+// 				&DevicePostureRuleMatchArgs{
+// 					Platform: pulumi.String("mac"),
+// 				},
+// 			},
+// 			Inputs: DevicePostureRuleInputTypeArray{
+// 				&DevicePostureRuleInputTypeArgs{
+// 					Id: pulumi.Any(cloudflare_teams_list.Corporate_devices.Id),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -59,9 +56,7 @@ import (
 // Device posture rules can be imported using a composite ID formed of account ID and device posture rule ID.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
-//
+//  $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
 // ```
 type DevicePostureRule struct {
 	pulumi.CustomResourceState
@@ -240,7 +235,7 @@ func (i *DevicePostureRule) ToDevicePostureRuleOutputWithContext(ctx context.Con
 // DevicePostureRuleArrayInput is an input type that accepts DevicePostureRuleArray and DevicePostureRuleArrayOutput values.
 // You can construct a concrete instance of `DevicePostureRuleArrayInput` via:
 //
-//	DevicePostureRuleArray{ DevicePostureRuleArgs{...} }
+//          DevicePostureRuleArray{ DevicePostureRuleArgs{...} }
 type DevicePostureRuleArrayInput interface {
 	pulumi.Input
 
@@ -265,7 +260,7 @@ func (i DevicePostureRuleArray) ToDevicePostureRuleArrayOutputWithContext(ctx co
 // DevicePostureRuleMapInput is an input type that accepts DevicePostureRuleMap and DevicePostureRuleMapOutput values.
 // You can construct a concrete instance of `DevicePostureRuleMapInput` via:
 //
-//	DevicePostureRuleMap{ "key": DevicePostureRuleArgs{...} }
+//          DevicePostureRuleMap{ "key": DevicePostureRuleArgs{...} }
 type DevicePostureRuleMapInput interface {
 	pulumi.Input
 

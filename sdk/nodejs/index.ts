@@ -65,6 +65,8 @@ export * from "./notificationPolicy";
 export * from "./notificationPolicyWebhooks";
 export * from "./originCaCertificate";
 export * from "./pageRule";
+export * from "./pagesDomain";
+export * from "./pagesProject";
 export * from "./provider";
 export * from "./rateLimit";
 export * from "./record";
@@ -153,6 +155,8 @@ import { NotificationPolicy } from "./notificationPolicy";
 import { NotificationPolicyWebhooks } from "./notificationPolicyWebhooks";
 import { OriginCaCertificate } from "./originCaCertificate";
 import { PageRule } from "./pageRule";
+import { PagesDomain } from "./pagesDomain";
+import { PagesProject } from "./pagesProject";
 import { RateLimit } from "./rateLimit";
 import { Record } from "./record";
 import { Ruleset } from "./ruleset";
@@ -280,6 +284,10 @@ const _module = {
                 return new OriginCaCertificate(name, <any>undefined, { urn })
             case "cloudflare:index/pageRule:PageRule":
                 return new PageRule(name, <any>undefined, { urn })
+            case "cloudflare:index/pagesDomain:PagesDomain":
+                return new PagesDomain(name, <any>undefined, { urn })
+            case "cloudflare:index/pagesProject:PagesProject":
+                return new PagesProject(name, <any>undefined, { urn })
             case "cloudflare:index/rateLimit:RateLimit":
                 return new RateLimit(name, <any>undefined, { urn })
             case "cloudflare:index/record:Record":
@@ -391,6 +399,8 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/notificationPolicy", 
 pulumi.runtime.registerResourceModule("cloudflare", "index/notificationPolicyWebhooks", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/originCaCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/pageRule", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/pagesDomain", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/pagesProject", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/rateLimit", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/record", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/ruleset", _module)

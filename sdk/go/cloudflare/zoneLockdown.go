@@ -19,35 +19,32 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZoneLockdown(ctx, "endpointLockdown", &cloudflare.ZoneLockdownArgs{
-//				Configurations: ZoneLockdownConfigurationArray{
-//					&ZoneLockdownConfigurationArgs{
-//						Target: pulumi.String("ip_range"),
-//						Value:  pulumi.String("198.51.100.0/16"),
-//					},
-//				},
-//				Description: pulumi.String("Restrict access to these endpoints to requests from a known IP address range"),
-//				Paused:      pulumi.Bool(false),
-//				Urls: pulumi.StringArray{
-//					pulumi.String("api.mysite.com/some/endpoint*"),
-//				},
-//				ZoneId: pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewZoneLockdown(ctx, "endpointLockdown", &cloudflare.ZoneLockdownArgs{
+// 			Configurations: ZoneLockdownConfigurationArray{
+// 				&ZoneLockdownConfigurationArgs{
+// 					Target: pulumi.String("ip_range"),
+// 					Value:  pulumi.String("198.51.100.0/16"),
+// 				},
+// 			},
+// 			Description: pulumi.String("Restrict access to these endpoints to requests from a known IP address range"),
+// 			Paused:      pulumi.Bool(false),
+// 			Urls: pulumi.StringArray{
+// 				pulumi.String("api.mysite.com/some/endpoint*"),
+// 			},
+// 			ZoneId: pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -55,12 +52,10 @@ import (
 // Records can be imported using a composite ID formed of zone name and record ID, e.g.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown cloudflare_zone_lockdown d41d8cd98f00b204e9800998ecf8427e/37cb64fe4a90adb5ca3afc04f2c82a2f
-//
+//  $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown cloudflare_zone_lockdown d41d8cd98f00b204e9800998ecf8427e/37cb64fe4a90adb5ca3afc04f2c82a2f
 // ```
 //
-//	where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules)
+//  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules)
 type ZoneLockdown struct {
 	pulumi.CustomResourceState
 
@@ -201,7 +196,7 @@ func (i *ZoneLockdown) ToZoneLockdownOutputWithContext(ctx context.Context) Zone
 // ZoneLockdownArrayInput is an input type that accepts ZoneLockdownArray and ZoneLockdownArrayOutput values.
 // You can construct a concrete instance of `ZoneLockdownArrayInput` via:
 //
-//	ZoneLockdownArray{ ZoneLockdownArgs{...} }
+//          ZoneLockdownArray{ ZoneLockdownArgs{...} }
 type ZoneLockdownArrayInput interface {
 	pulumi.Input
 
@@ -226,7 +221,7 @@ func (i ZoneLockdownArray) ToZoneLockdownArrayOutputWithContext(ctx context.Cont
 // ZoneLockdownMapInput is an input type that accepts ZoneLockdownMap and ZoneLockdownMapOutput values.
 // You can construct a concrete instance of `ZoneLockdownMapInput` via:
 //
-//	ZoneLockdownMap{ "key": ZoneLockdownArgs{...} }
+//          ZoneLockdownMap{ "key": ZoneLockdownArgs{...} }
 type ZoneLockdownMapInput interface {
 	pulumi.Input
 

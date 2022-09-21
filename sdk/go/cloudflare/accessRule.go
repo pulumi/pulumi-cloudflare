@@ -20,25 +20,19 @@ import (
 // # User level access rule import.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/accessRule:AccessRule default user/<user_id>/<rule_id>
-//
+//  $ pulumi import cloudflare:index/accessRule:AccessRule default user/<user_id>/<rule_id>
 // ```
 //
 // # Zone level access rule import.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/accessRule:AccessRule default zone/<zone_id>/<rule_id>
-//
+//  $ pulumi import cloudflare:index/accessRule:AccessRule default zone/<zone_id>/<rule_id>
 // ```
 //
 // # Account level access rule import.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/accessRule:AccessRule default account/<account_id>/<rule_id>
-//
+//  $ pulumi import cloudflare:index/accessRule:AccessRule default account/<account_id>/<rule_id>
 // ```
 type AccessRule struct {
 	pulumi.CustomResourceState
@@ -172,7 +166,7 @@ func (i *AccessRule) ToAccessRuleOutputWithContext(ctx context.Context) AccessRu
 // AccessRuleArrayInput is an input type that accepts AccessRuleArray and AccessRuleArrayOutput values.
 // You can construct a concrete instance of `AccessRuleArrayInput` via:
 //
-//	AccessRuleArray{ AccessRuleArgs{...} }
+//          AccessRuleArray{ AccessRuleArgs{...} }
 type AccessRuleArrayInput interface {
 	pulumi.Input
 
@@ -197,7 +191,7 @@ func (i AccessRuleArray) ToAccessRuleArrayOutputWithContext(ctx context.Context)
 // AccessRuleMapInput is an input type that accepts AccessRuleMap and AccessRuleMapOutput values.
 // You can construct a concrete instance of `AccessRuleMapInput` via:
 //
-//	AccessRuleMap{ "key": AccessRuleArgs{...} }
+//          AccessRuleMap{ "key": AccessRuleArgs{...} }
 type AccessRuleMapInput interface {
 	pulumi.Input
 

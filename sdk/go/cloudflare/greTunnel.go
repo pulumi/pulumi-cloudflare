@@ -19,44 +19,39 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewGreTunnel(ctx, "example", &cloudflare.GreTunnelArgs{
-//				AccountId:             pulumi.String("c4a7362d577a6c3019a474fd6f485821"),
-//				CloudflareGreEndpoint: pulumi.String("203.0.113.1"),
-//				CustomerGreEndpoint:   pulumi.String("203.0.113.1"),
-//				Description:           pulumi.String("Tunnel for ISP X"),
-//				HealthCheckEnabled:    pulumi.Bool(true),
-//				HealthCheckTarget:     pulumi.String("203.0.113.1"),
-//				HealthCheckType:       pulumi.String("reply"),
-//				InterfaceAddress:      pulumi.String("192.0.2.0/31"),
-//				Mtu:                   pulumi.Int(1476),
-//				Name:                  pulumi.String("GRE_1"),
-//				Ttl:                   pulumi.Int(64),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewGreTunnel(ctx, "example", &cloudflare.GreTunnelArgs{
+// 			AccountId:             pulumi.String("c4a7362d577a6c3019a474fd6f485821"),
+// 			CloudflareGreEndpoint: pulumi.String("203.0.113.1"),
+// 			CustomerGreEndpoint:   pulumi.String("203.0.113.1"),
+// 			Description:           pulumi.String("Tunnel for ISP X"),
+// 			HealthCheckEnabled:    pulumi.Bool(true),
+// 			HealthCheckTarget:     pulumi.String("203.0.113.1"),
+// 			HealthCheckType:       pulumi.String("reply"),
+// 			InterfaceAddress:      pulumi.String("192.0.2.0/31"),
+// 			Mtu:                   pulumi.Int(1476),
+// 			Name:                  pulumi.String("GRE_1"),
+// 			Ttl:                   pulumi.Int(64),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
 //
-// # An existing GRE tunnel can be imported using the account ID and tunnel ID
+// An existing GRE tunnel can be imported using the account ID and tunnel ID
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/greTunnel:GreTunnel example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
-//
+//  $ pulumi import cloudflare:index/greTunnel:GreTunnel example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
 // ```
 type GreTunnel struct {
 	pulumi.CustomResourceState
@@ -256,7 +251,7 @@ func (i *GreTunnel) ToGreTunnelOutputWithContext(ctx context.Context) GreTunnelO
 // GreTunnelArrayInput is an input type that accepts GreTunnelArray and GreTunnelArrayOutput values.
 // You can construct a concrete instance of `GreTunnelArrayInput` via:
 //
-//	GreTunnelArray{ GreTunnelArgs{...} }
+//          GreTunnelArray{ GreTunnelArgs{...} }
 type GreTunnelArrayInput interface {
 	pulumi.Input
 
@@ -281,7 +276,7 @@ func (i GreTunnelArray) ToGreTunnelArrayOutputWithContext(ctx context.Context) G
 // GreTunnelMapInput is an input type that accepts GreTunnelMap and GreTunnelMapOutput values.
 // You can construct a concrete instance of `GreTunnelMapInput` via:
 //
-//	GreTunnelMap{ "key": GreTunnelArgs{...} }
+//          GreTunnelMap{ "key": GreTunnelArgs{...} }
 type GreTunnelMapInput interface {
 	pulumi.Input
 
