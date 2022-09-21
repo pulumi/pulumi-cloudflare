@@ -164,6 +164,7 @@ __all__ = [
     'TeamsRuleRuleSettingsBisoAdminControlsArgs',
     'TeamsRuleRuleSettingsCheckSessionArgs',
     'TeamsRuleRuleSettingsL4overrideArgs',
+    'UserAgentBlockingRuleConfigurationArgs',
     'WorkerScriptKvNamespaceBindingArgs',
     'WorkerScriptPlainTextBindingArgs',
     'WorkerScriptR2BucketBindingArgs',
@@ -10568,6 +10569,43 @@ class TeamsRuleRuleSettingsL4overrideArgs:
     @port.setter
     def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
+
+
+@pulumi.input_type
+class UserAgentBlockingRuleConfigurationArgs:
+    def __init__(__self__, *,
+                 target: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] target: The configuration target for this rule. You must set the target to ua for User Agent Blocking rules.
+        :param pulumi.Input[str] value: The exact user agent string to match. This value will be compared to the received User-Agent HTTP header value.
+        """
+        pulumi.set(__self__, "target", target)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def target(self) -> pulumi.Input[str]:
+        """
+        The configuration target for this rule. You must set the target to ua for User Agent Blocking rules.
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        The exact user agent string to match. This value will be compared to the received User-Agent HTTP header value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

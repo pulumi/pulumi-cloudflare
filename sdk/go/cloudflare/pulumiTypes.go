@@ -23566,6 +23566,162 @@ func (o TeamsRuleRuleSettingsL4overridePtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type UserAgentBlockingRuleConfiguration struct {
+	// The configuration target for this rule. You must set the target to ua for User Agent Blocking rules.
+	Target string `pulumi:"target"`
+	// The exact user agent string to match. This value will be compared to the received User-Agent HTTP header value.
+	Value string `pulumi:"value"`
+}
+
+// UserAgentBlockingRuleConfigurationInput is an input type that accepts UserAgentBlockingRuleConfigurationArgs and UserAgentBlockingRuleConfigurationOutput values.
+// You can construct a concrete instance of `UserAgentBlockingRuleConfigurationInput` via:
+//
+//	UserAgentBlockingRuleConfigurationArgs{...}
+type UserAgentBlockingRuleConfigurationInput interface {
+	pulumi.Input
+
+	ToUserAgentBlockingRuleConfigurationOutput() UserAgentBlockingRuleConfigurationOutput
+	ToUserAgentBlockingRuleConfigurationOutputWithContext(context.Context) UserAgentBlockingRuleConfigurationOutput
+}
+
+type UserAgentBlockingRuleConfigurationArgs struct {
+	// The configuration target for this rule. You must set the target to ua for User Agent Blocking rules.
+	Target pulumi.StringInput `pulumi:"target"`
+	// The exact user agent string to match. This value will be compared to the received User-Agent HTTP header value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (UserAgentBlockingRuleConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAgentBlockingRuleConfiguration)(nil)).Elem()
+}
+
+func (i UserAgentBlockingRuleConfigurationArgs) ToUserAgentBlockingRuleConfigurationOutput() UserAgentBlockingRuleConfigurationOutput {
+	return i.ToUserAgentBlockingRuleConfigurationOutputWithContext(context.Background())
+}
+
+func (i UserAgentBlockingRuleConfigurationArgs) ToUserAgentBlockingRuleConfigurationOutputWithContext(ctx context.Context) UserAgentBlockingRuleConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAgentBlockingRuleConfigurationOutput)
+}
+
+func (i UserAgentBlockingRuleConfigurationArgs) ToUserAgentBlockingRuleConfigurationPtrOutput() UserAgentBlockingRuleConfigurationPtrOutput {
+	return i.ToUserAgentBlockingRuleConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i UserAgentBlockingRuleConfigurationArgs) ToUserAgentBlockingRuleConfigurationPtrOutputWithContext(ctx context.Context) UserAgentBlockingRuleConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAgentBlockingRuleConfigurationOutput).ToUserAgentBlockingRuleConfigurationPtrOutputWithContext(ctx)
+}
+
+// UserAgentBlockingRuleConfigurationPtrInput is an input type that accepts UserAgentBlockingRuleConfigurationArgs, UserAgentBlockingRuleConfigurationPtr and UserAgentBlockingRuleConfigurationPtrOutput values.
+// You can construct a concrete instance of `UserAgentBlockingRuleConfigurationPtrInput` via:
+//
+//	        UserAgentBlockingRuleConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type UserAgentBlockingRuleConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToUserAgentBlockingRuleConfigurationPtrOutput() UserAgentBlockingRuleConfigurationPtrOutput
+	ToUserAgentBlockingRuleConfigurationPtrOutputWithContext(context.Context) UserAgentBlockingRuleConfigurationPtrOutput
+}
+
+type userAgentBlockingRuleConfigurationPtrType UserAgentBlockingRuleConfigurationArgs
+
+func UserAgentBlockingRuleConfigurationPtr(v *UserAgentBlockingRuleConfigurationArgs) UserAgentBlockingRuleConfigurationPtrInput {
+	return (*userAgentBlockingRuleConfigurationPtrType)(v)
+}
+
+func (*userAgentBlockingRuleConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAgentBlockingRuleConfiguration)(nil)).Elem()
+}
+
+func (i *userAgentBlockingRuleConfigurationPtrType) ToUserAgentBlockingRuleConfigurationPtrOutput() UserAgentBlockingRuleConfigurationPtrOutput {
+	return i.ToUserAgentBlockingRuleConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *userAgentBlockingRuleConfigurationPtrType) ToUserAgentBlockingRuleConfigurationPtrOutputWithContext(ctx context.Context) UserAgentBlockingRuleConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAgentBlockingRuleConfigurationPtrOutput)
+}
+
+type UserAgentBlockingRuleConfigurationOutput struct{ *pulumi.OutputState }
+
+func (UserAgentBlockingRuleConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAgentBlockingRuleConfiguration)(nil)).Elem()
+}
+
+func (o UserAgentBlockingRuleConfigurationOutput) ToUserAgentBlockingRuleConfigurationOutput() UserAgentBlockingRuleConfigurationOutput {
+	return o
+}
+
+func (o UserAgentBlockingRuleConfigurationOutput) ToUserAgentBlockingRuleConfigurationOutputWithContext(ctx context.Context) UserAgentBlockingRuleConfigurationOutput {
+	return o
+}
+
+func (o UserAgentBlockingRuleConfigurationOutput) ToUserAgentBlockingRuleConfigurationPtrOutput() UserAgentBlockingRuleConfigurationPtrOutput {
+	return o.ToUserAgentBlockingRuleConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o UserAgentBlockingRuleConfigurationOutput) ToUserAgentBlockingRuleConfigurationPtrOutputWithContext(ctx context.Context) UserAgentBlockingRuleConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserAgentBlockingRuleConfiguration) *UserAgentBlockingRuleConfiguration {
+		return &v
+	}).(UserAgentBlockingRuleConfigurationPtrOutput)
+}
+
+// The configuration target for this rule. You must set the target to ua for User Agent Blocking rules.
+func (o UserAgentBlockingRuleConfigurationOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAgentBlockingRuleConfiguration) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The exact user agent string to match. This value will be compared to the received User-Agent HTTP header value.
+func (o UserAgentBlockingRuleConfigurationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAgentBlockingRuleConfiguration) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type UserAgentBlockingRuleConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (UserAgentBlockingRuleConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAgentBlockingRuleConfiguration)(nil)).Elem()
+}
+
+func (o UserAgentBlockingRuleConfigurationPtrOutput) ToUserAgentBlockingRuleConfigurationPtrOutput() UserAgentBlockingRuleConfigurationPtrOutput {
+	return o
+}
+
+func (o UserAgentBlockingRuleConfigurationPtrOutput) ToUserAgentBlockingRuleConfigurationPtrOutputWithContext(ctx context.Context) UserAgentBlockingRuleConfigurationPtrOutput {
+	return o
+}
+
+func (o UserAgentBlockingRuleConfigurationPtrOutput) Elem() UserAgentBlockingRuleConfigurationOutput {
+	return o.ApplyT(func(v *UserAgentBlockingRuleConfiguration) UserAgentBlockingRuleConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret UserAgentBlockingRuleConfiguration
+		return ret
+	}).(UserAgentBlockingRuleConfigurationOutput)
+}
+
+// The configuration target for this rule. You must set the target to ua for User Agent Blocking rules.
+func (o UserAgentBlockingRuleConfigurationPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAgentBlockingRuleConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+// The exact user agent string to match. This value will be compared to the received User-Agent HTTP header value.
+func (o UserAgentBlockingRuleConfigurationPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAgentBlockingRuleConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkerScriptKvNamespaceBinding struct {
 	// The global variable for the binding in your Worker code.
 	Name string `pulumi:"name"`
@@ -27019,6 +27175,124 @@ func (o GetAccountRolesRoleArrayOutput) Index(i pulumi.IntInput) GetAccountRoles
 	}).(GetAccountRolesRoleOutput)
 }
 
+type GetAccountsAccount struct {
+	EnforceTwofactor *bool `pulumi:"enforceTwofactor"`
+	// The ID of this resource.
+	Id *string `pulumi:"id"`
+	// The account name to target for the resource.
+	Name *string `pulumi:"name"`
+	Type *string `pulumi:"type"`
+}
+
+// GetAccountsAccountInput is an input type that accepts GetAccountsAccountArgs and GetAccountsAccountOutput values.
+// You can construct a concrete instance of `GetAccountsAccountInput` via:
+//
+//	GetAccountsAccountArgs{...}
+type GetAccountsAccountInput interface {
+	pulumi.Input
+
+	ToGetAccountsAccountOutput() GetAccountsAccountOutput
+	ToGetAccountsAccountOutputWithContext(context.Context) GetAccountsAccountOutput
+}
+
+type GetAccountsAccountArgs struct {
+	EnforceTwofactor pulumi.BoolPtrInput `pulumi:"enforceTwofactor"`
+	// The ID of this resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The account name to target for the resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetAccountsAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountsAccount)(nil)).Elem()
+}
+
+func (i GetAccountsAccountArgs) ToGetAccountsAccountOutput() GetAccountsAccountOutput {
+	return i.ToGetAccountsAccountOutputWithContext(context.Background())
+}
+
+func (i GetAccountsAccountArgs) ToGetAccountsAccountOutputWithContext(ctx context.Context) GetAccountsAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountOutput)
+}
+
+// GetAccountsAccountArrayInput is an input type that accepts GetAccountsAccountArray and GetAccountsAccountArrayOutput values.
+// You can construct a concrete instance of `GetAccountsAccountArrayInput` via:
+//
+//	GetAccountsAccountArray{ GetAccountsAccountArgs{...} }
+type GetAccountsAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetAccountsAccountArrayOutput() GetAccountsAccountArrayOutput
+	ToGetAccountsAccountArrayOutputWithContext(context.Context) GetAccountsAccountArrayOutput
+}
+
+type GetAccountsAccountArray []GetAccountsAccountInput
+
+func (GetAccountsAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountsAccount)(nil)).Elem()
+}
+
+func (i GetAccountsAccountArray) ToGetAccountsAccountArrayOutput() GetAccountsAccountArrayOutput {
+	return i.ToGetAccountsAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccountsAccountArray) ToGetAccountsAccountArrayOutputWithContext(ctx context.Context) GetAccountsAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountArrayOutput)
+}
+
+type GetAccountsAccountOutput struct{ *pulumi.OutputState }
+
+func (GetAccountsAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountsAccount)(nil)).Elem()
+}
+
+func (o GetAccountsAccountOutput) ToGetAccountsAccountOutput() GetAccountsAccountOutput {
+	return o
+}
+
+func (o GetAccountsAccountOutput) ToGetAccountsAccountOutputWithContext(ctx context.Context) GetAccountsAccountOutput {
+	return o
+}
+
+func (o GetAccountsAccountOutput) EnforceTwofactor() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAccountsAccount) *bool { return v.EnforceTwofactor }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of this resource.
+func (o GetAccountsAccountOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountsAccount) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The account name to target for the resource.
+func (o GetAccountsAccountOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountsAccount) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccountsAccountOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountsAccount) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GetAccountsAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccountsAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountsAccount)(nil)).Elem()
+}
+
+func (o GetAccountsAccountArrayOutput) ToGetAccountsAccountArrayOutput() GetAccountsAccountArrayOutput {
+	return o
+}
+
+func (o GetAccountsAccountArrayOutput) ToGetAccountsAccountArrayOutputWithContext(ctx context.Context) GetAccountsAccountArrayOutput {
+	return o
+}
+
+func (o GetAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetAccountsAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountsAccount {
+		return vs[0].([]GetAccountsAccount)[vs[1].(int)]
+	}).(GetAccountsAccountOutput)
+}
+
 type GetDevicesDevice struct {
 	Created    *string `pulumi:"created"`
 	DeviceType *string `pulumi:"deviceType"`
@@ -28587,6 +28861,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsCheckSessionPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsCheckSessionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsL4overrideInput)(nil)).Elem(), TeamsRuleRuleSettingsL4overrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsL4overridePtrInput)(nil)).Elem(), TeamsRuleRuleSettingsL4overrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserAgentBlockingRuleConfigurationInput)(nil)).Elem(), UserAgentBlockingRuleConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserAgentBlockingRuleConfigurationPtrInput)(nil)).Elem(), UserAgentBlockingRuleConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptKvNamespaceBindingInput)(nil)).Elem(), WorkerScriptKvNamespaceBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptKvNamespaceBindingArrayInput)(nil)).Elem(), WorkerScriptKvNamespaceBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptPlainTextBindingInput)(nil)).Elem(), WorkerScriptPlainTextBindingArgs{})
@@ -28619,6 +28895,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsSecurityHeaderPtrInput)(nil)).Elem(), ZoneSettingsOverrideSettingsSecurityHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountRolesRoleInput)(nil)).Elem(), GetAccountRolesRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountRolesRoleArrayInput)(nil)).Elem(), GetAccountRolesRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountInput)(nil)).Elem(), GetAccountsAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountArrayInput)(nil)).Elem(), GetAccountsAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesDeviceInput)(nil)).Elem(), GetDevicesDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesDeviceArrayInput)(nil)).Elem(), GetDevicesDeviceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWafGroupsFilterInput)(nil)).Elem(), GetWafGroupsFilterArgs{})
@@ -28943,6 +29221,8 @@ func init() {
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsCheckSessionPtrOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsL4overrideOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsL4overridePtrOutput{})
+	pulumi.RegisterOutputType(UserAgentBlockingRuleConfigurationOutput{})
+	pulumi.RegisterOutputType(UserAgentBlockingRuleConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(WorkerScriptKvNamespaceBindingOutput{})
 	pulumi.RegisterOutputType(WorkerScriptKvNamespaceBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptPlainTextBindingOutput{})
@@ -28975,6 +29255,8 @@ func init() {
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput{})
 	pulumi.RegisterOutputType(GetAccountRolesRoleOutput{})
 	pulumi.RegisterOutputType(GetAccountRolesRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetAccountsAccountOutput{})
+	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetDevicesDeviceOutput{})
 	pulumi.RegisterOutputType(GetDevicesDeviceArrayOutput{})
 	pulumi.RegisterOutputType(GetWafGroupsFilterOutput{})

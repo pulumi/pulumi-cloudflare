@@ -40,6 +40,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccessRule{}
 	case "cloudflare:index/accessServiceToken:AccessServiceToken":
 		r = &AccessServiceToken{}
+	case "cloudflare:index/account:Account":
+		r = &Account{}
 	case "cloudflare:index/accountMember:AccountMember":
 		r = &AccountMember{}
 	case "cloudflare:index/apiToken:ApiToken":
@@ -136,6 +138,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TunnelRoute{}
 	case "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork":
 		r = &TunnelVirtualNetwork{}
+	case "cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule":
+		r = &UserAgentBlockingRule{}
 	case "cloudflare:index/wafGroup:WafGroup":
 		r = &WafGroup{}
 	case "cloudflare:index/wafOverride:WafOverride":
@@ -244,6 +248,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/accessServiceToken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/account",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -484,6 +493,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/tunnelVirtualNetwork",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/userAgentBlockingRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

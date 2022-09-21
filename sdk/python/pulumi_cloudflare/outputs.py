@@ -165,6 +165,7 @@ __all__ = [
     'TeamsRuleRuleSettingsBisoAdminControls',
     'TeamsRuleRuleSettingsCheckSession',
     'TeamsRuleRuleSettingsL4override',
+    'UserAgentBlockingRuleConfiguration',
     'WorkerScriptKvNamespaceBinding',
     'WorkerScriptPlainTextBinding',
     'WorkerScriptR2BucketBinding',
@@ -181,6 +182,7 @@ __all__ = [
     'ZoneSettingsOverrideSettingsMobileRedirect',
     'ZoneSettingsOverrideSettingsSecurityHeader',
     'GetAccountRolesRoleResult',
+    'GetAccountsAccountResult',
     'GetDevicesDeviceResult',
     'GetWafGroupsFilterResult',
     'GetWafGroupsGroupResult',
@@ -10026,6 +10028,35 @@ class TeamsRuleRuleSettingsL4override(dict):
 
 
 @pulumi.output_type
+class UserAgentBlockingRuleConfiguration(dict):
+    def __init__(__self__, *,
+                 target: str,
+                 value: str):
+        """
+        :param str target: The configuration target for this rule. You must set the target to ua for User Agent Blocking rules.
+        :param str value: The exact user agent string to match. This value will be compared to the received User-Agent HTTP header value.
+        """
+        pulumi.set(__self__, "target", target)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def target(self) -> str:
+        """
+        The configuration target for this rule. You must set the target to ua for User Agent Blocking rules.
+        """
+        return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The exact user agent string to match. This value will be compared to the received User-Agent HTTP header value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class WorkerScriptKvNamespaceBinding(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -11873,6 +11904,53 @@ class GetAccountRolesRoleResult(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetAccountsAccountResult(dict):
+    def __init__(__self__, *,
+                 enforce_twofactor: Optional[bool] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str id: The ID of this resource.
+        :param str name: The account name to target for the resource.
+        """
+        if enforce_twofactor is not None:
+            pulumi.set(__self__, "enforce_twofactor", enforce_twofactor)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="enforceTwofactor")
+    def enforce_twofactor(self) -> Optional[bool]:
+        return pulumi.get(self, "enforce_twofactor")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The account name to target for the resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

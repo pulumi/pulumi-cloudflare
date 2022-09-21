@@ -54,7 +54,7 @@ class AccessApplicationArgs:
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
-        :param pulumi.Input[str] type: The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `file`. Defaults to `self_hosted`.
+        :param pulumi.Input[str] type: The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `self_hosted`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         pulumi.set(__self__, "name", name)
@@ -303,7 +303,7 @@ class AccessApplicationArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `file`. Defaults to `self_hosted`.
+        The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `self_hosted`.
         """
         return pulumi.get(self, "type")
 
@@ -367,7 +367,7 @@ class _AccessApplicationState:
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
-        :param pulumi.Input[str] type: The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `file`. Defaults to `self_hosted`.
+        :param pulumi.Input[str] type: The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `self_hosted`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         if account_id is not None:
@@ -631,7 +631,7 @@ class _AccessApplicationState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `file`. Defaults to `self_hosted`.
+        The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `self_hosted`.
         """
         return pulumi.get(self, "type")
 
@@ -738,7 +738,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
-        :param pulumi.Input[str] type: The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `file`. Defaults to `self_hosted`.
+        :param pulumi.Input[str] type: The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `self_hosted`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         ...
@@ -909,7 +909,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
-        :param pulumi.Input[str] type: The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `file`. Defaults to `self_hosted`.
+        :param pulumi.Input[str] type: The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `self_hosted`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1086,7 +1086,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `file`. Defaults to `self_hosted`.
+        The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `self_hosted`.
         """
         return pulumi.get(self, "type")
 

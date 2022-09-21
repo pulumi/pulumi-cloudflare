@@ -8,10 +8,14 @@ import com.pulumi.cloudflare.inputs.GetAccessIdentityProviderArgs;
 import com.pulumi.cloudflare.inputs.GetAccessIdentityProviderPlainArgs;
 import com.pulumi.cloudflare.inputs.GetAccountRolesArgs;
 import com.pulumi.cloudflare.inputs.GetAccountRolesPlainArgs;
+import com.pulumi.cloudflare.inputs.GetAccountsArgs;
+import com.pulumi.cloudflare.inputs.GetAccountsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetDevicesArgs;
 import com.pulumi.cloudflare.inputs.GetDevicesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetOriginCaRootCertificateArgs;
 import com.pulumi.cloudflare.inputs.GetOriginCaRootCertificatePlainArgs;
+import com.pulumi.cloudflare.inputs.GetRecordArgs;
+import com.pulumi.cloudflare.inputs.GetRecordPlainArgs;
 import com.pulumi.cloudflare.inputs.GetWafGroupsArgs;
 import com.pulumi.cloudflare.inputs.GetWafGroupsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetWafPackagesArgs;
@@ -26,10 +30,12 @@ import com.pulumi.cloudflare.inputs.GetZonesArgs;
 import com.pulumi.cloudflare.inputs.GetZonesPlainArgs;
 import com.pulumi.cloudflare.outputs.GetAccessIdentityProviderResult;
 import com.pulumi.cloudflare.outputs.GetAccountRolesResult;
+import com.pulumi.cloudflare.outputs.GetAccountsResult;
 import com.pulumi.cloudflare.outputs.GetApiTokenPermissionGroupsResult;
 import com.pulumi.cloudflare.outputs.GetDevicesResult;
 import com.pulumi.cloudflare.outputs.GetIpRangesResult;
 import com.pulumi.cloudflare.outputs.GetOriginCaRootCertificateResult;
+import com.pulumi.cloudflare.outputs.GetRecordResult;
 import com.pulumi.cloudflare.outputs.GetWafGroupsResult;
 import com.pulumi.cloudflare.outputs.GetWafPackagesResult;
 import com.pulumi.cloudflare.outputs.GetWafRulesResult;
@@ -67,6 +73,228 @@ public final class CloudflareFunctions {
     }
     public static CompletableFuture<GetAccountRolesResult> getAccountRolesPlain(GetAccountRolesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getAccountRoles:getAccountRoles", TypeShape.of(GetAccountRolesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for looking up Cloudflare Accounts.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .name(&#34;example account&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccountsResult> getAccounts() {
+        return getAccounts(GetAccountsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for looking up Cloudflare Accounts.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .name(&#34;example account&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccountsResult> getAccountsPlain() {
+        return getAccountsPlain(GetAccountsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for looking up Cloudflare Accounts.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .name(&#34;example account&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args) {
+        return getAccounts(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for looking up Cloudflare Accounts.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .name(&#34;example account&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args) {
+        return getAccountsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for looking up Cloudflare Accounts.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .name(&#34;example account&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for looking up Cloudflare Accounts.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .name(&#34;example account&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetApiTokenPermissionGroupsResult> getApiTokenPermissionGroups() {
         return getApiTokenPermissionGroups(InvokeArgs.Empty, InvokeOptions.Empty);
@@ -127,6 +355,158 @@ public final class CloudflareFunctions {
     }
     public static CompletableFuture<GetOriginCaRootCertificateResult> getOriginCaRootCertificatePlain(GetOriginCaRootCertificatePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate", TypeShape.of(GetOriginCaRootCertificateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetRecordArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getRecord(GetRecordArgs.builder()
+     *             .zoneId(var_.zone_id())
+     *             .hostname(&#34;example.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRecordResult> getRecord(GetRecordArgs args) {
+        return getRecord(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetRecordArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getRecord(GetRecordArgs.builder()
+     *             .zoneId(var_.zone_id())
+     *             .hostname(&#34;example.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRecordResult> getRecordPlain(GetRecordPlainArgs args) {
+        return getRecordPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetRecordArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getRecord(GetRecordArgs.builder()
+     *             .zoneId(var_.zone_id())
+     *             .hostname(&#34;example.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRecordResult> getRecord(GetRecordArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getRecord:getRecord", TypeShape.of(GetRecordResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetRecordArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getRecord(GetRecordArgs.builder()
+     *             .zoneId(var_.zone_id())
+     *             .hostname(&#34;example.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRecordResult> getRecordPlain(GetRecordPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getRecord:getRecord", TypeShape.of(GetRecordResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetWafGroupsResult> getWafGroups(GetWafGroupsArgs args) {
         return getWafGroups(args, InvokeOptions.Empty);

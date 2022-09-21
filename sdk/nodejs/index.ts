@@ -15,6 +15,7 @@ export * from "./accessMutualTlsCertificate";
 export * from "./accessPolicy";
 export * from "./accessRule";
 export * from "./accessServiceToken";
+export * from "./account";
 export * from "./accountMember";
 export * from "./apiToken";
 export * from "./argo";
@@ -35,10 +36,12 @@ export * from "./filter";
 export * from "./firewallRule";
 export * from "./getAccessIdentityProvider";
 export * from "./getAccountRoles";
+export * from "./getAccounts";
 export * from "./getApiTokenPermissionGroups";
 export * from "./getDevices";
 export * from "./getIpRanges";
 export * from "./getOriginCaRootCertificate";
+export * from "./getRecord";
 export * from "./getWafGroups";
 export * from "./getWafPackages";
 export * from "./getWafRules";
@@ -76,6 +79,7 @@ export * from "./teamsProxyEndpoint";
 export * from "./teamsRule";
 export * from "./tunnelRoute";
 export * from "./tunnelVirtualNetwork";
+export * from "./userAgentBlockingRule";
 export * from "./wafGroup";
 export * from "./wafOverride";
 export * from "./wafPackage";
@@ -113,6 +117,7 @@ import { AccessMutualTlsCertificate } from "./accessMutualTlsCertificate";
 import { AccessPolicy } from "./accessPolicy";
 import { AccessRule } from "./accessRule";
 import { AccessServiceToken } from "./accessServiceToken";
+import { Account } from "./account";
 import { AccountMember } from "./accountMember";
 import { ApiToken } from "./apiToken";
 import { Argo } from "./argo";
@@ -161,6 +166,7 @@ import { TeamsProxyEndpoint } from "./teamsProxyEndpoint";
 import { TeamsRule } from "./teamsRule";
 import { TunnelRoute } from "./tunnelRoute";
 import { TunnelVirtualNetwork } from "./tunnelVirtualNetwork";
+import { UserAgentBlockingRule } from "./userAgentBlockingRule";
 import { WafGroup } from "./wafGroup";
 import { WafOverride } from "./wafOverride";
 import { WafPackage } from "./wafPackage";
@@ -202,6 +208,8 @@ const _module = {
                 return new AccessRule(name, <any>undefined, { urn })
             case "cloudflare:index/accessServiceToken:AccessServiceToken":
                 return new AccessServiceToken(name, <any>undefined, { urn })
+            case "cloudflare:index/account:Account":
+                return new Account(name, <any>undefined, { urn })
             case "cloudflare:index/accountMember:AccountMember":
                 return new AccountMember(name, <any>undefined, { urn })
             case "cloudflare:index/apiToken:ApiToken":
@@ -298,6 +306,8 @@ const _module = {
                 return new TunnelRoute(name, <any>undefined, { urn })
             case "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork":
                 return new TunnelVirtualNetwork(name, <any>undefined, { urn })
+            case "cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule":
+                return new UserAgentBlockingRule(name, <any>undefined, { urn })
             case "cloudflare:index/wafGroup:WafGroup":
                 return new WafGroup(name, <any>undefined, { urn })
             case "cloudflare:index/wafOverride:WafOverride":
@@ -345,6 +355,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/accessMutualTlsCertif
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessPolicy", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessServiceToken", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/account", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accountMember", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiToken", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/argo", _module)
@@ -393,6 +404,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/teamsProxyEndpoint", 
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelVirtualNetwork", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/userAgentBlockingRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafGroup", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafOverride", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafPackage", _module)

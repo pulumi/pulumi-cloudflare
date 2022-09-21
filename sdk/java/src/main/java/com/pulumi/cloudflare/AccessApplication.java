@@ -335,14 +335,14 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.skipInterstitial);
     }
     /**
-     * The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `file`. Defaults to `self_hosted`.
+     * The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `self_hosted`.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `file`. Defaults to `self_hosted`.
+     * @return The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `self_hosted`.
      * 
      */
     public Output<Optional<String>> type() {

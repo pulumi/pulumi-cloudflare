@@ -5,16 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Access Bookmark resource. Access Bookmark
- * applications are not protected behind Access but are displayed in
- * the App Launcher.
- *
- * > It's required that an `accountId` or `zoneId` is provided and in
- * most cases using either is fine. However, if you're using a scoped
- * access token, you must provide the argument that matches the token's
- * scope. For example, an access token that is scoped to the "example.com"
- * zone needs to use the `zoneId` argument.
- *
  * ## Example Usage
  *
  * ```typescript
