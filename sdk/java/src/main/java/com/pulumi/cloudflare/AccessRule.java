@@ -110,14 +110,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/accessRule:AccessRule")
 public class AccessRule extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+     * The account identifier to target for the resource.
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Output<String> accountId() {
@@ -166,14 +166,14 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notes);
     }
     /**
-     * The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+     * The zone identifier to target for the resource.
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
+     * @return The zone identifier to target for the resource.
      * 
      */
     public Output<String> zoneId() {

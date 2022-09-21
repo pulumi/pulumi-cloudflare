@@ -15,6 +15,7 @@ from .access_mutual_tls_certificate import *
 from .access_policy import *
 from .access_rule import *
 from .access_service_token import *
+from .account import *
 from .account_member import *
 from .api_token import *
 from .argo import *
@@ -35,10 +36,12 @@ from .filter import *
 from .firewall_rule import *
 from .get_access_identity_provider import *
 from .get_account_roles import *
+from .get_accounts import *
 from .get_api_token_permission_groups import *
 from .get_devices import *
 from .get_ip_ranges import *
 from .get_origin_ca_root_certificate import *
+from .get_record import *
 from .get_waf_groups import *
 from .get_waf_packages import *
 from .get_waf_rules import *
@@ -76,6 +79,7 @@ from .teams_proxy_endpoint import *
 from .teams_rule import *
 from .tunnel_route import *
 from .tunnel_virtual_network import *
+from .user_agent_blocking_rule import *
 from .waf_group import *
 from .waf_override import *
 from .waf_package import *
@@ -183,6 +187,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/accessServiceToken:AccessServiceToken": "AccessServiceToken"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/account",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/account:Account": "Account"
   }
  },
  {
@@ -567,6 +579,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork": "TunnelVirtualNetwork"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/userAgentBlockingRule",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule": "UserAgentBlockingRule"
   }
  },
  {

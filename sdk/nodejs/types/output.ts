@@ -693,6 +693,19 @@ export interface GetAccountRolesRole {
     name?: string;
 }
 
+export interface GetAccountsAccount {
+    enforceTwofactor?: boolean;
+    /**
+     * The ID of this resource.
+     */
+    id?: string;
+    /**
+     * The account name to target for the resource.
+     */
+    name?: string;
+    type?: string;
+}
+
 export interface GetDevicesDevice {
     created?: string;
     deviceType?: string;
@@ -2136,6 +2149,17 @@ export interface TeamsRuleRuleSettingsL4override {
      * Override Port to forward traffic to.
      */
     port: number;
+}
+
+export interface UserAgentBlockingRuleConfiguration {
+    /**
+     * The configuration target for this rule. You must set the target to ua for User Agent Blocking rules.
+     */
+    target: string;
+    /**
+     * The exact user agent string to match. This value will be compared to the received User-Agent HTTP header value.
+     */
+    value: string;
 }
 
 export interface WorkerScriptKvNamespaceBinding {

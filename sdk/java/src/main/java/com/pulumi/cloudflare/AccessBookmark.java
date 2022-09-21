@@ -16,16 +16,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Access Bookmark resource. Access Bookmark
- * applications are not protected behind Access but are displayed in
- * the App Launcher.
- * 
- * &gt; It&#39;s required that an `account_id` or `zone_id` is provided and in
- * most cases using either is fine. However, if you&#39;re using a scoped
- * access token, you must provide the argument that matches the token&#39;s
- * scope. For example, an access token that is scoped to the &#34;example.com&#34;
- * zone needs to use the `zone_id` argument.
- * 
  * ## Example Usage
  * ```java
  * package generated_program;

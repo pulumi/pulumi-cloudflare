@@ -7697,6 +7697,33 @@
                 "port"
             ]
         },
+        "cloudflare:index/UserAgentBlockingRuleConfiguration:UserAgentBlockingRuleConfiguration": {
+            "properties": {
+                "target": {
+                    "type": "string",
+                    "description": "The configuration target for this rule. You must set the target to ua for User Agent Blocking rules.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The exact user agent string to match. This value will be compared to the received User-Agent HTTP header value.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "target",
+                "value"
+            ]
+        },
         "cloudflare:index/WorkerScriptKvNamespaceBinding:WorkerScriptKvNamespaceBinding": {
             "properties": {
                 "name": {
@@ -9241,6 +9268,45 @@
             },
             "type": "object"
         },
+        "cloudflare:index/getAccountsAccount:getAccountsAccount": {
+            "properties": {
+                "enforceTwofactor": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of this resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The account name to target for the resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "cloudflare:index/getDevicesDevice:getDevicesDevice": {
             "properties": {
                 "created": {
@@ -9941,7 +10007,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `file`. Defaults to `self_hosted`.\n"
+                    "description": "The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `self_hosted`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -10032,7 +10098,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `file`. Defaults to `self_hosted`.\n"
+                    "description": "The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `self_hosted`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -10125,7 +10191,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `file`. Defaults to `self_hosted`.\n"
+                        "description": "The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `self_hosted`.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -10136,7 +10202,7 @@
             }
         },
         "cloudflare:index/accessBookmark:AccessBookmark": {
-            "description": "Provides a Cloudflare Access Bookmark resource. Access Bookmark\napplications are not protected behind Access but are displayed in\nthe App Launcher.\n\n\u003e It's required that an `account_id` or `zone_id` is provided and in\nmost cases using either is fine. However, if you're using a scoped\naccess token, you must provide the argument that matches the token's\nscope. For example, an access token that is scoped to the \"example.com\"\nzone needs to use the `zone_id` argument.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst myBookmarkApp = new cloudflare.AccessBookmark(\"my_bookmark_app\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    appLauncherVisible: true,\n    domain: \"example.com\",\n    logoUrl: \"https://example.com/example.png\",\n    name: \"My Bookmark App\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nmy_bookmark_app = cloudflare.AccessBookmark(\"myBookmarkApp\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    app_launcher_visible=True,\n    domain=\"example.com\",\n    logo_url=\"https://example.com/example.png\",\n    name=\"My Bookmark App\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myBookmarkApp = new Cloudflare.AccessBookmark(\"myBookmarkApp\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        AppLauncherVisible = true,\n        Domain = \"example.com\",\n        LogoUrl = \"https://example.com/example.png\",\n        Name = \"My Bookmark App\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessBookmark(ctx, \"myBookmarkApp\", \u0026cloudflare.AccessBookmarkArgs{\n\t\t\tAccountId:          pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tAppLauncherVisible: pulumi.Bool(true),\n\t\t\tDomain:             pulumi.String(\"example.com\"),\n\t\t\tLogoUrl:            pulumi.String(\"https://example.com/example.png\"),\n\t\t\tName:               pulumi.String(\"My Bookmark App\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.AccessBookmark;\nimport com.pulumi.cloudflare.AccessBookmarkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myBookmarkApp = new AccessBookmark(\"myBookmarkApp\", AccessBookmarkArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .appLauncherVisible(true)\n            .domain(\"example.com\")\n            .logoUrl(\"https://example.com/example.png\")\n            .name(\"My Bookmark App\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myBookmarkApp:\n    type: cloudflare:AccessBookmark\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      appLauncherVisible: true\n      domain: example.com\n      logoUrl: https://example.com/example.png\n      name: My Bookmark App\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/accessBookmark:AccessBookmark example \u003caccount_id\u003e/\u003cbookmark_id\u003e\n```\n\n ",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst myBookmarkApp = new cloudflare.AccessBookmark(\"my_bookmark_app\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    appLauncherVisible: true,\n    domain: \"example.com\",\n    logoUrl: \"https://example.com/example.png\",\n    name: \"My Bookmark App\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nmy_bookmark_app = cloudflare.AccessBookmark(\"myBookmarkApp\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    app_launcher_visible=True,\n    domain=\"example.com\",\n    logo_url=\"https://example.com/example.png\",\n    name=\"My Bookmark App\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myBookmarkApp = new Cloudflare.AccessBookmark(\"myBookmarkApp\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        AppLauncherVisible = true,\n        Domain = \"example.com\",\n        LogoUrl = \"https://example.com/example.png\",\n        Name = \"My Bookmark App\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessBookmark(ctx, \"myBookmarkApp\", \u0026cloudflare.AccessBookmarkArgs{\n\t\t\tAccountId:          pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tAppLauncherVisible: pulumi.Bool(true),\n\t\t\tDomain:             pulumi.String(\"example.com\"),\n\t\t\tLogoUrl:            pulumi.String(\"https://example.com/example.png\"),\n\t\t\tName:               pulumi.String(\"My Bookmark App\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.AccessBookmark;\nimport com.pulumi.cloudflare.AccessBookmarkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myBookmarkApp = new AccessBookmark(\"myBookmarkApp\", AccessBookmarkArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .appLauncherVisible(true)\n            .domain(\"example.com\")\n            .logoUrl(\"https://example.com/example.png\")\n            .name(\"My Bookmark App\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myBookmarkApp:\n    type: cloudflare:AccessBookmark\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      appLauncherVisible: true\n      domain: example.com\n      logoUrl: https://example.com/example.png\n      name: My Bookmark App\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/accessBookmark:AccessBookmark example \u003caccount_id\u003e/\u003cbookmark_id\u003e\n```\n\n ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -10870,7 +10936,7 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.\n"
+                    "description": "The account identifier to target for the resource.\n"
                 },
                 "configuration": {
                     "$ref": "#/types/cloudflare:index/AccessRuleConfiguration:AccessRuleConfiguration",
@@ -10886,7 +10952,7 @@
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.\n"
+                    "description": "The zone identifier to target for the resource.\n"
                 }
             },
             "required": [
@@ -10898,7 +10964,7 @@
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.\n",
+                    "description": "The account identifier to target for the resource.\n",
                     "willReplaceOnChanges": true
                 },
                 "configuration": {
@@ -10916,7 +10982,7 @@
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.\n",
+                    "description": "The zone identifier to target for the resource.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -10929,7 +10995,7 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.\n",
+                        "description": "The account identifier to target for the resource.\n",
                         "willReplaceOnChanges": true
                     },
                     "configuration": {
@@ -10947,7 +11013,7 @@
                     },
                     "zoneId": {
                         "type": "string",
-                        "description": "The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.\n",
+                        "description": "The zone identifier to target for the resource.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -11045,6 +11111,63 @@
                     "zoneId": {
                         "type": "string",
                         "description": "The zone identifier to target for the resource. Conflicts with `account_id`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/account:Account": {
+            "description": "Provides a Cloudflare Account resource. Account is the basic resource for\nworking with Cloudflare zones, teams and users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.Account(\"example\", {\n    enforceTwofactor: true,\n    name: \"some-enterprise-account\",\n    type: \"enterprise\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.Account(\"example\",\n    enforce_twofactor=True,\n    name=\"some-enterprise-account\",\n    type=\"enterprise\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.Account(\"example\", new()\n    {\n        EnforceTwofactor = true,\n        Name = \"some-enterprise-account\",\n        Type = \"enterprise\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccount(ctx, \"example\", \u0026cloudflare.AccountArgs{\n\t\t\tEnforceTwofactor: pulumi.Bool(true),\n\t\t\tName:             pulumi.String(\"some-enterprise-account\"),\n\t\t\tType:             pulumi.String(\"enterprise\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.Account;\nimport com.pulumi.cloudflare.AccountArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Account(\"example\", AccountArgs.builder()        \n            .enforceTwofactor(true)\n            .name(\"some-enterprise-account\")\n            .type(\"enterprise\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:Account\n    properties:\n      enforceTwofactor: true\n      name: some-enterprise-account\n      type: enterprise\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/account:Account example \u003caccount_id\u003e\n```\n\n ",
+            "properties": {
+                "enforceTwofactor": {
+                    "type": "boolean",
+                    "description": "Whether 2FA is enforced on the account. Defaults to `false`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the account that is displayed in the Cloudflare dashboard.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "enforceTwofactor": {
+                    "type": "boolean",
+                    "description": "Whether 2FA is enforced on the account. Defaults to `false`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the account that is displayed in the Cloudflare dashboard.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "name"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Account resources.\n",
+                "properties": {
+                    "enforceTwofactor": {
+                        "type": "boolean",
+                        "description": "Whether 2FA is enforced on the account. Defaults to `false`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the account that is displayed in the Cloudflare dashboard.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -16884,6 +17007,95 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule": {
+            "description": "Provides a resource to manage User Agent Blocking Rules.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example1 = new cloudflare.UserAgentBlockingRule(\"example_1\", {\n    configuration: {\n        target: \"ua\",\n        value: \"Chrome\",\n    },\n    description: \"My description 1\",\n    mode: \"js_challenge\",\n    paused: false,\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\nconst example2 = new cloudflare.UserAgentBlockingRule(\"example_2\", {\n    configuration: {\n        target: \"ua\",\n        value: \"Mozilla\",\n    },\n    description: \"My description 22\",\n    mode: \"challenge\",\n    paused: true,\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample1 = cloudflare.UserAgentBlockingRule(\"example1\",\n    configuration=cloudflare.UserAgentBlockingRuleConfigurationArgs(\n        target=\"ua\",\n        value=\"Chrome\",\n    ),\n    description=\"My description 1\",\n    mode=\"js_challenge\",\n    paused=False,\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\nexample2 = cloudflare.UserAgentBlockingRule(\"example2\",\n    configuration=cloudflare.UserAgentBlockingRuleConfigurationArgs(\n        target=\"ua\",\n        value=\"Mozilla\",\n    ),\n    description=\"My description 22\",\n    mode=\"challenge\",\n    paused=True,\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example1 = new Cloudflare.UserAgentBlockingRule(\"example1\", new()\n    {\n        Configuration = new Cloudflare.Inputs.UserAgentBlockingRuleConfigurationArgs\n        {\n            Target = \"ua\",\n            Value = \"Chrome\",\n        },\n        Description = \"My description 1\",\n        Mode = \"js_challenge\",\n        Paused = false,\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n    var example2 = new Cloudflare.UserAgentBlockingRule(\"example2\", new()\n    {\n        Configuration = new Cloudflare.Inputs.UserAgentBlockingRuleConfigurationArgs\n        {\n            Target = \"ua\",\n            Value = \"Mozilla\",\n        },\n        Description = \"My description 22\",\n        Mode = \"challenge\",\n        Paused = true,\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewUserAgentBlockingRule(ctx, \"example1\", \u0026cloudflare.UserAgentBlockingRuleArgs{\n\t\t\tConfiguration: \u0026UserAgentBlockingRuleConfigurationArgs{\n\t\t\t\tTarget: pulumi.String(\"ua\"),\n\t\t\t\tValue:  pulumi.String(\"Chrome\"),\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"My description 1\"),\n\t\t\tMode:        pulumi.String(\"js_challenge\"),\n\t\t\tPaused:      pulumi.Bool(false),\n\t\t\tZoneId:      pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewUserAgentBlockingRule(ctx, \"example2\", \u0026cloudflare.UserAgentBlockingRuleArgs{\n\t\t\tConfiguration: \u0026UserAgentBlockingRuleConfigurationArgs{\n\t\t\t\tTarget: pulumi.String(\"ua\"),\n\t\t\t\tValue:  pulumi.String(\"Mozilla\"),\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"My description 22\"),\n\t\t\tMode:        pulumi.String(\"challenge\"),\n\t\t\tPaused:      pulumi.Bool(true),\n\t\t\tZoneId:      pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.UserAgentBlockingRule;\nimport com.pulumi.cloudflare.UserAgentBlockingRuleArgs;\nimport com.pulumi.cloudflare.inputs.UserAgentBlockingRuleConfigurationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example1 = new UserAgentBlockingRule(\"example1\", UserAgentBlockingRuleArgs.builder()        \n            .configuration(UserAgentBlockingRuleConfigurationArgs.builder()\n                .target(\"ua\")\n                .value(\"Chrome\")\n                .build())\n            .description(\"My description 1\")\n            .mode(\"js_challenge\")\n            .paused(false)\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var example2 = new UserAgentBlockingRule(\"example2\", UserAgentBlockingRuleArgs.builder()        \n            .configuration(UserAgentBlockingRuleConfigurationArgs.builder()\n                .target(\"ua\")\n                .value(\"Mozilla\")\n                .build())\n            .description(\"My description 22\")\n            .mode(\"challenge\")\n            .paused(true)\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example1:\n    type: cloudflare:UserAgentBlockingRule\n    properties:\n      configuration:\n        target: ua\n        value: Chrome\n      description: My description 1\n      mode: js_challenge\n      paused: false\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  example2:\n    type: cloudflare:UserAgentBlockingRule\n    properties:\n      configuration:\n        target: ua\n        value: Mozilla\n      description: My description 22\n      mode: challenge\n      paused: true\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "configuration": {
+                    "$ref": "#/types/cloudflare:index/UserAgentBlockingRuleConfiguration:UserAgentBlockingRuleConfiguration",
+                    "description": "The configuration object for the current rule.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "An informative summary of the rule.\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.\n"
+                },
+                "paused": {
+                    "type": "boolean",
+                    "description": "When true, indicates that the rule is currently paused.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource.\n"
+                }
+            },
+            "required": [
+                "configuration",
+                "description",
+                "mode",
+                "paused",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "configuration": {
+                    "$ref": "#/types/cloudflare:index/UserAgentBlockingRuleConfiguration:UserAgentBlockingRuleConfiguration",
+                    "description": "The configuration object for the current rule.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "An informative summary of the rule.\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.\n"
+                },
+                "paused": {
+                    "type": "boolean",
+                    "description": "When true, indicates that the rule is currently paused.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "configuration",
+                "description",
+                "mode",
+                "paused",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UserAgentBlockingRule resources.\n",
+                "properties": {
+                    "configuration": {
+                        "$ref": "#/types/cloudflare:index/UserAgentBlockingRuleConfiguration:UserAgentBlockingRuleConfiguration",
+                        "description": "The configuration object for the current rule.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "An informative summary of the rule.\n"
+                    },
+                    "mode": {
+                        "type": "string",
+                        "description": "The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.\n"
+                    },
+                    "paused": {
+                        "type": "boolean",
+                        "description": "When true, indicates that the rule is currently paused.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/wafGroup:WafGroup": {
             "description": "Provides a Cloudflare WAF rule group resource for a particular zone. This can be used to configure firewall behaviour for pre-defined firewall groups.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst honeyPot = new cloudflare.WafGroup(\"honey_pot\", {\n    groupId: \"de677e5818985db1285d0e80225f06e5\",\n    mode: \"on\",\n    zoneId: \"ae36f999674d196762efcc5abb06b345\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nhoney_pot = cloudflare.WafGroup(\"honeyPot\",\n    group_id=\"de677e5818985db1285d0e80225f06e5\",\n    mode=\"on\",\n    zone_id=\"ae36f999674d196762efcc5abb06b345\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var honeyPot = new Cloudflare.WafGroup(\"honeyPot\", new()\n    {\n        GroupId = \"de677e5818985db1285d0e80225f06e5\",\n        Mode = \"on\",\n        ZoneId = \"ae36f999674d196762efcc5abb06b345\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewWafGroup(ctx, \"honeyPot\", \u0026cloudflare.WafGroupArgs{\n\t\t\tGroupId: pulumi.String(\"de677e5818985db1285d0e80225f06e5\"),\n\t\t\tMode:    pulumi.String(\"on\"),\n\t\t\tZoneId:  pulumi.String(\"ae36f999674d196762efcc5abb06b345\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.WafGroup;\nimport com.pulumi.cloudflare.WafGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var honeyPot = new WafGroup(\"honeyPot\", WafGroupArgs.builder()        \n            .groupId(\"de677e5818985db1285d0e80225f06e5\")\n            .mode(\"on\")\n            .zoneId(\"ae36f999674d196762efcc5abb06b345\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  honeyPot:\n    type: cloudflare:WafGroup\n    properties:\n      groupId: de677e5818985db1285d0e80225f06e5\n      mode: on\n      zoneId: ae36f999674d196762efcc5abb06b345\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nWAF Rule Groups can be imported using a composite ID formed of zone ID and the WAF Rule Group ID, e.g.\n\n```sh\n $ pulumi import cloudflare:index/wafGroup:WafGroup honey_pot ae36f999674d196762efcc5abb06b345/de677e5818985db1285d0e80225f06e5\n```\n\n ",
             "properties": {
@@ -18978,6 +19190,43 @@
                 ]
             }
         },
+        "cloudflare:index/getAccounts:getAccounts": {
+            "description": "Data source for looking up Cloudflare Accounts.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = pulumi.output(cloudflare.getAccounts({\n    name: \"example account\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_accounts(name=\"example account\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Cloudflare.GetAccounts.Invoke(new()\n    {\n        Name = \"example account\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetAccounts(ctx, \u0026GetAccountsArgs{\n\t\t\tName: pulumi.StringRef(\"example account\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.CloudflareFunctions;\nimport com.pulumi.cloudflare.inputs.GetAccountsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudflareFunctions.getAccounts(GetAccountsArgs.builder()\n            .name(\"example account\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    Fn::Invoke:\n      Function: cloudflare:getAccounts\n      Arguments:\n        name: example account\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAccounts.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The account name to target for the resource.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAccounts.\n",
+                "properties": {
+                    "accounts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/getAccountsAccount:getAccountsAccount"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The account name to target for the resource.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accounts",
+                    "id"
+                ]
+            }
+        },
         "cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups": {
             "outputs": {
                 "description": "A collection of values returned by getApiTokenPermissionGroups.\n",
@@ -19121,6 +19370,96 @@
                 "required": [
                     "algorithm",
                     "certPem",
+                    "id"
+                ]
+            }
+        },
+        "cloudflare:index/getRecord:getRecord": {
+            "description": "Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = cloudflare.getRecord({\n    zoneId: _var.zone_id,\n    hostname: \"example.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_record(zone_id=var[\"zone_id\"],\n    hostname=\"example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Cloudflare.GetRecord.Invoke(new()\n    {\n        ZoneId = @var.Zone_id,\n        Hostname = \"example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.LookupRecord(ctx, \u0026GetRecordArgs{\n\t\t\tZoneId:   _var.Zone_id,\n\t\t\tHostname: \"example.com\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.CloudflareFunctions;\nimport com.pulumi.cloudflare.inputs.GetRecordArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudflareFunctions.getRecord(GetRecordArgs.builder()\n            .zoneId(var_.zone_id())\n            .hostname(\"example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    Fn::Invoke:\n      Function: cloudflare:getRecord\n      Arguments:\n        zoneId: ${var.zone_id}\n        hostname: example.com\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRecord.\n",
+                "properties": {
+                    "hostname": {
+                        "type": "string",
+                        "description": "Hostname to filter DNS record results on.\n"
+                    },
+                    "priority": {
+                        "type": "integer",
+                        "description": "DNS priority to filter record results on.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "DNS record type to filter record results on. Defaults to `A`.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "hostname",
+                    "zoneId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRecord.\n",
+                "properties": {
+                    "hostname": {
+                        "type": "string",
+                        "description": "Hostname to filter DNS record results on.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "locked": {
+                        "type": "boolean",
+                        "description": "Locked status of the found DNS record.\n"
+                    },
+                    "priority": {
+                        "type": "integer",
+                        "description": "DNS priority to filter record results on.\n"
+                    },
+                    "proxiable": {
+                        "type": "boolean",
+                        "description": "Proxiable status of the found DNS record.\n"
+                    },
+                    "proxied": {
+                        "type": "boolean",
+                        "description": "Proxied status of the found DNS record.\n"
+                    },
+                    "ttl": {
+                        "type": "integer",
+                        "description": "TTL of the found DNS record.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "DNS record type to filter record results on. Defaults to `A`.\n"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "Value of the found DNS record.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource.\n"
+                    },
+                    "zoneName": {
+                        "type": "string",
+                        "description": "Zone name of the found DNS record.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "hostname",
+                    "locked",
+                    "proxiable",
+                    "proxied",
+                    "ttl",
+                    "value",
+                    "zoneId",
+                    "zoneName",
                     "id"
                 ]
             }

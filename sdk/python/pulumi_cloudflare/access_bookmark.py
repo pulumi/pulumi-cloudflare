@@ -230,16 +230,6 @@ class AccessBookmark(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Access Bookmark resource. Access Bookmark
-        applications are not protected behind Access but are displayed in
-        the App Launcher.
-
-        > It's required that an `account_id` or `zone_id` is provided and in
-        most cases using either is fine. However, if you're using a scoped
-        access token, you must provide the argument that matches the token's
-        scope. For example, an access token that is scoped to the "example.com"
-        zone needs to use the `zone_id` argument.
-
         ## Example Usage
 
         ```python
@@ -276,16 +266,6 @@ class AccessBookmark(pulumi.CustomResource):
                  args: AccessBookmarkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Access Bookmark resource. Access Bookmark
-        applications are not protected behind Access but are displayed in
-        the App Launcher.
-
-        > It's required that an `account_id` or `zone_id` is provided and in
-        most cases using either is fine. However, if you're using a scoped
-        access token, you must provide the argument that matches the token's
-        scope. For example, an access token that is scoped to the "example.com"
-        zone needs to use the `zone_id` argument.
-
         ## Example Usage
 
         ```python

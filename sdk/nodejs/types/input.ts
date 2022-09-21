@@ -694,13 +694,6 @@ export interface GetWafGroupsFilterArgs {
     name?: pulumi.Input<string>;
 }
 
-export interface GetWafPackagesFilter {
-    actionMode?: string;
-    detectionMode?: string;
-    name?: string;
-    sensitivity?: string;
-}
-
 export interface GetWafPackagesFilterArgs {
     actionMode?: pulumi.Input<string>;
     detectionMode?: pulumi.Input<string>;
@@ -708,10 +701,11 @@ export interface GetWafPackagesFilterArgs {
     sensitivity?: pulumi.Input<string>;
 }
 
-export interface GetWafRulesFilter {
-    description?: string;
-    groupId?: string;
-    mode?: string;
+export interface GetWafPackagesFilter {
+    actionMode?: string;
+    detectionMode?: string;
+    name?: string;
+    sensitivity?: string;
 }
 
 export interface GetWafRulesFilterArgs {
@@ -720,22 +714,10 @@ export interface GetWafRulesFilterArgs {
     mode?: pulumi.Input<string>;
 }
 
-export interface GetZonesFilterArgs {
-    /**
-     * The account identifier to target for the resource.
-     */
-    accountId?: pulumi.Input<string>;
-    /**
-     * Defaults to `exact`.
-     */
-    lookupType?: pulumi.Input<string>;
-    match?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    /**
-     * Defaults to `false`.
-     */
-    paused?: pulumi.Input<boolean>;
-    status?: pulumi.Input<string>;
+export interface GetWafRulesFilter {
+    description?: string;
+    groupId?: string;
+    mode?: string;
 }
 
 export interface GetZonesFilter {
@@ -754,6 +736,24 @@ export interface GetZonesFilter {
      */
     paused?: boolean;
     status?: string;
+}
+
+export interface GetZonesFilterArgs {
+    /**
+     * The account identifier to target for the resource.
+     */
+    accountId?: pulumi.Input<string>;
+    /**
+     * Defaults to `exact`.
+     */
+    lookupType?: pulumi.Input<string>;
+    match?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    /**
+     * Defaults to `false`.
+     */
+    paused?: pulumi.Input<boolean>;
+    status?: pulumi.Input<string>;
 }
 
 export interface HealthcheckHeader {
@@ -2095,6 +2095,17 @@ export interface TeamsRuleRuleSettingsL4override {
      * Override Port to forward traffic to.
      */
     port: pulumi.Input<number>;
+}
+
+export interface UserAgentBlockingRuleConfiguration {
+    /**
+     * The configuration target for this rule. You must set the target to ua for User Agent Blocking rules.
+     */
+    target: pulumi.Input<string>;
+    /**
+     * The exact user agent string to match. This value will be compared to the received User-Agent HTTP header value.
+     */
+    value: pulumi.Input<string>;
 }
 
 export interface WorkerScriptKvNamespaceBinding {
