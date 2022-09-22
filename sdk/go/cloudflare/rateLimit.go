@@ -19,81 +19,84 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewRateLimit(ctx, "example", &cloudflare.RateLimitArgs{
-// 			ZoneId:    pulumi.Any(_var.Cloudflare_zone_id),
-// 			Threshold: pulumi.Int(2000),
-// 			Period:    pulumi.Int(2),
-// 			Match: &RateLimitMatchArgs{
-// 				Request: &RateLimitMatchRequestArgs{
-// 					UrlPattern: pulumi.String(fmt.Sprintf("%v/*", _var.Cloudflare_zone)),
-// 					Schemes: pulumi.StringArray{
-// 						pulumi.String("HTTP"),
-// 						pulumi.String("HTTPS"),
-// 					},
-// 					Methods: pulumi.StringArray{
-// 						pulumi.String("GET"),
-// 						pulumi.String("POST"),
-// 						pulumi.String("PUT"),
-// 						pulumi.String("DELETE"),
-// 						pulumi.String("PATCH"),
-// 						pulumi.String("HEAD"),
-// 					},
-// 				},
-// 				Response: &RateLimitMatchResponseArgs{
-// 					Statuses: pulumi.IntArray{
-// 						pulumi.Int(200),
-// 						pulumi.Int(201),
-// 						pulumi.Int(202),
-// 						pulumi.Int(301),
-// 						pulumi.Int(429),
-// 					},
-// 					OriginTraffic: pulumi.Bool(false),
-// 					Headers: pulumi.StringMapArray{
-// 						pulumi.StringMap{
-// 							"name":  pulumi.String("Host"),
-// 							"op":    pulumi.String("eq"),
-// 							"value": pulumi.String("localhost"),
-// 						},
-// 						pulumi.StringMap{
-// 							"name":  pulumi.String("X-Example"),
-// 							"op":    pulumi.String("ne"),
-// 							"value": pulumi.String("my-example"),
-// 						},
-// 					},
-// 				},
-// 			},
-// 			Action: &RateLimitActionArgs{
-// 				Mode:    pulumi.String("simulate"),
-// 				Timeout: pulumi.Int(43200),
-// 				Response: &RateLimitActionResponseArgs{
-// 					ContentType: pulumi.String("text/plain"),
-// 					Body:        pulumi.String("custom response body"),
-// 				},
-// 			},
-// 			Correlate: &RateLimitCorrelateArgs{
-// 				By: pulumi.String("nat"),
-// 			},
-// 			Disabled:    pulumi.Bool(false),
-// 			Description: pulumi.String("example rate limit for a zone"),
-// 			BypassUrlPatterns: pulumi.StringArray{
-// 				pulumi.String(fmt.Sprintf("%v/bypass1", _var.Cloudflare_zone)),
-// 				pulumi.String(fmt.Sprintf("%v/bypass2", _var.Cloudflare_zone)),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewRateLimit(ctx, "example", &cloudflare.RateLimitArgs{
+//				ZoneId:    pulumi.Any(_var.Cloudflare_zone_id),
+//				Threshold: pulumi.Int(2000),
+//				Period:    pulumi.Int(2),
+//				Match: &RateLimitMatchArgs{
+//					Request: &RateLimitMatchRequestArgs{
+//						UrlPattern: pulumi.String(fmt.Sprintf("%v/*", _var.Cloudflare_zone)),
+//						Schemes: pulumi.StringArray{
+//							pulumi.String("HTTP"),
+//							pulumi.String("HTTPS"),
+//						},
+//						Methods: pulumi.StringArray{
+//							pulumi.String("GET"),
+//							pulumi.String("POST"),
+//							pulumi.String("PUT"),
+//							pulumi.String("DELETE"),
+//							pulumi.String("PATCH"),
+//							pulumi.String("HEAD"),
+//						},
+//					},
+//					Response: &RateLimitMatchResponseArgs{
+//						Statuses: pulumi.IntArray{
+//							pulumi.Int(200),
+//							pulumi.Int(201),
+//							pulumi.Int(202),
+//							pulumi.Int(301),
+//							pulumi.Int(429),
+//						},
+//						OriginTraffic: pulumi.Bool(false),
+//						Headers: pulumi.StringMapArray{
+//							pulumi.StringMap{
+//								"name":  pulumi.String("Host"),
+//								"op":    pulumi.String("eq"),
+//								"value": pulumi.String("localhost"),
+//							},
+//							pulumi.StringMap{
+//								"name":  pulumi.String("X-Example"),
+//								"op":    pulumi.String("ne"),
+//								"value": pulumi.String("my-example"),
+//							},
+//						},
+//					},
+//				},
+//				Action: &RateLimitActionArgs{
+//					Mode:    pulumi.String("simulate"),
+//					Timeout: pulumi.Int(43200),
+//					Response: &RateLimitActionResponseArgs{
+//						ContentType: pulumi.String("text/plain"),
+//						Body:        pulumi.String("custom response body"),
+//					},
+//				},
+//				Correlate: &RateLimitCorrelateArgs{
+//					By: pulumi.String("nat"),
+//				},
+//				Disabled:    pulumi.Bool(false),
+//				Description: pulumi.String("example rate limit for a zone"),
+//				BypassUrlPatterns: pulumi.StringArray{
+//					pulumi.String(fmt.Sprintf("%v/bypass1", _var.Cloudflare_zone)),
+//					pulumi.String(fmt.Sprintf("%v/bypass2", _var.Cloudflare_zone)),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -101,7 +104,9 @@ import (
 // Rate limits can be imported using a composite ID formed of zone name and rate limit ID, e.g.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/rateLimit:RateLimit default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
+//
+//	$ pulumi import cloudflare:index/rateLimit:RateLimit default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
+//
 // ```
 type RateLimit struct {
 	pulumi.CustomResourceState
@@ -281,7 +286,7 @@ func (i *RateLimit) ToRateLimitOutputWithContext(ctx context.Context) RateLimitO
 // RateLimitArrayInput is an input type that accepts RateLimitArray and RateLimitArrayOutput values.
 // You can construct a concrete instance of `RateLimitArrayInput` via:
 //
-//          RateLimitArray{ RateLimitArgs{...} }
+//	RateLimitArray{ RateLimitArgs{...} }
 type RateLimitArrayInput interface {
 	pulumi.Input
 
@@ -306,7 +311,7 @@ func (i RateLimitArray) ToRateLimitArrayOutputWithContext(ctx context.Context) R
 // RateLimitMapInput is an input type that accepts RateLimitMap and RateLimitMapOutput values.
 // You can construct a concrete instance of `RateLimitMapInput` via:
 //
-//          RateLimitMap{ "key": RateLimitArgs{...} }
+//	RateLimitMap{ "key": RateLimitArgs{...} }
 type RateLimitMapInput interface {
 	pulumi.Input
 

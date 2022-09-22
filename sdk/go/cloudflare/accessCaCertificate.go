@@ -27,29 +27,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewAccessCaCertificate(ctx, "example", &cloudflare.AccessCaCertificateArgs{
-// 			AccountId:     pulumi.String("f037e56e89293a057740de681ac9abbe"),
-// 			ApplicationId: pulumi.String("6cd6cea3-3ef2-4542-9aea-85a0bbcd5414"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewAccessCaCertificate(ctx, "anotherExample", &cloudflare.AccessCaCertificateArgs{
-// 			ApplicationId: pulumi.String("fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2"),
-// 			ZoneId:        pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewAccessCaCertificate(ctx, "example", &cloudflare.AccessCaCertificateArgs{
+//				AccountId:     pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				ApplicationId: pulumi.String("6cd6cea3-3ef2-4542-9aea-85a0bbcd5414"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewAccessCaCertificate(ctx, "anotherExample", &cloudflare.AccessCaCertificateArgs{
+//				ApplicationId: pulumi.String("fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2"),
+//				ZoneId:        pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -57,13 +60,17 @@ import (
 // # Account level CA certificate import.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<certificate_id>
+//
+//	$ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<certificate_id>
+//
 // ```
 //
 // # Zone level CA certificate import.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<certificate_id>
+//
+//	$ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<certificate_id>
+//
 // ```
 type AccessCaCertificate struct {
 	pulumi.CustomResourceState
@@ -186,7 +193,7 @@ func (i *AccessCaCertificate) ToAccessCaCertificateOutputWithContext(ctx context
 // AccessCaCertificateArrayInput is an input type that accepts AccessCaCertificateArray and AccessCaCertificateArrayOutput values.
 // You can construct a concrete instance of `AccessCaCertificateArrayInput` via:
 //
-//          AccessCaCertificateArray{ AccessCaCertificateArgs{...} }
+//	AccessCaCertificateArray{ AccessCaCertificateArgs{...} }
 type AccessCaCertificateArrayInput interface {
 	pulumi.Input
 
@@ -211,7 +218,7 @@ func (i AccessCaCertificateArray) ToAccessCaCertificateArrayOutputWithContext(ct
 // AccessCaCertificateMapInput is an input type that accepts AccessCaCertificateMap and AccessCaCertificateMapOutput values.
 // You can construct a concrete instance of `AccessCaCertificateMapInput` via:
 //
-//          AccessCaCertificateMap{ "key": AccessCaCertificateArgs{...} }
+//	AccessCaCertificateMap{ "key": AccessCaCertificateArgs{...} }
 type AccessCaCertificateMapInput interface {
 	pulumi.Input
 

@@ -684,16 +684,14 @@ export interface FallbackDomainDomain {
     suffix?: pulumi.Input<string>;
 }
 
+export interface GetWafGroupsFilter {
+    mode?: string;
+    name?: string;
+}
+
 export interface GetWafGroupsFilterArgs {
     mode?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
-}
-
-export interface GetWafPackagesFilterArgs {
-    actionMode?: pulumi.Input<string>;
-    detectionMode?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    sensitivity?: pulumi.Input<string>;
 }
 
 export interface GetWafPackagesFilter {
@@ -701,6 +699,13 @@ export interface GetWafPackagesFilter {
     detectionMode?: string;
     name?: string;
     sensitivity?: string;
+}
+
+export interface GetWafPackagesFilterArgs {
+    actionMode?: pulumi.Input<string>;
+    detectionMode?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    sensitivity?: pulumi.Input<string>;
 }
 
 export interface GetWafRulesFilterArgs {
@@ -2569,4 +2574,3 @@ export interface ZoneSettingsOverrideSettingsSecurityHeader {
      */
     preload?: pulumi.Input<boolean>;
 }
-

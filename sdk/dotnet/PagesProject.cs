@@ -152,6 +152,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/pagesProject:PagesProject example &lt;account_id&gt;/&lt;project_name&gt;
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/pagesProject:PagesProject")]
     public partial class PagesProject : global::Pulumi.CustomResource

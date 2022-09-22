@@ -19,124 +19,135 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewPagesProject(ctx, "basicProject", &cloudflare.PagesProjectArgs{
-// 			AccountId:        pulumi.String("f037e56e89293a057740de681ac9abbe"),
-// 			Name:             pulumi.String("this-is-my-project-01"),
-// 			ProductionBranch: pulumi.String("main"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewPagesProject(ctx, "buildConfig", &cloudflare.PagesProjectArgs{
-// 			AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-// 			BuildConfig: &PagesProjectBuildConfigArgs{
-// 				BuildCommand:      pulumi.String("npm run build"),
-// 				DestinationDir:    pulumi.String("build"),
-// 				RootDir:           pulumi.String("/"),
-// 				WebAnalyticsTag:   pulumi.String("cee1c73f6e4743d0b5e6bb1a0bcaabcc"),
-// 				WebAnalyticsToken: pulumi.String("021e1057c18547eca7b79f2516f06o7x"),
-// 			},
-// 			Name:             pulumi.String("this-is-my-project-01"),
-// 			ProductionBranch: pulumi.String("main"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewPagesProject(ctx, "sourceConfig", &cloudflare.PagesProjectArgs{
-// 			AccountId:        pulumi.String("f037e56e89293a057740de681ac9abbe"),
-// 			Name:             pulumi.String("this-is-my-project-01"),
-// 			ProductionBranch: pulumi.String("main"),
-// 			Source: &PagesProjectSourceArgs{
-// 				Config: &PagesProjectSourceConfigArgs{
-// 					DeploymentsEnabled: pulumi.Bool(true),
-// 					Owner:              pulumi.String("cloudflare"),
-// 					PrCommentsEnabled:  pulumi.Bool(true),
-// 					PreviewBranchExcludes: pulumi.StringArray{
-// 						pulumi.String("main"),
-// 						pulumi.String("prod"),
-// 					},
-// 					PreviewBranchIncludes: pulumi.StringArray{
-// 						pulumi.String("dev"),
-// 						pulumi.String("preview"),
-// 					},
-// 					PreviewDeploymentSetting:    pulumi.String("custom"),
-// 					ProductionBranch:            pulumi.String("main"),
-// 					ProductionDeploymentEnabled: pulumi.Bool(true),
-// 					RepoName:                    pulumi.String("ninjakittens"),
-// 				},
-// 				Type: pulumi.String("github"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewPagesProject(ctx, "deploymentConfigs", &cloudflare.PagesProjectArgs{
-// 			AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-// 			DeploymentConfigs: &PagesProjectDeploymentConfigsArgs{
-// 				Preview: &PagesProjectDeploymentConfigsPreviewArgs{
-// 					CompatibilityDate: pulumi.String("2022-08-15"),
-// 					CompatibilityFlags: pulumi.StringArray{
-// 						pulumi.String("preview_flag"),
-// 					},
-// 					D1Databases: pulumi.AnyMap{
-// 						"D1BINDING": pulumi.Any("445e2955-951a-4358-a35b-a4d0c813f63"),
-// 					},
-// 					DurableObjectNamespaces: pulumi.AnyMap{
-// 						"DOBINDING": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
-// 					},
-// 					EnvironmentVariables: pulumi.AnyMap{
-// 						"ENVIRONMENT": pulumi.Any("preview"),
-// 					},
-// 					KvNamespaces: pulumi.AnyMap{
-// 						"KVBINDING": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
-// 					},
-// 					R2Buckets: pulumi.AnyMap{
-// 						"R2BINDING": pulumi.Any("some-bucket"),
-// 					},
-// 				},
-// 				Production: &PagesProjectDeploymentConfigsProductionArgs{
-// 					CompatibilityDate: pulumi.String("2022-08-16"),
-// 					CompatibilityFlags: pulumi.StringArray{
-// 						pulumi.String("production_flag"),
-// 						pulumi.String("second flag"),
-// 					},
-// 					D1Databases: pulumi.AnyMap{
-// 						"D1BINDING1": pulumi.Any("445e2955-951a-4358-a35b-a4d0c813f63"),
-// 						"D1BINDING2": pulumi.Any("a399414b-c697-409a-a688-377db6433cd9"),
-// 					},
-// 					DurableObjectNamespaces: pulumi.AnyMap{
-// 						"DOBINDING1": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
-// 						"DOBINDING2": pulumi.Any("3cdca5f8bb22bc390deee10ebbb36be5"),
-// 					},
-// 					EnvironmentVariables: pulumi.AnyMap{
-// 						"ENVIRONMENT": pulumi.Any("production"),
-// 						"OTHERVALUE":  pulumi.Any("other value"),
-// 					},
-// 					KvNamespaces: pulumi.AnyMap{
-// 						"KVBINDING1": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
-// 						"KVBINDING2": pulumi.Any("3cdca5f8bb22bc390deee10ebbb36be5"),
-// 					},
-// 					R2Buckets: pulumi.AnyMap{
-// 						"R2BINDING1": pulumi.Any("some-bucket"),
-// 						"R2BINDING2": pulumi.Any("other-bucket"),
-// 					},
-// 				},
-// 			},
-// 			Name:             pulumi.String("this-is-my-project-01"),
-// 			ProductionBranch: pulumi.String("main"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewPagesProject(ctx, "basicProject", &cloudflare.PagesProjectArgs{
+//				AccountId:        pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:             pulumi.String("this-is-my-project-01"),
+//				ProductionBranch: pulumi.String("main"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewPagesProject(ctx, "buildConfig", &cloudflare.PagesProjectArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				BuildConfig: &PagesProjectBuildConfigArgs{
+//					BuildCommand:      pulumi.String("npm run build"),
+//					DestinationDir:    pulumi.String("build"),
+//					RootDir:           pulumi.String("/"),
+//					WebAnalyticsTag:   pulumi.String("cee1c73f6e4743d0b5e6bb1a0bcaabcc"),
+//					WebAnalyticsToken: pulumi.String("021e1057c18547eca7b79f2516f06o7x"),
+//				},
+//				Name:             pulumi.String("this-is-my-project-01"),
+//				ProductionBranch: pulumi.String("main"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewPagesProject(ctx, "sourceConfig", &cloudflare.PagesProjectArgs{
+//				AccountId:        pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:             pulumi.String("this-is-my-project-01"),
+//				ProductionBranch: pulumi.String("main"),
+//				Source: &PagesProjectSourceArgs{
+//					Config: &PagesProjectSourceConfigArgs{
+//						DeploymentsEnabled: pulumi.Bool(true),
+//						Owner:              pulumi.String("cloudflare"),
+//						PrCommentsEnabled:  pulumi.Bool(true),
+//						PreviewBranchExcludes: pulumi.StringArray{
+//							pulumi.String("main"),
+//							pulumi.String("prod"),
+//						},
+//						PreviewBranchIncludes: pulumi.StringArray{
+//							pulumi.String("dev"),
+//							pulumi.String("preview"),
+//						},
+//						PreviewDeploymentSetting:    pulumi.String("custom"),
+//						ProductionBranch:            pulumi.String("main"),
+//						ProductionDeploymentEnabled: pulumi.Bool(true),
+//						RepoName:                    pulumi.String("ninjakittens"),
+//					},
+//					Type: pulumi.String("github"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewPagesProject(ctx, "deploymentConfigs", &cloudflare.PagesProjectArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				DeploymentConfigs: &PagesProjectDeploymentConfigsArgs{
+//					Preview: &PagesProjectDeploymentConfigsPreviewArgs{
+//						CompatibilityDate: pulumi.String("2022-08-15"),
+//						CompatibilityFlags: pulumi.StringArray{
+//							pulumi.String("preview_flag"),
+//						},
+//						D1Databases: pulumi.AnyMap{
+//							"D1BINDING": pulumi.Any("445e2955-951a-4358-a35b-a4d0c813f63"),
+//						},
+//						DurableObjectNamespaces: pulumi.AnyMap{
+//							"DOBINDING": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
+//						},
+//						EnvironmentVariables: pulumi.AnyMap{
+//							"ENVIRONMENT": pulumi.Any("preview"),
+//						},
+//						KvNamespaces: pulumi.AnyMap{
+//							"KVBINDING": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
+//						},
+//						R2Buckets: pulumi.AnyMap{
+//							"R2BINDING": pulumi.Any("some-bucket"),
+//						},
+//					},
+//					Production: &PagesProjectDeploymentConfigsProductionArgs{
+//						CompatibilityDate: pulumi.String("2022-08-16"),
+//						CompatibilityFlags: pulumi.StringArray{
+//							pulumi.String("production_flag"),
+//							pulumi.String("second flag"),
+//						},
+//						D1Databases: pulumi.AnyMap{
+//							"D1BINDING1": pulumi.Any("445e2955-951a-4358-a35b-a4d0c813f63"),
+//							"D1BINDING2": pulumi.Any("a399414b-c697-409a-a688-377db6433cd9"),
+//						},
+//						DurableObjectNamespaces: pulumi.AnyMap{
+//							"DOBINDING1": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
+//							"DOBINDING2": pulumi.Any("3cdca5f8bb22bc390deee10ebbb36be5"),
+//						},
+//						EnvironmentVariables: pulumi.AnyMap{
+//							"ENVIRONMENT": pulumi.Any("production"),
+//							"OTHERVALUE":  pulumi.Any("other value"),
+//						},
+//						KvNamespaces: pulumi.AnyMap{
+//							"KVBINDING1": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
+//							"KVBINDING2": pulumi.Any("3cdca5f8bb22bc390deee10ebbb36be5"),
+//						},
+//						R2Buckets: pulumi.AnyMap{
+//							"R2BINDING1": pulumi.Any("some-bucket"),
+//							"R2BINDING2": pulumi.Any("other-bucket"),
+//						},
+//					},
+//				},
+//				Name:             pulumi.String("this-is-my-project-01"),
+//				ProductionBranch: pulumi.String("main"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import cloudflare:index/pagesProject:PagesProject example <account_id>/<project_name>
+//
 // ```
 type PagesProject struct {
 	pulumi.CustomResourceState
@@ -301,7 +312,7 @@ func (i *PagesProject) ToPagesProjectOutputWithContext(ctx context.Context) Page
 // PagesProjectArrayInput is an input type that accepts PagesProjectArray and PagesProjectArrayOutput values.
 // You can construct a concrete instance of `PagesProjectArrayInput` via:
 //
-//          PagesProjectArray{ PagesProjectArgs{...} }
+//	PagesProjectArray{ PagesProjectArgs{...} }
 type PagesProjectArrayInput interface {
 	pulumi.Input
 
@@ -326,7 +337,7 @@ func (i PagesProjectArray) ToPagesProjectArrayOutputWithContext(ctx context.Cont
 // PagesProjectMapInput is an input type that accepts PagesProjectMap and PagesProjectMapOutput values.
 // You can construct a concrete instance of `PagesProjectMapInput` via:
 //
-//          PagesProjectMap{ "key": PagesProjectArgs{...} }
+//	PagesProjectMap{ "key": PagesProjectArgs{...} }
 type PagesProjectMapInput interface {
 	pulumi.Input
 

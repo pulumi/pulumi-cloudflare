@@ -19,22 +19,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewDevicePolicyCertificates(ctx, "example", &cloudflare.DevicePolicyCertificatesArgs{
-// 			Enabled: pulumi.Bool(true),
-// 			ZoneId:  pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewDevicePolicyCertificates(ctx, "example", &cloudflare.DevicePolicyCertificatesArgs{
+//				Enabled: pulumi.Bool(true),
+//				ZoneId:  pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -42,7 +45,9 @@ import (
 // Device policy certificate settings can be imported using the zone ID.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates example cb029e245cfdd66dc8d2e570d5dd3322
+//
+//	$ pulumi import cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates example cb029e245cfdd66dc8d2e570d5dd3322
+//
 // ```
 type DevicePolicyCertificates struct {
 	pulumi.CustomResourceState
@@ -146,7 +151,7 @@ func (i *DevicePolicyCertificates) ToDevicePolicyCertificatesOutputWithContext(c
 // DevicePolicyCertificatesArrayInput is an input type that accepts DevicePolicyCertificatesArray and DevicePolicyCertificatesArrayOutput values.
 // You can construct a concrete instance of `DevicePolicyCertificatesArrayInput` via:
 //
-//          DevicePolicyCertificatesArray{ DevicePolicyCertificatesArgs{...} }
+//	DevicePolicyCertificatesArray{ DevicePolicyCertificatesArgs{...} }
 type DevicePolicyCertificatesArrayInput interface {
 	pulumi.Input
 
@@ -171,7 +176,7 @@ func (i DevicePolicyCertificatesArray) ToDevicePolicyCertificatesArrayOutputWith
 // DevicePolicyCertificatesMapInput is an input type that accepts DevicePolicyCertificatesMap and DevicePolicyCertificatesMapOutput values.
 // You can construct a concrete instance of `DevicePolicyCertificatesMapInput` via:
 //
-//          DevicePolicyCertificatesMap{ "key": DevicePolicyCertificatesArgs{...} }
+//	DevicePolicyCertificatesMap{ "key": DevicePolicyCertificatesArgs{...} }
 type DevicePolicyCertificatesMapInput interface {
 	pulumi.Input
 

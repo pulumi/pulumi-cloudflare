@@ -17,31 +17,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewAccessBookmark(ctx, "myBookmarkApp", &cloudflare.AccessBookmarkArgs{
-// 			AccountId:          pulumi.String("f037e56e89293a057740de681ac9abbe"),
-// 			AppLauncherVisible: pulumi.Bool(true),
-// 			Domain:             pulumi.String("example.com"),
-// 			LogoUrl:            pulumi.String("https://example.com/example.png"),
-// 			Name:               pulumi.String("My Bookmark App"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewAccessBookmark(ctx, "myBookmarkApp", &cloudflare.AccessBookmarkArgs{
+//				AccountId:          pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				AppLauncherVisible: pulumi.Bool(true),
+//				Domain:             pulumi.String("example.com"),
+//				LogoUrl:            pulumi.String("https://example.com/example.png"),
+//				Name:               pulumi.String("My Bookmark App"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
 // ```sh
-//  $ pulumi import cloudflare:index/accessBookmark:AccessBookmark example <account_id>/<bookmark_id>
+//
+//	$ pulumi import cloudflare:index/accessBookmark:AccessBookmark example <account_id>/<bookmark_id>
+//
 // ```
 type AccessBookmark struct {
 	pulumi.CustomResourceState
@@ -185,7 +190,7 @@ func (i *AccessBookmark) ToAccessBookmarkOutputWithContext(ctx context.Context) 
 // AccessBookmarkArrayInput is an input type that accepts AccessBookmarkArray and AccessBookmarkArrayOutput values.
 // You can construct a concrete instance of `AccessBookmarkArrayInput` via:
 //
-//          AccessBookmarkArray{ AccessBookmarkArgs{...} }
+//	AccessBookmarkArray{ AccessBookmarkArgs{...} }
 type AccessBookmarkArrayInput interface {
 	pulumi.Input
 
@@ -210,7 +215,7 @@ func (i AccessBookmarkArray) ToAccessBookmarkArrayOutputWithContext(ctx context.
 // AccessBookmarkMapInput is an input type that accepts AccessBookmarkMap and AccessBookmarkMapOutput values.
 // You can construct a concrete instance of `AccessBookmarkMapInput` via:
 //
-//          AccessBookmarkMap{ "key": AccessBookmarkArgs{...} }
+//	AccessBookmarkMap{ "key": AccessBookmarkArgs{...} }
 type AccessBookmarkMapInput interface {
 	pulumi.Input
 

@@ -384,6 +384,12 @@ class PagesProject(pulumi.CustomResource):
             production_branch="main")
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/pagesProject:PagesProject example <account_id>/<project_name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
@@ -503,6 +509,12 @@ class PagesProject(pulumi.CustomResource):
             ),
             name="this-is-my-project-01",
             production_branch="main")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/pagesProject:PagesProject example <account_id>/<project_name>
         ```
 
         :param str resource_name: The name of the resource.

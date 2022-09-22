@@ -19,31 +19,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewAccountMember(ctx, "exampleUser", &cloudflare.AccountMemberArgs{
-// 			EmailAddress: pulumi.String("user@example.com"),
-// 			RoleIds: pulumi.StringArray{
-// 				pulumi.String("68b329da9893e34099c7d8ad5cb9c940"),
-// 				pulumi.String("d784fa8b6d98d27699781bd9a7cf19f0"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewAccountMember(ctx, "exampleUser", &cloudflare.AccountMemberArgs{
+//				EmailAddress: pulumi.String("user@example.com"),
+//				RoleIds: pulumi.StringArray{
+//					pulumi.String("68b329da9893e34099c7d8ad5cb9c940"),
+//					pulumi.String("d784fa8b6d98d27699781bd9a7cf19f0"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
 // ```sh
-//  $ pulumi import cloudflare:index/accountMember:AccountMember example <account_id>/<member_id>
+//
+//	$ pulumi import cloudflare:index/accountMember:AccountMember example <account_id>/<member_id>
+//
 // ```
 type AccountMember struct {
 	pulumi.CustomResourceState
@@ -157,7 +162,7 @@ func (i *AccountMember) ToAccountMemberOutputWithContext(ctx context.Context) Ac
 // AccountMemberArrayInput is an input type that accepts AccountMemberArray and AccountMemberArrayOutput values.
 // You can construct a concrete instance of `AccountMemberArrayInput` via:
 //
-//          AccountMemberArray{ AccountMemberArgs{...} }
+//	AccountMemberArray{ AccountMemberArgs{...} }
 type AccountMemberArrayInput interface {
 	pulumi.Input
 
@@ -182,7 +187,7 @@ func (i AccountMemberArray) ToAccountMemberArrayOutputWithContext(ctx context.Co
 // AccountMemberMapInput is an input type that accepts AccountMemberMap and AccountMemberMapOutput values.
 // You can construct a concrete instance of `AccountMemberMapInput` via:
 //
-//          AccountMemberMap{ "key": AccountMemberArgs{...} }
+//	AccountMemberMap{ "key": AccountMemberArgs{...} }
 type AccountMemberMapInput interface {
 	pulumi.Input
 

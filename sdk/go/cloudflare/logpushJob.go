@@ -16,13 +16,17 @@ import (
 // # Import an account-scoped job.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/logpushJob:LogpushJob example account/<account_id>/<job_id>
+//
+//	$ pulumi import cloudflare:index/logpushJob:LogpushJob example account/<account_id>/<job_id>
+//
 // ```
 //
 // # Import a zone-scoped job.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/logpushJob:LogpushJob example zone/<zone_id>/<job_id>
+//
+//	$ pulumi import cloudflare:index/logpushJob:LogpushJob example zone/<zone_id>/<job_id>
+//
 // ```
 type LogpushJob struct {
 	pulumi.CustomResourceState
@@ -216,7 +220,7 @@ func (i *LogpushJob) ToLogpushJobOutputWithContext(ctx context.Context) LogpushJ
 // LogpushJobArrayInput is an input type that accepts LogpushJobArray and LogpushJobArrayOutput values.
 // You can construct a concrete instance of `LogpushJobArrayInput` via:
 //
-//          LogpushJobArray{ LogpushJobArgs{...} }
+//	LogpushJobArray{ LogpushJobArgs{...} }
 type LogpushJobArrayInput interface {
 	pulumi.Input
 
@@ -241,7 +245,7 @@ func (i LogpushJobArray) ToLogpushJobArrayOutputWithContext(ctx context.Context)
 // LogpushJobMapInput is an input type that accepts LogpushJobMap and LogpushJobMapOutput values.
 // You can construct a concrete instance of `LogpushJobMapInput` via:
 //
-//          LogpushJobMap{ "key": LogpushJobArgs{...} }
+//	LogpushJobMap{ "key": LogpushJobArgs{...} }
 type LogpushJobMapInput interface {
 	pulumi.Input
 

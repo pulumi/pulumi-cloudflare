@@ -27,63 +27,66 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewAccessPolicy(ctx, "testPolicyAccessPolicy", &cloudflare.AccessPolicyArgs{
-// 			ApplicationId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
-// 			ZoneId:        pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-// 			Name:          pulumi.String("staging policy"),
-// 			Precedence:    pulumi.Int(1),
-// 			Decision:      pulumi.String("allow"),
-// 			Includes: AccessPolicyIncludeArray{
-// 				&AccessPolicyIncludeArgs{
-// 					Emails: pulumi.StringArray{
-// 						pulumi.String("test@example.com"),
-// 					},
-// 				},
-// 			},
-// 			Requires: AccessPolicyRequireArray{
-// 				&AccessPolicyRequireArgs{
-// 					Emails: pulumi.StringArray{
-// 						pulumi.String("test@example.com"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewAccessPolicy(ctx, "testPolicyIndex/accessPolicyAccessPolicy", &cloudflare.AccessPolicyArgs{
-// 			ApplicationId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
-// 			ZoneId:        pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-// 			Name:          pulumi.String("staging policy"),
-// 			Precedence:    pulumi.Int(1),
-// 			Decision:      pulumi.String("allow"),
-// 			Includes: AccessPolicyIncludeArray{
-// 				&AccessPolicyIncludeArgs{
-// 					Emails: pulumi.StringArray{
-// 						pulumi.String("test@example.com"),
-// 					},
-// 				},
-// 			},
-// 			Requires: AccessPolicyRequireArray{
-// 				&AccessPolicyRequireArgs{
-// 					Ips: pulumi.StringArray{
-// 						pulumi.Any(_var.Office_ip),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewAccessPolicy(ctx, "testPolicyAccessPolicy", &cloudflare.AccessPolicyArgs{
+//				ApplicationId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
+//				ZoneId:        pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Name:          pulumi.String("staging policy"),
+//				Precedence:    pulumi.Int(1),
+//				Decision:      pulumi.String("allow"),
+//				Includes: AccessPolicyIncludeArray{
+//					&AccessPolicyIncludeArgs{
+//						Emails: pulumi.StringArray{
+//							pulumi.String("test@example.com"),
+//						},
+//					},
+//				},
+//				Requires: AccessPolicyRequireArray{
+//					&AccessPolicyRequireArgs{
+//						Emails: pulumi.StringArray{
+//							pulumi.String("test@example.com"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewAccessPolicy(ctx, "testPolicyIndex/accessPolicyAccessPolicy", &cloudflare.AccessPolicyArgs{
+//				ApplicationId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
+//				ZoneId:        pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Name:          pulumi.String("staging policy"),
+//				Precedence:    pulumi.Int(1),
+//				Decision:      pulumi.String("allow"),
+//				Includes: AccessPolicyIncludeArray{
+//					&AccessPolicyIncludeArgs{
+//						Emails: pulumi.StringArray{
+//							pulumi.String("test@example.com"),
+//						},
+//					},
+//				},
+//				Requires: AccessPolicyRequireArray{
+//					&AccessPolicyRequireArgs{
+//						Ips: pulumi.StringArray{
+//							pulumi.Any(_var.Office_ip),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -91,13 +94,17 @@ import (
 // # Account level import.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/<account_id>/<application_id>/<policy_id>
+//
+//	$ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/<account_id>/<application_id>/<policy_id>
+//
 // ```
 //
 // # Zone level import.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example zone/<zone_id>/<application_id>/<policy_id>
+//
+//	$ pulumi import cloudflare:index/accessPolicy:AccessPolicy example zone/<zone_id>/<application_id>/<policy_id>
+//
 // ```
 type AccessPolicy struct {
 	pulumi.CustomResourceState
@@ -325,7 +332,7 @@ func (i *AccessPolicy) ToAccessPolicyOutputWithContext(ctx context.Context) Acce
 // AccessPolicyArrayInput is an input type that accepts AccessPolicyArray and AccessPolicyArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyArrayInput` via:
 //
-//          AccessPolicyArray{ AccessPolicyArgs{...} }
+//	AccessPolicyArray{ AccessPolicyArgs{...} }
 type AccessPolicyArrayInput interface {
 	pulumi.Input
 
@@ -350,7 +357,7 @@ func (i AccessPolicyArray) ToAccessPolicyArrayOutputWithContext(ctx context.Cont
 // AccessPolicyMapInput is an input type that accepts AccessPolicyMap and AccessPolicyMapOutput values.
 // You can construct a concrete instance of `AccessPolicyMapInput` via:
 //
-//          AccessPolicyMap{ "key": AccessPolicyArgs{...} }
+//	AccessPolicyMap{ "key": AccessPolicyArgs{...} }
 type AccessPolicyMapInput interface {
 	pulumi.Input
 

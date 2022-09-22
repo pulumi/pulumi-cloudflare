@@ -19,24 +19,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewWafPackage(ctx, "owasp", &cloudflare.WafPackageArgs{
-// 			ActionMode:  pulumi.String("simulate"),
-// 			PackageId:   pulumi.String("a25a9a7e9c00afc1fb2e0245519d725b"),
-// 			Sensitivity: pulumi.String("medium"),
-// 			ZoneId:      pulumi.String("ae36f999674d196762efcc5abb06b345"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewWafPackage(ctx, "owasp", &cloudflare.WafPackageArgs{
+//				ActionMode:  pulumi.String("simulate"),
+//				PackageId:   pulumi.String("a25a9a7e9c00afc1fb2e0245519d725b"),
+//				Sensitivity: pulumi.String("medium"),
+//				ZoneId:      pulumi.String("ae36f999674d196762efcc5abb06b345"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -44,7 +47,9 @@ import (
 // Packages can be imported using a composite ID formed of zone ID and the WAF Package ID, e.g.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/wafPackage:WafPackage owasp ae36f999674d196762efcc5abb06b345/a25a9a7e9c00afc1fb2e0245519d725b
+//
+//	$ pulumi import cloudflare:index/wafPackage:WafPackage owasp ae36f999674d196762efcc5abb06b345/a25a9a7e9c00afc1fb2e0245519d725b
+//
 // ```
 type WafPackage struct {
 	pulumi.CustomResourceState
@@ -168,7 +173,7 @@ func (i *WafPackage) ToWafPackageOutputWithContext(ctx context.Context) WafPacka
 // WafPackageArrayInput is an input type that accepts WafPackageArray and WafPackageArrayOutput values.
 // You can construct a concrete instance of `WafPackageArrayInput` via:
 //
-//          WafPackageArray{ WafPackageArgs{...} }
+//	WafPackageArray{ WafPackageArgs{...} }
 type WafPackageArrayInput interface {
 	pulumi.Input
 
@@ -193,7 +198,7 @@ func (i WafPackageArray) ToWafPackageArrayOutputWithContext(ctx context.Context)
 // WafPackageMapInput is an input type that accepts WafPackageMap and WafPackageMapOutput values.
 // You can construct a concrete instance of `WafPackageMapInput` via:
 //
-//          WafPackageMap{ "key": WafPackageArgs{...} }
+//	WafPackageMap{ "key": WafPackageArgs{...} }
 type WafPackageMapInput interface {
 	pulumi.Input
 

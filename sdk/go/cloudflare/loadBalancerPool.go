@@ -19,67 +19,70 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewLoadBalancerPool(ctx, "foo", &cloudflare.LoadBalancerPoolArgs{
-// 			Description: pulumi.String("example load balancer pool"),
-// 			Enabled:     pulumi.Bool(false),
-// 			Latitude:    pulumi.Float64(55),
-// 			LoadSheddings: LoadBalancerPoolLoadSheddingArray{
-// 				&LoadBalancerPoolLoadSheddingArgs{
-// 					DefaultPercent: pulumi.Float64(55),
-// 					DefaultPolicy:  pulumi.String("random"),
-// 					SessionPercent: pulumi.Float64(12),
-// 					SessionPolicy:  pulumi.String("hash"),
-// 				},
-// 			},
-// 			Longitude:         -12,
-// 			MinimumOrigins:    pulumi.Int(1),
-// 			Name:              pulumi.String("example-pool"),
-// 			NotificationEmail: pulumi.String("someone@example.com"),
-// 			OriginSteerings: LoadBalancerPoolOriginSteeringArray{
-// 				&LoadBalancerPoolOriginSteeringArgs{
-// 					Policy: pulumi.String("random"),
-// 				},
-// 			},
-// 			Origins: LoadBalancerPoolOriginArray{
-// 				&LoadBalancerPoolOriginArgs{
-// 					Address: pulumi.String("192.0.2.1"),
-// 					Enabled: pulumi.Bool(false),
-// 					Headers: LoadBalancerPoolOriginHeaderArray{
-// 						&LoadBalancerPoolOriginHeaderArgs{
-// 							Header: pulumi.String("Host"),
-// 							Values: pulumi.StringArray{
-// 								pulumi.String("example-1"),
-// 							},
-// 						},
-// 					},
-// 					Name: pulumi.String("example-1"),
-// 				},
-// 				&LoadBalancerPoolOriginArgs{
-// 					Address: pulumi.String("192.0.2.2"),
-// 					Headers: LoadBalancerPoolOriginHeaderArray{
-// 						&LoadBalancerPoolOriginHeaderArgs{
-// 							Header: pulumi.String("Host"),
-// 							Values: pulumi.StringArray{
-// 								pulumi.String("example-2"),
-// 							},
-// 						},
-// 					},
-// 					Name: pulumi.String("example-2"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewLoadBalancerPool(ctx, "foo", &cloudflare.LoadBalancerPoolArgs{
+//				Description: pulumi.String("example load balancer pool"),
+//				Enabled:     pulumi.Bool(false),
+//				Latitude:    pulumi.Float64(55),
+//				LoadSheddings: LoadBalancerPoolLoadSheddingArray{
+//					&LoadBalancerPoolLoadSheddingArgs{
+//						DefaultPercent: pulumi.Float64(55),
+//						DefaultPolicy:  pulumi.String("random"),
+//						SessionPercent: pulumi.Float64(12),
+//						SessionPolicy:  pulumi.String("hash"),
+//					},
+//				},
+//				Longitude:         -12,
+//				MinimumOrigins:    pulumi.Int(1),
+//				Name:              pulumi.String("example-pool"),
+//				NotificationEmail: pulumi.String("someone@example.com"),
+//				OriginSteerings: LoadBalancerPoolOriginSteeringArray{
+//					&LoadBalancerPoolOriginSteeringArgs{
+//						Policy: pulumi.String("random"),
+//					},
+//				},
+//				Origins: LoadBalancerPoolOriginArray{
+//					&LoadBalancerPoolOriginArgs{
+//						Address: pulumi.String("192.0.2.1"),
+//						Enabled: pulumi.Bool(false),
+//						Headers: LoadBalancerPoolOriginHeaderArray{
+//							&LoadBalancerPoolOriginHeaderArgs{
+//								Header: pulumi.String("Host"),
+//								Values: pulumi.StringArray{
+//									pulumi.String("example-1"),
+//								},
+//							},
+//						},
+//						Name: pulumi.String("example-1"),
+//					},
+//					&LoadBalancerPoolOriginArgs{
+//						Address: pulumi.String("192.0.2.2"),
+//						Headers: LoadBalancerPoolOriginHeaderArray{
+//							&LoadBalancerPoolOriginHeaderArgs{
+//								Header: pulumi.String("Host"),
+//								Values: pulumi.StringArray{
+//									pulumi.String("example-2"),
+//								},
+//							},
+//						},
+//						Name: pulumi.String("example-2"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type LoadBalancerPool struct {
 	pulumi.CustomResourceState
@@ -295,7 +298,7 @@ func (i *LoadBalancerPool) ToLoadBalancerPoolOutputWithContext(ctx context.Conte
 // LoadBalancerPoolArrayInput is an input type that accepts LoadBalancerPoolArray and LoadBalancerPoolArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerPoolArrayInput` via:
 //
-//          LoadBalancerPoolArray{ LoadBalancerPoolArgs{...} }
+//	LoadBalancerPoolArray{ LoadBalancerPoolArgs{...} }
 type LoadBalancerPoolArrayInput interface {
 	pulumi.Input
 
@@ -320,7 +323,7 @@ func (i LoadBalancerPoolArray) ToLoadBalancerPoolArrayOutputWithContext(ctx cont
 // LoadBalancerPoolMapInput is an input type that accepts LoadBalancerPoolMap and LoadBalancerPoolMapOutput values.
 // You can construct a concrete instance of `LoadBalancerPoolMapInput` via:
 //
-//          LoadBalancerPoolMap{ "key": LoadBalancerPoolArgs{...} }
+//	LoadBalancerPoolMap{ "key": LoadBalancerPoolArgs{...} }
 type LoadBalancerPoolMapInput interface {
 	pulumi.Input
 

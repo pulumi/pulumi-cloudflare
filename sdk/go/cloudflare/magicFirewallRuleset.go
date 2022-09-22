@@ -21,45 +21,50 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewMagicFirewallRuleset(ctx, "example", &cloudflare.MagicFirewallRulesetArgs{
-// 			AccountId:   pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-// 			Description: pulumi.String("Global mitigations"),
-// 			Name:        pulumi.String("Magic Transit Ruleset"),
-// 			Rules: pulumi.StringMapArray{
-// 				pulumi.StringMap{
-// 					"action":      pulumi.String("allow"),
-// 					"description": pulumi.String("Allow TCP Ephemeral Ports"),
-// 					"enabled":     pulumi.String("true"),
-// 					"expression":  pulumi.String("tcp.dstport in { 32768..65535 }"),
-// 				},
-// 				pulumi.StringMap{
-// 					"action":      pulumi.String("block"),
-// 					"description": pulumi.String("Block all"),
-// 					"enabled":     pulumi.String("true"),
-// 					"expression":  pulumi.String("ip.len >= 0"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewMagicFirewallRuleset(ctx, "example", &cloudflare.MagicFirewallRulesetArgs{
+//				AccountId:   pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+//				Description: pulumi.String("Global mitigations"),
+//				Name:        pulumi.String("Magic Transit Ruleset"),
+//				Rules: pulumi.StringMapArray{
+//					pulumi.StringMap{
+//						"action":      pulumi.String("allow"),
+//						"description": pulumi.String("Allow TCP Ephemeral Ports"),
+//						"enabled":     pulumi.String("true"),
+//						"expression":  pulumi.String("tcp.dstport in { 32768..65535 }"),
+//					},
+//					pulumi.StringMap{
+//						"action":      pulumi.String("block"),
+//						"description": pulumi.String("Block all"),
+//						"enabled":     pulumi.String("true"),
+//						"expression":  pulumi.String("ip.len >= 0"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// An existing Magic Firewall Ruleset can be imported using the account ID and ruleset ID
+// # An existing Magic Firewall Ruleset can be imported using the account ID and ruleset ID
 //
 // ```sh
-//  $ pulumi import cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
+//
+//	$ pulumi import cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
+//
 // ```
 type MagicFirewallRuleset struct {
 	pulumi.CustomResourceState
@@ -178,7 +183,7 @@ func (i *MagicFirewallRuleset) ToMagicFirewallRulesetOutputWithContext(ctx conte
 // MagicFirewallRulesetArrayInput is an input type that accepts MagicFirewallRulesetArray and MagicFirewallRulesetArrayOutput values.
 // You can construct a concrete instance of `MagicFirewallRulesetArrayInput` via:
 //
-//          MagicFirewallRulesetArray{ MagicFirewallRulesetArgs{...} }
+//	MagicFirewallRulesetArray{ MagicFirewallRulesetArgs{...} }
 type MagicFirewallRulesetArrayInput interface {
 	pulumi.Input
 
@@ -203,7 +208,7 @@ func (i MagicFirewallRulesetArray) ToMagicFirewallRulesetArrayOutputWithContext(
 // MagicFirewallRulesetMapInput is an input type that accepts MagicFirewallRulesetMap and MagicFirewallRulesetMapOutput values.
 // You can construct a concrete instance of `MagicFirewallRulesetMapInput` via:
 //
-//          MagicFirewallRulesetMap{ "key": MagicFirewallRulesetArgs{...} }
+//	MagicFirewallRulesetMap{ "key": MagicFirewallRulesetArgs{...} }
 type MagicFirewallRulesetMapInput interface {
 	pulumi.Input
 

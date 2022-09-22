@@ -19,23 +19,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewPagesDomain(ctx, "my-domain", &cloudflare.PagesDomainArgs{
-// 			AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-// 			Domain:      pulumi.String("example.com"),
-// 			ProjectName: pulumi.String("my-example-project"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewPagesDomain(ctx, "my-domain", &cloudflare.PagesDomainArgs{
+//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Domain:      pulumi.String("example.com"),
+//				ProjectName: pulumi.String("my-example-project"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type PagesDomain struct {
 	pulumi.CustomResourceState
@@ -158,7 +161,7 @@ func (i *PagesDomain) ToPagesDomainOutputWithContext(ctx context.Context) PagesD
 // PagesDomainArrayInput is an input type that accepts PagesDomainArray and PagesDomainArrayOutput values.
 // You can construct a concrete instance of `PagesDomainArrayInput` via:
 //
-//          PagesDomainArray{ PagesDomainArgs{...} }
+//	PagesDomainArray{ PagesDomainArgs{...} }
 type PagesDomainArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +186,7 @@ func (i PagesDomainArray) ToPagesDomainArrayOutputWithContext(ctx context.Contex
 // PagesDomainMapInput is an input type that accepts PagesDomainMap and PagesDomainMapOutput values.
 // You can construct a concrete instance of `PagesDomainMapInput` via:
 //
-//          PagesDomainMap{ "key": PagesDomainArgs{...} }
+//	PagesDomainMap{ "key": PagesDomainArgs{...} }
 type PagesDomainMapInput interface {
 	pulumi.Input
 

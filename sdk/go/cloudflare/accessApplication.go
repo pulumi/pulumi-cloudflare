@@ -27,45 +27,50 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewAccessApplication(ctx, "stagingApp", &cloudflare.AccessApplicationArgs{
-// 			CorsHeaders: AccessApplicationCorsHeaderArray{
-// 				&AccessApplicationCorsHeaderArgs{
-// 					AllowCredentials: pulumi.Bool(true),
-// 					AllowedMethods: pulumi.StringArray{
-// 						pulumi.String("GET"),
-// 						pulumi.String("POST"),
-// 						pulumi.String("OPTIONS"),
-// 					},
-// 					AllowedOrigins: pulumi.StringArray{
-// 						pulumi.String("https://example.com"),
-// 					},
-// 					MaxAge: pulumi.Int(10),
-// 				},
-// 			},
-// 			Domain:          pulumi.String("staging.example.com"),
-// 			Name:            pulumi.String("staging application"),
-// 			SessionDuration: pulumi.String("24h"),
-// 			Type:            pulumi.String("self_hosted"),
-// 			ZoneId:          pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewAccessApplication(ctx, "stagingApp", &cloudflare.AccessApplicationArgs{
+//				CorsHeaders: AccessApplicationCorsHeaderArray{
+//					&AccessApplicationCorsHeaderArgs{
+//						AllowCredentials: pulumi.Bool(true),
+//						AllowedMethods: pulumi.StringArray{
+//							pulumi.String("GET"),
+//							pulumi.String("POST"),
+//							pulumi.String("OPTIONS"),
+//						},
+//						AllowedOrigins: pulumi.StringArray{
+//							pulumi.String("https://example.com"),
+//						},
+//						MaxAge: pulumi.Int(10),
+//					},
+//				},
+//				Domain:          pulumi.String("staging.example.com"),
+//				Name:            pulumi.String("staging application"),
+//				SessionDuration: pulumi.String("24h"),
+//				Type:            pulumi.String("self_hosted"),
+//				ZoneId:          pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
 // ```sh
-//  $ pulumi import cloudflare:index/accessApplication:AccessApplication example <account_id>/<application_id>
+//
+//	$ pulumi import cloudflare:index/accessApplication:AccessApplication example <account_id>/<application_id>
+//
 // ```
 type AccessApplication struct {
 	pulumi.CustomResourceState
@@ -342,7 +347,7 @@ func (i *AccessApplication) ToAccessApplicationOutputWithContext(ctx context.Con
 // AccessApplicationArrayInput is an input type that accepts AccessApplicationArray and AccessApplicationArrayOutput values.
 // You can construct a concrete instance of `AccessApplicationArrayInput` via:
 //
-//          AccessApplicationArray{ AccessApplicationArgs{...} }
+//	AccessApplicationArray{ AccessApplicationArgs{...} }
 type AccessApplicationArrayInput interface {
 	pulumi.Input
 
@@ -367,7 +372,7 @@ func (i AccessApplicationArray) ToAccessApplicationArrayOutputWithContext(ctx co
 // AccessApplicationMapInput is an input type that accepts AccessApplicationMap and AccessApplicationMapOutput values.
 // You can construct a concrete instance of `AccessApplicationMapInput` via:
 //
-//          AccessApplicationMap{ "key": AccessApplicationArgs{...} }
+//	AccessApplicationMap{ "key": AccessApplicationArgs{...} }
 type AccessApplicationMapInput interface {
 	pulumi.Input
 

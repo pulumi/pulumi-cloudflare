@@ -17,33 +17,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewManagedHeaders(ctx, "example", &cloudflare.ManagedHeadersArgs{
-// 			ManagedRequestHeaders: ManagedHeadersManagedRequestHeaderArray{
-// 				&ManagedHeadersManagedRequestHeaderArgs{
-// 					Enabled: pulumi.Bool(true),
-// 					Id:      pulumi.String("add_true_client_ip_headers"),
-// 				},
-// 			},
-// 			ManagedResponseHeaders: ManagedHeadersManagedResponseHeaderArray{
-// 				&ManagedHeadersManagedResponseHeaderArgs{
-// 					Enabled: pulumi.Bool(true),
-// 					Id:      pulumi.String("remove_x-powered-by_header"),
-// 				},
-// 			},
-// 			ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewManagedHeaders(ctx, "example", &cloudflare.ManagedHeadersArgs{
+//				ManagedRequestHeaders: ManagedHeadersManagedRequestHeaderArray{
+//					&ManagedHeadersManagedRequestHeaderArgs{
+//						Enabled: pulumi.Bool(true),
+//						Id:      pulumi.String("add_true_client_ip_headers"),
+//					},
+//				},
+//				ManagedResponseHeaders: ManagedHeadersManagedResponseHeaderArray{
+//					&ManagedHeadersManagedResponseHeaderArgs{
+//						Enabled: pulumi.Bool(true),
+//						Id:      pulumi.String("remove_x-powered-by_header"),
+//					},
+//				},
+//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -158,7 +161,7 @@ func (i *ManagedHeaders) ToManagedHeadersOutputWithContext(ctx context.Context) 
 // ManagedHeadersArrayInput is an input type that accepts ManagedHeadersArray and ManagedHeadersArrayOutput values.
 // You can construct a concrete instance of `ManagedHeadersArrayInput` via:
 //
-//          ManagedHeadersArray{ ManagedHeadersArgs{...} }
+//	ManagedHeadersArray{ ManagedHeadersArgs{...} }
 type ManagedHeadersArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +186,7 @@ func (i ManagedHeadersArray) ToManagedHeadersArrayOutputWithContext(ctx context.
 // ManagedHeadersMapInput is an input type that accepts ManagedHeadersMap and ManagedHeadersMapOutput values.
 // You can construct a concrete instance of `ManagedHeadersMapInput` via:
 //
-//          ManagedHeadersMap{ "key": ManagedHeadersArgs{...} }
+//	ManagedHeadersMap{ "key": ManagedHeadersArgs{...} }
 type ManagedHeadersMapInput interface {
 	pulumi.Input
 

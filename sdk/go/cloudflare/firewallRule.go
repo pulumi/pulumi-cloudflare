@@ -29,38 +29,43 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		wordpressFilter, err := cloudflare.NewFilter(ctx, "wordpressFilter", &cloudflare.FilterArgs{
-// 			ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-// 			Description: pulumi.String("Wordpress break-in attempts that are outside of the office"),
-// 			Expression:  pulumi.String("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewFirewallRule(ctx, "wordpressFirewallRule", &cloudflare.FirewallRuleArgs{
-// 			ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-// 			Description: pulumi.String("Block wordpress break-in attempts"),
-// 			FilterId:    wordpressFilter.ID(),
-// 			Action:      pulumi.String("block"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			wordpressFilter, err := cloudflare.NewFilter(ctx, "wordpressFilter", &cloudflare.FilterArgs{
+//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Description: pulumi.String("Wordpress break-in attempts that are outside of the office"),
+//				Expression:  pulumi.String("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewFirewallRule(ctx, "wordpressFirewallRule", &cloudflare.FirewallRuleArgs{
+//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Description: pulumi.String("Block wordpress break-in attempts"),
+//				FilterId:    wordpressFilter.ID(),
+//				Action:      pulumi.String("block"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
 // ```sh
-//  $ pulumi import cloudflare:index/firewallRule:FirewallRule example <zone_id>/<firewall_rule_id>
+//
+//	$ pulumi import cloudflare:index/firewallRule:FirewallRule example <zone_id>/<firewall_rule_id>
+//
 // ```
 type FirewallRule struct {
 	pulumi.CustomResourceState
@@ -217,7 +222,7 @@ func (i *FirewallRule) ToFirewallRuleOutputWithContext(ctx context.Context) Fire
 // FirewallRuleArrayInput is an input type that accepts FirewallRuleArray and FirewallRuleArrayOutput values.
 // You can construct a concrete instance of `FirewallRuleArrayInput` via:
 //
-//          FirewallRuleArray{ FirewallRuleArgs{...} }
+//	FirewallRuleArray{ FirewallRuleArgs{...} }
 type FirewallRuleArrayInput interface {
 	pulumi.Input
 
@@ -242,7 +247,7 @@ func (i FirewallRuleArray) ToFirewallRuleArrayOutputWithContext(ctx context.Cont
 // FirewallRuleMapInput is an input type that accepts FirewallRuleMap and FirewallRuleMapOutput values.
 // You can construct a concrete instance of `FirewallRuleMapInput` via:
 //
-//          FirewallRuleMap{ "key": FirewallRuleArgs{...} }
+//	FirewallRuleMap{ "key": FirewallRuleArgs{...} }
 type FirewallRuleMapInput interface {
 	pulumi.Input
 

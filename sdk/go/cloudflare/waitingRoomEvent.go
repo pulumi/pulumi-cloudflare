@@ -19,25 +19,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewWaitingRoomEvent(ctx, "example", &cloudflare.WaitingRoomEventArgs{
-// 			EventEndTime:   pulumi.String("2006-01-02T20:04:05Z"),
-// 			EventStartTime: pulumi.String("2006-01-02T15:04:05Z"),
-// 			Name:           pulumi.String("foo"),
-// 			WaitingRoomId:  pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-// 			ZoneId:         pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewWaitingRoomEvent(ctx, "example", &cloudflare.WaitingRoomEventArgs{
+//				EventEndTime:   pulumi.String("2006-01-02T20:04:05Z"),
+//				EventStartTime: pulumi.String("2006-01-02T15:04:05Z"),
+//				Name:           pulumi.String("foo"),
+//				WaitingRoomId:  pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+//				ZoneId:         pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -45,7 +48,9 @@ import (
 // # Use the Zone ID, Waiting Room ID, and Event ID to import.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent default <zone_id>/<waiting_room_id>/<waiting_room_event_id>
+//
+//	$ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent default <zone_id>/<waiting_room_id>/<waiting_room_event_id>
+//
 // ```
 type WaitingRoomEvent struct {
 	pulumi.CustomResourceState
@@ -300,7 +305,7 @@ func (i *WaitingRoomEvent) ToWaitingRoomEventOutputWithContext(ctx context.Conte
 // WaitingRoomEventArrayInput is an input type that accepts WaitingRoomEventArray and WaitingRoomEventArrayOutput values.
 // You can construct a concrete instance of `WaitingRoomEventArrayInput` via:
 //
-//          WaitingRoomEventArray{ WaitingRoomEventArgs{...} }
+//	WaitingRoomEventArray{ WaitingRoomEventArgs{...} }
 type WaitingRoomEventArrayInput interface {
 	pulumi.Input
 
@@ -325,7 +330,7 @@ func (i WaitingRoomEventArray) ToWaitingRoomEventArrayOutputWithContext(ctx cont
 // WaitingRoomEventMapInput is an input type that accepts WaitingRoomEventMap and WaitingRoomEventMapOutput values.
 // You can construct a concrete instance of `WaitingRoomEventMapInput` via:
 //
-//          WaitingRoomEventMap{ "key": WaitingRoomEventArgs{...} }
+//	WaitingRoomEventMap{ "key": WaitingRoomEventArgs{...} }
 type WaitingRoomEventMapInput interface {
 	pulumi.Input
 

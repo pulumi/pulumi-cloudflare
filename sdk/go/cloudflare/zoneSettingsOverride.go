@@ -19,38 +19,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewZoneSettingsOverride(ctx, "test", &cloudflare.ZoneSettingsOverrideArgs{
-// 			ZoneId: pulumi.Any(_var.Cloudflare_zone_id),
-// 			Settings: &ZoneSettingsOverrideSettingsArgs{
-// 				Brotli:                  pulumi.String("on"),
-// 				ChallengeTtl:            pulumi.Int(2700),
-// 				SecurityLevel:           pulumi.String("high"),
-// 				OpportunisticEncryption: pulumi.String("on"),
-// 				AutomaticHttpsRewrites:  pulumi.String("on"),
-// 				Mirage:                  pulumi.String("on"),
-// 				Waf:                     pulumi.String("on"),
-// 				Minify: &ZoneSettingsOverrideSettingsMinifyArgs{
-// 					Css:  pulumi.String("on"),
-// 					Js:   pulumi.String("off"),
-// 					Html: pulumi.String("off"),
-// 				},
-// 				SecurityHeader: &ZoneSettingsOverrideSettingsSecurityHeaderArgs{
-// 					Enabled: pulumi.Bool(true),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZoneSettingsOverride(ctx, "test", &cloudflare.ZoneSettingsOverrideArgs{
+//				ZoneId: pulumi.Any(_var.Cloudflare_zone_id),
+//				Settings: &ZoneSettingsOverrideSettingsArgs{
+//					Brotli:                  pulumi.String("on"),
+//					ChallengeTtl:            pulumi.Int(2700),
+//					SecurityLevel:           pulumi.String("high"),
+//					OpportunisticEncryption: pulumi.String("on"),
+//					AutomaticHttpsRewrites:  pulumi.String("on"),
+//					Mirage:                  pulumi.String("on"),
+//					Waf:                     pulumi.String("on"),
+//					Minify: &ZoneSettingsOverrideSettingsMinifyArgs{
+//						Css:  pulumi.String("on"),
+//						Js:   pulumi.String("off"),
+//						Html: pulumi.String("off"),
+//					},
+//					SecurityHeader: &ZoneSettingsOverrideSettingsSecurityHeaderArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type ZoneSettingsOverride struct {
 	pulumi.CustomResourceState
@@ -181,7 +184,7 @@ func (i *ZoneSettingsOverride) ToZoneSettingsOverrideOutputWithContext(ctx conte
 // ZoneSettingsOverrideArrayInput is an input type that accepts ZoneSettingsOverrideArray and ZoneSettingsOverrideArrayOutput values.
 // You can construct a concrete instance of `ZoneSettingsOverrideArrayInput` via:
 //
-//          ZoneSettingsOverrideArray{ ZoneSettingsOverrideArgs{...} }
+//	ZoneSettingsOverrideArray{ ZoneSettingsOverrideArgs{...} }
 type ZoneSettingsOverrideArrayInput interface {
 	pulumi.Input
 
@@ -206,7 +209,7 @@ func (i ZoneSettingsOverrideArray) ToZoneSettingsOverrideArrayOutputWithContext(
 // ZoneSettingsOverrideMapInput is an input type that accepts ZoneSettingsOverrideMap and ZoneSettingsOverrideMapOutput values.
 // You can construct a concrete instance of `ZoneSettingsOverrideMapInput` via:
 //
-//          ZoneSettingsOverrideMap{ "key": ZoneSettingsOverrideArgs{...} }
+//	ZoneSettingsOverrideMap{ "key": ZoneSettingsOverrideArgs{...} }
 type ZoneSettingsOverrideMapInput interface {
 	pulumi.Input
 

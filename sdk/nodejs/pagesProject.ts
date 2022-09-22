@@ -114,6 +114,12 @@ import * as utilities from "./utilities";
  *     productionBranch: "main",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/pagesProject:PagesProject example <account_id>/<project_name>
+ * ```
  */
 export class PagesProject extends pulumi.CustomResource {
     /**

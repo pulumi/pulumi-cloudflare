@@ -139,6 +139,12 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import cloudflare:index/pagesProject:PagesProject example &lt;account_id&gt;/&lt;project_name&gt;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/pagesProject:PagesProject")
 public class PagesProject extends com.pulumi.resources.CustomResource {

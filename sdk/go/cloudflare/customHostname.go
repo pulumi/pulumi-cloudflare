@@ -19,33 +19,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewCustomHostname(ctx, "example", &cloudflare.CustomHostnameArgs{
-// 			Hostname: pulumi.String("hostname.example.com"),
-// 			Ssls: CustomHostnameSslArray{
-// 				&CustomHostnameSslArgs{
-// 					Method: pulumi.String("txt"),
-// 				},
-// 			},
-// 			ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewCustomHostname(ctx, "example", &cloudflare.CustomHostnameArgs{
+//				Hostname: pulumi.String("hostname.example.com"),
+//				Ssls: CustomHostnameSslArray{
+//					&CustomHostnameSslArgs{
+//						Method: pulumi.String("txt"),
+//					},
+//				},
+//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
 // ```sh
-//  $ pulumi import cloudflare:index/customHostname:CustomHostname example 1d5fdc9e88c8a8c4518b068cd94331fe/0d89c70d-ad9f-4843-b99f-6cc0252067e9
+//
+//	$ pulumi import cloudflare:index/customHostname:CustomHostname example 1d5fdc9e88c8a8c4518b068cd94331fe/0d89c70d-ad9f-4843-b99f-6cc0252067e9
+//
 // ```
 type CustomHostname struct {
 	pulumi.CustomResourceState
@@ -191,7 +196,7 @@ func (i *CustomHostname) ToCustomHostnameOutputWithContext(ctx context.Context) 
 // CustomHostnameArrayInput is an input type that accepts CustomHostnameArray and CustomHostnameArrayOutput values.
 // You can construct a concrete instance of `CustomHostnameArrayInput` via:
 //
-//          CustomHostnameArray{ CustomHostnameArgs{...} }
+//	CustomHostnameArray{ CustomHostnameArgs{...} }
 type CustomHostnameArrayInput interface {
 	pulumi.Input
 
@@ -216,7 +221,7 @@ func (i CustomHostnameArray) ToCustomHostnameArrayOutputWithContext(ctx context.
 // CustomHostnameMapInput is an input type that accepts CustomHostnameMap and CustomHostnameMapOutput values.
 // You can construct a concrete instance of `CustomHostnameMapInput` via:
 //
-//          CustomHostnameMap{ "key": CustomHostnameArgs{...} }
+//	CustomHostnameMap{ "key": CustomHostnameArgs{...} }
 type CustomHostnameMapInput interface {
 	pulumi.Input
 

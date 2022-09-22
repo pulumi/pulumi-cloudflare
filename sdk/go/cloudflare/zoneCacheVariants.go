@@ -19,65 +19,68 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewZoneCacheVariants(ctx, "example", &cloudflare.ZoneCacheVariantsArgs{
-// 			Avifs: pulumi.StringArray{
-// 				pulumi.String("image/avif"),
-// 				pulumi.String("image/webp"),
-// 			},
-// 			Bmps: pulumi.StringArray{
-// 				pulumi.String("image/bmp"),
-// 				pulumi.String("image/webp"),
-// 			},
-// 			Gifs: pulumi.StringArray{
-// 				pulumi.String("image/gif"),
-// 				pulumi.String("image/webp"),
-// 			},
-// 			Jp2s: pulumi.StringArray{
-// 				pulumi.String("image/jp2"),
-// 				pulumi.String("image/webp"),
-// 			},
-// 			Jpegs: pulumi.StringArray{
-// 				pulumi.String("image/jpeg"),
-// 				pulumi.String("image/webp"),
-// 			},
-// 			Jpgs: pulumi.StringArray{
-// 				pulumi.String("image/jpg"),
-// 				pulumi.String("image/webp"),
-// 			},
-// 			Jpg2s: pulumi.StringArray{
-// 				pulumi.String("image/jpg2"),
-// 				pulumi.String("image/webp"),
-// 			},
-// 			Pngs: pulumi.StringArray{
-// 				pulumi.String("image/png"),
-// 				pulumi.String("image/webp"),
-// 			},
-// 			Tifs: pulumi.StringArray{
-// 				pulumi.String("image/tif"),
-// 				pulumi.String("image/webp"),
-// 			},
-// 			Tiffs: pulumi.StringArray{
-// 				pulumi.String("image/tiff"),
-// 				pulumi.String("image/webp"),
-// 			},
-// 			Webps: pulumi.StringArray{
-// 				pulumi.String("image/jpeg"),
-// 				pulumi.String("image/webp"),
-// 			},
-// 			ZoneId: pulumi.String("7df50664b7f90274f4d77cdfee701380"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZoneCacheVariants(ctx, "example", &cloudflare.ZoneCacheVariantsArgs{
+//				Avifs: pulumi.StringArray{
+//					pulumi.String("image/avif"),
+//					pulumi.String("image/webp"),
+//				},
+//				Bmps: pulumi.StringArray{
+//					pulumi.String("image/bmp"),
+//					pulumi.String("image/webp"),
+//				},
+//				Gifs: pulumi.StringArray{
+//					pulumi.String("image/gif"),
+//					pulumi.String("image/webp"),
+//				},
+//				Jp2s: pulumi.StringArray{
+//					pulumi.String("image/jp2"),
+//					pulumi.String("image/webp"),
+//				},
+//				Jpegs: pulumi.StringArray{
+//					pulumi.String("image/jpeg"),
+//					pulumi.String("image/webp"),
+//				},
+//				Jpgs: pulumi.StringArray{
+//					pulumi.String("image/jpg"),
+//					pulumi.String("image/webp"),
+//				},
+//				Jpg2s: pulumi.StringArray{
+//					pulumi.String("image/jpg2"),
+//					pulumi.String("image/webp"),
+//				},
+//				Pngs: pulumi.StringArray{
+//					pulumi.String("image/png"),
+//					pulumi.String("image/webp"),
+//				},
+//				Tifs: pulumi.StringArray{
+//					pulumi.String("image/tif"),
+//					pulumi.String("image/webp"),
+//				},
+//				Tiffs: pulumi.StringArray{
+//					pulumi.String("image/tiff"),
+//					pulumi.String("image/webp"),
+//				},
+//				Webps: pulumi.StringArray{
+//					pulumi.String("image/jpeg"),
+//					pulumi.String("image/webp"),
+//				},
+//				ZoneId: pulumi.String("7df50664b7f90274f4d77cdfee701380"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type ZoneCacheVariants struct {
 	pulumi.CustomResourceState
@@ -278,7 +281,7 @@ func (i *ZoneCacheVariants) ToZoneCacheVariantsOutputWithContext(ctx context.Con
 // ZoneCacheVariantsArrayInput is an input type that accepts ZoneCacheVariantsArray and ZoneCacheVariantsArrayOutput values.
 // You can construct a concrete instance of `ZoneCacheVariantsArrayInput` via:
 //
-//          ZoneCacheVariantsArray{ ZoneCacheVariantsArgs{...} }
+//	ZoneCacheVariantsArray{ ZoneCacheVariantsArgs{...} }
 type ZoneCacheVariantsArrayInput interface {
 	pulumi.Input
 
@@ -303,7 +306,7 @@ func (i ZoneCacheVariantsArray) ToZoneCacheVariantsArrayOutputWithContext(ctx co
 // ZoneCacheVariantsMapInput is an input type that accepts ZoneCacheVariantsMap and ZoneCacheVariantsMapOutput values.
 // You can construct a concrete instance of `ZoneCacheVariantsMapInput` via:
 //
-//          ZoneCacheVariantsMap{ "key": ZoneCacheVariantsArgs{...} }
+//	ZoneCacheVariantsMap{ "key": ZoneCacheVariantsArgs{...} }
 type ZoneCacheVariantsMapInput interface {
 	pulumi.Input
 

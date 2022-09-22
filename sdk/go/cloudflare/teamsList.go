@@ -19,29 +19,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewTeamsList(ctx, "corporateDevices", &cloudflare.TeamsListArgs{
-// 			AccountId:   pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-// 			Description: pulumi.String("Serial numbers for all corporate devices."),
-// 			Items: pulumi.StringArray{
-// 				pulumi.String("8GE8721REF"),
-// 				pulumi.String("5RE8543EGG"),
-// 				pulumi.String("1YE2880LNP"),
-// 			},
-// 			Name: pulumi.String("Corporate devices"),
-// 			Type: pulumi.String("SERIAL"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewTeamsList(ctx, "corporateDevices", &cloudflare.TeamsListArgs{
+//				AccountId:   pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+//				Description: pulumi.String("Serial numbers for all corporate devices."),
+//				Items: pulumi.StringArray{
+//					pulumi.String("8GE8721REF"),
+//					pulumi.String("5RE8543EGG"),
+//					pulumi.String("1YE2880LNP"),
+//				},
+//				Name: pulumi.String("Corporate devices"),
+//				Type: pulumi.String("SERIAL"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +52,9 @@ import (
 // Teams lists can be imported using a composite ID formed of account ID and teams list ID.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/teamsList:TeamsList corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+//
+//	$ pulumi import cloudflare:index/teamsList:TeamsList corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+//
 // ```
 type TeamsList struct {
 	pulumi.CustomResourceState
@@ -186,7 +191,7 @@ func (i *TeamsList) ToTeamsListOutputWithContext(ctx context.Context) TeamsListO
 // TeamsListArrayInput is an input type that accepts TeamsListArray and TeamsListArrayOutput values.
 // You can construct a concrete instance of `TeamsListArrayInput` via:
 //
-//          TeamsListArray{ TeamsListArgs{...} }
+//	TeamsListArray{ TeamsListArgs{...} }
 type TeamsListArrayInput interface {
 	pulumi.Input
 
@@ -211,7 +216,7 @@ func (i TeamsListArray) ToTeamsListArrayOutputWithContext(ctx context.Context) T
 // TeamsListMapInput is an input type that accepts TeamsListMap and TeamsListMapOutput values.
 // You can construct a concrete instance of `TeamsListMapInput` via:
 //
-//          TeamsListMap{ "key": TeamsListArgs{...} }
+//	TeamsListMap{ "key": TeamsListArgs{...} }
 type TeamsListMapInput interface {
 	pulumi.Input
 

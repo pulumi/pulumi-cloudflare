@@ -21,43 +21,46 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewTunnelRoute(ctx, "exampleTunnelRoute", &cloudflare.TunnelRouteArgs{
-// 			AccountId:        pulumi.String("f037e56e89293a057740de681ac9abbe"),
-// 			TunnelId:         pulumi.String("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
-// 			Network:          pulumi.String("192.0.2.24/32"),
-// 			Comment:          pulumi.String("New tunnel route for documentation"),
-// 			VirtualNetworkId: pulumi.String("bdc39a3c-3104-4c23-8ac0-9f455dda691a"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		tunnel, err := cloudflare.NewArgoTunnel(ctx, "tunnel", &cloudflare.ArgoTunnelArgs{
-// 			AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-// 			Name:      pulumi.String("my_tunnel"),
-// 			Secret:    pulumi.String("AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg="),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewTunnelRoute(ctx, "exampleIndex/tunnelRouteTunnelRoute", &cloudflare.TunnelRouteArgs{
-// 			AccountId:        pulumi.String("f037e56e89293a057740de681ac9abbe"),
-// 			TunnelId:         tunnel.ID(),
-// 			Network:          pulumi.String("192.0.2.24/32"),
-// 			Comment:          pulumi.String("New tunnel route for documentation"),
-// 			VirtualNetworkId: pulumi.String("bdc39a3c-3104-4c23-8ac0-9f455dda691a"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewTunnelRoute(ctx, "exampleTunnelRoute", &cloudflare.TunnelRouteArgs{
+//				AccountId:        pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				TunnelId:         pulumi.String("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
+//				Network:          pulumi.String("192.0.2.24/32"),
+//				Comment:          pulumi.String("New tunnel route for documentation"),
+//				VirtualNetworkId: pulumi.String("bdc39a3c-3104-4c23-8ac0-9f455dda691a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tunnel, err := cloudflare.NewArgoTunnel(ctx, "tunnel", &cloudflare.ArgoTunnelArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:      pulumi.String("my_tunnel"),
+//				Secret:    pulumi.String("AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg="),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewTunnelRoute(ctx, "exampleIndex/tunnelRouteTunnelRoute", &cloudflare.TunnelRouteArgs{
+//				AccountId:        pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				TunnelId:         tunnel.ID(),
+//				Network:          pulumi.String("192.0.2.24/32"),
+//				Comment:          pulumi.String("New tunnel route for documentation"),
+//				VirtualNetworkId: pulumi.String("bdc39a3c-3104-4c23-8ac0-9f455dda691a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -65,7 +68,9 @@ import (
 // # Use account ID, network CIDR and virtual network ID.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example <account_id/<network_cidr>/<virtual_network_id>
+//
+//	$ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example <account_id/<network_cidr>/<virtual_network_id>
+//
 // ```
 type TunnelRoute struct {
 	pulumi.CustomResourceState
@@ -202,7 +207,7 @@ func (i *TunnelRoute) ToTunnelRouteOutputWithContext(ctx context.Context) Tunnel
 // TunnelRouteArrayInput is an input type that accepts TunnelRouteArray and TunnelRouteArrayOutput values.
 // You can construct a concrete instance of `TunnelRouteArrayInput` via:
 //
-//          TunnelRouteArray{ TunnelRouteArgs{...} }
+//	TunnelRouteArray{ TunnelRouteArgs{...} }
 type TunnelRouteArrayInput interface {
 	pulumi.Input
 
@@ -227,7 +232,7 @@ func (i TunnelRouteArray) ToTunnelRouteArrayOutputWithContext(ctx context.Contex
 // TunnelRouteMapInput is an input type that accepts TunnelRouteMap and TunnelRouteMapOutput values.
 // You can construct a concrete instance of `TunnelRouteMapInput` via:
 //
-//          TunnelRouteMap{ "key": TunnelRouteArgs{...} }
+//	TunnelRouteMap{ "key": TunnelRouteArgs{...} }
 type TunnelRouteMapInput interface {
 	pulumi.Input
 
