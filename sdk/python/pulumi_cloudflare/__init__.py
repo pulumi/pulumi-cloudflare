@@ -65,6 +65,8 @@ from .notification_policy import *
 from .notification_policy_webhooks import *
 from .origin_ca_certificate import *
 from .page_rule import *
+from .pages_domain import *
+from .pages_project import *
 from .provider import *
 from .rate_limit import *
 from .record import *
@@ -475,6 +477,22 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/pageRule:PageRule": "PageRule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/pagesDomain",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/pagesDomain:PagesDomain": "PagesDomain"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/pagesProject",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/pagesProject:PagesProject": "PagesProject"
   }
  },
  {

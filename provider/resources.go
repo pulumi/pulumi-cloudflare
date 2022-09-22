@@ -159,6 +159,8 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "OriginCaCertificate"),
 			},
 			"cloudflare_page_rule":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PageRule")},
+			"cloudflare_pages_domain":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PagesDomain")},
+			"cloudflare_pages_project":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PagesProject")},
 			"cloudflare_rate_limit":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RateLimit")},
 			"cloudflare_record":                   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Record")},
 			"cloudflare_ruleset":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Ruleset")},

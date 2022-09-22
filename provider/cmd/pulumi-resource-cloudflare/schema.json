@@ -5152,6 +5152,373 @@
                 "js"
             ]
         },
+        "cloudflare:index/PagesProjectBuildConfig:PagesProjectBuildConfig": {
+            "properties": {
+                "buildCommand": {
+                    "type": "string",
+                    "description": "Command used to build project.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "destinationDir": {
+                    "type": "string",
+                    "description": "Output directory of the build.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rootDir": {
+                    "type": "string",
+                    "description": "Directory to run the command.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "webAnalyticsTag": {
+                    "type": "string",
+                    "description": "The classifying tag for analytics.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "webAnalyticsToken": {
+                    "type": "string",
+                    "description": "The auth token for analytics.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/PagesProjectDeploymentConfigs:PagesProjectDeploymentConfigs": {
+            "properties": {
+                "preview": {
+                    "$ref": "#/types/cloudflare:index/PagesProjectDeploymentConfigsPreview:PagesProjectDeploymentConfigsPreview",
+                    "description": "Configuration for preview deploys.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "production": {
+                    "$ref": "#/types/cloudflare:index/PagesProjectDeploymentConfigsProduction:PagesProjectDeploymentConfigsProduction",
+                    "description": "Configuration for production deploys.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/PagesProjectDeploymentConfigsPreview:PagesProjectDeploymentConfigsPreview": {
+            "properties": {
+                "compatibilityDate": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "compatibilityFlags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "d1Databases": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "durableObjectNamespaces": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "environmentVariables": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kvNamespaces": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "r2Buckets": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "compatibilityDate",
+                        "compatibilityFlags"
+                    ]
+                }
+            }
+        },
+        "cloudflare:index/PagesProjectDeploymentConfigsProduction:PagesProjectDeploymentConfigsProduction": {
+            "properties": {
+                "compatibilityDate": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "compatibilityFlags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "d1Databases": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "durableObjectNamespaces": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "environmentVariables": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kvNamespaces": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "r2Buckets": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "compatibilityDate",
+                        "compatibilityFlags"
+                    ]
+                }
+            }
+        },
+        "cloudflare:index/PagesProjectSource:PagesProjectSource": {
+            "properties": {
+                "config": {
+                    "$ref": "#/types/cloudflare:index/PagesProjectSourceConfig:PagesProjectSourceConfig",
+                    "description": "Configuration for the source of the Cloudflare Pages project.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Project host type.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/PagesProjectSourceConfig:PagesProjectSourceConfig": {
+            "properties": {
+                "deploymentsEnabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "owner": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prCommentsEnabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "previewBranchExcludes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "previewBranchIncludes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "previewDeploymentSetting": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "productionBranch": {
+                    "type": "string",
+                    "description": "The name of the branch that is used for the production environment.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "productionDeploymentEnabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repoName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "productionBranch"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "deploymentsEnabled",
+                        "prCommentsEnabled",
+                        "productionBranch",
+                        "productionDeploymentEnabled"
+                    ]
+                }
+            }
+        },
         "cloudflare:index/RateLimitAction:RateLimitAction": {
             "properties": {
                 "mode": {
@@ -15371,6 +15738,208 @@
                         "type": "string",
                         "description": "The DNS zone ID to which the page rule should be added.\n",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/pagesDomain:PagesDomain": {
+            "description": "Provides a resource for managing Cloudflare Pages domains.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst my_domain = new cloudflare.PagesDomain(\"my-domain\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    domain: \"example.com\",\n    projectName: \"my-example-project\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nmy_domain = cloudflare.PagesDomain(\"my-domain\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    domain=\"example.com\",\n    project_name=\"my-example-project\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_domain = new Cloudflare.PagesDomain(\"my-domain\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Domain = \"example.com\",\n        ProjectName = \"my-example-project\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewPagesDomain(ctx, \"my-domain\", \u0026cloudflare.PagesDomainArgs{\n\t\t\tAccountId:   pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tDomain:      pulumi.String(\"example.com\"),\n\t\t\tProjectName: pulumi.String(\"my-example-project\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.PagesDomain;\nimport com.pulumi.cloudflare.PagesDomainArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_domain = new PagesDomain(\"my-domain\", PagesDomainArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .domain(\"example.com\")\n            .projectName(\"my-example-project\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-domain:\n    type: cloudflare:PagesDomain\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      domain: example.com\n      projectName: my-example-project\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "Custom domain.\n"
+                },
+                "projectName": {
+                    "type": "string",
+                    "description": "Name of the Pages Project.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the custom domain.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "domain",
+                "projectName",
+                "status"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "Custom domain.\n",
+                    "willReplaceOnChanges": true
+                },
+                "projectName": {
+                    "type": "string",
+                    "description": "Name of the Pages Project.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "domain",
+                "projectName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PagesDomain resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "domain": {
+                        "type": "string",
+                        "description": "Custom domain.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "projectName": {
+                        "type": "string",
+                        "description": "Name of the Pages Project.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Status of the custom domain.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/pagesProject:PagesProject": {
+            "description": "Provides a resource which manages Cloudflare Pages projects.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Basic project\nconst basicProject = new cloudflare.PagesProject(\"basic_project\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"this-is-my-project-01\",\n    productionBranch: \"main\",\n});\n// Manage build config\nconst buildConfig = new cloudflare.PagesProject(\"build_config\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    buildConfig: {\n        buildCommand: \"npm run build\",\n        destinationDir: \"build\",\n        rootDir: \"/\",\n        webAnalyticsTag: \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n        webAnalyticsToken: \"021e1057c18547eca7b79f2516f06o7x\",\n    },\n    name: \"this-is-my-project-01\",\n    productionBranch: \"main\",\n});\n// Manage project source\nconst sourceConfig = new cloudflare.PagesProject(\"source_config\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"this-is-my-project-01\",\n    productionBranch: \"main\",\n    source: {\n        config: {\n            deploymentsEnabled: true,\n            owner: \"cloudflare\",\n            prCommentsEnabled: true,\n            previewBranchExcludes: [\n                \"main\",\n                \"prod\",\n            ],\n            previewBranchIncludes: [\n                \"dev\",\n                \"preview\",\n            ],\n            previewDeploymentSetting: \"custom\",\n            productionBranch: \"main\",\n            productionDeploymentEnabled: true,\n            repoName: \"ninjakittens\",\n        },\n        type: \"github\",\n    },\n});\n// Manage deployment configs\nconst deploymentConfigs = new cloudflare.PagesProject(\"deployment_configs\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    deploymentConfigs: {\n        preview: {\n            compatibilityDate: \"2022-08-15\",\n            compatibilityFlags: [\"preview_flag\"],\n            d1Databases: {\n                D1_BINDING: \"445e2955-951a-4358-a35b-a4d0c813f63\",\n            },\n            durableObjectNamespaces: {\n                DO_BINDING: \"5eb63bbbe01eeed093cb22bb8f5acdc3\",\n            },\n            environmentVariables: {\n                ENVIRONMENT: \"preview\",\n            },\n            kvNamespaces: {\n                KV_BINDING: \"5eb63bbbe01eeed093cb22bb8f5acdc3\",\n            },\n            r2Buckets: {\n                R2_BINDING: \"some-bucket\",\n            },\n        },\n        production: {\n            compatibilityDate: \"2022-08-16\",\n            compatibilityFlags: [\n                \"production_flag\",\n                \"second flag\",\n            ],\n            d1Databases: {\n                D1_BINDING_1: \"445e2955-951a-4358-a35b-a4d0c813f63\",\n                D1_BINDING_2: \"a399414b-c697-409a-a688-377db6433cd9\",\n            },\n            durableObjectNamespaces: {\n                DO_BINDING_1: \"5eb63bbbe01eeed093cb22bb8f5acdc3\",\n                DO_BINDING_2: \"3cdca5f8bb22bc390deee10ebbb36be5\",\n            },\n            environmentVariables: {\n                ENVIRONMENT: \"production\",\n                OTHER_VALUE: \"other value\",\n            },\n            kvNamespaces: {\n                KV_BINDING_1: \"5eb63bbbe01eeed093cb22bb8f5acdc3\",\n                KV_BINDING_2: \"3cdca5f8bb22bc390deee10ebbb36be5\",\n            },\n            r2Buckets: {\n                R2_BINDING_1: \"some-bucket\",\n                R2_BINDING_2: \"other-bucket\",\n            },\n        },\n    },\n    name: \"this-is-my-project-01\",\n    productionBranch: \"main\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Basic project\nbasic_project = cloudflare.PagesProject(\"basicProject\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"this-is-my-project-01\",\n    production_branch=\"main\")\n# Manage build config\nbuild_config = cloudflare.PagesProject(\"buildConfig\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    build_config=cloudflare.PagesProjectBuildConfigArgs(\n        build_command=\"npm run build\",\n        destination_dir=\"build\",\n        root_dir=\"/\",\n        web_analytics_tag=\"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n        web_analytics_token=\"021e1057c18547eca7b79f2516f06o7x\",\n    ),\n    name=\"this-is-my-project-01\",\n    production_branch=\"main\")\n# Manage project source\nsource_config = cloudflare.PagesProject(\"sourceConfig\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"this-is-my-project-01\",\n    production_branch=\"main\",\n    source=cloudflare.PagesProjectSourceArgs(\n        config=cloudflare.PagesProjectSourceConfigArgs(\n            deployments_enabled=True,\n            owner=\"cloudflare\",\n            pr_comments_enabled=True,\n            preview_branch_excludes=[\n                \"main\",\n                \"prod\",\n            ],\n            preview_branch_includes=[\n                \"dev\",\n                \"preview\",\n            ],\n            preview_deployment_setting=\"custom\",\n            production_branch=\"main\",\n            production_deployment_enabled=True,\n            repo_name=\"ninjakittens\",\n        ),\n        type=\"github\",\n    ))\n# Manage deployment configs\ndeployment_configs = cloudflare.PagesProject(\"deploymentConfigs\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    deployment_configs=cloudflare.PagesProjectDeploymentConfigsArgs(\n        preview=cloudflare.PagesProjectDeploymentConfigsPreviewArgs(\n            compatibility_date=\"2022-08-15\",\n            compatibility_flags=[\"preview_flag\"],\n            d1_databases={\n                \"D1BINDING\": \"445e2955-951a-4358-a35b-a4d0c813f63\",\n            },\n            durable_object_namespaces={\n                \"DOBINDING\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\",\n            },\n            environment_variables={\n                \"ENVIRONMENT\": \"preview\",\n            },\n            kv_namespaces={\n                \"KVBINDING\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\",\n            },\n            r2_buckets={\n                \"R2BINDING\": \"some-bucket\",\n            },\n        ),\n        production=cloudflare.PagesProjectDeploymentConfigsProductionArgs(\n            compatibility_date=\"2022-08-16\",\n            compatibility_flags=[\n                \"production_flag\",\n                \"second flag\",\n            ],\n            d1_databases={\n                \"D1BINDING1\": \"445e2955-951a-4358-a35b-a4d0c813f63\",\n                \"D1BINDING2\": \"a399414b-c697-409a-a688-377db6433cd9\",\n            },\n            durable_object_namespaces={\n                \"DOBINDING1\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\",\n                \"DOBINDING2\": \"3cdca5f8bb22bc390deee10ebbb36be5\",\n            },\n            environment_variables={\n                \"ENVIRONMENT\": \"production\",\n                \"OTHERVALUE\": \"other value\",\n            },\n            kv_namespaces={\n                \"KVBINDING1\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\",\n                \"KVBINDING2\": \"3cdca5f8bb22bc390deee10ebbb36be5\",\n            },\n            r2_buckets={\n                \"R2BINDING1\": \"some-bucket\",\n                \"R2BINDING2\": \"other-bucket\",\n            },\n        ),\n    ),\n    name=\"this-is-my-project-01\",\n    production_branch=\"main\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Basic project\n    var basicProject = new Cloudflare.PagesProject(\"basicProject\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"this-is-my-project-01\",\n        ProductionBranch = \"main\",\n    });\n\n    // Manage build config\n    var buildConfig = new Cloudflare.PagesProject(\"buildConfig\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        BuildConfig = new Cloudflare.Inputs.PagesProjectBuildConfigArgs\n        {\n            BuildCommand = \"npm run build\",\n            DestinationDir = \"build\",\n            RootDir = \"/\",\n            WebAnalyticsTag = \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n            WebAnalyticsToken = \"021e1057c18547eca7b79f2516f06o7x\",\n        },\n        Name = \"this-is-my-project-01\",\n        ProductionBranch = \"main\",\n    });\n\n    // Manage project source\n    var sourceConfig = new Cloudflare.PagesProject(\"sourceConfig\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"this-is-my-project-01\",\n        ProductionBranch = \"main\",\n        Source = new Cloudflare.Inputs.PagesProjectSourceArgs\n        {\n            Config = new Cloudflare.Inputs.PagesProjectSourceConfigArgs\n            {\n                DeploymentsEnabled = true,\n                Owner = \"cloudflare\",\n                PrCommentsEnabled = true,\n                PreviewBranchExcludes = new[]\n                {\n                    \"main\",\n                    \"prod\",\n                },\n                PreviewBranchIncludes = new[]\n                {\n                    \"dev\",\n                    \"preview\",\n                },\n                PreviewDeploymentSetting = \"custom\",\n                ProductionBranch = \"main\",\n                ProductionDeploymentEnabled = true,\n                RepoName = \"ninjakittens\",\n            },\n            Type = \"github\",\n        },\n    });\n\n    // Manage deployment configs\n    var deploymentConfigs = new Cloudflare.PagesProject(\"deploymentConfigs\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        DeploymentConfigs = new Cloudflare.Inputs.PagesProjectDeploymentConfigsArgs\n        {\n            Preview = new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewArgs\n            {\n                CompatibilityDate = \"2022-08-15\",\n                CompatibilityFlags = new[]\n                {\n                    \"preview_flag\",\n                },\n                D1Databases = \n                {\n                    { \"D1BINDING\", \"445e2955-951a-4358-a35b-a4d0c813f63\" },\n                },\n                DurableObjectNamespaces = \n                {\n                    { \"DOBINDING\", \"5eb63bbbe01eeed093cb22bb8f5acdc3\" },\n                },\n                EnvironmentVariables = \n                {\n                    { \"ENVIRONMENT\", \"preview\" },\n                },\n                KvNamespaces = \n                {\n                    { \"KVBINDING\", \"5eb63bbbe01eeed093cb22bb8f5acdc3\" },\n                },\n                R2Buckets = \n                {\n                    { \"R2BINDING\", \"some-bucket\" },\n                },\n            },\n            Production = new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionArgs\n            {\n                CompatibilityDate = \"2022-08-16\",\n                CompatibilityFlags = new[]\n                {\n                    \"production_flag\",\n                    \"second flag\",\n                },\n                D1Databases = \n                {\n                    { \"D1BINDING1\", \"445e2955-951a-4358-a35b-a4d0c813f63\" },\n                    { \"D1BINDING2\", \"a399414b-c697-409a-a688-377db6433cd9\" },\n                },\n                DurableObjectNamespaces = \n                {\n                    { \"DOBINDING1\", \"5eb63bbbe01eeed093cb22bb8f5acdc3\" },\n                    { \"DOBINDING2\", \"3cdca5f8bb22bc390deee10ebbb36be5\" },\n                },\n                EnvironmentVariables = \n                {\n                    { \"ENVIRONMENT\", \"production\" },\n                    { \"OTHERVALUE\", \"other value\" },\n                },\n                KvNamespaces = \n                {\n                    { \"KVBINDING1\", \"5eb63bbbe01eeed093cb22bb8f5acdc3\" },\n                    { \"KVBINDING2\", \"3cdca5f8bb22bc390deee10ebbb36be5\" },\n                },\n                R2Buckets = \n                {\n                    { \"R2BINDING1\", \"some-bucket\" },\n                    { \"R2BINDING2\", \"other-bucket\" },\n                },\n            },\n        },\n        Name = \"this-is-my-project-01\",\n        ProductionBranch = \"main\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewPagesProject(ctx, \"basicProject\", \u0026cloudflare.PagesProjectArgs{\n\t\t\tAccountId:        pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:             pulumi.String(\"this-is-my-project-01\"),\n\t\t\tProductionBranch: pulumi.String(\"main\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewPagesProject(ctx, \"buildConfig\", \u0026cloudflare.PagesProjectArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tBuildConfig: \u0026PagesProjectBuildConfigArgs{\n\t\t\t\tBuildCommand:      pulumi.String(\"npm run build\"),\n\t\t\t\tDestinationDir:    pulumi.String(\"build\"),\n\t\t\t\tRootDir:           pulumi.String(\"/\"),\n\t\t\t\tWebAnalyticsTag:   pulumi.String(\"cee1c73f6e4743d0b5e6bb1a0bcaabcc\"),\n\t\t\t\tWebAnalyticsToken: pulumi.String(\"021e1057c18547eca7b79f2516f06o7x\"),\n\t\t\t},\n\t\t\tName:             pulumi.String(\"this-is-my-project-01\"),\n\t\t\tProductionBranch: pulumi.String(\"main\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewPagesProject(ctx, \"sourceConfig\", \u0026cloudflare.PagesProjectArgs{\n\t\t\tAccountId:        pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:             pulumi.String(\"this-is-my-project-01\"),\n\t\t\tProductionBranch: pulumi.String(\"main\"),\n\t\t\tSource: \u0026PagesProjectSourceArgs{\n\t\t\t\tConfig: \u0026PagesProjectSourceConfigArgs{\n\t\t\t\t\tDeploymentsEnabled: pulumi.Bool(true),\n\t\t\t\t\tOwner:              pulumi.String(\"cloudflare\"),\n\t\t\t\t\tPrCommentsEnabled:  pulumi.Bool(true),\n\t\t\t\t\tPreviewBranchExcludes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"main\"),\n\t\t\t\t\t\tpulumi.String(\"prod\"),\n\t\t\t\t\t},\n\t\t\t\t\tPreviewBranchIncludes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"dev\"),\n\t\t\t\t\t\tpulumi.String(\"preview\"),\n\t\t\t\t\t},\n\t\t\t\t\tPreviewDeploymentSetting:    pulumi.String(\"custom\"),\n\t\t\t\t\tProductionBranch:            pulumi.String(\"main\"),\n\t\t\t\t\tProductionDeploymentEnabled: pulumi.Bool(true),\n\t\t\t\t\tRepoName:                    pulumi.String(\"ninjakittens\"),\n\t\t\t\t},\n\t\t\t\tType: pulumi.String(\"github\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewPagesProject(ctx, \"deploymentConfigs\", \u0026cloudflare.PagesProjectArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tDeploymentConfigs: \u0026PagesProjectDeploymentConfigsArgs{\n\t\t\t\tPreview: \u0026PagesProjectDeploymentConfigsPreviewArgs{\n\t\t\t\t\tCompatibilityDate: pulumi.String(\"2022-08-15\"),\n\t\t\t\t\tCompatibilityFlags: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"preview_flag\"),\n\t\t\t\t\t},\n\t\t\t\t\tD1Databases: pulumi.AnyMap{\n\t\t\t\t\t\t\"D1BINDING\": pulumi.Any(\"445e2955-951a-4358-a35b-a4d0c813f63\"),\n\t\t\t\t\t},\n\t\t\t\t\tDurableObjectNamespaces: pulumi.AnyMap{\n\t\t\t\t\t\t\"DOBINDING\": pulumi.Any(\"5eb63bbbe01eeed093cb22bb8f5acdc3\"),\n\t\t\t\t\t},\n\t\t\t\t\tEnvironmentVariables: pulumi.AnyMap{\n\t\t\t\t\t\t\"ENVIRONMENT\": pulumi.Any(\"preview\"),\n\t\t\t\t\t},\n\t\t\t\t\tKvNamespaces: pulumi.AnyMap{\n\t\t\t\t\t\t\"KVBINDING\": pulumi.Any(\"5eb63bbbe01eeed093cb22bb8f5acdc3\"),\n\t\t\t\t\t},\n\t\t\t\t\tR2Buckets: pulumi.AnyMap{\n\t\t\t\t\t\t\"R2BINDING\": pulumi.Any(\"some-bucket\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tProduction: \u0026PagesProjectDeploymentConfigsProductionArgs{\n\t\t\t\t\tCompatibilityDate: pulumi.String(\"2022-08-16\"),\n\t\t\t\t\tCompatibilityFlags: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"production_flag\"),\n\t\t\t\t\t\tpulumi.String(\"second flag\"),\n\t\t\t\t\t},\n\t\t\t\t\tD1Databases: pulumi.AnyMap{\n\t\t\t\t\t\t\"D1BINDING1\": pulumi.Any(\"445e2955-951a-4358-a35b-a4d0c813f63\"),\n\t\t\t\t\t\t\"D1BINDING2\": pulumi.Any(\"a399414b-c697-409a-a688-377db6433cd9\"),\n\t\t\t\t\t},\n\t\t\t\t\tDurableObjectNamespaces: pulumi.AnyMap{\n\t\t\t\t\t\t\"DOBINDING1\": pulumi.Any(\"5eb63bbbe01eeed093cb22bb8f5acdc3\"),\n\t\t\t\t\t\t\"DOBINDING2\": pulumi.Any(\"3cdca5f8bb22bc390deee10ebbb36be5\"),\n\t\t\t\t\t},\n\t\t\t\t\tEnvironmentVariables: pulumi.AnyMap{\n\t\t\t\t\t\t\"ENVIRONMENT\": pulumi.Any(\"production\"),\n\t\t\t\t\t\t\"OTHERVALUE\":  pulumi.Any(\"other value\"),\n\t\t\t\t\t},\n\t\t\t\t\tKvNamespaces: pulumi.AnyMap{\n\t\t\t\t\t\t\"KVBINDING1\": pulumi.Any(\"5eb63bbbe01eeed093cb22bb8f5acdc3\"),\n\t\t\t\t\t\t\"KVBINDING2\": pulumi.Any(\"3cdca5f8bb22bc390deee10ebbb36be5\"),\n\t\t\t\t\t},\n\t\t\t\t\tR2Buckets: pulumi.AnyMap{\n\t\t\t\t\t\t\"R2BINDING1\": pulumi.Any(\"some-bucket\"),\n\t\t\t\t\t\t\"R2BINDING2\": pulumi.Any(\"other-bucket\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tName:             pulumi.String(\"this-is-my-project-01\"),\n\t\t\tProductionBranch: pulumi.String(\"main\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.PagesProject;\nimport com.pulumi.cloudflare.PagesProjectArgs;\nimport com.pulumi.cloudflare.inputs.PagesProjectBuildConfigArgs;\nimport com.pulumi.cloudflare.inputs.PagesProjectSourceArgs;\nimport com.pulumi.cloudflare.inputs.PagesProjectSourceConfigArgs;\nimport com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsArgs;\nimport com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewArgs;\nimport com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var basicProject = new PagesProject(\"basicProject\", PagesProjectArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"this-is-my-project-01\")\n            .productionBranch(\"main\")\n            .build());\n\n        var buildConfig = new PagesProject(\"buildConfig\", PagesProjectArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .buildConfig(PagesProjectBuildConfigArgs.builder()\n                .buildCommand(\"npm run build\")\n                .destinationDir(\"build\")\n                .rootDir(\"/\")\n                .webAnalyticsTag(\"cee1c73f6e4743d0b5e6bb1a0bcaabcc\")\n                .webAnalyticsToken(\"021e1057c18547eca7b79f2516f06o7x\")\n                .build())\n            .name(\"this-is-my-project-01\")\n            .productionBranch(\"main\")\n            .build());\n\n        var sourceConfig = new PagesProject(\"sourceConfig\", PagesProjectArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"this-is-my-project-01\")\n            .productionBranch(\"main\")\n            .source(PagesProjectSourceArgs.builder()\n                .config(PagesProjectSourceConfigArgs.builder()\n                    .deploymentsEnabled(true)\n                    .owner(\"cloudflare\")\n                    .prCommentsEnabled(true)\n                    .previewBranchExcludes(                    \n                        \"main\",\n                        \"prod\")\n                    .previewBranchIncludes(                    \n                        \"dev\",\n                        \"preview\")\n                    .previewDeploymentSetting(\"custom\")\n                    .productionBranch(\"main\")\n                    .productionDeploymentEnabled(true)\n                    .repoName(\"ninjakittens\")\n                    .build())\n                .type(\"github\")\n                .build())\n            .build());\n\n        var deploymentConfigs = new PagesProject(\"deploymentConfigs\", PagesProjectArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .deploymentConfigs(PagesProjectDeploymentConfigsArgs.builder()\n                .preview(PagesProjectDeploymentConfigsPreviewArgs.builder()\n                    .compatibilityDate(\"2022-08-15\")\n                    .compatibilityFlags(\"preview_flag\")\n                    .d1Databases(Map.of(\"D1BINDING\", \"445e2955-951a-4358-a35b-a4d0c813f63\"))\n                    .durableObjectNamespaces(Map.of(\"DOBINDING\", \"5eb63bbbe01eeed093cb22bb8f5acdc3\"))\n                    .environmentVariables(Map.of(\"ENVIRONMENT\", \"preview\"))\n                    .kvNamespaces(Map.of(\"KVBINDING\", \"5eb63bbbe01eeed093cb22bb8f5acdc3\"))\n                    .r2Buckets(Map.of(\"R2BINDING\", \"some-bucket\"))\n                    .build())\n                .production(PagesProjectDeploymentConfigsProductionArgs.builder()\n                    .compatibilityDate(\"2022-08-16\")\n                    .compatibilityFlags(                    \n                        \"production_flag\",\n                        \"second flag\")\n                    .d1Databases(Map.ofEntries(\n                        Map.entry(\"D1BINDING1\", \"445e2955-951a-4358-a35b-a4d0c813f63\"),\n                        Map.entry(\"D1BINDING2\", \"a399414b-c697-409a-a688-377db6433cd9\")\n                    ))\n                    .durableObjectNamespaces(Map.ofEntries(\n                        Map.entry(\"DOBINDING1\", \"5eb63bbbe01eeed093cb22bb8f5acdc3\"),\n                        Map.entry(\"DOBINDING2\", \"3cdca5f8bb22bc390deee10ebbb36be5\")\n                    ))\n                    .environmentVariables(Map.ofEntries(\n                        Map.entry(\"ENVIRONMENT\", \"production\"),\n                        Map.entry(\"OTHERVALUE\", \"other value\")\n                    ))\n                    .kvNamespaces(Map.ofEntries(\n                        Map.entry(\"KVBINDING1\", \"5eb63bbbe01eeed093cb22bb8f5acdc3\"),\n                        Map.entry(\"KVBINDING2\", \"3cdca5f8bb22bc390deee10ebbb36be5\")\n                    ))\n                    .r2Buckets(Map.ofEntries(\n                        Map.entry(\"R2BINDING1\", \"some-bucket\"),\n                        Map.entry(\"R2BINDING2\", \"other-bucket\")\n                    ))\n                    .build())\n                .build())\n            .name(\"this-is-my-project-01\")\n            .productionBranch(\"main\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Basic project\n  basicProject:\n    type: cloudflare:PagesProject\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: this-is-my-project-01\n      productionBranch: main\n  # Manage build config\n  buildConfig:\n    type: cloudflare:PagesProject\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      buildConfig:\n        buildCommand: npm run build\n        destinationDir: build\n        rootDir: /\n        webAnalyticsTag: cee1c73f6e4743d0b5e6bb1a0bcaabcc\n        webAnalyticsToken: 021e1057c18547eca7b79f2516f06o7x\n      name: this-is-my-project-01\n      productionBranch: main\n  # Manage project source\n  sourceConfig:\n    type: cloudflare:PagesProject\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: this-is-my-project-01\n      productionBranch: main\n      source:\n        config:\n          deploymentsEnabled: true\n          owner: cloudflare\n          prCommentsEnabled: true\n          previewBranchExcludes:\n            - main\n            - prod\n          previewBranchIncludes:\n            - dev\n            - preview\n          previewDeploymentSetting: custom\n          productionBranch: main\n          productionDeploymentEnabled: true\n          repoName: ninjakittens\n        type: github\n  # Manage deployment configs\n  deploymentConfigs:\n    type: cloudflare:PagesProject\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      deploymentConfigs:\n        preview:\n          compatibilityDate: 2022-08-15\n          compatibilityFlags:\n            - preview_flag\n          d1Databases:\n            D1BINDING: 445e2955-951a-4358-a35b-a4d0c813f63\n          durableObjectNamespaces:\n            DOBINDING: 5eb63bbbe01eeed093cb22bb8f5acdc3\n          environmentVariables:\n            ENVIRONMENT: preview\n          kvNamespaces:\n            KVBINDING: 5eb63bbbe01eeed093cb22bb8f5acdc3\n          r2Buckets:\n            R2BINDING: some-bucket\n        production:\n          compatibilityDate: 2022-08-16\n          compatibilityFlags:\n            - production_flag\n            - second flag\n          d1Databases:\n            D1BINDING1: 445e2955-951a-4358-a35b-a4d0c813f63\n            D1BINDING2: a399414b-c697-409a-a688-377db6433cd9\n          durableObjectNamespaces:\n            DOBINDING1: 5eb63bbbe01eeed093cb22bb8f5acdc3\n            DOBINDING2: 3cdca5f8bb22bc390deee10ebbb36be5\n          environmentVariables:\n            ENVIRONMENT: production\n            OTHERVALUE: other value\n          kvNamespaces:\n            KVBINDING1: 5eb63bbbe01eeed093cb22bb8f5acdc3\n            KVBINDING2: 3cdca5f8bb22bc390deee10ebbb36be5\n          r2Buckets:\n            R2BINDING1: some-bucket\n            R2BINDING2: other-bucket\n      name: this-is-my-project-01\n      productionBranch: main\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/pagesProject:PagesProject example \u003caccount_id\u003e/\u003cproject_name\u003e\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "buildConfig": {
+                    "$ref": "#/types/cloudflare:index/PagesProjectBuildConfig:PagesProjectBuildConfig",
+                    "description": "Configuration for the project build process.\n"
+                },
+                "createdOn": {
+                    "type": "string",
+                    "description": "When the project was created.\n"
+                },
+                "deploymentConfigs": {
+                    "$ref": "#/types/cloudflare:index/PagesProjectDeploymentConfigs:PagesProjectDeploymentConfigs",
+                    "description": "Configuration for deployments in a project.\n"
+                },
+                "domains": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of associated custom domains for the project.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the project.\n"
+                },
+                "productionBranch": {
+                    "type": "string",
+                    "description": "The name of the branch that is used for the production environment.\n"
+                },
+                "source": {
+                    "$ref": "#/types/cloudflare:index/PagesProjectSource:PagesProjectSource",
+                    "description": "Configuration for the project source.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "The Cloudflare subdomain associated with the project.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "createdOn",
+                "domains",
+                "name",
+                "productionBranch",
+                "subdomain"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "buildConfig": {
+                    "$ref": "#/types/cloudflare:index/PagesProjectBuildConfig:PagesProjectBuildConfig",
+                    "description": "Configuration for the project build process.\n"
+                },
+                "deploymentConfigs": {
+                    "$ref": "#/types/cloudflare:index/PagesProjectDeploymentConfigs:PagesProjectDeploymentConfigs",
+                    "description": "Configuration for deployments in a project.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the project.\n"
+                },
+                "productionBranch": {
+                    "type": "string",
+                    "description": "The name of the branch that is used for the production environment.\n"
+                },
+                "source": {
+                    "$ref": "#/types/cloudflare:index/PagesProjectSource:PagesProjectSource",
+                    "description": "Configuration for the project source.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "name",
+                "productionBranch"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PagesProject resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n"
+                    },
+                    "buildConfig": {
+                        "$ref": "#/types/cloudflare:index/PagesProjectBuildConfig:PagesProjectBuildConfig",
+                        "description": "Configuration for the project build process.\n"
+                    },
+                    "createdOn": {
+                        "type": "string",
+                        "description": "When the project was created.\n"
+                    },
+                    "deploymentConfigs": {
+                        "$ref": "#/types/cloudflare:index/PagesProjectDeploymentConfigs:PagesProjectDeploymentConfigs",
+                        "description": "Configuration for deployments in a project.\n"
+                    },
+                    "domains": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of associated custom domains for the project.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the project.\n"
+                    },
+                    "productionBranch": {
+                        "type": "string",
+                        "description": "The name of the branch that is used for the production environment.\n"
+                    },
+                    "source": {
+                        "$ref": "#/types/cloudflare:index/PagesProjectSource:PagesProjectSource",
+                        "description": "Configuration for the project source.\n"
+                    },
+                    "subdomain": {
+                        "type": "string",
+                        "description": "The Cloudflare subdomain associated with the project.\n"
                     }
                 },
                 "type": "object"

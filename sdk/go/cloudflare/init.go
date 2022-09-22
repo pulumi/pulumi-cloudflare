@@ -112,6 +112,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OriginCaCertificate{}
 	case "cloudflare:index/pageRule:PageRule":
 		r = &PageRule{}
+	case "cloudflare:index/pagesDomain:PagesDomain":
+		r = &PagesDomain{}
+	case "cloudflare:index/pagesProject:PagesProject":
+		r = &PagesProject{}
 	case "cloudflare:index/rateLimit:RateLimit":
 		r = &RateLimit{}
 	case "cloudflare:index/record:Record":
@@ -428,6 +432,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/pageRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/pagesDomain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/pagesProject",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

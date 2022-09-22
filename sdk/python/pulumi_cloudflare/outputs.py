@@ -108,6 +108,12 @@ __all__ = [
     'PageRuleActionsCacheTtlByStatus',
     'PageRuleActionsForwardingUrl',
     'PageRuleActionsMinify',
+    'PagesProjectBuildConfig',
+    'PagesProjectDeploymentConfigs',
+    'PagesProjectDeploymentConfigsPreview',
+    'PagesProjectDeploymentConfigsProduction',
+    'PagesProjectSource',
+    'PagesProjectSourceConfig',
     'RateLimitAction',
     'RateLimitActionResponse',
     'RateLimitCorrelate',
@@ -6803,6 +6809,453 @@ class PageRuleActionsMinify(dict):
         Whether Javascript should be minified. Valid values are `"on"` or `"off"`.
         """
         return pulumi.get(self, "js")
+
+
+@pulumi.output_type
+class PagesProjectBuildConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "buildCommand":
+            suggest = "build_command"
+        elif key == "destinationDir":
+            suggest = "destination_dir"
+        elif key == "rootDir":
+            suggest = "root_dir"
+        elif key == "webAnalyticsTag":
+            suggest = "web_analytics_tag"
+        elif key == "webAnalyticsToken":
+            suggest = "web_analytics_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PagesProjectBuildConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PagesProjectBuildConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PagesProjectBuildConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 build_command: Optional[str] = None,
+                 destination_dir: Optional[str] = None,
+                 root_dir: Optional[str] = None,
+                 web_analytics_tag: Optional[str] = None,
+                 web_analytics_token: Optional[str] = None):
+        """
+        :param str build_command: Command used to build project.
+        :param str destination_dir: Output directory of the build.
+        :param str root_dir: Directory to run the command.
+        :param str web_analytics_tag: The classifying tag for analytics.
+        :param str web_analytics_token: The auth token for analytics.
+        """
+        if build_command is not None:
+            pulumi.set(__self__, "build_command", build_command)
+        if destination_dir is not None:
+            pulumi.set(__self__, "destination_dir", destination_dir)
+        if root_dir is not None:
+            pulumi.set(__self__, "root_dir", root_dir)
+        if web_analytics_tag is not None:
+            pulumi.set(__self__, "web_analytics_tag", web_analytics_tag)
+        if web_analytics_token is not None:
+            pulumi.set(__self__, "web_analytics_token", web_analytics_token)
+
+    @property
+    @pulumi.getter(name="buildCommand")
+    def build_command(self) -> Optional[str]:
+        """
+        Command used to build project.
+        """
+        return pulumi.get(self, "build_command")
+
+    @property
+    @pulumi.getter(name="destinationDir")
+    def destination_dir(self) -> Optional[str]:
+        """
+        Output directory of the build.
+        """
+        return pulumi.get(self, "destination_dir")
+
+    @property
+    @pulumi.getter(name="rootDir")
+    def root_dir(self) -> Optional[str]:
+        """
+        Directory to run the command.
+        """
+        return pulumi.get(self, "root_dir")
+
+    @property
+    @pulumi.getter(name="webAnalyticsTag")
+    def web_analytics_tag(self) -> Optional[str]:
+        """
+        The classifying tag for analytics.
+        """
+        return pulumi.get(self, "web_analytics_tag")
+
+    @property
+    @pulumi.getter(name="webAnalyticsToken")
+    def web_analytics_token(self) -> Optional[str]:
+        """
+        The auth token for analytics.
+        """
+        return pulumi.get(self, "web_analytics_token")
+
+
+@pulumi.output_type
+class PagesProjectDeploymentConfigs(dict):
+    def __init__(__self__, *,
+                 preview: Optional['outputs.PagesProjectDeploymentConfigsPreview'] = None,
+                 production: Optional['outputs.PagesProjectDeploymentConfigsProduction'] = None):
+        """
+        :param 'PagesProjectDeploymentConfigsPreviewArgs' preview: Configuration for preview deploys.
+        :param 'PagesProjectDeploymentConfigsProductionArgs' production: Configuration for production deploys.
+        """
+        if preview is not None:
+            pulumi.set(__self__, "preview", preview)
+        if production is not None:
+            pulumi.set(__self__, "production", production)
+
+    @property
+    @pulumi.getter
+    def preview(self) -> Optional['outputs.PagesProjectDeploymentConfigsPreview']:
+        """
+        Configuration for preview deploys.
+        """
+        return pulumi.get(self, "preview")
+
+    @property
+    @pulumi.getter
+    def production(self) -> Optional['outputs.PagesProjectDeploymentConfigsProduction']:
+        """
+        Configuration for production deploys.
+        """
+        return pulumi.get(self, "production")
+
+
+@pulumi.output_type
+class PagesProjectDeploymentConfigsPreview(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "compatibilityDate":
+            suggest = "compatibility_date"
+        elif key == "compatibilityFlags":
+            suggest = "compatibility_flags"
+        elif key == "d1Databases":
+            suggest = "d1_databases"
+        elif key == "durableObjectNamespaces":
+            suggest = "durable_object_namespaces"
+        elif key == "environmentVariables":
+            suggest = "environment_variables"
+        elif key == "kvNamespaces":
+            suggest = "kv_namespaces"
+        elif key == "r2Buckets":
+            suggest = "r2_buckets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PagesProjectDeploymentConfigsPreview. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PagesProjectDeploymentConfigsPreview.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PagesProjectDeploymentConfigsPreview.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 compatibility_date: Optional[str] = None,
+                 compatibility_flags: Optional[Sequence[str]] = None,
+                 d1_databases: Optional[Mapping[str, Any]] = None,
+                 durable_object_namespaces: Optional[Mapping[str, Any]] = None,
+                 environment_variables: Optional[Mapping[str, Any]] = None,
+                 kv_namespaces: Optional[Mapping[str, Any]] = None,
+                 r2_buckets: Optional[Mapping[str, Any]] = None):
+        if compatibility_date is not None:
+            pulumi.set(__self__, "compatibility_date", compatibility_date)
+        if compatibility_flags is not None:
+            pulumi.set(__self__, "compatibility_flags", compatibility_flags)
+        if d1_databases is not None:
+            pulumi.set(__self__, "d1_databases", d1_databases)
+        if durable_object_namespaces is not None:
+            pulumi.set(__self__, "durable_object_namespaces", durable_object_namespaces)
+        if environment_variables is not None:
+            pulumi.set(__self__, "environment_variables", environment_variables)
+        if kv_namespaces is not None:
+            pulumi.set(__self__, "kv_namespaces", kv_namespaces)
+        if r2_buckets is not None:
+            pulumi.set(__self__, "r2_buckets", r2_buckets)
+
+    @property
+    @pulumi.getter(name="compatibilityDate")
+    def compatibility_date(self) -> Optional[str]:
+        return pulumi.get(self, "compatibility_date")
+
+    @property
+    @pulumi.getter(name="compatibilityFlags")
+    def compatibility_flags(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "compatibility_flags")
+
+    @property
+    @pulumi.getter(name="d1Databases")
+    def d1_databases(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "d1_databases")
+
+    @property
+    @pulumi.getter(name="durableObjectNamespaces")
+    def durable_object_namespaces(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "durable_object_namespaces")
+
+    @property
+    @pulumi.getter(name="environmentVariables")
+    def environment_variables(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "environment_variables")
+
+    @property
+    @pulumi.getter(name="kvNamespaces")
+    def kv_namespaces(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "kv_namespaces")
+
+    @property
+    @pulumi.getter(name="r2Buckets")
+    def r2_buckets(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "r2_buckets")
+
+
+@pulumi.output_type
+class PagesProjectDeploymentConfigsProduction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "compatibilityDate":
+            suggest = "compatibility_date"
+        elif key == "compatibilityFlags":
+            suggest = "compatibility_flags"
+        elif key == "d1Databases":
+            suggest = "d1_databases"
+        elif key == "durableObjectNamespaces":
+            suggest = "durable_object_namespaces"
+        elif key == "environmentVariables":
+            suggest = "environment_variables"
+        elif key == "kvNamespaces":
+            suggest = "kv_namespaces"
+        elif key == "r2Buckets":
+            suggest = "r2_buckets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PagesProjectDeploymentConfigsProduction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PagesProjectDeploymentConfigsProduction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PagesProjectDeploymentConfigsProduction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 compatibility_date: Optional[str] = None,
+                 compatibility_flags: Optional[Sequence[str]] = None,
+                 d1_databases: Optional[Mapping[str, Any]] = None,
+                 durable_object_namespaces: Optional[Mapping[str, Any]] = None,
+                 environment_variables: Optional[Mapping[str, Any]] = None,
+                 kv_namespaces: Optional[Mapping[str, Any]] = None,
+                 r2_buckets: Optional[Mapping[str, Any]] = None):
+        if compatibility_date is not None:
+            pulumi.set(__self__, "compatibility_date", compatibility_date)
+        if compatibility_flags is not None:
+            pulumi.set(__self__, "compatibility_flags", compatibility_flags)
+        if d1_databases is not None:
+            pulumi.set(__self__, "d1_databases", d1_databases)
+        if durable_object_namespaces is not None:
+            pulumi.set(__self__, "durable_object_namespaces", durable_object_namespaces)
+        if environment_variables is not None:
+            pulumi.set(__self__, "environment_variables", environment_variables)
+        if kv_namespaces is not None:
+            pulumi.set(__self__, "kv_namespaces", kv_namespaces)
+        if r2_buckets is not None:
+            pulumi.set(__self__, "r2_buckets", r2_buckets)
+
+    @property
+    @pulumi.getter(name="compatibilityDate")
+    def compatibility_date(self) -> Optional[str]:
+        return pulumi.get(self, "compatibility_date")
+
+    @property
+    @pulumi.getter(name="compatibilityFlags")
+    def compatibility_flags(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "compatibility_flags")
+
+    @property
+    @pulumi.getter(name="d1Databases")
+    def d1_databases(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "d1_databases")
+
+    @property
+    @pulumi.getter(name="durableObjectNamespaces")
+    def durable_object_namespaces(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "durable_object_namespaces")
+
+    @property
+    @pulumi.getter(name="environmentVariables")
+    def environment_variables(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "environment_variables")
+
+    @property
+    @pulumi.getter(name="kvNamespaces")
+    def kv_namespaces(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "kv_namespaces")
+
+    @property
+    @pulumi.getter(name="r2Buckets")
+    def r2_buckets(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "r2_buckets")
+
+
+@pulumi.output_type
+class PagesProjectSource(dict):
+    def __init__(__self__, *,
+                 config: Optional['outputs.PagesProjectSourceConfig'] = None,
+                 type: Optional[str] = None):
+        """
+        :param 'PagesProjectSourceConfigArgs' config: Configuration for the source of the Cloudflare Pages project.
+        :param str type: Project host type.
+        """
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional['outputs.PagesProjectSourceConfig']:
+        """
+        Configuration for the source of the Cloudflare Pages project.
+        """
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Project host type.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class PagesProjectSourceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "productionBranch":
+            suggest = "production_branch"
+        elif key == "deploymentsEnabled":
+            suggest = "deployments_enabled"
+        elif key == "prCommentsEnabled":
+            suggest = "pr_comments_enabled"
+        elif key == "previewBranchExcludes":
+            suggest = "preview_branch_excludes"
+        elif key == "previewBranchIncludes":
+            suggest = "preview_branch_includes"
+        elif key == "previewDeploymentSetting":
+            suggest = "preview_deployment_setting"
+        elif key == "productionDeploymentEnabled":
+            suggest = "production_deployment_enabled"
+        elif key == "repoName":
+            suggest = "repo_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PagesProjectSourceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PagesProjectSourceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PagesProjectSourceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 production_branch: str,
+                 deployments_enabled: Optional[bool] = None,
+                 owner: Optional[str] = None,
+                 pr_comments_enabled: Optional[bool] = None,
+                 preview_branch_excludes: Optional[Sequence[str]] = None,
+                 preview_branch_includes: Optional[Sequence[str]] = None,
+                 preview_deployment_setting: Optional[str] = None,
+                 production_deployment_enabled: Optional[bool] = None,
+                 repo_name: Optional[str] = None):
+        """
+        :param str production_branch: The name of the branch that is used for the production environment.
+        """
+        pulumi.set(__self__, "production_branch", production_branch)
+        if deployments_enabled is not None:
+            pulumi.set(__self__, "deployments_enabled", deployments_enabled)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if pr_comments_enabled is not None:
+            pulumi.set(__self__, "pr_comments_enabled", pr_comments_enabled)
+        if preview_branch_excludes is not None:
+            pulumi.set(__self__, "preview_branch_excludes", preview_branch_excludes)
+        if preview_branch_includes is not None:
+            pulumi.set(__self__, "preview_branch_includes", preview_branch_includes)
+        if preview_deployment_setting is not None:
+            pulumi.set(__self__, "preview_deployment_setting", preview_deployment_setting)
+        if production_deployment_enabled is not None:
+            pulumi.set(__self__, "production_deployment_enabled", production_deployment_enabled)
+        if repo_name is not None:
+            pulumi.set(__self__, "repo_name", repo_name)
+
+    @property
+    @pulumi.getter(name="productionBranch")
+    def production_branch(self) -> str:
+        """
+        The name of the branch that is used for the production environment.
+        """
+        return pulumi.get(self, "production_branch")
+
+    @property
+    @pulumi.getter(name="deploymentsEnabled")
+    def deployments_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "deployments_enabled")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[str]:
+        return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter(name="prCommentsEnabled")
+    def pr_comments_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "pr_comments_enabled")
+
+    @property
+    @pulumi.getter(name="previewBranchExcludes")
+    def preview_branch_excludes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "preview_branch_excludes")
+
+    @property
+    @pulumi.getter(name="previewBranchIncludes")
+    def preview_branch_includes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "preview_branch_includes")
+
+    @property
+    @pulumi.getter(name="previewDeploymentSetting")
+    def preview_deployment_setting(self) -> Optional[str]:
+        return pulumi.get(self, "preview_deployment_setting")
+
+    @property
+    @pulumi.getter(name="productionDeploymentEnabled")
+    def production_deployment_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "production_deployment_enabled")
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> Optional[str]:
+        return pulumi.get(self, "repo_name")
 
 
 @pulumi.output_type

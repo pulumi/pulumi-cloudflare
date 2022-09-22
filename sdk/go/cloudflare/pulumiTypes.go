@@ -13479,6 +13479,1236 @@ func (o PageRuleActionsMinifyArrayOutput) Index(i pulumi.IntInput) PageRuleActio
 	}).(PageRuleActionsMinifyOutput)
 }
 
+type PagesProjectBuildConfig struct {
+	// Command used to build project.
+	BuildCommand *string `pulumi:"buildCommand"`
+	// Output directory of the build.
+	DestinationDir *string `pulumi:"destinationDir"`
+	// Directory to run the command.
+	RootDir *string `pulumi:"rootDir"`
+	// The classifying tag for analytics.
+	WebAnalyticsTag *string `pulumi:"webAnalyticsTag"`
+	// The auth token for analytics.
+	WebAnalyticsToken *string `pulumi:"webAnalyticsToken"`
+}
+
+// PagesProjectBuildConfigInput is an input type that accepts PagesProjectBuildConfigArgs and PagesProjectBuildConfigOutput values.
+// You can construct a concrete instance of `PagesProjectBuildConfigInput` via:
+//
+//	PagesProjectBuildConfigArgs{...}
+type PagesProjectBuildConfigInput interface {
+	pulumi.Input
+
+	ToPagesProjectBuildConfigOutput() PagesProjectBuildConfigOutput
+	ToPagesProjectBuildConfigOutputWithContext(context.Context) PagesProjectBuildConfigOutput
+}
+
+type PagesProjectBuildConfigArgs struct {
+	// Command used to build project.
+	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
+	// Output directory of the build.
+	DestinationDir pulumi.StringPtrInput `pulumi:"destinationDir"`
+	// Directory to run the command.
+	RootDir pulumi.StringPtrInput `pulumi:"rootDir"`
+	// The classifying tag for analytics.
+	WebAnalyticsTag pulumi.StringPtrInput `pulumi:"webAnalyticsTag"`
+	// The auth token for analytics.
+	WebAnalyticsToken pulumi.StringPtrInput `pulumi:"webAnalyticsToken"`
+}
+
+func (PagesProjectBuildConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesProjectBuildConfig)(nil)).Elem()
+}
+
+func (i PagesProjectBuildConfigArgs) ToPagesProjectBuildConfigOutput() PagesProjectBuildConfigOutput {
+	return i.ToPagesProjectBuildConfigOutputWithContext(context.Background())
+}
+
+func (i PagesProjectBuildConfigArgs) ToPagesProjectBuildConfigOutputWithContext(ctx context.Context) PagesProjectBuildConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectBuildConfigOutput)
+}
+
+func (i PagesProjectBuildConfigArgs) ToPagesProjectBuildConfigPtrOutput() PagesProjectBuildConfigPtrOutput {
+	return i.ToPagesProjectBuildConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PagesProjectBuildConfigArgs) ToPagesProjectBuildConfigPtrOutputWithContext(ctx context.Context) PagesProjectBuildConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectBuildConfigOutput).ToPagesProjectBuildConfigPtrOutputWithContext(ctx)
+}
+
+// PagesProjectBuildConfigPtrInput is an input type that accepts PagesProjectBuildConfigArgs, PagesProjectBuildConfigPtr and PagesProjectBuildConfigPtrOutput values.
+// You can construct a concrete instance of `PagesProjectBuildConfigPtrInput` via:
+//
+//	        PagesProjectBuildConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PagesProjectBuildConfigPtrInput interface {
+	pulumi.Input
+
+	ToPagesProjectBuildConfigPtrOutput() PagesProjectBuildConfigPtrOutput
+	ToPagesProjectBuildConfigPtrOutputWithContext(context.Context) PagesProjectBuildConfigPtrOutput
+}
+
+type pagesProjectBuildConfigPtrType PagesProjectBuildConfigArgs
+
+func PagesProjectBuildConfigPtr(v *PagesProjectBuildConfigArgs) PagesProjectBuildConfigPtrInput {
+	return (*pagesProjectBuildConfigPtrType)(v)
+}
+
+func (*pagesProjectBuildConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesProjectBuildConfig)(nil)).Elem()
+}
+
+func (i *pagesProjectBuildConfigPtrType) ToPagesProjectBuildConfigPtrOutput() PagesProjectBuildConfigPtrOutput {
+	return i.ToPagesProjectBuildConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pagesProjectBuildConfigPtrType) ToPagesProjectBuildConfigPtrOutputWithContext(ctx context.Context) PagesProjectBuildConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectBuildConfigPtrOutput)
+}
+
+type PagesProjectBuildConfigOutput struct{ *pulumi.OutputState }
+
+func (PagesProjectBuildConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesProjectBuildConfig)(nil)).Elem()
+}
+
+func (o PagesProjectBuildConfigOutput) ToPagesProjectBuildConfigOutput() PagesProjectBuildConfigOutput {
+	return o
+}
+
+func (o PagesProjectBuildConfigOutput) ToPagesProjectBuildConfigOutputWithContext(ctx context.Context) PagesProjectBuildConfigOutput {
+	return o
+}
+
+func (o PagesProjectBuildConfigOutput) ToPagesProjectBuildConfigPtrOutput() PagesProjectBuildConfigPtrOutput {
+	return o.ToPagesProjectBuildConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PagesProjectBuildConfigOutput) ToPagesProjectBuildConfigPtrOutputWithContext(ctx context.Context) PagesProjectBuildConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PagesProjectBuildConfig) *PagesProjectBuildConfig {
+		return &v
+	}).(PagesProjectBuildConfigPtrOutput)
+}
+
+// Command used to build project.
+func (o PagesProjectBuildConfigOutput) BuildCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PagesProjectBuildConfig) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
+}
+
+// Output directory of the build.
+func (o PagesProjectBuildConfigOutput) DestinationDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PagesProjectBuildConfig) *string { return v.DestinationDir }).(pulumi.StringPtrOutput)
+}
+
+// Directory to run the command.
+func (o PagesProjectBuildConfigOutput) RootDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PagesProjectBuildConfig) *string { return v.RootDir }).(pulumi.StringPtrOutput)
+}
+
+// The classifying tag for analytics.
+func (o PagesProjectBuildConfigOutput) WebAnalyticsTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PagesProjectBuildConfig) *string { return v.WebAnalyticsTag }).(pulumi.StringPtrOutput)
+}
+
+// The auth token for analytics.
+func (o PagesProjectBuildConfigOutput) WebAnalyticsToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PagesProjectBuildConfig) *string { return v.WebAnalyticsToken }).(pulumi.StringPtrOutput)
+}
+
+type PagesProjectBuildConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PagesProjectBuildConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesProjectBuildConfig)(nil)).Elem()
+}
+
+func (o PagesProjectBuildConfigPtrOutput) ToPagesProjectBuildConfigPtrOutput() PagesProjectBuildConfigPtrOutput {
+	return o
+}
+
+func (o PagesProjectBuildConfigPtrOutput) ToPagesProjectBuildConfigPtrOutputWithContext(ctx context.Context) PagesProjectBuildConfigPtrOutput {
+	return o
+}
+
+func (o PagesProjectBuildConfigPtrOutput) Elem() PagesProjectBuildConfigOutput {
+	return o.ApplyT(func(v *PagesProjectBuildConfig) PagesProjectBuildConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PagesProjectBuildConfig
+		return ret
+	}).(PagesProjectBuildConfigOutput)
+}
+
+// Command used to build project.
+func (o PagesProjectBuildConfigPtrOutput) BuildCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesProjectBuildConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildCommand
+	}).(pulumi.StringPtrOutput)
+}
+
+// Output directory of the build.
+func (o PagesProjectBuildConfigPtrOutput) DestinationDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesProjectBuildConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationDir
+	}).(pulumi.StringPtrOutput)
+}
+
+// Directory to run the command.
+func (o PagesProjectBuildConfigPtrOutput) RootDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesProjectBuildConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RootDir
+	}).(pulumi.StringPtrOutput)
+}
+
+// The classifying tag for analytics.
+func (o PagesProjectBuildConfigPtrOutput) WebAnalyticsTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesProjectBuildConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WebAnalyticsTag
+	}).(pulumi.StringPtrOutput)
+}
+
+// The auth token for analytics.
+func (o PagesProjectBuildConfigPtrOutput) WebAnalyticsToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesProjectBuildConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WebAnalyticsToken
+	}).(pulumi.StringPtrOutput)
+}
+
+type PagesProjectDeploymentConfigs struct {
+	// Configuration for preview deploys.
+	Preview *PagesProjectDeploymentConfigsPreview `pulumi:"preview"`
+	// Configuration for production deploys.
+	Production *PagesProjectDeploymentConfigsProduction `pulumi:"production"`
+}
+
+// PagesProjectDeploymentConfigsInput is an input type that accepts PagesProjectDeploymentConfigsArgs and PagesProjectDeploymentConfigsOutput values.
+// You can construct a concrete instance of `PagesProjectDeploymentConfigsInput` via:
+//
+//	PagesProjectDeploymentConfigsArgs{...}
+type PagesProjectDeploymentConfigsInput interface {
+	pulumi.Input
+
+	ToPagesProjectDeploymentConfigsOutput() PagesProjectDeploymentConfigsOutput
+	ToPagesProjectDeploymentConfigsOutputWithContext(context.Context) PagesProjectDeploymentConfigsOutput
+}
+
+type PagesProjectDeploymentConfigsArgs struct {
+	// Configuration for preview deploys.
+	Preview PagesProjectDeploymentConfigsPreviewPtrInput `pulumi:"preview"`
+	// Configuration for production deploys.
+	Production PagesProjectDeploymentConfigsProductionPtrInput `pulumi:"production"`
+}
+
+func (PagesProjectDeploymentConfigsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesProjectDeploymentConfigs)(nil)).Elem()
+}
+
+func (i PagesProjectDeploymentConfigsArgs) ToPagesProjectDeploymentConfigsOutput() PagesProjectDeploymentConfigsOutput {
+	return i.ToPagesProjectDeploymentConfigsOutputWithContext(context.Background())
+}
+
+func (i PagesProjectDeploymentConfigsArgs) ToPagesProjectDeploymentConfigsOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectDeploymentConfigsOutput)
+}
+
+func (i PagesProjectDeploymentConfigsArgs) ToPagesProjectDeploymentConfigsPtrOutput() PagesProjectDeploymentConfigsPtrOutput {
+	return i.ToPagesProjectDeploymentConfigsPtrOutputWithContext(context.Background())
+}
+
+func (i PagesProjectDeploymentConfigsArgs) ToPagesProjectDeploymentConfigsPtrOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectDeploymentConfigsOutput).ToPagesProjectDeploymentConfigsPtrOutputWithContext(ctx)
+}
+
+// PagesProjectDeploymentConfigsPtrInput is an input type that accepts PagesProjectDeploymentConfigsArgs, PagesProjectDeploymentConfigsPtr and PagesProjectDeploymentConfigsPtrOutput values.
+// You can construct a concrete instance of `PagesProjectDeploymentConfigsPtrInput` via:
+//
+//	        PagesProjectDeploymentConfigsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PagesProjectDeploymentConfigsPtrInput interface {
+	pulumi.Input
+
+	ToPagesProjectDeploymentConfigsPtrOutput() PagesProjectDeploymentConfigsPtrOutput
+	ToPagesProjectDeploymentConfigsPtrOutputWithContext(context.Context) PagesProjectDeploymentConfigsPtrOutput
+}
+
+type pagesProjectDeploymentConfigsPtrType PagesProjectDeploymentConfigsArgs
+
+func PagesProjectDeploymentConfigsPtr(v *PagesProjectDeploymentConfigsArgs) PagesProjectDeploymentConfigsPtrInput {
+	return (*pagesProjectDeploymentConfigsPtrType)(v)
+}
+
+func (*pagesProjectDeploymentConfigsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesProjectDeploymentConfigs)(nil)).Elem()
+}
+
+func (i *pagesProjectDeploymentConfigsPtrType) ToPagesProjectDeploymentConfigsPtrOutput() PagesProjectDeploymentConfigsPtrOutput {
+	return i.ToPagesProjectDeploymentConfigsPtrOutputWithContext(context.Background())
+}
+
+func (i *pagesProjectDeploymentConfigsPtrType) ToPagesProjectDeploymentConfigsPtrOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectDeploymentConfigsPtrOutput)
+}
+
+type PagesProjectDeploymentConfigsOutput struct{ *pulumi.OutputState }
+
+func (PagesProjectDeploymentConfigsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesProjectDeploymentConfigs)(nil)).Elem()
+}
+
+func (o PagesProjectDeploymentConfigsOutput) ToPagesProjectDeploymentConfigsOutput() PagesProjectDeploymentConfigsOutput {
+	return o
+}
+
+func (o PagesProjectDeploymentConfigsOutput) ToPagesProjectDeploymentConfigsOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsOutput {
+	return o
+}
+
+func (o PagesProjectDeploymentConfigsOutput) ToPagesProjectDeploymentConfigsPtrOutput() PagesProjectDeploymentConfigsPtrOutput {
+	return o.ToPagesProjectDeploymentConfigsPtrOutputWithContext(context.Background())
+}
+
+func (o PagesProjectDeploymentConfigsOutput) ToPagesProjectDeploymentConfigsPtrOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PagesProjectDeploymentConfigs) *PagesProjectDeploymentConfigs {
+		return &v
+	}).(PagesProjectDeploymentConfigsPtrOutput)
+}
+
+// Configuration for preview deploys.
+func (o PagesProjectDeploymentConfigsOutput) Preview() PagesProjectDeploymentConfigsPreviewPtrOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigs) *PagesProjectDeploymentConfigsPreview { return v.Preview }).(PagesProjectDeploymentConfigsPreviewPtrOutput)
+}
+
+// Configuration for production deploys.
+func (o PagesProjectDeploymentConfigsOutput) Production() PagesProjectDeploymentConfigsProductionPtrOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigs) *PagesProjectDeploymentConfigsProduction { return v.Production }).(PagesProjectDeploymentConfigsProductionPtrOutput)
+}
+
+type PagesProjectDeploymentConfigsPtrOutput struct{ *pulumi.OutputState }
+
+func (PagesProjectDeploymentConfigsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesProjectDeploymentConfigs)(nil)).Elem()
+}
+
+func (o PagesProjectDeploymentConfigsPtrOutput) ToPagesProjectDeploymentConfigsPtrOutput() PagesProjectDeploymentConfigsPtrOutput {
+	return o
+}
+
+func (o PagesProjectDeploymentConfigsPtrOutput) ToPagesProjectDeploymentConfigsPtrOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsPtrOutput {
+	return o
+}
+
+func (o PagesProjectDeploymentConfigsPtrOutput) Elem() PagesProjectDeploymentConfigsOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigs) PagesProjectDeploymentConfigs {
+		if v != nil {
+			return *v
+		}
+		var ret PagesProjectDeploymentConfigs
+		return ret
+	}).(PagesProjectDeploymentConfigsOutput)
+}
+
+// Configuration for preview deploys.
+func (o PagesProjectDeploymentConfigsPtrOutput) Preview() PagesProjectDeploymentConfigsPreviewPtrOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigs) *PagesProjectDeploymentConfigsPreview {
+		if v == nil {
+			return nil
+		}
+		return v.Preview
+	}).(PagesProjectDeploymentConfigsPreviewPtrOutput)
+}
+
+// Configuration for production deploys.
+func (o PagesProjectDeploymentConfigsPtrOutput) Production() PagesProjectDeploymentConfigsProductionPtrOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigs) *PagesProjectDeploymentConfigsProduction {
+		if v == nil {
+			return nil
+		}
+		return v.Production
+	}).(PagesProjectDeploymentConfigsProductionPtrOutput)
+}
+
+type PagesProjectDeploymentConfigsPreview struct {
+	CompatibilityDate       *string                `pulumi:"compatibilityDate"`
+	CompatibilityFlags      []string               `pulumi:"compatibilityFlags"`
+	D1Databases             map[string]interface{} `pulumi:"d1Databases"`
+	DurableObjectNamespaces map[string]interface{} `pulumi:"durableObjectNamespaces"`
+	EnvironmentVariables    map[string]interface{} `pulumi:"environmentVariables"`
+	KvNamespaces            map[string]interface{} `pulumi:"kvNamespaces"`
+	R2Buckets               map[string]interface{} `pulumi:"r2Buckets"`
+}
+
+// PagesProjectDeploymentConfigsPreviewInput is an input type that accepts PagesProjectDeploymentConfigsPreviewArgs and PagesProjectDeploymentConfigsPreviewOutput values.
+// You can construct a concrete instance of `PagesProjectDeploymentConfigsPreviewInput` via:
+//
+//	PagesProjectDeploymentConfigsPreviewArgs{...}
+type PagesProjectDeploymentConfigsPreviewInput interface {
+	pulumi.Input
+
+	ToPagesProjectDeploymentConfigsPreviewOutput() PagesProjectDeploymentConfigsPreviewOutput
+	ToPagesProjectDeploymentConfigsPreviewOutputWithContext(context.Context) PagesProjectDeploymentConfigsPreviewOutput
+}
+
+type PagesProjectDeploymentConfigsPreviewArgs struct {
+	CompatibilityDate       pulumi.StringPtrInput   `pulumi:"compatibilityDate"`
+	CompatibilityFlags      pulumi.StringArrayInput `pulumi:"compatibilityFlags"`
+	D1Databases             pulumi.MapInput         `pulumi:"d1Databases"`
+	DurableObjectNamespaces pulumi.MapInput         `pulumi:"durableObjectNamespaces"`
+	EnvironmentVariables    pulumi.MapInput         `pulumi:"environmentVariables"`
+	KvNamespaces            pulumi.MapInput         `pulumi:"kvNamespaces"`
+	R2Buckets               pulumi.MapInput         `pulumi:"r2Buckets"`
+}
+
+func (PagesProjectDeploymentConfigsPreviewArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesProjectDeploymentConfigsPreview)(nil)).Elem()
+}
+
+func (i PagesProjectDeploymentConfigsPreviewArgs) ToPagesProjectDeploymentConfigsPreviewOutput() PagesProjectDeploymentConfigsPreviewOutput {
+	return i.ToPagesProjectDeploymentConfigsPreviewOutputWithContext(context.Background())
+}
+
+func (i PagesProjectDeploymentConfigsPreviewArgs) ToPagesProjectDeploymentConfigsPreviewOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsPreviewOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectDeploymentConfigsPreviewOutput)
+}
+
+func (i PagesProjectDeploymentConfigsPreviewArgs) ToPagesProjectDeploymentConfigsPreviewPtrOutput() PagesProjectDeploymentConfigsPreviewPtrOutput {
+	return i.ToPagesProjectDeploymentConfigsPreviewPtrOutputWithContext(context.Background())
+}
+
+func (i PagesProjectDeploymentConfigsPreviewArgs) ToPagesProjectDeploymentConfigsPreviewPtrOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsPreviewPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectDeploymentConfigsPreviewOutput).ToPagesProjectDeploymentConfigsPreviewPtrOutputWithContext(ctx)
+}
+
+// PagesProjectDeploymentConfigsPreviewPtrInput is an input type that accepts PagesProjectDeploymentConfigsPreviewArgs, PagesProjectDeploymentConfigsPreviewPtr and PagesProjectDeploymentConfigsPreviewPtrOutput values.
+// You can construct a concrete instance of `PagesProjectDeploymentConfigsPreviewPtrInput` via:
+//
+//	        PagesProjectDeploymentConfigsPreviewArgs{...}
+//
+//	or:
+//
+//	        nil
+type PagesProjectDeploymentConfigsPreviewPtrInput interface {
+	pulumi.Input
+
+	ToPagesProjectDeploymentConfigsPreviewPtrOutput() PagesProjectDeploymentConfigsPreviewPtrOutput
+	ToPagesProjectDeploymentConfigsPreviewPtrOutputWithContext(context.Context) PagesProjectDeploymentConfigsPreviewPtrOutput
+}
+
+type pagesProjectDeploymentConfigsPreviewPtrType PagesProjectDeploymentConfigsPreviewArgs
+
+func PagesProjectDeploymentConfigsPreviewPtr(v *PagesProjectDeploymentConfigsPreviewArgs) PagesProjectDeploymentConfigsPreviewPtrInput {
+	return (*pagesProjectDeploymentConfigsPreviewPtrType)(v)
+}
+
+func (*pagesProjectDeploymentConfigsPreviewPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesProjectDeploymentConfigsPreview)(nil)).Elem()
+}
+
+func (i *pagesProjectDeploymentConfigsPreviewPtrType) ToPagesProjectDeploymentConfigsPreviewPtrOutput() PagesProjectDeploymentConfigsPreviewPtrOutput {
+	return i.ToPagesProjectDeploymentConfigsPreviewPtrOutputWithContext(context.Background())
+}
+
+func (i *pagesProjectDeploymentConfigsPreviewPtrType) ToPagesProjectDeploymentConfigsPreviewPtrOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsPreviewPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectDeploymentConfigsPreviewPtrOutput)
+}
+
+type PagesProjectDeploymentConfigsPreviewOutput struct{ *pulumi.OutputState }
+
+func (PagesProjectDeploymentConfigsPreviewOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesProjectDeploymentConfigsPreview)(nil)).Elem()
+}
+
+func (o PagesProjectDeploymentConfigsPreviewOutput) ToPagesProjectDeploymentConfigsPreviewOutput() PagesProjectDeploymentConfigsPreviewOutput {
+	return o
+}
+
+func (o PagesProjectDeploymentConfigsPreviewOutput) ToPagesProjectDeploymentConfigsPreviewOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsPreviewOutput {
+	return o
+}
+
+func (o PagesProjectDeploymentConfigsPreviewOutput) ToPagesProjectDeploymentConfigsPreviewPtrOutput() PagesProjectDeploymentConfigsPreviewPtrOutput {
+	return o.ToPagesProjectDeploymentConfigsPreviewPtrOutputWithContext(context.Background())
+}
+
+func (o PagesProjectDeploymentConfigsPreviewOutput) ToPagesProjectDeploymentConfigsPreviewPtrOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsPreviewPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PagesProjectDeploymentConfigsPreview) *PagesProjectDeploymentConfigsPreview {
+		return &v
+	}).(PagesProjectDeploymentConfigsPreviewPtrOutput)
+}
+
+func (o PagesProjectDeploymentConfigsPreviewOutput) CompatibilityDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) *string { return v.CompatibilityDate }).(pulumi.StringPtrOutput)
+}
+
+func (o PagesProjectDeploymentConfigsPreviewOutput) CompatibilityFlags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) []string { return v.CompatibilityFlags }).(pulumi.StringArrayOutput)
+}
+
+func (o PagesProjectDeploymentConfigsPreviewOutput) D1Databases() pulumi.MapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) map[string]interface{} { return v.D1Databases }).(pulumi.MapOutput)
+}
+
+func (o PagesProjectDeploymentConfigsPreviewOutput) DurableObjectNamespaces() pulumi.MapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) map[string]interface{} { return v.DurableObjectNamespaces }).(pulumi.MapOutput)
+}
+
+func (o PagesProjectDeploymentConfigsPreviewOutput) EnvironmentVariables() pulumi.MapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) map[string]interface{} { return v.EnvironmentVariables }).(pulumi.MapOutput)
+}
+
+func (o PagesProjectDeploymentConfigsPreviewOutput) KvNamespaces() pulumi.MapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) map[string]interface{} { return v.KvNamespaces }).(pulumi.MapOutput)
+}
+
+func (o PagesProjectDeploymentConfigsPreviewOutput) R2Buckets() pulumi.MapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) map[string]interface{} { return v.R2Buckets }).(pulumi.MapOutput)
+}
+
+type PagesProjectDeploymentConfigsPreviewPtrOutput struct{ *pulumi.OutputState }
+
+func (PagesProjectDeploymentConfigsPreviewPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesProjectDeploymentConfigsPreview)(nil)).Elem()
+}
+
+func (o PagesProjectDeploymentConfigsPreviewPtrOutput) ToPagesProjectDeploymentConfigsPreviewPtrOutput() PagesProjectDeploymentConfigsPreviewPtrOutput {
+	return o
+}
+
+func (o PagesProjectDeploymentConfigsPreviewPtrOutput) ToPagesProjectDeploymentConfigsPreviewPtrOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsPreviewPtrOutput {
+	return o
+}
+
+func (o PagesProjectDeploymentConfigsPreviewPtrOutput) Elem() PagesProjectDeploymentConfigsPreviewOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) PagesProjectDeploymentConfigsPreview {
+		if v != nil {
+			return *v
+		}
+		var ret PagesProjectDeploymentConfigsPreview
+		return ret
+	}).(PagesProjectDeploymentConfigsPreviewOutput)
+}
+
+func (o PagesProjectDeploymentConfigsPreviewPtrOutput) CompatibilityDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompatibilityDate
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PagesProjectDeploymentConfigsPreviewPtrOutput) CompatibilityFlags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CompatibilityFlags
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o PagesProjectDeploymentConfigsPreviewPtrOutput) D1Databases() pulumi.MapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.D1Databases
+	}).(pulumi.MapOutput)
+}
+
+func (o PagesProjectDeploymentConfigsPreviewPtrOutput) DurableObjectNamespaces() pulumi.MapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.DurableObjectNamespaces
+	}).(pulumi.MapOutput)
+}
+
+func (o PagesProjectDeploymentConfigsPreviewPtrOutput) EnvironmentVariables() pulumi.MapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentVariables
+	}).(pulumi.MapOutput)
+}
+
+func (o PagesProjectDeploymentConfigsPreviewPtrOutput) KvNamespaces() pulumi.MapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.KvNamespaces
+	}).(pulumi.MapOutput)
+}
+
+func (o PagesProjectDeploymentConfigsPreviewPtrOutput) R2Buckets() pulumi.MapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.R2Buckets
+	}).(pulumi.MapOutput)
+}
+
+type PagesProjectDeploymentConfigsProduction struct {
+	CompatibilityDate       *string                `pulumi:"compatibilityDate"`
+	CompatibilityFlags      []string               `pulumi:"compatibilityFlags"`
+	D1Databases             map[string]interface{} `pulumi:"d1Databases"`
+	DurableObjectNamespaces map[string]interface{} `pulumi:"durableObjectNamespaces"`
+	EnvironmentVariables    map[string]interface{} `pulumi:"environmentVariables"`
+	KvNamespaces            map[string]interface{} `pulumi:"kvNamespaces"`
+	R2Buckets               map[string]interface{} `pulumi:"r2Buckets"`
+}
+
+// PagesProjectDeploymentConfigsProductionInput is an input type that accepts PagesProjectDeploymentConfigsProductionArgs and PagesProjectDeploymentConfigsProductionOutput values.
+// You can construct a concrete instance of `PagesProjectDeploymentConfigsProductionInput` via:
+//
+//	PagesProjectDeploymentConfigsProductionArgs{...}
+type PagesProjectDeploymentConfigsProductionInput interface {
+	pulumi.Input
+
+	ToPagesProjectDeploymentConfigsProductionOutput() PagesProjectDeploymentConfigsProductionOutput
+	ToPagesProjectDeploymentConfigsProductionOutputWithContext(context.Context) PagesProjectDeploymentConfigsProductionOutput
+}
+
+type PagesProjectDeploymentConfigsProductionArgs struct {
+	CompatibilityDate       pulumi.StringPtrInput   `pulumi:"compatibilityDate"`
+	CompatibilityFlags      pulumi.StringArrayInput `pulumi:"compatibilityFlags"`
+	D1Databases             pulumi.MapInput         `pulumi:"d1Databases"`
+	DurableObjectNamespaces pulumi.MapInput         `pulumi:"durableObjectNamespaces"`
+	EnvironmentVariables    pulumi.MapInput         `pulumi:"environmentVariables"`
+	KvNamespaces            pulumi.MapInput         `pulumi:"kvNamespaces"`
+	R2Buckets               pulumi.MapInput         `pulumi:"r2Buckets"`
+}
+
+func (PagesProjectDeploymentConfigsProductionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesProjectDeploymentConfigsProduction)(nil)).Elem()
+}
+
+func (i PagesProjectDeploymentConfigsProductionArgs) ToPagesProjectDeploymentConfigsProductionOutput() PagesProjectDeploymentConfigsProductionOutput {
+	return i.ToPagesProjectDeploymentConfigsProductionOutputWithContext(context.Background())
+}
+
+func (i PagesProjectDeploymentConfigsProductionArgs) ToPagesProjectDeploymentConfigsProductionOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsProductionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectDeploymentConfigsProductionOutput)
+}
+
+func (i PagesProjectDeploymentConfigsProductionArgs) ToPagesProjectDeploymentConfigsProductionPtrOutput() PagesProjectDeploymentConfigsProductionPtrOutput {
+	return i.ToPagesProjectDeploymentConfigsProductionPtrOutputWithContext(context.Background())
+}
+
+func (i PagesProjectDeploymentConfigsProductionArgs) ToPagesProjectDeploymentConfigsProductionPtrOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsProductionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectDeploymentConfigsProductionOutput).ToPagesProjectDeploymentConfigsProductionPtrOutputWithContext(ctx)
+}
+
+// PagesProjectDeploymentConfigsProductionPtrInput is an input type that accepts PagesProjectDeploymentConfigsProductionArgs, PagesProjectDeploymentConfigsProductionPtr and PagesProjectDeploymentConfigsProductionPtrOutput values.
+// You can construct a concrete instance of `PagesProjectDeploymentConfigsProductionPtrInput` via:
+//
+//	        PagesProjectDeploymentConfigsProductionArgs{...}
+//
+//	or:
+//
+//	        nil
+type PagesProjectDeploymentConfigsProductionPtrInput interface {
+	pulumi.Input
+
+	ToPagesProjectDeploymentConfigsProductionPtrOutput() PagesProjectDeploymentConfigsProductionPtrOutput
+	ToPagesProjectDeploymentConfigsProductionPtrOutputWithContext(context.Context) PagesProjectDeploymentConfigsProductionPtrOutput
+}
+
+type pagesProjectDeploymentConfigsProductionPtrType PagesProjectDeploymentConfigsProductionArgs
+
+func PagesProjectDeploymentConfigsProductionPtr(v *PagesProjectDeploymentConfigsProductionArgs) PagesProjectDeploymentConfigsProductionPtrInput {
+	return (*pagesProjectDeploymentConfigsProductionPtrType)(v)
+}
+
+func (*pagesProjectDeploymentConfigsProductionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesProjectDeploymentConfigsProduction)(nil)).Elem()
+}
+
+func (i *pagesProjectDeploymentConfigsProductionPtrType) ToPagesProjectDeploymentConfigsProductionPtrOutput() PagesProjectDeploymentConfigsProductionPtrOutput {
+	return i.ToPagesProjectDeploymentConfigsProductionPtrOutputWithContext(context.Background())
+}
+
+func (i *pagesProjectDeploymentConfigsProductionPtrType) ToPagesProjectDeploymentConfigsProductionPtrOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsProductionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectDeploymentConfigsProductionPtrOutput)
+}
+
+type PagesProjectDeploymentConfigsProductionOutput struct{ *pulumi.OutputState }
+
+func (PagesProjectDeploymentConfigsProductionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesProjectDeploymentConfigsProduction)(nil)).Elem()
+}
+
+func (o PagesProjectDeploymentConfigsProductionOutput) ToPagesProjectDeploymentConfigsProductionOutput() PagesProjectDeploymentConfigsProductionOutput {
+	return o
+}
+
+func (o PagesProjectDeploymentConfigsProductionOutput) ToPagesProjectDeploymentConfigsProductionOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsProductionOutput {
+	return o
+}
+
+func (o PagesProjectDeploymentConfigsProductionOutput) ToPagesProjectDeploymentConfigsProductionPtrOutput() PagesProjectDeploymentConfigsProductionPtrOutput {
+	return o.ToPagesProjectDeploymentConfigsProductionPtrOutputWithContext(context.Background())
+}
+
+func (o PagesProjectDeploymentConfigsProductionOutput) ToPagesProjectDeploymentConfigsProductionPtrOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsProductionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PagesProjectDeploymentConfigsProduction) *PagesProjectDeploymentConfigsProduction {
+		return &v
+	}).(PagesProjectDeploymentConfigsProductionPtrOutput)
+}
+
+func (o PagesProjectDeploymentConfigsProductionOutput) CompatibilityDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) *string { return v.CompatibilityDate }).(pulumi.StringPtrOutput)
+}
+
+func (o PagesProjectDeploymentConfigsProductionOutput) CompatibilityFlags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) []string { return v.CompatibilityFlags }).(pulumi.StringArrayOutput)
+}
+
+func (o PagesProjectDeploymentConfigsProductionOutput) D1Databases() pulumi.MapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) map[string]interface{} { return v.D1Databases }).(pulumi.MapOutput)
+}
+
+func (o PagesProjectDeploymentConfigsProductionOutput) DurableObjectNamespaces() pulumi.MapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) map[string]interface{} {
+		return v.DurableObjectNamespaces
+	}).(pulumi.MapOutput)
+}
+
+func (o PagesProjectDeploymentConfigsProductionOutput) EnvironmentVariables() pulumi.MapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) map[string]interface{} { return v.EnvironmentVariables }).(pulumi.MapOutput)
+}
+
+func (o PagesProjectDeploymentConfigsProductionOutput) KvNamespaces() pulumi.MapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) map[string]interface{} { return v.KvNamespaces }).(pulumi.MapOutput)
+}
+
+func (o PagesProjectDeploymentConfigsProductionOutput) R2Buckets() pulumi.MapOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) map[string]interface{} { return v.R2Buckets }).(pulumi.MapOutput)
+}
+
+type PagesProjectDeploymentConfigsProductionPtrOutput struct{ *pulumi.OutputState }
+
+func (PagesProjectDeploymentConfigsProductionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesProjectDeploymentConfigsProduction)(nil)).Elem()
+}
+
+func (o PagesProjectDeploymentConfigsProductionPtrOutput) ToPagesProjectDeploymentConfigsProductionPtrOutput() PagesProjectDeploymentConfigsProductionPtrOutput {
+	return o
+}
+
+func (o PagesProjectDeploymentConfigsProductionPtrOutput) ToPagesProjectDeploymentConfigsProductionPtrOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsProductionPtrOutput {
+	return o
+}
+
+func (o PagesProjectDeploymentConfigsProductionPtrOutput) Elem() PagesProjectDeploymentConfigsProductionOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) PagesProjectDeploymentConfigsProduction {
+		if v != nil {
+			return *v
+		}
+		var ret PagesProjectDeploymentConfigsProduction
+		return ret
+	}).(PagesProjectDeploymentConfigsProductionOutput)
+}
+
+func (o PagesProjectDeploymentConfigsProductionPtrOutput) CompatibilityDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompatibilityDate
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PagesProjectDeploymentConfigsProductionPtrOutput) CompatibilityFlags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CompatibilityFlags
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o PagesProjectDeploymentConfigsProductionPtrOutput) D1Databases() pulumi.MapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.D1Databases
+	}).(pulumi.MapOutput)
+}
+
+func (o PagesProjectDeploymentConfigsProductionPtrOutput) DurableObjectNamespaces() pulumi.MapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.DurableObjectNamespaces
+	}).(pulumi.MapOutput)
+}
+
+func (o PagesProjectDeploymentConfigsProductionPtrOutput) EnvironmentVariables() pulumi.MapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentVariables
+	}).(pulumi.MapOutput)
+}
+
+func (o PagesProjectDeploymentConfigsProductionPtrOutput) KvNamespaces() pulumi.MapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.KvNamespaces
+	}).(pulumi.MapOutput)
+}
+
+func (o PagesProjectDeploymentConfigsProductionPtrOutput) R2Buckets() pulumi.MapOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.R2Buckets
+	}).(pulumi.MapOutput)
+}
+
+type PagesProjectSource struct {
+	// Configuration for the source of the Cloudflare Pages project.
+	Config *PagesProjectSourceConfig `pulumi:"config"`
+	// Project host type.
+	Type *string `pulumi:"type"`
+}
+
+// PagesProjectSourceInput is an input type that accepts PagesProjectSourceArgs and PagesProjectSourceOutput values.
+// You can construct a concrete instance of `PagesProjectSourceInput` via:
+//
+//	PagesProjectSourceArgs{...}
+type PagesProjectSourceInput interface {
+	pulumi.Input
+
+	ToPagesProjectSourceOutput() PagesProjectSourceOutput
+	ToPagesProjectSourceOutputWithContext(context.Context) PagesProjectSourceOutput
+}
+
+type PagesProjectSourceArgs struct {
+	// Configuration for the source of the Cloudflare Pages project.
+	Config PagesProjectSourceConfigPtrInput `pulumi:"config"`
+	// Project host type.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (PagesProjectSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesProjectSource)(nil)).Elem()
+}
+
+func (i PagesProjectSourceArgs) ToPagesProjectSourceOutput() PagesProjectSourceOutput {
+	return i.ToPagesProjectSourceOutputWithContext(context.Background())
+}
+
+func (i PagesProjectSourceArgs) ToPagesProjectSourceOutputWithContext(ctx context.Context) PagesProjectSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectSourceOutput)
+}
+
+func (i PagesProjectSourceArgs) ToPagesProjectSourcePtrOutput() PagesProjectSourcePtrOutput {
+	return i.ToPagesProjectSourcePtrOutputWithContext(context.Background())
+}
+
+func (i PagesProjectSourceArgs) ToPagesProjectSourcePtrOutputWithContext(ctx context.Context) PagesProjectSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectSourceOutput).ToPagesProjectSourcePtrOutputWithContext(ctx)
+}
+
+// PagesProjectSourcePtrInput is an input type that accepts PagesProjectSourceArgs, PagesProjectSourcePtr and PagesProjectSourcePtrOutput values.
+// You can construct a concrete instance of `PagesProjectSourcePtrInput` via:
+//
+//	        PagesProjectSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type PagesProjectSourcePtrInput interface {
+	pulumi.Input
+
+	ToPagesProjectSourcePtrOutput() PagesProjectSourcePtrOutput
+	ToPagesProjectSourcePtrOutputWithContext(context.Context) PagesProjectSourcePtrOutput
+}
+
+type pagesProjectSourcePtrType PagesProjectSourceArgs
+
+func PagesProjectSourcePtr(v *PagesProjectSourceArgs) PagesProjectSourcePtrInput {
+	return (*pagesProjectSourcePtrType)(v)
+}
+
+func (*pagesProjectSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesProjectSource)(nil)).Elem()
+}
+
+func (i *pagesProjectSourcePtrType) ToPagesProjectSourcePtrOutput() PagesProjectSourcePtrOutput {
+	return i.ToPagesProjectSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *pagesProjectSourcePtrType) ToPagesProjectSourcePtrOutputWithContext(ctx context.Context) PagesProjectSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectSourcePtrOutput)
+}
+
+type PagesProjectSourceOutput struct{ *pulumi.OutputState }
+
+func (PagesProjectSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesProjectSource)(nil)).Elem()
+}
+
+func (o PagesProjectSourceOutput) ToPagesProjectSourceOutput() PagesProjectSourceOutput {
+	return o
+}
+
+func (o PagesProjectSourceOutput) ToPagesProjectSourceOutputWithContext(ctx context.Context) PagesProjectSourceOutput {
+	return o
+}
+
+func (o PagesProjectSourceOutput) ToPagesProjectSourcePtrOutput() PagesProjectSourcePtrOutput {
+	return o.ToPagesProjectSourcePtrOutputWithContext(context.Background())
+}
+
+func (o PagesProjectSourceOutput) ToPagesProjectSourcePtrOutputWithContext(ctx context.Context) PagesProjectSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PagesProjectSource) *PagesProjectSource {
+		return &v
+	}).(PagesProjectSourcePtrOutput)
+}
+
+// Configuration for the source of the Cloudflare Pages project.
+func (o PagesProjectSourceOutput) Config() PagesProjectSourceConfigPtrOutput {
+	return o.ApplyT(func(v PagesProjectSource) *PagesProjectSourceConfig { return v.Config }).(PagesProjectSourceConfigPtrOutput)
+}
+
+// Project host type.
+func (o PagesProjectSourceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PagesProjectSource) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type PagesProjectSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (PagesProjectSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesProjectSource)(nil)).Elem()
+}
+
+func (o PagesProjectSourcePtrOutput) ToPagesProjectSourcePtrOutput() PagesProjectSourcePtrOutput {
+	return o
+}
+
+func (o PagesProjectSourcePtrOutput) ToPagesProjectSourcePtrOutputWithContext(ctx context.Context) PagesProjectSourcePtrOutput {
+	return o
+}
+
+func (o PagesProjectSourcePtrOutput) Elem() PagesProjectSourceOutput {
+	return o.ApplyT(func(v *PagesProjectSource) PagesProjectSource {
+		if v != nil {
+			return *v
+		}
+		var ret PagesProjectSource
+		return ret
+	}).(PagesProjectSourceOutput)
+}
+
+// Configuration for the source of the Cloudflare Pages project.
+func (o PagesProjectSourcePtrOutput) Config() PagesProjectSourceConfigPtrOutput {
+	return o.ApplyT(func(v *PagesProjectSource) *PagesProjectSourceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Config
+	}).(PagesProjectSourceConfigPtrOutput)
+}
+
+// Project host type.
+func (o PagesProjectSourcePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesProjectSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type PagesProjectSourceConfig struct {
+	DeploymentsEnabled       *bool    `pulumi:"deploymentsEnabled"`
+	Owner                    *string  `pulumi:"owner"`
+	PrCommentsEnabled        *bool    `pulumi:"prCommentsEnabled"`
+	PreviewBranchExcludes    []string `pulumi:"previewBranchExcludes"`
+	PreviewBranchIncludes    []string `pulumi:"previewBranchIncludes"`
+	PreviewDeploymentSetting *string  `pulumi:"previewDeploymentSetting"`
+	// The name of the branch that is used for the production environment.
+	ProductionBranch            string  `pulumi:"productionBranch"`
+	ProductionDeploymentEnabled *bool   `pulumi:"productionDeploymentEnabled"`
+	RepoName                    *string `pulumi:"repoName"`
+}
+
+// PagesProjectSourceConfigInput is an input type that accepts PagesProjectSourceConfigArgs and PagesProjectSourceConfigOutput values.
+// You can construct a concrete instance of `PagesProjectSourceConfigInput` via:
+//
+//	PagesProjectSourceConfigArgs{...}
+type PagesProjectSourceConfigInput interface {
+	pulumi.Input
+
+	ToPagesProjectSourceConfigOutput() PagesProjectSourceConfigOutput
+	ToPagesProjectSourceConfigOutputWithContext(context.Context) PagesProjectSourceConfigOutput
+}
+
+type PagesProjectSourceConfigArgs struct {
+	DeploymentsEnabled       pulumi.BoolPtrInput     `pulumi:"deploymentsEnabled"`
+	Owner                    pulumi.StringPtrInput   `pulumi:"owner"`
+	PrCommentsEnabled        pulumi.BoolPtrInput     `pulumi:"prCommentsEnabled"`
+	PreviewBranchExcludes    pulumi.StringArrayInput `pulumi:"previewBranchExcludes"`
+	PreviewBranchIncludes    pulumi.StringArrayInput `pulumi:"previewBranchIncludes"`
+	PreviewDeploymentSetting pulumi.StringPtrInput   `pulumi:"previewDeploymentSetting"`
+	// The name of the branch that is used for the production environment.
+	ProductionBranch            pulumi.StringInput    `pulumi:"productionBranch"`
+	ProductionDeploymentEnabled pulumi.BoolPtrInput   `pulumi:"productionDeploymentEnabled"`
+	RepoName                    pulumi.StringPtrInput `pulumi:"repoName"`
+}
+
+func (PagesProjectSourceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesProjectSourceConfig)(nil)).Elem()
+}
+
+func (i PagesProjectSourceConfigArgs) ToPagesProjectSourceConfigOutput() PagesProjectSourceConfigOutput {
+	return i.ToPagesProjectSourceConfigOutputWithContext(context.Background())
+}
+
+func (i PagesProjectSourceConfigArgs) ToPagesProjectSourceConfigOutputWithContext(ctx context.Context) PagesProjectSourceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectSourceConfigOutput)
+}
+
+func (i PagesProjectSourceConfigArgs) ToPagesProjectSourceConfigPtrOutput() PagesProjectSourceConfigPtrOutput {
+	return i.ToPagesProjectSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PagesProjectSourceConfigArgs) ToPagesProjectSourceConfigPtrOutputWithContext(ctx context.Context) PagesProjectSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectSourceConfigOutput).ToPagesProjectSourceConfigPtrOutputWithContext(ctx)
+}
+
+// PagesProjectSourceConfigPtrInput is an input type that accepts PagesProjectSourceConfigArgs, PagesProjectSourceConfigPtr and PagesProjectSourceConfigPtrOutput values.
+// You can construct a concrete instance of `PagesProjectSourceConfigPtrInput` via:
+//
+//	        PagesProjectSourceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PagesProjectSourceConfigPtrInput interface {
+	pulumi.Input
+
+	ToPagesProjectSourceConfigPtrOutput() PagesProjectSourceConfigPtrOutput
+	ToPagesProjectSourceConfigPtrOutputWithContext(context.Context) PagesProjectSourceConfigPtrOutput
+}
+
+type pagesProjectSourceConfigPtrType PagesProjectSourceConfigArgs
+
+func PagesProjectSourceConfigPtr(v *PagesProjectSourceConfigArgs) PagesProjectSourceConfigPtrInput {
+	return (*pagesProjectSourceConfigPtrType)(v)
+}
+
+func (*pagesProjectSourceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesProjectSourceConfig)(nil)).Elem()
+}
+
+func (i *pagesProjectSourceConfigPtrType) ToPagesProjectSourceConfigPtrOutput() PagesProjectSourceConfigPtrOutput {
+	return i.ToPagesProjectSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pagesProjectSourceConfigPtrType) ToPagesProjectSourceConfigPtrOutputWithContext(ctx context.Context) PagesProjectSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectSourceConfigPtrOutput)
+}
+
+type PagesProjectSourceConfigOutput struct{ *pulumi.OutputState }
+
+func (PagesProjectSourceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesProjectSourceConfig)(nil)).Elem()
+}
+
+func (o PagesProjectSourceConfigOutput) ToPagesProjectSourceConfigOutput() PagesProjectSourceConfigOutput {
+	return o
+}
+
+func (o PagesProjectSourceConfigOutput) ToPagesProjectSourceConfigOutputWithContext(ctx context.Context) PagesProjectSourceConfigOutput {
+	return o
+}
+
+func (o PagesProjectSourceConfigOutput) ToPagesProjectSourceConfigPtrOutput() PagesProjectSourceConfigPtrOutput {
+	return o.ToPagesProjectSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PagesProjectSourceConfigOutput) ToPagesProjectSourceConfigPtrOutputWithContext(ctx context.Context) PagesProjectSourceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PagesProjectSourceConfig) *PagesProjectSourceConfig {
+		return &v
+	}).(PagesProjectSourceConfigPtrOutput)
+}
+
+func (o PagesProjectSourceConfigOutput) DeploymentsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PagesProjectSourceConfig) *bool { return v.DeploymentsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o PagesProjectSourceConfigOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PagesProjectSourceConfig) *string { return v.Owner }).(pulumi.StringPtrOutput)
+}
+
+func (o PagesProjectSourceConfigOutput) PrCommentsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PagesProjectSourceConfig) *bool { return v.PrCommentsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o PagesProjectSourceConfigOutput) PreviewBranchExcludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PagesProjectSourceConfig) []string { return v.PreviewBranchExcludes }).(pulumi.StringArrayOutput)
+}
+
+func (o PagesProjectSourceConfigOutput) PreviewBranchIncludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PagesProjectSourceConfig) []string { return v.PreviewBranchIncludes }).(pulumi.StringArrayOutput)
+}
+
+func (o PagesProjectSourceConfigOutput) PreviewDeploymentSetting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PagesProjectSourceConfig) *string { return v.PreviewDeploymentSetting }).(pulumi.StringPtrOutput)
+}
+
+// The name of the branch that is used for the production environment.
+func (o PagesProjectSourceConfigOutput) ProductionBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v PagesProjectSourceConfig) string { return v.ProductionBranch }).(pulumi.StringOutput)
+}
+
+func (o PagesProjectSourceConfigOutput) ProductionDeploymentEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PagesProjectSourceConfig) *bool { return v.ProductionDeploymentEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o PagesProjectSourceConfigOutput) RepoName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PagesProjectSourceConfig) *string { return v.RepoName }).(pulumi.StringPtrOutput)
+}
+
+type PagesProjectSourceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PagesProjectSourceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesProjectSourceConfig)(nil)).Elem()
+}
+
+func (o PagesProjectSourceConfigPtrOutput) ToPagesProjectSourceConfigPtrOutput() PagesProjectSourceConfigPtrOutput {
+	return o
+}
+
+func (o PagesProjectSourceConfigPtrOutput) ToPagesProjectSourceConfigPtrOutputWithContext(ctx context.Context) PagesProjectSourceConfigPtrOutput {
+	return o
+}
+
+func (o PagesProjectSourceConfigPtrOutput) Elem() PagesProjectSourceConfigOutput {
+	return o.ApplyT(func(v *PagesProjectSourceConfig) PagesProjectSourceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PagesProjectSourceConfig
+		return ret
+	}).(PagesProjectSourceConfigOutput)
+}
+
+func (o PagesProjectSourceConfigPtrOutput) DeploymentsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PagesProjectSourceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o PagesProjectSourceConfigPtrOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesProjectSourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Owner
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PagesProjectSourceConfigPtrOutput) PrCommentsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PagesProjectSourceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PrCommentsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o PagesProjectSourceConfigPtrOutput) PreviewBranchExcludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PagesProjectSourceConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PreviewBranchExcludes
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o PagesProjectSourceConfigPtrOutput) PreviewBranchIncludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PagesProjectSourceConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PreviewBranchIncludes
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o PagesProjectSourceConfigPtrOutput) PreviewDeploymentSetting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesProjectSourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreviewDeploymentSetting
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the branch that is used for the production environment.
+func (o PagesProjectSourceConfigPtrOutput) ProductionBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesProjectSourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProductionBranch
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PagesProjectSourceConfigPtrOutput) ProductionDeploymentEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PagesProjectSourceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ProductionDeploymentEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o PagesProjectSourceConfigPtrOutput) RepoName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesProjectSourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepoName
+	}).(pulumi.StringPtrOutput)
+}
+
 type RateLimitAction struct {
 	// The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge', 'js_challenge' and 'managed_challenge'.
 	Mode string `pulumi:"mode"`
@@ -28747,6 +29977,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsForwardingUrlPtrInput)(nil)).Elem(), PageRuleActionsForwardingUrlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsMinifyInput)(nil)).Elem(), PageRuleActionsMinifyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsMinifyArrayInput)(nil)).Elem(), PageRuleActionsMinifyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectBuildConfigInput)(nil)).Elem(), PagesProjectBuildConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectBuildConfigPtrInput)(nil)).Elem(), PagesProjectBuildConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectDeploymentConfigsInput)(nil)).Elem(), PagesProjectDeploymentConfigsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectDeploymentConfigsPtrInput)(nil)).Elem(), PagesProjectDeploymentConfigsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectDeploymentConfigsPreviewInput)(nil)).Elem(), PagesProjectDeploymentConfigsPreviewArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectDeploymentConfigsPreviewPtrInput)(nil)).Elem(), PagesProjectDeploymentConfigsPreviewArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectDeploymentConfigsProductionInput)(nil)).Elem(), PagesProjectDeploymentConfigsProductionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectDeploymentConfigsProductionPtrInput)(nil)).Elem(), PagesProjectDeploymentConfigsProductionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectSourceInput)(nil)).Elem(), PagesProjectSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectSourcePtrInput)(nil)).Elem(), PagesProjectSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectSourceConfigInput)(nil)).Elem(), PagesProjectSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectSourceConfigPtrInput)(nil)).Elem(), PagesProjectSourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitActionInput)(nil)).Elem(), RateLimitActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitActionPtrInput)(nil)).Elem(), RateLimitActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitActionResponseInput)(nil)).Elem(), RateLimitActionResponseArgs{})
@@ -29107,6 +30349,18 @@ func init() {
 	pulumi.RegisterOutputType(PageRuleActionsForwardingUrlPtrOutput{})
 	pulumi.RegisterOutputType(PageRuleActionsMinifyOutput{})
 	pulumi.RegisterOutputType(PageRuleActionsMinifyArrayOutput{})
+	pulumi.RegisterOutputType(PagesProjectBuildConfigOutput{})
+	pulumi.RegisterOutputType(PagesProjectBuildConfigPtrOutput{})
+	pulumi.RegisterOutputType(PagesProjectDeploymentConfigsOutput{})
+	pulumi.RegisterOutputType(PagesProjectDeploymentConfigsPtrOutput{})
+	pulumi.RegisterOutputType(PagesProjectDeploymentConfigsPreviewOutput{})
+	pulumi.RegisterOutputType(PagesProjectDeploymentConfigsPreviewPtrOutput{})
+	pulumi.RegisterOutputType(PagesProjectDeploymentConfigsProductionOutput{})
+	pulumi.RegisterOutputType(PagesProjectDeploymentConfigsProductionPtrOutput{})
+	pulumi.RegisterOutputType(PagesProjectSourceOutput{})
+	pulumi.RegisterOutputType(PagesProjectSourcePtrOutput{})
+	pulumi.RegisterOutputType(PagesProjectSourceConfigOutput{})
+	pulumi.RegisterOutputType(PagesProjectSourceConfigPtrOutput{})
 	pulumi.RegisterOutputType(RateLimitActionOutput{})
 	pulumi.RegisterOutputType(RateLimitActionPtrOutput{})
 	pulumi.RegisterOutputType(RateLimitActionResponseOutput{})
