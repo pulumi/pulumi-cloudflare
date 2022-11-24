@@ -36,14 +36,14 @@ class GetDevicesResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
     def devices(self) -> Sequence['outputs.GetDevicesDeviceResult']:
+        """
+        A list of device object. See below for nested attributes.
+        """
         return pulumi.get(self, "devices")
 
     @property
@@ -69,9 +69,19 @@ class AwaitableGetDevicesResult(GetDevicesResult):
 def get_devices(account_id: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDevicesResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).
 
-    :param str account_id: The account identifier to target for the resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    devices = cloudflare.get_devices(account_id="c68973221045fe805dfb9aa520153148")
+    ```
+
+
+    :param str account_id: The account for which to list the devices.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -88,8 +98,18 @@ def get_devices(account_id: Optional[str] = None,
 def get_devices_output(account_id: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDevicesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).
 
-    :param str account_id: The account identifier to target for the resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    devices = cloudflare.get_devices(account_id="c68973221045fe805dfb9aa520153148")
+    ```
+
+
+    :param str account_id: The account for which to list the devices.
     """
     ...

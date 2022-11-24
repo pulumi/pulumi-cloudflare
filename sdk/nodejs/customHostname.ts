@@ -80,6 +80,10 @@ export class CustomHostname extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * Whether to wait for a custom hostname SSL sub-object to reach status `pendingValidation` during creation. Defaults to `false`.
+     */
+    public readonly waitForSslPendingValidation!: pulumi.Output<boolean | undefined>;
+    /**
      * The zone identifier to target for the resource.
      */
     public readonly zoneId!: pulumi.Output<string>;
@@ -104,6 +108,7 @@ export class CustomHostname extends pulumi.CustomResource {
             resourceInputs["ownershipVerificationHttp"] = state ? state.ownershipVerificationHttp : undefined;
             resourceInputs["ssls"] = state ? state.ssls : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["waitForSslPendingValidation"] = state ? state.waitForSslPendingValidation : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as CustomHostnameArgs | undefined;
@@ -117,6 +122,7 @@ export class CustomHostname extends pulumi.CustomResource {
             resourceInputs["customOriginSni"] = args ? args.customOriginSni : undefined;
             resourceInputs["hostname"] = args ? args.hostname : undefined;
             resourceInputs["ssls"] = args ? args.ssls : undefined;
+            resourceInputs["waitForSslPendingValidation"] = args ? args.waitForSslPendingValidation : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["ownershipVerification"] = undefined /*out*/;
             resourceInputs["ownershipVerificationHttp"] = undefined /*out*/;
@@ -154,6 +160,10 @@ export interface CustomHostnameState {
      */
     status?: pulumi.Input<string>;
     /**
+     * Whether to wait for a custom hostname SSL sub-object to reach status `pendingValidation` during creation. Defaults to `false`.
+     */
+    waitForSslPendingValidation?: pulumi.Input<boolean>;
+    /**
      * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
@@ -179,6 +189,10 @@ export interface CustomHostnameArgs {
      * SSL configuration of the certificate.
      */
     ssls?: pulumi.Input<pulumi.Input<inputs.CustomHostnameSsl>[]>;
+    /**
+     * Whether to wait for a custom hostname SSL sub-object to reach status `pendingValidation` during creation. Defaults to `false`.
+     */
+    waitForSslPendingValidation?: pulumi.Input<boolean>;
     /**
      * The zone identifier to target for the resource.
      */

@@ -16,14 +16,14 @@ public final class GetZonesFilter extends com.pulumi.resources.InvokeArgs {
     public static final GetZonesFilter Empty = new GetZonesFilter();
 
     /**
-     * The account identifier to target for the resource.
+     * Only search for zones in this account.
      * 
      */
     @Import(name="accountId")
     private @Nullable String accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Only search for zones in this account.
      * 
      */
     public Optional<String> accountId() {
@@ -31,52 +31,90 @@ public final class GetZonesFilter extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Defaults to `exact`.
+     * The type of search to perform for the `name` value
+     * when querying the zone API. Valid values: `&#34;exact&#34;` and `&#34;contains&#34;`. Defaults
+     * to `&#34;exact&#34;`.
      * 
      */
     @Import(name="lookupType")
     private @Nullable String lookupType;
 
     /**
-     * @return Defaults to `exact`.
+     * @return The type of search to perform for the `name` value
+     * when querying the zone API. Valid values: `&#34;exact&#34;` and `&#34;contains&#34;`. Defaults
+     * to `&#34;exact&#34;`.
      * 
      */
     public Optional<String> lookupType() {
         return Optional.ofNullable(this.lookupType);
     }
 
+    /**
+     * A RE2 compatible regular expression to filter the
+     * results. This is performed client side whereas the `name` and `lookup_type`
+     * are performed on the Cloudflare server side.
+     * 
+     */
     @Import(name="match")
     private @Nullable String match;
 
+    /**
+     * @return A RE2 compatible regular expression to filter the
+     * results. This is performed client side whereas the `name` and `lookup_type`
+     * are performed on the Cloudflare server side.
+     * 
+     */
     public Optional<String> match() {
         return Optional.ofNullable(this.match);
     }
 
+    /**
+     * A string value to search for.
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return A string value to search for.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * Defaults to `false`.
+     * Paused status of the zone to lookup. Valid values are
+     * `true` or `false`.
      * 
      */
     @Import(name="paused")
     private @Nullable Boolean paused;
 
     /**
-     * @return Defaults to `false`.
+     * @return Paused status of the zone to lookup. Valid values are
+     * `true` or `false`.
      * 
      */
     public Optional<Boolean> paused() {
         return Optional.ofNullable(this.paused);
     }
 
+    /**
+     * Status of the zone to lookup. Valid values: `&#34;active&#34;`,
+     * `&#34;pending&#34;`, `&#34;initializing&#34;`, `&#34;moved&#34;`, `&#34;deleted&#34;`, `&#34;deactivated&#34;` and
+     * `&#34;read only&#34;`.
+     * 
+     */
     @Import(name="status")
     private @Nullable String status;
 
+    /**
+     * @return Status of the zone to lookup. Valid values: `&#34;active&#34;`,
+     * `&#34;pending&#34;`, `&#34;initializing&#34;`, `&#34;moved&#34;`, `&#34;deleted&#34;`, `&#34;deactivated&#34;` and
+     * `&#34;read only&#34;`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
@@ -111,7 +149,7 @@ public final class GetZonesFilter extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Only search for zones in this account.
          * 
          * @return builder
          * 
@@ -122,7 +160,9 @@ public final class GetZonesFilter extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param lookupType Defaults to `exact`.
+         * @param lookupType The type of search to perform for the `name` value
+         * when querying the zone API. Valid values: `&#34;exact&#34;` and `&#34;contains&#34;`. Defaults
+         * to `&#34;exact&#34;`.
          * 
          * @return builder
          * 
@@ -132,18 +172,33 @@ public final class GetZonesFilter extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param match A RE2 compatible regular expression to filter the
+         * results. This is performed client side whereas the `name` and `lookup_type`
+         * are performed on the Cloudflare server side.
+         * 
+         * @return builder
+         * 
+         */
         public Builder match(@Nullable String match) {
             $.match = match;
             return this;
         }
 
+        /**
+         * @param name A string value to search for.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param paused Defaults to `false`.
+         * @param paused Paused status of the zone to lookup. Valid values are
+         * `true` or `false`.
          * 
          * @return builder
          * 
@@ -153,6 +208,14 @@ public final class GetZonesFilter extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param status Status of the zone to lookup. Valid values: `&#34;active&#34;`,
+         * `&#34;pending&#34;`, `&#34;initializing&#34;`, `&#34;moved&#34;`, `&#34;deleted&#34;`, `&#34;deactivated&#34;` and
+         * `&#34;read only&#34;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable String status) {
             $.status = status;
             return this;

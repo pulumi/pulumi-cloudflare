@@ -82,6 +82,10 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
     }
 
     /**
+     * The account identifier to target for the resource.
+     */
+    public readonly accountId!: pulumi.Output<string | undefined>;
+    /**
      * Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
      */
     public readonly allowInsecure!: pulumi.Output<boolean | undefined>;
@@ -159,6 +163,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerMonitorState | undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["allowInsecure"] = state ? state.allowInsecure : undefined;
             resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -177,6 +182,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as LoadBalancerMonitorArgs | undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["allowInsecure"] = args ? args.allowInsecure : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["expectedBody"] = args ? args.expectedBody : undefined;
@@ -203,6 +209,10 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LoadBalancerMonitor resources.
  */
 export interface LoadBalancerMonitorState {
+    /**
+     * The account identifier to target for the resource.
+     */
+    accountId?: pulumi.Input<string>;
     /**
      * Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
      */
@@ -273,6 +283,10 @@ export interface LoadBalancerMonitorState {
  * The set of arguments for constructing a LoadBalancerMonitor resource.
  */
 export interface LoadBalancerMonitorArgs {
+    /**
+     * The account identifier to target for the resource.
+     */
+    accountId?: pulumi.Input<string>;
     /**
      * Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
      */

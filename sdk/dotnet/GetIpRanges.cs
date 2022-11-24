@@ -11,6 +11,42 @@ namespace Pulumi.Cloudflare
 {
     public static class GetIpRanges
     {
+        /// <summary>
+        /// Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare edge nodes.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var cloudflare = Cloudflare.GetIpRanges.Invoke();
+        /// 
+        ///     var allowCloudflareIngress = new Gcp.Compute.Firewall("allowCloudflareIngress", new()
+        ///     {
+        ///         Network = "default",
+        ///         SourceRanges = cloudflare.Apply(getIpRangesResult =&gt; getIpRangesResult.Ipv4CidrBlocks),
+        ///         Allows = new[]
+        ///         {
+        ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+        ///             {
+        ///                 Ports = "443",
+        ///                 Protocol = "tcp",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetIpRangesResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIpRangesResult>("cloudflare:index/getIpRanges:getIpRanges", InvokeArgs.Empty, options.WithDefaults());
     }
@@ -19,14 +55,29 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetIpRangesResult
     {
+        /// <summary>
+        /// The lexically ordered list of only the IPv4 China CIDR blocks.
+        /// </summary>
         public readonly ImmutableArray<string> ChinaIpv4CidrBlocks;
+        /// <summary>
+        /// The lexically ordered list of only the IPv6 China CIDR blocks.
+        /// </summary>
         public readonly ImmutableArray<string> ChinaIpv6CidrBlocks;
+        /// <summary>
+        /// The lexically ordered list of all non-China CIDR blocks.
+        /// </summary>
         public readonly ImmutableArray<string> CidrBlocks;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The lexically ordered list of only the IPv4 CIDR blocks.
+        /// </summary>
         public readonly ImmutableArray<string> Ipv4CidrBlocks;
+        /// <summary>
+        /// The lexically ordered list of only the IPv6 CIDR blocks.
+        /// </summary>
         public readonly ImmutableArray<string> Ipv6CidrBlocks;
 
         [OutputConstructor]

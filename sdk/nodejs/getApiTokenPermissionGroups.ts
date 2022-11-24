@@ -4,6 +4,19 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions). Commonly used as references within [`cloudflare.ApiToken`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const test = cloudflare.getApiTokenPermissionGroups({});
+ * export const dnsReadPermissionId = test.then(test => test.permissions?["DNS Read"]);
+ * ```
+ */
 export function getApiTokenPermissionGroups(opts?: pulumi.InvokeOptions): Promise<GetApiTokenPermissionGroupsResult> {
     if (!opts) {
         opts = {}
@@ -22,5 +35,9 @@ export interface GetApiTokenPermissionGroupsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A map of permission groups where keys are human-readable permission names
+     * and values are permission IDs.
+     */
     readonly permissions: {[key: string]: any};
 }

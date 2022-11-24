@@ -30,6 +30,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/loadBalancerPool:LoadBalancerPool")
 public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
     /**
+     * The account identifier to target for the resource.
+     * 
+     */
+    @Export(name="accountId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> accountId;
+
+    /**
+     * @return The account identifier to target for the resource.
+     * 
+     */
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
+    }
+    /**
      * A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
      * 
      */

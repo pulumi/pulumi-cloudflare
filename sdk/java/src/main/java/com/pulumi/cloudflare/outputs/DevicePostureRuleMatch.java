@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DevicePostureRuleMatch {
     /**
-     * @return The platform of the device. Valid values are `windows`, `mac`, `linux`, `android`, and `ios`.
+     * @return The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
      * 
      */
     private @Nullable String platform;
 
     private DevicePostureRuleMatch() {}
     /**
-     * @return The platform of the device. Valid values are `windows`, `mac`, `linux`, `android`, and `ios`.
+     * @return The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
      * 
      */
     public Optional<String> platform() {

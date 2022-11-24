@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
+ */
 export function getAccountRoles(args: GetAccountRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountRolesResult> {
     if (!opts) {
         opts = {}
@@ -21,7 +24,7 @@ export function getAccountRoles(args: GetAccountRolesArgs, opts?: pulumi.InvokeO
  */
 export interface GetAccountRolesArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account for which to list the roles.
      */
     accountId: string;
 }
@@ -30,14 +33,14 @@ export interface GetAccountRolesArgs {
  * A collection of values returned by getAccountRoles.
  */
 export interface GetAccountRolesResult {
-    /**
-     * The account identifier to target for the resource.
-     */
     readonly accountId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of roles object. See below for nested attributes.
+     */
     readonly roles: outputs.GetAccountRolesRole[];
 }
 
@@ -50,7 +53,7 @@ export function getAccountRolesOutput(args: GetAccountRolesOutputArgs, opts?: pu
  */
 export interface GetAccountRolesOutputArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account for which to list the roles.
      */
     accountId: pulumi.Input<string>;
 }

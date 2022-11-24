@@ -12,15 +12,27 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class GetWafPackagesFilterArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+        /// </summary>
         [Input("actionMode")]
         public string? ActionMode { get; set; }
 
+        /// <summary>
+        /// Detection mode of the WAF Rule Packages to lookup.
+        /// </summary>
         [Input("detectionMode")]
         public string? DetectionMode { get; set; }
 
+        /// <summary>
+        /// A regular expression matching the name of the WAF Rule Packages to lookup.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+        /// </summary>
         [Input("sensitivity")]
         public string? Sensitivity { get; set; }
 

@@ -68,6 +68,10 @@ export class AccountMember extends pulumi.CustomResource {
      * List of account role IDs that you want to assign to a member.
      */
     public readonly roleIds!: pulumi.Output<string[]>;
+    /**
+     * A member's status in the account. Available values: `accepted`, `pending`.
+     */
+    public readonly status!: pulumi.Output<string | undefined>;
 
     /**
      * Create a AccountMember resource with the given unique name, arguments, and options.
@@ -85,6 +89,7 @@ export class AccountMember extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["emailAddress"] = state ? state.emailAddress : undefined;
             resourceInputs["roleIds"] = state ? state.roleIds : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as AccountMemberArgs | undefined;
             if ((!args || args.emailAddress === undefined) && !opts.urn) {
@@ -96,6 +101,7 @@ export class AccountMember extends pulumi.CustomResource {
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["emailAddress"] = args ? args.emailAddress : undefined;
             resourceInputs["roleIds"] = args ? args.roleIds : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccountMember.__pulumiType, name, resourceInputs, opts);
@@ -118,6 +124,10 @@ export interface AccountMemberState {
      * List of account role IDs that you want to assign to a member.
      */
     roleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A member's status in the account. Available values: `accepted`, `pending`.
+     */
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -136,4 +146,8 @@ export interface AccountMemberArgs {
      * List of account role IDs that you want to assign to a member.
      */
     roleIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A member's status in the account. Available values: `accepted`, `pending`.
+     */
+    status?: pulumi.Input<string>;
 }

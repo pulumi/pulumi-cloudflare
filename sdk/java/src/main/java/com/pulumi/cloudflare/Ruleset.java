@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .description(&#34;Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset&#34;)
  *                 .enabled(true)
- *                 .expression(&#34;true&#34;)
+ *                 .expression(&#34;(http.host eq \&#34;example.host.com\&#34;)&#34;)
  *                 .build())
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .description(&#34;overrides to only enable wordpress rules to block&#34;)
  *                 .enabled(false)
- *                 .expression(&#34;true&#34;)
+ *                 .expression(&#34;(http.host eq \&#34;example.host.com\&#34;)&#34;)
  *                 .build())
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
@@ -157,7 +157,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .description(&#34;URI transformation query example&#34;)
  *                 .enabled(true)
- *                 .expression(&#34;true&#34;)
+ *                 .expression(&#34;(http.host eq \&#34;example.host.com\&#34;)&#34;)
  *                 .build())
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
@@ -188,7 +188,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .description(&#34;example request header transform rule&#34;)
  *                 .enabled(false)
- *                 .expression(&#34;true&#34;)
+ *                 .expression(&#34;(http.host eq \&#34;example.host.com\&#34;)&#34;)
  *                 .build())
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
@@ -259,7 +259,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .description(&#34;log custom fields rule&#34;)
  *                 .enabled(true)
- *                 .expression(&#34;true&#34;)
+ *                 .expression(&#34;(http.host eq \&#34;example.host.com\&#34;)&#34;)
  *                 .build())
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
@@ -323,7 +323,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .description(&#34;set cache settings rule&#34;)
  *                 .enabled(true)
- *                 .expression(&#34;true&#34;)
+ *                 .expression(&#34;(http.host eq \&#34;example.host.com\&#34;)&#34;)
  *                 .build())
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
@@ -349,7 +349,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var redirectFromValueExample = new Ruleset(&#34;redirectFromValueExample&#34;, RulesetArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .description(&#34;Redirect ruleset&#34;)
  *             .kind(&#34;root&#34;)
  *             .name(&#34;redirects&#34;)
@@ -367,8 +366,9 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .description(&#34;Apply redirect from value&#34;)
  *                 .enabled(true)
- *                 .expression(&#34;true&#34;)
+ *                 .expression(&#34;(http.request.uri.path matches \&#34;^/api/\&#34;)&#34;)
  *                 .build())
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *         var httpCustomErrorExample = new Ruleset(&#34;httpCustomErrorExample&#34;, RulesetArgs.builder()        
@@ -384,6 +384,24 @@ import javax.annotation.Nullable;
  *                     .statusCode(&#34;530&#34;)
  *                     .build())
  *                 .description(&#34;serve some error response&#34;)
+ *                 .enabled(true)
+ *                 .expression(&#34;(http.request.uri.path matches \&#34;^/api/\&#34;)&#34;)
+ *                 .build())
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .build());
+ * 
+ *         var httpConfigRulesExample = new Ruleset(&#34;httpConfigRulesExample&#34;, RulesetArgs.builder()        
+ *             .description(&#34;set config rules for request&#34;)
+ *             .kind(&#34;zone&#34;)
+ *             .name(&#34;set config rules&#34;)
+ *             .phase(&#34;http_config_settings&#34;)
+ *             .rules(RulesetRuleArgs.builder()
+ *                 .action(&#34;set_config&#34;)
+ *                 .actionParameters(RulesetRuleActionParametersArgs.builder()
+ *                     .bic(true)
+ *                     .emailObfuscation(true)
+ *                     .build())
+ *                 .description(&#34;set config rules for matching request&#34;)
  *                 .enabled(true)
  *                 .expression(&#34;(http.request.uri.path matches \&#34;^/api/\&#34;)&#34;)
  *                 .build())

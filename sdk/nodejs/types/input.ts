@@ -249,6 +249,29 @@ export interface AccessIdentityProviderConfig {
     tokenUrl?: pulumi.Input<string>;
 }
 
+export interface AccessOrganizationLoginDesign {
+    /**
+     * The background color on the login page.
+     */
+    backgroundColor?: pulumi.Input<string>;
+    /**
+     * The text at the bottom of the login page.
+     */
+    footerText?: pulumi.Input<string>;
+    /**
+     * The text at the top of the login page.
+     */
+    headerText?: pulumi.Input<string>;
+    /**
+     * The URL of the logo on the login page.
+     */
+    logoPath?: pulumi.Input<string>;
+    /**
+     * The text color on the login page.
+     */
+    textColor?: pulumi.Input<string>;
+}
+
 export interface AccessPolicyApprovalGroup {
     /**
      * Number of approvals needed.
@@ -461,6 +484,17 @@ export interface AccessRuleConfiguration {
     value: pulumi.Input<string>;
 }
 
+export interface ApiShieldAuthIdCharacteristic {
+    /**
+     * The name of the characteristic.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The type of characteristic. Available values: `header`, `cookie`.
+     */
+    type: pulumi.Input<string>;
+}
+
 export interface ApiTokenCondition {
     /**
      * Request IP related conditions.
@@ -614,14 +648,20 @@ export interface DevicePostureIntegrationConfig {
 }
 
 export interface DevicePostureRuleInput {
+    /**
+     * The workspace one device compliance status.
+     */
     complianceStatus?: pulumi.Input<string>;
+    /**
+     * The workspace one connection id.
+     */
     connectionId?: pulumi.Input<string>;
     /**
-     * = (Required) The domain that the client must join.
+     * The domain that the client must join.
      */
     domain?: pulumi.Input<string>;
     /**
-     * = (Required) True if the firewall must be enabled.
+     * True if the firewall must be enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -633,15 +673,23 @@ export interface DevicePostureRuleInput {
      */
     id?: pulumi.Input<string>;
     /**
-     * = (Required) The version comparison operator in (>,>=,<,<=,==)
+     * The version comparison operator.
      */
     operator?: pulumi.Input<string>;
     /**
-     * The path to the application.
+     * The operating system excluding version information.
+     */
+    osDistroName?: pulumi.Input<string>;
+    /**
+     * The operating system version excluding OS name information or release name.
+     */
+    osDistroRevision?: pulumi.Input<string>;
+    /**
+     * The path to the file.
      */
     path?: pulumi.Input<string>;
     /**
-     * = (Required) True if all drives must be encrypted.
+     * True if all drives must be encrypted.
      */
     requireAll?: pulumi.Input<boolean>;
     /**
@@ -653,20 +701,85 @@ export interface DevicePostureRuleInput {
      */
     sha256?: pulumi.Input<string>;
     /**
-     * The thumbprint of the application certificate.
+     * The thumbprint of the file certificate.
      */
     thumbprint?: pulumi.Input<string>;
     /**
-     * = (Required) The operating system semantic version.
+     * The operating system semantic version.
      */
     version?: pulumi.Input<string>;
 }
 
 export interface DevicePostureRuleMatch {
     /**
-     * The platform of the device. Valid values are `windows`, `mac`, `linux`, `android`, and `ios`.
+     * The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
      */
     platform?: pulumi.Input<string>;
+}
+
+export interface DlpProfileEntry {
+    /**
+     * Whether the entry is active. Defaults to `false`.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Unique entry identifier.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Name of the entry to deploy.
+     */
+    name: pulumi.Input<string>;
+    pattern?: pulumi.Input<inputs.DlpProfileEntryPattern>;
+}
+
+export interface DlpProfileEntryPattern {
+    regex: pulumi.Input<string>;
+    validation?: pulumi.Input<string>;
+}
+
+export interface EmailRoutingCatchAllAction {
+    /**
+     * Type of supported action. Available values: `drop`, `forward`, `worker`.
+     */
+    type: pulumi.Input<string>;
+    /**
+     * A list with items in the following form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface EmailRoutingCatchAllMatcher {
+    /**
+     * Type of matcher. Available values: `all`.
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface EmailRoutingRuleAction {
+    /**
+     * Type of supported action.
+     */
+    type: pulumi.Input<string>;
+    /**
+     * An array with items in the following form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface EmailRoutingRuleMatcher {
+    /**
+     * Field for type matcher.
+     */
+    field?: pulumi.Input<string>;
+    /**
+     * Type of matcher.
+     */
+    type: pulumi.Input<string>;
+    /**
+     * Value for matcher.
+     */
+    value?: pulumi.Input<string>;
 }
 
 export interface FallbackDomainDomain {
@@ -685,74 +798,160 @@ export interface FallbackDomainDomain {
 }
 
 export interface GetWafGroupsFilter {
+    /**
+     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+     */
     mode?: string;
+    /**
+     * A regular expression matching the name of the WAF Rule Groups to lookup.
+     */
     name?: string;
 }
 
 export interface GetWafGroupsFilterArgs {
+    /**
+     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+     */
     mode?: pulumi.Input<string>;
+    /**
+     * A regular expression matching the name of the WAF Rule Groups to lookup.
+     */
     name?: pulumi.Input<string>;
-}
-
-export interface GetWafPackagesFilter {
-    actionMode?: string;
-    detectionMode?: string;
-    name?: string;
-    sensitivity?: string;
 }
 
 export interface GetWafPackagesFilterArgs {
+    /**
+     * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+     */
     actionMode?: pulumi.Input<string>;
+    /**
+     * Detection mode of the WAF Rule Packages to lookup.
+     */
     detectionMode?: pulumi.Input<string>;
+    /**
+     * A regular expression matching the name of the WAF Rule Packages to lookup.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+     */
     sensitivity?: pulumi.Input<string>;
 }
 
+export interface GetWafPackagesFilter {
+    /**
+     * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+     */
+    actionMode?: string;
+    /**
+     * Detection mode of the WAF Rule Packages to lookup.
+     */
+    detectionMode?: string;
+    /**
+     * A regular expression matching the name of the WAF Rule Packages to lookup.
+     */
+    name?: string;
+    /**
+     * Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+     */
+    sensitivity?: string;
+}
+
 export interface GetWafRulesFilterArgs {
+    /**
+     * A regular expression matching the description of the WAF Rules to lookup.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+     */
     groupId?: pulumi.Input<string>;
+    /**
+     * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
+     */
     mode?: pulumi.Input<string>;
 }
 
 export interface GetWafRulesFilter {
+    /**
+     * A regular expression matching the description of the WAF Rules to lookup.
+     */
     description?: string;
+    /**
+     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+     */
     groupId?: string;
+    /**
+     * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
+     */
     mode?: string;
 }
 
 export interface GetZonesFilter {
     /**
-     * The account identifier to target for the resource.
+     * Only search for zones in this account.
      */
     accountId?: string;
     /**
-     * Defaults to `exact`.
+     * The type of search to perform for the `name` value
+     * when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
+     * to `"exact"`.
      */
     lookupType?: string;
+    /**
+     * A RE2 compatible regular expression to filter the
+     * results. This is performed client side whereas the `name` and `lookupType`
+     * are performed on the Cloudflare server side.
+     */
     match?: string;
+    /**
+     * A string value to search for.
+     */
     name?: string;
     /**
-     * Defaults to `false`.
+     * Paused status of the zone to lookup. Valid values are
+     * `true` or `false`.
      */
     paused?: boolean;
+    /**
+     * Status of the zone to lookup. Valid values: `"active"`,
+     * `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
+     * `"read only"`.
+     */
     status?: string;
 }
 
 export interface GetZonesFilterArgs {
     /**
-     * The account identifier to target for the resource.
+     * Only search for zones in this account.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Defaults to `exact`.
+     * The type of search to perform for the `name` value
+     * when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
+     * to `"exact"`.
      */
     lookupType?: pulumi.Input<string>;
+    /**
+     * A RE2 compatible regular expression to filter the
+     * results. This is performed client side whereas the `name` and `lookupType`
+     * are performed on the Cloudflare server side.
+     */
     match?: pulumi.Input<string>;
+    /**
+     * A string value to search for.
+     */
     name?: pulumi.Input<string>;
     /**
-     * Defaults to `false`.
+     * Paused status of the zone to lookup. Valid values are
+     * `true` or `false`.
      */
     paused?: pulumi.Input<boolean>;
+    /**
+     * Status of the zone to lookup. Valid values: `"active"`,
+     * `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
+     * `"read only"`.
+     */
     status?: pulumi.Input<string>;
 }
 
@@ -801,15 +1000,33 @@ export interface ListItemValueRedirect {
     targetUrl: pulumi.Input<string>;
 }
 
+export interface LoadBalancerAdaptiveRouting {
+    /**
+     * Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+     */
+    failoverAcrossPools?: pulumi.Input<boolean>;
+}
+
 export interface LoadBalancerCountryPool {
     /**
      * A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
      */
     country: pulumi.Input<string>;
     /**
-     * A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     * A list of pool IDs in failover priority to use in the given country.
      */
     poolIds: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface LoadBalancerLocationStrategy {
+    /**
+     * Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolverIp` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolverIp`. Defaults to `pop`.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
+     */
+    preferEcs?: pulumi.Input<string>;
 }
 
 export interface LoadBalancerMonitorHeader {
@@ -894,9 +1111,20 @@ export interface LoadBalancerPopPool {
     pop: pulumi.Input<string>;
 }
 
+export interface LoadBalancerRandomSteering {
+    /**
+     * The default weight for pools in the load balancer that are not specified in the `poolWeights` map.
+     */
+    defaultWeight?: pulumi.Input<number>;
+    /**
+     * A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
+     */
+    poolWeights?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+}
+
 export interface LoadBalancerRegionPool {
     /**
-     * A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     * A list of pool IDs in failover priority to use in the given region.
      */
     poolIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -907,15 +1135,15 @@ export interface LoadBalancerRegionPool {
 
 export interface LoadBalancerRule {
     /**
-     * The statement to evaluate to determine if this rules effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+     * The statement to evaluate to determine if this rule's effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
      */
     condition?: pulumi.Input<string>;
     /**
-     * A disabled rule will be be executed.
+     * A disabled rule will not be executed.
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: overrides or fixedResponse must be set. See the field documentation below.
+     * Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: `overrides` or `fixedResponse` must be set.
      */
     fixedResponse?: pulumi.Input<inputs.LoadBalancerRuleFixedResponse>;
     /**
@@ -923,79 +1151,80 @@ export interface LoadBalancerRule {
      */
     name: pulumi.Input<string>;
     /**
-     * The Load Balancer settings to alter if this rules condition is true. Note: overrides or fixedResponse must be set. See the field documentation below.
+     * The load balancer settings to alter if this rule's `condition` is true. Note: `overrides` or `fixedResponse` must be set.
      */
     overrides?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRuleOverride>[]>;
     /**
-     * Priority used when determining the order of rule execution. Lower values are executed first. If not provided list order will be used.
+     * Priority used when determining the order of rule execution. Lower values are executed first. If not provided, the list order will be used.
      */
     priority?: pulumi.Input<number>;
     /**
-     * Terminates indicates that if this rule is true no further rules should be executed. Note: setting a fixedResponse forces this field to true.
+     * Terminates indicates that if this rule is true no further rules should be executed. Note: setting a `fixedResponse` forces this field to `true`.
      */
     terminates?: pulumi.Input<boolean>;
 }
 
 export interface LoadBalancerRuleFixedResponse {
-    /**
-     * The value of the HTTP context-type header for this fixed response.
-     */
     contentType?: pulumi.Input<string>;
-    /**
-     * The value of the HTTP location header for this fixed response.
-     */
     location?: pulumi.Input<string>;
-    /**
-     * The text used as the html body for this fixed response.
-     */
     messageBody?: pulumi.Input<string>;
-    /**
-     * The HTTP status code used for this fixed response.
-     */
     statusCode?: pulumi.Input<number>;
 }
 
 export interface LoadBalancerRuleOverride {
     /**
-     * See countryPools above.
+     * Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+     */
+    adaptiveRoutings?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRuleOverrideAdaptiveRouting>[]>;
+    /**
+     * A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
      */
     countryPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRuleOverrideCountryPool>[]>;
-    /**
-     * See defaultPoolIds above.
-     */
     defaultPools?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * See fallbackPoolId above.
-     */
     fallbackPool?: pulumi.Input<string>;
     /**
-     * See popPools above.
+     * Controls location-based steering for non-proxied requests.
+     */
+    locationStrategies?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRuleOverrideLocationStrategy>[]>;
+    /**
+     * A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
      */
     popPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRuleOverridePopPool>[]>;
     /**
-     * See regionPools above.
+     * Configures pool weights for random steering. When the `steering_policy="random"`, a random pool is selected with probability proportional to these pool weights.
+     */
+    randomSteerings?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRuleOverrideRandomSteering>[]>;
+    /**
+     * A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
      */
     regionPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRuleOverrideRegionPool>[]>;
     /**
-     * See field above.
+     * Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ipCookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ipCookie`. Defaults to `none`.
      */
     sessionAffinity?: pulumi.Input<string>;
     /**
-     * See field above.
+     * See `sessionAffinityAttributes`.
      */
     sessionAffinityAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * See field above.
+     * Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
      */
     sessionAffinityTtl?: pulumi.Input<number>;
     /**
-     * See field above.
+     * The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `""` Defaults to `""`.
      */
     steeringPolicy?: pulumi.Input<string>;
     /**
-     * See field above.
+     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
      */
     ttl?: pulumi.Input<number>;
+}
+
+export interface LoadBalancerRuleOverrideAdaptiveRouting {
+    /**
+     * Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+     */
+    failoverAcrossPools?: pulumi.Input<boolean>;
 }
 
 export interface LoadBalancerRuleOverrideCountryPool {
@@ -1004,9 +1233,20 @@ export interface LoadBalancerRuleOverrideCountryPool {
      */
     country: pulumi.Input<string>;
     /**
-     * A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     * A list of pool IDs in failover priority to use in the given country.
      */
     poolIds: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface LoadBalancerRuleOverrideLocationStrategy {
+    /**
+     * Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolverIp` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolverIp`. Defaults to `pop`.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
+     */
+    preferEcs?: pulumi.Input<string>;
 }
 
 export interface LoadBalancerRuleOverridePopPool {
@@ -1020,9 +1260,20 @@ export interface LoadBalancerRuleOverridePopPool {
     pop: pulumi.Input<string>;
 }
 
+export interface LoadBalancerRuleOverrideRandomSteering {
+    /**
+     * The default weight for pools in the load balancer that are not specified in the `poolWeights` map.
+     */
+    defaultWeight?: pulumi.Input<number>;
+    /**
+     * A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
+     */
+    poolWeights?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+}
+
 export interface LoadBalancerRuleOverrideRegionPool {
     /**
-     * A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     * A list of pool IDs in failover priority to use in the given region.
      */
     poolIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1862,6 +2113,7 @@ export interface RulesetRuleActionParametersOverrides {
      * List of rules to apply to the ruleset.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOverridesRule>[]>;
+    sensitivityLevel?: pulumi.Input<string>;
     status?: pulumi.Input<string>;
 }
 
@@ -2186,6 +2438,33 @@ export interface UserAgentBlockingRuleConfiguration {
      * The exact user agent string to match. This value will be compared to the received User-Agent HTTP header value.
      */
     value: pulumi.Input<string>;
+}
+
+export interface WaitingRoomRulesRule {
+    /**
+     * Action to perform in the ruleset rule. Available values: `bypassWaitingRoom`.
+     */
+    action: pulumi.Input<string>;
+    /**
+     * Brief summary of the waiting room rule and its intended use.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Criteria for an HTTP request to trigger the waiting room rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Waiting Room Rules Docs](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules/).
+     */
+    expression: pulumi.Input<string>;
+    /**
+     * Unique rule identifier.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Whether the rule is enabled or disabled. Available values: `enabled`, `disabled`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Version of the waiting room rule.
+     */
+    version?: pulumi.Input<string>;
 }
 
 export interface WorkerScriptKvNamespaceBinding {

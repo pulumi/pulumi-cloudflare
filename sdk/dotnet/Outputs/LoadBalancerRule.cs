@@ -14,15 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class LoadBalancerRule
     {
         /// <summary>
-        /// The statement to evaluate to determine if this rules effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+        /// The statement to evaluate to determine if this rule's effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
         /// </summary>
         public readonly string? Condition;
         /// <summary>
-        /// A disabled rule will be be executed.
+        /// A disabled rule will not be executed.
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: overrides or fixed_response must be set. See the field documentation below.
+        /// Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: `overrides` or `fixed_response` must be set.
         /// </summary>
         public readonly Outputs.LoadBalancerRuleFixedResponse? FixedResponse;
         /// <summary>
@@ -30,15 +30,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The Load Balancer settings to alter if this rules condition is true. Note: overrides or fixed_response must be set. See the field documentation below.
+        /// The load balancer settings to alter if this rule's `condition` is true. Note: `overrides` or `fixed_response` must be set.
         /// </summary>
         public readonly ImmutableArray<Outputs.LoadBalancerRuleOverride> Overrides;
         /// <summary>
-        /// Priority used when determining the order of rule execution. Lower values are executed first. If not provided list order will be used.
+        /// Priority used when determining the order of rule execution. Lower values are executed first. If not provided, the list order will be used.
         /// </summary>
         public readonly int? Priority;
         /// <summary>
-        /// Terminates indicates that if this rule is true no further rules should be executed. Note: setting a fixed_response forces this field to true.
+        /// Terminates indicates that if this rule is true no further rules should be executed. Note: setting a `fixed_response` forces this field to `true`.
         /// </summary>
         public readonly bool? Terminates;
 

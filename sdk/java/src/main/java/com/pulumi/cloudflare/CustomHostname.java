@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -145,6 +146,20 @@ public class CustomHostname extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+     * 
+     */
+    @Export(name="waitForSslPendingValidation", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> waitForSslPendingValidation;
+
+    /**
+     * @return Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> waitForSslPendingValidation() {
+        return Codegen.optional(this.waitForSslPendingValidation);
     }
     /**
      * The zone identifier to target for the resource.

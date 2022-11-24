@@ -12,11 +12,13 @@ from .access_group import *
 from .access_identity_provider import *
 from .access_keys_configuration import *
 from .access_mutual_tls_certificate import *
+from .access_organization import *
 from .access_policy import *
 from .access_rule import *
 from .access_service_token import *
 from .account import *
 from .account_member import *
+from .api_shield import *
 from .api_token import *
 from .argo import *
 from .argo_tunnel import *
@@ -31,6 +33,11 @@ from .custom_ssl import *
 from .device_policy_certificates import *
 from .device_posture_integration import *
 from .device_posture_rule import *
+from .dlp_profile import *
+from .email_routing_address import *
+from .email_routing_catch_all import *
+from .email_routing_rule import *
+from .email_routing_settings import *
 from .fallback_domain import *
 from .filter import *
 from .firewall_rule import *
@@ -79,6 +86,7 @@ from .teams_list import *
 from .teams_location import *
 from .teams_proxy_endpoint import *
 from .teams_rule import *
+from .total_tls import *
 from .tunnel_route import *
 from .tunnel_virtual_network import *
 from .user_agent_blocking_rule import *
@@ -88,6 +96,8 @@ from .waf_package import *
 from .waf_rule import *
 from .waiting_room import *
 from .waiting_room_event import *
+from .waiting_room_rules import *
+from .web3_hostname import *
 from .worker_cron_trigger import *
 from .worker_route import *
 from .worker_script import *
@@ -169,6 +179,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/accessOrganization",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/accessOrganization:AccessOrganization": "AccessOrganization"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/accessPolicy",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -205,6 +223,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/accountMember:AccountMember": "AccountMember"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/apiShield",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/apiShield:ApiShield": "ApiShield"
   }
  },
  {
@@ -317,6 +343,46 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/devicePostureRule:DevicePostureRule": "DevicePostureRule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/dlpProfile",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/dlpProfile:DlpProfile": "DlpProfile"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/emailRoutingAddress",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/emailRoutingAddress:EmailRoutingAddress": "EmailRoutingAddress"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/emailRoutingCatchAll",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll": "EmailRoutingCatchAll"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/emailRoutingRule",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/emailRoutingRule:EmailRoutingRule": "EmailRoutingRule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/emailRoutingSettings",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/emailRoutingSettings:EmailRoutingSettings": "EmailRoutingSettings"
   }
  },
  {
@@ -585,6 +651,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/totalTls",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/totalTls:TotalTls": "TotalTls"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/tunnelRoute",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -653,6 +727,22 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/waitingRoomEvent:WaitingRoomEvent": "WaitingRoomEvent"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/waitingRoomRules",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/waitingRoomRules:WaitingRoomRules": "WaitingRoomRules"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/web3Hostname",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/web3Hostname:Web3Hostname": "Web3Hostname"
   }
  },
  {

@@ -149,7 +149,7 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly skipInterstitial!: pulumi.Output<boolean | undefined>;
     /**
-     * The application type. Available values: `selfHosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `selfHosted`.
+     * The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -298,7 +298,7 @@ export interface AccessApplicationState {
      */
     skipInterstitial?: pulumi.Input<boolean>;
     /**
-     * The application type. Available values: `selfHosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `selfHosted`.
+     * The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -380,7 +380,7 @@ export interface AccessApplicationArgs {
      */
     skipInterstitial?: pulumi.Input<boolean>;
     /**
-     * The application type. Available values: `selfHosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `selfHosted`.
+     * The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
      */
     type?: pulumi.Input<string>;
     /**

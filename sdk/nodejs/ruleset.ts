@@ -38,7 +38,7 @@ import * as utilities from "./utilities";
  *         },
  *         description: "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset",
  *         enabled: true,
- *         expression: "true",
+ *         expression: "(http.host eq \"example.host.com\")",
  *     }],
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
@@ -69,7 +69,7 @@ import * as utilities from "./utilities";
  *         },
  *         description: "overrides to only enable wordpress rules to block",
  *         enabled: false,
- *         expression: "true",
+ *         expression: "(http.host eq \"example.host.com\")",
  *     }],
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
@@ -111,7 +111,7 @@ import * as utilities from "./utilities";
  *         },
  *         description: "URI transformation query example",
  *         enabled: true,
- *         expression: "true",
+ *         expression: "(http.host eq \"example.host.com\")",
  *     }],
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
@@ -143,7 +143,7 @@ import * as utilities from "./utilities";
  *         },
  *         description: "example request header transform rule",
  *         enabled: false,
- *         expression: "true",
+ *         expression: "(http.host eq \"example.host.com\")",
  *     }],
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
@@ -218,7 +218,7 @@ import * as utilities from "./utilities";
  *         },
  *         description: "log custom fields rule",
  *         enabled: true,
- *         expression: "true",
+ *         expression: "(http.host eq \"example.host.com\")",
  *     }],
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
@@ -296,7 +296,7 @@ import * as utilities from "./utilities";
  *         },
  *         description: "set cache settings rule",
  *         enabled: true,
- *         expression: "true",
+ *         expression: "(http.host eq \"example.host.com\")",
  *     }],
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
@@ -322,7 +322,6 @@ import * as utilities from "./utilities";
  * });
  * // Dynamic Redirects from value resource
  * const redirectFromValueExample = new cloudflare.Ruleset("redirect_from_value_example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     description: "Redirect ruleset",
  *     kind: "root",
  *     name: "redirects",
@@ -340,8 +339,9 @@ import * as utilities from "./utilities";
  *         },
  *         description: "Apply redirect from value",
  *         enabled: true,
- *         expression: "true",
+ *         expression: "(http.request.uri.path matches \"^/api/\")",
  *     }],
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * // Serve some custom error response
  * const httpCustomErrorExample = new cloudflare.Ruleset("http_custom_error_example", {
@@ -357,6 +357,24 @@ import * as utilities from "./utilities";
  *             statusCode: 530,
  *         },
  *         description: "serve some error response",
+ *         enabled: true,
+ *         expression: "(http.request.uri.path matches \"^/api/\")",
+ *     }],
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * // Set Configuration Rules for an API route
+ * const httpConfigRulesExample = new cloudflare.Ruleset("http_config_rules_example", {
+ *     description: "set config rules for request",
+ *     kind: "zone",
+ *     name: "set config rules",
+ *     phase: "http_config_settings",
+ *     rules: [{
+ *         action: "set_config",
+ *         actionParameters: {
+ *             bic: true,
+ *             emailObfuscation: true,
+ *         },
+ *         description: "set config rules for matching request",
  *         enabled: true,
  *         expression: "(http.request.uri.path matches \"^/api/\")",
  *     }],

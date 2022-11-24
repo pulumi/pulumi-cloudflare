@@ -82,6 +82,10 @@ export class LoadBalancerPool extends pulumi.CustomResource {
     }
 
     /**
+     * The account identifier to target for the resource.
+     */
+    public readonly accountId!: pulumi.Output<string | undefined>;
+    /**
      * A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
      */
     public readonly checkRegions!: pulumi.Output<string[]>;
@@ -151,6 +155,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerPoolState | undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["checkRegions"] = state ? state.checkRegions : undefined;
             resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -173,6 +178,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
             if ((!args || args.origins === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'origins'");
             }
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["checkRegions"] = args ? args.checkRegions : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
@@ -197,6 +203,10 @@ export class LoadBalancerPool extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LoadBalancerPool resources.
  */
 export interface LoadBalancerPoolState {
+    /**
+     * The account identifier to target for the resource.
+     */
+    accountId?: pulumi.Input<string>;
     /**
      * A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
      */
@@ -259,6 +269,10 @@ export interface LoadBalancerPoolState {
  * The set of arguments for constructing a LoadBalancerPool resource.
  */
 export interface LoadBalancerPoolArgs {
+    /**
+     * The account identifier to target for the resource.
+     */
+    accountId?: pulumi.Input<string>;
     /**
      * A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
      */

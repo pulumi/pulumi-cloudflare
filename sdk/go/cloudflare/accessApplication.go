@@ -111,7 +111,7 @@ type AccessApplication struct {
 	SessionDuration pulumi.StringPtrOutput `pulumi:"sessionDuration"`
 	// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
 	SkipInterstitial pulumi.BoolPtrOutput `pulumi:"skipInterstitial"`
-	// The application type. Available values: `selfHosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `selfHosted`.
+	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -185,7 +185,7 @@ type accessApplicationState struct {
 	SessionDuration *string `pulumi:"sessionDuration"`
 	// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
 	SkipInterstitial *bool `pulumi:"skipInterstitial"`
-	// The application type. Available values: `selfHosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `selfHosted`.
+	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
 	Type *string `pulumi:"type"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
@@ -228,7 +228,7 @@ type AccessApplicationState struct {
 	SessionDuration pulumi.StringPtrInput
 	// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
 	SkipInterstitial pulumi.BoolPtrInput
-	// The application type. Available values: `selfHosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `selfHosted`.
+	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
 	Type pulumi.StringPtrInput
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
@@ -273,7 +273,7 @@ type accessApplicationArgs struct {
 	SessionDuration *string `pulumi:"sessionDuration"`
 	// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
 	SkipInterstitial *bool `pulumi:"skipInterstitial"`
-	// The application type. Available values: `selfHosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `selfHosted`.
+	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
 	Type *string `pulumi:"type"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
@@ -315,7 +315,7 @@ type AccessApplicationArgs struct {
 	SessionDuration pulumi.StringPtrInput
 	// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
 	SkipInterstitial pulumi.BoolPtrInput
-	// The application type. Available values: `selfHosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `selfHosted`.
+	// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
 	Type pulumi.StringPtrInput
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
@@ -498,7 +498,7 @@ func (o AccessApplicationOutput) SkipInterstitial() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.SkipInterstitial }).(pulumi.BoolPtrOutput)
 }
 
-// The application type. Available values: `selfHosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `selfHosted`.
+// The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
 func (o AccessApplicationOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

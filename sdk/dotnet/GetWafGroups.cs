@@ -11,9 +11,77 @@ namespace Pulumi.Cloudflare
 {
     public static class GetWafGroups
     {
+        /// <summary>
+        /// Use this data source to look up [WAF Rule Groups](https://api.cloudflare.com/#waf-rule-groups-properties).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The example below matches all WAF Rule Groups that contain the word `example` and are currently `on`. The matched WAF Rule Groups are then returned as output.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Cloudflare.GetWafGroups.Invoke(new()
+        ///     {
+        ///         Filter = new Cloudflare.Inputs.GetWafGroupsFilterInputArgs
+        ///         {
+        ///             Name = ".*example.*",
+        ///             Mode = "on",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["wafGroups"] = test.Apply(getWafGroupsResult =&gt; getWafGroupsResult.Groups),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetWafGroupsResult> InvokeAsync(GetWafGroupsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWafGroupsResult>("cloudflare:index/getWafGroups:getWafGroups", args ?? new GetWafGroupsArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to look up [WAF Rule Groups](https://api.cloudflare.com/#waf-rule-groups-properties).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The example below matches all WAF Rule Groups that contain the word `example` and are currently `on`. The matched WAF Rule Groups are then returned as output.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Cloudflare.GetWafGroups.Invoke(new()
+        ///     {
+        ///         Filter = new Cloudflare.Inputs.GetWafGroupsFilterInputArgs
+        ///         {
+        ///             Name = ".*example.*",
+        ///             Mode = "on",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["wafGroups"] = test.Apply(getWafGroupsResult =&gt; getWafGroupsResult.Groups),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetWafGroupsResult> Invoke(GetWafGroupsInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetWafGroupsResult>("cloudflare:index/getWafGroups:getWafGroups", args ?? new GetWafGroupsInvokeArgs(), options.WithDefaults());
     }
@@ -21,14 +89,21 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetWafGroupsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// One or more values used to look up WAF Rule Groups. If more than one value is given all
+        /// values must match in order to be included, see below for full list.
+        /// </summary>
         [Input("filter")]
         public Inputs.GetWafGroupsFilterArgs? Filter { get; set; }
 
+        /// <summary>
+        /// The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
+        /// </summary>
         [Input("packageId")]
         public string? PackageId { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The ID of the DNS zone in which to search for the WAF Rule Groups.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -41,14 +116,21 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetWafGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// One or more values used to look up WAF Rule Groups. If more than one value is given all
+        /// values must match in order to be included, see below for full list.
+        /// </summary>
         [Input("filter")]
         public Input<Inputs.GetWafGroupsFilterInputArgs>? Filter { get; set; }
 
+        /// <summary>
+        /// The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
+        /// </summary>
         [Input("packageId")]
         public Input<string>? PackageId { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The ID of the DNS zone in which to search for the WAF Rule Groups.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -64,15 +146,18 @@ namespace Pulumi.Cloudflare
     public sealed class GetWafGroupsResult
     {
         public readonly Outputs.GetWafGroupsFilterResult? Filter;
+        /// <summary>
+        /// A map of WAF Rule Groups details. Full list below:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetWafGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly string? PackageId;
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The ID of the WAF Rule Package that contains the WAF Rule Group
         /// </summary>
+        public readonly string? PackageId;
         public readonly string ZoneId;
 
         [OutputConstructor]

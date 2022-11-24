@@ -83,6 +83,12 @@ namespace Pulumi.Cloudflare
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+        /// </summary>
+        [Output("waitForSslPendingValidation")]
+        public Output<bool?> WaitForSslPendingValidation { get; private set; } = null!;
+
+        /// <summary>
         /// The zone identifier to target for the resource.
         /// </summary>
         [Output("zoneId")]
@@ -165,6 +171,12 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+        /// </summary>
+        [Input("waitForSslPendingValidation")]
+        public Input<bool>? WaitForSslPendingValidation { get; set; }
+
+        /// <summary>
         /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId", required: true)]
@@ -229,6 +241,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+        /// </summary>
+        [Input("waitForSslPendingValidation")]
+        public Input<bool>? WaitForSslPendingValidation { get; set; }
 
         /// <summary>
         /// The zone identifier to target for the resource.

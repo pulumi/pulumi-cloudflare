@@ -14,30 +14,62 @@ public final class GetWafPackagesFilter extends com.pulumi.resources.InvokeArgs 
 
     public static final GetWafPackagesFilter Empty = new GetWafPackagesFilter();
 
+    /**
+     * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+     * 
+     */
     @Import(name="actionMode")
     private @Nullable String actionMode;
 
+    /**
+     * @return Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+     * 
+     */
     public Optional<String> actionMode() {
         return Optional.ofNullable(this.actionMode);
     }
 
+    /**
+     * Detection mode of the WAF Rule Packages to lookup.
+     * 
+     */
     @Import(name="detectionMode")
     private @Nullable String detectionMode;
 
+    /**
+     * @return Detection mode of the WAF Rule Packages to lookup.
+     * 
+     */
     public Optional<String> detectionMode() {
         return Optional.ofNullable(this.detectionMode);
     }
 
+    /**
+     * A regular expression matching the name of the WAF Rule Packages to lookup.
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return A regular expression matching the name of the WAF Rule Packages to lookup.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+     * 
+     */
     @Import(name="sensitivity")
     private @Nullable String sensitivity;
 
+    /**
+     * @return Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+     * 
+     */
     public Optional<String> sensitivity() {
         return Optional.ofNullable(this.sensitivity);
     }
@@ -69,21 +101,45 @@ public final class GetWafPackagesFilter extends com.pulumi.resources.InvokeArgs 
             $ = new GetWafPackagesFilter(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param actionMode Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+         * 
+         * @return builder
+         * 
+         */
         public Builder actionMode(@Nullable String actionMode) {
             $.actionMode = actionMode;
             return this;
         }
 
+        /**
+         * @param detectionMode Detection mode of the WAF Rule Packages to lookup.
+         * 
+         * @return builder
+         * 
+         */
         public Builder detectionMode(@Nullable String detectionMode) {
             $.detectionMode = detectionMode;
             return this;
         }
 
+        /**
+         * @param name A regular expression matching the name of the WAF Rule Packages to lookup.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param sensitivity Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sensitivity(@Nullable String sensitivity) {
             $.sensitivity = sensitivity;
             return this;

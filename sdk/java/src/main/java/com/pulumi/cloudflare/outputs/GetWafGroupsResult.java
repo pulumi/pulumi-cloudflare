@@ -15,23 +15,31 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWafGroupsResult {
     private @Nullable GetWafGroupsFilter filter;
+    /**
+     * @return A map of WAF Rule Groups details. Full list below:
+     * 
+     */
     private List<GetWafGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-    private @Nullable String packageId;
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The ID of the WAF Rule Package that contains the WAF Rule Group
      * 
      */
+    private @Nullable String packageId;
     private String zoneId;
 
     private GetWafGroupsResult() {}
     public Optional<GetWafGroupsFilter> filter() {
         return Optional.ofNullable(this.filter);
     }
+    /**
+     * @return A map of WAF Rule Groups details. Full list below:
+     * 
+     */
     public List<GetWafGroupsGroup> groups() {
         return this.groups;
     }
@@ -42,13 +50,13 @@ public final class GetWafGroupsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The ID of the WAF Rule Package that contains the WAF Rule Group
+     * 
+     */
     public Optional<String> packageId() {
         return Optional.ofNullable(this.packageId);
     }
-    /**
-     * @return The zone identifier to target for the resource.
-     * 
-     */
     public String zoneId() {
         return this.zoneId;
     }

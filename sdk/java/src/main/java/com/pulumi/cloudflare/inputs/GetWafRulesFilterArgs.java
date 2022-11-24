@@ -15,23 +15,47 @@ public final class GetWafRulesFilterArgs extends com.pulumi.resources.ResourceAr
 
     public static final GetWafRulesFilterArgs Empty = new GetWafRulesFilterArgs();
 
+    /**
+     * A regular expression matching the description of the WAF Rules to lookup.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return A regular expression matching the description of the WAF Rules to lookup.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+     * 
+     */
     @Import(name="groupId")
     private @Nullable Output<String> groupId;
 
+    /**
+     * @return The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+     * 
+     */
     public Optional<Output<String>> groupId() {
         return Optional.ofNullable(this.groupId);
     }
 
+    /**
+     * Mode of the WAF Rules to lookup. Valid values: one of [&#34;block&#34;, &#34;challenge&#34;, &#34;default&#34;, &#34;disable&#34;, &#34;simulate&#34;] or [&#34;on&#34;, &#34;off&#34;] depending on the WAF Rule type.
+     * 
+     */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
+    /**
+     * @return Mode of the WAF Rules to lookup. Valid values: one of [&#34;block&#34;, &#34;challenge&#34;, &#34;default&#34;, &#34;disable&#34;, &#34;simulate&#34;] or [&#34;on&#34;, &#34;off&#34;] depending on the WAF Rule type.
+     * 
+     */
     public Optional<Output<String>> mode() {
         return Optional.ofNullable(this.mode);
     }
@@ -62,29 +86,65 @@ public final class GetWafRulesFilterArgs extends com.pulumi.resources.ResourceAr
             $ = new GetWafRulesFilterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param description A regular expression matching the description of the WAF Rules to lookup.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description A regular expression matching the description of the WAF Rules to lookup.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param groupId The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupId(@Nullable Output<String> groupId) {
             $.groupId = groupId;
             return this;
         }
 
+        /**
+         * @param groupId The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupId(String groupId) {
             return groupId(Output.of(groupId));
         }
 
+        /**
+         * @param mode Mode of the WAF Rules to lookup. Valid values: one of [&#34;block&#34;, &#34;challenge&#34;, &#34;default&#34;, &#34;disable&#34;, &#34;simulate&#34;] or [&#34;on&#34;, &#34;off&#34;] depending on the WAF Rule type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(@Nullable Output<String> mode) {
             $.mode = mode;
             return this;
         }
 
+        /**
+         * @param mode Mode of the WAF Rules to lookup. Valid values: one of [&#34;block&#34;, &#34;challenge&#34;, &#34;default&#34;, &#34;disable&#34;, &#34;simulate&#34;] or [&#34;on&#34;, &#34;off&#34;] depending on the WAF Rule type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(String mode) {
             return mode(Output.of(mode));
         }

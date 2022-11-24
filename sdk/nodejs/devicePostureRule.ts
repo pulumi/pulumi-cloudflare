@@ -14,28 +14,30 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const corporateDevicesPostureRule = new cloudflare.DevicePostureRule("corporateDevicesPostureRule", {
- *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ * const eaxmple = new cloudflare.DevicePostureRule("eaxmple", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "Corporate devices posture rule",
- *     type: "serial_number",
+ *     type: "os_version",
  *     description: "Device posture rule for corporate devices.",
  *     schedule: "24h",
  *     expiration: "24h",
  *     matches: [{
- *         platform: "mac",
+ *         platform: "linux",
  *     }],
  *     inputs: [{
  *         id: cloudflare_teams_list.corporate_devices.id,
+ *         version: "1.0.0",
+ *         operator: "<",
+ *         osDistroName: "ubuntu",
+ *         osDistroRevision: "1.0.0",
  *     }],
  * });
  * ```
  *
  * ## Import
  *
- * Device posture rules can be imported using a composite ID formed of account ID and device posture rule ID.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+ *  $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule example <account_id>/<device_posture_rule_id>
  * ```
  */
 export class DevicePostureRule extends pulumi.CustomResource {
@@ -67,25 +69,17 @@ export class DevicePostureRule extends pulumi.CustomResource {
     }
 
     /**
-     * The account to which the device posture rule should be added.
+     * The account identifier to target for the resource.
      */
     public readonly accountId!: pulumi.Output<string>;
-    /**
-     * The description of the device posture rule.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Expire posture results after the specified amount of time.
-     * Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+     * Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
      */
     public readonly expiration!: pulumi.Output<string | undefined>;
-    /**
-     * The value to be checked against. See below for reference
-     * structure.
-     */
     public readonly inputs!: pulumi.Output<outputs.DevicePostureRuleInput[]>;
     /**
-     * The conditions that the client must match to run the rule. See below for reference structure.
+     * The conditions that the client must match to run the rule.
      */
     public readonly matches!: pulumi.Output<outputs.DevicePostureRuleMatch[] | undefined>;
     /**
@@ -93,12 +87,11 @@ export class DevicePostureRule extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string | undefined>;
     /**
-     * Tells the client when to run the device posture check.
-     * Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+     * Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
      */
     public readonly schedule!: pulumi.Output<string | undefined>;
     /**
-     * The device posture rule type. Valid values are `file`, `application`, and `serialNumber`.
+     * The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `workspaceOne`, `uniqueClientId`.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -150,25 +143,17 @@ export class DevicePostureRule extends pulumi.CustomResource {
  */
 export interface DevicePostureRuleState {
     /**
-     * The account to which the device posture rule should be added.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
-    /**
-     * The description of the device posture rule.
-     */
     description?: pulumi.Input<string>;
     /**
-     * Expire posture results after the specified amount of time.
-     * Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+     * Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
      */
     expiration?: pulumi.Input<string>;
-    /**
-     * The value to be checked against. See below for reference
-     * structure.
-     */
     inputs?: pulumi.Input<pulumi.Input<inputs.DevicePostureRuleInput>[]>;
     /**
-     * The conditions that the client must match to run the rule. See below for reference structure.
+     * The conditions that the client must match to run the rule.
      */
     matches?: pulumi.Input<pulumi.Input<inputs.DevicePostureRuleMatch>[]>;
     /**
@@ -176,12 +161,11 @@ export interface DevicePostureRuleState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Tells the client when to run the device posture check.
-     * Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+     * Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
      */
     schedule?: pulumi.Input<string>;
     /**
-     * The device posture rule type. Valid values are `file`, `application`, and `serialNumber`.
+     * The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `workspaceOne`, `uniqueClientId`.
      */
     type?: pulumi.Input<string>;
 }
@@ -191,25 +175,17 @@ export interface DevicePostureRuleState {
  */
 export interface DevicePostureRuleArgs {
     /**
-     * The account to which the device posture rule should be added.
+     * The account identifier to target for the resource.
      */
     accountId: pulumi.Input<string>;
-    /**
-     * The description of the device posture rule.
-     */
     description?: pulumi.Input<string>;
     /**
-     * Expire posture results after the specified amount of time.
-     * Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+     * Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
      */
     expiration?: pulumi.Input<string>;
-    /**
-     * The value to be checked against. See below for reference
-     * structure.
-     */
     inputs?: pulumi.Input<pulumi.Input<inputs.DevicePostureRuleInput>[]>;
     /**
-     * The conditions that the client must match to run the rule. See below for reference structure.
+     * The conditions that the client must match to run the rule.
      */
     matches?: pulumi.Input<pulumi.Input<inputs.DevicePostureRuleMatch>[]>;
     /**
@@ -217,12 +193,11 @@ export interface DevicePostureRuleArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Tells the client when to run the device posture check.
-     * Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+     * Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
      */
     schedule?: pulumi.Input<string>;
     /**
-     * The device posture rule type. Valid values are `file`, `application`, and `serialNumber`.
+     * The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `workspaceOne`, `uniqueClientId`.
      */
     type: pulumi.Input<string>;
 }

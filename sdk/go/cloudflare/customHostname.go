@@ -67,6 +67,8 @@ type CustomHostname struct {
 	Ssls CustomHostnameSslArrayOutput `pulumi:"ssls"`
 	// Status of the certificate.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// Whether to wait for a custom hostname SSL sub-object to reach status `pendingValidation` during creation. Defaults to `false`.
+	WaitForSslPendingValidation pulumi.BoolPtrOutput `pulumi:"waitForSslPendingValidation"`
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -118,6 +120,8 @@ type customHostnameState struct {
 	Ssls []CustomHostnameSsl `pulumi:"ssls"`
 	// Status of the certificate.
 	Status *string `pulumi:"status"`
+	// Whether to wait for a custom hostname SSL sub-object to reach status `pendingValidation` during creation. Defaults to `false`.
+	WaitForSslPendingValidation *bool `pulumi:"waitForSslPendingValidation"`
 	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -135,6 +139,8 @@ type CustomHostnameState struct {
 	Ssls CustomHostnameSslArrayInput
 	// Status of the certificate.
 	Status pulumi.StringPtrInput
+	// Whether to wait for a custom hostname SSL sub-object to reach status `pendingValidation` during creation. Defaults to `false`.
+	WaitForSslPendingValidation pulumi.BoolPtrInput
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
@@ -152,6 +158,8 @@ type customHostnameArgs struct {
 	Hostname string `pulumi:"hostname"`
 	// SSL configuration of the certificate.
 	Ssls []CustomHostnameSsl `pulumi:"ssls"`
+	// Whether to wait for a custom hostname SSL sub-object to reach status `pendingValidation` during creation. Defaults to `false`.
+	WaitForSslPendingValidation *bool `pulumi:"waitForSslPendingValidation"`
 	// The zone identifier to target for the resource.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -166,6 +174,8 @@ type CustomHostnameArgs struct {
 	Hostname pulumi.StringInput
 	// SSL configuration of the certificate.
 	Ssls CustomHostnameSslArrayInput
+	// Whether to wait for a custom hostname SSL sub-object to reach status `pendingValidation` during creation. Defaults to `false`.
+	WaitForSslPendingValidation pulumi.BoolPtrInput
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringInput
 }
@@ -288,6 +298,11 @@ func (o CustomHostnameOutput) Ssls() CustomHostnameSslArrayOutput {
 // Status of the certificate.
 func (o CustomHostnameOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomHostname) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Whether to wait for a custom hostname SSL sub-object to reach status `pendingValidation` during creation. Defaults to `false`.
+func (o CustomHostnameOutput) WaitForSslPendingValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CustomHostname) pulumi.BoolPtrOutput { return v.WaitForSslPendingValidation }).(pulumi.BoolPtrOutput)
 }
 
 // The zone identifier to target for the resource.

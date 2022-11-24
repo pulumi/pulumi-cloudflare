@@ -18,6 +18,10 @@ public final class GetZonesResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of zone objects. Object format:
+     * 
+     */
     private List<GetZonesZone> zones;
 
     private GetZonesResult() {}
@@ -31,6 +35,10 @@ public final class GetZonesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of zone objects. Object format:
+     * 
+     */
     public List<GetZonesZone> zones() {
         return this.zones;
     }

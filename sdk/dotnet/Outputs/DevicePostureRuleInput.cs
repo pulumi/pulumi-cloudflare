@@ -13,14 +13,20 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class DevicePostureRuleInput
     {
+        /// <summary>
+        /// The workspace one device compliance status.
+        /// </summary>
         public readonly string? ComplianceStatus;
+        /// <summary>
+        /// The workspace one connection id.
+        /// </summary>
         public readonly string? ConnectionId;
         /// <summary>
-        /// = (Required) The domain that the client must join.
+        /// The domain that the client must join.
         /// </summary>
         public readonly string? Domain;
         /// <summary>
-        /// = (Required) True if the firewall must be enabled.
+        /// True if the firewall must be enabled.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
@@ -32,15 +38,23 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// = (Required) The version comparison operator in (&gt;,&gt;=,&lt;,&lt;=,==)
+        /// The version comparison operator.
         /// </summary>
         public readonly string? Operator;
         /// <summary>
-        /// The path to the application.
+        /// The operating system excluding version information.
+        /// </summary>
+        public readonly string? OsDistroName;
+        /// <summary>
+        /// The operating system version excluding OS name information or release name.
+        /// </summary>
+        public readonly string? OsDistroRevision;
+        /// <summary>
+        /// The path to the file.
         /// </summary>
         public readonly string? Path;
         /// <summary>
-        /// = (Required) True if all drives must be encrypted.
+        /// True if all drives must be encrypted.
         /// </summary>
         public readonly bool? RequireAll;
         /// <summary>
@@ -52,11 +66,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Sha256;
         /// <summary>
-        /// The thumbprint of the application certificate.
+        /// The thumbprint of the file certificate.
         /// </summary>
         public readonly string? Thumbprint;
         /// <summary>
-        /// = (Required) The operating system semantic version.
+        /// The operating system semantic version.
         /// </summary>
         public readonly string? Version;
 
@@ -75,6 +89,10 @@ namespace Pulumi.Cloudflare.Outputs
             string? id,
 
             string? @operator,
+
+            string? osDistroName,
+
+            string? osDistroRevision,
 
             string? path,
 
@@ -95,6 +113,8 @@ namespace Pulumi.Cloudflare.Outputs
             Exists = exists;
             Id = id;
             Operator = @operator;
+            OsDistroName = osDistroName;
+            OsDistroRevision = osDistroRevision;
             Path = path;
             RequireAll = requireAll;
             Running = running;

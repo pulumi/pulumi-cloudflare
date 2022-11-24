@@ -16,29 +16,45 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
 
     public static final DevicePostureRuleInputArgs Empty = new DevicePostureRuleInputArgs();
 
+    /**
+     * The workspace one device compliance status.
+     * 
+     */
     @Import(name="complianceStatus")
     private @Nullable Output<String> complianceStatus;
 
+    /**
+     * @return The workspace one device compliance status.
+     * 
+     */
     public Optional<Output<String>> complianceStatus() {
         return Optional.ofNullable(this.complianceStatus);
     }
 
+    /**
+     * The workspace one connection id.
+     * 
+     */
     @Import(name="connectionId")
     private @Nullable Output<String> connectionId;
 
+    /**
+     * @return The workspace one connection id.
+     * 
+     */
     public Optional<Output<String>> connectionId() {
         return Optional.ofNullable(this.connectionId);
     }
 
     /**
-     * = (Required) The domain that the client must join.
+     * The domain that the client must join.
      * 
      */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
-     * @return = (Required) The domain that the client must join.
+     * @return The domain that the client must join.
      * 
      */
     public Optional<Output<String>> domain() {
@@ -46,14 +62,14 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * = (Required) True if the firewall must be enabled.
+     * True if the firewall must be enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return = (Required) True if the firewall must be enabled.
+     * @return True if the firewall must be enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -91,14 +107,14 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * = (Required) The version comparison operator in (&gt;,&gt;=,&lt;,&lt;=,==)
+     * The version comparison operator.
      * 
      */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
     /**
-     * @return = (Required) The version comparison operator in (&gt;,&gt;=,&lt;,&lt;=,==)
+     * @return The version comparison operator.
      * 
      */
     public Optional<Output<String>> operator() {
@@ -106,14 +122,44 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The path to the application.
+     * The operating system excluding version information.
+     * 
+     */
+    @Import(name="osDistroName")
+    private @Nullable Output<String> osDistroName;
+
+    /**
+     * @return The operating system excluding version information.
+     * 
+     */
+    public Optional<Output<String>> osDistroName() {
+        return Optional.ofNullable(this.osDistroName);
+    }
+
+    /**
+     * The operating system version excluding OS name information or release name.
+     * 
+     */
+    @Import(name="osDistroRevision")
+    private @Nullable Output<String> osDistroRevision;
+
+    /**
+     * @return The operating system version excluding OS name information or release name.
+     * 
+     */
+    public Optional<Output<String>> osDistroRevision() {
+        return Optional.ofNullable(this.osDistroRevision);
+    }
+
+    /**
+     * The path to the file.
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return The path to the application.
+     * @return The path to the file.
      * 
      */
     public Optional<Output<String>> path() {
@@ -121,14 +167,14 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * = (Required) True if all drives must be encrypted.
+     * True if all drives must be encrypted.
      * 
      */
     @Import(name="requireAll")
     private @Nullable Output<Boolean> requireAll;
 
     /**
-     * @return = (Required) True if all drives must be encrypted.
+     * @return True if all drives must be encrypted.
      * 
      */
     public Optional<Output<Boolean>> requireAll() {
@@ -166,14 +212,14 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The thumbprint of the application certificate.
+     * The thumbprint of the file certificate.
      * 
      */
     @Import(name="thumbprint")
     private @Nullable Output<String> thumbprint;
 
     /**
-     * @return The thumbprint of the application certificate.
+     * @return The thumbprint of the file certificate.
      * 
      */
     public Optional<Output<String>> thumbprint() {
@@ -181,14 +227,14 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * = (Required) The operating system semantic version.
+     * The operating system semantic version.
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return = (Required) The operating system semantic version.
+     * @return The operating system semantic version.
      * 
      */
     public Optional<Output<String>> version() {
@@ -205,6 +251,8 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         this.exists = $.exists;
         this.id = $.id;
         this.operator = $.operator;
+        this.osDistroName = $.osDistroName;
+        this.osDistroRevision = $.osDistroRevision;
         this.path = $.path;
         this.requireAll = $.requireAll;
         this.running = $.running;
@@ -231,26 +279,50 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
             $ = new DevicePostureRuleInputArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param complianceStatus The workspace one device compliance status.
+         * 
+         * @return builder
+         * 
+         */
         public Builder complianceStatus(@Nullable Output<String> complianceStatus) {
             $.complianceStatus = complianceStatus;
             return this;
         }
 
+        /**
+         * @param complianceStatus The workspace one device compliance status.
+         * 
+         * @return builder
+         * 
+         */
         public Builder complianceStatus(String complianceStatus) {
             return complianceStatus(Output.of(complianceStatus));
         }
 
+        /**
+         * @param connectionId The workspace one connection id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectionId(@Nullable Output<String> connectionId) {
             $.connectionId = connectionId;
             return this;
         }
 
+        /**
+         * @param connectionId The workspace one connection id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectionId(String connectionId) {
             return connectionId(Output.of(connectionId));
         }
 
         /**
-         * @param domain = (Required) The domain that the client must join.
+         * @param domain The domain that the client must join.
          * 
          * @return builder
          * 
@@ -261,7 +333,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param domain = (Required) The domain that the client must join.
+         * @param domain The domain that the client must join.
          * 
          * @return builder
          * 
@@ -271,7 +343,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param enabled = (Required) True if the firewall must be enabled.
+         * @param enabled True if the firewall must be enabled.
          * 
          * @return builder
          * 
@@ -282,7 +354,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param enabled = (Required) True if the firewall must be enabled.
+         * @param enabled True if the firewall must be enabled.
          * 
          * @return builder
          * 
@@ -334,7 +406,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param operator = (Required) The version comparison operator in (&gt;,&gt;=,&lt;,&lt;=,==)
+         * @param operator The version comparison operator.
          * 
          * @return builder
          * 
@@ -345,7 +417,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param operator = (Required) The version comparison operator in (&gt;,&gt;=,&lt;,&lt;=,==)
+         * @param operator The version comparison operator.
          * 
          * @return builder
          * 
@@ -355,7 +427,49 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param path The path to the application.
+         * @param osDistroName The operating system excluding version information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder osDistroName(@Nullable Output<String> osDistroName) {
+            $.osDistroName = osDistroName;
+            return this;
+        }
+
+        /**
+         * @param osDistroName The operating system excluding version information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder osDistroName(String osDistroName) {
+            return osDistroName(Output.of(osDistroName));
+        }
+
+        /**
+         * @param osDistroRevision The operating system version excluding OS name information or release name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder osDistroRevision(@Nullable Output<String> osDistroRevision) {
+            $.osDistroRevision = osDistroRevision;
+            return this;
+        }
+
+        /**
+         * @param osDistroRevision The operating system version excluding OS name information or release name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder osDistroRevision(String osDistroRevision) {
+            return osDistroRevision(Output.of(osDistroRevision));
+        }
+
+        /**
+         * @param path The path to the file.
          * 
          * @return builder
          * 
@@ -366,7 +480,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param path The path to the application.
+         * @param path The path to the file.
          * 
          * @return builder
          * 
@@ -376,7 +490,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param requireAll = (Required) True if all drives must be encrypted.
+         * @param requireAll True if all drives must be encrypted.
          * 
          * @return builder
          * 
@@ -387,7 +501,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param requireAll = (Required) True if all drives must be encrypted.
+         * @param requireAll True if all drives must be encrypted.
          * 
          * @return builder
          * 
@@ -439,7 +553,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param thumbprint The thumbprint of the application certificate.
+         * @param thumbprint The thumbprint of the file certificate.
          * 
          * @return builder
          * 
@@ -450,7 +564,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param thumbprint The thumbprint of the application certificate.
+         * @param thumbprint The thumbprint of the file certificate.
          * 
          * @return builder
          * 
@@ -460,7 +574,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param version = (Required) The operating system semantic version.
+         * @param version The operating system semantic version.
          * 
          * @return builder
          * 
@@ -471,7 +585,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param version = (Required) The operating system semantic version.
+         * @param version The operating system semantic version.
          * 
          * @return builder
          * 

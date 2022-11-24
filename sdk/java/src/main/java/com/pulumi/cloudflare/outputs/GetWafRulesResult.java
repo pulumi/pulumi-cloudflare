@@ -20,12 +20,16 @@ public final class GetWafRulesResult {
      * 
      */
     private String id;
-    private @Nullable String packageId;
-    private List<GetWafRulesRule> rules;
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The ID of the WAF Rule Package that contains the WAF Rule
      * 
      */
+    private @Nullable String packageId;
+    /**
+     * @return A map of WAF Rules details. Full list below:
+     * 
+     */
+    private List<GetWafRulesRule> rules;
     private String zoneId;
 
     private GetWafRulesResult() {}
@@ -39,16 +43,20 @@ public final class GetWafRulesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The ID of the WAF Rule Package that contains the WAF Rule
+     * 
+     */
     public Optional<String> packageId() {
         return Optional.ofNullable(this.packageId);
     }
+    /**
+     * @return A map of WAF Rules details. Full list below:
+     * 
+     */
     public List<GetWafRulesRule> rules() {
         return this.rules;
     }
-    /**
-     * @return The zone identifier to target for the resource.
-     * 
-     */
     public String zoneId() {
         return this.zoneId;
     }

@@ -14,14 +14,14 @@ public final class GetZoneDnssecArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetZoneDnssecArgs Empty = new GetZoneDnssecArgs();
 
     /**
-     * The zone identifier to target for the resource.
+     * The zone id for the zone.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone id for the zone.
      * 
      */
     public Output<String> zoneId() {
@@ -53,7 +53,7 @@ public final class GetZoneDnssecArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The zone id for the zone.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class GetZoneDnssecArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The zone id for the zone.
          * 
          * @return builder
          * 

@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _poolIds;
 
         /// <summary>
-        /// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        /// A list of pool IDs in failover priority to use in the given region.
         /// </summary>
         public InputList<string> PoolIds
         {

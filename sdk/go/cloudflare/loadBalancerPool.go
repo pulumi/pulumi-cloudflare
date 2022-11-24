@@ -87,6 +87,8 @@ import (
 type LoadBalancerPool struct {
 	pulumi.CustomResourceState
 
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
 	CheckRegions pulumi.StringArrayOutput `pulumi:"checkRegions"`
 	// The RFC3339 timestamp of when the load balancer was created.
@@ -152,6 +154,8 @@ func GetLoadBalancerPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoadBalancerPool resources.
 type loadBalancerPoolState struct {
+	// The account identifier to target for the resource.
+	AccountId *string `pulumi:"accountId"`
 	// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
 	CheckRegions []string `pulumi:"checkRegions"`
 	// The RFC3339 timestamp of when the load balancer was created.
@@ -183,6 +187,8 @@ type loadBalancerPoolState struct {
 }
 
 type LoadBalancerPoolState struct {
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringPtrInput
 	// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
 	CheckRegions pulumi.StringArrayInput
 	// The RFC3339 timestamp of when the load balancer was created.
@@ -218,6 +224,8 @@ func (LoadBalancerPoolState) ElementType() reflect.Type {
 }
 
 type loadBalancerPoolArgs struct {
+	// The account identifier to target for the resource.
+	AccountId *string `pulumi:"accountId"`
 	// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
 	CheckRegions []string `pulumi:"checkRegions"`
 	// Free text description.
@@ -246,6 +254,8 @@ type loadBalancerPoolArgs struct {
 
 // The set of arguments for constructing a LoadBalancerPool resource.
 type LoadBalancerPoolArgs struct {
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringPtrInput
 	// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
 	CheckRegions pulumi.StringArrayInput
 	// Free text description.
@@ -357,6 +367,11 @@ func (o LoadBalancerPoolOutput) ToLoadBalancerPoolOutput() LoadBalancerPoolOutpu
 
 func (o LoadBalancerPoolOutput) ToLoadBalancerPoolOutputWithContext(ctx context.Context) LoadBalancerPoolOutput {
 	return o
+}
+
+// The account identifier to target for the resource.
+func (o LoadBalancerPoolOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).

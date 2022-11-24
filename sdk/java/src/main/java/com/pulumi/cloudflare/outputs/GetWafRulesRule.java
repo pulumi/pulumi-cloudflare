@@ -12,49 +12,113 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWafRulesRule {
+    /**
+     * @return The list of allowed `mode` values for the WAF Rule
+     * 
+     */
     private @Nullable List<String> allowedModes;
+    /**
+     * @return The default `mode` value for the WAF Rule
+     * 
+     */
     private @Nullable String defaultMode;
+    /**
+     * @return A regular expression matching the description of the WAF Rules to lookup.
+     * 
+     */
     private @Nullable String description;
+    /**
+     * @return The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+     * 
+     */
     private @Nullable String groupId;
+    /**
+     * @return The Name of the WAF Rule Group that contains the WAF Rule
+     * 
+     */
     private @Nullable String groupName;
     /**
-     * @return The ID of this resource.
+     * @return The WAF Rule ID
      * 
      */
     private @Nullable String id;
+    /**
+     * @return Mode of the WAF Rules to lookup. Valid values: one of [&#34;block&#34;, &#34;challenge&#34;, &#34;default&#34;, &#34;disable&#34;, &#34;simulate&#34;] or [&#34;on&#34;, &#34;off&#34;] depending on the WAF Rule type.
+     * 
+     */
     private @Nullable String mode;
+    /**
+     * @return The ID of the WAF Rule Package in which to search for the WAF Rules.
+     * 
+     */
     private @Nullable String packageId;
+    /**
+     * @return The WAF Rule priority
+     * 
+     */
     private @Nullable String priority;
 
     private GetWafRulesRule() {}
+    /**
+     * @return The list of allowed `mode` values for the WAF Rule
+     * 
+     */
     public List<String> allowedModes() {
         return this.allowedModes == null ? List.of() : this.allowedModes;
     }
+    /**
+     * @return The default `mode` value for the WAF Rule
+     * 
+     */
     public Optional<String> defaultMode() {
         return Optional.ofNullable(this.defaultMode);
     }
+    /**
+     * @return A regular expression matching the description of the WAF Rules to lookup.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+     * 
+     */
     public Optional<String> groupId() {
         return Optional.ofNullable(this.groupId);
     }
+    /**
+     * @return The Name of the WAF Rule Group that contains the WAF Rule
+     * 
+     */
     public Optional<String> groupName() {
         return Optional.ofNullable(this.groupName);
     }
     /**
-     * @return The ID of this resource.
+     * @return The WAF Rule ID
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return Mode of the WAF Rules to lookup. Valid values: one of [&#34;block&#34;, &#34;challenge&#34;, &#34;default&#34;, &#34;disable&#34;, &#34;simulate&#34;] or [&#34;on&#34;, &#34;off&#34;] depending on the WAF Rule type.
+     * 
+     */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
+    /**
+     * @return The ID of the WAF Rule Package in which to search for the WAF Rules.
+     * 
+     */
     public Optional<String> packageId() {
         return Optional.ofNullable(this.packageId);
     }
+    /**
+     * @return The WAF Rule priority
+     * 
+     */
     public Optional<String> priority() {
         return Optional.ofNullable(this.priority);
     }

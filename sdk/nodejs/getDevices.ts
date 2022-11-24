@@ -5,6 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const devices = pulumi.output(cloudflare.getDevices({
+ *     accountId: "c68973221045fe805dfb9aa520153148",
+ * }));
+ * ```
+ */
 export function getDevices(args: GetDevicesArgs, opts?: pulumi.InvokeOptions): Promise<GetDevicesResult> {
     if (!opts) {
         opts = {}
@@ -21,7 +35,7 @@ export function getDevices(args: GetDevicesArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetDevicesArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account for which to list the devices.
      */
     accountId: string;
 }
@@ -30,10 +44,10 @@ export interface GetDevicesArgs {
  * A collection of values returned by getDevices.
  */
 export interface GetDevicesResult {
-    /**
-     * The account identifier to target for the resource.
-     */
     readonly accountId: string;
+    /**
+     * A list of device object. See below for nested attributes.
+     */
     readonly devices: outputs.GetDevicesDevice[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -50,7 +64,7 @@ export function getDevicesOutput(args: GetDevicesOutputArgs, opts?: pulumi.Invok
  */
 export interface GetDevicesOutputArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account for which to list the devices.
      */
     accountId: pulumi.Input<string>;
 }

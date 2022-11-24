@@ -10,43 +10,103 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZoneDnssecResult {
+    /**
+     * @return Zone DNSSEC algorithm.
+     * 
+     */
     private String algorithm;
+    /**
+     * @return Zone DNSSEC digest.
+     * 
+     */
     private String digest;
+    /**
+     * @return Digest algorithm use for Zone DNSSEC.
+     * 
+     */
     private String digestAlgorithm;
+    /**
+     * @return Digest Type for Zone DNSSEC.
+     * 
+     */
     private String digestType;
+    /**
+     * @return DS for the Zone DNSSEC.
+     * 
+     */
     private String ds;
+    /**
+     * @return Zone DNSSEC flags.
+     * 
+     */
     private Integer flags;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-    private Integer keyTag;
-    private String keyType;
-    private String publicKey;
-    private String status;
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Key Tag for the Zone DNSSEC.
      * 
      */
+    private Integer keyTag;
+    /**
+     * @return Key type used for Zone DNSSEC.
+     * 
+     */
+    private String keyType;
+    /**
+     * @return Public Key for the Zone DNSSEC.
+     * 
+     */
+    private String publicKey;
+    /**
+     * @return The status of the Zone DNSSEC.
+     * 
+     */
+    private String status;
     private String zoneId;
 
     private GetZoneDnssecResult() {}
+    /**
+     * @return Zone DNSSEC algorithm.
+     * 
+     */
     public String algorithm() {
         return this.algorithm;
     }
+    /**
+     * @return Zone DNSSEC digest.
+     * 
+     */
     public String digest() {
         return this.digest;
     }
+    /**
+     * @return Digest algorithm use for Zone DNSSEC.
+     * 
+     */
     public String digestAlgorithm() {
         return this.digestAlgorithm;
     }
+    /**
+     * @return Digest Type for Zone DNSSEC.
+     * 
+     */
     public String digestType() {
         return this.digestType;
     }
+    /**
+     * @return DS for the Zone DNSSEC.
+     * 
+     */
     public String ds() {
         return this.ds;
     }
+    /**
+     * @return Zone DNSSEC flags.
+     * 
+     */
     public Integer flags() {
         return this.flags;
     }
@@ -57,22 +117,34 @@ public final class GetZoneDnssecResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Key Tag for the Zone DNSSEC.
+     * 
+     */
     public Integer keyTag() {
         return this.keyTag;
     }
+    /**
+     * @return Key type used for Zone DNSSEC.
+     * 
+     */
     public String keyType() {
         return this.keyType;
     }
+    /**
+     * @return Public Key for the Zone DNSSEC.
+     * 
+     */
     public String publicKey() {
         return this.publicKey;
     }
+    /**
+     * @return The status of the Zone DNSSEC.
+     * 
+     */
     public String status() {
         return this.status;
     }
-    /**
-     * @return The zone identifier to target for the resource.
-     * 
-     */
     public String zoneId() {
         return this.zoneId;
     }

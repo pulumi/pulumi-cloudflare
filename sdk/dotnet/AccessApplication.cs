@@ -178,7 +178,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> SkipInterstitial { get; private set; } = null!;
 
         /// <summary>
-        /// The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `self_hosted`.
+        /// The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -350,7 +350,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? SkipInterstitial { get; set; }
 
         /// <summary>
-        /// The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `self_hosted`.
+        /// The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -490,7 +490,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? SkipInterstitial { get; set; }
 
         /// <summary>
-        /// The application type. Available values: `self_hosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `self_hosted`.
+        /// The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

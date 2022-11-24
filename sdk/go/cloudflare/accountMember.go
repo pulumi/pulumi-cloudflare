@@ -59,6 +59,8 @@ type AccountMember struct {
 	EmailAddress pulumi.StringOutput `pulumi:"emailAddress"`
 	// List of account role IDs that you want to assign to a member.
 	RoleIds pulumi.StringArrayOutput `pulumi:"roleIds"`
+	// A member's status in the account. Available values: `accepted`, `pending`.
+	Status pulumi.StringPtrOutput `pulumi:"status"`
 }
 
 // NewAccountMember registers a new resource with the given unique name, arguments, and options.
@@ -102,6 +104,8 @@ type accountMemberState struct {
 	EmailAddress *string `pulumi:"emailAddress"`
 	// List of account role IDs that you want to assign to a member.
 	RoleIds []string `pulumi:"roleIds"`
+	// A member's status in the account. Available values: `accepted`, `pending`.
+	Status *string `pulumi:"status"`
 }
 
 type AccountMemberState struct {
@@ -111,6 +115,8 @@ type AccountMemberState struct {
 	EmailAddress pulumi.StringPtrInput
 	// List of account role IDs that you want to assign to a member.
 	RoleIds pulumi.StringArrayInput
+	// A member's status in the account. Available values: `accepted`, `pending`.
+	Status pulumi.StringPtrInput
 }
 
 func (AccountMemberState) ElementType() reflect.Type {
@@ -124,6 +130,8 @@ type accountMemberArgs struct {
 	EmailAddress string `pulumi:"emailAddress"`
 	// List of account role IDs that you want to assign to a member.
 	RoleIds []string `pulumi:"roleIds"`
+	// A member's status in the account. Available values: `accepted`, `pending`.
+	Status *string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a AccountMember resource.
@@ -134,6 +142,8 @@ type AccountMemberArgs struct {
 	EmailAddress pulumi.StringInput
 	// List of account role IDs that you want to assign to a member.
 	RoleIds pulumi.StringArrayInput
+	// A member's status in the account. Available values: `accepted`, `pending`.
+	Status pulumi.StringPtrInput
 }
 
 func (AccountMemberArgs) ElementType() reflect.Type {
@@ -236,6 +246,11 @@ func (o AccountMemberOutput) EmailAddress() pulumi.StringOutput {
 // List of account role IDs that you want to assign to a member.
 func (o AccountMemberOutput) RoleIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccountMember) pulumi.StringArrayOutput { return v.RoleIds }).(pulumi.StringArrayOutput)
+}
+
+// A member's status in the account. Available values: `accepted`, `pending`.
+func (o AccountMemberOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountMember) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 type AccountMemberArrayOutput struct{ *pulumi.OutputState }

@@ -12,11 +12,13 @@ export * from "./accessGroup";
 export * from "./accessIdentityProvider";
 export * from "./accessKeysConfiguration";
 export * from "./accessMutualTlsCertificate";
+export * from "./accessOrganization";
 export * from "./accessPolicy";
 export * from "./accessRule";
 export * from "./accessServiceToken";
 export * from "./account";
 export * from "./accountMember";
+export * from "./apiShield";
 export * from "./apiToken";
 export * from "./argo";
 export * from "./argoTunnel";
@@ -31,6 +33,11 @@ export * from "./customSsl";
 export * from "./devicePolicyCertificates";
 export * from "./devicePostureIntegration";
 export * from "./devicePostureRule";
+export * from "./dlpProfile";
+export * from "./emailRoutingAddress";
+export * from "./emailRoutingCatchAll";
+export * from "./emailRoutingRule";
+export * from "./emailRoutingSettings";
 export * from "./fallbackDomain";
 export * from "./filter";
 export * from "./firewallRule";
@@ -79,6 +86,7 @@ export * from "./teamsList";
 export * from "./teamsLocation";
 export * from "./teamsProxyEndpoint";
 export * from "./teamsRule";
+export * from "./totalTls";
 export * from "./tunnelRoute";
 export * from "./tunnelVirtualNetwork";
 export * from "./userAgentBlockingRule";
@@ -88,6 +96,8 @@ export * from "./wafPackage";
 export * from "./wafRule";
 export * from "./waitingRoom";
 export * from "./waitingRoomEvent";
+export * from "./waitingRoomRules";
+export * from "./web3Hostname";
 export * from "./workerCronTrigger";
 export * from "./workerRoute";
 export * from "./workerScript";
@@ -116,11 +126,13 @@ import { AccessGroup } from "./accessGroup";
 import { AccessIdentityProvider } from "./accessIdentityProvider";
 import { AccessKeysConfiguration } from "./accessKeysConfiguration";
 import { AccessMutualTlsCertificate } from "./accessMutualTlsCertificate";
+import { AccessOrganization } from "./accessOrganization";
 import { AccessPolicy } from "./accessPolicy";
 import { AccessRule } from "./accessRule";
 import { AccessServiceToken } from "./accessServiceToken";
 import { Account } from "./account";
 import { AccountMember } from "./accountMember";
+import { ApiShield } from "./apiShield";
 import { ApiToken } from "./apiToken";
 import { Argo } from "./argo";
 import { ArgoTunnel } from "./argoTunnel";
@@ -135,6 +147,11 @@ import { CustomSsl } from "./customSsl";
 import { DevicePolicyCertificates } from "./devicePolicyCertificates";
 import { DevicePostureIntegration } from "./devicePostureIntegration";
 import { DevicePostureRule } from "./devicePostureRule";
+import { DlpProfile } from "./dlpProfile";
+import { EmailRoutingAddress } from "./emailRoutingAddress";
+import { EmailRoutingCatchAll } from "./emailRoutingCatchAll";
+import { EmailRoutingRule } from "./emailRoutingRule";
+import { EmailRoutingSettings } from "./emailRoutingSettings";
 import { FallbackDomain } from "./fallbackDomain";
 import { Filter } from "./filter";
 import { FirewallRule } from "./firewallRule";
@@ -168,6 +185,7 @@ import { TeamsList } from "./teamsList";
 import { TeamsLocation } from "./teamsLocation";
 import { TeamsProxyEndpoint } from "./teamsProxyEndpoint";
 import { TeamsRule } from "./teamsRule";
+import { TotalTls } from "./totalTls";
 import { TunnelRoute } from "./tunnelRoute";
 import { TunnelVirtualNetwork } from "./tunnelVirtualNetwork";
 import { UserAgentBlockingRule } from "./userAgentBlockingRule";
@@ -177,6 +195,8 @@ import { WafPackage } from "./wafPackage";
 import { WafRule } from "./wafRule";
 import { WaitingRoom } from "./waitingRoom";
 import { WaitingRoomEvent } from "./waitingRoomEvent";
+import { WaitingRoomRules } from "./waitingRoomRules";
+import { Web3Hostname } from "./web3Hostname";
 import { WorkerCronTrigger } from "./workerCronTrigger";
 import { WorkerRoute } from "./workerRoute";
 import { WorkerScript } from "./workerScript";
@@ -206,6 +226,8 @@ const _module = {
                 return new AccessKeysConfiguration(name, <any>undefined, { urn })
             case "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate":
                 return new AccessMutualTlsCertificate(name, <any>undefined, { urn })
+            case "cloudflare:index/accessOrganization:AccessOrganization":
+                return new AccessOrganization(name, <any>undefined, { urn })
             case "cloudflare:index/accessPolicy:AccessPolicy":
                 return new AccessPolicy(name, <any>undefined, { urn })
             case "cloudflare:index/accessRule:AccessRule":
@@ -216,6 +238,8 @@ const _module = {
                 return new Account(name, <any>undefined, { urn })
             case "cloudflare:index/accountMember:AccountMember":
                 return new AccountMember(name, <any>undefined, { urn })
+            case "cloudflare:index/apiShield:ApiShield":
+                return new ApiShield(name, <any>undefined, { urn })
             case "cloudflare:index/apiToken:ApiToken":
                 return new ApiToken(name, <any>undefined, { urn })
             case "cloudflare:index/argo:Argo":
@@ -244,6 +268,16 @@ const _module = {
                 return new DevicePostureIntegration(name, <any>undefined, { urn })
             case "cloudflare:index/devicePostureRule:DevicePostureRule":
                 return new DevicePostureRule(name, <any>undefined, { urn })
+            case "cloudflare:index/dlpProfile:DlpProfile":
+                return new DlpProfile(name, <any>undefined, { urn })
+            case "cloudflare:index/emailRoutingAddress:EmailRoutingAddress":
+                return new EmailRoutingAddress(name, <any>undefined, { urn })
+            case "cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll":
+                return new EmailRoutingCatchAll(name, <any>undefined, { urn })
+            case "cloudflare:index/emailRoutingRule:EmailRoutingRule":
+                return new EmailRoutingRule(name, <any>undefined, { urn })
+            case "cloudflare:index/emailRoutingSettings:EmailRoutingSettings":
+                return new EmailRoutingSettings(name, <any>undefined, { urn })
             case "cloudflare:index/fallbackDomain:FallbackDomain":
                 return new FallbackDomain(name, <any>undefined, { urn })
             case "cloudflare:index/filter:Filter":
@@ -310,6 +344,8 @@ const _module = {
                 return new TeamsProxyEndpoint(name, <any>undefined, { urn })
             case "cloudflare:index/teamsRule:TeamsRule":
                 return new TeamsRule(name, <any>undefined, { urn })
+            case "cloudflare:index/totalTls:TotalTls":
+                return new TotalTls(name, <any>undefined, { urn })
             case "cloudflare:index/tunnelRoute:TunnelRoute":
                 return new TunnelRoute(name, <any>undefined, { urn })
             case "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork":
@@ -328,6 +364,10 @@ const _module = {
                 return new WaitingRoom(name, <any>undefined, { urn })
             case "cloudflare:index/waitingRoomEvent:WaitingRoomEvent":
                 return new WaitingRoomEvent(name, <any>undefined, { urn })
+            case "cloudflare:index/waitingRoomRules:WaitingRoomRules":
+                return new WaitingRoomRules(name, <any>undefined, { urn })
+            case "cloudflare:index/web3Hostname:Web3Hostname":
+                return new Web3Hostname(name, <any>undefined, { urn })
             case "cloudflare:index/workerCronTrigger:WorkerCronTrigger":
                 return new WorkerCronTrigger(name, <any>undefined, { urn })
             case "cloudflare:index/workerRoute:WorkerRoute":
@@ -360,11 +400,13 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/accessGroup", _module
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessIdentityProvider", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessKeysConfiguration", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessMutualTlsCertificate", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/accessOrganization", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessPolicy", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessServiceToken", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/account", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accountMember", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/apiShield", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiToken", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/argo", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/argoTunnel", _module)
@@ -379,6 +421,11 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/customSsl", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/devicePolicyCertificates", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/devicePostureIntegration", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/devicePostureRule", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/dlpProfile", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/emailRoutingAddress", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/emailRoutingCatchAll", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/emailRoutingRule", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/emailRoutingSettings", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/fallbackDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/filter", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/firewallRule", _module)
@@ -412,6 +459,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/teamsList", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsLocation", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsProxyEndpoint", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsRule", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/totalTls", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelVirtualNetwork", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/userAgentBlockingRule", _module)
@@ -421,6 +469,8 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/wafPackage", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoom", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoomEvent", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoomRules", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/web3Hostname", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerCronTrigger", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerScript", _module)

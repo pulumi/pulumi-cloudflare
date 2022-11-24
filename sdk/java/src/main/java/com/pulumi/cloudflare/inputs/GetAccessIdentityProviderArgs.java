@@ -16,36 +16,44 @@ public final class GetAccessIdentityProviderArgs extends com.pulumi.resources.In
     public static final GetAccessIdentityProviderArgs Empty = new GetAccessIdentityProviderArgs();
 
     /**
-     * The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * The account for which to look for an Access Identity Provider. Conflicts with `zone_id`.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * @return The account for which to look for an Access Identity Provider. Conflicts with `zone_id`.
      * 
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * Access Identity Provider name to search for.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return Access Identity Provider name to search for.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
 
     /**
-     * The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * The Zone&#39;s ID. Conflicts with `account_id`.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * @return The Zone&#39;s ID. Conflicts with `account_id`.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -79,7 +87,7 @@ public final class GetAccessIdentityProviderArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+         * @param accountId The account for which to look for an Access Identity Provider. Conflicts with `zone_id`.
          * 
          * @return builder
          * 
@@ -90,7 +98,7 @@ public final class GetAccessIdentityProviderArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+         * @param accountId The account for which to look for an Access Identity Provider. Conflicts with `zone_id`.
          * 
          * @return builder
          * 
@@ -99,17 +107,29 @@ public final class GetAccessIdentityProviderArgs extends com.pulumi.resources.In
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param name Access Identity Provider name to search for.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Access Identity Provider name to search for.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+         * @param zoneId The Zone&#39;s ID. Conflicts with `account_id`.
          * 
          * @return builder
          * 
@@ -120,7 +140,7 @@ public final class GetAccessIdentityProviderArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+         * @param zoneId The Zone&#39;s ID. Conflicts with `account_id`.
          * 
          * @return builder
          * 

@@ -14,14 +14,14 @@ public final class GetAccountRolesArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetAccountRolesArgs Empty = new GetAccountRolesArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * The account for which to list the roles.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account for which to list the roles.
      * 
      */
     public Output<String> accountId() {
@@ -53,7 +53,7 @@ public final class GetAccountRolesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The account for which to list the roles.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class GetAccountRolesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The account for which to list the roles.
          * 
          * @return builder
          * 

@@ -23,6 +23,21 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
     public static final LoadBalancerPoolArgs Empty = new LoadBalancerPoolArgs();
 
     /**
+     * The account identifier to target for the resource.
+     * 
+     */
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
+
+    /**
+     * @return The account identifier to target for the resource.
+     * 
+     */
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+
+    /**
      * A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
      * 
      */
@@ -205,6 +220,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
     private LoadBalancerPoolArgs() {}
 
     private LoadBalancerPoolArgs(LoadBalancerPoolArgs $) {
+        this.accountId = $.accountId;
         this.checkRegions = $.checkRegions;
         this.description = $.description;
         this.enabled = $.enabled;
@@ -235,6 +251,27 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
 
         public Builder(LoadBalancerPoolArgs defaults) {
             $ = new LoadBalancerPoolArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accountId The account identifier to target for the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(@Nullable Output<String> accountId) {
+            $.accountId = accountId;
+            return this;
+        }
+
+        /**
+         * @param accountId The account identifier to target for the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
         }
 
         /**

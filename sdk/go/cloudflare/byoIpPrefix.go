@@ -11,7 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP) which are used with or without Magic Transit.
+// Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP)
+// which are used with or without Magic Transit.
 //
 // ## Example Usage
 //
@@ -28,6 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewByoIpPrefix(ctx, "example", &cloudflare.ByoIpPrefixArgs{
+//				AccountId:     pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Advertisement: pulumi.String("on"),
 //				Description:   pulumi.String("Example IP Prefix"),
 //				PrefixId:      pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
@@ -43,11 +45,9 @@ import (
 //
 // ## Import
 //
-// The current settings for Bring-Your-Own-IP prefixes can be imported using the prefix ID.
-//
 // ```sh
 //
-//	$ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example d41d8cd98f00b204e9800998ecf8427e
+//	$ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example <account_id>/<prefix_id>
 //
 // ```
 type ByoIpPrefix struct {
@@ -55,9 +55,9 @@ type ByoIpPrefix struct {
 
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
+	// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
 	Advertisement pulumi.StringOutput `pulumi:"advertisement"`
-	// The description of the prefix.
+	// Description of the BYO IP prefix.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The assigned Bring-Your-Own-IP prefix ID.
 	PrefixId pulumi.StringOutput `pulumi:"prefixId"`
@@ -100,9 +100,9 @@ func GetByoIpPrefix(ctx *pulumi.Context,
 type byoIpPrefixState struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
+	// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
 	Advertisement *string `pulumi:"advertisement"`
-	// The description of the prefix.
+	// Description of the BYO IP prefix.
 	Description *string `pulumi:"description"`
 	// The assigned Bring-Your-Own-IP prefix ID.
 	PrefixId *string `pulumi:"prefixId"`
@@ -111,9 +111,9 @@ type byoIpPrefixState struct {
 type ByoIpPrefixState struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
+	// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
 	Advertisement pulumi.StringPtrInput
-	// The description of the prefix.
+	// Description of the BYO IP prefix.
 	Description pulumi.StringPtrInput
 	// The assigned Bring-Your-Own-IP prefix ID.
 	PrefixId pulumi.StringPtrInput
@@ -126,9 +126,9 @@ func (ByoIpPrefixState) ElementType() reflect.Type {
 type byoIpPrefixArgs struct {
 	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
-	// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
+	// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
 	Advertisement *string `pulumi:"advertisement"`
-	// The description of the prefix.
+	// Description of the BYO IP prefix.
 	Description *string `pulumi:"description"`
 	// The assigned Bring-Your-Own-IP prefix ID.
 	PrefixId string `pulumi:"prefixId"`
@@ -138,9 +138,9 @@ type byoIpPrefixArgs struct {
 type ByoIpPrefixArgs struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
+	// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
 	Advertisement pulumi.StringPtrInput
-	// The description of the prefix.
+	// Description of the BYO IP prefix.
 	Description pulumi.StringPtrInput
 	// The assigned Bring-Your-Own-IP prefix ID.
 	PrefixId pulumi.StringInput
@@ -238,12 +238,12 @@ func (o ByoIpPrefixOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
+// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
 func (o ByoIpPrefixOutput) Advertisement() pulumi.StringOutput {
 	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.Advertisement }).(pulumi.StringOutput)
 }
 
-// The description of the prefix.
+// Description of the BYO IP prefix.
 func (o ByoIpPrefixOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }

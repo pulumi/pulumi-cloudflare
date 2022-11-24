@@ -16,14 +16,14 @@ public final class DevicePostureRuleMatchArgs extends com.pulumi.resources.Resou
     public static final DevicePostureRuleMatchArgs Empty = new DevicePostureRuleMatchArgs();
 
     /**
-     * The platform of the device. Valid values are `windows`, `mac`, `linux`, `android`, and `ios`.
+     * The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
      * 
      */
     @Import(name="platform")
     private @Nullable Output<String> platform;
 
     /**
-     * @return The platform of the device. Valid values are `windows`, `mac`, `linux`, `android`, and `ios`.
+     * @return The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
      * 
      */
     public Optional<Output<String>> platform() {
@@ -55,7 +55,7 @@ public final class DevicePostureRuleMatchArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param platform The platform of the device. Valid values are `windows`, `mac`, `linux`, `android`, and `ios`.
+         * @param platform The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class DevicePostureRuleMatchArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param platform The platform of the device. Valid values are `windows`, `mac`, `linux`, `android`, and `ios`.
+         * @param platform The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
          * 
          * @return builder
          * 

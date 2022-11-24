@@ -52,7 +52,7 @@ export class LogpushJob extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`.
+     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`.
      */
     public readonly dataset!: pulumi.Output<string>;
     /**
@@ -150,7 +150,7 @@ export interface LogpushJobState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`.
+     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`.
      */
     dataset?: pulumi.Input<string>;
     /**
@@ -200,7 +200,7 @@ export interface LogpushJobArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`.
+     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`.
      */
     dataset: pulumi.Input<string>;
     /**

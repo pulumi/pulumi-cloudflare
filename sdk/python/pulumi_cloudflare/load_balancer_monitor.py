@@ -16,6 +16,7 @@ __all__ = ['LoadBalancerMonitorArgs', 'LoadBalancerMonitor']
 @pulumi.input_type
 class LoadBalancerMonitorArgs:
     def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  expected_body: Optional[pulumi.Input[str]] = None,
@@ -32,6 +33,7 @@ class LoadBalancerMonitorArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LoadBalancerMonitor resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] description: Free text description.
         :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
@@ -47,6 +49,8 @@ class LoadBalancerMonitorArgs:
         :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. Default: 5.
         :param pulumi.Input[str] type: The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
         """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if allow_insecure is not None:
             pulumi.set(__self__, "allow_insecure", allow_insecure)
         if description is not None:
@@ -75,6 +79,18 @@ class LoadBalancerMonitorArgs:
             pulumi.set(__self__, "timeout", timeout)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account identifier to target for the resource.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter(name="allowInsecure")
@@ -248,6 +264,7 @@ class LoadBalancerMonitorArgs:
 @pulumi.input_type
 class _LoadBalancerMonitorState:
     def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
                  created_on: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -266,6 +283,7 @@ class _LoadBalancerMonitorState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerMonitor resources.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the load balancer monitor was created.
         :param pulumi.Input[str] description: Free text description.
@@ -283,6 +301,8 @@ class _LoadBalancerMonitorState:
         :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. Default: 5.
         :param pulumi.Input[str] type: The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
         """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if allow_insecure is not None:
             pulumi.set(__self__, "allow_insecure", allow_insecure)
         if created_on is not None:
@@ -315,6 +335,18 @@ class _LoadBalancerMonitorState:
             pulumi.set(__self__, "timeout", timeout)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account identifier to target for the resource.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter(name="allowInsecure")
@@ -514,6 +546,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  expected_body: Optional[pulumi.Input[str]] = None,
@@ -577,6 +610,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] description: Free text description.
         :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
@@ -659,6 +693,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  expected_body: Optional[pulumi.Input[str]] = None,
@@ -682,6 +717,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LoadBalancerMonitorArgs.__new__(LoadBalancerMonitorArgs)
 
+            __props__.__dict__["account_id"] = account_id
             __props__.__dict__["allow_insecure"] = allow_insecure
             __props__.__dict__["description"] = description
             __props__.__dict__["expected_body"] = expected_body
@@ -708,6 +744,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: Optional[pulumi.Input[str]] = None,
             allow_insecure: Optional[pulumi.Input[bool]] = None,
             created_on: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -731,6 +768,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the load balancer monitor was created.
         :param pulumi.Input[str] description: Free text description.
@@ -752,6 +790,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
         __props__ = _LoadBalancerMonitorState.__new__(_LoadBalancerMonitorState)
 
+        __props__.__dict__["account_id"] = account_id
         __props__.__dict__["allow_insecure"] = allow_insecure
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["description"] = description
@@ -769,6 +808,14 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         __props__.__dict__["timeout"] = timeout
         __props__.__dict__["type"] = type
         return LoadBalancerMonitor(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The account identifier to target for the resource.
+        """
+        return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="allowInsecure")

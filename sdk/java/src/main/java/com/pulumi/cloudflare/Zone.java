@@ -127,14 +127,14 @@ public class Zone extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.paused);
     }
     /**
-     * The name of the commercial plan to apply to the zone. Available values: `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
+     * The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
      * 
      */
     @Export(name="plan", type=String.class, parameters={})
     private Output<String> plan;
 
     /**
-     * @return The name of the commercial plan to apply to the zone. Available values: `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
+     * @return The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
      * 
      */
     public Output<String> plan() {

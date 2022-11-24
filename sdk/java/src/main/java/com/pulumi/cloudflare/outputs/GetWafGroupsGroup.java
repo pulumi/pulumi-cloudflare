@@ -12,41 +12,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWafGroupsGroup {
+    /**
+     * @return The WAF Rule Group description
+     * 
+     */
     private @Nullable String description;
     /**
-     * @return The ID of this resource.
+     * @return The WAF Rule Group ID
      * 
      */
     private @Nullable String id;
+    /**
+     * @return Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+     * 
+     */
     private @Nullable String mode;
+    /**
+     * @return The number of modified rules in the WAF Rule Group
+     * 
+     */
     private @Nullable Integer modifiedRulesCount;
+    /**
+     * @return A regular expression matching the name of the WAF Rule Groups to lookup.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
+     * 
+     */
     private @Nullable String packageId;
+    /**
+     * @return The number of rules in the WAF Rule Group
+     * 
+     */
     private @Nullable Integer rulesCount;
 
     private GetWafGroupsGroup() {}
+    /**
+     * @return The WAF Rule Group description
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return The ID of this resource.
+     * @return The WAF Rule Group ID
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+     * 
+     */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
+    /**
+     * @return The number of modified rules in the WAF Rule Group
+     * 
+     */
     public Optional<Integer> modifiedRulesCount() {
         return Optional.ofNullable(this.modifiedRulesCount);
     }
+    /**
+     * @return A regular expression matching the name of the WAF Rule Groups to lookup.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
+     * 
+     */
     public Optional<String> packageId() {
         return Optional.ofNullable(this.packageId);
     }
+    /**
+     * @return The number of rules in the WAF Rule Group
+     * 
+     */
     public Optional<Integer> rulesCount() {
         return Optional.ofNullable(this.rulesCount);
     }

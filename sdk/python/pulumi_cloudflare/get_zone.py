@@ -54,7 +54,7 @@ class GetZoneResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
         """
-        The account identifier to target for the resource.
+        The account ID associated with the zone.
         """
         return pulumi.get(self, "account_id")
 
@@ -70,41 +70,54 @@ class GetZoneResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Must provide only one of `zone_id`, `name`.
+        The name of the zone.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nameServers")
     def name_servers(self) -> Sequence[str]:
+        """
+        Cloudflare assigned name servers. This is only populated for zones that use Cloudflare DNS.
+        """
         return pulumi.get(self, "name_servers")
 
     @property
     @pulumi.getter
     def paused(self) -> bool:
+        """
+        `true` if cloudflare is enabled on the zone, otherwise `false`.
+        """
         return pulumi.get(self, "paused")
 
     @property
     @pulumi.getter
     def plan(self) -> str:
+        """
+        The name of the plan associated with the zone.
+        """
         return pulumi.get(self, "plan")
 
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        Status of the zone. Values can be: `"active"`, `"pending"`, `"initializing"`, `"moved"`, `"deleted"`,
+        or `"deactivated"`.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="vanityNameServers")
     def vanity_name_servers(self) -> Sequence[str]:
+        """
+        List of Vanity Nameservers (if set).
+        """
         return pulumi.get(self, "vanity_name_servers")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
-        """
-        The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
-        """
         return pulumi.get(self, "zone_id")
 
 
@@ -130,11 +143,44 @@ def get_zone(account_id: Optional[str] = None,
              zone_id: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZoneResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to look up [zone] info. This is the singular alternative
+    to `get_zones`.
 
-    :param str account_id: The account identifier to target for the resource.
-    :param str name: Must provide only one of `zone_id`, `name`.
-    :param str zone_id: The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
+    > **Note** Cloudflare zone names **are not unique**. It is possible for multiple
+    accounts to have the same zone created but in different states. If you are
+    using this setup, it is advised to use the `account_id` attribute on this
+    resource or swap to `get_zones` to further filter the results.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example = cloudflare.get_zone(zone_id="0b6d347b01d437a092be84c2edfce72c")
+    ```
+    ### Example usage with other resources
+
+    The example below fetches the zone information for example.com and then is
+    referenced in the `Record` section.
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_zone = cloudflare.get_zone(name="example.com")
+    example_record = cloudflare.Record("exampleRecord",
+        zone_id=example_zone.id,
+        name="www",
+        value="203.0.113.1",
+        type="A",
+        proxied=True)
+    ```
+
+
+    :param str account_id: The account ID associated with the zone.
+    :param str name: The name of the zone. Conflicts with `"zone_id"`.
+    :param str zone_id: The zone ID. Conflicts with `"name"`.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -161,10 +207,43 @@ def get_zone_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                     zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to look up [zone] info. This is the singular alternative
+    to `get_zones`.
 
-    :param str account_id: The account identifier to target for the resource.
-    :param str name: Must provide only one of `zone_id`, `name`.
-    :param str zone_id: The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
+    > **Note** Cloudflare zone names **are not unique**. It is possible for multiple
+    accounts to have the same zone created but in different states. If you are
+    using this setup, it is advised to use the `account_id` attribute on this
+    resource or swap to `get_zones` to further filter the results.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example = cloudflare.get_zone(zone_id="0b6d347b01d437a092be84c2edfce72c")
+    ```
+    ### Example usage with other resources
+
+    The example below fetches the zone information for example.com and then is
+    referenced in the `Record` section.
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_zone = cloudflare.get_zone(name="example.com")
+    example_record = cloudflare.Record("exampleRecord",
+        zone_id=example_zone.id,
+        name="www",
+        value="203.0.113.1",
+        type="A",
+        proxied=True)
+    ```
+
+
+    :param str account_id: The account ID associated with the zone.
+    :param str name: The name of the zone. Conflicts with `"zone_id"`.
+    :param str zone_id: The zone ID. Conflicts with `"name"`.
     """
     ...

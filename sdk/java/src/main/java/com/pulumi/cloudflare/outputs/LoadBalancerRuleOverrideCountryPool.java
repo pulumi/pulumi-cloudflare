@@ -16,7 +16,7 @@ public final class LoadBalancerRuleOverrideCountryPool {
      */
     private String country;
     /**
-     * @return A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     * @return A list of pool IDs in failover priority to use in the given country.
      * 
      */
     private List<String> poolIds;
@@ -30,7 +30,7 @@ public final class LoadBalancerRuleOverrideCountryPool {
         return this.country;
     }
     /**
-     * @return A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     * @return A list of pool IDs in failover priority to use in the given country.
      * 
      */
     public List<String> poolIds() {

@@ -10,6 +10,10 @@ import java.util.Objects;
 @CustomType
 public final class GetOriginCaRootCertificateResult {
     private String algorithm;
+    /**
+     * @return The Origin CA root certificate in PEM format.
+     * 
+     */
     private String certPem;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -21,6 +25,10 @@ public final class GetOriginCaRootCertificateResult {
     public String algorithm() {
         return this.algorithm;
     }
+    /**
+     * @return The Origin CA root certificate in PEM format.
+     * 
+     */
     public String certPem() {
         return this.certPem;
     }

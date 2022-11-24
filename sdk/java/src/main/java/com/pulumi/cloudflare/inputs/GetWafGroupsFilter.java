@@ -14,16 +14,32 @@ public final class GetWafGroupsFilter extends com.pulumi.resources.InvokeArgs {
 
     public static final GetWafGroupsFilter Empty = new GetWafGroupsFilter();
 
+    /**
+     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+     * 
+     */
     @Import(name="mode")
     private @Nullable String mode;
 
+    /**
+     * @return Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+     * 
+     */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
 
+    /**
+     * A regular expression matching the name of the WAF Rule Groups to lookup.
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return A regular expression matching the name of the WAF Rule Groups to lookup.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -53,11 +69,23 @@ public final class GetWafGroupsFilter extends com.pulumi.resources.InvokeArgs {
             $ = new GetWafGroupsFilter(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param mode Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(@Nullable String mode) {
             $.mode = mode;
             return this;
         }
 
+        /**
+         * @param name A regular expression matching the name of the WAF Rule Groups to lookup.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;

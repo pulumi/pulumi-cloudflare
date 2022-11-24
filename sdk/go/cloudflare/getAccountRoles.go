@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
 func GetAccountRoles(ctx *pulumi.Context, args *GetAccountRolesArgs, opts ...pulumi.InvokeOption) (*GetAccountRolesResult, error) {
 	var rv GetAccountRolesResult
 	err := ctx.Invoke("cloudflare:index/getAccountRoles:getAccountRoles", args, &rv, opts...)
@@ -21,16 +22,16 @@ func GetAccountRoles(ctx *pulumi.Context, args *GetAccountRolesArgs, opts ...pul
 
 // A collection of arguments for invoking getAccountRoles.
 type GetAccountRolesArgs struct {
-	// The account identifier to target for the resource.
+	// The account for which to list the roles.
 	AccountId string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getAccountRoles.
 type GetAccountRolesResult struct {
-	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id    string                `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// A list of roles object. See below for nested attributes.
 	Roles []GetAccountRolesRole `pulumi:"roles"`
 }
 
@@ -49,7 +50,7 @@ func GetAccountRolesOutput(ctx *pulumi.Context, args GetAccountRolesOutputArgs, 
 
 // A collection of arguments for invoking getAccountRoles.
 type GetAccountRolesOutputArgs struct {
-	// The account identifier to target for the resource.
+	// The account for which to list the roles.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 }
 
@@ -72,7 +73,6 @@ func (o GetAccountRolesResultOutput) ToGetAccountRolesResultOutputWithContext(ct
 	return o
 }
 
-// The account identifier to target for the resource.
 func (o GetAccountRolesResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountRolesResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -82,6 +82,7 @@ func (o GetAccountRolesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountRolesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of roles object. See below for nested attributes.
 func (o GetAccountRolesResultOutput) Roles() GetAccountRolesRoleArrayOutput {
 	return o.ApplyT(func(v GetAccountRolesResult) []GetAccountRolesRole { return v.Roles }).(GetAccountRolesRoleArrayOutput)
 }

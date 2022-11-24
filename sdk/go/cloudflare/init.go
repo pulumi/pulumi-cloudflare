@@ -34,6 +34,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccessKeysConfiguration{}
 	case "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate":
 		r = &AccessMutualTlsCertificate{}
+	case "cloudflare:index/accessOrganization:AccessOrganization":
+		r = &AccessOrganization{}
 	case "cloudflare:index/accessPolicy:AccessPolicy":
 		r = &AccessPolicy{}
 	case "cloudflare:index/accessRule:AccessRule":
@@ -44,6 +46,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Account{}
 	case "cloudflare:index/accountMember:AccountMember":
 		r = &AccountMember{}
+	case "cloudflare:index/apiShield:ApiShield":
+		r = &ApiShield{}
 	case "cloudflare:index/apiToken:ApiToken":
 		r = &ApiToken{}
 	case "cloudflare:index/argo:Argo":
@@ -72,6 +76,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DevicePostureIntegration{}
 	case "cloudflare:index/devicePostureRule:DevicePostureRule":
 		r = &DevicePostureRule{}
+	case "cloudflare:index/dlpProfile:DlpProfile":
+		r = &DlpProfile{}
+	case "cloudflare:index/emailRoutingAddress:EmailRoutingAddress":
+		r = &EmailRoutingAddress{}
+	case "cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll":
+		r = &EmailRoutingCatchAll{}
+	case "cloudflare:index/emailRoutingRule:EmailRoutingRule":
+		r = &EmailRoutingRule{}
+	case "cloudflare:index/emailRoutingSettings:EmailRoutingSettings":
+		r = &EmailRoutingSettings{}
 	case "cloudflare:index/fallbackDomain:FallbackDomain":
 		r = &FallbackDomain{}
 	case "cloudflare:index/filter:Filter":
@@ -138,6 +152,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TeamsProxyEndpoint{}
 	case "cloudflare:index/teamsRule:TeamsRule":
 		r = &TeamsRule{}
+	case "cloudflare:index/totalTls:TotalTls":
+		r = &TotalTls{}
 	case "cloudflare:index/tunnelRoute:TunnelRoute":
 		r = &TunnelRoute{}
 	case "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork":
@@ -156,6 +172,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WaitingRoom{}
 	case "cloudflare:index/waitingRoomEvent:WaitingRoomEvent":
 		r = &WaitingRoomEvent{}
+	case "cloudflare:index/waitingRoomRules:WaitingRoomRules":
+		r = &WaitingRoomRules{}
+	case "cloudflare:index/web3Hostname:Web3Hostname":
+		r = &Web3Hostname{}
 	case "cloudflare:index/workerCronTrigger:WorkerCronTrigger":
 		r = &WorkerCronTrigger{}
 	case "cloudflare:index/workerRoute:WorkerRoute":
@@ -241,6 +261,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/accessOrganization",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/accessPolicy",
 		&module{version},
 	)
@@ -262,6 +287,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/accountMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/apiShield",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -332,6 +362,31 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/devicePostureRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/dlpProfile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/emailRoutingAddress",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/emailRoutingCatchAll",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/emailRoutingRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/emailRoutingSettings",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -501,6 +556,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/totalTls",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/tunnelRoute",
 		&module{version},
 	)
@@ -542,6 +602,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/waitingRoomEvent",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/waitingRoomRules",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/web3Hostname",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

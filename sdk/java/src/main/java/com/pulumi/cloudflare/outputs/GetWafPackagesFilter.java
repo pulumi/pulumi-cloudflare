@@ -11,21 +11,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWafPackagesFilter {
+    /**
+     * @return Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+     * 
+     */
     private @Nullable String actionMode;
+    /**
+     * @return Detection mode of the WAF Rule Packages to lookup.
+     * 
+     */
     private @Nullable String detectionMode;
+    /**
+     * @return A regular expression matching the name of the WAF Rule Packages to lookup.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+     * 
+     */
     private @Nullable String sensitivity;
 
     private GetWafPackagesFilter() {}
+    /**
+     * @return Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+     * 
+     */
     public Optional<String> actionMode() {
         return Optional.ofNullable(this.actionMode);
     }
+    /**
+     * @return Detection mode of the WAF Rule Packages to lookup.
+     * 
+     */
     public Optional<String> detectionMode() {
         return Optional.ofNullable(this.detectionMode);
     }
+    /**
+     * @return A regular expression matching the name of the WAF Rule Packages to lookup.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+     * 
+     */
     public Optional<String> sensitivity() {
         return Optional.ofNullable(this.sensitivity);
     }

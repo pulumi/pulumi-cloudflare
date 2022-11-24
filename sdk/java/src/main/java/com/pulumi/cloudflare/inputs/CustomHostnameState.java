@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.CustomHostnameSslArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -108,6 +109,21 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+     * 
+     */
+    @Import(name="waitForSslPendingValidation")
+    private @Nullable Output<Boolean> waitForSslPendingValidation;
+
+    /**
+     * @return Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> waitForSslPendingValidation() {
+        return Optional.ofNullable(this.waitForSslPendingValidation);
+    }
+
+    /**
      * The zone identifier to target for the resource.
      * 
      */
@@ -132,6 +148,7 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
         this.ownershipVerificationHttp = $.ownershipVerificationHttp;
         this.ssls = $.ssls;
         this.status = $.status;
+        this.waitForSslPendingValidation = $.waitForSslPendingValidation;
         this.zoneId = $.zoneId;
     }
 
@@ -284,6 +301,27 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param waitForSslPendingValidation Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder waitForSslPendingValidation(@Nullable Output<Boolean> waitForSslPendingValidation) {
+            $.waitForSslPendingValidation = waitForSslPendingValidation;
+            return this;
+        }
+
+        /**
+         * @param waitForSslPendingValidation Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder waitForSslPendingValidation(Boolean waitForSslPendingValidation) {
+            return waitForSslPendingValidation(Output.of(waitForSslPendingValidation));
         }
 
         /**

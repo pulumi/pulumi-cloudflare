@@ -109,6 +109,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor")
 public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
     /**
+     * The account identifier to target for the resource.
+     * 
+     */
+    @Export(name="accountId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> accountId;
+
+    /**
+     * @return The account identifier to target for the resource.
+     * 
+     */
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
+    }
+    /**
      * Do not validate the certificate when monitor use HTTPS. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
      * 
      */

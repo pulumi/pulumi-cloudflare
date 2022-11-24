@@ -61,12 +61,28 @@ public final class AccountMemberState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.roleIds);
     }
 
+    /**
+     * A member&#39;s status in the account. Available values: `accepted`, `pending`.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return A member&#39;s status in the account. Available values: `accepted`, `pending`.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
     private AccountMemberState() {}
 
     private AccountMemberState(AccountMemberState $) {
         this.accountId = $.accountId;
         this.emailAddress = $.emailAddress;
         this.roleIds = $.roleIds;
+        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -158,6 +174,27 @@ public final class AccountMemberState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder roleIds(String... roleIds) {
             return roleIds(List.of(roleIds));
+        }
+
+        /**
+         * @param status A member&#39;s status in the account. Available values: `accepted`, `pending`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status A member&#39;s status in the account. Available values: `accepted`, `pending`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         public AccountMemberState build() {

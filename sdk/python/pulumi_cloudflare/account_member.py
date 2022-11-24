@@ -16,17 +16,21 @@ class AccountMemberArgs:
     def __init__(__self__, *,
                  email_address: pulumi.Input[str],
                  role_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 account_id: Optional[pulumi.Input[str]] = None):
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccountMember resource.
         :param pulumi.Input[str] email_address: The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: List of account role IDs that you want to assign to a member.
         :param pulumi.Input[str] account_id: Account ID to create the account member in.
+        :param pulumi.Input[str] status: A member's status in the account. Available values: `accepted`, `pending`.
         """
         pulumi.set(__self__, "email_address", email_address)
         pulumi.set(__self__, "role_ids", role_ids)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="emailAddress")
@@ -64,18 +68,32 @@ class AccountMemberArgs:
     def account_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account_id", value)
 
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        A member's status in the account. Available values: `accepted`, `pending`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
 
 @pulumi.input_type
 class _AccountMemberState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  email_address: Optional[pulumi.Input[str]] = None,
-                 role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccountMember resources.
         :param pulumi.Input[str] account_id: Account ID to create the account member in.
         :param pulumi.Input[str] email_address: The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: List of account role IDs that you want to assign to a member.
+        :param pulumi.Input[str] status: A member's status in the account. Available values: `accepted`, `pending`.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -83,6 +101,8 @@ class _AccountMemberState:
             pulumi.set(__self__, "email_address", email_address)
         if role_ids is not None:
             pulumi.set(__self__, "role_ids", role_ids)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -120,6 +140,18 @@ class _AccountMemberState:
     def role_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "role_ids", value)
 
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        A member's status in the account. Available values: `accepted`, `pending`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
 
 class AccountMember(pulumi.CustomResource):
     @overload
@@ -129,6 +161,7 @@ class AccountMember(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  email_address: Optional[pulumi.Input[str]] = None,
                  role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a resource which manages Cloudflare account members.
@@ -158,6 +191,7 @@ class AccountMember(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: Account ID to create the account member in.
         :param pulumi.Input[str] email_address: The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: List of account role IDs that you want to assign to a member.
+        :param pulumi.Input[str] status: A member's status in the account. Available values: `accepted`, `pending`.
         """
         ...
     @overload
@@ -206,6 +240,7 @@ class AccountMember(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  email_address: Optional[pulumi.Input[str]] = None,
                  role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -222,6 +257,7 @@ class AccountMember(pulumi.CustomResource):
             if role_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'role_ids'")
             __props__.__dict__["role_ids"] = role_ids
+            __props__.__dict__["status"] = status
         super(AccountMember, __self__).__init__(
             'cloudflare:index/accountMember:AccountMember',
             resource_name,
@@ -234,7 +270,8 @@ class AccountMember(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             email_address: Optional[pulumi.Input[str]] = None,
-            role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'AccountMember':
+            role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            status: Optional[pulumi.Input[str]] = None) -> 'AccountMember':
         """
         Get an existing AccountMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -245,6 +282,7 @@ class AccountMember(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: Account ID to create the account member in.
         :param pulumi.Input[str] email_address: The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: List of account role IDs that you want to assign to a member.
+        :param pulumi.Input[str] status: A member's status in the account. Available values: `accepted`, `pending`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -253,6 +291,7 @@ class AccountMember(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["email_address"] = email_address
         __props__.__dict__["role_ids"] = role_ids
+        __props__.__dict__["status"] = status
         return AccountMember(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -278,4 +317,12 @@ class AccountMember(pulumi.CustomResource):
         List of account role IDs that you want to assign to a member.
         """
         return pulumi.get(self, "role_ids")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[Optional[str]]:
+        """
+        A member's status in the account. Available values: `accepted`, `pending`.
+        """
+        return pulumi.get(self, "status")
 
