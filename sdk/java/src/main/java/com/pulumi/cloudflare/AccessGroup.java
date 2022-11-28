@@ -30,7 +30,6 @@ import javax.annotation.Nullable;
  * zone needs to use the `zone_id` argument.
  * 
  * ## Example Usage
- * 
  * ```java
  * package generated_program;
  * 

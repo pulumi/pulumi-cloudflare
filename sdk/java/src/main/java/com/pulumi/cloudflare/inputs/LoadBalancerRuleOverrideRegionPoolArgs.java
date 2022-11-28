@@ -15,14 +15,14 @@ public final class LoadBalancerRuleOverrideRegionPoolArgs extends com.pulumi.res
     public static final LoadBalancerRuleOverrideRegionPoolArgs Empty = new LoadBalancerRuleOverrideRegionPoolArgs();
 
     /**
-     * A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     * A list of pool IDs in failover priority to use in the given region.
      * 
      */
     @Import(name="poolIds", required=true)
     private Output<List<String>> poolIds;
 
     /**
-     * @return A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     * @return A list of pool IDs in failover priority to use in the given region.
      * 
      */
     public Output<List<String>> poolIds() {
@@ -70,7 +70,7 @@ public final class LoadBalancerRuleOverrideRegionPoolArgs extends com.pulumi.res
         }
 
         /**
-         * @param poolIds A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+         * @param poolIds A list of pool IDs in failover priority to use in the given region.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class LoadBalancerRuleOverrideRegionPoolArgs extends com.pulumi.res
         }
 
         /**
-         * @param poolIds A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+         * @param poolIds A list of pool IDs in failover priority to use in the given region.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class LoadBalancerRuleOverrideRegionPoolArgs extends com.pulumi.res
         }
 
         /**
-         * @param poolIds A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+         * @param poolIds A list of pool IDs in failover priority to use in the given region.
          * 
          * @return builder
          * 

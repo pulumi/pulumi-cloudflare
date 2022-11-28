@@ -53,7 +53,7 @@ import (
 //
 // ## Import
 //
-// Authenticated Origin Pull certificates can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, e.g. # Import Per-Zone Authenticated Origin Pull certificate
+// Authenticated Origin Pull certificates can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, e.g. Import Per-Zone Authenticated Origin Pull certificate
 //
 // ```sh
 //
@@ -61,7 +61,7 @@ import (
 //
 // ```
 //
-// # Import Per-Hostname Authenticated Origin Pull certificate
+//	Import Per-Hostname Authenticated Origin Pull certificate
 //
 // ```sh
 //
@@ -106,6 +106,13 @@ func NewAuthenticatedOriginPullsCertificate(ctx *pulumi.Context,
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
+	if args.PrivateKey != nil {
+		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"privateKey",
+	})
+	opts = append(opts, secrets)
 	var resource AuthenticatedOriginPullsCertificate
 	err := ctx.RegisterResource("cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate", name, args, &resource, opts...)
 	if err != nil {

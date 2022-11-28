@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Country;
         /// <summary>
-        /// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        /// A list of pool IDs in failover priority to use in the given country.
         /// </summary>
         public readonly ImmutableArray<string> PoolIds;
 

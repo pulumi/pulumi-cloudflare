@@ -96,7 +96,7 @@ import (
 //
 // ## Import
 //
-// # Use the Zone ID and Healthcheck ID to import.
+// Use the Zone ID and Healthcheck ID to import.
 //
 // ```sh
 //

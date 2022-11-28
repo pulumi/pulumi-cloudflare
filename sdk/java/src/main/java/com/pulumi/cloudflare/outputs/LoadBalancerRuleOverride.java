@@ -3,8 +3,11 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.LoadBalancerRuleOverrideAdaptiveRouting;
 import com.pulumi.cloudflare.outputs.LoadBalancerRuleOverrideCountryPool;
+import com.pulumi.cloudflare.outputs.LoadBalancerRuleOverrideLocationStrategy;
 import com.pulumi.cloudflare.outputs.LoadBalancerRuleOverridePopPool;
+import com.pulumi.cloudflare.outputs.LoadBalancerRuleOverrideRandomSteering;
 import com.pulumi.cloudflare.outputs.LoadBalancerRuleOverrideRegionPool;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
@@ -18,122 +21,142 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerRuleOverride {
     /**
-     * @return See country_pools above.
+     * @return Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+     * 
+     */
+    private @Nullable List<LoadBalancerRuleOverrideAdaptiveRouting> adaptiveRoutings;
+    /**
+     * @return A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
      * 
      */
     private @Nullable List<LoadBalancerRuleOverrideCountryPool> countryPools;
-    /**
-     * @return See default_pool_ids above.
-     * 
-     */
     private @Nullable List<String> defaultPools;
-    /**
-     * @return See fallback_pool_id above.
-     * 
-     */
     private @Nullable String fallbackPool;
     /**
-     * @return See pop_pools above.
+     * @return Controls location-based steering for non-proxied requests.
+     * 
+     */
+    private @Nullable List<LoadBalancerRuleOverrideLocationStrategy> locationStrategies;
+    /**
+     * @return A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
      * 
      */
     private @Nullable List<LoadBalancerRuleOverridePopPool> popPools;
     /**
-     * @return See region_pools above.
+     * @return Configures pool weights for random steering. When the `steering_policy=&#34;random&#34;`, a random pool is selected with probability proportional to these pool weights.
+     * 
+     */
+    private @Nullable List<LoadBalancerRuleOverrideRandomSteering> randomSteerings;
+    /**
+     * @return A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
      * 
      */
     private @Nullable List<LoadBalancerRuleOverrideRegionPool> regionPools;
     /**
-     * @return See field above.
+     * @return Specifies the type of session affinity the load balancer should use unless specified as `none` or `&#34;&#34;` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client&#39;s IP address. Available values: `&#34;&#34;`, `none`, `cookie`, `ip_cookie`. Defaults to `none`.
      * 
      */
     private @Nullable String sessionAffinity;
     /**
-     * @return See field above.
+     * @return See `session_affinity_attributes`.
      * 
      */
     private @Nullable Map<String,String> sessionAffinityAttributes;
     /**
-     * @return See field above.
+     * @return Time, in seconds, until this load balancer&#39;s session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
      * 
      */
     private @Nullable Integer sessionAffinityTtl;
     /**
-     * @return See field above.
+     * @return The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools&#39; latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `&#34;&#34;` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `&#34;&#34;` Defaults to `&#34;&#34;`.
      * 
      */
     private @Nullable String steeringPolicy;
     /**
-     * @return See field above.
+     * @return Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
      * 
      */
     private @Nullable Integer ttl;
 
     private LoadBalancerRuleOverride() {}
     /**
-     * @return See country_pools above.
+     * @return Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+     * 
+     */
+    public List<LoadBalancerRuleOverrideAdaptiveRouting> adaptiveRoutings() {
+        return this.adaptiveRoutings == null ? List.of() : this.adaptiveRoutings;
+    }
+    /**
+     * @return A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
      * 
      */
     public List<LoadBalancerRuleOverrideCountryPool> countryPools() {
         return this.countryPools == null ? List.of() : this.countryPools;
     }
-    /**
-     * @return See default_pool_ids above.
-     * 
-     */
     public List<String> defaultPools() {
         return this.defaultPools == null ? List.of() : this.defaultPools;
     }
-    /**
-     * @return See fallback_pool_id above.
-     * 
-     */
     public Optional<String> fallbackPool() {
         return Optional.ofNullable(this.fallbackPool);
     }
     /**
-     * @return See pop_pools above.
+     * @return Controls location-based steering for non-proxied requests.
+     * 
+     */
+    public List<LoadBalancerRuleOverrideLocationStrategy> locationStrategies() {
+        return this.locationStrategies == null ? List.of() : this.locationStrategies;
+    }
+    /**
+     * @return A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
      * 
      */
     public List<LoadBalancerRuleOverridePopPool> popPools() {
         return this.popPools == null ? List.of() : this.popPools;
     }
     /**
-     * @return See region_pools above.
+     * @return Configures pool weights for random steering. When the `steering_policy=&#34;random&#34;`, a random pool is selected with probability proportional to these pool weights.
+     * 
+     */
+    public List<LoadBalancerRuleOverrideRandomSteering> randomSteerings() {
+        return this.randomSteerings == null ? List.of() : this.randomSteerings;
+    }
+    /**
+     * @return A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
      * 
      */
     public List<LoadBalancerRuleOverrideRegionPool> regionPools() {
         return this.regionPools == null ? List.of() : this.regionPools;
     }
     /**
-     * @return See field above.
+     * @return Specifies the type of session affinity the load balancer should use unless specified as `none` or `&#34;&#34;` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client&#39;s IP address. Available values: `&#34;&#34;`, `none`, `cookie`, `ip_cookie`. Defaults to `none`.
      * 
      */
     public Optional<String> sessionAffinity() {
         return Optional.ofNullable(this.sessionAffinity);
     }
     /**
-     * @return See field above.
+     * @return See `session_affinity_attributes`.
      * 
      */
     public Map<String,String> sessionAffinityAttributes() {
         return this.sessionAffinityAttributes == null ? Map.of() : this.sessionAffinityAttributes;
     }
     /**
-     * @return See field above.
+     * @return Time, in seconds, until this load balancer&#39;s session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
      * 
      */
     public Optional<Integer> sessionAffinityTtl() {
         return Optional.ofNullable(this.sessionAffinityTtl);
     }
     /**
-     * @return See field above.
+     * @return The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools&#39; latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `&#34;&#34;` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `&#34;&#34;` Defaults to `&#34;&#34;`.
      * 
      */
     public Optional<String> steeringPolicy() {
         return Optional.ofNullable(this.steeringPolicy);
     }
     /**
-     * @return See field above.
+     * @return Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
      * 
      */
     public Optional<Integer> ttl() {
@@ -149,10 +172,13 @@ public final class LoadBalancerRuleOverride {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<LoadBalancerRuleOverrideAdaptiveRouting> adaptiveRoutings;
         private @Nullable List<LoadBalancerRuleOverrideCountryPool> countryPools;
         private @Nullable List<String> defaultPools;
         private @Nullable String fallbackPool;
+        private @Nullable List<LoadBalancerRuleOverrideLocationStrategy> locationStrategies;
         private @Nullable List<LoadBalancerRuleOverridePopPool> popPools;
+        private @Nullable List<LoadBalancerRuleOverrideRandomSteering> randomSteerings;
         private @Nullable List<LoadBalancerRuleOverrideRegionPool> regionPools;
         private @Nullable String sessionAffinity;
         private @Nullable Map<String,String> sessionAffinityAttributes;
@@ -162,10 +188,13 @@ public final class LoadBalancerRuleOverride {
         public Builder() {}
         public Builder(LoadBalancerRuleOverride defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.adaptiveRoutings = defaults.adaptiveRoutings;
     	      this.countryPools = defaults.countryPools;
     	      this.defaultPools = defaults.defaultPools;
     	      this.fallbackPool = defaults.fallbackPool;
+    	      this.locationStrategies = defaults.locationStrategies;
     	      this.popPools = defaults.popPools;
+    	      this.randomSteerings = defaults.randomSteerings;
     	      this.regionPools = defaults.regionPools;
     	      this.sessionAffinity = defaults.sessionAffinity;
     	      this.sessionAffinityAttributes = defaults.sessionAffinityAttributes;
@@ -174,6 +203,14 @@ public final class LoadBalancerRuleOverride {
     	      this.ttl = defaults.ttl;
         }
 
+        @CustomType.Setter
+        public Builder adaptiveRoutings(@Nullable List<LoadBalancerRuleOverrideAdaptiveRouting> adaptiveRoutings) {
+            this.adaptiveRoutings = adaptiveRoutings;
+            return this;
+        }
+        public Builder adaptiveRoutings(LoadBalancerRuleOverrideAdaptiveRouting... adaptiveRoutings) {
+            return adaptiveRoutings(List.of(adaptiveRoutings));
+        }
         @CustomType.Setter
         public Builder countryPools(@Nullable List<LoadBalancerRuleOverrideCountryPool> countryPools) {
             this.countryPools = countryPools;
@@ -196,12 +233,28 @@ public final class LoadBalancerRuleOverride {
             return this;
         }
         @CustomType.Setter
+        public Builder locationStrategies(@Nullable List<LoadBalancerRuleOverrideLocationStrategy> locationStrategies) {
+            this.locationStrategies = locationStrategies;
+            return this;
+        }
+        public Builder locationStrategies(LoadBalancerRuleOverrideLocationStrategy... locationStrategies) {
+            return locationStrategies(List.of(locationStrategies));
+        }
+        @CustomType.Setter
         public Builder popPools(@Nullable List<LoadBalancerRuleOverridePopPool> popPools) {
             this.popPools = popPools;
             return this;
         }
         public Builder popPools(LoadBalancerRuleOverridePopPool... popPools) {
             return popPools(List.of(popPools));
+        }
+        @CustomType.Setter
+        public Builder randomSteerings(@Nullable List<LoadBalancerRuleOverrideRandomSteering> randomSteerings) {
+            this.randomSteerings = randomSteerings;
+            return this;
+        }
+        public Builder randomSteerings(LoadBalancerRuleOverrideRandomSteering... randomSteerings) {
+            return randomSteerings(List.of(randomSteerings));
         }
         @CustomType.Setter
         public Builder regionPools(@Nullable List<LoadBalancerRuleOverrideRegionPool> regionPools) {
@@ -238,10 +291,13 @@ public final class LoadBalancerRuleOverride {
         }
         public LoadBalancerRuleOverride build() {
             final var o = new LoadBalancerRuleOverride();
+            o.adaptiveRoutings = adaptiveRoutings;
             o.countryPools = countryPools;
             o.defaultPools = defaultPools;
             o.fallbackPool = fallbackPool;
+            o.locationStrategies = locationStrategies;
             o.popPools = popPools;
+            o.randomSteerings = randomSteerings;
             o.regionPools = regionPools;
             o.sessionAffinity = sessionAffinity;
             o.sessionAffinityAttributes = sessionAffinityAttributes;

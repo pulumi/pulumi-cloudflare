@@ -11,18 +11,24 @@ namespace Pulumi.Cloudflare
 {
     public static class GetAccountRoles
     {
+        /// <summary>
+        /// Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
+        /// </summary>
         public static Task<GetAccountRolesResult> InvokeAsync(GetAccountRolesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountRolesResult>("cloudflare:index/getAccountRoles:getAccountRoles", args ?? new GetAccountRolesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountRolesResult>("cloudflare:index/getAccountRoles:getAccountRoles", args ?? new GetAccountRolesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
+        /// </summary>
         public static Output<GetAccountRolesResult> Invoke(GetAccountRolesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccountRolesResult>("cloudflare:index/getAccountRoles:getAccountRoles", args ?? new GetAccountRolesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountRolesResult>("cloudflare:index/getAccountRoles:getAccountRoles", args ?? new GetAccountRolesInvokeArgs(), options.WithDefaults());
     }
 
 
     public sealed class GetAccountRolesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account for which to list the roles.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -36,7 +42,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccountRolesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account for which to list the roles.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -51,14 +57,14 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetAccountRolesResult
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         public readonly string AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of roles object. See below for nested attributes.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAccountRolesRoleResult> Roles;
 
         [OutputConstructor]

@@ -75,7 +75,7 @@ export class Zone extends pulumi.CustomResource {
      */
     public readonly paused!: pulumi.Output<boolean | undefined>;
     /**
-     * The name of the commercial plan to apply to the zone. Available values: `free`, `pro`, `business`, `enterprise`, `partnersFree`, `partnersPro`, `partnersBusiness`, `partnersEnterprise`.
+     * The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `proPlus`, `business`, `enterprise`, `partnersFree`, `partnersPro`, `partnersBusiness`, `partnersEnterprise`.
      */
     public readonly plan!: pulumi.Output<string>;
     /**
@@ -167,7 +167,7 @@ export interface ZoneState {
      */
     paused?: pulumi.Input<boolean>;
     /**
-     * The name of the commercial plan to apply to the zone. Available values: `free`, `pro`, `business`, `enterprise`, `partnersFree`, `partnersPro`, `partnersBusiness`, `partnersEnterprise`.
+     * The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `proPlus`, `business`, `enterprise`, `partnersFree`, `partnersPro`, `partnersBusiness`, `partnersEnterprise`.
      */
     plan?: pulumi.Input<string>;
     /**
@@ -209,7 +209,7 @@ export interface ZoneArgs {
      */
     paused?: pulumi.Input<boolean>;
     /**
-     * The name of the commercial plan to apply to the zone. Available values: `free`, `pro`, `business`, `enterprise`, `partnersFree`, `partnersPro`, `partnersBusiness`, `partnersEnterprise`.
+     * The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `proPlus`, `business`, `enterprise`, `partnersFree`, `partnersPro`, `partnersBusiness`, `partnersEnterprise`.
      */
     plan?: pulumi.Input<string>;
     /**

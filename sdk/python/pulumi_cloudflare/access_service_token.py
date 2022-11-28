@@ -231,7 +231,7 @@ class AccessServiceToken(pulumi.CustomResource):
 
         ## Import
 
-        # If you are importing an Access Service Token you will not have the # client_secret available in the state for use. The client_secret is only # available once, at creation. In most cases, it is better to just create a new # resource should you need to reference it in other resources.
+        If you are importing an Access Service Token you will not have the client_secret available in the state for use. The client_secret is only available once, at creation. In most cases, it is better to just create a new resource should you need to reference it in other resources.
 
         ```sh
          $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken example <account_id>/<service_token_id>
@@ -269,7 +269,7 @@ class AccessServiceToken(pulumi.CustomResource):
 
         ## Import
 
-        # If you are importing an Access Service Token you will not have the # client_secret available in the state for use. The client_secret is only # available once, at creation. In most cases, it is better to just create a new # resource should you need to reference it in other resources.
+        If you are importing an Access Service Token you will not have the client_secret available in the state for use. The client_secret is only available once, at creation. In most cases, it is better to just create a new resource should you need to reference it in other resources.
 
         ```sh
          $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken example <account_id>/<service_token_id>
@@ -312,6 +312,8 @@ class AccessServiceToken(pulumi.CustomResource):
             __props__.__dict__["client_id"] = None
             __props__.__dict__["client_secret"] = None
             __props__.__dict__["expires_at"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientSecret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AccessServiceToken, __self__).__init__(
             'cloudflare:index/accessServiceToken:AccessServiceToken',
             resource_name,

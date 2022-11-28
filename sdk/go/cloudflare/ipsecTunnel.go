@@ -110,6 +110,13 @@ func NewIpsecTunnel(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	if args.Psk != nil {
+		args.Psk = pulumi.ToSecret(args.Psk).(pulumi.StringPtrOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"psk",
+	})
+	opts = append(opts, secrets)
 	var resource IpsecTunnel
 	err := ctx.RegisterResource("cloudflare:index/ipsecTunnel:IpsecTunnel", name, args, &resource, opts...)
 	if err != nil {

@@ -11,23 +11,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAccountRolesResult {
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     private String accountId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return A list of roles object. See below for nested attributes.
+     * 
+     */
     private List<GetAccountRolesRole> roles;
 
     private GetAccountRolesResult() {}
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public String accountId() {
         return this.accountId;
     }
@@ -38,6 +34,10 @@ public final class GetAccountRolesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of roles object. See below for nested attributes.
+     * 
+     */
     public List<GetAccountRolesRole> roles() {
         return this.roles;
     }

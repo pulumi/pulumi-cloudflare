@@ -40,7 +40,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # Use account ID, network CIDR and virtual network ID.
+ * Use account ID, network CIDR and virtual network ID.
  *
  * ```sh
  *  $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example <account_id/<network_cidr>/<virtual_network_id>

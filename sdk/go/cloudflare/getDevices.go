@@ -10,6 +10,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err = cloudflare.GetDevices(ctx, &GetDevicesArgs{
+//				AccountId: "c68973221045fe805dfb9aa520153148",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDevices(ctx *pulumi.Context, args *GetDevicesArgs, opts ...pulumi.InvokeOption) (*GetDevicesResult, error) {
 	var rv GetDevicesResult
 	err := ctx.Invoke("cloudflare:index/getDevices:getDevices", args, &rv, opts...)
@@ -21,15 +48,15 @@ func GetDevices(ctx *pulumi.Context, args *GetDevicesArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getDevices.
 type GetDevicesArgs struct {
-	// The account identifier to target for the resource.
+	// The account for which to list the devices.
 	AccountId string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getDevices.
 type GetDevicesResult struct {
-	// The account identifier to target for the resource.
-	AccountId string             `pulumi:"accountId"`
-	Devices   []GetDevicesDevice `pulumi:"devices"`
+	AccountId string `pulumi:"accountId"`
+	// A list of device object. See below for nested attributes.
+	Devices []GetDevicesDevice `pulumi:"devices"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 }
@@ -49,7 +76,7 @@ func GetDevicesOutput(ctx *pulumi.Context, args GetDevicesOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getDevices.
 type GetDevicesOutputArgs struct {
-	// The account identifier to target for the resource.
+	// The account for which to list the devices.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 }
 
@@ -72,11 +99,11 @@ func (o GetDevicesResultOutput) ToGetDevicesResultOutputWithContext(ctx context.
 	return o
 }
 
-// The account identifier to target for the resource.
 func (o GetDevicesResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// A list of device object. See below for nested attributes.
 func (o GetDevicesResultOutput) Devices() GetDevicesDeviceArrayOutput {
 	return o.ApplyT(func(v GetDevicesResult) []GetDevicesDevice { return v.Devices }).(GetDevicesDeviceArrayOutput)
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -55,13 +56,13 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # Account level import.
+ * Account level import.
  *
  * ```sh
  *  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/<account_id>/<application_id>/<policy_id>
  * ```
  *
- * # Zone level import.
+ *  Zone level import.
  *
  * ```sh
  *  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example zone/<zone_id>/<application_id>/<policy_id>

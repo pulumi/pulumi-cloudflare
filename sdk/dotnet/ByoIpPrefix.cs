@@ -10,7 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP) which are used with or without Magic Transit.
+    /// Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP)
+    /// which are used with or without Magic Transit.
     /// 
     /// ## Example Usage
     /// 
@@ -23,6 +24,7 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.ByoIpPrefix("example", new()
     ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Advertisement = "on",
     ///         Description = "Example IP Prefix",
     ///         PrefixId = "d41d8cd98f00b204e9800998ecf8427e",
@@ -33,10 +35,8 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// The current settings for Bring-Your-Own-IP prefixes can be imported using the prefix ID.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example d41d8cd98f00b204e9800998ecf8427e
+    ///  $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example &lt;account_id&gt;/&lt;prefix_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/byoIpPrefix:ByoIpPrefix")]
@@ -49,13 +49,13 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
+        /// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
         /// </summary>
         [Output("advertisement")]
         public Output<string> Advertisement { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the prefix.
+        /// Description of the BYO IP prefix.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -119,13 +119,13 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
+        /// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
         /// </summary>
         [Input("advertisement")]
         public Input<string>? Advertisement { get; set; }
 
         /// <summary>
-        /// The description of the prefix.
+        /// Description of the BYO IP prefix.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -151,13 +151,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
+        /// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
         /// </summary>
         [Input("advertisement")]
         public Input<string>? Advertisement { get; set; }
 
         /// <summary>
-        /// The description of the prefix.
+        /// Description of the BYO IP prefix.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

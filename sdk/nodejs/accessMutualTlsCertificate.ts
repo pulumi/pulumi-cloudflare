@@ -33,13 +33,13 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # Account level import.
+ * Account level import.
  *
  * ```sh
  *  $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example account/<account_id>/<mutual_tls_certificate_id>
  * ```
  *
- * # Zone level import.
+ *  Zone level import.
  *
  * ```sh
  *  $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example zone/<zone_id>/<mutual_tls_certificate_id>

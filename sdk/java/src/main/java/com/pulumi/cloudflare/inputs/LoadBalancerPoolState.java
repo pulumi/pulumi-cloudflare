@@ -23,6 +23,21 @@ public final class LoadBalancerPoolState extends com.pulumi.resources.ResourceAr
     public static final LoadBalancerPoolState Empty = new LoadBalancerPoolState();
 
     /**
+     * The account identifier to target for the resource.
+     * 
+     */
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
+
+    /**
+     * @return The account identifier to target for the resource.
+     * 
+     */
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+
+    /**
      * A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
      * 
      */
@@ -235,6 +250,7 @@ public final class LoadBalancerPoolState extends com.pulumi.resources.ResourceAr
     private LoadBalancerPoolState() {}
 
     private LoadBalancerPoolState(LoadBalancerPoolState $) {
+        this.accountId = $.accountId;
         this.checkRegions = $.checkRegions;
         this.createdOn = $.createdOn;
         this.description = $.description;
@@ -267,6 +283,27 @@ public final class LoadBalancerPoolState extends com.pulumi.resources.ResourceAr
 
         public Builder(LoadBalancerPoolState defaults) {
             $ = new LoadBalancerPoolState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accountId The account identifier to target for the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(@Nullable Output<String> accountId) {
+            $.accountId = accountId;
+            return this;
+        }
+
+        /**
+         * @param accountId The account identifier to target for the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
         }
 
         /**

@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class LoadBalancerRegionPool
     {
         /// <summary>
-        /// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        /// A list of pool IDs in failover priority to use in the given region.
         /// </summary>
         public readonly ImmutableArray<string> PoolIds;
         /// <summary>

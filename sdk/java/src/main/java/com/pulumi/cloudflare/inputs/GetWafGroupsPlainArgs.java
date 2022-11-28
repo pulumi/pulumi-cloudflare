@@ -15,29 +15,47 @@ public final class GetWafGroupsPlainArgs extends com.pulumi.resources.InvokeArgs
 
     public static final GetWafGroupsPlainArgs Empty = new GetWafGroupsPlainArgs();
 
+    /**
+     * One or more values used to look up WAF Rule Groups. If more than one value is given all
+     * values must match in order to be included, see below for full list.
+     * 
+     */
     @Import(name="filter")
     private @Nullable GetWafGroupsFilter filter;
 
+    /**
+     * @return One or more values used to look up WAF Rule Groups. If more than one value is given all
+     * values must match in order to be included, see below for full list.
+     * 
+     */
     public Optional<GetWafGroupsFilter> filter() {
         return Optional.ofNullable(this.filter);
     }
 
+    /**
+     * The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
+     * 
+     */
     @Import(name="packageId")
     private @Nullable String packageId;
 
+    /**
+     * @return The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
+     * 
+     */
     public Optional<String> packageId() {
         return Optional.ofNullable(this.packageId);
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * The ID of the DNS zone in which to search for the WAF Rule Groups.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The ID of the DNS zone in which to search for the WAF Rule Groups.
      * 
      */
     public String zoneId() {
@@ -70,18 +88,31 @@ public final class GetWafGroupsPlainArgs extends com.pulumi.resources.InvokeArgs
             $ = new GetWafGroupsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filter One or more values used to look up WAF Rule Groups. If more than one value is given all
+         * values must match in order to be included, see below for full list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filter(@Nullable GetWafGroupsFilter filter) {
             $.filter = filter;
             return this;
         }
 
+        /**
+         * @param packageId The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
+         * 
+         * @return builder
+         * 
+         */
         public Builder packageId(@Nullable String packageId) {
             $.packageId = packageId;
             return this;
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The ID of the DNS zone in which to search for the WAF Rule Groups.
          * 
          * @return builder
          * 

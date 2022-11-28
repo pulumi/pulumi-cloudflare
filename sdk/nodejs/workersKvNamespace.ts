@@ -13,9 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.WorkersKvNamespace("example", {
- *     title: "test-namespace",
- * });
+ * const example = new cloudflare.WorkersKvNamespace("example", {title: "test-namespace"});
  * ```
  *
  * ## Import

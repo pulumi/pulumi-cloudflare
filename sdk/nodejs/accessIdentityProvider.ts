@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -23,13 +24,13 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // one time pin
- * const pinLogin = new cloudflare.AccessIdentityProvider("pin_login", {
+ * const pinLogin = new cloudflare.AccessIdentityProvider("pinLogin", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "PIN login",
  *     type: "onetimepin",
  * });
  * // oauth
- * const githubOauth = new cloudflare.AccessIdentityProvider("github_oauth", {
+ * const githubOauth = new cloudflare.AccessIdentityProvider("githubOauth", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     configs: [{
  *         clientId: "example",
@@ -39,7 +40,7 @@ import * as utilities from "./utilities";
  *     type: "github",
  * });
  * // saml
- * const jumpcloudSaml = new cloudflare.AccessIdentityProvider("jumpcloud_saml", {
+ * const jumpcloudSaml = new cloudflare.AccessIdentityProvider("jumpcloudSaml", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     configs: [{
  *         attributes: [
@@ -47,7 +48,8 @@ import * as utilities from "./utilities";
  *             "username",
  *         ],
  *         idpPublicCert: `MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
- * uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o`,
+ * uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o
+ * `,
  *         issuerUrl: "jumpcloud",
  *         signRequest: false,
  *         ssoTargetUrl: "https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",

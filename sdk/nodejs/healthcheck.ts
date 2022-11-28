@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -71,7 +72,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # Use the Zone ID and Healthcheck ID to import.
+ * Use the Zone ID and Healthcheck ID to import.
  *
  * ```sh
  *  $ pulumi import cloudflare:index/healthcheck:Healthcheck example <zone_id>/<healthcheck_id>

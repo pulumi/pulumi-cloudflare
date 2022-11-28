@@ -12,9 +12,15 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class GetWafGroupsFilterInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+        /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
+        /// <summary>
+        /// A regular expression matching the name of the WAF Rule Groups to lookup.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

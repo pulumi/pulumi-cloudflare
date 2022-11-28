@@ -10,24 +10,56 @@ import java.util.Objects;
 
 @CustomType
 public final class GetIpRangesResult {
+    /**
+     * @return The lexically ordered list of only the IPv4 China CIDR blocks.
+     * 
+     */
     private List<String> chinaIpv4CidrBlocks;
+    /**
+     * @return The lexically ordered list of only the IPv6 China CIDR blocks.
+     * 
+     */
     private List<String> chinaIpv6CidrBlocks;
+    /**
+     * @return The lexically ordered list of all non-China CIDR blocks.
+     * 
+     */
     private List<String> cidrBlocks;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The lexically ordered list of only the IPv4 CIDR blocks.
+     * 
+     */
     private List<String> ipv4CidrBlocks;
+    /**
+     * @return The lexically ordered list of only the IPv6 CIDR blocks.
+     * 
+     */
     private List<String> ipv6CidrBlocks;
 
     private GetIpRangesResult() {}
+    /**
+     * @return The lexically ordered list of only the IPv4 China CIDR blocks.
+     * 
+     */
     public List<String> chinaIpv4CidrBlocks() {
         return this.chinaIpv4CidrBlocks;
     }
+    /**
+     * @return The lexically ordered list of only the IPv6 China CIDR blocks.
+     * 
+     */
     public List<String> chinaIpv6CidrBlocks() {
         return this.chinaIpv6CidrBlocks;
     }
+    /**
+     * @return The lexically ordered list of all non-China CIDR blocks.
+     * 
+     */
     public List<String> cidrBlocks() {
         return this.cidrBlocks;
     }
@@ -38,9 +70,17 @@ public final class GetIpRangesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The lexically ordered list of only the IPv4 CIDR blocks.
+     * 
+     */
     public List<String> ipv4CidrBlocks() {
         return this.ipv4CidrBlocks;
     }
+    /**
+     * @return The lexically ordered list of only the IPv6 CIDR blocks.
+     * 
+     */
     public List<String> ipv6CidrBlocks() {
         return this.ipv6CidrBlocks;
     }

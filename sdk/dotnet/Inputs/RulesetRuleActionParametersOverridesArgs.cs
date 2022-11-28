@@ -38,6 +38,9 @@ namespace Pulumi.Cloudflare.Inputs
             set => _rules = value;
         }
 
+        [Input("sensitivityLevel")]
+        public Input<string>? SensitivityLevel { get; set; }
+
         [Input("status")]
         public Input<string>? Status { get; set; }
 

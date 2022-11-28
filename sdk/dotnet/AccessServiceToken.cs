@@ -35,7 +35,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// # If you are importing an Access Service Token you will not have the # client_secret available in the state for use. The client_secret is only # available once, at creation. In most cases, it is better to just create a new # resource should you need to reference it in other resources.
+    /// If you are importing an Access Service Token you will not have the client_secret available in the state for use. The client_secret is only available once, at creation. In most cases, it is better to just create a new resource should you need to reference it in other resources.
     /// 
     /// ```sh
     ///  $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken example &lt;account_id&gt;/&lt;service_token_id&gt;
@@ -109,6 +109,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "clientSecret",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -176,11 +180,21 @@ namespace Pulumi.Cloudflare
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
+
         /// <summary>
         /// A secret for interacting with Access protocols.
         /// </summary>
-        [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Date when the token expires.

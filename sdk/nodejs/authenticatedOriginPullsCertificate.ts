@@ -14,30 +14,30 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // Per-Zone Authenticated Origin Pulls certificate
- * const myPerZoneAopCert = new cloudflare.AuthenticatedOriginPullsCertificate("my_per_zone_aop_cert", {
+ * const myPerZoneAopCert = new cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert", {
  *     certificate: "-----INSERT CERTIFICATE-----",
  *     privateKey: "-----INSERT PRIVATE KEY-----",
  *     type: "per-zone",
- *     zoneId: var_cloudflare_zone_id,
+ *     zoneId: _var.cloudflare_zone_id,
  * });
  * // Per-Hostname Authenticated Origin Pulls certificate
- * const myPerHostnameAopCert = new cloudflare.AuthenticatedOriginPullsCertificate("my_per_hostname_aop_cert", {
+ * const myPerHostnameAopCert = new cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", {
  *     certificate: "-----INSERT CERTIFICATE-----",
  *     privateKey: "-----INSERT PRIVATE KEY-----",
  *     type: "per-hostname",
- *     zoneId: var_cloudflare_zone_id,
+ *     zoneId: _var.cloudflare_zone_id,
  * });
  * ```
  *
  * ## Import
  *
- * Authenticated Origin Pull certificates can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, e.g. # Import Per-Zone Authenticated Origin Pull certificate
+ * Authenticated Origin Pull certificates can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, e.g. Import Per-Zone Authenticated Origin Pull certificate
  *
  * ```sh
  *  $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-zone/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
  * ```
  *
- * # Import Per-Hostname Authenticated Origin Pull certificate
+ *  Import Per-Hostname Authenticated Origin Pull certificate
  *
  * ```sh
  *  $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-hostname/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
@@ -132,7 +132,7 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["certificate"] = args ? args.certificate : undefined;
-            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["expiresOn"] = undefined /*out*/;
@@ -143,6 +143,8 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
             resourceInputs["uploadedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["privateKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AuthenticatedOriginPullsCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -48,6 +48,9 @@ class GetWafGroupsResult:
     @property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetWafGroupsGroupResult']:
+        """
+        A map of WAF Rule Groups details. Full list below:
+        """
         return pulumi.get(self, "groups")
 
     @property
@@ -61,14 +64,14 @@ class GetWafGroupsResult:
     @property
     @pulumi.getter(name="packageId")
     def package_id(self) -> Optional[str]:
+        """
+        The ID of the WAF Rule Package that contains the WAF Rule Group
+        """
         return pulumi.get(self, "package_id")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
-        """
-        The zone identifier to target for the resource.
-        """
         return pulumi.get(self, "zone_id")
 
 
@@ -90,9 +93,28 @@ def get_waf_groups(filter: Optional[pulumi.InputType['GetWafGroupsFilterArgs']] 
                    zone_id: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWafGroupsResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to look up [WAF Rule Groups](https://api.cloudflare.com/#waf-rule-groups-properties).
 
-    :param str zone_id: The zone identifier to target for the resource.
+    ## Example Usage
+
+    The example below matches all WAF Rule Groups that contain the word `example` and are currently `on`. The matched WAF Rule Groups are then returned as output.
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    test = cloudflare.get_waf_groups(filter=cloudflare.GetWafGroupsFilterArgs(
+        name=".*example.*",
+        mode="on",
+    ))
+    pulumi.export("wafGroups", test.groups)
+    ```
+
+
+    :param pulumi.InputType['GetWafGroupsFilterArgs'] filter: One or more values used to look up WAF Rule Groups. If more than one value is given all
+           values must match in order to be included, see below for full list.
+    :param str package_id: The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
+    :param str zone_id: The ID of the DNS zone in which to search for the WAF Rule Groups.
     """
     __args__ = dict()
     __args__['filter'] = filter
@@ -115,8 +137,27 @@ def get_waf_groups_output(filter: Optional[pulumi.Input[Optional[pulumi.InputTyp
                           zone_id: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWafGroupsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to look up [WAF Rule Groups](https://api.cloudflare.com/#waf-rule-groups-properties).
 
-    :param str zone_id: The zone identifier to target for the resource.
+    ## Example Usage
+
+    The example below matches all WAF Rule Groups that contain the word `example` and are currently `on`. The matched WAF Rule Groups are then returned as output.
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    test = cloudflare.get_waf_groups(filter=cloudflare.GetWafGroupsFilterArgs(
+        name=".*example.*",
+        mode="on",
+    ))
+    pulumi.export("wafGroups", test.groups)
+    ```
+
+
+    :param pulumi.InputType['GetWafGroupsFilterArgs'] filter: One or more values used to look up WAF Rule Groups. If more than one value is given all
+           values must match in order to be included, see below for full list.
+    :param str package_id: The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
+    :param str zone_id: The ID of the DNS zone in which to search for the WAF Rule Groups.
     """
     ...

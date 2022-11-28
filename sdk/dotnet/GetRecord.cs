@@ -37,7 +37,7 @@ namespace Pulumi.Cloudflare
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRecordResult> InvokeAsync(GetRecordArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRecordResult>("cloudflare:index/getRecord:getRecord", args ?? new GetRecordArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRecordResult>("cloudflare:index/getRecord:getRecord", args ?? new GetRecordArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).
@@ -65,7 +65,7 @@ namespace Pulumi.Cloudflare
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRecordResult> Invoke(GetRecordInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRecordResult>("cloudflare:index/getRecord:getRecord", args ?? new GetRecordInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRecordResult>("cloudflare:index/getRecord:getRecord", args ?? new GetRecordInvokeArgs(), options.WithDefaults());
     }
 
 

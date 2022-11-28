@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -23,7 +24,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // With CORS configuration
- * const stagingApp = new cloudflare.AccessApplication("staging_app", {
+ * const stagingApp = new cloudflare.AccessApplication("stagingApp", {
  *     corsHeaders: [{
  *         allowCredentials: true,
  *         allowedMethods: [
@@ -149,7 +150,7 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly skipInterstitial!: pulumi.Output<boolean | undefined>;
     /**
-     * The application type. Available values: `selfHosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `selfHosted`.
+     * The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -298,7 +299,7 @@ export interface AccessApplicationState {
      */
     skipInterstitial?: pulumi.Input<boolean>;
     /**
-     * The application type. Available values: `selfHosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `selfHosted`.
+     * The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -380,7 +381,7 @@ export interface AccessApplicationArgs {
      */
     skipInterstitial?: pulumi.Input<boolean>;
     /**
-     * The application type. Available values: `selfHosted`, `saas`, `ssh`, `vnc`, `bookmark`. Defaults to `selfHosted`.
+     * The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
      */
     type?: pulumi.Input<string>;
     /**

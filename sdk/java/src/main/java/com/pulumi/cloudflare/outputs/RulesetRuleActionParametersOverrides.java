@@ -29,6 +29,7 @@ public final class RulesetRuleActionParametersOverrides {
      * 
      */
     private @Nullable List<RulesetRuleActionParametersOverridesRule> rules;
+    private @Nullable String sensitivityLevel;
     private @Nullable String status;
 
     private RulesetRuleActionParametersOverrides() {}
@@ -54,6 +55,9 @@ public final class RulesetRuleActionParametersOverrides {
     public List<RulesetRuleActionParametersOverridesRule> rules() {
         return this.rules == null ? List.of() : this.rules;
     }
+    public Optional<String> sensitivityLevel() {
+        return Optional.ofNullable(this.sensitivityLevel);
+    }
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
@@ -71,6 +75,7 @@ public final class RulesetRuleActionParametersOverrides {
         private @Nullable List<RulesetRuleActionParametersOverridesCategory> categories;
         private @Nullable Boolean enabled;
         private @Nullable List<RulesetRuleActionParametersOverridesRule> rules;
+        private @Nullable String sensitivityLevel;
         private @Nullable String status;
         public Builder() {}
         public Builder(RulesetRuleActionParametersOverrides defaults) {
@@ -79,6 +84,7 @@ public final class RulesetRuleActionParametersOverrides {
     	      this.categories = defaults.categories;
     	      this.enabled = defaults.enabled;
     	      this.rules = defaults.rules;
+    	      this.sensitivityLevel = defaults.sensitivityLevel;
     	      this.status = defaults.status;
         }
 
@@ -109,6 +115,11 @@ public final class RulesetRuleActionParametersOverrides {
             return rules(List.of(rules));
         }
         @CustomType.Setter
+        public Builder sensitivityLevel(@Nullable String sensitivityLevel) {
+            this.sensitivityLevel = sensitivityLevel;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
@@ -119,6 +130,7 @@ public final class RulesetRuleActionParametersOverrides {
             o.categories = categories;
             o.enabled = enabled;
             o.rules = rules;
+            o.sensitivityLevel = sensitivityLevel;
             o.status = status;
             return o;
         }

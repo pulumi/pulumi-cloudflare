@@ -57,7 +57,7 @@ import (
 //
 // ## Import
 //
-// # Account level CA certificate import.
+// Account level CA certificate import.
 //
 // ```sh
 //
@@ -65,7 +65,7 @@ import (
 //
 // ```
 //
-// # Zone level CA certificate import.
+//	Zone level CA certificate import.
 //
 // ```sh
 //

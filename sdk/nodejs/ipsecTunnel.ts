@@ -177,11 +177,13 @@ export class IpsecTunnel extends pulumi.CustomResource {
             resourceInputs["hexId"] = args ? args.hexId : undefined;
             resourceInputs["interfaceAddress"] = args ? args.interfaceAddress : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["psk"] = args ? args.psk : undefined;
+            resourceInputs["psk"] = args?.psk ? pulumi.secret(args.psk) : undefined;
             resourceInputs["remoteId"] = args ? args.remoteId : undefined;
             resourceInputs["userId"] = args ? args.userId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["psk"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(IpsecTunnel.__pulumiType, name, resourceInputs, opts);
     }
 }

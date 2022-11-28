@@ -13,14 +13,14 @@ public final class GetDevicesPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetDevicesPlainArgs Empty = new GetDevicesPlainArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * The account for which to list the devices.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account for which to list the devices.
      * 
      */
     public String accountId() {
@@ -52,7 +52,7 @@ public final class GetDevicesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The account for which to list the devices.
          * 
          * @return builder
          * 

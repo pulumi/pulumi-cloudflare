@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const fallbackOrigin = new cloudflare.CustomHostnameFallbackOrigin("fallback_origin", {
+ * const fallbackOrigin = new cloudflare.CustomHostnameFallbackOrigin("fallbackOrigin", {
  *     origin: "fallback.example.com",
  *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
  * });

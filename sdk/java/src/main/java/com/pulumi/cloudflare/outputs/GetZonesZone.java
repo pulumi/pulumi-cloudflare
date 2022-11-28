@@ -12,20 +12,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetZonesZone {
     /**
-     * @return The ID of this resource.
+     * @return The zone ID
      * 
      */
     private @Nullable String id;
+    /**
+     * @return A string value to search for.
+     * 
+     */
     private @Nullable String name;
 
     private GetZonesZone() {}
     /**
-     * @return The ID of this resource.
+     * @return The zone ID
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return A string value to search for.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

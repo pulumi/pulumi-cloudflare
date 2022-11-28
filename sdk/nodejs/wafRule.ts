@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const rule100000 = new cloudflare.WafRule("rule_100000", {
+ * const rule100000 = new cloudflare.WafRule("rule100000", {
  *     mode: "simulate",
  *     ruleId: "100000",
  *     zoneId: "ae36f999674d196762efcc5abb06b345",

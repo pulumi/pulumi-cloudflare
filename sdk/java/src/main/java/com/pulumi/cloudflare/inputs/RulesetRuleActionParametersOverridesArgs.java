@@ -67,6 +67,13 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         return Optional.ofNullable(this.rules);
     }
 
+    @Import(name="sensitivityLevel")
+    private @Nullable Output<String> sensitivityLevel;
+
+    public Optional<Output<String>> sensitivityLevel() {
+        return Optional.ofNullable(this.sensitivityLevel);
+    }
+
     @Import(name="status")
     private @Nullable Output<String> status;
 
@@ -81,6 +88,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         this.categories = $.categories;
         this.enabled = $.enabled;
         this.rules = $.rules;
+        this.sensitivityLevel = $.sensitivityLevel;
         this.status = $.status;
     }
 
@@ -178,6 +186,15 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
          */
         public Builder rules(RulesetRuleActionParametersOverridesRuleArgs... rules) {
             return rules(List.of(rules));
+        }
+
+        public Builder sensitivityLevel(@Nullable Output<String> sensitivityLevel) {
+            $.sensitivityLevel = sensitivityLevel;
+            return this;
+        }
+
+        public Builder sensitivityLevel(String sensitivityLevel) {
+            return sensitivityLevel(Output.of(sensitivityLevel));
         }
 
         public Builder status(@Nullable Output<String> status) {

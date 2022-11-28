@@ -14,7 +14,8 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP) which are used with or without Magic Transit.
+ * Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP)
+ * which are used with or without Magic Transit.
  * 
  * ## Example Usage
  * ```java
@@ -39,6 +40,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new ByoIpPrefix(&#34;example&#34;, ByoIpPrefixArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .advertisement(&#34;on&#34;)
  *             .description(&#34;Example IP Prefix&#34;)
  *             .prefixId(&#34;d41d8cd98f00b204e9800998ecf8427e&#34;)
@@ -50,10 +52,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * The current settings for Bring-Your-Own-IP prefixes can be imported using the prefix ID.
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example d41d8cd98f00b204e9800998ecf8427e
+ *  $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example &lt;account_id&gt;/&lt;prefix_id&gt;
  * ```
  * 
  */
@@ -74,28 +74,28 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
+     * Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
      * 
      */
     @Export(name="advertisement", type=String.class, parameters={})
     private Output<String> advertisement;
 
     /**
-     * @return Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
+     * @return Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
      * 
      */
     public Output<String> advertisement() {
         return this.advertisement;
     }
     /**
-     * The description of the prefix.
+     * Description of the BYO IP prefix.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
-     * @return The description of the prefix.
+     * @return Description of the BYO IP prefix.
      * 
      */
     public Output<String> description() {

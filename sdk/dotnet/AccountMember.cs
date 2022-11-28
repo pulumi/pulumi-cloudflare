@@ -61,6 +61,12 @@ namespace Pulumi.Cloudflare
         [Output("roleIds")]
         public Output<ImmutableArray<string>> RoleIds { get; private set; } = null!;
 
+        /// <summary>
+        /// A member's status in the account. Available values: `accepted`, `pending`.
+        /// </summary>
+        [Output("status")]
+        public Output<string?> Status { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a AccountMember resource with the given unique name, arguments, and options.
@@ -131,6 +137,12 @@ namespace Pulumi.Cloudflare
             set => _roleIds = value;
         }
 
+        /// <summary>
+        /// A member's status in the account. Available values: `accepted`, `pending`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
         public AccountMemberArgs()
         {
         }
@@ -162,6 +174,12 @@ namespace Pulumi.Cloudflare
             get => _roleIds ?? (_roleIds = new InputList<string>());
             set => _roleIds = value;
         }
+
+        /// <summary>
+        /// A member's status in the account. Available values: `accepted`, `pending`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public AccountMemberState()
         {

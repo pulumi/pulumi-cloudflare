@@ -19,78 +19,58 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
     public static final DevicePostureRuleArgs Empty = new DevicePostureRuleArgs();
 
     /**
-     * The account to which the device posture rule should be added.
+     * The account identifier to target for the resource.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account to which the device posture rule should be added.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
 
-    /**
-     * The description of the device posture rule.
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return The description of the device posture rule.
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
     /**
-     * Expire posture results after the specified amount of time.
-     * Must be in the format `&#34;1h&#34;` or `&#34;30m&#34;`. Valid units are `h` and `m`.
+     * Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
      * 
      */
     @Import(name="expiration")
     private @Nullable Output<String> expiration;
 
     /**
-     * @return Expire posture results after the specified amount of time.
-     * Must be in the format `&#34;1h&#34;` or `&#34;30m&#34;`. Valid units are `h` and `m`.
+     * @return Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
      * 
      */
     public Optional<Output<String>> expiration() {
         return Optional.ofNullable(this.expiration);
     }
 
-    /**
-     * The value to be checked against. See below for reference
-     * structure.
-     * 
-     */
     @Import(name="inputs")
     private @Nullable Output<List<DevicePostureRuleInputArgs>> inputs;
 
-    /**
-     * @return The value to be checked against. See below for reference
-     * structure.
-     * 
-     */
     public Optional<Output<List<DevicePostureRuleInputArgs>>> inputs() {
         return Optional.ofNullable(this.inputs);
     }
 
     /**
-     * The conditions that the client must match to run the rule. See below for reference structure.
+     * The conditions that the client must match to run the rule.
      * 
      */
     @Import(name="matches")
     private @Nullable Output<List<DevicePostureRuleMatchArgs>> matches;
 
     /**
-     * @return The conditions that the client must match to run the rule. See below for reference structure.
+     * @return The conditions that the client must match to run the rule.
      * 
      */
     public Optional<Output<List<DevicePostureRuleMatchArgs>>> matches() {
@@ -113,16 +93,14 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Tells the client when to run the device posture check.
-     * Must be in the format `&#34;1h&#34;` or `&#34;30m&#34;`. Valid units are `h` and `m`.
+     * Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
      * 
      */
     @Import(name="schedule")
     private @Nullable Output<String> schedule;
 
     /**
-     * @return Tells the client when to run the device posture check.
-     * Must be in the format `&#34;1h&#34;` or `&#34;30m&#34;`. Valid units are `h` and `m`.
+     * @return Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
      * 
      */
     public Optional<Output<String>> schedule() {
@@ -130,14 +108,14 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The device posture rule type. Valid values are `file`, `application`, and `serial_number`.
+     * The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The device posture rule type. Valid values are `file`, `application`, and `serial_number`.
+     * @return The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`.
      * 
      */
     public Output<String> type() {
@@ -176,7 +154,7 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId The account to which the device posture rule should be added.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -187,7 +165,7 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId The account to which the device posture rule should be added.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -196,30 +174,17 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
             return accountId(Output.of(accountId));
         }
 
-        /**
-         * @param description The description of the device posture rule.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description The description of the device posture rule.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
         /**
-         * @param expiration Expire posture results after the specified amount of time.
-         * Must be in the format `&#34;1h&#34;` or `&#34;30m&#34;`. Valid units are `h` and `m`.
+         * @param expiration Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
          * 
          * @return builder
          * 
@@ -230,8 +195,7 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param expiration Expire posture results after the specified amount of time.
-         * Must be in the format `&#34;1h&#34;` or `&#34;30m&#34;`. Valid units are `h` and `m`.
+         * @param expiration Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
          * 
          * @return builder
          * 
@@ -240,42 +204,21 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
             return expiration(Output.of(expiration));
         }
 
-        /**
-         * @param inputs The value to be checked against. See below for reference
-         * structure.
-         * 
-         * @return builder
-         * 
-         */
         public Builder inputs(@Nullable Output<List<DevicePostureRuleInputArgs>> inputs) {
             $.inputs = inputs;
             return this;
         }
 
-        /**
-         * @param inputs The value to be checked against. See below for reference
-         * structure.
-         * 
-         * @return builder
-         * 
-         */
         public Builder inputs(List<DevicePostureRuleInputArgs> inputs) {
             return inputs(Output.of(inputs));
         }
 
-        /**
-         * @param inputs The value to be checked against. See below for reference
-         * structure.
-         * 
-         * @return builder
-         * 
-         */
         public Builder inputs(DevicePostureRuleInputArgs... inputs) {
             return inputs(List.of(inputs));
         }
 
         /**
-         * @param matches The conditions that the client must match to run the rule. See below for reference structure.
+         * @param matches The conditions that the client must match to run the rule.
          * 
          * @return builder
          * 
@@ -286,7 +229,7 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param matches The conditions that the client must match to run the rule. See below for reference structure.
+         * @param matches The conditions that the client must match to run the rule.
          * 
          * @return builder
          * 
@@ -296,7 +239,7 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param matches The conditions that the client must match to run the rule. See below for reference structure.
+         * @param matches The conditions that the client must match to run the rule.
          * 
          * @return builder
          * 
@@ -327,8 +270,7 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param schedule Tells the client when to run the device posture check.
-         * Must be in the format `&#34;1h&#34;` or `&#34;30m&#34;`. Valid units are `h` and `m`.
+         * @param schedule Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
          * 
          * @return builder
          * 
@@ -339,8 +281,7 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param schedule Tells the client when to run the device posture check.
-         * Must be in the format `&#34;1h&#34;` or `&#34;30m&#34;`. Valid units are `h` and `m`.
+         * @param schedule Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
          * 
          * @return builder
          * 
@@ -350,7 +291,7 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type The device posture rule type. Valid values are `file`, `application`, and `serial_number`.
+         * @param type The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`.
          * 
          * @return builder
          * 
@@ -361,7 +302,7 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type The device posture rule type. Valid values are `file`, `application`, and `serial_number`.
+         * @param type The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`.
          * 
          * @return builder
          * 

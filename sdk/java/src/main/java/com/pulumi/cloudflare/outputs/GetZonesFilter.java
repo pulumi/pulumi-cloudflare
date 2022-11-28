@@ -13,52 +13,90 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetZonesFilter {
     /**
-     * @return The account identifier to target for the resource.
+     * @return Only search for zones in this account.
      * 
      */
     private @Nullable String accountId;
     /**
-     * @return Defaults to `exact`.
+     * @return The type of search to perform for the `name` value
+     * when querying the zone API. Valid values: `&#34;exact&#34;` and `&#34;contains&#34;`. Defaults
+     * to `&#34;exact&#34;`.
      * 
      */
     private @Nullable String lookupType;
+    /**
+     * @return A RE2 compatible regular expression to filter the
+     * results. This is performed client side whereas the `name` and `lookup_type`
+     * are performed on the Cloudflare server side.
+     * 
+     */
     private @Nullable String match;
+    /**
+     * @return A string value to search for.
+     * 
+     */
     private @Nullable String name;
     /**
-     * @return Defaults to `false`.
+     * @return Paused status of the zone to lookup. Valid values are
+     * `true` or `false`.
      * 
      */
     private @Nullable Boolean paused;
+    /**
+     * @return Status of the zone to lookup. Valid values: `&#34;active&#34;`,
+     * `&#34;pending&#34;`, `&#34;initializing&#34;`, `&#34;moved&#34;`, `&#34;deleted&#34;`, `&#34;deactivated&#34;` and
+     * `&#34;read only&#34;`.
+     * 
+     */
     private @Nullable String status;
 
     private GetZonesFilter() {}
     /**
-     * @return The account identifier to target for the resource.
+     * @return Only search for zones in this account.
      * 
      */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
     /**
-     * @return Defaults to `exact`.
+     * @return The type of search to perform for the `name` value
+     * when querying the zone API. Valid values: `&#34;exact&#34;` and `&#34;contains&#34;`. Defaults
+     * to `&#34;exact&#34;`.
      * 
      */
     public Optional<String> lookupType() {
         return Optional.ofNullable(this.lookupType);
     }
+    /**
+     * @return A RE2 compatible regular expression to filter the
+     * results. This is performed client side whereas the `name` and `lookup_type`
+     * are performed on the Cloudflare server side.
+     * 
+     */
     public Optional<String> match() {
         return Optional.ofNullable(this.match);
     }
+    /**
+     * @return A string value to search for.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Defaults to `false`.
+     * @return Paused status of the zone to lookup. Valid values are
+     * `true` or `false`.
      * 
      */
     public Optional<Boolean> paused() {
         return Optional.ofNullable(this.paused);
     }
+    /**
+     * @return Status of the zone to lookup. Valid values: `&#34;active&#34;`,
+     * `&#34;pending&#34;`, `&#34;initializing&#34;`, `&#34;moved&#34;`, `&#34;deleted&#34;`, `&#34;deactivated&#34;` and
+     * `&#34;read only&#34;`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

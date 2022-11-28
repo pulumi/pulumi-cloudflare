@@ -30,6 +30,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/pagesDomain:PagesDomain example &lt;account_id&gt;/&lt;project_name&gt;/&lt;domain-name&gt;
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/pagesDomain:PagesDomain")]
     public partial class PagesDomain : global::Pulumi.CustomResource

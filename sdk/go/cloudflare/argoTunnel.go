@@ -83,6 +83,13 @@ func NewArgoTunnel(ctx *pulumi.Context,
 	if args.Secret == nil {
 		return nil, errors.New("invalid value for required argument 'Secret'")
 	}
+	if args.Secret != nil {
+		args.Secret = pulumi.ToSecret(args.Secret).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"secret",
+	})
+	opts = append(opts, secrets)
 	var resource ArgoTunnel
 	err := ctx.RegisterResource("cloudflare:index/argoTunnel:ArgoTunnel", name, args, &resource, opts...)
 	if err != nil {

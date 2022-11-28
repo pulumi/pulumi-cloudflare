@@ -48,6 +48,12 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import cloudflare:index/pagesDomain:PagesDomain example &lt;account_id&gt;/&lt;project_name&gt;/&lt;domain-name&gt;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/pagesDomain:PagesDomain")
 public class PagesDomain extends com.pulumi.resources.CustomResource {

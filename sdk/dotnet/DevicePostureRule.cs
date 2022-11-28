@@ -21,11 +21,11 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var corporateDevicesPostureRule = new Cloudflare.DevicePostureRule("corporateDevicesPostureRule", new()
+    ///     var eaxmple = new Cloudflare.DevicePostureRule("eaxmple", new()
     ///     {
-    ///         AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Name = "Corporate devices posture rule",
-    ///         Type = "serial_number",
+    ///         Type = "os_version",
     ///         Description = "Device posture rule for corporate devices.",
     ///         Schedule = "24h",
     ///         Expiration = "24h",
@@ -33,7 +33,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             new Cloudflare.Inputs.DevicePostureRuleMatchArgs
     ///             {
-    ///                 Platform = "mac",
+    ///                 Platform = "linux",
     ///             },
     ///         },
     ///         Inputs = new[]
@@ -41,6 +41,10 @@ namespace Pulumi.Cloudflare
     ///             new Cloudflare.Inputs.DevicePostureRuleInputArgs
     ///             {
     ///                 Id = cloudflare_teams_list.Corporate_devices.Id,
+    ///                 Version = "1.0.0",
+    ///                 Operator = "&lt;",
+    ///                 OsDistroName = "ubuntu",
+    ///                 OsDistroRevision = "1.0.0",
     ///             },
     ///         },
     ///     });
@@ -50,43 +54,33 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Device posture rules can be imported using a composite ID formed of account ID and device posture rule ID.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+    ///  $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule example &lt;account_id&gt;/&lt;device_posture_rule_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/devicePostureRule:DevicePostureRule")]
     public partial class DevicePostureRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account to which the device posture rule should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
-        /// <summary>
-        /// The description of the device posture rule.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Expire posture results after the specified amount of time.
-        /// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        /// Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
         /// </summary>
         [Output("expiration")]
         public Output<string?> Expiration { get; private set; } = null!;
 
-        /// <summary>
-        /// The value to be checked against. See below for reference
-        /// structure.
-        /// </summary>
         [Output("inputs")]
         public Output<ImmutableArray<Outputs.DevicePostureRuleInput>> Inputs { get; private set; } = null!;
 
         /// <summary>
-        /// The conditions that the client must match to run the rule. See below for reference structure.
+        /// The conditions that the client must match to run the rule.
         /// </summary>
         [Output("matches")]
         public Output<ImmutableArray<Outputs.DevicePostureRuleMatch>> Matches { get; private set; } = null!;
@@ -98,14 +92,13 @@ namespace Pulumi.Cloudflare
         public Output<string?> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Tells the client when to run the device posture check.
-        /// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        /// Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
         /// </summary>
         [Output("schedule")]
         public Output<string?> Schedule { get; private set; } = null!;
 
         /// <summary>
-        /// The device posture rule type. Valid values are `file`, `application`, and `serial_number`.
+        /// The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -157,31 +150,22 @@ namespace Pulumi.Cloudflare
     public sealed class DevicePostureRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the device posture rule should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// The description of the device posture rule.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Expire posture results after the specified amount of time.
-        /// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        /// Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
         /// </summary>
         [Input("expiration")]
         public Input<string>? Expiration { get; set; }
 
         [Input("inputs")]
         private InputList<Inputs.DevicePostureRuleInputArgs>? _inputs;
-
-        /// <summary>
-        /// The value to be checked against. See below for reference
-        /// structure.
-        /// </summary>
         public InputList<Inputs.DevicePostureRuleInputArgs> Inputs
         {
             get => _inputs ?? (_inputs = new InputList<Inputs.DevicePostureRuleInputArgs>());
@@ -192,7 +176,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.DevicePostureRuleMatchArgs>? _matches;
 
         /// <summary>
-        /// The conditions that the client must match to run the rule. See below for reference structure.
+        /// The conditions that the client must match to run the rule.
         /// </summary>
         public InputList<Inputs.DevicePostureRuleMatchArgs> Matches
         {
@@ -207,14 +191,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Tells the client when to run the device posture check.
-        /// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        /// Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
 
         /// <summary>
-        /// The device posture rule type. Valid values are `file`, `application`, and `serial_number`.
+        /// The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -228,31 +211,22 @@ namespace Pulumi.Cloudflare
     public sealed class DevicePostureRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the device posture rule should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// The description of the device posture rule.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Expire posture results after the specified amount of time.
-        /// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        /// Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
         /// </summary>
         [Input("expiration")]
         public Input<string>? Expiration { get; set; }
 
         [Input("inputs")]
         private InputList<Inputs.DevicePostureRuleInputGetArgs>? _inputs;
-
-        /// <summary>
-        /// The value to be checked against. See below for reference
-        /// structure.
-        /// </summary>
         public InputList<Inputs.DevicePostureRuleInputGetArgs> Inputs
         {
             get => _inputs ?? (_inputs = new InputList<Inputs.DevicePostureRuleInputGetArgs>());
@@ -263,7 +237,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.DevicePostureRuleMatchGetArgs>? _matches;
 
         /// <summary>
-        /// The conditions that the client must match to run the rule. See below for reference structure.
+        /// The conditions that the client must match to run the rule.
         /// </summary>
         public InputList<Inputs.DevicePostureRuleMatchGetArgs> Matches
         {
@@ -278,14 +252,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Tells the client when to run the device posture check.
-        /// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        /// Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
 
         /// <summary>
-        /// The device posture rule type. Valid values are `file`, `application`, and `serial_number`.
+        /// The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

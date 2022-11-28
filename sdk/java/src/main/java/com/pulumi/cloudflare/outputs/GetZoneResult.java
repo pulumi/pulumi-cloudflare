@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetZoneResult {
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account ID associated with the zone.
      * 
      */
     private String accountId;
@@ -22,24 +22,41 @@ public final class GetZoneResult {
      */
     private String id;
     /**
-     * @return Must provide only one of `zone_id`, `name`.
+     * @return The name of the zone.
      * 
      */
     private String name;
-    private List<String> nameServers;
-    private Boolean paused;
-    private String plan;
-    private String status;
-    private List<String> vanityNameServers;
     /**
-     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
+     * @return Cloudflare assigned name servers. This is only populated for zones that use Cloudflare DNS.
      * 
      */
+    private List<String> nameServers;
+    /**
+     * @return `true` if cloudflare is enabled on the zone, otherwise `false`.
+     * 
+     */
+    private Boolean paused;
+    /**
+     * @return The name of the plan associated with the zone.
+     * 
+     */
+    private String plan;
+    /**
+     * @return Status of the zone. Values can be: `&#34;active&#34;`, `&#34;pending&#34;`, `&#34;initializing&#34;`, `&#34;moved&#34;`, `&#34;deleted&#34;`,
+     * or `&#34;deactivated&#34;`.
+     * 
+     */
+    private String status;
+    /**
+     * @return List of Vanity Nameservers (if set).
+     * 
+     */
+    private List<String> vanityNameServers;
     private String zoneId;
 
     private GetZoneResult() {}
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account ID associated with the zone.
      * 
      */
     public String accountId() {
@@ -53,31 +70,48 @@ public final class GetZoneResult {
         return this.id;
     }
     /**
-     * @return Must provide only one of `zone_id`, `name`.
+     * @return The name of the zone.
      * 
      */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Cloudflare assigned name servers. This is only populated for zones that use Cloudflare DNS.
+     * 
+     */
     public List<String> nameServers() {
         return this.nameServers;
     }
+    /**
+     * @return `true` if cloudflare is enabled on the zone, otherwise `false`.
+     * 
+     */
     public Boolean paused() {
         return this.paused;
     }
+    /**
+     * @return The name of the plan associated with the zone.
+     * 
+     */
     public String plan() {
         return this.plan;
     }
+    /**
+     * @return Status of the zone. Values can be: `&#34;active&#34;`, `&#34;pending&#34;`, `&#34;initializing&#34;`, `&#34;moved&#34;`, `&#34;deleted&#34;`,
+     * or `&#34;deactivated&#34;`.
+     * 
+     */
     public String status() {
         return this.status;
     }
+    /**
+     * @return List of Vanity Nameservers (if set).
+     * 
+     */
     public List<String> vanityNameServers() {
         return this.vanityNameServers;
     }
-    /**
-     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
-     * 
-     */
     public String zoneId() {
         return this.zoneId;
     }

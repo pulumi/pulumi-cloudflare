@@ -11,8 +11,33 @@ namespace Pulumi.Cloudflare
 {
     public static class GetApiTokenPermissionGroups
     {
+        /// <summary>
+        /// Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions). Commonly used as references within [`cloudflare.ApiToken`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Cloudflare.GetApiTokenPermissionGroups.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dnsReadPermissionId"] = test.Apply(getApiTokenPermissionGroupsResult =&gt; getApiTokenPermissionGroupsResult.Permissions?.DNS_Read),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetApiTokenPermissionGroupsResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetApiTokenPermissionGroupsResult>("cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetApiTokenPermissionGroupsResult>("cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups", InvokeArgs.Empty, options.WithDefaults());
     }
 
 
@@ -23,6 +48,10 @@ namespace Pulumi.Cloudflare
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A map of permission groups where keys are human-readable permission names
+        /// and values are permission IDs.
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Permissions;
 
         [OutputConstructor]

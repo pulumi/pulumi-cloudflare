@@ -13,8 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetWafRulesFilterResult
     {
+        /// <summary>
+        /// A regular expression matching the description of the WAF Rules to lookup.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+        /// </summary>
         public readonly string? GroupId;
+        /// <summary>
+        /// Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
+        /// </summary>
         public readonly string? Mode;
 
         [OutputConstructor]

@@ -20,7 +20,8 @@ class CustomHostnameArgs:
                  zone_id: pulumi.Input[str],
                  custom_origin_server: Optional[pulumi.Input[str]] = None,
                  custom_origin_sni: Optional[pulumi.Input[str]] = None,
-                 ssls: Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]] = None):
+                 ssls: Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]] = None,
+                 wait_for_ssl_pending_validation: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a CustomHostname resource.
         :param pulumi.Input[str] hostname: Hostname you intend to request a certificate for.
@@ -28,6 +29,7 @@ class CustomHostnameArgs:
         :param pulumi.Input[str] custom_origin_server: The custom origin server used for certificates.
         :param pulumi.Input[str] custom_origin_sni: The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
         :param pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]] ssls: SSL configuration of the certificate.
+        :param pulumi.Input[bool] wait_for_ssl_pending_validation: Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -37,6 +39,8 @@ class CustomHostnameArgs:
             pulumi.set(__self__, "custom_origin_sni", custom_origin_sni)
         if ssls is not None:
             pulumi.set(__self__, "ssls", ssls)
+        if wait_for_ssl_pending_validation is not None:
+            pulumi.set(__self__, "wait_for_ssl_pending_validation", wait_for_ssl_pending_validation)
 
     @property
     @pulumi.getter
@@ -98,6 +102,18 @@ class CustomHostnameArgs:
     def ssls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]]):
         pulumi.set(self, "ssls", value)
 
+    @property
+    @pulumi.getter(name="waitForSslPendingValidation")
+    def wait_for_ssl_pending_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+        """
+        return pulumi.get(self, "wait_for_ssl_pending_validation")
+
+    @wait_for_ssl_pending_validation.setter
+    def wait_for_ssl_pending_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wait_for_ssl_pending_validation", value)
+
 
 @pulumi.input_type
 class _CustomHostnameState:
@@ -109,6 +125,7 @@ class _CustomHostnameState:
                  ownership_verification_http: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ssls: Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 wait_for_ssl_pending_validation: Optional[pulumi.Input[bool]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CustomHostname resources.
@@ -117,6 +134,7 @@ class _CustomHostnameState:
         :param pulumi.Input[str] hostname: Hostname you intend to request a certificate for.
         :param pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]] ssls: SSL configuration of the certificate.
         :param pulumi.Input[str] status: Status of the certificate.
+        :param pulumi.Input[bool] wait_for_ssl_pending_validation: Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         if custom_origin_server is not None:
@@ -133,6 +151,8 @@ class _CustomHostnameState:
             pulumi.set(__self__, "ssls", ssls)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if wait_for_ssl_pending_validation is not None:
+            pulumi.set(__self__, "wait_for_ssl_pending_validation", wait_for_ssl_pending_validation)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -215,6 +235,18 @@ class _CustomHostnameState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter(name="waitForSslPendingValidation")
+    def wait_for_ssl_pending_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+        """
+        return pulumi.get(self, "wait_for_ssl_pending_validation")
+
+    @wait_for_ssl_pending_validation.setter
+    def wait_for_ssl_pending_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wait_for_ssl_pending_validation", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -236,6 +268,7 @@ class CustomHostname(pulumi.CustomResource):
                  custom_origin_sni: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  ssls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]]] = None,
+                 wait_for_ssl_pending_validation: Optional[pulumi.Input[bool]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -267,6 +300,7 @@ class CustomHostname(pulumi.CustomResource):
         :param pulumi.Input[str] custom_origin_sni: The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
         :param pulumi.Input[str] hostname: Hostname you intend to request a certificate for.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]] ssls: SSL configuration of the certificate.
+        :param pulumi.Input[bool] wait_for_ssl_pending_validation: Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         ...
@@ -317,6 +351,7 @@ class CustomHostname(pulumi.CustomResource):
                  custom_origin_sni: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  ssls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]]] = None,
+                 wait_for_ssl_pending_validation: Optional[pulumi.Input[bool]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -333,6 +368,7 @@ class CustomHostname(pulumi.CustomResource):
                 raise TypeError("Missing required property 'hostname'")
             __props__.__dict__["hostname"] = hostname
             __props__.__dict__["ssls"] = ssls
+            __props__.__dict__["wait_for_ssl_pending_validation"] = wait_for_ssl_pending_validation
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
@@ -356,6 +392,7 @@ class CustomHostname(pulumi.CustomResource):
             ownership_verification_http: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             ssls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            wait_for_ssl_pending_validation: Optional[pulumi.Input[bool]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'CustomHostname':
         """
         Get an existing CustomHostname resource's state with the given name, id, and optional extra
@@ -369,6 +406,7 @@ class CustomHostname(pulumi.CustomResource):
         :param pulumi.Input[str] hostname: Hostname you intend to request a certificate for.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]] ssls: SSL configuration of the certificate.
         :param pulumi.Input[str] status: Status of the certificate.
+        :param pulumi.Input[bool] wait_for_ssl_pending_validation: Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -382,6 +420,7 @@ class CustomHostname(pulumi.CustomResource):
         __props__.__dict__["ownership_verification_http"] = ownership_verification_http
         __props__.__dict__["ssls"] = ssls
         __props__.__dict__["status"] = status
+        __props__.__dict__["wait_for_ssl_pending_validation"] = wait_for_ssl_pending_validation
         __props__.__dict__["zone_id"] = zone_id
         return CustomHostname(resource_name, opts=opts, __props__=__props__)
 
@@ -434,6 +473,14 @@ class CustomHostname(pulumi.CustomResource):
         Status of the certificate.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="waitForSslPendingValidation")
+    def wait_for_ssl_pending_validation(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+        """
+        return pulumi.get(self, "wait_for_ssl_pending_validation")
 
     @property
     @pulumi.getter(name="zoneId")

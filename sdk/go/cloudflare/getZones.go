@@ -10,6 +10,123 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
+//
+// ## Example Usage
+//
+// Given you have the following zones in Cloudflare.
+//
+// - example.com
+// - example.net
+// - not-example.com
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err = cloudflare.GetZones(ctx, &GetZonesArgs{
+//				Filter: GetZonesFilter{
+//					Name: pulumi.StringRef("example.com"),
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err = cloudflare.GetZones(ctx, &GetZonesArgs{
+//				Filter: GetZonesFilter{
+//					LookupType: pulumi.StringRef("contains"),
+//					Name:       pulumi.StringRef("example"),
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err = cloudflare.GetZones(ctx, &GetZonesArgs{
+//				Filter: GetZonesFilter{
+//					LookupType: pulumi.StringRef("contains"),
+//					Match:      pulumi.StringRef("^not-"),
+//					Name:       pulumi.StringRef("example"),
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err = cloudflare.GetZones(ctx, &GetZonesArgs{
+//				Filter: GetZonesFilter{
+//					AccountId: pulumi.StringRef("1d5fdc9e88c8a8c4518b068cd94331fe"),
+//					Status:    pulumi.StringRef("active"),
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
 	var rv GetZonesResult
 	err := ctx.Invoke("cloudflare:index/getZones:getZones", args, &rv, opts...)
@@ -21,6 +138,8 @@ func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getZones.
 type GetZonesArgs struct {
+	// One or more values used to look up zone records. If more than one value is given all
+	// values must match in order to be included, see below for full list.
 	Filter GetZonesFilter `pulumi:"filter"`
 }
 
@@ -28,7 +147,8 @@ type GetZonesArgs struct {
 type GetZonesResult struct {
 	Filter GetZonesFilter `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
-	Id    string         `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// A list of zone objects. Object format:
 	Zones []GetZonesZone `pulumi:"zones"`
 }
 
@@ -47,6 +167,8 @@ func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getZones.
 type GetZonesOutputArgs struct {
+	// One or more values used to look up zone records. If more than one value is given all
+	// values must match in order to be included, see below for full list.
 	Filter GetZonesFilterInput `pulumi:"filter"`
 }
 
@@ -78,6 +200,7 @@ func (o GetZonesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of zone objects. Object format:
 func (o GetZonesResultOutput) Zones() GetZonesZoneArrayOutput {
 	return o.ApplyT(func(v GetZonesResult) []GetZonesZone { return v.Zones }).(GetZonesZoneArrayOutput)
 }

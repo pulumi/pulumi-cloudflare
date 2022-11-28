@@ -20,6 +20,21 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
     public static final LoadBalancerMonitorArgs Empty = new LoadBalancerMonitorArgs();
 
     /**
+     * The account identifier to target for the resource.
+     * 
+     */
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
+
+    /**
+     * @return The account identifier to target for the resource.
+     * 
+     */
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+
+    /**
      * Do not validate the certificate when monitor use HTTPS. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
      * 
      */
@@ -232,6 +247,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
     private LoadBalancerMonitorArgs() {}
 
     private LoadBalancerMonitorArgs(LoadBalancerMonitorArgs $) {
+        this.accountId = $.accountId;
         this.allowInsecure = $.allowInsecure;
         this.description = $.description;
         this.expectedBody = $.expectedBody;
@@ -264,6 +280,27 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
 
         public Builder(LoadBalancerMonitorArgs defaults) {
             $ = new LoadBalancerMonitorArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accountId The account identifier to target for the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(@Nullable Output<String> accountId) {
+            $.accountId = accountId;
+            return this;
+        }
+
+        /**
+         * @param accountId The account identifier to target for the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
         }
 
         /**

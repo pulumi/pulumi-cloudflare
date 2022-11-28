@@ -10,6 +10,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get the [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates) for a given algorithm.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err = cloudflare.GetOriginCaRootCertificate(ctx, &GetOriginCaRootCertificateArgs{
+//				Algorithm: "<algorithm>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetOriginCaRootCertificate(ctx *pulumi.Context, args *GetOriginCaRootCertificateArgs, opts ...pulumi.InvokeOption) (*GetOriginCaRootCertificateResult, error) {
 	var rv GetOriginCaRootCertificateResult
 	err := ctx.Invoke("cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate", args, &rv, opts...)
@@ -21,13 +48,15 @@ func GetOriginCaRootCertificate(ctx *pulumi.Context, args *GetOriginCaRootCertif
 
 // A collection of arguments for invoking getOriginCaRootCertificate.
 type GetOriginCaRootCertificateArgs struct {
+	// The name of the algorithm used when creating an Origin CA certificate. Currently-supported values are "rsa" and "ecc" (case-insensitive).
 	Algorithm string `pulumi:"algorithm"`
 }
 
 // A collection of values returned by getOriginCaRootCertificate.
 type GetOriginCaRootCertificateResult struct {
 	Algorithm string `pulumi:"algorithm"`
-	CertPem   string `pulumi:"certPem"`
+	// The Origin CA root certificate in PEM format.
+	CertPem string `pulumi:"certPem"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 }
@@ -47,6 +76,7 @@ func GetOriginCaRootCertificateOutput(ctx *pulumi.Context, args GetOriginCaRootC
 
 // A collection of arguments for invoking getOriginCaRootCertificate.
 type GetOriginCaRootCertificateOutputArgs struct {
+	// The name of the algorithm used when creating an Origin CA certificate. Currently-supported values are "rsa" and "ecc" (case-insensitive).
 	Algorithm pulumi.StringInput `pulumi:"algorithm"`
 }
 
@@ -73,6 +103,7 @@ func (o GetOriginCaRootCertificateResultOutput) Algorithm() pulumi.StringOutput 
 	return o.ApplyT(func(v GetOriginCaRootCertificateResult) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
+// The Origin CA root certificate in PEM format.
 func (o GetOriginCaRootCertificateResultOutput) CertPem() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOriginCaRootCertificateResult) string { return v.CertPem }).(pulumi.StringOutput)
 }

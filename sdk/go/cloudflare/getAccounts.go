@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetAccounts(ctx, &GetAccountsArgs{
+//			_, err = cloudflare.GetAccounts(ctx, &GetAccountsArgs{
 //				Name: pulumi.StringRef("example account"),
 //			}, nil)
 //			if err != nil {

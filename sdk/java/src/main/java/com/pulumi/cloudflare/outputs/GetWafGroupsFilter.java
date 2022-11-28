@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWafGroupsFilter {
+    /**
+     * @return Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+     * 
+     */
     private @Nullable String mode;
+    /**
+     * @return A regular expression matching the name of the WAF Rule Groups to lookup.
+     * 
+     */
     private @Nullable String name;
 
     private GetWafGroupsFilter() {}
+    /**
+     * @return Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+     * 
+     */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
+    /**
+     * @return A regular expression matching the name of the WAF Rule Groups to lookup.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

@@ -75,7 +75,7 @@ import (
 //				Requires: AccessPolicyRequireArray{
 //					&AccessPolicyRequireArgs{
 //						Ips: pulumi.StringArray{
-//							pulumi.Any(_var.Office_ip),
+//							_var.Office_ip,
 //						},
 //					},
 //				},
@@ -91,7 +91,7 @@ import (
 //
 // ## Import
 //
-// # Account level import.
+// Account level import.
 //
 // ```sh
 //
@@ -99,7 +99,7 @@ import (
 //
 // ```
 //
-// # Zone level import.
+//	Zone level import.
 //
 // ```sh
 //

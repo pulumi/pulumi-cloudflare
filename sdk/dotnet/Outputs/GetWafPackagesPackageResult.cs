@@ -13,14 +13,29 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetWafPackagesPackageResult
     {
+        /// <summary>
+        /// Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+        /// </summary>
         public readonly string? ActionMode;
+        /// <summary>
+        /// The WAF Rule Package description
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// Detection mode of the WAF Rule Packages to lookup.
+        /// </summary>
         public readonly string? DetectionMode;
         /// <summary>
-        /// The ID of this resource.
+        /// The WAF Rule Package ID
         /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// A regular expression matching the name of the WAF Rule Packages to lookup.
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+        /// </summary>
         public readonly string? Sensitivity;
 
         [OutputConstructor]

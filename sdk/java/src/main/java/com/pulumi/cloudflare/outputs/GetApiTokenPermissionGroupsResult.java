@@ -16,6 +16,11 @@ public final class GetApiTokenPermissionGroupsResult {
      * 
      */
     private String id;
+    /**
+     * @return A map of permission groups where keys are human-readable permission names
+     * and values are permission IDs.
+     * 
+     */
     private Map<String,Object> permissions;
 
     private GetApiTokenPermissionGroupsResult() {}
@@ -26,6 +31,11 @@ public final class GetApiTokenPermissionGroupsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A map of permission groups where keys are human-readable permission names
+     * and values are permission IDs.
+     * 
+     */
     public Map<String,Object> permissions() {
         return this.permissions;
     }

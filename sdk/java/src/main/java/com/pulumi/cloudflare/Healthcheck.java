@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * # Use the Zone ID and Healthcheck ID to import.
+ * Use the Zone ID and Healthcheck ID to import.
  * 
  * ```sh
  *  $ pulumi import cloudflare:index/healthcheck:Healthcheck example &lt;zone_id&gt;/&lt;healthcheck_id&gt;

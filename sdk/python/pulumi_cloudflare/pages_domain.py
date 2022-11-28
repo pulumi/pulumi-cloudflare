@@ -160,6 +160,12 @@ class PagesDomain(pulumi.CustomResource):
             project_name="my-example-project")
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/pagesDomain:PagesDomain example <account_id>/<project_name>/<domain-name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
@@ -185,6 +191,12 @@ class PagesDomain(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             domain="example.com",
             project_name="my-example-project")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/pagesDomain:PagesDomain example <account_id>/<project_name>/<domain-name>
         ```
 
         :param str resource_name: The name of the resource.

@@ -12,9 +12,19 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetZonesPlainArgs Empty = new GetZonesPlainArgs();
 
+    /**
+     * One or more values used to look up zone records. If more than one value is given all
+     * values must match in order to be included, see below for full list.
+     * 
+     */
     @Import(name="filter", required=true)
     private GetZonesFilter filter;
 
+    /**
+     * @return One or more values used to look up zone records. If more than one value is given all
+     * values must match in order to be included, see below for full list.
+     * 
+     */
     public GetZonesFilter filter() {
         return this.filter;
     }
@@ -43,6 +53,13 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetZonesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filter One or more values used to look up zone records. If more than one value is given all
+         * values must match in order to be included, see below for full list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filter(GetZonesFilter filter) {
             $.filter = filter;
             return this;

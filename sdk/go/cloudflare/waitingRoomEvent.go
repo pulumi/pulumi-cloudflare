@@ -45,7 +45,7 @@ import (
 //
 // ## Import
 //
-// # Use the Zone ID, Waiting Room ID, and Event ID to import.
+// Use the Zone ID, Waiting Room ID, and Event ID to import.
 //
 // ```sh
 //

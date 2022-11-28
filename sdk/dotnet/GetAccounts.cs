@@ -36,7 +36,7 @@ namespace Pulumi.Cloudflare
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountsResult> InvokeAsync(GetAccountsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("cloudflare:index/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("cloudflare:index/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for looking up Cloudflare Accounts.
@@ -63,7 +63,7 @@ namespace Pulumi.Cloudflare
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccountsResult> Invoke(GetAccountsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("cloudflare:index/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("cloudflare:index/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());
     }
 
 

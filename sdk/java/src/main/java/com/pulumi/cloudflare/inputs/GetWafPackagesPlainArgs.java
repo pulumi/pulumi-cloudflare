@@ -15,22 +15,32 @@ public final class GetWafPackagesPlainArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetWafPackagesPlainArgs Empty = new GetWafPackagesPlainArgs();
 
+    /**
+     * One or more values used to look up WAF Rule Packages. If more than one value is given all
+     * values must match in order to be included, see below for full list.
+     * 
+     */
     @Import(name="filter")
     private @Nullable GetWafPackagesFilter filter;
 
+    /**
+     * @return One or more values used to look up WAF Rule Packages. If more than one value is given all
+     * values must match in order to be included, see below for full list.
+     * 
+     */
     public Optional<GetWafPackagesFilter> filter() {
         return Optional.ofNullable(this.filter);
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * The ID of the DNS zone in which to search for the WAF Rule Packages.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The ID of the DNS zone in which to search for the WAF Rule Packages.
      * 
      */
     public String zoneId() {
@@ -62,13 +72,20 @@ public final class GetWafPackagesPlainArgs extends com.pulumi.resources.InvokeAr
             $ = new GetWafPackagesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filter One or more values used to look up WAF Rule Packages. If more than one value is given all
+         * values must match in order to be included, see below for full list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filter(@Nullable GetWafPackagesFilter filter) {
             $.filter = filter;
             return this;
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The ID of the DNS zone in which to search for the WAF Rule Packages.
          * 
          * @return builder
          * 

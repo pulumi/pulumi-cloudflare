@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const basicChallenge = new cloudflare.CustomPages("basic_challenge", {
+ * const basicChallenge = new cloudflare.CustomPages("basicChallenge", {
  *     state: "customized",
  *     type: "basic_challenge",
  *     url: "https://example.com/challenge.html",

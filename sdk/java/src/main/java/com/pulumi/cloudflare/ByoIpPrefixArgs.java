@@ -31,14 +31,14 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
+     * Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
      * 
      */
     @Import(name="advertisement")
     private @Nullable Output<String> advertisement;
 
     /**
-     * @return Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
+     * @return Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
      * 
      */
     public Optional<Output<String>> advertisement() {
@@ -46,14 +46,14 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the prefix.
+     * Description of the BYO IP prefix.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the prefix.
+     * @return Description of the BYO IP prefix.
      * 
      */
     public Optional<Output<String>> description() {
@@ -124,7 +124,7 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param advertisement Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
+         * @param advertisement Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param advertisement Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
+         * @param advertisement Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the prefix.
+         * @param description Description of the BYO IP prefix.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the prefix.
+         * @param description Description of the BYO IP prefix.
          * 
          * @return builder
          * 

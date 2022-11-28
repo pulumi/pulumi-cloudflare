@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -42,7 +43,7 @@ import * as utilities from "./utilities";
  *     "198.51.100.0/24",
  *     "2001:db8::/56",
  * ];
- * const officeNetwork: cloudflare.AccessRule[];
+ * const officeNetwork: cloudflare.AccessRule[] = [];
  * for (const range = {value: 0}; range.value < myOffice.length; range.value++) {
  *     officeNetwork.push(new cloudflare.AccessRule(`officeNetwork-${range.value}`, {
  *         accountId: "f037e56e89293a057740de681ac9abbe",
@@ -58,19 +59,19 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # User level access rule import.
+ * User level access rule import.
  *
  * ```sh
  *  $ pulumi import cloudflare:index/accessRule:AccessRule default user/<user_id>/<rule_id>
  * ```
  *
- * # Zone level access rule import.
+ *  Zone level access rule import.
  *
  * ```sh
  *  $ pulumi import cloudflare:index/accessRule:AccessRule default zone/<zone_id>/<rule_id>
  * ```
  *
- * # Account level access rule import.
+ *  Account level access rule import.
  *
  * ```sh
  *  $ pulumi import cloudflare:index/accessRule:AccessRule default account/<account_id>/<rule_id>

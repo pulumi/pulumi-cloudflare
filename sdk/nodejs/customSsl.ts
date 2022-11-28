@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -16,7 +17,6 @@ import * as utilities from "./utilities";
  *
  * const config = new pulumi.Config();
  * const cloudflareZoneId = config.get("cloudflareZoneId") || "1d5fdc9e88c8a8c4518b068cd94331fe";
- *
  * // Add a custom ssl certificate to the domain
  * const foossl = new cloudflare.CustomSsl("foossl", {
  *     customSslOptions: {

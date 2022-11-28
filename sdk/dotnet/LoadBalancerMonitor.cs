@@ -80,6 +80,12 @@ namespace Pulumi.Cloudflare
     public partial class LoadBalancerMonitor : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
+        [Output("accountId")]
+        public Output<string?> AccountId { get; private set; } = null!;
+
+        /// <summary>
         /// Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
         /// </summary>
         [Output("allowInsecure")]
@@ -222,6 +228,12 @@ namespace Pulumi.Cloudflare
     public sealed class LoadBalancerMonitorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
         /// Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
         /// </summary>
         [Input("allowInsecure")]
@@ -319,6 +331,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class LoadBalancerMonitorState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
         /// <summary>
         /// Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
         /// </summary>

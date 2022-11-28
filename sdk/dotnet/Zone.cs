@@ -71,7 +71,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> Paused { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the commercial plan to apply to the zone. Available values: `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
+        /// The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
         /// </summary>
         [Output("plan")]
         public Output<string> Plan { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Paused { get; set; }
 
         /// <summary>
-        /// The name of the commercial plan to apply to the zone. Available values: `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
+        /// The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }
@@ -235,7 +235,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Paused { get; set; }
 
         /// <summary>
-        /// The name of the commercial plan to apply to the zone. Available values: `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
+        /// The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }

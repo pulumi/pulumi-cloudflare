@@ -26,17 +26,12 @@ class DevicePostureRuleArgs:
                  schedule: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DevicePostureRule resource.
-        :param pulumi.Input[str] account_id: The account to which the device posture rule should be added.
-        :param pulumi.Input[str] type: The device posture rule type. Valid values are `file`, `application`, and `serial_number`.
-        :param pulumi.Input[str] description: The description of the device posture rule.
-        :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time.
-               Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
-        :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]] inputs: The value to be checked against. See below for reference
-               structure.
-        :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]] matches: The conditions that the client must match to run the rule. See below for reference structure.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`.
+        :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]] matches: The conditions that the client must match to run the rule.
         :param pulumi.Input[str] name: Name of the device posture rule.
-        :param pulumi.Input[str] schedule: Tells the client when to run the device posture check.
-               Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        :param pulumi.Input[str] schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "type", type)
@@ -57,7 +52,7 @@ class DevicePostureRuleArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account to which the device posture rule should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -69,7 +64,7 @@ class DevicePostureRuleArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The device posture rule type. Valid values are `file`, `application`, and `serial_number`.
+        The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`.
         """
         return pulumi.get(self, "type")
 
@@ -80,9 +75,6 @@ class DevicePostureRuleArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The description of the device posture rule.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -93,8 +85,7 @@ class DevicePostureRuleArgs:
     @pulumi.getter
     def expiration(self) -> Optional[pulumi.Input[str]]:
         """
-        Expire posture results after the specified amount of time.
-        Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
         """
         return pulumi.get(self, "expiration")
 
@@ -105,10 +96,6 @@ class DevicePostureRuleArgs:
     @property
     @pulumi.getter
     def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]]]:
-        """
-        The value to be checked against. See below for reference
-        structure.
-        """
         return pulumi.get(self, "inputs")
 
     @inputs.setter
@@ -119,7 +106,7 @@ class DevicePostureRuleArgs:
     @pulumi.getter
     def matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]]:
         """
-        The conditions that the client must match to run the rule. See below for reference structure.
+        The conditions that the client must match to run the rule.
         """
         return pulumi.get(self, "matches")
 
@@ -143,8 +130,7 @@ class DevicePostureRuleArgs:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        Tells the client when to run the device posture check.
-        Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
         """
         return pulumi.get(self, "schedule")
 
@@ -166,17 +152,12 @@ class _DevicePostureRuleState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DevicePostureRule resources.
-        :param pulumi.Input[str] account_id: The account to which the device posture rule should be added.
-        :param pulumi.Input[str] description: The description of the device posture rule.
-        :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time.
-               Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
-        :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]] inputs: The value to be checked against. See below for reference
-               structure.
-        :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]] matches: The conditions that the client must match to run the rule. See below for reference structure.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]] matches: The conditions that the client must match to run the rule.
         :param pulumi.Input[str] name: Name of the device posture rule.
-        :param pulumi.Input[str] schedule: Tells the client when to run the device posture check.
-               Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
-        :param pulumi.Input[str] type: The device posture rule type. Valid values are `file`, `application`, and `serial_number`.
+        :param pulumi.Input[str] schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        :param pulumi.Input[str] type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -199,7 +180,7 @@ class _DevicePostureRuleState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account to which the device posture rule should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -210,9 +191,6 @@ class _DevicePostureRuleState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The description of the device posture rule.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -223,8 +201,7 @@ class _DevicePostureRuleState:
     @pulumi.getter
     def expiration(self) -> Optional[pulumi.Input[str]]:
         """
-        Expire posture results after the specified amount of time.
-        Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
         """
         return pulumi.get(self, "expiration")
 
@@ -235,10 +212,6 @@ class _DevicePostureRuleState:
     @property
     @pulumi.getter
     def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]]]:
-        """
-        The value to be checked against. See below for reference
-        structure.
-        """
         return pulumi.get(self, "inputs")
 
     @inputs.setter
@@ -249,7 +222,7 @@ class _DevicePostureRuleState:
     @pulumi.getter
     def matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]]:
         """
-        The conditions that the client must match to run the rule. See below for reference structure.
+        The conditions that the client must match to run the rule.
         """
         return pulumi.get(self, "matches")
 
@@ -273,8 +246,7 @@ class _DevicePostureRuleState:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        Tells the client when to run the device posture check.
-        Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
         """
         return pulumi.get(self, "schedule")
 
@@ -286,7 +258,7 @@ class _DevicePostureRuleState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The device posture rule type. Valid values are `file`, `application`, and `serial_number`.
+        The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`.
         """
         return pulumi.get(self, "type")
 
@@ -318,42 +290,39 @@ class DevicePostureRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        corporate_devices_posture_rule = cloudflare.DevicePostureRule("corporateDevicesPostureRule",
-            account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+        eaxmple = cloudflare.DevicePostureRule("eaxmple",
+            account_id="f037e56e89293a057740de681ac9abbe",
             name="Corporate devices posture rule",
-            type="serial_number",
+            type="os_version",
             description="Device posture rule for corporate devices.",
             schedule="24h",
             expiration="24h",
             matches=[cloudflare.DevicePostureRuleMatchArgs(
-                platform="mac",
+                platform="linux",
             )],
             inputs=[cloudflare.DevicePostureRuleInputArgs(
                 id=cloudflare_teams_list["corporate_devices"]["id"],
+                version="1.0.0",
+                operator="<",
+                os_distro_name="ubuntu",
+                os_distro_revision="1.0.0",
             )])
         ```
 
         ## Import
 
-        Device posture rules can be imported using a composite ID formed of account ID and device posture rule ID.
-
         ```sh
-         $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+         $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule example <account_id>/<device_posture_rule_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account to which the device posture rule should be added.
-        :param pulumi.Input[str] description: The description of the device posture rule.
-        :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time.
-               Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleInputArgs']]]] inputs: The value to be checked against. See below for reference
-               structure.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleMatchArgs']]]] matches: The conditions that the client must match to run the rule. See below for reference structure.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleMatchArgs']]]] matches: The conditions that the client must match to run the rule.
         :param pulumi.Input[str] name: Name of the device posture rule.
-        :param pulumi.Input[str] schedule: Tells the client when to run the device posture check.
-               Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
-        :param pulumi.Input[str] type: The device posture rule type. Valid values are `file`, `application`, and `serial_number`.
+        :param pulumi.Input[str] schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        :param pulumi.Input[str] type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`.
         """
         ...
     @overload
@@ -370,27 +339,29 @@ class DevicePostureRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        corporate_devices_posture_rule = cloudflare.DevicePostureRule("corporateDevicesPostureRule",
-            account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+        eaxmple = cloudflare.DevicePostureRule("eaxmple",
+            account_id="f037e56e89293a057740de681ac9abbe",
             name="Corporate devices posture rule",
-            type="serial_number",
+            type="os_version",
             description="Device posture rule for corporate devices.",
             schedule="24h",
             expiration="24h",
             matches=[cloudflare.DevicePostureRuleMatchArgs(
-                platform="mac",
+                platform="linux",
             )],
             inputs=[cloudflare.DevicePostureRuleInputArgs(
                 id=cloudflare_teams_list["corporate_devices"]["id"],
+                version="1.0.0",
+                operator="<",
+                os_distro_name="ubuntu",
+                os_distro_revision="1.0.0",
             )])
         ```
 
         ## Import
 
-        Device posture rules can be imported using a composite ID formed of account ID and device posture rule ID.
-
         ```sh
-         $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+         $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule example <account_id>/<device_posture_rule_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -462,17 +433,12 @@ class DevicePostureRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account to which the device posture rule should be added.
-        :param pulumi.Input[str] description: The description of the device posture rule.
-        :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time.
-               Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleInputArgs']]]] inputs: The value to be checked against. See below for reference
-               structure.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleMatchArgs']]]] matches: The conditions that the client must match to run the rule. See below for reference structure.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleMatchArgs']]]] matches: The conditions that the client must match to run the rule.
         :param pulumi.Input[str] name: Name of the device posture rule.
-        :param pulumi.Input[str] schedule: Tells the client when to run the device posture check.
-               Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
-        :param pulumi.Input[str] type: The device posture rule type. Valid values are `file`, `application`, and `serial_number`.
+        :param pulumi.Input[str] schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        :param pulumi.Input[str] type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -492,41 +458,33 @@ class DevicePostureRule(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account to which the device posture rule should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        The description of the device posture rule.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def expiration(self) -> pulumi.Output[Optional[str]]:
         """
-        Expire posture results after the specified amount of time.
-        Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
         """
         return pulumi.get(self, "expiration")
 
     @property
     @pulumi.getter
     def inputs(self) -> pulumi.Output[Sequence['outputs.DevicePostureRuleInput']]:
-        """
-        The value to be checked against. See below for reference
-        structure.
-        """
         return pulumi.get(self, "inputs")
 
     @property
     @pulumi.getter
     def matches(self) -> pulumi.Output[Optional[Sequence['outputs.DevicePostureRuleMatch']]]:
         """
-        The conditions that the client must match to run the rule. See below for reference structure.
+        The conditions that the client must match to run the rule.
         """
         return pulumi.get(self, "matches")
 
@@ -542,8 +500,7 @@ class DevicePostureRule(pulumi.CustomResource):
     @pulumi.getter
     def schedule(self) -> pulumi.Output[Optional[str]]:
         """
-        Tells the client when to run the device posture check.
-        Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
         """
         return pulumi.get(self, "schedule")
 
@@ -551,7 +508,7 @@ class DevicePostureRule(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The device posture rule type. Valid values are `file`, `application`, and `serial_number`.
+        The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`.
         """
         return pulumi.get(self, "type")
 

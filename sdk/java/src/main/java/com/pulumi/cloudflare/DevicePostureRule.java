@@ -44,18 +44,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var corporateDevicesPostureRule = new DevicePostureRule(&#34;corporateDevicesPostureRule&#34;, DevicePostureRuleArgs.builder()        
- *             .accountId(&#34;1d5fdc9e88c8a8c4518b068cd94331fe&#34;)
+ *         var eaxmple = new DevicePostureRule(&#34;eaxmple&#34;, DevicePostureRuleArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;Corporate devices posture rule&#34;)
- *             .type(&#34;serial_number&#34;)
+ *             .type(&#34;os_version&#34;)
  *             .description(&#34;Device posture rule for corporate devices.&#34;)
  *             .schedule(&#34;24h&#34;)
  *             .expiration(&#34;24h&#34;)
  *             .matches(DevicePostureRuleMatchArgs.builder()
- *                 .platform(&#34;mac&#34;)
+ *                 .platform(&#34;linux&#34;)
  *                 .build())
  *             .inputs(DevicePostureRuleInputArgs.builder()
  *                 .id(cloudflare_teams_list.corporate_devices().id())
+ *                 .version(&#34;1.0.0&#34;)
+ *                 .operator(&#34;&lt;&#34;)
+ *                 .osDistroName(&#34;ubuntu&#34;)
+ *                 .osDistroRevision(&#34;1.0.0&#34;)
  *                 .build())
  *             .build());
  * 
@@ -65,84 +69,62 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Device posture rules can be imported using a composite ID formed of account ID and device posture rule ID.
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+ *  $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule example &lt;account_id&gt;/&lt;device_posture_rule_id&gt;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/devicePostureRule:DevicePostureRule")
 public class DevicePostureRule extends com.pulumi.resources.CustomResource {
     /**
-     * The account to which the device posture rule should be added.
+     * The account identifier to target for the resource.
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
-     * @return The account to which the device posture rule should be added.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
-    /**
-     * The description of the device posture rule.
-     * 
-     */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
-    /**
-     * @return The description of the device posture rule.
-     * 
-     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Expire posture results after the specified amount of time.
-     * Must be in the format `&#34;1h&#34;` or `&#34;30m&#34;`. Valid units are `h` and `m`.
+     * Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
      * 
      */
     @Export(name="expiration", type=String.class, parameters={})
     private Output</* @Nullable */ String> expiration;
 
     /**
-     * @return Expire posture results after the specified amount of time.
-     * Must be in the format `&#34;1h&#34;` or `&#34;30m&#34;`. Valid units are `h` and `m`.
+     * @return Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
      * 
      */
     public Output<Optional<String>> expiration() {
         return Codegen.optional(this.expiration);
     }
-    /**
-     * The value to be checked against. See below for reference
-     * structure.
-     * 
-     */
     @Export(name="inputs", type=List.class, parameters={DevicePostureRuleInput.class})
     private Output<List<DevicePostureRuleInput>> inputs;
 
-    /**
-     * @return The value to be checked against. See below for reference
-     * structure.
-     * 
-     */
     public Output<List<DevicePostureRuleInput>> inputs() {
         return this.inputs;
     }
     /**
-     * The conditions that the client must match to run the rule. See below for reference structure.
+     * The conditions that the client must match to run the rule.
      * 
      */
     @Export(name="matches", type=List.class, parameters={DevicePostureRuleMatch.class})
     private Output</* @Nullable */ List<DevicePostureRuleMatch>> matches;
 
     /**
-     * @return The conditions that the client must match to run the rule. See below for reference structure.
+     * @return The conditions that the client must match to run the rule.
      * 
      */
     public Output<Optional<List<DevicePostureRuleMatch>>> matches() {
@@ -163,30 +145,28 @@ public class DevicePostureRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.name);
     }
     /**
-     * Tells the client when to run the device posture check.
-     * Must be in the format `&#34;1h&#34;` or `&#34;30m&#34;`. Valid units are `h` and `m`.
+     * Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
      * 
      */
     @Export(name="schedule", type=String.class, parameters={})
     private Output</* @Nullable */ String> schedule;
 
     /**
-     * @return Tells the client when to run the device posture check.
-     * Must be in the format `&#34;1h&#34;` or `&#34;30m&#34;`. Valid units are `h` and `m`.
+     * @return Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
      * 
      */
     public Output<Optional<String>> schedule() {
         return Codegen.optional(this.schedule);
     }
     /**
-     * The device posture rule type. Valid values are `file`, `application`, and `serial_number`.
+     * The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
-     * @return The device posture rule type. Valid values are `file`, `application`, and `serial_number`.
+     * @return The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`.
      * 
      */
     public Output<String> type() {

@@ -13,22 +13,63 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetDevicesDeviceResult
     {
+        /// <summary>
+        /// When the device was created.
+        /// </summary>
         public readonly string? Created;
+        /// <summary>
+        /// The type of the device.
+        /// </summary>
         public readonly string? DeviceType;
         /// <summary>
-        /// The ID of this resource.
+        /// Device ID.
         /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// IPv4 or IPv6 address.
+        /// </summary>
         public readonly string? Ip;
+        /// <summary>
+        /// The device's public key.
+        /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// When the device was last seen.
+        /// </summary>
         public readonly string? LastSeen;
+        /// <summary>
+        /// The device model name.
+        /// </summary>
         public readonly string? Model;
+        /// <summary>
+        /// The device name.
+        /// </summary>
         public readonly string? Name;
+        public readonly string? OsDistroName;
+        public readonly string? OsDistroRevision;
+        /// <summary>
+        /// The operating system version.
+        /// </summary>
         public readonly string? OsVersion;
+        /// <summary>
+        /// When the device was updated.
+        /// </summary>
         public readonly string? Updated;
+        /// <summary>
+        /// User's email.
+        /// </summary>
         public readonly string? UserEmail;
+        /// <summary>
+        /// User's ID.
+        /// </summary>
         public readonly string? UserId;
+        /// <summary>
+        /// User's Name.
+        /// </summary>
         public readonly string? UserName;
+        /// <summary>
+        /// The WARP client version.
+        /// </summary>
         public readonly string? Version;
 
         [OutputConstructor]
@@ -48,6 +89,10 @@ namespace Pulumi.Cloudflare.Outputs
             string? model,
 
             string? name,
+
+            string? osDistroName,
+
+            string? osDistroRevision,
 
             string? osVersion,
 
@@ -69,6 +114,8 @@ namespace Pulumi.Cloudflare.Outputs
             LastSeen = lastSeen;
             Model = model;
             Name = name;
+            OsDistroName = osDistroName;
+            OsDistroRevision = osDistroRevision;
             OsVersion = osVersion;
             Updated = updated;
             UserEmail = userEmail;

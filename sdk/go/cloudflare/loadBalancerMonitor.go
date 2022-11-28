@@ -93,6 +93,8 @@ import (
 type LoadBalancerMonitor struct {
 	pulumi.CustomResourceState
 
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
 	AllowInsecure pulumi.BoolPtrOutput `pulumi:"allowInsecure"`
 	// The RFC3339 timestamp of when the load balancer monitor was created.
@@ -156,6 +158,8 @@ func GetLoadBalancerMonitor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoadBalancerMonitor resources.
 type loadBalancerMonitorState struct {
+	// The account identifier to target for the resource.
+	AccountId *string `pulumi:"accountId"`
 	// Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
 	AllowInsecure *bool `pulumi:"allowInsecure"`
 	// The RFC3339 timestamp of when the load balancer monitor was created.
@@ -191,6 +195,8 @@ type loadBalancerMonitorState struct {
 }
 
 type LoadBalancerMonitorState struct {
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringPtrInput
 	// Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
 	AllowInsecure pulumi.BoolPtrInput
 	// The RFC3339 timestamp of when the load balancer monitor was created.
@@ -230,6 +236,8 @@ func (LoadBalancerMonitorState) ElementType() reflect.Type {
 }
 
 type loadBalancerMonitorArgs struct {
+	// The account identifier to target for the resource.
+	AccountId *string `pulumi:"accountId"`
 	// Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
 	AllowInsecure *bool `pulumi:"allowInsecure"`
 	// Free text description.
@@ -262,6 +270,8 @@ type loadBalancerMonitorArgs struct {
 
 // The set of arguments for constructing a LoadBalancerMonitor resource.
 type LoadBalancerMonitorArgs struct {
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringPtrInput
 	// Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
 	AllowInsecure pulumi.BoolPtrInput
 	// Free text description.
@@ -377,6 +387,11 @@ func (o LoadBalancerMonitorOutput) ToLoadBalancerMonitorOutput() LoadBalancerMon
 
 func (o LoadBalancerMonitorOutput) ToLoadBalancerMonitorOutputWithContext(ctx context.Context) LoadBalancerMonitorOutput {
 	return o
+}
+
+// The account identifier to target for the resource.
+func (o LoadBalancerMonitorOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".

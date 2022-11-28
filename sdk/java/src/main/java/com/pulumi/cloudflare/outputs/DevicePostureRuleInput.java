@@ -12,15 +12,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DevicePostureRuleInput {
+    /**
+     * @return The workspace one device compliance status.
+     * 
+     */
     private @Nullable String complianceStatus;
+    /**
+     * @return The workspace one connection id.
+     * 
+     */
     private @Nullable String connectionId;
     /**
-     * @return = (Required) The domain that the client must join.
+     * @return The domain that the client must join.
      * 
      */
     private @Nullable String domain;
     /**
-     * @return = (Required) True if the firewall must be enabled.
+     * @return True if the firewall must be enabled.
      * 
      */
     private @Nullable Boolean enabled;
@@ -35,17 +43,27 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable String id;
     /**
-     * @return = (Required) The version comparison operator in (&gt;,&gt;=,&lt;,&lt;=,==)
+     * @return The version comparison operator.
      * 
      */
     private @Nullable String operator;
     /**
-     * @return The path to the application.
+     * @return The operating system excluding version information.
+     * 
+     */
+    private @Nullable String osDistroName;
+    /**
+     * @return The operating system version excluding OS name information or release name.
+     * 
+     */
+    private @Nullable String osDistroRevision;
+    /**
+     * @return The path to the file.
      * 
      */
     private @Nullable String path;
     /**
-     * @return = (Required) True if all drives must be encrypted.
+     * @return True if all drives must be encrypted.
      * 
      */
     private @Nullable Boolean requireAll;
@@ -60,32 +78,40 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable String sha256;
     /**
-     * @return The thumbprint of the application certificate.
+     * @return The thumbprint of the file certificate.
      * 
      */
     private @Nullable String thumbprint;
     /**
-     * @return = (Required) The operating system semantic version.
+     * @return The operating system semantic version.
      * 
      */
     private @Nullable String version;
 
     private DevicePostureRuleInput() {}
+    /**
+     * @return The workspace one device compliance status.
+     * 
+     */
     public Optional<String> complianceStatus() {
         return Optional.ofNullable(this.complianceStatus);
     }
+    /**
+     * @return The workspace one connection id.
+     * 
+     */
     public Optional<String> connectionId() {
         return Optional.ofNullable(this.connectionId);
     }
     /**
-     * @return = (Required) The domain that the client must join.
+     * @return The domain that the client must join.
      * 
      */
     public Optional<String> domain() {
         return Optional.ofNullable(this.domain);
     }
     /**
-     * @return = (Required) True if the firewall must be enabled.
+     * @return True if the firewall must be enabled.
      * 
      */
     public Optional<Boolean> enabled() {
@@ -106,21 +132,35 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return = (Required) The version comparison operator in (&gt;,&gt;=,&lt;,&lt;=,==)
+     * @return The version comparison operator.
      * 
      */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
     /**
-     * @return The path to the application.
+     * @return The operating system excluding version information.
+     * 
+     */
+    public Optional<String> osDistroName() {
+        return Optional.ofNullable(this.osDistroName);
+    }
+    /**
+     * @return The operating system version excluding OS name information or release name.
+     * 
+     */
+    public Optional<String> osDistroRevision() {
+        return Optional.ofNullable(this.osDistroRevision);
+    }
+    /**
+     * @return The path to the file.
      * 
      */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }
     /**
-     * @return = (Required) True if all drives must be encrypted.
+     * @return True if all drives must be encrypted.
      * 
      */
     public Optional<Boolean> requireAll() {
@@ -141,14 +181,14 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.sha256);
     }
     /**
-     * @return The thumbprint of the application certificate.
+     * @return The thumbprint of the file certificate.
      * 
      */
     public Optional<String> thumbprint() {
         return Optional.ofNullable(this.thumbprint);
     }
     /**
-     * @return = (Required) The operating system semantic version.
+     * @return The operating system semantic version.
      * 
      */
     public Optional<String> version() {
@@ -171,6 +211,8 @@ public final class DevicePostureRuleInput {
         private @Nullable Boolean exists;
         private @Nullable String id;
         private @Nullable String operator;
+        private @Nullable String osDistroName;
+        private @Nullable String osDistroRevision;
         private @Nullable String path;
         private @Nullable Boolean requireAll;
         private @Nullable Boolean running;
@@ -187,6 +229,8 @@ public final class DevicePostureRuleInput {
     	      this.exists = defaults.exists;
     	      this.id = defaults.id;
     	      this.operator = defaults.operator;
+    	      this.osDistroName = defaults.osDistroName;
+    	      this.osDistroRevision = defaults.osDistroRevision;
     	      this.path = defaults.path;
     	      this.requireAll = defaults.requireAll;
     	      this.running = defaults.running;
@@ -231,6 +275,16 @@ public final class DevicePostureRuleInput {
             return this;
         }
         @CustomType.Setter
+        public Builder osDistroName(@Nullable String osDistroName) {
+            this.osDistroName = osDistroName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder osDistroRevision(@Nullable String osDistroRevision) {
+            this.osDistroRevision = osDistroRevision;
+            return this;
+        }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
@@ -269,6 +323,8 @@ public final class DevicePostureRuleInput {
             o.exists = exists;
             o.id = id;
             o.operator = operator;
+            o.osDistroName = osDistroName;
+            o.osDistroRevision = osDistroRevision;
             o.path = path;
             o.requireAll = requireAll;
             o.running = running;

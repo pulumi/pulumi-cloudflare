@@ -7,6 +7,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare edge nodes.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cloudflare, err := cloudflare.GetIpRanges(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewFirewall(ctx, "allowCloudflareIngress", &compute.FirewallArgs{
+//				Network:      pulumi.String("default"),
+//				SourceRanges: interface{}(cloudflare.Ipv4CidrBlocks),
+//				Allows: compute.FirewallAllowArray{
+//					&compute.FirewallAllowArgs{
+//						Ports:    pulumi.StringArray("443"),
+//						Protocol: pulumi.String("tcp"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetIpRanges(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetIpRangesResult, error) {
 	var rv GetIpRangesResult
 	err := ctx.Invoke("cloudflare:index/getIpRanges:getIpRanges", nil, &rv, opts...)
@@ -18,11 +57,16 @@ func GetIpRanges(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetIpRanges
 
 // A collection of values returned by getIpRanges.
 type GetIpRangesResult struct {
+	// The lexically ordered list of only the IPv4 China CIDR blocks.
 	ChinaIpv4CidrBlocks []string `pulumi:"chinaIpv4CidrBlocks"`
+	// The lexically ordered list of only the IPv6 China CIDR blocks.
 	ChinaIpv6CidrBlocks []string `pulumi:"chinaIpv6CidrBlocks"`
-	CidrBlocks          []string `pulumi:"cidrBlocks"`
+	// The lexically ordered list of all non-China CIDR blocks.
+	CidrBlocks []string `pulumi:"cidrBlocks"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The lexically ordered list of only the IPv4 CIDR blocks.
 	Ipv4CidrBlocks []string `pulumi:"ipv4CidrBlocks"`
+	// The lexically ordered list of only the IPv6 CIDR blocks.
 	Ipv6CidrBlocks []string `pulumi:"ipv6CidrBlocks"`
 }

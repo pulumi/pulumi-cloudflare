@@ -258,13 +258,13 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
 
         ## Import
 
-        Authenticated Origin Pull certificates can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, e.g. # Import Per-Zone Authenticated Origin Pull certificate
+        Authenticated Origin Pull certificates can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, e.g. Import Per-Zone Authenticated Origin Pull certificate
 
         ```sh
          $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-zone/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
         ```
 
-        # Import Per-Hostname Authenticated Origin Pull certificate
+         Import Per-Hostname Authenticated Origin Pull certificate
 
         ```sh
          $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-hostname/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
@@ -308,13 +308,13 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
 
         ## Import
 
-        Authenticated Origin Pull certificates can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, e.g. # Import Per-Zone Authenticated Origin Pull certificate
+        Authenticated Origin Pull certificates can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, e.g. Import Per-Zone Authenticated Origin Pull certificate
 
         ```sh
          $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-zone/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
         ```
 
-        # Import Per-Hostname Authenticated Origin Pull certificate
+         Import Per-Hostname Authenticated Origin Pull certificate
 
         ```sh
          $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-hostname/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
@@ -353,7 +353,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
             __props__.__dict__["certificate"] = certificate
             if private_key is None and not opts.urn:
                 raise TypeError("Missing required property 'private_key'")
-            __props__.__dict__["private_key"] = private_key
+            __props__.__dict__["private_key"] = None if private_key is None else pulumi.Output.secret(private_key)
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
@@ -366,6 +366,8 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
             __props__.__dict__["signature"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["uploaded_on"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["privateKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AuthenticatedOriginPullsCertificate, __self__).__init__(
             'cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate',
             resource_name,

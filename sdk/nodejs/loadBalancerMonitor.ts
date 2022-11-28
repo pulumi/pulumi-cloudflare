@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -17,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const httpMonitor = new cloudflare.LoadBalancerMonitor("http_monitor", {
+ * const httpMonitor = new cloudflare.LoadBalancerMonitor("httpMonitor", {
  *     allowInsecure: false,
  *     description: "example http load balancer",
  *     expectedBody: "alive",
@@ -42,7 +43,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const tcpMonitor = new cloudflare.LoadBalancerMonitor("tcp_monitor", {
+ * const tcpMonitor = new cloudflare.LoadBalancerMonitor("tcpMonitor", {
  *     description: "example tcp load balancer",
  *     interval: 60,
  *     method: "connection_established",
@@ -81,6 +82,10 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
         return obj['__pulumiType'] === LoadBalancerMonitor.__pulumiType;
     }
 
+    /**
+     * The account identifier to target for the resource.
+     */
+    public readonly accountId!: pulumi.Output<string | undefined>;
     /**
      * Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
      */
@@ -159,6 +164,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerMonitorState | undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["allowInsecure"] = state ? state.allowInsecure : undefined;
             resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -177,6 +183,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as LoadBalancerMonitorArgs | undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["allowInsecure"] = args ? args.allowInsecure : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["expectedBody"] = args ? args.expectedBody : undefined;
@@ -203,6 +210,10 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LoadBalancerMonitor resources.
  */
 export interface LoadBalancerMonitorState {
+    /**
+     * The account identifier to target for the resource.
+     */
+    accountId?: pulumi.Input<string>;
     /**
      * Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
      */
@@ -273,6 +284,10 @@ export interface LoadBalancerMonitorState {
  * The set of arguments for constructing a LoadBalancerMonitor resource.
  */
 export interface LoadBalancerMonitorArgs {
+    /**
+     * The account identifier to target for the resource.
+     */
+    accountId?: pulumi.Input<string>;
     /**
      * Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
      */

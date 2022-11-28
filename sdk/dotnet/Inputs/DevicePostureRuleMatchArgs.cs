@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class DevicePostureRuleMatchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The platform of the device. Valid values are `windows`, `mac`, `linux`, `android`, and `ios`.
+        /// The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }

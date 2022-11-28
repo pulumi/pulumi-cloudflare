@@ -11,30 +11,150 @@ namespace Pulumi.Cloudflare
 {
     public static class GetZone
     {
+        /// <summary>
+        /// Use this data source to look up [zone] info. This is the singular alternative
+        /// to `cloudflare.getZones`.
+        /// 
+        /// &gt; **Note** Cloudflare zone names **are not unique**. It is possible for multiple
+        /// accounts to have the same zone created but in different states. If you are
+        /// using this setup, it is advised to use the `account_id` attribute on this
+        /// resource or swap to `cloudflare.getZones` to further filter the results.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Cloudflare.GetZone.Invoke(new()
+        ///     {
+        ///         ZoneId = "0b6d347b01d437a092be84c2edfce72c",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### Example usage with other resources
+        /// 
+        /// The example below fetches the zone information for example.com and then is
+        /// referenced in the `cloudflare.Record` section.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZone = Cloudflare.GetZone.Invoke(new()
+        ///     {
+        ///         Name = "example.com",
+        ///     });
+        /// 
+        ///     var exampleRecord = new Cloudflare.Record("exampleRecord", new()
+        ///     {
+        ///         ZoneId = exampleZone.Apply(getZoneResult =&gt; getZoneResult.Id),
+        ///         Name = "www",
+        ///         Value = "203.0.113.1",
+        ///         Type = "A",
+        ///         Proxied = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetZoneResult> InvokeAsync(GetZoneArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZoneResult>("cloudflare:index/getZone:getZone", args ?? new GetZoneArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneResult>("cloudflare:index/getZone:getZone", args ?? new GetZoneArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to look up [zone] info. This is the singular alternative
+        /// to `cloudflare.getZones`.
+        /// 
+        /// &gt; **Note** Cloudflare zone names **are not unique**. It is possible for multiple
+        /// accounts to have the same zone created but in different states. If you are
+        /// using this setup, it is advised to use the `account_id` attribute on this
+        /// resource or swap to `cloudflare.getZones` to further filter the results.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Cloudflare.GetZone.Invoke(new()
+        ///     {
+        ///         ZoneId = "0b6d347b01d437a092be84c2edfce72c",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### Example usage with other resources
+        /// 
+        /// The example below fetches the zone information for example.com and then is
+        /// referenced in the `cloudflare.Record` section.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZone = Cloudflare.GetZone.Invoke(new()
+        ///     {
+        ///         Name = "example.com",
+        ///     });
+        /// 
+        ///     var exampleRecord = new Cloudflare.Record("exampleRecord", new()
+        ///     {
+        ///         ZoneId = exampleZone.Apply(getZoneResult =&gt; getZoneResult.Id),
+        ///         Name = "www",
+        ///         Value = "203.0.113.1",
+        ///         Type = "A",
+        ///         Proxied = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetZoneResult> Invoke(GetZoneInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetZoneResult>("cloudflare:index/getZone:getZone", args ?? new GetZoneInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetZoneResult>("cloudflare:index/getZone:getZone", args ?? new GetZoneInvokeArgs(), options.WithDefaults());
     }
 
 
     public sealed class GetZoneArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account ID associated with the zone.
         /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
         /// <summary>
-        /// Must provide only one of `zone_id`, `name`.
+        /// The name of the zone. Conflicts with `"zone_id"`.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
+        /// The zone ID. Conflicts with `"name"`.
         /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
@@ -48,19 +168,19 @@ namespace Pulumi.Cloudflare
     public sealed class GetZoneInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account ID associated with the zone.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Must provide only one of `zone_id`, `name`.
+        /// The name of the zone. Conflicts with `"zone_id"`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
+        /// The zone ID. Conflicts with `"name"`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -76,7 +196,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetZoneResult
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account ID associated with the zone.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
@@ -84,17 +204,30 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Must provide only one of `zone_id`, `name`.
+        /// The name of the zone.
         /// </summary>
         public readonly string Name;
-        public readonly ImmutableArray<string> NameServers;
-        public readonly bool Paused;
-        public readonly string Plan;
-        public readonly string Status;
-        public readonly ImmutableArray<string> VanityNameServers;
         /// <summary>
-        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
+        /// Cloudflare assigned name servers. This is only populated for zones that use Cloudflare DNS.
         /// </summary>
+        public readonly ImmutableArray<string> NameServers;
+        /// <summary>
+        /// `true` if cloudflare is enabled on the zone, otherwise `false`.
+        /// </summary>
+        public readonly bool Paused;
+        /// <summary>
+        /// The name of the plan associated with the zone.
+        /// </summary>
+        public readonly string Plan;
+        /// <summary>
+        /// Status of the zone. Values can be: `"active"`, `"pending"`, `"initializing"`, `"moved"`, `"deleted"`,
+        /// or `"deactivated"`.
+        /// </summary>
+        public readonly string Status;
+        /// <summary>
+        /// List of Vanity Nameservers (if set).
+        /// </summary>
+        public readonly ImmutableArray<string> VanityNameServers;
         public readonly string ZoneId;
 
         [OutputConstructor]

@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class LoadBalancerRegionPool {
     /**
-     * @return A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     * @return A list of pool IDs in failover priority to use in the given region.
      * 
      */
     private List<String> poolIds;
@@ -23,7 +23,7 @@ public final class LoadBalancerRegionPool {
 
     private LoadBalancerRegionPool() {}
     /**
-     * @return A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     * @return A list of pool IDs in failover priority to use in the given region.
      * 
      */
     public List<String> poolIds() {

@@ -34,6 +34,7 @@ __all__ = [
     'AccessGroupRequireOktaArgs',
     'AccessGroupRequireSamlArgs',
     'AccessIdentityProviderConfigArgs',
+    'AccessOrganizationLoginDesignArgs',
     'AccessPolicyApprovalGroupArgs',
     'AccessPolicyExcludeArgs',
     'AccessPolicyExcludeAzureArgs',
@@ -57,6 +58,7 @@ __all__ = [
     'AccessPolicyRequireOktaArgs',
     'AccessPolicyRequireSamlArgs',
     'AccessRuleConfigurationArgs',
+    'ApiShieldAuthIdCharacteristicArgs',
     'ApiTokenConditionArgs',
     'ApiTokenConditionRequestIpArgs',
     'ApiTokenPolicyArgs',
@@ -71,25 +73,37 @@ __all__ = [
     'DevicePostureIntegrationConfigArgs',
     'DevicePostureRuleInputArgs',
     'DevicePostureRuleMatchArgs',
+    'DlpProfileEntryArgs',
+    'DlpProfileEntryPatternArgs',
+    'EmailRoutingCatchAllActionArgs',
+    'EmailRoutingCatchAllMatcherArgs',
+    'EmailRoutingRuleActionArgs',
+    'EmailRoutingRuleMatcherArgs',
     'FallbackDomainDomainArgs',
     'HealthcheckHeaderArgs',
     'IpListItemArgs',
     'ListItemArgs',
     'ListItemValueArgs',
     'ListItemValueRedirectArgs',
+    'LoadBalancerAdaptiveRoutingArgs',
     'LoadBalancerCountryPoolArgs',
+    'LoadBalancerLocationStrategyArgs',
     'LoadBalancerMonitorHeaderArgs',
     'LoadBalancerPoolLoadSheddingArgs',
     'LoadBalancerPoolOriginArgs',
     'LoadBalancerPoolOriginHeaderArgs',
     'LoadBalancerPoolOriginSteeringArgs',
     'LoadBalancerPopPoolArgs',
+    'LoadBalancerRandomSteeringArgs',
     'LoadBalancerRegionPoolArgs',
     'LoadBalancerRuleArgs',
     'LoadBalancerRuleFixedResponseArgs',
     'LoadBalancerRuleOverrideArgs',
+    'LoadBalancerRuleOverrideAdaptiveRoutingArgs',
     'LoadBalancerRuleOverrideCountryPoolArgs',
+    'LoadBalancerRuleOverrideLocationStrategyArgs',
     'LoadBalancerRuleOverridePopPoolArgs',
+    'LoadBalancerRuleOverrideRandomSteeringArgs',
     'LoadBalancerRuleOverrideRegionPoolArgs',
     'ManagedHeadersManagedRequestHeaderArgs',
     'ManagedHeadersManagedResponseHeaderArgs',
@@ -171,6 +185,7 @@ __all__ = [
     'TeamsRuleRuleSettingsCheckSessionArgs',
     'TeamsRuleRuleSettingsL4overrideArgs',
     'UserAgentBlockingRuleConfigurationArgs',
+    'WaitingRoomRulesRuleArgs',
     'WorkerScriptKvNamespaceBindingArgs',
     'WorkerScriptPlainTextBindingArgs',
     'WorkerScriptR2BucketBindingArgs',
@@ -1949,6 +1964,93 @@ class AccessIdentityProviderConfigArgs:
 
 
 @pulumi.input_type
+class AccessOrganizationLoginDesignArgs:
+    def __init__(__self__, *,
+                 background_color: Optional[pulumi.Input[str]] = None,
+                 footer_text: Optional[pulumi.Input[str]] = None,
+                 header_text: Optional[pulumi.Input[str]] = None,
+                 logo_path: Optional[pulumi.Input[str]] = None,
+                 text_color: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] background_color: The background color on the login page.
+        :param pulumi.Input[str] footer_text: The text at the bottom of the login page.
+        :param pulumi.Input[str] header_text: The text at the top of the login page.
+        :param pulumi.Input[str] logo_path: The URL of the logo on the login page.
+        :param pulumi.Input[str] text_color: The text color on the login page.
+        """
+        if background_color is not None:
+            pulumi.set(__self__, "background_color", background_color)
+        if footer_text is not None:
+            pulumi.set(__self__, "footer_text", footer_text)
+        if header_text is not None:
+            pulumi.set(__self__, "header_text", header_text)
+        if logo_path is not None:
+            pulumi.set(__self__, "logo_path", logo_path)
+        if text_color is not None:
+            pulumi.set(__self__, "text_color", text_color)
+
+    @property
+    @pulumi.getter(name="backgroundColor")
+    def background_color(self) -> Optional[pulumi.Input[str]]:
+        """
+        The background color on the login page.
+        """
+        return pulumi.get(self, "background_color")
+
+    @background_color.setter
+    def background_color(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "background_color", value)
+
+    @property
+    @pulumi.getter(name="footerText")
+    def footer_text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The text at the bottom of the login page.
+        """
+        return pulumi.get(self, "footer_text")
+
+    @footer_text.setter
+    def footer_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "footer_text", value)
+
+    @property
+    @pulumi.getter(name="headerText")
+    def header_text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The text at the top of the login page.
+        """
+        return pulumi.get(self, "header_text")
+
+    @header_text.setter
+    def header_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "header_text", value)
+
+    @property
+    @pulumi.getter(name="logoPath")
+    def logo_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the logo on the login page.
+        """
+        return pulumi.get(self, "logo_path")
+
+    @logo_path.setter
+    def logo_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logo_path", value)
+
+    @property
+    @pulumi.getter(name="textColor")
+    def text_color(self) -> Optional[pulumi.Input[str]]:
+        """
+        The text color on the login page.
+        """
+        return pulumi.get(self, "text_color")
+
+    @text_color.setter
+    def text_color(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text_color", value)
+
+
+@pulumi.input_type
 class AccessPolicyApprovalGroupArgs:
     def __init__(__self__, *,
                  approvals_needed: pulumi.Input[int],
@@ -3383,6 +3485,43 @@ class AccessRuleConfigurationArgs:
 
 
 @pulumi.input_type
+class ApiShieldAuthIdCharacteristicArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: The name of the characteristic.
+        :param pulumi.Input[str] type: The type of characteristic. Available values: `header`, `cookie`.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the characteristic.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of characteristic. Available values: `header`, `cookie`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
 class ApiTokenConditionArgs:
     def __init__(__self__, *,
                  request_ip: Optional[pulumi.Input['ApiTokenConditionRequestIpArgs']] = None):
@@ -4148,6 +4287,8 @@ class DevicePostureRuleInputArgs:
                  exists: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
+                 os_distro_name: Optional[pulumi.Input[str]] = None,
+                 os_distro_revision: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  require_all: Optional[pulumi.Input[bool]] = None,
                  running: Optional[pulumi.Input[bool]] = None,
@@ -4155,17 +4296,21 @@ class DevicePostureRuleInputArgs:
                  thumbprint: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] domain: = (Required) The domain that the client must join.
-        :param pulumi.Input[bool] enabled: = (Required) True if the firewall must be enabled.
+        :param pulumi.Input[str] compliance_status: The workspace one device compliance status.
+        :param pulumi.Input[str] connection_id: The workspace one connection id.
+        :param pulumi.Input[str] domain: The domain that the client must join.
+        :param pulumi.Input[bool] enabled: True if the firewall must be enabled.
         :param pulumi.Input[bool] exists: Checks if the file should exist.
         :param pulumi.Input[str] id: The Teams List id.
-        :param pulumi.Input[str] operator: = (Required) The version comparison operator in (>,>=,<,<=,==)
-        :param pulumi.Input[str] path: The path to the application.
-        :param pulumi.Input[bool] require_all: = (Required) True if all drives must be encrypted.
+        :param pulumi.Input[str] operator: The version comparison operator.
+        :param pulumi.Input[str] os_distro_name: The operating system excluding version information.
+        :param pulumi.Input[str] os_distro_revision: The operating system version excluding OS name information or release name.
+        :param pulumi.Input[str] path: The path to the file.
+        :param pulumi.Input[bool] require_all: True if all drives must be encrypted.
         :param pulumi.Input[bool] running: Checks if the application should be running.
         :param pulumi.Input[str] sha256: The sha256 hash of the file.
-        :param pulumi.Input[str] thumbprint: The thumbprint of the application certificate.
-        :param pulumi.Input[str] version: = (Required) The operating system semantic version.
+        :param pulumi.Input[str] thumbprint: The thumbprint of the file certificate.
+        :param pulumi.Input[str] version: The operating system semantic version.
         """
         if compliance_status is not None:
             pulumi.set(__self__, "compliance_status", compliance_status)
@@ -4181,6 +4326,10 @@ class DevicePostureRuleInputArgs:
             pulumi.set(__self__, "id", id)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
+        if os_distro_name is not None:
+            pulumi.set(__self__, "os_distro_name", os_distro_name)
+        if os_distro_revision is not None:
+            pulumi.set(__self__, "os_distro_revision", os_distro_revision)
         if path is not None:
             pulumi.set(__self__, "path", path)
         if require_all is not None:
@@ -4197,6 +4346,9 @@ class DevicePostureRuleInputArgs:
     @property
     @pulumi.getter(name="complianceStatus")
     def compliance_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The workspace one device compliance status.
+        """
         return pulumi.get(self, "compliance_status")
 
     @compliance_status.setter
@@ -4206,6 +4358,9 @@ class DevicePostureRuleInputArgs:
     @property
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The workspace one connection id.
+        """
         return pulumi.get(self, "connection_id")
 
     @connection_id.setter
@@ -4216,7 +4371,7 @@ class DevicePostureRuleInputArgs:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        = (Required) The domain that the client must join.
+        The domain that the client must join.
         """
         return pulumi.get(self, "domain")
 
@@ -4228,7 +4383,7 @@ class DevicePostureRuleInputArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        = (Required) True if the firewall must be enabled.
+        True if the firewall must be enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -4264,7 +4419,7 @@ class DevicePostureRuleInputArgs:
     @pulumi.getter
     def operator(self) -> Optional[pulumi.Input[str]]:
         """
-        = (Required) The version comparison operator in (>,>=,<,<=,==)
+        The version comparison operator.
         """
         return pulumi.get(self, "operator")
 
@@ -4273,10 +4428,34 @@ class DevicePostureRuleInputArgs:
         pulumi.set(self, "operator", value)
 
     @property
+    @pulumi.getter(name="osDistroName")
+    def os_distro_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operating system excluding version information.
+        """
+        return pulumi.get(self, "os_distro_name")
+
+    @os_distro_name.setter
+    def os_distro_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_distro_name", value)
+
+    @property
+    @pulumi.getter(name="osDistroRevision")
+    def os_distro_revision(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operating system version excluding OS name information or release name.
+        """
+        return pulumi.get(self, "os_distro_revision")
+
+    @os_distro_revision.setter
+    def os_distro_revision(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_distro_revision", value)
+
+    @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The path to the application.
+        The path to the file.
         """
         return pulumi.get(self, "path")
 
@@ -4288,7 +4467,7 @@ class DevicePostureRuleInputArgs:
     @pulumi.getter(name="requireAll")
     def require_all(self) -> Optional[pulumi.Input[bool]]:
         """
-        = (Required) True if all drives must be encrypted.
+        True if all drives must be encrypted.
         """
         return pulumi.get(self, "require_all")
 
@@ -4324,7 +4503,7 @@ class DevicePostureRuleInputArgs:
     @pulumi.getter
     def thumbprint(self) -> Optional[pulumi.Input[str]]:
         """
-        The thumbprint of the application certificate.
+        The thumbprint of the file certificate.
         """
         return pulumi.get(self, "thumbprint")
 
@@ -4336,7 +4515,7 @@ class DevicePostureRuleInputArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        = (Required) The operating system semantic version.
+        The operating system semantic version.
         """
         return pulumi.get(self, "version")
 
@@ -4350,7 +4529,7 @@ class DevicePostureRuleMatchArgs:
     def __init__(__self__, *,
                  platform: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] platform: The platform of the device. Valid values are `windows`, `mac`, `linux`, `android`, and `ios`.
+        :param pulumi.Input[str] platform: The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
         """
         if platform is not None:
             pulumi.set(__self__, "platform", platform)
@@ -4359,13 +4538,257 @@ class DevicePostureRuleMatchArgs:
     @pulumi.getter
     def platform(self) -> Optional[pulumi.Input[str]]:
         """
-        The platform of the device. Valid values are `windows`, `mac`, `linux`, `android`, and `ios`.
+        The platform of the device. Available values: `windows`, `mac`, `linux`, `android`, `ios`, `chromeos`.
         """
         return pulumi.get(self, "platform")
 
     @platform.setter
     def platform(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "platform", value)
+
+
+@pulumi.input_type
+class DlpProfileEntryArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 pattern: Optional[pulumi.Input['DlpProfileEntryPatternArgs']] = None):
+        """
+        :param pulumi.Input[str] name: Name of the entry to deploy.
+        :param pulumi.Input[bool] enabled: Whether the entry is active. Defaults to `false`.
+        :param pulumi.Input[str] id: Unique entry identifier.
+        """
+        pulumi.set(__self__, "name", name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the entry to deploy.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the entry is active. Defaults to `false`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique entry identifier.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def pattern(self) -> Optional[pulumi.Input['DlpProfileEntryPatternArgs']]:
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: Optional[pulumi.Input['DlpProfileEntryPatternArgs']]):
+        pulumi.set(self, "pattern", value)
+
+
+@pulumi.input_type
+class DlpProfileEntryPatternArgs:
+    def __init__(__self__, *,
+                 regex: pulumi.Input[str],
+                 validation: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "regex", regex)
+        if validation is not None:
+            pulumi.set(__self__, "validation", validation)
+
+    @property
+    @pulumi.getter
+    def regex(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "regex")
+
+    @regex.setter
+    def regex(self, value: pulumi.Input[str]):
+        pulumi.set(self, "regex", value)
+
+    @property
+    @pulumi.getter
+    def validation(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "validation")
+
+    @validation.setter
+    def validation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validation", value)
+
+
+@pulumi.input_type
+class EmailRoutingCatchAllActionArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[str] type: Type of supported action. Available values: `drop`, `forward`, `worker`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: A list with items in the following form.
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of supported action. Available values: `drop`, `forward`, `worker`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list with items in the following form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class EmailRoutingCatchAllMatcherArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] type: Type of matcher. Available values: `all`.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of matcher. Available values: `all`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class EmailRoutingRuleActionArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[str] type: Type of supported action.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: An array with items in the following form.
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of supported action.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        An array with items in the following form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class EmailRoutingRuleMatcherArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 field: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Type of matcher.
+        :param pulumi.Input[str] field: Field for type matcher.
+        :param pulumi.Input[str] value: Value for matcher.
+        """
+        pulumi.set(__self__, "type", type)
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of matcher.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field for type matcher.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value for matcher.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -4649,13 +5072,36 @@ class ListItemValueRedirectArgs:
 
 
 @pulumi.input_type
+class LoadBalancerAdaptiveRoutingArgs:
+    def __init__(__self__, *,
+                 failover_across_pools: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] failover_across_pools: Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+        """
+        if failover_across_pools is not None:
+            pulumi.set(__self__, "failover_across_pools", failover_across_pools)
+
+    @property
+    @pulumi.getter(name="failoverAcrossPools")
+    def failover_across_pools(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+        """
+        return pulumi.get(self, "failover_across_pools")
+
+    @failover_across_pools.setter
+    def failover_across_pools(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "failover_across_pools", value)
+
+
+@pulumi.input_type
 class LoadBalancerCountryPoolArgs:
     def __init__(__self__, *,
                  country: pulumi.Input[str],
                  pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[str] country: A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pool_ids: A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pool_ids: A list of pool IDs in failover priority to use in the given country.
         """
         pulumi.set(__self__, "country", country)
         pulumi.set(__self__, "pool_ids", pool_ids)
@@ -4676,13 +5122,52 @@ class LoadBalancerCountryPoolArgs:
     @pulumi.getter(name="poolIds")
     def pool_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        A list of pool IDs in failover priority to use in the given country.
         """
         return pulumi.get(self, "pool_ids")
 
     @pool_ids.setter
     def pool_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "pool_ids", value)
+
+
+@pulumi.input_type
+class LoadBalancerLocationStrategyArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 prefer_ecs: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] mode: Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`. Defaults to `pop`.
+        :param pulumi.Input[str] prefer_ecs: Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if prefer_ecs is not None:
+            pulumi.set(__self__, "prefer_ecs", prefer_ecs)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`. Defaults to `pop`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="preferEcs")
+    def prefer_ecs(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
+        """
+        return pulumi.get(self, "prefer_ecs")
+
+    @prefer_ecs.setter
+    def prefer_ecs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefer_ecs", value)
 
 
 @pulumi.input_type
@@ -4976,12 +5461,51 @@ class LoadBalancerPopPoolArgs:
 
 
 @pulumi.input_type
+class LoadBalancerRandomSteeringArgs:
+    def __init__(__self__, *,
+                 default_weight: Optional[pulumi.Input[float]] = None,
+                 pool_weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]] = None):
+        """
+        :param pulumi.Input[float] default_weight: The default weight for pools in the load balancer that are not specified in the `pool_weights` map.
+        :param pulumi.Input[Mapping[str, pulumi.Input[float]]] pool_weights: A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
+        """
+        if default_weight is not None:
+            pulumi.set(__self__, "default_weight", default_weight)
+        if pool_weights is not None:
+            pulumi.set(__self__, "pool_weights", pool_weights)
+
+    @property
+    @pulumi.getter(name="defaultWeight")
+    def default_weight(self) -> Optional[pulumi.Input[float]]:
+        """
+        The default weight for pools in the load balancer that are not specified in the `pool_weights` map.
+        """
+        return pulumi.get(self, "default_weight")
+
+    @default_weight.setter
+    def default_weight(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "default_weight", value)
+
+    @property
+    @pulumi.getter(name="poolWeights")
+    def pool_weights(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]]:
+        """
+        A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
+        """
+        return pulumi.get(self, "pool_weights")
+
+    @pool_weights.setter
+    def pool_weights(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]]):
+        pulumi.set(self, "pool_weights", value)
+
+
+@pulumi.input_type
 class LoadBalancerRegionPoolArgs:
     def __init__(__self__, *,
                  pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  region: pulumi.Input[str]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pool_ids: A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pool_ids: A list of pool IDs in failover priority to use in the given region.
         :param pulumi.Input[str] region: A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
         """
         pulumi.set(__self__, "pool_ids", pool_ids)
@@ -4991,7 +5515,7 @@ class LoadBalancerRegionPoolArgs:
     @pulumi.getter(name="poolIds")
     def pool_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        A list of pool IDs in failover priority to use in the given region.
         """
         return pulumi.get(self, "pool_ids")
 
@@ -5024,12 +5548,12 @@ class LoadBalancerRuleArgs:
                  terminates: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] name: Human readable name for this rule.
-        :param pulumi.Input[str] condition: The statement to evaluate to determine if this rules effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
-        :param pulumi.Input[bool] disabled: A disabled rule will be be executed.
-        :param pulumi.Input['LoadBalancerRuleFixedResponseArgs'] fixed_response: Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: overrides or fixed_response must be set. See the field documentation below.
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideArgs']]] overrides: The Load Balancer settings to alter if this rules condition is true. Note: overrides or fixed_response must be set. See the field documentation below.
-        :param pulumi.Input[int] priority: Priority used when determining the order of rule execution. Lower values are executed first. If not provided list order will be used.
-        :param pulumi.Input[bool] terminates: Terminates indicates that if this rule is true no further rules should be executed. Note: setting a fixed_response forces this field to true.
+        :param pulumi.Input[str] condition: The statement to evaluate to determine if this rule's effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+        :param pulumi.Input[bool] disabled: A disabled rule will not be executed.
+        :param pulumi.Input['LoadBalancerRuleFixedResponseArgs'] fixed_response: Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: `overrides` or `fixed_response` must be set.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideArgs']]] overrides: The load balancer settings to alter if this rule's `condition` is true. Note: `overrides` or `fixed_response` must be set.
+        :param pulumi.Input[int] priority: Priority used when determining the order of rule execution. Lower values are executed first. If not provided, the list order will be used.
+        :param pulumi.Input[bool] terminates: Terminates indicates that if this rule is true no further rules should be executed. Note: setting a `fixed_response` forces this field to `true`.
         """
         pulumi.set(__self__, "name", name)
         if condition is not None:
@@ -5061,7 +5585,7 @@ class LoadBalancerRuleArgs:
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input[str]]:
         """
-        The statement to evaluate to determine if this rules effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+        The statement to evaluate to determine if this rule's effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
         """
         return pulumi.get(self, "condition")
 
@@ -5073,7 +5597,7 @@ class LoadBalancerRuleArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        A disabled rule will be be executed.
+        A disabled rule will not be executed.
         """
         return pulumi.get(self, "disabled")
 
@@ -5085,7 +5609,7 @@ class LoadBalancerRuleArgs:
     @pulumi.getter(name="fixedResponse")
     def fixed_response(self) -> Optional[pulumi.Input['LoadBalancerRuleFixedResponseArgs']]:
         """
-        Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: overrides or fixed_response must be set. See the field documentation below.
+        Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: `overrides` or `fixed_response` must be set.
         """
         return pulumi.get(self, "fixed_response")
 
@@ -5097,7 +5621,7 @@ class LoadBalancerRuleArgs:
     @pulumi.getter
     def overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideArgs']]]]:
         """
-        The Load Balancer settings to alter if this rules condition is true. Note: overrides or fixed_response must be set. See the field documentation below.
+        The load balancer settings to alter if this rule's `condition` is true. Note: `overrides` or `fixed_response` must be set.
         """
         return pulumi.get(self, "overrides")
 
@@ -5109,7 +5633,7 @@ class LoadBalancerRuleArgs:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[int]]:
         """
-        Priority used when determining the order of rule execution. Lower values are executed first. If not provided list order will be used.
+        Priority used when determining the order of rule execution. Lower values are executed first. If not provided, the list order will be used.
         """
         return pulumi.get(self, "priority")
 
@@ -5121,7 +5645,7 @@ class LoadBalancerRuleArgs:
     @pulumi.getter
     def terminates(self) -> Optional[pulumi.Input[bool]]:
         """
-        Terminates indicates that if this rule is true no further rules should be executed. Note: setting a fixed_response forces this field to true.
+        Terminates indicates that if this rule is true no further rules should be executed. Note: setting a `fixed_response` forces this field to `true`.
         """
         return pulumi.get(self, "terminates")
 
@@ -5137,12 +5661,6 @@ class LoadBalancerRuleFixedResponseArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  message_body: Optional[pulumi.Input[str]] = None,
                  status_code: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[str] content_type: The value of the HTTP context-type header for this fixed response.
-        :param pulumi.Input[str] location: The value of the HTTP location header for this fixed response.
-        :param pulumi.Input[str] message_body: The text used as the html body for this fixed response.
-        :param pulumi.Input[int] status_code: The HTTP status code used for this fixed response.
-        """
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
         if location is not None:
@@ -5155,9 +5673,6 @@ class LoadBalancerRuleFixedResponseArgs:
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The value of the HTTP context-type header for this fixed response.
-        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -5167,9 +5682,6 @@ class LoadBalancerRuleFixedResponseArgs:
     @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
-        """
-        The value of the HTTP location header for this fixed response.
-        """
         return pulumi.get(self, "location")
 
     @location.setter
@@ -5179,9 +5691,6 @@ class LoadBalancerRuleFixedResponseArgs:
     @property
     @pulumi.getter(name="messageBody")
     def message_body(self) -> Optional[pulumi.Input[str]]:
-        """
-        The text used as the html body for this fixed response.
-        """
         return pulumi.get(self, "message_body")
 
     @message_body.setter
@@ -5191,9 +5700,6 @@ class LoadBalancerRuleFixedResponseArgs:
     @property
     @pulumi.getter(name="statusCode")
     def status_code(self) -> Optional[pulumi.Input[int]]:
-        """
-        The HTTP status code used for this fixed response.
-        """
         return pulumi.get(self, "status_code")
 
     @status_code.setter
@@ -5204,10 +5710,13 @@ class LoadBalancerRuleFixedResponseArgs:
 @pulumi.input_type
 class LoadBalancerRuleOverrideArgs:
     def __init__(__self__, *,
+                 adaptive_routings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideAdaptiveRoutingArgs']]]] = None,
                  country_pools: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideCountryPoolArgs']]]] = None,
                  default_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  fallback_pool: Optional[pulumi.Input[str]] = None,
+                 location_strategies: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideLocationStrategyArgs']]]] = None,
                  pop_pools: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverridePopPoolArgs']]]] = None,
+                 random_steerings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRandomSteeringArgs']]]] = None,
                  region_pools: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRegionPoolArgs']]]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
                  session_affinity_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -5215,25 +5724,32 @@ class LoadBalancerRuleOverrideArgs:
                  steering_policy: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideCountryPoolArgs']]] country_pools: See country_pools above.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] default_pools: See default_pool_ids above.
-        :param pulumi.Input[str] fallback_pool: See fallback_pool_id above.
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverridePopPoolArgs']]] pop_pools: See pop_pools above.
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRegionPoolArgs']]] region_pools: See region_pools above.
-        :param pulumi.Input[str] session_affinity: See field above.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] session_affinity_attributes: See field above.
-        :param pulumi.Input[int] session_affinity_ttl: See field above.
-        :param pulumi.Input[str] steering_policy: See field above.
-        :param pulumi.Input[int] ttl: See field above.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideAdaptiveRoutingArgs']]] adaptive_routings: Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideCountryPoolArgs']]] country_pools: A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideLocationStrategyArgs']]] location_strategies: Controls location-based steering for non-proxied requests.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverridePopPoolArgs']]] pop_pools: A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRandomSteeringArgs']]] random_steerings: Configures pool weights for random steering. When the `steering_policy="random"`, a random pool is selected with probability proportional to these pool weights.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRegionPoolArgs']]] region_pools: A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
+        :param pulumi.Input[str] session_affinity: Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ip_cookie`. Defaults to `none`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] session_affinity_attributes: See `session_affinity_attributes`.
+        :param pulumi.Input[int] session_affinity_ttl: Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
+        :param pulumi.Input[str] steering_policy: The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `""` Defaults to `""`.
+        :param pulumi.Input[int] ttl: Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
         """
+        if adaptive_routings is not None:
+            pulumi.set(__self__, "adaptive_routings", adaptive_routings)
         if country_pools is not None:
             pulumi.set(__self__, "country_pools", country_pools)
         if default_pools is not None:
             pulumi.set(__self__, "default_pools", default_pools)
         if fallback_pool is not None:
             pulumi.set(__self__, "fallback_pool", fallback_pool)
+        if location_strategies is not None:
+            pulumi.set(__self__, "location_strategies", location_strategies)
         if pop_pools is not None:
             pulumi.set(__self__, "pop_pools", pop_pools)
+        if random_steerings is not None:
+            pulumi.set(__self__, "random_steerings", random_steerings)
         if region_pools is not None:
             pulumi.set(__self__, "region_pools", region_pools)
         if session_affinity is not None:
@@ -5248,10 +5764,22 @@ class LoadBalancerRuleOverrideArgs:
             pulumi.set(__self__, "ttl", ttl)
 
     @property
+    @pulumi.getter(name="adaptiveRoutings")
+    def adaptive_routings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideAdaptiveRoutingArgs']]]]:
+        """
+        Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+        """
+        return pulumi.get(self, "adaptive_routings")
+
+    @adaptive_routings.setter
+    def adaptive_routings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideAdaptiveRoutingArgs']]]]):
+        pulumi.set(self, "adaptive_routings", value)
+
+    @property
     @pulumi.getter(name="countryPools")
     def country_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideCountryPoolArgs']]]]:
         """
-        See country_pools above.
+        A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
         """
         return pulumi.get(self, "country_pools")
 
@@ -5262,9 +5790,6 @@ class LoadBalancerRuleOverrideArgs:
     @property
     @pulumi.getter(name="defaultPools")
     def default_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        See default_pool_ids above.
-        """
         return pulumi.get(self, "default_pools")
 
     @default_pools.setter
@@ -5274,9 +5799,6 @@ class LoadBalancerRuleOverrideArgs:
     @property
     @pulumi.getter(name="fallbackPool")
     def fallback_pool(self) -> Optional[pulumi.Input[str]]:
-        """
-        See fallback_pool_id above.
-        """
         return pulumi.get(self, "fallback_pool")
 
     @fallback_pool.setter
@@ -5284,10 +5806,22 @@ class LoadBalancerRuleOverrideArgs:
         pulumi.set(self, "fallback_pool", value)
 
     @property
+    @pulumi.getter(name="locationStrategies")
+    def location_strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideLocationStrategyArgs']]]]:
+        """
+        Controls location-based steering for non-proxied requests.
+        """
+        return pulumi.get(self, "location_strategies")
+
+    @location_strategies.setter
+    def location_strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideLocationStrategyArgs']]]]):
+        pulumi.set(self, "location_strategies", value)
+
+    @property
     @pulumi.getter(name="popPools")
     def pop_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverridePopPoolArgs']]]]:
         """
-        See pop_pools above.
+        A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
         """
         return pulumi.get(self, "pop_pools")
 
@@ -5296,10 +5830,22 @@ class LoadBalancerRuleOverrideArgs:
         pulumi.set(self, "pop_pools", value)
 
     @property
+    @pulumi.getter(name="randomSteerings")
+    def random_steerings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRandomSteeringArgs']]]]:
+        """
+        Configures pool weights for random steering. When the `steering_policy="random"`, a random pool is selected with probability proportional to these pool weights.
+        """
+        return pulumi.get(self, "random_steerings")
+
+    @random_steerings.setter
+    def random_steerings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRandomSteeringArgs']]]]):
+        pulumi.set(self, "random_steerings", value)
+
+    @property
     @pulumi.getter(name="regionPools")
     def region_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRegionPoolArgs']]]]:
         """
-        See region_pools above.
+        A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
         """
         return pulumi.get(self, "region_pools")
 
@@ -5311,7 +5857,7 @@ class LoadBalancerRuleOverrideArgs:
     @pulumi.getter(name="sessionAffinity")
     def session_affinity(self) -> Optional[pulumi.Input[str]]:
         """
-        See field above.
+        Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ip_cookie`. Defaults to `none`.
         """
         return pulumi.get(self, "session_affinity")
 
@@ -5323,7 +5869,7 @@ class LoadBalancerRuleOverrideArgs:
     @pulumi.getter(name="sessionAffinityAttributes")
     def session_affinity_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        See field above.
+        See `session_affinity_attributes`.
         """
         return pulumi.get(self, "session_affinity_attributes")
 
@@ -5335,7 +5881,7 @@ class LoadBalancerRuleOverrideArgs:
     @pulumi.getter(name="sessionAffinityTtl")
     def session_affinity_ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        See field above.
+        Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
         """
         return pulumi.get(self, "session_affinity_ttl")
 
@@ -5347,7 +5893,7 @@ class LoadBalancerRuleOverrideArgs:
     @pulumi.getter(name="steeringPolicy")
     def steering_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        See field above.
+        The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `""` Defaults to `""`.
         """
         return pulumi.get(self, "steering_policy")
 
@@ -5359,7 +5905,7 @@ class LoadBalancerRuleOverrideArgs:
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        See field above.
+        Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
         """
         return pulumi.get(self, "ttl")
 
@@ -5369,13 +5915,36 @@ class LoadBalancerRuleOverrideArgs:
 
 
 @pulumi.input_type
+class LoadBalancerRuleOverrideAdaptiveRoutingArgs:
+    def __init__(__self__, *,
+                 failover_across_pools: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] failover_across_pools: Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+        """
+        if failover_across_pools is not None:
+            pulumi.set(__self__, "failover_across_pools", failover_across_pools)
+
+    @property
+    @pulumi.getter(name="failoverAcrossPools")
+    def failover_across_pools(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+        """
+        return pulumi.get(self, "failover_across_pools")
+
+    @failover_across_pools.setter
+    def failover_across_pools(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "failover_across_pools", value)
+
+
+@pulumi.input_type
 class LoadBalancerRuleOverrideCountryPoolArgs:
     def __init__(__self__, *,
                  country: pulumi.Input[str],
                  pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[str] country: A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pool_ids: A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pool_ids: A list of pool IDs in failover priority to use in the given country.
         """
         pulumi.set(__self__, "country", country)
         pulumi.set(__self__, "pool_ids", pool_ids)
@@ -5396,13 +5965,52 @@ class LoadBalancerRuleOverrideCountryPoolArgs:
     @pulumi.getter(name="poolIds")
     def pool_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        A list of pool IDs in failover priority to use in the given country.
         """
         return pulumi.get(self, "pool_ids")
 
     @pool_ids.setter
     def pool_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "pool_ids", value)
+
+
+@pulumi.input_type
+class LoadBalancerRuleOverrideLocationStrategyArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 prefer_ecs: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] mode: Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`. Defaults to `pop`.
+        :param pulumi.Input[str] prefer_ecs: Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if prefer_ecs is not None:
+            pulumi.set(__self__, "prefer_ecs", prefer_ecs)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`. Defaults to `pop`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="preferEcs")
+    def prefer_ecs(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
+        """
+        return pulumi.get(self, "prefer_ecs")
+
+    @prefer_ecs.setter
+    def prefer_ecs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefer_ecs", value)
 
 
 @pulumi.input_type
@@ -5443,12 +6051,51 @@ class LoadBalancerRuleOverridePopPoolArgs:
 
 
 @pulumi.input_type
+class LoadBalancerRuleOverrideRandomSteeringArgs:
+    def __init__(__self__, *,
+                 default_weight: Optional[pulumi.Input[float]] = None,
+                 pool_weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]] = None):
+        """
+        :param pulumi.Input[float] default_weight: The default weight for pools in the load balancer that are not specified in the `pool_weights` map.
+        :param pulumi.Input[Mapping[str, pulumi.Input[float]]] pool_weights: A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
+        """
+        if default_weight is not None:
+            pulumi.set(__self__, "default_weight", default_weight)
+        if pool_weights is not None:
+            pulumi.set(__self__, "pool_weights", pool_weights)
+
+    @property
+    @pulumi.getter(name="defaultWeight")
+    def default_weight(self) -> Optional[pulumi.Input[float]]:
+        """
+        The default weight for pools in the load balancer that are not specified in the `pool_weights` map.
+        """
+        return pulumi.get(self, "default_weight")
+
+    @default_weight.setter
+    def default_weight(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "default_weight", value)
+
+    @property
+    @pulumi.getter(name="poolWeights")
+    def pool_weights(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]]:
+        """
+        A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
+        """
+        return pulumi.get(self, "pool_weights")
+
+    @pool_weights.setter
+    def pool_weights(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]]):
+        pulumi.set(self, "pool_weights", value)
+
+
+@pulumi.input_type
 class LoadBalancerRuleOverrideRegionPoolArgs:
     def __init__(__self__, *,
                  pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  region: pulumi.Input[str]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pool_ids: A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pool_ids: A list of pool IDs in failover priority to use in the given region.
         :param pulumi.Input[str] region: A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
         """
         pulumi.set(__self__, "pool_ids", pool_ids)
@@ -5458,7 +6105,7 @@ class LoadBalancerRuleOverrideRegionPoolArgs:
     @pulumi.getter(name="poolIds")
     def pool_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        A list of pool IDs in failover priority to use in the given region.
         """
         return pulumi.get(self, "pool_ids")
 
@@ -9637,6 +10284,7 @@ class RulesetRuleActionParametersOverridesArgs:
                  categories: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersOverridesCategoryArgs']]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersOverridesRuleArgs']]]] = None,
+                 sensitivity_level: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersOverridesRuleArgs']]] rules: List of rules to apply to the ruleset.
@@ -9652,6 +10300,8 @@ class RulesetRuleActionParametersOverridesArgs:
             pulumi.set(__self__, "enabled", enabled)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
+        if sensitivity_level is not None:
+            pulumi.set(__self__, "sensitivity_level", sensitivity_level)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -9693,6 +10343,15 @@ class RulesetRuleActionParametersOverridesArgs:
     @rules.setter
     def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersOverridesRuleArgs']]]]):
         pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter(name="sensitivityLevel")
+    def sensitivity_level(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sensitivity_level")
+
+    @sensitivity_level.setter
+    def sensitivity_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sensitivity_level", value)
 
     @property
     @pulumi.getter
@@ -11073,6 +11732,107 @@ class UserAgentBlockingRuleConfigurationArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class WaitingRoomRulesRuleArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input[str],
+                 expression: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] action: Action to perform in the ruleset rule. Available values: `bypass_waiting_room`.
+        :param pulumi.Input[str] expression: Criteria for an HTTP request to trigger the waiting room rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Waiting Room Rules Docs](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules/).
+        :param pulumi.Input[str] description: Brief summary of the waiting room rule and its intended use.
+        :param pulumi.Input[str] id: Unique rule identifier.
+        :param pulumi.Input[str] status: Whether the rule is enabled or disabled. Available values: `enabled`, `disabled`.
+        :param pulumi.Input[str] version: Version of the waiting room rule.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "expression", expression)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Input[str]:
+        """
+        Action to perform in the ruleset rule. Available values: `bypass_waiting_room`.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input[str]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        """
+        Criteria for an HTTP request to trigger the waiting room rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Waiting Room Rules Docs](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules/).
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Brief summary of the waiting room rule and its intended use.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique rule identifier.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the rule is enabled or disabled. Available values: `enabled`, `disabled`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version of the waiting room rule.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
@@ -13181,6 +13941,10 @@ class GetWafGroupsFilterArgs:
     def __init__(__self__, *,
                  mode: Optional[str] = None,
                  name: Optional[str] = None):
+        """
+        :param str mode: Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+        :param str name: A regular expression matching the name of the WAF Rule Groups to lookup.
+        """
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if name is not None:
@@ -13189,6 +13953,9 @@ class GetWafGroupsFilterArgs:
     @property
     @pulumi.getter
     def mode(self) -> Optional[str]:
+        """
+        Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+        """
         return pulumi.get(self, "mode")
 
     @mode.setter
@@ -13198,6 +13965,9 @@ class GetWafGroupsFilterArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        A regular expression matching the name of the WAF Rule Groups to lookup.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -13212,6 +13982,12 @@ class GetWafPackagesFilterArgs:
                  detection_mode: Optional[str] = None,
                  name: Optional[str] = None,
                  sensitivity: Optional[str] = None):
+        """
+        :param str action_mode: Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+        :param str detection_mode: Detection mode of the WAF Rule Packages to lookup.
+        :param str name: A regular expression matching the name of the WAF Rule Packages to lookup.
+        :param str sensitivity: Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+        """
         if action_mode is not None:
             pulumi.set(__self__, "action_mode", action_mode)
         if detection_mode is not None:
@@ -13224,6 +14000,9 @@ class GetWafPackagesFilterArgs:
     @property
     @pulumi.getter(name="actionMode")
     def action_mode(self) -> Optional[str]:
+        """
+        Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+        """
         return pulumi.get(self, "action_mode")
 
     @action_mode.setter
@@ -13233,6 +14012,9 @@ class GetWafPackagesFilterArgs:
     @property
     @pulumi.getter(name="detectionMode")
     def detection_mode(self) -> Optional[str]:
+        """
+        Detection mode of the WAF Rule Packages to lookup.
+        """
         return pulumi.get(self, "detection_mode")
 
     @detection_mode.setter
@@ -13242,6 +14024,9 @@ class GetWafPackagesFilterArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        A regular expression matching the name of the WAF Rule Packages to lookup.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -13251,6 +14036,9 @@ class GetWafPackagesFilterArgs:
     @property
     @pulumi.getter
     def sensitivity(self) -> Optional[str]:
+        """
+        Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+        """
         return pulumi.get(self, "sensitivity")
 
     @sensitivity.setter
@@ -13264,6 +14052,11 @@ class GetWafRulesFilterArgs:
                  description: Optional[str] = None,
                  group_id: Optional[str] = None,
                  mode: Optional[str] = None):
+        """
+        :param str description: A regular expression matching the description of the WAF Rules to lookup.
+        :param str group_id: The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+        :param str mode: Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
+        """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if group_id is not None:
@@ -13274,6 +14067,9 @@ class GetWafRulesFilterArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        A regular expression matching the description of the WAF Rules to lookup.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -13283,6 +14079,9 @@ class GetWafRulesFilterArgs:
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[str]:
+        """
+        The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+        """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -13292,6 +14091,9 @@ class GetWafRulesFilterArgs:
     @property
     @pulumi.getter
     def mode(self) -> Optional[str]:
+        """
+        Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
+        """
         return pulumi.get(self, "mode")
 
     @mode.setter
@@ -13309,9 +14111,19 @@ class GetZonesFilterArgs:
                  paused: Optional[bool] = None,
                  status: Optional[str] = None):
         """
-        :param str account_id: The account identifier to target for the resource.
-        :param str lookup_type: Defaults to `exact`.
-        :param bool paused: Defaults to `false`.
+        :param str account_id: Only search for zones in this account.
+        :param str lookup_type: The type of search to perform for the `name` value
+               when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
+               to `"exact"`.
+        :param str match: A RE2 compatible regular expression to filter the
+               results. This is performed client side whereas the `name` and `lookup_type`
+               are performed on the Cloudflare server side.
+        :param str name: A string value to search for.
+        :param bool paused: Paused status of the zone to lookup. Valid values are
+               `true` or `false`.
+        :param str status: Status of the zone to lookup. Valid values: `"active"`,
+               `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
+               `"read only"`.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -13330,7 +14142,7 @@ class GetZonesFilterArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[str]:
         """
-        The account identifier to target for the resource.
+        Only search for zones in this account.
         """
         return pulumi.get(self, "account_id")
 
@@ -13342,7 +14154,9 @@ class GetZonesFilterArgs:
     @pulumi.getter(name="lookupType")
     def lookup_type(self) -> Optional[str]:
         """
-        Defaults to `exact`.
+        The type of search to perform for the `name` value
+        when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
+        to `"exact"`.
         """
         return pulumi.get(self, "lookup_type")
 
@@ -13353,6 +14167,11 @@ class GetZonesFilterArgs:
     @property
     @pulumi.getter
     def match(self) -> Optional[str]:
+        """
+        A RE2 compatible regular expression to filter the
+        results. This is performed client side whereas the `name` and `lookup_type`
+        are performed on the Cloudflare server side.
+        """
         return pulumi.get(self, "match")
 
     @match.setter
@@ -13362,6 +14181,9 @@ class GetZonesFilterArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        A string value to search for.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -13372,7 +14194,8 @@ class GetZonesFilterArgs:
     @pulumi.getter
     def paused(self) -> Optional[bool]:
         """
-        Defaults to `false`.
+        Paused status of the zone to lookup. Valid values are
+        `true` or `false`.
         """
         return pulumi.get(self, "paused")
 
@@ -13383,6 +14206,11 @@ class GetZonesFilterArgs:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        Status of the zone to lookup. Valid values: `"active"`,
+        `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
+        `"read only"`.
+        """
         return pulumi.get(self, "status")
 
     @status.setter

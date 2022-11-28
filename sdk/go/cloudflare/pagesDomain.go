@@ -40,6 +40,14 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import cloudflare:index/pagesDomain:PagesDomain example <account_id>/<project_name>/<domain-name>
+//
+// ```
 type PagesDomain struct {
 	pulumi.CustomResourceState
 

@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWafRulesFilter {
+    /**
+     * @return A regular expression matching the description of the WAF Rules to lookup.
+     * 
+     */
     private @Nullable String description;
+    /**
+     * @return The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+     * 
+     */
     private @Nullable String groupId;
+    /**
+     * @return Mode of the WAF Rules to lookup. Valid values: one of [&#34;block&#34;, &#34;challenge&#34;, &#34;default&#34;, &#34;disable&#34;, &#34;simulate&#34;] or [&#34;on&#34;, &#34;off&#34;] depending on the WAF Rule type.
+     * 
+     */
     private @Nullable String mode;
 
     private GetWafRulesFilter() {}
+    /**
+     * @return A regular expression matching the description of the WAF Rules to lookup.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+     * 
+     */
     public Optional<String> groupId() {
         return Optional.ofNullable(this.groupId);
     }
+    /**
+     * @return Mode of the WAF Rules to lookup. Valid values: one of [&#34;block&#34;, &#34;challenge&#34;, &#34;default&#34;, &#34;disable&#34;, &#34;simulate&#34;] or [&#34;on&#34;, &#34;off&#34;] depending on the WAF Rule type.
+     * 
+     */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }

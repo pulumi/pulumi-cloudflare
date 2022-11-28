@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # Use the Zone ID, Waiting Room ID, and Event ID to import.
+ * Use the Zone ID, Waiting Room ID, and Event ID to import.
  *
  * ```sh
  *  $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent default <zone_id>/<waiting_room_id>/<waiting_room_event_id>

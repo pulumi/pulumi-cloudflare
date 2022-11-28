@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // Generate a service token that will renew if terraform is ran within 30 days of expiration
- * const myApp = new cloudflare.AccessServiceToken("my_app", {
+ * const myApp = new cloudflare.AccessServiceToken("myApp", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     minDaysForRenewal: 30,
  *     name: "CI/CD app renewed",
@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # If you are importing an Access Service Token you will not have the # client_secret available in the state for use. The client_secret is only # available once, at creation. In most cases, it is better to just create a new # resource should you need to reference it in other resources.
+ * If you are importing an Access Service Token you will not have the client_secret available in the state for use. The client_secret is only available once, at creation. In most cases, it is better to just create a new resource should you need to reference it in other resources.
  *
  * ```sh
  *  $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken example <account_id>/<service_token_id>
@@ -121,6 +121,8 @@ export class AccessServiceToken extends pulumi.CustomResource {
             resourceInputs["expiresAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["clientSecret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AccessServiceToken.__pulumiType, name, resourceInputs, opts);
     }
 }

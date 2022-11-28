@@ -30,14 +30,14 @@ public final class LoadBalancerRuleOverrideCountryPoolArgs extends com.pulumi.re
     }
 
     /**
-     * A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     * A list of pool IDs in failover priority to use in the given country.
      * 
      */
     @Import(name="poolIds", required=true)
     private Output<List<String>> poolIds;
 
     /**
-     * @return A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     * @return A list of pool IDs in failover priority to use in the given country.
      * 
      */
     public Output<List<String>> poolIds() {
@@ -91,7 +91,7 @@ public final class LoadBalancerRuleOverrideCountryPoolArgs extends com.pulumi.re
         }
 
         /**
-         * @param poolIds A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+         * @param poolIds A list of pool IDs in failover priority to use in the given country.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class LoadBalancerRuleOverrideCountryPoolArgs extends com.pulumi.re
         }
 
         /**
-         * @param poolIds A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+         * @param poolIds A list of pool IDs in failover priority to use in the given country.
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class LoadBalancerRuleOverrideCountryPoolArgs extends com.pulumi.re
         }
 
         /**
-         * @param poolIds A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+         * @param poolIds A list of pool IDs in failover priority to use in the given country.
          * 
          * @return builder
          * 

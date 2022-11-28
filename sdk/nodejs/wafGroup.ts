@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const honeyPot = new cloudflare.WafGroup("honey_pot", {
+ * const honeyPot = new cloudflare.WafGroup("honeyPot", {
  *     groupId: "de677e5818985db1285d0e80225f06e5",
  *     mode: "on",
  *     zoneId: "ae36f999674d196762efcc5abb06b345",

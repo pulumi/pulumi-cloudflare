@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -15,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // Restrict access to these endpoints to requests from a known IP address range.
- * const endpointLockdown = new cloudflare.ZoneLockdown("endpoint_lockdown", {
+ * const endpointLockdown = new cloudflare.ZoneLockdown("endpointLockdown", {
  *     configurations: [{
  *         target: "ip_range",
  *         value: "198.51.100.0/16",

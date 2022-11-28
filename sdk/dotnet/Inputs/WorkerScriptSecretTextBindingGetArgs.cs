@@ -18,11 +18,21 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        [Input("text", required: true)]
+        private Input<string>? _text;
+
         /// <summary>
         /// The secret text you want to store.
         /// </summary>
-        [Input("text", required: true)]
-        public Input<string> Text { get; set; } = null!;
+        public Input<string>? Text
+        {
+            get => _text;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _text = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public WorkerScriptSecretTextBindingGetArgs()
         {

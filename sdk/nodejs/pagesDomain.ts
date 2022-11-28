@@ -19,6 +19,12 @@ import * as utilities from "./utilities";
  *     projectName: "my-example-project",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/pagesDomain:PagesDomain example <account_id>/<project_name>/<domain-name>
+ * ```
  */
 export class PagesDomain extends pulumi.CustomResource {
     /**

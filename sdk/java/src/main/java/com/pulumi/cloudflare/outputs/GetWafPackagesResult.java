@@ -20,11 +20,11 @@ public final class GetWafPackagesResult {
      * 
      */
     private String id;
-    private List<GetWafPackagesPackage> packages;
     /**
-     * @return The zone identifier to target for the resource.
+     * @return A map of WAF Rule Packages details. Full list below:
      * 
      */
+    private List<GetWafPackagesPackage> packages;
     private String zoneId;
 
     private GetWafPackagesResult() {}
@@ -38,13 +38,13 @@ public final class GetWafPackagesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A map of WAF Rule Packages details. Full list below:
+     * 
+     */
     public List<GetWafPackagesPackage> packages() {
         return this.packages;
     }
-    /**
-     * @return The zone identifier to target for the resource.
-     * 
-     */
     public String zoneId() {
         return this.zoneId;
     }

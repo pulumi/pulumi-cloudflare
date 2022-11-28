@@ -16,22 +16,32 @@ public final class GetWafPackagesArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetWafPackagesArgs Empty = new GetWafPackagesArgs();
 
+    /**
+     * One or more values used to look up WAF Rule Packages. If more than one value is given all
+     * values must match in order to be included, see below for full list.
+     * 
+     */
     @Import(name="filter")
     private @Nullable Output<GetWafPackagesFilterArgs> filter;
 
+    /**
+     * @return One or more values used to look up WAF Rule Packages. If more than one value is given all
+     * values must match in order to be included, see below for full list.
+     * 
+     */
     public Optional<Output<GetWafPackagesFilterArgs>> filter() {
         return Optional.ofNullable(this.filter);
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * The ID of the DNS zone in which to search for the WAF Rule Packages.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The ID of the DNS zone in which to search for the WAF Rule Packages.
      * 
      */
     public Output<String> zoneId() {
@@ -63,17 +73,31 @@ public final class GetWafPackagesArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetWafPackagesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filter One or more values used to look up WAF Rule Packages. If more than one value is given all
+         * values must match in order to be included, see below for full list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filter(@Nullable Output<GetWafPackagesFilterArgs> filter) {
             $.filter = filter;
             return this;
         }
 
+        /**
+         * @param filter One or more values used to look up WAF Rule Packages. If more than one value is given all
+         * values must match in order to be included, see below for full list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filter(GetWafPackagesFilterArgs filter) {
             return filter(Output.of(filter));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The ID of the DNS zone in which to search for the WAF Rule Packages.
          * 
          * @return builder
          * 
@@ -84,7 +108,7 @@ public final class GetWafPackagesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The ID of the DNS zone in which to search for the WAF Rule Packages.
          * 
          * @return builder
          * 

@@ -192,13 +192,13 @@ class AccessCaCertificate(pulumi.CustomResource):
 
         ## Import
 
-        # Account level CA certificate import.
+        Account level CA certificate import.
 
         ```sh
          $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<certificate_id>
         ```
 
-        # Zone level CA certificate import.
+         Zone level CA certificate import.
 
         ```sh
          $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<certificate_id>
@@ -245,13 +245,13 @@ class AccessCaCertificate(pulumi.CustomResource):
 
         ## Import
 
-        # Account level CA certificate import.
+        Account level CA certificate import.
 
         ```sh
          $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<certificate_id>
         ```
 
-        # Zone level CA certificate import.
+         Zone level CA certificate import.
 
         ```sh
          $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<certificate_id>

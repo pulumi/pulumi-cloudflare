@@ -30,11 +30,21 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("geoRestrictions")]
         public Input<string>? GeoRestrictions { get; set; }
 
+        [Input("privateKey")]
+        private Input<string>? _privateKey;
+
         /// <summary>
         /// Certificate's private key
         /// </summary>
-        [Input("privateKey")]
-        public Input<string>? PrivateKey { get; set; }
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacy_custom` (default), `sni_custom`.

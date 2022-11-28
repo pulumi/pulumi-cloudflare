@@ -12,20 +12,26 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class DevicePostureRuleInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The workspace one device compliance status.
+        /// </summary>
         [Input("complianceStatus")]
         public Input<string>? ComplianceStatus { get; set; }
 
+        /// <summary>
+        /// The workspace one connection id.
+        /// </summary>
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }
 
         /// <summary>
-        /// = (Required) The domain that the client must join.
+        /// The domain that the client must join.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// = (Required) True if the firewall must be enabled.
+        /// True if the firewall must be enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -43,19 +49,31 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// = (Required) The version comparison operator in (&gt;,&gt;=,&lt;,&lt;=,==)
+        /// The version comparison operator.
         /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
 
         /// <summary>
-        /// The path to the application.
+        /// The operating system excluding version information.
+        /// </summary>
+        [Input("osDistroName")]
+        public Input<string>? OsDistroName { get; set; }
+
+        /// <summary>
+        /// The operating system version excluding OS name information or release name.
+        /// </summary>
+        [Input("osDistroRevision")]
+        public Input<string>? OsDistroRevision { get; set; }
+
+        /// <summary>
+        /// The path to the file.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// = (Required) True if all drives must be encrypted.
+        /// True if all drives must be encrypted.
         /// </summary>
         [Input("requireAll")]
         public Input<bool>? RequireAll { get; set; }
@@ -73,13 +91,13 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Sha256 { get; set; }
 
         /// <summary>
-        /// The thumbprint of the application certificate.
+        /// The thumbprint of the file certificate.
         /// </summary>
         [Input("thumbprint")]
         public Input<string>? Thumbprint { get; set; }
 
         /// <summary>
-        /// = (Required) The operating system semantic version.
+        /// The operating system semantic version.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
