@@ -2,52 +2,13 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * Provides Lists (IPs, Redirects) to be used in Edge Rules Engine
  * across all zones within the same account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // Redirect list
- * const example = new cloudflare.List("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     description: "example redirects for a list",
- *     items: [
- *         {
- *             comment: "one",
- *             value: {
- *                 redirects: [{
- *                     sourceUrl: "example.com/blog",
- *                     targetUrl: "https://blog.example.com",
- *                 }],
- *             },
- *         },
- *         {
- *             comment: "two",
- *             value: {
- *                 redirects: [{
- *                     includeSubdomains: "enabled",
- *                     preservePathSuffix: "disabled",
- *                     preserveQueryString: "enabled",
- *                     sourceUrl: "example.com/foo",
- *                     statusCode: 301,
- *                     subpathMatching: "enabled",
- *                     targetUrl: "https://foo.example.com",
- *                 }],
- *             },
- *         },
- *     ],
- *     kind: "redirect",
- *     name: "example list",
- * });
- * ```
  *
  * ## Import
  *

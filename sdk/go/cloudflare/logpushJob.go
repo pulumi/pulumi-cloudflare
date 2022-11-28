@@ -13,7 +13,7 @@ import (
 
 // ## Import
 //
-// # Import an account-scoped job.
+// Import an account-scoped job.
 //
 // ```sh
 //
@@ -21,7 +21,7 @@ import (
 //
 // ```
 //
-// # Import a zone-scoped job.
+//	Import a zone-scoped job.
 //
 // ```sh
 //

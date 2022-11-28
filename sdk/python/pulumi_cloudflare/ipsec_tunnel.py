@@ -665,9 +665,11 @@ class IpsecTunnel(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            __props__.__dict__["psk"] = psk
+            __props__.__dict__["psk"] = None if psk is None else pulumi.Output.secret(psk)
             __props__.__dict__["remote_id"] = remote_id
             __props__.__dict__["user_id"] = user_id
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["psk"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(IpsecTunnel, __self__).__init__(
             'cloudflare:index/ipsecTunnel:IpsecTunnel',
             resource_name,

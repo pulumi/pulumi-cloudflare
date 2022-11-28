@@ -36,7 +36,7 @@ namespace Pulumi.Cloudflare
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDevicesResult> InvokeAsync(GetDevicesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDevicesResult>("cloudflare:index/getDevices:getDevices", args ?? new GetDevicesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDevicesResult>("cloudflare:index/getDevices:getDevices", args ?? new GetDevicesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).
@@ -63,7 +63,7 @@ namespace Pulumi.Cloudflare
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDevicesResult> Invoke(GetDevicesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDevicesResult>("cloudflare:index/getDevices:getDevices", args ?? new GetDevicesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDevicesResult>("cloudflare:index/getDevices:getDevices", args ?? new GetDevicesInvokeArgs(), options.WithDefaults());
     }
 
 

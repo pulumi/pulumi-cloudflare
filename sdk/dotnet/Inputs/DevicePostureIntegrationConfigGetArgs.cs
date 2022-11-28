@@ -30,17 +30,37 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
+        [Input("clientKey")]
+        private Input<string>? _clientKey;
+
         /// <summary>
         /// The client key for authenticating API calls.
         /// </summary>
-        [Input("clientKey")]
-        public Input<string>? ClientKey { get; set; }
+        public Input<string>? ClientKey
+        {
+            get => _clientKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
 
         /// <summary>
         /// The client secret for authenticating API calls.
         /// </summary>
-        [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The customer identifier for authenticating API calls.

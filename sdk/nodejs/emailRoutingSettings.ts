@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const myZone = new cloudflare.EmailRoutingSettings("my_zone", {
+ * const myZone = new cloudflare.EmailRoutingSettings("myZone", {
  *     enabled: true,
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });

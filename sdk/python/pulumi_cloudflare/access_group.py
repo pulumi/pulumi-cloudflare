@@ -210,6 +210,32 @@ class AccessGroup(pulumi.CustomResource):
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Allowing access to `test@example.com` email address only
+        test_group_access_group = cloudflare.AccessGroup("testGroupAccessGroup",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="staging group",
+            includes=[cloudflare.AccessGroupIncludeArgs(
+                emails=["test@example.com"],
+            )])
+        # Allowing `test@example.com` to access but only when coming from a
+        # specific IP.
+        test_group_index_access_group_access_group = cloudflare.AccessGroup("testGroupIndex/accessGroupAccessGroup",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="staging group",
+            includes=[cloudflare.AccessGroupIncludeArgs(
+                emails=["test@example.com"],
+            )],
+            requires={
+                "ips": [var["office_ip"]],
+            })
+        ```
+
         ## Import
 
         ```sh
@@ -237,6 +263,32 @@ class AccessGroup(pulumi.CustomResource):
         access token, you must provide the argument that matches the token's
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Allowing access to `test@example.com` email address only
+        test_group_access_group = cloudflare.AccessGroup("testGroupAccessGroup",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="staging group",
+            includes=[cloudflare.AccessGroupIncludeArgs(
+                emails=["test@example.com"],
+            )])
+        # Allowing `test@example.com` to access but only when coming from a
+        # specific IP.
+        test_group_index_access_group_access_group = cloudflare.AccessGroup("testGroupIndex/accessGroupAccessGroup",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="staging group",
+            includes=[cloudflare.AccessGroupIncludeArgs(
+                emails=["test@example.com"],
+            )],
+            requires={
+                "ips": [var["office_ip"]],
+            })
+        ```
 
         ## Import
 

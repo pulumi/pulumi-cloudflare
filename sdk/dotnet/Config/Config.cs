@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("cloudflare");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("cloudflare");
 
         private static readonly __Value<string?> _accountId = new __Value<string?>(() => __config.Get("accountId"));
         /// <summary>

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -15,6 +16,34 @@ import * as utilities from "./utilities";
  * access token, you must provide the argument that matches the token's
  * scope. For example, an access token that is scoped to the "example.com"
  * zone needs to use the `zoneId` argument.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // Allowing access to `test@example.com` email address only
+ * const testGroupAccessGroup = new cloudflare.AccessGroup("testGroupAccessGroup", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     name: "staging group",
+ *     includes: [{
+ *         emails: ["test@example.com"],
+ *     }],
+ * });
+ * // Allowing `test@example.com` to access but only when coming from a
+ * // specific IP.
+ * const testGroupIndex_accessGroupAccessGroup = new cloudflare.AccessGroup("testGroupIndex/accessGroupAccessGroup", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     name: "staging group",
+ *     includes: [{
+ *         emails: ["test@example.com"],
+ *     }],
+ *     requires: {
+ *         ips: [_var.office_ip],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

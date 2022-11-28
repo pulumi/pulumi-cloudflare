@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * # Use account ID, network CIDR and virtual network ID.
+ * Use account ID, network CIDR and virtual network ID.
  * 
  * ```sh
  *  $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example &lt;account_id/&lt;network_cidr&gt;/&lt;virtual_network_id&gt;

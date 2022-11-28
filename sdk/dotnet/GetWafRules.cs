@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetWafRulesResult> InvokeAsync(GetWafRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWafRulesResult>("cloudflare:index/getWafRules:getWafRules", args ?? new GetWafRulesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetWafRulesResult>("cloudflare:index/getWafRules:getWafRules", args ?? new GetWafRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to look up [WAF Rules](https://api.cloudflare.com/#waf-rule-groups-properties).
@@ -89,7 +89,7 @@ namespace Pulumi.Cloudflare
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetWafRulesResult> Invoke(GetWafRulesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetWafRulesResult>("cloudflare:index/getWafRules:getWafRules", args ?? new GetWafRulesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetWafRulesResult>("cloudflare:index/getWafRules:getWafRules", args ?? new GetWafRulesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -26,11 +26,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getIpRanges(opts?: pulumi.InvokeOptions): Promise<GetIpRangesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getIpRanges:getIpRanges", {
     }, opts);
 }

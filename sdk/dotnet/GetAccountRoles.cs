@@ -15,13 +15,13 @@ namespace Pulumi.Cloudflare
         /// Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
         /// </summary>
         public static Task<GetAccountRolesResult> InvokeAsync(GetAccountRolesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountRolesResult>("cloudflare:index/getAccountRoles:getAccountRoles", args ?? new GetAccountRolesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountRolesResult>("cloudflare:index/getAccountRoles:getAccountRoles", args ?? new GetAccountRolesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
         /// </summary>
         public static Output<GetAccountRolesResult> Invoke(GetAccountRolesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccountRolesResult>("cloudflare:index/getAccountRoles:getAccountRoles", args ?? new GetAccountRolesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountRolesResult>("cloudflare:index/getAccountRoles:getAccountRoles", args ?? new GetAccountRolesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -50,6 +50,10 @@ func NewApiToken(ctx *pulumi.Context,
 	if args.Policies == nil {
 		return nil, errors.New("invalid value for required argument 'Policies'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"value",
+	})
+	opts = append(opts, secrets)
 	var resource ApiToken
 	err := ctx.RegisterResource("cloudflare:index/apiToken:ApiToken", name, args, &resource, opts...)
 	if err != nil {

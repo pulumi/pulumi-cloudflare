@@ -21,6 +21,59 @@ import (
 // scope. For example, an access token that is scoped to the "example.com"
 // zone needs to use the `zoneId` argument.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewAccessGroup(ctx, "testGroupAccessGroup", &cloudflare.AccessGroupArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:      pulumi.String("staging group"),
+//				Includes: AccessGroupIncludeArray{
+//					&AccessGroupIncludeArgs{
+//						Emails: pulumi.StringArray{
+//							pulumi.String("test@example.com"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewAccessGroup(ctx, "testGroupIndex/accessGroupAccessGroup", &cloudflare.AccessGroupArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:      pulumi.String("staging group"),
+//				Includes: AccessGroupIncludeArray{
+//					&AccessGroupIncludeArgs{
+//						Emails: pulumi.StringArray{
+//							pulumi.String("test@example.com"),
+//						},
+//					},
+//				},
+//				Requires: AccessGroupRequireArray{
+//					Ips: AccessGroupRequireArgs{
+//						_var.Office_ip,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

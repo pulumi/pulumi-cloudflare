@@ -20,6 +20,60 @@ namespace Pulumi.Cloudflare
     /// scope. For example, an access token that is scoped to the "example.com"
     /// zone needs to use the `zone_id` argument.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Allowing access to `test@example.com` email address only
+    ///     var testGroupAccessGroup = new Cloudflare.AccessGroup("testGroupAccessGroup", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "staging group",
+    ///         Includes = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.AccessGroupIncludeArgs
+    ///             {
+    ///                 Emails = new[]
+    ///                 {
+    ///                     "test@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Allowing `test@example.com` to access but only when coming from a
+    ///     // specific IP.
+    ///     var testGroupIndex_accessGroupAccessGroup = new Cloudflare.AccessGroup("testGroupIndex/accessGroupAccessGroup", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "staging group",
+    ///         Includes = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.AccessGroupIncludeArgs
+    ///             {
+    ///                 Emails = new[]
+    ///                 {
+    ///                     "test@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Requires = 
+    ///         {
+    ///             { "ips", new[]
+    ///             {
+    ///                 @var.Office_ip,
+    ///             } },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

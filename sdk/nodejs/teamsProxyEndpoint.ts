@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const corporateOffice = new cloudflare.TeamsProxyEndpoint("corporate_office", {
+ * const corporateOffice = new cloudflare.TeamsProxyEndpoint("corporateOffice", {
  *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
  *     ips: ["192.0.2.0/24"],
  *     name: "office",

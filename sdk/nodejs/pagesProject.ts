@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -15,13 +16,13 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // Basic project
- * const basicProject = new cloudflare.PagesProject("basic_project", {
+ * const basicProject = new cloudflare.PagesProject("basicProject", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "this-is-my-project-01",
  *     productionBranch: "main",
  * });
  * // Manage build config
- * const buildConfig = new cloudflare.PagesProject("build_config", {
+ * const buildConfig = new cloudflare.PagesProject("buildConfig", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     buildConfig: {
  *         buildCommand: "npm run build",
@@ -34,7 +35,7 @@ import * as utilities from "./utilities";
  *     productionBranch: "main",
  * });
  * // Manage project source
- * const sourceConfig = new cloudflare.PagesProject("source_config", {
+ * const sourceConfig = new cloudflare.PagesProject("sourceConfig", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "this-is-my-project-01",
  *     productionBranch: "main",
@@ -60,26 +61,26 @@ import * as utilities from "./utilities";
  *     },
  * });
  * // Manage deployment configs
- * const deploymentConfigs = new cloudflare.PagesProject("deployment_configs", {
+ * const deploymentConfigs = new cloudflare.PagesProject("deploymentConfigs", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     deploymentConfigs: {
  *         preview: {
  *             compatibilityDate: "2022-08-15",
  *             compatibilityFlags: ["preview_flag"],
  *             d1Databases: {
- *                 D1_BINDING: "445e2955-951a-4358-a35b-a4d0c813f63",
+ *                 D1BINDING: "445e2955-951a-4358-a35b-a4d0c813f63",
  *             },
  *             durableObjectNamespaces: {
- *                 DO_BINDING: "5eb63bbbe01eeed093cb22bb8f5acdc3",
+ *                 DOBINDING: "5eb63bbbe01eeed093cb22bb8f5acdc3",
  *             },
  *             environmentVariables: {
  *                 ENVIRONMENT: "preview",
  *             },
  *             kvNamespaces: {
- *                 KV_BINDING: "5eb63bbbe01eeed093cb22bb8f5acdc3",
+ *                 KVBINDING: "5eb63bbbe01eeed093cb22bb8f5acdc3",
  *             },
  *             r2Buckets: {
- *                 R2_BINDING: "some-bucket",
+ *                 R2BINDING: "some-bucket",
  *             },
  *         },
  *         production: {
@@ -89,24 +90,24 @@ import * as utilities from "./utilities";
  *                 "second flag",
  *             ],
  *             d1Databases: {
- *                 D1_BINDING_1: "445e2955-951a-4358-a35b-a4d0c813f63",
- *                 D1_BINDING_2: "a399414b-c697-409a-a688-377db6433cd9",
+ *                 D1BINDING1: "445e2955-951a-4358-a35b-a4d0c813f63",
+ *                 D1BINDING2: "a399414b-c697-409a-a688-377db6433cd9",
  *             },
  *             durableObjectNamespaces: {
- *                 DO_BINDING_1: "5eb63bbbe01eeed093cb22bb8f5acdc3",
- *                 DO_BINDING_2: "3cdca5f8bb22bc390deee10ebbb36be5",
+ *                 DOBINDING1: "5eb63bbbe01eeed093cb22bb8f5acdc3",
+ *                 DOBINDING2: "3cdca5f8bb22bc390deee10ebbb36be5",
  *             },
  *             environmentVariables: {
  *                 ENVIRONMENT: "production",
- *                 OTHER_VALUE: "other value",
+ *                 OTHERVALUE: "other value",
  *             },
  *             kvNamespaces: {
- *                 KV_BINDING_1: "5eb63bbbe01eeed093cb22bb8f5acdc3",
- *                 KV_BINDING_2: "3cdca5f8bb22bc390deee10ebbb36be5",
+ *                 KVBINDING1: "5eb63bbbe01eeed093cb22bb8f5acdc3",
+ *                 KVBINDING2: "3cdca5f8bb22bc390deee10ebbb36be5",
  *             },
  *             r2Buckets: {
- *                 R2_BINDING_1: "some-bucket",
- *                 R2_BINDING_2: "other-bucket",
+ *                 R2BINDING1: "some-bucket",
+ *                 R2BINDING2: "other-bucket",
  *             },
  *         },
  *     },

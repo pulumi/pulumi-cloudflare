@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const corporateDevices = new cloudflare.TeamsList("corporate_devices", {
+ * const corporateDevices = new cloudflare.TeamsList("corporateDevices", {
  *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
  *     description: "Serial numbers for all corporate devices.",
  *     items: [

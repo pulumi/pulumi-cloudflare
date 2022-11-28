@@ -18,11 +18,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getApiTokenPermissionGroups(opts?: pulumi.InvokeOptions): Promise<GetApiTokenPermissionGroupsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups", {
     }, opts);
 }

@@ -19,10 +19,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * // You can also lookup by zone_id if you prefer.
- * const example = pulumi.output(cloudflare.getZone({
+ * const example = cloudflare.getZone({
  *     zoneId: "0b6d347b01d437a092be84c2edfce72c",
- * }));
+ * });
  * ```
  * ### Example usage with other resources
  *
@@ -47,11 +46,8 @@ import * as utilities from "./utilities";
  */
 export function getZone(args?: GetZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZone:getZone", {
         "accountId": args.accountId,
         "name": args.name,

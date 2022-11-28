@@ -326,6 +326,8 @@ class ApiToken(pulumi.CustomResource):
             __props__.__dict__["modified_on"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["value"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["value"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ApiToken, __self__).__init__(
             'cloudflare:index/apiToken:ApiToken',
             resource_name,

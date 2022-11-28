@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -16,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // Excluding *.example.com from WARP routes
- * const exampleSplitTunnelExclude = new cloudflare.SplitTunnel("example_split_tunnel_exclude", {
+ * const exampleSplitTunnelExclude = new cloudflare.SplitTunnel("exampleSplitTunnelExclude", {
  *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
  *     mode: "exclude",
  *     tunnels: [{
@@ -25,7 +26,7 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * // Including *.example.com in WARP routes
- * const exampleSplitTunnelInclude = new cloudflare.SplitTunnel("example_split_tunnel_include", {
+ * const exampleSplitTunnelInclude = new cloudflare.SplitTunnel("exampleSplitTunnelInclude", {
  *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
  *     mode: "include",
  *     tunnels: [{

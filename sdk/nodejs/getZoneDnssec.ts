@@ -13,17 +13,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = pulumi.output(cloudflare.getZoneDnssec({
+ * const example = cloudflare.getZoneDnssec({
  *     zoneId: "<zone_id>",
- * }));
+ * });
  * ```
  */
 export function getZoneDnssec(args: GetZoneDnssecArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneDnssecResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZoneDnssec:getZoneDnssec", {
         "zoneId": args.zoneId,
     }, opts);

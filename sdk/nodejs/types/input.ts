@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
+import * as utilities from "../utilities";
 
 export interface AccessApplicationCorsHeader {
     /**
@@ -819,25 +821,6 @@ export interface GetWafGroupsFilterArgs {
     name?: pulumi.Input<string>;
 }
 
-export interface GetWafPackagesFilterArgs {
-    /**
-     * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-     */
-    actionMode?: pulumi.Input<string>;
-    /**
-     * Detection mode of the WAF Rule Packages to lookup.
-     */
-    detectionMode?: pulumi.Input<string>;
-    /**
-     * A regular expression matching the name of the WAF Rule Packages to lookup.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-     */
-    sensitivity?: pulumi.Input<string>;
-}
-
 export interface GetWafPackagesFilter {
     /**
      * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
@@ -857,19 +840,23 @@ export interface GetWafPackagesFilter {
     sensitivity?: string;
 }
 
-export interface GetWafRulesFilterArgs {
+export interface GetWafPackagesFilterArgs {
     /**
-     * A regular expression matching the description of the WAF Rules to lookup.
+     * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
      */
-    description?: pulumi.Input<string>;
+    actionMode?: pulumi.Input<string>;
     /**
-     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+     * Detection mode of the WAF Rule Packages to lookup.
      */
-    groupId?: pulumi.Input<string>;
+    detectionMode?: pulumi.Input<string>;
     /**
-     * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
+     * A regular expression matching the name of the WAF Rule Packages to lookup.
      */
-    mode?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    /**
+     * Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+     */
+    sensitivity?: pulumi.Input<string>;
 }
 
 export interface GetWafRulesFilter {
@@ -885,6 +872,21 @@ export interface GetWafRulesFilter {
      * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
      */
     mode?: string;
+}
+
+export interface GetWafRulesFilterArgs {
+    /**
+     * A regular expression matching the description of the WAF Rules to lookup.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+     */
+    groupId?: pulumi.Input<string>;
+    /**
+     * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
+     */
+    mode?: pulumi.Input<string>;
 }
 
 export interface GetZonesFilter {

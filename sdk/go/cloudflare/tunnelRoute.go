@@ -65,7 +65,7 @@ import (
 //
 // ## Import
 //
-// # Use account ID, network CIDR and virtual network ID.
+// Use account ID, network CIDR and virtual network ID.
 //
 // ```sh
 //

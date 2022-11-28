@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -15,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const corporateOffice = new cloudflare.TeamsLocation("corporate_office", {
+ * const corporateOffice = new cloudflare.TeamsLocation("corporateOffice", {
  *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
  *     clientDefault: true,
  *     name: "office",

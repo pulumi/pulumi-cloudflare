@@ -62,13 +62,13 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * # Account level CA certificate import.
+ * Account level CA certificate import.
  * 
  * ```sh
  *  $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/&lt;account_id&gt;/&lt;certificate_id&gt;
  * ```
  * 
- * # Zone level CA certificate import.
+ *  Zone level CA certificate import.
  * 
  * ```sh
  *  $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/&lt;zone_id&gt;/&lt;certificate_id&gt;

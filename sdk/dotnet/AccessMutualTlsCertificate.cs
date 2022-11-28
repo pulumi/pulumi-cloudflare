@@ -47,13 +47,13 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// # Account level import.
+    /// Account level import.
     /// 
     /// ```sh
     ///  $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example account/&lt;account_id&gt;/&lt;mutual_tls_certificate_id&gt;
     /// ```
     /// 
-    /// # Zone level import.
+    ///  Zone level import.
     /// 
     /// ```sh
     ///  $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example zone/&lt;zone_id&gt;/&lt;mutual_tls_certificate_id&gt;

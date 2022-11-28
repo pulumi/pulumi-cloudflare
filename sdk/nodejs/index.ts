@@ -5,109 +5,519 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./accessApplication";
-export * from "./accessBookmark";
-export * from "./accessCaCertificate";
-export * from "./accessGroup";
-export * from "./accessIdentityProvider";
-export * from "./accessKeysConfiguration";
-export * from "./accessMutualTlsCertificate";
-export * from "./accessOrganization";
-export * from "./accessPolicy";
-export * from "./accessRule";
-export * from "./accessServiceToken";
-export * from "./account";
-export * from "./accountMember";
-export * from "./apiShield";
-export * from "./apiToken";
-export * from "./argo";
-export * from "./argoTunnel";
-export * from "./authenticatedOriginPulls";
-export * from "./authenticatedOriginPullsCertificate";
-export * from "./byoIpPrefix";
-export * from "./certificatePack";
-export * from "./customHostname";
-export * from "./customHostnameFallbackOrigin";
-export * from "./customPages";
-export * from "./customSsl";
-export * from "./devicePolicyCertificates";
-export * from "./devicePostureIntegration";
-export * from "./devicePostureRule";
-export * from "./dlpProfile";
-export * from "./emailRoutingAddress";
-export * from "./emailRoutingCatchAll";
-export * from "./emailRoutingRule";
-export * from "./emailRoutingSettings";
-export * from "./fallbackDomain";
-export * from "./filter";
-export * from "./firewallRule";
-export * from "./getAccessIdentityProvider";
-export * from "./getAccountRoles";
-export * from "./getAccounts";
-export * from "./getApiTokenPermissionGroups";
-export * from "./getDevices";
-export * from "./getIpRanges";
-export * from "./getOriginCaRootCertificate";
-export * from "./getRecord";
-export * from "./getWafGroups";
-export * from "./getWafPackages";
-export * from "./getWafRules";
-export * from "./getZone";
-export * from "./getZoneDnssec";
-export * from "./getZones";
-export * from "./greTunnel";
-export * from "./healthcheck";
-export * from "./ipList";
-export * from "./ipsecTunnel";
-export * from "./list";
-export * from "./loadBalancer";
-export * from "./loadBalancerMonitor";
-export * from "./loadBalancerPool";
-export * from "./logpullRetention";
-export * from "./logpushJob";
-export * from "./logpushOwnershipChallenge";
-export * from "./magicFirewallRuleset";
-export * from "./managedHeaders";
-export * from "./notificationPolicy";
-export * from "./notificationPolicyWebhooks";
-export * from "./originCaCertificate";
-export * from "./pageRule";
-export * from "./pagesDomain";
-export * from "./pagesProject";
-export * from "./provider";
-export * from "./rateLimit";
-export * from "./record";
-export * from "./ruleset";
-export * from "./spectrumApplication";
-export * from "./splitTunnel";
-export * from "./staticRoute";
-export * from "./teamsAccount";
-export * from "./teamsList";
-export * from "./teamsLocation";
-export * from "./teamsProxyEndpoint";
-export * from "./teamsRule";
-export * from "./totalTls";
-export * from "./tunnelRoute";
-export * from "./tunnelVirtualNetwork";
-export * from "./userAgentBlockingRule";
-export * from "./wafGroup";
-export * from "./wafOverride";
-export * from "./wafPackage";
-export * from "./wafRule";
-export * from "./waitingRoom";
-export * from "./waitingRoomEvent";
-export * from "./waitingRoomRules";
-export * from "./web3Hostname";
-export * from "./workerCronTrigger";
-export * from "./workerRoute";
-export * from "./workerScript";
-export * from "./workersKv";
-export * from "./workersKvNamespace";
-export * from "./zone";
-export * from "./zoneCacheVariants";
-export * from "./zoneDnssec";
-export * from "./zoneLockdown";
-export * from "./zoneSettingsOverride";
+export { AccessApplicationArgs, AccessApplicationState } from "./accessApplication";
+export type AccessApplication = import("./accessApplication").AccessApplication;
+export const AccessApplication: typeof import("./accessApplication").AccessApplication = null as any;
+utilities.lazyLoad(exports, ["AccessApplication"], () => require("./accessApplication"));
+
+export { AccessBookmarkArgs, AccessBookmarkState } from "./accessBookmark";
+export type AccessBookmark = import("./accessBookmark").AccessBookmark;
+export const AccessBookmark: typeof import("./accessBookmark").AccessBookmark = null as any;
+utilities.lazyLoad(exports, ["AccessBookmark"], () => require("./accessBookmark"));
+
+export { AccessCaCertificateArgs, AccessCaCertificateState } from "./accessCaCertificate";
+export type AccessCaCertificate = import("./accessCaCertificate").AccessCaCertificate;
+export const AccessCaCertificate: typeof import("./accessCaCertificate").AccessCaCertificate = null as any;
+utilities.lazyLoad(exports, ["AccessCaCertificate"], () => require("./accessCaCertificate"));
+
+export { AccessGroupArgs, AccessGroupState } from "./accessGroup";
+export type AccessGroup = import("./accessGroup").AccessGroup;
+export const AccessGroup: typeof import("./accessGroup").AccessGroup = null as any;
+utilities.lazyLoad(exports, ["AccessGroup"], () => require("./accessGroup"));
+
+export { AccessIdentityProviderArgs, AccessIdentityProviderState } from "./accessIdentityProvider";
+export type AccessIdentityProvider = import("./accessIdentityProvider").AccessIdentityProvider;
+export const AccessIdentityProvider: typeof import("./accessIdentityProvider").AccessIdentityProvider = null as any;
+utilities.lazyLoad(exports, ["AccessIdentityProvider"], () => require("./accessIdentityProvider"));
+
+export { AccessKeysConfigurationArgs, AccessKeysConfigurationState } from "./accessKeysConfiguration";
+export type AccessKeysConfiguration = import("./accessKeysConfiguration").AccessKeysConfiguration;
+export const AccessKeysConfiguration: typeof import("./accessKeysConfiguration").AccessKeysConfiguration = null as any;
+utilities.lazyLoad(exports, ["AccessKeysConfiguration"], () => require("./accessKeysConfiguration"));
+
+export { AccessMutualTlsCertificateArgs, AccessMutualTlsCertificateState } from "./accessMutualTlsCertificate";
+export type AccessMutualTlsCertificate = import("./accessMutualTlsCertificate").AccessMutualTlsCertificate;
+export const AccessMutualTlsCertificate: typeof import("./accessMutualTlsCertificate").AccessMutualTlsCertificate = null as any;
+utilities.lazyLoad(exports, ["AccessMutualTlsCertificate"], () => require("./accessMutualTlsCertificate"));
+
+export { AccessOrganizationArgs, AccessOrganizationState } from "./accessOrganization";
+export type AccessOrganization = import("./accessOrganization").AccessOrganization;
+export const AccessOrganization: typeof import("./accessOrganization").AccessOrganization = null as any;
+utilities.lazyLoad(exports, ["AccessOrganization"], () => require("./accessOrganization"));
+
+export { AccessPolicyArgs, AccessPolicyState } from "./accessPolicy";
+export type AccessPolicy = import("./accessPolicy").AccessPolicy;
+export const AccessPolicy: typeof import("./accessPolicy").AccessPolicy = null as any;
+utilities.lazyLoad(exports, ["AccessPolicy"], () => require("./accessPolicy"));
+
+export { AccessRuleArgs, AccessRuleState } from "./accessRule";
+export type AccessRule = import("./accessRule").AccessRule;
+export const AccessRule: typeof import("./accessRule").AccessRule = null as any;
+utilities.lazyLoad(exports, ["AccessRule"], () => require("./accessRule"));
+
+export { AccessServiceTokenArgs, AccessServiceTokenState } from "./accessServiceToken";
+export type AccessServiceToken = import("./accessServiceToken").AccessServiceToken;
+export const AccessServiceToken: typeof import("./accessServiceToken").AccessServiceToken = null as any;
+utilities.lazyLoad(exports, ["AccessServiceToken"], () => require("./accessServiceToken"));
+
+export { AccountArgs, AccountState } from "./account";
+export type Account = import("./account").Account;
+export const Account: typeof import("./account").Account = null as any;
+utilities.lazyLoad(exports, ["Account"], () => require("./account"));
+
+export { AccountMemberArgs, AccountMemberState } from "./accountMember";
+export type AccountMember = import("./accountMember").AccountMember;
+export const AccountMember: typeof import("./accountMember").AccountMember = null as any;
+utilities.lazyLoad(exports, ["AccountMember"], () => require("./accountMember"));
+
+export { ApiShieldArgs, ApiShieldState } from "./apiShield";
+export type ApiShield = import("./apiShield").ApiShield;
+export const ApiShield: typeof import("./apiShield").ApiShield = null as any;
+utilities.lazyLoad(exports, ["ApiShield"], () => require("./apiShield"));
+
+export { ApiTokenArgs, ApiTokenState } from "./apiToken";
+export type ApiToken = import("./apiToken").ApiToken;
+export const ApiToken: typeof import("./apiToken").ApiToken = null as any;
+utilities.lazyLoad(exports, ["ApiToken"], () => require("./apiToken"));
+
+export { ArgoArgs, ArgoState } from "./argo";
+export type Argo = import("./argo").Argo;
+export const Argo: typeof import("./argo").Argo = null as any;
+utilities.lazyLoad(exports, ["Argo"], () => require("./argo"));
+
+export { ArgoTunnelArgs, ArgoTunnelState } from "./argoTunnel";
+export type ArgoTunnel = import("./argoTunnel").ArgoTunnel;
+export const ArgoTunnel: typeof import("./argoTunnel").ArgoTunnel = null as any;
+utilities.lazyLoad(exports, ["ArgoTunnel"], () => require("./argoTunnel"));
+
+export { AuthenticatedOriginPullsArgs, AuthenticatedOriginPullsState } from "./authenticatedOriginPulls";
+export type AuthenticatedOriginPulls = import("./authenticatedOriginPulls").AuthenticatedOriginPulls;
+export const AuthenticatedOriginPulls: typeof import("./authenticatedOriginPulls").AuthenticatedOriginPulls = null as any;
+utilities.lazyLoad(exports, ["AuthenticatedOriginPulls"], () => require("./authenticatedOriginPulls"));
+
+export { AuthenticatedOriginPullsCertificateArgs, AuthenticatedOriginPullsCertificateState } from "./authenticatedOriginPullsCertificate";
+export type AuthenticatedOriginPullsCertificate = import("./authenticatedOriginPullsCertificate").AuthenticatedOriginPullsCertificate;
+export const AuthenticatedOriginPullsCertificate: typeof import("./authenticatedOriginPullsCertificate").AuthenticatedOriginPullsCertificate = null as any;
+utilities.lazyLoad(exports, ["AuthenticatedOriginPullsCertificate"], () => require("./authenticatedOriginPullsCertificate"));
+
+export { ByoIpPrefixArgs, ByoIpPrefixState } from "./byoIpPrefix";
+export type ByoIpPrefix = import("./byoIpPrefix").ByoIpPrefix;
+export const ByoIpPrefix: typeof import("./byoIpPrefix").ByoIpPrefix = null as any;
+utilities.lazyLoad(exports, ["ByoIpPrefix"], () => require("./byoIpPrefix"));
+
+export { CertificatePackArgs, CertificatePackState } from "./certificatePack";
+export type CertificatePack = import("./certificatePack").CertificatePack;
+export const CertificatePack: typeof import("./certificatePack").CertificatePack = null as any;
+utilities.lazyLoad(exports, ["CertificatePack"], () => require("./certificatePack"));
+
+export { CustomHostnameArgs, CustomHostnameState } from "./customHostname";
+export type CustomHostname = import("./customHostname").CustomHostname;
+export const CustomHostname: typeof import("./customHostname").CustomHostname = null as any;
+utilities.lazyLoad(exports, ["CustomHostname"], () => require("./customHostname"));
+
+export { CustomHostnameFallbackOriginArgs, CustomHostnameFallbackOriginState } from "./customHostnameFallbackOrigin";
+export type CustomHostnameFallbackOrigin = import("./customHostnameFallbackOrigin").CustomHostnameFallbackOrigin;
+export const CustomHostnameFallbackOrigin: typeof import("./customHostnameFallbackOrigin").CustomHostnameFallbackOrigin = null as any;
+utilities.lazyLoad(exports, ["CustomHostnameFallbackOrigin"], () => require("./customHostnameFallbackOrigin"));
+
+export { CustomPagesArgs, CustomPagesState } from "./customPages";
+export type CustomPages = import("./customPages").CustomPages;
+export const CustomPages: typeof import("./customPages").CustomPages = null as any;
+utilities.lazyLoad(exports, ["CustomPages"], () => require("./customPages"));
+
+export { CustomSslArgs, CustomSslState } from "./customSsl";
+export type CustomSsl = import("./customSsl").CustomSsl;
+export const CustomSsl: typeof import("./customSsl").CustomSsl = null as any;
+utilities.lazyLoad(exports, ["CustomSsl"], () => require("./customSsl"));
+
+export { DevicePolicyCertificatesArgs, DevicePolicyCertificatesState } from "./devicePolicyCertificates";
+export type DevicePolicyCertificates = import("./devicePolicyCertificates").DevicePolicyCertificates;
+export const DevicePolicyCertificates: typeof import("./devicePolicyCertificates").DevicePolicyCertificates = null as any;
+utilities.lazyLoad(exports, ["DevicePolicyCertificates"], () => require("./devicePolicyCertificates"));
+
+export { DevicePostureIntegrationArgs, DevicePostureIntegrationState } from "./devicePostureIntegration";
+export type DevicePostureIntegration = import("./devicePostureIntegration").DevicePostureIntegration;
+export const DevicePostureIntegration: typeof import("./devicePostureIntegration").DevicePostureIntegration = null as any;
+utilities.lazyLoad(exports, ["DevicePostureIntegration"], () => require("./devicePostureIntegration"));
+
+export { DevicePostureRuleArgs, DevicePostureRuleState } from "./devicePostureRule";
+export type DevicePostureRule = import("./devicePostureRule").DevicePostureRule;
+export const DevicePostureRule: typeof import("./devicePostureRule").DevicePostureRule = null as any;
+utilities.lazyLoad(exports, ["DevicePostureRule"], () => require("./devicePostureRule"));
+
+export { DlpProfileArgs, DlpProfileState } from "./dlpProfile";
+export type DlpProfile = import("./dlpProfile").DlpProfile;
+export const DlpProfile: typeof import("./dlpProfile").DlpProfile = null as any;
+utilities.lazyLoad(exports, ["DlpProfile"], () => require("./dlpProfile"));
+
+export { EmailRoutingAddressArgs, EmailRoutingAddressState } from "./emailRoutingAddress";
+export type EmailRoutingAddress = import("./emailRoutingAddress").EmailRoutingAddress;
+export const EmailRoutingAddress: typeof import("./emailRoutingAddress").EmailRoutingAddress = null as any;
+utilities.lazyLoad(exports, ["EmailRoutingAddress"], () => require("./emailRoutingAddress"));
+
+export { EmailRoutingCatchAllArgs, EmailRoutingCatchAllState } from "./emailRoutingCatchAll";
+export type EmailRoutingCatchAll = import("./emailRoutingCatchAll").EmailRoutingCatchAll;
+export const EmailRoutingCatchAll: typeof import("./emailRoutingCatchAll").EmailRoutingCatchAll = null as any;
+utilities.lazyLoad(exports, ["EmailRoutingCatchAll"], () => require("./emailRoutingCatchAll"));
+
+export { EmailRoutingRuleArgs, EmailRoutingRuleState } from "./emailRoutingRule";
+export type EmailRoutingRule = import("./emailRoutingRule").EmailRoutingRule;
+export const EmailRoutingRule: typeof import("./emailRoutingRule").EmailRoutingRule = null as any;
+utilities.lazyLoad(exports, ["EmailRoutingRule"], () => require("./emailRoutingRule"));
+
+export { EmailRoutingSettingsArgs, EmailRoutingSettingsState } from "./emailRoutingSettings";
+export type EmailRoutingSettings = import("./emailRoutingSettings").EmailRoutingSettings;
+export const EmailRoutingSettings: typeof import("./emailRoutingSettings").EmailRoutingSettings = null as any;
+utilities.lazyLoad(exports, ["EmailRoutingSettings"], () => require("./emailRoutingSettings"));
+
+export { FallbackDomainArgs, FallbackDomainState } from "./fallbackDomain";
+export type FallbackDomain = import("./fallbackDomain").FallbackDomain;
+export const FallbackDomain: typeof import("./fallbackDomain").FallbackDomain = null as any;
+utilities.lazyLoad(exports, ["FallbackDomain"], () => require("./fallbackDomain"));
+
+export { FilterArgs, FilterState } from "./filter";
+export type Filter = import("./filter").Filter;
+export const Filter: typeof import("./filter").Filter = null as any;
+utilities.lazyLoad(exports, ["Filter"], () => require("./filter"));
+
+export { FirewallRuleArgs, FirewallRuleState } from "./firewallRule";
+export type FirewallRule = import("./firewallRule").FirewallRule;
+export const FirewallRule: typeof import("./firewallRule").FirewallRule = null as any;
+utilities.lazyLoad(exports, ["FirewallRule"], () => require("./firewallRule"));
+
+export { GetAccessIdentityProviderArgs, GetAccessIdentityProviderResult, GetAccessIdentityProviderOutputArgs } from "./getAccessIdentityProvider";
+export const getAccessIdentityProvider: typeof import("./getAccessIdentityProvider").getAccessIdentityProvider = null as any;
+export const getAccessIdentityProviderOutput: typeof import("./getAccessIdentityProvider").getAccessIdentityProviderOutput = null as any;
+utilities.lazyLoad(exports, ["getAccessIdentityProvider","getAccessIdentityProviderOutput"], () => require("./getAccessIdentityProvider"));
+
+export { GetAccountRolesArgs, GetAccountRolesResult, GetAccountRolesOutputArgs } from "./getAccountRoles";
+export const getAccountRoles: typeof import("./getAccountRoles").getAccountRoles = null as any;
+export const getAccountRolesOutput: typeof import("./getAccountRoles").getAccountRolesOutput = null as any;
+utilities.lazyLoad(exports, ["getAccountRoles","getAccountRolesOutput"], () => require("./getAccountRoles"));
+
+export { GetAccountsArgs, GetAccountsResult, GetAccountsOutputArgs } from "./getAccounts";
+export const getAccounts: typeof import("./getAccounts").getAccounts = null as any;
+export const getAccountsOutput: typeof import("./getAccounts").getAccountsOutput = null as any;
+utilities.lazyLoad(exports, ["getAccounts","getAccountsOutput"], () => require("./getAccounts"));
+
+export { GetApiTokenPermissionGroupsResult } from "./getApiTokenPermissionGroups";
+export const getApiTokenPermissionGroups: typeof import("./getApiTokenPermissionGroups").getApiTokenPermissionGroups = null as any;
+utilities.lazyLoad(exports, ["getApiTokenPermissionGroups"], () => require("./getApiTokenPermissionGroups"));
+
+export { GetDevicesArgs, GetDevicesResult, GetDevicesOutputArgs } from "./getDevices";
+export const getDevices: typeof import("./getDevices").getDevices = null as any;
+export const getDevicesOutput: typeof import("./getDevices").getDevicesOutput = null as any;
+utilities.lazyLoad(exports, ["getDevices","getDevicesOutput"], () => require("./getDevices"));
+
+export { GetIpRangesResult } from "./getIpRanges";
+export const getIpRanges: typeof import("./getIpRanges").getIpRanges = null as any;
+utilities.lazyLoad(exports, ["getIpRanges"], () => require("./getIpRanges"));
+
+export { GetOriginCaRootCertificateArgs, GetOriginCaRootCertificateResult, GetOriginCaRootCertificateOutputArgs } from "./getOriginCaRootCertificate";
+export const getOriginCaRootCertificate: typeof import("./getOriginCaRootCertificate").getOriginCaRootCertificate = null as any;
+export const getOriginCaRootCertificateOutput: typeof import("./getOriginCaRootCertificate").getOriginCaRootCertificateOutput = null as any;
+utilities.lazyLoad(exports, ["getOriginCaRootCertificate","getOriginCaRootCertificateOutput"], () => require("./getOriginCaRootCertificate"));
+
+export { GetRecordArgs, GetRecordResult, GetRecordOutputArgs } from "./getRecord";
+export const getRecord: typeof import("./getRecord").getRecord = null as any;
+export const getRecordOutput: typeof import("./getRecord").getRecordOutput = null as any;
+utilities.lazyLoad(exports, ["getRecord","getRecordOutput"], () => require("./getRecord"));
+
+export { GetWafGroupsArgs, GetWafGroupsResult, GetWafGroupsOutputArgs } from "./getWafGroups";
+export const getWafGroups: typeof import("./getWafGroups").getWafGroups = null as any;
+export const getWafGroupsOutput: typeof import("./getWafGroups").getWafGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getWafGroups","getWafGroupsOutput"], () => require("./getWafGroups"));
+
+export { GetWafPackagesArgs, GetWafPackagesResult, GetWafPackagesOutputArgs } from "./getWafPackages";
+export const getWafPackages: typeof import("./getWafPackages").getWafPackages = null as any;
+export const getWafPackagesOutput: typeof import("./getWafPackages").getWafPackagesOutput = null as any;
+utilities.lazyLoad(exports, ["getWafPackages","getWafPackagesOutput"], () => require("./getWafPackages"));
+
+export { GetWafRulesArgs, GetWafRulesResult, GetWafRulesOutputArgs } from "./getWafRules";
+export const getWafRules: typeof import("./getWafRules").getWafRules = null as any;
+export const getWafRulesOutput: typeof import("./getWafRules").getWafRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getWafRules","getWafRulesOutput"], () => require("./getWafRules"));
+
+export { GetZoneArgs, GetZoneResult, GetZoneOutputArgs } from "./getZone";
+export const getZone: typeof import("./getZone").getZone = null as any;
+export const getZoneOutput: typeof import("./getZone").getZoneOutput = null as any;
+utilities.lazyLoad(exports, ["getZone","getZoneOutput"], () => require("./getZone"));
+
+export { GetZoneDnssecArgs, GetZoneDnssecResult, GetZoneDnssecOutputArgs } from "./getZoneDnssec";
+export const getZoneDnssec: typeof import("./getZoneDnssec").getZoneDnssec = null as any;
+export const getZoneDnssecOutput: typeof import("./getZoneDnssec").getZoneDnssecOutput = null as any;
+utilities.lazyLoad(exports, ["getZoneDnssec","getZoneDnssecOutput"], () => require("./getZoneDnssec"));
+
+export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
+export const getZones: typeof import("./getZones").getZones = null as any;
+export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
+utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
+
+export { GreTunnelArgs, GreTunnelState } from "./greTunnel";
+export type GreTunnel = import("./greTunnel").GreTunnel;
+export const GreTunnel: typeof import("./greTunnel").GreTunnel = null as any;
+utilities.lazyLoad(exports, ["GreTunnel"], () => require("./greTunnel"));
+
+export { HealthcheckArgs, HealthcheckState } from "./healthcheck";
+export type Healthcheck = import("./healthcheck").Healthcheck;
+export const Healthcheck: typeof import("./healthcheck").Healthcheck = null as any;
+utilities.lazyLoad(exports, ["Healthcheck"], () => require("./healthcheck"));
+
+export { IpListArgs, IpListState } from "./ipList";
+export type IpList = import("./ipList").IpList;
+export const IpList: typeof import("./ipList").IpList = null as any;
+utilities.lazyLoad(exports, ["IpList"], () => require("./ipList"));
+
+export { IpsecTunnelArgs, IpsecTunnelState } from "./ipsecTunnel";
+export type IpsecTunnel = import("./ipsecTunnel").IpsecTunnel;
+export const IpsecTunnel: typeof import("./ipsecTunnel").IpsecTunnel = null as any;
+utilities.lazyLoad(exports, ["IpsecTunnel"], () => require("./ipsecTunnel"));
+
+export { ListArgs, ListState } from "./list";
+export type List = import("./list").List;
+export const List: typeof import("./list").List = null as any;
+utilities.lazyLoad(exports, ["List"], () => require("./list"));
+
+export { LoadBalancerArgs, LoadBalancerState } from "./loadBalancer";
+export type LoadBalancer = import("./loadBalancer").LoadBalancer;
+export const LoadBalancer: typeof import("./loadBalancer").LoadBalancer = null as any;
+utilities.lazyLoad(exports, ["LoadBalancer"], () => require("./loadBalancer"));
+
+export { LoadBalancerMonitorArgs, LoadBalancerMonitorState } from "./loadBalancerMonitor";
+export type LoadBalancerMonitor = import("./loadBalancerMonitor").LoadBalancerMonitor;
+export const LoadBalancerMonitor: typeof import("./loadBalancerMonitor").LoadBalancerMonitor = null as any;
+utilities.lazyLoad(exports, ["LoadBalancerMonitor"], () => require("./loadBalancerMonitor"));
+
+export { LoadBalancerPoolArgs, LoadBalancerPoolState } from "./loadBalancerPool";
+export type LoadBalancerPool = import("./loadBalancerPool").LoadBalancerPool;
+export const LoadBalancerPool: typeof import("./loadBalancerPool").LoadBalancerPool = null as any;
+utilities.lazyLoad(exports, ["LoadBalancerPool"], () => require("./loadBalancerPool"));
+
+export { LogpullRetentionArgs, LogpullRetentionState } from "./logpullRetention";
+export type LogpullRetention = import("./logpullRetention").LogpullRetention;
+export const LogpullRetention: typeof import("./logpullRetention").LogpullRetention = null as any;
+utilities.lazyLoad(exports, ["LogpullRetention"], () => require("./logpullRetention"));
+
+export { LogpushJobArgs, LogpushJobState } from "./logpushJob";
+export type LogpushJob = import("./logpushJob").LogpushJob;
+export const LogpushJob: typeof import("./logpushJob").LogpushJob = null as any;
+utilities.lazyLoad(exports, ["LogpushJob"], () => require("./logpushJob"));
+
+export { LogpushOwnershipChallengeArgs, LogpushOwnershipChallengeState } from "./logpushOwnershipChallenge";
+export type LogpushOwnershipChallenge = import("./logpushOwnershipChallenge").LogpushOwnershipChallenge;
+export const LogpushOwnershipChallenge: typeof import("./logpushOwnershipChallenge").LogpushOwnershipChallenge = null as any;
+utilities.lazyLoad(exports, ["LogpushOwnershipChallenge"], () => require("./logpushOwnershipChallenge"));
+
+export { MagicFirewallRulesetArgs, MagicFirewallRulesetState } from "./magicFirewallRuleset";
+export type MagicFirewallRuleset = import("./magicFirewallRuleset").MagicFirewallRuleset;
+export const MagicFirewallRuleset: typeof import("./magicFirewallRuleset").MagicFirewallRuleset = null as any;
+utilities.lazyLoad(exports, ["MagicFirewallRuleset"], () => require("./magicFirewallRuleset"));
+
+export { ManagedHeadersArgs, ManagedHeadersState } from "./managedHeaders";
+export type ManagedHeaders = import("./managedHeaders").ManagedHeaders;
+export const ManagedHeaders: typeof import("./managedHeaders").ManagedHeaders = null as any;
+utilities.lazyLoad(exports, ["ManagedHeaders"], () => require("./managedHeaders"));
+
+export { NotificationPolicyArgs, NotificationPolicyState } from "./notificationPolicy";
+export type NotificationPolicy = import("./notificationPolicy").NotificationPolicy;
+export const NotificationPolicy: typeof import("./notificationPolicy").NotificationPolicy = null as any;
+utilities.lazyLoad(exports, ["NotificationPolicy"], () => require("./notificationPolicy"));
+
+export { NotificationPolicyWebhooksArgs, NotificationPolicyWebhooksState } from "./notificationPolicyWebhooks";
+export type NotificationPolicyWebhooks = import("./notificationPolicyWebhooks").NotificationPolicyWebhooks;
+export const NotificationPolicyWebhooks: typeof import("./notificationPolicyWebhooks").NotificationPolicyWebhooks = null as any;
+utilities.lazyLoad(exports, ["NotificationPolicyWebhooks"], () => require("./notificationPolicyWebhooks"));
+
+export { OriginCaCertificateArgs, OriginCaCertificateState } from "./originCaCertificate";
+export type OriginCaCertificate = import("./originCaCertificate").OriginCaCertificate;
+export const OriginCaCertificate: typeof import("./originCaCertificate").OriginCaCertificate = null as any;
+utilities.lazyLoad(exports, ["OriginCaCertificate"], () => require("./originCaCertificate"));
+
+export { PageRuleArgs, PageRuleState } from "./pageRule";
+export type PageRule = import("./pageRule").PageRule;
+export const PageRule: typeof import("./pageRule").PageRule = null as any;
+utilities.lazyLoad(exports, ["PageRule"], () => require("./pageRule"));
+
+export { PagesDomainArgs, PagesDomainState } from "./pagesDomain";
+export type PagesDomain = import("./pagesDomain").PagesDomain;
+export const PagesDomain: typeof import("./pagesDomain").PagesDomain = null as any;
+utilities.lazyLoad(exports, ["PagesDomain"], () => require("./pagesDomain"));
+
+export { PagesProjectArgs, PagesProjectState } from "./pagesProject";
+export type PagesProject = import("./pagesProject").PagesProject;
+export const PagesProject: typeof import("./pagesProject").PagesProject = null as any;
+utilities.lazyLoad(exports, ["PagesProject"], () => require("./pagesProject"));
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { RateLimitArgs, RateLimitState } from "./rateLimit";
+export type RateLimit = import("./rateLimit").RateLimit;
+export const RateLimit: typeof import("./rateLimit").RateLimit = null as any;
+utilities.lazyLoad(exports, ["RateLimit"], () => require("./rateLimit"));
+
+export { RecordArgs, RecordState } from "./record";
+export type Record = import("./record").Record;
+export const Record: typeof import("./record").Record = null as any;
+utilities.lazyLoad(exports, ["Record"], () => require("./record"));
+
+export { RulesetArgs, RulesetState } from "./ruleset";
+export type Ruleset = import("./ruleset").Ruleset;
+export const Ruleset: typeof import("./ruleset").Ruleset = null as any;
+utilities.lazyLoad(exports, ["Ruleset"], () => require("./ruleset"));
+
+export { SpectrumApplicationArgs, SpectrumApplicationState } from "./spectrumApplication";
+export type SpectrumApplication = import("./spectrumApplication").SpectrumApplication;
+export const SpectrumApplication: typeof import("./spectrumApplication").SpectrumApplication = null as any;
+utilities.lazyLoad(exports, ["SpectrumApplication"], () => require("./spectrumApplication"));
+
+export { SplitTunnelArgs, SplitTunnelState } from "./splitTunnel";
+export type SplitTunnel = import("./splitTunnel").SplitTunnel;
+export const SplitTunnel: typeof import("./splitTunnel").SplitTunnel = null as any;
+utilities.lazyLoad(exports, ["SplitTunnel"], () => require("./splitTunnel"));
+
+export { StaticRouteArgs, StaticRouteState } from "./staticRoute";
+export type StaticRoute = import("./staticRoute").StaticRoute;
+export const StaticRoute: typeof import("./staticRoute").StaticRoute = null as any;
+utilities.lazyLoad(exports, ["StaticRoute"], () => require("./staticRoute"));
+
+export { TeamsAccountArgs, TeamsAccountState } from "./teamsAccount";
+export type TeamsAccount = import("./teamsAccount").TeamsAccount;
+export const TeamsAccount: typeof import("./teamsAccount").TeamsAccount = null as any;
+utilities.lazyLoad(exports, ["TeamsAccount"], () => require("./teamsAccount"));
+
+export { TeamsListArgs, TeamsListState } from "./teamsList";
+export type TeamsList = import("./teamsList").TeamsList;
+export const TeamsList: typeof import("./teamsList").TeamsList = null as any;
+utilities.lazyLoad(exports, ["TeamsList"], () => require("./teamsList"));
+
+export { TeamsLocationArgs, TeamsLocationState } from "./teamsLocation";
+export type TeamsLocation = import("./teamsLocation").TeamsLocation;
+export const TeamsLocation: typeof import("./teamsLocation").TeamsLocation = null as any;
+utilities.lazyLoad(exports, ["TeamsLocation"], () => require("./teamsLocation"));
+
+export { TeamsProxyEndpointArgs, TeamsProxyEndpointState } from "./teamsProxyEndpoint";
+export type TeamsProxyEndpoint = import("./teamsProxyEndpoint").TeamsProxyEndpoint;
+export const TeamsProxyEndpoint: typeof import("./teamsProxyEndpoint").TeamsProxyEndpoint = null as any;
+utilities.lazyLoad(exports, ["TeamsProxyEndpoint"], () => require("./teamsProxyEndpoint"));
+
+export { TeamsRuleArgs, TeamsRuleState } from "./teamsRule";
+export type TeamsRule = import("./teamsRule").TeamsRule;
+export const TeamsRule: typeof import("./teamsRule").TeamsRule = null as any;
+utilities.lazyLoad(exports, ["TeamsRule"], () => require("./teamsRule"));
+
+export { TotalTlsArgs, TotalTlsState } from "./totalTls";
+export type TotalTls = import("./totalTls").TotalTls;
+export const TotalTls: typeof import("./totalTls").TotalTls = null as any;
+utilities.lazyLoad(exports, ["TotalTls"], () => require("./totalTls"));
+
+export { TunnelRouteArgs, TunnelRouteState } from "./tunnelRoute";
+export type TunnelRoute = import("./tunnelRoute").TunnelRoute;
+export const TunnelRoute: typeof import("./tunnelRoute").TunnelRoute = null as any;
+utilities.lazyLoad(exports, ["TunnelRoute"], () => require("./tunnelRoute"));
+
+export { TunnelVirtualNetworkArgs, TunnelVirtualNetworkState } from "./tunnelVirtualNetwork";
+export type TunnelVirtualNetwork = import("./tunnelVirtualNetwork").TunnelVirtualNetwork;
+export const TunnelVirtualNetwork: typeof import("./tunnelVirtualNetwork").TunnelVirtualNetwork = null as any;
+utilities.lazyLoad(exports, ["TunnelVirtualNetwork"], () => require("./tunnelVirtualNetwork"));
+
+export { UserAgentBlockingRuleArgs, UserAgentBlockingRuleState } from "./userAgentBlockingRule";
+export type UserAgentBlockingRule = import("./userAgentBlockingRule").UserAgentBlockingRule;
+export const UserAgentBlockingRule: typeof import("./userAgentBlockingRule").UserAgentBlockingRule = null as any;
+utilities.lazyLoad(exports, ["UserAgentBlockingRule"], () => require("./userAgentBlockingRule"));
+
+export { WafGroupArgs, WafGroupState } from "./wafGroup";
+export type WafGroup = import("./wafGroup").WafGroup;
+export const WafGroup: typeof import("./wafGroup").WafGroup = null as any;
+utilities.lazyLoad(exports, ["WafGroup"], () => require("./wafGroup"));
+
+export { WafOverrideArgs, WafOverrideState } from "./wafOverride";
+export type WafOverride = import("./wafOverride").WafOverride;
+export const WafOverride: typeof import("./wafOverride").WafOverride = null as any;
+utilities.lazyLoad(exports, ["WafOverride"], () => require("./wafOverride"));
+
+export { WafPackageArgs, WafPackageState } from "./wafPackage";
+export type WafPackage = import("./wafPackage").WafPackage;
+export const WafPackage: typeof import("./wafPackage").WafPackage = null as any;
+utilities.lazyLoad(exports, ["WafPackage"], () => require("./wafPackage"));
+
+export { WafRuleArgs, WafRuleState } from "./wafRule";
+export type WafRule = import("./wafRule").WafRule;
+export const WafRule: typeof import("./wafRule").WafRule = null as any;
+utilities.lazyLoad(exports, ["WafRule"], () => require("./wafRule"));
+
+export { WaitingRoomArgs, WaitingRoomState } from "./waitingRoom";
+export type WaitingRoom = import("./waitingRoom").WaitingRoom;
+export const WaitingRoom: typeof import("./waitingRoom").WaitingRoom = null as any;
+utilities.lazyLoad(exports, ["WaitingRoom"], () => require("./waitingRoom"));
+
+export { WaitingRoomEventArgs, WaitingRoomEventState } from "./waitingRoomEvent";
+export type WaitingRoomEvent = import("./waitingRoomEvent").WaitingRoomEvent;
+export const WaitingRoomEvent: typeof import("./waitingRoomEvent").WaitingRoomEvent = null as any;
+utilities.lazyLoad(exports, ["WaitingRoomEvent"], () => require("./waitingRoomEvent"));
+
+export { WaitingRoomRulesArgs, WaitingRoomRulesState } from "./waitingRoomRules";
+export type WaitingRoomRules = import("./waitingRoomRules").WaitingRoomRules;
+export const WaitingRoomRules: typeof import("./waitingRoomRules").WaitingRoomRules = null as any;
+utilities.lazyLoad(exports, ["WaitingRoomRules"], () => require("./waitingRoomRules"));
+
+export { Web3HostnameArgs, Web3HostnameState } from "./web3Hostname";
+export type Web3Hostname = import("./web3Hostname").Web3Hostname;
+export const Web3Hostname: typeof import("./web3Hostname").Web3Hostname = null as any;
+utilities.lazyLoad(exports, ["Web3Hostname"], () => require("./web3Hostname"));
+
+export { WorkerCronTriggerArgs, WorkerCronTriggerState } from "./workerCronTrigger";
+export type WorkerCronTrigger = import("./workerCronTrigger").WorkerCronTrigger;
+export const WorkerCronTrigger: typeof import("./workerCronTrigger").WorkerCronTrigger = null as any;
+utilities.lazyLoad(exports, ["WorkerCronTrigger"], () => require("./workerCronTrigger"));
+
+export { WorkerRouteArgs, WorkerRouteState } from "./workerRoute";
+export type WorkerRoute = import("./workerRoute").WorkerRoute;
+export const WorkerRoute: typeof import("./workerRoute").WorkerRoute = null as any;
+utilities.lazyLoad(exports, ["WorkerRoute"], () => require("./workerRoute"));
+
+export { WorkerScriptArgs, WorkerScriptState } from "./workerScript";
+export type WorkerScript = import("./workerScript").WorkerScript;
+export const WorkerScript: typeof import("./workerScript").WorkerScript = null as any;
+utilities.lazyLoad(exports, ["WorkerScript"], () => require("./workerScript"));
+
+export { WorkersKvArgs, WorkersKvState } from "./workersKv";
+export type WorkersKv = import("./workersKv").WorkersKv;
+export const WorkersKv: typeof import("./workersKv").WorkersKv = null as any;
+utilities.lazyLoad(exports, ["WorkersKv"], () => require("./workersKv"));
+
+export { WorkersKvNamespaceArgs, WorkersKvNamespaceState } from "./workersKvNamespace";
+export type WorkersKvNamespace = import("./workersKvNamespace").WorkersKvNamespace;
+export const WorkersKvNamespace: typeof import("./workersKvNamespace").WorkersKvNamespace = null as any;
+utilities.lazyLoad(exports, ["WorkersKvNamespace"], () => require("./workersKvNamespace"));
+
+export { ZoneArgs, ZoneState } from "./zone";
+export type Zone = import("./zone").Zone;
+export const Zone: typeof import("./zone").Zone = null as any;
+utilities.lazyLoad(exports, ["Zone"], () => require("./zone"));
+
+export { ZoneCacheVariantsArgs, ZoneCacheVariantsState } from "./zoneCacheVariants";
+export type ZoneCacheVariants = import("./zoneCacheVariants").ZoneCacheVariants;
+export const ZoneCacheVariants: typeof import("./zoneCacheVariants").ZoneCacheVariants = null as any;
+utilities.lazyLoad(exports, ["ZoneCacheVariants"], () => require("./zoneCacheVariants"));
+
+export { ZoneDnssecArgs, ZoneDnssecState } from "./zoneDnssec";
+export type ZoneDnssec = import("./zoneDnssec").ZoneDnssec;
+export const ZoneDnssec: typeof import("./zoneDnssec").ZoneDnssec = null as any;
+utilities.lazyLoad(exports, ["ZoneDnssec"], () => require("./zoneDnssec"));
+
+export { ZoneLockdownArgs, ZoneLockdownState } from "./zoneLockdown";
+export type ZoneLockdown = import("./zoneLockdown").ZoneLockdown;
+export const ZoneLockdown: typeof import("./zoneLockdown").ZoneLockdown = null as any;
+utilities.lazyLoad(exports, ["ZoneLockdown"], () => require("./zoneLockdown"));
+
+export { ZoneSettingsOverrideArgs, ZoneSettingsOverrideState } from "./zoneSettingsOverride";
+export type ZoneSettingsOverride = import("./zoneSettingsOverride").ZoneSettingsOverride;
+export const ZoneSettingsOverride: typeof import("./zoneSettingsOverride").ZoneSettingsOverride = null as any;
+utilities.lazyLoad(exports, ["ZoneSettingsOverride"], () => require("./zoneSettingsOverride"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -117,96 +527,6 @@ export {
     config,
     types,
 };
-
-// Import resources to register:
-import { AccessApplication } from "./accessApplication";
-import { AccessBookmark } from "./accessBookmark";
-import { AccessCaCertificate } from "./accessCaCertificate";
-import { AccessGroup } from "./accessGroup";
-import { AccessIdentityProvider } from "./accessIdentityProvider";
-import { AccessKeysConfiguration } from "./accessKeysConfiguration";
-import { AccessMutualTlsCertificate } from "./accessMutualTlsCertificate";
-import { AccessOrganization } from "./accessOrganization";
-import { AccessPolicy } from "./accessPolicy";
-import { AccessRule } from "./accessRule";
-import { AccessServiceToken } from "./accessServiceToken";
-import { Account } from "./account";
-import { AccountMember } from "./accountMember";
-import { ApiShield } from "./apiShield";
-import { ApiToken } from "./apiToken";
-import { Argo } from "./argo";
-import { ArgoTunnel } from "./argoTunnel";
-import { AuthenticatedOriginPulls } from "./authenticatedOriginPulls";
-import { AuthenticatedOriginPullsCertificate } from "./authenticatedOriginPullsCertificate";
-import { ByoIpPrefix } from "./byoIpPrefix";
-import { CertificatePack } from "./certificatePack";
-import { CustomHostname } from "./customHostname";
-import { CustomHostnameFallbackOrigin } from "./customHostnameFallbackOrigin";
-import { CustomPages } from "./customPages";
-import { CustomSsl } from "./customSsl";
-import { DevicePolicyCertificates } from "./devicePolicyCertificates";
-import { DevicePostureIntegration } from "./devicePostureIntegration";
-import { DevicePostureRule } from "./devicePostureRule";
-import { DlpProfile } from "./dlpProfile";
-import { EmailRoutingAddress } from "./emailRoutingAddress";
-import { EmailRoutingCatchAll } from "./emailRoutingCatchAll";
-import { EmailRoutingRule } from "./emailRoutingRule";
-import { EmailRoutingSettings } from "./emailRoutingSettings";
-import { FallbackDomain } from "./fallbackDomain";
-import { Filter } from "./filter";
-import { FirewallRule } from "./firewallRule";
-import { GreTunnel } from "./greTunnel";
-import { Healthcheck } from "./healthcheck";
-import { IpList } from "./ipList";
-import { IpsecTunnel } from "./ipsecTunnel";
-import { List } from "./list";
-import { LoadBalancer } from "./loadBalancer";
-import { LoadBalancerMonitor } from "./loadBalancerMonitor";
-import { LoadBalancerPool } from "./loadBalancerPool";
-import { LogpullRetention } from "./logpullRetention";
-import { LogpushJob } from "./logpushJob";
-import { LogpushOwnershipChallenge } from "./logpushOwnershipChallenge";
-import { MagicFirewallRuleset } from "./magicFirewallRuleset";
-import { ManagedHeaders } from "./managedHeaders";
-import { NotificationPolicy } from "./notificationPolicy";
-import { NotificationPolicyWebhooks } from "./notificationPolicyWebhooks";
-import { OriginCaCertificate } from "./originCaCertificate";
-import { PageRule } from "./pageRule";
-import { PagesDomain } from "./pagesDomain";
-import { PagesProject } from "./pagesProject";
-import { RateLimit } from "./rateLimit";
-import { Record } from "./record";
-import { Ruleset } from "./ruleset";
-import { SpectrumApplication } from "./spectrumApplication";
-import { SplitTunnel } from "./splitTunnel";
-import { StaticRoute } from "./staticRoute";
-import { TeamsAccount } from "./teamsAccount";
-import { TeamsList } from "./teamsList";
-import { TeamsLocation } from "./teamsLocation";
-import { TeamsProxyEndpoint } from "./teamsProxyEndpoint";
-import { TeamsRule } from "./teamsRule";
-import { TotalTls } from "./totalTls";
-import { TunnelRoute } from "./tunnelRoute";
-import { TunnelVirtualNetwork } from "./tunnelVirtualNetwork";
-import { UserAgentBlockingRule } from "./userAgentBlockingRule";
-import { WafGroup } from "./wafGroup";
-import { WafOverride } from "./wafOverride";
-import { WafPackage } from "./wafPackage";
-import { WafRule } from "./wafRule";
-import { WaitingRoom } from "./waitingRoom";
-import { WaitingRoomEvent } from "./waitingRoomEvent";
-import { WaitingRoomRules } from "./waitingRoomRules";
-import { Web3Hostname } from "./web3Hostname";
-import { WorkerCronTrigger } from "./workerCronTrigger";
-import { WorkerRoute } from "./workerRoute";
-import { WorkerScript } from "./workerScript";
-import { WorkersKv } from "./workersKv";
-import { WorkersKvNamespace } from "./workersKvNamespace";
-import { Zone } from "./zone";
-import { ZoneCacheVariants } from "./zoneCacheVariants";
-import { ZoneDnssec } from "./zoneDnssec";
-import { ZoneLockdown } from "./zoneLockdown";
-import { ZoneSettingsOverride } from "./zoneSettingsOverride";
 
 const _module = {
     version: utilities.getVersion(),
@@ -481,9 +801,6 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/zoneCacheVariants", _
 pulumi.runtime.registerResourceModule("cloudflare", "index/zoneDnssec", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zoneLockdown", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zoneSettingsOverride", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("cloudflare", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

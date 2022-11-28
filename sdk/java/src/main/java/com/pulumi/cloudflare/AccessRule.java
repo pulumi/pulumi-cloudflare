@@ -88,19 +88,19 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * # User level access rule import.
+ * User level access rule import.
  * 
  * ```sh
  *  $ pulumi import cloudflare:index/accessRule:AccessRule default user/&lt;user_id&gt;/&lt;rule_id&gt;
  * ```
  * 
- * # Zone level access rule import.
+ *  Zone level access rule import.
  * 
  * ```sh
  *  $ pulumi import cloudflare:index/accessRule:AccessRule default zone/&lt;zone_id&gt;/&lt;rule_id&gt;
  * ```
  * 
- * # Account level access rule import.
+ *  Account level access rule import.
  * 
  * ```sh
  *  $ pulumi import cloudflare:index/accessRule:AccessRule default account/&lt;account_id&gt;/&lt;rule_id&gt;

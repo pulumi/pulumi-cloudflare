@@ -13,17 +13,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const originCa = pulumi.output(cloudflare.getOriginCaRootCertificate({
+ * const originCa = cloudflare.getOriginCaRootCertificate({
  *     algorithm: "<algorithm>",
- * }));
+ * });
  * ```
  */
 export function getOriginCaRootCertificate(args: GetOriginCaRootCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetOriginCaRootCertificateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate", {
         "algorithm": args.algorithm,
     }, opts);

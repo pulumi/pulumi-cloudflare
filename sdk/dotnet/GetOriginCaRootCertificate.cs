@@ -36,7 +36,7 @@ namespace Pulumi.Cloudflare
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetOriginCaRootCertificateResult> InvokeAsync(GetOriginCaRootCertificateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOriginCaRootCertificateResult>("cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate", args ?? new GetOriginCaRootCertificateArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOriginCaRootCertificateResult>("cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate", args ?? new GetOriginCaRootCertificateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates) for a given algorithm.
@@ -63,7 +63,7 @@ namespace Pulumi.Cloudflare
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetOriginCaRootCertificateResult> Invoke(GetOriginCaRootCertificateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOriginCaRootCertificateResult>("cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate", args ?? new GetOriginCaRootCertificateInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOriginCaRootCertificateResult>("cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate", args ?? new GetOriginCaRootCertificateInvokeArgs(), options.WithDefaults());
     }
 
 

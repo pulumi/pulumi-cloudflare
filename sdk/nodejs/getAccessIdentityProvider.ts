@@ -29,11 +29,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getAccessIdentityProvider(args: GetAccessIdentityProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessIdentityProviderResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", {
         "accountId": args.accountId,
         "name": args.name,

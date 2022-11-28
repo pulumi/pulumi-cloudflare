@@ -46,7 +46,7 @@ import (
 //
 // ## Import
 //
-// # Use the Zone ID and Waiting Room ID to import.
+// Use the Zone ID and Waiting Room ID to import.
 //
 // ```sh
 //

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -17,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const httpMonitor = new cloudflare.LoadBalancerMonitor("http_monitor", {
+ * const httpMonitor = new cloudflare.LoadBalancerMonitor("httpMonitor", {
  *     allowInsecure: false,
  *     description: "example http load balancer",
  *     expectedBody: "alive",
@@ -42,7 +43,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const tcpMonitor = new cloudflare.LoadBalancerMonitor("tcp_monitor", {
+ * const tcpMonitor = new cloudflare.LoadBalancerMonitor("tcpMonitor", {
  *     description: "example tcp load balancer",
  *     interval: 60,
  *     method: "connection_established",

@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupZone(ctx, &GetZoneArgs{
+//			_, err = cloudflare.LookupZone(ctx, &GetZoneArgs{
 //				ZoneId: pulumi.StringRef("0b6d347b01d437a092be84c2edfce72c"),
 //			}, nil)
 //			if err != nil {

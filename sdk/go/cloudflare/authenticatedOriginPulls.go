@@ -79,7 +79,7 @@ import (
 //
 // ## Import
 //
-// Authenticated Origin Pull configuration can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, with each section filled or left blank e.g. # Import Authenticated Origin Pull configuration
+// Authenticated Origin Pull configuration can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, with each section filled or left blank e.g. Import Authenticated Origin Pull configuration
 //
 // ```sh
 //
@@ -87,7 +87,7 @@ import (
 //
 // ```
 //
-// # Import Per-Zone Authenticated Origin Pull configuration
+//	Import Per-Zone Authenticated Origin Pull configuration
 //
 // ```sh
 //
@@ -95,7 +95,7 @@ import (
 //
 // ```
 //
-// # Import Per-Hostname Authenticated Origin Pull configuration
+//	Import Per-Hostname Authenticated Origin Pull configuration
 //
 // ```sh
 //

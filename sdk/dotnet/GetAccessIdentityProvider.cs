@@ -51,7 +51,7 @@ namespace Pulumi.Cloudflare
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccessIdentityProviderResult> InvokeAsync(GetAccessIdentityProviderArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccessIdentityProviderResult>("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", args ?? new GetAccessIdentityProviderArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessIdentityProviderResult>("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", args ?? new GetAccessIdentityProviderArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to lookup a single [Access Identity Provider][access_identity_provider_guide] by name.
@@ -93,7 +93,7 @@ namespace Pulumi.Cloudflare
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccessIdentityProviderResult> Invoke(GetAccessIdentityProviderInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccessIdentityProviderResult>("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", args ?? new GetAccessIdentityProviderInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccessIdentityProviderResult>("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", args ?? new GetAccessIdentityProviderInvokeArgs(), options.WithDefaults());
     }
 
 
