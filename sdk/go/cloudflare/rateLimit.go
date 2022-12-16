@@ -33,8 +33,8 @@ import (
 //				ZoneId:    pulumi.Any(_var.Cloudflare_zone_id),
 //				Threshold: pulumi.Int(2000),
 //				Period:    pulumi.Int(2),
-//				Match: &RateLimitMatchArgs{
-//					Request: &RateLimitMatchRequestArgs{
+//				Match: &cloudflare.RateLimitMatchArgs{
+//					Request: &cloudflare.RateLimitMatchRequestArgs{
 //						UrlPattern: pulumi.String(fmt.Sprintf("%v/*", _var.Cloudflare_zone)),
 //						Schemes: pulumi.StringArray{
 //							pulumi.String("HTTP"),
@@ -49,7 +49,7 @@ import (
 //							pulumi.String("HEAD"),
 //						},
 //					},
-//					Response: &RateLimitMatchResponseArgs{
+//					Response: &cloudflare.RateLimitMatchResponseArgs{
 //						Statuses: pulumi.IntArray{
 //							pulumi.Int(200),
 //							pulumi.Int(201),
@@ -72,15 +72,15 @@ import (
 //						},
 //					},
 //				},
-//				Action: &RateLimitActionArgs{
+//				Action: &cloudflare.RateLimitActionArgs{
 //					Mode:    pulumi.String("simulate"),
 //					Timeout: pulumi.Int(43200),
-//					Response: &RateLimitActionResponseArgs{
+//					Response: &cloudflare.RateLimitActionResponseArgs{
 //						ContentType: pulumi.String("text/plain"),
 //						Body:        pulumi.String("custom response body"),
 //					},
 //				},
-//				Correlate: &RateLimitCorrelateArgs{
+//				Correlate: &cloudflare.RateLimitCorrelateArgs{
 //					By: pulumi.String("nat"),
 //				},
 //				Disabled:    pulumi.Bool(false),

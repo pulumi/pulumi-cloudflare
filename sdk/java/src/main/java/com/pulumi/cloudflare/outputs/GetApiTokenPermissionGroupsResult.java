@@ -12,18 +12,43 @@ import java.util.Objects;
 @CustomType
 public final class GetApiTokenPermissionGroupsResult {
     /**
+     * @return Map of permissions for account level resources.
+     * 
+     */
+    private Map<String,Object> account;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
     /**
-     * @return A map of permission groups where keys are human-readable permission names
-     * and values are permission IDs.
+     * @return Map of all permissions available. Should not be used as some permissions will overlap resource scope. Instead, use resource level specific attributes.
+     * 
+     * @deprecated
+     * Use specific account, zone or user attributes instead.
      * 
      */
+    @Deprecated /* Use specific account, zone or user attributes instead. */
     private Map<String,Object> permissions;
+    /**
+     * @return Map of permissions for user level resources.
+     * 
+     */
+    private Map<String,Object> user;
+    /**
+     * @return Map of permissions for zone level resources.
+     * 
+     */
+    private Map<String,Object> zone;
 
     private GetApiTokenPermissionGroupsResult() {}
+    /**
+     * @return Map of permissions for account level resources.
+     * 
+     */
+    public Map<String,Object> account() {
+        return this.account;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -32,12 +57,29 @@ public final class GetApiTokenPermissionGroupsResult {
         return this.id;
     }
     /**
-     * @return A map of permission groups where keys are human-readable permission names
-     * and values are permission IDs.
+     * @return Map of all permissions available. Should not be used as some permissions will overlap resource scope. Instead, use resource level specific attributes.
+     * 
+     * @deprecated
+     * Use specific account, zone or user attributes instead.
      * 
      */
+    @Deprecated /* Use specific account, zone or user attributes instead. */
     public Map<String,Object> permissions() {
         return this.permissions;
+    }
+    /**
+     * @return Map of permissions for user level resources.
+     * 
+     */
+    public Map<String,Object> user() {
+        return this.user;
+    }
+    /**
+     * @return Map of permissions for zone level resources.
+     * 
+     */
+    public Map<String,Object> zone() {
+        return this.zone;
     }
 
     public static Builder builder() {
@@ -49,15 +91,26 @@ public final class GetApiTokenPermissionGroupsResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Map<String,Object> account;
         private String id;
         private Map<String,Object> permissions;
+        private Map<String,Object> user;
+        private Map<String,Object> zone;
         public Builder() {}
         public Builder(GetApiTokenPermissionGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.account = defaults.account;
     	      this.id = defaults.id;
     	      this.permissions = defaults.permissions;
+    	      this.user = defaults.user;
+    	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
+        public Builder account(Map<String,Object> account) {
+            this.account = Objects.requireNonNull(account);
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
@@ -68,10 +121,23 @@ public final class GetApiTokenPermissionGroupsResult {
             this.permissions = Objects.requireNonNull(permissions);
             return this;
         }
+        @CustomType.Setter
+        public Builder user(Map<String,Object> user) {
+            this.user = Objects.requireNonNull(user);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder zone(Map<String,Object> zone) {
+            this.zone = Objects.requireNonNull(zone);
+            return this;
+        }
         public GetApiTokenPermissionGroupsResult build() {
             final var o = new GetApiTokenPermissionGroupsResult();
+            o.account = account;
             o.id = id;
             o.permissions = permissions;
+            o.user = user;
+            o.zone = zone;
             return o;
         }
     }

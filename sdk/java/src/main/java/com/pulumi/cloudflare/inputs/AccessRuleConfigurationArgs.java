@@ -14,14 +14,14 @@ public final class AccessRuleConfigurationArgs extends com.pulumi.resources.Reso
     public static final AccessRuleConfigurationArgs Empty = new AccessRuleConfigurationArgs();
 
     /**
-     * The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`.
+     * The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="target", required=true)
     private Output<String> target;
 
     /**
-     * @return The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`.
+     * @return The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> target() {
@@ -29,14 +29,14 @@ public final class AccessRuleConfigurationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The value to target. Depends on target&#39;s type.
+     * The value to target. Depends on target&#39;s type. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return The value to target. Depends on target&#39;s type.
+     * @return The value to target. Depends on target&#39;s type. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> value() {
@@ -69,7 +69,7 @@ public final class AccessRuleConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param target The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`.
+         * @param target The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class AccessRuleConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param target The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`.
+         * @param target The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class AccessRuleConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param value The value to target. Depends on target&#39;s type.
+         * @param value The value to target. Depends on target&#39;s type. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class AccessRuleConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param value The value to target. Depends on target&#39;s type.
+         * @param value The value to target. Depends on target&#39;s type. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

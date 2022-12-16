@@ -32,10 +32,10 @@ class WaitingRoomArgs:
         """
         The set of arguments for constructing a WaitingRoom resource.
         :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
-        :param pulumi.Input[str] name: A unique name to identify the waiting room.
+        :param pulumi.Input[str] name: A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
         :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
@@ -89,7 +89,7 @@ class WaitingRoomArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        A unique name to identify the waiting room.
+        A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -125,7 +125,7 @@ class WaitingRoomArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -280,7 +280,7 @@ class _WaitingRoomState:
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
         :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
         :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
-        :param pulumi.Input[str] name: A unique name to identify the waiting room.
+        :param pulumi.Input[str] name: A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
         :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Defaults to `/`.
         :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
@@ -288,7 +288,7 @@ class _WaitingRoomState:
         :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
         :param pulumi.Input[bool] suspended: Suspends the waiting room.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         if custom_page_html is not None:
             pulumi.set(__self__, "custom_page_html", custom_page_html)
@@ -397,7 +397,7 @@ class _WaitingRoomState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A unique name to identify the waiting room.
+        A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -493,7 +493,7 @@ class _WaitingRoomState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -558,7 +558,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
         :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
         :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
-        :param pulumi.Input[str] name: A unique name to identify the waiting room.
+        :param pulumi.Input[str] name: A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
         :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Defaults to `/`.
         :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
@@ -566,7 +566,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
         :param pulumi.Input[bool] suspended: Suspends the waiting room.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -703,7 +703,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
         :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
         :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
-        :param pulumi.Input[str] name: A unique name to identify the waiting room.
+        :param pulumi.Input[str] name: A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
         :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Defaults to `/`.
         :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
@@ -711,7 +711,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
         :param pulumi.Input[bool] suspended: Suspends the waiting room.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -786,7 +786,7 @@ class WaitingRoom(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        A unique name to identify the waiting room.
+        A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -850,7 +850,7 @@ class WaitingRoom(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 

@@ -63,11 +63,11 @@ export class AccessServiceToken extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * UUID client ID associated with the Service Token.
+     * UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
      */
     public /*out*/ readonly clientId!: pulumi.Output<string>;
     /**
-     * A secret for interacting with Access protocols.
+     * A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
      */
     public /*out*/ readonly clientSecret!: pulumi.Output<string>;
     /**
@@ -136,11 +136,11 @@ export interface AccessServiceTokenState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * UUID client ID associated with the Service Token.
+     * UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
      */
     clientId?: pulumi.Input<string>;
     /**
-     * A secret for interacting with Access protocols.
+     * A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
      */
     clientSecret?: pulumi.Input<string>;
     /**

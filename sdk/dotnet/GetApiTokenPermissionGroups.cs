@@ -12,7 +12,8 @@ namespace Pulumi.Cloudflare
     public static class GetApiTokenPermissionGroups
     {
         /// <summary>
-        /// Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions). Commonly used as references within [`cloudflare.ApiToken`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
+        /// Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions).
+        /// Commonly used as references within [`cloudflare_token`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -25,11 +26,13 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Cloudflare.GetApiTokenPermissionGroups.Invoke();
+        ///     var all = Cloudflare.GetApiTokenPermissionGroups.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dnsReadPermissionId"] = test.Apply(getApiTokenPermissionGroupsResult =&gt; getApiTokenPermissionGroupsResult.Permissions?.DNS_Read),
+        ///         ["dnsReadPermissionId"] = all.Apply(getApiTokenPermissionGroupsResult =&gt; getApiTokenPermissionGroupsResult.Zone?.DNS_Read),
+        ///         ["accountLbMonitorsAndReadId"] = all.Apply(getApiTokenPermissionGroupsResult =&gt; getApiTokenPermissionGroupsResult.Account?.Load_Balancing__Monitors_and_Pools_Read),
+        ///         ["userMembershipsReadId"] = all.Apply(getApiTokenPermissionGroupsResult =&gt; getApiTokenPermissionGroupsResult.User?.Memberships_Read),
         ///     };
         /// });
         /// ```
@@ -45,23 +48,43 @@ namespace Pulumi.Cloudflare
     public sealed class GetApiTokenPermissionGroupsResult
     {
         /// <summary>
+        /// Map of permissions for account level resources.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object> Account;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A map of permission groups where keys are human-readable permission names
-        /// and values are permission IDs.
+        /// Map of all permissions available. Should not be used as some permissions will overlap resource scope. Instead, use resource level specific attributes.
         /// </summary>
         public readonly ImmutableDictionary<string, object> Permissions;
+        /// <summary>
+        /// Map of permissions for user level resources.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object> User;
+        /// <summary>
+        /// Map of permissions for zone level resources.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object> Zone;
 
         [OutputConstructor]
         private GetApiTokenPermissionGroupsResult(
+            ImmutableDictionary<string, object> account,
+
             string id,
 
-            ImmutableDictionary<string, object> permissions)
+            ImmutableDictionary<string, object> permissions,
+
+            ImmutableDictionary<string, object> user,
+
+            ImmutableDictionary<string, object> zone)
         {
+            Account = account;
             Id = id;
             Permissions = permissions;
+            User = user;
+            Zone = zone;
         }
     }
 }

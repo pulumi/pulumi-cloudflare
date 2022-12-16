@@ -29,38 +29,38 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewTeamsAccount(ctx, "main", &cloudflare.TeamsAccountArgs{
 //				AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-//				Antivirus: &TeamsAccountAntivirusArgs{
+//				Antivirus: &cloudflare.TeamsAccountAntivirusArgs{
 //					EnabledDownloadPhase: pulumi.Bool(true),
 //					EnabledUploadPhase:   pulumi.Bool(false),
 //					FailClosed:           pulumi.Bool(true),
 //				},
-//				BlockPage: &TeamsAccountBlockPageArgs{
+//				BlockPage: &cloudflare.TeamsAccountBlockPageArgs{
 //					BackgroundColor: pulumi.String("#000000"),
 //					FooterText:      pulumi.String("hello"),
 //					HeaderText:      pulumi.String("hello"),
 //					LogoPath:        pulumi.String("https://google.com"),
 //				},
-//				Fips: &TeamsAccountFipsArgs{
+//				Fips: &cloudflare.TeamsAccountFipsArgs{
 //					Tls: pulumi.Bool(true),
 //				},
-//				Logging: &TeamsAccountLoggingArgs{
+//				Logging: &cloudflare.TeamsAccountLoggingArgs{
 //					RedactPii: pulumi.Bool(true),
-//					SettingsByRuleType: &TeamsAccountLoggingSettingsByRuleTypeArgs{
-//						Dns: &TeamsAccountLoggingSettingsByRuleTypeDnsArgs{
+//					SettingsByRuleType: &cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs{
+//						Dns: &cloudflare.TeamsAccountLoggingSettingsByRuleTypeDnsArgs{
 //							LogAll:    pulumi.Bool(false),
 //							LogBlocks: pulumi.Bool(true),
 //						},
-//						Http: &TeamsAccountLoggingSettingsByRuleTypeHttpArgs{
+//						Http: &cloudflare.TeamsAccountLoggingSettingsByRuleTypeHttpArgs{
 //							LogAll:    pulumi.Bool(true),
 //							LogBlocks: pulumi.Bool(true),
 //						},
-//						L4: &TeamsAccountLoggingSettingsByRuleTypeL4Args{
+//						L4: &cloudflare.TeamsAccountLoggingSettingsByRuleTypeL4Args{
 //							LogAll:    pulumi.Bool(false),
 //							LogBlocks: pulumi.Bool(true),
 //						},
 //					},
 //				},
-//				Proxy: &TeamsAccountProxyArgs{
+//				Proxy: &cloudflare.TeamsAccountProxyArgs{
 //					Tcp: pulumi.Bool(true),
 //					Udp: pulumi.Bool(true),
 //				},

@@ -54,7 +54,7 @@ import (
 type TunnelVirtualNetwork struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Description of the tunnel virtual network.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
@@ -99,7 +99,7 @@ func GetTunnelVirtualNetwork(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TunnelVirtualNetwork resources.
 type tunnelVirtualNetworkState struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string `pulumi:"accountId"`
 	// Description of the tunnel virtual network.
 	Comment *string `pulumi:"comment"`
@@ -110,7 +110,7 @@ type tunnelVirtualNetworkState struct {
 }
 
 type TunnelVirtualNetworkState struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
 	// Description of the tunnel virtual network.
 	Comment pulumi.StringPtrInput
@@ -125,7 +125,7 @@ func (TunnelVirtualNetworkState) ElementType() reflect.Type {
 }
 
 type tunnelVirtualNetworkArgs struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId string `pulumi:"accountId"`
 	// Description of the tunnel virtual network.
 	Comment *string `pulumi:"comment"`
@@ -137,7 +137,7 @@ type tunnelVirtualNetworkArgs struct {
 
 // The set of arguments for constructing a TunnelVirtualNetwork resource.
 type TunnelVirtualNetworkArgs struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringInput
 	// Description of the tunnel virtual network.
 	Comment pulumi.StringPtrInput
@@ -234,7 +234,7 @@ func (o TunnelVirtualNetworkOutput) ToTunnelVirtualNetworkOutputWithContext(ctx 
 	return o
 }
 
-// The account identifier to target for the resource.
+// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o TunnelVirtualNetworkOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TunnelVirtualNetwork) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

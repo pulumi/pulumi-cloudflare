@@ -94,14 +94,14 @@ public class CustomHostname extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customOriginSni);
     }
     /**
-     * Hostname you intend to request a certificate for.
+     * Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="hostname", type=String.class, parameters={})
     private Output<String> hostname;
 
     /**
-     * @return Hostname you intend to request a certificate for.
+     * @return Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> hostname() {
@@ -162,14 +162,14 @@ public class CustomHostname extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.waitForSslPendingValidation);
     }
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {

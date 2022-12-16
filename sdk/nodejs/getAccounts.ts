@@ -53,9 +53,22 @@ export interface GetAccountsResult {
      */
     readonly name?: string;
 }
-
+/**
+ * Data source for looking up Cloudflare Accounts.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = cloudflare.getAccounts({
+ *     name: "example account",
+ * });
+ * ```
+ */
 export function getAccountsOutput(args?: GetAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
-    return pulumi.output(args).apply(a => getAccounts(a, opts))
+    return pulumi.output(args).apply((a: any) => getAccounts(a, opts))
 }
 
 /**

@@ -34,13 +34,13 @@ import (
 //				Description: pulumi.String("Device posture rule for corporate devices."),
 //				Schedule:    pulumi.String("24h"),
 //				Expiration:  pulumi.String("24h"),
-//				Matches: DevicePostureRuleMatchArray{
-//					&DevicePostureRuleMatchArgs{
+//				Matches: cloudflare.DevicePostureRuleMatchArray{
+//					&cloudflare.DevicePostureRuleMatchArgs{
 //						Platform: pulumi.String("linux"),
 //					},
 //				},
-//				Inputs: DevicePostureRuleInputTypeArray{
-//					&DevicePostureRuleInputTypeArgs{
+//				Inputs: cloudflare.DevicePostureRuleInputTypeArray{
+//					&cloudflare.DevicePostureRuleInputTypeArgs{
 //						Id:               pulumi.Any(cloudflare_teams_list.Corporate_devices.Id),
 //						Version:          pulumi.String("1.0.0"),
 //						Operator:         pulumi.String("<"),

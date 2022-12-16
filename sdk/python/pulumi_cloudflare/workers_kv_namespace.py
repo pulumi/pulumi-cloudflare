@@ -14,43 +14,67 @@ __all__ = ['WorkersKvNamespaceArgs', 'WorkersKvNamespace']
 @pulumi.input_type
 class WorkersKvNamespaceArgs:
     def __init__(__self__, *,
-                 title: pulumi.Input[str]):
+                 title: pulumi.Input[str],
+                 account_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkersKvNamespace resource.
-        :param pulumi.Input[str] title: The name of the namespace you wish to create.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         """
         pulumi.set(__self__, "title", title)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
 
     @property
     @pulumi.getter
     def title(self) -> pulumi.Input[str]:
-        """
-        The name of the namespace you wish to create.
-        """
         return pulumi.get(self, "title")
 
     @title.setter
     def title(self, value: pulumi.Input[str]):
         pulumi.set(self, "title", value)
 
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account identifier to target for the resource.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
+
 
 @pulumi.input_type
 class _WorkersKvNamespaceState:
     def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WorkersKvNamespace resources.
-        :param pulumi.Input[str] title: The name of the namespace you wish to create.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if title is not None:
             pulumi.set(__self__, "title", title)
 
     @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account identifier to target for the resource.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
+
+    @property
     @pulumi.getter
     def title(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the namespace you wish to create.
-        """
         return pulumi.get(self, "title")
 
     @title.setter
@@ -63,10 +87,14 @@ class WorkersKvNamespace(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Workers KV Namespace
+        Provides the ability to manage Cloudflare Workers KV Namespace features.
+
+        > This resource uses the Cloudflare account APIs. This requires setting the
+        `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
 
         ## Example Usage
 
@@ -74,22 +102,20 @@ class WorkersKvNamespace(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.WorkersKvNamespace("example", title="test-namespace")
+        example = cloudflare.WorkersKvNamespace("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            title="test-namespace")
         ```
 
         ## Import
 
-        Workers KV Namespace settings can be imported using it's ID
-
         ```sh
-         $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example beaeb6716c9443eaa4deef11763ccca6
+         $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example <account_id>/<namespace_id>
         ```
-
-         where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] title: The name of the namespace you wish to create.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         """
         ...
     @overload
@@ -98,7 +124,10 @@ class WorkersKvNamespace(pulumi.CustomResource):
                  args: WorkersKvNamespaceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Workers KV Namespace
+        Provides the ability to manage Cloudflare Workers KV Namespace features.
+
+        > This resource uses the Cloudflare account APIs. This requires setting the
+        `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
 
         ## Example Usage
 
@@ -106,18 +135,16 @@ class WorkersKvNamespace(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.WorkersKvNamespace("example", title="test-namespace")
+        example = cloudflare.WorkersKvNamespace("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            title="test-namespace")
         ```
 
         ## Import
 
-        Workers KV Namespace settings can be imported using it's ID
-
         ```sh
-         $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example beaeb6716c9443eaa4deef11763ccca6
+         $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example <account_id>/<namespace_id>
         ```
-
-         where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace
 
         :param str resource_name: The name of the resource.
         :param WorkersKvNamespaceArgs args: The arguments to use to populate this resource's properties.
@@ -134,6 +161,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -144,6 +172,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkersKvNamespaceArgs.__new__(WorkersKvNamespaceArgs)
 
+            __props__.__dict__["account_id"] = account_id
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
@@ -157,6 +186,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: Optional[pulumi.Input[str]] = None,
             title: Optional[pulumi.Input[str]] = None) -> 'WorkersKvNamespace':
         """
         Get an existing WorkersKvNamespace resource's state with the given name, id, and optional extra
@@ -165,20 +195,26 @@ class WorkersKvNamespace(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] title: The name of the namespace you wish to create.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _WorkersKvNamespaceState.__new__(_WorkersKvNamespaceState)
 
+        __props__.__dict__["account_id"] = account_id
         __props__.__dict__["title"] = title
         return WorkersKvNamespace(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Output[str]:
+        """
+        The account identifier to target for the resource.
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
     @pulumi.getter
     def title(self) -> pulumi.Output[str]:
-        """
-        The name of the namespace you wish to create.
-        """
         return pulumi.get(self, "title")
 

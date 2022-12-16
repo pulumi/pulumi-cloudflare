@@ -34,7 +34,7 @@ import (
 //				cloudflareZoneId = param
 //			}
 //			_, err := cloudflare.NewCustomSsl(ctx, "foossl", &cloudflare.CustomSslArgs{
-//				CustomSslOptions: &CustomSslCustomSslOptionsArgs{
+//				CustomSslOptions: &cloudflare.CustomSslCustomSslOptionsArgs{
 //					BundleMethod:    pulumi.String("ubiquitous"),
 //					Certificate:     pulumi.String("-----INSERT CERTIFICATE-----"),
 //					GeoRestrictions: pulumi.String("us"),

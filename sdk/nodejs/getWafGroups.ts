@@ -74,9 +74,28 @@ export interface GetWafGroupsResult {
     readonly packageId?: string;
     readonly zoneId: string;
 }
-
+/**
+ * Use this data source to look up [WAF Rule Groups](https://api.cloudflare.com/#waf-rule-groups-properties).
+ *
+ * ## Example Usage
+ *
+ * The example below matches all WAF Rule Groups that contain the word `example` and are currently `on`. The matched WAF Rule Groups are then returned as output.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const test = cloudflare.getWafGroups({
+ *     filter: {
+ *         name: ".*example.*",
+ *         mode: "on",
+ *     },
+ * });
+ * export const wafGroups = test.then(test => test.groups);
+ * ```
+ */
 export function getWafGroupsOutput(args: GetWafGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWafGroupsResult> {
-    return pulumi.output(args).apply(a => getWafGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getWafGroups(a, opts))
 }
 
 /**

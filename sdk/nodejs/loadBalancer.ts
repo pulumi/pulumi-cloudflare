@@ -179,7 +179,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly ttl!: pulumi.Output<number>;
     /**
-     * The zone ID to add the load balancer to.
+     * The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -343,7 +343,7 @@ export interface LoadBalancerState {
      */
     ttl?: pulumi.Input<number>;
     /**
-     * The zone ID to add the load balancer to.
+     * The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -425,7 +425,7 @@ export interface LoadBalancerArgs {
      */
     ttl?: pulumi.Input<number>;
     /**
-     * The zone ID to add the load balancer to.
+     * The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId: pulumi.Input<string>;
 }

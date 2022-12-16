@@ -28,8 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			test, err := cloudflare.GetWafPackages(ctx, &GetWafPackagesArgs{
-//				Filter: GetWafPackagesFilter{
+//			test, err := cloudflare.GetWafPackages(ctx, &cloudflare.GetWafPackagesArgs{
+//				Filter: cloudflare.GetWafPackagesFilter{
 //					Name:          pulumi.StringRef(".*example.*"),
 //					DetectionMode: pulumi.StringRef("anomaly"),
 //					Sensitivity:   pulumi.StringRef("high"),

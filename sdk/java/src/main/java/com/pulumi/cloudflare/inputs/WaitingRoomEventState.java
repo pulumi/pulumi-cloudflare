@@ -78,14 +78,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * ISO 8601 timestamp that marks the end of the event.
+     * ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="eventEndTime")
     private @Nullable Output<String> eventEndTime;
 
     /**
-     * @return ISO 8601 timestamp that marks the end of the event.
+     * @return ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> eventEndTime() {
@@ -93,14 +93,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="eventStartTime")
     private @Nullable Output<String> eventStartTime;
 
     /**
-     * @return ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+     * @return ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> eventStartTime() {
@@ -123,14 +123,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+     * A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+     * @return A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> name() {
@@ -243,14 +243,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The Waiting Room ID the event should apply to.
+     * The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="waitingRoomId")
     private @Nullable Output<String> waitingRoomId;
 
     /**
-     * @return The Waiting Room ID the event should apply to.
+     * @return The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> waitingRoomId() {
@@ -258,14 +258,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -397,7 +397,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param eventEndTime ISO 8601 timestamp that marks the end of the event.
+         * @param eventEndTime ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -408,7 +408,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param eventEndTime ISO 8601 timestamp that marks the end of the event.
+         * @param eventEndTime ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -418,7 +418,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param eventStartTime ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+         * @param eventStartTime ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -429,7 +429,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param eventStartTime ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+         * @param eventStartTime ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+         * @param name A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+         * @param name A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -628,7 +628,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param waitingRoomId The Waiting Room ID the event should apply to.
+         * @param waitingRoomId The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -639,7 +639,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param waitingRoomId The Waiting Room ID the event should apply to.
+         * @param waitingRoomId The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -649,7 +649,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -660,7 +660,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

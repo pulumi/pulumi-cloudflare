@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewZoneLockdown(ctx, "endpointLockdown", &cloudflare.ZoneLockdownArgs{
-//				Configurations: ZoneLockdownConfigurationArray{
-//					&ZoneLockdownConfigurationArgs{
+//				Configurations: cloudflare.ZoneLockdownConfigurationArray{
+//					&cloudflare.ZoneLockdownConfigurationArgs{
 //						Target: pulumi.String("ip_range"),
 //						Value:  pulumi.String("198.51.100.0/16"),
 //					},

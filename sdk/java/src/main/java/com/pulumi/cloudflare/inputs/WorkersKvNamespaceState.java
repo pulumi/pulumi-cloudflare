@@ -16,16 +16,23 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
     public static final WorkersKvNamespaceState Empty = new WorkersKvNamespaceState();
 
     /**
-     * The name of the namespace you wish to create.
+     * The account identifier to target for the resource.
      * 
      */
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
+
+    /**
+     * @return The account identifier to target for the resource.
+     * 
+     */
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+
     @Import(name="title")
     private @Nullable Output<String> title;
 
-    /**
-     * @return The name of the namespace you wish to create.
-     * 
-     */
     public Optional<Output<String>> title() {
         return Optional.ofNullable(this.title);
     }
@@ -33,6 +40,7 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
     private WorkersKvNamespaceState() {}
 
     private WorkersKvNamespaceState(WorkersKvNamespaceState $) {
+        this.accountId = $.accountId;
         this.title = $.title;
     }
 
@@ -55,22 +63,31 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param title The name of the namespace you wish to create.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
          */
+        public Builder accountId(@Nullable Output<String> accountId) {
+            $.accountId = accountId;
+            return this;
+        }
+
+        /**
+         * @param accountId The account identifier to target for the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
+        }
+
         public Builder title(@Nullable Output<String> title) {
             $.title = title;
             return this;
         }
 
-        /**
-         * @param title The name of the namespace you wish to create.
-         * 
-         * @return builder
-         * 
-         */
         public Builder title(String title) {
             return title(Output.of(title));
         }

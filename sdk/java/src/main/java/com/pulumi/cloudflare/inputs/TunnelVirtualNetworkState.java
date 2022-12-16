@@ -17,14 +17,14 @@ public final class TunnelVirtualNetworkState extends com.pulumi.resources.Resour
     public static final TunnelVirtualNetworkState Empty = new TunnelVirtualNetworkState();
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -104,7 +104,7 @@ public final class TunnelVirtualNetworkState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class TunnelVirtualNetworkState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

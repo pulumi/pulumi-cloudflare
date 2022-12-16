@@ -101,7 +101,7 @@ namespace Pulumi.Cloudflare
         public Output<string> VerificationKey { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS zone name which will be added.
+        /// The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zone")]
         public Output<string> ZoneName { get; private set; } = null!;
@@ -183,7 +183,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The DNS zone name which will be added.
+        /// The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> ZoneName { get; set; } = null!;
@@ -271,7 +271,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? VerificationKey { get; set; }
 
         /// <summary>
-        /// The DNS zone name which will be added.
+        /// The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zone")]
         public Input<string>? ZoneName { get; set; }

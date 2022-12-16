@@ -82,7 +82,7 @@ export class UserAgentBlockingRule extends pulumi.CustomResource {
      */
     public readonly paused!: pulumi.Output<boolean>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -153,7 +153,7 @@ export interface UserAgentBlockingRuleState {
      */
     paused?: pulumi.Input<boolean>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -179,7 +179,7 @@ export interface UserAgentBlockingRuleArgs {
      */
     paused: pulumi.Input<boolean>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId: pulumi.Input<string>;
 }

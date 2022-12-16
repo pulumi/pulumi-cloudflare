@@ -86,9 +86,22 @@ export interface GetZoneDnssecResult {
     readonly status: string;
     readonly zoneId: string;
 }
-
+/**
+ * Use this data source to look up [Zone][1] DNSSEC settings.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = cloudflare.getZoneDnssec({
+ *     zoneId: "<zone_id>",
+ * });
+ * ```
+ */
 export function getZoneDnssecOutput(args: GetZoneDnssecOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneDnssecResult> {
-    return pulumi.output(args).apply(a => getZoneDnssec(a, opts))
+    return pulumi.output(args).apply((a: any) => getZoneDnssec(a, opts))
 }
 
 /**

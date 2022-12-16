@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessRuleConfiguration
     {
         /// <summary>
-        /// The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`.
+        /// The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         public readonly string Target;
         /// <summary>
-        /// The value to target. Depends on target's type.
+        /// The value to target. Depends on target's type. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         public readonly string Value;
 

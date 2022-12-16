@@ -63,13 +63,13 @@ type WaitingRoomEvent struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Disables automatic renewal of session cookies.
 	DisableSessionRenewal pulumi.BoolPtrOutput `pulumi:"disableSessionRenewal"`
-	// ISO 8601 timestamp that marks the end of the event.
+	// ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
 	EventEndTime pulumi.StringOutput `pulumi:"eventEndTime"`
-	// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`.
+	// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`. **Modifying this attribute will force creation of a new resource.**
 	EventStartTime pulumi.StringOutput `pulumi:"eventStartTime"`
 	// Last modified time.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
-	// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+	// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute pulumi.IntPtrOutput `pulumi:"newUsersPerMinute"`
@@ -85,9 +85,9 @@ type WaitingRoomEvent struct {
 	Suspended pulumi.BoolPtrOutput `pulumi:"suspended"`
 	// The total number of active user sessions on the route at a point in time.
 	TotalActiveUsers pulumi.IntPtrOutput `pulumi:"totalActiveUsers"`
-	// The Waiting Room ID the event should apply to.
+	// The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
 	WaitingRoomId pulumi.StringOutput `pulumi:"waitingRoomId"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -143,13 +143,13 @@ type waitingRoomEventState struct {
 	Description *string `pulumi:"description"`
 	// Disables automatic renewal of session cookies.
 	DisableSessionRenewal *bool `pulumi:"disableSessionRenewal"`
-	// ISO 8601 timestamp that marks the end of the event.
+	// ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
 	EventEndTime *string `pulumi:"eventEndTime"`
-	// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`.
+	// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`. **Modifying this attribute will force creation of a new resource.**
 	EventStartTime *string `pulumi:"eventStartTime"`
 	// Last modified time.
 	ModifiedOn *string `pulumi:"modifiedOn"`
-	// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+	// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
 	Name *string `pulumi:"name"`
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute *int `pulumi:"newUsersPerMinute"`
@@ -165,9 +165,9 @@ type waitingRoomEventState struct {
 	Suspended *bool `pulumi:"suspended"`
 	// The total number of active user sessions on the route at a point in time.
 	TotalActiveUsers *int `pulumi:"totalActiveUsers"`
-	// The Waiting Room ID the event should apply to.
+	// The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
 	WaitingRoomId *string `pulumi:"waitingRoomId"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -180,13 +180,13 @@ type WaitingRoomEventState struct {
 	Description pulumi.StringPtrInput
 	// Disables automatic renewal of session cookies.
 	DisableSessionRenewal pulumi.BoolPtrInput
-	// ISO 8601 timestamp that marks the end of the event.
+	// ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
 	EventEndTime pulumi.StringPtrInput
-	// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`.
+	// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`. **Modifying this attribute will force creation of a new resource.**
 	EventStartTime pulumi.StringPtrInput
 	// Last modified time.
 	ModifiedOn pulumi.StringPtrInput
-	// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+	// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringPtrInput
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute pulumi.IntPtrInput
@@ -202,9 +202,9 @@ type WaitingRoomEventState struct {
 	Suspended pulumi.BoolPtrInput
 	// The total number of active user sessions on the route at a point in time.
 	TotalActiveUsers pulumi.IntPtrInput
-	// The Waiting Room ID the event should apply to.
+	// The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
 	WaitingRoomId pulumi.StringPtrInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -219,11 +219,11 @@ type waitingRoomEventArgs struct {
 	Description *string `pulumi:"description"`
 	// Disables automatic renewal of session cookies.
 	DisableSessionRenewal *bool `pulumi:"disableSessionRenewal"`
-	// ISO 8601 timestamp that marks the end of the event.
+	// ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
 	EventEndTime string `pulumi:"eventEndTime"`
-	// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`.
+	// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`. **Modifying this attribute will force creation of a new resource.**
 	EventStartTime string `pulumi:"eventStartTime"`
-	// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+	// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
 	Name string `pulumi:"name"`
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute *int `pulumi:"newUsersPerMinute"`
@@ -239,9 +239,9 @@ type waitingRoomEventArgs struct {
 	Suspended *bool `pulumi:"suspended"`
 	// The total number of active user sessions on the route at a point in time.
 	TotalActiveUsers *int `pulumi:"totalActiveUsers"`
-	// The Waiting Room ID the event should apply to.
+	// The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
 	WaitingRoomId string `pulumi:"waitingRoomId"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -253,11 +253,11 @@ type WaitingRoomEventArgs struct {
 	Description pulumi.StringPtrInput
 	// Disables automatic renewal of session cookies.
 	DisableSessionRenewal pulumi.BoolPtrInput
-	// ISO 8601 timestamp that marks the end of the event.
+	// ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
 	EventEndTime pulumi.StringInput
-	// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`.
+	// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`. **Modifying this attribute will force creation of a new resource.**
 	EventStartTime pulumi.StringInput
-	// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+	// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringInput
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute pulumi.IntPtrInput
@@ -273,9 +273,9 @@ type WaitingRoomEventArgs struct {
 	Suspended pulumi.BoolPtrInput
 	// The total number of active user sessions on the route at a point in time.
 	TotalActiveUsers pulumi.IntPtrInput
-	// The Waiting Room ID the event should apply to.
+	// The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
 	WaitingRoomId pulumi.StringInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
 }
 
@@ -386,12 +386,12 @@ func (o WaitingRoomEventOutput) DisableSessionRenewal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.BoolPtrOutput { return v.DisableSessionRenewal }).(pulumi.BoolPtrOutput)
 }
 
-// ISO 8601 timestamp that marks the end of the event.
+// ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
 func (o WaitingRoomEventOutput) EventEndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringOutput { return v.EventEndTime }).(pulumi.StringOutput)
 }
 
-// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`.
+// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`. **Modifying this attribute will force creation of a new resource.**
 func (o WaitingRoomEventOutput) EventStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringOutput { return v.EventStartTime }).(pulumi.StringOutput)
 }
@@ -401,7 +401,7 @@ func (o WaitingRoomEventOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
 func (o WaitingRoomEventOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -441,12 +441,12 @@ func (o WaitingRoomEventOutput) TotalActiveUsers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.IntPtrOutput { return v.TotalActiveUsers }).(pulumi.IntPtrOutput)
 }
 
-// The Waiting Room ID the event should apply to.
+// The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
 func (o WaitingRoomEventOutput) WaitingRoomId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringOutput { return v.WaitingRoomId }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource.
+// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o WaitingRoomEventOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

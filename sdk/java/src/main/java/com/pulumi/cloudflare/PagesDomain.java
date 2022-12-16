@@ -16,6 +16,8 @@ import javax.annotation.Nullable;
 /**
  * Provides a resource for managing Cloudflare Pages domains.
  * 
+ * &gt; A DNS record for the domain is not automatically created. You need to create a `cloudflare.Record` resource for the domain you want to use.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -58,42 +60,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/pagesDomain:PagesDomain")
 public class PagesDomain extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Custom domain.
+     * Custom domain. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="domain", type=String.class, parameters={})
     private Output<String> domain;
 
     /**
-     * @return Custom domain.
+     * @return Custom domain. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> domain() {
         return this.domain;
     }
     /**
-     * Name of the Pages Project.
+     * Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="projectName", type=String.class, parameters={})
     private Output<String> projectName;
 
     /**
-     * @return Name of the Pages Project.
+     * @return Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> projectName() {

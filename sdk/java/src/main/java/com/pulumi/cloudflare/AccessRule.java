@@ -110,28 +110,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/accessRule:AccessRule")
 public class AccessRule extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Rule configuration to apply to a matched request.
+     * Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="configuration", type=AccessRuleConfiguration.class, parameters={})
     private Output<AccessRuleConfiguration> configuration;
 
     /**
-     * @return Rule configuration to apply to a matched request.
+     * @return Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<AccessRuleConfiguration> configuration() {
@@ -166,14 +166,14 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notes);
     }
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {

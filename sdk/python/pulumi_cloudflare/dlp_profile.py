@@ -23,10 +23,10 @@ class DlpProfileArgs:
                  description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DlpProfile resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[Sequence[pulumi.Input['DlpProfileEntryArgs']]] entries: List of entries to apply to the profile.
-        :param pulumi.Input[str] name: Name of the profile.
-        :param pulumi.Input[str] type: The type of the profile. Available values: `custom`, `predefined`.
+        :param pulumi.Input[str] name: Name of the profile. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] type: The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] description: Brief summary of the profile and its intended use.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -40,7 +40,7 @@ class DlpProfileArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account identifier to target for the resource.
+        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "account_id")
 
@@ -64,7 +64,7 @@ class DlpProfileArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the profile.
+        Name of the profile. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -76,7 +76,7 @@ class DlpProfileArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The type of the profile. Available values: `custom`, `predefined`.
+        The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "type")
 
@@ -107,11 +107,11 @@ class _DlpProfileState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DlpProfile resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] description: Brief summary of the profile and its intended use.
         :param pulumi.Input[Sequence[pulumi.Input['DlpProfileEntryArgs']]] entries: List of entries to apply to the profile.
-        :param pulumi.Input[str] name: Name of the profile.
-        :param pulumi.Input[str] type: The type of the profile. Available values: `custom`, `predefined`.
+        :param pulumi.Input[str] name: Name of the profile. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] type: The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -128,7 +128,7 @@ class _DlpProfileState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource.
+        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "account_id")
 
@@ -164,7 +164,7 @@ class _DlpProfileState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the profile.
+        Name of the profile. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -176,7 +176,7 @@ class _DlpProfileState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the profile. Available values: `custom`, `predefined`.
+        The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "type")
 
@@ -209,11 +209,11 @@ class DlpProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] description: Brief summary of the profile and its intended use.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DlpProfileEntryArgs']]]] entries: List of entries to apply to the profile.
-        :param pulumi.Input[str] name: Name of the profile.
-        :param pulumi.Input[str] type: The type of the profile. Available values: `custom`, `predefined`.
+        :param pulumi.Input[str] name: Name of the profile. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] type: The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -296,11 +296,11 @@ class DlpProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] description: Brief summary of the profile and its intended use.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DlpProfileEntryArgs']]]] entries: List of entries to apply to the profile.
-        :param pulumi.Input[str] name: Name of the profile.
-        :param pulumi.Input[str] type: The type of the profile. Available values: `custom`, `predefined`.
+        :param pulumi.Input[str] name: Name of the profile. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] type: The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -317,7 +317,7 @@ class DlpProfile(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account identifier to target for the resource.
+        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "account_id")
 
@@ -341,7 +341,7 @@ class DlpProfile(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the profile.
+        Name of the profile. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -349,7 +349,7 @@ class DlpProfile(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The type of the profile. Available values: `custom`, `predefined`.
+        The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "type")
 

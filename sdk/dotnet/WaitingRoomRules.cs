@@ -63,13 +63,13 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.WaitingRoomRulesRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// The Waiting Room ID the rules should apply to.
+        /// The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("waitingRoomId")]
         public Output<string> WaitingRoomId { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -133,13 +133,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The Waiting Room ID the rules should apply to.
+        /// The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("waitingRoomId", required: true)]
         public Input<string> WaitingRoomId { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -165,13 +165,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The Waiting Room ID the rules should apply to.
+        /// The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("waitingRoomId")]
         public Input<string>? WaitingRoomId { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

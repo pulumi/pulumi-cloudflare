@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AccessRuleConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`.
+        /// The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("target", required: true)]
         public Input<string> Target { get; set; } = null!;
 
         /// <summary>
-        /// The value to target. Depends on target's type.
+        /// The value to target. Depends on target's type. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

@@ -89,14 +89,14 @@ public class Account extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+     * Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+     * @return Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<Optional<String>> type() {

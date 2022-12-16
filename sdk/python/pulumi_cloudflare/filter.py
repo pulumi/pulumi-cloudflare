@@ -22,7 +22,7 @@ class FilterArgs:
         """
         The set of arguments for constructing a Filter resource.
         :param pulumi.Input[str] expression: The filter expression to be used.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] description: A note that you can use to describe the purpose of the filter.
         :param pulumi.Input[bool] paused: Whether this filter is currently paused.
         :param pulumi.Input[str] ref: Short reference tag to quickly select related rules.
@@ -52,7 +52,7 @@ class FilterArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -111,7 +111,7 @@ class _FilterState:
         :param pulumi.Input[str] expression: The filter expression to be used.
         :param pulumi.Input[bool] paused: Whether this filter is currently paused.
         :param pulumi.Input[str] ref: Short reference tag to quickly select related rules.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -176,7 +176,7 @@ class _FilterState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -225,7 +225,7 @@ class Filter(pulumi.CustomResource):
         :param pulumi.Input[str] expression: The filter expression to be used.
         :param pulumi.Input[bool] paused: Whether this filter is currently paused.
         :param pulumi.Input[str] ref: Short reference tag to quickly select related rules.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -320,7 +320,7 @@ class Filter(pulumi.CustomResource):
         :param pulumi.Input[str] expression: The filter expression to be used.
         :param pulumi.Input[bool] paused: Whether this filter is currently paused.
         :param pulumi.Input[str] ref: Short reference tag to quickly select related rules.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -369,7 +369,7 @@ class Filter(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 

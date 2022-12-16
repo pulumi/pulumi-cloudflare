@@ -184,8 +184,14 @@ __all__ = [
     'TeamsRuleRuleSettingsBisoAdminControlsArgs',
     'TeamsRuleRuleSettingsCheckSessionArgs',
     'TeamsRuleRuleSettingsL4overrideArgs',
+    'TunnelConfigConfigArgs',
+    'TunnelConfigConfigIngressRuleArgs',
+    'TunnelConfigConfigOriginRequestArgs',
+    'TunnelConfigConfigOriginRequestIpRuleArgs',
+    'TunnelConfigConfigWarpRoutingArgs',
     'UserAgentBlockingRuleConfigurationArgs',
     'WaitingRoomRulesRuleArgs',
+    'WorkerScriptAnalyticsEngineBindingArgs',
     'WorkerScriptKvNamespaceBindingArgs',
     'WorkerScriptPlainTextBindingArgs',
     'WorkerScriptR2BucketBindingArgs',
@@ -201,6 +207,11 @@ __all__ = [
     'ZoneSettingsOverrideSettingsMinifyArgs',
     'ZoneSettingsOverrideSettingsMobileRedirectArgs',
     'ZoneSettingsOverrideSettingsSecurityHeaderArgs',
+    'GetLoadBalancerPoolsFilterArgs',
+    'GetLoadBalancerPoolsPoolArgs',
+    'GetLoadBalancerPoolsPoolLoadSheddingArgs',
+    'GetLoadBalancerPoolsPoolOriginArgs',
+    'GetLoadBalancerPoolsPoolOriginHeaderArgs',
     'GetWafGroupsFilterArgs',
     'GetWafPackagesFilterArgs',
     'GetWafRulesFilterArgs',
@@ -3453,8 +3464,8 @@ class AccessRuleConfigurationArgs:
                  target: pulumi.Input[str],
                  value: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] target: The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`.
-        :param pulumi.Input[str] value: The value to target. Depends on target's type.
+        :param pulumi.Input[str] target: The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] value: The value to target. Depends on target's type. **Modifying this attribute will force creation of a new resource.**
         """
         pulumi.set(__self__, "target", target)
         pulumi.set(__self__, "value", value)
@@ -3463,7 +3474,7 @@ class AccessRuleConfigurationArgs:
     @pulumi.getter
     def target(self) -> pulumi.Input[str]:
         """
-        The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`.
+        The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "target")
 
@@ -3475,7 +3486,7 @@ class AccessRuleConfigurationArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        The value to target. Depends on target's type.
+        The value to target. Depends on target's type. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "value")
 
@@ -4798,9 +4809,9 @@ class FallbackDomainDomainArgs:
                  dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  suffix: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] description: The description of the domain.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: The DNS servers to receive the redirected request.
-        :param pulumi.Input[str] suffix: The domain to ignore DNS requests.
+        :param pulumi.Input[str] description: A description of the fallback domain, displayed in the client UI.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: A list of IP addresses to handle domain resolution.
+        :param pulumi.Input[str] suffix: The domain suffix to match when resolving locally.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -4813,7 +4824,7 @@ class FallbackDomainDomainArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the domain.
+        A description of the fallback domain, displayed in the client UI.
         """
         return pulumi.get(self, "description")
 
@@ -4825,7 +4836,7 @@ class FallbackDomainDomainArgs:
     @pulumi.getter(name="dnsServers")
     def dns_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The DNS servers to receive the redirected request.
+        A list of IP addresses to handle domain resolution.
         """
         return pulumi.get(self, "dns_servers")
 
@@ -4837,7 +4848,7 @@ class FallbackDomainDomainArgs:
     @pulumi.getter
     def suffix(self) -> Optional[pulumi.Input[str]]:
         """
-        The domain to ignore DNS requests.
+        The domain suffix to match when resolving locally.
         """
         return pulumi.get(self, "suffix")
 
@@ -10075,7 +10086,7 @@ class RulesetRuleActionParametersFromListArgs:
                  key: pulumi.Input[str],
                  name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: Name of the ruleset.
+        :param pulumi.Input[str] name: Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "name", name)
@@ -10093,7 +10104,7 @@ class RulesetRuleActionParametersFromListArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the ruleset.
+        Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -10180,7 +10191,7 @@ class RulesetRuleActionParametersHeaderArgs:
                  operation: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Name of the ruleset.
+        :param pulumi.Input[str] name: Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
         """
         if expression is not None:
             pulumi.set(__self__, "expression", expression)
@@ -10204,7 +10215,7 @@ class RulesetRuleActionParametersHeaderArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the ruleset.
+        Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -10928,9 +10939,9 @@ class SplitTunnelTunnelArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] address: The address in CIDR format to include in the tunnel configuration. Conflicts with `"host"`.
-        :param pulumi.Input[str] description: The description of the tunnel.
-        :param pulumi.Input[str] host: The domain name to include in the tunnel configuration. Conflicts with `"address"`.
+        :param pulumi.Input[str] address: The address for the tunnel.
+        :param pulumi.Input[str] description: A description for the tunnel.
+        :param pulumi.Input[str] host: The domain name for the tunnel.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -10943,7 +10954,7 @@ class SplitTunnelTunnelArgs:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        The address in CIDR format to include in the tunnel configuration. Conflicts with `"host"`.
+        The address for the tunnel.
         """
         return pulumi.get(self, "address")
 
@@ -10955,7 +10966,7 @@ class SplitTunnelTunnelArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the tunnel.
+        A description for the tunnel.
         """
         return pulumi.get(self, "description")
 
@@ -10967,7 +10978,7 @@ class SplitTunnelTunnelArgs:
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
-        The domain name to include in the tunnel configuration. Conflicts with `"address"`.
+        The domain name for the tunnel.
         """
         return pulumi.get(self, "host")
 
@@ -11698,6 +11709,351 @@ class TeamsRuleRuleSettingsL4overrideArgs:
 
 
 @pulumi.input_type
+class TunnelConfigConfigArgs:
+    def __init__(__self__, *,
+                 ingress_rules: pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigIngressRuleArgs']]],
+                 origin_request: Optional[pulumi.Input['TunnelConfigConfigOriginRequestArgs']] = None,
+                 warp_routing: Optional[pulumi.Input['TunnelConfigConfigWarpRoutingArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigIngressRuleArgs']]] ingress_rules: Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+        :param pulumi.Input['TunnelConfigConfigWarpRoutingArgs'] warp_routing: If you're exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+        """
+        pulumi.set(__self__, "ingress_rules", ingress_rules)
+        if origin_request is not None:
+            pulumi.set(__self__, "origin_request", origin_request)
+        if warp_routing is not None:
+            pulumi.set(__self__, "warp_routing", warp_routing)
+
+    @property
+    @pulumi.getter(name="ingressRules")
+    def ingress_rules(self) -> pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigIngressRuleArgs']]]:
+        """
+        Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+        """
+        return pulumi.get(self, "ingress_rules")
+
+    @ingress_rules.setter
+    def ingress_rules(self, value: pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigIngressRuleArgs']]]):
+        pulumi.set(self, "ingress_rules", value)
+
+    @property
+    @pulumi.getter(name="originRequest")
+    def origin_request(self) -> Optional[pulumi.Input['TunnelConfigConfigOriginRequestArgs']]:
+        return pulumi.get(self, "origin_request")
+
+    @origin_request.setter
+    def origin_request(self, value: Optional[pulumi.Input['TunnelConfigConfigOriginRequestArgs']]):
+        pulumi.set(self, "origin_request", value)
+
+    @property
+    @pulumi.getter(name="warpRouting")
+    def warp_routing(self) -> Optional[pulumi.Input['TunnelConfigConfigWarpRoutingArgs']]:
+        """
+        If you're exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+        """
+        return pulumi.get(self, "warp_routing")
+
+    @warp_routing.setter
+    def warp_routing(self, value: Optional[pulumi.Input['TunnelConfigConfigWarpRoutingArgs']]):
+        pulumi.set(self, "warp_routing", value)
+
+
+@pulumi.input_type
+class TunnelConfigConfigIngressRuleArgs:
+    def __init__(__self__, *,
+                 service: pulumi.Input[str],
+                 hostname: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "service", service)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class TunnelConfigConfigOriginRequestArgs:
+    def __init__(__self__, *,
+                 bastion_mode: Optional[pulumi.Input[bool]] = None,
+                 ca_pool: Optional[pulumi.Input[str]] = None,
+                 connect_timeout: Optional[pulumi.Input[str]] = None,
+                 disable_chunked_encoding: Optional[pulumi.Input[bool]] = None,
+                 http_host_header: Optional[pulumi.Input[str]] = None,
+                 ip_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigOriginRequestIpRuleArgs']]]] = None,
+                 keep_alive_connections: Optional[pulumi.Input[int]] = None,
+                 keep_alive_timeout: Optional[pulumi.Input[str]] = None,
+                 no_happy_eyeballs: Optional[pulumi.Input[bool]] = None,
+                 no_tls_verify: Optional[pulumi.Input[bool]] = None,
+                 origin_server_name: Optional[pulumi.Input[str]] = None,
+                 proxy_address: Optional[pulumi.Input[str]] = None,
+                 proxy_port: Optional[pulumi.Input[int]] = None,
+                 proxy_type: Optional[pulumi.Input[str]] = None,
+                 tcp_keep_alive: Optional[pulumi.Input[str]] = None,
+                 tls_timeout: Optional[pulumi.Input[str]] = None):
+        if bastion_mode is not None:
+            pulumi.set(__self__, "bastion_mode", bastion_mode)
+        if ca_pool is not None:
+            pulumi.set(__self__, "ca_pool", ca_pool)
+        if connect_timeout is not None:
+            pulumi.set(__self__, "connect_timeout", connect_timeout)
+        if disable_chunked_encoding is not None:
+            pulumi.set(__self__, "disable_chunked_encoding", disable_chunked_encoding)
+        if http_host_header is not None:
+            pulumi.set(__self__, "http_host_header", http_host_header)
+        if ip_rules is not None:
+            pulumi.set(__self__, "ip_rules", ip_rules)
+        if keep_alive_connections is not None:
+            pulumi.set(__self__, "keep_alive_connections", keep_alive_connections)
+        if keep_alive_timeout is not None:
+            pulumi.set(__self__, "keep_alive_timeout", keep_alive_timeout)
+        if no_happy_eyeballs is not None:
+            pulumi.set(__self__, "no_happy_eyeballs", no_happy_eyeballs)
+        if no_tls_verify is not None:
+            pulumi.set(__self__, "no_tls_verify", no_tls_verify)
+        if origin_server_name is not None:
+            pulumi.set(__self__, "origin_server_name", origin_server_name)
+        if proxy_address is not None:
+            pulumi.set(__self__, "proxy_address", proxy_address)
+        if proxy_port is not None:
+            pulumi.set(__self__, "proxy_port", proxy_port)
+        if proxy_type is not None:
+            pulumi.set(__self__, "proxy_type", proxy_type)
+        if tcp_keep_alive is not None:
+            pulumi.set(__self__, "tcp_keep_alive", tcp_keep_alive)
+        if tls_timeout is not None:
+            pulumi.set(__self__, "tls_timeout", tls_timeout)
+
+    @property
+    @pulumi.getter(name="bastionMode")
+    def bastion_mode(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "bastion_mode")
+
+    @bastion_mode.setter
+    def bastion_mode(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bastion_mode", value)
+
+    @property
+    @pulumi.getter(name="caPool")
+    def ca_pool(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ca_pool")
+
+    @ca_pool.setter
+    def ca_pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ca_pool", value)
+
+    @property
+    @pulumi.getter(name="connectTimeout")
+    def connect_timeout(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "connect_timeout")
+
+    @connect_timeout.setter
+    def connect_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connect_timeout", value)
+
+    @property
+    @pulumi.getter(name="disableChunkedEncoding")
+    def disable_chunked_encoding(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "disable_chunked_encoding")
+
+    @disable_chunked_encoding.setter
+    def disable_chunked_encoding(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_chunked_encoding", value)
+
+    @property
+    @pulumi.getter(name="httpHostHeader")
+    def http_host_header(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "http_host_header")
+
+    @http_host_header.setter
+    def http_host_header(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_host_header", value)
+
+    @property
+    @pulumi.getter(name="ipRules")
+    def ip_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigOriginRequestIpRuleArgs']]]]:
+        return pulumi.get(self, "ip_rules")
+
+    @ip_rules.setter
+    def ip_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigOriginRequestIpRuleArgs']]]]):
+        pulumi.set(self, "ip_rules", value)
+
+    @property
+    @pulumi.getter(name="keepAliveConnections")
+    def keep_alive_connections(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "keep_alive_connections")
+
+    @keep_alive_connections.setter
+    def keep_alive_connections(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "keep_alive_connections", value)
+
+    @property
+    @pulumi.getter(name="keepAliveTimeout")
+    def keep_alive_timeout(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "keep_alive_timeout")
+
+    @keep_alive_timeout.setter
+    def keep_alive_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "keep_alive_timeout", value)
+
+    @property
+    @pulumi.getter(name="noHappyEyeballs")
+    def no_happy_eyeballs(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "no_happy_eyeballs")
+
+    @no_happy_eyeballs.setter
+    def no_happy_eyeballs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_happy_eyeballs", value)
+
+    @property
+    @pulumi.getter(name="noTlsVerify")
+    def no_tls_verify(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "no_tls_verify")
+
+    @no_tls_verify.setter
+    def no_tls_verify(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_tls_verify", value)
+
+    @property
+    @pulumi.getter(name="originServerName")
+    def origin_server_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "origin_server_name")
+
+    @origin_server_name.setter
+    def origin_server_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "origin_server_name", value)
+
+    @property
+    @pulumi.getter(name="proxyAddress")
+    def proxy_address(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "proxy_address")
+
+    @proxy_address.setter
+    def proxy_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy_address", value)
+
+    @property
+    @pulumi.getter(name="proxyPort")
+    def proxy_port(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "proxy_port")
+
+    @proxy_port.setter
+    def proxy_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "proxy_port", value)
+
+    @property
+    @pulumi.getter(name="proxyType")
+    def proxy_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "proxy_type")
+
+    @proxy_type.setter
+    def proxy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy_type", value)
+
+    @property
+    @pulumi.getter(name="tcpKeepAlive")
+    def tcp_keep_alive(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tcp_keep_alive")
+
+    @tcp_keep_alive.setter
+    def tcp_keep_alive(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tcp_keep_alive", value)
+
+    @property
+    @pulumi.getter(name="tlsTimeout")
+    def tls_timeout(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tls_timeout")
+
+    @tls_timeout.setter
+    def tls_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tls_timeout", value)
+
+
+@pulumi.input_type
+class TunnelConfigConfigOriginRequestIpRuleArgs:
+    def __init__(__self__, *,
+                 allow: Optional[pulumi.Input[bool]] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 prefix: Optional[pulumi.Input[str]] = None):
+        if allow is not None:
+            pulumi.set(__self__, "allow", allow)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def allow(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "allow")
+
+    @allow.setter
+    def allow(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow", value)
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "ports", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix", value)
+
+
+@pulumi.input_type
+class TunnelConfigConfigWarpRoutingArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
 class UserAgentBlockingRuleConfigurationArgs:
     def __init__(__self__, *,
                  target: pulumi.Input[str],
@@ -11833,6 +12189,43 @@ class WaitingRoomRulesRuleArgs:
     @version.setter
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class WorkerScriptAnalyticsEngineBindingArgs:
+    def __init__(__self__, *,
+                 dataset: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] dataset: The name of the Analytics Engine dataset to write to.
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        """
+        pulumi.set(__self__, "dataset", dataset)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> pulumi.Input[str]:
+        """
+        The name of the Analytics Engine dataset to write to.
+        """
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
@@ -13934,6 +14327,389 @@ class ZoneSettingsOverrideSettingsSecurityHeaderArgs:
     @preload.setter
     def preload(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "preload", value)
+
+
+@pulumi.input_type
+class GetLoadBalancerPoolsFilterArgs:
+    def __init__(__self__, *,
+                 name: Optional[str] = None):
+        """
+        :param str name: A regular expression matching the name of the Load Balancer pool to lookup.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        A regular expression matching the name of the Load Balancer pool to lookup.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class GetLoadBalancerPoolsPoolArgs:
+    def __init__(__self__, *,
+                 check_regions: Sequence[str],
+                 created_on: str,
+                 description: str,
+                 enabled: bool,
+                 id: str,
+                 latitude: float,
+                 load_sheddings: Sequence['GetLoadBalancerPoolsPoolLoadSheddingArgs'],
+                 longitude: float,
+                 minimum_origins: int,
+                 modified_on: str,
+                 monitor: str,
+                 name: str,
+                 notification_email: str,
+                 origins: Sequence['GetLoadBalancerPoolsPoolOriginArgs']):
+        """
+        :param Sequence[str] check_regions: List of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+        :param str created_on: The RFC3339 timestamp of when the load balancer was created.
+        :param str description: Brief description of the Load Balancer Pool intention.
+        :param bool enabled: Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+        :param str id: ID for this load balancer pool.
+        :param float latitude: Latitude this pool is physically located at; used for proximity steering.
+        :param Sequence['GetLoadBalancerPoolsPoolLoadSheddingArgs'] load_sheddings: Setting for controlling load shedding for this pool.
+        :param float longitude: Longitude this pool is physically located at; used for proximity steering.
+        :param int minimum_origins: Minimum number of origins that must be healthy for this pool to serve traffic.
+        :param str modified_on: The RFC3339 timestamp of when the load balancer was last modified.
+        :param str monitor: ID of the Monitor to use for health checking origins within this pool.
+        :param str name: Short name (tag) for the pool.
+        :param str notification_email: Email address to send health status notifications to. Multiple emails are set as a comma delimited list.
+        :param Sequence['GetLoadBalancerPoolsPoolOriginArgs'] origins: The list of origins within this pool.
+        """
+        pulumi.set(__self__, "check_regions", check_regions)
+        pulumi.set(__self__, "created_on", created_on)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "latitude", latitude)
+        pulumi.set(__self__, "load_sheddings", load_sheddings)
+        pulumi.set(__self__, "longitude", longitude)
+        pulumi.set(__self__, "minimum_origins", minimum_origins)
+        pulumi.set(__self__, "modified_on", modified_on)
+        pulumi.set(__self__, "monitor", monitor)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "notification_email", notification_email)
+        pulumi.set(__self__, "origins", origins)
+
+    @property
+    @pulumi.getter(name="checkRegions")
+    def check_regions(self) -> Sequence[str]:
+        """
+        List of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+        """
+        return pulumi.get(self, "check_regions")
+
+    @check_regions.setter
+    def check_regions(self, value: Sequence[str]):
+        pulumi.set(self, "check_regions", value)
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> str:
+        """
+        The RFC3339 timestamp of when the load balancer was created.
+        """
+        return pulumi.get(self, "created_on")
+
+    @created_on.setter
+    def created_on(self, value: str):
+        pulumi.set(self, "created_on", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Brief description of the Load Balancer Pool intention.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: str):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: bool):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID for this load balancer pool.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def latitude(self) -> float:
+        """
+        Latitude this pool is physically located at; used for proximity steering.
+        """
+        return pulumi.get(self, "latitude")
+
+    @latitude.setter
+    def latitude(self, value: float):
+        pulumi.set(self, "latitude", value)
+
+    @property
+    @pulumi.getter(name="loadSheddings")
+    def load_sheddings(self) -> Sequence['GetLoadBalancerPoolsPoolLoadSheddingArgs']:
+        """
+        Setting for controlling load shedding for this pool.
+        """
+        return pulumi.get(self, "load_sheddings")
+
+    @load_sheddings.setter
+    def load_sheddings(self, value: Sequence['GetLoadBalancerPoolsPoolLoadSheddingArgs']):
+        pulumi.set(self, "load_sheddings", value)
+
+    @property
+    @pulumi.getter
+    def longitude(self) -> float:
+        """
+        Longitude this pool is physically located at; used for proximity steering.
+        """
+        return pulumi.get(self, "longitude")
+
+    @longitude.setter
+    def longitude(self, value: float):
+        pulumi.set(self, "longitude", value)
+
+    @property
+    @pulumi.getter(name="minimumOrigins")
+    def minimum_origins(self) -> int:
+        """
+        Minimum number of origins that must be healthy for this pool to serve traffic.
+        """
+        return pulumi.get(self, "minimum_origins")
+
+    @minimum_origins.setter
+    def minimum_origins(self, value: int):
+        pulumi.set(self, "minimum_origins", value)
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> str:
+        """
+        The RFC3339 timestamp of when the load balancer was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: str):
+        pulumi.set(self, "modified_on", value)
+
+    @property
+    @pulumi.getter
+    def monitor(self) -> str:
+        """
+        ID of the Monitor to use for health checking origins within this pool.
+        """
+        return pulumi.get(self, "monitor")
+
+    @monitor.setter
+    def monitor(self, value: str):
+        pulumi.set(self, "monitor", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Short name (tag) for the pool.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="notificationEmail")
+    def notification_email(self) -> str:
+        """
+        Email address to send health status notifications to. Multiple emails are set as a comma delimited list.
+        """
+        return pulumi.get(self, "notification_email")
+
+    @notification_email.setter
+    def notification_email(self, value: str):
+        pulumi.set(self, "notification_email", value)
+
+    @property
+    @pulumi.getter
+    def origins(self) -> Sequence['GetLoadBalancerPoolsPoolOriginArgs']:
+        """
+        The list of origins within this pool.
+        """
+        return pulumi.get(self, "origins")
+
+    @origins.setter
+    def origins(self, value: Sequence['GetLoadBalancerPoolsPoolOriginArgs']):
+        pulumi.set(self, "origins", value)
+
+
+@pulumi.input_type
+class GetLoadBalancerPoolsPoolLoadSheddingArgs:
+    def __init__(__self__, *,
+                 default_percent: Optional[float] = None,
+                 default_policy: Optional[str] = None,
+                 session_percent: Optional[float] = None,
+                 session_policy: Optional[str] = None):
+        if default_percent is not None:
+            pulumi.set(__self__, "default_percent", default_percent)
+        if default_policy is not None:
+            pulumi.set(__self__, "default_policy", default_policy)
+        if session_percent is not None:
+            pulumi.set(__self__, "session_percent", session_percent)
+        if session_policy is not None:
+            pulumi.set(__self__, "session_policy", session_policy)
+
+    @property
+    @pulumi.getter(name="defaultPercent")
+    def default_percent(self) -> Optional[float]:
+        return pulumi.get(self, "default_percent")
+
+    @default_percent.setter
+    def default_percent(self, value: Optional[float]):
+        pulumi.set(self, "default_percent", value)
+
+    @property
+    @pulumi.getter(name="defaultPolicy")
+    def default_policy(self) -> Optional[str]:
+        return pulumi.get(self, "default_policy")
+
+    @default_policy.setter
+    def default_policy(self, value: Optional[str]):
+        pulumi.set(self, "default_policy", value)
+
+    @property
+    @pulumi.getter(name="sessionPercent")
+    def session_percent(self) -> Optional[float]:
+        return pulumi.get(self, "session_percent")
+
+    @session_percent.setter
+    def session_percent(self, value: Optional[float]):
+        pulumi.set(self, "session_percent", value)
+
+    @property
+    @pulumi.getter(name="sessionPolicy")
+    def session_policy(self) -> Optional[str]:
+        return pulumi.get(self, "session_policy")
+
+    @session_policy.setter
+    def session_policy(self, value: Optional[str]):
+        pulumi.set(self, "session_policy", value)
+
+
+@pulumi.input_type
+class GetLoadBalancerPoolsPoolOriginArgs:
+    def __init__(__self__, *,
+                 address: str,
+                 name: str,
+                 enabled: Optional[bool] = None,
+                 headers: Optional[Sequence['GetLoadBalancerPoolsPoolOriginHeaderArgs']] = None,
+                 weight: Optional[float] = None):
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "name", name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: str):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[Sequence['GetLoadBalancerPoolsPoolOriginHeaderArgs']]:
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[Sequence['GetLoadBalancerPoolsPoolOriginHeaderArgs']]):
+        pulumi.set(self, "headers", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[float]:
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[float]):
+        pulumi.set(self, "weight", value)
+
+
+@pulumi.input_type
+class GetLoadBalancerPoolsPoolOriginHeaderArgs:
+    def __init__(__self__, *,
+                 header: str,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "header", header)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def header(self) -> str:
+        return pulumi.get(self, "header")
+
+    @header.setter
+    def header(self, value: str):
+        pulumi.set(self, "header", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
 
 
 @pulumi.input_type

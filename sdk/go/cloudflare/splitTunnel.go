@@ -14,69 +14,25 @@ import (
 // Provides a Cloudflare Split Tunnel resource. Split tunnels are used to either
 // include or exclude lists of routes from the WARP client's tunnel.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewSplitTunnel(ctx, "exampleSplitTunnelExclude", &cloudflare.SplitTunnelArgs{
-//				AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-//				Mode:      pulumi.String("exclude"),
-//				Tunnels: SplitTunnelTunnelArray{
-//					&SplitTunnelTunnelArgs{
-//						Description: pulumi.String("example domain"),
-//						Host:        pulumi.String("*.example.com"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewSplitTunnel(ctx, "exampleSplitTunnelInclude", &cloudflare.SplitTunnelArgs{
-//				AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-//				Mode:      pulumi.String("include"),
-//				Tunnels: SplitTunnelTunnelArray{
-//					&SplitTunnelTunnelArgs{
-//						Description: pulumi.String("example domain"),
-//						Host:        pulumi.String("*.example.com"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// Split Tunnels can be imported using the account identifer and mode.
+// Split Tunnels for default device policies must use "default" as the policy ID.
 //
 // ```sh
 //
-//	$ pulumi import cloudflare:index/splitTunnel:SplitTunnel example 1d5fdc9e88c8a8c4518b068cd94331fe/exclude
+//	$ pulumi import cloudflare:index/splitTunnel:SplitTunnel example <account_id>/<policy_id>/<mode>
 //
 // ```
 type SplitTunnel struct {
 	pulumi.CustomResourceState
 
-	// The account to which the device posture rule should be added.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The split tunnel mode. Valid values are `include` or `exclude`.
+	// The mode of the split tunnel policy. Available values: `include`, `exclude`.
 	Mode pulumi.StringOutput `pulumi:"mode"`
-	// The value of the tunnel attributes (refer to the nested schema).
+	// The settings policy for which to configure this split tunnel policy.
+	PolicyId pulumi.StringPtrOutput `pulumi:"policyId"`
+	// The value of the tunnel attributes.
 	Tunnels SplitTunnelTunnelArrayOutput `pulumi:"tunnels"`
 }
 
@@ -118,20 +74,24 @@ func GetSplitTunnel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SplitTunnel resources.
 type splitTunnelState struct {
-	// The account to which the device posture rule should be added.
+	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// The split tunnel mode. Valid values are `include` or `exclude`.
+	// The mode of the split tunnel policy. Available values: `include`, `exclude`.
 	Mode *string `pulumi:"mode"`
-	// The value of the tunnel attributes (refer to the nested schema).
+	// The settings policy for which to configure this split tunnel policy.
+	PolicyId *string `pulumi:"policyId"`
+	// The value of the tunnel attributes.
 	Tunnels []SplitTunnelTunnel `pulumi:"tunnels"`
 }
 
 type SplitTunnelState struct {
-	// The account to which the device posture rule should be added.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// The split tunnel mode. Valid values are `include` or `exclude`.
+	// The mode of the split tunnel policy. Available values: `include`, `exclude`.
 	Mode pulumi.StringPtrInput
-	// The value of the tunnel attributes (refer to the nested schema).
+	// The settings policy for which to configure this split tunnel policy.
+	PolicyId pulumi.StringPtrInput
+	// The value of the tunnel attributes.
 	Tunnels SplitTunnelTunnelArrayInput
 }
 
@@ -140,21 +100,25 @@ func (SplitTunnelState) ElementType() reflect.Type {
 }
 
 type splitTunnelArgs struct {
-	// The account to which the device posture rule should be added.
+	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
-	// The split tunnel mode. Valid values are `include` or `exclude`.
+	// The mode of the split tunnel policy. Available values: `include`, `exclude`.
 	Mode string `pulumi:"mode"`
-	// The value of the tunnel attributes (refer to the nested schema).
+	// The settings policy for which to configure this split tunnel policy.
+	PolicyId *string `pulumi:"policyId"`
+	// The value of the tunnel attributes.
 	Tunnels []SplitTunnelTunnel `pulumi:"tunnels"`
 }
 
 // The set of arguments for constructing a SplitTunnel resource.
 type SplitTunnelArgs struct {
-	// The account to which the device posture rule should be added.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// The split tunnel mode. Valid values are `include` or `exclude`.
+	// The mode of the split tunnel policy. Available values: `include`, `exclude`.
 	Mode pulumi.StringInput
-	// The value of the tunnel attributes (refer to the nested schema).
+	// The settings policy for which to configure this split tunnel policy.
+	PolicyId pulumi.StringPtrInput
+	// The value of the tunnel attributes.
 	Tunnels SplitTunnelTunnelArrayInput
 }
 
@@ -245,17 +209,22 @@ func (o SplitTunnelOutput) ToSplitTunnelOutputWithContext(ctx context.Context) S
 	return o
 }
 
-// The account to which the device posture rule should be added.
+// The account identifier to target for the resource.
 func (o SplitTunnelOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SplitTunnel) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The split tunnel mode. Valid values are `include` or `exclude`.
+// The mode of the split tunnel policy. Available values: `include`, `exclude`.
 func (o SplitTunnelOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v *SplitTunnel) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }
 
-// The value of the tunnel attributes (refer to the nested schema).
+// The settings policy for which to configure this split tunnel policy.
+func (o SplitTunnelOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SplitTunnel) pulumi.StringPtrOutput { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// The value of the tunnel attributes.
 func (o SplitTunnelOutput) Tunnels() SplitTunnelTunnelArrayOutput {
 	return o.ApplyT(func(v *SplitTunnel) SplitTunnelTunnelArrayOutput { return v.Tunnels }).(SplitTunnelTunnelArrayOutput)
 }

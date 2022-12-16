@@ -69,7 +69,7 @@ export class ByoIpPrefix extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * The assigned Bring-Your-Own-IP prefix ID.
+     * The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly prefixId!: pulumi.Output<string>;
 
@@ -125,7 +125,7 @@ export interface ByoIpPrefixState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The assigned Bring-Your-Own-IP prefix ID.
+     * The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
      */
     prefixId?: pulumi.Input<string>;
 }
@@ -147,7 +147,7 @@ export interface ByoIpPrefixArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The assigned Bring-Your-Own-IP prefix ID.
+     * The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
      */
     prefixId: pulumi.Input<string>;
 }

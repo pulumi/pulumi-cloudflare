@@ -5,7 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Workers KV Pair. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
+ * Provides a resource to manage a Cloudflare Workers KV Pair.
+ *
+ * > This resource uses the Cloudflare account APIs. This requires setting the
+ * `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument
+ * if you do not explicitly set the resource level `accountId` value.
  *
  * ## Example Usage
  *
@@ -13,8 +17,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleNs = new cloudflare.WorkersKvNamespace("exampleNs", {title: "test-namespace"});
+ * const exampleNs = new cloudflare.WorkersKvNamespace("exampleNs", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     title: "test-namespace",
+ * });
  * const example = new cloudflare.WorkersKv("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     namespaceId: exampleNs.id,
  *     key: "test-key",
  *     value: "test value",
@@ -24,10 +32,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/workersKv:WorkersKv example beaeb6716c9443eaa4deef11763ccca6/test-key
+ *  $ pulumi import cloudflare:index/workersKv:WorkersKv example <namespace_id>/<key_name>
  * ```
- *
- *  where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace and `test-key` is the key
  */
 export class WorkersKv extends pulumi.CustomResource {
     /**
@@ -58,15 +64,19 @@ export class WorkersKv extends pulumi.CustomResource {
     }
 
     /**
-     * The key name
+     * The account identifier to target for the resource.
+     */
+    public readonly accountId!: pulumi.Output<string>;
+    /**
+     * Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly key!: pulumi.Output<string>;
     /**
-     * The ID of the Workers KV namespace in which you want to create the KV pair
+     * The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly namespaceId!: pulumi.Output<string>;
     /**
-     * The string value to be stored in the key
+     * Value of the KV pair.
      */
     public readonly value!: pulumi.Output<string>;
 
@@ -83,6 +93,7 @@ export class WorkersKv extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkersKvState | undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["key"] = state ? state.key : undefined;
             resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
             resourceInputs["value"] = state ? state.value : undefined;
@@ -97,6 +108,7 @@ export class WorkersKv extends pulumi.CustomResource {
             if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["key"] = args ? args.key : undefined;
             resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
             resourceInputs["value"] = args ? args.value : undefined;
@@ -111,15 +123,19 @@ export class WorkersKv extends pulumi.CustomResource {
  */
 export interface WorkersKvState {
     /**
-     * The key name
+     * The account identifier to target for the resource.
+     */
+    accountId?: pulumi.Input<string>;
+    /**
+     * Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
      */
     key?: pulumi.Input<string>;
     /**
-     * The ID of the Workers KV namespace in which you want to create the KV pair
+     * The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
      */
     namespaceId?: pulumi.Input<string>;
     /**
-     * The string value to be stored in the key
+     * Value of the KV pair.
      */
     value?: pulumi.Input<string>;
 }
@@ -129,15 +145,19 @@ export interface WorkersKvState {
  */
 export interface WorkersKvArgs {
     /**
-     * The key name
+     * The account identifier to target for the resource.
+     */
+    accountId?: pulumi.Input<string>;
+    /**
+     * Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
      */
     key: pulumi.Input<string>;
     /**
-     * The ID of the Workers KV namespace in which you want to create the KV pair
+     * The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
      */
     namespaceId: pulumi.Input<string>;
     /**
-     * The string value to be stored in the key
+     * Value of the KV pair.
      */
     value: pulumi.Input<string>;
 }

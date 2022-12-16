@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewApiShield(ctx, "example", &cloudflare.ApiShieldArgs{
-//				AuthIdCharacteristics: ApiShieldAuthIdCharacteristicArray{
-//					&ApiShieldAuthIdCharacteristicArgs{
+//				AuthIdCharacteristics: cloudflare.ApiShieldAuthIdCharacteristicArray{
+//					&cloudflare.ApiShieldAuthIdCharacteristicArgs{
 //						Name: pulumi.String("my-example-header"),
 //						Type: pulumi.String("header"),
 //					},
@@ -49,7 +49,7 @@ type ApiShield struct {
 
 	// Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
 	AuthIdCharacteristics ApiShieldAuthIdCharacteristicArrayOutput `pulumi:"authIdCharacteristics"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -90,14 +90,14 @@ func GetApiShield(ctx *pulumi.Context,
 type apiShieldState struct {
 	// Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
 	AuthIdCharacteristics []ApiShieldAuthIdCharacteristic `pulumi:"authIdCharacteristics"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ApiShieldState struct {
 	// Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
 	AuthIdCharacteristics ApiShieldAuthIdCharacteristicArrayInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -108,7 +108,7 @@ func (ApiShieldState) ElementType() reflect.Type {
 type apiShieldArgs struct {
 	// Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
 	AuthIdCharacteristics []ApiShieldAuthIdCharacteristic `pulumi:"authIdCharacteristics"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -116,7 +116,7 @@ type apiShieldArgs struct {
 type ApiShieldArgs struct {
 	// Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
 	AuthIdCharacteristics ApiShieldAuthIdCharacteristicArrayInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
 }
 
@@ -212,7 +212,7 @@ func (o ApiShieldOutput) AuthIdCharacteristics() ApiShieldAuthIdCharacteristicAr
 	return o.ApplyT(func(v *ApiShield) ApiShieldAuthIdCharacteristicArrayOutput { return v.AuthIdCharacteristics }).(ApiShieldAuthIdCharacteristicArrayOutput)
 }
 
-// The zone identifier to target for the resource.
+// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o ApiShieldOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShield) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

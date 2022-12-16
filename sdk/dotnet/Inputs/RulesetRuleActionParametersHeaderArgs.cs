@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Expression { get; set; }
 
         /// <summary>
-        /// Name of the ruleset.
+        /// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

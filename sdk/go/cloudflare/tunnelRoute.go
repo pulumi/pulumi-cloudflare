@@ -65,17 +65,15 @@ import (
 //
 // ## Import
 //
-// Use account ID, network CIDR and virtual network ID.
-//
 // ```sh
 //
-//	$ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example <account_id/<network_cidr>/<virtual_network_id>
+//	$ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example <account_id>/<network_cidr>/<virtual_network_id>
 //
 // ```
 type TunnelRoute struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Description of the tunnel route.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
@@ -83,7 +81,7 @@ type TunnelRoute struct {
 	Network pulumi.StringOutput `pulumi:"network"`
 	// The ID of the tunnel that will service the tunnel route.
 	TunnelId pulumi.StringOutput `pulumi:"tunnelId"`
-	// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+	// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
 	VirtualNetworkId pulumi.StringPtrOutput `pulumi:"virtualNetworkId"`
 }
 
@@ -125,7 +123,7 @@ func GetTunnelRoute(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TunnelRoute resources.
 type tunnelRouteState struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string `pulumi:"accountId"`
 	// Description of the tunnel route.
 	Comment *string `pulumi:"comment"`
@@ -133,12 +131,12 @@ type tunnelRouteState struct {
 	Network *string `pulumi:"network"`
 	// The ID of the tunnel that will service the tunnel route.
 	TunnelId *string `pulumi:"tunnelId"`
-	// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+	// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
 	VirtualNetworkId *string `pulumi:"virtualNetworkId"`
 }
 
 type TunnelRouteState struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
 	// Description of the tunnel route.
 	Comment pulumi.StringPtrInput
@@ -146,7 +144,7 @@ type TunnelRouteState struct {
 	Network pulumi.StringPtrInput
 	// The ID of the tunnel that will service the tunnel route.
 	TunnelId pulumi.StringPtrInput
-	// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+	// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
 	VirtualNetworkId pulumi.StringPtrInput
 }
 
@@ -155,7 +153,7 @@ func (TunnelRouteState) ElementType() reflect.Type {
 }
 
 type tunnelRouteArgs struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId string `pulumi:"accountId"`
 	// Description of the tunnel route.
 	Comment *string `pulumi:"comment"`
@@ -163,13 +161,13 @@ type tunnelRouteArgs struct {
 	Network string `pulumi:"network"`
 	// The ID of the tunnel that will service the tunnel route.
 	TunnelId string `pulumi:"tunnelId"`
-	// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+	// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
 	VirtualNetworkId *string `pulumi:"virtualNetworkId"`
 }
 
 // The set of arguments for constructing a TunnelRoute resource.
 type TunnelRouteArgs struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringInput
 	// Description of the tunnel route.
 	Comment pulumi.StringPtrInput
@@ -177,7 +175,7 @@ type TunnelRouteArgs struct {
 	Network pulumi.StringInput
 	// The ID of the tunnel that will service the tunnel route.
 	TunnelId pulumi.StringInput
-	// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+	// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
 	VirtualNetworkId pulumi.StringPtrInput
 }
 
@@ -268,7 +266,7 @@ func (o TunnelRouteOutput) ToTunnelRouteOutputWithContext(ctx context.Context) T
 	return o
 }
 
-// The account identifier to target for the resource.
+// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o TunnelRouteOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TunnelRoute) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -288,7 +286,7 @@ func (o TunnelRouteOutput) TunnelId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TunnelRoute) pulumi.StringOutput { return v.TunnelId }).(pulumi.StringOutput)
 }
 
-// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
 func (o TunnelRouteOutput) VirtualNetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TunnelRoute) pulumi.StringPtrOutput { return v.VirtualNetworkId }).(pulumi.StringPtrOutput)
 }

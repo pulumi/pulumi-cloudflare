@@ -31,14 +31,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/dlpProfile:DlpProfile")
 public class DlpProfile extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> accountId() {
@@ -73,28 +73,28 @@ public class DlpProfile extends com.pulumi.resources.CustomResource {
         return this.entries;
     }
     /**
-     * Name of the profile.
+     * Name of the profile. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Name of the profile.
+     * @return Name of the profile. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The type of the profile. Available values: `custom`, `predefined`.
+     * The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
-     * @return The type of the profile. Available values: `custom`, `predefined`.
+     * @return The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> type() {

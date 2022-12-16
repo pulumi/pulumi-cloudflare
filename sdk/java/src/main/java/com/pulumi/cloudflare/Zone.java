@@ -197,14 +197,14 @@ public class Zone extends com.pulumi.resources.CustomResource {
         return this.verificationKey;
     }
     /**
-     * The DNS zone name which will be added.
+     * The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="zone", type=String.class, parameters={})
     private Output<String> zone;
 
     /**
-     * @return The DNS zone name which will be added.
+     * @return The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zone() {

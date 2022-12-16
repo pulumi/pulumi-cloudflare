@@ -31,8 +31,8 @@ import (
 //				AccountId:    pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				AuthDomain:   pulumi.String("example.cloudflareaccess.com"),
 //				IsUiReadOnly: pulumi.Bool(false),
-//				LoginDesigns: AccessOrganizationLoginDesignArray{
-//					&AccessOrganizationLoginDesignArgs{
+//				LoginDesigns: cloudflare.AccessOrganizationLoginDesignArray{
+//					&cloudflare.AccessOrganizationLoginDesignArgs{
 //						BackgroundColor: pulumi.String("#ffffff"),
 //						FooterText:      pulumi.String("My footer text"),
 //						HeaderText:      pulumi.String("My header text"),

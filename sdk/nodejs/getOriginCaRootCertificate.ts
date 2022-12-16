@@ -50,9 +50,22 @@ export interface GetOriginCaRootCertificateResult {
      */
     readonly id: string;
 }
-
+/**
+ * Use this data source to get the [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates) for a given algorithm.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const originCa = cloudflare.getOriginCaRootCertificate({
+ *     algorithm: "<algorithm>",
+ * });
+ * ```
+ */
 export function getOriginCaRootCertificateOutput(args: GetOriginCaRootCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOriginCaRootCertificateResult> {
-    return pulumi.output(args).apply(a => getOriginCaRootCertificate(a, opts))
+    return pulumi.output(args).apply((a: any) => getOriginCaRootCertificate(a, opts))
 }
 
 /**

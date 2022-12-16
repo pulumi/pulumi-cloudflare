@@ -12,7 +12,17 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Import
     /// 
-    /// Import is not supported for this resource.
+    /// Import an account scoped Ruleset configuration.
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/ruleset:Ruleset example account/&lt;account_id&gt;/&lt;ruleset_id&gt;
+    /// ```
+    /// 
+    ///  Import a zone scoped Ruleset configuration.
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/ruleset:Ruleset example zone/&lt;zone_id&gt;/&lt;ruleset_id&gt;
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/ruleset:Ruleset")]
     public partial class Ruleset : global::Pulumi.CustomResource
@@ -36,7 +46,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the ruleset.
+        /// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -130,7 +140,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Kind { get; set; } = null!;
 
         /// <summary>
-        /// Name of the ruleset.
+        /// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -192,7 +202,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// Name of the ruleset.
+        /// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

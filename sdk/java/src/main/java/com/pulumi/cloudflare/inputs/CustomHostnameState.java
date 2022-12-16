@@ -50,14 +50,14 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Hostname you intend to request a certificate for.
+     * Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
     /**
-     * @return Hostname you intend to request a certificate for.
+     * @return Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> hostname() {
@@ -124,14 +124,14 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -213,7 +213,7 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param hostname Hostname you intend to request a certificate for.
+         * @param hostname Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param hostname Hostname you intend to request a certificate for.
+         * @param hostname Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

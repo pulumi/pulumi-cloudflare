@@ -27,7 +27,7 @@ class UserAgentBlockingRuleArgs:
         :param pulumi.Input[str] description: An informative summary of the rule.
         :param pulumi.Input[str] mode: The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.
         :param pulumi.Input[bool] paused: When true, indicates that the rule is currently paused.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         pulumi.set(__self__, "configuration", configuration)
         pulumi.set(__self__, "description", description)
@@ -87,7 +87,7 @@ class UserAgentBlockingRuleArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -110,7 +110,7 @@ class _UserAgentBlockingRuleState:
         :param pulumi.Input[str] description: An informative summary of the rule.
         :param pulumi.Input[str] mode: The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.
         :param pulumi.Input[bool] paused: When true, indicates that the rule is currently paused.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
@@ -175,7 +175,7 @@ class _UserAgentBlockingRuleState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -230,7 +230,7 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         :param pulumi.Input[str] description: An informative summary of the rule.
         :param pulumi.Input[str] mode: The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.
         :param pulumi.Input[bool] paused: When true, indicates that the rule is currently paused.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -337,7 +337,7 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         :param pulumi.Input[str] description: An informative summary of the rule.
         :param pulumi.Input[str] mode: The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.
         :param pulumi.Input[bool] paused: When true, indicates that the rule is currently paused.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -386,7 +386,7 @@ class UserAgentBlockingRule(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 

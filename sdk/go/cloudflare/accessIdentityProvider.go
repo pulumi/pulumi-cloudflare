@@ -47,8 +47,8 @@ import (
 //			}
 //			_, err = cloudflare.NewAccessIdentityProvider(ctx, "githubOauth", &cloudflare.AccessIdentityProviderArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Configs: AccessIdentityProviderConfigArray{
-//					&AccessIdentityProviderConfigArgs{
+//				Configs: cloudflare.AccessIdentityProviderConfigArray{
+//					&cloudflare.AccessIdentityProviderConfigArgs{
 //						ClientId:     pulumi.String("example"),
 //						ClientSecret: pulumi.String("secret_key"),
 //					},
@@ -61,8 +61,8 @@ import (
 //			}
 //			_, err = cloudflare.NewAccessIdentityProvider(ctx, "jumpcloudSaml", &cloudflare.AccessIdentityProviderArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Configs: AccessIdentityProviderConfigArray{
-//					&AccessIdentityProviderConfigArgs{
+//				Configs: cloudflare.AccessIdentityProviderConfigArray{
+//					&cloudflare.AccessIdentityProviderConfigArgs{
 //						Attributes: pulumi.StringArray{
 //							pulumi.String("email"),
 //							pulumi.String("username"),
@@ -81,8 +81,8 @@ import (
 //			}
 //			_, err = cloudflare.NewAccessIdentityProvider(ctx, "okta", &cloudflare.AccessIdentityProviderArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Configs: AccessIdentityProviderConfigArray{
-//					&AccessIdentityProviderConfigArgs{
+//				Configs: cloudflare.AccessIdentityProviderConfigArray{
+//					&cloudflare.AccessIdentityProviderConfigArgs{
 //						ApiToken:     pulumi.String("okta_api_token"),
 //						ClientId:     pulumi.String("example"),
 //						ClientSecret: pulumi.String("secret_key"),
@@ -111,7 +111,7 @@ import (
 type AccessIdentityProvider struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
 	Configs AccessIdentityProviderConfigArrayOutput `pulumi:"configs"`
@@ -119,7 +119,7 @@ type AccessIdentityProvider struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
@@ -158,7 +158,7 @@ func GetAccessIdentityProvider(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessIdentityProvider resources.
 type accessIdentityProviderState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string `pulumi:"accountId"`
 	// Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
 	Configs []AccessIdentityProviderConfig `pulumi:"configs"`
@@ -166,12 +166,12 @@ type accessIdentityProviderState struct {
 	Name *string `pulumi:"name"`
 	// The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
 	Type *string `pulumi:"type"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessIdentityProviderState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
 	// Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
 	Configs AccessIdentityProviderConfigArrayInput
@@ -179,7 +179,7 @@ type AccessIdentityProviderState struct {
 	Name pulumi.StringPtrInput
 	// The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
 	Type pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -188,7 +188,7 @@ func (AccessIdentityProviderState) ElementType() reflect.Type {
 }
 
 type accessIdentityProviderArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string `pulumi:"accountId"`
 	// Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
 	Configs []AccessIdentityProviderConfig `pulumi:"configs"`
@@ -196,13 +196,13 @@ type accessIdentityProviderArgs struct {
 	Name string `pulumi:"name"`
 	// The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
 	Type string `pulumi:"type"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessIdentityProvider resource.
 type AccessIdentityProviderArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
 	// Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
 	Configs AccessIdentityProviderConfigArrayInput
@@ -210,7 +210,7 @@ type AccessIdentityProviderArgs struct {
 	Name pulumi.StringInput
 	// The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
 	Type pulumi.StringInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -301,7 +301,7 @@ func (o AccessIdentityProviderOutput) ToAccessIdentityProviderOutputWithContext(
 	return o
 }
 
-// The account identifier to target for the resource. Conflicts with `zoneId`.
+// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
 func (o AccessIdentityProviderOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessIdentityProvider) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -321,7 +321,7 @@ func (o AccessIdentityProviderOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessIdentityProvider) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource. Conflicts with `accountId`.
+// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
 func (o AccessIdentityProviderOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessIdentityProvider) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

@@ -92,14 +92,14 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The DNS zone name which will be added.
+     * The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="zone", required=true)
     private Output<String> zone;
 
     /**
-     * @return The DNS zone name which will be added.
+     * @return The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zone() {
@@ -241,7 +241,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone The DNS zone name which will be added.
+         * @param zone The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone The DNS zone name which will be added.
+         * @param zone The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

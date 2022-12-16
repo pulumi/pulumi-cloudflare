@@ -150,14 +150,14 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.jsonResponseEnabled);
     }
     /**
-     * A unique name to identify the waiting room.
+     * A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return A unique name to identify the waiting room.
+     * @return A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> name() {
@@ -262,14 +262,14 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
         return this.totalActiveUsers;
     }
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {

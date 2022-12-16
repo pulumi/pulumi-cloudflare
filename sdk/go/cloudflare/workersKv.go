@@ -11,7 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Workers KV Pair. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
+// Provides a resource to manage a Cloudflare Workers KV Pair.
+//
+// > This resource uses the Cloudflare account APIs. This requires setting the
+// `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument
+// if you do not explicitly set the resource level `accountId` value.
 //
 // ## Example Usage
 //
@@ -28,12 +32,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			exampleNs, err := cloudflare.NewWorkersKvNamespace(ctx, "exampleNs", &cloudflare.WorkersKvNamespaceArgs{
-//				Title: pulumi.String("test-namespace"),
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Title:     pulumi.String("test-namespace"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cloudflare.NewWorkersKv(ctx, "example", &cloudflare.WorkersKvArgs{
+//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				NamespaceId: exampleNs.ID(),
 //				Key:         pulumi.String("test-key"),
 //				Value:       pulumi.String("test value"),
@@ -51,19 +57,19 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import cloudflare:index/workersKv:WorkersKv example beaeb6716c9443eaa4deef11763ccca6/test-key
+//	$ pulumi import cloudflare:index/workersKv:WorkersKv example <namespace_id>/<key_name>
 //
 // ```
-//
-//	where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace and `test-key` is the key
 type WorkersKv struct {
 	pulumi.CustomResourceState
 
-	// The key name
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
 	Key pulumi.StringOutput `pulumi:"key"`
-	// The ID of the Workers KV namespace in which you want to create the KV pair
+	// The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
 	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
-	// The string value to be stored in the key
+	// Value of the KV pair.
 	Value pulumi.StringOutput `pulumi:"value"`
 }
 
@@ -105,20 +111,24 @@ func GetWorkersKv(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkersKv resources.
 type workersKvState struct {
-	// The key name
+	// The account identifier to target for the resource.
+	AccountId *string `pulumi:"accountId"`
+	// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
 	Key *string `pulumi:"key"`
-	// The ID of the Workers KV namespace in which you want to create the KV pair
+	// The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
 	NamespaceId *string `pulumi:"namespaceId"`
-	// The string value to be stored in the key
+	// Value of the KV pair.
 	Value *string `pulumi:"value"`
 }
 
 type WorkersKvState struct {
-	// The key name
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringPtrInput
+	// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
 	Key pulumi.StringPtrInput
-	// The ID of the Workers KV namespace in which you want to create the KV pair
+	// The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
 	NamespaceId pulumi.StringPtrInput
-	// The string value to be stored in the key
+	// Value of the KV pair.
 	Value pulumi.StringPtrInput
 }
 
@@ -127,21 +137,25 @@ func (WorkersKvState) ElementType() reflect.Type {
 }
 
 type workersKvArgs struct {
-	// The key name
+	// The account identifier to target for the resource.
+	AccountId *string `pulumi:"accountId"`
+	// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
 	Key string `pulumi:"key"`
-	// The ID of the Workers KV namespace in which you want to create the KV pair
+	// The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
 	NamespaceId string `pulumi:"namespaceId"`
-	// The string value to be stored in the key
+	// Value of the KV pair.
 	Value string `pulumi:"value"`
 }
 
 // The set of arguments for constructing a WorkersKv resource.
 type WorkersKvArgs struct {
-	// The key name
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringPtrInput
+	// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
 	Key pulumi.StringInput
-	// The ID of the Workers KV namespace in which you want to create the KV pair
+	// The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
 	NamespaceId pulumi.StringInput
-	// The string value to be stored in the key
+	// Value of the KV pair.
 	Value pulumi.StringInput
 }
 
@@ -232,17 +246,22 @@ func (o WorkersKvOutput) ToWorkersKvOutputWithContext(ctx context.Context) Worke
 	return o
 }
 
-// The key name
+// The account identifier to target for the resource.
+func (o WorkersKvOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersKv) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
 func (o WorkersKvOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKv) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// The ID of the Workers KV namespace in which you want to create the KV pair
+// The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
 func (o WorkersKvOutput) NamespaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKv) pulumi.StringOutput { return v.NamespaceId }).(pulumi.StringOutput)
 }
 
-// The string value to be stored in the key
+// Value of the KV pair.
 func (o WorkersKvOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKv) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

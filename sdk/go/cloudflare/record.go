@@ -41,7 +41,7 @@ import (
 //				ZoneId: pulumi.Any(_var.Cloudflare_zone_id),
 //				Name:   pulumi.String("_sip._tls"),
 //				Type:   pulumi.String("SRV"),
-//				Data: &RecordDataArgs{
+//				Data: &cloudflare.RecordDataArgs{
 //					Service:  pulumi.String("_sip"),
 //					Proto:    pulumi.String("_tls"),
 //					Name:     pulumi.String("example-srv"),

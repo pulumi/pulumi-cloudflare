@@ -44,7 +44,7 @@ type EmailRoutingSettings struct {
 
 	// The date and time the settings have been created.
 	Created pulumi.StringOutput `pulumi:"created"`
-	// State of the zone settings for Email Routing.
+	// State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// The date and time the settings have been modified.
 	Modified pulumi.StringOutput `pulumi:"modified"`
@@ -56,7 +56,7 @@ type EmailRoutingSettings struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Email Routing settings identifier.
 	Tag pulumi.StringOutput `pulumi:"tag"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -97,7 +97,7 @@ func GetEmailRoutingSettings(ctx *pulumi.Context,
 type emailRoutingSettingsState struct {
 	// The date and time the settings have been created.
 	Created *string `pulumi:"created"`
-	// State of the zone settings for Email Routing.
+	// State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
 	Enabled *bool `pulumi:"enabled"`
 	// The date and time the settings have been modified.
 	Modified *string `pulumi:"modified"`
@@ -109,14 +109,14 @@ type emailRoutingSettingsState struct {
 	Status *string `pulumi:"status"`
 	// Email Routing settings identifier.
 	Tag *string `pulumi:"tag"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type EmailRoutingSettingsState struct {
 	// The date and time the settings have been created.
 	Created pulumi.StringPtrInput
-	// State of the zone settings for Email Routing.
+	// State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
 	Enabled pulumi.BoolPtrInput
 	// The date and time the settings have been modified.
 	Modified pulumi.StringPtrInput
@@ -128,7 +128,7 @@ type EmailRoutingSettingsState struct {
 	Status pulumi.StringPtrInput
 	// Email Routing settings identifier.
 	Tag pulumi.StringPtrInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -137,21 +137,21 @@ func (EmailRoutingSettingsState) ElementType() reflect.Type {
 }
 
 type emailRoutingSettingsArgs struct {
-	// State of the zone settings for Email Routing.
+	// State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
 	Enabled bool `pulumi:"enabled"`
 	// Flag to check if the user skipped the configuration wizard.
 	SkipWizard *bool `pulumi:"skipWizard"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a EmailRoutingSettings resource.
 type EmailRoutingSettingsArgs struct {
-	// State of the zone settings for Email Routing.
+	// State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
 	Enabled pulumi.BoolInput
 	// Flag to check if the user skipped the configuration wizard.
 	SkipWizard pulumi.BoolPtrInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
 }
 
@@ -247,7 +247,7 @@ func (o EmailRoutingSettingsOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingSettings) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
 
-// State of the zone settings for Email Routing.
+// State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
 func (o EmailRoutingSettingsOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *EmailRoutingSettings) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -277,7 +277,7 @@ func (o EmailRoutingSettingsOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingSettings) pulumi.StringOutput { return v.Tag }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource.
+// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o EmailRoutingSettingsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingSettings) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -82,7 +82,7 @@ type FirewallRule struct {
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
 	// List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
 	Products pulumi.StringArrayOutput `pulumi:"products"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -136,7 +136,7 @@ type firewallRuleState struct {
 	Priority *int `pulumi:"priority"`
 	// List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
 	Products []string `pulumi:"products"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -153,7 +153,7 @@ type FirewallRuleState struct {
 	Priority pulumi.IntPtrInput
 	// List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
 	Products pulumi.StringArrayInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -174,7 +174,7 @@ type firewallRuleArgs struct {
 	Priority *int `pulumi:"priority"`
 	// List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
 	Products []string `pulumi:"products"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -192,7 +192,7 @@ type FirewallRuleArgs struct {
 	Priority pulumi.IntPtrInput
 	// List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
 	Products pulumi.StringArrayInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
 }
 
@@ -313,7 +313,7 @@ func (o FirewallRuleOutput) Products() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringArrayOutput { return v.Products }).(pulumi.StringArrayOutput)
 }
 
-// The zone identifier to target for the resource.
+// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o FirewallRuleOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

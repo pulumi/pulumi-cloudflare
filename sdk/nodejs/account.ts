@@ -64,7 +64,7 @@ export class Account extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+     * Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -111,7 +111,7 @@ export interface AccountState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+     * Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
      */
     type?: pulumi.Input<string>;
 }
@@ -129,7 +129,7 @@ export interface AccountArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+     * Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
      */
     type?: pulumi.Input<string>;
 }

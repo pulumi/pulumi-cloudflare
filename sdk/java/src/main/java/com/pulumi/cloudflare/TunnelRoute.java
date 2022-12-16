@@ -71,24 +71,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Use account ID, network CIDR and virtual network ID.
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example &lt;account_id/&lt;network_cidr&gt;/&lt;virtual_network_id&gt;
+ *  $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example &lt;account_id&gt;/&lt;network_cidr&gt;/&lt;virtual_network_id&gt;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/tunnelRoute:TunnelRoute")
 public class TunnelRoute extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> accountId() {
@@ -137,14 +135,14 @@ public class TunnelRoute extends com.pulumi.resources.CustomResource {
         return this.tunnelId;
     }
     /**
-     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="virtualNetworkId", type=String.class, parameters={})
     private Output</* @Nullable */ String> virtualNetworkId;
 
     /**
-     * @return The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+     * @return The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<Optional<String>> virtualNetworkId() {

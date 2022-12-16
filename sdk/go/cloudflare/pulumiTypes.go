@@ -6013,9 +6013,9 @@ func (o AccessPolicyRequireSamlArrayOutput) Index(i pulumi.IntInput) AccessPolic
 }
 
 type AccessRuleConfiguration struct {
-	// The request property to target. Available values: `ip`, `ip6`, `ipRange`, `asn`, `country`.
+	// The request property to target. Available values: `ip`, `ip6`, `ipRange`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
 	Target string `pulumi:"target"`
-	// The value to target. Depends on target's type.
+	// The value to target. Depends on target's type. **Modifying this attribute will force creation of a new resource.**
 	Value string `pulumi:"value"`
 }
 
@@ -6031,9 +6031,9 @@ type AccessRuleConfigurationInput interface {
 }
 
 type AccessRuleConfigurationArgs struct {
-	// The request property to target. Available values: `ip`, `ip6`, `ipRange`, `asn`, `country`.
+	// The request property to target. Available values: `ip`, `ip6`, `ipRange`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
 	Target pulumi.StringInput `pulumi:"target"`
-	// The value to target. Depends on target's type.
+	// The value to target. Depends on target's type. **Modifying this attribute will force creation of a new resource.**
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -6114,12 +6114,12 @@ func (o AccessRuleConfigurationOutput) ToAccessRuleConfigurationPtrOutputWithCon
 	}).(AccessRuleConfigurationPtrOutput)
 }
 
-// The request property to target. Available values: `ip`, `ip6`, `ipRange`, `asn`, `country`.
+// The request property to target. Available values: `ip`, `ip6`, `ipRange`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
 func (o AccessRuleConfigurationOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessRuleConfiguration) string { return v.Target }).(pulumi.StringOutput)
 }
 
-// The value to target. Depends on target's type.
+// The value to target. Depends on target's type. **Modifying this attribute will force creation of a new resource.**
 func (o AccessRuleConfigurationOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessRuleConfiguration) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -6148,7 +6148,7 @@ func (o AccessRuleConfigurationPtrOutput) Elem() AccessRuleConfigurationOutput {
 	}).(AccessRuleConfigurationOutput)
 }
 
-// The request property to target. Available values: `ip`, `ip6`, `ipRange`, `asn`, `country`.
+// The request property to target. Available values: `ip`, `ip6`, `ipRange`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
 func (o AccessRuleConfigurationPtrOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessRuleConfiguration) *string {
 		if v == nil {
@@ -6158,7 +6158,7 @@ func (o AccessRuleConfigurationPtrOutput) Target() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The value to target. Depends on target's type.
+// The value to target. Depends on target's type. **Modifying this attribute will force creation of a new resource.**
 func (o AccessRuleConfigurationPtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessRuleConfiguration) *string {
 		if v == nil {
@@ -8878,11 +8878,11 @@ func (o EmailRoutingRuleMatcherArrayOutput) Index(i pulumi.IntInput) EmailRoutin
 }
 
 type FallbackDomainDomain struct {
-	// The description of the domain.
+	// A description of the fallback domain, displayed in the client UI.
 	Description *string `pulumi:"description"`
-	// The DNS servers to receive the redirected request.
+	// A list of IP addresses to handle domain resolution.
 	DnsServers []string `pulumi:"dnsServers"`
-	// The domain to ignore DNS requests.
+	// The domain suffix to match when resolving locally.
 	Suffix *string `pulumi:"suffix"`
 }
 
@@ -8898,11 +8898,11 @@ type FallbackDomainDomainInput interface {
 }
 
 type FallbackDomainDomainArgs struct {
-	// The description of the domain.
+	// A description of the fallback domain, displayed in the client UI.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The DNS servers to receive the redirected request.
+	// A list of IP addresses to handle domain resolution.
 	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
-	// The domain to ignore DNS requests.
+	// The domain suffix to match when resolving locally.
 	Suffix pulumi.StringPtrInput `pulumi:"suffix"`
 }
 
@@ -8957,17 +8957,17 @@ func (o FallbackDomainDomainOutput) ToFallbackDomainDomainOutputWithContext(ctx 
 	return o
 }
 
-// The description of the domain.
+// A description of the fallback domain, displayed in the client UI.
 func (o FallbackDomainDomainOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FallbackDomainDomain) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The DNS servers to receive the redirected request.
+// A list of IP addresses to handle domain resolution.
 func (o FallbackDomainDomainOutput) DnsServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FallbackDomainDomain) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
 }
 
-// The domain to ignore DNS requests.
+// The domain suffix to match when resolving locally.
 func (o FallbackDomainDomainOutput) Suffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FallbackDomainDomain) *string { return v.Suffix }).(pulumi.StringPtrOutput)
 }
@@ -20768,7 +20768,7 @@ func (o RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutpu
 
 type RulesetRuleActionParametersFromList struct {
 	Key string `pulumi:"key"`
-	// Name of the ruleset.
+	// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
 	Name string `pulumi:"name"`
 }
 
@@ -20785,7 +20785,7 @@ type RulesetRuleActionParametersFromListInput interface {
 
 type RulesetRuleActionParametersFromListArgs struct {
 	Key pulumi.StringInput `pulumi:"key"`
-	// Name of the ruleset.
+	// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -20870,7 +20870,7 @@ func (o RulesetRuleActionParametersFromListOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersFromList) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Name of the ruleset.
+// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
 func (o RulesetRuleActionParametersFromListOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersFromList) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -20908,7 +20908,7 @@ func (o RulesetRuleActionParametersFromListPtrOutput) Key() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the ruleset.
+// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
 func (o RulesetRuleActionParametersFromListPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RulesetRuleActionParametersFromList) *string {
 		if v == nil {
@@ -21233,7 +21233,7 @@ func (o RulesetRuleActionParametersFromValueTargetUrlPtrOutput) Value() pulumi.S
 
 type RulesetRuleActionParametersHeader struct {
 	Expression *string `pulumi:"expression"`
-	// Name of the ruleset.
+	// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
 	Name      *string `pulumi:"name"`
 	Operation *string `pulumi:"operation"`
 	Value     *string `pulumi:"value"`
@@ -21252,7 +21252,7 @@ type RulesetRuleActionParametersHeaderInput interface {
 
 type RulesetRuleActionParametersHeaderArgs struct {
 	Expression pulumi.StringPtrInput `pulumi:"expression"`
-	// Name of the ruleset.
+	// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
 	Name      pulumi.StringPtrInput `pulumi:"name"`
 	Operation pulumi.StringPtrInput `pulumi:"operation"`
 	Value     pulumi.StringPtrInput `pulumi:"value"`
@@ -21313,7 +21313,7 @@ func (o RulesetRuleActionParametersHeaderOutput) Expression() pulumi.StringPtrOu
 	return o.ApplyT(func(v RulesetRuleActionParametersHeader) *string { return v.Expression }).(pulumi.StringPtrOutput)
 }
 
-// Name of the ruleset.
+// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
 func (o RulesetRuleActionParametersHeaderOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -23890,11 +23890,11 @@ func (o SpectrumApplicationOriginPortRangePtrOutput) Start() pulumi.IntPtrOutput
 }
 
 type SplitTunnelTunnel struct {
-	// The address in CIDR format to include in the tunnel configuration. Conflicts with `"host"`.
+	// The address for the tunnel.
 	Address *string `pulumi:"address"`
-	// The description of the tunnel.
+	// A description for the tunnel.
 	Description *string `pulumi:"description"`
-	// The domain name to include in the tunnel configuration. Conflicts with `"address"`.
+	// The domain name for the tunnel.
 	Host *string `pulumi:"host"`
 }
 
@@ -23910,11 +23910,11 @@ type SplitTunnelTunnelInput interface {
 }
 
 type SplitTunnelTunnelArgs struct {
-	// The address in CIDR format to include in the tunnel configuration. Conflicts with `"host"`.
+	// The address for the tunnel.
 	Address pulumi.StringPtrInput `pulumi:"address"`
-	// The description of the tunnel.
+	// A description for the tunnel.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The domain name to include in the tunnel configuration. Conflicts with `"address"`.
+	// The domain name for the tunnel.
 	Host pulumi.StringPtrInput `pulumi:"host"`
 }
 
@@ -23969,17 +23969,17 @@ func (o SplitTunnelTunnelOutput) ToSplitTunnelTunnelOutputWithContext(ctx contex
 	return o
 }
 
-// The address in CIDR format to include in the tunnel configuration. Conflicts with `"host"`.
+// The address for the tunnel.
 func (o SplitTunnelTunnelOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SplitTunnelTunnel) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
-// The description of the tunnel.
+// A description for the tunnel.
 func (o SplitTunnelTunnelOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SplitTunnelTunnel) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The domain name to include in the tunnel configuration. Conflicts with `"address"`.
+// The domain name for the tunnel.
 func (o SplitTunnelTunnelOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SplitTunnelTunnel) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
@@ -26392,6 +26392,880 @@ func (o TeamsRuleRuleSettingsL4overridePtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type TunnelConfigConfig struct {
+	// Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+	IngressRules  []TunnelConfigConfigIngressRule  `pulumi:"ingressRules"`
+	OriginRequest *TunnelConfigConfigOriginRequest `pulumi:"originRequest"`
+	// If you're exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+	WarpRouting *TunnelConfigConfigWarpRouting `pulumi:"warpRouting"`
+}
+
+// TunnelConfigConfigInput is an input type that accepts TunnelConfigConfigArgs and TunnelConfigConfigOutput values.
+// You can construct a concrete instance of `TunnelConfigConfigInput` via:
+//
+//	TunnelConfigConfigArgs{...}
+type TunnelConfigConfigInput interface {
+	pulumi.Input
+
+	ToTunnelConfigConfigOutput() TunnelConfigConfigOutput
+	ToTunnelConfigConfigOutputWithContext(context.Context) TunnelConfigConfigOutput
+}
+
+type TunnelConfigConfigArgs struct {
+	// Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+	IngressRules  TunnelConfigConfigIngressRuleArrayInput `pulumi:"ingressRules"`
+	OriginRequest TunnelConfigConfigOriginRequestPtrInput `pulumi:"originRequest"`
+	// If you're exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+	WarpRouting TunnelConfigConfigWarpRoutingPtrInput `pulumi:"warpRouting"`
+}
+
+func (TunnelConfigConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelConfigConfig)(nil)).Elem()
+}
+
+func (i TunnelConfigConfigArgs) ToTunnelConfigConfigOutput() TunnelConfigConfigOutput {
+	return i.ToTunnelConfigConfigOutputWithContext(context.Background())
+}
+
+func (i TunnelConfigConfigArgs) ToTunnelConfigConfigOutputWithContext(ctx context.Context) TunnelConfigConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigOutput)
+}
+
+func (i TunnelConfigConfigArgs) ToTunnelConfigConfigPtrOutput() TunnelConfigConfigPtrOutput {
+	return i.ToTunnelConfigConfigPtrOutputWithContext(context.Background())
+}
+
+func (i TunnelConfigConfigArgs) ToTunnelConfigConfigPtrOutputWithContext(ctx context.Context) TunnelConfigConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigOutput).ToTunnelConfigConfigPtrOutputWithContext(ctx)
+}
+
+// TunnelConfigConfigPtrInput is an input type that accepts TunnelConfigConfigArgs, TunnelConfigConfigPtr and TunnelConfigConfigPtrOutput values.
+// You can construct a concrete instance of `TunnelConfigConfigPtrInput` via:
+//
+//	        TunnelConfigConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type TunnelConfigConfigPtrInput interface {
+	pulumi.Input
+
+	ToTunnelConfigConfigPtrOutput() TunnelConfigConfigPtrOutput
+	ToTunnelConfigConfigPtrOutputWithContext(context.Context) TunnelConfigConfigPtrOutput
+}
+
+type tunnelConfigConfigPtrType TunnelConfigConfigArgs
+
+func TunnelConfigConfigPtr(v *TunnelConfigConfigArgs) TunnelConfigConfigPtrInput {
+	return (*tunnelConfigConfigPtrType)(v)
+}
+
+func (*tunnelConfigConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelConfigConfig)(nil)).Elem()
+}
+
+func (i *tunnelConfigConfigPtrType) ToTunnelConfigConfigPtrOutput() TunnelConfigConfigPtrOutput {
+	return i.ToTunnelConfigConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *tunnelConfigConfigPtrType) ToTunnelConfigConfigPtrOutputWithContext(ctx context.Context) TunnelConfigConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigPtrOutput)
+}
+
+type TunnelConfigConfigOutput struct{ *pulumi.OutputState }
+
+func (TunnelConfigConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelConfigConfig)(nil)).Elem()
+}
+
+func (o TunnelConfigConfigOutput) ToTunnelConfigConfigOutput() TunnelConfigConfigOutput {
+	return o
+}
+
+func (o TunnelConfigConfigOutput) ToTunnelConfigConfigOutputWithContext(ctx context.Context) TunnelConfigConfigOutput {
+	return o
+}
+
+func (o TunnelConfigConfigOutput) ToTunnelConfigConfigPtrOutput() TunnelConfigConfigPtrOutput {
+	return o.ToTunnelConfigConfigPtrOutputWithContext(context.Background())
+}
+
+func (o TunnelConfigConfigOutput) ToTunnelConfigConfigPtrOutputWithContext(ctx context.Context) TunnelConfigConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelConfigConfig) *TunnelConfigConfig {
+		return &v
+	}).(TunnelConfigConfigPtrOutput)
+}
+
+// Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+func (o TunnelConfigConfigOutput) IngressRules() TunnelConfigConfigIngressRuleArrayOutput {
+	return o.ApplyT(func(v TunnelConfigConfig) []TunnelConfigConfigIngressRule { return v.IngressRules }).(TunnelConfigConfigIngressRuleArrayOutput)
+}
+
+func (o TunnelConfigConfigOutput) OriginRequest() TunnelConfigConfigOriginRequestPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfig) *TunnelConfigConfigOriginRequest { return v.OriginRequest }).(TunnelConfigConfigOriginRequestPtrOutput)
+}
+
+// If you're exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+func (o TunnelConfigConfigOutput) WarpRouting() TunnelConfigConfigWarpRoutingPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfig) *TunnelConfigConfigWarpRouting { return v.WarpRouting }).(TunnelConfigConfigWarpRoutingPtrOutput)
+}
+
+type TunnelConfigConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (TunnelConfigConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelConfigConfig)(nil)).Elem()
+}
+
+func (o TunnelConfigConfigPtrOutput) ToTunnelConfigConfigPtrOutput() TunnelConfigConfigPtrOutput {
+	return o
+}
+
+func (o TunnelConfigConfigPtrOutput) ToTunnelConfigConfigPtrOutputWithContext(ctx context.Context) TunnelConfigConfigPtrOutput {
+	return o
+}
+
+func (o TunnelConfigConfigPtrOutput) Elem() TunnelConfigConfigOutput {
+	return o.ApplyT(func(v *TunnelConfigConfig) TunnelConfigConfig {
+		if v != nil {
+			return *v
+		}
+		var ret TunnelConfigConfig
+		return ret
+	}).(TunnelConfigConfigOutput)
+}
+
+// Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+func (o TunnelConfigConfigPtrOutput) IngressRules() TunnelConfigConfigIngressRuleArrayOutput {
+	return o.ApplyT(func(v *TunnelConfigConfig) []TunnelConfigConfigIngressRule {
+		if v == nil {
+			return nil
+		}
+		return v.IngressRules
+	}).(TunnelConfigConfigIngressRuleArrayOutput)
+}
+
+func (o TunnelConfigConfigPtrOutput) OriginRequest() TunnelConfigConfigOriginRequestPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfig) *TunnelConfigConfigOriginRequest {
+		if v == nil {
+			return nil
+		}
+		return v.OriginRequest
+	}).(TunnelConfigConfigOriginRequestPtrOutput)
+}
+
+// If you're exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+func (o TunnelConfigConfigPtrOutput) WarpRouting() TunnelConfigConfigWarpRoutingPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfig) *TunnelConfigConfigWarpRouting {
+		if v == nil {
+			return nil
+		}
+		return v.WarpRouting
+	}).(TunnelConfigConfigWarpRoutingPtrOutput)
+}
+
+type TunnelConfigConfigIngressRule struct {
+	Hostname *string `pulumi:"hostname"`
+	Path     *string `pulumi:"path"`
+	Service  string  `pulumi:"service"`
+}
+
+// TunnelConfigConfigIngressRuleInput is an input type that accepts TunnelConfigConfigIngressRuleArgs and TunnelConfigConfigIngressRuleOutput values.
+// You can construct a concrete instance of `TunnelConfigConfigIngressRuleInput` via:
+//
+//	TunnelConfigConfigIngressRuleArgs{...}
+type TunnelConfigConfigIngressRuleInput interface {
+	pulumi.Input
+
+	ToTunnelConfigConfigIngressRuleOutput() TunnelConfigConfigIngressRuleOutput
+	ToTunnelConfigConfigIngressRuleOutputWithContext(context.Context) TunnelConfigConfigIngressRuleOutput
+}
+
+type TunnelConfigConfigIngressRuleArgs struct {
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	Path     pulumi.StringPtrInput `pulumi:"path"`
+	Service  pulumi.StringInput    `pulumi:"service"`
+}
+
+func (TunnelConfigConfigIngressRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelConfigConfigIngressRule)(nil)).Elem()
+}
+
+func (i TunnelConfigConfigIngressRuleArgs) ToTunnelConfigConfigIngressRuleOutput() TunnelConfigConfigIngressRuleOutput {
+	return i.ToTunnelConfigConfigIngressRuleOutputWithContext(context.Background())
+}
+
+func (i TunnelConfigConfigIngressRuleArgs) ToTunnelConfigConfigIngressRuleOutputWithContext(ctx context.Context) TunnelConfigConfigIngressRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigIngressRuleOutput)
+}
+
+// TunnelConfigConfigIngressRuleArrayInput is an input type that accepts TunnelConfigConfigIngressRuleArray and TunnelConfigConfigIngressRuleArrayOutput values.
+// You can construct a concrete instance of `TunnelConfigConfigIngressRuleArrayInput` via:
+//
+//	TunnelConfigConfigIngressRuleArray{ TunnelConfigConfigIngressRuleArgs{...} }
+type TunnelConfigConfigIngressRuleArrayInput interface {
+	pulumi.Input
+
+	ToTunnelConfigConfigIngressRuleArrayOutput() TunnelConfigConfigIngressRuleArrayOutput
+	ToTunnelConfigConfigIngressRuleArrayOutputWithContext(context.Context) TunnelConfigConfigIngressRuleArrayOutput
+}
+
+type TunnelConfigConfigIngressRuleArray []TunnelConfigConfigIngressRuleInput
+
+func (TunnelConfigConfigIngressRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TunnelConfigConfigIngressRule)(nil)).Elem()
+}
+
+func (i TunnelConfigConfigIngressRuleArray) ToTunnelConfigConfigIngressRuleArrayOutput() TunnelConfigConfigIngressRuleArrayOutput {
+	return i.ToTunnelConfigConfigIngressRuleArrayOutputWithContext(context.Background())
+}
+
+func (i TunnelConfigConfigIngressRuleArray) ToTunnelConfigConfigIngressRuleArrayOutputWithContext(ctx context.Context) TunnelConfigConfigIngressRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigIngressRuleArrayOutput)
+}
+
+type TunnelConfigConfigIngressRuleOutput struct{ *pulumi.OutputState }
+
+func (TunnelConfigConfigIngressRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelConfigConfigIngressRule)(nil)).Elem()
+}
+
+func (o TunnelConfigConfigIngressRuleOutput) ToTunnelConfigConfigIngressRuleOutput() TunnelConfigConfigIngressRuleOutput {
+	return o
+}
+
+func (o TunnelConfigConfigIngressRuleOutput) ToTunnelConfigConfigIngressRuleOutputWithContext(ctx context.Context) TunnelConfigConfigIngressRuleOutput {
+	return o
+}
+
+func (o TunnelConfigConfigIngressRuleOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRule) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRule) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRule) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type TunnelConfigConfigIngressRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (TunnelConfigConfigIngressRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TunnelConfigConfigIngressRule)(nil)).Elem()
+}
+
+func (o TunnelConfigConfigIngressRuleArrayOutput) ToTunnelConfigConfigIngressRuleArrayOutput() TunnelConfigConfigIngressRuleArrayOutput {
+	return o
+}
+
+func (o TunnelConfigConfigIngressRuleArrayOutput) ToTunnelConfigConfigIngressRuleArrayOutputWithContext(ctx context.Context) TunnelConfigConfigIngressRuleArrayOutput {
+	return o
+}
+
+func (o TunnelConfigConfigIngressRuleArrayOutput) Index(i pulumi.IntInput) TunnelConfigConfigIngressRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TunnelConfigConfigIngressRule {
+		return vs[0].([]TunnelConfigConfigIngressRule)[vs[1].(int)]
+	}).(TunnelConfigConfigIngressRuleOutput)
+}
+
+type TunnelConfigConfigOriginRequest struct {
+	BastionMode            *bool                                   `pulumi:"bastionMode"`
+	CaPool                 *string                                 `pulumi:"caPool"`
+	ConnectTimeout         *string                                 `pulumi:"connectTimeout"`
+	DisableChunkedEncoding *bool                                   `pulumi:"disableChunkedEncoding"`
+	HttpHostHeader         *string                                 `pulumi:"httpHostHeader"`
+	IpRules                []TunnelConfigConfigOriginRequestIpRule `pulumi:"ipRules"`
+	KeepAliveConnections   *int                                    `pulumi:"keepAliveConnections"`
+	KeepAliveTimeout       *string                                 `pulumi:"keepAliveTimeout"`
+	NoHappyEyeballs        *bool                                   `pulumi:"noHappyEyeballs"`
+	NoTlsVerify            *bool                                   `pulumi:"noTlsVerify"`
+	OriginServerName       *string                                 `pulumi:"originServerName"`
+	ProxyAddress           *string                                 `pulumi:"proxyAddress"`
+	ProxyPort              *int                                    `pulumi:"proxyPort"`
+	ProxyType              *string                                 `pulumi:"proxyType"`
+	TcpKeepAlive           *string                                 `pulumi:"tcpKeepAlive"`
+	TlsTimeout             *string                                 `pulumi:"tlsTimeout"`
+}
+
+// TunnelConfigConfigOriginRequestInput is an input type that accepts TunnelConfigConfigOriginRequestArgs and TunnelConfigConfigOriginRequestOutput values.
+// You can construct a concrete instance of `TunnelConfigConfigOriginRequestInput` via:
+//
+//	TunnelConfigConfigOriginRequestArgs{...}
+type TunnelConfigConfigOriginRequestInput interface {
+	pulumi.Input
+
+	ToTunnelConfigConfigOriginRequestOutput() TunnelConfigConfigOriginRequestOutput
+	ToTunnelConfigConfigOriginRequestOutputWithContext(context.Context) TunnelConfigConfigOriginRequestOutput
+}
+
+type TunnelConfigConfigOriginRequestArgs struct {
+	BastionMode            pulumi.BoolPtrInput                             `pulumi:"bastionMode"`
+	CaPool                 pulumi.StringPtrInput                           `pulumi:"caPool"`
+	ConnectTimeout         pulumi.StringPtrInput                           `pulumi:"connectTimeout"`
+	DisableChunkedEncoding pulumi.BoolPtrInput                             `pulumi:"disableChunkedEncoding"`
+	HttpHostHeader         pulumi.StringPtrInput                           `pulumi:"httpHostHeader"`
+	IpRules                TunnelConfigConfigOriginRequestIpRuleArrayInput `pulumi:"ipRules"`
+	KeepAliveConnections   pulumi.IntPtrInput                              `pulumi:"keepAliveConnections"`
+	KeepAliveTimeout       pulumi.StringPtrInput                           `pulumi:"keepAliveTimeout"`
+	NoHappyEyeballs        pulumi.BoolPtrInput                             `pulumi:"noHappyEyeballs"`
+	NoTlsVerify            pulumi.BoolPtrInput                             `pulumi:"noTlsVerify"`
+	OriginServerName       pulumi.StringPtrInput                           `pulumi:"originServerName"`
+	ProxyAddress           pulumi.StringPtrInput                           `pulumi:"proxyAddress"`
+	ProxyPort              pulumi.IntPtrInput                              `pulumi:"proxyPort"`
+	ProxyType              pulumi.StringPtrInput                           `pulumi:"proxyType"`
+	TcpKeepAlive           pulumi.StringPtrInput                           `pulumi:"tcpKeepAlive"`
+	TlsTimeout             pulumi.StringPtrInput                           `pulumi:"tlsTimeout"`
+}
+
+func (TunnelConfigConfigOriginRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelConfigConfigOriginRequest)(nil)).Elem()
+}
+
+func (i TunnelConfigConfigOriginRequestArgs) ToTunnelConfigConfigOriginRequestOutput() TunnelConfigConfigOriginRequestOutput {
+	return i.ToTunnelConfigConfigOriginRequestOutputWithContext(context.Background())
+}
+
+func (i TunnelConfigConfigOriginRequestArgs) ToTunnelConfigConfigOriginRequestOutputWithContext(ctx context.Context) TunnelConfigConfigOriginRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigOriginRequestOutput)
+}
+
+func (i TunnelConfigConfigOriginRequestArgs) ToTunnelConfigConfigOriginRequestPtrOutput() TunnelConfigConfigOriginRequestPtrOutput {
+	return i.ToTunnelConfigConfigOriginRequestPtrOutputWithContext(context.Background())
+}
+
+func (i TunnelConfigConfigOriginRequestArgs) ToTunnelConfigConfigOriginRequestPtrOutputWithContext(ctx context.Context) TunnelConfigConfigOriginRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigOriginRequestOutput).ToTunnelConfigConfigOriginRequestPtrOutputWithContext(ctx)
+}
+
+// TunnelConfigConfigOriginRequestPtrInput is an input type that accepts TunnelConfigConfigOriginRequestArgs, TunnelConfigConfigOriginRequestPtr and TunnelConfigConfigOriginRequestPtrOutput values.
+// You can construct a concrete instance of `TunnelConfigConfigOriginRequestPtrInput` via:
+//
+//	        TunnelConfigConfigOriginRequestArgs{...}
+//
+//	or:
+//
+//	        nil
+type TunnelConfigConfigOriginRequestPtrInput interface {
+	pulumi.Input
+
+	ToTunnelConfigConfigOriginRequestPtrOutput() TunnelConfigConfigOriginRequestPtrOutput
+	ToTunnelConfigConfigOriginRequestPtrOutputWithContext(context.Context) TunnelConfigConfigOriginRequestPtrOutput
+}
+
+type tunnelConfigConfigOriginRequestPtrType TunnelConfigConfigOriginRequestArgs
+
+func TunnelConfigConfigOriginRequestPtr(v *TunnelConfigConfigOriginRequestArgs) TunnelConfigConfigOriginRequestPtrInput {
+	return (*tunnelConfigConfigOriginRequestPtrType)(v)
+}
+
+func (*tunnelConfigConfigOriginRequestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelConfigConfigOriginRequest)(nil)).Elem()
+}
+
+func (i *tunnelConfigConfigOriginRequestPtrType) ToTunnelConfigConfigOriginRequestPtrOutput() TunnelConfigConfigOriginRequestPtrOutput {
+	return i.ToTunnelConfigConfigOriginRequestPtrOutputWithContext(context.Background())
+}
+
+func (i *tunnelConfigConfigOriginRequestPtrType) ToTunnelConfigConfigOriginRequestPtrOutputWithContext(ctx context.Context) TunnelConfigConfigOriginRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigOriginRequestPtrOutput)
+}
+
+type TunnelConfigConfigOriginRequestOutput struct{ *pulumi.OutputState }
+
+func (TunnelConfigConfigOriginRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelConfigConfigOriginRequest)(nil)).Elem()
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) ToTunnelConfigConfigOriginRequestOutput() TunnelConfigConfigOriginRequestOutput {
+	return o
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) ToTunnelConfigConfigOriginRequestOutputWithContext(ctx context.Context) TunnelConfigConfigOriginRequestOutput {
+	return o
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) ToTunnelConfigConfigOriginRequestPtrOutput() TunnelConfigConfigOriginRequestPtrOutput {
+	return o.ToTunnelConfigConfigOriginRequestPtrOutputWithContext(context.Background())
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) ToTunnelConfigConfigOriginRequestPtrOutputWithContext(ctx context.Context) TunnelConfigConfigOriginRequestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelConfigConfigOriginRequest) *TunnelConfigConfigOriginRequest {
+		return &v
+	}).(TunnelConfigConfigOriginRequestPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) BastionMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequest) *bool { return v.BastionMode }).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) CaPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequest) *string { return v.CaPool }).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) ConnectTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequest) *string { return v.ConnectTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) DisableChunkedEncoding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequest) *bool { return v.DisableChunkedEncoding }).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) HttpHostHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequest) *string { return v.HttpHostHeader }).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) IpRules() TunnelConfigConfigOriginRequestIpRuleArrayOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequest) []TunnelConfigConfigOriginRequestIpRule { return v.IpRules }).(TunnelConfigConfigOriginRequestIpRuleArrayOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) KeepAliveConnections() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequest) *int { return v.KeepAliveConnections }).(pulumi.IntPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) KeepAliveTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequest) *string { return v.KeepAliveTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) NoHappyEyeballs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequest) *bool { return v.NoHappyEyeballs }).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) NoTlsVerify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequest) *bool { return v.NoTlsVerify }).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) OriginServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequest) *string { return v.OriginServerName }).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) ProxyAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequest) *string { return v.ProxyAddress }).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) ProxyPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequest) *int { return v.ProxyPort }).(pulumi.IntPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) ProxyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequest) *string { return v.ProxyType }).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) TcpKeepAlive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequest) *string { return v.TcpKeepAlive }).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) TlsTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequest) *string { return v.TlsTimeout }).(pulumi.StringPtrOutput)
+}
+
+type TunnelConfigConfigOriginRequestPtrOutput struct{ *pulumi.OutputState }
+
+func (TunnelConfigConfigOriginRequestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelConfigConfigOriginRequest)(nil)).Elem()
+}
+
+func (o TunnelConfigConfigOriginRequestPtrOutput) ToTunnelConfigConfigOriginRequestPtrOutput() TunnelConfigConfigOriginRequestPtrOutput {
+	return o
+}
+
+func (o TunnelConfigConfigOriginRequestPtrOutput) ToTunnelConfigConfigOriginRequestPtrOutputWithContext(ctx context.Context) TunnelConfigConfigOriginRequestPtrOutput {
+	return o
+}
+
+func (o TunnelConfigConfigOriginRequestPtrOutput) Elem() TunnelConfigConfigOriginRequestOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequest) TunnelConfigConfigOriginRequest {
+		if v != nil {
+			return *v
+		}
+		var ret TunnelConfigConfigOriginRequest
+		return ret
+	}).(TunnelConfigConfigOriginRequestOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestPtrOutput) BastionMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BastionMode
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestPtrOutput) CaPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaPool
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestPtrOutput) ConnectTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestPtrOutput) DisableChunkedEncoding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableChunkedEncoding
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestPtrOutput) HttpHostHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHostHeader
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestPtrOutput) IpRules() TunnelConfigConfigOriginRequestIpRuleArrayOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequest) []TunnelConfigConfigOriginRequestIpRule {
+		if v == nil {
+			return nil
+		}
+		return v.IpRules
+	}).(TunnelConfigConfigOriginRequestIpRuleArrayOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestPtrOutput) KeepAliveConnections() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequest) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepAliveConnections
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestPtrOutput) KeepAliveTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeepAliveTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestPtrOutput) NoHappyEyeballs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoHappyEyeballs
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestPtrOutput) NoTlsVerify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoTlsVerify
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestPtrOutput) OriginServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OriginServerName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestPtrOutput) ProxyAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestPtrOutput) ProxyPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequest) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyPort
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestPtrOutput) ProxyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestPtrOutput) TcpKeepAlive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TcpKeepAlive
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestPtrOutput) TlsTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TlsTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+type TunnelConfigConfigOriginRequestIpRule struct {
+	Allow  *bool   `pulumi:"allow"`
+	Ports  []int   `pulumi:"ports"`
+	Prefix *string `pulumi:"prefix"`
+}
+
+// TunnelConfigConfigOriginRequestIpRuleInput is an input type that accepts TunnelConfigConfigOriginRequestIpRuleArgs and TunnelConfigConfigOriginRequestIpRuleOutput values.
+// You can construct a concrete instance of `TunnelConfigConfigOriginRequestIpRuleInput` via:
+//
+//	TunnelConfigConfigOriginRequestIpRuleArgs{...}
+type TunnelConfigConfigOriginRequestIpRuleInput interface {
+	pulumi.Input
+
+	ToTunnelConfigConfigOriginRequestIpRuleOutput() TunnelConfigConfigOriginRequestIpRuleOutput
+	ToTunnelConfigConfigOriginRequestIpRuleOutputWithContext(context.Context) TunnelConfigConfigOriginRequestIpRuleOutput
+}
+
+type TunnelConfigConfigOriginRequestIpRuleArgs struct {
+	Allow  pulumi.BoolPtrInput   `pulumi:"allow"`
+	Ports  pulumi.IntArrayInput  `pulumi:"ports"`
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+}
+
+func (TunnelConfigConfigOriginRequestIpRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelConfigConfigOriginRequestIpRule)(nil)).Elem()
+}
+
+func (i TunnelConfigConfigOriginRequestIpRuleArgs) ToTunnelConfigConfigOriginRequestIpRuleOutput() TunnelConfigConfigOriginRequestIpRuleOutput {
+	return i.ToTunnelConfigConfigOriginRequestIpRuleOutputWithContext(context.Background())
+}
+
+func (i TunnelConfigConfigOriginRequestIpRuleArgs) ToTunnelConfigConfigOriginRequestIpRuleOutputWithContext(ctx context.Context) TunnelConfigConfigOriginRequestIpRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigOriginRequestIpRuleOutput)
+}
+
+// TunnelConfigConfigOriginRequestIpRuleArrayInput is an input type that accepts TunnelConfigConfigOriginRequestIpRuleArray and TunnelConfigConfigOriginRequestIpRuleArrayOutput values.
+// You can construct a concrete instance of `TunnelConfigConfigOriginRequestIpRuleArrayInput` via:
+//
+//	TunnelConfigConfigOriginRequestIpRuleArray{ TunnelConfigConfigOriginRequestIpRuleArgs{...} }
+type TunnelConfigConfigOriginRequestIpRuleArrayInput interface {
+	pulumi.Input
+
+	ToTunnelConfigConfigOriginRequestIpRuleArrayOutput() TunnelConfigConfigOriginRequestIpRuleArrayOutput
+	ToTunnelConfigConfigOriginRequestIpRuleArrayOutputWithContext(context.Context) TunnelConfigConfigOriginRequestIpRuleArrayOutput
+}
+
+type TunnelConfigConfigOriginRequestIpRuleArray []TunnelConfigConfigOriginRequestIpRuleInput
+
+func (TunnelConfigConfigOriginRequestIpRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TunnelConfigConfigOriginRequestIpRule)(nil)).Elem()
+}
+
+func (i TunnelConfigConfigOriginRequestIpRuleArray) ToTunnelConfigConfigOriginRequestIpRuleArrayOutput() TunnelConfigConfigOriginRequestIpRuleArrayOutput {
+	return i.ToTunnelConfigConfigOriginRequestIpRuleArrayOutputWithContext(context.Background())
+}
+
+func (i TunnelConfigConfigOriginRequestIpRuleArray) ToTunnelConfigConfigOriginRequestIpRuleArrayOutputWithContext(ctx context.Context) TunnelConfigConfigOriginRequestIpRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigOriginRequestIpRuleArrayOutput)
+}
+
+type TunnelConfigConfigOriginRequestIpRuleOutput struct{ *pulumi.OutputState }
+
+func (TunnelConfigConfigOriginRequestIpRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelConfigConfigOriginRequestIpRule)(nil)).Elem()
+}
+
+func (o TunnelConfigConfigOriginRequestIpRuleOutput) ToTunnelConfigConfigOriginRequestIpRuleOutput() TunnelConfigConfigOriginRequestIpRuleOutput {
+	return o
+}
+
+func (o TunnelConfigConfigOriginRequestIpRuleOutput) ToTunnelConfigConfigOriginRequestIpRuleOutputWithContext(ctx context.Context) TunnelConfigConfigOriginRequestIpRuleOutput {
+	return o
+}
+
+func (o TunnelConfigConfigOriginRequestIpRuleOutput) Allow() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequestIpRule) *bool { return v.Allow }).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestIpRuleOutput) Ports() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequestIpRule) []int { return v.Ports }).(pulumi.IntArrayOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestIpRuleOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequestIpRule) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+type TunnelConfigConfigOriginRequestIpRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (TunnelConfigConfigOriginRequestIpRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TunnelConfigConfigOriginRequestIpRule)(nil)).Elem()
+}
+
+func (o TunnelConfigConfigOriginRequestIpRuleArrayOutput) ToTunnelConfigConfigOriginRequestIpRuleArrayOutput() TunnelConfigConfigOriginRequestIpRuleArrayOutput {
+	return o
+}
+
+func (o TunnelConfigConfigOriginRequestIpRuleArrayOutput) ToTunnelConfigConfigOriginRequestIpRuleArrayOutputWithContext(ctx context.Context) TunnelConfigConfigOriginRequestIpRuleArrayOutput {
+	return o
+}
+
+func (o TunnelConfigConfigOriginRequestIpRuleArrayOutput) Index(i pulumi.IntInput) TunnelConfigConfigOriginRequestIpRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TunnelConfigConfigOriginRequestIpRule {
+		return vs[0].([]TunnelConfigConfigOriginRequestIpRule)[vs[1].(int)]
+	}).(TunnelConfigConfigOriginRequestIpRuleOutput)
+}
+
+type TunnelConfigConfigWarpRouting struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// TunnelConfigConfigWarpRoutingInput is an input type that accepts TunnelConfigConfigWarpRoutingArgs and TunnelConfigConfigWarpRoutingOutput values.
+// You can construct a concrete instance of `TunnelConfigConfigWarpRoutingInput` via:
+//
+//	TunnelConfigConfigWarpRoutingArgs{...}
+type TunnelConfigConfigWarpRoutingInput interface {
+	pulumi.Input
+
+	ToTunnelConfigConfigWarpRoutingOutput() TunnelConfigConfigWarpRoutingOutput
+	ToTunnelConfigConfigWarpRoutingOutputWithContext(context.Context) TunnelConfigConfigWarpRoutingOutput
+}
+
+type TunnelConfigConfigWarpRoutingArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (TunnelConfigConfigWarpRoutingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelConfigConfigWarpRouting)(nil)).Elem()
+}
+
+func (i TunnelConfigConfigWarpRoutingArgs) ToTunnelConfigConfigWarpRoutingOutput() TunnelConfigConfigWarpRoutingOutput {
+	return i.ToTunnelConfigConfigWarpRoutingOutputWithContext(context.Background())
+}
+
+func (i TunnelConfigConfigWarpRoutingArgs) ToTunnelConfigConfigWarpRoutingOutputWithContext(ctx context.Context) TunnelConfigConfigWarpRoutingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigWarpRoutingOutput)
+}
+
+func (i TunnelConfigConfigWarpRoutingArgs) ToTunnelConfigConfigWarpRoutingPtrOutput() TunnelConfigConfigWarpRoutingPtrOutput {
+	return i.ToTunnelConfigConfigWarpRoutingPtrOutputWithContext(context.Background())
+}
+
+func (i TunnelConfigConfigWarpRoutingArgs) ToTunnelConfigConfigWarpRoutingPtrOutputWithContext(ctx context.Context) TunnelConfigConfigWarpRoutingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigWarpRoutingOutput).ToTunnelConfigConfigWarpRoutingPtrOutputWithContext(ctx)
+}
+
+// TunnelConfigConfigWarpRoutingPtrInput is an input type that accepts TunnelConfigConfigWarpRoutingArgs, TunnelConfigConfigWarpRoutingPtr and TunnelConfigConfigWarpRoutingPtrOutput values.
+// You can construct a concrete instance of `TunnelConfigConfigWarpRoutingPtrInput` via:
+//
+//	        TunnelConfigConfigWarpRoutingArgs{...}
+//
+//	or:
+//
+//	        nil
+type TunnelConfigConfigWarpRoutingPtrInput interface {
+	pulumi.Input
+
+	ToTunnelConfigConfigWarpRoutingPtrOutput() TunnelConfigConfigWarpRoutingPtrOutput
+	ToTunnelConfigConfigWarpRoutingPtrOutputWithContext(context.Context) TunnelConfigConfigWarpRoutingPtrOutput
+}
+
+type tunnelConfigConfigWarpRoutingPtrType TunnelConfigConfigWarpRoutingArgs
+
+func TunnelConfigConfigWarpRoutingPtr(v *TunnelConfigConfigWarpRoutingArgs) TunnelConfigConfigWarpRoutingPtrInput {
+	return (*tunnelConfigConfigWarpRoutingPtrType)(v)
+}
+
+func (*tunnelConfigConfigWarpRoutingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelConfigConfigWarpRouting)(nil)).Elem()
+}
+
+func (i *tunnelConfigConfigWarpRoutingPtrType) ToTunnelConfigConfigWarpRoutingPtrOutput() TunnelConfigConfigWarpRoutingPtrOutput {
+	return i.ToTunnelConfigConfigWarpRoutingPtrOutputWithContext(context.Background())
+}
+
+func (i *tunnelConfigConfigWarpRoutingPtrType) ToTunnelConfigConfigWarpRoutingPtrOutputWithContext(ctx context.Context) TunnelConfigConfigWarpRoutingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigWarpRoutingPtrOutput)
+}
+
+type TunnelConfigConfigWarpRoutingOutput struct{ *pulumi.OutputState }
+
+func (TunnelConfigConfigWarpRoutingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelConfigConfigWarpRouting)(nil)).Elem()
+}
+
+func (o TunnelConfigConfigWarpRoutingOutput) ToTunnelConfigConfigWarpRoutingOutput() TunnelConfigConfigWarpRoutingOutput {
+	return o
+}
+
+func (o TunnelConfigConfigWarpRoutingOutput) ToTunnelConfigConfigWarpRoutingOutputWithContext(ctx context.Context) TunnelConfigConfigWarpRoutingOutput {
+	return o
+}
+
+func (o TunnelConfigConfigWarpRoutingOutput) ToTunnelConfigConfigWarpRoutingPtrOutput() TunnelConfigConfigWarpRoutingPtrOutput {
+	return o.ToTunnelConfigConfigWarpRoutingPtrOutputWithContext(context.Background())
+}
+
+func (o TunnelConfigConfigWarpRoutingOutput) ToTunnelConfigConfigWarpRoutingPtrOutputWithContext(ctx context.Context) TunnelConfigConfigWarpRoutingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelConfigConfigWarpRouting) *TunnelConfigConfigWarpRouting {
+		return &v
+	}).(TunnelConfigConfigWarpRoutingPtrOutput)
+}
+
+func (o TunnelConfigConfigWarpRoutingOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigWarpRouting) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type TunnelConfigConfigWarpRoutingPtrOutput struct{ *pulumi.OutputState }
+
+func (TunnelConfigConfigWarpRoutingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelConfigConfigWarpRouting)(nil)).Elem()
+}
+
+func (o TunnelConfigConfigWarpRoutingPtrOutput) ToTunnelConfigConfigWarpRoutingPtrOutput() TunnelConfigConfigWarpRoutingPtrOutput {
+	return o
+}
+
+func (o TunnelConfigConfigWarpRoutingPtrOutput) ToTunnelConfigConfigWarpRoutingPtrOutputWithContext(ctx context.Context) TunnelConfigConfigWarpRoutingPtrOutput {
+	return o
+}
+
+func (o TunnelConfigConfigWarpRoutingPtrOutput) Elem() TunnelConfigConfigWarpRoutingOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigWarpRouting) TunnelConfigConfigWarpRouting {
+		if v != nil {
+			return *v
+		}
+		var ret TunnelConfigConfigWarpRouting
+		return ret
+	}).(TunnelConfigConfigWarpRoutingOutput)
+}
+
+func (o TunnelConfigConfigWarpRoutingPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigWarpRouting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type UserAgentBlockingRuleConfiguration struct {
 	// The configuration target for this rule. You must set the target to ua for User Agent Blocking rules.
 	Target string `pulumi:"target"`
@@ -26688,6 +27562,112 @@ func (o WaitingRoomRulesRuleArrayOutput) Index(i pulumi.IntInput) WaitingRoomRul
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WaitingRoomRulesRule {
 		return vs[0].([]WaitingRoomRulesRule)[vs[1].(int)]
 	}).(WaitingRoomRulesRuleOutput)
+}
+
+type WorkerScriptAnalyticsEngineBinding struct {
+	// The name of the Analytics Engine dataset to write to.
+	Dataset string `pulumi:"dataset"`
+	// The global variable for the binding in your Worker code.
+	Name string `pulumi:"name"`
+}
+
+// WorkerScriptAnalyticsEngineBindingInput is an input type that accepts WorkerScriptAnalyticsEngineBindingArgs and WorkerScriptAnalyticsEngineBindingOutput values.
+// You can construct a concrete instance of `WorkerScriptAnalyticsEngineBindingInput` via:
+//
+//	WorkerScriptAnalyticsEngineBindingArgs{...}
+type WorkerScriptAnalyticsEngineBindingInput interface {
+	pulumi.Input
+
+	ToWorkerScriptAnalyticsEngineBindingOutput() WorkerScriptAnalyticsEngineBindingOutput
+	ToWorkerScriptAnalyticsEngineBindingOutputWithContext(context.Context) WorkerScriptAnalyticsEngineBindingOutput
+}
+
+type WorkerScriptAnalyticsEngineBindingArgs struct {
+	// The name of the Analytics Engine dataset to write to.
+	Dataset pulumi.StringInput `pulumi:"dataset"`
+	// The global variable for the binding in your Worker code.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkerScriptAnalyticsEngineBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptAnalyticsEngineBinding)(nil)).Elem()
+}
+
+func (i WorkerScriptAnalyticsEngineBindingArgs) ToWorkerScriptAnalyticsEngineBindingOutput() WorkerScriptAnalyticsEngineBindingOutput {
+	return i.ToWorkerScriptAnalyticsEngineBindingOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptAnalyticsEngineBindingArgs) ToWorkerScriptAnalyticsEngineBindingOutputWithContext(ctx context.Context) WorkerScriptAnalyticsEngineBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptAnalyticsEngineBindingOutput)
+}
+
+// WorkerScriptAnalyticsEngineBindingArrayInput is an input type that accepts WorkerScriptAnalyticsEngineBindingArray and WorkerScriptAnalyticsEngineBindingArrayOutput values.
+// You can construct a concrete instance of `WorkerScriptAnalyticsEngineBindingArrayInput` via:
+//
+//	WorkerScriptAnalyticsEngineBindingArray{ WorkerScriptAnalyticsEngineBindingArgs{...} }
+type WorkerScriptAnalyticsEngineBindingArrayInput interface {
+	pulumi.Input
+
+	ToWorkerScriptAnalyticsEngineBindingArrayOutput() WorkerScriptAnalyticsEngineBindingArrayOutput
+	ToWorkerScriptAnalyticsEngineBindingArrayOutputWithContext(context.Context) WorkerScriptAnalyticsEngineBindingArrayOutput
+}
+
+type WorkerScriptAnalyticsEngineBindingArray []WorkerScriptAnalyticsEngineBindingInput
+
+func (WorkerScriptAnalyticsEngineBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerScriptAnalyticsEngineBinding)(nil)).Elem()
+}
+
+func (i WorkerScriptAnalyticsEngineBindingArray) ToWorkerScriptAnalyticsEngineBindingArrayOutput() WorkerScriptAnalyticsEngineBindingArrayOutput {
+	return i.ToWorkerScriptAnalyticsEngineBindingArrayOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptAnalyticsEngineBindingArray) ToWorkerScriptAnalyticsEngineBindingArrayOutputWithContext(ctx context.Context) WorkerScriptAnalyticsEngineBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptAnalyticsEngineBindingArrayOutput)
+}
+
+type WorkerScriptAnalyticsEngineBindingOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptAnalyticsEngineBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptAnalyticsEngineBinding)(nil)).Elem()
+}
+
+func (o WorkerScriptAnalyticsEngineBindingOutput) ToWorkerScriptAnalyticsEngineBindingOutput() WorkerScriptAnalyticsEngineBindingOutput {
+	return o
+}
+
+func (o WorkerScriptAnalyticsEngineBindingOutput) ToWorkerScriptAnalyticsEngineBindingOutputWithContext(ctx context.Context) WorkerScriptAnalyticsEngineBindingOutput {
+	return o
+}
+
+// The name of the Analytics Engine dataset to write to.
+func (o WorkerScriptAnalyticsEngineBindingOutput) Dataset() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerScriptAnalyticsEngineBinding) string { return v.Dataset }).(pulumi.StringOutput)
+}
+
+// The global variable for the binding in your Worker code.
+func (o WorkerScriptAnalyticsEngineBindingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerScriptAnalyticsEngineBinding) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkerScriptAnalyticsEngineBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptAnalyticsEngineBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerScriptAnalyticsEngineBinding)(nil)).Elem()
+}
+
+func (o WorkerScriptAnalyticsEngineBindingArrayOutput) ToWorkerScriptAnalyticsEngineBindingArrayOutput() WorkerScriptAnalyticsEngineBindingArrayOutput {
+	return o
+}
+
+func (o WorkerScriptAnalyticsEngineBindingArrayOutput) ToWorkerScriptAnalyticsEngineBindingArrayOutputWithContext(ctx context.Context) WorkerScriptAnalyticsEngineBindingArrayOutput {
+	return o
+}
+
+func (o WorkerScriptAnalyticsEngineBindingArrayOutput) Index(i pulumi.IntInput) WorkerScriptAnalyticsEngineBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerScriptAnalyticsEngineBinding {
+		return vs[0].([]WorkerScriptAnalyticsEngineBinding)[vs[1].(int)]
+	}).(WorkerScriptAnalyticsEngineBindingOutput)
 }
 
 type WorkerScriptKvNamespaceBinding struct {
@@ -30493,6 +31473,687 @@ func (o GetDevicesDeviceArrayOutput) Index(i pulumi.IntInput) GetDevicesDeviceOu
 	}).(GetDevicesDeviceOutput)
 }
 
+type GetLoadBalancerPoolsFilter struct {
+	// A regular expression matching the name of the Load Balancer pool to lookup.
+	Name *string `pulumi:"name"`
+}
+
+// GetLoadBalancerPoolsFilterInput is an input type that accepts GetLoadBalancerPoolsFilterArgs and GetLoadBalancerPoolsFilterOutput values.
+// You can construct a concrete instance of `GetLoadBalancerPoolsFilterInput` via:
+//
+//	GetLoadBalancerPoolsFilterArgs{...}
+type GetLoadBalancerPoolsFilterInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerPoolsFilterOutput() GetLoadBalancerPoolsFilterOutput
+	ToGetLoadBalancerPoolsFilterOutputWithContext(context.Context) GetLoadBalancerPoolsFilterOutput
+}
+
+type GetLoadBalancerPoolsFilterArgs struct {
+	// A regular expression matching the name of the Load Balancer pool to lookup.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (GetLoadBalancerPoolsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerPoolsFilter)(nil)).Elem()
+}
+
+func (i GetLoadBalancerPoolsFilterArgs) ToGetLoadBalancerPoolsFilterOutput() GetLoadBalancerPoolsFilterOutput {
+	return i.ToGetLoadBalancerPoolsFilterOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerPoolsFilterArgs) ToGetLoadBalancerPoolsFilterOutputWithContext(ctx context.Context) GetLoadBalancerPoolsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerPoolsFilterOutput)
+}
+
+func (i GetLoadBalancerPoolsFilterArgs) ToGetLoadBalancerPoolsFilterPtrOutput() GetLoadBalancerPoolsFilterPtrOutput {
+	return i.ToGetLoadBalancerPoolsFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerPoolsFilterArgs) ToGetLoadBalancerPoolsFilterPtrOutputWithContext(ctx context.Context) GetLoadBalancerPoolsFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerPoolsFilterOutput).ToGetLoadBalancerPoolsFilterPtrOutputWithContext(ctx)
+}
+
+// GetLoadBalancerPoolsFilterPtrInput is an input type that accepts GetLoadBalancerPoolsFilterArgs, GetLoadBalancerPoolsFilterPtr and GetLoadBalancerPoolsFilterPtrOutput values.
+// You can construct a concrete instance of `GetLoadBalancerPoolsFilterPtrInput` via:
+//
+//	        GetLoadBalancerPoolsFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetLoadBalancerPoolsFilterPtrInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerPoolsFilterPtrOutput() GetLoadBalancerPoolsFilterPtrOutput
+	ToGetLoadBalancerPoolsFilterPtrOutputWithContext(context.Context) GetLoadBalancerPoolsFilterPtrOutput
+}
+
+type getLoadBalancerPoolsFilterPtrType GetLoadBalancerPoolsFilterArgs
+
+func GetLoadBalancerPoolsFilterPtr(v *GetLoadBalancerPoolsFilterArgs) GetLoadBalancerPoolsFilterPtrInput {
+	return (*getLoadBalancerPoolsFilterPtrType)(v)
+}
+
+func (*getLoadBalancerPoolsFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetLoadBalancerPoolsFilter)(nil)).Elem()
+}
+
+func (i *getLoadBalancerPoolsFilterPtrType) ToGetLoadBalancerPoolsFilterPtrOutput() GetLoadBalancerPoolsFilterPtrOutput {
+	return i.ToGetLoadBalancerPoolsFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *getLoadBalancerPoolsFilterPtrType) ToGetLoadBalancerPoolsFilterPtrOutputWithContext(ctx context.Context) GetLoadBalancerPoolsFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerPoolsFilterPtrOutput)
+}
+
+type GetLoadBalancerPoolsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerPoolsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerPoolsFilter)(nil)).Elem()
+}
+
+func (o GetLoadBalancerPoolsFilterOutput) ToGetLoadBalancerPoolsFilterOutput() GetLoadBalancerPoolsFilterOutput {
+	return o
+}
+
+func (o GetLoadBalancerPoolsFilterOutput) ToGetLoadBalancerPoolsFilterOutputWithContext(ctx context.Context) GetLoadBalancerPoolsFilterOutput {
+	return o
+}
+
+func (o GetLoadBalancerPoolsFilterOutput) ToGetLoadBalancerPoolsFilterPtrOutput() GetLoadBalancerPoolsFilterPtrOutput {
+	return o.ToGetLoadBalancerPoolsFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GetLoadBalancerPoolsFilterOutput) ToGetLoadBalancerPoolsFilterPtrOutputWithContext(ctx context.Context) GetLoadBalancerPoolsFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetLoadBalancerPoolsFilter) *GetLoadBalancerPoolsFilter {
+		return &v
+	}).(GetLoadBalancerPoolsFilterPtrOutput)
+}
+
+// A regular expression matching the name of the Load Balancer pool to lookup.
+func (o GetLoadBalancerPoolsFilterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type GetLoadBalancerPoolsFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerPoolsFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetLoadBalancerPoolsFilter)(nil)).Elem()
+}
+
+func (o GetLoadBalancerPoolsFilterPtrOutput) ToGetLoadBalancerPoolsFilterPtrOutput() GetLoadBalancerPoolsFilterPtrOutput {
+	return o
+}
+
+func (o GetLoadBalancerPoolsFilterPtrOutput) ToGetLoadBalancerPoolsFilterPtrOutputWithContext(ctx context.Context) GetLoadBalancerPoolsFilterPtrOutput {
+	return o
+}
+
+func (o GetLoadBalancerPoolsFilterPtrOutput) Elem() GetLoadBalancerPoolsFilterOutput {
+	return o.ApplyT(func(v *GetLoadBalancerPoolsFilter) GetLoadBalancerPoolsFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GetLoadBalancerPoolsFilter
+		return ret
+	}).(GetLoadBalancerPoolsFilterOutput)
+}
+
+// A regular expression matching the name of the Load Balancer pool to lookup.
+func (o GetLoadBalancerPoolsFilterPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetLoadBalancerPoolsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetLoadBalancerPoolsPool struct {
+	// List of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+	CheckRegions []string `pulumi:"checkRegions"`
+	// The RFC3339 timestamp of when the load balancer was created.
+	CreatedOn string `pulumi:"createdOn"`
+	// Brief description of the Load Balancer Pool intention.
+	Description string `pulumi:"description"`
+	// Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+	Enabled bool `pulumi:"enabled"`
+	// ID for this load balancer pool.
+	Id string `pulumi:"id"`
+	// Latitude this pool is physically located at; used for proximity steering.
+	Latitude float64 `pulumi:"latitude"`
+	// Setting for controlling load shedding for this pool.
+	LoadSheddings []GetLoadBalancerPoolsPoolLoadShedding `pulumi:"loadSheddings"`
+	// Longitude this pool is physically located at; used for proximity steering.
+	Longitude float64 `pulumi:"longitude"`
+	// Minimum number of origins that must be healthy for this pool to serve traffic.
+	MinimumOrigins int `pulumi:"minimumOrigins"`
+	// The RFC3339 timestamp of when the load balancer was last modified.
+	ModifiedOn string `pulumi:"modifiedOn"`
+	// ID of the Monitor to use for health checking origins within this pool.
+	Monitor string `pulumi:"monitor"`
+	// Short name (tag) for the pool.
+	Name string `pulumi:"name"`
+	// Email address to send health status notifications to. Multiple emails are set as a comma delimited list.
+	NotificationEmail string `pulumi:"notificationEmail"`
+	// The list of origins within this pool.
+	Origins []GetLoadBalancerPoolsPoolOrigin `pulumi:"origins"`
+}
+
+// GetLoadBalancerPoolsPoolInput is an input type that accepts GetLoadBalancerPoolsPoolArgs and GetLoadBalancerPoolsPoolOutput values.
+// You can construct a concrete instance of `GetLoadBalancerPoolsPoolInput` via:
+//
+//	GetLoadBalancerPoolsPoolArgs{...}
+type GetLoadBalancerPoolsPoolInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerPoolsPoolOutput() GetLoadBalancerPoolsPoolOutput
+	ToGetLoadBalancerPoolsPoolOutputWithContext(context.Context) GetLoadBalancerPoolsPoolOutput
+}
+
+type GetLoadBalancerPoolsPoolArgs struct {
+	// List of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+	CheckRegions pulumi.StringArrayInput `pulumi:"checkRegions"`
+	// The RFC3339 timestamp of when the load balancer was created.
+	CreatedOn pulumi.StringInput `pulumi:"createdOn"`
+	// Brief description of the Load Balancer Pool intention.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// ID for this load balancer pool.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Latitude this pool is physically located at; used for proximity steering.
+	Latitude pulumi.Float64Input `pulumi:"latitude"`
+	// Setting for controlling load shedding for this pool.
+	LoadSheddings GetLoadBalancerPoolsPoolLoadSheddingArrayInput `pulumi:"loadSheddings"`
+	// Longitude this pool is physically located at; used for proximity steering.
+	Longitude pulumi.Float64Input `pulumi:"longitude"`
+	// Minimum number of origins that must be healthy for this pool to serve traffic.
+	MinimumOrigins pulumi.IntInput `pulumi:"minimumOrigins"`
+	// The RFC3339 timestamp of when the load balancer was last modified.
+	ModifiedOn pulumi.StringInput `pulumi:"modifiedOn"`
+	// ID of the Monitor to use for health checking origins within this pool.
+	Monitor pulumi.StringInput `pulumi:"monitor"`
+	// Short name (tag) for the pool.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Email address to send health status notifications to. Multiple emails are set as a comma delimited list.
+	NotificationEmail pulumi.StringInput `pulumi:"notificationEmail"`
+	// The list of origins within this pool.
+	Origins GetLoadBalancerPoolsPoolOriginArrayInput `pulumi:"origins"`
+}
+
+func (GetLoadBalancerPoolsPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerPoolsPool)(nil)).Elem()
+}
+
+func (i GetLoadBalancerPoolsPoolArgs) ToGetLoadBalancerPoolsPoolOutput() GetLoadBalancerPoolsPoolOutput {
+	return i.ToGetLoadBalancerPoolsPoolOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerPoolsPoolArgs) ToGetLoadBalancerPoolsPoolOutputWithContext(ctx context.Context) GetLoadBalancerPoolsPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerPoolsPoolOutput)
+}
+
+// GetLoadBalancerPoolsPoolArrayInput is an input type that accepts GetLoadBalancerPoolsPoolArray and GetLoadBalancerPoolsPoolArrayOutput values.
+// You can construct a concrete instance of `GetLoadBalancerPoolsPoolArrayInput` via:
+//
+//	GetLoadBalancerPoolsPoolArray{ GetLoadBalancerPoolsPoolArgs{...} }
+type GetLoadBalancerPoolsPoolArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerPoolsPoolArrayOutput() GetLoadBalancerPoolsPoolArrayOutput
+	ToGetLoadBalancerPoolsPoolArrayOutputWithContext(context.Context) GetLoadBalancerPoolsPoolArrayOutput
+}
+
+type GetLoadBalancerPoolsPoolArray []GetLoadBalancerPoolsPoolInput
+
+func (GetLoadBalancerPoolsPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerPoolsPool)(nil)).Elem()
+}
+
+func (i GetLoadBalancerPoolsPoolArray) ToGetLoadBalancerPoolsPoolArrayOutput() GetLoadBalancerPoolsPoolArrayOutput {
+	return i.ToGetLoadBalancerPoolsPoolArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerPoolsPoolArray) ToGetLoadBalancerPoolsPoolArrayOutputWithContext(ctx context.Context) GetLoadBalancerPoolsPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerPoolsPoolArrayOutput)
+}
+
+type GetLoadBalancerPoolsPoolOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerPoolsPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerPoolsPool)(nil)).Elem()
+}
+
+func (o GetLoadBalancerPoolsPoolOutput) ToGetLoadBalancerPoolsPoolOutput() GetLoadBalancerPoolsPoolOutput {
+	return o
+}
+
+func (o GetLoadBalancerPoolsPoolOutput) ToGetLoadBalancerPoolsPoolOutputWithContext(ctx context.Context) GetLoadBalancerPoolsPoolOutput {
+	return o
+}
+
+// List of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+func (o GetLoadBalancerPoolsPoolOutput) CheckRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPool) []string { return v.CheckRegions }).(pulumi.StringArrayOutput)
+}
+
+// The RFC3339 timestamp of when the load balancer was created.
+func (o GetLoadBalancerPoolsPoolOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPool) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// Brief description of the Load Balancer Pool intention.
+func (o GetLoadBalancerPoolsPoolOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPool) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+func (o GetLoadBalancerPoolsPoolOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPool) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// ID for this load balancer pool.
+func (o GetLoadBalancerPoolsPoolOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPool) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Latitude this pool is physically located at; used for proximity steering.
+func (o GetLoadBalancerPoolsPoolOutput) Latitude() pulumi.Float64Output {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPool) float64 { return v.Latitude }).(pulumi.Float64Output)
+}
+
+// Setting for controlling load shedding for this pool.
+func (o GetLoadBalancerPoolsPoolOutput) LoadSheddings() GetLoadBalancerPoolsPoolLoadSheddingArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPool) []GetLoadBalancerPoolsPoolLoadShedding { return v.LoadSheddings }).(GetLoadBalancerPoolsPoolLoadSheddingArrayOutput)
+}
+
+// Longitude this pool is physically located at; used for proximity steering.
+func (o GetLoadBalancerPoolsPoolOutput) Longitude() pulumi.Float64Output {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPool) float64 { return v.Longitude }).(pulumi.Float64Output)
+}
+
+// Minimum number of origins that must be healthy for this pool to serve traffic.
+func (o GetLoadBalancerPoolsPoolOutput) MinimumOrigins() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPool) int { return v.MinimumOrigins }).(pulumi.IntOutput)
+}
+
+// The RFC3339 timestamp of when the load balancer was last modified.
+func (o GetLoadBalancerPoolsPoolOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPool) string { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// ID of the Monitor to use for health checking origins within this pool.
+func (o GetLoadBalancerPoolsPoolOutput) Monitor() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPool) string { return v.Monitor }).(pulumi.StringOutput)
+}
+
+// Short name (tag) for the pool.
+func (o GetLoadBalancerPoolsPoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPool) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Email address to send health status notifications to. Multiple emails are set as a comma delimited list.
+func (o GetLoadBalancerPoolsPoolOutput) NotificationEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPool) string { return v.NotificationEmail }).(pulumi.StringOutput)
+}
+
+// The list of origins within this pool.
+func (o GetLoadBalancerPoolsPoolOutput) Origins() GetLoadBalancerPoolsPoolOriginArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPool) []GetLoadBalancerPoolsPoolOrigin { return v.Origins }).(GetLoadBalancerPoolsPoolOriginArrayOutput)
+}
+
+type GetLoadBalancerPoolsPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerPoolsPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerPoolsPool)(nil)).Elem()
+}
+
+func (o GetLoadBalancerPoolsPoolArrayOutput) ToGetLoadBalancerPoolsPoolArrayOutput() GetLoadBalancerPoolsPoolArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerPoolsPoolArrayOutput) ToGetLoadBalancerPoolsPoolArrayOutputWithContext(ctx context.Context) GetLoadBalancerPoolsPoolArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerPoolsPoolArrayOutput) Index(i pulumi.IntInput) GetLoadBalancerPoolsPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancerPoolsPool {
+		return vs[0].([]GetLoadBalancerPoolsPool)[vs[1].(int)]
+	}).(GetLoadBalancerPoolsPoolOutput)
+}
+
+type GetLoadBalancerPoolsPoolLoadShedding struct {
+	DefaultPercent *float64 `pulumi:"defaultPercent"`
+	DefaultPolicy  *string  `pulumi:"defaultPolicy"`
+	SessionPercent *float64 `pulumi:"sessionPercent"`
+	SessionPolicy  *string  `pulumi:"sessionPolicy"`
+}
+
+// GetLoadBalancerPoolsPoolLoadSheddingInput is an input type that accepts GetLoadBalancerPoolsPoolLoadSheddingArgs and GetLoadBalancerPoolsPoolLoadSheddingOutput values.
+// You can construct a concrete instance of `GetLoadBalancerPoolsPoolLoadSheddingInput` via:
+//
+//	GetLoadBalancerPoolsPoolLoadSheddingArgs{...}
+type GetLoadBalancerPoolsPoolLoadSheddingInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerPoolsPoolLoadSheddingOutput() GetLoadBalancerPoolsPoolLoadSheddingOutput
+	ToGetLoadBalancerPoolsPoolLoadSheddingOutputWithContext(context.Context) GetLoadBalancerPoolsPoolLoadSheddingOutput
+}
+
+type GetLoadBalancerPoolsPoolLoadSheddingArgs struct {
+	DefaultPercent pulumi.Float64PtrInput `pulumi:"defaultPercent"`
+	DefaultPolicy  pulumi.StringPtrInput  `pulumi:"defaultPolicy"`
+	SessionPercent pulumi.Float64PtrInput `pulumi:"sessionPercent"`
+	SessionPolicy  pulumi.StringPtrInput  `pulumi:"sessionPolicy"`
+}
+
+func (GetLoadBalancerPoolsPoolLoadSheddingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerPoolsPoolLoadShedding)(nil)).Elem()
+}
+
+func (i GetLoadBalancerPoolsPoolLoadSheddingArgs) ToGetLoadBalancerPoolsPoolLoadSheddingOutput() GetLoadBalancerPoolsPoolLoadSheddingOutput {
+	return i.ToGetLoadBalancerPoolsPoolLoadSheddingOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerPoolsPoolLoadSheddingArgs) ToGetLoadBalancerPoolsPoolLoadSheddingOutputWithContext(ctx context.Context) GetLoadBalancerPoolsPoolLoadSheddingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerPoolsPoolLoadSheddingOutput)
+}
+
+// GetLoadBalancerPoolsPoolLoadSheddingArrayInput is an input type that accepts GetLoadBalancerPoolsPoolLoadSheddingArray and GetLoadBalancerPoolsPoolLoadSheddingArrayOutput values.
+// You can construct a concrete instance of `GetLoadBalancerPoolsPoolLoadSheddingArrayInput` via:
+//
+//	GetLoadBalancerPoolsPoolLoadSheddingArray{ GetLoadBalancerPoolsPoolLoadSheddingArgs{...} }
+type GetLoadBalancerPoolsPoolLoadSheddingArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerPoolsPoolLoadSheddingArrayOutput() GetLoadBalancerPoolsPoolLoadSheddingArrayOutput
+	ToGetLoadBalancerPoolsPoolLoadSheddingArrayOutputWithContext(context.Context) GetLoadBalancerPoolsPoolLoadSheddingArrayOutput
+}
+
+type GetLoadBalancerPoolsPoolLoadSheddingArray []GetLoadBalancerPoolsPoolLoadSheddingInput
+
+func (GetLoadBalancerPoolsPoolLoadSheddingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerPoolsPoolLoadShedding)(nil)).Elem()
+}
+
+func (i GetLoadBalancerPoolsPoolLoadSheddingArray) ToGetLoadBalancerPoolsPoolLoadSheddingArrayOutput() GetLoadBalancerPoolsPoolLoadSheddingArrayOutput {
+	return i.ToGetLoadBalancerPoolsPoolLoadSheddingArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerPoolsPoolLoadSheddingArray) ToGetLoadBalancerPoolsPoolLoadSheddingArrayOutputWithContext(ctx context.Context) GetLoadBalancerPoolsPoolLoadSheddingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerPoolsPoolLoadSheddingArrayOutput)
+}
+
+type GetLoadBalancerPoolsPoolLoadSheddingOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerPoolsPoolLoadSheddingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerPoolsPoolLoadShedding)(nil)).Elem()
+}
+
+func (o GetLoadBalancerPoolsPoolLoadSheddingOutput) ToGetLoadBalancerPoolsPoolLoadSheddingOutput() GetLoadBalancerPoolsPoolLoadSheddingOutput {
+	return o
+}
+
+func (o GetLoadBalancerPoolsPoolLoadSheddingOutput) ToGetLoadBalancerPoolsPoolLoadSheddingOutputWithContext(ctx context.Context) GetLoadBalancerPoolsPoolLoadSheddingOutput {
+	return o
+}
+
+func (o GetLoadBalancerPoolsPoolLoadSheddingOutput) DefaultPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPoolLoadShedding) *float64 { return v.DefaultPercent }).(pulumi.Float64PtrOutput)
+}
+
+func (o GetLoadBalancerPoolsPoolLoadSheddingOutput) DefaultPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPoolLoadShedding) *string { return v.DefaultPolicy }).(pulumi.StringPtrOutput)
+}
+
+func (o GetLoadBalancerPoolsPoolLoadSheddingOutput) SessionPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPoolLoadShedding) *float64 { return v.SessionPercent }).(pulumi.Float64PtrOutput)
+}
+
+func (o GetLoadBalancerPoolsPoolLoadSheddingOutput) SessionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPoolLoadShedding) *string { return v.SessionPolicy }).(pulumi.StringPtrOutput)
+}
+
+type GetLoadBalancerPoolsPoolLoadSheddingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerPoolsPoolLoadSheddingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerPoolsPoolLoadShedding)(nil)).Elem()
+}
+
+func (o GetLoadBalancerPoolsPoolLoadSheddingArrayOutput) ToGetLoadBalancerPoolsPoolLoadSheddingArrayOutput() GetLoadBalancerPoolsPoolLoadSheddingArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerPoolsPoolLoadSheddingArrayOutput) ToGetLoadBalancerPoolsPoolLoadSheddingArrayOutputWithContext(ctx context.Context) GetLoadBalancerPoolsPoolLoadSheddingArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerPoolsPoolLoadSheddingArrayOutput) Index(i pulumi.IntInput) GetLoadBalancerPoolsPoolLoadSheddingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancerPoolsPoolLoadShedding {
+		return vs[0].([]GetLoadBalancerPoolsPoolLoadShedding)[vs[1].(int)]
+	}).(GetLoadBalancerPoolsPoolLoadSheddingOutput)
+}
+
+type GetLoadBalancerPoolsPoolOrigin struct {
+	Address string                                 `pulumi:"address"`
+	Enabled *bool                                  `pulumi:"enabled"`
+	Headers []GetLoadBalancerPoolsPoolOriginHeader `pulumi:"headers"`
+	Name    string                                 `pulumi:"name"`
+	Weight  *float64                               `pulumi:"weight"`
+}
+
+// GetLoadBalancerPoolsPoolOriginInput is an input type that accepts GetLoadBalancerPoolsPoolOriginArgs and GetLoadBalancerPoolsPoolOriginOutput values.
+// You can construct a concrete instance of `GetLoadBalancerPoolsPoolOriginInput` via:
+//
+//	GetLoadBalancerPoolsPoolOriginArgs{...}
+type GetLoadBalancerPoolsPoolOriginInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerPoolsPoolOriginOutput() GetLoadBalancerPoolsPoolOriginOutput
+	ToGetLoadBalancerPoolsPoolOriginOutputWithContext(context.Context) GetLoadBalancerPoolsPoolOriginOutput
+}
+
+type GetLoadBalancerPoolsPoolOriginArgs struct {
+	Address pulumi.StringInput                             `pulumi:"address"`
+	Enabled pulumi.BoolPtrInput                            `pulumi:"enabled"`
+	Headers GetLoadBalancerPoolsPoolOriginHeaderArrayInput `pulumi:"headers"`
+	Name    pulumi.StringInput                             `pulumi:"name"`
+	Weight  pulumi.Float64PtrInput                         `pulumi:"weight"`
+}
+
+func (GetLoadBalancerPoolsPoolOriginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerPoolsPoolOrigin)(nil)).Elem()
+}
+
+func (i GetLoadBalancerPoolsPoolOriginArgs) ToGetLoadBalancerPoolsPoolOriginOutput() GetLoadBalancerPoolsPoolOriginOutput {
+	return i.ToGetLoadBalancerPoolsPoolOriginOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerPoolsPoolOriginArgs) ToGetLoadBalancerPoolsPoolOriginOutputWithContext(ctx context.Context) GetLoadBalancerPoolsPoolOriginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerPoolsPoolOriginOutput)
+}
+
+// GetLoadBalancerPoolsPoolOriginArrayInput is an input type that accepts GetLoadBalancerPoolsPoolOriginArray and GetLoadBalancerPoolsPoolOriginArrayOutput values.
+// You can construct a concrete instance of `GetLoadBalancerPoolsPoolOriginArrayInput` via:
+//
+//	GetLoadBalancerPoolsPoolOriginArray{ GetLoadBalancerPoolsPoolOriginArgs{...} }
+type GetLoadBalancerPoolsPoolOriginArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerPoolsPoolOriginArrayOutput() GetLoadBalancerPoolsPoolOriginArrayOutput
+	ToGetLoadBalancerPoolsPoolOriginArrayOutputWithContext(context.Context) GetLoadBalancerPoolsPoolOriginArrayOutput
+}
+
+type GetLoadBalancerPoolsPoolOriginArray []GetLoadBalancerPoolsPoolOriginInput
+
+func (GetLoadBalancerPoolsPoolOriginArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerPoolsPoolOrigin)(nil)).Elem()
+}
+
+func (i GetLoadBalancerPoolsPoolOriginArray) ToGetLoadBalancerPoolsPoolOriginArrayOutput() GetLoadBalancerPoolsPoolOriginArrayOutput {
+	return i.ToGetLoadBalancerPoolsPoolOriginArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerPoolsPoolOriginArray) ToGetLoadBalancerPoolsPoolOriginArrayOutputWithContext(ctx context.Context) GetLoadBalancerPoolsPoolOriginArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerPoolsPoolOriginArrayOutput)
+}
+
+type GetLoadBalancerPoolsPoolOriginOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerPoolsPoolOriginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerPoolsPoolOrigin)(nil)).Elem()
+}
+
+func (o GetLoadBalancerPoolsPoolOriginOutput) ToGetLoadBalancerPoolsPoolOriginOutput() GetLoadBalancerPoolsPoolOriginOutput {
+	return o
+}
+
+func (o GetLoadBalancerPoolsPoolOriginOutput) ToGetLoadBalancerPoolsPoolOriginOutputWithContext(ctx context.Context) GetLoadBalancerPoolsPoolOriginOutput {
+	return o
+}
+
+func (o GetLoadBalancerPoolsPoolOriginOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPoolOrigin) string { return v.Address }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancerPoolsPoolOriginOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPoolOrigin) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetLoadBalancerPoolsPoolOriginOutput) Headers() GetLoadBalancerPoolsPoolOriginHeaderArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPoolOrigin) []GetLoadBalancerPoolsPoolOriginHeader { return v.Headers }).(GetLoadBalancerPoolsPoolOriginHeaderArrayOutput)
+}
+
+func (o GetLoadBalancerPoolsPoolOriginOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPoolOrigin) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancerPoolsPoolOriginOutput) Weight() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPoolOrigin) *float64 { return v.Weight }).(pulumi.Float64PtrOutput)
+}
+
+type GetLoadBalancerPoolsPoolOriginArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerPoolsPoolOriginArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerPoolsPoolOrigin)(nil)).Elem()
+}
+
+func (o GetLoadBalancerPoolsPoolOriginArrayOutput) ToGetLoadBalancerPoolsPoolOriginArrayOutput() GetLoadBalancerPoolsPoolOriginArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerPoolsPoolOriginArrayOutput) ToGetLoadBalancerPoolsPoolOriginArrayOutputWithContext(ctx context.Context) GetLoadBalancerPoolsPoolOriginArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerPoolsPoolOriginArrayOutput) Index(i pulumi.IntInput) GetLoadBalancerPoolsPoolOriginOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancerPoolsPoolOrigin {
+		return vs[0].([]GetLoadBalancerPoolsPoolOrigin)[vs[1].(int)]
+	}).(GetLoadBalancerPoolsPoolOriginOutput)
+}
+
+type GetLoadBalancerPoolsPoolOriginHeader struct {
+	Header string   `pulumi:"header"`
+	Values []string `pulumi:"values"`
+}
+
+// GetLoadBalancerPoolsPoolOriginHeaderInput is an input type that accepts GetLoadBalancerPoolsPoolOriginHeaderArgs and GetLoadBalancerPoolsPoolOriginHeaderOutput values.
+// You can construct a concrete instance of `GetLoadBalancerPoolsPoolOriginHeaderInput` via:
+//
+//	GetLoadBalancerPoolsPoolOriginHeaderArgs{...}
+type GetLoadBalancerPoolsPoolOriginHeaderInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerPoolsPoolOriginHeaderOutput() GetLoadBalancerPoolsPoolOriginHeaderOutput
+	ToGetLoadBalancerPoolsPoolOriginHeaderOutputWithContext(context.Context) GetLoadBalancerPoolsPoolOriginHeaderOutput
+}
+
+type GetLoadBalancerPoolsPoolOriginHeaderArgs struct {
+	Header pulumi.StringInput      `pulumi:"header"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetLoadBalancerPoolsPoolOriginHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerPoolsPoolOriginHeader)(nil)).Elem()
+}
+
+func (i GetLoadBalancerPoolsPoolOriginHeaderArgs) ToGetLoadBalancerPoolsPoolOriginHeaderOutput() GetLoadBalancerPoolsPoolOriginHeaderOutput {
+	return i.ToGetLoadBalancerPoolsPoolOriginHeaderOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerPoolsPoolOriginHeaderArgs) ToGetLoadBalancerPoolsPoolOriginHeaderOutputWithContext(ctx context.Context) GetLoadBalancerPoolsPoolOriginHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerPoolsPoolOriginHeaderOutput)
+}
+
+// GetLoadBalancerPoolsPoolOriginHeaderArrayInput is an input type that accepts GetLoadBalancerPoolsPoolOriginHeaderArray and GetLoadBalancerPoolsPoolOriginHeaderArrayOutput values.
+// You can construct a concrete instance of `GetLoadBalancerPoolsPoolOriginHeaderArrayInput` via:
+//
+//	GetLoadBalancerPoolsPoolOriginHeaderArray{ GetLoadBalancerPoolsPoolOriginHeaderArgs{...} }
+type GetLoadBalancerPoolsPoolOriginHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancerPoolsPoolOriginHeaderArrayOutput() GetLoadBalancerPoolsPoolOriginHeaderArrayOutput
+	ToGetLoadBalancerPoolsPoolOriginHeaderArrayOutputWithContext(context.Context) GetLoadBalancerPoolsPoolOriginHeaderArrayOutput
+}
+
+type GetLoadBalancerPoolsPoolOriginHeaderArray []GetLoadBalancerPoolsPoolOriginHeaderInput
+
+func (GetLoadBalancerPoolsPoolOriginHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerPoolsPoolOriginHeader)(nil)).Elem()
+}
+
+func (i GetLoadBalancerPoolsPoolOriginHeaderArray) ToGetLoadBalancerPoolsPoolOriginHeaderArrayOutput() GetLoadBalancerPoolsPoolOriginHeaderArrayOutput {
+	return i.ToGetLoadBalancerPoolsPoolOriginHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancerPoolsPoolOriginHeaderArray) ToGetLoadBalancerPoolsPoolOriginHeaderArrayOutputWithContext(ctx context.Context) GetLoadBalancerPoolsPoolOriginHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancerPoolsPoolOriginHeaderArrayOutput)
+}
+
+type GetLoadBalancerPoolsPoolOriginHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerPoolsPoolOriginHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancerPoolsPoolOriginHeader)(nil)).Elem()
+}
+
+func (o GetLoadBalancerPoolsPoolOriginHeaderOutput) ToGetLoadBalancerPoolsPoolOriginHeaderOutput() GetLoadBalancerPoolsPoolOriginHeaderOutput {
+	return o
+}
+
+func (o GetLoadBalancerPoolsPoolOriginHeaderOutput) ToGetLoadBalancerPoolsPoolOriginHeaderOutputWithContext(ctx context.Context) GetLoadBalancerPoolsPoolOriginHeaderOutput {
+	return o
+}
+
+func (o GetLoadBalancerPoolsPoolOriginHeaderOutput) Header() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPoolOriginHeader) string { return v.Header }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancerPoolsPoolOriginHeaderOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPoolOriginHeader) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetLoadBalancerPoolsPoolOriginHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancerPoolsPoolOriginHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancerPoolsPoolOriginHeader)(nil)).Elem()
+}
+
+func (o GetLoadBalancerPoolsPoolOriginHeaderArrayOutput) ToGetLoadBalancerPoolsPoolOriginHeaderArrayOutput() GetLoadBalancerPoolsPoolOriginHeaderArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerPoolsPoolOriginHeaderArrayOutput) ToGetLoadBalancerPoolsPoolOriginHeaderArrayOutputWithContext(ctx context.Context) GetLoadBalancerPoolsPoolOriginHeaderArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancerPoolsPoolOriginHeaderArrayOutput) Index(i pulumi.IntInput) GetLoadBalancerPoolsPoolOriginHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancerPoolsPoolOriginHeader {
+		return vs[0].([]GetLoadBalancerPoolsPoolOriginHeader)[vs[1].(int)]
+	}).(GetLoadBalancerPoolsPoolOriginHeaderOutput)
+}
+
 type GetWafGroupsFilter struct {
 	// Mode of the WAF Rule Groups to lookup. Valid values: on and off.
 	Mode *string `pulumi:"mode"`
@@ -32052,10 +33713,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsCheckSessionPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsCheckSessionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsL4overrideInput)(nil)).Elem(), TeamsRuleRuleSettingsL4overrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsL4overridePtrInput)(nil)).Elem(), TeamsRuleRuleSettingsL4overrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigInput)(nil)).Elem(), TunnelConfigConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigPtrInput)(nil)).Elem(), TunnelConfigConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigIngressRuleInput)(nil)).Elem(), TunnelConfigConfigIngressRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigIngressRuleArrayInput)(nil)).Elem(), TunnelConfigConfigIngressRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigOriginRequestInput)(nil)).Elem(), TunnelConfigConfigOriginRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigOriginRequestPtrInput)(nil)).Elem(), TunnelConfigConfigOriginRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigOriginRequestIpRuleInput)(nil)).Elem(), TunnelConfigConfigOriginRequestIpRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigOriginRequestIpRuleArrayInput)(nil)).Elem(), TunnelConfigConfigOriginRequestIpRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigWarpRoutingInput)(nil)).Elem(), TunnelConfigConfigWarpRoutingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigWarpRoutingPtrInput)(nil)).Elem(), TunnelConfigConfigWarpRoutingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserAgentBlockingRuleConfigurationInput)(nil)).Elem(), UserAgentBlockingRuleConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserAgentBlockingRuleConfigurationPtrInput)(nil)).Elem(), UserAgentBlockingRuleConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomRulesRuleInput)(nil)).Elem(), WaitingRoomRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomRulesRuleArrayInput)(nil)).Elem(), WaitingRoomRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptAnalyticsEngineBindingInput)(nil)).Elem(), WorkerScriptAnalyticsEngineBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptAnalyticsEngineBindingArrayInput)(nil)).Elem(), WorkerScriptAnalyticsEngineBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptKvNamespaceBindingInput)(nil)).Elem(), WorkerScriptKvNamespaceBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptKvNamespaceBindingArrayInput)(nil)).Elem(), WorkerScriptKvNamespaceBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptPlainTextBindingInput)(nil)).Elem(), WorkerScriptPlainTextBindingArgs{})
@@ -32092,6 +33765,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountArrayInput)(nil)).Elem(), GetAccountsAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesDeviceInput)(nil)).Elem(), GetDevicesDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesDeviceArrayInput)(nil)).Elem(), GetDevicesDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerPoolsFilterInput)(nil)).Elem(), GetLoadBalancerPoolsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerPoolsFilterPtrInput)(nil)).Elem(), GetLoadBalancerPoolsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerPoolsPoolInput)(nil)).Elem(), GetLoadBalancerPoolsPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerPoolsPoolArrayInput)(nil)).Elem(), GetLoadBalancerPoolsPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerPoolsPoolLoadSheddingInput)(nil)).Elem(), GetLoadBalancerPoolsPoolLoadSheddingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerPoolsPoolLoadSheddingArrayInput)(nil)).Elem(), GetLoadBalancerPoolsPoolLoadSheddingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerPoolsPoolOriginInput)(nil)).Elem(), GetLoadBalancerPoolsPoolOriginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerPoolsPoolOriginArrayInput)(nil)).Elem(), GetLoadBalancerPoolsPoolOriginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerPoolsPoolOriginHeaderInput)(nil)).Elem(), GetLoadBalancerPoolsPoolOriginHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerPoolsPoolOriginHeaderArrayInput)(nil)).Elem(), GetLoadBalancerPoolsPoolOriginHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWafGroupsFilterInput)(nil)).Elem(), GetWafGroupsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWafGroupsFilterPtrInput)(nil)).Elem(), GetWafGroupsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWafGroupsGroupInput)(nil)).Elem(), GetWafGroupsGroupArgs{})
@@ -32454,10 +34137,22 @@ func init() {
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsCheckSessionPtrOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsL4overrideOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsL4overridePtrOutput{})
+	pulumi.RegisterOutputType(TunnelConfigConfigOutput{})
+	pulumi.RegisterOutputType(TunnelConfigConfigPtrOutput{})
+	pulumi.RegisterOutputType(TunnelConfigConfigIngressRuleOutput{})
+	pulumi.RegisterOutputType(TunnelConfigConfigIngressRuleArrayOutput{})
+	pulumi.RegisterOutputType(TunnelConfigConfigOriginRequestOutput{})
+	pulumi.RegisterOutputType(TunnelConfigConfigOriginRequestPtrOutput{})
+	pulumi.RegisterOutputType(TunnelConfigConfigOriginRequestIpRuleOutput{})
+	pulumi.RegisterOutputType(TunnelConfigConfigOriginRequestIpRuleArrayOutput{})
+	pulumi.RegisterOutputType(TunnelConfigConfigWarpRoutingOutput{})
+	pulumi.RegisterOutputType(TunnelConfigConfigWarpRoutingPtrOutput{})
 	pulumi.RegisterOutputType(UserAgentBlockingRuleConfigurationOutput{})
 	pulumi.RegisterOutputType(UserAgentBlockingRuleConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(WaitingRoomRulesRuleOutput{})
 	pulumi.RegisterOutputType(WaitingRoomRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(WorkerScriptAnalyticsEngineBindingOutput{})
+	pulumi.RegisterOutputType(WorkerScriptAnalyticsEngineBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptKvNamespaceBindingOutput{})
 	pulumi.RegisterOutputType(WorkerScriptKvNamespaceBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptPlainTextBindingOutput{})
@@ -32494,6 +34189,16 @@ func init() {
 	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetDevicesDeviceOutput{})
 	pulumi.RegisterOutputType(GetDevicesDeviceArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerPoolsFilterOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerPoolsFilterPtrOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerPoolsPoolOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerPoolsPoolArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerPoolsPoolLoadSheddingOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerPoolsPoolLoadSheddingArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerPoolsPoolOriginOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerPoolsPoolOriginArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerPoolsPoolOriginHeaderOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancerPoolsPoolOriginHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GetWafGroupsFilterOutput{})
 	pulumi.RegisterOutputType(GetWafGroupsFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetWafGroupsGroupOutput{})

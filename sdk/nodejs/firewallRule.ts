@@ -95,7 +95,7 @@ export class FirewallRule extends pulumi.CustomResource {
      */
     public readonly products!: pulumi.Output<string[] | undefined>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -172,7 +172,7 @@ export interface FirewallRuleState {
      */
     products?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -206,7 +206,7 @@ export interface FirewallRuleArgs {
      */
     products?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId: pulumi.Input<string>;
 }

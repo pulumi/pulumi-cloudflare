@@ -85,7 +85,7 @@ export class WaitingRoom extends pulumi.CustomResource {
      */
     public readonly jsonResponseEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * A unique name to identify the waiting room.
+     * A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -117,7 +117,7 @@ export class WaitingRoom extends pulumi.CustomResource {
      */
     public readonly totalActiveUsers!: pulumi.Output<number>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -216,7 +216,7 @@ export interface WaitingRoomState {
      */
     jsonResponseEnabled?: pulumi.Input<boolean>;
     /**
-     * A unique name to identify the waiting room.
+     * A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
      */
     name?: pulumi.Input<string>;
     /**
@@ -248,7 +248,7 @@ export interface WaitingRoomState {
      */
     totalActiveUsers?: pulumi.Input<number>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -282,7 +282,7 @@ export interface WaitingRoomArgs {
      */
     jsonResponseEnabled?: pulumi.Input<boolean>;
     /**
-     * A unique name to identify the waiting room.
+     * A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
      */
     name: pulumi.Input<string>;
     /**
@@ -314,7 +314,7 @@ export interface WaitingRoomArgs {
      */
     totalActiveUsers: pulumi.Input<number>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId: pulumi.Input<string>;
 }

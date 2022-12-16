@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewUserAgentBlockingRule(ctx, "example1", &cloudflare.UserAgentBlockingRuleArgs{
-//				Configuration: &UserAgentBlockingRuleConfigurationArgs{
+//				Configuration: &cloudflare.UserAgentBlockingRuleConfigurationArgs{
 //					Target: pulumi.String("ua"),
 //					Value:  pulumi.String("Chrome"),
 //				},
@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudflare.NewUserAgentBlockingRule(ctx, "example2", &cloudflare.UserAgentBlockingRuleArgs{
-//				Configuration: &UserAgentBlockingRuleConfigurationArgs{
+//				Configuration: &cloudflare.UserAgentBlockingRuleConfigurationArgs{
 //					Target: pulumi.String("ua"),
 //					Value:  pulumi.String("Mozilla"),
 //				},
@@ -69,7 +69,7 @@ type UserAgentBlockingRule struct {
 	Mode pulumi.StringOutput `pulumi:"mode"`
 	// When true, indicates that the rule is currently paused.
 	Paused pulumi.BoolOutput `pulumi:"paused"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -125,7 +125,7 @@ type userAgentBlockingRuleState struct {
 	Mode *string `pulumi:"mode"`
 	// When true, indicates that the rule is currently paused.
 	Paused *bool `pulumi:"paused"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -138,7 +138,7 @@ type UserAgentBlockingRuleState struct {
 	Mode pulumi.StringPtrInput
 	// When true, indicates that the rule is currently paused.
 	Paused pulumi.BoolPtrInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -155,7 +155,7 @@ type userAgentBlockingRuleArgs struct {
 	Mode string `pulumi:"mode"`
 	// When true, indicates that the rule is currently paused.
 	Paused bool `pulumi:"paused"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -169,7 +169,7 @@ type UserAgentBlockingRuleArgs struct {
 	Mode pulumi.StringInput
 	// When true, indicates that the rule is currently paused.
 	Paused pulumi.BoolInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
 }
 
@@ -280,7 +280,7 @@ func (o UserAgentBlockingRuleOutput) Paused() pulumi.BoolOutput {
 	return o.ApplyT(func(v *UserAgentBlockingRule) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
 }
 
-// The zone identifier to target for the resource.
+// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o UserAgentBlockingRuleOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserAgentBlockingRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

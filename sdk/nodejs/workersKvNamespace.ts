@@ -5,7 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Workers KV Namespace
+ * Provides the ability to manage Cloudflare Workers KV Namespace features.
+ *
+ * > This resource uses the Cloudflare account APIs. This requires setting the
+ * `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
  *
  * ## Example Usage
  *
@@ -13,18 +16,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.WorkersKvNamespace("example", {title: "test-namespace"});
+ * const example = new cloudflare.WorkersKvNamespace("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     title: "test-namespace",
+ * });
  * ```
  *
  * ## Import
  *
- * Workers KV Namespace settings can be imported using it's ID
- *
  * ```sh
- *  $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example beaeb6716c9443eaa4deef11763ccca6
+ *  $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example <account_id>/<namespace_id>
  * ```
- *
- *  where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace
  */
 export class WorkersKvNamespace extends pulumi.CustomResource {
     /**
@@ -55,8 +57,9 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the namespace you wish to create.
+     * The account identifier to target for the resource.
      */
+    public readonly accountId!: pulumi.Output<string>;
     public readonly title!: pulumi.Output<string>;
 
     /**
@@ -72,12 +75,14 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkersKvNamespaceState | undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
         } else {
             const args = argsOrState as WorkersKvNamespaceArgs | undefined;
             if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -90,8 +95,9 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
  */
 export interface WorkersKvNamespaceState {
     /**
-     * The name of the namespace you wish to create.
+     * The account identifier to target for the resource.
      */
+    accountId?: pulumi.Input<string>;
     title?: pulumi.Input<string>;
 }
 
@@ -100,7 +106,8 @@ export interface WorkersKvNamespaceState {
  */
 export interface WorkersKvNamespaceArgs {
     /**
-     * The name of the namespace you wish to create.
+     * The account identifier to target for the resource.
      */
+    accountId?: pulumi.Input<string>;
     title: pulumi.Input<string>;
 }

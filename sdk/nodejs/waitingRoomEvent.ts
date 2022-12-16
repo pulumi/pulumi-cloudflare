@@ -76,11 +76,11 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
      */
     public readonly disableSessionRenewal!: pulumi.Output<boolean | undefined>;
     /**
-     * ISO 8601 timestamp that marks the end of the event.
+     * ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly eventEndTime!: pulumi.Output<string>;
     /**
-     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`.
+     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly eventStartTime!: pulumi.Output<string>;
     /**
@@ -88,7 +88,7 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
      */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
-     * A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+     * A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -120,11 +120,11 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
      */
     public readonly totalActiveUsers!: pulumi.Output<number | undefined>;
     /**
-     * The Waiting Room ID the event should apply to.
+     * The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly waitingRoomId!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -219,11 +219,11 @@ export interface WaitingRoomEventState {
      */
     disableSessionRenewal?: pulumi.Input<boolean>;
     /**
-     * ISO 8601 timestamp that marks the end of the event.
+     * ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
      */
     eventEndTime?: pulumi.Input<string>;
     /**
-     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`.
+     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`. **Modifying this attribute will force creation of a new resource.**
      */
     eventStartTime?: pulumi.Input<string>;
     /**
@@ -231,7 +231,7 @@ export interface WaitingRoomEventState {
      */
     modifiedOn?: pulumi.Input<string>;
     /**
-     * A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+     * A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
      */
     name?: pulumi.Input<string>;
     /**
@@ -263,11 +263,11 @@ export interface WaitingRoomEventState {
      */
     totalActiveUsers?: pulumi.Input<number>;
     /**
-     * The Waiting Room ID the event should apply to.
+     * The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
      */
     waitingRoomId?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -289,15 +289,15 @@ export interface WaitingRoomEventArgs {
      */
     disableSessionRenewal?: pulumi.Input<boolean>;
     /**
-     * ISO 8601 timestamp that marks the end of the event.
+     * ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
      */
     eventEndTime: pulumi.Input<string>;
     /**
-     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`.
+     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `eventEndTime`. **Modifying this attribute will force creation of a new resource.**
      */
     eventStartTime: pulumi.Input<string>;
     /**
-     * A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+     * A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
      */
     name: pulumi.Input<string>;
     /**
@@ -329,11 +329,11 @@ export interface WaitingRoomEventArgs {
      */
     totalActiveUsers?: pulumi.Input<number>;
     /**
-     * The Waiting Room ID the event should apply to.
+     * The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
      */
     waitingRoomId: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId: pulumi.Input<string>;
 }

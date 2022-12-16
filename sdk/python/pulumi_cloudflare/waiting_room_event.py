@@ -31,11 +31,11 @@ class WaitingRoomEventArgs:
                  total_active_users: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a WaitingRoomEvent resource.
-        :param pulumi.Input[str] event_end_time: ISO 8601 timestamp that marks the end of the event.
-        :param pulumi.Input[str] event_start_time: ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
-        :param pulumi.Input[str] name: A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
-        :param pulumi.Input[str] waiting_room_id: The Waiting Room ID the event should apply to.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] event_end_time: ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] event_start_time: ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] name: A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] waiting_room_id: The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
         :param pulumi.Input[str] description: A description to let users add more details about the event.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
@@ -77,7 +77,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="eventEndTime")
     def event_end_time(self) -> pulumi.Input[str]:
         """
-        ISO 8601 timestamp that marks the end of the event.
+        ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "event_end_time")
 
@@ -89,7 +89,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="eventStartTime")
     def event_start_time(self) -> pulumi.Input[str]:
         """
-        ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+        ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "event_start_time")
 
@@ -101,7 +101,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+        A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -113,7 +113,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="waitingRoomId")
     def waiting_room_id(self) -> pulumi.Input[str]:
         """
-        The Waiting Room ID the event should apply to.
+        The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "waiting_room_id")
 
@@ -125,7 +125,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -280,10 +280,10 @@ class _WaitingRoomEventState:
         :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
         :param pulumi.Input[str] description: A description to let users add more details about the event.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
-        :param pulumi.Input[str] event_end_time: ISO 8601 timestamp that marks the end of the event.
-        :param pulumi.Input[str] event_start_time: ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+        :param pulumi.Input[str] event_end_time: ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] event_start_time: ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] modified_on: Last modified time.
-        :param pulumi.Input[str] name: A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+        :param pulumi.Input[str] name: A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
         :param pulumi.Input[str] prequeue_start_time: ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `event_start_time`.
         :param pulumi.Input[str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
@@ -291,8 +291,8 @@ class _WaitingRoomEventState:
         :param pulumi.Input[bool] shuffle_at_event_start: Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Defaults to `false`.
         :param pulumi.Input[bool] suspended: If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
-        :param pulumi.Input[str] waiting_room_id: The Waiting Room ID the event should apply to.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] waiting_room_id: The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
@@ -381,7 +381,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="eventEndTime")
     def event_end_time(self) -> Optional[pulumi.Input[str]]:
         """
-        ISO 8601 timestamp that marks the end of the event.
+        ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "event_end_time")
 
@@ -393,7 +393,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="eventStartTime")
     def event_start_time(self) -> Optional[pulumi.Input[str]]:
         """
-        ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+        ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "event_start_time")
 
@@ -417,7 +417,7 @@ class _WaitingRoomEventState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+        A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -513,7 +513,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="waitingRoomId")
     def waiting_room_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Waiting Room ID the event should apply to.
+        The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "waiting_room_id")
 
@@ -525,7 +525,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -586,9 +586,9 @@ class WaitingRoomEvent(pulumi.CustomResource):
         :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
         :param pulumi.Input[str] description: A description to let users add more details about the event.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
-        :param pulumi.Input[str] event_end_time: ISO 8601 timestamp that marks the end of the event.
-        :param pulumi.Input[str] event_start_time: ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
-        :param pulumi.Input[str] name: A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+        :param pulumi.Input[str] event_end_time: ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] event_start_time: ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] name: A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
         :param pulumi.Input[str] prequeue_start_time: ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `event_start_time`.
         :param pulumi.Input[str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
@@ -596,8 +596,8 @@ class WaitingRoomEvent(pulumi.CustomResource):
         :param pulumi.Input[bool] shuffle_at_event_start: Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Defaults to `false`.
         :param pulumi.Input[bool] suspended: If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
-        :param pulumi.Input[str] waiting_room_id: The Waiting Room ID the event should apply to.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] waiting_room_id: The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -735,10 +735,10 @@ class WaitingRoomEvent(pulumi.CustomResource):
         :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
         :param pulumi.Input[str] description: A description to let users add more details about the event.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
-        :param pulumi.Input[str] event_end_time: ISO 8601 timestamp that marks the end of the event.
-        :param pulumi.Input[str] event_start_time: ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+        :param pulumi.Input[str] event_end_time: ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] event_start_time: ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] modified_on: Last modified time.
-        :param pulumi.Input[str] name: A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+        :param pulumi.Input[str] name: A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
         :param pulumi.Input[str] prequeue_start_time: ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `event_start_time`.
         :param pulumi.Input[str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
@@ -746,8 +746,8 @@ class WaitingRoomEvent(pulumi.CustomResource):
         :param pulumi.Input[bool] shuffle_at_event_start: Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Defaults to `false`.
         :param pulumi.Input[bool] suspended: If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
-        :param pulumi.Input[str] waiting_room_id: The Waiting Room ID the event should apply to.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] waiting_room_id: The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -808,7 +808,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="eventEndTime")
     def event_end_time(self) -> pulumi.Output[str]:
         """
-        ISO 8601 timestamp that marks the end of the event.
+        ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "event_end_time")
 
@@ -816,7 +816,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="eventStartTime")
     def event_start_time(self) -> pulumi.Output[str]:
         """
-        ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+        ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "event_start_time")
 
@@ -832,7 +832,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+        A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -896,7 +896,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="waitingRoomId")
     def waiting_room_id(self) -> pulumi.Output[str]:
         """
-        The Waiting Room ID the event should apply to.
+        The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "waiting_room_id")
 
@@ -904,7 +904,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 

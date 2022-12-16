@@ -36,7 +36,7 @@ import (
 //				},
 //				Name:       pulumi.String("office"),
 //				Precedence: pulumi.Int(1),
-//				RuleSettings: &TeamsRuleRuleSettingsArgs{
+//				RuleSettings: &cloudflare.TeamsRuleRuleSettingsArgs{
 //					BlockPageEnabled: pulumi.Bool(true),
 //					BlockPageReason:  pulumi.String("access not permitted"),
 //				},

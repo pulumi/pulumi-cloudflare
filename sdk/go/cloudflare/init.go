@@ -76,6 +76,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DevicePostureIntegration{}
 	case "cloudflare:index/devicePostureRule:DevicePostureRule":
 		r = &DevicePostureRule{}
+	case "cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy":
+		r = &DeviceSettingsPolicy{}
 	case "cloudflare:index/dlpProfile:DlpProfile":
 		r = &DlpProfile{}
 	case "cloudflare:index/emailRoutingAddress:EmailRoutingAddress":
@@ -154,10 +156,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TeamsRule{}
 	case "cloudflare:index/totalTls:TotalTls":
 		r = &TotalTls{}
+	case "cloudflare:index/tunnelConfig:TunnelConfig":
+		r = &TunnelConfig{}
 	case "cloudflare:index/tunnelRoute:TunnelRoute":
 		r = &TunnelRoute{}
 	case "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork":
 		r = &TunnelVirtualNetwork{}
+	case "cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings":
+		r = &UrlNormalizationSettings{}
 	case "cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule":
 		r = &UserAgentBlockingRule{}
 	case "cloudflare:index/wafGroup:WafGroup":
@@ -366,6 +372,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/deviceSettingsPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/dlpProfile",
 		&module{version},
 	)
@@ -561,12 +572,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/tunnelConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/tunnelRoute",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/tunnelVirtualNetwork",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/urlNormalizationSettings",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

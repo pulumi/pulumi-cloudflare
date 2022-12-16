@@ -48,7 +48,7 @@ export class EmailRoutingAddress extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -56,7 +56,7 @@ export class EmailRoutingAddress extends pulumi.CustomResource {
      */
     public /*out*/ readonly created!: pulumi.Output<string>;
     /**
-     * The contact email address of the user.
+     * The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly email!: pulumi.Output<string>;
     /**
@@ -116,7 +116,7 @@ export class EmailRoutingAddress extends pulumi.CustomResource {
  */
 export interface EmailRoutingAddressState {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -124,7 +124,7 @@ export interface EmailRoutingAddressState {
      */
     created?: pulumi.Input<string>;
     /**
-     * The contact email address of the user.
+     * The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
      */
     email?: pulumi.Input<string>;
     /**
@@ -146,11 +146,11 @@ export interface EmailRoutingAddressState {
  */
 export interface EmailRoutingAddressArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId: pulumi.Input<string>;
     /**
-     * The contact email address of the user.
+     * The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
      */
     email: pulumi.Input<string>;
 }

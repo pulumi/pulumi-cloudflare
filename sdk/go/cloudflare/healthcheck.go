@@ -49,8 +49,8 @@ import (
 //				},
 //				FollowRedirects: pulumi.Bool(true),
 //				AllowInsecure:   pulumi.Bool(false),
-//				Headers: HealthcheckHeaderArray{
-//					&HealthcheckHeaderArgs{
+//				Headers: cloudflare.HealthcheckHeaderArray{
+//					&cloudflare.HealthcheckHeaderArgs{
 //						Header: pulumi.String("Host"),
 //						Values: pulumi.StringArray{
 //							pulumi.String("example.com"),
@@ -148,7 +148,7 @@ type Healthcheck struct {
 	Timeout pulumi.IntPtrOutput `pulumi:"timeout"`
 	// The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -235,7 +235,7 @@ type healthcheckState struct {
 	Timeout *int `pulumi:"timeout"`
 	// The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
 	Type *string `pulumi:"type"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -282,7 +282,7 @@ type HealthcheckState struct {
 	Timeout pulumi.IntPtrInput
 	// The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
 	Type pulumi.StringPtrInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -329,7 +329,7 @@ type healthcheckArgs struct {
 	Timeout *int `pulumi:"timeout"`
 	// The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
 	Type string `pulumi:"type"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -373,7 +373,7 @@ type HealthcheckArgs struct {
 	Timeout pulumi.IntPtrInput
 	// The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
 	Type pulumi.StringInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
 }
 
@@ -569,7 +569,7 @@ func (o HealthcheckOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Healthcheck) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource.
+// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o HealthcheckOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Healthcheck) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

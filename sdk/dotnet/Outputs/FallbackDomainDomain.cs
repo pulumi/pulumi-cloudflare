@@ -14,15 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class FallbackDomainDomain
     {
         /// <summary>
-        /// The description of the domain.
+        /// A description of the fallback domain, displayed in the client UI.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// The DNS servers to receive the redirected request.
+        /// A list of IP addresses to handle domain resolution.
         /// </summary>
         public readonly ImmutableArray<string> DnsServers;
         /// <summary>
-        /// The domain to ignore DNS requests.
+        /// The domain suffix to match when resolving locally.
         /// </summary>
         public readonly string? Suffix;
 

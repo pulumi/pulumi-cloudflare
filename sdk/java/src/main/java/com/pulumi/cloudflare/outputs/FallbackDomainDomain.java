@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FallbackDomainDomain {
     /**
-     * @return The description of the domain.
+     * @return A description of the fallback domain, displayed in the client UI.
      * 
      */
     private @Nullable String description;
     /**
-     * @return The DNS servers to receive the redirected request.
+     * @return A list of IP addresses to handle domain resolution.
      * 
      */
     private @Nullable List<String> dnsServers;
     /**
-     * @return The domain to ignore DNS requests.
+     * @return The domain suffix to match when resolving locally.
      * 
      */
     private @Nullable String suffix;
 
     private FallbackDomainDomain() {}
     /**
-     * @return The description of the domain.
+     * @return A description of the fallback domain, displayed in the client UI.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return The DNS servers to receive the redirected request.
+     * @return A list of IP addresses to handle domain resolution.
      * 
      */
     public List<String> dnsServers() {
         return this.dnsServers == null ? List.of() : this.dnsServers;
     }
     /**
-     * @return The domain to ignore DNS requests.
+     * @return The domain suffix to match when resolving locally.
      * 
      */
     public Optional<String> suffix() {

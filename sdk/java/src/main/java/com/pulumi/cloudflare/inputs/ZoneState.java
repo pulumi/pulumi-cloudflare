@@ -161,14 +161,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The DNS zone name which will be added.
+     * The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
     /**
-     * @return The DNS zone name which will be added.
+     * @return The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> zone() {
@@ -428,7 +428,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone The DNS zone name which will be added.
+         * @param zone The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -439,7 +439,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone The DNS zone name which will be added.
+         * @param zone The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

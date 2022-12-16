@@ -25,15 +25,15 @@ import (
 type DlpProfile struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Brief summary of the profile and its intended use.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// List of entries to apply to the profile.
 	Entries DlpProfileEntryArrayOutput `pulumi:"entries"`
-	// Name of the profile.
+	// Name of the profile. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The type of the profile. Available values: `custom`, `predefined`.
+	// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -78,28 +78,28 @@ func GetDlpProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DlpProfile resources.
 type dlpProfileState struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string `pulumi:"accountId"`
 	// Brief summary of the profile and its intended use.
 	Description *string `pulumi:"description"`
 	// List of entries to apply to the profile.
 	Entries []DlpProfileEntry `pulumi:"entries"`
-	// Name of the profile.
+	// Name of the profile. **Modifying this attribute will force creation of a new resource.**
 	Name *string `pulumi:"name"`
-	// The type of the profile. Available values: `custom`, `predefined`.
+	// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
 	Type *string `pulumi:"type"`
 }
 
 type DlpProfileState struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
 	// Brief summary of the profile and its intended use.
 	Description pulumi.StringPtrInput
 	// List of entries to apply to the profile.
 	Entries DlpProfileEntryArrayInput
-	// Name of the profile.
+	// Name of the profile. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringPtrInput
-	// The type of the profile. Available values: `custom`, `predefined`.
+	// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
 	Type pulumi.StringPtrInput
 }
 
@@ -108,29 +108,29 @@ func (DlpProfileState) ElementType() reflect.Type {
 }
 
 type dlpProfileArgs struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId string `pulumi:"accountId"`
 	// Brief summary of the profile and its intended use.
 	Description *string `pulumi:"description"`
 	// List of entries to apply to the profile.
 	Entries []DlpProfileEntry `pulumi:"entries"`
-	// Name of the profile.
+	// Name of the profile. **Modifying this attribute will force creation of a new resource.**
 	Name string `pulumi:"name"`
-	// The type of the profile. Available values: `custom`, `predefined`.
+	// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
 	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a DlpProfile resource.
 type DlpProfileArgs struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringInput
 	// Brief summary of the profile and its intended use.
 	Description pulumi.StringPtrInput
 	// List of entries to apply to the profile.
 	Entries DlpProfileEntryArrayInput
-	// Name of the profile.
+	// Name of the profile. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringInput
-	// The type of the profile. Available values: `custom`, `predefined`.
+	// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
 	Type pulumi.StringInput
 }
 
@@ -221,7 +221,7 @@ func (o DlpProfileOutput) ToDlpProfileOutputWithContext(ctx context.Context) Dlp
 	return o
 }
 
-// The account identifier to target for the resource.
+// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o DlpProfileOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpProfile) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -236,12 +236,12 @@ func (o DlpProfileOutput) Entries() DlpProfileEntryArrayOutput {
 	return o.ApplyT(func(v *DlpProfile) DlpProfileEntryArrayOutput { return v.Entries }).(DlpProfileEntryArrayOutput)
 }
 
-// Name of the profile.
+// Name of the profile. **Modifying this attribute will force creation of a new resource.**
 func (o DlpProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The type of the profile. Available values: `custom`, `predefined`.
+// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
 func (o DlpProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpProfile) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

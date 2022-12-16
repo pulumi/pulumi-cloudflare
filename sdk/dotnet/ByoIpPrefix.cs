@@ -61,7 +61,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The assigned Bring-Your-Own-IP prefix ID.
+        /// The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("prefixId")]
         public Output<string> PrefixId { get; private set; } = null!;
@@ -131,7 +131,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The assigned Bring-Your-Own-IP prefix ID.
+        /// The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("prefixId", required: true)]
         public Input<string> PrefixId { get; set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The assigned Bring-Your-Own-IP prefix ID.
+        /// The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("prefixId")]
         public Input<string>? PrefixId { get; set; }

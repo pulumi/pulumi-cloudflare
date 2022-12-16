@@ -102,14 +102,14 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
-     * The assigned Bring-Your-Own-IP prefix ID.
+     * The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="prefixId", type=String.class, parameters={})
     private Output<String> prefixId;
 
     /**
-     * @return The assigned Bring-Your-Own-IP prefix ID.
+     * @return The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> prefixId() {

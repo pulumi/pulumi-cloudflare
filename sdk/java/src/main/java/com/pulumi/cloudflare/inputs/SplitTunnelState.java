@@ -18,14 +18,14 @@ public final class SplitTunnelState extends com.pulumi.resources.ResourceArgs {
     public static final SplitTunnelState Empty = new SplitTunnelState();
 
     /**
-     * The account to which the device posture rule should be added.
+     * The account identifier to target for the resource.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account to which the device posture rule should be added.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -33,14 +33,14 @@ public final class SplitTunnelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The split tunnel mode. Valid values are `include` or `exclude`.
+     * The mode of the split tunnel policy. Available values: `include`, `exclude`.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return The split tunnel mode. Valid values are `include` or `exclude`.
+     * @return The mode of the split tunnel policy. Available values: `include`, `exclude`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -48,14 +48,29 @@ public final class SplitTunnelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The value of the tunnel attributes (refer to the nested schema).
+     * The settings policy for which to configure this split tunnel policy.
+     * 
+     */
+    @Import(name="policyId")
+    private @Nullable Output<String> policyId;
+
+    /**
+     * @return The settings policy for which to configure this split tunnel policy.
+     * 
+     */
+    public Optional<Output<String>> policyId() {
+        return Optional.ofNullable(this.policyId);
+    }
+
+    /**
+     * The value of the tunnel attributes.
      * 
      */
     @Import(name="tunnels")
     private @Nullable Output<List<SplitTunnelTunnelArgs>> tunnels;
 
     /**
-     * @return The value of the tunnel attributes (refer to the nested schema).
+     * @return The value of the tunnel attributes.
      * 
      */
     public Optional<Output<List<SplitTunnelTunnelArgs>>> tunnels() {
@@ -67,6 +82,7 @@ public final class SplitTunnelState extends com.pulumi.resources.ResourceArgs {
     private SplitTunnelState(SplitTunnelState $) {
         this.accountId = $.accountId;
         this.mode = $.mode;
+        this.policyId = $.policyId;
         this.tunnels = $.tunnels;
     }
 
@@ -89,7 +105,7 @@ public final class SplitTunnelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account to which the device posture rule should be added.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -100,7 +116,7 @@ public final class SplitTunnelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account to which the device posture rule should be added.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -110,7 +126,7 @@ public final class SplitTunnelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode The split tunnel mode. Valid values are `include` or `exclude`.
+         * @param mode The mode of the split tunnel policy. Available values: `include`, `exclude`.
          * 
          * @return builder
          * 
@@ -121,7 +137,7 @@ public final class SplitTunnelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode The split tunnel mode. Valid values are `include` or `exclude`.
+         * @param mode The mode of the split tunnel policy. Available values: `include`, `exclude`.
          * 
          * @return builder
          * 
@@ -131,7 +147,28 @@ public final class SplitTunnelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tunnels The value of the tunnel attributes (refer to the nested schema).
+         * @param policyId The settings policy for which to configure this split tunnel policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyId(@Nullable Output<String> policyId) {
+            $.policyId = policyId;
+            return this;
+        }
+
+        /**
+         * @param policyId The settings policy for which to configure this split tunnel policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyId(String policyId) {
+            return policyId(Output.of(policyId));
+        }
+
+        /**
+         * @param tunnels The value of the tunnel attributes.
          * 
          * @return builder
          * 
@@ -142,7 +179,7 @@ public final class SplitTunnelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tunnels The value of the tunnel attributes (refer to the nested schema).
+         * @param tunnels The value of the tunnel attributes.
          * 
          * @return builder
          * 
@@ -152,7 +189,7 @@ public final class SplitTunnelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tunnels The value of the tunnel attributes (refer to the nested schema).
+         * @param tunnels The value of the tunnel attributes.
          * 
          * @return builder
          * 

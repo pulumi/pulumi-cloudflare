@@ -26,14 +26,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewManagedHeaders(ctx, "example", &cloudflare.ManagedHeadersArgs{
-//				ManagedRequestHeaders: ManagedHeadersManagedRequestHeaderArray{
-//					&ManagedHeadersManagedRequestHeaderArgs{
+//				ManagedRequestHeaders: cloudflare.ManagedHeadersManagedRequestHeaderArray{
+//					&cloudflare.ManagedHeadersManagedRequestHeaderArgs{
 //						Enabled: pulumi.Bool(true),
 //						Id:      pulumi.String("add_true_client_ip_headers"),
 //					},
 //				},
-//				ManagedResponseHeaders: ManagedHeadersManagedResponseHeaderArray{
-//					&ManagedHeadersManagedResponseHeaderArgs{
+//				ManagedResponseHeaders: cloudflare.ManagedHeadersManagedResponseHeaderArray{
+//					&cloudflare.ManagedHeadersManagedResponseHeaderArgs{
 //						Enabled: pulumi.Bool(true),
 //						Id:      pulumi.String("remove_x-powered-by_header"),
 //					},

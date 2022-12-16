@@ -61,14 +61,14 @@ public final class ByoIpPrefixState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The assigned Bring-Your-Own-IP prefix ID.
+     * The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="prefixId")
     private @Nullable Output<String> prefixId;
 
     /**
-     * @return The assigned Bring-Your-Own-IP prefix ID.
+     * @return The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> prefixId() {
@@ -166,7 +166,7 @@ public final class ByoIpPrefixState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param prefixId The assigned Bring-Your-Own-IP prefix ID.
+         * @param prefixId The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ByoIpPrefixState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param prefixId The assigned Bring-Your-Own-IP prefix ID.
+         * @param prefixId The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

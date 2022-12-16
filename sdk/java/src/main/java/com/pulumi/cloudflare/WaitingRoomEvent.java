@@ -121,28 +121,28 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.disableSessionRenewal);
     }
     /**
-     * ISO 8601 timestamp that marks the end of the event.
+     * ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="eventEndTime", type=String.class, parameters={})
     private Output<String> eventEndTime;
 
     /**
-     * @return ISO 8601 timestamp that marks the end of the event.
+     * @return ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> eventEndTime() {
         return this.eventEndTime;
     }
     /**
-     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="eventStartTime", type=String.class, parameters={})
     private Output<String> eventStartTime;
 
     /**
-     * @return ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+     * @return ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> eventStartTime() {
@@ -163,14 +163,14 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
         return this.modifiedOn;
     }
     /**
-     * A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+     * A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+     * @return A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> name() {
@@ -275,28 +275,28 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.totalActiveUsers);
     }
     /**
-     * The Waiting Room ID the event should apply to.
+     * The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="waitingRoomId", type=String.class, parameters={})
     private Output<String> waitingRoomId;
 
     /**
-     * @return The Waiting Room ID the event should apply to.
+     * @return The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> waitingRoomId() {
         return this.waitingRoomId;
     }
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {

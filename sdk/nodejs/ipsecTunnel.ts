@@ -63,7 +63,7 @@ export class IpsecTunnel extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
@@ -193,7 +193,7 @@ export class IpsecTunnel extends pulumi.CustomResource {
  */
 export interface IpsecTunnelState {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -259,7 +259,7 @@ export interface IpsecTunnelState {
  */
 export interface IpsecTunnelArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId?: pulumi.Input<string>;
     /**

@@ -13,73 +13,37 @@ namespace Pulumi.Cloudflare
     /// Provides a Cloudflare Split Tunnel resource. Split tunnels are used to either
     /// include or exclude lists of routes from the WARP client's tunnel.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Excluding *.example.com from WARP routes
-    ///     var exampleSplitTunnelExclude = new Cloudflare.SplitTunnel("exampleSplitTunnelExclude", new()
-    ///     {
-    ///         AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
-    ///         Mode = "exclude",
-    ///         Tunnels = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.SplitTunnelTunnelArgs
-    ///             {
-    ///                 Description = "example domain",
-    ///                 Host = "*.example.com",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     // Including *.example.com in WARP routes
-    ///     var exampleSplitTunnelInclude = new Cloudflare.SplitTunnel("exampleSplitTunnelInclude", new()
-    ///     {
-    ///         AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
-    ///         Mode = "include",
-    ///         Tunnels = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.SplitTunnelTunnelArgs
-    ///             {
-    ///                 Description = "example domain",
-    ///                 Host = "*.example.com",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// Split Tunnels can be imported using the account identifer and mode.
+    /// Split Tunnels for default device policies must use "default" as the policy ID.
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/splitTunnel:SplitTunnel example 1d5fdc9e88c8a8c4518b068cd94331fe/exclude
+    ///  $ pulumi import cloudflare:index/splitTunnel:SplitTunnel example &lt;account_id&gt;/&lt;policy_id&gt;/&lt;mode&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/splitTunnel:SplitTunnel")]
     public partial class SplitTunnel : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account to which the device posture rule should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The split tunnel mode. Valid values are `include` or `exclude`.
+        /// The mode of the split tunnel policy. Available values: `include`, `exclude`.
         /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
 
         /// <summary>
-        /// The value of the tunnel attributes (refer to the nested schema).
+        /// The settings policy for which to configure this split tunnel policy.
+        /// </summary>
+        [Output("policyId")]
+        public Output<string?> PolicyId { get; private set; } = null!;
+
+        /// <summary>
+        /// The value of the tunnel attributes.
         /// </summary>
         [Output("tunnels")]
         public Output<ImmutableArray<Outputs.SplitTunnelTunnel>> Tunnels { get; private set; } = null!;
@@ -131,22 +95,28 @@ namespace Pulumi.Cloudflare
     public sealed class SplitTunnelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the device posture rule should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The split tunnel mode. Valid values are `include` or `exclude`.
+        /// The mode of the split tunnel policy. Available values: `include`, `exclude`.
         /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;
+
+        /// <summary>
+        /// The settings policy for which to configure this split tunnel policy.
+        /// </summary>
+        [Input("policyId")]
+        public Input<string>? PolicyId { get; set; }
 
         [Input("tunnels", required: true)]
         private InputList<Inputs.SplitTunnelTunnelArgs>? _tunnels;
 
         /// <summary>
-        /// The value of the tunnel attributes (refer to the nested schema).
+        /// The value of the tunnel attributes.
         /// </summary>
         public InputList<Inputs.SplitTunnelTunnelArgs> Tunnels
         {
@@ -163,22 +133,28 @@ namespace Pulumi.Cloudflare
     public sealed class SplitTunnelState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the device posture rule should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The split tunnel mode. Valid values are `include` or `exclude`.
+        /// The mode of the split tunnel policy. Available values: `include`, `exclude`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
+
+        /// <summary>
+        /// The settings policy for which to configure this split tunnel policy.
+        /// </summary>
+        [Input("policyId")]
+        public Input<string>? PolicyId { get; set; }
 
         [Input("tunnels")]
         private InputList<Inputs.SplitTunnelTunnelGetArgs>? _tunnels;
 
         /// <summary>
-        /// The value of the tunnel attributes (refer to the nested schema).
+        /// The value of the tunnel attributes.
         /// </summary>
         public InputList<Inputs.SplitTunnelTunnelGetArgs> Tunnels
         {

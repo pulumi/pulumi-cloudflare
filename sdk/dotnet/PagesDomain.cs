@@ -12,6 +12,8 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a resource for managing Cloudflare Pages domains.
     /// 
+    /// &gt; A DNS record for the domain is not automatically created. You need to create a `cloudflare.Record` resource for the domain you want to use.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -41,19 +43,19 @@ namespace Pulumi.Cloudflare
     public partial class PagesDomain : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Custom domain.
+        /// Custom domain. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the Pages Project.
+        /// Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("projectName")]
         public Output<string> ProjectName { get; private set; } = null!;
@@ -111,19 +113,19 @@ namespace Pulumi.Cloudflare
     public sealed class PagesDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Custom domain.
+        /// Custom domain. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
 
         /// <summary>
-        /// Name of the Pages Project.
+        /// Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("projectName", required: true)]
         public Input<string> ProjectName { get; set; } = null!;
@@ -137,19 +139,19 @@ namespace Pulumi.Cloudflare
     public sealed class PagesDomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Custom domain.
+        /// Custom domain. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// Name of the Pages Project.
+        /// Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }

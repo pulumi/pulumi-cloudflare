@@ -7,7 +7,8 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare Origin CA certificate used to protect traffic to your origin without involving a third party Certificate Authority.
  *
- * **This resource requires you use your Origin CA Key as the `apiUserServiceKey` value.**
+ * > This resource requires you use your Origin CA Key as the
+ * `apiUserServiceKey` value.
  *
  * ## Example Usage
  *
@@ -36,10 +37,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Origin CA certificate resource can be imported using an ID, e.g.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example 276266538771611802607153687288146423901027769273
+ *  $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example <certificate_id>
  * ```
  */
 export class OriginCaCertificate extends pulumi.CustomResource {
@@ -71,11 +70,11 @@ export class OriginCaCertificate extends pulumi.CustomResource {
     }
 
     /**
-     * The Origin CA certificate
+     * The Origin CA certificate.
      */
     public /*out*/ readonly certificate!: pulumi.Output<string>;
     /**
-     * The Certificate Signing Request. Must be newline-encoded.
+     * The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly csr!: pulumi.Output<string | undefined>;
     /**
@@ -83,15 +82,19 @@ export class OriginCaCertificate extends pulumi.CustomResource {
      */
     public /*out*/ readonly expiresOn!: pulumi.Output<string>;
     /**
-     * An array of hostnames or wildcard names bound to the certificate.
+     * A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly hostnames!: pulumi.Output<string[]>;
     /**
-     * The signature type desired on the certificate.
+     * Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
+     */
+    public readonly minDaysForRenewal!: pulumi.Output<number | undefined>;
+    /**
+     * The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly requestType!: pulumi.Output<string>;
     /**
-     * The number of days for which the certificate should be valid.
+     * The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly requestedValidity!: pulumi.Output<number>;
 
@@ -112,6 +115,7 @@ export class OriginCaCertificate extends pulumi.CustomResource {
             resourceInputs["csr"] = state ? state.csr : undefined;
             resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
             resourceInputs["hostnames"] = state ? state.hostnames : undefined;
+            resourceInputs["minDaysForRenewal"] = state ? state.minDaysForRenewal : undefined;
             resourceInputs["requestType"] = state ? state.requestType : undefined;
             resourceInputs["requestedValidity"] = state ? state.requestedValidity : undefined;
         } else {
@@ -124,6 +128,7 @@ export class OriginCaCertificate extends pulumi.CustomResource {
             }
             resourceInputs["csr"] = args ? args.csr : undefined;
             resourceInputs["hostnames"] = args ? args.hostnames : undefined;
+            resourceInputs["minDaysForRenewal"] = args ? args.minDaysForRenewal : undefined;
             resourceInputs["requestType"] = args ? args.requestType : undefined;
             resourceInputs["requestedValidity"] = args ? args.requestedValidity : undefined;
             resourceInputs["certificate"] = undefined /*out*/;
@@ -139,11 +144,11 @@ export class OriginCaCertificate extends pulumi.CustomResource {
  */
 export interface OriginCaCertificateState {
     /**
-     * The Origin CA certificate
+     * The Origin CA certificate.
      */
     certificate?: pulumi.Input<string>;
     /**
-     * The Certificate Signing Request. Must be newline-encoded.
+     * The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
      */
     csr?: pulumi.Input<string>;
     /**
@@ -151,15 +156,19 @@ export interface OriginCaCertificateState {
      */
     expiresOn?: pulumi.Input<string>;
     /**
-     * An array of hostnames or wildcard names bound to the certificate.
+     * A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
      */
     hostnames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The signature type desired on the certificate.
+     * Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
+     */
+    minDaysForRenewal?: pulumi.Input<number>;
+    /**
+     * The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
      */
     requestType?: pulumi.Input<string>;
     /**
-     * The number of days for which the certificate should be valid.
+     * The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
      */
     requestedValidity?: pulumi.Input<number>;
 }
@@ -169,19 +178,23 @@ export interface OriginCaCertificateState {
  */
 export interface OriginCaCertificateArgs {
     /**
-     * The Certificate Signing Request. Must be newline-encoded.
+     * The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
      */
     csr?: pulumi.Input<string>;
     /**
-     * An array of hostnames or wildcard names bound to the certificate.
+     * A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
      */
     hostnames: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The signature type desired on the certificate.
+     * Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
+     */
+    minDaysForRenewal?: pulumi.Input<number>;
+    /**
+     * The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
      */
     requestType: pulumi.Input<string>;
     /**
-     * The number of days for which the certificate should be valid.
+     * The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
      */
     requestedValidity?: pulumi.Input<number>;
 }

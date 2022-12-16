@@ -12,7 +12,8 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare Origin CA certificate used to protect traffic to your origin without involving a third party Certificate Authority.
     /// 
-    /// **This resource requires you use your Origin CA Key as the `api_user_service_key` value.**
+    /// &gt; This resource requires you use your Origin CA Key as the
+    /// `api_user_service_key` value.
     /// 
     /// ## Example Usage
     /// 
@@ -60,23 +61,21 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Origin CA certificate resource can be imported using an ID, e.g.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example 276266538771611802607153687288146423901027769273
+    ///  $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example &lt;certificate_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/originCaCertificate:OriginCaCertificate")]
     public partial class OriginCaCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Origin CA certificate
+        /// The Origin CA certificate.
         /// </summary>
         [Output("certificate")]
         public Output<string> Certificate { get; private set; } = null!;
 
         /// <summary>
-        /// The Certificate Signing Request. Must be newline-encoded.
+        /// The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("csr")]
         public Output<string?> Csr { get; private set; } = null!;
@@ -88,19 +87,25 @@ namespace Pulumi.Cloudflare
         public Output<string> ExpiresOn { get; private set; } = null!;
 
         /// <summary>
-        /// An array of hostnames or wildcard names bound to the certificate.
+        /// A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("hostnames")]
         public Output<ImmutableArray<string>> Hostnames { get; private set; } = null!;
 
         /// <summary>
-        /// The signature type desired on the certificate.
+        /// Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
+        /// </summary>
+        [Output("minDaysForRenewal")]
+        public Output<int?> MinDaysForRenewal { get; private set; } = null!;
+
+        /// <summary>
+        /// The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("requestType")]
         public Output<string> RequestType { get; private set; } = null!;
 
         /// <summary>
-        /// The number of days for which the certificate should be valid.
+        /// The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("requestedValidity")]
         public Output<int> RequestedValidity { get; private set; } = null!;
@@ -152,7 +157,7 @@ namespace Pulumi.Cloudflare
     public sealed class OriginCaCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Certificate Signing Request. Must be newline-encoded.
+        /// The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("csr")]
         public Input<string>? Csr { get; set; }
@@ -161,7 +166,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _hostnames;
 
         /// <summary>
-        /// An array of hostnames or wildcard names bound to the certificate.
+        /// A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         public InputList<string> Hostnames
         {
@@ -170,13 +175,19 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The signature type desired on the certificate.
+        /// Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
+        /// </summary>
+        [Input("minDaysForRenewal")]
+        public Input<int>? MinDaysForRenewal { get; set; }
+
+        /// <summary>
+        /// The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("requestType", required: true)]
         public Input<string> RequestType { get; set; } = null!;
 
         /// <summary>
-        /// The number of days for which the certificate should be valid.
+        /// The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("requestedValidity")]
         public Input<int>? RequestedValidity { get; set; }
@@ -190,13 +201,13 @@ namespace Pulumi.Cloudflare
     public sealed class OriginCaCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Origin CA certificate
+        /// The Origin CA certificate.
         /// </summary>
         [Input("certificate")]
         public Input<string>? Certificate { get; set; }
 
         /// <summary>
-        /// The Certificate Signing Request. Must be newline-encoded.
+        /// The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("csr")]
         public Input<string>? Csr { get; set; }
@@ -211,7 +222,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _hostnames;
 
         /// <summary>
-        /// An array of hostnames or wildcard names bound to the certificate.
+        /// A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         public InputList<string> Hostnames
         {
@@ -220,13 +231,19 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The signature type desired on the certificate.
+        /// Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
+        /// </summary>
+        [Input("minDaysForRenewal")]
+        public Input<int>? MinDaysForRenewal { get; set; }
+
+        /// <summary>
+        /// The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("requestType")]
         public Input<string>? RequestType { get; set; }
 
         /// <summary>
-        /// The number of days for which the certificate should be valid.
+        /// The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("requestedValidity")]
         public Input<int>? RequestedValidity { get; set; }

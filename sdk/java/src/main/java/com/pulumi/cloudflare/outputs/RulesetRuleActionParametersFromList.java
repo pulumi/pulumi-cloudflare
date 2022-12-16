@@ -11,7 +11,7 @@ import java.util.Objects;
 public final class RulesetRuleActionParametersFromList {
     private String key;
     /**
-     * @return Name of the ruleset.
+     * @return Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     private String name;
@@ -21,7 +21,7 @@ public final class RulesetRuleActionParametersFromList {
         return this.key;
     }
     /**
-     * @return Name of the ruleset.
+     * @return Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public String name() {

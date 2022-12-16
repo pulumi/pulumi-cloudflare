@@ -34,7 +34,7 @@ namespace Pulumi.Cloudflare
     public partial class EmailRoutingAddress : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Created { get; private set; } = null!;
 
         /// <summary>
-        /// The contact email address of the user.
+        /// The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
@@ -116,13 +116,13 @@ namespace Pulumi.Cloudflare
     public sealed class EmailRoutingAddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The contact email address of the user.
+        /// The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.Cloudflare
     public sealed class EmailRoutingAddressState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -148,7 +148,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Created { get; set; }
 
         /// <summary>
-        /// The contact email address of the user.
+        /// The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }

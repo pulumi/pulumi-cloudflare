@@ -31,8 +31,8 @@ import (
 //				Description: pulumi.String("example load balancer pool"),
 //				Enabled:     pulumi.Bool(false),
 //				Latitude:    pulumi.Float64(55),
-//				LoadSheddings: LoadBalancerPoolLoadSheddingArray{
-//					&LoadBalancerPoolLoadSheddingArgs{
+//				LoadSheddings: cloudflare.LoadBalancerPoolLoadSheddingArray{
+//					&cloudflare.LoadBalancerPoolLoadSheddingArgs{
 //						DefaultPercent: pulumi.Float64(55),
 //						DefaultPolicy:  pulumi.String("random"),
 //						SessionPercent: pulumi.Float64(12),
@@ -43,17 +43,17 @@ import (
 //				MinimumOrigins:    pulumi.Int(1),
 //				Name:              pulumi.String("example-pool"),
 //				NotificationEmail: pulumi.String("someone@example.com"),
-//				OriginSteerings: LoadBalancerPoolOriginSteeringArray{
-//					&LoadBalancerPoolOriginSteeringArgs{
+//				OriginSteerings: cloudflare.LoadBalancerPoolOriginSteeringArray{
+//					&cloudflare.LoadBalancerPoolOriginSteeringArgs{
 //						Policy: pulumi.String("random"),
 //					},
 //				},
-//				Origins: LoadBalancerPoolOriginArray{
-//					&LoadBalancerPoolOriginArgs{
+//				Origins: cloudflare.LoadBalancerPoolOriginArray{
+//					&cloudflare.LoadBalancerPoolOriginArgs{
 //						Address: pulumi.String("192.0.2.1"),
 //						Enabled: pulumi.Bool(false),
-//						Headers: LoadBalancerPoolOriginHeaderArray{
-//							&LoadBalancerPoolOriginHeaderArgs{
+//						Headers: cloudflare.LoadBalancerPoolOriginHeaderArray{
+//							&cloudflare.LoadBalancerPoolOriginHeaderArgs{
 //								Header: pulumi.String("Host"),
 //								Values: pulumi.StringArray{
 //									pulumi.String("example-1"),
@@ -62,10 +62,10 @@ import (
 //						},
 //						Name: pulumi.String("example-1"),
 //					},
-//					&LoadBalancerPoolOriginArgs{
+//					&cloudflare.LoadBalancerPoolOriginArgs{
 //						Address: pulumi.String("192.0.2.2"),
-//						Headers: LoadBalancerPoolOriginHeaderArray{
-//							&LoadBalancerPoolOriginHeaderArgs{
+//						Headers: cloudflare.LoadBalancerPoolOriginHeaderArray{
+//							&cloudflare.LoadBalancerPoolOriginHeaderArgs{
 //								Header: pulumi.String("Host"),
 //								Values: pulumi.StringArray{
 //									pulumi.String("example-2"),

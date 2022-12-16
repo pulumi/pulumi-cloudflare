@@ -59,41 +59,47 @@ import (
 //			_, err = cloudflare.NewWorkerScript(ctx, "myScript", &cloudflare.WorkerScriptArgs{
 //				Name:    pulumi.String("script_1"),
 //				Content: readFileOrPanic("script.js"),
-//				KvNamespaceBindings: WorkerScriptKvNamespaceBindingArray{
-//					&WorkerScriptKvNamespaceBindingArgs{
+//				KvNamespaceBindings: cloudflare.WorkerScriptKvNamespaceBindingArray{
+//					&cloudflare.WorkerScriptKvNamespaceBindingArgs{
 //						Name:        pulumi.String("MY_EXAMPLE_KV_NAMESPACE"),
 //						NamespaceId: myNamespace.ID(),
 //					},
 //				},
-//				PlainTextBindings: WorkerScriptPlainTextBindingArray{
-//					&WorkerScriptPlainTextBindingArgs{
+//				PlainTextBindings: cloudflare.WorkerScriptPlainTextBindingArray{
+//					&cloudflare.WorkerScriptPlainTextBindingArgs{
 //						Name: pulumi.String("MY_EXAMPLE_PLAIN_TEXT"),
 //						Text: pulumi.String("foobar"),
 //					},
 //				},
-//				SecretTextBindings: WorkerScriptSecretTextBindingArray{
-//					&WorkerScriptSecretTextBindingArgs{
+//				SecretTextBindings: cloudflare.WorkerScriptSecretTextBindingArray{
+//					&cloudflare.WorkerScriptSecretTextBindingArgs{
 //						Name: pulumi.String("MY_EXAMPLE_SECRET_TEXT"),
 //						Text: pulumi.Any(_var.Secret_foo_value),
 //					},
 //				},
-//				WebassemblyBindings: WorkerScriptWebassemblyBindingArray{
-//					&WorkerScriptWebassemblyBindingArgs{
+//				WebassemblyBindings: cloudflare.WorkerScriptWebassemblyBindingArray{
+//					&cloudflare.WorkerScriptWebassemblyBindingArgs{
 //						Name:   pulumi.String("MY_EXAMPLE_WASM"),
 //						Module: filebase64OrPanic("example.wasm"),
 //					},
 //				},
-//				ServiceBindings: WorkerScriptServiceBindingArray{
-//					&WorkerScriptServiceBindingArgs{
+//				ServiceBindings: cloudflare.WorkerScriptServiceBindingArray{
+//					&cloudflare.WorkerScriptServiceBindingArgs{
 //						Name:        pulumi.String("MY_SERVICE_BINDING"),
 //						Service:     pulumi.String("MY_SERVICE"),
 //						Environment: pulumi.String("production"),
 //					},
 //				},
-//				R2BucketBindings: WorkerScriptR2BucketBindingArray{
-//					&WorkerScriptR2BucketBindingArgs{
+//				R2BucketBindings: cloudflare.WorkerScriptR2BucketBindingArray{
+//					&cloudflare.WorkerScriptR2BucketBindingArgs{
 //						Name:       pulumi.String("MY_BUCKET"),
 //						BucketName: pulumi.String("MY_BUCKET_NAME"),
+//					},
+//				},
+//				AnalyticsEngineBindings: cloudflare.WorkerScriptAnalyticsEngineBindingArray{
+//					&cloudflare.WorkerScriptAnalyticsEngineBindingArgs{
+//						Name:    pulumi.String("MY_DATASET"),
+//						Dataset: pulumi.String("dataset1"),
 //					},
 //				},
 //			})
@@ -116,12 +122,13 @@ import (
 type WorkerScript struct {
 	pulumi.CustomResourceState
 
+	AnalyticsEngineBindings WorkerScriptAnalyticsEngineBindingArrayOutput `pulumi:"analyticsEngineBindings"`
 	// The script content.
 	Content             pulumi.StringOutput                       `pulumi:"content"`
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayOutput `pulumi:"kvNamespaceBindings"`
 	// Whether to upload Worker as a module.
 	Module pulumi.BoolPtrOutput `pulumi:"module"`
-	// The name for the script.
+	// The name for the script. **Modifying this attribute will force creation of a new resource.**
 	Name                pulumi.StringOutput                       `pulumi:"name"`
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayOutput   `pulumi:"plainTextBindings"`
 	R2BucketBindings    WorkerScriptR2BucketBindingArrayOutput    `pulumi:"r2BucketBindings"`
@@ -165,12 +172,13 @@ func GetWorkerScript(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkerScript resources.
 type workerScriptState struct {
+	AnalyticsEngineBindings []WorkerScriptAnalyticsEngineBinding `pulumi:"analyticsEngineBindings"`
 	// The script content.
 	Content             *string                          `pulumi:"content"`
 	KvNamespaceBindings []WorkerScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
 	// Whether to upload Worker as a module.
 	Module *bool `pulumi:"module"`
-	// The name for the script.
+	// The name for the script. **Modifying this attribute will force creation of a new resource.**
 	Name                *string                          `pulumi:"name"`
 	PlainTextBindings   []WorkerScriptPlainTextBinding   `pulumi:"plainTextBindings"`
 	R2BucketBindings    []WorkerScriptR2BucketBinding    `pulumi:"r2BucketBindings"`
@@ -180,12 +188,13 @@ type workerScriptState struct {
 }
 
 type WorkerScriptState struct {
+	AnalyticsEngineBindings WorkerScriptAnalyticsEngineBindingArrayInput
 	// The script content.
 	Content             pulumi.StringPtrInput
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayInput
 	// Whether to upload Worker as a module.
 	Module pulumi.BoolPtrInput
-	// The name for the script.
+	// The name for the script. **Modifying this attribute will force creation of a new resource.**
 	Name                pulumi.StringPtrInput
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayInput
 	R2BucketBindings    WorkerScriptR2BucketBindingArrayInput
@@ -199,12 +208,13 @@ func (WorkerScriptState) ElementType() reflect.Type {
 }
 
 type workerScriptArgs struct {
+	AnalyticsEngineBindings []WorkerScriptAnalyticsEngineBinding `pulumi:"analyticsEngineBindings"`
 	// The script content.
 	Content             string                           `pulumi:"content"`
 	KvNamespaceBindings []WorkerScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
 	// Whether to upload Worker as a module.
 	Module *bool `pulumi:"module"`
-	// The name for the script.
+	// The name for the script. **Modifying this attribute will force creation of a new resource.**
 	Name                string                           `pulumi:"name"`
 	PlainTextBindings   []WorkerScriptPlainTextBinding   `pulumi:"plainTextBindings"`
 	R2BucketBindings    []WorkerScriptR2BucketBinding    `pulumi:"r2BucketBindings"`
@@ -215,12 +225,13 @@ type workerScriptArgs struct {
 
 // The set of arguments for constructing a WorkerScript resource.
 type WorkerScriptArgs struct {
+	AnalyticsEngineBindings WorkerScriptAnalyticsEngineBindingArrayInput
 	// The script content.
 	Content             pulumi.StringInput
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayInput
 	// Whether to upload Worker as a module.
 	Module pulumi.BoolPtrInput
-	// The name for the script.
+	// The name for the script. **Modifying this attribute will force creation of a new resource.**
 	Name                pulumi.StringInput
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayInput
 	R2BucketBindings    WorkerScriptR2BucketBindingArrayInput
@@ -316,6 +327,10 @@ func (o WorkerScriptOutput) ToWorkerScriptOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o WorkerScriptOutput) AnalyticsEngineBindings() WorkerScriptAnalyticsEngineBindingArrayOutput {
+	return o.ApplyT(func(v *WorkerScript) WorkerScriptAnalyticsEngineBindingArrayOutput { return v.AnalyticsEngineBindings }).(WorkerScriptAnalyticsEngineBindingArrayOutput)
+}
+
 // The script content.
 func (o WorkerScriptOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
@@ -330,7 +345,7 @@ func (o WorkerScriptOutput) Module() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WorkerScript) pulumi.BoolPtrOutput { return v.Module }).(pulumi.BoolPtrOutput)
 }
 
-// The name for the script.
+// The name for the script. **Modifying this attribute will force creation of a new resource.**
 func (o WorkerScriptOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

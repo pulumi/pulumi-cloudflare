@@ -31,12 +31,12 @@ import (
 //			_, err := cloudflare.NewIpList(ctx, "example", &cloudflare.IpListArgs{
 //				AccountId:   pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
 //				Description: pulumi.String("list description"),
-//				Items: IpListItemArray{
-//					&IpListItemArgs{
+//				Items: cloudflare.IpListItemArray{
+//					&cloudflare.IpListItemArgs{
 //						Comment: pulumi.String("Office IP"),
 //						Value:   pulumi.String("192.0.2.1"),
 //					},
-//					&IpListItemArgs{
+//					&cloudflare.IpListItemArgs{
 //						Comment: pulumi.String("Datacenter range"),
 //						Value:   pulumi.String("203.0.113.0/24"),
 //					},

@@ -13,19 +13,19 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class SplitTunnelTunnelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The address in CIDR format to include in the tunnel configuration. Conflicts with `"host"`.
+        /// The address for the tunnel.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// The description of the tunnel.
+        /// A description for the tunnel.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The domain name to include in the tunnel configuration. Conflicts with `"address"`.
+        /// The domain name for the tunnel.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }

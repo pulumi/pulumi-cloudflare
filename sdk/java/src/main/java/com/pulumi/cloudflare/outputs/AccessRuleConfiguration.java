@@ -10,26 +10,26 @@ import java.util.Objects;
 @CustomType
 public final class AccessRuleConfiguration {
     /**
-     * @return The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`.
+     * @return The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     private String target;
     /**
-     * @return The value to target. Depends on target&#39;s type.
+     * @return The value to target. Depends on target&#39;s type. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     private String value;
 
     private AccessRuleConfiguration() {}
     /**
-     * @return The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`.
+     * @return The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public String target() {
         return this.target;
     }
     /**
-     * @return The value to target. Depends on target&#39;s type.
+     * @return The value to target. Depends on target&#39;s type. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public String value() {

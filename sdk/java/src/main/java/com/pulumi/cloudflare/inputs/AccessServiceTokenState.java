@@ -32,14 +32,14 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
     }
 
     /**
-     * UUID client ID associated with the Service Token.
+     * UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
-     * @return UUID client ID associated with the Service Token.
+     * @return UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -47,14 +47,14 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
     }
 
     /**
-     * A secret for interacting with Access protocols.
+     * A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
     /**
-     * @return A secret for interacting with Access protocols.
+     * @return A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> clientSecret() {
@@ -173,7 +173,7 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param clientId UUID client ID associated with the Service Token.
+         * @param clientId UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param clientId UUID client ID associated with the Service Token.
+         * @param clientId UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param clientSecret A secret for interacting with Access protocols.
+         * @param clientSecret A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param clientSecret A secret for interacting with Access protocols.
+         * @param clientSecret A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

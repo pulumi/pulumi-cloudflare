@@ -16,14 +16,14 @@ public final class TunnelRouteArgs extends com.pulumi.resources.ResourceArgs {
     public static final TunnelRouteArgs Empty = new TunnelRouteArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> accountId() {
@@ -76,14 +76,14 @@ public final class TunnelRouteArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="virtualNetworkId")
     private @Nullable Output<String> virtualNetworkId;
 
     /**
-     * @return The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+     * @return The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> virtualNetworkId() {
@@ -119,7 +119,7 @@ public final class TunnelRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class TunnelRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class TunnelRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param virtualNetworkId The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+         * @param virtualNetworkId The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class TunnelRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param virtualNetworkId The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+         * @param virtualNetworkId The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

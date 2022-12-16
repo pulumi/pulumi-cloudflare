@@ -10,38 +10,12 @@ import * as utilities from "./utilities";
  * Provides a Cloudflare Split Tunnel resource. Split tunnels are used to either
  * include or exclude lists of routes from the WARP client's tunnel.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // Excluding *.example.com from WARP routes
- * const exampleSplitTunnelExclude = new cloudflare.SplitTunnel("exampleSplitTunnelExclude", {
- *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
- *     mode: "exclude",
- *     tunnels: [{
- *         description: "example domain",
- *         host: "*.example.com",
- *     }],
- * });
- * // Including *.example.com in WARP routes
- * const exampleSplitTunnelInclude = new cloudflare.SplitTunnel("exampleSplitTunnelInclude", {
- *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
- *     mode: "include",
- *     tunnels: [{
- *         description: "example domain",
- *         host: "*.example.com",
- *     }],
- * });
- * ```
- *
  * ## Import
  *
- * Split Tunnels can be imported using the account identifer and mode.
+ * Split Tunnels for default device policies must use "default" as the policy ID.
  *
  * ```sh
- *  $ pulumi import cloudflare:index/splitTunnel:SplitTunnel example 1d5fdc9e88c8a8c4518b068cd94331fe/exclude
+ *  $ pulumi import cloudflare:index/splitTunnel:SplitTunnel example <account_id>/<policy_id>/<mode>
  * ```
  */
 export class SplitTunnel extends pulumi.CustomResource {
@@ -73,15 +47,19 @@ export class SplitTunnel extends pulumi.CustomResource {
     }
 
     /**
-     * The account to which the device posture rule should be added.
+     * The account identifier to target for the resource.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * The split tunnel mode. Valid values are `include` or `exclude`.
+     * The mode of the split tunnel policy. Available values: `include`, `exclude`.
      */
     public readonly mode!: pulumi.Output<string>;
     /**
-     * The value of the tunnel attributes (refer to the nested schema).
+     * The settings policy for which to configure this split tunnel policy.
+     */
+    public readonly policyId!: pulumi.Output<string | undefined>;
+    /**
+     * The value of the tunnel attributes.
      */
     public readonly tunnels!: pulumi.Output<outputs.SplitTunnelTunnel[]>;
 
@@ -100,6 +78,7 @@ export class SplitTunnel extends pulumi.CustomResource {
             const state = argsOrState as SplitTunnelState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["mode"] = state ? state.mode : undefined;
+            resourceInputs["policyId"] = state ? state.policyId : undefined;
             resourceInputs["tunnels"] = state ? state.tunnels : undefined;
         } else {
             const args = argsOrState as SplitTunnelArgs | undefined;
@@ -114,6 +93,7 @@ export class SplitTunnel extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["mode"] = args ? args.mode : undefined;
+            resourceInputs["policyId"] = args ? args.policyId : undefined;
             resourceInputs["tunnels"] = args ? args.tunnels : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -126,15 +106,19 @@ export class SplitTunnel extends pulumi.CustomResource {
  */
 export interface SplitTunnelState {
     /**
-     * The account to which the device posture rule should be added.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The split tunnel mode. Valid values are `include` or `exclude`.
+     * The mode of the split tunnel policy. Available values: `include`, `exclude`.
      */
     mode?: pulumi.Input<string>;
     /**
-     * The value of the tunnel attributes (refer to the nested schema).
+     * The settings policy for which to configure this split tunnel policy.
+     */
+    policyId?: pulumi.Input<string>;
+    /**
+     * The value of the tunnel attributes.
      */
     tunnels?: pulumi.Input<pulumi.Input<inputs.SplitTunnelTunnel>[]>;
 }
@@ -144,15 +128,19 @@ export interface SplitTunnelState {
  */
 export interface SplitTunnelArgs {
     /**
-     * The account to which the device posture rule should be added.
+     * The account identifier to target for the resource.
      */
     accountId: pulumi.Input<string>;
     /**
-     * The split tunnel mode. Valid values are `include` or `exclude`.
+     * The mode of the split tunnel policy. Available values: `include`, `exclude`.
      */
     mode: pulumi.Input<string>;
     /**
-     * The value of the tunnel attributes (refer to the nested schema).
+     * The settings policy for which to configure this split tunnel policy.
+     */
+    policyId?: pulumi.Input<string>;
+    /**
+     * The value of the tunnel attributes.
      */
     tunnels: pulumi.Input<pulumi.Input<inputs.SplitTunnelTunnel>[]>;
 }

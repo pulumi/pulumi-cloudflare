@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = cloudflare.GetDevices(ctx, &GetDevicesArgs{
+//			_, err = cloudflare.GetDevices(ctx, &cloudflare.GetDevicesArgs{
 //				AccountId: "c68973221045fe805dfb9aa520153148",
 //			}, nil)
 //			if err != nil {

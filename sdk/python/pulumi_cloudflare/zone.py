@@ -22,7 +22,7 @@ class ZoneArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Zone resource.
-        :param pulumi.Input[str] zone: The DNS zone name which will be added.
+        :param pulumi.Input[str] zone: The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] account_id: Account ID to manage the zone resource in.
         :param pulumi.Input[bool] jump_start: Whether to scan for DNS records on creation. Ignored after zone is created.
         :param pulumi.Input[bool] paused: Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
@@ -45,7 +45,7 @@ class ZoneArgs:
     @pulumi.getter
     def zone(self) -> pulumi.Input[str]:
         """
-        The DNS zone name which will be added.
+        The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone")
 
@@ -139,7 +139,7 @@ class _ZoneState:
         :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vanity_name_servers: List of Vanity Nameservers (if set).
         :param pulumi.Input[str] verification_key: Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
-        :param pulumi.Input[str] zone: The DNS zone name which will be added.
+        :param pulumi.Input[str] zone: The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -285,7 +285,7 @@ class _ZoneState:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS zone name which will be added.
+        The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone")
 
@@ -337,7 +337,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[bool] paused: Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
         :param pulumi.Input[str] plan: The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
         :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
-        :param pulumi.Input[str] zone: The DNS zone name which will be added.
+        :param pulumi.Input[str] zone: The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -449,7 +449,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vanity_name_servers: List of Vanity Nameservers (if set).
         :param pulumi.Input[str] verification_key: Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
-        :param pulumi.Input[str] zone: The DNS zone name which will be added.
+        :param pulumi.Input[str] zone: The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -549,7 +549,7 @@ class Zone(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        The DNS zone name which will be added.
+        The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone")
 

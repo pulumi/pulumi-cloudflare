@@ -29,7 +29,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewZoneSettingsOverride(ctx, "test", &cloudflare.ZoneSettingsOverrideArgs{
 //				ZoneId: pulumi.Any(_var.Cloudflare_zone_id),
-//				Settings: &ZoneSettingsOverrideSettingsArgs{
+//				Settings: &cloudflare.ZoneSettingsOverrideSettingsArgs{
 //					Brotli:                  pulumi.String("on"),
 //					ChallengeTtl:            pulumi.Int(2700),
 //					SecurityLevel:           pulumi.String("high"),
@@ -37,12 +37,12 @@ import (
 //					AutomaticHttpsRewrites:  pulumi.String("on"),
 //					Mirage:                  pulumi.String("on"),
 //					Waf:                     pulumi.String("on"),
-//					Minify: &ZoneSettingsOverrideSettingsMinifyArgs{
+//					Minify: &cloudflare.ZoneSettingsOverrideSettingsMinifyArgs{
 //						Css:  pulumi.String("on"),
 //						Js:   pulumi.String("off"),
 //						Html: pulumi.String("off"),
 //					},
-//					SecurityHeader: &ZoneSettingsOverrideSettingsSecurityHeaderArgs{
+//					SecurityHeader: &cloudflare.ZoneSettingsOverrideSettingsSecurityHeaderArgs{
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},

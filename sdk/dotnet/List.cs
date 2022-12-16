@@ -44,7 +44,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the list.
+        /// The name of the list. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Kind { get; set; } = null!;
 
         /// <summary>
-        /// The name of the list.
+        /// The name of the list. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// The name of the list.
+        /// The name of the list. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

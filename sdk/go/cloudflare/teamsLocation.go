@@ -32,11 +32,11 @@ import (
 //				AccountId:     pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
 //				ClientDefault: pulumi.Bool(true),
 //				Name:          pulumi.String("office"),
-//				Networks: TeamsLocationNetworkArray{
-//					&TeamsLocationNetworkArgs{
+//				Networks: cloudflare.TeamsLocationNetworkArray{
+//					&cloudflare.TeamsLocationNetworkArgs{
 //						Network: pulumi.String("203.0.113.1/32"),
 //					},
-//					&TeamsLocationNetworkArgs{
+//					&cloudflare.TeamsLocationNetworkArgs{
 //						Network: pulumi.String("203.0.113.2/32"),
 //					},
 //				},

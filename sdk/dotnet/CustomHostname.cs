@@ -59,7 +59,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> CustomOriginSni { get; private set; } = null!;
 
         /// <summary>
-        /// Hostname you intend to request a certificate for.
+        /// Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("hostname")]
         public Output<string> Hostname { get; private set; } = null!;
@@ -89,7 +89,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> WaitForSslPendingValidation { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CustomOriginSni { get; set; }
 
         /// <summary>
-        /// Hostname you intend to request a certificate for.
+        /// Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
@@ -177,7 +177,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? WaitForSslPendingValidation { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -203,7 +203,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CustomOriginSni { get; set; }
 
         /// <summary>
-        /// Hostname you intend to request a certificate for.
+        /// Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
@@ -249,7 +249,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? WaitForSslPendingValidation { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

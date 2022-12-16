@@ -9,6 +9,10 @@ import * as utilities from "./utilities";
 /**
  * Provides a resource which manages Cloudflare Pages projects.
  *
+ * > If you are using a `source` block configuration, you must first have a
+ * connected GitHub or GitLab account connected to Cloudflare. See the
+ * [Getting Started with Pages] documentation on how to link your accounts.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -121,6 +125,8 @@ import * as utilities from "./utilities";
  * ```sh
  *  $ pulumi import cloudflare:index/pagesProject:PagesProject example <account_id>/<project_name>
  * ```
+ *
+ *  [Getting Started with Pages]https://developers.cloudflare.com/pages/get-started/#connect-your-git-provider-to-pages
  */
 export class PagesProject extends pulumi.CustomResource {
     /**

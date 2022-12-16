@@ -89,6 +89,14 @@ namespace Pulumi.Cloudflare
     ///                 BucketName = "MY_BUCKET_NAME",
     ///             },
     ///         },
+    ///         AnalyticsEngineBindings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerScriptAnalyticsEngineBindingArgs
+    ///             {
+    ///                 Name = "MY_DATASET",
+    ///                 Dataset = "dataset1",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -103,6 +111,9 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/workerScript:WorkerScript")]
     public partial class WorkerScript : global::Pulumi.CustomResource
     {
+        [Output("analyticsEngineBindings")]
+        public Output<ImmutableArray<Outputs.WorkerScriptAnalyticsEngineBinding>> AnalyticsEngineBindings { get; private set; } = null!;
+
         /// <summary>
         /// The script content.
         /// </summary>
@@ -119,7 +130,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> Module { get; private set; } = null!;
 
         /// <summary>
-        /// The name for the script.
+        /// The name for the script. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -185,6 +196,14 @@ namespace Pulumi.Cloudflare
 
     public sealed class WorkerScriptArgs : global::Pulumi.ResourceArgs
     {
+        [Input("analyticsEngineBindings")]
+        private InputList<Inputs.WorkerScriptAnalyticsEngineBindingArgs>? _analyticsEngineBindings;
+        public InputList<Inputs.WorkerScriptAnalyticsEngineBindingArgs> AnalyticsEngineBindings
+        {
+            get => _analyticsEngineBindings ?? (_analyticsEngineBindings = new InputList<Inputs.WorkerScriptAnalyticsEngineBindingArgs>());
+            set => _analyticsEngineBindings = value;
+        }
+
         /// <summary>
         /// The script content.
         /// </summary>
@@ -206,7 +225,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Module { get; set; }
 
         /// <summary>
-        /// The name for the script.
+        /// The name for the script. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -259,6 +278,14 @@ namespace Pulumi.Cloudflare
 
     public sealed class WorkerScriptState : global::Pulumi.ResourceArgs
     {
+        [Input("analyticsEngineBindings")]
+        private InputList<Inputs.WorkerScriptAnalyticsEngineBindingGetArgs>? _analyticsEngineBindings;
+        public InputList<Inputs.WorkerScriptAnalyticsEngineBindingGetArgs> AnalyticsEngineBindings
+        {
+            get => _analyticsEngineBindings ?? (_analyticsEngineBindings = new InputList<Inputs.WorkerScriptAnalyticsEngineBindingGetArgs>());
+            set => _analyticsEngineBindings = value;
+        }
+
         /// <summary>
         /// The script content.
         /// </summary>
@@ -280,7 +307,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Module { get; set; }
 
         /// <summary>
-        /// The name for the script.
+        /// The name for the script. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
