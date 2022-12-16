@@ -31,7 +31,7 @@ import (
 //				ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
 //				Protocol:    pulumi.String("tcp/22"),
 //				TrafficType: pulumi.String("direct"),
-//				Dns: &SpectrumApplicationDnsArgs{
+//				Dns: &cloudflare.SpectrumApplicationDnsArgs{
 //					Type: pulumi.String("CNAME"),
 //					Name: pulumi.String("ssh.example.com"),
 //				},

@@ -71,56 +71,56 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/certificatePack:CertificatePack")
 public class CertificatePack extends com.pulumi.resources.CustomResource {
     /**
-     * Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`.
+     * Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="certificateAuthority", type=String.class, parameters={})
     private Output<String> certificateAuthority;
 
     /**
-     * @return Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`.
+     * @return Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> certificateAuthority() {
         return this.certificateAuthority;
     }
     /**
-     * Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`.
+     * Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="cloudflareBranding", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> cloudflareBranding;
 
     /**
-     * @return Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`.
+     * @return Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<Optional<Boolean>> cloudflareBranding() {
         return Codegen.optional(this.cloudflareBranding);
     }
     /**
-     * List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let&#39;s Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available.
+     * List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let&#39;s Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="hosts", type=List.class, parameters={String.class})
     private Output<List<String>> hosts;
 
     /**
-     * @return List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let&#39;s Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available.
+     * @return List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let&#39;s Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<List<String>> hosts() {
         return this.hosts;
     }
     /**
-     * Certificate pack configuration type. Available values: `advanced`.
+     * Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
-     * @return Certificate pack configuration type. Available values: `advanced`.
+     * @return Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> type() {
@@ -133,14 +133,14 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
         return this.validationErrors;
     }
     /**
-     * Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`.
+     * Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="validationMethod", type=String.class, parameters={})
     private Output<String> validationMethod;
 
     /**
-     * @return Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`.
+     * @return Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> validationMethod() {
@@ -153,42 +153,42 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
         return this.validationRecords;
     }
     /**
-     * How long the certificate is valid for. Note: If using Let&#39;s Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`.
+     * How long the certificate is valid for. Note: If using Let&#39;s Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="validityDays", type=Integer.class, parameters={})
     private Output<Integer> validityDays;
 
     /**
-     * @return How long the certificate is valid for. Note: If using Let&#39;s Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`.
+     * @return How long the certificate is valid for. Note: If using Let&#39;s Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<Integer> validityDays() {
         return this.validityDays;
     }
     /**
-     * Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`.
+     * Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="waitForActiveStatus", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> waitForActiveStatus;
 
     /**
-     * @return Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`.
+     * @return Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<Optional<Boolean>> waitForActiveStatus() {
         return Codegen.optional(this.waitForActiveStatus);
     }
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {

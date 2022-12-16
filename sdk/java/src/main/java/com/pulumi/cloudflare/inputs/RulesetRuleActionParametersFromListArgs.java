@@ -21,14 +21,14 @@ public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.re
     }
 
     /**
-     * Name of the ruleset.
+     * Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the ruleset.
+     * @return Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> name() {
@@ -70,7 +70,7 @@ public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.re
         }
 
         /**
-         * @param name Name of the ruleset.
+         * @param name Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.re
         }
 
         /**
-         * @param name Name of the ruleset.
+         * @param name Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

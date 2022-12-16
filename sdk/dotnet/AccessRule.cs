@@ -99,13 +99,13 @@ namespace Pulumi.Cloudflare
     public partial class AccessRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Rule configuration to apply to a matched request.
+        /// Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("configuration")]
         public Output<Outputs.AccessRuleConfiguration> Configuration { get; private set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Notes { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -175,13 +175,13 @@ namespace Pulumi.Cloudflare
     public sealed class AccessRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Rule configuration to apply to a matched request.
+        /// Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("configuration", required: true)]
         public Input<Inputs.AccessRuleConfigurationArgs> Configuration { get; set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Notes { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -213,13 +213,13 @@ namespace Pulumi.Cloudflare
     public sealed class AccessRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Rule configuration to apply to a matched request.
+        /// Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("configuration")]
         public Input<Inputs.AccessRuleConfigurationGetArgs>? Configuration { get; set; }
@@ -237,7 +237,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Notes { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

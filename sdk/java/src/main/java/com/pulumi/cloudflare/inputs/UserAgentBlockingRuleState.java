@@ -78,14 +78,14 @@ public final class UserAgentBlockingRuleState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -205,7 +205,7 @@ public final class UserAgentBlockingRuleState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class UserAgentBlockingRuleState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

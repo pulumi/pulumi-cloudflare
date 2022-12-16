@@ -13,7 +13,21 @@ import (
 
 // ## Import
 //
-// Import is not supported for this resource.
+// Import an account scoped Ruleset configuration.
+//
+// ```sh
+//
+//	$ pulumi import cloudflare:index/ruleset:Ruleset example account/<account_id>/<ruleset_id>
+//
+// ```
+//
+//	Import a zone scoped Ruleset configuration.
+//
+// ```sh
+//
+//	$ pulumi import cloudflare:index/ruleset:Ruleset example zone/<zone_id>/<ruleset_id>
+//
+// ```
 type Ruleset struct {
 	pulumi.CustomResourceState
 
@@ -23,7 +37,7 @@ type Ruleset struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// Name of the ruleset.
+	// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
 	Phase pulumi.StringOutput `pulumi:"phase"`
@@ -79,7 +93,7 @@ type rulesetState struct {
 	Description *string `pulumi:"description"`
 	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
 	Kind *string `pulumi:"kind"`
-	// Name of the ruleset.
+	// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
 	Name *string `pulumi:"name"`
 	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
 	Phase *string `pulumi:"phase"`
@@ -98,7 +112,7 @@ type RulesetState struct {
 	Description pulumi.StringPtrInput
 	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
 	Kind pulumi.StringPtrInput
-	// Name of the ruleset.
+	// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringPtrInput
 	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
 	Phase pulumi.StringPtrInput
@@ -121,7 +135,7 @@ type rulesetArgs struct {
 	Description *string `pulumi:"description"`
 	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
 	Kind string `pulumi:"kind"`
-	// Name of the ruleset.
+	// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
 	Name string `pulumi:"name"`
 	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
 	Phase string `pulumi:"phase"`
@@ -141,7 +155,7 @@ type RulesetArgs struct {
 	Description pulumi.StringPtrInput
 	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
 	Kind pulumi.StringInput
-	// Name of the ruleset.
+	// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringInput
 	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
 	Phase pulumi.StringInput
@@ -255,7 +269,7 @@ func (o RulesetOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Name of the ruleset.
+// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
 func (o RulesetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -9,7 +9,17 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * Import is not supported for this resource.
+ * Import an account scoped Ruleset configuration.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/ruleset:Ruleset example account/<account_id>/<ruleset_id>
+ * ```
+ *
+ *  Import a zone scoped Ruleset configuration.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/ruleset:Ruleset example zone/<zone_id>/<ruleset_id>
+ * ```
  */
 export class Ruleset extends pulumi.CustomResource {
     /**
@@ -52,7 +62,7 @@ export class Ruleset extends pulumi.CustomResource {
      */
     public readonly kind!: pulumi.Output<string>;
     /**
-     * Name of the ruleset.
+     * Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -135,7 +145,7 @@ export interface RulesetState {
      */
     kind?: pulumi.Input<string>;
     /**
-     * Name of the ruleset.
+     * Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
      */
     name?: pulumi.Input<string>;
     /**
@@ -173,7 +183,7 @@ export interface RulesetArgs {
      */
     kind: pulumi.Input<string>;
     /**
-     * Name of the ruleset.
+     * Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
      */
     name: pulumi.Input<string>;
     /**

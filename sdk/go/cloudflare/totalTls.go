@@ -47,7 +47,7 @@ type TotalTls struct {
 	CertificateAuthority pulumi.StringPtrOutput `pulumi:"certificateAuthority"`
 	// Enable Total TLS for the zone.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -90,7 +90,7 @@ type totalTlsState struct {
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
 	// Enable Total TLS for the zone.
 	Enabled *bool `pulumi:"enabled"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -99,7 +99,7 @@ type TotalTlsState struct {
 	CertificateAuthority pulumi.StringPtrInput
 	// Enable Total TLS for the zone.
 	Enabled pulumi.BoolPtrInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -112,7 +112,7 @@ type totalTlsArgs struct {
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
 	// Enable Total TLS for the zone.
 	Enabled bool `pulumi:"enabled"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -122,7 +122,7 @@ type TotalTlsArgs struct {
 	CertificateAuthority pulumi.StringPtrInput
 	// Enable Total TLS for the zone.
 	Enabled pulumi.BoolInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
 }
 
@@ -223,7 +223,7 @@ func (o TotalTlsOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TotalTls) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The zone identifier to target for the resource.
+// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o TotalTlsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TotalTls) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

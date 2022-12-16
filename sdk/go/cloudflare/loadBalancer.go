@@ -33,8 +33,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			exampleLoadBalancerPool, err := cloudflare.NewLoadBalancerPool(ctx, "exampleLoadBalancerPool", &cloudflare.LoadBalancerPoolArgs{
 //				Name: pulumi.String("example-lb-pool"),
-//				Origins: LoadBalancerPoolOriginArray{
-//					&LoadBalancerPoolOriginArgs{
+//				Origins: cloudflare.LoadBalancerPoolOriginArray{
+//					&cloudflare.LoadBalancerPoolOriginArgs{
 //						Name:    pulumi.String("example-1"),
 //						Address: pulumi.String("192.0.2.1"),
 //						Enabled: pulumi.Bool(false),
@@ -54,35 +54,35 @@ import (
 //				Description:    pulumi.String("example load balancer using geo-balancing"),
 //				Proxied:        pulumi.Bool(true),
 //				SteeringPolicy: pulumi.String("geo"),
-//				PopPools: LoadBalancerPopPoolArray{
-//					&LoadBalancerPopPoolArgs{
+//				PopPools: cloudflare.LoadBalancerPopPoolArray{
+//					&cloudflare.LoadBalancerPopPoolArgs{
 //						Pop: pulumi.String("LAX"),
 //						PoolIds: pulumi.StringArray{
 //							exampleLoadBalancerPool.ID(),
 //						},
 //					},
 //				},
-//				CountryPools: LoadBalancerCountryPoolArray{
-//					&LoadBalancerCountryPoolArgs{
+//				CountryPools: cloudflare.LoadBalancerCountryPoolArray{
+//					&cloudflare.LoadBalancerCountryPoolArgs{
 //						Country: pulumi.String("US"),
 //						PoolIds: pulumi.StringArray{
 //							exampleLoadBalancerPool.ID(),
 //						},
 //					},
 //				},
-//				RegionPools: LoadBalancerRegionPoolArray{
-//					&LoadBalancerRegionPoolArgs{
+//				RegionPools: cloudflare.LoadBalancerRegionPoolArray{
+//					&cloudflare.LoadBalancerRegionPoolArgs{
 //						Region: pulumi.String("WNAM"),
 //						PoolIds: pulumi.StringArray{
 //							exampleLoadBalancerPool.ID(),
 //						},
 //					},
 //				},
-//				Rules: LoadBalancerRuleArray{
-//					&LoadBalancerRuleArgs{
+//				Rules: cloudflare.LoadBalancerRuleArray{
+//					&cloudflare.LoadBalancerRuleArgs{
 //						Name:      pulumi.String("example rule"),
 //						Condition: pulumi.String("http.request.uri.path contains \"testing\""),
-//						FixedResponse: &LoadBalancerRuleFixedResponseArgs{
+//						FixedResponse: &cloudflare.LoadBalancerRuleFixedResponseArgs{
 //							MessageBody: pulumi.String("hello"),
 //							StatusCode:  pulumi.Int(200),
 //							ContentType: pulumi.String("html"),
@@ -150,7 +150,7 @@ type LoadBalancer struct {
 	SteeringPolicy pulumi.StringOutput `pulumi:"steeringPolicy"`
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
 	Ttl pulumi.IntOutput `pulumi:"ttl"`
-	// The zone ID to add the load balancer to.
+	// The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -235,7 +235,7 @@ type loadBalancerState struct {
 	SteeringPolicy *string `pulumi:"steeringPolicy"`
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
 	Ttl *int `pulumi:"ttl"`
-	// The zone ID to add the load balancer to.
+	// The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -280,7 +280,7 @@ type LoadBalancerState struct {
 	SteeringPolicy pulumi.StringPtrInput
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
 	Ttl pulumi.IntPtrInput
-	// The zone ID to add the load balancer to.
+	// The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -325,7 +325,7 @@ type loadBalancerArgs struct {
 	SteeringPolicy *string `pulumi:"steeringPolicy"`
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
 	Ttl *int `pulumi:"ttl"`
-	// The zone ID to add the load balancer to.
+	// The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -367,7 +367,7 @@ type LoadBalancerArgs struct {
 	SteeringPolicy pulumi.StringPtrInput
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
 	Ttl pulumi.IntPtrInput
-	// The zone ID to add the load balancer to.
+	// The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
 }
 
@@ -558,7 +558,7 @@ func (o LoadBalancerOutput) Ttl() pulumi.IntOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.IntOutput { return v.Ttl }).(pulumi.IntOutput)
 }
 
-// The zone ID to add the load balancer to.
+// The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
 func (o LoadBalancerOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

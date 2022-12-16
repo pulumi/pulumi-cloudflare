@@ -14,7 +14,10 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Workers KV Namespace
+ * Provides the ability to manage Cloudflare Workers KV Namespace features.
+ * 
+ * &gt; This resource uses the Cloudflare account APIs. This requires setting the
+ * `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
  * 
  * ## Example Usage
  * ```java
@@ -39,6 +42,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new WorkersKvNamespace(&#34;example&#34;, WorkersKvNamespaceArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .title(&#34;test-namespace&#34;)
  *             .build());
  * 
@@ -48,28 +52,30 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Workers KV Namespace settings can be imported using it&#39;s ID
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example beaeb6716c9443eaa4deef11763ccca6
+ *  $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example &lt;account_id&gt;/&lt;namespace_id&gt;
  * ```
- * 
- *  where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace
  * 
  */
 @ResourceType(type="cloudflare:index/workersKvNamespace:WorkersKvNamespace")
 public class WorkersKvNamespace extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the namespace you wish to create.
+     * The account identifier to target for the resource.
      * 
      */
+    @Export(name="accountId", type=String.class, parameters={})
+    private Output<String> accountId;
+
+    /**
+     * @return The account identifier to target for the resource.
+     * 
+     */
+    public Output<String> accountId() {
+        return this.accountId;
+    }
     @Export(name="title", type=String.class, parameters={})
     private Output<String> title;
 
-    /**
-     * @return The name of the namespace you wish to create.
-     * 
-     */
     public Output<String> title() {
         return this.title;
     }

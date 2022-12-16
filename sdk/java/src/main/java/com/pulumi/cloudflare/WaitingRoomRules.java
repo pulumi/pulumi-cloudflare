@@ -88,28 +88,28 @@ public class WaitingRoomRules extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rules);
     }
     /**
-     * The Waiting Room ID the rules should apply to.
+     * The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="waitingRoomId", type=String.class, parameters={})
     private Output<String> waitingRoomId;
 
     /**
-     * @return The Waiting Room ID the rules should apply to.
+     * @return The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> waitingRoomId() {
         return this.waitingRoomId;
     }
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {

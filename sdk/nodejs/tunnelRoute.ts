@@ -40,10 +40,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Use account ID, network CIDR and virtual network ID.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example <account_id/<network_cidr>/<virtual_network_id>
+ *  $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example <account_id>/<network_cidr>/<virtual_network_id>
  * ```
  */
 export class TunnelRoute extends pulumi.CustomResource {
@@ -75,7 +73,7 @@ export class TunnelRoute extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -91,7 +89,7 @@ export class TunnelRoute extends pulumi.CustomResource {
      */
     public readonly tunnelId!: pulumi.Output<string>;
     /**
-     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly virtualNetworkId!: pulumi.Output<string | undefined>;
 
@@ -140,7 +138,7 @@ export class TunnelRoute extends pulumi.CustomResource {
  */
 export interface TunnelRouteState {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -156,7 +154,7 @@ export interface TunnelRouteState {
      */
     tunnelId?: pulumi.Input<string>;
     /**
-     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
      */
     virtualNetworkId?: pulumi.Input<string>;
 }
@@ -166,7 +164,7 @@ export interface TunnelRouteState {
  */
 export interface TunnelRouteArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId: pulumi.Input<string>;
     /**
@@ -182,7 +180,7 @@ export interface TunnelRouteArgs {
      */
     tunnelId: pulumi.Input<string>;
     /**
-     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
      */
     virtualNetworkId?: pulumi.Input<string>;
 }

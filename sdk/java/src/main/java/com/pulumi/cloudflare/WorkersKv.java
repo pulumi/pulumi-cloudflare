@@ -14,7 +14,11 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Workers KV Pair. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+ * Provides a resource to manage a Cloudflare Workers KV Pair.
+ * 
+ * &gt; This resource uses the Cloudflare account APIs. This requires setting the
+ * `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument
+ * if you do not explicitly set the resource level `account_id` value.
  * 
  * ## Example Usage
  * ```java
@@ -41,10 +45,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleNs = new WorkersKvNamespace(&#34;exampleNs&#34;, WorkersKvNamespaceArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .title(&#34;test-namespace&#34;)
  *             .build());
  * 
  *         var example = new WorkersKv(&#34;example&#34;, WorkersKvArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .namespaceId(exampleNs.id())
  *             .key(&#34;test-key&#34;)
  *             .value(&#34;test value&#34;)
@@ -57,51 +63,63 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/workersKv:WorkersKv example beaeb6716c9443eaa4deef11763ccca6/test-key
+ *  $ pulumi import cloudflare:index/workersKv:WorkersKv example &lt;namespace_id&gt;/&lt;key_name&gt;
  * ```
- * 
- *  where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace and `test-key` is the key
  * 
  */
 @ResourceType(type="cloudflare:index/workersKv:WorkersKv")
 public class WorkersKv extends com.pulumi.resources.CustomResource {
     /**
-     * The key name
+     * The account identifier to target for the resource.
+     * 
+     */
+    @Export(name="accountId", type=String.class, parameters={})
+    private Output<String> accountId;
+
+    /**
+     * @return The account identifier to target for the resource.
+     * 
+     */
+    public Output<String> accountId() {
+        return this.accountId;
+    }
+    /**
+     * Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="key", type=String.class, parameters={})
     private Output<String> key;
 
     /**
-     * @return The key name
+     * @return Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> key() {
         return this.key;
     }
     /**
-     * The ID of the Workers KV namespace in which you want to create the KV pair
+     * The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="namespaceId", type=String.class, parameters={})
     private Output<String> namespaceId;
 
     /**
-     * @return The ID of the Workers KV namespace in which you want to create the KV pair
+     * @return The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> namespaceId() {
         return this.namespaceId;
     }
     /**
-     * The string value to be stored in the key
+     * Value of the KV pair.
      * 
      */
     @Export(name="value", type=String.class, parameters={})
     private Output<String> value;
 
     /**
-     * @return The string value to be stored in the key
+     * @return Value of the KV pair.
      * 
      */
     public Output<String> value() {

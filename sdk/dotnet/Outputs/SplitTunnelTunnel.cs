@@ -14,15 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class SplitTunnelTunnel
     {
         /// <summary>
-        /// The address in CIDR format to include in the tunnel configuration. Conflicts with `"host"`.
+        /// The address for the tunnel.
         /// </summary>
         public readonly string? Address;
         /// <summary>
-        /// The description of the tunnel.
+        /// A description for the tunnel.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// The domain name to include in the tunnel configuration. Conflicts with `"address"`.
+        /// The domain name for the tunnel.
         /// </summary>
         public readonly string? Host;
 

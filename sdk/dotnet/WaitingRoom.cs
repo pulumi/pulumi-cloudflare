@@ -83,7 +83,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> JsonResponseEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// A unique name to identify the waiting room.
+        /// A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -131,7 +131,7 @@ namespace Pulumi.Cloudflare
         public Output<int> TotalActiveUsers { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -219,7 +219,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? JsonResponseEnabled { get; set; }
 
         /// <summary>
-        /// A unique name to identify the waiting room.
+        /// A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -267,7 +267,7 @@ namespace Pulumi.Cloudflare
         public Input<int> TotalActiveUsers { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -317,7 +317,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? JsonResponseEnabled { get; set; }
 
         /// <summary>
-        /// A unique name to identify the waiting room.
+        /// A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -365,7 +365,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? TotalActiveUsers { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

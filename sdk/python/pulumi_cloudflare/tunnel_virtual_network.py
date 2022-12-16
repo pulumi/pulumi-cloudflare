@@ -20,7 +20,7 @@ class TunnelVirtualNetworkArgs:
                  is_default_network: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a TunnelVirtualNetwork resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] name: A user-friendly name chosen when the virtual network is created.
         :param pulumi.Input[str] comment: Description of the tunnel virtual network.
         :param pulumi.Input[bool] is_default_network: Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
@@ -36,7 +36,7 @@ class TunnelVirtualNetworkArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account identifier to target for the resource.
+        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "account_id")
 
@@ -90,7 +90,7 @@ class _TunnelVirtualNetworkState:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TunnelVirtualNetwork resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] comment: Description of the tunnel virtual network.
         :param pulumi.Input[bool] is_default_network: Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
         :param pulumi.Input[str] name: A user-friendly name chosen when the virtual network is created.
@@ -108,7 +108,7 @@ class _TunnelVirtualNetworkState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource.
+        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "account_id")
 
@@ -189,7 +189,7 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] comment: Description of the tunnel virtual network.
         :param pulumi.Input[bool] is_default_network: Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
         :param pulumi.Input[str] name: A user-friendly name chosen when the virtual network is created.
@@ -281,7 +281,7 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] comment: Description of the tunnel virtual network.
         :param pulumi.Input[bool] is_default_network: Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
         :param pulumi.Input[str] name: A user-friendly name chosen when the virtual network is created.
@@ -300,7 +300,7 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account identifier to target for the resource.
+        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "account_id")
 

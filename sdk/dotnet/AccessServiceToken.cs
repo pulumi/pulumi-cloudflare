@@ -51,13 +51,13 @@ namespace Pulumi.Cloudflare
         public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// UUID client ID associated with the Service Token.
+        /// UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("clientId")]
         public Output<string> ClientId { get; private set; } = null!;
 
         /// <summary>
-        /// A secret for interacting with Access protocols.
+        /// A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("clientSecret")]
         public Output<string> ClientSecret { get; private set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// UUID client ID associated with the Service Token.
+        /// UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
@@ -184,7 +184,7 @@ namespace Pulumi.Cloudflare
         private Input<string>? _clientSecret;
 
         /// <summary>
-        /// A secret for interacting with Access protocols.
+        /// A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         public Input<string>? ClientSecret
         {

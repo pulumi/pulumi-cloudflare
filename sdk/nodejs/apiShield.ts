@@ -57,7 +57,7 @@ export class ApiShield extends pulumi.CustomResource {
      */
     public readonly authIdCharacteristics!: pulumi.Output<outputs.ApiShieldAuthIdCharacteristic[]>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -101,7 +101,7 @@ export interface ApiShieldState {
      */
     authIdCharacteristics?: pulumi.Input<pulumi.Input<inputs.ApiShieldAuthIdCharacteristic>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -115,7 +115,7 @@ export interface ApiShieldArgs {
      */
     authIdCharacteristics: pulumi.Input<pulumi.Input<inputs.ApiShieldAuthIdCharacteristic>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId: pulumi.Input<string>;
 }

@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
     public partial class DlpProfile : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -42,13 +42,13 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.DlpProfileEntry>> Entries { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the profile.
+        /// Name of the profile. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the profile. Available values: `custom`, `predefined`.
+        /// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -100,7 +100,7 @@ namespace Pulumi.Cloudflare
     public sealed class DlpProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -124,13 +124,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Name of the profile.
+        /// Name of the profile. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The type of the profile. Available values: `custom`, `predefined`.
+        /// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -144,7 +144,7 @@ namespace Pulumi.Cloudflare
     public sealed class DlpProfileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -168,13 +168,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Name of the profile.
+        /// Name of the profile. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The type of the profile. Available values: `custom`, `predefined`.
+        /// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

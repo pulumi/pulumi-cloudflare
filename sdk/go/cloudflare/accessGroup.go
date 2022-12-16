@@ -38,8 +38,8 @@ import (
 //			_, err := cloudflare.NewAccessGroup(ctx, "testGroupAccessGroup", &cloudflare.AccessGroupArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:      pulumi.String("staging group"),
-//				Includes: AccessGroupIncludeArray{
-//					&AccessGroupIncludeArgs{
+//				Includes: cloudflare.AccessGroupIncludeArray{
+//					&cloudflare.AccessGroupIncludeArgs{
 //						Emails: pulumi.StringArray{
 //							pulumi.String("test@example.com"),
 //						},
@@ -52,15 +52,15 @@ import (
 //			_, err = cloudflare.NewAccessGroup(ctx, "testGroupIndex/accessGroupAccessGroup", &cloudflare.AccessGroupArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:      pulumi.String("staging group"),
-//				Includes: AccessGroupIncludeArray{
-//					&AccessGroupIncludeArgs{
+//				Includes: cloudflare.AccessGroupIncludeArray{
+//					&cloudflare.AccessGroupIncludeArgs{
 //						Emails: pulumi.StringArray{
 //							pulumi.String("test@example.com"),
 //						},
 //					},
 //				},
-//				Requires: AccessGroupRequireArray{
-//					Ips: AccessGroupRequireArgs{
+//				Requires: cloudflare.AccessGroupRequireArray{
+//					Ips: cloudflare.AccessGroupRequireArgs{
 //						_var.Office_ip,
 //					},
 //				},
@@ -84,7 +84,7 @@ import (
 type AccessGroup struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrOutput        `pulumi:"accountId"`
 	Excludes  AccessGroupExcludeArrayOutput `pulumi:"excludes"`
 	Includes  AccessGroupIncludeArrayOutput `pulumi:"includes"`
@@ -129,7 +129,7 @@ func GetAccessGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessGroup resources.
 type accessGroupState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string              `pulumi:"accountId"`
 	Excludes  []AccessGroupExclude `pulumi:"excludes"`
 	Includes  []AccessGroupInclude `pulumi:"includes"`
@@ -140,7 +140,7 @@ type accessGroupState struct {
 }
 
 type AccessGroupState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
 	Excludes  AccessGroupExcludeArrayInput
 	Includes  AccessGroupIncludeArrayInput
@@ -155,7 +155,7 @@ func (AccessGroupState) ElementType() reflect.Type {
 }
 
 type accessGroupArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string              `pulumi:"accountId"`
 	Excludes  []AccessGroupExclude `pulumi:"excludes"`
 	Includes  []AccessGroupInclude `pulumi:"includes"`
@@ -167,7 +167,7 @@ type accessGroupArgs struct {
 
 // The set of arguments for constructing a AccessGroup resource.
 type AccessGroupArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
 	Excludes  AccessGroupExcludeArrayInput
 	Includes  AccessGroupIncludeArrayInput
@@ -264,7 +264,7 @@ func (o AccessGroupOutput) ToAccessGroupOutputWithContext(ctx context.Context) A
 	return o
 }
 
-// The account identifier to target for the resource. Conflicts with `zoneId`.
+// The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
 func (o AccessGroupOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessGroup) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }

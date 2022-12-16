@@ -297,14 +297,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone ID to add the load balancer to.
+     * The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone ID to add the load balancer to.
+     * @return The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {
@@ -812,7 +812,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID to add the load balancer to.
+         * @param zoneId The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -823,7 +823,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID to add the load balancer to.
+         * @param zoneId The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

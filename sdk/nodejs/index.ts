@@ -145,6 +145,11 @@ export type DevicePostureRule = import("./devicePostureRule").DevicePostureRule;
 export const DevicePostureRule: typeof import("./devicePostureRule").DevicePostureRule = null as any;
 utilities.lazyLoad(exports, ["DevicePostureRule"], () => require("./devicePostureRule"));
 
+export { DeviceSettingsPolicyArgs, DeviceSettingsPolicyState } from "./deviceSettingsPolicy";
+export type DeviceSettingsPolicy = import("./deviceSettingsPolicy").DeviceSettingsPolicy;
+export const DeviceSettingsPolicy: typeof import("./deviceSettingsPolicy").DeviceSettingsPolicy = null as any;
+utilities.lazyLoad(exports, ["DeviceSettingsPolicy"], () => require("./deviceSettingsPolicy"));
+
 export { DlpProfileArgs, DlpProfileState } from "./dlpProfile";
 export type DlpProfile = import("./dlpProfile").DlpProfile;
 export const DlpProfile: typeof import("./dlpProfile").DlpProfile = null as any;
@@ -212,6 +217,11 @@ utilities.lazyLoad(exports, ["getDevices","getDevicesOutput"], () => require("./
 export { GetIpRangesResult } from "./getIpRanges";
 export const getIpRanges: typeof import("./getIpRanges").getIpRanges = null as any;
 utilities.lazyLoad(exports, ["getIpRanges"], () => require("./getIpRanges"));
+
+export { GetLoadBalancerPoolsArgs, GetLoadBalancerPoolsResult, GetLoadBalancerPoolsOutputArgs } from "./getLoadBalancerPools";
+export const getLoadBalancerPools: typeof import("./getLoadBalancerPools").getLoadBalancerPools = null as any;
+export const getLoadBalancerPoolsOutput: typeof import("./getLoadBalancerPools").getLoadBalancerPoolsOutput = null as any;
+utilities.lazyLoad(exports, ["getLoadBalancerPools","getLoadBalancerPoolsOutput"], () => require("./getLoadBalancerPools"));
 
 export { GetOriginCaRootCertificateArgs, GetOriginCaRootCertificateResult, GetOriginCaRootCertificateOutputArgs } from "./getOriginCaRootCertificate";
 export const getOriginCaRootCertificate: typeof import("./getOriginCaRootCertificate").getOriginCaRootCertificate = null as any;
@@ -413,6 +423,11 @@ export type TotalTls = import("./totalTls").TotalTls;
 export const TotalTls: typeof import("./totalTls").TotalTls = null as any;
 utilities.lazyLoad(exports, ["TotalTls"], () => require("./totalTls"));
 
+export { TunnelConfigArgs, TunnelConfigState } from "./tunnelConfig";
+export type TunnelConfig = import("./tunnelConfig").TunnelConfig;
+export const TunnelConfig: typeof import("./tunnelConfig").TunnelConfig = null as any;
+utilities.lazyLoad(exports, ["TunnelConfig"], () => require("./tunnelConfig"));
+
 export { TunnelRouteArgs, TunnelRouteState } from "./tunnelRoute";
 export type TunnelRoute = import("./tunnelRoute").TunnelRoute;
 export const TunnelRoute: typeof import("./tunnelRoute").TunnelRoute = null as any;
@@ -422,6 +437,11 @@ export { TunnelVirtualNetworkArgs, TunnelVirtualNetworkState } from "./tunnelVir
 export type TunnelVirtualNetwork = import("./tunnelVirtualNetwork").TunnelVirtualNetwork;
 export const TunnelVirtualNetwork: typeof import("./tunnelVirtualNetwork").TunnelVirtualNetwork = null as any;
 utilities.lazyLoad(exports, ["TunnelVirtualNetwork"], () => require("./tunnelVirtualNetwork"));
+
+export { UrlNormalizationSettingsArgs, UrlNormalizationSettingsState } from "./urlNormalizationSettings";
+export type UrlNormalizationSettings = import("./urlNormalizationSettings").UrlNormalizationSettings;
+export const UrlNormalizationSettings: typeof import("./urlNormalizationSettings").UrlNormalizationSettings = null as any;
+utilities.lazyLoad(exports, ["UrlNormalizationSettings"], () => require("./urlNormalizationSettings"));
 
 export { UserAgentBlockingRuleArgs, UserAgentBlockingRuleState } from "./userAgentBlockingRule";
 export type UserAgentBlockingRule = import("./userAgentBlockingRule").UserAgentBlockingRule;
@@ -588,6 +608,8 @@ const _module = {
                 return new DevicePostureIntegration(name, <any>undefined, { urn })
             case "cloudflare:index/devicePostureRule:DevicePostureRule":
                 return new DevicePostureRule(name, <any>undefined, { urn })
+            case "cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy":
+                return new DeviceSettingsPolicy(name, <any>undefined, { urn })
             case "cloudflare:index/dlpProfile:DlpProfile":
                 return new DlpProfile(name, <any>undefined, { urn })
             case "cloudflare:index/emailRoutingAddress:EmailRoutingAddress":
@@ -666,10 +688,14 @@ const _module = {
                 return new TeamsRule(name, <any>undefined, { urn })
             case "cloudflare:index/totalTls:TotalTls":
                 return new TotalTls(name, <any>undefined, { urn })
+            case "cloudflare:index/tunnelConfig:TunnelConfig":
+                return new TunnelConfig(name, <any>undefined, { urn })
             case "cloudflare:index/tunnelRoute:TunnelRoute":
                 return new TunnelRoute(name, <any>undefined, { urn })
             case "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork":
                 return new TunnelVirtualNetwork(name, <any>undefined, { urn })
+            case "cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings":
+                return new UrlNormalizationSettings(name, <any>undefined, { urn })
             case "cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule":
                 return new UserAgentBlockingRule(name, <any>undefined, { urn })
             case "cloudflare:index/wafGroup:WafGroup":
@@ -741,6 +767,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/customSsl", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/devicePolicyCertificates", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/devicePostureIntegration", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/devicePostureRule", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/deviceSettingsPolicy", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/dlpProfile", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/emailRoutingAddress", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/emailRoutingCatchAll", _module)
@@ -780,8 +807,10 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/teamsLocation", _modu
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsProxyEndpoint", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/totalTls", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelConfig", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelVirtualNetwork", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/urlNormalizationSettings", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/userAgentBlockingRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafGroup", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafOverride", _module)

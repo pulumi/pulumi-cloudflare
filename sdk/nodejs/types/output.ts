@@ -4,7 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
-import * as utilities from "../utilities";
 
 export interface AccessApplicationCorsHeader {
     /**
@@ -477,11 +476,11 @@ export interface AccessPolicyRequireSaml {
 
 export interface AccessRuleConfiguration {
     /**
-     * The request property to target. Available values: `ip`, `ip6`, `ipRange`, `asn`, `country`.
+     * The request property to target. Available values: `ip`, `ip6`, `ipRange`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
      */
     target: string;
     /**
-     * The value to target. Depends on target's type.
+     * The value to target. Depends on target's type. **Modifying this attribute will force creation of a new resource.**
      */
     value: string;
 }
@@ -786,15 +785,15 @@ export interface EmailRoutingRuleMatcher {
 
 export interface FallbackDomainDomain {
     /**
-     * The description of the domain.
+     * A description of the fallback domain, displayed in the client UI.
      */
     description?: string;
     /**
-     * The DNS servers to receive the redirected request.
+     * A list of IP addresses to handle domain resolution.
      */
     dnsServers?: string[];
     /**
-     * The domain to ignore DNS requests.
+     * The domain suffix to match when resolving locally.
      */
     suffix?: string;
 }
@@ -886,6 +885,92 @@ export interface GetDevicesDevice {
      * The WARP client version.
      */
     version?: string;
+}
+
+export interface GetLoadBalancerPoolsFilter {
+    /**
+     * A regular expression matching the name of the Load Balancer pool to lookup.
+     */
+    name?: string;
+}
+
+export interface GetLoadBalancerPoolsPool {
+    /**
+     * List of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+     */
+    checkRegions: string[];
+    /**
+     * The RFC3339 timestamp of when the load balancer was created.
+     */
+    createdOn: string;
+    /**
+     * Brief description of the Load Balancer Pool intention.
+     */
+    description: string;
+    /**
+     * Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+     */
+    enabled: boolean;
+    /**
+     * ID for this load balancer pool.
+     */
+    id: string;
+    /**
+     * Latitude this pool is physically located at; used for proximity steering.
+     */
+    latitude: number;
+    /**
+     * Setting for controlling load shedding for this pool.
+     */
+    loadSheddings: outputs.GetLoadBalancerPoolsPoolLoadShedding[];
+    /**
+     * Longitude this pool is physically located at; used for proximity steering.
+     */
+    longitude: number;
+    /**
+     * Minimum number of origins that must be healthy for this pool to serve traffic.
+     */
+    minimumOrigins: number;
+    /**
+     * The RFC3339 timestamp of when the load balancer was last modified.
+     */
+    modifiedOn: string;
+    /**
+     * ID of the Monitor to use for health checking origins within this pool.
+     */
+    monitor: string;
+    /**
+     * Short name (tag) for the pool.
+     */
+    name: string;
+    /**
+     * Email address to send health status notifications to. Multiple emails are set as a comma delimited list.
+     */
+    notificationEmail: string;
+    /**
+     * The list of origins within this pool.
+     */
+    origins: outputs.GetLoadBalancerPoolsPoolOrigin[];
+}
+
+export interface GetLoadBalancerPoolsPoolLoadShedding {
+    defaultPercent?: number;
+    defaultPolicy?: string;
+    sessionPercent?: number;
+    sessionPolicy?: string;
+}
+
+export interface GetLoadBalancerPoolsPoolOrigin {
+    address: string;
+    enabled?: boolean;
+    headers?: outputs.GetLoadBalancerPoolsPoolOriginHeader[];
+    name: string;
+    weight?: number;
+}
+
+export interface GetLoadBalancerPoolsPoolOriginHeader {
+    header: string;
+    values: string[];
 }
 
 export interface GetWafGroupsFilter {
@@ -2187,7 +2272,7 @@ export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange 
 export interface RulesetRuleActionParametersFromList {
     key: string;
     /**
-     * Name of the ruleset.
+     * Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
      */
     name: string;
 }
@@ -2206,7 +2291,7 @@ export interface RulesetRuleActionParametersFromValueTargetUrl {
 export interface RulesetRuleActionParametersHeader {
     expression?: string;
     /**
-     * Name of the ruleset.
+     * Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
      */
     name?: string;
     operation?: string;
@@ -2350,15 +2435,15 @@ export interface SpectrumApplicationOriginPortRange {
 
 export interface SplitTunnelTunnel {
     /**
-     * The address in CIDR format to include in the tunnel configuration. Conflicts with `"host"`.
+     * The address for the tunnel.
      */
     address?: string;
     /**
-     * The description of the tunnel.
+     * A description for the tunnel.
      */
     description?: string;
     /**
-     * The domain name to include in the tunnel configuration. Conflicts with `"address"`.
+     * The domain name for the tunnel.
      */
     host?: string;
 }
@@ -2549,6 +2634,53 @@ export interface TeamsRuleRuleSettingsL4override {
     port: number;
 }
 
+export interface TunnelConfigConfig {
+    /**
+     * Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+     */
+    ingressRules: outputs.TunnelConfigConfigIngressRule[];
+    originRequest?: outputs.TunnelConfigConfigOriginRequest;
+    /**
+     * If you're exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+     */
+    warpRouting?: outputs.TunnelConfigConfigWarpRouting;
+}
+
+export interface TunnelConfigConfigIngressRule {
+    hostname?: string;
+    path?: string;
+    service: string;
+}
+
+export interface TunnelConfigConfigOriginRequest {
+    bastionMode?: boolean;
+    caPool?: string;
+    connectTimeout?: string;
+    disableChunkedEncoding?: boolean;
+    httpHostHeader?: string;
+    ipRules?: outputs.TunnelConfigConfigOriginRequestIpRule[];
+    keepAliveConnections?: number;
+    keepAliveTimeout?: string;
+    noHappyEyeballs?: boolean;
+    noTlsVerify?: boolean;
+    originServerName?: string;
+    proxyAddress?: string;
+    proxyPort?: number;
+    proxyType?: string;
+    tcpKeepAlive?: string;
+    tlsTimeout?: string;
+}
+
+export interface TunnelConfigConfigOriginRequestIpRule {
+    allow?: boolean;
+    ports?: number[];
+    prefix?: string;
+}
+
+export interface TunnelConfigConfigWarpRouting {
+    enabled?: boolean;
+}
+
 export interface UserAgentBlockingRuleConfiguration {
     /**
      * The configuration target for this rule. You must set the target to ua for User Agent Blocking rules.
@@ -2585,6 +2717,17 @@ export interface WaitingRoomRulesRule {
      * Version of the waiting room rule.
      */
     version: string;
+}
+
+export interface WorkerScriptAnalyticsEngineBinding {
+    /**
+     * The name of the Analytics Engine dataset to write to.
+     */
+    dataset: string;
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: string;
 }
 
 export interface WorkerScriptKvNamespaceBinding {

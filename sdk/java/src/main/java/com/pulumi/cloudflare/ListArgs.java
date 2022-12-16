@@ -70,14 +70,14 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the list.
+     * The name of the list. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the list.
+     * @return The name of the list. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> name() {
@@ -189,7 +189,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the list.
+         * @param name The name of the list. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the list.
+         * @param name The name of the list. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

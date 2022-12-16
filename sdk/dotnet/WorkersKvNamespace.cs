@@ -10,7 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Workers KV Namespace
+    /// Provides the ability to manage Cloudflare Workers KV Namespace features.
+    /// 
+    /// &gt; This resource uses the Cloudflare account APIs. This requires setting the
+    /// `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
     /// 
     /// ## Example Usage
     /// 
@@ -23,6 +26,7 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.WorkersKvNamespace("example", new()
     ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Title = "test-namespace",
     ///     });
     /// 
@@ -31,20 +35,19 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Workers KV Namespace settings can be imported using it's ID
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example beaeb6716c9443eaa4deef11763ccca6
+    ///  $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example &lt;account_id&gt;/&lt;namespace_id&gt;
     /// ```
-    /// 
-    ///  where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workersKvNamespace:WorkersKvNamespace")]
     public partial class WorkersKvNamespace : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the namespace you wish to create.
+        /// The account identifier to target for the resource.
         /// </summary>
+        [Output("accountId")]
+        public Output<string> AccountId { get; private set; } = null!;
+
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
 
@@ -95,8 +98,11 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersKvNamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the namespace you wish to create.
+        /// The account identifier to target for the resource.
         /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
@@ -109,8 +115,11 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersKvNamespaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the namespace you wish to create.
+        /// The account identifier to target for the resource.
         /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
         [Input("title")]
         public Input<string>? Title { get; set; }
 

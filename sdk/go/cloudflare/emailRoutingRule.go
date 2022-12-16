@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewEmailRoutingRule(ctx, "main", &cloudflare.EmailRoutingRuleArgs{
-//				Actions: EmailRoutingRuleActionArray{
-//					&EmailRoutingRuleActionArgs{
+//				Actions: cloudflare.EmailRoutingRuleActionArray{
+//					&cloudflare.EmailRoutingRuleActionArgs{
 //						Type: pulumi.String("forward"),
 //						Values: pulumi.StringArray{
 //							pulumi.String("destinationaddress@example.net"),
@@ -37,8 +37,8 @@ import (
 //					},
 //				},
 //				Enabled: pulumi.Bool(true),
-//				Matchers: EmailRoutingRuleMatcherArray{
-//					&EmailRoutingRuleMatcherArgs{
+//				Matchers: cloudflare.EmailRoutingRuleMatcherArray{
+//					&cloudflare.EmailRoutingRuleMatcherArgs{
 //						Field: pulumi.String("to"),
 //						Type:  pulumi.String("literal"),
 //						Value: pulumi.String("test@example.com"),

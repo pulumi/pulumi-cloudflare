@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
     public partial class IpsecTunnel : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.Cloudflare
     public sealed class IpsecTunnelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -297,7 +297,7 @@ namespace Pulumi.Cloudflare
     public sealed class IpsecTunnelState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }

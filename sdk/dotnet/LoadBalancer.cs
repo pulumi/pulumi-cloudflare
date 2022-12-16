@@ -238,7 +238,7 @@ namespace Pulumi.Cloudflare
         public Output<int> Ttl { get; private set; } = null!;
 
         /// <summary>
-        /// The zone ID to add the load balancer to.
+        /// The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -452,7 +452,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? Ttl { get; set; }
 
         /// <summary>
-        /// The zone ID to add the load balancer to.
+        /// The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -640,7 +640,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? Ttl { get; set; }
 
         /// <summary>
-        /// The zone ID to add the load balancer to.
+        /// The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

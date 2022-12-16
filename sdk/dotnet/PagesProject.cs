@@ -12,6 +12,10 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a resource which manages Cloudflare Pages projects.
     /// 
+    /// &gt; If you are using a `source` block configuration, you must first have a
+    /// connected GitHub or GitLab account connected to Cloudflare. See the
+    /// [Getting Started with Pages] documentation on how to link your accounts.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -158,6 +162,8 @@ namespace Pulumi.Cloudflare
     /// ```sh
     ///  $ pulumi import cloudflare:index/pagesProject:PagesProject example &lt;account_id&gt;/&lt;project_name&gt;
     /// ```
+    /// 
+    ///  [Getting Started with Pages]https://developers.cloudflare.com/pages/get-started/#connect-your-git-provider-to-pages
     /// </summary>
     [CloudflareResourceType("cloudflare:index/pagesProject:PagesProject")]
     public partial class PagesProject : global::Pulumi.CustomResource

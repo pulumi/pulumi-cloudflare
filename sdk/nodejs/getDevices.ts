@@ -52,9 +52,22 @@ export interface GetDevicesResult {
      */
     readonly id: string;
 }
-
+/**
+ * Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const devices = cloudflare.getDevices({
+ *     accountId: "c68973221045fe805dfb9aa520153148",
+ * });
+ * ```
+ */
 export function getDevicesOutput(args: GetDevicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDevicesResult> {
-    return pulumi.output(args).apply(a => getDevices(a, opts))
+    return pulumi.output(args).apply((a: any) => getDevices(a, opts))
 }
 
 /**

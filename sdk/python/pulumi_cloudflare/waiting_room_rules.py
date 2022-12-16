@@ -21,8 +21,8 @@ class WaitingRoomRulesArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomRulesRuleArgs']]]] = None):
         """
         The set of arguments for constructing a WaitingRoomRules resource.
-        :param pulumi.Input[str] waiting_room_id: The Waiting Room ID the rules should apply to.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] waiting_room_id: The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[Sequence[pulumi.Input['WaitingRoomRulesRuleArgs']]] rules: List of rules to apply to the ruleset.
         """
         pulumi.set(__self__, "waiting_room_id", waiting_room_id)
@@ -34,7 +34,7 @@ class WaitingRoomRulesArgs:
     @pulumi.getter(name="waitingRoomId")
     def waiting_room_id(self) -> pulumi.Input[str]:
         """
-        The Waiting Room ID the rules should apply to.
+        The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "waiting_room_id")
 
@@ -46,7 +46,7 @@ class WaitingRoomRulesArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -76,8 +76,8 @@ class _WaitingRoomRulesState:
         """
         Input properties used for looking up and filtering WaitingRoomRules resources.
         :param pulumi.Input[Sequence[pulumi.Input['WaitingRoomRulesRuleArgs']]] rules: List of rules to apply to the ruleset.
-        :param pulumi.Input[str] waiting_room_id: The Waiting Room ID the rules should apply to.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] waiting_room_id: The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
@@ -102,7 +102,7 @@ class _WaitingRoomRulesState:
     @pulumi.getter(name="waitingRoomId")
     def waiting_room_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Waiting Room ID the rules should apply to.
+        The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "waiting_room_id")
 
@@ -114,7 +114,7 @@ class _WaitingRoomRulesState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -169,8 +169,8 @@ class WaitingRoomRules(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WaitingRoomRulesRuleArgs']]]] rules: List of rules to apply to the ruleset.
-        :param pulumi.Input[str] waiting_room_id: The Waiting Room ID the rules should apply to.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] waiting_room_id: The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -267,8 +267,8 @@ class WaitingRoomRules(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WaitingRoomRulesRuleArgs']]]] rules: List of rules to apply to the ruleset.
-        :param pulumi.Input[str] waiting_room_id: The Waiting Room ID the rules should apply to.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] waiting_room_id: The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -291,7 +291,7 @@ class WaitingRoomRules(pulumi.CustomResource):
     @pulumi.getter(name="waitingRoomId")
     def waiting_room_id(self) -> pulumi.Output[str]:
         """
-        The Waiting Room ID the rules should apply to.
+        The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "waiting_room_id")
 
@@ -299,7 +299,7 @@ class WaitingRoomRules(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 

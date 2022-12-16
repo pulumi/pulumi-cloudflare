@@ -95,8 +95,8 @@ class _AccessServiceTokenState:
         """
         Input properties used for looking up and filtering AccessServiceToken resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[str] client_id: UUID client ID associated with the Service Token.
-        :param pulumi.Input[str] client_secret: A secret for interacting with Access protocols.
+        :param pulumi.Input[str] client_id: UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] client_secret: A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] expires_at: Date when the token expires.
         :param pulumi.Input[int] min_days_for_renewal: Refresh the token if terraform is run within the specified amount of days before expiration
         :param pulumi.Input[str] name: Friendly name of the token's intent.
@@ -133,7 +133,7 @@ class _AccessServiceTokenState:
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[pulumi.Input[str]]:
         """
-        UUID client ID associated with the Service Token.
+        UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "client_id")
 
@@ -145,7 +145,7 @@ class _AccessServiceTokenState:
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[pulumi.Input[str]]:
         """
-        A secret for interacting with Access protocols.
+        A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "client_secret")
 
@@ -339,8 +339,8 @@ class AccessServiceToken(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[str] client_id: UUID client ID associated with the Service Token.
-        :param pulumi.Input[str] client_secret: A secret for interacting with Access protocols.
+        :param pulumi.Input[str] client_id: UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] client_secret: A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] expires_at: Date when the token expires.
         :param pulumi.Input[int] min_days_for_renewal: Refresh the token if terraform is run within the specified amount of days before expiration
         :param pulumi.Input[str] name: Friendly name of the token's intent.
@@ -371,7 +371,7 @@ class AccessServiceToken(pulumi.CustomResource):
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Output[str]:
         """
-        UUID client ID associated with the Service Token.
+        UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "client_id")
 
@@ -379,7 +379,7 @@ class AccessServiceToken(pulumi.CustomResource):
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> pulumi.Output[str]:
         """
-        A secret for interacting with Access protocols.
+        A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "client_secret")
 

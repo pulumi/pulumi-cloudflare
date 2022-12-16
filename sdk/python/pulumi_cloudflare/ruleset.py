@@ -27,7 +27,7 @@ class RulesetArgs:
         """
         The set of arguments for constructing a Ruleset resource.
         :param pulumi.Input[str] kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
-        :param pulumi.Input[str] name: Name of the ruleset.
+        :param pulumi.Input[str] name: Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] description: Brief summary of the ruleset and its intended use.
@@ -65,7 +65,7 @@ class RulesetArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the ruleset.
+        Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -162,7 +162,7 @@ class _RulesetState:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] description: Brief summary of the ruleset and its intended use.
         :param pulumi.Input[str] kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
-        :param pulumi.Input[str] name: Name of the ruleset.
+        :param pulumi.Input[str] name: Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
         :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]] rules: List of rules to apply to the ruleset.
         :param pulumi.Input[str] shareable_entitlement_name: Name of entitlement that is shareable between entities.
@@ -225,7 +225,7 @@ class _RulesetState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the ruleset.
+        Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -299,14 +299,24 @@ class Ruleset(pulumi.CustomResource):
         """
         ## Import
 
-        Import is not supported for this resource.
+        Import an account scoped Ruleset configuration.
+
+        ```sh
+         $ pulumi import cloudflare:index/ruleset:Ruleset example account/<account_id>/<ruleset_id>
+        ```
+
+         Import a zone scoped Ruleset configuration.
+
+        ```sh
+         $ pulumi import cloudflare:index/ruleset:Ruleset example zone/<zone_id>/<ruleset_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] description: Brief summary of the ruleset and its intended use.
         :param pulumi.Input[str] kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
-        :param pulumi.Input[str] name: Name of the ruleset.
+        :param pulumi.Input[str] name: Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesetRuleArgs']]]] rules: List of rules to apply to the ruleset.
         :param pulumi.Input[str] shareable_entitlement_name: Name of entitlement that is shareable between entities.
@@ -321,7 +331,17 @@ class Ruleset(pulumi.CustomResource):
         """
         ## Import
 
-        Import is not supported for this resource.
+        Import an account scoped Ruleset configuration.
+
+        ```sh
+         $ pulumi import cloudflare:index/ruleset:Ruleset example account/<account_id>/<ruleset_id>
+        ```
+
+         Import a zone scoped Ruleset configuration.
+
+        ```sh
+         $ pulumi import cloudflare:index/ruleset:Ruleset example zone/<zone_id>/<ruleset_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param RulesetArgs args: The arguments to use to populate this resource's properties.
@@ -397,7 +417,7 @@ class Ruleset(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] description: Brief summary of the ruleset and its intended use.
         :param pulumi.Input[str] kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
-        :param pulumi.Input[str] name: Name of the ruleset.
+        :param pulumi.Input[str] name: Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesetRuleArgs']]]] rules: List of rules to apply to the ruleset.
         :param pulumi.Input[str] shareable_entitlement_name: Name of entitlement that is shareable between entities.
@@ -445,7 +465,7 @@ class Ruleset(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the ruleset.
+        Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 

@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         public readonly string? Expression;
         /// <summary>
-        /// Name of the ruleset.
+        /// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         public readonly string? Name;
         public readonly string? Operation;

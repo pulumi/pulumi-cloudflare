@@ -55,17 +55,15 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Use account ID, network CIDR and virtual network ID.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example &lt;account_id/&lt;network_cidr&gt;/&lt;virtual_network_id&gt;
+    ///  $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example &lt;account_id&gt;/&lt;network_cidr&gt;/&lt;virtual_network_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/tunnelRoute:TunnelRoute")]
     public partial class TunnelRoute : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -89,7 +87,7 @@ namespace Pulumi.Cloudflare
         public Output<string> TunnelId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+        /// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("virtualNetworkId")]
         public Output<string?> VirtualNetworkId { get; private set; } = null!;
@@ -141,7 +139,7 @@ namespace Pulumi.Cloudflare
     public sealed class TunnelRouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -165,7 +163,7 @@ namespace Pulumi.Cloudflare
         public Input<string> TunnelId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+        /// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("virtualNetworkId")]
         public Input<string>? VirtualNetworkId { get; set; }
@@ -179,7 +177,7 @@ namespace Pulumi.Cloudflare
     public sealed class TunnelRouteState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -203,7 +201,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? TunnelId { get; set; }
 
         /// <summary>
-        /// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+        /// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("virtualNetworkId")]
         public Input<string>? VirtualNetworkId { get; set; }

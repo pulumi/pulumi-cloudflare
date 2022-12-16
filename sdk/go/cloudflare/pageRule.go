@@ -33,11 +33,11 @@ import (
 //				ZoneId:   pulumi.Any(_var.Cloudflare_zone_id),
 //				Target:   pulumi.String(fmt.Sprintf("sub.%v/page", _var.Cloudflare_zone)),
 //				Priority: pulumi.Int(1),
-//				Actions: &PageRuleActionsArgs{
+//				Actions: &cloudflare.PageRuleActionsArgs{
 //					Ssl:              pulumi.String("flexible"),
 //					EmailObfuscation: pulumi.String("on"),
-//					Minifies: PageRuleActionsMinifyArray{
-//						&PageRuleActionsMinifyArgs{
+//					Minifies: cloudflare.PageRuleActionsMinifyArray{
+//						&cloudflare.PageRuleActionsMinifyArgs{
 //							Html: pulumi.String("off"),
 //							Css:  pulumi.String("on"),
 //							Js:   pulumi.String("on"),

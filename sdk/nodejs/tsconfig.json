@@ -1,6 +1,5 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
         "outDir": "bin",
         "target": "es2016",
         "module": "commonjs",
@@ -11,9 +10,6 @@
         "experimentalDecorators": true,
         "noFallthroughCasesInSwitch": true,
         "forceConsistentCasingInFileNames": true,
-        "paths": {
-            "@/*": ["*"]
-        },
         "strict": true
     },
     "files": [
@@ -47,6 +43,7 @@
         "devicePolicyCertificates.ts",
         "devicePostureIntegration.ts",
         "devicePostureRule.ts",
+        "deviceSettingsPolicy.ts",
         "dlpProfile.ts",
         "emailRoutingAddress.ts",
         "emailRoutingCatchAll.ts",
@@ -61,6 +58,7 @@
         "getApiTokenPermissionGroups.ts",
         "getDevices.ts",
         "getIpRanges.ts",
+        "getLoadBalancerPools.ts",
         "getOriginCaRootCertificate.ts",
         "getRecord.ts",
         "getWafGroups.ts",
@@ -102,11 +100,13 @@
         "teamsProxyEndpoint.ts",
         "teamsRule.ts",
         "totalTls.ts",
+        "tunnelConfig.ts",
         "tunnelRoute.ts",
         "tunnelVirtualNetwork.ts",
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
+        "urlNormalizationSettings.ts",
         "userAgentBlockingRule.ts",
         "utilities.ts",
         "wafGroup.ts",

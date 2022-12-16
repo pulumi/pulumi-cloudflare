@@ -59,7 +59,7 @@ type ByoIpPrefix struct {
 	Advertisement pulumi.StringOutput `pulumi:"advertisement"`
 	// Description of the BYO IP prefix.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The assigned Bring-Your-Own-IP prefix ID.
+	// The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
 	PrefixId pulumi.StringOutput `pulumi:"prefixId"`
 }
 
@@ -104,7 +104,7 @@ type byoIpPrefixState struct {
 	Advertisement *string `pulumi:"advertisement"`
 	// Description of the BYO IP prefix.
 	Description *string `pulumi:"description"`
-	// The assigned Bring-Your-Own-IP prefix ID.
+	// The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
 	PrefixId *string `pulumi:"prefixId"`
 }
 
@@ -115,7 +115,7 @@ type ByoIpPrefixState struct {
 	Advertisement pulumi.StringPtrInput
 	// Description of the BYO IP prefix.
 	Description pulumi.StringPtrInput
-	// The assigned Bring-Your-Own-IP prefix ID.
+	// The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
 	PrefixId pulumi.StringPtrInput
 }
 
@@ -130,7 +130,7 @@ type byoIpPrefixArgs struct {
 	Advertisement *string `pulumi:"advertisement"`
 	// Description of the BYO IP prefix.
 	Description *string `pulumi:"description"`
-	// The assigned Bring-Your-Own-IP prefix ID.
+	// The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
 	PrefixId string `pulumi:"prefixId"`
 }
 
@@ -142,7 +142,7 @@ type ByoIpPrefixArgs struct {
 	Advertisement pulumi.StringPtrInput
 	// Description of the BYO IP prefix.
 	Description pulumi.StringPtrInput
-	// The assigned Bring-Your-Own-IP prefix ID.
+	// The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
 	PrefixId pulumi.StringInput
 }
 
@@ -248,7 +248,7 @@ func (o ByoIpPrefixOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The assigned Bring-Your-Own-IP prefix ID.
+// The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
 func (o ByoIpPrefixOutput) PrefixId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.PrefixId }).(pulumi.StringOutput)
 }

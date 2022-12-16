@@ -58,7 +58,7 @@ export class TunnelVirtualNetwork extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -114,7 +114,7 @@ export class TunnelVirtualNetwork extends pulumi.CustomResource {
  */
 export interface TunnelVirtualNetworkState {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -136,7 +136,7 @@ export interface TunnelVirtualNetworkState {
  */
 export interface TunnelVirtualNetworkArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId: pulumi.Input<string>;
     /**

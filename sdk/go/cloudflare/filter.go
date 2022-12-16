@@ -61,7 +61,7 @@ type Filter struct {
 	Paused pulumi.BoolPtrOutput `pulumi:"paused"`
 	// Short reference tag to quickly select related rules.
 	Ref pulumi.StringPtrOutput `pulumi:"ref"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -108,7 +108,7 @@ type filterState struct {
 	Paused *bool `pulumi:"paused"`
 	// Short reference tag to quickly select related rules.
 	Ref *string `pulumi:"ref"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -121,7 +121,7 @@ type FilterState struct {
 	Paused pulumi.BoolPtrInput
 	// Short reference tag to quickly select related rules.
 	Ref pulumi.StringPtrInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -138,7 +138,7 @@ type filterArgs struct {
 	Paused *bool `pulumi:"paused"`
 	// Short reference tag to quickly select related rules.
 	Ref *string `pulumi:"ref"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -152,7 +152,7 @@ type FilterArgs struct {
 	Paused pulumi.BoolPtrInput
 	// Short reference tag to quickly select related rules.
 	Ref pulumi.StringPtrInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
 }
 
@@ -263,7 +263,7 @@ func (o FilterOutput) Ref() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Filter) pulumi.StringPtrOutput { return v.Ref }).(pulumi.StringPtrOutput)
 }
 
-// The zone identifier to target for the resource.
+// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o FilterOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Filter) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

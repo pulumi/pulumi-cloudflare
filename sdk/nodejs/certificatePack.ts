@@ -66,37 +66,37 @@ export class CertificatePack extends pulumi.CustomResource {
     }
 
     /**
-     * Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`.
+     * Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly certificateAuthority!: pulumi.Output<string>;
     /**
-     * Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`.
+     * Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly cloudflareBranding!: pulumi.Output<boolean | undefined>;
     /**
-     * List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available.
+     * List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly hosts!: pulumi.Output<string[]>;
     /**
-     * Certificate pack configuration type. Available values: `advanced`.
+     * Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly type!: pulumi.Output<string>;
     public readonly validationErrors!: pulumi.Output<outputs.CertificatePackValidationError[]>;
     /**
-     * Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`.
+     * Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly validationMethod!: pulumi.Output<string>;
     public readonly validationRecords!: pulumi.Output<outputs.CertificatePackValidationRecord[]>;
     /**
-     * How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`.
+     * How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly validityDays!: pulumi.Output<number>;
     /**
-     * Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`.
+     * Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly waitForActiveStatus!: pulumi.Output<boolean | undefined>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -164,37 +164,37 @@ export class CertificatePack extends pulumi.CustomResource {
  */
 export interface CertificatePackState {
     /**
-     * Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`.
+     * Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
      */
     certificateAuthority?: pulumi.Input<string>;
     /**
-     * Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`.
+     * Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
      */
     cloudflareBranding?: pulumi.Input<boolean>;
     /**
-     * List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available.
+     * List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
      */
     hosts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Certificate pack configuration type. Available values: `advanced`.
+     * Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
      */
     type?: pulumi.Input<string>;
     validationErrors?: pulumi.Input<pulumi.Input<inputs.CertificatePackValidationError>[]>;
     /**
-     * Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`.
+     * Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
      */
     validationMethod?: pulumi.Input<string>;
     validationRecords?: pulumi.Input<pulumi.Input<inputs.CertificatePackValidationRecord>[]>;
     /**
-     * How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`.
+     * How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
      */
     validityDays?: pulumi.Input<number>;
     /**
-     * Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`.
+     * Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
      */
     waitForActiveStatus?: pulumi.Input<boolean>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -204,37 +204,37 @@ export interface CertificatePackState {
  */
 export interface CertificatePackArgs {
     /**
-     * Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`.
+     * Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
      */
     certificateAuthority: pulumi.Input<string>;
     /**
-     * Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`.
+     * Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
      */
     cloudflareBranding?: pulumi.Input<boolean>;
     /**
-     * List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available.
+     * List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
      */
     hosts: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Certificate pack configuration type. Available values: `advanced`.
+     * Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
      */
     type: pulumi.Input<string>;
     validationErrors?: pulumi.Input<pulumi.Input<inputs.CertificatePackValidationError>[]>;
     /**
-     * Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`.
+     * Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
      */
     validationMethod: pulumi.Input<string>;
     validationRecords?: pulumi.Input<pulumi.Input<inputs.CertificatePackValidationRecord>[]>;
     /**
-     * How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`.
+     * How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
      */
     validityDays: pulumi.Input<number>;
     /**
-     * Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`.
+     * Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
      */
     waitForActiveStatus?: pulumi.Input<boolean>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId: pulumi.Input<string>;
 }

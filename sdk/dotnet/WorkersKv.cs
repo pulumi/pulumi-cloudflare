@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Workers KV Pair. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+    /// Provides a resource to manage a Cloudflare Workers KV Pair.
+    /// 
+    /// &gt; This resource uses the Cloudflare account APIs. This requires setting the
+    /// `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument
+    /// if you do not explicitly set the resource level `account_id` value.
     /// 
     /// ## Example Usage
     /// 
@@ -23,11 +27,13 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var exampleNs = new Cloudflare.WorkersKvNamespace("exampleNs", new()
     ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Title = "test-namespace",
     ///     });
     /// 
     ///     var example = new Cloudflare.WorkersKv("example", new()
     ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         NamespaceId = exampleNs.Id,
     ///         Key = "test-key",
     ///         Value = "test value",
@@ -39,28 +45,32 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/workersKv:WorkersKv example beaeb6716c9443eaa4deef11763ccca6/test-key
+    ///  $ pulumi import cloudflare:index/workersKv:WorkersKv example &lt;namespace_id&gt;/&lt;key_name&gt;
     /// ```
-    /// 
-    ///  where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace and `test-key` is the key
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workersKv:WorkersKv")]
     public partial class WorkersKv : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The key name
+        /// The account identifier to target for the resource.
+        /// </summary>
+        [Output("accountId")]
+        public Output<string> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Workers KV namespace in which you want to create the KV pair
+        /// The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("namespaceId")]
         public Output<string> NamespaceId { get; private set; } = null!;
 
         /// <summary>
-        /// The string value to be stored in the key
+        /// Value of the KV pair.
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -112,19 +122,25 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersKvArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The key name
+        /// The account identifier to target for the resource.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the Workers KV namespace in which you want to create the KV pair
+        /// The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("namespaceId", required: true)]
         public Input<string> NamespaceId { get; set; } = null!;
 
         /// <summary>
-        /// The string value to be stored in the key
+        /// Value of the KV pair.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
@@ -138,19 +154,25 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersKvState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The key name
+        /// The account identifier to target for the resource.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The ID of the Workers KV namespace in which you want to create the KV pair
+        /// The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
 
         /// <summary>
-        /// The string value to be stored in the key
+        /// Value of the KV pair.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

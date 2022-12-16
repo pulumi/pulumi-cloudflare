@@ -56,7 +56,7 @@ type Account struct {
 	EnforceTwofactor pulumi.BoolPtrOutput `pulumi:"enforceTwofactor"`
 	// The name of the account that is displayed in the Cloudflare dashboard.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+	// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -96,7 +96,7 @@ type accountState struct {
 	EnforceTwofactor *bool `pulumi:"enforceTwofactor"`
 	// The name of the account that is displayed in the Cloudflare dashboard.
 	Name *string `pulumi:"name"`
-	// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+	// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
 	Type *string `pulumi:"type"`
 }
 
@@ -105,7 +105,7 @@ type AccountState struct {
 	EnforceTwofactor pulumi.BoolPtrInput
 	// The name of the account that is displayed in the Cloudflare dashboard.
 	Name pulumi.StringPtrInput
-	// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+	// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
 	Type pulumi.StringPtrInput
 }
 
@@ -118,7 +118,7 @@ type accountArgs struct {
 	EnforceTwofactor *bool `pulumi:"enforceTwofactor"`
 	// The name of the account that is displayed in the Cloudflare dashboard.
 	Name string `pulumi:"name"`
-	// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+	// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
 	Type *string `pulumi:"type"`
 }
 
@@ -128,7 +128,7 @@ type AccountArgs struct {
 	EnforceTwofactor pulumi.BoolPtrInput
 	// The name of the account that is displayed in the Cloudflare dashboard.
 	Name pulumi.StringInput
-	// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+	// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
 	Type pulumi.StringPtrInput
 }
 
@@ -229,7 +229,7 @@ func (o AccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
 func (o AccountOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

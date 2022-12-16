@@ -78,28 +78,28 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accountId);
     }
     /**
-     * UUID client ID associated with the Service Token.
+     * UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="clientId", type=String.class, parameters={})
     private Output<String> clientId;
 
     /**
-     * @return UUID client ID associated with the Service Token.
+     * @return UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> clientId() {
         return this.clientId;
     }
     /**
-     * A secret for interacting with Access protocols.
+     * A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="clientSecret", type=String.class, parameters={})
     private Output<String> clientSecret;
 
     /**
-     * @return A secret for interacting with Access protocols.
+     * @return A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> clientSecret() {

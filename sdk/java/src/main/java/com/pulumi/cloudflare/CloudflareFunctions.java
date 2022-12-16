@@ -12,6 +12,8 @@ import com.pulumi.cloudflare.inputs.GetAccountsArgs;
 import com.pulumi.cloudflare.inputs.GetAccountsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetDevicesArgs;
 import com.pulumi.cloudflare.inputs.GetDevicesPlainArgs;
+import com.pulumi.cloudflare.inputs.GetLoadBalancerPoolsArgs;
+import com.pulumi.cloudflare.inputs.GetLoadBalancerPoolsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetOriginCaRootCertificateArgs;
 import com.pulumi.cloudflare.inputs.GetOriginCaRootCertificatePlainArgs;
 import com.pulumi.cloudflare.inputs.GetRecordArgs;
@@ -34,6 +36,7 @@ import com.pulumi.cloudflare.outputs.GetAccountsResult;
 import com.pulumi.cloudflare.outputs.GetApiTokenPermissionGroupsResult;
 import com.pulumi.cloudflare.outputs.GetDevicesResult;
 import com.pulumi.cloudflare.outputs.GetIpRangesResult;
+import com.pulumi.cloudflare.outputs.GetLoadBalancerPoolsResult;
 import com.pulumi.cloudflare.outputs.GetOriginCaRootCertificateResult;
 import com.pulumi.cloudflare.outputs.GetRecordResult;
 import com.pulumi.cloudflare.outputs.GetWafGroupsResult;
@@ -501,7 +504,8 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions). Commonly used as references within [`cloudflare.ApiToken`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
+     * Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions).
+     * Commonly used as references within [`cloudflare_token`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
      * 
      * ## Example Usage
      * ```java
@@ -524,9 +528,11 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = CloudflareFunctions.getApiTokenPermissionGroups();
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         ctx.export(&#34;dnsReadPermissionId&#34;, test.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.permissions().DNS Read()));
+     *         ctx.export(&#34;dnsReadPermissionId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.zone().DNS Read()));
+     *         ctx.export(&#34;accountLbMonitorsAndReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
+     *         ctx.export(&#34;userMembershipsReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().Memberships Read()));
      *     }
      * }
      * ```
@@ -536,7 +542,8 @@ public final class CloudflareFunctions {
         return getApiTokenPermissionGroups(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions). Commonly used as references within [`cloudflare.ApiToken`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
+     * Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions).
+     * Commonly used as references within [`cloudflare_token`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
      * 
      * ## Example Usage
      * ```java
@@ -559,9 +566,11 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = CloudflareFunctions.getApiTokenPermissionGroups();
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         ctx.export(&#34;dnsReadPermissionId&#34;, test.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.permissions().DNS Read()));
+     *         ctx.export(&#34;dnsReadPermissionId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.zone().DNS Read()));
+     *         ctx.export(&#34;accountLbMonitorsAndReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
+     *         ctx.export(&#34;userMembershipsReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().Memberships Read()));
      *     }
      * }
      * ```
@@ -571,7 +580,8 @@ public final class CloudflareFunctions {
         return getApiTokenPermissionGroupsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions). Commonly used as references within [`cloudflare.ApiToken`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
+     * Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions).
+     * Commonly used as references within [`cloudflare_token`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
      * 
      * ## Example Usage
      * ```java
@@ -594,9 +604,11 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = CloudflareFunctions.getApiTokenPermissionGroups();
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         ctx.export(&#34;dnsReadPermissionId&#34;, test.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.permissions().DNS Read()));
+     *         ctx.export(&#34;dnsReadPermissionId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.zone().DNS Read()));
+     *         ctx.export(&#34;accountLbMonitorsAndReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
+     *         ctx.export(&#34;userMembershipsReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().Memberships Read()));
      *     }
      * }
      * ```
@@ -606,7 +618,8 @@ public final class CloudflareFunctions {
         return getApiTokenPermissionGroups(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions). Commonly used as references within [`cloudflare.ApiToken`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
+     * Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions).
+     * Commonly used as references within [`cloudflare_token`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
      * 
      * ## Example Usage
      * ```java
@@ -629,9 +642,11 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = CloudflareFunctions.getApiTokenPermissionGroups();
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         ctx.export(&#34;dnsReadPermissionId&#34;, test.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.permissions().DNS Read()));
+     *         ctx.export(&#34;dnsReadPermissionId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.zone().DNS Read()));
+     *         ctx.export(&#34;accountLbMonitorsAndReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
+     *         ctx.export(&#34;userMembershipsReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().Memberships Read()));
      *     }
      * }
      * ```
@@ -641,7 +656,8 @@ public final class CloudflareFunctions {
         return getApiTokenPermissionGroupsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions). Commonly used as references within [`cloudflare.ApiToken`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
+     * Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions).
+     * Commonly used as references within [`cloudflare_token`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
      * 
      * ## Example Usage
      * ```java
@@ -664,9 +680,11 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = CloudflareFunctions.getApiTokenPermissionGroups();
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         ctx.export(&#34;dnsReadPermissionId&#34;, test.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.permissions().DNS Read()));
+     *         ctx.export(&#34;dnsReadPermissionId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.zone().DNS Read()));
+     *         ctx.export(&#34;accountLbMonitorsAndReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
+     *         ctx.export(&#34;userMembershipsReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().Memberships Read()));
      *     }
      * }
      * ```
@@ -676,7 +694,8 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invoke("cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups", TypeShape.of(GetApiTokenPermissionGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions). Commonly used as references within [`cloudflare.ApiToken`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
+     * Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions).
+     * Commonly used as references within [`cloudflare_token`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
      * 
      * ## Example Usage
      * ```java
@@ -699,9 +718,11 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = CloudflareFunctions.getApiTokenPermissionGroups();
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         ctx.export(&#34;dnsReadPermissionId&#34;, test.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.permissions().DNS Read()));
+     *         ctx.export(&#34;dnsReadPermissionId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.zone().DNS Read()));
+     *         ctx.export(&#34;accountLbMonitorsAndReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
+     *         ctx.export(&#34;userMembershipsReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().Memberships Read()));
      *     }
      * }
      * ```
@@ -1133,6 +1154,170 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetIpRangesResult> getIpRangesPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getIpRanges:getIpRanges", TypeShape.of(GetIpRangesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * A datasource to find Load Balancer Pools.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetLoadBalancerPoolsArgs;
+     * import com.pulumi.cloudflare.inputs.GetLoadBalancerPoolsFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getLoadBalancerPools(GetLoadBalancerPoolsArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .filter(GetLoadBalancerPoolsFilterArgs.builder()
+     *                 .name(&#34;example-lb-pool&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetLoadBalancerPoolsResult> getLoadBalancerPools(GetLoadBalancerPoolsArgs args) {
+        return getLoadBalancerPools(args, InvokeOptions.Empty);
+    }
+    /**
+     * A datasource to find Load Balancer Pools.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetLoadBalancerPoolsArgs;
+     * import com.pulumi.cloudflare.inputs.GetLoadBalancerPoolsFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getLoadBalancerPools(GetLoadBalancerPoolsArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .filter(GetLoadBalancerPoolsFilterArgs.builder()
+     *                 .name(&#34;example-lb-pool&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetLoadBalancerPoolsResult> getLoadBalancerPoolsPlain(GetLoadBalancerPoolsPlainArgs args) {
+        return getLoadBalancerPoolsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * A datasource to find Load Balancer Pools.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetLoadBalancerPoolsArgs;
+     * import com.pulumi.cloudflare.inputs.GetLoadBalancerPoolsFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getLoadBalancerPools(GetLoadBalancerPoolsArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .filter(GetLoadBalancerPoolsFilterArgs.builder()
+     *                 .name(&#34;example-lb-pool&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetLoadBalancerPoolsResult> getLoadBalancerPools(GetLoadBalancerPoolsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", TypeShape.of(GetLoadBalancerPoolsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * A datasource to find Load Balancer Pools.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetLoadBalancerPoolsArgs;
+     * import com.pulumi.cloudflare.inputs.GetLoadBalancerPoolsFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getLoadBalancerPools(GetLoadBalancerPoolsArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .filter(GetLoadBalancerPoolsFilterArgs.builder()
+     *                 .name(&#34;example-lb-pool&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetLoadBalancerPoolsResult> getLoadBalancerPoolsPlain(GetLoadBalancerPoolsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", TypeShape.of(GetLoadBalancerPoolsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get the [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates) for a given algorithm.

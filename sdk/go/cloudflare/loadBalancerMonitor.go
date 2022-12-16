@@ -35,8 +35,8 @@ import (
 //				ExpectedBody:    pulumi.String("alive"),
 //				ExpectedCodes:   pulumi.String("2xx"),
 //				FollowRedirects: pulumi.Bool(true),
-//				Headers: LoadBalancerMonitorHeaderArray{
-//					&LoadBalancerMonitorHeaderArgs{
+//				Headers: cloudflare.LoadBalancerMonitorHeaderArray{
+//					&cloudflare.LoadBalancerMonitorHeaderArgs{
 //						Header: pulumi.String("Host"),
 //						Values: pulumi.StringArray{
 //							pulumi.String("example.com"),

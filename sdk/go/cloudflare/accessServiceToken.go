@@ -56,9 +56,9 @@ type AccessServiceToken struct {
 
 	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// UUID client ID associated with the Service Token.
+	// UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
-	// A secret for interacting with Access protocols.
+	// A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
 	// Date when the token expires.
 	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
@@ -108,9 +108,9 @@ func GetAccessServiceToken(ctx *pulumi.Context,
 type accessServiceTokenState struct {
 	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId *string `pulumi:"accountId"`
-	// UUID client ID associated with the Service Token.
+	// UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
 	ClientId *string `pulumi:"clientId"`
-	// A secret for interacting with Access protocols.
+	// A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
 	ClientSecret *string `pulumi:"clientSecret"`
 	// Date when the token expires.
 	ExpiresAt *string `pulumi:"expiresAt"`
@@ -125,9 +125,9 @@ type accessServiceTokenState struct {
 type AccessServiceTokenState struct {
 	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
-	// UUID client ID associated with the Service Token.
+	// UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
 	ClientId pulumi.StringPtrInput
-	// A secret for interacting with Access protocols.
+	// A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
 	ClientSecret pulumi.StringPtrInput
 	// Date when the token expires.
 	ExpiresAt pulumi.StringPtrInput
@@ -258,12 +258,12 @@ func (o AccessServiceTokenOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// UUID client ID associated with the Service Token.
+// UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
 func (o AccessServiceTokenOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
 }
 
-// A secret for interacting with Access protocols.
+// A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
 func (o AccessServiceTokenOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
 }

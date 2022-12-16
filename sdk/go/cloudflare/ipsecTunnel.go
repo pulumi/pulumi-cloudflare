@@ -59,7 +59,7 @@ import (
 type IpsecTunnel struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2. Defaults to `false`.
 	AllowNullCipher pulumi.BoolPtrOutput `pulumi:"allowNullCipher"`
@@ -139,7 +139,7 @@ func GetIpsecTunnel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IpsecTunnel resources.
 type ipsecTunnelState struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string `pulumi:"accountId"`
 	// Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2. Defaults to `false`.
 	AllowNullCipher *bool `pulumi:"allowNullCipher"`
@@ -172,7 +172,7 @@ type ipsecTunnelState struct {
 }
 
 type IpsecTunnelState struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
 	// Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2. Defaults to `false`.
 	AllowNullCipher pulumi.BoolPtrInput
@@ -209,7 +209,7 @@ func (IpsecTunnelState) ElementType() reflect.Type {
 }
 
 type ipsecTunnelArgs struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string `pulumi:"accountId"`
 	// Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2. Defaults to `false`.
 	AllowNullCipher *bool `pulumi:"allowNullCipher"`
@@ -243,7 +243,7 @@ type ipsecTunnelArgs struct {
 
 // The set of arguments for constructing a IpsecTunnel resource.
 type IpsecTunnelArgs struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
 	// Specifies if this tunnel may use a null cipher (ENCR_NULL) in Phase 2. Defaults to `false`.
 	AllowNullCipher pulumi.BoolPtrInput
@@ -362,7 +362,7 @@ func (o IpsecTunnelOutput) ToIpsecTunnelOutputWithContext(ctx context.Context) I
 	return o
 }
 
-// The account identifier to target for the resource.
+// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o IpsecTunnelOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpsecTunnel) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }

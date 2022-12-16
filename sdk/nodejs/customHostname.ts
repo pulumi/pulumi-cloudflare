@@ -67,7 +67,7 @@ export class CustomHostname extends pulumi.CustomResource {
      */
     public readonly customOriginSni!: pulumi.Output<string | undefined>;
     /**
-     * Hostname you intend to request a certificate for.
+     * Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly hostname!: pulumi.Output<string>;
     public /*out*/ readonly ownershipVerification!: pulumi.Output<{[key: string]: string}>;
@@ -85,7 +85,7 @@ export class CustomHostname extends pulumi.CustomResource {
      */
     public readonly waitForSslPendingValidation!: pulumi.Output<boolean | undefined>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -147,7 +147,7 @@ export interface CustomHostnameState {
      */
     customOriginSni?: pulumi.Input<string>;
     /**
-     * Hostname you intend to request a certificate for.
+     * Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
      */
     hostname?: pulumi.Input<string>;
     ownershipVerification?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -165,7 +165,7 @@ export interface CustomHostnameState {
      */
     waitForSslPendingValidation?: pulumi.Input<boolean>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -183,7 +183,7 @@ export interface CustomHostnameArgs {
      */
     customOriginSni?: pulumi.Input<string>;
     /**
-     * Hostname you intend to request a certificate for.
+     * Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
      */
     hostname: pulumi.Input<string>;
     /**
@@ -195,7 +195,7 @@ export interface CustomHostnameArgs {
      */
     waitForSslPendingValidation?: pulumi.Input<boolean>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId: pulumi.Input<string>;
 }

@@ -47,14 +47,14 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+     * Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+     * @return Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> type() {
@@ -130,7 +130,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+         * @param type Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+         * @param type Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

@@ -28,10 +28,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			test, err := cloudflare.GetWafRules(ctx, &GetWafRulesArgs{
+//			test, err := cloudflare.GetWafRules(ctx, &cloudflare.GetWafRulesArgs{
 //				ZoneId:    "ae36f999674d196762efcc5abb06b345",
 //				PackageId: pulumi.StringRef("a25a9a7e9c00afc1fb2e0245519d725b"),
-//				Filter: GetWafRulesFilter{
+//				Filter: cloudflare.GetWafRulesFilter{
 //					Description: pulumi.StringRef(".*example.*"),
 //					Mode:        pulumi.StringRef("on"),
 //					GroupId:     pulumi.StringRef("de677e5818985db1285d0e80225f06e5"),

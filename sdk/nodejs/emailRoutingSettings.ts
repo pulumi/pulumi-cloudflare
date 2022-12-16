@@ -52,7 +52,7 @@ export class EmailRoutingSettings extends pulumi.CustomResource {
      */
     public /*out*/ readonly created!: pulumi.Output<string>;
     /**
-     * State of the zone settings for Email Routing.
+     * State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
@@ -76,7 +76,7 @@ export class EmailRoutingSettings extends pulumi.CustomResource {
      */
     public /*out*/ readonly tag!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -132,7 +132,7 @@ export interface EmailRoutingSettingsState {
      */
     created?: pulumi.Input<string>;
     /**
-     * State of the zone settings for Email Routing.
+     * State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -156,7 +156,7 @@ export interface EmailRoutingSettingsState {
      */
     tag?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -166,7 +166,7 @@ export interface EmailRoutingSettingsState {
  */
 export interface EmailRoutingSettingsArgs {
     /**
-     * State of the zone settings for Email Routing.
+     * State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
      */
     enabled: pulumi.Input<boolean>;
     /**
@@ -174,7 +174,7 @@ export interface EmailRoutingSettingsArgs {
      */
     skipWizard?: pulumi.Input<boolean>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId: pulumi.Input<string>;
 }

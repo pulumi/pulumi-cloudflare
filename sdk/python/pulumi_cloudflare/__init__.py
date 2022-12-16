@@ -33,6 +33,7 @@ from .custom_ssl import *
 from .device_policy_certificates import *
 from .device_posture_integration import *
 from .device_posture_rule import *
+from .device_settings_policy import *
 from .dlp_profile import *
 from .email_routing_address import *
 from .email_routing_catch_all import *
@@ -47,6 +48,7 @@ from .get_accounts import *
 from .get_api_token_permission_groups import *
 from .get_devices import *
 from .get_ip_ranges import *
+from .get_load_balancer_pools import *
 from .get_origin_ca_root_certificate import *
 from .get_record import *
 from .get_waf_groups import *
@@ -87,8 +89,10 @@ from .teams_location import *
 from .teams_proxy_endpoint import *
 from .teams_rule import *
 from .total_tls import *
+from .tunnel_config import *
 from .tunnel_route import *
 from .tunnel_virtual_network import *
+from .url_normalization_settings import *
 from .user_agent_blocking_rule import *
 from .waf_group import *
 from .waf_override import *
@@ -343,6 +347,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/devicePostureRule:DevicePostureRule": "DevicePostureRule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/deviceSettingsPolicy",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy": "DeviceSettingsPolicy"
   }
  },
  {
@@ -659,6 +671,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/tunnelConfig",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/tunnelConfig:TunnelConfig": "TunnelConfig"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/tunnelRoute",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -671,6 +691,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork": "TunnelVirtualNetwork"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/urlNormalizationSettings",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings": "UrlNormalizationSettings"
   }
  },
  {

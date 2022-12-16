@@ -17,14 +17,14 @@ public final class FallbackDomainDomainArgs extends com.pulumi.resources.Resourc
     public static final FallbackDomainDomainArgs Empty = new FallbackDomainDomainArgs();
 
     /**
-     * The description of the domain.
+     * A description of the fallback domain, displayed in the client UI.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the domain.
+     * @return A description of the fallback domain, displayed in the client UI.
      * 
      */
     public Optional<Output<String>> description() {
@@ -32,14 +32,14 @@ public final class FallbackDomainDomainArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The DNS servers to receive the redirected request.
+     * A list of IP addresses to handle domain resolution.
      * 
      */
     @Import(name="dnsServers")
     private @Nullable Output<List<String>> dnsServers;
 
     /**
-     * @return The DNS servers to receive the redirected request.
+     * @return A list of IP addresses to handle domain resolution.
      * 
      */
     public Optional<Output<List<String>>> dnsServers() {
@@ -47,14 +47,14 @@ public final class FallbackDomainDomainArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The domain to ignore DNS requests.
+     * The domain suffix to match when resolving locally.
      * 
      */
     @Import(name="suffix")
     private @Nullable Output<String> suffix;
 
     /**
-     * @return The domain to ignore DNS requests.
+     * @return The domain suffix to match when resolving locally.
      * 
      */
     public Optional<Output<String>> suffix() {
@@ -88,7 +88,7 @@ public final class FallbackDomainDomainArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description The description of the domain.
+         * @param description A description of the fallback domain, displayed in the client UI.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class FallbackDomainDomainArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description The description of the domain.
+         * @param description A description of the fallback domain, displayed in the client UI.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class FallbackDomainDomainArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dnsServers The DNS servers to receive the redirected request.
+         * @param dnsServers A list of IP addresses to handle domain resolution.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class FallbackDomainDomainArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dnsServers The DNS servers to receive the redirected request.
+         * @param dnsServers A list of IP addresses to handle domain resolution.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class FallbackDomainDomainArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dnsServers The DNS servers to receive the redirected request.
+         * @param dnsServers A list of IP addresses to handle domain resolution.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class FallbackDomainDomainArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param suffix The domain to ignore DNS requests.
+         * @param suffix The domain suffix to match when resolving locally.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class FallbackDomainDomainArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param suffix The domain to ignore DNS requests.
+         * @param suffix The domain suffix to match when resolving locally.
          * 
          * @return builder
          * 

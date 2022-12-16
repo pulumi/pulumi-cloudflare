@@ -11,7 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Workers KV Namespace
+// Provides the ability to manage Cloudflare Workers KV Namespace features.
+//
+// > This resource uses the Cloudflare account APIs. This requires setting the
+// `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
 //
 // ## Example Usage
 //
@@ -28,7 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewWorkersKvNamespace(ctx, "example", &cloudflare.WorkersKvNamespaceArgs{
-//				Title: pulumi.String("test-namespace"),
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Title:     pulumi.String("test-namespace"),
 //			})
 //			if err != nil {
 //				return err
@@ -41,20 +45,17 @@ import (
 //
 // ## Import
 //
-// # Workers KV Namespace settings can be imported using it's ID
-//
 // ```sh
 //
-//	$ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example beaeb6716c9443eaa4deef11763ccca6
+//	$ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example <account_id>/<namespace_id>
 //
 // ```
-//
-//	where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace
 type WorkersKvNamespace struct {
 	pulumi.CustomResourceState
 
-	// The name of the namespace you wish to create.
-	Title pulumi.StringOutput `pulumi:"title"`
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	Title     pulumi.StringOutput `pulumi:"title"`
 }
 
 // NewWorkersKvNamespace registers a new resource with the given unique name, arguments, and options.
@@ -89,13 +90,15 @@ func GetWorkersKvNamespace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkersKvNamespace resources.
 type workersKvNamespaceState struct {
-	// The name of the namespace you wish to create.
-	Title *string `pulumi:"title"`
+	// The account identifier to target for the resource.
+	AccountId *string `pulumi:"accountId"`
+	Title     *string `pulumi:"title"`
 }
 
 type WorkersKvNamespaceState struct {
-	// The name of the namespace you wish to create.
-	Title pulumi.StringPtrInput
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringPtrInput
+	Title     pulumi.StringPtrInput
 }
 
 func (WorkersKvNamespaceState) ElementType() reflect.Type {
@@ -103,14 +106,16 @@ func (WorkersKvNamespaceState) ElementType() reflect.Type {
 }
 
 type workersKvNamespaceArgs struct {
-	// The name of the namespace you wish to create.
-	Title string `pulumi:"title"`
+	// The account identifier to target for the resource.
+	AccountId *string `pulumi:"accountId"`
+	Title     string  `pulumi:"title"`
 }
 
 // The set of arguments for constructing a WorkersKvNamespace resource.
 type WorkersKvNamespaceArgs struct {
-	// The name of the namespace you wish to create.
-	Title pulumi.StringInput
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringPtrInput
+	Title     pulumi.StringInput
 }
 
 func (WorkersKvNamespaceArgs) ElementType() reflect.Type {
@@ -200,7 +205,11 @@ func (o WorkersKvNamespaceOutput) ToWorkersKvNamespaceOutputWithContext(ctx cont
 	return o
 }
 
-// The name of the namespace you wish to create.
+// The account identifier to target for the resource.
+func (o WorkersKvNamespaceOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersKvNamespace) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
 func (o WorkersKvNamespaceOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKvNamespace) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }

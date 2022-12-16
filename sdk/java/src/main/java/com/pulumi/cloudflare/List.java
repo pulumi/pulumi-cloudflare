@@ -126,14 +126,14 @@ public class List extends com.pulumi.resources.CustomResource {
         return this.kind;
     }
     /**
-     * The name of the list.
+     * The name of the list. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name of the list.
+     * @return The name of the list. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> name() {

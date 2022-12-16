@@ -106,11 +106,11 @@ export class AccessRule extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Rule configuration to apply to a matched request.
+     * Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly configuration!: pulumi.Output<outputs.AccessRuleConfiguration>;
     /**
@@ -122,7 +122,7 @@ export class AccessRule extends pulumi.CustomResource {
      */
     public readonly notes!: pulumi.Output<string | undefined>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -168,11 +168,11 @@ export class AccessRule extends pulumi.CustomResource {
  */
 export interface AccessRuleState {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Rule configuration to apply to a matched request.
+     * Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
      */
     configuration?: pulumi.Input<inputs.AccessRuleConfiguration>;
     /**
@@ -184,7 +184,7 @@ export interface AccessRuleState {
      */
     notes?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -194,11 +194,11 @@ export interface AccessRuleState {
  */
 export interface AccessRuleArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Rule configuration to apply to a matched request.
+     * Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
      */
     configuration: pulumi.Input<inputs.AccessRuleConfiguration>;
     /**
@@ -210,7 +210,7 @@ export interface AccessRuleArgs {
      */
     notes?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }

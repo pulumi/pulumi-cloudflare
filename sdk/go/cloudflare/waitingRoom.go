@@ -68,7 +68,7 @@ type WaitingRoom struct {
 	Host pulumi.StringOutput `pulumi:"host"`
 	// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
 	JsonResponseEnabled pulumi.BoolPtrOutput `pulumi:"jsonResponseEnabled"`
-	// A unique name to identify the waiting room.
+	// A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute pulumi.IntOutput `pulumi:"newUsersPerMinute"`
@@ -84,7 +84,7 @@ type WaitingRoom struct {
 	Suspended pulumi.BoolPtrOutput `pulumi:"suspended"`
 	// The total number of active user sessions on the route at a point in time.
 	TotalActiveUsers pulumi.IntOutput `pulumi:"totalActiveUsers"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -144,7 +144,7 @@ type waitingRoomState struct {
 	Host *string `pulumi:"host"`
 	// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
 	JsonResponseEnabled *bool `pulumi:"jsonResponseEnabled"`
-	// A unique name to identify the waiting room.
+	// A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
 	Name *string `pulumi:"name"`
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute *int `pulumi:"newUsersPerMinute"`
@@ -160,7 +160,7 @@ type waitingRoomState struct {
 	Suspended *bool `pulumi:"suspended"`
 	// The total number of active user sessions on the route at a point in time.
 	TotalActiveUsers *int `pulumi:"totalActiveUsers"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -177,7 +177,7 @@ type WaitingRoomState struct {
 	Host pulumi.StringPtrInput
 	// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
 	JsonResponseEnabled pulumi.BoolPtrInput
-	// A unique name to identify the waiting room.
+	// A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringPtrInput
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute pulumi.IntPtrInput
@@ -193,7 +193,7 @@ type WaitingRoomState struct {
 	Suspended pulumi.BoolPtrInput
 	// The total number of active user sessions on the route at a point in time.
 	TotalActiveUsers pulumi.IntPtrInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -214,7 +214,7 @@ type waitingRoomArgs struct {
 	Host string `pulumi:"host"`
 	// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
 	JsonResponseEnabled *bool `pulumi:"jsonResponseEnabled"`
-	// A unique name to identify the waiting room.
+	// A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
 	Name string `pulumi:"name"`
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute int `pulumi:"newUsersPerMinute"`
@@ -230,7 +230,7 @@ type waitingRoomArgs struct {
 	Suspended *bool `pulumi:"suspended"`
 	// The total number of active user sessions on the route at a point in time.
 	TotalActiveUsers int `pulumi:"totalActiveUsers"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -248,7 +248,7 @@ type WaitingRoomArgs struct {
 	Host pulumi.StringInput
 	// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
 	JsonResponseEnabled pulumi.BoolPtrInput
-	// A unique name to identify the waiting room.
+	// A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringInput
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute pulumi.IntInput
@@ -264,7 +264,7 @@ type WaitingRoomArgs struct {
 	Suspended pulumi.BoolPtrInput
 	// The total number of active user sessions on the route at a point in time.
 	TotalActiveUsers pulumi.IntInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
 }
 
@@ -385,7 +385,7 @@ func (o WaitingRoomOutput) JsonResponseEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolPtrOutput { return v.JsonResponseEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// A unique name to identify the waiting room.
+// A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
 func (o WaitingRoomOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -425,7 +425,7 @@ func (o WaitingRoomOutput) TotalActiveUsers() pulumi.IntOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.IntOutput { return v.TotalActiveUsers }).(pulumi.IntOutput)
 }
 
-// The zone identifier to target for the resource.
+// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o WaitingRoomOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

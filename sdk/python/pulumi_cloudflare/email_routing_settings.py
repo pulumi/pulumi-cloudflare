@@ -19,8 +19,8 @@ class EmailRoutingSettingsArgs:
                  skip_wizard: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a EmailRoutingSettings resource.
-        :param pulumi.Input[bool] enabled: State of the zone settings for Email Routing.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[bool] enabled: State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[bool] skip_wizard: Flag to check if the user skipped the configuration wizard.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -32,7 +32,7 @@ class EmailRoutingSettingsArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        State of the zone settings for Email Routing.
+        State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "enabled")
 
@@ -44,7 +44,7 @@ class EmailRoutingSettingsArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -79,13 +79,13 @@ class _EmailRoutingSettingsState:
         """
         Input properties used for looking up and filtering EmailRoutingSettings resources.
         :param pulumi.Input[str] created: The date and time the settings have been created.
-        :param pulumi.Input[bool] enabled: State of the zone settings for Email Routing.
+        :param pulumi.Input[bool] enabled: State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] modified: The date and time the settings have been modified.
         :param pulumi.Input[str] name: Domain of your zone.
         :param pulumi.Input[bool] skip_wizard: Flag to check if the user skipped the configuration wizard.
         :param pulumi.Input[str] status: Show the state of your account, and the type or configuration error.
         :param pulumi.Input[str] tag: Email Routing settings identifier.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         if created is not None:
             pulumi.set(__self__, "created", created)
@@ -120,7 +120,7 @@ class _EmailRoutingSettingsState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        State of the zone settings for Email Routing.
+        State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "enabled")
 
@@ -192,7 +192,7 @@ class _EmailRoutingSettingsState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -226,9 +226,9 @@ class EmailRoutingSettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: State of the zone settings for Email Routing.
+        :param pulumi.Input[bool] enabled: State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[bool] skip_wizard: Flag to check if the user skipped the configuration wizard.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -315,13 +315,13 @@ class EmailRoutingSettings(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created: The date and time the settings have been created.
-        :param pulumi.Input[bool] enabled: State of the zone settings for Email Routing.
+        :param pulumi.Input[bool] enabled: State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] modified: The date and time the settings have been modified.
         :param pulumi.Input[str] name: Domain of your zone.
         :param pulumi.Input[bool] skip_wizard: Flag to check if the user skipped the configuration wizard.
         :param pulumi.Input[str] status: Show the state of your account, and the type or configuration error.
         :param pulumi.Input[str] tag: Email Routing settings identifier.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -349,7 +349,7 @@ class EmailRoutingSettings(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
         """
-        State of the zone settings for Email Routing.
+        State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "enabled")
 
@@ -397,7 +397,7 @@ class EmailRoutingSettings(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 

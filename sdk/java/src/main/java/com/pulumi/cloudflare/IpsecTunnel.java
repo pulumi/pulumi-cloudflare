@@ -69,14 +69,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/ipsecTunnel:IpsecTunnel")
 public class IpsecTunnel extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<Optional<String>> accountId() {

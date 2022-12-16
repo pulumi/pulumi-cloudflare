@@ -13,6 +13,8 @@ import (
 
 // Provides a resource for managing Cloudflare Pages domains.
 //
+// > A DNS record for the domain is not automatically created. You need to create a `Record` resource for the domain you want to use.
+//
 // ## Example Usage
 //
 // ```go
@@ -51,11 +53,11 @@ import (
 type PagesDomain struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Custom domain.
+	// Custom domain. **Modifying this attribute will force creation of a new resource.**
 	Domain pulumi.StringOutput `pulumi:"domain"`
-	// Name of the Pages Project.
+	// Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
 	ProjectName pulumi.StringOutput `pulumi:"projectName"`
 	// Status of the custom domain.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -99,22 +101,22 @@ func GetPagesDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PagesDomain resources.
 type pagesDomainState struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string `pulumi:"accountId"`
-	// Custom domain.
+	// Custom domain. **Modifying this attribute will force creation of a new resource.**
 	Domain *string `pulumi:"domain"`
-	// Name of the Pages Project.
+	// Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
 	ProjectName *string `pulumi:"projectName"`
 	// Status of the custom domain.
 	Status *string `pulumi:"status"`
 }
 
 type PagesDomainState struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
-	// Custom domain.
+	// Custom domain. **Modifying this attribute will force creation of a new resource.**
 	Domain pulumi.StringPtrInput
-	// Name of the Pages Project.
+	// Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
 	ProjectName pulumi.StringPtrInput
 	// Status of the custom domain.
 	Status pulumi.StringPtrInput
@@ -125,21 +127,21 @@ func (PagesDomainState) ElementType() reflect.Type {
 }
 
 type pagesDomainArgs struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId string `pulumi:"accountId"`
-	// Custom domain.
+	// Custom domain. **Modifying this attribute will force creation of a new resource.**
 	Domain string `pulumi:"domain"`
-	// Name of the Pages Project.
+	// Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
 	ProjectName string `pulumi:"projectName"`
 }
 
 // The set of arguments for constructing a PagesDomain resource.
 type PagesDomainArgs struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringInput
-	// Custom domain.
+	// Custom domain. **Modifying this attribute will force creation of a new resource.**
 	Domain pulumi.StringInput
-	// Name of the Pages Project.
+	// Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
 	ProjectName pulumi.StringInput
 }
 
@@ -230,17 +232,17 @@ func (o PagesDomainOutput) ToPagesDomainOutputWithContext(ctx context.Context) P
 	return o
 }
 
-// The account identifier to target for the resource.
+// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o PagesDomainOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Custom domain.
+// Custom domain. **Modifying this attribute will force creation of a new resource.**
 func (o PagesDomainOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
-// Name of the Pages Project.
+// Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
 func (o PagesDomainOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
 }

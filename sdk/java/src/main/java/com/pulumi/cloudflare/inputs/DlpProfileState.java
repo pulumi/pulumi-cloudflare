@@ -18,14 +18,14 @@ public final class DlpProfileState extends com.pulumi.resources.ResourceArgs {
     public static final DlpProfileState Empty = new DlpProfileState();
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -63,14 +63,14 @@ public final class DlpProfileState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the profile.
+     * Name of the profile. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the profile.
+     * @return Name of the profile. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> name() {
@@ -78,14 +78,14 @@ public final class DlpProfileState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the profile. Available values: `custom`, `predefined`.
+     * The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of the profile. Available values: `custom`, `predefined`.
+     * @return The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> type() {
@@ -121,7 +121,7 @@ public final class DlpProfileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class DlpProfileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class DlpProfileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the profile.
+         * @param name Name of the profile. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class DlpProfileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the profile.
+         * @param name Name of the profile. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class DlpProfileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of the profile. Available values: `custom`, `predefined`.
+         * @param type The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class DlpProfileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of the profile. Available values: `custom`, `predefined`.
+         * @param type The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

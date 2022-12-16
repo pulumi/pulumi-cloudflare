@@ -19,9 +19,9 @@ class PagesDomainArgs:
                  project_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a PagesDomain resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] domain: Custom domain.
-        :param pulumi.Input[str] project_name: Name of the Pages Project.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] domain: Custom domain. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] project_name: Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "domain", domain)
@@ -31,7 +31,7 @@ class PagesDomainArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account identifier to target for the resource.
+        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "account_id")
 
@@ -43,7 +43,7 @@ class PagesDomainArgs:
     @pulumi.getter
     def domain(self) -> pulumi.Input[str]:
         """
-        Custom domain.
+        Custom domain. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "domain")
 
@@ -55,7 +55,7 @@ class PagesDomainArgs:
     @pulumi.getter(name="projectName")
     def project_name(self) -> pulumi.Input[str]:
         """
-        Name of the Pages Project.
+        Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "project_name")
 
@@ -73,9 +73,9 @@ class _PagesDomainState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PagesDomain resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] domain: Custom domain.
-        :param pulumi.Input[str] project_name: Name of the Pages Project.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] domain: Custom domain. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] project_name: Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] status: Status of the custom domain.
         """
         if account_id is not None:
@@ -91,7 +91,7 @@ class _PagesDomainState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource.
+        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "account_id")
 
@@ -103,7 +103,7 @@ class _PagesDomainState:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom domain.
+        Custom domain. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "domain")
 
@@ -115,7 +115,7 @@ class _PagesDomainState:
     @pulumi.getter(name="projectName")
     def project_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Pages Project.
+        Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "project_name")
 
@@ -148,6 +148,8 @@ class PagesDomain(pulumi.CustomResource):
         """
         Provides a resource for managing Cloudflare Pages domains.
 
+        > A DNS record for the domain is not automatically created. You need to create a `Record` resource for the domain you want to use.
+
         ## Example Usage
 
         ```python
@@ -168,9 +170,9 @@ class PagesDomain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] domain: Custom domain.
-        :param pulumi.Input[str] project_name: Name of the Pages Project.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] domain: Custom domain. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] project_name: Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -180,6 +182,8 @@ class PagesDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource for managing Cloudflare Pages domains.
+
+        > A DNS record for the domain is not automatically created. You need to create a `Record` resource for the domain you want to use.
 
         ## Example Usage
 
@@ -257,9 +261,9 @@ class PagesDomain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] domain: Custom domain.
-        :param pulumi.Input[str] project_name: Name of the Pages Project.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] domain: Custom domain. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] project_name: Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] status: Status of the custom domain.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -276,7 +280,7 @@ class PagesDomain(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account identifier to target for the resource.
+        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "account_id")
 
@@ -284,7 +288,7 @@ class PagesDomain(pulumi.CustomResource):
     @pulumi.getter
     def domain(self) -> pulumi.Output[str]:
         """
-        Custom domain.
+        Custom domain. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "domain")
 
@@ -292,7 +296,7 @@ class PagesDomain(pulumi.CustomResource):
     @pulumi.getter(name="projectName")
     def project_name(self) -> pulumi.Output[str]:
         """
-        Name of the Pages Project.
+        Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "project_name")
 

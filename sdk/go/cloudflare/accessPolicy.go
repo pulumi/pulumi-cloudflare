@@ -41,15 +41,15 @@ import (
 //				Name:          pulumi.String("staging policy"),
 //				Precedence:    pulumi.Int(1),
 //				Decision:      pulumi.String("allow"),
-//				Includes: AccessPolicyIncludeArray{
-//					&AccessPolicyIncludeArgs{
+//				Includes: cloudflare.AccessPolicyIncludeArray{
+//					&cloudflare.AccessPolicyIncludeArgs{
 //						Emails: pulumi.StringArray{
 //							pulumi.String("test@example.com"),
 //						},
 //					},
 //				},
-//				Requires: AccessPolicyRequireArray{
-//					&AccessPolicyRequireArgs{
+//				Requires: cloudflare.AccessPolicyRequireArray{
+//					&cloudflare.AccessPolicyRequireArgs{
 //						Emails: pulumi.StringArray{
 //							pulumi.String("test@example.com"),
 //						},
@@ -65,15 +65,15 @@ import (
 //				Name:          pulumi.String("staging policy"),
 //				Precedence:    pulumi.Int(1),
 //				Decision:      pulumi.String("allow"),
-//				Includes: AccessPolicyIncludeArray{
-//					&AccessPolicyIncludeArgs{
+//				Includes: cloudflare.AccessPolicyIncludeArray{
+//					&cloudflare.AccessPolicyIncludeArgs{
 //						Emails: pulumi.StringArray{
 //							pulumi.String("test@example.com"),
 //						},
 //					},
 //				},
-//				Requires: AccessPolicyRequireArray{
-//					&AccessPolicyRequireArgs{
+//				Requires: cloudflare.AccessPolicyRequireArray{
+//					&cloudflare.AccessPolicyRequireArgs{
 //						Ips: pulumi.StringArray{
 //							_var.Office_ip,
 //						},

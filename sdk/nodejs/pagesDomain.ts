@@ -7,6 +7,8 @@ import * as utilities from "./utilities";
 /**
  * Provides a resource for managing Cloudflare Pages domains.
  *
+ * > A DNS record for the domain is not automatically created. You need to create a `cloudflare.Record` resource for the domain you want to use.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -55,15 +57,15 @@ export class PagesDomain extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Custom domain.
+     * Custom domain. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly domain!: pulumi.Output<string>;
     /**
-     * Name of the Pages Project.
+     * Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly projectName!: pulumi.Output<string>;
     /**
@@ -114,15 +116,15 @@ export class PagesDomain extends pulumi.CustomResource {
  */
 export interface PagesDomainState {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Custom domain.
+     * Custom domain. **Modifying this attribute will force creation of a new resource.**
      */
     domain?: pulumi.Input<string>;
     /**
-     * Name of the Pages Project.
+     * Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
      */
     projectName?: pulumi.Input<string>;
     /**
@@ -136,15 +138,15 @@ export interface PagesDomainState {
  */
 export interface PagesDomainArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId: pulumi.Input<string>;
     /**
-     * Custom domain.
+     * Custom domain. **Modifying this attribute will force creation of a new resource.**
      */
     domain: pulumi.Input<string>;
     /**
-     * Name of the Pages Project.
+     * Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
      */
     projectName: pulumi.Input<string>;
 }

@@ -66,14 +66,14 @@ public class EmailRoutingSettings extends com.pulumi.resources.CustomResource {
         return this.created;
     }
     /**
-     * State of the zone settings for Email Routing.
+     * State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="enabled", type=Boolean.class, parameters={})
     private Output<Boolean> enabled;
 
     /**
-     * @return State of the zone settings for Email Routing.
+     * @return State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<Boolean> enabled() {
@@ -150,14 +150,14 @@ public class EmailRoutingSettings extends com.pulumi.resources.CustomResource {
         return this.tag;
     }
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {

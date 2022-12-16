@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         public readonly string Key;
         /// <summary>
-        /// Name of the ruleset.
+        /// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         public readonly string Name;
 

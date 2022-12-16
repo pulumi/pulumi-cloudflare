@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WorkerScriptArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptState;
+import com.pulumi.cloudflare.outputs.WorkerScriptAnalyticsEngineBinding;
 import com.pulumi.cloudflare.outputs.WorkerScriptKvNamespaceBinding;
 import com.pulumi.cloudflare.outputs.WorkerScriptPlainTextBinding;
 import com.pulumi.cloudflare.outputs.WorkerScriptR2BucketBinding;
@@ -45,6 +46,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.WorkerScriptWebassemblyBindingArgs;
  * import com.pulumi.cloudflare.inputs.WorkerScriptServiceBindingArgs;
  * import com.pulumi.cloudflare.inputs.WorkerScriptR2BucketBindingArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerScriptAnalyticsEngineBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -90,6 +92,10 @@ import javax.annotation.Nullable;
  *                 .name(&#34;MY_BUCKET&#34;)
  *                 .bucketName(&#34;MY_BUCKET_NAME&#34;)
  *                 .build())
+ *             .analyticsEngineBindings(WorkerScriptAnalyticsEngineBindingArgs.builder()
+ *                 .name(&#34;MY_DATASET&#34;)
+ *                 .dataset(&#34;dataset1&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -105,6 +111,12 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="cloudflare:index/workerScript:WorkerScript")
 public class WorkerScript extends com.pulumi.resources.CustomResource {
+    @Export(name="analyticsEngineBindings", type=List.class, parameters={WorkerScriptAnalyticsEngineBinding.class})
+    private Output</* @Nullable */ List<WorkerScriptAnalyticsEngineBinding>> analyticsEngineBindings;
+
+    public Output<Optional<List<WorkerScriptAnalyticsEngineBinding>>> analyticsEngineBindings() {
+        return Codegen.optional(this.analyticsEngineBindings);
+    }
     /**
      * The script content.
      * 
@@ -140,14 +152,14 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.module);
     }
     /**
-     * The name for the script.
+     * The name for the script. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name for the script.
+     * @return The name for the script. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> name() {

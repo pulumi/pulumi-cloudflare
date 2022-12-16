@@ -20,7 +20,7 @@ class TotalTlsArgs:
         """
         The set of arguments for constructing a TotalTls resource.
         :param pulumi.Input[bool] enabled: Enable Total TLS for the zone.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -44,7 +44,7 @@ class TotalTlsArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -75,7 +75,7 @@ class _TotalTlsState:
         Input properties used for looking up and filtering TotalTls resources.
         :param pulumi.Input[str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
         :param pulumi.Input[bool] enabled: Enable Total TLS for the zone.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         if certificate_authority is not None:
             pulumi.set(__self__, "certificate_authority", certificate_authority)
@@ -112,7 +112,7 @@ class _TotalTlsState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -149,7 +149,7 @@ class TotalTls(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
         :param pulumi.Input[bool] enabled: Enable Total TLS for the zone.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -228,7 +228,7 @@ class TotalTls(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
         :param pulumi.Input[bool] enabled: Enable Total TLS for the zone.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -259,7 +259,7 @@ class TotalTls(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 

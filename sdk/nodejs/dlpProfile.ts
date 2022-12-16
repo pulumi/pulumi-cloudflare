@@ -46,7 +46,7 @@ export class DlpProfile extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -58,11 +58,11 @@ export class DlpProfile extends pulumi.CustomResource {
      */
     public readonly entries!: pulumi.Output<outputs.DlpProfileEntry[]>;
     /**
-     * Name of the profile.
+     * Name of the profile. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The type of the profile. Available values: `custom`, `predefined`.
+     * The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -114,7 +114,7 @@ export class DlpProfile extends pulumi.CustomResource {
  */
 export interface DlpProfileState {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -126,11 +126,11 @@ export interface DlpProfileState {
      */
     entries?: pulumi.Input<pulumi.Input<inputs.DlpProfileEntry>[]>;
     /**
-     * Name of the profile.
+     * Name of the profile. **Modifying this attribute will force creation of a new resource.**
      */
     name?: pulumi.Input<string>;
     /**
-     * The type of the profile. Available values: `custom`, `predefined`.
+     * The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
      */
     type?: pulumi.Input<string>;
 }
@@ -140,7 +140,7 @@ export interface DlpProfileState {
  */
 export interface DlpProfileArgs {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId: pulumi.Input<string>;
     /**
@@ -152,11 +152,11 @@ export interface DlpProfileArgs {
      */
     entries: pulumi.Input<pulumi.Input<inputs.DlpProfileEntry>[]>;
     /**
-     * Name of the profile.
+     * Name of the profile. **Modifying this attribute will force creation of a new resource.**
      */
     name: pulumi.Input<string>;
     /**
-     * The type of the profile. Available values: `custom`, `predefined`.
+     * The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
      */
     type: pulumi.Input<string>;
 }

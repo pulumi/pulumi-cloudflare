@@ -14,14 +14,14 @@ public final class EmailRoutingAddressArgs extends com.pulumi.resources.Resource
     public static final EmailRoutingAddressArgs Empty = new EmailRoutingAddressArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> accountId() {
@@ -29,14 +29,14 @@ public final class EmailRoutingAddressArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The contact email address of the user.
+     * The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="email", required=true)
     private Output<String> email;
 
     /**
-     * @return The contact email address of the user.
+     * @return The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> email() {
@@ -69,7 +69,7 @@ public final class EmailRoutingAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class EmailRoutingAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class EmailRoutingAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param email The contact email address of the user.
+         * @param email The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class EmailRoutingAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param email The contact email address of the user.
+         * @param email The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

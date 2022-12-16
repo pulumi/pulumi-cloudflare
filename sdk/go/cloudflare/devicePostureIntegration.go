@@ -29,8 +29,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewDevicePostureIntegration(ctx, "thirdPartyDevicesPostureIntegration", &cloudflare.DevicePostureIntegrationArgs{
 //				AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-//				Configs: DevicePostureIntegrationConfigArray{
-//					&DevicePostureIntegrationConfigArgs{
+//				Configs: cloudflare.DevicePostureIntegrationConfigArray{
+//					&cloudflare.DevicePostureIntegrationConfigArgs{
 //						ApiUrl:       pulumi.String("https://example.com/api"),
 //						AuthUrl:      pulumi.String("https://example.com/connect/token"),
 //						ClientId:     pulumi.String("client-id"),

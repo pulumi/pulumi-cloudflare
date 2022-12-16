@@ -41,7 +41,7 @@ class HealthcheckArgs:
         :param pulumi.Input[str] address: The hostname or IP address of the origin server to run health checks on.
         :param pulumi.Input[str] name: A short name to identify the health check. Only alphanumeric characters, hyphens, and underscores are allowed.
         :param pulumi.Input[str] type: The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when the health check uses HTTPS. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] check_regions: A list of regions from which to run health checks. If not set, Cloudflare will pick a default region. Available values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
         :param pulumi.Input[int] consecutive_fails: The number of consecutive fails required from a health check before changing the health to unhealthy. Defaults to `1`.
@@ -136,7 +136,7 @@ class HealthcheckArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -385,7 +385,7 @@ class _HealthcheckState:
         :param pulumi.Input[bool] suspended: If suspended, no health checks are sent to the origin. Defaults to `false`.
         :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
         :param pulumi.Input[str] type: The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -688,7 +688,7 @@ class _HealthcheckState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -814,7 +814,7 @@ class Healthcheck(pulumi.CustomResource):
         :param pulumi.Input[bool] suspended: If suspended, no health checks are sent to the origin. Defaults to `false`.
         :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
         :param pulumi.Input[str] type: The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -1026,7 +1026,7 @@ class Healthcheck(pulumi.CustomResource):
         :param pulumi.Input[bool] suspended: If suspended, no health checks are sent to the origin. Defaults to `false`.
         :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
         :param pulumi.Input[str] type: The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1228,7 +1228,7 @@ class Healthcheck(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 

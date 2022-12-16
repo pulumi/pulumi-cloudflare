@@ -16,14 +16,14 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
     public static final PagesDomainState Empty = new PagesDomainState();
 
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -31,14 +31,14 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom domain.
+     * Custom domain. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
-     * @return Custom domain.
+     * @return Custom domain. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> domain() {
@@ -46,14 +46,14 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the Pages Project.
+     * Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="projectName")
     private @Nullable Output<String> projectName;
 
     /**
-     * @return Name of the Pages Project.
+     * @return Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> projectName() {
@@ -103,7 +103,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain Custom domain.
+         * @param domain Custom domain. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain Custom domain.
+         * @param domain Custom domain. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName Name of the Pages Project.
+         * @param projectName Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName Name of the Pages Project.
+         * @param projectName Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

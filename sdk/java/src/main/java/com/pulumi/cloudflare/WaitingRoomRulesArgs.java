@@ -33,14 +33,14 @@ public final class WaitingRoomRulesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The Waiting Room ID the rules should apply to.
+     * The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="waitingRoomId", required=true)
     private Output<String> waitingRoomId;
 
     /**
-     * @return The Waiting Room ID the rules should apply to.
+     * @return The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> waitingRoomId() {
@@ -48,14 +48,14 @@ public final class WaitingRoomRulesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {
@@ -120,7 +120,7 @@ public final class WaitingRoomRulesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param waitingRoomId The Waiting Room ID the rules should apply to.
+         * @param waitingRoomId The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class WaitingRoomRulesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param waitingRoomId The Waiting Room ID the rules should apply to.
+         * @param waitingRoomId The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class WaitingRoomRulesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class WaitingRoomRulesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

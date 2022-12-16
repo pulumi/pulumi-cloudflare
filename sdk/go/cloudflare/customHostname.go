@@ -29,8 +29,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewCustomHostname(ctx, "example", &cloudflare.CustomHostnameArgs{
 //				Hostname: pulumi.String("hostname.example.com"),
-//				Ssls: CustomHostnameSslArray{
-//					&CustomHostnameSslArgs{
+//				Ssls: cloudflare.CustomHostnameSslArray{
+//					&cloudflare.CustomHostnameSslArgs{
 //						Method: pulumi.String("txt"),
 //					},
 //				},
@@ -59,7 +59,7 @@ type CustomHostname struct {
 	CustomOriginServer pulumi.StringPtrOutput `pulumi:"customOriginServer"`
 	// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
 	CustomOriginSni pulumi.StringPtrOutput `pulumi:"customOriginSni"`
-	// Hostname you intend to request a certificate for.
+	// Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
 	Hostname                  pulumi.StringOutput    `pulumi:"hostname"`
 	OwnershipVerification     pulumi.StringMapOutput `pulumi:"ownershipVerification"`
 	OwnershipVerificationHttp pulumi.StringMapOutput `pulumi:"ownershipVerificationHttp"`
@@ -69,7 +69,7 @@ type CustomHostname struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Whether to wait for a custom hostname SSL sub-object to reach status `pendingValidation` during creation. Defaults to `false`.
 	WaitForSslPendingValidation pulumi.BoolPtrOutput `pulumi:"waitForSslPendingValidation"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -112,7 +112,7 @@ type customHostnameState struct {
 	CustomOriginServer *string `pulumi:"customOriginServer"`
 	// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
 	CustomOriginSni *string `pulumi:"customOriginSni"`
-	// Hostname you intend to request a certificate for.
+	// Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
 	Hostname                  *string           `pulumi:"hostname"`
 	OwnershipVerification     map[string]string `pulumi:"ownershipVerification"`
 	OwnershipVerificationHttp map[string]string `pulumi:"ownershipVerificationHttp"`
@@ -122,7 +122,7 @@ type customHostnameState struct {
 	Status *string `pulumi:"status"`
 	// Whether to wait for a custom hostname SSL sub-object to reach status `pendingValidation` during creation. Defaults to `false`.
 	WaitForSslPendingValidation *bool `pulumi:"waitForSslPendingValidation"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -131,7 +131,7 @@ type CustomHostnameState struct {
 	CustomOriginServer pulumi.StringPtrInput
 	// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
 	CustomOriginSni pulumi.StringPtrInput
-	// Hostname you intend to request a certificate for.
+	// Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
 	Hostname                  pulumi.StringPtrInput
 	OwnershipVerification     pulumi.StringMapInput
 	OwnershipVerificationHttp pulumi.StringMapInput
@@ -141,7 +141,7 @@ type CustomHostnameState struct {
 	Status pulumi.StringPtrInput
 	// Whether to wait for a custom hostname SSL sub-object to reach status `pendingValidation` during creation. Defaults to `false`.
 	WaitForSslPendingValidation pulumi.BoolPtrInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -154,13 +154,13 @@ type customHostnameArgs struct {
 	CustomOriginServer *string `pulumi:"customOriginServer"`
 	// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
 	CustomOriginSni *string `pulumi:"customOriginSni"`
-	// Hostname you intend to request a certificate for.
+	// Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
 	Hostname string `pulumi:"hostname"`
 	// SSL configuration of the certificate.
 	Ssls []CustomHostnameSsl `pulumi:"ssls"`
 	// Whether to wait for a custom hostname SSL sub-object to reach status `pendingValidation` during creation. Defaults to `false`.
 	WaitForSslPendingValidation *bool `pulumi:"waitForSslPendingValidation"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -170,13 +170,13 @@ type CustomHostnameArgs struct {
 	CustomOriginServer pulumi.StringPtrInput
 	// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
 	CustomOriginSni pulumi.StringPtrInput
-	// Hostname you intend to request a certificate for.
+	// Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
 	Hostname pulumi.StringInput
 	// SSL configuration of the certificate.
 	Ssls CustomHostnameSslArrayInput
 	// Whether to wait for a custom hostname SSL sub-object to reach status `pendingValidation` during creation. Defaults to `false`.
 	WaitForSslPendingValidation pulumi.BoolPtrInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
 }
 
@@ -277,7 +277,7 @@ func (o CustomHostnameOutput) CustomOriginSni() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomHostname) pulumi.StringPtrOutput { return v.CustomOriginSni }).(pulumi.StringPtrOutput)
 }
 
-// Hostname you intend to request a certificate for.
+// Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
 func (o CustomHostnameOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomHostname) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
@@ -305,7 +305,7 @@ func (o CustomHostnameOutput) WaitForSslPendingValidation() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v *CustomHostname) pulumi.BoolPtrOutput { return v.WaitForSslPendingValidation }).(pulumi.BoolPtrOutput)
 }
 
-// The zone identifier to target for the resource.
+// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o CustomHostnameOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomHostname) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

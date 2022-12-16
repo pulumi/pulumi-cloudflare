@@ -18,14 +18,14 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
     public static final OriginCaCertificateArgs Empty = new OriginCaCertificateArgs();
 
     /**
-     * The Certificate Signing Request. Must be newline-encoded.
+     * The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="csr")
     private @Nullable Output<String> csr;
 
     /**
-     * @return The Certificate Signing Request. Must be newline-encoded.
+     * @return The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> csr() {
@@ -33,14 +33,14 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * An array of hostnames or wildcard names bound to the certificate.
+     * A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="hostnames", required=true)
     private Output<List<String>> hostnames;
 
     /**
-     * @return An array of hostnames or wildcard names bound to the certificate.
+     * @return A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<List<String>> hostnames() {
@@ -48,14 +48,29 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The signature type desired on the certificate.
+     * Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
+     * 
+     */
+    @Import(name="minDaysForRenewal")
+    private @Nullable Output<Integer> minDaysForRenewal;
+
+    /**
+     * @return Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
+     * 
+     */
+    public Optional<Output<Integer>> minDaysForRenewal() {
+        return Optional.ofNullable(this.minDaysForRenewal);
+    }
+
+    /**
+     * The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="requestType", required=true)
     private Output<String> requestType;
 
     /**
-     * @return The signature type desired on the certificate.
+     * @return The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> requestType() {
@@ -63,14 +78,14 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The number of days for which the certificate should be valid.
+     * The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="requestedValidity")
     private @Nullable Output<Integer> requestedValidity;
 
     /**
-     * @return The number of days for which the certificate should be valid.
+     * @return The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<Integer>> requestedValidity() {
@@ -82,6 +97,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
     private OriginCaCertificateArgs(OriginCaCertificateArgs $) {
         this.csr = $.csr;
         this.hostnames = $.hostnames;
+        this.minDaysForRenewal = $.minDaysForRenewal;
         this.requestType = $.requestType;
         this.requestedValidity = $.requestedValidity;
     }
@@ -105,7 +121,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param csr The Certificate Signing Request. Must be newline-encoded.
+         * @param csr The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -116,7 +132,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param csr The Certificate Signing Request. Must be newline-encoded.
+         * @param csr The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -126,7 +142,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param hostnames An array of hostnames or wildcard names bound to the certificate.
+         * @param hostnames A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -137,7 +153,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param hostnames An array of hostnames or wildcard names bound to the certificate.
+         * @param hostnames A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -147,7 +163,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param hostnames An array of hostnames or wildcard names bound to the certificate.
+         * @param hostnames A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -157,7 +173,28 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param requestType The signature type desired on the certificate.
+         * @param minDaysForRenewal Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minDaysForRenewal(@Nullable Output<Integer> minDaysForRenewal) {
+            $.minDaysForRenewal = minDaysForRenewal;
+            return this;
+        }
+
+        /**
+         * @param minDaysForRenewal Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minDaysForRenewal(Integer minDaysForRenewal) {
+            return minDaysForRenewal(Output.of(minDaysForRenewal));
+        }
+
+        /**
+         * @param requestType The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -168,7 +205,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param requestType The signature type desired on the certificate.
+         * @param requestType The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -178,7 +215,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param requestedValidity The number of days for which the certificate should be valid.
+         * @param requestedValidity The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -189,7 +226,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param requestedValidity The number of days for which the certificate should be valid.
+         * @param requestedValidity The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

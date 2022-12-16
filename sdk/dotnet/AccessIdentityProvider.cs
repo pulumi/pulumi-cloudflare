@@ -109,7 +109,7 @@ namespace Pulumi.Cloudflare
     public partial class AccessIdentityProvider : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
@@ -133,7 +133,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zoneId")]
         public Output<string?> ZoneId { get; private set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.Cloudflare
     public sealed class AccessIdentityProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -215,7 +215,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -229,7 +229,7 @@ namespace Pulumi.Cloudflare
     public sealed class AccessIdentityProviderState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -259,7 +259,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

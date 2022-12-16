@@ -415,7 +415,17 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import is not supported for this resource.
+ * Import an account scoped Ruleset configuration.
+ * 
+ * ```sh
+ *  $ pulumi import cloudflare:index/ruleset:Ruleset example account/&lt;account_id&gt;/&lt;ruleset_id&gt;
+ * ```
+ * 
+ *  Import a zone scoped Ruleset configuration.
+ * 
+ * ```sh
+ *  $ pulumi import cloudflare:index/ruleset:Ruleset example zone/&lt;zone_id&gt;/&lt;ruleset_id&gt;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/ruleset:Ruleset")
@@ -463,14 +473,14 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
         return this.kind;
     }
     /**
-     * Name of the ruleset.
+     * Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Name of the ruleset.
+     * @return Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> name() {

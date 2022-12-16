@@ -21,7 +21,7 @@ class ByoIpPrefixArgs:
         """
         The set of arguments for constructing a ByoIpPrefix resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] prefix_id: The assigned Bring-Your-Own-IP prefix ID.
+        :param pulumi.Input[str] prefix_id: The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] advertisement: Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
         :param pulumi.Input[str] description: Description of the BYO IP prefix.
         """
@@ -48,7 +48,7 @@ class ByoIpPrefixArgs:
     @pulumi.getter(name="prefixId")
     def prefix_id(self) -> pulumi.Input[str]:
         """
-        The assigned Bring-Your-Own-IP prefix ID.
+        The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "prefix_id")
 
@@ -93,7 +93,7 @@ class _ByoIpPrefixState:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] advertisement: Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
         :param pulumi.Input[str] description: Description of the BYO IP prefix.
-        :param pulumi.Input[str] prefix_id: The assigned Bring-Your-Own-IP prefix ID.
+        :param pulumi.Input[str] prefix_id: The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -144,7 +144,7 @@ class _ByoIpPrefixState:
     @pulumi.getter(name="prefixId")
     def prefix_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The assigned Bring-Your-Own-IP prefix ID.
+        The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "prefix_id")
 
@@ -191,7 +191,7 @@ class ByoIpPrefix(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] advertisement: Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
         :param pulumi.Input[str] description: Description of the BYO IP prefix.
-        :param pulumi.Input[str] prefix_id: The assigned Bring-Your-Own-IP prefix ID.
+        :param pulumi.Input[str] prefix_id: The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -282,7 +282,7 @@ class ByoIpPrefix(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] advertisement: Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
         :param pulumi.Input[str] description: Description of the BYO IP prefix.
-        :param pulumi.Input[str] prefix_id: The assigned Bring-Your-Own-IP prefix ID.
+        :param pulumi.Input[str] prefix_id: The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -322,7 +322,7 @@ class ByoIpPrefix(pulumi.CustomResource):
     @pulumi.getter(name="prefixId")
     def prefix_id(self) -> pulumi.Output[str]:
         """
-        The assigned Bring-Your-Own-IP prefix ID.
+        The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "prefix_id")
 

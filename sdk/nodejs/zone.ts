@@ -95,7 +95,7 @@ export class Zone extends pulumi.CustomResource {
      */
     public /*out*/ readonly verificationKey!: pulumi.Output<string>;
     /**
-     * The DNS zone name which will be added.
+     * The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -187,7 +187,7 @@ export interface ZoneState {
      */
     verificationKey?: pulumi.Input<string>;
     /**
-     * The DNS zone name which will be added.
+     * The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
      */
     zone?: pulumi.Input<string>;
 }
@@ -217,7 +217,7 @@ export interface ZoneArgs {
      */
     type?: pulumi.Input<string>;
     /**
-     * The DNS zone name which will be added.
+     * The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
      */
     zone: pulumi.Input<string>;
 }

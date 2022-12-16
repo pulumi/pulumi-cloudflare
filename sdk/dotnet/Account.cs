@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+        /// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+        /// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -144,7 +144,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+        /// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -21,7 +21,7 @@ class ApiShieldArgs:
         """
         The set of arguments for constructing a ApiShield resource.
         :param pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]] auth_id_characteristics: Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         pulumi.set(__self__, "auth_id_characteristics", auth_id_characteristics)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -42,7 +42,7 @@ class ApiShieldArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -59,7 +59,7 @@ class _ApiShieldState:
         """
         Input properties used for looking up and filtering ApiShield resources.
         :param pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]] auth_id_characteristics: Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         if auth_id_characteristics is not None:
             pulumi.set(__self__, "auth_id_characteristics", auth_id_characteristics)
@@ -82,7 +82,7 @@ class _ApiShieldState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -119,7 +119,7 @@ class ApiShield(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiShieldAuthIdCharacteristicArgs']]]] auth_id_characteristics: Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -196,7 +196,7 @@ class ApiShield(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiShieldAuthIdCharacteristicArgs']]]] auth_id_characteristics: Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -218,7 +218,7 @@ class ApiShield(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone identifier to target for the resource.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 

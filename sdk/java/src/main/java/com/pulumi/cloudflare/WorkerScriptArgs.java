@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.WorkerScriptAnalyticsEngineBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptKvNamespaceBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptPlainTextBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptR2BucketBindingArgs;
@@ -22,6 +23,13 @@ import javax.annotation.Nullable;
 public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkerScriptArgs Empty = new WorkerScriptArgs();
+
+    @Import(name="analyticsEngineBindings")
+    private @Nullable Output<List<WorkerScriptAnalyticsEngineBindingArgs>> analyticsEngineBindings;
+
+    public Optional<Output<List<WorkerScriptAnalyticsEngineBindingArgs>>> analyticsEngineBindings() {
+        return Optional.ofNullable(this.analyticsEngineBindings);
+    }
 
     /**
      * The script content.
@@ -61,14 +69,14 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name for the script.
+     * The name for the script. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name for the script.
+     * @return The name for the script. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> name() {
@@ -113,6 +121,7 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
     private WorkerScriptArgs() {}
 
     private WorkerScriptArgs(WorkerScriptArgs $) {
+        this.analyticsEngineBindings = $.analyticsEngineBindings;
         this.content = $.content;
         this.kvNamespaceBindings = $.kvNamespaceBindings;
         this.module = $.module;
@@ -140,6 +149,19 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(WorkerScriptArgs defaults) {
             $ = new WorkerScriptArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder analyticsEngineBindings(@Nullable Output<List<WorkerScriptAnalyticsEngineBindingArgs>> analyticsEngineBindings) {
+            $.analyticsEngineBindings = analyticsEngineBindings;
+            return this;
+        }
+
+        public Builder analyticsEngineBindings(List<WorkerScriptAnalyticsEngineBindingArgs> analyticsEngineBindings) {
+            return analyticsEngineBindings(Output.of(analyticsEngineBindings));
+        }
+
+        public Builder analyticsEngineBindings(WorkerScriptAnalyticsEngineBindingArgs... analyticsEngineBindings) {
+            return analyticsEngineBindings(List.of(analyticsEngineBindings));
         }
 
         /**
@@ -198,7 +220,7 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name for the script.
+         * @param name The name for the script. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -209,7 +231,7 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name for the script.
+         * @param name The name for the script. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

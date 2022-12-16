@@ -73,7 +73,7 @@ type Zone struct {
 	VanityNameServers pulumi.StringArrayOutput `pulumi:"vanityNameServers"`
 	// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
 	VerificationKey pulumi.StringOutput `pulumi:"verificationKey"`
-	// The DNS zone name which will be added.
+	// The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -128,7 +128,7 @@ type zoneState struct {
 	VanityNameServers []string `pulumi:"vanityNameServers"`
 	// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
 	VerificationKey *string `pulumi:"verificationKey"`
-	// The DNS zone name which will be added.
+	// The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
 	Zone *string `pulumi:"zone"`
 }
 
@@ -152,7 +152,7 @@ type ZoneState struct {
 	VanityNameServers pulumi.StringArrayInput
 	// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
 	VerificationKey pulumi.StringPtrInput
-	// The DNS zone name which will be added.
+	// The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
 	Zone pulumi.StringPtrInput
 }
 
@@ -171,7 +171,7 @@ type zoneArgs struct {
 	Plan *string `pulumi:"plan"`
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
 	Type *string `pulumi:"type"`
-	// The DNS zone name which will be added.
+	// The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
 	Zone string `pulumi:"zone"`
 }
 
@@ -187,7 +187,7 @@ type ZoneArgs struct {
 	Plan pulumi.StringPtrInput
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
 	Type pulumi.StringPtrInput
-	// The DNS zone name which will be added.
+	// The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
 	Zone pulumi.StringInput
 }
 
@@ -327,7 +327,7 @@ func (o ZoneOutput) VerificationKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.VerificationKey }).(pulumi.StringOutput)
 }
 
-// The DNS zone name which will be added.
+// The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
 func (o ZoneOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

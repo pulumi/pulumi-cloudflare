@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SplitTunnelTunnel {
     /**
-     * @return The address in CIDR format to include in the tunnel configuration. Conflicts with `&#34;host&#34;`.
+     * @return The address for the tunnel.
      * 
      */
     private @Nullable String address;
     /**
-     * @return The description of the tunnel.
+     * @return A description for the tunnel.
      * 
      */
     private @Nullable String description;
     /**
-     * @return The domain name to include in the tunnel configuration. Conflicts with `&#34;address&#34;`.
+     * @return The domain name for the tunnel.
      * 
      */
     private @Nullable String host;
 
     private SplitTunnelTunnel() {}
     /**
-     * @return The address in CIDR format to include in the tunnel configuration. Conflicts with `&#34;host&#34;`.
+     * @return The address for the tunnel.
      * 
      */
     public Optional<String> address() {
         return Optional.ofNullable(this.address);
     }
     /**
-     * @return The description of the tunnel.
+     * @return A description for the tunnel.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return The domain name to include in the tunnel configuration. Conflicts with `&#34;address&#34;`.
+     * @return The domain name for the tunnel.
      * 
      */
     public Optional<String> host() {

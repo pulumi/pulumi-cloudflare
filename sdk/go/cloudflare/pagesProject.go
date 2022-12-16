@@ -13,6 +13,10 @@ import (
 
 // Provides a resource which manages Cloudflare Pages projects.
 //
+// > If you are using a `source` block configuration, you must first have a
+// connected GitHub or GitLab account connected to Cloudflare. See the
+// [Getting Started with Pages] documentation on how to link your accounts.
+//
 // ## Example Usage
 //
 // ```go
@@ -37,7 +41,7 @@ import (
 //			}
 //			_, err = cloudflare.NewPagesProject(ctx, "buildConfig", &cloudflare.PagesProjectArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				BuildConfig: &PagesProjectBuildConfigArgs{
+//				BuildConfig: &cloudflare.PagesProjectBuildConfigArgs{
 //					BuildCommand:      pulumi.String("npm run build"),
 //					DestinationDir:    pulumi.String("build"),
 //					RootDir:           pulumi.String("/"),
@@ -54,8 +58,8 @@ import (
 //				AccountId:        pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:             pulumi.String("this-is-my-project-01"),
 //				ProductionBranch: pulumi.String("main"),
-//				Source: &PagesProjectSourceArgs{
-//					Config: &PagesProjectSourceConfigArgs{
+//				Source: &cloudflare.PagesProjectSourceArgs{
+//					Config: &cloudflare.PagesProjectSourceConfigArgs{
 //						DeploymentsEnabled: pulumi.Bool(true),
 //						Owner:              pulumi.String("cloudflare"),
 //						PrCommentsEnabled:  pulumi.Bool(true),
@@ -80,8 +84,8 @@ import (
 //			}
 //			_, err = cloudflare.NewPagesProject(ctx, "deploymentConfigs", &cloudflare.PagesProjectArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				DeploymentConfigs: &PagesProjectDeploymentConfigsArgs{
-//					Preview: &PagesProjectDeploymentConfigsPreviewArgs{
+//				DeploymentConfigs: &cloudflare.PagesProjectDeploymentConfigsArgs{
+//					Preview: &cloudflare.PagesProjectDeploymentConfigsPreviewArgs{
 //						CompatibilityDate: pulumi.String("2022-08-15"),
 //						CompatibilityFlags: pulumi.StringArray{
 //							pulumi.String("preview_flag"),
@@ -102,7 +106,7 @@ import (
 //							"R2BINDING": pulumi.Any("some-bucket"),
 //						},
 //					},
-//					Production: &PagesProjectDeploymentConfigsProductionArgs{
+//					Production: &cloudflare.PagesProjectDeploymentConfigsProductionArgs{
 //						CompatibilityDate: pulumi.String("2022-08-16"),
 //						CompatibilityFlags: pulumi.StringArray{
 //							pulumi.String("production_flag"),
@@ -149,6 +153,8 @@ import (
 //	$ pulumi import cloudflare:index/pagesProject:PagesProject example <account_id>/<project_name>
 //
 // ```
+//
+//	[Getting Started with Pages]https://developers.cloudflare.com/pages/get-started/#connect-your-git-provider-to-pages
 type PagesProject struct {
 	pulumi.CustomResourceState
 

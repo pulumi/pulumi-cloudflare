@@ -10,30 +10,36 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Fallback Domain resource. Fallback domains are used to ignore DNS requests to a given list of domains. These DNS requests will be passed back to other DNS servers configured on existing network interfaces on the device.
+    /// Provides a Cloudflare Fallback Domain resource. Fallback domains are
+    /// used to ignore DNS requests to a given list of domains. These DNS
+    /// requests will be passed back to other DNS servers configured on
+    /// existing network interfaces on the device.
     /// 
     /// ## Import
     /// 
-    /// Fallback Domains can be imported using the account identifer.
+    /// Fallback Domains for default device policies must use "default" as the policy ID.
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/fallbackDomain:FallbackDomain example 1d5fdc9e88c8a8c4518b068cd94331fe
+    ///  $ pulumi import cloudflare:index/fallbackDomain:FallbackDomain example &lt;account_id&gt;/&lt;policy_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/fallbackDomain:FallbackDomain")]
     public partial class FallbackDomain : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account to which the device posture rule should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
-        /// <summary>
-        /// The value of the domain attributes (refer to the nested schema).
-        /// </summary>
         [Output("domains")]
         public Output<ImmutableArray<Outputs.FallbackDomainDomain>> Domains { get; private set; } = null!;
+
+        /// <summary>
+        /// The settings policy for which to configure this fallback domain policy.
+        /// </summary>
+        [Output("policyId")]
+        public Output<string?> PolicyId { get; private set; } = null!;
 
 
         /// <summary>
@@ -82,22 +88,24 @@ namespace Pulumi.Cloudflare
     public sealed class FallbackDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the device posture rule should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         [Input("domains", required: true)]
         private InputList<Inputs.FallbackDomainDomainArgs>? _domains;
-
-        /// <summary>
-        /// The value of the domain attributes (refer to the nested schema).
-        /// </summary>
         public InputList<Inputs.FallbackDomainDomainArgs> Domains
         {
             get => _domains ?? (_domains = new InputList<Inputs.FallbackDomainDomainArgs>());
             set => _domains = value;
         }
+
+        /// <summary>
+        /// The settings policy for which to configure this fallback domain policy.
+        /// </summary>
+        [Input("policyId")]
+        public Input<string>? PolicyId { get; set; }
 
         public FallbackDomainArgs()
         {
@@ -108,22 +116,24 @@ namespace Pulumi.Cloudflare
     public sealed class FallbackDomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the device posture rule should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         [Input("domains")]
         private InputList<Inputs.FallbackDomainDomainGetArgs>? _domains;
-
-        /// <summary>
-        /// The value of the domain attributes (refer to the nested schema).
-        /// </summary>
         public InputList<Inputs.FallbackDomainDomainGetArgs> Domains
         {
             get => _domains ?? (_domains = new InputList<Inputs.FallbackDomainDomainGetArgs>());
             set => _domains = value;
         }
+
+        /// <summary>
+        /// The settings policy for which to configure this fallback domain policy.
+        /// </summary>
+        [Input("policyId")]
+        public Input<string>? PolicyId { get; set; }
 
         public FallbackDomainState()
         {

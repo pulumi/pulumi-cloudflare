@@ -70,13 +70,13 @@ namespace Pulumi.Cloudflare
         public Output<bool?> DisableSessionRenewal { get; private set; } = null!;
 
         /// <summary>
-        /// ISO 8601 timestamp that marks the end of the event.
+        /// ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("eventEndTime")]
         public Output<string> EventEndTime { get; private set; } = null!;
 
         /// <summary>
-        /// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+        /// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("eventStartTime")]
         public Output<string> EventStartTime { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.Cloudflare
         public Output<string> ModifiedOn { get; private set; } = null!;
 
         /// <summary>
-        /// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+        /// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -136,13 +136,13 @@ namespace Pulumi.Cloudflare
         public Output<int?> TotalActiveUsers { get; private set; } = null!;
 
         /// <summary>
-        /// The Waiting Room ID the event should apply to.
+        /// The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("waitingRoomId")]
         public Output<string> WaitingRoomId { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -212,19 +212,19 @@ namespace Pulumi.Cloudflare
         public Input<bool>? DisableSessionRenewal { get; set; }
 
         /// <summary>
-        /// ISO 8601 timestamp that marks the end of the event.
+        /// ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("eventEndTime", required: true)]
         public Input<string> EventEndTime { get; set; } = null!;
 
         /// <summary>
-        /// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+        /// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("eventStartTime", required: true)]
         public Input<string> EventStartTime { get; set; } = null!;
 
         /// <summary>
-        /// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+        /// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -272,13 +272,13 @@ namespace Pulumi.Cloudflare
         public Input<int>? TotalActiveUsers { get; set; }
 
         /// <summary>
-        /// The Waiting Room ID the event should apply to.
+        /// The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("waitingRoomId", required: true)]
         public Input<string> WaitingRoomId { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -316,13 +316,13 @@ namespace Pulumi.Cloudflare
         public Input<bool>? DisableSessionRenewal { get; set; }
 
         /// <summary>
-        /// ISO 8601 timestamp that marks the end of the event.
+        /// ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("eventEndTime")]
         public Input<string>? EventEndTime { get; set; }
 
         /// <summary>
-        /// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
+        /// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("eventStartTime")]
         public Input<string>? EventStartTime { get; set; }
@@ -334,7 +334,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
-        /// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+        /// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -382,13 +382,13 @@ namespace Pulumi.Cloudflare
         public Input<int>? TotalActiveUsers { get; set; }
 
         /// <summary>
-        /// The Waiting Room ID the event should apply to.
+        /// The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("waitingRoomId")]
         public Input<string>? WaitingRoomId { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -42,11 +42,11 @@ import (
 type EmailRoutingAddress struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The date and time the destination address has been created.
 	Created pulumi.StringOutput `pulumi:"created"`
-	// The contact email address of the user.
+	// The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
 	Email pulumi.StringOutput `pulumi:"email"`
 	// The date and time the destination address was last modified.
 	Modified pulumi.StringOutput `pulumi:"modified"`
@@ -91,11 +91,11 @@ func GetEmailRoutingAddress(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EmailRoutingAddress resources.
 type emailRoutingAddressState struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string `pulumi:"accountId"`
 	// The date and time the destination address has been created.
 	Created *string `pulumi:"created"`
-	// The contact email address of the user.
+	// The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
 	Email *string `pulumi:"email"`
 	// The date and time the destination address was last modified.
 	Modified *string `pulumi:"modified"`
@@ -106,11 +106,11 @@ type emailRoutingAddressState struct {
 }
 
 type EmailRoutingAddressState struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
 	// The date and time the destination address has been created.
 	Created pulumi.StringPtrInput
-	// The contact email address of the user.
+	// The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
 	Email pulumi.StringPtrInput
 	// The date and time the destination address was last modified.
 	Modified pulumi.StringPtrInput
@@ -125,17 +125,17 @@ func (EmailRoutingAddressState) ElementType() reflect.Type {
 }
 
 type emailRoutingAddressArgs struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId string `pulumi:"accountId"`
-	// The contact email address of the user.
+	// The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
 	Email string `pulumi:"email"`
 }
 
 // The set of arguments for constructing a EmailRoutingAddress resource.
 type EmailRoutingAddressArgs struct {
-	// The account identifier to target for the resource.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringInput
-	// The contact email address of the user.
+	// The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
 	Email pulumi.StringInput
 }
 
@@ -226,7 +226,7 @@ func (o EmailRoutingAddressOutput) ToEmailRoutingAddressOutputWithContext(ctx co
 	return o
 }
 
-// The account identifier to target for the resource.
+// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o EmailRoutingAddressOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingAddress) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -236,7 +236,7 @@ func (o EmailRoutingAddressOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingAddress) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
 
-// The contact email address of the user.
+// The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
 func (o EmailRoutingAddressOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingAddress) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }

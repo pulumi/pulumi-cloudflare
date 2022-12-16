@@ -63,14 +63,14 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the ruleset.
+     * Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the ruleset.
+     * @return Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> name() {
@@ -232,7 +232,7 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the ruleset.
+         * @param name Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the ruleset.
+         * @param name Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

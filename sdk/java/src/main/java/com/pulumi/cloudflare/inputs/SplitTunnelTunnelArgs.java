@@ -16,14 +16,14 @@ public final class SplitTunnelTunnelArgs extends com.pulumi.resources.ResourceAr
     public static final SplitTunnelTunnelArgs Empty = new SplitTunnelTunnelArgs();
 
     /**
-     * The address in CIDR format to include in the tunnel configuration. Conflicts with `&#34;host&#34;`.
+     * The address for the tunnel.
      * 
      */
     @Import(name="address")
     private @Nullable Output<String> address;
 
     /**
-     * @return The address in CIDR format to include in the tunnel configuration. Conflicts with `&#34;host&#34;`.
+     * @return The address for the tunnel.
      * 
      */
     public Optional<Output<String>> address() {
@@ -31,14 +31,14 @@ public final class SplitTunnelTunnelArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The description of the tunnel.
+     * A description for the tunnel.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the tunnel.
+     * @return A description for the tunnel.
      * 
      */
     public Optional<Output<String>> description() {
@@ -46,14 +46,14 @@ public final class SplitTunnelTunnelArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The domain name to include in the tunnel configuration. Conflicts with `&#34;address&#34;`.
+     * The domain name for the tunnel.
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return The domain name to include in the tunnel configuration. Conflicts with `&#34;address&#34;`.
+     * @return The domain name for the tunnel.
      * 
      */
     public Optional<Output<String>> host() {
@@ -87,7 +87,7 @@ public final class SplitTunnelTunnelArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param address The address in CIDR format to include in the tunnel configuration. Conflicts with `&#34;host&#34;`.
+         * @param address The address for the tunnel.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class SplitTunnelTunnelArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param address The address in CIDR format to include in the tunnel configuration. Conflicts with `&#34;host&#34;`.
+         * @param address The address for the tunnel.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class SplitTunnelTunnelArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description The description of the tunnel.
+         * @param description A description for the tunnel.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class SplitTunnelTunnelArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description The description of the tunnel.
+         * @param description A description for the tunnel.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class SplitTunnelTunnelArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param host The domain name to include in the tunnel configuration. Conflicts with `&#34;address&#34;`.
+         * @param host The domain name for the tunnel.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class SplitTunnelTunnelArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param host The domain name to include in the tunnel configuration. Conflicts with `&#34;address&#34;`.
+         * @param host The domain name for the tunnel.
          * 
          * @return builder
          * 

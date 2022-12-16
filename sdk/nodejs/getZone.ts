@@ -112,9 +112,48 @@ export interface GetZoneResult {
     readonly vanityNameServers: string[];
     readonly zoneId: string;
 }
-
+/**
+ * Use this data source to look up [zone] info. This is the singular alternative
+ * to `cloudflare.getZones`.
+ *
+ * > **Note** Cloudflare zone names **are not unique**. It is possible for multiple
+ * accounts to have the same zone created but in different states. If you are
+ * using this setup, it is advised to use the `accountId` attribute on this
+ * resource or swap to `cloudflare.getZones` to further filter the results.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = cloudflare.getZone({
+ *     zoneId: "0b6d347b01d437a092be84c2edfce72c",
+ * });
+ * ```
+ * ### Example usage with other resources
+ *
+ * The example below fetches the zone information for example.com and then is
+ * referenced in the `cloudflare.Record` section.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZone = cloudflare.getZone({
+ *     name: "example.com",
+ * });
+ * const exampleRecord = new cloudflare.Record("exampleRecord", {
+ *     zoneId: exampleZone.then(exampleZone => exampleZone.id),
+ *     name: "www",
+ *     value: "203.0.113.1",
+ *     type: "A",
+ *     proxied: true,
+ * });
+ * ```
+ */
 export function getZoneOutput(args?: GetZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneResult> {
-    return pulumi.output(args).apply(a => getZone(a, opts))
+    return pulumi.output(args).apply((a: any) => getZone(a, opts))
 }
 
 /**

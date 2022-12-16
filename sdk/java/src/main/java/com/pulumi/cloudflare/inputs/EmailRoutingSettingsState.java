@@ -32,14 +32,14 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
     }
 
     /**
-     * State of the zone settings for Email Routing.
+     * State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return State of the zone settings for Email Routing.
+     * @return State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -122,14 +122,14 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -189,7 +189,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enabled State of the zone settings for Email Routing.
+         * @param enabled State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enabled State of the zone settings for Email Routing.
+         * @param enabled State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

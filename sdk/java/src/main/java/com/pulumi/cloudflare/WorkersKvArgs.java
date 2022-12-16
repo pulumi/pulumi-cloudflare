@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
@@ -14,14 +16,29 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
     public static final WorkersKvArgs Empty = new WorkersKvArgs();
 
     /**
-     * The key name
+     * The account identifier to target for the resource.
+     * 
+     */
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
+
+    /**
+     * @return The account identifier to target for the resource.
+     * 
+     */
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+
+    /**
+     * Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return The key name
+     * @return Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> key() {
@@ -29,14 +46,14 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the Workers KV namespace in which you want to create the KV pair
+     * The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="namespaceId", required=true)
     private Output<String> namespaceId;
 
     /**
-     * @return The ID of the Workers KV namespace in which you want to create the KV pair
+     * @return The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> namespaceId() {
@@ -44,14 +61,14 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The string value to be stored in the key
+     * Value of the KV pair.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return The string value to be stored in the key
+     * @return Value of the KV pair.
      * 
      */
     public Output<String> value() {
@@ -61,6 +78,7 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
     private WorkersKvArgs() {}
 
     private WorkersKvArgs(WorkersKvArgs $) {
+        this.accountId = $.accountId;
         this.key = $.key;
         this.namespaceId = $.namespaceId;
         this.value = $.value;
@@ -85,7 +103,28 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key The key name
+         * @param accountId The account identifier to target for the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(@Nullable Output<String> accountId) {
+            $.accountId = accountId;
+            return this;
+        }
+
+        /**
+         * @param accountId The account identifier to target for the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param key Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -96,7 +135,7 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key The key name
+         * @param key Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -106,7 +145,7 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespaceId The ID of the Workers KV namespace in which you want to create the KV pair
+         * @param namespaceId The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -117,7 +156,7 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespaceId The ID of the Workers KV namespace in which you want to create the KV pair
+         * @param namespaceId The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -127,7 +166,7 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The string value to be stored in the key
+         * @param value Value of the KV pair.
          * 
          * @return builder
          * 
@@ -138,7 +177,7 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The string value to be stored in the key
+         * @param value Value of the KV pair.
          * 
          * @return builder
          * 

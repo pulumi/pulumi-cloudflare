@@ -51,14 +51,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/emailRoutingAddress:EmailRoutingAddress")
 public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> accountId() {
@@ -79,14 +79,14 @@ public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
         return this.created;
     }
     /**
-     * The contact email address of the user.
+     * The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="email", type=String.class, parameters={})
     private Output<String> email;
 
     /**
-     * @return The contact email address of the user.
+     * @return The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> email() {

@@ -13,49 +13,59 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Fallback Domain resource. Fallback domains are used to ignore DNS requests to a given list of domains. These DNS requests will be passed back to other DNS servers configured on existing network interfaces on the device.
+ * Provides a Cloudflare Fallback Domain resource. Fallback domains are
+ * used to ignore DNS requests to a given list of domains. These DNS
+ * requests will be passed back to other DNS servers configured on
+ * existing network interfaces on the device.
  * 
  * ## Import
  * 
- * Fallback Domains can be imported using the account identifer.
+ * Fallback Domains for default device policies must use &#34;default&#34; as the policy ID.
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/fallbackDomain:FallbackDomain example 1d5fdc9e88c8a8c4518b068cd94331fe
+ *  $ pulumi import cloudflare:index/fallbackDomain:FallbackDomain example &lt;account_id&gt;/&lt;policy_id&gt;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/fallbackDomain:FallbackDomain")
 public class FallbackDomain extends com.pulumi.resources.CustomResource {
     /**
-     * The account to which the device posture rule should be added.
+     * The account identifier to target for the resource.
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
-     * @return The account to which the device posture rule should be added.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
-    /**
-     * The value of the domain attributes (refer to the nested schema).
-     * 
-     */
     @Export(name="domains", type=List.class, parameters={FallbackDomainDomain.class})
     private Output<List<FallbackDomainDomain>> domains;
 
-    /**
-     * @return The value of the domain attributes (refer to the nested schema).
-     * 
-     */
     public Output<List<FallbackDomainDomain>> domains() {
         return this.domains;
+    }
+    /**
+     * The settings policy for which to configure this fallback domain policy.
+     * 
+     */
+    @Export(name="policyId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> policyId;
+
+    /**
+     * @return The settings policy for which to configure this fallback domain policy.
+     * 
+     */
+    public Output<Optional<String>> policyId() {
+        return Codegen.optional(this.policyId);
     }
 
     /**

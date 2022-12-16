@@ -51,25 +51,25 @@ namespace Pulumi.Cloudflare
     public partial class CertificatePack : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`.
+        /// Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("certificateAuthority")]
         public Output<string> CertificateAuthority { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`.
+        /// Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("cloudflareBranding")]
         public Output<bool?> CloudflareBranding { get; private set; } = null!;
 
         /// <summary>
-        /// List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available.
+        /// List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("hosts")]
         public Output<ImmutableArray<string>> Hosts { get; private set; } = null!;
 
         /// <summary>
-        /// Certificate pack configuration type. Available values: `advanced`.
+        /// Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -78,7 +78,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.CertificatePackValidationError>> ValidationErrors { get; private set; } = null!;
 
         /// <summary>
-        /// Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`.
+        /// Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("validationMethod")]
         public Output<string> ValidationMethod { get; private set; } = null!;
@@ -87,19 +87,19 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.CertificatePackValidationRecord>> ValidationRecords { get; private set; } = null!;
 
         /// <summary>
-        /// How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`.
+        /// How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("validityDays")]
         public Output<int> ValidityDays { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`.
+        /// Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("waitForActiveStatus")]
         public Output<bool?> WaitForActiveStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -151,13 +151,13 @@ namespace Pulumi.Cloudflare
     public sealed class CertificatePackArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`.
+        /// Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("certificateAuthority", required: true)]
         public Input<string> CertificateAuthority { get; set; } = null!;
 
         /// <summary>
-        /// Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`.
+        /// Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("cloudflareBranding")]
         public Input<bool>? CloudflareBranding { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _hosts;
 
         /// <summary>
-        /// List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available.
+        /// List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         public InputList<string> Hosts
         {
@@ -175,7 +175,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Certificate pack configuration type. Available values: `advanced`.
+        /// Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`.
+        /// Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("validationMethod", required: true)]
         public Input<string> ValidationMethod { get; set; } = null!;
@@ -203,19 +203,19 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`.
+        /// How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("validityDays", required: true)]
         public Input<int> ValidityDays { get; set; } = null!;
 
         /// <summary>
-        /// Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`.
+        /// Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("waitForActiveStatus")]
         public Input<bool>? WaitForActiveStatus { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -229,13 +229,13 @@ namespace Pulumi.Cloudflare
     public sealed class CertificatePackState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`.
+        /// Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("certificateAuthority")]
         public Input<string>? CertificateAuthority { get; set; }
 
         /// <summary>
-        /// Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`.
+        /// Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("cloudflareBranding")]
         public Input<bool>? CloudflareBranding { get; set; }
@@ -244,7 +244,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _hosts;
 
         /// <summary>
-        /// List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available.
+        /// List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         public InputList<string> Hosts
         {
@@ -253,7 +253,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Certificate pack configuration type. Available values: `advanced`.
+        /// Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -267,7 +267,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`.
+        /// Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("validationMethod")]
         public Input<string>? ValidationMethod { get; set; }
@@ -281,19 +281,19 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`.
+        /// How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("validityDays")]
         public Input<int>? ValidityDays { get; set; }
 
         /// <summary>
-        /// Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`.
+        /// Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("waitForActiveStatus")]
         public Input<bool>? WaitForActiveStatus { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

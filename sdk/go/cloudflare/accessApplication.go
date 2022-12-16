@@ -36,8 +36,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewAccessApplication(ctx, "stagingApp", &cloudflare.AccessApplicationArgs{
-//				CorsHeaders: AccessApplicationCorsHeaderArray{
-//					&AccessApplicationCorsHeaderArgs{
+//				CorsHeaders: cloudflare.AccessApplicationCorsHeaderArray{
+//					&cloudflare.AccessApplicationCorsHeaderArgs{
 //						AllowCredentials: pulumi.Bool(true),
 //						AllowedMethods: pulumi.StringArray{
 //							pulumi.String("GET"),

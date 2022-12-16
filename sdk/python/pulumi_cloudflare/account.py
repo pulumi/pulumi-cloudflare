@@ -21,7 +21,7 @@ class AccountArgs:
         The set of arguments for constructing a Account resource.
         :param pulumi.Input[str] name: The name of the account that is displayed in the Cloudflare dashboard.
         :param pulumi.Input[bool] enforce_twofactor: Whether 2FA is enforced on the account. Defaults to `false`.
-        :param pulumi.Input[str] type: Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+        :param pulumi.Input[str] type: Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
         """
         pulumi.set(__self__, "name", name)
         if enforce_twofactor is not None:
@@ -57,7 +57,7 @@ class AccountArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+        Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "type")
 
@@ -76,7 +76,7 @@ class _AccountState:
         Input properties used for looking up and filtering Account resources.
         :param pulumi.Input[bool] enforce_twofactor: Whether 2FA is enforced on the account. Defaults to `false`.
         :param pulumi.Input[str] name: The name of the account that is displayed in the Cloudflare dashboard.
-        :param pulumi.Input[str] type: Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+        :param pulumi.Input[str] type: Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
         """
         if enforce_twofactor is not None:
             pulumi.set(__self__, "enforce_twofactor", enforce_twofactor)
@@ -113,7 +113,7 @@ class _AccountState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+        Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "type")
 
@@ -157,7 +157,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enforce_twofactor: Whether 2FA is enforced on the account. Defaults to `false`.
         :param pulumi.Input[str] name: The name of the account that is displayed in the Cloudflare dashboard.
-        :param pulumi.Input[str] type: Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+        :param pulumi.Input[str] type: Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -241,7 +241,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enforce_twofactor: Whether 2FA is enforced on the account. Defaults to `false`.
         :param pulumi.Input[str] name: The name of the account that is displayed in the Cloudflare dashboard.
-        :param pulumi.Input[str] type: Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+        :param pulumi.Input[str] type: Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -272,7 +272,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        Account type. Available values: `enterprise`, `standard`. Defaults to `standard`.
+        Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "type")
 

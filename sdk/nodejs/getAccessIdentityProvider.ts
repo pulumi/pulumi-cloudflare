@@ -75,9 +75,32 @@ export interface GetAccessIdentityProviderResult {
     readonly type: string;
     readonly zoneId?: string;
 }
-
+/**
+ * Use this data source to lookup a single [Access Identity Provider][accessIdentityProviderGuide] by name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const mainAccessIdentityProvider = cloudflare.getAccessIdentityProvider({
+ *     name: "Google SSO",
+ *     accountId: "example-account-id",
+ * });
+ * const mainAccessApplication = new cloudflare.AccessApplication("mainAccessApplication", {
+ *     zoneId: "example.com",
+ *     name: "name",
+ *     domain: "name.example.com",
+ *     type: "self_hosted",
+ *     sessionDuration: "24h",
+ *     allowedIdps: [mainAccessIdentityProvider.then(mainAccessIdentityProvider => mainAccessIdentityProvider.id)],
+ *     autoRedirectToIdentity: true,
+ * });
+ * ```
+ */
 export function getAccessIdentityProviderOutput(args: GetAccessIdentityProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessIdentityProviderResult> {
-    return pulumi.output(args).apply(a => getAccessIdentityProvider(a, opts))
+    return pulumi.output(args).apply((a: any) => getAccessIdentityProvider(a, opts))
 }
 
 /**

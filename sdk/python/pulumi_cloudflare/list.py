@@ -25,7 +25,7 @@ class ListArgs:
         The set of arguments for constructing a List resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] kind: The type of items the list will contain.
-        :param pulumi.Input[str] name: The name of the list.
+        :param pulumi.Input[str] name: The name of the list. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] description: An optional description of the list.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -64,7 +64,7 @@ class ListArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the list.
+        The name of the list. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -107,7 +107,7 @@ class _ListState:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: An optional description of the list.
         :param pulumi.Input[str] kind: The type of items the list will contain.
-        :param pulumi.Input[str] name: The name of the list.
+        :param pulumi.Input[str] name: The name of the list. **Modifying this attribute will force creation of a new resource.**
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -169,7 +169,7 @@ class _ListState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the list.
+        The name of the list. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -204,7 +204,7 @@ class List(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: An optional description of the list.
         :param pulumi.Input[str] kind: The type of items the list will contain.
-        :param pulumi.Input[str] name: The name of the list.
+        :param pulumi.Input[str] name: The name of the list. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -287,7 +287,7 @@ class List(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: An optional description of the list.
         :param pulumi.Input[str] kind: The type of items the list will contain.
-        :param pulumi.Input[str] name: The name of the list.
+        :param pulumi.Input[str] name: The name of the list. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -333,7 +333,7 @@ class List(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the list.
+        The name of the list. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 

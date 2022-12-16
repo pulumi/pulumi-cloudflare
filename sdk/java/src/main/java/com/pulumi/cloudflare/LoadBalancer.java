@@ -397,14 +397,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.ttl;
     }
     /**
-     * The zone ID to add the load balancer to.
+     * The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The zone ID to add the load balancer to.
+     * @return The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {

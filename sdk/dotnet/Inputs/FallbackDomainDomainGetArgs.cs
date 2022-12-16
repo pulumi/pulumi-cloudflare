@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class FallbackDomainDomainGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the domain.
+        /// A description of the fallback domain, displayed in the client UI.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// The DNS servers to receive the redirected request.
+        /// A list of IP addresses to handle domain resolution.
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// The domain to ignore DNS requests.
+        /// The domain suffix to match when resolving locally.
         /// </summary>
         [Input("suffix")]
         public Input<string>? Suffix { get; set; }

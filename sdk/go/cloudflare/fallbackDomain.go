@@ -11,24 +11,28 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Fallback Domain resource. Fallback domains are used to ignore DNS requests to a given list of domains. These DNS requests will be passed back to other DNS servers configured on existing network interfaces on the device.
+// Provides a Cloudflare Fallback Domain resource. Fallback domains are
+// used to ignore DNS requests to a given list of domains. These DNS
+// requests will be passed back to other DNS servers configured on
+// existing network interfaces on the device.
 //
 // ## Import
 //
-// Fallback Domains can be imported using the account identifer.
+// Fallback Domains for default device policies must use "default" as the policy ID.
 //
 // ```sh
 //
-//	$ pulumi import cloudflare:index/fallbackDomain:FallbackDomain example 1d5fdc9e88c8a8c4518b068cd94331fe
+//	$ pulumi import cloudflare:index/fallbackDomain:FallbackDomain example <account_id>/<policy_id>
 //
 // ```
 type FallbackDomain struct {
 	pulumi.CustomResourceState
 
-	// The account to which the device posture rule should be added.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The value of the domain attributes (refer to the nested schema).
-	Domains FallbackDomainDomainArrayOutput `pulumi:"domains"`
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringOutput             `pulumi:"accountId"`
+	Domains   FallbackDomainDomainArrayOutput `pulumi:"domains"`
+	// The settings policy for which to configure this fallback domain policy.
+	PolicyId pulumi.StringPtrOutput `pulumi:"policyId"`
 }
 
 // NewFallbackDomain registers a new resource with the given unique name, arguments, and options.
@@ -66,17 +70,19 @@ func GetFallbackDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FallbackDomain resources.
 type fallbackDomainState struct {
-	// The account to which the device posture rule should be added.
-	AccountId *string `pulumi:"accountId"`
-	// The value of the domain attributes (refer to the nested schema).
-	Domains []FallbackDomainDomain `pulumi:"domains"`
+	// The account identifier to target for the resource.
+	AccountId *string                `pulumi:"accountId"`
+	Domains   []FallbackDomainDomain `pulumi:"domains"`
+	// The settings policy for which to configure this fallback domain policy.
+	PolicyId *string `pulumi:"policyId"`
 }
 
 type FallbackDomainState struct {
-	// The account to which the device posture rule should be added.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// The value of the domain attributes (refer to the nested schema).
-	Domains FallbackDomainDomainArrayInput
+	Domains   FallbackDomainDomainArrayInput
+	// The settings policy for which to configure this fallback domain policy.
+	PolicyId pulumi.StringPtrInput
 }
 
 func (FallbackDomainState) ElementType() reflect.Type {
@@ -84,18 +90,20 @@ func (FallbackDomainState) ElementType() reflect.Type {
 }
 
 type fallbackDomainArgs struct {
-	// The account to which the device posture rule should be added.
-	AccountId string `pulumi:"accountId"`
-	// The value of the domain attributes (refer to the nested schema).
-	Domains []FallbackDomainDomain `pulumi:"domains"`
+	// The account identifier to target for the resource.
+	AccountId string                 `pulumi:"accountId"`
+	Domains   []FallbackDomainDomain `pulumi:"domains"`
+	// The settings policy for which to configure this fallback domain policy.
+	PolicyId *string `pulumi:"policyId"`
 }
 
 // The set of arguments for constructing a FallbackDomain resource.
 type FallbackDomainArgs struct {
-	// The account to which the device posture rule should be added.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// The value of the domain attributes (refer to the nested schema).
-	Domains FallbackDomainDomainArrayInput
+	Domains   FallbackDomainDomainArrayInput
+	// The settings policy for which to configure this fallback domain policy.
+	PolicyId pulumi.StringPtrInput
 }
 
 func (FallbackDomainArgs) ElementType() reflect.Type {
@@ -185,14 +193,18 @@ func (o FallbackDomainOutput) ToFallbackDomainOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The account to which the device posture rule should be added.
+// The account identifier to target for the resource.
 func (o FallbackDomainOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FallbackDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The value of the domain attributes (refer to the nested schema).
 func (o FallbackDomainOutput) Domains() FallbackDomainDomainArrayOutput {
 	return o.ApplyT(func(v *FallbackDomain) FallbackDomainDomainArrayOutput { return v.Domains }).(FallbackDomainDomainArrayOutput)
+}
+
+// The settings policy for which to configure this fallback domain policy.
+func (o FallbackDomainOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FallbackDomain) pulumi.StringPtrOutput { return v.PolicyId }).(pulumi.StringPtrOutput)
 }
 
 type FallbackDomainArrayOutput struct{ *pulumi.OutputState }

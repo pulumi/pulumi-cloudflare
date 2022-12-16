@@ -18,22 +18,26 @@ class SplitTunnelArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
                  mode: pulumi.Input[str],
-                 tunnels: pulumi.Input[Sequence[pulumi.Input['SplitTunnelTunnelArgs']]]):
+                 tunnels: pulumi.Input[Sequence[pulumi.Input['SplitTunnelTunnelArgs']]],
+                 policy_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SplitTunnel resource.
-        :param pulumi.Input[str] account_id: The account to which the device posture rule should be added.
-        :param pulumi.Input[str] mode: The split tunnel mode. Valid values are `include` or `exclude`.
-        :param pulumi.Input[Sequence[pulumi.Input['SplitTunnelTunnelArgs']]] tunnels: The value of the tunnel attributes (refer to the nested schema).
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] mode: The mode of the split tunnel policy. Available values: `include`, `exclude`.
+        :param pulumi.Input[Sequence[pulumi.Input['SplitTunnelTunnelArgs']]] tunnels: The value of the tunnel attributes.
+        :param pulumi.Input[str] policy_id: The settings policy for which to configure this split tunnel policy.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "tunnels", tunnels)
+        if policy_id is not None:
+            pulumi.set(__self__, "policy_id", policy_id)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account to which the device posture rule should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -45,7 +49,7 @@ class SplitTunnelArgs:
     @pulumi.getter
     def mode(self) -> pulumi.Input[str]:
         """
-        The split tunnel mode. Valid values are `include` or `exclude`.
+        The mode of the split tunnel policy. Available values: `include`, `exclude`.
         """
         return pulumi.get(self, "mode")
 
@@ -57,7 +61,7 @@ class SplitTunnelArgs:
     @pulumi.getter
     def tunnels(self) -> pulumi.Input[Sequence[pulumi.Input['SplitTunnelTunnelArgs']]]:
         """
-        The value of the tunnel attributes (refer to the nested schema).
+        The value of the tunnel attributes.
         """
         return pulumi.get(self, "tunnels")
 
@@ -65,23 +69,39 @@ class SplitTunnelArgs:
     def tunnels(self, value: pulumi.Input[Sequence[pulumi.Input['SplitTunnelTunnelArgs']]]):
         pulumi.set(self, "tunnels", value)
 
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The settings policy for which to configure this split tunnel policy.
+        """
+        return pulumi.get(self, "policy_id")
+
+    @policy_id.setter
+    def policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_id", value)
+
 
 @pulumi.input_type
 class _SplitTunnelState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
+                 policy_id: Optional[pulumi.Input[str]] = None,
                  tunnels: Optional[pulumi.Input[Sequence[pulumi.Input['SplitTunnelTunnelArgs']]]] = None):
         """
         Input properties used for looking up and filtering SplitTunnel resources.
-        :param pulumi.Input[str] account_id: The account to which the device posture rule should be added.
-        :param pulumi.Input[str] mode: The split tunnel mode. Valid values are `include` or `exclude`.
-        :param pulumi.Input[Sequence[pulumi.Input['SplitTunnelTunnelArgs']]] tunnels: The value of the tunnel attributes (refer to the nested schema).
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] mode: The mode of the split tunnel policy. Available values: `include`, `exclude`.
+        :param pulumi.Input[str] policy_id: The settings policy for which to configure this split tunnel policy.
+        :param pulumi.Input[Sequence[pulumi.Input['SplitTunnelTunnelArgs']]] tunnels: The value of the tunnel attributes.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
+        if policy_id is not None:
+            pulumi.set(__self__, "policy_id", policy_id)
         if tunnels is not None:
             pulumi.set(__self__, "tunnels", tunnels)
 
@@ -89,7 +109,7 @@ class _SplitTunnelState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account to which the device posture rule should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -101,7 +121,7 @@ class _SplitTunnelState:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The split tunnel mode. Valid values are `include` or `exclude`.
+        The mode of the split tunnel policy. Available values: `include`, `exclude`.
         """
         return pulumi.get(self, "mode")
 
@@ -110,10 +130,22 @@ class _SplitTunnelState:
         pulumi.set(self, "mode", value)
 
     @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The settings policy for which to configure this split tunnel policy.
+        """
+        return pulumi.get(self, "policy_id")
+
+    @policy_id.setter
+    def policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_id", value)
+
+    @property
     @pulumi.getter
     def tunnels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SplitTunnelTunnelArgs']]]]:
         """
-        The value of the tunnel attributes (refer to the nested schema).
+        The value of the tunnel attributes.
         """
         return pulumi.get(self, "tunnels")
 
@@ -129,49 +161,27 @@ class SplitTunnel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
+                 policy_id: Optional[pulumi.Input[str]] = None,
                  tunnels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SplitTunnelTunnelArgs']]]]] = None,
                  __props__=None):
         """
         Provides a Cloudflare Split Tunnel resource. Split tunnels are used to either
         include or exclude lists of routes from the WARP client's tunnel.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Excluding *.example.com from WARP routes
-        example_split_tunnel_exclude = cloudflare.SplitTunnel("exampleSplitTunnelExclude",
-            account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
-            mode="exclude",
-            tunnels=[cloudflare.SplitTunnelTunnelArgs(
-                description="example domain",
-                host="*.example.com",
-            )])
-        # Including *.example.com in WARP routes
-        example_split_tunnel_include = cloudflare.SplitTunnel("exampleSplitTunnelInclude",
-            account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
-            mode="include",
-            tunnels=[cloudflare.SplitTunnelTunnelArgs(
-                description="example domain",
-                host="*.example.com",
-            )])
-        ```
-
         ## Import
 
-        Split Tunnels can be imported using the account identifer and mode.
+        Split Tunnels for default device policies must use "default" as the policy ID.
 
         ```sh
-         $ pulumi import cloudflare:index/splitTunnel:SplitTunnel example 1d5fdc9e88c8a8c4518b068cd94331fe/exclude
+         $ pulumi import cloudflare:index/splitTunnel:SplitTunnel example <account_id>/<policy_id>/<mode>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account to which the device posture rule should be added.
-        :param pulumi.Input[str] mode: The split tunnel mode. Valid values are `include` or `exclude`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SplitTunnelTunnelArgs']]]] tunnels: The value of the tunnel attributes (refer to the nested schema).
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] mode: The mode of the split tunnel policy. Available values: `include`, `exclude`.
+        :param pulumi.Input[str] policy_id: The settings policy for which to configure this split tunnel policy.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SplitTunnelTunnelArgs']]]] tunnels: The value of the tunnel attributes.
         """
         ...
     @overload
@@ -183,36 +193,12 @@ class SplitTunnel(pulumi.CustomResource):
         Provides a Cloudflare Split Tunnel resource. Split tunnels are used to either
         include or exclude lists of routes from the WARP client's tunnel.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Excluding *.example.com from WARP routes
-        example_split_tunnel_exclude = cloudflare.SplitTunnel("exampleSplitTunnelExclude",
-            account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
-            mode="exclude",
-            tunnels=[cloudflare.SplitTunnelTunnelArgs(
-                description="example domain",
-                host="*.example.com",
-            )])
-        # Including *.example.com in WARP routes
-        example_split_tunnel_include = cloudflare.SplitTunnel("exampleSplitTunnelInclude",
-            account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
-            mode="include",
-            tunnels=[cloudflare.SplitTunnelTunnelArgs(
-                description="example domain",
-                host="*.example.com",
-            )])
-        ```
-
         ## Import
 
-        Split Tunnels can be imported using the account identifer and mode.
+        Split Tunnels for default device policies must use "default" as the policy ID.
 
         ```sh
-         $ pulumi import cloudflare:index/splitTunnel:SplitTunnel example 1d5fdc9e88c8a8c4518b068cd94331fe/exclude
+         $ pulumi import cloudflare:index/splitTunnel:SplitTunnel example <account_id>/<policy_id>/<mode>
         ```
 
         :param str resource_name: The name of the resource.
@@ -232,6 +218,7 @@ class SplitTunnel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
+                 policy_id: Optional[pulumi.Input[str]] = None,
                  tunnels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SplitTunnelTunnelArgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -248,6 +235,7 @@ class SplitTunnel(pulumi.CustomResource):
             if mode is None and not opts.urn:
                 raise TypeError("Missing required property 'mode'")
             __props__.__dict__["mode"] = mode
+            __props__.__dict__["policy_id"] = policy_id
             if tunnels is None and not opts.urn:
                 raise TypeError("Missing required property 'tunnels'")
             __props__.__dict__["tunnels"] = tunnels
@@ -263,6 +251,7 @@ class SplitTunnel(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             mode: Optional[pulumi.Input[str]] = None,
+            policy_id: Optional[pulumi.Input[str]] = None,
             tunnels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SplitTunnelTunnelArgs']]]]] = None) -> 'SplitTunnel':
         """
         Get an existing SplitTunnel resource's state with the given name, id, and optional extra
@@ -271,9 +260,10 @@ class SplitTunnel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account to which the device posture rule should be added.
-        :param pulumi.Input[str] mode: The split tunnel mode. Valid values are `include` or `exclude`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SplitTunnelTunnelArgs']]]] tunnels: The value of the tunnel attributes (refer to the nested schema).
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] mode: The mode of the split tunnel policy. Available values: `include`, `exclude`.
+        :param pulumi.Input[str] policy_id: The settings policy for which to configure this split tunnel policy.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SplitTunnelTunnelArgs']]]] tunnels: The value of the tunnel attributes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -281,6 +271,7 @@ class SplitTunnel(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["mode"] = mode
+        __props__.__dict__["policy_id"] = policy_id
         __props__.__dict__["tunnels"] = tunnels
         return SplitTunnel(resource_name, opts=opts, __props__=__props__)
 
@@ -288,7 +279,7 @@ class SplitTunnel(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account to which the device posture rule should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -296,15 +287,23 @@ class SplitTunnel(pulumi.CustomResource):
     @pulumi.getter
     def mode(self) -> pulumi.Output[str]:
         """
-        The split tunnel mode. Valid values are `include` or `exclude`.
+        The mode of the split tunnel policy. Available values: `include`, `exclude`.
         """
         return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The settings policy for which to configure this split tunnel policy.
+        """
+        return pulumi.get(self, "policy_id")
 
     @property
     @pulumi.getter
     def tunnels(self) -> pulumi.Output[Sequence['outputs.SplitTunnelTunnel']]:
         """
-        The value of the tunnel attributes (refer to the nested schema).
+        The value of the tunnel attributes.
         """
         return pulumi.get(self, "tunnels")
 

@@ -98,9 +98,67 @@ export interface GetZonesResult {
      */
     readonly zones: outputs.GetZonesZone[];
 }
-
+/**
+ * Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
+ *
+ * ## Example Usage
+ *
+ * Given you have the following zones in Cloudflare.
+ *
+ * - example.com
+ * - example.net
+ * - not-example.com
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = cloudflare.getZones({
+ *     filter: {
+ *         name: "example.com",
+ *     },
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = cloudflare.getZones({
+ *     filter: {
+ *         lookupType: "contains",
+ *         name: "example",
+ *     },
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = cloudflare.getZones({
+ *     filter: {
+ *         lookupType: "contains",
+ *         match: "^not-",
+ *         name: "example",
+ *     },
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = cloudflare.getZones({
+ *     filter: {
+ *         accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *         status: "active",
+ *     },
+ * });
+ * ```
+ */
 export function getZonesOutput(args: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
-    return pulumi.output(args).apply(a => getZones(a, opts))
+    return pulumi.output(args).apply((a: any) => getZones(a, opts))
 }
 
 /**

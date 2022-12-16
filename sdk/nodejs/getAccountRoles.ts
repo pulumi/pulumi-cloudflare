@@ -41,9 +41,11 @@ export interface GetAccountRolesResult {
      */
     readonly roles: outputs.GetAccountRolesRole[];
 }
-
+/**
+ * Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
+ */
 export function getAccountRolesOutput(args: GetAccountRolesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountRolesResult> {
-    return pulumi.output(args).apply(a => getAccountRoles(a, opts))
+    return pulumi.output(args).apply((a: any) => getAccountRoles(a, opts))
 }
 
 /**

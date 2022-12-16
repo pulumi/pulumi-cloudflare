@@ -31,7 +31,7 @@ type List struct {
 	Items       ListItemArrayOutput    `pulumi:"items"`
 	// The type of items the list will contain.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// The name of the list.
+	// The name of the list. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -80,7 +80,7 @@ type listState struct {
 	Items       []ListItem `pulumi:"items"`
 	// The type of items the list will contain.
 	Kind *string `pulumi:"kind"`
-	// The name of the list.
+	// The name of the list. **Modifying this attribute will force creation of a new resource.**
 	Name *string `pulumi:"name"`
 }
 
@@ -92,7 +92,7 @@ type ListState struct {
 	Items       ListItemArrayInput
 	// The type of items the list will contain.
 	Kind pulumi.StringPtrInput
-	// The name of the list.
+	// The name of the list. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringPtrInput
 }
 
@@ -108,7 +108,7 @@ type listArgs struct {
 	Items       []ListItem `pulumi:"items"`
 	// The type of items the list will contain.
 	Kind string `pulumi:"kind"`
-	// The name of the list.
+	// The name of the list. **Modifying this attribute will force creation of a new resource.**
 	Name string `pulumi:"name"`
 }
 
@@ -121,7 +121,7 @@ type ListArgs struct {
 	Items       ListItemArrayInput
 	// The type of items the list will contain.
 	Kind pulumi.StringInput
-	// The name of the list.
+	// The name of the list. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringInput
 }
 
@@ -231,7 +231,7 @@ func (o ListOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *List) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The name of the list.
+// The name of the list. **Modifying this attribute will force creation of a new resource.**
 func (o ListOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *List) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

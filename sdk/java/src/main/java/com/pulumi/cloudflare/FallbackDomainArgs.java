@@ -9,6 +9,8 @@ import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class FallbackDomainArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,33 +18,40 @@ public final class FallbackDomainArgs extends com.pulumi.resources.ResourceArgs 
     public static final FallbackDomainArgs Empty = new FallbackDomainArgs();
 
     /**
-     * The account to which the device posture rule should be added.
+     * The account identifier to target for the resource.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account to which the device posture rule should be added.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
 
-    /**
-     * The value of the domain attributes (refer to the nested schema).
-     * 
-     */
     @Import(name="domains", required=true)
     private Output<List<FallbackDomainDomainArgs>> domains;
 
-    /**
-     * @return The value of the domain attributes (refer to the nested schema).
-     * 
-     */
     public Output<List<FallbackDomainDomainArgs>> domains() {
         return this.domains;
+    }
+
+    /**
+     * The settings policy for which to configure this fallback domain policy.
+     * 
+     */
+    @Import(name="policyId")
+    private @Nullable Output<String> policyId;
+
+    /**
+     * @return The settings policy for which to configure this fallback domain policy.
+     * 
+     */
+    public Optional<Output<String>> policyId() {
+        return Optional.ofNullable(this.policyId);
     }
 
     private FallbackDomainArgs() {}
@@ -50,6 +59,7 @@ public final class FallbackDomainArgs extends com.pulumi.resources.ResourceArgs 
     private FallbackDomainArgs(FallbackDomainArgs $) {
         this.accountId = $.accountId;
         this.domains = $.domains;
+        this.policyId = $.policyId;
     }
 
     public static Builder builder() {
@@ -71,7 +81,7 @@ public final class FallbackDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accountId The account to which the device posture rule should be added.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -82,7 +92,7 @@ public final class FallbackDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accountId The account to which the device posture rule should be added.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -91,35 +101,38 @@ public final class FallbackDomainArgs extends com.pulumi.resources.ResourceArgs 
             return accountId(Output.of(accountId));
         }
 
-        /**
-         * @param domains The value of the domain attributes (refer to the nested schema).
-         * 
-         * @return builder
-         * 
-         */
         public Builder domains(Output<List<FallbackDomainDomainArgs>> domains) {
             $.domains = domains;
             return this;
         }
 
-        /**
-         * @param domains The value of the domain attributes (refer to the nested schema).
-         * 
-         * @return builder
-         * 
-         */
         public Builder domains(List<FallbackDomainDomainArgs> domains) {
             return domains(Output.of(domains));
         }
 
+        public Builder domains(FallbackDomainDomainArgs... domains) {
+            return domains(List.of(domains));
+        }
+
         /**
-         * @param domains The value of the domain attributes (refer to the nested schema).
+         * @param policyId The settings policy for which to configure this fallback domain policy.
          * 
          * @return builder
          * 
          */
-        public Builder domains(FallbackDomainDomainArgs... domains) {
-            return domains(List.of(domains));
+        public Builder policyId(@Nullable Output<String> policyId) {
+            $.policyId = policyId;
+            return this;
+        }
+
+        /**
+         * @param policyId The settings policy for which to configure this fallback domain policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyId(String policyId) {
+            return policyId(Output.of(policyId));
         }
 
         public FallbackDomainArgs build() {

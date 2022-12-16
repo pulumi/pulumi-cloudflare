@@ -74,11 +74,11 @@ export class WaitingRoomRules extends pulumi.CustomResource {
      */
     public readonly rules!: pulumi.Output<outputs.WaitingRoomRulesRule[] | undefined>;
     /**
-     * The Waiting Room ID the rules should apply to.
+     * The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly waitingRoomId!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -124,11 +124,11 @@ export interface WaitingRoomRulesState {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.WaitingRoomRulesRule>[]>;
     /**
-     * The Waiting Room ID the rules should apply to.
+     * The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
      */
     waitingRoomId?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -142,11 +142,11 @@ export interface WaitingRoomRulesArgs {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.WaitingRoomRulesRule>[]>;
     /**
-     * The Waiting Room ID the rules should apply to.
+     * The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
      */
     waitingRoomId: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId: pulumi.Input<string>;
 }

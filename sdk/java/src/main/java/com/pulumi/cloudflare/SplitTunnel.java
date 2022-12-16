@@ -13,105 +13,75 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a Cloudflare Split Tunnel resource. Split tunnels are used to either
  * include or exclude lists of routes from the WARP client&#39;s tunnel.
  * 
- * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.SplitTunnel;
- * import com.pulumi.cloudflare.SplitTunnelArgs;
- * import com.pulumi.cloudflare.inputs.SplitTunnelTunnelArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleSplitTunnelExclude = new SplitTunnel(&#34;exampleSplitTunnelExclude&#34;, SplitTunnelArgs.builder()        
- *             .accountId(&#34;1d5fdc9e88c8a8c4518b068cd94331fe&#34;)
- *             .mode(&#34;exclude&#34;)
- *             .tunnels(SplitTunnelTunnelArgs.builder()
- *                 .description(&#34;example domain&#34;)
- *                 .host(&#34;*.example.com&#34;)
- *                 .build())
- *             .build());
- * 
- *         var exampleSplitTunnelInclude = new SplitTunnel(&#34;exampleSplitTunnelInclude&#34;, SplitTunnelArgs.builder()        
- *             .accountId(&#34;1d5fdc9e88c8a8c4518b068cd94331fe&#34;)
- *             .mode(&#34;include&#34;)
- *             .tunnels(SplitTunnelTunnelArgs.builder()
- *                 .description(&#34;example domain&#34;)
- *                 .host(&#34;*.example.com&#34;)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
- * Split Tunnels can be imported using the account identifer and mode.
+ * Split Tunnels for default device policies must use &#34;default&#34; as the policy ID.
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/splitTunnel:SplitTunnel example 1d5fdc9e88c8a8c4518b068cd94331fe/exclude
+ *  $ pulumi import cloudflare:index/splitTunnel:SplitTunnel example &lt;account_id&gt;/&lt;policy_id&gt;/&lt;mode&gt;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/splitTunnel:SplitTunnel")
 public class SplitTunnel extends com.pulumi.resources.CustomResource {
     /**
-     * The account to which the device posture rule should be added.
+     * The account identifier to target for the resource.
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
-     * @return The account to which the device posture rule should be added.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * The split tunnel mode. Valid values are `include` or `exclude`.
+     * The mode of the split tunnel policy. Available values: `include`, `exclude`.
      * 
      */
     @Export(name="mode", type=String.class, parameters={})
     private Output<String> mode;
 
     /**
-     * @return The split tunnel mode. Valid values are `include` or `exclude`.
+     * @return The mode of the split tunnel policy. Available values: `include`, `exclude`.
      * 
      */
     public Output<String> mode() {
         return this.mode;
     }
     /**
-     * The value of the tunnel attributes (refer to the nested schema).
+     * The settings policy for which to configure this split tunnel policy.
+     * 
+     */
+    @Export(name="policyId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> policyId;
+
+    /**
+     * @return The settings policy for which to configure this split tunnel policy.
+     * 
+     */
+    public Output<Optional<String>> policyId() {
+        return Codegen.optional(this.policyId);
+    }
+    /**
+     * The value of the tunnel attributes.
      * 
      */
     @Export(name="tunnels", type=List.class, parameters={SplitTunnelTunnel.class})
     private Output<List<SplitTunnelTunnel>> tunnels;
 
     /**
-     * @return The value of the tunnel attributes (refer to the nested schema).
+     * @return The value of the tunnel attributes.
      * 
      */
     public Output<List<SplitTunnelTunnel>> tunnels() {
