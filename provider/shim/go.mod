@@ -7,13 +7,13 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.24.1
 )
 
-replace github.com/cloudflare/terraform-provider-cloudflare => github.com/pulumi/terraform-provider-cloudflare v1.18.2-0.20221216193233-72066bb01873
+replace github.com/cloudflare/terraform-provider-cloudflare => github.com/pulumi/terraform-provider-cloudflare v1.18.2-0.20230109200818-b5da5489458f
 
 require (
 	github.com/MakeNowJust/heredoc/v2 v2.0.1 // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/apparentlymart/go-textseg/v13 v13.0.0 // indirect
-	github.com/cloudflare/cloudflare-go v0.56.0 // indirect
+	github.com/cloudflare/cloudflare-go v0.57.1 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect

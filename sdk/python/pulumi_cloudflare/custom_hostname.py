@@ -18,6 +18,7 @@ class CustomHostnameArgs:
     def __init__(__self__, *,
                  hostname: pulumi.Input[str],
                  zone_id: pulumi.Input[str],
+                 custom_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  custom_origin_server: Optional[pulumi.Input[str]] = None,
                  custom_origin_sni: Optional[pulumi.Input[str]] = None,
                  ssls: Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]] = None,
@@ -26,6 +27,7 @@ class CustomHostnameArgs:
         The set of arguments for constructing a CustomHostname resource.
         :param pulumi.Input[str] hostname: Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_metadata: Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
         :param pulumi.Input[str] custom_origin_server: The custom origin server used for certificates.
         :param pulumi.Input[str] custom_origin_sni: The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
         :param pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]] ssls: SSL configuration of the certificate.
@@ -33,6 +35,8 @@ class CustomHostnameArgs:
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "zone_id", zone_id)
+        if custom_metadata is not None:
+            pulumi.set(__self__, "custom_metadata", custom_metadata)
         if custom_origin_server is not None:
             pulumi.set(__self__, "custom_origin_server", custom_origin_server)
         if custom_origin_sni is not None:
@@ -65,6 +69,18 @@ class CustomHostnameArgs:
     @zone_id.setter
     def zone_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter(name="customMetadata")
+    def custom_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+        """
+        return pulumi.get(self, "custom_metadata")
+
+    @custom_metadata.setter
+    def custom_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_metadata", value)
 
     @property
     @pulumi.getter(name="customOriginServer")
@@ -118,6 +134,7 @@ class CustomHostnameArgs:
 @pulumi.input_type
 class _CustomHostnameState:
     def __init__(__self__, *,
+                 custom_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  custom_origin_server: Optional[pulumi.Input[str]] = None,
                  custom_origin_sni: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
@@ -129,6 +146,7 @@ class _CustomHostnameState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CustomHostname resources.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_metadata: Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
         :param pulumi.Input[str] custom_origin_server: The custom origin server used for certificates.
         :param pulumi.Input[str] custom_origin_sni: The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
         :param pulumi.Input[str] hostname: Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
@@ -137,6 +155,8 @@ class _CustomHostnameState:
         :param pulumi.Input[bool] wait_for_ssl_pending_validation: Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
+        if custom_metadata is not None:
+            pulumi.set(__self__, "custom_metadata", custom_metadata)
         if custom_origin_server is not None:
             pulumi.set(__self__, "custom_origin_server", custom_origin_server)
         if custom_origin_sni is not None:
@@ -155,6 +175,18 @@ class _CustomHostnameState:
             pulumi.set(__self__, "wait_for_ssl_pending_validation", wait_for_ssl_pending_validation)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="customMetadata")
+    def custom_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+        """
+        return pulumi.get(self, "custom_metadata")
+
+    @custom_metadata.setter
+    def custom_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_metadata", value)
 
     @property
     @pulumi.getter(name="customOriginServer")
@@ -264,6 +296,7 @@ class CustomHostname(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  custom_origin_server: Optional[pulumi.Input[str]] = None,
                  custom_origin_sni: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
@@ -296,6 +329,7 @@ class CustomHostname(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_metadata: Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
         :param pulumi.Input[str] custom_origin_server: The custom origin server used for certificates.
         :param pulumi.Input[str] custom_origin_sni: The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
         :param pulumi.Input[str] hostname: Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
@@ -347,6 +381,7 @@ class CustomHostname(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  custom_origin_server: Optional[pulumi.Input[str]] = None,
                  custom_origin_sni: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
@@ -362,6 +397,7 @@ class CustomHostname(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CustomHostnameArgs.__new__(CustomHostnameArgs)
 
+            __props__.__dict__["custom_metadata"] = custom_metadata
             __props__.__dict__["custom_origin_server"] = custom_origin_server
             __props__.__dict__["custom_origin_sni"] = custom_origin_sni
             if hostname is None and not opts.urn:
@@ -385,6 +421,7 @@ class CustomHostname(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            custom_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             custom_origin_server: Optional[pulumi.Input[str]] = None,
             custom_origin_sni: Optional[pulumi.Input[str]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
@@ -401,6 +438,7 @@ class CustomHostname(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_metadata: Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
         :param pulumi.Input[str] custom_origin_server: The custom origin server used for certificates.
         :param pulumi.Input[str] custom_origin_sni: The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
         :param pulumi.Input[str] hostname: Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
@@ -413,6 +451,7 @@ class CustomHostname(pulumi.CustomResource):
 
         __props__ = _CustomHostnameState.__new__(_CustomHostnameState)
 
+        __props__.__dict__["custom_metadata"] = custom_metadata
         __props__.__dict__["custom_origin_server"] = custom_origin_server
         __props__.__dict__["custom_origin_sni"] = custom_origin_sni
         __props__.__dict__["hostname"] = hostname
@@ -423,6 +462,14 @@ class CustomHostname(pulumi.CustomResource):
         __props__.__dict__["wait_for_ssl_pending_validation"] = wait_for_ssl_pending_validation
         __props__.__dict__["zone_id"] = zone_id
         return CustomHostname(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="customMetadata")
+    def custom_metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+        """
+        return pulumi.get(self, "custom_metadata")
 
     @property
     @pulumi.getter(name="customOriginServer")

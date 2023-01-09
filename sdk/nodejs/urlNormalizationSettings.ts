@@ -57,7 +57,7 @@ export class UrlNormalizationSettings extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -110,7 +110,7 @@ export interface UrlNormalizationSettingsState {
      */
     type?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -128,7 +128,7 @@ export interface UrlNormalizationSettingsArgs {
      */
     type: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId: pulumi.Input<string>;
 }

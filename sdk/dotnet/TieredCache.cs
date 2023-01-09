@@ -10,7 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource to manage URL Normalization Settings.
+    /// Provides a resource, that manages Cloudflare Tiered Cache settings.
+    /// This allows you to adjust topologies for your zone.
     /// 
     /// ## Example Usage
     /// 
@@ -21,30 +22,23 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.UrlNormalizationSettings("example", new()
+    ///     var example = new Cloudflare.TieredCache("example", new()
     ///     {
-    ///         Scope = "incoming",
-    ///         Type = "cloudflare",
+    ///         CacheType = "smart",
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });
     /// ```
     /// </summary>
-    [CloudflareResourceType("cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings")]
-    public partial class UrlNormalizationSettings : global::Pulumi.CustomResource
+    [CloudflareResourceType("cloudflare:index/tieredCache:TieredCache")]
+    public partial class TieredCache : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The scope of the URL normalization.
+        /// The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
         /// </summary>
-        [Output("scope")]
-        public Output<string> Scope { get; private set; } = null!;
-
-        /// <summary>
-        /// The type of URL normalization performed by Cloudflare.
-        /// </summary>
-        [Output("type")]
-        public Output<string> Type { get; private set; } = null!;
+        [Output("cacheType")]
+        public Output<string> CacheType { get; private set; } = null!;
 
         /// <summary>
         /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -54,19 +48,19 @@ namespace Pulumi.Cloudflare
 
 
         /// <summary>
-        /// Create a UrlNormalizationSettings resource with the given unique name, arguments, and options.
+        /// Create a TieredCache resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public UrlNormalizationSettings(string name, UrlNormalizationSettingsArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings", name, args ?? new UrlNormalizationSettingsArgs(), MakeResourceOptions(options, ""))
+        public TieredCache(string name, TieredCacheArgs args, CustomResourceOptions? options = null)
+            : base("cloudflare:index/tieredCache:TieredCache", name, args ?? new TieredCacheArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private UrlNormalizationSettings(string name, Input<string> id, UrlNormalizationSettingsState? state = null, CustomResourceOptions? options = null)
-            : base("cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings", name, state, MakeResourceOptions(options, id))
+        private TieredCache(string name, Input<string> id, TieredCacheState? state = null, CustomResourceOptions? options = null)
+            : base("cloudflare:index/tieredCache:TieredCache", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -82,7 +76,7 @@ namespace Pulumi.Cloudflare
             return merged;
         }
         /// <summary>
-        /// Get an existing UrlNormalizationSettings resource's state with the given name, ID, and optional extra
+        /// Get an existing TieredCache resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -90,25 +84,19 @@ namespace Pulumi.Cloudflare
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static UrlNormalizationSettings Get(string name, Input<string> id, UrlNormalizationSettingsState? state = null, CustomResourceOptions? options = null)
+        public static TieredCache Get(string name, Input<string> id, TieredCacheState? state = null, CustomResourceOptions? options = null)
         {
-            return new UrlNormalizationSettings(name, id, state, options);
+            return new TieredCache(name, id, state, options);
         }
     }
 
-    public sealed class UrlNormalizationSettingsArgs : global::Pulumi.ResourceArgs
+    public sealed class TieredCacheArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The scope of the URL normalization.
+        /// The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
         /// </summary>
-        [Input("scope", required: true)]
-        public Input<string> Scope { get; set; } = null!;
-
-        /// <summary>
-        /// The type of URL normalization performed by Cloudflare.
-        /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        [Input("cacheType", required: true)]
+        public Input<string> CacheType { get; set; } = null!;
 
         /// <summary>
         /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -116,25 +104,19 @@ namespace Pulumi.Cloudflare
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
 
-        public UrlNormalizationSettingsArgs()
+        public TieredCacheArgs()
         {
         }
-        public static new UrlNormalizationSettingsArgs Empty => new UrlNormalizationSettingsArgs();
+        public static new TieredCacheArgs Empty => new TieredCacheArgs();
     }
 
-    public sealed class UrlNormalizationSettingsState : global::Pulumi.ResourceArgs
+    public sealed class TieredCacheState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The scope of the URL normalization.
+        /// The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
         /// </summary>
-        [Input("scope")]
-        public Input<string>? Scope { get; set; }
-
-        /// <summary>
-        /// The type of URL normalization performed by Cloudflare.
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("cacheType")]
+        public Input<string>? CacheType { get; set; }
 
         /// <summary>
         /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -142,9 +124,9 @@ namespace Pulumi.Cloudflare
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 
-        public UrlNormalizationSettingsState()
+        public TieredCacheState()
         {
         }
-        public static new UrlNormalizationSettingsState Empty => new UrlNormalizationSettingsState();
+        public static new TieredCacheState Empty => new TieredCacheState();
     }
 }

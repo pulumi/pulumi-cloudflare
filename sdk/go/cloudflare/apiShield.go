@@ -60,9 +60,6 @@ func NewApiShield(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AuthIdCharacteristics == nil {
-		return nil, errors.New("invalid value for required argument 'AuthIdCharacteristics'")
-	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}

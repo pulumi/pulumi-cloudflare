@@ -32,12 +32,14 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var myNamespace = new Cloudflare.WorkersKvNamespace("myNamespace", new()
     ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Title = "example",
     ///     });
     /// 
     ///     // Sets the script with the name "script_1"
     ///     var myScript = new Cloudflare.WorkerScript("myScript", new()
     ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Name = "script_1",
     ///         Content = File.ReadAllText("script.js"),
     ///         KvNamespaceBindings = new[]
@@ -105,12 +107,18 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/workerScript:WorkerScript example &lt;script_name&gt;
+    ///  $ pulumi import cloudflare:index/workerScript:WorkerScript example &lt;account_id&gt;/&lt;script_name&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workerScript:WorkerScript")]
     public partial class WorkerScript : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
+        [Output("accountId")]
+        public Output<string?> AccountId { get; private set; } = null!;
+
         [Output("analyticsEngineBindings")]
         public Output<ImmutableArray<Outputs.WorkerScriptAnalyticsEngineBinding>> AnalyticsEngineBindings { get; private set; } = null!;
 
@@ -196,6 +204,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class WorkerScriptArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
         [Input("analyticsEngineBindings")]
         private InputList<Inputs.WorkerScriptAnalyticsEngineBindingArgs>? _analyticsEngineBindings;
         public InputList<Inputs.WorkerScriptAnalyticsEngineBindingArgs> AnalyticsEngineBindings
@@ -278,6 +292,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class WorkerScriptState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
         [Input("analyticsEngineBindings")]
         private InputList<Inputs.WorkerScriptAnalyticsEngineBindingGetArgs>? _analyticsEngineBindings;
         public InputList<Inputs.WorkerScriptAnalyticsEngineBindingGetArgs> AnalyticsEngineBindings

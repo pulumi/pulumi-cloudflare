@@ -3,21 +3,19 @@
 
 package com.pulumi.cloudflare;
 
-import com.pulumi.cloudflare.ApiShieldArgs;
+import com.pulumi.cloudflare.TieredCacheArgs;
 import com.pulumi.cloudflare.Utilities;
-import com.pulumi.cloudflare.inputs.ApiShieldState;
-import com.pulumi.cloudflare.outputs.ApiShieldAuthIdCharacteristic;
+import com.pulumi.cloudflare.inputs.TieredCacheState;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource to manage API Shield configurations.
+ * Provides a resource, that manages Cloudflare Tiered Cache settings.
+ * This allows you to adjust topologies for your zone.
  * 
  * ## Example Usage
  * ```java
@@ -26,9 +24,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ApiShield;
- * import com.pulumi.cloudflare.ApiShieldArgs;
- * import com.pulumi.cloudflare.inputs.ApiShieldAuthIdCharacteristicArgs;
+ * import com.pulumi.cloudflare.TieredCache;
+ * import com.pulumi.cloudflare.TieredCacheArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -42,11 +39,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApiShield(&#34;example&#34;, ApiShieldArgs.builder()        
- *             .authIdCharacteristics(ApiShieldAuthIdCharacteristicArgs.builder()
- *                 .name(&#34;my-example-header&#34;)
- *                 .type(&#34;header&#34;)
- *                 .build())
+ *         var example = new TieredCache(&#34;example&#34;, TieredCacheArgs.builder()        
+ *             .cacheType(&#34;smart&#34;)
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
@@ -55,21 +49,21 @@ import javax.annotation.Nullable;
  * ```
  * 
  */
-@ResourceType(type="cloudflare:index/apiShield:ApiShield")
-public class ApiShield extends com.pulumi.resources.CustomResource {
+@ResourceType(type="cloudflare:index/tieredCache:TieredCache")
+public class TieredCache extends com.pulumi.resources.CustomResource {
     /**
-     * Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
+     * The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
      * 
      */
-    @Export(name="authIdCharacteristics", type=List.class, parameters={ApiShieldAuthIdCharacteristic.class})
-    private Output</* @Nullable */ List<ApiShieldAuthIdCharacteristic>> authIdCharacteristics;
+    @Export(name="cacheType", type=String.class, parameters={})
+    private Output<String> cacheType;
 
     /**
-     * @return Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
+     * @return The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
      * 
      */
-    public Output<Optional<List<ApiShieldAuthIdCharacteristic>>> authIdCharacteristics() {
-        return Codegen.optional(this.authIdCharacteristics);
+    public Output<String> cacheType() {
+        return this.cacheType;
     }
     /**
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -90,15 +84,15 @@ public class ApiShield extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ApiShield(String name) {
-        this(name, ApiShieldArgs.Empty);
+    public TieredCache(String name) {
+        this(name, TieredCacheArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ApiShield(String name, ApiShieldArgs args) {
+    public TieredCache(String name, TieredCacheArgs args) {
         this(name, args, null);
     }
     /**
@@ -107,12 +101,12 @@ public class ApiShield extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ApiShield(String name, ApiShieldArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/apiShield:ApiShield", name, args == null ? ApiShieldArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TieredCache(String name, TieredCacheArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/tieredCache:TieredCache", name, args == null ? TieredCacheArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ApiShield(String name, Output<String> id, @Nullable ApiShieldState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/apiShield:ApiShield", name, state, makeResourceOptions(options, id));
+    private TieredCache(String name, Output<String> id, @Nullable TieredCacheState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/tieredCache:TieredCache", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -131,7 +125,7 @@ public class ApiShield extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ApiShield get(String name, Output<String> id, @Nullable ApiShieldState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new ApiShield(name, id, state, options);
+    public static TieredCache get(String name, Output<String> id, @Nullable TieredCacheState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new TieredCache(name, id, state, options);
     }
 }

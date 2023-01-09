@@ -47,7 +47,7 @@ type UrlNormalizationSettings struct {
 	Scope pulumi.StringOutput `pulumi:"scope"`
 	// The type of URL normalization performed by Cloudflare.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -93,7 +93,7 @@ type urlNormalizationSettingsState struct {
 	Scope *string `pulumi:"scope"`
 	// The type of URL normalization performed by Cloudflare.
 	Type *string `pulumi:"type"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -102,7 +102,7 @@ type UrlNormalizationSettingsState struct {
 	Scope pulumi.StringPtrInput
 	// The type of URL normalization performed by Cloudflare.
 	Type pulumi.StringPtrInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -115,7 +115,7 @@ type urlNormalizationSettingsArgs struct {
 	Scope string `pulumi:"scope"`
 	// The type of URL normalization performed by Cloudflare.
 	Type string `pulumi:"type"`
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -125,7 +125,7 @@ type UrlNormalizationSettingsArgs struct {
 	Scope pulumi.StringInput
 	// The type of URL normalization performed by Cloudflare.
 	Type pulumi.StringInput
-	// The zone identifier to target for the resource.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
 }
 
@@ -226,7 +226,7 @@ func (o UrlNormalizationSettingsOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *UrlNormalizationSettings) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource.
+// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o UrlNormalizationSettingsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *UrlNormalizationSettings) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

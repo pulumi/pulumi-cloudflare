@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Zone DNSSEC resource.
+// Provides a Cloudflare resource to create and modify zone DNSSEC settings.
 //
 // ## Example Usage
 //
@@ -47,15 +47,11 @@ import (
 //
 // ## Import
 //
-// Zone DNSSEC resource can be imported using a zone ID, e.g.
-//
 // ```sh
 //
-//	$ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example d41d8cd98f00b204e9800998ecf8427e
+//	$ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example <zone_id>
 //
 // ```
-//
-//	where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
 type ZoneDnssec struct {
 	pulumi.CustomResourceState
 
@@ -81,7 +77,7 @@ type ZoneDnssec struct {
 	PublicKey pulumi.StringOutput `pulumi:"publicKey"`
 	// The status of the Zone DNSSEC.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The zone id for the zone.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -139,7 +135,7 @@ type zoneDnssecState struct {
 	PublicKey *string `pulumi:"publicKey"`
 	// The status of the Zone DNSSEC.
 	Status *string `pulumi:"status"`
-	// The zone id for the zone.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -166,7 +162,7 @@ type ZoneDnssecState struct {
 	PublicKey pulumi.StringPtrInput
 	// The status of the Zone DNSSEC.
 	Status pulumi.StringPtrInput
-	// The zone id for the zone.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -177,7 +173,7 @@ func (ZoneDnssecState) ElementType() reflect.Type {
 type zoneDnssecArgs struct {
 	// Zone DNSSEC updated time.
 	ModifiedOn *string `pulumi:"modifiedOn"`
-	// The zone id for the zone.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -185,7 +181,7 @@ type zoneDnssecArgs struct {
 type ZoneDnssecArgs struct {
 	// Zone DNSSEC updated time.
 	ModifiedOn pulumi.StringPtrInput
-	// The zone id for the zone.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
 }
 
@@ -331,7 +327,7 @@ func (o ZoneDnssecOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneDnssec) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The zone id for the zone.
+// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o ZoneDnssecOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneDnssec) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

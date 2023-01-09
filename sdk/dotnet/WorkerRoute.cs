@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare worker route resource. A route will also require a `cloudflare.WorkerScript`. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+    /// Provides a Cloudflare worker route resource. A route will also require a `cloudflare.WorkerScript`.
+    /// 
+    /// &gt; This resource uses the Cloudflare account APIs. This requires setting the
+    /// `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument
+    /// if you do not explicitly set the resource level `account_id` value.
     /// 
     /// ## Example Usage
     /// 
@@ -27,7 +31,7 @@ namespace Pulumi.Cloudflare
     ///     // Runs the specified worker script for all URLs that match `example.com/*`
     ///     var myRoute = new Cloudflare.WorkerRoute("myRoute", new()
     ///     {
-    ///         ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Pattern = "example.com/*",
     ///         ScriptName = myScript.Name,
     ///     });
@@ -37,31 +41,27 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Records can be imported using a composite ID formed of zone ID and route ID, e.g.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/workerRoute:WorkerRoute default d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac
+    ///  $ pulumi import cloudflare:index/workerRoute:WorkerRoute example &lt;zone_id&gt;/&lt;route_id&gt;
     /// ```
-    /// 
-    ///  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `9a7806061c88ada191ed06f989cc3dac` - route ID as returned by [API](https://api.cloudflare.com/#worker-filters-list-filters)
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workerRoute:WorkerRoute")]
     public partial class WorkerRoute : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+        /// The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
         /// </summary>
         [Output("pattern")]
         public Output<string> Pattern { get; private set; } = null!;
 
         /// <summary>
-        /// Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+        /// Worker script name to invoke for requests that match the route pattern.
         /// </summary>
         [Output("scriptName")]
         public Output<string?> ScriptName { get; private set; } = null!;
 
         /// <summary>
-        /// The zone ID to add the route to.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -113,19 +113,19 @@ namespace Pulumi.Cloudflare
     public sealed class WorkerRouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+        /// The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
         /// </summary>
         [Input("pattern", required: true)]
         public Input<string> Pattern { get; set; } = null!;
 
         /// <summary>
-        /// Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+        /// Worker script name to invoke for requests that match the route pattern.
         /// </summary>
         [Input("scriptName")]
         public Input<string>? ScriptName { get; set; }
 
         /// <summary>
-        /// The zone ID to add the route to.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -139,19 +139,19 @@ namespace Pulumi.Cloudflare
     public sealed class WorkerRouteState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+        /// The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
         /// </summary>
         [Input("pattern")]
         public Input<string>? Pattern { get; set; }
 
         /// <summary>
-        /// Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+        /// Worker script name to invoke for requests that match the route pattern.
         /// </summary>
         [Input("scriptName")]
         public Input<string>? ScriptName { get; set; }
 
         /// <summary>
-        /// The zone ID to add the route to.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

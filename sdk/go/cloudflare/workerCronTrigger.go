@@ -16,6 +16,10 @@ import (
 // schedule. Worker Cron Triggers are ideal for running periodic jobs for
 // maintenance or calling third-party APIs to collect up-to-date data.
 //
+// > This resource uses the Cloudflare account APIs. This requires setting the
+// `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument
+// if you do not explicitly set the resource level `accountId` value.
+//
 // ## Example Usage
 //
 // ```go
@@ -41,13 +45,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			exampleScript, err := cloudflare.NewWorkerScript(ctx, "exampleScript", &cloudflare.WorkerScriptArgs{
-//				Name:    pulumi.String("example-script"),
-//				Content: readFileOrPanic("path/to/my.js"),
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:      pulumi.String("example-script"),
+//				Content:   readFileOrPanic("path/to/my.js"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cloudflare.NewWorkerCronTrigger(ctx, "exampleTrigger", &cloudflare.WorkerCronTriggerArgs{
+//				AccountId:  pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				ScriptName: exampleScript.Name,
 //				Schedules: pulumi.StringArray{
 //					pulumi.String("*/5 * * * *"),
@@ -65,11 +71,9 @@ import (
 //
 // ## Import
 //
-// Worker Cron Triggers can be imported using the script name of the Worker they are targeting.
-//
 // ```sh
 //
-//	$ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example my-script
+//	$ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example <account_id>/<script_name>
 //
 // ```
 type WorkerCronTrigger struct {
@@ -77,9 +81,9 @@ type WorkerCronTrigger struct {
 
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// List of cron expressions to execute the Worker Script
+	// Cron expressions to execute the Worker script.
 	Schedules pulumi.StringArrayOutput `pulumi:"schedules"`
-	// Worker script to target for the schedules
+	// Worker script to target for the schedules.
 	ScriptName pulumi.StringOutput `pulumi:"scriptName"`
 }
 
@@ -123,18 +127,18 @@ func GetWorkerCronTrigger(ctx *pulumi.Context,
 type workerCronTriggerState struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// List of cron expressions to execute the Worker Script
+	// Cron expressions to execute the Worker script.
 	Schedules []string `pulumi:"schedules"`
-	// Worker script to target for the schedules
+	// Worker script to target for the schedules.
 	ScriptName *string `pulumi:"scriptName"`
 }
 
 type WorkerCronTriggerState struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// List of cron expressions to execute the Worker Script
+	// Cron expressions to execute the Worker script.
 	Schedules pulumi.StringArrayInput
-	// Worker script to target for the schedules
+	// Worker script to target for the schedules.
 	ScriptName pulumi.StringPtrInput
 }
 
@@ -145,9 +149,9 @@ func (WorkerCronTriggerState) ElementType() reflect.Type {
 type workerCronTriggerArgs struct {
 	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
-	// List of cron expressions to execute the Worker Script
+	// Cron expressions to execute the Worker script.
 	Schedules []string `pulumi:"schedules"`
-	// Worker script to target for the schedules
+	// Worker script to target for the schedules.
 	ScriptName string `pulumi:"scriptName"`
 }
 
@@ -155,9 +159,9 @@ type workerCronTriggerArgs struct {
 type WorkerCronTriggerArgs struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// List of cron expressions to execute the Worker Script
+	// Cron expressions to execute the Worker script.
 	Schedules pulumi.StringArrayInput
-	// Worker script to target for the schedules
+	// Worker script to target for the schedules.
 	ScriptName pulumi.StringInput
 }
 
@@ -253,12 +257,12 @@ func (o WorkerCronTriggerOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerCronTrigger) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// List of cron expressions to execute the Worker Script
+// Cron expressions to execute the Worker script.
 func (o WorkerCronTriggerOutput) Schedules() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkerCronTrigger) pulumi.StringArrayOutput { return v.Schedules }).(pulumi.StringArrayOutput)
 }
 
-// Worker script to target for the schedules
+// Worker script to target for the schedules.
 func (o WorkerCronTriggerOutput) ScriptName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerCronTrigger) pulumi.StringOutput { return v.ScriptName }).(pulumi.StringOutput)
 }

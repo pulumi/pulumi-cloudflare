@@ -9,6 +9,8 @@ import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ApiShieldArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,15 +21,15 @@ public final class ApiShieldArgs extends com.pulumi.resources.ResourceArgs {
      * Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
      * 
      */
-    @Import(name="authIdCharacteristics", required=true)
-    private Output<List<ApiShieldAuthIdCharacteristicArgs>> authIdCharacteristics;
+    @Import(name="authIdCharacteristics")
+    private @Nullable Output<List<ApiShieldAuthIdCharacteristicArgs>> authIdCharacteristics;
 
     /**
      * @return Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
      * 
      */
-    public Output<List<ApiShieldAuthIdCharacteristicArgs>> authIdCharacteristics() {
-        return this.authIdCharacteristics;
+    public Optional<Output<List<ApiShieldAuthIdCharacteristicArgs>>> authIdCharacteristics() {
+        return Optional.ofNullable(this.authIdCharacteristics);
     }
 
     /**
@@ -76,7 +78,7 @@ public final class ApiShieldArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder authIdCharacteristics(Output<List<ApiShieldAuthIdCharacteristicArgs>> authIdCharacteristics) {
+        public Builder authIdCharacteristics(@Nullable Output<List<ApiShieldAuthIdCharacteristicArgs>> authIdCharacteristics) {
             $.authIdCharacteristics = authIdCharacteristics;
             return this;
         }
@@ -123,7 +125,6 @@ public final class ApiShieldArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ApiShieldArgs build() {
-            $.authIdCharacteristics = Objects.requireNonNull($.authIdCharacteristics, "expected parameter 'authIdCharacteristics' to be non-null");
             $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
             return $;
         }

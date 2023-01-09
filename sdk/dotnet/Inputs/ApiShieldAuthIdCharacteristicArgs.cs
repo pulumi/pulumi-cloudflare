@@ -15,14 +15,14 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// The name of the characteristic.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The type of characteristic. Available values: `header`, `cookie`.
         /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public ApiShieldAuthIdCharacteristicArgs()
         {

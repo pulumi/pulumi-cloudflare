@@ -59,6 +59,10 @@ export class CustomHostname extends pulumi.CustomResource {
     }
 
     /**
+     * Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+     */
+    public readonly customMetadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The custom origin server used for certificates.
      */
     public readonly customOriginServer!: pulumi.Output<string | undefined>;
@@ -102,6 +106,7 @@ export class CustomHostname extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomHostnameState | undefined;
+            resourceInputs["customMetadata"] = state ? state.customMetadata : undefined;
             resourceInputs["customOriginServer"] = state ? state.customOriginServer : undefined;
             resourceInputs["customOriginSni"] = state ? state.customOriginSni : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
@@ -119,6 +124,7 @@ export class CustomHostname extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            resourceInputs["customMetadata"] = args ? args.customMetadata : undefined;
             resourceInputs["customOriginServer"] = args ? args.customOriginServer : undefined;
             resourceInputs["customOriginSni"] = args ? args.customOriginSni : undefined;
             resourceInputs["hostname"] = args ? args.hostname : undefined;
@@ -138,6 +144,10 @@ export class CustomHostname extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CustomHostname resources.
  */
 export interface CustomHostnameState {
+    /**
+     * Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+     */
+    customMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The custom origin server used for certificates.
      */
@@ -174,6 +184,10 @@ export interface CustomHostnameState {
  * The set of arguments for constructing a CustomHostname resource.
  */
 export interface CustomHostnameArgs {
+    /**
+     * Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+     */
+    customMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The custom origin server used for certificates.
      */

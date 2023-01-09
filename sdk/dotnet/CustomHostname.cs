@@ -47,6 +47,12 @@ namespace Pulumi.Cloudflare
     public partial class CustomHostname : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+        /// </summary>
+        [Output("customMetadata")]
+        public Output<ImmutableDictionary<string, string>?> CustomMetadata { get; private set; } = null!;
+
+        /// <summary>
         /// The custom origin server used for certificates.
         /// </summary>
         [Output("customOriginServer")]
@@ -140,6 +146,18 @@ namespace Pulumi.Cloudflare
 
     public sealed class CustomHostnameArgs : global::Pulumi.ResourceArgs
     {
+        [Input("customMetadata")]
+        private InputMap<string>? _customMetadata;
+
+        /// <summary>
+        /// Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+        /// </summary>
+        public InputMap<string> CustomMetadata
+        {
+            get => _customMetadata ?? (_customMetadata = new InputMap<string>());
+            set => _customMetadata = value;
+        }
+
         /// <summary>
         /// The custom origin server used for certificates.
         /// </summary>
@@ -190,6 +208,18 @@ namespace Pulumi.Cloudflare
 
     public sealed class CustomHostnameState : global::Pulumi.ResourceArgs
     {
+        [Input("customMetadata")]
+        private InputMap<string>? _customMetadata;
+
+        /// <summary>
+        /// Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+        /// </summary>
+        public InputMap<string> CustomMetadata
+        {
+            get => _customMetadata ?? (_customMetadata = new InputMap<string>());
+            set => _customMetadata = value;
+        }
+
         /// <summary>
         /// The custom origin server used for certificates.
         /// </summary>

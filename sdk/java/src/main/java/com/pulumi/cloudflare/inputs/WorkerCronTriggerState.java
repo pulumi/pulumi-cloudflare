@@ -32,14 +32,14 @@ public final class WorkerCronTriggerState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * List of cron expressions to execute the Worker Script
+     * Cron expressions to execute the Worker script.
      * 
      */
     @Import(name="schedules")
     private @Nullable Output<List<String>> schedules;
 
     /**
-     * @return List of cron expressions to execute the Worker Script
+     * @return Cron expressions to execute the Worker script.
      * 
      */
     public Optional<Output<List<String>>> schedules() {
@@ -47,14 +47,14 @@ public final class WorkerCronTriggerState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Worker script to target for the schedules
+     * Worker script to target for the schedules.
      * 
      */
     @Import(name="scriptName")
     private @Nullable Output<String> scriptName;
 
     /**
-     * @return Worker script to target for the schedules
+     * @return Worker script to target for the schedules.
      * 
      */
     public Optional<Output<String>> scriptName() {
@@ -109,7 +109,7 @@ public final class WorkerCronTriggerState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param schedules List of cron expressions to execute the Worker Script
+         * @param schedules Cron expressions to execute the Worker script.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class WorkerCronTriggerState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param schedules List of cron expressions to execute the Worker Script
+         * @param schedules Cron expressions to execute the Worker script.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class WorkerCronTriggerState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param schedules List of cron expressions to execute the Worker Script
+         * @param schedules Cron expressions to execute the Worker script.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class WorkerCronTriggerState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scriptName Worker script to target for the schedules
+         * @param scriptName Worker script to target for the schedules.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class WorkerCronTriggerState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scriptName Worker script to target for the schedules
+         * @param scriptName Worker script to target for the schedules.
          * 
          * @return builder
          * 

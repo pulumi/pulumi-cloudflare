@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Zone DNSSEC resource.
+    /// Provides a Cloudflare resource to create and modify zone DNSSEC settings.
     /// 
     /// ## Example Usage
     /// 
@@ -36,13 +36,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Zone DNSSEC resource can be imported using a zone ID, e.g.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example d41d8cd98f00b204e9800998ecf8427e
+    ///  $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example &lt;zone_id&gt;
     /// ```
-    /// 
-    ///  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zoneDnssec:ZoneDnssec")]
     public partial class ZoneDnssec : global::Pulumi.CustomResource
@@ -114,7 +110,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The zone id for the zone.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -172,7 +168,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
-        /// The zone id for the zone.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -252,7 +248,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The zone id for the zone.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

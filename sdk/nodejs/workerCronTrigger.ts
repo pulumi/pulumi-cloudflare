@@ -10,6 +10,10 @@ import * as utilities from "./utilities";
  * schedule. Worker Cron Triggers are ideal for running periodic jobs for
  * maintenance or calling third-party APIs to collect up-to-date data.
  *
+ * > This resource uses the Cloudflare account APIs. This requires setting the
+ * `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument
+ * if you do not explicitly set the resource level `accountId` value.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,10 +22,12 @@ import * as utilities from "./utilities";
  * import * as fs from "fs";
  *
  * const exampleScript = new cloudflare.WorkerScript("exampleScript", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "example-script",
  *     content: fs.readFileSync("path/to/my.js"),
  * });
  * const exampleTrigger = new cloudflare.WorkerCronTrigger("exampleTrigger", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     scriptName: exampleScript.name,
  *     schedules: [
  *         "*&#47;5 * * * *",
@@ -32,10 +38,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Worker Cron Triggers can be imported using the script name of the Worker they are targeting.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example my-script
+ *  $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example <account_id>/<script_name>
  * ```
  */
 export class WorkerCronTrigger extends pulumi.CustomResource {
@@ -71,11 +75,11 @@ export class WorkerCronTrigger extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * List of cron expressions to execute the Worker Script
+     * Cron expressions to execute the Worker script.
      */
     public readonly schedules!: pulumi.Output<string[]>;
     /**
-     * Worker script to target for the schedules
+     * Worker script to target for the schedules.
      */
     public readonly scriptName!: pulumi.Output<string>;
 
@@ -124,11 +128,11 @@ export interface WorkerCronTriggerState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * List of cron expressions to execute the Worker Script
+     * Cron expressions to execute the Worker script.
      */
     schedules?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Worker script to target for the schedules
+     * Worker script to target for the schedules.
      */
     scriptName?: pulumi.Input<string>;
 }
@@ -142,11 +146,11 @@ export interface WorkerCronTriggerArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * List of cron expressions to execute the Worker Script
+     * Cron expressions to execute the Worker script.
      */
     schedules: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Worker script to target for the schedules
+     * Worker script to target for the schedules.
      */
     scriptName: pulumi.Input<string>;
 }

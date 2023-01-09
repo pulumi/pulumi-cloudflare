@@ -15,7 +15,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare worker route resource. A route will also require a `cloudflare.WorkerScript`. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+ * Provides a Cloudflare worker route resource. A route will also require a `cloudflare.WorkerScript`.
+ * 
+ * &gt; This resource uses the Cloudflare account APIs. This requires setting the
+ * `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument
+ * if you do not explicitly set the resource level `account_id` value.
  * 
  * ## Example Usage
  * ```java
@@ -43,7 +47,7 @@ import javax.annotation.Nullable;
  *         var myScript = new WorkerScript(&#34;myScript&#34;);
  * 
  *         var myRoute = new WorkerRoute(&#34;myRoute&#34;, WorkerRouteArgs.builder()        
- *             .zoneId(&#34;d41d8cd98f00b204e9800998ecf8427e&#34;)
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .pattern(&#34;example.com/*&#34;)
  *             .scriptName(myScript.name())
  *             .build());
@@ -54,54 +58,50 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Records can be imported using a composite ID formed of zone ID and route ID, e.g.
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/workerRoute:WorkerRoute default d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac
+ *  $ pulumi import cloudflare:index/workerRoute:WorkerRoute example &lt;zone_id&gt;/&lt;route_id&gt;
  * ```
- * 
- *  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `9a7806061c88ada191ed06f989cc3dac` - route ID as returned by [API](https://api.cloudflare.com/#worker-filters-list-filters)
  * 
  */
 @ResourceType(type="cloudflare:index/workerRoute:WorkerRoute")
 public class WorkerRoute extends com.pulumi.resources.CustomResource {
     /**
-     * The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+     * The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
      * 
      */
     @Export(name="pattern", type=String.class, parameters={})
     private Output<String> pattern;
 
     /**
-     * @return The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+     * @return The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
      * 
      */
     public Output<String> pattern() {
         return this.pattern;
     }
     /**
-     * Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+     * Worker script name to invoke for requests that match the route pattern.
      * 
      */
     @Export(name="scriptName", type=String.class, parameters={})
     private Output</* @Nullable */ String> scriptName;
 
     /**
-     * @return Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+     * @return Worker script name to invoke for requests that match the route pattern.
      * 
      */
     public Output<Optional<String>> scriptName() {
         return Codegen.optional(this.scriptName);
     }
     /**
-     * The zone ID to add the route to.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The zone ID to add the route to.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {

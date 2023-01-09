@@ -40,11 +40,9 @@ import (
 //			exampleCertRequest, err := tls.NewCertRequest(ctx, "exampleCertRequest", &tls.CertRequestArgs{
 //				KeyAlgorithm:  examplePrivateKey.Algorithm,
 //				PrivateKeyPem: examplePrivateKey.PrivateKeyPem,
-//				Subjects: tls.CertRequestSubjectArray{
-//					&tls.CertRequestSubjectArgs{
-//						CommonName:   pulumi.String(""),
-//						Organization: pulumi.String("Terraform Test"),
-//					},
+//				Subject: &tls.CertRequestSubjectArgs{
+//					CommonName:   pulumi.String(""),
+//					Organization: pulumi.String("Terraform Test"),
 //				},
 //			})
 //			if err != nil {

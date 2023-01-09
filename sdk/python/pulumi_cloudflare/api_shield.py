@@ -16,27 +16,16 @@ __all__ = ['ApiShieldArgs', 'ApiShield']
 @pulumi.input_type
 class ApiShieldArgs:
     def __init__(__self__, *,
-                 auth_id_characteristics: pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]],
-                 zone_id: pulumi.Input[str]):
+                 zone_id: pulumi.Input[str],
+                 auth_id_characteristics: Optional[pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]]] = None):
         """
         The set of arguments for constructing a ApiShield resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]] auth_id_characteristics: Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]] auth_id_characteristics: Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
         """
-        pulumi.set(__self__, "auth_id_characteristics", auth_id_characteristics)
         pulumi.set(__self__, "zone_id", zone_id)
-
-    @property
-    @pulumi.getter(name="authIdCharacteristics")
-    def auth_id_characteristics(self) -> pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]]:
-        """
-        Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-        """
-        return pulumi.get(self, "auth_id_characteristics")
-
-    @auth_id_characteristics.setter
-    def auth_id_characteristics(self, value: pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]]):
-        pulumi.set(self, "auth_id_characteristics", value)
+        if auth_id_characteristics is not None:
+            pulumi.set(__self__, "auth_id_characteristics", auth_id_characteristics)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -49,6 +38,18 @@ class ApiShieldArgs:
     @zone_id.setter
     def zone_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter(name="authIdCharacteristics")
+    def auth_id_characteristics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]]]:
+        """
+        Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
+        """
+        return pulumi.get(self, "auth_id_characteristics")
+
+    @auth_id_characteristics.setter
+    def auth_id_characteristics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]]]):
+        pulumi.set(self, "auth_id_characteristics", value)
 
 
 @pulumi.input_type
@@ -170,8 +171,6 @@ class ApiShield(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ApiShieldArgs.__new__(ApiShieldArgs)
 
-            if auth_id_characteristics is None and not opts.urn:
-                raise TypeError("Missing required property 'auth_id_characteristics'")
             __props__.__dict__["auth_id_characteristics"] = auth_id_characteristics
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
@@ -208,7 +207,7 @@ class ApiShield(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authIdCharacteristics")
-    def auth_id_characteristics(self) -> pulumi.Output[Sequence['outputs.ApiShieldAuthIdCharacteristic']]:
+    def auth_id_characteristics(self) -> pulumi.Output[Optional[Sequence['outputs.ApiShieldAuthIdCharacteristic']]]:
         """
         Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
         """

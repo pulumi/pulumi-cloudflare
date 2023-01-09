@@ -88,6 +88,7 @@ from .teams_list import *
 from .teams_location import *
 from .teams_proxy_endpoint import *
 from .teams_rule import *
+from .tiered_cache import *
 from .total_tls import *
 from .tunnel_config import *
 from .tunnel_route import *
@@ -659,6 +660,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/teamsRule:TeamsRule": "TeamsRule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/tieredCache",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/tieredCache:TieredCache": "TieredCache"
   }
  },
  {

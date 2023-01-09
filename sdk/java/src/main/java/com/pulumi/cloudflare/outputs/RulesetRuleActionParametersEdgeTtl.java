@@ -9,17 +9,18 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersEdgeTtl {
-    private Integer default_;
+    private @Nullable Integer default_;
     private String mode;
     private @Nullable List<RulesetRuleActionParametersEdgeTtlStatusCodeTtl> statusCodeTtls;
 
     private RulesetRuleActionParametersEdgeTtl() {}
-    public Integer default_() {
-        return this.default_;
+    public Optional<Integer> default_() {
+        return Optional.ofNullable(this.default_);
     }
     public String mode() {
         return this.mode;
@@ -37,7 +38,7 @@ public final class RulesetRuleActionParametersEdgeTtl {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer default_;
+        private @Nullable Integer default_;
         private String mode;
         private @Nullable List<RulesetRuleActionParametersEdgeTtlStatusCodeTtl> statusCodeTtls;
         public Builder() {}
@@ -49,8 +50,8 @@ public final class RulesetRuleActionParametersEdgeTtl {
         }
 
         @CustomType.Setter("default")
-        public Builder default_(Integer default_) {
-            this.default_ = Objects.requireNonNull(default_);
+        public Builder default_(@Nullable Integer default_) {
+            this.default_ = default_;
             return this;
         }
         @CustomType.Setter

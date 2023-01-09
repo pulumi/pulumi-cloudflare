@@ -55,7 +55,8 @@ type WorkersKvNamespace struct {
 
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	Title     pulumi.StringOutput `pulumi:"title"`
+	// Title value of the Worker KV Namespace.
+	Title pulumi.StringOutput `pulumi:"title"`
 }
 
 // NewWorkersKvNamespace registers a new resource with the given unique name, arguments, and options.
@@ -92,13 +93,15 @@ func GetWorkersKvNamespace(ctx *pulumi.Context,
 type workersKvNamespaceState struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	Title     *string `pulumi:"title"`
+	// Title value of the Worker KV Namespace.
+	Title *string `pulumi:"title"`
 }
 
 type WorkersKvNamespaceState struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	Title     pulumi.StringPtrInput
+	// Title value of the Worker KV Namespace.
+	Title pulumi.StringPtrInput
 }
 
 func (WorkersKvNamespaceState) ElementType() reflect.Type {
@@ -108,14 +111,16 @@ func (WorkersKvNamespaceState) ElementType() reflect.Type {
 type workersKvNamespaceArgs struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	Title     string  `pulumi:"title"`
+	// Title value of the Worker KV Namespace.
+	Title string `pulumi:"title"`
 }
 
 // The set of arguments for constructing a WorkersKvNamespace resource.
 type WorkersKvNamespaceArgs struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	Title     pulumi.StringInput
+	// Title value of the Worker KV Namespace.
+	Title pulumi.StringInput
 }
 
 func (WorkersKvNamespaceArgs) ElementType() reflect.Type {
@@ -210,6 +215,7 @@ func (o WorkersKvNamespaceOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKvNamespace) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Title value of the Worker KV Namespace.
 func (o WorkersKvNamespaceOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKvNamespace) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }

@@ -16,17 +16,17 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// The name of the characteristic.
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
         /// <summary>
         /// The type of characteristic. Available values: `header`, `cookie`.
         /// </summary>
-        public readonly string Type;
+        public readonly string? Type;
 
         [OutputConstructor]
         private ApiShieldAuthIdCharacteristic(
-            string name,
+            string? name,
 
-            string type)
+            string? type)
         {
             Name = name;
             Type = type;

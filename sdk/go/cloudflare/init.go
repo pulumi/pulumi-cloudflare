@@ -154,6 +154,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TeamsProxyEndpoint{}
 	case "cloudflare:index/teamsRule:TeamsRule":
 		r = &TeamsRule{}
+	case "cloudflare:index/tieredCache:TieredCache":
+		r = &TieredCache{}
 	case "cloudflare:index/totalTls:TotalTls":
 		r = &TotalTls{}
 	case "cloudflare:index/tunnelConfig:TunnelConfig":
@@ -563,6 +565,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/teamsRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/tieredCache",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

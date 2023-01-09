@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/workersKv:WorkersKv example <namespace_id>/<key_name>
+ *  $ pulumi import cloudflare:index/workersKv:WorkersKv example <account_id>/<namespace_id>/<key_name>
  * ```
  */
 export class WorkersKv extends pulumi.CustomResource {

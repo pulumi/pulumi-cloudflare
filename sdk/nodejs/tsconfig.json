@@ -99,6 +99,7 @@
         "teamsLocation.ts",
         "teamsProxyEndpoint.ts",
         "teamsRule.ts",
+        "tieredCache.ts",
         "totalTls.ts",
         "tunnelConfig.ts",
         "tunnelRoute.ts",

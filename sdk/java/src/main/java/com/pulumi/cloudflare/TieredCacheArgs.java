@@ -7,27 +7,25 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
-public final class ZoneDnssecArgs extends com.pulumi.resources.ResourceArgs {
+public final class TieredCacheArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final ZoneDnssecArgs Empty = new ZoneDnssecArgs();
+    public static final TieredCacheArgs Empty = new TieredCacheArgs();
 
     /**
-     * Zone DNSSEC updated time.
+     * The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
      * 
      */
-    @Import(name="modifiedOn")
-    private @Nullable Output<String> modifiedOn;
+    @Import(name="cacheType", required=true)
+    private Output<String> cacheType;
 
     /**
-     * @return Zone DNSSEC updated time.
+     * @return The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
      * 
      */
-    public Optional<Output<String>> modifiedOn() {
-        return Optional.ofNullable(this.modifiedOn);
+    public Output<String> cacheType() {
+        return this.cacheType;
     }
 
     /**
@@ -45,50 +43,50 @@ public final class ZoneDnssecArgs extends com.pulumi.resources.ResourceArgs {
         return this.zoneId;
     }
 
-    private ZoneDnssecArgs() {}
+    private TieredCacheArgs() {}
 
-    private ZoneDnssecArgs(ZoneDnssecArgs $) {
-        this.modifiedOn = $.modifiedOn;
+    private TieredCacheArgs(TieredCacheArgs $) {
+        this.cacheType = $.cacheType;
         this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(ZoneDnssecArgs defaults) {
+    public static Builder builder(TieredCacheArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private ZoneDnssecArgs $;
+        private TieredCacheArgs $;
 
         public Builder() {
-            $ = new ZoneDnssecArgs();
+            $ = new TieredCacheArgs();
         }
 
-        public Builder(ZoneDnssecArgs defaults) {
-            $ = new ZoneDnssecArgs(Objects.requireNonNull(defaults));
+        public Builder(TieredCacheArgs defaults) {
+            $ = new TieredCacheArgs(Objects.requireNonNull(defaults));
         }
 
         /**
-         * @param modifiedOn Zone DNSSEC updated time.
+         * @param cacheType The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
          * 
          * @return builder
          * 
          */
-        public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
-            $.modifiedOn = modifiedOn;
+        public Builder cacheType(Output<String> cacheType) {
+            $.cacheType = cacheType;
             return this;
         }
 
         /**
-         * @param modifiedOn Zone DNSSEC updated time.
+         * @param cacheType The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
          * 
          * @return builder
          * 
          */
-        public Builder modifiedOn(String modifiedOn) {
-            return modifiedOn(Output.of(modifiedOn));
+        public Builder cacheType(String cacheType) {
+            return cacheType(Output.of(cacheType));
         }
 
         /**
@@ -112,7 +110,8 @@ public final class ZoneDnssecArgs extends com.pulumi.resources.ResourceArgs {
             return zoneId(Output.of(zoneId));
         }
 
-        public ZoneDnssecArgs build() {
+        public TieredCacheArgs build() {
+            $.cacheType = Objects.requireNonNull($.cacheType, "expected parameter 'cacheType' to be non-null");
             $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
             return $;
         }

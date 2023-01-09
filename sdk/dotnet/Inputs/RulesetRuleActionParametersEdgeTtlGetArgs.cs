@@ -12,8 +12,8 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersEdgeTtlGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("default", required: true)]
-        public Input<int> Default { get; set; } = null!;
+        [Input("default")]
+        public Input<int>? Default { get; set; }
 
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;

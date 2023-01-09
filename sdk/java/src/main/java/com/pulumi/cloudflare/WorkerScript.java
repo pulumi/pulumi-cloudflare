@@ -61,10 +61,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myNamespace = new WorkersKvNamespace(&#34;myNamespace&#34;, WorkersKvNamespaceArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .title(&#34;example&#34;)
  *             .build());
  * 
  *         var myScript = new WorkerScript(&#34;myScript&#34;, WorkerScriptArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;script_1&#34;)
  *             .content(Files.readString(Paths.get(&#34;script.js&#34;)))
  *             .kvNamespaceBindings(WorkerScriptKvNamespaceBindingArgs.builder()
@@ -105,12 +107,26 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/workerScript:WorkerScript example &lt;script_name&gt;
+ *  $ pulumi import cloudflare:index/workerScript:WorkerScript example &lt;account_id&gt;/&lt;script_name&gt;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/workerScript:WorkerScript")
 public class WorkerScript extends com.pulumi.resources.CustomResource {
+    /**
+     * The account identifier to target for the resource.
+     * 
+     */
+    @Export(name="accountId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> accountId;
+
+    /**
+     * @return The account identifier to target for the resource.
+     * 
+     */
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
+    }
     @Export(name="analyticsEngineBindings", type=List.class, parameters={WorkerScriptAnalyticsEngineBinding.class})
     private Output</* @Nullable */ List<WorkerScriptAnalyticsEngineBinding>> analyticsEngineBindings;
 

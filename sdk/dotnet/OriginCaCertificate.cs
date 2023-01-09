@@ -35,13 +35,10 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         KeyAlgorithm = examplePrivateKey.Algorithm,
     ///         PrivateKeyPem = examplePrivateKey.PrivateKeyPem,
-    ///         Subjects = new[]
+    ///         Subject = new Tls.Inputs.CertRequestSubjectArgs
     ///         {
-    ///             new Tls.Inputs.CertRequestSubjectArgs
-    ///             {
-    ///                 CommonName = "",
-    ///                 Organization = "Terraform Test",
-    ///             },
+    ///             CommonName = "",
+    ///             Organization = "Terraform Test",
     ///         },
     ///     });
     /// 
