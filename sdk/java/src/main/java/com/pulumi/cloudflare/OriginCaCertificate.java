@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *         var exampleCertRequest = new CertRequest(&#34;exampleCertRequest&#34;, CertRequestArgs.builder()        
  *             .keyAlgorithm(examplePrivateKey.algorithm())
  *             .privateKeyPem(examplePrivateKey.privateKeyPem())
- *             .subject(CertRequestSubjectArgs.builder()
+ *             .subjects(CertRequestSubjectArgs.builder()
  *                 .commonName(&#34;&#34;)
  *                 .organization(&#34;Terraform Test&#34;)
  *                 .build())

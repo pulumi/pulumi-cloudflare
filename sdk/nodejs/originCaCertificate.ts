@@ -22,10 +22,10 @@ import * as utilities from "./utilities";
  * const exampleCertRequest = new tls.CertRequest("exampleCertRequest", {
  *     keyAlgorithm: examplePrivateKey.algorithm,
  *     privateKeyPem: examplePrivateKey.privateKeyPem,
- *     subject: {
+ *     subjects: [{
  *         commonName: "",
  *         organization: "Terraform Test",
- *     },
+ *     }],
  * });
  * const exampleOriginCaCertificate = new cloudflare.OriginCaCertificate("exampleOriginCaCertificate", {
  *     csr: exampleCertRequest.certRequestPem,
