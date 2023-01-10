@@ -98,7 +98,7 @@ namespace Pulumi.Cloudflare
 
     public sealed class ApiShieldArgs : global::Pulumi.ResourceArgs
     {
-        [Input("authIdCharacteristics", required: true)]
+        [Input("authIdCharacteristics")]
         private InputList<Inputs.ApiShieldAuthIdCharacteristicArgs>? _authIdCharacteristics;
 
         /// <summary>

@@ -6,6 +6,8 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ApiShieldAuthIdCharacteristic {
@@ -13,27 +15,27 @@ public final class ApiShieldAuthIdCharacteristic {
      * @return The name of the characteristic.
      * 
      */
-    private String name;
+    private @Nullable String name;
     /**
      * @return The type of characteristic. Available values: `header`, `cookie`.
      * 
      */
-    private String type;
+    private @Nullable String type;
 
     private ApiShieldAuthIdCharacteristic() {}
     /**
      * @return The name of the characteristic.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
      * @return The type of characteristic. Available values: `header`, `cookie`.
      * 
      */
-    public String type() {
-        return this.type;
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
 
     public static Builder builder() {
@@ -45,8 +47,8 @@ public final class ApiShieldAuthIdCharacteristic {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String name;
-        private String type;
+        private @Nullable String name;
+        private @Nullable String type;
         public Builder() {}
         public Builder(ApiShieldAuthIdCharacteristic defaults) {
     	      Objects.requireNonNull(defaults);
@@ -55,13 +57,13 @@ public final class ApiShieldAuthIdCharacteristic {
         }
 
         @CustomType.Setter
-        public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+        public Builder name(@Nullable String name) {
+            this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+        public Builder type(@Nullable String type) {
+            this.type = type;
             return this;
         }
         public ApiShieldAuthIdCharacteristic build() {

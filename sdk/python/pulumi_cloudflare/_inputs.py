@@ -3498,37 +3498,39 @@ class AccessRuleConfigurationArgs:
 @pulumi.input_type
 class ApiShieldAuthIdCharacteristicArgs:
     def __init__(__self__, *,
-                 name: pulumi.Input[str],
-                 type: pulumi.Input[str]):
+                 name: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The name of the characteristic.
         :param pulumi.Input[str] type: The type of characteristic. Available values: `header`, `cookie`.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
+    def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the characteristic.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: pulumi.Input[str]):
+    def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def type(self) -> pulumi.Input[str]:
+    def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of characteristic. Available values: `header`, `cookie`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: pulumi.Input[str]):
+    def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
 
@@ -9975,22 +9977,14 @@ class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs:
 @pulumi.input_type
 class RulesetRuleActionParametersEdgeTtlArgs:
     def __init__(__self__, *,
-                 default: pulumi.Input[int],
                  mode: pulumi.Input[str],
+                 default: Optional[pulumi.Input[int]] = None,
                  status_code_ttls: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs']]]] = None):
-        pulumi.set(__self__, "default", default)
         pulumi.set(__self__, "mode", mode)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
         if status_code_ttls is not None:
             pulumi.set(__self__, "status_code_ttls", status_code_ttls)
-
-    @property
-    @pulumi.getter
-    def default(self) -> pulumi.Input[int]:
-        return pulumi.get(self, "default")
-
-    @default.setter
-    def default(self, value: pulumi.Input[int]):
-        pulumi.set(self, "default", value)
 
     @property
     @pulumi.getter
@@ -10000,6 +9994,15 @@ class RulesetRuleActionParametersEdgeTtlArgs:
     @mode.setter
     def mode(self, value: pulumi.Input[str]):
         pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default", value)
 
     @property
     @pulumi.getter(name="statusCodeTtls")

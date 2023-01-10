@@ -51,14 +51,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myNamespace, err := cloudflare.NewWorkersKvNamespace(ctx, "myNamespace", &cloudflare.WorkersKvNamespaceArgs{
-//				Title: pulumi.String("example"),
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Title:     pulumi.String("example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cloudflare.NewWorkerScript(ctx, "myScript", &cloudflare.WorkerScriptArgs{
-//				Name:    pulumi.String("script_1"),
-//				Content: readFileOrPanic("script.js"),
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:      pulumi.String("script_1"),
+//				Content:   readFileOrPanic("script.js"),
 //				KvNamespaceBindings: cloudflare.WorkerScriptKvNamespaceBindingArray{
 //					&cloudflare.WorkerScriptKvNamespaceBindingArgs{
 //						Name:        pulumi.String("MY_EXAMPLE_KV_NAMESPACE"),
@@ -116,12 +118,14 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import cloudflare:index/workerScript:WorkerScript example <script_name>
+//	$ pulumi import cloudflare:index/workerScript:WorkerScript example <account_id>/<script_name>
 //
 // ```
 type WorkerScript struct {
 	pulumi.CustomResourceState
 
+	// The account identifier to target for the resource.
+	AccountId               pulumi.StringPtrOutput                        `pulumi:"accountId"`
 	AnalyticsEngineBindings WorkerScriptAnalyticsEngineBindingArrayOutput `pulumi:"analyticsEngineBindings"`
 	// The script content.
 	Content             pulumi.StringOutput                       `pulumi:"content"`
@@ -172,6 +176,8 @@ func GetWorkerScript(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkerScript resources.
 type workerScriptState struct {
+	// The account identifier to target for the resource.
+	AccountId               *string                              `pulumi:"accountId"`
 	AnalyticsEngineBindings []WorkerScriptAnalyticsEngineBinding `pulumi:"analyticsEngineBindings"`
 	// The script content.
 	Content             *string                          `pulumi:"content"`
@@ -188,6 +194,8 @@ type workerScriptState struct {
 }
 
 type WorkerScriptState struct {
+	// The account identifier to target for the resource.
+	AccountId               pulumi.StringPtrInput
 	AnalyticsEngineBindings WorkerScriptAnalyticsEngineBindingArrayInput
 	// The script content.
 	Content             pulumi.StringPtrInput
@@ -208,6 +216,8 @@ func (WorkerScriptState) ElementType() reflect.Type {
 }
 
 type workerScriptArgs struct {
+	// The account identifier to target for the resource.
+	AccountId               *string                              `pulumi:"accountId"`
 	AnalyticsEngineBindings []WorkerScriptAnalyticsEngineBinding `pulumi:"analyticsEngineBindings"`
 	// The script content.
 	Content             string                           `pulumi:"content"`
@@ -225,6 +235,8 @@ type workerScriptArgs struct {
 
 // The set of arguments for constructing a WorkerScript resource.
 type WorkerScriptArgs struct {
+	// The account identifier to target for the resource.
+	AccountId               pulumi.StringPtrInput
 	AnalyticsEngineBindings WorkerScriptAnalyticsEngineBindingArrayInput
 	// The script content.
 	Content             pulumi.StringInput
@@ -325,6 +337,11 @@ func (o WorkerScriptOutput) ToWorkerScriptOutput() WorkerScriptOutput {
 
 func (o WorkerScriptOutput) ToWorkerScriptOutputWithContext(ctx context.Context) WorkerScriptOutput {
 	return o
+}
+
+// The account identifier to target for the resource.
+func (o WorkerScriptOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o WorkerScriptOutput) AnalyticsEngineBindings() WorkerScriptAnalyticsEngineBindingArrayOutput {

@@ -11,7 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare worker route resource. A route will also require a `WorkerScript`. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
+// Provides a Cloudflare worker route resource. A route will also require a `WorkerScript`.
+//
+// > This resource uses the Cloudflare account APIs. This requires setting the
+// `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument
+// if you do not explicitly set the resource level `accountId` value.
 //
 // ## Example Usage
 //
@@ -32,7 +36,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudflare.NewWorkerRoute(ctx, "myRoute", &cloudflare.WorkerRouteArgs{
-//				ZoneId:     pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+//				ZoneId:     pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Pattern:    pulumi.String("example.com/*"),
 //				ScriptName: myScript.Name,
 //			})
@@ -47,23 +51,19 @@ import (
 //
 // ## Import
 //
-// Records can be imported using a composite ID formed of zone ID and route ID, e.g.
-//
 // ```sh
 //
-//	$ pulumi import cloudflare:index/workerRoute:WorkerRoute default d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac
+//	$ pulumi import cloudflare:index/workerRoute:WorkerRoute example <zone_id>/<route_id>
 //
 // ```
-//
-//	where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `9a7806061c88ada191ed06f989cc3dac` - route ID as returned by [API](https://api.cloudflare.com/#worker-filters-list-filters)
 type WorkerRoute struct {
 	pulumi.CustomResourceState
 
-	// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+	// The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
 	Pattern pulumi.StringOutput `pulumi:"pattern"`
-	// Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
+	// Worker script name to invoke for requests that match the route pattern.
 	ScriptName pulumi.StringPtrOutput `pulumi:"scriptName"`
-	// The zone ID to add the route to.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -102,20 +102,20 @@ func GetWorkerRoute(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkerRoute resources.
 type workerRouteState struct {
-	// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+	// The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
 	Pattern *string `pulumi:"pattern"`
-	// Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
+	// Worker script name to invoke for requests that match the route pattern.
 	ScriptName *string `pulumi:"scriptName"`
-	// The zone ID to add the route to.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type WorkerRouteState struct {
-	// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+	// The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
 	Pattern pulumi.StringPtrInput
-	// Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
+	// Worker script name to invoke for requests that match the route pattern.
 	ScriptName pulumi.StringPtrInput
-	// The zone ID to add the route to.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -124,21 +124,21 @@ func (WorkerRouteState) ElementType() reflect.Type {
 }
 
 type workerRouteArgs struct {
-	// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+	// The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
 	Pattern string `pulumi:"pattern"`
-	// Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
+	// Worker script name to invoke for requests that match the route pattern.
 	ScriptName *string `pulumi:"scriptName"`
-	// The zone ID to add the route to.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a WorkerRoute resource.
 type WorkerRouteArgs struct {
-	// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+	// The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
 	Pattern pulumi.StringInput
-	// Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
+	// Worker script name to invoke for requests that match the route pattern.
 	ScriptName pulumi.StringPtrInput
-	// The zone ID to add the route to.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
 }
 
@@ -229,17 +229,17 @@ func (o WorkerRouteOutput) ToWorkerRouteOutputWithContext(ctx context.Context) W
 	return o
 }
 
-// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+// The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
 func (o WorkerRouteOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerRoute) pulumi.StringOutput { return v.Pattern }).(pulumi.StringOutput)
 }
 
-// Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
+// Worker script name to invoke for requests that match the route pattern.
 func (o WorkerRouteOutput) ScriptName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkerRoute) pulumi.StringPtrOutput { return v.ScriptName }).(pulumi.StringPtrOutput)
 }
 
-// The zone ID to add the route to.
+// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o WorkerRouteOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerRoute) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

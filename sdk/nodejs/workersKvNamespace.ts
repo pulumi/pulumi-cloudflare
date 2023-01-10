@@ -60,6 +60,9 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
      * The account identifier to target for the resource.
      */
     public readonly accountId!: pulumi.Output<string>;
+    /**
+     * Title value of the Worker KV Namespace.
+     */
     public readonly title!: pulumi.Output<string>;
 
     /**
@@ -98,6 +101,9 @@ export interface WorkersKvNamespaceState {
      * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * Title value of the Worker KV Namespace.
+     */
     title?: pulumi.Input<string>;
 }
 
@@ -109,5 +115,8 @@ export interface WorkersKvNamespaceArgs {
      * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * Title value of the Worker KV Namespace.
+     */
     title: pulumi.Input<string>;
 }

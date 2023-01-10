@@ -181,6 +181,7 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_teams_location":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TeamsLocation")},
 			"cloudflare_teams_proxy_endpoint":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TeamsProxyEndpoint")},
 			"cloudflare_teams_rule":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TeamsRule")},
+			"cloudflare_tiered_cache":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TieredCache")},
 			"cloudflare_total_tls":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TotalTls")},
 			"cloudflare_tunnel_config":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TunnelConfig")},
 			"cloudflare_tunnel_route":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TunnelRoute")},

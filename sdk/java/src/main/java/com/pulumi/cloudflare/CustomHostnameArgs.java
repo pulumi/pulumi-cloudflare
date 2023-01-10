@@ -9,6 +9,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final CustomHostnameArgs Empty = new CustomHostnameArgs();
+
+    /**
+     * Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+     * 
+     */
+    @Import(name="customMetadata")
+    private @Nullable Output<Map<String,String>> customMetadata;
+
+    /**
+     * @return Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> customMetadata() {
+        return Optional.ofNullable(this.customMetadata);
+    }
 
     /**
      * The custom origin server used for certificates.
@@ -111,6 +127,7 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
     private CustomHostnameArgs() {}
 
     private CustomHostnameArgs(CustomHostnameArgs $) {
+        this.customMetadata = $.customMetadata;
         this.customOriginServer = $.customOriginServer;
         this.customOriginSni = $.customOriginSni;
         this.hostname = $.hostname;
@@ -135,6 +152,27 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder(CustomHostnameArgs defaults) {
             $ = new CustomHostnameArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param customMetadata Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customMetadata(@Nullable Output<Map<String,String>> customMetadata) {
+            $.customMetadata = customMetadata;
+            return this;
+        }
+
+        /**
+         * @param customMetadata Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customMetadata(Map<String,String> customMetadata) {
+            return customMetadata(Output.of(customMetadata));
         }
 
         /**

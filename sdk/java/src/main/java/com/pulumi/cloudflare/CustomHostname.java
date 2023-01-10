@@ -66,6 +66,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/customHostname:CustomHostname")
 public class CustomHostname extends com.pulumi.resources.CustomResource {
     /**
+     * Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+     * 
+     */
+    @Export(name="customMetadata", type=Map.class, parameters={String.class, String.class})
+    private Output</* @Nullable */ Map<String,String>> customMetadata;
+
+    /**
+     * @return Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> customMetadata() {
+        return Codegen.optional(this.customMetadata);
+    }
+    /**
      * The custom origin server used for certificates.
      * 
      */

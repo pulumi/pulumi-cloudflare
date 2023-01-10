@@ -18,6 +18,7 @@ class WorkerScriptArgs:
     def __init__(__self__, *,
                  content: pulumi.Input[str],
                  name: pulumi.Input[str],
+                 account_id: Optional[pulumi.Input[str]] = None,
                  analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptAnalyticsEngineBindingArgs']]]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
@@ -30,10 +31,13 @@ class WorkerScriptArgs:
         The set of arguments for constructing a WorkerScript resource.
         :param pulumi.Input[str] content: The script content.
         :param pulumi.Input[str] name: The name for the script. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] module: Whether to upload Worker as a module.
         """
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "name", name)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if analytics_engine_bindings is not None:
             pulumi.set(__self__, "analytics_engine_bindings", analytics_engine_bindings)
         if kv_namespace_bindings is not None:
@@ -74,6 +78,18 @@ class WorkerScriptArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account identifier to target for the resource.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter(name="analyticsEngineBindings")
@@ -154,6 +170,7 @@ class WorkerScriptArgs:
 @pulumi.input_type
 class _WorkerScriptState:
     def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptAnalyticsEngineBindingArgs']]]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]] = None,
@@ -166,10 +183,13 @@ class _WorkerScriptState:
                  webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptWebassemblyBindingArgs']]]] = None):
         """
         Input properties used for looking up and filtering WorkerScript resources.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] content: The script content.
         :param pulumi.Input[bool] module: Whether to upload Worker as a module.
         :param pulumi.Input[str] name: The name for the script. **Modifying this attribute will force creation of a new resource.**
         """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if analytics_engine_bindings is not None:
             pulumi.set(__self__, "analytics_engine_bindings", analytics_engine_bindings)
         if content is not None:
@@ -190,6 +210,18 @@ class _WorkerScriptState:
             pulumi.set(__self__, "service_bindings", service_bindings)
         if webassembly_bindings is not None:
             pulumi.set(__self__, "webassembly_bindings", webassembly_bindings)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account identifier to target for the resource.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter(name="analyticsEngineBindings")
@@ -296,6 +328,7 @@ class WorkerScript(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptAnalyticsEngineBindingArgs']]]]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
@@ -320,9 +353,12 @@ class WorkerScript(pulumi.CustomResource):
         import base64
         import pulumi_cloudflare as cloudflare
 
-        my_namespace = cloudflare.WorkersKvNamespace("myNamespace", title="example")
+        my_namespace = cloudflare.WorkersKvNamespace("myNamespace",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            title="example")
         # Sets the script with the name "script_1"
         my_script = cloudflare.WorkerScript("myScript",
+            account_id="f037e56e89293a057740de681ac9abbe",
             name="script_1",
             content=(lambda path: open(path).read())("script.js"),
             kv_namespace_bindings=[cloudflare.WorkerScriptKvNamespaceBindingArgs(
@@ -359,11 +395,12 @@ class WorkerScript(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/workerScript:WorkerScript example <script_name>
+         $ pulumi import cloudflare:index/workerScript:WorkerScript example <account_id>/<script_name>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] content: The script content.
         :param pulumi.Input[bool] module: Whether to upload Worker as a module.
         :param pulumi.Input[str] name: The name for the script. **Modifying this attribute will force creation of a new resource.**
@@ -387,9 +424,12 @@ class WorkerScript(pulumi.CustomResource):
         import base64
         import pulumi_cloudflare as cloudflare
 
-        my_namespace = cloudflare.WorkersKvNamespace("myNamespace", title="example")
+        my_namespace = cloudflare.WorkersKvNamespace("myNamespace",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            title="example")
         # Sets the script with the name "script_1"
         my_script = cloudflare.WorkerScript("myScript",
+            account_id="f037e56e89293a057740de681ac9abbe",
             name="script_1",
             content=(lambda path: open(path).read())("script.js"),
             kv_namespace_bindings=[cloudflare.WorkerScriptKvNamespaceBindingArgs(
@@ -426,7 +466,7 @@ class WorkerScript(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/workerScript:WorkerScript example <script_name>
+         $ pulumi import cloudflare:index/workerScript:WorkerScript example <account_id>/<script_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -444,6 +484,7 @@ class WorkerScript(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptAnalyticsEngineBindingArgs']]]]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
@@ -463,6 +504,7 @@ class WorkerScript(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkerScriptArgs.__new__(WorkerScriptArgs)
 
+            __props__.__dict__["account_id"] = account_id
             __props__.__dict__["analytics_engine_bindings"] = analytics_engine_bindings
             if content is None and not opts.urn:
                 raise TypeError("Missing required property 'content'")
@@ -487,6 +529,7 @@ class WorkerScript(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: Optional[pulumi.Input[str]] = None,
             analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptAnalyticsEngineBindingArgs']]]]] = None,
             content: Optional[pulumi.Input[str]] = None,
             kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
@@ -504,6 +547,7 @@ class WorkerScript(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] content: The script content.
         :param pulumi.Input[bool] module: Whether to upload Worker as a module.
         :param pulumi.Input[str] name: The name for the script. **Modifying this attribute will force creation of a new resource.**
@@ -512,6 +556,7 @@ class WorkerScript(pulumi.CustomResource):
 
         __props__ = _WorkerScriptState.__new__(_WorkerScriptState)
 
+        __props__.__dict__["account_id"] = account_id
         __props__.__dict__["analytics_engine_bindings"] = analytics_engine_bindings
         __props__.__dict__["content"] = content
         __props__.__dict__["kv_namespace_bindings"] = kv_namespace_bindings
@@ -523,6 +568,14 @@ class WorkerScript(pulumi.CustomResource):
         __props__.__dict__["service_bindings"] = service_bindings
         __props__.__dict__["webassembly_bindings"] = webassembly_bindings
         return WorkerScript(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The account identifier to target for the resource.
+        """
+        return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="analyticsEngineBindings")

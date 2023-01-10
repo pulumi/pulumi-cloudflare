@@ -18,7 +18,7 @@ class ZoneDnssecArgs:
                  modified_on: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ZoneDnssec resource.
-        :param pulumi.Input[str] zone_id: The zone id for the zone.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] modified_on: Zone DNSSEC updated time.
         """
         pulumi.set(__self__, "zone_id", zone_id)
@@ -29,7 +29,7 @@ class ZoneDnssecArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone id for the zone.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -78,7 +78,7 @@ class _ZoneDnssecState:
         :param pulumi.Input[str] modified_on: Zone DNSSEC updated time.
         :param pulumi.Input[str] public_key: Public Key for the Zone DNSSEC.
         :param pulumi.Input[str] status: The status of the Zone DNSSEC.
-        :param pulumi.Input[str] zone_id: The zone id for the zone.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
@@ -241,7 +241,7 @@ class _ZoneDnssecState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone id for the zone.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -259,7 +259,7 @@ class ZoneDnssec(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Zone DNSSEC resource.
+        Provides a Cloudflare resource to create and modify zone DNSSEC settings.
 
         ## Example Usage
 
@@ -273,18 +273,14 @@ class ZoneDnssec(pulumi.CustomResource):
 
         ## Import
 
-        Zone DNSSEC resource can be imported using a zone ID, e.g.
-
         ```sh
-         $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example d41d8cd98f00b204e9800998ecf8427e
+         $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example <zone_id>
         ```
-
-         where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] modified_on: Zone DNSSEC updated time.
-        :param pulumi.Input[str] zone_id: The zone id for the zone.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -293,7 +289,7 @@ class ZoneDnssec(pulumi.CustomResource):
                  args: ZoneDnssecArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Zone DNSSEC resource.
+        Provides a Cloudflare resource to create and modify zone DNSSEC settings.
 
         ## Example Usage
 
@@ -307,13 +303,9 @@ class ZoneDnssec(pulumi.CustomResource):
 
         ## Import
 
-        Zone DNSSEC resource can be imported using a zone ID, e.g.
-
         ```sh
-         $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example d41d8cd98f00b204e9800998ecf8427e
+         $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example <zone_id>
         ```
-
-         where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
 
         :param str resource_name: The name of the resource.
         :param ZoneDnssecArgs args: The arguments to use to populate this resource's properties.
@@ -395,7 +387,7 @@ class ZoneDnssec(pulumi.CustomResource):
         :param pulumi.Input[str] modified_on: Zone DNSSEC updated time.
         :param pulumi.Input[str] public_key: Public Key for the Zone DNSSEC.
         :param pulumi.Input[str] status: The status of the Zone DNSSEC.
-        :param pulumi.Input[str] zone_id: The zone id for the zone.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -507,7 +499,7 @@ class ZoneDnssec(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone id for the zone.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 

@@ -418,6 +418,11 @@ export type TeamsRule = import("./teamsRule").TeamsRule;
 export const TeamsRule: typeof import("./teamsRule").TeamsRule = null as any;
 utilities.lazyLoad(exports, ["TeamsRule"], () => require("./teamsRule"));
 
+export { TieredCacheArgs, TieredCacheState } from "./tieredCache";
+export type TieredCache = import("./tieredCache").TieredCache;
+export const TieredCache: typeof import("./tieredCache").TieredCache = null as any;
+utilities.lazyLoad(exports, ["TieredCache"], () => require("./tieredCache"));
+
 export { TotalTlsArgs, TotalTlsState } from "./totalTls";
 export type TotalTls = import("./totalTls").TotalTls;
 export const TotalTls: typeof import("./totalTls").TotalTls = null as any;
@@ -686,6 +691,8 @@ const _module = {
                 return new TeamsProxyEndpoint(name, <any>undefined, { urn })
             case "cloudflare:index/teamsRule:TeamsRule":
                 return new TeamsRule(name, <any>undefined, { urn })
+            case "cloudflare:index/tieredCache:TieredCache":
+                return new TieredCache(name, <any>undefined, { urn })
             case "cloudflare:index/totalTls:TotalTls":
                 return new TotalTls(name, <any>undefined, { urn })
             case "cloudflare:index/tunnelConfig:TunnelConfig":
@@ -806,6 +813,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/teamsList", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsLocation", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsProxyEndpoint", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsRule", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/tieredCache", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/totalTls", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelConfig", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelRoute", _module)

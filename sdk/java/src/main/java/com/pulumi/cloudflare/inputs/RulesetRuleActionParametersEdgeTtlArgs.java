@@ -18,11 +18,11 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
 
     public static final RulesetRuleActionParametersEdgeTtlArgs Empty = new RulesetRuleActionParametersEdgeTtlArgs();
 
-    @Import(name="default", required=true)
-    private Output<Integer> default_;
+    @Import(name="default")
+    private @Nullable Output<Integer> default_;
 
-    public Output<Integer> default_() {
-        return this.default_;
+    public Optional<Output<Integer>> default_() {
+        return Optional.ofNullable(this.default_);
     }
 
     @Import(name="mode", required=true)
@@ -65,7 +65,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
             $ = new RulesetRuleActionParametersEdgeTtlArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder default_(Output<Integer> default_) {
+        public Builder default_(@Nullable Output<Integer> default_) {
             $.default_ = default_;
             return this;
         }
@@ -97,7 +97,6 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         public RulesetRuleActionParametersEdgeTtlArgs build() {
-            $.default_ = Objects.requireNonNull($.default_, "expected parameter 'default' to be non-null");
             $.mode = Objects.requireNonNull($.mode, "expected parameter 'mode' to be non-null");
             return $;
         }

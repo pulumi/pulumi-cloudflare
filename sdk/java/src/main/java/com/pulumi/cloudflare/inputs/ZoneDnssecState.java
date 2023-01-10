@@ -182,14 +182,14 @@ public final class ZoneDnssecState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone id for the zone.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone id for the zone.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -463,7 +463,7 @@ public final class ZoneDnssecState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone id for the zone.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -474,7 +474,7 @@ public final class ZoneDnssecState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone id for the zone.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

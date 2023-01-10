@@ -16,14 +16,14 @@ public final class WorkerRouteArgs extends com.pulumi.resources.ResourceArgs {
     public static final WorkerRouteArgs Empty = new WorkerRouteArgs();
 
     /**
-     * The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+     * The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
      * 
      */
     @Import(name="pattern", required=true)
     private Output<String> pattern;
 
     /**
-     * @return The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+     * @return The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
      * 
      */
     public Output<String> pattern() {
@@ -31,14 +31,14 @@ public final class WorkerRouteArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+     * Worker script name to invoke for requests that match the route pattern.
      * 
      */
     @Import(name="scriptName")
     private @Nullable Output<String> scriptName;
 
     /**
-     * @return Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+     * @return Worker script name to invoke for requests that match the route pattern.
      * 
      */
     public Optional<Output<String>> scriptName() {
@@ -46,14 +46,14 @@ public final class WorkerRouteArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone ID to add the route to.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone ID to add the route to.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {
@@ -87,7 +87,7 @@ public final class WorkerRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pattern The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+         * @param pattern The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class WorkerRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pattern The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+         * @param pattern The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class WorkerRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scriptName Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+         * @param scriptName Worker script name to invoke for requests that match the route pattern.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class WorkerRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scriptName Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+         * @param scriptName Worker script name to invoke for requests that match the route pattern.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class WorkerRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID to add the route to.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class WorkerRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID to add the route to.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

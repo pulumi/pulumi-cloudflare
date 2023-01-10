@@ -30,9 +30,17 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * Title value of the Worker KV Namespace.
+     * 
+     */
     @Import(name="title")
     private @Nullable Output<String> title;
 
+    /**
+     * @return Title value of the Worker KV Namespace.
+     * 
+     */
     public Optional<Output<String>> title() {
         return Optional.ofNullable(this.title);
     }
@@ -83,11 +91,23 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param title Title value of the Worker KV Namespace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder title(@Nullable Output<String> title) {
             $.title = title;
             return this;
         }
 
+        /**
+         * @param title Title value of the Worker KV Namespace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder title(String title) {
             return title(Output.of(title));
         }

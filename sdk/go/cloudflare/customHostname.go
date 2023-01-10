@@ -55,6 +55,8 @@ import (
 type CustomHostname struct {
 	pulumi.CustomResourceState
 
+	// Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+	CustomMetadata pulumi.StringMapOutput `pulumi:"customMetadata"`
 	// The custom origin server used for certificates.
 	CustomOriginServer pulumi.StringPtrOutput `pulumi:"customOriginServer"`
 	// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
@@ -108,6 +110,8 @@ func GetCustomHostname(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CustomHostname resources.
 type customHostnameState struct {
+	// Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+	CustomMetadata map[string]string `pulumi:"customMetadata"`
 	// The custom origin server used for certificates.
 	CustomOriginServer *string `pulumi:"customOriginServer"`
 	// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
@@ -127,6 +131,8 @@ type customHostnameState struct {
 }
 
 type CustomHostnameState struct {
+	// Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+	CustomMetadata pulumi.StringMapInput
 	// The custom origin server used for certificates.
 	CustomOriginServer pulumi.StringPtrInput
 	// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
@@ -150,6 +156,8 @@ func (CustomHostnameState) ElementType() reflect.Type {
 }
 
 type customHostnameArgs struct {
+	// Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+	CustomMetadata map[string]string `pulumi:"customMetadata"`
 	// The custom origin server used for certificates.
 	CustomOriginServer *string `pulumi:"customOriginServer"`
 	// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
@@ -166,6 +174,8 @@ type customHostnameArgs struct {
 
 // The set of arguments for constructing a CustomHostname resource.
 type CustomHostnameArgs struct {
+	// Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+	CustomMetadata pulumi.StringMapInput
 	// The custom origin server used for certificates.
 	CustomOriginServer pulumi.StringPtrInput
 	// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
@@ -265,6 +275,11 @@ func (o CustomHostnameOutput) ToCustomHostnameOutput() CustomHostnameOutput {
 
 func (o CustomHostnameOutput) ToCustomHostnameOutputWithContext(ctx context.Context) CustomHostnameOutput {
 	return o
+}
+
+// Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+func (o CustomHostnameOutput) CustomMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CustomHostname) pulumi.StringMapOutput { return v.CustomMetadata }).(pulumi.StringMapOutput)
 }
 
 // The custom origin server used for certificates.

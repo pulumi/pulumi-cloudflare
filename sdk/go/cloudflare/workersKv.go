@@ -57,7 +57,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import cloudflare:index/workersKv:WorkersKv example <namespace_id>/<key_name>
+//	$ pulumi import cloudflare:index/workersKv:WorkersKv example <account_id>/<namespace_id>/<key_name>
 //
 // ```
 type WorkersKv struct {

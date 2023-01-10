@@ -18,6 +18,7 @@ class WorkersKvNamespaceArgs:
                  account_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkersKvNamespace resource.
+        :param pulumi.Input[str] title: Title value of the Worker KV Namespace.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         """
         pulumi.set(__self__, "title", title)
@@ -27,6 +28,9 @@ class WorkersKvNamespaceArgs:
     @property
     @pulumi.getter
     def title(self) -> pulumi.Input[str]:
+        """
+        Title value of the Worker KV Namespace.
+        """
         return pulumi.get(self, "title")
 
     @title.setter
@@ -54,6 +58,7 @@ class _WorkersKvNamespaceState:
         """
         Input properties used for looking up and filtering WorkersKvNamespace resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] title: Title value of the Worker KV Namespace.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -75,6 +80,9 @@ class _WorkersKvNamespaceState:
     @property
     @pulumi.getter
     def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Title value of the Worker KV Namespace.
+        """
         return pulumi.get(self, "title")
 
     @title.setter
@@ -116,6 +124,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] title: Title value of the Worker KV Namespace.
         """
         ...
     @overload
@@ -196,6 +205,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] title: Title value of the Worker KV Namespace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -216,5 +226,8 @@ class WorkersKvNamespace(pulumi.CustomResource):
     @property
     @pulumi.getter
     def title(self) -> pulumi.Output[str]:
+        """
+        Title value of the Worker KV Namespace.
+        """
         return pulumi.get(self, "title")
 

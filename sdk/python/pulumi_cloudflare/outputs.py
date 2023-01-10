@@ -3533,18 +3533,20 @@ class AccessRuleConfiguration(dict):
 @pulumi.output_type
 class ApiShieldAuthIdCharacteristic(dict):
     def __init__(__self__, *,
-                 name: str,
-                 type: str):
+                 name: Optional[str] = None,
+                 type: Optional[str] = None):
         """
         :param str name: The name of the characteristic.
         :param str type: The type of characteristic. Available values: `header`, `cookie`.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         """
         The name of the characteristic.
         """
@@ -3552,7 +3554,7 @@ class ApiShieldAuthIdCharacteristic(dict):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> Optional[str]:
         """
         The type of characteristic. Available values: `header`, `cookie`.
         """
@@ -9519,23 +9521,24 @@ class RulesetRuleActionParametersEdgeTtl(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 default: int,
                  mode: str,
+                 default: Optional[int] = None,
                  status_code_ttls: Optional[Sequence['outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl']] = None):
-        pulumi.set(__self__, "default", default)
         pulumi.set(__self__, "mode", mode)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
         if status_code_ttls is not None:
             pulumi.set(__self__, "status_code_ttls", status_code_ttls)
 
     @property
     @pulumi.getter
-    def default(self) -> int:
-        return pulumi.get(self, "default")
+    def mode(self) -> str:
+        return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter
-    def mode(self) -> str:
-        return pulumi.get(self, "mode")
+    def default(self) -> Optional[int]:
+        return pulumi.get(self, "default")
 
     @property
     @pulumi.getter(name="statusCodeTtls")

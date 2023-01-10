@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Zone DNSSEC resource.
+ * Provides a Cloudflare resource to create and modify zone DNSSEC settings.
  *
  * ## Example Usage
  *
@@ -19,13 +19,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Zone DNSSEC resource can be imported using a zone ID, e.g.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example d41d8cd98f00b204e9800998ecf8427e
+ *  $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example <zone_id>
  * ```
- *
- *  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
  */
 export class ZoneDnssec extends pulumi.CustomResource {
     /**
@@ -100,7 +96,7 @@ export class ZoneDnssec extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The zone id for the zone.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -201,7 +197,7 @@ export interface ZoneDnssecState {
      */
     status?: pulumi.Input<string>;
     /**
-     * The zone id for the zone.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -215,7 +211,7 @@ export interface ZoneDnssecArgs {
      */
     modifiedOn?: pulumi.Input<string>;
     /**
-     * The zone id for the zone.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId: pulumi.Input<string>;
 }

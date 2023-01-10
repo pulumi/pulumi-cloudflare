@@ -48,6 +48,9 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// Title value of the Worker KV Namespace.
+        /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
 
@@ -103,6 +106,9 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// Title value of the Worker KV Namespace.
+        /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
@@ -120,6 +126,9 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// Title value of the Worker KV Namespace.
+        /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 

@@ -30,14 +30,14 @@ public final class WorkerCronTriggerArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * List of cron expressions to execute the Worker Script
+     * Cron expressions to execute the Worker script.
      * 
      */
     @Import(name="schedules", required=true)
     private Output<List<String>> schedules;
 
     /**
-     * @return List of cron expressions to execute the Worker Script
+     * @return Cron expressions to execute the Worker script.
      * 
      */
     public Output<List<String>> schedules() {
@@ -45,14 +45,14 @@ public final class WorkerCronTriggerArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Worker script to target for the schedules
+     * Worker script to target for the schedules.
      * 
      */
     @Import(name="scriptName", required=true)
     private Output<String> scriptName;
 
     /**
-     * @return Worker script to target for the schedules
+     * @return Worker script to target for the schedules.
      * 
      */
     public Output<String> scriptName() {
@@ -107,7 +107,7 @@ public final class WorkerCronTriggerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param schedules List of cron expressions to execute the Worker Script
+         * @param schedules Cron expressions to execute the Worker script.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class WorkerCronTriggerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param schedules List of cron expressions to execute the Worker Script
+         * @param schedules Cron expressions to execute the Worker script.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class WorkerCronTriggerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param schedules List of cron expressions to execute the Worker Script
+         * @param schedules Cron expressions to execute the Worker script.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class WorkerCronTriggerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param scriptName Worker script to target for the schedules
+         * @param scriptName Worker script to target for the schedules.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class WorkerCronTriggerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param scriptName Worker script to target for the schedules
+         * @param scriptName Worker script to target for the schedules.
          * 
          * @return builder
          * 

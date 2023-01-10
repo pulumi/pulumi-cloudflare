@@ -489,11 +489,11 @@ export interface ApiShieldAuthIdCharacteristic {
     /**
      * The name of the characteristic.
      */
-    name: string;
+    name?: string;
     /**
      * The type of characteristic. Available values: `header`, `cookie`.
      */
-    type: string;
+    type?: string;
 }
 
 export interface ApiTokenCondition {
@@ -2253,7 +2253,7 @@ export interface RulesetRuleActionParametersCacheKeyCustomKeyUser {
 }
 
 export interface RulesetRuleActionParametersEdgeTtl {
-    default: number;
+    default?: number;
     mode: string;
     statusCodeTtls?: outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl[];
 }

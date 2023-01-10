@@ -9,47 +9,32 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['UrlNormalizationSettingsArgs', 'UrlNormalizationSettings']
+__all__ = ['TieredCacheArgs', 'TieredCache']
 
 @pulumi.input_type
-class UrlNormalizationSettingsArgs:
+class TieredCacheArgs:
     def __init__(__self__, *,
-                 scope: pulumi.Input[str],
-                 type: pulumi.Input[str],
+                 cache_type: pulumi.Input[str],
                  zone_id: pulumi.Input[str]):
         """
-        The set of arguments for constructing a UrlNormalizationSettings resource.
-        :param pulumi.Input[str] scope: The scope of the URL normalization.
-        :param pulumi.Input[str] type: The type of URL normalization performed by Cloudflare.
+        The set of arguments for constructing a TieredCache resource.
+        :param pulumi.Input[str] cache_type: The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        pulumi.set(__self__, "scope", scope)
-        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "cache_type", cache_type)
         pulumi.set(__self__, "zone_id", zone_id)
 
     @property
-    @pulumi.getter
-    def scope(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="cacheType")
+    def cache_type(self) -> pulumi.Input[str]:
         """
-        The scope of the URL normalization.
+        The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
         """
-        return pulumi.get(self, "scope")
+        return pulumi.get(self, "cache_type")
 
-    @scope.setter
-    def scope(self, value: pulumi.Input[str]):
-        pulumi.set(self, "scope", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> pulumi.Input[str]:
-        """
-        The type of URL normalization performed by Cloudflare.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "type", value)
+    @cache_type.setter
+    def cache_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cache_type", value)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -65,47 +50,31 @@ class UrlNormalizationSettingsArgs:
 
 
 @pulumi.input_type
-class _UrlNormalizationSettingsState:
+class _TieredCacheState:
     def __init__(__self__, *,
-                 scope: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 cache_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering UrlNormalizationSettings resources.
-        :param pulumi.Input[str] scope: The scope of the URL normalization.
-        :param pulumi.Input[str] type: The type of URL normalization performed by Cloudflare.
+        Input properties used for looking up and filtering TieredCache resources.
+        :param pulumi.Input[str] cache_type: The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        if scope is not None:
-            pulumi.set(__self__, "scope", scope)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+        if cache_type is not None:
+            pulumi.set(__self__, "cache_type", cache_type)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @property
-    @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="cacheType")
+    def cache_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The scope of the URL normalization.
+        The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
         """
-        return pulumi.get(self, "scope")
+        return pulumi.get(self, "cache_type")
 
-    @scope.setter
-    def scope(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "scope", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of URL normalization performed by Cloudflare.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
+    @cache_type.setter
+    def cache_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cache_type", value)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -120,17 +89,17 @@ class _UrlNormalizationSettingsState:
         pulumi.set(self, "zone_id", value)
 
 
-class UrlNormalizationSettings(pulumi.CustomResource):
+class TieredCache(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 scope: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 cache_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a resource to manage URL Normalization Settings.
+        Provides a resource, that manages Cloudflare Tiered Cache settings.
+        This allows you to adjust topologies for your zone.
 
         ## Example Usage
 
@@ -138,26 +107,25 @@ class UrlNormalizationSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.UrlNormalizationSettings("example",
-            scope="incoming",
-            type="cloudflare",
+        example = cloudflare.TieredCache("example",
+            cache_type="smart",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] scope: The scope of the URL normalization.
-        :param pulumi.Input[str] type: The type of URL normalization performed by Cloudflare.
+        :param pulumi.Input[str] cache_type: The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: UrlNormalizationSettingsArgs,
+                 args: TieredCacheArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource to manage URL Normalization Settings.
+        Provides a resource, that manages Cloudflare Tiered Cache settings.
+        This allows you to adjust topologies for your zone.
 
         ## Example Usage
 
@@ -165,19 +133,18 @@ class UrlNormalizationSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.UrlNormalizationSettings("example",
-            scope="incoming",
-            type="cloudflare",
+        example = cloudflare.TieredCache("example",
+            cache_type="smart",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
         :param str resource_name: The name of the resource.
-        :param UrlNormalizationSettingsArgs args: The arguments to use to populate this resource's properties.
+        :param TieredCacheArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(UrlNormalizationSettingsArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TieredCacheArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -186,8 +153,7 @@ class UrlNormalizationSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 scope: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 cache_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -196,19 +162,16 @@ class UrlNormalizationSettings(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = UrlNormalizationSettingsArgs.__new__(UrlNormalizationSettingsArgs)
+            __props__ = TieredCacheArgs.__new__(TieredCacheArgs)
 
-            if scope is None and not opts.urn:
-                raise TypeError("Missing required property 'scope'")
-            __props__.__dict__["scope"] = scope
-            if type is None and not opts.urn:
-                raise TypeError("Missing required property 'type'")
-            __props__.__dict__["type"] = type
+            if cache_type is None and not opts.urn:
+                raise TypeError("Missing required property 'cache_type'")
+            __props__.__dict__["cache_type"] = cache_type
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
-        super(UrlNormalizationSettings, __self__).__init__(
-            'cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings',
+        super(TieredCache, __self__).__init__(
+            'cloudflare:index/tieredCache:TieredCache',
             resource_name,
             __props__,
             opts)
@@ -217,44 +180,33 @@ class UrlNormalizationSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            scope: Optional[pulumi.Input[str]] = None,
-            type: Optional[pulumi.Input[str]] = None,
-            zone_id: Optional[pulumi.Input[str]] = None) -> 'UrlNormalizationSettings':
+            cache_type: Optional[pulumi.Input[str]] = None,
+            zone_id: Optional[pulumi.Input[str]] = None) -> 'TieredCache':
         """
-        Get an existing UrlNormalizationSettings resource's state with the given name, id, and optional extra
+        Get an existing TieredCache resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] scope: The scope of the URL normalization.
-        :param pulumi.Input[str] type: The type of URL normalization performed by Cloudflare.
+        :param pulumi.Input[str] cache_type: The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _UrlNormalizationSettingsState.__new__(_UrlNormalizationSettingsState)
+        __props__ = _TieredCacheState.__new__(_TieredCacheState)
 
-        __props__.__dict__["scope"] = scope
-        __props__.__dict__["type"] = type
+        __props__.__dict__["cache_type"] = cache_type
         __props__.__dict__["zone_id"] = zone_id
-        return UrlNormalizationSettings(resource_name, opts=opts, __props__=__props__)
+        return TieredCache(resource_name, opts=opts, __props__=__props__)
 
     @property
-    @pulumi.getter
-    def scope(self) -> pulumi.Output[str]:
+    @pulumi.getter(name="cacheType")
+    def cache_type(self) -> pulumi.Output[str]:
         """
-        The scope of the URL normalization.
+        The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
         """
-        return pulumi.get(self, "scope")
-
-    @property
-    @pulumi.getter
-    def type(self) -> pulumi.Output[str]:
-        """
-        The type of URL normalization performed by Cloudflare.
-        """
-        return pulumi.get(self, "type")
+        return pulumi.get(self, "cache_type")
 
     @property
     @pulumi.getter(name="zoneId")

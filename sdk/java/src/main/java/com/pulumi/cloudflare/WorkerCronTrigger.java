@@ -20,6 +20,10 @@ import javax.annotation.Nullable;
  * schedule. Worker Cron Triggers are ideal for running periodic jobs for
  * maintenance or calling third-party APIs to collect up-to-date data.
  * 
+ * &gt; This resource uses the Cloudflare account APIs. This requires setting the
+ * `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument
+ * if you do not explicitly set the resource level `account_id` value.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -45,11 +49,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleScript = new WorkerScript(&#34;exampleScript&#34;, WorkerScriptArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;example-script&#34;)
  *             .content(Files.readString(Paths.get(&#34;path/to/my.js&#34;)))
  *             .build());
  * 
  *         var exampleTrigger = new WorkerCronTrigger(&#34;exampleTrigger&#34;, WorkerCronTriggerArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .scriptName(exampleScript.name())
  *             .schedules(            
  *                 &#34;*{@literal /}5 * * * *&#34;,
@@ -62,10 +68,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Worker Cron Triggers can be imported using the script name of the Worker they are targeting.
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example my-script
+ *  $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example &lt;account_id&gt;/&lt;script_name&gt;
  * ```
  * 
  */
@@ -86,28 +90,28 @@ public class WorkerCronTrigger extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * List of cron expressions to execute the Worker Script
+     * Cron expressions to execute the Worker script.
      * 
      */
     @Export(name="schedules", type=List.class, parameters={String.class})
     private Output<List<String>> schedules;
 
     /**
-     * @return List of cron expressions to execute the Worker Script
+     * @return Cron expressions to execute the Worker script.
      * 
      */
     public Output<List<String>> schedules() {
         return this.schedules;
     }
     /**
-     * Worker script to target for the schedules
+     * Worker script to target for the schedules.
      * 
      */
     @Export(name="scriptName", type=String.class, parameters={})
     private Output<String> scriptName;
 
     /**
-     * @return Worker script to target for the schedules
+     * @return Worker script to target for the schedules.
      * 
      */
     public Output<String> scriptName() {

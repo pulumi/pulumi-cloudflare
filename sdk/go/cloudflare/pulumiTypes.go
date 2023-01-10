@@ -6170,9 +6170,9 @@ func (o AccessRuleConfigurationPtrOutput) Value() pulumi.StringPtrOutput {
 
 type ApiShieldAuthIdCharacteristic struct {
 	// The name of the characteristic.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// The type of characteristic. Available values: `header`, `cookie`.
-	Type string `pulumi:"type"`
+	Type *string `pulumi:"type"`
 }
 
 // ApiShieldAuthIdCharacteristicInput is an input type that accepts ApiShieldAuthIdCharacteristicArgs and ApiShieldAuthIdCharacteristicOutput values.
@@ -6188,9 +6188,9 @@ type ApiShieldAuthIdCharacteristicInput interface {
 
 type ApiShieldAuthIdCharacteristicArgs struct {
 	// The name of the characteristic.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The type of characteristic. Available values: `header`, `cookie`.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (ApiShieldAuthIdCharacteristicArgs) ElementType() reflect.Type {
@@ -6245,13 +6245,13 @@ func (o ApiShieldAuthIdCharacteristicOutput) ToApiShieldAuthIdCharacteristicOutp
 }
 
 // The name of the characteristic.
-func (o ApiShieldAuthIdCharacteristicOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiShieldAuthIdCharacteristic) string { return v.Name }).(pulumi.StringOutput)
+func (o ApiShieldAuthIdCharacteristicOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiShieldAuthIdCharacteristic) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The type of characteristic. Available values: `header`, `cookie`.
-func (o ApiShieldAuthIdCharacteristicOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiShieldAuthIdCharacteristic) string { return v.Type }).(pulumi.StringOutput)
+func (o ApiShieldAuthIdCharacteristicOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiShieldAuthIdCharacteristic) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type ApiShieldAuthIdCharacteristicArrayOutput struct{ *pulumi.OutputState }
@@ -20394,7 +20394,7 @@ func (o RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput) Lang() pulumi
 }
 
 type RulesetRuleActionParametersEdgeTtl struct {
-	Default        int                                               `pulumi:"default"`
+	Default        *int                                              `pulumi:"default"`
 	Mode           string                                            `pulumi:"mode"`
 	StatusCodeTtls []RulesetRuleActionParametersEdgeTtlStatusCodeTtl `pulumi:"statusCodeTtls"`
 }
@@ -20411,7 +20411,7 @@ type RulesetRuleActionParametersEdgeTtlInput interface {
 }
 
 type RulesetRuleActionParametersEdgeTtlArgs struct {
-	Default        pulumi.IntInput                                           `pulumi:"default"`
+	Default        pulumi.IntPtrInput                                        `pulumi:"default"`
 	Mode           pulumi.StringInput                                        `pulumi:"mode"`
 	StatusCodeTtls RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput `pulumi:"statusCodeTtls"`
 }
@@ -20493,8 +20493,8 @@ func (o RulesetRuleActionParametersEdgeTtlOutput) ToRulesetRuleActionParametersE
 	}).(RulesetRuleActionParametersEdgeTtlPtrOutput)
 }
 
-func (o RulesetRuleActionParametersEdgeTtlOutput) Default() pulumi.IntOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersEdgeTtl) int { return v.Default }).(pulumi.IntOutput)
+func (o RulesetRuleActionParametersEdgeTtlOutput) Default() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersEdgeTtl) *int { return v.Default }).(pulumi.IntPtrOutput)
 }
 
 func (o RulesetRuleActionParametersEdgeTtlOutput) Mode() pulumi.StringOutput {
@@ -20536,7 +20536,7 @@ func (o RulesetRuleActionParametersEdgeTtlPtrOutput) Default() pulumi.IntPtrOutp
 		if v == nil {
 			return nil
 		}
-		return &v.Default
+		return v.Default
 	}).(pulumi.IntPtrOutput)
 }
 

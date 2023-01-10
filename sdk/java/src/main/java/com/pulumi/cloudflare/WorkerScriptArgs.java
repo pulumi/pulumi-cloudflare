@@ -24,6 +24,21 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkerScriptArgs Empty = new WorkerScriptArgs();
 
+    /**
+     * The account identifier to target for the resource.
+     * 
+     */
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
+
+    /**
+     * @return The account identifier to target for the resource.
+     * 
+     */
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+
     @Import(name="analyticsEngineBindings")
     private @Nullable Output<List<WorkerScriptAnalyticsEngineBindingArgs>> analyticsEngineBindings;
 
@@ -121,6 +136,7 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
     private WorkerScriptArgs() {}
 
     private WorkerScriptArgs(WorkerScriptArgs $) {
+        this.accountId = $.accountId;
         this.analyticsEngineBindings = $.analyticsEngineBindings;
         this.content = $.content;
         this.kvNamespaceBindings = $.kvNamespaceBindings;
@@ -149,6 +165,27 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(WorkerScriptArgs defaults) {
             $ = new WorkerScriptArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accountId The account identifier to target for the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(@Nullable Output<String> accountId) {
+            $.accountId = accountId;
+            return this;
+        }
+
+        /**
+         * @param accountId The account identifier to target for the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
         }
 
         public Builder analyticsEngineBindings(@Nullable Output<List<WorkerScriptAnalyticsEngineBindingArgs>> analyticsEngineBindings) {

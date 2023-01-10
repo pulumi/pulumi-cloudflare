@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/workersKv:WorkersKv example &lt;namespace_id&gt;/&lt;key_name&gt;
+ *  $ pulumi import cloudflare:index/workersKv:WorkersKv example &lt;account_id&gt;/&lt;namespace_id&gt;/&lt;key_name&gt;
  * ```
  * 
  */

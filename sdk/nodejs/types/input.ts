@@ -489,11 +489,11 @@ export interface ApiShieldAuthIdCharacteristic {
     /**
      * The name of the characteristic.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The type of characteristic. Available values: `header`, `cookie`.
      */
-    type: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 export interface ApiTokenCondition {
@@ -2221,7 +2221,7 @@ export interface RulesetRuleActionParametersCacheKeyCustomKeyUser {
 }
 
 export interface RulesetRuleActionParametersEdgeTtl {
-    default: pulumi.Input<number>;
+    default?: pulumi.Input<number>;
     mode: pulumi.Input<string>;
     statusCodeTtls?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl>[]>;
 }

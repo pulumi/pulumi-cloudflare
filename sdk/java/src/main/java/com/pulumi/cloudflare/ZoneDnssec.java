@@ -15,7 +15,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Zone DNSSEC resource.
+ * Provides a Cloudflare resource to create and modify zone DNSSEC settings.
  * 
  * ## Example Usage
  * ```java
@@ -55,13 +55,9 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Zone DNSSEC resource can be imported using a zone ID, e.g.
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example d41d8cd98f00b204e9800998ecf8427e
+ *  $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example &lt;zone_id&gt;
  * ```
- * 
- *  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
  * 
  */
 @ResourceType(type="cloudflare:index/zoneDnssec:ZoneDnssec")
@@ -221,14 +217,14 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The zone id for the zone.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The zone id for the zone.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {

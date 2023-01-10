@@ -20,8 +20,8 @@ class WorkerCronTriggerArgs:
         """
         The set of arguments for constructing a WorkerCronTrigger resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] schedules: List of cron expressions to execute the Worker Script
-        :param pulumi.Input[str] script_name: Worker script to target for the schedules
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] schedules: Cron expressions to execute the Worker script.
+        :param pulumi.Input[str] script_name: Worker script to target for the schedules.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "schedules", schedules)
@@ -43,7 +43,7 @@ class WorkerCronTriggerArgs:
     @pulumi.getter
     def schedules(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        List of cron expressions to execute the Worker Script
+        Cron expressions to execute the Worker script.
         """
         return pulumi.get(self, "schedules")
 
@@ -55,7 +55,7 @@ class WorkerCronTriggerArgs:
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Input[str]:
         """
-        Worker script to target for the schedules
+        Worker script to target for the schedules.
         """
         return pulumi.get(self, "script_name")
 
@@ -73,8 +73,8 @@ class _WorkerCronTriggerState:
         """
         Input properties used for looking up and filtering WorkerCronTrigger resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] schedules: List of cron expressions to execute the Worker Script
-        :param pulumi.Input[str] script_name: Worker script to target for the schedules
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] schedules: Cron expressions to execute the Worker script.
+        :param pulumi.Input[str] script_name: Worker script to target for the schedules.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -99,7 +99,7 @@ class _WorkerCronTriggerState:
     @pulumi.getter
     def schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of cron expressions to execute the Worker Script
+        Cron expressions to execute the Worker script.
         """
         return pulumi.get(self, "schedules")
 
@@ -111,7 +111,7 @@ class _WorkerCronTriggerState:
     @pulumi.getter(name="scriptName")
     def script_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Worker script to target for the schedules
+        Worker script to target for the schedules.
         """
         return pulumi.get(self, "script_name")
 
@@ -135,6 +135,10 @@ class WorkerCronTrigger(pulumi.CustomResource):
         schedule. Worker Cron Triggers are ideal for running periodic jobs for
         maintenance or calling third-party APIs to collect up-to-date data.
 
+        > This resource uses the Cloudflare account APIs. This requires setting the
+        `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument
+        if you do not explicitly set the resource level `account_id` value.
+
         ## Example Usage
 
         ```python
@@ -142,9 +146,11 @@ class WorkerCronTrigger(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example_script = cloudflare.WorkerScript("exampleScript",
+            account_id="f037e56e89293a057740de681ac9abbe",
             name="example-script",
             content=(lambda path: open(path).read())("path/to/my.js"))
         example_trigger = cloudflare.WorkerCronTrigger("exampleTrigger",
+            account_id="f037e56e89293a057740de681ac9abbe",
             script_name=example_script.name,
             schedules=[
                 "*/5 * * * *",
@@ -154,17 +160,15 @@ class WorkerCronTrigger(pulumi.CustomResource):
 
         ## Import
 
-        Worker Cron Triggers can be imported using the script name of the Worker they are targeting.
-
         ```sh
-         $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example my-script
+         $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example <account_id>/<script_name>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] schedules: List of cron expressions to execute the Worker Script
-        :param pulumi.Input[str] script_name: Worker script to target for the schedules
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] schedules: Cron expressions to execute the Worker script.
+        :param pulumi.Input[str] script_name: Worker script to target for the schedules.
         """
         ...
     @overload
@@ -178,6 +182,10 @@ class WorkerCronTrigger(pulumi.CustomResource):
         schedule. Worker Cron Triggers are ideal for running periodic jobs for
         maintenance or calling third-party APIs to collect up-to-date data.
 
+        > This resource uses the Cloudflare account APIs. This requires setting the
+        `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument
+        if you do not explicitly set the resource level `account_id` value.
+
         ## Example Usage
 
         ```python
@@ -185,9 +193,11 @@ class WorkerCronTrigger(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example_script = cloudflare.WorkerScript("exampleScript",
+            account_id="f037e56e89293a057740de681ac9abbe",
             name="example-script",
             content=(lambda path: open(path).read())("path/to/my.js"))
         example_trigger = cloudflare.WorkerCronTrigger("exampleTrigger",
+            account_id="f037e56e89293a057740de681ac9abbe",
             script_name=example_script.name,
             schedules=[
                 "*/5 * * * *",
@@ -197,10 +207,8 @@ class WorkerCronTrigger(pulumi.CustomResource):
 
         ## Import
 
-        Worker Cron Triggers can be imported using the script name of the Worker they are targeting.
-
         ```sh
-         $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example my-script
+         $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example <account_id>/<script_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -260,8 +268,8 @@ class WorkerCronTrigger(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] schedules: List of cron expressions to execute the Worker Script
-        :param pulumi.Input[str] script_name: Worker script to target for the schedules
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] schedules: Cron expressions to execute the Worker script.
+        :param pulumi.Input[str] script_name: Worker script to target for the schedules.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -284,7 +292,7 @@ class WorkerCronTrigger(pulumi.CustomResource):
     @pulumi.getter
     def schedules(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of cron expressions to execute the Worker Script
+        Cron expressions to execute the Worker script.
         """
         return pulumi.get(self, "schedules")
 
@@ -292,7 +300,7 @@ class WorkerCronTrigger(pulumi.CustomResource):
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Output[str]:
         """
-        Worker script to target for the schedules
+        Worker script to target for the schedules.
         """
         return pulumi.get(self, "script_name")
 

@@ -20,6 +20,21 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
     public static final CustomHostnameState Empty = new CustomHostnameState();
 
     /**
+     * Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+     * 
+     */
+    @Import(name="customMetadata")
+    private @Nullable Output<Map<String,String>> customMetadata;
+
+    /**
+     * @return Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> customMetadata() {
+        return Optional.ofNullable(this.customMetadata);
+    }
+
+    /**
      * The custom origin server used for certificates.
      * 
      */
@@ -141,6 +156,7 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
     private CustomHostnameState() {}
 
     private CustomHostnameState(CustomHostnameState $) {
+        this.customMetadata = $.customMetadata;
         this.customOriginServer = $.customOriginServer;
         this.customOriginSni = $.customOriginSni;
         this.hostname = $.hostname;
@@ -168,6 +184,27 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
 
         public Builder(CustomHostnameState defaults) {
             $ = new CustomHostnameState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param customMetadata Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customMetadata(@Nullable Output<Map<String,String>> customMetadata) {
+            $.customMetadata = customMetadata;
+            return this;
+        }
+
+        /**
+         * @param customMetadata Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customMetadata(Map<String,String> customMetadata) {
+            return customMetadata(Output.of(customMetadata));
         }
 
         /**

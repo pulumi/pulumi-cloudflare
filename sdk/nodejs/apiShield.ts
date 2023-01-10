@@ -55,7 +55,7 @@ export class ApiShield extends pulumi.CustomResource {
     /**
      * Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
      */
-    public readonly authIdCharacteristics!: pulumi.Output<outputs.ApiShieldAuthIdCharacteristic[]>;
+    public readonly authIdCharacteristics!: pulumi.Output<outputs.ApiShieldAuthIdCharacteristic[] | undefined>;
     /**
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
@@ -78,9 +78,6 @@ export class ApiShield extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ApiShieldArgs | undefined;
-            if ((!args || args.authIdCharacteristics === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'authIdCharacteristics'");
-            }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
@@ -113,7 +110,7 @@ export interface ApiShieldArgs {
     /**
      * Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
      */
-    authIdCharacteristics: pulumi.Input<pulumi.Input<inputs.ApiShieldAuthIdCharacteristic>[]>;
+    authIdCharacteristics?: pulumi.Input<pulumi.Input<inputs.ApiShieldAuthIdCharacteristic>[]>;
     /**
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */

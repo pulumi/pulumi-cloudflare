@@ -188,7 +188,7 @@ class WorkersKv(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/workersKv:WorkersKv example <namespace_id>/<key_name>
+         $ pulumi import cloudflare:index/workersKv:WorkersKv example <account_id>/<namespace_id>/<key_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -230,7 +230,7 @@ class WorkersKv(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/workersKv:WorkersKv example <namespace_id>/<key_name>
+         $ pulumi import cloudflare:index/workersKv:WorkersKv example <account_id>/<namespace_id>/<key_name>
         ```
 
         :param str resource_name: The name of the resource.

@@ -15,6 +15,10 @@ namespace Pulumi.Cloudflare
     /// schedule. Worker Cron Triggers are ideal for running periodic jobs for
     /// maintenance or calling third-party APIs to collect up-to-date data.
     /// 
+    /// &gt; This resource uses the Cloudflare account APIs. This requires setting the
+    /// `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument
+    /// if you do not explicitly set the resource level `account_id` value.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -27,12 +31,14 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var exampleScript = new Cloudflare.WorkerScript("exampleScript", new()
     ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Name = "example-script",
     ///         Content = File.ReadAllText("path/to/my.js"),
     ///     });
     /// 
     ///     var exampleTrigger = new Cloudflare.WorkerCronTrigger("exampleTrigger", new()
     ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         ScriptName = exampleScript.Name,
     ///         Schedules = new[]
     ///         {
@@ -46,10 +52,8 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Worker Cron Triggers can be imported using the script name of the Worker they are targeting.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example my-script
+    ///  $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example &lt;account_id&gt;/&lt;script_name&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workerCronTrigger:WorkerCronTrigger")]
@@ -62,13 +66,13 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// List of cron expressions to execute the Worker Script
+        /// Cron expressions to execute the Worker script.
         /// </summary>
         [Output("schedules")]
         public Output<ImmutableArray<string>> Schedules { get; private set; } = null!;
 
         /// <summary>
-        /// Worker script to target for the schedules
+        /// Worker script to target for the schedules.
         /// </summary>
         [Output("scriptName")]
         public Output<string> ScriptName { get; private set; } = null!;
@@ -129,7 +133,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _schedules;
 
         /// <summary>
-        /// List of cron expressions to execute the Worker Script
+        /// Cron expressions to execute the Worker script.
         /// </summary>
         public InputList<string> Schedules
         {
@@ -138,7 +142,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Worker script to target for the schedules
+        /// Worker script to target for the schedules.
         /// </summary>
         [Input("scriptName", required: true)]
         public Input<string> ScriptName { get; set; } = null!;
@@ -161,7 +165,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _schedules;
 
         /// <summary>
-        /// List of cron expressions to execute the Worker Script
+        /// Cron expressions to execute the Worker script.
         /// </summary>
         public InputList<string> Schedules
         {
@@ -170,7 +174,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Worker script to target for the schedules
+        /// Worker script to target for the schedules.
         /// </summary>
         [Input("scriptName")]
         public Input<string>? ScriptName { get; set; }

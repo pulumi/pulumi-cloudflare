@@ -19,9 +19,13 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  * import * as fs from "fs";
  *
- * const myNamespace = new cloudflare.WorkersKvNamespace("myNamespace", {title: "example"});
+ * const myNamespace = new cloudflare.WorkersKvNamespace("myNamespace", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     title: "example",
+ * });
  * // Sets the script with the name "script_1"
  * const myScript = new cloudflare.WorkerScript("myScript", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "script_1",
  *     content: fs.readFileSync("script.js"),
  *     kvNamespaceBindings: [{
@@ -59,7 +63,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/workerScript:WorkerScript example <script_name>
+ *  $ pulumi import cloudflare:index/workerScript:WorkerScript example <account_id>/<script_name>
  * ```
  */
 export class WorkerScript extends pulumi.CustomResource {
@@ -90,6 +94,10 @@ export class WorkerScript extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkerScript.__pulumiType;
     }
 
+    /**
+     * The account identifier to target for the resource.
+     */
+    public readonly accountId!: pulumi.Output<string | undefined>;
     public readonly analyticsEngineBindings!: pulumi.Output<outputs.WorkerScriptAnalyticsEngineBinding[] | undefined>;
     /**
      * The script content.
@@ -123,6 +131,7 @@ export class WorkerScript extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkerScriptState | undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["analyticsEngineBindings"] = state ? state.analyticsEngineBindings : undefined;
             resourceInputs["content"] = state ? state.content : undefined;
             resourceInputs["kvNamespaceBindings"] = state ? state.kvNamespaceBindings : undefined;
@@ -141,6 +150,7 @@ export class WorkerScript extends pulumi.CustomResource {
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["analyticsEngineBindings"] = args ? args.analyticsEngineBindings : undefined;
             resourceInputs["content"] = args ? args.content : undefined;
             resourceInputs["kvNamespaceBindings"] = args ? args.kvNamespaceBindings : undefined;
@@ -161,6 +171,10 @@ export class WorkerScript extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkerScript resources.
  */
 export interface WorkerScriptState {
+    /**
+     * The account identifier to target for the resource.
+     */
+    accountId?: pulumi.Input<string>;
     analyticsEngineBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptAnalyticsEngineBinding>[]>;
     /**
      * The script content.
@@ -186,6 +200,10 @@ export interface WorkerScriptState {
  * The set of arguments for constructing a WorkerScript resource.
  */
 export interface WorkerScriptArgs {
+    /**
+     * The account identifier to target for the resource.
+     */
+    accountId?: pulumi.Input<string>;
     analyticsEngineBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptAnalyticsEngineBinding>[]>;
     /**
      * The script content.

@@ -19,9 +19,9 @@ class WorkerRouteArgs:
                  script_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkerRoute resource.
-        :param pulumi.Input[str] pattern: The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
-        :param pulumi.Input[str] zone_id: The zone ID to add the route to.
-        :param pulumi.Input[str] script_name: Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+        :param pulumi.Input[str] pattern: The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] script_name: Worker script name to invoke for requests that match the route pattern.
         """
         pulumi.set(__self__, "pattern", pattern)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -32,7 +32,7 @@ class WorkerRouteArgs:
     @pulumi.getter
     def pattern(self) -> pulumi.Input[str]:
         """
-        The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+        The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
         """
         return pulumi.get(self, "pattern")
 
@@ -44,7 +44,7 @@ class WorkerRouteArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone ID to add the route to.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -56,7 +56,7 @@ class WorkerRouteArgs:
     @pulumi.getter(name="scriptName")
     def script_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+        Worker script name to invoke for requests that match the route pattern.
         """
         return pulumi.get(self, "script_name")
 
@@ -73,9 +73,9 @@ class _WorkerRouteState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WorkerRoute resources.
-        :param pulumi.Input[str] pattern: The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
-        :param pulumi.Input[str] script_name: Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
-        :param pulumi.Input[str] zone_id: The zone ID to add the route to.
+        :param pulumi.Input[str] pattern: The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
+        :param pulumi.Input[str] script_name: Worker script name to invoke for requests that match the route pattern.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         if pattern is not None:
             pulumi.set(__self__, "pattern", pattern)
@@ -88,7 +88,7 @@ class _WorkerRouteState:
     @pulumi.getter
     def pattern(self) -> Optional[pulumi.Input[str]]:
         """
-        The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+        The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
         """
         return pulumi.get(self, "pattern")
 
@@ -100,7 +100,7 @@ class _WorkerRouteState:
     @pulumi.getter(name="scriptName")
     def script_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+        Worker script name to invoke for requests that match the route pattern.
         """
         return pulumi.get(self, "script_name")
 
@@ -112,7 +112,7 @@ class _WorkerRouteState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone ID to add the route to.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -131,7 +131,11 @@ class WorkerRoute(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare worker route resource. A route will also require a `WorkerScript`. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+        Provides a Cloudflare worker route resource. A route will also require a `WorkerScript`.
+
+        > This resource uses the Cloudflare account APIs. This requires setting the
+        `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument
+        if you do not explicitly set the resource level `account_id` value.
 
         ## Example Usage
 
@@ -143,26 +147,22 @@ class WorkerRoute(pulumi.CustomResource):
         # see "cloudflare_worker_script" documentation ...
         # Runs the specified worker script for all URLs that match `example.com/*`
         my_route = cloudflare.WorkerRoute("myRoute",
-            zone_id="d41d8cd98f00b204e9800998ecf8427e",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             pattern="example.com/*",
             script_name=my_script.name)
         ```
 
         ## Import
 
-        Records can be imported using a composite ID formed of zone ID and route ID, e.g.
-
         ```sh
-         $ pulumi import cloudflare:index/workerRoute:WorkerRoute default d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac
+         $ pulumi import cloudflare:index/workerRoute:WorkerRoute example <zone_id>/<route_id>
         ```
-
-         where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `9a7806061c88ada191ed06f989cc3dac` - route ID as returned by [API](https://api.cloudflare.com/#worker-filters-list-filters)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] pattern: The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
-        :param pulumi.Input[str] script_name: Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
-        :param pulumi.Input[str] zone_id: The zone ID to add the route to.
+        :param pulumi.Input[str] pattern: The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
+        :param pulumi.Input[str] script_name: Worker script name to invoke for requests that match the route pattern.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -171,7 +171,11 @@ class WorkerRoute(pulumi.CustomResource):
                  args: WorkerRouteArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare worker route resource. A route will also require a `WorkerScript`. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+        Provides a Cloudflare worker route resource. A route will also require a `WorkerScript`.
+
+        > This resource uses the Cloudflare account APIs. This requires setting the
+        `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument
+        if you do not explicitly set the resource level `account_id` value.
 
         ## Example Usage
 
@@ -183,20 +187,16 @@ class WorkerRoute(pulumi.CustomResource):
         # see "cloudflare_worker_script" documentation ...
         # Runs the specified worker script for all URLs that match `example.com/*`
         my_route = cloudflare.WorkerRoute("myRoute",
-            zone_id="d41d8cd98f00b204e9800998ecf8427e",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             pattern="example.com/*",
             script_name=my_script.name)
         ```
 
         ## Import
 
-        Records can be imported using a composite ID formed of zone ID and route ID, e.g.
-
         ```sh
-         $ pulumi import cloudflare:index/workerRoute:WorkerRoute default d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac
+         $ pulumi import cloudflare:index/workerRoute:WorkerRoute example <zone_id>/<route_id>
         ```
-
-         where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `9a7806061c88ada191ed06f989cc3dac` - route ID as returned by [API](https://api.cloudflare.com/#worker-filters-list-filters)
 
         :param str resource_name: The name of the resource.
         :param WorkerRouteArgs args: The arguments to use to populate this resource's properties.
@@ -252,9 +252,9 @@ class WorkerRoute(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] pattern: The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
-        :param pulumi.Input[str] script_name: Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
-        :param pulumi.Input[str] zone_id: The zone ID to add the route to.
+        :param pulumi.Input[str] pattern: The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
+        :param pulumi.Input[str] script_name: Worker script name to invoke for requests that match the route pattern.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -269,7 +269,7 @@ class WorkerRoute(pulumi.CustomResource):
     @pulumi.getter
     def pattern(self) -> pulumi.Output[str]:
         """
-        The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+        The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
         """
         return pulumi.get(self, "pattern")
 
@@ -277,7 +277,7 @@ class WorkerRoute(pulumi.CustomResource):
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+        Worker script name to invoke for requests that match the route pattern.
         """
         return pulumi.get(self, "script_name")
 
@@ -285,7 +285,7 @@ class WorkerRoute(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone ID to add the route to.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 

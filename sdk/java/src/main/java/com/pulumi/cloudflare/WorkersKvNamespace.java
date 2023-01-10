@@ -73,9 +73,17 @@ public class WorkersKvNamespace extends com.pulumi.resources.CustomResource {
     public Output<String> accountId() {
         return this.accountId;
     }
+    /**
+     * Title value of the Worker KV Namespace.
+     * 
+     */
     @Export(name="title", type=String.class, parameters={})
     private Output<String> title;
 
+    /**
+     * @return Title value of the Worker KV Namespace.
+     * 
+     */
     public Output<String> title() {
         return this.title;
     }
