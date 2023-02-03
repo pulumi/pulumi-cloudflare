@@ -29,14 +29,14 @@ public final class CustomHostnameFallbackOriginArgs extends com.pulumi.resources
     }
 
     /**
-     * The DNS zone ID where the custom hostname should be assigned.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The DNS zone ID where the custom hostname should be assigned.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {
@@ -90,7 +90,7 @@ public final class CustomHostnameFallbackOriginArgs extends com.pulumi.resources
         }
 
         /**
-         * @param zoneId The DNS zone ID where the custom hostname should be assigned.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class CustomHostnameFallbackOriginArgs extends com.pulumi.resources
         }
 
         /**
-         * @param zoneId The DNS zone ID where the custom hostname should be assigned.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

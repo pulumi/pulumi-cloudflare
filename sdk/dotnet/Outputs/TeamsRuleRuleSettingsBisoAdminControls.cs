@@ -13,25 +13,10 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class TeamsRuleRuleSettingsBisoAdminControls
     {
-        /// <summary>
-        /// Disable copy-paste.
-        /// </summary>
         public readonly bool? DisableCopyPaste;
-        /// <summary>
-        /// Disable download.
-        /// </summary>
         public readonly bool? DisableDownload;
-        /// <summary>
-        /// Disable keyboard usage.
-        /// </summary>
         public readonly bool? DisableKeyboard;
-        /// <summary>
-        /// Disable printing.
-        /// </summary>
         public readonly bool? DisablePrinting;
-        /// <summary>
-        /// Disable upload.
-        /// </summary>
         public readonly bool? DisableUpload;
 
         [OutputConstructor]

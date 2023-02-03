@@ -20,41 +20,23 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Brotli;
         public readonly int? BrowserCacheTtl;
         public readonly string? BrowserCheck;
-        /// <summary>
-        /// Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
-        /// </summary>
         public readonly string? CacheLevel;
         public readonly int? ChallengeTtl;
-        /// <summary>
-        /// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
-        /// </summary>
         public readonly ImmutableArray<string> Ciphers;
-        /// <summary>
-        /// Allowed values: "flatten_at_root" (default), "flatten_all", "flatten_none".
-        /// </summary>
         public readonly string? CnameFlattening;
         public readonly string? DevelopmentMode;
         public readonly string? EarlyHints;
         public readonly string? EmailObfuscation;
         public readonly string? FilterLogsToCloudflare;
-        /// <summary>
-        /// Allowed values: "on", "off" (default), "custom".
-        /// </summary>
         public readonly string? H2Prioritization;
         public readonly string? HotlinkProtection;
         public readonly string? Http2;
         public readonly string? Http3;
-        /// <summary>
-        /// Allowed values: "on", "off" (default), "open".
-        /// </summary>
         public readonly string? ImageResizing;
         public readonly string? IpGeolocation;
         public readonly string? Ipv6;
         public readonly string? LogToCloudflare;
         public readonly int? MaxUpload;
-        /// <summary>
-        /// Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
-        /// </summary>
         public readonly string? MinTlsVersion;
         public readonly Outputs.ZoneSettingsOverrideInitialSettingMinify? Minify;
         public readonly string? Mirage;
@@ -63,47 +45,26 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? OpportunisticOnion;
         public readonly string? OrangeToOrange;
         public readonly string? OriginErrorPagePassThru;
-        /// <summary>
-        /// Allowed values: "1" (default on Enterprise), "2" (default)
-        /// </summary>
         public readonly string? OriginMaxHttpVersion;
-        /// <summary>
-        /// Allowed values: "off" (default), "lossless", "lossy".
-        /// </summary>
         public readonly string? Polish;
         public readonly string? PrefetchPreload;
         public readonly string? PrivacyPass;
         public readonly string? ProxyReadTimeout;
-        /// <summary>
-        /// Allowed values: "off" (default), "add_header", "overwrite_header".
-        /// </summary>
         public readonly string? PseudoIpv4;
         public readonly string? ResponseBuffering;
         public readonly string? RocketLoader;
         public readonly Outputs.ZoneSettingsOverrideInitialSettingSecurityHeader? SecurityHeader;
-        /// <summary>
-        /// Allowed values: "off" (Enterprise only), "essentially_off", "low", "medium" (default), "high", "under_attack".
-        /// </summary>
         public readonly string? SecurityLevel;
         public readonly string? ServerSideExclude;
         public readonly string? SortQueryStringForCache;
-        /// <summary>
-        /// Allowed values: "off" (default), "flexible", "full", "strict", "origin_pull".
-        /// </summary>
         public readonly string? Ssl;
         public readonly string? Tls12Only;
-        /// <summary>
-        /// Allowed values: "off" (default), "on", "zrt".
-        /// </summary>
         public readonly string? Tls13;
         public readonly string? TlsClientAuth;
         public readonly string? TrueClientIpHeader;
         public readonly string? UniversalSsl;
         public readonly string? VisitorIp;
         public readonly string? Waf;
-        /// <summary>
-        /// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
-        /// </summary>
         public readonly string? Webp;
         public readonly string? Websockets;
         public readonly string? ZeroRtt;

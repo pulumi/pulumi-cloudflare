@@ -20,14 +20,14 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
     public static final CustomSslState Empty = new CustomSslState();
 
     /**
-     * The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+     * The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="customSslOptions")
     private @Nullable Output<CustomSslCustomSslOptionsArgs> customSslOptions;
 
     /**
-     * @return The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+     * @return The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<CustomSslCustomSslOptionsArgs>> customSslOptions() {
@@ -98,14 +98,14 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The DNS zone id to the custom ssl cert should be added.
+     * The zone identifier to target for the resource.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The DNS zone id to the custom ssl cert should be added.
+     * @return The zone identifier to target for the resource.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -147,7 +147,7 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customSslOptions The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+         * @param customSslOptions The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customSslOptions The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+         * @param customSslOptions The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The DNS zone id to the custom ssl cert should be added.
+         * @param zoneId The zone identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The DNS zone id to the custom ssl cert should be added.
+         * @param zoneId The zone identifier to target for the resource.
          * 
          * @return builder
          * 

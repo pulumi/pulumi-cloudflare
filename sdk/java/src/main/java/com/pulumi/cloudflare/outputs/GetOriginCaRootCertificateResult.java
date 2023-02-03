@@ -9,6 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOriginCaRootCertificateResult {
+    /**
+     * @return The name of the algorithm used when creating an Origin CA certificate. Available values: `rsa`, `ecc`.
+     * 
+     */
     private String algorithm;
     /**
      * @return The Origin CA root certificate in PEM format.
@@ -22,6 +26,10 @@ public final class GetOriginCaRootCertificateResult {
     private String id;
 
     private GetOriginCaRootCertificateResult() {}
+    /**
+     * @return The name of the algorithm used when creating an Origin CA certificate. Available values: `rsa`, `ecc`.
+     * 
+     */
     public String algorithm() {
         return this.algorithm;
     }

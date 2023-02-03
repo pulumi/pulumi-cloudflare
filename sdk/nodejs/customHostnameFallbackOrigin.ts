@@ -13,18 +13,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const fallbackOrigin = new cloudflare.CustomHostnameFallbackOrigin("fallbackOrigin", {
+ * const example = new cloudflare.CustomHostnameFallbackOrigin("example", {
  *     origin: "fallback.example.com",
- *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  *
  * ## Import
  *
- * Custom hostname fallback origins can be imported using a composite ID formed of the zone ID and [fallback origin](https://api.cloudflare.com/#custom-hostname-fallback-origin-for-a-zone-properties), separated by a "/" e.g.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example d41d8cd98f00b204e9800998ecf8427e/fallback.example.com
+ *  $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example <zone_id>/<fallback_hostname>
  * ```
  */
 export class CustomHostnameFallbackOrigin extends pulumi.CustomResource {
@@ -64,7 +62,7 @@ export class CustomHostnameFallbackOrigin extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The DNS zone ID where the custom hostname should be assigned.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -114,7 +112,7 @@ export interface CustomHostnameFallbackOriginState {
      */
     status?: pulumi.Input<string>;
     /**
-     * The DNS zone ID where the custom hostname should be assigned.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -128,7 +126,7 @@ export interface CustomHostnameFallbackOriginArgs {
      */
     origin: pulumi.Input<string>;
     /**
-     * The DNS zone ID where the custom hostname should be assigned.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId: pulumi.Input<string>;
 }

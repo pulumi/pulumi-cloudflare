@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class SpectrumApplicationDns
     {
         /// <summary>
-        /// Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+        /// The name of the DNS record associated with the application.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The type of DNS record associated with the application. Valid values: `CNAME`.
+        /// The type of DNS record associated with the application.
         /// </summary>
         public readonly string Type;
 

@@ -27,8 +27,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTeamsRule(ctx, "rule1", &cloudflare.TeamsRuleArgs{
-//				AccountId:   pulumi.String("d57c3de47a013c03ca7e237dd3e61d7d"),
+//			_, err := cloudflare.NewTeamsRule(ctx, "example", &cloudflare.TeamsRuleArgs{
+//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Action:      pulumi.String("block"),
 //				Description: pulumi.String("desc"),
 //				Filters: pulumi.StringArray{
@@ -53,19 +53,17 @@ import (
 //
 // ## Import
 //
-// Teams Rules can be imported using a composite ID formed of account ID and teams rule ID.
-//
 // ```sh
 //
-//	$ pulumi import cloudflare:index/teamsRule:TeamsRule rule1 cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+//	$ pulumi import cloudflare:index/teamsRule:TeamsRule example <account_id>/<teams_rule_id>
 //
 // ```
 type TeamsRule struct {
 	pulumi.CustomResourceState
 
-	// The account to which the teams rule should be added.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The action executed by matched teams rule.
+	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
 	Action pulumi.StringOutput `pulumi:"action"`
 	// The description of the teams rule.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -81,7 +79,7 @@ type TeamsRule struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The evaluation precedence of the teams rule.
 	Precedence pulumi.IntOutput `pulumi:"precedence"`
-	// Additional rule settings (refer to the nested schema).
+	// Additional rule settings.
 	RuleSettings TeamsRuleRuleSettingsPtrOutput `pulumi:"ruleSettings"`
 	// The wirefilter expression to be used for traffic matching.
 	Traffic pulumi.StringPtrOutput `pulumi:"traffic"`
@@ -132,9 +130,9 @@ func GetTeamsRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TeamsRule resources.
 type teamsRuleState struct {
-	// The account to which the teams rule should be added.
+	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// The action executed by matched teams rule.
+	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
 	Action *string `pulumi:"action"`
 	// The description of the teams rule.
 	Description *string `pulumi:"description"`
@@ -150,7 +148,7 @@ type teamsRuleState struct {
 	Name *string `pulumi:"name"`
 	// The evaluation precedence of the teams rule.
 	Precedence *int `pulumi:"precedence"`
-	// Additional rule settings (refer to the nested schema).
+	// Additional rule settings.
 	RuleSettings *TeamsRuleRuleSettings `pulumi:"ruleSettings"`
 	// The wirefilter expression to be used for traffic matching.
 	Traffic *string `pulumi:"traffic"`
@@ -158,9 +156,9 @@ type teamsRuleState struct {
 }
 
 type TeamsRuleState struct {
-	// The account to which the teams rule should be added.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// The action executed by matched teams rule.
+	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
 	Action pulumi.StringPtrInput
 	// The description of the teams rule.
 	Description pulumi.StringPtrInput
@@ -176,7 +174,7 @@ type TeamsRuleState struct {
 	Name pulumi.StringPtrInput
 	// The evaluation precedence of the teams rule.
 	Precedence pulumi.IntPtrInput
-	// Additional rule settings (refer to the nested schema).
+	// Additional rule settings.
 	RuleSettings TeamsRuleRuleSettingsPtrInput
 	// The wirefilter expression to be used for traffic matching.
 	Traffic pulumi.StringPtrInput
@@ -188,9 +186,9 @@ func (TeamsRuleState) ElementType() reflect.Type {
 }
 
 type teamsRuleArgs struct {
-	// The account to which the teams rule should be added.
+	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
-	// The action executed by matched teams rule.
+	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
 	Action string `pulumi:"action"`
 	// The description of the teams rule.
 	Description string `pulumi:"description"`
@@ -206,7 +204,7 @@ type teamsRuleArgs struct {
 	Name string `pulumi:"name"`
 	// The evaluation precedence of the teams rule.
 	Precedence int `pulumi:"precedence"`
-	// Additional rule settings (refer to the nested schema).
+	// Additional rule settings.
 	RuleSettings *TeamsRuleRuleSettings `pulumi:"ruleSettings"`
 	// The wirefilter expression to be used for traffic matching.
 	Traffic *string `pulumi:"traffic"`
@@ -214,9 +212,9 @@ type teamsRuleArgs struct {
 
 // The set of arguments for constructing a TeamsRule resource.
 type TeamsRuleArgs struct {
-	// The account to which the teams rule should be added.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// The action executed by matched teams rule.
+	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
 	Action pulumi.StringInput
 	// The description of the teams rule.
 	Description pulumi.StringInput
@@ -232,7 +230,7 @@ type TeamsRuleArgs struct {
 	Name pulumi.StringInput
 	// The evaluation precedence of the teams rule.
 	Precedence pulumi.IntInput
-	// Additional rule settings (refer to the nested schema).
+	// Additional rule settings.
 	RuleSettings TeamsRuleRuleSettingsPtrInput
 	// The wirefilter expression to be used for traffic matching.
 	Traffic pulumi.StringPtrInput
@@ -325,12 +323,12 @@ func (o TeamsRuleOutput) ToTeamsRuleOutputWithContext(ctx context.Context) Teams
 	return o
 }
 
-// The account to which the teams rule should be added.
+// The account identifier to target for the resource.
 func (o TeamsRuleOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The action executed by matched teams rule.
+// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
 func (o TeamsRuleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
@@ -370,7 +368,7 @@ func (o TeamsRuleOutput) Precedence() pulumi.IntOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.IntOutput { return v.Precedence }).(pulumi.IntOutput)
 }
 
-// Additional rule settings (refer to the nested schema).
+// Additional rule settings.
 func (o TeamsRuleOutput) RuleSettings() TeamsRuleRuleSettingsPtrOutput {
 	return o.ApplyT(func(v *TeamsRule) TeamsRuleRuleSettingsPtrOutput { return v.RuleSettings }).(TeamsRuleRuleSettingsPtrOutput)
 }

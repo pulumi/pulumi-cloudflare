@@ -28,18 +28,18 @@ class ZoneCacheVariantsArgs:
                  webps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ZoneCacheVariants resource.
-        :param pulumi.Input[str] zone_id: The ID of the DNS zone in which to apply the cache variants setting
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] avifs: List of strings with the MIME types of all the variants that should be served for avif
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] bmps: List of strings with the MIME types of all the variants that should be served for bmp
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] gifs: List of strings with the MIME types of all the variants that should be served for gif
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] jp2s: List of strings with the MIME types of all the variants that should be served for jp2
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpegs: List of strings with the MIME types of all the variants that should be served for jpeg
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpg2s: List of strings with the MIME types of all the variants that should be served for jpg2
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpgs: List of strings with the MIME types of all the variants that should be served for jpg
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pngs: List of strings with the MIME types of all the variants that should be served for png
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tiffs: List of strings with the MIME types of all the variants that should be served for tiff
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tifs: List of strings with the MIME types of all the variants that should be served for tif
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] webps: List of strings with the MIME types of all the variants that should be served for webp
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] avifs: List of strings with the MIME types of all the variants that should be served for avif.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] bmps: List of strings with the MIME types of all the variants that should be served for bmp.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] gifs: List of strings with the MIME types of all the variants that should be served for gif.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jp2s: List of strings with the MIME types of all the variants that should be served for jp2.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpegs: List of strings with the MIME types of all the variants that should be served for jpeg.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpg2s: List of strings with the MIME types of all the variants that should be served for jpg2.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpgs: List of strings with the MIME types of all the variants that should be served for jpg.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pngs: List of strings with the MIME types of all the variants that should be served for png.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tiffs: List of strings with the MIME types of all the variants that should be served for tiff.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tifs: List of strings with the MIME types of all the variants that should be served for tif.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] webps: List of strings with the MIME types of all the variants that should be served for webp.
         """
         pulumi.set(__self__, "zone_id", zone_id)
         if avifs is not None:
@@ -69,7 +69,7 @@ class ZoneCacheVariantsArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The ID of the DNS zone in which to apply the cache variants setting
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -81,7 +81,7 @@ class ZoneCacheVariantsArgs:
     @pulumi.getter
     def avifs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for avif
+        List of strings with the MIME types of all the variants that should be served for avif.
         """
         return pulumi.get(self, "avifs")
 
@@ -93,7 +93,7 @@ class ZoneCacheVariantsArgs:
     @pulumi.getter
     def bmps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for bmp
+        List of strings with the MIME types of all the variants that should be served for bmp.
         """
         return pulumi.get(self, "bmps")
 
@@ -105,7 +105,7 @@ class ZoneCacheVariantsArgs:
     @pulumi.getter
     def gifs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for gif
+        List of strings with the MIME types of all the variants that should be served for gif.
         """
         return pulumi.get(self, "gifs")
 
@@ -117,7 +117,7 @@ class ZoneCacheVariantsArgs:
     @pulumi.getter
     def jp2s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for jp2
+        List of strings with the MIME types of all the variants that should be served for jp2.
         """
         return pulumi.get(self, "jp2s")
 
@@ -129,7 +129,7 @@ class ZoneCacheVariantsArgs:
     @pulumi.getter
     def jpegs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for jpeg
+        List of strings with the MIME types of all the variants that should be served for jpeg.
         """
         return pulumi.get(self, "jpegs")
 
@@ -141,7 +141,7 @@ class ZoneCacheVariantsArgs:
     @pulumi.getter
     def jpg2s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for jpg2
+        List of strings with the MIME types of all the variants that should be served for jpg2.
         """
         return pulumi.get(self, "jpg2s")
 
@@ -153,7 +153,7 @@ class ZoneCacheVariantsArgs:
     @pulumi.getter
     def jpgs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for jpg
+        List of strings with the MIME types of all the variants that should be served for jpg.
         """
         return pulumi.get(self, "jpgs")
 
@@ -165,7 +165,7 @@ class ZoneCacheVariantsArgs:
     @pulumi.getter
     def pngs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for png
+        List of strings with the MIME types of all the variants that should be served for png.
         """
         return pulumi.get(self, "pngs")
 
@@ -177,7 +177,7 @@ class ZoneCacheVariantsArgs:
     @pulumi.getter
     def tiffs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for tiff
+        List of strings with the MIME types of all the variants that should be served for tiff.
         """
         return pulumi.get(self, "tiffs")
 
@@ -189,7 +189,7 @@ class ZoneCacheVariantsArgs:
     @pulumi.getter
     def tifs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for tif
+        List of strings with the MIME types of all the variants that should be served for tif.
         """
         return pulumi.get(self, "tifs")
 
@@ -201,7 +201,7 @@ class ZoneCacheVariantsArgs:
     @pulumi.getter
     def webps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for webp
+        List of strings with the MIME types of all the variants that should be served for webp.
         """
         return pulumi.get(self, "webps")
 
@@ -227,18 +227,18 @@ class _ZoneCacheVariantsState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ZoneCacheVariants resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] avifs: List of strings with the MIME types of all the variants that should be served for avif
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] bmps: List of strings with the MIME types of all the variants that should be served for bmp
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] gifs: List of strings with the MIME types of all the variants that should be served for gif
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] jp2s: List of strings with the MIME types of all the variants that should be served for jp2
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpegs: List of strings with the MIME types of all the variants that should be served for jpeg
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpg2s: List of strings with the MIME types of all the variants that should be served for jpg2
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpgs: List of strings with the MIME types of all the variants that should be served for jpg
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pngs: List of strings with the MIME types of all the variants that should be served for png
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tiffs: List of strings with the MIME types of all the variants that should be served for tiff
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tifs: List of strings with the MIME types of all the variants that should be served for tif
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] webps: List of strings with the MIME types of all the variants that should be served for webp
-        :param pulumi.Input[str] zone_id: The ID of the DNS zone in which to apply the cache variants setting
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] avifs: List of strings with the MIME types of all the variants that should be served for avif.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] bmps: List of strings with the MIME types of all the variants that should be served for bmp.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] gifs: List of strings with the MIME types of all the variants that should be served for gif.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jp2s: List of strings with the MIME types of all the variants that should be served for jp2.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpegs: List of strings with the MIME types of all the variants that should be served for jpeg.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpg2s: List of strings with the MIME types of all the variants that should be served for jpg2.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpgs: List of strings with the MIME types of all the variants that should be served for jpg.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pngs: List of strings with the MIME types of all the variants that should be served for png.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tiffs: List of strings with the MIME types of all the variants that should be served for tiff.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tifs: List of strings with the MIME types of all the variants that should be served for tif.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] webps: List of strings with the MIME types of all the variants that should be served for webp.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         if avifs is not None:
             pulumi.set(__self__, "avifs", avifs)
@@ -269,7 +269,7 @@ class _ZoneCacheVariantsState:
     @pulumi.getter
     def avifs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for avif
+        List of strings with the MIME types of all the variants that should be served for avif.
         """
         return pulumi.get(self, "avifs")
 
@@ -281,7 +281,7 @@ class _ZoneCacheVariantsState:
     @pulumi.getter
     def bmps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for bmp
+        List of strings with the MIME types of all the variants that should be served for bmp.
         """
         return pulumi.get(self, "bmps")
 
@@ -293,7 +293,7 @@ class _ZoneCacheVariantsState:
     @pulumi.getter
     def gifs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for gif
+        List of strings with the MIME types of all the variants that should be served for gif.
         """
         return pulumi.get(self, "gifs")
 
@@ -305,7 +305,7 @@ class _ZoneCacheVariantsState:
     @pulumi.getter
     def jp2s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for jp2
+        List of strings with the MIME types of all the variants that should be served for jp2.
         """
         return pulumi.get(self, "jp2s")
 
@@ -317,7 +317,7 @@ class _ZoneCacheVariantsState:
     @pulumi.getter
     def jpegs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for jpeg
+        List of strings with the MIME types of all the variants that should be served for jpeg.
         """
         return pulumi.get(self, "jpegs")
 
@@ -329,7 +329,7 @@ class _ZoneCacheVariantsState:
     @pulumi.getter
     def jpg2s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for jpg2
+        List of strings with the MIME types of all the variants that should be served for jpg2.
         """
         return pulumi.get(self, "jpg2s")
 
@@ -341,7 +341,7 @@ class _ZoneCacheVariantsState:
     @pulumi.getter
     def jpgs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for jpg
+        List of strings with the MIME types of all the variants that should be served for jpg.
         """
         return pulumi.get(self, "jpgs")
 
@@ -353,7 +353,7 @@ class _ZoneCacheVariantsState:
     @pulumi.getter
     def pngs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for png
+        List of strings with the MIME types of all the variants that should be served for png.
         """
         return pulumi.get(self, "pngs")
 
@@ -365,7 +365,7 @@ class _ZoneCacheVariantsState:
     @pulumi.getter
     def tiffs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for tiff
+        List of strings with the MIME types of all the variants that should be served for tiff.
         """
         return pulumi.get(self, "tiffs")
 
@@ -377,7 +377,7 @@ class _ZoneCacheVariantsState:
     @pulumi.getter
     def tifs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for tif
+        List of strings with the MIME types of all the variants that should be served for tif.
         """
         return pulumi.get(self, "tifs")
 
@@ -389,7 +389,7 @@ class _ZoneCacheVariantsState:
     @pulumi.getter
     def webps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for webp
+        List of strings with the MIME types of all the variants that should be served for webp.
         """
         return pulumi.get(self, "webps")
 
@@ -401,7 +401,7 @@ class _ZoneCacheVariantsState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the DNS zone in which to apply the cache variants setting
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -482,23 +482,23 @@ class ZoneCacheVariants(pulumi.CustomResource):
                 "image/jpeg",
                 "image/webp",
             ],
-            zone_id="7df50664b7f90274f4d77cdfee701380")
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] avifs: List of strings with the MIME types of all the variants that should be served for avif
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] bmps: List of strings with the MIME types of all the variants that should be served for bmp
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] gifs: List of strings with the MIME types of all the variants that should be served for gif
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] jp2s: List of strings with the MIME types of all the variants that should be served for jp2
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpegs: List of strings with the MIME types of all the variants that should be served for jpeg
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpg2s: List of strings with the MIME types of all the variants that should be served for jpg2
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpgs: List of strings with the MIME types of all the variants that should be served for jpg
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pngs: List of strings with the MIME types of all the variants that should be served for png
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tiffs: List of strings with the MIME types of all the variants that should be served for tiff
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tifs: List of strings with the MIME types of all the variants that should be served for tif
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] webps: List of strings with the MIME types of all the variants that should be served for webp
-        :param pulumi.Input[str] zone_id: The ID of the DNS zone in which to apply the cache variants setting
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] avifs: List of strings with the MIME types of all the variants that should be served for avif.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] bmps: List of strings with the MIME types of all the variants that should be served for bmp.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] gifs: List of strings with the MIME types of all the variants that should be served for gif.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jp2s: List of strings with the MIME types of all the variants that should be served for jp2.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpegs: List of strings with the MIME types of all the variants that should be served for jpeg.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpg2s: List of strings with the MIME types of all the variants that should be served for jpg2.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpgs: List of strings with the MIME types of all the variants that should be served for jpg.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pngs: List of strings with the MIME types of all the variants that should be served for png.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tiffs: List of strings with the MIME types of all the variants that should be served for tiff.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tifs: List of strings with the MIME types of all the variants that should be served for tif.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] webps: List of strings with the MIME types of all the variants that should be served for webp.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -560,7 +560,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
                 "image/jpeg",
                 "image/webp",
             ],
-            zone_id="7df50664b7f90274f4d77cdfee701380")
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
         :param str resource_name: The name of the resource.
@@ -642,18 +642,18 @@ class ZoneCacheVariants(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] avifs: List of strings with the MIME types of all the variants that should be served for avif
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] bmps: List of strings with the MIME types of all the variants that should be served for bmp
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] gifs: List of strings with the MIME types of all the variants that should be served for gif
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] jp2s: List of strings with the MIME types of all the variants that should be served for jp2
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpegs: List of strings with the MIME types of all the variants that should be served for jpeg
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpg2s: List of strings with the MIME types of all the variants that should be served for jpg2
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpgs: List of strings with the MIME types of all the variants that should be served for jpg
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pngs: List of strings with the MIME types of all the variants that should be served for png
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tiffs: List of strings with the MIME types of all the variants that should be served for tiff
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tifs: List of strings with the MIME types of all the variants that should be served for tif
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] webps: List of strings with the MIME types of all the variants that should be served for webp
-        :param pulumi.Input[str] zone_id: The ID of the DNS zone in which to apply the cache variants setting
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] avifs: List of strings with the MIME types of all the variants that should be served for avif.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] bmps: List of strings with the MIME types of all the variants that should be served for bmp.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] gifs: List of strings with the MIME types of all the variants that should be served for gif.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jp2s: List of strings with the MIME types of all the variants that should be served for jp2.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpegs: List of strings with the MIME types of all the variants that should be served for jpeg.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpg2s: List of strings with the MIME types of all the variants that should be served for jpg2.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] jpgs: List of strings with the MIME types of all the variants that should be served for jpg.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pngs: List of strings with the MIME types of all the variants that should be served for png.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tiffs: List of strings with the MIME types of all the variants that should be served for tiff.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tifs: List of strings with the MIME types of all the variants that should be served for tif.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] webps: List of strings with the MIME types of all the variants that should be served for webp.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -677,7 +677,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
     @pulumi.getter
     def avifs(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for avif
+        List of strings with the MIME types of all the variants that should be served for avif.
         """
         return pulumi.get(self, "avifs")
 
@@ -685,7 +685,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
     @pulumi.getter
     def bmps(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for bmp
+        List of strings with the MIME types of all the variants that should be served for bmp.
         """
         return pulumi.get(self, "bmps")
 
@@ -693,7 +693,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
     @pulumi.getter
     def gifs(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for gif
+        List of strings with the MIME types of all the variants that should be served for gif.
         """
         return pulumi.get(self, "gifs")
 
@@ -701,7 +701,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
     @pulumi.getter
     def jp2s(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for jp2
+        List of strings with the MIME types of all the variants that should be served for jp2.
         """
         return pulumi.get(self, "jp2s")
 
@@ -709,7 +709,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
     @pulumi.getter
     def jpegs(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for jpeg
+        List of strings with the MIME types of all the variants that should be served for jpeg.
         """
         return pulumi.get(self, "jpegs")
 
@@ -717,7 +717,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
     @pulumi.getter
     def jpg2s(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for jpg2
+        List of strings with the MIME types of all the variants that should be served for jpg2.
         """
         return pulumi.get(self, "jpg2s")
 
@@ -725,7 +725,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
     @pulumi.getter
     def jpgs(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for jpg
+        List of strings with the MIME types of all the variants that should be served for jpg.
         """
         return pulumi.get(self, "jpgs")
 
@@ -733,7 +733,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
     @pulumi.getter
     def pngs(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for png
+        List of strings with the MIME types of all the variants that should be served for png.
         """
         return pulumi.get(self, "pngs")
 
@@ -741,7 +741,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
     @pulumi.getter
     def tiffs(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for tiff
+        List of strings with the MIME types of all the variants that should be served for tiff.
         """
         return pulumi.get(self, "tiffs")
 
@@ -749,7 +749,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
     @pulumi.getter
     def tifs(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for tif
+        List of strings with the MIME types of all the variants that should be served for tif.
         """
         return pulumi.get(self, "tifs")
 
@@ -757,7 +757,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
     @pulumi.getter
     def webps(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of strings with the MIME types of all the variants that should be served for webp
+        List of strings with the MIME types of all the variants that should be served for webp.
         """
         return pulumi.get(self, "webps")
 
@@ -765,7 +765,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The ID of the DNS zone in which to apply the cache variants setting
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 

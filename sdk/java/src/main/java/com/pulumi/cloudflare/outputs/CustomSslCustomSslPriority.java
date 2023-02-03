@@ -12,10 +12,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CustomSslCustomSslPriority {
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     private @Nullable String id;
     private @Nullable Integer priority;
 
     private CustomSslCustomSslPriority() {}
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }

@@ -11,41 +11,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountRolesRole {
-    /**
-     * @return Description of role&#39;s permissions
-     * 
-     */
     private @Nullable String description;
     /**
-     * @return Role identifier tag
+     * @return The ID of this resource.
      * 
      */
     private @Nullable String id;
-    /**
-     * @return Role Name
-     * 
-     */
     private @Nullable String name;
 
     private GetAccountRolesRole() {}
-    /**
-     * @return Description of role&#39;s permissions
-     * 
-     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Role identifier tag
+     * @return The ID of this resource.
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
-    /**
-     * @return Role Name
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

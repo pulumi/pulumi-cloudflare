@@ -32,14 +32,14 @@ public final class LogpullRetentionState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The zone ID to apply the log retention to.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone ID to apply the log retention to.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -93,7 +93,7 @@ public final class LogpullRetentionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneId The zone ID to apply the log retention to.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class LogpullRetentionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneId The zone ID to apply the log retention to.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

@@ -19,7 +19,7 @@ class LogpullRetentionArgs:
         """
         The set of arguments for constructing a LogpullRetention resource.
         :param pulumi.Input[bool] enabled: Whether you wish to retain logs or not.
-        :param pulumi.Input[str] zone_id: The zone ID to apply the log retention to.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -40,7 +40,7 @@ class LogpullRetentionArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone ID to apply the log retention to.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -57,7 +57,7 @@ class _LogpullRetentionState:
         """
         Input properties used for looking up and filtering LogpullRetention resources.
         :param pulumi.Input[bool] enabled: Whether you wish to retain logs or not.
-        :param pulumi.Input[str] zone_id: The zone ID to apply the log retention to.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -80,7 +80,7 @@ class _LogpullRetentionState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone ID to apply the log retention to.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -108,21 +108,19 @@ class LogpullRetention(pulumi.CustomResource):
 
         example = cloudflare.LogpullRetention("example",
             enabled=True,
-            zone_id="fb54f084ca7f7b732d3d3ecbd8ef7bf2")
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
         ## Import
 
-        You can import existing Logpull Retention using the zone ID as the identifier.
-
         ```sh
-         $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example fb54f084ca7f7b732d3d3ecbd8ef7bf2
+         $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example <zone_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether you wish to retain logs or not.
-        :param pulumi.Input[str] zone_id: The zone ID to apply the log retention to.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -141,15 +139,13 @@ class LogpullRetention(pulumi.CustomResource):
 
         example = cloudflare.LogpullRetention("example",
             enabled=True,
-            zone_id="fb54f084ca7f7b732d3d3ecbd8ef7bf2")
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
         ## Import
 
-        You can import existing Logpull Retention using the zone ID as the identifier.
-
         ```sh
-         $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example fb54f084ca7f7b732d3d3ecbd8ef7bf2
+         $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example <zone_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -204,7 +200,7 @@ class LogpullRetention(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether you wish to retain logs or not.
-        :param pulumi.Input[str] zone_id: The zone ID to apply the log retention to.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -226,7 +222,7 @@ class LogpullRetention(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone ID to apply the log retention to.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 

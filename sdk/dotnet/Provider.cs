@@ -42,27 +42,29 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
         /// keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-        /// should be used instead.
+        /// should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         /// </summary>
         [Output("apiKey")]
         public Output<string?> ApiKey { get; private set; } = null!;
 
         /// <summary>
         /// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
+        /// Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         /// </summary>
         [Output("apiToken")]
         public Output<string?> ApiToken { get; private set; } = null!;
 
         /// <summary>
         /// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-        /// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
+        /// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,
+        /// `api_user_service_key`.
         /// </summary>
         [Output("apiUserServiceKey")]
         public Output<string?> ApiUserServiceKey { get; private set; } = null!;
 
         /// <summary>
         /// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-        /// variable.
+        /// variable. Required when using `api_key`. Conflicts with `api_token`.
         /// </summary>
         [Output("email")]
         public Output<string?> Email { get; private set; } = null!;
@@ -126,27 +128,29 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
         /// keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-        /// should be used instead.
+        /// should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         /// </summary>
         [Input("apiKey")]
         public Input<string>? ApiKey { get; set; }
 
         /// <summary>
         /// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
+        /// Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         /// </summary>
         [Input("apiToken")]
         public Input<string>? ApiToken { get; set; }
 
         /// <summary>
         /// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-        /// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
+        /// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,
+        /// `api_user_service_key`.
         /// </summary>
         [Input("apiUserServiceKey")]
         public Input<string>? ApiUserServiceKey { get; set; }
 
         /// <summary>
         /// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-        /// variable.
+        /// variable. Required when using `api_key`. Conflicts with `api_token`.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }

@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Authenticated Origin Pulls certificate resource. An uploaded client certificate is required to use Per-Zone or Per-Hostname Authenticated Origin Pulls.
+    /// Provides a Cloudflare Authenticated Origin Pulls certificate
+    /// resource. An uploaded client certificate is required to use Per-Zone
+    ///  or Per-Hostname Authenticated Origin Pulls.
     /// 
     /// ## Example Usage
     /// 
@@ -27,7 +29,7 @@ namespace Pulumi.Cloudflare
     ///         Certificate = "-----INSERT CERTIFICATE-----",
     ///         PrivateKey = "-----INSERT PRIVATE KEY-----",
     ///         Type = "per-zone",
-    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     ///     // Per-Hostname Authenticated Origin Pulls certificate
@@ -36,7 +38,7 @@ namespace Pulumi.Cloudflare
     ///         Certificate = "-----INSERT CERTIFICATE-----",
     ///         PrivateKey = "-----INSERT PRIVATE KEY-----",
     ///         Type = "per-hostname",
-    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });
@@ -44,59 +46,69 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Authenticated Origin Pull certificates can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, e.g. Import Per-Zone Authenticated Origin Pull certificate
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-zone/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
-    /// ```
-    /// 
-    ///  Import Per-Hostname Authenticated Origin Pull certificate
-    /// 
-    /// ```sh
-    ///  $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-hostname/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
+    ///  $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 &lt;zone_id&gt;/&lt;certificate_type&gt;/&lt;certificate_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate")]
     public partial class AuthenticatedOriginPullsCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The public client certificate.
+        /// The public client certificate. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("certificate")]
         public Output<string> Certificate { get; private set; } = null!;
 
+        /// <summary>
+        /// **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
         [Output("expiresOn")]
         public Output<string> ExpiresOn { get; private set; } = null!;
 
+        /// <summary>
+        /// **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
         [Output("issuer")]
         public Output<string> Issuer { get; private set; } = null!;
 
         /// <summary>
-        /// The private key of the client certificate.
+        /// The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("privateKey")]
         public Output<string> PrivateKey { get; private set; } = null!;
 
+        /// <summary>
+        /// **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
         [Output("serialNumber")]
         public Output<string> SerialNumber { get; private set; } = null!;
 
+        /// <summary>
+        /// **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
         [Output("signature")]
         public Output<string> Signature { get; private set; } = null!;
 
+        /// <summary>
+        /// **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The form of Authenticated Origin Pulls to upload the certificate to.
+        /// The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
+        /// <summary>
+        /// **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
         [Output("uploadedOn")]
         public Output<string> UploadedOn { get; private set; } = null!;
 
         /// <summary>
-        /// The zone ID to upload the certificate to.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -152,7 +164,7 @@ namespace Pulumi.Cloudflare
     public sealed class AuthenticatedOriginPullsCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The public client certificate.
+        /// The public client certificate. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("certificate", required: true)]
         public Input<string> Certificate { get; set; } = null!;
@@ -161,7 +173,7 @@ namespace Pulumi.Cloudflare
         private Input<string>? _privateKey;
 
         /// <summary>
-        /// The private key of the client certificate.
+        /// The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         public Input<string>? PrivateKey
         {
@@ -174,13 +186,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The form of Authenticated Origin Pulls to upload the certificate to.
+        /// The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// The zone ID to upload the certificate to.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -194,14 +206,20 @@ namespace Pulumi.Cloudflare
     public sealed class AuthenticatedOriginPullsCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The public client certificate.
+        /// The public client certificate. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("certificate")]
         public Input<string>? Certificate { get; set; }
 
+        /// <summary>
+        /// **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
         [Input("expiresOn")]
         public Input<string>? ExpiresOn { get; set; }
 
+        /// <summary>
+        /// **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
         [Input("issuer")]
         public Input<string>? Issuer { get; set; }
 
@@ -209,7 +227,7 @@ namespace Pulumi.Cloudflare
         private Input<string>? _privateKey;
 
         /// <summary>
-        /// The private key of the client certificate.
+        /// The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         public Input<string>? PrivateKey
         {
@@ -221,26 +239,38 @@ namespace Pulumi.Cloudflare
             }
         }
 
+        /// <summary>
+        /// **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
         [Input("serialNumber")]
         public Input<string>? SerialNumber { get; set; }
 
+        /// <summary>
+        /// **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
         [Input("signature")]
         public Input<string>? Signature { get; set; }
 
+        /// <summary>
+        /// **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The form of Authenticated Origin Pulls to upload the certificate to.
+        /// The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
         [Input("uploadedOn")]
         public Input<string>? UploadedOn { get; set; }
 
         /// <summary>
-        /// The zone ID to upload the certificate to.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

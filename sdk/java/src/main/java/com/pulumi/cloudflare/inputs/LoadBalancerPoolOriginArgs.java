@@ -20,14 +20,14 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
     public static final LoadBalancerPoolOriginArgs Empty = new LoadBalancerPoolOriginArgs();
 
     /**
-     * The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.
+     * The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
      * 
      */
     @Import(name="address", required=true)
     private Output<String> address;
 
     /**
-     * @return The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.
+     * @return The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
      * 
      */
     public Output<String> address() {
@@ -35,14 +35,14 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+     * Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+     * @return Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -50,14 +50,14 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The header name.
+     * HTTP request headers.
      * 
      */
     @Import(name="headers")
     private @Nullable Output<List<LoadBalancerPoolOriginHeaderArgs>> headers;
 
     /**
-     * @return The header name.
+     * @return HTTP request headers.
      * 
      */
     public Optional<Output<List<LoadBalancerPoolOriginHeaderArgs>>> headers() {
@@ -80,14 +80,14 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Default: 1.
+     * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Defaults to `1`.
      * 
      */
     @Import(name="weight")
     private @Nullable Output<Double> weight;
 
     /**
-     * @return The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Default: 1.
+     * @return The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Defaults to `1`.
      * 
      */
     public Optional<Output<Double>> weight() {
@@ -123,7 +123,7 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param address The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.
+         * @param address The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param address The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.
+         * @param address The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param enabled Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+         * @param enabled Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param enabled Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+         * @param enabled Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param headers The header name.
+         * @param headers HTTP request headers.
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param headers The header name.
+         * @param headers HTTP request headers.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param headers The header name.
+         * @param headers HTTP request headers.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param weight The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Default: 1.
+         * @param weight The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Defaults to `1`.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param weight The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Default: 1.
+         * @param weight The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Defaults to `1`.
          * 
          * @return builder
          * 

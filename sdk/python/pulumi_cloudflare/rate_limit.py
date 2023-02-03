@@ -28,14 +28,13 @@ class RateLimitArgs:
         """
         The set of arguments for constructing a RateLimit resource.
         :param pulumi.Input['RateLimitActionArgs'] action: The action to be performed when the threshold of matched traffic within the period defined is exceeded.
-        :param pulumi.Input[int] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
-        :param pulumi.Input[int] threshold: The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
-        :param pulumi.Input[str] zone_id: The DNS zone ID to apply rate limiting to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] bypass_url_patterns: URLs matching the patterns specified here will be excluded from rate limiting.
+        :param pulumi.Input[int] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
+        :param pulumi.Input[int] threshold: The threshold that triggers the rate limit mitigations, combine with period.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input['RateLimitCorrelateArgs'] correlate: Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
         :param pulumi.Input[str] description: A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
-        :param pulumi.Input[bool] disabled: Whether this ratelimit is currently disabled. Default: `false`.
-        :param pulumi.Input['RateLimitMatchArgs'] match: Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
+        :param pulumi.Input[bool] disabled: Whether this ratelimit is currently disabled. Defaults to `false`.
+        :param pulumi.Input['RateLimitMatchArgs'] match: Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "period", period)
@@ -68,7 +67,7 @@ class RateLimitArgs:
     @pulumi.getter
     def period(self) -> pulumi.Input[int]:
         """
-        The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
+        The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
         """
         return pulumi.get(self, "period")
 
@@ -80,7 +79,7 @@ class RateLimitArgs:
     @pulumi.getter
     def threshold(self) -> pulumi.Input[int]:
         """
-        The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
+        The threshold that triggers the rate limit mitigations, combine with period.
         """
         return pulumi.get(self, "threshold")
 
@@ -92,7 +91,7 @@ class RateLimitArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The DNS zone ID to apply rate limiting to.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -103,9 +102,6 @@ class RateLimitArgs:
     @property
     @pulumi.getter(name="bypassUrlPatterns")
     def bypass_url_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        URLs matching the patterns specified here will be excluded from rate limiting.
-        """
         return pulumi.get(self, "bypass_url_patterns")
 
     @bypass_url_patterns.setter
@@ -140,7 +136,7 @@ class RateLimitArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this ratelimit is currently disabled. Default: `false`.
+        Whether this ratelimit is currently disabled. Defaults to `false`.
         """
         return pulumi.get(self, "disabled")
 
@@ -152,7 +148,7 @@ class RateLimitArgs:
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input['RateLimitMatchArgs']]:
         """
-        Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
+        Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
         """
         return pulumi.get(self, "match")
 
@@ -176,14 +172,13 @@ class _RateLimitState:
         """
         Input properties used for looking up and filtering RateLimit resources.
         :param pulumi.Input['RateLimitActionArgs'] action: The action to be performed when the threshold of matched traffic within the period defined is exceeded.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] bypass_url_patterns: URLs matching the patterns specified here will be excluded from rate limiting.
         :param pulumi.Input['RateLimitCorrelateArgs'] correlate: Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
         :param pulumi.Input[str] description: A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
-        :param pulumi.Input[bool] disabled: Whether this ratelimit is currently disabled. Default: `false`.
-        :param pulumi.Input['RateLimitMatchArgs'] match: Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
-        :param pulumi.Input[int] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
-        :param pulumi.Input[int] threshold: The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
-        :param pulumi.Input[str] zone_id: The DNS zone ID to apply rate limiting to.
+        :param pulumi.Input[bool] disabled: Whether this ratelimit is currently disabled. Defaults to `false`.
+        :param pulumi.Input['RateLimitMatchArgs'] match: Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
+        :param pulumi.Input[int] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
+        :param pulumi.Input[int] threshold: The threshold that triggers the rate limit mitigations, combine with period.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -219,9 +214,6 @@ class _RateLimitState:
     @property
     @pulumi.getter(name="bypassUrlPatterns")
     def bypass_url_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        URLs matching the patterns specified here will be excluded from rate limiting.
-        """
         return pulumi.get(self, "bypass_url_patterns")
 
     @bypass_url_patterns.setter
@@ -256,7 +248,7 @@ class _RateLimitState:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this ratelimit is currently disabled. Default: `false`.
+        Whether this ratelimit is currently disabled. Defaults to `false`.
         """
         return pulumi.get(self, "disabled")
 
@@ -268,7 +260,7 @@ class _RateLimitState:
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input['RateLimitMatchArgs']]:
         """
-        Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
+        Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
         """
         return pulumi.get(self, "match")
 
@@ -280,7 +272,7 @@ class _RateLimitState:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
+        The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
         """
         return pulumi.get(self, "period")
 
@@ -292,7 +284,7 @@ class _RateLimitState:
     @pulumi.getter
     def threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
+        The threshold that triggers the rate limit mitigations, combine with period.
         """
         return pulumi.get(self, "threshold")
 
@@ -304,7 +296,7 @@ class _RateLimitState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS zone ID to apply rate limiting to.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -329,7 +321,9 @@ class RateLimit(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare rate limit resource for a given zone. This can be used to limit the traffic you receive zone-wide, or matching more specific types of requests/responses.
+        Provides a Cloudflare rate limit resource for a given zone. This can
+        be used to limit the traffic you receive zone-wide, or matching more
+        specific types of requests/responses.
 
         ## Example Usage
 
@@ -338,16 +332,25 @@ class RateLimit(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.RateLimit("example",
-            zone_id=var["cloudflare_zone_id"],
-            threshold=2000,
-            period=2,
+            action=cloudflare.RateLimitActionArgs(
+                mode="simulate",
+                response=cloudflare.RateLimitActionResponseArgs(
+                    body="custom response body",
+                    content_type="text/plain",
+                ),
+                timeout=43200,
+            ),
+            bypass_url_patterns=[
+                "example.com/bypass1",
+                "example.com/bypass2",
+            ],
+            correlate=cloudflare.RateLimitCorrelateArgs(
+                by="nat",
+            ),
+            description="example rate limit for a zone",
+            disabled=False,
             match=cloudflare.RateLimitMatchArgs(
                 request=cloudflare.RateLimitMatchRequestArgs(
-                    url_pattern=f"{var['cloudflare_zone']}/*",
-                    schemes=[
-                        "HTTP",
-                        "HTTPS",
-                    ],
                     methods=[
                         "GET",
                         "POST",
@@ -356,16 +359,13 @@ class RateLimit(pulumi.CustomResource):
                         "PATCH",
                         "HEAD",
                     ],
+                    schemes=[
+                        "HTTP",
+                        "HTTPS",
+                    ],
+                    url_pattern=f"{var['cloudflare_zone']}/*",
                 ),
                 response=cloudflare.RateLimitMatchResponseArgs(
-                    statuses=[
-                        200,
-                        201,
-                        202,
-                        301,
-                        429,
-                    ],
-                    origin_traffic=False,
                     headers=[
                         {
                             "name": "Host",
@@ -378,46 +378,37 @@ class RateLimit(pulumi.CustomResource):
                             "value": "my-example",
                         },
                     ],
+                    origin_traffic=False,
+                    statuses=[
+                        200,
+                        201,
+                        202,
+                        301,
+                        429,
+                    ],
                 ),
             ),
-            action=cloudflare.RateLimitActionArgs(
-                mode="simulate",
-                timeout=43200,
-                response=cloudflare.RateLimitActionResponseArgs(
-                    content_type="text/plain",
-                    body="custom response body",
-                ),
-            ),
-            correlate=cloudflare.RateLimitCorrelateArgs(
-                by="nat",
-            ),
-            disabled=False,
-            description="example rate limit for a zone",
-            bypass_url_patterns=[
-                f"{var['cloudflare_zone']}/bypass1",
-                f"{var['cloudflare_zone']}/bypass2",
-            ])
+            period=2,
+            threshold=2000,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
         ## Import
 
-        Rate limits can be imported using a composite ID formed of zone name and rate limit ID, e.g.
-
         ```sh
-         $ pulumi import cloudflare:index/rateLimit:RateLimit default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
+         $ pulumi import cloudflare:index/rateLimit:RateLimit example <zone_id>/<rate_limit_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['RateLimitActionArgs']] action: The action to be performed when the threshold of matched traffic within the period defined is exceeded.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] bypass_url_patterns: URLs matching the patterns specified here will be excluded from rate limiting.
         :param pulumi.Input[pulumi.InputType['RateLimitCorrelateArgs']] correlate: Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
         :param pulumi.Input[str] description: A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
-        :param pulumi.Input[bool] disabled: Whether this ratelimit is currently disabled. Default: `false`.
-        :param pulumi.Input[pulumi.InputType['RateLimitMatchArgs']] match: Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
-        :param pulumi.Input[int] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
-        :param pulumi.Input[int] threshold: The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
-        :param pulumi.Input[str] zone_id: The DNS zone ID to apply rate limiting to.
+        :param pulumi.Input[bool] disabled: Whether this ratelimit is currently disabled. Defaults to `false`.
+        :param pulumi.Input[pulumi.InputType['RateLimitMatchArgs']] match: Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
+        :param pulumi.Input[int] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
+        :param pulumi.Input[int] threshold: The threshold that triggers the rate limit mitigations, combine with period.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -426,7 +417,9 @@ class RateLimit(pulumi.CustomResource):
                  args: RateLimitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare rate limit resource for a given zone. This can be used to limit the traffic you receive zone-wide, or matching more specific types of requests/responses.
+        Provides a Cloudflare rate limit resource for a given zone. This can
+        be used to limit the traffic you receive zone-wide, or matching more
+        specific types of requests/responses.
 
         ## Example Usage
 
@@ -435,16 +428,25 @@ class RateLimit(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.RateLimit("example",
-            zone_id=var["cloudflare_zone_id"],
-            threshold=2000,
-            period=2,
+            action=cloudflare.RateLimitActionArgs(
+                mode="simulate",
+                response=cloudflare.RateLimitActionResponseArgs(
+                    body="custom response body",
+                    content_type="text/plain",
+                ),
+                timeout=43200,
+            ),
+            bypass_url_patterns=[
+                "example.com/bypass1",
+                "example.com/bypass2",
+            ],
+            correlate=cloudflare.RateLimitCorrelateArgs(
+                by="nat",
+            ),
+            description="example rate limit for a zone",
+            disabled=False,
             match=cloudflare.RateLimitMatchArgs(
                 request=cloudflare.RateLimitMatchRequestArgs(
-                    url_pattern=f"{var['cloudflare_zone']}/*",
-                    schemes=[
-                        "HTTP",
-                        "HTTPS",
-                    ],
                     methods=[
                         "GET",
                         "POST",
@@ -453,16 +455,13 @@ class RateLimit(pulumi.CustomResource):
                         "PATCH",
                         "HEAD",
                     ],
+                    schemes=[
+                        "HTTP",
+                        "HTTPS",
+                    ],
+                    url_pattern=f"{var['cloudflare_zone']}/*",
                 ),
                 response=cloudflare.RateLimitMatchResponseArgs(
-                    statuses=[
-                        200,
-                        201,
-                        202,
-                        301,
-                        429,
-                    ],
-                    origin_traffic=False,
                     headers=[
                         {
                             "name": "Host",
@@ -475,33 +474,25 @@ class RateLimit(pulumi.CustomResource):
                             "value": "my-example",
                         },
                     ],
+                    origin_traffic=False,
+                    statuses=[
+                        200,
+                        201,
+                        202,
+                        301,
+                        429,
+                    ],
                 ),
             ),
-            action=cloudflare.RateLimitActionArgs(
-                mode="simulate",
-                timeout=43200,
-                response=cloudflare.RateLimitActionResponseArgs(
-                    content_type="text/plain",
-                    body="custom response body",
-                ),
-            ),
-            correlate=cloudflare.RateLimitCorrelateArgs(
-                by="nat",
-            ),
-            disabled=False,
-            description="example rate limit for a zone",
-            bypass_url_patterns=[
-                f"{var['cloudflare_zone']}/bypass1",
-                f"{var['cloudflare_zone']}/bypass2",
-            ])
+            period=2,
+            threshold=2000,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
         ## Import
 
-        Rate limits can be imported using a composite ID formed of zone name and rate limit ID, e.g.
-
         ```sh
-         $ pulumi import cloudflare:index/rateLimit:RateLimit default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
+         $ pulumi import cloudflare:index/rateLimit:RateLimit example <zone_id>/<rate_limit_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -581,14 +572,13 @@ class RateLimit(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['RateLimitActionArgs']] action: The action to be performed when the threshold of matched traffic within the period defined is exceeded.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] bypass_url_patterns: URLs matching the patterns specified here will be excluded from rate limiting.
         :param pulumi.Input[pulumi.InputType['RateLimitCorrelateArgs']] correlate: Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
         :param pulumi.Input[str] description: A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
-        :param pulumi.Input[bool] disabled: Whether this ratelimit is currently disabled. Default: `false`.
-        :param pulumi.Input[pulumi.InputType['RateLimitMatchArgs']] match: Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
-        :param pulumi.Input[int] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
-        :param pulumi.Input[int] threshold: The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
-        :param pulumi.Input[str] zone_id: The DNS zone ID to apply rate limiting to.
+        :param pulumi.Input[bool] disabled: Whether this ratelimit is currently disabled. Defaults to `false`.
+        :param pulumi.Input[pulumi.InputType['RateLimitMatchArgs']] match: Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
+        :param pulumi.Input[int] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
+        :param pulumi.Input[int] threshold: The threshold that triggers the rate limit mitigations, combine with period.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -616,9 +606,6 @@ class RateLimit(pulumi.CustomResource):
     @property
     @pulumi.getter(name="bypassUrlPatterns")
     def bypass_url_patterns(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        URLs matching the patterns specified here will be excluded from rate limiting.
-        """
         return pulumi.get(self, "bypass_url_patterns")
 
     @property
@@ -641,7 +628,7 @@ class RateLimit(pulumi.CustomResource):
     @pulumi.getter
     def disabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether this ratelimit is currently disabled. Default: `false`.
+        Whether this ratelimit is currently disabled. Defaults to `false`.
         """
         return pulumi.get(self, "disabled")
 
@@ -649,7 +636,7 @@ class RateLimit(pulumi.CustomResource):
     @pulumi.getter
     def match(self) -> pulumi.Output['outputs.RateLimitMatch']:
         """
-        Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
+        Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
         """
         return pulumi.get(self, "match")
 
@@ -657,7 +644,7 @@ class RateLimit(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[int]:
         """
-        The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
+        The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
         """
         return pulumi.get(self, "period")
 
@@ -665,7 +652,7 @@ class RateLimit(pulumi.CustomResource):
     @pulumi.getter
     def threshold(self) -> pulumi.Output[int]:
         """
-        The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
+        The threshold that triggers the rate limit mitigations, combine with period.
         """
         return pulumi.get(self, "threshold")
 
@@ -673,7 +660,7 @@ class RateLimit(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The DNS zone ID to apply rate limiting to.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 

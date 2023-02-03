@@ -14,14 +14,14 @@ public final class SpectrumApplicationDnsArgs extends com.pulumi.resources.Resou
     public static final SpectrumApplicationDnsArgs Empty = new SpectrumApplicationDnsArgs();
 
     /**
-     * Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+     * The name of the DNS record associated with the application.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+     * @return The name of the DNS record associated with the application.
      * 
      */
     public Output<String> name() {
@@ -29,14 +29,14 @@ public final class SpectrumApplicationDnsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The type of DNS record associated with the application. Valid values: `CNAME`.
+     * The type of DNS record associated with the application.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of DNS record associated with the application. Valid values: `CNAME`.
+     * @return The type of DNS record associated with the application.
      * 
      */
     public Output<String> type() {
@@ -69,7 +69,7 @@ public final class SpectrumApplicationDnsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param name Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+         * @param name The name of the DNS record associated with the application.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class SpectrumApplicationDnsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param name Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+         * @param name The name of the DNS record associated with the application.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class SpectrumApplicationDnsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type The type of DNS record associated with the application. Valid values: `CNAME`.
+         * @param type The type of DNS record associated with the application.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class SpectrumApplicationDnsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type The type of DNS record associated with the application. Valid values: `CNAME`.
+         * @param type The type of DNS record associated with the application.
          * 
          * @return builder
          * 

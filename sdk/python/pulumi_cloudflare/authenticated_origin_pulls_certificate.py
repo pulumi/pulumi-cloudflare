@@ -20,10 +20,10 @@ class AuthenticatedOriginPullsCertificateArgs:
                  zone_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a AuthenticatedOriginPullsCertificate resource.
-        :param pulumi.Input[str] certificate: The public client certificate.
-        :param pulumi.Input[str] private_key: The private key of the client certificate.
-        :param pulumi.Input[str] type: The form of Authenticated Origin Pulls to upload the certificate to.
-        :param pulumi.Input[str] zone_id: The zone ID to upload the certificate to.
+        :param pulumi.Input[str] certificate: The public client certificate. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] private_key: The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] type: The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         pulumi.set(__self__, "certificate", certificate)
         pulumi.set(__self__, "private_key", private_key)
@@ -34,7 +34,7 @@ class AuthenticatedOriginPullsCertificateArgs:
     @pulumi.getter
     def certificate(self) -> pulumi.Input[str]:
         """
-        The public client certificate.
+        The public client certificate. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "certificate")
 
@@ -46,7 +46,7 @@ class AuthenticatedOriginPullsCertificateArgs:
     @pulumi.getter(name="privateKey")
     def private_key(self) -> pulumi.Input[str]:
         """
-        The private key of the client certificate.
+        The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "private_key")
 
@@ -58,7 +58,7 @@ class AuthenticatedOriginPullsCertificateArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The form of Authenticated Origin Pulls to upload the certificate to.
+        The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "type")
 
@@ -70,7 +70,7 @@ class AuthenticatedOriginPullsCertificateArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone ID to upload the certificate to.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -94,10 +94,16 @@ class _AuthenticatedOriginPullsCertificateState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AuthenticatedOriginPullsCertificate resources.
-        :param pulumi.Input[str] certificate: The public client certificate.
-        :param pulumi.Input[str] private_key: The private key of the client certificate.
-        :param pulumi.Input[str] type: The form of Authenticated Origin Pulls to upload the certificate to.
-        :param pulumi.Input[str] zone_id: The zone ID to upload the certificate to.
+        :param pulumi.Input[str] certificate: The public client certificate. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] expires_on: **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] issuer: **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] private_key: The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] serial_number: **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] signature: **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] status: **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] type: The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] uploaded_on: **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
@@ -124,7 +130,7 @@ class _AuthenticatedOriginPullsCertificateState:
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[str]]:
         """
-        The public client certificate.
+        The public client certificate. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "certificate")
 
@@ -135,6 +141,9 @@ class _AuthenticatedOriginPullsCertificateState:
     @property
     @pulumi.getter(name="expiresOn")
     def expires_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        **Modifying this attribute will force creation of a new resource.**
+        """
         return pulumi.get(self, "expires_on")
 
     @expires_on.setter
@@ -144,6 +153,9 @@ class _AuthenticatedOriginPullsCertificateState:
     @property
     @pulumi.getter
     def issuer(self) -> Optional[pulumi.Input[str]]:
+        """
+        **Modifying this attribute will force creation of a new resource.**
+        """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
@@ -154,7 +166,7 @@ class _AuthenticatedOriginPullsCertificateState:
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The private key of the client certificate.
+        The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "private_key")
 
@@ -165,6 +177,9 @@ class _AuthenticatedOriginPullsCertificateState:
     @property
     @pulumi.getter(name="serialNumber")
     def serial_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        **Modifying this attribute will force creation of a new resource.**
+        """
         return pulumi.get(self, "serial_number")
 
     @serial_number.setter
@@ -174,6 +189,9 @@ class _AuthenticatedOriginPullsCertificateState:
     @property
     @pulumi.getter
     def signature(self) -> Optional[pulumi.Input[str]]:
+        """
+        **Modifying this attribute will force creation of a new resource.**
+        """
         return pulumi.get(self, "signature")
 
     @signature.setter
@@ -183,6 +201,9 @@ class _AuthenticatedOriginPullsCertificateState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        **Modifying this attribute will force creation of a new resource.**
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -193,7 +214,7 @@ class _AuthenticatedOriginPullsCertificateState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The form of Authenticated Origin Pulls to upload the certificate to.
+        The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "type")
 
@@ -204,6 +225,9 @@ class _AuthenticatedOriginPullsCertificateState:
     @property
     @pulumi.getter(name="uploadedOn")
     def uploaded_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        **Modifying this attribute will force creation of a new resource.**
+        """
         return pulumi.get(self, "uploaded_on")
 
     @uploaded_on.setter
@@ -214,7 +238,7 @@ class _AuthenticatedOriginPullsCertificateState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone ID to upload the certificate to.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -234,7 +258,9 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Authenticated Origin Pulls certificate resource. An uploaded client certificate is required to use Per-Zone or Per-Hostname Authenticated Origin Pulls.
+        Provides a Cloudflare Authenticated Origin Pulls certificate
+        resource. An uploaded client certificate is required to use Per-Zone
+         or Per-Hostname Authenticated Origin Pulls.
 
         ## Example Usage
 
@@ -247,35 +273,27 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
             certificate="-----INSERT CERTIFICATE-----",
             private_key="-----INSERT PRIVATE KEY-----",
             type="per-zone",
-            zone_id=var["cloudflare_zone_id"])
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         # Per-Hostname Authenticated Origin Pulls certificate
         my_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert",
             certificate="-----INSERT CERTIFICATE-----",
             private_key="-----INSERT PRIVATE KEY-----",
             type="per-hostname",
-            zone_id=var["cloudflare_zone_id"])
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
         ## Import
 
-        Authenticated Origin Pull certificates can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, e.g. Import Per-Zone Authenticated Origin Pull certificate
-
         ```sh
-         $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-zone/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
-        ```
-
-         Import Per-Hostname Authenticated Origin Pull certificate
-
-        ```sh
-         $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-hostname/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
+         $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 <zone_id>/<certificate_type>/<certificate_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate: The public client certificate.
-        :param pulumi.Input[str] private_key: The private key of the client certificate.
-        :param pulumi.Input[str] type: The form of Authenticated Origin Pulls to upload the certificate to.
-        :param pulumi.Input[str] zone_id: The zone ID to upload the certificate to.
+        :param pulumi.Input[str] certificate: The public client certificate. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] private_key: The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] type: The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -284,7 +302,9 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
                  args: AuthenticatedOriginPullsCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Authenticated Origin Pulls certificate resource. An uploaded client certificate is required to use Per-Zone or Per-Hostname Authenticated Origin Pulls.
+        Provides a Cloudflare Authenticated Origin Pulls certificate
+        resource. An uploaded client certificate is required to use Per-Zone
+         or Per-Hostname Authenticated Origin Pulls.
 
         ## Example Usage
 
@@ -297,27 +317,19 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
             certificate="-----INSERT CERTIFICATE-----",
             private_key="-----INSERT PRIVATE KEY-----",
             type="per-zone",
-            zone_id=var["cloudflare_zone_id"])
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         # Per-Hostname Authenticated Origin Pulls certificate
         my_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert",
             certificate="-----INSERT CERTIFICATE-----",
             private_key="-----INSERT PRIVATE KEY-----",
             type="per-hostname",
-            zone_id=var["cloudflare_zone_id"])
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
         ## Import
 
-        Authenticated Origin Pull certificates can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, e.g. Import Per-Zone Authenticated Origin Pull certificate
-
         ```sh
-         $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-zone/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
-        ```
-
-         Import Per-Hostname Authenticated Origin Pull certificate
-
-        ```sh
-         $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-hostname/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
+         $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 <zone_id>/<certificate_type>/<certificate_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -395,10 +407,16 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate: The public client certificate.
-        :param pulumi.Input[str] private_key: The private key of the client certificate.
-        :param pulumi.Input[str] type: The form of Authenticated Origin Pulls to upload the certificate to.
-        :param pulumi.Input[str] zone_id: The zone ID to upload the certificate to.
+        :param pulumi.Input[str] certificate: The public client certificate. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] expires_on: **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] issuer: **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] private_key: The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] serial_number: **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] signature: **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] status: **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] type: The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] uploaded_on: **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -420,61 +438,79 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
     @pulumi.getter
     def certificate(self) -> pulumi.Output[str]:
         """
-        The public client certificate.
+        The public client certificate. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter(name="expiresOn")
     def expires_on(self) -> pulumi.Output[str]:
+        """
+        **Modifying this attribute will force creation of a new resource.**
+        """
         return pulumi.get(self, "expires_on")
 
     @property
     @pulumi.getter
     def issuer(self) -> pulumi.Output[str]:
+        """
+        **Modifying this attribute will force creation of a new resource.**
+        """
         return pulumi.get(self, "issuer")
 
     @property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> pulumi.Output[str]:
         """
-        The private key of the client certificate.
+        The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "private_key")
 
     @property
     @pulumi.getter(name="serialNumber")
     def serial_number(self) -> pulumi.Output[str]:
+        """
+        **Modifying this attribute will force creation of a new resource.**
+        """
         return pulumi.get(self, "serial_number")
 
     @property
     @pulumi.getter
     def signature(self) -> pulumi.Output[str]:
+        """
+        **Modifying this attribute will force creation of a new resource.**
+        """
         return pulumi.get(self, "signature")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
+        """
+        **Modifying this attribute will force creation of a new resource.**
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The form of Authenticated Origin Pulls to upload the certificate to.
+        The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="uploadedOn")
     def uploaded_on(self) -> pulumi.Output[str]:
+        """
+        **Modifying this attribute will force creation of a new resource.**
+        """
         return pulumi.get(self, "uploaded_on")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone ID to upload the certificate to.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 

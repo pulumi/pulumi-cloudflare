@@ -86,6 +86,21 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
     }
 
     /**
+     * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+     * 
+     */
+    @Import(name="userSeatExpirationInactiveTime")
+    private @Nullable Output<String> userSeatExpirationInactiveTime;
+
+    /**
+     * @return The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+     * 
+     */
+    public Optional<Output<String>> userSeatExpirationInactiveTime() {
+        return Optional.ofNullable(this.userSeatExpirationInactiveTime);
+    }
+
+    /**
      * The zone identifier to target for the resource. Conflicts with `account_id`.
      * 
      */
@@ -108,6 +123,7 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
         this.isUiReadOnly = $.isUiReadOnly;
         this.loginDesigns = $.loginDesigns;
         this.name = $.name;
+        this.userSeatExpirationInactiveTime = $.userSeatExpirationInactiveTime;
         this.zoneId = $.zoneId;
     }
 
@@ -224,6 +240,27 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param userSeatExpirationInactiveTime The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userSeatExpirationInactiveTime(@Nullable Output<String> userSeatExpirationInactiveTime) {
+            $.userSeatExpirationInactiveTime = userSeatExpirationInactiveTime;
+            return this;
+        }
+
+        /**
+         * @param userSeatExpirationInactiveTime The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userSeatExpirationInactiveTime(String userSeatExpirationInactiveTime) {
+            return userSeatExpirationInactiveTime(Output.of(userSeatExpirationInactiveTime));
         }
 
         /**

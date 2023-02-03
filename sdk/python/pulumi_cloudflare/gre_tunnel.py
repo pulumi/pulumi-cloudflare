@@ -31,13 +31,13 @@ class GreTunnelArgs:
         :param pulumi.Input[str] customer_gre_endpoint: The IP address assigned to the customer side of the GRE tunnel.
         :param pulumi.Input[str] interface_address: 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
         :param pulumi.Input[str] name: Name of the GRE tunnel.
-        :param pulumi.Input[str] account_id: The ID of the account where the tunnel is being created.
-        :param pulumi.Input[str] description: An optional description of the GRE tunnel.
-        :param pulumi.Input[bool] health_check_enabled: Specifies if ICMP tunnel health checks are enabled Default: `true`.
-        :param pulumi.Input[str] health_check_target: The IP address of the customer endpoint that will receive tunnel health checks. Default: `<customer_gre_endpoint>`.
-        :param pulumi.Input[str] health_check_type: Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.
-        :param pulumi.Input[int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.
-        :param pulumi.Input[int] ttl: Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] description: Description of the GRE tunnel intent.
+        :param pulumi.Input[bool] health_check_enabled: Specifies if ICMP tunnel health checks are enabled.
+        :param pulumi.Input[str] health_check_target: The IP address of the customer endpoint that will receive tunnel health checks.
+        :param pulumi.Input[str] health_check_type: Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
+        :param pulumi.Input[int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
+        :param pulumi.Input[int] ttl: Time To Live (TTL) in number of hops of the GRE tunnel.
         """
         pulumi.set(__self__, "cloudflare_gre_endpoint", cloudflare_gre_endpoint)
         pulumi.set(__self__, "customer_gre_endpoint", customer_gre_endpoint)
@@ -110,7 +110,7 @@ class GreTunnelArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the account where the tunnel is being created.
+        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "account_id")
 
@@ -122,7 +122,7 @@ class GreTunnelArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional description of the GRE tunnel.
+        Description of the GRE tunnel intent.
         """
         return pulumi.get(self, "description")
 
@@ -134,7 +134,7 @@ class GreTunnelArgs:
     @pulumi.getter(name="healthCheckEnabled")
     def health_check_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies if ICMP tunnel health checks are enabled Default: `true`.
+        Specifies if ICMP tunnel health checks are enabled.
         """
         return pulumi.get(self, "health_check_enabled")
 
@@ -146,7 +146,7 @@ class GreTunnelArgs:
     @pulumi.getter(name="healthCheckTarget")
     def health_check_target(self) -> Optional[pulumi.Input[str]]:
         """
-        The IP address of the customer endpoint that will receive tunnel health checks. Default: `<customer_gre_endpoint>`.
+        The IP address of the customer endpoint that will receive tunnel health checks.
         """
         return pulumi.get(self, "health_check_target")
 
@@ -158,7 +158,7 @@ class GreTunnelArgs:
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.
+        Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
         """
         return pulumi.get(self, "health_check_type")
 
@@ -170,7 +170,7 @@ class GreTunnelArgs:
     @pulumi.getter
     def mtu(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.
+        Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
         """
         return pulumi.get(self, "mtu")
 
@@ -182,7 +182,7 @@ class GreTunnelArgs:
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.
+        Time To Live (TTL) in number of hops of the GRE tunnel.
         """
         return pulumi.get(self, "ttl")
 
@@ -207,17 +207,17 @@ class _GreTunnelState:
                  ttl: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering GreTunnel resources.
-        :param pulumi.Input[str] account_id: The ID of the account where the tunnel is being created.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] cloudflare_gre_endpoint: The IP address assigned to the Cloudflare side of the GRE tunnel.
         :param pulumi.Input[str] customer_gre_endpoint: The IP address assigned to the customer side of the GRE tunnel.
-        :param pulumi.Input[str] description: An optional description of the GRE tunnel.
-        :param pulumi.Input[bool] health_check_enabled: Specifies if ICMP tunnel health checks are enabled Default: `true`.
-        :param pulumi.Input[str] health_check_target: The IP address of the customer endpoint that will receive tunnel health checks. Default: `<customer_gre_endpoint>`.
-        :param pulumi.Input[str] health_check_type: Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.
+        :param pulumi.Input[str] description: Description of the GRE tunnel intent.
+        :param pulumi.Input[bool] health_check_enabled: Specifies if ICMP tunnel health checks are enabled.
+        :param pulumi.Input[str] health_check_target: The IP address of the customer endpoint that will receive tunnel health checks.
+        :param pulumi.Input[str] health_check_type: Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
         :param pulumi.Input[str] interface_address: 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
-        :param pulumi.Input[int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.
+        :param pulumi.Input[int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
         :param pulumi.Input[str] name: Name of the GRE tunnel.
-        :param pulumi.Input[int] ttl: Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.
+        :param pulumi.Input[int] ttl: Time To Live (TTL) in number of hops of the GRE tunnel.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -246,7 +246,7 @@ class _GreTunnelState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the account where the tunnel is being created.
+        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "account_id")
 
@@ -282,7 +282,7 @@ class _GreTunnelState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional description of the GRE tunnel.
+        Description of the GRE tunnel intent.
         """
         return pulumi.get(self, "description")
 
@@ -294,7 +294,7 @@ class _GreTunnelState:
     @pulumi.getter(name="healthCheckEnabled")
     def health_check_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies if ICMP tunnel health checks are enabled Default: `true`.
+        Specifies if ICMP tunnel health checks are enabled.
         """
         return pulumi.get(self, "health_check_enabled")
 
@@ -306,7 +306,7 @@ class _GreTunnelState:
     @pulumi.getter(name="healthCheckTarget")
     def health_check_target(self) -> Optional[pulumi.Input[str]]:
         """
-        The IP address of the customer endpoint that will receive tunnel health checks. Default: `<customer_gre_endpoint>`.
+        The IP address of the customer endpoint that will receive tunnel health checks.
         """
         return pulumi.get(self, "health_check_target")
 
@@ -318,7 +318,7 @@ class _GreTunnelState:
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.
+        Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
         """
         return pulumi.get(self, "health_check_type")
 
@@ -342,7 +342,7 @@ class _GreTunnelState:
     @pulumi.getter
     def mtu(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.
+        Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
         """
         return pulumi.get(self, "mtu")
 
@@ -366,7 +366,7 @@ class _GreTunnelState:
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.
+        Time To Live (TTL) in number of hops of the GRE tunnel.
         """
         return pulumi.get(self, "ttl")
 
@@ -402,7 +402,7 @@ class GreTunnel(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.GreTunnel("example",
-            account_id="c4a7362d577a6c3019a474fd6f485821",
+            account_id="f037e56e89293a057740de681ac9abbe",
             cloudflare_gre_endpoint="203.0.113.1",
             customer_gre_endpoint="203.0.113.1",
             description="Tunnel for ISP X",
@@ -417,25 +417,23 @@ class GreTunnel(pulumi.CustomResource):
 
         ## Import
 
-        An existing GRE tunnel can be imported using the account ID and tunnel ID
-
         ```sh
-         $ pulumi import cloudflare:index/greTunnel:GreTunnel example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
+         $ pulumi import cloudflare:index/greTunnel:GreTunnel example <account_id>/<tunnel_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The ID of the account where the tunnel is being created.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] cloudflare_gre_endpoint: The IP address assigned to the Cloudflare side of the GRE tunnel.
         :param pulumi.Input[str] customer_gre_endpoint: The IP address assigned to the customer side of the GRE tunnel.
-        :param pulumi.Input[str] description: An optional description of the GRE tunnel.
-        :param pulumi.Input[bool] health_check_enabled: Specifies if ICMP tunnel health checks are enabled Default: `true`.
-        :param pulumi.Input[str] health_check_target: The IP address of the customer endpoint that will receive tunnel health checks. Default: `<customer_gre_endpoint>`.
-        :param pulumi.Input[str] health_check_type: Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.
+        :param pulumi.Input[str] description: Description of the GRE tunnel intent.
+        :param pulumi.Input[bool] health_check_enabled: Specifies if ICMP tunnel health checks are enabled.
+        :param pulumi.Input[str] health_check_target: The IP address of the customer endpoint that will receive tunnel health checks.
+        :param pulumi.Input[str] health_check_type: Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
         :param pulumi.Input[str] interface_address: 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
-        :param pulumi.Input[int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.
+        :param pulumi.Input[int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
         :param pulumi.Input[str] name: Name of the GRE tunnel.
-        :param pulumi.Input[int] ttl: Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.
+        :param pulumi.Input[int] ttl: Time To Live (TTL) in number of hops of the GRE tunnel.
         """
         ...
     @overload
@@ -453,7 +451,7 @@ class GreTunnel(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.GreTunnel("example",
-            account_id="c4a7362d577a6c3019a474fd6f485821",
+            account_id="f037e56e89293a057740de681ac9abbe",
             cloudflare_gre_endpoint="203.0.113.1",
             customer_gre_endpoint="203.0.113.1",
             description="Tunnel for ISP X",
@@ -468,10 +466,8 @@ class GreTunnel(pulumi.CustomResource):
 
         ## Import
 
-        An existing GRE tunnel can be imported using the account ID and tunnel ID
-
         ```sh
-         $ pulumi import cloudflare:index/greTunnel:GreTunnel example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
+         $ pulumi import cloudflare:index/greTunnel:GreTunnel example <account_id>/<tunnel_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -556,17 +552,17 @@ class GreTunnel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The ID of the account where the tunnel is being created.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] cloudflare_gre_endpoint: The IP address assigned to the Cloudflare side of the GRE tunnel.
         :param pulumi.Input[str] customer_gre_endpoint: The IP address assigned to the customer side of the GRE tunnel.
-        :param pulumi.Input[str] description: An optional description of the GRE tunnel.
-        :param pulumi.Input[bool] health_check_enabled: Specifies if ICMP tunnel health checks are enabled Default: `true`.
-        :param pulumi.Input[str] health_check_target: The IP address of the customer endpoint that will receive tunnel health checks. Default: `<customer_gre_endpoint>`.
-        :param pulumi.Input[str] health_check_type: Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.
+        :param pulumi.Input[str] description: Description of the GRE tunnel intent.
+        :param pulumi.Input[bool] health_check_enabled: Specifies if ICMP tunnel health checks are enabled.
+        :param pulumi.Input[str] health_check_target: The IP address of the customer endpoint that will receive tunnel health checks.
+        :param pulumi.Input[str] health_check_type: Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
         :param pulumi.Input[str] interface_address: 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
-        :param pulumi.Input[int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.
+        :param pulumi.Input[int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
         :param pulumi.Input[str] name: Name of the GRE tunnel.
-        :param pulumi.Input[int] ttl: Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.
+        :param pulumi.Input[int] ttl: Time To Live (TTL) in number of hops of the GRE tunnel.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -589,7 +585,7 @@ class GreTunnel(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the account where the tunnel is being created.
+        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "account_id")
 
@@ -613,7 +609,7 @@ class GreTunnel(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        An optional description of the GRE tunnel.
+        Description of the GRE tunnel intent.
         """
         return pulumi.get(self, "description")
 
@@ -621,7 +617,7 @@ class GreTunnel(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckEnabled")
     def health_check_enabled(self) -> pulumi.Output[bool]:
         """
-        Specifies if ICMP tunnel health checks are enabled Default: `true`.
+        Specifies if ICMP tunnel health checks are enabled.
         """
         return pulumi.get(self, "health_check_enabled")
 
@@ -629,7 +625,7 @@ class GreTunnel(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckTarget")
     def health_check_target(self) -> pulumi.Output[str]:
         """
-        The IP address of the customer endpoint that will receive tunnel health checks. Default: `<customer_gre_endpoint>`.
+        The IP address of the customer endpoint that will receive tunnel health checks.
         """
         return pulumi.get(self, "health_check_target")
 
@@ -637,7 +633,7 @@ class GreTunnel(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> pulumi.Output[str]:
         """
-        Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.
+        Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
         """
         return pulumi.get(self, "health_check_type")
 
@@ -653,7 +649,7 @@ class GreTunnel(pulumi.CustomResource):
     @pulumi.getter
     def mtu(self) -> pulumi.Output[int]:
         """
-        Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.
+        Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
         """
         return pulumi.get(self, "mtu")
 
@@ -669,7 +665,7 @@ class GreTunnel(pulumi.CustomResource):
     @pulumi.getter
     def ttl(self) -> pulumi.Output[int]:
         """
-        Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.
+        Time To Live (TTL) in number of hops of the GRE tunnel.
         """
         return pulumi.get(self, "ttl")
 

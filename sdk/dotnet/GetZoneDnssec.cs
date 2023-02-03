@@ -12,7 +12,7 @@ namespace Pulumi.Cloudflare
     public static class GetZoneDnssec
     {
         /// <summary>
-        /// Use this data source to look up [Zone][1] DNSSEC settings.
+        /// Use this data source to look up Zone DNSSEC settings.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var example = Cloudflare.GetZoneDnssec.Invoke(new()
         ///     {
-        ///         ZoneId = "&lt;zone_id&gt;",
+        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
         ///     });
         /// 
         /// });
@@ -39,7 +39,7 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneDnssecResult>("cloudflare:index/getZoneDnssec:getZoneDnssec", args ?? new GetZoneDnssecArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to look up [Zone][1] DNSSEC settings.
+        /// Use this data source to look up Zone DNSSEC settings.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var example = Cloudflare.GetZoneDnssec.Invoke(new()
         ///     {
-        ///         ZoneId = "&lt;zone_id&gt;",
+        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
         ///     });
         /// 
         /// });
@@ -70,7 +70,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetZoneDnssecArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The zone id for the zone.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -84,7 +84,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetZoneDnssecInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The zone id for the zone.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -143,6 +143,9 @@ namespace Pulumi.Cloudflare
         /// The status of the Zone DNSSEC.
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// The zone identifier to target for the resource.
+        /// </summary>
         public readonly string ZoneId;
 
         [OutputConstructor]

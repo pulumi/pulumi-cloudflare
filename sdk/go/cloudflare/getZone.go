@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to look up [zone] info. This is the singular alternative
-// to `getZones`.
+// Use this data source to look up [zone](https://api.cloudflare.com/#zone-properties)
+// info. This is the singular alternative to `getZones`.
 //
 // > **Note** Cloudflare zone names **are not unique**. It is possible for multiple
 // accounts to have the same zone created but in different states. If you are
@@ -20,67 +20,7 @@ import (
 //
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = cloudflare.LookupZone(ctx, &cloudflare.LookupZoneArgs{
-//				ZoneId: pulumi.StringRef("0b6d347b01d437a092be84c2edfce72c"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Example usage with other resources
-//
-// The example below fetches the zone information for example.com and then is
-// referenced in the `Record` section.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZone, err := cloudflare.LookupZone(ctx, &cloudflare.LookupZoneArgs{
-//				Name: pulumi.StringRef("example.com"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewRecord(ctx, "exampleRecord", &cloudflare.RecordArgs{
-//				ZoneId:  pulumi.String(exampleZone.Id),
-//				Name:    pulumi.String("www"),
-//				Value:   pulumi.String("203.0.113.1"),
-//				Type:    pulumi.String("A"),
-//				Proxied: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// {{tffile "examples/data-sources/cloudflare_zone/data-source.tf"}}
 func LookupZone(ctx *pulumi.Context, args *LookupZoneArgs, opts ...pulumi.InvokeOption) (*LookupZoneResult, error) {
 	var rv LookupZoneResult
 	err := ctx.Invoke("cloudflare:index/getZone:getZone", args, &rv, opts...)
@@ -92,34 +32,34 @@ func LookupZone(ctx *pulumi.Context, args *LookupZoneArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getZone.
 type LookupZoneArgs struct {
-	// The account ID associated with the zone.
+	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// The name of the zone. Conflicts with `"zoneId"`.
+	// The name of the zone. Must provide only one of `zoneId`, `name`.
 	Name *string `pulumi:"name"`
-	// The zone ID. Conflicts with `"name"`.
+	// The zone identifier to target for the resource. Must provide only one of `zoneId`, `name`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getZone.
 type LookupZoneResult struct {
-	// The account ID associated with the zone.
+	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The name of the zone.
+	// The name of the zone. Must provide only one of `zoneId`, `name`.
 	Name string `pulumi:"name"`
 	// Cloudflare assigned name servers. This is only populated for zones that use Cloudflare DNS.
 	NameServers []string `pulumi:"nameServers"`
-	// `true` if cloudflare is enabled on the zone, otherwise `false`.
+	// Whether the zone is paused on Cloudflare.
 	Paused bool `pulumi:"paused"`
 	// The name of the plan associated with the zone.
 	Plan string `pulumi:"plan"`
-	// Status of the zone. Values can be: `"active"`, `"pending"`, `"initializing"`, `"moved"`, `"deleted"`,
-	// or `"deactivated"`.
+	// Status of the zone.
 	Status string `pulumi:"status"`
 	// List of Vanity Nameservers (if set).
 	VanityNameServers []string `pulumi:"vanityNameServers"`
-	ZoneId            string   `pulumi:"zoneId"`
+	// The zone identifier to target for the resource. Must provide only one of `zoneId`, `name`.
+	ZoneId string `pulumi:"zoneId"`
 }
 
 func LookupZoneOutput(ctx *pulumi.Context, args LookupZoneOutputArgs, opts ...pulumi.InvokeOption) LookupZoneResultOutput {
@@ -137,11 +77,11 @@ func LookupZoneOutput(ctx *pulumi.Context, args LookupZoneOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getZone.
 type LookupZoneOutputArgs struct {
-	// The account ID associated with the zone.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// The name of the zone. Conflicts with `"zoneId"`.
+	// The name of the zone. Must provide only one of `zoneId`, `name`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The zone ID. Conflicts with `"name"`.
+	// The zone identifier to target for the resource. Must provide only one of `zoneId`, `name`.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
@@ -164,7 +104,7 @@ func (o LookupZoneResultOutput) ToLookupZoneResultOutputWithContext(ctx context.
 	return o
 }
 
-// The account ID associated with the zone.
+// The account identifier to target for the resource.
 func (o LookupZoneResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -174,7 +114,7 @@ func (o LookupZoneResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the zone.
+// The name of the zone. Must provide only one of `zoneId`, `name`.
 func (o LookupZoneResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -184,7 +124,7 @@ func (o LookupZoneResultOutput) NameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupZoneResult) []string { return v.NameServers }).(pulumi.StringArrayOutput)
 }
 
-// `true` if cloudflare is enabled on the zone, otherwise `false`.
+// Whether the zone is paused on Cloudflare.
 func (o LookupZoneResultOutput) Paused() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZoneResult) bool { return v.Paused }).(pulumi.BoolOutput)
 }
@@ -194,8 +134,7 @@ func (o LookupZoneResultOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.Plan }).(pulumi.StringOutput)
 }
 
-// Status of the zone. Values can be: `"active"`, `"pending"`, `"initializing"`, `"moved"`, `"deleted"`,
-// or `"deactivated"`.
+// Status of the zone.
 func (o LookupZoneResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -205,6 +144,7 @@ func (o LookupZoneResultOutput) VanityNameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupZoneResult) []string { return v.VanityNameServers }).(pulumi.StringArrayOutput)
 }
 
+// The zone identifier to target for the resource. Must provide only one of `zoneId`, `name`.
 func (o LookupZoneResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

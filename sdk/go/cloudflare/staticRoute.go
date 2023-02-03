@@ -11,8 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource, that manages Cloudflare static routes for Magic Transit or Magic WAN.
-// Static routes are used to route traffic through GRE tunnels.
+// Provides a resource, that manages Cloudflare static routes for Magic
+// Transit or Magic WAN. Static routes are used to route traffic
+// through GRE tunnels.
 //
 // ## Example Usage
 //
@@ -29,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewStaticRoute(ctx, "example", &cloudflare.StaticRouteArgs{
-//				AccountId: pulumi.String("c4a7362d577a6c3019a474fd6f485821"),
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				ColoNames: pulumi.StringArray{
 //					pulumi.String("den01"),
 //				},
@@ -53,21 +54,19 @@ import (
 //
 // ## Import
 //
-// # An existing static route can be imported using the account ID and static route ID
-//
 // ```sh
 //
-//	$ pulumi import cloudflare:index/staticRoute:StaticRoute example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
+//	$ pulumi import cloudflare:index/staticRoute:StaticRoute example <account_id>/<static_route_id>
 //
 // ```
 type StaticRoute struct {
 	pulumi.CustomResourceState
 
-	// The ID of the account where the static route is being created.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// Optional list of Cloudflare colocation names for this static route.
+	// List of Cloudflare colocation regions for this static route.
 	ColoNames pulumi.StringArrayOutput `pulumi:"coloNames"`
-	// Optional list of Cloudflare colocation regions for this static route.
+	// List of Cloudflare colocation names for this static route.
 	ColoRegions pulumi.StringArrayOutput `pulumi:"coloRegions"`
 	// Description of the static route.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -77,7 +76,7 @@ type StaticRoute struct {
 	Prefix pulumi.StringOutput `pulumi:"prefix"`
 	// The priority for the static route.
 	Priority pulumi.IntOutput `pulumi:"priority"`
-	// The optional weight for ECMP routes.
+	// The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
 	Weight pulumi.IntPtrOutput `pulumi:"weight"`
 }
 
@@ -119,11 +118,11 @@ func GetStaticRoute(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering StaticRoute resources.
 type staticRouteState struct {
-	// The ID of the account where the static route is being created.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string `pulumi:"accountId"`
-	// Optional list of Cloudflare colocation names for this static route.
+	// List of Cloudflare colocation regions for this static route.
 	ColoNames []string `pulumi:"coloNames"`
-	// Optional list of Cloudflare colocation regions for this static route.
+	// List of Cloudflare colocation names for this static route.
 	ColoRegions []string `pulumi:"coloRegions"`
 	// Description of the static route.
 	Description *string `pulumi:"description"`
@@ -133,16 +132,16 @@ type staticRouteState struct {
 	Prefix *string `pulumi:"prefix"`
 	// The priority for the static route.
 	Priority *int `pulumi:"priority"`
-	// The optional weight for ECMP routes.
+	// The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
 	Weight *int `pulumi:"weight"`
 }
 
 type StaticRouteState struct {
-	// The ID of the account where the static route is being created.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
-	// Optional list of Cloudflare colocation names for this static route.
+	// List of Cloudflare colocation regions for this static route.
 	ColoNames pulumi.StringArrayInput
-	// Optional list of Cloudflare colocation regions for this static route.
+	// List of Cloudflare colocation names for this static route.
 	ColoRegions pulumi.StringArrayInput
 	// Description of the static route.
 	Description pulumi.StringPtrInput
@@ -152,7 +151,7 @@ type StaticRouteState struct {
 	Prefix pulumi.StringPtrInput
 	// The priority for the static route.
 	Priority pulumi.IntPtrInput
-	// The optional weight for ECMP routes.
+	// The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
 	Weight pulumi.IntPtrInput
 }
 
@@ -161,11 +160,11 @@ func (StaticRouteState) ElementType() reflect.Type {
 }
 
 type staticRouteArgs struct {
-	// The ID of the account where the static route is being created.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string `pulumi:"accountId"`
-	// Optional list of Cloudflare colocation names for this static route.
+	// List of Cloudflare colocation regions for this static route.
 	ColoNames []string `pulumi:"coloNames"`
-	// Optional list of Cloudflare colocation regions for this static route.
+	// List of Cloudflare colocation names for this static route.
 	ColoRegions []string `pulumi:"coloRegions"`
 	// Description of the static route.
 	Description *string `pulumi:"description"`
@@ -175,17 +174,17 @@ type staticRouteArgs struct {
 	Prefix string `pulumi:"prefix"`
 	// The priority for the static route.
 	Priority int `pulumi:"priority"`
-	// The optional weight for ECMP routes.
+	// The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
 	Weight *int `pulumi:"weight"`
 }
 
 // The set of arguments for constructing a StaticRoute resource.
 type StaticRouteArgs struct {
-	// The ID of the account where the static route is being created.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
-	// Optional list of Cloudflare colocation names for this static route.
+	// List of Cloudflare colocation regions for this static route.
 	ColoNames pulumi.StringArrayInput
-	// Optional list of Cloudflare colocation regions for this static route.
+	// List of Cloudflare colocation names for this static route.
 	ColoRegions pulumi.StringArrayInput
 	// Description of the static route.
 	Description pulumi.StringPtrInput
@@ -195,7 +194,7 @@ type StaticRouteArgs struct {
 	Prefix pulumi.StringInput
 	// The priority for the static route.
 	Priority pulumi.IntInput
-	// The optional weight for ECMP routes.
+	// The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
 	Weight pulumi.IntPtrInput
 }
 
@@ -286,17 +285,17 @@ func (o StaticRouteOutput) ToStaticRouteOutputWithContext(ctx context.Context) S
 	return o
 }
 
-// The ID of the account where the static route is being created.
+// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o StaticRouteOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StaticRoute) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Optional list of Cloudflare colocation names for this static route.
+// List of Cloudflare colocation regions for this static route.
 func (o StaticRouteOutput) ColoNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *StaticRoute) pulumi.StringArrayOutput { return v.ColoNames }).(pulumi.StringArrayOutput)
 }
 
-// Optional list of Cloudflare colocation regions for this static route.
+// List of Cloudflare colocation names for this static route.
 func (o StaticRouteOutput) ColoRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *StaticRoute) pulumi.StringArrayOutput { return v.ColoRegions }).(pulumi.StringArrayOutput)
 }
@@ -321,7 +320,7 @@ func (o StaticRouteOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v *StaticRoute) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
 
-// The optional weight for ECMP routes.
+// The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
 func (o StaticRouteOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *StaticRoute) pulumi.IntPtrOutput { return v.Weight }).(pulumi.IntPtrOutput)
 }

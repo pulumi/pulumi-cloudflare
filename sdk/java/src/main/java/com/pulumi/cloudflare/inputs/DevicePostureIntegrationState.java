@@ -18,14 +18,14 @@ public final class DevicePostureIntegrationState extends com.pulumi.resources.Re
     public static final DevicePostureIntegrationState Empty = new DevicePostureIntegrationState();
 
     /**
-     * The account to which the device posture integration should be added.
+     * The account identifier to target for the resource.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account to which the device posture integration should be added.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -55,16 +55,14 @@ public final class DevicePostureIntegrationState extends com.pulumi.resources.Re
     }
 
     /**
-     * Indicates the frequency with which to poll the third-party API.
-     * Must be in the format `&#34;1h&#34;` or `&#34;30m&#34;`. Valid units are `h` and `m`.
+     * Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
      * 
      */
     @Import(name="interval")
     private @Nullable Output<String> interval;
 
     /**
-     * @return Indicates the frequency with which to poll the third-party API.
-     * Must be in the format `&#34;1h&#34;` or `&#34;30m&#34;`. Valid units are `h` and `m`.
+     * @return Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
      * 
      */
     public Optional<Output<String>> interval() {
@@ -87,14 +85,14 @@ public final class DevicePostureIntegrationState extends com.pulumi.resources.Re
     }
 
     /**
-     * The device posture integration type. Valid values are `workspace_one`.
+     * The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The device posture integration type. Valid values are `workspace_one`.
+     * @return The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -131,7 +129,7 @@ public final class DevicePostureIntegrationState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accountId The account to which the device posture integration should be added.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -142,7 +140,7 @@ public final class DevicePostureIntegrationState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accountId The account to which the device posture integration should be added.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -192,8 +190,7 @@ public final class DevicePostureIntegrationState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param interval Indicates the frequency with which to poll the third-party API.
-         * Must be in the format `&#34;1h&#34;` or `&#34;30m&#34;`. Valid units are `h` and `m`.
+         * @param interval Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
          * 
          * @return builder
          * 
@@ -204,8 +201,7 @@ public final class DevicePostureIntegrationState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param interval Indicates the frequency with which to poll the third-party API.
-         * Must be in the format `&#34;1h&#34;` or `&#34;30m&#34;`. Valid units are `h` and `m`.
+         * @param interval Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
          * 
          * @return builder
          * 
@@ -236,7 +232,7 @@ public final class DevicePostureIntegrationState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param type The device posture integration type. Valid values are `workspace_one`.
+         * @param type The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`.
          * 
          * @return builder
          * 
@@ -247,7 +243,7 @@ public final class DevicePostureIntegrationState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param type The device posture integration type. Valid values are `workspace_one`.
+         * @param type The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`.
          * 
          * @return builder
          * 

@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Teams List resource. Teams lists are referenced when creating secure web gateway policies or device posture rules.
+// Provides a Cloudflare Teams List resource. Teams lists are
+// referenced when creating secure web gateway policies or device
+// posture rules.
 //
 // ## Example Usage
 //
@@ -27,8 +29,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTeamsList(ctx, "corporateDevices", &cloudflare.TeamsListArgs{
-//				AccountId:   pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+//			_, err := cloudflare.NewTeamsList(ctx, "example", &cloudflare.TeamsListArgs{
+//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Description: pulumi.String("Serial numbers for all corporate devices."),
 //				Items: pulumi.StringArray{
 //					pulumi.String("8GE8721REF"),
@@ -49,17 +51,15 @@ import (
 //
 // ## Import
 //
-// Teams lists can be imported using a composite ID formed of account ID and teams list ID.
-//
 // ```sh
 //
-//	$ pulumi import cloudflare:index/teamsList:TeamsList corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+//	$ pulumi import cloudflare:index/teamsList:TeamsList example <account_id>/<teams_list_id>
 //
 // ```
 type TeamsList struct {
 	pulumi.CustomResourceState
 
-	// The account to which the teams list should be added.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The description of the teams list.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -67,7 +67,7 @@ type TeamsList struct {
 	Items pulumi.StringArrayOutput `pulumi:"items"`
 	// Name of the teams list.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+	// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -109,7 +109,7 @@ func GetTeamsList(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TeamsList resources.
 type teamsListState struct {
-	// The account to which the teams list should be added.
+	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
 	// The description of the teams list.
 	Description *string `pulumi:"description"`
@@ -117,12 +117,12 @@ type teamsListState struct {
 	Items []string `pulumi:"items"`
 	// Name of the teams list.
 	Name *string `pulumi:"name"`
-	// The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+	// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
 	Type *string `pulumi:"type"`
 }
 
 type TeamsListState struct {
-	// The account to which the teams list should be added.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
 	// The description of the teams list.
 	Description pulumi.StringPtrInput
@@ -130,7 +130,7 @@ type TeamsListState struct {
 	Items pulumi.StringArrayInput
 	// Name of the teams list.
 	Name pulumi.StringPtrInput
-	// The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+	// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
 	Type pulumi.StringPtrInput
 }
 
@@ -139,7 +139,7 @@ func (TeamsListState) ElementType() reflect.Type {
 }
 
 type teamsListArgs struct {
-	// The account to which the teams list should be added.
+	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
 	// The description of the teams list.
 	Description *string `pulumi:"description"`
@@ -147,13 +147,13 @@ type teamsListArgs struct {
 	Items []string `pulumi:"items"`
 	// Name of the teams list.
 	Name string `pulumi:"name"`
-	// The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+	// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
 	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a TeamsList resource.
 type TeamsListArgs struct {
-	// The account to which the teams list should be added.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
 	// The description of the teams list.
 	Description pulumi.StringPtrInput
@@ -161,7 +161,7 @@ type TeamsListArgs struct {
 	Items pulumi.StringArrayInput
 	// Name of the teams list.
 	Name pulumi.StringInput
-	// The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+	// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
 	Type pulumi.StringInput
 }
 
@@ -252,7 +252,7 @@ func (o TeamsListOutput) ToTeamsListOutputWithContext(ctx context.Context) Teams
 	return o
 }
 
-// The account to which the teams list should be added.
+// The account identifier to target for the resource.
 func (o TeamsListOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsList) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -272,7 +272,7 @@ func (o TeamsListOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsList) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
 func (o TeamsListOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsList) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

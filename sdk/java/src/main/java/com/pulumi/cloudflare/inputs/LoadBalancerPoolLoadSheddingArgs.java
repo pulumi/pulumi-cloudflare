@@ -17,14 +17,14 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
     public static final LoadBalancerPoolLoadSheddingArgs Empty = new LoadBalancerPoolLoadSheddingArgs();
 
     /**
-     * Percent of traffic to shed 0 - 100.
+     * Percent of traffic to shed 0 - 100. Defaults to `0`.
      * 
      */
     @Import(name="defaultPercent")
     private @Nullable Output<Double> defaultPercent;
 
     /**
-     * @return Percent of traffic to shed 0 - 100.
+     * @return Percent of traffic to shed 0 - 100. Defaults to `0`.
      * 
      */
     public Optional<Output<Double>> defaultPercent() {
@@ -32,14 +32,14 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
     }
 
     /**
-     * Method of shedding traffic &#34;&#34;, &#34;hash&#34; or &#34;random&#34;.
+     * Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`&#34;&#34;`.
      * 
      */
     @Import(name="defaultPolicy")
     private @Nullable Output<String> defaultPolicy;
 
     /**
-     * @return Method of shedding traffic &#34;&#34;, &#34;hash&#34; or &#34;random&#34;.
+     * @return Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`&#34;&#34;`.
      * 
      */
     public Optional<Output<String>> defaultPolicy() {
@@ -47,14 +47,14 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
     }
 
     /**
-     * Percent of session traffic to shed 0 - 100.
+     * Percent of session traffic to shed 0 - 100. Defaults to `0`.
      * 
      */
     @Import(name="sessionPercent")
     private @Nullable Output<Double> sessionPercent;
 
     /**
-     * @return Percent of session traffic to shed 0 - 100.
+     * @return Percent of session traffic to shed 0 - 100. Defaults to `0`.
      * 
      */
     public Optional<Output<Double>> sessionPercent() {
@@ -62,14 +62,14 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
     }
 
     /**
-     * Method of shedding session traffic &#34;&#34; or &#34;hash&#34;.
+     * Method of shedding traffic. Available values: ``,`hash`. Defaults to`&#34;&#34;`.
      * 
      */
     @Import(name="sessionPolicy")
     private @Nullable Output<String> sessionPolicy;
 
     /**
-     * @return Method of shedding session traffic &#34;&#34; or &#34;hash&#34;.
+     * @return Method of shedding traffic. Available values: ``,`hash`. Defaults to`&#34;&#34;`.
      * 
      */
     public Optional<Output<String>> sessionPolicy() {
@@ -104,7 +104,7 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param defaultPercent Percent of traffic to shed 0 - 100.
+         * @param defaultPercent Percent of traffic to shed 0 - 100. Defaults to `0`.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param defaultPercent Percent of traffic to shed 0 - 100.
+         * @param defaultPercent Percent of traffic to shed 0 - 100. Defaults to `0`.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param defaultPolicy Method of shedding traffic &#34;&#34;, &#34;hash&#34; or &#34;random&#34;.
+         * @param defaultPolicy Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`&#34;&#34;`.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param defaultPolicy Method of shedding traffic &#34;&#34;, &#34;hash&#34; or &#34;random&#34;.
+         * @param defaultPolicy Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`&#34;&#34;`.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sessionPercent Percent of session traffic to shed 0 - 100.
+         * @param sessionPercent Percent of session traffic to shed 0 - 100. Defaults to `0`.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sessionPercent Percent of session traffic to shed 0 - 100.
+         * @param sessionPercent Percent of session traffic to shed 0 - 100. Defaults to `0`.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sessionPolicy Method of shedding session traffic &#34;&#34; or &#34;hash&#34;.
+         * @param sessionPolicy Method of shedding traffic. Available values: ``,`hash`. Defaults to`&#34;&#34;`.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sessionPolicy Method of shedding session traffic &#34;&#34; or &#34;hash&#34;.
+         * @param sessionPolicy Method of shedding traffic. Available values: ``,`hash`. Defaults to`&#34;&#34;`.
          * 
          * @return builder
          * 

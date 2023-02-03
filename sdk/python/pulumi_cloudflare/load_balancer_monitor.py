@@ -34,20 +34,20 @@ class LoadBalancerMonitorArgs:
         """
         The set of arguments for constructing a LoadBalancerMonitor resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
+        :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] description: Free text description.
-        :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
+        :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] expected_codes: The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
         :param pulumi.Input[bool] follow_redirects: Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerMonitorHeaderArgs']]] headers: The header name.
-        :param pulumi.Input[int] interval: The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
-        :param pulumi.Input[str] method: The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connection_established` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connection_established" if `type` is "tcp", and empty otherwise.
-        :param pulumi.Input[str] path: The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
-        :param pulumi.Input[int] port: The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerMonitorHeaderArgs']]] headers: The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+        :param pulumi.Input[int] interval: The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
+        :param pulumi.Input[str] method: The method to use for the health check.
+        :param pulumi.Input[str] path: The endpoint path to health check against.
+        :param pulumi.Input[int] port: The port number to use for the healthcheck, required when creating a TCP monitor.
         :param pulumi.Input[str] probe_zone: Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
-        :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
-        :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. Default: 5.
-        :param pulumi.Input[str] type: The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
+        :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
+        :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
+        :param pulumi.Input[str] type: The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -96,7 +96,7 @@ class LoadBalancerMonitorArgs:
     @pulumi.getter(name="allowInsecure")
     def allow_insecure(self) -> Optional[pulumi.Input[bool]]:
         """
-        Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
+        Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
         """
         return pulumi.get(self, "allow_insecure")
 
@@ -120,7 +120,7 @@ class LoadBalancerMonitorArgs:
     @pulumi.getter(name="expectedBody")
     def expected_body(self) -> Optional[pulumi.Input[str]]:
         """
-        A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
+        A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
         """
         return pulumi.get(self, "expected_body")
 
@@ -156,7 +156,7 @@ class LoadBalancerMonitorArgs:
     @pulumi.getter
     def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerMonitorHeaderArgs']]]]:
         """
-        The header name.
+        The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
         """
         return pulumi.get(self, "headers")
 
@@ -168,7 +168,7 @@ class LoadBalancerMonitorArgs:
     @pulumi.getter
     def interval(self) -> Optional[pulumi.Input[int]]:
         """
-        The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
+        The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
         """
         return pulumi.get(self, "interval")
 
@@ -180,7 +180,7 @@ class LoadBalancerMonitorArgs:
     @pulumi.getter
     def method(self) -> Optional[pulumi.Input[str]]:
         """
-        The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connection_established` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connection_established" if `type` is "tcp", and empty otherwise.
+        The method to use for the health check.
         """
         return pulumi.get(self, "method")
 
@@ -192,7 +192,7 @@ class LoadBalancerMonitorArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
+        The endpoint path to health check against.
         """
         return pulumi.get(self, "path")
 
@@ -204,7 +204,7 @@ class LoadBalancerMonitorArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
-        The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+        The port number to use for the healthcheck, required when creating a TCP monitor.
         """
         return pulumi.get(self, "port")
 
@@ -228,7 +228,7 @@ class LoadBalancerMonitorArgs:
     @pulumi.getter
     def retries(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
+        The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
         """
         return pulumi.get(self, "retries")
 
@@ -240,7 +240,7 @@ class LoadBalancerMonitorArgs:
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        The timeout (in seconds) before marking the health check as failed. Default: 5.
+        The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
         """
         return pulumi.get(self, "timeout")
 
@@ -252,7 +252,7 @@ class LoadBalancerMonitorArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
+        The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
         """
         return pulumi.get(self, "type")
 
@@ -284,22 +284,22 @@ class _LoadBalancerMonitorState:
         """
         Input properties used for looking up and filtering LoadBalancerMonitor resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
+        :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the load balancer monitor was created.
         :param pulumi.Input[str] description: Free text description.
-        :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
+        :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] expected_codes: The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
         :param pulumi.Input[bool] follow_redirects: Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerMonitorHeaderArgs']]] headers: The header name.
-        :param pulumi.Input[int] interval: The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
-        :param pulumi.Input[str] method: The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connection_established` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connection_established" if `type` is "tcp", and empty otherwise.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerMonitorHeaderArgs']]] headers: The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+        :param pulumi.Input[int] interval: The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
+        :param pulumi.Input[str] method: The method to use for the health check.
         :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the load balancer monitor was last modified.
-        :param pulumi.Input[str] path: The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
-        :param pulumi.Input[int] port: The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+        :param pulumi.Input[str] path: The endpoint path to health check against.
+        :param pulumi.Input[int] port: The port number to use for the healthcheck, required when creating a TCP monitor.
         :param pulumi.Input[str] probe_zone: Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
-        :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
-        :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. Default: 5.
-        :param pulumi.Input[str] type: The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
+        :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
+        :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
+        :param pulumi.Input[str] type: The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -352,7 +352,7 @@ class _LoadBalancerMonitorState:
     @pulumi.getter(name="allowInsecure")
     def allow_insecure(self) -> Optional[pulumi.Input[bool]]:
         """
-        Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
+        Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
         """
         return pulumi.get(self, "allow_insecure")
 
@@ -388,7 +388,7 @@ class _LoadBalancerMonitorState:
     @pulumi.getter(name="expectedBody")
     def expected_body(self) -> Optional[pulumi.Input[str]]:
         """
-        A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
+        A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
         """
         return pulumi.get(self, "expected_body")
 
@@ -424,7 +424,7 @@ class _LoadBalancerMonitorState:
     @pulumi.getter
     def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerMonitorHeaderArgs']]]]:
         """
-        The header name.
+        The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
         """
         return pulumi.get(self, "headers")
 
@@ -436,7 +436,7 @@ class _LoadBalancerMonitorState:
     @pulumi.getter
     def interval(self) -> Optional[pulumi.Input[int]]:
         """
-        The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
+        The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
         """
         return pulumi.get(self, "interval")
 
@@ -448,7 +448,7 @@ class _LoadBalancerMonitorState:
     @pulumi.getter
     def method(self) -> Optional[pulumi.Input[str]]:
         """
-        The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connection_established` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connection_established" if `type` is "tcp", and empty otherwise.
+        The method to use for the health check.
         """
         return pulumi.get(self, "method")
 
@@ -472,7 +472,7 @@ class _LoadBalancerMonitorState:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
+        The endpoint path to health check against.
         """
         return pulumi.get(self, "path")
 
@@ -484,7 +484,7 @@ class _LoadBalancerMonitorState:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
-        The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+        The port number to use for the healthcheck, required when creating a TCP monitor.
         """
         return pulumi.get(self, "port")
 
@@ -508,7 +508,7 @@ class _LoadBalancerMonitorState:
     @pulumi.getter
     def retries(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
+        The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
         """
         return pulumi.get(self, "retries")
 
@@ -520,7 +520,7 @@ class _LoadBalancerMonitorState:
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        The timeout (in seconds) before marking the health check as failed. Default: 5.
+        The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
         """
         return pulumi.get(self, "timeout")
 
@@ -532,7 +532,7 @@ class _LoadBalancerMonitorState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
+        The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
         """
         return pulumi.get(self, "type")
 
@@ -563,42 +563,20 @@ class LoadBalancerMonitor(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        If you're using Cloudflare's Load Balancing to load-balance across multiple origin servers or data centers, you configure one of these Monitors to actively check the availability of those servers over HTTP(S) or TCP.
-
-        > **Note:** When creating a monitor, you have to pass `account_id` to the provider configuration in order to create account level resources. Otherwise, by default, it will be a user level resource.
+        If Cloudflare's Load Balancing to load-balance across multiple
+        origin servers or data centers, you configure one of these Monitors
+        to actively check the availability of those servers over HTTP(S) or
+        TCP.
 
         ## Example Usage
-        ### HTTP Monitor
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        http_monitor = cloudflare.LoadBalancerMonitor("httpMonitor",
-            allow_insecure=False,
-            description="example http load balancer",
-            expected_body="alive",
-            expected_codes="2xx",
-            follow_redirects=True,
-            headers=[cloudflare.LoadBalancerMonitorHeaderArgs(
-                header="Host",
-                values=["example.com"],
-            )],
-            interval=60,
-            method="GET",
-            path="/health",
-            probe_zone="example.com",
-            retries=5,
-            timeout=7,
-            type="http")
-        ```
-        ### TCP Monitor
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        tcp_monitor = cloudflare.LoadBalancerMonitor("tcpMonitor",
+        # TCP Monitor
+        example = cloudflare.LoadBalancerMonitor("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
             description="example tcp load balancer",
             interval=60,
             method="connection_established",
@@ -611,20 +589,20 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
+        :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] description: Free text description.
-        :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
+        :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] expected_codes: The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
         :param pulumi.Input[bool] follow_redirects: Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerMonitorHeaderArgs']]]] headers: The header name.
-        :param pulumi.Input[int] interval: The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
-        :param pulumi.Input[str] method: The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connection_established` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connection_established" if `type` is "tcp", and empty otherwise.
-        :param pulumi.Input[str] path: The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
-        :param pulumi.Input[int] port: The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerMonitorHeaderArgs']]]] headers: The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+        :param pulumi.Input[int] interval: The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
+        :param pulumi.Input[str] method: The method to use for the health check.
+        :param pulumi.Input[str] path: The endpoint path to health check against.
+        :param pulumi.Input[int] port: The port number to use for the healthcheck, required when creating a TCP monitor.
         :param pulumi.Input[str] probe_zone: Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
-        :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
-        :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. Default: 5.
-        :param pulumi.Input[str] type: The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
+        :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
+        :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
+        :param pulumi.Input[str] type: The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
         """
         ...
     @overload
@@ -633,42 +611,20 @@ class LoadBalancerMonitor(pulumi.CustomResource):
                  args: Optional[LoadBalancerMonitorArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        If you're using Cloudflare's Load Balancing to load-balance across multiple origin servers or data centers, you configure one of these Monitors to actively check the availability of those servers over HTTP(S) or TCP.
-
-        > **Note:** When creating a monitor, you have to pass `account_id` to the provider configuration in order to create account level resources. Otherwise, by default, it will be a user level resource.
+        If Cloudflare's Load Balancing to load-balance across multiple
+        origin servers or data centers, you configure one of these Monitors
+        to actively check the availability of those servers over HTTP(S) or
+        TCP.
 
         ## Example Usage
-        ### HTTP Monitor
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        http_monitor = cloudflare.LoadBalancerMonitor("httpMonitor",
-            allow_insecure=False,
-            description="example http load balancer",
-            expected_body="alive",
-            expected_codes="2xx",
-            follow_redirects=True,
-            headers=[cloudflare.LoadBalancerMonitorHeaderArgs(
-                header="Host",
-                values=["example.com"],
-            )],
-            interval=60,
-            method="GET",
-            path="/health",
-            probe_zone="example.com",
-            retries=5,
-            timeout=7,
-            type="http")
-        ```
-        ### TCP Monitor
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        tcp_monitor = cloudflare.LoadBalancerMonitor("tcpMonitor",
+        # TCP Monitor
+        example = cloudflare.LoadBalancerMonitor("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
             description="example tcp load balancer",
             interval=60,
             method="connection_established",
@@ -769,22 +725,22 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
+        :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the load balancer monitor was created.
         :param pulumi.Input[str] description: Free text description.
-        :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
+        :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] expected_codes: The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
         :param pulumi.Input[bool] follow_redirects: Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerMonitorHeaderArgs']]]] headers: The header name.
-        :param pulumi.Input[int] interval: The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
-        :param pulumi.Input[str] method: The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connection_established` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connection_established" if `type` is "tcp", and empty otherwise.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerMonitorHeaderArgs']]]] headers: The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+        :param pulumi.Input[int] interval: The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
+        :param pulumi.Input[str] method: The method to use for the health check.
         :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the load balancer monitor was last modified.
-        :param pulumi.Input[str] path: The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
-        :param pulumi.Input[int] port: The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+        :param pulumi.Input[str] path: The endpoint path to health check against.
+        :param pulumi.Input[int] port: The port number to use for the healthcheck, required when creating a TCP monitor.
         :param pulumi.Input[str] probe_zone: Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
-        :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
-        :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. Default: 5.
-        :param pulumi.Input[str] type: The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
+        :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
+        :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
+        :param pulumi.Input[str] type: The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -821,7 +777,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     @pulumi.getter(name="allowInsecure")
     def allow_insecure(self) -> pulumi.Output[Optional[bool]]:
         """
-        Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
+        Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
         """
         return pulumi.get(self, "allow_insecure")
 
@@ -845,7 +801,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     @pulumi.getter(name="expectedBody")
     def expected_body(self) -> pulumi.Output[Optional[str]]:
         """
-        A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
+        A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
         """
         return pulumi.get(self, "expected_body")
 
@@ -869,7 +825,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     @pulumi.getter
     def headers(self) -> pulumi.Output[Optional[Sequence['outputs.LoadBalancerMonitorHeader']]]:
         """
-        The header name.
+        The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
         """
         return pulumi.get(self, "headers")
 
@@ -877,7 +833,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     @pulumi.getter
     def interval(self) -> pulumi.Output[Optional[int]]:
         """
-        The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
+        The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
         """
         return pulumi.get(self, "interval")
 
@@ -885,7 +841,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     @pulumi.getter
     def method(self) -> pulumi.Output[str]:
         """
-        The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connection_established` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connection_established" if `type` is "tcp", and empty otherwise.
+        The method to use for the health check.
         """
         return pulumi.get(self, "method")
 
@@ -901,7 +857,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     @pulumi.getter
     def path(self) -> pulumi.Output[str]:
         """
-        The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
+        The endpoint path to health check against.
         """
         return pulumi.get(self, "path")
 
@@ -909,7 +865,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     @pulumi.getter
     def port(self) -> pulumi.Output[Optional[int]]:
         """
-        The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+        The port number to use for the healthcheck, required when creating a TCP monitor.
         """
         return pulumi.get(self, "port")
 
@@ -925,7 +881,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     @pulumi.getter
     def retries(self) -> pulumi.Output[Optional[int]]:
         """
-        The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
+        The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
         """
         return pulumi.get(self, "retries")
 
@@ -933,7 +889,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     @pulumi.getter
     def timeout(self) -> pulumi.Output[Optional[int]]:
         """
-        The timeout (in seconds) before marking the health check as failed. Default: 5.
+        The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
         """
         return pulumi.get(self, "timeout")
 
@@ -941,7 +897,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
+        The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
         """
         return pulumi.get(self, "type")
 

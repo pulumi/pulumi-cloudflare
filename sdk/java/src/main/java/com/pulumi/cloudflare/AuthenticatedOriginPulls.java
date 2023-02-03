@@ -16,11 +16,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Authenticated Origin Pulls resource. An `cloudflare.AuthenticatedOriginPulls` resource is required to use Per-Zone or Per-Hostname Authenticated Origin Pulls.
+ * Provides a Cloudflare Authenticated Origin Pulls resource. A `cloudflare.AuthenticatedOriginPulls`
+ * resource is required to use Per-Zone or Per-Hostname Authenticated
+ * Origin Pulls.
  * 
  * ## Example Usage
- * 
- * The arguments that you provide determine which form of Authenticated Origin Pulls to use:
  * ```java
  * package generated_program;
  * 
@@ -45,32 +45,32 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myAop = new AuthenticatedOriginPulls(&#34;myAop&#34;, AuthenticatedOriginPullsArgs.builder()        
- *             .zoneId(var_.cloudflare_zone_id())
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .enabled(true)
  *             .build());
  * 
  *         var myPerZoneAopCert = new AuthenticatedOriginPullsCertificate(&#34;myPerZoneAopCert&#34;, AuthenticatedOriginPullsCertificateArgs.builder()        
- *             .zoneId(var_.cloudflare_zone_id())
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .certificate(&#34;-----INSERT CERTIFICATE-----&#34;)
  *             .privateKey(&#34;-----INSERT PRIVATE KEY-----&#34;)
  *             .type(&#34;per-zone&#34;)
  *             .build());
  * 
  *         var myPerZoneAop = new AuthenticatedOriginPulls(&#34;myPerZoneAop&#34;, AuthenticatedOriginPullsArgs.builder()        
- *             .zoneId(var_.cloudflare_zone_id())
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .authenticatedOriginPullsCertificate(myPerZoneAopCert.id())
  *             .enabled(true)
  *             .build());
  * 
  *         var myPerHostnameAopCert = new AuthenticatedOriginPullsCertificate(&#34;myPerHostnameAopCert&#34;, AuthenticatedOriginPullsCertificateArgs.builder()        
- *             .zoneId(var_.cloudflare_zone_id())
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .certificate(&#34;-----INSERT CERTIFICATE-----&#34;)
  *             .privateKey(&#34;-----INSERT PRIVATE KEY-----&#34;)
  *             .type(&#34;per-hostname&#34;)
  *             .build());
  * 
  *         var myPerHostnameAop = new AuthenticatedOriginPulls(&#34;myPerHostnameAop&#34;, AuthenticatedOriginPullsArgs.builder()        
- *             .zoneId(var_.cloudflare_zone_id())
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .authenticatedOriginPullsCertificate(myPerHostnameAopCert.id())
  *             .hostname(&#34;aop.example.com&#34;)
  *             .enabled(true)
@@ -82,50 +82,50 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Authenticated Origin Pull configuration can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, with each section filled or left blank e.g. Import Authenticated Origin Pull configuration
+ * Authenticated Origin Pull configuration
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_aop 023e105f4ecef8ad9ca31a8372d0c353//
+ *  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_aop &lt;zone_id&gt;//
  * ```
  * 
- *  Import Per-Zone Authenticated Origin Pull configuration
+ *  Per-Zone Authenticated Origin Pull configuration
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_zone_aop 023e105f4ecef8ad9ca31a8372d0c353/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60/
+ *  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_zone_aop &lt;zone_id&gt;/&lt;certificate_id&gt;/
  * ```
  * 
- *  Import Per-Hostname Authenticated Origin Pull configuration
+ *  Per-Hostname Authenticated Origin Pull configuration
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_hostname_aop 023e105f4ecef8ad9ca31a8372d0c353/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60/aop.example.com
+ *  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_hostname_aop &lt;zone_id&gt;/&lt;certificate_id&gt;/&lt;hostname&gt;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls")
 public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResource {
     /**
-     * The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+     * The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
      * 
      */
     @Export(name="authenticatedOriginPullsCertificate", type=String.class, parameters={})
     private Output</* @Nullable */ String> authenticatedOriginPullsCertificate;
 
     /**
-     * @return The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+     * @return The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
      * 
      */
     public Output<Optional<String>> authenticatedOriginPullsCertificate() {
         return Codegen.optional(this.authenticatedOriginPullsCertificate);
     }
     /**
-     * Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
+     * Whether to enable Authenticated Origin Pulls on the given zone or hostname.
      * 
      */
     @Export(name="enabled", type=Boolean.class, parameters={})
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
+     * @return Whether to enable Authenticated Origin Pulls on the given zone or hostname.
      * 
      */
     public Output<Boolean> enabled() {
@@ -146,14 +146,14 @@ public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResourc
         return Codegen.optional(this.hostname);
     }
     /**
-     * The zone ID to upload the certificate to.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The zone ID to upload the certificate to.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {

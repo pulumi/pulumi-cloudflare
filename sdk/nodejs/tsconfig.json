@@ -40,6 +40,7 @@
         "customHostnameFallbackOrigin.ts",
         "customPages.ts",
         "customSsl.ts",
+        "deviceManagedNetworks.ts",
         "devicePolicyCertificates.ts",
         "devicePostureIntegration.ts",
         "devicePostureRule.ts",

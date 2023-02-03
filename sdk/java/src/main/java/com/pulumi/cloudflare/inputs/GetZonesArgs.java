@@ -14,16 +14,14 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetZonesArgs Empty = new GetZonesArgs();
 
     /**
-     * One or more values used to look up zone records. If more than one value is given all
-     * values must match in order to be included, see below for full list.
+     * One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
      * 
      */
     @Import(name="filter", required=true)
     private Output<GetZonesFilterArgs> filter;
 
     /**
-     * @return One or more values used to look up zone records. If more than one value is given all
-     * values must match in order to be included, see below for full list.
+     * @return One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
      * 
      */
     public Output<GetZonesFilterArgs> filter() {
@@ -55,8 +53,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param filter One or more values used to look up zone records. If more than one value is given all
-         * values must match in order to be included, see below for full list.
+         * @param filter One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
          * 
          * @return builder
          * 
@@ -67,8 +64,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param filter One or more values used to look up zone records. If more than one value is given all
-         * values must match in order to be included, see below for full list.
+         * @param filter One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
          * 
          * @return builder
          * 

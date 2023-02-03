@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Teams List resource. Teams lists are referenced when creating secure web gateway policies or device posture rules.
+ * Provides a Cloudflare Teams List resource. Teams lists are
+ * referenced when creating secure web gateway policies or device
+ * posture rules.
  *
  * ## Example Usage
  *
@@ -13,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const corporateDevices = new cloudflare.TeamsList("corporateDevices", {
- *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ * const example = new cloudflare.TeamsList("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     description: "Serial numbers for all corporate devices.",
  *     items: [
  *         "8GE8721REF",
@@ -28,10 +30,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Teams lists can be imported using a composite ID formed of account ID and teams list ID.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/teamsList:TeamsList corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+ *  $ pulumi import cloudflare:index/teamsList:TeamsList example <account_id>/<teams_list_id>
  * ```
  */
 export class TeamsList extends pulumi.CustomResource {
@@ -63,7 +63,7 @@ export class TeamsList extends pulumi.CustomResource {
     }
 
     /**
-     * The account to which the teams list should be added.
+     * The account identifier to target for the resource.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -79,7 +79,7 @@ export class TeamsList extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+     * The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -128,7 +128,7 @@ export class TeamsList extends pulumi.CustomResource {
  */
 export interface TeamsListState {
     /**
-     * The account to which the teams list should be added.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -144,7 +144,7 @@ export interface TeamsListState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+     * The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
      */
     type?: pulumi.Input<string>;
 }
@@ -154,7 +154,7 @@ export interface TeamsListState {
  */
 export interface TeamsListArgs {
     /**
-     * The account to which the teams list should be added.
+     * The account identifier to target for the resource.
      */
     accountId: pulumi.Input<string>;
     /**
@@ -170,7 +170,7 @@ export interface TeamsListArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+     * The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
      */
     type: pulumi.Input<string>;
 }

@@ -65,6 +65,10 @@ public final class GetZoneDnssecResult {
      * 
      */
     private String status;
+    /**
+     * @return The zone identifier to target for the resource.
+     * 
+     */
     private String zoneId;
 
     private GetZoneDnssecResult() {}
@@ -145,6 +149,10 @@ public final class GetZoneDnssecResult {
     public String status() {
         return this.status;
     }
+    /**
+     * @return The zone identifier to target for the resource.
+     * 
+     */
     public String zoneId() {
         return this.zoneId;
     }

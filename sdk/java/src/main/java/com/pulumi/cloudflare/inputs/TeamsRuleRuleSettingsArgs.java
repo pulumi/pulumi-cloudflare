@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsBisoAdminControlsArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsCheckSessionArgs;
+import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsEgressArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsL4overrideArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -37,14 +38,14 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Configure how browser isolation behaves (refer to the nested schema).
+     * Configure how browser isolation behaves.
      * 
      */
     @Import(name="bisoAdminControls")
     private @Nullable Output<TeamsRuleRuleSettingsBisoAdminControlsArgs> bisoAdminControls;
 
     /**
-     * @return Configure how browser isolation behaves (refer to the nested schema).
+     * @return Configure how browser isolation behaves.
      * 
      */
     public Optional<Output<TeamsRuleRuleSettingsBisoAdminControlsArgs>> bisoAdminControls() {
@@ -82,14 +83,14 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Configure how session check behaves (refer to the nested schema).
+     * Configure how session check behaves.
      * 
      */
     @Import(name="checkSession")
     private @Nullable Output<TeamsRuleRuleSettingsCheckSessionArgs> checkSession;
 
     /**
-     * @return Configure how session check behaves (refer to the nested schema).
+     * @return Configure how session check behaves.
      * 
      */
     public Optional<Output<TeamsRuleRuleSettingsCheckSessionArgs>> checkSession() {
@@ -97,14 +98,29 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Disable DNSSEC validation (must be Allow rule)
+     * Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+     * 
+     */
+    @Import(name="egress")
+    private @Nullable Output<TeamsRuleRuleSettingsEgressArgs> egress;
+
+    /**
+     * @return Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+     * 
+     */
+    public Optional<Output<TeamsRuleRuleSettingsEgressArgs>> egress() {
+        return Optional.ofNullable(this.egress);
+    }
+
+    /**
+     * Disable DNSSEC validation (must be Allow rule).
      * 
      */
     @Import(name="insecureDisableDnssecValidation")
     private @Nullable Output<Boolean> insecureDisableDnssecValidation;
 
     /**
-     * @return Disable DNSSEC validation (must be Allow rule)
+     * @return Disable DNSSEC validation (must be Allow rule).
      * 
      */
     public Optional<Output<Boolean>> insecureDisableDnssecValidation() {
@@ -112,14 +128,14 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Settings to forward layer 4 traffic (refer to the nested schema).
+     * Settings to forward layer 4 traffic.
      * 
      */
     @Import(name="l4override")
     private @Nullable Output<TeamsRuleRuleSettingsL4overrideArgs> l4override;
 
     /**
-     * @return Settings to forward layer 4 traffic (refer to the nested schema).
+     * @return Settings to forward layer 4 traffic.
      * 
      */
     public Optional<Output<TeamsRuleRuleSettingsL4overrideArgs>> l4override() {
@@ -164,6 +180,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         this.blockPageEnabled = $.blockPageEnabled;
         this.blockPageReason = $.blockPageReason;
         this.checkSession = $.checkSession;
+        this.egress = $.egress;
         this.insecureDisableDnssecValidation = $.insecureDisableDnssecValidation;
         this.l4override = $.l4override;
         this.overrideHost = $.overrideHost;
@@ -210,7 +227,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param bisoAdminControls Configure how browser isolation behaves (refer to the nested schema).
+         * @param bisoAdminControls Configure how browser isolation behaves.
          * 
          * @return builder
          * 
@@ -221,7 +238,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param bisoAdminControls Configure how browser isolation behaves (refer to the nested schema).
+         * @param bisoAdminControls Configure how browser isolation behaves.
          * 
          * @return builder
          * 
@@ -273,7 +290,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param checkSession Configure how session check behaves (refer to the nested schema).
+         * @param checkSession Configure how session check behaves.
          * 
          * @return builder
          * 
@@ -284,7 +301,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param checkSession Configure how session check behaves (refer to the nested schema).
+         * @param checkSession Configure how session check behaves.
          * 
          * @return builder
          * 
@@ -294,7 +311,28 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param insecureDisableDnssecValidation Disable DNSSEC validation (must be Allow rule)
+         * @param egress Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder egress(@Nullable Output<TeamsRuleRuleSettingsEgressArgs> egress) {
+            $.egress = egress;
+            return this;
+        }
+
+        /**
+         * @param egress Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder egress(TeamsRuleRuleSettingsEgressArgs egress) {
+            return egress(Output.of(egress));
+        }
+
+        /**
+         * @param insecureDisableDnssecValidation Disable DNSSEC validation (must be Allow rule).
          * 
          * @return builder
          * 
@@ -305,7 +343,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param insecureDisableDnssecValidation Disable DNSSEC validation (must be Allow rule)
+         * @param insecureDisableDnssecValidation Disable DNSSEC validation (must be Allow rule).
          * 
          * @return builder
          * 
@@ -315,7 +353,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param l4override Settings to forward layer 4 traffic (refer to the nested schema).
+         * @param l4override Settings to forward layer 4 traffic.
          * 
          * @return builder
          * 
@@ -326,7 +364,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param l4override Settings to forward layer 4 traffic (refer to the nested schema).
+         * @param l4override Settings to forward layer 4 traffic.
          * 
          * @return builder
          * 

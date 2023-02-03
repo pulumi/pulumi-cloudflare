@@ -12,6 +12,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZonesResult {
+    /**
+     * @return One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
+     * 
+     */
     private GetZonesFilter filter;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -19,12 +23,16 @@ public final class GetZonesResult {
      */
     private String id;
     /**
-     * @return A list of zone objects. Object format:
+     * @return A list of zone objects.
      * 
      */
     private List<GetZonesZone> zones;
 
     private GetZonesResult() {}
+    /**
+     * @return One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
+     * 
+     */
     public GetZonesFilter filter() {
         return this.filter;
     }
@@ -36,7 +44,7 @@ public final class GetZonesResult {
         return this.id;
     }
     /**
-     * @return A list of zone objects. Object format:
+     * @return A list of zone objects.
      * 
      */
     public List<GetZonesZone> zones() {

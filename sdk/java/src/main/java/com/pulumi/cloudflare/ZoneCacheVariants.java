@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .webps(            
  *                 &#34;image/jpeg&#34;,
  *                 &#34;image/webp&#34;)
- *             .zoneId(&#34;7df50664b7f90274f4d77cdfee701380&#34;)
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }
@@ -85,168 +85,168 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/zoneCacheVariants:ZoneCacheVariants")
 public class ZoneCacheVariants extends com.pulumi.resources.CustomResource {
     /**
-     * List of strings with the MIME types of all the variants that should be served for avif
+     * List of strings with the MIME types of all the variants that should be served for avif.
      * 
      */
     @Export(name="avifs", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> avifs;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for avif
+     * @return List of strings with the MIME types of all the variants that should be served for avif.
      * 
      */
     public Output<Optional<List<String>>> avifs() {
         return Codegen.optional(this.avifs);
     }
     /**
-     * List of strings with the MIME types of all the variants that should be served for bmp
+     * List of strings with the MIME types of all the variants that should be served for bmp.
      * 
      */
     @Export(name="bmps", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> bmps;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for bmp
+     * @return List of strings with the MIME types of all the variants that should be served for bmp.
      * 
      */
     public Output<Optional<List<String>>> bmps() {
         return Codegen.optional(this.bmps);
     }
     /**
-     * List of strings with the MIME types of all the variants that should be served for gif
+     * List of strings with the MIME types of all the variants that should be served for gif.
      * 
      */
     @Export(name="gifs", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> gifs;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for gif
+     * @return List of strings with the MIME types of all the variants that should be served for gif.
      * 
      */
     public Output<Optional<List<String>>> gifs() {
         return Codegen.optional(this.gifs);
     }
     /**
-     * List of strings with the MIME types of all the variants that should be served for jp2
+     * List of strings with the MIME types of all the variants that should be served for jp2.
      * 
      */
     @Export(name="jp2s", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> jp2s;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for jp2
+     * @return List of strings with the MIME types of all the variants that should be served for jp2.
      * 
      */
     public Output<Optional<List<String>>> jp2s() {
         return Codegen.optional(this.jp2s);
     }
     /**
-     * List of strings with the MIME types of all the variants that should be served for jpeg
+     * List of strings with the MIME types of all the variants that should be served for jpeg.
      * 
      */
     @Export(name="jpegs", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> jpegs;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for jpeg
+     * @return List of strings with the MIME types of all the variants that should be served for jpeg.
      * 
      */
     public Output<Optional<List<String>>> jpegs() {
         return Codegen.optional(this.jpegs);
     }
     /**
-     * List of strings with the MIME types of all the variants that should be served for jpg2
+     * List of strings with the MIME types of all the variants that should be served for jpg2.
      * 
      */
     @Export(name="jpg2s", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> jpg2s;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for jpg2
+     * @return List of strings with the MIME types of all the variants that should be served for jpg2.
      * 
      */
     public Output<Optional<List<String>>> jpg2s() {
         return Codegen.optional(this.jpg2s);
     }
     /**
-     * List of strings with the MIME types of all the variants that should be served for jpg
+     * List of strings with the MIME types of all the variants that should be served for jpg.
      * 
      */
     @Export(name="jpgs", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> jpgs;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for jpg
+     * @return List of strings with the MIME types of all the variants that should be served for jpg.
      * 
      */
     public Output<Optional<List<String>>> jpgs() {
         return Codegen.optional(this.jpgs);
     }
     /**
-     * List of strings with the MIME types of all the variants that should be served for png
+     * List of strings with the MIME types of all the variants that should be served for png.
      * 
      */
     @Export(name="pngs", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> pngs;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for png
+     * @return List of strings with the MIME types of all the variants that should be served for png.
      * 
      */
     public Output<Optional<List<String>>> pngs() {
         return Codegen.optional(this.pngs);
     }
     /**
-     * List of strings with the MIME types of all the variants that should be served for tiff
+     * List of strings with the MIME types of all the variants that should be served for tiff.
      * 
      */
     @Export(name="tiffs", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tiffs;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for tiff
+     * @return List of strings with the MIME types of all the variants that should be served for tiff.
      * 
      */
     public Output<Optional<List<String>>> tiffs() {
         return Codegen.optional(this.tiffs);
     }
     /**
-     * List of strings with the MIME types of all the variants that should be served for tif
+     * List of strings with the MIME types of all the variants that should be served for tif.
      * 
      */
     @Export(name="tifs", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tifs;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for tif
+     * @return List of strings with the MIME types of all the variants that should be served for tif.
      * 
      */
     public Output<Optional<List<String>>> tifs() {
         return Codegen.optional(this.tifs);
     }
     /**
-     * List of strings with the MIME types of all the variants that should be served for webp
+     * List of strings with the MIME types of all the variants that should be served for webp.
      * 
      */
     @Export(name="webps", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> webps;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for webp
+     * @return List of strings with the MIME types of all the variants that should be served for webp.
      * 
      */
     public Output<Optional<List<String>>> webps() {
         return Codegen.optional(this.webps);
     }
     /**
-     * The ID of the DNS zone in which to apply the cache variants setting
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The ID of the DNS zone in which to apply the cache variants setting
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {

@@ -10,26 +10,26 @@ import java.util.Objects;
 @CustomType
 public final class SpectrumApplicationDns {
     /**
-     * @return Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+     * @return The name of the DNS record associated with the application.
      * 
      */
     private String name;
     /**
-     * @return The type of DNS record associated with the application. Valid values: `CNAME`.
+     * @return The type of DNS record associated with the application.
      * 
      */
     private String type;
 
     private SpectrumApplicationDns() {}
     /**
-     * @return Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+     * @return The name of the DNS record associated with the application.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The type of DNS record associated with the application. Valid values: `CNAME`.
+     * @return The type of DNS record associated with the application.
      * 
      */
     public String type() {

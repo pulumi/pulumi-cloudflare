@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare device policy certificates resource. Device policy certificate resources enable client device certificate generation.
+// Provides a Cloudflare device policy certificates resource. Device
+// policy certificate resources enable client device certificate
+// generation.
 //
 // ## Example Usage
 //
@@ -29,7 +31,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewDevicePolicyCertificates(ctx, "example", &cloudflare.DevicePolicyCertificatesArgs{
 //				Enabled: pulumi.Bool(true),
-//				ZoneId:  pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+//				ZoneId:  pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //			})
 //			if err != nil {
 //				return err
@@ -42,19 +44,17 @@ import (
 //
 // ## Import
 //
-// Device policy certificate settings can be imported using the zone ID.
-//
 // ```sh
 //
-//	$ pulumi import cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates example cb029e245cfdd66dc8d2e570d5dd3322
+//	$ pulumi import cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates example <zone_id>
 //
 // ```
 type DevicePolicyCertificates struct {
 	pulumi.CustomResourceState
 
-	// True if certificate generation is enabled.
+	// `true` if certificate generation is enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// The zone ID where certificate generation is allowed.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -93,16 +93,16 @@ func GetDevicePolicyCertificates(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DevicePolicyCertificates resources.
 type devicePolicyCertificatesState struct {
-	// True if certificate generation is enabled.
+	// `true` if certificate generation is enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// The zone ID where certificate generation is allowed.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type DevicePolicyCertificatesState struct {
-	// True if certificate generation is enabled.
+	// `true` if certificate generation is enabled.
 	Enabled pulumi.BoolPtrInput
-	// The zone ID where certificate generation is allowed.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -111,17 +111,17 @@ func (DevicePolicyCertificatesState) ElementType() reflect.Type {
 }
 
 type devicePolicyCertificatesArgs struct {
-	// True if certificate generation is enabled.
+	// `true` if certificate generation is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// The zone ID where certificate generation is allowed.
+	// The zone identifier to target for the resource.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a DevicePolicyCertificates resource.
 type DevicePolicyCertificatesArgs struct {
-	// True if certificate generation is enabled.
+	// `true` if certificate generation is enabled.
 	Enabled pulumi.BoolInput
-	// The zone ID where certificate generation is allowed.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringInput
 }
 
@@ -212,12 +212,12 @@ func (o DevicePolicyCertificatesOutput) ToDevicePolicyCertificatesOutputWithCont
 	return o
 }
 
-// True if certificate generation is enabled.
+// `true` if certificate generation is enabled.
 func (o DevicePolicyCertificatesOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DevicePolicyCertificates) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The zone ID where certificate generation is allowed.
+// The zone identifier to target for the resource.
 func (o DevicePolicyCertificatesOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DevicePolicyCertificates) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

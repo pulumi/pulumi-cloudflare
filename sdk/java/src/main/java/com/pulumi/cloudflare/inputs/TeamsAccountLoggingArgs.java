@@ -15,16 +15,14 @@ public final class TeamsAccountLoggingArgs extends com.pulumi.resources.Resource
     public static final TeamsAccountLoggingArgs Empty = new TeamsAccountLoggingArgs();
 
     /**
-     * Redact personally identifiable information from activity logging (PII fields are: source IP,
-     * user email, user ID, device ID, URL, referrer, user agent).
+     * Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
      * 
      */
     @Import(name="redactPii", required=true)
     private Output<Boolean> redactPii;
 
     /**
-     * @return Redact personally identifiable information from activity logging (PII fields are: source IP,
-     * user email, user ID, device ID, URL, referrer, user agent).
+     * @return Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
      * 
      */
     public Output<Boolean> redactPii() {
@@ -32,16 +30,14 @@ public final class TeamsAccountLoggingArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Represents whether all requests are logged or only the blocked requests are
-     * logged in DNS, HTTP and L4 filters.
+     * Represents whether all requests are logged or only the blocked requests are slogged in DNS, HTTP and L4 filters.
      * 
      */
     @Import(name="settingsByRuleType", required=true)
     private Output<TeamsAccountLoggingSettingsByRuleTypeArgs> settingsByRuleType;
 
     /**
-     * @return Represents whether all requests are logged or only the blocked requests are
-     * logged in DNS, HTTP and L4 filters.
+     * @return Represents whether all requests are logged or only the blocked requests are slogged in DNS, HTTP and L4 filters.
      * 
      */
     public Output<TeamsAccountLoggingSettingsByRuleTypeArgs> settingsByRuleType() {
@@ -74,8 +70,7 @@ public final class TeamsAccountLoggingArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param redactPii Redact personally identifiable information from activity logging (PII fields are: source IP,
-         * user email, user ID, device ID, URL, referrer, user agent).
+         * @param redactPii Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
          * 
          * @return builder
          * 
@@ -86,8 +81,7 @@ public final class TeamsAccountLoggingArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param redactPii Redact personally identifiable information from activity logging (PII fields are: source IP,
-         * user email, user ID, device ID, URL, referrer, user agent).
+         * @param redactPii Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
          * 
          * @return builder
          * 
@@ -97,8 +91,7 @@ public final class TeamsAccountLoggingArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param settingsByRuleType Represents whether all requests are logged or only the blocked requests are
-         * logged in DNS, HTTP and L4 filters.
+         * @param settingsByRuleType Represents whether all requests are logged or only the blocked requests are slogged in DNS, HTTP and L4 filters.
          * 
          * @return builder
          * 
@@ -109,8 +102,7 @@ public final class TeamsAccountLoggingArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param settingsByRuleType Represents whether all requests are logged or only the blocked requests are
-         * logged in DNS, HTTP and L4 filters.
+         * @param settingsByRuleType Represents whether all requests are logged or only the blocked requests are slogged in DNS, HTTP and L4 filters.
          * 
          * @return builder
          * 

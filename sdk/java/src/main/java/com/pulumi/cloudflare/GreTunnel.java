@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new GreTunnel(&#34;example&#34;, GreTunnelArgs.builder()        
- *             .accountId(&#34;c4a7362d577a6c3019a474fd6f485821&#34;)
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .cloudflareGreEndpoint(&#34;203.0.113.1&#34;)
  *             .customerGreEndpoint(&#34;203.0.113.1&#34;)
  *             .description(&#34;Tunnel for ISP X&#34;)
@@ -61,24 +61,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * An existing GRE tunnel can be imported using the account ID and tunnel ID
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/greTunnel:GreTunnel example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
+ *  $ pulumi import cloudflare:index/greTunnel:GreTunnel example &lt;account_id&gt;/&lt;tunnel_id&gt;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/greTunnel:GreTunnel")
 public class GreTunnel extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the account where the tunnel is being created.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The ID of the account where the tunnel is being created.
+     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<Optional<String>> accountId() {
@@ -113,56 +111,56 @@ public class GreTunnel extends com.pulumi.resources.CustomResource {
         return this.customerGreEndpoint;
     }
     /**
-     * An optional description of the GRE tunnel.
+     * Description of the GRE tunnel intent.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return An optional description of the GRE tunnel.
+     * @return Description of the GRE tunnel intent.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Specifies if ICMP tunnel health checks are enabled Default: `true`.
+     * Specifies if ICMP tunnel health checks are enabled.
      * 
      */
     @Export(name="healthCheckEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> healthCheckEnabled;
 
     /**
-     * @return Specifies if ICMP tunnel health checks are enabled Default: `true`.
+     * @return Specifies if ICMP tunnel health checks are enabled.
      * 
      */
     public Output<Boolean> healthCheckEnabled() {
         return this.healthCheckEnabled;
     }
     /**
-     * The IP address of the customer endpoint that will receive tunnel health checks. Default: `&lt;customer_gre_endpoint&gt;`.
+     * The IP address of the customer endpoint that will receive tunnel health checks.
      * 
      */
     @Export(name="healthCheckTarget", type=String.class, parameters={})
     private Output<String> healthCheckTarget;
 
     /**
-     * @return The IP address of the customer endpoint that will receive tunnel health checks. Default: `&lt;customer_gre_endpoint&gt;`.
+     * @return The IP address of the customer endpoint that will receive tunnel health checks.
      * 
      */
     public Output<String> healthCheckTarget() {
         return this.healthCheckTarget;
     }
     /**
-     * Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.
+     * Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
      * 
      */
     @Export(name="healthCheckType", type=String.class, parameters={})
     private Output<String> healthCheckType;
 
     /**
-     * @return Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.
+     * @return Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
      * 
      */
     public Output<String> healthCheckType() {
@@ -183,14 +181,14 @@ public class GreTunnel extends com.pulumi.resources.CustomResource {
         return this.interfaceAddress;
     }
     /**
-     * Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.
+     * Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
      * 
      */
     @Export(name="mtu", type=Integer.class, parameters={})
     private Output<Integer> mtu;
 
     /**
-     * @return Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.
+     * @return Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
      * 
      */
     public Output<Integer> mtu() {
@@ -211,14 +209,14 @@ public class GreTunnel extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.
+     * Time To Live (TTL) in number of hops of the GRE tunnel.
      * 
      */
     @Export(name="ttl", type=Integer.class, parameters={})
     private Output<Integer> ttl;
 
     /**
-     * @return Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.
+     * @return Time To Live (TTL) in number of hops of the GRE tunnel.
      * 
      */
     public Output<Integer> ttl() {

@@ -18,14 +18,14 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
     public static final StaticRouteState Empty = new StaticRouteState();
 
     /**
-     * The ID of the account where the static route is being created.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The ID of the account where the static route is being created.
+     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -33,14 +33,14 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional list of Cloudflare colocation names for this static route.
+     * List of Cloudflare colocation regions for this static route.
      * 
      */
     @Import(name="coloNames")
     private @Nullable Output<List<String>> coloNames;
 
     /**
-     * @return Optional list of Cloudflare colocation names for this static route.
+     * @return List of Cloudflare colocation regions for this static route.
      * 
      */
     public Optional<Output<List<String>>> coloNames() {
@@ -48,14 +48,14 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional list of Cloudflare colocation regions for this static route.
+     * List of Cloudflare colocation names for this static route.
      * 
      */
     @Import(name="coloRegions")
     private @Nullable Output<List<String>> coloRegions;
 
     /**
-     * @return Optional list of Cloudflare colocation regions for this static route.
+     * @return List of Cloudflare colocation names for this static route.
      * 
      */
     public Optional<Output<List<String>>> coloRegions() {
@@ -123,14 +123,14 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The optional weight for ECMP routes.
+     * The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="weight")
     private @Nullable Output<Integer> weight;
 
     /**
-     * @return The optional weight for ECMP routes.
+     * @return The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<Integer>> weight() {
@@ -169,7 +169,7 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The ID of the account where the static route is being created.
+         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The ID of the account where the static route is being created.
+         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coloNames Optional list of Cloudflare colocation names for this static route.
+         * @param coloNames List of Cloudflare colocation regions for this static route.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coloNames Optional list of Cloudflare colocation names for this static route.
+         * @param coloNames List of Cloudflare colocation regions for this static route.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coloNames Optional list of Cloudflare colocation names for this static route.
+         * @param coloNames List of Cloudflare colocation regions for this static route.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coloRegions Optional list of Cloudflare colocation regions for this static route.
+         * @param coloRegions List of Cloudflare colocation names for this static route.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coloRegions Optional list of Cloudflare colocation regions for this static route.
+         * @param coloRegions List of Cloudflare colocation names for this static route.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coloRegions Optional list of Cloudflare colocation regions for this static route.
+         * @param coloRegions List of Cloudflare colocation names for this static route.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param weight The optional weight for ECMP routes.
+         * @param weight The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param weight The optional weight for ECMP routes.
+         * @param weight The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

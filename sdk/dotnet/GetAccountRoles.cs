@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccountRolesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account for which to list the roles.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccountRolesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account for which to list the roles.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -57,13 +57,16 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetAccountRolesResult
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         public readonly string AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of roles object. See below for nested attributes.
+        /// A list of roles object.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAccountRolesRoleResult> Roles;
 

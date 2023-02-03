@@ -27,6 +27,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<Outputs.AccessPolicyRequireGithub> Githubs;
         public readonly ImmutableArray<string> Groups;
         public readonly ImmutableArray<Outputs.AccessPolicyRequireGsuite> Gsuites;
+        public readonly ImmutableArray<string> IpLists;
         public readonly ImmutableArray<string> Ips;
         public readonly ImmutableArray<string> LoginMethods;
         public readonly ImmutableArray<Outputs.AccessPolicyRequireOkta> Oktas;
@@ -63,6 +64,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<Outputs.AccessPolicyRequireGsuite> gsuites,
 
+            ImmutableArray<string> ipLists,
+
             ImmutableArray<string> ips,
 
             ImmutableArray<string> loginMethods,
@@ -87,6 +90,7 @@ namespace Pulumi.Cloudflare.Outputs
             Githubs = githubs;
             Groups = groups;
             Gsuites = gsuites;
+            IpLists = ipLists;
             Ips = ips;
             LoginMethods = loginMethods;
             Oktas = oktas;

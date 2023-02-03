@@ -22,7 +22,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Load Balancer pool resource. This provides a pool of origins that can be used by a Cloudflare Load Balancer. Note that the load balancing feature must be enabled in your Cloudflare account before you can use this resource.
+ * Provides a Cloudflare Load Balancer pool resource. This provides a
+ * pool of origins that can be used by a Cloudflare Load Balancer.
  * 
  * ## Example Usage
  * 
@@ -86,28 +87,28 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+     * Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
      * 
      */
     @Export(name="enabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+     * @return Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
      * 
      */
     public Output<Optional<Boolean>> enabled() {
         return Codegen.optional(this.enabled);
     }
     /**
-     * The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+     * The latitude this pool is physically located at; used for proximity steering.
      * 
      */
     @Export(name="latitude", type=Double.class, parameters={})
     private Output</* @Nullable */ Double> latitude;
 
     /**
-     * @return The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+     * @return The latitude this pool is physically located at; used for proximity steering.
      * 
      */
     public Output<Optional<Double>> latitude() {
@@ -128,28 +129,28 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.loadSheddings);
     }
     /**
-     * The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+     * The longitude this pool is physically located at; used for proximity steering.
      * 
      */
     @Export(name="longitude", type=Double.class, parameters={})
     private Output</* @Nullable */ Double> longitude;
 
     /**
-     * @return The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+     * @return The longitude this pool is physically located at; used for proximity steering.
      * 
      */
     public Output<Optional<Double>> longitude() {
         return Codegen.optional(this.longitude);
     }
     /**
-     * The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
+     * The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
      * 
      */
     @Export(name="minimumOrigins", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> minimumOrigins;
 
     /**
-     * @return The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
+     * @return The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
      * 
      */
     public Output<Optional<Integer>> minimumOrigins() {
@@ -184,14 +185,14 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.monitor);
     }
     /**
-     * A human-identifiable name for the origin.
+     * A short name (tag) for the pool.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return A human-identifiable name for the origin.
+     * @return A short name (tag) for the pool.
      * 
      */
     public Output<String> name() {
@@ -226,14 +227,14 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.originSteerings);
     }
     /**
-     * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It&#39;s a complex value. See description below.
+     * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
      * 
      */
     @Export(name="origins", type=List.class, parameters={LoadBalancerPoolOrigin.class})
     private Output<List<LoadBalancerPoolOrigin>> origins;
 
     /**
-     * @return The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It&#39;s a complex value. See description below.
+     * @return The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
      * 
      */
     public Output<List<LoadBalancerPoolOrigin>> origins() {

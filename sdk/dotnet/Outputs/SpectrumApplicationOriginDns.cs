@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class SpectrumApplicationOriginDns
     {
         /// <summary>
-        /// Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+        /// Fully qualified domain name of the origin.
         /// </summary>
         public readonly string Name;
 

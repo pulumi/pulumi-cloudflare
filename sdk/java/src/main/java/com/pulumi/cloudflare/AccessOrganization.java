@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  *                 .textColor(&#34;#000000&#34;)
  *                 .build())
  *             .name(&#34;example.cloudflareaccess.com&#34;)
+ *             .userSeatExpirationInactiveTime(&#34;720h&#34;)
  *             .build());
  * 
  *     }
@@ -131,6 +132,20 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> name() {
         return Codegen.optional(this.name);
+    }
+    /**
+     * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+     * 
+     */
+    @Export(name="userSeatExpirationInactiveTime", type=String.class, parameters={})
+    private Output</* @Nullable */ String> userSeatExpirationInactiveTime;
+
+    /**
+     * @return The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+     * 
+     */
+    public Output<Optional<String>> userSeatExpirationInactiveTime() {
+        return Codegen.optional(this.userSeatExpirationInactiveTime);
     }
     /**
      * The zone identifier to target for the resource. Conflicts with `account_id`.

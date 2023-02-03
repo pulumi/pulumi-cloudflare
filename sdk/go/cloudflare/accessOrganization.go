@@ -40,7 +40,8 @@ import (
 //						TextColor:       pulumi.String("#000000"),
 //					},
 //				},
-//				Name: pulumi.String("example.cloudflareaccess.com"),
+//				Name:                           pulumi.String("example.cloudflareaccess.com"),
+//				UserSeatExpirationInactiveTime: pulumi.String("720h"),
 //			})
 //			if err != nil {
 //				return err
@@ -70,6 +71,8 @@ type AccessOrganization struct {
 	LoginDesigns AccessOrganizationLoginDesignArrayOutput `pulumi:"loginDesigns"`
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
+	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+	UserSeatExpirationInactiveTime pulumi.StringPtrOutput `pulumi:"userSeatExpirationInactiveTime"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -115,6 +118,8 @@ type accessOrganizationState struct {
 	LoginDesigns []AccessOrganizationLoginDesign `pulumi:"loginDesigns"`
 	// The name of your Zero Trust organization.
 	Name *string `pulumi:"name"`
+	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+	UserSeatExpirationInactiveTime *string `pulumi:"userSeatExpirationInactiveTime"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -129,6 +134,8 @@ type AccessOrganizationState struct {
 	LoginDesigns AccessOrganizationLoginDesignArrayInput
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrInput
+	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+	UserSeatExpirationInactiveTime pulumi.StringPtrInput
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
 }
@@ -147,6 +154,8 @@ type accessOrganizationArgs struct {
 	LoginDesigns []AccessOrganizationLoginDesign `pulumi:"loginDesigns"`
 	// The name of your Zero Trust organization.
 	Name *string `pulumi:"name"`
+	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+	UserSeatExpirationInactiveTime *string `pulumi:"userSeatExpirationInactiveTime"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -162,6 +171,8 @@ type AccessOrganizationArgs struct {
 	LoginDesigns AccessOrganizationLoginDesignArrayInput
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrInput
+	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+	UserSeatExpirationInactiveTime pulumi.StringPtrInput
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
 }
@@ -275,6 +286,11 @@ func (o AccessOrganizationOutput) LoginDesigns() AccessOrganizationLoginDesignAr
 // The name of your Zero Trust organization.
 func (o AccessOrganizationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessOrganization) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+func (o AccessOrganizationOutput) UserSeatExpirationInactiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessOrganization) pulumi.StringPtrOutput { return v.UserSeatExpirationInactiveTime }).(pulumi.StringPtrOutput)
 }
 
 // The zone identifier to target for the resource. Conflicts with `accountId`.

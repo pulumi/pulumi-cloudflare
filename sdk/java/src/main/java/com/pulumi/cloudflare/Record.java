@@ -15,6 +15,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -45,10 +46,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new Record(&#34;foobar&#34;, RecordArgs.builder()        
+ *         var example = new Record(&#34;example&#34;, RecordArgs.builder()        
  *             .zoneId(var_.cloudflare_zone_id())
  *             .name(&#34;example&#34;)
- *             .value(&#34;192.168.0.11&#34;)
+ *             .value(&#34;192.0.2.1&#34;)
  *             .type(&#34;A&#34;)
  *             .ttl(3600)
  *             .build());
@@ -74,200 +75,236 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Records can be imported using a composite ID formed of zone ID and record ID, e.g.
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/record:Record default ae36f999674d196762efcc5abb06b345/d41d8cd98f00b204e9800998ecf8427e
+ *  $ pulumi import cloudflare:index/record:Record example &lt;zone_id&gt;/&lt;record_id&gt;
  * ```
- * 
- *  where- `ae36f999674d196762efcc5abb06b345` - the zone ID - `d41d8cd98f00b204e9800998ecf8427e` - record ID as returned by [API](https://api.cloudflare.com/#dns-records-for-a-zone-list-dns-records)
  * 
  */
 @ResourceType(type="cloudflare:index/record:Record")
 public class Record extends com.pulumi.resources.CustomResource {
+    /**
+     * Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
+     * update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
+     * from overwriting this record. **This configuration is not recommended for most environments**
+     * 
+     */
     @Export(name="allowOverwrite", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> allowOverwrite;
 
+    /**
+     * @return Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
+     * update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
+     * from overwriting this record. **This configuration is not recommended for most environments**
+     * 
+     */
     public Output<Optional<Boolean>> allowOverwrite() {
         return Codegen.optional(this.allowOverwrite);
     }
     /**
-     * The RFC3339 timestamp of when the record was created
+     * Comments or notes about the DNS record. This field has no effect on DNS responses.
+     * 
+     */
+    @Export(name="comment", type=String.class, parameters={})
+    private Output</* @Nullable */ String> comment;
+
+    /**
+     * @return Comments or notes about the DNS record. This field has no effect on DNS responses.
+     * 
+     */
+    public Output<Optional<String>> comment() {
+        return Codegen.optional(this.comment);
+    }
+    /**
+     * The RFC3339 timestamp of when the record was created.
      * 
      */
     @Export(name="createdOn", type=String.class, parameters={})
     private Output<String> createdOn;
 
     /**
-     * @return The RFC3339 timestamp of when the record was created
+     * @return The RFC3339 timestamp of when the record was created.
      * 
      */
     public Output<String> createdOn() {
         return this.createdOn;
     }
     /**
-     * Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
+     * Map of attributes that constitute the record value. Conflicts with `value`.
      * 
      */
     @Export(name="data", type=RecordData.class, parameters={})
     private Output</* @Nullable */ RecordData> data;
 
     /**
-     * @return Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
+     * @return Map of attributes that constitute the record value. Conflicts with `value`.
      * 
      */
     public Output<Optional<RecordData>> data() {
         return Codegen.optional(this.data);
     }
     /**
-     * The FQDN of the record
+     * The FQDN of the record.
      * 
      */
     @Export(name="hostname", type=String.class, parameters={})
     private Output<String> hostname;
 
     /**
-     * @return The FQDN of the record
+     * @return The FQDN of the record.
      * 
      */
     public Output<String> hostname() {
         return this.hostname;
     }
     /**
-     * A key-value map of string metadata Cloudflare associates with the record
+     * A key-value map of string metadata Cloudflare associates with the record.
      * 
      */
     @Export(name="metadata", type=Map.class, parameters={String.class, Object.class})
     private Output<Map<String,Object>> metadata;
 
     /**
-     * @return A key-value map of string metadata Cloudflare associates with the record
+     * @return A key-value map of string metadata Cloudflare associates with the record.
      * 
      */
     public Output<Map<String,Object>> metadata() {
         return this.metadata;
     }
     /**
-     * The RFC3339 timestamp of when the record was last modified
+     * The RFC3339 timestamp of when the record was last modified.
      * 
      */
     @Export(name="modifiedOn", type=String.class, parameters={})
     private Output<String> modifiedOn;
 
     /**
-     * @return The RFC3339 timestamp of when the record was last modified
+     * @return The RFC3339 timestamp of when the record was last modified.
      * 
      */
     public Output<String> modifiedOn() {
         return this.modifiedOn;
     }
     /**
-     * The name of the record
+     * The name of the record. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name of the record
+     * @return The name of the record. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The priority of the record
+     * The priority of the record.
      * 
      */
     @Export(name="priority", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> priority;
 
     /**
-     * @return The priority of the record
+     * @return The priority of the record.
      * 
      */
     public Output<Optional<Integer>> priority() {
         return Codegen.optional(this.priority);
     }
     /**
-     * Shows whether this record can be proxied, must be true if setting `proxied=true`
+     * Shows whether this record can be proxied.
      * 
      */
     @Export(name="proxiable", type=Boolean.class, parameters={})
     private Output<Boolean> proxiable;
 
     /**
-     * @return Shows whether this record can be proxied, must be true if setting `proxied=true`
+     * @return Shows whether this record can be proxied.
      * 
      */
     public Output<Boolean> proxiable() {
         return this.proxiable;
     }
     /**
-     * Whether the record gets Cloudflare&#39;s origin protection; defaults to `false`.
+     * Whether the record gets Cloudflare&#39;s origin protection.
      * 
      */
     @Export(name="proxied", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> proxied;
 
     /**
-     * @return Whether the record gets Cloudflare&#39;s origin protection; defaults to `false`.
+     * @return Whether the record gets Cloudflare&#39;s origin protection.
      * 
      */
     public Output<Optional<Boolean>> proxied() {
         return Codegen.optional(this.proxied);
     }
     /**
-     * The TTL of the record ([automatic: &#39;1&#39;](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
+     * Custom tags for the DNS record.
+     * 
+     */
+    @Export(name="tags", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> tags;
+
+    /**
+     * @return Custom tags for the DNS record.
+     * 
+     */
+    public Output<Optional<List<String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * The TTL of the record.
      * 
      */
     @Export(name="ttl", type=Integer.class, parameters={})
     private Output<Integer> ttl;
 
     /**
-     * @return The TTL of the record ([automatic: &#39;1&#39;](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
+     * @return The TTL of the record.
      * 
      */
     public Output<Integer> ttl() {
         return this.ttl;
     }
     /**
-     * The type of the record
+     * The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
-     * @return The type of the record
+     * @return The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * The (string) value of the record. Either this or `data` must be specified
+     * The value of the record. Conflicts with `data`.
      * 
      */
     @Export(name="value", type=String.class, parameters={})
     private Output<String> value;
 
     /**
-     * @return The (string) value of the record. Either this or `data` must be specified
+     * @return The value of the record. Conflicts with `data`.
      * 
      */
     public Output<String> value() {
         return this.value;
     }
     /**
-     * The DNS zone ID to add the record to
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The DNS zone ID to add the record to
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {

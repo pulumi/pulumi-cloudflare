@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double? LongSeconds;
         public readonly int? MatchingType;
         /// <summary>
-        /// The name of the record
+        /// The name of the record. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         public readonly string? Name;
         public readonly int? Order;
@@ -41,7 +41,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double? PrecisionVert;
         public readonly int? Preference;
         /// <summary>
-        /// The priority of the record
+        /// The priority of the record.
         /// </summary>
         public readonly int? Priority;
         public readonly string? Proto;
@@ -55,12 +55,12 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Tag;
         public readonly string? Target;
         /// <summary>
-        /// The type of the record
+        /// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         public readonly int? Type;
         public readonly int? Usage;
         /// <summary>
-        /// The (string) value of the record. Either this or `data` must be specified
+        /// The value of the record. Conflicts with `data`.
         /// </summary>
         public readonly string? Value;
         public readonly int? Weight;

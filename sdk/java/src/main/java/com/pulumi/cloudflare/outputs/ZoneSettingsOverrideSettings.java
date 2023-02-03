@@ -23,47 +23,23 @@ public final class ZoneSettingsOverrideSettings {
     private @Nullable String brotli;
     private @Nullable Integer browserCacheTtl;
     private @Nullable String browserCheck;
-    /**
-     * @return Allowed values: &#34;aggressive&#34; (default) - delivers a different resource each time the query string changes, &#34;basic&#34; - delivers resources from cache when there is no query string, &#34;simplified&#34; - delivers the same resource to everyone independent of the query string.
-     * 
-     */
     private @Nullable String cacheLevel;
     private @Nullable Integer challengeTtl;
-    /**
-     * @return An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
-     * 
-     */
     private @Nullable List<String> ciphers;
-    /**
-     * @return Allowed values: &#34;flatten_at_root&#34; (default), &#34;flatten_all&#34;, &#34;flatten_none&#34;.
-     * 
-     */
     private @Nullable String cnameFlattening;
     private @Nullable String developmentMode;
     private @Nullable String earlyHints;
     private @Nullable String emailObfuscation;
     private @Nullable String filterLogsToCloudflare;
-    /**
-     * @return Allowed values: &#34;on&#34;, &#34;off&#34; (default), &#34;custom&#34;.
-     * 
-     */
     private @Nullable String h2Prioritization;
     private @Nullable String hotlinkProtection;
     private @Nullable String http2;
     private @Nullable String http3;
-    /**
-     * @return Allowed values: &#34;on&#34;, &#34;off&#34; (default), &#34;open&#34;.
-     * 
-     */
     private @Nullable String imageResizing;
     private @Nullable String ipGeolocation;
     private @Nullable String ipv6;
     private @Nullable String logToCloudflare;
     private @Nullable Integer maxUpload;
-    /**
-     * @return Allowed values: &#34;1.0&#34; (default), &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
-     * 
-     */
     private @Nullable String minTlsVersion;
     private @Nullable ZoneSettingsOverrideSettingsMinify minify;
     private @Nullable String mirage;
@@ -72,38 +48,18 @@ public final class ZoneSettingsOverrideSettings {
     private @Nullable String opportunisticOnion;
     private @Nullable String orangeToOrange;
     private @Nullable String originErrorPagePassThru;
-    /**
-     * @return Allowed values: &#34;1&#34; (default on Enterprise), &#34;2&#34; (default)
-     * 
-     */
     private @Nullable String originMaxHttpVersion;
-    /**
-     * @return Allowed values: &#34;off&#34; (default), &#34;lossless&#34;, &#34;lossy&#34;.
-     * 
-     */
     private @Nullable String polish;
     private @Nullable String prefetchPreload;
     private @Nullable String privacyPass;
     private @Nullable String proxyReadTimeout;
-    /**
-     * @return Allowed values: &#34;off&#34; (default), &#34;add_header&#34;, &#34;overwrite_header&#34;.
-     * 
-     */
     private @Nullable String pseudoIpv4;
     private @Nullable String responseBuffering;
     private @Nullable String rocketLoader;
     private @Nullable ZoneSettingsOverrideSettingsSecurityHeader securityHeader;
-    /**
-     * @return Allowed values: &#34;off&#34; (Enterprise only), &#34;essentially_off&#34;, &#34;low&#34;, &#34;medium&#34; (default), &#34;high&#34;, &#34;under_attack&#34;.
-     * 
-     */
     private @Nullable String securityLevel;
     private @Nullable String serverSideExclude;
     private @Nullable String sortQueryStringForCache;
-    /**
-     * @return Allowed values: &#34;off&#34; (default), &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
-     * 
-     */
     private @Nullable String ssl;
     /**
      * @deprecated
@@ -112,20 +68,12 @@ public final class ZoneSettingsOverrideSettings {
      */
     @Deprecated /* tls_1_2_only has been deprecated in favour of using `min_tls_version = ""1.2""` instead. */
     private @Nullable String tls12Only;
-    /**
-     * @return Allowed values: &#34;off&#34; (default), &#34;on&#34;, &#34;zrt&#34;.
-     * 
-     */
     private @Nullable String tls13;
     private @Nullable String tlsClientAuth;
     private @Nullable String trueClientIpHeader;
     private @Nullable String universalSsl;
     private @Nullable String visitorIp;
     private @Nullable String waf;
-    /**
-     * @return . Note that the value specified will be ignored unless `polish` is turned on (i.e. is &#34;lossless&#34; or &#34;lossy&#34;)
-     * 
-     */
     private @Nullable String webp;
     private @Nullable String websockets;
     private @Nullable String zeroRtt;
@@ -152,27 +100,15 @@ public final class ZoneSettingsOverrideSettings {
     public Optional<String> browserCheck() {
         return Optional.ofNullable(this.browserCheck);
     }
-    /**
-     * @return Allowed values: &#34;aggressive&#34; (default) - delivers a different resource each time the query string changes, &#34;basic&#34; - delivers resources from cache when there is no query string, &#34;simplified&#34; - delivers the same resource to everyone independent of the query string.
-     * 
-     */
     public Optional<String> cacheLevel() {
         return Optional.ofNullable(this.cacheLevel);
     }
     public Optional<Integer> challengeTtl() {
         return Optional.ofNullable(this.challengeTtl);
     }
-    /**
-     * @return An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
-     * 
-     */
     public List<String> ciphers() {
         return this.ciphers == null ? List.of() : this.ciphers;
     }
-    /**
-     * @return Allowed values: &#34;flatten_at_root&#34; (default), &#34;flatten_all&#34;, &#34;flatten_none&#34;.
-     * 
-     */
     public Optional<String> cnameFlattening() {
         return Optional.ofNullable(this.cnameFlattening);
     }
@@ -188,10 +124,6 @@ public final class ZoneSettingsOverrideSettings {
     public Optional<String> filterLogsToCloudflare() {
         return Optional.ofNullable(this.filterLogsToCloudflare);
     }
-    /**
-     * @return Allowed values: &#34;on&#34;, &#34;off&#34; (default), &#34;custom&#34;.
-     * 
-     */
     public Optional<String> h2Prioritization() {
         return Optional.ofNullable(this.h2Prioritization);
     }
@@ -204,10 +136,6 @@ public final class ZoneSettingsOverrideSettings {
     public Optional<String> http3() {
         return Optional.ofNullable(this.http3);
     }
-    /**
-     * @return Allowed values: &#34;on&#34;, &#34;off&#34; (default), &#34;open&#34;.
-     * 
-     */
     public Optional<String> imageResizing() {
         return Optional.ofNullable(this.imageResizing);
     }
@@ -223,10 +151,6 @@ public final class ZoneSettingsOverrideSettings {
     public Optional<Integer> maxUpload() {
         return Optional.ofNullable(this.maxUpload);
     }
-    /**
-     * @return Allowed values: &#34;1.0&#34; (default), &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
-     * 
-     */
     public Optional<String> minTlsVersion() {
         return Optional.ofNullable(this.minTlsVersion);
     }
@@ -251,17 +175,9 @@ public final class ZoneSettingsOverrideSettings {
     public Optional<String> originErrorPagePassThru() {
         return Optional.ofNullable(this.originErrorPagePassThru);
     }
-    /**
-     * @return Allowed values: &#34;1&#34; (default on Enterprise), &#34;2&#34; (default)
-     * 
-     */
     public Optional<String> originMaxHttpVersion() {
         return Optional.ofNullable(this.originMaxHttpVersion);
     }
-    /**
-     * @return Allowed values: &#34;off&#34; (default), &#34;lossless&#34;, &#34;lossy&#34;.
-     * 
-     */
     public Optional<String> polish() {
         return Optional.ofNullable(this.polish);
     }
@@ -274,10 +190,6 @@ public final class ZoneSettingsOverrideSettings {
     public Optional<String> proxyReadTimeout() {
         return Optional.ofNullable(this.proxyReadTimeout);
     }
-    /**
-     * @return Allowed values: &#34;off&#34; (default), &#34;add_header&#34;, &#34;overwrite_header&#34;.
-     * 
-     */
     public Optional<String> pseudoIpv4() {
         return Optional.ofNullable(this.pseudoIpv4);
     }
@@ -290,10 +202,6 @@ public final class ZoneSettingsOverrideSettings {
     public Optional<ZoneSettingsOverrideSettingsSecurityHeader> securityHeader() {
         return Optional.ofNullable(this.securityHeader);
     }
-    /**
-     * @return Allowed values: &#34;off&#34; (Enterprise only), &#34;essentially_off&#34;, &#34;low&#34;, &#34;medium&#34; (default), &#34;high&#34;, &#34;under_attack&#34;.
-     * 
-     */
     public Optional<String> securityLevel() {
         return Optional.ofNullable(this.securityLevel);
     }
@@ -303,10 +211,6 @@ public final class ZoneSettingsOverrideSettings {
     public Optional<String> sortQueryStringForCache() {
         return Optional.ofNullable(this.sortQueryStringForCache);
     }
-    /**
-     * @return Allowed values: &#34;off&#34; (default), &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
-     * 
-     */
     public Optional<String> ssl() {
         return Optional.ofNullable(this.ssl);
     }
@@ -319,10 +223,6 @@ public final class ZoneSettingsOverrideSettings {
     public Optional<String> tls12Only() {
         return Optional.ofNullable(this.tls12Only);
     }
-    /**
-     * @return Allowed values: &#34;off&#34; (default), &#34;on&#34;, &#34;zrt&#34;.
-     * 
-     */
     public Optional<String> tls13() {
         return Optional.ofNullable(this.tls13);
     }
@@ -341,10 +241,6 @@ public final class ZoneSettingsOverrideSettings {
     public Optional<String> waf() {
         return Optional.ofNullable(this.waf);
     }
-    /**
-     * @return . Note that the value specified will be ignored unless `polish` is turned on (i.e. is &#34;lossless&#34; or &#34;lossy&#34;)
-     * 
-     */
     public Optional<String> webp() {
         return Optional.ofNullable(this.webp);
     }

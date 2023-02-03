@@ -30,14 +30,14 @@ public final class LoadBalancerMonitorHeaderArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * A list of string values for the header.
+     * A list of values for the header.
      * 
      */
     @Import(name="values", required=true)
     private Output<List<String>> values;
 
     /**
-     * @return A list of string values for the header.
+     * @return A list of values for the header.
      * 
      */
     public Output<List<String>> values() {
@@ -91,7 +91,7 @@ public final class LoadBalancerMonitorHeaderArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param values A list of string values for the header.
+         * @param values A list of values for the header.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class LoadBalancerMonitorHeaderArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param values A list of string values for the header.
+         * @param values A list of values for the header.
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class LoadBalancerMonitorHeaderArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param values A list of string values for the header.
+         * @param values A list of values for the header.
          * 
          * @return builder
          * 

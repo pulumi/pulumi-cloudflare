@@ -13,14 +13,14 @@ public final class GetOriginCaRootCertificatePlainArgs extends com.pulumi.resour
     public static final GetOriginCaRootCertificatePlainArgs Empty = new GetOriginCaRootCertificatePlainArgs();
 
     /**
-     * The name of the algorithm used when creating an Origin CA certificate. Currently-supported values are &#34;rsa&#34; and &#34;ecc&#34; (case-insensitive).
+     * The name of the algorithm used when creating an Origin CA certificate. Available values: `rsa`, `ecc`.
      * 
      */
     @Import(name="algorithm", required=true)
     private String algorithm;
 
     /**
-     * @return The name of the algorithm used when creating an Origin CA certificate. Currently-supported values are &#34;rsa&#34; and &#34;ecc&#34; (case-insensitive).
+     * @return The name of the algorithm used when creating an Origin CA certificate. Available values: `rsa`, `ecc`.
      * 
      */
     public String algorithm() {
@@ -52,7 +52,7 @@ public final class GetOriginCaRootCertificatePlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param algorithm The name of the algorithm used when creating an Origin CA certificate. Currently-supported values are &#34;rsa&#34; and &#34;ecc&#34; (case-insensitive).
+         * @param algorithm The name of the algorithm used when creating an Origin CA certificate. Available values: `rsa`, `ecc`.
          * 
          * @return builder
          * 

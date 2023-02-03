@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewGreTunnel(ctx, "example", &cloudflare.GreTunnelArgs{
-//				AccountId:             pulumi.String("c4a7362d577a6c3019a474fd6f485821"),
+//				AccountId:             pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				CloudflareGreEndpoint: pulumi.String("203.0.113.1"),
 //				CustomerGreEndpoint:   pulumi.String("203.0.113.1"),
 //				Description:           pulumi.String("Tunnel for ISP X"),
@@ -51,37 +51,35 @@ import (
 //
 // ## Import
 //
-// # An existing GRE tunnel can be imported using the account ID and tunnel ID
-//
 // ```sh
 //
-//	$ pulumi import cloudflare:index/greTunnel:GreTunnel example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
+//	$ pulumi import cloudflare:index/greTunnel:GreTunnel example <account_id>/<tunnel_id>
 //
 // ```
 type GreTunnel struct {
 	pulumi.CustomResourceState
 
-	// The ID of the account where the tunnel is being created.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// The IP address assigned to the Cloudflare side of the GRE tunnel.
 	CloudflareGreEndpoint pulumi.StringOutput `pulumi:"cloudflareGreEndpoint"`
 	// The IP address assigned to the customer side of the GRE tunnel.
 	CustomerGreEndpoint pulumi.StringOutput `pulumi:"customerGreEndpoint"`
-	// An optional description of the GRE tunnel.
+	// Description of the GRE tunnel intent.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies if ICMP tunnel health checks are enabled Default: `true`.
+	// Specifies if ICMP tunnel health checks are enabled.
 	HealthCheckEnabled pulumi.BoolOutput `pulumi:"healthCheckEnabled"`
-	// The IP address of the customer endpoint that will receive tunnel health checks. Default: `<customer_gre_endpoint>`.
+	// The IP address of the customer endpoint that will receive tunnel health checks.
 	HealthCheckTarget pulumi.StringOutput `pulumi:"healthCheckTarget"`
-	// Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.
+	// Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
 	HealthCheckType pulumi.StringOutput `pulumi:"healthCheckType"`
 	// 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
 	InterfaceAddress pulumi.StringOutput `pulumi:"interfaceAddress"`
-	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.
+	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
 	Mtu pulumi.IntOutput `pulumi:"mtu"`
 	// Name of the GRE tunnel.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.
+	// Time To Live (TTL) in number of hops of the GRE tunnel.
 	Ttl pulumi.IntOutput `pulumi:"ttl"`
 }
 
@@ -126,52 +124,52 @@ func GetGreTunnel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GreTunnel resources.
 type greTunnelState struct {
-	// The ID of the account where the tunnel is being created.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string `pulumi:"accountId"`
 	// The IP address assigned to the Cloudflare side of the GRE tunnel.
 	CloudflareGreEndpoint *string `pulumi:"cloudflareGreEndpoint"`
 	// The IP address assigned to the customer side of the GRE tunnel.
 	CustomerGreEndpoint *string `pulumi:"customerGreEndpoint"`
-	// An optional description of the GRE tunnel.
+	// Description of the GRE tunnel intent.
 	Description *string `pulumi:"description"`
-	// Specifies if ICMP tunnel health checks are enabled Default: `true`.
+	// Specifies if ICMP tunnel health checks are enabled.
 	HealthCheckEnabled *bool `pulumi:"healthCheckEnabled"`
-	// The IP address of the customer endpoint that will receive tunnel health checks. Default: `<customer_gre_endpoint>`.
+	// The IP address of the customer endpoint that will receive tunnel health checks.
 	HealthCheckTarget *string `pulumi:"healthCheckTarget"`
-	// Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.
+	// Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
 	InterfaceAddress *string `pulumi:"interfaceAddress"`
-	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.
+	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
 	Mtu *int `pulumi:"mtu"`
 	// Name of the GRE tunnel.
 	Name *string `pulumi:"name"`
-	// Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.
+	// Time To Live (TTL) in number of hops of the GRE tunnel.
 	Ttl *int `pulumi:"ttl"`
 }
 
 type GreTunnelState struct {
-	// The ID of the account where the tunnel is being created.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
 	// The IP address assigned to the Cloudflare side of the GRE tunnel.
 	CloudflareGreEndpoint pulumi.StringPtrInput
 	// The IP address assigned to the customer side of the GRE tunnel.
 	CustomerGreEndpoint pulumi.StringPtrInput
-	// An optional description of the GRE tunnel.
+	// Description of the GRE tunnel intent.
 	Description pulumi.StringPtrInput
-	// Specifies if ICMP tunnel health checks are enabled Default: `true`.
+	// Specifies if ICMP tunnel health checks are enabled.
 	HealthCheckEnabled pulumi.BoolPtrInput
-	// The IP address of the customer endpoint that will receive tunnel health checks. Default: `<customer_gre_endpoint>`.
+	// The IP address of the customer endpoint that will receive tunnel health checks.
 	HealthCheckTarget pulumi.StringPtrInput
-	// Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.
+	// Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
 	HealthCheckType pulumi.StringPtrInput
 	// 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
 	InterfaceAddress pulumi.StringPtrInput
-	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.
+	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
 	Mtu pulumi.IntPtrInput
 	// Name of the GRE tunnel.
 	Name pulumi.StringPtrInput
-	// Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.
+	// Time To Live (TTL) in number of hops of the GRE tunnel.
 	Ttl pulumi.IntPtrInput
 }
 
@@ -180,53 +178,53 @@ func (GreTunnelState) ElementType() reflect.Type {
 }
 
 type greTunnelArgs struct {
-	// The ID of the account where the tunnel is being created.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string `pulumi:"accountId"`
 	// The IP address assigned to the Cloudflare side of the GRE tunnel.
 	CloudflareGreEndpoint string `pulumi:"cloudflareGreEndpoint"`
 	// The IP address assigned to the customer side of the GRE tunnel.
 	CustomerGreEndpoint string `pulumi:"customerGreEndpoint"`
-	// An optional description of the GRE tunnel.
+	// Description of the GRE tunnel intent.
 	Description *string `pulumi:"description"`
-	// Specifies if ICMP tunnel health checks are enabled Default: `true`.
+	// Specifies if ICMP tunnel health checks are enabled.
 	HealthCheckEnabled *bool `pulumi:"healthCheckEnabled"`
-	// The IP address of the customer endpoint that will receive tunnel health checks. Default: `<customer_gre_endpoint>`.
+	// The IP address of the customer endpoint that will receive tunnel health checks.
 	HealthCheckTarget *string `pulumi:"healthCheckTarget"`
-	// Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.
+	// Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
 	InterfaceAddress string `pulumi:"interfaceAddress"`
-	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.
+	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
 	Mtu *int `pulumi:"mtu"`
 	// Name of the GRE tunnel.
 	Name string `pulumi:"name"`
-	// Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.
+	// Time To Live (TTL) in number of hops of the GRE tunnel.
 	Ttl *int `pulumi:"ttl"`
 }
 
 // The set of arguments for constructing a GreTunnel resource.
 type GreTunnelArgs struct {
-	// The ID of the account where the tunnel is being created.
+	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
 	// The IP address assigned to the Cloudflare side of the GRE tunnel.
 	CloudflareGreEndpoint pulumi.StringInput
 	// The IP address assigned to the customer side of the GRE tunnel.
 	CustomerGreEndpoint pulumi.StringInput
-	// An optional description of the GRE tunnel.
+	// Description of the GRE tunnel intent.
 	Description pulumi.StringPtrInput
-	// Specifies if ICMP tunnel health checks are enabled Default: `true`.
+	// Specifies if ICMP tunnel health checks are enabled.
 	HealthCheckEnabled pulumi.BoolPtrInput
-	// The IP address of the customer endpoint that will receive tunnel health checks. Default: `<customer_gre_endpoint>`.
+	// The IP address of the customer endpoint that will receive tunnel health checks.
 	HealthCheckTarget pulumi.StringPtrInput
-	// Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.
+	// Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
 	HealthCheckType pulumi.StringPtrInput
 	// 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
 	InterfaceAddress pulumi.StringInput
-	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.
+	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
 	Mtu pulumi.IntPtrInput
 	// Name of the GRE tunnel.
 	Name pulumi.StringInput
-	// Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.
+	// Time To Live (TTL) in number of hops of the GRE tunnel.
 	Ttl pulumi.IntPtrInput
 }
 
@@ -317,7 +315,7 @@ func (o GreTunnelOutput) ToGreTunnelOutputWithContext(ctx context.Context) GreTu
 	return o
 }
 
-// The ID of the account where the tunnel is being created.
+// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o GreTunnelOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GreTunnel) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -332,22 +330,22 @@ func (o GreTunnelOutput) CustomerGreEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *GreTunnel) pulumi.StringOutput { return v.CustomerGreEndpoint }).(pulumi.StringOutput)
 }
 
-// An optional description of the GRE tunnel.
+// Description of the GRE tunnel intent.
 func (o GreTunnelOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GreTunnel) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies if ICMP tunnel health checks are enabled Default: `true`.
+// Specifies if ICMP tunnel health checks are enabled.
 func (o GreTunnelOutput) HealthCheckEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GreTunnel) pulumi.BoolOutput { return v.HealthCheckEnabled }).(pulumi.BoolOutput)
 }
 
-// The IP address of the customer endpoint that will receive tunnel health checks. Default: `<customer_gre_endpoint>`.
+// The IP address of the customer endpoint that will receive tunnel health checks.
 func (o GreTunnelOutput) HealthCheckTarget() pulumi.StringOutput {
 	return o.ApplyT(func(v *GreTunnel) pulumi.StringOutput { return v.HealthCheckTarget }).(pulumi.StringOutput)
 }
 
-// Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.
+// Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
 func (o GreTunnelOutput) HealthCheckType() pulumi.StringOutput {
 	return o.ApplyT(func(v *GreTunnel) pulumi.StringOutput { return v.HealthCheckType }).(pulumi.StringOutput)
 }
@@ -357,7 +355,7 @@ func (o GreTunnelOutput) InterfaceAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *GreTunnel) pulumi.StringOutput { return v.InterfaceAddress }).(pulumi.StringOutput)
 }
 
-// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.
+// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
 func (o GreTunnelOutput) Mtu() pulumi.IntOutput {
 	return o.ApplyT(func(v *GreTunnel) pulumi.IntOutput { return v.Mtu }).(pulumi.IntOutput)
 }
@@ -367,7 +365,7 @@ func (o GreTunnelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GreTunnel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.
+// Time To Live (TTL) in number of hops of the GRE tunnel.
 func (o GreTunnelOutput) Ttl() pulumi.IntOutput {
 	return o.ApplyT(func(v *GreTunnel) pulumi.IntOutput { return v.Ttl }).(pulumi.IntOutput)
 }

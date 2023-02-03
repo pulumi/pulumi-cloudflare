@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *             .kind(&#34;redirect&#34;)
- *             .name(&#34;example list&#34;)
+ *             .name(&#34;example_list&#34;)
  *             .build());
  * 
  *     }

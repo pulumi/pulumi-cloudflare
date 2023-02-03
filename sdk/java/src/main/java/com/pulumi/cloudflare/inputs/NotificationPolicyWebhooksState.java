@@ -16,37 +16,61 @@ public final class NotificationPolicyWebhooksState extends com.pulumi.resources.
     public static final NotificationPolicyWebhooksState Empty = new NotificationPolicyWebhooksState();
 
     /**
-     * The ID of the account for which the webhook destination has to be connected.
+     * The account identifier to target for the resource.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The ID of the account for which the webhook destination has to be connected.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * Timestamp of when the notification webhook was created.
+     * 
+     */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
+    /**
+     * @return Timestamp of when the notification webhook was created.
+     * 
+     */
     public Optional<Output<String>> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * Timestamp of when the notification webhook last faiuled.
+     * 
+     */
     @Import(name="lastFailure")
     private @Nullable Output<String> lastFailure;
 
+    /**
+     * @return Timestamp of when the notification webhook last faiuled.
+     * 
+     */
     public Optional<Output<String>> lastFailure() {
         return Optional.ofNullable(this.lastFailure);
     }
 
+    /**
+     * Timestamp of when the notification webhook was last successful.
+     * 
+     */
     @Import(name="lastSuccess")
     private @Nullable Output<String> lastSuccess;
 
+    /**
+     * @return Timestamp of when the notification webhook was last successful.
+     * 
+     */
     public Optional<Output<String>> lastSuccess() {
         return Optional.ofNullable(this.lastSuccess);
     }
@@ -67,18 +91,14 @@ public final class NotificationPolicyWebhooksState extends com.pulumi.resources.
     }
 
     /**
-     * An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
-     * Secrets are not returned in any API response body.
-     * Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
+     * An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
      * 
      */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
     /**
-     * @return An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
-     * Secrets are not returned in any API response body.
-     * Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
+     * @return An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
      * 
      */
     public Optional<Output<String>> secret() {
@@ -139,7 +159,7 @@ public final class NotificationPolicyWebhooksState extends com.pulumi.resources.
         }
 
         /**
-         * @param accountId The ID of the account for which the webhook destination has to be connected.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -150,7 +170,7 @@ public final class NotificationPolicyWebhooksState extends com.pulumi.resources.
         }
 
         /**
-         * @param accountId The ID of the account for which the webhook destination has to be connected.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -159,29 +179,65 @@ public final class NotificationPolicyWebhooksState extends com.pulumi.resources.
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param createdAt Timestamp of when the notification webhook was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(@Nullable Output<String> createdAt) {
             $.createdAt = createdAt;
             return this;
         }
 
+        /**
+         * @param createdAt Timestamp of when the notification webhook was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
         }
 
+        /**
+         * @param lastFailure Timestamp of when the notification webhook last faiuled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lastFailure(@Nullable Output<String> lastFailure) {
             $.lastFailure = lastFailure;
             return this;
         }
 
+        /**
+         * @param lastFailure Timestamp of when the notification webhook last faiuled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lastFailure(String lastFailure) {
             return lastFailure(Output.of(lastFailure));
         }
 
+        /**
+         * @param lastSuccess Timestamp of when the notification webhook was last successful.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lastSuccess(@Nullable Output<String> lastSuccess) {
             $.lastSuccess = lastSuccess;
             return this;
         }
 
+        /**
+         * @param lastSuccess Timestamp of when the notification webhook was last successful.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lastSuccess(String lastSuccess) {
             return lastSuccess(Output.of(lastSuccess));
         }
@@ -208,9 +264,7 @@ public final class NotificationPolicyWebhooksState extends com.pulumi.resources.
         }
 
         /**
-         * @param secret An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
-         * Secrets are not returned in any API response body.
-         * Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
+         * @param secret An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
          * 
          * @return builder
          * 
@@ -221,9 +275,7 @@ public final class NotificationPolicyWebhooksState extends com.pulumi.resources.
         }
 
         /**
-         * @param secret An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
-         * Secrets are not returned in any API response body.
-         * Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
+         * @param secret An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
          * 
          * @return builder
          * 

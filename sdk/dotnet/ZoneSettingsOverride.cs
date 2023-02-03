@@ -10,7 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource which customizes Cloudflare zone settings. Note that after destroying this resource Zone Settings will be reset to their initial values.
+    /// Provides a resource which customizes Cloudflare zone settings.
+    /// 
+    /// &gt; You **should not** use this resource to manage every zone setting. This
+    ///   resource is only intended to override those which you do not want the default.
+    ///   Attempting to manage all settings will result in problems with the resource
+    ///   applying in a consistent manner.
     /// 
     /// ## Example Usage
     /// 
@@ -23,7 +28,7 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var test = new Cloudflare.ZoneSettingsOverride("test", new()
     ///     {
-    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         ZoneId = d41d8cd98f00b204e9800998ecf8427e,
     ///         Settings = new Cloudflare.Inputs.ZoneSettingsOverrideSettingsArgs
     ///         {
     ///             Brotli = "on",
@@ -52,34 +57,20 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride")]
     public partial class ZoneSettingsOverride : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
-        /// </summary>
         [Output("initialSettings")]
         public Output<ImmutableArray<Outputs.ZoneSettingsOverrideInitialSetting>> InitialSettings { get; private set; } = null!;
 
-        /// <summary>
-        /// Time when this resource was created and the `initial_settings` were set.
-        /// </summary>
         [Output("initialSettingsReadAt")]
         public Output<string> InitialSettingsReadAt { get; private set; } = null!;
 
-        /// <summary>
-        /// Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-        /// - `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-        /// - `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
-        /// </summary>
         [Output("readonlySettings")]
         public Output<ImmutableArray<string>> ReadonlySettings { get; private set; } = null!;
 
-        /// <summary>
-        /// Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
-        /// </summary>
         [Output("settings")]
         public Output<Outputs.ZoneSettingsOverrideSettings> Settings { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS zone ID to which apply settings.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -136,14 +127,11 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZoneSettingsOverrideArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
-        /// </summary>
         [Input("settings")]
         public Input<Inputs.ZoneSettingsOverrideSettingsArgs>? Settings { get; set; }
 
         /// <summary>
-        /// The DNS zone ID to which apply settings.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -158,44 +146,28 @@ namespace Pulumi.Cloudflare
     {
         [Input("initialSettings")]
         private InputList<Inputs.ZoneSettingsOverrideInitialSettingGetArgs>? _initialSettings;
-
-        /// <summary>
-        /// Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
-        /// </summary>
         public InputList<Inputs.ZoneSettingsOverrideInitialSettingGetArgs> InitialSettings
         {
             get => _initialSettings ?? (_initialSettings = new InputList<Inputs.ZoneSettingsOverrideInitialSettingGetArgs>());
             set => _initialSettings = value;
         }
 
-        /// <summary>
-        /// Time when this resource was created and the `initial_settings` were set.
-        /// </summary>
         [Input("initialSettingsReadAt")]
         public Input<string>? InitialSettingsReadAt { get; set; }
 
         [Input("readonlySettings")]
         private InputList<string>? _readonlySettings;
-
-        /// <summary>
-        /// Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-        /// - `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-        /// - `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
-        /// </summary>
         public InputList<string> ReadonlySettings
         {
             get => _readonlySettings ?? (_readonlySettings = new InputList<string>());
             set => _readonlySettings = value;
         }
 
-        /// <summary>
-        /// Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
-        /// </summary>
         [Input("settings")]
         public Input<Inputs.ZoneSettingsOverrideSettingsGetArgs>? Settings { get; set; }
 
         /// <summary>
-        /// The DNS zone ID to which apply settings.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

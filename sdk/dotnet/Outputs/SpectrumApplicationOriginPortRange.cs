@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class SpectrumApplicationOriginPortRange
     {
         /// <summary>
-        /// Upper bound of the origin port range, e.g. `2000`
+        /// Upper bound of the origin port range.
         /// </summary>
         public readonly int End;
         /// <summary>
-        /// Lower bound of the origin port range, e.g. `1000`
+        /// Lower bound of the origin port range.
         /// </summary>
         public readonly int Start;
 

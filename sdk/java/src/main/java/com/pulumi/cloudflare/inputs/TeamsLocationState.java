@@ -19,14 +19,14 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
     public static final TeamsLocationState Empty = new TeamsLocationState();
 
     /**
-     * The account to which the teams location should be added.
+     * The account identifier to target for the resource.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account to which the teams location should be added.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -79,14 +79,14 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Client IP address
+     * Client IP address.
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return Client IP address
+     * @return Client IP address.
      * 
      */
     public Optional<Output<String>> ip() {
@@ -94,14 +94,14 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * IP to direct all IPv4 DNS queries too.
+     * IP to direct all IPv4 DNS queries to.
      * 
      */
     @Import(name="ipv4Destination")
     private @Nullable Output<String> ipv4Destination;
 
     /**
-     * @return IP to direct all IPv4 DNS queries too.
+     * @return IP to direct all IPv4 DNS queries to.
      * 
      */
     public Optional<Output<String>> ipv4Destination() {
@@ -178,7 +178,7 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accountId The account to which the teams location should be added.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accountId The account to which the teams location should be added.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ip Client IP address
+         * @param ip Client IP address.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ip Client IP address
+         * @param ip Client IP address.
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ipv4Destination IP to direct all IPv4 DNS queries too.
+         * @param ipv4Destination IP to direct all IPv4 DNS queries to.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ipv4Destination IP to direct all IPv4 DNS queries too.
+         * @param ipv4Destination IP to direct all IPv4 DNS queries to.
          * 
          * @return builder
          * 

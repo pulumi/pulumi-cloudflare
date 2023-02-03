@@ -11,11 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Origin CA certificate used to protect traffic to your origin without involving a third party Certificate Authority.
-//
-// > This resource requires you use your Origin CA Key as the
-// `apiUserServiceKey` value.
-//
 // ## Example Usage
 //
 // ```go

@@ -11,7 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Teams Account resource. The Teams Account resource defines configuration for secure web gateway.
+// Provides a Cloudflare Teams Account resource. The Teams Account
+// resource defines configuration for secure web gateway.
 //
 // ## Example Usage
 //
@@ -27,8 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTeamsAccount(ctx, "main", &cloudflare.TeamsAccountArgs{
-//				AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+//			_, err := cloudflare.NewTeamsAccount(ctx, "example", &cloudflare.TeamsAccountArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Antivirus: &cloudflare.TeamsAccountAntivirusArgs{
 //					EnabledDownloadPhase: pulumi.Bool(true),
 //					EnabledUploadPhase:   pulumi.Bool(false),
@@ -38,7 +39,7 @@ import (
 //					BackgroundColor: pulumi.String("#000000"),
 //					FooterText:      pulumi.String("hello"),
 //					HeaderText:      pulumi.String("hello"),
-//					LogoPath:        pulumi.String("https://google.com"),
+//					LogoPath:        pulumi.String("https://example.com/logo.jpg"),
 //				},
 //				Fips: &cloudflare.TeamsAccountFipsArgs{
 //					Tls: pulumi.Bool(true),
@@ -78,18 +79,17 @@ import (
 //
 // ## Import
 //
-// Since a Teams account does not have a unique resource ID, configuration can be imported using the account ID.
-//
 // ```sh
 //
-//	$ pulumi import cloudflare:index/teamsAccount:TeamsAccount example cb029e245cfdd66dc8d2e570d5dd3322
+//	$ pulumi import cloudflare:index/teamsAccount:TeamsAccount example <account_id>
 //
 // ```
 type TeamsAccount struct {
 	pulumi.CustomResourceState
 
-	// The account to which the teams location should be added.
-	AccountId          pulumi.StringOutput  `pulumi:"accountId"`
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Whether to enable the activity log.
 	ActivityLogEnabled pulumi.BoolPtrOutput `pulumi:"activityLogEnabled"`
 	// Configuration block for antivirus traffic scanning.
 	Antivirus TeamsAccountAntivirusPtrOutput `pulumi:"antivirus"`
@@ -138,9 +138,10 @@ func GetTeamsAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TeamsAccount resources.
 type teamsAccountState struct {
-	// The account to which the teams location should be added.
-	AccountId          *string `pulumi:"accountId"`
-	ActivityLogEnabled *bool   `pulumi:"activityLogEnabled"`
+	// The account identifier to target for the resource.
+	AccountId *string `pulumi:"accountId"`
+	// Whether to enable the activity log.
+	ActivityLogEnabled *bool `pulumi:"activityLogEnabled"`
 	// Configuration block for antivirus traffic scanning.
 	Antivirus *TeamsAccountAntivirus `pulumi:"antivirus"`
 	// Configuration for a custom block page.
@@ -157,8 +158,9 @@ type teamsAccountState struct {
 }
 
 type TeamsAccountState struct {
-	// The account to which the teams location should be added.
-	AccountId          pulumi.StringPtrInput
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringPtrInput
+	// Whether to enable the activity log.
 	ActivityLogEnabled pulumi.BoolPtrInput
 	// Configuration block for antivirus traffic scanning.
 	Antivirus TeamsAccountAntivirusPtrInput
@@ -180,9 +182,10 @@ func (TeamsAccountState) ElementType() reflect.Type {
 }
 
 type teamsAccountArgs struct {
-	// The account to which the teams location should be added.
-	AccountId          string `pulumi:"accountId"`
-	ActivityLogEnabled *bool  `pulumi:"activityLogEnabled"`
+	// The account identifier to target for the resource.
+	AccountId string `pulumi:"accountId"`
+	// Whether to enable the activity log.
+	ActivityLogEnabled *bool `pulumi:"activityLogEnabled"`
 	// Configuration block for antivirus traffic scanning.
 	Antivirus *TeamsAccountAntivirus `pulumi:"antivirus"`
 	// Configuration for a custom block page.
@@ -200,8 +203,9 @@ type teamsAccountArgs struct {
 
 // The set of arguments for constructing a TeamsAccount resource.
 type TeamsAccountArgs struct {
-	// The account to which the teams location should be added.
-	AccountId          pulumi.StringInput
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringInput
+	// Whether to enable the activity log.
 	ActivityLogEnabled pulumi.BoolPtrInput
 	// Configuration block for antivirus traffic scanning.
 	Antivirus TeamsAccountAntivirusPtrInput
@@ -305,11 +309,12 @@ func (o TeamsAccountOutput) ToTeamsAccountOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The account to which the teams location should be added.
+// The account identifier to target for the resource.
 func (o TeamsAccountOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsAccount) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Whether to enable the activity log.
 func (o TeamsAccountOutput) ActivityLogEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TeamsAccount) pulumi.BoolPtrOutput { return v.ActivityLogEnabled }).(pulumi.BoolPtrOutput)
 }

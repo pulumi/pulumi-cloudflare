@@ -17,7 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Device Posture Integration resource. Device posture integrations configure third-party data providers for device posture rules.
+ * Provides a Cloudflare Device Posture Integration resource. Device
+ * posture integrations configure third-party data providers for device
+ * posture rules.
  * 
  * ## Example Usage
  * ```java
@@ -42,8 +44,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var thirdPartyDevicesPostureIntegration = new DevicePostureIntegration(&#34;thirdPartyDevicesPostureIntegration&#34;, DevicePostureIntegrationArgs.builder()        
- *             .accountId(&#34;1d5fdc9e88c8a8c4518b068cd94331fe&#34;)
+ *         var example = new DevicePostureIntegration(&#34;example&#34;, DevicePostureIntegrationArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .configs(DevicePostureIntegrationConfigArgs.builder()
  *                 .apiUrl(&#34;https://example.com/api&#34;)
  *                 .authUrl(&#34;https://example.com/connect/token&#34;)
@@ -61,24 +63,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Device posture integrations can be imported using a composite ID formed of account ID and device posture integration ID.
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/0ade592a-62d6-46ab-bac8-01f47c7fa792
+ *  $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration example &lt;account_id&gt;/&lt;device_posture_integration_id&gt;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/devicePostureIntegration:DevicePostureIntegration")
 public class DevicePostureIntegration extends com.pulumi.resources.CustomResource {
     /**
-     * The account to which the device posture integration should be added.
+     * The account identifier to target for the resource.
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
-     * @return The account to which the device posture integration should be added.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Output<String> accountId() {
@@ -105,16 +105,14 @@ public class DevicePostureIntegration extends com.pulumi.resources.CustomResourc
         return Codegen.optional(this.identifier);
     }
     /**
-     * Indicates the frequency with which to poll the third-party API.
-     * Must be in the format `&#34;1h&#34;` or `&#34;30m&#34;`. Valid units are `h` and `m`.
+     * Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
      * 
      */
     @Export(name="interval", type=String.class, parameters={})
     private Output</* @Nullable */ String> interval;
 
     /**
-     * @return Indicates the frequency with which to poll the third-party API.
-     * Must be in the format `&#34;1h&#34;` or `&#34;30m&#34;`. Valid units are `h` and `m`.
+     * @return Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
      * 
      */
     public Output<Optional<String>> interval() {
@@ -135,14 +133,14 @@ public class DevicePostureIntegration extends com.pulumi.resources.CustomResourc
         return this.name;
     }
     /**
-     * The device posture integration type. Valid values are `workspace_one`.
+     * The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
-     * @return The device posture integration type. Valid values are `workspace_one`.
+     * @return The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`.
      * 
      */
     public Output<String> type() {

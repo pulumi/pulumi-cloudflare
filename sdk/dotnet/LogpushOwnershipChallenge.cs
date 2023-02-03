@@ -10,9 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource which manages Cloudflare Logpush ownership challenges to use
-    /// in a Logpush Job. On it's own, doesn't do much however this resource should
-    /// be used in conjunction to create Logpush jobs.
+    /// Provides a resource which manages Cloudflare Logpush ownership
+    /// challenges to use in a Logpush Job. On it's own, doesn't do much
+    /// however this resource should be used in conjunction to create
+    /// Logpush jobs.
     /// 
     /// ## Example Usage
     /// 
@@ -26,23 +27,7 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.LogpushOwnershipChallenge("example", new()
     ///     {
     ///         DestinationConf = "s3://my-bucket-path?region=us-west-2",
-    ///         ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.LogpushOwnershipChallenge("example", new()
-    ///     {
-    ///         AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
-    ///         DestinationConf = "s3://my-bucket-path?region=us-west-2",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });
@@ -52,26 +37,25 @@ namespace Pulumi.Cloudflare
     public partial class LogpushOwnershipChallenge : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+        /// The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
+        /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("destinationConf")]
         public Output<string> DestinationConf { get; private set; } = null!;
 
         /// <summary>
-        /// The filename of the ownership challenge which
-        /// contains the contents required for Logpush Job creation.
+        /// The filename of the ownership challenge which	contains the contents required for Logpush Job creation.
         /// </summary>
         [Output("ownershipChallengeFilename")]
         public Output<string> OwnershipChallengeFilename { get; private set; } = null!;
 
         /// <summary>
-        /// The zone ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+        /// The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         /// </summary>
         [Output("zoneId")]
         public Output<string?> ZoneId { get; private set; } = null!;
@@ -123,19 +107,19 @@ namespace Pulumi.Cloudflare
     public sealed class LogpushOwnershipChallengeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+        /// The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
+        /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("destinationConf", required: true)]
         public Input<string> DestinationConf { get; set; } = null!;
 
         /// <summary>
-        /// The zone ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+        /// The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -149,26 +133,25 @@ namespace Pulumi.Cloudflare
     public sealed class LogpushOwnershipChallengeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+        /// The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
+        /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("destinationConf")]
         public Input<string>? DestinationConf { get; set; }
 
         /// <summary>
-        /// The filename of the ownership challenge which
-        /// contains the contents required for Logpush Job creation.
+        /// The filename of the ownership challenge which	contains the contents required for Logpush Job creation.
         /// </summary>
         [Input("ownershipChallengeFilename")]
         public Input<string>? OwnershipChallengeFilename { get; set; }
 
         /// <summary>
-        /// The zone ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+        /// The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

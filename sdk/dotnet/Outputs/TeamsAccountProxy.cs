@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsAccountProxy
     {
         /// <summary>
-        /// Whether gateway proxy is enabled on gateway devices for tcp traffic.
+        /// Whether gateway proxy is enabled on gateway devices for TCP traffic.
         /// </summary>
         public readonly bool Tcp;
         /// <summary>
-        /// Whether gateway proxy is enabled on gateway devices for udp traffic.
+        /// Whether gateway proxy is enabled on gateway devices for UDP traffic.
         /// </summary>
         public readonly bool Udp;
 

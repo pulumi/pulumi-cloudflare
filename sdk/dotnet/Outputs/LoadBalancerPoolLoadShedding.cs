@@ -14,19 +14,19 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class LoadBalancerPoolLoadShedding
     {
         /// <summary>
-        /// Percent of traffic to shed 0 - 100.
+        /// Percent of traffic to shed 0 - 100. Defaults to `0`.
         /// </summary>
         public readonly double? DefaultPercent;
         /// <summary>
-        /// Method of shedding traffic "", "hash" or "random".
+        /// Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`""`.
         /// </summary>
         public readonly string? DefaultPolicy;
         /// <summary>
-        /// Percent of session traffic to shed 0 - 100.
+        /// Percent of session traffic to shed 0 - 100. Defaults to `0`.
         /// </summary>
         public readonly double? SessionPercent;
         /// <summary>
-        /// Method of shedding session traffic "" or "hash".
+        /// Method of shedding traffic. Available values: ``,`hash`. Defaults to`""`.
         /// </summary>
         public readonly string? SessionPolicy;
 

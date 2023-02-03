@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? AddHeaders;
         /// <summary>
-        /// Configure how browser isolation behaves (refer to the nested schema).
+        /// Configure how browser isolation behaves.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsBisoAdminControls? BisoAdminControls;
         /// <summary>
@@ -30,15 +30,19 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? BlockPageReason;
         /// <summary>
-        /// Configure how session check behaves (refer to the nested schema).
+        /// Configure how session check behaves.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsCheckSession? CheckSession;
         /// <summary>
-        /// Disable DNSSEC validation (must be Allow rule)
+        /// Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+        /// </summary>
+        public readonly Outputs.TeamsRuleRuleSettingsEgress? Egress;
+        /// <summary>
+        /// Disable DNSSEC validation (must be Allow rule).
         /// </summary>
         public readonly bool? InsecureDisableDnssecValidation;
         /// <summary>
-        /// Settings to forward layer 4 traffic (refer to the nested schema).
+        /// Settings to forward layer 4 traffic.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsL4override? L4override;
         /// <summary>
@@ -62,6 +66,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.TeamsRuleRuleSettingsCheckSession? checkSession,
 
+            Outputs.TeamsRuleRuleSettingsEgress? egress,
+
             bool? insecureDisableDnssecValidation,
 
             Outputs.TeamsRuleRuleSettingsL4override? l4override,
@@ -75,6 +81,7 @@ namespace Pulumi.Cloudflare.Outputs
             BlockPageEnabled = blockPageEnabled;
             BlockPageReason = blockPageReason;
             CheckSession = checkSession;
+            Egress = egress;
             InsecureDisableDnssecValidation = insecureDisableDnssecValidation;
             L4override = l4override;
             OverrideHost = overrideHost;

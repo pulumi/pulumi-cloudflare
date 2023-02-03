@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.LogpullRetention("example", new()
     ///     {
     ///         Enabled = true,
-    ///         ZoneId = "fb54f084ca7f7b732d3d3ecbd8ef7bf2",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });
@@ -32,10 +32,8 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// You can import existing Logpull Retention using the zone ID as the identifier.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example fb54f084ca7f7b732d3d3ecbd8ef7bf2
+    ///  $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example &lt;zone_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/logpullRetention:LogpullRetention")]
@@ -48,7 +46,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// The zone ID to apply the log retention to.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -106,7 +104,7 @@ namespace Pulumi.Cloudflare
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// The zone ID to apply the log retention to.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -126,7 +124,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The zone ID to apply the log retention to.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

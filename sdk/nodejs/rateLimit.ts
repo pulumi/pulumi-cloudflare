@@ -7,7 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare rate limit resource for a given zone. This can be used to limit the traffic you receive zone-wide, or matching more specific types of requests/responses.
+ * Provides a Cloudflare rate limit resource for a given zone. This can
+ * be used to limit the traffic you receive zone-wide, or matching more
+ * specific types of requests/responses.
  *
  * ## Example Usage
  *
@@ -16,16 +18,25 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.RateLimit("example", {
- *     zoneId: _var.cloudflare_zone_id,
- *     threshold: 2000,
- *     period: 2,
+ *     action: {
+ *         mode: "simulate",
+ *         response: {
+ *             body: "custom response body",
+ *             contentType: "text/plain",
+ *         },
+ *         timeout: 43200,
+ *     },
+ *     bypassUrlPatterns: [
+ *         "example.com/bypass1",
+ *         "example.com/bypass2",
+ *     ],
+ *     correlate: {
+ *         by: "nat",
+ *     },
+ *     description: "example rate limit for a zone",
+ *     disabled: false,
  *     match: {
  *         request: {
- *             urlPattern: `${_var.cloudflare_zone}/*`,
- *             schemes: [
- *                 "HTTP",
- *                 "HTTPS",
- *             ],
  *             methods: [
  *                 "GET",
  *                 "POST",
@@ -34,16 +45,13 @@ import * as utilities from "./utilities";
  *                 "PATCH",
  *                 "HEAD",
  *             ],
+ *             schemes: [
+ *                 "HTTP",
+ *                 "HTTPS",
+ *             ],
+ *             urlPattern: `${_var.cloudflare_zone}/*`,
  *         },
  *         response: {
- *             statuses: [
- *                 200,
- *                 201,
- *                 202,
- *                 301,
- *                 429,
- *             ],
- *             originTraffic: false,
  *             headers: [
  *                 {
  *                     name: "Host",
@@ -56,34 +64,26 @@ import * as utilities from "./utilities";
  *                     value: "my-example",
  *                 },
  *             ],
+ *             originTraffic: false,
+ *             statuses: [
+ *                 200,
+ *                 201,
+ *                 202,
+ *                 301,
+ *                 429,
+ *             ],
  *         },
  *     },
- *     action: {
- *         mode: "simulate",
- *         timeout: 43200,
- *         response: {
- *             contentType: "text/plain",
- *             body: "custom response body",
- *         },
- *     },
- *     correlate: {
- *         by: "nat",
- *     },
- *     disabled: false,
- *     description: "example rate limit for a zone",
- *     bypassUrlPatterns: [
- *         `${_var.cloudflare_zone}/bypass1`,
- *         `${_var.cloudflare_zone}/bypass2`,
- *     ],
+ *     period: 2,
+ *     threshold: 2000,
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  *
  * ## Import
  *
- * Rate limits can be imported using a composite ID formed of zone name and rate limit ID, e.g.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/rateLimit:RateLimit default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
+ *  $ pulumi import cloudflare:index/rateLimit:RateLimit example <zone_id>/<rate_limit_id>
  * ```
  */
 export class RateLimit extends pulumi.CustomResource {
@@ -118,9 +118,6 @@ export class RateLimit extends pulumi.CustomResource {
      * The action to be performed when the threshold of matched traffic within the period defined is exceeded.
      */
     public readonly action!: pulumi.Output<outputs.RateLimitAction>;
-    /**
-     * URLs matching the patterns specified here will be excluded from rate limiting.
-     */
     public readonly bypassUrlPatterns!: pulumi.Output<string[] | undefined>;
     /**
      * Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
@@ -131,23 +128,23 @@ export class RateLimit extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Whether this ratelimit is currently disabled. Default: `false`.
+     * Whether this ratelimit is currently disabled. Defaults to `false`.
      */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
+     * Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
      */
     public readonly match!: pulumi.Output<outputs.RateLimitMatch>;
     /**
-     * The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
+     * The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
      */
     public readonly period!: pulumi.Output<number>;
     /**
-     * The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
+     * The threshold that triggers the rate limit mitigations, combine with period.
      */
     public readonly threshold!: pulumi.Output<number>;
     /**
-     * The DNS zone ID to apply rate limiting to.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -210,9 +207,6 @@ export interface RateLimitState {
      * The action to be performed when the threshold of matched traffic within the period defined is exceeded.
      */
     action?: pulumi.Input<inputs.RateLimitAction>;
-    /**
-     * URLs matching the patterns specified here will be excluded from rate limiting.
-     */
     bypassUrlPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
@@ -223,23 +217,23 @@ export interface RateLimitState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether this ratelimit is currently disabled. Default: `false`.
+     * Whether this ratelimit is currently disabled. Defaults to `false`.
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
+     * Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
      */
     match?: pulumi.Input<inputs.RateLimitMatch>;
     /**
-     * The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
+     * The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
      */
     period?: pulumi.Input<number>;
     /**
-     * The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
+     * The threshold that triggers the rate limit mitigations, combine with period.
      */
     threshold?: pulumi.Input<number>;
     /**
-     * The DNS zone ID to apply rate limiting to.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -252,9 +246,6 @@ export interface RateLimitArgs {
      * The action to be performed when the threshold of matched traffic within the period defined is exceeded.
      */
     action: pulumi.Input<inputs.RateLimitAction>;
-    /**
-     * URLs matching the patterns specified here will be excluded from rate limiting.
-     */
     bypassUrlPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
@@ -265,23 +256,23 @@ export interface RateLimitArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether this ratelimit is currently disabled. Default: `false`.
+     * Whether this ratelimit is currently disabled. Defaults to `false`.
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
+     * Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
      */
     match?: pulumi.Input<inputs.RateLimitMatch>;
     /**
-     * The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
+     * The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
      */
     period: pulumi.Input<number>;
     /**
-     * The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
+     * The threshold that triggers the rate limit mitigations, combine with period.
      */
     threshold: pulumi.Input<number>;
     /**
-     * The DNS zone ID to apply rate limiting to.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId: pulumi.Input<string>;
 }

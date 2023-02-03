@@ -19,7 +19,7 @@ class TeamsProxyEndpointArgs:
                  name: pulumi.Input[str]):
         """
         The set of arguments for constructing a TeamsProxyEndpoint resource.
-        :param pulumi.Input[str] account_id: The account to which the teams proxy endpoint should be added.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: The networks CIDRs that will be allowed to initiate proxy connections.
         :param pulumi.Input[str] name: Name of the teams proxy endpoint.
         """
@@ -31,7 +31,7 @@ class TeamsProxyEndpointArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account to which the teams proxy endpoint should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -73,7 +73,7 @@ class _TeamsProxyEndpointState:
                  subdomain: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TeamsProxyEndpoint resources.
-        :param pulumi.Input[str] account_id: The account to which the teams proxy endpoint should be added.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: The networks CIDRs that will be allowed to initiate proxy connections.
         :param pulumi.Input[str] name: Name of the teams proxy endpoint.
         :param pulumi.Input[str] subdomain: The FQDN that proxy clients should be pointed at.
@@ -91,7 +91,7 @@ class _TeamsProxyEndpointState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account to which the teams proxy endpoint should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -146,8 +146,9 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy Endpoints are used for pointing proxy clients at
-        Cloudflare Secure Gateway.
+        Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy
+        Endpoints are used for pointing proxy clients at Cloudflare Secure
+        Gateway.
 
         ## Example Usage
 
@@ -155,23 +156,21 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        corporate_office = cloudflare.TeamsProxyEndpoint("corporateOffice",
-            account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+        example = cloudflare.TeamsProxyEndpoint("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
             ips=["192.0.2.0/24"],
             name="office")
         ```
 
         ## Import
 
-        Teams Proxy Endpoints can be imported using a composite ID formed of account ID and teams proxy_endpoint ID.
-
         ```sh
-         $ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint corporate_office cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+         $ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint example <account_id>/<proxy_endpoint_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account to which the teams proxy endpoint should be added.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: The networks CIDRs that will be allowed to initiate proxy connections.
         :param pulumi.Input[str] name: Name of the teams proxy endpoint.
         """
@@ -182,8 +181,9 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
                  args: TeamsProxyEndpointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy Endpoints are used for pointing proxy clients at
-        Cloudflare Secure Gateway.
+        Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy
+        Endpoints are used for pointing proxy clients at Cloudflare Secure
+        Gateway.
 
         ## Example Usage
 
@@ -191,18 +191,16 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        corporate_office = cloudflare.TeamsProxyEndpoint("corporateOffice",
-            account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+        example = cloudflare.TeamsProxyEndpoint("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
             ips=["192.0.2.0/24"],
             name="office")
         ```
 
         ## Import
 
-        Teams Proxy Endpoints can be imported using a composite ID formed of account ID and teams proxy_endpoint ID.
-
         ```sh
-         $ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint corporate_office cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+         $ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint example <account_id>/<proxy_endpoint_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -263,7 +261,7 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account to which the teams proxy endpoint should be added.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: The networks CIDRs that will be allowed to initiate proxy connections.
         :param pulumi.Input[str] name: Name of the teams proxy endpoint.
         :param pulumi.Input[str] subdomain: The FQDN that proxy clients should be pointed at.
@@ -282,7 +280,7 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account to which the teams proxy endpoint should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 

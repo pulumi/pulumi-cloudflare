@@ -12,65 +12,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZoneSettingsOverrideSettingsSecurityHeader {
-    /**
-     * @return true/false
-     * 
-     */
     private @Nullable Boolean enabled;
-    /**
-     * @return true/false
-     * 
-     */
     private @Nullable Boolean includeSubdomains;
-    /**
-     * @return Integer
-     * 
-     */
     private @Nullable Integer maxAge;
-    /**
-     * @return true/false
-     * 
-     */
     private @Nullable Boolean nosniff;
-    /**
-     * @return true/false
-     * 
-     */
     private @Nullable Boolean preload;
 
     private ZoneSettingsOverrideSettingsSecurityHeader() {}
-    /**
-     * @return true/false
-     * 
-     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
-    /**
-     * @return true/false
-     * 
-     */
     public Optional<Boolean> includeSubdomains() {
         return Optional.ofNullable(this.includeSubdomains);
     }
-    /**
-     * @return Integer
-     * 
-     */
     public Optional<Integer> maxAge() {
         return Optional.ofNullable(this.maxAge);
     }
-    /**
-     * @return true/false
-     * 
-     */
     public Optional<Boolean> nosniff() {
         return Optional.ofNullable(this.nosniff);
     }
-    /**
-     * @return true/false
-     * 
-     */
     public Optional<Boolean> preload() {
         return Optional.ofNullable(this.preload);
     }

@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RateLimitMatch {
     /**
-     * @return Matches HTTP requests (from the client to Cloudflare). See definition below.
+     * @return Matches HTTP requests (from the client to Cloudflare).
      * 
      */
     private @Nullable RateLimitMatchRequest request;
     /**
-     * @return Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
+     * @return Matches HTTP responses before they are returned to the client from Cloudflare. If this is defined, then the entire counting of traffic occurs at this stage.
      * 
      */
     private @Nullable RateLimitMatchResponse response;
 
     private RateLimitMatch() {}
     /**
-     * @return Matches HTTP requests (from the client to Cloudflare). See definition below.
+     * @return Matches HTTP requests (from the client to Cloudflare).
      * 
      */
     public Optional<RateLimitMatchRequest> request() {
         return Optional.ofNullable(this.request);
     }
     /**
-     * @return Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
+     * @return Matches HTTP responses before they are returned to the client from Cloudflare. If this is defined, then the entire counting of traffic occurs at this stage.
      * 
      */
     public Optional<RateLimitMatchResponse> response() {

@@ -5,8 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource, that manages Cloudflare static routes for Magic Transit or Magic WAN.
- * Static routes are used to route traffic through GRE tunnels.
+ * Provides a resource, that manages Cloudflare static routes for Magic
+ * Transit or Magic WAN. Static routes are used to route traffic
+ * through GRE tunnels.
  *
  * ## Example Usage
  *
@@ -15,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.StaticRoute("example", {
- *     accountId: "c4a7362d577a6c3019a474fd6f485821",
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     coloNames: ["den01"],
  *     coloRegions: ["APAC"],
  *     description: "New route for new prefix 192.0.2.0/24",
@@ -28,10 +29,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * An existing static route can be imported using the account ID and static route ID
- *
  * ```sh
- *  $ pulumi import cloudflare:index/staticRoute:StaticRoute example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
+ *  $ pulumi import cloudflare:index/staticRoute:StaticRoute example <account_id>/<static_route_id>
  * ```
  */
 export class StaticRoute extends pulumi.CustomResource {
@@ -63,15 +62,15 @@ export class StaticRoute extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the account where the static route is being created.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * Optional list of Cloudflare colocation names for this static route.
+     * List of Cloudflare colocation regions for this static route.
      */
     public readonly coloNames!: pulumi.Output<string[] | undefined>;
     /**
-     * Optional list of Cloudflare colocation regions for this static route.
+     * List of Cloudflare colocation names for this static route.
      */
     public readonly coloRegions!: pulumi.Output<string[] | undefined>;
     /**
@@ -91,7 +90,7 @@ export class StaticRoute extends pulumi.CustomResource {
      */
     public readonly priority!: pulumi.Output<number>;
     /**
-     * The optional weight for ECMP routes.
+     * The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly weight!: pulumi.Output<number | undefined>;
 
@@ -146,15 +145,15 @@ export class StaticRoute extends pulumi.CustomResource {
  */
 export interface StaticRouteState {
     /**
-     * The ID of the account where the static route is being created.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Optional list of Cloudflare colocation names for this static route.
+     * List of Cloudflare colocation regions for this static route.
      */
     coloNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Optional list of Cloudflare colocation regions for this static route.
+     * List of Cloudflare colocation names for this static route.
      */
     coloRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -174,7 +173,7 @@ export interface StaticRouteState {
      */
     priority?: pulumi.Input<number>;
     /**
-     * The optional weight for ECMP routes.
+     * The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
      */
     weight?: pulumi.Input<number>;
 }
@@ -184,15 +183,15 @@ export interface StaticRouteState {
  */
 export interface StaticRouteArgs {
     /**
-     * The ID of the account where the static route is being created.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Optional list of Cloudflare colocation names for this static route.
+     * List of Cloudflare colocation regions for this static route.
      */
     coloNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Optional list of Cloudflare colocation regions for this static route.
+     * List of Cloudflare colocation names for this static route.
      */
     coloRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -212,7 +211,7 @@ export interface StaticRouteArgs {
      */
     priority: pulumi.Input<number>;
     /**
-     * The optional weight for ECMP routes.
+     * The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
      */
     weight?: pulumi.Input<number>;
 }

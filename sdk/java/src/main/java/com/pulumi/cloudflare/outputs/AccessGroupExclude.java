@@ -33,6 +33,7 @@ public final class AccessGroupExclude {
     private @Nullable List<AccessGroupExcludeGithub> githubs;
     private @Nullable List<String> groups;
     private @Nullable List<AccessGroupExcludeGsuite> gsuites;
+    private @Nullable List<String> ipLists;
     private @Nullable List<String> ips;
     private @Nullable List<String> loginMethods;
     private @Nullable List<AccessGroupExcludeOkta> oktas;
@@ -82,6 +83,9 @@ public final class AccessGroupExclude {
     public List<AccessGroupExcludeGsuite> gsuites() {
         return this.gsuites == null ? List.of() : this.gsuites;
     }
+    public List<String> ipLists() {
+        return this.ipLists == null ? List.of() : this.ipLists;
+    }
     public List<String> ips() {
         return this.ips == null ? List.of() : this.ips;
     }
@@ -121,6 +125,7 @@ public final class AccessGroupExclude {
         private @Nullable List<AccessGroupExcludeGithub> githubs;
         private @Nullable List<String> groups;
         private @Nullable List<AccessGroupExcludeGsuite> gsuites;
+        private @Nullable List<String> ipLists;
         private @Nullable List<String> ips;
         private @Nullable List<String> loginMethods;
         private @Nullable List<AccessGroupExcludeOkta> oktas;
@@ -143,6 +148,7 @@ public final class AccessGroupExclude {
     	      this.githubs = defaults.githubs;
     	      this.groups = defaults.groups;
     	      this.gsuites = defaults.gsuites;
+    	      this.ipLists = defaults.ipLists;
     	      this.ips = defaults.ips;
     	      this.loginMethods = defaults.loginMethods;
     	      this.oktas = defaults.oktas;
@@ -245,6 +251,14 @@ public final class AccessGroupExclude {
             return gsuites(List.of(gsuites));
         }
         @CustomType.Setter
+        public Builder ipLists(@Nullable List<String> ipLists) {
+            this.ipLists = ipLists;
+            return this;
+        }
+        public Builder ipLists(String... ipLists) {
+            return ipLists(List.of(ipLists));
+        }
+        @CustomType.Setter
         public Builder ips(@Nullable List<String> ips) {
             this.ips = ips;
             return this;
@@ -300,6 +314,7 @@ public final class AccessGroupExclude {
             o.githubs = githubs;
             o.groups = groups;
             o.gsuites = gsuites;
+            o.ipLists = ipLists;
             o.ips = ips;
             o.loginMethods = loginMethods;
             o.oktas = oktas;

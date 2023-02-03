@@ -17,14 +17,14 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
     public static final AuthenticatedOriginPullsState Empty = new AuthenticatedOriginPullsState();
 
     /**
-     * The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+     * The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
      * 
      */
     @Import(name="authenticatedOriginPullsCertificate")
     private @Nullable Output<String> authenticatedOriginPullsCertificate;
 
     /**
-     * @return The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+     * @return The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
      * 
      */
     public Optional<Output<String>> authenticatedOriginPullsCertificate() {
@@ -32,14 +32,14 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
     }
 
     /**
-     * Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
+     * Whether to enable Authenticated Origin Pulls on the given zone or hostname.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
+     * @return Whether to enable Authenticated Origin Pulls on the given zone or hostname.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -62,14 +62,14 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
     }
 
     /**
-     * The zone ID to upload the certificate to.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone ID to upload the certificate to.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -104,7 +104,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param authenticatedOriginPullsCertificate The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+         * @param authenticatedOriginPullsCertificate The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param authenticatedOriginPullsCertificate The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+         * @param authenticatedOriginPullsCertificate The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enabled Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
+         * @param enabled Whether to enable Authenticated Origin Pulls on the given zone or hostname.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enabled Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
+         * @param enabled Whether to enable Authenticated Origin Pulls on the given zone or hostname.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId The zone ID to upload the certificate to.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId The zone ID to upload the certificate to.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RateLimitMatch
     {
         /// <summary>
-        /// Matches HTTP requests (from the client to Cloudflare). See definition below.
+        /// Matches HTTP requests (from the client to Cloudflare).
         /// </summary>
         public readonly Outputs.RateLimitMatchRequest? Request;
         /// <summary>
-        /// Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
+        /// Matches HTTP responses before they are returned to the client from Cloudflare. If this is defined, then the entire counting of traffic occurs at this stage.
         /// </summary>
         public readonly Outputs.RateLimitMatchResponse? Response;
 

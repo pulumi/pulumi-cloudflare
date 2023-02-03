@@ -78,7 +78,7 @@ namespace Pulumi.Cloudflare
     ///             "image/jpeg",
     ///             "image/webp",
     ///         },
-    ///         ZoneId = "7df50664b7f90274f4d77cdfee701380",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });
@@ -88,73 +88,73 @@ namespace Pulumi.Cloudflare
     public partial class ZoneCacheVariants : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for avif
+        /// List of strings with the MIME types of all the variants that should be served for avif.
         /// </summary>
         [Output("avifs")]
         public Output<ImmutableArray<string>> Avifs { get; private set; } = null!;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for bmp
+        /// List of strings with the MIME types of all the variants that should be served for bmp.
         /// </summary>
         [Output("bmps")]
         public Output<ImmutableArray<string>> Bmps { get; private set; } = null!;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for gif
+        /// List of strings with the MIME types of all the variants that should be served for gif.
         /// </summary>
         [Output("gifs")]
         public Output<ImmutableArray<string>> Gifs { get; private set; } = null!;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jp2
+        /// List of strings with the MIME types of all the variants that should be served for jp2.
         /// </summary>
         [Output("jp2s")]
         public Output<ImmutableArray<string>> Jp2s { get; private set; } = null!;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jpeg
+        /// List of strings with the MIME types of all the variants that should be served for jpeg.
         /// </summary>
         [Output("jpegs")]
         public Output<ImmutableArray<string>> Jpegs { get; private set; } = null!;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jpg2
+        /// List of strings with the MIME types of all the variants that should be served for jpg2.
         /// </summary>
         [Output("jpg2s")]
         public Output<ImmutableArray<string>> Jpg2s { get; private set; } = null!;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jpg
+        /// List of strings with the MIME types of all the variants that should be served for jpg.
         /// </summary>
         [Output("jpgs")]
         public Output<ImmutableArray<string>> Jpgs { get; private set; } = null!;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for png
+        /// List of strings with the MIME types of all the variants that should be served for png.
         /// </summary>
         [Output("pngs")]
         public Output<ImmutableArray<string>> Pngs { get; private set; } = null!;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for tiff
+        /// List of strings with the MIME types of all the variants that should be served for tiff.
         /// </summary>
         [Output("tiffs")]
         public Output<ImmutableArray<string>> Tiffs { get; private set; } = null!;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for tif
+        /// List of strings with the MIME types of all the variants that should be served for tif.
         /// </summary>
         [Output("tifs")]
         public Output<ImmutableArray<string>> Tifs { get; private set; } = null!;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for webp
+        /// List of strings with the MIME types of all the variants that should be served for webp.
         /// </summary>
         [Output("webps")]
         public Output<ImmutableArray<string>> Webps { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the DNS zone in which to apply the cache variants setting
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -209,7 +209,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _avifs;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for avif
+        /// List of strings with the MIME types of all the variants that should be served for avif.
         /// </summary>
         public InputList<string> Avifs
         {
@@ -221,7 +221,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _bmps;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for bmp
+        /// List of strings with the MIME types of all the variants that should be served for bmp.
         /// </summary>
         public InputList<string> Bmps
         {
@@ -233,7 +233,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _gifs;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for gif
+        /// List of strings with the MIME types of all the variants that should be served for gif.
         /// </summary>
         public InputList<string> Gifs
         {
@@ -245,7 +245,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _jp2s;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jp2
+        /// List of strings with the MIME types of all the variants that should be served for jp2.
         /// </summary>
         public InputList<string> Jp2s
         {
@@ -257,7 +257,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _jpegs;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jpeg
+        /// List of strings with the MIME types of all the variants that should be served for jpeg.
         /// </summary>
         public InputList<string> Jpegs
         {
@@ -269,7 +269,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _jpg2s;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jpg2
+        /// List of strings with the MIME types of all the variants that should be served for jpg2.
         /// </summary>
         public InputList<string> Jpg2s
         {
@@ -281,7 +281,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _jpgs;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jpg
+        /// List of strings with the MIME types of all the variants that should be served for jpg.
         /// </summary>
         public InputList<string> Jpgs
         {
@@ -293,7 +293,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _pngs;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for png
+        /// List of strings with the MIME types of all the variants that should be served for png.
         /// </summary>
         public InputList<string> Pngs
         {
@@ -305,7 +305,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _tiffs;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for tiff
+        /// List of strings with the MIME types of all the variants that should be served for tiff.
         /// </summary>
         public InputList<string> Tiffs
         {
@@ -317,7 +317,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _tifs;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for tif
+        /// List of strings with the MIME types of all the variants that should be served for tif.
         /// </summary>
         public InputList<string> Tifs
         {
@@ -329,7 +329,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _webps;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for webp
+        /// List of strings with the MIME types of all the variants that should be served for webp.
         /// </summary>
         public InputList<string> Webps
         {
@@ -338,7 +338,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The ID of the DNS zone in which to apply the cache variants setting
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -355,7 +355,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _avifs;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for avif
+        /// List of strings with the MIME types of all the variants that should be served for avif.
         /// </summary>
         public InputList<string> Avifs
         {
@@ -367,7 +367,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _bmps;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for bmp
+        /// List of strings with the MIME types of all the variants that should be served for bmp.
         /// </summary>
         public InputList<string> Bmps
         {
@@ -379,7 +379,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _gifs;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for gif
+        /// List of strings with the MIME types of all the variants that should be served for gif.
         /// </summary>
         public InputList<string> Gifs
         {
@@ -391,7 +391,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _jp2s;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jp2
+        /// List of strings with the MIME types of all the variants that should be served for jp2.
         /// </summary>
         public InputList<string> Jp2s
         {
@@ -403,7 +403,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _jpegs;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jpeg
+        /// List of strings with the MIME types of all the variants that should be served for jpeg.
         /// </summary>
         public InputList<string> Jpegs
         {
@@ -415,7 +415,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _jpg2s;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jpg2
+        /// List of strings with the MIME types of all the variants that should be served for jpg2.
         /// </summary>
         public InputList<string> Jpg2s
         {
@@ -427,7 +427,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _jpgs;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for jpg
+        /// List of strings with the MIME types of all the variants that should be served for jpg.
         /// </summary>
         public InputList<string> Jpgs
         {
@@ -439,7 +439,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _pngs;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for png
+        /// List of strings with the MIME types of all the variants that should be served for png.
         /// </summary>
         public InputList<string> Pngs
         {
@@ -451,7 +451,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _tiffs;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for tiff
+        /// List of strings with the MIME types of all the variants that should be served for tiff.
         /// </summary>
         public InputList<string> Tiffs
         {
@@ -463,7 +463,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _tifs;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for tif
+        /// List of strings with the MIME types of all the variants that should be served for tif.
         /// </summary>
         public InputList<string> Tifs
         {
@@ -475,7 +475,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _webps;
 
         /// <summary>
-        /// List of strings with the MIME types of all the variants that should be served for webp
+        /// List of strings with the MIME types of all the variants that should be served for webp.
         /// </summary>
         public InputList<string> Webps
         {
@@ -484,7 +484,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The ID of the DNS zone in which to apply the cache variants setting
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

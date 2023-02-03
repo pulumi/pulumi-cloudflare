@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewNotificationPolicyWebhooks(ctx, "example", &cloudflare.NotificationPolicyWebhooksArgs{
-//				AccountId: pulumi.String("c4a7362d577a6c3019a474fd6f485821"),
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:      pulumi.String("Webhooks destination"),
 //				Secret:    pulumi.String("my-secret"),
 //				Url:       pulumi.String("https://example.com"),
@@ -44,26 +44,25 @@ import (
 //
 // ## Import
 //
-// # An existing notification policy can be imported using the account ID and the webhook ID
-//
 // ```sh
 //
-//	$ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example 72c379d136459405d964d27aa0f18605/c4a7362d577a6c3019a474fd6f485821
+//	$ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example <account_id>/<notification_webhook_id>
 //
 // ```
 type NotificationPolicyWebhooks struct {
 	pulumi.CustomResourceState
 
-	// The ID of the account for which the webhook destination has to be connected.
-	AccountId   pulumi.StringOutput `pulumi:"accountId"`
-	CreatedAt   pulumi.StringOutput `pulumi:"createdAt"`
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Timestamp of when the notification webhook was created.
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Timestamp of when the notification webhook last faiuled.
 	LastFailure pulumi.StringOutput `pulumi:"lastFailure"`
+	// Timestamp of when the notification webhook was last successful.
 	LastSuccess pulumi.StringOutput `pulumi:"lastSuccess"`
 	// The name of the webhook destination.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
-	// Secrets are not returned in any API response body.
-	// Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
+	// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
 	Secret pulumi.StringPtrOutput `pulumi:"secret"`
 	Type   pulumi.StringOutput    `pulumi:"type"`
 	// The URL of the webhook destinations.
@@ -105,16 +104,17 @@ func GetNotificationPolicyWebhooks(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NotificationPolicyWebhooks resources.
 type notificationPolicyWebhooksState struct {
-	// The ID of the account for which the webhook destination has to be connected.
-	AccountId   *string `pulumi:"accountId"`
-	CreatedAt   *string `pulumi:"createdAt"`
+	// The account identifier to target for the resource.
+	AccountId *string `pulumi:"accountId"`
+	// Timestamp of when the notification webhook was created.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Timestamp of when the notification webhook last faiuled.
 	LastFailure *string `pulumi:"lastFailure"`
+	// Timestamp of when the notification webhook was last successful.
 	LastSuccess *string `pulumi:"lastSuccess"`
 	// The name of the webhook destination.
 	Name *string `pulumi:"name"`
-	// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
-	// Secrets are not returned in any API response body.
-	// Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
+	// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
 	Secret *string `pulumi:"secret"`
 	Type   *string `pulumi:"type"`
 	// The URL of the webhook destinations.
@@ -122,16 +122,17 @@ type notificationPolicyWebhooksState struct {
 }
 
 type NotificationPolicyWebhooksState struct {
-	// The ID of the account for which the webhook destination has to be connected.
-	AccountId   pulumi.StringPtrInput
-	CreatedAt   pulumi.StringPtrInput
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringPtrInput
+	// Timestamp of when the notification webhook was created.
+	CreatedAt pulumi.StringPtrInput
+	// Timestamp of when the notification webhook last faiuled.
 	LastFailure pulumi.StringPtrInput
+	// Timestamp of when the notification webhook was last successful.
 	LastSuccess pulumi.StringPtrInput
 	// The name of the webhook destination.
 	Name pulumi.StringPtrInput
-	// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
-	// Secrets are not returned in any API response body.
-	// Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
+	// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
 	Secret pulumi.StringPtrInput
 	Type   pulumi.StringPtrInput
 	// The URL of the webhook destinations.
@@ -143,13 +144,11 @@ func (NotificationPolicyWebhooksState) ElementType() reflect.Type {
 }
 
 type notificationPolicyWebhooksArgs struct {
-	// The ID of the account for which the webhook destination has to be connected.
+	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
 	// The name of the webhook destination.
 	Name string `pulumi:"name"`
-	// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
-	// Secrets are not returned in any API response body.
-	// Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
+	// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
 	Secret *string `pulumi:"secret"`
 	// The URL of the webhook destinations.
 	Url *string `pulumi:"url"`
@@ -157,13 +156,11 @@ type notificationPolicyWebhooksArgs struct {
 
 // The set of arguments for constructing a NotificationPolicyWebhooks resource.
 type NotificationPolicyWebhooksArgs struct {
-	// The ID of the account for which the webhook destination has to be connected.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
 	// The name of the webhook destination.
 	Name pulumi.StringInput
-	// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
-	// Secrets are not returned in any API response body.
-	// Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
+	// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
 	Secret pulumi.StringPtrInput
 	// The URL of the webhook destinations.
 	Url pulumi.StringPtrInput
@@ -256,19 +253,22 @@ func (o NotificationPolicyWebhooksOutput) ToNotificationPolicyWebhooksOutputWith
 	return o
 }
 
-// The ID of the account for which the webhook destination has to be connected.
+// The account identifier to target for the resource.
 func (o NotificationPolicyWebhooksOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Timestamp of when the notification webhook was created.
 func (o NotificationPolicyWebhooksOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Timestamp of when the notification webhook last faiuled.
 func (o NotificationPolicyWebhooksOutput) LastFailure() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringOutput { return v.LastFailure }).(pulumi.StringOutput)
 }
 
+// Timestamp of when the notification webhook was last successful.
 func (o NotificationPolicyWebhooksOutput) LastSuccess() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringOutput { return v.LastSuccess }).(pulumi.StringOutput)
 }
@@ -278,9 +278,7 @@ func (o NotificationPolicyWebhooksOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
-// Secrets are not returned in any API response body.
-// Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
+// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
 func (o NotificationPolicyWebhooksOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringPtrOutput { return v.Secret }).(pulumi.StringPtrOutput)
 }

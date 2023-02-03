@@ -12,20 +12,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsLocationNetwork {
     /**
-     * @return ID of the teams location.
+     * @return The ID of this resource.
      * 
      */
     private @Nullable String id;
+    /**
+     * @return CIDR notation representation of the network IP.
+     * 
+     */
     private String network;
 
     private TeamsLocationNetwork() {}
     /**
-     * @return ID of the teams location.
+     * @return The ID of this resource.
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return CIDR notation representation of the network IP.
+     * 
+     */
     public String network() {
         return this.network;
     }

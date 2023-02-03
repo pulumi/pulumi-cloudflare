@@ -41,6 +41,9 @@ class GetAccessIdentityProviderResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[str]:
+        """
+        The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        """
         return pulumi.get(self, "account_id")
 
     @property
@@ -55,7 +58,7 @@ class GetAccessIdentityProviderResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Access Identity Provider Name
+        Access Identity Provider name to search for.
         """
         return pulumi.get(self, "name")
 
@@ -63,13 +66,16 @@ class GetAccessIdentityProviderResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        Access Identity Provider Type
+        Access Identity Provider Type.
         """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[str]:
+        """
+        The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        """
         return pulumi.get(self, "zone_id")
 
 
@@ -91,7 +97,7 @@ def get_access_identity_provider(account_id: Optional[str] = None,
                                  zone_id: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccessIdentityProviderResult:
     """
-    Use this data source to lookup a single [Access Identity Provider][access_identity_provider_guide] by name.
+    Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
 
     ## Example Usage
 
@@ -99,22 +105,22 @@ def get_access_identity_provider(account_id: Optional[str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    main_access_identity_provider = cloudflare.get_access_identity_provider(name="Google SSO",
-        account_id="example-account-id")
-    main_access_application = cloudflare.AccessApplication("mainAccessApplication",
-        zone_id="example.com",
+    example_access_identity_provider = cloudflare.get_access_identity_provider(name="Google SSO",
+        account_id="f037e56e89293a057740de681ac9abbe")
+    example_access_application = cloudflare.AccessApplication("exampleAccessApplication",
+        zone_id="0da42c8d2132a9ddaf714f9e7c920711",
         name="name",
         domain="name.example.com",
         type="self_hosted",
         session_duration="24h",
-        allowed_idps=[main_access_identity_provider.id],
+        allowed_idps=[example_access_identity_provider.id],
         auto_redirect_to_identity=True)
     ```
 
 
-    :param str account_id: The account for which to look for an Access Identity Provider. Conflicts with `zone_id`.
+    :param str account_id: The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
     :param str name: Access Identity Provider name to search for.
-    :param str zone_id: The Zone's ID. Conflicts with `account_id`.
+    :param str zone_id: The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -137,7 +143,7 @@ def get_access_identity_provider_output(account_id: Optional[pulumi.Input[Option
                                         zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessIdentityProviderResult]:
     """
-    Use this data source to lookup a single [Access Identity Provider][access_identity_provider_guide] by name.
+    Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
 
     ## Example Usage
 
@@ -145,21 +151,21 @@ def get_access_identity_provider_output(account_id: Optional[pulumi.Input[Option
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    main_access_identity_provider = cloudflare.get_access_identity_provider(name="Google SSO",
-        account_id="example-account-id")
-    main_access_application = cloudflare.AccessApplication("mainAccessApplication",
-        zone_id="example.com",
+    example_access_identity_provider = cloudflare.get_access_identity_provider(name="Google SSO",
+        account_id="f037e56e89293a057740de681ac9abbe")
+    example_access_application = cloudflare.AccessApplication("exampleAccessApplication",
+        zone_id="0da42c8d2132a9ddaf714f9e7c920711",
         name="name",
         domain="name.example.com",
         type="self_hosted",
         session_duration="24h",
-        allowed_idps=[main_access_identity_provider.id],
+        allowed_idps=[example_access_identity_provider.id],
         auto_redirect_to_identity=True)
     ```
 
 
-    :param str account_id: The account for which to look for an Access Identity Provider. Conflicts with `zone_id`.
+    :param str account_id: The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
     :param str name: Access Identity Provider name to search for.
-    :param str zone_id: The Zone's ID. Conflicts with `account_id`.
+    :param str zone_id: The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
     """
     ...

@@ -7,8 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Teams Location resource. Teams Locations are referenced
- * when creating secure web gateway policies.
+ * Provides a Cloudflare Teams Location resource. Teams Locations are
+ * referenced when creating secure web gateway policies.
  *
  * ## Example Usage
  *
@@ -16,8 +16,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const corporateOffice = new cloudflare.TeamsLocation("corporateOffice", {
- *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ * const example = new cloudflare.TeamsLocation("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     clientDefault: true,
  *     name: "office",
  *     networks: [
@@ -33,10 +33,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Teams locations can be imported using a composite ID formed of account ID and teams location ID.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/teamsLocation:TeamsLocation corporate_office cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+ *  $ pulumi import cloudflare:index/teamsLocation:TeamsLocation example <account_id>/<teams_location_id>
  * ```
  */
 export class TeamsLocation extends pulumi.CustomResource {
@@ -68,7 +66,7 @@ export class TeamsLocation extends pulumi.CustomResource {
     }
 
     /**
-     * The account to which the teams location should be added.
+     * The account identifier to target for the resource.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -84,11 +82,11 @@ export class TeamsLocation extends pulumi.CustomResource {
      */
     public /*out*/ readonly dohSubdomain!: pulumi.Output<string>;
     /**
-     * Client IP address
+     * Client IP address.
      */
     public /*out*/ readonly ip!: pulumi.Output<string>;
     /**
-     * IP to direct all IPv4 DNS queries too.
+     * IP to direct all IPv4 DNS queries to.
      */
     public /*out*/ readonly ipv4Destination!: pulumi.Output<string>;
     /**
@@ -151,7 +149,7 @@ export class TeamsLocation extends pulumi.CustomResource {
  */
 export interface TeamsLocationState {
     /**
-     * The account to which the teams location should be added.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -167,11 +165,11 @@ export interface TeamsLocationState {
      */
     dohSubdomain?: pulumi.Input<string>;
     /**
-     * Client IP address
+     * Client IP address.
      */
     ip?: pulumi.Input<string>;
     /**
-     * IP to direct all IPv4 DNS queries too.
+     * IP to direct all IPv4 DNS queries to.
      */
     ipv4Destination?: pulumi.Input<string>;
     /**
@@ -190,7 +188,7 @@ export interface TeamsLocationState {
  */
 export interface TeamsLocationArgs {
     /**
-     * The account to which the teams location should be added.
+     * The account identifier to target for the resource.
      */
     accountId: pulumi.Input<string>;
     /**

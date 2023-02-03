@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RateLimitCorrelateGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set to 'nat', NAT support will be enabled for rate limiting.
+        /// If set to 'nat', NAT support will be enabled for rate limiting. Available values: `nat`.
         /// </summary>
         [Input("by")]
         public Input<string>? By { get; set; }

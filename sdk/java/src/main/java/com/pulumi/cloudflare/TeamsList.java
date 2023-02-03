@@ -16,7 +16,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Teams List resource. Teams lists are referenced when creating secure web gateway policies or device posture rules.
+ * Provides a Cloudflare Teams List resource. Teams lists are
+ * referenced when creating secure web gateway policies or device
+ * posture rules.
  * 
  * ## Example Usage
  * ```java
@@ -40,8 +42,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var corporateDevices = new TeamsList(&#34;corporateDevices&#34;, TeamsListArgs.builder()        
- *             .accountId(&#34;1d5fdc9e88c8a8c4518b068cd94331fe&#34;)
+ *         var example = new TeamsList(&#34;example&#34;, TeamsListArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .description(&#34;Serial numbers for all corporate devices.&#34;)
  *             .items(            
  *                 &#34;8GE8721REF&#34;,
@@ -57,24 +59,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Teams lists can be imported using a composite ID formed of account ID and teams list ID.
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/teamsList:TeamsList corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+ *  $ pulumi import cloudflare:index/teamsList:TeamsList example &lt;account_id&gt;/&lt;teams_list_id&gt;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/teamsList:TeamsList")
 public class TeamsList extends com.pulumi.resources.CustomResource {
     /**
-     * The account to which the teams list should be added.
+     * The account identifier to target for the resource.
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
-     * @return The account to which the teams list should be added.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Output<String> accountId() {
@@ -123,14 +123,14 @@ public class TeamsList extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+     * The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
-     * @return The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+     * @return The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
      * 
      */
     public Output<String> type() {

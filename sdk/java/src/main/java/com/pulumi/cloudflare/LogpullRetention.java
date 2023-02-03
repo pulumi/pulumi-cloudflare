@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new LogpullRetention(&#34;example&#34;, LogpullRetentionArgs.builder()        
  *             .enabled(&#34;true&#34;)
- *             .zoneId(&#34;fb54f084ca7f7b732d3d3ecbd8ef7bf2&#34;)
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }
@@ -50,10 +50,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * You can import existing Logpull Retention using the zone ID as the identifier.
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example fb54f084ca7f7b732d3d3ecbd8ef7bf2
+ *  $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example &lt;zone_id&gt;
  * ```
  * 
  */
@@ -74,14 +72,14 @@ public class LogpullRetention extends com.pulumi.resources.CustomResource {
         return this.enabled;
     }
     /**
-     * The zone ID to apply the log retention to.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The zone ID to apply the log retention to.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {

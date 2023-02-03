@@ -27,9 +27,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewCustomHostnameFallbackOrigin(ctx, "fallbackOrigin", &cloudflare.CustomHostnameFallbackOriginArgs{
+//			_, err := cloudflare.NewCustomHostnameFallbackOrigin(ctx, "example", &cloudflare.CustomHostnameFallbackOriginArgs{
 //				Origin: pulumi.String("fallback.example.com"),
-//				ZoneId: pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //			})
 //			if err != nil {
 //				return err
@@ -42,11 +42,9 @@ import (
 //
 // ## Import
 //
-// Custom hostname fallback origins can be imported using a composite ID formed of the zone ID and [fallback origin](https://api.cloudflare.com/#custom-hostname-fallback-origin-for-a-zone-properties), separated by a "/" e.g.
-//
 // ```sh
 //
-//	$ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example d41d8cd98f00b204e9800998ecf8427e/fallback.example.com
+//	$ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example <zone_id>/<fallback_hostname>
 //
 // ```
 type CustomHostnameFallbackOrigin struct {
@@ -56,7 +54,7 @@ type CustomHostnameFallbackOrigin struct {
 	Origin pulumi.StringOutput `pulumi:"origin"`
 	// Status of the fallback origin's activation.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The DNS zone ID where the custom hostname should be assigned.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -99,7 +97,7 @@ type customHostnameFallbackOriginState struct {
 	Origin *string `pulumi:"origin"`
 	// Status of the fallback origin's activation.
 	Status *string `pulumi:"status"`
-	// The DNS zone ID where the custom hostname should be assigned.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -108,7 +106,7 @@ type CustomHostnameFallbackOriginState struct {
 	Origin pulumi.StringPtrInput
 	// Status of the fallback origin's activation.
 	Status pulumi.StringPtrInput
-	// The DNS zone ID where the custom hostname should be assigned.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -119,7 +117,7 @@ func (CustomHostnameFallbackOriginState) ElementType() reflect.Type {
 type customHostnameFallbackOriginArgs struct {
 	// Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
 	Origin string `pulumi:"origin"`
-	// The DNS zone ID where the custom hostname should be assigned.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -127,7 +125,7 @@ type customHostnameFallbackOriginArgs struct {
 type CustomHostnameFallbackOriginArgs struct {
 	// Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
 	Origin pulumi.StringInput
-	// The DNS zone ID where the custom hostname should be assigned.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
 }
 
@@ -228,7 +226,7 @@ func (o CustomHostnameFallbackOriginOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomHostnameFallbackOrigin) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The DNS zone ID where the custom hostname should be assigned.
+// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o CustomHostnameFallbackOriginOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomHostnameFallbackOrigin) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

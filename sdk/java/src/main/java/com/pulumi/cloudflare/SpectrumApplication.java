@@ -21,7 +21,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Spectrum Application. You can extend the power of Cloudflare&#39;s DDoS, TLS, and IP Firewall to your other TCP-based services.
+ * Provides a Cloudflare Spectrum Application. You can extend the power
+ * of Cloudflare&#39;s DDoS, TLS, and IP Firewall to your other TCP-based
+ * services.
  * 
  * ## Example Usage
  * ```java
@@ -46,15 +48,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sshProxy = new SpectrumApplication(&#34;sshProxy&#34;, SpectrumApplicationArgs.builder()        
- *             .zoneId(var_.cloudflare_zone_id())
+ *         var example = new SpectrumApplication(&#34;example&#34;, SpectrumApplicationArgs.builder()        
+ *             .dns(SpectrumApplicationDnsArgs.builder()
+ *                 .name(&#34;ssh.example.com&#34;)
+ *                 .type(&#34;CNAME&#34;)
+ *                 .build())
+ *             .originDirects(&#34;tcp://192.0.2.1:22&#34;)
  *             .protocol(&#34;tcp/22&#34;)
  *             .trafficType(&#34;direct&#34;)
- *             .dns(SpectrumApplicationDnsArgs.builder()
- *                 .type(&#34;CNAME&#34;)
- *                 .name(&#34;ssh.example.com&#34;)
- *                 .build())
- *             .originDirects(&#34;tcp://109.151.40.129:22&#34;)
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }
@@ -63,68 +65,64 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Spectrum resource can be imported using a zone ID and Application ID, e.g.
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac
+ *  $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example &lt;zone_id&gt;/&lt;spectrum_application_id&gt;
  * ```
- * 
- *  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones) - `9a7806061c88ada191ed06f989cc3dac` - Application ID
  * 
  */
 @ResourceType(type="cloudflare:index/spectrumApplication:SpectrumApplication")
 public class SpectrumApplication extends com.pulumi.resources.CustomResource {
     /**
-     * . Enables Argo Smart Routing. Defaults to `false`.
+     * Enables Argo Smart Routing. Defaults to `false`.
      * 
      */
     @Export(name="argoSmartRouting", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> argoSmartRouting;
 
     /**
-     * @return . Enables Argo Smart Routing. Defaults to `false`.
+     * @return Enables Argo Smart Routing. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> argoSmartRouting() {
         return Codegen.optional(this.argoSmartRouting);
     }
     /**
-     * The name and type of DNS record for the Spectrum application. Fields documented below.
+     * The name and type of DNS record for the Spectrum application.
      * 
      */
     @Export(name="dns", type=SpectrumApplicationDns.class, parameters={})
     private Output<SpectrumApplicationDns> dns;
 
     /**
-     * @return The name and type of DNS record for the Spectrum application. Fields documented below.
+     * @return The name and type of DNS record for the Spectrum application.
      * 
      */
     public Output<SpectrumApplicationDns> dns() {
         return this.dns;
     }
     /**
-     * . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+     * Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
      * 
      */
     @Export(name="edgeIpConnectivity", type=String.class, parameters={})
     private Output<String> edgeIpConnectivity;
 
     /**
-     * @return . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+     * @return Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
      * 
      */
     public Output<String> edgeIpConnectivity() {
         return this.edgeIpConnectivity;
     }
     /**
-     * . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+     * A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
      * 
      */
     @Export(name="edgeIps", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> edgeIps;
 
     /**
-     * @return . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+     * @return A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
      * 
      */
     public Output<Optional<List<String>>> edgeIps() {
@@ -159,42 +157,42 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.originDirects);
     }
     /**
-     * A destination DNS addresses to the origin. Fields documented below.
+     * A destination DNS addresses to the origin.
      * 
      */
     @Export(name="originDns", type=SpectrumApplicationOriginDns.class, parameters={})
     private Output</* @Nullable */ SpectrumApplicationOriginDns> originDns;
 
     /**
-     * @return A destination DNS addresses to the origin. Fields documented below.
+     * @return A destination DNS addresses to the origin.
      * 
      */
     public Output<Optional<SpectrumApplicationOriginDns>> originDns() {
         return Codegen.optional(this.originDns);
     }
     /**
-     * If using `origin_dns` and not `origin_port_range`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+     * Origin port to proxy traffice to. Conflicts with `origin_port_range`.
      * 
      */
     @Export(name="originPort", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> originPort;
 
     /**
-     * @return If using `origin_dns` and not `origin_port_range`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+     * @return Origin port to proxy traffice to. Conflicts with `origin_port_range`.
      * 
      */
     public Output<Optional<Integer>> originPort() {
         return Codegen.optional(this.originPort);
     }
     /**
-     * If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+     * Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `origin_port`.
      * 
      */
     @Export(name="originPortRange", type=SpectrumApplicationOriginPortRange.class, parameters={})
     private Output</* @Nullable */ SpectrumApplicationOriginPortRange> originPortRange;
 
     /**
-     * @return If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+     * @return Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `origin_port`.
      * 
      */
     public Output<Optional<SpectrumApplicationOriginPortRange>> originPortRange() {
@@ -215,56 +213,56 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
         return this.protocol;
     }
     /**
-     * Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
+     * Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
      * 
      */
     @Export(name="proxyProtocol", type=String.class, parameters={})
     private Output</* @Nullable */ String> proxyProtocol;
 
     /**
-     * @return Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
+     * @return Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
      * 
      */
     public Output<Optional<String>> proxyProtocol() {
         return Codegen.optional(this.proxyProtocol);
     }
     /**
-     * TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
+     * TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
      * 
      */
     @Export(name="tls", type=String.class, parameters={})
     private Output</* @Nullable */ String> tls;
 
     /**
-     * @return TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
+     * @return TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
      * 
      */
     public Output<Optional<String>> tls() {
         return Codegen.optional(this.tls);
     }
     /**
-     * Sets application type. Valid values are: `direct`, `http`, `https`. Defaults to `direct`.
+     * Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
      * 
      */
     @Export(name="trafficType", type=String.class, parameters={})
     private Output</* @Nullable */ String> trafficType;
 
     /**
-     * @return Sets application type. Valid values are: `direct`, `http`, `https`. Defaults to `direct`.
+     * @return Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
      * 
      */
     public Output<Optional<String>> trafficType() {
         return Codegen.optional(this.trafficType);
     }
     /**
-     * The DNS zone ID to add the application to
+     * The zone identifier to target for the resource.
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The DNS zone ID to add the application to
+     * @return The zone identifier to target for the resource.
      * 
      */
     public Output<String> zoneId() {

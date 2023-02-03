@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Teams List resource. Teams lists are referenced when creating secure web gateway policies or device posture rules.
+    /// Provides a Cloudflare Teams List resource. Teams lists are
+    /// referenced when creating secure web gateway policies or device
+    /// posture rules.
     /// 
     /// ## Example Usage
     /// 
@@ -21,9 +23,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var corporateDevices = new Cloudflare.TeamsList("corporateDevices", new()
+    ///     var example = new Cloudflare.TeamsList("example", new()
     ///     {
-    ///         AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Description = "Serial numbers for all corporate devices.",
     ///         Items = new[]
     ///         {
@@ -40,17 +42,15 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Teams lists can be imported using a composite ID formed of account ID and teams list ID.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/teamsList:TeamsList corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+    ///  $ pulumi import cloudflare:index/teamsList:TeamsList example &lt;account_id&gt;/&lt;teams_list_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/teamsList:TeamsList")]
     public partial class TeamsList : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account to which the teams list should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -74,7 +74,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+        /// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.Cloudflare
     public sealed class TeamsListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the teams list should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -156,7 +156,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+        /// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -170,7 +170,7 @@ namespace Pulumi.Cloudflare
     public sealed class TeamsListState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the teams list should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -200,7 +200,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+        /// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

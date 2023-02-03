@@ -19,7 +19,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows you to define one or more URLs (with wildcard matching on the domain or path) that will only permit access if the request originates from an IP address that matches a safelist of one or more IP addresses and/or IP ranges.
+ * Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows
+ * you to define one or more URLs (with wildcard matching on the domain
+ * or path) that will only permit access if the request originates
+ * from an IP address that matches a safelist of one or more IP
+ * addresses and/or IP ranges.
  * 
  * ## Example Usage
  * ```java
@@ -44,15 +48,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var endpointLockdown = new ZoneLockdown(&#34;endpointLockdown&#34;, ZoneLockdownArgs.builder()        
+ *         var example = new ZoneLockdown(&#34;example&#34;, ZoneLockdownArgs.builder()        
  *             .configurations(ZoneLockdownConfigurationArgs.builder()
  *                 .target(&#34;ip_range&#34;)
- *                 .value(&#34;198.51.100.0/16&#34;)
+ *                 .value(&#34;192.0.2.0/24&#34;)
  *                 .build())
  *             .description(&#34;Restrict access to these endpoints to requests from a known IP address range&#34;)
  *             .paused(&#34;false&#34;)
  *             .urls(&#34;api.mysite.com/some/endpoint*&#34;)
- *             .zoneId(&#34;d41d8cd98f00b204e9800998ecf8427e&#34;)
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }
@@ -61,26 +65,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Records can be imported using a composite ID formed of zone name and record ID, e.g.
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown cloudflare_zone_lockdown d41d8cd98f00b204e9800998ecf8427e/37cb64fe4a90adb5ca3afc04f2c82a2f
+ *  $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example &lt;zone_id&gt;/&lt;lockdown_id&gt;
  * ```
- * 
- *  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules)
  * 
  */
 @ResourceType(type="cloudflare:index/zoneLockdown:ZoneLockdown")
 public class ZoneLockdown extends com.pulumi.resources.CustomResource {
     /**
-     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It&#39;s a complex value. See description below. The order of the configuration entries is unimportant.
+     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
      * 
      */
     @Export(name="configurations", type=List.class, parameters={ZoneLockdownConfiguration.class})
     private Output<List<ZoneLockdownConfiguration>> configurations;
 
     /**
-     * @return A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It&#39;s a complex value. See description below. The order of the configuration entries is unimportant.
+     * @return A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
      * 
      */
     public Output<List<ZoneLockdownConfiguration>> configurations() {
@@ -101,14 +101,14 @@ public class ZoneLockdown extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Boolean of whether this zone lockdown is currently paused. Default: false.
+     * Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
      * 
      */
     @Export(name="paused", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> paused;
 
     /**
-     * @return Boolean of whether this zone lockdown is currently paused. Default: false.
+     * @return Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> paused() {
@@ -135,14 +135,14 @@ public class ZoneLockdown extends com.pulumi.resources.CustomResource {
         return this.urls;
     }
     /**
-     * The DNS zone ID to which the access rule should be added.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The DNS zone ID to which the access rule should be added.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {

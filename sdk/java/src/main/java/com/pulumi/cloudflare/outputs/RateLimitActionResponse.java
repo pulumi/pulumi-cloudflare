@@ -9,29 +9,13 @@ import java.util.Objects;
 
 @CustomType
 public final class RateLimitActionResponse {
-    /**
-     * @return The body to return, the content here should conform to the content_type.
-     * 
-     */
     private String body;
-    /**
-     * @return The content-type of the body, must be one of: &#39;text/plain&#39;, &#39;text/xml&#39;, &#39;application/json&#39;.
-     * 
-     */
     private String contentType;
 
     private RateLimitActionResponse() {}
-    /**
-     * @return The body to return, the content here should conform to the content_type.
-     * 
-     */
     public String body() {
         return this.body;
     }
-    /**
-     * @return The content-type of the body, must be one of: &#39;text/plain&#39;, &#39;text/xml&#39;, &#39;application/json&#39;.
-     * 
-     */
     public String contentType() {
         return this.contentType;
     }

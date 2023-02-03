@@ -70,6 +70,7 @@ export interface AccessGroupExclude {
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeGsuite>[]>;
+    ipLists?: pulumi.Input<pulumi.Input<string>[]>;
     ips?: pulumi.Input<pulumi.Input<string>[]>;
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeOkta>[]>;
@@ -127,6 +128,7 @@ export interface AccessGroupInclude {
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeGsuite>[]>;
+    ipLists?: pulumi.Input<pulumi.Input<string>[]>;
     ips?: pulumi.Input<pulumi.Input<string>[]>;
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeOkta>[]>;
@@ -184,6 +186,7 @@ export interface AccessGroupRequire {
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireGsuite>[]>;
+    ipLists?: pulumi.Input<pulumi.Input<string>[]>;
     ips?: pulumi.Input<pulumi.Input<string>[]>;
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireOkta>[]>;
@@ -300,6 +303,7 @@ export interface AccessPolicyExclude {
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeGsuite>[]>;
+    ipLists?: pulumi.Input<pulumi.Input<string>[]>;
     ips?: pulumi.Input<pulumi.Input<string>[]>;
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeOkta>[]>;
@@ -363,6 +367,7 @@ export interface AccessPolicyInclude {
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeGsuite>[]>;
+    ipLists?: pulumi.Input<pulumi.Input<string>[]>;
     ips?: pulumi.Input<pulumi.Input<string>[]>;
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeOkta>[]>;
@@ -426,6 +431,7 @@ export interface AccessPolicyRequire {
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireGsuite>[]>;
+    ipLists?: pulumi.Input<pulumi.Input<string>[]>;
     ips?: pulumi.Input<pulumi.Input<string>[]>;
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireOkta>[]>;
@@ -595,30 +601,44 @@ export interface CustomHostnameSslValidationRecord {
 
 export interface CustomSslCustomSslOptions {
     /**
-     * Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
+     * Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
      */
     bundleMethod?: pulumi.Input<string>;
     /**
-     * Certificate certificate and the intermediate(s)
+     * Certificate certificate and the intermediate(s).
      */
     certificate?: pulumi.Input<string>;
     /**
-     * Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highestSecurity`.
+     * Specifies the region where your private key can be held locally. Available values: `us`, `eu`, `highestSecurity`.
      */
     geoRestrictions?: pulumi.Input<string>;
     /**
-     * Certificate's private key
+     * Certificate's private key.
      */
     privateKey?: pulumi.Input<string>;
     /**
-     * Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacyCustom` (default), `sniCustom`.
+     * Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Available values: `legacyCustom`, `sniCustom`.
      */
     type?: pulumi.Input<string>;
 }
 
 export interface CustomSslCustomSslPriority {
+    /**
+     * The ID of this resource.
+     */
     id?: pulumi.Input<string>;
     priority?: pulumi.Input<number>;
+}
+
+export interface DeviceManagedNetworksConfig {
+    /**
+     * The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
+     */
+    sha256: pulumi.Input<string>;
+    /**
+     * A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
+     */
+    tlsSockaddr: pulumi.Input<string>;
 }
 
 export interface DevicePostureIntegrationConfig {
@@ -650,7 +670,7 @@ export interface DevicePostureIntegrationConfig {
 
 export interface DevicePostureRuleInput {
     /**
-     * The workspace one device compliance status.
+     * The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
      */
     complianceStatus?: pulumi.Input<string>;
     /**
@@ -674,9 +694,13 @@ export interface DevicePostureRuleInput {
      */
     id?: pulumi.Input<string>;
     /**
-     * The version comparison operator.
+     * The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
      */
     operator?: pulumi.Input<string>;
+    /**
+     * OS signal score from Crowdstrike. Value must be between 1 and 100.
+     */
+    os?: pulumi.Input<string>;
     /**
      * The operating system excluding version information.
      */
@@ -685,6 +709,10 @@ export interface DevicePostureRuleInput {
      * The operating system version excluding OS name information or release name.
      */
     osDistroRevision?: pulumi.Input<string>;
+    /**
+     * Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+     */
+    overall?: pulumi.Input<string>;
     /**
      * The path to the file.
      */
@@ -698,6 +726,10 @@ export interface DevicePostureRuleInput {
      */
     running?: pulumi.Input<boolean>;
     /**
+     * Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+     */
+    sensorConfig?: pulumi.Input<string>;
+    /**
      * The sha256 hash of the file.
      */
     sha256?: pulumi.Input<string>;
@@ -709,6 +741,10 @@ export interface DevicePostureRuleInput {
      * The operating system semantic version.
      */
     version?: pulumi.Input<string>;
+    /**
+     * The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+     */
+    versionOperator?: pulumi.Input<string>;
 }
 
 export interface DevicePostureRuleMatch {
@@ -1062,19 +1098,15 @@ export interface GetWafRulesFilterArgs {
 
 export interface GetZonesFilter {
     /**
-     * Only search for zones in this account.
+     * The account identifier to target for the resource.
      */
     accountId?: string;
     /**
-     * The type of search to perform for the `name` value
-     * when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
-     * to `"exact"`.
+     * The type of search to perform for the `name` value when querying the zone API. Available values: `contains`, `exact`. Defaults to `exact`.
      */
     lookupType?: string;
     /**
-     * A RE2 compatible regular expression to filter the
-     * results. This is performed client side whereas the `name` and `lookupType`
-     * are performed on the Cloudflare server side.
+     * A RE2 compatible regular expression to filter the	results. This is performed client side whereas the `name` and `lookupType`	are performed on the Cloudflare server side.
      */
     match?: string;
     /**
@@ -1082,33 +1114,26 @@ export interface GetZonesFilter {
      */
     name?: string;
     /**
-     * Paused status of the zone to lookup. Valid values are
-     * `true` or `false`.
+     * Paused status of the zone to lookup. Defaults to `false`.
      */
     paused?: boolean;
     /**
-     * Status of the zone to lookup. Valid values: `"active"`,
-     * `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
-     * `"read only"`.
+     * Status of the zone to lookup.
      */
     status?: string;
 }
 
 export interface GetZonesFilterArgs {
     /**
-     * Only search for zones in this account.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The type of search to perform for the `name` value
-     * when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
-     * to `"exact"`.
+     * The type of search to perform for the `name` value when querying the zone API. Available values: `contains`, `exact`. Defaults to `exact`.
      */
     lookupType?: pulumi.Input<string>;
     /**
-     * A RE2 compatible regular expression to filter the
-     * results. This is performed client side whereas the `name` and `lookupType`
-     * are performed on the Cloudflare server side.
+     * A RE2 compatible regular expression to filter the	results. This is performed client side whereas the `name` and `lookupType`	are performed on the Cloudflare server side.
      */
     match?: pulumi.Input<string>;
     /**
@@ -1116,14 +1141,11 @@ export interface GetZonesFilterArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Paused status of the zone to lookup. Valid values are
-     * `true` or `false`.
+     * Paused status of the zone to lookup. Defaults to `false`.
      */
     paused?: pulumi.Input<boolean>;
     /**
-     * Status of the zone to lookup. Valid values: `"active"`,
-     * `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
-     * `"read only"`.
+     * Status of the zone to lookup.
      */
     status?: pulumi.Input<string>;
 }
@@ -1208,41 +1230,41 @@ export interface LoadBalancerMonitorHeader {
      */
     header: pulumi.Input<string>;
     /**
-     * A list of string values for the header.
+     * A list of values for the header.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface LoadBalancerPoolLoadShedding {
     /**
-     * Percent of traffic to shed 0 - 100.
+     * Percent of traffic to shed 0 - 100. Defaults to `0`.
      */
     defaultPercent?: pulumi.Input<number>;
     /**
-     * Method of shedding traffic "", "hash" or "random".
+     * Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`""`.
      */
     defaultPolicy?: pulumi.Input<string>;
     /**
-     * Percent of session traffic to shed 0 - 100.
+     * Percent of session traffic to shed 0 - 100. Defaults to `0`.
      */
     sessionPercent?: pulumi.Input<number>;
     /**
-     * Method of shedding session traffic "" or "hash".
+     * Method of shedding traffic. Available values: ``,`hash`. Defaults to`""`.
      */
     sessionPolicy?: pulumi.Input<string>;
 }
 
 export interface LoadBalancerPoolOrigin {
     /**
-     * The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.
+     * The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
      */
     address: pulumi.Input<string>;
     /**
-     * Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+     * Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The header name.
+     * HTTP request headers.
      */
     headers?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPoolOriginHeader>[]>;
     /**
@@ -1250,25 +1272,19 @@ export interface LoadBalancerPoolOrigin {
      */
     name: pulumi.Input<string>;
     /**
-     * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Default: 1.
+     * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Defaults to `1`.
      */
     weight?: pulumi.Input<number>;
 }
 
 export interface LoadBalancerPoolOriginHeader {
-    /**
-     * The header name.
-     */
     header: pulumi.Input<string>;
-    /**
-     * A list of string values for the header.
-     */
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface LoadBalancerPoolOriginSteering {
     /**
-     * Either "random" (default) or "hash".
+     * Origin steering policy to be used. Available values: ``,`hash`,`random`. Defaults to`random`.
      */
     policy?: pulumi.Input<string>;
 }
@@ -1884,31 +1900,57 @@ export interface PagesProjectDeploymentConfigs {
     /**
      * Configuration for preview deploys.
      */
-    preview?: pulumi.Input<inputs.PagesProjectDeploymentConfigsPreview>;
+    preview: pulumi.Input<inputs.PagesProjectDeploymentConfigsPreview>;
     /**
      * Configuration for production deploys.
      */
-    production?: pulumi.Input<inputs.PagesProjectDeploymentConfigsProduction>;
+    production: pulumi.Input<inputs.PagesProjectDeploymentConfigsProduction>;
 }
 
 export interface PagesProjectDeploymentConfigsPreview {
+    alwaysUseLatestCompatibilityDate?: pulumi.Input<boolean>;
     compatibilityDate?: pulumi.Input<string>;
     compatibilityFlags?: pulumi.Input<pulumi.Input<string>[]>;
     d1Databases?: pulumi.Input<{[key: string]: any}>;
     durableObjectNamespaces?: pulumi.Input<{[key: string]: any}>;
     environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    failOpen?: pulumi.Input<boolean>;
     kvNamespaces?: pulumi.Input<{[key: string]: any}>;
     r2Buckets?: pulumi.Input<{[key: string]: any}>;
+    serviceBindings?: pulumi.Input<pulumi.Input<inputs.PagesProjectDeploymentConfigsPreviewServiceBinding>[]>;
+    usageModel?: pulumi.Input<string>;
+}
+
+export interface PagesProjectDeploymentConfigsPreviewServiceBinding {
+    environment?: pulumi.Input<string>;
+    /**
+     * Name of the project.
+     */
+    name: pulumi.Input<string>;
+    service: pulumi.Input<string>;
 }
 
 export interface PagesProjectDeploymentConfigsProduction {
+    alwaysUseLatestCompatibilityDate?: pulumi.Input<boolean>;
     compatibilityDate?: pulumi.Input<string>;
     compatibilityFlags?: pulumi.Input<pulumi.Input<string>[]>;
     d1Databases?: pulumi.Input<{[key: string]: any}>;
     durableObjectNamespaces?: pulumi.Input<{[key: string]: any}>;
     environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    failOpen?: pulumi.Input<boolean>;
     kvNamespaces?: pulumi.Input<{[key: string]: any}>;
     r2Buckets?: pulumi.Input<{[key: string]: any}>;
+    serviceBindings?: pulumi.Input<pulumi.Input<inputs.PagesProjectDeploymentConfigsProductionServiceBinding>[]>;
+    usageModel?: pulumi.Input<string>;
+}
+
+export interface PagesProjectDeploymentConfigsProductionServiceBinding {
+    environment?: pulumi.Input<string>;
+    /**
+     * Name of the project.
+     */
+    name: pulumi.Input<string>;
+    service: pulumi.Input<string>;
 }
 
 export interface PagesProjectSource {
@@ -1939,75 +1981,51 @@ export interface PagesProjectSourceConfig {
 
 export interface RateLimitAction {
     /**
-     * The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge', 'js_challenge' and 'managed_challenge'.
+     * The type of action to perform. Available values: `simulate`, `ban`, `challenge`, `jsChallenge`, `managedChallenge`.
      */
     mode: pulumi.Input<string>;
     /**
-     * Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
+     * Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page.
      */
     response?: pulumi.Input<inputs.RateLimitActionResponse>;
     /**
-     * The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period (min: 1, max: 86400).
+     * The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period.
      */
     timeout?: pulumi.Input<number>;
 }
 
 export interface RateLimitActionResponse {
-    /**
-     * The body to return, the content here should conform to the content_type.
-     */
     body: pulumi.Input<string>;
-    /**
-     * The content-type of the body, must be one of: 'text/plain', 'text/xml', 'application/json'.
-     */
     contentType: pulumi.Input<string>;
 }
 
 export interface RateLimitCorrelate {
     /**
-     * If set to 'nat', NAT support will be enabled for rate limiting.
+     * If set to 'nat', NAT support will be enabled for rate limiting. Available values: `nat`.
      */
     by?: pulumi.Input<string>;
 }
 
 export interface RateLimitMatch {
     /**
-     * Matches HTTP requests (from the client to Cloudflare). See definition below.
+     * Matches HTTP requests (from the client to Cloudflare).
      */
     request?: pulumi.Input<inputs.RateLimitMatchRequest>;
     /**
-     * Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
+     * Matches HTTP responses before they are returned to the client from Cloudflare. If this is defined, then the entire counting of traffic occurs at this stage.
      */
     response?: pulumi.Input<inputs.RateLimitMatchResponse>;
 }
 
 export interface RateLimitMatchRequest {
-    /**
-     * HTTP Methods, can be a subset ['POST','PUT'] or all ['\_ALL\_']. Default: ['\_ALL\_'].
-     */
     methods?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * HTTP Schemes, can be one ['HTTPS'], both ['HTTP','HTTPS'] or all ['\_ALL\_']. Default: ['\_ALL\_'].
-     */
     schemes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use _ for all traffic to your zone. Default: '_'.
-     */
     urlPattern?: pulumi.Input<string>;
 }
 
 export interface RateLimitMatchResponse {
-    /**
-     * block is a list of maps with the following attributes:
-     */
     headers?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
-    /**
-     * Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting. Default: `true`.
-     */
     originTraffic?: pulumi.Input<boolean>;
-    /**
-     * HTTP Status codes, can be one [403], many [401,403] or indicate all by not providing this value.
-     */
     statuses?: pulumi.Input<pulumi.Input<number>[]>;
 }
 
@@ -2031,7 +2049,7 @@ export interface RecordData {
     longSeconds?: pulumi.Input<number>;
     matchingType?: pulumi.Input<number>;
     /**
-     * The name of the record
+     * The name of the record. **Modifying this attribute will force creation of a new resource.**
      */
     name?: pulumi.Input<string>;
     order?: pulumi.Input<number>;
@@ -2040,7 +2058,7 @@ export interface RecordData {
     precisionVert?: pulumi.Input<number>;
     preference?: pulumi.Input<number>;
     /**
-     * The priority of the record
+     * The priority of the record.
      */
     priority?: pulumi.Input<number>;
     proto?: pulumi.Input<string>;
@@ -2054,12 +2072,12 @@ export interface RecordData {
     tag?: pulumi.Input<string>;
     target?: pulumi.Input<string>;
     /**
-     * The type of the record
+     * The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`. **Modifying this attribute will force creation of a new resource.**
      */
     type?: pulumi.Input<number>;
     usage?: pulumi.Input<number>;
     /**
-     * The (string) value of the record. Either this or `data` must be specified
+     * The value of the record. Conflicts with `data`.
      */
     value?: pulumi.Input<string>;
     weight?: pulumi.Input<number>;
@@ -2374,29 +2392,29 @@ export interface RulesetRuleRatelimit {
 
 export interface SpectrumApplicationDns {
     /**
-     * Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+     * The name of the DNS record associated with the application.
      */
     name: pulumi.Input<string>;
     /**
-     * The type of DNS record associated with the application. Valid values: `CNAME`.
+     * The type of DNS record associated with the application.
      */
     type: pulumi.Input<string>;
 }
 
 export interface SpectrumApplicationOriginDns {
     /**
-     * Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+     * Fully qualified domain name of the origin.
      */
     name: pulumi.Input<string>;
 }
 
 export interface SpectrumApplicationOriginPortRange {
     /**
-     * Upper bound of the origin port range, e.g. `2000`
+     * Upper bound of the origin port range.
      */
     end: pulumi.Input<number>;
     /**
-     * Lower bound of the origin port range, e.g. `1000`
+     * Lower bound of the origin port range.
      */
     start: pulumi.Input<number>;
 }
@@ -2441,17 +2459,25 @@ export interface TeamsAccountBlockPage {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Block page header text.
+     * Block page footer text.
      */
     footerText?: pulumi.Input<string>;
     /**
-     * Block page footer text.
+     * Block page header text.
      */
     headerText?: pulumi.Input<string>;
     /**
      * URL of block page logo.
      */
     logoPath?: pulumi.Input<string>;
+    /**
+     * Admin email for users to contact.
+     */
+    mailtoAddress?: pulumi.Input<string>;
+    /**
+     * Subject line for emails created from block page.
+     */
+    mailtoSubject?: pulumi.Input<string>;
     /**
      * Name of block page configuration.
      */
@@ -2467,13 +2493,11 @@ export interface TeamsAccountFips {
 
 export interface TeamsAccountLogging {
     /**
-     * Redact personally identifiable information from activity logging (PII fields are: source IP,
-     * user email, user ID, device ID, URL, referrer, user agent).
+     * Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
      */
     redactPii: pulumi.Input<boolean>;
     /**
-     * Represents whether all requests are logged or only the blocked requests are
-     * logged in DNS, HTTP and L4 filters.
+     * Represents whether all requests are logged or only the blocked requests are slogged in DNS, HTTP and L4 filters.
      */
     settingsByRuleType: pulumi.Input<inputs.TeamsAccountLoggingSettingsByRuleType>;
 }
@@ -2501,20 +2525,23 @@ export interface TeamsAccountLoggingSettingsByRuleTypeL4 {
 
 export interface TeamsAccountProxy {
     /**
-     * Whether gateway proxy is enabled on gateway devices for tcp traffic.
+     * Whether gateway proxy is enabled on gateway devices for TCP traffic.
      */
     tcp: pulumi.Input<boolean>;
     /**
-     * Whether gateway proxy is enabled on gateway devices for udp traffic.
+     * Whether gateway proxy is enabled on gateway devices for UDP traffic.
      */
     udp: pulumi.Input<boolean>;
 }
 
 export interface TeamsLocationNetwork {
     /**
-     * ID of the teams location.
+     * The ID of this resource.
      */
     id?: pulumi.Input<string>;
+    /**
+     * CIDR notation representation of the network IP.
+     */
     network: pulumi.Input<string>;
 }
 
@@ -2524,7 +2551,7 @@ export interface TeamsRuleRuleSettings {
      */
     addHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Configure how browser isolation behaves (refer to the nested schema).
+     * Configure how browser isolation behaves.
      */
     bisoAdminControls?: pulumi.Input<inputs.TeamsRuleRuleSettingsBisoAdminControls>;
     /**
@@ -2536,15 +2563,19 @@ export interface TeamsRuleRuleSettings {
      */
     blockPageReason?: pulumi.Input<string>;
     /**
-     * Configure how session check behaves (refer to the nested schema).
+     * Configure how session check behaves.
      */
     checkSession?: pulumi.Input<inputs.TeamsRuleRuleSettingsCheckSession>;
     /**
-     * Disable DNSSEC validation (must be Allow rule)
+     * Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+     */
+    egress?: pulumi.Input<inputs.TeamsRuleRuleSettingsEgress>;
+    /**
+     * Disable DNSSEC validation (must be Allow rule).
      */
     insecureDisableDnssecValidation?: pulumi.Input<boolean>;
     /**
-     * Settings to forward layer 4 traffic (refer to the nested schema).
+     * Settings to forward layer 4 traffic.
      */
     l4override?: pulumi.Input<inputs.TeamsRuleRuleSettingsL4override>;
     /**
@@ -2558,47 +2589,26 @@ export interface TeamsRuleRuleSettings {
 }
 
 export interface TeamsRuleRuleSettingsBisoAdminControls {
-    /**
-     * Disable copy-paste.
-     */
     disableCopyPaste?: pulumi.Input<boolean>;
-    /**
-     * Disable download.
-     */
     disableDownload?: pulumi.Input<boolean>;
-    /**
-     * Disable keyboard usage.
-     */
     disableKeyboard?: pulumi.Input<boolean>;
-    /**
-     * Disable printing.
-     */
     disablePrinting?: pulumi.Input<boolean>;
-    /**
-     * Disable upload.
-     */
     disableUpload?: pulumi.Input<boolean>;
 }
 
 export interface TeamsRuleRuleSettingsCheckSession {
-    /**
-     * Configure how fresh the session needs to be to be considered valid.
-     */
     duration: pulumi.Input<string>;
-    /**
-     * Enable session enforcement for this rule.
-     */
     enforce: pulumi.Input<boolean>;
 }
 
+export interface TeamsRuleRuleSettingsEgress {
+    ipv4: pulumi.Input<string>;
+    ipv4Fallback?: pulumi.Input<string>;
+    ipv6: pulumi.Input<string>;
+}
+
 export interface TeamsRuleRuleSettingsL4override {
-    /**
-     * Override IP to forward traffic to.
-     */
     ip: pulumi.Input<string>;
-    /**
-     * Override Port to forward traffic to.
-     */
     port: pulumi.Input<number>;
 }
 
@@ -2770,11 +2780,11 @@ export interface WorkerScriptWebassemblyBinding {
 
 export interface ZoneLockdownConfiguration {
     /**
-     * The request property to target. Allowed values: "ip", "ipRange"
+     * The request property to target. Available values: `ip`, `ipRange`.
      */
     target: pulumi.Input<string>;
     /**
-     * The value to target. Depends on target's type. IP addresses should just be standard IPv4/IPv6 notation i.e. `198.51.100.4` or `2001:db8::/32` and IP ranges in CIDR format i.e. `198.51.0.0/16`.
+     * The value to target. Depends on target's type. IP addresses should just be standard IPv4/IPv6 notation i.e. `192.0.2.1` or `2001:db8::/32` and IP ranges in CIDR format i.e. `192.0.2.0/24`.
      */
     value: pulumi.Input<string>;
 }
@@ -2787,41 +2797,23 @@ export interface ZoneSettingsOverrideInitialSetting {
     brotli?: pulumi.Input<string>;
     browserCacheTtl?: pulumi.Input<number>;
     browserCheck?: pulumi.Input<string>;
-    /**
-     * Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
-     */
     cacheLevel?: pulumi.Input<string>;
     challengeTtl?: pulumi.Input<number>;
-    /**
-     * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
-     */
     ciphers?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Allowed values: "flattenAtRoot" (default), "flattenAll", "flattenNone".
-     */
     cnameFlattening?: pulumi.Input<string>;
     developmentMode?: pulumi.Input<string>;
     earlyHints?: pulumi.Input<string>;
     emailObfuscation?: pulumi.Input<string>;
     filterLogsToCloudflare?: pulumi.Input<string>;
-    /**
-     * Allowed values: "on", "off" (default), "custom".
-     */
     h2Prioritization?: pulumi.Input<string>;
     hotlinkProtection?: pulumi.Input<string>;
     http2?: pulumi.Input<string>;
     http3?: pulumi.Input<string>;
-    /**
-     * Allowed values: "on", "off" (default), "open".
-     */
     imageResizing?: pulumi.Input<string>;
     ipGeolocation?: pulumi.Input<string>;
     ipv6?: pulumi.Input<string>;
     logToCloudflare?: pulumi.Input<string>;
     maxUpload?: pulumi.Input<number>;
-    /**
-     * Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
-     */
     minTlsVersion?: pulumi.Input<string>;
     minify?: pulumi.Input<inputs.ZoneSettingsOverrideInitialSettingMinify>;
     mirage?: pulumi.Input<string>;
@@ -2830,105 +2822,51 @@ export interface ZoneSettingsOverrideInitialSetting {
     opportunisticOnion?: pulumi.Input<string>;
     orangeToOrange?: pulumi.Input<string>;
     originErrorPagePassThru?: pulumi.Input<string>;
-    /**
-     * Allowed values: "1" (default on Enterprise), "2" (default)
-     */
     originMaxHttpVersion?: pulumi.Input<string>;
-    /**
-     * Allowed values: "off" (default), "lossless", "lossy".
-     */
     polish?: pulumi.Input<string>;
     prefetchPreload?: pulumi.Input<string>;
     privacyPass?: pulumi.Input<string>;
     proxyReadTimeout?: pulumi.Input<string>;
-    /**
-     * Allowed values: "off" (default), "addHeader", "overwriteHeader".
-     */
     pseudoIpv4?: pulumi.Input<string>;
     responseBuffering?: pulumi.Input<string>;
     rocketLoader?: pulumi.Input<string>;
     securityHeader?: pulumi.Input<inputs.ZoneSettingsOverrideInitialSettingSecurityHeader>;
-    /**
-     * Allowed values: "off" (Enterprise only), "essentiallyOff", "low", "medium" (default), "high", "underAttack".
-     */
     securityLevel?: pulumi.Input<string>;
     serverSideExclude?: pulumi.Input<string>;
     sortQueryStringForCache?: pulumi.Input<string>;
-    /**
-     * Allowed values: "off" (default), "flexible", "full", "strict", "originPull".
-     */
     ssl?: pulumi.Input<string>;
     /**
      * @deprecated tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
      */
     tls12Only?: pulumi.Input<string>;
-    /**
-     * Allowed values: "off" (default), "on", "zrt".
-     */
     tls13?: pulumi.Input<string>;
     tlsClientAuth?: pulumi.Input<string>;
     trueClientIpHeader?: pulumi.Input<string>;
     universalSsl?: pulumi.Input<string>;
     visitorIp?: pulumi.Input<string>;
     waf?: pulumi.Input<string>;
-    /**
-     * . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
-     */
     webp?: pulumi.Input<string>;
     websockets?: pulumi.Input<string>;
     zeroRtt?: pulumi.Input<string>;
 }
 
 export interface ZoneSettingsOverrideInitialSettingMinify {
-    /**
-     * "on"/"off"
-     */
     css: pulumi.Input<string>;
-    /**
-     * "on"/"off"
-     */
     html: pulumi.Input<string>;
-    /**
-     * "on"/"off"
-     */
     js: pulumi.Input<string>;
 }
 
 export interface ZoneSettingsOverrideInitialSettingMobileRedirect {
-    /**
-     * String value
-     */
     mobileSubdomain: pulumi.Input<string>;
-    /**
-     * "on"/"off"
-     */
     status: pulumi.Input<string>;
-    /**
-     * true/false
-     */
     stripUri: pulumi.Input<boolean>;
 }
 
 export interface ZoneSettingsOverrideInitialSettingSecurityHeader {
-    /**
-     * true/false
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * true/false
-     */
     includeSubdomains?: pulumi.Input<boolean>;
-    /**
-     * Integer
-     */
     maxAge?: pulumi.Input<number>;
-    /**
-     * true/false
-     */
     nosniff?: pulumi.Input<boolean>;
-    /**
-     * true/false
-     */
     preload?: pulumi.Input<boolean>;
 }
 
@@ -2940,41 +2878,23 @@ export interface ZoneSettingsOverrideSettings {
     brotli?: pulumi.Input<string>;
     browserCacheTtl?: pulumi.Input<number>;
     browserCheck?: pulumi.Input<string>;
-    /**
-     * Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
-     */
     cacheLevel?: pulumi.Input<string>;
     challengeTtl?: pulumi.Input<number>;
-    /**
-     * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
-     */
     ciphers?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Allowed values: "flattenAtRoot" (default), "flattenAll", "flattenNone".
-     */
     cnameFlattening?: pulumi.Input<string>;
     developmentMode?: pulumi.Input<string>;
     earlyHints?: pulumi.Input<string>;
     emailObfuscation?: pulumi.Input<string>;
     filterLogsToCloudflare?: pulumi.Input<string>;
-    /**
-     * Allowed values: "on", "off" (default), "custom".
-     */
     h2Prioritization?: pulumi.Input<string>;
     hotlinkProtection?: pulumi.Input<string>;
     http2?: pulumi.Input<string>;
     http3?: pulumi.Input<string>;
-    /**
-     * Allowed values: "on", "off" (default), "open".
-     */
     imageResizing?: pulumi.Input<string>;
     ipGeolocation?: pulumi.Input<string>;
     ipv6?: pulumi.Input<string>;
     logToCloudflare?: pulumi.Input<string>;
     maxUpload?: pulumi.Input<number>;
-    /**
-     * Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
-     */
     minTlsVersion?: pulumi.Input<string>;
     minify?: pulumi.Input<inputs.ZoneSettingsOverrideSettingsMinify>;
     mirage?: pulumi.Input<string>;
@@ -2983,104 +2903,50 @@ export interface ZoneSettingsOverrideSettings {
     opportunisticOnion?: pulumi.Input<string>;
     orangeToOrange?: pulumi.Input<string>;
     originErrorPagePassThru?: pulumi.Input<string>;
-    /**
-     * Allowed values: "1" (default on Enterprise), "2" (default)
-     */
     originMaxHttpVersion?: pulumi.Input<string>;
-    /**
-     * Allowed values: "off" (default), "lossless", "lossy".
-     */
     polish?: pulumi.Input<string>;
     prefetchPreload?: pulumi.Input<string>;
     privacyPass?: pulumi.Input<string>;
     proxyReadTimeout?: pulumi.Input<string>;
-    /**
-     * Allowed values: "off" (default), "addHeader", "overwriteHeader".
-     */
     pseudoIpv4?: pulumi.Input<string>;
     responseBuffering?: pulumi.Input<string>;
     rocketLoader?: pulumi.Input<string>;
     securityHeader?: pulumi.Input<inputs.ZoneSettingsOverrideSettingsSecurityHeader>;
-    /**
-     * Allowed values: "off" (Enterprise only), "essentiallyOff", "low", "medium" (default), "high", "underAttack".
-     */
     securityLevel?: pulumi.Input<string>;
     serverSideExclude?: pulumi.Input<string>;
     sortQueryStringForCache?: pulumi.Input<string>;
-    /**
-     * Allowed values: "off" (default), "flexible", "full", "strict", "originPull".
-     */
     ssl?: pulumi.Input<string>;
     /**
      * @deprecated tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
      */
     tls12Only?: pulumi.Input<string>;
-    /**
-     * Allowed values: "off" (default), "on", "zrt".
-     */
     tls13?: pulumi.Input<string>;
     tlsClientAuth?: pulumi.Input<string>;
     trueClientIpHeader?: pulumi.Input<string>;
     universalSsl?: pulumi.Input<string>;
     visitorIp?: pulumi.Input<string>;
     waf?: pulumi.Input<string>;
-    /**
-     * . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
-     */
     webp?: pulumi.Input<string>;
     websockets?: pulumi.Input<string>;
     zeroRtt?: pulumi.Input<string>;
 }
 
 export interface ZoneSettingsOverrideSettingsMinify {
-    /**
-     * "on"/"off"
-     */
     css: pulumi.Input<string>;
-    /**
-     * "on"/"off"
-     */
     html: pulumi.Input<string>;
-    /**
-     * "on"/"off"
-     */
     js: pulumi.Input<string>;
 }
 
 export interface ZoneSettingsOverrideSettingsMobileRedirect {
-    /**
-     * String value
-     */
     mobileSubdomain: pulumi.Input<string>;
-    /**
-     * "on"/"off"
-     */
     status: pulumi.Input<string>;
-    /**
-     * true/false
-     */
     stripUri: pulumi.Input<boolean>;
 }
 
 export interface ZoneSettingsOverrideSettingsSecurityHeader {
-    /**
-     * true/false
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * true/false
-     */
     includeSubdomains?: pulumi.Input<boolean>;
-    /**
-     * Integer
-     */
     maxAge?: pulumi.Input<number>;
-    /**
-     * true/false
-     */
     nosniff?: pulumi.Input<boolean>;
-    /**
-     * true/false
-     */
     preload?: pulumi.Input<boolean>;
 }

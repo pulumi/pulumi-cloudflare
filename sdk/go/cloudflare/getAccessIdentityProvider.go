@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to lookup a single [Access Identity Provider][accessIdentityProviderGuide] by name.
+// Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
 //
 // ## Example Usage
 //
@@ -26,21 +26,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			mainAccessIdentityProvider, err := cloudflare.LookupAccessIdentityProvider(ctx, &cloudflare.LookupAccessIdentityProviderArgs{
+//			exampleAccessIdentityProvider, err := cloudflare.LookupAccessIdentityProvider(ctx, &cloudflare.LookupAccessIdentityProviderArgs{
 //				Name:      "Google SSO",
-//				AccountId: pulumi.StringRef("example-account-id"),
+//				AccountId: pulumi.StringRef("f037e56e89293a057740de681ac9abbe"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudflare.NewAccessApplication(ctx, "mainAccessApplication", &cloudflare.AccessApplicationArgs{
-//				ZoneId:          pulumi.String("example.com"),
+//			_, err = cloudflare.NewAccessApplication(ctx, "exampleAccessApplication", &cloudflare.AccessApplicationArgs{
+//				ZoneId:          pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Name:            pulumi.String("name"),
 //				Domain:          pulumi.String("name.example.com"),
 //				Type:            pulumi.String("self_hosted"),
 //				SessionDuration: pulumi.String("24h"),
 //				AllowedIdps: pulumi.StringArray{
-//					pulumi.String(mainAccessIdentityProvider.Id),
+//					pulumi.String(exampleAccessIdentityProvider.Id),
 //				},
 //				AutoRedirectToIdentity: pulumi.Bool(true),
 //			})
@@ -63,23 +63,25 @@ func LookupAccessIdentityProvider(ctx *pulumi.Context, args *LookupAccessIdentit
 
 // A collection of arguments for invoking getAccessIdentityProvider.
 type LookupAccessIdentityProviderArgs struct {
-	// The account for which to look for an Access Identity Provider. Conflicts with `zoneId`.
+	// The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
 	AccountId *string `pulumi:"accountId"`
 	// Access Identity Provider name to search for.
 	Name string `pulumi:"name"`
-	// The Zone's ID. Conflicts with `accountId`.
+	// The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getAccessIdentityProvider.
 type LookupAccessIdentityProviderResult struct {
+	// The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
 	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Access Identity Provider Name
+	// Access Identity Provider name to search for.
 	Name string `pulumi:"name"`
-	// Access Identity Provider Type
-	Type   string  `pulumi:"type"`
+	// Access Identity Provider Type.
+	Type string `pulumi:"type"`
+	// The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -98,11 +100,11 @@ func LookupAccessIdentityProviderOutput(ctx *pulumi.Context, args LookupAccessId
 
 // A collection of arguments for invoking getAccessIdentityProvider.
 type LookupAccessIdentityProviderOutputArgs struct {
-	// The account for which to look for an Access Identity Provider. Conflicts with `zoneId`.
+	// The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Access Identity Provider name to search for.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The Zone's ID. Conflicts with `accountId`.
+	// The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
@@ -125,6 +127,7 @@ func (o LookupAccessIdentityProviderResultOutput) ToLookupAccessIdentityProvider
 	return o
 }
 
+// The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
 func (o LookupAccessIdentityProviderResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccessIdentityProviderResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -134,16 +137,17 @@ func (o LookupAccessIdentityProviderResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessIdentityProviderResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Access Identity Provider Name
+// Access Identity Provider name to search for.
 func (o LookupAccessIdentityProviderResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessIdentityProviderResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Access Identity Provider Type
+// Access Identity Provider Type.
 func (o LookupAccessIdentityProviderResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessIdentityProviderResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
 func (o LookupAccessIdentityProviderResultOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccessIdentityProviderResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

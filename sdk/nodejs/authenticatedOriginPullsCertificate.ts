@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Authenticated Origin Pulls certificate resource. An uploaded client certificate is required to use Per-Zone or Per-Hostname Authenticated Origin Pulls.
+ * Provides a Cloudflare Authenticated Origin Pulls certificate
+ * resource. An uploaded client certificate is required to use Per-Zone
+ *  or Per-Hostname Authenticated Origin Pulls.
  *
  * ## Example Usage
  *
@@ -18,29 +20,21 @@ import * as utilities from "./utilities";
  *     certificate: "-----INSERT CERTIFICATE-----",
  *     privateKey: "-----INSERT PRIVATE KEY-----",
  *     type: "per-zone",
- *     zoneId: _var.cloudflare_zone_id,
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * // Per-Hostname Authenticated Origin Pulls certificate
  * const myPerHostnameAopCert = new cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", {
  *     certificate: "-----INSERT CERTIFICATE-----",
  *     privateKey: "-----INSERT PRIVATE KEY-----",
  *     type: "per-hostname",
- *     zoneId: _var.cloudflare_zone_id,
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  *
  * ## Import
  *
- * Authenticated Origin Pull certificates can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, e.g. Import Per-Zone Authenticated Origin Pull certificate
- *
  * ```sh
- *  $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-zone/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
- * ```
- *
- *  Import Per-Hostname Authenticated Origin Pull certificate
- *
- * ```sh
- *  $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-hostname/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
+ *  $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 <zone_id>/<certificate_type>/<certificate_id>
  * ```
  */
 export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
@@ -72,25 +66,43 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
     }
 
     /**
-     * The public client certificate.
+     * The public client certificate. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly certificate!: pulumi.Output<string>;
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     */
     public /*out*/ readonly expiresOn!: pulumi.Output<string>;
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     */
     public /*out*/ readonly issuer!: pulumi.Output<string>;
     /**
-     * The private key of the client certificate.
+     * The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly privateKey!: pulumi.Output<string>;
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     */
     public /*out*/ readonly serialNumber!: pulumi.Output<string>;
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     */
     public /*out*/ readonly signature!: pulumi.Output<string>;
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The form of Authenticated Origin Pulls to upload the certificate to.
+     * The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly type!: pulumi.Output<string>;
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     */
     public /*out*/ readonly uploadedOn!: pulumi.Output<string>;
     /**
-     * The zone ID to upload the certificate to.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -154,25 +166,43 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
  */
 export interface AuthenticatedOriginPullsCertificateState {
     /**
-     * The public client certificate.
+     * The public client certificate. **Modifying this attribute will force creation of a new resource.**
      */
     certificate?: pulumi.Input<string>;
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     */
     expiresOn?: pulumi.Input<string>;
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     */
     issuer?: pulumi.Input<string>;
     /**
-     * The private key of the client certificate.
+     * The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
      */
     privateKey?: pulumi.Input<string>;
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     */
     serialNumber?: pulumi.Input<string>;
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     */
     signature?: pulumi.Input<string>;
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     */
     status?: pulumi.Input<string>;
     /**
-     * The form of Authenticated Origin Pulls to upload the certificate to.
+     * The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
      */
     type?: pulumi.Input<string>;
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     */
     uploadedOn?: pulumi.Input<string>;
     /**
-     * The zone ID to upload the certificate to.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -182,19 +212,19 @@ export interface AuthenticatedOriginPullsCertificateState {
  */
 export interface AuthenticatedOriginPullsCertificateArgs {
     /**
-     * The public client certificate.
+     * The public client certificate. **Modifying this attribute will force creation of a new resource.**
      */
     certificate: pulumi.Input<string>;
     /**
-     * The private key of the client certificate.
+     * The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
      */
     privateKey: pulumi.Input<string>;
     /**
-     * The form of Authenticated Origin Pulls to upload the certificate to.
+     * The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
      */
     type: pulumi.Input<string>;
     /**
-     * The zone ID to upload the certificate to.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId: pulumi.Input<string>;
 }

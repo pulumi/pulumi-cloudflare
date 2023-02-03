@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetZoneResult {
     /**
-     * @return The account ID associated with the zone.
+     * @return The account identifier to target for the resource.
      * 
      */
     private String accountId;
@@ -22,7 +22,7 @@ public final class GetZoneResult {
      */
     private String id;
     /**
-     * @return The name of the zone.
+     * @return The name of the zone. Must provide only one of `zone_id`, `name`.
      * 
      */
     private String name;
@@ -32,7 +32,7 @@ public final class GetZoneResult {
      */
     private List<String> nameServers;
     /**
-     * @return `true` if cloudflare is enabled on the zone, otherwise `false`.
+     * @return Whether the zone is paused on Cloudflare.
      * 
      */
     private Boolean paused;
@@ -42,8 +42,7 @@ public final class GetZoneResult {
      */
     private String plan;
     /**
-     * @return Status of the zone. Values can be: `&#34;active&#34;`, `&#34;pending&#34;`, `&#34;initializing&#34;`, `&#34;moved&#34;`, `&#34;deleted&#34;`,
-     * or `&#34;deactivated&#34;`.
+     * @return Status of the zone.
      * 
      */
     private String status;
@@ -52,11 +51,15 @@ public final class GetZoneResult {
      * 
      */
     private List<String> vanityNameServers;
+    /**
+     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
+     * 
+     */
     private String zoneId;
 
     private GetZoneResult() {}
     /**
-     * @return The account ID associated with the zone.
+     * @return The account identifier to target for the resource.
      * 
      */
     public String accountId() {
@@ -70,7 +73,7 @@ public final class GetZoneResult {
         return this.id;
     }
     /**
-     * @return The name of the zone.
+     * @return The name of the zone. Must provide only one of `zone_id`, `name`.
      * 
      */
     public String name() {
@@ -84,7 +87,7 @@ public final class GetZoneResult {
         return this.nameServers;
     }
     /**
-     * @return `true` if cloudflare is enabled on the zone, otherwise `false`.
+     * @return Whether the zone is paused on Cloudflare.
      * 
      */
     public Boolean paused() {
@@ -98,8 +101,7 @@ public final class GetZoneResult {
         return this.plan;
     }
     /**
-     * @return Status of the zone. Values can be: `&#34;active&#34;`, `&#34;pending&#34;`, `&#34;initializing&#34;`, `&#34;moved&#34;`, `&#34;deleted&#34;`,
-     * or `&#34;deactivated&#34;`.
+     * @return Status of the zone.
      * 
      */
     public String status() {
@@ -112,6 +114,10 @@ public final class GetZoneResult {
     public List<String> vanityNameServers() {
         return this.vanityNameServers;
     }
+    /**
+     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
+     * 
+     */
     public String zoneId() {
         return this.zoneId;
     }

@@ -17,14 +17,14 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
     public static final TeamsProxyEndpointState Empty = new TeamsProxyEndpointState();
 
     /**
-     * The account to which the teams proxy endpoint should be added.
+     * The account identifier to target for the resource.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account to which the teams proxy endpoint should be added.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -104,7 +104,7 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountId The account to which the teams proxy endpoint should be added.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountId The account to which the teams proxy endpoint should be added.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 

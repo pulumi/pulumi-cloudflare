@@ -27,11 +27,11 @@ class StaticRouteArgs:
         :param pulumi.Input[str] nexthop: The nexthop IP address where traffic will be routed to.
         :param pulumi.Input[str] prefix: Your network prefix using CIDR notation.
         :param pulumi.Input[int] priority: The priority for the static route.
-        :param pulumi.Input[str] account_id: The ID of the account where the static route is being created.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_names: Optional list of Cloudflare colocation names for this static route.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_regions: Optional list of Cloudflare colocation regions for this static route.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_names: List of Cloudflare colocation regions for this static route.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_regions: List of Cloudflare colocation names for this static route.
         :param pulumi.Input[str] description: Description of the static route.
-        :param pulumi.Input[int] weight: The optional weight for ECMP routes.
+        :param pulumi.Input[int] weight: The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
         """
         pulumi.set(__self__, "nexthop", nexthop)
         pulumi.set(__self__, "prefix", prefix)
@@ -87,7 +87,7 @@ class StaticRouteArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the account where the static route is being created.
+        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "account_id")
 
@@ -99,7 +99,7 @@ class StaticRouteArgs:
     @pulumi.getter(name="coloNames")
     def colo_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Optional list of Cloudflare colocation names for this static route.
+        List of Cloudflare colocation regions for this static route.
         """
         return pulumi.get(self, "colo_names")
 
@@ -111,7 +111,7 @@ class StaticRouteArgs:
     @pulumi.getter(name="coloRegions")
     def colo_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Optional list of Cloudflare colocation regions for this static route.
+        List of Cloudflare colocation names for this static route.
         """
         return pulumi.get(self, "colo_regions")
 
@@ -135,7 +135,7 @@ class StaticRouteArgs:
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[int]]:
         """
-        The optional weight for ECMP routes.
+        The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "weight")
 
@@ -157,14 +157,14 @@ class _StaticRouteState:
                  weight: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering StaticRoute resources.
-        :param pulumi.Input[str] account_id: The ID of the account where the static route is being created.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_names: Optional list of Cloudflare colocation names for this static route.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_regions: Optional list of Cloudflare colocation regions for this static route.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_names: List of Cloudflare colocation regions for this static route.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_regions: List of Cloudflare colocation names for this static route.
         :param pulumi.Input[str] description: Description of the static route.
         :param pulumi.Input[str] nexthop: The nexthop IP address where traffic will be routed to.
         :param pulumi.Input[str] prefix: Your network prefix using CIDR notation.
         :param pulumi.Input[int] priority: The priority for the static route.
-        :param pulumi.Input[int] weight: The optional weight for ECMP routes.
+        :param pulumi.Input[int] weight: The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -187,7 +187,7 @@ class _StaticRouteState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the account where the static route is being created.
+        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "account_id")
 
@@ -199,7 +199,7 @@ class _StaticRouteState:
     @pulumi.getter(name="coloNames")
     def colo_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Optional list of Cloudflare colocation names for this static route.
+        List of Cloudflare colocation regions for this static route.
         """
         return pulumi.get(self, "colo_names")
 
@@ -211,7 +211,7 @@ class _StaticRouteState:
     @pulumi.getter(name="coloRegions")
     def colo_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Optional list of Cloudflare colocation regions for this static route.
+        List of Cloudflare colocation names for this static route.
         """
         return pulumi.get(self, "colo_regions")
 
@@ -271,7 +271,7 @@ class _StaticRouteState:
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[int]]:
         """
-        The optional weight for ECMP routes.
+        The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "weight")
 
@@ -295,8 +295,9 @@ class StaticRoute(pulumi.CustomResource):
                  weight: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Provides a resource, that manages Cloudflare static routes for Magic Transit or Magic WAN.
-        Static routes are used to route traffic through GRE tunnels.
+        Provides a resource, that manages Cloudflare static routes for Magic
+        Transit or Magic WAN. Static routes are used to route traffic
+        through GRE tunnels.
 
         ## Example Usage
 
@@ -305,7 +306,7 @@ class StaticRoute(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.StaticRoute("example",
-            account_id="c4a7362d577a6c3019a474fd6f485821",
+            account_id="f037e56e89293a057740de681ac9abbe",
             colo_names=["den01"],
             colo_regions=["APAC"],
             description="New route for new prefix 192.0.2.0/24",
@@ -317,22 +318,20 @@ class StaticRoute(pulumi.CustomResource):
 
         ## Import
 
-        An existing static route can be imported using the account ID and static route ID
-
         ```sh
-         $ pulumi import cloudflare:index/staticRoute:StaticRoute example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
+         $ pulumi import cloudflare:index/staticRoute:StaticRoute example <account_id>/<static_route_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The ID of the account where the static route is being created.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_names: Optional list of Cloudflare colocation names for this static route.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_regions: Optional list of Cloudflare colocation regions for this static route.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_names: List of Cloudflare colocation regions for this static route.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_regions: List of Cloudflare colocation names for this static route.
         :param pulumi.Input[str] description: Description of the static route.
         :param pulumi.Input[str] nexthop: The nexthop IP address where traffic will be routed to.
         :param pulumi.Input[str] prefix: Your network prefix using CIDR notation.
         :param pulumi.Input[int] priority: The priority for the static route.
-        :param pulumi.Input[int] weight: The optional weight for ECMP routes.
+        :param pulumi.Input[int] weight: The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -341,8 +340,9 @@ class StaticRoute(pulumi.CustomResource):
                  args: StaticRouteArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource, that manages Cloudflare static routes for Magic Transit or Magic WAN.
-        Static routes are used to route traffic through GRE tunnels.
+        Provides a resource, that manages Cloudflare static routes for Magic
+        Transit or Magic WAN. Static routes are used to route traffic
+        through GRE tunnels.
 
         ## Example Usage
 
@@ -351,7 +351,7 @@ class StaticRoute(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.StaticRoute("example",
-            account_id="c4a7362d577a6c3019a474fd6f485821",
+            account_id="f037e56e89293a057740de681ac9abbe",
             colo_names=["den01"],
             colo_regions=["APAC"],
             description="New route for new prefix 192.0.2.0/24",
@@ -363,10 +363,8 @@ class StaticRoute(pulumi.CustomResource):
 
         ## Import
 
-        An existing static route can be imported using the account ID and static route ID
-
         ```sh
-         $ pulumi import cloudflare:index/staticRoute:StaticRoute example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
+         $ pulumi import cloudflare:index/staticRoute:StaticRoute example <account_id>/<static_route_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -440,14 +438,14 @@ class StaticRoute(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The ID of the account where the static route is being created.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_names: Optional list of Cloudflare colocation names for this static route.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_regions: Optional list of Cloudflare colocation regions for this static route.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_names: List of Cloudflare colocation regions for this static route.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] colo_regions: List of Cloudflare colocation names for this static route.
         :param pulumi.Input[str] description: Description of the static route.
         :param pulumi.Input[str] nexthop: The nexthop IP address where traffic will be routed to.
         :param pulumi.Input[str] prefix: Your network prefix using CIDR notation.
         :param pulumi.Input[int] priority: The priority for the static route.
-        :param pulumi.Input[int] weight: The optional weight for ECMP routes.
+        :param pulumi.Input[int] weight: The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -467,7 +465,7 @@ class StaticRoute(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the account where the static route is being created.
+        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "account_id")
 
@@ -475,7 +473,7 @@ class StaticRoute(pulumi.CustomResource):
     @pulumi.getter(name="coloNames")
     def colo_names(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Optional list of Cloudflare colocation names for this static route.
+        List of Cloudflare colocation regions for this static route.
         """
         return pulumi.get(self, "colo_names")
 
@@ -483,7 +481,7 @@ class StaticRoute(pulumi.CustomResource):
     @pulumi.getter(name="coloRegions")
     def colo_regions(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Optional list of Cloudflare colocation regions for this static route.
+        List of Cloudflare colocation names for this static route.
         """
         return pulumi.get(self, "colo_regions")
 
@@ -523,7 +521,7 @@ class StaticRoute(pulumi.CustomResource):
     @pulumi.getter
     def weight(self) -> pulumi.Output[Optional[int]]:
         """
-        The optional weight for ECMP routes.
+        The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "weight")
 

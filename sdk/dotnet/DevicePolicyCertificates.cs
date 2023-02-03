@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare device policy certificates resource. Device policy certificate resources enable client device certificate generation.
+    /// Provides a Cloudflare device policy certificates resource. Device
+    /// policy certificate resources enable client device certificate
+    /// generation.
     /// 
     /// ## Example Usage
     /// 
@@ -24,7 +26,7 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.DevicePolicyCertificates("example", new()
     ///     {
     ///         Enabled = true,
-    ///         ZoneId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });
@@ -32,23 +34,21 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Device policy certificate settings can be imported using the zone ID.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates example cb029e245cfdd66dc8d2e570d5dd3322
+    ///  $ pulumi import cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates example &lt;zone_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates")]
     public partial class DevicePolicyCertificates : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// True if certificate generation is enabled.
+        /// `true` if certificate generation is enabled.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// The zone ID where certificate generation is allowed.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -100,13 +100,13 @@ namespace Pulumi.Cloudflare
     public sealed class DevicePolicyCertificatesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// True if certificate generation is enabled.
+        /// `true` if certificate generation is enabled.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// The zone ID where certificate generation is allowed.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -120,13 +120,13 @@ namespace Pulumi.Cloudflare
     public sealed class DevicePolicyCertificatesState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// True if certificate generation is enabled.
+        /// `true` if certificate generation is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The zone ID where certificate generation is allowed.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

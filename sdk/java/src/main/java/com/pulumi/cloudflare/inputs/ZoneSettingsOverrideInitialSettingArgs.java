@@ -69,17 +69,9 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
         return Optional.ofNullable(this.browserCheck);
     }
 
-    /**
-     * Allowed values: &#34;aggressive&#34; (default) - delivers a different resource each time the query string changes, &#34;basic&#34; - delivers resources from cache when there is no query string, &#34;simplified&#34; - delivers the same resource to everyone independent of the query string.
-     * 
-     */
     @Import(name="cacheLevel")
     private @Nullable Output<String> cacheLevel;
 
-    /**
-     * @return Allowed values: &#34;aggressive&#34; (default) - delivers a different resource each time the query string changes, &#34;basic&#34; - delivers resources from cache when there is no query string, &#34;simplified&#34; - delivers the same resource to everyone independent of the query string.
-     * 
-     */
     public Optional<Output<String>> cacheLevel() {
         return Optional.ofNullable(this.cacheLevel);
     }
@@ -91,32 +83,16 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
         return Optional.ofNullable(this.challengeTtl);
     }
 
-    /**
-     * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
-     * 
-     */
     @Import(name="ciphers")
     private @Nullable Output<List<String>> ciphers;
 
-    /**
-     * @return An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
-     * 
-     */
     public Optional<Output<List<String>>> ciphers() {
         return Optional.ofNullable(this.ciphers);
     }
 
-    /**
-     * Allowed values: &#34;flatten_at_root&#34; (default), &#34;flatten_all&#34;, &#34;flatten_none&#34;.
-     * 
-     */
     @Import(name="cnameFlattening")
     private @Nullable Output<String> cnameFlattening;
 
-    /**
-     * @return Allowed values: &#34;flatten_at_root&#34; (default), &#34;flatten_all&#34;, &#34;flatten_none&#34;.
-     * 
-     */
     public Optional<Output<String>> cnameFlattening() {
         return Optional.ofNullable(this.cnameFlattening);
     }
@@ -149,17 +125,9 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
         return Optional.ofNullable(this.filterLogsToCloudflare);
     }
 
-    /**
-     * Allowed values: &#34;on&#34;, &#34;off&#34; (default), &#34;custom&#34;.
-     * 
-     */
     @Import(name="h2Prioritization")
     private @Nullable Output<String> h2Prioritization;
 
-    /**
-     * @return Allowed values: &#34;on&#34;, &#34;off&#34; (default), &#34;custom&#34;.
-     * 
-     */
     public Optional<Output<String>> h2Prioritization() {
         return Optional.ofNullable(this.h2Prioritization);
     }
@@ -185,17 +153,9 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
         return Optional.ofNullable(this.http3);
     }
 
-    /**
-     * Allowed values: &#34;on&#34;, &#34;off&#34; (default), &#34;open&#34;.
-     * 
-     */
     @Import(name="imageResizing")
     private @Nullable Output<String> imageResizing;
 
-    /**
-     * @return Allowed values: &#34;on&#34;, &#34;off&#34; (default), &#34;open&#34;.
-     * 
-     */
     public Optional<Output<String>> imageResizing() {
         return Optional.ofNullable(this.imageResizing);
     }
@@ -228,17 +188,9 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
         return Optional.ofNullable(this.maxUpload);
     }
 
-    /**
-     * Allowed values: &#34;1.0&#34; (default), &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
-     * 
-     */
     @Import(name="minTlsVersion")
     private @Nullable Output<String> minTlsVersion;
 
-    /**
-     * @return Allowed values: &#34;1.0&#34; (default), &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
-     * 
-     */
     public Optional<Output<String>> minTlsVersion() {
         return Optional.ofNullable(this.minTlsVersion);
     }
@@ -292,32 +244,16 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
         return Optional.ofNullable(this.originErrorPagePassThru);
     }
 
-    /**
-     * Allowed values: &#34;1&#34; (default on Enterprise), &#34;2&#34; (default)
-     * 
-     */
     @Import(name="originMaxHttpVersion")
     private @Nullable Output<String> originMaxHttpVersion;
 
-    /**
-     * @return Allowed values: &#34;1&#34; (default on Enterprise), &#34;2&#34; (default)
-     * 
-     */
     public Optional<Output<String>> originMaxHttpVersion() {
         return Optional.ofNullable(this.originMaxHttpVersion);
     }
 
-    /**
-     * Allowed values: &#34;off&#34; (default), &#34;lossless&#34;, &#34;lossy&#34;.
-     * 
-     */
     @Import(name="polish")
     private @Nullable Output<String> polish;
 
-    /**
-     * @return Allowed values: &#34;off&#34; (default), &#34;lossless&#34;, &#34;lossy&#34;.
-     * 
-     */
     public Optional<Output<String>> polish() {
         return Optional.ofNullable(this.polish);
     }
@@ -343,17 +279,9 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
         return Optional.ofNullable(this.proxyReadTimeout);
     }
 
-    /**
-     * Allowed values: &#34;off&#34; (default), &#34;add_header&#34;, &#34;overwrite_header&#34;.
-     * 
-     */
     @Import(name="pseudoIpv4")
     private @Nullable Output<String> pseudoIpv4;
 
-    /**
-     * @return Allowed values: &#34;off&#34; (default), &#34;add_header&#34;, &#34;overwrite_header&#34;.
-     * 
-     */
     public Optional<Output<String>> pseudoIpv4() {
         return Optional.ofNullable(this.pseudoIpv4);
     }
@@ -379,17 +307,9 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
         return Optional.ofNullable(this.securityHeader);
     }
 
-    /**
-     * Allowed values: &#34;off&#34; (Enterprise only), &#34;essentially_off&#34;, &#34;low&#34;, &#34;medium&#34; (default), &#34;high&#34;, &#34;under_attack&#34;.
-     * 
-     */
     @Import(name="securityLevel")
     private @Nullable Output<String> securityLevel;
 
-    /**
-     * @return Allowed values: &#34;off&#34; (Enterprise only), &#34;essentially_off&#34;, &#34;low&#34;, &#34;medium&#34; (default), &#34;high&#34;, &#34;under_attack&#34;.
-     * 
-     */
     public Optional<Output<String>> securityLevel() {
         return Optional.ofNullable(this.securityLevel);
     }
@@ -408,17 +328,9 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
         return Optional.ofNullable(this.sortQueryStringForCache);
     }
 
-    /**
-     * Allowed values: &#34;off&#34; (default), &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
-     * 
-     */
     @Import(name="ssl")
     private @Nullable Output<String> ssl;
 
-    /**
-     * @return Allowed values: &#34;off&#34; (default), &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
-     * 
-     */
     public Optional<Output<String>> ssl() {
         return Optional.ofNullable(this.ssl);
     }
@@ -442,17 +354,9 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
         return Optional.ofNullable(this.tls12Only);
     }
 
-    /**
-     * Allowed values: &#34;off&#34; (default), &#34;on&#34;, &#34;zrt&#34;.
-     * 
-     */
     @Import(name="tls13")
     private @Nullable Output<String> tls13;
 
-    /**
-     * @return Allowed values: &#34;off&#34; (default), &#34;on&#34;, &#34;zrt&#34;.
-     * 
-     */
     public Optional<Output<String>> tls13() {
         return Optional.ofNullable(this.tls13);
     }
@@ -492,17 +396,9 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
         return Optional.ofNullable(this.waf);
     }
 
-    /**
-     * . Note that the value specified will be ignored unless `polish` is turned on (i.e. is &#34;lossless&#34; or &#34;lossy&#34;)
-     * 
-     */
     @Import(name="webp")
     private @Nullable Output<String> webp;
 
-    /**
-     * @return . Note that the value specified will be ignored unless `polish` is turned on (i.e. is &#34;lossless&#34; or &#34;lossy&#34;)
-     * 
-     */
     public Optional<Output<String>> webp() {
         return Optional.ofNullable(this.webp);
     }
@@ -662,23 +558,11 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
             return browserCheck(Output.of(browserCheck));
         }
 
-        /**
-         * @param cacheLevel Allowed values: &#34;aggressive&#34; (default) - delivers a different resource each time the query string changes, &#34;basic&#34; - delivers resources from cache when there is no query string, &#34;simplified&#34; - delivers the same resource to everyone independent of the query string.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cacheLevel(@Nullable Output<String> cacheLevel) {
             $.cacheLevel = cacheLevel;
             return this;
         }
 
-        /**
-         * @param cacheLevel Allowed values: &#34;aggressive&#34; (default) - delivers a different resource each time the query string changes, &#34;basic&#34; - delivers resources from cache when there is no query string, &#34;simplified&#34; - delivers the same resource to everyone independent of the query string.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cacheLevel(String cacheLevel) {
             return cacheLevel(Output.of(cacheLevel));
         }
@@ -692,54 +576,24 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
             return challengeTtl(Output.of(challengeTtl));
         }
 
-        /**
-         * @param ciphers An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ciphers(@Nullable Output<List<String>> ciphers) {
             $.ciphers = ciphers;
             return this;
         }
 
-        /**
-         * @param ciphers An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ciphers(List<String> ciphers) {
             return ciphers(Output.of(ciphers));
         }
 
-        /**
-         * @param ciphers An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ciphers(String... ciphers) {
             return ciphers(List.of(ciphers));
         }
 
-        /**
-         * @param cnameFlattening Allowed values: &#34;flatten_at_root&#34; (default), &#34;flatten_all&#34;, &#34;flatten_none&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cnameFlattening(@Nullable Output<String> cnameFlattening) {
             $.cnameFlattening = cnameFlattening;
             return this;
         }
 
-        /**
-         * @param cnameFlattening Allowed values: &#34;flatten_at_root&#34; (default), &#34;flatten_all&#34;, &#34;flatten_none&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cnameFlattening(String cnameFlattening) {
             return cnameFlattening(Output.of(cnameFlattening));
         }
@@ -780,23 +634,11 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
             return filterLogsToCloudflare(Output.of(filterLogsToCloudflare));
         }
 
-        /**
-         * @param h2Prioritization Allowed values: &#34;on&#34;, &#34;off&#34; (default), &#34;custom&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder h2Prioritization(@Nullable Output<String> h2Prioritization) {
             $.h2Prioritization = h2Prioritization;
             return this;
         }
 
-        /**
-         * @param h2Prioritization Allowed values: &#34;on&#34;, &#34;off&#34; (default), &#34;custom&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder h2Prioritization(String h2Prioritization) {
             return h2Prioritization(Output.of(h2Prioritization));
         }
@@ -828,23 +670,11 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
             return http3(Output.of(http3));
         }
 
-        /**
-         * @param imageResizing Allowed values: &#34;on&#34;, &#34;off&#34; (default), &#34;open&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder imageResizing(@Nullable Output<String> imageResizing) {
             $.imageResizing = imageResizing;
             return this;
         }
 
-        /**
-         * @param imageResizing Allowed values: &#34;on&#34;, &#34;off&#34; (default), &#34;open&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder imageResizing(String imageResizing) {
             return imageResizing(Output.of(imageResizing));
         }
@@ -885,23 +715,11 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
             return maxUpload(Output.of(maxUpload));
         }
 
-        /**
-         * @param minTlsVersion Allowed values: &#34;1.0&#34; (default), &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minTlsVersion(@Nullable Output<String> minTlsVersion) {
             $.minTlsVersion = minTlsVersion;
             return this;
         }
 
-        /**
-         * @param minTlsVersion Allowed values: &#34;1.0&#34; (default), &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minTlsVersion(String minTlsVersion) {
             return minTlsVersion(Output.of(minTlsVersion));
         }
@@ -969,44 +787,20 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
             return originErrorPagePassThru(Output.of(originErrorPagePassThru));
         }
 
-        /**
-         * @param originMaxHttpVersion Allowed values: &#34;1&#34; (default on Enterprise), &#34;2&#34; (default)
-         * 
-         * @return builder
-         * 
-         */
         public Builder originMaxHttpVersion(@Nullable Output<String> originMaxHttpVersion) {
             $.originMaxHttpVersion = originMaxHttpVersion;
             return this;
         }
 
-        /**
-         * @param originMaxHttpVersion Allowed values: &#34;1&#34; (default on Enterprise), &#34;2&#34; (default)
-         * 
-         * @return builder
-         * 
-         */
         public Builder originMaxHttpVersion(String originMaxHttpVersion) {
             return originMaxHttpVersion(Output.of(originMaxHttpVersion));
         }
 
-        /**
-         * @param polish Allowed values: &#34;off&#34; (default), &#34;lossless&#34;, &#34;lossy&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder polish(@Nullable Output<String> polish) {
             $.polish = polish;
             return this;
         }
 
-        /**
-         * @param polish Allowed values: &#34;off&#34; (default), &#34;lossless&#34;, &#34;lossy&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder polish(String polish) {
             return polish(Output.of(polish));
         }
@@ -1038,23 +832,11 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
             return proxyReadTimeout(Output.of(proxyReadTimeout));
         }
 
-        /**
-         * @param pseudoIpv4 Allowed values: &#34;off&#34; (default), &#34;add_header&#34;, &#34;overwrite_header&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder pseudoIpv4(@Nullable Output<String> pseudoIpv4) {
             $.pseudoIpv4 = pseudoIpv4;
             return this;
         }
 
-        /**
-         * @param pseudoIpv4 Allowed values: &#34;off&#34; (default), &#34;add_header&#34;, &#34;overwrite_header&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder pseudoIpv4(String pseudoIpv4) {
             return pseudoIpv4(Output.of(pseudoIpv4));
         }
@@ -1086,23 +868,11 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
             return securityHeader(Output.of(securityHeader));
         }
 
-        /**
-         * @param securityLevel Allowed values: &#34;off&#34; (Enterprise only), &#34;essentially_off&#34;, &#34;low&#34;, &#34;medium&#34; (default), &#34;high&#34;, &#34;under_attack&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder securityLevel(@Nullable Output<String> securityLevel) {
             $.securityLevel = securityLevel;
             return this;
         }
 
-        /**
-         * @param securityLevel Allowed values: &#34;off&#34; (Enterprise only), &#34;essentially_off&#34;, &#34;low&#34;, &#34;medium&#34; (default), &#34;high&#34;, &#34;under_attack&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder securityLevel(String securityLevel) {
             return securityLevel(Output.of(securityLevel));
         }
@@ -1125,23 +895,11 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
             return sortQueryStringForCache(Output.of(sortQueryStringForCache));
         }
 
-        /**
-         * @param ssl Allowed values: &#34;off&#34; (default), &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ssl(@Nullable Output<String> ssl) {
             $.ssl = ssl;
             return this;
         }
 
-        /**
-         * @param ssl Allowed values: &#34;off&#34; (default), &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ssl(String ssl) {
             return ssl(Output.of(ssl));
         }
@@ -1171,23 +929,11 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
             return tls12Only(Output.of(tls12Only));
         }
 
-        /**
-         * @param tls13 Allowed values: &#34;off&#34; (default), &#34;on&#34;, &#34;zrt&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tls13(@Nullable Output<String> tls13) {
             $.tls13 = tls13;
             return this;
         }
 
-        /**
-         * @param tls13 Allowed values: &#34;off&#34; (default), &#34;on&#34;, &#34;zrt&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tls13(String tls13) {
             return tls13(Output.of(tls13));
         }
@@ -1237,23 +983,11 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
             return waf(Output.of(waf));
         }
 
-        /**
-         * @param webp . Note that the value specified will be ignored unless `polish` is turned on (i.e. is &#34;lossless&#34; or &#34;lossy&#34;)
-         * 
-         * @return builder
-         * 
-         */
         public Builder webp(@Nullable Output<String> webp) {
             $.webp = webp;
             return this;
         }
 
-        /**
-         * @param webp . Note that the value specified will be ignored unless `polish` is turned on (i.e. is &#34;lossless&#34; or &#34;lossy&#34;)
-         * 
-         * @return builder
-         * 
-         */
         public Builder webp(String webp) {
             return webp(Output.of(webp));
         }

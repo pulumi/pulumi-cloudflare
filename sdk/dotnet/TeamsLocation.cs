@@ -10,8 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Teams Location resource. Teams Locations are referenced
-    /// when creating secure web gateway policies.
+    /// Provides a Cloudflare Teams Location resource. Teams Locations are
+    /// referenced when creating secure web gateway policies.
     /// 
     /// ## Example Usage
     /// 
@@ -22,9 +22,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var corporateOffice = new Cloudflare.TeamsLocation("corporateOffice", new()
+    ///     var example = new Cloudflare.TeamsLocation("example", new()
     ///     {
-    ///         AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         ClientDefault = true,
     ///         Name = "office",
     ///         Networks = new[]
@@ -45,17 +45,15 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Teams locations can be imported using a composite ID formed of account ID and teams location ID.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/teamsLocation:TeamsLocation corporate_office cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+    ///  $ pulumi import cloudflare:index/teamsLocation:TeamsLocation example &lt;account_id&gt;/&lt;teams_location_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/teamsLocation:TeamsLocation")]
     public partial class TeamsLocation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account to which the teams location should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -79,13 +77,13 @@ namespace Pulumi.Cloudflare
         public Output<string> DohSubdomain { get; private set; } = null!;
 
         /// <summary>
-        /// Client IP address
+        /// Client IP address.
         /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
         /// <summary>
-        /// IP to direct all IPv4 DNS queries too.
+        /// IP to direct all IPv4 DNS queries to.
         /// </summary>
         [Output("ipv4Destination")]
         public Output<string> Ipv4Destination { get; private set; } = null!;
@@ -152,7 +150,7 @@ namespace Pulumi.Cloudflare
     public sealed class TeamsLocationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the teams location should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -190,7 +188,7 @@ namespace Pulumi.Cloudflare
     public sealed class TeamsLocationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the teams location should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -214,13 +212,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? DohSubdomain { get; set; }
 
         /// <summary>
-        /// Client IP address
+        /// Client IP address.
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// IP to direct all IPv4 DNS queries too.
+        /// IP to direct all IPv4 DNS queries to.
         /// </summary>
         [Input("ipv4Destination")]
         public Input<string>? Ipv4Destination { get; set; }

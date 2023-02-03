@@ -121,6 +121,13 @@ public final class AccessPolicyExcludeArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.gsuites);
     }
 
+    @Import(name="ipLists")
+    private @Nullable Output<List<String>> ipLists;
+
+    public Optional<Output<List<String>>> ipLists() {
+        return Optional.ofNullable(this.ipLists);
+    }
+
     @Import(name="ips")
     private @Nullable Output<List<String>> ips;
 
@@ -173,6 +180,7 @@ public final class AccessPolicyExcludeArgs extends com.pulumi.resources.Resource
         this.githubs = $.githubs;
         this.groups = $.groups;
         this.gsuites = $.gsuites;
+        this.ipLists = $.ipLists;
         this.ips = $.ips;
         this.loginMethods = $.loginMethods;
         this.oktas = $.oktas;
@@ -354,6 +362,19 @@ public final class AccessPolicyExcludeArgs extends com.pulumi.resources.Resource
 
         public Builder gsuites(AccessPolicyExcludeGsuiteArgs... gsuites) {
             return gsuites(List.of(gsuites));
+        }
+
+        public Builder ipLists(@Nullable Output<List<String>> ipLists) {
+            $.ipLists = ipLists;
+            return this;
+        }
+
+        public Builder ipLists(List<String> ipLists) {
+            return ipLists(Output.of(ipLists));
+        }
+
+        public Builder ipLists(String... ipLists) {
+            return ipLists(List.of(ipLists));
         }
 
         public Builder ips(@Nullable Output<List<String>> ips) {

@@ -15,77 +15,37 @@ public final class TeamsRuleRuleSettingsBisoAdminControlsArgs extends com.pulumi
 
     public static final TeamsRuleRuleSettingsBisoAdminControlsArgs Empty = new TeamsRuleRuleSettingsBisoAdminControlsArgs();
 
-    /**
-     * Disable copy-paste.
-     * 
-     */
     @Import(name="disableCopyPaste")
     private @Nullable Output<Boolean> disableCopyPaste;
 
-    /**
-     * @return Disable copy-paste.
-     * 
-     */
     public Optional<Output<Boolean>> disableCopyPaste() {
         return Optional.ofNullable(this.disableCopyPaste);
     }
 
-    /**
-     * Disable download.
-     * 
-     */
     @Import(name="disableDownload")
     private @Nullable Output<Boolean> disableDownload;
 
-    /**
-     * @return Disable download.
-     * 
-     */
     public Optional<Output<Boolean>> disableDownload() {
         return Optional.ofNullable(this.disableDownload);
     }
 
-    /**
-     * Disable keyboard usage.
-     * 
-     */
     @Import(name="disableKeyboard")
     private @Nullable Output<Boolean> disableKeyboard;
 
-    /**
-     * @return Disable keyboard usage.
-     * 
-     */
     public Optional<Output<Boolean>> disableKeyboard() {
         return Optional.ofNullable(this.disableKeyboard);
     }
 
-    /**
-     * Disable printing.
-     * 
-     */
     @Import(name="disablePrinting")
     private @Nullable Output<Boolean> disablePrinting;
 
-    /**
-     * @return Disable printing.
-     * 
-     */
     public Optional<Output<Boolean>> disablePrinting() {
         return Optional.ofNullable(this.disablePrinting);
     }
 
-    /**
-     * Disable upload.
-     * 
-     */
     @Import(name="disableUpload")
     private @Nullable Output<Boolean> disableUpload;
 
-    /**
-     * @return Disable upload.
-     * 
-     */
     public Optional<Output<Boolean>> disableUpload() {
         return Optional.ofNullable(this.disableUpload);
     }
@@ -118,107 +78,47 @@ public final class TeamsRuleRuleSettingsBisoAdminControlsArgs extends com.pulumi
             $ = new TeamsRuleRuleSettingsBisoAdminControlsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param disableCopyPaste Disable copy-paste.
-         * 
-         * @return builder
-         * 
-         */
         public Builder disableCopyPaste(@Nullable Output<Boolean> disableCopyPaste) {
             $.disableCopyPaste = disableCopyPaste;
             return this;
         }
 
-        /**
-         * @param disableCopyPaste Disable copy-paste.
-         * 
-         * @return builder
-         * 
-         */
         public Builder disableCopyPaste(Boolean disableCopyPaste) {
             return disableCopyPaste(Output.of(disableCopyPaste));
         }
 
-        /**
-         * @param disableDownload Disable download.
-         * 
-         * @return builder
-         * 
-         */
         public Builder disableDownload(@Nullable Output<Boolean> disableDownload) {
             $.disableDownload = disableDownload;
             return this;
         }
 
-        /**
-         * @param disableDownload Disable download.
-         * 
-         * @return builder
-         * 
-         */
         public Builder disableDownload(Boolean disableDownload) {
             return disableDownload(Output.of(disableDownload));
         }
 
-        /**
-         * @param disableKeyboard Disable keyboard usage.
-         * 
-         * @return builder
-         * 
-         */
         public Builder disableKeyboard(@Nullable Output<Boolean> disableKeyboard) {
             $.disableKeyboard = disableKeyboard;
             return this;
         }
 
-        /**
-         * @param disableKeyboard Disable keyboard usage.
-         * 
-         * @return builder
-         * 
-         */
         public Builder disableKeyboard(Boolean disableKeyboard) {
             return disableKeyboard(Output.of(disableKeyboard));
         }
 
-        /**
-         * @param disablePrinting Disable printing.
-         * 
-         * @return builder
-         * 
-         */
         public Builder disablePrinting(@Nullable Output<Boolean> disablePrinting) {
             $.disablePrinting = disablePrinting;
             return this;
         }
 
-        /**
-         * @param disablePrinting Disable printing.
-         * 
-         * @return builder
-         * 
-         */
         public Builder disablePrinting(Boolean disablePrinting) {
             return disablePrinting(Output.of(disablePrinting));
         }
 
-        /**
-         * @param disableUpload Disable upload.
-         * 
-         * @return builder
-         * 
-         */
         public Builder disableUpload(@Nullable Output<Boolean> disableUpload) {
             $.disableUpload = disableUpload;
             return this;
         }
 
-        /**
-         * @param disableUpload Disable upload.
-         * 
-         * @return builder
-         * 
-         */
         public Builder disableUpload(Boolean disableUpload) {
             return disableUpload(Output.of(disableUpload));
         }

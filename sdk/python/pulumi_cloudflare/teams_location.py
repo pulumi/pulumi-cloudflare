@@ -22,7 +22,7 @@ class TeamsLocationArgs:
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]]] = None):
         """
         The set of arguments for constructing a TeamsLocation resource.
-        :param pulumi.Input[str] account_id: The account to which the teams location should be added.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] name: Name of the teams location.
         :param pulumi.Input[bool] client_default: Indicator that this is the default location.
         :param pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]] networks: The networks CIDRs that comprise the location.
@@ -38,7 +38,7 @@ class TeamsLocationArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account to which the teams location should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -97,12 +97,12 @@ class _TeamsLocationState:
                  policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering TeamsLocation resources.
-        :param pulumi.Input[str] account_id: The account to which the teams location should be added.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] anonymized_logs_enabled: Indicator that anonymized logs are enabled.
         :param pulumi.Input[bool] client_default: Indicator that this is the default location.
         :param pulumi.Input[str] doh_subdomain: The FQDN that DoH clients should be pointed at.
-        :param pulumi.Input[str] ip: Client IP address
-        :param pulumi.Input[str] ipv4_destination: IP to direct all IPv4 DNS queries too.
+        :param pulumi.Input[str] ip: Client IP address.
+        :param pulumi.Input[str] ipv4_destination: IP to direct all IPv4 DNS queries to.
         :param pulumi.Input[str] name: Name of the teams location.
         :param pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]] networks: The networks CIDRs that comprise the location.
         """
@@ -129,7 +129,7 @@ class _TeamsLocationState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account to which the teams location should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -177,7 +177,7 @@ class _TeamsLocationState:
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[str]]:
         """
-        Client IP address
+        Client IP address.
         """
         return pulumi.get(self, "ip")
 
@@ -189,7 +189,7 @@ class _TeamsLocationState:
     @pulumi.getter(name="ipv4Destination")
     def ipv4_destination(self) -> Optional[pulumi.Input[str]]:
         """
-        IP to direct all IPv4 DNS queries too.
+        IP to direct all IPv4 DNS queries to.
         """
         return pulumi.get(self, "ipv4_destination")
 
@@ -242,8 +242,8 @@ class TeamsLocation(pulumi.CustomResource):
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsLocationNetworkArgs']]]]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Teams Location resource. Teams Locations are referenced
-        when creating secure web gateway policies.
+        Provides a Cloudflare Teams Location resource. Teams Locations are
+        referenced when creating secure web gateway policies.
 
         ## Example Usage
 
@@ -251,8 +251,8 @@ class TeamsLocation(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        corporate_office = cloudflare.TeamsLocation("corporateOffice",
-            account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+        example = cloudflare.TeamsLocation("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
             client_default=True,
             name="office",
             networks=[
@@ -267,15 +267,13 @@ class TeamsLocation(pulumi.CustomResource):
 
         ## Import
 
-        Teams locations can be imported using a composite ID formed of account ID and teams location ID.
-
         ```sh
-         $ pulumi import cloudflare:index/teamsLocation:TeamsLocation corporate_office cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+         $ pulumi import cloudflare:index/teamsLocation:TeamsLocation example <account_id>/<teams_location_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account to which the teams location should be added.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] client_default: Indicator that this is the default location.
         :param pulumi.Input[str] name: Name of the teams location.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsLocationNetworkArgs']]]] networks: The networks CIDRs that comprise the location.
@@ -287,8 +285,8 @@ class TeamsLocation(pulumi.CustomResource):
                  args: TeamsLocationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Teams Location resource. Teams Locations are referenced
-        when creating secure web gateway policies.
+        Provides a Cloudflare Teams Location resource. Teams Locations are
+        referenced when creating secure web gateway policies.
 
         ## Example Usage
 
@@ -296,8 +294,8 @@ class TeamsLocation(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        corporate_office = cloudflare.TeamsLocation("corporateOffice",
-            account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+        example = cloudflare.TeamsLocation("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
             client_default=True,
             name="office",
             networks=[
@@ -312,10 +310,8 @@ class TeamsLocation(pulumi.CustomResource):
 
         ## Import
 
-        Teams locations can be imported using a composite ID formed of account ID and teams location ID.
-
         ```sh
-         $ pulumi import cloudflare:index/teamsLocation:TeamsLocation corporate_office cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+         $ pulumi import cloudflare:index/teamsLocation:TeamsLocation example <account_id>/<teams_location_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -385,12 +381,12 @@ class TeamsLocation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account to which the teams location should be added.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] anonymized_logs_enabled: Indicator that anonymized logs are enabled.
         :param pulumi.Input[bool] client_default: Indicator that this is the default location.
         :param pulumi.Input[str] doh_subdomain: The FQDN that DoH clients should be pointed at.
-        :param pulumi.Input[str] ip: Client IP address
-        :param pulumi.Input[str] ipv4_destination: IP to direct all IPv4 DNS queries too.
+        :param pulumi.Input[str] ip: Client IP address.
+        :param pulumi.Input[str] ipv4_destination: IP to direct all IPv4 DNS queries to.
         :param pulumi.Input[str] name: Name of the teams location.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsLocationNetworkArgs']]]] networks: The networks CIDRs that comprise the location.
         """
@@ -413,7 +409,7 @@ class TeamsLocation(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account to which the teams location should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -445,7 +441,7 @@ class TeamsLocation(pulumi.CustomResource):
     @pulumi.getter
     def ip(self) -> pulumi.Output[str]:
         """
-        Client IP address
+        Client IP address.
         """
         return pulumi.get(self, "ip")
 
@@ -453,7 +449,7 @@ class TeamsLocation(pulumi.CustomResource):
     @pulumi.getter(name="ipv4Destination")
     def ipv4_destination(self) -> pulumi.Output[str]:
         """
-        IP to direct all IPv4 DNS queries too.
+        IP to direct all IPv4 DNS queries to.
         """
         return pulumi.get(self, "ipv4_destination")
 

@@ -77,7 +77,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     /**
      * The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
      * keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-     * should be used instead.
+     * should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
      * 
      */
     @Export(name="apiKey", type=String.class, parameters={})
@@ -86,7 +86,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     /**
      * @return The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
      * keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-     * should be used instead.
+     * should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
      * 
      */
     public Output<Optional<String>> apiKey() {
@@ -94,6 +94,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     }
     /**
      * The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
+     * Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
      * 
      */
     @Export(name="apiToken", type=String.class, parameters={})
@@ -101,6 +102,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     /**
      * @return The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
+     * Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
      * 
      */
     public Output<Optional<String>> apiToken() {
@@ -108,7 +110,8 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     }
     /**
      * A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-     * `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
+     * `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,
+     * `api_user_service_key`.
      * 
      */
     @Export(name="apiUserServiceKey", type=String.class, parameters={})
@@ -116,7 +119,8 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     /**
      * @return A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-     * `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
+     * `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,
+     * `api_user_service_key`.
      * 
      */
     public Output<Optional<String>> apiUserServiceKey() {
@@ -124,7 +128,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     }
     /**
      * A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-     * variable.
+     * variable. Required when using `api_key`. Conflicts with `api_token`.
      * 
      */
     @Export(name="email", type=String.class, parameters={})
@@ -132,7 +136,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     /**
      * @return A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-     * variable.
+     * variable. Required when using `api_key`. Conflicts with `api_token`.
      * 
      */
     public Output<Optional<String>> email() {

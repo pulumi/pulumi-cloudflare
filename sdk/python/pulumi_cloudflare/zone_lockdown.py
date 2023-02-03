@@ -24,11 +24,11 @@ class ZoneLockdownArgs:
                  priority: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a ZoneLockdown resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
+        :param pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
-        :param pulumi.Input[str] zone_id: The DNS zone ID to which the access rule should be added.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
-        :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Default: false.
+        :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
         """
         pulumi.set(__self__, "configurations", configurations)
         pulumi.set(__self__, "urls", urls)
@@ -44,7 +44,7 @@ class ZoneLockdownArgs:
     @pulumi.getter
     def configurations(self) -> pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]]:
         """
-        A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
+        A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
         """
         return pulumi.get(self, "configurations")
 
@@ -68,7 +68,7 @@ class ZoneLockdownArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The DNS zone ID to which the access rule should be added.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -92,7 +92,7 @@ class ZoneLockdownArgs:
     @pulumi.getter
     def paused(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean of whether this zone lockdown is currently paused. Default: false.
+        Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
         """
         return pulumi.get(self, "paused")
 
@@ -121,11 +121,11 @@ class _ZoneLockdownState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ZoneLockdown resources.
-        :param pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
+        :param pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
         :param pulumi.Input[str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
-        :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Default: false.
+        :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
-        :param pulumi.Input[str] zone_id: The DNS zone ID to which the access rule should be added.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         if configurations is not None:
             pulumi.set(__self__, "configurations", configurations)
@@ -144,7 +144,7 @@ class _ZoneLockdownState:
     @pulumi.getter
     def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]]]:
         """
-        A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
+        A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
         """
         return pulumi.get(self, "configurations")
 
@@ -168,7 +168,7 @@ class _ZoneLockdownState:
     @pulumi.getter
     def paused(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean of whether this zone lockdown is currently paused. Default: false.
+        Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
         """
         return pulumi.get(self, "paused")
 
@@ -201,7 +201,7 @@ class _ZoneLockdownState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS zone ID to which the access rule should be added.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -223,7 +223,11 @@ class ZoneLockdown(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows you to define one or more URLs (with wildcard matching on the domain or path) that will only permit access if the request originates from an IP address that matches a safelist of one or more IP addresses and/or IP ranges.
+        Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows
+        you to define one or more URLs (with wildcard matching on the domain
+        or path) that will only permit access if the request originates
+        from an IP address that matches a safelist of one or more IP
+        addresses and/or IP ranges.
 
         ## Example Usage
 
@@ -232,34 +236,30 @@ class ZoneLockdown(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # Restrict access to these endpoints to requests from a known IP address range.
-        endpoint_lockdown = cloudflare.ZoneLockdown("endpointLockdown",
+        example = cloudflare.ZoneLockdown("example",
             configurations=[cloudflare.ZoneLockdownConfigurationArgs(
                 target="ip_range",
-                value="198.51.100.0/16",
+                value="192.0.2.0/24",
             )],
             description="Restrict access to these endpoints to requests from a known IP address range",
             paused=False,
             urls=["api.mysite.com/some/endpoint*"],
-            zone_id="d41d8cd98f00b204e9800998ecf8427e")
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
         ## Import
 
-        Records can be imported using a composite ID formed of zone name and record ID, e.g.
-
         ```sh
-         $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown cloudflare_zone_lockdown d41d8cd98f00b204e9800998ecf8427e/37cb64fe4a90adb5ca3afc04f2c82a2f
+         $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example <zone_id>/<lockdown_id>
         ```
-
-         where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
         :param pulumi.Input[str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
-        :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Default: false.
+        :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
-        :param pulumi.Input[str] zone_id: The DNS zone ID to which the access rule should be added.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -268,7 +268,11 @@ class ZoneLockdown(pulumi.CustomResource):
                  args: ZoneLockdownArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows you to define one or more URLs (with wildcard matching on the domain or path) that will only permit access if the request originates from an IP address that matches a safelist of one or more IP addresses and/or IP ranges.
+        Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows
+        you to define one or more URLs (with wildcard matching on the domain
+        or path) that will only permit access if the request originates
+        from an IP address that matches a safelist of one or more IP
+        addresses and/or IP ranges.
 
         ## Example Usage
 
@@ -277,26 +281,22 @@ class ZoneLockdown(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # Restrict access to these endpoints to requests from a known IP address range.
-        endpoint_lockdown = cloudflare.ZoneLockdown("endpointLockdown",
+        example = cloudflare.ZoneLockdown("example",
             configurations=[cloudflare.ZoneLockdownConfigurationArgs(
                 target="ip_range",
-                value="198.51.100.0/16",
+                value="192.0.2.0/24",
             )],
             description="Restrict access to these endpoints to requests from a known IP address range",
             paused=False,
             urls=["api.mysite.com/some/endpoint*"],
-            zone_id="d41d8cd98f00b204e9800998ecf8427e")
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
         ## Import
 
-        Records can be imported using a composite ID formed of zone name and record ID, e.g.
-
         ```sh
-         $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown cloudflare_zone_lockdown d41d8cd98f00b204e9800998ecf8427e/37cb64fe4a90adb5ca3afc04f2c82a2f
+         $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example <zone_id>/<lockdown_id>
         ```
-
-         where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules)
 
         :param str resource_name: The name of the resource.
         :param ZoneLockdownArgs args: The arguments to use to populate this resource's properties.
@@ -363,11 +363,11 @@ class ZoneLockdown(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
         :param pulumi.Input[str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
-        :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Default: false.
+        :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
-        :param pulumi.Input[str] zone_id: The DNS zone ID to which the access rule should be added.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -385,7 +385,7 @@ class ZoneLockdown(pulumi.CustomResource):
     @pulumi.getter
     def configurations(self) -> pulumi.Output[Sequence['outputs.ZoneLockdownConfiguration']]:
         """
-        A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
+        A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
         """
         return pulumi.get(self, "configurations")
 
@@ -401,7 +401,7 @@ class ZoneLockdown(pulumi.CustomResource):
     @pulumi.getter
     def paused(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean of whether this zone lockdown is currently paused. Default: false.
+        Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
         """
         return pulumi.get(self, "paused")
 
@@ -422,7 +422,7 @@ class ZoneLockdown(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The DNS zone ID to which the access rule should be added.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 

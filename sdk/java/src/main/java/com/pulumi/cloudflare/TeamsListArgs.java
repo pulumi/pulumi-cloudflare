@@ -17,14 +17,14 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
     public static final TeamsListArgs Empty = new TeamsListArgs();
 
     /**
-     * The account to which the teams list should be added.
+     * The account identifier to target for the resource.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account to which the teams list should be added.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Output<String> accountId() {
@@ -77,14 +77,14 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+     * The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+     * @return The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
      * 
      */
     public Output<String> type() {
@@ -120,7 +120,7 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account to which the teams list should be added.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account to which the teams list should be added.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+         * @param type The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+         * @param type The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
          * 
          * @return builder
          * 

@@ -10,41 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class ZoneSettingsOverrideSettingsMobileRedirect {
-    /**
-     * @return String value
-     * 
-     */
     private String mobileSubdomain;
-    /**
-     * @return &#34;on&#34;/&#34;off&#34;
-     * 
-     */
     private String status;
-    /**
-     * @return true/false
-     * 
-     */
     private Boolean stripUri;
 
     private ZoneSettingsOverrideSettingsMobileRedirect() {}
-    /**
-     * @return String value
-     * 
-     */
     public String mobileSubdomain() {
         return this.mobileSubdomain;
     }
-    /**
-     * @return &#34;on&#34;/&#34;off&#34;
-     * 
-     */
     public String status() {
         return this.status;
     }
-    /**
-     * @return true/false
-     * 
-     */
     public Boolean stripUri() {
         return this.stripUri;
     }

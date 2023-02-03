@@ -15,14 +15,14 @@ public final class DevicePolicyCertificatesArgs extends com.pulumi.resources.Res
     public static final DevicePolicyCertificatesArgs Empty = new DevicePolicyCertificatesArgs();
 
     /**
-     * True if certificate generation is enabled.
+     * `true` if certificate generation is enabled.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return True if certificate generation is enabled.
+     * @return `true` if certificate generation is enabled.
      * 
      */
     public Output<Boolean> enabled() {
@@ -30,14 +30,14 @@ public final class DevicePolicyCertificatesArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The zone ID where certificate generation is allowed.
+     * The zone identifier to target for the resource.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone ID where certificate generation is allowed.
+     * @return The zone identifier to target for the resource.
      * 
      */
     public Output<String> zoneId() {
@@ -70,7 +70,7 @@ public final class DevicePolicyCertificatesArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param enabled True if certificate generation is enabled.
+         * @param enabled `true` if certificate generation is enabled.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class DevicePolicyCertificatesArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param enabled True if certificate generation is enabled.
+         * @param enabled `true` if certificate generation is enabled.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class DevicePolicyCertificatesArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param zoneId The zone ID where certificate generation is allowed.
+         * @param zoneId The zone identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class DevicePolicyCertificatesArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param zoneId The zone ID where certificate generation is allowed.
+         * @param zoneId The zone identifier to target for the resource.
          * 
          * @return builder
          * 

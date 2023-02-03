@@ -11,6 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccessIdentityProviderResult {
+    /**
+     * @return The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * 
+     */
     private @Nullable String accountId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -18,18 +22,26 @@ public final class GetAccessIdentityProviderResult {
      */
     private String id;
     /**
-     * @return Access Identity Provider Name
+     * @return Access Identity Provider name to search for.
      * 
      */
     private String name;
     /**
-     * @return Access Identity Provider Type
+     * @return Access Identity Provider Type.
      * 
      */
     private String type;
+    /**
+     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * 
+     */
     private @Nullable String zoneId;
 
     private GetAccessIdentityProviderResult() {}
+    /**
+     * @return The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * 
+     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -41,19 +53,23 @@ public final class GetAccessIdentityProviderResult {
         return this.id;
     }
     /**
-     * @return Access Identity Provider Name
+     * @return Access Identity Provider name to search for.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Access Identity Provider Type
+     * @return Access Identity Provider Type.
      * 
      */
     public String type() {
         return this.type;
     }
+    /**
+     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * 
+     */
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }

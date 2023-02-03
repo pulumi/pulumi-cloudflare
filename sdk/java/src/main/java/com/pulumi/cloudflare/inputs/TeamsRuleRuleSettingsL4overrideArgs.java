@@ -14,32 +14,16 @@ public final class TeamsRuleRuleSettingsL4overrideArgs extends com.pulumi.resour
 
     public static final TeamsRuleRuleSettingsL4overrideArgs Empty = new TeamsRuleRuleSettingsL4overrideArgs();
 
-    /**
-     * Override IP to forward traffic to.
-     * 
-     */
     @Import(name="ip", required=true)
     private Output<String> ip;
 
-    /**
-     * @return Override IP to forward traffic to.
-     * 
-     */
     public Output<String> ip() {
         return this.ip;
     }
 
-    /**
-     * Override Port to forward traffic to.
-     * 
-     */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
-    /**
-     * @return Override Port to forward traffic to.
-     * 
-     */
     public Output<Integer> port() {
         return this.port;
     }
@@ -69,44 +53,20 @@ public final class TeamsRuleRuleSettingsL4overrideArgs extends com.pulumi.resour
             $ = new TeamsRuleRuleSettingsL4overrideArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param ip Override IP to forward traffic to.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ip(Output<String> ip) {
             $.ip = ip;
             return this;
         }
 
-        /**
-         * @param ip Override IP to forward traffic to.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ip(String ip) {
             return ip(Output.of(ip));
         }
 
-        /**
-         * @param port Override Port to forward traffic to.
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(Output<Integer> port) {
             $.port = port;
             return this;
         }
 
-        /**
-         * @param port Override Port to forward traffic to.
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }

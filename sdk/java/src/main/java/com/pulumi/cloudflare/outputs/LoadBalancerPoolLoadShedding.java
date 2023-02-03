@@ -13,50 +13,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerPoolLoadShedding {
     /**
-     * @return Percent of traffic to shed 0 - 100.
+     * @return Percent of traffic to shed 0 - 100. Defaults to `0`.
      * 
      */
     private @Nullable Double defaultPercent;
     /**
-     * @return Method of shedding traffic &#34;&#34;, &#34;hash&#34; or &#34;random&#34;.
+     * @return Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`&#34;&#34;`.
      * 
      */
     private @Nullable String defaultPolicy;
     /**
-     * @return Percent of session traffic to shed 0 - 100.
+     * @return Percent of session traffic to shed 0 - 100. Defaults to `0`.
      * 
      */
     private @Nullable Double sessionPercent;
     /**
-     * @return Method of shedding session traffic &#34;&#34; or &#34;hash&#34;.
+     * @return Method of shedding traffic. Available values: ``,`hash`. Defaults to`&#34;&#34;`.
      * 
      */
     private @Nullable String sessionPolicy;
 
     private LoadBalancerPoolLoadShedding() {}
     /**
-     * @return Percent of traffic to shed 0 - 100.
+     * @return Percent of traffic to shed 0 - 100. Defaults to `0`.
      * 
      */
     public Optional<Double> defaultPercent() {
         return Optional.ofNullable(this.defaultPercent);
     }
     /**
-     * @return Method of shedding traffic &#34;&#34;, &#34;hash&#34; or &#34;random&#34;.
+     * @return Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`&#34;&#34;`.
      * 
      */
     public Optional<String> defaultPolicy() {
         return Optional.ofNullable(this.defaultPolicy);
     }
     /**
-     * @return Percent of session traffic to shed 0 - 100.
+     * @return Percent of session traffic to shed 0 - 100. Defaults to `0`.
      * 
      */
     public Optional<Double> sessionPercent() {
         return Optional.ofNullable(this.sessionPercent);
     }
     /**
-     * @return Method of shedding session traffic &#34;&#34; or &#34;hash&#34;.
+     * @return Method of shedding traffic. Available values: ``,`hash`. Defaults to`&#34;&#34;`.
      * 
      */
     public Optional<String> sessionPolicy() {

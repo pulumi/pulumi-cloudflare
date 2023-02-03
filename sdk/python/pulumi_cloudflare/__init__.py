@@ -30,6 +30,7 @@ from .custom_hostname import *
 from .custom_hostname_fallback_origin import *
 from .custom_pages import *
 from .custom_ssl import *
+from .device_managed_networks import *
 from .device_policy_certificates import *
 from .device_posture_integration import *
 from .device_posture_rule import *
@@ -324,6 +325,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/customSsl:CustomSsl": "CustomSsl"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/deviceManagedNetworks",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks": "DeviceManagedNetworks"
   }
  },
  {

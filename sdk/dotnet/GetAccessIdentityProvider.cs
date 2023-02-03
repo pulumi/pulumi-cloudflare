@@ -12,7 +12,7 @@ namespace Pulumi.Cloudflare
     public static class GetAccessIdentityProvider
     {
         /// <summary>
-        /// Use this data source to lookup a single [Access Identity Provider][access_identity_provider_guide] by name.
+        /// Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -25,22 +25,22 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mainAccessIdentityProvider = Cloudflare.GetAccessIdentityProvider.Invoke(new()
+        ///     var exampleAccessIdentityProvider = Cloudflare.GetAccessIdentityProvider.Invoke(new()
         ///     {
         ///         Name = "Google SSO",
-        ///         AccountId = "example-account-id",
+        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
         ///     });
         /// 
-        ///     var mainAccessApplication = new Cloudflare.AccessApplication("mainAccessApplication", new()
+        ///     var exampleAccessApplication = new Cloudflare.AccessApplication("exampleAccessApplication", new()
         ///     {
-        ///         ZoneId = "example.com",
+        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
         ///         Name = "name",
         ///         Domain = "name.example.com",
         ///         Type = "self_hosted",
         ///         SessionDuration = "24h",
         ///         AllowedIdps = new[]
         ///         {
-        ///             mainAccessIdentityProvider.Apply(getAccessIdentityProviderResult =&gt; getAccessIdentityProviderResult.Id),
+        ///             exampleAccessIdentityProvider.Apply(getAccessIdentityProviderResult =&gt; getAccessIdentityProviderResult.Id),
         ///         },
         ///         AutoRedirectToIdentity = true,
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessIdentityProviderResult>("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", args ?? new GetAccessIdentityProviderArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to lookup a single [Access Identity Provider][access_identity_provider_guide] by name.
+        /// Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -67,22 +67,22 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mainAccessIdentityProvider = Cloudflare.GetAccessIdentityProvider.Invoke(new()
+        ///     var exampleAccessIdentityProvider = Cloudflare.GetAccessIdentityProvider.Invoke(new()
         ///     {
         ///         Name = "Google SSO",
-        ///         AccountId = "example-account-id",
+        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
         ///     });
         /// 
-        ///     var mainAccessApplication = new Cloudflare.AccessApplication("mainAccessApplication", new()
+        ///     var exampleAccessApplication = new Cloudflare.AccessApplication("exampleAccessApplication", new()
         ///     {
-        ///         ZoneId = "example.com",
+        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
         ///         Name = "name",
         ///         Domain = "name.example.com",
         ///         Type = "self_hosted",
         ///         SessionDuration = "24h",
         ///         AllowedIdps = new[]
         ///         {
-        ///             mainAccessIdentityProvider.Apply(getAccessIdentityProviderResult =&gt; getAccessIdentityProviderResult.Id),
+        ///             exampleAccessIdentityProvider.Apply(getAccessIdentityProviderResult =&gt; getAccessIdentityProviderResult.Id),
         ///         },
         ///         AutoRedirectToIdentity = true,
         ///     });
@@ -100,7 +100,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccessIdentityProviderArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account for which to look for an Access Identity Provider. Conflicts with `zone_id`.
+        /// The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
         /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
@@ -112,7 +112,7 @@ namespace Pulumi.Cloudflare
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// The Zone's ID. Conflicts with `account_id`.
+        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
         /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
@@ -126,7 +126,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccessIdentityProviderInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account for which to look for an Access Identity Provider. Conflicts with `zone_id`.
+        /// The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -138,7 +138,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The Zone's ID. Conflicts with `account_id`.
+        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -153,19 +153,25 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetAccessIdentityProviderResult
     {
+        /// <summary>
+        /// The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        /// </summary>
         public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Access Identity Provider Name
+        /// Access Identity Provider name to search for.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Access Identity Provider Type
+        /// Access Identity Provider Type.
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+        /// </summary>
         public readonly string? ZoneId;
 
         [OutputConstructor]

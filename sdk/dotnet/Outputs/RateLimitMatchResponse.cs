@@ -13,17 +13,8 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RateLimitMatchResponse
     {
-        /// <summary>
-        /// block is a list of maps with the following attributes:
-        /// </summary>
         public readonly ImmutableArray<ImmutableDictionary<string, string>> Headers;
-        /// <summary>
-        /// Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting. Default: `true`.
-        /// </summary>
         public readonly bool? OriginTraffic;
-        /// <summary>
-        /// HTTP Status codes, can be one [403], many [401,403] or indicate all by not providing this value.
-        /// </summary>
         public readonly ImmutableArray<int> Statuses;
 
         [OutputConstructor]

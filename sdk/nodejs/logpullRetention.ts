@@ -15,16 +15,14 @@ import * as utilities from "./utilities";
  *
  * const example = new cloudflare.LogpullRetention("example", {
  *     enabled: true,
- *     zoneId: "fb54f084ca7f7b732d3d3ecbd8ef7bf2",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  *
  * ## Import
  *
- * You can import existing Logpull Retention using the zone ID as the identifier.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example fb54f084ca7f7b732d3d3ecbd8ef7bf2
+ *  $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example <zone_id>
  * ```
  */
 export class LogpullRetention extends pulumi.CustomResource {
@@ -60,7 +58,7 @@ export class LogpullRetention extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * The zone ID to apply the log retention to.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -104,7 +102,7 @@ export interface LogpullRetentionState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The zone ID to apply the log retention to.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -118,7 +116,7 @@ export interface LogpullRetentionArgs {
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * The zone ID to apply the log retention to.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId: pulumi.Input<string>;
 }

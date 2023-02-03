@@ -16,14 +16,14 @@ public final class RateLimitCorrelateArgs extends com.pulumi.resources.ResourceA
     public static final RateLimitCorrelateArgs Empty = new RateLimitCorrelateArgs();
 
     /**
-     * If set to &#39;nat&#39;, NAT support will be enabled for rate limiting.
+     * If set to &#39;nat&#39;, NAT support will be enabled for rate limiting. Available values: `nat`.
      * 
      */
     @Import(name="by")
     private @Nullable Output<String> by;
 
     /**
-     * @return If set to &#39;nat&#39;, NAT support will be enabled for rate limiting.
+     * @return If set to &#39;nat&#39;, NAT support will be enabled for rate limiting. Available values: `nat`.
      * 
      */
     public Optional<Output<String>> by() {
@@ -55,7 +55,7 @@ public final class RateLimitCorrelateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param by If set to &#39;nat&#39;, NAT support will be enabled for rate limiting.
+         * @param by If set to &#39;nat&#39;, NAT support will be enabled for rate limiting. Available values: `nat`.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class RateLimitCorrelateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param by If set to &#39;nat&#39;, NAT support will be enabled for rate limiting.
+         * @param by If set to &#39;nat&#39;, NAT support will be enabled for rate limiting. Available values: `nat`.
          * 
          * @return builder
          * 

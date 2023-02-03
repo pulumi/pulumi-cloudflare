@@ -18,14 +18,14 @@ public final class RateLimitActionArgs extends com.pulumi.resources.ResourceArgs
     public static final RateLimitActionArgs Empty = new RateLimitActionArgs();
 
     /**
-     * The type of action to perform. Allowable values are &#39;simulate&#39;, &#39;ban&#39;, &#39;challenge&#39;, &#39;js_challenge&#39; and &#39;managed_challenge&#39;.
+     * The type of action to perform. Available values: `simulate`, `ban`, `challenge`, `js_challenge`, `managed_challenge`.
      * 
      */
     @Import(name="mode", required=true)
     private Output<String> mode;
 
     /**
-     * @return The type of action to perform. Allowable values are &#39;simulate&#39;, &#39;ban&#39;, &#39;challenge&#39;, &#39;js_challenge&#39; and &#39;managed_challenge&#39;.
+     * @return The type of action to perform. Available values: `simulate`, `ban`, `challenge`, `js_challenge`, `managed_challenge`.
      * 
      */
     public Output<String> mode() {
@@ -33,14 +33,14 @@ public final class RateLimitActionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
+     * Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page.
      * 
      */
     @Import(name="response")
     private @Nullable Output<RateLimitActionResponseArgs> response;
 
     /**
-     * @return Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
+     * @return Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page.
      * 
      */
     public Optional<Output<RateLimitActionResponseArgs>> response() {
@@ -48,14 +48,14 @@ public final class RateLimitActionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period (min: 1, max: 86400).
+     * The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period.
      * 
      */
     @Import(name="timeout")
     private @Nullable Output<Integer> timeout;
 
     /**
-     * @return The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period (min: 1, max: 86400).
+     * @return The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period.
      * 
      */
     public Optional<Output<Integer>> timeout() {
@@ -89,7 +89,7 @@ public final class RateLimitActionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mode The type of action to perform. Allowable values are &#39;simulate&#39;, &#39;ban&#39;, &#39;challenge&#39;, &#39;js_challenge&#39; and &#39;managed_challenge&#39;.
+         * @param mode The type of action to perform. Available values: `simulate`, `ban`, `challenge`, `js_challenge`, `managed_challenge`.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class RateLimitActionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mode The type of action to perform. Allowable values are &#39;simulate&#39;, &#39;ban&#39;, &#39;challenge&#39;, &#39;js_challenge&#39; and &#39;managed_challenge&#39;.
+         * @param mode The type of action to perform. Available values: `simulate`, `ban`, `challenge`, `js_challenge`, `managed_challenge`.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class RateLimitActionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param response Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
+         * @param response Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class RateLimitActionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param response Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
+         * @param response Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class RateLimitActionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param timeout The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period (min: 1, max: 86400).
+         * @param timeout The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class RateLimitActionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param timeout The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period (min: 1, max: 86400).
+         * @param timeout The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period.
          * 
          * @return builder
          * 

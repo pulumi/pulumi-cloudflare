@@ -14,32 +14,16 @@ public final class TeamsRuleRuleSettingsCheckSessionArgs extends com.pulumi.reso
 
     public static final TeamsRuleRuleSettingsCheckSessionArgs Empty = new TeamsRuleRuleSettingsCheckSessionArgs();
 
-    /**
-     * Configure how fresh the session needs to be to be considered valid.
-     * 
-     */
     @Import(name="duration", required=true)
     private Output<String> duration;
 
-    /**
-     * @return Configure how fresh the session needs to be to be considered valid.
-     * 
-     */
     public Output<String> duration() {
         return this.duration;
     }
 
-    /**
-     * Enable session enforcement for this rule.
-     * 
-     */
     @Import(name="enforce", required=true)
     private Output<Boolean> enforce;
 
-    /**
-     * @return Enable session enforcement for this rule.
-     * 
-     */
     public Output<Boolean> enforce() {
         return this.enforce;
     }
@@ -69,44 +53,20 @@ public final class TeamsRuleRuleSettingsCheckSessionArgs extends com.pulumi.reso
             $ = new TeamsRuleRuleSettingsCheckSessionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param duration Configure how fresh the session needs to be to be considered valid.
-         * 
-         * @return builder
-         * 
-         */
         public Builder duration(Output<String> duration) {
             $.duration = duration;
             return this;
         }
 
-        /**
-         * @param duration Configure how fresh the session needs to be to be considered valid.
-         * 
-         * @return builder
-         * 
-         */
         public Builder duration(String duration) {
             return duration(Output.of(duration));
         }
 
-        /**
-         * @param enforce Enable session enforcement for this rule.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enforce(Output<Boolean> enforce) {
             $.enforce = enforce;
             return this;
         }
 
-        /**
-         * @param enforce Enable session enforcement for this rule.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enforce(Boolean enforce) {
             return enforce(Output.of(enforce));
         }

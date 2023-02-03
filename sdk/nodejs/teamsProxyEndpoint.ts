@@ -5,8 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy Endpoints are used for pointing proxy clients at
- * Cloudflare Secure Gateway.
+ * Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy
+ * Endpoints are used for pointing proxy clients at Cloudflare Secure
+ * Gateway.
  *
  * ## Example Usage
  *
@@ -14,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const corporateOffice = new cloudflare.TeamsProxyEndpoint("corporateOffice", {
- *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ * const example = new cloudflare.TeamsProxyEndpoint("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     ips: ["192.0.2.0/24"],
  *     name: "office",
  * });
@@ -23,10 +24,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Teams Proxy Endpoints can be imported using a composite ID formed of account ID and teams proxy_endpoint ID.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint corporate_office cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+ *  $ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint example <account_id>/<proxy_endpoint_id>
  * ```
  */
 export class TeamsProxyEndpoint extends pulumi.CustomResource {
@@ -58,7 +57,7 @@ export class TeamsProxyEndpoint extends pulumi.CustomResource {
     }
 
     /**
-     * The account to which the teams proxy endpoint should be added.
+     * The account identifier to target for the resource.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -117,7 +116,7 @@ export class TeamsProxyEndpoint extends pulumi.CustomResource {
  */
 export interface TeamsProxyEndpointState {
     /**
-     * The account to which the teams proxy endpoint should be added.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -139,7 +138,7 @@ export interface TeamsProxyEndpointState {
  */
 export interface TeamsProxyEndpointArgs {
     /**
-     * The account to which the teams proxy endpoint should be added.
+     * The account identifier to target for the resource.
      */
     accountId: pulumi.Input<string>;
     /**

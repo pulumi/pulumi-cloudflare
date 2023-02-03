@@ -22,7 +22,7 @@ export function getAccountRoles(args: GetAccountRolesArgs, opts?: pulumi.InvokeO
  */
 export interface GetAccountRolesArgs {
     /**
-     * The account for which to list the roles.
+     * The account identifier to target for the resource.
      */
     accountId: string;
 }
@@ -31,13 +31,16 @@ export interface GetAccountRolesArgs {
  * A collection of values returned by getAccountRoles.
  */
 export interface GetAccountRolesResult {
+    /**
+     * The account identifier to target for the resource.
+     */
     readonly accountId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * A list of roles object. See below for nested attributes.
+     * A list of roles object.
      */
     readonly roles: outputs.GetAccountRolesRole[];
 }
@@ -53,7 +56,7 @@ export function getAccountRolesOutput(args: GetAccountRolesOutputArgs, opts?: pu
  */
 export interface GetAccountRolesOutputArgs {
     /**
-     * The account for which to list the roles.
+     * The account identifier to target for the resource.
      */
     accountId: pulumi.Input<string>;
 }

@@ -14,13 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsAccountLogging
     {
         /// <summary>
-        /// Redact personally identifiable information from activity logging (PII fields are: source IP,
-        /// user email, user ID, device ID, URL, referrer, user agent).
+        /// Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
         /// </summary>
         public readonly bool RedactPii;
         /// <summary>
-        /// Represents whether all requests are logged or only the blocked requests are
-        /// logged in DNS, HTTP and L4 filters.
+        /// Represents whether all requests are logged or only the blocked requests are slogged in DNS, HTTP and L4 filters.
         /// </summary>
         public readonly Outputs.TeamsAccountLoggingSettingsByRuleType SettingsByRuleType;
 

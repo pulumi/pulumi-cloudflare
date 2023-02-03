@@ -13,15 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsAccountLoggingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Redact personally identifiable information from activity logging (PII fields are: source IP,
-        /// user email, user ID, device ID, URL, referrer, user agent).
+        /// Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
         /// </summary>
         [Input("redactPii", required: true)]
         public Input<bool> RedactPii { get; set; } = null!;
 
         /// <summary>
-        /// Represents whether all requests are logged or only the blocked requests are
-        /// logged in DNS, HTTP and L4 filters.
+        /// Represents whether all requests are logged or only the blocked requests are slogged in DNS, HTTP and L4 filters.
         /// </summary>
         [Input("settingsByRuleType", required: true)]
         public Input<Inputs.TeamsAccountLoggingSettingsByRuleTypeGetArgs> SettingsByRuleType { get; set; } = null!;

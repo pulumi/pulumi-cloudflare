@@ -13,13 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class TeamsRuleRuleSettingsL4override
     {
-        /// <summary>
-        /// Override IP to forward traffic to.
-        /// </summary>
         public readonly string Ip;
-        /// <summary>
-        /// Override Port to forward traffic to.
-        /// </summary>
         public readonly int Port;
 
         [OutputConstructor]

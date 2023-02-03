@@ -21,16 +21,11 @@ class CustomPagesArgs:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CustomPages resource.
-        :param pulumi.Input[str] type: The type of custom page you wish to update. Must
-               be one of `basic_challenge`, `waf_challenge`, `waf_block`,
-               `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-               `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
+        :param pulumi.Input[str] type: The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
         :param pulumi.Input[str] url: URL of where the custom page source is located.
-        :param pulumi.Input[str] account_id: The account ID where the custom pages should be
-               updated. Either `account_id` or `zone_id` must be provided. If
-               `account_id` is present, it will override the zone setting.
-        :param pulumi.Input[str] zone_id: The zone ID where the custom pages should be
-               updated. Either `zone_id` or `account_id` must be provided.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
+        :param pulumi.Input[str] state: Managed state of the custom page. Available values: `default`, `customized`.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "url", url)
@@ -45,10 +40,7 @@ class CustomPagesArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The type of custom page you wish to update. Must
-        be one of `basic_challenge`, `waf_challenge`, `waf_block`,
-        `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-        `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
+        The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
         """
         return pulumi.get(self, "type")
 
@@ -72,9 +64,7 @@ class CustomPagesArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account ID where the custom pages should be
-        updated. Either `account_id` or `zone_id` must be provided. If
-        `account_id` is present, it will override the zone setting.
+        The account identifier to target for the resource. Conflicts with `zone_id`.
         """
         return pulumi.get(self, "account_id")
 
@@ -85,6 +75,9 @@ class CustomPagesArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Managed state of the custom page. Available values: `default`, `customized`.
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -95,8 +88,7 @@ class CustomPagesArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone ID where the custom pages should be
-        updated. Either `zone_id` or `account_id` must be provided.
+        The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         return pulumi.get(self, "zone_id")
 
@@ -115,16 +107,11 @@ class _CustomPagesState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CustomPages resources.
-        :param pulumi.Input[str] account_id: The account ID where the custom pages should be
-               updated. Either `account_id` or `zone_id` must be provided. If
-               `account_id` is present, it will override the zone setting.
-        :param pulumi.Input[str] type: The type of custom page you wish to update. Must
-               be one of `basic_challenge`, `waf_challenge`, `waf_block`,
-               `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-               `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
+        :param pulumi.Input[str] state: Managed state of the custom page. Available values: `default`, `customized`.
+        :param pulumi.Input[str] type: The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
         :param pulumi.Input[str] url: URL of where the custom page source is located.
-        :param pulumi.Input[str] zone_id: The zone ID where the custom pages should be
-               updated. Either `zone_id` or `account_id` must be provided.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -141,9 +128,7 @@ class _CustomPagesState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account ID where the custom pages should be
-        updated. Either `account_id` or `zone_id` must be provided. If
-        `account_id` is present, it will override the zone setting.
+        The account identifier to target for the resource. Conflicts with `zone_id`.
         """
         return pulumi.get(self, "account_id")
 
@@ -154,6 +139,9 @@ class _CustomPagesState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Managed state of the custom page. Available values: `default`, `customized`.
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -164,10 +152,7 @@ class _CustomPagesState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of custom page you wish to update. Must
-        be one of `basic_challenge`, `waf_challenge`, `waf_block`,
-        `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-        `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
+        The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
         """
         return pulumi.get(self, "type")
 
@@ -191,8 +176,7 @@ class _CustomPagesState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone ID where the custom pages should be
-        updated. Either `zone_id` or `account_id` must be provided.
+        The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         return pulumi.get(self, "zone_id")
 
@@ -221,39 +205,26 @@ class CustomPages(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        basic_challenge = cloudflare.CustomPages("basicChallenge",
+        example = cloudflare.CustomPages("example",
             state="customized",
             type="basic_challenge",
             url="https://example.com/challenge.html",
-            zone_id="d41d8cd98f00b204e9800998ecf8427e")
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
         ## Import
 
-        Custom pages can be imported using a composite ID formed of- `customPageLevel` - Either `account` or `zone`. - `identifier` - The ID of the account or zone you intend to manage. - `pageType` - The value from the `type` argument. Example for a zone
-
         ```sh
-         $ pulumi import cloudflare:index/customPages:CustomPages basic_challenge zone/d41d8cd98f00b204e9800998ecf8427e/basic_challenge
-        ```
-
-         Example for an account
-
-        ```sh
-         $ pulumi import cloudflare:index/customPages:CustomPages basic_challenge account/e268443e43d93dab7ebef303bbe9642f/basic_challenge
+         $ pulumi import cloudflare:index/customPages:CustomPages example <resource_level>/<resource_id>/<custom_page_type>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account ID where the custom pages should be
-               updated. Either `account_id` or `zone_id` must be provided. If
-               `account_id` is present, it will override the zone setting.
-        :param pulumi.Input[str] type: The type of custom page you wish to update. Must
-               be one of `basic_challenge`, `waf_challenge`, `waf_block`,
-               `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-               `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
+        :param pulumi.Input[str] state: Managed state of the custom page. Available values: `default`, `customized`.
+        :param pulumi.Input[str] type: The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
         :param pulumi.Input[str] url: URL of where the custom page source is located.
-        :param pulumi.Input[str] zone_id: The zone ID where the custom pages should be
-               updated. Either `zone_id` or `account_id` must be provided.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         ...
     @overload
@@ -270,25 +241,17 @@ class CustomPages(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        basic_challenge = cloudflare.CustomPages("basicChallenge",
+        example = cloudflare.CustomPages("example",
             state="customized",
             type="basic_challenge",
             url="https://example.com/challenge.html",
-            zone_id="d41d8cd98f00b204e9800998ecf8427e")
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
         ## Import
 
-        Custom pages can be imported using a composite ID formed of- `customPageLevel` - Either `account` or `zone`. - `identifier` - The ID of the account or zone you intend to manage. - `pageType` - The value from the `type` argument. Example for a zone
-
         ```sh
-         $ pulumi import cloudflare:index/customPages:CustomPages basic_challenge zone/d41d8cd98f00b204e9800998ecf8427e/basic_challenge
-        ```
-
-         Example for an account
-
-        ```sh
-         $ pulumi import cloudflare:index/customPages:CustomPages basic_challenge account/e268443e43d93dab7ebef303bbe9642f/basic_challenge
+         $ pulumi import cloudflare:index/customPages:CustomPages example <resource_level>/<resource_id>/<custom_page_type>
         ```
 
         :param str resource_name: The name of the resource.
@@ -351,16 +314,11 @@ class CustomPages(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account ID where the custom pages should be
-               updated. Either `account_id` or `zone_id` must be provided. If
-               `account_id` is present, it will override the zone setting.
-        :param pulumi.Input[str] type: The type of custom page you wish to update. Must
-               be one of `basic_challenge`, `waf_challenge`, `waf_block`,
-               `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-               `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
+        :param pulumi.Input[str] state: Managed state of the custom page. Available values: `default`, `customized`.
+        :param pulumi.Input[str] type: The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
         :param pulumi.Input[str] url: URL of where the custom page source is located.
-        :param pulumi.Input[str] zone_id: The zone ID where the custom pages should be
-               updated. Either `zone_id` or `account_id` must be provided.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -377,25 +335,23 @@ class CustomPages(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The account ID where the custom pages should be
-        updated. Either `account_id` or `zone_id` must be provided. If
-        `account_id` is present, it will override the zone setting.
+        The account identifier to target for the resource. Conflicts with `zone_id`.
         """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[Optional[str]]:
+        """
+        Managed state of the custom page. Available values: `default`, `customized`.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The type of custom page you wish to update. Must
-        be one of `basic_challenge`, `waf_challenge`, `waf_block`,
-        `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-        `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
+        The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
         """
         return pulumi.get(self, "type")
 
@@ -411,8 +367,7 @@ class CustomPages(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The zone ID where the custom pages should be
-        updated. Either `zone_id` or `account_id` must be provided.
+        The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         return pulumi.get(self, "zone_id")
 

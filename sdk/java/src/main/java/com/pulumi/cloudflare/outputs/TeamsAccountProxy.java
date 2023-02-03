@@ -10,26 +10,26 @@ import java.util.Objects;
 @CustomType
 public final class TeamsAccountProxy {
     /**
-     * @return Whether gateway proxy is enabled on gateway devices for tcp traffic.
+     * @return Whether gateway proxy is enabled on gateway devices for TCP traffic.
      * 
      */
     private Boolean tcp;
     /**
-     * @return Whether gateway proxy is enabled on gateway devices for udp traffic.
+     * @return Whether gateway proxy is enabled on gateway devices for UDP traffic.
      * 
      */
     private Boolean udp;
 
     private TeamsAccountProxy() {}
     /**
-     * @return Whether gateway proxy is enabled on gateway devices for tcp traffic.
+     * @return Whether gateway proxy is enabled on gateway devices for TCP traffic.
      * 
      */
     public Boolean tcp() {
         return this.tcp;
     }
     /**
-     * @return Whether gateway proxy is enabled on gateway devices for udp traffic.
+     * @return Whether gateway proxy is enabled on gateway devices for UDP traffic.
      * 
      */
     public Boolean udp() {

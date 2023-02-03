@@ -16,30 +16,22 @@ public final class ZoneSettingsOverrideArgs extends com.pulumi.resources.Resourc
 
     public static final ZoneSettingsOverrideArgs Empty = new ZoneSettingsOverrideArgs();
 
-    /**
-     * Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
-     * 
-     */
     @Import(name="settings")
     private @Nullable Output<ZoneSettingsOverrideSettingsArgs> settings;
 
-    /**
-     * @return Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
-     * 
-     */
     public Optional<Output<ZoneSettingsOverrideSettingsArgs>> settings() {
         return Optional.ofNullable(this.settings);
     }
 
     /**
-     * The DNS zone ID to which apply settings.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The DNS zone ID to which apply settings.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {
@@ -71,29 +63,17 @@ public final class ZoneSettingsOverrideArgs extends com.pulumi.resources.Resourc
             $ = new ZoneSettingsOverrideArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param settings Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder settings(@Nullable Output<ZoneSettingsOverrideSettingsArgs> settings) {
             $.settings = settings;
             return this;
         }
 
-        /**
-         * @param settings Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder settings(ZoneSettingsOverrideSettingsArgs settings) {
             return settings(Output.of(settings));
         }
 
         /**
-         * @param zoneId The DNS zone ID to which apply settings.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -104,7 +84,7 @@ public final class ZoneSettingsOverrideArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zoneId The DNS zone ID to which apply settings.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

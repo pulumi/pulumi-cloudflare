@@ -7,45 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare edge nodes.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-//	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cloudflare, err := cloudflare.GetIpRanges(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewFirewall(ctx, "allowCloudflareIngress", &compute.FirewallArgs{
-//				Network:      pulumi.String("default"),
-//				SourceRanges: interface{}(cloudflare.Ipv4CidrBlocks),
-//				Allows: compute.FirewallAllowArray{
-//					&compute.FirewallAllowArgs{
-//						Ports:    pulumi.StringArray("443"),
-//						Protocol: pulumi.String("tcp"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
 func GetIpRanges(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetIpRangesResult, error) {
 	var rv GetIpRangesResult
 	err := ctx.Invoke("cloudflare:index/getIpRanges:getIpRanges", nil, &rv, opts...)

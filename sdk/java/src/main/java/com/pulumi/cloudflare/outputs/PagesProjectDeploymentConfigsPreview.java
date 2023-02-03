@@ -3,7 +3,9 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsPreviewServiceBinding;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -14,15 +16,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PagesProjectDeploymentConfigsPreview {
+    private @Nullable Boolean alwaysUseLatestCompatibilityDate;
     private @Nullable String compatibilityDate;
     private @Nullable List<String> compatibilityFlags;
     private @Nullable Map<String,Object> d1Databases;
     private @Nullable Map<String,Object> durableObjectNamespaces;
     private @Nullable Map<String,Object> environmentVariables;
+    private @Nullable Boolean failOpen;
     private @Nullable Map<String,Object> kvNamespaces;
     private @Nullable Map<String,Object> r2Buckets;
+    private @Nullable List<PagesProjectDeploymentConfigsPreviewServiceBinding> serviceBindings;
+    private @Nullable String usageModel;
 
     private PagesProjectDeploymentConfigsPreview() {}
+    public Optional<Boolean> alwaysUseLatestCompatibilityDate() {
+        return Optional.ofNullable(this.alwaysUseLatestCompatibilityDate);
+    }
     public Optional<String> compatibilityDate() {
         return Optional.ofNullable(this.compatibilityDate);
     }
@@ -38,11 +47,20 @@ public final class PagesProjectDeploymentConfigsPreview {
     public Map<String,Object> environmentVariables() {
         return this.environmentVariables == null ? Map.of() : this.environmentVariables;
     }
+    public Optional<Boolean> failOpen() {
+        return Optional.ofNullable(this.failOpen);
+    }
     public Map<String,Object> kvNamespaces() {
         return this.kvNamespaces == null ? Map.of() : this.kvNamespaces;
     }
     public Map<String,Object> r2Buckets() {
         return this.r2Buckets == null ? Map.of() : this.r2Buckets;
+    }
+    public List<PagesProjectDeploymentConfigsPreviewServiceBinding> serviceBindings() {
+        return this.serviceBindings == null ? List.of() : this.serviceBindings;
+    }
+    public Optional<String> usageModel() {
+        return Optional.ofNullable(this.usageModel);
     }
 
     public static Builder builder() {
@@ -54,25 +72,38 @@ public final class PagesProjectDeploymentConfigsPreview {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean alwaysUseLatestCompatibilityDate;
         private @Nullable String compatibilityDate;
         private @Nullable List<String> compatibilityFlags;
         private @Nullable Map<String,Object> d1Databases;
         private @Nullable Map<String,Object> durableObjectNamespaces;
         private @Nullable Map<String,Object> environmentVariables;
+        private @Nullable Boolean failOpen;
         private @Nullable Map<String,Object> kvNamespaces;
         private @Nullable Map<String,Object> r2Buckets;
+        private @Nullable List<PagesProjectDeploymentConfigsPreviewServiceBinding> serviceBindings;
+        private @Nullable String usageModel;
         public Builder() {}
         public Builder(PagesProjectDeploymentConfigsPreview defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.alwaysUseLatestCompatibilityDate = defaults.alwaysUseLatestCompatibilityDate;
     	      this.compatibilityDate = defaults.compatibilityDate;
     	      this.compatibilityFlags = defaults.compatibilityFlags;
     	      this.d1Databases = defaults.d1Databases;
     	      this.durableObjectNamespaces = defaults.durableObjectNamespaces;
     	      this.environmentVariables = defaults.environmentVariables;
+    	      this.failOpen = defaults.failOpen;
     	      this.kvNamespaces = defaults.kvNamespaces;
     	      this.r2Buckets = defaults.r2Buckets;
+    	      this.serviceBindings = defaults.serviceBindings;
+    	      this.usageModel = defaults.usageModel;
         }
 
+        @CustomType.Setter
+        public Builder alwaysUseLatestCompatibilityDate(@Nullable Boolean alwaysUseLatestCompatibilityDate) {
+            this.alwaysUseLatestCompatibilityDate = alwaysUseLatestCompatibilityDate;
+            return this;
+        }
         @CustomType.Setter
         public Builder compatibilityDate(@Nullable String compatibilityDate) {
             this.compatibilityDate = compatibilityDate;
@@ -102,6 +133,11 @@ public final class PagesProjectDeploymentConfigsPreview {
             return this;
         }
         @CustomType.Setter
+        public Builder failOpen(@Nullable Boolean failOpen) {
+            this.failOpen = failOpen;
+            return this;
+        }
+        @CustomType.Setter
         public Builder kvNamespaces(@Nullable Map<String,Object> kvNamespaces) {
             this.kvNamespaces = kvNamespaces;
             return this;
@@ -111,15 +147,32 @@ public final class PagesProjectDeploymentConfigsPreview {
             this.r2Buckets = r2Buckets;
             return this;
         }
+        @CustomType.Setter
+        public Builder serviceBindings(@Nullable List<PagesProjectDeploymentConfigsPreviewServiceBinding> serviceBindings) {
+            this.serviceBindings = serviceBindings;
+            return this;
+        }
+        public Builder serviceBindings(PagesProjectDeploymentConfigsPreviewServiceBinding... serviceBindings) {
+            return serviceBindings(List.of(serviceBindings));
+        }
+        @CustomType.Setter
+        public Builder usageModel(@Nullable String usageModel) {
+            this.usageModel = usageModel;
+            return this;
+        }
         public PagesProjectDeploymentConfigsPreview build() {
             final var o = new PagesProjectDeploymentConfigsPreview();
+            o.alwaysUseLatestCompatibilityDate = alwaysUseLatestCompatibilityDate;
             o.compatibilityDate = compatibilityDate;
             o.compatibilityFlags = compatibilityFlags;
             o.d1Databases = d1Databases;
             o.durableObjectNamespaces = durableObjectNamespaces;
             o.environmentVariables = environmentVariables;
+            o.failOpen = failOpen;
             o.kvNamespaces = kvNamespaces;
             o.r2Buckets = r2Buckets;
+            o.serviceBindings = serviceBindings;
+            o.usageModel = usageModel;
             return o;
         }
     }

@@ -25,13 +25,13 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Block page header text.
+        /// Block page footer text.
         /// </summary>
         [Input("footerText")]
         public Input<string>? FooterText { get; set; }
 
         /// <summary>
-        /// Block page footer text.
+        /// Block page header text.
         /// </summary>
         [Input("headerText")]
         public Input<string>? HeaderText { get; set; }
@@ -41,6 +41,18 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("logoPath")]
         public Input<string>? LogoPath { get; set; }
+
+        /// <summary>
+        /// Admin email for users to contact.
+        /// </summary>
+        [Input("mailtoAddress")]
+        public Input<string>? MailtoAddress { get; set; }
+
+        /// <summary>
+        /// Subject line for emails created from block page.
+        /// </summary>
+        [Input("mailtoSubject")]
+        public Input<string>? MailtoSubject { get; set; }
 
         /// <summary>
         /// Name of block page configuration.

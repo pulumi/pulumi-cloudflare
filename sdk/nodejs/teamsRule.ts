@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const rule1 = new cloudflare.TeamsRule("rule1", {
- *     accountId: "d57c3de47a013c03ca7e237dd3e61d7d",
+ * const example = new cloudflare.TeamsRule("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     action: "block",
  *     description: "desc",
  *     filters: ["http"],
@@ -32,10 +32,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Teams Rules can be imported using a composite ID formed of account ID and teams rule ID.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/teamsRule:TeamsRule rule1 cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+ *  $ pulumi import cloudflare:index/teamsRule:TeamsRule example <account_id>/<teams_rule_id>
  * ```
  */
 export class TeamsRule extends pulumi.CustomResource {
@@ -67,11 +65,11 @@ export class TeamsRule extends pulumi.CustomResource {
     }
 
     /**
-     * The account to which the teams rule should be added.
+     * The account identifier to target for the resource.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * The action executed by matched teams rule.
+     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
      */
     public readonly action!: pulumi.Output<string>;
     /**
@@ -103,7 +101,7 @@ export class TeamsRule extends pulumi.CustomResource {
      */
     public readonly precedence!: pulumi.Output<number>;
     /**
-     * Additional rule settings (refer to the nested schema).
+     * Additional rule settings.
      */
     public readonly ruleSettings!: pulumi.Output<outputs.TeamsRuleRuleSettings | undefined>;
     /**
@@ -177,11 +175,11 @@ export class TeamsRule extends pulumi.CustomResource {
  */
 export interface TeamsRuleState {
     /**
-     * The account to which the teams rule should be added.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The action executed by matched teams rule.
+     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -213,7 +211,7 @@ export interface TeamsRuleState {
      */
     precedence?: pulumi.Input<number>;
     /**
-     * Additional rule settings (refer to the nested schema).
+     * Additional rule settings.
      */
     ruleSettings?: pulumi.Input<inputs.TeamsRuleRuleSettings>;
     /**
@@ -228,11 +226,11 @@ export interface TeamsRuleState {
  */
 export interface TeamsRuleArgs {
     /**
-     * The account to which the teams rule should be added.
+     * The account identifier to target for the resource.
      */
     accountId: pulumi.Input<string>;
     /**
-     * The action executed by matched teams rule.
+     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
      */
     action: pulumi.Input<string>;
     /**
@@ -264,7 +262,7 @@ export interface TeamsRuleArgs {
      */
     precedence: pulumi.Input<number>;
     /**
-     * Additional rule settings (refer to the nested schema).
+     * Additional rule settings.
      */
     ruleSettings?: pulumi.Input<inputs.TeamsRuleRuleSettings>;
     /**

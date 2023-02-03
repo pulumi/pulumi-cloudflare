@@ -13,19 +13,19 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class CustomSslCustomSslOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
+        /// Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
         /// </summary>
         [Input("bundleMethod")]
         public Input<string>? BundleMethod { get; set; }
 
         /// <summary>
-        /// Certificate certificate and the intermediate(s)
+        /// Certificate certificate and the intermediate(s).
         /// </summary>
         [Input("certificate")]
         public Input<string>? Certificate { get; set; }
 
         /// <summary>
-        /// Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highest_security`.
+        /// Specifies the region where your private key can be held locally. Available values: `us`, `eu`, `highest_security`.
         /// </summary>
         [Input("geoRestrictions")]
         public Input<string>? GeoRestrictions { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.Cloudflare.Inputs
         private Input<string>? _privateKey;
 
         /// <summary>
-        /// Certificate's private key
+        /// Certificate's private key.
         /// </summary>
         public Input<string>? PrivateKey
         {
@@ -47,7 +47,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacy_custom` (default), `sni_custom`.
+        /// Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Available values: `legacy_custom`, `sni_custom`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

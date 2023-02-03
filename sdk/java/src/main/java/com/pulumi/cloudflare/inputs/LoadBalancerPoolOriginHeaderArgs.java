@@ -14,32 +14,16 @@ public final class LoadBalancerPoolOriginHeaderArgs extends com.pulumi.resources
 
     public static final LoadBalancerPoolOriginHeaderArgs Empty = new LoadBalancerPoolOriginHeaderArgs();
 
-    /**
-     * The header name.
-     * 
-     */
     @Import(name="header", required=true)
     private Output<String> header;
 
-    /**
-     * @return The header name.
-     * 
-     */
     public Output<String> header() {
         return this.header;
     }
 
-    /**
-     * A list of string values for the header.
-     * 
-     */
     @Import(name="values", required=true)
     private Output<List<String>> values;
 
-    /**
-     * @return A list of string values for the header.
-     * 
-     */
     public Output<List<String>> values() {
         return this.values;
     }
@@ -69,54 +53,24 @@ public final class LoadBalancerPoolOriginHeaderArgs extends com.pulumi.resources
             $ = new LoadBalancerPoolOriginHeaderArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param header The header name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder header(Output<String> header) {
             $.header = header;
             return this;
         }
 
-        /**
-         * @param header The header name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder header(String header) {
             return header(Output.of(header));
         }
 
-        /**
-         * @param values A list of string values for the header.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
-        /**
-         * @param values A list of string values for the header.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
-        /**
-         * @param values A list of string values for the header.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

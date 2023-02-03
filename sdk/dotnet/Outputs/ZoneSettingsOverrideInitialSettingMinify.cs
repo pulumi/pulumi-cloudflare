@@ -13,17 +13,8 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ZoneSettingsOverrideInitialSettingMinify
     {
-        /// <summary>
-        /// "on"/"off"
-        /// </summary>
         public readonly string Css;
-        /// <summary>
-        /// "on"/"off"
-        /// </summary>
         public readonly string Html;
-        /// <summary>
-        /// "on"/"off"
-        /// </summary>
         public readonly string Js;
 
         [OutputConstructor]

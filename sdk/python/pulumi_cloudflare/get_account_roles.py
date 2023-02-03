@@ -36,6 +36,9 @@ class GetAccountRolesResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        The account identifier to target for the resource.
+        """
         return pulumi.get(self, "account_id")
 
     @property
@@ -50,7 +53,7 @@ class GetAccountRolesResult:
     @pulumi.getter
     def roles(self) -> Sequence['outputs.GetAccountRolesRoleResult']:
         """
-        A list of roles object. See below for nested attributes.
+        A list of roles object.
         """
         return pulumi.get(self, "roles")
 
@@ -72,7 +75,7 @@ def get_account_roles(account_id: Optional[str] = None,
     Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
 
 
-    :param str account_id: The account for which to list the roles.
+    :param str account_id: The account identifier to target for the resource.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -92,6 +95,6 @@ def get_account_roles_output(account_id: Optional[pulumi.Input[str]] = None,
     Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
 
 
-    :param str account_id: The account for which to list the roles.
+    :param str account_id: The account identifier to target for the resource.
     """
     ...

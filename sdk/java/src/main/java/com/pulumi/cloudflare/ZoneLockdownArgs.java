@@ -20,14 +20,14 @@ public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
     public static final ZoneLockdownArgs Empty = new ZoneLockdownArgs();
 
     /**
-     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It&#39;s a complex value. See description below. The order of the configuration entries is unimportant.
+     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
      * 
      */
     @Import(name="configurations", required=true)
     private Output<List<ZoneLockdownConfigurationArgs>> configurations;
 
     /**
-     * @return A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It&#39;s a complex value. See description below. The order of the configuration entries is unimportant.
+     * @return A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
      * 
      */
     public Output<List<ZoneLockdownConfigurationArgs>> configurations() {
@@ -50,14 +50,14 @@ public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean of whether this zone lockdown is currently paused. Default: false.
+     * Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
      * 
      */
     @Import(name="paused")
     private @Nullable Output<Boolean> paused;
 
     /**
-     * @return Boolean of whether this zone lockdown is currently paused. Default: false.
+     * @return Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> paused() {
@@ -87,14 +87,14 @@ public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The DNS zone ID to which the access rule should be added.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The DNS zone ID to which the access rule should be added.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {
@@ -131,7 +131,7 @@ public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configurations A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It&#39;s a complex value. See description below. The order of the configuration entries is unimportant.
+         * @param configurations A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configurations A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It&#39;s a complex value. See description below. The order of the configuration entries is unimportant.
+         * @param configurations A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configurations A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It&#39;s a complex value. See description below. The order of the configuration entries is unimportant.
+         * @param configurations A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paused Boolean of whether this zone lockdown is currently paused. Default: false.
+         * @param paused Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paused Boolean of whether this zone lockdown is currently paused. Default: false.
+         * @param paused Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The DNS zone ID to which the access rule should be added.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The DNS zone ID to which the access rule should be added.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

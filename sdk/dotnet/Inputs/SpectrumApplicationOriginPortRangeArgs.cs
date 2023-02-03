@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class SpectrumApplicationOriginPortRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Upper bound of the origin port range, e.g. `2000`
+        /// Upper bound of the origin port range.
         /// </summary>
         [Input("end", required: true)]
         public Input<int> End { get; set; } = null!;
 
         /// <summary>
-        /// Lower bound of the origin port range, e.g. `1000`
+        /// Lower bound of the origin port range.
         /// </summary>
         [Input("start", required: true)]
         public Input<int> Start { get; set; } = null!;

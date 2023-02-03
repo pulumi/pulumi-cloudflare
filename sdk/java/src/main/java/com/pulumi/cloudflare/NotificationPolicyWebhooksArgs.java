@@ -16,14 +16,14 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
     public static final NotificationPolicyWebhooksArgs Empty = new NotificationPolicyWebhooksArgs();
 
     /**
-     * The ID of the account for which the webhook destination has to be connected.
+     * The account identifier to target for the resource.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The ID of the account for which the webhook destination has to be connected.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Output<String> accountId() {
@@ -46,18 +46,14 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
     }
 
     /**
-     * An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
-     * Secrets are not returned in any API response body.
-     * Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
+     * An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
      * 
      */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
     /**
-     * @return An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
-     * Secrets are not returned in any API response body.
-     * Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
+     * @return An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
      * 
      */
     public Optional<Output<String>> secret() {
@@ -107,7 +103,7 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param accountId The ID of the account for which the webhook destination has to be connected.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -118,7 +114,7 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param accountId The ID of the account for which the webhook destination has to be connected.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -149,9 +145,7 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param secret An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
-         * Secrets are not returned in any API response body.
-         * Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
+         * @param secret An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
          * 
          * @return builder
          * 
@@ -162,9 +156,7 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param secret An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
-         * Secrets are not returned in any API response body.
-         * Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
+         * @param secret An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
          * 
          * @return builder
          * 

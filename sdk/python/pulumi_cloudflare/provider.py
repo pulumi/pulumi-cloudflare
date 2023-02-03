@@ -38,12 +38,14 @@ class ProviderArgs:
                environment variable.
         :param pulumi.Input[str] api_key: The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
                keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-               should be used instead.
+               should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         :param pulumi.Input[str] api_token: The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
+               Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         :param pulumi.Input[str] api_user_service_key: A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-               `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
+               `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,
+               `api_user_service_key`.
         :param pulumi.Input[str] email: A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-               variable.
+               variable. Required when using `api_key`. Conflicts with `api_token`.
         :param pulumi.Input[int] max_backoff: Maximum backoff period in seconds after failed API calls. Alternatively, can be configured using the
                `CLOUDFLARE_MAX_BACKOFF` environment variable.
         :param pulumi.Input[int] min_backoff: Minimum backoff period in seconds after failed API calls. Alternatively, can be configured using the
@@ -149,7 +151,7 @@ class ProviderArgs:
         """
         The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
         keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-        should be used instead.
+        should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         """
         return pulumi.get(self, "api_key")
 
@@ -162,6 +164,7 @@ class ProviderArgs:
     def api_token(self) -> Optional[pulumi.Input[str]]:
         """
         The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
+        Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         """
         return pulumi.get(self, "api_token")
 
@@ -174,7 +177,8 @@ class ProviderArgs:
     def api_user_service_key(self) -> Optional[pulumi.Input[str]]:
         """
         A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-        `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
+        `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,
+        `api_user_service_key`.
         """
         return pulumi.get(self, "api_user_service_key")
 
@@ -187,7 +191,7 @@ class ProviderArgs:
     def email(self) -> Optional[pulumi.Input[str]]:
         """
         A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-        variable.
+        variable. Required when using `api_key`. Conflicts with `api_token`.
         """
         return pulumi.get(self, "email")
 
@@ -284,12 +288,14 @@ class Provider(pulumi.ProviderResource):
                environment variable.
         :param pulumi.Input[str] api_key: The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
                keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-               should be used instead.
+               should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         :param pulumi.Input[str] api_token: The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
+               Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         :param pulumi.Input[str] api_user_service_key: A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-               `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
+               `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,
+               `api_user_service_key`.
         :param pulumi.Input[str] email: A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-               variable.
+               variable. Required when using `api_key`. Conflicts with `api_token`.
         :param pulumi.Input[int] max_backoff: Maximum backoff period in seconds after failed API calls. Alternatively, can be configured using the
                `CLOUDFLARE_MAX_BACKOFF` environment variable.
         :param pulumi.Input[int] min_backoff: Minimum backoff period in seconds after failed API calls. Alternatively, can be configured using the
@@ -411,7 +417,7 @@ class Provider(pulumi.ProviderResource):
         """
         The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
         keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-        should be used instead.
+        should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         """
         return pulumi.get(self, "api_key")
 
@@ -420,6 +426,7 @@ class Provider(pulumi.ProviderResource):
     def api_token(self) -> pulumi.Output[Optional[str]]:
         """
         The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
+        Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         """
         return pulumi.get(self, "api_token")
 
@@ -428,7 +435,8 @@ class Provider(pulumi.ProviderResource):
     def api_user_service_key(self) -> pulumi.Output[Optional[str]]:
         """
         A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-        `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
+        `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,
+        `api_user_service_key`.
         """
         return pulumi.get(self, "api_user_service_key")
 
@@ -437,7 +445,7 @@ class Provider(pulumi.ProviderResource):
     def email(self) -> pulumi.Output[Optional[str]]:
         """
         A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-        variable.
+        variable. Required when using `api_key`. Conflicts with `api_token`.
         """
         return pulumi.get(self, "email")
 

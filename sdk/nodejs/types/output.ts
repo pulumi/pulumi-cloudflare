@@ -70,6 +70,7 @@ export interface AccessGroupExclude {
     githubs?: outputs.AccessGroupExcludeGithub[];
     groups?: string[];
     gsuites?: outputs.AccessGroupExcludeGsuite[];
+    ipLists?: string[];
     ips?: string[];
     loginMethods?: string[];
     oktas?: outputs.AccessGroupExcludeOkta[];
@@ -127,6 +128,7 @@ export interface AccessGroupInclude {
     githubs?: outputs.AccessGroupIncludeGithub[];
     groups?: string[];
     gsuites?: outputs.AccessGroupIncludeGsuite[];
+    ipLists?: string[];
     ips?: string[];
     loginMethods?: string[];
     oktas?: outputs.AccessGroupIncludeOkta[];
@@ -184,6 +186,7 @@ export interface AccessGroupRequire {
     githubs?: outputs.AccessGroupRequireGithub[];
     groups?: string[];
     gsuites?: outputs.AccessGroupRequireGsuite[];
+    ipLists?: string[];
     ips?: string[];
     loginMethods?: string[];
     oktas?: outputs.AccessGroupRequireOkta[];
@@ -300,6 +303,7 @@ export interface AccessPolicyExclude {
     githubs?: outputs.AccessPolicyExcludeGithub[];
     groups?: string[];
     gsuites?: outputs.AccessPolicyExcludeGsuite[];
+    ipLists?: string[];
     ips?: string[];
     loginMethods?: string[];
     oktas?: outputs.AccessPolicyExcludeOkta[];
@@ -363,6 +367,7 @@ export interface AccessPolicyInclude {
     githubs?: outputs.AccessPolicyIncludeGithub[];
     groups?: string[];
     gsuites?: outputs.AccessPolicyIncludeGsuite[];
+    ipLists?: string[];
     ips?: string[];
     loginMethods?: string[];
     oktas?: outputs.AccessPolicyIncludeOkta[];
@@ -426,6 +431,7 @@ export interface AccessPolicyRequire {
     githubs?: outputs.AccessPolicyRequireGithub[];
     groups?: string[];
     gsuites?: outputs.AccessPolicyRequireGsuite[];
+    ipLists?: string[];
     ips?: string[];
     loginMethods?: string[];
     oktas?: outputs.AccessPolicyRequireOkta[];
@@ -595,30 +601,44 @@ export interface CustomHostnameSslValidationRecord {
 
 export interface CustomSslCustomSslOptions {
     /**
-     * Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
+     * Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
      */
     bundleMethod?: string;
     /**
-     * Certificate certificate and the intermediate(s)
+     * Certificate certificate and the intermediate(s).
      */
     certificate?: string;
     /**
-     * Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highestSecurity`.
+     * Specifies the region where your private key can be held locally. Available values: `us`, `eu`, `highestSecurity`.
      */
     geoRestrictions?: string;
     /**
-     * Certificate's private key
+     * Certificate's private key.
      */
     privateKey?: string;
     /**
-     * Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacyCustom` (default), `sniCustom`.
+     * Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Available values: `legacyCustom`, `sniCustom`.
      */
     type?: string;
 }
 
 export interface CustomSslCustomSslPriority {
+    /**
+     * The ID of this resource.
+     */
     id?: string;
     priority?: number;
+}
+
+export interface DeviceManagedNetworksConfig {
+    /**
+     * The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
+     */
+    sha256: string;
+    /**
+     * A network address of the form "host:port" that the WARP client will use to detect the presence of a TLS host.
+     */
+    tlsSockaddr: string;
 }
 
 export interface DevicePostureIntegrationConfig {
@@ -650,7 +670,7 @@ export interface DevicePostureIntegrationConfig {
 
 export interface DevicePostureRuleInput {
     /**
-     * The workspace one device compliance status.
+     * The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
      */
     complianceStatus?: string;
     /**
@@ -674,9 +694,13 @@ export interface DevicePostureRuleInput {
      */
     id?: string;
     /**
-     * The version comparison operator.
+     * The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
      */
     operator?: string;
+    /**
+     * OS signal score from Crowdstrike. Value must be between 1 and 100.
+     */
+    os?: string;
     /**
      * The operating system excluding version information.
      */
@@ -685,6 +709,10 @@ export interface DevicePostureRuleInput {
      * The operating system version excluding OS name information or release name.
      */
     osDistroRevision?: string;
+    /**
+     * Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+     */
+    overall?: string;
     /**
      * The path to the file.
      */
@@ -698,6 +726,10 @@ export interface DevicePostureRuleInput {
      */
     running: boolean;
     /**
+     * Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+     */
+    sensorConfig?: string;
+    /**
      * The sha256 hash of the file.
      */
     sha256?: string;
@@ -709,6 +741,10 @@ export interface DevicePostureRuleInput {
      * The operating system semantic version.
      */
     version?: string;
+    /**
+     * The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
+     */
+    versionOperator?: string;
 }
 
 export interface DevicePostureRuleMatch {
@@ -799,17 +835,11 @@ export interface FallbackDomainDomain {
 }
 
 export interface GetAccountRolesRole {
-    /**
-     * Description of role's permissions
-     */
     description?: string;
     /**
-     * Role identifier tag
+     * The ID of this resource.
      */
     id?: string;
-    /**
-     * Role Name
-     */
     name?: string;
 }
 
@@ -827,63 +857,24 @@ export interface GetAccountsAccount {
 }
 
 export interface GetDevicesDevice {
-    /**
-     * When the device was created.
-     */
     created?: string;
-    /**
-     * The type of the device.
-     */
     deviceType?: string;
     /**
-     * Device ID.
+     * The ID of this resource.
      */
     id?: string;
-    /**
-     * IPv4 or IPv6 address.
-     */
     ip?: string;
-    /**
-     * The device's public key.
-     */
     key?: string;
-    /**
-     * When the device was last seen.
-     */
     lastSeen?: string;
-    /**
-     * The device model name.
-     */
     model?: string;
-    /**
-     * The device name.
-     */
     name?: string;
     osDistroName?: string;
     osDistroRevision?: string;
-    /**
-     * The operating system version.
-     */
     osVersion?: string;
-    /**
-     * When the device was updated.
-     */
     updated?: string;
-    /**
-     * User's email.
-     */
     userEmail?: string;
-    /**
-     * User's ID.
-     */
     userId?: string;
-    /**
-     * User's Name.
-     */
     userName?: string;
-    /**
-     * The WARP client version.
-     */
     version?: string;
 }
 
@@ -1117,19 +1108,15 @@ export interface GetWafRulesRule {
 
 export interface GetZonesFilter {
     /**
-     * Only search for zones in this account.
+     * The account identifier to target for the resource.
      */
     accountId?: string;
     /**
-     * The type of search to perform for the `name` value
-     * when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
-     * to `"exact"`.
+     * The type of search to perform for the `name` value when querying the zone API. Available values: `contains`, `exact`. Defaults to `exact`.
      */
     lookupType?: string;
     /**
-     * A RE2 compatible regular expression to filter the
-     * results. This is performed client side whereas the `name` and `lookupType`
-     * are performed on the Cloudflare server side.
+     * A RE2 compatible regular expression to filter the	results. This is performed client side whereas the `name` and `lookupType`	are performed on the Cloudflare server side.
      */
     match?: string;
     /**
@@ -1137,26 +1124,20 @@ export interface GetZonesFilter {
      */
     name?: string;
     /**
-     * Paused status of the zone to lookup. Valid values are
-     * `true` or `false`.
+     * Paused status of the zone to lookup. Defaults to `false`.
      */
     paused?: boolean;
     /**
-     * Status of the zone to lookup. Valid values: `"active"`,
-     * `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
-     * `"read only"`.
+     * Status of the zone to lookup.
      */
     status?: string;
 }
 
 export interface GetZonesZone {
     /**
-     * The zone ID
+     * The ID of this resource.
      */
     id?: string;
-    /**
-     * A string value to search for.
-     */
     name?: string;
 }
 
@@ -1240,41 +1221,41 @@ export interface LoadBalancerMonitorHeader {
      */
     header: string;
     /**
-     * A list of string values for the header.
+     * A list of values for the header.
      */
     values: string[];
 }
 
 export interface LoadBalancerPoolLoadShedding {
     /**
-     * Percent of traffic to shed 0 - 100.
+     * Percent of traffic to shed 0 - 100. Defaults to `0`.
      */
     defaultPercent?: number;
     /**
-     * Method of shedding traffic "", "hash" or "random".
+     * Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`""`.
      */
     defaultPolicy?: string;
     /**
-     * Percent of session traffic to shed 0 - 100.
+     * Percent of session traffic to shed 0 - 100. Defaults to `0`.
      */
     sessionPercent?: number;
     /**
-     * Method of shedding session traffic "" or "hash".
+     * Method of shedding traffic. Available values: ``,`hash`. Defaults to`""`.
      */
     sessionPolicy?: string;
 }
 
 export interface LoadBalancerPoolOrigin {
     /**
-     * The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.
+     * The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
      */
     address: string;
     /**
-     * Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+     * Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
      */
     enabled?: boolean;
     /**
-     * The header name.
+     * HTTP request headers.
      */
     headers?: outputs.LoadBalancerPoolOriginHeader[];
     /**
@@ -1282,25 +1263,19 @@ export interface LoadBalancerPoolOrigin {
      */
     name: string;
     /**
-     * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Default: 1.
+     * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Defaults to `1`.
      */
     weight?: number;
 }
 
 export interface LoadBalancerPoolOriginHeader {
-    /**
-     * The header name.
-     */
     header: string;
-    /**
-     * A list of string values for the header.
-     */
     values: string[];
 }
 
 export interface LoadBalancerPoolOriginSteering {
     /**
-     * Either "random" (default) or "hash".
+     * Origin steering policy to be used. Available values: ``,`hash`,`random`. Defaults to`random`.
      */
     policy?: string;
 }
@@ -1916,31 +1891,57 @@ export interface PagesProjectDeploymentConfigs {
     /**
      * Configuration for preview deploys.
      */
-    preview?: outputs.PagesProjectDeploymentConfigsPreview;
+    preview: outputs.PagesProjectDeploymentConfigsPreview;
     /**
      * Configuration for production deploys.
      */
-    production?: outputs.PagesProjectDeploymentConfigsProduction;
+    production: outputs.PagesProjectDeploymentConfigsProduction;
 }
 
 export interface PagesProjectDeploymentConfigsPreview {
+    alwaysUseLatestCompatibilityDate?: boolean;
     compatibilityDate: string;
     compatibilityFlags: string[];
     d1Databases?: {[key: string]: any};
     durableObjectNamespaces?: {[key: string]: any};
     environmentVariables?: {[key: string]: any};
+    failOpen?: boolean;
     kvNamespaces?: {[key: string]: any};
     r2Buckets?: {[key: string]: any};
+    serviceBindings?: outputs.PagesProjectDeploymentConfigsPreviewServiceBinding[];
+    usageModel?: string;
+}
+
+export interface PagesProjectDeploymentConfigsPreviewServiceBinding {
+    environment?: string;
+    /**
+     * Name of the project.
+     */
+    name: string;
+    service: string;
 }
 
 export interface PagesProjectDeploymentConfigsProduction {
+    alwaysUseLatestCompatibilityDate?: boolean;
     compatibilityDate: string;
     compatibilityFlags: string[];
     d1Databases?: {[key: string]: any};
     durableObjectNamespaces?: {[key: string]: any};
     environmentVariables?: {[key: string]: any};
+    failOpen?: boolean;
     kvNamespaces?: {[key: string]: any};
     r2Buckets?: {[key: string]: any};
+    serviceBindings?: outputs.PagesProjectDeploymentConfigsProductionServiceBinding[];
+    usageModel?: string;
+}
+
+export interface PagesProjectDeploymentConfigsProductionServiceBinding {
+    environment?: string;
+    /**
+     * Name of the project.
+     */
+    name: string;
+    service: string;
 }
 
 export interface PagesProjectSource {
@@ -1971,75 +1972,51 @@ export interface PagesProjectSourceConfig {
 
 export interface RateLimitAction {
     /**
-     * The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge', 'js_challenge' and 'managed_challenge'.
+     * The type of action to perform. Available values: `simulate`, `ban`, `challenge`, `jsChallenge`, `managedChallenge`.
      */
     mode: string;
     /**
-     * Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
+     * Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page.
      */
     response?: outputs.RateLimitActionResponse;
     /**
-     * The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period (min: 1, max: 86400).
+     * The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period.
      */
     timeout?: number;
 }
 
 export interface RateLimitActionResponse {
-    /**
-     * The body to return, the content here should conform to the content_type.
-     */
     body: string;
-    /**
-     * The content-type of the body, must be one of: 'text/plain', 'text/xml', 'application/json'.
-     */
     contentType: string;
 }
 
 export interface RateLimitCorrelate {
     /**
-     * If set to 'nat', NAT support will be enabled for rate limiting.
+     * If set to 'nat', NAT support will be enabled for rate limiting. Available values: `nat`.
      */
     by?: string;
 }
 
 export interface RateLimitMatch {
     /**
-     * Matches HTTP requests (from the client to Cloudflare). See definition below.
+     * Matches HTTP requests (from the client to Cloudflare).
      */
     request: outputs.RateLimitMatchRequest;
     /**
-     * Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
+     * Matches HTTP responses before they are returned to the client from Cloudflare. If this is defined, then the entire counting of traffic occurs at this stage.
      */
     response: outputs.RateLimitMatchResponse;
 }
 
 export interface RateLimitMatchRequest {
-    /**
-     * HTTP Methods, can be a subset ['POST','PUT'] or all ['\_ALL\_']. Default: ['\_ALL\_'].
-     */
     methods: string[];
-    /**
-     * HTTP Schemes, can be one ['HTTPS'], both ['HTTP','HTTPS'] or all ['\_ALL\_']. Default: ['\_ALL\_'].
-     */
     schemes: string[];
-    /**
-     * The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use _ for all traffic to your zone. Default: '_'.
-     */
     urlPattern: string;
 }
 
 export interface RateLimitMatchResponse {
-    /**
-     * block is a list of maps with the following attributes:
-     */
     headers?: {[key: string]: string}[];
-    /**
-     * Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting. Default: `true`.
-     */
     originTraffic: boolean;
-    /**
-     * HTTP Status codes, can be one [403], many [401,403] or indicate all by not providing this value.
-     */
     statuses: number[];
 }
 
@@ -2063,7 +2040,7 @@ export interface RecordData {
     longSeconds?: number;
     matchingType?: number;
     /**
-     * The name of the record
+     * The name of the record. **Modifying this attribute will force creation of a new resource.**
      */
     name?: string;
     order?: number;
@@ -2072,7 +2049,7 @@ export interface RecordData {
     precisionVert?: number;
     preference?: number;
     /**
-     * The priority of the record
+     * The priority of the record.
      */
     priority?: number;
     proto?: string;
@@ -2086,12 +2063,12 @@ export interface RecordData {
     tag?: string;
     target?: string;
     /**
-     * The type of the record
+     * The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`. **Modifying this attribute will force creation of a new resource.**
      */
     type?: number;
     usage?: number;
     /**
-     * The (string) value of the record. Either this or `data` must be specified
+     * The value of the record. Conflicts with `data`.
      */
     value?: string;
     weight?: number;
@@ -2406,29 +2383,29 @@ export interface RulesetRuleRatelimit {
 
 export interface SpectrumApplicationDns {
     /**
-     * Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+     * The name of the DNS record associated with the application.
      */
     name: string;
     /**
-     * The type of DNS record associated with the application. Valid values: `CNAME`.
+     * The type of DNS record associated with the application.
      */
     type: string;
 }
 
 export interface SpectrumApplicationOriginDns {
     /**
-     * Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+     * Fully qualified domain name of the origin.
      */
     name: string;
 }
 
 export interface SpectrumApplicationOriginPortRange {
     /**
-     * Upper bound of the origin port range, e.g. `2000`
+     * Upper bound of the origin port range.
      */
     end: number;
     /**
-     * Lower bound of the origin port range, e.g. `1000`
+     * Lower bound of the origin port range.
      */
     start: number;
 }
@@ -2473,17 +2450,25 @@ export interface TeamsAccountBlockPage {
      */
     enabled?: boolean;
     /**
-     * Block page header text.
+     * Block page footer text.
      */
     footerText?: string;
     /**
-     * Block page footer text.
+     * Block page header text.
      */
     headerText?: string;
     /**
      * URL of block page logo.
      */
     logoPath?: string;
+    /**
+     * Admin email for users to contact.
+     */
+    mailtoAddress?: string;
+    /**
+     * Subject line for emails created from block page.
+     */
+    mailtoSubject?: string;
     /**
      * Name of block page configuration.
      */
@@ -2499,13 +2484,11 @@ export interface TeamsAccountFips {
 
 export interface TeamsAccountLogging {
     /**
-     * Redact personally identifiable information from activity logging (PII fields are: source IP,
-     * user email, user ID, device ID, URL, referrer, user agent).
+     * Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
      */
     redactPii: boolean;
     /**
-     * Represents whether all requests are logged or only the blocked requests are
-     * logged in DNS, HTTP and L4 filters.
+     * Represents whether all requests are logged or only the blocked requests are slogged in DNS, HTTP and L4 filters.
      */
     settingsByRuleType: outputs.TeamsAccountLoggingSettingsByRuleType;
 }
@@ -2533,20 +2516,23 @@ export interface TeamsAccountLoggingSettingsByRuleTypeL4 {
 
 export interface TeamsAccountProxy {
     /**
-     * Whether gateway proxy is enabled on gateway devices for tcp traffic.
+     * Whether gateway proxy is enabled on gateway devices for TCP traffic.
      */
     tcp: boolean;
     /**
-     * Whether gateway proxy is enabled on gateway devices for udp traffic.
+     * Whether gateway proxy is enabled on gateway devices for UDP traffic.
      */
     udp: boolean;
 }
 
 export interface TeamsLocationNetwork {
     /**
-     * ID of the teams location.
+     * The ID of this resource.
      */
     id: string;
+    /**
+     * CIDR notation representation of the network IP.
+     */
     network: string;
 }
 
@@ -2556,7 +2542,7 @@ export interface TeamsRuleRuleSettings {
      */
     addHeaders?: {[key: string]: string};
     /**
-     * Configure how browser isolation behaves (refer to the nested schema).
+     * Configure how browser isolation behaves.
      */
     bisoAdminControls?: outputs.TeamsRuleRuleSettingsBisoAdminControls;
     /**
@@ -2568,15 +2554,19 @@ export interface TeamsRuleRuleSettings {
      */
     blockPageReason?: string;
     /**
-     * Configure how session check behaves (refer to the nested schema).
+     * Configure how session check behaves.
      */
     checkSession?: outputs.TeamsRuleRuleSettingsCheckSession;
     /**
-     * Disable DNSSEC validation (must be Allow rule)
+     * Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+     */
+    egress?: outputs.TeamsRuleRuleSettingsEgress;
+    /**
+     * Disable DNSSEC validation (must be Allow rule).
      */
     insecureDisableDnssecValidation?: boolean;
     /**
-     * Settings to forward layer 4 traffic (refer to the nested schema).
+     * Settings to forward layer 4 traffic.
      */
     l4override?: outputs.TeamsRuleRuleSettingsL4override;
     /**
@@ -2590,47 +2580,26 @@ export interface TeamsRuleRuleSettings {
 }
 
 export interface TeamsRuleRuleSettingsBisoAdminControls {
-    /**
-     * Disable copy-paste.
-     */
     disableCopyPaste?: boolean;
-    /**
-     * Disable download.
-     */
     disableDownload?: boolean;
-    /**
-     * Disable keyboard usage.
-     */
     disableKeyboard?: boolean;
-    /**
-     * Disable printing.
-     */
     disablePrinting?: boolean;
-    /**
-     * Disable upload.
-     */
     disableUpload?: boolean;
 }
 
 export interface TeamsRuleRuleSettingsCheckSession {
-    /**
-     * Configure how fresh the session needs to be to be considered valid.
-     */
     duration: string;
-    /**
-     * Enable session enforcement for this rule.
-     */
     enforce: boolean;
 }
 
+export interface TeamsRuleRuleSettingsEgress {
+    ipv4: string;
+    ipv4Fallback?: string;
+    ipv6: string;
+}
+
 export interface TeamsRuleRuleSettingsL4override {
-    /**
-     * Override IP to forward traffic to.
-     */
     ip: string;
-    /**
-     * Override Port to forward traffic to.
-     */
     port: number;
 }
 
@@ -2802,11 +2771,11 @@ export interface WorkerScriptWebassemblyBinding {
 
 export interface ZoneLockdownConfiguration {
     /**
-     * The request property to target. Allowed values: "ip", "ipRange"
+     * The request property to target. Available values: `ip`, `ipRange`.
      */
     target: string;
     /**
-     * The value to target. Depends on target's type. IP addresses should just be standard IPv4/IPv6 notation i.e. `198.51.100.4` or `2001:db8::/32` and IP ranges in CIDR format i.e. `198.51.0.0/16`.
+     * The value to target. Depends on target's type. IP addresses should just be standard IPv4/IPv6 notation i.e. `192.0.2.1` or `2001:db8::/32` and IP ranges in CIDR format i.e. `192.0.2.0/24`.
      */
     value: string;
 }
@@ -2819,41 +2788,23 @@ export interface ZoneSettingsOverrideInitialSetting {
     brotli: string;
     browserCacheTtl: number;
     browserCheck: string;
-    /**
-     * Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
-     */
     cacheLevel: string;
     challengeTtl: number;
-    /**
-     * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
-     */
     ciphers: string[];
-    /**
-     * Allowed values: "flattenAtRoot" (default), "flattenAll", "flattenNone".
-     */
     cnameFlattening: string;
     developmentMode: string;
     earlyHints: string;
     emailObfuscation: string;
     filterLogsToCloudflare: string;
-    /**
-     * Allowed values: "on", "off" (default), "custom".
-     */
     h2Prioritization: string;
     hotlinkProtection: string;
     http2: string;
     http3: string;
-    /**
-     * Allowed values: "on", "off" (default), "open".
-     */
     imageResizing: string;
     ipGeolocation: string;
     ipv6: string;
     logToCloudflare: string;
     maxUpload: number;
-    /**
-     * Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
-     */
     minTlsVersion: string;
     minify: outputs.ZoneSettingsOverrideInitialSettingMinify;
     mirage: string;
@@ -2862,105 +2813,51 @@ export interface ZoneSettingsOverrideInitialSetting {
     opportunisticOnion: string;
     orangeToOrange: string;
     originErrorPagePassThru: string;
-    /**
-     * Allowed values: "1" (default on Enterprise), "2" (default)
-     */
     originMaxHttpVersion: string;
-    /**
-     * Allowed values: "off" (default), "lossless", "lossy".
-     */
     polish: string;
     prefetchPreload: string;
     privacyPass: string;
     proxyReadTimeout: string;
-    /**
-     * Allowed values: "off" (default), "addHeader", "overwriteHeader".
-     */
     pseudoIpv4: string;
     responseBuffering: string;
     rocketLoader: string;
     securityHeader: outputs.ZoneSettingsOverrideInitialSettingSecurityHeader;
-    /**
-     * Allowed values: "off" (Enterprise only), "essentiallyOff", "low", "medium" (default), "high", "underAttack".
-     */
     securityLevel: string;
     serverSideExclude: string;
     sortQueryStringForCache: string;
-    /**
-     * Allowed values: "off" (default), "flexible", "full", "strict", "originPull".
-     */
     ssl: string;
     /**
      * @deprecated tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
      */
     tls12Only: string;
-    /**
-     * Allowed values: "off" (default), "on", "zrt".
-     */
     tls13: string;
     tlsClientAuth: string;
     trueClientIpHeader: string;
     universalSsl: string;
     visitorIp: string;
     waf: string;
-    /**
-     * . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
-     */
     webp: string;
     websockets: string;
     zeroRtt: string;
 }
 
 export interface ZoneSettingsOverrideInitialSettingMinify {
-    /**
-     * "on"/"off"
-     */
     css: string;
-    /**
-     * "on"/"off"
-     */
     html: string;
-    /**
-     * "on"/"off"
-     */
     js: string;
 }
 
 export interface ZoneSettingsOverrideInitialSettingMobileRedirect {
-    /**
-     * String value
-     */
     mobileSubdomain: string;
-    /**
-     * "on"/"off"
-     */
     status: string;
-    /**
-     * true/false
-     */
     stripUri: boolean;
 }
 
 export interface ZoneSettingsOverrideInitialSettingSecurityHeader {
-    /**
-     * true/false
-     */
     enabled: boolean;
-    /**
-     * true/false
-     */
     includeSubdomains: boolean;
-    /**
-     * Integer
-     */
     maxAge: number;
-    /**
-     * true/false
-     */
     nosniff: boolean;
-    /**
-     * true/false
-     */
     preload: boolean;
 }
 
@@ -2972,41 +2869,23 @@ export interface ZoneSettingsOverrideSettings {
     brotli: string;
     browserCacheTtl: number;
     browserCheck: string;
-    /**
-     * Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
-     */
     cacheLevel: string;
     challengeTtl: number;
-    /**
-     * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
-     */
     ciphers: string[];
-    /**
-     * Allowed values: "flattenAtRoot" (default), "flattenAll", "flattenNone".
-     */
     cnameFlattening: string;
     developmentMode: string;
     earlyHints: string;
     emailObfuscation: string;
     filterLogsToCloudflare: string;
-    /**
-     * Allowed values: "on", "off" (default), "custom".
-     */
     h2Prioritization: string;
     hotlinkProtection: string;
     http2: string;
     http3: string;
-    /**
-     * Allowed values: "on", "off" (default), "open".
-     */
     imageResizing: string;
     ipGeolocation: string;
     ipv6: string;
     logToCloudflare: string;
     maxUpload: number;
-    /**
-     * Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
-     */
     minTlsVersion: string;
     minify: outputs.ZoneSettingsOverrideSettingsMinify;
     mirage: string;
@@ -3015,105 +2894,51 @@ export interface ZoneSettingsOverrideSettings {
     opportunisticOnion: string;
     orangeToOrange: string;
     originErrorPagePassThru: string;
-    /**
-     * Allowed values: "1" (default on Enterprise), "2" (default)
-     */
     originMaxHttpVersion: string;
-    /**
-     * Allowed values: "off" (default), "lossless", "lossy".
-     */
     polish: string;
     prefetchPreload: string;
     privacyPass: string;
     proxyReadTimeout: string;
-    /**
-     * Allowed values: "off" (default), "addHeader", "overwriteHeader".
-     */
     pseudoIpv4: string;
     responseBuffering: string;
     rocketLoader: string;
     securityHeader: outputs.ZoneSettingsOverrideSettingsSecurityHeader;
-    /**
-     * Allowed values: "off" (Enterprise only), "essentiallyOff", "low", "medium" (default), "high", "underAttack".
-     */
     securityLevel: string;
     serverSideExclude: string;
     sortQueryStringForCache: string;
-    /**
-     * Allowed values: "off" (default), "flexible", "full", "strict", "originPull".
-     */
     ssl: string;
     /**
      * @deprecated tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
      */
     tls12Only: string;
-    /**
-     * Allowed values: "off" (default), "on", "zrt".
-     */
     tls13: string;
     tlsClientAuth: string;
     trueClientIpHeader: string;
     universalSsl: string;
     visitorIp: string;
     waf: string;
-    /**
-     * . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
-     */
     webp: string;
     websockets: string;
     zeroRtt: string;
 }
 
 export interface ZoneSettingsOverrideSettingsMinify {
-    /**
-     * "on"/"off"
-     */
     css: string;
-    /**
-     * "on"/"off"
-     */
     html: string;
-    /**
-     * "on"/"off"
-     */
     js: string;
 }
 
 export interface ZoneSettingsOverrideSettingsMobileRedirect {
-    /**
-     * String value
-     */
     mobileSubdomain: string;
-    /**
-     * "on"/"off"
-     */
     status: string;
-    /**
-     * true/false
-     */
     stripUri: boolean;
 }
 
 export interface ZoneSettingsOverrideSettingsSecurityHeader {
-    /**
-     * true/false
-     */
     enabled: boolean;
-    /**
-     * true/false
-     */
     includeSubdomains: boolean;
-    /**
-     * Integer
-     */
     maxAge: number;
-    /**
-     * true/false
-     */
     nosniff: boolean;
-    /**
-     * true/false
-     */
     preload: boolean;
 }
 

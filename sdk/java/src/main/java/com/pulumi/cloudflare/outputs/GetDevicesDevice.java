@@ -11,133 +11,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDevicesDevice {
-    /**
-     * @return When the device was created.
-     * 
-     */
     private @Nullable String created;
-    /**
-     * @return The type of the device.
-     * 
-     */
     private @Nullable String deviceType;
     /**
-     * @return Device ID.
+     * @return The ID of this resource.
      * 
      */
     private @Nullable String id;
-    /**
-     * @return IPv4 or IPv6 address.
-     * 
-     */
     private @Nullable String ip;
-    /**
-     * @return The device&#39;s public key.
-     * 
-     */
     private @Nullable String key;
-    /**
-     * @return When the device was last seen.
-     * 
-     */
     private @Nullable String lastSeen;
-    /**
-     * @return The device model name.
-     * 
-     */
     private @Nullable String model;
-    /**
-     * @return The device name.
-     * 
-     */
     private @Nullable String name;
     private @Nullable String osDistroName;
     private @Nullable String osDistroRevision;
-    /**
-     * @return The operating system version.
-     * 
-     */
     private @Nullable String osVersion;
-    /**
-     * @return When the device was updated.
-     * 
-     */
     private @Nullable String updated;
-    /**
-     * @return User&#39;s email.
-     * 
-     */
     private @Nullable String userEmail;
-    /**
-     * @return User&#39;s ID.
-     * 
-     */
     private @Nullable String userId;
-    /**
-     * @return User&#39;s Name.
-     * 
-     */
     private @Nullable String userName;
-    /**
-     * @return The WARP client version.
-     * 
-     */
     private @Nullable String version;
 
     private GetDevicesDevice() {}
-    /**
-     * @return When the device was created.
-     * 
-     */
     public Optional<String> created() {
         return Optional.ofNullable(this.created);
     }
-    /**
-     * @return The type of the device.
-     * 
-     */
     public Optional<String> deviceType() {
         return Optional.ofNullable(this.deviceType);
     }
     /**
-     * @return Device ID.
+     * @return The ID of this resource.
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
-    /**
-     * @return IPv4 or IPv6 address.
-     * 
-     */
     public Optional<String> ip() {
         return Optional.ofNullable(this.ip);
     }
-    /**
-     * @return The device&#39;s public key.
-     * 
-     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
-    /**
-     * @return When the device was last seen.
-     * 
-     */
     public Optional<String> lastSeen() {
         return Optional.ofNullable(this.lastSeen);
     }
-    /**
-     * @return The device model name.
-     * 
-     */
     public Optional<String> model() {
         return Optional.ofNullable(this.model);
     }
-    /**
-     * @return The device name.
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -147,45 +67,21 @@ public final class GetDevicesDevice {
     public Optional<String> osDistroRevision() {
         return Optional.ofNullable(this.osDistroRevision);
     }
-    /**
-     * @return The operating system version.
-     * 
-     */
     public Optional<String> osVersion() {
         return Optional.ofNullable(this.osVersion);
     }
-    /**
-     * @return When the device was updated.
-     * 
-     */
     public Optional<String> updated() {
         return Optional.ofNullable(this.updated);
     }
-    /**
-     * @return User&#39;s email.
-     * 
-     */
     public Optional<String> userEmail() {
         return Optional.ofNullable(this.userEmail);
     }
-    /**
-     * @return User&#39;s ID.
-     * 
-     */
     public Optional<String> userId() {
         return Optional.ofNullable(this.userId);
     }
-    /**
-     * @return User&#39;s Name.
-     * 
-     */
     public Optional<String> userName() {
         return Optional.ofNullable(this.userName);
     }
-    /**
-     * @return The WARP client version.
-     * 
-     */
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }

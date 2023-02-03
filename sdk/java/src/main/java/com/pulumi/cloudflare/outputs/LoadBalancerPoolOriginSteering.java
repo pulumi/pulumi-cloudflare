@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerPoolOriginSteering {
     /**
-     * @return Either &#34;random&#34; (default) or &#34;hash&#34;.
+     * @return Origin steering policy to be used. Available values: ``,`hash`,`random`. Defaults to`random`.
      * 
      */
     private @Nullable String policy;
 
     private LoadBalancerPoolOriginSteering() {}
     /**
-     * @return Either &#34;random&#34; (default) or &#34;hash&#34;.
+     * @return Origin steering policy to be used. Available values: ``,`hash`,`random`. Defaults to`random`.
      * 
      */
     public Optional<String> policy() {

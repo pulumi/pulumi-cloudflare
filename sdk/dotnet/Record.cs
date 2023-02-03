@@ -22,11 +22,11 @@ namespace Pulumi.Cloudflare
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Add a record to the domain
-    ///     var foobar = new Cloudflare.Record("foobar", new()
+    ///     var example = new Cloudflare.Record("example", new()
     ///     {
     ///         ZoneId = @var.Cloudflare_zone_id,
     ///         Name = "example",
-    ///         Value = "192.168.0.11",
+    ///         Value = "192.0.2.1",
     ///         Type = "A",
     ///         Ttl = 3600,
     ///     });
@@ -54,94 +54,107 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Records can be imported using a composite ID formed of zone ID and record ID, e.g.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/record:Record default ae36f999674d196762efcc5abb06b345/d41d8cd98f00b204e9800998ecf8427e
+    ///  $ pulumi import cloudflare:index/record:Record example &lt;zone_id&gt;/&lt;record_id&gt;
     /// ```
-    /// 
-    ///  where- `ae36f999674d196762efcc5abb06b345` - the zone ID - `d41d8cd98f00b204e9800998ecf8427e` - record ID as returned by [API](https://api.cloudflare.com/#dns-records-for-a-zone-list-dns-records)
     /// </summary>
     [CloudflareResourceType("cloudflare:index/record:Record")]
     public partial class Record : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
+        /// update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
+        /// from overwriting this record. **This configuration is not recommended for most environments**
+        /// </summary>
         [Output("allowOverwrite")]
         public Output<bool?> AllowOverwrite { get; private set; } = null!;
 
         /// <summary>
-        /// The RFC3339 timestamp of when the record was created
+        /// Comments or notes about the DNS record. This field has no effect on DNS responses.
+        /// </summary>
+        [Output("comment")]
+        public Output<string?> Comment { get; private set; } = null!;
+
+        /// <summary>
+        /// The RFC3339 timestamp of when the record was created.
         /// </summary>
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
+        /// Map of attributes that constitute the record value. Conflicts with `value`.
         /// </summary>
         [Output("data")]
         public Output<Outputs.RecordData?> Data { get; private set; } = null!;
 
         /// <summary>
-        /// The FQDN of the record
+        /// The FQDN of the record.
         /// </summary>
         [Output("hostname")]
         public Output<string> Hostname { get; private set; } = null!;
 
         /// <summary>
-        /// A key-value map of string metadata Cloudflare associates with the record
+        /// A key-value map of string metadata Cloudflare associates with the record.
         /// </summary>
         [Output("metadata")]
         public Output<ImmutableDictionary<string, object>> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// The RFC3339 timestamp of when the record was last modified
+        /// The RFC3339 timestamp of when the record was last modified.
         /// </summary>
         [Output("modifiedOn")]
         public Output<string> ModifiedOn { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the record
+        /// The name of the record. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The priority of the record
+        /// The priority of the record.
         /// </summary>
         [Output("priority")]
         public Output<int?> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// Shows whether this record can be proxied, must be true if setting `proxied=true`
+        /// Shows whether this record can be proxied.
         /// </summary>
         [Output("proxiable")]
         public Output<bool> Proxiable { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the record gets Cloudflare's origin protection; defaults to `false`.
+        /// Whether the record gets Cloudflare's origin protection.
         /// </summary>
         [Output("proxied")]
         public Output<bool?> Proxied { get; private set; } = null!;
 
         /// <summary>
-        /// The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
+        /// Custom tags for the DNS record.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The TTL of the record.
         /// </summary>
         [Output("ttl")]
         public Output<int> Ttl { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the record
+        /// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The (string) value of the record. Either this or `data` must be specified
+        /// The value of the record. Conflicts with `data`.
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS zone ID to add the record to
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -192,53 +205,76 @@ namespace Pulumi.Cloudflare
 
     public sealed class RecordArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
+        /// update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
+        /// from overwriting this record. **This configuration is not recommended for most environments**
+        /// </summary>
         [Input("allowOverwrite")]
         public Input<bool>? AllowOverwrite { get; set; }
 
         /// <summary>
-        /// Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
+        /// Comments or notes about the DNS record. This field has no effect on DNS responses.
+        /// </summary>
+        [Input("comment")]
+        public Input<string>? Comment { get; set; }
+
+        /// <summary>
+        /// Map of attributes that constitute the record value. Conflicts with `value`.
         /// </summary>
         [Input("data")]
         public Input<Inputs.RecordDataArgs>? Data { get; set; }
 
         /// <summary>
-        /// The name of the record
+        /// The name of the record. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The priority of the record
+        /// The priority of the record.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// Whether the record gets Cloudflare's origin protection; defaults to `false`.
+        /// Whether the record gets Cloudflare's origin protection.
         /// </summary>
         [Input("proxied")]
         public Input<bool>? Proxied { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
         /// <summary>
-        /// The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
+        /// Custom tags for the DNS record.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The TTL of the record.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
 
         /// <summary>
-        /// The type of the record
+        /// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// The (string) value of the record. Either this or `data` must be specified
+        /// The value of the record. Conflicts with `data`.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 
         /// <summary>
-        /// The DNS zone ID to add the record to
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -251,23 +287,34 @@ namespace Pulumi.Cloudflare
 
     public sealed class RecordState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
+        /// update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
+        /// from overwriting this record. **This configuration is not recommended for most environments**
+        /// </summary>
         [Input("allowOverwrite")]
         public Input<bool>? AllowOverwrite { get; set; }
 
         /// <summary>
-        /// The RFC3339 timestamp of when the record was created
+        /// Comments or notes about the DNS record. This field has no effect on DNS responses.
+        /// </summary>
+        [Input("comment")]
+        public Input<string>? Comment { get; set; }
+
+        /// <summary>
+        /// The RFC3339 timestamp of when the record was created.
         /// </summary>
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
 
         /// <summary>
-        /// Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
+        /// Map of attributes that constitute the record value. Conflicts with `value`.
         /// </summary>
         [Input("data")]
         public Input<Inputs.RecordDataGetArgs>? Data { get; set; }
 
         /// <summary>
-        /// The FQDN of the record
+        /// The FQDN of the record.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
@@ -276,7 +323,7 @@ namespace Pulumi.Cloudflare
         private InputMap<object>? _metadata;
 
         /// <summary>
-        /// A key-value map of string metadata Cloudflare associates with the record
+        /// A key-value map of string metadata Cloudflare associates with the record.
         /// </summary>
         public InputMap<object> Metadata
         {
@@ -285,55 +332,67 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The RFC3339 timestamp of when the record was last modified
+        /// The RFC3339 timestamp of when the record was last modified.
         /// </summary>
         [Input("modifiedOn")]
         public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
-        /// The name of the record
+        /// The name of the record. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The priority of the record
+        /// The priority of the record.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// Shows whether this record can be proxied, must be true if setting `proxied=true`
+        /// Shows whether this record can be proxied.
         /// </summary>
         [Input("proxiable")]
         public Input<bool>? Proxiable { get; set; }
 
         /// <summary>
-        /// Whether the record gets Cloudflare's origin protection; defaults to `false`.
+        /// Whether the record gets Cloudflare's origin protection.
         /// </summary>
         [Input("proxied")]
         public Input<bool>? Proxied { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
         /// <summary>
-        /// The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
+        /// Custom tags for the DNS record.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The TTL of the record.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
 
         /// <summary>
-        /// The type of the record
+        /// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The (string) value of the record. Either this or `data` must be specified
+        /// The value of the record. Conflicts with `data`.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 
         /// <summary>
-        /// The DNS zone ID to add the record to
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

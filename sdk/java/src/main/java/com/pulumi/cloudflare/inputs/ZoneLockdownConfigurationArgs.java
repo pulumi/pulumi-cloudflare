@@ -14,14 +14,14 @@ public final class ZoneLockdownConfigurationArgs extends com.pulumi.resources.Re
     public static final ZoneLockdownConfigurationArgs Empty = new ZoneLockdownConfigurationArgs();
 
     /**
-     * The request property to target. Allowed values: &#34;ip&#34;, &#34;ip_range&#34;
+     * The request property to target. Available values: `ip`, `ip_range`.
      * 
      */
     @Import(name="target", required=true)
     private Output<String> target;
 
     /**
-     * @return The request property to target. Allowed values: &#34;ip&#34;, &#34;ip_range&#34;
+     * @return The request property to target. Available values: `ip`, `ip_range`.
      * 
      */
     public Output<String> target() {
@@ -29,14 +29,14 @@ public final class ZoneLockdownConfigurationArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The value to target. Depends on target&#39;s type. IP addresses should just be standard IPv4/IPv6 notation i.e. `198.51.100.4` or `2001:db8::/32` and IP ranges in CIDR format i.e. `198.51.0.0/16`.
+     * The value to target. Depends on target&#39;s type. IP addresses should just be standard IPv4/IPv6 notation i.e. `192.0.2.1` or `2001:db8::/32` and IP ranges in CIDR format i.e. `192.0.2.0/24`.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return The value to target. Depends on target&#39;s type. IP addresses should just be standard IPv4/IPv6 notation i.e. `198.51.100.4` or `2001:db8::/32` and IP ranges in CIDR format i.e. `198.51.0.0/16`.
+     * @return The value to target. Depends on target&#39;s type. IP addresses should just be standard IPv4/IPv6 notation i.e. `192.0.2.1` or `2001:db8::/32` and IP ranges in CIDR format i.e. `192.0.2.0/24`.
      * 
      */
     public Output<String> value() {
@@ -69,7 +69,7 @@ public final class ZoneLockdownConfigurationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param target The request property to target. Allowed values: &#34;ip&#34;, &#34;ip_range&#34;
+         * @param target The request property to target. Available values: `ip`, `ip_range`.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class ZoneLockdownConfigurationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param target The request property to target. Allowed values: &#34;ip&#34;, &#34;ip_range&#34;
+         * @param target The request property to target. Available values: `ip`, `ip_range`.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class ZoneLockdownConfigurationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param value The value to target. Depends on target&#39;s type. IP addresses should just be standard IPv4/IPv6 notation i.e. `198.51.100.4` or `2001:db8::/32` and IP ranges in CIDR format i.e. `198.51.0.0/16`.
+         * @param value The value to target. Depends on target&#39;s type. IP addresses should just be standard IPv4/IPv6 notation i.e. `192.0.2.1` or `2001:db8::/32` and IP ranges in CIDR format i.e. `192.0.2.0/24`.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ZoneLockdownConfigurationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param value The value to target. Depends on target&#39;s type. IP addresses should just be standard IPv4/IPv6 notation i.e. `198.51.100.4` or `2001:db8::/32` and IP ranges in CIDR format i.e. `198.51.0.0/16`.
+         * @param value The value to target. Depends on target&#39;s type. IP addresses should just be standard IPv4/IPv6 notation i.e. `192.0.2.1` or `2001:db8::/32` and IP ranges in CIDR format i.e. `192.0.2.0/24`.
          * 
          * @return builder
          * 

@@ -27,7 +27,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err = cloudflare.GetDevices(ctx, &cloudflare.GetDevicesArgs{
-//				AccountId: "c68973221045fe805dfb9aa520153148",
+//				AccountId: "f037e56e89293a057740de681ac9abbe",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,15 +48,15 @@ func GetDevices(ctx *pulumi.Context, args *GetDevicesArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getDevices.
 type GetDevicesArgs struct {
-	// The account for which to list the devices.
+	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getDevices.
 type GetDevicesResult struct {
-	AccountId string `pulumi:"accountId"`
-	// A list of device object. See below for nested attributes.
-	Devices []GetDevicesDevice `pulumi:"devices"`
+	// The account identifier to target for the resource.
+	AccountId string             `pulumi:"accountId"`
+	Devices   []GetDevicesDevice `pulumi:"devices"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 }
@@ -76,7 +76,7 @@ func GetDevicesOutput(ctx *pulumi.Context, args GetDevicesOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getDevices.
 type GetDevicesOutputArgs struct {
-	// The account for which to list the devices.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 }
 
@@ -99,11 +99,11 @@ func (o GetDevicesResultOutput) ToGetDevicesResultOutputWithContext(ctx context.
 	return o
 }
 
+// The account identifier to target for the resource.
 func (o GetDevicesResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// A list of device object. See below for nested attributes.
 func (o GetDevicesResultOutput) Devices() GetDevicesDeviceArrayOutput {
 	return o.ApplyT(func(v GetDevicesResult) []GetDevicesDevice { return v.Devices }).(GetDevicesDeviceArrayOutput)
 }

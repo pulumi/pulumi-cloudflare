@@ -14,14 +14,14 @@ public final class SpectrumApplicationOriginPortRangeArgs extends com.pulumi.res
     public static final SpectrumApplicationOriginPortRangeArgs Empty = new SpectrumApplicationOriginPortRangeArgs();
 
     /**
-     * Upper bound of the origin port range, e.g. `2000`
+     * Upper bound of the origin port range.
      * 
      */
     @Import(name="end", required=true)
     private Output<Integer> end;
 
     /**
-     * @return Upper bound of the origin port range, e.g. `2000`
+     * @return Upper bound of the origin port range.
      * 
      */
     public Output<Integer> end() {
@@ -29,14 +29,14 @@ public final class SpectrumApplicationOriginPortRangeArgs extends com.pulumi.res
     }
 
     /**
-     * Lower bound of the origin port range, e.g. `1000`
+     * Lower bound of the origin port range.
      * 
      */
     @Import(name="start", required=true)
     private Output<Integer> start;
 
     /**
-     * @return Lower bound of the origin port range, e.g. `1000`
+     * @return Lower bound of the origin port range.
      * 
      */
     public Output<Integer> start() {
@@ -69,7 +69,7 @@ public final class SpectrumApplicationOriginPortRangeArgs extends com.pulumi.res
         }
 
         /**
-         * @param end Upper bound of the origin port range, e.g. `2000`
+         * @param end Upper bound of the origin port range.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class SpectrumApplicationOriginPortRangeArgs extends com.pulumi.res
         }
 
         /**
-         * @param end Upper bound of the origin port range, e.g. `2000`
+         * @param end Upper bound of the origin port range.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class SpectrumApplicationOriginPortRangeArgs extends com.pulumi.res
         }
 
         /**
-         * @param start Lower bound of the origin port range, e.g. `1000`
+         * @param start Lower bound of the origin port range.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class SpectrumApplicationOriginPortRangeArgs extends com.pulumi.res
         }
 
         /**
-         * @param start Lower bound of the origin port range, e.g. `1000`
+         * @param start Lower bound of the origin port range.
          * 
          * @return builder
          * 
