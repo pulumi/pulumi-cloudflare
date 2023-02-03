@@ -14088,9 +14088,9 @@ func (o PageRuleActionsCacheKeyFieldsPtrOutput) User() PageRuleActionsCacheKeyFi
 }
 
 type PageRuleActionsCacheKeyFieldsCookie struct {
-	// Check for presence of specified HTTP headers, without including their actual values.
+	// Check for presence of specified cookies, without including their actual values.
 	CheckPresences []string `pulumi:"checkPresences"`
-	// Only use values of specified query string parameters in Cache Key.
+	// Use values of specified cookies in Cache Key.
 	Includes []string `pulumi:"includes"`
 }
 
@@ -14106,9 +14106,9 @@ type PageRuleActionsCacheKeyFieldsCookieInput interface {
 }
 
 type PageRuleActionsCacheKeyFieldsCookieArgs struct {
-	// Check for presence of specified HTTP headers, without including their actual values.
+	// Check for presence of specified cookies, without including their actual values.
 	CheckPresences pulumi.StringArrayInput `pulumi:"checkPresences"`
-	// Only use values of specified query string parameters in Cache Key.
+	// Use values of specified cookies in Cache Key.
 	Includes pulumi.StringArrayInput `pulumi:"includes"`
 }
 
@@ -14189,12 +14189,12 @@ func (o PageRuleActionsCacheKeyFieldsCookieOutput) ToPageRuleActionsCacheKeyFiel
 	}).(PageRuleActionsCacheKeyFieldsCookiePtrOutput)
 }
 
-// Check for presence of specified HTTP headers, without including their actual values.
+// Check for presence of specified cookies, without including their actual values.
 func (o PageRuleActionsCacheKeyFieldsCookieOutput) CheckPresences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsCookie) []string { return v.CheckPresences }).(pulumi.StringArrayOutput)
 }
 
-// Only use values of specified query string parameters in Cache Key.
+// Use values of specified cookies in Cache Key.
 func (o PageRuleActionsCacheKeyFieldsCookieOutput) Includes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsCookie) []string { return v.Includes }).(pulumi.StringArrayOutput)
 }
@@ -14223,7 +14223,7 @@ func (o PageRuleActionsCacheKeyFieldsCookiePtrOutput) Elem() PageRuleActionsCach
 	}).(PageRuleActionsCacheKeyFieldsCookieOutput)
 }
 
-// Check for presence of specified HTTP headers, without including their actual values.
+// Check for presence of specified cookies, without including their actual values.
 func (o PageRuleActionsCacheKeyFieldsCookiePtrOutput) CheckPresences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsCookie) []string {
 		if v == nil {
@@ -14233,7 +14233,7 @@ func (o PageRuleActionsCacheKeyFieldsCookiePtrOutput) CheckPresences() pulumi.St
 	}).(pulumi.StringArrayOutput)
 }
 
-// Only use values of specified query string parameters in Cache Key.
+// Use values of specified cookies in Cache Key.
 func (o PageRuleActionsCacheKeyFieldsCookiePtrOutput) Includes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsCookie) []string {
 		if v == nil {
@@ -14244,11 +14244,11 @@ func (o PageRuleActionsCacheKeyFieldsCookiePtrOutput) Includes() pulumi.StringAr
 }
 
 type PageRuleActionsCacheKeyFieldsHeader struct {
-	// Check for presence of specified HTTP headers, without including their actual values.
+	// Check for presence of specified cookies, without including their actual values.
 	CheckPresences []string `pulumi:"checkPresences"`
-	// Exclude these query string parameters from Cache Key.
+	// Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
 	Excludes []string `pulumi:"excludes"`
-	// Only use values of specified query string parameters in Cache Key.
+	// Use values of specified cookies in Cache Key.
 	Includes []string `pulumi:"includes"`
 }
 
@@ -14264,11 +14264,11 @@ type PageRuleActionsCacheKeyFieldsHeaderInput interface {
 }
 
 type PageRuleActionsCacheKeyFieldsHeaderArgs struct {
-	// Check for presence of specified HTTP headers, without including their actual values.
+	// Check for presence of specified cookies, without including their actual values.
 	CheckPresences pulumi.StringArrayInput `pulumi:"checkPresences"`
-	// Exclude these query string parameters from Cache Key.
+	// Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
 	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
-	// Only use values of specified query string parameters in Cache Key.
+	// Use values of specified cookies in Cache Key.
 	Includes pulumi.StringArrayInput `pulumi:"includes"`
 }
 
@@ -14349,17 +14349,17 @@ func (o PageRuleActionsCacheKeyFieldsHeaderOutput) ToPageRuleActionsCacheKeyFiel
 	}).(PageRuleActionsCacheKeyFieldsHeaderPtrOutput)
 }
 
-// Check for presence of specified HTTP headers, without including their actual values.
+// Check for presence of specified cookies, without including their actual values.
 func (o PageRuleActionsCacheKeyFieldsHeaderOutput) CheckPresences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsHeader) []string { return v.CheckPresences }).(pulumi.StringArrayOutput)
 }
 
-// Exclude these query string parameters from Cache Key.
+// Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
 func (o PageRuleActionsCacheKeyFieldsHeaderOutput) Excludes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsHeader) []string { return v.Excludes }).(pulumi.StringArrayOutput)
 }
 
-// Only use values of specified query string parameters in Cache Key.
+// Use values of specified cookies in Cache Key.
 func (o PageRuleActionsCacheKeyFieldsHeaderOutput) Includes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsHeader) []string { return v.Includes }).(pulumi.StringArrayOutput)
 }
@@ -14388,7 +14388,7 @@ func (o PageRuleActionsCacheKeyFieldsHeaderPtrOutput) Elem() PageRuleActionsCach
 	}).(PageRuleActionsCacheKeyFieldsHeaderOutput)
 }
 
-// Check for presence of specified HTTP headers, without including their actual values.
+// Check for presence of specified cookies, without including their actual values.
 func (o PageRuleActionsCacheKeyFieldsHeaderPtrOutput) CheckPresences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsHeader) []string {
 		if v == nil {
@@ -14398,7 +14398,7 @@ func (o PageRuleActionsCacheKeyFieldsHeaderPtrOutput) CheckPresences() pulumi.St
 	}).(pulumi.StringArrayOutput)
 }
 
-// Exclude these query string parameters from Cache Key.
+// Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
 func (o PageRuleActionsCacheKeyFieldsHeaderPtrOutput) Excludes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsHeader) []string {
 		if v == nil {
@@ -14408,7 +14408,7 @@ func (o PageRuleActionsCacheKeyFieldsHeaderPtrOutput) Excludes() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
-// Only use values of specified query string parameters in Cache Key.
+// Use values of specified cookies in Cache Key.
 func (o PageRuleActionsCacheKeyFieldsHeaderPtrOutput) Includes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsHeader) []string {
 		if v == nil {
@@ -14556,11 +14556,11 @@ func (o PageRuleActionsCacheKeyFieldsHostPtrOutput) Resolved() pulumi.BoolPtrOut
 }
 
 type PageRuleActionsCacheKeyFieldsQueryString struct {
-	// Exclude these query string parameters from Cache Key.
+	// Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
 	Excludes []string `pulumi:"excludes"`
 	// `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value should be `false` if any of `exclude` or `include` is non-empty.
 	Ignore *bool `pulumi:"ignore"`
-	// Only use values of specified query string parameters in Cache Key.
+	// Use values of specified cookies in Cache Key.
 	Includes []string `pulumi:"includes"`
 }
 
@@ -14576,11 +14576,11 @@ type PageRuleActionsCacheKeyFieldsQueryStringInput interface {
 }
 
 type PageRuleActionsCacheKeyFieldsQueryStringArgs struct {
-	// Exclude these query string parameters from Cache Key.
+	// Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
 	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
 	// `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value should be `false` if any of `exclude` or `include` is non-empty.
 	Ignore pulumi.BoolPtrInput `pulumi:"ignore"`
-	// Only use values of specified query string parameters in Cache Key.
+	// Use values of specified cookies in Cache Key.
 	Includes pulumi.StringArrayInput `pulumi:"includes"`
 }
 
@@ -14661,7 +14661,7 @@ func (o PageRuleActionsCacheKeyFieldsQueryStringOutput) ToPageRuleActionsCacheKe
 	}).(PageRuleActionsCacheKeyFieldsQueryStringPtrOutput)
 }
 
-// Exclude these query string parameters from Cache Key.
+// Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
 func (o PageRuleActionsCacheKeyFieldsQueryStringOutput) Excludes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsQueryString) []string { return v.Excludes }).(pulumi.StringArrayOutput)
 }
@@ -14671,7 +14671,7 @@ func (o PageRuleActionsCacheKeyFieldsQueryStringOutput) Ignore() pulumi.BoolPtrO
 	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsQueryString) *bool { return v.Ignore }).(pulumi.BoolPtrOutput)
 }
 
-// Only use values of specified query string parameters in Cache Key.
+// Use values of specified cookies in Cache Key.
 func (o PageRuleActionsCacheKeyFieldsQueryStringOutput) Includes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsQueryString) []string { return v.Includes }).(pulumi.StringArrayOutput)
 }
@@ -14700,7 +14700,7 @@ func (o PageRuleActionsCacheKeyFieldsQueryStringPtrOutput) Elem() PageRuleAction
 	}).(PageRuleActionsCacheKeyFieldsQueryStringOutput)
 }
 
-// Exclude these query string parameters from Cache Key.
+// Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
 func (o PageRuleActionsCacheKeyFieldsQueryStringPtrOutput) Excludes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsQueryString) []string {
 		if v == nil {
@@ -14720,7 +14720,7 @@ func (o PageRuleActionsCacheKeyFieldsQueryStringPtrOutput) Ignore() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Only use values of specified query string parameters in Cache Key.
+// Use values of specified cookies in Cache Key.
 func (o PageRuleActionsCacheKeyFieldsQueryStringPtrOutput) Includes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsQueryString) []string {
 		if v == nil {

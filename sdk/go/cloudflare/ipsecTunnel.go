@@ -111,7 +111,7 @@ func NewIpsecTunnel(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.Psk != nil {
-		args.Psk = pulumi.ToSecret(args.Psk).(pulumi.StringPtrOutput)
+		args.Psk = pulumi.ToSecret(args.Psk).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"psk",

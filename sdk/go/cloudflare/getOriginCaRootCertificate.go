@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = cloudflare.GetOriginCaRootCertificate(ctx, &cloudflare.GetOriginCaRootCertificateArgs{
+//			_, err := cloudflare.GetOriginCaRootCertificate(ctx, &cloudflare.GetOriginCaRootCertificateArgs{
 //				Algorithm: "rsa",
 //			}, nil)
 //			if err != nil {

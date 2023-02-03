@@ -1765,26 +1765,26 @@ export interface PageRuleActionsCacheKeyFields {
 
 export interface PageRuleActionsCacheKeyFieldsCookie {
     /**
-     * Check for presence of specified HTTP headers, without including their actual values.
+     * Check for presence of specified cookies, without including their actual values.
      */
     checkPresences: string[];
     /**
-     * Only use values of specified query string parameters in Cache Key.
+     * Use values of specified cookies in Cache Key.
      */
     includes: string[];
 }
 
 export interface PageRuleActionsCacheKeyFieldsHeader {
     /**
-     * Check for presence of specified HTTP headers, without including their actual values.
+     * Check for presence of specified cookies, without including their actual values.
      */
     checkPresences: string[];
     /**
-     * Exclude these query string parameters from Cache Key.
+     * Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
      */
     excludes: string[];
     /**
-     * Only use values of specified query string parameters in Cache Key.
+     * Use values of specified cookies in Cache Key.
      */
     includes: string[];
 }
@@ -1798,7 +1798,7 @@ export interface PageRuleActionsCacheKeyFieldsHost {
 
 export interface PageRuleActionsCacheKeyFieldsQueryString {
     /**
-     * Exclude these query string parameters from Cache Key.
+     * Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
      */
     excludes: string[];
     /**
@@ -1806,7 +1806,7 @@ export interface PageRuleActionsCacheKeyFieldsQueryString {
      */
     ignore: boolean;
     /**
-     * Only use values of specified query string parameters in Cache Key.
+     * Use values of specified cookies in Cache Key.
      */
     includes: string[];
 }

@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = cloudflare.LookupZoneDnssec(ctx, &cloudflare.LookupZoneDnssecArgs{
+//			_, err := cloudflare.LookupZoneDnssec(ctx, &cloudflare.LookupZoneDnssecArgs{
 //				ZoneId: "0da42c8d2132a9ddaf714f9e7c920711",
 //			}, nil)
 //			if err != nil {

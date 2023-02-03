@@ -106,7 +106,7 @@ func NewAuthenticatedOriginPullsCertificate(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	if args.PrivateKey != nil {
-		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringOutput)
+		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"privateKey",

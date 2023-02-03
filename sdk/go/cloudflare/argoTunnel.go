@@ -84,7 +84,7 @@ func NewArgoTunnel(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Secret'")
 	}
 	if args.Secret != nil {
-		args.Secret = pulumi.ToSecret(args.Secret).(pulumi.StringOutput)
+		args.Secret = pulumi.ToSecret(args.Secret).(pulumi.StringInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"secret",

@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = cloudflare.GetZones(ctx, &cloudflare.GetZonesArgs{
+//			_, err := cloudflare.GetZones(ctx, &cloudflare.GetZonesArgs{
 //				Filter: cloudflare.GetZonesFilter{
 //					AccountId: pulumi.StringRef("f037e56e89293a057740de681ac9abbe"),
 //					Status:    pulumi.StringRef("active"),
