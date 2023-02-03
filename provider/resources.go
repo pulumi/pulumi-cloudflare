@@ -126,6 +126,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"cloudflare_custom_pages": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "CustomPages")},
 			"cloudflare_custom_ssl":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "CustomSsl")},
+			"cloudflare_device_managed_networks":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "DeviceManagedNetworks")},
 			"cloudflare_device_policy_certificates": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "DevicePolicyCertificates"),
 			},

@@ -1,7 +1,7 @@
 package shim
 
 import (
-	"github.com/cloudflare/terraform-provider-cloudflare/internal/provider"
+	provider "github.com/cloudflare/terraform-provider-cloudflare/internal/sdkv2provider"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
