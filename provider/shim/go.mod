@@ -3,7 +3,7 @@ module github.com/cloudflare/terraform-provider/cloudflare/shim
 go 1.19
 
 require (
-	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220823222840-b2cee3be8c57
+	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20230207212445-c4c7645113f3
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.24.1
 )
 
