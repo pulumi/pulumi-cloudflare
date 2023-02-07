@@ -7,7 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Spectrum Application. You can extend the power of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based services.
+ * Provides a Cloudflare Spectrum Application. You can extend the power
+ * of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based
+ * services.
  *
  * ## Example Usage
  *
@@ -15,28 +17,23 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * // Define a spectrum application proxies ssh traffic
- * const sshProxy = new cloudflare.SpectrumApplication("sshProxy", {
- *     zoneId: _var.cloudflare_zone_id,
+ * const example = new cloudflare.SpectrumApplication("example", {
+ *     dns: {
+ *         name: "ssh.example.com",
+ *         type: "CNAME",
+ *     },
+ *     originDirects: ["tcp://192.0.2.1:22"],
  *     protocol: "tcp/22",
  *     trafficType: "direct",
- *     dns: {
- *         type: "CNAME",
- *         name: "ssh.example.com",
- *     },
- *     originDirects: ["tcp://109.151.40.129:22"],
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  *
  * ## Import
  *
- * Spectrum resource can be imported using a zone ID and Application ID, e.g.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac
+ *  $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example <zone_id>/<spectrum_application_id>
  * ```
- *
- *  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones) - `9a7806061c88ada191ed06f989cc3dac` - Application ID
  */
 export class SpectrumApplication extends pulumi.CustomResource {
     /**
@@ -67,19 +64,19 @@ export class SpectrumApplication extends pulumi.CustomResource {
     }
 
     /**
-     * . Enables Argo Smart Routing. Defaults to `false`.
+     * Enables Argo Smart Routing. Defaults to `false`.
      */
     public readonly argoSmartRouting!: pulumi.Output<boolean | undefined>;
     /**
-     * The name and type of DNS record for the Spectrum application. Fields documented below.
+     * The name and type of DNS record for the Spectrum application.
      */
     public readonly dns!: pulumi.Output<outputs.SpectrumApplicationDns>;
     /**
-     * . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+     * Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
      */
     public readonly edgeIpConnectivity!: pulumi.Output<string>;
     /**
-     * . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+     * A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
      */
     public readonly edgeIps!: pulumi.Output<string[] | undefined>;
     /**
@@ -91,15 +88,15 @@ export class SpectrumApplication extends pulumi.CustomResource {
      */
     public readonly originDirects!: pulumi.Output<string[] | undefined>;
     /**
-     * A destination DNS addresses to the origin. Fields documented below.
+     * A destination DNS addresses to the origin.
      */
     public readonly originDns!: pulumi.Output<outputs.SpectrumApplicationOriginDns | undefined>;
     /**
-     * If using `originDns` and not `originPortRange`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+     * Origin port to proxy traffice to. Conflicts with `originPortRange`.
      */
     public readonly originPort!: pulumi.Output<number | undefined>;
     /**
-     * If using `originDns` and not `originPort`, this is a required attribute. Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+     * Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `originPort`.
      */
     public readonly originPortRange!: pulumi.Output<outputs.SpectrumApplicationOriginPortRange | undefined>;
     /**
@@ -107,19 +104,19 @@ export class SpectrumApplication extends pulumi.CustomResource {
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
-     * Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
+     * Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
      */
     public readonly proxyProtocol!: pulumi.Output<string | undefined>;
     /**
-     * TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
+     * TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
      */
     public readonly tls!: pulumi.Output<string | undefined>;
     /**
-     * Sets application type. Valid values are: `direct`, `http`, `https`. Defaults to `direct`.
+     * Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
      */
     public readonly trafficType!: pulumi.Output<string | undefined>;
     /**
-     * The DNS zone ID to add the application to
+     * The zone identifier to target for the resource.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -186,19 +183,19 @@ export class SpectrumApplication extends pulumi.CustomResource {
  */
 export interface SpectrumApplicationState {
     /**
-     * . Enables Argo Smart Routing. Defaults to `false`.
+     * Enables Argo Smart Routing. Defaults to `false`.
      */
     argoSmartRouting?: pulumi.Input<boolean>;
     /**
-     * The name and type of DNS record for the Spectrum application. Fields documented below.
+     * The name and type of DNS record for the Spectrum application.
      */
     dns?: pulumi.Input<inputs.SpectrumApplicationDns>;
     /**
-     * . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+     * Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
      */
     edgeIpConnectivity?: pulumi.Input<string>;
     /**
-     * . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+     * A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
      */
     edgeIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -210,15 +207,15 @@ export interface SpectrumApplicationState {
      */
     originDirects?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A destination DNS addresses to the origin. Fields documented below.
+     * A destination DNS addresses to the origin.
      */
     originDns?: pulumi.Input<inputs.SpectrumApplicationOriginDns>;
     /**
-     * If using `originDns` and not `originPortRange`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+     * Origin port to proxy traffice to. Conflicts with `originPortRange`.
      */
     originPort?: pulumi.Input<number>;
     /**
-     * If using `originDns` and not `originPort`, this is a required attribute. Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+     * Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `originPort`.
      */
     originPortRange?: pulumi.Input<inputs.SpectrumApplicationOriginPortRange>;
     /**
@@ -226,19 +223,19 @@ export interface SpectrumApplicationState {
      */
     protocol?: pulumi.Input<string>;
     /**
-     * Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
+     * Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
      */
     proxyProtocol?: pulumi.Input<string>;
     /**
-     * TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
+     * TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
      */
     tls?: pulumi.Input<string>;
     /**
-     * Sets application type. Valid values are: `direct`, `http`, `https`. Defaults to `direct`.
+     * Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
      */
     trafficType?: pulumi.Input<string>;
     /**
-     * The DNS zone ID to add the application to
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -248,19 +245,19 @@ export interface SpectrumApplicationState {
  */
 export interface SpectrumApplicationArgs {
     /**
-     * . Enables Argo Smart Routing. Defaults to `false`.
+     * Enables Argo Smart Routing. Defaults to `false`.
      */
     argoSmartRouting?: pulumi.Input<boolean>;
     /**
-     * The name and type of DNS record for the Spectrum application. Fields documented below.
+     * The name and type of DNS record for the Spectrum application.
      */
     dns: pulumi.Input<inputs.SpectrumApplicationDns>;
     /**
-     * . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+     * Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
      */
     edgeIpConnectivity?: pulumi.Input<string>;
     /**
-     * . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+     * A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
      */
     edgeIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -272,15 +269,15 @@ export interface SpectrumApplicationArgs {
      */
     originDirects?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A destination DNS addresses to the origin. Fields documented below.
+     * A destination DNS addresses to the origin.
      */
     originDns?: pulumi.Input<inputs.SpectrumApplicationOriginDns>;
     /**
-     * If using `originDns` and not `originPortRange`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+     * Origin port to proxy traffice to. Conflicts with `originPortRange`.
      */
     originPort?: pulumi.Input<number>;
     /**
-     * If using `originDns` and not `originPort`, this is a required attribute. Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+     * Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `originPort`.
      */
     originPortRange?: pulumi.Input<inputs.SpectrumApplicationOriginPortRange>;
     /**
@@ -288,19 +285,19 @@ export interface SpectrumApplicationArgs {
      */
     protocol: pulumi.Input<string>;
     /**
-     * Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
+     * Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
      */
     proxyProtocol?: pulumi.Input<string>;
     /**
-     * TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
+     * TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
      */
     tls?: pulumi.Input<string>;
     /**
-     * Sets application type. Valid values are: `direct`, `http`, `https`. Defaults to `direct`.
+     * Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
      */
     trafficType?: pulumi.Input<string>;
     /**
-     * The DNS zone ID to add the application to
+     * The zone identifier to target for the resource.
      */
     zoneId: pulumi.Input<string>;
 }

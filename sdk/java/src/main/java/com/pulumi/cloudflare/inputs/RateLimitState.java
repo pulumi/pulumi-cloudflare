@@ -36,17 +36,9 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.action);
     }
 
-    /**
-     * URLs matching the patterns specified here will be excluded from rate limiting.
-     * 
-     */
     @Import(name="bypassUrlPatterns")
     private @Nullable Output<List<String>> bypassUrlPatterns;
 
-    /**
-     * @return URLs matching the patterns specified here will be excluded from rate limiting.
-     * 
-     */
     public Optional<Output<List<String>>> bypassUrlPatterns() {
         return Optional.ofNullable(this.bypassUrlPatterns);
     }
@@ -82,14 +74,14 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether this ratelimit is currently disabled. Default: `false`.
+     * Whether this ratelimit is currently disabled. Defaults to `false`.
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return Whether this ratelimit is currently disabled. Default: `false`.
+     * @return Whether this ratelimit is currently disabled. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -97,14 +89,14 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
+     * Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
      * 
      */
     @Import(name="match")
     private @Nullable Output<RateLimitMatchArgs> match;
 
     /**
-     * @return Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
+     * @return Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
      * 
      */
     public Optional<Output<RateLimitMatchArgs>> match() {
@@ -112,14 +104,14 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
+     * The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
+     * @return The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -127,14 +119,14 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
+     * The threshold that triggers the rate limit mitigations, combine with period.
      * 
      */
     @Import(name="threshold")
     private @Nullable Output<Integer> threshold;
 
     /**
-     * @return The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
+     * @return The threshold that triggers the rate limit mitigations, combine with period.
      * 
      */
     public Optional<Output<Integer>> threshold() {
@@ -142,14 +134,14 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The DNS zone ID to apply rate limiting to.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The DNS zone ID to apply rate limiting to.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -209,33 +201,15 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
             return action(Output.of(action));
         }
 
-        /**
-         * @param bypassUrlPatterns URLs matching the patterns specified here will be excluded from rate limiting.
-         * 
-         * @return builder
-         * 
-         */
         public Builder bypassUrlPatterns(@Nullable Output<List<String>> bypassUrlPatterns) {
             $.bypassUrlPatterns = bypassUrlPatterns;
             return this;
         }
 
-        /**
-         * @param bypassUrlPatterns URLs matching the patterns specified here will be excluded from rate limiting.
-         * 
-         * @return builder
-         * 
-         */
         public Builder bypassUrlPatterns(List<String> bypassUrlPatterns) {
             return bypassUrlPatterns(Output.of(bypassUrlPatterns));
         }
 
-        /**
-         * @param bypassUrlPatterns URLs matching the patterns specified here will be excluded from rate limiting.
-         * 
-         * @return builder
-         * 
-         */
         public Builder bypassUrlPatterns(String... bypassUrlPatterns) {
             return bypassUrlPatterns(List.of(bypassUrlPatterns));
         }
@@ -283,7 +257,7 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disabled Whether this ratelimit is currently disabled. Default: `false`.
+         * @param disabled Whether this ratelimit is currently disabled. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -294,7 +268,7 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disabled Whether this ratelimit is currently disabled. Default: `false`.
+         * @param disabled Whether this ratelimit is currently disabled. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -304,7 +278,7 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param match Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
+         * @param match Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
          * 
          * @return builder
          * 
@@ -315,7 +289,7 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param match Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
+         * @param match Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
          * 
          * @return builder
          * 
@@ -325,7 +299,7 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
+         * @param period The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
          * 
          * @return builder
          * 
@@ -336,7 +310,7 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
+         * @param period The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
          * 
          * @return builder
          * 
@@ -346,7 +320,7 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param threshold The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
+         * @param threshold The threshold that triggers the rate limit mitigations, combine with period.
          * 
          * @return builder
          * 
@@ -357,7 +331,7 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param threshold The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
+         * @param threshold The threshold that triggers the rate limit mitigations, combine with period.
          * 
          * @return builder
          * 
@@ -367,7 +341,7 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The DNS zone ID to apply rate limiting to.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -378,7 +352,7 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The DNS zone ID to apply rate limiting to.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

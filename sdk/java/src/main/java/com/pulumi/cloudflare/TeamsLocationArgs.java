@@ -19,14 +19,14 @@ public final class TeamsLocationArgs extends com.pulumi.resources.ResourceArgs {
     public static final TeamsLocationArgs Empty = new TeamsLocationArgs();
 
     /**
-     * The account to which the teams location should be added.
+     * The account identifier to target for the resource.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account to which the teams location should be added.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Output<String> accountId() {
@@ -106,7 +106,7 @@ public final class TeamsLocationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account to which the teams location should be added.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class TeamsLocationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account to which the teams location should be added.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare custom ssl resource.
+ * Provides a Cloudflare custom SSL resource.
  *
  * ## Example Usage
  *
@@ -15,10 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const config = new pulumi.Config();
- * const cloudflareZoneId = config.get("cloudflareZoneId") || "1d5fdc9e88c8a8c4518b068cd94331fe";
- * // Add a custom ssl certificate to the domain
- * const foossl = new cloudflare.CustomSsl("foossl", {
+ * const example = new cloudflare.CustomSsl("example", {
  *     customSslOptions: {
  *         bundleMethod: "ubiquitous",
  *         certificate: "-----INSERT CERTIFICATE-----",
@@ -26,16 +23,14 @@ import * as utilities from "./utilities";
  *         privateKey: "-----INSERT PRIVATE KEY-----",
  *         type: "legacy_custom",
  *     },
- *     zoneId: cloudflareZoneId,
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  *
  * ## Import
  *
- * Custom SSL Certs can be imported using a composite ID formed of the zone ID and [certificate ID](https://api.cloudflare.com/#custom-ssl-for-a-zone-properties), separated by a "/" e.g.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/customSsl:CustomSsl default 1d5fdc9e88c8a8c4518b068cd94331fe/0123f0ab-9cde-45b2-80bd-4da3010f1337
+ *  $ pulumi import cloudflare:index/customSsl:CustomSsl example <zone_id>/<certificate_id>
  * ```
  */
 export class CustomSsl extends pulumi.CustomResource {
@@ -67,7 +62,7 @@ export class CustomSsl extends pulumi.CustomResource {
     }
 
     /**
-     * The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+     * The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly customSslOptions!: pulumi.Output<outputs.CustomSslCustomSslOptions | undefined>;
     public readonly customSslPriorities!: pulumi.Output<outputs.CustomSslCustomSslPriority[] | undefined>;
@@ -80,7 +75,7 @@ export class CustomSsl extends pulumi.CustomResource {
     public /*out*/ readonly status!: pulumi.Output<string>;
     public /*out*/ readonly uploadedOn!: pulumi.Output<string>;
     /**
-     * The DNS zone id to the custom ssl cert should be added.
+     * The zone identifier to target for the resource.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -135,7 +130,7 @@ export class CustomSsl extends pulumi.CustomResource {
  */
 export interface CustomSslState {
     /**
-     * The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+     * The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
      */
     customSslOptions?: pulumi.Input<inputs.CustomSslCustomSslOptions>;
     customSslPriorities?: pulumi.Input<pulumi.Input<inputs.CustomSslCustomSslPriority>[]>;
@@ -148,7 +143,7 @@ export interface CustomSslState {
     status?: pulumi.Input<string>;
     uploadedOn?: pulumi.Input<string>;
     /**
-     * The DNS zone id to the custom ssl cert should be added.
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -158,12 +153,12 @@ export interface CustomSslState {
  */
 export interface CustomSslArgs {
     /**
-     * The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+     * The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
      */
     customSslOptions?: pulumi.Input<inputs.CustomSslCustomSslOptions>;
     customSslPriorities?: pulumi.Input<pulumi.Input<inputs.CustomSslCustomSslPriority>[]>;
     /**
-     * The DNS zone id to the custom ssl cert should be added.
+     * The zone identifier to target for the resource.
      */
     zoneId: pulumi.Input<string>;
 }

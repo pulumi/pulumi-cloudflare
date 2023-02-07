@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class SpectrumApplicationOriginDns {
     /**
-     * @return Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+     * @return Fully qualified domain name of the origin.
      * 
      */
     private String name;
 
     private SpectrumApplicationOriginDns() {}
     /**
-     * @return Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+     * @return Fully qualified domain name of the origin.
      * 
      */
     public String name() {

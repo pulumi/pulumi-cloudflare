@@ -22,17 +22,25 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Block page header text.
+        /// Block page footer text.
         /// </summary>
         public readonly string? FooterText;
         /// <summary>
-        /// Block page footer text.
+        /// Block page header text.
         /// </summary>
         public readonly string? HeaderText;
         /// <summary>
         /// URL of block page logo.
         /// </summary>
         public readonly string? LogoPath;
+        /// <summary>
+        /// Admin email for users to contact.
+        /// </summary>
+        public readonly string? MailtoAddress;
+        /// <summary>
+        /// Subject line for emails created from block page.
+        /// </summary>
+        public readonly string? MailtoSubject;
         /// <summary>
         /// Name of block page configuration.
         /// </summary>
@@ -50,6 +58,10 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? logoPath,
 
+            string? mailtoAddress,
+
+            string? mailtoSubject,
+
             string? name)
         {
             BackgroundColor = backgroundColor;
@@ -57,6 +69,8 @@ namespace Pulumi.Cloudflare.Outputs
             FooterText = footerText;
             HeaderText = headerText;
             LogoPath = logoPath;
+            MailtoAddress = mailtoAddress;
+            MailtoSubject = mailtoSubject;
             Name = name;
         }
     }

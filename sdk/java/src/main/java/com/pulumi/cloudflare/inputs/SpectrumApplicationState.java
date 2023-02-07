@@ -22,14 +22,14 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
     public static final SpectrumApplicationState Empty = new SpectrumApplicationState();
 
     /**
-     * . Enables Argo Smart Routing. Defaults to `false`.
+     * Enables Argo Smart Routing. Defaults to `false`.
      * 
      */
     @Import(name="argoSmartRouting")
     private @Nullable Output<Boolean> argoSmartRouting;
 
     /**
-     * @return . Enables Argo Smart Routing. Defaults to `false`.
+     * @return Enables Argo Smart Routing. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> argoSmartRouting() {
@@ -37,14 +37,14 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The name and type of DNS record for the Spectrum application. Fields documented below.
+     * The name and type of DNS record for the Spectrum application.
      * 
      */
     @Import(name="dns")
     private @Nullable Output<SpectrumApplicationDnsArgs> dns;
 
     /**
-     * @return The name and type of DNS record for the Spectrum application. Fields documented below.
+     * @return The name and type of DNS record for the Spectrum application.
      * 
      */
     public Optional<Output<SpectrumApplicationDnsArgs>> dns() {
@@ -52,14 +52,14 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+     * Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
      * 
      */
     @Import(name="edgeIpConnectivity")
     private @Nullable Output<String> edgeIpConnectivity;
 
     /**
-     * @return . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+     * @return Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
      * 
      */
     public Optional<Output<String>> edgeIpConnectivity() {
@@ -67,14 +67,14 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+     * A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
      * 
      */
     @Import(name="edgeIps")
     private @Nullable Output<List<String>> edgeIps;
 
     /**
-     * @return . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+     * @return A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
      * 
      */
     public Optional<Output<List<String>>> edgeIps() {
@@ -112,14 +112,14 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * A destination DNS addresses to the origin. Fields documented below.
+     * A destination DNS addresses to the origin.
      * 
      */
     @Import(name="originDns")
     private @Nullable Output<SpectrumApplicationOriginDnsArgs> originDns;
 
     /**
-     * @return A destination DNS addresses to the origin. Fields documented below.
+     * @return A destination DNS addresses to the origin.
      * 
      */
     public Optional<Output<SpectrumApplicationOriginDnsArgs>> originDns() {
@@ -127,14 +127,14 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * If using `origin_dns` and not `origin_port_range`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+     * Origin port to proxy traffice to. Conflicts with `origin_port_range`.
      * 
      */
     @Import(name="originPort")
     private @Nullable Output<Integer> originPort;
 
     /**
-     * @return If using `origin_dns` and not `origin_port_range`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+     * @return Origin port to proxy traffice to. Conflicts with `origin_port_range`.
      * 
      */
     public Optional<Output<Integer>> originPort() {
@@ -142,14 +142,14 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+     * Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `origin_port`.
      * 
      */
     @Import(name="originPortRange")
     private @Nullable Output<SpectrumApplicationOriginPortRangeArgs> originPortRange;
 
     /**
-     * @return If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+     * @return Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `origin_port`.
      * 
      */
     public Optional<Output<SpectrumApplicationOriginPortRangeArgs>> originPortRange() {
@@ -172,14 +172,14 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
+     * Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
      * 
      */
     @Import(name="proxyProtocol")
     private @Nullable Output<String> proxyProtocol;
 
     /**
-     * @return Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
+     * @return Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
      * 
      */
     public Optional<Output<String>> proxyProtocol() {
@@ -187,14 +187,14 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
+     * TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
      * 
      */
     @Import(name="tls")
     private @Nullable Output<String> tls;
 
     /**
-     * @return TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
+     * @return TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
      * 
      */
     public Optional<Output<String>> tls() {
@@ -202,14 +202,14 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Sets application type. Valid values are: `direct`, `http`, `https`. Defaults to `direct`.
+     * Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
      * 
      */
     @Import(name="trafficType")
     private @Nullable Output<String> trafficType;
 
     /**
-     * @return Sets application type. Valid values are: `direct`, `http`, `https`. Defaults to `direct`.
+     * @return Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
      * 
      */
     public Optional<Output<String>> trafficType() {
@@ -217,14 +217,14 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The DNS zone ID to add the application to
+     * The zone identifier to target for the resource.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The DNS zone ID to add the application to
+     * @return The zone identifier to target for the resource.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -269,7 +269,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param argoSmartRouting . Enables Argo Smart Routing. Defaults to `false`.
+         * @param argoSmartRouting Enables Argo Smart Routing. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param argoSmartRouting . Enables Argo Smart Routing. Defaults to `false`.
+         * @param argoSmartRouting Enables Argo Smart Routing. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dns The name and type of DNS record for the Spectrum application. Fields documented below.
+         * @param dns The name and type of DNS record for the Spectrum application.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dns The name and type of DNS record for the Spectrum application. Fields documented below.
+         * @param dns The name and type of DNS record for the Spectrum application.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param edgeIpConnectivity . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+         * @param edgeIpConnectivity Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param edgeIpConnectivity . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+         * @param edgeIpConnectivity Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param edgeIps . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+         * @param edgeIps A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param edgeIps . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+         * @param edgeIps A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param edgeIps . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+         * @param edgeIps A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param originDns A destination DNS addresses to the origin. Fields documented below.
+         * @param originDns A destination DNS addresses to the origin.
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param originDns A destination DNS addresses to the origin. Fields documented below.
+         * @param originDns A destination DNS addresses to the origin.
          * 
          * @return builder
          * 
@@ -436,7 +436,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param originPort If using `origin_dns` and not `origin_port_range`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+         * @param originPort Origin port to proxy traffice to. Conflicts with `origin_port_range`.
          * 
          * @return builder
          * 
@@ -447,7 +447,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param originPort If using `origin_dns` and not `origin_port_range`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+         * @param originPort Origin port to proxy traffice to. Conflicts with `origin_port_range`.
          * 
          * @return builder
          * 
@@ -457,7 +457,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param originPortRange If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+         * @param originPortRange Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `origin_port`.
          * 
          * @return builder
          * 
@@ -468,7 +468,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param originPortRange If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+         * @param originPortRange Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `origin_port`.
          * 
          * @return builder
          * 
@@ -499,7 +499,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param proxyProtocol Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
+         * @param proxyProtocol Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
          * 
          * @return builder
          * 
@@ -510,7 +510,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param proxyProtocol Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
+         * @param proxyProtocol Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
          * 
          * @return builder
          * 
@@ -520,7 +520,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tls TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
+         * @param tls TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
          * 
          * @return builder
          * 
@@ -531,7 +531,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tls TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
+         * @param tls TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
          * 
          * @return builder
          * 
@@ -541,7 +541,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param trafficType Sets application type. Valid values are: `direct`, `http`, `https`. Defaults to `direct`.
+         * @param trafficType Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
          * 
          * @return builder
          * 
@@ -552,7 +552,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param trafficType Sets application type. Valid values are: `direct`, `http`, `https`. Defaults to `direct`.
+         * @param trafficType Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
          * 
          * @return builder
          * 
@@ -562,7 +562,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zoneId The DNS zone ID to add the application to
+         * @param zoneId The zone identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -573,7 +573,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zoneId The DNS zone ID to add the application to
+         * @param zoneId The zone identifier to target for the resource.
          * 
          * @return builder
          * 

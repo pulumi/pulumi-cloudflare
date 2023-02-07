@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to look up [Zone][1] DNSSEC settings.
+// Use this data source to look up Zone DNSSEC settings.
 //
 // ## Example Usage
 //
@@ -26,8 +26,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = cloudflare.LookupZoneDnssec(ctx, &cloudflare.LookupZoneDnssecArgs{
-//				ZoneId: "<zone_id>",
+//			_, err := cloudflare.LookupZoneDnssec(ctx, &cloudflare.LookupZoneDnssecArgs{
+//				ZoneId: "0da42c8d2132a9ddaf714f9e7c920711",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,7 +48,7 @@ func LookupZoneDnssec(ctx *pulumi.Context, args *LookupZoneDnssecArgs, opts ...p
 
 // A collection of arguments for invoking getZoneDnssec.
 type LookupZoneDnssecArgs struct {
-	// The zone id for the zone.
+	// The zone identifier to target for the resource.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -76,6 +76,7 @@ type LookupZoneDnssecResult struct {
 	PublicKey string `pulumi:"publicKey"`
 	// The status of the Zone DNSSEC.
 	Status string `pulumi:"status"`
+	// The zone identifier to target for the resource.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -94,7 +95,7 @@ func LookupZoneDnssecOutput(ctx *pulumi.Context, args LookupZoneDnssecOutputArgs
 
 // A collection of arguments for invoking getZoneDnssec.
 type LookupZoneDnssecOutputArgs struct {
-	// The zone id for the zone.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -172,6 +173,7 @@ func (o LookupZoneDnssecResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneDnssecResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The zone identifier to target for the resource.
 func (o LookupZoneDnssecResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneDnssecResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

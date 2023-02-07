@@ -16,77 +16,37 @@ public final class ZoneSettingsOverrideInitialSettingSecurityHeaderArgs extends 
 
     public static final ZoneSettingsOverrideInitialSettingSecurityHeaderArgs Empty = new ZoneSettingsOverrideInitialSettingSecurityHeaderArgs();
 
-    /**
-     * true/false
-     * 
-     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
-    /**
-     * @return true/false
-     * 
-     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
-    /**
-     * true/false
-     * 
-     */
     @Import(name="includeSubdomains")
     private @Nullable Output<Boolean> includeSubdomains;
 
-    /**
-     * @return true/false
-     * 
-     */
     public Optional<Output<Boolean>> includeSubdomains() {
         return Optional.ofNullable(this.includeSubdomains);
     }
 
-    /**
-     * Integer
-     * 
-     */
     @Import(name="maxAge")
     private @Nullable Output<Integer> maxAge;
 
-    /**
-     * @return Integer
-     * 
-     */
     public Optional<Output<Integer>> maxAge() {
         return Optional.ofNullable(this.maxAge);
     }
 
-    /**
-     * true/false
-     * 
-     */
     @Import(name="nosniff")
     private @Nullable Output<Boolean> nosniff;
 
-    /**
-     * @return true/false
-     * 
-     */
     public Optional<Output<Boolean>> nosniff() {
         return Optional.ofNullable(this.nosniff);
     }
 
-    /**
-     * true/false
-     * 
-     */
     @Import(name="preload")
     private @Nullable Output<Boolean> preload;
 
-    /**
-     * @return true/false
-     * 
-     */
     public Optional<Output<Boolean>> preload() {
         return Optional.ofNullable(this.preload);
     }
@@ -119,107 +79,47 @@ public final class ZoneSettingsOverrideInitialSettingSecurityHeaderArgs extends 
             $ = new ZoneSettingsOverrideInitialSettingSecurityHeaderArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param enabled true/false
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
-        /**
-         * @param enabled true/false
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
-        /**
-         * @param includeSubdomains true/false
-         * 
-         * @return builder
-         * 
-         */
         public Builder includeSubdomains(@Nullable Output<Boolean> includeSubdomains) {
             $.includeSubdomains = includeSubdomains;
             return this;
         }
 
-        /**
-         * @param includeSubdomains true/false
-         * 
-         * @return builder
-         * 
-         */
         public Builder includeSubdomains(Boolean includeSubdomains) {
             return includeSubdomains(Output.of(includeSubdomains));
         }
 
-        /**
-         * @param maxAge Integer
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxAge(@Nullable Output<Integer> maxAge) {
             $.maxAge = maxAge;
             return this;
         }
 
-        /**
-         * @param maxAge Integer
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxAge(Integer maxAge) {
             return maxAge(Output.of(maxAge));
         }
 
-        /**
-         * @param nosniff true/false
-         * 
-         * @return builder
-         * 
-         */
         public Builder nosniff(@Nullable Output<Boolean> nosniff) {
             $.nosniff = nosniff;
             return this;
         }
 
-        /**
-         * @param nosniff true/false
-         * 
-         * @return builder
-         * 
-         */
         public Builder nosniff(Boolean nosniff) {
             return nosniff(Output.of(nosniff));
         }
 
-        /**
-         * @param preload true/false
-         * 
-         * @return builder
-         * 
-         */
         public Builder preload(@Nullable Output<Boolean> preload) {
             $.preload = preload;
             return this;
         }
 
-        /**
-         * @param preload true/false
-         * 
-         * @return builder
-         * 
-         */
         public Builder preload(Boolean preload) {
             return preload(Output.of(preload));
         }

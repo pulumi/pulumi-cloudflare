@@ -47,14 +47,14 @@ public final class TeamsAccountBlockPageArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Block page header text.
+     * Block page footer text.
      * 
      */
     @Import(name="footerText")
     private @Nullable Output<String> footerText;
 
     /**
-     * @return Block page header text.
+     * @return Block page footer text.
      * 
      */
     public Optional<Output<String>> footerText() {
@@ -62,14 +62,14 @@ public final class TeamsAccountBlockPageArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Block page footer text.
+     * Block page header text.
      * 
      */
     @Import(name="headerText")
     private @Nullable Output<String> headerText;
 
     /**
-     * @return Block page footer text.
+     * @return Block page header text.
      * 
      */
     public Optional<Output<String>> headerText() {
@@ -89,6 +89,36 @@ public final class TeamsAccountBlockPageArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> logoPath() {
         return Optional.ofNullable(this.logoPath);
+    }
+
+    /**
+     * Admin email for users to contact.
+     * 
+     */
+    @Import(name="mailtoAddress")
+    private @Nullable Output<String> mailtoAddress;
+
+    /**
+     * @return Admin email for users to contact.
+     * 
+     */
+    public Optional<Output<String>> mailtoAddress() {
+        return Optional.ofNullable(this.mailtoAddress);
+    }
+
+    /**
+     * Subject line for emails created from block page.
+     * 
+     */
+    @Import(name="mailtoSubject")
+    private @Nullable Output<String> mailtoSubject;
+
+    /**
+     * @return Subject line for emails created from block page.
+     * 
+     */
+    public Optional<Output<String>> mailtoSubject() {
+        return Optional.ofNullable(this.mailtoSubject);
     }
 
     /**
@@ -114,6 +144,8 @@ public final class TeamsAccountBlockPageArgs extends com.pulumi.resources.Resour
         this.footerText = $.footerText;
         this.headerText = $.headerText;
         this.logoPath = $.logoPath;
+        this.mailtoAddress = $.mailtoAddress;
+        this.mailtoSubject = $.mailtoSubject;
         this.name = $.name;
     }
 
@@ -178,7 +210,7 @@ public final class TeamsAccountBlockPageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param footerText Block page header text.
+         * @param footerText Block page footer text.
          * 
          * @return builder
          * 
@@ -189,7 +221,7 @@ public final class TeamsAccountBlockPageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param footerText Block page header text.
+         * @param footerText Block page footer text.
          * 
          * @return builder
          * 
@@ -199,7 +231,7 @@ public final class TeamsAccountBlockPageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param headerText Block page footer text.
+         * @param headerText Block page header text.
          * 
          * @return builder
          * 
@@ -210,7 +242,7 @@ public final class TeamsAccountBlockPageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param headerText Block page footer text.
+         * @param headerText Block page header text.
          * 
          * @return builder
          * 
@@ -238,6 +270,48 @@ public final class TeamsAccountBlockPageArgs extends com.pulumi.resources.Resour
          */
         public Builder logoPath(String logoPath) {
             return logoPath(Output.of(logoPath));
+        }
+
+        /**
+         * @param mailtoAddress Admin email for users to contact.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mailtoAddress(@Nullable Output<String> mailtoAddress) {
+            $.mailtoAddress = mailtoAddress;
+            return this;
+        }
+
+        /**
+         * @param mailtoAddress Admin email for users to contact.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mailtoAddress(String mailtoAddress) {
+            return mailtoAddress(Output.of(mailtoAddress));
+        }
+
+        /**
+         * @param mailtoSubject Subject line for emails created from block page.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mailtoSubject(@Nullable Output<String> mailtoSubject) {
+            $.mailtoSubject = mailtoSubject;
+            return this;
+        }
+
+        /**
+         * @param mailtoSubject Subject line for emails created from block page.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mailtoSubject(String mailtoSubject) {
+            return mailtoSubject(Output.of(mailtoSubject));
         }
 
         /**

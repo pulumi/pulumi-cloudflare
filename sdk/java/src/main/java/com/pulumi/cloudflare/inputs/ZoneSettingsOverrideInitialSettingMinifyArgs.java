@@ -13,47 +13,23 @@ public final class ZoneSettingsOverrideInitialSettingMinifyArgs extends com.pulu
 
     public static final ZoneSettingsOverrideInitialSettingMinifyArgs Empty = new ZoneSettingsOverrideInitialSettingMinifyArgs();
 
-    /**
-     * &#34;on&#34;/&#34;off&#34;
-     * 
-     */
     @Import(name="css", required=true)
     private Output<String> css;
 
-    /**
-     * @return &#34;on&#34;/&#34;off&#34;
-     * 
-     */
     public Output<String> css() {
         return this.css;
     }
 
-    /**
-     * &#34;on&#34;/&#34;off&#34;
-     * 
-     */
     @Import(name="html", required=true)
     private Output<String> html;
 
-    /**
-     * @return &#34;on&#34;/&#34;off&#34;
-     * 
-     */
     public Output<String> html() {
         return this.html;
     }
 
-    /**
-     * &#34;on&#34;/&#34;off&#34;
-     * 
-     */
     @Import(name="js", required=true)
     private Output<String> js;
 
-    /**
-     * @return &#34;on&#34;/&#34;off&#34;
-     * 
-     */
     public Output<String> js() {
         return this.js;
     }
@@ -84,65 +60,29 @@ public final class ZoneSettingsOverrideInitialSettingMinifyArgs extends com.pulu
             $ = new ZoneSettingsOverrideInitialSettingMinifyArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param css &#34;on&#34;/&#34;off&#34;
-         * 
-         * @return builder
-         * 
-         */
         public Builder css(Output<String> css) {
             $.css = css;
             return this;
         }
 
-        /**
-         * @param css &#34;on&#34;/&#34;off&#34;
-         * 
-         * @return builder
-         * 
-         */
         public Builder css(String css) {
             return css(Output.of(css));
         }
 
-        /**
-         * @param html &#34;on&#34;/&#34;off&#34;
-         * 
-         * @return builder
-         * 
-         */
         public Builder html(Output<String> html) {
             $.html = html;
             return this;
         }
 
-        /**
-         * @param html &#34;on&#34;/&#34;off&#34;
-         * 
-         * @return builder
-         * 
-         */
         public Builder html(String html) {
             return html(Output.of(html));
         }
 
-        /**
-         * @param js &#34;on&#34;/&#34;off&#34;
-         * 
-         * @return builder
-         * 
-         */
         public Builder js(Output<String> js) {
             $.js = js;
             return this;
         }
 
-        /**
-         * @param js &#34;on&#34;/&#34;off&#34;
-         * 
-         * @return builder
-         * 
-         */
         public Builder js(String js) {
             return js(Output.of(js));
         }

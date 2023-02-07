@@ -16,7 +16,7 @@ public final class LoadBalancerMonitorHeader {
      */
     private String header;
     /**
-     * @return A list of string values for the header.
+     * @return A list of values for the header.
      * 
      */
     private List<String> values;
@@ -30,7 +30,7 @@ public final class LoadBalancerMonitorHeader {
         return this.header;
     }
     /**
-     * @return A list of string values for the header.
+     * @return A list of values for the header.
      * 
      */
     public List<String> values() {

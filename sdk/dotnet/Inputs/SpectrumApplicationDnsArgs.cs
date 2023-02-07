@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class SpectrumApplicationDnsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+        /// The name of the DNS record associated with the application.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The type of DNS record associated with the application. Valid values: `CNAME`.
+        /// The type of DNS record associated with the application.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

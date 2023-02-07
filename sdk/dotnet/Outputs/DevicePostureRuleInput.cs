@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class DevicePostureRuleInput
     {
         /// <summary>
-        /// The workspace one device compliance status.
+        /// The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
         /// </summary>
         public readonly string? ComplianceStatus;
         /// <summary>
@@ -38,9 +38,13 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// The version comparison operator.
+        /// The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
         /// </summary>
         public readonly string? Operator;
+        /// <summary>
+        /// OS signal score from Crowdstrike. Value must be between 1 and 100.
+        /// </summary>
+        public readonly string? Os;
         /// <summary>
         /// The operating system excluding version information.
         /// </summary>
@@ -49,6 +53,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// The operating system version excluding OS name information or release name.
         /// </summary>
         public readonly string? OsDistroRevision;
+        /// <summary>
+        /// Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+        /// </summary>
+        public readonly string? Overall;
         /// <summary>
         /// The path to the file.
         /// </summary>
@@ -62,6 +70,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? Running;
         /// <summary>
+        /// Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+        /// </summary>
+        public readonly string? SensorConfig;
+        /// <summary>
         /// The sha256 hash of the file.
         /// </summary>
         public readonly string? Sha256;
@@ -73,6 +85,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// The operating system semantic version.
         /// </summary>
         public readonly string? Version;
+        /// <summary>
+        /// The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+        /// </summary>
+        public readonly string? VersionOperator;
 
         [OutputConstructor]
         private DevicePostureRuleInput(
@@ -90,9 +106,13 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? @operator,
 
+            string? os,
+
             string? osDistroName,
 
             string? osDistroRevision,
+
+            string? overall,
 
             string? path,
 
@@ -100,11 +120,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? running,
 
+            string? sensorConfig,
+
             string? sha256,
 
             string? thumbprint,
 
-            string? version)
+            string? version,
+
+            string? versionOperator)
         {
             ComplianceStatus = complianceStatus;
             ConnectionId = connectionId;
@@ -113,14 +137,18 @@ namespace Pulumi.Cloudflare.Outputs
             Exists = exists;
             Id = id;
             Operator = @operator;
+            Os = os;
             OsDistroName = osDistroName;
             OsDistroRevision = osDistroRevision;
+            Overall = overall;
             Path = path;
             RequireAll = requireAll;
             Running = running;
+            SensorConfig = sensorConfig;
             Sha256 = sha256;
             Thumbprint = thumbprint;
             Version = version;
+            VersionOperator = versionOperator;
         }
     }
 }

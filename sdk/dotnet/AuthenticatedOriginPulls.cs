@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Authenticated Origin Pulls resource. An `cloudflare.AuthenticatedOriginPulls` resource is required to use Per-Zone or Per-Hostname Authenticated Origin Pulls.
+    /// Provides a Cloudflare Authenticated Origin Pulls resource. A `cloudflare.AuthenticatedOriginPulls`
+    /// resource is required to use Per-Zone or Per-Hostname Authenticated
+    /// Origin Pulls.
     /// 
     /// ## Example Usage
-    /// 
-    /// The arguments that you provide determine which form of Authenticated Origin Pulls to use:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -26,14 +26,14 @@ namespace Pulumi.Cloudflare
     ///     // Authenticated Origin Pulls
     ///     var myAop = new Cloudflare.AuthenticatedOriginPulls("myAop", new()
     ///     {
-    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Enabled = true,
     ///     });
     /// 
     ///     // Per-Zone Authenticated Origin Pulls
     ///     var myPerZoneAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert", new()
     ///     {
-    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Certificate = "-----INSERT CERTIFICATE-----",
     ///         PrivateKey = "-----INSERT PRIVATE KEY-----",
     ///         Type = "per-zone",
@@ -41,7 +41,7 @@ namespace Pulumi.Cloudflare
     /// 
     ///     var myPerZoneAop = new Cloudflare.AuthenticatedOriginPulls("myPerZoneAop", new()
     ///     {
-    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         AuthenticatedOriginPullsCertificate = myPerZoneAopCert.Id,
     ///         Enabled = true,
     ///     });
@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
     ///     // Per-Hostname Authenticated Origin Pulls
     ///     var myPerHostnameAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", new()
     ///     {
-    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Certificate = "-----INSERT CERTIFICATE-----",
     ///         PrivateKey = "-----INSERT PRIVATE KEY-----",
     ///         Type = "per-hostname",
@@ -57,7 +57,7 @@ namespace Pulumi.Cloudflare
     /// 
     ///     var myPerHostnameAop = new Cloudflare.AuthenticatedOriginPulls("myPerHostnameAop", new()
     ///     {
-    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         AuthenticatedOriginPullsCertificate = myPerHostnameAopCert.Id,
     ///         Hostname = "aop.example.com",
     ///         Enabled = true,
@@ -68,35 +68,35 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Authenticated Origin Pull configuration can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, with each section filled or left blank e.g. Import Authenticated Origin Pull configuration
+    /// Authenticated Origin Pull configuration
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_aop 023e105f4ecef8ad9ca31a8372d0c353//
+    ///  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_aop &lt;zone_id&gt;//
     /// ```
     /// 
-    ///  Import Per-Zone Authenticated Origin Pull configuration
+    ///  Per-Zone Authenticated Origin Pull configuration
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_zone_aop 023e105f4ecef8ad9ca31a8372d0c353/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60/
+    ///  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_zone_aop &lt;zone_id&gt;/&lt;certificate_id&gt;/
     /// ```
     /// 
-    ///  Import Per-Hostname Authenticated Origin Pull configuration
+    ///  Per-Hostname Authenticated Origin Pull configuration
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_hostname_aop 023e105f4ecef8ad9ca31a8372d0c353/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60/aop.example.com
+    ///  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_hostname_aop &lt;zone_id&gt;/&lt;certificate_id&gt;/&lt;hostname&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls")]
     public partial class AuthenticatedOriginPulls : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+        /// The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
         /// </summary>
         [Output("authenticatedOriginPullsCertificate")]
         public Output<string?> AuthenticatedOriginPullsCertificate { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
+        /// Whether to enable Authenticated Origin Pulls on the given zone or hostname.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
@@ -108,7 +108,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Hostname { get; private set; } = null!;
 
         /// <summary>
-        /// The zone ID to upload the certificate to.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -160,13 +160,13 @@ namespace Pulumi.Cloudflare
     public sealed class AuthenticatedOriginPullsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+        /// The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
         /// </summary>
         [Input("authenticatedOriginPullsCertificate")]
         public Input<string>? AuthenticatedOriginPullsCertificate { get; set; }
 
         /// <summary>
-        /// Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
+        /// Whether to enable Authenticated Origin Pulls on the given zone or hostname.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
@@ -178,7 +178,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// The zone ID to upload the certificate to.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -192,13 +192,13 @@ namespace Pulumi.Cloudflare
     public sealed class AuthenticatedOriginPullsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+        /// The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
         /// </summary>
         [Input("authenticatedOriginPullsCertificate")]
         public Input<string>? AuthenticatedOriginPullsCertificate { get; set; }
 
         /// <summary>
-        /// Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
+        /// Whether to enable Authenticated Origin Pulls on the given zone or hostname.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -210,7 +210,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// The zone ID to upload the certificate to.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

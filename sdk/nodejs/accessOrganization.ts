@@ -27,6 +27,7 @@ import * as utilities from "./utilities";
  *         textColor: "#000000",
  *     }],
  *     name: "example.cloudflareaccess.com",
+ *     userSeatExpirationInactiveTime: "720h",
  * });
  * ```
  *
@@ -82,6 +83,10 @@ export class AccessOrganization extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string | undefined>;
     /**
+     * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+     */
+    public readonly userSeatExpirationInactiveTime!: pulumi.Output<string | undefined>;
+    /**
      * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     public readonly zoneId!: pulumi.Output<string>;
@@ -104,6 +109,7 @@ export class AccessOrganization extends pulumi.CustomResource {
             resourceInputs["isUiReadOnly"] = state ? state.isUiReadOnly : undefined;
             resourceInputs["loginDesigns"] = state ? state.loginDesigns : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["userSeatExpirationInactiveTime"] = state ? state.userSeatExpirationInactiveTime : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessOrganizationArgs | undefined;
@@ -115,6 +121,7 @@ export class AccessOrganization extends pulumi.CustomResource {
             resourceInputs["isUiReadOnly"] = args ? args.isUiReadOnly : undefined;
             resourceInputs["loginDesigns"] = args ? args.loginDesigns : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["userSeatExpirationInactiveTime"] = args ? args.userSeatExpirationInactiveTime : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -144,6 +151,10 @@ export interface AccessOrganizationState {
      */
     name?: pulumi.Input<string>;
     /**
+     * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+     */
+    userSeatExpirationInactiveTime?: pulumi.Input<string>;
+    /**
      * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
@@ -170,6 +181,10 @@ export interface AccessOrganizationArgs {
      * The name of your Zero Trust organization.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+     */
+    userSeatExpirationInactiveTime?: pulumi.Input<string>;
     /**
      * The zone identifier to target for the resource. Conflicts with `accountId`.
      */

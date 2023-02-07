@@ -30,15 +30,17 @@ type Provider struct {
 	ApiHostname pulumi.StringPtrOutput `pulumi:"apiHostname"`
 	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
 	// keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-	// should be used instead.
+	// should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
 	ApiKey pulumi.StringPtrOutput `pulumi:"apiKey"`
 	// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
+	// Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
 	ApiToken pulumi.StringPtrOutput `pulumi:"apiToken"`
 	// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-	// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
+	// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,
+	// `api_user_service_key`.
 	ApiUserServiceKey pulumi.StringPtrOutput `pulumi:"apiUserServiceKey"`
 	// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-	// variable.
+	// variable. Required when using `api_key`. Conflicts with `api_token`.
 	Email pulumi.StringPtrOutput `pulumi:"email"`
 }
 
@@ -89,15 +91,17 @@ type providerArgs struct {
 	ApiHostname *string `pulumi:"apiHostname"`
 	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
 	// keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-	// should be used instead.
+	// should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
 	ApiKey *string `pulumi:"apiKey"`
 	// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
+	// Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
 	ApiToken *string `pulumi:"apiToken"`
 	// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-	// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
+	// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,
+	// `api_user_service_key`.
 	ApiUserServiceKey *string `pulumi:"apiUserServiceKey"`
 	// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-	// variable.
+	// variable. Required when using `api_key`. Conflicts with `api_token`.
 	Email *string `pulumi:"email"`
 	// Maximum backoff period in seconds after failed API calls. Alternatively, can be configured using the
 	// `CLOUDFLARE_MAX_BACKOFF` environment variable.
@@ -131,15 +135,17 @@ type ProviderArgs struct {
 	ApiHostname pulumi.StringPtrInput
 	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
 	// keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-	// should be used instead.
+	// should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
 	ApiKey pulumi.StringPtrInput
 	// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
+	// Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
 	ApiToken pulumi.StringPtrInput
 	// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-	// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
+	// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,
+	// `api_user_service_key`.
 	ApiUserServiceKey pulumi.StringPtrInput
 	// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-	// variable.
+	// variable. Required when using `api_key`. Conflicts with `api_token`.
 	Email pulumi.StringPtrInput
 	// Maximum backoff period in seconds after failed API calls. Alternatively, can be configured using the
 	// `CLOUDFLARE_MAX_BACKOFF` environment variable.
@@ -214,24 +220,26 @@ func (o ProviderOutput) ApiHostname() pulumi.StringPtrOutput {
 
 // The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
 // keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-// should be used instead.
+// should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
 func (o ProviderOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
 
 // The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
+// Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
 func (o ProviderOutput) ApiToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiToken }).(pulumi.StringPtrOutput)
 }
 
 // A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
+// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,
+// `api_user_service_key`.
 func (o ProviderOutput) ApiUserServiceKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiUserServiceKey }).(pulumi.StringPtrOutput)
 }
 
 // A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-// variable.
+// variable. Required when using `api_key`. Conflicts with `api_token`.
 func (o ProviderOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Email }).(pulumi.StringPtrOutput)
 }

@@ -37,24 +37,26 @@ apiKey: Optional[str]
 """
 The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
 keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-should be used instead.
+should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
 """
 
 apiToken: Optional[str]
 """
 The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
+Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
 """
 
 apiUserServiceKey: Optional[str]
 """
 A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-`CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
+`CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,
+`api_user_service_key`.
 """
 
 email: Optional[str]
 """
 A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-variable.
+variable. Required when using `api_key`. Conflicts with `api_token`.
 """
 
 maxBackoff: int

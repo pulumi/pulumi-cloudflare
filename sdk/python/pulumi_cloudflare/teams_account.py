@@ -27,7 +27,8 @@ class TeamsAccountArgs:
                  url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a TeamsAccount resource.
-        :param pulumi.Input[str] account_id: The account to which the teams location should be added.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[bool] activity_log_enabled: Whether to enable the activity log.
         :param pulumi.Input['TeamsAccountAntivirusArgs'] antivirus: Configuration block for antivirus traffic scanning.
         :param pulumi.Input['TeamsAccountBlockPageArgs'] block_page: Configuration for a custom block page.
         :param pulumi.Input['TeamsAccountFipsArgs'] fips: Configure compliance with Federal Information Processing Standards.
@@ -57,7 +58,7 @@ class TeamsAccountArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account to which the teams location should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -68,6 +69,9 @@ class TeamsAccountArgs:
     @property
     @pulumi.getter(name="activityLogEnabled")
     def activity_log_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the activity log.
+        """
         return pulumi.get(self, "activity_log_enabled")
 
     @activity_log_enabled.setter
@@ -170,7 +174,8 @@ class _TeamsAccountState:
                  url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering TeamsAccount resources.
-        :param pulumi.Input[str] account_id: The account to which the teams location should be added.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[bool] activity_log_enabled: Whether to enable the activity log.
         :param pulumi.Input['TeamsAccountAntivirusArgs'] antivirus: Configuration block for antivirus traffic scanning.
         :param pulumi.Input['TeamsAccountBlockPageArgs'] block_page: Configuration for a custom block page.
         :param pulumi.Input['TeamsAccountFipsArgs'] fips: Configure compliance with Federal Information Processing Standards.
@@ -201,7 +206,7 @@ class _TeamsAccountState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account to which the teams location should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -212,6 +217,9 @@ class _TeamsAccountState:
     @property
     @pulumi.getter(name="activityLogEnabled")
     def activity_log_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the activity log.
+        """
         return pulumi.get(self, "activity_log_enabled")
 
     @activity_log_enabled.setter
@@ -316,7 +324,8 @@ class TeamsAccount(pulumi.CustomResource):
                  url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Teams Account resource. The Teams Account resource defines configuration for secure web gateway.
+        Provides a Cloudflare Teams Account resource. The Teams Account
+        resource defines configuration for secure web gateway.
 
         ## Example Usage
 
@@ -324,8 +333,8 @@ class TeamsAccount(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        main = cloudflare.TeamsAccount("main",
-            account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+        example = cloudflare.TeamsAccount("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
             antivirus=cloudflare.TeamsAccountAntivirusArgs(
                 enabled_download_phase=True,
                 enabled_upload_phase=False,
@@ -335,7 +344,7 @@ class TeamsAccount(pulumi.CustomResource):
                 background_color="#000000",
                 footer_text="hello",
                 header_text="hello",
-                logo_path="https://google.com",
+                logo_path="https://example.com/logo.jpg",
             ),
             fips=cloudflare.TeamsAccountFipsArgs(
                 tls=True,
@@ -367,15 +376,14 @@ class TeamsAccount(pulumi.CustomResource):
 
         ## Import
 
-        Since a Teams account does not have a unique resource ID, configuration can be imported using the account ID.
-
         ```sh
-         $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example cb029e245cfdd66dc8d2e570d5dd3322
+         $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example <account_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account to which the teams location should be added.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[bool] activity_log_enabled: Whether to enable the activity log.
         :param pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']] antivirus: Configuration block for antivirus traffic scanning.
         :param pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']] block_page: Configuration for a custom block page.
         :param pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']] fips: Configure compliance with Federal Information Processing Standards.
@@ -390,7 +398,8 @@ class TeamsAccount(pulumi.CustomResource):
                  args: TeamsAccountArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Teams Account resource. The Teams Account resource defines configuration for secure web gateway.
+        Provides a Cloudflare Teams Account resource. The Teams Account
+        resource defines configuration for secure web gateway.
 
         ## Example Usage
 
@@ -398,8 +407,8 @@ class TeamsAccount(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        main = cloudflare.TeamsAccount("main",
-            account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+        example = cloudflare.TeamsAccount("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
             antivirus=cloudflare.TeamsAccountAntivirusArgs(
                 enabled_download_phase=True,
                 enabled_upload_phase=False,
@@ -409,7 +418,7 @@ class TeamsAccount(pulumi.CustomResource):
                 background_color="#000000",
                 footer_text="hello",
                 header_text="hello",
-                logo_path="https://google.com",
+                logo_path="https://example.com/logo.jpg",
             ),
             fips=cloudflare.TeamsAccountFipsArgs(
                 tls=True,
@@ -441,10 +450,8 @@ class TeamsAccount(pulumi.CustomResource):
 
         ## Import
 
-        Since a Teams account does not have a unique resource ID, configuration can be imported using the account ID.
-
         ```sh
-         $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example cb029e245cfdd66dc8d2e570d5dd3322
+         $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example <account_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -517,7 +524,8 @@ class TeamsAccount(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account to which the teams location should be added.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[bool] activity_log_enabled: Whether to enable the activity log.
         :param pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']] antivirus: Configuration block for antivirus traffic scanning.
         :param pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']] block_page: Configuration for a custom block page.
         :param pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']] fips: Configure compliance with Federal Information Processing Standards.
@@ -544,13 +552,16 @@ class TeamsAccount(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account to which the teams location should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="activityLogEnabled")
     def activity_log_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to enable the activity log.
+        """
         return pulumi.get(self, "activity_log_enabled")
 
     @property

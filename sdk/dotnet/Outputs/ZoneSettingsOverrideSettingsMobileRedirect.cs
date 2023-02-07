@@ -13,17 +13,8 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ZoneSettingsOverrideSettingsMobileRedirect
     {
-        /// <summary>
-        /// String value
-        /// </summary>
         public readonly string MobileSubdomain;
-        /// <summary>
-        /// "on"/"off"
-        /// </summary>
         public readonly string Status;
-        /// <summary>
-        /// true/false
-        /// </summary>
         public readonly bool StripUri;
 
         [OutputConstructor]

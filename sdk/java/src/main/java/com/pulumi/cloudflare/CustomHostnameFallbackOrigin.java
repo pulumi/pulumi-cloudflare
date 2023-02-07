@@ -38,9 +38,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fallbackOrigin = new CustomHostnameFallbackOrigin(&#34;fallbackOrigin&#34;, CustomHostnameFallbackOriginArgs.builder()        
+ *         var example = new CustomHostnameFallbackOrigin(&#34;example&#34;, CustomHostnameFallbackOriginArgs.builder()        
  *             .origin(&#34;fallback.example.com&#34;)
- *             .zoneId(&#34;d41d8cd98f00b204e9800998ecf8427e&#34;)
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }
@@ -49,10 +49,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Custom hostname fallback origins can be imported using a composite ID formed of the zone ID and [fallback origin](https://api.cloudflare.com/#custom-hostname-fallback-origin-for-a-zone-properties), separated by a &#34;/&#34; e.g.
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example d41d8cd98f00b204e9800998ecf8427e/fallback.example.com
+ *  $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example &lt;zone_id&gt;/&lt;fallback_hostname&gt;
  * ```
  * 
  */
@@ -87,14 +85,14 @@ public class CustomHostnameFallbackOrigin extends com.pulumi.resources.CustomRes
         return this.status;
     }
     /**
-     * The DNS zone ID where the custom hostname should be assigned.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The DNS zone ID where the custom hostname should be assigned.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {

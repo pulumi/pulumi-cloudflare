@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsAccountProxyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether gateway proxy is enabled on gateway devices for tcp traffic.
+        /// Whether gateway proxy is enabled on gateway devices for TCP traffic.
         /// </summary>
         [Input("tcp", required: true)]
         public Input<bool> Tcp { get; set; } = null!;
 
         /// <summary>
-        /// Whether gateway proxy is enabled on gateway devices for udp traffic.
+        /// Whether gateway proxy is enabled on gateway devices for UDP traffic.
         /// </summary>
         [Input("udp", required: true)]
         public Input<bool> Udp { get; set; } = null!;

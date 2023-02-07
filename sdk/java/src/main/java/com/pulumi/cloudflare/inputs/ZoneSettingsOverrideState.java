@@ -18,79 +18,43 @@ public final class ZoneSettingsOverrideState extends com.pulumi.resources.Resour
 
     public static final ZoneSettingsOverrideState Empty = new ZoneSettingsOverrideState();
 
-    /**
-     * Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
-     * 
-     */
     @Import(name="initialSettings")
     private @Nullable Output<List<ZoneSettingsOverrideInitialSettingArgs>> initialSettings;
 
-    /**
-     * @return Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
-     * 
-     */
     public Optional<Output<List<ZoneSettingsOverrideInitialSettingArgs>>> initialSettings() {
         return Optional.ofNullable(this.initialSettings);
     }
 
-    /**
-     * Time when this resource was created and the `initial_settings` were set.
-     * 
-     */
     @Import(name="initialSettingsReadAt")
     private @Nullable Output<String> initialSettingsReadAt;
 
-    /**
-     * @return Time when this resource was created and the `initial_settings` were set.
-     * 
-     */
     public Optional<Output<String>> initialSettingsReadAt() {
         return Optional.ofNullable(this.initialSettingsReadAt);
     }
 
-    /**
-     * Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-     * - `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-     * - `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
-     * 
-     */
     @Import(name="readonlySettings")
     private @Nullable Output<List<String>> readonlySettings;
 
-    /**
-     * @return Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-     * - `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-     * - `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
-     * 
-     */
     public Optional<Output<List<String>>> readonlySettings() {
         return Optional.ofNullable(this.readonlySettings);
     }
 
-    /**
-     * Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
-     * 
-     */
     @Import(name="settings")
     private @Nullable Output<ZoneSettingsOverrideSettingsArgs> settings;
 
-    /**
-     * @return Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
-     * 
-     */
     public Optional<Output<ZoneSettingsOverrideSettingsArgs>> settings() {
         return Optional.ofNullable(this.settings);
     }
 
     /**
-     * The DNS zone ID to which apply settings.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The DNS zone ID to which apply settings.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -141,118 +105,52 @@ public final class ZoneSettingsOverrideState extends com.pulumi.resources.Resour
             $ = new ZoneSettingsOverrideState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param initialSettings Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
-         * 
-         * @return builder
-         * 
-         */
         public Builder initialSettings(@Nullable Output<List<ZoneSettingsOverrideInitialSettingArgs>> initialSettings) {
             $.initialSettings = initialSettings;
             return this;
         }
 
-        /**
-         * @param initialSettings Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
-         * 
-         * @return builder
-         * 
-         */
         public Builder initialSettings(List<ZoneSettingsOverrideInitialSettingArgs> initialSettings) {
             return initialSettings(Output.of(initialSettings));
         }
 
-        /**
-         * @param initialSettings Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
-         * 
-         * @return builder
-         * 
-         */
         public Builder initialSettings(ZoneSettingsOverrideInitialSettingArgs... initialSettings) {
             return initialSettings(List.of(initialSettings));
         }
 
-        /**
-         * @param initialSettingsReadAt Time when this resource was created and the `initial_settings` were set.
-         * 
-         * @return builder
-         * 
-         */
         public Builder initialSettingsReadAt(@Nullable Output<String> initialSettingsReadAt) {
             $.initialSettingsReadAt = initialSettingsReadAt;
             return this;
         }
 
-        /**
-         * @param initialSettingsReadAt Time when this resource was created and the `initial_settings` were set.
-         * 
-         * @return builder
-         * 
-         */
         public Builder initialSettingsReadAt(String initialSettingsReadAt) {
             return initialSettingsReadAt(Output.of(initialSettingsReadAt));
         }
 
-        /**
-         * @param readonlySettings Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-         * - `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-         * - `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
-         * 
-         * @return builder
-         * 
-         */
         public Builder readonlySettings(@Nullable Output<List<String>> readonlySettings) {
             $.readonlySettings = readonlySettings;
             return this;
         }
 
-        /**
-         * @param readonlySettings Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-         * - `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-         * - `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
-         * 
-         * @return builder
-         * 
-         */
         public Builder readonlySettings(List<String> readonlySettings) {
             return readonlySettings(Output.of(readonlySettings));
         }
 
-        /**
-         * @param readonlySettings Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-         * - `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-         * - `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
-         * 
-         * @return builder
-         * 
-         */
         public Builder readonlySettings(String... readonlySettings) {
             return readonlySettings(List.of(readonlySettings));
         }
 
-        /**
-         * @param settings Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder settings(@Nullable Output<ZoneSettingsOverrideSettingsArgs> settings) {
             $.settings = settings;
             return this;
         }
 
-        /**
-         * @param settings Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder settings(ZoneSettingsOverrideSettingsArgs settings) {
             return settings(Output.of(settings));
         }
 
         /**
-         * @param zoneId The DNS zone ID to which apply settings.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -263,7 +161,7 @@ public final class ZoneSettingsOverrideState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param zoneId The DNS zone ID to which apply settings.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

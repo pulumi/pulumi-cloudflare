@@ -13,17 +13,8 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RateLimitMatchRequest
     {
-        /// <summary>
-        /// HTTP Methods, can be a subset ['POST','PUT'] or all ['\_ALL\_']. Default: ['\_ALL\_'].
-        /// </summary>
         public readonly ImmutableArray<string> Methods;
-        /// <summary>
-        /// HTTP Schemes, can be one ['HTTPS'], both ['HTTP','HTTPS'] or all ['\_ALL\_']. Default: ['\_ALL\_'].
-        /// </summary>
         public readonly ImmutableArray<string> Schemes;
-        /// <summary>
-        /// The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use _ for all traffic to your zone. Default: '_'.
-        /// </summary>
         public readonly string? UrlPattern;
 
         [OutputConstructor]

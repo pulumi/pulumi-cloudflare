@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare custom ssl resource.
+// Provides a Cloudflare custom SSL resource.
 //
 // ## Example Usage
 //
@@ -22,18 +22,12 @@ import (
 //
 //	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			cloudflareZoneId := "1d5fdc9e88c8a8c4518b068cd94331fe"
-//			if param := cfg.Get("cloudflareZoneId"); param != "" {
-//				cloudflareZoneId = param
-//			}
-//			_, err := cloudflare.NewCustomSsl(ctx, "foossl", &cloudflare.CustomSslArgs{
+//			_, err := cloudflare.NewCustomSsl(ctx, "example", &cloudflare.CustomSslArgs{
 //				CustomSslOptions: &cloudflare.CustomSslCustomSslOptionsArgs{
 //					BundleMethod:    pulumi.String("ubiquitous"),
 //					Certificate:     pulumi.String("-----INSERT CERTIFICATE-----"),
@@ -41,7 +35,7 @@ import (
 //					PrivateKey:      pulumi.String("-----INSERT PRIVATE KEY-----"),
 //					Type:            pulumi.String("legacy_custom"),
 //				},
-//				ZoneId: pulumi.String(cloudflareZoneId),
+//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //			})
 //			if err != nil {
 //				return err
@@ -54,17 +48,15 @@ import (
 //
 // ## Import
 //
-// Custom SSL Certs can be imported using a composite ID formed of the zone ID and [certificate ID](https://api.cloudflare.com/#custom-ssl-for-a-zone-properties), separated by a "/" e.g.
-//
 // ```sh
 //
-//	$ pulumi import cloudflare:index/customSsl:CustomSsl default 1d5fdc9e88c8a8c4518b068cd94331fe/0123f0ab-9cde-45b2-80bd-4da3010f1337
+//	$ pulumi import cloudflare:index/customSsl:CustomSsl example <zone_id>/<certificate_id>
 //
 // ```
 type CustomSsl struct {
 	pulumi.CustomResourceState
 
-	// The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+	// The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
 	CustomSslOptions    CustomSslCustomSslOptionsPtrOutput    `pulumi:"customSslOptions"`
 	CustomSslPriorities CustomSslCustomSslPriorityArrayOutput `pulumi:"customSslPriorities"`
 	ExpiresOn           pulumi.StringOutput                   `pulumi:"expiresOn"`
@@ -75,7 +67,7 @@ type CustomSsl struct {
 	Signature           pulumi.StringOutput                   `pulumi:"signature"`
 	Status              pulumi.StringOutput                   `pulumi:"status"`
 	UploadedOn          pulumi.StringOutput                   `pulumi:"uploadedOn"`
-	// The DNS zone id to the custom ssl cert should be added.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -111,7 +103,7 @@ func GetCustomSsl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CustomSsl resources.
 type customSslState struct {
-	// The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+	// The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
 	CustomSslOptions    *CustomSslCustomSslOptions   `pulumi:"customSslOptions"`
 	CustomSslPriorities []CustomSslCustomSslPriority `pulumi:"customSslPriorities"`
 	ExpiresOn           *string                      `pulumi:"expiresOn"`
@@ -122,12 +114,12 @@ type customSslState struct {
 	Signature           *string                      `pulumi:"signature"`
 	Status              *string                      `pulumi:"status"`
 	UploadedOn          *string                      `pulumi:"uploadedOn"`
-	// The DNS zone id to the custom ssl cert should be added.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type CustomSslState struct {
-	// The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+	// The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
 	CustomSslOptions    CustomSslCustomSslOptionsPtrInput
 	CustomSslPriorities CustomSslCustomSslPriorityArrayInput
 	ExpiresOn           pulumi.StringPtrInput
@@ -138,7 +130,7 @@ type CustomSslState struct {
 	Signature           pulumi.StringPtrInput
 	Status              pulumi.StringPtrInput
 	UploadedOn          pulumi.StringPtrInput
-	// The DNS zone id to the custom ssl cert should be added.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -147,19 +139,19 @@ func (CustomSslState) ElementType() reflect.Type {
 }
 
 type customSslArgs struct {
-	// The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+	// The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
 	CustomSslOptions    *CustomSslCustomSslOptions   `pulumi:"customSslOptions"`
 	CustomSslPriorities []CustomSslCustomSslPriority `pulumi:"customSslPriorities"`
-	// The DNS zone id to the custom ssl cert should be added.
+	// The zone identifier to target for the resource.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a CustomSsl resource.
 type CustomSslArgs struct {
-	// The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+	// The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
 	CustomSslOptions    CustomSslCustomSslOptionsPtrInput
 	CustomSslPriorities CustomSslCustomSslPriorityArrayInput
-	// The DNS zone id to the custom ssl cert should be added.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringInput
 }
 
@@ -250,7 +242,7 @@ func (o CustomSslOutput) ToCustomSslOutputWithContext(ctx context.Context) Custo
 	return o
 }
 
-// The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+// The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
 func (o CustomSslOutput) CustomSslOptions() CustomSslCustomSslOptionsPtrOutput {
 	return o.ApplyT(func(v *CustomSsl) CustomSslCustomSslOptionsPtrOutput { return v.CustomSslOptions }).(CustomSslCustomSslOptionsPtrOutput)
 }
@@ -291,7 +283,7 @@ func (o CustomSslOutput) UploadedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.UploadedOn }).(pulumi.StringOutput)
 }
 
-// The DNS zone id to the custom ssl cert should be added.
+// The zone identifier to target for the resource.
 func (o CustomSslOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

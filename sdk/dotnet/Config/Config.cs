@@ -80,7 +80,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
         /// keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-        /// should be used instead.
+        /// should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         /// </summary>
         public static string? ApiKey
         {
@@ -91,6 +91,7 @@ namespace Pulumi.Cloudflare
         private static readonly __Value<string?> _apiToken = new __Value<string?>(() => __config.Get("apiToken"));
         /// <summary>
         /// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
+        /// Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         /// </summary>
         public static string? ApiToken
         {
@@ -101,7 +102,8 @@ namespace Pulumi.Cloudflare
         private static readonly __Value<string?> _apiUserServiceKey = new __Value<string?>(() => __config.Get("apiUserServiceKey"));
         /// <summary>
         /// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-        /// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
+        /// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,
+        /// `api_user_service_key`.
         /// </summary>
         public static string? ApiUserServiceKey
         {
@@ -112,7 +114,7 @@ namespace Pulumi.Cloudflare
         private static readonly __Value<string?> _email = new __Value<string?>(() => __config.Get("email"));
         /// <summary>
         /// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-        /// variable.
+        /// variable. Required when using `api_key`. Conflicts with `api_token`.
         /// </summary>
         public static string? Email
         {

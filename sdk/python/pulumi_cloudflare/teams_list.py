@@ -21,9 +21,9 @@ class TeamsListArgs:
                  items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a TeamsList resource.
-        :param pulumi.Input[str] account_id: The account to which the teams list should be added.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] name: Name of the teams list.
-        :param pulumi.Input[str] type: The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+        :param pulumi.Input[str] type: The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
         :param pulumi.Input[str] description: The description of the teams list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items of the teams list.
         """
@@ -39,7 +39,7 @@ class TeamsListArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account to which the teams list should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -63,7 +63,7 @@ class TeamsListArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+        The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
         """
         return pulumi.get(self, "type")
 
@@ -106,11 +106,11 @@ class _TeamsListState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TeamsList resources.
-        :param pulumi.Input[str] account_id: The account to which the teams list should be added.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: The description of the teams list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items of the teams list.
         :param pulumi.Input[str] name: Name of the teams list.
-        :param pulumi.Input[str] type: The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+        :param pulumi.Input[str] type: The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -127,7 +127,7 @@ class _TeamsListState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account to which the teams list should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -175,7 +175,7 @@ class _TeamsListState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+        The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
         """
         return pulumi.get(self, "type")
 
@@ -196,7 +196,9 @@ class TeamsList(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Teams List resource. Teams lists are referenced when creating secure web gateway policies or device posture rules.
+        Provides a Cloudflare Teams List resource. Teams lists are
+        referenced when creating secure web gateway policies or device
+        posture rules.
 
         ## Example Usage
 
@@ -204,8 +206,8 @@ class TeamsList(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        corporate_devices = cloudflare.TeamsList("corporateDevices",
-            account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+        example = cloudflare.TeamsList("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
             description="Serial numbers for all corporate devices.",
             items=[
                 "8GE8721REF",
@@ -218,19 +220,17 @@ class TeamsList(pulumi.CustomResource):
 
         ## Import
 
-        Teams lists can be imported using a composite ID formed of account ID and teams list ID.
-
         ```sh
-         $ pulumi import cloudflare:index/teamsList:TeamsList corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+         $ pulumi import cloudflare:index/teamsList:TeamsList example <account_id>/<teams_list_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account to which the teams list should be added.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: The description of the teams list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items of the teams list.
         :param pulumi.Input[str] name: Name of the teams list.
-        :param pulumi.Input[str] type: The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+        :param pulumi.Input[str] type: The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
         """
         ...
     @overload
@@ -239,7 +239,9 @@ class TeamsList(pulumi.CustomResource):
                  args: TeamsListArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Teams List resource. Teams lists are referenced when creating secure web gateway policies or device posture rules.
+        Provides a Cloudflare Teams List resource. Teams lists are
+        referenced when creating secure web gateway policies or device
+        posture rules.
 
         ## Example Usage
 
@@ -247,8 +249,8 @@ class TeamsList(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        corporate_devices = cloudflare.TeamsList("corporateDevices",
-            account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+        example = cloudflare.TeamsList("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
             description="Serial numbers for all corporate devices.",
             items=[
                 "8GE8721REF",
@@ -261,10 +263,8 @@ class TeamsList(pulumi.CustomResource):
 
         ## Import
 
-        Teams lists can be imported using a composite ID formed of account ID and teams list ID.
-
         ```sh
-         $ pulumi import cloudflare:index/teamsList:TeamsList corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+         $ pulumi import cloudflare:index/teamsList:TeamsList example <account_id>/<teams_list_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -329,11 +329,11 @@ class TeamsList(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account to which the teams list should be added.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: The description of the teams list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items of the teams list.
         :param pulumi.Input[str] name: Name of the teams list.
-        :param pulumi.Input[str] type: The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+        :param pulumi.Input[str] type: The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -350,7 +350,7 @@ class TeamsList(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account to which the teams list should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -382,7 +382,7 @@ class TeamsList(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+        The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
         """
         return pulumi.get(self, "type")
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare custom ssl resource.
+    /// Provides a Cloudflare custom SSL resource.
     /// 
     /// ## Example Usage
     /// 
@@ -21,10 +21,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var cloudflareZoneId = config.Get("cloudflareZoneId") ?? "1d5fdc9e88c8a8c4518b068cd94331fe";
-    ///     // Add a custom ssl certificate to the domain
-    ///     var foossl = new Cloudflare.CustomSsl("foossl", new()
+    ///     var example = new Cloudflare.CustomSsl("example", new()
     ///     {
     ///         CustomSslOptions = new Cloudflare.Inputs.CustomSslCustomSslOptionsArgs
     ///         {
@@ -34,7 +31,7 @@ namespace Pulumi.Cloudflare
     ///             PrivateKey = "-----INSERT PRIVATE KEY-----",
     ///             Type = "legacy_custom",
     ///         },
-    ///         ZoneId = cloudflareZoneId,
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });
@@ -42,17 +39,15 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Custom SSL Certs can be imported using a composite ID formed of the zone ID and [certificate ID](https://api.cloudflare.com/#custom-ssl-for-a-zone-properties), separated by a "/" e.g.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/customSsl:CustomSsl default 1d5fdc9e88c8a8c4518b068cd94331fe/0123f0ab-9cde-45b2-80bd-4da3010f1337
+    ///  $ pulumi import cloudflare:index/customSsl:CustomSsl example &lt;zone_id&gt;/&lt;certificate_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/customSsl:CustomSsl")]
     public partial class CustomSsl : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+        /// The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("customSslOptions")]
         public Output<Outputs.CustomSslCustomSslOptions?> CustomSslOptions { get; private set; } = null!;
@@ -85,7 +80,7 @@ namespace Pulumi.Cloudflare
         public Output<string> UploadedOn { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS zone id to the custom ssl cert should be added.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -137,7 +132,7 @@ namespace Pulumi.Cloudflare
     public sealed class CustomSslArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+        /// The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("customSslOptions")]
         public Input<Inputs.CustomSslCustomSslOptionsArgs>? CustomSslOptions { get; set; }
@@ -151,7 +146,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The DNS zone id to the custom ssl cert should be added.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -165,7 +160,7 @@ namespace Pulumi.Cloudflare
     public sealed class CustomSslState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+        /// The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("customSslOptions")]
         public Input<Inputs.CustomSslCustomSslOptionsGetArgs>? CustomSslOptions { get; set; }
@@ -208,7 +203,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? UploadedOn { get; set; }
 
         /// <summary>
-        /// The DNS zone id to the custom ssl cert should be added.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

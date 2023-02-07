@@ -19,57 +19,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * If you&#39;re using Cloudflare&#39;s Load Balancing to load-balance across multiple origin servers or data centers, you configure one of these Monitors to actively check the availability of those servers over HTTP(S) or TCP.
- * 
- * &gt; **Note:** When creating a monitor, you have to pass `account_id` to the provider configuration in order to create account level resources. Otherwise, by default, it will be a user level resource.
+ * If Cloudflare&#39;s Load Balancing to load-balance across multiple
+ * origin servers or data centers, you configure one of these Monitors
+ * to actively check the availability of those servers over HTTP(S) or
+ * TCP.
  * 
  * ## Example Usage
- * ### HTTP Monitor
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.LoadBalancerMonitor;
- * import com.pulumi.cloudflare.LoadBalancerMonitorArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerMonitorHeaderArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var httpMonitor = new LoadBalancerMonitor(&#34;httpMonitor&#34;, LoadBalancerMonitorArgs.builder()        
- *             .allowInsecure(false)
- *             .description(&#34;example http load balancer&#34;)
- *             .expectedBody(&#34;alive&#34;)
- *             .expectedCodes(&#34;2xx&#34;)
- *             .followRedirects(true)
- *             .headers(LoadBalancerMonitorHeaderArgs.builder()
- *                 .header(&#34;Host&#34;)
- *                 .values(&#34;example.com&#34;)
- *                 .build())
- *             .interval(60)
- *             .method(&#34;GET&#34;)
- *             .path(&#34;/health&#34;)
- *             .probeZone(&#34;example.com&#34;)
- *             .retries(5)
- *             .timeout(7)
- *             .type(&#34;http&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * ### TCP Monitor
  * ```java
  * package generated_program;
  * 
@@ -91,7 +46,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tcpMonitor = new LoadBalancerMonitor(&#34;tcpMonitor&#34;, LoadBalancerMonitorArgs.builder()        
+ *         var example = new LoadBalancerMonitor(&#34;example&#34;, LoadBalancerMonitorArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .description(&#34;example tcp load balancer&#34;)
  *             .interval(60)
  *             .method(&#34;connection_established&#34;)
@@ -123,14 +79,14 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accountId);
     }
     /**
-     * Do not validate the certificate when monitor use HTTPS. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
+     * Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
      * 
      */
     @Export(name="allowInsecure", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> allowInsecure;
 
     /**
-     * @return Do not validate the certificate when monitor use HTTPS. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
+     * @return Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
      * 
      */
     public Output<Optional<Boolean>> allowInsecure() {
@@ -165,14 +121,14 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is &#34;http&#34; or &#34;https&#34;. Default: &#34;&#34;.
+     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
      * 
      */
     @Export(name="expectedBody", type=String.class, parameters={})
     private Output</* @Nullable */ String> expectedBody;
 
     /**
-     * @return A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is &#34;http&#34; or &#34;https&#34;. Default: &#34;&#34;.
+     * @return A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
      * 
      */
     public Output<Optional<String>> expectedBody() {
@@ -207,42 +163,42 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.followRedirects);
     }
     /**
-     * The header name.
+     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
      * 
      */
     @Export(name="headers", type=List.class, parameters={LoadBalancerMonitorHeader.class})
     private Output</* @Nullable */ List<LoadBalancerMonitorHeader>> headers;
 
     /**
-     * @return The header name.
+     * @return The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
      * 
      */
     public Output<Optional<List<LoadBalancerMonitorHeader>>> headers() {
         return Codegen.optional(this.headers);
     }
     /**
-     * The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
+     * The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
      * 
      */
     @Export(name="interval", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> interval;
 
     /**
-     * @return The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
+     * @return The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
      * 
      */
     public Output<Optional<Integer>> interval() {
         return Codegen.optional(this.interval);
     }
     /**
-     * The method to use for the health check. Valid values are any valid HTTP verb if `type` is &#34;http&#34; or &#34;https&#34;, or `connection_established` if `type` is &#34;tcp&#34;. Default: &#34;GET&#34; if `type` is &#34;http&#34; or &#34;https&#34;, &#34;connection_established&#34; if `type` is &#34;tcp&#34;, and empty otherwise.
+     * The method to use for the health check.
      * 
      */
     @Export(name="method", type=String.class, parameters={})
     private Output<String> method;
 
     /**
-     * @return The method to use for the health check. Valid values are any valid HTTP verb if `type` is &#34;http&#34; or &#34;https&#34;, or `connection_established` if `type` is &#34;tcp&#34;. Default: &#34;GET&#34; if `type` is &#34;http&#34; or &#34;https&#34;, &#34;connection_established&#34; if `type` is &#34;tcp&#34;, and empty otherwise.
+     * @return The method to use for the health check.
      * 
      */
     public Output<String> method() {
@@ -263,28 +219,28 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
         return this.modifiedOn;
     }
     /**
-     * The endpoint path to health check against. Default: &#34;/&#34;. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
+     * The endpoint path to health check against.
      * 
      */
     @Export(name="path", type=String.class, parameters={})
     private Output<String> path;
 
     /**
-     * @return The endpoint path to health check against. Default: &#34;/&#34;. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
+     * @return The endpoint path to health check against.
      * 
      */
     public Output<String> path() {
         return this.path;
     }
     /**
-     * The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+     * The port number to use for the healthcheck, required when creating a TCP monitor.
      * 
      */
     @Export(name="port", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> port;
 
     /**
-     * @return The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+     * @return The port number to use for the healthcheck, required when creating a TCP monitor.
      * 
      */
     public Output<Optional<Integer>> port() {
@@ -305,42 +261,42 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.probeZone);
     }
     /**
-     * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
+     * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
      * 
      */
     @Export(name="retries", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> retries;
 
     /**
-     * @return The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
+     * @return The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
      * 
      */
     public Output<Optional<Integer>> retries() {
         return Codegen.optional(this.retries);
     }
     /**
-     * The timeout (in seconds) before marking the health check as failed. Default: 5.
+     * The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
      * 
      */
     @Export(name="timeout", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> timeout;
 
     /**
-     * @return The timeout (in seconds) before marking the health check as failed. Default: 5.
+     * @return The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
      * 
      */
     public Output<Optional<Integer>> timeout() {
         return Codegen.optional(this.timeout);
     }
     /**
-     * The protocol to use for the healthcheck. Currently supported protocols are &#39;HTTP&#39;, &#39;HTTPS&#39;, &#39;TCP&#39;, &#39;UDP-ICMP&#39;, &#39;ICMP-PING&#39;, and &#39;SMTP&#39;. Default: &#34;http&#34;.
+     * The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return The protocol to use for the healthcheck. Currently supported protocols are &#39;HTTP&#39;, &#39;HTTPS&#39;, &#39;TCP&#39;, &#39;UDP-ICMP&#39;, &#39;ICMP-PING&#39;, and &#39;SMTP&#39;. Default: &#34;http&#34;.
+     * @return The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
      * 
      */
     public Output<Optional<String>> type() {

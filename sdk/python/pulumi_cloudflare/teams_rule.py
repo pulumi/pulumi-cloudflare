@@ -29,8 +29,8 @@ class TeamsRuleArgs:
                  traffic: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TeamsRule resource.
-        :param pulumi.Input[str] account_id: The account to which the teams rule should be added.
-        :param pulumi.Input[str] action: The action executed by matched teams rule.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] action: The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
         :param pulumi.Input[str] description: The description of the teams rule.
         :param pulumi.Input[str] name: The name of the teams rule.
         :param pulumi.Input[int] precedence: The evaluation precedence of the teams rule.
@@ -38,7 +38,7 @@ class TeamsRuleArgs:
         :param pulumi.Input[bool] enabled: Indicator of rule enablement.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] filters: The protocol or layer to evaluate the traffic and identity expressions.
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
-        :param pulumi.Input['TeamsRuleRuleSettingsArgs'] rule_settings: Additional rule settings (refer to the nested schema).
+        :param pulumi.Input['TeamsRuleRuleSettingsArgs'] rule_settings: Additional rule settings.
         :param pulumi.Input[str] traffic: The wirefilter expression to be used for traffic matching.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -63,7 +63,7 @@ class TeamsRuleArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account to which the teams rule should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -75,7 +75,7 @@ class TeamsRuleArgs:
     @pulumi.getter
     def action(self) -> pulumi.Input[str]:
         """
-        The action executed by matched teams rule.
+        The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
         """
         return pulumi.get(self, "action")
 
@@ -171,7 +171,7 @@ class TeamsRuleArgs:
     @pulumi.getter(name="ruleSettings")
     def rule_settings(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsArgs']]:
         """
-        Additional rule settings (refer to the nested schema).
+        Additional rule settings.
         """
         return pulumi.get(self, "rule_settings")
 
@@ -209,8 +209,8 @@ class _TeamsRuleState:
                  version: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering TeamsRule resources.
-        :param pulumi.Input[str] account_id: The account to which the teams rule should be added.
-        :param pulumi.Input[str] action: The action executed by matched teams rule.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] action: The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
         :param pulumi.Input[str] description: The description of the teams rule.
         :param pulumi.Input[str] device_posture: The wirefilter expression to be used for device_posture check matching.
         :param pulumi.Input[bool] enabled: Indicator of rule enablement.
@@ -218,7 +218,7 @@ class _TeamsRuleState:
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
         :param pulumi.Input[str] name: The name of the teams rule.
         :param pulumi.Input[int] precedence: The evaluation precedence of the teams rule.
-        :param pulumi.Input['TeamsRuleRuleSettingsArgs'] rule_settings: Additional rule settings (refer to the nested schema).
+        :param pulumi.Input['TeamsRuleRuleSettingsArgs'] rule_settings: Additional rule settings.
         :param pulumi.Input[str] traffic: The wirefilter expression to be used for traffic matching.
         """
         if account_id is not None:
@@ -250,7 +250,7 @@ class _TeamsRuleState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account to which the teams rule should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -262,7 +262,7 @@ class _TeamsRuleState:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
         """
-        The action executed by matched teams rule.
+        The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
         """
         return pulumi.get(self, "action")
 
@@ -358,7 +358,7 @@ class _TeamsRuleState:
     @pulumi.getter(name="ruleSettings")
     def rule_settings(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsArgs']]:
         """
-        Additional rule settings (refer to the nested schema).
+        Additional rule settings.
         """
         return pulumi.get(self, "rule_settings")
 
@@ -414,8 +414,8 @@ class TeamsRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        rule1 = cloudflare.TeamsRule("rule1",
-            account_id="d57c3de47a013c03ca7e237dd3e61d7d",
+        example = cloudflare.TeamsRule("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
             action="block",
             description="desc",
             filters=["http"],
@@ -430,16 +430,14 @@ class TeamsRule(pulumi.CustomResource):
 
         ## Import
 
-        Teams Rules can be imported using a composite ID formed of account ID and teams rule ID.
-
         ```sh
-         $ pulumi import cloudflare:index/teamsRule:TeamsRule rule1 cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+         $ pulumi import cloudflare:index/teamsRule:TeamsRule example <account_id>/<teams_rule_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account to which the teams rule should be added.
-        :param pulumi.Input[str] action: The action executed by matched teams rule.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] action: The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
         :param pulumi.Input[str] description: The description of the teams rule.
         :param pulumi.Input[str] device_posture: The wirefilter expression to be used for device_posture check matching.
         :param pulumi.Input[bool] enabled: Indicator of rule enablement.
@@ -447,7 +445,7 @@ class TeamsRule(pulumi.CustomResource):
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
         :param pulumi.Input[str] name: The name of the teams rule.
         :param pulumi.Input[int] precedence: The evaluation precedence of the teams rule.
-        :param pulumi.Input[pulumi.InputType['TeamsRuleRuleSettingsArgs']] rule_settings: Additional rule settings (refer to the nested schema).
+        :param pulumi.Input[pulumi.InputType['TeamsRuleRuleSettingsArgs']] rule_settings: Additional rule settings.
         :param pulumi.Input[str] traffic: The wirefilter expression to be used for traffic matching.
         """
         ...
@@ -465,8 +463,8 @@ class TeamsRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        rule1 = cloudflare.TeamsRule("rule1",
-            account_id="d57c3de47a013c03ca7e237dd3e61d7d",
+        example = cloudflare.TeamsRule("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
             action="block",
             description="desc",
             filters=["http"],
@@ -481,10 +479,8 @@ class TeamsRule(pulumi.CustomResource):
 
         ## Import
 
-        Teams Rules can be imported using a composite ID formed of account ID and teams rule ID.
-
         ```sh
-         $ pulumi import cloudflare:index/teamsRule:TeamsRule rule1 cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+         $ pulumi import cloudflare:index/teamsRule:TeamsRule example <account_id>/<teams_rule_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -573,8 +569,8 @@ class TeamsRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account to which the teams rule should be added.
-        :param pulumi.Input[str] action: The action executed by matched teams rule.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] action: The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
         :param pulumi.Input[str] description: The description of the teams rule.
         :param pulumi.Input[str] device_posture: The wirefilter expression to be used for device_posture check matching.
         :param pulumi.Input[bool] enabled: Indicator of rule enablement.
@@ -582,7 +578,7 @@ class TeamsRule(pulumi.CustomResource):
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
         :param pulumi.Input[str] name: The name of the teams rule.
         :param pulumi.Input[int] precedence: The evaluation precedence of the teams rule.
-        :param pulumi.Input[pulumi.InputType['TeamsRuleRuleSettingsArgs']] rule_settings: Additional rule settings (refer to the nested schema).
+        :param pulumi.Input[pulumi.InputType['TeamsRuleRuleSettingsArgs']] rule_settings: Additional rule settings.
         :param pulumi.Input[str] traffic: The wirefilter expression to be used for traffic matching.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -607,7 +603,7 @@ class TeamsRule(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account to which the teams rule should be added.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -615,7 +611,7 @@ class TeamsRule(pulumi.CustomResource):
     @pulumi.getter
     def action(self) -> pulumi.Output[str]:
         """
-        The action executed by matched teams rule.
+        The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
         """
         return pulumi.get(self, "action")
 
@@ -679,7 +675,7 @@ class TeamsRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleSettings")
     def rule_settings(self) -> pulumi.Output[Optional['outputs.TeamsRuleRuleSettings']]:
         """
-        Additional rule settings (refer to the nested schema).
+        Additional rule settings.
         """
         return pulumi.get(self, "rule_settings")
 

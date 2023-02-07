@@ -7,7 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows you to define one or more URLs (with wildcard matching on the domain or path) that will only permit access if the request originates from an IP address that matches a safelist of one or more IP addresses and/or IP ranges.
+ * Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows
+ * you to define one or more URLs (with wildcard matching on the domain
+ * or path) that will only permit access if the request originates
+ * from an IP address that matches a safelist of one or more IP
+ * addresses and/or IP ranges.
  *
  * ## Example Usage
  *
@@ -16,27 +20,23 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // Restrict access to these endpoints to requests from a known IP address range.
- * const endpointLockdown = new cloudflare.ZoneLockdown("endpointLockdown", {
+ * const example = new cloudflare.ZoneLockdown("example", {
  *     configurations: [{
  *         target: "ip_range",
- *         value: "198.51.100.0/16",
+ *         value: "192.0.2.0/24",
  *     }],
  *     description: "Restrict access to these endpoints to requests from a known IP address range",
  *     paused: false,
  *     urls: ["api.mysite.com/some/endpoint*"],
- *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  *
  * ## Import
  *
- * Records can be imported using a composite ID formed of zone name and record ID, e.g.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown cloudflare_zone_lockdown d41d8cd98f00b204e9800998ecf8427e/37cb64fe4a90adb5ca3afc04f2c82a2f
+ *  $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example <zone_id>/<lockdown_id>
  * ```
- *
- *  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules)
  */
 export class ZoneLockdown extends pulumi.CustomResource {
     /**
@@ -67,7 +67,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
     }
 
     /**
-     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
+     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
      */
     public readonly configurations!: pulumi.Output<outputs.ZoneLockdownConfiguration[]>;
     /**
@@ -75,7 +75,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Boolean of whether this zone lockdown is currently paused. Default: false.
+     * Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
      */
     public readonly paused!: pulumi.Output<boolean | undefined>;
     public readonly priority!: pulumi.Output<number | undefined>;
@@ -84,7 +84,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
      */
     public readonly urls!: pulumi.Output<string[]>;
     /**
-     * The DNS zone ID to which the access rule should be added.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -135,7 +135,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
  */
 export interface ZoneLockdownState {
     /**
-     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
+     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
      */
     configurations?: pulumi.Input<pulumi.Input<inputs.ZoneLockdownConfiguration>[]>;
     /**
@@ -143,7 +143,7 @@ export interface ZoneLockdownState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Boolean of whether this zone lockdown is currently paused. Default: false.
+     * Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
      */
     paused?: pulumi.Input<boolean>;
     priority?: pulumi.Input<number>;
@@ -152,7 +152,7 @@ export interface ZoneLockdownState {
      */
     urls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The DNS zone ID to which the access rule should be added.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -162,7 +162,7 @@ export interface ZoneLockdownState {
  */
 export interface ZoneLockdownArgs {
     /**
-     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
+     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
      */
     configurations: pulumi.Input<pulumi.Input<inputs.ZoneLockdownConfiguration>[]>;
     /**
@@ -170,7 +170,7 @@ export interface ZoneLockdownArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Boolean of whether this zone lockdown is currently paused. Default: false.
+     * Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
      */
     paused?: pulumi.Input<boolean>;
     priority?: pulumi.Input<number>;
@@ -179,7 +179,7 @@ export interface ZoneLockdownArgs {
      */
     urls: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The DNS zone ID to which the access rule should be added.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId: pulumi.Input<string>;
 }

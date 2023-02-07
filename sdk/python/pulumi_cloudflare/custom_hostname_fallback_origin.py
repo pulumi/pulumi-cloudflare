@@ -19,7 +19,7 @@ class CustomHostnameFallbackOriginArgs:
         """
         The set of arguments for constructing a CustomHostnameFallbackOrigin resource.
         :param pulumi.Input[str] origin: Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
-        :param pulumi.Input[str] zone_id: The DNS zone ID where the custom hostname should be assigned.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         pulumi.set(__self__, "origin", origin)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -40,7 +40,7 @@ class CustomHostnameFallbackOriginArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The DNS zone ID where the custom hostname should be assigned.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -59,7 +59,7 @@ class _CustomHostnameFallbackOriginState:
         Input properties used for looking up and filtering CustomHostnameFallbackOrigin resources.
         :param pulumi.Input[str] origin: Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
         :param pulumi.Input[str] status: Status of the fallback origin's activation.
-        :param pulumi.Input[str] zone_id: The DNS zone ID where the custom hostname should be assigned.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         if origin is not None:
             pulumi.set(__self__, "origin", origin)
@@ -96,7 +96,7 @@ class _CustomHostnameFallbackOriginState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS zone ID where the custom hostname should be assigned.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -122,23 +122,21 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        fallback_origin = cloudflare.CustomHostnameFallbackOrigin("fallbackOrigin",
+        example = cloudflare.CustomHostnameFallbackOrigin("example",
             origin="fallback.example.com",
-            zone_id="d41d8cd98f00b204e9800998ecf8427e")
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
         ## Import
 
-        Custom hostname fallback origins can be imported using a composite ID formed of the zone ID and [fallback origin](https://api.cloudflare.com/#custom-hostname-fallback-origin-for-a-zone-properties), separated by a "/" e.g.
-
         ```sh
-         $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example d41d8cd98f00b204e9800998ecf8427e/fallback.example.com
+         $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example <zone_id>/<fallback_hostname>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] origin: Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
-        :param pulumi.Input[str] zone_id: The DNS zone ID where the custom hostname should be assigned.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -155,17 +153,15 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        fallback_origin = cloudflare.CustomHostnameFallbackOrigin("fallbackOrigin",
+        example = cloudflare.CustomHostnameFallbackOrigin("example",
             origin="fallback.example.com",
-            zone_id="d41d8cd98f00b204e9800998ecf8427e")
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
         ## Import
 
-        Custom hostname fallback origins can be imported using a composite ID formed of the zone ID and [fallback origin](https://api.cloudflare.com/#custom-hostname-fallback-origin-for-a-zone-properties), separated by a "/" e.g.
-
         ```sh
-         $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example d41d8cd98f00b204e9800998ecf8427e/fallback.example.com
+         $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example <zone_id>/<fallback_hostname>
         ```
 
         :param str resource_name: The name of the resource.
@@ -223,7 +219,7 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] origin: Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
         :param pulumi.Input[str] status: Status of the fallback origin's activation.
-        :param pulumi.Input[str] zone_id: The DNS zone ID where the custom hostname should be assigned.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -254,7 +250,7 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The DNS zone ID where the custom hostname should be assigned.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 

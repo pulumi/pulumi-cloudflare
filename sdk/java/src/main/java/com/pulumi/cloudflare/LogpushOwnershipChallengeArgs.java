@@ -16,14 +16,14 @@ public final class LogpushOwnershipChallengeArgs extends com.pulumi.resources.Re
     public static final LogpushOwnershipChallengeArgs Empty = new LogpushOwnershipChallengeArgs();
 
     /**
-     * The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+     * The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+     * @return The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -31,14 +31,14 @@ public final class LogpushOwnershipChallengeArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
+     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="destinationConf", required=true)
     private Output<String> destinationConf;
 
     /**
-     * @return Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
+     * @return Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> destinationConf() {
@@ -46,14 +46,14 @@ public final class LogpushOwnershipChallengeArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The zone ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+     * The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+     * @return The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -87,7 +87,7 @@ public final class LogpushOwnershipChallengeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accountId The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+         * @param accountId The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class LogpushOwnershipChallengeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accountId The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+         * @param accountId The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class LogpushOwnershipChallengeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param destinationConf Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
+         * @param destinationConf Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class LogpushOwnershipChallengeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param destinationConf Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
+         * @param destinationConf Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class LogpushOwnershipChallengeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId The zone ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+         * @param zoneId The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class LogpushOwnershipChallengeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId The zone ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+         * @param zoneId The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
          * 
          * @return builder
          * 

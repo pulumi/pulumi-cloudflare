@@ -12,7 +12,9 @@ namespace Pulumi.Cloudflare
     public static class GetOriginCaRootCertificate
     {
         /// <summary>
-        /// Use this data source to get the [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates) for a given algorithm.
+        /// Use this data source to get the
+        /// [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates)
+        /// for a given algorithm."
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -25,9 +27,9 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var originCa = Cloudflare.GetOriginCaRootCertificate.Invoke(new()
+        ///     var example = Cloudflare.GetOriginCaRootCertificate.Invoke(new()
         ///     {
-        ///         Algorithm = "&lt;algorithm&gt;",
+        ///         Algorithm = "rsa",
         ///     });
         /// 
         /// });
@@ -39,7 +41,9 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOriginCaRootCertificateResult>("cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate", args ?? new GetOriginCaRootCertificateArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get the [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates) for a given algorithm.
+        /// Use this data source to get the
+        /// [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates)
+        /// for a given algorithm."
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -52,9 +56,9 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var originCa = Cloudflare.GetOriginCaRootCertificate.Invoke(new()
+        ///     var example = Cloudflare.GetOriginCaRootCertificate.Invoke(new()
         ///     {
-        ///         Algorithm = "&lt;algorithm&gt;",
+        ///         Algorithm = "rsa",
         ///     });
         /// 
         /// });
@@ -70,7 +74,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetOriginCaRootCertificateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the algorithm used when creating an Origin CA certificate. Currently-supported values are "rsa" and "ecc" (case-insensitive).
+        /// The name of the algorithm used when creating an Origin CA certificate. Available values: `rsa`, `ecc`.
         /// </summary>
         [Input("algorithm", required: true)]
         public string Algorithm { get; set; } = null!;
@@ -84,7 +88,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetOriginCaRootCertificateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the algorithm used when creating an Origin CA certificate. Currently-supported values are "rsa" and "ecc" (case-insensitive).
+        /// The name of the algorithm used when creating an Origin CA certificate. Available values: `rsa`, `ecc`.
         /// </summary>
         [Input("algorithm", required: true)]
         public Input<string> Algorithm { get; set; } = null!;
@@ -99,6 +103,9 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetOriginCaRootCertificateResult
     {
+        /// <summary>
+        /// The name of the algorithm used when creating an Origin CA certificate. Available values: `rsa`, `ecc`.
+        /// </summary>
         public readonly string Algorithm;
         /// <summary>
         /// The Origin CA root certificate in PEM format.

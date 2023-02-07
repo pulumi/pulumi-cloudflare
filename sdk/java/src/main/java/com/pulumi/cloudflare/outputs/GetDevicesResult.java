@@ -11,11 +11,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDevicesResult {
-    private String accountId;
     /**
-     * @return A list of device object. See below for nested attributes.
+     * @return The account identifier to target for the resource.
      * 
      */
+    private String accountId;
     private List<GetDevicesDevice> devices;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,13 +24,13 @@ public final class GetDevicesResult {
     private String id;
 
     private GetDevicesResult() {}
+    /**
+     * @return The account identifier to target for the resource.
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
-    /**
-     * @return A list of device object. See below for nested attributes.
-     * 
-     */
     public List<GetDevicesDevice> devices() {
         return this.devices;
     }

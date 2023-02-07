@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class PagesProjectDeploymentConfigsProductionGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("alwaysUseLatestCompatibilityDate")]
+        public Input<bool>? AlwaysUseLatestCompatibilityDate { get; set; }
+
         [Input("compatibilityDate")]
         public Input<string>? CompatibilityDate { get; set; }
 
@@ -47,6 +50,9 @@ namespace Pulumi.Cloudflare.Inputs
             set => _environmentVariables = value;
         }
 
+        [Input("failOpen")]
+        public Input<bool>? FailOpen { get; set; }
+
         [Input("kvNamespaces")]
         private InputMap<object>? _kvNamespaces;
         public InputMap<object> KvNamespaces
@@ -62,6 +68,17 @@ namespace Pulumi.Cloudflare.Inputs
             get => _r2Buckets ?? (_r2Buckets = new InputMap<object>());
             set => _r2Buckets = value;
         }
+
+        [Input("serviceBindings")]
+        private InputList<Inputs.PagesProjectDeploymentConfigsProductionServiceBindingGetArgs>? _serviceBindings;
+        public InputList<Inputs.PagesProjectDeploymentConfigsProductionServiceBindingGetArgs> ServiceBindings
+        {
+            get => _serviceBindings ?? (_serviceBindings = new InputList<Inputs.PagesProjectDeploymentConfigsProductionServiceBindingGetArgs>());
+            set => _serviceBindings = value;
+        }
+
+        [Input("usageModel")]
+        public Input<string>? UsageModel { get; set; }
 
         public PagesProjectDeploymentConfigsProductionGetArgs()
         {

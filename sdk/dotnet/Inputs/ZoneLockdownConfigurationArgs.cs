@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZoneLockdownConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The request property to target. Allowed values: "ip", "ip_range"
+        /// The request property to target. Available values: `ip`, `ip_range`.
         /// </summary>
         [Input("target", required: true)]
         public Input<string> Target { get; set; } = null!;
 
         /// <summary>
-        /// The value to target. Depends on target's type. IP addresses should just be standard IPv4/IPv6 notation i.e. `198.51.100.4` or `2001:db8::/32` and IP ranges in CIDR format i.e. `198.51.0.0/16`.
+        /// The value to target. Depends on target's type. IP addresses should just be standard IPv4/IPv6 notation i.e. `192.0.2.1` or `2001:db8::/32` and IP ranges in CIDR format i.e. `192.0.2.0/24`.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

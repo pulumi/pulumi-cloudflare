@@ -15,14 +15,14 @@ public final class GetZonePlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetZonePlainArgs Empty = new GetZonePlainArgs();
 
     /**
-     * The account ID associated with the zone.
+     * The account identifier to target for the resource.
      * 
      */
     @Import(name="accountId")
     private @Nullable String accountId;
 
     /**
-     * @return The account ID associated with the zone.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Optional<String> accountId() {
@@ -30,14 +30,14 @@ public final class GetZonePlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the zone. Conflicts with `&#34;zone_id&#34;`.
+     * The name of the zone. Must provide only one of `zone_id`, `name`.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return The name of the zone. Conflicts with `&#34;zone_id&#34;`.
+     * @return The name of the zone. Must provide only one of `zone_id`, `name`.
      * 
      */
     public Optional<String> name() {
@@ -45,14 +45,14 @@ public final class GetZonePlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The zone ID. Conflicts with `&#34;name&#34;`.
+     * The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
      * 
      */
     @Import(name="zoneId")
     private @Nullable String zoneId;
 
     /**
-     * @return The zone ID. Conflicts with `&#34;name&#34;`.
+     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
      * 
      */
     public Optional<String> zoneId() {
@@ -86,7 +86,7 @@ public final class GetZonePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId The account ID associated with the zone.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class GetZonePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The name of the zone. Conflicts with `&#34;zone_id&#34;`.
+         * @param name The name of the zone. Must provide only one of `zone_id`, `name`.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class GetZonePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId The zone ID. Conflicts with `&#34;name&#34;`.
+         * @param zoneId The zone identifier to target for the resource. Must provide only one of `zone_id`, `name`.
          * 
          * @return builder
          * 

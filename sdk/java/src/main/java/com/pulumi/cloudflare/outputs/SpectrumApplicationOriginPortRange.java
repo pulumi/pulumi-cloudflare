@@ -10,26 +10,26 @@ import java.util.Objects;
 @CustomType
 public final class SpectrumApplicationOriginPortRange {
     /**
-     * @return Upper bound of the origin port range, e.g. `2000`
+     * @return Upper bound of the origin port range.
      * 
      */
     private Integer end;
     /**
-     * @return Lower bound of the origin port range, e.g. `1000`
+     * @return Lower bound of the origin port range.
      * 
      */
     private Integer start;
 
     private SpectrumApplicationOriginPortRange() {}
     /**
-     * @return Upper bound of the origin port range, e.g. `2000`
+     * @return Upper bound of the origin port range.
      * 
      */
     public Integer end() {
         return this.end;
     }
     /**
-     * @return Lower bound of the origin port range, e.g. `1000`
+     * @return Lower bound of the origin port range.
      * 
      */
     public Integer start() {

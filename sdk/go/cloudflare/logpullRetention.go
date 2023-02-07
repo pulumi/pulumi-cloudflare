@@ -29,7 +29,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewLogpullRetention(ctx, "example", &cloudflare.LogpullRetentionArgs{
 //				Enabled: pulumi.Bool(true),
-//				ZoneId:  pulumi.String("fb54f084ca7f7b732d3d3ecbd8ef7bf2"),
+//				ZoneId:  pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //			})
 //			if err != nil {
 //				return err
@@ -42,11 +42,9 @@ import (
 //
 // ## Import
 //
-// You can import existing Logpull Retention using the zone ID as the identifier.
-//
 // ```sh
 //
-//	$ pulumi import cloudflare:index/logpullRetention:LogpullRetention example fb54f084ca7f7b732d3d3ecbd8ef7bf2
+//	$ pulumi import cloudflare:index/logpullRetention:LogpullRetention example <zone_id>
 //
 // ```
 type LogpullRetention struct {
@@ -54,7 +52,7 @@ type LogpullRetention struct {
 
 	// Whether you wish to retain logs or not.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// The zone ID to apply the log retention to.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -95,14 +93,14 @@ func GetLogpullRetention(ctx *pulumi.Context,
 type logpullRetentionState struct {
 	// Whether you wish to retain logs or not.
 	Enabled *bool `pulumi:"enabled"`
-	// The zone ID to apply the log retention to.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type LogpullRetentionState struct {
 	// Whether you wish to retain logs or not.
 	Enabled pulumi.BoolPtrInput
-	// The zone ID to apply the log retention to.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -113,7 +111,7 @@ func (LogpullRetentionState) ElementType() reflect.Type {
 type logpullRetentionArgs struct {
 	// Whether you wish to retain logs or not.
 	Enabled bool `pulumi:"enabled"`
-	// The zone ID to apply the log retention to.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -121,7 +119,7 @@ type logpullRetentionArgs struct {
 type LogpullRetentionArgs struct {
 	// Whether you wish to retain logs or not.
 	Enabled pulumi.BoolInput
-	// The zone ID to apply the log retention to.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
 }
 
@@ -217,7 +215,7 @@ func (o LogpullRetentionOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *LogpullRetention) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The zone ID to apply the log retention to.
+// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o LogpullRetentionOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogpullRetention) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

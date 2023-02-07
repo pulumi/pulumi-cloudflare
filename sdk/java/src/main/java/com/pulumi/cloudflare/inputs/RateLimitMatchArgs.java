@@ -17,14 +17,14 @@ public final class RateLimitMatchArgs extends com.pulumi.resources.ResourceArgs 
     public static final RateLimitMatchArgs Empty = new RateLimitMatchArgs();
 
     /**
-     * Matches HTTP requests (from the client to Cloudflare). See definition below.
+     * Matches HTTP requests (from the client to Cloudflare).
      * 
      */
     @Import(name="request")
     private @Nullable Output<RateLimitMatchRequestArgs> request;
 
     /**
-     * @return Matches HTTP requests (from the client to Cloudflare). See definition below.
+     * @return Matches HTTP requests (from the client to Cloudflare).
      * 
      */
     public Optional<Output<RateLimitMatchRequestArgs>> request() {
@@ -32,14 +32,14 @@ public final class RateLimitMatchArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
+     * Matches HTTP responses before they are returned to the client from Cloudflare. If this is defined, then the entire counting of traffic occurs at this stage.
      * 
      */
     @Import(name="response")
     private @Nullable Output<RateLimitMatchResponseArgs> response;
 
     /**
-     * @return Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
+     * @return Matches HTTP responses before they are returned to the client from Cloudflare. If this is defined, then the entire counting of traffic occurs at this stage.
      * 
      */
     public Optional<Output<RateLimitMatchResponseArgs>> response() {
@@ -72,7 +72,7 @@ public final class RateLimitMatchArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param request Matches HTTP requests (from the client to Cloudflare). See definition below.
+         * @param request Matches HTTP requests (from the client to Cloudflare).
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class RateLimitMatchArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param request Matches HTTP requests (from the client to Cloudflare). See definition below.
+         * @param request Matches HTTP requests (from the client to Cloudflare).
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class RateLimitMatchArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param response Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
+         * @param response Matches HTTP responses before they are returned to the client from Cloudflare. If this is defined, then the entire counting of traffic occurs at this stage.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class RateLimitMatchArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param response Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
+         * @param response Matches HTTP responses before they are returned to the client from Cloudflare. If this is defined, then the entire counting of traffic occurs at this stage.
          * 
          * @return builder
          * 

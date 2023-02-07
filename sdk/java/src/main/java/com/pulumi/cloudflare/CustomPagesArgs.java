@@ -16,46 +16,44 @@ public final class CustomPagesArgs extends com.pulumi.resources.ResourceArgs {
     public static final CustomPagesArgs Empty = new CustomPagesArgs();
 
     /**
-     * The account ID where the custom pages should be
-     * updated. Either `account_id` or `zone_id` must be provided. If
-     * `account_id` is present, it will override the zone setting.
+     * The account identifier to target for the resource. Conflicts with `zone_id`.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account ID where the custom pages should be
-     * updated. Either `account_id` or `zone_id` must be provided. If
-     * `account_id` is present, it will override the zone setting.
+     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
      * 
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * Managed state of the custom page. Available values: `default`, `customized`.
+     * 
+     */
     @Import(name="state")
     private @Nullable Output<String> state;
 
+    /**
+     * @return Managed state of the custom page. Available values: `default`, `customized`.
+     * 
+     */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
     }
 
     /**
-     * The type of custom page you wish to update. Must
-     * be one of `basic_challenge`, `waf_challenge`, `waf_block`,
-     * `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-     * `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
+     * The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of custom page you wish to update. Must
-     * be one of `basic_challenge`, `waf_challenge`, `waf_block`,
-     * `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-     * `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
+     * @return The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
      * 
      */
     public Output<String> type() {
@@ -78,16 +76,14 @@ public final class CustomPagesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone ID where the custom pages should be
-     * updated. Either `zone_id` or `account_id` must be provided.
+     * The zone identifier to target for the resource. Conflicts with `account_id`.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone ID where the custom pages should be
-     * updated. Either `zone_id` or `account_id` must be provided.
+     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -123,9 +119,7 @@ public final class CustomPagesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account ID where the custom pages should be
-         * updated. Either `account_id` or `zone_id` must be provided. If
-         * `account_id` is present, it will override the zone setting.
+         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
          * 
          * @return builder
          * 
@@ -136,9 +130,7 @@ public final class CustomPagesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account ID where the custom pages should be
-         * updated. Either `account_id` or `zone_id` must be provided. If
-         * `account_id` is present, it will override the zone setting.
+         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
          * 
          * @return builder
          * 
@@ -147,20 +139,29 @@ public final class CustomPagesArgs extends com.pulumi.resources.ResourceArgs {
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param state Managed state of the custom page. Available values: `default`, `customized`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(@Nullable Output<String> state) {
             $.state = state;
             return this;
         }
 
+        /**
+         * @param state Managed state of the custom page. Available values: `default`, `customized`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(String state) {
             return state(Output.of(state));
         }
 
         /**
-         * @param type The type of custom page you wish to update. Must
-         * be one of `basic_challenge`, `waf_challenge`, `waf_block`,
-         * `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-         * `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
+         * @param type The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
          * 
          * @return builder
          * 
@@ -171,10 +172,7 @@ public final class CustomPagesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of custom page you wish to update. Must
-         * be one of `basic_challenge`, `waf_challenge`, `waf_block`,
-         * `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-         * `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
+         * @param type The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
          * 
          * @return builder
          * 
@@ -205,8 +203,7 @@ public final class CustomPagesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID where the custom pages should be
-         * updated. Either `zone_id` or `account_id` must be provided.
+         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
          * 
          * @return builder
          * 
@@ -217,8 +214,7 @@ public final class CustomPagesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID where the custom pages should be
-         * updated. Either `zone_id` or `account_id` must be provided.
+         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
          * 
          * @return builder
          * 

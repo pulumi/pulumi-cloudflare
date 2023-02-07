@@ -12,62 +12,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CustomSslCustomSslOptions {
     /**
-     * @return Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
+     * @return Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
      * 
      */
     private @Nullable String bundleMethod;
     /**
-     * @return Certificate certificate and the intermediate(s)
+     * @return Certificate certificate and the intermediate(s).
      * 
      */
     private @Nullable String certificate;
     /**
-     * @return Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highest_security`.
+     * @return Specifies the region where your private key can be held locally. Available values: `us`, `eu`, `highest_security`.
      * 
      */
     private @Nullable String geoRestrictions;
     /**
-     * @return Certificate&#39;s private key
+     * @return Certificate&#39;s private key.
      * 
      */
     private @Nullable String privateKey;
     /**
-     * @return Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacy_custom` (default), `sni_custom`.
+     * @return Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Available values: `legacy_custom`, `sni_custom`.
      * 
      */
     private @Nullable String type;
 
     private CustomSslCustomSslOptions() {}
     /**
-     * @return Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
+     * @return Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
      * 
      */
     public Optional<String> bundleMethod() {
         return Optional.ofNullable(this.bundleMethod);
     }
     /**
-     * @return Certificate certificate and the intermediate(s)
+     * @return Certificate certificate and the intermediate(s).
      * 
      */
     public Optional<String> certificate() {
         return Optional.ofNullable(this.certificate);
     }
     /**
-     * @return Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highest_security`.
+     * @return Specifies the region where your private key can be held locally. Available values: `us`, `eu`, `highest_security`.
      * 
      */
     public Optional<String> geoRestrictions() {
         return Optional.ofNullable(this.geoRestrictions);
     }
     /**
-     * @return Certificate&#39;s private key
+     * @return Certificate&#39;s private key.
      * 
      */
     public Optional<String> privateKey() {
         return Optional.ofNullable(this.privateKey);
     }
     /**
-     * @return Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacy_custom` (default), `sni_custom`.
+     * @return Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Available values: `legacy_custom`, `sni_custom`.
      * 
      */
     public Optional<String> type() {

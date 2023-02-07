@@ -18,8 +18,8 @@ class DevicePolicyCertificatesArgs:
                  zone_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a DevicePolicyCertificates resource.
-        :param pulumi.Input[bool] enabled: True if certificate generation is enabled.
-        :param pulumi.Input[str] zone_id: The zone ID where certificate generation is allowed.
+        :param pulumi.Input[bool] enabled: `true` if certificate generation is enabled.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -28,7 +28,7 @@ class DevicePolicyCertificatesArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        True if certificate generation is enabled.
+        `true` if certificate generation is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -40,7 +40,7 @@ class DevicePolicyCertificatesArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone ID where certificate generation is allowed.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -56,8 +56,8 @@ class _DevicePolicyCertificatesState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DevicePolicyCertificates resources.
-        :param pulumi.Input[bool] enabled: True if certificate generation is enabled.
-        :param pulumi.Input[str] zone_id: The zone ID where certificate generation is allowed.
+        :param pulumi.Input[bool] enabled: `true` if certificate generation is enabled.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -68,7 +68,7 @@ class _DevicePolicyCertificatesState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        True if certificate generation is enabled.
+        `true` if certificate generation is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -80,7 +80,7 @@ class _DevicePolicyCertificatesState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone ID where certificate generation is allowed.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -98,7 +98,9 @@ class DevicePolicyCertificates(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare device policy certificates resource. Device policy certificate resources enable client device certificate generation.
+        Provides a Cloudflare device policy certificates resource. Device
+        policy certificate resources enable client device certificate
+        generation.
 
         ## Example Usage
 
@@ -108,21 +110,19 @@ class DevicePolicyCertificates(pulumi.CustomResource):
 
         example = cloudflare.DevicePolicyCertificates("example",
             enabled=True,
-            zone_id="1d5fdc9e88c8a8c4518b068cd94331fe")
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
         ## Import
 
-        Device policy certificate settings can be imported using the zone ID.
-
         ```sh
-         $ pulumi import cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates example cb029e245cfdd66dc8d2e570d5dd3322
+         $ pulumi import cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates example <zone_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: True if certificate generation is enabled.
-        :param pulumi.Input[str] zone_id: The zone ID where certificate generation is allowed.
+        :param pulumi.Input[bool] enabled: `true` if certificate generation is enabled.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         ...
     @overload
@@ -131,7 +131,9 @@ class DevicePolicyCertificates(pulumi.CustomResource):
                  args: DevicePolicyCertificatesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare device policy certificates resource. Device policy certificate resources enable client device certificate generation.
+        Provides a Cloudflare device policy certificates resource. Device
+        policy certificate resources enable client device certificate
+        generation.
 
         ## Example Usage
 
@@ -141,15 +143,13 @@ class DevicePolicyCertificates(pulumi.CustomResource):
 
         example = cloudflare.DevicePolicyCertificates("example",
             enabled=True,
-            zone_id="1d5fdc9e88c8a8c4518b068cd94331fe")
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
         ## Import
 
-        Device policy certificate settings can be imported using the zone ID.
-
         ```sh
-         $ pulumi import cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates example cb029e245cfdd66dc8d2e570d5dd3322
+         $ pulumi import cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates example <zone_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -203,8 +203,8 @@ class DevicePolicyCertificates(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: True if certificate generation is enabled.
-        :param pulumi.Input[str] zone_id: The zone ID where certificate generation is allowed.
+        :param pulumi.Input[bool] enabled: `true` if certificate generation is enabled.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -218,7 +218,7 @@ class DevicePolicyCertificates(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
         """
-        True if certificate generation is enabled.
+        `true` if certificate generation is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -226,7 +226,7 @@ class DevicePolicyCertificates(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone ID where certificate generation is allowed.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 

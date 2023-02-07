@@ -11,7 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Load Balancer pool resource. This provides a pool of origins that can be used by a Cloudflare Load Balancer. Note that the load balancing feature must be enabled in your Cloudflare account before you can use this resource.
+// Provides a Cloudflare Load Balancer pool resource. This provides a
+// pool of origins that can be used by a Cloudflare Load Balancer.
 //
 // ## Example Usage
 //
@@ -27,7 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewLoadBalancerPool(ctx, "foo", &cloudflare.LoadBalancerPoolArgs{
+//			_, err := cloudflare.NewLoadBalancerPool(ctx, "example", &cloudflare.LoadBalancerPoolArgs{
+//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Description: pulumi.String("example load balancer pool"),
 //				Enabled:     pulumi.Bool(false),
 //				Latitude:    pulumi.Float64(55),
@@ -95,27 +97,27 @@ type LoadBalancerPool struct {
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// Free text description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+	// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+	// The latitude this pool is physically located at; used for proximity steering.
 	Latitude pulumi.Float64PtrOutput `pulumi:"latitude"`
 	// Setting for controlling load shedding for this pool.
 	LoadSheddings LoadBalancerPoolLoadSheddingArrayOutput `pulumi:"loadSheddings"`
-	// The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+	// The longitude this pool is physically located at; used for proximity steering.
 	Longitude pulumi.Float64PtrOutput `pulumi:"longitude"`
-	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
+	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
 	MinimumOrigins pulumi.IntPtrOutput `pulumi:"minimumOrigins"`
 	// The RFC3339 timestamp of when the load balancer was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// The ID of the Monitor to use for health checking origins within this pool.
 	Monitor pulumi.StringPtrOutput `pulumi:"monitor"`
-	// A human-identifiable name for the origin.
+	// A short name (tag) for the pool.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail pulumi.StringPtrOutput `pulumi:"notificationEmail"`
 	// Set an origin steering policy to control origin selection within a pool.
 	OriginSteerings LoadBalancerPoolOriginSteeringArrayOutput `pulumi:"originSteerings"`
-	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
+	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
 	Origins LoadBalancerPoolOriginArrayOutput `pulumi:"origins"`
 }
 
@@ -162,27 +164,27 @@ type loadBalancerPoolState struct {
 	CreatedOn *string `pulumi:"createdOn"`
 	// Free text description.
 	Description *string `pulumi:"description"`
-	// Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+	// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
 	Enabled *bool `pulumi:"enabled"`
-	// The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+	// The latitude this pool is physically located at; used for proximity steering.
 	Latitude *float64 `pulumi:"latitude"`
 	// Setting for controlling load shedding for this pool.
 	LoadSheddings []LoadBalancerPoolLoadShedding `pulumi:"loadSheddings"`
-	// The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+	// The longitude this pool is physically located at; used for proximity steering.
 	Longitude *float64 `pulumi:"longitude"`
-	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
+	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
 	MinimumOrigins *int `pulumi:"minimumOrigins"`
 	// The RFC3339 timestamp of when the load balancer was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// The ID of the Monitor to use for health checking origins within this pool.
 	Monitor *string `pulumi:"monitor"`
-	// A human-identifiable name for the origin.
+	// A short name (tag) for the pool.
 	Name *string `pulumi:"name"`
 	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail *string `pulumi:"notificationEmail"`
 	// Set an origin steering policy to control origin selection within a pool.
 	OriginSteerings []LoadBalancerPoolOriginSteering `pulumi:"originSteerings"`
-	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
+	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
 	Origins []LoadBalancerPoolOrigin `pulumi:"origins"`
 }
 
@@ -195,27 +197,27 @@ type LoadBalancerPoolState struct {
 	CreatedOn pulumi.StringPtrInput
 	// Free text description.
 	Description pulumi.StringPtrInput
-	// Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+	// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
 	Enabled pulumi.BoolPtrInput
-	// The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+	// The latitude this pool is physically located at; used for proximity steering.
 	Latitude pulumi.Float64PtrInput
 	// Setting for controlling load shedding for this pool.
 	LoadSheddings LoadBalancerPoolLoadSheddingArrayInput
-	// The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+	// The longitude this pool is physically located at; used for proximity steering.
 	Longitude pulumi.Float64PtrInput
-	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
+	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
 	MinimumOrigins pulumi.IntPtrInput
 	// The RFC3339 timestamp of when the load balancer was last modified.
 	ModifiedOn pulumi.StringPtrInput
 	// The ID of the Monitor to use for health checking origins within this pool.
 	Monitor pulumi.StringPtrInput
-	// A human-identifiable name for the origin.
+	// A short name (tag) for the pool.
 	Name pulumi.StringPtrInput
 	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail pulumi.StringPtrInput
 	// Set an origin steering policy to control origin selection within a pool.
 	OriginSteerings LoadBalancerPoolOriginSteeringArrayInput
-	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
+	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
 	Origins LoadBalancerPoolOriginArrayInput
 }
 
@@ -230,25 +232,25 @@ type loadBalancerPoolArgs struct {
 	CheckRegions []string `pulumi:"checkRegions"`
 	// Free text description.
 	Description *string `pulumi:"description"`
-	// Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+	// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
 	Enabled *bool `pulumi:"enabled"`
-	// The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+	// The latitude this pool is physically located at; used for proximity steering.
 	Latitude *float64 `pulumi:"latitude"`
 	// Setting for controlling load shedding for this pool.
 	LoadSheddings []LoadBalancerPoolLoadShedding `pulumi:"loadSheddings"`
-	// The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+	// The longitude this pool is physically located at; used for proximity steering.
 	Longitude *float64 `pulumi:"longitude"`
-	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
+	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
 	MinimumOrigins *int `pulumi:"minimumOrigins"`
 	// The ID of the Monitor to use for health checking origins within this pool.
 	Monitor *string `pulumi:"monitor"`
-	// A human-identifiable name for the origin.
+	// A short name (tag) for the pool.
 	Name string `pulumi:"name"`
 	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail *string `pulumi:"notificationEmail"`
 	// Set an origin steering policy to control origin selection within a pool.
 	OriginSteerings []LoadBalancerPoolOriginSteering `pulumi:"originSteerings"`
-	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
+	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
 	Origins []LoadBalancerPoolOrigin `pulumi:"origins"`
 }
 
@@ -260,25 +262,25 @@ type LoadBalancerPoolArgs struct {
 	CheckRegions pulumi.StringArrayInput
 	// Free text description.
 	Description pulumi.StringPtrInput
-	// Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+	// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
 	Enabled pulumi.BoolPtrInput
-	// The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+	// The latitude this pool is physically located at; used for proximity steering.
 	Latitude pulumi.Float64PtrInput
 	// Setting for controlling load shedding for this pool.
 	LoadSheddings LoadBalancerPoolLoadSheddingArrayInput
-	// The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+	// The longitude this pool is physically located at; used for proximity steering.
 	Longitude pulumi.Float64PtrInput
-	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
+	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
 	MinimumOrigins pulumi.IntPtrInput
 	// The ID of the Monitor to use for health checking origins within this pool.
 	Monitor pulumi.StringPtrInput
-	// A human-identifiable name for the origin.
+	// A short name (tag) for the pool.
 	Name pulumi.StringInput
 	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail pulumi.StringPtrInput
 	// Set an origin steering policy to control origin selection within a pool.
 	OriginSteerings LoadBalancerPoolOriginSteeringArrayInput
-	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
+	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
 	Origins LoadBalancerPoolOriginArrayInput
 }
 
@@ -389,12 +391,12 @@ func (o LoadBalancerPoolOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
 func (o LoadBalancerPoolOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+// The latitude this pool is physically located at; used for proximity steering.
 func (o LoadBalancerPoolOutput) Latitude() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.Float64PtrOutput { return v.Latitude }).(pulumi.Float64PtrOutput)
 }
@@ -404,12 +406,12 @@ func (o LoadBalancerPoolOutput) LoadSheddings() LoadBalancerPoolLoadSheddingArra
 	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolLoadSheddingArrayOutput { return v.LoadSheddings }).(LoadBalancerPoolLoadSheddingArrayOutput)
 }
 
-// The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+// The longitude this pool is physically located at; used for proximity steering.
 func (o LoadBalancerPoolOutput) Longitude() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.Float64PtrOutput { return v.Longitude }).(pulumi.Float64PtrOutput)
 }
 
-// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
+// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
 func (o LoadBalancerPoolOutput) MinimumOrigins() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.IntPtrOutput { return v.MinimumOrigins }).(pulumi.IntPtrOutput)
 }
@@ -424,7 +426,7 @@ func (o LoadBalancerPoolOutput) Monitor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringPtrOutput { return v.Monitor }).(pulumi.StringPtrOutput)
 }
 
-// A human-identifiable name for the origin.
+// A short name (tag) for the pool.
 func (o LoadBalancerPoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -439,7 +441,7 @@ func (o LoadBalancerPoolOutput) OriginSteerings() LoadBalancerPoolOriginSteering
 	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolOriginSteeringArrayOutput { return v.OriginSteerings }).(LoadBalancerPoolOriginSteeringArrayOutput)
 }
 
-// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
+// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
 func (o LoadBalancerPoolOutput) Origins() LoadBalancerPoolOriginArrayOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolOriginArrayOutput { return v.Origins }).(LoadBalancerPoolOriginArrayOutput)
 }

@@ -15,7 +15,9 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare device policy certificates resource. Device policy certificate resources enable client device certificate generation.
+ * Provides a Cloudflare device policy certificates resource. Device
+ * policy certificate resources enable client device certificate
+ * generation.
  * 
  * ## Example Usage
  * ```java
@@ -41,7 +43,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new DevicePolicyCertificates(&#34;example&#34;, DevicePolicyCertificatesArgs.builder()        
  *             .enabled(true)
- *             .zoneId(&#34;1d5fdc9e88c8a8c4518b068cd94331fe&#34;)
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }
@@ -50,38 +52,36 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Device policy certificate settings can be imported using the zone ID.
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates example cb029e245cfdd66dc8d2e570d5dd3322
+ *  $ pulumi import cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates example &lt;zone_id&gt;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates")
 public class DevicePolicyCertificates extends com.pulumi.resources.CustomResource {
     /**
-     * True if certificate generation is enabled.
+     * `true` if certificate generation is enabled.
      * 
      */
     @Export(name="enabled", type=Boolean.class, parameters={})
     private Output<Boolean> enabled;
 
     /**
-     * @return True if certificate generation is enabled.
+     * @return `true` if certificate generation is enabled.
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
     /**
-     * The zone ID where certificate generation is allowed.
+     * The zone identifier to target for the resource.
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The zone ID where certificate generation is allowed.
+     * @return The zone identifier to target for the resource.
      * 
      */
     public Output<String> zoneId() {

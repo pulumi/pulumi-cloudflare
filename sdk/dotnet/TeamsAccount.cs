@@ -10,7 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Teams Account resource. The Teams Account resource defines configuration for secure web gateway.
+    /// Provides a Cloudflare Teams Account resource. The Teams Account
+    /// resource defines configuration for secure web gateway.
     /// 
     /// ## Example Usage
     /// 
@@ -21,9 +22,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var main = new Cloudflare.TeamsAccount("main", new()
+    ///     var example = new Cloudflare.TeamsAccount("example", new()
     ///     {
-    ///         AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Antivirus = new Cloudflare.Inputs.TeamsAccountAntivirusArgs
     ///         {
     ///             EnabledDownloadPhase = true,
@@ -35,7 +36,7 @@ namespace Pulumi.Cloudflare
     ///             BackgroundColor = "#000000",
     ///             FooterText = "hello",
     ///             HeaderText = "hello",
-    ///             LogoPath = "https://google.com",
+    ///             LogoPath = "https://example.com/logo.jpg",
     ///         },
     ///         Fips = new Cloudflare.Inputs.TeamsAccountFipsArgs
     ///         {
@@ -77,21 +78,22 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Since a Teams account does not have a unique resource ID, configuration can be imported using the account ID.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example cb029e245cfdd66dc8d2e570d5dd3322
+    ///  $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example &lt;account_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/teamsAccount:TeamsAccount")]
     public partial class TeamsAccount : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account to which the teams location should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to enable the activity log.
+        /// </summary>
         [Output("activityLogEnabled")]
         public Output<bool?> ActivityLogEnabled { get; private set; } = null!;
 
@@ -181,11 +183,14 @@ namespace Pulumi.Cloudflare
     public sealed class TeamsAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the teams location should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Whether to enable the activity log.
+        /// </summary>
         [Input("activityLogEnabled")]
         public Input<bool>? ActivityLogEnabled { get; set; }
 
@@ -237,11 +242,14 @@ namespace Pulumi.Cloudflare
     public sealed class TeamsAccountState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the teams location should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// Whether to enable the activity log.
+        /// </summary>
         [Input("activityLogEnabled")]
         public Input<bool>? ActivityLogEnabled { get; set; }
 

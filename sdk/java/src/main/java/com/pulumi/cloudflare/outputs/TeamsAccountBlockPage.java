@@ -23,12 +23,12 @@ public final class TeamsAccountBlockPage {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Block page header text.
+     * @return Block page footer text.
      * 
      */
     private @Nullable String footerText;
     /**
-     * @return Block page footer text.
+     * @return Block page header text.
      * 
      */
     private @Nullable String headerText;
@@ -37,6 +37,16 @@ public final class TeamsAccountBlockPage {
      * 
      */
     private @Nullable String logoPath;
+    /**
+     * @return Admin email for users to contact.
+     * 
+     */
+    private @Nullable String mailtoAddress;
+    /**
+     * @return Subject line for emails created from block page.
+     * 
+     */
+    private @Nullable String mailtoSubject;
     /**
      * @return Name of block page configuration.
      * 
@@ -59,14 +69,14 @@ public final class TeamsAccountBlockPage {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Block page header text.
+     * @return Block page footer text.
      * 
      */
     public Optional<String> footerText() {
         return Optional.ofNullable(this.footerText);
     }
     /**
-     * @return Block page footer text.
+     * @return Block page header text.
      * 
      */
     public Optional<String> headerText() {
@@ -78,6 +88,20 @@ public final class TeamsAccountBlockPage {
      */
     public Optional<String> logoPath() {
         return Optional.ofNullable(this.logoPath);
+    }
+    /**
+     * @return Admin email for users to contact.
+     * 
+     */
+    public Optional<String> mailtoAddress() {
+        return Optional.ofNullable(this.mailtoAddress);
+    }
+    /**
+     * @return Subject line for emails created from block page.
+     * 
+     */
+    public Optional<String> mailtoSubject() {
+        return Optional.ofNullable(this.mailtoSubject);
     }
     /**
      * @return Name of block page configuration.
@@ -101,6 +125,8 @@ public final class TeamsAccountBlockPage {
         private @Nullable String footerText;
         private @Nullable String headerText;
         private @Nullable String logoPath;
+        private @Nullable String mailtoAddress;
+        private @Nullable String mailtoSubject;
         private @Nullable String name;
         public Builder() {}
         public Builder(TeamsAccountBlockPage defaults) {
@@ -110,6 +136,8 @@ public final class TeamsAccountBlockPage {
     	      this.footerText = defaults.footerText;
     	      this.headerText = defaults.headerText;
     	      this.logoPath = defaults.logoPath;
+    	      this.mailtoAddress = defaults.mailtoAddress;
+    	      this.mailtoSubject = defaults.mailtoSubject;
     	      this.name = defaults.name;
         }
 
@@ -139,6 +167,16 @@ public final class TeamsAccountBlockPage {
             return this;
         }
         @CustomType.Setter
+        public Builder mailtoAddress(@Nullable String mailtoAddress) {
+            this.mailtoAddress = mailtoAddress;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mailtoSubject(@Nullable String mailtoSubject) {
+            this.mailtoSubject = mailtoSubject;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
@@ -150,6 +188,8 @@ public final class TeamsAccountBlockPage {
             o.footerText = footerText;
             o.headerText = headerText;
             o.logoPath = logoPath;
+            o.mailtoAddress = mailtoAddress;
+            o.mailtoSubject = mailtoSubject;
             o.name = name;
             return o;
         }

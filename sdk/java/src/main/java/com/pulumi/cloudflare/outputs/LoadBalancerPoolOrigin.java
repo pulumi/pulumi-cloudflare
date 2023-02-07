@@ -16,17 +16,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerPoolOrigin {
     /**
-     * @return The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.
+     * @return The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
      * 
      */
     private String address;
     /**
-     * @return Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+     * @return Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return The header name.
+     * @return HTTP request headers.
      * 
      */
     private @Nullable List<LoadBalancerPoolOriginHeader> headers;
@@ -36,28 +36,28 @@ public final class LoadBalancerPoolOrigin {
      */
     private String name;
     /**
-     * @return The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Default: 1.
+     * @return The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Defaults to `1`.
      * 
      */
     private @Nullable Double weight;
 
     private LoadBalancerPoolOrigin() {}
     /**
-     * @return The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.
+     * @return The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
      * 
      */
     public String address() {
         return this.address;
     }
     /**
-     * @return Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+     * @return Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return The header name.
+     * @return HTTP request headers.
      * 
      */
     public List<LoadBalancerPoolOriginHeader> headers() {
@@ -71,7 +71,7 @@ public final class LoadBalancerPoolOrigin {
         return this.name;
     }
     /**
-     * @return The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Default: 1.
+     * @return The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Defaults to `1`.
      * 
      */
     public Optional<Double> weight() {

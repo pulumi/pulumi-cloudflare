@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class TeamsRuleRuleSettingsCheckSession {
-    /**
-     * @return Configure how fresh the session needs to be to be considered valid.
-     * 
-     */
     private String duration;
-    /**
-     * @return Enable session enforcement for this rule.
-     * 
-     */
     private Boolean enforce;
 
     private TeamsRuleRuleSettingsCheckSession() {}
-    /**
-     * @return Configure how fresh the session needs to be to be considered valid.
-     * 
-     */
     public String duration() {
         return this.duration;
     }
-    /**
-     * @return Enable session enforcement for this rule.
-     * 
-     */
     public Boolean enforce() {
         return this.enforce;
     }

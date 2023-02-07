@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class CustomSslCustomSslPriorityGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 

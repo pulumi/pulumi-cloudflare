@@ -21,8 +21,8 @@ class CustomSslArgs:
                  custom_ssl_priorities: Optional[pulumi.Input[Sequence[pulumi.Input['CustomSslCustomSslPriorityArgs']]]] = None):
         """
         The set of arguments for constructing a CustomSsl resource.
-        :param pulumi.Input[str] zone_id: The DNS zone id to the custom ssl cert should be added.
-        :param pulumi.Input['CustomSslCustomSslOptionsArgs'] custom_ssl_options: The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input['CustomSslCustomSslOptionsArgs'] custom_ssl_options: The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
         """
         pulumi.set(__self__, "zone_id", zone_id)
         if custom_ssl_options is not None:
@@ -34,7 +34,7 @@ class CustomSslArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The DNS zone id to the custom ssl cert should be added.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -46,7 +46,7 @@ class CustomSslArgs:
     @pulumi.getter(name="customSslOptions")
     def custom_ssl_options(self) -> Optional[pulumi.Input['CustomSslCustomSslOptionsArgs']]:
         """
-        The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+        The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "custom_ssl_options")
 
@@ -80,8 +80,8 @@ class _CustomSslState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CustomSsl resources.
-        :param pulumi.Input['CustomSslCustomSslOptionsArgs'] custom_ssl_options: The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
-        :param pulumi.Input[str] zone_id: The DNS zone id to the custom ssl cert should be added.
+        :param pulumi.Input['CustomSslCustomSslOptionsArgs'] custom_ssl_options: The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         if custom_ssl_options is not None:
             pulumi.set(__self__, "custom_ssl_options", custom_ssl_options)
@@ -110,7 +110,7 @@ class _CustomSslState:
     @pulumi.getter(name="customSslOptions")
     def custom_ssl_options(self) -> Optional[pulumi.Input['CustomSslCustomSslOptionsArgs']]:
         """
-        The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+        The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "custom_ssl_options")
 
@@ -203,7 +203,7 @@ class _CustomSslState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS zone id to the custom ssl cert should be added.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -222,7 +222,7 @@ class CustomSsl(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare custom ssl resource.
+        Provides a Cloudflare custom SSL resource.
 
         ## Example Usage
 
@@ -230,12 +230,7 @@ class CustomSsl(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        config = pulumi.Config()
-        cloudflare_zone_id = config.get("cloudflareZoneId")
-        if cloudflare_zone_id is None:
-            cloudflare_zone_id = "1d5fdc9e88c8a8c4518b068cd94331fe"
-        # Add a custom ssl certificate to the domain
-        foossl = cloudflare.CustomSsl("foossl",
+        example = cloudflare.CustomSsl("example",
             custom_ssl_options=cloudflare.CustomSslCustomSslOptionsArgs(
                 bundle_method="ubiquitous",
                 certificate="-----INSERT CERTIFICATE-----",
@@ -243,21 +238,19 @@ class CustomSsl(pulumi.CustomResource):
                 private_key="-----INSERT PRIVATE KEY-----",
                 type="legacy_custom",
             ),
-            zone_id=cloudflare_zone_id)
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
         ## Import
 
-        Custom SSL Certs can be imported using a composite ID formed of the zone ID and [certificate ID](https://api.cloudflare.com/#custom-ssl-for-a-zone-properties), separated by a "/" e.g.
-
         ```sh
-         $ pulumi import cloudflare:index/customSsl:CustomSsl default 1d5fdc9e88c8a8c4518b068cd94331fe/0123f0ab-9cde-45b2-80bd-4da3010f1337
+         $ pulumi import cloudflare:index/customSsl:CustomSsl example <zone_id>/<certificate_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CustomSslCustomSslOptionsArgs']] custom_ssl_options: The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
-        :param pulumi.Input[str] zone_id: The DNS zone id to the custom ssl cert should be added.
+        :param pulumi.Input[pulumi.InputType['CustomSslCustomSslOptionsArgs']] custom_ssl_options: The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         ...
     @overload
@@ -266,7 +259,7 @@ class CustomSsl(pulumi.CustomResource):
                  args: CustomSslArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare custom ssl resource.
+        Provides a Cloudflare custom SSL resource.
 
         ## Example Usage
 
@@ -274,12 +267,7 @@ class CustomSsl(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        config = pulumi.Config()
-        cloudflare_zone_id = config.get("cloudflareZoneId")
-        if cloudflare_zone_id is None:
-            cloudflare_zone_id = "1d5fdc9e88c8a8c4518b068cd94331fe"
-        # Add a custom ssl certificate to the domain
-        foossl = cloudflare.CustomSsl("foossl",
+        example = cloudflare.CustomSsl("example",
             custom_ssl_options=cloudflare.CustomSslCustomSslOptionsArgs(
                 bundle_method="ubiquitous",
                 certificate="-----INSERT CERTIFICATE-----",
@@ -287,15 +275,13 @@ class CustomSsl(pulumi.CustomResource):
                 private_key="-----INSERT PRIVATE KEY-----",
                 type="legacy_custom",
             ),
-            zone_id=cloudflare_zone_id)
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
         ## Import
 
-        Custom SSL Certs can be imported using a composite ID formed of the zone ID and [certificate ID](https://api.cloudflare.com/#custom-ssl-for-a-zone-properties), separated by a "/" e.g.
-
         ```sh
-         $ pulumi import cloudflare:index/customSsl:CustomSsl default 1d5fdc9e88c8a8c4518b068cd94331fe/0123f0ab-9cde-45b2-80bd-4da3010f1337
+         $ pulumi import cloudflare:index/customSsl:CustomSsl example <zone_id>/<certificate_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -366,8 +352,8 @@ class CustomSsl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CustomSslCustomSslOptionsArgs']] custom_ssl_options: The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
-        :param pulumi.Input[str] zone_id: The DNS zone id to the custom ssl cert should be added.
+        :param pulumi.Input[pulumi.InputType['CustomSslCustomSslOptionsArgs']] custom_ssl_options: The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -390,7 +376,7 @@ class CustomSsl(pulumi.CustomResource):
     @pulumi.getter(name="customSslOptions")
     def custom_ssl_options(self) -> pulumi.Output[Optional['outputs.CustomSslCustomSslOptions']]:
         """
-        The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+        The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "custom_ssl_options")
 
@@ -443,7 +429,7 @@ class CustomSsl(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The DNS zone id to the custom ssl cert should be added.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 

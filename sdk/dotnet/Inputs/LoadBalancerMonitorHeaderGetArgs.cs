@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _values;
 
         /// <summary>
-        /// A list of string values for the header.
+        /// A list of values for the header.
         /// </summary>
         public InputList<string> Values
         {

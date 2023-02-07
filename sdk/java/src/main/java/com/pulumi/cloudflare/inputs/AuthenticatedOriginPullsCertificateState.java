@@ -16,101 +16,149 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
     public static final AuthenticatedOriginPullsCertificateState Empty = new AuthenticatedOriginPullsCertificateState();
 
     /**
-     * The public client certificate.
+     * The public client certificate. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="certificate")
     private @Nullable Output<String> certificate;
 
     /**
-     * @return The public client certificate.
+     * @return The public client certificate. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> certificate() {
         return Optional.ofNullable(this.certificate);
     }
 
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     @Import(name="expiresOn")
     private @Nullable Output<String> expiresOn;
 
+    /**
+     * @return **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     public Optional<Output<String>> expiresOn() {
         return Optional.ofNullable(this.expiresOn);
     }
 
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     @Import(name="issuer")
     private @Nullable Output<String> issuer;
 
+    /**
+     * @return **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     public Optional<Output<String>> issuer() {
         return Optional.ofNullable(this.issuer);
     }
 
     /**
-     * The private key of the client certificate.
+     * The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="privateKey")
     private @Nullable Output<String> privateKey;
 
     /**
-     * @return The private key of the client certificate.
+     * @return The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> privateKey() {
         return Optional.ofNullable(this.privateKey);
     }
 
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     @Import(name="serialNumber")
     private @Nullable Output<String> serialNumber;
 
+    /**
+     * @return **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     public Optional<Output<String>> serialNumber() {
         return Optional.ofNullable(this.serialNumber);
     }
 
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     @Import(name="signature")
     private @Nullable Output<String> signature;
 
+    /**
+     * @return **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     public Optional<Output<String>> signature() {
         return Optional.ofNullable(this.signature);
     }
 
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
 
     /**
-     * The form of Authenticated Origin Pulls to upload the certificate to.
+     * The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The form of Authenticated Origin Pulls to upload the certificate to.
+     * @return The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     @Import(name="uploadedOn")
     private @Nullable Output<String> uploadedOn;
 
+    /**
+     * @return **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     public Optional<Output<String>> uploadedOn() {
         return Optional.ofNullable(this.uploadedOn);
     }
 
     /**
-     * The zone ID to upload the certificate to.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone ID to upload the certificate to.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -151,7 +199,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param certificate The public client certificate.
+         * @param certificate The public client certificate. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -162,7 +210,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param certificate The public client certificate.
+         * @param certificate The public client certificate. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -171,26 +219,50 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
             return certificate(Output.of(certificate));
         }
 
+        /**
+         * @param expiresOn **Modifying this attribute will force creation of a new resource.**
+         * 
+         * @return builder
+         * 
+         */
         public Builder expiresOn(@Nullable Output<String> expiresOn) {
             $.expiresOn = expiresOn;
             return this;
         }
 
+        /**
+         * @param expiresOn **Modifying this attribute will force creation of a new resource.**
+         * 
+         * @return builder
+         * 
+         */
         public Builder expiresOn(String expiresOn) {
             return expiresOn(Output.of(expiresOn));
         }
 
+        /**
+         * @param issuer **Modifying this attribute will force creation of a new resource.**
+         * 
+         * @return builder
+         * 
+         */
         public Builder issuer(@Nullable Output<String> issuer) {
             $.issuer = issuer;
             return this;
         }
 
+        /**
+         * @param issuer **Modifying this attribute will force creation of a new resource.**
+         * 
+         * @return builder
+         * 
+         */
         public Builder issuer(String issuer) {
             return issuer(Output.of(issuer));
         }
 
         /**
-         * @param privateKey The private key of the client certificate.
+         * @param privateKey The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -201,7 +273,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param privateKey The private key of the client certificate.
+         * @param privateKey The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -210,35 +282,71 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
             return privateKey(Output.of(privateKey));
         }
 
+        /**
+         * @param serialNumber **Modifying this attribute will force creation of a new resource.**
+         * 
+         * @return builder
+         * 
+         */
         public Builder serialNumber(@Nullable Output<String> serialNumber) {
             $.serialNumber = serialNumber;
             return this;
         }
 
+        /**
+         * @param serialNumber **Modifying this attribute will force creation of a new resource.**
+         * 
+         * @return builder
+         * 
+         */
         public Builder serialNumber(String serialNumber) {
             return serialNumber(Output.of(serialNumber));
         }
 
+        /**
+         * @param signature **Modifying this attribute will force creation of a new resource.**
+         * 
+         * @return builder
+         * 
+         */
         public Builder signature(@Nullable Output<String> signature) {
             $.signature = signature;
             return this;
         }
 
+        /**
+         * @param signature **Modifying this attribute will force creation of a new resource.**
+         * 
+         * @return builder
+         * 
+         */
         public Builder signature(String signature) {
             return signature(Output.of(signature));
         }
 
+        /**
+         * @param status **Modifying this attribute will force creation of a new resource.**
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status **Modifying this attribute will force creation of a new resource.**
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }
 
         /**
-         * @param type The form of Authenticated Origin Pulls to upload the certificate to.
+         * @param type The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -249,7 +357,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param type The form of Authenticated Origin Pulls to upload the certificate to.
+         * @param type The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -258,17 +366,29 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
             return type(Output.of(type));
         }
 
+        /**
+         * @param uploadedOn **Modifying this attribute will force creation of a new resource.**
+         * 
+         * @return builder
+         * 
+         */
         public Builder uploadedOn(@Nullable Output<String> uploadedOn) {
             $.uploadedOn = uploadedOn;
             return this;
         }
 
+        /**
+         * @param uploadedOn **Modifying this attribute will force creation of a new resource.**
+         * 
+         * @return builder
+         * 
+         */
         public Builder uploadedOn(String uploadedOn) {
             return uploadedOn(Output.of(uploadedOn));
         }
 
         /**
-         * @param zoneId The zone ID to upload the certificate to.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -279,7 +399,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param zoneId The zone ID to upload the certificate to.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

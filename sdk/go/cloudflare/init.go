@@ -70,6 +70,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomPages{}
 	case "cloudflare:index/customSsl:CustomSsl":
 		r = &CustomSsl{}
+	case "cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks":
+		r = &DeviceManagedNetworks{}
 	case "cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates":
 		r = &DevicePolicyCertificates{}
 	case "cloudflare:index/devicePostureIntegration:DevicePostureIntegration":
@@ -355,6 +357,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/customSsl",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/deviceManagedNetworks",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

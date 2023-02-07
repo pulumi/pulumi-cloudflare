@@ -17,8 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource, that manages Cloudflare static routes for Magic Transit or Magic WAN.
- * Static routes are used to route traffic through GRE tunnels.
+ * Provides a resource, that manages Cloudflare static routes for Magic
+ * Transit or Magic WAN. Static routes are used to route traffic
+ * through GRE tunnels.
  * 
  * ## Example Usage
  * ```java
@@ -43,7 +44,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new StaticRoute(&#34;example&#34;, StaticRouteArgs.builder()        
- *             .accountId(&#34;c4a7362d577a6c3019a474fd6f485821&#34;)
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .coloNames(&#34;den01&#34;)
  *             .coloRegions(&#34;APAC&#34;)
  *             .description(&#34;New route for new prefix 192.0.2.0/24&#34;)
@@ -59,52 +60,50 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * An existing static route can be imported using the account ID and static route ID
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/staticRoute:StaticRoute example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
+ *  $ pulumi import cloudflare:index/staticRoute:StaticRoute example &lt;account_id&gt;/&lt;static_route_id&gt;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/staticRoute:StaticRoute")
 public class StaticRoute extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the account where the static route is being created.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The ID of the account where the static route is being created.
+     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
     /**
-     * Optional list of Cloudflare colocation names for this static route.
+     * List of Cloudflare colocation regions for this static route.
      * 
      */
     @Export(name="coloNames", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> coloNames;
 
     /**
-     * @return Optional list of Cloudflare colocation names for this static route.
+     * @return List of Cloudflare colocation regions for this static route.
      * 
      */
     public Output<Optional<List<String>>> coloNames() {
         return Codegen.optional(this.coloNames);
     }
     /**
-     * Optional list of Cloudflare colocation regions for this static route.
+     * List of Cloudflare colocation names for this static route.
      * 
      */
     @Export(name="coloRegions", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> coloRegions;
 
     /**
-     * @return Optional list of Cloudflare colocation regions for this static route.
+     * @return List of Cloudflare colocation names for this static route.
      * 
      */
     public Output<Optional<List<String>>> coloRegions() {
@@ -167,14 +166,14 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
         return this.priority;
     }
     /**
-     * The optional weight for ECMP routes.
+     * The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="weight", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> weight;
 
     /**
-     * @return The optional weight for ECMP routes.
+     * @return The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<Optional<Integer>> weight() {

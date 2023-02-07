@@ -16,23 +16,31 @@ public final class TeamsLocationNetworkArgs extends com.pulumi.resources.Resourc
     public static final TeamsLocationNetworkArgs Empty = new TeamsLocationNetworkArgs();
 
     /**
-     * ID of the teams location.
+     * The ID of this resource.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return ID of the teams location.
+     * @return The ID of this resource.
      * 
      */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * CIDR notation representation of the network IP.
+     * 
+     */
     @Import(name="network", required=true)
     private Output<String> network;
 
+    /**
+     * @return CIDR notation representation of the network IP.
+     * 
+     */
     public Output<String> network() {
         return this.network;
     }
@@ -63,7 +71,7 @@ public final class TeamsLocationNetworkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param id ID of the teams location.
+         * @param id The ID of this resource.
          * 
          * @return builder
          * 
@@ -74,7 +82,7 @@ public final class TeamsLocationNetworkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param id ID of the teams location.
+         * @param id The ID of this resource.
          * 
          * @return builder
          * 
@@ -83,11 +91,23 @@ public final class TeamsLocationNetworkArgs extends com.pulumi.resources.Resourc
             return id(Output.of(id));
         }
 
+        /**
+         * @param network CIDR notation representation of the network IP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder network(Output<String> network) {
             $.network = network;
             return this;
         }
 
+        /**
+         * @param network CIDR notation representation of the network IP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder network(String network) {
             return network(Output.of(network));
         }

@@ -7,59 +7,17 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
+ * Use this data source to look up Zone results for use in other resources.
  *
  * ## Example Usage
  *
- * Given you have the following zones in Cloudflare.
- *
- * - example.com
- * - example.net
- * - not-example.com
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = cloudflare.getZones({
  *     filter: {
- *         name: "example.com",
- *     },
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = cloudflare.getZones({
- *     filter: {
- *         lookupType: "contains",
- *         name: "example",
- *     },
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = cloudflare.getZones({
- *     filter: {
- *         lookupType: "contains",
- *         match: "^not-",
- *         name: "example",
- *     },
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = cloudflare.getZones({
- *     filter: {
- *         accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *         accountId: "f037e56e89293a057740de681ac9abbe",
  *         status: "active",
  *     },
  * });
@@ -78,8 +36,7 @@ export function getZones(args: GetZonesArgs, opts?: pulumi.InvokeOptions): Promi
  */
 export interface GetZonesArgs {
     /**
-     * One or more values used to look up zone records. If more than one value is given all
-     * values must match in order to be included, see below for full list.
+     * One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
      */
     filter: inputs.GetZonesFilter;
 }
@@ -88,70 +45,31 @@ export interface GetZonesArgs {
  * A collection of values returned by getZones.
  */
 export interface GetZonesResult {
+    /**
+     * One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
+     */
     readonly filter: outputs.GetZonesFilter;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * A list of zone objects. Object format:
+     * A list of zone objects.
      */
     readonly zones: outputs.GetZonesZone[];
 }
 /**
- * Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
+ * Use this data source to look up Zone results for use in other resources.
  *
  * ## Example Usage
  *
- * Given you have the following zones in Cloudflare.
- *
- * - example.com
- * - example.net
- * - not-example.com
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = cloudflare.getZones({
  *     filter: {
- *         name: "example.com",
- *     },
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = cloudflare.getZones({
- *     filter: {
- *         lookupType: "contains",
- *         name: "example",
- *     },
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = cloudflare.getZones({
- *     filter: {
- *         lookupType: "contains",
- *         match: "^not-",
- *         name: "example",
- *     },
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = cloudflare.getZones({
- *     filter: {
- *         accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *         accountId: "f037e56e89293a057740de681ac9abbe",
  *         status: "active",
  *     },
  * });
@@ -166,8 +84,7 @@ export function getZonesOutput(args: GetZonesOutputArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetZonesOutputArgs {
     /**
-     * One or more values used to look up zone records. If more than one value is given all
-     * values must match in order to be included, see below for full list.
+     * One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
      */
     filter: pulumi.Input<inputs.GetZonesFilterArgs>;
 }

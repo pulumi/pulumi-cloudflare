@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RateLimitCorrelate {
     /**
-     * @return If set to &#39;nat&#39;, NAT support will be enabled for rate limiting.
+     * @return If set to &#39;nat&#39;, NAT support will be enabled for rate limiting. Available values: `nat`.
      * 
      */
     private @Nullable String by;
 
     private RateLimitCorrelate() {}
     /**
-     * @return If set to &#39;nat&#39;, NAT support will be enabled for rate limiting.
+     * @return If set to &#39;nat&#39;, NAT support will be enabled for rate limiting. Available values: `nat`.
      * 
      */
     public Optional<String> by() {

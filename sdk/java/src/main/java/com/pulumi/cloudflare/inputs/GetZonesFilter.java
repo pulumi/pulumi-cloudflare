@@ -16,14 +16,14 @@ public final class GetZonesFilter extends com.pulumi.resources.InvokeArgs {
     public static final GetZonesFilter Empty = new GetZonesFilter();
 
     /**
-     * Only search for zones in this account.
+     * The account identifier to target for the resource.
      * 
      */
     @Import(name="accountId")
     private @Nullable String accountId;
 
     /**
-     * @return Only search for zones in this account.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Optional<String> accountId() {
@@ -31,18 +31,14 @@ public final class GetZonesFilter extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The type of search to perform for the `name` value
-     * when querying the zone API. Valid values: `&#34;exact&#34;` and `&#34;contains&#34;`. Defaults
-     * to `&#34;exact&#34;`.
+     * The type of search to perform for the `name` value when querying the zone API. Available values: `contains`, `exact`. Defaults to `exact`.
      * 
      */
     @Import(name="lookupType")
     private @Nullable String lookupType;
 
     /**
-     * @return The type of search to perform for the `name` value
-     * when querying the zone API. Valid values: `&#34;exact&#34;` and `&#34;contains&#34;`. Defaults
-     * to `&#34;exact&#34;`.
+     * @return The type of search to perform for the `name` value when querying the zone API. Available values: `contains`, `exact`. Defaults to `exact`.
      * 
      */
     public Optional<String> lookupType() {
@@ -50,18 +46,14 @@ public final class GetZonesFilter extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A RE2 compatible regular expression to filter the
-     * results. This is performed client side whereas the `name` and `lookup_type`
-     * are performed on the Cloudflare server side.
+     * A RE2 compatible regular expression to filter the	results. This is performed client side whereas the `name` and `lookup_type`	are performed on the Cloudflare server side.
      * 
      */
     @Import(name="match")
     private @Nullable String match;
 
     /**
-     * @return A RE2 compatible regular expression to filter the
-     * results. This is performed client side whereas the `name` and `lookup_type`
-     * are performed on the Cloudflare server side.
+     * @return A RE2 compatible regular expression to filter the	results. This is performed client side whereas the `name` and `lookup_type`	are performed on the Cloudflare server side.
      * 
      */
     public Optional<String> match() {
@@ -84,16 +76,14 @@ public final class GetZonesFilter extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Paused status of the zone to lookup. Valid values are
-     * `true` or `false`.
+     * Paused status of the zone to lookup. Defaults to `false`.
      * 
      */
     @Import(name="paused")
     private @Nullable Boolean paused;
 
     /**
-     * @return Paused status of the zone to lookup. Valid values are
-     * `true` or `false`.
+     * @return Paused status of the zone to lookup. Defaults to `false`.
      * 
      */
     public Optional<Boolean> paused() {
@@ -101,18 +91,14 @@ public final class GetZonesFilter extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Status of the zone to lookup. Valid values: `&#34;active&#34;`,
-     * `&#34;pending&#34;`, `&#34;initializing&#34;`, `&#34;moved&#34;`, `&#34;deleted&#34;`, `&#34;deactivated&#34;` and
-     * `&#34;read only&#34;`.
+     * Status of the zone to lookup.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return Status of the zone to lookup. Valid values: `&#34;active&#34;`,
-     * `&#34;pending&#34;`, `&#34;initializing&#34;`, `&#34;moved&#34;`, `&#34;deleted&#34;`, `&#34;deactivated&#34;` and
-     * `&#34;read only&#34;`.
+     * @return Status of the zone to lookup.
      * 
      */
     public Optional<String> status() {
@@ -149,7 +135,7 @@ public final class GetZonesFilter extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId Only search for zones in this account.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -160,9 +146,7 @@ public final class GetZonesFilter extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param lookupType The type of search to perform for the `name` value
-         * when querying the zone API. Valid values: `&#34;exact&#34;` and `&#34;contains&#34;`. Defaults
-         * to `&#34;exact&#34;`.
+         * @param lookupType The type of search to perform for the `name` value when querying the zone API. Available values: `contains`, `exact`. Defaults to `exact`.
          * 
          * @return builder
          * 
@@ -173,9 +157,7 @@ public final class GetZonesFilter extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param match A RE2 compatible regular expression to filter the
-         * results. This is performed client side whereas the `name` and `lookup_type`
-         * are performed on the Cloudflare server side.
+         * @param match A RE2 compatible regular expression to filter the	results. This is performed client side whereas the `name` and `lookup_type`	are performed on the Cloudflare server side.
          * 
          * @return builder
          * 
@@ -197,8 +179,7 @@ public final class GetZonesFilter extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param paused Paused status of the zone to lookup. Valid values are
-         * `true` or `false`.
+         * @param paused Paused status of the zone to lookup. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -209,9 +190,7 @@ public final class GetZonesFilter extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status Status of the zone to lookup. Valid values: `&#34;active&#34;`,
-         * `&#34;pending&#34;`, `&#34;initializing&#34;`, `&#34;moved&#34;`, `&#34;deleted&#34;`, `&#34;deactivated&#34;` and
-         * `&#34;read only&#34;`.
+         * @param status Status of the zone to lookup.
          * 
          * @return builder
          * 

@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare device policy certificates resource. Device policy certificate resources enable client device certificate generation.
+ * Provides a Cloudflare device policy certificates resource. Device
+ * policy certificate resources enable client device certificate
+ * generation.
  *
  * ## Example Usage
  *
@@ -15,16 +17,14 @@ import * as utilities from "./utilities";
  *
  * const example = new cloudflare.DevicePolicyCertificates("example", {
  *     enabled: true,
- *     zoneId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  *
  * ## Import
  *
- * Device policy certificate settings can be imported using the zone ID.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates example cb029e245cfdd66dc8d2e570d5dd3322
+ *  $ pulumi import cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates example <zone_id>
  * ```
  */
 export class DevicePolicyCertificates extends pulumi.CustomResource {
@@ -56,11 +56,11 @@ export class DevicePolicyCertificates extends pulumi.CustomResource {
     }
 
     /**
-     * True if certificate generation is enabled.
+     * `true` if certificate generation is enabled.
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * The zone ID where certificate generation is allowed.
+     * The zone identifier to target for the resource.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -100,11 +100,11 @@ export class DevicePolicyCertificates extends pulumi.CustomResource {
  */
 export interface DevicePolicyCertificatesState {
     /**
-     * True if certificate generation is enabled.
+     * `true` if certificate generation is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The zone ID where certificate generation is allowed.
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -114,11 +114,11 @@ export interface DevicePolicyCertificatesState {
  */
 export interface DevicePolicyCertificatesArgs {
     /**
-     * True if certificate generation is enabled.
+     * `true` if certificate generation is enabled.
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * The zone ID where certificate generation is allowed.
+     * The zone identifier to target for the resource.
      */
     zoneId: pulumi.Input<string>;
 }

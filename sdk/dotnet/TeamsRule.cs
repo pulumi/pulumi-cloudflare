@@ -21,9 +21,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var rule1 = new Cloudflare.TeamsRule("rule1", new()
+    ///     var example = new Cloudflare.TeamsRule("example", new()
     ///     {
-    ///         AccountId = "d57c3de47a013c03ca7e237dd3e61d7d",
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Action = "block",
     ///         Description = "desc",
     ///         Filters = new[]
@@ -45,23 +45,21 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Teams Rules can be imported using a composite ID formed of account ID and teams rule ID.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/teamsRule:TeamsRule rule1 cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+    ///  $ pulumi import cloudflare:index/teamsRule:TeamsRule example &lt;account_id&gt;/&lt;teams_rule_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/teamsRule:TeamsRule")]
     public partial class TeamsRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account to which the teams rule should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The action executed by matched teams rule.
+        /// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -109,7 +107,7 @@ namespace Pulumi.Cloudflare
         public Output<int> Precedence { get; private set; } = null!;
 
         /// <summary>
-        /// Additional rule settings (refer to the nested schema).
+        /// Additional rule settings.
         /// </summary>
         [Output("ruleSettings")]
         public Output<Outputs.TeamsRuleRuleSettings?> RuleSettings { get; private set; } = null!;
@@ -170,13 +168,13 @@ namespace Pulumi.Cloudflare
     public sealed class TeamsRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the teams rule should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The action executed by matched teams rule.
+        /// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -230,7 +228,7 @@ namespace Pulumi.Cloudflare
         public Input<int> Precedence { get; set; } = null!;
 
         /// <summary>
-        /// Additional rule settings (refer to the nested schema).
+        /// Additional rule settings.
         /// </summary>
         [Input("ruleSettings")]
         public Input<Inputs.TeamsRuleRuleSettingsArgs>? RuleSettings { get; set; }
@@ -250,13 +248,13 @@ namespace Pulumi.Cloudflare
     public sealed class TeamsRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the teams rule should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The action executed by matched teams rule.
+        /// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -310,7 +308,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? Precedence { get; set; }
 
         /// <summary>
-        /// Additional rule settings (refer to the nested schema).
+        /// Additional rule settings.
         /// </summary>
         [Input("ruleSettings")]
         public Input<Inputs.TeamsRuleRuleSettingsGetArgs>? RuleSettings { get; set; }

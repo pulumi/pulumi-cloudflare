@@ -15,7 +15,9 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Authenticated Origin Pulls certificate resource. An uploaded client certificate is required to use Per-Zone or Per-Hostname Authenticated Origin Pulls.
+ * Provides a Cloudflare Authenticated Origin Pulls certificate
+ * resource. An uploaded client certificate is required to use Per-Zone
+ *  or Per-Hostname Authenticated Origin Pulls.
  * 
  * ## Example Usage
  * ```java
@@ -43,14 +45,14 @@ import javax.annotation.Nullable;
  *             .certificate(&#34;-----INSERT CERTIFICATE-----&#34;)
  *             .privateKey(&#34;-----INSERT PRIVATE KEY-----&#34;)
  *             .type(&#34;per-zone&#34;)
- *             .zoneId(var_.cloudflare_zone_id())
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *         var myPerHostnameAopCert = new AuthenticatedOriginPullsCertificate(&#34;myPerHostnameAopCert&#34;, AuthenticatedOriginPullsCertificateArgs.builder()        
  *             .certificate(&#34;-----INSERT CERTIFICATE-----&#34;)
  *             .privateKey(&#34;-----INSERT PRIVATE KEY-----&#34;)
  *             .type(&#34;per-hostname&#34;)
- *             .zoneId(var_.cloudflare_zone_id())
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }
@@ -59,108 +61,148 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Authenticated Origin Pull certificates can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, e.g. Import Per-Zone Authenticated Origin Pull certificate
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-zone/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
- * ```
- * 
- *  Import Per-Hostname Authenticated Origin Pull certificate
- * 
- * ```sh
- *  $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-hostname/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
+ *  $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 &lt;zone_id&gt;/&lt;certificate_type&gt;/&lt;certificate_id&gt;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate")
 public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.CustomResource {
     /**
-     * The public client certificate.
+     * The public client certificate. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="certificate", type=String.class, parameters={})
     private Output<String> certificate;
 
     /**
-     * @return The public client certificate.
+     * @return The public client certificate. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> certificate() {
         return this.certificate;
     }
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     @Export(name="expiresOn", type=String.class, parameters={})
     private Output<String> expiresOn;
 
+    /**
+     * @return **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     public Output<String> expiresOn() {
         return this.expiresOn;
     }
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     @Export(name="issuer", type=String.class, parameters={})
     private Output<String> issuer;
 
+    /**
+     * @return **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     public Output<String> issuer() {
         return this.issuer;
     }
     /**
-     * The private key of the client certificate.
+     * The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="privateKey", type=String.class, parameters={})
     private Output<String> privateKey;
 
     /**
-     * @return The private key of the client certificate.
+     * @return The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> privateKey() {
         return this.privateKey;
     }
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     @Export(name="serialNumber", type=String.class, parameters={})
     private Output<String> serialNumber;
 
+    /**
+     * @return **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     public Output<String> serialNumber() {
         return this.serialNumber;
     }
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     @Export(name="signature", type=String.class, parameters={})
     private Output<String> signature;
 
+    /**
+     * @return **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     public Output<String> signature() {
         return this.signature;
     }
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
+    /**
+     * @return **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The form of Authenticated Origin Pulls to upload the certificate to.
+     * The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
-     * @return The form of Authenticated Origin Pulls to upload the certificate to.
+     * @return The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> type() {
         return this.type;
     }
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     @Export(name="uploadedOn", type=String.class, parameters={})
     private Output<String> uploadedOn;
 
+    /**
+     * @return **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     public Output<String> uploadedOn() {
         return this.uploadedOn;
     }
     /**
-     * The zone ID to upload the certificate to.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The zone ID to upload the certificate to.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> zoneId() {

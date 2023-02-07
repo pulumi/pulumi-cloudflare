@@ -20,33 +20,44 @@ class RecordArgs:
                  type: pulumi.Input[str],
                  zone_id: pulumi.Input[str],
                  allow_overwrite: Optional[pulumi.Input[bool]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input['RecordDataArgs']] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  proxied: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Record resource.
-        :param pulumi.Input[str] name: The name of the record
-        :param pulumi.Input[str] type: The type of the record
-        :param pulumi.Input[str] zone_id: The DNS zone ID to add the record to
-        :param pulumi.Input['RecordDataArgs'] data: Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
-        :param pulumi.Input[int] priority: The priority of the record
-        :param pulumi.Input[bool] proxied: Whether the record gets Cloudflare's origin protection; defaults to `false`.
-        :param pulumi.Input[int] ttl: The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
-        :param pulumi.Input[str] value: The (string) value of the record. Either this or `data` must be specified
+        :param pulumi.Input[str] name: The name of the record. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] type: The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[bool] allow_overwrite: Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
+               update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
+               from overwriting this record. **This configuration is not recommended for most environments**
+        :param pulumi.Input[str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
+        :param pulumi.Input['RecordDataArgs'] data: Map of attributes that constitute the record value. Conflicts with `value`.
+        :param pulumi.Input[int] priority: The priority of the record.
+        :param pulumi.Input[bool] proxied: Whether the record gets Cloudflare's origin protection.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Custom tags for the DNS record.
+        :param pulumi.Input[int] ttl: The TTL of the record.
+        :param pulumi.Input[str] value: The value of the record. Conflicts with `data`.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "zone_id", zone_id)
         if allow_overwrite is not None:
             pulumi.set(__self__, "allow_overwrite", allow_overwrite)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
         if data is not None:
             pulumi.set(__self__, "data", data)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if proxied is not None:
             pulumi.set(__self__, "proxied", proxied)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
         if value is not None:
@@ -56,7 +67,7 @@ class RecordArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the record
+        The name of the record. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -68,7 +79,7 @@ class RecordArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The type of the record
+        The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "type")
 
@@ -80,7 +91,7 @@ class RecordArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The DNS zone ID to add the record to
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -91,6 +102,11 @@ class RecordArgs:
     @property
     @pulumi.getter(name="allowOverwrite")
     def allow_overwrite(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
+        update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
+        from overwriting this record. **This configuration is not recommended for most environments**
+        """
         return pulumi.get(self, "allow_overwrite")
 
     @allow_overwrite.setter
@@ -99,9 +115,21 @@ class RecordArgs:
 
     @property
     @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comments or notes about the DNS record. This field has no effect on DNS responses.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter
     def data(self) -> Optional[pulumi.Input['RecordDataArgs']]:
         """
-        Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
+        Map of attributes that constitute the record value. Conflicts with `value`.
         """
         return pulumi.get(self, "data")
 
@@ -113,7 +141,7 @@ class RecordArgs:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[int]]:
         """
-        The priority of the record
+        The priority of the record.
         """
         return pulumi.get(self, "priority")
 
@@ -125,7 +153,7 @@ class RecordArgs:
     @pulumi.getter
     def proxied(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the record gets Cloudflare's origin protection; defaults to `false`.
+        Whether the record gets Cloudflare's origin protection.
         """
         return pulumi.get(self, "proxied")
 
@@ -135,9 +163,21 @@ class RecordArgs:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Custom tags for the DNS record.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
+        The TTL of the record.
         """
         return pulumi.get(self, "ttl")
 
@@ -149,7 +189,7 @@ class RecordArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The (string) value of the record. Either this or `data` must be specified
+        The value of the record. Conflicts with `data`.
         """
         return pulumi.get(self, "value")
 
@@ -162,6 +202,7 @@ class RecordArgs:
 class _RecordState:
     def __init__(__self__, *,
                  allow_overwrite: Optional[pulumi.Input[bool]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
                  created_on: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input['RecordDataArgs']] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
@@ -171,28 +212,36 @@ class _RecordState:
                  priority: Optional[pulumi.Input[int]] = None,
                  proxiable: Optional[pulumi.Input[bool]] = None,
                  proxied: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Record resources.
-        :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the record was created
-        :param pulumi.Input['RecordDataArgs'] data: Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
-        :param pulumi.Input[str] hostname: The FQDN of the record
-        :param pulumi.Input[Mapping[str, Any]] metadata: A key-value map of string metadata Cloudflare associates with the record
-        :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the record was last modified
-        :param pulumi.Input[str] name: The name of the record
-        :param pulumi.Input[int] priority: The priority of the record
-        :param pulumi.Input[bool] proxiable: Shows whether this record can be proxied, must be true if setting `proxied=true`
-        :param pulumi.Input[bool] proxied: Whether the record gets Cloudflare's origin protection; defaults to `false`.
-        :param pulumi.Input[int] ttl: The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
-        :param pulumi.Input[str] type: The type of the record
-        :param pulumi.Input[str] value: The (string) value of the record. Either this or `data` must be specified
-        :param pulumi.Input[str] zone_id: The DNS zone ID to add the record to
+        :param pulumi.Input[bool] allow_overwrite: Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
+               update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
+               from overwriting this record. **This configuration is not recommended for most environments**
+        :param pulumi.Input[str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
+        :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the record was created.
+        :param pulumi.Input['RecordDataArgs'] data: Map of attributes that constitute the record value. Conflicts with `value`.
+        :param pulumi.Input[str] hostname: The FQDN of the record.
+        :param pulumi.Input[Mapping[str, Any]] metadata: A key-value map of string metadata Cloudflare associates with the record.
+        :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the record was last modified.
+        :param pulumi.Input[str] name: The name of the record. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[int] priority: The priority of the record.
+        :param pulumi.Input[bool] proxiable: Shows whether this record can be proxied.
+        :param pulumi.Input[bool] proxied: Whether the record gets Cloudflare's origin protection.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Custom tags for the DNS record.
+        :param pulumi.Input[int] ttl: The TTL of the record.
+        :param pulumi.Input[str] type: The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] value: The value of the record. Conflicts with `data`.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         if allow_overwrite is not None:
             pulumi.set(__self__, "allow_overwrite", allow_overwrite)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
         if data is not None:
@@ -211,6 +260,8 @@ class _RecordState:
             pulumi.set(__self__, "proxiable", proxiable)
         if proxied is not None:
             pulumi.set(__self__, "proxied", proxied)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
         if type is not None:
@@ -223,6 +274,11 @@ class _RecordState:
     @property
     @pulumi.getter(name="allowOverwrite")
     def allow_overwrite(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
+        update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
+        from overwriting this record. **This configuration is not recommended for most environments**
+        """
         return pulumi.get(self, "allow_overwrite")
 
     @allow_overwrite.setter
@@ -230,10 +286,22 @@ class _RecordState:
         pulumi.set(self, "allow_overwrite", value)
 
     @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comments or notes about the DNS record. This field has no effect on DNS responses.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
     @pulumi.getter(name="createdOn")
     def created_on(self) -> Optional[pulumi.Input[str]]:
         """
-        The RFC3339 timestamp of when the record was created
+        The RFC3339 timestamp of when the record was created.
         """
         return pulumi.get(self, "created_on")
 
@@ -245,7 +313,7 @@ class _RecordState:
     @pulumi.getter
     def data(self) -> Optional[pulumi.Input['RecordDataArgs']]:
         """
-        Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
+        Map of attributes that constitute the record value. Conflicts with `value`.
         """
         return pulumi.get(self, "data")
 
@@ -257,7 +325,7 @@ class _RecordState:
     @pulumi.getter
     def hostname(self) -> Optional[pulumi.Input[str]]:
         """
-        The FQDN of the record
+        The FQDN of the record.
         """
         return pulumi.get(self, "hostname")
 
@@ -269,7 +337,7 @@ class _RecordState:
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A key-value map of string metadata Cloudflare associates with the record
+        A key-value map of string metadata Cloudflare associates with the record.
         """
         return pulumi.get(self, "metadata")
 
@@ -281,7 +349,7 @@ class _RecordState:
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> Optional[pulumi.Input[str]]:
         """
-        The RFC3339 timestamp of when the record was last modified
+        The RFC3339 timestamp of when the record was last modified.
         """
         return pulumi.get(self, "modified_on")
 
@@ -293,7 +361,7 @@ class _RecordState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the record
+        The name of the record. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -305,7 +373,7 @@ class _RecordState:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[int]]:
         """
-        The priority of the record
+        The priority of the record.
         """
         return pulumi.get(self, "priority")
 
@@ -317,7 +385,7 @@ class _RecordState:
     @pulumi.getter
     def proxiable(self) -> Optional[pulumi.Input[bool]]:
         """
-        Shows whether this record can be proxied, must be true if setting `proxied=true`
+        Shows whether this record can be proxied.
         """
         return pulumi.get(self, "proxiable")
 
@@ -329,7 +397,7 @@ class _RecordState:
     @pulumi.getter
     def proxied(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the record gets Cloudflare's origin protection; defaults to `false`.
+        Whether the record gets Cloudflare's origin protection.
         """
         return pulumi.get(self, "proxied")
 
@@ -339,9 +407,21 @@ class _RecordState:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Custom tags for the DNS record.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
+        The TTL of the record.
         """
         return pulumi.get(self, "ttl")
 
@@ -353,7 +433,7 @@ class _RecordState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the record
+        The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "type")
 
@@ -365,7 +445,7 @@ class _RecordState:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The (string) value of the record. Either this or `data` must be specified
+        The value of the record. Conflicts with `data`.
         """
         return pulumi.get(self, "value")
 
@@ -377,7 +457,7 @@ class _RecordState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS zone ID to add the record to
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -392,10 +472,12 @@ class Record(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_overwrite: Optional[pulumi.Input[bool]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[pulumi.InputType['RecordDataArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  proxied: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
@@ -411,10 +493,10 @@ class Record(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # Add a record to the domain
-        foobar = cloudflare.Record("foobar",
+        example = cloudflare.Record("example",
             zone_id=var["cloudflare_zone_id"],
             name="example",
-            value="192.168.0.11",
+            value="192.0.2.1",
             type="A",
             ttl=3600)
         # Add a record requiring a data map
@@ -435,24 +517,25 @@ class Record(pulumi.CustomResource):
 
         ## Import
 
-        Records can be imported using a composite ID formed of zone ID and record ID, e.g.
-
         ```sh
-         $ pulumi import cloudflare:index/record:Record default ae36f999674d196762efcc5abb06b345/d41d8cd98f00b204e9800998ecf8427e
+         $ pulumi import cloudflare:index/record:Record example <zone_id>/<record_id>
         ```
-
-         where- `ae36f999674d196762efcc5abb06b345` - the zone ID - `d41d8cd98f00b204e9800998ecf8427e` - record ID as returned by [API](https://api.cloudflare.com/#dns-records-for-a-zone-list-dns-records)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RecordDataArgs']] data: Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
-        :param pulumi.Input[str] name: The name of the record
-        :param pulumi.Input[int] priority: The priority of the record
-        :param pulumi.Input[bool] proxied: Whether the record gets Cloudflare's origin protection; defaults to `false`.
-        :param pulumi.Input[int] ttl: The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
-        :param pulumi.Input[str] type: The type of the record
-        :param pulumi.Input[str] value: The (string) value of the record. Either this or `data` must be specified
-        :param pulumi.Input[str] zone_id: The DNS zone ID to add the record to
+        :param pulumi.Input[bool] allow_overwrite: Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
+               update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
+               from overwriting this record. **This configuration is not recommended for most environments**
+        :param pulumi.Input[str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
+        :param pulumi.Input[pulumi.InputType['RecordDataArgs']] data: Map of attributes that constitute the record value. Conflicts with `value`.
+        :param pulumi.Input[str] name: The name of the record. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[int] priority: The priority of the record.
+        :param pulumi.Input[bool] proxied: Whether the record gets Cloudflare's origin protection.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Custom tags for the DNS record.
+        :param pulumi.Input[int] ttl: The TTL of the record.
+        :param pulumi.Input[str] type: The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] value: The value of the record. Conflicts with `data`.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -470,10 +553,10 @@ class Record(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # Add a record to the domain
-        foobar = cloudflare.Record("foobar",
+        example = cloudflare.Record("example",
             zone_id=var["cloudflare_zone_id"],
             name="example",
-            value="192.168.0.11",
+            value="192.0.2.1",
             type="A",
             ttl=3600)
         # Add a record requiring a data map
@@ -494,13 +577,9 @@ class Record(pulumi.CustomResource):
 
         ## Import
 
-        Records can be imported using a composite ID formed of zone ID and record ID, e.g.
-
         ```sh
-         $ pulumi import cloudflare:index/record:Record default ae36f999674d196762efcc5abb06b345/d41d8cd98f00b204e9800998ecf8427e
+         $ pulumi import cloudflare:index/record:Record example <zone_id>/<record_id>
         ```
-
-         where- `ae36f999674d196762efcc5abb06b345` - the zone ID - `d41d8cd98f00b204e9800998ecf8427e` - record ID as returned by [API](https://api.cloudflare.com/#dns-records-for-a-zone-list-dns-records)
 
         :param str resource_name: The name of the resource.
         :param RecordArgs args: The arguments to use to populate this resource's properties.
@@ -518,10 +597,12 @@ class Record(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_overwrite: Optional[pulumi.Input[bool]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[pulumi.InputType['RecordDataArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  proxied: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
@@ -536,12 +617,14 @@ class Record(pulumi.CustomResource):
             __props__ = RecordArgs.__new__(RecordArgs)
 
             __props__.__dict__["allow_overwrite"] = allow_overwrite
+            __props__.__dict__["comment"] = comment
             __props__.__dict__["data"] = data
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["priority"] = priority
             __props__.__dict__["proxied"] = proxied
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["ttl"] = ttl
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
@@ -566,6 +649,7 @@ class Record(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_overwrite: Optional[pulumi.Input[bool]] = None,
+            comment: Optional[pulumi.Input[str]] = None,
             created_on: Optional[pulumi.Input[str]] = None,
             data: Optional[pulumi.Input[pulumi.InputType['RecordDataArgs']]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
@@ -575,6 +659,7 @@ class Record(pulumi.CustomResource):
             priority: Optional[pulumi.Input[int]] = None,
             proxiable: Optional[pulumi.Input[bool]] = None,
             proxied: Optional[pulumi.Input[bool]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ttl: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None,
             value: Optional[pulumi.Input[str]] = None,
@@ -586,25 +671,31 @@ class Record(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the record was created
-        :param pulumi.Input[pulumi.InputType['RecordDataArgs']] data: Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
-        :param pulumi.Input[str] hostname: The FQDN of the record
-        :param pulumi.Input[Mapping[str, Any]] metadata: A key-value map of string metadata Cloudflare associates with the record
-        :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the record was last modified
-        :param pulumi.Input[str] name: The name of the record
-        :param pulumi.Input[int] priority: The priority of the record
-        :param pulumi.Input[bool] proxiable: Shows whether this record can be proxied, must be true if setting `proxied=true`
-        :param pulumi.Input[bool] proxied: Whether the record gets Cloudflare's origin protection; defaults to `false`.
-        :param pulumi.Input[int] ttl: The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
-        :param pulumi.Input[str] type: The type of the record
-        :param pulumi.Input[str] value: The (string) value of the record. Either this or `data` must be specified
-        :param pulumi.Input[str] zone_id: The DNS zone ID to add the record to
+        :param pulumi.Input[bool] allow_overwrite: Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
+               update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
+               from overwriting this record. **This configuration is not recommended for most environments**
+        :param pulumi.Input[str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
+        :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the record was created.
+        :param pulumi.Input[pulumi.InputType['RecordDataArgs']] data: Map of attributes that constitute the record value. Conflicts with `value`.
+        :param pulumi.Input[str] hostname: The FQDN of the record.
+        :param pulumi.Input[Mapping[str, Any]] metadata: A key-value map of string metadata Cloudflare associates with the record.
+        :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the record was last modified.
+        :param pulumi.Input[str] name: The name of the record. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[int] priority: The priority of the record.
+        :param pulumi.Input[bool] proxiable: Shows whether this record can be proxied.
+        :param pulumi.Input[bool] proxied: Whether the record gets Cloudflare's origin protection.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Custom tags for the DNS record.
+        :param pulumi.Input[int] ttl: The TTL of the record.
+        :param pulumi.Input[str] type: The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] value: The value of the record. Conflicts with `data`.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _RecordState.__new__(_RecordState)
 
         __props__.__dict__["allow_overwrite"] = allow_overwrite
+        __props__.__dict__["comment"] = comment
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["data"] = data
         __props__.__dict__["hostname"] = hostname
@@ -614,6 +705,7 @@ class Record(pulumi.CustomResource):
         __props__.__dict__["priority"] = priority
         __props__.__dict__["proxiable"] = proxiable
         __props__.__dict__["proxied"] = proxied
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["ttl"] = ttl
         __props__.__dict__["type"] = type
         __props__.__dict__["value"] = value
@@ -623,13 +715,26 @@ class Record(pulumi.CustomResource):
     @property
     @pulumi.getter(name="allowOverwrite")
     def allow_overwrite(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
+        update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
+        from overwriting this record. **This configuration is not recommended for most environments**
+        """
         return pulumi.get(self, "allow_overwrite")
+
+    @property
+    @pulumi.getter
+    def comment(self) -> pulumi.Output[Optional[str]]:
+        """
+        Comments or notes about the DNS record. This field has no effect on DNS responses.
+        """
+        return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter(name="createdOn")
     def created_on(self) -> pulumi.Output[str]:
         """
-        The RFC3339 timestamp of when the record was created
+        The RFC3339 timestamp of when the record was created.
         """
         return pulumi.get(self, "created_on")
 
@@ -637,7 +742,7 @@ class Record(pulumi.CustomResource):
     @pulumi.getter
     def data(self) -> pulumi.Output[Optional['outputs.RecordData']]:
         """
-        Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
+        Map of attributes that constitute the record value. Conflicts with `value`.
         """
         return pulumi.get(self, "data")
 
@@ -645,7 +750,7 @@ class Record(pulumi.CustomResource):
     @pulumi.getter
     def hostname(self) -> pulumi.Output[str]:
         """
-        The FQDN of the record
+        The FQDN of the record.
         """
         return pulumi.get(self, "hostname")
 
@@ -653,7 +758,7 @@ class Record(pulumi.CustomResource):
     @pulumi.getter
     def metadata(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        A key-value map of string metadata Cloudflare associates with the record
+        A key-value map of string metadata Cloudflare associates with the record.
         """
         return pulumi.get(self, "metadata")
 
@@ -661,7 +766,7 @@ class Record(pulumi.CustomResource):
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> pulumi.Output[str]:
         """
-        The RFC3339 timestamp of when the record was last modified
+        The RFC3339 timestamp of when the record was last modified.
         """
         return pulumi.get(self, "modified_on")
 
@@ -669,7 +774,7 @@ class Record(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the record
+        The name of the record. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -677,7 +782,7 @@ class Record(pulumi.CustomResource):
     @pulumi.getter
     def priority(self) -> pulumi.Output[Optional[int]]:
         """
-        The priority of the record
+        The priority of the record.
         """
         return pulumi.get(self, "priority")
 
@@ -685,7 +790,7 @@ class Record(pulumi.CustomResource):
     @pulumi.getter
     def proxiable(self) -> pulumi.Output[bool]:
         """
-        Shows whether this record can be proxied, must be true if setting `proxied=true`
+        Shows whether this record can be proxied.
         """
         return pulumi.get(self, "proxiable")
 
@@ -693,15 +798,23 @@ class Record(pulumi.CustomResource):
     @pulumi.getter
     def proxied(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether the record gets Cloudflare's origin protection; defaults to `false`.
+        Whether the record gets Cloudflare's origin protection.
         """
         return pulumi.get(self, "proxied")
 
     @property
     @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Custom tags for the DNS record.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
     def ttl(self) -> pulumi.Output[int]:
         """
-        The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
+        The TTL of the record.
         """
         return pulumi.get(self, "ttl")
 
@@ -709,7 +822,7 @@ class Record(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The type of the record
+        The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "type")
 
@@ -717,7 +830,7 @@ class Record(pulumi.CustomResource):
     @pulumi.getter
     def value(self) -> pulumi.Output[str]:
         """
-        The (string) value of the record. Either this or `data` must be specified
+        The value of the record. Conflicts with `data`.
         """
         return pulumi.get(self, "value")
 
@@ -725,7 +838,7 @@ class Record(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The DNS zone ID to add the record to
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 

@@ -38,6 +38,7 @@ namespace Pulumi.Cloudflare
     ///             },
     ///         },
     ///         Name = "example.cloudflareaccess.com",
+    ///         UserSeatExpirationInactiveTime = "720h",
     ///     });
     /// 
     /// });
@@ -78,6 +79,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("name")]
         public Output<string?> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+        /// </summary>
+        [Output("userSeatExpirationInactiveTime")]
+        public Output<string?> UserSeatExpirationInactiveTime { get; private set; } = null!;
 
         /// <summary>
         /// The zone identifier to target for the resource. Conflicts with `account_id`.
@@ -164,6 +171,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+        /// </summary>
+        [Input("userSeatExpirationInactiveTime")]
+        public Input<string>? UserSeatExpirationInactiveTime { get; set; }
+
+        /// <summary>
         /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Input("zoneId")]
@@ -208,6 +221,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+        /// </summary>
+        [Input("userSeatExpirationInactiveTime")]
+        public Input<string>? UserSeatExpirationInactiveTime { get; set; }
 
         /// <summary>
         /// The zone identifier to target for the resource. Conflicts with `account_id`.

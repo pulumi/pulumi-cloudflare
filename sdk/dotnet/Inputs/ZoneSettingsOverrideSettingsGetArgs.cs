@@ -33,9 +33,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("browserCheck")]
         public Input<string>? BrowserCheck { get; set; }
 
-        /// <summary>
-        /// Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
-        /// </summary>
         [Input("cacheLevel")]
         public Input<string>? CacheLevel { get; set; }
 
@@ -44,19 +41,12 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("ciphers")]
         private InputList<string>? _ciphers;
-
-        /// <summary>
-        /// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
-        /// </summary>
         public InputList<string> Ciphers
         {
             get => _ciphers ?? (_ciphers = new InputList<string>());
             set => _ciphers = value;
         }
 
-        /// <summary>
-        /// Allowed values: "flatten_at_root" (default), "flatten_all", "flatten_none".
-        /// </summary>
         [Input("cnameFlattening")]
         public Input<string>? CnameFlattening { get; set; }
 
@@ -72,9 +62,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("filterLogsToCloudflare")]
         public Input<string>? FilterLogsToCloudflare { get; set; }
 
-        /// <summary>
-        /// Allowed values: "on", "off" (default), "custom".
-        /// </summary>
         [Input("h2Prioritization")]
         public Input<string>? H2Prioritization { get; set; }
 
@@ -87,9 +74,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("http3")]
         public Input<string>? Http3 { get; set; }
 
-        /// <summary>
-        /// Allowed values: "on", "off" (default), "open".
-        /// </summary>
         [Input("imageResizing")]
         public Input<string>? ImageResizing { get; set; }
 
@@ -105,9 +89,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("maxUpload")]
         public Input<int>? MaxUpload { get; set; }
 
-        /// <summary>
-        /// Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
-        /// </summary>
         [Input("minTlsVersion")]
         public Input<string>? MinTlsVersion { get; set; }
 
@@ -132,15 +113,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("originErrorPagePassThru")]
         public Input<string>? OriginErrorPagePassThru { get; set; }
 
-        /// <summary>
-        /// Allowed values: "1" (default on Enterprise), "2" (default)
-        /// </summary>
         [Input("originMaxHttpVersion")]
         public Input<string>? OriginMaxHttpVersion { get; set; }
 
-        /// <summary>
-        /// Allowed values: "off" (default), "lossless", "lossy".
-        /// </summary>
         [Input("polish")]
         public Input<string>? Polish { get; set; }
 
@@ -153,9 +128,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("proxyReadTimeout")]
         public Input<string>? ProxyReadTimeout { get; set; }
 
-        /// <summary>
-        /// Allowed values: "off" (default), "add_header", "overwrite_header".
-        /// </summary>
         [Input("pseudoIpv4")]
         public Input<string>? PseudoIpv4 { get; set; }
 
@@ -168,9 +140,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("securityHeader")]
         public Input<Inputs.ZoneSettingsOverrideSettingsSecurityHeaderGetArgs>? SecurityHeader { get; set; }
 
-        /// <summary>
-        /// Allowed values: "off" (Enterprise only), "essentially_off", "low", "medium" (default), "high", "under_attack".
-        /// </summary>
         [Input("securityLevel")]
         public Input<string>? SecurityLevel { get; set; }
 
@@ -180,18 +149,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("sortQueryStringForCache")]
         public Input<string>? SortQueryStringForCache { get; set; }
 
-        /// <summary>
-        /// Allowed values: "off" (default), "flexible", "full", "strict", "origin_pull".
-        /// </summary>
         [Input("ssl")]
         public Input<string>? Ssl { get; set; }
 
         [Input("tls12Only")]
         public Input<string>? Tls12Only { get; set; }
 
-        /// <summary>
-        /// Allowed values: "off" (default), "on", "zrt".
-        /// </summary>
         [Input("tls13")]
         public Input<string>? Tls13 { get; set; }
 
@@ -210,9 +173,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("waf")]
         public Input<string>? Waf { get; set; }
 
-        /// <summary>
-        /// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
-        /// </summary>
         [Input("webp")]
         public Input<string>? Webp { get; set; }
 

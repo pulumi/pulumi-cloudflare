@@ -12,41 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RateLimitMatchRequest {
-    /**
-     * @return HTTP Methods, can be a subset [&#39;POST&#39;,&#39;PUT&#39;] or all [&#39;\_ALL\_&#39;]. Default: [&#39;\_ALL\_&#39;].
-     * 
-     */
     private @Nullable List<String> methods;
-    /**
-     * @return HTTP Schemes, can be one [&#39;HTTPS&#39;], both [&#39;HTTP&#39;,&#39;HTTPS&#39;] or all [&#39;\_ALL\_&#39;]. Default: [&#39;\_ALL\_&#39;].
-     * 
-     */
     private @Nullable List<String> schemes;
-    /**
-     * @return The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use _ for all traffic to your zone. Default: &#39;_&#39;.
-     * 
-     */
     private @Nullable String urlPattern;
 
     private RateLimitMatchRequest() {}
-    /**
-     * @return HTTP Methods, can be a subset [&#39;POST&#39;,&#39;PUT&#39;] or all [&#39;\_ALL\_&#39;]. Default: [&#39;\_ALL\_&#39;].
-     * 
-     */
     public List<String> methods() {
         return this.methods == null ? List.of() : this.methods;
     }
-    /**
-     * @return HTTP Schemes, can be one [&#39;HTTPS&#39;], both [&#39;HTTP&#39;,&#39;HTTPS&#39;] or all [&#39;\_ALL\_&#39;]. Default: [&#39;\_ALL\_&#39;].
-     * 
-     */
     public List<String> schemes() {
         return this.schemes == null ? List.of() : this.schemes;
     }
-    /**
-     * @return The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use _ for all traffic to your zone. Default: &#39;_&#39;.
-     * 
-     */
     public Optional<String> urlPattern() {
         return Optional.ofNullable(this.urlPattern);
     }

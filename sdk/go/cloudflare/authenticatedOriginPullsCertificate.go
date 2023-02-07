@@ -11,7 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Authenticated Origin Pulls certificate resource. An uploaded client certificate is required to use Per-Zone or Per-Hostname Authenticated Origin Pulls.
+// Provides a Cloudflare Authenticated Origin Pulls certificate
+// resource. An uploaded client certificate is required to use Per-Zone
+//
+//	or Per-Hostname Authenticated Origin Pulls.
 //
 // ## Example Usage
 //
@@ -31,7 +34,7 @@ import (
 //				Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
 //				PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
 //				Type:        pulumi.String("per-zone"),
-//				ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
+//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //			})
 //			if err != nil {
 //				return err
@@ -40,7 +43,7 @@ import (
 //				Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
 //				PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
 //				Type:        pulumi.String("per-hostname"),
-//				ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
+//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //			})
 //			if err != nil {
 //				return err
@@ -53,37 +56,33 @@ import (
 //
 // ## Import
 //
-// Authenticated Origin Pull certificates can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, e.g. Import Per-Zone Authenticated Origin Pull certificate
-//
 // ```sh
 //
-//	$ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-zone/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
-//
-// ```
-//
-//	Import Per-Hostname Authenticated Origin Pull certificate
-//
-// ```sh
-//
-//	$ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-hostname/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
+//	$ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 <zone_id>/<certificate_type>/<certificate_id>
 //
 // ```
 type AuthenticatedOriginPullsCertificate struct {
 	pulumi.CustomResourceState
 
-	// The public client certificate.
+	// The public client certificate. **Modifying this attribute will force creation of a new resource.**
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
-	ExpiresOn   pulumi.StringOutput `pulumi:"expiresOn"`
-	Issuer      pulumi.StringOutput `pulumi:"issuer"`
-	// The private key of the client certificate.
-	PrivateKey   pulumi.StringOutput `pulumi:"privateKey"`
+	// **Modifying this attribute will force creation of a new resource.**
+	ExpiresOn pulumi.StringOutput `pulumi:"expiresOn"`
+	// **Modifying this attribute will force creation of a new resource.**
+	Issuer pulumi.StringOutput `pulumi:"issuer"`
+	// The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
+	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
+	// **Modifying this attribute will force creation of a new resource.**
 	SerialNumber pulumi.StringOutput `pulumi:"serialNumber"`
-	Signature    pulumi.StringOutput `pulumi:"signature"`
-	Status       pulumi.StringOutput `pulumi:"status"`
-	// The form of Authenticated Origin Pulls to upload the certificate to.
-	Type       pulumi.StringOutput `pulumi:"type"`
+	// **Modifying this attribute will force creation of a new resource.**
+	Signature pulumi.StringOutput `pulumi:"signature"`
+	// **Modifying this attribute will force creation of a new resource.**
+	Status pulumi.StringOutput `pulumi:"status"`
+	// The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
+	Type pulumi.StringOutput `pulumi:"type"`
+	// **Modifying this attribute will force creation of a new resource.**
 	UploadedOn pulumi.StringOutput `pulumi:"uploadedOn"`
-	// The zone ID to upload the certificate to.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -107,7 +106,7 @@ func NewAuthenticatedOriginPullsCertificate(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	if args.PrivateKey != nil {
-		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringOutput)
+		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"privateKey",
@@ -135,36 +134,48 @@ func GetAuthenticatedOriginPullsCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AuthenticatedOriginPullsCertificate resources.
 type authenticatedOriginPullsCertificateState struct {
-	// The public client certificate.
+	// The public client certificate. **Modifying this attribute will force creation of a new resource.**
 	Certificate *string `pulumi:"certificate"`
-	ExpiresOn   *string `pulumi:"expiresOn"`
-	Issuer      *string `pulumi:"issuer"`
-	// The private key of the client certificate.
-	PrivateKey   *string `pulumi:"privateKey"`
+	// **Modifying this attribute will force creation of a new resource.**
+	ExpiresOn *string `pulumi:"expiresOn"`
+	// **Modifying this attribute will force creation of a new resource.**
+	Issuer *string `pulumi:"issuer"`
+	// The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
+	PrivateKey *string `pulumi:"privateKey"`
+	// **Modifying this attribute will force creation of a new resource.**
 	SerialNumber *string `pulumi:"serialNumber"`
-	Signature    *string `pulumi:"signature"`
-	Status       *string `pulumi:"status"`
-	// The form of Authenticated Origin Pulls to upload the certificate to.
-	Type       *string `pulumi:"type"`
+	// **Modifying this attribute will force creation of a new resource.**
+	Signature *string `pulumi:"signature"`
+	// **Modifying this attribute will force creation of a new resource.**
+	Status *string `pulumi:"status"`
+	// The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
+	Type *string `pulumi:"type"`
+	// **Modifying this attribute will force creation of a new resource.**
 	UploadedOn *string `pulumi:"uploadedOn"`
-	// The zone ID to upload the certificate to.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AuthenticatedOriginPullsCertificateState struct {
-	// The public client certificate.
+	// The public client certificate. **Modifying this attribute will force creation of a new resource.**
 	Certificate pulumi.StringPtrInput
-	ExpiresOn   pulumi.StringPtrInput
-	Issuer      pulumi.StringPtrInput
-	// The private key of the client certificate.
-	PrivateKey   pulumi.StringPtrInput
+	// **Modifying this attribute will force creation of a new resource.**
+	ExpiresOn pulumi.StringPtrInput
+	// **Modifying this attribute will force creation of a new resource.**
+	Issuer pulumi.StringPtrInput
+	// The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
+	PrivateKey pulumi.StringPtrInput
+	// **Modifying this attribute will force creation of a new resource.**
 	SerialNumber pulumi.StringPtrInput
-	Signature    pulumi.StringPtrInput
-	Status       pulumi.StringPtrInput
-	// The form of Authenticated Origin Pulls to upload the certificate to.
-	Type       pulumi.StringPtrInput
+	// **Modifying this attribute will force creation of a new resource.**
+	Signature pulumi.StringPtrInput
+	// **Modifying this attribute will force creation of a new resource.**
+	Status pulumi.StringPtrInput
+	// The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
+	Type pulumi.StringPtrInput
+	// **Modifying this attribute will force creation of a new resource.**
 	UploadedOn pulumi.StringPtrInput
-	// The zone ID to upload the certificate to.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -173,25 +184,25 @@ func (AuthenticatedOriginPullsCertificateState) ElementType() reflect.Type {
 }
 
 type authenticatedOriginPullsCertificateArgs struct {
-	// The public client certificate.
+	// The public client certificate. **Modifying this attribute will force creation of a new resource.**
 	Certificate string `pulumi:"certificate"`
-	// The private key of the client certificate.
+	// The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
 	PrivateKey string `pulumi:"privateKey"`
-	// The form of Authenticated Origin Pulls to upload the certificate to.
+	// The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
 	Type string `pulumi:"type"`
-	// The zone ID to upload the certificate to.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AuthenticatedOriginPullsCertificate resource.
 type AuthenticatedOriginPullsCertificateArgs struct {
-	// The public client certificate.
+	// The public client certificate. **Modifying this attribute will force creation of a new resource.**
 	Certificate pulumi.StringInput
-	// The private key of the client certificate.
+	// The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
 	PrivateKey pulumi.StringInput
-	// The form of Authenticated Origin Pulls to upload the certificate to.
+	// The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
 	Type pulumi.StringInput
-	// The zone ID to upload the certificate to.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
 }
 
@@ -282,46 +293,52 @@ func (o AuthenticatedOriginPullsCertificateOutput) ToAuthenticatedOriginPullsCer
 	return o
 }
 
-// The public client certificate.
+// The public client certificate. **Modifying this attribute will force creation of a new resource.**
 func (o AuthenticatedOriginPullsCertificateOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.Certificate }).(pulumi.StringOutput)
 }
 
+// **Modifying this attribute will force creation of a new resource.**
 func (o AuthenticatedOriginPullsCertificateOutput) ExpiresOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.ExpiresOn }).(pulumi.StringOutput)
 }
 
+// **Modifying this attribute will force creation of a new resource.**
 func (o AuthenticatedOriginPullsCertificateOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.Issuer }).(pulumi.StringOutput)
 }
 
-// The private key of the client certificate.
+// The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
 func (o AuthenticatedOriginPullsCertificateOutput) PrivateKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.PrivateKey }).(pulumi.StringOutput)
 }
 
+// **Modifying this attribute will force creation of a new resource.**
 func (o AuthenticatedOriginPullsCertificateOutput) SerialNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.SerialNumber }).(pulumi.StringOutput)
 }
 
+// **Modifying this attribute will force creation of a new resource.**
 func (o AuthenticatedOriginPullsCertificateOutput) Signature() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.Signature }).(pulumi.StringOutput)
 }
 
+// **Modifying this attribute will force creation of a new resource.**
 func (o AuthenticatedOriginPullsCertificateOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The form of Authenticated Origin Pulls to upload the certificate to.
+// The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
 func (o AuthenticatedOriginPullsCertificateOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
+// **Modifying this attribute will force creation of a new resource.**
 func (o AuthenticatedOriginPullsCertificateOutput) UploadedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.UploadedOn }).(pulumi.StringOutput)
 }
 
-// The zone ID to upload the certificate to.
+// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o AuthenticatedOriginPullsCertificateOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

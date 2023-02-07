@@ -17,14 +17,14 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
     public static final ZoneCacheVariantsState Empty = new ZoneCacheVariantsState();
 
     /**
-     * List of strings with the MIME types of all the variants that should be served for avif
+     * List of strings with the MIME types of all the variants that should be served for avif.
      * 
      */
     @Import(name="avifs")
     private @Nullable Output<List<String>> avifs;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for avif
+     * @return List of strings with the MIME types of all the variants that should be served for avif.
      * 
      */
     public Optional<Output<List<String>>> avifs() {
@@ -32,14 +32,14 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * List of strings with the MIME types of all the variants that should be served for bmp
+     * List of strings with the MIME types of all the variants that should be served for bmp.
      * 
      */
     @Import(name="bmps")
     private @Nullable Output<List<String>> bmps;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for bmp
+     * @return List of strings with the MIME types of all the variants that should be served for bmp.
      * 
      */
     public Optional<Output<List<String>>> bmps() {
@@ -47,14 +47,14 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * List of strings with the MIME types of all the variants that should be served for gif
+     * List of strings with the MIME types of all the variants that should be served for gif.
      * 
      */
     @Import(name="gifs")
     private @Nullable Output<List<String>> gifs;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for gif
+     * @return List of strings with the MIME types of all the variants that should be served for gif.
      * 
      */
     public Optional<Output<List<String>>> gifs() {
@@ -62,14 +62,14 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * List of strings with the MIME types of all the variants that should be served for jp2
+     * List of strings with the MIME types of all the variants that should be served for jp2.
      * 
      */
     @Import(name="jp2s")
     private @Nullable Output<List<String>> jp2s;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for jp2
+     * @return List of strings with the MIME types of all the variants that should be served for jp2.
      * 
      */
     public Optional<Output<List<String>>> jp2s() {
@@ -77,14 +77,14 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * List of strings with the MIME types of all the variants that should be served for jpeg
+     * List of strings with the MIME types of all the variants that should be served for jpeg.
      * 
      */
     @Import(name="jpegs")
     private @Nullable Output<List<String>> jpegs;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for jpeg
+     * @return List of strings with the MIME types of all the variants that should be served for jpeg.
      * 
      */
     public Optional<Output<List<String>>> jpegs() {
@@ -92,14 +92,14 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * List of strings with the MIME types of all the variants that should be served for jpg2
+     * List of strings with the MIME types of all the variants that should be served for jpg2.
      * 
      */
     @Import(name="jpg2s")
     private @Nullable Output<List<String>> jpg2s;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for jpg2
+     * @return List of strings with the MIME types of all the variants that should be served for jpg2.
      * 
      */
     public Optional<Output<List<String>>> jpg2s() {
@@ -107,14 +107,14 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * List of strings with the MIME types of all the variants that should be served for jpg
+     * List of strings with the MIME types of all the variants that should be served for jpg.
      * 
      */
     @Import(name="jpgs")
     private @Nullable Output<List<String>> jpgs;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for jpg
+     * @return List of strings with the MIME types of all the variants that should be served for jpg.
      * 
      */
     public Optional<Output<List<String>>> jpgs() {
@@ -122,14 +122,14 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * List of strings with the MIME types of all the variants that should be served for png
+     * List of strings with the MIME types of all the variants that should be served for png.
      * 
      */
     @Import(name="pngs")
     private @Nullable Output<List<String>> pngs;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for png
+     * @return List of strings with the MIME types of all the variants that should be served for png.
      * 
      */
     public Optional<Output<List<String>>> pngs() {
@@ -137,14 +137,14 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * List of strings with the MIME types of all the variants that should be served for tiff
+     * List of strings with the MIME types of all the variants that should be served for tiff.
      * 
      */
     @Import(name="tiffs")
     private @Nullable Output<List<String>> tiffs;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for tiff
+     * @return List of strings with the MIME types of all the variants that should be served for tiff.
      * 
      */
     public Optional<Output<List<String>>> tiffs() {
@@ -152,14 +152,14 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * List of strings with the MIME types of all the variants that should be served for tif
+     * List of strings with the MIME types of all the variants that should be served for tif.
      * 
      */
     @Import(name="tifs")
     private @Nullable Output<List<String>> tifs;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for tif
+     * @return List of strings with the MIME types of all the variants that should be served for tif.
      * 
      */
     public Optional<Output<List<String>>> tifs() {
@@ -167,14 +167,14 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * List of strings with the MIME types of all the variants that should be served for webp
+     * List of strings with the MIME types of all the variants that should be served for webp.
      * 
      */
     @Import(name="webps")
     private @Nullable Output<List<String>> webps;
 
     /**
-     * @return List of strings with the MIME types of all the variants that should be served for webp
+     * @return List of strings with the MIME types of all the variants that should be served for webp.
      * 
      */
     public Optional<Output<List<String>>> webps() {
@@ -182,14 +182,14 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The ID of the DNS zone in which to apply the cache variants setting
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The ID of the DNS zone in which to apply the cache variants setting
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -232,7 +232,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param avifs List of strings with the MIME types of all the variants that should be served for avif
+         * @param avifs List of strings with the MIME types of all the variants that should be served for avif.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param avifs List of strings with the MIME types of all the variants that should be served for avif
+         * @param avifs List of strings with the MIME types of all the variants that should be served for avif.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param avifs List of strings with the MIME types of all the variants that should be served for avif
+         * @param avifs List of strings with the MIME types of all the variants that should be served for avif.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param bmps List of strings with the MIME types of all the variants that should be served for bmp
+         * @param bmps List of strings with the MIME types of all the variants that should be served for bmp.
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param bmps List of strings with the MIME types of all the variants that should be served for bmp
+         * @param bmps List of strings with the MIME types of all the variants that should be served for bmp.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param bmps List of strings with the MIME types of all the variants that should be served for bmp
+         * @param bmps List of strings with the MIME types of all the variants that should be served for bmp.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param gifs List of strings with the MIME types of all the variants that should be served for gif
+         * @param gifs List of strings with the MIME types of all the variants that should be served for gif.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param gifs List of strings with the MIME types of all the variants that should be served for gif
+         * @param gifs List of strings with the MIME types of all the variants that should be served for gif.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param gifs List of strings with the MIME types of all the variants that should be served for gif
+         * @param gifs List of strings with the MIME types of all the variants that should be served for gif.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param jp2s List of strings with the MIME types of all the variants that should be served for jp2
+         * @param jp2s List of strings with the MIME types of all the variants that should be served for jp2.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param jp2s List of strings with the MIME types of all the variants that should be served for jp2
+         * @param jp2s List of strings with the MIME types of all the variants that should be served for jp2.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param jp2s List of strings with the MIME types of all the variants that should be served for jp2
+         * @param jp2s List of strings with the MIME types of all the variants that should be served for jp2.
          * 
          * @return builder
          * 
@@ -356,7 +356,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param jpegs List of strings with the MIME types of all the variants that should be served for jpeg
+         * @param jpegs List of strings with the MIME types of all the variants that should be served for jpeg.
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param jpegs List of strings with the MIME types of all the variants that should be served for jpeg
+         * @param jpegs List of strings with the MIME types of all the variants that should be served for jpeg.
          * 
          * @return builder
          * 
@@ -377,7 +377,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param jpegs List of strings with the MIME types of all the variants that should be served for jpeg
+         * @param jpegs List of strings with the MIME types of all the variants that should be served for jpeg.
          * 
          * @return builder
          * 
@@ -387,7 +387,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param jpg2s List of strings with the MIME types of all the variants that should be served for jpg2
+         * @param jpg2s List of strings with the MIME types of all the variants that should be served for jpg2.
          * 
          * @return builder
          * 
@@ -398,7 +398,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param jpg2s List of strings with the MIME types of all the variants that should be served for jpg2
+         * @param jpg2s List of strings with the MIME types of all the variants that should be served for jpg2.
          * 
          * @return builder
          * 
@@ -408,7 +408,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param jpg2s List of strings with the MIME types of all the variants that should be served for jpg2
+         * @param jpg2s List of strings with the MIME types of all the variants that should be served for jpg2.
          * 
          * @return builder
          * 
@@ -418,7 +418,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param jpgs List of strings with the MIME types of all the variants that should be served for jpg
+         * @param jpgs List of strings with the MIME types of all the variants that should be served for jpg.
          * 
          * @return builder
          * 
@@ -429,7 +429,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param jpgs List of strings with the MIME types of all the variants that should be served for jpg
+         * @param jpgs List of strings with the MIME types of all the variants that should be served for jpg.
          * 
          * @return builder
          * 
@@ -439,7 +439,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param jpgs List of strings with the MIME types of all the variants that should be served for jpg
+         * @param jpgs List of strings with the MIME types of all the variants that should be served for jpg.
          * 
          * @return builder
          * 
@@ -449,7 +449,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param pngs List of strings with the MIME types of all the variants that should be served for png
+         * @param pngs List of strings with the MIME types of all the variants that should be served for png.
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param pngs List of strings with the MIME types of all the variants that should be served for png
+         * @param pngs List of strings with the MIME types of all the variants that should be served for png.
          * 
          * @return builder
          * 
@@ -470,7 +470,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param pngs List of strings with the MIME types of all the variants that should be served for png
+         * @param pngs List of strings with the MIME types of all the variants that should be served for png.
          * 
          * @return builder
          * 
@@ -480,7 +480,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tiffs List of strings with the MIME types of all the variants that should be served for tiff
+         * @param tiffs List of strings with the MIME types of all the variants that should be served for tiff.
          * 
          * @return builder
          * 
@@ -491,7 +491,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tiffs List of strings with the MIME types of all the variants that should be served for tiff
+         * @param tiffs List of strings with the MIME types of all the variants that should be served for tiff.
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tiffs List of strings with the MIME types of all the variants that should be served for tiff
+         * @param tiffs List of strings with the MIME types of all the variants that should be served for tiff.
          * 
          * @return builder
          * 
@@ -511,7 +511,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tifs List of strings with the MIME types of all the variants that should be served for tif
+         * @param tifs List of strings with the MIME types of all the variants that should be served for tif.
          * 
          * @return builder
          * 
@@ -522,7 +522,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tifs List of strings with the MIME types of all the variants that should be served for tif
+         * @param tifs List of strings with the MIME types of all the variants that should be served for tif.
          * 
          * @return builder
          * 
@@ -532,7 +532,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tifs List of strings with the MIME types of all the variants that should be served for tif
+         * @param tifs List of strings with the MIME types of all the variants that should be served for tif.
          * 
          * @return builder
          * 
@@ -542,7 +542,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param webps List of strings with the MIME types of all the variants that should be served for webp
+         * @param webps List of strings with the MIME types of all the variants that should be served for webp.
          * 
          * @return builder
          * 
@@ -553,7 +553,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param webps List of strings with the MIME types of all the variants that should be served for webp
+         * @param webps List of strings with the MIME types of all the variants that should be served for webp.
          * 
          * @return builder
          * 
@@ -563,7 +563,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param webps List of strings with the MIME types of all the variants that should be served for webp
+         * @param webps List of strings with the MIME types of all the variants that should be served for webp.
          * 
          * @return builder
          * 
@@ -573,7 +573,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param zoneId The ID of the DNS zone in which to apply the cache variants setting
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -584,7 +584,7 @@ public final class ZoneCacheVariantsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param zoneId The ID of the DNS zone in which to apply the cache variants setting
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

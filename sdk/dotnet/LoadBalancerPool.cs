@@ -10,7 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Load Balancer pool resource. This provides a pool of origins that can be used by a Cloudflare Load Balancer. Note that the load balancing feature must be enabled in your Cloudflare account before you can use this resource.
+    /// Provides a Cloudflare Load Balancer pool resource. This provides a
+    /// pool of origins that can be used by a Cloudflare Load Balancer.
     /// 
     /// ## Example Usage
     /// 
@@ -21,8 +22,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Cloudflare.LoadBalancerPool("foo", new()
+    ///     var example = new Cloudflare.LoadBalancerPool("example", new()
     ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Description = "example load balancer pool",
     ///         Enabled = false,
     ///         Latitude = 55,
@@ -116,13 +118,13 @@ namespace Pulumi.Cloudflare
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+        /// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+        /// The latitude this pool is physically located at; used for proximity steering.
         /// </summary>
         [Output("latitude")]
         public Output<double?> Latitude { get; private set; } = null!;
@@ -134,13 +136,13 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.LoadBalancerPoolLoadShedding>> LoadSheddings { get; private set; } = null!;
 
         /// <summary>
-        /// The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+        /// The longitude this pool is physically located at; used for proximity steering.
         /// </summary>
         [Output("longitude")]
         public Output<double?> Longitude { get; private set; } = null!;
 
         /// <summary>
-        /// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
+        /// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
         /// </summary>
         [Output("minimumOrigins")]
         public Output<int?> MinimumOrigins { get; private set; } = null!;
@@ -158,7 +160,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Monitor { get; private set; } = null!;
 
         /// <summary>
-        /// A human-identifiable name for the origin.
+        /// A short name (tag) for the pool.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -176,7 +178,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.LoadBalancerPoolOriginSteering>> OriginSteerings { get; private set; } = null!;
 
         /// <summary>
-        /// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
+        /// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
         /// </summary>
         [Output("origins")]
         public Output<ImmutableArray<Outputs.LoadBalancerPoolOrigin>> Origins { get; private set; } = null!;
@@ -252,13 +254,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+        /// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+        /// The latitude this pool is physically located at; used for proximity steering.
         /// </summary>
         [Input("latitude")]
         public Input<double>? Latitude { get; set; }
@@ -276,13 +278,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+        /// The longitude this pool is physically located at; used for proximity steering.
         /// </summary>
         [Input("longitude")]
         public Input<double>? Longitude { get; set; }
 
         /// <summary>
-        /// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
+        /// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
         /// </summary>
         [Input("minimumOrigins")]
         public Input<int>? MinimumOrigins { get; set; }
@@ -294,7 +296,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Monitor { get; set; }
 
         /// <summary>
-        /// A human-identifiable name for the origin.
+        /// A short name (tag) for the pool.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -321,7 +323,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.LoadBalancerPoolOriginArgs>? _origins;
 
         /// <summary>
-        /// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
+        /// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
         /// </summary>
         public InputList<Inputs.LoadBalancerPoolOriginArgs> Origins
         {
@@ -368,13 +370,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+        /// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+        /// The latitude this pool is physically located at; used for proximity steering.
         /// </summary>
         [Input("latitude")]
         public Input<double>? Latitude { get; set; }
@@ -392,13 +394,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+        /// The longitude this pool is physically located at; used for proximity steering.
         /// </summary>
         [Input("longitude")]
         public Input<double>? Longitude { get; set; }
 
         /// <summary>
-        /// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
+        /// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
         /// </summary>
         [Input("minimumOrigins")]
         public Input<int>? MinimumOrigins { get; set; }
@@ -416,7 +418,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Monitor { get; set; }
 
         /// <summary>
-        /// A human-identifiable name for the origin.
+        /// A short name (tag) for the pool.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -443,7 +445,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.LoadBalancerPoolOriginGetArgs>? _origins;
 
         /// <summary>
-        /// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
+        /// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
         /// </summary>
         public InputList<Inputs.LoadBalancerPoolOriginGetArgs> Origins
         {

@@ -39,11 +39,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicChallenge = new CustomPages(&#34;basicChallenge&#34;, CustomPagesArgs.builder()        
+ *         var example = new CustomPages(&#34;example&#34;, CustomPagesArgs.builder()        
  *             .state(&#34;customized&#34;)
  *             .type(&#34;basic_challenge&#34;)
  *             .url(&#34;https://example.com/challenge.html&#34;)
- *             .zoneId(&#34;d41d8cd98f00b204e9800998ecf8427e&#34;)
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }
@@ -52,60 +52,50 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Custom pages can be imported using a composite ID formed of- `customPageLevel` - Either `account` or `zone`. - `identifier` - The ID of the account or zone you intend to manage. - `pageType` - The value from the `type` argument. Example for a zone
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/customPages:CustomPages basic_challenge zone/d41d8cd98f00b204e9800998ecf8427e/basic_challenge
- * ```
- * 
- *  Example for an account
- * 
- * ```sh
- *  $ pulumi import cloudflare:index/customPages:CustomPages basic_challenge account/e268443e43d93dab7ebef303bbe9642f/basic_challenge
+ *  $ pulumi import cloudflare:index/customPages:CustomPages example &lt;resource_level&gt;/&lt;resource_id&gt;/&lt;custom_page_type&gt;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/customPages:CustomPages")
 public class CustomPages extends com.pulumi.resources.CustomResource {
     /**
-     * The account ID where the custom pages should be
-     * updated. Either `account_id` or `zone_id` must be provided. If
-     * `account_id` is present, it will override the zone setting.
+     * The account identifier to target for the resource. Conflicts with `zone_id`.
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account ID where the custom pages should be
-     * updated. Either `account_id` or `zone_id` must be provided. If
-     * `account_id` is present, it will override the zone setting.
+     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
      * 
      */
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
+    /**
+     * Managed state of the custom page. Available values: `default`, `customized`.
+     * 
+     */
     @Export(name="state", type=String.class, parameters={})
     private Output</* @Nullable */ String> state;
 
+    /**
+     * @return Managed state of the custom page. Available values: `default`, `customized`.
+     * 
+     */
     public Output<Optional<String>> state() {
         return Codegen.optional(this.state);
     }
     /**
-     * The type of custom page you wish to update. Must
-     * be one of `basic_challenge`, `waf_challenge`, `waf_block`,
-     * `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-     * `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
+     * The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
-     * @return The type of custom page you wish to update. Must
-     * be one of `basic_challenge`, `waf_challenge`, `waf_block`,
-     * `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-     * `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
+     * @return The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
      * 
      */
     public Output<String> type() {
@@ -126,16 +116,14 @@ public class CustomPages extends com.pulumi.resources.CustomResource {
         return this.url;
     }
     /**
-     * The zone ID where the custom pages should be
-     * updated. Either `zone_id` or `account_id` must be provided.
+     * The zone identifier to target for the resource. Conflicts with `account_id`.
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone ID where the custom pages should be
-     * updated. Either `zone_id` or `account_id` must be provided.
+     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
      * 
      */
     public Output<Optional<String>> zoneId() {

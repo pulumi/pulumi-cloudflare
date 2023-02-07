@@ -25,9 +25,9 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var devices = Cloudflare.GetDevices.Invoke(new()
+        ///     var example = Cloudflare.GetDevices.Invoke(new()
         ///     {
-        ///         AccountId = "c68973221045fe805dfb9aa520153148",
+        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
         ///     });
         /// 
         /// });
@@ -52,9 +52,9 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var devices = Cloudflare.GetDevices.Invoke(new()
+        ///     var example = Cloudflare.GetDevices.Invoke(new()
         ///     {
-        ///         AccountId = "c68973221045fe805dfb9aa520153148",
+        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
         ///     });
         /// 
         /// });
@@ -70,7 +70,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetDevicesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account for which to list the devices.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -84,7 +84,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetDevicesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account for which to list the devices.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -99,10 +99,10 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetDevicesResult
     {
-        public readonly string AccountId;
         /// <summary>
-        /// A list of device object. See below for nested attributes.
+        /// The account identifier to target for the resource.
         /// </summary>
+        public readonly string AccountId;
         public readonly ImmutableArray<Outputs.GetDevicesDeviceResult> Devices;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

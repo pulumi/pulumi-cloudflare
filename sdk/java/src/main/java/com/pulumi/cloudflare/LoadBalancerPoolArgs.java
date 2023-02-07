@@ -68,14 +68,14 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+     * Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+     * @return Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -83,14 +83,14 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+     * The latitude this pool is physically located at; used for proximity steering.
      * 
      */
     @Import(name="latitude")
     private @Nullable Output<Double> latitude;
 
     /**
-     * @return The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+     * @return The latitude this pool is physically located at; used for proximity steering.
      * 
      */
     public Optional<Output<Double>> latitude() {
@@ -113,14 +113,14 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+     * The longitude this pool is physically located at; used for proximity steering.
      * 
      */
     @Import(name="longitude")
     private @Nullable Output<Double> longitude;
 
     /**
-     * @return The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+     * @return The longitude this pool is physically located at; used for proximity steering.
      * 
      */
     public Optional<Output<Double>> longitude() {
@@ -128,14 +128,14 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
+     * The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
      * 
      */
     @Import(name="minimumOrigins")
     private @Nullable Output<Integer> minimumOrigins;
 
     /**
-     * @return The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
+     * @return The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
      * 
      */
     public Optional<Output<Integer>> minimumOrigins() {
@@ -158,14 +158,14 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A human-identifiable name for the origin.
+     * A short name (tag) for the pool.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return A human-identifiable name for the origin.
+     * @return A short name (tag) for the pool.
      * 
      */
     public Output<String> name() {
@@ -203,14 +203,14 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It&#39;s a complex value. See description below.
+     * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
      * 
      */
     @Import(name="origins", required=true)
     private Output<List<LoadBalancerPoolOriginArgs>> origins;
 
     /**
-     * @return The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It&#39;s a complex value. See description below.
+     * @return The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
      * 
      */
     public Output<List<LoadBalancerPoolOriginArgs>> origins() {
@@ -327,7 +327,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+         * @param enabled Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+         * @param enabled Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param latitude The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+         * @param latitude The latitude this pool is physically located at; used for proximity steering.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param latitude The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+         * @param latitude The latitude this pool is physically located at; used for proximity steering.
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param longitude The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+         * @param longitude The longitude this pool is physically located at; used for proximity steering.
          * 
          * @return builder
          * 
@@ -411,7 +411,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param longitude The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+         * @param longitude The longitude this pool is physically located at; used for proximity steering.
          * 
          * @return builder
          * 
@@ -421,7 +421,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minimumOrigins The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
+         * @param minimumOrigins The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
          * 
          * @return builder
          * 
@@ -432,7 +432,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minimumOrigins The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
+         * @param minimumOrigins The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
          * 
          * @return builder
          * 
@@ -463,7 +463,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name A human-identifiable name for the origin.
+         * @param name A short name (tag) for the pool.
          * 
          * @return builder
          * 
@@ -474,7 +474,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name A human-identifiable name for the origin.
+         * @param name A short name (tag) for the pool.
          * 
          * @return builder
          * 
@@ -536,7 +536,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param origins The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It&#39;s a complex value. See description below.
+         * @param origins The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
          * 
          * @return builder
          * 
@@ -547,7 +547,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param origins The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It&#39;s a complex value. See description below.
+         * @param origins The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param origins The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It&#39;s a complex value. See description below.
+         * @param origins The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
          * 
          * @return builder
          * 

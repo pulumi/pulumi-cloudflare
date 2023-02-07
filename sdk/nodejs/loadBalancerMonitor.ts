@@ -7,43 +7,20 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * If you're using Cloudflare's Load Balancing to load-balance across multiple origin servers or data centers, you configure one of these Monitors to actively check the availability of those servers over HTTP(S) or TCP.
- *
- * > **Note:** When creating a monitor, you have to pass `accountId` to the provider configuration in order to create account level resources. Otherwise, by default, it will be a user level resource.
+ * If Cloudflare's Load Balancing to load-balance across multiple
+ * origin servers or data centers, you configure one of these Monitors
+ * to actively check the availability of those servers over HTTP(S) or
+ * TCP.
  *
  * ## Example Usage
- * ### HTTP Monitor
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const httpMonitor = new cloudflare.LoadBalancerMonitor("httpMonitor", {
- *     allowInsecure: false,
- *     description: "example http load balancer",
- *     expectedBody: "alive",
- *     expectedCodes: "2xx",
- *     followRedirects: true,
- *     headers: [{
- *         header: "Host",
- *         values: ["example.com"],
- *     }],
- *     interval: 60,
- *     method: "GET",
- *     path: "/health",
- *     probeZone: "example.com",
- *     retries: 5,
- *     timeout: 7,
- *     type: "http",
- * });
- * ```
- * ### TCP Monitor
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const tcpMonitor = new cloudflare.LoadBalancerMonitor("tcpMonitor", {
+ * // TCP Monitor
+ * const example = new cloudflare.LoadBalancerMonitor("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     description: "example tcp load balancer",
  *     interval: 60,
  *     method: "connection_established",
@@ -87,7 +64,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
+     * Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
      */
     public readonly allowInsecure!: pulumi.Output<boolean | undefined>;
     /**
@@ -99,7 +76,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
+     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
      */
     public readonly expectedBody!: pulumi.Output<string | undefined>;
     /**
@@ -111,15 +88,15 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
      */
     public readonly followRedirects!: pulumi.Output<boolean | undefined>;
     /**
-     * The header name.
+     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
      */
     public readonly headers!: pulumi.Output<outputs.LoadBalancerMonitorHeader[] | undefined>;
     /**
-     * The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
+     * The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
      */
     public readonly interval!: pulumi.Output<number | undefined>;
     /**
-     * The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connectionEstablished" if `type` is "tcp", and empty otherwise.
+     * The method to use for the health check.
      */
     public readonly method!: pulumi.Output<string>;
     /**
@@ -127,11 +104,11 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
      */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
-     * The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
+     * The endpoint path to health check against.
      */
     public readonly path!: pulumi.Output<string>;
     /**
-     * The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+     * The port number to use for the healthcheck, required when creating a TCP monitor.
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
@@ -139,15 +116,15 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
      */
     public readonly probeZone!: pulumi.Output<string | undefined>;
     /**
-     * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
+     * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
      */
     public readonly retries!: pulumi.Output<number | undefined>;
     /**
-     * The timeout (in seconds) before marking the health check as failed. Default: 5.
+     * The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
      */
     public readonly timeout!: pulumi.Output<number | undefined>;
     /**
-     * The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
+     * The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udpIcmp`, `icmpPing`, `smtp`. Defaults to `http`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -215,7 +192,7 @@ export interface LoadBalancerMonitorState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
+     * Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
      */
     allowInsecure?: pulumi.Input<boolean>;
     /**
@@ -227,7 +204,7 @@ export interface LoadBalancerMonitorState {
      */
     description?: pulumi.Input<string>;
     /**
-     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
+     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
      */
     expectedBody?: pulumi.Input<string>;
     /**
@@ -239,15 +216,15 @@ export interface LoadBalancerMonitorState {
      */
     followRedirects?: pulumi.Input<boolean>;
     /**
-     * The header name.
+     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
      */
     headers?: pulumi.Input<pulumi.Input<inputs.LoadBalancerMonitorHeader>[]>;
     /**
-     * The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
+     * The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
      */
     interval?: pulumi.Input<number>;
     /**
-     * The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connectionEstablished" if `type` is "tcp", and empty otherwise.
+     * The method to use for the health check.
      */
     method?: pulumi.Input<string>;
     /**
@@ -255,11 +232,11 @@ export interface LoadBalancerMonitorState {
      */
     modifiedOn?: pulumi.Input<string>;
     /**
-     * The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
+     * The endpoint path to health check against.
      */
     path?: pulumi.Input<string>;
     /**
-     * The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+     * The port number to use for the healthcheck, required when creating a TCP monitor.
      */
     port?: pulumi.Input<number>;
     /**
@@ -267,15 +244,15 @@ export interface LoadBalancerMonitorState {
      */
     probeZone?: pulumi.Input<string>;
     /**
-     * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
+     * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
      */
     retries?: pulumi.Input<number>;
     /**
-     * The timeout (in seconds) before marking the health check as failed. Default: 5.
+     * The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
      */
     timeout?: pulumi.Input<number>;
     /**
-     * The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
+     * The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udpIcmp`, `icmpPing`, `smtp`. Defaults to `http`.
      */
     type?: pulumi.Input<string>;
 }
@@ -289,7 +266,7 @@ export interface LoadBalancerMonitorArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
+     * Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
      */
     allowInsecure?: pulumi.Input<boolean>;
     /**
@@ -297,7 +274,7 @@ export interface LoadBalancerMonitorArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
+     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
      */
     expectedBody?: pulumi.Input<string>;
     /**
@@ -309,23 +286,23 @@ export interface LoadBalancerMonitorArgs {
      */
     followRedirects?: pulumi.Input<boolean>;
     /**
-     * The header name.
+     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
      */
     headers?: pulumi.Input<pulumi.Input<inputs.LoadBalancerMonitorHeader>[]>;
     /**
-     * The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
+     * The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
      */
     interval?: pulumi.Input<number>;
     /**
-     * The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connectionEstablished" if `type` is "tcp", and empty otherwise.
+     * The method to use for the health check.
      */
     method?: pulumi.Input<string>;
     /**
-     * The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
+     * The endpoint path to health check against.
      */
     path?: pulumi.Input<string>;
     /**
-     * The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+     * The port number to use for the healthcheck, required when creating a TCP monitor.
      */
     port?: pulumi.Input<number>;
     /**
@@ -333,15 +310,15 @@ export interface LoadBalancerMonitorArgs {
      */
     probeZone?: pulumi.Input<string>;
     /**
-     * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
+     * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
      */
     retries?: pulumi.Input<number>;
     /**
-     * The timeout (in seconds) before marking the health check as failed. Default: 5.
+     * The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
      */
     timeout?: pulumi.Input<number>;
     /**
-     * The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
+     * The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udpIcmp`, `icmpPing`, `smtp`. Defaults to `http`.
      */
     type?: pulumi.Input<string>;
 }

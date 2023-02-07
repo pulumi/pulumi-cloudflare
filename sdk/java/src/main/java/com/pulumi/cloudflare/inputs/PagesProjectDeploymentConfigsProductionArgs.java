@@ -3,8 +3,10 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionServiceBindingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +19,13 @@ import javax.annotation.Nullable;
 public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PagesProjectDeploymentConfigsProductionArgs Empty = new PagesProjectDeploymentConfigsProductionArgs();
+
+    @Import(name="alwaysUseLatestCompatibilityDate")
+    private @Nullable Output<Boolean> alwaysUseLatestCompatibilityDate;
+
+    public Optional<Output<Boolean>> alwaysUseLatestCompatibilityDate() {
+        return Optional.ofNullable(this.alwaysUseLatestCompatibilityDate);
+    }
 
     @Import(name="compatibilityDate")
     private @Nullable Output<String> compatibilityDate;
@@ -53,6 +62,13 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
         return Optional.ofNullable(this.environmentVariables);
     }
 
+    @Import(name="failOpen")
+    private @Nullable Output<Boolean> failOpen;
+
+    public Optional<Output<Boolean>> failOpen() {
+        return Optional.ofNullable(this.failOpen);
+    }
+
     @Import(name="kvNamespaces")
     private @Nullable Output<Map<String,Object>> kvNamespaces;
 
@@ -67,16 +83,34 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
         return Optional.ofNullable(this.r2Buckets);
     }
 
+    @Import(name="serviceBindings")
+    private @Nullable Output<List<PagesProjectDeploymentConfigsProductionServiceBindingArgs>> serviceBindings;
+
+    public Optional<Output<List<PagesProjectDeploymentConfigsProductionServiceBindingArgs>>> serviceBindings() {
+        return Optional.ofNullable(this.serviceBindings);
+    }
+
+    @Import(name="usageModel")
+    private @Nullable Output<String> usageModel;
+
+    public Optional<Output<String>> usageModel() {
+        return Optional.ofNullable(this.usageModel);
+    }
+
     private PagesProjectDeploymentConfigsProductionArgs() {}
 
     private PagesProjectDeploymentConfigsProductionArgs(PagesProjectDeploymentConfigsProductionArgs $) {
+        this.alwaysUseLatestCompatibilityDate = $.alwaysUseLatestCompatibilityDate;
         this.compatibilityDate = $.compatibilityDate;
         this.compatibilityFlags = $.compatibilityFlags;
         this.d1Databases = $.d1Databases;
         this.durableObjectNamespaces = $.durableObjectNamespaces;
         this.environmentVariables = $.environmentVariables;
+        this.failOpen = $.failOpen;
         this.kvNamespaces = $.kvNamespaces;
         this.r2Buckets = $.r2Buckets;
+        this.serviceBindings = $.serviceBindings;
+        this.usageModel = $.usageModel;
     }
 
     public static Builder builder() {
@@ -95,6 +129,15 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
 
         public Builder(PagesProjectDeploymentConfigsProductionArgs defaults) {
             $ = new PagesProjectDeploymentConfigsProductionArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder alwaysUseLatestCompatibilityDate(@Nullable Output<Boolean> alwaysUseLatestCompatibilityDate) {
+            $.alwaysUseLatestCompatibilityDate = alwaysUseLatestCompatibilityDate;
+            return this;
+        }
+
+        public Builder alwaysUseLatestCompatibilityDate(Boolean alwaysUseLatestCompatibilityDate) {
+            return alwaysUseLatestCompatibilityDate(Output.of(alwaysUseLatestCompatibilityDate));
         }
 
         public Builder compatibilityDate(@Nullable Output<String> compatibilityDate) {
@@ -146,6 +189,15 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
             return environmentVariables(Output.of(environmentVariables));
         }
 
+        public Builder failOpen(@Nullable Output<Boolean> failOpen) {
+            $.failOpen = failOpen;
+            return this;
+        }
+
+        public Builder failOpen(Boolean failOpen) {
+            return failOpen(Output.of(failOpen));
+        }
+
         public Builder kvNamespaces(@Nullable Output<Map<String,Object>> kvNamespaces) {
             $.kvNamespaces = kvNamespaces;
             return this;
@@ -162,6 +214,28 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
 
         public Builder r2Buckets(Map<String,Object> r2Buckets) {
             return r2Buckets(Output.of(r2Buckets));
+        }
+
+        public Builder serviceBindings(@Nullable Output<List<PagesProjectDeploymentConfigsProductionServiceBindingArgs>> serviceBindings) {
+            $.serviceBindings = serviceBindings;
+            return this;
+        }
+
+        public Builder serviceBindings(List<PagesProjectDeploymentConfigsProductionServiceBindingArgs> serviceBindings) {
+            return serviceBindings(Output.of(serviceBindings));
+        }
+
+        public Builder serviceBindings(PagesProjectDeploymentConfigsProductionServiceBindingArgs... serviceBindings) {
+            return serviceBindings(List.of(serviceBindings));
+        }
+
+        public Builder usageModel(@Nullable Output<String> usageModel) {
+            $.usageModel = usageModel;
+            return this;
+        }
+
+        public Builder usageModel(String usageModel) {
+            return usageModel(Output.of(usageModel));
         }
 
         public PagesProjectDeploymentConfigsProductionArgs build() {

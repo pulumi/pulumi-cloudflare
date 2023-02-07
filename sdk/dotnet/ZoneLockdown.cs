@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows you to define one or more URLs (with wildcard matching on the domain or path) that will only permit access if the request originates from an IP address that matches a safelist of one or more IP addresses and/or IP ranges.
+    /// Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows
+    /// you to define one or more URLs (with wildcard matching on the domain
+    /// or path) that will only permit access if the request originates
+    /// from an IP address that matches a safelist of one or more IP
+    /// addresses and/or IP ranges.
     /// 
     /// ## Example Usage
     /// 
@@ -22,14 +26,14 @@ namespace Pulumi.Cloudflare
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Restrict access to these endpoints to requests from a known IP address range.
-    ///     var endpointLockdown = new Cloudflare.ZoneLockdown("endpointLockdown", new()
+    ///     var example = new Cloudflare.ZoneLockdown("example", new()
     ///     {
     ///         Configurations = new[]
     ///         {
     ///             new Cloudflare.Inputs.ZoneLockdownConfigurationArgs
     ///             {
     ///                 Target = "ip_range",
-    ///                 Value = "198.51.100.0/16",
+    ///                 Value = "192.0.2.0/24",
     ///             },
     ///         },
     ///         Description = "Restrict access to these endpoints to requests from a known IP address range",
@@ -38,7 +42,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             "api.mysite.com/some/endpoint*",
     ///         },
-    ///         ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });
@@ -46,19 +50,15 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Records can be imported using a composite ID formed of zone name and record ID, e.g.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown cloudflare_zone_lockdown d41d8cd98f00b204e9800998ecf8427e/37cb64fe4a90adb5ca3afc04f2c82a2f
+    ///  $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example &lt;zone_id&gt;/&lt;lockdown_id&gt;
     /// ```
-    /// 
-    ///  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules)
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zoneLockdown:ZoneLockdown")]
     public partial class ZoneLockdown : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
+        /// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
         /// </summary>
         [Output("configurations")]
         public Output<ImmutableArray<Outputs.ZoneLockdownConfiguration>> Configurations { get; private set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean of whether this zone lockdown is currently paused. Default: false.
+        /// Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
         /// </summary>
         [Output("paused")]
         public Output<bool?> Paused { get; private set; } = null!;
@@ -85,7 +85,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> Urls { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS zone ID to which the access rule should be added.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ZoneLockdownConfigurationArgs>? _configurations;
 
         /// <summary>
-        /// A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
+        /// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
         /// </summary>
         public InputList<Inputs.ZoneLockdownConfigurationArgs> Configurations
         {
@@ -155,7 +155,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Boolean of whether this zone lockdown is currently paused. Default: false.
+        /// Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
         /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
@@ -176,7 +176,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The DNS zone ID to which the access rule should be added.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ZoneLockdownConfigurationGetArgs>? _configurations;
 
         /// <summary>
-        /// A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
+        /// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
         /// </summary>
         public InputList<Inputs.ZoneLockdownConfigurationGetArgs> Configurations
         {
@@ -208,7 +208,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Boolean of whether this zone lockdown is currently paused. Default: false.
+        /// Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
         /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
@@ -229,7 +229,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The DNS zone ID to which the access rule should be added.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

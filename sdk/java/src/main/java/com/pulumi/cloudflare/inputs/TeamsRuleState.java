@@ -20,14 +20,14 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     public static final TeamsRuleState Empty = new TeamsRuleState();
 
     /**
-     * The account to which the teams rule should be added.
+     * The account identifier to target for the resource.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account to which the teams rule should be added.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -35,14 +35,14 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The action executed by matched teams rule.
+     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return The action executed by matched teams rule.
+     * @return The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
      * 
      */
     public Optional<Output<String>> action() {
@@ -155,14 +155,14 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Additional rule settings (refer to the nested schema).
+     * Additional rule settings.
      * 
      */
     @Import(name="ruleSettings")
     private @Nullable Output<TeamsRuleRuleSettingsArgs> ruleSettings;
 
     /**
-     * @return Additional rule settings (refer to the nested schema).
+     * @return Additional rule settings.
      * 
      */
     public Optional<Output<TeamsRuleRuleSettingsArgs>> ruleSettings() {
@@ -227,7 +227,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account to which the teams rule should be added.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account to which the teams rule should be added.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action The action executed by matched teams rule.
+         * @param action The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action The action executed by matched teams rule.
+         * @param action The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleSettings Additional rule settings (refer to the nested schema).
+         * @param ruleSettings Additional rule settings.
          * 
          * @return builder
          * 
@@ -437,7 +437,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleSettings Additional rule settings (refer to the nested schema).
+         * @param ruleSettings Additional rule settings.
          * 
          * @return builder
          * 

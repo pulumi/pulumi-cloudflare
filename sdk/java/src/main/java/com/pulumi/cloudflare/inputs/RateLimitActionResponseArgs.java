@@ -13,32 +13,16 @@ public final class RateLimitActionResponseArgs extends com.pulumi.resources.Reso
 
     public static final RateLimitActionResponseArgs Empty = new RateLimitActionResponseArgs();
 
-    /**
-     * The body to return, the content here should conform to the content_type.
-     * 
-     */
     @Import(name="body", required=true)
     private Output<String> body;
 
-    /**
-     * @return The body to return, the content here should conform to the content_type.
-     * 
-     */
     public Output<String> body() {
         return this.body;
     }
 
-    /**
-     * The content-type of the body, must be one of: &#39;text/plain&#39;, &#39;text/xml&#39;, &#39;application/json&#39;.
-     * 
-     */
     @Import(name="contentType", required=true)
     private Output<String> contentType;
 
-    /**
-     * @return The content-type of the body, must be one of: &#39;text/plain&#39;, &#39;text/xml&#39;, &#39;application/json&#39;.
-     * 
-     */
     public Output<String> contentType() {
         return this.contentType;
     }
@@ -68,44 +52,20 @@ public final class RateLimitActionResponseArgs extends com.pulumi.resources.Reso
             $ = new RateLimitActionResponseArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param body The body to return, the content here should conform to the content_type.
-         * 
-         * @return builder
-         * 
-         */
         public Builder body(Output<String> body) {
             $.body = body;
             return this;
         }
 
-        /**
-         * @param body The body to return, the content here should conform to the content_type.
-         * 
-         * @return builder
-         * 
-         */
         public Builder body(String body) {
             return body(Output.of(body));
         }
 
-        /**
-         * @param contentType The content-type of the body, must be one of: &#39;text/plain&#39;, &#39;text/xml&#39;, &#39;application/json&#39;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder contentType(Output<String> contentType) {
             $.contentType = contentType;
             return this;
         }
 
-        /**
-         * @param contentType The content-type of the body, must be one of: &#39;text/plain&#39;, &#39;text/xml&#39;, &#39;application/json&#39;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder contentType(String contentType) {
             return contentType(Output.of(contentType));
         }

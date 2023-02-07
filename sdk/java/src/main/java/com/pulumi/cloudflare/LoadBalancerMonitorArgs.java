@@ -35,14 +35,14 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Do not validate the certificate when monitor use HTTPS. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
+     * Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
      * 
      */
     @Import(name="allowInsecure")
     private @Nullable Output<Boolean> allowInsecure;
 
     /**
-     * @return Do not validate the certificate when monitor use HTTPS. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
+     * @return Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
      * 
      */
     public Optional<Output<Boolean>> allowInsecure() {
@@ -65,14 +65,14 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is &#34;http&#34; or &#34;https&#34;. Default: &#34;&#34;.
+     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
      * 
      */
     @Import(name="expectedBody")
     private @Nullable Output<String> expectedBody;
 
     /**
-     * @return A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is &#34;http&#34; or &#34;https&#34;. Default: &#34;&#34;.
+     * @return A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
      * 
      */
     public Optional<Output<String>> expectedBody() {
@@ -110,14 +110,14 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The header name.
+     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
      * 
      */
     @Import(name="headers")
     private @Nullable Output<List<LoadBalancerMonitorHeaderArgs>> headers;
 
     /**
-     * @return The header name.
+     * @return The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
      * 
      */
     public Optional<Output<List<LoadBalancerMonitorHeaderArgs>>> headers() {
@@ -125,14 +125,14 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
+     * The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
      * 
      */
     @Import(name="interval")
     private @Nullable Output<Integer> interval;
 
     /**
-     * @return The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
+     * @return The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
      * 
      */
     public Optional<Output<Integer>> interval() {
@@ -140,14 +140,14 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The method to use for the health check. Valid values are any valid HTTP verb if `type` is &#34;http&#34; or &#34;https&#34;, or `connection_established` if `type` is &#34;tcp&#34;. Default: &#34;GET&#34; if `type` is &#34;http&#34; or &#34;https&#34;, &#34;connection_established&#34; if `type` is &#34;tcp&#34;, and empty otherwise.
+     * The method to use for the health check.
      * 
      */
     @Import(name="method")
     private @Nullable Output<String> method;
 
     /**
-     * @return The method to use for the health check. Valid values are any valid HTTP verb if `type` is &#34;http&#34; or &#34;https&#34;, or `connection_established` if `type` is &#34;tcp&#34;. Default: &#34;GET&#34; if `type` is &#34;http&#34; or &#34;https&#34;, &#34;connection_established&#34; if `type` is &#34;tcp&#34;, and empty otherwise.
+     * @return The method to use for the health check.
      * 
      */
     public Optional<Output<String>> method() {
@@ -155,14 +155,14 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The endpoint path to health check against. Default: &#34;/&#34;. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
+     * The endpoint path to health check against.
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return The endpoint path to health check against. Default: &#34;/&#34;. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
+     * @return The endpoint path to health check against.
      * 
      */
     public Optional<Output<String>> path() {
@@ -170,14 +170,14 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+     * The port number to use for the healthcheck, required when creating a TCP monitor.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+     * @return The port number to use for the healthcheck, required when creating a TCP monitor.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -200,14 +200,14 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
+     * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
      * 
      */
     @Import(name="retries")
     private @Nullable Output<Integer> retries;
 
     /**
-     * @return The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
+     * @return The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
      * 
      */
     public Optional<Output<Integer>> retries() {
@@ -215,14 +215,14 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The timeout (in seconds) before marking the health check as failed. Default: 5.
+     * The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
      * 
      */
     @Import(name="timeout")
     private @Nullable Output<Integer> timeout;
 
     /**
-     * @return The timeout (in seconds) before marking the health check as failed. Default: 5.
+     * @return The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
      * 
      */
     public Optional<Output<Integer>> timeout() {
@@ -230,14 +230,14 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The protocol to use for the healthcheck. Currently supported protocols are &#39;HTTP&#39;, &#39;HTTPS&#39;, &#39;TCP&#39;, &#39;UDP-ICMP&#39;, &#39;ICMP-PING&#39;, and &#39;SMTP&#39;. Default: &#34;http&#34;.
+     * The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The protocol to use for the healthcheck. Currently supported protocols are &#39;HTTP&#39;, &#39;HTTPS&#39;, &#39;TCP&#39;, &#39;UDP-ICMP&#39;, &#39;ICMP-PING&#39;, and &#39;SMTP&#39;. Default: &#34;http&#34;.
+     * @return The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -304,7 +304,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param allowInsecure Do not validate the certificate when monitor use HTTPS. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
+         * @param allowInsecure Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param allowInsecure Do not validate the certificate when monitor use HTTPS. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
+         * @param allowInsecure Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param expectedBody A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is &#34;http&#34; or &#34;https&#34;. Default: &#34;&#34;.
+         * @param expectedBody A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param expectedBody A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is &#34;http&#34; or &#34;https&#34;. Default: &#34;&#34;.
+         * @param expectedBody A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
          * 
          * @return builder
          * 
@@ -409,7 +409,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param headers The header name.
+         * @param headers The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
          * 
          * @return builder
          * 
@@ -420,7 +420,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param headers The header name.
+         * @param headers The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
          * 
          * @return builder
          * 
@@ -430,7 +430,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param headers The header name.
+         * @param headers The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
          * 
          * @return builder
          * 
@@ -440,7 +440,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param interval The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
+         * @param interval The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
          * 
          * @return builder
          * 
@@ -451,7 +451,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param interval The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
+         * @param interval The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
          * 
          * @return builder
          * 
@@ -461,7 +461,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param method The method to use for the health check. Valid values are any valid HTTP verb if `type` is &#34;http&#34; or &#34;https&#34;, or `connection_established` if `type` is &#34;tcp&#34;. Default: &#34;GET&#34; if `type` is &#34;http&#34; or &#34;https&#34;, &#34;connection_established&#34; if `type` is &#34;tcp&#34;, and empty otherwise.
+         * @param method The method to use for the health check.
          * 
          * @return builder
          * 
@@ -472,7 +472,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param method The method to use for the health check. Valid values are any valid HTTP verb if `type` is &#34;http&#34; or &#34;https&#34;, or `connection_established` if `type` is &#34;tcp&#34;. Default: &#34;GET&#34; if `type` is &#34;http&#34; or &#34;https&#34;, &#34;connection_established&#34; if `type` is &#34;tcp&#34;, and empty otherwise.
+         * @param method The method to use for the health check.
          * 
          * @return builder
          * 
@@ -482,7 +482,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param path The endpoint path to health check against. Default: &#34;/&#34;. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
+         * @param path The endpoint path to health check against.
          * 
          * @return builder
          * 
@@ -493,7 +493,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param path The endpoint path to health check against. Default: &#34;/&#34;. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
+         * @param path The endpoint path to health check against.
          * 
          * @return builder
          * 
@@ -503,7 +503,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param port The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+         * @param port The port number to use for the healthcheck, required when creating a TCP monitor.
          * 
          * @return builder
          * 
@@ -514,7 +514,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param port The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+         * @param port The port number to use for the healthcheck, required when creating a TCP monitor.
          * 
          * @return builder
          * 
@@ -545,7 +545,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param retries The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
+         * @param retries The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
          * 
          * @return builder
          * 
@@ -556,7 +556,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param retries The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
+         * @param retries The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
          * 
          * @return builder
          * 
@@ -566,7 +566,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param timeout The timeout (in seconds) before marking the health check as failed. Default: 5.
+         * @param timeout The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
          * 
          * @return builder
          * 
@@ -577,7 +577,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param timeout The timeout (in seconds) before marking the health check as failed. Default: 5.
+         * @param timeout The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
          * 
          * @return builder
          * 
@@ -587,7 +587,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param type The protocol to use for the healthcheck. Currently supported protocols are &#39;HTTP&#39;, &#39;HTTPS&#39;, &#39;TCP&#39;, &#39;UDP-ICMP&#39;, &#39;ICMP-PING&#39;, and &#39;SMTP&#39;. Default: &#34;http&#34;.
+         * @param type The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
          * 
          * @return builder
          * 
@@ -598,7 +598,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param type The protocol to use for the healthcheck. Currently supported protocols are &#39;HTTP&#39;, &#39;HTTPS&#39;, &#39;TCP&#39;, &#39;UDP-ICMP&#39;, &#39;ICMP-PING&#39;, and &#39;SMTP&#39;. Default: &#34;http&#34;.
+         * @param type The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
          * 
          * @return builder
          * 

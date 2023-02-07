@@ -12,21 +12,12 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ZoneSettingsOverrideInitialSettingMobileRedirectArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// String value
-        /// </summary>
         [Input("mobileSubdomain", required: true)]
         public Input<string> MobileSubdomain { get; set; } = null!;
 
-        /// <summary>
-        /// "on"/"off"
-        /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
 
-        /// <summary>
-        /// true/false
-        /// </summary>
         [Input("stripUri", required: true)]
         public Input<bool> StripUri { get; set; } = null!;
 

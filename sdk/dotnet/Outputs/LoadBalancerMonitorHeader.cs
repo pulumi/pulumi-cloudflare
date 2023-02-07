@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Header;
         /// <summary>
-        /// A list of string values for the header.
+        /// A list of values for the header.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

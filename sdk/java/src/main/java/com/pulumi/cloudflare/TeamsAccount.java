@@ -21,7 +21,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Teams Account resource. The Teams Account resource defines configuration for secure web gateway.
+ * Provides a Cloudflare Teams Account resource. The Teams Account
+ * resource defines configuration for secure web gateway.
  * 
  * ## Example Usage
  * ```java
@@ -54,8 +55,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var main = new TeamsAccount(&#34;main&#34;, TeamsAccountArgs.builder()        
- *             .accountId(&#34;1d5fdc9e88c8a8c4518b068cd94331fe&#34;)
+ *         var example = new TeamsAccount(&#34;example&#34;, TeamsAccountArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .antivirus(TeamsAccountAntivirusArgs.builder()
  *                 .enabledDownloadPhase(true)
  *                 .enabledUploadPhase(false)
@@ -65,7 +66,7 @@ import javax.annotation.Nullable;
  *                 .backgroundColor(&#34;#000000&#34;)
  *                 .footerText(&#34;hello&#34;)
  *                 .headerText(&#34;hello&#34;)
- *                 .logoPath(&#34;https://google.com&#34;)
+ *                 .logoPath(&#34;https://example.com/logo.jpg&#34;)
  *                 .build())
  *             .fips(TeamsAccountFipsArgs.builder()
  *                 .tls(true)
@@ -101,32 +102,38 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Since a Teams account does not have a unique resource ID, configuration can be imported using the account ID.
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example cb029e245cfdd66dc8d2e570d5dd3322
+ *  $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example &lt;account_id&gt;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/teamsAccount:TeamsAccount")
 public class TeamsAccount extends com.pulumi.resources.CustomResource {
     /**
-     * The account to which the teams location should be added.
+     * The account identifier to target for the resource.
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
-     * @return The account to which the teams location should be added.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
+    /**
+     * Whether to enable the activity log.
+     * 
+     */
     @Export(name="activityLogEnabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> activityLogEnabled;
 
+    /**
+     * @return Whether to enable the activity log.
+     * 
+     */
     public Output<Optional<Boolean>> activityLogEnabled() {
         return Codegen.optional(this.activityLogEnabled);
     }

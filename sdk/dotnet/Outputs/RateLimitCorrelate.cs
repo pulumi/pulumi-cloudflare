@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RateLimitCorrelate
     {
         /// <summary>
-        /// If set to 'nat', NAT support will be enabled for rate limiting.
+        /// If set to 'nat', NAT support will be enabled for rate limiting. Available values: `nat`.
         /// </summary>
         public readonly string? By;
 

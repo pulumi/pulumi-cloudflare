@@ -14,14 +14,14 @@ public final class SpectrumApplicationOriginDnsArgs extends com.pulumi.resources
     public static final SpectrumApplicationOriginDnsArgs Empty = new SpectrumApplicationOriginDnsArgs();
 
     /**
-     * Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+     * Fully qualified domain name of the origin.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+     * @return Fully qualified domain name of the origin.
      * 
      */
     public Output<String> name() {
@@ -53,7 +53,7 @@ public final class SpectrumApplicationOriginDnsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+         * @param name Fully qualified domain name of the origin.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class SpectrumApplicationOriginDnsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+         * @param name Fully qualified domain name of the origin.
          * 
          * @return builder
          * 

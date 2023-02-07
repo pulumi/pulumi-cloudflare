@@ -9,41 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class ZoneSettingsOverrideSettingsMinify {
-    /**
-     * @return &#34;on&#34;/&#34;off&#34;
-     * 
-     */
     private String css;
-    /**
-     * @return &#34;on&#34;/&#34;off&#34;
-     * 
-     */
     private String html;
-    /**
-     * @return &#34;on&#34;/&#34;off&#34;
-     * 
-     */
     private String js;
 
     private ZoneSettingsOverrideSettingsMinify() {}
-    /**
-     * @return &#34;on&#34;/&#34;off&#34;
-     * 
-     */
     public String css() {
         return this.css;
     }
-    /**
-     * @return &#34;on&#34;/&#34;off&#34;
-     * 
-     */
     public String html() {
         return this.html;
     }
-    /**
-     * @return &#34;on&#34;/&#34;off&#34;
-     * 
-     */
     public String js() {
         return this.js;
     }

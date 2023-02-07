@@ -11,8 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy Endpoints are used for pointing proxy clients at
-// Cloudflare Secure Gateway.
+// Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy
+// Endpoints are used for pointing proxy clients at Cloudflare Secure
+// Gateway.
 //
 // ## Example Usage
 //
@@ -28,8 +29,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTeamsProxyEndpoint(ctx, "corporateOffice", &cloudflare.TeamsProxyEndpointArgs{
-//				AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+//			_, err := cloudflare.NewTeamsProxyEndpoint(ctx, "example", &cloudflare.TeamsProxyEndpointArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Ips: pulumi.StringArray{
 //					pulumi.String("192.0.2.0/24"),
 //				},
@@ -46,17 +47,15 @@ import (
 //
 // ## Import
 //
-// Teams Proxy Endpoints can be imported using a composite ID formed of account ID and teams proxy_endpoint ID.
-//
 // ```sh
 //
-//	$ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint corporate_office cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+//	$ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint example <account_id>/<proxy_endpoint_id>
 //
 // ```
 type TeamsProxyEndpoint struct {
 	pulumi.CustomResourceState
 
-	// The account to which the teams proxy endpoint should be added.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The networks CIDRs that will be allowed to initiate proxy connections.
 	Ips pulumi.StringArrayOutput `pulumi:"ips"`
@@ -104,7 +103,7 @@ func GetTeamsProxyEndpoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TeamsProxyEndpoint resources.
 type teamsProxyEndpointState struct {
-	// The account to which the teams proxy endpoint should be added.
+	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
 	// The networks CIDRs that will be allowed to initiate proxy connections.
 	Ips []string `pulumi:"ips"`
@@ -115,7 +114,7 @@ type teamsProxyEndpointState struct {
 }
 
 type TeamsProxyEndpointState struct {
-	// The account to which the teams proxy endpoint should be added.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
 	// The networks CIDRs that will be allowed to initiate proxy connections.
 	Ips pulumi.StringArrayInput
@@ -130,7 +129,7 @@ func (TeamsProxyEndpointState) ElementType() reflect.Type {
 }
 
 type teamsProxyEndpointArgs struct {
-	// The account to which the teams proxy endpoint should be added.
+	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
 	// The networks CIDRs that will be allowed to initiate proxy connections.
 	Ips []string `pulumi:"ips"`
@@ -140,7 +139,7 @@ type teamsProxyEndpointArgs struct {
 
 // The set of arguments for constructing a TeamsProxyEndpoint resource.
 type TeamsProxyEndpointArgs struct {
-	// The account to which the teams proxy endpoint should be added.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
 	// The networks CIDRs that will be allowed to initiate proxy connections.
 	Ips pulumi.StringArrayInput
@@ -235,7 +234,7 @@ func (o TeamsProxyEndpointOutput) ToTeamsProxyEndpointOutputWithContext(ctx cont
 	return o
 }
 
-// The account to which the teams proxy endpoint should be added.
+// The account identifier to target for the resource.
 func (o TeamsProxyEndpointOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsProxyEndpoint) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

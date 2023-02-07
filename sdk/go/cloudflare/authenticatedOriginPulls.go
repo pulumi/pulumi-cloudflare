@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Authenticated Origin Pulls resource. An `AuthenticatedOriginPulls` resource is required to use Per-Zone or Per-Hostname Authenticated Origin Pulls.
+// Provides a Cloudflare Authenticated Origin Pulls resource. A `AuthenticatedOriginPulls`
+// resource is required to use Per-Zone or Per-Hostname Authenticated
+// Origin Pulls.
 //
 // ## Example Usage
-//
-// The arguments that you provide determine which form of Authenticated Origin Pulls to use:
 //
 // ```go
 // package main
@@ -30,14 +30,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewAuthenticatedOriginPulls(ctx, "myAop", &cloudflare.AuthenticatedOriginPullsArgs{
-//				ZoneId:  pulumi.Any(_var.Cloudflare_zone_id),
+//				ZoneId:  pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Enabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			myPerZoneAopCert, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "myPerZoneAopCert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
-//				ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
+//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
 //				PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
 //				Type:        pulumi.String("per-zone"),
@@ -46,7 +46,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudflare.NewAuthenticatedOriginPulls(ctx, "myPerZoneAop", &cloudflare.AuthenticatedOriginPullsArgs{
-//				ZoneId:                              pulumi.Any(_var.Cloudflare_zone_id),
+//				ZoneId:                              pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				AuthenticatedOriginPullsCertificate: myPerZoneAopCert.ID(),
 //				Enabled:                             pulumi.Bool(true),
 //			})
@@ -54,7 +54,7 @@ import (
 //				return err
 //			}
 //			myPerHostnameAopCert, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "myPerHostnameAopCert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
-//				ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
+//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
 //				PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
 //				Type:        pulumi.String("per-hostname"),
@@ -63,7 +63,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudflare.NewAuthenticatedOriginPulls(ctx, "myPerHostnameAop", &cloudflare.AuthenticatedOriginPullsArgs{
-//				ZoneId:                              pulumi.Any(_var.Cloudflare_zone_id),
+//				ZoneId:                              pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				AuthenticatedOriginPullsCertificate: myPerHostnameAopCert.ID(),
 //				Hostname:                            pulumi.String("aop.example.com"),
 //				Enabled:                             pulumi.Bool(true),
@@ -79,39 +79,39 @@ import (
 //
 // ## Import
 //
-// Authenticated Origin Pull configuration can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, with each section filled or left blank e.g. Import Authenticated Origin Pull configuration
+// # Authenticated Origin Pull configuration
 //
 // ```sh
 //
-//	$ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_aop 023e105f4ecef8ad9ca31a8372d0c353//
+//	$ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_aop <zone_id>//
 //
 // ```
 //
-//	Import Per-Zone Authenticated Origin Pull configuration
+//	Per-Zone Authenticated Origin Pull configuration
 //
 // ```sh
 //
-//	$ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_zone_aop 023e105f4ecef8ad9ca31a8372d0c353/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60/
+//	$ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_zone_aop <zone_id>/<certificate_id>/
 //
 // ```
 //
-//	Import Per-Hostname Authenticated Origin Pull configuration
+//	Per-Hostname Authenticated Origin Pull configuration
 //
 // ```sh
 //
-//	$ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_hostname_aop 023e105f4ecef8ad9ca31a8372d0c353/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60/aop.example.com
+//	$ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_hostname_aop <zone_id>/<certificate_id>/<hostname>
 //
 // ```
 type AuthenticatedOriginPulls struct {
 	pulumi.CustomResourceState
 
-	// The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+	// The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
 	AuthenticatedOriginPullsCertificate pulumi.StringPtrOutput `pulumi:"authenticatedOriginPullsCertificate"`
-	// Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
+	// Whether to enable Authenticated Origin Pulls on the given zone or hostname.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
 	Hostname pulumi.StringPtrOutput `pulumi:"hostname"`
-	// The zone ID to upload the certificate to.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -150,24 +150,24 @@ func GetAuthenticatedOriginPulls(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AuthenticatedOriginPulls resources.
 type authenticatedOriginPullsState struct {
-	// The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+	// The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
 	AuthenticatedOriginPullsCertificate *string `pulumi:"authenticatedOriginPullsCertificate"`
-	// Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
+	// Whether to enable Authenticated Origin Pulls on the given zone or hostname.
 	Enabled *bool `pulumi:"enabled"`
 	// Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
 	Hostname *string `pulumi:"hostname"`
-	// The zone ID to upload the certificate to.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AuthenticatedOriginPullsState struct {
-	// The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+	// The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
 	AuthenticatedOriginPullsCertificate pulumi.StringPtrInput
-	// Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
+	// Whether to enable Authenticated Origin Pulls on the given zone or hostname.
 	Enabled pulumi.BoolPtrInput
 	// Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
 	Hostname pulumi.StringPtrInput
-	// The zone ID to upload the certificate to.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -176,25 +176,25 @@ func (AuthenticatedOriginPullsState) ElementType() reflect.Type {
 }
 
 type authenticatedOriginPullsArgs struct {
-	// The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+	// The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
 	AuthenticatedOriginPullsCertificate *string `pulumi:"authenticatedOriginPullsCertificate"`
-	// Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
+	// Whether to enable Authenticated Origin Pulls on the given zone or hostname.
 	Enabled bool `pulumi:"enabled"`
 	// Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
 	Hostname *string `pulumi:"hostname"`
-	// The zone ID to upload the certificate to.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AuthenticatedOriginPulls resource.
 type AuthenticatedOriginPullsArgs struct {
-	// The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+	// The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
 	AuthenticatedOriginPullsCertificate pulumi.StringPtrInput
-	// Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
+	// Whether to enable Authenticated Origin Pulls on the given zone or hostname.
 	Enabled pulumi.BoolInput
 	// Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
 	Hostname pulumi.StringPtrInput
-	// The zone ID to upload the certificate to.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
 }
 
@@ -285,12 +285,12 @@ func (o AuthenticatedOriginPullsOutput) ToAuthenticatedOriginPullsOutputWithCont
 	return o
 }
 
-// The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+// The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
 func (o AuthenticatedOriginPullsOutput) AuthenticatedOriginPullsCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringPtrOutput { return v.AuthenticatedOriginPullsCertificate }).(pulumi.StringPtrOutput)
 }
 
-// Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
+// Whether to enable Authenticated Origin Pulls on the given zone or hostname.
 func (o AuthenticatedOriginPullsOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -300,7 +300,7 @@ func (o AuthenticatedOriginPullsOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringPtrOutput { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
-// The zone ID to upload the certificate to.
+// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o AuthenticatedOriginPullsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

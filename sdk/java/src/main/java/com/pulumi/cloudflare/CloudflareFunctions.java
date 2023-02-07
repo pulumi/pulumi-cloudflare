@@ -54,7 +54,7 @@ import java.util.concurrent.CompletableFuture;
 
 public final class CloudflareFunctions {
     /**
-     * Use this data source to lookup a single [Access Identity Provider][access_identity_provider_guide] by name.
+     * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
      * 
      * ## Example Usage
      * ```java
@@ -80,18 +80,18 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mainAccessIdentityProvider = CloudflareFunctions.getAccessIdentityProvider(GetAccessIdentityProviderArgs.builder()
+     *         final var exampleAccessIdentityProvider = CloudflareFunctions.getAccessIdentityProvider(GetAccessIdentityProviderArgs.builder()
      *             .name(&#34;Google SSO&#34;)
-     *             .accountId(&#34;example-account-id&#34;)
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
      *             .build());
      * 
-     *         var mainAccessApplication = new AccessApplication(&#34;mainAccessApplication&#34;, AccessApplicationArgs.builder()        
-     *             .zoneId(&#34;example.com&#34;)
+     *         var exampleAccessApplication = new AccessApplication(&#34;exampleAccessApplication&#34;, AccessApplicationArgs.builder()        
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
      *             .name(&#34;name&#34;)
      *             .domain(&#34;name.example.com&#34;)
      *             .type(&#34;self_hosted&#34;)
      *             .sessionDuration(&#34;24h&#34;)
-     *             .allowedIdps(mainAccessIdentityProvider.applyValue(getAccessIdentityProviderResult -&gt; getAccessIdentityProviderResult.id()))
+     *             .allowedIdps(exampleAccessIdentityProvider.applyValue(getAccessIdentityProviderResult -&gt; getAccessIdentityProviderResult.id()))
      *             .autoRedirectToIdentity(true)
      *             .build());
      * 
@@ -104,7 +104,7 @@ public final class CloudflareFunctions {
         return getAccessIdentityProvider(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to lookup a single [Access Identity Provider][access_identity_provider_guide] by name.
+     * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
      * 
      * ## Example Usage
      * ```java
@@ -130,18 +130,18 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mainAccessIdentityProvider = CloudflareFunctions.getAccessIdentityProvider(GetAccessIdentityProviderArgs.builder()
+     *         final var exampleAccessIdentityProvider = CloudflareFunctions.getAccessIdentityProvider(GetAccessIdentityProviderArgs.builder()
      *             .name(&#34;Google SSO&#34;)
-     *             .accountId(&#34;example-account-id&#34;)
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
      *             .build());
      * 
-     *         var mainAccessApplication = new AccessApplication(&#34;mainAccessApplication&#34;, AccessApplicationArgs.builder()        
-     *             .zoneId(&#34;example.com&#34;)
+     *         var exampleAccessApplication = new AccessApplication(&#34;exampleAccessApplication&#34;, AccessApplicationArgs.builder()        
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
      *             .name(&#34;name&#34;)
      *             .domain(&#34;name.example.com&#34;)
      *             .type(&#34;self_hosted&#34;)
      *             .sessionDuration(&#34;24h&#34;)
-     *             .allowedIdps(mainAccessIdentityProvider.applyValue(getAccessIdentityProviderResult -&gt; getAccessIdentityProviderResult.id()))
+     *             .allowedIdps(exampleAccessIdentityProvider.applyValue(getAccessIdentityProviderResult -&gt; getAccessIdentityProviderResult.id()))
      *             .autoRedirectToIdentity(true)
      *             .build());
      * 
@@ -154,7 +154,7 @@ public final class CloudflareFunctions {
         return getAccessIdentityProviderPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to lookup a single [Access Identity Provider][access_identity_provider_guide] by name.
+     * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
      * 
      * ## Example Usage
      * ```java
@@ -180,18 +180,18 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mainAccessIdentityProvider = CloudflareFunctions.getAccessIdentityProvider(GetAccessIdentityProviderArgs.builder()
+     *         final var exampleAccessIdentityProvider = CloudflareFunctions.getAccessIdentityProvider(GetAccessIdentityProviderArgs.builder()
      *             .name(&#34;Google SSO&#34;)
-     *             .accountId(&#34;example-account-id&#34;)
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
      *             .build());
      * 
-     *         var mainAccessApplication = new AccessApplication(&#34;mainAccessApplication&#34;, AccessApplicationArgs.builder()        
-     *             .zoneId(&#34;example.com&#34;)
+     *         var exampleAccessApplication = new AccessApplication(&#34;exampleAccessApplication&#34;, AccessApplicationArgs.builder()        
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
      *             .name(&#34;name&#34;)
      *             .domain(&#34;name.example.com&#34;)
      *             .type(&#34;self_hosted&#34;)
      *             .sessionDuration(&#34;24h&#34;)
-     *             .allowedIdps(mainAccessIdentityProvider.applyValue(getAccessIdentityProviderResult -&gt; getAccessIdentityProviderResult.id()))
+     *             .allowedIdps(exampleAccessIdentityProvider.applyValue(getAccessIdentityProviderResult -&gt; getAccessIdentityProviderResult.id()))
      *             .autoRedirectToIdentity(true)
      *             .build());
      * 
@@ -204,7 +204,7 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invoke("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", TypeShape.of(GetAccessIdentityProviderResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to lookup a single [Access Identity Provider][access_identity_provider_guide] by name.
+     * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
      * 
      * ## Example Usage
      * ```java
@@ -230,18 +230,18 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mainAccessIdentityProvider = CloudflareFunctions.getAccessIdentityProvider(GetAccessIdentityProviderArgs.builder()
+     *         final var exampleAccessIdentityProvider = CloudflareFunctions.getAccessIdentityProvider(GetAccessIdentityProviderArgs.builder()
      *             .name(&#34;Google SSO&#34;)
-     *             .accountId(&#34;example-account-id&#34;)
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
      *             .build());
      * 
-     *         var mainAccessApplication = new AccessApplication(&#34;mainAccessApplication&#34;, AccessApplicationArgs.builder()        
-     *             .zoneId(&#34;example.com&#34;)
+     *         var exampleAccessApplication = new AccessApplication(&#34;exampleAccessApplication&#34;, AccessApplicationArgs.builder()        
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
      *             .name(&#34;name&#34;)
      *             .domain(&#34;name.example.com&#34;)
      *             .type(&#34;self_hosted&#34;)
      *             .sessionDuration(&#34;24h&#34;)
-     *             .allowedIdps(mainAccessIdentityProvider.applyValue(getAccessIdentityProviderResult -&gt; getAccessIdentityProviderResult.id()))
+     *             .allowedIdps(exampleAccessIdentityProvider.applyValue(getAccessIdentityProviderResult -&gt; getAccessIdentityProviderResult.id()))
      *             .autoRedirectToIdentity(true)
      *             .build());
      * 
@@ -756,8 +756,8 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var devices = CloudflareFunctions.getDevices(GetDevicesArgs.builder()
-     *             .accountId(&#34;c68973221045fe805dfb9aa520153148&#34;)
+     *         final var example = CloudflareFunctions.getDevices(GetDevicesArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
      *             .build());
      * 
      *     }
@@ -793,8 +793,8 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var devices = CloudflareFunctions.getDevices(GetDevicesArgs.builder()
-     *             .accountId(&#34;c68973221045fe805dfb9aa520153148&#34;)
+     *         final var example = CloudflareFunctions.getDevices(GetDevicesArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
      *             .build());
      * 
      *     }
@@ -830,8 +830,8 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var devices = CloudflareFunctions.getDevices(GetDevicesArgs.builder()
-     *             .accountId(&#34;c68973221045fe805dfb9aa520153148&#34;)
+     *         final var example = CloudflareFunctions.getDevices(GetDevicesArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
      *             .build());
      * 
      *     }
@@ -867,8 +867,8 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var devices = CloudflareFunctions.getDevices(GetDevicesArgs.builder()
-     *             .accountId(&#34;c68973221045fe805dfb9aa520153148&#34;)
+     *         final var example = CloudflareFunctions.getDevices(GetDevicesArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
      *             .build());
      * 
      *     }
@@ -880,276 +880,42 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getDevices:getDevices", TypeShape.of(GetDevicesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare edge nodes.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.gcp.compute.Firewall;
-     * import com.pulumi.gcp.compute.FirewallArgs;
-     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var cloudflare = CloudflareFunctions.getIpRanges();
-     * 
-     *         var allowCloudflareIngress = new Firewall(&#34;allowCloudflareIngress&#34;, FirewallArgs.builder()        
-     *             .network(&#34;default&#34;)
-     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -&gt; getIpRangesResult.ipv4CidrBlocks()))
-     *             .allows(FirewallAllowArgs.builder()
-     *                 .ports(&#34;443&#34;)
-     *                 .protocol(&#34;tcp&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
+     * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
      * 
      */
     public static Output<GetIpRangesResult> getIpRanges() {
         return getIpRanges(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare edge nodes.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.gcp.compute.Firewall;
-     * import com.pulumi.gcp.compute.FirewallArgs;
-     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var cloudflare = CloudflareFunctions.getIpRanges();
-     * 
-     *         var allowCloudflareIngress = new Firewall(&#34;allowCloudflareIngress&#34;, FirewallArgs.builder()        
-     *             .network(&#34;default&#34;)
-     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -&gt; getIpRangesResult.ipv4CidrBlocks()))
-     *             .allows(FirewallAllowArgs.builder()
-     *                 .ports(&#34;443&#34;)
-     *                 .protocol(&#34;tcp&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
+     * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
      * 
      */
     public static CompletableFuture<GetIpRangesResult> getIpRangesPlain() {
         return getIpRangesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare edge nodes.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.gcp.compute.Firewall;
-     * import com.pulumi.gcp.compute.FirewallArgs;
-     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var cloudflare = CloudflareFunctions.getIpRanges();
-     * 
-     *         var allowCloudflareIngress = new Firewall(&#34;allowCloudflareIngress&#34;, FirewallArgs.builder()        
-     *             .network(&#34;default&#34;)
-     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -&gt; getIpRangesResult.ipv4CidrBlocks()))
-     *             .allows(FirewallAllowArgs.builder()
-     *                 .ports(&#34;443&#34;)
-     *                 .protocol(&#34;tcp&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
+     * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
      * 
      */
     public static Output<GetIpRangesResult> getIpRanges(InvokeArgs args) {
         return getIpRanges(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare edge nodes.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.gcp.compute.Firewall;
-     * import com.pulumi.gcp.compute.FirewallArgs;
-     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var cloudflare = CloudflareFunctions.getIpRanges();
-     * 
-     *         var allowCloudflareIngress = new Firewall(&#34;allowCloudflareIngress&#34;, FirewallArgs.builder()        
-     *             .network(&#34;default&#34;)
-     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -&gt; getIpRangesResult.ipv4CidrBlocks()))
-     *             .allows(FirewallAllowArgs.builder()
-     *                 .ports(&#34;443&#34;)
-     *                 .protocol(&#34;tcp&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
+     * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
      * 
      */
     public static CompletableFuture<GetIpRangesResult> getIpRangesPlain(InvokeArgs args) {
         return getIpRangesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare edge nodes.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.gcp.compute.Firewall;
-     * import com.pulumi.gcp.compute.FirewallArgs;
-     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var cloudflare = CloudflareFunctions.getIpRanges();
-     * 
-     *         var allowCloudflareIngress = new Firewall(&#34;allowCloudflareIngress&#34;, FirewallArgs.builder()        
-     *             .network(&#34;default&#34;)
-     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -&gt; getIpRangesResult.ipv4CidrBlocks()))
-     *             .allows(FirewallAllowArgs.builder()
-     *                 .ports(&#34;443&#34;)
-     *                 .protocol(&#34;tcp&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
+     * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
      * 
      */
     public static Output<GetIpRangesResult> getIpRanges(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getIpRanges:getIpRanges", TypeShape.of(GetIpRangesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare edge nodes.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.gcp.compute.Firewall;
-     * import com.pulumi.gcp.compute.FirewallArgs;
-     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var cloudflare = CloudflareFunctions.getIpRanges();
-     * 
-     *         var allowCloudflareIngress = new Firewall(&#34;allowCloudflareIngress&#34;, FirewallArgs.builder()        
-     *             .network(&#34;default&#34;)
-     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -&gt; getIpRangesResult.ipv4CidrBlocks()))
-     *             .allows(FirewallAllowArgs.builder()
-     *                 .ports(&#34;443&#34;)
-     *                 .protocol(&#34;tcp&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
+     * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
      * 
      */
     public static CompletableFuture<GetIpRangesResult> getIpRangesPlain(InvokeArgs args, InvokeOptions options) {
@@ -1320,7 +1086,9 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", TypeShape.of(GetLoadBalancerPoolsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get the [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates) for a given algorithm.
+     * Use this data source to get the
+     * [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates)
+     * for a given algorithm.&#34;
      * 
      * ## Example Usage
      * ```java
@@ -1344,8 +1112,8 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var originCa = CloudflareFunctions.getOriginCaRootCertificate(GetOriginCaRootCertificateArgs.builder()
-     *             .algorithm(&#34;&lt;algorithm&gt;&#34;)
+     *         final var example = CloudflareFunctions.getOriginCaRootCertificate(GetOriginCaRootCertificateArgs.builder()
+     *             .algorithm(&#34;rsa&#34;)
      *             .build());
      * 
      *     }
@@ -1357,7 +1125,9 @@ public final class CloudflareFunctions {
         return getOriginCaRootCertificate(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get the [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates) for a given algorithm.
+     * Use this data source to get the
+     * [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates)
+     * for a given algorithm.&#34;
      * 
      * ## Example Usage
      * ```java
@@ -1381,8 +1151,8 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var originCa = CloudflareFunctions.getOriginCaRootCertificate(GetOriginCaRootCertificateArgs.builder()
-     *             .algorithm(&#34;&lt;algorithm&gt;&#34;)
+     *         final var example = CloudflareFunctions.getOriginCaRootCertificate(GetOriginCaRootCertificateArgs.builder()
+     *             .algorithm(&#34;rsa&#34;)
      *             .build());
      * 
      *     }
@@ -1394,7 +1164,9 @@ public final class CloudflareFunctions {
         return getOriginCaRootCertificatePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get the [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates) for a given algorithm.
+     * Use this data source to get the
+     * [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates)
+     * for a given algorithm.&#34;
      * 
      * ## Example Usage
      * ```java
@@ -1418,8 +1190,8 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var originCa = CloudflareFunctions.getOriginCaRootCertificate(GetOriginCaRootCertificateArgs.builder()
-     *             .algorithm(&#34;&lt;algorithm&gt;&#34;)
+     *         final var example = CloudflareFunctions.getOriginCaRootCertificate(GetOriginCaRootCertificateArgs.builder()
+     *             .algorithm(&#34;rsa&#34;)
      *             .build());
      * 
      *     }
@@ -1431,7 +1203,9 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invoke("cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate", TypeShape.of(GetOriginCaRootCertificateResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get the [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates) for a given algorithm.
+     * Use this data source to get the
+     * [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates)
+     * for a given algorithm.&#34;
      * 
      * ## Example Usage
      * ```java
@@ -1455,8 +1229,8 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var originCa = CloudflareFunctions.getOriginCaRootCertificate(GetOriginCaRootCertificateArgs.builder()
-     *             .algorithm(&#34;&lt;algorithm&gt;&#34;)
+     *         final var example = CloudflareFunctions.getOriginCaRootCertificate(GetOriginCaRootCertificateArgs.builder()
+     *             .algorithm(&#34;rsa&#34;)
      *             .build());
      * 
      *     }
@@ -2168,8 +1942,8 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getWafRules:getWafRules", TypeShape.of(GetWafRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to look up [zone] info. This is the singular alternative
-     * to `cloudflare.getZones`.
+     * Use this data source to look up [zone](https://api.cloudflare.com/#zone-properties)
+     * info. This is the singular alternative to `cloudflare.getZones`.
      * 
      * &gt; **Note** Cloudflare zone names **are not unique**. It is possible for multiple
      * accounts to have the same zone created but in different states. If you are
@@ -2177,84 +1951,16 @@ public final class CloudflareFunctions {
      * resource or swap to `cloudflare.getZones` to further filter the results.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
      * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZoneArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudflareFunctions.getZone(GetZoneArgs.builder()
-     *             .zoneId(&#34;0b6d347b01d437a092be84c2edfce72c&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ### Example usage with other resources
-     * 
-     * The example below fetches the zone information for example.com and then is
-     * referenced in the `cloudflare.Record` section.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZoneArgs;
-     * import com.pulumi.cloudflare.Record;
-     * import com.pulumi.cloudflare.RecordArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleZone = CloudflareFunctions.getZone(GetZoneArgs.builder()
-     *             .name(&#34;example.com&#34;)
-     *             .build());
-     * 
-     *         var exampleRecord = new Record(&#34;exampleRecord&#34;, RecordArgs.builder()        
-     *             .zoneId(exampleZone.applyValue(getZoneResult -&gt; getZoneResult.id()))
-     *             .name(&#34;www&#34;)
-     *             .value(&#34;203.0.113.1&#34;)
-     *             .type(&#34;A&#34;)
-     *             .proxied(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
+     * {{tffile &#34;examples/data-sources/cloudflare_zone/data-source.tf&#34;}}
      * 
      */
     public static Output<GetZoneResult> getZone() {
         return getZone(GetZoneArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to look up [zone] info. This is the singular alternative
-     * to `cloudflare.getZones`.
+     * Use this data source to look up [zone](https://api.cloudflare.com/#zone-properties)
+     * info. This is the singular alternative to `cloudflare.getZones`.
      * 
      * &gt; **Note** Cloudflare zone names **are not unique**. It is possible for multiple
      * accounts to have the same zone created but in different states. If you are
@@ -2262,84 +1968,16 @@ public final class CloudflareFunctions {
      * resource or swap to `cloudflare.getZones` to further filter the results.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
      * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZoneArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudflareFunctions.getZone(GetZoneArgs.builder()
-     *             .zoneId(&#34;0b6d347b01d437a092be84c2edfce72c&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ### Example usage with other resources
-     * 
-     * The example below fetches the zone information for example.com and then is
-     * referenced in the `cloudflare.Record` section.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZoneArgs;
-     * import com.pulumi.cloudflare.Record;
-     * import com.pulumi.cloudflare.RecordArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleZone = CloudflareFunctions.getZone(GetZoneArgs.builder()
-     *             .name(&#34;example.com&#34;)
-     *             .build());
-     * 
-     *         var exampleRecord = new Record(&#34;exampleRecord&#34;, RecordArgs.builder()        
-     *             .zoneId(exampleZone.applyValue(getZoneResult -&gt; getZoneResult.id()))
-     *             .name(&#34;www&#34;)
-     *             .value(&#34;203.0.113.1&#34;)
-     *             .type(&#34;A&#34;)
-     *             .proxied(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
+     * {{tffile &#34;examples/data-sources/cloudflare_zone/data-source.tf&#34;}}
      * 
      */
     public static CompletableFuture<GetZoneResult> getZonePlain() {
         return getZonePlain(GetZonePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to look up [zone] info. This is the singular alternative
-     * to `cloudflare.getZones`.
+     * Use this data source to look up [zone](https://api.cloudflare.com/#zone-properties)
+     * info. This is the singular alternative to `cloudflare.getZones`.
      * 
      * &gt; **Note** Cloudflare zone names **are not unique**. It is possible for multiple
      * accounts to have the same zone created but in different states. If you are
@@ -2347,84 +1985,16 @@ public final class CloudflareFunctions {
      * resource or swap to `cloudflare.getZones` to further filter the results.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
      * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZoneArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudflareFunctions.getZone(GetZoneArgs.builder()
-     *             .zoneId(&#34;0b6d347b01d437a092be84c2edfce72c&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ### Example usage with other resources
-     * 
-     * The example below fetches the zone information for example.com and then is
-     * referenced in the `cloudflare.Record` section.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZoneArgs;
-     * import com.pulumi.cloudflare.Record;
-     * import com.pulumi.cloudflare.RecordArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleZone = CloudflareFunctions.getZone(GetZoneArgs.builder()
-     *             .name(&#34;example.com&#34;)
-     *             .build());
-     * 
-     *         var exampleRecord = new Record(&#34;exampleRecord&#34;, RecordArgs.builder()        
-     *             .zoneId(exampleZone.applyValue(getZoneResult -&gt; getZoneResult.id()))
-     *             .name(&#34;www&#34;)
-     *             .value(&#34;203.0.113.1&#34;)
-     *             .type(&#34;A&#34;)
-     *             .proxied(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
+     * {{tffile &#34;examples/data-sources/cloudflare_zone/data-source.tf&#34;}}
      * 
      */
     public static Output<GetZoneResult> getZone(GetZoneArgs args) {
         return getZone(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to look up [zone] info. This is the singular alternative
-     * to `cloudflare.getZones`.
+     * Use this data source to look up [zone](https://api.cloudflare.com/#zone-properties)
+     * info. This is the singular alternative to `cloudflare.getZones`.
      * 
      * &gt; **Note** Cloudflare zone names **are not unique**. It is possible for multiple
      * accounts to have the same zone created but in different states. If you are
@@ -2432,84 +2002,16 @@ public final class CloudflareFunctions {
      * resource or swap to `cloudflare.getZones` to further filter the results.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
      * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZoneArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudflareFunctions.getZone(GetZoneArgs.builder()
-     *             .zoneId(&#34;0b6d347b01d437a092be84c2edfce72c&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ### Example usage with other resources
-     * 
-     * The example below fetches the zone information for example.com and then is
-     * referenced in the `cloudflare.Record` section.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZoneArgs;
-     * import com.pulumi.cloudflare.Record;
-     * import com.pulumi.cloudflare.RecordArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleZone = CloudflareFunctions.getZone(GetZoneArgs.builder()
-     *             .name(&#34;example.com&#34;)
-     *             .build());
-     * 
-     *         var exampleRecord = new Record(&#34;exampleRecord&#34;, RecordArgs.builder()        
-     *             .zoneId(exampleZone.applyValue(getZoneResult -&gt; getZoneResult.id()))
-     *             .name(&#34;www&#34;)
-     *             .value(&#34;203.0.113.1&#34;)
-     *             .type(&#34;A&#34;)
-     *             .proxied(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
+     * {{tffile &#34;examples/data-sources/cloudflare_zone/data-source.tf&#34;}}
      * 
      */
     public static CompletableFuture<GetZoneResult> getZonePlain(GetZonePlainArgs args) {
         return getZonePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to look up [zone] info. This is the singular alternative
-     * to `cloudflare.getZones`.
+     * Use this data source to look up [zone](https://api.cloudflare.com/#zone-properties)
+     * info. This is the singular alternative to `cloudflare.getZones`.
      * 
      * &gt; **Note** Cloudflare zone names **are not unique**. It is possible for multiple
      * accounts to have the same zone created but in different states. If you are
@@ -2517,84 +2019,16 @@ public final class CloudflareFunctions {
      * resource or swap to `cloudflare.getZones` to further filter the results.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
      * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZoneArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudflareFunctions.getZone(GetZoneArgs.builder()
-     *             .zoneId(&#34;0b6d347b01d437a092be84c2edfce72c&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ### Example usage with other resources
-     * 
-     * The example below fetches the zone information for example.com and then is
-     * referenced in the `cloudflare.Record` section.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZoneArgs;
-     * import com.pulumi.cloudflare.Record;
-     * import com.pulumi.cloudflare.RecordArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleZone = CloudflareFunctions.getZone(GetZoneArgs.builder()
-     *             .name(&#34;example.com&#34;)
-     *             .build());
-     * 
-     *         var exampleRecord = new Record(&#34;exampleRecord&#34;, RecordArgs.builder()        
-     *             .zoneId(exampleZone.applyValue(getZoneResult -&gt; getZoneResult.id()))
-     *             .name(&#34;www&#34;)
-     *             .value(&#34;203.0.113.1&#34;)
-     *             .type(&#34;A&#34;)
-     *             .proxied(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
+     * {{tffile &#34;examples/data-sources/cloudflare_zone/data-source.tf&#34;}}
      * 
      */
     public static Output<GetZoneResult> getZone(GetZoneArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getZone:getZone", TypeShape.of(GetZoneResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to look up [zone] info. This is the singular alternative
-     * to `cloudflare.getZones`.
+     * Use this data source to look up [zone](https://api.cloudflare.com/#zone-properties)
+     * info. This is the singular alternative to `cloudflare.getZones`.
      * 
      * &gt; **Note** Cloudflare zone names **are not unique**. It is possible for multiple
      * accounts to have the same zone created but in different states. If you are
@@ -2602,83 +2036,15 @@ public final class CloudflareFunctions {
      * resource or swap to `cloudflare.getZones` to further filter the results.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
      * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZoneArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudflareFunctions.getZone(GetZoneArgs.builder()
-     *             .zoneId(&#34;0b6d347b01d437a092be84c2edfce72c&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ### Example usage with other resources
-     * 
-     * The example below fetches the zone information for example.com and then is
-     * referenced in the `cloudflare.Record` section.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZoneArgs;
-     * import com.pulumi.cloudflare.Record;
-     * import com.pulumi.cloudflare.RecordArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleZone = CloudflareFunctions.getZone(GetZoneArgs.builder()
-     *             .name(&#34;example.com&#34;)
-     *             .build());
-     * 
-     *         var exampleRecord = new Record(&#34;exampleRecord&#34;, RecordArgs.builder()        
-     *             .zoneId(exampleZone.applyValue(getZoneResult -&gt; getZoneResult.id()))
-     *             .name(&#34;www&#34;)
-     *             .value(&#34;203.0.113.1&#34;)
-     *             .type(&#34;A&#34;)
-     *             .proxied(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
+     * {{tffile &#34;examples/data-sources/cloudflare_zone/data-source.tf&#34;}}
      * 
      */
     public static CompletableFuture<GetZoneResult> getZonePlain(GetZonePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getZone:getZone", TypeShape.of(GetZoneResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to look up [Zone][1] DNSSEC settings.
+     * Use this data source to look up Zone DNSSEC settings.
      * 
      * ## Example Usage
      * ```java
@@ -2703,7 +2069,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZoneDnssec(GetZoneDnssecArgs.builder()
-     *             .zoneId(&#34;&lt;zone_id&gt;&#34;)
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
      *             .build());
      * 
      *     }
@@ -2715,7 +2081,7 @@ public final class CloudflareFunctions {
         return getZoneDnssec(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to look up [Zone][1] DNSSEC settings.
+     * Use this data source to look up Zone DNSSEC settings.
      * 
      * ## Example Usage
      * ```java
@@ -2740,7 +2106,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZoneDnssec(GetZoneDnssecArgs.builder()
-     *             .zoneId(&#34;&lt;zone_id&gt;&#34;)
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
      *             .build());
      * 
      *     }
@@ -2752,7 +2118,7 @@ public final class CloudflareFunctions {
         return getZoneDnssecPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to look up [Zone][1] DNSSEC settings.
+     * Use this data source to look up Zone DNSSEC settings.
      * 
      * ## Example Usage
      * ```java
@@ -2777,7 +2143,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZoneDnssec(GetZoneDnssecArgs.builder()
-     *             .zoneId(&#34;&lt;zone_id&gt;&#34;)
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
      *             .build());
      * 
      *     }
@@ -2789,7 +2155,7 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invoke("cloudflare:index/getZoneDnssec:getZoneDnssec", TypeShape.of(GetZoneDnssecResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to look up [Zone][1] DNSSEC settings.
+     * Use this data source to look up Zone DNSSEC settings.
      * 
      * ## Example Usage
      * ```java
@@ -2814,7 +2180,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZoneDnssec(GetZoneDnssecArgs.builder()
-     *             .zoneId(&#34;&lt;zone_id&gt;&#34;)
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
      *             .build());
      * 
      *     }
@@ -2826,15 +2192,9 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getZoneDnssec:getZoneDnssec", TypeShape.of(GetZoneDnssecResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
+     * Use this data source to look up Zone results for use in other resources.
      * 
      * ## Example Usage
-     * 
-     * Given you have the following zones in Cloudflare.
-     * 
-     * - example.com
-     * - example.net
-     * - not-example.com
      * ```java
      * package generated_program;
      * 
@@ -2859,103 +2219,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZones(GetZonesArgs.builder()
      *             .filter(GetZonesFilterArgs.builder()
-     *                 .name(&#34;example.com&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZonesArgs;
-     * import com.pulumi.cloudflare.inputs.GetZonesFilterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudflareFunctions.getZones(GetZonesArgs.builder()
-     *             .filter(GetZonesFilterArgs.builder()
-     *                 .lookupType(&#34;contains&#34;)
-     *                 .name(&#34;example&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZonesArgs;
-     * import com.pulumi.cloudflare.inputs.GetZonesFilterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudflareFunctions.getZones(GetZonesArgs.builder()
-     *             .filter(GetZonesFilterArgs.builder()
-     *                 .lookupType(&#34;contains&#34;)
-     *                 .match(&#34;^not-&#34;)
-     *                 .name(&#34;example&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZonesArgs;
-     * import com.pulumi.cloudflare.inputs.GetZonesFilterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudflareFunctions.getZones(GetZonesArgs.builder()
-     *             .filter(GetZonesFilterArgs.builder()
-     *                 .accountId(&#34;1d5fdc9e88c8a8c4518b068cd94331fe&#34;)
+     *                 .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
      *                 .status(&#34;active&#34;)
      *                 .build())
      *             .build());
@@ -2969,15 +2233,9 @@ public final class CloudflareFunctions {
         return getZones(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
+     * Use this data source to look up Zone results for use in other resources.
      * 
      * ## Example Usage
-     * 
-     * Given you have the following zones in Cloudflare.
-     * 
-     * - example.com
-     * - example.net
-     * - not-example.com
      * ```java
      * package generated_program;
      * 
@@ -3002,103 +2260,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZones(GetZonesArgs.builder()
      *             .filter(GetZonesFilterArgs.builder()
-     *                 .name(&#34;example.com&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZonesArgs;
-     * import com.pulumi.cloudflare.inputs.GetZonesFilterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudflareFunctions.getZones(GetZonesArgs.builder()
-     *             .filter(GetZonesFilterArgs.builder()
-     *                 .lookupType(&#34;contains&#34;)
-     *                 .name(&#34;example&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZonesArgs;
-     * import com.pulumi.cloudflare.inputs.GetZonesFilterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudflareFunctions.getZones(GetZonesArgs.builder()
-     *             .filter(GetZonesFilterArgs.builder()
-     *                 .lookupType(&#34;contains&#34;)
-     *                 .match(&#34;^not-&#34;)
-     *                 .name(&#34;example&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZonesArgs;
-     * import com.pulumi.cloudflare.inputs.GetZonesFilterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudflareFunctions.getZones(GetZonesArgs.builder()
-     *             .filter(GetZonesFilterArgs.builder()
-     *                 .accountId(&#34;1d5fdc9e88c8a8c4518b068cd94331fe&#34;)
+     *                 .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
      *                 .status(&#34;active&#34;)
      *                 .build())
      *             .build());
@@ -3112,15 +2274,9 @@ public final class CloudflareFunctions {
         return getZonesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
+     * Use this data source to look up Zone results for use in other resources.
      * 
      * ## Example Usage
-     * 
-     * Given you have the following zones in Cloudflare.
-     * 
-     * - example.com
-     * - example.net
-     * - not-example.com
      * ```java
      * package generated_program;
      * 
@@ -3145,103 +2301,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZones(GetZonesArgs.builder()
      *             .filter(GetZonesFilterArgs.builder()
-     *                 .name(&#34;example.com&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZonesArgs;
-     * import com.pulumi.cloudflare.inputs.GetZonesFilterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudflareFunctions.getZones(GetZonesArgs.builder()
-     *             .filter(GetZonesFilterArgs.builder()
-     *                 .lookupType(&#34;contains&#34;)
-     *                 .name(&#34;example&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZonesArgs;
-     * import com.pulumi.cloudflare.inputs.GetZonesFilterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudflareFunctions.getZones(GetZonesArgs.builder()
-     *             .filter(GetZonesFilterArgs.builder()
-     *                 .lookupType(&#34;contains&#34;)
-     *                 .match(&#34;^not-&#34;)
-     *                 .name(&#34;example&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZonesArgs;
-     * import com.pulumi.cloudflare.inputs.GetZonesFilterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudflareFunctions.getZones(GetZonesArgs.builder()
-     *             .filter(GetZonesFilterArgs.builder()
-     *                 .accountId(&#34;1d5fdc9e88c8a8c4518b068cd94331fe&#34;)
+     *                 .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
      *                 .status(&#34;active&#34;)
      *                 .build())
      *             .build());
@@ -3255,15 +2315,9 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invoke("cloudflare:index/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
+     * Use this data source to look up Zone results for use in other resources.
      * 
      * ## Example Usage
-     * 
-     * Given you have the following zones in Cloudflare.
-     * 
-     * - example.com
-     * - example.net
-     * - not-example.com
      * ```java
      * package generated_program;
      * 
@@ -3288,103 +2342,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZones(GetZonesArgs.builder()
      *             .filter(GetZonesFilterArgs.builder()
-     *                 .name(&#34;example.com&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZonesArgs;
-     * import com.pulumi.cloudflare.inputs.GetZonesFilterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudflareFunctions.getZones(GetZonesArgs.builder()
-     *             .filter(GetZonesFilterArgs.builder()
-     *                 .lookupType(&#34;contains&#34;)
-     *                 .name(&#34;example&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZonesArgs;
-     * import com.pulumi.cloudflare.inputs.GetZonesFilterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudflareFunctions.getZones(GetZonesArgs.builder()
-     *             .filter(GetZonesFilterArgs.builder()
-     *                 .lookupType(&#34;contains&#34;)
-     *                 .match(&#34;^not-&#34;)
-     *                 .name(&#34;example&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetZonesArgs;
-     * import com.pulumi.cloudflare.inputs.GetZonesFilterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudflareFunctions.getZones(GetZonesArgs.builder()
-     *             .filter(GetZonesFilterArgs.builder()
-     *                 .accountId(&#34;1d5fdc9e88c8a8c4518b068cd94331fe&#34;)
+     *                 .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
      *                 .status(&#34;active&#34;)
      *                 .build())
      *             .build());

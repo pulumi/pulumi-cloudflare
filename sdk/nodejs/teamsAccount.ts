@@ -7,7 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Teams Account resource. The Teams Account resource defines configuration for secure web gateway.
+ * Provides a Cloudflare Teams Account resource. The Teams Account
+ * resource defines configuration for secure web gateway.
  *
  * ## Example Usage
  *
@@ -15,8 +16,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const main = new cloudflare.TeamsAccount("main", {
- *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ * const example = new cloudflare.TeamsAccount("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     antivirus: {
  *         enabledDownloadPhase: true,
  *         enabledUploadPhase: false,
@@ -26,7 +27,7 @@ import * as utilities from "./utilities";
  *         backgroundColor: "#000000",
  *         footerText: "hello",
  *         headerText: "hello",
- *         logoPath: "https://google.com",
+ *         logoPath: "https://example.com/logo.jpg",
  *     },
  *     fips: {
  *         tls: true,
@@ -59,10 +60,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Since a Teams account does not have a unique resource ID, configuration can be imported using the account ID.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example cb029e245cfdd66dc8d2e570d5dd3322
+ *  $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example <account_id>
  * ```
  */
 export class TeamsAccount extends pulumi.CustomResource {
@@ -94,9 +93,12 @@ export class TeamsAccount extends pulumi.CustomResource {
     }
 
     /**
-     * The account to which the teams location should be added.
+     * The account identifier to target for the resource.
      */
     public readonly accountId!: pulumi.Output<string>;
+    /**
+     * Whether to enable the activity log.
+     */
     public readonly activityLogEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * Configuration block for antivirus traffic scanning.
@@ -171,9 +173,12 @@ export class TeamsAccount extends pulumi.CustomResource {
  */
 export interface TeamsAccountState {
     /**
-     * The account to which the teams location should be added.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * Whether to enable the activity log.
+     */
     activityLogEnabled?: pulumi.Input<boolean>;
     /**
      * Configuration block for antivirus traffic scanning.
@@ -207,9 +212,12 @@ export interface TeamsAccountState {
  */
 export interface TeamsAccountArgs {
     /**
-     * The account to which the teams location should be added.
+     * The account identifier to target for the resource.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Whether to enable the activity log.
+     */
     activityLogEnabled?: pulumi.Input<boolean>;
     /**
      * Configuration block for antivirus traffic scanning.

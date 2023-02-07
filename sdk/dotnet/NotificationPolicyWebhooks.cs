@@ -23,7 +23,7 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.NotificationPolicyWebhooks("example", new()
     ///     {
-    ///         AccountId = "c4a7362d577a6c3019a474fd6f485821",
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Name = "Webhooks destination",
     ///         Secret = "my-secret",
     ///         Url = "https://example.com",
@@ -34,27 +34,34 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// An existing notification policy can be imported using the account ID and the webhook ID
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example 72c379d136459405d964d27aa0f18605/c4a7362d577a6c3019a474fd6f485821
+    ///  $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example &lt;account_id&gt;/&lt;notification_webhook_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks")]
     public partial class NotificationPolicyWebhooks : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the account for which the webhook destination has to be connected.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// Timestamp of when the notification webhook was created.
+        /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// Timestamp of when the notification webhook last faiuled.
+        /// </summary>
         [Output("lastFailure")]
         public Output<string> LastFailure { get; private set; } = null!;
 
+        /// <summary>
+        /// Timestamp of when the notification webhook was last successful.
+        /// </summary>
         [Output("lastSuccess")]
         public Output<string> LastSuccess { get; private set; } = null!;
 
@@ -65,9 +72,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
-        /// Secrets are not returned in any API response body.
-        /// Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
+        /// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
         /// </summary>
         [Output("secret")]
         public Output<string?> Secret { get; private set; } = null!;
@@ -128,7 +133,7 @@ namespace Pulumi.Cloudflare
     public sealed class NotificationPolicyWebhooksArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the account for which the webhook destination has to be connected.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -140,9 +145,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
-        /// Secrets are not returned in any API response body.
-        /// Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
+        /// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
         /// </summary>
         [Input("secret")]
         public Input<string>? Secret { get; set; }
@@ -162,17 +165,26 @@ namespace Pulumi.Cloudflare
     public sealed class NotificationPolicyWebhooksState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the account for which the webhook destination has to be connected.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// Timestamp of when the notification webhook was created.
+        /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Timestamp of when the notification webhook last faiuled.
+        /// </summary>
         [Input("lastFailure")]
         public Input<string>? LastFailure { get; set; }
 
+        /// <summary>
+        /// Timestamp of when the notification webhook was last successful.
+        /// </summary>
         [Input("lastSuccess")]
         public Input<string>? LastSuccess { get; set; }
 
@@ -183,9 +195,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
-        /// Secrets are not returned in any API response body.
-        /// Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
+        /// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
         /// </summary>
         [Input("secret")]
         public Input<string>? Secret { get; set; }

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DevicePostureRuleInput {
     /**
-     * @return The workspace one device compliance status.
+     * @return The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
      * 
      */
     private @Nullable String complianceStatus;
@@ -43,10 +43,15 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable String id;
     /**
-     * @return The version comparison operator.
+     * @return The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
      * 
      */
     private @Nullable String operator;
+    /**
+     * @return OS signal score from Crowdstrike. Value must be between 1 and 100.
+     * 
+     */
+    private @Nullable String os;
     /**
      * @return The operating system excluding version information.
      * 
@@ -57,6 +62,11 @@ public final class DevicePostureRuleInput {
      * 
      */
     private @Nullable String osDistroRevision;
+    /**
+     * @return Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+     * 
+     */
+    private @Nullable String overall;
     /**
      * @return The path to the file.
      * 
@@ -73,6 +83,11 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable Boolean running;
     /**
+     * @return Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+     * 
+     */
+    private @Nullable String sensorConfig;
+    /**
      * @return The sha256 hash of the file.
      * 
      */
@@ -87,10 +102,15 @@ public final class DevicePostureRuleInput {
      * 
      */
     private @Nullable String version;
+    /**
+     * @return The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * 
+     */
+    private @Nullable String versionOperator;
 
     private DevicePostureRuleInput() {}
     /**
-     * @return The workspace one device compliance status.
+     * @return The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
      * 
      */
     public Optional<String> complianceStatus() {
@@ -132,11 +152,18 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return The version comparison operator.
+     * @return The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
      * 
      */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
+    }
+    /**
+     * @return OS signal score from Crowdstrike. Value must be between 1 and 100.
+     * 
+     */
+    public Optional<String> os() {
+        return Optional.ofNullable(this.os);
     }
     /**
      * @return The operating system excluding version information.
@@ -151,6 +178,13 @@ public final class DevicePostureRuleInput {
      */
     public Optional<String> osDistroRevision() {
         return Optional.ofNullable(this.osDistroRevision);
+    }
+    /**
+     * @return Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+     * 
+     */
+    public Optional<String> overall() {
+        return Optional.ofNullable(this.overall);
     }
     /**
      * @return The path to the file.
@@ -174,6 +208,13 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.running);
     }
     /**
+     * @return Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+     * 
+     */
+    public Optional<String> sensorConfig() {
+        return Optional.ofNullable(this.sensorConfig);
+    }
+    /**
      * @return The sha256 hash of the file.
      * 
      */
@@ -194,6 +235,13 @@ public final class DevicePostureRuleInput {
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }
+    /**
+     * @return The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * 
+     */
+    public Optional<String> versionOperator() {
+        return Optional.ofNullable(this.versionOperator);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -211,14 +259,18 @@ public final class DevicePostureRuleInput {
         private @Nullable Boolean exists;
         private @Nullable String id;
         private @Nullable String operator;
+        private @Nullable String os;
         private @Nullable String osDistroName;
         private @Nullable String osDistroRevision;
+        private @Nullable String overall;
         private @Nullable String path;
         private @Nullable Boolean requireAll;
         private @Nullable Boolean running;
+        private @Nullable String sensorConfig;
         private @Nullable String sha256;
         private @Nullable String thumbprint;
         private @Nullable String version;
+        private @Nullable String versionOperator;
         public Builder() {}
         public Builder(DevicePostureRuleInput defaults) {
     	      Objects.requireNonNull(defaults);
@@ -229,14 +281,18 @@ public final class DevicePostureRuleInput {
     	      this.exists = defaults.exists;
     	      this.id = defaults.id;
     	      this.operator = defaults.operator;
+    	      this.os = defaults.os;
     	      this.osDistroName = defaults.osDistroName;
     	      this.osDistroRevision = defaults.osDistroRevision;
+    	      this.overall = defaults.overall;
     	      this.path = defaults.path;
     	      this.requireAll = defaults.requireAll;
     	      this.running = defaults.running;
+    	      this.sensorConfig = defaults.sensorConfig;
     	      this.sha256 = defaults.sha256;
     	      this.thumbprint = defaults.thumbprint;
     	      this.version = defaults.version;
+    	      this.versionOperator = defaults.versionOperator;
         }
 
         @CustomType.Setter
@@ -275,6 +331,11 @@ public final class DevicePostureRuleInput {
             return this;
         }
         @CustomType.Setter
+        public Builder os(@Nullable String os) {
+            this.os = os;
+            return this;
+        }
+        @CustomType.Setter
         public Builder osDistroName(@Nullable String osDistroName) {
             this.osDistroName = osDistroName;
             return this;
@@ -282,6 +343,11 @@ public final class DevicePostureRuleInput {
         @CustomType.Setter
         public Builder osDistroRevision(@Nullable String osDistroRevision) {
             this.osDistroRevision = osDistroRevision;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder overall(@Nullable String overall) {
+            this.overall = overall;
             return this;
         }
         @CustomType.Setter
@@ -300,6 +366,11 @@ public final class DevicePostureRuleInput {
             return this;
         }
         @CustomType.Setter
+        public Builder sensorConfig(@Nullable String sensorConfig) {
+            this.sensorConfig = sensorConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sha256(@Nullable String sha256) {
             this.sha256 = sha256;
             return this;
@@ -314,6 +385,11 @@ public final class DevicePostureRuleInput {
             this.version = version;
             return this;
         }
+        @CustomType.Setter
+        public Builder versionOperator(@Nullable String versionOperator) {
+            this.versionOperator = versionOperator;
+            return this;
+        }
         public DevicePostureRuleInput build() {
             final var o = new DevicePostureRuleInput();
             o.complianceStatus = complianceStatus;
@@ -323,14 +399,18 @@ public final class DevicePostureRuleInput {
             o.exists = exists;
             o.id = id;
             o.operator = operator;
+            o.os = os;
             o.osDistroName = osDistroName;
             o.osDistroRevision = osDistroRevision;
+            o.overall = overall;
             o.path = path;
             o.requireAll = requireAll;
             o.running = running;
+            o.sensorConfig = sensorConfig;
             o.sha256 = sha256;
             o.thumbprint = thumbprint;
             o.version = version;
+            o.versionOperator = versionOperator;
             return o;
         }
     }

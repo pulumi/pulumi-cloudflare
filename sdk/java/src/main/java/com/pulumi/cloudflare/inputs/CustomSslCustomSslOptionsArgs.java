@@ -16,14 +16,14 @@ public final class CustomSslCustomSslOptionsArgs extends com.pulumi.resources.Re
     public static final CustomSslCustomSslOptionsArgs Empty = new CustomSslCustomSslOptionsArgs();
 
     /**
-     * Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
+     * Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
      * 
      */
     @Import(name="bundleMethod")
     private @Nullable Output<String> bundleMethod;
 
     /**
-     * @return Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
+     * @return Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
      * 
      */
     public Optional<Output<String>> bundleMethod() {
@@ -31,14 +31,14 @@ public final class CustomSslCustomSslOptionsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Certificate certificate and the intermediate(s)
+     * Certificate certificate and the intermediate(s).
      * 
      */
     @Import(name="certificate")
     private @Nullable Output<String> certificate;
 
     /**
-     * @return Certificate certificate and the intermediate(s)
+     * @return Certificate certificate and the intermediate(s).
      * 
      */
     public Optional<Output<String>> certificate() {
@@ -46,14 +46,14 @@ public final class CustomSslCustomSslOptionsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highest_security`.
+     * Specifies the region where your private key can be held locally. Available values: `us`, `eu`, `highest_security`.
      * 
      */
     @Import(name="geoRestrictions")
     private @Nullable Output<String> geoRestrictions;
 
     /**
-     * @return Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highest_security`.
+     * @return Specifies the region where your private key can be held locally. Available values: `us`, `eu`, `highest_security`.
      * 
      */
     public Optional<Output<String>> geoRestrictions() {
@@ -61,14 +61,14 @@ public final class CustomSslCustomSslOptionsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Certificate&#39;s private key
+     * Certificate&#39;s private key.
      * 
      */
     @Import(name="privateKey")
     private @Nullable Output<String> privateKey;
 
     /**
-     * @return Certificate&#39;s private key
+     * @return Certificate&#39;s private key.
      * 
      */
     public Optional<Output<String>> privateKey() {
@@ -76,14 +76,14 @@ public final class CustomSslCustomSslOptionsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacy_custom` (default), `sni_custom`.
+     * Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Available values: `legacy_custom`, `sni_custom`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacy_custom` (default), `sni_custom`.
+     * @return Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Available values: `legacy_custom`, `sni_custom`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -119,7 +119,7 @@ public final class CustomSslCustomSslOptionsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param bundleMethod Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
+         * @param bundleMethod Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class CustomSslCustomSslOptionsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param bundleMethod Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
+         * @param bundleMethod Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class CustomSslCustomSslOptionsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param certificate Certificate certificate and the intermediate(s)
+         * @param certificate Certificate certificate and the intermediate(s).
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class CustomSslCustomSslOptionsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param certificate Certificate certificate and the intermediate(s)
+         * @param certificate Certificate certificate and the intermediate(s).
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class CustomSslCustomSslOptionsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param geoRestrictions Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highest_security`.
+         * @param geoRestrictions Specifies the region where your private key can be held locally. Available values: `us`, `eu`, `highest_security`.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class CustomSslCustomSslOptionsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param geoRestrictions Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highest_security`.
+         * @param geoRestrictions Specifies the region where your private key can be held locally. Available values: `us`, `eu`, `highest_security`.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class CustomSslCustomSslOptionsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param privateKey Certificate&#39;s private key
+         * @param privateKey Certificate&#39;s private key.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class CustomSslCustomSslOptionsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param privateKey Certificate&#39;s private key
+         * @param privateKey Certificate&#39;s private key.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class CustomSslCustomSslOptionsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param type Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacy_custom` (default), `sni_custom`.
+         * @param type Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Available values: `legacy_custom`, `sni_custom`.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class CustomSslCustomSslOptionsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param type Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacy_custom` (default), `sni_custom`.
+         * @param type Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Available values: `legacy_custom`, `sni_custom`.
          * 
          * @return builder
          * 

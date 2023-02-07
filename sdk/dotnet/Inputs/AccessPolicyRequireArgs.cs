@@ -94,6 +94,14 @@ namespace Pulumi.Cloudflare.Inputs
             set => _gsuites = value;
         }
 
+        [Input("ipLists")]
+        private InputList<string>? _ipLists;
+        public InputList<string> IpLists
+        {
+            get => _ipLists ?? (_ipLists = new InputList<string>());
+            set => _ipLists = value;
+        }
+
         [Input("ips")]
         private InputList<string>? _ips;
         public InputList<string> Ips

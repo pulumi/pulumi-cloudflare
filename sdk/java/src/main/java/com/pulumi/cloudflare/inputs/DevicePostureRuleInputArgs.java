@@ -17,14 +17,14 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     public static final DevicePostureRuleInputArgs Empty = new DevicePostureRuleInputArgs();
 
     /**
-     * The workspace one device compliance status.
+     * The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
      * 
      */
     @Import(name="complianceStatus")
     private @Nullable Output<String> complianceStatus;
 
     /**
-     * @return The workspace one device compliance status.
+     * @return The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
      * 
      */
     public Optional<Output<String>> complianceStatus() {
@@ -107,18 +107,33 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The version comparison operator.
+     * The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
      * 
      */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
     /**
-     * @return The version comparison operator.
+     * @return The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
      * 
      */
     public Optional<Output<String>> operator() {
         return Optional.ofNullable(this.operator);
+    }
+
+    /**
+     * OS signal score from Crowdstrike. Value must be between 1 and 100.
+     * 
+     */
+    @Import(name="os")
+    private @Nullable Output<String> os;
+
+    /**
+     * @return OS signal score from Crowdstrike. Value must be between 1 and 100.
+     * 
+     */
+    public Optional<Output<String>> os() {
+        return Optional.ofNullable(this.os);
     }
 
     /**
@@ -149,6 +164,21 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
      */
     public Optional<Output<String>> osDistroRevision() {
         return Optional.ofNullable(this.osDistroRevision);
+    }
+
+    /**
+     * Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+     * 
+     */
+    @Import(name="overall")
+    private @Nullable Output<String> overall;
+
+    /**
+     * @return Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+     * 
+     */
+    public Optional<Output<String>> overall() {
+        return Optional.ofNullable(this.overall);
     }
 
     /**
@@ -197,6 +227,21 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+     * 
+     */
+    @Import(name="sensorConfig")
+    private @Nullable Output<String> sensorConfig;
+
+    /**
+     * @return Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+     * 
+     */
+    public Optional<Output<String>> sensorConfig() {
+        return Optional.ofNullable(this.sensorConfig);
+    }
+
+    /**
      * The sha256 hash of the file.
      * 
      */
@@ -241,6 +286,21 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.version);
     }
 
+    /**
+     * The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * 
+     */
+    @Import(name="versionOperator")
+    private @Nullable Output<String> versionOperator;
+
+    /**
+     * @return The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * 
+     */
+    public Optional<Output<String>> versionOperator() {
+        return Optional.ofNullable(this.versionOperator);
+    }
+
     private DevicePostureRuleInputArgs() {}
 
     private DevicePostureRuleInputArgs(DevicePostureRuleInputArgs $) {
@@ -251,14 +311,18 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         this.exists = $.exists;
         this.id = $.id;
         this.operator = $.operator;
+        this.os = $.os;
         this.osDistroName = $.osDistroName;
         this.osDistroRevision = $.osDistroRevision;
+        this.overall = $.overall;
         this.path = $.path;
         this.requireAll = $.requireAll;
         this.running = $.running;
+        this.sensorConfig = $.sensorConfig;
         this.sha256 = $.sha256;
         this.thumbprint = $.thumbprint;
         this.version = $.version;
+        this.versionOperator = $.versionOperator;
     }
 
     public static Builder builder() {
@@ -280,7 +344,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param complianceStatus The workspace one device compliance status.
+         * @param complianceStatus The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
          * 
          * @return builder
          * 
@@ -291,7 +355,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param complianceStatus The workspace one device compliance status.
+         * @param complianceStatus The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
          * 
          * @return builder
          * 
@@ -406,7 +470,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param operator The version comparison operator.
+         * @param operator The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
          * 
          * @return builder
          * 
@@ -417,13 +481,34 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param operator The version comparison operator.
+         * @param operator The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
          * 
          * @return builder
          * 
          */
         public Builder operator(String operator) {
             return operator(Output.of(operator));
+        }
+
+        /**
+         * @param os OS signal score from Crowdstrike. Value must be between 1 and 100.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder os(@Nullable Output<String> os) {
+            $.os = os;
+            return this;
+        }
+
+        /**
+         * @param os OS signal score from Crowdstrike. Value must be between 1 and 100.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder os(String os) {
+            return os(Output.of(os));
         }
 
         /**
@@ -466,6 +551,27 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
          */
         public Builder osDistroRevision(String osDistroRevision) {
             return osDistroRevision(Output.of(osDistroRevision));
+        }
+
+        /**
+         * @param overall Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder overall(@Nullable Output<String> overall) {
+            $.overall = overall;
+            return this;
+        }
+
+        /**
+         * @param overall Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder overall(String overall) {
+            return overall(Output.of(overall));
         }
 
         /**
@@ -532,6 +638,27 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param sensorConfig Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sensorConfig(@Nullable Output<String> sensorConfig) {
+            $.sensorConfig = sensorConfig;
+            return this;
+        }
+
+        /**
+         * @param sensorConfig Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sensorConfig(String sensorConfig) {
+            return sensorConfig(Output.of(sensorConfig));
+        }
+
+        /**
          * @param sha256 The sha256 hash of the file.
          * 
          * @return builder
@@ -592,6 +719,27 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
          */
         public Builder version(String version) {
             return version(Output.of(version));
+        }
+
+        /**
+         * @param versionOperator The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionOperator(@Nullable Output<String> versionOperator) {
+            $.versionOperator = versionOperator;
+            return this;
+        }
+
+        /**
+         * @param versionOperator The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionOperator(String versionOperator) {
+            return versionOperator(Output.of(versionOperator));
         }
 
         public DevicePostureRuleInputArgs build() {

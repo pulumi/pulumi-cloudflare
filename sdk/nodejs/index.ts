@@ -130,6 +130,11 @@ export type CustomSsl = import("./customSsl").CustomSsl;
 export const CustomSsl: typeof import("./customSsl").CustomSsl = null as any;
 utilities.lazyLoad(exports, ["CustomSsl"], () => require("./customSsl"));
 
+export { DeviceManagedNetworksArgs, DeviceManagedNetworksState } from "./deviceManagedNetworks";
+export type DeviceManagedNetworks = import("./deviceManagedNetworks").DeviceManagedNetworks;
+export const DeviceManagedNetworks: typeof import("./deviceManagedNetworks").DeviceManagedNetworks = null as any;
+utilities.lazyLoad(exports, ["DeviceManagedNetworks"], () => require("./deviceManagedNetworks"));
+
 export { DevicePolicyCertificatesArgs, DevicePolicyCertificatesState } from "./devicePolicyCertificates";
 export type DevicePolicyCertificates = import("./devicePolicyCertificates").DevicePolicyCertificates;
 export const DevicePolicyCertificates: typeof import("./devicePolicyCertificates").DevicePolicyCertificates = null as any;
@@ -607,6 +612,8 @@ const _module = {
                 return new CustomPages(name, <any>undefined, { urn })
             case "cloudflare:index/customSsl:CustomSsl":
                 return new CustomSsl(name, <any>undefined, { urn })
+            case "cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks":
+                return new DeviceManagedNetworks(name, <any>undefined, { urn })
             case "cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates":
                 return new DevicePolicyCertificates(name, <any>undefined, { urn })
             case "cloudflare:index/devicePostureIntegration:DevicePostureIntegration":
@@ -771,6 +778,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/customHostname", _mod
 pulumi.runtime.registerResourceModule("cloudflare", "index/customHostnameFallbackOrigin", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customPages", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customSsl", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/deviceManagedNetworks", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/devicePolicyCertificates", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/devicePostureIntegration", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/devicePostureRule", _module)

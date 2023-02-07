@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class DevicePostureRuleInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The workspace one device compliance status.
+        /// The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
         /// </summary>
         [Input("complianceStatus")]
         public Input<string>? ComplianceStatus { get; set; }
@@ -49,10 +49,16 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The version comparison operator.
+        /// The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
         /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
+
+        /// <summary>
+        /// OS signal score from Crowdstrike. Value must be between 1 and 100.
+        /// </summary>
+        [Input("os")]
+        public Input<string>? Os { get; set; }
 
         /// <summary>
         /// The operating system excluding version information.
@@ -65,6 +71,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("osDistroRevision")]
         public Input<string>? OsDistroRevision { get; set; }
+
+        /// <summary>
+        /// Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+        /// </summary>
+        [Input("overall")]
+        public Input<string>? Overall { get; set; }
 
         /// <summary>
         /// The path to the file.
@@ -85,6 +97,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? Running { get; set; }
 
         /// <summary>
+        /// Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+        /// </summary>
+        [Input("sensorConfig")]
+        public Input<string>? SensorConfig { get; set; }
+
+        /// <summary>
         /// The sha256 hash of the file.
         /// </summary>
         [Input("sha256")]
@@ -101,6 +119,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
+
+        /// <summary>
+        /// The version comparison operator for crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+        /// </summary>
+        [Input("versionOperator")]
+        public Input<string>? VersionOperator { get; set; }
 
         public DevicePostureRuleInputArgs()
         {

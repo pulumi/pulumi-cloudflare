@@ -13,26 +13,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const basicChallenge = new cloudflare.CustomPages("basicChallenge", {
+ * const example = new cloudflare.CustomPages("example", {
  *     state: "customized",
  *     type: "basic_challenge",
  *     url: "https://example.com/challenge.html",
- *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  *
  * ## Import
  *
- * Custom pages can be imported using a composite ID formed of- `customPageLevel` - Either `account` or `zone`. - `identifier` - The ID of the account or zone you intend to manage. - `pageType` - The value from the `type` argument. Example for a zone
- *
  * ```sh
- *  $ pulumi import cloudflare:index/customPages:CustomPages basic_challenge zone/d41d8cd98f00b204e9800998ecf8427e/basic_challenge
- * ```
- *
- *  Example for an account
- *
- * ```sh
- *  $ pulumi import cloudflare:index/customPages:CustomPages basic_challenge account/e268443e43d93dab7ebef303bbe9642f/basic_challenge
+ *  $ pulumi import cloudflare:index/customPages:CustomPages example <resource_level>/<resource_id>/<custom_page_type>
  * ```
  */
 export class CustomPages extends pulumi.CustomResource {
@@ -64,17 +56,15 @@ export class CustomPages extends pulumi.CustomResource {
     }
 
     /**
-     * The account ID where the custom pages should be
-     * updated. Either `accountId` or `zoneId` must be provided. If
-     * `accountId` is present, it will override the zone setting.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
+    /**
+     * Managed state of the custom page. Available values: `default`, `customized`.
+     */
     public readonly state!: pulumi.Output<string | undefined>;
     /**
-     * The type of custom page you wish to update. Must
-     * be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
-     * `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
-     * `500Errors`, `1000Errors`, `alwaysOnline`, `managedChallenge`.
+     * The type of custom page you wish to update. Available values: `basicChallenge`, `wafChallenge`, `wafBlock`, `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`, `500Errors`, `1000Errors`, `alwaysOnline`, `managedChallenge`.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -82,8 +72,7 @@ export class CustomPages extends pulumi.CustomResource {
      */
     public readonly url!: pulumi.Output<string>;
     /**
-     * The zone ID where the custom pages should be
-     * updated. Either `zoneId` or `accountId` must be provided.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
 
@@ -129,17 +118,15 @@ export class CustomPages extends pulumi.CustomResource {
  */
 export interface CustomPagesState {
     /**
-     * The account ID where the custom pages should be
-     * updated. Either `accountId` or `zoneId` must be provided. If
-     * `accountId` is present, it will override the zone setting.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * Managed state of the custom page. Available values: `default`, `customized`.
+     */
     state?: pulumi.Input<string>;
     /**
-     * The type of custom page you wish to update. Must
-     * be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
-     * `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
-     * `500Errors`, `1000Errors`, `alwaysOnline`, `managedChallenge`.
+     * The type of custom page you wish to update. Available values: `basicChallenge`, `wafChallenge`, `wafBlock`, `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`, `500Errors`, `1000Errors`, `alwaysOnline`, `managedChallenge`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -147,8 +134,7 @@ export interface CustomPagesState {
      */
     url?: pulumi.Input<string>;
     /**
-     * The zone ID where the custom pages should be
-     * updated. Either `zoneId` or `accountId` must be provided.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -158,17 +144,15 @@ export interface CustomPagesState {
  */
 export interface CustomPagesArgs {
     /**
-     * The account ID where the custom pages should be
-     * updated. Either `accountId` or `zoneId` must be provided. If
-     * `accountId` is present, it will override the zone setting.
+     * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * Managed state of the custom page. Available values: `default`, `customized`.
+     */
     state?: pulumi.Input<string>;
     /**
-     * The type of custom page you wish to update. Must
-     * be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
-     * `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
-     * `500Errors`, `1000Errors`, `alwaysOnline`, `managedChallenge`.
+     * The type of custom page you wish to update. Available values: `basicChallenge`, `wafChallenge`, `wafBlock`, `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`, `500Errors`, `1000Errors`, `alwaysOnline`, `managedChallenge`.
      */
     type: pulumi.Input<string>;
     /**
@@ -176,8 +160,7 @@ export interface CustomPagesArgs {
      */
     url: pulumi.Input<string>;
     /**
-     * The zone ID where the custom pages should be
-     * updated. Either `zoneId` or `accountId` must be provided.
+     * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
 }

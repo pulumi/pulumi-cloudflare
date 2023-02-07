@@ -37,6 +37,9 @@ class GetZonesResult:
     @property
     @pulumi.getter
     def filter(self) -> 'outputs.GetZonesFilterResult':
+        """
+        One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
+        """
         return pulumi.get(self, "filter")
 
     @property
@@ -51,7 +54,7 @@ class GetZonesResult:
     @pulumi.getter
     def zones(self) -> Sequence['outputs.GetZonesZoneResult']:
         """
-        A list of zone objects. Object format:
+        A list of zone objects.
         """
         return pulumi.get(self, "zones")
 
@@ -70,59 +73,22 @@ class AwaitableGetZonesResult(GetZonesResult):
 def get_zones(filter: Optional[pulumi.InputType['GetZonesFilterArgs']] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
-    Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
+    Use this data source to look up Zone results for use in other resources.
 
     ## Example Usage
 
-    Given you have the following zones in Cloudflare.
-
-    - example.com
-    - example.net
-    - not-example.com
-
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
     example = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(
-        name="example.com",
-    ))
-    ```
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(
-        lookup_type="contains",
-        name="example",
-    ))
-    ```
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(
-        lookup_type="contains",
-        match="^not-",
-        name="example",
-    ))
-    ```
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(
-        account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+        account_id="f037e56e89293a057740de681ac9abbe",
         status="active",
     ))
     ```
 
 
-    :param pulumi.InputType['GetZonesFilterArgs'] filter: One or more values used to look up zone records. If more than one value is given all
-           values must match in order to be included, see below for full list.
+    :param pulumi.InputType['GetZonesFilterArgs'] filter: One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
     """
     __args__ = dict()
     __args__['filter'] = filter
@@ -139,58 +105,21 @@ def get_zones(filter: Optional[pulumi.InputType['GetZonesFilterArgs']] = None,
 def get_zones_output(filter: Optional[pulumi.Input[pulumi.InputType['GetZonesFilterArgs']]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
     """
-    Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
+    Use this data source to look up Zone results for use in other resources.
 
     ## Example Usage
 
-    Given you have the following zones in Cloudflare.
-
-    - example.com
-    - example.net
-    - not-example.com
-
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
     example = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(
-        name="example.com",
-    ))
-    ```
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(
-        lookup_type="contains",
-        name="example",
-    ))
-    ```
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(
-        lookup_type="contains",
-        match="^not-",
-        name="example",
-    ))
-    ```
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(
-        account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+        account_id="f037e56e89293a057740de681ac9abbe",
         status="active",
     ))
     ```
 
 
-    :param pulumi.InputType['GetZonesFilterArgs'] filter: One or more values used to look up zone records. If more than one value is given all
-           values must match in order to be included, see below for full list.
+    :param pulumi.InputType['GetZonesFilterArgs'] filter: One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
     """
     ...

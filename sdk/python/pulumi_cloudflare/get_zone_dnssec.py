@@ -150,6 +150,9 @@ class GetZoneDnssecResult:
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
+        """
+        The zone identifier to target for the resource.
+        """
         return pulumi.get(self, "zone_id")
 
 
@@ -176,7 +179,7 @@ class AwaitableGetZoneDnssecResult(GetZoneDnssecResult):
 def get_zone_dnssec(zone_id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZoneDnssecResult:
     """
-    Use this data source to look up [Zone][1] DNSSEC settings.
+    Use this data source to look up Zone DNSSEC settings.
 
     ## Example Usage
 
@@ -184,11 +187,11 @@ def get_zone_dnssec(zone_id: Optional[str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example = cloudflare.get_zone_dnssec(zone_id="<zone_id>")
+    example = cloudflare.get_zone_dnssec(zone_id="0da42c8d2132a9ddaf714f9e7c920711")
     ```
 
 
-    :param str zone_id: The zone id for the zone.
+    :param str zone_id: The zone identifier to target for the resource.
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id
@@ -214,7 +217,7 @@ def get_zone_dnssec(zone_id: Optional[str] = None,
 def get_zone_dnssec_output(zone_id: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneDnssecResult]:
     """
-    Use this data source to look up [Zone][1] DNSSEC settings.
+    Use this data source to look up Zone DNSSEC settings.
 
     ## Example Usage
 
@@ -222,10 +225,10 @@ def get_zone_dnssec_output(zone_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example = cloudflare.get_zone_dnssec(zone_id="<zone_id>")
+    example = cloudflare.get_zone_dnssec(zone_id="0da42c8d2132a9ddaf714f9e7c920711")
     ```
 
 
-    :param str zone_id: The zone id for the zone.
+    :param str zone_id: The zone identifier to target for the resource.
     """
     ...

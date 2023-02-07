@@ -44,8 +44,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var rule1 = new TeamsRule(&#34;rule1&#34;, TeamsRuleArgs.builder()        
- *             .accountId(&#34;d57c3de47a013c03ca7e237dd3e61d7d&#34;)
+ *         var example = new TeamsRule(&#34;example&#34;, TeamsRuleArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .action(&#34;block&#34;)
  *             .description(&#34;desc&#34;)
  *             .filters(&#34;http&#34;)
@@ -64,38 +64,36 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Teams Rules can be imported using a composite ID formed of account ID and teams rule ID.
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/teamsRule:TeamsRule rule1 cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+ *  $ pulumi import cloudflare:index/teamsRule:TeamsRule example &lt;account_id&gt;/&lt;teams_rule_id&gt;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/teamsRule:TeamsRule")
 public class TeamsRule extends com.pulumi.resources.CustomResource {
     /**
-     * The account to which the teams rule should be added.
+     * The account identifier to target for the resource.
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
-     * @return The account to which the teams rule should be added.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * The action executed by matched teams rule.
+     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
      * 
      */
     @Export(name="action", type=String.class, parameters={})
     private Output<String> action;
 
     /**
-     * @return The action executed by matched teams rule.
+     * @return The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
      * 
      */
     public Output<String> action() {
@@ -200,14 +198,14 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
         return this.precedence;
     }
     /**
-     * Additional rule settings (refer to the nested schema).
+     * Additional rule settings.
      * 
      */
     @Export(name="ruleSettings", type=TeamsRuleRuleSettings.class, parameters={})
     private Output</* @Nullable */ TeamsRuleRuleSettings> ruleSettings;
 
     /**
-     * @return Additional rule settings (refer to the nested schema).
+     * @return Additional rule settings.
      * 
      */
     public Output<Optional<TeamsRuleRuleSettings>> ruleSettings() {

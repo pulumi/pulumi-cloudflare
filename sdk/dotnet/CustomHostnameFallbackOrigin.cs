@@ -21,10 +21,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fallbackOrigin = new Cloudflare.CustomHostnameFallbackOrigin("fallbackOrigin", new()
+    ///     var example = new Cloudflare.CustomHostnameFallbackOrigin("example", new()
     ///     {
     ///         Origin = "fallback.example.com",
-    ///         ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });
@@ -32,10 +32,8 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Custom hostname fallback origins can be imported using a composite ID formed of the zone ID and [fallback origin](https://api.cloudflare.com/#custom-hostname-fallback-origin-for-a-zone-properties), separated by a "/" e.g.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example d41d8cd98f00b204e9800998ecf8427e/fallback.example.com
+    ///  $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example &lt;zone_id&gt;/&lt;fallback_hostname&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin")]
@@ -54,7 +52,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS zone ID where the custom hostname should be assigned.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -112,7 +110,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Origin { get; set; } = null!;
 
         /// <summary>
-        /// The DNS zone ID where the custom hostname should be assigned.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -138,7 +136,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The DNS zone ID where the custom hostname should be assigned.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

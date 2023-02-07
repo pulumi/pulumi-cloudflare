@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare rate limit resource for a given zone. This can be used to limit the traffic you receive zone-wide, or matching more specific types of requests/responses.
+    /// Provides a Cloudflare rate limit resource for a given zone. This can
+    /// be used to limit the traffic you receive zone-wide, or matching more
+    /// specific types of requests/responses.
     /// 
     /// ## Example Usage
     /// 
@@ -23,19 +25,31 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.RateLimit("example", new()
     ///     {
-    ///         ZoneId = @var.Cloudflare_zone_id,
-    ///         Threshold = 2000,
-    ///         Period = 2,
+    ///         Action = new Cloudflare.Inputs.RateLimitActionArgs
+    ///         {
+    ///             Mode = "simulate",
+    ///             Response = new Cloudflare.Inputs.RateLimitActionResponseArgs
+    ///             {
+    ///                 Body = "custom response body",
+    ///                 ContentType = "text/plain",
+    ///             },
+    ///             Timeout = 43200,
+    ///         },
+    ///         BypassUrlPatterns = new[]
+    ///         {
+    ///             "example.com/bypass1",
+    ///             "example.com/bypass2",
+    ///         },
+    ///         Correlate = new Cloudflare.Inputs.RateLimitCorrelateArgs
+    ///         {
+    ///             By = "nat",
+    ///         },
+    ///         Description = "example rate limit for a zone",
+    ///         Disabled = false,
     ///         Match = new Cloudflare.Inputs.RateLimitMatchArgs
     ///         {
     ///             Request = new Cloudflare.Inputs.RateLimitMatchRequestArgs
     ///             {
-    ///                 UrlPattern = $"{@var.Cloudflare_zone}/*",
-    ///                 Schemes = new[]
-    ///                 {
-    ///                     "HTTP",
-    ///                     "HTTPS",
-    ///                 },
     ///                 Methods = new[]
     ///                 {
     ///                     "GET",
@@ -45,18 +59,15 @@ namespace Pulumi.Cloudflare
     ///                     "PATCH",
     ///                     "HEAD",
     ///                 },
+    ///                 Schemes = new[]
+    ///                 {
+    ///                     "HTTP",
+    ///                     "HTTPS",
+    ///                 },
+    ///                 UrlPattern = $"{@var.Cloudflare_zone}/*",
     ///             },
     ///             Response = new Cloudflare.Inputs.RateLimitMatchResponseArgs
     ///             {
-    ///                 Statuses = new[]
-    ///                 {
-    ///                     200,
-    ///                     201,
-    ///                     202,
-    ///                     301,
-    ///                     429,
-    ///                 },
-    ///                 OriginTraffic = false,
     ///                 Headers = new[]
     ///                 {
     ///                     
@@ -72,29 +83,20 @@ namespace Pulumi.Cloudflare
     ///                         { "value", "my-example" },
     ///                     },
     ///                 },
+    ///                 OriginTraffic = false,
+    ///                 Statuses = new[]
+    ///                 {
+    ///                     200,
+    ///                     201,
+    ///                     202,
+    ///                     301,
+    ///                     429,
+    ///                 },
     ///             },
     ///         },
-    ///         Action = new Cloudflare.Inputs.RateLimitActionArgs
-    ///         {
-    ///             Mode = "simulate",
-    ///             Timeout = 43200,
-    ///             Response = new Cloudflare.Inputs.RateLimitActionResponseArgs
-    ///             {
-    ///                 ContentType = "text/plain",
-    ///                 Body = "custom response body",
-    ///             },
-    ///         },
-    ///         Correlate = new Cloudflare.Inputs.RateLimitCorrelateArgs
-    ///         {
-    ///             By = "nat",
-    ///         },
-    ///         Disabled = false,
-    ///         Description = "example rate limit for a zone",
-    ///         BypassUrlPatterns = new[]
-    ///         {
-    ///             $"{@var.Cloudflare_zone}/bypass1",
-    ///             $"{@var.Cloudflare_zone}/bypass2",
-    ///         },
+    ///         Period = 2,
+    ///         Threshold = 2000,
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });
@@ -102,10 +104,8 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Rate limits can be imported using a composite ID formed of zone name and rate limit ID, e.g.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/rateLimit:RateLimit default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
+    ///  $ pulumi import cloudflare:index/rateLimit:RateLimit example &lt;zone_id&gt;/&lt;rate_limit_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/rateLimit:RateLimit")]
@@ -117,9 +117,6 @@ namespace Pulumi.Cloudflare
         [Output("action")]
         public Output<Outputs.RateLimitAction> Action { get; private set; } = null!;
 
-        /// <summary>
-        /// URLs matching the patterns specified here will be excluded from rate limiting.
-        /// </summary>
         [Output("bypassUrlPatterns")]
         public Output<ImmutableArray<string>> BypassUrlPatterns { get; private set; } = null!;
 
@@ -136,31 +133,31 @@ namespace Pulumi.Cloudflare
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this ratelimit is currently disabled. Default: `false`.
+        /// Whether this ratelimit is currently disabled. Defaults to `false`.
         /// </summary>
         [Output("disabled")]
         public Output<bool?> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
+        /// Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
         /// </summary>
         [Output("match")]
         public Output<Outputs.RateLimitMatch> Match { get; private set; } = null!;
 
         /// <summary>
-        /// The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
+        /// The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
         /// </summary>
         [Output("period")]
         public Output<int> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
+        /// The threshold that triggers the rate limit mitigations, combine with period.
         /// </summary>
         [Output("threshold")]
         public Output<int> Threshold { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS zone ID to apply rate limiting to.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -219,10 +216,6 @@ namespace Pulumi.Cloudflare
 
         [Input("bypassUrlPatterns")]
         private InputList<string>? _bypassUrlPatterns;
-
-        /// <summary>
-        /// URLs matching the patterns specified here will be excluded from rate limiting.
-        /// </summary>
         public InputList<string> BypassUrlPatterns
         {
             get => _bypassUrlPatterns ?? (_bypassUrlPatterns = new InputList<string>());
@@ -242,31 +235,31 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether this ratelimit is currently disabled. Default: `false`.
+        /// Whether this ratelimit is currently disabled. Defaults to `false`.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
+        /// Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
         /// </summary>
         [Input("match")]
         public Input<Inputs.RateLimitMatchArgs>? Match { get; set; }
 
         /// <summary>
-        /// The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
+        /// The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
         /// </summary>
         [Input("period", required: true)]
         public Input<int> Period { get; set; } = null!;
 
         /// <summary>
-        /// The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
+        /// The threshold that triggers the rate limit mitigations, combine with period.
         /// </summary>
         [Input("threshold", required: true)]
         public Input<int> Threshold { get; set; } = null!;
 
         /// <summary>
-        /// The DNS zone ID to apply rate limiting to.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -287,10 +280,6 @@ namespace Pulumi.Cloudflare
 
         [Input("bypassUrlPatterns")]
         private InputList<string>? _bypassUrlPatterns;
-
-        /// <summary>
-        /// URLs matching the patterns specified here will be excluded from rate limiting.
-        /// </summary>
         public InputList<string> BypassUrlPatterns
         {
             get => _bypassUrlPatterns ?? (_bypassUrlPatterns = new InputList<string>());
@@ -310,31 +299,31 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether this ratelimit is currently disabled. Default: `false`.
+        /// Whether this ratelimit is currently disabled. Defaults to `false`.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
+        /// Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
         /// </summary>
         [Input("match")]
         public Input<Inputs.RateLimitMatchGetArgs>? Match { get; set; }
 
         /// <summary>
-        /// The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
+        /// The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
+        /// The threshold that triggers the rate limit mitigations, combine with period.
         /// </summary>
         [Input("threshold")]
         public Input<int>? Threshold { get; set; }
 
         /// <summary>
-        /// The DNS zone ID to apply rate limiting to.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

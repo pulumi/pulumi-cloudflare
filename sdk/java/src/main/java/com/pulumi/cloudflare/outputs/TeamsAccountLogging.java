@@ -11,30 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class TeamsAccountLogging {
     /**
-     * @return Redact personally identifiable information from activity logging (PII fields are: source IP,
-     * user email, user ID, device ID, URL, referrer, user agent).
+     * @return Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
      * 
      */
     private Boolean redactPii;
     /**
-     * @return Represents whether all requests are logged or only the blocked requests are
-     * logged in DNS, HTTP and L4 filters.
+     * @return Represents whether all requests are logged or only the blocked requests are slogged in DNS, HTTP and L4 filters.
      * 
      */
     private TeamsAccountLoggingSettingsByRuleType settingsByRuleType;
 
     private TeamsAccountLogging() {}
     /**
-     * @return Redact personally identifiable information from activity logging (PII fields are: source IP,
-     * user email, user ID, device ID, URL, referrer, user agent).
+     * @return Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
      * 
      */
     public Boolean redactPii() {
         return this.redactPii;
     }
     /**
-     * @return Represents whether all requests are logged or only the blocked requests are
-     * logged in DNS, HTTP and L4 filters.
+     * @return Represents whether all requests are logged or only the blocked requests are slogged in DNS, HTTP and L4 filters.
      * 
      */
     public TeamsAccountLoggingSettingsByRuleType settingsByRuleType() {

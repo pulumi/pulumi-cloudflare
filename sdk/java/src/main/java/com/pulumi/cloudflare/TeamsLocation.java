@@ -18,8 +18,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Teams Location resource. Teams Locations are referenced
- * when creating secure web gateway policies.
+ * Provides a Cloudflare Teams Location resource. Teams Locations are
+ * referenced when creating secure web gateway policies.
  * 
  * ## Example Usage
  * ```java
@@ -44,8 +44,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var corporateOffice = new TeamsLocation(&#34;corporateOffice&#34;, TeamsLocationArgs.builder()        
- *             .accountId(&#34;1d5fdc9e88c8a8c4518b068cd94331fe&#34;)
+ *         var example = new TeamsLocation(&#34;example&#34;, TeamsLocationArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .clientDefault(true)
  *             .name(&#34;office&#34;)
  *             .networks(            
@@ -63,24 +63,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Teams locations can be imported using a composite ID formed of account ID and teams location ID.
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/teamsLocation:TeamsLocation corporate_office cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+ *  $ pulumi import cloudflare:index/teamsLocation:TeamsLocation example &lt;account_id&gt;/&lt;teams_location_id&gt;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/teamsLocation:TeamsLocation")
 public class TeamsLocation extends com.pulumi.resources.CustomResource {
     /**
-     * The account to which the teams location should be added.
+     * The account identifier to target for the resource.
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
-     * @return The account to which the teams location should be added.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Output<String> accountId() {
@@ -129,28 +127,28 @@ public class TeamsLocation extends com.pulumi.resources.CustomResource {
         return this.dohSubdomain;
     }
     /**
-     * Client IP address
+     * Client IP address.
      * 
      */
     @Export(name="ip", type=String.class, parameters={})
     private Output<String> ip;
 
     /**
-     * @return Client IP address
+     * @return Client IP address.
      * 
      */
     public Output<String> ip() {
         return this.ip;
     }
     /**
-     * IP to direct all IPv4 DNS queries too.
+     * IP to direct all IPv4 DNS queries to.
      * 
      */
     @Export(name="ipv4Destination", type=String.class, parameters={})
     private Output<String> ipv4Destination;
 
     /**
-     * @return IP to direct all IPv4 DNS queries too.
+     * @return IP to direct all IPv4 DNS queries to.
      * 
      */
     public Output<String> ipv4Destination() {

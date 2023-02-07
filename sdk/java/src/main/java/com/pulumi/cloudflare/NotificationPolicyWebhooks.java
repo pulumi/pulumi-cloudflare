@@ -40,7 +40,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new NotificationPolicyWebhooks(&#34;example&#34;, NotificationPolicyWebhooksArgs.builder()        
- *             .accountId(&#34;c4a7362d577a6c3019a474fd6f485821&#34;)
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;Webhooks destination&#34;)
  *             .secret(&#34;my-secret&#34;)
  *             .url(&#34;https://example.com&#34;)
@@ -52,44 +52,66 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * An existing notification policy can be imported using the account ID and the webhook ID
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example 72c379d136459405d964d27aa0f18605/c4a7362d577a6c3019a474fd6f485821
+ *  $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example &lt;account_id&gt;/&lt;notification_webhook_id&gt;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks")
 public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the account for which the webhook destination has to be connected.
+     * The account identifier to target for the resource.
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
-     * @return The ID of the account for which the webhook destination has to be connected.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
+    /**
+     * Timestamp of when the notification webhook was created.
+     * 
+     */
     @Export(name="createdAt", type=String.class, parameters={})
     private Output<String> createdAt;
 
+    /**
+     * @return Timestamp of when the notification webhook was created.
+     * 
+     */
     public Output<String> createdAt() {
         return this.createdAt;
     }
+    /**
+     * Timestamp of when the notification webhook last faiuled.
+     * 
+     */
     @Export(name="lastFailure", type=String.class, parameters={})
     private Output<String> lastFailure;
 
+    /**
+     * @return Timestamp of when the notification webhook last faiuled.
+     * 
+     */
     public Output<String> lastFailure() {
         return this.lastFailure;
     }
+    /**
+     * Timestamp of when the notification webhook was last successful.
+     * 
+     */
     @Export(name="lastSuccess", type=String.class, parameters={})
     private Output<String> lastSuccess;
 
+    /**
+     * @return Timestamp of when the notification webhook was last successful.
+     * 
+     */
     public Output<String> lastSuccess() {
         return this.lastSuccess;
     }
@@ -108,18 +130,14 @@ public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResou
         return this.name;
     }
     /**
-     * An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
-     * Secrets are not returned in any API response body.
-     * Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
+     * An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
      * 
      */
     @Export(name="secret", type=String.class, parameters={})
     private Output</* @Nullable */ String> secret;
 
     /**
-     * @return An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
-     * Secrets are not returned in any API response body.
-     * Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
+     * @return An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
      * 
      */
     public Output<Optional<String>> secret() {

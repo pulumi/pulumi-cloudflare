@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Device Posture Integration resource. Device posture integrations configure third-party data providers for device posture rules.
+    /// Provides a Cloudflare Device Posture Integration resource. Device
+    /// posture integrations configure third-party data providers for device
+    /// posture rules.
     /// 
     /// ## Example Usage
     /// 
@@ -21,9 +23,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thirdPartyDevicesPostureIntegration = new Cloudflare.DevicePostureIntegration("thirdPartyDevicesPostureIntegration", new()
+    ///     var example = new Cloudflare.DevicePostureIntegration("example", new()
     ///     {
-    ///         AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Configs = new[]
     ///         {
     ///             new Cloudflare.Inputs.DevicePostureIntegrationConfigArgs
@@ -44,17 +46,15 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Device posture integrations can be imported using a composite ID formed of account ID and device posture integration ID.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/0ade592a-62d6-46ab-bac8-01f47c7fa792
+    ///  $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration example &lt;account_id&gt;/&lt;device_posture_integration_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/devicePostureIntegration:DevicePostureIntegration")]
     public partial class DevicePostureIntegration : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account to which the device posture integration should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -69,8 +69,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Identifier { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates the frequency with which to poll the third-party API.
-        /// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        /// Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
         /// </summary>
         [Output("interval")]
         public Output<string?> Interval { get; private set; } = null!;
@@ -82,7 +81,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The device posture integration type. Valid values are `workspace_one`.
+        /// The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -134,7 +133,7 @@ namespace Pulumi.Cloudflare
     public sealed class DevicePostureIntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the device posture integration should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -155,8 +154,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// Indicates the frequency with which to poll the third-party API.
-        /// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        /// Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
         /// </summary>
         [Input("interval")]
         public Input<string>? Interval { get; set; }
@@ -168,7 +166,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The device posture integration type. Valid values are `workspace_one`.
+        /// The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -182,7 +180,7 @@ namespace Pulumi.Cloudflare
     public sealed class DevicePostureIntegrationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the device posture integration should be added.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -203,8 +201,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// Indicates the frequency with which to poll the third-party API.
-        /// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        /// Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
         /// </summary>
         [Input("interval")]
         public Input<string>? Interval { get; set; }
@@ -216,7 +213,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The device posture integration type. Valid values are `workspace_one`.
+        /// The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

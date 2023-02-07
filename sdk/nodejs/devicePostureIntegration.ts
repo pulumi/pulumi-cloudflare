@@ -7,7 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Device Posture Integration resource. Device posture integrations configure third-party data providers for device posture rules.
+ * Provides a Cloudflare Device Posture Integration resource. Device
+ * posture integrations configure third-party data providers for device
+ * posture rules.
  *
  * ## Example Usage
  *
@@ -15,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const thirdPartyDevicesPostureIntegration = new cloudflare.DevicePostureIntegration("thirdPartyDevicesPostureIntegration", {
- *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ * const example = new cloudflare.DevicePostureIntegration("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     configs: [{
  *         apiUrl: "https://example.com/api",
  *         authUrl: "https://example.com/connect/token",
@@ -31,10 +33,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Device posture integrations can be imported using a composite ID formed of account ID and device posture integration ID.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/0ade592a-62d6-46ab-bac8-01f47c7fa792
+ *  $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration example <account_id>/<device_posture_integration_id>
  * ```
  */
 export class DevicePostureIntegration extends pulumi.CustomResource {
@@ -66,7 +66,7 @@ export class DevicePostureIntegration extends pulumi.CustomResource {
     }
 
     /**
-     * The account to which the device posture integration should be added.
+     * The account identifier to target for the resource.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -75,8 +75,7 @@ export class DevicePostureIntegration extends pulumi.CustomResource {
     public readonly configs!: pulumi.Output<outputs.DevicePostureIntegrationConfig[] | undefined>;
     public readonly identifier!: pulumi.Output<string | undefined>;
     /**
-     * Indicates the frequency with which to poll the third-party API.
-     * Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+     * Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
      */
     public readonly interval!: pulumi.Output<string | undefined>;
     /**
@@ -84,7 +83,7 @@ export class DevicePostureIntegration extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The device posture integration type. Valid values are `workspaceOne`.
+     * The device posture integration type. Available values: `workspaceOne`, `uptycs`, `crowdstrikeS2s`, `intune`.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -135,7 +134,7 @@ export class DevicePostureIntegration extends pulumi.CustomResource {
  */
 export interface DevicePostureIntegrationState {
     /**
-     * The account to which the device posture integration should be added.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -144,8 +143,7 @@ export interface DevicePostureIntegrationState {
     configs?: pulumi.Input<pulumi.Input<inputs.DevicePostureIntegrationConfig>[]>;
     identifier?: pulumi.Input<string>;
     /**
-     * Indicates the frequency with which to poll the third-party API.
-     * Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+     * Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
      */
     interval?: pulumi.Input<string>;
     /**
@@ -153,7 +151,7 @@ export interface DevicePostureIntegrationState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The device posture integration type. Valid values are `workspaceOne`.
+     * The device posture integration type. Available values: `workspaceOne`, `uptycs`, `crowdstrikeS2s`, `intune`.
      */
     type?: pulumi.Input<string>;
 }
@@ -163,7 +161,7 @@ export interface DevicePostureIntegrationState {
  */
 export interface DevicePostureIntegrationArgs {
     /**
-     * The account to which the device posture integration should be added.
+     * The account identifier to target for the resource.
      */
     accountId: pulumi.Input<string>;
     /**
@@ -172,8 +170,7 @@ export interface DevicePostureIntegrationArgs {
     configs?: pulumi.Input<pulumi.Input<inputs.DevicePostureIntegrationConfig>[]>;
     identifier?: pulumi.Input<string>;
     /**
-     * Indicates the frequency with which to poll the third-party API.
-     * Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+     * Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
      */
     interval?: pulumi.Input<string>;
     /**
@@ -181,7 +178,7 @@ export interface DevicePostureIntegrationArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The device posture integration type. Valid values are `workspaceOne`.
+     * The device posture integration type. Available values: `workspaceOne`, `uptycs`, `crowdstrikeS2s`, `intune`.
      */
     type: pulumi.Input<string>;
 }

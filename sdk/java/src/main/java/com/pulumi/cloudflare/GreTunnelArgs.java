@@ -18,14 +18,14 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
     public static final GreTunnelArgs Empty = new GreTunnelArgs();
 
     /**
-     * The ID of the account where the tunnel is being created.
+     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The ID of the account where the tunnel is being created.
+     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -63,14 +63,14 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An optional description of the GRE tunnel.
+     * Description of the GRE tunnel intent.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return An optional description of the GRE tunnel.
+     * @return Description of the GRE tunnel intent.
      * 
      */
     public Optional<Output<String>> description() {
@@ -78,14 +78,14 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies if ICMP tunnel health checks are enabled Default: `true`.
+     * Specifies if ICMP tunnel health checks are enabled.
      * 
      */
     @Import(name="healthCheckEnabled")
     private @Nullable Output<Boolean> healthCheckEnabled;
 
     /**
-     * @return Specifies if ICMP tunnel health checks are enabled Default: `true`.
+     * @return Specifies if ICMP tunnel health checks are enabled.
      * 
      */
     public Optional<Output<Boolean>> healthCheckEnabled() {
@@ -93,14 +93,14 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IP address of the customer endpoint that will receive tunnel health checks. Default: `&lt;customer_gre_endpoint&gt;`.
+     * The IP address of the customer endpoint that will receive tunnel health checks.
      * 
      */
     @Import(name="healthCheckTarget")
     private @Nullable Output<String> healthCheckTarget;
 
     /**
-     * @return The IP address of the customer endpoint that will receive tunnel health checks. Default: `&lt;customer_gre_endpoint&gt;`.
+     * @return The IP address of the customer endpoint that will receive tunnel health checks.
      * 
      */
     public Optional<Output<String>> healthCheckTarget() {
@@ -108,14 +108,14 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.
+     * Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
      * 
      */
     @Import(name="healthCheckType")
     private @Nullable Output<String> healthCheckType;
 
     /**
-     * @return Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.
+     * @return Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
      * 
      */
     public Optional<Output<String>> healthCheckType() {
@@ -138,14 +138,14 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.
+     * Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
      * 
      */
     @Import(name="mtu")
     private @Nullable Output<Integer> mtu;
 
     /**
-     * @return Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.
+     * @return Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
      * 
      */
     public Optional<Output<Integer>> mtu() {
@@ -168,14 +168,14 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.
+     * Time To Live (TTL) in number of hops of the GRE tunnel.
      * 
      */
     @Import(name="ttl")
     private @Nullable Output<Integer> ttl;
 
     /**
-     * @return Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.
+     * @return Time To Live (TTL) in number of hops of the GRE tunnel.
      * 
      */
     public Optional<Output<Integer>> ttl() {
@@ -217,7 +217,7 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The ID of the account where the tunnel is being created.
+         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The ID of the account where the tunnel is being created.
+         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An optional description of the GRE tunnel.
+         * @param description Description of the GRE tunnel intent.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An optional description of the GRE tunnel.
+         * @param description Description of the GRE tunnel intent.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckEnabled Specifies if ICMP tunnel health checks are enabled Default: `true`.
+         * @param healthCheckEnabled Specifies if ICMP tunnel health checks are enabled.
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckEnabled Specifies if ICMP tunnel health checks are enabled Default: `true`.
+         * @param healthCheckEnabled Specifies if ICMP tunnel health checks are enabled.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckTarget The IP address of the customer endpoint that will receive tunnel health checks. Default: `&lt;customer_gre_endpoint&gt;`.
+         * @param healthCheckTarget The IP address of the customer endpoint that will receive tunnel health checks.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckTarget The IP address of the customer endpoint that will receive tunnel health checks. Default: `&lt;customer_gre_endpoint&gt;`.
+         * @param healthCheckTarget The IP address of the customer endpoint that will receive tunnel health checks.
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckType Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.
+         * @param healthCheckType Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckType Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.
+         * @param healthCheckType Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
          * 
          * @return builder
          * 
@@ -385,7 +385,7 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mtu Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.
+         * @param mtu Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mtu Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.
+         * @param mtu Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ttl Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.
+         * @param ttl Time To Live (TTL) in number of hops of the GRE tunnel.
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ttl Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.
+         * @param ttl Time To Live (TTL) in number of hops of the GRE tunnel.
          * 
          * @return builder
          * 

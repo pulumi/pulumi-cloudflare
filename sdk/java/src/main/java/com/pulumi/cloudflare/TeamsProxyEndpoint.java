@@ -15,8 +15,9 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy Endpoints are used for pointing proxy clients at
- * Cloudflare Secure Gateway.
+ * Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy
+ * Endpoints are used for pointing proxy clients at Cloudflare Secure
+ * Gateway.
  * 
  * ## Example Usage
  * ```java
@@ -40,8 +41,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var corporateOffice = new TeamsProxyEndpoint(&#34;corporateOffice&#34;, TeamsProxyEndpointArgs.builder()        
- *             .accountId(&#34;1d5fdc9e88c8a8c4518b068cd94331fe&#34;)
+ *         var example = new TeamsProxyEndpoint(&#34;example&#34;, TeamsProxyEndpointArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .ips(&#34;192.0.2.0/24&#34;)
  *             .name(&#34;office&#34;)
  *             .build());
@@ -52,24 +53,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Teams Proxy Endpoints can be imported using a composite ID formed of account ID and teams proxy_endpoint ID.
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint corporate_office cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+ *  $ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint example &lt;account_id&gt;/&lt;proxy_endpoint_id&gt;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint")
 public class TeamsProxyEndpoint extends com.pulumi.resources.CustomResource {
     /**
-     * The account to which the teams proxy endpoint should be added.
+     * The account identifier to target for the resource.
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
-     * @return The account to which the teams proxy endpoint should be added.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Output<String> accountId() {

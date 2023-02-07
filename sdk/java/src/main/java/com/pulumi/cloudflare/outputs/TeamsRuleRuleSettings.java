@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsBisoAdminControls;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsCheckSession;
+import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsEgress;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsL4override;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
@@ -23,7 +24,7 @@ public final class TeamsRuleRuleSettings {
      */
     private @Nullable Map<String,String> addHeaders;
     /**
-     * @return Configure how browser isolation behaves (refer to the nested schema).
+     * @return Configure how browser isolation behaves.
      * 
      */
     private @Nullable TeamsRuleRuleSettingsBisoAdminControls bisoAdminControls;
@@ -38,17 +39,22 @@ public final class TeamsRuleRuleSettings {
      */
     private @Nullable String blockPageReason;
     /**
-     * @return Configure how session check behaves (refer to the nested schema).
+     * @return Configure how session check behaves.
      * 
      */
     private @Nullable TeamsRuleRuleSettingsCheckSession checkSession;
     /**
-     * @return Disable DNSSEC validation (must be Allow rule)
+     * @return Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+     * 
+     */
+    private @Nullable TeamsRuleRuleSettingsEgress egress;
+    /**
+     * @return Disable DNSSEC validation (must be Allow rule).
      * 
      */
     private @Nullable Boolean insecureDisableDnssecValidation;
     /**
-     * @return Settings to forward layer 4 traffic (refer to the nested schema).
+     * @return Settings to forward layer 4 traffic.
      * 
      */
     private @Nullable TeamsRuleRuleSettingsL4override l4override;
@@ -72,7 +78,7 @@ public final class TeamsRuleRuleSettings {
         return this.addHeaders == null ? Map.of() : this.addHeaders;
     }
     /**
-     * @return Configure how browser isolation behaves (refer to the nested schema).
+     * @return Configure how browser isolation behaves.
      * 
      */
     public Optional<TeamsRuleRuleSettingsBisoAdminControls> bisoAdminControls() {
@@ -93,21 +99,28 @@ public final class TeamsRuleRuleSettings {
         return Optional.ofNullable(this.blockPageReason);
     }
     /**
-     * @return Configure how session check behaves (refer to the nested schema).
+     * @return Configure how session check behaves.
      * 
      */
     public Optional<TeamsRuleRuleSettingsCheckSession> checkSession() {
         return Optional.ofNullable(this.checkSession);
     }
     /**
-     * @return Disable DNSSEC validation (must be Allow rule)
+     * @return Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+     * 
+     */
+    public Optional<TeamsRuleRuleSettingsEgress> egress() {
+        return Optional.ofNullable(this.egress);
+    }
+    /**
+     * @return Disable DNSSEC validation (must be Allow rule).
      * 
      */
     public Optional<Boolean> insecureDisableDnssecValidation() {
         return Optional.ofNullable(this.insecureDisableDnssecValidation);
     }
     /**
-     * @return Settings to forward layer 4 traffic (refer to the nested schema).
+     * @return Settings to forward layer 4 traffic.
      * 
      */
     public Optional<TeamsRuleRuleSettingsL4override> l4override() {
@@ -142,6 +155,7 @@ public final class TeamsRuleRuleSettings {
         private @Nullable Boolean blockPageEnabled;
         private @Nullable String blockPageReason;
         private @Nullable TeamsRuleRuleSettingsCheckSession checkSession;
+        private @Nullable TeamsRuleRuleSettingsEgress egress;
         private @Nullable Boolean insecureDisableDnssecValidation;
         private @Nullable TeamsRuleRuleSettingsL4override l4override;
         private @Nullable String overrideHost;
@@ -154,6 +168,7 @@ public final class TeamsRuleRuleSettings {
     	      this.blockPageEnabled = defaults.blockPageEnabled;
     	      this.blockPageReason = defaults.blockPageReason;
     	      this.checkSession = defaults.checkSession;
+    	      this.egress = defaults.egress;
     	      this.insecureDisableDnssecValidation = defaults.insecureDisableDnssecValidation;
     	      this.l4override = defaults.l4override;
     	      this.overrideHost = defaults.overrideHost;
@@ -186,6 +201,11 @@ public final class TeamsRuleRuleSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder egress(@Nullable TeamsRuleRuleSettingsEgress egress) {
+            this.egress = egress;
+            return this;
+        }
+        @CustomType.Setter
         public Builder insecureDisableDnssecValidation(@Nullable Boolean insecureDisableDnssecValidation) {
             this.insecureDisableDnssecValidation = insecureDisableDnssecValidation;
             return this;
@@ -215,6 +235,7 @@ public final class TeamsRuleRuleSettings {
             o.blockPageEnabled = blockPageEnabled;
             o.blockPageReason = blockPageReason;
             o.checkSession = checkSession;
+            o.egress = egress;
             o.insecureDisableDnssecValidation = insecureDisableDnssecValidation;
             o.l4override = l4override;
             o.overrideHost = overrideHost;

@@ -13,16 +13,22 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class PagesProjectDeploymentConfigsPreview
     {
+        public readonly bool? AlwaysUseLatestCompatibilityDate;
         public readonly string? CompatibilityDate;
         public readonly ImmutableArray<string> CompatibilityFlags;
         public readonly ImmutableDictionary<string, object>? D1Databases;
         public readonly ImmutableDictionary<string, object>? DurableObjectNamespaces;
         public readonly ImmutableDictionary<string, object>? EnvironmentVariables;
+        public readonly bool? FailOpen;
         public readonly ImmutableDictionary<string, object>? KvNamespaces;
         public readonly ImmutableDictionary<string, object>? R2Buckets;
+        public readonly ImmutableArray<Outputs.PagesProjectDeploymentConfigsPreviewServiceBinding> ServiceBindings;
+        public readonly string? UsageModel;
 
         [OutputConstructor]
         private PagesProjectDeploymentConfigsPreview(
+            bool? alwaysUseLatestCompatibilityDate,
+
             string? compatibilityDate,
 
             ImmutableArray<string> compatibilityFlags,
@@ -33,17 +39,27 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableDictionary<string, object>? environmentVariables,
 
+            bool? failOpen,
+
             ImmutableDictionary<string, object>? kvNamespaces,
 
-            ImmutableDictionary<string, object>? r2Buckets)
+            ImmutableDictionary<string, object>? r2Buckets,
+
+            ImmutableArray<Outputs.PagesProjectDeploymentConfigsPreviewServiceBinding> serviceBindings,
+
+            string? usageModel)
         {
+            AlwaysUseLatestCompatibilityDate = alwaysUseLatestCompatibilityDate;
             CompatibilityDate = compatibilityDate;
             CompatibilityFlags = compatibilityFlags;
             D1Databases = d1Databases;
             DurableObjectNamespaces = durableObjectNamespaces;
             EnvironmentVariables = environmentVariables;
+            FailOpen = failOpen;
             KvNamespaces = kvNamespaces;
             R2Buckets = r2Buckets;
+            ServiceBindings = serviceBindings;
+            UsageModel = usageModel;
         }
     }
 }

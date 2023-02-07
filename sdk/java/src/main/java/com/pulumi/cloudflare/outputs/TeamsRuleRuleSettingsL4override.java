@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class TeamsRuleRuleSettingsL4override {
-    /**
-     * @return Override IP to forward traffic to.
-     * 
-     */
     private String ip;
-    /**
-     * @return Override Port to forward traffic to.
-     * 
-     */
     private Integer port;
 
     private TeamsRuleRuleSettingsL4override() {}
-    /**
-     * @return Override IP to forward traffic to.
-     * 
-     */
     public String ip() {
         return this.ip;
     }
-    /**
-     * @return Override Port to forward traffic to.
-     * 
-     */
     public Integer port() {
         return this.port;
     }

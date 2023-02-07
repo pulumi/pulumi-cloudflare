@@ -13,14 +13,14 @@ public final class GetAccountRolesPlainArgs extends com.pulumi.resources.InvokeA
     public static final GetAccountRolesPlainArgs Empty = new GetAccountRolesPlainArgs();
 
     /**
-     * The account for which to list the roles.
+     * The account identifier to target for the resource.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return The account for which to list the roles.
+     * @return The account identifier to target for the resource.
      * 
      */
     public String accountId() {
@@ -52,7 +52,7 @@ public final class GetAccountRolesPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param accountId The account for which to list the roles.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 

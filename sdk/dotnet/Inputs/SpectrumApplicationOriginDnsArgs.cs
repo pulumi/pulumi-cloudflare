@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class SpectrumApplicationOriginDnsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+        /// Fully qualified domain name of the origin.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

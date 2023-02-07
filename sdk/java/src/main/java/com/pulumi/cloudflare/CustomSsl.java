@@ -19,7 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare custom ssl resource.
+ * Provides a Cloudflare custom SSL resource.
  * 
  * ## Example Usage
  * ```java
@@ -44,9 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var cloudflareZoneId = config.get(&#34;cloudflareZoneId&#34;).orElse(&#34;1d5fdc9e88c8a8c4518b068cd94331fe&#34;);
- *         var foossl = new CustomSsl(&#34;foossl&#34;, CustomSslArgs.builder()        
+ *         var example = new CustomSsl(&#34;example&#34;, CustomSslArgs.builder()        
  *             .customSslOptions(CustomSslCustomSslOptionsArgs.builder()
  *                 .bundleMethod(&#34;ubiquitous&#34;)
  *                 .certificate(&#34;-----INSERT CERTIFICATE-----&#34;)
@@ -54,7 +52,7 @@ import javax.annotation.Nullable;
  *                 .privateKey(&#34;-----INSERT PRIVATE KEY-----&#34;)
  *                 .type(&#34;legacy_custom&#34;)
  *                 .build())
- *             .zoneId(cloudflareZoneId)
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }
@@ -63,24 +61,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Custom SSL Certs can be imported using a composite ID formed of the zone ID and [certificate ID](https://api.cloudflare.com/#custom-ssl-for-a-zone-properties), separated by a &#34;/&#34; e.g.
- * 
  * ```sh
- *  $ pulumi import cloudflare:index/customSsl:CustomSsl default 1d5fdc9e88c8a8c4518b068cd94331fe/0123f0ab-9cde-45b2-80bd-4da3010f1337
+ *  $ pulumi import cloudflare:index/customSsl:CustomSsl example &lt;zone_id&gt;/&lt;certificate_id&gt;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/customSsl:CustomSsl")
 public class CustomSsl extends com.pulumi.resources.CustomResource {
     /**
-     * The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+     * The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="customSslOptions", type=CustomSslCustomSslOptions.class, parameters={})
     private Output</* @Nullable */ CustomSslCustomSslOptions> customSslOptions;
 
     /**
-     * @return The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+     * @return The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<Optional<CustomSslCustomSslOptions>> customSslOptions() {
@@ -141,14 +137,14 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
         return this.uploadedOn;
     }
     /**
-     * The DNS zone id to the custom ssl cert should be added.
+     * The zone identifier to target for the resource.
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The DNS zone id to the custom ssl cert should be added.
+     * @return The zone identifier to target for the resource.
      * 
      */
     public Output<String> zoneId() {

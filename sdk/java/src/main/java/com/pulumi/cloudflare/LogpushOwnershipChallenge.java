@@ -15,9 +15,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource which manages Cloudflare Logpush ownership challenges to use
- * in a Logpush Job. On it&#39;s own, doesn&#39;t do much however this resource should
- * be used in conjunction to create Logpush jobs.
+ * Provides a resource which manages Cloudflare Logpush ownership
+ * challenges to use in a Logpush Job. On it&#39;s own, doesn&#39;t do much
+ * however this resource should be used in conjunction to create
+ * Logpush jobs.
  * 
  * ## Example Usage
  * ```java
@@ -43,36 +44,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new LogpushOwnershipChallenge(&#34;example&#34;, LogpushOwnershipChallengeArgs.builder()        
  *             .destinationConf(&#34;s3://my-bucket-path?region=us-west-2&#34;)
- *             .zoneId(&#34;d41d8cd98f00b204e9800998ecf8427e&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.LogpushOwnershipChallenge;
- * import com.pulumi.cloudflare.LogpushOwnershipChallengeArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new LogpushOwnershipChallenge(&#34;example&#34;, LogpushOwnershipChallengeArgs.builder()        
- *             .accountId(&#34;1d5fdc9e88c8a8c4518b068cd94331fe&#34;)
- *             .destinationConf(&#34;s3://my-bucket-path?region=us-west-2&#34;)
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }
@@ -83,58 +55,56 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge")
 public class LogpushOwnershipChallenge extends com.pulumi.resources.CustomResource {
     /**
-     * The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+     * The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+     * @return The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
      * 
      */
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
+     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="destinationConf", type=String.class, parameters={})
     private Output<String> destinationConf;
 
     /**
-     * @return Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
+     * @return Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> destinationConf() {
         return this.destinationConf;
     }
     /**
-     * The filename of the ownership challenge which
-     * contains the contents required for Logpush Job creation.
+     * The filename of the ownership challenge which	contains the contents required for Logpush Job creation.
      * 
      */
     @Export(name="ownershipChallengeFilename", type=String.class, parameters={})
     private Output<String> ownershipChallengeFilename;
 
     /**
-     * @return The filename of the ownership challenge which
-     * contains the contents required for Logpush Job creation.
+     * @return The filename of the ownership challenge which	contains the contents required for Logpush Job creation.
      * 
      */
     public Output<String> ownershipChallengeFilename() {
         return this.ownershipChallengeFilename;
     }
     /**
-     * The zone ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+     * The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+     * @return The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
      * 
      */
     public Output<Optional<String>> zoneId() {

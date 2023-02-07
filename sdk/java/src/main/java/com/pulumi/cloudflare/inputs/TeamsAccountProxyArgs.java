@@ -14,14 +14,14 @@ public final class TeamsAccountProxyArgs extends com.pulumi.resources.ResourceAr
     public static final TeamsAccountProxyArgs Empty = new TeamsAccountProxyArgs();
 
     /**
-     * Whether gateway proxy is enabled on gateway devices for tcp traffic.
+     * Whether gateway proxy is enabled on gateway devices for TCP traffic.
      * 
      */
     @Import(name="tcp", required=true)
     private Output<Boolean> tcp;
 
     /**
-     * @return Whether gateway proxy is enabled on gateway devices for tcp traffic.
+     * @return Whether gateway proxy is enabled on gateway devices for TCP traffic.
      * 
      */
     public Output<Boolean> tcp() {
@@ -29,14 +29,14 @@ public final class TeamsAccountProxyArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether gateway proxy is enabled on gateway devices for udp traffic.
+     * Whether gateway proxy is enabled on gateway devices for UDP traffic.
      * 
      */
     @Import(name="udp", required=true)
     private Output<Boolean> udp;
 
     /**
-     * @return Whether gateway proxy is enabled on gateway devices for udp traffic.
+     * @return Whether gateway proxy is enabled on gateway devices for UDP traffic.
      * 
      */
     public Output<Boolean> udp() {
@@ -69,7 +69,7 @@ public final class TeamsAccountProxyArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tcp Whether gateway proxy is enabled on gateway devices for tcp traffic.
+         * @param tcp Whether gateway proxy is enabled on gateway devices for TCP traffic.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class TeamsAccountProxyArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tcp Whether gateway proxy is enabled on gateway devices for tcp traffic.
+         * @param tcp Whether gateway proxy is enabled on gateway devices for TCP traffic.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class TeamsAccountProxyArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param udp Whether gateway proxy is enabled on gateway devices for udp traffic.
+         * @param udp Whether gateway proxy is enabled on gateway devices for UDP traffic.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class TeamsAccountProxyArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param udp Whether gateway proxy is enabled on gateway devices for udp traffic.
+         * @param udp Whether gateway proxy is enabled on gateway devices for UDP traffic.
          * 
          * @return builder
          * 

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Use this data source to lookup a single [Access Identity Provider][accessIdentityProviderGuide] by name.
+ * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
  *
  * ## Example Usage
  *
@@ -13,17 +13,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const mainAccessIdentityProvider = cloudflare.getAccessIdentityProvider({
+ * const exampleAccessIdentityProvider = cloudflare.getAccessIdentityProvider({
  *     name: "Google SSO",
- *     accountId: "example-account-id",
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  * });
- * const mainAccessApplication = new cloudflare.AccessApplication("mainAccessApplication", {
- *     zoneId: "example.com",
+ * const exampleAccessApplication = new cloudflare.AccessApplication("exampleAccessApplication", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     name: "name",
  *     domain: "name.example.com",
  *     type: "self_hosted",
  *     sessionDuration: "24h",
- *     allowedIdps: [mainAccessIdentityProvider.then(mainAccessIdentityProvider => mainAccessIdentityProvider.id)],
+ *     allowedIdps: [exampleAccessIdentityProvider.then(exampleAccessIdentityProvider => exampleAccessIdentityProvider.id)],
  *     autoRedirectToIdentity: true,
  * });
  * ```
@@ -43,7 +43,7 @@ export function getAccessIdentityProvider(args: GetAccessIdentityProviderArgs, o
  */
 export interface GetAccessIdentityProviderArgs {
     /**
-     * The account for which to look for an Access Identity Provider. Conflicts with `zoneId`.
+     * The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
      */
     accountId?: string;
     /**
@@ -51,7 +51,7 @@ export interface GetAccessIdentityProviderArgs {
      */
     name: string;
     /**
-     * The Zone's ID. Conflicts with `accountId`.
+     * The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
      */
     zoneId?: string;
 }
@@ -60,23 +60,29 @@ export interface GetAccessIdentityProviderArgs {
  * A collection of values returned by getAccessIdentityProvider.
  */
 export interface GetAccessIdentityProviderResult {
+    /**
+     * The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+     */
     readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * Access Identity Provider Name
+     * Access Identity Provider name to search for.
      */
     readonly name: string;
     /**
-     * Access Identity Provider Type
+     * Access Identity Provider Type.
      */
     readonly type: string;
+    /**
+     * The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
+     */
     readonly zoneId?: string;
 }
 /**
- * Use this data source to lookup a single [Access Identity Provider][accessIdentityProviderGuide] by name.
+ * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
  *
  * ## Example Usage
  *
@@ -84,17 +90,17 @@ export interface GetAccessIdentityProviderResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const mainAccessIdentityProvider = cloudflare.getAccessIdentityProvider({
+ * const exampleAccessIdentityProvider = cloudflare.getAccessIdentityProvider({
  *     name: "Google SSO",
- *     accountId: "example-account-id",
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  * });
- * const mainAccessApplication = new cloudflare.AccessApplication("mainAccessApplication", {
- *     zoneId: "example.com",
+ * const exampleAccessApplication = new cloudflare.AccessApplication("exampleAccessApplication", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     name: "name",
  *     domain: "name.example.com",
  *     type: "self_hosted",
  *     sessionDuration: "24h",
- *     allowedIdps: [mainAccessIdentityProvider.then(mainAccessIdentityProvider => mainAccessIdentityProvider.id)],
+ *     allowedIdps: [exampleAccessIdentityProvider.then(exampleAccessIdentityProvider => exampleAccessIdentityProvider.id)],
  *     autoRedirectToIdentity: true,
  * });
  * ```
@@ -108,7 +114,7 @@ export function getAccessIdentityProviderOutput(args: GetAccessIdentityProviderO
  */
 export interface GetAccessIdentityProviderOutputArgs {
     /**
-     * The account for which to look for an Access Identity Provider. Conflicts with `zoneId`.
+     * The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -116,7 +122,7 @@ export interface GetAccessIdentityProviderOutputArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The Zone's ID. Conflicts with `accountId`.
+     * The zone identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.
      */
     zoneId?: pulumi.Input<string>;
 }

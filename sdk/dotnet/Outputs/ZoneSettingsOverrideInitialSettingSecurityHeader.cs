@@ -13,25 +13,10 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ZoneSettingsOverrideInitialSettingSecurityHeader
     {
-        /// <summary>
-        /// true/false
-        /// </summary>
         public readonly bool? Enabled;
-        /// <summary>
-        /// true/false
-        /// </summary>
         public readonly bool? IncludeSubdomains;
-        /// <summary>
-        /// Integer
-        /// </summary>
         public readonly int? MaxAge;
-        /// <summary>
-        /// true/false
-        /// </summary>
         public readonly bool? Nosniff;
-        /// <summary>
-        /// true/false
-        /// </summary>
         public readonly bool? Preload;
 
         [OutputConstructor]

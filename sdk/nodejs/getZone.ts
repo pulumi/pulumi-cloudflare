@@ -5,8 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Use this data source to look up [zone] info. This is the singular alternative
- * to `cloudflare.getZones`.
+ * Use this data source to look up [zone](https://api.cloudflare.com/#zone-properties)
+ * info. This is the singular alternative to `cloudflare.getZones`.
  *
  * > **Note** Cloudflare zone names **are not unique**. It is possible for multiple
  * accounts to have the same zone created but in different states. If you are
@@ -15,34 +15,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = cloudflare.getZone({
- *     zoneId: "0b6d347b01d437a092be84c2edfce72c",
- * });
- * ```
- * ### Example usage with other resources
- *
- * The example below fetches the zone information for example.com and then is
- * referenced in the `cloudflare.Record` section.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleZone = cloudflare.getZone({
- *     name: "example.com",
- * });
- * const exampleRecord = new cloudflare.Record("exampleRecord", {
- *     zoneId: exampleZone.then(exampleZone => exampleZone.id),
- *     name: "www",
- *     value: "203.0.113.1",
- *     type: "A",
- *     proxied: true,
- * });
- * ```
+ * {{tffile "examples/data-sources/cloudflare_zone/data-source.tf"}}
  */
 export function getZone(args?: GetZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneResult> {
     args = args || {};
@@ -60,15 +33,15 @@ export function getZone(args?: GetZoneArgs, opts?: pulumi.InvokeOptions): Promis
  */
 export interface GetZoneArgs {
     /**
-     * The account ID associated with the zone.
+     * The account identifier to target for the resource.
      */
     accountId?: string;
     /**
-     * The name of the zone. Conflicts with `"zoneId"`.
+     * The name of the zone. Must provide only one of `zoneId`, `name`.
      */
     name?: string;
     /**
-     * The zone ID. Conflicts with `"name"`.
+     * The zone identifier to target for the resource. Must provide only one of `zoneId`, `name`.
      */
     zoneId?: string;
 }
@@ -78,7 +51,7 @@ export interface GetZoneArgs {
  */
 export interface GetZoneResult {
     /**
-     * The account ID associated with the zone.
+     * The account identifier to target for the resource.
      */
     readonly accountId: string;
     /**
@@ -86,7 +59,7 @@ export interface GetZoneResult {
      */
     readonly id: string;
     /**
-     * The name of the zone.
+     * The name of the zone. Must provide only one of `zoneId`, `name`.
      */
     readonly name: string;
     /**
@@ -94,7 +67,7 @@ export interface GetZoneResult {
      */
     readonly nameServers: string[];
     /**
-     * `true` if cloudflare is enabled on the zone, otherwise `false`.
+     * Whether the zone is paused on Cloudflare.
      */
     readonly paused: boolean;
     /**
@@ -102,19 +75,21 @@ export interface GetZoneResult {
      */
     readonly plan: string;
     /**
-     * Status of the zone. Values can be: `"active"`, `"pending"`, `"initializing"`, `"moved"`, `"deleted"`,
-     * or `"deactivated"`.
+     * Status of the zone.
      */
     readonly status: string;
     /**
      * List of Vanity Nameservers (if set).
      */
     readonly vanityNameServers: string[];
+    /**
+     * The zone identifier to target for the resource. Must provide only one of `zoneId`, `name`.
+     */
     readonly zoneId: string;
 }
 /**
- * Use this data source to look up [zone] info. This is the singular alternative
- * to `cloudflare.getZones`.
+ * Use this data source to look up [zone](https://api.cloudflare.com/#zone-properties)
+ * info. This is the singular alternative to `cloudflare.getZones`.
  *
  * > **Note** Cloudflare zone names **are not unique**. It is possible for multiple
  * accounts to have the same zone created but in different states. If you are
@@ -123,34 +98,7 @@ export interface GetZoneResult {
  *
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = cloudflare.getZone({
- *     zoneId: "0b6d347b01d437a092be84c2edfce72c",
- * });
- * ```
- * ### Example usage with other resources
- *
- * The example below fetches the zone information for example.com and then is
- * referenced in the `cloudflare.Record` section.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleZone = cloudflare.getZone({
- *     name: "example.com",
- * });
- * const exampleRecord = new cloudflare.Record("exampleRecord", {
- *     zoneId: exampleZone.then(exampleZone => exampleZone.id),
- *     name: "www",
- *     value: "203.0.113.1",
- *     type: "A",
- *     proxied: true,
- * });
- * ```
+ * {{tffile "examples/data-sources/cloudflare_zone/data-source.tf"}}
  */
 export function getZoneOutput(args?: GetZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneResult> {
     return pulumi.output(args).apply((a: any) => getZone(a, opts))
@@ -161,15 +109,15 @@ export function getZoneOutput(args?: GetZoneOutputArgs, opts?: pulumi.InvokeOpti
  */
 export interface GetZoneOutputArgs {
     /**
-     * The account ID associated with the zone.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The name of the zone. Conflicts with `"zoneId"`.
+     * The name of the zone. Must provide only one of `zoneId`, `name`.
      */
     name?: pulumi.Input<string>;
     /**
-     * The zone ID. Conflicts with `"name"`.
+     * The zone identifier to target for the resource. Must provide only one of `zoneId`, `name`.
      */
     zoneId?: pulumi.Input<string>;
 }

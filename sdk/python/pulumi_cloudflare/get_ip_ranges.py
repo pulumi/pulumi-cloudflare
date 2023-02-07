@@ -105,24 +105,7 @@ class AwaitableGetIpRangesResult(GetIpRangesResult):
 
 def get_ip_ranges(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpRangesResult:
     """
-    Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare edge nodes.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-    import pulumi_gcp as gcp
-
-    cloudflare = cloudflare.get_ip_ranges()
-    allow_cloudflare_ingress = gcp.compute.Firewall("allowCloudflareIngress",
-        network="default",
-        source_ranges=cloudflare.ipv4_cidr_blocks,
-        allows=[gcp.compute.FirewallAllowArgs(
-            ports="443",
-            protocol="tcp",
-        )])
-    ```
+    Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

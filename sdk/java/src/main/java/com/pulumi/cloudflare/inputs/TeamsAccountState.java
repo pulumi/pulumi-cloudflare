@@ -22,23 +22,31 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
     public static final TeamsAccountState Empty = new TeamsAccountState();
 
     /**
-     * The account to which the teams location should be added.
+     * The account identifier to target for the resource.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account to which the teams location should be added.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * Whether to enable the activity log.
+     * 
+     */
     @Import(name="activityLogEnabled")
     private @Nullable Output<Boolean> activityLogEnabled;
 
+    /**
+     * @return Whether to enable the activity log.
+     * 
+     */
     public Optional<Output<Boolean>> activityLogEnabled() {
         return Optional.ofNullable(this.activityLogEnabled);
     }
@@ -173,7 +181,7 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account to which the teams location should be added.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -184,7 +192,7 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account to which the teams location should be added.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -193,11 +201,23 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param activityLogEnabled Whether to enable the activity log.
+         * 
+         * @return builder
+         * 
+         */
         public Builder activityLogEnabled(@Nullable Output<Boolean> activityLogEnabled) {
             $.activityLogEnabled = activityLogEnabled;
             return this;
         }
 
+        /**
+         * @param activityLogEnabled Whether to enable the activity log.
+         * 
+         * @return builder
+         * 
+         */
         public Builder activityLogEnabled(Boolean activityLogEnabled) {
             return activityLogEnabled(Output.of(activityLogEnabled));
         }

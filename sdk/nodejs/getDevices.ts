@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const devices = cloudflare.getDevices({
- *     accountId: "c68973221045fe805dfb9aa520153148",
+ * const example = cloudflare.getDevices({
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  * });
  * ```
  */
@@ -33,7 +33,7 @@ export function getDevices(args: GetDevicesArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetDevicesArgs {
     /**
-     * The account for which to list the devices.
+     * The account identifier to target for the resource.
      */
     accountId: string;
 }
@@ -42,10 +42,10 @@ export interface GetDevicesArgs {
  * A collection of values returned by getDevices.
  */
 export interface GetDevicesResult {
-    readonly accountId: string;
     /**
-     * A list of device object. See below for nested attributes.
+     * The account identifier to target for the resource.
      */
+    readonly accountId: string;
     readonly devices: outputs.GetDevicesDevice[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -61,8 +61,8 @@ export interface GetDevicesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const devices = cloudflare.getDevices({
- *     accountId: "c68973221045fe805dfb9aa520153148",
+ * const example = cloudflare.getDevices({
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
  * });
  * ```
  */
@@ -75,7 +75,7 @@ export function getDevicesOutput(args: GetDevicesOutputArgs, opts?: pulumi.Invok
  */
 export interface GetDevicesOutputArgs {
     /**
-     * The account for which to list the devices.
+     * The account identifier to target for the resource.
      */
     accountId: pulumi.Input<string>;
 }

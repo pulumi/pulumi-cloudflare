@@ -12,15 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class TeamsRuleRuleSettingsCheckSessionArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Configure how fresh the session needs to be to be considered valid.
-        /// </summary>
         [Input("duration", required: true)]
         public Input<string> Duration { get; set; } = null!;
 
-        /// <summary>
-        /// Enable session enforcement for this rule.
-        /// </summary>
         [Input("enforce", required: true)]
         public Input<bool> Enforce { get; set; } = null!;
 

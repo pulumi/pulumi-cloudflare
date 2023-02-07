@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Configure how browser isolation behaves (refer to the nested schema).
+        /// Configure how browser isolation behaves.
         /// </summary>
         [Input("bisoAdminControls")]
         public Input<Inputs.TeamsRuleRuleSettingsBisoAdminControlsGetArgs>? BisoAdminControls { get; set; }
@@ -43,19 +43,25 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? BlockPageReason { get; set; }
 
         /// <summary>
-        /// Configure how session check behaves (refer to the nested schema).
+        /// Configure how session check behaves.
         /// </summary>
         [Input("checkSession")]
         public Input<Inputs.TeamsRuleRuleSettingsCheckSessionGetArgs>? CheckSession { get; set; }
 
         /// <summary>
-        /// Disable DNSSEC validation (must be Allow rule)
+        /// Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+        /// </summary>
+        [Input("egress")]
+        public Input<Inputs.TeamsRuleRuleSettingsEgressGetArgs>? Egress { get; set; }
+
+        /// <summary>
+        /// Disable DNSSEC validation (must be Allow rule).
         /// </summary>
         [Input("insecureDisableDnssecValidation")]
         public Input<bool>? InsecureDisableDnssecValidation { get; set; }
 
         /// <summary>
-        /// Settings to forward layer 4 traffic (refer to the nested schema).
+        /// Settings to forward layer 4 traffic.
         /// </summary>
         [Input("l4override")]
         public Input<Inputs.TeamsRuleRuleSettingsL4overrideGetArgs>? L4override { get; set; }

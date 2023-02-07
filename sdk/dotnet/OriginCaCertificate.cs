@@ -10,11 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Origin CA certificate used to protect traffic to your origin without involving a third party Certificate Authority.
-    /// 
-    /// &gt; This resource requires you use your Origin CA Key as the
-    /// `api_user_service_key` value.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

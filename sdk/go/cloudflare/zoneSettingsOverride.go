@@ -11,7 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource which customizes Cloudflare zone settings. Note that after destroying this resource Zone Settings will be reset to their initial values.
+// Provides a resource which customizes Cloudflare zone settings.
+//
+// > You **should not** use this resource to manage every zone setting. This
+//
+//	resource is only intended to override those which you do not want the default.
+//	Attempting to manage all settings will result in problems with the resource
+//	applying in a consistent manner.
 //
 // ## Example Usage
 //
@@ -28,7 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewZoneSettingsOverride(ctx, "test", &cloudflare.ZoneSettingsOverrideArgs{
-//				ZoneId: pulumi.Any(_var.Cloudflare_zone_id),
+//				ZoneId: pulumi.Any(d41d8cd98f00b204e9800998ecf8427e),
 //				Settings: &cloudflare.ZoneSettingsOverrideSettingsArgs{
 //					Brotli:                  pulumi.String("on"),
 //					ChallengeTtl:            pulumi.Int(2700),
@@ -58,17 +64,11 @@ import (
 type ZoneSettingsOverride struct {
 	pulumi.CustomResourceState
 
-	// Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
-	InitialSettings ZoneSettingsOverrideInitialSettingArrayOutput `pulumi:"initialSettings"`
-	// Time when this resource was created and the `initialSettings` were set.
-	InitialSettingsReadAt pulumi.StringOutput `pulumi:"initialSettingsReadAt"`
-	// Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-	// - `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-	// - `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
-	ReadonlySettings pulumi.StringArrayOutput `pulumi:"readonlySettings"`
-	// Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
-	Settings ZoneSettingsOverrideSettingsOutput `pulumi:"settings"`
-	// The DNS zone ID to which apply settings.
+	InitialSettings       ZoneSettingsOverrideInitialSettingArrayOutput `pulumi:"initialSettings"`
+	InitialSettingsReadAt pulumi.StringOutput                           `pulumi:"initialSettingsReadAt"`
+	ReadonlySettings      pulumi.StringArrayOutput                      `pulumi:"readonlySettings"`
+	Settings              ZoneSettingsOverrideSettingsOutput            `pulumi:"settings"`
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId     pulumi.StringOutput `pulumi:"zoneId"`
 	ZoneStatus pulumi.StringOutput `pulumi:"zoneStatus"`
 	ZoneType   pulumi.StringOutput `pulumi:"zoneType"`
@@ -106,34 +106,22 @@ func GetZoneSettingsOverride(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZoneSettingsOverride resources.
 type zoneSettingsOverrideState struct {
-	// Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
-	InitialSettings []ZoneSettingsOverrideInitialSetting `pulumi:"initialSettings"`
-	// Time when this resource was created and the `initialSettings` were set.
-	InitialSettingsReadAt *string `pulumi:"initialSettingsReadAt"`
-	// Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-	// - `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-	// - `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
-	ReadonlySettings []string `pulumi:"readonlySettings"`
-	// Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
-	Settings *ZoneSettingsOverrideSettings `pulumi:"settings"`
-	// The DNS zone ID to which apply settings.
+	InitialSettings       []ZoneSettingsOverrideInitialSetting `pulumi:"initialSettings"`
+	InitialSettingsReadAt *string                              `pulumi:"initialSettingsReadAt"`
+	ReadonlySettings      []string                             `pulumi:"readonlySettings"`
+	Settings              *ZoneSettingsOverrideSettings        `pulumi:"settings"`
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId     *string `pulumi:"zoneId"`
 	ZoneStatus *string `pulumi:"zoneStatus"`
 	ZoneType   *string `pulumi:"zoneType"`
 }
 
 type ZoneSettingsOverrideState struct {
-	// Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
-	InitialSettings ZoneSettingsOverrideInitialSettingArrayInput
-	// Time when this resource was created and the `initialSettings` were set.
+	InitialSettings       ZoneSettingsOverrideInitialSettingArrayInput
 	InitialSettingsReadAt pulumi.StringPtrInput
-	// Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-	// - `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-	// - `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
-	ReadonlySettings pulumi.StringArrayInput
-	// Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
-	Settings ZoneSettingsOverrideSettingsPtrInput
-	// The DNS zone ID to which apply settings.
+	ReadonlySettings      pulumi.StringArrayInput
+	Settings              ZoneSettingsOverrideSettingsPtrInput
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId     pulumi.StringPtrInput
 	ZoneStatus pulumi.StringPtrInput
 	ZoneType   pulumi.StringPtrInput
@@ -144,17 +132,15 @@ func (ZoneSettingsOverrideState) ElementType() reflect.Type {
 }
 
 type zoneSettingsOverrideArgs struct {
-	// Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
 	Settings *ZoneSettingsOverrideSettings `pulumi:"settings"`
-	// The DNS zone ID to which apply settings.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ZoneSettingsOverride resource.
 type ZoneSettingsOverrideArgs struct {
-	// Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
 	Settings ZoneSettingsOverrideSettingsPtrInput
-	// The DNS zone ID to which apply settings.
+	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
 }
 
@@ -245,29 +231,23 @@ func (o ZoneSettingsOverrideOutput) ToZoneSettingsOverrideOutputWithContext(ctx 
 	return o
 }
 
-// Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
 func (o ZoneSettingsOverrideOutput) InitialSettings() ZoneSettingsOverrideInitialSettingArrayOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverride) ZoneSettingsOverrideInitialSettingArrayOutput { return v.InitialSettings }).(ZoneSettingsOverrideInitialSettingArrayOutput)
 }
 
-// Time when this resource was created and the `initialSettings` were set.
 func (o ZoneSettingsOverrideOutput) InitialSettingsReadAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverride) pulumi.StringOutput { return v.InitialSettingsReadAt }).(pulumi.StringOutput)
 }
 
-// Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-// - `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-// - `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
 func (o ZoneSettingsOverrideOutput) ReadonlySettings() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverride) pulumi.StringArrayOutput { return v.ReadonlySettings }).(pulumi.StringArrayOutput)
 }
 
-// Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
 func (o ZoneSettingsOverrideOutput) Settings() ZoneSettingsOverrideSettingsOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverride) ZoneSettingsOverrideSettingsOutput { return v.Settings }).(ZoneSettingsOverrideSettingsOutput)
 }
 
-// The DNS zone ID to which apply settings.
+// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o ZoneSettingsOverrideOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverride) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
