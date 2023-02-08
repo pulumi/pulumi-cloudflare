@@ -5,6 +5,7 @@ env:
     6.0.x
     3.1.301
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GOLANGCI_LINT_VERSION: v1.51
   GOVERSION: 1.19.x
   JAVAVERSION: "11"
   NODEVERSION: 16.x
@@ -137,7 +138,6 @@ jobs:
         repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
         token: ${{ secrets.PULUMI_BOT_TOKEN }}
   lint:
-    container: golangci/golangci-lint:latest
     if: github.event_name == 'repository_dispatch' ||
       github.event.pull_request.head.repo.full_name == github.repository
     name: lint
@@ -158,13 +158,12 @@ jobs:
       uses: actions/setup-go@v2
       with:
         go-version: ${{ env.GOVERSION }}
-    - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.5.0
+    - name: Lint provider
+      uses: golangci/golangci-lint-action@v3
       with:
-        repo: pulumi/pulumictl
-    - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v2
-    - run: make lint_provider
+	version: ${{ env.GOLANGCI_LINT_VERSION }}
+	working-directory: provider
+	args: --config ../.golangci.yml
     - if: failure() && github.event_name == 'push'
       name: Notify Slack
       uses: 8398a7/action-slack@v3
@@ -173,7 +172,6 @@ jobs:
         fields: repo,commit,author,action
         status: ${{ job.status }}
   lint_sdk:
-    container: golangci/golangci-lint:latest
     if: github.event_name == 'repository_dispatch' ||
       github.event.pull_request.head.repo.full_name == github.repository
     name: lint-sdk
@@ -195,13 +193,12 @@ jobs:
       uses: actions/setup-go@v2
       with:
         go-version: ${{ env.GOVERSION }}
-    - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.5.0
+    - name: Lint sdk
+      uses: golangci/golangci-lint-action@v3
       with:
-        repo: pulumi/pulumictl
-    - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v2
-    - run: cd sdk/go/cloudflare && golangci-lint run -c ../../../.golangci.yml
+	version: ${{ env.GOLANGCI_LINT_VERSION }}
+	working-directory: sdk/go/cloudflare
+	args: --config ../../../.golangci.yml
     - if: failure() && github.event_name == 'push'
       name: Notify Slack
       uses: 8398a7/action-slack@v3
