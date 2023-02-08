@@ -158,12 +158,18 @@ jobs:
       uses: actions/setup-go@v2
       with:
         go-version: ${{ env.GOVERSION }}
+    - name: Install pulumictl
+      uses: jaxxstorm/action-install-gh-release@v1.5.0
+      with:
+        repo: pulumi/pulumictl
+    - name: Install Pulumi CLI
+      uses: pulumi/action-install-pulumi-cli@v2
     - name: Lint provider
       uses: golangci/golangci-lint-action@v3
       with:
         version: ${{ env.GOLANGCI_LINT_VERSION }}
         working-directory: provider
-        args: --config ../.golangci.yml ./...
+        args: --config ../.golangci.yml
     - if: failure() && github.event_name == 'push'
       name: Notify Slack
       uses: 8398a7/action-slack@v3
@@ -193,12 +199,18 @@ jobs:
       uses: actions/setup-go@v2
       with:
         go-version: ${{ env.GOVERSION }}
+    - name: Install pulumictl
+      uses: jaxxstorm/action-install-gh-release@v1.5.0
+      with:
+        repo: pulumi/pulumictl
+    - name: Install Pulumi CLI
+      uses: pulumi/action-install-pulumi-cli@v2
     - name: Lint sdk
       uses: golangci/golangci-lint-action@v3
       with:
         version: ${{ env.GOLANGCI_LINT_VERSION }}
         working-directory: sdk/go/cloudflare
-        args: --config ../../../.golangci.yml ./...
+        args: --config ../../../.golangci.yml
     - if: failure() && github.event_name == 'push'
       name: Notify Slack
       uses: 8398a7/action-slack@v3
