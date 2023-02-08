@@ -163,7 +163,7 @@ jobs:
       with:
         version: ${{ env.GOLANGCI_LINT_VERSION }}
         working-directory: provider
-        args: --config ../.golangci.yml
+        args: --config ../.golangci.yml ./...
     - if: failure() && github.event_name == 'push'
       name: Notify Slack
       uses: 8398a7/action-slack@v3
@@ -198,7 +198,7 @@ jobs:
       with:
         version: ${{ env.GOLANGCI_LINT_VERSION }}
         working-directory: sdk/go/cloudflare
-        args: --config ../../../.golangci.yml
+        args: --config ../../../.golangci.yml ./...
     - if: failure() && github.event_name == 'push'
       name: Notify Slack
       uses: 8398a7/action-slack@v3
