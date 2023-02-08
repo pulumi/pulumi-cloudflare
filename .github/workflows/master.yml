@@ -187,9 +187,9 @@ jobs:
     - name: Lint provider
       uses: golangci/golangci-lint-action@v3
       with:
-	version: ${{ env.GOLANGCI_LINT_VERSION }}
-	working-directory: provider
-	args: --config ../.golangci.yml
+        version: ${{ env.GOLANGCI_LINT_VERSION }}
+        working-directory: provider
+        args: --config ../.golangci.yml
     - if: failure() && github.event_name == 'push'
       name: Notify Slack
       uses: 8398a7/action-slack@v3
@@ -218,9 +218,9 @@ jobs:
     - name: Lint sdk
       uses: golangci/golangci-lint-action@v3
       with:
-	version: ${{ env.GOLANGCI_LINT_VERSION }}
-	working-directory: sdk/go/cloudflare
-	args: --config ../../../.golangci.yml
+        version: ${{ env.GOLANGCI_LINT_VERSION }}
+        working-directory: sdk/go/cloudflare
+        args: --config ../../../.golangci.yml
     - if: failure() && github.event_name == 'push'
       name: Notify Slack
       uses: 8398a7/action-slack@v3
