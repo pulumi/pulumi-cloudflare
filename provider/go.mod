@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/cloudflare/terraform-provider-cloudflare/shim v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.39.1
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.40.0
 )
 
 replace github.com/cloudflare/terraform-provider-cloudflare => github.com/pulumi/terraform-provider-cloudflare v1.18.2-0.20230201214319-a0214da99597
@@ -72,7 +72,7 @@ require (
 	github.com/cenkalti/backoff/v3 v3.2.2 // indirect
 	github.com/cheggaaa/pb v1.0.29 // indirect
 	github.com/cloudflare/cloudflare-go v0.59.0 // indirect
-	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220823222840-b2cee3be8c57 // indirect
+	github.com/cloudflare/terraform-provider-cloudflare v3.34.0+incompatible // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dimchansky/utfbom v1.1.1 // indirect
 	github.com/djherbis/times v1.5.0 // indirect
