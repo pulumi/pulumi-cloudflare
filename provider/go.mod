@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/cloudflare/terraform-provider-cloudflare/shim v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.39.1
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.41.0
 )
 
 replace github.com/cloudflare/terraform-provider-cloudflare => github.com/pulumi/terraform-provider-cloudflare v1.18.2-0.20230201214319-a0214da99597
