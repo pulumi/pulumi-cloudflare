@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-cloudflare/provider/v4
 go 1.19
 
 require (
-	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220823222840-b2cee3be8c57
+	github.com/cloudflare/terraform-provider-cloudflare v0.0.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.41.0
 )
 

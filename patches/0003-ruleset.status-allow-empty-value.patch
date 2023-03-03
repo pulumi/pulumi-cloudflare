@@ -1,0 +1,156 @@
+From 3c8049791ffbf7cc98d62c691037ad03e800da5c Mon Sep 17 00:00:00 2001
+From: Ian Wahbe <ian@wahbe.com>
+Date: Fri, 3 Mar 2023 17:35:32 +0100
+Subject: [PATCH] ruleset.status: allow empty value
+
+---
+ .../resource_cloudflare_ruleset.go            | 28 ++++-------
+ .../schema_cloudflare_ruleset.go              | 46 ++++++++-----------
+ 2 files changed, 27 insertions(+), 47 deletions(-)
+
+diff --git a/internal/sdkv2provider/resource_cloudflare_ruleset.go b/internal/sdkv2provider/resource_cloudflare_ruleset.go
+index 14a32628..af88c8fc 100644
+--- a/internal/sdkv2provider/resource_cloudflare_ruleset.go
++++ b/internal/sdkv2provider/resource_cloudflare_ruleset.go
+@@ -736,10 +736,8 @@ func buildRulesetRulesFromResource(d *schema.ResourceData) ([]cloudflare.Ruleset
+ 						var rules []cloudflare.RulesetRuleActionParametersRules
+ 
+ 						for overrideCounter, overrideParamValue := range pValue.([]interface{}) {
+-							if value, ok := d.GetOk(fmt.Sprintf("rules.%d.action_parameters.0.overrides.%d.status", rulesCounter, overrideCounter)); ok {
+-								if value.(string) != "" {
+-									overrideConfiguration.Enabled = statusToAPIEnabledFieldConversion(value.(string))
+-								}
++							if value, ok := d.Get(fmt.Sprintf("rules.%d.action_parameters.0.overrides.%d.status", rulesCounter, overrideCounter)).(string); ok {
++								overrideConfiguration.Enabled = statusToAPIEnabledFieldConversion(value)
+ 							}
+ 
+ 							if val, ok := overrideParamValue.(map[string]interface{})["action"]; ok {
+@@ -759,10 +757,8 @@ func buildRulesetRulesFromResource(d *schema.ResourceData) ([]cloudflare.Ruleset
+ 										Action:   cData["action"].(string),
+ 									}
+ 
+-									if value, ok := d.GetOk(fmt.Sprintf("rules.%d.action_parameters.0.overrides.%d.categories.%d.status", rulesCounter, overrideCounter, categoryCounter)); ok {
+-										if value != "" {
+-											categoryOverride.Enabled = statusToAPIEnabledFieldConversion(value.(string))
+-										}
++									if value, ok := d.Get(fmt.Sprintf("rules.%d.action_parameters.0.overrides.%d.categories.%d.status", rulesCounter, overrideCounter, categoryCounter)).(string); ok {
++										categoryOverride.Enabled = statusToAPIEnabledFieldConversion(value)
+ 									}
+ 
+ 									categories = append(categories, categoryOverride)
+@@ -780,10 +776,8 @@ func buildRulesetRulesFromResource(d *schema.ResourceData) ([]cloudflare.Ruleset
+ 										SensitivityLevel: rData["sensitivity_level"].(string),
+ 									}
+ 
+-									if value, ok := d.GetOk(fmt.Sprintf("rules.%d.action_parameters.0.overrides.%d.rules.%d.status", rulesCounter, overrideCounter, ruleOverrideCounter)); ok {
+-										if value != "" {
+-											ruleOverride.Enabled = statusToAPIEnabledFieldConversion(value.(string))
+-										}
++									if value, ok := d.Get(fmt.Sprintf("rules.%d.action_parameters.0.overrides.%d.rules.%d.status", rulesCounter, overrideCounter, ruleOverrideCounter)).(string); ok {
++										ruleOverride.Enabled = statusToAPIEnabledFieldConversion(value)
+ 									}
+ 
+ 									rules = append(rules, ruleOverride)
+@@ -1355,14 +1349,10 @@ func statusToAPIEnabledFieldConversion(s string) *bool {
+ // converts it to the Terraform schema/state key "status".
+ func apiEnabledToStatusFieldConversion(s *bool) string {
+ 	if s == nil {
+-		return ""
++		return apiEnabledStatusDefault
+ 	}
+-
+-	if *s == true {
++	if *s {
+ 		return "enabled"
+-	} else if *s == false {
+-		return "disabled"
+-	} else {
+-		return ""
+ 	}
++	return "disabled"
+ }
+diff --git a/internal/sdkv2provider/schema_cloudflare_ruleset.go b/internal/sdkv2provider/schema_cloudflare_ruleset.go
+index 238c99db..9fbaf8dc 100644
+--- a/internal/sdkv2provider/schema_cloudflare_ruleset.go
++++ b/internal/sdkv2provider/schema_cloudflare_ruleset.go
+@@ -248,13 +248,7 @@ func resourceCloudflareRulesetSchema() map[string]*schema.Schema {
+ 												Description: "Defines if the current ruleset-level override enables or disables the ruleset.",
+ 												Deprecated:  "Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.",
+ 											},
+-											"status": {
+-												Type:         schema.TypeString,
+-												Optional:     true,
+-												Default:      "",
+-												ValidateFunc: validation.StringInSlice([]string{"enabled", "disabled"}, false),
+-												Description:  fmt.Sprintf("Defines if the current ruleset-level override enables or disables the ruleset. %s", renderAvailableDocumentationValuesStringSlice([]string{"enabled", "disabled"})),
+-											},
++											"status": statusSchemaField("Defines if the current ruleset-level override enables or disables the ruleset."),
+ 											"action": {
+ 												Type:         schema.TypeString,
+ 												Optional:     true,
+@@ -290,13 +284,7 @@ func resourceCloudflareRulesetSchema() map[string]*schema.Schema {
+ 															Description: "Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.",
+ 															Deprecated:  "Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.",
+ 														},
+-														"status": {
+-															Type:         schema.TypeString,
+-															Optional:     true,
+-															Default:      "",
+-															ValidateFunc: validation.StringInSlice([]string{"enabled", "disabled"}, false),
+-															Description:  fmt.Sprintf("Defines if the current tag-level override enables or disables the ruleset rules with the specified tag. %s", renderAvailableDocumentationValuesStringSlice([]string{"enabled", "disabled"})),
+-														},
++														"status": statusSchemaField("Defines if the current tag-level override enables or disables the ruleset rules with the specified tag."),
+ 													},
+ 												},
+ 											},
+@@ -323,13 +311,7 @@ func resourceCloudflareRulesetSchema() map[string]*schema.Schema {
+ 															Description: "Defines if the current rule-level override enables or disables the rule.",
+ 															Deprecated:  "Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.",
+ 														},
+-														"status": {
+-															Type:         schema.TypeString,
+-															Optional:     true,
+-															Default:      "",
+-															ValidateFunc: validation.StringInSlice([]string{"enabled", "disabled"}, false),
+-															Description:  fmt.Sprintf("Defines if the current rule-level override enables or disables the rule. %s", renderAvailableDocumentationValuesStringSlice([]string{"enabled", "disabled"})),
+-														},
++														"status": statusSchemaField("Defines if the current rule-level override enables or disables the rule."),
+ 														"score_threshold": {
+ 															Type:        schema.TypeInt,
+ 															Optional:    true,
+@@ -968,13 +950,7 @@ func resourceCloudflareRulesetSchema() map[string]*schema.Schema {
+ 									Description: "Override the default logging behavior when a rule is matched.",
+ 									Deprecated:  "Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.",
+ 								},
+-								"status": {
+-									Type:         schema.TypeString,
+-									Optional:     true,
+-									Default:      "",
+-									ValidateFunc: validation.StringInSlice([]string{"enabled", "disabled"}, false),
+-									Description:  fmt.Sprintf("Override the default logging behavior when a rule is matched. %s", renderAvailableDocumentationValuesStringSlice([]string{"enabled", "disabled"})),
+-								},
++								"status": statusSchemaField("Override the default logging behavior when a rule is matched."),
+ 							},
+ 						},
+ 					},
+@@ -983,3 +959,17 @@ func resourceCloudflareRulesetSchema() map[string]*schema.Schema {
+ 		},
+ 	}
+ }
++
++const apiEnabledStatusDefault = ""
++
++func statusSchemaField(doc string) *schema.Schema {
++	validOptions := []string{"enabled", "disabled", apiEnabledStatusDefault}
++	return &schema.Schema{
++		Type:         schema.TypeString,
++		Optional:     true,
++		Default:      apiEnabledStatusDefault,
++		ValidateFunc: validation.StringInSlice(validOptions, false),
++		Description: fmt.Sprintf(doc+" %s",
++			renderAvailableDocumentationValuesStringSlice(validOptions)),
++	}
++}
+-- 
+2.39.1
+
