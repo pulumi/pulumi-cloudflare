@@ -1,0 +1,29 @@
+From 2f44723e7404918c7b76962f3064e5fd28492d68 Mon Sep 17 00:00:00 2001
+From: Ian Wahbe <ian@wahbe.com>
+Date: Fri, 3 Mar 2023 12:02:17 +0100
+Subject: [PATCH] Add shim
+
+---
+ shim/shim.go | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+ create mode 100644 shim/shim.go
+
+diff --git a/shim/shim.go b/shim/shim.go
+new file mode 100644
+index 00000000..244d75c8
+--- /dev/null
++++ b/shim/shim.go
+@@ -0,0 +1,10 @@
++package shim
++
++import (
++	provider "github.com/cloudflare/terraform-provider-cloudflare/internal/sdkv2provider"
++	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
++)
++
++func NewProvider() *schema.Provider {
++	return provider.New("")()
++}
+-- 
+2.39.1
+
