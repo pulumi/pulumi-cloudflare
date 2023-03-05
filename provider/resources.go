@@ -39,14 +39,15 @@ func Provider() tfbridge.ProviderInfo {
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "cloudflare",
-		Description: "A Pulumi package for creating and managing Cloudflare cloud resources.",
-		Keywords:    []string{"pulumi", "cloudflare"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		GitHubOrg:   "cloudflare",
-		Repository:  "https://github.com/pulumi/pulumi-cloudflare",
+		P:                p,
+		Name:             "cloudflare",
+		Description:      "A Pulumi package for creating and managing Cloudflare cloud resources.",
+		Keywords:         []string{"pulumi", "cloudflare"},
+		License:          "Apache-2.0",
+		Homepage:         "https://pulumi.io",
+		GitHubOrg:        "cloudflare",
+		Repository:       "https://github.com/pulumi/pulumi-cloudflare",
+		UpstreamRepoPath: "./upstream",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"rps": {
 				Default: &tfbridge.DefaultInfo{
