@@ -51,19 +51,19 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
-	if isZero(args.ApiClientLogging) {
+	if args.ApiClientLogging == nil {
 		args.ApiClientLogging = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "CLOUDFLARE_API_CLIENT_LOGGING").(bool))
 	}
-	if isZero(args.MaxBackoff) {
+	if args.MaxBackoff == nil {
 		args.MaxBackoff = pulumi.IntPtr(getEnvOrDefault(30, parseEnvInt, "CLOUDFLARE_MAX_BACKOFF").(int))
 	}
-	if isZero(args.MinBackoff) {
+	if args.MinBackoff == nil {
 		args.MinBackoff = pulumi.IntPtr(getEnvOrDefault(1, parseEnvInt, "CLOUDFLARE_MIN_BACKOFF").(int))
 	}
-	if isZero(args.Retries) {
+	if args.Retries == nil {
 		args.Retries = pulumi.IntPtr(getEnvOrDefault(3, parseEnvInt, "CLOUDFLARE_RETRIES").(int))
 	}
-	if isZero(args.Rps) {
+	if args.Rps == nil {
 		args.Rps = pulumi.IntPtr(getEnvOrDefault(4, parseEnvInt, "CLOUDFLARE_RPS").(int))
 	}
 	var resource Provider
