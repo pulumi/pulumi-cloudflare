@@ -21,7 +21,9 @@ import (
 	provShim "github.com/cloudflare/terraform-provider-cloudflare/shim"
 	"github.com/pulumi/pulumi-cloudflare/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 // all of the token components used below.
@@ -296,5 +298,8 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
+	err := x.ComputeDefaults(&prov, x.TokensSingleModule("cloudflare_", mainMod,
+		x.MakeStandardToken(mainPkg)))
+	contract.AssertNoError(err)
 	return prov
 }
