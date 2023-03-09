@@ -19,6 +19,8 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly int? Period;
         public readonly int? RequestsPerPeriod;
         public readonly bool? RequestsToOrigin;
+        public readonly int? ScorePerPeriod;
+        public readonly string? ScoreResponseHeaderName;
 
         [OutputConstructor]
         private RulesetRuleRatelimit(
@@ -32,7 +34,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             int? requestsPerPeriod,
 
-            bool? requestsToOrigin)
+            bool? requestsToOrigin,
+
+            int? scorePerPeriod,
+
+            string? scoreResponseHeaderName)
         {
             Characteristics = characteristics;
             CountingExpression = countingExpression;
@@ -40,6 +46,8 @@ namespace Pulumi.Cloudflare.Outputs
             Period = period;
             RequestsPerPeriod = requestsPerPeriod;
             RequestsToOrigin = requestsToOrigin;
+            ScorePerPeriod = scorePerPeriod;
+            ScoreResponseHeaderName = scoreResponseHeaderName;
         }
     }
 }

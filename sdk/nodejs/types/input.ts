@@ -1006,6 +1006,52 @@ export interface GetLoadBalancerPoolsPoolOriginHeaderArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetRulesetsFilter {
+    /**
+     * The ID of the Ruleset to target.
+     */
+    id?: string;
+    /**
+     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+     */
+    kind?: string;
+    /**
+     * Name of the ruleset.
+     */
+    name?: string;
+    /**
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
+     */
+    phase?: string;
+    /**
+     * Version of the ruleset to filter on.
+     */
+    version?: string;
+}
+
+export interface GetRulesetsFilterArgs {
+    /**
+     * The ID of the Ruleset to target.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+     */
+    kind?: pulumi.Input<string>;
+    /**
+     * Name of the ruleset.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
+     */
+    phase?: pulumi.Input<string>;
+    /**
+     * Version of the ruleset to filter on.
+     */
+    version?: pulumi.Input<string>;
+}
+
 export interface GetWafGroupsFilter {
     /**
      * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
@@ -1753,11 +1799,11 @@ export interface PageRuleActionsCacheKeyFields {
     /**
      * Controls what cookies go into Cache Key:
      */
-    cookie: pulumi.Input<inputs.PageRuleActionsCacheKeyFieldsCookie>;
+    cookie?: pulumi.Input<inputs.PageRuleActionsCacheKeyFieldsCookie>;
     /**
      * Controls what HTTP headers go into Cache Key:
      */
-    header: pulumi.Input<inputs.PageRuleActionsCacheKeyFieldsHeader>;
+    header?: pulumi.Input<inputs.PageRuleActionsCacheKeyFieldsHeader>;
     /**
      * Controls which Host header goes into Cache Key:
      */
@@ -1924,7 +1970,7 @@ export interface PagesProjectDeploymentConfigsPreview {
 export interface PagesProjectDeploymentConfigsPreviewServiceBinding {
     environment?: pulumi.Input<string>;
     /**
-     * Name of the project.
+     * Name of the project. **Modifying this attribute will force creation of a new resource.**
      */
     name: pulumi.Input<string>;
     service: pulumi.Input<string>;
@@ -1947,7 +1993,7 @@ export interface PagesProjectDeploymentConfigsProduction {
 export interface PagesProjectDeploymentConfigsProductionServiceBinding {
     environment?: pulumi.Input<string>;
     /**
-     * Name of the project.
+     * Name of the project. **Modifying this attribute will force creation of a new resource.**
      */
     name: pulumi.Input<string>;
     service: pulumi.Input<string>;
@@ -2112,6 +2158,10 @@ export interface RulesetRule {
      * Unique rule identifier.
      */
     id?: pulumi.Input<string>;
+    /**
+     * The most recent update to this rule.
+     */
+    lastUpdated?: pulumi.Input<string>;
     /**
      * List parameters to configure how the rule generates logs.
      */
@@ -2388,6 +2438,8 @@ export interface RulesetRuleRatelimit {
     period?: pulumi.Input<number>;
     requestsPerPeriod?: pulumi.Input<number>;
     requestsToOrigin?: pulumi.Input<boolean>;
+    scorePerPeriod?: pulumi.Input<number>;
+    scoreResponseHeaderName?: pulumi.Input<string>;
 }
 
 export interface SpectrumApplicationDns {
@@ -2728,6 +2780,17 @@ export interface WorkerScriptPlainTextBinding {
      * The plain text you want to store.
      */
     text: pulumi.Input<string>;
+}
+
+export interface WorkerScriptQueueBinding {
+    /**
+     * The name of the global variable for the binding in your Worker code.
+     */
+    binding: pulumi.Input<string>;
+    /**
+     * Name of the queue you want to use.
+     */
+    queue: pulumi.Input<string>;
 }
 
 export interface WorkerScriptR2BucketBinding {

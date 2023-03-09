@@ -261,7 +261,7 @@ class ArgoTunnel(pulumi.CustomResource):
             __props__.__dict__["secret"] = None if secret is None else pulumi.Output.secret(secret)
             __props__.__dict__["cname"] = None
             __props__.__dict__["tunnel_token"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret", "tunnelToken"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ArgoTunnel, __self__).__init__(
             'cloudflare:index/argoTunnel:ArgoTunnel',

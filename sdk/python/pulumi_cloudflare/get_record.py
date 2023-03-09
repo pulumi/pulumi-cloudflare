@@ -178,8 +178,8 @@ def get_record(hostname: Optional[str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example = cloudflare.get_record(zone_id=var["zone_id"],
-        hostname="example.com")
+    example = cloudflare.get_record(hostname="example.com",
+        zone_id="0da42c8d2132a9ddaf714f9e7c920711")
     ```
 
 
@@ -225,8 +225,8 @@ def get_record_output(hostname: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example = cloudflare.get_record(zone_id=var["zone_id"],
-        hostname="example.com")
+    example = cloudflare.get_record(hostname="example.com",
+        zone_id="0da42c8d2132a9ddaf714f9e7c920711")
     ```
 
 

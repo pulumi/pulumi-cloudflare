@@ -60,6 +60,20 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.requestsToOrigin);
     }
 
+    @Import(name="scorePerPeriod")
+    private @Nullable Output<Integer> scorePerPeriod;
+
+    public Optional<Output<Integer>> scorePerPeriod() {
+        return Optional.ofNullable(this.scorePerPeriod);
+    }
+
+    @Import(name="scoreResponseHeaderName")
+    private @Nullable Output<String> scoreResponseHeaderName;
+
+    public Optional<Output<String>> scoreResponseHeaderName() {
+        return Optional.ofNullable(this.scoreResponseHeaderName);
+    }
+
     private RulesetRuleRatelimitArgs() {}
 
     private RulesetRuleRatelimitArgs(RulesetRuleRatelimitArgs $) {
@@ -69,6 +83,8 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         this.period = $.period;
         this.requestsPerPeriod = $.requestsPerPeriod;
         this.requestsToOrigin = $.requestsToOrigin;
+        this.scorePerPeriod = $.scorePerPeriod;
+        this.scoreResponseHeaderName = $.scoreResponseHeaderName;
     }
 
     public static Builder builder() {
@@ -145,6 +161,24 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
 
         public Builder requestsToOrigin(Boolean requestsToOrigin) {
             return requestsToOrigin(Output.of(requestsToOrigin));
+        }
+
+        public Builder scorePerPeriod(@Nullable Output<Integer> scorePerPeriod) {
+            $.scorePerPeriod = scorePerPeriod;
+            return this;
+        }
+
+        public Builder scorePerPeriod(Integer scorePerPeriod) {
+            return scorePerPeriod(Output.of(scorePerPeriod));
+        }
+
+        public Builder scoreResponseHeaderName(@Nullable Output<String> scoreResponseHeaderName) {
+            $.scoreResponseHeaderName = scoreResponseHeaderName;
+            return this;
+        }
+
+        public Builder scoreResponseHeaderName(String scoreResponseHeaderName) {
+            return scoreResponseHeaderName(Output.of(scoreResponseHeaderName));
         }
 
         public RulesetRuleRatelimitArgs build() {

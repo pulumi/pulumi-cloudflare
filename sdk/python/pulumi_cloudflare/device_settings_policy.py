@@ -24,6 +24,7 @@ class DeviceSettingsPolicyArgs:
                  default: Optional[pulumi.Input[bool]] = None,
                  disable_auto_fallback: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 exclude_office_ips: Optional[pulumi.Input[bool]] = None,
                  match: Optional[pulumi.Input[str]] = None,
                  precedence: Optional[pulumi.Input[int]] = None,
                  service_mode_v2_mode: Optional[pulumi.Input[str]] = None,
@@ -42,6 +43,7 @@ class DeviceSettingsPolicyArgs:
         :param pulumi.Input[bool] default: Whether the policy refers to the default account policy.
         :param pulumi.Input[bool] disable_auto_fallback: Whether to disable auto fallback for this policy.
         :param pulumi.Input[bool] enabled: Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
+        :param pulumi.Input[bool] exclude_office_ips: Whether to add Microsoft IPs to split tunnel exclusions.
         :param pulumi.Input[str] match: Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.
         :param pulumi.Input[int] precedence: The precedence of the policy. Lower values indicate higher precedence.
         :param pulumi.Input[str] service_mode_v2_mode: The service mode. Defaults to `warp`.
@@ -67,6 +69,8 @@ class DeviceSettingsPolicyArgs:
             pulumi.set(__self__, "disable_auto_fallback", disable_auto_fallback)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if exclude_office_ips is not None:
+            pulumi.set(__self__, "exclude_office_ips", exclude_office_ips)
         if match is not None:
             pulumi.set(__self__, "match", match)
         if precedence is not None:
@@ -201,6 +205,18 @@ class DeviceSettingsPolicyArgs:
         pulumi.set(self, "enabled", value)
 
     @property
+    @pulumi.getter(name="excludeOfficeIps")
+    def exclude_office_ips(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to add Microsoft IPs to split tunnel exclusions.
+        """
+        return pulumi.get(self, "exclude_office_ips")
+
+    @exclude_office_ips.setter
+    def exclude_office_ips(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "exclude_office_ips", value)
+
+    @property
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input[str]]:
         """
@@ -285,6 +301,7 @@ class _DeviceSettingsPolicyState:
                  default: Optional[pulumi.Input[bool]] = None,
                  disable_auto_fallback: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 exclude_office_ips: Optional[pulumi.Input[bool]] = None,
                  match: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  precedence: Optional[pulumi.Input[int]] = None,
@@ -303,6 +320,7 @@ class _DeviceSettingsPolicyState:
         :param pulumi.Input[bool] default: Whether the policy refers to the default account policy.
         :param pulumi.Input[bool] disable_auto_fallback: Whether to disable auto fallback for this policy.
         :param pulumi.Input[bool] enabled: Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
+        :param pulumi.Input[bool] exclude_office_ips: Whether to add Microsoft IPs to split tunnel exclusions.
         :param pulumi.Input[str] match: Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.
         :param pulumi.Input[str] name: Name of the policy.
         :param pulumi.Input[int] precedence: The precedence of the policy. Lower values indicate higher precedence.
@@ -329,6 +347,8 @@ class _DeviceSettingsPolicyState:
             pulumi.set(__self__, "disable_auto_fallback", disable_auto_fallback)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if exclude_office_ips is not None:
+            pulumi.set(__self__, "exclude_office_ips", exclude_office_ips)
         if match is not None:
             pulumi.set(__self__, "match", match)
         if name is not None:
@@ -453,6 +473,18 @@ class _DeviceSettingsPolicyState:
         pulumi.set(self, "enabled", value)
 
     @property
+    @pulumi.getter(name="excludeOfficeIps")
+    def exclude_office_ips(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to add Microsoft IPs to split tunnel exclusions.
+        """
+        return pulumi.get(self, "exclude_office_ips")
+
+    @exclude_office_ips.setter
+    def exclude_office_ips(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "exclude_office_ips", value)
+
+    @property
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input[str]]:
         """
@@ -551,6 +583,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
                  default: Optional[pulumi.Input[bool]] = None,
                  disable_auto_fallback: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 exclude_office_ips: Optional[pulumi.Input[bool]] = None,
                  match: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  precedence: Optional[pulumi.Input[int]] = None,
@@ -578,6 +611,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
             default=False,
             disable_auto_fallback=True,
             enabled=True,
+            exclude_office_ips=False,
             match="any(identity.groups.name[*] in {\\"Developers\\"})",
             name="Developers WARP settings policy",
             precedence=10,
@@ -606,6 +640,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] default: Whether the policy refers to the default account policy.
         :param pulumi.Input[bool] disable_auto_fallback: Whether to disable auto fallback for this policy.
         :param pulumi.Input[bool] enabled: Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
+        :param pulumi.Input[bool] exclude_office_ips: Whether to add Microsoft IPs to split tunnel exclusions.
         :param pulumi.Input[str] match: Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.
         :param pulumi.Input[str] name: Name of the policy.
         :param pulumi.Input[int] precedence: The precedence of the policy. Lower values indicate higher precedence.
@@ -639,6 +674,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
             default=False,
             disable_auto_fallback=True,
             enabled=True,
+            exclude_office_ips=False,
             match="any(identity.groups.name[*] in {\\"Developers\\"})",
             name="Developers WARP settings policy",
             precedence=10,
@@ -680,6 +716,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
                  default: Optional[pulumi.Input[bool]] = None,
                  disable_auto_fallback: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 exclude_office_ips: Optional[pulumi.Input[bool]] = None,
                  match: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  precedence: Optional[pulumi.Input[int]] = None,
@@ -707,6 +744,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
             __props__.__dict__["default"] = default
             __props__.__dict__["disable_auto_fallback"] = disable_auto_fallback
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["exclude_office_ips"] = exclude_office_ips
             __props__.__dict__["match"] = match
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
@@ -735,6 +773,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
             default: Optional[pulumi.Input[bool]] = None,
             disable_auto_fallback: Optional[pulumi.Input[bool]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
+            exclude_office_ips: Optional[pulumi.Input[bool]] = None,
             match: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             precedence: Optional[pulumi.Input[int]] = None,
@@ -758,6 +797,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] default: Whether the policy refers to the default account policy.
         :param pulumi.Input[bool] disable_auto_fallback: Whether to disable auto fallback for this policy.
         :param pulumi.Input[bool] enabled: Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
+        :param pulumi.Input[bool] exclude_office_ips: Whether to add Microsoft IPs to split tunnel exclusions.
         :param pulumi.Input[str] match: Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.
         :param pulumi.Input[str] name: Name of the policy.
         :param pulumi.Input[int] precedence: The precedence of the policy. Lower values indicate higher precedence.
@@ -779,6 +819,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         __props__.__dict__["default"] = default
         __props__.__dict__["disable_auto_fallback"] = disable_auto_fallback
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["exclude_office_ips"] = exclude_office_ips
         __props__.__dict__["match"] = match
         __props__.__dict__["name"] = name
         __props__.__dict__["precedence"] = precedence
@@ -859,6 +900,14 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="excludeOfficeIps")
+    def exclude_office_ips(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to add Microsoft IPs to split tunnel exclusions.
+        """
+        return pulumi.get(self, "exclude_office_ips")
 
     @property
     @pulumi.getter

@@ -177,7 +177,7 @@ export class PagesProject extends pulumi.CustomResource {
      */
     public /*out*/ readonly domains!: pulumi.Output<string[]>;
     /**
-     * Name of the project.
+     * Name of the project. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -266,7 +266,7 @@ export interface PagesProjectState {
      */
     domains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Name of the project.
+     * Name of the project. **Modifying this attribute will force creation of a new resource.**
      */
     name?: pulumi.Input<string>;
     /**
@@ -300,7 +300,7 @@ export interface PagesProjectArgs {
      */
     deploymentConfigs?: pulumi.Input<inputs.PagesProjectDeploymentConfigs>;
     /**
-     * Name of the project.
+     * Name of the project. **Modifying this attribute will force creation of a new resource.**
      */
     name: pulumi.Input<string>;
     /**

@@ -15,14 +15,14 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Controls what cookies go into Cache Key:
         /// </summary>
-        [Input("cookie", required: true)]
-        public Input<Inputs.PageRuleActionsCacheKeyFieldsCookieArgs> Cookie { get; set; } = null!;
+        [Input("cookie")]
+        public Input<Inputs.PageRuleActionsCacheKeyFieldsCookieArgs>? Cookie { get; set; }
 
         /// <summary>
         /// Controls what HTTP headers go into Cache Key:
         /// </summary>
-        [Input("header", required: true)]
-        public Input<Inputs.PageRuleActionsCacheKeyFieldsHeaderArgs> Header { get; set; } = null!;
+        [Input("header")]
+        public Input<Inputs.PageRuleActionsCacheKeyFieldsHeaderArgs>? Header { get; set; }
 
         /// <summary>
         /// Controls which Host header goes into Cache Key:

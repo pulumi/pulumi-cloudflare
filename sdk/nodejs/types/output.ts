@@ -964,6 +964,305 @@ export interface GetLoadBalancerPoolsPoolOriginHeader {
     values: string[];
 }
 
+export interface GetRulesetsFilter {
+    /**
+     * The ID of the Ruleset to target.
+     */
+    id?: string;
+    /**
+     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+     */
+    kind?: string;
+    /**
+     * Name of the ruleset.
+     */
+    name?: string;
+    /**
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
+     */
+    phase?: string;
+    /**
+     * Version of the ruleset to filter on.
+     */
+    version?: string;
+}
+
+export interface GetRulesetsRuleset {
+    description?: string;
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    kind: string;
+    name: string;
+    phase: string;
+    rules?: outputs.GetRulesetsRulesetRule[];
+    version: string;
+}
+
+export interface GetRulesetsRulesetRule {
+    action?: string;
+    actionParameters?: outputs.GetRulesetsRulesetRuleActionParameters;
+    description?: string;
+    enabled?: boolean;
+    exposedCredentialCheck?: outputs.GetRulesetsRulesetRuleExposedCredentialCheck;
+    expression: string;
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    lastUpdated?: string;
+    logging?: outputs.GetRulesetsRulesetRuleLogging;
+    ratelimit?: outputs.GetRulesetsRulesetRuleRatelimit;
+    ref: string;
+    version: string;
+}
+
+export interface GetRulesetsRulesetRuleActionParameters {
+    automaticHttpsRewrites?: boolean;
+    autominifies?: outputs.GetRulesetsRulesetRuleActionParametersAutominify[];
+    bic?: boolean;
+    browserTtl?: outputs.GetRulesetsRulesetRuleActionParametersBrowserTtl;
+    cache?: boolean;
+    cacheKey?: outputs.GetRulesetsRulesetRuleActionParametersCacheKey;
+    content?: string;
+    contentType?: string;
+    cookieFields?: string[];
+    disableApps?: boolean;
+    disableRailgun?: boolean;
+    disableZaraz?: boolean;
+    edgeTtl?: outputs.GetRulesetsRulesetRuleActionParametersEdgeTtl;
+    emailObfuscation?: boolean;
+    fromList?: outputs.GetRulesetsRulesetRuleActionParametersFromList;
+    fromValue?: outputs.GetRulesetsRulesetRuleActionParametersFromValue;
+    headers?: outputs.GetRulesetsRulesetRuleActionParametersHeader[];
+    hostHeader?: string;
+    hotlinkProtection?: boolean;
+    /**
+     * The ID of this resource.
+     */
+    id?: string;
+    increment?: number;
+    matchedData?: outputs.GetRulesetsRulesetRuleActionParametersMatchedData;
+    mirage?: boolean;
+    opportunisticEncryption?: boolean;
+    origin?: outputs.GetRulesetsRulesetRuleActionParametersOrigin;
+    originErrorPagePassthru?: boolean;
+    overrides?: outputs.GetRulesetsRulesetRuleActionParametersOverrides;
+    phases?: string[];
+    polish?: string;
+    products?: string[];
+    requestFields?: string[];
+    respectStrongEtags?: boolean;
+    responseFields?: string[];
+    responses?: outputs.GetRulesetsRulesetRuleActionParametersResponse[];
+    rocketLoader?: boolean;
+    rules?: {[key: string]: string};
+    ruleset?: string;
+    rulesets?: string[];
+    securityLevel?: string;
+    serveStale?: outputs.GetRulesetsRulesetRuleActionParametersServeStale;
+    serverSideExcludes?: boolean;
+    sni?: outputs.GetRulesetsRulesetRuleActionParametersSni;
+    ssl?: string;
+    statusCode?: number;
+    sxg?: boolean;
+    uri?: outputs.GetRulesetsRulesetRuleActionParametersUri;
+    version: string;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersAutominify {
+    css?: boolean;
+    html?: boolean;
+    js?: boolean;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersBrowserTtl {
+    default?: number;
+    mode: string;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersCacheKey {
+    cacheByDeviceType?: boolean;
+    cacheDeceptionArmor?: boolean;
+    customKey?: outputs.GetRulesetsRulesetRuleActionParametersCacheKeyCustomKey;
+    ignoreQueryStringsOrder?: boolean;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersCacheKeyCustomKey {
+    cookie?: outputs.GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyCookie;
+    header?: outputs.GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader;
+    host?: outputs.GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHost;
+    queryString?: outputs.GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryString;
+    user?: outputs.GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUser;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyCookie {
+    checkPresences?: string[];
+    includes?: string[];
+}
+
+export interface GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader {
+    checkPresences?: string[];
+    excludeOrigin?: boolean;
+    includes?: string[];
+}
+
+export interface GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHost {
+    resolved?: boolean;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryString {
+    excludes?: string[];
+    includes?: string[];
+}
+
+export interface GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUser {
+    deviceType?: boolean;
+    geo?: boolean;
+    lang?: boolean;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersEdgeTtl {
+    default?: number;
+    mode: string;
+    statusCodeTtls?: outputs.GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtl[];
+}
+
+export interface GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtl {
+    statusCode?: number;
+    statusCodeRanges?: outputs.GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange[];
+    value: number;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
+    from?: number;
+    to?: number;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersFromList {
+    key: string;
+    name: string;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersFromValue {
+    preserveQueryString?: boolean;
+    statusCode?: number;
+    targetUrl?: outputs.GetRulesetsRulesetRuleActionParametersFromValueTargetUrl;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersFromValueTargetUrl {
+    expression?: string;
+    value?: string;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersHeader {
+    expression?: string;
+    name?: string;
+    operation?: string;
+    value?: string;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersMatchedData {
+    publicKey?: string;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersOrigin {
+    host?: string;
+    port?: number;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersOverrides {
+    action?: string;
+    categories?: outputs.GetRulesetsRulesetRuleActionParametersOverridesCategory[];
+    /**
+     * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
+     */
+    enabled?: boolean;
+    rules?: outputs.GetRulesetsRulesetRuleActionParametersOverridesRule[];
+    sensitivityLevel?: string;
+    status?: string;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersOverridesCategory {
+    action?: string;
+    category?: string;
+    /**
+     * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
+     */
+    enabled?: boolean;
+    status?: string;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersOverridesRule {
+    action?: string;
+    /**
+     * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
+     */
+    enabled?: boolean;
+    /**
+     * The ID of this resource.
+     */
+    id?: string;
+    scoreThreshold?: number;
+    sensitivityLevel?: string;
+    status?: string;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersResponse {
+    content?: string;
+    contentType?: string;
+    statusCode?: number;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersServeStale {
+    disableStaleWhileUpdating?: boolean;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersSni {
+    value?: string;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersUri {
+    origin?: boolean;
+    path?: outputs.GetRulesetsRulesetRuleActionParametersUriPath;
+    query?: outputs.GetRulesetsRulesetRuleActionParametersUriQuery;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersUriPath {
+    expression?: string;
+    value?: string;
+}
+
+export interface GetRulesetsRulesetRuleActionParametersUriQuery {
+    expression?: string;
+    value?: string;
+}
+
+export interface GetRulesetsRulesetRuleExposedCredentialCheck {
+    passwordExpression?: string;
+    usernameExpression?: string;
+}
+
+export interface GetRulesetsRulesetRuleLogging {
+    /**
+     * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
+     */
+    enabled?: boolean;
+    status?: string;
+}
+
+export interface GetRulesetsRulesetRuleRatelimit {
+    characteristics?: string[];
+    countingExpression?: string;
+    mitigationTimeout?: number;
+    period?: number;
+    requestsPerPeriod?: number;
+    requestsToOrigin?: boolean;
+    scorePerPeriod?: number;
+    scoreResponseHeaderName?: string;
+}
+
 export interface GetWafGroupsFilter {
     /**
      * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
@@ -1744,11 +2043,11 @@ export interface PageRuleActionsCacheKeyFields {
     /**
      * Controls what cookies go into Cache Key:
      */
-    cookie: outputs.PageRuleActionsCacheKeyFieldsCookie;
+    cookie?: outputs.PageRuleActionsCacheKeyFieldsCookie;
     /**
      * Controls what HTTP headers go into Cache Key:
      */
-    header: outputs.PageRuleActionsCacheKeyFieldsHeader;
+    header?: outputs.PageRuleActionsCacheKeyFieldsHeader;
     /**
      * Controls which Host header goes into Cache Key:
      */
@@ -1915,7 +2214,7 @@ export interface PagesProjectDeploymentConfigsPreview {
 export interface PagesProjectDeploymentConfigsPreviewServiceBinding {
     environment?: string;
     /**
-     * Name of the project.
+     * Name of the project. **Modifying this attribute will force creation of a new resource.**
      */
     name: string;
     service: string;
@@ -1938,7 +2237,7 @@ export interface PagesProjectDeploymentConfigsProduction {
 export interface PagesProjectDeploymentConfigsProductionServiceBinding {
     environment?: string;
     /**
-     * Name of the project.
+     * Name of the project. **Modifying this attribute will force creation of a new resource.**
      */
     name: string;
     service: string;
@@ -2103,6 +2402,10 @@ export interface RulesetRule {
      * Unique rule identifier.
      */
     id: string;
+    /**
+     * The most recent update to this rule.
+     */
+    lastUpdated?: string;
     /**
      * List parameters to configure how the rule generates logs.
      */
@@ -2379,6 +2682,8 @@ export interface RulesetRuleRatelimit {
     period?: number;
     requestsPerPeriod?: number;
     requestsToOrigin?: boolean;
+    scorePerPeriod?: number;
+    scoreResponseHeaderName?: string;
 }
 
 export interface SpectrumApplicationDns {
@@ -2719,6 +3024,17 @@ export interface WorkerScriptPlainTextBinding {
      * The plain text you want to store.
      */
     text: string;
+}
+
+export interface WorkerScriptQueueBinding {
+    /**
+     * The name of the global variable for the binding in your Worker code.
+     */
+    binding: string;
+    /**
+     * Name of the queue you want to use.
+     */
+    queue: string;
 }
 
 export interface WorkerScriptR2BucketBinding {

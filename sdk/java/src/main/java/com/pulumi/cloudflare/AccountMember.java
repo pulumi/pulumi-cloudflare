@@ -107,14 +107,14 @@ public class AccountMember extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="status", type=String.class, parameters={})
-    private Output</* @Nullable */ String> status;
+    private Output<String> status;
 
     /**
      * @return A member&#39;s status in the account. Available values: `accepted`, `pending`.
      * 
      */
-    public Output<Optional<String>> status() {
-        return Codegen.optional(this.status);
+    public Output<String> status() {
+        return this.status;
     }
 
     /**

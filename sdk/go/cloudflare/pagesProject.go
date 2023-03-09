@@ -168,7 +168,7 @@ type PagesProject struct {
 	DeploymentConfigs PagesProjectDeploymentConfigsPtrOutput `pulumi:"deploymentConfigs"`
 	// A list of associated custom domains for the project.
 	Domains pulumi.StringArrayOutput `pulumi:"domains"`
-	// Name of the project.
+	// Name of the project. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the branch that is used for the production environment.
 	ProductionBranch pulumi.StringOutput `pulumi:"productionBranch"`
@@ -226,7 +226,7 @@ type pagesProjectState struct {
 	DeploymentConfigs *PagesProjectDeploymentConfigs `pulumi:"deploymentConfigs"`
 	// A list of associated custom domains for the project.
 	Domains []string `pulumi:"domains"`
-	// Name of the project.
+	// Name of the project. **Modifying this attribute will force creation of a new resource.**
 	Name *string `pulumi:"name"`
 	// The name of the branch that is used for the production environment.
 	ProductionBranch *string `pulumi:"productionBranch"`
@@ -247,7 +247,7 @@ type PagesProjectState struct {
 	DeploymentConfigs PagesProjectDeploymentConfigsPtrInput
 	// A list of associated custom domains for the project.
 	Domains pulumi.StringArrayInput
-	// Name of the project.
+	// Name of the project. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringPtrInput
 	// The name of the branch that is used for the production environment.
 	ProductionBranch pulumi.StringPtrInput
@@ -268,7 +268,7 @@ type pagesProjectArgs struct {
 	BuildConfig *PagesProjectBuildConfig `pulumi:"buildConfig"`
 	// Configuration for deployments in a project.
 	DeploymentConfigs *PagesProjectDeploymentConfigs `pulumi:"deploymentConfigs"`
-	// Name of the project.
+	// Name of the project. **Modifying this attribute will force creation of a new resource.**
 	Name string `pulumi:"name"`
 	// The name of the branch that is used for the production environment.
 	ProductionBranch string `pulumi:"productionBranch"`
@@ -284,7 +284,7 @@ type PagesProjectArgs struct {
 	BuildConfig PagesProjectBuildConfigPtrInput
 	// Configuration for deployments in a project.
 	DeploymentConfigs PagesProjectDeploymentConfigsPtrInput
-	// Name of the project.
+	// Name of the project. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringInput
 	// The name of the branch that is used for the production environment.
 	ProductionBranch pulumi.StringInput
@@ -404,7 +404,7 @@ func (o PagesProjectOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PagesProject) pulumi.StringArrayOutput { return v.Domains }).(pulumi.StringArrayOutput)
 }
 
-// Name of the project.
+// Name of the project. **Modifying this attribute will force creation of a new resource.**
 func (o PagesProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

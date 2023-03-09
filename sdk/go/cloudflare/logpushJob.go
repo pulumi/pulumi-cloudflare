@@ -45,7 +45,7 @@ type LogpushJob struct {
 	Frequency pulumi.StringPtrOutput `pulumi:"frequency"`
 	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
-	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrOutput `pulumi:"logpullOptions"`
 	// The name of the logpush job to create.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
@@ -104,7 +104,7 @@ type logpushJobState struct {
 	Frequency *string `pulumi:"frequency"`
 	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
 	Kind *string `pulumi:"kind"`
-	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions *string `pulumi:"logpullOptions"`
 	// The name of the logpush job to create.
 	Name *string `pulumi:"name"`
@@ -129,7 +129,7 @@ type LogpushJobState struct {
 	Frequency pulumi.StringPtrInput
 	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
 	Kind pulumi.StringPtrInput
-	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrInput
 	// The name of the logpush job to create.
 	Name pulumi.StringPtrInput
@@ -158,7 +158,7 @@ type logpushJobArgs struct {
 	Frequency *string `pulumi:"frequency"`
 	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
 	Kind *string `pulumi:"kind"`
-	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions *string `pulumi:"logpullOptions"`
 	// The name of the logpush job to create.
 	Name *string `pulumi:"name"`
@@ -184,7 +184,7 @@ type LogpushJobArgs struct {
 	Frequency pulumi.StringPtrInput
 	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
 	Kind pulumi.StringPtrInput
-	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrInput
 	// The name of the logpush job to create.
 	Name pulumi.StringPtrInput
@@ -316,7 +316,7 @@ func (o LogpushJobOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 func (o LogpushJobOutput) LogpullOptions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.LogpullOptions }).(pulumi.StringPtrOutput)
 }

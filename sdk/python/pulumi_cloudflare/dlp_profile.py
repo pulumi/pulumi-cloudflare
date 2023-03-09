@@ -17,6 +17,7 @@ __all__ = ['DlpProfileArgs', 'DlpProfile']
 class DlpProfileArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
+                 allowed_match_count: pulumi.Input[int],
                  entries: pulumi.Input[Sequence[pulumi.Input['DlpProfileEntryArgs']]],
                  name: pulumi.Input[str],
                  type: pulumi.Input[str],
@@ -24,12 +25,14 @@ class DlpProfileArgs:
         """
         The set of arguments for constructing a DlpProfile resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
         :param pulumi.Input[Sequence[pulumi.Input['DlpProfileEntryArgs']]] entries: List of entries to apply to the profile.
         :param pulumi.Input[str] name: Name of the profile. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] type: The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] description: Brief summary of the profile and its intended use.
         """
         pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "allowed_match_count", allowed_match_count)
         pulumi.set(__self__, "entries", entries)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
@@ -47,6 +50,18 @@ class DlpProfileArgs:
     @account_id.setter
     def account_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="allowedMatchCount")
+    def allowed_match_count(self) -> pulumi.Input[int]:
+        """
+        Related DLP policies will trigger when the match count exceeds the number set.
+        """
+        return pulumi.get(self, "allowed_match_count")
+
+    @allowed_match_count.setter
+    def allowed_match_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "allowed_match_count", value)
 
     @property
     @pulumi.getter
@@ -101,6 +116,7 @@ class DlpProfileArgs:
 class _DlpProfileState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 allowed_match_count: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  entries: Optional[pulumi.Input[Sequence[pulumi.Input['DlpProfileEntryArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -108,6 +124,7 @@ class _DlpProfileState:
         """
         Input properties used for looking up and filtering DlpProfile resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
         :param pulumi.Input[str] description: Brief summary of the profile and its intended use.
         :param pulumi.Input[Sequence[pulumi.Input['DlpProfileEntryArgs']]] entries: List of entries to apply to the profile.
         :param pulumi.Input[str] name: Name of the profile. **Modifying this attribute will force creation of a new resource.**
@@ -115,6 +132,8 @@ class _DlpProfileState:
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if allowed_match_count is not None:
+            pulumi.set(__self__, "allowed_match_count", allowed_match_count)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if entries is not None:
@@ -135,6 +154,18 @@ class _DlpProfileState:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="allowedMatchCount")
+    def allowed_match_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Related DLP policies will trigger when the match count exceeds the number set.
+        """
+        return pulumi.get(self, "allowed_match_count")
+
+    @allowed_match_count.setter
+    def allowed_match_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "allowed_match_count", value)
 
     @property
     @pulumi.getter
@@ -191,6 +222,7 @@ class DlpProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 allowed_match_count: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DlpProfileEntryArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -210,6 +242,7 @@ class DlpProfile(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
         :param pulumi.Input[str] description: Brief summary of the profile and its intended use.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DlpProfileEntryArgs']]]] entries: List of entries to apply to the profile.
         :param pulumi.Input[str] name: Name of the profile. **Modifying this attribute will force creation of a new resource.**
@@ -248,6 +281,7 @@ class DlpProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 allowed_match_count: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DlpProfileEntryArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -264,6 +298,9 @@ class DlpProfile(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            if allowed_match_count is None and not opts.urn:
+                raise TypeError("Missing required property 'allowed_match_count'")
+            __props__.__dict__["allowed_match_count"] = allowed_match_count
             __props__.__dict__["description"] = description
             if entries is None and not opts.urn:
                 raise TypeError("Missing required property 'entries'")
@@ -285,6 +322,7 @@ class DlpProfile(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
+            allowed_match_count: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DlpProfileEntryArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -297,6 +335,7 @@ class DlpProfile(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
         :param pulumi.Input[str] description: Brief summary of the profile and its intended use.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DlpProfileEntryArgs']]]] entries: List of entries to apply to the profile.
         :param pulumi.Input[str] name: Name of the profile. **Modifying this attribute will force creation of a new resource.**
@@ -307,6 +346,7 @@ class DlpProfile(pulumi.CustomResource):
         __props__ = _DlpProfileState.__new__(_DlpProfileState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["allowed_match_count"] = allowed_match_count
         __props__.__dict__["description"] = description
         __props__.__dict__["entries"] = entries
         __props__.__dict__["name"] = name
@@ -320,6 +360,14 @@ class DlpProfile(pulumi.CustomResource):
         The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="allowedMatchCount")
+    def allowed_match_count(self) -> pulumi.Output[int]:
+        """
+        Related DLP policies will trigger when the match count exceeds the number set.
+        """
+        return pulumi.get(self, "allowed_match_count")
 
     @property
     @pulumi.getter

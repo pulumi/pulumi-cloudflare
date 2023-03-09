@@ -135,6 +135,7 @@ type WorkerScript struct {
 	// The name for the script. **Modifying this attribute will force creation of a new resource.**
 	Name                pulumi.StringOutput                       `pulumi:"name"`
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayOutput   `pulumi:"plainTextBindings"`
+	QueueBindings       WorkerScriptQueueBindingArrayOutput       `pulumi:"queueBindings"`
 	R2BucketBindings    WorkerScriptR2BucketBindingArrayOutput    `pulumi:"r2BucketBindings"`
 	SecretTextBindings  WorkerScriptSecretTextBindingArrayOutput  `pulumi:"secretTextBindings"`
 	ServiceBindings     WorkerScriptServiceBindingArrayOutput     `pulumi:"serviceBindings"`
@@ -187,6 +188,7 @@ type workerScriptState struct {
 	// The name for the script. **Modifying this attribute will force creation of a new resource.**
 	Name                *string                          `pulumi:"name"`
 	PlainTextBindings   []WorkerScriptPlainTextBinding   `pulumi:"plainTextBindings"`
+	QueueBindings       []WorkerScriptQueueBinding       `pulumi:"queueBindings"`
 	R2BucketBindings    []WorkerScriptR2BucketBinding    `pulumi:"r2BucketBindings"`
 	SecretTextBindings  []WorkerScriptSecretTextBinding  `pulumi:"secretTextBindings"`
 	ServiceBindings     []WorkerScriptServiceBinding     `pulumi:"serviceBindings"`
@@ -205,6 +207,7 @@ type WorkerScriptState struct {
 	// The name for the script. **Modifying this attribute will force creation of a new resource.**
 	Name                pulumi.StringPtrInput
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayInput
+	QueueBindings       WorkerScriptQueueBindingArrayInput
 	R2BucketBindings    WorkerScriptR2BucketBindingArrayInput
 	SecretTextBindings  WorkerScriptSecretTextBindingArrayInput
 	ServiceBindings     WorkerScriptServiceBindingArrayInput
@@ -227,6 +230,7 @@ type workerScriptArgs struct {
 	// The name for the script. **Modifying this attribute will force creation of a new resource.**
 	Name                string                           `pulumi:"name"`
 	PlainTextBindings   []WorkerScriptPlainTextBinding   `pulumi:"plainTextBindings"`
+	QueueBindings       []WorkerScriptQueueBinding       `pulumi:"queueBindings"`
 	R2BucketBindings    []WorkerScriptR2BucketBinding    `pulumi:"r2BucketBindings"`
 	SecretTextBindings  []WorkerScriptSecretTextBinding  `pulumi:"secretTextBindings"`
 	ServiceBindings     []WorkerScriptServiceBinding     `pulumi:"serviceBindings"`
@@ -246,6 +250,7 @@ type WorkerScriptArgs struct {
 	// The name for the script. **Modifying this attribute will force creation of a new resource.**
 	Name                pulumi.StringInput
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayInput
+	QueueBindings       WorkerScriptQueueBindingArrayInput
 	R2BucketBindings    WorkerScriptR2BucketBindingArrayInput
 	SecretTextBindings  WorkerScriptSecretTextBindingArrayInput
 	ServiceBindings     WorkerScriptServiceBindingArrayInput
@@ -369,6 +374,10 @@ func (o WorkerScriptOutput) Name() pulumi.StringOutput {
 
 func (o WorkerScriptOutput) PlainTextBindings() WorkerScriptPlainTextBindingArrayOutput {
 	return o.ApplyT(func(v *WorkerScript) WorkerScriptPlainTextBindingArrayOutput { return v.PlainTextBindings }).(WorkerScriptPlainTextBindingArrayOutput)
+}
+
+func (o WorkerScriptOutput) QueueBindings() WorkerScriptQueueBindingArrayOutput {
+	return o.ApplyT(func(v *WorkerScript) WorkerScriptQueueBindingArrayOutput { return v.QueueBindings }).(WorkerScriptQueueBindingArrayOutput)
 }
 
 func (o WorkerScriptOutput) R2BucketBindings() WorkerScriptR2BucketBindingArrayOutput {

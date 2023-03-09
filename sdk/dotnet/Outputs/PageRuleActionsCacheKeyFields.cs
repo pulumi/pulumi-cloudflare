@@ -16,11 +16,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Controls what cookies go into Cache Key:
         /// </summary>
-        public readonly Outputs.PageRuleActionsCacheKeyFieldsCookie Cookie;
+        public readonly Outputs.PageRuleActionsCacheKeyFieldsCookie? Cookie;
         /// <summary>
         /// Controls what HTTP headers go into Cache Key:
         /// </summary>
-        public readonly Outputs.PageRuleActionsCacheKeyFieldsHeader Header;
+        public readonly Outputs.PageRuleActionsCacheKeyFieldsHeader? Header;
         /// <summary>
         /// Controls which Host header goes into Cache Key:
         /// </summary>
@@ -36,9 +36,9 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private PageRuleActionsCacheKeyFields(
-            Outputs.PageRuleActionsCacheKeyFieldsCookie cookie,
+            Outputs.PageRuleActionsCacheKeyFieldsCookie? cookie,
 
-            Outputs.PageRuleActionsCacheKeyFieldsHeader header,
+            Outputs.PageRuleActionsCacheKeyFieldsHeader? header,
 
             Outputs.PageRuleActionsCacheKeyFieldsHost host,
 

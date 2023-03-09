@@ -122,6 +122,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MagicFirewallRuleset{}
 	case "cloudflare:index/managedHeaders:ManagedHeaders":
 		r = &ManagedHeaders{}
+	case "cloudflare:index/mtlsCertificate:MtlsCertificate":
+		r = &MtlsCertificate{}
 	case "cloudflare:index/notificationPolicy:NotificationPolicy":
 		r = &NotificationPolicy{}
 	case "cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks":
@@ -134,6 +136,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PagesDomain{}
 	case "cloudflare:index/pagesProject:PagesProject":
 		r = &PagesProject{}
+	case "cloudflare:index/queue:Queue":
+		r = &Queue{}
 	case "cloudflare:index/rateLimit:RateLimit":
 		r = &RateLimit{}
 	case "cloudflare:index/record:Record":
@@ -491,6 +495,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/mtlsCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/notificationPolicy",
 		&module{version},
 	)
@@ -517,6 +526,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/pagesProject",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/queue",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

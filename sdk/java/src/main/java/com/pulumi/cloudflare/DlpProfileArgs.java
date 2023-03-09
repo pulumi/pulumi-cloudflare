@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.DlpProfileEntryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -30,6 +31,21 @@ public final class DlpProfileArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> accountId() {
         return this.accountId;
+    }
+
+    /**
+     * Related DLP policies will trigger when the match count exceeds the number set.
+     * 
+     */
+    @Import(name="allowedMatchCount", required=true)
+    private Output<Integer> allowedMatchCount;
+
+    /**
+     * @return Related DLP policies will trigger when the match count exceeds the number set.
+     * 
+     */
+    public Output<Integer> allowedMatchCount() {
+        return this.allowedMatchCount;
     }
 
     /**
@@ -96,6 +112,7 @@ public final class DlpProfileArgs extends com.pulumi.resources.ResourceArgs {
 
     private DlpProfileArgs(DlpProfileArgs $) {
         this.accountId = $.accountId;
+        this.allowedMatchCount = $.allowedMatchCount;
         this.description = $.description;
         this.entries = $.entries;
         this.name = $.name;
@@ -139,6 +156,27 @@ public final class DlpProfileArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param allowedMatchCount Related DLP policies will trigger when the match count exceeds the number set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedMatchCount(Output<Integer> allowedMatchCount) {
+            $.allowedMatchCount = allowedMatchCount;
+            return this;
+        }
+
+        /**
+         * @param allowedMatchCount Related DLP policies will trigger when the match count exceeds the number set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedMatchCount(Integer allowedMatchCount) {
+            return allowedMatchCount(Output.of(allowedMatchCount));
         }
 
         /**
@@ -237,6 +275,7 @@ public final class DlpProfileArgs extends com.pulumi.resources.ResourceArgs {
 
         public DlpProfileArgs build() {
             $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
+            $.allowedMatchCount = Objects.requireNonNull($.allowedMatchCount, "expected parameter 'allowedMatchCount' to be non-null");
             $.entries = Objects.requireNonNull($.entries, "expected parameter 'entries' to be non-null");
             $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");

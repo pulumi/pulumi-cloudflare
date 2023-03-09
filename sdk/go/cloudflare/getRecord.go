@@ -27,8 +27,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupRecord(ctx, &cloudflare.LookupRecordArgs{
-//				ZoneId:   _var.Zone_id,
 //				Hostname: "example.com",
+//				ZoneId:   "0da42c8d2132a9ddaf714f9e7c920711",
 //			}, nil)
 //			if err != nil {
 //				return err

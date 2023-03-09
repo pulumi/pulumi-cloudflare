@@ -52,6 +52,11 @@ public final class RulesetRule {
      */
     private @Nullable String id;
     /**
+     * @return The most recent update to this rule.
+     * 
+     */
+    private @Nullable String lastUpdated;
+    /**
      * @return List parameters to configure how the rule generates logs.
      * 
      */
@@ -123,6 +128,13 @@ public final class RulesetRule {
         return Optional.ofNullable(this.id);
     }
     /**
+     * @return The most recent update to this rule.
+     * 
+     */
+    public Optional<String> lastUpdated() {
+        return Optional.ofNullable(this.lastUpdated);
+    }
+    /**
      * @return List parameters to configure how the rule generates logs.
      * 
      */
@@ -167,6 +179,7 @@ public final class RulesetRule {
         private @Nullable RulesetRuleExposedCredentialCheck exposedCredentialCheck;
         private String expression;
         private @Nullable String id;
+        private @Nullable String lastUpdated;
         private @Nullable RulesetRuleLogging logging;
         private @Nullable RulesetRuleRatelimit ratelimit;
         private @Nullable String ref;
@@ -181,6 +194,7 @@ public final class RulesetRule {
     	      this.exposedCredentialCheck = defaults.exposedCredentialCheck;
     	      this.expression = defaults.expression;
     	      this.id = defaults.id;
+    	      this.lastUpdated = defaults.lastUpdated;
     	      this.logging = defaults.logging;
     	      this.ratelimit = defaults.ratelimit;
     	      this.ref = defaults.ref;
@@ -223,6 +237,11 @@ public final class RulesetRule {
             return this;
         }
         @CustomType.Setter
+        public Builder lastUpdated(@Nullable String lastUpdated) {
+            this.lastUpdated = lastUpdated;
+            return this;
+        }
+        @CustomType.Setter
         public Builder logging(@Nullable RulesetRuleLogging logging) {
             this.logging = logging;
             return this;
@@ -251,6 +270,7 @@ public final class RulesetRule {
             o.exposedCredentialCheck = exposedCredentialCheck;
             o.expression = expression;
             o.id = id;
+            o.lastUpdated = lastUpdated;
             o.logging = logging;
             o.ratelimit = ratelimit;
             o.ref = ref;

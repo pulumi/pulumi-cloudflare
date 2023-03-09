@@ -146,6 +146,9 @@ namespace Pulumi.Cloudflare
         [Output("plainTextBindings")]
         public Output<ImmutableArray<Outputs.WorkerScriptPlainTextBinding>> PlainTextBindings { get; private set; } = null!;
 
+        [Output("queueBindings")]
+        public Output<ImmutableArray<Outputs.WorkerScriptQueueBinding>> QueueBindings { get; private set; } = null!;
+
         [Output("r2BucketBindings")]
         public Output<ImmutableArray<Outputs.WorkerScriptR2BucketBinding>> R2BucketBindings { get; private set; } = null!;
 
@@ -252,6 +255,14 @@ namespace Pulumi.Cloudflare
             set => _plainTextBindings = value;
         }
 
+        [Input("queueBindings")]
+        private InputList<Inputs.WorkerScriptQueueBindingArgs>? _queueBindings;
+        public InputList<Inputs.WorkerScriptQueueBindingArgs> QueueBindings
+        {
+            get => _queueBindings ?? (_queueBindings = new InputList<Inputs.WorkerScriptQueueBindingArgs>());
+            set => _queueBindings = value;
+        }
+
         [Input("r2BucketBindings")]
         private InputList<Inputs.WorkerScriptR2BucketBindingArgs>? _r2BucketBindings;
         public InputList<Inputs.WorkerScriptR2BucketBindingArgs> R2BucketBindings
@@ -338,6 +349,14 @@ namespace Pulumi.Cloudflare
         {
             get => _plainTextBindings ?? (_plainTextBindings = new InputList<Inputs.WorkerScriptPlainTextBindingGetArgs>());
             set => _plainTextBindings = value;
+        }
+
+        [Input("queueBindings")]
+        private InputList<Inputs.WorkerScriptQueueBindingGetArgs>? _queueBindings;
+        public InputList<Inputs.WorkerScriptQueueBindingGetArgs> QueueBindings
+        {
+            get => _queueBindings ?? (_queueBindings = new InputList<Inputs.WorkerScriptQueueBindingGetArgs>());
+            set => _queueBindings = value;
         }
 
         [Input("r2BucketBindings")]

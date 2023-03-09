@@ -50,6 +50,10 @@ export class DlpProfile extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
+     * Related DLP policies will trigger when the match count exceeds the number set.
+     */
+    public readonly allowedMatchCount!: pulumi.Output<number>;
+    /**
      * Brief summary of the profile and its intended use.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -80,6 +84,7 @@ export class DlpProfile extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DlpProfileState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["allowedMatchCount"] = state ? state.allowedMatchCount : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["entries"] = state ? state.entries : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -88,6 +93,9 @@ export class DlpProfile extends pulumi.CustomResource {
             const args = argsOrState as DlpProfileArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
+            }
+            if ((!args || args.allowedMatchCount === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'allowedMatchCount'");
             }
             if ((!args || args.entries === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'entries'");
@@ -99,6 +107,7 @@ export class DlpProfile extends pulumi.CustomResource {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["allowedMatchCount"] = args ? args.allowedMatchCount : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["entries"] = args ? args.entries : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -117,6 +126,10 @@ export interface DlpProfileState {
      * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * Related DLP policies will trigger when the match count exceeds the number set.
+     */
+    allowedMatchCount?: pulumi.Input<number>;
     /**
      * Brief summary of the profile and its intended use.
      */
@@ -143,6 +156,10 @@ export interface DlpProfileArgs {
      * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Related DLP policies will trigger when the match count exceeds the number set.
+     */
+    allowedMatchCount: pulumi.Input<number>;
     /**
      * Brief summary of the profile and its intended use.
      */

@@ -320,7 +320,7 @@ class AccountMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> pulumi.Output[Optional[str]]:
+    def status(self) -> pulumi.Output[str]:
         """
         A member's status in the account. Available values: `accepted`, `pending`.
         """

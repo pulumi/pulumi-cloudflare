@@ -153,6 +153,21 @@ public final class DeviceSettingsPolicyArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Whether to add Microsoft IPs to split tunnel exclusions.
+     * 
+     */
+    @Import(name="excludeOfficeIps")
+    private @Nullable Output<Boolean> excludeOfficeIps;
+
+    /**
+     * @return Whether to add Microsoft IPs to split tunnel exclusions.
+     * 
+     */
+    public Optional<Output<Boolean>> excludeOfficeIps() {
+        return Optional.ofNullable(this.excludeOfficeIps);
+    }
+
+    /**
      * Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.
      * 
      */
@@ -269,6 +284,7 @@ public final class DeviceSettingsPolicyArgs extends com.pulumi.resources.Resourc
         this.default_ = $.default_;
         this.disableAutoFallback = $.disableAutoFallback;
         this.enabled = $.enabled;
+        this.excludeOfficeIps = $.excludeOfficeIps;
         this.match = $.match;
         this.name = $.name;
         this.precedence = $.precedence;
@@ -483,6 +499,27 @@ public final class DeviceSettingsPolicyArgs extends com.pulumi.resources.Resourc
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param excludeOfficeIps Whether to add Microsoft IPs to split tunnel exclusions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeOfficeIps(@Nullable Output<Boolean> excludeOfficeIps) {
+            $.excludeOfficeIps = excludeOfficeIps;
+            return this;
+        }
+
+        /**
+         * @param excludeOfficeIps Whether to add Microsoft IPs to split tunnel exclusions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeOfficeIps(Boolean excludeOfficeIps) {
+            return excludeOfficeIps(Output.of(excludeOfficeIps));
         }
 
         /**

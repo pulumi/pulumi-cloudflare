@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class PagesProjectDeploymentConfigsProductionServiceBinding {
     private @Nullable String environment;
     /**
-     * @return Name of the project.
+     * @return Name of the project. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     private String name;
@@ -24,7 +24,7 @@ public final class PagesProjectDeploymentConfigsProductionServiceBinding {
         return Optional.ofNullable(this.environment);
     }
     /**
-     * @return Name of the project.
+     * @return Name of the project. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public String name() {

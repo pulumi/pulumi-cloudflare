@@ -122,14 +122,14 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+     * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
      * 
      */
     @Import(name="logpullOptions")
     private @Nullable Output<String> logpullOptions;
 
     /**
-     * @return Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+     * @return Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
      * 
      */
     public Optional<Output<String>> logpullOptions() {
@@ -363,7 +363,7 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logpullOptions Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+         * @param logpullOptions Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
          * 
          * @return builder
          * 
@@ -374,7 +374,7 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logpullOptions Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+         * @param logpullOptions Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
          * 
          * @return builder
          * 

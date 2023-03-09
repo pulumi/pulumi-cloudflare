@@ -88,6 +88,7 @@ func NewArgoTunnel(ctx *pulumi.Context,
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"secret",
+		"tunnelToken",
 	})
 	opts = append(opts, secrets)
 	var resource ArgoTunnel

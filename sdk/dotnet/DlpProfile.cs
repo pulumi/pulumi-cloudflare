@@ -30,6 +30,12 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
+        /// Related DLP policies will trigger when the match count exceeds the number set.
+        /// </summary>
+        [Output("allowedMatchCount")]
+        public Output<int> AllowedMatchCount { get; private set; } = null!;
+
+        /// <summary>
         /// Brief summary of the profile and its intended use.
         /// </summary>
         [Output("description")]
@@ -106,6 +112,12 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// Related DLP policies will trigger when the match count exceeds the number set.
+        /// </summary>
+        [Input("allowedMatchCount", required: true)]
+        public Input<int> AllowedMatchCount { get; set; } = null!;
+
+        /// <summary>
         /// Brief summary of the profile and its intended use.
         /// </summary>
         [Input("description")]
@@ -148,6 +160,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Related DLP policies will trigger when the match count exceeds the number set.
+        /// </summary>
+        [Input("allowedMatchCount")]
+        public Input<int>? AllowedMatchCount { get; set; }
 
         /// <summary>
         /// Brief summary of the profile and its intended use.

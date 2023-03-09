@@ -23,6 +23,7 @@ import * as utilities from "./utilities";
  *     "default": false,
  *     disableAutoFallback: true,
  *     enabled: true,
+ *     excludeOfficeIps: false,
  *     match: "any(identity.groups.name[*] in {\"Developers\"})",
  *     name: "Developers WARP settings policy",
  *     precedence: 10,
@@ -106,6 +107,10 @@ export class DeviceSettingsPolicy extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
+     * Whether to add Microsoft IPs to split tunnel exclusions.
+     */
+    public readonly excludeOfficeIps!: pulumi.Output<boolean | undefined>;
+    /**
      * Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.
      */
     public readonly match!: pulumi.Output<string | undefined>;
@@ -156,6 +161,7 @@ export class DeviceSettingsPolicy extends pulumi.CustomResource {
             resourceInputs["default"] = state ? state.default : undefined;
             resourceInputs["disableAutoFallback"] = state ? state.disableAutoFallback : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["excludeOfficeIps"] = state ? state.excludeOfficeIps : undefined;
             resourceInputs["match"] = state ? state.match : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["precedence"] = state ? state.precedence : undefined;
@@ -180,6 +186,7 @@ export class DeviceSettingsPolicy extends pulumi.CustomResource {
             resourceInputs["default"] = args ? args.default : undefined;
             resourceInputs["disableAutoFallback"] = args ? args.disableAutoFallback : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["excludeOfficeIps"] = args ? args.excludeOfficeIps : undefined;
             resourceInputs["match"] = args ? args.match : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["precedence"] = args ? args.precedence : undefined;
@@ -233,6 +240,10 @@ export interface DeviceSettingsPolicyState {
      * Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Whether to add Microsoft IPs to split tunnel exclusions.
+     */
+    excludeOfficeIps?: pulumi.Input<boolean>;
     /**
      * Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.
      */
@@ -303,6 +314,10 @@ export interface DeviceSettingsPolicyArgs {
      * Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Whether to add Microsoft IPs to split tunnel exclusions.
+     */
+    excludeOfficeIps?: pulumi.Input<boolean>;
     /**
      * Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.
      */

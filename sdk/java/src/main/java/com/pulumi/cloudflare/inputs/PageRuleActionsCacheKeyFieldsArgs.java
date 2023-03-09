@@ -11,6 +11,8 @@ import com.pulumi.cloudflare.inputs.PageRuleActionsCacheKeyFieldsUserArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PageRuleActionsCacheKeyFieldsArgs extends com.pulumi.resources.ResourceArgs {
@@ -21,30 +23,30 @@ public final class PageRuleActionsCacheKeyFieldsArgs extends com.pulumi.resource
      * Controls what cookies go into Cache Key:
      * 
      */
-    @Import(name="cookie", required=true)
-    private Output<PageRuleActionsCacheKeyFieldsCookieArgs> cookie;
+    @Import(name="cookie")
+    private @Nullable Output<PageRuleActionsCacheKeyFieldsCookieArgs> cookie;
 
     /**
      * @return Controls what cookies go into Cache Key:
      * 
      */
-    public Output<PageRuleActionsCacheKeyFieldsCookieArgs> cookie() {
-        return this.cookie;
+    public Optional<Output<PageRuleActionsCacheKeyFieldsCookieArgs>> cookie() {
+        return Optional.ofNullable(this.cookie);
     }
 
     /**
      * Controls what HTTP headers go into Cache Key:
      * 
      */
-    @Import(name="header", required=true)
-    private Output<PageRuleActionsCacheKeyFieldsHeaderArgs> header;
+    @Import(name="header")
+    private @Nullable Output<PageRuleActionsCacheKeyFieldsHeaderArgs> header;
 
     /**
      * @return Controls what HTTP headers go into Cache Key:
      * 
      */
-    public Output<PageRuleActionsCacheKeyFieldsHeaderArgs> header() {
-        return this.header;
+    public Optional<Output<PageRuleActionsCacheKeyFieldsHeaderArgs>> header() {
+        return Optional.ofNullable(this.header);
     }
 
     /**
@@ -126,7 +128,7 @@ public final class PageRuleActionsCacheKeyFieldsArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder cookie(Output<PageRuleActionsCacheKeyFieldsCookieArgs> cookie) {
+        public Builder cookie(@Nullable Output<PageRuleActionsCacheKeyFieldsCookieArgs> cookie) {
             $.cookie = cookie;
             return this;
         }
@@ -147,7 +149,7 @@ public final class PageRuleActionsCacheKeyFieldsArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder header(Output<PageRuleActionsCacheKeyFieldsHeaderArgs> header) {
+        public Builder header(@Nullable Output<PageRuleActionsCacheKeyFieldsHeaderArgs> header) {
             $.header = header;
             return this;
         }
@@ -226,8 +228,6 @@ public final class PageRuleActionsCacheKeyFieldsArgs extends com.pulumi.resource
         }
 
         public PageRuleActionsCacheKeyFieldsArgs build() {
-            $.cookie = Objects.requireNonNull($.cookie, "expected parameter 'cookie' to be non-null");
-            $.header = Objects.requireNonNull($.header, "expected parameter 'header' to be non-null");
             $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
             $.queryString = Objects.requireNonNull($.queryString, "expected parameter 'queryString' to be non-null");
             $.user = Objects.requireNonNull($.user, "expected parameter 'user' to be non-null");

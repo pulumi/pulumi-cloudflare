@@ -238,6 +238,11 @@ export const getRecord: typeof import("./getRecord").getRecord = null as any;
 export const getRecordOutput: typeof import("./getRecord").getRecordOutput = null as any;
 utilities.lazyLoad(exports, ["getRecord","getRecordOutput"], () => require("./getRecord"));
 
+export { GetRulesetsArgs, GetRulesetsResult, GetRulesetsOutputArgs } from "./getRulesets";
+export const getRulesets: typeof import("./getRulesets").getRulesets = null as any;
+export const getRulesetsOutput: typeof import("./getRulesets").getRulesetsOutput = null as any;
+utilities.lazyLoad(exports, ["getRulesets","getRulesetsOutput"], () => require("./getRulesets"));
+
 export { GetWafGroupsArgs, GetWafGroupsResult, GetWafGroupsOutputArgs } from "./getWafGroups";
 export const getWafGroups: typeof import("./getWafGroups").getWafGroups = null as any;
 export const getWafGroupsOutput: typeof import("./getWafGroups").getWafGroupsOutput = null as any;
@@ -333,6 +338,11 @@ export type ManagedHeaders = import("./managedHeaders").ManagedHeaders;
 export const ManagedHeaders: typeof import("./managedHeaders").ManagedHeaders = null as any;
 utilities.lazyLoad(exports, ["ManagedHeaders"], () => require("./managedHeaders"));
 
+export { MtlsCertificateArgs, MtlsCertificateState } from "./mtlsCertificate";
+export type MtlsCertificate = import("./mtlsCertificate").MtlsCertificate;
+export const MtlsCertificate: typeof import("./mtlsCertificate").MtlsCertificate = null as any;
+utilities.lazyLoad(exports, ["MtlsCertificate"], () => require("./mtlsCertificate"));
+
 export { NotificationPolicyArgs, NotificationPolicyState } from "./notificationPolicy";
 export type NotificationPolicy = import("./notificationPolicy").NotificationPolicy;
 export const NotificationPolicy: typeof import("./notificationPolicy").NotificationPolicy = null as any;
@@ -367,6 +377,11 @@ export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { QueueArgs, QueueState } from "./queue";
+export type Queue = import("./queue").Queue;
+export const Queue: typeof import("./queue").Queue = null as any;
+utilities.lazyLoad(exports, ["Queue"], () => require("./queue"));
 
 export { RateLimitArgs, RateLimitState } from "./rateLimit";
 export type RateLimit = import("./rateLimit").RateLimit;
@@ -664,6 +679,8 @@ const _module = {
                 return new MagicFirewallRuleset(name, <any>undefined, { urn })
             case "cloudflare:index/managedHeaders:ManagedHeaders":
                 return new ManagedHeaders(name, <any>undefined, { urn })
+            case "cloudflare:index/mtlsCertificate:MtlsCertificate":
+                return new MtlsCertificate(name, <any>undefined, { urn })
             case "cloudflare:index/notificationPolicy:NotificationPolicy":
                 return new NotificationPolicy(name, <any>undefined, { urn })
             case "cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks":
@@ -676,6 +693,8 @@ const _module = {
                 return new PagesDomain(name, <any>undefined, { urn })
             case "cloudflare:index/pagesProject:PagesProject":
                 return new PagesProject(name, <any>undefined, { urn })
+            case "cloudflare:index/queue:Queue":
+                return new Queue(name, <any>undefined, { urn })
             case "cloudflare:index/rateLimit:RateLimit":
                 return new RateLimit(name, <any>undefined, { urn })
             case "cloudflare:index/record:Record":
@@ -804,12 +823,14 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/logpushJob", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/logpushOwnershipChallenge", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/magicFirewallRuleset", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/managedHeaders", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/mtlsCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/notificationPolicy", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/notificationPolicyWebhooks", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/originCaCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/pageRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/pagesDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/pagesProject", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/queue", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/rateLimit", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/record", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/ruleset", _module)

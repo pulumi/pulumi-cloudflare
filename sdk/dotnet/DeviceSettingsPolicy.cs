@@ -32,6 +32,7 @@ namespace Pulumi.Cloudflare
     ///         Default = false,
     ///         DisableAutoFallback = true,
     ///         Enabled = true,
+    ///         ExcludeOfficeIps = false,
     ///         Match = "any(identity.groups.name[*] in {\"Developers\"})",
     ///         Name = "Developers WARP settings policy",
     ///         Precedence = 10,
@@ -108,6 +109,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to add Microsoft IPs to split tunnel exclusions.
+        /// </summary>
+        [Output("excludeOfficeIps")]
+        public Output<bool?> ExcludeOfficeIps { get; private set; } = null!;
 
         /// <summary>
         /// Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.
@@ -252,6 +259,12 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// Whether to add Microsoft IPs to split tunnel exclusions.
+        /// </summary>
+        [Input("excludeOfficeIps")]
+        public Input<bool>? ExcludeOfficeIps { get; set; }
+
+        /// <summary>
         /// Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.
         /// </summary>
         [Input("match")]
@@ -354,6 +367,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// Whether to add Microsoft IPs to split tunnel exclusions.
+        /// </summary>
+        [Input("excludeOfficeIps")]
+        public Input<bool>? ExcludeOfficeIps { get; set; }
 
         /// <summary>
         /// Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.

@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         public readonly string? Environment;
         /// <summary>
-        /// Name of the project.
+        /// Name of the project. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         public readonly string Name;
         public readonly string Service;
