@@ -1,0 +1,8 @@
+name: ruleset
+runtime: nodejs
+description: A minimal TypeScript Pulumi program
+
+plugins:
+  providers:
+    - name: cloudflare
+      path: ../../bin
