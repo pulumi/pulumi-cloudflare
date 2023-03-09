@@ -225,14 +225,14 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
         return this.domains;
     }
     /**
-     * Name of the project.
+     * Name of the project. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Name of the project.
+     * @return Name of the project. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> name() {

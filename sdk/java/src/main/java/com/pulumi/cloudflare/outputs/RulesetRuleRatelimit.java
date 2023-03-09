@@ -20,6 +20,8 @@ public final class RulesetRuleRatelimit {
     private @Nullable Integer period;
     private @Nullable Integer requestsPerPeriod;
     private @Nullable Boolean requestsToOrigin;
+    private @Nullable Integer scorePerPeriod;
+    private @Nullable String scoreResponseHeaderName;
 
     private RulesetRuleRatelimit() {}
     public List<String> characteristics() {
@@ -40,6 +42,12 @@ public final class RulesetRuleRatelimit {
     public Optional<Boolean> requestsToOrigin() {
         return Optional.ofNullable(this.requestsToOrigin);
     }
+    public Optional<Integer> scorePerPeriod() {
+        return Optional.ofNullable(this.scorePerPeriod);
+    }
+    public Optional<String> scoreResponseHeaderName() {
+        return Optional.ofNullable(this.scoreResponseHeaderName);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -56,6 +64,8 @@ public final class RulesetRuleRatelimit {
         private @Nullable Integer period;
         private @Nullable Integer requestsPerPeriod;
         private @Nullable Boolean requestsToOrigin;
+        private @Nullable Integer scorePerPeriod;
+        private @Nullable String scoreResponseHeaderName;
         public Builder() {}
         public Builder(RulesetRuleRatelimit defaults) {
     	      Objects.requireNonNull(defaults);
@@ -65,6 +75,8 @@ public final class RulesetRuleRatelimit {
     	      this.period = defaults.period;
     	      this.requestsPerPeriod = defaults.requestsPerPeriod;
     	      this.requestsToOrigin = defaults.requestsToOrigin;
+    	      this.scorePerPeriod = defaults.scorePerPeriod;
+    	      this.scoreResponseHeaderName = defaults.scoreResponseHeaderName;
         }
 
         @CustomType.Setter
@@ -100,6 +112,16 @@ public final class RulesetRuleRatelimit {
             this.requestsToOrigin = requestsToOrigin;
             return this;
         }
+        @CustomType.Setter
+        public Builder scorePerPeriod(@Nullable Integer scorePerPeriod) {
+            this.scorePerPeriod = scorePerPeriod;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder scoreResponseHeaderName(@Nullable String scoreResponseHeaderName) {
+            this.scoreResponseHeaderName = scoreResponseHeaderName;
+            return this;
+        }
         public RulesetRuleRatelimit build() {
             final var o = new RulesetRuleRatelimit();
             o.characteristics = characteristics;
@@ -108,6 +130,8 @@ public final class RulesetRuleRatelimit {
             o.period = period;
             o.requestsPerPeriod = requestsPerPeriod;
             o.requestsToOrigin = requestsToOrigin;
+            o.scorePerPeriod = scorePerPeriod;
+            o.scoreResponseHeaderName = scoreResponseHeaderName;
             return o;
         }
     }

@@ -14,8 +14,8 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = cloudflare.getRecord({
- *     zoneId: _var.zone_id,
  *     hostname: "example.com",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  */
@@ -111,8 +111,8 @@ export interface GetRecordResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = cloudflare.getRecord({
- *     zoneId: _var.zone_id,
  *     hostname: "example.com",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  */

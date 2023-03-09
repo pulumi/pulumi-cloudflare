@@ -34,7 +34,7 @@ class LogpushJobArgs:
         :param pulumi.Input[str] filter: Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
         :param pulumi.Input[str] frequency: A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
         :param pulumi.Input[str] kind: The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
-        :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         :param pulumi.Input[str] name: The name of the logpush job to create.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
@@ -148,7 +148,7 @@ class LogpushJobArgs:
     @pulumi.getter(name="logpullOptions")
     def logpull_options(self) -> Optional[pulumi.Input[str]]:
         """
-        Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         """
         return pulumi.get(self, "logpull_options")
 
@@ -216,7 +216,7 @@ class _LogpushJobState:
         :param pulumi.Input[str] filter: Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
         :param pulumi.Input[str] frequency: A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
         :param pulumi.Input[str] kind: The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
-        :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         :param pulumi.Input[str] name: The name of the logpush job to create.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
@@ -332,7 +332,7 @@ class _LogpushJobState:
     @pulumi.getter(name="logpullOptions")
     def logpull_options(self) -> Optional[pulumi.Input[str]]:
         """
-        Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         """
         return pulumi.get(self, "logpull_options")
 
@@ -418,7 +418,7 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.Input[str] filter: Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
         :param pulumi.Input[str] frequency: A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
         :param pulumi.Input[str] kind: The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
-        :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         :param pulumi.Input[str] name: The name of the logpush job to create.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
@@ -529,7 +529,7 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.Input[str] filter: Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
         :param pulumi.Input[str] frequency: A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
         :param pulumi.Input[str] kind: The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
-        :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         :param pulumi.Input[str] name: The name of the logpush job to create.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
@@ -611,7 +611,7 @@ class LogpushJob(pulumi.CustomResource):
     @pulumi.getter(name="logpullOptions")
     def logpull_options(self) -> pulumi.Output[Optional[str]]:
         """
-        Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         """
         return pulumi.get(self, "logpull_options")
 

@@ -198,6 +198,7 @@ __all__ = [
     'WorkerScriptAnalyticsEngineBindingArgs',
     'WorkerScriptKvNamespaceBindingArgs',
     'WorkerScriptPlainTextBindingArgs',
+    'WorkerScriptQueueBindingArgs',
     'WorkerScriptR2BucketBindingArgs',
     'WorkerScriptSecretTextBindingArgs',
     'WorkerScriptServiceBindingArgs',
@@ -216,6 +217,7 @@ __all__ = [
     'GetLoadBalancerPoolsPoolLoadSheddingArgs',
     'GetLoadBalancerPoolsPoolOriginArgs',
     'GetLoadBalancerPoolsPoolOriginHeaderArgs',
+    'GetRulesetsFilterArgs',
     'GetWafGroupsFilterArgs',
     'GetWafPackagesFilterArgs',
     'GetWafRulesFilterArgs',
@@ -7393,47 +7395,25 @@ class PageRuleActionsArgs:
 @pulumi.input_type
 class PageRuleActionsCacheKeyFieldsArgs:
     def __init__(__self__, *,
-                 cookie: pulumi.Input['PageRuleActionsCacheKeyFieldsCookieArgs'],
-                 header: pulumi.Input['PageRuleActionsCacheKeyFieldsHeaderArgs'],
                  host: pulumi.Input['PageRuleActionsCacheKeyFieldsHostArgs'],
                  query_string: pulumi.Input['PageRuleActionsCacheKeyFieldsQueryStringArgs'],
-                 user: pulumi.Input['PageRuleActionsCacheKeyFieldsUserArgs']):
+                 user: pulumi.Input['PageRuleActionsCacheKeyFieldsUserArgs'],
+                 cookie: Optional[pulumi.Input['PageRuleActionsCacheKeyFieldsCookieArgs']] = None,
+                 header: Optional[pulumi.Input['PageRuleActionsCacheKeyFieldsHeaderArgs']] = None):
         """
-        :param pulumi.Input['PageRuleActionsCacheKeyFieldsCookieArgs'] cookie: Controls what cookies go into Cache Key:
-        :param pulumi.Input['PageRuleActionsCacheKeyFieldsHeaderArgs'] header: Controls what HTTP headers go into Cache Key:
         :param pulumi.Input['PageRuleActionsCacheKeyFieldsHostArgs'] host: Controls which Host header goes into Cache Key:
         :param pulumi.Input['PageRuleActionsCacheKeyFieldsQueryStringArgs'] query_string: Controls which URL query string parameters go into the Cache Key.
         :param pulumi.Input['PageRuleActionsCacheKeyFieldsUserArgs'] user: Controls which end user-related features go into the Cache Key.
+        :param pulumi.Input['PageRuleActionsCacheKeyFieldsCookieArgs'] cookie: Controls what cookies go into Cache Key:
+        :param pulumi.Input['PageRuleActionsCacheKeyFieldsHeaderArgs'] header: Controls what HTTP headers go into Cache Key:
         """
-        pulumi.set(__self__, "cookie", cookie)
-        pulumi.set(__self__, "header", header)
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "query_string", query_string)
         pulumi.set(__self__, "user", user)
-
-    @property
-    @pulumi.getter
-    def cookie(self) -> pulumi.Input['PageRuleActionsCacheKeyFieldsCookieArgs']:
-        """
-        Controls what cookies go into Cache Key:
-        """
-        return pulumi.get(self, "cookie")
-
-    @cookie.setter
-    def cookie(self, value: pulumi.Input['PageRuleActionsCacheKeyFieldsCookieArgs']):
-        pulumi.set(self, "cookie", value)
-
-    @property
-    @pulumi.getter
-    def header(self) -> pulumi.Input['PageRuleActionsCacheKeyFieldsHeaderArgs']:
-        """
-        Controls what HTTP headers go into Cache Key:
-        """
-        return pulumi.get(self, "header")
-
-    @header.setter
-    def header(self, value: pulumi.Input['PageRuleActionsCacheKeyFieldsHeaderArgs']):
-        pulumi.set(self, "header", value)
+        if cookie is not None:
+            pulumi.set(__self__, "cookie", cookie)
+        if header is not None:
+            pulumi.set(__self__, "header", header)
 
     @property
     @pulumi.getter
@@ -7470,6 +7450,30 @@ class PageRuleActionsCacheKeyFieldsArgs:
     @user.setter
     def user(self, value: pulumi.Input['PageRuleActionsCacheKeyFieldsUserArgs']):
         pulumi.set(self, "user", value)
+
+    @property
+    @pulumi.getter
+    def cookie(self) -> Optional[pulumi.Input['PageRuleActionsCacheKeyFieldsCookieArgs']]:
+        """
+        Controls what cookies go into Cache Key:
+        """
+        return pulumi.get(self, "cookie")
+
+    @cookie.setter
+    def cookie(self, value: Optional[pulumi.Input['PageRuleActionsCacheKeyFieldsCookieArgs']]):
+        pulumi.set(self, "cookie", value)
+
+    @property
+    @pulumi.getter
+    def header(self) -> Optional[pulumi.Input['PageRuleActionsCacheKeyFieldsHeaderArgs']]:
+        """
+        Controls what HTTP headers go into Cache Key:
+        """
+        return pulumi.get(self, "header")
+
+    @header.setter
+    def header(self, value: Optional[pulumi.Input['PageRuleActionsCacheKeyFieldsHeaderArgs']]):
+        pulumi.set(self, "header", value)
 
 
 @pulumi.input_type
@@ -8095,7 +8099,7 @@ class PagesProjectDeploymentConfigsPreviewServiceBindingArgs:
                  service: pulumi.Input[str],
                  environment: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Name of the project.
+        :param pulumi.Input[str] name: Name of the project. **Modifying this attribute will force creation of a new resource.**
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "service", service)
@@ -8106,7 +8110,7 @@ class PagesProjectDeploymentConfigsPreviewServiceBindingArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the project.
+        Name of the project. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -8277,7 +8281,7 @@ class PagesProjectDeploymentConfigsProductionServiceBindingArgs:
                  service: pulumi.Input[str],
                  environment: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Name of the project.
+        :param pulumi.Input[str] name: Name of the project. **Modifying this attribute will force creation of a new resource.**
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "service", service)
@@ -8288,7 +8292,7 @@ class PagesProjectDeploymentConfigsProductionServiceBindingArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the project.
+        Name of the project. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -9198,6 +9202,7 @@ class RulesetRuleArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  exposed_credential_check: Optional[pulumi.Input['RulesetRuleExposedCredentialCheckArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
+                 last_updated: Optional[pulumi.Input[str]] = None,
                  logging: Optional[pulumi.Input['RulesetRuleLoggingArgs']] = None,
                  ratelimit: Optional[pulumi.Input['RulesetRuleRatelimitArgs']] = None,
                  ref: Optional[pulumi.Input[str]] = None,
@@ -9210,6 +9215,7 @@ class RulesetRuleArgs:
         :param pulumi.Input[bool] enabled: Whether the rule is active.
         :param pulumi.Input['RulesetRuleExposedCredentialCheckArgs'] exposed_credential_check: List of parameters that configure exposed credential checks.
         :param pulumi.Input[str] id: Unique rule identifier.
+        :param pulumi.Input[str] last_updated: The most recent update to this rule.
         :param pulumi.Input['RulesetRuleLoggingArgs'] logging: List parameters to configure how the rule generates logs.
         :param pulumi.Input['RulesetRuleRatelimitArgs'] ratelimit: List of parameters that configure HTTP rate limiting behaviour.
         :param pulumi.Input[str] ref: Rule reference.
@@ -9228,6 +9234,8 @@ class RulesetRuleArgs:
             pulumi.set(__self__, "exposed_credential_check", exposed_credential_check)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if last_updated is not None:
+            pulumi.set(__self__, "last_updated", last_updated)
         if logging is not None:
             pulumi.set(__self__, "logging", logging)
         if ratelimit is not None:
@@ -9320,6 +9328,18 @@ class RulesetRuleArgs:
     @id.setter
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="lastUpdated")
+    def last_updated(self) -> Optional[pulumi.Input[str]]:
+        """
+        The most recent update to this rule.
+        """
+        return pulumi.get(self, "last_updated")
+
+    @last_updated.setter
+    def last_updated(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_updated", value)
 
     @property
     @pulumi.getter
@@ -11089,7 +11109,9 @@ class RulesetRuleRatelimitArgs:
                  mitigation_timeout: Optional[pulumi.Input[int]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  requests_per_period: Optional[pulumi.Input[int]] = None,
-                 requests_to_origin: Optional[pulumi.Input[bool]] = None):
+                 requests_to_origin: Optional[pulumi.Input[bool]] = None,
+                 score_per_period: Optional[pulumi.Input[int]] = None,
+                 score_response_header_name: Optional[pulumi.Input[str]] = None):
         if characteristics is not None:
             pulumi.set(__self__, "characteristics", characteristics)
         if counting_expression is not None:
@@ -11102,6 +11124,10 @@ class RulesetRuleRatelimitArgs:
             pulumi.set(__self__, "requests_per_period", requests_per_period)
         if requests_to_origin is not None:
             pulumi.set(__self__, "requests_to_origin", requests_to_origin)
+        if score_per_period is not None:
+            pulumi.set(__self__, "score_per_period", score_per_period)
+        if score_response_header_name is not None:
+            pulumi.set(__self__, "score_response_header_name", score_response_header_name)
 
     @property
     @pulumi.getter
@@ -11156,6 +11182,24 @@ class RulesetRuleRatelimitArgs:
     @requests_to_origin.setter
     def requests_to_origin(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "requests_to_origin", value)
+
+    @property
+    @pulumi.getter(name="scorePerPeriod")
+    def score_per_period(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "score_per_period")
+
+    @score_per_period.setter
+    def score_per_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "score_per_period", value)
+
+    @property
+    @pulumi.getter(name="scoreResponseHeaderName")
+    def score_response_header_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "score_response_header_name")
+
+    @score_response_header_name.setter
+    def score_response_header_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "score_response_header_name", value)
 
 
 @pulumi.input_type
@@ -12667,6 +12711,43 @@ class WorkerScriptPlainTextBindingArgs:
     @text.setter
     def text(self, value: pulumi.Input[str]):
         pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class WorkerScriptQueueBindingArgs:
+    def __init__(__self__, *,
+                 binding: pulumi.Input[str],
+                 queue: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] binding: The name of the global variable for the binding in your Worker code.
+        :param pulumi.Input[str] queue: Name of the queue you want to use.
+        """
+        pulumi.set(__self__, "binding", binding)
+        pulumi.set(__self__, "queue", queue)
+
+    @property
+    @pulumi.getter
+    def binding(self) -> pulumi.Input[str]:
+        """
+        The name of the global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "binding")
+
+    @binding.setter
+    def binding(self, value: pulumi.Input[str]):
+        pulumi.set(self, "binding", value)
+
+    @property
+    @pulumi.getter
+    def queue(self) -> pulumi.Input[str]:
+        """
+        Name of the queue you want to use.
+        """
+        return pulumi.get(self, "queue")
+
+    @queue.setter
+    def queue(self, value: pulumi.Input[str]):
+        pulumi.set(self, "queue", value)
 
 
 @pulumi.input_type
@@ -14869,6 +14950,93 @@ class GetLoadBalancerPoolsPoolOriginHeaderArgs:
     @values.setter
     def values(self, value: Sequence[str]):
         pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class GetRulesetsFilterArgs:
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 kind: Optional[str] = None,
+                 name: Optional[str] = None,
+                 phase: Optional[str] = None,
+                 version: Optional[str] = None):
+        """
+        :param str id: The ID of the Ruleset to target.
+        :param str kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+        :param str name: Name of the ruleset.
+        :param str phase: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
+        :param str version: Version of the ruleset to filter on.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if phase is not None:
+            pulumi.set(__self__, "phase", phase)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The ID of the Ruleset to target.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        """
+        Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[str]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the ruleset.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def phase(self) -> Optional[str]:
+        """
+        Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
+        """
+        return pulumi.get(self, "phase")
+
+    @phase.setter
+    def phase(self, value: Optional[str]):
+        pulumi.set(self, "phase", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Version of the ruleset to filter on.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[str]):
+        pulumi.set(self, "version", value)
 
 
 @pulumi.input_type

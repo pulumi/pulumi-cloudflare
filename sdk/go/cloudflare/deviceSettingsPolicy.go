@@ -37,6 +37,7 @@ import (
 //				Default:             pulumi.Bool(false),
 //				DisableAutoFallback: pulumi.Bool(true),
 //				Enabled:             pulumi.Bool(true),
+//				ExcludeOfficeIps:    pulumi.Bool(false),
 //				Match:               pulumi.String("any(identity.groups.name[*] in {\"Developers\"})"),
 //				Name:                pulumi.String("Developers WARP settings policy"),
 //				Precedence:          pulumi.Int(10),
@@ -84,6 +85,8 @@ type DeviceSettingsPolicy struct {
 	DisableAutoFallback pulumi.BoolPtrOutput `pulumi:"disableAutoFallback"`
 	// Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// Whether to add Microsoft IPs to split tunnel exclusions.
+	ExcludeOfficeIps pulumi.BoolPtrOutput `pulumi:"excludeOfficeIps"`
 	// Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.
 	Match pulumi.StringPtrOutput `pulumi:"match"`
 	// Name of the policy.
@@ -153,6 +156,8 @@ type deviceSettingsPolicyState struct {
 	DisableAutoFallback *bool `pulumi:"disableAutoFallback"`
 	// Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
 	Enabled *bool `pulumi:"enabled"`
+	// Whether to add Microsoft IPs to split tunnel exclusions.
+	ExcludeOfficeIps *bool `pulumi:"excludeOfficeIps"`
 	// Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.
 	Match *string `pulumi:"match"`
 	// Name of the policy.
@@ -188,6 +193,8 @@ type DeviceSettingsPolicyState struct {
 	DisableAutoFallback pulumi.BoolPtrInput
 	// Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
 	Enabled pulumi.BoolPtrInput
+	// Whether to add Microsoft IPs to split tunnel exclusions.
+	ExcludeOfficeIps pulumi.BoolPtrInput
 	// Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.
 	Match pulumi.StringPtrInput
 	// Name of the policy.
@@ -227,6 +234,8 @@ type deviceSettingsPolicyArgs struct {
 	DisableAutoFallback *bool `pulumi:"disableAutoFallback"`
 	// Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
 	Enabled *bool `pulumi:"enabled"`
+	// Whether to add Microsoft IPs to split tunnel exclusions.
+	ExcludeOfficeIps *bool `pulumi:"excludeOfficeIps"`
 	// Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.
 	Match *string `pulumi:"match"`
 	// Name of the policy.
@@ -263,6 +272,8 @@ type DeviceSettingsPolicyArgs struct {
 	DisableAutoFallback pulumi.BoolPtrInput
 	// Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
 	Enabled pulumi.BoolPtrInput
+	// Whether to add Microsoft IPs to split tunnel exclusions.
+	ExcludeOfficeIps pulumi.BoolPtrInput
 	// Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.
 	Match pulumi.StringPtrInput
 	// Name of the policy.
@@ -409,6 +420,11 @@ func (o DeviceSettingsPolicyOutput) DisableAutoFallback() pulumi.BoolPtrOutput {
 // Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
 func (o DeviceSettingsPolicyOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DeviceSettingsPolicy) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to add Microsoft IPs to split tunnel exclusions.
+func (o DeviceSettingsPolicyOutput) ExcludeOfficeIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceSettingsPolicy) pulumi.BoolPtrOutput { return v.ExcludeOfficeIps }).(pulumi.BoolPtrOutput)
 }
 
 // Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.

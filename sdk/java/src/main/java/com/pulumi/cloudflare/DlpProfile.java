@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -43,6 +44,20 @@ public class DlpProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<String> accountId() {
         return this.accountId;
+    }
+    /**
+     * Related DLP policies will trigger when the match count exceeds the number set.
+     * 
+     */
+    @Export(name="allowedMatchCount", type=Integer.class, parameters={})
+    private Output<Integer> allowedMatchCount;
+
+    /**
+     * @return Related DLP policies will trigger when the match count exceeds the number set.
+     * 
+     */
+    public Output<Integer> allowedMatchCount() {
+        return this.allowedMatchCount;
     }
     /**
      * Brief summary of the profile and its intended use.

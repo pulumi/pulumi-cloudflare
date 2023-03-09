@@ -10,6 +10,8 @@ import com.pulumi.cloudflare.outputs.PageRuleActionsCacheKeyFieldsQueryString;
 import com.pulumi.cloudflare.outputs.PageRuleActionsCacheKeyFieldsUser;
 import com.pulumi.core.annotations.CustomType;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class PageRuleActionsCacheKeyFields {
@@ -17,12 +19,12 @@ public final class PageRuleActionsCacheKeyFields {
      * @return Controls what cookies go into Cache Key:
      * 
      */
-    private PageRuleActionsCacheKeyFieldsCookie cookie;
+    private @Nullable PageRuleActionsCacheKeyFieldsCookie cookie;
     /**
      * @return Controls what HTTP headers go into Cache Key:
      * 
      */
-    private PageRuleActionsCacheKeyFieldsHeader header;
+    private @Nullable PageRuleActionsCacheKeyFieldsHeader header;
     /**
      * @return Controls which Host header goes into Cache Key:
      * 
@@ -44,15 +46,15 @@ public final class PageRuleActionsCacheKeyFields {
      * @return Controls what cookies go into Cache Key:
      * 
      */
-    public PageRuleActionsCacheKeyFieldsCookie cookie() {
-        return this.cookie;
+    public Optional<PageRuleActionsCacheKeyFieldsCookie> cookie() {
+        return Optional.ofNullable(this.cookie);
     }
     /**
      * @return Controls what HTTP headers go into Cache Key:
      * 
      */
-    public PageRuleActionsCacheKeyFieldsHeader header() {
-        return this.header;
+    public Optional<PageRuleActionsCacheKeyFieldsHeader> header() {
+        return Optional.ofNullable(this.header);
     }
     /**
      * @return Controls which Host header goes into Cache Key:
@@ -85,8 +87,8 @@ public final class PageRuleActionsCacheKeyFields {
     }
     @CustomType.Builder
     public static final class Builder {
-        private PageRuleActionsCacheKeyFieldsCookie cookie;
-        private PageRuleActionsCacheKeyFieldsHeader header;
+        private @Nullable PageRuleActionsCacheKeyFieldsCookie cookie;
+        private @Nullable PageRuleActionsCacheKeyFieldsHeader header;
         private PageRuleActionsCacheKeyFieldsHost host;
         private PageRuleActionsCacheKeyFieldsQueryString queryString;
         private PageRuleActionsCacheKeyFieldsUser user;
@@ -101,13 +103,13 @@ public final class PageRuleActionsCacheKeyFields {
         }
 
         @CustomType.Setter
-        public Builder cookie(PageRuleActionsCacheKeyFieldsCookie cookie) {
-            this.cookie = Objects.requireNonNull(cookie);
+        public Builder cookie(@Nullable PageRuleActionsCacheKeyFieldsCookie cookie) {
+            this.cookie = cookie;
             return this;
         }
         @CustomType.Setter
-        public Builder header(PageRuleActionsCacheKeyFieldsHeader header) {
-            this.header = Objects.requireNonNull(header);
+        public Builder header(@Nullable PageRuleActionsCacheKeyFieldsHeader header) {
+            this.header = header;
             return this;
         }
         @CustomType.Setter

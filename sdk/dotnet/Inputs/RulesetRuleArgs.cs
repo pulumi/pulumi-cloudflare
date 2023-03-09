@@ -55,6 +55,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
+        /// The most recent update to this rule.
+        /// </summary>
+        [Input("lastUpdated")]
+        public Input<string>? LastUpdated { get; set; }
+
+        /// <summary>
         /// List parameters to configure how the rule generates logs.
         /// </summary>
         [Input("logging")]

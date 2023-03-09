@@ -126,6 +126,21 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The most recent update to this rule.
+     * 
+     */
+    @Import(name="lastUpdated")
+    private @Nullable Output<String> lastUpdated;
+
+    /**
+     * @return The most recent update to this rule.
+     * 
+     */
+    public Optional<Output<String>> lastUpdated() {
+        return Optional.ofNullable(this.lastUpdated);
+    }
+
+    /**
      * List parameters to configure how the rule generates logs.
      * 
      */
@@ -195,6 +210,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         this.exposedCredentialCheck = $.exposedCredentialCheck;
         this.expression = $.expression;
         this.id = $.id;
+        this.lastUpdated = $.lastUpdated;
         this.logging = $.logging;
         this.ratelimit = $.ratelimit;
         this.ref = $.ref;
@@ -364,6 +380,27 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder id(String id) {
             return id(Output.of(id));
+        }
+
+        /**
+         * @param lastUpdated The most recent update to this rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastUpdated(@Nullable Output<String> lastUpdated) {
+            $.lastUpdated = lastUpdated;
+            return this;
+        }
+
+        /**
+         * @param lastUpdated The most recent update to this rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastUpdated(String lastUpdated) {
+            return lastUpdated(Output.of(lastUpdated));
         }
 
         /**

@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.DlpProfileEntryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -30,6 +31,21 @@ public final class DlpProfileState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
+    }
+
+    /**
+     * Related DLP policies will trigger when the match count exceeds the number set.
+     * 
+     */
+    @Import(name="allowedMatchCount")
+    private @Nullable Output<Integer> allowedMatchCount;
+
+    /**
+     * @return Related DLP policies will trigger when the match count exceeds the number set.
+     * 
+     */
+    public Optional<Output<Integer>> allowedMatchCount() {
+        return Optional.ofNullable(this.allowedMatchCount);
     }
 
     /**
@@ -96,6 +112,7 @@ public final class DlpProfileState extends com.pulumi.resources.ResourceArgs {
 
     private DlpProfileState(DlpProfileState $) {
         this.accountId = $.accountId;
+        this.allowedMatchCount = $.allowedMatchCount;
         this.description = $.description;
         this.entries = $.entries;
         this.name = $.name;
@@ -139,6 +156,27 @@ public final class DlpProfileState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param allowedMatchCount Related DLP policies will trigger when the match count exceeds the number set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedMatchCount(@Nullable Output<Integer> allowedMatchCount) {
+            $.allowedMatchCount = allowedMatchCount;
+            return this;
+        }
+
+        /**
+         * @param allowedMatchCount Related DLP policies will trigger when the match count exceeds the number set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedMatchCount(Integer allowedMatchCount) {
+            return allowedMatchCount(Output.of(allowedMatchCount));
         }
 
         /**

@@ -76,7 +76,7 @@ export class LogpushJob extends pulumi.CustomResource {
      */
     public readonly kind!: pulumi.Output<string | undefined>;
     /**
-     * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+     * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
      */
     public readonly logpullOptions!: pulumi.Output<string | undefined>;
     /**
@@ -174,7 +174,7 @@ export interface LogpushJobState {
      */
     kind?: pulumi.Input<string>;
     /**
-     * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+     * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
      */
     logpullOptions?: pulumi.Input<string>;
     /**
@@ -224,7 +224,7 @@ export interface LogpushJobArgs {
      */
     kind?: pulumi.Input<string>;
     /**
-     * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+     * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
      */
     logpullOptions?: pulumi.Input<string>;
     /**

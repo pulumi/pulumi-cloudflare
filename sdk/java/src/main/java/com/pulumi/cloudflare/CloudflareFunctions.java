@@ -18,6 +18,8 @@ import com.pulumi.cloudflare.inputs.GetOriginCaRootCertificateArgs;
 import com.pulumi.cloudflare.inputs.GetOriginCaRootCertificatePlainArgs;
 import com.pulumi.cloudflare.inputs.GetRecordArgs;
 import com.pulumi.cloudflare.inputs.GetRecordPlainArgs;
+import com.pulumi.cloudflare.inputs.GetRulesetsArgs;
+import com.pulumi.cloudflare.inputs.GetRulesetsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetWafGroupsArgs;
 import com.pulumi.cloudflare.inputs.GetWafGroupsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetWafPackagesArgs;
@@ -39,6 +41,7 @@ import com.pulumi.cloudflare.outputs.GetIpRangesResult;
 import com.pulumi.cloudflare.outputs.GetLoadBalancerPoolsResult;
 import com.pulumi.cloudflare.outputs.GetOriginCaRootCertificateResult;
 import com.pulumi.cloudflare.outputs.GetRecordResult;
+import com.pulumi.cloudflare.outputs.GetRulesetsResult;
 import com.pulumi.cloudflare.outputs.GetWafGroupsResult;
 import com.pulumi.cloudflare.outputs.GetWafPackagesResult;
 import com.pulumi.cloudflare.outputs.GetWafRulesResult;
@@ -1267,8 +1270,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getRecord(GetRecordArgs.builder()
-     *             .zoneId(var_.zone_id())
      *             .hostname(&#34;example.com&#34;)
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
      *             .build());
      * 
      *     }
@@ -1305,8 +1308,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getRecord(GetRecordArgs.builder()
-     *             .zoneId(var_.zone_id())
      *             .hostname(&#34;example.com&#34;)
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
      *             .build());
      * 
      *     }
@@ -1343,8 +1346,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getRecord(GetRecordArgs.builder()
-     *             .zoneId(var_.zone_id())
      *             .hostname(&#34;example.com&#34;)
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
      *             .build());
      * 
      *     }
@@ -1381,8 +1384,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getRecord(GetRecordArgs.builder()
-     *             .zoneId(var_.zone_id())
      *             .hostname(&#34;example.com&#34;)
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
      *             .build());
      * 
      *     }
@@ -1392,6 +1395,252 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetRecordResult> getRecordPlain(GetRecordPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getRecord:getRecord", TypeShape.of(GetRecordResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to lookup Rulesets in an account or zone.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetRulesetsArgs;
+     * import com.pulumi.cloudflare.inputs.GetRulesetsFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getRulesets(GetRulesetsArgs.builder()
+     *             .filter(GetRulesetsFilterArgs.builder()
+     *                 .name(&#34;.*OWASP.*&#34;)
+     *                 .build())
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRulesetsResult> getRulesets() {
+        return getRulesets(GetRulesetsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this datasource to lookup Rulesets in an account or zone.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetRulesetsArgs;
+     * import com.pulumi.cloudflare.inputs.GetRulesetsFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getRulesets(GetRulesetsArgs.builder()
+     *             .filter(GetRulesetsFilterArgs.builder()
+     *                 .name(&#34;.*OWASP.*&#34;)
+     *                 .build())
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRulesetsResult> getRulesetsPlain() {
+        return getRulesetsPlain(GetRulesetsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this datasource to lookup Rulesets in an account or zone.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetRulesetsArgs;
+     * import com.pulumi.cloudflare.inputs.GetRulesetsFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getRulesets(GetRulesetsArgs.builder()
+     *             .filter(GetRulesetsFilterArgs.builder()
+     *                 .name(&#34;.*OWASP.*&#34;)
+     *                 .build())
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRulesetsResult> getRulesets(GetRulesetsArgs args) {
+        return getRulesets(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this datasource to lookup Rulesets in an account or zone.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetRulesetsArgs;
+     * import com.pulumi.cloudflare.inputs.GetRulesetsFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getRulesets(GetRulesetsArgs.builder()
+     *             .filter(GetRulesetsFilterArgs.builder()
+     *                 .name(&#34;.*OWASP.*&#34;)
+     *                 .build())
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRulesetsResult> getRulesetsPlain(GetRulesetsPlainArgs args) {
+        return getRulesetsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this datasource to lookup Rulesets in an account or zone.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetRulesetsArgs;
+     * import com.pulumi.cloudflare.inputs.GetRulesetsFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getRulesets(GetRulesetsArgs.builder()
+     *             .filter(GetRulesetsFilterArgs.builder()
+     *                 .name(&#34;.*OWASP.*&#34;)
+     *                 .build())
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRulesetsResult> getRulesets(GetRulesetsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getRulesets:getRulesets", TypeShape.of(GetRulesetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to lookup Rulesets in an account or zone.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetRulesetsArgs;
+     * import com.pulumi.cloudflare.inputs.GetRulesetsFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getRulesets(GetRulesetsArgs.builder()
+     *             .filter(GetRulesetsFilterArgs.builder()
+     *                 .name(&#34;.*OWASP.*&#34;)
+     *                 .build())
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRulesetsResult> getRulesetsPlain(GetRulesetsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getRulesets:getRulesets", TypeShape.of(GetRulesetsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to look up [WAF Rule Groups](https://api.cloudflare.com/#waf-rule-groups-properties).

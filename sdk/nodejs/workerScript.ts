@@ -113,6 +113,7 @@ export class WorkerScript extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     public readonly plainTextBindings!: pulumi.Output<outputs.WorkerScriptPlainTextBinding[] | undefined>;
+    public readonly queueBindings!: pulumi.Output<outputs.WorkerScriptQueueBinding[] | undefined>;
     public readonly r2BucketBindings!: pulumi.Output<outputs.WorkerScriptR2BucketBinding[] | undefined>;
     public readonly secretTextBindings!: pulumi.Output<outputs.WorkerScriptSecretTextBinding[] | undefined>;
     public readonly serviceBindings!: pulumi.Output<outputs.WorkerScriptServiceBinding[] | undefined>;
@@ -138,6 +139,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["module"] = state ? state.module : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["plainTextBindings"] = state ? state.plainTextBindings : undefined;
+            resourceInputs["queueBindings"] = state ? state.queueBindings : undefined;
             resourceInputs["r2BucketBindings"] = state ? state.r2BucketBindings : undefined;
             resourceInputs["secretTextBindings"] = state ? state.secretTextBindings : undefined;
             resourceInputs["serviceBindings"] = state ? state.serviceBindings : undefined;
@@ -157,6 +159,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["module"] = args ? args.module : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["plainTextBindings"] = args ? args.plainTextBindings : undefined;
+            resourceInputs["queueBindings"] = args ? args.queueBindings : undefined;
             resourceInputs["r2BucketBindings"] = args ? args.r2BucketBindings : undefined;
             resourceInputs["secretTextBindings"] = args ? args.secretTextBindings : undefined;
             resourceInputs["serviceBindings"] = args ? args.serviceBindings : undefined;
@@ -190,6 +193,7 @@ export interface WorkerScriptState {
      */
     name?: pulumi.Input<string>;
     plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlainTextBinding>[]>;
+    queueBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptQueueBinding>[]>;
     r2BucketBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptR2BucketBinding>[]>;
     secretTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptSecretTextBinding>[]>;
     serviceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptServiceBinding>[]>;
@@ -219,6 +223,7 @@ export interface WorkerScriptArgs {
      */
     name: pulumi.Input<string>;
     plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlainTextBinding>[]>;
+    queueBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptQueueBinding>[]>;
     r2BucketBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptR2BucketBinding>[]>;
     secretTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptSecretTextBinding>[]>;
     serviceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptServiceBinding>[]>;

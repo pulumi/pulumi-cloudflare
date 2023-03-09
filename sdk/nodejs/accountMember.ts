@@ -71,7 +71,7 @@ export class AccountMember extends pulumi.CustomResource {
     /**
      * A member's status in the account. Available values: `accepted`, `pending`.
      */
-    public readonly status!: pulumi.Output<string | undefined>;
+    public readonly status!: pulumi.Output<string>;
 
     /**
      * Create a AccountMember resource with the given unique name, arguments, and options.

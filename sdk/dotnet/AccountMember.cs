@@ -65,7 +65,7 @@ namespace Pulumi.Cloudflare
         /// A member's status in the account. Available values: `accepted`, `pending`.
         /// </summary>
         [Output("status")]
-        public Output<string?> Status { get; private set; } = null!;
+        public Output<string> Status { get; private set; } = null!;
 
 
         /// <summary>

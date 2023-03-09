@@ -100,6 +100,7 @@ namespace Pulumi.Cloudflare
                 AdditionalSecretOutputs =
                 {
                     "secret",
+                    "tunnelToken",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -194,11 +195,21 @@ namespace Pulumi.Cloudflare
             }
         }
 
+        [Input("tunnelToken")]
+        private Input<string>? _tunnelToken;
+
         /// <summary>
         /// Token used by a connector to authenticate and run the tunnel.
         /// </summary>
-        [Input("tunnelToken")]
-        public Input<string>? TunnelToken { get; set; }
+        public Input<string>? TunnelToken
+        {
+            get => _tunnelToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tunnelToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ArgoTunnelState()
         {

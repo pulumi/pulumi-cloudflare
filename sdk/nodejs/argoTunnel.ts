@@ -115,7 +115,7 @@ export class ArgoTunnel extends pulumi.CustomResource {
             resourceInputs["tunnelToken"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["secret"] };
+        const secretOpts = { additionalSecretOutputs: ["secret", "tunnelToken"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(ArgoTunnel.__pulumiType, name, resourceInputs, opts);
     }

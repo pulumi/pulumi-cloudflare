@@ -42,6 +42,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
+        /// The most recent update to this rule.
+        /// </summary>
+        public readonly string? LastUpdated;
+        /// <summary>
         /// List parameters to configure how the rule generates logs.
         /// </summary>
         public readonly Outputs.RulesetRuleLogging? Logging;
@@ -74,6 +78,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? id,
 
+            string? lastUpdated,
+
             Outputs.RulesetRuleLogging? logging,
 
             Outputs.RulesetRuleRatelimit? ratelimit,
@@ -89,6 +95,7 @@ namespace Pulumi.Cloudflare.Outputs
             ExposedCredentialCheck = exposedCredentialCheck;
             Expression = expression;
             Id = id;
+            LastUpdated = lastUpdated;
             Logging = logging;
             Ratelimit = ratelimit;
             Ref = @ref;

@@ -35,6 +35,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("requestsToOrigin")]
         public Input<bool>? RequestsToOrigin { get; set; }
 
+        [Input("scorePerPeriod")]
+        public Input<int>? ScorePerPeriod { get; set; }
+
+        [Input("scoreResponseHeaderName")]
+        public Input<string>? ScoreResponseHeaderName { get; set; }
+
         public RulesetRuleRatelimitArgs()
         {
         }

@@ -70,7 +70,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        /// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         /// </summary>
         [Output("logpullOptions")]
         public Output<string?> LogpullOptions { get; private set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        /// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         /// </summary>
         [Input("logpullOptions")]
         public Input<string>? LogpullOptions { get; set; }
@@ -256,7 +256,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        /// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         /// </summary>
         [Input("logpullOptions")]
         public Input<string>? LogpullOptions { get; set; }

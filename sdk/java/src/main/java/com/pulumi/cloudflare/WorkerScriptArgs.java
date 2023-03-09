@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.WorkerScriptAnalyticsEngineBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptKvNamespaceBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptPlainTextBindingArgs;
+import com.pulumi.cloudflare.inputs.WorkerScriptQueueBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptR2BucketBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptSecretTextBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptServiceBindingArgs;
@@ -105,6 +106,13 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.plainTextBindings);
     }
 
+    @Import(name="queueBindings")
+    private @Nullable Output<List<WorkerScriptQueueBindingArgs>> queueBindings;
+
+    public Optional<Output<List<WorkerScriptQueueBindingArgs>>> queueBindings() {
+        return Optional.ofNullable(this.queueBindings);
+    }
+
     @Import(name="r2BucketBindings")
     private @Nullable Output<List<WorkerScriptR2BucketBindingArgs>> r2BucketBindings;
 
@@ -143,6 +151,7 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
         this.module = $.module;
         this.name = $.name;
         this.plainTextBindings = $.plainTextBindings;
+        this.queueBindings = $.queueBindings;
         this.r2BucketBindings = $.r2BucketBindings;
         this.secretTextBindings = $.secretTextBindings;
         this.serviceBindings = $.serviceBindings;
@@ -288,6 +297,19 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder plainTextBindings(WorkerScriptPlainTextBindingArgs... plainTextBindings) {
             return plainTextBindings(List.of(plainTextBindings));
+        }
+
+        public Builder queueBindings(@Nullable Output<List<WorkerScriptQueueBindingArgs>> queueBindings) {
+            $.queueBindings = queueBindings;
+            return this;
+        }
+
+        public Builder queueBindings(List<WorkerScriptQueueBindingArgs> queueBindings) {
+            return queueBindings(Output.of(queueBindings));
+        }
+
+        public Builder queueBindings(WorkerScriptQueueBindingArgs... queueBindings) {
+            return queueBindings(List.of(queueBindings));
         }
 
         public Builder r2BucketBindings(@Nullable Output<List<WorkerScriptR2BucketBindingArgs>> r2BucketBindings) {

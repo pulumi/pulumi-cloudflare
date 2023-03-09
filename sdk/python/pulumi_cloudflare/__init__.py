@@ -52,6 +52,7 @@ from .get_ip_ranges import *
 from .get_load_balancer_pools import *
 from .get_origin_ca_root_certificate import *
 from .get_record import *
+from .get_rulesets import *
 from .get_waf_groups import *
 from .get_waf_packages import *
 from .get_waf_rules import *
@@ -71,6 +72,7 @@ from .logpush_job import *
 from .logpush_ownership_challenge import *
 from .magic_firewall_ruleset import *
 from .managed_headers import *
+from .mtls_certificate import *
 from .notification_policy import *
 from .notification_policy_webhooks import *
 from .origin_ca_certificate import *
@@ -78,6 +80,7 @@ from .page_rule import *
 from .pages_domain import *
 from .pages_project import *
 from .provider import *
+from .queue import *
 from .rate_limit import *
 from .record import *
 from .ruleset import *
@@ -537,6 +540,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/mtlsCertificate",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/mtlsCertificate:MtlsCertificate": "MtlsCertificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/notificationPolicy",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -581,6 +592,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/pagesProject:PagesProject": "PagesProject"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/queue",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/queue:Queue": "Queue"
   }
  },
  {

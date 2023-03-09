@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
  *             .default_(false)
  *             .disableAutoFallback(true)
  *             .enabled(true)
+ *             .excludeOfficeIps(false)
  *             .match(&#34;any(identity.groups.name[*] in {\&#34;Developers\&#34;})&#34;)
  *             .name(&#34;Developers WARP settings policy&#34;)
  *             .precedence(10)
@@ -200,6 +201,20 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> enabled() {
         return Codegen.optional(this.enabled);
+    }
+    /**
+     * Whether to add Microsoft IPs to split tunnel exclusions.
+     * 
+     */
+    @Export(name="excludeOfficeIps", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> excludeOfficeIps;
+
+    /**
+     * @return Whether to add Microsoft IPs to split tunnel exclusions.
+     * 
+     */
+    public Output<Optional<Boolean>> excludeOfficeIps() {
+        return Codegen.optional(this.excludeOfficeIps);
     }
     /**
      * Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.

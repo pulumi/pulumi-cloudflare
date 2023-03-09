@@ -27,6 +27,8 @@ type DlpProfile struct {
 
 	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Related DLP policies will trigger when the match count exceeds the number set.
+	AllowedMatchCount pulumi.IntOutput `pulumi:"allowedMatchCount"`
 	// Brief summary of the profile and its intended use.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// List of entries to apply to the profile.
@@ -46,6 +48,9 @@ func NewDlpProfile(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.AllowedMatchCount == nil {
+		return nil, errors.New("invalid value for required argument 'AllowedMatchCount'")
 	}
 	if args.Entries == nil {
 		return nil, errors.New("invalid value for required argument 'Entries'")
@@ -80,6 +85,8 @@ func GetDlpProfile(ctx *pulumi.Context,
 type dlpProfileState struct {
 	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string `pulumi:"accountId"`
+	// Related DLP policies will trigger when the match count exceeds the number set.
+	AllowedMatchCount *int `pulumi:"allowedMatchCount"`
 	// Brief summary of the profile and its intended use.
 	Description *string `pulumi:"description"`
 	// List of entries to apply to the profile.
@@ -93,6 +100,8 @@ type dlpProfileState struct {
 type DlpProfileState struct {
 	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
+	// Related DLP policies will trigger when the match count exceeds the number set.
+	AllowedMatchCount pulumi.IntPtrInput
 	// Brief summary of the profile and its intended use.
 	Description pulumi.StringPtrInput
 	// List of entries to apply to the profile.
@@ -110,6 +119,8 @@ func (DlpProfileState) ElementType() reflect.Type {
 type dlpProfileArgs struct {
 	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId string `pulumi:"accountId"`
+	// Related DLP policies will trigger when the match count exceeds the number set.
+	AllowedMatchCount int `pulumi:"allowedMatchCount"`
 	// Brief summary of the profile and its intended use.
 	Description *string `pulumi:"description"`
 	// List of entries to apply to the profile.
@@ -124,6 +135,8 @@ type dlpProfileArgs struct {
 type DlpProfileArgs struct {
 	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringInput
+	// Related DLP policies will trigger when the match count exceeds the number set.
+	AllowedMatchCount pulumi.IntInput
 	// Brief summary of the profile and its intended use.
 	Description pulumi.StringPtrInput
 	// List of entries to apply to the profile.
@@ -224,6 +237,11 @@ func (o DlpProfileOutput) ToDlpProfileOutputWithContext(ctx context.Context) Dlp
 // The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 func (o DlpProfileOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpProfile) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Related DLP policies will trigger when the match count exceeds the number set.
+func (o DlpProfileOutput) AllowedMatchCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *DlpProfile) pulumi.IntOutput { return v.AllowedMatchCount }).(pulumi.IntOutput)
 }
 
 // Brief summary of the profile and its intended use.
