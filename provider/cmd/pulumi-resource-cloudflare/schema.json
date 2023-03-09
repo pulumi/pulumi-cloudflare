@@ -5441,8 +5441,6 @@
             },
             "type": "object",
             "required": [
-                "cookie",
-                "header",
                 "host",
                 "queryString",
                 "user"
@@ -5939,7 +5937,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the project.\n",
+                    "description": "Name of the project. **Modifying this attribute will force creation of a new resource.**\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6095,7 +6093,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the project.\n",
+                    "description": "Name of the project. **Modifying this attribute will force creation of a new resource.**\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6802,6 +6800,15 @@
                 "id": {
                     "type": "string",
                     "description": "Unique rule identifier.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "description": "The most recent update to this rule.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8162,6 +8169,22 @@
                             "mapCase": false
                         }
                     }
+                },
+                "scorePerPeriod": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "scoreResponseHeaderName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -9252,6 +9275,33 @@
             "required": [
                 "name",
                 "text"
+            ]
+        },
+        "cloudflare:index/WorkerScriptQueueBinding:WorkerScriptQueueBinding": {
+            "properties": {
+                "binding": {
+                    "type": "string",
+                    "description": "The name of the global variable for the binding in your Worker code.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "queue": {
+                    "type": "string",
+                    "description": "Name of the queue you want to use.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "binding",
+                "queue"
             ]
         },
         "cloudflare:index/WorkerScriptR2BucketBinding:WorkerScriptR2BucketBinding": {
@@ -11161,6 +11211,1583 @@
                 "header",
                 "values"
             ]
+        },
+        "cloudflare:index/getRulesetsFilter:getRulesetsFilter": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the Ruleset to target.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the ruleset.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "phase": {
+                    "type": "string",
+                    "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Version of the ruleset to filter on.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRuleset:getRulesetsRuleset": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of this resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kind": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "phase": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/getRulesetsRulesetRule:getRulesetsRulesetRule"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "version": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "kind",
+                "name",
+                "phase",
+                "version"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudflare:index/getRulesetsRulesetRule:getRulesetsRulesetRule": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "actionParameters": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParameters:getRulesetsRulesetRuleActionParameters",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "exposedCredentialCheck": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleExposedCredentialCheck:getRulesetsRulesetRuleExposedCredentialCheck",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "expression": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of this resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logging": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleLogging:getRulesetsRulesetRuleLogging",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ratelimit": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleRatelimit:getRulesetsRulesetRuleRatelimit",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ref": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "version": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "expression",
+                "id",
+                "ref",
+                "version"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParameters:getRulesetsRulesetRuleActionParameters": {
+            "properties": {
+                "automaticHttpsRewrites": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autominifies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersAutominify:getRulesetsRulesetRuleActionParametersAutominify"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "bic": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "browserTtl": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersBrowserTtl:getRulesetsRulesetRuleActionParametersBrowserTtl",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "cache": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "cacheKey": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersCacheKey:getRulesetsRulesetRuleActionParametersCacheKey",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "content": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "contentType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "cookieFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "disableApps": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "disableRailgun": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "disableZaraz": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "edgeTtl": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersEdgeTtl:getRulesetsRulesetRuleActionParametersEdgeTtl",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "emailObfuscation": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fromList": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersFromList:getRulesetsRulesetRuleActionParametersFromList",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fromValue": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersFromValue:getRulesetsRulesetRuleActionParametersFromValue",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersHeader:getRulesetsRulesetRuleActionParametersHeader"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hostHeader": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hotlinkProtection": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of this resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "increment": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "matchedData": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersMatchedData:getRulesetsRulesetRuleActionParametersMatchedData",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mirage": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "opportunisticEncryption": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "origin": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersOrigin:getRulesetsRulesetRuleActionParametersOrigin",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "originErrorPagePassthru": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "overrides": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersOverrides:getRulesetsRulesetRuleActionParametersOverrides",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "phases": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "polish": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "products": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "requestFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "respectStrongEtags": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "responseFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "responses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersResponse:getRulesetsRulesetRuleActionParametersResponse"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rocketLoader": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rules": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ruleset": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rulesets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "securityLevel": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serveStale": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersServeStale:getRulesetsRulesetRuleActionParametersServeStale",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serverSideExcludes": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sni": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersSni:getRulesetsRulesetRuleActionParametersSni",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ssl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sxg": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "uri": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersUri:getRulesetsRulesetRuleActionParametersUri",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "version": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "version"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersAutominify:getRulesetsRulesetRuleActionParametersAutominify": {
+            "properties": {
+                "css": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "html": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "js": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersBrowserTtl:getRulesetsRulesetRuleActionParametersBrowserTtl": {
+            "properties": {
+                "default": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mode": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "mode"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersCacheKey:getRulesetsRulesetRuleActionParametersCacheKey": {
+            "properties": {
+                "cacheByDeviceType": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "cacheDeceptionArmor": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "customKey": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersCacheKeyCustomKey:getRulesetsRulesetRuleActionParametersCacheKeyCustomKey",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ignoreQueryStringsOrder": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersCacheKeyCustomKey:getRulesetsRulesetRuleActionParametersCacheKeyCustomKey": {
+            "properties": {
+                "cookie": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyCookie:getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyCookie",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "header": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader:getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "host": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHost:getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHost",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "queryString": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryString:getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryString",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "user": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUser:getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUser",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyCookie:getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyCookie": {
+            "properties": {
+                "checkPresences": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader:getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader": {
+            "properties": {
+                "checkPresences": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "excludeOrigin": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHost:getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHost": {
+            "properties": {
+                "resolved": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryString:getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryString": {
+            "properties": {
+                "excludes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUser:getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUser": {
+            "properties": {
+                "deviceType": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "geo": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lang": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersEdgeTtl:getRulesetsRulesetRuleActionParametersEdgeTtl": {
+            "properties": {
+                "default": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mode": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "statusCodeTtls": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtl:getRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtl"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "mode"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtl:getRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtl": {
+            "properties": {
+                "statusCode": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "statusCodeRanges": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange:getRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange:getRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange": {
+            "properties": {
+                "from": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "to": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersFromList:getRulesetsRulesetRuleActionParametersFromList": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersFromValue:getRulesetsRulesetRuleActionParametersFromValue": {
+            "properties": {
+                "preserveQueryString": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "targetUrl": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersFromValueTargetUrl:getRulesetsRulesetRuleActionParametersFromValueTargetUrl",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersFromValueTargetUrl:getRulesetsRulesetRuleActionParametersFromValueTargetUrl": {
+            "properties": {
+                "expression": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersHeader:getRulesetsRulesetRuleActionParametersHeader": {
+            "properties": {
+                "expression": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "operation": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersMatchedData:getRulesetsRulesetRuleActionParametersMatchedData": {
+            "properties": {
+                "publicKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersOrigin:getRulesetsRulesetRuleActionParametersOrigin": {
+            "properties": {
+                "host": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersOverrides:getRulesetsRulesetRuleActionParametersOverrides": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "categories": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersOverridesCategory:getRulesetsRulesetRuleActionParametersOverridesCategory"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "deprecationMessage": "Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersOverridesRule:getRulesetsRulesetRuleActionParametersOverridesRule"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sensitivityLevel": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersOverridesCategory:getRulesetsRulesetRuleActionParametersOverridesCategory": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "category": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "deprecationMessage": "Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersOverridesRule:getRulesetsRulesetRuleActionParametersOverridesRule": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "deprecationMessage": "Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of this resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "scoreThreshold": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sensitivityLevel": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersResponse:getRulesetsRulesetRuleActionParametersResponse": {
+            "properties": {
+                "content": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "contentType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersServeStale:getRulesetsRulesetRuleActionParametersServeStale": {
+            "properties": {
+                "disableStaleWhileUpdating": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersSni:getRulesetsRulesetRuleActionParametersSni": {
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersUri:getRulesetsRulesetRuleActionParametersUri": {
+            "properties": {
+                "origin": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "path": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersUriPath:getRulesetsRulesetRuleActionParametersUriPath",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "query": {
+                    "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersUriQuery:getRulesetsRulesetRuleActionParametersUriQuery",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersUriPath:getRulesetsRulesetRuleActionParametersUriPath": {
+            "properties": {
+                "expression": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleActionParametersUriQuery:getRulesetsRulesetRuleActionParametersUriQuery": {
+            "properties": {
+                "expression": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleExposedCredentialCheck:getRulesetsRulesetRuleExposedCredentialCheck": {
+            "properties": {
+                "passwordExpression": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "usernameExpression": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleLogging:getRulesetsRulesetRuleLogging": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "deprecationMessage": "Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/getRulesetsRulesetRuleRatelimit:getRulesetsRulesetRuleRatelimit": {
+            "properties": {
+                "characteristics": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "countingExpression": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mitigationTimeout": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "period": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "requestsPerPeriod": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "requestsToOrigin": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "scorePerPeriod": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "scoreResponseHeaderName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "cloudflare:index/getWafGroupsFilter:getWafGroupsFilter": {
             "properties": {
@@ -13079,7 +14706,8 @@
             },
             "required": [
                 "emailAddress",
-                "roleIds"
+                "roleIds",
+                "status"
             ],
             "inputProperties": {
                 "accountId": {
@@ -13389,7 +15017,8 @@
                 },
                 "tunnelToken": {
                     "type": "string",
-                    "description": "Token used by a connector to authenticate and run the tunnel.\n"
+                    "description": "Token used by a connector to authenticate and run the tunnel.\n",
+                    "secret": true
                 }
             },
             "required": [
@@ -13447,7 +15076,8 @@
                     },
                     "tunnelToken": {
                         "type": "string",
-                        "description": "Token used by a connector to authenticate and run the tunnel.\n"
+                        "description": "Token used by a connector to authenticate and run the tunnel.\n",
+                        "secret": true
                     }
                 },
                 "type": "object"
@@ -14703,7 +16333,7 @@
             }
         },
         "cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy": {
-            "description": "Provides a Cloudflare Device Settings Policy resource. Device policies configure settings applied to WARP devices.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst developerWarpPolicy = new cloudflare.DeviceSettingsPolicy(\"developerWarpPolicy\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    allowModeSwitch: true,\n    allowUpdates: true,\n    allowedToLeave: true,\n    autoConnect: 0,\n    captivePortal: 5,\n    \"default\": false,\n    disableAutoFallback: true,\n    enabled: true,\n    match: \"any(identity.groups.name[*] in {\\\"Developers\\\"})\",\n    name: \"Developers WARP settings policy\",\n    precedence: 10,\n    serviceModeV2Mode: \"warp\",\n    serviceModeV2Port: 3000,\n    supportUrl: \"https://cloudflare.com\",\n    switchLocked: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\ndeveloper_warp_policy = cloudflare.DeviceSettingsPolicy(\"developerWarpPolicy\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    allow_mode_switch=True,\n    allow_updates=True,\n    allowed_to_leave=True,\n    auto_connect=0,\n    captive_portal=5,\n    default=False,\n    disable_auto_fallback=True,\n    enabled=True,\n    match=\"any(identity.groups.name[*] in {\\\"Developers\\\"})\",\n    name=\"Developers WARP settings policy\",\n    precedence=10,\n    service_mode_v2_mode=\"warp\",\n    service_mode_v2_port=3000,\n    support_url=\"https://cloudflare.com\",\n    switch_locked=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var developerWarpPolicy = new Cloudflare.DeviceSettingsPolicy(\"developerWarpPolicy\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        AllowModeSwitch = true,\n        AllowUpdates = true,\n        AllowedToLeave = true,\n        AutoConnect = 0,\n        CaptivePortal = 5,\n        Default = false,\n        DisableAutoFallback = true,\n        Enabled = true,\n        Match = \"any(identity.groups.name[*] in {\\\"Developers\\\"})\",\n        Name = \"Developers WARP settings policy\",\n        Precedence = 10,\n        ServiceModeV2Mode = \"warp\",\n        ServiceModeV2Port = 3000,\n        SupportUrl = \"https://cloudflare.com\",\n        SwitchLocked = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewDeviceSettingsPolicy(ctx, \"developerWarpPolicy\", \u0026cloudflare.DeviceSettingsPolicyArgs{\n\t\t\tAccountId:           pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tAllowModeSwitch:     pulumi.Bool(true),\n\t\t\tAllowUpdates:        pulumi.Bool(true),\n\t\t\tAllowedToLeave:      pulumi.Bool(true),\n\t\t\tAutoConnect:         pulumi.Int(0),\n\t\t\tCaptivePortal:       pulumi.Int(5),\n\t\t\tDefault:             pulumi.Bool(false),\n\t\t\tDisableAutoFallback: pulumi.Bool(true),\n\t\t\tEnabled:             pulumi.Bool(true),\n\t\t\tMatch:               pulumi.String(\"any(identity.groups.name[*] in {\\\"Developers\\\"})\"),\n\t\t\tName:                pulumi.String(\"Developers WARP settings policy\"),\n\t\t\tPrecedence:          pulumi.Int(10),\n\t\t\tServiceModeV2Mode:   pulumi.String(\"warp\"),\n\t\t\tServiceModeV2Port:   pulumi.Int(3000),\n\t\t\tSupportUrl:          pulumi.String(\"https://cloudflare.com\"),\n\t\t\tSwitchLocked:        pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.DeviceSettingsPolicy;\nimport com.pulumi.cloudflare.DeviceSettingsPolicyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var developerWarpPolicy = new DeviceSettingsPolicy(\"developerWarpPolicy\", DeviceSettingsPolicyArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .allowModeSwitch(true)\n            .allowUpdates(true)\n            .allowedToLeave(true)\n            .autoConnect(0)\n            .captivePortal(5)\n            .default_(false)\n            .disableAutoFallback(true)\n            .enabled(true)\n            .match(\"any(identity.groups.name[*] in {\\\"Developers\\\"})\")\n            .name(\"Developers WARP settings policy\")\n            .precedence(10)\n            .serviceModeV2Mode(\"warp\")\n            .serviceModeV2Port(3000)\n            .supportUrl(\"https://cloudflare.com\")\n            .switchLocked(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  developerWarpPolicy:\n    type: cloudflare:DeviceSettingsPolicy\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      allowModeSwitch: true\n      allowUpdates: true\n      allowedToLeave: true\n      autoConnect: 0\n      captivePortal: 5\n      default: false\n      disableAutoFallback: true\n      enabled: true\n      match: any(identity.groups.name[*] in {\"Developers\"})\n      name: Developers WARP settings policy\n      precedence: 10\n      serviceModeV2Mode: warp\n      serviceModeV2Port: 3000\n      supportUrl: https://cloudflare.com\n      switchLocked: true\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nFor default device settings policies you must use \"default\" as the policy ID.\n\n```sh\n $ pulumi import cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy example \u003caccount_id\u003e/\u003cdevice_policy_id\u003e\n```\n\n ",
+            "description": "Provides a Cloudflare Device Settings Policy resource. Device policies configure settings applied to WARP devices.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst developerWarpPolicy = new cloudflare.DeviceSettingsPolicy(\"developerWarpPolicy\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    allowModeSwitch: true,\n    allowUpdates: true,\n    allowedToLeave: true,\n    autoConnect: 0,\n    captivePortal: 5,\n    \"default\": false,\n    disableAutoFallback: true,\n    enabled: true,\n    excludeOfficeIps: false,\n    match: \"any(identity.groups.name[*] in {\\\"Developers\\\"})\",\n    name: \"Developers WARP settings policy\",\n    precedence: 10,\n    serviceModeV2Mode: \"warp\",\n    serviceModeV2Port: 3000,\n    supportUrl: \"https://cloudflare.com\",\n    switchLocked: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\ndeveloper_warp_policy = cloudflare.DeviceSettingsPolicy(\"developerWarpPolicy\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    allow_mode_switch=True,\n    allow_updates=True,\n    allowed_to_leave=True,\n    auto_connect=0,\n    captive_portal=5,\n    default=False,\n    disable_auto_fallback=True,\n    enabled=True,\n    exclude_office_ips=False,\n    match=\"any(identity.groups.name[*] in {\\\"Developers\\\"})\",\n    name=\"Developers WARP settings policy\",\n    precedence=10,\n    service_mode_v2_mode=\"warp\",\n    service_mode_v2_port=3000,\n    support_url=\"https://cloudflare.com\",\n    switch_locked=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var developerWarpPolicy = new Cloudflare.DeviceSettingsPolicy(\"developerWarpPolicy\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        AllowModeSwitch = true,\n        AllowUpdates = true,\n        AllowedToLeave = true,\n        AutoConnect = 0,\n        CaptivePortal = 5,\n        Default = false,\n        DisableAutoFallback = true,\n        Enabled = true,\n        ExcludeOfficeIps = false,\n        Match = \"any(identity.groups.name[*] in {\\\"Developers\\\"})\",\n        Name = \"Developers WARP settings policy\",\n        Precedence = 10,\n        ServiceModeV2Mode = \"warp\",\n        ServiceModeV2Port = 3000,\n        SupportUrl = \"https://cloudflare.com\",\n        SwitchLocked = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewDeviceSettingsPolicy(ctx, \"developerWarpPolicy\", \u0026cloudflare.DeviceSettingsPolicyArgs{\n\t\t\tAccountId:           pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tAllowModeSwitch:     pulumi.Bool(true),\n\t\t\tAllowUpdates:        pulumi.Bool(true),\n\t\t\tAllowedToLeave:      pulumi.Bool(true),\n\t\t\tAutoConnect:         pulumi.Int(0),\n\t\t\tCaptivePortal:       pulumi.Int(5),\n\t\t\tDefault:             pulumi.Bool(false),\n\t\t\tDisableAutoFallback: pulumi.Bool(true),\n\t\t\tEnabled:             pulumi.Bool(true),\n\t\t\tExcludeOfficeIps:    pulumi.Bool(false),\n\t\t\tMatch:               pulumi.String(\"any(identity.groups.name[*] in {\\\"Developers\\\"})\"),\n\t\t\tName:                pulumi.String(\"Developers WARP settings policy\"),\n\t\t\tPrecedence:          pulumi.Int(10),\n\t\t\tServiceModeV2Mode:   pulumi.String(\"warp\"),\n\t\t\tServiceModeV2Port:   pulumi.Int(3000),\n\t\t\tSupportUrl:          pulumi.String(\"https://cloudflare.com\"),\n\t\t\tSwitchLocked:        pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.DeviceSettingsPolicy;\nimport com.pulumi.cloudflare.DeviceSettingsPolicyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var developerWarpPolicy = new DeviceSettingsPolicy(\"developerWarpPolicy\", DeviceSettingsPolicyArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .allowModeSwitch(true)\n            .allowUpdates(true)\n            .allowedToLeave(true)\n            .autoConnect(0)\n            .captivePortal(5)\n            .default_(false)\n            .disableAutoFallback(true)\n            .enabled(true)\n            .excludeOfficeIps(false)\n            .match(\"any(identity.groups.name[*] in {\\\"Developers\\\"})\")\n            .name(\"Developers WARP settings policy\")\n            .precedence(10)\n            .serviceModeV2Mode(\"warp\")\n            .serviceModeV2Port(3000)\n            .supportUrl(\"https://cloudflare.com\")\n            .switchLocked(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  developerWarpPolicy:\n    type: cloudflare:DeviceSettingsPolicy\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      allowModeSwitch: true\n      allowUpdates: true\n      allowedToLeave: true\n      autoConnect: 0\n      captivePortal: 5\n      default: false\n      disableAutoFallback: true\n      enabled: true\n      excludeOfficeIps: false\n      match: any(identity.groups.name[*] in {\"Developers\"})\n      name: Developers WARP settings policy\n      precedence: 10\n      serviceModeV2Mode: warp\n      serviceModeV2Port: 3000\n      supportUrl: https://cloudflare.com\n      switchLocked: true\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nFor default device settings policies you must use \"default\" as the policy ID.\n\n```sh\n $ pulumi import cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy example \u003caccount_id\u003e/\u003cdevice_policy_id\u003e\n```\n\n ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -14740,6 +16370,10 @@
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.\n"
+                },
+                "excludeOfficeIps": {
+                    "type": "boolean",
+                    "description": "Whether to add Microsoft IPs to split tunnel exclusions.\n"
                 },
                 "match": {
                     "type": "string",
@@ -14810,6 +16444,10 @@
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.\n"
+                },
+                "excludeOfficeIps": {
+                    "type": "boolean",
+                    "description": "Whether to add Microsoft IPs to split tunnel exclusions.\n"
                 },
                 "match": {
                     "type": "string",
@@ -14883,6 +16521,10 @@
                         "type": "boolean",
                         "description": "Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.\n"
                     },
+                    "excludeOfficeIps": {
+                        "type": "boolean",
+                        "description": "Whether to add Microsoft IPs to split tunnel exclusions.\n"
+                    },
                     "match": {
                         "type": "string",
                         "description": "Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.\n"
@@ -14922,6 +16564,10 @@
                     "type": "string",
                     "description": "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n"
                 },
+                "allowedMatchCount": {
+                    "type": "integer",
+                    "description": "Related DLP policies will trigger when the match count exceeds the number set.\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "Brief summary of the profile and its intended use.\n"
@@ -14944,6 +16590,7 @@
             },
             "required": [
                 "accountId",
+                "allowedMatchCount",
                 "entries",
                 "name",
                 "type"
@@ -14953,6 +16600,10 @@
                     "type": "string",
                     "description": "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
                     "willReplaceOnChanges": true
+                },
+                "allowedMatchCount": {
+                    "type": "integer",
+                    "description": "Related DLP policies will trigger when the match count exceeds the number set.\n"
                 },
                 "description": {
                     "type": "string",
@@ -14978,6 +16629,7 @@
             },
             "requiredInputs": [
                 "accountId",
+                "allowedMatchCount",
                 "entries",
                 "name",
                 "type"
@@ -14989,6 +16641,10 @@
                         "type": "string",
                         "description": "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
                         "willReplaceOnChanges": true
+                    },
+                    "allowedMatchCount": {
+                        "type": "integer",
+                        "description": "Related DLP policies will trigger when the match count exceeds the number set.\n"
                     },
                     "description": {
                         "type": "string",
@@ -17481,7 +19137,7 @@
                 },
                 "logpullOptions": {
                     "type": "string",
-                    "description": "Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).\n"
+                    "description": "Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).\n"
                 },
                 "name": {
                     "type": "string",
@@ -17531,7 +19187,7 @@
                 },
                 "logpullOptions": {
                     "type": "string",
-                    "description": "Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).\n"
+                    "description": "Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).\n"
                 },
                 "name": {
                     "type": "string",
@@ -17583,7 +19239,7 @@
                     },
                     "logpullOptions": {
                         "type": "string",
-                        "description": "Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).\n"
+                        "description": "Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).\n"
                     },
                     "name": {
                         "type": "string",
@@ -17826,6 +19482,149 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/mtlsCertificate:MtlsCertificate": {
+            "description": "Provides a Cloudflare mTLS certificate resource. These certificates may be used with mTLS enabled Cloudflare services.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.MtlsCertificate(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    ca: true,\n    certificates: `-----BEGIN CERTIFICATE-----\nMIIDmDCCAoCgAwIBAgIUKTOAZNj...i4JhqeoTewsxndhDDE\n-----END CERTIFICATE-----\n`,\n    name: \"example\",\n    privateKey: `-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQE...1IS3EnQRrz6WMYA=\n-----END PRIVATE KEY-----\n`,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.MtlsCertificate(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    ca=True,\n    certificates=\"\"\"-----BEGIN CERTIFICATE-----\nMIIDmDCCAoCgAwIBAgIUKTOAZNj...i4JhqeoTewsxndhDDE\n-----END CERTIFICATE-----\n\"\"\",\n    name=\"example\",\n    private_key=\"\"\"-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQE...1IS3EnQRrz6WMYA=\n-----END PRIVATE KEY-----\n\"\"\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.MtlsCertificate(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Ca = true,\n        Certificates = @\"-----BEGIN CERTIFICATE-----\nMIIDmDCCAoCgAwIBAgIUKTOAZNj...i4JhqeoTewsxndhDDE\n-----END CERTIFICATE-----\n\",\n        Name = \"example\",\n        PrivateKey = @\"-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQE...1IS3EnQRrz6WMYA=\n-----END PRIVATE KEY-----\n\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewMtlsCertificate(ctx, \"example\", \u0026cloudflare.MtlsCertificateArgs{\n\t\t\tAccountId:    pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tCa:           pulumi.Bool(true),\n\t\t\tCertificates: pulumi.String(\"-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoCgAwIBAgIUKTOAZNj...i4JhqeoTewsxndhDDE\\n-----END CERTIFICATE-----\\n\"),\n\t\t\tName:         pulumi.String(\"example\"),\n\t\t\tPrivateKey:   pulumi.String(\"-----BEGIN PRIVATE KEY-----\\nMIIEvQIBADANBgkqhkiG9w0BAQE...1IS3EnQRrz6WMYA=\\n-----END PRIVATE KEY-----\\n\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.MtlsCertificate;\nimport com.pulumi.cloudflare.MtlsCertificateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new MtlsCertificate(\"example\", MtlsCertificateArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .ca(true)\n            .certificates(\"\"\"\n-----BEGIN CERTIFICATE-----\nMIIDmDCCAoCgAwIBAgIUKTOAZNj...i4JhqeoTewsxndhDDE\n-----END CERTIFICATE-----\n            \"\"\")\n            .name(\"example\")\n            .privateKey(\"\"\"\n-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQE...1IS3EnQRrz6WMYA=\n-----END PRIVATE KEY-----\n            \"\"\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:MtlsCertificate\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      ca: true\n      certificates: |\n        -----BEGIN CERTIFICATE-----\n        MIIDmDCCAoCgAwIBAgIUKTOAZNj...i4JhqeoTewsxndhDDE\n        -----END CERTIFICATE-----\n      name: example\n      privateKey: |\n        -----BEGIN PRIVATE KEY-----\n        MIIEvQIBADANBgkqhkiG9w0BAQE...1IS3EnQRrz6WMYA=\n        -----END PRIVATE KEY-----\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/mtlsCertificate:MtlsCertificate example \u003caccount_id\u003e/\u003cmtls_certificate_id\u003e\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "ca": {
+                    "type": "boolean",
+                    "description": "Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "certificates": {
+                    "type": "string",
+                    "description": "Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "expiresOn": {
+                    "type": "string",
+                    "description": "**Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "issuer": {
+                    "type": "string",
+                    "description": "**Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "privateKey": {
+                    "type": "string",
+                    "description": "The certificate's private key. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "serialNumber": {
+                    "type": "string",
+                    "description": "**Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "signature": {
+                    "type": "string",
+                    "description": "**Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "uploadedOn": {
+                    "type": "string",
+                    "description": "**Modifying this attribute will force creation of a new resource.**\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "ca",
+                "certificates",
+                "expiresOn",
+                "issuer",
+                "serialNumber",
+                "signature",
+                "uploadedOn"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "ca": {
+                    "type": "boolean",
+                    "description": "Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "certificates": {
+                    "type": "string",
+                    "description": "Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "privateKey": {
+                    "type": "string",
+                    "description": "The certificate's private key. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "ca",
+                "certificates"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering MtlsCertificate resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "ca": {
+                        "type": "boolean",
+                        "description": "Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "certificates": {
+                        "type": "string",
+                        "description": "Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "expiresOn": {
+                        "type": "string",
+                        "description": "**Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "issuer": {
+                        "type": "string",
+                        "description": "**Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "privateKey": {
+                        "type": "string",
+                        "description": "The certificate's private key. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "serialNumber": {
+                        "type": "string",
+                        "description": "**Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "signature": {
+                        "type": "string",
+                        "description": "**Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "uploadedOn": {
+                        "type": "string",
+                        "description": "**Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/notificationPolicy:NotificationPolicy": {
             "description": "Provides a resource, that manages a notification policy for\nCloudflare's products. The delivery mechanisms supported are email,\nwebhooks, and PagerDuty.\n\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example \u003caccount_id\u003e/\u003cpolicy_id\u003e\n```\n\n ",
             "properties": {
@@ -17835,7 +19634,7 @@
                 },
                 "alertType": {
                     "type": "string",
-                    "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`, `universal_ssl_event_type`, `dedicated_ssl_certificate_event_type`, `custom_ssl_certificate_event_type`, `access_custom_certificate_expiration_type`, `zone_aop_custom_certificate_expiration_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`, `weekly_account_overview`, `expiring_service_token_alert`, `secondary_dns_all_primaries_failing`, `secondary_dns_zone_validation_warning`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `dos_attack_l7`, `dos_attack_l4`, `advanced_ddos_attack_l7_alert`, `advanced_ddos_attack_l4_alert`, `fbm_volumetric_attack`, `fbm_auto_advertisement`, `load_balancing_pool_enablement_alert`, `load_balancing_health_alert`, `g6_health_alert`, `http_alert_edge_error`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `failing_logpush_job_disabled_alert`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_scripts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_max_length_script_url`, `scriptmonitor_alert_new_malicious_hosts`, `sentinel_alert`, `hostname_aop_custom_certificate_expiration_type`, `stream_live_notifications`, `block_notification_new_block`, `block_notification_review_rejected`, `block_notification_review_accepted`, `web_analytics_metrics_update`, `workers_uptime`.\n"
+                    "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
                 },
                 "created": {
                     "type": "string",
@@ -17898,7 +19697,7 @@
                 },
                 "alertType": {
                     "type": "string",
-                    "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`, `universal_ssl_event_type`, `dedicated_ssl_certificate_event_type`, `custom_ssl_certificate_event_type`, `access_custom_certificate_expiration_type`, `zone_aop_custom_certificate_expiration_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`, `weekly_account_overview`, `expiring_service_token_alert`, `secondary_dns_all_primaries_failing`, `secondary_dns_zone_validation_warning`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `dos_attack_l7`, `dos_attack_l4`, `advanced_ddos_attack_l7_alert`, `advanced_ddos_attack_l4_alert`, `fbm_volumetric_attack`, `fbm_auto_advertisement`, `load_balancing_pool_enablement_alert`, `load_balancing_health_alert`, `g6_health_alert`, `http_alert_edge_error`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `failing_logpush_job_disabled_alert`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_scripts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_max_length_script_url`, `scriptmonitor_alert_new_malicious_hosts`, `sentinel_alert`, `hostname_aop_custom_certificate_expiration_type`, `stream_live_notifications`, `block_notification_new_block`, `block_notification_review_rejected`, `block_notification_review_accepted`, `web_analytics_metrics_update`, `workers_uptime`.\n"
+                    "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
                 },
                 "description": {
                     "type": "string",
@@ -17953,7 +19752,7 @@
                     },
                     "alertType": {
                         "type": "string",
-                        "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`, `universal_ssl_event_type`, `dedicated_ssl_certificate_event_type`, `custom_ssl_certificate_event_type`, `access_custom_certificate_expiration_type`, `zone_aop_custom_certificate_expiration_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`, `weekly_account_overview`, `expiring_service_token_alert`, `secondary_dns_all_primaries_failing`, `secondary_dns_zone_validation_warning`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `dos_attack_l7`, `dos_attack_l4`, `advanced_ddos_attack_l7_alert`, `advanced_ddos_attack_l4_alert`, `fbm_volumetric_attack`, `fbm_auto_advertisement`, `load_balancing_pool_enablement_alert`, `load_balancing_health_alert`, `g6_health_alert`, `http_alert_edge_error`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `failing_logpush_job_disabled_alert`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_scripts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_max_length_script_url`, `scriptmonitor_alert_new_malicious_hosts`, `sentinel_alert`, `hostname_aop_custom_certificate_expiration_type`, `stream_live_notifications`, `block_notification_new_block`, `block_notification_review_rejected`, `block_notification_review_accepted`, `web_analytics_metrics_update`, `workers_uptime`.\n"
+                        "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
                     },
                     "created": {
                         "type": "string",
@@ -18411,7 +20210,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the project.\n"
+                    "description": "Name of the project. **Modifying this attribute will force creation of a new resource.**\n"
                 },
                 "productionBranch": {
                     "type": "string",
@@ -18449,7 +20248,8 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the project.\n"
+                    "description": "Name of the project. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
                 },
                 "productionBranch": {
                     "type": "string",
@@ -18493,7 +20293,8 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the project.\n"
+                        "description": "Name of the project. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
                     },
                     "productionBranch": {
                         "type": "string",
@@ -18506,6 +20307,51 @@
                     "subdomain": {
                         "type": "string",
                         "description": "The Cloudflare subdomain associated with the project.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/queue:Queue": {
+            "description": "Provides the ability to manage Cloudflare Workers Queue features.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.Queue(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"my-queue\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.Queue(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"my-queue\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.Queue(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"my-queue\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewQueue(ctx, \"example\", \u0026cloudflare.QueueArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:      pulumi.String(\"my-queue\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.Queue;\nimport com.pulumi.cloudflare.QueueArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Queue(\"example\", QueueArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"my-queue\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:Queue\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: my-queue\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/queue:Queue example \u003caccount_id\u003e/\u003cqueue_id\u003e\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the queue.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "name"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the queue.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "name"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Queue resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the queue.\n"
                     }
                 },
                 "type": "object"
@@ -21683,6 +23529,12 @@
                         "$ref": "#/types/cloudflare:index/WorkerScriptPlainTextBinding:WorkerScriptPlainTextBinding"
                     }
                 },
+                "queueBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkerScriptQueueBinding:WorkerScriptQueueBinding"
+                    }
+                },
                 "r2BucketBindings": {
                     "type": "array",
                     "items": {
@@ -21746,6 +23598,12 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/WorkerScriptPlainTextBinding:WorkerScriptPlainTextBinding"
+                    }
+                },
+                "queueBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkerScriptQueueBinding:WorkerScriptQueueBinding"
                     }
                 },
                 "r2BucketBindings": {
@@ -21813,6 +23671,12 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/cloudflare:index/WorkerScriptPlainTextBinding:WorkerScriptPlainTextBinding"
+                        }
+                    },
+                    "queueBindings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/WorkerScriptQueueBinding:WorkerScriptQueueBinding"
                         }
                     },
                     "r2BucketBindings": {
@@ -23114,7 +24978,7 @@
             }
         },
         "cloudflare:index/getRecord:getRecord": {
-            "description": "Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = cloudflare.getRecord({\n    zoneId: _var.zone_id,\n    hostname: \"example.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_record(zone_id=var[\"zone_id\"],\n    hostname=\"example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Cloudflare.GetRecord.Invoke(new()\n    {\n        ZoneId = @var.Zone_id,\n        Hostname = \"example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.LookupRecord(ctx, \u0026cloudflare.LookupRecordArgs{\n\t\t\tZoneId:   _var.Zone_id,\n\t\t\tHostname: \"example.com\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.CloudflareFunctions;\nimport com.pulumi.cloudflare.inputs.GetRecordArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudflareFunctions.getRecord(GetRecordArgs.builder()\n            .zoneId(var_.zone_id())\n            .hostname(\"example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: cloudflare:getRecord\n      Arguments:\n        zoneId: ${var.zone_id}\n        hostname: example.com\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = cloudflare.getRecord({\n    hostname: \"example.com\",\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_record(hostname=\"example.com\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Cloudflare.GetRecord.Invoke(new()\n    {\n        Hostname = \"example.com\",\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.LookupRecord(ctx, \u0026cloudflare.LookupRecordArgs{\n\t\t\tHostname: \"example.com\",\n\t\t\tZoneId:   \"0da42c8d2132a9ddaf714f9e7c920711\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.CloudflareFunctions;\nimport com.pulumi.cloudflare.inputs.GetRecordArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudflareFunctions.getRecord(GetRecordArgs.builder()\n            .hostname(\"example.com\")\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: cloudflare:getRecord\n      Arguments:\n        hostname: example.com\n        zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getRecord.\n",
                 "properties": {
@@ -23199,6 +25063,65 @@
                     "value",
                     "zoneId",
                     "zoneName",
+                    "id"
+                ]
+            }
+        },
+        "cloudflare:index/getRulesets:getRulesets": {
+            "description": "Use this datasource to lookup Rulesets in an account or zone.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = cloudflare.getRulesets({\n    filter: {\n        name: \".*OWASP.*\",\n    },\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_rulesets(filter=cloudflare.GetRulesetsFilterArgs(\n        name=\".*OWASP.*\",\n    ),\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Cloudflare.GetRulesets.Invoke(new()\n    {\n        Filter = new Cloudflare.Inputs.GetRulesetsFilterInputArgs\n        {\n            Name = \".*OWASP.*\",\n        },\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetRulesets(ctx, \u0026cloudflare.GetRulesetsArgs{\n\t\t\tFilter: cloudflare.GetRulesetsFilter{\n\t\t\t\tName: pulumi.StringRef(\".*OWASP.*\"),\n\t\t\t},\n\t\t\tZoneId: pulumi.StringRef(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.CloudflareFunctions;\nimport com.pulumi.cloudflare.inputs.GetRulesetsArgs;\nimport com.pulumi.cloudflare.inputs.GetRulesetsFilterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudflareFunctions.getRulesets(GetRulesetsArgs.builder()\n            .filter(GetRulesetsFilterArgs.builder()\n                .name(\".*OWASP.*\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: cloudflare:getRulesets\n      Arguments:\n        filter:\n          name: .*OWASP.*\n        zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRulesets.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.\n"
+                    },
+                    "filter": {
+                        "$ref": "#/types/cloudflare:index/getRulesetsFilter:getRulesetsFilter"
+                    },
+                    "includeRules": {
+                        "type": "boolean",
+                        "description": "Include rule data in response.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRulesets.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.\n"
+                    },
+                    "filter": {
+                        "$ref": "#/types/cloudflare:index/getRulesetsFilter:getRulesetsFilter"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "includeRules": {
+                        "type": "boolean",
+                        "description": "Include rule data in response.\n"
+                    },
+                    "rulesets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/getRulesetsRuleset:getRulesetsRuleset"
+                        }
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "rulesets",
                     "id"
                 ]
             }
