@@ -1,4 +1,5 @@
 // Copyright 2016-2017, Pulumi Corporation.  All rights reserved.
+//go:build python || all
 // +build python all
 
 package examples
@@ -11,6 +12,8 @@ import (
 )
 
 func TestAccRecordPy(t *testing.T) {
+	t.Skip("Temporarily skip while releasing new major version")
+
 	test := getPythonBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: filepath.Join(getCwd(t), "record", "python"),
