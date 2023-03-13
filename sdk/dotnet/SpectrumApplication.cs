@@ -30,6 +30,15 @@ namespace Pulumi.Cloudflare
     ///             Name = "ssh.example.com",
     ///             Type = "CNAME",
     ///         },
+    ///         EdgeIps = new Cloudflare.Inputs.SpectrumApplicationEdgeIpsArgs
+    ///         {
+    ///             Ips = new[]
+    ///             {
+    ///                 "203.0.113.1",
+    ///                 "203.0.113.2",
+    ///             },
+    ///             Type = "static",
+    ///         },
     ///         OriginDirects = new[]
     ///         {
     ///             "tcp://192.0.2.1:22",
@@ -64,16 +73,10 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.SpectrumApplicationDns> Dns { get; private set; } = null!;
 
         /// <summary>
-        /// Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
-        /// </summary>
-        [Output("edgeIpConnectivity")]
-        public Output<string> EdgeIpConnectivity { get; private set; } = null!;
-
-        /// <summary>
-        /// A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+        /// The anycast edge IP configuration for the hostname of this application.
         /// </summary>
         [Output("edgeIps")]
-        public Output<ImmutableArray<string>> EdgeIps { get; private set; } = null!;
+        public Output<Outputs.SpectrumApplicationEdgeIps?> EdgeIps { get; private set; } = null!;
 
         /// <summary>
         /// Enables the IP Firewall for this application. Defaults to `true`.
@@ -106,7 +109,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.SpectrumApplicationOriginPortRange?> OriginPortRange { get; private set; } = null!;
 
         /// <summary>
-        /// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
+        /// The port configuration at Cloudflare's edge. e.g. `tcp/22`.
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
@@ -194,22 +197,10 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.SpectrumApplicationDnsArgs> Dns { get; set; } = null!;
 
         /// <summary>
-        /// Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
+        /// The anycast edge IP configuration for the hostname of this application.
         /// </summary>
-        [Input("edgeIpConnectivity")]
-        public Input<string>? EdgeIpConnectivity { get; set; }
-
         [Input("edgeIps")]
-        private InputList<string>? _edgeIps;
-
-        /// <summary>
-        /// A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
-        /// </summary>
-        public InputList<string> EdgeIps
-        {
-            get => _edgeIps ?? (_edgeIps = new InputList<string>());
-            set => _edgeIps = value;
-        }
+        public Input<Inputs.SpectrumApplicationEdgeIpsArgs>? EdgeIps { get; set; }
 
         /// <summary>
         /// Enables the IP Firewall for this application. Defaults to `true`.
@@ -248,7 +239,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.SpectrumApplicationOriginPortRangeArgs>? OriginPortRange { get; set; }
 
         /// <summary>
-        /// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
+        /// The port configuration at Cloudflare's edge. e.g. `tcp/22`.
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
@@ -298,22 +289,10 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.SpectrumApplicationDnsGetArgs>? Dns { get; set; }
 
         /// <summary>
-        /// Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
+        /// The anycast edge IP configuration for the hostname of this application.
         /// </summary>
-        [Input("edgeIpConnectivity")]
-        public Input<string>? EdgeIpConnectivity { get; set; }
-
         [Input("edgeIps")]
-        private InputList<string>? _edgeIps;
-
-        /// <summary>
-        /// A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
-        /// </summary>
-        public InputList<string> EdgeIps
-        {
-            get => _edgeIps ?? (_edgeIps = new InputList<string>());
-            set => _edgeIps = value;
-        }
+        public Input<Inputs.SpectrumApplicationEdgeIpsGetArgs>? EdgeIps { get; set; }
 
         /// <summary>
         /// Enables the IP Firewall for this application. Defaults to `true`.
@@ -352,7 +331,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.SpectrumApplicationOriginPortRangeGetArgs>? OriginPortRange { get; set; }
 
         /// <summary>
-        /// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
+        /// The port configuration at Cloudflare's edge. e.g. `tcp/22`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

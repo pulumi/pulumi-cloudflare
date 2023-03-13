@@ -60,7 +60,7 @@ export class Zone extends pulumi.CustomResource {
     /**
      * Account ID to manage the zone resource in.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    public readonly accountId!: pulumi.Output<string>;
     /**
      * Whether to scan for DNS records on creation. Ignored after zone is created.
      */
@@ -125,6 +125,9 @@ export class Zone extends pulumi.CustomResource {
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as ZoneArgs | undefined;
+            if ((!args || args.accountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
@@ -199,7 +202,7 @@ export interface ZoneArgs {
     /**
      * Account ID to manage the zone resource in.
      */
-    accountId?: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
      * Whether to scan for DNS records on creation. Ignored after zone is created.
      */

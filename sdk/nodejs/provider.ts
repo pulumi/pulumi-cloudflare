@@ -26,13 +26,6 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * Configure API client to always use a specific account. Alternatively, can be configured using the
-     * `CLOUDFLARE_ACCOUNT_ID` environment variable.
-     *
-     * @deprecated Use resource specific `account_id` attributes instead.
-     */
-    public readonly accountId!: pulumi.Output<string | undefined>;
-    /**
      * Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
      * environment variable.
      */
@@ -76,7 +69,6 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["apiBasePath"] = args ? args.apiBasePath : undefined;
             resourceInputs["apiClientLogging"] = pulumi.output((args ? args.apiClientLogging : undefined) ?? (utilities.getEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") || false)).apply(JSON.stringify);
             resourceInputs["apiHostname"] = args ? args.apiHostname : undefined;
@@ -98,13 +90,6 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    /**
-     * Configure API client to always use a specific account. Alternatively, can be configured using the
-     * `CLOUDFLARE_ACCOUNT_ID` environment variable.
-     *
-     * @deprecated Use resource specific `account_id` attributes instead.
-     */
-    accountId?: pulumi.Input<string>;
     /**
      * Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
      * environment variable.

@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -54,7 +54,7 @@ type AccountMember struct {
 	pulumi.CustomResourceState
 
 	// Account ID to create the account member in.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
 	EmailAddress pulumi.StringOutput `pulumi:"emailAddress"`
 	// List of account role IDs that you want to assign to a member.
@@ -70,6 +70,9 @@ func NewAccountMember(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.EmailAddress == nil {
 		return nil, errors.New("invalid value for required argument 'EmailAddress'")
 	}
@@ -125,7 +128,7 @@ func (AccountMemberState) ElementType() reflect.Type {
 
 type accountMemberArgs struct {
 	// Account ID to create the account member in.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
 	EmailAddress string `pulumi:"emailAddress"`
 	// List of account role IDs that you want to assign to a member.
@@ -137,7 +140,7 @@ type accountMemberArgs struct {
 // The set of arguments for constructing a AccountMember resource.
 type AccountMemberArgs struct {
 	// Account ID to create the account member in.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
 	EmailAddress pulumi.StringInput
 	// List of account role IDs that you want to assign to a member.
@@ -234,8 +237,8 @@ func (o AccountMemberOutput) ToAccountMemberOutputWithContext(ctx context.Contex
 }
 
 // Account ID to create the account member in.
-func (o AccountMemberOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccountMember) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o AccountMemberOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountMember) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.

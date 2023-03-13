@@ -124,8 +124,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier to target for the resource.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**

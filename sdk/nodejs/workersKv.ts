@@ -99,6 +99,9 @@ export class WorkersKv extends pulumi.CustomResource {
             resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as WorkersKvArgs | undefined;
+            if ((!args || args.accountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if ((!args || args.key === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
@@ -147,7 +150,7 @@ export interface WorkersKvArgs {
     /**
      * The account identifier to target for the resource.
      */
-    accountId?: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
      * Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
      */

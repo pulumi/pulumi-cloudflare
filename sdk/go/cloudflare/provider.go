@@ -17,11 +17,6 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	// Configure API client to always use a specific account. Alternatively, can be configured using the
-	// `CLOUDFLARE_ACCOUNT_ID` environment variable.
-	//
-	// Deprecated: Use resource specific `account_id` attributes instead.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
 	// environment variable.
 	ApiBasePath pulumi.StringPtrOutput `pulumi:"apiBasePath"`
@@ -75,11 +70,6 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// Configure API client to always use a specific account. Alternatively, can be configured using the
-	// `CLOUDFLARE_ACCOUNT_ID` environment variable.
-	//
-	// Deprecated: Use resource specific `account_id` attributes instead.
-	AccountId *string `pulumi:"accountId"`
 	// Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
 	// environment variable.
 	ApiBasePath *string `pulumi:"apiBasePath"`
@@ -119,11 +109,6 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// Configure API client to always use a specific account. Alternatively, can be configured using the
-	// `CLOUDFLARE_ACCOUNT_ID` environment variable.
-	//
-	// Deprecated: Use resource specific `account_id` attributes instead.
-	AccountId pulumi.StringPtrInput
 	// Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
 	// environment variable.
 	ApiBasePath pulumi.StringPtrInput
@@ -196,14 +181,6 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
-}
-
-// Configure API client to always use a specific account. Alternatively, can be configured using the
-// `CLOUDFLARE_ACCOUNT_ID` environment variable.
-//
-// Deprecated: Use resource specific `account_id` attributes instead.
-func (o ProviderOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`

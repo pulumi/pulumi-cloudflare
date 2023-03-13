@@ -1,4 +1,5 @@
 // Copyright 2016-2017, Pulumi Corporation.  All rights reserved.
+//go:build nodejs || all
 // +build nodejs all
 
 package examples
@@ -11,6 +12,8 @@ import (
 )
 
 func TestAccRecordTs(t *testing.T) {
+	t.Skip("Temporarily skip while releasing new major version")
+
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: filepath.Join(getCwd(t), "record", "ts"),

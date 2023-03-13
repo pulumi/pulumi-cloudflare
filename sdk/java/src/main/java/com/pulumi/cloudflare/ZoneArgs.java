@@ -20,15 +20,15 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
      * Account ID to manage the zone resource in.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return Account ID to manage the zone resource in.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -141,7 +141,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -262,6 +262,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ZoneArgs build() {
+            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
             $.zone = Objects.requireNonNull($.zone, "expected parameter 'zone' to be non-null");
             return $;
         }

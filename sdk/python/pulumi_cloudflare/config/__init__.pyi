@@ -9,12 +9,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-accountId: Optional[str]
-"""
-Configure API client to always use a specific account. Alternatively, can be configured using the
-`CLOUDFLARE_ACCOUNT_ID` environment variable.
-"""
-
 apiBasePath: Optional[str]
 """
 Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`

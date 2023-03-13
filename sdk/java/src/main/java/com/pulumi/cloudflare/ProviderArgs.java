@@ -19,31 +19,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProviderArgs Empty = new ProviderArgs();
 
     /**
-     * Configure API client to always use a specific account. Alternatively, can be configured using the
-     * `CLOUDFLARE_ACCOUNT_ID` environment variable.
-     * 
-     * @deprecated
-     * Use resource specific `account_id` attributes instead.
-     * 
-     */
-    @Deprecated /* Use resource specific `account_id` attributes instead. */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
-
-    /**
-     * @return Configure API client to always use a specific account. Alternatively, can be configured using the
-     * `CLOUDFLARE_ACCOUNT_ID` environment variable.
-     * 
-     * @deprecated
-     * Use resource specific `account_id` attributes instead.
-     * 
-     */
-    @Deprecated /* Use resource specific `account_id` attributes instead. */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
-    }
-
-    /**
      * Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
      * environment variable.
      * 
@@ -237,7 +212,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     private ProviderArgs() {}
 
     private ProviderArgs(ProviderArgs $) {
-        this.accountId = $.accountId;
         this.apiBasePath = $.apiBasePath;
         this.apiClientLogging = $.apiClientLogging;
         this.apiHostname = $.apiHostname;
@@ -267,37 +241,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ProviderArgs defaults) {
             $ = new ProviderArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param accountId Configure API client to always use a specific account. Alternatively, can be configured using the
-         * `CLOUDFLARE_ACCOUNT_ID` environment variable.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use resource specific `account_id` attributes instead.
-         * 
-         */
-        @Deprecated /* Use resource specific `account_id` attributes instead. */
-        public Builder accountId(@Nullable Output<String> accountId) {
-            $.accountId = accountId;
-            return this;
-        }
-
-        /**
-         * @param accountId Configure API client to always use a specific account. Alternatively, can be configured using the
-         * `CLOUDFLARE_ACCOUNT_ID` environment variable.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use resource specific `account_id` attributes instead.
-         * 
-         */
-        @Deprecated /* Use resource specific `account_id` attributes instead. */
-        public Builder accountId(String accountId) {
-            return accountId(Output.of(accountId));
         }
 
         /**

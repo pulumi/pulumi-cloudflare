@@ -1263,148 +1263,6 @@ export interface GetRulesetsRulesetRuleRatelimit {
     scoreResponseHeaderName?: string;
 }
 
-export interface GetWafGroupsFilter {
-    /**
-     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-     */
-    mode?: string;
-    /**
-     * A regular expression matching the name of the WAF Rule Groups to lookup.
-     */
-    name?: string;
-}
-
-export interface GetWafGroupsGroup {
-    /**
-     * The WAF Rule Group description
-     */
-    description?: string;
-    /**
-     * The WAF Rule Group ID
-     */
-    id?: string;
-    /**
-     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-     */
-    mode?: string;
-    /**
-     * The number of modified rules in the WAF Rule Group
-     */
-    modifiedRulesCount?: number;
-    /**
-     * A regular expression matching the name of the WAF Rule Groups to lookup.
-     */
-    name?: string;
-    /**
-     * The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
-     */
-    packageId?: string;
-    /**
-     * The number of rules in the WAF Rule Group
-     */
-    rulesCount?: number;
-}
-
-export interface GetWafPackagesFilter {
-    /**
-     * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-     */
-    actionMode?: string;
-    /**
-     * Detection mode of the WAF Rule Packages to lookup.
-     */
-    detectionMode?: string;
-    /**
-     * A regular expression matching the name of the WAF Rule Packages to lookup.
-     */
-    name?: string;
-    /**
-     * Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-     */
-    sensitivity?: string;
-}
-
-export interface GetWafPackagesPackage {
-    /**
-     * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-     */
-    actionMode?: string;
-    /**
-     * The WAF Rule Package description
-     */
-    description?: string;
-    /**
-     * Detection mode of the WAF Rule Packages to lookup.
-     */
-    detectionMode?: string;
-    /**
-     * The WAF Rule Package ID
-     */
-    id?: string;
-    /**
-     * A regular expression matching the name of the WAF Rule Packages to lookup.
-     */
-    name?: string;
-    /**
-     * Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-     */
-    sensitivity?: string;
-}
-
-export interface GetWafRulesFilter {
-    /**
-     * A regular expression matching the description of the WAF Rules to lookup.
-     */
-    description?: string;
-    /**
-     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-     */
-    groupId?: string;
-    /**
-     * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-     */
-    mode?: string;
-}
-
-export interface GetWafRulesRule {
-    /**
-     * The list of allowed `mode` values for the WAF Rule
-     */
-    allowedModes?: string[];
-    /**
-     * The default `mode` value for the WAF Rule
-     */
-    defaultMode?: string;
-    /**
-     * A regular expression matching the description of the WAF Rules to lookup.
-     */
-    description?: string;
-    /**
-     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-     */
-    groupId?: string;
-    /**
-     * The Name of the WAF Rule Group that contains the WAF Rule
-     */
-    groupName?: string;
-    /**
-     * The WAF Rule ID
-     */
-    id?: string;
-    /**
-     * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-     */
-    mode?: string;
-    /**
-     * The ID of the WAF Rule Package in which to search for the WAF Rules.
-     */
-    packageId?: string;
-    /**
-     * The WAF Rule priority
-     */
-    priority?: string;
-}
-
 export interface GetZonesFilter {
     /**
      * The account identifier to target for the resource.
@@ -1449,17 +1307,6 @@ export interface HealthcheckHeader {
      * A list of string values for the header.
      */
     values: string[];
-}
-
-export interface IpListItem {
-    /**
-     * A note that can be used to annotate the item.
-     */
-    comment?: string;
-    /**
-     * The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
-     */
-    value: string;
 }
 
 export interface ListItem {
@@ -1682,9 +1529,9 @@ export interface LoadBalancerRuleOverride {
      */
     sessionAffinity?: string;
     /**
-     * See `sessionAffinityAttributes`.
+     * Configure cookie attributes for session affinity cookie.
      */
-    sessionAffinityAttributes?: {[key: string]: string};
+    sessionAffinityAttributes?: outputs.LoadBalancerRuleOverrideSessionAffinityAttribute[];
     /**
      * Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
      */
@@ -1759,6 +1606,40 @@ export interface LoadBalancerRuleOverrideRegionPool {
      * A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
      */
     region: string;
+}
+
+export interface LoadBalancerRuleOverrideSessionAffinityAttribute {
+    /**
+     * Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+     */
+    samesite?: string;
+    /**
+     * Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+     */
+    secure?: string;
+    /**
+     * Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+     */
+    zeroDowntimeFailover?: string;
+}
+
+export interface LoadBalancerSessionAffinityAttribute {
+    /**
+     * Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. Defaults to `0`.
+     */
+    drainDuration?: number;
+    /**
+     * Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+     */
+    samesite?: string;
+    /**
+     * Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+     */
+    secure?: string;
+    /**
+     * Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+     */
+    zeroDowntimeFailover?: string;
 }
 
 export interface ManagedHeadersManagedRequestHeader {
@@ -2697,6 +2578,21 @@ export interface SpectrumApplicationDns {
     type: string;
 }
 
+export interface SpectrumApplicationEdgeIps {
+    /**
+     * The IP versions supported for inbound connections on Spectrum anycast IPs. Required when `type` is not `static`. Available values: `all`, `ipv4`, `ipv6`.
+     */
+    connectivity?: string;
+    /**
+     * The collection of customer owned IPs to broadcast via anycast for this hostname and application. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+     */
+    ips?: string[];
+    /**
+     * The type of edge IP configuration specified. Available values: `dynamic`, `static`.
+     */
+    type: string;
+}
+
 export interface SpectrumApplicationOriginDns {
     /**
      * Fully qualified domain name of the origin.
@@ -2819,6 +2715,13 @@ export interface TeamsAccountLoggingSettingsByRuleTypeL4 {
     logBlocks: boolean;
 }
 
+export interface TeamsAccountPayloadLog {
+    /**
+     * Public key used to encrypt matched payloads.
+     */
+    publicKey: string;
+}
+
 export interface TeamsAccountProxy {
     /**
      * Whether gateway proxy is enabled on gateway devices for TCP traffic.
@@ -2882,6 +2785,14 @@ export interface TeamsRuleRuleSettings {
      * The IPs to override matching DNS queries with.
      */
     overrideIps?: string[];
+    /**
+     * Configure DLP Payload Logging settings for this rule.
+     */
+    payloadLog?: outputs.TeamsRuleRuleSettingsPayloadLog;
+    /**
+     * Configure untrusted certificate settings for this rule.
+     */
+    untrustedCert?: outputs.TeamsRuleRuleSettingsUntrustedCert;
 }
 
 export interface TeamsRuleRuleSettingsBisoAdminControls {
@@ -2906,6 +2817,20 @@ export interface TeamsRuleRuleSettingsEgress {
 export interface TeamsRuleRuleSettingsL4override {
     ip: string;
     port: number;
+}
+
+export interface TeamsRuleRuleSettingsPayloadLog {
+    /**
+     * Indicator of rule enablement.
+     */
+    enabled: boolean;
+}
+
+export interface TeamsRuleRuleSettingsUntrustedCert {
+    /**
+     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
+     */
+    action?: string;
 }
 
 export interface TunnelConfigConfig {

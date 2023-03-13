@@ -97,7 +97,7 @@ export class WorkerScript extends pulumi.CustomResource {
     /**
      * The account identifier to target for the resource.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    public readonly accountId!: pulumi.Output<string>;
     public readonly analyticsEngineBindings!: pulumi.Output<outputs.WorkerScriptAnalyticsEngineBinding[] | undefined>;
     /**
      * The script content.
@@ -146,6 +146,9 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["webassemblyBindings"] = state ? state.webassemblyBindings : undefined;
         } else {
             const args = argsOrState as WorkerScriptArgs | undefined;
+            if ((!args || args.accountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if ((!args || args.content === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'content'");
             }
@@ -207,7 +210,7 @@ export interface WorkerScriptArgs {
     /**
      * The account identifier to target for the resource.
      */
-    accountId?: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     analyticsEngineBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptAnalyticsEngineBinding>[]>;
     /**
      * The script content.

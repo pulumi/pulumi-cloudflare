@@ -12,7 +12,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -65,14 +64,14 @@ public class AccountMember extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
      * @return Account ID to create the account member in.
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.

@@ -69,14 +69,14 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
      * @return The account identifier to target for the resource.
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
@@ -315,7 +315,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LoadBalancerMonitor(String name, @Nullable LoadBalancerMonitorArgs args) {
+    public LoadBalancerMonitor(String name, LoadBalancerMonitorArgs args) {
         this(name, args, null);
     }
     /**
@@ -324,7 +324,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LoadBalancerMonitor(String name, @Nullable LoadBalancerMonitorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public LoadBalancerMonitor(String name, LoadBalancerMonitorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor", name, args == null ? LoadBalancerMonitorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

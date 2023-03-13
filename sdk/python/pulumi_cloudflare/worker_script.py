@@ -16,9 +16,9 @@ __all__ = ['WorkerScriptArgs', 'WorkerScript']
 @pulumi.input_type
 class WorkerScriptArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[str],
                  content: pulumi.Input[str],
                  name: pulumi.Input[str],
-                 account_id: Optional[pulumi.Input[str]] = None,
                  analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptAnalyticsEngineBindingArgs']]]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
@@ -30,15 +30,14 @@ class WorkerScriptArgs:
                  webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptWebassemblyBindingArgs']]]] = None):
         """
         The set of arguments for constructing a WorkerScript resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] content: The script content.
         :param pulumi.Input[str] name: The name for the script. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] module: Whether to upload Worker as a module.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "name", name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if analytics_engine_bindings is not None:
             pulumi.set(__self__, "analytics_engine_bindings", analytics_engine_bindings)
         if kv_namespace_bindings is not None:
@@ -57,6 +56,18 @@ class WorkerScriptArgs:
             pulumi.set(__self__, "service_bindings", service_bindings)
         if webassembly_bindings is not None:
             pulumi.set(__self__, "webassembly_bindings", webassembly_bindings)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[str]:
+        """
+        The account identifier to target for the resource.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter
@@ -81,18 +92,6 @@ class WorkerScriptArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The account identifier to target for the resource.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter(name="analyticsEngineBindings")
@@ -530,6 +529,8 @@ class WorkerScript(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkerScriptArgs.__new__(WorkerScriptArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["analytics_engine_bindings"] = analytics_engine_bindings
             if content is None and not opts.urn:
@@ -600,7 +601,7 @@ class WorkerScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[str]]:
+    def account_id(self) -> pulumi.Output[str]:
         """
         The account identifier to target for the resource.
         """

@@ -103,8 +103,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier to target for the resource.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Title value of the Worker KV Namespace.

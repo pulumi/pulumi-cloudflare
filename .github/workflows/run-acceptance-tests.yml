@@ -4,6 +4,7 @@ env:
   DOTNETVERSION: |
     6.0.x
     3.1.301
+  VERSION_PREFIX: "5.0.0"
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   GOVERSION: 1.19.x
   JAVAVERSION: "11"

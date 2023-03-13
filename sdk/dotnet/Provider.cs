@@ -19,13 +19,6 @@ namespace Pulumi.Cloudflare
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
-        /// Configure API client to always use a specific account. Alternatively, can be configured using the
-        /// `CLOUDFLARE_ACCOUNT_ID` environment variable.
-        /// </summary>
-        [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
-
-        /// <summary>
         /// Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
         /// environment variable.
         /// </summary>
@@ -97,13 +90,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Configure API client to always use a specific account. Alternatively, can be configured using the
-        /// `CLOUDFLARE_ACCOUNT_ID` environment variable.
-        /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
-
         /// <summary>
         /// Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
         /// environment variable.

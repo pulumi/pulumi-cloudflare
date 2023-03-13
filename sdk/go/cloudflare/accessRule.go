@@ -43,7 +43,7 @@ import (
 type AccessRule struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
 	Configuration AccessRuleConfigurationOutput `pulumi:"configuration"`
@@ -51,7 +51,7 @@ type AccessRule struct {
 	Mode pulumi.StringOutput `pulumi:"mode"`
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes pulumi.StringPtrOutput `pulumi:"notes"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -90,7 +90,7 @@ func GetAccessRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessRule resources.
 type accessRuleState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string `pulumi:"accountId"`
 	// Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
 	Configuration *AccessRuleConfiguration `pulumi:"configuration"`
@@ -98,12 +98,12 @@ type accessRuleState struct {
 	Mode *string `pulumi:"mode"`
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes *string `pulumi:"notes"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessRuleState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
 	// Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
 	Configuration AccessRuleConfigurationPtrInput
@@ -111,7 +111,7 @@ type AccessRuleState struct {
 	Mode pulumi.StringPtrInput
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes pulumi.StringPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -120,7 +120,7 @@ func (AccessRuleState) ElementType() reflect.Type {
 }
 
 type accessRuleArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	AccountId *string `pulumi:"accountId"`
 	// Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
 	Configuration AccessRuleConfiguration `pulumi:"configuration"`
@@ -128,13 +128,13 @@ type accessRuleArgs struct {
 	Mode string `pulumi:"mode"`
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes *string `pulumi:"notes"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessRule resource.
 type AccessRuleArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringPtrInput
 	// Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
 	Configuration AccessRuleConfigurationInput
@@ -142,7 +142,7 @@ type AccessRuleArgs struct {
 	Mode pulumi.StringInput
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes pulumi.StringPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -233,7 +233,7 @@ func (o AccessRuleOutput) ToAccessRuleOutputWithContext(ctx context.Context) Acc
 	return o
 }
 
-// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
 func (o AccessRuleOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -253,7 +253,7 @@ func (o AccessRuleOutput) Notes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringPtrOutput { return v.Notes }).(pulumi.StringPtrOutput)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
 func (o AccessRuleOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

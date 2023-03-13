@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.SpectrumApplicationDnsArgs;
+import com.pulumi.cloudflare.inputs.SpectrumApplicationEdgeIpsArgs;
 import com.pulumi.cloudflare.inputs.SpectrumApplicationOriginDnsArgs;
 import com.pulumi.cloudflare.inputs.SpectrumApplicationOriginPortRangeArgs;
 import com.pulumi.core.Output;
@@ -52,32 +53,17 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
-     * 
-     */
-    @Import(name="edgeIpConnectivity")
-    private @Nullable Output<String> edgeIpConnectivity;
-
-    /**
-     * @return Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
-     * 
-     */
-    public Optional<Output<String>> edgeIpConnectivity() {
-        return Optional.ofNullable(this.edgeIpConnectivity);
-    }
-
-    /**
-     * A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+     * The anycast edge IP configuration for the hostname of this application.
      * 
      */
     @Import(name="edgeIps")
-    private @Nullable Output<List<String>> edgeIps;
+    private @Nullable Output<SpectrumApplicationEdgeIpsArgs> edgeIps;
 
     /**
-     * @return A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+     * @return The anycast edge IP configuration for the hostname of this application.
      * 
      */
-    public Optional<Output<List<String>>> edgeIps() {
+    public Optional<Output<SpectrumApplicationEdgeIpsArgs>> edgeIps() {
         return Optional.ofNullable(this.edgeIps);
     }
 
@@ -157,14 +143,14 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
+     * The port configuration at Cloudflare&#39;s edge. e.g. `tcp/22`.
      * 
      */
     @Import(name="protocol", required=true)
     private Output<String> protocol;
 
     /**
-     * @return The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
+     * @return The port configuration at Cloudflare&#39;s edge. e.g. `tcp/22`.
      * 
      */
     public Output<String> protocol() {
@@ -236,7 +222,6 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
     private SpectrumApplicationArgs(SpectrumApplicationArgs $) {
         this.argoSmartRouting = $.argoSmartRouting;
         this.dns = $.dns;
-        this.edgeIpConnectivity = $.edgeIpConnectivity;
         this.edgeIps = $.edgeIps;
         this.ipFirewall = $.ipFirewall;
         this.originDirects = $.originDirects;
@@ -311,55 +296,24 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param edgeIpConnectivity Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
+         * @param edgeIps The anycast edge IP configuration for the hostname of this application.
          * 
          * @return builder
          * 
          */
-        public Builder edgeIpConnectivity(@Nullable Output<String> edgeIpConnectivity) {
-            $.edgeIpConnectivity = edgeIpConnectivity;
-            return this;
-        }
-
-        /**
-         * @param edgeIpConnectivity Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder edgeIpConnectivity(String edgeIpConnectivity) {
-            return edgeIpConnectivity(Output.of(edgeIpConnectivity));
-        }
-
-        /**
-         * @param edgeIps A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder edgeIps(@Nullable Output<List<String>> edgeIps) {
+        public Builder edgeIps(@Nullable Output<SpectrumApplicationEdgeIpsArgs> edgeIps) {
             $.edgeIps = edgeIps;
             return this;
         }
 
         /**
-         * @param edgeIps A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+         * @param edgeIps The anycast edge IP configuration for the hostname of this application.
          * 
          * @return builder
          * 
          */
-        public Builder edgeIps(List<String> edgeIps) {
+        public Builder edgeIps(SpectrumApplicationEdgeIpsArgs edgeIps) {
             return edgeIps(Output.of(edgeIps));
-        }
-
-        /**
-         * @param edgeIps A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder edgeIps(String... edgeIps) {
-            return edgeIps(List.of(edgeIps));
         }
 
         /**
@@ -478,7 +432,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param protocol The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
+         * @param protocol The port configuration at Cloudflare&#39;s edge. e.g. `tcp/22`.
          * 
          * @return builder
          * 
@@ -489,7 +443,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param protocol The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
+         * @param protocol The port configuration at Cloudflare&#39;s edge. e.g. `tcp/22`.
          * 
          * @return builder
          * 

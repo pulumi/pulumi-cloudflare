@@ -83,7 +83,6 @@ __all__ = [
     'EmailRoutingRuleMatcher',
     'FallbackDomainDomain',
     'HealthcheckHeader',
-    'IpListItem',
     'ListItem',
     'ListItemValue',
     'ListItemValueRedirect',
@@ -107,6 +106,8 @@ __all__ = [
     'LoadBalancerRuleOverridePopPool',
     'LoadBalancerRuleOverrideRandomSteering',
     'LoadBalancerRuleOverrideRegionPool',
+    'LoadBalancerRuleOverrideSessionAffinityAttribute',
+    'LoadBalancerSessionAffinityAttribute',
     'ManagedHeadersManagedRequestHeader',
     'ManagedHeadersManagedResponseHeader',
     'NotificationPolicyEmailIntegration',
@@ -171,6 +172,7 @@ __all__ = [
     'RulesetRuleLogging',
     'RulesetRuleRatelimit',
     'SpectrumApplicationDns',
+    'SpectrumApplicationEdgeIps',
     'SpectrumApplicationOriginDns',
     'SpectrumApplicationOriginPortRange',
     'SplitTunnelTunnel',
@@ -182,6 +184,7 @@ __all__ = [
     'TeamsAccountLoggingSettingsByRuleTypeDns',
     'TeamsAccountLoggingSettingsByRuleTypeHttp',
     'TeamsAccountLoggingSettingsByRuleTypeL4',
+    'TeamsAccountPayloadLog',
     'TeamsAccountProxy',
     'TeamsLocationNetwork',
     'TeamsRuleRuleSettings',
@@ -189,6 +192,8 @@ __all__ = [
     'TeamsRuleRuleSettingsCheckSession',
     'TeamsRuleRuleSettingsEgress',
     'TeamsRuleRuleSettingsL4override',
+    'TeamsRuleRuleSettingsPayloadLog',
+    'TeamsRuleRuleSettingsUntrustedCert',
     'TunnelConfigConfig',
     'TunnelConfigConfigIngressRule',
     'TunnelConfigConfigOriginRequest',
@@ -255,12 +260,6 @@ __all__ = [
     'GetRulesetsRulesetRuleExposedCredentialCheckResult',
     'GetRulesetsRulesetRuleLoggingResult',
     'GetRulesetsRulesetRuleRatelimitResult',
-    'GetWafGroupsFilterResult',
-    'GetWafGroupsGroupResult',
-    'GetWafPackagesFilterResult',
-    'GetWafPackagesPackageResult',
-    'GetWafRulesFilterResult',
-    'GetWafRulesRuleResult',
     'GetZonesFilterResult',
     'GetZonesZoneResult',
 ]
@@ -5026,36 +5025,6 @@ class HealthcheckHeader(dict):
 
 
 @pulumi.output_type
-class IpListItem(dict):
-    def __init__(__self__, *,
-                 value: str,
-                 comment: Optional[str] = None):
-        """
-        :param str value: The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
-        :param str comment: A note that can be used to annotate the item.
-        """
-        pulumi.set(__self__, "value", value)
-        if comment is not None:
-            pulumi.set(__self__, "comment", comment)
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
-        """
-        return pulumi.get(self, "value")
-
-    @property
-    @pulumi.getter
-    def comment(self) -> Optional[str]:
-        """
-        A note that can be used to annotate the item.
-        """
-        return pulumi.get(self, "comment")
-
-
-@pulumi.output_type
 class ListItem(dict):
     def __init__(__self__, *,
                  value: 'outputs.ListItemValue',
@@ -5888,7 +5857,7 @@ class LoadBalancerRuleOverride(dict):
                  random_steerings: Optional[Sequence['outputs.LoadBalancerRuleOverrideRandomSteering']] = None,
                  region_pools: Optional[Sequence['outputs.LoadBalancerRuleOverrideRegionPool']] = None,
                  session_affinity: Optional[str] = None,
-                 session_affinity_attributes: Optional[Mapping[str, str]] = None,
+                 session_affinity_attributes: Optional[Sequence['outputs.LoadBalancerRuleOverrideSessionAffinityAttribute']] = None,
                  session_affinity_ttl: Optional[int] = None,
                  steering_policy: Optional[str] = None,
                  ttl: Optional[int] = None):
@@ -5900,7 +5869,7 @@ class LoadBalancerRuleOverride(dict):
         :param Sequence['LoadBalancerRuleOverrideRandomSteeringArgs'] random_steerings: Configures pool weights for random steering. When the `steering_policy="random"`, a random pool is selected with probability proportional to these pool weights.
         :param Sequence['LoadBalancerRuleOverrideRegionPoolArgs'] region_pools: A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
         :param str session_affinity: Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ip_cookie`. Defaults to `none`.
-        :param Mapping[str, str] session_affinity_attributes: See `session_affinity_attributes`.
+        :param Sequence['LoadBalancerRuleOverrideSessionAffinityAttributeArgs'] session_affinity_attributes: Configure cookie attributes for session affinity cookie.
         :param int session_affinity_ttl: Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
         :param str steering_policy: The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `""` Defaults to `""`.
         :param int ttl: Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
@@ -6000,9 +5969,9 @@ class LoadBalancerRuleOverride(dict):
 
     @property
     @pulumi.getter(name="sessionAffinityAttributes")
-    def session_affinity_attributes(self) -> Optional[Mapping[str, str]]:
+    def session_affinity_attributes(self) -> Optional[Sequence['outputs.LoadBalancerRuleOverrideSessionAffinityAttribute']]:
         """
-        See `session_affinity_attributes`.
+        Configure cookie attributes for session affinity cookie.
         """
         return pulumi.get(self, "session_affinity_attributes")
 
@@ -6301,6 +6270,140 @@ class LoadBalancerRuleOverrideRegionPool(dict):
         A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
         """
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class LoadBalancerRuleOverrideSessionAffinityAttribute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "zeroDowntimeFailover":
+            suggest = "zero_downtime_failover"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerRuleOverrideSessionAffinityAttribute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerRuleOverrideSessionAffinityAttribute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerRuleOverrideSessionAffinityAttribute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 samesite: Optional[str] = None,
+                 secure: Optional[str] = None,
+                 zero_downtime_failover: Optional[str] = None):
+        """
+        :param str samesite: Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+        :param str secure: Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+        :param str zero_downtime_failover: Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+        """
+        if samesite is not None:
+            pulumi.set(__self__, "samesite", samesite)
+        if secure is not None:
+            pulumi.set(__self__, "secure", secure)
+        if zero_downtime_failover is not None:
+            pulumi.set(__self__, "zero_downtime_failover", zero_downtime_failover)
+
+    @property
+    @pulumi.getter
+    def samesite(self) -> Optional[str]:
+        """
+        Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+        """
+        return pulumi.get(self, "samesite")
+
+    @property
+    @pulumi.getter
+    def secure(self) -> Optional[str]:
+        """
+        Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+        """
+        return pulumi.get(self, "secure")
+
+    @property
+    @pulumi.getter(name="zeroDowntimeFailover")
+    def zero_downtime_failover(self) -> Optional[str]:
+        """
+        Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+        """
+        return pulumi.get(self, "zero_downtime_failover")
+
+
+@pulumi.output_type
+class LoadBalancerSessionAffinityAttribute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "drainDuration":
+            suggest = "drain_duration"
+        elif key == "zeroDowntimeFailover":
+            suggest = "zero_downtime_failover"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerSessionAffinityAttribute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerSessionAffinityAttribute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerSessionAffinityAttribute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 drain_duration: Optional[int] = None,
+                 samesite: Optional[str] = None,
+                 secure: Optional[str] = None,
+                 zero_downtime_failover: Optional[str] = None):
+        """
+        :param int drain_duration: Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. Defaults to `0`.
+        :param str samesite: Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+        :param str secure: Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+        :param str zero_downtime_failover: Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+        """
+        if drain_duration is not None:
+            pulumi.set(__self__, "drain_duration", drain_duration)
+        if samesite is not None:
+            pulumi.set(__self__, "samesite", samesite)
+        if secure is not None:
+            pulumi.set(__self__, "secure", secure)
+        if zero_downtime_failover is not None:
+            pulumi.set(__self__, "zero_downtime_failover", zero_downtime_failover)
+
+    @property
+    @pulumi.getter(name="drainDuration")
+    def drain_duration(self) -> Optional[int]:
+        """
+        Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. Defaults to `0`.
+        """
+        return pulumi.get(self, "drain_duration")
+
+    @property
+    @pulumi.getter
+    def samesite(self) -> Optional[str]:
+        """
+        Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+        """
+        return pulumi.get(self, "samesite")
+
+    @property
+    @pulumi.getter
+    def secure(self) -> Optional[str]:
+        """
+        Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+        """
+        return pulumi.get(self, "secure")
+
+    @property
+    @pulumi.getter(name="zeroDowntimeFailover")
+    def zero_downtime_failover(self) -> Optional[str]:
+        """
+        Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+        """
+        return pulumi.get(self, "zero_downtime_failover")
 
 
 @pulumi.output_type
@@ -10684,6 +10787,48 @@ class SpectrumApplicationDns(dict):
 
 
 @pulumi.output_type
+class SpectrumApplicationEdgeIps(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 connectivity: Optional[str] = None,
+                 ips: Optional[Sequence[str]] = None):
+        """
+        :param str type: The type of edge IP configuration specified. Available values: `dynamic`, `static`.
+        :param str connectivity: The IP versions supported for inbound connections on Spectrum anycast IPs. Required when `type` is not `static`. Available values: `all`, `ipv4`, `ipv6`.
+        :param Sequence[str] ips: The collection of customer owned IPs to broadcast via anycast for this hostname and application. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+        """
+        pulumi.set(__self__, "type", type)
+        if connectivity is not None:
+            pulumi.set(__self__, "connectivity", connectivity)
+        if ips is not None:
+            pulumi.set(__self__, "ips", ips)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of edge IP configuration specified. Available values: `dynamic`, `static`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def connectivity(self) -> Optional[str]:
+        """
+        The IP versions supported for inbound connections on Spectrum anycast IPs. Required when `type` is not `static`. Available values: `all`, `ipv4`, `ipv6`.
+        """
+        return pulumi.get(self, "connectivity")
+
+    @property
+    @pulumi.getter
+    def ips(self) -> Optional[Sequence[str]]:
+        """
+        The collection of customer owned IPs to broadcast via anycast for this hostname and application. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+        """
+        return pulumi.get(self, "ips")
+
+
+@pulumi.output_type
 class SpectrumApplicationOriginDns(dict):
     def __init__(__self__, *,
                  name: str):
@@ -11172,6 +11317,41 @@ class TeamsAccountLoggingSettingsByRuleTypeL4(dict):
 
 
 @pulumi.output_type
+class TeamsAccountPayloadLog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicKey":
+            suggest = "public_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamsAccountPayloadLog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamsAccountPayloadLog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamsAccountPayloadLog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 public_key: str):
+        """
+        :param str public_key: Public key used to encrypt matched payloads.
+        """
+        pulumi.set(__self__, "public_key", public_key)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> str:
+        """
+        Public key used to encrypt matched payloads.
+        """
+        return pulumi.get(self, "public_key")
+
+
+@pulumi.output_type
 class TeamsAccountProxy(dict):
     def __init__(__self__, *,
                  tcp: bool,
@@ -11251,6 +11431,10 @@ class TeamsRuleRuleSettings(dict):
             suggest = "override_host"
         elif key == "overrideIps":
             suggest = "override_ips"
+        elif key == "payloadLog":
+            suggest = "payload_log"
+        elif key == "untrustedCert":
+            suggest = "untrusted_cert"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TeamsRuleRuleSettings. Access the value via the '{suggest}' property getter instead.")
@@ -11273,7 +11457,9 @@ class TeamsRuleRuleSettings(dict):
                  insecure_disable_dnssec_validation: Optional[bool] = None,
                  l4override: Optional['outputs.TeamsRuleRuleSettingsL4override'] = None,
                  override_host: Optional[str] = None,
-                 override_ips: Optional[Sequence[str]] = None):
+                 override_ips: Optional[Sequence[str]] = None,
+                 payload_log: Optional['outputs.TeamsRuleRuleSettingsPayloadLog'] = None,
+                 untrusted_cert: Optional['outputs.TeamsRuleRuleSettingsUntrustedCert'] = None):
         """
         :param Mapping[str, str] add_headers: Add custom headers to allowed requests in the form of key-value pairs.
         :param 'TeamsRuleRuleSettingsBisoAdminControlsArgs' biso_admin_controls: Configure how browser isolation behaves.
@@ -11285,6 +11471,8 @@ class TeamsRuleRuleSettings(dict):
         :param 'TeamsRuleRuleSettingsL4overrideArgs' l4override: Settings to forward layer 4 traffic.
         :param str override_host: The host to override matching DNS queries with.
         :param Sequence[str] override_ips: The IPs to override matching DNS queries with.
+        :param 'TeamsRuleRuleSettingsPayloadLogArgs' payload_log: Configure DLP Payload Logging settings for this rule.
+        :param 'TeamsRuleRuleSettingsUntrustedCertArgs' untrusted_cert: Configure untrusted certificate settings for this rule.
         """
         if add_headers is not None:
             pulumi.set(__self__, "add_headers", add_headers)
@@ -11306,6 +11494,10 @@ class TeamsRuleRuleSettings(dict):
             pulumi.set(__self__, "override_host", override_host)
         if override_ips is not None:
             pulumi.set(__self__, "override_ips", override_ips)
+        if payload_log is not None:
+            pulumi.set(__self__, "payload_log", payload_log)
+        if untrusted_cert is not None:
+            pulumi.set(__self__, "untrusted_cert", untrusted_cert)
 
     @property
     @pulumi.getter(name="addHeaders")
@@ -11386,6 +11578,22 @@ class TeamsRuleRuleSettings(dict):
         The IPs to override matching DNS queries with.
         """
         return pulumi.get(self, "override_ips")
+
+    @property
+    @pulumi.getter(name="payloadLog")
+    def payload_log(self) -> Optional['outputs.TeamsRuleRuleSettingsPayloadLog']:
+        """
+        Configure DLP Payload Logging settings for this rule.
+        """
+        return pulumi.get(self, "payload_log")
+
+    @property
+    @pulumi.getter(name="untrustedCert")
+    def untrusted_cert(self) -> Optional['outputs.TeamsRuleRuleSettingsUntrustedCert']:
+        """
+        Configure untrusted certificate settings for this rule.
+        """
+        return pulumi.get(self, "untrusted_cert")
 
 
 @pulumi.output_type
@@ -11538,6 +11746,43 @@ class TeamsRuleRuleSettingsL4override(dict):
     @pulumi.getter
     def port(self) -> int:
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class TeamsRuleRuleSettingsPayloadLog(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Indicator of rule enablement.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Indicator of rule enablement.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class TeamsRuleRuleSettingsUntrustedCert(dict):
+    def __init__(__self__, *,
+                 action: Optional[str] = None):
+        """
+        :param str action: The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        """
+        The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
+        """
+        return pulumi.get(self, "action")
 
 
 @pulumi.output_type
@@ -15583,420 +15828,6 @@ class GetRulesetsRulesetRuleRatelimitResult(dict):
     @pulumi.getter(name="scoreResponseHeaderName")
     def score_response_header_name(self) -> Optional[str]:
         return pulumi.get(self, "score_response_header_name")
-
-
-@pulumi.output_type
-class GetWafGroupsFilterResult(dict):
-    def __init__(__self__, *,
-                 mode: Optional[str] = None,
-                 name: Optional[str] = None):
-        """
-        :param str mode: Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-        :param str name: A regular expression matching the name of the WAF Rule Groups to lookup.
-        """
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def mode(self) -> Optional[str]:
-        """
-        Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-        """
-        return pulumi.get(self, "mode")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        A regular expression matching the name of the WAF Rule Groups to lookup.
-        """
-        return pulumi.get(self, "name")
-
-
-@pulumi.output_type
-class GetWafGroupsGroupResult(dict):
-    def __init__(__self__, *,
-                 description: Optional[str] = None,
-                 id: Optional[str] = None,
-                 mode: Optional[str] = None,
-                 modified_rules_count: Optional[int] = None,
-                 name: Optional[str] = None,
-                 package_id: Optional[str] = None,
-                 rules_count: Optional[int] = None):
-        """
-        :param str description: The WAF Rule Group description
-        :param str id: The WAF Rule Group ID
-        :param str mode: Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-        :param int modified_rules_count: The number of modified rules in the WAF Rule Group
-        :param str name: A regular expression matching the name of the WAF Rule Groups to lookup.
-        :param str package_id: The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
-        :param int rules_count: The number of rules in the WAF Rule Group
-        """
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
-        if modified_rules_count is not None:
-            pulumi.set(__self__, "modified_rules_count", modified_rules_count)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if package_id is not None:
-            pulumi.set(__self__, "package_id", package_id)
-        if rules_count is not None:
-            pulumi.set(__self__, "rules_count", rules_count)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[str]:
-        """
-        The WAF Rule Group description
-        """
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        """
-        The WAF Rule Group ID
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def mode(self) -> Optional[str]:
-        """
-        Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-        """
-        return pulumi.get(self, "mode")
-
-    @property
-    @pulumi.getter(name="modifiedRulesCount")
-    def modified_rules_count(self) -> Optional[int]:
-        """
-        The number of modified rules in the WAF Rule Group
-        """
-        return pulumi.get(self, "modified_rules_count")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        A regular expression matching the name of the WAF Rule Groups to lookup.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="packageId")
-    def package_id(self) -> Optional[str]:
-        """
-        The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
-        """
-        return pulumi.get(self, "package_id")
-
-    @property
-    @pulumi.getter(name="rulesCount")
-    def rules_count(self) -> Optional[int]:
-        """
-        The number of rules in the WAF Rule Group
-        """
-        return pulumi.get(self, "rules_count")
-
-
-@pulumi.output_type
-class GetWafPackagesFilterResult(dict):
-    def __init__(__self__, *,
-                 action_mode: Optional[str] = None,
-                 detection_mode: Optional[str] = None,
-                 name: Optional[str] = None,
-                 sensitivity: Optional[str] = None):
-        """
-        :param str action_mode: Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-        :param str detection_mode: Detection mode of the WAF Rule Packages to lookup.
-        :param str name: A regular expression matching the name of the WAF Rule Packages to lookup.
-        :param str sensitivity: Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-        """
-        if action_mode is not None:
-            pulumi.set(__self__, "action_mode", action_mode)
-        if detection_mode is not None:
-            pulumi.set(__self__, "detection_mode", detection_mode)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if sensitivity is not None:
-            pulumi.set(__self__, "sensitivity", sensitivity)
-
-    @property
-    @pulumi.getter(name="actionMode")
-    def action_mode(self) -> Optional[str]:
-        """
-        Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-        """
-        return pulumi.get(self, "action_mode")
-
-    @property
-    @pulumi.getter(name="detectionMode")
-    def detection_mode(self) -> Optional[str]:
-        """
-        Detection mode of the WAF Rule Packages to lookup.
-        """
-        return pulumi.get(self, "detection_mode")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        A regular expression matching the name of the WAF Rule Packages to lookup.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def sensitivity(self) -> Optional[str]:
-        """
-        Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-        """
-        return pulumi.get(self, "sensitivity")
-
-
-@pulumi.output_type
-class GetWafPackagesPackageResult(dict):
-    def __init__(__self__, *,
-                 action_mode: Optional[str] = None,
-                 description: Optional[str] = None,
-                 detection_mode: Optional[str] = None,
-                 id: Optional[str] = None,
-                 name: Optional[str] = None,
-                 sensitivity: Optional[str] = None):
-        """
-        :param str action_mode: Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-        :param str description: The WAF Rule Package description
-        :param str detection_mode: Detection mode of the WAF Rule Packages to lookup.
-        :param str id: The WAF Rule Package ID
-        :param str name: A regular expression matching the name of the WAF Rule Packages to lookup.
-        :param str sensitivity: Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-        """
-        if action_mode is not None:
-            pulumi.set(__self__, "action_mode", action_mode)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if detection_mode is not None:
-            pulumi.set(__self__, "detection_mode", detection_mode)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if sensitivity is not None:
-            pulumi.set(__self__, "sensitivity", sensitivity)
-
-    @property
-    @pulumi.getter(name="actionMode")
-    def action_mode(self) -> Optional[str]:
-        """
-        Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-        """
-        return pulumi.get(self, "action_mode")
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[str]:
-        """
-        The WAF Rule Package description
-        """
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="detectionMode")
-    def detection_mode(self) -> Optional[str]:
-        """
-        Detection mode of the WAF Rule Packages to lookup.
-        """
-        return pulumi.get(self, "detection_mode")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        """
-        The WAF Rule Package ID
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        A regular expression matching the name of the WAF Rule Packages to lookup.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def sensitivity(self) -> Optional[str]:
-        """
-        Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-        """
-        return pulumi.get(self, "sensitivity")
-
-
-@pulumi.output_type
-class GetWafRulesFilterResult(dict):
-    def __init__(__self__, *,
-                 description: Optional[str] = None,
-                 group_id: Optional[str] = None,
-                 mode: Optional[str] = None):
-        """
-        :param str description: A regular expression matching the description of the WAF Rules to lookup.
-        :param str group_id: The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-        :param str mode: Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-        """
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[str]:
-        """
-        A regular expression matching the description of the WAF Rules to lookup.
-        """
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[str]:
-        """
-        The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-        """
-        return pulumi.get(self, "group_id")
-
-    @property
-    @pulumi.getter
-    def mode(self) -> Optional[str]:
-        """
-        Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-        """
-        return pulumi.get(self, "mode")
-
-
-@pulumi.output_type
-class GetWafRulesRuleResult(dict):
-    def __init__(__self__, *,
-                 allowed_modes: Optional[Sequence[str]] = None,
-                 default_mode: Optional[str] = None,
-                 description: Optional[str] = None,
-                 group_id: Optional[str] = None,
-                 group_name: Optional[str] = None,
-                 id: Optional[str] = None,
-                 mode: Optional[str] = None,
-                 package_id: Optional[str] = None,
-                 priority: Optional[str] = None):
-        """
-        :param Sequence[str] allowed_modes: The list of allowed `mode` values for the WAF Rule
-        :param str default_mode: The default `mode` value for the WAF Rule
-        :param str description: A regular expression matching the description of the WAF Rules to lookup.
-        :param str group_id: The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-        :param str group_name: The Name of the WAF Rule Group that contains the WAF Rule
-        :param str id: The WAF Rule ID
-        :param str mode: Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-        :param str package_id: The ID of the WAF Rule Package in which to search for the WAF Rules.
-        :param str priority: The WAF Rule priority
-        """
-        if allowed_modes is not None:
-            pulumi.set(__self__, "allowed_modes", allowed_modes)
-        if default_mode is not None:
-            pulumi.set(__self__, "default_mode", default_mode)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
-        if group_name is not None:
-            pulumi.set(__self__, "group_name", group_name)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
-        if package_id is not None:
-            pulumi.set(__self__, "package_id", package_id)
-        if priority is not None:
-            pulumi.set(__self__, "priority", priority)
-
-    @property
-    @pulumi.getter(name="allowedModes")
-    def allowed_modes(self) -> Optional[Sequence[str]]:
-        """
-        The list of allowed `mode` values for the WAF Rule
-        """
-        return pulumi.get(self, "allowed_modes")
-
-    @property
-    @pulumi.getter(name="defaultMode")
-    def default_mode(self) -> Optional[str]:
-        """
-        The default `mode` value for the WAF Rule
-        """
-        return pulumi.get(self, "default_mode")
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[str]:
-        """
-        A regular expression matching the description of the WAF Rules to lookup.
-        """
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[str]:
-        """
-        The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-        """
-        return pulumi.get(self, "group_id")
-
-    @property
-    @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[str]:
-        """
-        The Name of the WAF Rule Group that contains the WAF Rule
-        """
-        return pulumi.get(self, "group_name")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        """
-        The WAF Rule ID
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def mode(self) -> Optional[str]:
-        """
-        Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-        """
-        return pulumi.get(self, "mode")
-
-    @property
-    @pulumi.getter(name="packageId")
-    def package_id(self) -> Optional[str]:
-        """
-        The ID of the WAF Rule Package in which to search for the WAF Rules.
-        """
-        return pulumi.get(self, "package_id")
-
-    @property
-    @pulumi.getter
-    def priority(self) -> Optional[str]:
-        """
-        The WAF Rule priority
-        """
-        return pulumi.get(self, "priority")
 
 
 @pulumi.output_type

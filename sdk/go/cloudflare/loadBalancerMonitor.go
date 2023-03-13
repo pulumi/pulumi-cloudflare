@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -51,7 +52,7 @@ type LoadBalancerMonitor struct {
 	pulumi.CustomResourceState
 
 	// The account identifier to target for the resource.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
 	AllowInsecure pulumi.BoolPtrOutput `pulumi:"allowInsecure"`
 	// The RFC3339 timestamp of when the load balancer monitor was created.
@@ -90,9 +91,12 @@ type LoadBalancerMonitor struct {
 func NewLoadBalancerMonitor(ctx *pulumi.Context,
 	name string, args *LoadBalancerMonitorArgs, opts ...pulumi.ResourceOption) (*LoadBalancerMonitor, error) {
 	if args == nil {
-		args = &LoadBalancerMonitorArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	var resource LoadBalancerMonitor
 	err := ctx.RegisterResource("cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor", name, args, &resource, opts...)
 	if err != nil {
@@ -194,7 +198,7 @@ func (LoadBalancerMonitorState) ElementType() reflect.Type {
 
 type loadBalancerMonitorArgs struct {
 	// The account identifier to target for the resource.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
 	AllowInsecure *bool `pulumi:"allowInsecure"`
 	// Free text description.
@@ -228,7 +232,7 @@ type loadBalancerMonitorArgs struct {
 // The set of arguments for constructing a LoadBalancerMonitor resource.
 type LoadBalancerMonitorArgs struct {
 	// The account identifier to target for the resource.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
 	AllowInsecure pulumi.BoolPtrInput
 	// Free text description.
@@ -347,8 +351,8 @@ func (o LoadBalancerMonitorOutput) ToLoadBalancerMonitorOutputWithContext(ctx co
 }
 
 // The account identifier to target for the resource.
-func (o LoadBalancerMonitorOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LoadBalancerMonitorOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".

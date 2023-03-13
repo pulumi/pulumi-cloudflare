@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -55,7 +55,7 @@ type Zone struct {
 	pulumi.CustomResourceState
 
 	// Account ID to manage the zone resource in.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Whether to scan for DNS records on creation. Ignored after zone is created.
 	JumpStart pulumi.BoolPtrOutput `pulumi:"jumpStart"`
 	Meta      pulumi.BoolMapOutput `pulumi:"meta"`
@@ -84,6 +84,9 @@ func NewZone(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
@@ -162,7 +165,7 @@ func (ZoneState) ElementType() reflect.Type {
 
 type zoneArgs struct {
 	// Account ID to manage the zone resource in.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Whether to scan for DNS records on creation. Ignored after zone is created.
 	JumpStart *bool `pulumi:"jumpStart"`
 	// Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
@@ -178,7 +181,7 @@ type zoneArgs struct {
 // The set of arguments for constructing a Zone resource.
 type ZoneArgs struct {
 	// Account ID to manage the zone resource in.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Whether to scan for DNS records on creation. Ignored after zone is created.
 	JumpStart pulumi.BoolPtrInput
 	// Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
@@ -279,8 +282,8 @@ func (o ZoneOutput) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
 }
 
 // Account ID to manage the zone resource in.
-func (o ZoneOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZoneOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Whether to scan for DNS records on creation. Ignored after zone is created.

@@ -23,15 +23,15 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
      * The account identifier to target for the resource.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return The account identifier to target for the resource.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -288,7 +288,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -608,6 +608,7 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
         }
 
         public LoadBalancerMonitorArgs build() {
+            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
             return $;
         }
     }

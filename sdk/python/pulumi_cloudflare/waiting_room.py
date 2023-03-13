@@ -37,7 +37,7 @@ class WaitingRoomArgs:
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
-        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`. Defaults to `en-US`.
+        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
         :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
@@ -149,7 +149,7 @@ class WaitingRoomArgs:
     @pulumi.getter(name="defaultTemplateLanguage")
     def default_template_language(self) -> Optional[pulumi.Input[str]]:
         """
-        The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`. Defaults to `en-US`.
+        The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         """
         return pulumi.get(self, "default_template_language")
 
@@ -275,7 +275,7 @@ class _WaitingRoomState:
         """
         Input properties used for looking up and filtering WaitingRoom resources.
         :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
-        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`. Defaults to `en-US`.
+        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
         :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
@@ -337,7 +337,7 @@ class _WaitingRoomState:
     @pulumi.getter(name="defaultTemplateLanguage")
     def default_template_language(self) -> Optional[pulumi.Input[str]]:
         """
-        The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`. Defaults to `en-US`.
+        The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         """
         return pulumi.get(self, "default_template_language")
 
@@ -553,7 +553,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
-        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`. Defaults to `en-US`.
+        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
         :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
@@ -698,7 +698,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
-        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`. Defaults to `en-US`.
+        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
         :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
@@ -746,7 +746,7 @@ class WaitingRoom(pulumi.CustomResource):
     @pulumi.getter(name="defaultTemplateLanguage")
     def default_template_language(self) -> pulumi.Output[Optional[str]]:
         """
-        The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`. Defaults to `en-US`.
+        The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         """
         return pulumi.get(self, "default_template_language")
 

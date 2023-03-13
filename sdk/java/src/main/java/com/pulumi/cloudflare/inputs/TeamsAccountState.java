@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.TeamsAccountAntivirusArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountBlockPageArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountFipsArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountLoggingArgs;
+import com.pulumi.cloudflare.inputs.TeamsAccountPayloadLogArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountProxyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -104,6 +105,21 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for DLP Payload Logging.
+     * 
+     */
+    @Import(name="payloadLog")
+    private @Nullable Output<TeamsAccountPayloadLogArgs> payloadLog;
+
+    /**
+     * @return Configuration for DLP Payload Logging.
+     * 
+     */
+    public Optional<Output<TeamsAccountPayloadLogArgs>> payloadLog() {
+        return Optional.ofNullable(this.payloadLog);
+    }
+
+    /**
      * Configuration block for specifying which protocols are proxied.
      * 
      */
@@ -157,6 +173,7 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
         this.blockPage = $.blockPage;
         this.fips = $.fips;
         this.logging = $.logging;
+        this.payloadLog = $.payloadLog;
         this.proxy = $.proxy;
         this.tlsDecryptEnabled = $.tlsDecryptEnabled;
         this.urlBrowserIsolationEnabled = $.urlBrowserIsolationEnabled;
@@ -292,6 +309,27 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
 
         public Builder logging(TeamsAccountLoggingArgs logging) {
             return logging(Output.of(logging));
+        }
+
+        /**
+         * @param payloadLog Configuration for DLP Payload Logging.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder payloadLog(@Nullable Output<TeamsAccountPayloadLogArgs> payloadLog) {
+            $.payloadLog = payloadLog;
+            return this;
+        }
+
+        /**
+         * @param payloadLog Configuration for DLP Payload Logging.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder payloadLog(TeamsAccountPayloadLogArgs payloadLog) {
+            return payloadLog(Output.of(payloadLog));
         }
 
         /**

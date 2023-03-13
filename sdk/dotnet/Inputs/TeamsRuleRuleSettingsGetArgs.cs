@@ -84,6 +84,18 @@ namespace Pulumi.Cloudflare.Inputs
             set => _overrideIps = value;
         }
 
+        /// <summary>
+        /// Configure DLP Payload Logging settings for this rule.
+        /// </summary>
+        [Input("payloadLog")]
+        public Input<Inputs.TeamsRuleRuleSettingsPayloadLogGetArgs>? PayloadLog { get; set; }
+
+        /// <summary>
+        /// Configure untrusted certificate settings for this rule.
+        /// </summary>
+        [Input("untrustedCert")]
+        public Input<Inputs.TeamsRuleRuleSettingsUntrustedCertGetArgs>? UntrustedCert { get; set; }
+
         public TeamsRuleRuleSettingsGetArgs()
         {
         }

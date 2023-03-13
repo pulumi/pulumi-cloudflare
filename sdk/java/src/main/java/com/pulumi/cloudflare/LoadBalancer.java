@@ -13,6 +13,7 @@ import com.pulumi.cloudflare.outputs.LoadBalancerPopPool;
 import com.pulumi.cloudflare.outputs.LoadBalancerRandomSteering;
 import com.pulumi.cloudflare.outputs.LoadBalancerRegionPool;
 import com.pulumi.cloudflare.outputs.LoadBalancerRule;
+import com.pulumi.cloudflare.outputs.LoadBalancerSessionAffinityAttribute;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -21,7 +22,6 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -341,17 +341,17 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sessionAffinity);
     }
     /**
-     * See `session_affinity_attributes`.
+     * Configure cookie attributes for session affinity cookie.
      * 
      */
-    @Export(name="sessionAffinityAttributes", type=Map.class, parameters={String.class, String.class})
-    private Output</* @Nullable */ Map<String,String>> sessionAffinityAttributes;
+    @Export(name="sessionAffinityAttributes", type=List.class, parameters={LoadBalancerSessionAffinityAttribute.class})
+    private Output</* @Nullable */ List<LoadBalancerSessionAffinityAttribute>> sessionAffinityAttributes;
 
     /**
-     * @return See `session_affinity_attributes`.
+     * @return Configure cookie attributes for session affinity cookie.
      * 
      */
-    public Output<Optional<Map<String,String>>> sessionAffinityAttributes() {
+    public Output<Optional<List<LoadBalancerSessionAffinityAttribute>>> sessionAffinityAttributes() {
         return Codegen.optional(this.sessionAffinityAttributes);
     }
     /**

@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.SpectrumApplicationArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.SpectrumApplicationState;
 import com.pulumi.cloudflare.outputs.SpectrumApplicationDns;
+import com.pulumi.cloudflare.outputs.SpectrumApplicationEdgeIps;
 import com.pulumi.cloudflare.outputs.SpectrumApplicationOriginDns;
 import com.pulumi.cloudflare.outputs.SpectrumApplicationOriginPortRange;
 import com.pulumi.core.Output;
@@ -35,6 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.SpectrumApplication;
  * import com.pulumi.cloudflare.SpectrumApplicationArgs;
  * import com.pulumi.cloudflare.inputs.SpectrumApplicationDnsArgs;
+ * import com.pulumi.cloudflare.inputs.SpectrumApplicationEdgeIpsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -52,6 +54,12 @@ import javax.annotation.Nullable;
  *             .dns(SpectrumApplicationDnsArgs.builder()
  *                 .name(&#34;ssh.example.com&#34;)
  *                 .type(&#34;CNAME&#34;)
+ *                 .build())
+ *             .edgeIps(SpectrumApplicationEdgeIpsArgs.builder()
+ *                 .ips(                
+ *                     &#34;203.0.113.1&#34;,
+ *                     &#34;203.0.113.2&#34;)
+ *                 .type(&#34;static&#34;)
  *                 .build())
  *             .originDirects(&#34;tcp://192.0.2.1:22&#34;)
  *             .protocol(&#34;tcp/22&#34;)
@@ -101,31 +109,17 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
         return this.dns;
     }
     /**
-     * Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
+     * The anycast edge IP configuration for the hostname of this application.
      * 
      */
-    @Export(name="edgeIpConnectivity", type=String.class, parameters={})
-    private Output<String> edgeIpConnectivity;
+    @Export(name="edgeIps", type=SpectrumApplicationEdgeIps.class, parameters={})
+    private Output</* @Nullable */ SpectrumApplicationEdgeIps> edgeIps;
 
     /**
-     * @return Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
+     * @return The anycast edge IP configuration for the hostname of this application.
      * 
      */
-    public Output<String> edgeIpConnectivity() {
-        return this.edgeIpConnectivity;
-    }
-    /**
-     * A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
-     * 
-     */
-    @Export(name="edgeIps", type=List.class, parameters={String.class})
-    private Output</* @Nullable */ List<String>> edgeIps;
-
-    /**
-     * @return A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
-     * 
-     */
-    public Output<Optional<List<String>>> edgeIps() {
+    public Output<Optional<SpectrumApplicationEdgeIps>> edgeIps() {
         return Codegen.optional(this.edgeIps);
     }
     /**
@@ -199,14 +193,14 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.originPortRange);
     }
     /**
-     * The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
+     * The port configuration at Cloudflare&#39;s edge. e.g. `tcp/22`.
      * 
      */
     @Export(name="protocol", type=String.class, parameters={})
     private Output<String> protocol;
 
     /**
-     * @return The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
+     * @return The port configuration at Cloudflare&#39;s edge. e.g. `tcp/22`.
      * 
      */
     public Output<String> protocol() {

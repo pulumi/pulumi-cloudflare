@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -66,6 +66,9 @@ func NewWorkersKvNamespace(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
 	}
@@ -110,7 +113,7 @@ func (WorkersKvNamespaceState) ElementType() reflect.Type {
 
 type workersKvNamespaceArgs struct {
 	// The account identifier to target for the resource.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Title value of the Worker KV Namespace.
 	Title string `pulumi:"title"`
 }
@@ -118,7 +121,7 @@ type workersKvNamespaceArgs struct {
 // The set of arguments for constructing a WorkersKvNamespace resource.
 type WorkersKvNamespaceArgs struct {
 	// The account identifier to target for the resource.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Title value of the Worker KV Namespace.
 	Title pulumi.StringInput
 }

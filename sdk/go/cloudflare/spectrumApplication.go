@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -33,6 +33,13 @@ import (
 //				Dns: &cloudflare.SpectrumApplicationDnsArgs{
 //					Name: pulumi.String("ssh.example.com"),
 //					Type: pulumi.String("CNAME"),
+//				},
+//				EdgeIps: &cloudflare.SpectrumApplicationEdgeIpsArgs{
+//					Ips: pulumi.StringArray{
+//						pulumi.String("203.0.113.1"),
+//						pulumi.String("203.0.113.2"),
+//					},
+//					Type: pulumi.String("static"),
 //				},
 //				OriginDirects: pulumi.StringArray{
 //					pulumi.String("tcp://192.0.2.1:22"),
@@ -64,10 +71,8 @@ type SpectrumApplication struct {
 	ArgoSmartRouting pulumi.BoolPtrOutput `pulumi:"argoSmartRouting"`
 	// The name and type of DNS record for the Spectrum application.
 	Dns SpectrumApplicationDnsOutput `pulumi:"dns"`
-	// Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
-	EdgeIpConnectivity pulumi.StringOutput `pulumi:"edgeIpConnectivity"`
-	// A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
-	EdgeIps pulumi.StringArrayOutput `pulumi:"edgeIps"`
+	// The anycast edge IP configuration for the hostname of this application.
+	EdgeIps SpectrumApplicationEdgeIpsPtrOutput `pulumi:"edgeIps"`
 	// Enables the IP Firewall for this application. Defaults to `true`.
 	IpFirewall pulumi.BoolPtrOutput `pulumi:"ipFirewall"`
 	// A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
@@ -78,7 +83,7 @@ type SpectrumApplication struct {
 	OriginPort pulumi.IntPtrOutput `pulumi:"originPort"`
 	// Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `originPort`.
 	OriginPortRange SpectrumApplicationOriginPortRangePtrOutput `pulumi:"originPortRange"`
-	// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
+	// The port configuration at Cloudflare's edge. e.g. `tcp/22`.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
 	ProxyProtocol pulumi.StringPtrOutput `pulumi:"proxyProtocol"`
@@ -132,10 +137,8 @@ type spectrumApplicationState struct {
 	ArgoSmartRouting *bool `pulumi:"argoSmartRouting"`
 	// The name and type of DNS record for the Spectrum application.
 	Dns *SpectrumApplicationDns `pulumi:"dns"`
-	// Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
-	EdgeIpConnectivity *string `pulumi:"edgeIpConnectivity"`
-	// A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
-	EdgeIps []string `pulumi:"edgeIps"`
+	// The anycast edge IP configuration for the hostname of this application.
+	EdgeIps *SpectrumApplicationEdgeIps `pulumi:"edgeIps"`
 	// Enables the IP Firewall for this application. Defaults to `true`.
 	IpFirewall *bool `pulumi:"ipFirewall"`
 	// A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
@@ -146,7 +149,7 @@ type spectrumApplicationState struct {
 	OriginPort *int `pulumi:"originPort"`
 	// Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `originPort`.
 	OriginPortRange *SpectrumApplicationOriginPortRange `pulumi:"originPortRange"`
-	// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
+	// The port configuration at Cloudflare's edge. e.g. `tcp/22`.
 	Protocol *string `pulumi:"protocol"`
 	// Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
 	ProxyProtocol *string `pulumi:"proxyProtocol"`
@@ -163,10 +166,8 @@ type SpectrumApplicationState struct {
 	ArgoSmartRouting pulumi.BoolPtrInput
 	// The name and type of DNS record for the Spectrum application.
 	Dns SpectrumApplicationDnsPtrInput
-	// Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
-	EdgeIpConnectivity pulumi.StringPtrInput
-	// A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
-	EdgeIps pulumi.StringArrayInput
+	// The anycast edge IP configuration for the hostname of this application.
+	EdgeIps SpectrumApplicationEdgeIpsPtrInput
 	// Enables the IP Firewall for this application. Defaults to `true`.
 	IpFirewall pulumi.BoolPtrInput
 	// A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
@@ -177,7 +178,7 @@ type SpectrumApplicationState struct {
 	OriginPort pulumi.IntPtrInput
 	// Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `originPort`.
 	OriginPortRange SpectrumApplicationOriginPortRangePtrInput
-	// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
+	// The port configuration at Cloudflare's edge. e.g. `tcp/22`.
 	Protocol pulumi.StringPtrInput
 	// Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
 	ProxyProtocol pulumi.StringPtrInput
@@ -198,10 +199,8 @@ type spectrumApplicationArgs struct {
 	ArgoSmartRouting *bool `pulumi:"argoSmartRouting"`
 	// The name and type of DNS record for the Spectrum application.
 	Dns SpectrumApplicationDns `pulumi:"dns"`
-	// Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
-	EdgeIpConnectivity *string `pulumi:"edgeIpConnectivity"`
-	// A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
-	EdgeIps []string `pulumi:"edgeIps"`
+	// The anycast edge IP configuration for the hostname of this application.
+	EdgeIps *SpectrumApplicationEdgeIps `pulumi:"edgeIps"`
 	// Enables the IP Firewall for this application. Defaults to `true`.
 	IpFirewall *bool `pulumi:"ipFirewall"`
 	// A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
@@ -212,7 +211,7 @@ type spectrumApplicationArgs struct {
 	OriginPort *int `pulumi:"originPort"`
 	// Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `originPort`.
 	OriginPortRange *SpectrumApplicationOriginPortRange `pulumi:"originPortRange"`
-	// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
+	// The port configuration at Cloudflare's edge. e.g. `tcp/22`.
 	Protocol string `pulumi:"protocol"`
 	// Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
 	ProxyProtocol *string `pulumi:"proxyProtocol"`
@@ -230,10 +229,8 @@ type SpectrumApplicationArgs struct {
 	ArgoSmartRouting pulumi.BoolPtrInput
 	// The name and type of DNS record for the Spectrum application.
 	Dns SpectrumApplicationDnsInput
-	// Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
-	EdgeIpConnectivity pulumi.StringPtrInput
-	// A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
-	EdgeIps pulumi.StringArrayInput
+	// The anycast edge IP configuration for the hostname of this application.
+	EdgeIps SpectrumApplicationEdgeIpsPtrInput
 	// Enables the IP Firewall for this application. Defaults to `true`.
 	IpFirewall pulumi.BoolPtrInput
 	// A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
@@ -244,7 +241,7 @@ type SpectrumApplicationArgs struct {
 	OriginPort pulumi.IntPtrInput
 	// Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `originPort`.
 	OriginPortRange SpectrumApplicationOriginPortRangePtrInput
-	// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
+	// The port configuration at Cloudflare's edge. e.g. `tcp/22`.
 	Protocol pulumi.StringInput
 	// Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
 	ProxyProtocol pulumi.StringPtrInput
@@ -353,14 +350,9 @@ func (o SpectrumApplicationOutput) Dns() SpectrumApplicationDnsOutput {
 	return o.ApplyT(func(v *SpectrumApplication) SpectrumApplicationDnsOutput { return v.Dns }).(SpectrumApplicationDnsOutput)
 }
 
-// Choose which types of IP addresses will be provisioned for this subdomain. Available values: `all`, `ipv4`, `ipv6`.
-func (o SpectrumApplicationOutput) EdgeIpConnectivity() pulumi.StringOutput {
-	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringOutput { return v.EdgeIpConnectivity }).(pulumi.StringOutput)
-}
-
-// A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
-func (o SpectrumApplicationOutput) EdgeIps() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringArrayOutput { return v.EdgeIps }).(pulumi.StringArrayOutput)
+// The anycast edge IP configuration for the hostname of this application.
+func (o SpectrumApplicationOutput) EdgeIps() SpectrumApplicationEdgeIpsPtrOutput {
+	return o.ApplyT(func(v *SpectrumApplication) SpectrumApplicationEdgeIpsPtrOutput { return v.EdgeIps }).(SpectrumApplicationEdgeIpsPtrOutput)
 }
 
 // Enables the IP Firewall for this application. Defaults to `true`.
@@ -388,7 +380,7 @@ func (o SpectrumApplicationOutput) OriginPortRange() SpectrumApplicationOriginPo
 	return o.ApplyT(func(v *SpectrumApplication) SpectrumApplicationOriginPortRangePtrOutput { return v.OriginPortRange }).(SpectrumApplicationOriginPortRangePtrOutput)
 }
 
-// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
+// The port configuration at Cloudflare's edge. e.g. `tcp/22`.
 func (o SpectrumApplicationOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }

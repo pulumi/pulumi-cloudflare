@@ -16,7 +16,7 @@ __all__ = ['LoadBalancerMonitorArgs', 'LoadBalancerMonitor']
 @pulumi.input_type
 class LoadBalancerMonitorArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[str]] = None,
+                 account_id: pulumi.Input[str],
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  expected_body: Optional[pulumi.Input[str]] = None,
@@ -49,8 +49,7 @@ class LoadBalancerMonitorArgs:
         :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
         :param pulumi.Input[str] type: The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
         """
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "account_id", account_id)
         if allow_insecure is not None:
             pulumi.set(__self__, "allow_insecure", allow_insecure)
         if description is not None:
@@ -82,14 +81,14 @@ class LoadBalancerMonitorArgs:
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[str]]:
+    def account_id(self) -> pulumi.Input[str]:
         """
         The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[str]]):
+    def account_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "account_id", value)
 
     @property
@@ -608,7 +607,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[LoadBalancerMonitorArgs] = None,
+                 args: LoadBalancerMonitorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         If Cloudflare's Load Balancing to load-balance across multiple
@@ -673,6 +672,8 @@ class LoadBalancerMonitor(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LoadBalancerMonitorArgs.__new__(LoadBalancerMonitorArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["allow_insecure"] = allow_insecure
             __props__.__dict__["description"] = description
@@ -767,7 +768,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[str]]:
+    def account_id(self) -> pulumi.Output[str]:
         """
         The account identifier to target for the resource.
         """

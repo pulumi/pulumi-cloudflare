@@ -10,63 +10,6 @@ import * as utilities from "./utilities";
  * Provides a Cloudflare Tunnel configuration resource.
  *
  * !> When you delete a tunnel configuration, the tunnel will be deleted. You need to make sure that the tunnel is not in use before deleting the configuration.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleTunnel = new cloudflare.ArgoTunnel("exampleTunnel", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "example_tunnel",
- *     secret: "<32 character secret>",
- * });
- * const exampleConfig = new cloudflare.TunnelConfig("exampleConfig", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     tunnelId: exampleTunnel.id,
- *     config: {
- *         warpRouting: {
- *             enabled: true,
- *         },
- *         originRequest: {
- *             connectTimeout: "1m0s",
- *             tlsTimeout: "1m0s",
- *             tcpKeepAlive: "1m0s",
- *             noHappyEyeballs: false,
- *             keepAliveConnections: 1024,
- *             keepAliveTimeout: "1m0s",
- *             httpHostHeader: "baz",
- *             originServerName: "foobar",
- *             caPool: "/path/to/unsigned/ca/pool",
- *             noTlsVerify: false,
- *             disableChunkedEncoding: false,
- *             bastionMode: false,
- *             proxyAddress: "10.0.0.1",
- *             proxyPort: 8123,
- *             proxyType: "socks",
- *             ipRules: [{
- *                 prefix: "/web",
- *                 ports: [
- *                     80,
- *                     443,
- *                 ],
- *                 allow: false,
- *             }],
- *         },
- *         ingressRules: [
- *             {
- *                 hostname: "foo",
- *                 path: "/bar",
- *                 service: "http://10.0.0.2:8080",
- *             },
- *             {
- *                 service: "https://10.0.0.3:8081",
- *             },
- *         ],
- *     },
- * });
- * ```
  */
 export class TunnelConfig extends pulumi.CustomResource {
     /**

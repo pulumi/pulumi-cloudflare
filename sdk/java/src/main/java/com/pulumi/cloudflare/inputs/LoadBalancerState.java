@@ -10,13 +10,13 @@ import com.pulumi.cloudflare.inputs.LoadBalancerPopPoolArgs;
 import com.pulumi.cloudflare.inputs.LoadBalancerRandomSteeringArgs;
 import com.pulumi.cloudflare.inputs.LoadBalancerRegionPoolArgs;
 import com.pulumi.cloudflare.inputs.LoadBalancerRuleArgs;
+import com.pulumi.cloudflare.inputs.LoadBalancerSessionAffinityAttributeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -267,17 +267,17 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * See `session_affinity_attributes`.
+     * Configure cookie attributes for session affinity cookie.
      * 
      */
     @Import(name="sessionAffinityAttributes")
-    private @Nullable Output<Map<String,String>> sessionAffinityAttributes;
+    private @Nullable Output<List<LoadBalancerSessionAffinityAttributeArgs>> sessionAffinityAttributes;
 
     /**
-     * @return See `session_affinity_attributes`.
+     * @return Configure cookie attributes for session affinity cookie.
      * 
      */
-    public Optional<Output<Map<String,String>>> sessionAffinityAttributes() {
+    public Optional<Output<List<LoadBalancerSessionAffinityAttributeArgs>>> sessionAffinityAttributes() {
         return Optional.ofNullable(this.sessionAffinityAttributes);
     }
 
@@ -802,24 +802,34 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionAffinityAttributes See `session_affinity_attributes`.
+         * @param sessionAffinityAttributes Configure cookie attributes for session affinity cookie.
          * 
          * @return builder
          * 
          */
-        public Builder sessionAffinityAttributes(@Nullable Output<Map<String,String>> sessionAffinityAttributes) {
+        public Builder sessionAffinityAttributes(@Nullable Output<List<LoadBalancerSessionAffinityAttributeArgs>> sessionAffinityAttributes) {
             $.sessionAffinityAttributes = sessionAffinityAttributes;
             return this;
         }
 
         /**
-         * @param sessionAffinityAttributes See `session_affinity_attributes`.
+         * @param sessionAffinityAttributes Configure cookie attributes for session affinity cookie.
          * 
          * @return builder
          * 
          */
-        public Builder sessionAffinityAttributes(Map<String,String> sessionAffinityAttributes) {
+        public Builder sessionAffinityAttributes(List<LoadBalancerSessionAffinityAttributeArgs> sessionAffinityAttributes) {
             return sessionAffinityAttributes(Output.of(sessionAffinityAttributes));
+        }
+
+        /**
+         * @param sessionAffinityAttributes Configure cookie attributes for session affinity cookie.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionAffinityAttributes(LoadBalancerSessionAffinityAttributeArgs... sessionAffinityAttributes) {
+            return sessionAffinityAttributes(List.of(sessionAffinityAttributes));
         }
 
         /**

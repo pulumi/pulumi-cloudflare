@@ -47,7 +47,7 @@ namespace Pulumi.Cloudflare
         /// Account ID to create the account member in.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
@@ -116,8 +116,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account ID to create the account member in.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.

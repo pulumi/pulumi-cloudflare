@@ -19,7 +19,7 @@ import (
 	"path/filepath"
 
 	provShim "github.com/cloudflare/terraform-provider-cloudflare/shim"
-	"github.com/pulumi/pulumi-cloudflare/provider/v4/pkg/version"
+	"github.com/pulumi/pulumi-cloudflare/provider/v5/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
@@ -85,7 +85,6 @@ func Provider() tfbridge.ProviderInfo {
 
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"cloudflare_access_application": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AccessApplication")},
-			"cloudflare_access_bookmark":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AccessBookmark")},
 			"cloudflare_access_identity_provider": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "AccessIdentityProvider"),
 			},
@@ -114,7 +113,6 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_api_token":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ApiToken")},
 			"cloudflare_api_shield":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ApiShield")},
 			"cloudflare_argo":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Argo")},
-			"cloudflare_argo_tunnel":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ArgoTunnel")},
 			"cloudflare_authenticated_origin_pulls": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "AuthenticatedOriginPulls"),
 			},
@@ -149,7 +147,6 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_firewall_rule":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "FirewallRule")},
 			"cloudflare_gre_tunnel":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GreTunnel")},
 			"cloudflare_healthcheck":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Healthcheck")},
-			"cloudflare_ip_list":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "IpList")},
 			"cloudflare_ipsec_tunnel":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "IpsecTunnel")},
 			"cloudflare_list":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "List")},
 			"cloudflare_load_balancer_monitor": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LoadBalancerMonitor")},
@@ -194,10 +191,6 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_user_agent_blocking_rule":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "UserAgentBlockingRule")},
 			"cloudflare_waiting_room_event":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WaitingRoomEvent")},
 			"cloudflare_waiting_room_rules":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WaitingRoomRules")},
-			"cloudflare_waf_group":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WafGroup")},
-			"cloudflare_waf_package":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WafPackage")},
-			"cloudflare_waf_override":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WafOverride")},
-			"cloudflare_waf_rule":                   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WafRule")},
 			"cloudflare_web3_hostname":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Web3Hostname")},
 			"cloudflare_worker_route":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WorkerRoute")},
 			"cloudflare_worker_cron_trigger":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WorkerCronTrigger")},

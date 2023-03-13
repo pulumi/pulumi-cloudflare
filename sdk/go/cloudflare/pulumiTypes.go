@@ -9329,112 +9329,6 @@ func (o HealthcheckHeaderArrayOutput) Index(i pulumi.IntInput) HealthcheckHeader
 	}).(HealthcheckHeaderOutput)
 }
 
-type IpListItem struct {
-	// A note that can be used to annotate the item.
-	Comment *string `pulumi:"comment"`
-	// The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
-	Value string `pulumi:"value"`
-}
-
-// IpListItemInput is an input type that accepts IpListItemArgs and IpListItemOutput values.
-// You can construct a concrete instance of `IpListItemInput` via:
-//
-//	IpListItemArgs{...}
-type IpListItemInput interface {
-	pulumi.Input
-
-	ToIpListItemOutput() IpListItemOutput
-	ToIpListItemOutputWithContext(context.Context) IpListItemOutput
-}
-
-type IpListItemArgs struct {
-	// A note that can be used to annotate the item.
-	Comment pulumi.StringPtrInput `pulumi:"comment"`
-	// The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (IpListItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IpListItem)(nil)).Elem()
-}
-
-func (i IpListItemArgs) ToIpListItemOutput() IpListItemOutput {
-	return i.ToIpListItemOutputWithContext(context.Background())
-}
-
-func (i IpListItemArgs) ToIpListItemOutputWithContext(ctx context.Context) IpListItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IpListItemOutput)
-}
-
-// IpListItemArrayInput is an input type that accepts IpListItemArray and IpListItemArrayOutput values.
-// You can construct a concrete instance of `IpListItemArrayInput` via:
-//
-//	IpListItemArray{ IpListItemArgs{...} }
-type IpListItemArrayInput interface {
-	pulumi.Input
-
-	ToIpListItemArrayOutput() IpListItemArrayOutput
-	ToIpListItemArrayOutputWithContext(context.Context) IpListItemArrayOutput
-}
-
-type IpListItemArray []IpListItemInput
-
-func (IpListItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IpListItem)(nil)).Elem()
-}
-
-func (i IpListItemArray) ToIpListItemArrayOutput() IpListItemArrayOutput {
-	return i.ToIpListItemArrayOutputWithContext(context.Background())
-}
-
-func (i IpListItemArray) ToIpListItemArrayOutputWithContext(ctx context.Context) IpListItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IpListItemArrayOutput)
-}
-
-type IpListItemOutput struct{ *pulumi.OutputState }
-
-func (IpListItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IpListItem)(nil)).Elem()
-}
-
-func (o IpListItemOutput) ToIpListItemOutput() IpListItemOutput {
-	return o
-}
-
-func (o IpListItemOutput) ToIpListItemOutputWithContext(ctx context.Context) IpListItemOutput {
-	return o
-}
-
-// A note that can be used to annotate the item.
-func (o IpListItemOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IpListItem) *string { return v.Comment }).(pulumi.StringPtrOutput)
-}
-
-// The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
-func (o IpListItemOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v IpListItem) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type IpListItemArrayOutput struct{ *pulumi.OutputState }
-
-func (IpListItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IpListItem)(nil)).Elem()
-}
-
-func (o IpListItemArrayOutput) ToIpListItemArrayOutput() IpListItemArrayOutput {
-	return o
-}
-
-func (o IpListItemArrayOutput) ToIpListItemArrayOutputWithContext(ctx context.Context) IpListItemArrayOutput {
-	return o
-}
-
-func (o IpListItemArrayOutput) Index(i pulumi.IntInput) IpListItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpListItem {
-		return vs[0].([]IpListItem)[vs[1].(int)]
-	}).(IpListItemOutput)
-}
-
 type ListItem struct {
 	// An optional comment for the item.
 	Comment *string       `pulumi:"comment"`
@@ -11256,8 +11150,8 @@ type LoadBalancerRuleOverride struct {
 	RegionPools []LoadBalancerRuleOverrideRegionPool `pulumi:"regionPools"`
 	// Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ipCookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ipCookie`. Defaults to `none`.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
-	// See `sessionAffinityAttributes`.
-	SessionAffinityAttributes map[string]string `pulumi:"sessionAffinityAttributes"`
+	// Configure cookie attributes for session affinity cookie.
+	SessionAffinityAttributes []LoadBalancerRuleOverrideSessionAffinityAttribute `pulumi:"sessionAffinityAttributes"`
 	// Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
 	SessionAffinityTtl *int `pulumi:"sessionAffinityTtl"`
 	// The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `""` Defaults to `""`.
@@ -11294,8 +11188,8 @@ type LoadBalancerRuleOverrideArgs struct {
 	RegionPools LoadBalancerRuleOverrideRegionPoolArrayInput `pulumi:"regionPools"`
 	// Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ipCookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ipCookie`. Defaults to `none`.
 	SessionAffinity pulumi.StringPtrInput `pulumi:"sessionAffinity"`
-	// See `sessionAffinityAttributes`.
-	SessionAffinityAttributes pulumi.StringMapInput `pulumi:"sessionAffinityAttributes"`
+	// Configure cookie attributes for session affinity cookie.
+	SessionAffinityAttributes LoadBalancerRuleOverrideSessionAffinityAttributeArrayInput `pulumi:"sessionAffinityAttributes"`
 	// Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
 	SessionAffinityTtl pulumi.IntPtrInput `pulumi:"sessionAffinityTtl"`
 	// The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `""` Defaults to `""`.
@@ -11400,9 +11294,11 @@ func (o LoadBalancerRuleOverrideOutput) SessionAffinity() pulumi.StringPtrOutput
 	return o.ApplyT(func(v LoadBalancerRuleOverride) *string { return v.SessionAffinity }).(pulumi.StringPtrOutput)
 }
 
-// See `sessionAffinityAttributes`.
-func (o LoadBalancerRuleOverrideOutput) SessionAffinityAttributes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LoadBalancerRuleOverride) map[string]string { return v.SessionAffinityAttributes }).(pulumi.StringMapOutput)
+// Configure cookie attributes for session affinity cookie.
+func (o LoadBalancerRuleOverrideOutput) SessionAffinityAttributes() LoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput {
+	return o.ApplyT(func(v LoadBalancerRuleOverride) []LoadBalancerRuleOverrideSessionAffinityAttribute {
+		return v.SessionAffinityAttributes
+	}).(LoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput)
 }
 
 // Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
@@ -12065,6 +11961,245 @@ func (o LoadBalancerRuleOverrideRegionPoolArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerRuleOverrideRegionPool {
 		return vs[0].([]LoadBalancerRuleOverrideRegionPool)[vs[1].(int)]
 	}).(LoadBalancerRuleOverrideRegionPoolOutput)
+}
+
+type LoadBalancerRuleOverrideSessionAffinityAttribute struct {
+	// Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+	Samesite *string `pulumi:"samesite"`
+	// Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+	Secure *string `pulumi:"secure"`
+	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+	ZeroDowntimeFailover *string `pulumi:"zeroDowntimeFailover"`
+}
+
+// LoadBalancerRuleOverrideSessionAffinityAttributeInput is an input type that accepts LoadBalancerRuleOverrideSessionAffinityAttributeArgs and LoadBalancerRuleOverrideSessionAffinityAttributeOutput values.
+// You can construct a concrete instance of `LoadBalancerRuleOverrideSessionAffinityAttributeInput` via:
+//
+//	LoadBalancerRuleOverrideSessionAffinityAttributeArgs{...}
+type LoadBalancerRuleOverrideSessionAffinityAttributeInput interface {
+	pulumi.Input
+
+	ToLoadBalancerRuleOverrideSessionAffinityAttributeOutput() LoadBalancerRuleOverrideSessionAffinityAttributeOutput
+	ToLoadBalancerRuleOverrideSessionAffinityAttributeOutputWithContext(context.Context) LoadBalancerRuleOverrideSessionAffinityAttributeOutput
+}
+
+type LoadBalancerRuleOverrideSessionAffinityAttributeArgs struct {
+	// Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+	Samesite pulumi.StringPtrInput `pulumi:"samesite"`
+	// Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+	Secure pulumi.StringPtrInput `pulumi:"secure"`
+	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+	ZeroDowntimeFailover pulumi.StringPtrInput `pulumi:"zeroDowntimeFailover"`
+}
+
+func (LoadBalancerRuleOverrideSessionAffinityAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerRuleOverrideSessionAffinityAttribute)(nil)).Elem()
+}
+
+func (i LoadBalancerRuleOverrideSessionAffinityAttributeArgs) ToLoadBalancerRuleOverrideSessionAffinityAttributeOutput() LoadBalancerRuleOverrideSessionAffinityAttributeOutput {
+	return i.ToLoadBalancerRuleOverrideSessionAffinityAttributeOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerRuleOverrideSessionAffinityAttributeArgs) ToLoadBalancerRuleOverrideSessionAffinityAttributeOutputWithContext(ctx context.Context) LoadBalancerRuleOverrideSessionAffinityAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRuleOverrideSessionAffinityAttributeOutput)
+}
+
+// LoadBalancerRuleOverrideSessionAffinityAttributeArrayInput is an input type that accepts LoadBalancerRuleOverrideSessionAffinityAttributeArray and LoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerRuleOverrideSessionAffinityAttributeArrayInput` via:
+//
+//	LoadBalancerRuleOverrideSessionAffinityAttributeArray{ LoadBalancerRuleOverrideSessionAffinityAttributeArgs{...} }
+type LoadBalancerRuleOverrideSessionAffinityAttributeArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput() LoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput
+	ToLoadBalancerRuleOverrideSessionAffinityAttributeArrayOutputWithContext(context.Context) LoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput
+}
+
+type LoadBalancerRuleOverrideSessionAffinityAttributeArray []LoadBalancerRuleOverrideSessionAffinityAttributeInput
+
+func (LoadBalancerRuleOverrideSessionAffinityAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerRuleOverrideSessionAffinityAttribute)(nil)).Elem()
+}
+
+func (i LoadBalancerRuleOverrideSessionAffinityAttributeArray) ToLoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput() LoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput {
+	return i.ToLoadBalancerRuleOverrideSessionAffinityAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerRuleOverrideSessionAffinityAttributeArray) ToLoadBalancerRuleOverrideSessionAffinityAttributeArrayOutputWithContext(ctx context.Context) LoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput)
+}
+
+type LoadBalancerRuleOverrideSessionAffinityAttributeOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerRuleOverrideSessionAffinityAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerRuleOverrideSessionAffinityAttribute)(nil)).Elem()
+}
+
+func (o LoadBalancerRuleOverrideSessionAffinityAttributeOutput) ToLoadBalancerRuleOverrideSessionAffinityAttributeOutput() LoadBalancerRuleOverrideSessionAffinityAttributeOutput {
+	return o
+}
+
+func (o LoadBalancerRuleOverrideSessionAffinityAttributeOutput) ToLoadBalancerRuleOverrideSessionAffinityAttributeOutputWithContext(ctx context.Context) LoadBalancerRuleOverrideSessionAffinityAttributeOutput {
+	return o
+}
+
+// Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+func (o LoadBalancerRuleOverrideSessionAffinityAttributeOutput) Samesite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRuleOverrideSessionAffinityAttribute) *string { return v.Samesite }).(pulumi.StringPtrOutput)
+}
+
+// Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+func (o LoadBalancerRuleOverrideSessionAffinityAttributeOutput) Secure() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRuleOverrideSessionAffinityAttribute) *string { return v.Secure }).(pulumi.StringPtrOutput)
+}
+
+// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+func (o LoadBalancerRuleOverrideSessionAffinityAttributeOutput) ZeroDowntimeFailover() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRuleOverrideSessionAffinityAttribute) *string { return v.ZeroDowntimeFailover }).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerRuleOverrideSessionAffinityAttribute)(nil)).Elem()
+}
+
+func (o LoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput) ToLoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput() LoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput {
+	return o
+}
+
+func (o LoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput) ToLoadBalancerRuleOverrideSessionAffinityAttributeArrayOutputWithContext(ctx context.Context) LoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput {
+	return o
+}
+
+func (o LoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput) Index(i pulumi.IntInput) LoadBalancerRuleOverrideSessionAffinityAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerRuleOverrideSessionAffinityAttribute {
+		return vs[0].([]LoadBalancerRuleOverrideSessionAffinityAttribute)[vs[1].(int)]
+	}).(LoadBalancerRuleOverrideSessionAffinityAttributeOutput)
+}
+
+type LoadBalancerSessionAffinityAttribute struct {
+	// Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. Defaults to `0`.
+	DrainDuration *int `pulumi:"drainDuration"`
+	// Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+	Samesite *string `pulumi:"samesite"`
+	// Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+	Secure *string `pulumi:"secure"`
+	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+	ZeroDowntimeFailover *string `pulumi:"zeroDowntimeFailover"`
+}
+
+// LoadBalancerSessionAffinityAttributeInput is an input type that accepts LoadBalancerSessionAffinityAttributeArgs and LoadBalancerSessionAffinityAttributeOutput values.
+// You can construct a concrete instance of `LoadBalancerSessionAffinityAttributeInput` via:
+//
+//	LoadBalancerSessionAffinityAttributeArgs{...}
+type LoadBalancerSessionAffinityAttributeInput interface {
+	pulumi.Input
+
+	ToLoadBalancerSessionAffinityAttributeOutput() LoadBalancerSessionAffinityAttributeOutput
+	ToLoadBalancerSessionAffinityAttributeOutputWithContext(context.Context) LoadBalancerSessionAffinityAttributeOutput
+}
+
+type LoadBalancerSessionAffinityAttributeArgs struct {
+	// Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. Defaults to `0`.
+	DrainDuration pulumi.IntPtrInput `pulumi:"drainDuration"`
+	// Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+	Samesite pulumi.StringPtrInput `pulumi:"samesite"`
+	// Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+	Secure pulumi.StringPtrInput `pulumi:"secure"`
+	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+	ZeroDowntimeFailover pulumi.StringPtrInput `pulumi:"zeroDowntimeFailover"`
+}
+
+func (LoadBalancerSessionAffinityAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerSessionAffinityAttribute)(nil)).Elem()
+}
+
+func (i LoadBalancerSessionAffinityAttributeArgs) ToLoadBalancerSessionAffinityAttributeOutput() LoadBalancerSessionAffinityAttributeOutput {
+	return i.ToLoadBalancerSessionAffinityAttributeOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerSessionAffinityAttributeArgs) ToLoadBalancerSessionAffinityAttributeOutputWithContext(ctx context.Context) LoadBalancerSessionAffinityAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerSessionAffinityAttributeOutput)
+}
+
+// LoadBalancerSessionAffinityAttributeArrayInput is an input type that accepts LoadBalancerSessionAffinityAttributeArray and LoadBalancerSessionAffinityAttributeArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerSessionAffinityAttributeArrayInput` via:
+//
+//	LoadBalancerSessionAffinityAttributeArray{ LoadBalancerSessionAffinityAttributeArgs{...} }
+type LoadBalancerSessionAffinityAttributeArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerSessionAffinityAttributeArrayOutput() LoadBalancerSessionAffinityAttributeArrayOutput
+	ToLoadBalancerSessionAffinityAttributeArrayOutputWithContext(context.Context) LoadBalancerSessionAffinityAttributeArrayOutput
+}
+
+type LoadBalancerSessionAffinityAttributeArray []LoadBalancerSessionAffinityAttributeInput
+
+func (LoadBalancerSessionAffinityAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerSessionAffinityAttribute)(nil)).Elem()
+}
+
+func (i LoadBalancerSessionAffinityAttributeArray) ToLoadBalancerSessionAffinityAttributeArrayOutput() LoadBalancerSessionAffinityAttributeArrayOutput {
+	return i.ToLoadBalancerSessionAffinityAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerSessionAffinityAttributeArray) ToLoadBalancerSessionAffinityAttributeArrayOutputWithContext(ctx context.Context) LoadBalancerSessionAffinityAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerSessionAffinityAttributeArrayOutput)
+}
+
+type LoadBalancerSessionAffinityAttributeOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerSessionAffinityAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerSessionAffinityAttribute)(nil)).Elem()
+}
+
+func (o LoadBalancerSessionAffinityAttributeOutput) ToLoadBalancerSessionAffinityAttributeOutput() LoadBalancerSessionAffinityAttributeOutput {
+	return o
+}
+
+func (o LoadBalancerSessionAffinityAttributeOutput) ToLoadBalancerSessionAffinityAttributeOutputWithContext(ctx context.Context) LoadBalancerSessionAffinityAttributeOutput {
+	return o
+}
+
+// Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. Defaults to `0`.
+func (o LoadBalancerSessionAffinityAttributeOutput) DrainDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerSessionAffinityAttribute) *int { return v.DrainDuration }).(pulumi.IntPtrOutput)
+}
+
+// Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+func (o LoadBalancerSessionAffinityAttributeOutput) Samesite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerSessionAffinityAttribute) *string { return v.Samesite }).(pulumi.StringPtrOutput)
+}
+
+// Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+func (o LoadBalancerSessionAffinityAttributeOutput) Secure() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerSessionAffinityAttribute) *string { return v.Secure }).(pulumi.StringPtrOutput)
+}
+
+// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+func (o LoadBalancerSessionAffinityAttributeOutput) ZeroDowntimeFailover() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerSessionAffinityAttribute) *string { return v.ZeroDowntimeFailover }).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerSessionAffinityAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerSessionAffinityAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerSessionAffinityAttribute)(nil)).Elem()
+}
+
+func (o LoadBalancerSessionAffinityAttributeArrayOutput) ToLoadBalancerSessionAffinityAttributeArrayOutput() LoadBalancerSessionAffinityAttributeArrayOutput {
+	return o
+}
+
+func (o LoadBalancerSessionAffinityAttributeArrayOutput) ToLoadBalancerSessionAffinityAttributeArrayOutputWithContext(ctx context.Context) LoadBalancerSessionAffinityAttributeArrayOutput {
+	return o
+}
+
+func (o LoadBalancerSessionAffinityAttributeArrayOutput) Index(i pulumi.IntInput) LoadBalancerSessionAffinityAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerSessionAffinityAttribute {
+		return vs[0].([]LoadBalancerSessionAffinityAttribute)[vs[1].(int)]
+	}).(LoadBalancerSessionAffinityAttributeOutput)
 }
 
 type ManagedHeadersManagedRequestHeader struct {
@@ -24170,6 +24305,181 @@ func (o SpectrumApplicationDnsPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SpectrumApplicationEdgeIps struct {
+	// The IP versions supported for inbound connections on Spectrum anycast IPs. Required when `type` is not `static`. Available values: `all`, `ipv4`, `ipv6`.
+	Connectivity *string `pulumi:"connectivity"`
+	// The collection of customer owned IPs to broadcast via anycast for this hostname and application. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+	Ips []string `pulumi:"ips"`
+	// The type of edge IP configuration specified. Available values: `dynamic`, `static`.
+	Type string `pulumi:"type"`
+}
+
+// SpectrumApplicationEdgeIpsInput is an input type that accepts SpectrumApplicationEdgeIpsArgs and SpectrumApplicationEdgeIpsOutput values.
+// You can construct a concrete instance of `SpectrumApplicationEdgeIpsInput` via:
+//
+//	SpectrumApplicationEdgeIpsArgs{...}
+type SpectrumApplicationEdgeIpsInput interface {
+	pulumi.Input
+
+	ToSpectrumApplicationEdgeIpsOutput() SpectrumApplicationEdgeIpsOutput
+	ToSpectrumApplicationEdgeIpsOutputWithContext(context.Context) SpectrumApplicationEdgeIpsOutput
+}
+
+type SpectrumApplicationEdgeIpsArgs struct {
+	// The IP versions supported for inbound connections on Spectrum anycast IPs. Required when `type` is not `static`. Available values: `all`, `ipv4`, `ipv6`.
+	Connectivity pulumi.StringPtrInput `pulumi:"connectivity"`
+	// The collection of customer owned IPs to broadcast via anycast for this hostname and application. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+	Ips pulumi.StringArrayInput `pulumi:"ips"`
+	// The type of edge IP configuration specified. Available values: `dynamic`, `static`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SpectrumApplicationEdgeIpsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpectrumApplicationEdgeIps)(nil)).Elem()
+}
+
+func (i SpectrumApplicationEdgeIpsArgs) ToSpectrumApplicationEdgeIpsOutput() SpectrumApplicationEdgeIpsOutput {
+	return i.ToSpectrumApplicationEdgeIpsOutputWithContext(context.Background())
+}
+
+func (i SpectrumApplicationEdgeIpsArgs) ToSpectrumApplicationEdgeIpsOutputWithContext(ctx context.Context) SpectrumApplicationEdgeIpsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpectrumApplicationEdgeIpsOutput)
+}
+
+func (i SpectrumApplicationEdgeIpsArgs) ToSpectrumApplicationEdgeIpsPtrOutput() SpectrumApplicationEdgeIpsPtrOutput {
+	return i.ToSpectrumApplicationEdgeIpsPtrOutputWithContext(context.Background())
+}
+
+func (i SpectrumApplicationEdgeIpsArgs) ToSpectrumApplicationEdgeIpsPtrOutputWithContext(ctx context.Context) SpectrumApplicationEdgeIpsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpectrumApplicationEdgeIpsOutput).ToSpectrumApplicationEdgeIpsPtrOutputWithContext(ctx)
+}
+
+// SpectrumApplicationEdgeIpsPtrInput is an input type that accepts SpectrumApplicationEdgeIpsArgs, SpectrumApplicationEdgeIpsPtr and SpectrumApplicationEdgeIpsPtrOutput values.
+// You can construct a concrete instance of `SpectrumApplicationEdgeIpsPtrInput` via:
+//
+//	        SpectrumApplicationEdgeIpsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SpectrumApplicationEdgeIpsPtrInput interface {
+	pulumi.Input
+
+	ToSpectrumApplicationEdgeIpsPtrOutput() SpectrumApplicationEdgeIpsPtrOutput
+	ToSpectrumApplicationEdgeIpsPtrOutputWithContext(context.Context) SpectrumApplicationEdgeIpsPtrOutput
+}
+
+type spectrumApplicationEdgeIpsPtrType SpectrumApplicationEdgeIpsArgs
+
+func SpectrumApplicationEdgeIpsPtr(v *SpectrumApplicationEdgeIpsArgs) SpectrumApplicationEdgeIpsPtrInput {
+	return (*spectrumApplicationEdgeIpsPtrType)(v)
+}
+
+func (*spectrumApplicationEdgeIpsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpectrumApplicationEdgeIps)(nil)).Elem()
+}
+
+func (i *spectrumApplicationEdgeIpsPtrType) ToSpectrumApplicationEdgeIpsPtrOutput() SpectrumApplicationEdgeIpsPtrOutput {
+	return i.ToSpectrumApplicationEdgeIpsPtrOutputWithContext(context.Background())
+}
+
+func (i *spectrumApplicationEdgeIpsPtrType) ToSpectrumApplicationEdgeIpsPtrOutputWithContext(ctx context.Context) SpectrumApplicationEdgeIpsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpectrumApplicationEdgeIpsPtrOutput)
+}
+
+type SpectrumApplicationEdgeIpsOutput struct{ *pulumi.OutputState }
+
+func (SpectrumApplicationEdgeIpsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpectrumApplicationEdgeIps)(nil)).Elem()
+}
+
+func (o SpectrumApplicationEdgeIpsOutput) ToSpectrumApplicationEdgeIpsOutput() SpectrumApplicationEdgeIpsOutput {
+	return o
+}
+
+func (o SpectrumApplicationEdgeIpsOutput) ToSpectrumApplicationEdgeIpsOutputWithContext(ctx context.Context) SpectrumApplicationEdgeIpsOutput {
+	return o
+}
+
+func (o SpectrumApplicationEdgeIpsOutput) ToSpectrumApplicationEdgeIpsPtrOutput() SpectrumApplicationEdgeIpsPtrOutput {
+	return o.ToSpectrumApplicationEdgeIpsPtrOutputWithContext(context.Background())
+}
+
+func (o SpectrumApplicationEdgeIpsOutput) ToSpectrumApplicationEdgeIpsPtrOutputWithContext(ctx context.Context) SpectrumApplicationEdgeIpsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpectrumApplicationEdgeIps) *SpectrumApplicationEdgeIps {
+		return &v
+	}).(SpectrumApplicationEdgeIpsPtrOutput)
+}
+
+// The IP versions supported for inbound connections on Spectrum anycast IPs. Required when `type` is not `static`. Available values: `all`, `ipv4`, `ipv6`.
+func (o SpectrumApplicationEdgeIpsOutput) Connectivity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpectrumApplicationEdgeIps) *string { return v.Connectivity }).(pulumi.StringPtrOutput)
+}
+
+// The collection of customer owned IPs to broadcast via anycast for this hostname and application. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+func (o SpectrumApplicationEdgeIpsOutput) Ips() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpectrumApplicationEdgeIps) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+// The type of edge IP configuration specified. Available values: `dynamic`, `static`.
+func (o SpectrumApplicationEdgeIpsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SpectrumApplicationEdgeIps) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SpectrumApplicationEdgeIpsPtrOutput struct{ *pulumi.OutputState }
+
+func (SpectrumApplicationEdgeIpsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpectrumApplicationEdgeIps)(nil)).Elem()
+}
+
+func (o SpectrumApplicationEdgeIpsPtrOutput) ToSpectrumApplicationEdgeIpsPtrOutput() SpectrumApplicationEdgeIpsPtrOutput {
+	return o
+}
+
+func (o SpectrumApplicationEdgeIpsPtrOutput) ToSpectrumApplicationEdgeIpsPtrOutputWithContext(ctx context.Context) SpectrumApplicationEdgeIpsPtrOutput {
+	return o
+}
+
+func (o SpectrumApplicationEdgeIpsPtrOutput) Elem() SpectrumApplicationEdgeIpsOutput {
+	return o.ApplyT(func(v *SpectrumApplicationEdgeIps) SpectrumApplicationEdgeIps {
+		if v != nil {
+			return *v
+		}
+		var ret SpectrumApplicationEdgeIps
+		return ret
+	}).(SpectrumApplicationEdgeIpsOutput)
+}
+
+// The IP versions supported for inbound connections on Spectrum anycast IPs. Required when `type` is not `static`. Available values: `all`, `ipv4`, `ipv6`.
+func (o SpectrumApplicationEdgeIpsPtrOutput) Connectivity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpectrumApplicationEdgeIps) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Connectivity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The collection of customer owned IPs to broadcast via anycast for this hostname and application. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+func (o SpectrumApplicationEdgeIpsPtrOutput) Ips() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpectrumApplicationEdgeIps) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ips
+	}).(pulumi.StringArrayOutput)
+}
+
+// The type of edge IP configuration specified. Available values: `dynamic`, `static`.
+func (o SpectrumApplicationEdgeIpsPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpectrumApplicationEdgeIps) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type SpectrumApplicationOriginDns struct {
 	// Fully qualified domain name of the origin.
 	Name string `pulumi:"name"`
@@ -25923,6 +26233,143 @@ func (o TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput) LogBlocks() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
+type TeamsAccountPayloadLog struct {
+	// Public key used to encrypt matched payloads.
+	PublicKey string `pulumi:"publicKey"`
+}
+
+// TeamsAccountPayloadLogInput is an input type that accepts TeamsAccountPayloadLogArgs and TeamsAccountPayloadLogOutput values.
+// You can construct a concrete instance of `TeamsAccountPayloadLogInput` via:
+//
+//	TeamsAccountPayloadLogArgs{...}
+type TeamsAccountPayloadLogInput interface {
+	pulumi.Input
+
+	ToTeamsAccountPayloadLogOutput() TeamsAccountPayloadLogOutput
+	ToTeamsAccountPayloadLogOutputWithContext(context.Context) TeamsAccountPayloadLogOutput
+}
+
+type TeamsAccountPayloadLogArgs struct {
+	// Public key used to encrypt matched payloads.
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+}
+
+func (TeamsAccountPayloadLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountPayloadLog)(nil)).Elem()
+}
+
+func (i TeamsAccountPayloadLogArgs) ToTeamsAccountPayloadLogOutput() TeamsAccountPayloadLogOutput {
+	return i.ToTeamsAccountPayloadLogOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountPayloadLogArgs) ToTeamsAccountPayloadLogOutputWithContext(ctx context.Context) TeamsAccountPayloadLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountPayloadLogOutput)
+}
+
+func (i TeamsAccountPayloadLogArgs) ToTeamsAccountPayloadLogPtrOutput() TeamsAccountPayloadLogPtrOutput {
+	return i.ToTeamsAccountPayloadLogPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountPayloadLogArgs) ToTeamsAccountPayloadLogPtrOutputWithContext(ctx context.Context) TeamsAccountPayloadLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountPayloadLogOutput).ToTeamsAccountPayloadLogPtrOutputWithContext(ctx)
+}
+
+// TeamsAccountPayloadLogPtrInput is an input type that accepts TeamsAccountPayloadLogArgs, TeamsAccountPayloadLogPtr and TeamsAccountPayloadLogPtrOutput values.
+// You can construct a concrete instance of `TeamsAccountPayloadLogPtrInput` via:
+//
+//	        TeamsAccountPayloadLogArgs{...}
+//
+//	or:
+//
+//	        nil
+type TeamsAccountPayloadLogPtrInput interface {
+	pulumi.Input
+
+	ToTeamsAccountPayloadLogPtrOutput() TeamsAccountPayloadLogPtrOutput
+	ToTeamsAccountPayloadLogPtrOutputWithContext(context.Context) TeamsAccountPayloadLogPtrOutput
+}
+
+type teamsAccountPayloadLogPtrType TeamsAccountPayloadLogArgs
+
+func TeamsAccountPayloadLogPtr(v *TeamsAccountPayloadLogArgs) TeamsAccountPayloadLogPtrInput {
+	return (*teamsAccountPayloadLogPtrType)(v)
+}
+
+func (*teamsAccountPayloadLogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountPayloadLog)(nil)).Elem()
+}
+
+func (i *teamsAccountPayloadLogPtrType) ToTeamsAccountPayloadLogPtrOutput() TeamsAccountPayloadLogPtrOutput {
+	return i.ToTeamsAccountPayloadLogPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsAccountPayloadLogPtrType) ToTeamsAccountPayloadLogPtrOutputWithContext(ctx context.Context) TeamsAccountPayloadLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountPayloadLogPtrOutput)
+}
+
+type TeamsAccountPayloadLogOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountPayloadLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountPayloadLog)(nil)).Elem()
+}
+
+func (o TeamsAccountPayloadLogOutput) ToTeamsAccountPayloadLogOutput() TeamsAccountPayloadLogOutput {
+	return o
+}
+
+func (o TeamsAccountPayloadLogOutput) ToTeamsAccountPayloadLogOutputWithContext(ctx context.Context) TeamsAccountPayloadLogOutput {
+	return o
+}
+
+func (o TeamsAccountPayloadLogOutput) ToTeamsAccountPayloadLogPtrOutput() TeamsAccountPayloadLogPtrOutput {
+	return o.ToTeamsAccountPayloadLogPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsAccountPayloadLogOutput) ToTeamsAccountPayloadLogPtrOutputWithContext(ctx context.Context) TeamsAccountPayloadLogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsAccountPayloadLog) *TeamsAccountPayloadLog {
+		return &v
+	}).(TeamsAccountPayloadLogPtrOutput)
+}
+
+// Public key used to encrypt matched payloads.
+func (o TeamsAccountPayloadLogOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v TeamsAccountPayloadLog) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+type TeamsAccountPayloadLogPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountPayloadLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountPayloadLog)(nil)).Elem()
+}
+
+func (o TeamsAccountPayloadLogPtrOutput) ToTeamsAccountPayloadLogPtrOutput() TeamsAccountPayloadLogPtrOutput {
+	return o
+}
+
+func (o TeamsAccountPayloadLogPtrOutput) ToTeamsAccountPayloadLogPtrOutputWithContext(ctx context.Context) TeamsAccountPayloadLogPtrOutput {
+	return o
+}
+
+func (o TeamsAccountPayloadLogPtrOutput) Elem() TeamsAccountPayloadLogOutput {
+	return o.ApplyT(func(v *TeamsAccountPayloadLog) TeamsAccountPayloadLog {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsAccountPayloadLog
+		return ret
+	}).(TeamsAccountPayloadLogOutput)
+}
+
+// Public key used to encrypt matched payloads.
+func (o TeamsAccountPayloadLogPtrOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountPayloadLog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PublicKey
+	}).(pulumi.StringPtrOutput)
+}
+
 type TeamsAccountProxy struct {
 	// Whether gateway proxy is enabled on gateway devices for TCP traffic.
 	Tcp bool `pulumi:"tcp"`
@@ -26206,6 +26653,10 @@ type TeamsRuleRuleSettings struct {
 	OverrideHost *string `pulumi:"overrideHost"`
 	// The IPs to override matching DNS queries with.
 	OverrideIps []string `pulumi:"overrideIps"`
+	// Configure DLP Payload Logging settings for this rule.
+	PayloadLog *TeamsRuleRuleSettingsPayloadLog `pulumi:"payloadLog"`
+	// Configure untrusted certificate settings for this rule.
+	UntrustedCert *TeamsRuleRuleSettingsUntrustedCert `pulumi:"untrustedCert"`
 }
 
 // TeamsRuleRuleSettingsInput is an input type that accepts TeamsRuleRuleSettingsArgs and TeamsRuleRuleSettingsOutput values.
@@ -26240,6 +26691,10 @@ type TeamsRuleRuleSettingsArgs struct {
 	OverrideHost pulumi.StringPtrInput `pulumi:"overrideHost"`
 	// The IPs to override matching DNS queries with.
 	OverrideIps pulumi.StringArrayInput `pulumi:"overrideIps"`
+	// Configure DLP Payload Logging settings for this rule.
+	PayloadLog TeamsRuleRuleSettingsPayloadLogPtrInput `pulumi:"payloadLog"`
+	// Configure untrusted certificate settings for this rule.
+	UntrustedCert TeamsRuleRuleSettingsUntrustedCertPtrInput `pulumi:"untrustedCert"`
 }
 
 func (TeamsRuleRuleSettingsArgs) ElementType() reflect.Type {
@@ -26369,6 +26824,16 @@ func (o TeamsRuleRuleSettingsOutput) OverrideIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettings) []string { return v.OverrideIps }).(pulumi.StringArrayOutput)
 }
 
+// Configure DLP Payload Logging settings for this rule.
+func (o TeamsRuleRuleSettingsOutput) PayloadLog() TeamsRuleRuleSettingsPayloadLogPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsPayloadLog { return v.PayloadLog }).(TeamsRuleRuleSettingsPayloadLogPtrOutput)
+}
+
+// Configure untrusted certificate settings for this rule.
+func (o TeamsRuleRuleSettingsOutput) UntrustedCert() TeamsRuleRuleSettingsUntrustedCertPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsUntrustedCert { return v.UntrustedCert }).(TeamsRuleRuleSettingsUntrustedCertPtrOutput)
+}
+
 type TeamsRuleRuleSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (TeamsRuleRuleSettingsPtrOutput) ElementType() reflect.Type {
@@ -26491,6 +26956,26 @@ func (o TeamsRuleRuleSettingsPtrOutput) OverrideIps() pulumi.StringArrayOutput {
 		}
 		return v.OverrideIps
 	}).(pulumi.StringArrayOutput)
+}
+
+// Configure DLP Payload Logging settings for this rule.
+func (o TeamsRuleRuleSettingsPtrOutput) PayloadLog() TeamsRuleRuleSettingsPayloadLogPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) *TeamsRuleRuleSettingsPayloadLog {
+		if v == nil {
+			return nil
+		}
+		return v.PayloadLog
+	}).(TeamsRuleRuleSettingsPayloadLogPtrOutput)
+}
+
+// Configure untrusted certificate settings for this rule.
+func (o TeamsRuleRuleSettingsPtrOutput) UntrustedCert() TeamsRuleRuleSettingsUntrustedCertPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) *TeamsRuleRuleSettingsUntrustedCert {
+		if v == nil {
+			return nil
+		}
+		return v.UntrustedCert
+	}).(TeamsRuleRuleSettingsUntrustedCertPtrOutput)
 }
 
 type TeamsRuleRuleSettingsBisoAdminControls struct {
@@ -27143,6 +27628,280 @@ func (o TeamsRuleRuleSettingsL4overridePtrOutput) Port() pulumi.IntPtrOutput {
 		}
 		return &v.Port
 	}).(pulumi.IntPtrOutput)
+}
+
+type TeamsRuleRuleSettingsPayloadLog struct {
+	// Indicator of rule enablement.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// TeamsRuleRuleSettingsPayloadLogInput is an input type that accepts TeamsRuleRuleSettingsPayloadLogArgs and TeamsRuleRuleSettingsPayloadLogOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsPayloadLogInput` via:
+//
+//	TeamsRuleRuleSettingsPayloadLogArgs{...}
+type TeamsRuleRuleSettingsPayloadLogInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsPayloadLogOutput() TeamsRuleRuleSettingsPayloadLogOutput
+	ToTeamsRuleRuleSettingsPayloadLogOutputWithContext(context.Context) TeamsRuleRuleSettingsPayloadLogOutput
+}
+
+type TeamsRuleRuleSettingsPayloadLogArgs struct {
+	// Indicator of rule enablement.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (TeamsRuleRuleSettingsPayloadLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsPayloadLog)(nil)).Elem()
+}
+
+func (i TeamsRuleRuleSettingsPayloadLogArgs) ToTeamsRuleRuleSettingsPayloadLogOutput() TeamsRuleRuleSettingsPayloadLogOutput {
+	return i.ToTeamsRuleRuleSettingsPayloadLogOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsPayloadLogArgs) ToTeamsRuleRuleSettingsPayloadLogOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsPayloadLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsPayloadLogOutput)
+}
+
+func (i TeamsRuleRuleSettingsPayloadLogArgs) ToTeamsRuleRuleSettingsPayloadLogPtrOutput() TeamsRuleRuleSettingsPayloadLogPtrOutput {
+	return i.ToTeamsRuleRuleSettingsPayloadLogPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsPayloadLogArgs) ToTeamsRuleRuleSettingsPayloadLogPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsPayloadLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsPayloadLogOutput).ToTeamsRuleRuleSettingsPayloadLogPtrOutputWithContext(ctx)
+}
+
+// TeamsRuleRuleSettingsPayloadLogPtrInput is an input type that accepts TeamsRuleRuleSettingsPayloadLogArgs, TeamsRuleRuleSettingsPayloadLogPtr and TeamsRuleRuleSettingsPayloadLogPtrOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsPayloadLogPtrInput` via:
+//
+//	        TeamsRuleRuleSettingsPayloadLogArgs{...}
+//
+//	or:
+//
+//	        nil
+type TeamsRuleRuleSettingsPayloadLogPtrInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsPayloadLogPtrOutput() TeamsRuleRuleSettingsPayloadLogPtrOutput
+	ToTeamsRuleRuleSettingsPayloadLogPtrOutputWithContext(context.Context) TeamsRuleRuleSettingsPayloadLogPtrOutput
+}
+
+type teamsRuleRuleSettingsPayloadLogPtrType TeamsRuleRuleSettingsPayloadLogArgs
+
+func TeamsRuleRuleSettingsPayloadLogPtr(v *TeamsRuleRuleSettingsPayloadLogArgs) TeamsRuleRuleSettingsPayloadLogPtrInput {
+	return (*teamsRuleRuleSettingsPayloadLogPtrType)(v)
+}
+
+func (*teamsRuleRuleSettingsPayloadLogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsRuleRuleSettingsPayloadLog)(nil)).Elem()
+}
+
+func (i *teamsRuleRuleSettingsPayloadLogPtrType) ToTeamsRuleRuleSettingsPayloadLogPtrOutput() TeamsRuleRuleSettingsPayloadLogPtrOutput {
+	return i.ToTeamsRuleRuleSettingsPayloadLogPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsRuleRuleSettingsPayloadLogPtrType) ToTeamsRuleRuleSettingsPayloadLogPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsPayloadLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsPayloadLogPtrOutput)
+}
+
+type TeamsRuleRuleSettingsPayloadLogOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsPayloadLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsPayloadLog)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsPayloadLogOutput) ToTeamsRuleRuleSettingsPayloadLogOutput() TeamsRuleRuleSettingsPayloadLogOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsPayloadLogOutput) ToTeamsRuleRuleSettingsPayloadLogOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsPayloadLogOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsPayloadLogOutput) ToTeamsRuleRuleSettingsPayloadLogPtrOutput() TeamsRuleRuleSettingsPayloadLogPtrOutput {
+	return o.ToTeamsRuleRuleSettingsPayloadLogPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsRuleRuleSettingsPayloadLogOutput) ToTeamsRuleRuleSettingsPayloadLogPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsPayloadLogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsRuleRuleSettingsPayloadLog) *TeamsRuleRuleSettingsPayloadLog {
+		return &v
+	}).(TeamsRuleRuleSettingsPayloadLogPtrOutput)
+}
+
+// Indicator of rule enablement.
+func (o TeamsRuleRuleSettingsPayloadLogOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsPayloadLog) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type TeamsRuleRuleSettingsPayloadLogPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsPayloadLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsRuleRuleSettingsPayloadLog)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsPayloadLogPtrOutput) ToTeamsRuleRuleSettingsPayloadLogPtrOutput() TeamsRuleRuleSettingsPayloadLogPtrOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsPayloadLogPtrOutput) ToTeamsRuleRuleSettingsPayloadLogPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsPayloadLogPtrOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsPayloadLogPtrOutput) Elem() TeamsRuleRuleSettingsPayloadLogOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsPayloadLog) TeamsRuleRuleSettingsPayloadLog {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsRuleRuleSettingsPayloadLog
+		return ret
+	}).(TeamsRuleRuleSettingsPayloadLogOutput)
+}
+
+// Indicator of rule enablement.
+func (o TeamsRuleRuleSettingsPayloadLogPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsPayloadLog) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TeamsRuleRuleSettingsUntrustedCert struct {
+	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
+	Action *string `pulumi:"action"`
+}
+
+// TeamsRuleRuleSettingsUntrustedCertInput is an input type that accepts TeamsRuleRuleSettingsUntrustedCertArgs and TeamsRuleRuleSettingsUntrustedCertOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsUntrustedCertInput` via:
+//
+//	TeamsRuleRuleSettingsUntrustedCertArgs{...}
+type TeamsRuleRuleSettingsUntrustedCertInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsUntrustedCertOutput() TeamsRuleRuleSettingsUntrustedCertOutput
+	ToTeamsRuleRuleSettingsUntrustedCertOutputWithContext(context.Context) TeamsRuleRuleSettingsUntrustedCertOutput
+}
+
+type TeamsRuleRuleSettingsUntrustedCertArgs struct {
+	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
+	Action pulumi.StringPtrInput `pulumi:"action"`
+}
+
+func (TeamsRuleRuleSettingsUntrustedCertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsUntrustedCert)(nil)).Elem()
+}
+
+func (i TeamsRuleRuleSettingsUntrustedCertArgs) ToTeamsRuleRuleSettingsUntrustedCertOutput() TeamsRuleRuleSettingsUntrustedCertOutput {
+	return i.ToTeamsRuleRuleSettingsUntrustedCertOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsUntrustedCertArgs) ToTeamsRuleRuleSettingsUntrustedCertOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsUntrustedCertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsUntrustedCertOutput)
+}
+
+func (i TeamsRuleRuleSettingsUntrustedCertArgs) ToTeamsRuleRuleSettingsUntrustedCertPtrOutput() TeamsRuleRuleSettingsUntrustedCertPtrOutput {
+	return i.ToTeamsRuleRuleSettingsUntrustedCertPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsUntrustedCertArgs) ToTeamsRuleRuleSettingsUntrustedCertPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsUntrustedCertPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsUntrustedCertOutput).ToTeamsRuleRuleSettingsUntrustedCertPtrOutputWithContext(ctx)
+}
+
+// TeamsRuleRuleSettingsUntrustedCertPtrInput is an input type that accepts TeamsRuleRuleSettingsUntrustedCertArgs, TeamsRuleRuleSettingsUntrustedCertPtr and TeamsRuleRuleSettingsUntrustedCertPtrOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsUntrustedCertPtrInput` via:
+//
+//	        TeamsRuleRuleSettingsUntrustedCertArgs{...}
+//
+//	or:
+//
+//	        nil
+type TeamsRuleRuleSettingsUntrustedCertPtrInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsUntrustedCertPtrOutput() TeamsRuleRuleSettingsUntrustedCertPtrOutput
+	ToTeamsRuleRuleSettingsUntrustedCertPtrOutputWithContext(context.Context) TeamsRuleRuleSettingsUntrustedCertPtrOutput
+}
+
+type teamsRuleRuleSettingsUntrustedCertPtrType TeamsRuleRuleSettingsUntrustedCertArgs
+
+func TeamsRuleRuleSettingsUntrustedCertPtr(v *TeamsRuleRuleSettingsUntrustedCertArgs) TeamsRuleRuleSettingsUntrustedCertPtrInput {
+	return (*teamsRuleRuleSettingsUntrustedCertPtrType)(v)
+}
+
+func (*teamsRuleRuleSettingsUntrustedCertPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsRuleRuleSettingsUntrustedCert)(nil)).Elem()
+}
+
+func (i *teamsRuleRuleSettingsUntrustedCertPtrType) ToTeamsRuleRuleSettingsUntrustedCertPtrOutput() TeamsRuleRuleSettingsUntrustedCertPtrOutput {
+	return i.ToTeamsRuleRuleSettingsUntrustedCertPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsRuleRuleSettingsUntrustedCertPtrType) ToTeamsRuleRuleSettingsUntrustedCertPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsUntrustedCertPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsUntrustedCertPtrOutput)
+}
+
+type TeamsRuleRuleSettingsUntrustedCertOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsUntrustedCertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsUntrustedCert)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsUntrustedCertOutput) ToTeamsRuleRuleSettingsUntrustedCertOutput() TeamsRuleRuleSettingsUntrustedCertOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsUntrustedCertOutput) ToTeamsRuleRuleSettingsUntrustedCertOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsUntrustedCertOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsUntrustedCertOutput) ToTeamsRuleRuleSettingsUntrustedCertPtrOutput() TeamsRuleRuleSettingsUntrustedCertPtrOutput {
+	return o.ToTeamsRuleRuleSettingsUntrustedCertPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsRuleRuleSettingsUntrustedCertOutput) ToTeamsRuleRuleSettingsUntrustedCertPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsUntrustedCertPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsRuleRuleSettingsUntrustedCert) *TeamsRuleRuleSettingsUntrustedCert {
+		return &v
+	}).(TeamsRuleRuleSettingsUntrustedCertPtrOutput)
+}
+
+// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
+func (o TeamsRuleRuleSettingsUntrustedCertOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsUntrustedCert) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+type TeamsRuleRuleSettingsUntrustedCertPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsUntrustedCertPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsRuleRuleSettingsUntrustedCert)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsUntrustedCertPtrOutput) ToTeamsRuleRuleSettingsUntrustedCertPtrOutput() TeamsRuleRuleSettingsUntrustedCertPtrOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsUntrustedCertPtrOutput) ToTeamsRuleRuleSettingsUntrustedCertPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsUntrustedCertPtrOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsUntrustedCertPtrOutput) Elem() TeamsRuleRuleSettingsUntrustedCertOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsUntrustedCert) TeamsRuleRuleSettingsUntrustedCert {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsRuleRuleSettingsUntrustedCert
+		return ret
+	}).(TeamsRuleRuleSettingsUntrustedCertOutput)
+}
+
+// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
+func (o TeamsRuleRuleSettingsUntrustedCertPtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsUntrustedCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Action
+	}).(pulumi.StringPtrOutput)
 }
 
 type TunnelConfigConfig struct {
@@ -38612,993 +39371,6 @@ func (o GetRulesetsRulesetRuleRatelimitPtrOutput) ScoreResponseHeaderName() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-type GetWafGroupsFilter struct {
-	// Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-	Mode *string `pulumi:"mode"`
-	// A regular expression matching the name of the WAF Rule Groups to lookup.
-	Name *string `pulumi:"name"`
-}
-
-// GetWafGroupsFilterInput is an input type that accepts GetWafGroupsFilterArgs and GetWafGroupsFilterOutput values.
-// You can construct a concrete instance of `GetWafGroupsFilterInput` via:
-//
-//	GetWafGroupsFilterArgs{...}
-type GetWafGroupsFilterInput interface {
-	pulumi.Input
-
-	ToGetWafGroupsFilterOutput() GetWafGroupsFilterOutput
-	ToGetWafGroupsFilterOutputWithContext(context.Context) GetWafGroupsFilterOutput
-}
-
-type GetWafGroupsFilterArgs struct {
-	// Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// A regular expression matching the name of the WAF Rule Groups to lookup.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-}
-
-func (GetWafGroupsFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWafGroupsFilter)(nil)).Elem()
-}
-
-func (i GetWafGroupsFilterArgs) ToGetWafGroupsFilterOutput() GetWafGroupsFilterOutput {
-	return i.ToGetWafGroupsFilterOutputWithContext(context.Background())
-}
-
-func (i GetWafGroupsFilterArgs) ToGetWafGroupsFilterOutputWithContext(ctx context.Context) GetWafGroupsFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWafGroupsFilterOutput)
-}
-
-func (i GetWafGroupsFilterArgs) ToGetWafGroupsFilterPtrOutput() GetWafGroupsFilterPtrOutput {
-	return i.ToGetWafGroupsFilterPtrOutputWithContext(context.Background())
-}
-
-func (i GetWafGroupsFilterArgs) ToGetWafGroupsFilterPtrOutputWithContext(ctx context.Context) GetWafGroupsFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWafGroupsFilterOutput).ToGetWafGroupsFilterPtrOutputWithContext(ctx)
-}
-
-// GetWafGroupsFilterPtrInput is an input type that accepts GetWafGroupsFilterArgs, GetWafGroupsFilterPtr and GetWafGroupsFilterPtrOutput values.
-// You can construct a concrete instance of `GetWafGroupsFilterPtrInput` via:
-//
-//	        GetWafGroupsFilterArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetWafGroupsFilterPtrInput interface {
-	pulumi.Input
-
-	ToGetWafGroupsFilterPtrOutput() GetWafGroupsFilterPtrOutput
-	ToGetWafGroupsFilterPtrOutputWithContext(context.Context) GetWafGroupsFilterPtrOutput
-}
-
-type getWafGroupsFilterPtrType GetWafGroupsFilterArgs
-
-func GetWafGroupsFilterPtr(v *GetWafGroupsFilterArgs) GetWafGroupsFilterPtrInput {
-	return (*getWafGroupsFilterPtrType)(v)
-}
-
-func (*getWafGroupsFilterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetWafGroupsFilter)(nil)).Elem()
-}
-
-func (i *getWafGroupsFilterPtrType) ToGetWafGroupsFilterPtrOutput() GetWafGroupsFilterPtrOutput {
-	return i.ToGetWafGroupsFilterPtrOutputWithContext(context.Background())
-}
-
-func (i *getWafGroupsFilterPtrType) ToGetWafGroupsFilterPtrOutputWithContext(ctx context.Context) GetWafGroupsFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWafGroupsFilterPtrOutput)
-}
-
-type GetWafGroupsFilterOutput struct{ *pulumi.OutputState }
-
-func (GetWafGroupsFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWafGroupsFilter)(nil)).Elem()
-}
-
-func (o GetWafGroupsFilterOutput) ToGetWafGroupsFilterOutput() GetWafGroupsFilterOutput {
-	return o
-}
-
-func (o GetWafGroupsFilterOutput) ToGetWafGroupsFilterOutputWithContext(ctx context.Context) GetWafGroupsFilterOutput {
-	return o
-}
-
-func (o GetWafGroupsFilterOutput) ToGetWafGroupsFilterPtrOutput() GetWafGroupsFilterPtrOutput {
-	return o.ToGetWafGroupsFilterPtrOutputWithContext(context.Background())
-}
-
-func (o GetWafGroupsFilterOutput) ToGetWafGroupsFilterPtrOutputWithContext(ctx context.Context) GetWafGroupsFilterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWafGroupsFilter) *GetWafGroupsFilter {
-		return &v
-	}).(GetWafGroupsFilterPtrOutput)
-}
-
-// Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-func (o GetWafGroupsFilterOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafGroupsFilter) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-// A regular expression matching the name of the WAF Rule Groups to lookup.
-func (o GetWafGroupsFilterOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafGroupsFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-type GetWafGroupsFilterPtrOutput struct{ *pulumi.OutputState }
-
-func (GetWafGroupsFilterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetWafGroupsFilter)(nil)).Elem()
-}
-
-func (o GetWafGroupsFilterPtrOutput) ToGetWafGroupsFilterPtrOutput() GetWafGroupsFilterPtrOutput {
-	return o
-}
-
-func (o GetWafGroupsFilterPtrOutput) ToGetWafGroupsFilterPtrOutputWithContext(ctx context.Context) GetWafGroupsFilterPtrOutput {
-	return o
-}
-
-func (o GetWafGroupsFilterPtrOutput) Elem() GetWafGroupsFilterOutput {
-	return o.ApplyT(func(v *GetWafGroupsFilter) GetWafGroupsFilter {
-		if v != nil {
-			return *v
-		}
-		var ret GetWafGroupsFilter
-		return ret
-	}).(GetWafGroupsFilterOutput)
-}
-
-// Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-func (o GetWafGroupsFilterPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetWafGroupsFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Mode
-	}).(pulumi.StringPtrOutput)
-}
-
-// A regular expression matching the name of the WAF Rule Groups to lookup.
-func (o GetWafGroupsFilterPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetWafGroupsFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetWafGroupsGroup struct {
-	// The WAF Rule Group description
-	Description *string `pulumi:"description"`
-	// The WAF Rule Group ID
-	Id *string `pulumi:"id"`
-	// Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-	Mode *string `pulumi:"mode"`
-	// The number of modified rules in the WAF Rule Group
-	ModifiedRulesCount *int `pulumi:"modifiedRulesCount"`
-	// A regular expression matching the name of the WAF Rule Groups to lookup.
-	Name *string `pulumi:"name"`
-	// The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
-	PackageId *string `pulumi:"packageId"`
-	// The number of rules in the WAF Rule Group
-	RulesCount *int `pulumi:"rulesCount"`
-}
-
-// GetWafGroupsGroupInput is an input type that accepts GetWafGroupsGroupArgs and GetWafGroupsGroupOutput values.
-// You can construct a concrete instance of `GetWafGroupsGroupInput` via:
-//
-//	GetWafGroupsGroupArgs{...}
-type GetWafGroupsGroupInput interface {
-	pulumi.Input
-
-	ToGetWafGroupsGroupOutput() GetWafGroupsGroupOutput
-	ToGetWafGroupsGroupOutputWithContext(context.Context) GetWafGroupsGroupOutput
-}
-
-type GetWafGroupsGroupArgs struct {
-	// The WAF Rule Group description
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The WAF Rule Group ID
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// The number of modified rules in the WAF Rule Group
-	ModifiedRulesCount pulumi.IntPtrInput `pulumi:"modifiedRulesCount"`
-	// A regular expression matching the name of the WAF Rule Groups to lookup.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
-	PackageId pulumi.StringPtrInput `pulumi:"packageId"`
-	// The number of rules in the WAF Rule Group
-	RulesCount pulumi.IntPtrInput `pulumi:"rulesCount"`
-}
-
-func (GetWafGroupsGroupArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWafGroupsGroup)(nil)).Elem()
-}
-
-func (i GetWafGroupsGroupArgs) ToGetWafGroupsGroupOutput() GetWafGroupsGroupOutput {
-	return i.ToGetWafGroupsGroupOutputWithContext(context.Background())
-}
-
-func (i GetWafGroupsGroupArgs) ToGetWafGroupsGroupOutputWithContext(ctx context.Context) GetWafGroupsGroupOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWafGroupsGroupOutput)
-}
-
-// GetWafGroupsGroupArrayInput is an input type that accepts GetWafGroupsGroupArray and GetWafGroupsGroupArrayOutput values.
-// You can construct a concrete instance of `GetWafGroupsGroupArrayInput` via:
-//
-//	GetWafGroupsGroupArray{ GetWafGroupsGroupArgs{...} }
-type GetWafGroupsGroupArrayInput interface {
-	pulumi.Input
-
-	ToGetWafGroupsGroupArrayOutput() GetWafGroupsGroupArrayOutput
-	ToGetWafGroupsGroupArrayOutputWithContext(context.Context) GetWafGroupsGroupArrayOutput
-}
-
-type GetWafGroupsGroupArray []GetWafGroupsGroupInput
-
-func (GetWafGroupsGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWafGroupsGroup)(nil)).Elem()
-}
-
-func (i GetWafGroupsGroupArray) ToGetWafGroupsGroupArrayOutput() GetWafGroupsGroupArrayOutput {
-	return i.ToGetWafGroupsGroupArrayOutputWithContext(context.Background())
-}
-
-func (i GetWafGroupsGroupArray) ToGetWafGroupsGroupArrayOutputWithContext(ctx context.Context) GetWafGroupsGroupArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWafGroupsGroupArrayOutput)
-}
-
-type GetWafGroupsGroupOutput struct{ *pulumi.OutputState }
-
-func (GetWafGroupsGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWafGroupsGroup)(nil)).Elem()
-}
-
-func (o GetWafGroupsGroupOutput) ToGetWafGroupsGroupOutput() GetWafGroupsGroupOutput {
-	return o
-}
-
-func (o GetWafGroupsGroupOutput) ToGetWafGroupsGroupOutputWithContext(ctx context.Context) GetWafGroupsGroupOutput {
-	return o
-}
-
-// The WAF Rule Group description
-func (o GetWafGroupsGroupOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafGroupsGroup) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The WAF Rule Group ID
-func (o GetWafGroupsGroupOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafGroupsGroup) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-func (o GetWafGroupsGroupOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafGroupsGroup) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-// The number of modified rules in the WAF Rule Group
-func (o GetWafGroupsGroupOutput) ModifiedRulesCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetWafGroupsGroup) *int { return v.ModifiedRulesCount }).(pulumi.IntPtrOutput)
-}
-
-// A regular expression matching the name of the WAF Rule Groups to lookup.
-func (o GetWafGroupsGroupOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafGroupsGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
-func (o GetWafGroupsGroupOutput) PackageId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafGroupsGroup) *string { return v.PackageId }).(pulumi.StringPtrOutput)
-}
-
-// The number of rules in the WAF Rule Group
-func (o GetWafGroupsGroupOutput) RulesCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetWafGroupsGroup) *int { return v.RulesCount }).(pulumi.IntPtrOutput)
-}
-
-type GetWafGroupsGroupArrayOutput struct{ *pulumi.OutputState }
-
-func (GetWafGroupsGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWafGroupsGroup)(nil)).Elem()
-}
-
-func (o GetWafGroupsGroupArrayOutput) ToGetWafGroupsGroupArrayOutput() GetWafGroupsGroupArrayOutput {
-	return o
-}
-
-func (o GetWafGroupsGroupArrayOutput) ToGetWafGroupsGroupArrayOutputWithContext(ctx context.Context) GetWafGroupsGroupArrayOutput {
-	return o
-}
-
-func (o GetWafGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetWafGroupsGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWafGroupsGroup {
-		return vs[0].([]GetWafGroupsGroup)[vs[1].(int)]
-	}).(GetWafGroupsGroupOutput)
-}
-
-type GetWafPackagesFilter struct {
-	// Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-	ActionMode *string `pulumi:"actionMode"`
-	// Detection mode of the WAF Rule Packages to lookup.
-	DetectionMode *string `pulumi:"detectionMode"`
-	// A regular expression matching the name of the WAF Rule Packages to lookup.
-	Name *string `pulumi:"name"`
-	// Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-	Sensitivity *string `pulumi:"sensitivity"`
-}
-
-// GetWafPackagesFilterInput is an input type that accepts GetWafPackagesFilterArgs and GetWafPackagesFilterOutput values.
-// You can construct a concrete instance of `GetWafPackagesFilterInput` via:
-//
-//	GetWafPackagesFilterArgs{...}
-type GetWafPackagesFilterInput interface {
-	pulumi.Input
-
-	ToGetWafPackagesFilterOutput() GetWafPackagesFilterOutput
-	ToGetWafPackagesFilterOutputWithContext(context.Context) GetWafPackagesFilterOutput
-}
-
-type GetWafPackagesFilterArgs struct {
-	// Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-	ActionMode pulumi.StringPtrInput `pulumi:"actionMode"`
-	// Detection mode of the WAF Rule Packages to lookup.
-	DetectionMode pulumi.StringPtrInput `pulumi:"detectionMode"`
-	// A regular expression matching the name of the WAF Rule Packages to lookup.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-	Sensitivity pulumi.StringPtrInput `pulumi:"sensitivity"`
-}
-
-func (GetWafPackagesFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWafPackagesFilter)(nil)).Elem()
-}
-
-func (i GetWafPackagesFilterArgs) ToGetWafPackagesFilterOutput() GetWafPackagesFilterOutput {
-	return i.ToGetWafPackagesFilterOutputWithContext(context.Background())
-}
-
-func (i GetWafPackagesFilterArgs) ToGetWafPackagesFilterOutputWithContext(ctx context.Context) GetWafPackagesFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWafPackagesFilterOutput)
-}
-
-func (i GetWafPackagesFilterArgs) ToGetWafPackagesFilterPtrOutput() GetWafPackagesFilterPtrOutput {
-	return i.ToGetWafPackagesFilterPtrOutputWithContext(context.Background())
-}
-
-func (i GetWafPackagesFilterArgs) ToGetWafPackagesFilterPtrOutputWithContext(ctx context.Context) GetWafPackagesFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWafPackagesFilterOutput).ToGetWafPackagesFilterPtrOutputWithContext(ctx)
-}
-
-// GetWafPackagesFilterPtrInput is an input type that accepts GetWafPackagesFilterArgs, GetWafPackagesFilterPtr and GetWafPackagesFilterPtrOutput values.
-// You can construct a concrete instance of `GetWafPackagesFilterPtrInput` via:
-//
-//	        GetWafPackagesFilterArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetWafPackagesFilterPtrInput interface {
-	pulumi.Input
-
-	ToGetWafPackagesFilterPtrOutput() GetWafPackagesFilterPtrOutput
-	ToGetWafPackagesFilterPtrOutputWithContext(context.Context) GetWafPackagesFilterPtrOutput
-}
-
-type getWafPackagesFilterPtrType GetWafPackagesFilterArgs
-
-func GetWafPackagesFilterPtr(v *GetWafPackagesFilterArgs) GetWafPackagesFilterPtrInput {
-	return (*getWafPackagesFilterPtrType)(v)
-}
-
-func (*getWafPackagesFilterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetWafPackagesFilter)(nil)).Elem()
-}
-
-func (i *getWafPackagesFilterPtrType) ToGetWafPackagesFilterPtrOutput() GetWafPackagesFilterPtrOutput {
-	return i.ToGetWafPackagesFilterPtrOutputWithContext(context.Background())
-}
-
-func (i *getWafPackagesFilterPtrType) ToGetWafPackagesFilterPtrOutputWithContext(ctx context.Context) GetWafPackagesFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWafPackagesFilterPtrOutput)
-}
-
-type GetWafPackagesFilterOutput struct{ *pulumi.OutputState }
-
-func (GetWafPackagesFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWafPackagesFilter)(nil)).Elem()
-}
-
-func (o GetWafPackagesFilterOutput) ToGetWafPackagesFilterOutput() GetWafPackagesFilterOutput {
-	return o
-}
-
-func (o GetWafPackagesFilterOutput) ToGetWafPackagesFilterOutputWithContext(ctx context.Context) GetWafPackagesFilterOutput {
-	return o
-}
-
-func (o GetWafPackagesFilterOutput) ToGetWafPackagesFilterPtrOutput() GetWafPackagesFilterPtrOutput {
-	return o.ToGetWafPackagesFilterPtrOutputWithContext(context.Background())
-}
-
-func (o GetWafPackagesFilterOutput) ToGetWafPackagesFilterPtrOutputWithContext(ctx context.Context) GetWafPackagesFilterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWafPackagesFilter) *GetWafPackagesFilter {
-		return &v
-	}).(GetWafPackagesFilterPtrOutput)
-}
-
-// Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-func (o GetWafPackagesFilterOutput) ActionMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafPackagesFilter) *string { return v.ActionMode }).(pulumi.StringPtrOutput)
-}
-
-// Detection mode of the WAF Rule Packages to lookup.
-func (o GetWafPackagesFilterOutput) DetectionMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafPackagesFilter) *string { return v.DetectionMode }).(pulumi.StringPtrOutput)
-}
-
-// A regular expression matching the name of the WAF Rule Packages to lookup.
-func (o GetWafPackagesFilterOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafPackagesFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-func (o GetWafPackagesFilterOutput) Sensitivity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafPackagesFilter) *string { return v.Sensitivity }).(pulumi.StringPtrOutput)
-}
-
-type GetWafPackagesFilterPtrOutput struct{ *pulumi.OutputState }
-
-func (GetWafPackagesFilterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetWafPackagesFilter)(nil)).Elem()
-}
-
-func (o GetWafPackagesFilterPtrOutput) ToGetWafPackagesFilterPtrOutput() GetWafPackagesFilterPtrOutput {
-	return o
-}
-
-func (o GetWafPackagesFilterPtrOutput) ToGetWafPackagesFilterPtrOutputWithContext(ctx context.Context) GetWafPackagesFilterPtrOutput {
-	return o
-}
-
-func (o GetWafPackagesFilterPtrOutput) Elem() GetWafPackagesFilterOutput {
-	return o.ApplyT(func(v *GetWafPackagesFilter) GetWafPackagesFilter {
-		if v != nil {
-			return *v
-		}
-		var ret GetWafPackagesFilter
-		return ret
-	}).(GetWafPackagesFilterOutput)
-}
-
-// Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-func (o GetWafPackagesFilterPtrOutput) ActionMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetWafPackagesFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ActionMode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Detection mode of the WAF Rule Packages to lookup.
-func (o GetWafPackagesFilterPtrOutput) DetectionMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetWafPackagesFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DetectionMode
-	}).(pulumi.StringPtrOutput)
-}
-
-// A regular expression matching the name of the WAF Rule Packages to lookup.
-func (o GetWafPackagesFilterPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetWafPackagesFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-func (o GetWafPackagesFilterPtrOutput) Sensitivity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetWafPackagesFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Sensitivity
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetWafPackagesPackage struct {
-	// Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-	ActionMode *string `pulumi:"actionMode"`
-	// The WAF Rule Package description
-	Description *string `pulumi:"description"`
-	// Detection mode of the WAF Rule Packages to lookup.
-	DetectionMode *string `pulumi:"detectionMode"`
-	// The WAF Rule Package ID
-	Id *string `pulumi:"id"`
-	// A regular expression matching the name of the WAF Rule Packages to lookup.
-	Name *string `pulumi:"name"`
-	// Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-	Sensitivity *string `pulumi:"sensitivity"`
-}
-
-// GetWafPackagesPackageInput is an input type that accepts GetWafPackagesPackageArgs and GetWafPackagesPackageOutput values.
-// You can construct a concrete instance of `GetWafPackagesPackageInput` via:
-//
-//	GetWafPackagesPackageArgs{...}
-type GetWafPackagesPackageInput interface {
-	pulumi.Input
-
-	ToGetWafPackagesPackageOutput() GetWafPackagesPackageOutput
-	ToGetWafPackagesPackageOutputWithContext(context.Context) GetWafPackagesPackageOutput
-}
-
-type GetWafPackagesPackageArgs struct {
-	// Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-	ActionMode pulumi.StringPtrInput `pulumi:"actionMode"`
-	// The WAF Rule Package description
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Detection mode of the WAF Rule Packages to lookup.
-	DetectionMode pulumi.StringPtrInput `pulumi:"detectionMode"`
-	// The WAF Rule Package ID
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// A regular expression matching the name of the WAF Rule Packages to lookup.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-	Sensitivity pulumi.StringPtrInput `pulumi:"sensitivity"`
-}
-
-func (GetWafPackagesPackageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWafPackagesPackage)(nil)).Elem()
-}
-
-func (i GetWafPackagesPackageArgs) ToGetWafPackagesPackageOutput() GetWafPackagesPackageOutput {
-	return i.ToGetWafPackagesPackageOutputWithContext(context.Background())
-}
-
-func (i GetWafPackagesPackageArgs) ToGetWafPackagesPackageOutputWithContext(ctx context.Context) GetWafPackagesPackageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWafPackagesPackageOutput)
-}
-
-// GetWafPackagesPackageArrayInput is an input type that accepts GetWafPackagesPackageArray and GetWafPackagesPackageArrayOutput values.
-// You can construct a concrete instance of `GetWafPackagesPackageArrayInput` via:
-//
-//	GetWafPackagesPackageArray{ GetWafPackagesPackageArgs{...} }
-type GetWafPackagesPackageArrayInput interface {
-	pulumi.Input
-
-	ToGetWafPackagesPackageArrayOutput() GetWafPackagesPackageArrayOutput
-	ToGetWafPackagesPackageArrayOutputWithContext(context.Context) GetWafPackagesPackageArrayOutput
-}
-
-type GetWafPackagesPackageArray []GetWafPackagesPackageInput
-
-func (GetWafPackagesPackageArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWafPackagesPackage)(nil)).Elem()
-}
-
-func (i GetWafPackagesPackageArray) ToGetWafPackagesPackageArrayOutput() GetWafPackagesPackageArrayOutput {
-	return i.ToGetWafPackagesPackageArrayOutputWithContext(context.Background())
-}
-
-func (i GetWafPackagesPackageArray) ToGetWafPackagesPackageArrayOutputWithContext(ctx context.Context) GetWafPackagesPackageArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWafPackagesPackageArrayOutput)
-}
-
-type GetWafPackagesPackageOutput struct{ *pulumi.OutputState }
-
-func (GetWafPackagesPackageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWafPackagesPackage)(nil)).Elem()
-}
-
-func (o GetWafPackagesPackageOutput) ToGetWafPackagesPackageOutput() GetWafPackagesPackageOutput {
-	return o
-}
-
-func (o GetWafPackagesPackageOutput) ToGetWafPackagesPackageOutputWithContext(ctx context.Context) GetWafPackagesPackageOutput {
-	return o
-}
-
-// Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-func (o GetWafPackagesPackageOutput) ActionMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafPackagesPackage) *string { return v.ActionMode }).(pulumi.StringPtrOutput)
-}
-
-// The WAF Rule Package description
-func (o GetWafPackagesPackageOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafPackagesPackage) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Detection mode of the WAF Rule Packages to lookup.
-func (o GetWafPackagesPackageOutput) DetectionMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafPackagesPackage) *string { return v.DetectionMode }).(pulumi.StringPtrOutput)
-}
-
-// The WAF Rule Package ID
-func (o GetWafPackagesPackageOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafPackagesPackage) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// A regular expression matching the name of the WAF Rule Packages to lookup.
-func (o GetWafPackagesPackageOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafPackagesPackage) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-func (o GetWafPackagesPackageOutput) Sensitivity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafPackagesPackage) *string { return v.Sensitivity }).(pulumi.StringPtrOutput)
-}
-
-type GetWafPackagesPackageArrayOutput struct{ *pulumi.OutputState }
-
-func (GetWafPackagesPackageArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWafPackagesPackage)(nil)).Elem()
-}
-
-func (o GetWafPackagesPackageArrayOutput) ToGetWafPackagesPackageArrayOutput() GetWafPackagesPackageArrayOutput {
-	return o
-}
-
-func (o GetWafPackagesPackageArrayOutput) ToGetWafPackagesPackageArrayOutputWithContext(ctx context.Context) GetWafPackagesPackageArrayOutput {
-	return o
-}
-
-func (o GetWafPackagesPackageArrayOutput) Index(i pulumi.IntInput) GetWafPackagesPackageOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWafPackagesPackage {
-		return vs[0].([]GetWafPackagesPackage)[vs[1].(int)]
-	}).(GetWafPackagesPackageOutput)
-}
-
-type GetWafRulesFilter struct {
-	// A regular expression matching the description of the WAF Rules to lookup.
-	Description *string `pulumi:"description"`
-	// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-	GroupId *string `pulumi:"groupId"`
-	// Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-	Mode *string `pulumi:"mode"`
-}
-
-// GetWafRulesFilterInput is an input type that accepts GetWafRulesFilterArgs and GetWafRulesFilterOutput values.
-// You can construct a concrete instance of `GetWafRulesFilterInput` via:
-//
-//	GetWafRulesFilterArgs{...}
-type GetWafRulesFilterInput interface {
-	pulumi.Input
-
-	ToGetWafRulesFilterOutput() GetWafRulesFilterOutput
-	ToGetWafRulesFilterOutputWithContext(context.Context) GetWafRulesFilterOutput
-}
-
-type GetWafRulesFilterArgs struct {
-	// A regular expression matching the description of the WAF Rules to lookup.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
-	// Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
-}
-
-func (GetWafRulesFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWafRulesFilter)(nil)).Elem()
-}
-
-func (i GetWafRulesFilterArgs) ToGetWafRulesFilterOutput() GetWafRulesFilterOutput {
-	return i.ToGetWafRulesFilterOutputWithContext(context.Background())
-}
-
-func (i GetWafRulesFilterArgs) ToGetWafRulesFilterOutputWithContext(ctx context.Context) GetWafRulesFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesFilterOutput)
-}
-
-func (i GetWafRulesFilterArgs) ToGetWafRulesFilterPtrOutput() GetWafRulesFilterPtrOutput {
-	return i.ToGetWafRulesFilterPtrOutputWithContext(context.Background())
-}
-
-func (i GetWafRulesFilterArgs) ToGetWafRulesFilterPtrOutputWithContext(ctx context.Context) GetWafRulesFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesFilterOutput).ToGetWafRulesFilterPtrOutputWithContext(ctx)
-}
-
-// GetWafRulesFilterPtrInput is an input type that accepts GetWafRulesFilterArgs, GetWafRulesFilterPtr and GetWafRulesFilterPtrOutput values.
-// You can construct a concrete instance of `GetWafRulesFilterPtrInput` via:
-//
-//	        GetWafRulesFilterArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetWafRulesFilterPtrInput interface {
-	pulumi.Input
-
-	ToGetWafRulesFilterPtrOutput() GetWafRulesFilterPtrOutput
-	ToGetWafRulesFilterPtrOutputWithContext(context.Context) GetWafRulesFilterPtrOutput
-}
-
-type getWafRulesFilterPtrType GetWafRulesFilterArgs
-
-func GetWafRulesFilterPtr(v *GetWafRulesFilterArgs) GetWafRulesFilterPtrInput {
-	return (*getWafRulesFilterPtrType)(v)
-}
-
-func (*getWafRulesFilterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetWafRulesFilter)(nil)).Elem()
-}
-
-func (i *getWafRulesFilterPtrType) ToGetWafRulesFilterPtrOutput() GetWafRulesFilterPtrOutput {
-	return i.ToGetWafRulesFilterPtrOutputWithContext(context.Background())
-}
-
-func (i *getWafRulesFilterPtrType) ToGetWafRulesFilterPtrOutputWithContext(ctx context.Context) GetWafRulesFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesFilterPtrOutput)
-}
-
-type GetWafRulesFilterOutput struct{ *pulumi.OutputState }
-
-func (GetWafRulesFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWafRulesFilter)(nil)).Elem()
-}
-
-func (o GetWafRulesFilterOutput) ToGetWafRulesFilterOutput() GetWafRulesFilterOutput {
-	return o
-}
-
-func (o GetWafRulesFilterOutput) ToGetWafRulesFilterOutputWithContext(ctx context.Context) GetWafRulesFilterOutput {
-	return o
-}
-
-func (o GetWafRulesFilterOutput) ToGetWafRulesFilterPtrOutput() GetWafRulesFilterPtrOutput {
-	return o.ToGetWafRulesFilterPtrOutputWithContext(context.Background())
-}
-
-func (o GetWafRulesFilterOutput) ToGetWafRulesFilterPtrOutputWithContext(ctx context.Context) GetWafRulesFilterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWafRulesFilter) *GetWafRulesFilter {
-		return &v
-	}).(GetWafRulesFilterPtrOutput)
-}
-
-// A regular expression matching the description of the WAF Rules to lookup.
-func (o GetWafRulesFilterOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafRulesFilter) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-func (o GetWafRulesFilterOutput) GroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafRulesFilter) *string { return v.GroupId }).(pulumi.StringPtrOutput)
-}
-
-// Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-func (o GetWafRulesFilterOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafRulesFilter) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-type GetWafRulesFilterPtrOutput struct{ *pulumi.OutputState }
-
-func (GetWafRulesFilterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetWafRulesFilter)(nil)).Elem()
-}
-
-func (o GetWafRulesFilterPtrOutput) ToGetWafRulesFilterPtrOutput() GetWafRulesFilterPtrOutput {
-	return o
-}
-
-func (o GetWafRulesFilterPtrOutput) ToGetWafRulesFilterPtrOutputWithContext(ctx context.Context) GetWafRulesFilterPtrOutput {
-	return o
-}
-
-func (o GetWafRulesFilterPtrOutput) Elem() GetWafRulesFilterOutput {
-	return o.ApplyT(func(v *GetWafRulesFilter) GetWafRulesFilter {
-		if v != nil {
-			return *v
-		}
-		var ret GetWafRulesFilter
-		return ret
-	}).(GetWafRulesFilterOutput)
-}
-
-// A regular expression matching the description of the WAF Rules to lookup.
-func (o GetWafRulesFilterPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetWafRulesFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-func (o GetWafRulesFilterPtrOutput) GroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetWafRulesFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.GroupId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-func (o GetWafRulesFilterPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetWafRulesFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Mode
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetWafRulesRule struct {
-	// The list of allowed `mode` values for the WAF Rule
-	AllowedModes []string `pulumi:"allowedModes"`
-	// The default `mode` value for the WAF Rule
-	DefaultMode *string `pulumi:"defaultMode"`
-	// A regular expression matching the description of the WAF Rules to lookup.
-	Description *string `pulumi:"description"`
-	// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-	GroupId *string `pulumi:"groupId"`
-	// The Name of the WAF Rule Group that contains the WAF Rule
-	GroupName *string `pulumi:"groupName"`
-	// The WAF Rule ID
-	Id *string `pulumi:"id"`
-	// Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-	Mode *string `pulumi:"mode"`
-	// The ID of the WAF Rule Package in which to search for the WAF Rules.
-	PackageId *string `pulumi:"packageId"`
-	// The WAF Rule priority
-	Priority *string `pulumi:"priority"`
-}
-
-// GetWafRulesRuleInput is an input type that accepts GetWafRulesRuleArgs and GetWafRulesRuleOutput values.
-// You can construct a concrete instance of `GetWafRulesRuleInput` via:
-//
-//	GetWafRulesRuleArgs{...}
-type GetWafRulesRuleInput interface {
-	pulumi.Input
-
-	ToGetWafRulesRuleOutput() GetWafRulesRuleOutput
-	ToGetWafRulesRuleOutputWithContext(context.Context) GetWafRulesRuleOutput
-}
-
-type GetWafRulesRuleArgs struct {
-	// The list of allowed `mode` values for the WAF Rule
-	AllowedModes pulumi.StringArrayInput `pulumi:"allowedModes"`
-	// The default `mode` value for the WAF Rule
-	DefaultMode pulumi.StringPtrInput `pulumi:"defaultMode"`
-	// A regular expression matching the description of the WAF Rules to lookup.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
-	// The Name of the WAF Rule Group that contains the WAF Rule
-	GroupName pulumi.StringPtrInput `pulumi:"groupName"`
-	// The WAF Rule ID
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// The ID of the WAF Rule Package in which to search for the WAF Rules.
-	PackageId pulumi.StringPtrInput `pulumi:"packageId"`
-	// The WAF Rule priority
-	Priority pulumi.StringPtrInput `pulumi:"priority"`
-}
-
-func (GetWafRulesRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWafRulesRule)(nil)).Elem()
-}
-
-func (i GetWafRulesRuleArgs) ToGetWafRulesRuleOutput() GetWafRulesRuleOutput {
-	return i.ToGetWafRulesRuleOutputWithContext(context.Background())
-}
-
-func (i GetWafRulesRuleArgs) ToGetWafRulesRuleOutputWithContext(ctx context.Context) GetWafRulesRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesRuleOutput)
-}
-
-// GetWafRulesRuleArrayInput is an input type that accepts GetWafRulesRuleArray and GetWafRulesRuleArrayOutput values.
-// You can construct a concrete instance of `GetWafRulesRuleArrayInput` via:
-//
-//	GetWafRulesRuleArray{ GetWafRulesRuleArgs{...} }
-type GetWafRulesRuleArrayInput interface {
-	pulumi.Input
-
-	ToGetWafRulesRuleArrayOutput() GetWafRulesRuleArrayOutput
-	ToGetWafRulesRuleArrayOutputWithContext(context.Context) GetWafRulesRuleArrayOutput
-}
-
-type GetWafRulesRuleArray []GetWafRulesRuleInput
-
-func (GetWafRulesRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWafRulesRule)(nil)).Elem()
-}
-
-func (i GetWafRulesRuleArray) ToGetWafRulesRuleArrayOutput() GetWafRulesRuleArrayOutput {
-	return i.ToGetWafRulesRuleArrayOutputWithContext(context.Background())
-}
-
-func (i GetWafRulesRuleArray) ToGetWafRulesRuleArrayOutputWithContext(ctx context.Context) GetWafRulesRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesRuleArrayOutput)
-}
-
-type GetWafRulesRuleOutput struct{ *pulumi.OutputState }
-
-func (GetWafRulesRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWafRulesRule)(nil)).Elem()
-}
-
-func (o GetWafRulesRuleOutput) ToGetWafRulesRuleOutput() GetWafRulesRuleOutput {
-	return o
-}
-
-func (o GetWafRulesRuleOutput) ToGetWafRulesRuleOutputWithContext(ctx context.Context) GetWafRulesRuleOutput {
-	return o
-}
-
-// The list of allowed `mode` values for the WAF Rule
-func (o GetWafRulesRuleOutput) AllowedModes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetWafRulesRule) []string { return v.AllowedModes }).(pulumi.StringArrayOutput)
-}
-
-// The default `mode` value for the WAF Rule
-func (o GetWafRulesRuleOutput) DefaultMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafRulesRule) *string { return v.DefaultMode }).(pulumi.StringPtrOutput)
-}
-
-// A regular expression matching the description of the WAF Rules to lookup.
-func (o GetWafRulesRuleOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafRulesRule) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-func (o GetWafRulesRuleOutput) GroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafRulesRule) *string { return v.GroupId }).(pulumi.StringPtrOutput)
-}
-
-// The Name of the WAF Rule Group that contains the WAF Rule
-func (o GetWafRulesRuleOutput) GroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafRulesRule) *string { return v.GroupName }).(pulumi.StringPtrOutput)
-}
-
-// The WAF Rule ID
-func (o GetWafRulesRuleOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafRulesRule) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-func (o GetWafRulesRuleOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafRulesRule) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-// The ID of the WAF Rule Package in which to search for the WAF Rules.
-func (o GetWafRulesRuleOutput) PackageId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafRulesRule) *string { return v.PackageId }).(pulumi.StringPtrOutput)
-}
-
-// The WAF Rule priority
-func (o GetWafRulesRuleOutput) Priority() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWafRulesRule) *string { return v.Priority }).(pulumi.StringPtrOutput)
-}
-
-type GetWafRulesRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (GetWafRulesRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWafRulesRule)(nil)).Elem()
-}
-
-func (o GetWafRulesRuleArrayOutput) ToGetWafRulesRuleArrayOutput() GetWafRulesRuleArrayOutput {
-	return o
-}
-
-func (o GetWafRulesRuleArrayOutput) ToGetWafRulesRuleArrayOutputWithContext(ctx context.Context) GetWafRulesRuleArrayOutput {
-	return o
-}
-
-func (o GetWafRulesRuleArrayOutput) Index(i pulumi.IntInput) GetWafRulesRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWafRulesRule {
-		return vs[0].([]GetWafRulesRule)[vs[1].(int)]
-	}).(GetWafRulesRuleOutput)
-}
-
 type GetZonesFilter struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
@@ -39944,8 +39716,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FallbackDomainDomainArrayInput)(nil)).Elem(), FallbackDomainDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthcheckHeaderInput)(nil)).Elem(), HealthcheckHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthcheckHeaderArrayInput)(nil)).Elem(), HealthcheckHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IpListItemInput)(nil)).Elem(), IpListItemArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IpListItemArrayInput)(nil)).Elem(), IpListItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemInput)(nil)).Elem(), ListItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemArrayInput)(nil)).Elem(), ListItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemValueInput)(nil)).Elem(), ListItemValueArgs{})
@@ -39991,6 +39761,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleOverrideRandomSteeringArrayInput)(nil)).Elem(), LoadBalancerRuleOverrideRandomSteeringArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleOverrideRegionPoolInput)(nil)).Elem(), LoadBalancerRuleOverrideRegionPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleOverrideRegionPoolArrayInput)(nil)).Elem(), LoadBalancerRuleOverrideRegionPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleOverrideSessionAffinityAttributeInput)(nil)).Elem(), LoadBalancerRuleOverrideSessionAffinityAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleOverrideSessionAffinityAttributeArrayInput)(nil)).Elem(), LoadBalancerRuleOverrideSessionAffinityAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerSessionAffinityAttributeInput)(nil)).Elem(), LoadBalancerSessionAffinityAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerSessionAffinityAttributeArrayInput)(nil)).Elem(), LoadBalancerSessionAffinityAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedRequestHeaderInput)(nil)).Elem(), ManagedHeadersManagedRequestHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedRequestHeaderArrayInput)(nil)).Elem(), ManagedHeadersManagedRequestHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedResponseHeaderInput)(nil)).Elem(), ManagedHeadersManagedResponseHeaderArgs{})
@@ -40119,6 +39893,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleRatelimitPtrInput)(nil)).Elem(), RulesetRuleRatelimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationDnsInput)(nil)).Elem(), SpectrumApplicationDnsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationDnsPtrInput)(nil)).Elem(), SpectrumApplicationDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationEdgeIpsInput)(nil)).Elem(), SpectrumApplicationEdgeIpsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationEdgeIpsPtrInput)(nil)).Elem(), SpectrumApplicationEdgeIpsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationOriginDnsInput)(nil)).Elem(), SpectrumApplicationOriginDnsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationOriginDnsPtrInput)(nil)).Elem(), SpectrumApplicationOriginDnsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationOriginPortRangeInput)(nil)).Elem(), SpectrumApplicationOriginPortRangeArgs{})
@@ -40141,6 +39917,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountLoggingSettingsByRuleTypeHttpPtrInput)(nil)).Elem(), TeamsAccountLoggingSettingsByRuleTypeHttpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountLoggingSettingsByRuleTypeL4Input)(nil)).Elem(), TeamsAccountLoggingSettingsByRuleTypeL4Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountLoggingSettingsByRuleTypeL4PtrInput)(nil)).Elem(), TeamsAccountLoggingSettingsByRuleTypeL4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountPayloadLogInput)(nil)).Elem(), TeamsAccountPayloadLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountPayloadLogPtrInput)(nil)).Elem(), TeamsAccountPayloadLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountProxyInput)(nil)).Elem(), TeamsAccountProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountProxyPtrInput)(nil)).Elem(), TeamsAccountProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationNetworkInput)(nil)).Elem(), TeamsLocationNetworkArgs{})
@@ -40155,6 +39933,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsEgressPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsEgressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsL4overrideInput)(nil)).Elem(), TeamsRuleRuleSettingsL4overrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsL4overridePtrInput)(nil)).Elem(), TeamsRuleRuleSettingsL4overrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsPayloadLogInput)(nil)).Elem(), TeamsRuleRuleSettingsPayloadLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsPayloadLogPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsPayloadLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsUntrustedCertInput)(nil)).Elem(), TeamsRuleRuleSettingsUntrustedCertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsUntrustedCertPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsUntrustedCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigInput)(nil)).Elem(), TunnelConfigConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigPtrInput)(nil)).Elem(), TunnelConfigConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigIngressRuleInput)(nil)).Elem(), TunnelConfigConfigIngressRuleArgs{})
@@ -40287,18 +40069,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetsRulesetRuleLoggingPtrInput)(nil)).Elem(), GetRulesetsRulesetRuleLoggingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetsRulesetRuleRatelimitInput)(nil)).Elem(), GetRulesetsRulesetRuleRatelimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetsRulesetRuleRatelimitPtrInput)(nil)).Elem(), GetRulesetsRulesetRuleRatelimitArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWafGroupsFilterInput)(nil)).Elem(), GetWafGroupsFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWafGroupsFilterPtrInput)(nil)).Elem(), GetWafGroupsFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWafGroupsGroupInput)(nil)).Elem(), GetWafGroupsGroupArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWafGroupsGroupArrayInput)(nil)).Elem(), GetWafGroupsGroupArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWafPackagesFilterInput)(nil)).Elem(), GetWafPackagesFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWafPackagesFilterPtrInput)(nil)).Elem(), GetWafPackagesFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWafPackagesPackageInput)(nil)).Elem(), GetWafPackagesPackageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWafPackagesPackageArrayInput)(nil)).Elem(), GetWafPackagesPackageArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesFilterInput)(nil)).Elem(), GetWafRulesFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesFilterPtrInput)(nil)).Elem(), GetWafRulesFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesRuleInput)(nil)).Elem(), GetWafRulesRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesRuleArrayInput)(nil)).Elem(), GetWafRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesFilterInput)(nil)).Elem(), GetZonesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
@@ -40446,8 +40216,6 @@ func init() {
 	pulumi.RegisterOutputType(FallbackDomainDomainArrayOutput{})
 	pulumi.RegisterOutputType(HealthcheckHeaderOutput{})
 	pulumi.RegisterOutputType(HealthcheckHeaderArrayOutput{})
-	pulumi.RegisterOutputType(IpListItemOutput{})
-	pulumi.RegisterOutputType(IpListItemArrayOutput{})
 	pulumi.RegisterOutputType(ListItemOutput{})
 	pulumi.RegisterOutputType(ListItemArrayOutput{})
 	pulumi.RegisterOutputType(ListItemValueOutput{})
@@ -40493,6 +40261,10 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerRuleOverrideRandomSteeringArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerRuleOverrideRegionPoolOutput{})
 	pulumi.RegisterOutputType(LoadBalancerRuleOverrideRegionPoolArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerRuleOverrideSessionAffinityAttributeOutput{})
+	pulumi.RegisterOutputType(LoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerSessionAffinityAttributeOutput{})
+	pulumi.RegisterOutputType(LoadBalancerSessionAffinityAttributeArrayOutput{})
 	pulumi.RegisterOutputType(ManagedHeadersManagedRequestHeaderOutput{})
 	pulumi.RegisterOutputType(ManagedHeadersManagedRequestHeaderArrayOutput{})
 	pulumi.RegisterOutputType(ManagedHeadersManagedResponseHeaderOutput{})
@@ -40621,6 +40393,8 @@ func init() {
 	pulumi.RegisterOutputType(RulesetRuleRatelimitPtrOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationDnsOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationDnsPtrOutput{})
+	pulumi.RegisterOutputType(SpectrumApplicationEdgeIpsOutput{})
+	pulumi.RegisterOutputType(SpectrumApplicationEdgeIpsPtrOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationOriginDnsOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationOriginDnsPtrOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationOriginPortRangeOutput{})
@@ -40643,6 +40417,8 @@ func init() {
 	pulumi.RegisterOutputType(TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput{})
 	pulumi.RegisterOutputType(TeamsAccountLoggingSettingsByRuleTypeL4Output{})
 	pulumi.RegisterOutputType(TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput{})
+	pulumi.RegisterOutputType(TeamsAccountPayloadLogOutput{})
+	pulumi.RegisterOutputType(TeamsAccountPayloadLogPtrOutput{})
 	pulumi.RegisterOutputType(TeamsAccountProxyOutput{})
 	pulumi.RegisterOutputType(TeamsAccountProxyPtrOutput{})
 	pulumi.RegisterOutputType(TeamsLocationNetworkOutput{})
@@ -40657,6 +40433,10 @@ func init() {
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsEgressPtrOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsL4overrideOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsL4overridePtrOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsPayloadLogOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsPayloadLogPtrOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsUntrustedCertOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsUntrustedCertPtrOutput{})
 	pulumi.RegisterOutputType(TunnelConfigConfigOutput{})
 	pulumi.RegisterOutputType(TunnelConfigConfigPtrOutput{})
 	pulumi.RegisterOutputType(TunnelConfigConfigIngressRuleOutput{})
@@ -40789,18 +40569,6 @@ func init() {
 	pulumi.RegisterOutputType(GetRulesetsRulesetRuleLoggingPtrOutput{})
 	pulumi.RegisterOutputType(GetRulesetsRulesetRuleRatelimitOutput{})
 	pulumi.RegisterOutputType(GetRulesetsRulesetRuleRatelimitPtrOutput{})
-	pulumi.RegisterOutputType(GetWafGroupsFilterOutput{})
-	pulumi.RegisterOutputType(GetWafGroupsFilterPtrOutput{})
-	pulumi.RegisterOutputType(GetWafGroupsGroupOutput{})
-	pulumi.RegisterOutputType(GetWafGroupsGroupArrayOutput{})
-	pulumi.RegisterOutputType(GetWafPackagesFilterOutput{})
-	pulumi.RegisterOutputType(GetWafPackagesFilterPtrOutput{})
-	pulumi.RegisterOutputType(GetWafPackagesPackageOutput{})
-	pulumi.RegisterOutputType(GetWafPackagesPackageArrayOutput{})
-	pulumi.RegisterOutputType(GetWafRulesFilterOutput{})
-	pulumi.RegisterOutputType(GetWafRulesFilterPtrOutput{})
-	pulumi.RegisterOutputType(GetWafRulesRuleOutput{})
-	pulumi.RegisterOutputType(GetWafRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesFilterOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})

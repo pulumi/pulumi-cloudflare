@@ -14,22 +14,33 @@ __all__ = ['WorkersKvArgs', 'WorkersKv']
 @pulumi.input_type
 class WorkersKvArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[str],
                  key: pulumi.Input[str],
                  namespace_id: pulumi.Input[str],
-                 value: pulumi.Input[str],
-                 account_id: Optional[pulumi.Input[str]] = None):
+                 value: pulumi.Input[str]):
         """
         The set of arguments for constructing a WorkersKv resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] key: Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] namespace_id: The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] value: Value of the KV pair.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "namespace_id", namespace_id)
         pulumi.set(__self__, "value", value)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[str]:
+        """
+        The account identifier to target for the resource.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter
@@ -66,18 +77,6 @@ class WorkersKvArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
-
-    @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The account identifier to target for the resource.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "account_id", value)
 
 
 @pulumi.input_type
@@ -261,6 +260,8 @@ class WorkersKv(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkersKvArgs.__new__(WorkersKvArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")

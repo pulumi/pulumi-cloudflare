@@ -119,6 +119,12 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.TeamsAccountLogging?> Logging { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for DLP Payload Logging.
+        /// </summary>
+        [Output("payloadLog")]
+        public Output<Outputs.TeamsAccountPayloadLog?> PayloadLog { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration block for specifying which protocols are proxied.
         /// </summary>
         [Output("proxy")]
@@ -216,6 +222,12 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.TeamsAccountLoggingArgs>? Logging { get; set; }
 
         /// <summary>
+        /// Configuration for DLP Payload Logging.
+        /// </summary>
+        [Input("payloadLog")]
+        public Input<Inputs.TeamsAccountPayloadLogArgs>? PayloadLog { get; set; }
+
+        /// <summary>
         /// Configuration block for specifying which protocols are proxied.
         /// </summary>
         [Input("proxy")]
@@ -273,6 +285,12 @@ namespace Pulumi.Cloudflare
 
         [Input("logging")]
         public Input<Inputs.TeamsAccountLoggingGetArgs>? Logging { get; set; }
+
+        /// <summary>
+        /// Configuration for DLP Payload Logging.
+        /// </summary>
+        [Input("payloadLog")]
+        public Input<Inputs.TeamsAccountPayloadLogGetArgs>? PayloadLog { get; set; }
 
         /// <summary>
         /// Configuration block for specifying which protocols are proxied.

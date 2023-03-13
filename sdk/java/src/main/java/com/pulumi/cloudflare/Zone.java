@@ -69,14 +69,14 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
      * @return Account ID to manage the zone resource in.
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * Whether to scan for DNS records on creation. Ignored after zone is created.
