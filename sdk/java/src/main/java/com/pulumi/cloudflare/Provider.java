@@ -23,26 +23,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="pulumi:providers:cloudflare")
 public class Provider extends com.pulumi.resources.ProviderResource {
     /**
-     * Configure API client to always use a specific account. Alternatively, can be configured using the
-     * `CLOUDFLARE_ACCOUNT_ID` environment variable.
-     * 
-     * @deprecated
-     * Use resource specific `account_id` attributes instead.
-     * 
-     */
-    @Deprecated /* Use resource specific `account_id` attributes instead. */
-    @Export(name="accountId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> accountId;
-
-    /**
-     * @return Configure API client to always use a specific account. Alternatively, can be configured using the
-     * `CLOUDFLARE_ACCOUNT_ID` environment variable.
-     * 
-     */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
-    }
-    /**
      * Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
      * environment variable.
      * 

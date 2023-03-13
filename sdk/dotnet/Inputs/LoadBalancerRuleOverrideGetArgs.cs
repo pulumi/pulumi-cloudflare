@@ -102,14 +102,14 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? SessionAffinity { get; set; }
 
         [Input("sessionAffinityAttributes")]
-        private InputMap<string>? _sessionAffinityAttributes;
+        private InputList<Inputs.LoadBalancerRuleOverrideSessionAffinityAttributeGetArgs>? _sessionAffinityAttributes;
 
         /// <summary>
-        /// See `session_affinity_attributes`.
+        /// Configure cookie attributes for session affinity cookie.
         /// </summary>
-        public InputMap<string> SessionAffinityAttributes
+        public InputList<Inputs.LoadBalancerRuleOverrideSessionAffinityAttributeGetArgs> SessionAffinityAttributes
         {
-            get => _sessionAffinityAttributes ?? (_sessionAffinityAttributes = new InputMap<string>());
+            get => _sessionAffinityAttributes ?? (_sessionAffinityAttributes = new InputList<Inputs.LoadBalancerRuleOverrideSessionAffinityAttributeGetArgs>());
             set => _sessionAffinityAttributes = value;
         }
 

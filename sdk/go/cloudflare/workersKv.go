@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -80,6 +80,9 @@ func NewWorkersKv(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Key == nil {
 		return nil, errors.New("invalid value for required argument 'Key'")
 	}
@@ -138,7 +141,7 @@ func (WorkersKvState) ElementType() reflect.Type {
 
 type workersKvArgs struct {
 	// The account identifier to target for the resource.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
 	Key string `pulumi:"key"`
 	// The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
@@ -150,7 +153,7 @@ type workersKvArgs struct {
 // The set of arguments for constructing a WorkersKv resource.
 type WorkersKvArgs struct {
 	// The account identifier to target for the resource.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
 	Key pulumi.StringInput
 	// The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**

@@ -8,18 +8,6 @@ declare var exports: any;
 const __config = new pulumi.Config("cloudflare");
 
 /**
- * Configure API client to always use a specific account. Alternatively, can be configured using the
- * `CLOUDFLARE_ACCOUNT_ID` environment variable.
- */
-export declare const accountId: string | undefined;
-Object.defineProperty(exports, "accountId", {
-    get() {
-        return __config.get("accountId");
-    },
-    enumerable: true,
-});
-
-/**
  * Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
  * environment variable.
  */

@@ -7,6 +7,8 @@ import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsBisoAdminControls;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsCheckSession;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsEgress;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsL4override;
+import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsPayloadLog;
+import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsUntrustedCert;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
@@ -68,6 +70,16 @@ public final class TeamsRuleRuleSettings {
      * 
      */
     private @Nullable List<String> overrideIps;
+    /**
+     * @return Configure DLP Payload Logging settings for this rule.
+     * 
+     */
+    private @Nullable TeamsRuleRuleSettingsPayloadLog payloadLog;
+    /**
+     * @return Configure untrusted certificate settings for this rule.
+     * 
+     */
+    private @Nullable TeamsRuleRuleSettingsUntrustedCert untrustedCert;
 
     private TeamsRuleRuleSettings() {}
     /**
@@ -140,6 +152,20 @@ public final class TeamsRuleRuleSettings {
     public List<String> overrideIps() {
         return this.overrideIps == null ? List.of() : this.overrideIps;
     }
+    /**
+     * @return Configure DLP Payload Logging settings for this rule.
+     * 
+     */
+    public Optional<TeamsRuleRuleSettingsPayloadLog> payloadLog() {
+        return Optional.ofNullable(this.payloadLog);
+    }
+    /**
+     * @return Configure untrusted certificate settings for this rule.
+     * 
+     */
+    public Optional<TeamsRuleRuleSettingsUntrustedCert> untrustedCert() {
+        return Optional.ofNullable(this.untrustedCert);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -160,6 +186,8 @@ public final class TeamsRuleRuleSettings {
         private @Nullable TeamsRuleRuleSettingsL4override l4override;
         private @Nullable String overrideHost;
         private @Nullable List<String> overrideIps;
+        private @Nullable TeamsRuleRuleSettingsPayloadLog payloadLog;
+        private @Nullable TeamsRuleRuleSettingsUntrustedCert untrustedCert;
         public Builder() {}
         public Builder(TeamsRuleRuleSettings defaults) {
     	      Objects.requireNonNull(defaults);
@@ -173,6 +201,8 @@ public final class TeamsRuleRuleSettings {
     	      this.l4override = defaults.l4override;
     	      this.overrideHost = defaults.overrideHost;
     	      this.overrideIps = defaults.overrideIps;
+    	      this.payloadLog = defaults.payloadLog;
+    	      this.untrustedCert = defaults.untrustedCert;
         }
 
         @CustomType.Setter
@@ -228,6 +258,16 @@ public final class TeamsRuleRuleSettings {
         public Builder overrideIps(String... overrideIps) {
             return overrideIps(List.of(overrideIps));
         }
+        @CustomType.Setter
+        public Builder payloadLog(@Nullable TeamsRuleRuleSettingsPayloadLog payloadLog) {
+            this.payloadLog = payloadLog;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder untrustedCert(@Nullable TeamsRuleRuleSettingsUntrustedCert untrustedCert) {
+            this.untrustedCert = untrustedCert;
+            return this;
+        }
         public TeamsRuleRuleSettings build() {
             final var o = new TeamsRuleRuleSettings();
             o.addHeaders = addHeaders;
@@ -240,6 +280,8 @@ public final class TeamsRuleRuleSettings {
             o.l4override = l4override;
             o.overrideHost = overrideHost;
             o.overrideIps = overrideIps;
+            o.payloadLog = payloadLog;
+            o.untrustedCert = untrustedCert;
             return o;
         }
     }

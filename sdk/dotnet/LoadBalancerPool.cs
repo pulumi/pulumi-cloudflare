@@ -97,7 +97,7 @@ namespace Pulumi.Cloudflare
         /// The account identifier to target for the resource.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
@@ -232,8 +232,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier to target for the resource.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         [Input("checkRegions")]
         private InputList<string>? _checkRegions;

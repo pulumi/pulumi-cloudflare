@@ -7,6 +7,8 @@ import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsBisoAdminControlsArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsCheckSessionArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsEgressArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsL4overrideArgs;
+import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsPayloadLogArgs;
+import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsUntrustedCertArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -172,6 +174,36 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.overrideIps);
     }
 
+    /**
+     * Configure DLP Payload Logging settings for this rule.
+     * 
+     */
+    @Import(name="payloadLog")
+    private @Nullable Output<TeamsRuleRuleSettingsPayloadLogArgs> payloadLog;
+
+    /**
+     * @return Configure DLP Payload Logging settings for this rule.
+     * 
+     */
+    public Optional<Output<TeamsRuleRuleSettingsPayloadLogArgs>> payloadLog() {
+        return Optional.ofNullable(this.payloadLog);
+    }
+
+    /**
+     * Configure untrusted certificate settings for this rule.
+     * 
+     */
+    @Import(name="untrustedCert")
+    private @Nullable Output<TeamsRuleRuleSettingsUntrustedCertArgs> untrustedCert;
+
+    /**
+     * @return Configure untrusted certificate settings for this rule.
+     * 
+     */
+    public Optional<Output<TeamsRuleRuleSettingsUntrustedCertArgs>> untrustedCert() {
+        return Optional.ofNullable(this.untrustedCert);
+    }
+
     private TeamsRuleRuleSettingsArgs() {}
 
     private TeamsRuleRuleSettingsArgs(TeamsRuleRuleSettingsArgs $) {
@@ -185,6 +217,8 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         this.l4override = $.l4override;
         this.overrideHost = $.overrideHost;
         this.overrideIps = $.overrideIps;
+        this.payloadLog = $.payloadLog;
+        this.untrustedCert = $.untrustedCert;
     }
 
     public static Builder builder() {
@@ -423,6 +457,48 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
          */
         public Builder overrideIps(String... overrideIps) {
             return overrideIps(List.of(overrideIps));
+        }
+
+        /**
+         * @param payloadLog Configure DLP Payload Logging settings for this rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder payloadLog(@Nullable Output<TeamsRuleRuleSettingsPayloadLogArgs> payloadLog) {
+            $.payloadLog = payloadLog;
+            return this;
+        }
+
+        /**
+         * @param payloadLog Configure DLP Payload Logging settings for this rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder payloadLog(TeamsRuleRuleSettingsPayloadLogArgs payloadLog) {
+            return payloadLog(Output.of(payloadLog));
+        }
+
+        /**
+         * @param untrustedCert Configure untrusted certificate settings for this rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder untrustedCert(@Nullable Output<TeamsRuleRuleSettingsUntrustedCertArgs> untrustedCert) {
+            $.untrustedCert = untrustedCert;
+            return this;
+        }
+
+        /**
+         * @param untrustedCert Configure untrusted certificate settings for this rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder untrustedCert(TeamsRuleRuleSettingsUntrustedCertArgs untrustedCert) {
+            return untrustedCert(Output.of(untrustedCert));
         }
 
         public TeamsRuleRuleSettingsArgs build() {

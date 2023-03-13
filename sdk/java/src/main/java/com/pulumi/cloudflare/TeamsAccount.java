@@ -10,6 +10,7 @@ import com.pulumi.cloudflare.outputs.TeamsAccountAntivirus;
 import com.pulumi.cloudflare.outputs.TeamsAccountBlockPage;
 import com.pulumi.cloudflare.outputs.TeamsAccountFips;
 import com.pulumi.cloudflare.outputs.TeamsAccountLogging;
+import com.pulumi.cloudflare.outputs.TeamsAccountPayloadLog;
 import com.pulumi.cloudflare.outputs.TeamsAccountProxy;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -184,6 +185,20 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<TeamsAccountLogging>> logging() {
         return Codegen.optional(this.logging);
+    }
+    /**
+     * Configuration for DLP Payload Logging.
+     * 
+     */
+    @Export(name="payloadLog", type=TeamsAccountPayloadLog.class, parameters={})
+    private Output</* @Nullable */ TeamsAccountPayloadLog> payloadLog;
+
+    /**
+     * @return Configuration for DLP Payload Logging.
+     * 
+     */
+    public Output<Optional<TeamsAccountPayloadLog>> payloadLog() {
+        return Codegen.optional(this.payloadLog);
     }
     /**
      * Configuration block for specifying which protocols are proxied.

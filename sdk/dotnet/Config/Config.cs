@@ -32,17 +32,6 @@ namespace Pulumi.Cloudflare
 
         private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("cloudflare");
 
-        private static readonly __Value<string?> _accountId = new __Value<string?>(() => __config.Get("accountId"));
-        /// <summary>
-        /// Configure API client to always use a specific account. Alternatively, can be configured using the
-        /// `CLOUDFLARE_ACCOUNT_ID` environment variable.
-        /// </summary>
-        public static string? AccountId
-        {
-            get => _accountId.Get();
-            set => _accountId.Set(value);
-        }
-
         private static readonly __Value<string?> _apiBasePath = new __Value<string?>(() => __config.Get("apiBasePath"));
         /// <summary>
         /// Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`

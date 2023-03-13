@@ -1052,96 +1052,6 @@ export interface GetRulesetsFilterArgs {
     version?: pulumi.Input<string>;
 }
 
-export interface GetWafGroupsFilter {
-    /**
-     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-     */
-    mode?: string;
-    /**
-     * A regular expression matching the name of the WAF Rule Groups to lookup.
-     */
-    name?: string;
-}
-
-export interface GetWafGroupsFilterArgs {
-    /**
-     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-     */
-    mode?: pulumi.Input<string>;
-    /**
-     * A regular expression matching the name of the WAF Rule Groups to lookup.
-     */
-    name?: pulumi.Input<string>;
-}
-
-export interface GetWafPackagesFilter {
-    /**
-     * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-     */
-    actionMode?: string;
-    /**
-     * Detection mode of the WAF Rule Packages to lookup.
-     */
-    detectionMode?: string;
-    /**
-     * A regular expression matching the name of the WAF Rule Packages to lookup.
-     */
-    name?: string;
-    /**
-     * Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-     */
-    sensitivity?: string;
-}
-
-export interface GetWafPackagesFilterArgs {
-    /**
-     * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-     */
-    actionMode?: pulumi.Input<string>;
-    /**
-     * Detection mode of the WAF Rule Packages to lookup.
-     */
-    detectionMode?: pulumi.Input<string>;
-    /**
-     * A regular expression matching the name of the WAF Rule Packages to lookup.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-     */
-    sensitivity?: pulumi.Input<string>;
-}
-
-export interface GetWafRulesFilter {
-    /**
-     * A regular expression matching the description of the WAF Rules to lookup.
-     */
-    description?: string;
-    /**
-     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-     */
-    groupId?: string;
-    /**
-     * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-     */
-    mode?: string;
-}
-
-export interface GetWafRulesFilterArgs {
-    /**
-     * A regular expression matching the description of the WAF Rules to lookup.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-     */
-    groupId?: pulumi.Input<string>;
-    /**
-     * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-     */
-    mode?: pulumi.Input<string>;
-}
-
 export interface GetZonesFilter {
     /**
      * The account identifier to target for the resource.
@@ -1205,17 +1115,6 @@ export interface HealthcheckHeader {
      * A list of string values for the header.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface IpListItem {
-    /**
-     * A note that can be used to annotate the item.
-     */
-    comment?: pulumi.Input<string>;
-    /**
-     * The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
-     */
-    value: pulumi.Input<string>;
 }
 
 export interface ListItem {
@@ -1438,9 +1337,9 @@ export interface LoadBalancerRuleOverride {
      */
     sessionAffinity?: pulumi.Input<string>;
     /**
-     * See `sessionAffinityAttributes`.
+     * Configure cookie attributes for session affinity cookie.
      */
-    sessionAffinityAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sessionAffinityAttributes?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRuleOverrideSessionAffinityAttribute>[]>;
     /**
      * Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
      */
@@ -1515,6 +1414,40 @@ export interface LoadBalancerRuleOverrideRegionPool {
      * A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
      */
     region: pulumi.Input<string>;
+}
+
+export interface LoadBalancerRuleOverrideSessionAffinityAttribute {
+    /**
+     * Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+     */
+    samesite?: pulumi.Input<string>;
+    /**
+     * Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+     */
+    secure?: pulumi.Input<string>;
+    /**
+     * Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+     */
+    zeroDowntimeFailover?: pulumi.Input<string>;
+}
+
+export interface LoadBalancerSessionAffinityAttribute {
+    /**
+     * Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. Defaults to `0`.
+     */
+    drainDuration?: pulumi.Input<number>;
+    /**
+     * Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+     */
+    samesite?: pulumi.Input<string>;
+    /**
+     * Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+     */
+    secure?: pulumi.Input<string>;
+    /**
+     * Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+     */
+    zeroDowntimeFailover?: pulumi.Input<string>;
 }
 
 export interface ManagedHeadersManagedRequestHeader {
@@ -2453,6 +2386,21 @@ export interface SpectrumApplicationDns {
     type: pulumi.Input<string>;
 }
 
+export interface SpectrumApplicationEdgeIps {
+    /**
+     * The IP versions supported for inbound connections on Spectrum anycast IPs. Required when `type` is not `static`. Available values: `all`, `ipv4`, `ipv6`.
+     */
+    connectivity?: pulumi.Input<string>;
+    /**
+     * The collection of customer owned IPs to broadcast via anycast for this hostname and application. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+     */
+    ips?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The type of edge IP configuration specified. Available values: `dynamic`, `static`.
+     */
+    type: pulumi.Input<string>;
+}
+
 export interface SpectrumApplicationOriginDns {
     /**
      * Fully qualified domain name of the origin.
@@ -2575,6 +2523,13 @@ export interface TeamsAccountLoggingSettingsByRuleTypeL4 {
     logBlocks: pulumi.Input<boolean>;
 }
 
+export interface TeamsAccountPayloadLog {
+    /**
+     * Public key used to encrypt matched payloads.
+     */
+    publicKey: pulumi.Input<string>;
+}
+
 export interface TeamsAccountProxy {
     /**
      * Whether gateway proxy is enabled on gateway devices for TCP traffic.
@@ -2638,6 +2593,14 @@ export interface TeamsRuleRuleSettings {
      * The IPs to override matching DNS queries with.
      */
     overrideIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Configure DLP Payload Logging settings for this rule.
+     */
+    payloadLog?: pulumi.Input<inputs.TeamsRuleRuleSettingsPayloadLog>;
+    /**
+     * Configure untrusted certificate settings for this rule.
+     */
+    untrustedCert?: pulumi.Input<inputs.TeamsRuleRuleSettingsUntrustedCert>;
 }
 
 export interface TeamsRuleRuleSettingsBisoAdminControls {
@@ -2662,6 +2625,20 @@ export interface TeamsRuleRuleSettingsEgress {
 export interface TeamsRuleRuleSettingsL4override {
     ip: pulumi.Input<string>;
     port: pulumi.Input<number>;
+}
+
+export interface TeamsRuleRuleSettingsPayloadLog {
+    /**
+     * Indicator of rule enablement.
+     */
+    enabled: pulumi.Input<boolean>;
+}
+
+export interface TeamsRuleRuleSettingsUntrustedCert {
+    /**
+     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
+     */
+    action?: pulumi.Input<string>;
 }
 
 export interface TunnelConfigConfig {

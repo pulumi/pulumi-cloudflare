@@ -59,7 +59,7 @@ export class AccountMember extends pulumi.CustomResource {
     /**
      * Account ID to create the account member in.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    public readonly accountId!: pulumi.Output<string>;
     /**
      * The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
      */
@@ -92,6 +92,9 @@ export class AccountMember extends pulumi.CustomResource {
             resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as AccountMemberArgs | undefined;
+            if ((!args || args.accountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if ((!args || args.emailAddress === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'emailAddress'");
             }
@@ -137,7 +140,7 @@ export interface AccountMemberArgs {
     /**
      * Account ID to create the account member in.
      */
-    accountId?: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
      * The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
      */

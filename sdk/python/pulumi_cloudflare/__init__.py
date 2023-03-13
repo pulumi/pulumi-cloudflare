@@ -6,7 +6,6 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .access_application import *
-from .access_bookmark import *
 from .access_ca_certificate import *
 from .access_group import *
 from .access_identity_provider import *
@@ -21,7 +20,6 @@ from .account_member import *
 from .api_shield import *
 from .api_token import *
 from .argo import *
-from .argo_tunnel import *
 from .authenticated_origin_pulls import *
 from .authenticated_origin_pulls_certificate import *
 from .byo_ip_prefix import *
@@ -53,15 +51,11 @@ from .get_load_balancer_pools import *
 from .get_origin_ca_root_certificate import *
 from .get_record import *
 from .get_rulesets import *
-from .get_waf_groups import *
-from .get_waf_packages import *
-from .get_waf_rules import *
 from .get_zone import *
 from .get_zone_dnssec import *
 from .get_zones import *
 from .gre_tunnel import *
 from .healthcheck import *
-from .ip_list import *
 from .ipsec_tunnel import *
 from .list import *
 from .load_balancer import *
@@ -94,15 +88,12 @@ from .teams_proxy_endpoint import *
 from .teams_rule import *
 from .tiered_cache import *
 from .total_tls import *
+from .tunnel import *
 from .tunnel_config import *
 from .tunnel_route import *
 from .tunnel_virtual_network import *
 from .url_normalization_settings import *
 from .user_agent_blocking_rule import *
-from .waf_group import *
-from .waf_override import *
-from .waf_package import *
-from .waf_rule import *
 from .waiting_room import *
 from .waiting_room_event import *
 from .waiting_room_rules import *
@@ -136,14 +127,6 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/accessApplication:AccessApplication": "AccessApplication"
-  }
- },
- {
-  "pkg": "cloudflare",
-  "mod": "index/accessBookmark",
-  "fqn": "pulumi_cloudflare",
-  "classes": {
-   "cloudflare:index/accessBookmark:AccessBookmark": "AccessBookmark"
   }
  },
  {
@@ -256,14 +239,6 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/argo:Argo": "Argo"
-  }
- },
- {
-  "pkg": "cloudflare",
-  "mod": "index/argoTunnel",
-  "fqn": "pulumi_cloudflare",
-  "classes": {
-   "cloudflare:index/argoTunnel:ArgoTunnel": "ArgoTunnel"
   }
  },
  {
@@ -448,14 +423,6 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/healthcheck:Healthcheck": "Healthcheck"
-  }
- },
- {
-  "pkg": "cloudflare",
-  "mod": "index/ipList",
-  "fqn": "pulumi_cloudflare",
-  "classes": {
-   "cloudflare:index/ipList:IpList": "IpList"
   }
  },
  {
@@ -708,6 +675,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/tunnel",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/tunnel:Tunnel": "Tunnel"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/tunnelConfig",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -744,38 +719,6 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule": "UserAgentBlockingRule"
-  }
- },
- {
-  "pkg": "cloudflare",
-  "mod": "index/wafGroup",
-  "fqn": "pulumi_cloudflare",
-  "classes": {
-   "cloudflare:index/wafGroup:WafGroup": "WafGroup"
-  }
- },
- {
-  "pkg": "cloudflare",
-  "mod": "index/wafOverride",
-  "fqn": "pulumi_cloudflare",
-  "classes": {
-   "cloudflare:index/wafOverride:WafOverride": "WafOverride"
-  }
- },
- {
-  "pkg": "cloudflare",
-  "mod": "index/wafPackage",
-  "fqn": "pulumi_cloudflare",
-  "classes": {
-   "cloudflare:index/wafPackage:WafPackage": "WafPackage"
-  }
- },
- {
-  "pkg": "cloudflare",
-  "mod": "index/wafRule",
-  "fqn": "pulumi_cloudflare",
-  "classes": {
-   "cloudflare:index/wafRule:WafRule": "WafRule"
   }
  },
  {

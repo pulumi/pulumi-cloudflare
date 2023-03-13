@@ -82,6 +82,9 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
             resourceInputs["title"] = state ? state.title : undefined;
         } else {
             const args = argsOrState as WorkersKvNamespaceArgs | undefined;
+            if ((!args || args.accountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
@@ -114,7 +117,7 @@ export interface WorkersKvNamespaceArgs {
     /**
      * The account identifier to target for the resource.
      */
-    accountId?: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
      * Title value of the Worker KV Namespace.
      */

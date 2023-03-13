@@ -47,7 +47,7 @@ namespace Pulumi.Cloudflare
         /// Account ID to manage the zone resource in.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Whether to scan for DNS records on creation. Ignored after zone is created.
@@ -155,8 +155,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account ID to manage the zone resource in.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Whether to scan for DNS records on creation. Ignored after zone is created.

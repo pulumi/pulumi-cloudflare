@@ -13,14 +13,6 @@ public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("cloudflare");
 /**
- * Configure API client to always use a specific account. Alternatively, can be configured using the
- * `CLOUDFLARE_ACCOUNT_ID` environment variable.
- * 
- */
-    public Optional<String> accountId() {
-        return Codegen.stringProp("accountId").config(config).get();
-    }
-/**
  * Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
  * environment variable.
  * 

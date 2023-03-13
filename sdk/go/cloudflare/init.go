@@ -22,8 +22,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "cloudflare:index/accessApplication:AccessApplication":
 		r = &AccessApplication{}
-	case "cloudflare:index/accessBookmark:AccessBookmark":
-		r = &AccessBookmark{}
 	case "cloudflare:index/accessCaCertificate:AccessCaCertificate":
 		r = &AccessCaCertificate{}
 	case "cloudflare:index/accessGroup:AccessGroup":
@@ -52,8 +50,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApiToken{}
 	case "cloudflare:index/argo:Argo":
 		r = &Argo{}
-	case "cloudflare:index/argoTunnel:ArgoTunnel":
-		r = &ArgoTunnel{}
 	case "cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls":
 		r = &AuthenticatedOriginPulls{}
 	case "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate":
@@ -100,8 +96,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GreTunnel{}
 	case "cloudflare:index/healthcheck:Healthcheck":
 		r = &Healthcheck{}
-	case "cloudflare:index/ipList:IpList":
-		r = &IpList{}
 	case "cloudflare:index/ipsecTunnel:IpsecTunnel":
 		r = &IpsecTunnel{}
 	case "cloudflare:index/list:List":
@@ -164,6 +158,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TieredCache{}
 	case "cloudflare:index/totalTls:TotalTls":
 		r = &TotalTls{}
+	case "cloudflare:index/tunnel:Tunnel":
+		r = &Tunnel{}
 	case "cloudflare:index/tunnelConfig:TunnelConfig":
 		r = &TunnelConfig{}
 	case "cloudflare:index/tunnelRoute:TunnelRoute":
@@ -174,14 +170,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &UrlNormalizationSettings{}
 	case "cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule":
 		r = &UserAgentBlockingRule{}
-	case "cloudflare:index/wafGroup:WafGroup":
-		r = &WafGroup{}
-	case "cloudflare:index/wafOverride:WafOverride":
-		r = &WafOverride{}
-	case "cloudflare:index/wafPackage:WafPackage":
-		r = &WafPackage{}
-	case "cloudflare:index/wafRule:WafRule":
-		r = &WafRule{}
 	case "cloudflare:index/waitingRoom:WaitingRoom":
 		r = &WaitingRoom{}
 	case "cloudflare:index/waitingRoomEvent:WaitingRoomEvent":
@@ -241,11 +229,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/accessApplication",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"cloudflare",
-		"index/accessBookmark",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -316,11 +299,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/argo",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"cloudflare",
-		"index/argoTunnel",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -436,11 +414,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/healthcheck",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"cloudflare",
-		"index/ipList",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -600,6 +573,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/tunnel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/tunnelConfig",
 		&module{version},
 	)
@@ -621,26 +599,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/userAgentBlockingRule",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"cloudflare",
-		"index/wafGroup",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"cloudflare",
-		"index/wafOverride",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"cloudflare",
-		"index/wafPackage",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"cloudflare",
-		"index/wafRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

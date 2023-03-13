@@ -16,14 +16,6 @@ __config__ = pulumi.Config('cloudflare')
 
 class _ExportableConfig(types.ModuleType):
     @property
-    def account_id(self) -> Optional[str]:
-        """
-        Configure API client to always use a specific account. Alternatively, can be configured using the
-        `CLOUDFLARE_ACCOUNT_ID` environment variable.
-        """
-        return __config__.get('accountId')
-
-    @property
     def api_base_path(self) -> Optional[str]:
         """
         Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`

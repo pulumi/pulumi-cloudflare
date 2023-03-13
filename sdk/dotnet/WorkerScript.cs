@@ -117,7 +117,7 @@ namespace Pulumi.Cloudflare
         /// The account identifier to target for the resource.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         [Output("analyticsEngineBindings")]
         public Output<ImmutableArray<Outputs.WorkerScriptAnalyticsEngineBinding>> AnalyticsEngineBindings { get; private set; } = null!;
@@ -210,8 +210,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier to target for the resource.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         [Input("analyticsEngineBindings")]
         private InputList<Inputs.WorkerScriptAnalyticsEngineBindingArgs>? _analyticsEngineBindings;

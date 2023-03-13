@@ -9,11 +9,11 @@ import com.pulumi.cloudflare.outputs.LoadBalancerRuleOverrideLocationStrategy;
 import com.pulumi.cloudflare.outputs.LoadBalancerRuleOverridePopPool;
 import com.pulumi.cloudflare.outputs.LoadBalancerRuleOverrideRandomSteering;
 import com.pulumi.cloudflare.outputs.LoadBalancerRuleOverrideRegionPool;
+import com.pulumi.cloudflare.outputs.LoadBalancerRuleOverrideSessionAffinityAttribute;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -58,10 +58,10 @@ public final class LoadBalancerRuleOverride {
      */
     private @Nullable String sessionAffinity;
     /**
-     * @return See `session_affinity_attributes`.
+     * @return Configure cookie attributes for session affinity cookie.
      * 
      */
-    private @Nullable Map<String,String> sessionAffinityAttributes;
+    private @Nullable List<LoadBalancerRuleOverrideSessionAffinityAttribute> sessionAffinityAttributes;
     /**
      * @return Time, in seconds, until this load balancer&#39;s session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
      * 
@@ -135,11 +135,11 @@ public final class LoadBalancerRuleOverride {
         return Optional.ofNullable(this.sessionAffinity);
     }
     /**
-     * @return See `session_affinity_attributes`.
+     * @return Configure cookie attributes for session affinity cookie.
      * 
      */
-    public Map<String,String> sessionAffinityAttributes() {
-        return this.sessionAffinityAttributes == null ? Map.of() : this.sessionAffinityAttributes;
+    public List<LoadBalancerRuleOverrideSessionAffinityAttribute> sessionAffinityAttributes() {
+        return this.sessionAffinityAttributes == null ? List.of() : this.sessionAffinityAttributes;
     }
     /**
      * @return Time, in seconds, until this load balancer&#39;s session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
@@ -181,7 +181,7 @@ public final class LoadBalancerRuleOverride {
         private @Nullable List<LoadBalancerRuleOverrideRandomSteering> randomSteerings;
         private @Nullable List<LoadBalancerRuleOverrideRegionPool> regionPools;
         private @Nullable String sessionAffinity;
-        private @Nullable Map<String,String> sessionAffinityAttributes;
+        private @Nullable List<LoadBalancerRuleOverrideSessionAffinityAttribute> sessionAffinityAttributes;
         private @Nullable Integer sessionAffinityTtl;
         private @Nullable String steeringPolicy;
         private @Nullable Integer ttl;
@@ -270,9 +270,12 @@ public final class LoadBalancerRuleOverride {
             return this;
         }
         @CustomType.Setter
-        public Builder sessionAffinityAttributes(@Nullable Map<String,String> sessionAffinityAttributes) {
+        public Builder sessionAffinityAttributes(@Nullable List<LoadBalancerRuleOverrideSessionAffinityAttribute> sessionAffinityAttributes) {
             this.sessionAffinityAttributes = sessionAffinityAttributes;
             return this;
+        }
+        public Builder sessionAffinityAttributes(LoadBalancerRuleOverrideSessionAffinityAttribute... sessionAffinityAttributes) {
+            return sessionAffinityAttributes(List.of(sessionAffinityAttributes));
         }
         @CustomType.Setter
         public Builder sessionAffinityTtl(@Nullable Integer sessionAffinityTtl) {

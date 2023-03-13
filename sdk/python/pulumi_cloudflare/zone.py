@@ -14,24 +14,23 @@ __all__ = ['ZoneArgs', 'Zone']
 @pulumi.input_type
 class ZoneArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[str],
                  zone: pulumi.Input[str],
-                 account_id: Optional[pulumi.Input[str]] = None,
                  jump_start: Optional[pulumi.Input[bool]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Zone resource.
-        :param pulumi.Input[str] zone: The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] account_id: Account ID to manage the zone resource in.
+        :param pulumi.Input[str] zone: The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[bool] jump_start: Whether to scan for DNS records on creation. Ignored after zone is created.
         :param pulumi.Input[bool] paused: Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
         :param pulumi.Input[str] plan: The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
         :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "zone", zone)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if jump_start is not None:
             pulumi.set(__self__, "jump_start", jump_start)
         if paused is not None:
@@ -40,6 +39,18 @@ class ZoneArgs:
             pulumi.set(__self__, "plan", plan)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[str]:
+        """
+        Account ID to manage the zone resource in.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter
@@ -52,18 +63,6 @@ class ZoneArgs:
     @zone.setter
     def zone(self, value: pulumi.Input[str]):
         pulumi.set(self, "zone", value)
-
-    @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Account ID to manage the zone resource in.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter(name="jumpStart")
@@ -399,6 +398,8 @@ class Zone(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZoneArgs.__new__(ZoneArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["jump_start"] = jump_start
             __props__.__dict__["paused"] = paused
@@ -470,7 +471,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[str]]:
+    def account_id(self) -> pulumi.Output[str]:
         """
         Account ID to manage the zone resource in.
         """

@@ -53,6 +53,14 @@ namespace Pulumi.Cloudflare.Outputs
         /// The IPs to override matching DNS queries with.
         /// </summary>
         public readonly ImmutableArray<string> OverrideIps;
+        /// <summary>
+        /// Configure DLP Payload Logging settings for this rule.
+        /// </summary>
+        public readonly Outputs.TeamsRuleRuleSettingsPayloadLog? PayloadLog;
+        /// <summary>
+        /// Configure untrusted certificate settings for this rule.
+        /// </summary>
+        public readonly Outputs.TeamsRuleRuleSettingsUntrustedCert? UntrustedCert;
 
         [OutputConstructor]
         private TeamsRuleRuleSettings(
@@ -74,7 +82,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? overrideHost,
 
-            ImmutableArray<string> overrideIps)
+            ImmutableArray<string> overrideIps,
+
+            Outputs.TeamsRuleRuleSettingsPayloadLog? payloadLog,
+
+            Outputs.TeamsRuleRuleSettingsUntrustedCert? untrustedCert)
         {
             AddHeaders = addHeaders;
             BisoAdminControls = bisoAdminControls;
@@ -86,6 +98,8 @@ namespace Pulumi.Cloudflare.Outputs
             L4override = l4override;
             OverrideHost = overrideHost;
             OverrideIps = overrideIps;
+            PayloadLog = payloadLog;
+            UntrustedCert = untrustedCert;
         }
     }
 }

@@ -14,7 +14,6 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[str]] = None,
                  api_base_path: Optional[pulumi.Input[str]] = None,
                  api_client_logging: Optional[pulumi.Input[bool]] = None,
                  api_hostname: Optional[pulumi.Input[str]] = None,
@@ -28,8 +27,6 @@ class ProviderArgs:
                  rps: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[str] account_id: Configure API client to always use a specific account. Alternatively, can be configured using the
-               `CLOUDFLARE_ACCOUNT_ID` environment variable.
         :param pulumi.Input[str] api_base_path: Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
                environment variable.
         :param pulumi.Input[bool] api_client_logging: Whether to print logs from the API client (using the default log library logger). Alternatively, can be configured using
@@ -55,11 +52,6 @@ class ProviderArgs:
         :param pulumi.Input[int] rps: RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
                variable.
         """
-        if account_id is not None:
-            warnings.warn("""Use resource specific `account_id` attributes instead.""", DeprecationWarning)
-            pulumi.log.warn("""account_id is deprecated: Use resource specific `account_id` attributes instead.""")
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if api_base_path is not None:
             pulumi.set(__self__, "api_base_path", api_base_path)
         if api_client_logging is None:
@@ -92,19 +84,6 @@ class ProviderArgs:
             rps = (_utilities.get_env_int('CLOUDFLARE_RPS') or 4)
         if rps is not None:
             pulumi.set(__self__, "rps", rps)
-
-    @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Configure API client to always use a specific account. Alternatively, can be configured using the
-        `CLOUDFLARE_ACCOUNT_ID` environment variable.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter(name="apiBasePath")
@@ -257,7 +236,6 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[str]] = None,
                  api_base_path: Optional[pulumi.Input[str]] = None,
                  api_client_logging: Optional[pulumi.Input[bool]] = None,
                  api_hostname: Optional[pulumi.Input[str]] = None,
@@ -278,8 +256,6 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Configure API client to always use a specific account. Alternatively, can be configured using the
-               `CLOUDFLARE_ACCOUNT_ID` environment variable.
         :param pulumi.Input[str] api_base_path: Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
                environment variable.
         :param pulumi.Input[bool] api_client_logging: Whether to print logs from the API client (using the default log library logger). Alternatively, can be configured using
@@ -332,7 +308,6 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[str]] = None,
                  api_base_path: Optional[pulumi.Input[str]] = None,
                  api_client_logging: Optional[pulumi.Input[bool]] = None,
                  api_hostname: Optional[pulumi.Input[str]] = None,
@@ -353,10 +328,6 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
-            if account_id is not None and not opts.urn:
-                warnings.warn("""Use resource specific `account_id` attributes instead.""", DeprecationWarning)
-                pulumi.log.warn("""account_id is deprecated: Use resource specific `account_id` attributes instead.""")
-            __props__.__dict__["account_id"] = account_id
             __props__.__dict__["api_base_path"] = api_base_path
             if api_client_logging is None:
                 api_client_logging = (_utilities.get_env_bool('CLOUDFLARE_API_CLIENT_LOGGING') or False)
@@ -383,15 +354,6 @@ class Provider(pulumi.ProviderResource):
             resource_name,
             __props__,
             opts)
-
-    @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        Configure API client to always use a specific account. Alternatively, can be configured using the
-        `CLOUDFLARE_ACCOUNT_ID` environment variable.
-        """
-        return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="apiBasePath")

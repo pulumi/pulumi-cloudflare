@@ -10,11 +10,6 @@ export type AccessApplication = import("./accessApplication").AccessApplication;
 export const AccessApplication: typeof import("./accessApplication").AccessApplication = null as any;
 utilities.lazyLoad(exports, ["AccessApplication"], () => require("./accessApplication"));
 
-export { AccessBookmarkArgs, AccessBookmarkState } from "./accessBookmark";
-export type AccessBookmark = import("./accessBookmark").AccessBookmark;
-export const AccessBookmark: typeof import("./accessBookmark").AccessBookmark = null as any;
-utilities.lazyLoad(exports, ["AccessBookmark"], () => require("./accessBookmark"));
-
 export { AccessCaCertificateArgs, AccessCaCertificateState } from "./accessCaCertificate";
 export type AccessCaCertificate = import("./accessCaCertificate").AccessCaCertificate;
 export const AccessCaCertificate: typeof import("./accessCaCertificate").AccessCaCertificate = null as any;
@@ -84,11 +79,6 @@ export { ArgoArgs, ArgoState } from "./argo";
 export type Argo = import("./argo").Argo;
 export const Argo: typeof import("./argo").Argo = null as any;
 utilities.lazyLoad(exports, ["Argo"], () => require("./argo"));
-
-export { ArgoTunnelArgs, ArgoTunnelState } from "./argoTunnel";
-export type ArgoTunnel = import("./argoTunnel").ArgoTunnel;
-export const ArgoTunnel: typeof import("./argoTunnel").ArgoTunnel = null as any;
-utilities.lazyLoad(exports, ["ArgoTunnel"], () => require("./argoTunnel"));
 
 export { AuthenticatedOriginPullsArgs, AuthenticatedOriginPullsState } from "./authenticatedOriginPulls";
 export type AuthenticatedOriginPulls = import("./authenticatedOriginPulls").AuthenticatedOriginPulls;
@@ -243,21 +233,6 @@ export const getRulesets: typeof import("./getRulesets").getRulesets = null as a
 export const getRulesetsOutput: typeof import("./getRulesets").getRulesetsOutput = null as any;
 utilities.lazyLoad(exports, ["getRulesets","getRulesetsOutput"], () => require("./getRulesets"));
 
-export { GetWafGroupsArgs, GetWafGroupsResult, GetWafGroupsOutputArgs } from "./getWafGroups";
-export const getWafGroups: typeof import("./getWafGroups").getWafGroups = null as any;
-export const getWafGroupsOutput: typeof import("./getWafGroups").getWafGroupsOutput = null as any;
-utilities.lazyLoad(exports, ["getWafGroups","getWafGroupsOutput"], () => require("./getWafGroups"));
-
-export { GetWafPackagesArgs, GetWafPackagesResult, GetWafPackagesOutputArgs } from "./getWafPackages";
-export const getWafPackages: typeof import("./getWafPackages").getWafPackages = null as any;
-export const getWafPackagesOutput: typeof import("./getWafPackages").getWafPackagesOutput = null as any;
-utilities.lazyLoad(exports, ["getWafPackages","getWafPackagesOutput"], () => require("./getWafPackages"));
-
-export { GetWafRulesArgs, GetWafRulesResult, GetWafRulesOutputArgs } from "./getWafRules";
-export const getWafRules: typeof import("./getWafRules").getWafRules = null as any;
-export const getWafRulesOutput: typeof import("./getWafRules").getWafRulesOutput = null as any;
-utilities.lazyLoad(exports, ["getWafRules","getWafRulesOutput"], () => require("./getWafRules"));
-
 export { GetZoneArgs, GetZoneResult, GetZoneOutputArgs } from "./getZone";
 export const getZone: typeof import("./getZone").getZone = null as any;
 export const getZoneOutput: typeof import("./getZone").getZoneOutput = null as any;
@@ -282,11 +257,6 @@ export { HealthcheckArgs, HealthcheckState } from "./healthcheck";
 export type Healthcheck = import("./healthcheck").Healthcheck;
 export const Healthcheck: typeof import("./healthcheck").Healthcheck = null as any;
 utilities.lazyLoad(exports, ["Healthcheck"], () => require("./healthcheck"));
-
-export { IpListArgs, IpListState } from "./ipList";
-export type IpList = import("./ipList").IpList;
-export const IpList: typeof import("./ipList").IpList = null as any;
-utilities.lazyLoad(exports, ["IpList"], () => require("./ipList"));
 
 export { IpsecTunnelArgs, IpsecTunnelState } from "./ipsecTunnel";
 export type IpsecTunnel = import("./ipsecTunnel").IpsecTunnel;
@@ -448,6 +418,11 @@ export type TotalTls = import("./totalTls").TotalTls;
 export const TotalTls: typeof import("./totalTls").TotalTls = null as any;
 utilities.lazyLoad(exports, ["TotalTls"], () => require("./totalTls"));
 
+export { TunnelArgs, TunnelState } from "./tunnel";
+export type Tunnel = import("./tunnel").Tunnel;
+export const Tunnel: typeof import("./tunnel").Tunnel = null as any;
+utilities.lazyLoad(exports, ["Tunnel"], () => require("./tunnel"));
+
 export { TunnelConfigArgs, TunnelConfigState } from "./tunnelConfig";
 export type TunnelConfig = import("./tunnelConfig").TunnelConfig;
 export const TunnelConfig: typeof import("./tunnelConfig").TunnelConfig = null as any;
@@ -472,26 +447,6 @@ export { UserAgentBlockingRuleArgs, UserAgentBlockingRuleState } from "./userAge
 export type UserAgentBlockingRule = import("./userAgentBlockingRule").UserAgentBlockingRule;
 export const UserAgentBlockingRule: typeof import("./userAgentBlockingRule").UserAgentBlockingRule = null as any;
 utilities.lazyLoad(exports, ["UserAgentBlockingRule"], () => require("./userAgentBlockingRule"));
-
-export { WafGroupArgs, WafGroupState } from "./wafGroup";
-export type WafGroup = import("./wafGroup").WafGroup;
-export const WafGroup: typeof import("./wafGroup").WafGroup = null as any;
-utilities.lazyLoad(exports, ["WafGroup"], () => require("./wafGroup"));
-
-export { WafOverrideArgs, WafOverrideState } from "./wafOverride";
-export type WafOverride = import("./wafOverride").WafOverride;
-export const WafOverride: typeof import("./wafOverride").WafOverride = null as any;
-utilities.lazyLoad(exports, ["WafOverride"], () => require("./wafOverride"));
-
-export { WafPackageArgs, WafPackageState } from "./wafPackage";
-export type WafPackage = import("./wafPackage").WafPackage;
-export const WafPackage: typeof import("./wafPackage").WafPackage = null as any;
-utilities.lazyLoad(exports, ["WafPackage"], () => require("./wafPackage"));
-
-export { WafRuleArgs, WafRuleState } from "./wafRule";
-export type WafRule = import("./wafRule").WafRule;
-export const WafRule: typeof import("./wafRule").WafRule = null as any;
-utilities.lazyLoad(exports, ["WafRule"], () => require("./wafRule"));
 
 export { WaitingRoomArgs, WaitingRoomState } from "./waitingRoom";
 export type WaitingRoom = import("./waitingRoom").WaitingRoom;
@@ -579,8 +534,6 @@ const _module = {
         switch (type) {
             case "cloudflare:index/accessApplication:AccessApplication":
                 return new AccessApplication(name, <any>undefined, { urn })
-            case "cloudflare:index/accessBookmark:AccessBookmark":
-                return new AccessBookmark(name, <any>undefined, { urn })
             case "cloudflare:index/accessCaCertificate:AccessCaCertificate":
                 return new AccessCaCertificate(name, <any>undefined, { urn })
             case "cloudflare:index/accessGroup:AccessGroup":
@@ -609,8 +562,6 @@ const _module = {
                 return new ApiToken(name, <any>undefined, { urn })
             case "cloudflare:index/argo:Argo":
                 return new Argo(name, <any>undefined, { urn })
-            case "cloudflare:index/argoTunnel:ArgoTunnel":
-                return new ArgoTunnel(name, <any>undefined, { urn })
             case "cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls":
                 return new AuthenticatedOriginPulls(name, <any>undefined, { urn })
             case "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate":
@@ -657,8 +608,6 @@ const _module = {
                 return new GreTunnel(name, <any>undefined, { urn })
             case "cloudflare:index/healthcheck:Healthcheck":
                 return new Healthcheck(name, <any>undefined, { urn })
-            case "cloudflare:index/ipList:IpList":
-                return new IpList(name, <any>undefined, { urn })
             case "cloudflare:index/ipsecTunnel:IpsecTunnel":
                 return new IpsecTunnel(name, <any>undefined, { urn })
             case "cloudflare:index/list:List":
@@ -721,6 +670,8 @@ const _module = {
                 return new TieredCache(name, <any>undefined, { urn })
             case "cloudflare:index/totalTls:TotalTls":
                 return new TotalTls(name, <any>undefined, { urn })
+            case "cloudflare:index/tunnel:Tunnel":
+                return new Tunnel(name, <any>undefined, { urn })
             case "cloudflare:index/tunnelConfig:TunnelConfig":
                 return new TunnelConfig(name, <any>undefined, { urn })
             case "cloudflare:index/tunnelRoute:TunnelRoute":
@@ -731,14 +682,6 @@ const _module = {
                 return new UrlNormalizationSettings(name, <any>undefined, { urn })
             case "cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule":
                 return new UserAgentBlockingRule(name, <any>undefined, { urn })
-            case "cloudflare:index/wafGroup:WafGroup":
-                return new WafGroup(name, <any>undefined, { urn })
-            case "cloudflare:index/wafOverride:WafOverride":
-                return new WafOverride(name, <any>undefined, { urn })
-            case "cloudflare:index/wafPackage:WafPackage":
-                return new WafPackage(name, <any>undefined, { urn })
-            case "cloudflare:index/wafRule:WafRule":
-                return new WafRule(name, <any>undefined, { urn })
             case "cloudflare:index/waitingRoom:WaitingRoom":
                 return new WaitingRoom(name, <any>undefined, { urn })
             case "cloudflare:index/waitingRoomEvent:WaitingRoomEvent":
@@ -773,7 +716,6 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessApplication", _module)
-pulumi.runtime.registerResourceModule("cloudflare", "index/accessBookmark", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessCaCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessGroup", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessIdentityProvider", _module)
@@ -788,7 +730,6 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/accountMember", _modu
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiShield", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiToken", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/argo", _module)
-pulumi.runtime.registerResourceModule("cloudflare", "index/argoTunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/authenticatedOriginPulls", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/authenticatedOriginPullsCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/byoIpPrefix", _module)
@@ -812,7 +753,6 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/filter", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/firewallRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/greTunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/healthcheck", _module)
-pulumi.runtime.registerResourceModule("cloudflare", "index/ipList", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/ipsecTunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/list", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/loadBalancer", _module)
@@ -844,15 +784,12 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/teamsProxyEndpoint", 
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tieredCache", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/totalTls", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/tunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelConfig", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelVirtualNetwork", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/urlNormalizationSettings", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/userAgentBlockingRule", _module)
-pulumi.runtime.registerResourceModule("cloudflare", "index/wafGroup", _module)
-pulumi.runtime.registerResourceModule("cloudflare", "index/wafOverride", _module)
-pulumi.runtime.registerResourceModule("cloudflare", "index/wafPackage", _module)
-pulumi.runtime.registerResourceModule("cloudflare", "index/wafRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoom", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoomEvent", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoomRules", _module)

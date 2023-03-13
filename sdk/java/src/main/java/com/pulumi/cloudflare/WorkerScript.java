@@ -119,14 +119,14 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
      * @return The account identifier to target for the resource.
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     @Export(name="analyticsEngineBindings", type=List.class, parameters={WorkerScriptAnalyticsEngineBinding.class})
     private Output</* @Nullable */ List<WorkerScriptAnalyticsEngineBinding>> analyticsEngineBindings;

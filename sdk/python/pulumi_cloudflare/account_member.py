@@ -14,23 +14,34 @@ __all__ = ['AccountMemberArgs', 'AccountMember']
 @pulumi.input_type
 class AccountMemberArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[str],
                  email_address: pulumi.Input[str],
                  role_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 account_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccountMember resource.
+        :param pulumi.Input[str] account_id: Account ID to create the account member in.
         :param pulumi.Input[str] email_address: The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: List of account role IDs that you want to assign to a member.
-        :param pulumi.Input[str] account_id: Account ID to create the account member in.
         :param pulumi.Input[str] status: A member's status in the account. Available values: `accepted`, `pending`.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "email_address", email_address)
         pulumi.set(__self__, "role_ids", role_ids)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[str]:
+        """
+        Account ID to create the account member in.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter(name="emailAddress")
@@ -55,18 +66,6 @@ class AccountMemberArgs:
     @role_ids.setter
     def role_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "role_ids", value)
-
-    @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Account ID to create the account member in.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter
@@ -250,6 +249,8 @@ class AccountMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccountMemberArgs.__new__(AccountMemberArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if email_address is None and not opts.urn:
                 raise TypeError("Missing required property 'email_address'")
@@ -296,7 +297,7 @@ class AccountMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[str]]:
+    def account_id(self) -> pulumi.Output[str]:
         """
         Account ID to create the account member in.
         """

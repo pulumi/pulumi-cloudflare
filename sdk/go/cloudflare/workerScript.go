@@ -27,7 +27,7 @@ import (
 //	"encoding/base64"
 //	"os"
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -125,7 +125,7 @@ type WorkerScript struct {
 	pulumi.CustomResourceState
 
 	// The account identifier to target for the resource.
-	AccountId               pulumi.StringPtrOutput                        `pulumi:"accountId"`
+	AccountId               pulumi.StringOutput                           `pulumi:"accountId"`
 	AnalyticsEngineBindings WorkerScriptAnalyticsEngineBindingArrayOutput `pulumi:"analyticsEngineBindings"`
 	// The script content.
 	Content             pulumi.StringOutput                       `pulumi:"content"`
@@ -149,6 +149,9 @@ func NewWorkerScript(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Content == nil {
 		return nil, errors.New("invalid value for required argument 'Content'")
 	}
@@ -220,7 +223,7 @@ func (WorkerScriptState) ElementType() reflect.Type {
 
 type workerScriptArgs struct {
 	// The account identifier to target for the resource.
-	AccountId               *string                              `pulumi:"accountId"`
+	AccountId               string                               `pulumi:"accountId"`
 	AnalyticsEngineBindings []WorkerScriptAnalyticsEngineBinding `pulumi:"analyticsEngineBindings"`
 	// The script content.
 	Content             string                           `pulumi:"content"`
@@ -240,7 +243,7 @@ type workerScriptArgs struct {
 // The set of arguments for constructing a WorkerScript resource.
 type WorkerScriptArgs struct {
 	// The account identifier to target for the resource.
-	AccountId               pulumi.StringPtrInput
+	AccountId               pulumi.StringInput
 	AnalyticsEngineBindings WorkerScriptAnalyticsEngineBindingArrayInput
 	// The script content.
 	Content             pulumi.StringInput
@@ -345,8 +348,8 @@ func (o WorkerScriptOutput) ToWorkerScriptOutputWithContext(ctx context.Context)
 }
 
 // The account identifier to target for the resource.
-func (o WorkerScriptOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkerScript) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o WorkerScriptOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o WorkerScriptOutput) AnalyticsEngineBindings() WorkerScriptAnalyticsEngineBindingArrayOutput {

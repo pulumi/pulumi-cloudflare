@@ -114,6 +114,10 @@ export class TeamsAccount extends pulumi.CustomResource {
     public readonly fips!: pulumi.Output<outputs.TeamsAccountFips | undefined>;
     public readonly logging!: pulumi.Output<outputs.TeamsAccountLogging | undefined>;
     /**
+     * Configuration for DLP Payload Logging.
+     */
+    public readonly payloadLog!: pulumi.Output<outputs.TeamsAccountPayloadLog | undefined>;
+    /**
      * Configuration block for specifying which protocols are proxied.
      */
     public readonly proxy!: pulumi.Output<outputs.TeamsAccountProxy | undefined>;
@@ -145,6 +149,7 @@ export class TeamsAccount extends pulumi.CustomResource {
             resourceInputs["blockPage"] = state ? state.blockPage : undefined;
             resourceInputs["fips"] = state ? state.fips : undefined;
             resourceInputs["logging"] = state ? state.logging : undefined;
+            resourceInputs["payloadLog"] = state ? state.payloadLog : undefined;
             resourceInputs["proxy"] = state ? state.proxy : undefined;
             resourceInputs["tlsDecryptEnabled"] = state ? state.tlsDecryptEnabled : undefined;
             resourceInputs["urlBrowserIsolationEnabled"] = state ? state.urlBrowserIsolationEnabled : undefined;
@@ -159,6 +164,7 @@ export class TeamsAccount extends pulumi.CustomResource {
             resourceInputs["blockPage"] = args ? args.blockPage : undefined;
             resourceInputs["fips"] = args ? args.fips : undefined;
             resourceInputs["logging"] = args ? args.logging : undefined;
+            resourceInputs["payloadLog"] = args ? args.payloadLog : undefined;
             resourceInputs["proxy"] = args ? args.proxy : undefined;
             resourceInputs["tlsDecryptEnabled"] = args ? args.tlsDecryptEnabled : undefined;
             resourceInputs["urlBrowserIsolationEnabled"] = args ? args.urlBrowserIsolationEnabled : undefined;
@@ -193,6 +199,10 @@ export interface TeamsAccountState {
      */
     fips?: pulumi.Input<inputs.TeamsAccountFips>;
     logging?: pulumi.Input<inputs.TeamsAccountLogging>;
+    /**
+     * Configuration for DLP Payload Logging.
+     */
+    payloadLog?: pulumi.Input<inputs.TeamsAccountPayloadLog>;
     /**
      * Configuration block for specifying which protocols are proxied.
      */
@@ -232,6 +242,10 @@ export interface TeamsAccountArgs {
      */
     fips?: pulumi.Input<inputs.TeamsAccountFips>;
     logging?: pulumi.Input<inputs.TeamsAccountLogging>;
+    /**
+     * Configuration for DLP Payload Logging.
+     */
+    payloadLog?: pulumi.Input<inputs.TeamsAccountPayloadLog>;
     /**
      * Configuration block for specifying which protocols are proxied.
      */

@@ -8,14 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
-// Configure API client to always use a specific account. Alternatively, can be configured using the
-// `CLOUDFLARE_ACCOUNT_ID` environment variable.
-//
-// Deprecated: Use resource specific `account_id` attributes instead.
-func GetAccountId(ctx *pulumi.Context) string {
-	return config.Get(ctx, "cloudflare:accountId")
-}
-
 // Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
 // environment variable.
 func GetApiBasePath(ctx *pulumi.Context) string {

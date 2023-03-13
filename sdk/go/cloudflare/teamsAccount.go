@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -98,6 +98,8 @@ type TeamsAccount struct {
 	// Configure compliance with Federal Information Processing Standards.
 	Fips    TeamsAccountFipsPtrOutput    `pulumi:"fips"`
 	Logging TeamsAccountLoggingPtrOutput `pulumi:"logging"`
+	// Configuration for DLP Payload Logging.
+	PayloadLog TeamsAccountPayloadLogPtrOutput `pulumi:"payloadLog"`
 	// Configuration block for specifying which protocols are proxied.
 	Proxy TeamsAccountProxyPtrOutput `pulumi:"proxy"`
 	// Indicator that decryption of TLS traffic is enabled.
@@ -149,6 +151,8 @@ type teamsAccountState struct {
 	// Configure compliance with Federal Information Processing Standards.
 	Fips    *TeamsAccountFips    `pulumi:"fips"`
 	Logging *TeamsAccountLogging `pulumi:"logging"`
+	// Configuration for DLP Payload Logging.
+	PayloadLog *TeamsAccountPayloadLog `pulumi:"payloadLog"`
 	// Configuration block for specifying which protocols are proxied.
 	Proxy *TeamsAccountProxy `pulumi:"proxy"`
 	// Indicator that decryption of TLS traffic is enabled.
@@ -169,6 +173,8 @@ type TeamsAccountState struct {
 	// Configure compliance with Federal Information Processing Standards.
 	Fips    TeamsAccountFipsPtrInput
 	Logging TeamsAccountLoggingPtrInput
+	// Configuration for DLP Payload Logging.
+	PayloadLog TeamsAccountPayloadLogPtrInput
 	// Configuration block for specifying which protocols are proxied.
 	Proxy TeamsAccountProxyPtrInput
 	// Indicator that decryption of TLS traffic is enabled.
@@ -193,6 +199,8 @@ type teamsAccountArgs struct {
 	// Configure compliance with Federal Information Processing Standards.
 	Fips    *TeamsAccountFips    `pulumi:"fips"`
 	Logging *TeamsAccountLogging `pulumi:"logging"`
+	// Configuration for DLP Payload Logging.
+	PayloadLog *TeamsAccountPayloadLog `pulumi:"payloadLog"`
 	// Configuration block for specifying which protocols are proxied.
 	Proxy *TeamsAccountProxy `pulumi:"proxy"`
 	// Indicator that decryption of TLS traffic is enabled.
@@ -214,6 +222,8 @@ type TeamsAccountArgs struct {
 	// Configure compliance with Federal Information Processing Standards.
 	Fips    TeamsAccountFipsPtrInput
 	Logging TeamsAccountLoggingPtrInput
+	// Configuration for DLP Payload Logging.
+	PayloadLog TeamsAccountPayloadLogPtrInput
 	// Configuration block for specifying which protocols are proxied.
 	Proxy TeamsAccountProxyPtrInput
 	// Indicator that decryption of TLS traffic is enabled.
@@ -336,6 +346,11 @@ func (o TeamsAccountOutput) Fips() TeamsAccountFipsPtrOutput {
 
 func (o TeamsAccountOutput) Logging() TeamsAccountLoggingPtrOutput {
 	return o.ApplyT(func(v *TeamsAccount) TeamsAccountLoggingPtrOutput { return v.Logging }).(TeamsAccountLoggingPtrOutput)
+}
+
+// Configuration for DLP Payload Logging.
+func (o TeamsAccountOutput) PayloadLog() TeamsAccountPayloadLogPtrOutput {
+	return o.ApplyT(func(v *TeamsAccount) TeamsAccountPayloadLogPtrOutput { return v.PayloadLog }).(TeamsAccountPayloadLogPtrOutput)
 }
 
 // Configuration block for specifying which protocols are proxied.

@@ -44,9 +44,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? SessionAffinity;
         /// <summary>
-        /// See `session_affinity_attributes`.
+        /// Configure cookie attributes for session affinity cookie.
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? SessionAffinityAttributes;
+        public readonly ImmutableArray<Outputs.LoadBalancerRuleOverrideSessionAffinityAttribute> SessionAffinityAttributes;
         /// <summary>
         /// Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
         /// </summary>
@@ -80,7 +80,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? sessionAffinity,
 
-            ImmutableDictionary<string, string>? sessionAffinityAttributes,
+            ImmutableArray<Outputs.LoadBalancerRuleOverrideSessionAffinityAttribute> sessionAffinityAttributes,
 
             int? sessionAffinityTtl,
 

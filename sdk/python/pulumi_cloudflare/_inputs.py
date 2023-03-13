@@ -82,7 +82,6 @@ __all__ = [
     'EmailRoutingRuleMatcherArgs',
     'FallbackDomainDomainArgs',
     'HealthcheckHeaderArgs',
-    'IpListItemArgs',
     'ListItemArgs',
     'ListItemValueArgs',
     'ListItemValueRedirectArgs',
@@ -106,6 +105,8 @@ __all__ = [
     'LoadBalancerRuleOverridePopPoolArgs',
     'LoadBalancerRuleOverrideRandomSteeringArgs',
     'LoadBalancerRuleOverrideRegionPoolArgs',
+    'LoadBalancerRuleOverrideSessionAffinityAttributeArgs',
+    'LoadBalancerSessionAffinityAttributeArgs',
     'ManagedHeadersManagedRequestHeaderArgs',
     'ManagedHeadersManagedResponseHeaderArgs',
     'NotificationPolicyEmailIntegrationArgs',
@@ -170,6 +171,7 @@ __all__ = [
     'RulesetRuleLoggingArgs',
     'RulesetRuleRatelimitArgs',
     'SpectrumApplicationDnsArgs',
+    'SpectrumApplicationEdgeIpsArgs',
     'SpectrumApplicationOriginDnsArgs',
     'SpectrumApplicationOriginPortRangeArgs',
     'SplitTunnelTunnelArgs',
@@ -181,6 +183,7 @@ __all__ = [
     'TeamsAccountLoggingSettingsByRuleTypeDnsArgs',
     'TeamsAccountLoggingSettingsByRuleTypeHttpArgs',
     'TeamsAccountLoggingSettingsByRuleTypeL4Args',
+    'TeamsAccountPayloadLogArgs',
     'TeamsAccountProxyArgs',
     'TeamsLocationNetworkArgs',
     'TeamsRuleRuleSettingsArgs',
@@ -188,6 +191,8 @@ __all__ = [
     'TeamsRuleRuleSettingsCheckSessionArgs',
     'TeamsRuleRuleSettingsEgressArgs',
     'TeamsRuleRuleSettingsL4overrideArgs',
+    'TeamsRuleRuleSettingsPayloadLogArgs',
+    'TeamsRuleRuleSettingsUntrustedCertArgs',
     'TunnelConfigConfigArgs',
     'TunnelConfigConfigIngressRuleArgs',
     'TunnelConfigConfigOriginRequestArgs',
@@ -218,9 +223,6 @@ __all__ = [
     'GetLoadBalancerPoolsPoolOriginArgs',
     'GetLoadBalancerPoolsPoolOriginHeaderArgs',
     'GetRulesetsFilterArgs',
-    'GetWafGroupsFilterArgs',
-    'GetWafPackagesFilterArgs',
-    'GetWafRulesFilterArgs',
     'GetZonesFilterArgs',
 ]
 
@@ -5082,44 +5084,6 @@ class HealthcheckHeaderArgs:
 
 
 @pulumi.input_type
-class IpListItemArgs:
-    def __init__(__self__, *,
-                 value: pulumi.Input[str],
-                 comment: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] value: The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
-        :param pulumi.Input[str] comment: A note that can be used to annotate the item.
-        """
-        pulumi.set(__self__, "value", value)
-        if comment is not None:
-            pulumi.set(__self__, "comment", comment)
-
-    @property
-    @pulumi.getter
-    def value(self) -> pulumi.Input[str]:
-        """
-        The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: pulumi.Input[str]):
-        pulumi.set(self, "value", value)
-
-    @property
-    @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[str]]:
-        """
-        A note that can be used to annotate the item.
-        """
-        return pulumi.get(self, "comment")
-
-    @comment.setter
-    def comment(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "comment", value)
-
-
-@pulumi.input_type
 class ListItemArgs:
     def __init__(__self__, *,
                  value: pulumi.Input['ListItemValueArgs'],
@@ -5907,7 +5871,7 @@ class LoadBalancerRuleOverrideArgs:
                  random_steerings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRandomSteeringArgs']]]] = None,
                  region_pools: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRegionPoolArgs']]]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
-                 session_affinity_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 session_affinity_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideSessionAffinityAttributeArgs']]]] = None,
                  session_affinity_ttl: Optional[pulumi.Input[int]] = None,
                  steering_policy: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None):
@@ -5919,7 +5883,7 @@ class LoadBalancerRuleOverrideArgs:
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRandomSteeringArgs']]] random_steerings: Configures pool weights for random steering. When the `steering_policy="random"`, a random pool is selected with probability proportional to these pool weights.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRegionPoolArgs']]] region_pools: A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
         :param pulumi.Input[str] session_affinity: Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ip_cookie`. Defaults to `none`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] session_affinity_attributes: See `session_affinity_attributes`.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideSessionAffinityAttributeArgs']]] session_affinity_attributes: Configure cookie attributes for session affinity cookie.
         :param pulumi.Input[int] session_affinity_ttl: Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
         :param pulumi.Input[str] steering_policy: The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `""` Defaults to `""`.
         :param pulumi.Input[int] ttl: Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
@@ -6055,14 +6019,14 @@ class LoadBalancerRuleOverrideArgs:
 
     @property
     @pulumi.getter(name="sessionAffinityAttributes")
-    def session_affinity_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def session_affinity_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideSessionAffinityAttributeArgs']]]]:
         """
-        See `session_affinity_attributes`.
+        Configure cookie attributes for session affinity cookie.
         """
         return pulumi.get(self, "session_affinity_attributes")
 
     @session_affinity_attributes.setter
-    def session_affinity_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def session_affinity_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideSessionAffinityAttributeArgs']]]]):
         pulumi.set(self, "session_affinity_attributes", value)
 
     @property
@@ -6312,6 +6276,132 @@ class LoadBalancerRuleOverrideRegionPoolArgs:
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class LoadBalancerRuleOverrideSessionAffinityAttributeArgs:
+    def __init__(__self__, *,
+                 samesite: Optional[pulumi.Input[str]] = None,
+                 secure: Optional[pulumi.Input[str]] = None,
+                 zero_downtime_failover: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] samesite: Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+        :param pulumi.Input[str] secure: Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+        :param pulumi.Input[str] zero_downtime_failover: Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+        """
+        if samesite is not None:
+            pulumi.set(__self__, "samesite", samesite)
+        if secure is not None:
+            pulumi.set(__self__, "secure", secure)
+        if zero_downtime_failover is not None:
+            pulumi.set(__self__, "zero_downtime_failover", zero_downtime_failover)
+
+    @property
+    @pulumi.getter
+    def samesite(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+        """
+        return pulumi.get(self, "samesite")
+
+    @samesite.setter
+    def samesite(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "samesite", value)
+
+    @property
+    @pulumi.getter
+    def secure(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+        """
+        return pulumi.get(self, "secure")
+
+    @secure.setter
+    def secure(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secure", value)
+
+    @property
+    @pulumi.getter(name="zeroDowntimeFailover")
+    def zero_downtime_failover(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+        """
+        return pulumi.get(self, "zero_downtime_failover")
+
+    @zero_downtime_failover.setter
+    def zero_downtime_failover(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zero_downtime_failover", value)
+
+
+@pulumi.input_type
+class LoadBalancerSessionAffinityAttributeArgs:
+    def __init__(__self__, *,
+                 drain_duration: Optional[pulumi.Input[int]] = None,
+                 samesite: Optional[pulumi.Input[str]] = None,
+                 secure: Optional[pulumi.Input[str]] = None,
+                 zero_downtime_failover: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] drain_duration: Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. Defaults to `0`.
+        :param pulumi.Input[str] samesite: Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+        :param pulumi.Input[str] secure: Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+        :param pulumi.Input[str] zero_downtime_failover: Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+        """
+        if drain_duration is not None:
+            pulumi.set(__self__, "drain_duration", drain_duration)
+        if samesite is not None:
+            pulumi.set(__self__, "samesite", samesite)
+        if secure is not None:
+            pulumi.set(__self__, "secure", secure)
+        if zero_downtime_failover is not None:
+            pulumi.set(__self__, "zero_downtime_failover", zero_downtime_failover)
+
+    @property
+    @pulumi.getter(name="drainDuration")
+    def drain_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. Defaults to `0`.
+        """
+        return pulumi.get(self, "drain_duration")
+
+    @drain_duration.setter
+    def drain_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "drain_duration", value)
+
+    @property
+    @pulumi.getter
+    def samesite(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+        """
+        return pulumi.get(self, "samesite")
+
+    @samesite.setter
+    def samesite(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "samesite", value)
+
+    @property
+    @pulumi.getter
+    def secure(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+        """
+        return pulumi.get(self, "secure")
+
+    @secure.setter
+    def secure(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secure", value)
+
+    @property
+    @pulumi.getter(name="zeroDowntimeFailover")
+    def zero_downtime_failover(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+        """
+        return pulumi.get(self, "zero_downtime_failover")
+
+    @zero_downtime_failover.setter
+    def zero_downtime_failover(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zero_downtime_failover", value)
 
 
 @pulumi.input_type
@@ -11240,6 +11330,60 @@ class SpectrumApplicationDnsArgs:
 
 
 @pulumi.input_type
+class SpectrumApplicationEdgeIpsArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 connectivity: Optional[pulumi.Input[str]] = None,
+                 ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] type: The type of edge IP configuration specified. Available values: `dynamic`, `static`.
+        :param pulumi.Input[str] connectivity: The IP versions supported for inbound connections on Spectrum anycast IPs. Required when `type` is not `static`. Available values: `all`, `ipv4`, `ipv6`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: The collection of customer owned IPs to broadcast via anycast for this hostname and application. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+        """
+        pulumi.set(__self__, "type", type)
+        if connectivity is not None:
+            pulumi.set(__self__, "connectivity", connectivity)
+        if ips is not None:
+            pulumi.set(__self__, "ips", ips)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of edge IP configuration specified. Available values: `dynamic`, `static`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def connectivity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP versions supported for inbound connections on Spectrum anycast IPs. Required when `type` is not `static`. Available values: `all`, `ipv4`, `ipv6`.
+        """
+        return pulumi.get(self, "connectivity")
+
+    @connectivity.setter
+    def connectivity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connectivity", value)
+
+    @property
+    @pulumi.getter
+    def ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The collection of customer owned IPs to broadcast via anycast for this hostname and application. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+        """
+        return pulumi.get(self, "ips")
+
+    @ips.setter
+    def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ips", value)
+
+
+@pulumi.input_type
 class SpectrumApplicationOriginDnsArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
@@ -11720,6 +11864,28 @@ class TeamsAccountLoggingSettingsByRuleTypeL4Args:
 
 
 @pulumi.input_type
+class TeamsAccountPayloadLogArgs:
+    def __init__(__self__, *,
+                 public_key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] public_key: Public key used to encrypt matched payloads.
+        """
+        pulumi.set(__self__, "public_key", public_key)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> pulumi.Input[str]:
+        """
+        Public key used to encrypt matched payloads.
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "public_key", value)
+
+
+@pulumi.input_type
 class TeamsAccountProxyArgs:
     def __init__(__self__, *,
                  tcp: pulumi.Input[bool],
@@ -11806,7 +11972,9 @@ class TeamsRuleRuleSettingsArgs:
                  insecure_disable_dnssec_validation: Optional[pulumi.Input[bool]] = None,
                  l4override: Optional[pulumi.Input['TeamsRuleRuleSettingsL4overrideArgs']] = None,
                  override_host: Optional[pulumi.Input[str]] = None,
-                 override_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 override_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 payload_log: Optional[pulumi.Input['TeamsRuleRuleSettingsPayloadLogArgs']] = None,
+                 untrusted_cert: Optional[pulumi.Input['TeamsRuleRuleSettingsUntrustedCertArgs']] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] add_headers: Add custom headers to allowed requests in the form of key-value pairs.
         :param pulumi.Input['TeamsRuleRuleSettingsBisoAdminControlsArgs'] biso_admin_controls: Configure how browser isolation behaves.
@@ -11818,6 +11986,8 @@ class TeamsRuleRuleSettingsArgs:
         :param pulumi.Input['TeamsRuleRuleSettingsL4overrideArgs'] l4override: Settings to forward layer 4 traffic.
         :param pulumi.Input[str] override_host: The host to override matching DNS queries with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] override_ips: The IPs to override matching DNS queries with.
+        :param pulumi.Input['TeamsRuleRuleSettingsPayloadLogArgs'] payload_log: Configure DLP Payload Logging settings for this rule.
+        :param pulumi.Input['TeamsRuleRuleSettingsUntrustedCertArgs'] untrusted_cert: Configure untrusted certificate settings for this rule.
         """
         if add_headers is not None:
             pulumi.set(__self__, "add_headers", add_headers)
@@ -11839,6 +12009,10 @@ class TeamsRuleRuleSettingsArgs:
             pulumi.set(__self__, "override_host", override_host)
         if override_ips is not None:
             pulumi.set(__self__, "override_ips", override_ips)
+        if payload_log is not None:
+            pulumi.set(__self__, "payload_log", payload_log)
+        if untrusted_cert is not None:
+            pulumi.set(__self__, "untrusted_cert", untrusted_cert)
 
     @property
     @pulumi.getter(name="addHeaders")
@@ -11959,6 +12133,30 @@ class TeamsRuleRuleSettingsArgs:
     @override_ips.setter
     def override_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "override_ips", value)
+
+    @property
+    @pulumi.getter(name="payloadLog")
+    def payload_log(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsPayloadLogArgs']]:
+        """
+        Configure DLP Payload Logging settings for this rule.
+        """
+        return pulumi.get(self, "payload_log")
+
+    @payload_log.setter
+    def payload_log(self, value: Optional[pulumi.Input['TeamsRuleRuleSettingsPayloadLogArgs']]):
+        pulumi.set(self, "payload_log", value)
+
+    @property
+    @pulumi.getter(name="untrustedCert")
+    def untrusted_cert(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsUntrustedCertArgs']]:
+        """
+        Configure untrusted certificate settings for this rule.
+        """
+        return pulumi.get(self, "untrusted_cert")
+
+    @untrusted_cert.setter
+    def untrusted_cert(self, value: Optional[pulumi.Input['TeamsRuleRuleSettingsUntrustedCertArgs']]):
+        pulumi.set(self, "untrusted_cert", value)
 
 
 @pulumi.input_type
@@ -12117,6 +12315,51 @@ class TeamsRuleRuleSettingsL4overrideArgs:
     @port.setter
     def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
+
+
+@pulumi.input_type
+class TeamsRuleRuleSettingsPayloadLogArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Indicator of rule enablement.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Indicator of rule enablement.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class TeamsRuleRuleSettingsUntrustedCertArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] action: The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
 
 
 @pulumi.input_type
@@ -15037,171 +15280,6 @@ class GetRulesetsFilterArgs:
     @version.setter
     def version(self, value: Optional[str]):
         pulumi.set(self, "version", value)
-
-
-@pulumi.input_type
-class GetWafGroupsFilterArgs:
-    def __init__(__self__, *,
-                 mode: Optional[str] = None,
-                 name: Optional[str] = None):
-        """
-        :param str mode: Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-        :param str name: A regular expression matching the name of the WAF Rule Groups to lookup.
-        """
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def mode(self) -> Optional[str]:
-        """
-        Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-        """
-        return pulumi.get(self, "mode")
-
-    @mode.setter
-    def mode(self, value: Optional[str]):
-        pulumi.set(self, "mode", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        A regular expression matching the name of the WAF Rule Groups to lookup.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[str]):
-        pulumi.set(self, "name", value)
-
-
-@pulumi.input_type
-class GetWafPackagesFilterArgs:
-    def __init__(__self__, *,
-                 action_mode: Optional[str] = None,
-                 detection_mode: Optional[str] = None,
-                 name: Optional[str] = None,
-                 sensitivity: Optional[str] = None):
-        """
-        :param str action_mode: Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-        :param str detection_mode: Detection mode of the WAF Rule Packages to lookup.
-        :param str name: A regular expression matching the name of the WAF Rule Packages to lookup.
-        :param str sensitivity: Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-        """
-        if action_mode is not None:
-            pulumi.set(__self__, "action_mode", action_mode)
-        if detection_mode is not None:
-            pulumi.set(__self__, "detection_mode", detection_mode)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if sensitivity is not None:
-            pulumi.set(__self__, "sensitivity", sensitivity)
-
-    @property
-    @pulumi.getter(name="actionMode")
-    def action_mode(self) -> Optional[str]:
-        """
-        Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-        """
-        return pulumi.get(self, "action_mode")
-
-    @action_mode.setter
-    def action_mode(self, value: Optional[str]):
-        pulumi.set(self, "action_mode", value)
-
-    @property
-    @pulumi.getter(name="detectionMode")
-    def detection_mode(self) -> Optional[str]:
-        """
-        Detection mode of the WAF Rule Packages to lookup.
-        """
-        return pulumi.get(self, "detection_mode")
-
-    @detection_mode.setter
-    def detection_mode(self, value: Optional[str]):
-        pulumi.set(self, "detection_mode", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        A regular expression matching the name of the WAF Rule Packages to lookup.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def sensitivity(self) -> Optional[str]:
-        """
-        Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-        """
-        return pulumi.get(self, "sensitivity")
-
-    @sensitivity.setter
-    def sensitivity(self, value: Optional[str]):
-        pulumi.set(self, "sensitivity", value)
-
-
-@pulumi.input_type
-class GetWafRulesFilterArgs:
-    def __init__(__self__, *,
-                 description: Optional[str] = None,
-                 group_id: Optional[str] = None,
-                 mode: Optional[str] = None):
-        """
-        :param str description: A regular expression matching the description of the WAF Rules to lookup.
-        :param str group_id: The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-        :param str mode: Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-        """
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[str]:
-        """
-        A regular expression matching the description of the WAF Rules to lookup.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[str]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[str]:
-        """
-        The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-        """
-        return pulumi.get(self, "group_id")
-
-    @group_id.setter
-    def group_id(self, value: Optional[str]):
-        pulumi.set(self, "group_id", value)
-
-    @property
-    @pulumi.getter
-    def mode(self) -> Optional[str]:
-        """
-        Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-        """
-        return pulumi.get(self, "mode")
-
-    @mode.setter
-    def mode(self, value: Optional[str]):
-        pulumi.set(self, "mode", value)
 
 
 @pulumi.input_type

@@ -62,7 +62,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
     /**
      * The account identifier to target for the resource.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    public readonly accountId!: pulumi.Output<string>;
     /**
      * Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
      */
@@ -135,7 +135,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: LoadBalancerMonitorArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: LoadBalancerMonitorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LoadBalancerMonitorArgs | LoadBalancerMonitorState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -160,6 +160,9 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as LoadBalancerMonitorArgs | undefined;
+            if ((!args || args.accountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["allowInsecure"] = args ? args.allowInsecure : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -264,7 +267,7 @@ export interface LoadBalancerMonitorArgs {
     /**
      * The account identifier to target for the resource.
      */
-    accountId?: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
      * Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
      */

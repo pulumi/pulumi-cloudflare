@@ -7,8 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class WorkersKvNamespaceArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,15 +17,15 @@ public final class WorkersKvNamespaceArgs extends com.pulumi.resources.ResourceA
      * The account identifier to target for the resource.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return The account identifier to target for the resource.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -76,7 +74,7 @@ public final class WorkersKvNamespaceArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -113,6 +111,7 @@ public final class WorkersKvNamespaceArgs extends com.pulumi.resources.ResourceA
         }
 
         public WorkersKvNamespaceArgs build() {
+            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
             return $;
         }

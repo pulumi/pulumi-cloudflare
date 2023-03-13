@@ -7,8 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,15 +17,15 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
      * The account identifier to target for the resource.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return The account identifier to target for the resource.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -108,7 +106,7 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -187,6 +185,7 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WorkersKvArgs build() {
+            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
             $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
             $.namespaceId = Objects.requireNonNull($.namespaceId, "expected parameter 'namespaceId' to be non-null");
             $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
