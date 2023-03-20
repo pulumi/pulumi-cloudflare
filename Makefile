@@ -3,7 +3,7 @@
 PACK := cloudflare
 ORG := pulumi
 PROJECT := github.com/$(ORG)/pulumi-$(PACK)
-PROVIDER_PATH := provider/v5
+PROVIDER_PATH := provider/v4
 VERSION_PATH := $(PROVIDER_PATH)/pkg/version.Version
 TFGEN := pulumi-tfgen-$(PACK)
 PROVIDER := pulumi-resource-$(PACK)
@@ -96,7 +96,7 @@ install_nodejs_sdk:
 	yarn link --cwd $(WORKING_DIR)/sdk/nodejs/bin
 
 install_plugins:
-	[ -x "$(shell command -v pulumi)" ] || curl -fsSL https://get.pulumi.com | sh
+	[ -x "$(shell command -v pulumi 2>/dev/null)" ] || curl -fsSL https://get.pulumi.com | sh
 	pulumi plugin install resource gcp 5.0.0
 	pulumi plugin install resource tls 4.0.0
 

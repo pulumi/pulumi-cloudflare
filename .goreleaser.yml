@@ -29,7 +29,7 @@ builds:
   ignore: []
   ldflags:
   - -X
-    github.com/pulumi/pulumi-cloudflare/provider/v5/pkg/version.Version={{.Tag}}
+    github.com/pulumi/pulumi-cloudflare/provider/v4/pkg/version.Version={{.Tag}}
   main: ./cmd/pulumi-resource-cloudflare/
 changelog:
   filters:
