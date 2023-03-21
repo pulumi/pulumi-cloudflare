@@ -518,7 +518,7 @@ jobs:
         fields: repo,commit,author,action
         status: ${{ job.status }}
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         language:
         - nodejs
