@@ -146,12 +146,12 @@ def get_zone(account_id: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZoneResult:
     """
     Use this data source to look up [zone](https://api.cloudflare.com/#zone-properties)
-    info. This is the singular alternative to _get_zones_.
+    info. This is the singular alternative to `get_zones`.
 
     > **Note** Cloudflare zone names **are not unique**. It is possible for multiple
     accounts to have the same zone created but in different states. If you are
     using this setup, it is advised to use the `account_id` attribute on this
-    resource or swap to _get_zones_ to further filter the results.
+    resource or swap to `get_zones` to further filter the results.
 
     ## Example Usage
 
@@ -188,12 +188,12 @@ def get_zone_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneResult]:
     """
     Use this data source to look up [zone](https://api.cloudflare.com/#zone-properties)
-    info. This is the singular alternative to _get_zones_.
+    info. This is the singular alternative to `get_zones`.
 
     > **Note** Cloudflare zone names **are not unique**. It is possible for multiple
     accounts to have the same zone created but in different states. If you are
     using this setup, it is advised to use the `account_id` attribute on this
-    resource or swap to _get_zones_ to further filter the results.
+    resource or swap to `get_zones` to further filter the results.
 
     ## Example Usage
 
