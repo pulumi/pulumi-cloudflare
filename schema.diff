@@ -1,0 +1,1353 @@
+ {
+   types: {
+-    cloudflare:index/RulesetRule:RulesetRule: {
+-      properties: {
+-        action: {
+-          type: "string"
+-          description: "Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.\n"
+-        }
+-        actionParameters: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParameters:RulesetRuleActionParameters"
+-          description: "List of parameters that configure the behavior of the ruleset rule action.\n"
+-        }
+-        description: {
+-          type: "string"
+-          description: "Brief summary of the ruleset rule and its intended use.\n"
+-        }
+-        enabled: {
+-          type: "boolean"
+-          description: "Whether the rule is active.\n"
+-        }
+-        exposedCredentialCheck: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleExposedCredentialCheck:RulesetRuleExposedCredentialCheck"
+-          description: "List of parameters that configure exposed credential checks.\n"
+-        }
+-        expression: {
+-          type: "string"
+-          description: "Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.\n"
+-        }
+-        id: {
+-          type: "string"
+-          description: "Unique rule identifier.\n"
+-        }
+-        lastUpdated: {
+-          type: "string"
+-          description: "The most recent update to this rule.\n"
+-        }
+-        logging: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleLogging:RulesetRuleLogging"
+-          description: "List parameters to configure how the rule generates logs.\n"
+-        }
+-        ratelimit: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleRatelimit:RulesetRuleRatelimit"
+-          description: "List of parameters that configure HTTP rate limiting behaviour.\n"
+-        }
+-        ref: {
+-          type: "string"
+-          description: "Rule reference.\n"
+-        }
+-        version: {
+-          type: "string"
+-          description: "Version of the ruleset to deploy.\n"
+-        }
+-      }
+-      type: "object"
+-      required: [
+-        "expression"
+-      ]
+-      language: {
+-        nodejs: {
+-          requiredOutputs: [
+-            "expression"
+-            "id"
+-            "ref"
+-            "version"
+-          ]
+-        }
+-      }
+-    }
+-    cloudflare:index/RulesetRuleActionParameters:RulesetRuleActionParameters: {
+-      properties: {
+-        automaticHttpsRewrites: {
+-          type: "boolean"
+-        }
+-        autominifies: {
+-          type: "array"
+-          items: {
+-            $ref: "#/types/cloudflare:index/RulesetRuleActionParametersAutominify:RulesetRuleActionParametersAutominify"
+-          }
+-        }
+-        bic: {
+-          type: "boolean"
+-        }
+-        browserTtl: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParametersBrowserTtl:RulesetRuleActionParametersBrowserTtl"
+-        }
+-        cache: {
+-          type: "boolean"
+-        }
+-        cacheKey: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParametersCacheKey:RulesetRuleActionParametersCacheKey"
+-        }
+-        content: {
+-          type: "string"
+-        }
+-        contentType: {
+-          type: "string"
+-        }
+-        cookieFields: {
+-          type: "array"
+-          items: {
+-            type: "string"
+-          }
+-        }
+-        disableApps: {
+-          type: "boolean"
+-        }
+-        disableRailgun: {
+-          type: "boolean"
+-        }
+-        disableZaraz: {
+-          type: "boolean"
+-        }
+-        edgeTtl: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParametersEdgeTtl:RulesetRuleActionParametersEdgeTtl"
+-        }
+-        emailObfuscation: {
+-          type: "boolean"
+-        }
+-        fromList: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParametersFromList:RulesetRuleActionParametersFromList"
+-        }
+-        fromValue: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParametersFromValue:RulesetRuleActionParametersFromValue"
+-        }
+-        headers: {
+-          type: "array"
+-          items: {
+-            $ref: "#/types/cloudflare:index/RulesetRuleActionParametersHeader:RulesetRuleActionParametersHeader"
+-          }
+-        }
+-        hostHeader: {
+-          type: "string"
+-        }
+-        hotlinkProtection: {
+-          type: "boolean"
+-        }
+-        id: {
+-          type: "string"
+-          description: "The ID of this resource.\n"
+-        }
+-        increment: {
+-          type: "integer"
+-        }
+-        matchedData: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParametersMatchedData:RulesetRuleActionParametersMatchedData"
+-        }
+-        mirage: {
+-          type: "boolean"
+-        }
+-        opportunisticEncryption: {
+-          type: "boolean"
+-        }
+-        origin: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParametersOrigin:RulesetRuleActionParametersOrigin"
+-        }
+-        originErrorPagePassthru: {
+-          type: "boolean"
+-        }
+-        overrides: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParametersOverrides:RulesetRuleActionParametersOverrides"
+-        }
+-        phases: {
+-          type: "array"
+-          items: {
+-            type: "string"
+-          }
+-        }
+-        polish: {
+-          type: "string"
+-        }
+-        products: {
+-          type: "array"
+-          items: {
+-            type: "string"
+-          }
+-        }
+-        requestFields: {
+-          type: "array"
+-          items: {
+-            type: "string"
+-          }
+-        }
+-        respectStrongEtags: {
+-          type: "boolean"
+-        }
+-        responseFields: {
+-          type: "array"
+-          items: {
+-            type: "string"
+-          }
+-        }
+-        responses: {
+-          type: "array"
+-          items: {
+-            $ref: "#/types/cloudflare:index/RulesetRuleActionParametersResponse:RulesetRuleActionParametersResponse"
+-          }
+-        }
+-        rocketLoader: {
+-          type: "boolean"
+-        }
+-        rules: {
+-          type: "object"
+-          additionalProperties: {
+-            type: "string"
+-          }
+-          description: "List of rules to apply to the ruleset.\n"
+-        }
+-        ruleset: {
+-          type: "string"
+-        }
+-        rulesets: {
+-          type: "array"
+-          items: {
+-            type: "string"
+-          }
+-        }
+-        securityLevel: {
+-          type: "string"
+-        }
+-        serveStale: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParametersServeStale:RulesetRuleActionParametersServeStale"
+-        }
+-        serverSideExcludes: {
+-          type: "boolean"
+-        }
+-        sni: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParametersSni:RulesetRuleActionParametersSni"
+-        }
+-        ssl: {
+-          type: "string"
+-        }
+-        statusCode: {
+-          type: "integer"
+-        }
+-        sxg: {
+-          type: "boolean"
+-        }
+-        uri: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParametersUri:RulesetRuleActionParametersUri"
+-        }
+-        version: {
+-          type: "string"
+-        }
+-      }
+-      type: "object"
+-      language: {
+-        nodejs: {
+-          requiredOutputs: [
+-            "version"
+-          ]
+-        }
+-      }
+-    }
+-    cloudflare:index/RulesetRuleActionParametersAutominify:RulesetRuleActionParametersAutominify: {
+-      properties: {
+-        css: {
+-          type: "boolean"
+-        }
+-        html: {
+-          type: "boolean"
+-        }
+-        js: {
+-          type: "boolean"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersBrowserTtl:RulesetRuleActionParametersBrowserTtl: {
+-      properties: {
+-        default: {
+-          type: "integer"
+-        }
+-        mode: {
+-          type: "string"
+-        }
+-      }
+-      type: "object"
+-      required: [
+-        "mode"
+-      ]
+-    }
+-    cloudflare:index/RulesetRuleActionParametersCacheKey:RulesetRuleActionParametersCacheKey: {
+-      properties: {
+-        cacheByDeviceType: {
+-          type: "boolean"
+-        }
+-        cacheDeceptionArmor: {
+-          type: "boolean"
+-        }
+-        customKey: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKey:RulesetRuleActionParametersCacheKeyCustomKey"
+-        }
+-        ignoreQueryStringsOrder: {
+-          type: "boolean"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKey:RulesetRuleActionParametersCacheKeyCustomKey: {
+-      properties: {
+-        cookie: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyCookie:RulesetRuleActionParametersCacheKeyCustomKeyCookie"
+-        }
+-        header: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyHeader:RulesetRuleActionParametersCacheKeyCustomKeyHeader"
+-        }
+-        host: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyHost:RulesetRuleActionParametersCacheKeyCustomKeyHost"
+-        }
+-        queryString: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyQueryString:RulesetRuleActionParametersCacheKeyCustomKeyQueryString"
+-        }
+-        user: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyUser:RulesetRuleActionParametersCacheKeyCustomKeyUser"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyCookie:RulesetRuleActionParametersCacheKeyCustomKeyCookie: {
+-      properties: {
+-        checkPresences: {
+-          type: "array"
+-          items: {
+-            type: "string"
+-          }
+-        }
+-        includes: {
+-          type: "array"
+-          items: {
+-            type: "string"
+-          }
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyHeader:RulesetRuleActionParametersCacheKeyCustomKeyHeader: {
+-      properties: {
+-        checkPresences: {
+-          type: "array"
+-          items: {
+-            type: "string"
+-          }
+-        }
+-        excludeOrigin: {
+-          type: "boolean"
+-        }
+-        includes: {
+-          type: "array"
+-          items: {
+-            type: "string"
+-          }
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyHost:RulesetRuleActionParametersCacheKeyCustomKeyHost: {
+-      properties: {
+-        resolved: {
+-          type: "boolean"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyQueryString:RulesetRuleActionParametersCacheKeyCustomKeyQueryString: {
+-      properties: {
+-        excludes: {
+-          type: "array"
+-          items: {
+-            type: "string"
+-          }
+-        }
+-        includes: {
+-          type: "array"
+-          items: {
+-            type: "string"
+-          }
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyUser:RulesetRuleActionParametersCacheKeyCustomKeyUser: {
+-      properties: {
+-        deviceType: {
+-          type: "boolean"
+-        }
+-        geo: {
+-          type: "boolean"
+-        }
+-        lang: {
+-          type: "boolean"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersEdgeTtl:RulesetRuleActionParametersEdgeTtl: {
+-      properties: {
+-        default: {
+-          type: "integer"
+-        }
+-        mode: {
+-          type: "string"
+-        }
+-        statusCodeTtls: {
+-          type: "array"
+-          items: {
+-            $ref: "#/types/cloudflare:index/RulesetRuleActionParametersEdgeTtlStatusCodeTtl:RulesetRuleActionParametersEdgeTtlStatusCodeTtl"
+-          }
+-        }
+-      }
+-      type: "object"
+-      required: [
+-        "mode"
+-      ]
+-    }
+-    cloudflare:index/RulesetRuleActionParametersEdgeTtlStatusCodeTtl:RulesetRuleActionParametersEdgeTtlStatusCodeTtl: {
+-      properties: {
+-        statusCode: {
+-          type: "integer"
+-        }
+-        statusCodeRanges: {
+-          type: "array"
+-          items: {
+-            $ref: "#/types/cloudflare:index/RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange:RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange"
+-          }
+-        }
+-        value: {
+-          type: "integer"
+-        }
+-      }
+-      type: "object"
+-      required: [
+-        "value"
+-      ]
+-    }
+-    cloudflare:index/RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange:RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange: {
+-      properties: {
+-        from: {
+-          type: "integer"
+-        }
+-        to: {
+-          type: "integer"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersFromList:RulesetRuleActionParametersFromList: {
+-      properties: {
+-        key: {
+-          type: "string"
+-        }
+-        name: {
+-          type: "string"
+-          description: "Name of the ruleset. **Modifying this attribute will force creation of a new resource.**\n"
+-        }
+-      }
+-      type: "object"
+-      required: [
+-        "key"
+-        "name"
+-      ]
+-    }
+-    cloudflare:index/RulesetRuleActionParametersFromValue:RulesetRuleActionParametersFromValue: {
+-      properties: {
+-        preserveQueryString: {
+-          type: "boolean"
+-        }
+-        statusCode: {
+-          type: "integer"
+-        }
+-        targetUrl: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParametersFromValueTargetUrl:RulesetRuleActionParametersFromValueTargetUrl"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersFromValueTargetUrl:RulesetRuleActionParametersFromValueTargetUrl: {
+-      properties: {
+-        expression: {
+-          type: "string"
+-        }
+-        value: {
+-          type: "string"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersHeader:RulesetRuleActionParametersHeader: {
+-      properties: {
+-        expression: {
+-          type: "string"
+-        }
+-        name: {
+-          type: "string"
+-          description: "Name of the ruleset. **Modifying this attribute will force creation of a new resource.**\n"
+-        }
+-        operation: {
+-          type: "string"
+-        }
+-        value: {
+-          type: "string"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersMatchedData:RulesetRuleActionParametersMatchedData: {
+-      properties: {
+-        publicKey: {
+-          type: "string"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersOrigin:RulesetRuleActionParametersOrigin: {
+-      properties: {
+-        host: {
+-          type: "string"
+-        }
+-        port: {
+-          type: "integer"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersOverrides:RulesetRuleActionParametersOverrides: {
+-      properties: {
+-        action: {
+-          type: "string"
+-        }
+-        categories: {
+-          type: "array"
+-          items: {
+-            $ref: "#/types/cloudflare:index/RulesetRuleActionParametersOverridesCategory:RulesetRuleActionParametersOverridesCategory"
+-          }
+-        }
+-        enabled: {
+-          type: "boolean"
+-          deprecationMessage: "Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration."
+-        }
+-        rules: {
+-          type: "array"
+-          items: {
+-            $ref: "#/types/cloudflare:index/RulesetRuleActionParametersOverridesRule:RulesetRuleActionParametersOverridesRule"
+-          }
+-          description: "List of rules to apply to the ruleset.\n"
+-        }
+-        sensitivityLevel: {
+-          type: "string"
+-        }
+-        status: {
+-          type: "string"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersOverridesCategory:RulesetRuleActionParametersOverridesCategory: {
+-      properties: {
+-        action: {
+-          type: "string"
+-        }
+-        category: {
+-          type: "string"
+-        }
+-        enabled: {
+-          type: "boolean"
+-          deprecationMessage: "Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration."
+-        }
+-        status: {
+-          type: "string"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersOverridesRule:RulesetRuleActionParametersOverridesRule: {
+-      properties: {
+-        action: {
+-          type: "string"
+-          description: "Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.\n"
+-        }
+-        enabled: {
+-          type: "boolean"
+-          description: "Whether the rule is active.\n"
+-          deprecationMessage: "Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration."
+-        }
+-        id: {
+-          type: "string"
+-          description: "Unique rule identifier.\n"
+-        }
+-        scoreThreshold: {
+-          type: "integer"
+-        }
+-        sensitivityLevel: {
+-          type: "string"
+-        }
+-        status: {
+-          type: "string"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersResponse:RulesetRuleActionParametersResponse: {
+-      properties: {
+-        content: {
+-          type: "string"
+-        }
+-        contentType: {
+-          type: "string"
+-        }
+-        statusCode: {
+-          type: "integer"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersServeStale:RulesetRuleActionParametersServeStale: {
+-      properties: {
+-        disableStaleWhileUpdating: {
+-          type: "boolean"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersSni:RulesetRuleActionParametersSni: {
+-      properties: {
+-        value: {
+-          type: "string"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersUri:RulesetRuleActionParametersUri: {
+-      properties: {
+-        origin: {
+-          type: "boolean"
+-        }
+-        path: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParametersUriPath:RulesetRuleActionParametersUriPath"
+-        }
+-        query: {
+-          $ref: "#/types/cloudflare:index/RulesetRuleActionParametersUriQuery:RulesetRuleActionParametersUriQuery"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersUriPath:RulesetRuleActionParametersUriPath: {
+-      properties: {
+-        expression: {
+-          type: "string"
+-        }
+-        value: {
+-          type: "string"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleActionParametersUriQuery:RulesetRuleActionParametersUriQuery: {
+-      properties: {
+-        expression: {
+-          type: "string"
+-        }
+-        value: {
+-          type: "string"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleExposedCredentialCheck:RulesetRuleExposedCredentialCheck: {
+-      properties: {
+-        passwordExpression: {
+-          type: "string"
+-        }
+-        usernameExpression: {
+-          type: "string"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleLogging:RulesetRuleLogging: {
+-      properties: {
+-        enabled: {
+-          type: "boolean"
+-          deprecationMessage: "Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration."
+-        }
+-        status: {
+-          type: "string"
+-        }
+-      }
+-      type: "object"
+-    }
+-    cloudflare:index/RulesetRuleRatelimit:RulesetRuleRatelimit: {
+-      properties: {
+-        characteristics: {
+-          type: "array"
+-          items: {
+-            type: "string"
+-          }
+-        }
+-        countingExpression: {
+-          type: "string"
+-        }
+-        mitigationTimeout: {
+-          type: "integer"
+-        }
+-        period: {
+-          type: "integer"
+-        }
+-        requestsPerPeriod: {
+-          type: "integer"
+-        }
+-        requestsToOrigin: {
+-          type: "boolean"
+-        }
+-        scorePerPeriod: {
+-          type: "integer"
+-        }
+-        scoreResponseHeaderName: {
+-          type: "string"
+-        }
+-      }
+-      type: "object"
+-    }
++    cloudflare:index/AddressMapIp:AddressMapIp: {
++      properties: {
++        ip: {
++          type: "string"
++          description: "An IPv4 or IPv6 address.\n"
++        }
++      }
++      type: "object"
++      required: [
++        "ip"
++      ]
++    }
++    cloudflare:index/AddressMapMembership:AddressMapMembership: {
++      properties: {
++        canDelete: {
++          type: "boolean"
++          description: "Controls whether the membership can be deleted via the API or not.\n"
++        }
++        identifier: {
++          type: "string"
++          description: "Identifier of the account or zone.\n"
++        }
++        kind: {
++          type: "string"
++          description: "The type of the membership.\n"
++        }
++      }
++      type: "object"
++      required: [
++        "identifier"
++        "kind"
++      ]
++      language: {
++        nodejs: {
++          requiredOutputs: [
++            "canDelete"
++            "identifier"
++            "kind"
++          ]
++        }
++      }
++    }
++    cloudflare:index/ListItemRedirect:ListItemRedirect: {
++      properties: {
++        includeSubdomains: {
++          type: "string"
++          description: "Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.\n"
++        }
++        preservePathSuffix: {
++          type: "string"
++          description: "Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.\n"
++        }
++        preserveQueryString: {
++          type: "string"
++          description: "Whether the redirect target url should keep the query string of the request's url. Available values: `disabled`, `enabled`.\n"
++        }
++        sourceUrl: {
++          type: "string"
++          description: "The source url of the redirect.\n"
++        }
++        statusCode: {
++          type: "integer"
++          description: "The status code to be used when redirecting a request.\n"
++        }
++        subpathMatching: {
++          type: "string"
++          description: "Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.\n"
++        }
++        targetUrl: {
++          type: "string"
++          description: "The target url of the redirect.\n"
++        }
++      }
++      type: "object"
++      required: [
++        "sourceUrl"
++        "targetUrl"
++      ]
++    }
++    cloudflare:index/getListsList:getListsList: {
++      properties: {
++        description: {
++          type: "string"
++        }
++        id: {
++          type: "string"
++          description: "The ID of this resource.\n"
++        }
++        kind: {
++          type: "string"
++        }
++        name: {
++          type: "string"
++        }
++        numitems: {
++          type: "integer"
++        }
++      }
++      type: "object"
++    }
+     cloudflare:index/DevicePostureRuleInput:DevicePostureRuleInput: {
+       properties: {
++        checkDisks: {
++          type: "array"
++          items: {
++            type: "string"
++          }
++          description: "Specific volume(s) to check for encryption.\n"
++        }
+       }
+     }
+   }
+   resources: {
+-    cloudflare:index/ruleset:Ruleset: {
+-      description: "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.Ruleset;\nimport com.pulumi.cloudflare.RulesetArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersOverridesArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriPathArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriQueryArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleRatelimitArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersOriginArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersBrowserTtlArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyHostArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyUserArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersEdgeTtlArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersServeStaleArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromListArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromValueArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromValueTargetUrlArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var magicTransitExample = new Ruleset(\"magicTransitExample\", RulesetArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .description(\"example magic transit ruleset description\")\n            .kind(\"root\")\n            .name(\"account magic transit\")\n            .phase(\"magic_transit\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"allow\")\n                .description(\"Allow TCP Ephemeral Ports\")\n                .expression(\"tcp.dstport in { 32768..65535 }\")\n                .build())\n            .build());\n\n        var zoneLevelManagedWaf = new Ruleset(\"zoneLevelManagedWaf\", RulesetArgs.builder()        \n            .description(\"managed WAF ruleset description\")\n            .kind(\"zone\")\n            .name(\"managed WAF\")\n            .phase(\"http_request_firewall_managed\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"execute\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .id(\"efb7b8c949ac4650a09736fc376e9aee\")\n                    .build())\n                .description(\"Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\")\n                .enabled(true)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var zoneLevelManagedWafWithCategoryBasedOverrides = new Ruleset(\"zoneLevelManagedWafWithCategoryBasedOverrides\", RulesetArgs.builder()        \n            .description(\"managed WAF with tag-based overrides ruleset description\")\n            .kind(\"zone\")\n            .name(\"managed WAF with tag-based overrides\")\n            .phase(\"http_request_firewall_managed\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"execute\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .id(\"efb7b8c949ac4650a09736fc376e9aee\")\n                    .overrides(RulesetRuleActionParametersOverridesArgs.builder()\n                        .categories(                        \n                            RulesetRuleActionParametersOverridesCategoryArgs.builder()\n                                .action(\"block\")\n                                .category(\"wordpress\")\n                                .status(\"enabled\")\n                                .build(),\n                            RulesetRuleActionParametersOverridesCategoryArgs.builder()\n                                .action(\"block\")\n                                .category(\"joomla\")\n                                .status(\"enabled\")\n                                .build())\n                        .build())\n                    .build())\n                .description(\"overrides to only enable wordpress rules to block\")\n                .enabled(false)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var transformUriRulePath = new Ruleset(\"transformUriRulePath\", RulesetArgs.builder()        \n            .description(\"change the URI path to a new static path\")\n            .kind(\"zone\")\n            .name(\"transform rule for URI path\")\n            .phase(\"http_request_transform\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"rewrite\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .uri(RulesetRuleActionParametersUriArgs.builder()\n                        .path(RulesetRuleActionParametersUriPathArgs.builder()\n                            .value(\"/my-new-route\")\n                            .build())\n                        .build())\n                    .build())\n                .description(\"example URI path transform rule\")\n                .enabled(true)\n                .expression(\"(http.host eq \\\"example.com\\\" and http.request.uri.path eq \\\"/old-path\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var transformUriRuleQuery = new Ruleset(\"transformUriRuleQuery\", RulesetArgs.builder()        \n            .description(\"change the URI query to a new static query\")\n            .kind(\"zone\")\n            .name(\"transform rule for URI query parameter\")\n            .phase(\"http_request_transform\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"rewrite\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .uri(RulesetRuleActionParametersUriArgs.builder()\n                        .query(RulesetRuleActionParametersUriQueryArgs.builder()\n                            .value(\"old=new_again\")\n                            .build())\n                        .build())\n                    .build())\n                .description(\"URI transformation query example\")\n                .enabled(true)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var transformUriHttpHeaders = new Ruleset(\"transformUriHttpHeaders\", RulesetArgs.builder()        \n            .description(\"modify HTTP headers before reaching origin\")\n            .kind(\"zone\")\n            .name(\"transform rule for HTTP headers\")\n            .phase(\"http_request_late_transform\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"rewrite\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .headers(                    \n                        RulesetRuleActionParametersHeaderArgs.builder()\n                            .name(\"example-http-header-1\")\n                            .operation(\"set\")\n                            .value(\"my-http-header-value-1\")\n                            .build(),\n                        RulesetRuleActionParametersHeaderArgs.builder()\n                            .expression(\"cf.zone.name\")\n                            .name(\"example-http-header-2\")\n                            .operation(\"set\")\n                            .build(),\n                        RulesetRuleActionParametersHeaderArgs.builder()\n                            .name(\"example-http-header-3-to-remove\")\n                            .operation(\"remove\")\n                            .build())\n                    .build())\n                .description(\"example request header transform rule\")\n                .enabled(false)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var rateLimitingExample = new Ruleset(\"rateLimitingExample\", RulesetArgs.builder()        \n            .description(\"apply HTTP rate limiting for a route\")\n            .kind(\"zone\")\n            .name(\"restrict API requests count\")\n            .phase(\"http_ratelimit\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"block\")\n                .description(\"rate limit for API\")\n                .enabled(true)\n                .expression(\"(http.request.uri.path matches \\\"^/api/\\\")\")\n                .ratelimit(RulesetRuleRatelimitArgs.builder()\n                    .characteristics(                    \n                        \"cf.colo.id\",\n                        \"ip.src\")\n                    .mitigationTimeout(600)\n                    .period(60)\n                    .requestsPerPeriod(100)\n                    .build())\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var httpOriginExample = new Ruleset(\"httpOriginExample\", RulesetArgs.builder()        \n            .description(\"Change origin for a route\")\n            .kind(\"zone\")\n            .name(\"Change to some origin\")\n            .phase(\"http_request_origin\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"route\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .hostHeader(\"some.host\")\n                    .origin(RulesetRuleActionParametersOriginArgs.builder()\n                        .host(\"some.host\")\n                        .port(80)\n                        .build())\n                    .build())\n                .description(\"change origin to some.host\")\n                .enabled(true)\n                .expression(\"(http.request.uri.path matches \\\"^/api/\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var customFieldsLoggingExample = new Ruleset(\"customFieldsLoggingExample\", RulesetArgs.builder()        \n            .description(\"add custom fields to logging\")\n            .kind(\"zone\")\n            .name(\"log custom fields\")\n            .phase(\"http_log_custom_fields\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"log_custom_field\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .cookieFields(                    \n                        \"__ga\",\n                        \"accountNumber\",\n                        \"__cfruid\")\n                    .requestFields(                    \n                        \"content-type\",\n                        \"x-forwarded-for\",\n                        \"host\")\n                    .responseFields(                    \n                        \"server\",\n                        \"content-type\",\n                        \"allow\")\n                    .build())\n                .description(\"log custom fields rule\")\n                .enabled(true)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var cacheSettingsExample = new Ruleset(\"cacheSettingsExample\", RulesetArgs.builder()        \n            .description(\"set cache settings for the request\")\n            .kind(\"zone\")\n            .name(\"set cache settings\")\n            .phase(\"http_request_cache_settings\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"set_cache_settings\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .browserTtl(RulesetRuleActionParametersBrowserTtlArgs.builder()\n                        .mode(\"respect_origin\")\n                        .build())\n                    .cacheKey(RulesetRuleActionParametersCacheKeyArgs.builder()\n                        .cacheDeceptionArmor(true)\n                        .customKey(RulesetRuleActionParametersCacheKeyCustomKeyArgs.builder()\n                            .cookie(RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs.builder()\n                                .checkPresence(                                \n                                    \"cabc_t\",\n                                    \"cdef_t\")\n                                .include(                                \n                                    \"cabc\",\n                                    \"cdef\")\n                                .build())\n                            .header(RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs.builder()\n                                .checkPresence(                                \n                                    \"habc_t\",\n                                    \"hdef_t\")\n                                .excludeOrigin(true)\n                                .include(                                \n                                    \"habc\",\n                                    \"hdef\")\n                                .build())\n                            .host(RulesetRuleActionParametersCacheKeyCustomKeyHostArgs.builder()\n                                .resolved(true)\n                                .build())\n                            .queryString(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs.builder()\n                                .exclude(\"*\")\n                                .build())\n                            .user(RulesetRuleActionParametersCacheKeyCustomKeyUserArgs.builder()\n                                .deviceType(true)\n                                .geo(false)\n                                .build())\n                            .build())\n                        .ignoreQueryStringsOrder(false)\n                        .build())\n                    .edgeTtl(RulesetRuleActionParametersEdgeTtlArgs.builder()\n                        .default_(60)\n                        .mode(\"override_origin\")\n                        .statusCodeTtl(                        \n                            %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                            %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                        .build())\n                    .originErrorPagePassthru(false)\n                    .respectStrongEtags(true)\n                    .serveStale(RulesetRuleActionParametersServeStaleArgs.builder()\n                        .disableStaleWhileUpdating(true)\n                        .build())\n                    .build())\n                .description(\"set cache settings rule\")\n                .enabled(true)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var redirectFromListExample = new Ruleset(\"redirectFromListExample\", RulesetArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .description(\"Redirect ruleset\")\n            .kind(\"root\")\n            .name(\"redirects\")\n            .phase(\"http_request_redirect\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"redirect\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .fromList(RulesetRuleActionParametersFromListArgs.builder()\n                        .key(\"http.request.full_uri\")\n                        .name(\"redirect_list\")\n                        .build())\n                    .build())\n                .description(\"Apply redirects from redirect_list\")\n                .enabled(true)\n                .expression(\"http.request.full_uri in $redirect_list\")\n                .build())\n            .build());\n\n        var redirectFromValueExample = new Ruleset(\"redirectFromValueExample\", RulesetArgs.builder()        \n            .description(\"Redirect ruleset\")\n            .kind(\"root\")\n            .name(\"redirects\")\n            .phase(\"http_request_dynamic_redirect\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"redirect\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .fromValue(RulesetRuleActionParametersFromValueArgs.builder()\n                        .preserveQueryString(true)\n                        .statusCode(301)\n                        .targetUrl(RulesetRuleActionParametersFromValueTargetUrlArgs.builder()\n                            .value(\"some_host.com\")\n                            .build())\n                        .build())\n                    .build())\n                .description(\"Apply redirect from value\")\n                .enabled(true)\n                .expression(\"(http.request.uri.path matches \\\"^/api/\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var httpCustomErrorExample = new Ruleset(\"httpCustomErrorExample\", RulesetArgs.builder()        \n            .description(\"Serve some error response\")\n            .kind(\"zone\")\n            .name(\"Serve some error response\")\n            .phase(\"http_custom_errors\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"serve_error\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .content(\"some error html\")\n                    .contentType(\"text/html\")\n                    .statusCode(\"530\")\n                    .build())\n                .description(\"serve some error response\")\n                .enabled(true)\n                .expression(\"(http.request.uri.path matches \\\"^/api/\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var httpConfigRulesExample = new Ruleset(\"httpConfigRulesExample\", RulesetArgs.builder()        \n            .description(\"set config rules for request\")\n            .kind(\"zone\")\n            .name(\"set config rules\")\n            .phase(\"http_config_settings\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"set_config\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .bic(true)\n                    .emailObfuscation(true)\n                    .build())\n                .description(\"set config rules for matching request\")\n                .enabled(true)\n                .expression(\"(http.request.uri.path matches \\\"^/api/\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Magic Transit\n  magicTransitExample:\n    type: cloudflare:Ruleset\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      description: example magic transit ruleset description\n      kind: root\n      name: account magic transit\n      phase: magic_transit\n      rules:\n        - action: allow\n          description: Allow TCP Ephemeral Ports\n          expression: tcp.dstport in { 32768..65535 }\n  # Zone-level WAF Managed Ruleset\n  zoneLevelManagedWaf:\n    type: cloudflare:Ruleset\n    properties:\n      description: managed WAF ruleset description\n      kind: zone\n      name: managed WAF\n      phase: http_request_firewall_managed\n      rules:\n        - action: execute\n          actionParameters:\n            id: efb7b8c949ac4650a09736fc376e9aee\n          description: Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\n          enabled: true\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Zone-level WAF with tag-based overrides\n  zoneLevelManagedWafWithCategoryBasedOverrides:\n    type: cloudflare:Ruleset\n    properties:\n      description: managed WAF with tag-based overrides ruleset description\n      kind: zone\n      name: managed WAF with tag-based overrides\n      phase: http_request_firewall_managed\n      rules:\n        - action: execute\n          actionParameters:\n            id: efb7b8c949ac4650a09736fc376e9aee\n            overrides:\n              categories:\n                - action: block\n                  category: wordpress\n                  status: enabled\n                - action: block\n                  category: joomla\n                  status: enabled\n          description: overrides to only enable wordpress rules to block\n          enabled: false\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Rewrite the URI path component to a static path\n  transformUriRulePath:\n    type: cloudflare:Ruleset\n    properties:\n      description: change the URI path to a new static path\n      kind: zone\n      name: transform rule for URI path\n      phase: http_request_transform\n      rules:\n        - action: rewrite\n          actionParameters:\n            uri:\n              path:\n                value: /my-new-route\n          description: example URI path transform rule\n          enabled: true\n          expression: (http.host eq \"example.com\" and http.request.uri.path eq \"/old-path\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Rewrite the URI query component to a static query\n  transformUriRuleQuery:\n    type: cloudflare:Ruleset\n    properties:\n      description: change the URI query to a new static query\n      kind: zone\n      name: transform rule for URI query parameter\n      phase: http_request_transform\n      rules:\n        - action: rewrite\n          actionParameters:\n            uri:\n              query:\n                value: old=new_again\n          description: URI transformation query example\n          enabled: true\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Rewrite HTTP headers to a modified values\n  transformUriHttpHeaders:\n    type: cloudflare:Ruleset\n    properties:\n      description: modify HTTP headers before reaching origin\n      kind: zone\n      name: transform rule for HTTP headers\n      phase: http_request_late_transform\n      rules:\n        - action: rewrite\n          actionParameters:\n            headers:\n              - name: example-http-header-1\n                operation: set\n                value: my-http-header-value-1\n              - expression: cf.zone.name\n                name: example-http-header-2\n                operation: set\n              - name: example-http-header-3-to-remove\n                operation: remove\n          description: example request header transform rule\n          enabled: false\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # HTTP rate limit for an API route\n  rateLimitingExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: apply HTTP rate limiting for a route\n      kind: zone\n      name: restrict API requests count\n      phase: http_ratelimit\n      rules:\n        - action: block\n          description: rate limit for API\n          enabled: true\n          expression: (http.request.uri.path matches \"^/api/\")\n          ratelimit:\n            characteristics:\n              - cf.colo.id\n              - ip.src\n            mitigationTimeout: 600\n            period: 60\n            requestsPerPeriod: 100\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Change origin for an API route\n  httpOriginExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: Change origin for a route\n      kind: zone\n      name: Change to some origin\n      phase: http_request_origin\n      rules:\n        - action: route\n          actionParameters:\n            hostHeader: some.host\n            origin:\n              host: some.host\n              port: 80\n          description: change origin to some.host\n          enabled: true\n          expression: (http.request.uri.path matches \"^/api/\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Custom fields logging\n  customFieldsLoggingExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: add custom fields to logging\n      kind: zone\n      name: log custom fields\n      phase: http_log_custom_fields\n      rules:\n        - action: log_custom_field\n          actionParameters:\n            cookieFields:\n              - __ga\n              - accountNumber\n              - __cfruid\n            requestFields:\n              - content-type\n              - x-forwarded-for\n              - host\n            responseFields:\n              - server\n              - content-type\n              - allow\n          description: log custom fields rule\n          enabled: true\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Custom cache keys + settings\n  cacheSettingsExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: set cache settings for the request\n      kind: zone\n      name: set cache settings\n      phase: http_request_cache_settings\n      rules:\n        - action: set_cache_settings\n          actionParameters:\n            browserTtl:\n              mode: respect_origin\n            cacheKey:\n              cacheDeceptionArmor: true\n              customKey:\n                cookie:\n                  checkPresence:\n                    - cabc_t\n                    - cdef_t\n                  include:\n                    - cabc\n                    - cdef\n                header:\n                  checkPresence:\n                    - habc_t\n                    - hdef_t\n                  excludeOrigin: true\n                  include:\n                    - habc\n                    - hdef\n                host:\n                  resolved: true\n                queryString:\n                  exclude:\n                    - '*'\n                user:\n                  deviceType: true\n                  geo: false\n              ignoreQueryStringsOrder: false\n            edgeTtl:\n              default: 60\n              mode: override_origin\n              statusCodeTtl:\n                - statusCode: 200\n                  value: 50\n                - statusCodeRange:\n                    - from: 201\n                      to: 300\n                  value: 30\n            originErrorPagePassthru: false\n            respectStrongEtags: true\n            serveStale:\n              disableStaleWhileUpdating: true\n          description: set cache settings rule\n          enabled: true\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Redirects based on a List resource\n  redirectFromListExample:\n    type: cloudflare:Ruleset\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      description: Redirect ruleset\n      kind: root\n      name: redirects\n      phase: http_request_redirect\n      rules:\n        - action: redirect\n          actionParameters:\n            fromList:\n              key: http.request.full_uri\n              name: redirect_list\n          description: Apply redirects from redirect_list\n          enabled: true\n          expression: http.request.full_uri in $redirect_list\n  # Dynamic Redirects from value resource\n  redirectFromValueExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: Redirect ruleset\n      kind: root\n      name: redirects\n      phase: http_request_dynamic_redirect\n      rules:\n        - action: redirect\n          actionParameters:\n            fromValue:\n              preserveQueryString: true\n              statusCode: 301\n              targetUrl:\n                value: some_host.com\n          description: Apply redirect from value\n          enabled: true\n          expression: (http.request.uri.path matches \"^/api/\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Serve some custom error response\n  httpCustomErrorExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: Serve some error response\n      kind: zone\n      name: Serve some error response\n      phase: http_custom_errors\n      rules:\n        - action: serve_error\n          actionParameters:\n            content: some error html\n            contentType: text/html\n            statusCode: '530'\n          description: serve some error response\n          enabled: true\n          expression: (http.request.uri.path matches \"^/api/\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Set Configuration Rules for an API route\n  httpConfigRulesExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: set config rules for request\n      kind: zone\n      name: set config rules\n      phase: http_config_settings\n      rules:\n        - action: set_config\n          actionParameters:\n            bic: true\n            emailObfuscation: true\n          description: set config rules for matching request\n          enabled: true\n          expression: (http.request.uri.path matches \"^/api/\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nImport an account scoped Ruleset configuration.\n\n```sh\n $ pulumi import cloudflare:index/ruleset:Ruleset example account/<account_id>/<ruleset_id>\n```\n\n Import a zone scoped Ruleset configuration.\n\n```sh\n $ pulumi import cloudflare:index/ruleset:Ruleset example zone/<zone_id>/<ruleset_id>\n```\n\n "
+-      properties: {
+-        accountId: {
+-          type: "string"
+-          description: "The account identifier to target for the resource. Conflicts with `zone_id`.\n"
+-        }
+-        description: {
+-          type: "string"
+-          description: "Brief summary of the ruleset and its intended use.\n"
+-        }
+-        kind: {
+-          type: "string"
+-          description: "Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.\n"
+-        }
+-        name: {
+-          type: "string"
+-          description: "Name of the ruleset. **Modifying this attribute will force creation of a new resource.**\n"
+-        }
+-        phase: {
+-          type: "string"
+-          description: "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.\n"
+-        }
+-        rules: {
+-          type: "array"
+-          items: {
+-            $ref: "#/types/cloudflare:index/RulesetRule:RulesetRule"
+-          }
+-          description: "List of rules to apply to the ruleset.\n"
+-        }
+-        shareableEntitlementName: {
+-          type: "string"
+-          description: "Name of entitlement that is shareable between entities.\n"
+-        }
+-        zoneId: {
+-          type: "string"
+-          description: "The zone identifier to target for the resource. Conflicts with `account_id`.\n"
+-        }
+-      }
+-      required: [
+-        "kind"
+-        "name"
+-        "phase"
+-      ]
+-      inputProperties: {
+-        accountId: {
+-          type: "string"
+-          description: "The account identifier to target for the resource. Conflicts with `zone_id`.\n"
+-        }
+-        description: {
+-          type: "string"
+-          description: "Brief summary of the ruleset and its intended use.\n"
+-        }
+-        kind: {
+-          type: "string"
+-          description: "Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.\n"
+-        }
+-        name: {
+-          type: "string"
+-          description: "Name of the ruleset. **Modifying this attribute will force creation of a new resource.**\n"
+-          willReplaceOnChanges: true
+-        }
+-        phase: {
+-          type: "string"
+-          description: "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.\n"
+-        }
+-        rules: {
+-          type: "array"
+-          items: {
+-            $ref: "#/types/cloudflare:index/RulesetRule:RulesetRule"
+-          }
+-          description: "List of rules to apply to the ruleset.\n"
+-        }
+-        shareableEntitlementName: {
+-          type: "string"
+-          description: "Name of entitlement that is shareable between entities.\n"
+-        }
+-        zoneId: {
+-          type: "string"
+-          description: "The zone identifier to target for the resource. Conflicts with `account_id`.\n"
+-        }
+-      }
+-      requiredInputs: [
+-        "kind"
+-        "name"
+-        "phase"
+-      ]
+-      stateInputs: {
+-        description: "Input properties used for looking up and filtering Ruleset resources.\n"
+-        properties: {
+-          accountId: {
+-            type: "string"
+-            description: "The account identifier to target for the resource. Conflicts with `zone_id`.\n"
+-          }
+-          description: {
+-            type: "string"
+-            description: "Brief summary of the ruleset and its intended use.\n"
+-          }
+-          kind: {
+-            type: "string"
+-            description: "Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.\n"
+-          }
+-          name: {
+-            type: "string"
+-            description: "Name of the ruleset. **Modifying this attribute will force creation of a new resource.**\n"
+-            willReplaceOnChanges: true
+-          }
+-          phase: {
+-            type: "string"
+-            description: "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.\n"
+-          }
+-          rules: {
+-            type: "array"
+-            items: {
+-              $ref: "#/types/cloudflare:index/RulesetRule:RulesetRule"
+-            }
+-            description: "List of rules to apply to the ruleset.\n"
+-          }
+-          shareableEntitlementName: {
+-            type: "string"
+-            description: "Name of entitlement that is shareable between entities.\n"
+-          }
+-          zoneId: {
+-            type: "string"
+-            description: "The zone identifier to target for the resource. Conflicts with `account_id`.\n"
+-          }
+-        }
+-        type: "object"
+-      }
+-    }
++    cloudflare:index/addressMap:AddressMap: {
++      description: "Provides the ability to manage IP addresses that can be used by DNS records when\nthey are proxied through Cloudflare.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.AddressMap(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    defaultSni: \"*.example.com\",\n    description: \"My address map\",\n    enabled: true,\n    ips: [\n        {\n            ip: \"192.0.2.1\",\n        },\n        {\n            ip: \"203.0.113.1\",\n        },\n    ],\n    memberships: [\n        {\n            identifier: \"92f17202ed8bd63d69a66b86a49a8f6b\",\n            kind: \"account\",\n        },\n        {\n            identifier: \"023e105f4ecef8ad9ca31a8372d0c353\",\n            kind: \"zone\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.AddressMap(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    default_sni=\"*.example.com\",\n    description=\"My address map\",\n    enabled=True,\n    ips=[\n        cloudflare.AddressMapIpArgs(\n            ip=\"192.0.2.1\",\n        ),\n        cloudflare.AddressMapIpArgs(\n            ip=\"203.0.113.1\",\n        ),\n    ],\n    memberships=[\n        cloudflare.AddressMapMembershipArgs(\n            identifier=\"92f17202ed8bd63d69a66b86a49a8f6b\",\n            kind=\"account\",\n        ),\n        cloudflare.AddressMapMembershipArgs(\n            identifier=\"023e105f4ecef8ad9ca31a8372d0c353\",\n            kind=\"zone\",\n        ),\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() => \n{\n    var example = new Cloudflare.AddressMap(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        DefaultSni = \"*.example.com\",\n        Description = \"My address map\",\n        Enabled = true,\n        Ips = new[]\n        {\n            new Cloudflare.Inputs.AddressMapIpArgs\n            {\n                Ip = \"192.0.2.1\",\n            },\n            new Cloudflare.Inputs.AddressMapIpArgs\n            {\n                Ip = \"203.0.113.1\",\n            },\n        },\n        Memberships = new[]\n        {\n            new Cloudflare.Inputs.AddressMapMembershipArgs\n            {\n                Identifier = \"92f17202ed8bd63d69a66b86a49a8f6b\",\n                Kind = \"account\",\n            },\n            new Cloudflare.Inputs.AddressMapMembershipArgs\n            {\n                Identifier = \"023e105f4ecef8ad9ca31a8372d0c353\",\n                Kind = \"zone\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAddressMap(ctx, \"example\", &cloudflare.AddressMapArgs{\n\t\t\tAccountId:   pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tDefaultSni:  pulumi.String(\"*.example.com\"),\n\t\t\tDescription: pulumi.String(\"My address map\"),\n\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\tIps: cloudflare.AddressMapIpArray{\n\t\t\t\t&cloudflare.AddressMapIpArgs{\n\t\t\t\t\tIp: pulumi.String(\"192.0.2.1\"),\n\t\t\t\t},\n\t\t\t\t&cloudflare.AddressMapIpArgs{\n\t\t\t\t\tIp: pulumi.String(\"203.0.113.1\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tMemberships: cloudflare.AddressMapMembershipArray{\n\t\t\t\t&cloudflare.AddressMapMembershipArgs{\n\t\t\t\t\tIdentifier: pulumi.String(\"92f17202ed8bd63d69a66b86a49a8f6b\"),\n\t\t\t\t\tKind:       pulumi.String(\"account\"),\n\t\t\t\t},\n\t\t\t\t&cloudflare.AddressMapMembershipArgs{\n\t\t\t\t\tIdentifier: pulumi.String(\"023e105f4ecef8ad9ca31a8372d0c353\"),\n\t\t\t\t\tKind:       pulumi.String(\"zone\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.AddressMap;\nimport com.pulumi.cloudflare.AddressMapArgs;\nimport com.pulumi.cloudflare.inputs.AddressMapIpArgs;\nimport com.pulumi.cloudflare.inputs.AddressMapMembershipArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new AddressMap(\"example\", AddressMapArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .defaultSni(\"*.example.com\")\n            .description(\"My address map\")\n            .enabled(true)\n            .ips(            \n                AddressMapIpArgs.builder()\n                    .ip(\"192.0.2.1\")\n                    .build(),\n                AddressMapIpArgs.builder()\n                    .ip(\"203.0.113.1\")\n                    .build())\n            .memberships(            \n                AddressMapMembershipArgs.builder()\n                    .identifier(\"92f17202ed8bd63d69a66b86a49a8f6b\")\n                    .kind(\"account\")\n                    .build(),\n                AddressMapMembershipArgs.builder()\n                    .identifier(\"023e105f4ecef8ad9ca31a8372d0c353\")\n                    .kind(\"zone\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:AddressMap\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      defaultSni: '*.example.com'\n      description: My address map\n      enabled: true\n      ips:\n        - ip: 192.0.2.1\n        - ip: 203.0.113.1\n      memberships:\n        - identifier: 92f17202ed8bd63d69a66b86a49a8f6b\n          kind: account\n        - identifier: 023e105f4ecef8ad9ca31a8372d0c353\n          kind: zone\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/addressMap:AddressMap example <account_id>/<address_map_id>\n```\n\n "
++      properties: {
++        accountId: {
++          type: "string"
++          description: "The account identifier to target for the resource.\n"
++        }
++        canDelete: {
++          type: "boolean"
++          description: "If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.\n"
++        }
++        canModifyIps: {
++          type: "boolean"
++          description: "If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.\n"
++        }
++        defaultSni: {
++          type: "string"
++          description: "If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.\n"
++        }
++        description: {
++          type: "string"
++          description: "Description of the address map.\n"
++        }
++        enabled: {
++          type: "boolean"
++          description: "Whether the Address Map is enabled or not.\n"
++        }
++        ips: {
++          type: "array"
++          items: {
++            $ref: "#/types/cloudflare:index/AddressMapIp:AddressMapIp"
++          }
++          description: "The set of IPs on the Address Map.\n"
++        }
++        memberships: {
++          type: "array"
++          items: {
++            $ref: "#/types/cloudflare:index/AddressMapMembership:AddressMapMembership"
++          }
++          description: "Zones and Accounts which will be assigned IPs on this Address Map.\n"
++        }
++      }
++      required: [
++        "accountId"
++        "canDelete"
++        "canModifyIps"
++        "enabled"
++      ]
++      inputProperties: {
++        accountId: {
++          type: "string"
++          description: "The account identifier to target for the resource.\n"
++        }
++        defaultSni: {
++          type: "string"
++          description: "If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.\n"
++        }
++        description: {
++          type: "string"
++          description: "Description of the address map.\n"
++        }
++        enabled: {
++          type: "boolean"
++          description: "Whether the Address Map is enabled or not.\n"
++        }
++        ips: {
++          type: "array"
++          items: {
++            $ref: "#/types/cloudflare:index/AddressMapIp:AddressMapIp"
++          }
++          description: "The set of IPs on the Address Map.\n"
++        }
++        memberships: {
++          type: "array"
++          items: {
++            $ref: "#/types/cloudflare:index/AddressMapMembership:AddressMapMembership"
++          }
++          description: "Zones and Accounts which will be assigned IPs on this Address Map.\n"
++        }
++      }
++      requiredInputs: [
++        "accountId"
++        "enabled"
++      ]
++      stateInputs: {
++        description: "Input properties used for looking up and filtering AddressMap resources.\n"
++        properties: {
++          accountId: {
++            type: "string"
++            description: "The account identifier to target for the resource.\n"
++          }
++          canDelete: {
++            type: "boolean"
++            description: "If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.\n"
++          }
++          canModifyIps: {
++            type: "boolean"
++            description: "If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.\n"
++          }
++          defaultSni: {
++            type: "string"
++            description: "If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.\n"
++          }
++          description: {
++            type: "string"
++            description: "Description of the address map.\n"
++          }
++          enabled: {
++            type: "boolean"
++            description: "Whether the Address Map is enabled or not.\n"
++          }
++          ips: {
++            type: "array"
++            items: {
++              $ref: "#/types/cloudflare:index/AddressMapIp:AddressMapIp"
++            }
++            description: "The set of IPs on the Address Map.\n"
++          }
++          memberships: {
++            type: "array"
++            items: {
++              $ref: "#/types/cloudflare:index/AddressMapMembership:AddressMapMembership"
++            }
++            description: "Zones and Accounts which will be assigned IPs on this Address Map.\n"
++          }
++        }
++        type: "object"
++      }
++    }
++    cloudflare:index/listItem:ListItem: {
++      description: "Provides individual list items (IPs, Redirects) to be used in Edge Rules Engine\nacross all zones within the same account.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst exampleIpList = new cloudflare.List(\"exampleIpList\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"example_list\",\n    description: \"example IPs for a list\",\n    kind: \"ip\",\n});\n// IP List Item\nconst exampleIpItem = new cloudflare.ListItem(\"exampleIpItem\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    listId: exampleIpList.id,\n    comment: \"List Item Comment\",\n    ip: \"192.0.2.0\",\n});\n// Redirect List Item\nconst testTwo = new cloudflare.ListItem(\"testTwo\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    listId: exampleIpList.id,\n    redirect: {\n        sourceUrl: \"https://source.tld\",\n        targetUrl: \"https://target.tld\",\n        statusCode: 302,\n        subpathMatching: \"enabled\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample_ip_list = cloudflare.List(\"exampleIpList\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"example_list\",\n    description=\"example IPs for a list\",\n    kind=\"ip\")\n# IP List Item\nexample_ip_item = cloudflare.ListItem(\"exampleIpItem\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    list_id=example_ip_list.id,\n    comment=\"List Item Comment\",\n    ip=\"192.0.2.0\")\n# Redirect List Item\ntest_two = cloudflare.ListItem(\"testTwo\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    list_id=example_ip_list.id,\n    redirect=cloudflare.ListItemRedirectArgs(\n        source_url=\"https://source.tld\",\n        target_url=\"https://target.tld\",\n        status_code=302,\n        subpath_matching=\"enabled\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() => \n{\n    var exampleIpList = new Cloudflare.List(\"exampleIpList\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"example_list\",\n        Description = \"example IPs for a list\",\n        Kind = \"ip\",\n    });\n\n    // IP List Item\n    var exampleIpItem = new Cloudflare.ListItem(\"exampleIpItem\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        ListId = exampleIpList.Id,\n        Comment = \"List Item Comment\",\n        Ip = \"192.0.2.0\",\n    });\n\n    // Redirect List Item\n    var testTwo = new Cloudflare.ListItem(\"testTwo\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        ListId = exampleIpList.Id,\n        Redirect = new Cloudflare.Inputs.ListItemRedirectArgs\n        {\n            SourceUrl = \"https://source.tld\",\n            TargetUrl = \"https://target.tld\",\n            StatusCode = 302,\n            SubpathMatching = \"enabled\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleIpList, err := cloudflare.NewList(ctx, \"exampleIpList\", &cloudflare.ListArgs{\n\t\t\tAccountId:   pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:        pulumi.String(\"example_list\"),\n\t\t\tDescription: pulumi.String(\"example IPs for a list\"),\n\t\t\tKind:        pulumi.String(\"ip\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewListItem(ctx, \"exampleIpItem\", &cloudflare.ListItemArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tListId:    exampleIpList.ID(),\n\t\t\tComment:   pulumi.String(\"List Item Comment\"),\n\t\t\tIp:        pulumi.String(\"192.0.2.0\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewListItem(ctx, \"testTwo\", &cloudflare.ListItemArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tListId:    exampleIpList.ID(),\n\t\t\tRedirect: &cloudflare.ListItemRedirectArgs{\n\t\t\t\tSourceUrl:       pulumi.String(\"https://source.tld\"),\n\t\t\t\tTargetUrl:       pulumi.String(\"https://target.tld\"),\n\t\t\t\tStatusCode:      pulumi.Int(302),\n\t\t\t\tSubpathMatching: pulumi.String(\"enabled\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.List;\nimport com.pulumi.cloudflare.ListArgs;\nimport com.pulumi.cloudflare.ListItem;\nimport com.pulumi.cloudflare.ListItemArgs;\nimport com.pulumi.cloudflare.inputs.ListItemRedirectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleIpList = new List(\"exampleIpList\", ListArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"example_list\")\n            .description(\"example IPs for a list\")\n            .kind(\"ip\")\n            .build());\n\n        var exampleIpItem = new ListItem(\"exampleIpItem\", ListItemArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .listId(exampleIpList.id())\n            .comment(\"List Item Comment\")\n            .ip(\"192.0.2.0\")\n            .build());\n\n        var testTwo = new ListItem(\"testTwo\", ListItemArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .listId(exampleIpList.id())\n            .redirect(ListItemRedirectArgs.builder()\n                .sourceUrl(\"https://source.tld\")\n                .targetUrl(\"https://target.tld\")\n                .statusCode(302)\n                .subpathMatching(\"enabled\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleIpList:\n    type: cloudflare:List\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: example_list\n      description: example IPs for a list\n      kind: ip\n  # IP List Item\n  exampleIpItem:\n    type: cloudflare:ListItem\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      listId: ${exampleIpList.id}\n      comment: List Item Comment\n      ip: 192.0.2.0\n  # Redirect List Item\n  testTwo:\n    type: cloudflare:ListItem\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      listId: ${exampleIpList.id}\n      redirect:\n        sourceUrl: https://source.tld\n        targetUrl: https://target.tld\n        statusCode: 302\n        subpathMatching: enabled\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/listItem:ListItem example <account_id>/<list_id>/<item_id>\n```\n\n "
++      properties: {
++        accountId: {
++          type: "string"
++          description: "The account identifier to target for the resource.\n"
++        }
++        comment: {
++          type: "string"
++          description: "An optional comment for the item.\n"
++        }
++        ip: {
++          type: "string"
++          description: "IP address to include in the list. Must provide only one of `ip`, `redirect`. **Modifying this attribute will force creation of a new resource.**\n"
++        }
++        listId: {
++          type: "string"
++          description: "The list identifier to target for the resource.\n"
++        }
++        redirect: {
++          $ref: "#/types/cloudflare:index/ListItemRedirect:ListItemRedirect"
++          description: "Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`. **Modifying this attribute will force creation of a new resource.**\n"
++        }
++      }
++      required: [
++        "accountId"
++        "listId"
++      ]
++      inputProperties: {
++        accountId: {
++          type: "string"
++          description: "The account identifier to target for the resource.\n"
++        }
++        comment: {
++          type: "string"
++          description: "An optional comment for the item.\n"
++        }
++        ip: {
++          type: "string"
++          description: "IP address to include in the list. Must provide only one of `ip`, `redirect`. **Modifying this attribute will force creation of a new resource.**\n"
++          willReplaceOnChanges: true
++        }
++        listId: {
++          type: "string"
++          description: "The list identifier to target for the resource.\n"
++        }
++        redirect: {
++          $ref: "#/types/cloudflare:index/ListItemRedirect:ListItemRedirect"
++          description: "Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`. **Modifying this attribute will force creation of a new resource.**\n"
++          willReplaceOnChanges: true
++        }
++      }
++      requiredInputs: [
++        "accountId"
++        "listId"
++      ]
++      stateInputs: {
++        description: "Input properties used for looking up and filtering ListItem resources.\n"
++        properties: {
++          accountId: {
++            type: "string"
++            description: "The account identifier to target for the resource.\n"
++          }
++          comment: {
++            type: "string"
++            description: "An optional comment for the item.\n"
++          }
++          ip: {
++            type: "string"
++            description: "IP address to include in the list. Must provide only one of `ip`, `redirect`. **Modifying this attribute will force creation of a new resource.**\n"
++            willReplaceOnChanges: true
++          }
++          listId: {
++            type: "string"
++            description: "The list identifier to target for the resource.\n"
++          }
++          redirect: {
++            $ref: "#/types/cloudflare:index/ListItemRedirect:ListItemRedirect"
++            description: "Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`. **Modifying this attribute will force creation of a new resource.**\n"
++            willReplaceOnChanges: true
++          }
++        }
++        type: "object"
++      }
++    }
+     cloudflare:index/accessOrganization:AccessOrganization: {
+       properties: {
++        uiReadOnlyToggleReason: {
++          type: "string"
++          description: "A description of the reason why the UI read only field is being toggled.\n"
++        }
+       }
+       inputProperties: {
++        uiReadOnlyToggleReason: {
++          type: "string"
++          description: "A description of the reason why the UI read only field is being toggled.\n"
++        }
+       }
+       stateInputs: {
+         properties: {
++          uiReadOnlyToggleReason: {
++            type: "string"
++            description: "A description of the reason why the UI read only field is being toggled.\n"
++          }
+         }
+       }
+     }
+     cloudflare:index/list:List: {
+       inputProperties: {
+         kind: {
++          willReplaceOnChanges: true
+         }
+       }
+       stateInputs: {
+         properties: {
+           kind: {
++            willReplaceOnChanges: true
+           }
+         }
+       }
+     }
+     cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks: {
+       inputProperties: {
+         url: {
++          willReplaceOnChanges: true
+         }
+       }
+       stateInputs: {
+         properties: {
+           url: {
++            willReplaceOnChanges: true
+           }
+         }
+       }
+     }
+     cloudflare:index/workerScript:WorkerScript: {
+       properties: {
++        compatibilityDate: {
++          type: "string"
++          description: "The date to use for the compatibility flag.\n"
++        }
+       }
+       inputProperties: {
++        compatibilityDate: {
++          type: "string"
++          description: "The date to use for the compatibility flag.\n"
++        }
+       }
+       stateInputs: {
+         properties: {
++          compatibilityDate: {
++            type: "string"
++            description: "The date to use for the compatibility flag.\n"
++          }
+         }
+       }
+     }
+   }
+   functions: {
++    cloudflare:index/getList:getList: {
++      description: "Use this data source to lookup a [List](https://developers.cloudflare.com/api/operations/lists-get-lists).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = cloudflare.getList({\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"list_name\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_list(account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"list_name\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() => \n{\n    var example = Cloudflare.GetList.Invoke(new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"list_name\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.LookupList(ctx, &cloudflare.LookupListArgs{\n\t\t\tAccountId: \"f037e56e89293a057740de681ac9abbe\",\n\t\t\tName:      \"list_name\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.CloudflareFunctions;\nimport com.pulumi.cloudflare.inputs.GetListArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudflareFunctions.getList(GetListArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"list_name\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: cloudflare:getList\n      Arguments:\n        accountId: f037e56e89293a057740de681ac9abbe\n        name: list_name\n```\n{{% /example %}}\n{{% /examples %}}"
++      inputs: {
++        description: "A collection of arguments for invoking getList.\n"
++        properties: {
++          accountId: {
++            type: "string"
++            description: "The account identifier to target for the resource.\n"
++          }
++          name: {
++            type: "string"
++            description: "The list name to target for the resource.\n"
++          }
++        }
++        type: "object"
++        required: [
++          "accountId"
++          "name"
++        ]
++      }
++      outputs: {
++        description: "A collection of values returned by getList.\n"
++        properties: {
++          accountId: {
++            type: "string"
++            description: "The account identifier to target for the resource.\n"
++          }
++          description: {
++            type: "string"
++            description: "List description.\n"
++          }
++          id: {
++            type: "string"
++            description: "The provider-assigned unique ID for this managed resource.\n"
++          }
++          kind: {
++            type: "string"
++            description: "List kind.\n"
++          }
++          name: {
++            type: "string"
++            description: "The list name to target for the resource.\n"
++          }
++          numitems: {
++            type: "integer"
++            description: "Number of items in list.\n"
++          }
++        }
++        type: "object"
++        required: [
++          "accountId"
++          "description"
++          "kind"
++          "name"
++          "numitems"
++          "id"
++        ]
++      }
++    }
++    cloudflare:index/getLists:getLists: {
++      description: "Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = cloudflare.getLists({\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_lists(account_id=\"f037e56e89293a057740de681ac9abbe\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() => \n{\n    var example = Cloudflare.GetLists.Invoke(new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetLists(ctx, &cloudflare.GetListsArgs{\n\t\t\tAccountId: \"f037e56e89293a057740de681ac9abbe\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.CloudflareFunctions;\nimport com.pulumi.cloudflare.inputs.GetListsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudflareFunctions.getLists(GetListsArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: cloudflare:getLists\n      Arguments:\n        accountId: f037e56e89293a057740de681ac9abbe\n```\n{{% /example %}}\n{{% /examples %}}"
++      inputs: {
++        description: "A collection of arguments for invoking getLists.\n"
++        properties: {
++          accountId: {
++            type: "string"
++            description: "The account identifier to target for the resource.\n"
++          }
++        }
++        type: "object"
++        required: [
++          "accountId"
++        ]
++      }
++      outputs: {
++        description: "A collection of values returned by getLists.\n"
++        properties: {
++          accountId: {
++            type: "string"
++            description: "The account identifier to target for the resource.\n"
++          }
++          id: {
++            type: "string"
++            description: "The provider-assigned unique ID for this managed resource.\n"
++          }
++          lists: {
++            type: "array"
++            items: {
++              $ref: "#/types/cloudflare:index/getListsList:getListsList"
++            }
++          }
++        }
++        type: "object"
++        required: [
++          "accountId"
++          "lists"
++          "id"
++        ]
++      }
++    }
+   }
+ }

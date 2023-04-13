@@ -173,7 +173,6 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_pages_project":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PagesProject")},
 			"cloudflare_rate_limit":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RateLimit")},
 			"cloudflare_record":                     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Record")},
-			"cloudflare_ruleset":                    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Ruleset")},
 			"cloudflare_spectrum_application":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SpectrumApplication")},
 			"cloudflare_split_tunnel":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SplitTunnel")},
 			"cloudflare_static_route":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "StaticRoute")},
