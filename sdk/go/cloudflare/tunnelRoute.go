@@ -15,6 +15,54 @@ import (
 // Trust. Tunnel routes are used to direct IP traffic through
 // Cloudflare Tunnels.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewTunnelRoute(ctx, "exampleTunnelRoute", &cloudflare.TunnelRouteArgs{
+//				AccountId:        pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				TunnelId:         pulumi.String("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
+//				Network:          pulumi.String("192.0.2.24/32"),
+//				Comment:          pulumi.String("New tunnel route for documentation"),
+//				VirtualNetworkId: pulumi.String("bdc39a3c-3104-4c23-8ac0-9f455dda691a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tunnel, err := cloudflare.NewTunnel(ctx, "tunnel", &cloudflare.TunnelArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:      pulumi.String("my_tunnel"),
+//				Secret:    pulumi.String("AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg="),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewTunnelRoute(ctx, "exampleIndex/tunnelRouteTunnelRoute", &cloudflare.TunnelRouteArgs{
+//				AccountId:        pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				TunnelId:         tunnel.ID(),
+//				Network:          pulumi.String("192.0.2.24/32"),
+//				Comment:          pulumi.String("New tunnel route for documentation"),
+//				VirtualNetworkId: pulumi.String("bdc39a3c-3104-4c23-8ac0-9f455dda691a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

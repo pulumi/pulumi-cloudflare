@@ -61,14 +61,14 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The URL of the webhook destinations.
+     * The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return The URL of the webhook destinations.
+     * @return The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> url() {
@@ -166,7 +166,7 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param url The URL of the webhook destinations.
+         * @param url The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param url The URL of the webhook destinations.
+         * @param url The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

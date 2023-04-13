@@ -38,6 +38,14 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("certsUrl")]
         public Input<string>? CertsUrl { get; set; }
 
+        [Input("claims")]
+        private InputList<string>? _claims;
+        public InputList<string> Claims
+        {
+            get => _claims ?? (_claims = new InputList<string>());
+            set => _claims = value;
+        }
+
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
@@ -67,6 +75,14 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("redirectUrl")]
         public Input<string>? RedirectUrl { get; set; }
+
+        [Input("scopes")]
+        private InputList<string>? _scopes;
+        public InputList<string> Scopes
+        {
+            get => _scopes ?? (_scopes = new InputList<string>());
+            set => _scopes = value;
+        }
 
         [Input("signRequest")]
         public Input<bool>? SignRequest { get; set; }

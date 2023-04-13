@@ -11,6 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The [Cloudflare Managed Headers](https://developers.cloudflare.com/rules/transform/managed-transforms/)
+// allows you to add or remove some predefined headers to one's
+// requests or origin responses.
+//
 // ## Example Usage
 //
 // ```go
@@ -48,10 +52,6 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// Import is not supported for this resource.
 type ManagedHeaders struct {
 	pulumi.CustomResourceState
 

@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetDevicesDeviceResult
     {
         public readonly string? Created;
+        public readonly bool? Deleted;
         public readonly string? DeviceType;
         /// <summary>
         /// The ID of this resource.
@@ -22,11 +23,15 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Ip;
         public readonly string? Key;
         public readonly string? LastSeen;
+        public readonly string? MacAddress;
+        public readonly string? Manufacturer;
         public readonly string? Model;
         public readonly string? Name;
         public readonly string? OsDistroName;
         public readonly string? OsDistroRevision;
         public readonly string? OsVersion;
+        public readonly string? RevokedAt;
+        public readonly string? SerialNumber;
         public readonly string? Updated;
         public readonly string? UserEmail;
         public readonly string? UserId;
@@ -36,6 +41,8 @@ namespace Pulumi.Cloudflare.Outputs
         [OutputConstructor]
         private GetDevicesDeviceResult(
             string? created,
+
+            bool? deleted,
 
             string? deviceType,
 
@@ -47,6 +54,10 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? lastSeen,
 
+            string? macAddress,
+
+            string? manufacturer,
+
             string? model,
 
             string? name,
@@ -56,6 +67,10 @@ namespace Pulumi.Cloudflare.Outputs
             string? osDistroRevision,
 
             string? osVersion,
+
+            string? revokedAt,
+
+            string? serialNumber,
 
             string? updated,
 
@@ -68,16 +83,21 @@ namespace Pulumi.Cloudflare.Outputs
             string? version)
         {
             Created = created;
+            Deleted = deleted;
             DeviceType = deviceType;
             Id = id;
             Ip = ip;
             Key = key;
             LastSeen = lastSeen;
+            MacAddress = macAddress;
+            Manufacturer = manufacturer;
             Model = model;
             Name = name;
             OsDistroName = osDistroName;
             OsDistroRevision = osDistroRevision;
             OsVersion = osVersion;
+            RevokedAt = revokedAt;
+            SerialNumber = serialNumber;
             Updated = updated;
             UserEmail = userEmail;
             UserId = userId;

@@ -259,14 +259,14 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.precedence);
     }
     /**
-     * The service mode. Defaults to `warp`.
+     * The service mode. Available values: `1dot1`, `warp`, `proxy`, `posture_only`, `warp_tunnel_only`. Defaults to `warp`.
      * 
      */
     @Export(name="serviceModeV2Mode", type=String.class, parameters={})
     private Output</* @Nullable */ String> serviceModeV2Mode;
 
     /**
-     * @return The service mode. Defaults to `warp`.
+     * @return The service mode. Available values: `1dot1`, `warp`, `proxy`, `posture_only`, `warp_tunnel_only`. Defaults to `warp`.
      * 
      */
     public Output<Optional<String>> serviceModeV2Mode() {

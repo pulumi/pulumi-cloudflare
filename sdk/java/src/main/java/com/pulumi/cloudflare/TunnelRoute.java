@@ -19,6 +19,56 @@ import javax.annotation.Nullable;
  * Trust. Tunnel routes are used to direct IP traffic through
  * Cloudflare Tunnels.
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.TunnelRoute;
+ * import com.pulumi.cloudflare.TunnelRouteArgs;
+ * import com.pulumi.cloudflare.Tunnel;
+ * import com.pulumi.cloudflare.TunnelArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleTunnelRoute = new TunnelRoute(&#34;exampleTunnelRoute&#34;, TunnelRouteArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .tunnelId(&#34;f70ff985-a4ef-4643-bbbc-4a0ed4fc8415&#34;)
+ *             .network(&#34;192.0.2.24/32&#34;)
+ *             .comment(&#34;New tunnel route for documentation&#34;)
+ *             .virtualNetworkId(&#34;bdc39a3c-3104-4c23-8ac0-9f455dda691a&#34;)
+ *             .build());
+ * 
+ *         var tunnel = new Tunnel(&#34;tunnel&#34;, TunnelArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .name(&#34;my_tunnel&#34;)
+ *             .secret(&#34;AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=&#34;)
+ *             .build());
+ * 
+ *         var exampleIndex_tunnelRouteTunnelRoute = new TunnelRoute(&#34;exampleIndex/tunnelRouteTunnelRoute&#34;, TunnelRouteArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .tunnelId(tunnel.id())
+ *             .network(&#34;192.0.2.24/32&#34;)
+ *             .comment(&#34;New tunnel route for documentation&#34;)
+ *             .virtualNetworkId(&#34;bdc39a3c-3104-4c23-8ac0-9f455dda691a&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * ```sh

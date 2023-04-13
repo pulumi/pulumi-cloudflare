@@ -65,7 +65,7 @@ type NotificationPolicyWebhooks struct {
 	// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
 	Secret pulumi.StringPtrOutput `pulumi:"secret"`
 	Type   pulumi.StringOutput    `pulumi:"type"`
-	// The URL of the webhook destinations.
+	// The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
 	Url pulumi.StringPtrOutput `pulumi:"url"`
 }
 
@@ -117,7 +117,7 @@ type notificationPolicyWebhooksState struct {
 	// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
 	Secret *string `pulumi:"secret"`
 	Type   *string `pulumi:"type"`
-	// The URL of the webhook destinations.
+	// The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
 	Url *string `pulumi:"url"`
 }
 
@@ -135,7 +135,7 @@ type NotificationPolicyWebhooksState struct {
 	// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
 	Secret pulumi.StringPtrInput
 	Type   pulumi.StringPtrInput
-	// The URL of the webhook destinations.
+	// The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
 	Url pulumi.StringPtrInput
 }
 
@@ -150,7 +150,7 @@ type notificationPolicyWebhooksArgs struct {
 	Name string `pulumi:"name"`
 	// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
 	Secret *string `pulumi:"secret"`
-	// The URL of the webhook destinations.
+	// The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
 	Url *string `pulumi:"url"`
 }
 
@@ -162,7 +162,7 @@ type NotificationPolicyWebhooksArgs struct {
 	Name pulumi.StringInput
 	// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
 	Secret pulumi.StringPtrInput
-	// The URL of the webhook destinations.
+	// The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
 	Url pulumi.StringPtrInput
 }
 
@@ -287,7 +287,7 @@ func (o NotificationPolicyWebhooksOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The URL of the webhook destinations.
+// The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
 func (o NotificationPolicyWebhooksOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringPtrOutput { return v.Url }).(pulumi.StringPtrOutput)
 }

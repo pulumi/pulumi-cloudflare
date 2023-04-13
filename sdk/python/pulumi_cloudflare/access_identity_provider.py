@@ -20,6 +20,7 @@ class AccessIdentityProviderArgs:
                  type: pulumi.Input[str],
                  account_id: Optional[pulumi.Input[str]] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderConfigArgs']]]] = None,
+                 scim_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderScimConfigArgs']]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessIdentityProvider resource.
@@ -27,6 +28,7 @@ class AccessIdentityProviderArgs:
         :param pulumi.Input[str] type: The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderConfigArgs']]] configs: Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+        :param pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderScimConfigArgs']]] scim_configs: Configuration for SCIM settings for a given IDP.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
         """
         pulumi.set(__self__, "name", name)
@@ -35,6 +37,8 @@ class AccessIdentityProviderArgs:
             pulumi.set(__self__, "account_id", account_id)
         if configs is not None:
             pulumi.set(__self__, "configs", configs)
+        if scim_configs is not None:
+            pulumi.set(__self__, "scim_configs", scim_configs)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -87,6 +91,18 @@ class AccessIdentityProviderArgs:
         pulumi.set(self, "configs", value)
 
     @property
+    @pulumi.getter(name="scimConfigs")
+    def scim_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderScimConfigArgs']]]]:
+        """
+        Configuration for SCIM settings for a given IDP.
+        """
+        return pulumi.get(self, "scim_configs")
+
+    @scim_configs.setter
+    def scim_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderScimConfigArgs']]]]):
+        pulumi.set(self, "scim_configs", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -105,6 +121,7 @@ class _AccessIdentityProviderState:
                  account_id: Optional[pulumi.Input[str]] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderConfigArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 scim_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderScimConfigArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -112,6 +129,7 @@ class _AccessIdentityProviderState:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderConfigArgs']]] configs: Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
         :param pulumi.Input[str] name: Friendly name of the Access Identity Provider configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderScimConfigArgs']]] scim_configs: Configuration for SCIM settings for a given IDP.
         :param pulumi.Input[str] type: The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
         """
@@ -121,6 +139,8 @@ class _AccessIdentityProviderState:
             pulumi.set(__self__, "configs", configs)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if scim_configs is not None:
+            pulumi.set(__self__, "scim_configs", scim_configs)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if zone_id is not None:
@@ -163,6 +183,18 @@ class _AccessIdentityProviderState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="scimConfigs")
+    def scim_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderScimConfigArgs']]]]:
+        """
+        Configuration for SCIM settings for a given IDP.
+        """
+        return pulumi.get(self, "scim_configs")
+
+    @scim_configs.setter
+    def scim_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderScimConfigArgs']]]]):
+        pulumi.set(self, "scim_configs", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -195,6 +227,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 scim_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderScimConfigArgs']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -270,6 +303,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]] configs: Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
         :param pulumi.Input[str] name: Friendly name of the Access Identity Provider configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderScimConfigArgs']]]] scim_configs: Configuration for SCIM settings for a given IDP.
         :param pulumi.Input[str] type: The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
         """
@@ -364,6 +398,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 scim_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderScimConfigArgs']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -380,6 +415,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            __props__.__dict__["scim_configs"] = scim_configs
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
@@ -397,6 +433,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            scim_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderScimConfigArgs']]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'AccessIdentityProvider':
         """
@@ -409,6 +446,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]] configs: Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
         :param pulumi.Input[str] name: Friendly name of the Access Identity Provider configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderScimConfigArgs']]]] scim_configs: Configuration for SCIM settings for a given IDP.
         :param pulumi.Input[str] type: The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
         """
@@ -419,6 +457,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["configs"] = configs
         __props__.__dict__["name"] = name
+        __props__.__dict__["scim_configs"] = scim_configs
         __props__.__dict__["type"] = type
         __props__.__dict__["zone_id"] = zone_id
         return AccessIdentityProvider(resource_name, opts=opts, __props__=__props__)
@@ -446,6 +485,14 @@ class AccessIdentityProvider(pulumi.CustomResource):
         Friendly name of the Access Identity Provider configuration.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="scimConfigs")
+    def scim_configs(self) -> pulumi.Output[Optional[Sequence['outputs.AccessIdentityProviderScimConfig']]]:
+        """
+        Configuration for SCIM settings for a given IDP.
+        """
+        return pulumi.get(self, "scim_configs")
 
     @property
     @pulumi.getter

@@ -115,6 +115,8 @@ type AccessIdentityProvider struct {
 	Configs AccessIdentityProviderConfigArrayOutput `pulumi:"configs"`
 	// Friendly name of the Access Identity Provider configuration.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Configuration for SCIM settings for a given IDP.
+	ScimConfigs AccessIdentityProviderScimConfigArrayOutput `pulumi:"scimConfigs"`
 	// The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
@@ -162,6 +164,8 @@ type accessIdentityProviderState struct {
 	Configs []AccessIdentityProviderConfig `pulumi:"configs"`
 	// Friendly name of the Access Identity Provider configuration.
 	Name *string `pulumi:"name"`
+	// Configuration for SCIM settings for a given IDP.
+	ScimConfigs []AccessIdentityProviderScimConfig `pulumi:"scimConfigs"`
 	// The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
 	Type *string `pulumi:"type"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
@@ -175,6 +179,8 @@ type AccessIdentityProviderState struct {
 	Configs AccessIdentityProviderConfigArrayInput
 	// Friendly name of the Access Identity Provider configuration.
 	Name pulumi.StringPtrInput
+	// Configuration for SCIM settings for a given IDP.
+	ScimConfigs AccessIdentityProviderScimConfigArrayInput
 	// The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
 	Type pulumi.StringPtrInput
 	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
@@ -192,6 +198,8 @@ type accessIdentityProviderArgs struct {
 	Configs []AccessIdentityProviderConfig `pulumi:"configs"`
 	// Friendly name of the Access Identity Provider configuration.
 	Name string `pulumi:"name"`
+	// Configuration for SCIM settings for a given IDP.
+	ScimConfigs []AccessIdentityProviderScimConfig `pulumi:"scimConfigs"`
 	// The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
 	Type string `pulumi:"type"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
@@ -206,6 +214,8 @@ type AccessIdentityProviderArgs struct {
 	Configs AccessIdentityProviderConfigArrayInput
 	// Friendly name of the Access Identity Provider configuration.
 	Name pulumi.StringInput
+	// Configuration for SCIM settings for a given IDP.
+	ScimConfigs AccessIdentityProviderScimConfigArrayInput
 	// The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
 	Type pulumi.StringInput
 	// The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
@@ -312,6 +322,11 @@ func (o AccessIdentityProviderOutput) Configs() AccessIdentityProviderConfigArra
 // Friendly name of the Access Identity Provider configuration.
 func (o AccessIdentityProviderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessIdentityProvider) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configuration for SCIM settings for a given IDP.
+func (o AccessIdentityProviderOutput) ScimConfigs() AccessIdentityProviderScimConfigArrayOutput {
+	return o.ApplyT(func(v *AccessIdentityProvider) AccessIdentityProviderScimConfigArrayOutput { return v.ScimConfigs }).(AccessIdentityProviderScimConfigArrayOutput)
 }
 
 // The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.

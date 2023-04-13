@@ -27,7 +27,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAccountMember(ctx, "exampleUser", &cloudflare.AccountMemberArgs{
+//			_, err := cloudflare.NewAccountMember(ctx, "example", &cloudflare.AccountMemberArgs{
+//				AccountId:    pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				EmailAddress: pulumi.String("user@example.com"),
 //				RoleIds: pulumi.StringArray{
 //					pulumi.String("68b329da9893e34099c7d8ad5cb9c940"),

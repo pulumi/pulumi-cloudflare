@@ -16,14 +16,14 @@ public final class LoadBalancerPoolOriginSteeringArgs extends com.pulumi.resourc
     public static final LoadBalancerPoolOriginSteeringArgs Empty = new LoadBalancerPoolOriginSteeringArgs();
 
     /**
-     * Origin steering policy to be used. Available values: ``,`hash`,`random`. Defaults to`random`.
+     * Origin steering policy to be used. Available values: `&#34;&#34;`, `hash`, `random`. Defaults to `random`.
      * 
      */
     @Import(name="policy")
     private @Nullable Output<String> policy;
 
     /**
-     * @return Origin steering policy to be used. Available values: ``,`hash`,`random`. Defaults to`random`.
+     * @return Origin steering policy to be used. Available values: `&#34;&#34;`, `hash`, `random`. Defaults to `random`.
      * 
      */
     public Optional<Output<String>> policy() {
@@ -55,7 +55,7 @@ public final class LoadBalancerPoolOriginSteeringArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param policy Origin steering policy to be used. Available values: ``,`hash`,`random`. Defaults to`random`.
+         * @param policy Origin steering policy to be used. Available values: `&#34;&#34;`, `hash`, `random`. Defaults to `random`.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class LoadBalancerPoolOriginSteeringArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param policy Origin steering policy to be used. Available values: ``,`hash`,`random`. Defaults to`random`.
+         * @param policy Origin steering policy to be used. Available values: `&#34;&#34;`, `hash`, `random`. Defaults to `random`.
          * 
          * @return builder
          * 

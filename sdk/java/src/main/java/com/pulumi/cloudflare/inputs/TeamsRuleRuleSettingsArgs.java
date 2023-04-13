@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsAuditSshArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsBisoAdminControlsArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsCheckSessionArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsEgressArgs;
@@ -37,6 +38,36 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<Map<String,String>>> addHeaders() {
         return Optional.ofNullable(this.addHeaders);
+    }
+
+    /**
+     * Allow parent MSP accounts to enable bypass their children&#39;s rules.
+     * 
+     */
+    @Import(name="allowChildBypass")
+    private @Nullable Output<Boolean> allowChildBypass;
+
+    /**
+     * @return Allow parent MSP accounts to enable bypass their children&#39;s rules.
+     * 
+     */
+    public Optional<Output<Boolean>> allowChildBypass() {
+        return Optional.ofNullable(this.allowChildBypass);
+    }
+
+    /**
+     * Settings for auditing SSH usage.
+     * 
+     */
+    @Import(name="auditSsh")
+    private @Nullable Output<TeamsRuleRuleSettingsAuditSshArgs> auditSsh;
+
+    /**
+     * @return Settings for auditing SSH usage.
+     * 
+     */
+    public Optional<Output<TeamsRuleRuleSettingsAuditSshArgs>> auditSsh() {
+        return Optional.ofNullable(this.auditSsh);
     }
 
     /**
@@ -85,6 +116,21 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Allow child MSP accounts to bypass their parent&#39;s rule.
+     * 
+     */
+    @Import(name="bypassParentRule")
+    private @Nullable Output<Boolean> bypassParentRule;
+
+    /**
+     * @return Allow child MSP accounts to bypass their parent&#39;s rule.
+     * 
+     */
+    public Optional<Output<Boolean>> bypassParentRule() {
+        return Optional.ofNullable(this.bypassParentRule);
+    }
+
+    /**
      * Configure how session check behaves.
      * 
      */
@@ -127,6 +173,21 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<Boolean>> insecureDisableDnssecValidation() {
         return Optional.ofNullable(this.insecureDisableDnssecValidation);
+    }
+
+    /**
+     * Turns on IP category based filter on dns if the rule contains dns category checks.
+     * 
+     */
+    @Import(name="ipCategories")
+    private @Nullable Output<Boolean> ipCategories;
+
+    /**
+     * @return Turns on IP category based filter on dns if the rule contains dns category checks.
+     * 
+     */
+    public Optional<Output<Boolean>> ipCategories() {
+        return Optional.ofNullable(this.ipCategories);
     }
 
     /**
@@ -208,12 +269,16 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
 
     private TeamsRuleRuleSettingsArgs(TeamsRuleRuleSettingsArgs $) {
         this.addHeaders = $.addHeaders;
+        this.allowChildBypass = $.allowChildBypass;
+        this.auditSsh = $.auditSsh;
         this.bisoAdminControls = $.bisoAdminControls;
         this.blockPageEnabled = $.blockPageEnabled;
         this.blockPageReason = $.blockPageReason;
+        this.bypassParentRule = $.bypassParentRule;
         this.checkSession = $.checkSession;
         this.egress = $.egress;
         this.insecureDisableDnssecValidation = $.insecureDisableDnssecValidation;
+        this.ipCategories = $.ipCategories;
         this.l4override = $.l4override;
         this.overrideHost = $.overrideHost;
         this.overrideIps = $.overrideIps;
@@ -258,6 +323,48 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
          */
         public Builder addHeaders(Map<String,String> addHeaders) {
             return addHeaders(Output.of(addHeaders));
+        }
+
+        /**
+         * @param allowChildBypass Allow parent MSP accounts to enable bypass their children&#39;s rules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowChildBypass(@Nullable Output<Boolean> allowChildBypass) {
+            $.allowChildBypass = allowChildBypass;
+            return this;
+        }
+
+        /**
+         * @param allowChildBypass Allow parent MSP accounts to enable bypass their children&#39;s rules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowChildBypass(Boolean allowChildBypass) {
+            return allowChildBypass(Output.of(allowChildBypass));
+        }
+
+        /**
+         * @param auditSsh Settings for auditing SSH usage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auditSsh(@Nullable Output<TeamsRuleRuleSettingsAuditSshArgs> auditSsh) {
+            $.auditSsh = auditSsh;
+            return this;
+        }
+
+        /**
+         * @param auditSsh Settings for auditing SSH usage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auditSsh(TeamsRuleRuleSettingsAuditSshArgs auditSsh) {
+            return auditSsh(Output.of(auditSsh));
         }
 
         /**
@@ -324,6 +431,27 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param bypassParentRule Allow child MSP accounts to bypass their parent&#39;s rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bypassParentRule(@Nullable Output<Boolean> bypassParentRule) {
+            $.bypassParentRule = bypassParentRule;
+            return this;
+        }
+
+        /**
+         * @param bypassParentRule Allow child MSP accounts to bypass their parent&#39;s rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bypassParentRule(Boolean bypassParentRule) {
+            return bypassParentRule(Output.of(bypassParentRule));
+        }
+
+        /**
          * @param checkSession Configure how session check behaves.
          * 
          * @return builder
@@ -384,6 +512,27 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
          */
         public Builder insecureDisableDnssecValidation(Boolean insecureDisableDnssecValidation) {
             return insecureDisableDnssecValidation(Output.of(insecureDisableDnssecValidation));
+        }
+
+        /**
+         * @param ipCategories Turns on IP category based filter on dns if the rule contains dns category checks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipCategories(@Nullable Output<Boolean> ipCategories) {
+            $.ipCategories = ipCategories;
+            return this;
+        }
+
+        /**
+         * @param ipCategories Turns on IP category based filter on dns if the rule contains dns category checks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipCategories(Boolean ipCategories) {
+            return ipCategories(Output.of(ipCategories));
         }
 
         /**

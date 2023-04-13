@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAccessGroup(ctx, "testGroupAccessGroup", &cloudflare.AccessGroupArgs{
+//			_, err := cloudflare.NewAccessGroup(ctx, "exampleAccessGroup", &cloudflare.AccessGroupArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:      pulumi.String("staging group"),
 //				Includes: cloudflare.AccessGroupIncludeArray{
@@ -49,7 +49,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudflare.NewAccessGroup(ctx, "testGroupIndex/accessGroupAccessGroup", &cloudflare.AccessGroupArgs{
+//			_, err = cloudflare.NewAccessGroup(ctx, "exampleIndex/accessGroupAccessGroup", &cloudflare.AccessGroupArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:      pulumi.String("staging group"),
 //				Includes: cloudflare.AccessGroupIncludeArray{
@@ -62,6 +62,25 @@ import (
 //				Requires: cloudflare.AccessGroupRequireArray{
 //					Ips: cloudflare.AccessGroupRequireArgs{
 //						_var.Office_ip,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewAccessGroup(ctx, "exampleCloudflareIndex/accessGroupAccessGroup", &cloudflare.AccessGroupArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:      pulumi.String("test_group"),
+//				Includes: cloudflare.AccessGroupIncludeArray{
+//					&cloudflare.AccessGroupIncludeArgs{
+//						Azures: cloudflare.AccessGroupIncludeAzureArray{
+//							&cloudflare.AccessGroupIncludeAzureArgs{
+//								IdentityProviderId: pulumi.String("ca298b82-93b5-41bf-bc2d-10493f09b761"),
+//								Ids: pulumi.StringArray{
+//									pulumi.String("86773093-5feb-48dd-814b-7ccd3676ff50"),
+//								},
+//							},
+//						},
 //					},
 //				},
 //			})

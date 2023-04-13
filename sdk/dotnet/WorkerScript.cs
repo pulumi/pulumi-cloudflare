@@ -12,9 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`.
     /// 
-    /// &gt; This resource uses the Cloudflare account APIs. This requires setting the
-    ///   `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -123,6 +120,18 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.WorkerScriptAnalyticsEngineBinding>> AnalyticsEngineBindings { get; private set; } = null!;
 
         /// <summary>
+        /// The date to use for the compatibility flag.
+        /// </summary>
+        [Output("compatibilityDate")]
+        public Output<string?> CompatibilityDate { get; private set; } = null!;
+
+        /// <summary>
+        /// Compatibility flags used for Worker Scripts.
+        /// </summary>
+        [Output("compatibilityFlags")]
+        public Output<ImmutableArray<string>> CompatibilityFlags { get; private set; } = null!;
+
+        /// <summary>
         /// The script content.
         /// </summary>
         [Output("content")]
@@ -222,6 +231,24 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// The date to use for the compatibility flag.
+        /// </summary>
+        [Input("compatibilityDate")]
+        public Input<string>? CompatibilityDate { get; set; }
+
+        [Input("compatibilityFlags")]
+        private InputList<string>? _compatibilityFlags;
+
+        /// <summary>
+        /// Compatibility flags used for Worker Scripts.
+        /// </summary>
+        public InputList<string> CompatibilityFlags
+        {
+            get => _compatibilityFlags ?? (_compatibilityFlags = new InputList<string>());
+            set => _compatibilityFlags = value;
+        }
+
+        /// <summary>
         /// The script content.
         /// </summary>
         [Input("content", required: true)]
@@ -315,6 +342,24 @@ namespace Pulumi.Cloudflare
         {
             get => _analyticsEngineBindings ?? (_analyticsEngineBindings = new InputList<Inputs.WorkerScriptAnalyticsEngineBindingGetArgs>());
             set => _analyticsEngineBindings = value;
+        }
+
+        /// <summary>
+        /// The date to use for the compatibility flag.
+        /// </summary>
+        [Input("compatibilityDate")]
+        public Input<string>? CompatibilityDate { get; set; }
+
+        [Input("compatibilityFlags")]
+        private InputList<string>? _compatibilityFlags;
+
+        /// <summary>
+        /// Compatibility flags used for Worker Scripts.
+        /// </summary>
+        public InputList<string> CompatibilityFlags
+        {
+            get => _compatibilityFlags ?? (_compatibilityFlags = new InputList<string>());
+            set => _compatibilityFlags = value;
         }
 
         /// <summary>

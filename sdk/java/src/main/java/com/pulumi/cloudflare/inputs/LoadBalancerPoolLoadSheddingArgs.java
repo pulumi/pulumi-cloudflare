@@ -32,14 +32,14 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
     }
 
     /**
-     * Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`&#34;&#34;`.
+     * Method of shedding traffic. Available values: `&#34;&#34;`, `hash`, `random`. Defaults to `&#34;&#34;`.
      * 
      */
     @Import(name="defaultPolicy")
     private @Nullable Output<String> defaultPolicy;
 
     /**
-     * @return Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`&#34;&#34;`.
+     * @return Method of shedding traffic. Available values: `&#34;&#34;`, `hash`, `random`. Defaults to `&#34;&#34;`.
      * 
      */
     public Optional<Output<String>> defaultPolicy() {
@@ -62,14 +62,14 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
     }
 
     /**
-     * Method of shedding traffic. Available values: ``,`hash`. Defaults to`&#34;&#34;`.
+     * Method of shedding traffic. Available values: `&#34;&#34;`, `hash`. Defaults to `&#34;&#34;`.
      * 
      */
     @Import(name="sessionPolicy")
     private @Nullable Output<String> sessionPolicy;
 
     /**
-     * @return Method of shedding traffic. Available values: ``,`hash`. Defaults to`&#34;&#34;`.
+     * @return Method of shedding traffic. Available values: `&#34;&#34;`, `hash`. Defaults to `&#34;&#34;`.
      * 
      */
     public Optional<Output<String>> sessionPolicy() {
@@ -125,7 +125,7 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param defaultPolicy Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`&#34;&#34;`.
+         * @param defaultPolicy Method of shedding traffic. Available values: `&#34;&#34;`, `hash`, `random`. Defaults to `&#34;&#34;`.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param defaultPolicy Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`&#34;&#34;`.
+         * @param defaultPolicy Method of shedding traffic. Available values: `&#34;&#34;`, `hash`, `random`. Defaults to `&#34;&#34;`.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sessionPolicy Method of shedding traffic. Available values: ``,`hash`. Defaults to`&#34;&#34;`.
+         * @param sessionPolicy Method of shedding traffic. Available values: `&#34;&#34;`, `hash`. Defaults to `&#34;&#34;`.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class LoadBalancerPoolLoadSheddingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sessionPolicy Method of shedding traffic. Available values: ``,`hash`. Defaults to`&#34;&#34;`.
+         * @param sessionPolicy Method of shedding traffic. Available values: `&#34;&#34;`, `hash`. Defaults to `&#34;&#34;`.
          * 
          * @return builder
          * 

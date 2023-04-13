@@ -81,7 +81,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the webhook destinations.
+        /// The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("url")]
         public Output<string?> Url { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Secret { get; set; }
 
         /// <summary>
-        /// The URL of the webhook destinations.
+        /// The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
@@ -204,7 +204,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The URL of the webhook destinations.
+        /// The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

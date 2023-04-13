@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class LoadBalancerPoolOriginSteering
     {
         /// <summary>
-        /// Origin steering policy to be used. Available values: ``,`hash`,`random`. Defaults to`random`.
+        /// Origin steering policy to be used. Available values: `""`, `hash`, `random`. Defaults to `random`.
         /// </summary>
         public readonly string? Policy;
 

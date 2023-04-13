@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * Rule.
  *
  * > If you want to configure Custom Firewall rules, you need to use
- * `cloudflare.Ruleset`, because Custom Rules are built upon the
+ * `cloudflareRuleset`, because Custom Rules are built upon the
  * [Cloudflare Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/).
  *
  * ## Example Usage

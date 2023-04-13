@@ -86,6 +86,21 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * A description of the reason why the UI read only field is being toggled.
+     * 
+     */
+    @Import(name="uiReadOnlyToggleReason")
+    private @Nullable Output<String> uiReadOnlyToggleReason;
+
+    /**
+     * @return A description of the reason why the UI read only field is being toggled.
+     * 
+     */
+    public Optional<Output<String>> uiReadOnlyToggleReason() {
+        return Optional.ofNullable(this.uiReadOnlyToggleReason);
+    }
+
+    /**
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
      * 
      */
@@ -123,6 +138,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         this.isUiReadOnly = $.isUiReadOnly;
         this.loginDesigns = $.loginDesigns;
         this.name = $.name;
+        this.uiReadOnlyToggleReason = $.uiReadOnlyToggleReason;
         this.userSeatExpirationInactiveTime = $.userSeatExpirationInactiveTime;
         this.zoneId = $.zoneId;
     }
@@ -240,6 +256,27 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param uiReadOnlyToggleReason A description of the reason why the UI read only field is being toggled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uiReadOnlyToggleReason(@Nullable Output<String> uiReadOnlyToggleReason) {
+            $.uiReadOnlyToggleReason = uiReadOnlyToggleReason;
+            return this;
+        }
+
+        /**
+         * @param uiReadOnlyToggleReason A description of the reason why the UI read only field is being toggled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uiReadOnlyToggleReason(String uiReadOnlyToggleReason) {
+            return uiReadOnlyToggleReason(Output.of(uiReadOnlyToggleReason));
         }
 
         /**
