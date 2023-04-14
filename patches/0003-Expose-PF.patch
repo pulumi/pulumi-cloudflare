@@ -1,0 +1,35 @@
+From f07d5eadf25ed60392dc6a01b56838c157b040e1 Mon Sep 17 00:00:00 2001
+From: Ian Wahbe <ian@wahbe.com>
+Date: Thu, 6 Apr 2023 10:01:01 -0700
+Subject: [PATCH] Expose PF
+
+---
+ shim/shim.go | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/shim/shim.go b/shim/shim.go
+index 244d75c8..109c746d 100644
+--- a/shim/shim.go
++++ b/shim/shim.go
+@@ -1,10 +1,16 @@
+ package shim
+ 
+ import (
+-	provider "github.com/cloudflare/terraform-provider-cloudflare/internal/sdkv2provider"
++	pf "github.com/cloudflare/terraform-provider-cloudflare/internal/framework/provider"
++	sdk "github.com/cloudflare/terraform-provider-cloudflare/internal/sdkv2provider"
++	pfprovider "github.com/hashicorp/terraform-plugin-framework/provider"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ )
+ 
+ func NewProvider() *schema.Provider {
+-	return provider.New("")()
++	return sdk.New("")()
++}
++
++func NewPFProvider() pfprovider.Provider {
++	return pf.New("")()
+ }
+-- 
+2.39.1
+

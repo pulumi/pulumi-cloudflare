@@ -3907,6 +3907,962 @@
             },
             "type": "object"
         },
+        "cloudflare:index/RulesetRule:RulesetRule": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.\n"
+                },
+                "actionParameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameter:RulesetRuleActionParameter"
+                    },
+                    "description": "List of parameters that configure the behavior of the ruleset rule action.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Brief summary of the ruleset rule and its intended use.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the rule is active.\n"
+                },
+                "exposedCredentialChecks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleExposedCredentialCheck:RulesetRuleExposedCredentialCheck"
+                    },
+                    "description": "List of parameters that configure exposed credential checks.\n"
+                },
+                "expression": {
+                    "type": "string",
+                    "description": "Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique rule identifier.\n"
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "description": "The most recent update to this rule.\n"
+                },
+                "loggings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleLogging:RulesetRuleLogging"
+                    },
+                    "description": "List parameters to configure how the rule generates logs.\n"
+                },
+                "ratelimits": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleRatelimit:RulesetRuleRatelimit"
+                    },
+                    "description": "List of parameters that configure HTTP rate limiting behaviour.\n"
+                },
+                "ref": {
+                    "type": "string",
+                    "description": "Rule reference.\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Version of the ruleset to deploy.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "actionParameters",
+                "exposedCredentialChecks",
+                "expression",
+                "loggings",
+                "ratelimits"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "actionParameters",
+                        "description",
+                        "enabled",
+                        "exposedCredentialChecks",
+                        "expression",
+                        "id",
+                        "lastUpdated",
+                        "loggings",
+                        "ratelimits",
+                        "version"
+                    ]
+                }
+            }
+        },
+        "cloudflare:index/RulesetRuleActionParameter:RulesetRuleActionParameter": {
+            "properties": {
+                "automaticHttpsRewrites": {
+                    "type": "boolean"
+                },
+                "autominifies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterAutominify:RulesetRuleActionParameterAutominify"
+                    }
+                },
+                "bic": {
+                    "type": "boolean"
+                },
+                "browserTtls": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterBrowserTtl:RulesetRuleActionParameterBrowserTtl"
+                    }
+                },
+                "cache": {
+                    "type": "boolean"
+                },
+                "cacheKeys": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterCacheKey:RulesetRuleActionParameterCacheKey"
+                    }
+                },
+                "content": {
+                    "type": "string"
+                },
+                "contentType": {
+                    "type": "string"
+                },
+                "cookieFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "disableApps": {
+                    "type": "boolean"
+                },
+                "disableRailgun": {
+                    "type": "boolean"
+                },
+                "disableZaraz": {
+                    "type": "boolean"
+                },
+                "edgeTtls": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterEdgeTtl:RulesetRuleActionParameterEdgeTtl"
+                    }
+                },
+                "emailObfuscation": {
+                    "type": "boolean"
+                },
+                "fromLists": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterFromList:RulesetRuleActionParameterFromList"
+                    }
+                },
+                "fromValues": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterFromValue:RulesetRuleActionParameterFromValue"
+                    }
+                },
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterHeader:RulesetRuleActionParameterHeader"
+                    }
+                },
+                "hostHeader": {
+                    "type": "string"
+                },
+                "hotlinkProtection": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The identifier of this resource.\n"
+                },
+                "increment": {
+                    "type": "integer"
+                },
+                "matchedDatas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterMatchedData:RulesetRuleActionParameterMatchedData"
+                    }
+                },
+                "mirage": {
+                    "type": "boolean"
+                },
+                "opportunisticEncryption": {
+                    "type": "boolean"
+                },
+                "originErrorPagePassthru": {
+                    "type": "boolean"
+                },
+                "origins": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterOrigin:RulesetRuleActionParameterOrigin"
+                    }
+                },
+                "overrides": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterOverride:RulesetRuleActionParameterOverride"
+                    }
+                },
+                "phases": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "polish": {
+                    "type": "string"
+                },
+                "products": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "requestFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "respectStrongEtags": {
+                    "type": "boolean"
+                },
+                "responseFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "responses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterResponse:RulesetRuleActionParameterResponse"
+                    }
+                },
+                "rocketLoader": {
+                    "type": "boolean"
+                },
+                "rules": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "List of rules to apply to the ruleset.\n"
+                },
+                "ruleset": {
+                    "type": "string"
+                },
+                "rulesets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "securityLevel": {
+                    "type": "string"
+                },
+                "serveStales": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterServeStale:RulesetRuleActionParameterServeStale"
+                    }
+                },
+                "serverSideExcludes": {
+                    "type": "boolean"
+                },
+                "snis": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterSni:RulesetRuleActionParameterSni"
+                    }
+                },
+                "ssl": {
+                    "type": "string"
+                },
+                "statusCode": {
+                    "type": "integer"
+                },
+                "sxg": {
+                    "type": "boolean"
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterUri:RulesetRuleActionParameterUri"
+                    }
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "automaticHttpsRewrites",
+                "autominifies",
+                "bic",
+                "browserTtls",
+                "cache",
+                "cacheKeys",
+                "content",
+                "contentType",
+                "cookieFields",
+                "disableApps",
+                "disableRailgun",
+                "disableZaraz",
+                "edgeTtls",
+                "emailObfuscation",
+                "fromLists",
+                "fromValues",
+                "headers",
+                "hostHeader",
+                "hotlinkProtection",
+                "id",
+                "increment",
+                "matchedDatas",
+                "mirage",
+                "opportunisticEncryption",
+                "origins",
+                "originErrorPagePassthru",
+                "overrides",
+                "phases",
+                "polish",
+                "products",
+                "requestFields",
+                "respectStrongEtags",
+                "responses",
+                "responseFields",
+                "rocketLoader",
+                "rules",
+                "ruleset",
+                "rulesets",
+                "securityLevel",
+                "serveStales",
+                "serverSideExcludes",
+                "snis",
+                "ssl",
+                "statusCode",
+                "sxg",
+                "uris",
+                "version"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterAutominify:RulesetRuleActionParameterAutominify": {
+            "properties": {
+                "css": {
+                    "type": "boolean"
+                },
+                "html": {
+                    "type": "boolean"
+                },
+                "js": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "css",
+                "html",
+                "js"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterBrowserTtl:RulesetRuleActionParameterBrowserTtl": {
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "mode": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "default",
+                "mode"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterCacheKey:RulesetRuleActionParameterCacheKey": {
+            "properties": {
+                "cacheByDeviceType": {
+                    "type": "boolean"
+                },
+                "cacheDeceptionArmor": {
+                    "type": "boolean"
+                },
+                "customKeys": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterCacheKeyCustomKey:RulesetRuleActionParameterCacheKeyCustomKey"
+                    }
+                },
+                "ignoreQueryStringsOrder": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cacheByDeviceType",
+                "cacheDeceptionArmor",
+                "customKeys",
+                "ignoreQueryStringsOrder"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterCacheKeyCustomKey:RulesetRuleActionParameterCacheKeyCustomKey": {
+            "properties": {
+                "cookies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterCacheKeyCustomKeyCookie:RulesetRuleActionParameterCacheKeyCustomKeyCookie"
+                    }
+                },
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterCacheKeyCustomKeyHeader:RulesetRuleActionParameterCacheKeyCustomKeyHeader"
+                    }
+                },
+                "hosts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterCacheKeyCustomKeyHost:RulesetRuleActionParameterCacheKeyCustomKeyHost"
+                    }
+                },
+                "queryStrings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterCacheKeyCustomKeyQueryString:RulesetRuleActionParameterCacheKeyCustomKeyQueryString"
+                    }
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterCacheKeyCustomKeyUser:RulesetRuleActionParameterCacheKeyCustomKeyUser"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "cookies",
+                "headers",
+                "hosts",
+                "queryStrings",
+                "users"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterCacheKeyCustomKeyCookie:RulesetRuleActionParameterCacheKeyCustomKeyCookie": {
+            "properties": {
+                "checkPresences": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "includes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "checkPresences",
+                "includes"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterCacheKeyCustomKeyHeader:RulesetRuleActionParameterCacheKeyCustomKeyHeader": {
+            "properties": {
+                "checkPresences": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "excludeOrigin": {
+                    "type": "boolean"
+                },
+                "includes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "checkPresences",
+                "excludeOrigin",
+                "includes"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterCacheKeyCustomKeyHost:RulesetRuleActionParameterCacheKeyCustomKeyHost": {
+            "properties": {
+                "resolved": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "resolved"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterCacheKeyCustomKeyQueryString:RulesetRuleActionParameterCacheKeyCustomKeyQueryString": {
+            "properties": {
+                "excludes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "includes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "excludes",
+                "includes"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterCacheKeyCustomKeyUser:RulesetRuleActionParameterCacheKeyCustomKeyUser": {
+            "properties": {
+                "deviceType": {
+                    "type": "boolean"
+                },
+                "geo": {
+                    "type": "boolean"
+                },
+                "lang": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "deviceType",
+                "geo",
+                "lang"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterEdgeTtl:RulesetRuleActionParameterEdgeTtl": {
+            "properties": {
+                "default": {
+                    "type": "integer"
+                },
+                "mode": {
+                    "type": "string"
+                },
+                "statusCodeTtls": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterEdgeTtlStatusCodeTtl:RulesetRuleActionParameterEdgeTtlStatusCodeTtl"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "default",
+                "mode",
+                "statusCodeTtls"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterEdgeTtlStatusCodeTtl:RulesetRuleActionParameterEdgeTtlStatusCodeTtl": {
+            "properties": {
+                "statusCode": {
+                    "type": "integer"
+                },
+                "statusCodeRanges": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRange:RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRange"
+                    }
+                },
+                "value": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "required": [
+                "statusCode",
+                "statusCodeRanges",
+                "value"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRange:RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRange": {
+            "properties": {
+                "from": {
+                    "type": "integer"
+                },
+                "to": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "required": [
+                "from",
+                "to"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterFromList:RulesetRuleActionParameterFromList": {
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the ruleset.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "name"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterFromValue:RulesetRuleActionParameterFromValue": {
+            "properties": {
+                "preserveQueryString": {
+                    "type": "boolean"
+                },
+                "statusCode": {
+                    "type": "integer"
+                },
+                "targetUrls": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterFromValueTargetUrl:RulesetRuleActionParameterFromValueTargetUrl"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "preserveQueryString",
+                "statusCode",
+                "targetUrls"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterFromValueTargetUrl:RulesetRuleActionParameterFromValueTargetUrl": {
+            "properties": {
+                "expression": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "expression",
+                "value"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterHeader:RulesetRuleActionParameterHeader": {
+            "properties": {
+                "expression": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the ruleset.\n"
+                },
+                "operation": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "expression",
+                "name",
+                "operation",
+                "value"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterMatchedData:RulesetRuleActionParameterMatchedData": {
+            "properties": {
+                "publicKey": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "publicKey"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterOrigin:RulesetRuleActionParameterOrigin": {
+            "properties": {
+                "host": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "required": [
+                "host",
+                "port"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterOverride:RulesetRuleActionParameterOverride": {
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "categories": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterOverrideCategory:RulesetRuleActionParameterOverrideCategory"
+                    }
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterOverrideRule:RulesetRuleActionParameterOverrideRule"
+                    },
+                    "description": "List of rules to apply to the ruleset.\n"
+                },
+                "sensitivityLevel": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "categories",
+                "enabled",
+                "rules",
+                "sensitivityLevel"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterOverrideCategory:RulesetRuleActionParameterOverrideCategory": {
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "category",
+                "enabled"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterOverrideRule:RulesetRuleActionParameterOverrideRule": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the rule is active.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique rule identifier.\n"
+                },
+                "scoreThreshold": {
+                    "type": "integer"
+                },
+                "sensitivityLevel": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "enabled",
+                "id",
+                "scoreThreshold",
+                "sensitivityLevel"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterResponse:RulesetRuleActionParameterResponse": {
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "contentType": {
+                    "type": "string"
+                },
+                "statusCode": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "required": [
+                "content",
+                "contentType",
+                "statusCode"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterServeStale:RulesetRuleActionParameterServeStale": {
+            "properties": {
+                "disableStaleWhileUpdating": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "disableStaleWhileUpdating"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterSni:RulesetRuleActionParameterSni": {
+            "properties": {
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterUri:RulesetRuleActionParameterUri": {
+            "properties": {
+                "origin": {
+                    "type": "boolean"
+                },
+                "paths": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterUriPath:RulesetRuleActionParameterUriPath"
+                    }
+                },
+                "queries": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterUriQuery:RulesetRuleActionParameterUriQuery"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "origin",
+                "paths",
+                "queries"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterUriPath:RulesetRuleActionParameterUriPath": {
+            "properties": {
+                "expression": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "expression",
+                "value"
+            ]
+        },
+        "cloudflare:index/RulesetRuleActionParameterUriQuery:RulesetRuleActionParameterUriQuery": {
+            "properties": {
+                "expression": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "expression",
+                "value"
+            ]
+        },
+        "cloudflare:index/RulesetRuleExposedCredentialCheck:RulesetRuleExposedCredentialCheck": {
+            "properties": {
+                "passwordExpression": {
+                    "type": "string"
+                },
+                "usernameExpression": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "passwordExpression",
+                "usernameExpression"
+            ]
+        },
+        "cloudflare:index/RulesetRuleLogging:RulesetRuleLogging": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ]
+        },
+        "cloudflare:index/RulesetRuleRatelimit:RulesetRuleRatelimit": {
+            "properties": {
+                "characteristics": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "countingExpression": {
+                    "type": "string"
+                },
+                "mitigationTimeout": {
+                    "type": "integer"
+                },
+                "period": {
+                    "type": "integer"
+                },
+                "requestsPerPeriod": {
+                    "type": "integer"
+                },
+                "requestsToOrigin": {
+                    "type": "boolean"
+                },
+                "scorePerPeriod": {
+                    "type": "integer"
+                },
+                "scoreResponseHeaderName": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "characteristics",
+                "countingExpression",
+                "mitigationTimeout",
+                "period",
+                "requestsPerPeriod",
+                "requestsToOrigin",
+                "scorePerPeriod",
+                "scoreResponseHeaderName"
+            ]
+        },
         "cloudflare:index/SpectrumApplicationDns:SpectrumApplicationDns": {
             "properties": {
                 "name": {
@@ -10587,7 +11543,7 @@
             }
         },
         "cloudflare:index/firewallRule:FirewallRule": {
-            "description": "Define Firewall rules using filter expressions for more control over\nhow traffic is matched to the rule. A filter expression permits\nselecting traffic by multiple criteria allowing greater freedom in\nrule creation.\n\nFilter expressions needs to be created first before using Firewall\nRule.\n\n\u003e If you want to configure Custom Firewall rules, you need to use\n`cloudflare_ruleset`, because Custom Rules are built upon the\n[Cloudflare Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst wordpressFilter = new cloudflare.Filter(\"wordpressFilter\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    description: \"Wordpress break-in attempts that are outside of the office\",\n    expression: \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.src ne 192.0.2.1\",\n});\nconst wordpressFirewallRule = new cloudflare.FirewallRule(\"wordpressFirewallRule\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    description: \"Block wordpress break-in attempts\",\n    filterId: wordpressFilter.id,\n    action: \"block\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nwordpress_filter = cloudflare.Filter(\"wordpressFilter\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    description=\"Wordpress break-in attempts that are outside of the office\",\n    expression=\"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.src ne 192.0.2.1\")\nwordpress_firewall_rule = cloudflare.FirewallRule(\"wordpressFirewallRule\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    description=\"Block wordpress break-in attempts\",\n    filter_id=wordpress_filter.id,\n    action=\"block\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var wordpressFilter = new Cloudflare.Filter(\"wordpressFilter\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        Description = \"Wordpress break-in attempts that are outside of the office\",\n        Expression = \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.src ne 192.0.2.1\",\n    });\n\n    var wordpressFirewallRule = new Cloudflare.FirewallRule(\"wordpressFirewallRule\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        Description = \"Block wordpress break-in attempts\",\n        FilterId = wordpressFilter.Id,\n        Action = \"block\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\twordpressFilter, err := cloudflare.NewFilter(ctx, \"wordpressFilter\", \u0026cloudflare.FilterArgs{\n\t\t\tZoneId:      pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tDescription: pulumi.String(\"Wordpress break-in attempts that are outside of the office\"),\n\t\t\tExpression:  pulumi.String(\"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.src ne 192.0.2.1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewFirewallRule(ctx, \"wordpressFirewallRule\", \u0026cloudflare.FirewallRuleArgs{\n\t\t\tZoneId:      pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tDescription: pulumi.String(\"Block wordpress break-in attempts\"),\n\t\t\tFilterId:    wordpressFilter.ID(),\n\t\t\tAction:      pulumi.String(\"block\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.Filter;\nimport com.pulumi.cloudflare.FilterArgs;\nimport com.pulumi.cloudflare.FirewallRule;\nimport com.pulumi.cloudflare.FirewallRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var wordpressFilter = new Filter(\"wordpressFilter\", FilterArgs.builder()        \n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .description(\"Wordpress break-in attempts that are outside of the office\")\n            .expression(\"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.src ne 192.0.2.1\")\n            .build());\n\n        var wordpressFirewallRule = new FirewallRule(\"wordpressFirewallRule\", FirewallRuleArgs.builder()        \n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .description(\"Block wordpress break-in attempts\")\n            .filterId(wordpressFilter.id())\n            .action(\"block\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  wordpressFilter:\n    type: cloudflare:Filter\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      description: Wordpress break-in attempts that are outside of the office\n      expression: (http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1\n  wordpressFirewallRule:\n    type: cloudflare:FirewallRule\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      description: Block wordpress break-in attempts\n      filterId: ${wordpressFilter.id}\n      action: block\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/firewallRule:FirewallRule example \u003czone_id\u003e/\u003cfirewall_rule_id\u003e\n```\n\n ",
+            "description": "Define Firewall rules using filter expressions for more control over\nhow traffic is matched to the rule. A filter expression permits\nselecting traffic by multiple criteria allowing greater freedom in\nrule creation.\n\nFilter expressions needs to be created first before using Firewall\nRule.\n\n\u003e If you want to configure Custom Firewall rules, you need to use\n`cloudflare.Ruleset`, because Custom Rules are built upon the\n[Cloudflare Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst wordpressFilter = new cloudflare.Filter(\"wordpressFilter\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    description: \"Wordpress break-in attempts that are outside of the office\",\n    expression: \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.src ne 192.0.2.1\",\n});\nconst wordpressFirewallRule = new cloudflare.FirewallRule(\"wordpressFirewallRule\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    description: \"Block wordpress break-in attempts\",\n    filterId: wordpressFilter.id,\n    action: \"block\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nwordpress_filter = cloudflare.Filter(\"wordpressFilter\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    description=\"Wordpress break-in attempts that are outside of the office\",\n    expression=\"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.src ne 192.0.2.1\")\nwordpress_firewall_rule = cloudflare.FirewallRule(\"wordpressFirewallRule\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    description=\"Block wordpress break-in attempts\",\n    filter_id=wordpress_filter.id,\n    action=\"block\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var wordpressFilter = new Cloudflare.Filter(\"wordpressFilter\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        Description = \"Wordpress break-in attempts that are outside of the office\",\n        Expression = \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.src ne 192.0.2.1\",\n    });\n\n    var wordpressFirewallRule = new Cloudflare.FirewallRule(\"wordpressFirewallRule\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        Description = \"Block wordpress break-in attempts\",\n        FilterId = wordpressFilter.Id,\n        Action = \"block\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\twordpressFilter, err := cloudflare.NewFilter(ctx, \"wordpressFilter\", \u0026cloudflare.FilterArgs{\n\t\t\tZoneId:      pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tDescription: pulumi.String(\"Wordpress break-in attempts that are outside of the office\"),\n\t\t\tExpression:  pulumi.String(\"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.src ne 192.0.2.1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewFirewallRule(ctx, \"wordpressFirewallRule\", \u0026cloudflare.FirewallRuleArgs{\n\t\t\tZoneId:      pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tDescription: pulumi.String(\"Block wordpress break-in attempts\"),\n\t\t\tFilterId:    wordpressFilter.ID(),\n\t\t\tAction:      pulumi.String(\"block\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.Filter;\nimport com.pulumi.cloudflare.FilterArgs;\nimport com.pulumi.cloudflare.FirewallRule;\nimport com.pulumi.cloudflare.FirewallRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var wordpressFilter = new Filter(\"wordpressFilter\", FilterArgs.builder()        \n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .description(\"Wordpress break-in attempts that are outside of the office\")\n            .expression(\"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.src ne 192.0.2.1\")\n            .build());\n\n        var wordpressFirewallRule = new FirewallRule(\"wordpressFirewallRule\", FirewallRuleArgs.builder()        \n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .description(\"Block wordpress break-in attempts\")\n            .filterId(wordpressFilter.id())\n            .action(\"block\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  wordpressFilter:\n    type: cloudflare:Filter\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      description: Wordpress break-in attempts that are outside of the office\n      expression: (http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1\n  wordpressFirewallRule:\n    type: cloudflare:FirewallRule\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      description: Block wordpress break-in attempts\n      filterId: ${wordpressFilter.id}\n      action: block\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/firewallRule:FirewallRule example \u003czone_id\u003e/\u003cfirewall_rule_id\u003e\n```\n\n ",
             "properties": {
                 "action": {
                     "type": "string",
@@ -14061,6 +15017,135 @@
                         "type": "string",
                         "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/ruleset:Ruleset": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.Ruleset;\nimport com.pulumi.cloudflare.RulesetArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var magicTransitExample = new Ruleset(\"magicTransitExample\", RulesetArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .description(\"example magic transit ruleset description\")\n            .kind(\"root\")\n            .name(\"account magic transit\")\n            .phase(\"magic_transit\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"allow\")\n                .description(\"Allow TCP Ephemeral Ports\")\n                .expression(\"tcp.dstport in { 32768..65535 }\")\n                .build())\n            .build());\n\n        var zoneLevelManagedWaf = new Ruleset(\"zoneLevelManagedWaf\", RulesetArgs.builder()        \n            .description(\"managed WAF ruleset description\")\n            .kind(\"zone\")\n            .name(\"managed WAF\")\n            .phase(\"http_request_firewall_managed\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"execute\")\n                .action_parameters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .description(\"Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\")\n                .enabled(true)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var zoneLevelManagedWafWithCategoryBasedOverrides = new Ruleset(\"zoneLevelManagedWafWithCategoryBasedOverrides\", RulesetArgs.builder()        \n            .description(\"managed WAF with tag-based overrides ruleset description\")\n            .kind(\"zone\")\n            .name(\"managed WAF with tag-based overrides\")\n            .phase(\"http_request_firewall_managed\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"execute\")\n                .action_parameters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .description(\"overrides to only enable wordpress rules to block\")\n                .enabled(false)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var transformUriRulePath = new Ruleset(\"transformUriRulePath\", RulesetArgs.builder()        \n            .description(\"change the URI path to a new static path\")\n            .kind(\"zone\")\n            .name(\"transform rule for URI path\")\n            .phase(\"http_request_transform\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"rewrite\")\n                .action_parameters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .description(\"example URI path transform rule\")\n                .enabled(true)\n                .expression(\"(http.host eq \\\"example.com\\\" and http.request.uri.path eq \\\"/old-path\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var transformUriRuleQuery = new Ruleset(\"transformUriRuleQuery\", RulesetArgs.builder()        \n            .description(\"change the URI query to a new static query\")\n            .kind(\"zone\")\n            .name(\"transform rule for URI query parameter\")\n            .phase(\"http_request_transform\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"rewrite\")\n                .action_parameters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .description(\"URI transformation query example\")\n                .enabled(true)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var transformUriHttpHeaders = new Ruleset(\"transformUriHttpHeaders\", RulesetArgs.builder()        \n            .description(\"modify HTTP headers before reaching origin\")\n            .kind(\"zone\")\n            .name(\"transform rule for HTTP headers\")\n            .phase(\"http_request_late_transform\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"rewrite\")\n                .action_parameters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .description(\"example request header transform rule\")\n                .enabled(false)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var rateLimitingExample = new Ruleset(\"rateLimitingExample\", RulesetArgs.builder()        \n            .description(\"apply HTTP rate limiting for a route\")\n            .kind(\"zone\")\n            .name(\"restrict API requests count\")\n            .phase(\"http_ratelimit\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"block\")\n                .description(\"rate limit for API\")\n                .enabled(true)\n                .expression(\"(http.request.uri.path matches \\\"^/api/\\\")\")\n                .ratelimit(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var httpOriginExample = new Ruleset(\"httpOriginExample\", RulesetArgs.builder()        \n            .description(\"Change origin for a route\")\n            .kind(\"zone\")\n            .name(\"Change to some origin\")\n            .phase(\"http_request_origin\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"route\")\n                .action_parameters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .description(\"change origin to some.host\")\n                .enabled(true)\n                .expression(\"(http.request.uri.path matches \\\"^/api/\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var customFieldsLoggingExample = new Ruleset(\"customFieldsLoggingExample\", RulesetArgs.builder()        \n            .description(\"add custom fields to logging\")\n            .kind(\"zone\")\n            .name(\"log custom fields\")\n            .phase(\"http_log_custom_fields\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"log_custom_field\")\n                .action_parameters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .description(\"log custom fields rule\")\n                .enabled(true)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var cacheSettingsExample = new Ruleset(\"cacheSettingsExample\", RulesetArgs.builder()        \n            .description(\"set cache settings for the request\")\n            .kind(\"zone\")\n            .name(\"set cache settings\")\n            .phase(\"http_request_cache_settings\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"set_cache_settings\")\n                .action_parameters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .description(\"set cache settings rule\")\n                .enabled(true)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var redirectFromListExample = new Ruleset(\"redirectFromListExample\", RulesetArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .description(\"Redirect ruleset\")\n            .kind(\"root\")\n            .name(\"redirects\")\n            .phase(\"http_request_redirect\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"redirect\")\n                .action_parameters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .description(\"Apply redirects from redirect_list\")\n                .enabled(true)\n                .expression(\"http.request.full_uri in $redirect_list\")\n                .build())\n            .build());\n\n        var redirectFromValueExample = new Ruleset(\"redirectFromValueExample\", RulesetArgs.builder()        \n            .description(\"Redirect ruleset\")\n            .kind(\"root\")\n            .name(\"redirects\")\n            .phase(\"http_request_dynamic_redirect\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"redirect\")\n                .action_parameters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .description(\"Apply redirect from value\")\n                .enabled(true)\n                .expression(\"(http.request.uri.path matches \\\"^/api/\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var httpCustomErrorExample = new Ruleset(\"httpCustomErrorExample\", RulesetArgs.builder()        \n            .description(\"Serve some error response\")\n            .kind(\"zone\")\n            .name(\"Serve some error response\")\n            .phase(\"http_custom_errors\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"serve_error\")\n                .action_parameters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .description(\"serve some error response\")\n                .enabled(true)\n                .expression(\"(http.request.uri.path matches \\\"^/api/\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var httpConfigRulesExample = new Ruleset(\"httpConfigRulesExample\", RulesetArgs.builder()        \n            .description(\"set config rules for request\")\n            .kind(\"zone\")\n            .name(\"set config rules\")\n            .phase(\"http_config_settings\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"set_config\")\n                .action_parameters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .description(\"set config rules for matching request\")\n                .enabled(true)\n                .expression(\"(http.request.uri.path matches \\\"^/api/\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Magic Transit\n  magicTransitExample:\n    type: cloudflare:Ruleset\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      description: example magic transit ruleset description\n      kind: root\n      name: account magic transit\n      phase: magic_transit\n      rules:\n        - action: allow\n          description: Allow TCP Ephemeral Ports\n          expression: tcp.dstport in { 32768..65535 }\n  # Zone-level WAF Managed Ruleset\n  zoneLevelManagedWaf:\n    type: cloudflare:Ruleset\n    properties:\n      description: managed WAF ruleset description\n      kind: zone\n      name: managed WAF\n      phase: http_request_firewall_managed\n      rules:\n        - action: execute\n          action_parameters:\n            - id: efb7b8c949ac4650a09736fc376e9aee\n          description: Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\n          enabled: true\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Zone-level WAF with tag-based overrides\n  zoneLevelManagedWafWithCategoryBasedOverrides:\n    type: cloudflare:Ruleset\n    properties:\n      description: managed WAF with tag-based overrides ruleset description\n      kind: zone\n      name: managed WAF with tag-based overrides\n      phase: http_request_firewall_managed\n      rules:\n        - action: execute\n          action_parameters:\n            - id: efb7b8c949ac4650a09736fc376e9aee\n              overrides:\n                - categories:\n                    - action: block\n                      category: wordpress\n                      status: enabled\n                    - action: block\n                      category: joomla\n                      status: enabled\n          description: overrides to only enable wordpress rules to block\n          enabled: false\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Rewrite the URI path component to a static path\n  transformUriRulePath:\n    type: cloudflare:Ruleset\n    properties:\n      description: change the URI path to a new static path\n      kind: zone\n      name: transform rule for URI path\n      phase: http_request_transform\n      rules:\n        - action: rewrite\n          action_parameters:\n            - uri:\n                - path:\n                    - value: /my-new-route\n          description: example URI path transform rule\n          enabled: true\n          expression: (http.host eq \"example.com\" and http.request.uri.path eq \"/old-path\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Rewrite the URI query component to a static query\n  transformUriRuleQuery:\n    type: cloudflare:Ruleset\n    properties:\n      description: change the URI query to a new static query\n      kind: zone\n      name: transform rule for URI query parameter\n      phase: http_request_transform\n      rules:\n        - action: rewrite\n          action_parameters:\n            - uri:\n                - query:\n                    - value: old=new_again\n          description: URI transformation query example\n          enabled: true\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Rewrite HTTP headers to a modified values\n  transformUriHttpHeaders:\n    type: cloudflare:Ruleset\n    properties:\n      description: modify HTTP headers before reaching origin\n      kind: zone\n      name: transform rule for HTTP headers\n      phase: http_request_late_transform\n      rules:\n        - action: rewrite\n          action_parameters:\n            - headers:\n                - name: example-http-header-1\n                  operation: set\n                  value: my-http-header-value-1\n                - expression: cf.zone.name\n                  name: example-http-header-2\n                  operation: set\n                - name: example-http-header-3-to-remove\n                  operation: remove\n          description: example request header transform rule\n          enabled: false\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # HTTP rate limit for an API route\n  rateLimitingExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: apply HTTP rate limiting for a route\n      kind: zone\n      name: restrict API requests count\n      phase: http_ratelimit\n      rules:\n        - action: block\n          description: rate limit for API\n          enabled: true\n          expression: (http.request.uri.path matches \"^/api/\")\n          ratelimit:\n            - characteristics:\n                - cf.colo.id\n                - ip.src\n              mitigationTimeout: 600\n              period: 60\n              requestsPerPeriod: 100\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Change origin for an API route\n  httpOriginExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: Change origin for a route\n      kind: zone\n      name: Change to some origin\n      phase: http_request_origin\n      rules:\n        - action: route\n          action_parameters:\n            - hostHeader: some.host\n              origin:\n                - host: some.host\n                  port: 80\n          description: change origin to some.host\n          enabled: true\n          expression: (http.request.uri.path matches \"^/api/\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Custom fields logging\n  customFieldsLoggingExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: add custom fields to logging\n      kind: zone\n      name: log custom fields\n      phase: http_log_custom_fields\n      rules:\n        - action: log_custom_field\n          action_parameters:\n            - cookieFields:\n                - __ga\n                - accountNumber\n                - __cfruid\n              requestFields:\n                - content-type\n                - x-forwarded-for\n                - host\n              responseFields:\n                - server\n                - content-type\n                - allow\n          description: log custom fields rule\n          enabled: true\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Custom cache keys + settings\n  cacheSettingsExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: set cache settings for the request\n      kind: zone\n      name: set cache settings\n      phase: http_request_cache_settings\n      rules:\n        - action: set_cache_settings\n          action_parameters:\n            - browserTtl:\n                - mode: respect_origin\n              cacheKey:\n                - cacheDeceptionArmor: true\n                  customKey:\n                    - cookie:\n                        - checkPresence:\n                            - cabc_t\n                            - cdef_t\n                          include:\n                            - cabc\n                            - cdef\n                      header:\n                        - checkPresence:\n                            - habc_t\n                            - hdef_t\n                          excludeOrigin: true\n                          include:\n                            - habc\n                            - hdef\n                      host:\n                        - resolved: true\n                      queryString:\n                        - exclude:\n                            - '*'\n                      user:\n                        - deviceType: true\n                          geo: false\n                  ignoreQueryStringsOrder: false\n              edgeTtl:\n                - default: 60\n                  mode: override_origin\n                  statusCodeTtl:\n                    - statusCode: 200\n                      value: 50\n                    - statusCodeRange:\n                        - from: 201\n                          to: 300\n                      value: 30\n              originErrorPagePassthru: false\n              respectStrongEtags: true\n              serveStale:\n                - disableStaleWhileUpdating: true\n          description: set cache settings rule\n          enabled: true\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Redirects based on a List resource\n  redirectFromListExample:\n    type: cloudflare:Ruleset\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      description: Redirect ruleset\n      kind: root\n      name: redirects\n      phase: http_request_redirect\n      rules:\n        - action: redirect\n          action_parameters:\n            - fromList:\n                - key: http.request.full_uri\n                  name: redirect_list\n          description: Apply redirects from redirect_list\n          enabled: true\n          expression: http.request.full_uri in $redirect_list\n  # Dynamic Redirects from value resource\n  redirectFromValueExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: Redirect ruleset\n      kind: root\n      name: redirects\n      phase: http_request_dynamic_redirect\n      rules:\n        - action: redirect\n          action_parameters:\n            - fromValue:\n                - preserveQueryString: true\n                  statusCode: 301\n                  targetUrl:\n                    - value: some_host.com\n          description: Apply redirect from value\n          enabled: true\n          expression: (http.request.uri.path matches \"^/api/\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Serve some custom error response\n  httpCustomErrorExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: Serve some error response\n      kind: zone\n      name: Serve some error response\n      phase: http_custom_errors\n      rules:\n        - action: serve_error\n          action_parameters:\n            - content: some error html\n              contentType: text/html\n              statusCode: '530'\n          description: serve some error response\n          enabled: true\n          expression: (http.request.uri.path matches \"^/api/\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Set Configuration Rules for an API route\n  httpConfigRulesExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: set config rules for request\n      kind: zone\n      name: set config rules\n      phase: http_config_settings\n      rules:\n        - action: set_config\n          action_parameters:\n            - bic: true\n              emailObfuscation: true\n          description: set config rules for matching request\n          enabled: true\n          expression: (http.request.uri.path matches \"^/api/\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nImport an account scoped Ruleset configuration.\n\n```sh\n $ pulumi import cloudflare:index/ruleset:Ruleset example account/\u003caccount_id\u003e/\u003cruleset_id\u003e\n```\n\n Import a zone scoped Ruleset configuration.\n\n```sh\n $ pulumi import cloudflare:index/ruleset:Ruleset example zone/\u003czone_id\u003e/\u003cruleset_id\u003e\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Brief summary of the ruleset and its intended use.\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the ruleset.\n"
+                },
+                "phase": {
+                    "type": "string",
+                    "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRule:RulesetRule"
+                    },
+                    "description": "List of rules to apply to the ruleset.\n"
+                },
+                "shareableEntitlementName": {
+                    "type": "string",
+                    "description": "Name of entitlement that is shareable between entities.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource.\n"
+                }
+            },
+            "required": [
+                "description",
+                "kind",
+                "name",
+                "phase"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Brief summary of the ruleset and its intended use.\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the ruleset.\n"
+                },
+                "phase": {
+                    "type": "string",
+                    "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRule:RulesetRule"
+                    },
+                    "description": "List of rules to apply to the ruleset.\n"
+                },
+                "shareableEntitlementName": {
+                    "type": "string",
+                    "description": "Name of entitlement that is shareable between entities.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource.\n"
+                }
+            },
+            "requiredInputs": [
+                "kind",
+                "name",
+                "phase"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Ruleset resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Brief summary of the ruleset and its intended use.\n"
+                    },
+                    "kind": {
+                        "type": "string",
+                        "description": "Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the ruleset.\n"
+                    },
+                    "phase": {
+                        "type": "string",
+                        "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.\n"
+                    },
+                    "rules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/RulesetRule:RulesetRule"
+                        },
+                        "description": "List of rules to apply to the ruleset.\n"
+                    },
+                    "shareableEntitlementName": {
+                        "type": "string",
+                        "description": "Name of entitlement that is shareable between entities.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource.\n"
                     }
                 },
                 "type": "object"

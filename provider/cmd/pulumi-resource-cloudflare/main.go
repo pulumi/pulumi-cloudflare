@@ -17,16 +17,22 @@
 package main
 
 import (
+	"context"
 	_ "embed"
 
 	cloudflare "github.com/pulumi/pulumi-cloudflare/provider/v5"
-	"github.com/pulumi/pulumi-cloudflare/provider/v5/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 )
 
 //go:embed schema-embed.json
 var pulumiSchema []byte
 
 func main() {
-	tfbridge.Main("cloudflare", version.Version, cloudflare.Provider(), pulumiSchema)
+	tfbridge.MainWithMuxer(context.Background(), "cloudflare",
+		tfbridge.ProviderMetadata{
+			PackageSchema: pulumiSchema,
+		},
+		tfbridge.Muxed{SDK: cloudflare.Provider()},
+		tfbridge.Muxed{PF: cloudflare.PFProvider()},
+	)
 }
