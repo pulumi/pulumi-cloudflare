@@ -16,12 +16,7 @@ package main
 
 import (
 	cloudflare "github.com/pulumi/pulumi-cloudflare/provider/v5"
-	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
 )
 
-func main() {
-	tfgen.MainWithMuxer("cloudflare",
-		tfbridge.Muxed{SDK: cloudflare.Provider()},
-		tfbridge.Muxed{PF: cloudflare.PFProvider()})
-}
+func main() { tfgen.MainWithMuxer(cloudflare.Provider()) }

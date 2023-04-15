@@ -15,6 +15,7 @@
 package cloudflare
 
 import (
+	"context"
 	_ "embed"
 	"fmt"
 	"path/filepath"
@@ -40,13 +41,13 @@ const (
 var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
-func Provider() *tfbridge.ProviderInfo {
+func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
 	p := shimv2.NewProvider(provShim.NewProvider())
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:                p,
+		P:                pfbridge.AugmentShimWithPF(context.Background(), p, provShim.NewPFProvider()),
 		Name:             "cloudflare",
 		Description:      "A Pulumi package for creating and managing Cloudflare cloud resources.",
 		Keywords:         []string{"pulumi", "cloudflare"},
@@ -180,6 +181,7 @@ func Provider() *tfbridge.ProviderInfo {
 			"cloudflare_pages_project":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PagesProject")},
 			"cloudflare_rate_limit":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RateLimit")},
 			"cloudflare_record":                     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Record")},
+			"cloudflare_ruleset":                    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Ruleset")},
 			"cloudflare_spectrum_application":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SpectrumApplication")},
 			"cloudflare_split_tunnel":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SplitTunnel")},
 			"cloudflare_static_route":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "StaticRoute")},
@@ -300,19 +302,5 @@ func Provider() *tfbridge.ProviderInfo {
 	err := x.ComputeDefaults(&prov, x.TokensSingleModule("cloudflare_", mainMod,
 		x.MakeStandardToken(mainPkg)))
 	contract.AssertNoErrorf(err, "Failed to compute defaults")
-	return &prov
-}
-
-func PFProvider() *pfbridge.ProviderInfo {
-	info := tfbridge.ProviderInfo{
-		Name:    "cloudflare",
-		Version: "v5.1.0",
-		Resources: map[string]*tfbridge.ResourceInfo{
-			"cloudflare_ruleset": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Ruleset")},
-		},
-	}
-	return &pfbridge.ProviderInfo{
-		ProviderInfo: info,
-		NewProvider:  provShim.NewPFProvider,
-	}
+	return prov
 }
