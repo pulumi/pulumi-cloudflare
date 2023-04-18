@@ -93,7 +93,7 @@ type DeviceSettingsPolicy struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The precedence of the policy. Lower values indicate higher precedence.
 	Precedence pulumi.IntPtrOutput `pulumi:"precedence"`
-	// The service mode. Defaults to `warp`.
+	// The service mode. Available values: `1dot1`, `warp`, `proxy`, `postureOnly`, `warpTunnelOnly`. Defaults to `warp`.
 	ServiceModeV2Mode pulumi.StringPtrOutput `pulumi:"serviceModeV2Mode"`
 	// The port to use for the proxy service mode. Required when using `serviceModeV2Mode`.
 	ServiceModeV2Port pulumi.IntPtrOutput `pulumi:"serviceModeV2Port"`
@@ -164,7 +164,7 @@ type deviceSettingsPolicyState struct {
 	Name *string `pulumi:"name"`
 	// The precedence of the policy. Lower values indicate higher precedence.
 	Precedence *int `pulumi:"precedence"`
-	// The service mode. Defaults to `warp`.
+	// The service mode. Available values: `1dot1`, `warp`, `proxy`, `postureOnly`, `warpTunnelOnly`. Defaults to `warp`.
 	ServiceModeV2Mode *string `pulumi:"serviceModeV2Mode"`
 	// The port to use for the proxy service mode. Required when using `serviceModeV2Mode`.
 	ServiceModeV2Port *int `pulumi:"serviceModeV2Port"`
@@ -201,7 +201,7 @@ type DeviceSettingsPolicyState struct {
 	Name pulumi.StringPtrInput
 	// The precedence of the policy. Lower values indicate higher precedence.
 	Precedence pulumi.IntPtrInput
-	// The service mode. Defaults to `warp`.
+	// The service mode. Available values: `1dot1`, `warp`, `proxy`, `postureOnly`, `warpTunnelOnly`. Defaults to `warp`.
 	ServiceModeV2Mode pulumi.StringPtrInput
 	// The port to use for the proxy service mode. Required when using `serviceModeV2Mode`.
 	ServiceModeV2Port pulumi.IntPtrInput
@@ -242,7 +242,7 @@ type deviceSettingsPolicyArgs struct {
 	Name string `pulumi:"name"`
 	// The precedence of the policy. Lower values indicate higher precedence.
 	Precedence *int `pulumi:"precedence"`
-	// The service mode. Defaults to `warp`.
+	// The service mode. Available values: `1dot1`, `warp`, `proxy`, `postureOnly`, `warpTunnelOnly`. Defaults to `warp`.
 	ServiceModeV2Mode *string `pulumi:"serviceModeV2Mode"`
 	// The port to use for the proxy service mode. Required when using `serviceModeV2Mode`.
 	ServiceModeV2Port *int `pulumi:"serviceModeV2Port"`
@@ -280,7 +280,7 @@ type DeviceSettingsPolicyArgs struct {
 	Name pulumi.StringInput
 	// The precedence of the policy. Lower values indicate higher precedence.
 	Precedence pulumi.IntPtrInput
-	// The service mode. Defaults to `warp`.
+	// The service mode. Available values: `1dot1`, `warp`, `proxy`, `postureOnly`, `warpTunnelOnly`. Defaults to `warp`.
 	ServiceModeV2Mode pulumi.StringPtrInput
 	// The port to use for the proxy service mode. Required when using `serviceModeV2Mode`.
 	ServiceModeV2Port pulumi.IntPtrInput
@@ -442,7 +442,7 @@ func (o DeviceSettingsPolicyOutput) Precedence() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DeviceSettingsPolicy) pulumi.IntPtrOutput { return v.Precedence }).(pulumi.IntPtrOutput)
 }
 
-// The service mode. Defaults to `warp`.
+// The service mode. Available values: `1dot1`, `warp`, `proxy`, `postureOnly`, `warpTunnelOnly`. Defaults to `warp`.
 func (o DeviceSettingsPolicyOutput) ServiceModeV2Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceSettingsPolicy) pulumi.StringPtrOutput { return v.ServiceModeV2Mode }).(pulumi.StringPtrOutput)
 }

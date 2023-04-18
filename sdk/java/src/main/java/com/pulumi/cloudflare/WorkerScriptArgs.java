@@ -48,6 +48,36 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The date to use for the compatibility flag.
+     * 
+     */
+    @Import(name="compatibilityDate")
+    private @Nullable Output<String> compatibilityDate;
+
+    /**
+     * @return The date to use for the compatibility flag.
+     * 
+     */
+    public Optional<Output<String>> compatibilityDate() {
+        return Optional.ofNullable(this.compatibilityDate);
+    }
+
+    /**
+     * Compatibility flags used for Worker Scripts.
+     * 
+     */
+    @Import(name="compatibilityFlags")
+    private @Nullable Output<List<String>> compatibilityFlags;
+
+    /**
+     * @return Compatibility flags used for Worker Scripts.
+     * 
+     */
+    public Optional<Output<List<String>>> compatibilityFlags() {
+        return Optional.ofNullable(this.compatibilityFlags);
+    }
+
+    /**
      * The script content.
      * 
      */
@@ -146,6 +176,8 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
     private WorkerScriptArgs(WorkerScriptArgs $) {
         this.accountId = $.accountId;
         this.analyticsEngineBindings = $.analyticsEngineBindings;
+        this.compatibilityDate = $.compatibilityDate;
+        this.compatibilityFlags = $.compatibilityFlags;
         this.content = $.content;
         this.kvNamespaceBindings = $.kvNamespaceBindings;
         this.module = $.module;
@@ -208,6 +240,58 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder analyticsEngineBindings(WorkerScriptAnalyticsEngineBindingArgs... analyticsEngineBindings) {
             return analyticsEngineBindings(List.of(analyticsEngineBindings));
+        }
+
+        /**
+         * @param compatibilityDate The date to use for the compatibility flag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compatibilityDate(@Nullable Output<String> compatibilityDate) {
+            $.compatibilityDate = compatibilityDate;
+            return this;
+        }
+
+        /**
+         * @param compatibilityDate The date to use for the compatibility flag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compatibilityDate(String compatibilityDate) {
+            return compatibilityDate(Output.of(compatibilityDate));
+        }
+
+        /**
+         * @param compatibilityFlags Compatibility flags used for Worker Scripts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compatibilityFlags(@Nullable Output<List<String>> compatibilityFlags) {
+            $.compatibilityFlags = compatibilityFlags;
+            return this;
+        }
+
+        /**
+         * @param compatibilityFlags Compatibility flags used for Worker Scripts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compatibilityFlags(List<String> compatibilityFlags) {
+            return compatibilityFlags(Output.of(compatibilityFlags));
+        }
+
+        /**
+         * @param compatibilityFlags Compatibility flags used for Worker Scripts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compatibilityFlags(String... compatibilityFlags) {
+            return compatibilityFlags(List.of(compatibilityFlags));
         }
 
         /**

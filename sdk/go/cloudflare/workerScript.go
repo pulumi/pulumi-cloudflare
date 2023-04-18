@@ -13,10 +13,6 @@ import (
 
 // Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`.
 //
-// > This resource uses the Cloudflare account APIs. This requires setting the
-//
-//	`CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
-//
 // ## Example Usage
 //
 // ```go
@@ -127,6 +123,10 @@ type WorkerScript struct {
 	// The account identifier to target for the resource.
 	AccountId               pulumi.StringOutput                           `pulumi:"accountId"`
 	AnalyticsEngineBindings WorkerScriptAnalyticsEngineBindingArrayOutput `pulumi:"analyticsEngineBindings"`
+	// The date to use for the compatibility flag.
+	CompatibilityDate pulumi.StringPtrOutput `pulumi:"compatibilityDate"`
+	// Compatibility flags used for Worker Scripts.
+	CompatibilityFlags pulumi.StringArrayOutput `pulumi:"compatibilityFlags"`
 	// The script content.
 	Content             pulumi.StringOutput                       `pulumi:"content"`
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayOutput `pulumi:"kvNamespaceBindings"`
@@ -183,6 +183,10 @@ type workerScriptState struct {
 	// The account identifier to target for the resource.
 	AccountId               *string                              `pulumi:"accountId"`
 	AnalyticsEngineBindings []WorkerScriptAnalyticsEngineBinding `pulumi:"analyticsEngineBindings"`
+	// The date to use for the compatibility flag.
+	CompatibilityDate *string `pulumi:"compatibilityDate"`
+	// Compatibility flags used for Worker Scripts.
+	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
 	// The script content.
 	Content             *string                          `pulumi:"content"`
 	KvNamespaceBindings []WorkerScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
@@ -202,6 +206,10 @@ type WorkerScriptState struct {
 	// The account identifier to target for the resource.
 	AccountId               pulumi.StringPtrInput
 	AnalyticsEngineBindings WorkerScriptAnalyticsEngineBindingArrayInput
+	// The date to use for the compatibility flag.
+	CompatibilityDate pulumi.StringPtrInput
+	// Compatibility flags used for Worker Scripts.
+	CompatibilityFlags pulumi.StringArrayInput
 	// The script content.
 	Content             pulumi.StringPtrInput
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayInput
@@ -225,6 +233,10 @@ type workerScriptArgs struct {
 	// The account identifier to target for the resource.
 	AccountId               string                               `pulumi:"accountId"`
 	AnalyticsEngineBindings []WorkerScriptAnalyticsEngineBinding `pulumi:"analyticsEngineBindings"`
+	// The date to use for the compatibility flag.
+	CompatibilityDate *string `pulumi:"compatibilityDate"`
+	// Compatibility flags used for Worker Scripts.
+	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
 	// The script content.
 	Content             string                           `pulumi:"content"`
 	KvNamespaceBindings []WorkerScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
@@ -245,6 +257,10 @@ type WorkerScriptArgs struct {
 	// The account identifier to target for the resource.
 	AccountId               pulumi.StringInput
 	AnalyticsEngineBindings WorkerScriptAnalyticsEngineBindingArrayInput
+	// The date to use for the compatibility flag.
+	CompatibilityDate pulumi.StringPtrInput
+	// Compatibility flags used for Worker Scripts.
+	CompatibilityFlags pulumi.StringArrayInput
 	// The script content.
 	Content             pulumi.StringInput
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayInput
@@ -354,6 +370,16 @@ func (o WorkerScriptOutput) AccountId() pulumi.StringOutput {
 
 func (o WorkerScriptOutput) AnalyticsEngineBindings() WorkerScriptAnalyticsEngineBindingArrayOutput {
 	return o.ApplyT(func(v *WorkerScript) WorkerScriptAnalyticsEngineBindingArrayOutput { return v.AnalyticsEngineBindings }).(WorkerScriptAnalyticsEngineBindingArrayOutput)
+}
+
+// The date to use for the compatibility flag.
+func (o WorkerScriptOutput) CompatibilityDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringPtrOutput { return v.CompatibilityDate }).(pulumi.StringPtrOutput)
+}
+
+// Compatibility flags used for Worker Scripts.
+func (o WorkerScriptOutput) CompatibilityFlags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringArrayOutput { return v.CompatibilityFlags }).(pulumi.StringArrayOutput)
 }
 
 // The script content.

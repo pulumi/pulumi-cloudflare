@@ -135,10 +135,6 @@ class WorkerCronTrigger(pulumi.CustomResource):
         schedule. Worker Cron Triggers are ideal for running periodic jobs for
         maintenance or calling third-party APIs to collect up-to-date data.
 
-        > This resource uses the Cloudflare account APIs. This requires setting the
-        `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument
-        if you do not explicitly set the resource level `account_id` value.
-
         ## Example Usage
 
         ```python
@@ -181,10 +177,6 @@ class WorkerCronTrigger(pulumi.CustomResource):
         using a `ScheduledEvent` listener that enables Workers to be executed on a
         schedule. Worker Cron Triggers are ideal for running periodic jobs for
         maintenance or calling third-party APIs to collect up-to-date data.
-
-        > This resource uses the Cloudflare account APIs. This requires setting the
-        `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument
-        if you do not explicitly set the resource level `account_id` value.
 
         ## Example Usage
 

@@ -134,6 +134,20 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.name);
     }
     /**
+     * A description of the reason why the UI read only field is being toggled.
+     * 
+     */
+    @Export(name="uiReadOnlyToggleReason", type=String.class, parameters={})
+    private Output</* @Nullable */ String> uiReadOnlyToggleReason;
+
+    /**
+     * @return A description of the reason why the UI read only field is being toggled.
+     * 
+     */
+    public Output<Optional<String>> uiReadOnlyToggleReason() {
+        return Codegen.optional(this.uiReadOnlyToggleReason);
+    }
+    /**
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
      * 
      */

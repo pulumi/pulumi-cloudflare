@@ -14,6 +14,45 @@ namespace Pulumi.Cloudflare
     /// Trust. Tunnel routes are used to direct IP traffic through
     /// Cloudflare Tunnels.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Tunnel route
+    ///     var exampleTunnelRoute = new Cloudflare.TunnelRoute("exampleTunnelRoute", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         TunnelId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+    ///         Network = "192.0.2.24/32",
+    ///         Comment = "New tunnel route for documentation",
+    ///         VirtualNetworkId = "bdc39a3c-3104-4c23-8ac0-9f455dda691a",
+    ///     });
+    /// 
+    ///     // Tunnel with tunnel route
+    ///     var tunnel = new Cloudflare.Tunnel("tunnel", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "my_tunnel",
+    ///         Secret = "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
+    ///     });
+    /// 
+    ///     var exampleIndex_tunnelRouteTunnelRoute = new Cloudflare.TunnelRoute("exampleIndex/tunnelRouteTunnelRoute", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         TunnelId = tunnel.Id,
+    ///         Network = "192.0.2.24/32",
+    ///         Comment = "New tunnel route for documentation",
+    ///         VirtualNetworkId = "bdc39a3c-3104-4c23-8ac0-9f455dda691a",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

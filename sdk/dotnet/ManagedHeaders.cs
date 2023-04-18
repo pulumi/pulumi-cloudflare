@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// The [Cloudflare Managed Headers](https://developers.cloudflare.com/rules/transform/managed-transforms/)
+    /// allows you to add or remove some predefined headers to one's
+    /// requests or origin responses.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -43,10 +47,6 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// Import is not supported for this resource.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/managedHeaders:ManagedHeaders")]
     public partial class ManagedHeaders : global::Pulumi.CustomResource

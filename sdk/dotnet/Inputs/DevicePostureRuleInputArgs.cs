@@ -12,6 +12,18 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class DevicePostureRuleInputArgs : global::Pulumi.ResourceArgs
     {
+        [Input("checkDisks")]
+        private InputList<string>? _checkDisks;
+
+        /// <summary>
+        /// Specific volume(s) to check for encryption.
+        /// </summary>
+        public InputList<string> CheckDisks
+        {
+            get => _checkDisks ?? (_checkDisks = new InputList<string>());
+            set => _checkDisks = value;
+        }
+
         /// <summary>
         /// The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
         /// </summary>

@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsAuditSsh;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsBisoAdminControls;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsCheckSession;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsEgress;
@@ -26,6 +27,16 @@ public final class TeamsRuleRuleSettings {
      */
     private @Nullable Map<String,String> addHeaders;
     /**
+     * @return Allow parent MSP accounts to enable bypass their children&#39;s rules.
+     * 
+     */
+    private @Nullable Boolean allowChildBypass;
+    /**
+     * @return Settings for auditing SSH usage.
+     * 
+     */
+    private @Nullable TeamsRuleRuleSettingsAuditSsh auditSsh;
+    /**
      * @return Configure how browser isolation behaves.
      * 
      */
@@ -41,6 +52,11 @@ public final class TeamsRuleRuleSettings {
      */
     private @Nullable String blockPageReason;
     /**
+     * @return Allow child MSP accounts to bypass their parent&#39;s rule.
+     * 
+     */
+    private @Nullable Boolean bypassParentRule;
+    /**
      * @return Configure how session check behaves.
      * 
      */
@@ -55,6 +71,11 @@ public final class TeamsRuleRuleSettings {
      * 
      */
     private @Nullable Boolean insecureDisableDnssecValidation;
+    /**
+     * @return Turns on IP category based filter on dns if the rule contains dns category checks.
+     * 
+     */
+    private @Nullable Boolean ipCategories;
     /**
      * @return Settings to forward layer 4 traffic.
      * 
@@ -90,6 +111,20 @@ public final class TeamsRuleRuleSettings {
         return this.addHeaders == null ? Map.of() : this.addHeaders;
     }
     /**
+     * @return Allow parent MSP accounts to enable bypass their children&#39;s rules.
+     * 
+     */
+    public Optional<Boolean> allowChildBypass() {
+        return Optional.ofNullable(this.allowChildBypass);
+    }
+    /**
+     * @return Settings for auditing SSH usage.
+     * 
+     */
+    public Optional<TeamsRuleRuleSettingsAuditSsh> auditSsh() {
+        return Optional.ofNullable(this.auditSsh);
+    }
+    /**
      * @return Configure how browser isolation behaves.
      * 
      */
@@ -111,6 +146,13 @@ public final class TeamsRuleRuleSettings {
         return Optional.ofNullable(this.blockPageReason);
     }
     /**
+     * @return Allow child MSP accounts to bypass their parent&#39;s rule.
+     * 
+     */
+    public Optional<Boolean> bypassParentRule() {
+        return Optional.ofNullable(this.bypassParentRule);
+    }
+    /**
      * @return Configure how session check behaves.
      * 
      */
@@ -130,6 +172,13 @@ public final class TeamsRuleRuleSettings {
      */
     public Optional<Boolean> insecureDisableDnssecValidation() {
         return Optional.ofNullable(this.insecureDisableDnssecValidation);
+    }
+    /**
+     * @return Turns on IP category based filter on dns if the rule contains dns category checks.
+     * 
+     */
+    public Optional<Boolean> ipCategories() {
+        return Optional.ofNullable(this.ipCategories);
     }
     /**
      * @return Settings to forward layer 4 traffic.
@@ -177,12 +226,16 @@ public final class TeamsRuleRuleSettings {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> addHeaders;
+        private @Nullable Boolean allowChildBypass;
+        private @Nullable TeamsRuleRuleSettingsAuditSsh auditSsh;
         private @Nullable TeamsRuleRuleSettingsBisoAdminControls bisoAdminControls;
         private @Nullable Boolean blockPageEnabled;
         private @Nullable String blockPageReason;
+        private @Nullable Boolean bypassParentRule;
         private @Nullable TeamsRuleRuleSettingsCheckSession checkSession;
         private @Nullable TeamsRuleRuleSettingsEgress egress;
         private @Nullable Boolean insecureDisableDnssecValidation;
+        private @Nullable Boolean ipCategories;
         private @Nullable TeamsRuleRuleSettingsL4override l4override;
         private @Nullable String overrideHost;
         private @Nullable List<String> overrideIps;
@@ -192,12 +245,16 @@ public final class TeamsRuleRuleSettings {
         public Builder(TeamsRuleRuleSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addHeaders = defaults.addHeaders;
+    	      this.allowChildBypass = defaults.allowChildBypass;
+    	      this.auditSsh = defaults.auditSsh;
     	      this.bisoAdminControls = defaults.bisoAdminControls;
     	      this.blockPageEnabled = defaults.blockPageEnabled;
     	      this.blockPageReason = defaults.blockPageReason;
+    	      this.bypassParentRule = defaults.bypassParentRule;
     	      this.checkSession = defaults.checkSession;
     	      this.egress = defaults.egress;
     	      this.insecureDisableDnssecValidation = defaults.insecureDisableDnssecValidation;
+    	      this.ipCategories = defaults.ipCategories;
     	      this.l4override = defaults.l4override;
     	      this.overrideHost = defaults.overrideHost;
     	      this.overrideIps = defaults.overrideIps;
@@ -208,6 +265,16 @@ public final class TeamsRuleRuleSettings {
         @CustomType.Setter
         public Builder addHeaders(@Nullable Map<String,String> addHeaders) {
             this.addHeaders = addHeaders;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder allowChildBypass(@Nullable Boolean allowChildBypass) {
+            this.allowChildBypass = allowChildBypass;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder auditSsh(@Nullable TeamsRuleRuleSettingsAuditSsh auditSsh) {
+            this.auditSsh = auditSsh;
             return this;
         }
         @CustomType.Setter
@@ -226,6 +293,11 @@ public final class TeamsRuleRuleSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder bypassParentRule(@Nullable Boolean bypassParentRule) {
+            this.bypassParentRule = bypassParentRule;
+            return this;
+        }
+        @CustomType.Setter
         public Builder checkSession(@Nullable TeamsRuleRuleSettingsCheckSession checkSession) {
             this.checkSession = checkSession;
             return this;
@@ -238,6 +310,11 @@ public final class TeamsRuleRuleSettings {
         @CustomType.Setter
         public Builder insecureDisableDnssecValidation(@Nullable Boolean insecureDisableDnssecValidation) {
             this.insecureDisableDnssecValidation = insecureDisableDnssecValidation;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipCategories(@Nullable Boolean ipCategories) {
+            this.ipCategories = ipCategories;
             return this;
         }
         @CustomType.Setter
@@ -271,12 +348,16 @@ public final class TeamsRuleRuleSettings {
         public TeamsRuleRuleSettings build() {
             final var o = new TeamsRuleRuleSettings();
             o.addHeaders = addHeaders;
+            o.allowChildBypass = allowChildBypass;
+            o.auditSsh = auditSsh;
             o.bisoAdminControls = bisoAdminControls;
             o.blockPageEnabled = blockPageEnabled;
             o.blockPageReason = blockPageReason;
+            o.bypassParentRule = bypassParentRule;
             o.checkSession = checkSession;
             o.egress = egress;
             o.insecureDisableDnssecValidation = insecureDisableDnssecValidation;
+            o.ipCategories = ipCategories;
             o.l4override = l4override;
             o.overrideHost = overrideHost;
             o.overrideIps = overrideIps;

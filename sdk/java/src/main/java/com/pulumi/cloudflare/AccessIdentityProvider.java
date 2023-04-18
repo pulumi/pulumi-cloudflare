@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.AccessIdentityProviderArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccessIdentityProviderState;
 import com.pulumi.cloudflare.outputs.AccessIdentityProviderConfig;
+import com.pulumi.cloudflare.outputs.AccessIdentityProviderScimConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -150,6 +151,20 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Configuration for SCIM settings for a given IDP.
+     * 
+     */
+    @Export(name="scimConfigs", type=List.class, parameters={AccessIdentityProviderScimConfig.class})
+    private Output</* @Nullable */ List<AccessIdentityProviderScimConfig>> scimConfigs;
+
+    /**
+     * @return Configuration for SCIM settings for a given IDP.
+     * 
+     */
+    public Output<Optional<List<AccessIdentityProviderScimConfig>>> scimConfigs() {
+        return Codegen.optional(this.scimConfigs);
     }
     /**
      * The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.

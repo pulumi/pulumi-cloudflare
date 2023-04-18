@@ -213,14 +213,14 @@ public final class DeviceSettingsPolicyState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The service mode. Defaults to `warp`.
+     * The service mode. Available values: `1dot1`, `warp`, `proxy`, `posture_only`, `warp_tunnel_only`. Defaults to `warp`.
      * 
      */
     @Import(name="serviceModeV2Mode")
     private @Nullable Output<String> serviceModeV2Mode;
 
     /**
-     * @return The service mode. Defaults to `warp`.
+     * @return The service mode. Available values: `1dot1`, `warp`, `proxy`, `posture_only`, `warp_tunnel_only`. Defaults to `warp`.
      * 
      */
     public Optional<Output<String>> serviceModeV2Mode() {
@@ -586,7 +586,7 @@ public final class DeviceSettingsPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param serviceModeV2Mode The service mode. Defaults to `warp`.
+         * @param serviceModeV2Mode The service mode. Available values: `1dot1`, `warp`, `proxy`, `posture_only`, `warp_tunnel_only`. Defaults to `warp`.
          * 
          * @return builder
          * 
@@ -597,7 +597,7 @@ public final class DeviceSettingsPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param serviceModeV2Mode The service mode. Defaults to `warp`.
+         * @param serviceModeV2Mode The service mode. Available values: `1dot1`, `warp`, `proxy`, `posture_only`, `warp_tunnel_only`. Defaults to `warp`.
          * 
          * @return builder
          * 

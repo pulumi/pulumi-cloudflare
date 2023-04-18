@@ -271,7 +271,7 @@ class FirewallRule(pulumi.CustomResource):
         Rule.
 
         > If you want to configure Custom Firewall rules, you need to use
-        `Ruleset`, because Custom Rules are built upon the
+        `cloudflare_ruleset`, because Custom Rules are built upon the
         [Cloudflare Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/).
 
         ## Example Usage
@@ -323,7 +323,7 @@ class FirewallRule(pulumi.CustomResource):
         Rule.
 
         > If you want to configure Custom Firewall rules, you need to use
-        `Ruleset`, because Custom Rules are built upon the
+        `cloudflare_ruleset`, because Custom Rules are built upon the
         [Cloudflare Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/).
 
         ## Example Usage

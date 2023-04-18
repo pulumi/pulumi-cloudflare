@@ -46,7 +46,7 @@ class DeviceSettingsPolicyArgs:
         :param pulumi.Input[bool] exclude_office_ips: Whether to add Microsoft IPs to split tunnel exclusions.
         :param pulumi.Input[str] match: Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.
         :param pulumi.Input[int] precedence: The precedence of the policy. Lower values indicate higher precedence.
-        :param pulumi.Input[str] service_mode_v2_mode: The service mode. Defaults to `warp`.
+        :param pulumi.Input[str] service_mode_v2_mode: The service mode. Available values: `1dot1`, `warp`, `proxy`, `posture_only`, `warp_tunnel_only`. Defaults to `warp`.
         :param pulumi.Input[int] service_mode_v2_port: The port to use for the proxy service mode. Required when using `service_mode_v2_mode`.
         :param pulumi.Input[str] support_url: The support URL that will be opened when sending feedback.
         :param pulumi.Input[bool] switch_locked: Enablement of the ZT client switch lock.
@@ -244,7 +244,7 @@ class DeviceSettingsPolicyArgs:
     @pulumi.getter(name="serviceModeV2Mode")
     def service_mode_v2_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The service mode. Defaults to `warp`.
+        The service mode. Available values: `1dot1`, `warp`, `proxy`, `posture_only`, `warp_tunnel_only`. Defaults to `warp`.
         """
         return pulumi.get(self, "service_mode_v2_mode")
 
@@ -324,7 +324,7 @@ class _DeviceSettingsPolicyState:
         :param pulumi.Input[str] match: Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.
         :param pulumi.Input[str] name: Name of the policy.
         :param pulumi.Input[int] precedence: The precedence of the policy. Lower values indicate higher precedence.
-        :param pulumi.Input[str] service_mode_v2_mode: The service mode. Defaults to `warp`.
+        :param pulumi.Input[str] service_mode_v2_mode: The service mode. Available values: `1dot1`, `warp`, `proxy`, `posture_only`, `warp_tunnel_only`. Defaults to `warp`.
         :param pulumi.Input[int] service_mode_v2_port: The port to use for the proxy service mode. Required when using `service_mode_v2_mode`.
         :param pulumi.Input[str] support_url: The support URL that will be opened when sending feedback.
         :param pulumi.Input[bool] switch_locked: Enablement of the ZT client switch lock.
@@ -524,7 +524,7 @@ class _DeviceSettingsPolicyState:
     @pulumi.getter(name="serviceModeV2Mode")
     def service_mode_v2_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The service mode. Defaults to `warp`.
+        The service mode. Available values: `1dot1`, `warp`, `proxy`, `posture_only`, `warp_tunnel_only`. Defaults to `warp`.
         """
         return pulumi.get(self, "service_mode_v2_mode")
 
@@ -644,7 +644,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] match: Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.
         :param pulumi.Input[str] name: Name of the policy.
         :param pulumi.Input[int] precedence: The precedence of the policy. Lower values indicate higher precedence.
-        :param pulumi.Input[str] service_mode_v2_mode: The service mode. Defaults to `warp`.
+        :param pulumi.Input[str] service_mode_v2_mode: The service mode. Available values: `1dot1`, `warp`, `proxy`, `posture_only`, `warp_tunnel_only`. Defaults to `warp`.
         :param pulumi.Input[int] service_mode_v2_port: The port to use for the proxy service mode. Required when using `service_mode_v2_mode`.
         :param pulumi.Input[str] support_url: The support URL that will be opened when sending feedback.
         :param pulumi.Input[bool] switch_locked: Enablement of the ZT client switch lock.
@@ -801,7 +801,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] match: Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.
         :param pulumi.Input[str] name: Name of the policy.
         :param pulumi.Input[int] precedence: The precedence of the policy. Lower values indicate higher precedence.
-        :param pulumi.Input[str] service_mode_v2_mode: The service mode. Defaults to `warp`.
+        :param pulumi.Input[str] service_mode_v2_mode: The service mode. Available values: `1dot1`, `warp`, `proxy`, `posture_only`, `warp_tunnel_only`. Defaults to `warp`.
         :param pulumi.Input[int] service_mode_v2_port: The port to use for the proxy service mode. Required when using `service_mode_v2_mode`.
         :param pulumi.Input[str] support_url: The support URL that will be opened when sending feedback.
         :param pulumi.Input[bool] switch_locked: Enablement of the ZT client switch lock.
@@ -937,7 +937,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
     @pulumi.getter(name="serviceModeV2Mode")
     def service_mode_v2_mode(self) -> pulumi.Output[Optional[str]]:
         """
-        The service mode. Defaults to `warp`.
+        The service mode. Available values: `1dot1`, `warp`, `proxy`, `posture_only`, `warp_tunnel_only`. Defaults to `warp`.
         """
         return pulumi.get(self, "service_mode_v2_mode")
 

@@ -55,14 +55,14 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of items the list will contain.
+     * The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="kind", required=true)
     private Output<String> kind;
 
     /**
-     * @return The type of items the list will contain.
+     * @return The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> kind() {
@@ -168,7 +168,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kind The type of items the list will contain.
+         * @param kind The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kind The type of items the list will contain.
+         * @param kind The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

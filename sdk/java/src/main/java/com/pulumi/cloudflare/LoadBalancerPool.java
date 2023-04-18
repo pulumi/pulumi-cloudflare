@@ -27,6 +27,12 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import cloudflare:index/loadBalancerPool:LoadBalancerPool example &lt;account_id&gt;/&lt;load_balancer_poool_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/loadBalancerPool:LoadBalancerPool")
 public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
