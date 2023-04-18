@@ -16,6 +16,8 @@ package cloudflare
 
 import (
 	"fmt"
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
 	"path/filepath"
 
 	provShim "github.com/cloudflare/terraform-provider-cloudflare/shim"
@@ -173,7 +175,6 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_pages_project":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PagesProject")},
 			"cloudflare_rate_limit":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RateLimit")},
 			"cloudflare_record":                     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Record")},
-			"cloudflare_ruleset":                    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Ruleset")},
 			"cloudflare_spectrum_application":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SpectrumApplication")},
 			"cloudflare_split_tunnel":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SplitTunnel")},
 			"cloudflare_static_route":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "StaticRoute")},
@@ -250,13 +251,10 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_origin_ca_root_certificate": {
 				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getOriginCaRootCertificate"),
 			},
-			"cloudflare_record":       {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRecord")},
-			"cloudflare_waf_groups":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWafGroups")},
-			"cloudflare_waf_packages": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWafPackages")},
-			"cloudflare_waf_rules":    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWafRules")},
-			"cloudflare_zone":         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getZone")},
-			"cloudflare_zone_dnssec":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getZoneDnssec")},
-			"cloudflare_zones":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getZones")},
+			"cloudflare_record":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRecord")},
+			"cloudflare_zone":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getZone")},
+			"cloudflare_zone_dnssec": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getZoneDnssec")},
+			"cloudflare_zones":       {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getZones")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
@@ -288,11 +286,16 @@ func Provider() tfbridge.ProviderInfo {
 			Namespaces: map[string]string{
 				mainPkg: "Cloudflare",
 			},
-		},
+		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
 	err := x.ComputeDefaults(&prov, x.TokensSingleModule("cloudflare_", mainMod,
 		x.MakeStandardToken(mainPkg)))
 	contract.AssertNoErrorf(err, "Failed to compute defaults")
+	err = x.AutoAliasing(&prov, prov.GetMetadata())
+	contract.AssertNoErrorf(err, "Failed to apply auto aliasing")
 	return prov
 }
+
+//go:embed cmd/pulumi-resource-cloudflare/bridge-metadata.json
+var metadata []byte

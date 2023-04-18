@@ -1,0 +1,2054 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "cloudflare_access_application": {
+                "current": "cloudflare:index/accessApplication:AccessApplication"
+            },
+            "cloudflare_access_ca_certificate": {
+                "current": "cloudflare:index/accessCaCertificate:AccessCaCertificate"
+            },
+            "cloudflare_access_group": {
+                "current": "cloudflare:index/accessGroup:AccessGroup"
+            },
+            "cloudflare_access_identity_provider": {
+                "current": "cloudflare:index/accessIdentityProvider:AccessIdentityProvider"
+            },
+            "cloudflare_access_keys_configuration": {
+                "current": "cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration"
+            },
+            "cloudflare_access_mutual_tls_certificate": {
+                "current": "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate"
+            },
+            "cloudflare_access_organization": {
+                "current": "cloudflare:index/accessOrganization:AccessOrganization"
+            },
+            "cloudflare_access_policy": {
+                "current": "cloudflare:index/accessPolicy:AccessPolicy"
+            },
+            "cloudflare_access_rule": {
+                "current": "cloudflare:index/accessRule:AccessRule"
+            },
+            "cloudflare_access_service_token": {
+                "current": "cloudflare:index/accessServiceToken:AccessServiceToken"
+            },
+            "cloudflare_account": {
+                "current": "cloudflare:index/account:Account"
+            },
+            "cloudflare_account_member": {
+                "current": "cloudflare:index/accountMember:AccountMember"
+            },
+            "cloudflare_address_map": {
+                "current": "cloudflare:index/addressMap:AddressMap"
+            },
+            "cloudflare_api_shield": {
+                "current": "cloudflare:index/apiShield:ApiShield"
+            },
+            "cloudflare_api_token": {
+                "current": "cloudflare:index/apiToken:ApiToken"
+            },
+            "cloudflare_argo": {
+                "current": "cloudflare:index/argo:Argo"
+            },
+            "cloudflare_authenticated_origin_pulls": {
+                "current": "cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls"
+            },
+            "cloudflare_authenticated_origin_pulls_certificate": {
+                "current": "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate"
+            },
+            "cloudflare_byo_ip_prefix": {
+                "current": "cloudflare:index/byoIpPrefix:ByoIpPrefix"
+            },
+            "cloudflare_certificate_pack": {
+                "current": "cloudflare:index/certificatePack:CertificatePack"
+            },
+            "cloudflare_custom_hostname": {
+                "current": "cloudflare:index/customHostname:CustomHostname"
+            },
+            "cloudflare_custom_hostname_fallback_origin": {
+                "current": "cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin"
+            },
+            "cloudflare_custom_pages": {
+                "current": "cloudflare:index/customPages:CustomPages"
+            },
+            "cloudflare_custom_ssl": {
+                "current": "cloudflare:index/customSsl:CustomSsl"
+            },
+            "cloudflare_device_dex_test": {
+                "current": "cloudflare:index/deviceDexTest:DeviceDexTest"
+            },
+            "cloudflare_device_managed_networks": {
+                "current": "cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks"
+            },
+            "cloudflare_device_policy_certificates": {
+                "current": "cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates"
+            },
+            "cloudflare_device_posture_integration": {
+                "current": "cloudflare:index/devicePostureIntegration:DevicePostureIntegration"
+            },
+            "cloudflare_device_posture_rule": {
+                "current": "cloudflare:index/devicePostureRule:DevicePostureRule"
+            },
+            "cloudflare_device_settings_policy": {
+                "current": "cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy"
+            },
+            "cloudflare_dlp_profile": {
+                "current": "cloudflare:index/dlpProfile:DlpProfile"
+            },
+            "cloudflare_email_routing_address": {
+                "current": "cloudflare:index/emailRoutingAddress:EmailRoutingAddress"
+            },
+            "cloudflare_email_routing_catch_all": {
+                "current": "cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll"
+            },
+            "cloudflare_email_routing_rule": {
+                "current": "cloudflare:index/emailRoutingRule:EmailRoutingRule"
+            },
+            "cloudflare_email_routing_settings": {
+                "current": "cloudflare:index/emailRoutingSettings:EmailRoutingSettings"
+            },
+            "cloudflare_fallback_domain": {
+                "current": "cloudflare:index/fallbackDomain:FallbackDomain"
+            },
+            "cloudflare_filter": {
+                "current": "cloudflare:index/filter:Filter"
+            },
+            "cloudflare_firewall_rule": {
+                "current": "cloudflare:index/firewallRule:FirewallRule"
+            },
+            "cloudflare_gre_tunnel": {
+                "current": "cloudflare:index/greTunnel:GreTunnel"
+            },
+            "cloudflare_healthcheck": {
+                "current": "cloudflare:index/healthcheck:Healthcheck"
+            },
+            "cloudflare_ipsec_tunnel": {
+                "current": "cloudflare:index/ipsecTunnel:IpsecTunnel"
+            },
+            "cloudflare_list": {
+                "current": "cloudflare:index/list:List"
+            },
+            "cloudflare_list_item": {
+                "current": "cloudflare:index/listItem:ListItem"
+            },
+            "cloudflare_load_balancer": {
+                "current": "cloudflare:index/loadBalancer:LoadBalancer"
+            },
+            "cloudflare_load_balancer_monitor": {
+                "current": "cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor"
+            },
+            "cloudflare_load_balancer_pool": {
+                "current": "cloudflare:index/loadBalancerPool:LoadBalancerPool"
+            },
+            "cloudflare_logpull_retention": {
+                "current": "cloudflare:index/logpullRetention:LogpullRetention"
+            },
+            "cloudflare_logpush_job": {
+                "current": "cloudflare:index/logpushJob:LogpushJob"
+            },
+            "cloudflare_logpush_ownership_challenge": {
+                "current": "cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge"
+            },
+            "cloudflare_magic_firewall_ruleset": {
+                "current": "cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset"
+            },
+            "cloudflare_managed_headers": {
+                "current": "cloudflare:index/managedHeaders:ManagedHeaders"
+            },
+            "cloudflare_mtls_certificate": {
+                "current": "cloudflare:index/mtlsCertificate:MtlsCertificate"
+            },
+            "cloudflare_notification_policy": {
+                "current": "cloudflare:index/notificationPolicy:NotificationPolicy"
+            },
+            "cloudflare_notification_policy_webhooks": {
+                "current": "cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks"
+            },
+            "cloudflare_origin_ca_certificate": {
+                "current": "cloudflare:index/originCaCertificate:OriginCaCertificate"
+            },
+            "cloudflare_page_rule": {
+                "current": "cloudflare:index/pageRule:PageRule"
+            },
+            "cloudflare_pages_domain": {
+                "current": "cloudflare:index/pagesDomain:PagesDomain"
+            },
+            "cloudflare_pages_project": {
+                "current": "cloudflare:index/pagesProject:PagesProject"
+            },
+            "cloudflare_queue": {
+                "current": "cloudflare:index/queue:Queue"
+            },
+            "cloudflare_rate_limit": {
+                "current": "cloudflare:index/rateLimit:RateLimit"
+            },
+            "cloudflare_record": {
+                "current": "cloudflare:index/record:Record"
+            },
+            "cloudflare_spectrum_application": {
+                "current": "cloudflare:index/spectrumApplication:SpectrumApplication"
+            },
+            "cloudflare_split_tunnel": {
+                "current": "cloudflare:index/splitTunnel:SplitTunnel"
+            },
+            "cloudflare_static_route": {
+                "current": "cloudflare:index/staticRoute:StaticRoute"
+            },
+            "cloudflare_teams_account": {
+                "current": "cloudflare:index/teamsAccount:TeamsAccount"
+            },
+            "cloudflare_teams_list": {
+                "current": "cloudflare:index/teamsList:TeamsList"
+            },
+            "cloudflare_teams_location": {
+                "current": "cloudflare:index/teamsLocation:TeamsLocation"
+            },
+            "cloudflare_teams_proxy_endpoint": {
+                "current": "cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint"
+            },
+            "cloudflare_teams_rule": {
+                "current": "cloudflare:index/teamsRule:TeamsRule"
+            },
+            "cloudflare_tiered_cache": {
+                "current": "cloudflare:index/tieredCache:TieredCache"
+            },
+            "cloudflare_total_tls": {
+                "current": "cloudflare:index/totalTls:TotalTls"
+            },
+            "cloudflare_tunnel": {
+                "current": "cloudflare:index/tunnel:Tunnel"
+            },
+            "cloudflare_tunnel_config": {
+                "current": "cloudflare:index/tunnelConfig:TunnelConfig"
+            },
+            "cloudflare_tunnel_route": {
+                "current": "cloudflare:index/tunnelRoute:TunnelRoute"
+            },
+            "cloudflare_tunnel_virtual_network": {
+                "current": "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork"
+            },
+            "cloudflare_url_normalization_settings": {
+                "current": "cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings"
+            },
+            "cloudflare_user_agent_blocking_rule": {
+                "current": "cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule"
+            },
+            "cloudflare_waiting_room": {
+                "current": "cloudflare:index/waitingRoom:WaitingRoom"
+            },
+            "cloudflare_waiting_room_event": {
+                "current": "cloudflare:index/waitingRoomEvent:WaitingRoomEvent"
+            },
+            "cloudflare_waiting_room_rules": {
+                "current": "cloudflare:index/waitingRoomRules:WaitingRoomRules"
+            },
+            "cloudflare_web3_hostname": {
+                "current": "cloudflare:index/web3Hostname:Web3Hostname"
+            },
+            "cloudflare_worker_cron_trigger": {
+                "current": "cloudflare:index/workerCronTrigger:WorkerCronTrigger"
+            },
+            "cloudflare_worker_domain": {
+                "current": "cloudflare:index/workerDomain:WorkerDomain"
+            },
+            "cloudflare_worker_route": {
+                "current": "cloudflare:index/workerRoute:WorkerRoute"
+            },
+            "cloudflare_worker_script": {
+                "current": "cloudflare:index/workerScript:WorkerScript"
+            },
+            "cloudflare_workers_kv": {
+                "current": "cloudflare:index/workersKv:WorkersKv"
+            },
+            "cloudflare_workers_kv_namespace": {
+                "current": "cloudflare:index/workersKvNamespace:WorkersKvNamespace"
+            },
+            "cloudflare_zone": {
+                "current": "cloudflare:index/zone:Zone"
+            },
+            "cloudflare_zone_cache_variants": {
+                "current": "cloudflare:index/zoneCacheVariants:ZoneCacheVariants"
+            },
+            "cloudflare_zone_dnssec": {
+                "current": "cloudflare:index/zoneDnssec:ZoneDnssec"
+            },
+            "cloudflare_zone_lockdown": {
+                "current": "cloudflare:index/zoneLockdown:ZoneLockdown"
+            },
+            "cloudflare_zone_settings_override": {
+                "current": "cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride"
+            }
+        },
+        "datasources": {
+            "cloudflare_access_identity_provider": {
+                "current": "cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider"
+            },
+            "cloudflare_account_roles": {
+                "current": "cloudflare:index/getAccountRoles:getAccountRoles"
+            },
+            "cloudflare_accounts": {
+                "current": "cloudflare:index/getAccounts:getAccounts"
+            },
+            "cloudflare_api_token_permission_groups": {
+                "current": "cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups"
+            },
+            "cloudflare_devices": {
+                "current": "cloudflare:index/getDevices:getDevices"
+            },
+            "cloudflare_ip_ranges": {
+                "current": "cloudflare:index/getIpRanges:getIpRanges"
+            },
+            "cloudflare_list": {
+                "current": "cloudflare:index/getList:getList"
+            },
+            "cloudflare_lists": {
+                "current": "cloudflare:index/getLists:getLists"
+            },
+            "cloudflare_load_balancer_pools": {
+                "current": "cloudflare:index/getLoadBalancerPools:getLoadBalancerPools"
+            },
+            "cloudflare_origin_ca_root_certificate": {
+                "current": "cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate"
+            },
+            "cloudflare_record": {
+                "current": "cloudflare:index/getRecord:getRecord"
+            },
+            "cloudflare_rulesets": {
+                "current": "cloudflare:index/getRulesets:getRulesets"
+            },
+            "cloudflare_zone": {
+                "current": "cloudflare:index/getZone:getZone"
+            },
+            "cloudflare_zone_dnssec": {
+                "current": "cloudflare:index/getZoneDnssec:getZoneDnssec"
+            },
+            "cloudflare_zones": {
+                "current": "cloudflare:index/getZones:getZones"
+            }
+        }
+    },
+    "renames": {
+        "resources": {
+            "cloudflare:index/accessApplication:AccessApplication": "cloudflare_access_application",
+            "cloudflare:index/accessCaCertificate:AccessCaCertificate": "cloudflare_access_ca_certificate",
+            "cloudflare:index/accessGroup:AccessGroup": "cloudflare_access_group",
+            "cloudflare:index/accessIdentityProvider:AccessIdentityProvider": "cloudflare_access_identity_provider",
+            "cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration": "cloudflare_access_keys_configuration",
+            "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate": "cloudflare_access_mutual_tls_certificate",
+            "cloudflare:index/accessOrganization:AccessOrganization": "cloudflare_access_organization",
+            "cloudflare:index/accessPolicy:AccessPolicy": "cloudflare_access_policy",
+            "cloudflare:index/accessRule:AccessRule": "cloudflare_access_rule",
+            "cloudflare:index/accessServiceToken:AccessServiceToken": "cloudflare_access_service_token",
+            "cloudflare:index/account:Account": "cloudflare_account",
+            "cloudflare:index/accountMember:AccountMember": "cloudflare_account_member",
+            "cloudflare:index/addressMap:AddressMap": "cloudflare_address_map",
+            "cloudflare:index/apiShield:ApiShield": "cloudflare_api_shield",
+            "cloudflare:index/apiToken:ApiToken": "cloudflare_api_token",
+            "cloudflare:index/argo:Argo": "cloudflare_argo",
+            "cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls": "cloudflare_authenticated_origin_pulls",
+            "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate": "cloudflare_authenticated_origin_pulls_certificate",
+            "cloudflare:index/byoIpPrefix:ByoIpPrefix": "cloudflare_byo_ip_prefix",
+            "cloudflare:index/certificatePack:CertificatePack": "cloudflare_certificate_pack",
+            "cloudflare:index/customHostname:CustomHostname": "cloudflare_custom_hostname",
+            "cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin": "cloudflare_custom_hostname_fallback_origin",
+            "cloudflare:index/customPages:CustomPages": "cloudflare_custom_pages",
+            "cloudflare:index/customSsl:CustomSsl": "cloudflare_custom_ssl",
+            "cloudflare:index/deviceDexTest:DeviceDexTest": "cloudflare_device_dex_test",
+            "cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks": "cloudflare_device_managed_networks",
+            "cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates": "cloudflare_device_policy_certificates",
+            "cloudflare:index/devicePostureIntegration:DevicePostureIntegration": "cloudflare_device_posture_integration",
+            "cloudflare:index/devicePostureRule:DevicePostureRule": "cloudflare_device_posture_rule",
+            "cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy": "cloudflare_device_settings_policy",
+            "cloudflare:index/dlpProfile:DlpProfile": "cloudflare_dlp_profile",
+            "cloudflare:index/emailRoutingAddress:EmailRoutingAddress": "cloudflare_email_routing_address",
+            "cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll": "cloudflare_email_routing_catch_all",
+            "cloudflare:index/emailRoutingRule:EmailRoutingRule": "cloudflare_email_routing_rule",
+            "cloudflare:index/emailRoutingSettings:EmailRoutingSettings": "cloudflare_email_routing_settings",
+            "cloudflare:index/fallbackDomain:FallbackDomain": "cloudflare_fallback_domain",
+            "cloudflare:index/filter:Filter": "cloudflare_filter",
+            "cloudflare:index/firewallRule:FirewallRule": "cloudflare_firewall_rule",
+            "cloudflare:index/greTunnel:GreTunnel": "cloudflare_gre_tunnel",
+            "cloudflare:index/healthcheck:Healthcheck": "cloudflare_healthcheck",
+            "cloudflare:index/ipsecTunnel:IpsecTunnel": "cloudflare_ipsec_tunnel",
+            "cloudflare:index/list:List": "cloudflare_list",
+            "cloudflare:index/listItem:ListItem": "cloudflare_list_item",
+            "cloudflare:index/loadBalancer:LoadBalancer": "cloudflare_load_balancer",
+            "cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor": "cloudflare_load_balancer_monitor",
+            "cloudflare:index/loadBalancerPool:LoadBalancerPool": "cloudflare_load_balancer_pool",
+            "cloudflare:index/logpullRetention:LogpullRetention": "cloudflare_logpull_retention",
+            "cloudflare:index/logpushJob:LogpushJob": "cloudflare_logpush_job",
+            "cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge": "cloudflare_logpush_ownership_challenge",
+            "cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset": "cloudflare_magic_firewall_ruleset",
+            "cloudflare:index/managedHeaders:ManagedHeaders": "cloudflare_managed_headers",
+            "cloudflare:index/mtlsCertificate:MtlsCertificate": "cloudflare_mtls_certificate",
+            "cloudflare:index/notificationPolicy:NotificationPolicy": "cloudflare_notification_policy",
+            "cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks": "cloudflare_notification_policy_webhooks",
+            "cloudflare:index/originCaCertificate:OriginCaCertificate": "cloudflare_origin_ca_certificate",
+            "cloudflare:index/pageRule:PageRule": "cloudflare_page_rule",
+            "cloudflare:index/pagesDomain:PagesDomain": "cloudflare_pages_domain",
+            "cloudflare:index/pagesProject:PagesProject": "cloudflare_pages_project",
+            "cloudflare:index/queue:Queue": "cloudflare_queue",
+            "cloudflare:index/rateLimit:RateLimit": "cloudflare_rate_limit",
+            "cloudflare:index/record:Record": "cloudflare_record",
+            "cloudflare:index/spectrumApplication:SpectrumApplication": "cloudflare_spectrum_application",
+            "cloudflare:index/splitTunnel:SplitTunnel": "cloudflare_split_tunnel",
+            "cloudflare:index/staticRoute:StaticRoute": "cloudflare_static_route",
+            "cloudflare:index/teamsAccount:TeamsAccount": "cloudflare_teams_account",
+            "cloudflare:index/teamsList:TeamsList": "cloudflare_teams_list",
+            "cloudflare:index/teamsLocation:TeamsLocation": "cloudflare_teams_location",
+            "cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint": "cloudflare_teams_proxy_endpoint",
+            "cloudflare:index/teamsRule:TeamsRule": "cloudflare_teams_rule",
+            "cloudflare:index/tieredCache:TieredCache": "cloudflare_tiered_cache",
+            "cloudflare:index/totalTls:TotalTls": "cloudflare_total_tls",
+            "cloudflare:index/tunnel:Tunnel": "cloudflare_tunnel",
+            "cloudflare:index/tunnelConfig:TunnelConfig": "cloudflare_tunnel_config",
+            "cloudflare:index/tunnelRoute:TunnelRoute": "cloudflare_tunnel_route",
+            "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork": "cloudflare_tunnel_virtual_network",
+            "cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings": "cloudflare_url_normalization_settings",
+            "cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule": "cloudflare_user_agent_blocking_rule",
+            "cloudflare:index/waitingRoom:WaitingRoom": "cloudflare_waiting_room",
+            "cloudflare:index/waitingRoomEvent:WaitingRoomEvent": "cloudflare_waiting_room_event",
+            "cloudflare:index/waitingRoomRules:WaitingRoomRules": "cloudflare_waiting_room_rules",
+            "cloudflare:index/web3Hostname:Web3Hostname": "cloudflare_web3_hostname",
+            "cloudflare:index/workerCronTrigger:WorkerCronTrigger": "cloudflare_worker_cron_trigger",
+            "cloudflare:index/workerDomain:WorkerDomain": "cloudflare_worker_domain",
+            "cloudflare:index/workerRoute:WorkerRoute": "cloudflare_worker_route",
+            "cloudflare:index/workerScript:WorkerScript": "cloudflare_worker_script",
+            "cloudflare:index/workersKv:WorkersKv": "cloudflare_workers_kv",
+            "cloudflare:index/workersKvNamespace:WorkersKvNamespace": "cloudflare_workers_kv_namespace",
+            "cloudflare:index/zone:Zone": "cloudflare_zone",
+            "cloudflare:index/zoneCacheVariants:ZoneCacheVariants": "cloudflare_zone_cache_variants",
+            "cloudflare:index/zoneDnssec:ZoneDnssec": "cloudflare_zone_dnssec",
+            "cloudflare:index/zoneLockdown:ZoneLockdown": "cloudflare_zone_lockdown",
+            "cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride": "cloudflare_zone_settings_override"
+        },
+        "functions": {
+            "cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider": "cloudflare_access_identity_provider",
+            "cloudflare:index/getAccountRoles:getAccountRoles": "cloudflare_account_roles",
+            "cloudflare:index/getAccounts:getAccounts": "cloudflare_accounts",
+            "cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups": "cloudflare_api_token_permission_groups",
+            "cloudflare:index/getDevices:getDevices": "cloudflare_devices",
+            "cloudflare:index/getIpRanges:getIpRanges": "cloudflare_ip_ranges",
+            "cloudflare:index/getList:getList": "cloudflare_list",
+            "cloudflare:index/getLists:getLists": "cloudflare_lists",
+            "cloudflare:index/getLoadBalancerPools:getLoadBalancerPools": "cloudflare_load_balancer_pools",
+            "cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate": "cloudflare_origin_ca_root_certificate",
+            "cloudflare:index/getRecord:getRecord": "cloudflare_record",
+            "cloudflare:index/getRulesets:getRulesets": "cloudflare_rulesets",
+            "cloudflare:index/getZone:getZone": "cloudflare_zone",
+            "cloudflare:index/getZoneDnssec:getZoneDnssec": "cloudflare_zone_dnssec",
+            "cloudflare:index/getZones:getZones": "cloudflare_zones"
+        },
+        "renamedProperties": {
+            "cloudflare:index/AccessApplicationCorsHeader:AccessApplicationCorsHeader": {
+                "allowAllHeaders": "allow_all_headers",
+                "allowAllMethods": "allow_all_methods",
+                "allowAllOrigins": "allow_all_origins",
+                "allowCredentials": "allow_credentials",
+                "allowedHeaders": "allowed_headers",
+                "allowedMethods": "allowed_methods",
+                "allowedOrigins": "allowed_origins",
+                "maxAge": "max_age"
+            },
+            "cloudflare:index/AccessApplicationSaasApp:AccessApplicationSaasApp": {
+                "consumerServiceUrl": "consumer_service_url",
+                "nameIdFormat": "name_id_format",
+                "spEntityId": "sp_entity_id"
+            },
+            "cloudflare:index/AccessGroupExclude:AccessGroupExclude": {
+                "anyValidServiceToken": "any_valid_service_token",
+                "authMethod": "auth_method",
+                "azures": "azure",
+                "commonName": "common_name",
+                "devicePostures": "device_posture",
+                "emailDomains": "email_domain",
+                "emails": "email",
+                "externalEvaluation": "external_evaluation",
+                "geos": "geo",
+                "githubs": "github",
+                "groups": "group",
+                "gsuites": "gsuite",
+                "ipLists": "ip_list",
+                "ips": "ip",
+                "loginMethods": "login_method",
+                "oktas": "okta",
+                "samls": "saml",
+                "serviceTokens": "service_token"
+            },
+            "cloudflare:index/AccessGroupExcludeAzure:AccessGroupExcludeAzure": {
+                "identityProviderId": "identity_provider_id",
+                "ids": "id"
+            },
+            "cloudflare:index/AccessGroupExcludeExternalEvaluation:AccessGroupExcludeExternalEvaluation": {
+                "evaluateUrl": "evaluate_url",
+                "keysUrl": "keys_url"
+            },
+            "cloudflare:index/AccessGroupExcludeGithub:AccessGroupExcludeGithub": {
+                "identityProviderId": "identity_provider_id"
+            },
+            "cloudflare:index/AccessGroupExcludeGsuite:AccessGroupExcludeGsuite": {
+                "emails": "email",
+                "identityProviderId": "identity_provider_id"
+            },
+            "cloudflare:index/AccessGroupExcludeOkta:AccessGroupExcludeOkta": {
+                "identityProviderId": "identity_provider_id",
+                "names": "name"
+            },
+            "cloudflare:index/AccessGroupExcludeSaml:AccessGroupExcludeSaml": {
+                "attributeName": "attribute_name",
+                "attributeValue": "attribute_value",
+                "identityProviderId": "identity_provider_id"
+            },
+            "cloudflare:index/AccessGroupInclude:AccessGroupInclude": {
+                "anyValidServiceToken": "any_valid_service_token",
+                "authMethod": "auth_method",
+                "azures": "azure",
+                "commonName": "common_name",
+                "devicePostures": "device_posture",
+                "emailDomains": "email_domain",
+                "emails": "email",
+                "externalEvaluation": "external_evaluation",
+                "geos": "geo",
+                "githubs": "github",
+                "groups": "group",
+                "gsuites": "gsuite",
+                "ipLists": "ip_list",
+                "ips": "ip",
+                "loginMethods": "login_method",
+                "oktas": "okta",
+                "samls": "saml",
+                "serviceTokens": "service_token"
+            },
+            "cloudflare:index/AccessGroupIncludeAzure:AccessGroupIncludeAzure": {
+                "identityProviderId": "identity_provider_id",
+                "ids": "id"
+            },
+            "cloudflare:index/AccessGroupIncludeExternalEvaluation:AccessGroupIncludeExternalEvaluation": {
+                "evaluateUrl": "evaluate_url",
+                "keysUrl": "keys_url"
+            },
+            "cloudflare:index/AccessGroupIncludeGithub:AccessGroupIncludeGithub": {
+                "identityProviderId": "identity_provider_id"
+            },
+            "cloudflare:index/AccessGroupIncludeGsuite:AccessGroupIncludeGsuite": {
+                "emails": "email",
+                "identityProviderId": "identity_provider_id"
+            },
+            "cloudflare:index/AccessGroupIncludeOkta:AccessGroupIncludeOkta": {
+                "identityProviderId": "identity_provider_id",
+                "names": "name"
+            },
+            "cloudflare:index/AccessGroupIncludeSaml:AccessGroupIncludeSaml": {
+                "attributeName": "attribute_name",
+                "attributeValue": "attribute_value",
+                "identityProviderId": "identity_provider_id"
+            },
+            "cloudflare:index/AccessGroupRequire:AccessGroupRequire": {
+                "anyValidServiceToken": "any_valid_service_token",
+                "authMethod": "auth_method",
+                "azures": "azure",
+                "commonName": "common_name",
+                "devicePostures": "device_posture",
+                "emailDomains": "email_domain",
+                "emails": "email",
+                "externalEvaluation": "external_evaluation",
+                "geos": "geo",
+                "githubs": "github",
+                "groups": "group",
+                "gsuites": "gsuite",
+                "ipLists": "ip_list",
+                "ips": "ip",
+                "loginMethods": "login_method",
+                "oktas": "okta",
+                "samls": "saml",
+                "serviceTokens": "service_token"
+            },
+            "cloudflare:index/AccessGroupRequireAzure:AccessGroupRequireAzure": {
+                "identityProviderId": "identity_provider_id",
+                "ids": "id"
+            },
+            "cloudflare:index/AccessGroupRequireExternalEvaluation:AccessGroupRequireExternalEvaluation": {
+                "evaluateUrl": "evaluate_url",
+                "keysUrl": "keys_url"
+            },
+            "cloudflare:index/AccessGroupRequireGithub:AccessGroupRequireGithub": {
+                "identityProviderId": "identity_provider_id"
+            },
+            "cloudflare:index/AccessGroupRequireGsuite:AccessGroupRequireGsuite": {
+                "emails": "email",
+                "identityProviderId": "identity_provider_id"
+            },
+            "cloudflare:index/AccessGroupRequireOkta:AccessGroupRequireOkta": {
+                "identityProviderId": "identity_provider_id",
+                "names": "name"
+            },
+            "cloudflare:index/AccessGroupRequireSaml:AccessGroupRequireSaml": {
+                "attributeName": "attribute_name",
+                "attributeValue": "attribute_value",
+                "identityProviderId": "identity_provider_id"
+            },
+            "cloudflare:index/AccessIdentityProviderConfig:AccessIdentityProviderConfig": {
+                "apiToken": "api_token",
+                "appsDomain": "apps_domain",
+                "authUrl": "auth_url",
+                "centrifyAccount": "centrify_account",
+                "centrifyAppId": "centrify_app_id",
+                "certsUrl": "certs_url",
+                "clientId": "client_id",
+                "clientSecret": "client_secret",
+                "directoryId": "directory_id",
+                "emailAttributeName": "email_attribute_name",
+                "idpPublicCert": "idp_public_cert",
+                "issuerUrl": "issuer_url",
+                "oktaAccount": "okta_account",
+                "oneloginAccount": "onelogin_account",
+                "pkceEnabled": "pkce_enabled",
+                "redirectUrl": "redirect_url",
+                "signRequest": "sign_request",
+                "ssoTargetUrl": "sso_target_url",
+                "supportGroups": "support_groups",
+                "tokenUrl": "token_url"
+            },
+            "cloudflare:index/AccessIdentityProviderScimConfig:AccessIdentityProviderScimConfig": {
+                "groupMemberDeprovision": "group_member_deprovision",
+                "seatDeprovision": "seat_deprovision",
+                "userDeprovision": "user_deprovision"
+            },
+            "cloudflare:index/AccessOrganizationLoginDesign:AccessOrganizationLoginDesign": {
+                "backgroundColor": "background_color",
+                "footerText": "footer_text",
+                "headerText": "header_text",
+                "logoPath": "logo_path",
+                "textColor": "text_color"
+            },
+            "cloudflare:index/AccessPolicyApprovalGroup:AccessPolicyApprovalGroup": {
+                "approvalsNeeded": "approvals_needed",
+                "emailAddresses": "email_addresses",
+                "emailListUuid": "email_list_uuid"
+            },
+            "cloudflare:index/AccessPolicyExclude:AccessPolicyExclude": {
+                "anyValidServiceToken": "any_valid_service_token",
+                "authMethod": "auth_method",
+                "azures": "azure",
+                "commonName": "common_name",
+                "devicePostures": "device_posture",
+                "emailDomains": "email_domain",
+                "emails": "email",
+                "externalEvaluation": "external_evaluation",
+                "geos": "geo",
+                "githubs": "github",
+                "groups": "group",
+                "gsuites": "gsuite",
+                "ipLists": "ip_list",
+                "ips": "ip",
+                "loginMethods": "login_method",
+                "oktas": "okta",
+                "samls": "saml",
+                "serviceTokens": "service_token"
+            },
+            "cloudflare:index/AccessPolicyExcludeAzure:AccessPolicyExcludeAzure": {
+                "identityProviderId": "identity_provider_id",
+                "ids": "id"
+            },
+            "cloudflare:index/AccessPolicyExcludeExternalEvaluation:AccessPolicyExcludeExternalEvaluation": {
+                "evaluateUrl": "evaluate_url",
+                "keysUrl": "keys_url"
+            },
+            "cloudflare:index/AccessPolicyExcludeGithub:AccessPolicyExcludeGithub": {
+                "identityProviderId": "identity_provider_id"
+            },
+            "cloudflare:index/AccessPolicyExcludeGsuite:AccessPolicyExcludeGsuite": {
+                "emails": "email",
+                "identityProviderId": "identity_provider_id"
+            },
+            "cloudflare:index/AccessPolicyExcludeOkta:AccessPolicyExcludeOkta": {
+                "identityProviderId": "identity_provider_id",
+                "names": "name"
+            },
+            "cloudflare:index/AccessPolicyExcludeSaml:AccessPolicyExcludeSaml": {
+                "attributeName": "attribute_name",
+                "attributeValue": "attribute_value",
+                "identityProviderId": "identity_provider_id"
+            },
+            "cloudflare:index/AccessPolicyInclude:AccessPolicyInclude": {
+                "anyValidServiceToken": "any_valid_service_token",
+                "authMethod": "auth_method",
+                "azures": "azure",
+                "commonName": "common_name",
+                "devicePostures": "device_posture",
+                "emailDomains": "email_domain",
+                "emails": "email",
+                "externalEvaluation": "external_evaluation",
+                "geos": "geo",
+                "githubs": "github",
+                "groups": "group",
+                "gsuites": "gsuite",
+                "ipLists": "ip_list",
+                "ips": "ip",
+                "loginMethods": "login_method",
+                "oktas": "okta",
+                "samls": "saml",
+                "serviceTokens": "service_token"
+            },
+            "cloudflare:index/AccessPolicyIncludeAzure:AccessPolicyIncludeAzure": {
+                "identityProviderId": "identity_provider_id",
+                "ids": "id"
+            },
+            "cloudflare:index/AccessPolicyIncludeExternalEvaluation:AccessPolicyIncludeExternalEvaluation": {
+                "evaluateUrl": "evaluate_url",
+                "keysUrl": "keys_url"
+            },
+            "cloudflare:index/AccessPolicyIncludeGithub:AccessPolicyIncludeGithub": {
+                "identityProviderId": "identity_provider_id"
+            },
+            "cloudflare:index/AccessPolicyIncludeGsuite:AccessPolicyIncludeGsuite": {
+                "emails": "email",
+                "identityProviderId": "identity_provider_id"
+            },
+            "cloudflare:index/AccessPolicyIncludeOkta:AccessPolicyIncludeOkta": {
+                "identityProviderId": "identity_provider_id",
+                "names": "name"
+            },
+            "cloudflare:index/AccessPolicyIncludeSaml:AccessPolicyIncludeSaml": {
+                "attributeName": "attribute_name",
+                "attributeValue": "attribute_value",
+                "identityProviderId": "identity_provider_id"
+            },
+            "cloudflare:index/AccessPolicyRequire:AccessPolicyRequire": {
+                "anyValidServiceToken": "any_valid_service_token",
+                "authMethod": "auth_method",
+                "azures": "azure",
+                "commonName": "common_name",
+                "devicePostures": "device_posture",
+                "emailDomains": "email_domain",
+                "emails": "email",
+                "externalEvaluation": "external_evaluation",
+                "geos": "geo",
+                "githubs": "github",
+                "groups": "group",
+                "gsuites": "gsuite",
+                "ipLists": "ip_list",
+                "ips": "ip",
+                "loginMethods": "login_method",
+                "oktas": "okta",
+                "samls": "saml",
+                "serviceTokens": "service_token"
+            },
+            "cloudflare:index/AccessPolicyRequireAzure:AccessPolicyRequireAzure": {
+                "identityProviderId": "identity_provider_id",
+                "ids": "id"
+            },
+            "cloudflare:index/AccessPolicyRequireExternalEvaluation:AccessPolicyRequireExternalEvaluation": {
+                "evaluateUrl": "evaluate_url",
+                "keysUrl": "keys_url"
+            },
+            "cloudflare:index/AccessPolicyRequireGithub:AccessPolicyRequireGithub": {
+                "identityProviderId": "identity_provider_id"
+            },
+            "cloudflare:index/AccessPolicyRequireGsuite:AccessPolicyRequireGsuite": {
+                "emails": "email",
+                "identityProviderId": "identity_provider_id"
+            },
+            "cloudflare:index/AccessPolicyRequireOkta:AccessPolicyRequireOkta": {
+                "identityProviderId": "identity_provider_id",
+                "names": "name"
+            },
+            "cloudflare:index/AccessPolicyRequireSaml:AccessPolicyRequireSaml": {
+                "attributeName": "attribute_name",
+                "attributeValue": "attribute_value",
+                "identityProviderId": "identity_provider_id"
+            },
+            "cloudflare:index/AddressMapMembership:AddressMapMembership": {
+                "canDelete": "can_delete"
+            },
+            "cloudflare:index/ApiTokenCondition:ApiTokenCondition": {
+                "requestIp": "request_ip"
+            },
+            "cloudflare:index/ApiTokenConditionRequestIp:ApiTokenConditionRequestIp": {
+                "ins": "in",
+                "notIns": "not_in"
+            },
+            "cloudflare:index/ApiTokenPolicy:ApiTokenPolicy": {
+                "permissionGroups": "permission_groups"
+            },
+            "cloudflare:index/CertificatePackValidationRecord:CertificatePackValidationRecord": {
+                "cnameName": "cname_name",
+                "cnameTarget": "cname_target",
+                "httpBody": "http_body",
+                "httpUrl": "http_url",
+                "txtName": "txt_name",
+                "txtValue": "txt_value"
+            },
+            "cloudflare:index/CustomHostnameSsl:CustomHostnameSsl": {
+                "certificateAuthority": "certificate_authority",
+                "customCertificate": "custom_certificate",
+                "customKey": "custom_key",
+                "validationErrors": "validation_errors",
+                "validationRecords": "validation_records"
+            },
+            "cloudflare:index/CustomHostnameSslSetting:CustomHostnameSslSetting": {
+                "earlyHints": "early_hints",
+                "minTlsVersion": "min_tls_version"
+            },
+            "cloudflare:index/CustomHostnameSslValidationRecord:CustomHostnameSslValidationRecord": {
+                "cnameName": "cname_name",
+                "cnameTarget": "cname_target",
+                "httpBody": "http_body",
+                "httpUrl": "http_url",
+                "txtName": "txt_name",
+                "txtValue": "txt_value"
+            },
+            "cloudflare:index/CustomSslCustomSslOptions:CustomSslCustomSslOptions": {
+                "bundleMethod": "bundle_method",
+                "geoRestrictions": "geo_restrictions",
+                "privateKey": "private_key"
+            },
+            "cloudflare:index/DeviceManagedNetworksConfig:DeviceManagedNetworksConfig": {
+                "tlsSockaddr": "tls_sockaddr"
+            },
+            "cloudflare:index/DevicePostureIntegrationConfig:DevicePostureIntegrationConfig": {
+                "apiUrl": "api_url",
+                "authUrl": "auth_url",
+                "clientId": "client_id",
+                "clientKey": "client_key",
+                "clientSecret": "client_secret",
+                "customerId": "customer_id"
+            },
+            "cloudflare:index/DevicePostureRuleInput:DevicePostureRuleInput": {
+                "checkDisks": "check_disks",
+                "complianceStatus": "compliance_status",
+                "connectionId": "connection_id",
+                "osDistroName": "os_distro_name",
+                "osDistroRevision": "os_distro_revision",
+                "requireAll": "require_all",
+                "sensorConfig": "sensor_config",
+                "versionOperator": "version_operator"
+            },
+            "cloudflare:index/EmailRoutingCatchAllAction:EmailRoutingCatchAllAction": {
+                "values": "value"
+            },
+            "cloudflare:index/EmailRoutingRuleAction:EmailRoutingRuleAction": {
+                "values": "value"
+            },
+            "cloudflare:index/FallbackDomainDomain:FallbackDomainDomain": {
+                "dnsServers": "dns_server"
+            },
+            "cloudflare:index/ListItemRedirect:ListItemRedirect": {
+                "includeSubdomains": "include_subdomains",
+                "preservePathSuffix": "preserve_path_suffix",
+                "preserveQueryString": "preserve_query_string",
+                "sourceUrl": "source_url",
+                "statusCode": "status_code",
+                "subpathMatching": "subpath_matching",
+                "targetUrl": "target_url"
+            },
+            "cloudflare:index/ListItemValue:ListItemValue": {
+                "redirects": "redirect"
+            },
+            "cloudflare:index/ListItemValueRedirect:ListItemValueRedirect": {
+                "includeSubdomains": "include_subdomains",
+                "preservePathSuffix": "preserve_path_suffix",
+                "preserveQueryString": "preserve_query_string",
+                "sourceUrl": "source_url",
+                "statusCode": "status_code",
+                "subpathMatching": "subpath_matching",
+                "targetUrl": "target_url"
+            },
+            "cloudflare:index/LoadBalancerAdaptiveRouting:LoadBalancerAdaptiveRouting": {
+                "failoverAcrossPools": "failover_across_pools"
+            },
+            "cloudflare:index/LoadBalancerCountryPool:LoadBalancerCountryPool": {
+                "poolIds": "pool_ids"
+            },
+            "cloudflare:index/LoadBalancerLocationStrategy:LoadBalancerLocationStrategy": {
+                "preferEcs": "prefer_ecs"
+            },
+            "cloudflare:index/LoadBalancerPoolLoadShedding:LoadBalancerPoolLoadShedding": {
+                "defaultPercent": "default_percent",
+                "defaultPolicy": "default_policy",
+                "sessionPercent": "session_percent",
+                "sessionPolicy": "session_policy"
+            },
+            "cloudflare:index/LoadBalancerPoolOrigin:LoadBalancerPoolOrigin": {
+                "headers": "header"
+            },
+            "cloudflare:index/LoadBalancerPopPool:LoadBalancerPopPool": {
+                "poolIds": "pool_ids"
+            },
+            "cloudflare:index/LoadBalancerRandomSteering:LoadBalancerRandomSteering": {
+                "defaultWeight": "default_weight",
+                "poolWeights": "pool_weights"
+            },
+            "cloudflare:index/LoadBalancerRegionPool:LoadBalancerRegionPool": {
+                "poolIds": "pool_ids"
+            },
+            "cloudflare:index/LoadBalancerRule:LoadBalancerRule": {
+                "fixedResponse": "fixed_response"
+            },
+            "cloudflare:index/LoadBalancerRuleFixedResponse:LoadBalancerRuleFixedResponse": {
+                "contentType": "content_type",
+                "messageBody": "message_body",
+                "statusCode": "status_code"
+            },
+            "cloudflare:index/LoadBalancerRuleOverride:LoadBalancerRuleOverride": {
+                "adaptiveRoutings": "adaptive_routing",
+                "countryPools": "country_pools",
+                "defaultPools": "default_pools",
+                "fallbackPool": "fallback_pool",
+                "locationStrategies": "location_strategy",
+                "popPools": "pop_pools",
+                "randomSteerings": "random_steering",
+                "regionPools": "region_pools",
+                "sessionAffinity": "session_affinity",
+                "sessionAffinityAttributes": "session_affinity_attributes",
+                "sessionAffinityTtl": "session_affinity_ttl",
+                "steeringPolicy": "steering_policy"
+            },
+            "cloudflare:index/LoadBalancerRuleOverrideAdaptiveRouting:LoadBalancerRuleOverrideAdaptiveRouting": {
+                "failoverAcrossPools": "failover_across_pools"
+            },
+            "cloudflare:index/LoadBalancerRuleOverrideCountryPool:LoadBalancerRuleOverrideCountryPool": {
+                "poolIds": "pool_ids"
+            },
+            "cloudflare:index/LoadBalancerRuleOverrideLocationStrategy:LoadBalancerRuleOverrideLocationStrategy": {
+                "preferEcs": "prefer_ecs"
+            },
+            "cloudflare:index/LoadBalancerRuleOverridePopPool:LoadBalancerRuleOverridePopPool": {
+                "poolIds": "pool_ids"
+            },
+            "cloudflare:index/LoadBalancerRuleOverrideRandomSteering:LoadBalancerRuleOverrideRandomSteering": {
+                "defaultWeight": "default_weight",
+                "poolWeights": "pool_weights"
+            },
+            "cloudflare:index/LoadBalancerRuleOverrideRegionPool:LoadBalancerRuleOverrideRegionPool": {
+                "poolIds": "pool_ids"
+            },
+            "cloudflare:index/LoadBalancerRuleOverrideSessionAffinityAttribute:LoadBalancerRuleOverrideSessionAffinityAttribute": {
+                "zeroDowntimeFailover": "zero_downtime_failover"
+            },
+            "cloudflare:index/LoadBalancerSessionAffinityAttribute:LoadBalancerSessionAffinityAttribute": {
+                "drainDuration": "drain_duration",
+                "zeroDowntimeFailover": "zero_downtime_failover"
+            },
+            "cloudflare:index/NotificationPolicyFilters:NotificationPolicyFilters": {
+                "enableds": "enabled",
+                "eventSources": "event_source",
+                "eventTypes": "event_type",
+                "healthCheckIds": "health_check_id",
+                "inputIds": "input_id",
+                "limits": "limit",
+                "newHealths": "new_health",
+                "packetsPerSeconds": "packets_per_second",
+                "poolIds": "pool_id",
+                "products": "product",
+                "protocols": "protocol",
+                "requestsPerSeconds": "requests_per_second",
+                "slos": "slo",
+                "statuses": "status",
+                "targetHosts": "target_host",
+                "targetZoneNames": "target_zone_name"
+            },
+            "cloudflare:index/PageRuleActions:PageRuleActions": {
+                "alwaysUseHttps": "always_use_https",
+                "automaticHttpsRewrites": "automatic_https_rewrites",
+                "browserCacheTtl": "browser_cache_ttl",
+                "browserCheck": "browser_check",
+                "bypassCacheOnCookie": "bypass_cache_on_cookie",
+                "cacheByDeviceType": "cache_by_device_type",
+                "cacheDeceptionArmor": "cache_deception_armor",
+                "cacheKeyFields": "cache_key_fields",
+                "cacheLevel": "cache_level",
+                "cacheOnCookie": "cache_on_cookie",
+                "cacheTtlByStatuses": "cache_ttl_by_status",
+                "disableApps": "disable_apps",
+                "disablePerformance": "disable_performance",
+                "disableRailgun": "disable_railgun",
+                "disableSecurity": "disable_security",
+                "disableZaraz": "disable_zaraz",
+                "edgeCacheTtl": "edge_cache_ttl",
+                "emailObfuscation": "email_obfuscation",
+                "explicitCacheControl": "explicit_cache_control",
+                "forwardingUrl": "forwarding_url",
+                "hostHeaderOverride": "host_header_override",
+                "ipGeolocation": "ip_geolocation",
+                "minifies": "minify",
+                "opportunisticEncryption": "opportunistic_encryption",
+                "originErrorPagePassThru": "origin_error_page_pass_thru",
+                "resolveOverride": "resolve_override",
+                "respectStrongEtag": "respect_strong_etag",
+                "responseBuffering": "response_buffering",
+                "rocketLoader": "rocket_loader",
+                "securityLevel": "security_level",
+                "serverSideExclude": "server_side_exclude",
+                "sortQueryStringForCache": "sort_query_string_for_cache",
+                "trueClientIpHeader": "true_client_ip_header"
+            },
+            "cloudflare:index/PageRuleActionsCacheKeyFields:PageRuleActionsCacheKeyFields": {
+                "queryString": "query_string"
+            },
+            "cloudflare:index/PageRuleActionsCacheKeyFieldsCookie:PageRuleActionsCacheKeyFieldsCookie": {
+                "checkPresences": "check_presence",
+                "includes": "include"
+            },
+            "cloudflare:index/PageRuleActionsCacheKeyFieldsHeader:PageRuleActionsCacheKeyFieldsHeader": {
+                "checkPresences": "check_presence",
+                "excludes": "exclude",
+                "includes": "include"
+            },
+            "cloudflare:index/PageRuleActionsCacheKeyFieldsQueryString:PageRuleActionsCacheKeyFieldsQueryString": {
+                "excludes": "exclude",
+                "includes": "include"
+            },
+            "cloudflare:index/PageRuleActionsCacheKeyFieldsUser:PageRuleActionsCacheKeyFieldsUser": {
+                "deviceType": "device_type"
+            },
+            "cloudflare:index/PageRuleActionsForwardingUrl:PageRuleActionsForwardingUrl": {
+                "statusCode": "status_code"
+            },
+            "cloudflare:index/PagesProjectBuildConfig:PagesProjectBuildConfig": {
+                "buildCommand": "build_command",
+                "destinationDir": "destination_dir",
+                "rootDir": "root_dir",
+                "webAnalyticsTag": "web_analytics_tag",
+                "webAnalyticsToken": "web_analytics_token"
+            },
+            "cloudflare:index/PagesProjectDeploymentConfigsPreview:PagesProjectDeploymentConfigsPreview": {
+                "alwaysUseLatestCompatibilityDate": "always_use_latest_compatibility_date",
+                "compatibilityDate": "compatibility_date",
+                "compatibilityFlags": "compatibility_flags",
+                "d1Databases": "d1_databases",
+                "durableObjectNamespaces": "durable_object_namespaces",
+                "environmentVariables": "environment_variables",
+                "failOpen": "fail_open",
+                "kvNamespaces": "kv_namespaces",
+                "r2Buckets": "r2_buckets",
+                "serviceBindings": "service_binding",
+                "usageModel": "usage_model"
+            },
+            "cloudflare:index/PagesProjectDeploymentConfigsProduction:PagesProjectDeploymentConfigsProduction": {
+                "alwaysUseLatestCompatibilityDate": "always_use_latest_compatibility_date",
+                "compatibilityDate": "compatibility_date",
+                "compatibilityFlags": "compatibility_flags",
+                "d1Databases": "d1_databases",
+                "durableObjectNamespaces": "durable_object_namespaces",
+                "environmentVariables": "environment_variables",
+                "failOpen": "fail_open",
+                "kvNamespaces": "kv_namespaces",
+                "r2Buckets": "r2_buckets",
+                "serviceBindings": "service_binding",
+                "usageModel": "usage_model"
+            },
+            "cloudflare:index/PagesProjectSourceConfig:PagesProjectSourceConfig": {
+                "deploymentsEnabled": "deployments_enabled",
+                "prCommentsEnabled": "pr_comments_enabled",
+                "previewBranchExcludes": "preview_branch_excludes",
+                "previewBranchIncludes": "preview_branch_includes",
+                "previewDeploymentSetting": "preview_deployment_setting",
+                "productionBranch": "production_branch",
+                "productionDeploymentEnabled": "production_deployment_enabled",
+                "repoName": "repo_name"
+            },
+            "cloudflare:index/RateLimitActionResponse:RateLimitActionResponse": {
+                "contentType": "content_type"
+            },
+            "cloudflare:index/RateLimitMatchRequest:RateLimitMatchRequest": {
+                "urlPattern": "url_pattern"
+            },
+            "cloudflare:index/RateLimitMatchResponse:RateLimitMatchResponse": {
+                "originTraffic": "origin_traffic"
+            },
+            "cloudflare:index/RecordData:RecordData": {
+                "digestType": "digest_type",
+                "keyTag": "key_tag",
+                "latDegrees": "lat_degrees",
+                "latDirection": "lat_direction",
+                "latMinutes": "lat_minutes",
+                "latSeconds": "lat_seconds",
+                "longDegrees": "long_degrees",
+                "longDirection": "long_direction",
+                "longMinutes": "long_minutes",
+                "longSeconds": "long_seconds",
+                "matchingType": "matching_type",
+                "precisionHorz": "precision_horz",
+                "precisionVert": "precision_vert",
+                "publicKey": "public_key"
+            },
+            "cloudflare:index/TeamsAccountAntivirus:TeamsAccountAntivirus": {
+                "enabledDownloadPhase": "enabled_download_phase",
+                "enabledUploadPhase": "enabled_upload_phase",
+                "failClosed": "fail_closed"
+            },
+            "cloudflare:index/TeamsAccountBlockPage:TeamsAccountBlockPage": {
+                "backgroundColor": "background_color",
+                "footerText": "footer_text",
+                "headerText": "header_text",
+                "logoPath": "logo_path",
+                "mailtoAddress": "mailto_address",
+                "mailtoSubject": "mailto_subject"
+            },
+            "cloudflare:index/TeamsAccountLogging:TeamsAccountLogging": {
+                "redactPii": "redact_pii",
+                "settingsByRuleType": "settings_by_rule_type"
+            },
+            "cloudflare:index/TeamsAccountLoggingSettingsByRuleTypeDns:TeamsAccountLoggingSettingsByRuleTypeDns": {
+                "logAll": "log_all",
+                "logBlocks": "log_blocks"
+            },
+            "cloudflare:index/TeamsAccountLoggingSettingsByRuleTypeHttp:TeamsAccountLoggingSettingsByRuleTypeHttp": {
+                "logAll": "log_all",
+                "logBlocks": "log_blocks"
+            },
+            "cloudflare:index/TeamsAccountLoggingSettingsByRuleTypeL4:TeamsAccountLoggingSettingsByRuleTypeL4": {
+                "logAll": "log_all",
+                "logBlocks": "log_blocks"
+            },
+            "cloudflare:index/TeamsAccountPayloadLog:TeamsAccountPayloadLog": {
+                "publicKey": "public_key"
+            },
+            "cloudflare:index/TeamsRuleRuleSettings:TeamsRuleRuleSettings": {
+                "addHeaders": "add_headers",
+                "allowChildBypass": "allow_child_bypass",
+                "auditSsh": "audit_ssh",
+                "bisoAdminControls": "biso_admin_controls",
+                "blockPageEnabled": "block_page_enabled",
+                "blockPageReason": "block_page_reason",
+                "bypassParentRule": "bypass_parent_rule",
+                "checkSession": "check_session",
+                "insecureDisableDnssecValidation": "insecure_disable_dnssec_validation",
+                "ipCategories": "ip_categories",
+                "overrideHost": "override_host",
+                "overrideIps": "override_ips",
+                "payloadLog": "payload_log",
+                "untrustedCert": "untrusted_cert"
+            },
+            "cloudflare:index/TeamsRuleRuleSettingsAuditSsh:TeamsRuleRuleSettingsAuditSsh": {
+                "commandLogging": "command_logging"
+            },
+            "cloudflare:index/TeamsRuleRuleSettingsBisoAdminControls:TeamsRuleRuleSettingsBisoAdminControls": {
+                "disableCopyPaste": "disable_copy_paste",
+                "disableDownload": "disable_download",
+                "disableKeyboard": "disable_keyboard",
+                "disablePrinting": "disable_printing",
+                "disableUpload": "disable_upload"
+            },
+            "cloudflare:index/TeamsRuleRuleSettingsEgress:TeamsRuleRuleSettingsEgress": {
+                "ipv4Fallback": "ipv4_fallback"
+            },
+            "cloudflare:index/TunnelConfigConfig:TunnelConfigConfig": {
+                "ingressRules": "ingress_rule",
+                "originRequest": "origin_request",
+                "warpRouting": "warp_routing"
+            },
+            "cloudflare:index/TunnelConfigConfigOriginRequest:TunnelConfigConfigOriginRequest": {
+                "bastionMode": "bastion_mode",
+                "caPool": "ca_pool",
+                "connectTimeout": "connect_timeout",
+                "disableChunkedEncoding": "disable_chunked_encoding",
+                "httpHostHeader": "http_host_header",
+                "ipRules": "ip_rules",
+                "keepAliveConnections": "keep_alive_connections",
+                "keepAliveTimeout": "keep_alive_timeout",
+                "noHappyEyeballs": "no_happy_eyeballs",
+                "noTlsVerify": "no_tls_verify",
+                "originServerName": "origin_server_name",
+                "proxyAddress": "proxy_address",
+                "proxyPort": "proxy_port",
+                "proxyType": "proxy_type",
+                "tcpKeepAlive": "tcp_keep_alive",
+                "tlsTimeout": "tls_timeout"
+            },
+            "cloudflare:index/WorkerScriptKvNamespaceBinding:WorkerScriptKvNamespaceBinding": {
+                "namespaceId": "namespace_id"
+            },
+            "cloudflare:index/WorkerScriptR2BucketBinding:WorkerScriptR2BucketBinding": {
+                "bucketName": "bucket_name"
+            },
+            "cloudflare:index/ZoneSettingsOverrideInitialSetting:ZoneSettingsOverrideInitialSetting": {
+                "alwaysOnline": "always_online",
+                "alwaysUseHttps": "always_use_https",
+                "automaticHttpsRewrites": "automatic_https_rewrites",
+                "binaryAst": "binary_ast",
+                "browserCacheTtl": "browser_cache_ttl",
+                "browserCheck": "browser_check",
+                "cacheLevel": "cache_level",
+                "challengeTtl": "challenge_ttl",
+                "cnameFlattening": "cname_flattening",
+                "developmentMode": "development_mode",
+                "earlyHints": "early_hints",
+                "emailObfuscation": "email_obfuscation",
+                "filterLogsToCloudflare": "filter_logs_to_cloudflare",
+                "h2Prioritization": "h2_prioritization",
+                "hotlinkProtection": "hotlink_protection",
+                "imageResizing": "image_resizing",
+                "ipGeolocation": "ip_geolocation",
+                "logToCloudflare": "log_to_cloudflare",
+                "maxUpload": "max_upload",
+                "minTlsVersion": "min_tls_version",
+                "mobileRedirect": "mobile_redirect",
+                "opportunisticEncryption": "opportunistic_encryption",
+                "opportunisticOnion": "opportunistic_onion",
+                "orangeToOrange": "orange_to_orange",
+                "originErrorPagePassThru": "origin_error_page_pass_thru",
+                "originMaxHttpVersion": "origin_max_http_version",
+                "prefetchPreload": "prefetch_preload",
+                "privacyPass": "privacy_pass",
+                "proxyReadTimeout": "proxy_read_timeout",
+                "pseudoIpv4": "pseudo_ipv4",
+                "responseBuffering": "response_buffering",
+                "rocketLoader": "rocket_loader",
+                "securityHeader": "security_header",
+                "securityLevel": "security_level",
+                "serverSideExclude": "server_side_exclude",
+                "sortQueryStringForCache": "sort_query_string_for_cache",
+                "tls12Only": "tls_1_2_only",
+                "tls13": "tls_1_3",
+                "tlsClientAuth": "tls_client_auth",
+                "trueClientIpHeader": "true_client_ip_header",
+                "universalSsl": "universal_ssl",
+                "visitorIp": "visitor_ip",
+                "zeroRtt": "zero_rtt"
+            },
+            "cloudflare:index/ZoneSettingsOverrideInitialSettingMobileRedirect:ZoneSettingsOverrideInitialSettingMobileRedirect": {
+                "mobileSubdomain": "mobile_subdomain",
+                "stripUri": "strip_uri"
+            },
+            "cloudflare:index/ZoneSettingsOverrideInitialSettingSecurityHeader:ZoneSettingsOverrideInitialSettingSecurityHeader": {
+                "includeSubdomains": "include_subdomains",
+                "maxAge": "max_age"
+            },
+            "cloudflare:index/ZoneSettingsOverrideSettings:ZoneSettingsOverrideSettings": {
+                "alwaysOnline": "always_online",
+                "alwaysUseHttps": "always_use_https",
+                "automaticHttpsRewrites": "automatic_https_rewrites",
+                "binaryAst": "binary_ast",
+                "browserCacheTtl": "browser_cache_ttl",
+                "browserCheck": "browser_check",
+                "cacheLevel": "cache_level",
+                "challengeTtl": "challenge_ttl",
+                "cnameFlattening": "cname_flattening",
+                "developmentMode": "development_mode",
+                "earlyHints": "early_hints",
+                "emailObfuscation": "email_obfuscation",
+                "filterLogsToCloudflare": "filter_logs_to_cloudflare",
+                "h2Prioritization": "h2_prioritization",
+                "hotlinkProtection": "hotlink_protection",
+                "imageResizing": "image_resizing",
+                "ipGeolocation": "ip_geolocation",
+                "logToCloudflare": "log_to_cloudflare",
+                "maxUpload": "max_upload",
+                "minTlsVersion": "min_tls_version",
+                "mobileRedirect": "mobile_redirect",
+                "opportunisticEncryption": "opportunistic_encryption",
+                "opportunisticOnion": "opportunistic_onion",
+                "orangeToOrange": "orange_to_orange",
+                "originErrorPagePassThru": "origin_error_page_pass_thru",
+                "originMaxHttpVersion": "origin_max_http_version",
+                "prefetchPreload": "prefetch_preload",
+                "privacyPass": "privacy_pass",
+                "proxyReadTimeout": "proxy_read_timeout",
+                "pseudoIpv4": "pseudo_ipv4",
+                "responseBuffering": "response_buffering",
+                "rocketLoader": "rocket_loader",
+                "securityHeader": "security_header",
+                "securityLevel": "security_level",
+                "serverSideExclude": "server_side_exclude",
+                "sortQueryStringForCache": "sort_query_string_for_cache",
+                "tls12Only": "tls_1_2_only",
+                "tls13": "tls_1_3",
+                "tlsClientAuth": "tls_client_auth",
+                "trueClientIpHeader": "true_client_ip_header",
+                "universalSsl": "universal_ssl",
+                "visitorIp": "visitor_ip",
+                "zeroRtt": "zero_rtt"
+            },
+            "cloudflare:index/ZoneSettingsOverrideSettingsMobileRedirect:ZoneSettingsOverrideSettingsMobileRedirect": {
+                "mobileSubdomain": "mobile_subdomain",
+                "stripUri": "strip_uri"
+            },
+            "cloudflare:index/ZoneSettingsOverrideSettingsSecurityHeader:ZoneSettingsOverrideSettingsSecurityHeader": {
+                "includeSubdomains": "include_subdomains",
+                "maxAge": "max_age"
+            },
+            "cloudflare:index/accessApplication:AccessApplication": {
+                "accountId": "account_id",
+                "allowedIdps": "allowed_idps",
+                "appLauncherVisible": "app_launcher_visible",
+                "autoRedirectToIdentity": "auto_redirect_to_identity",
+                "corsHeaders": "cors_headers",
+                "customDenyMessage": "custom_deny_message",
+                "customDenyUrl": "custom_deny_url",
+                "enableBindingCookie": "enable_binding_cookie",
+                "httpOnlyCookieAttribute": "http_only_cookie_attribute",
+                "logoUrl": "logo_url",
+                "saasApp": "saas_app",
+                "sameSiteCookieAttribute": "same_site_cookie_attribute",
+                "serviceAuth401Redirect": "service_auth_401_redirect",
+                "sessionDuration": "session_duration",
+                "skipInterstitial": "skip_interstitial",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/accessCaCertificate:AccessCaCertificate": {
+                "accountId": "account_id",
+                "applicationId": "application_id",
+                "publicKey": "public_key",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/accessGroup:AccessGroup": {
+                "accountId": "account_id",
+                "excludes": "exclude",
+                "includes": "include",
+                "requires": "require",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/accessIdentityProvider:AccessIdentityProvider": {
+                "accountId": "account_id",
+                "configs": "config",
+                "scimConfigs": "scim_config",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration": {
+                "accountId": "account_id",
+                "keyRotationIntervalDays": "key_rotation_interval_days"
+            },
+            "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate": {
+                "accountId": "account_id",
+                "associatedHostnames": "associated_hostnames",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/accessOrganization:AccessOrganization": {
+                "accountId": "account_id",
+                "authDomain": "auth_domain",
+                "isUiReadOnly": "is_ui_read_only",
+                "loginDesigns": "login_design",
+                "uiReadOnlyToggleReason": "ui_read_only_toggle_reason",
+                "userSeatExpirationInactiveTime": "user_seat_expiration_inactive_time",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/accessPolicy:AccessPolicy": {
+                "accountId": "account_id",
+                "applicationId": "application_id",
+                "approvalGroups": "approval_group",
+                "approvalRequired": "approval_required",
+                "excludes": "exclude",
+                "includes": "include",
+                "purposeJustificationPrompt": "purpose_justification_prompt",
+                "purposeJustificationRequired": "purpose_justification_required",
+                "requires": "require",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/accessRule:AccessRule": {
+                "accountId": "account_id",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/accessServiceToken:AccessServiceToken": {
+                "accountId": "account_id",
+                "clientId": "client_id",
+                "clientSecret": "client_secret",
+                "expiresAt": "expires_at",
+                "minDaysForRenewal": "min_days_for_renewal",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/account:Account": {
+                "enforceTwofactor": "enforce_twofactor"
+            },
+            "cloudflare:index/accountMember:AccountMember": {
+                "accountId": "account_id",
+                "emailAddress": "email_address",
+                "roleIds": "role_ids"
+            },
+            "cloudflare:index/addressMap:AddressMap": {
+                "accountId": "account_id",
+                "canDelete": "can_delete",
+                "canModifyIps": "can_modify_ips",
+                "defaultSni": "default_sni"
+            },
+            "cloudflare:index/apiShield:ApiShield": {
+                "authIdCharacteristics": "auth_id_characteristics",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/apiToken:ApiToken": {
+                "expiresOn": "expires_on",
+                "issuedOn": "issued_on",
+                "modifiedOn": "modified_on",
+                "notBefore": "not_before",
+                "policies": "policy"
+            },
+            "cloudflare:index/argo:Argo": {
+                "smartRouting": "smart_routing",
+                "tieredCaching": "tiered_caching",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls": {
+                "authenticatedOriginPullsCertificate": "authenticated_origin_pulls_certificate",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate": {
+                "expiresOn": "expires_on",
+                "privateKey": "private_key",
+                "serialNumber": "serial_number",
+                "uploadedOn": "uploaded_on",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/byoIpPrefix:ByoIpPrefix": {
+                "accountId": "account_id",
+                "prefixId": "prefix_id"
+            },
+            "cloudflare:index/certificatePack:CertificatePack": {
+                "certificateAuthority": "certificate_authority",
+                "cloudflareBranding": "cloudflare_branding",
+                "validationErrors": "validation_errors",
+                "validationMethod": "validation_method",
+                "validationRecords": "validation_records",
+                "validityDays": "validity_days",
+                "waitForActiveStatus": "wait_for_active_status",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/customHostname:CustomHostname": {
+                "customMetadata": "custom_metadata",
+                "customOriginServer": "custom_origin_server",
+                "customOriginSni": "custom_origin_sni",
+                "ownershipVerification": "ownership_verification",
+                "ownershipVerificationHttp": "ownership_verification_http",
+                "ssls": "ssl",
+                "waitForSslPendingValidation": "wait_for_ssl_pending_validation",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin": {
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/customPages:CustomPages": {
+                "accountId": "account_id",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/customSsl:CustomSsl": {
+                "customSslOptions": "custom_ssl_options",
+                "customSslPriorities": "custom_ssl_priority",
+                "expiresOn": "expires_on",
+                "modifiedOn": "modified_on",
+                "uploadedOn": "uploaded_on",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/deviceDexTest:DeviceDexTest": {
+                "accountId": "account_id"
+            },
+            "cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks": {
+                "accountId": "account_id"
+            },
+            "cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates": {
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/devicePostureIntegration:DevicePostureIntegration": {
+                "accountId": "account_id",
+                "configs": "config"
+            },
+            "cloudflare:index/devicePostureRule:DevicePostureRule": {
+                "accountId": "account_id",
+                "inputs": "input",
+                "matches": "match"
+            },
+            "cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy": {
+                "accountId": "account_id",
+                "allowModeSwitch": "allow_mode_switch",
+                "allowUpdates": "allow_updates",
+                "allowedToLeave": "allowed_to_leave",
+                "autoConnect": "auto_connect",
+                "captivePortal": "captive_portal",
+                "disableAutoFallback": "disable_auto_fallback",
+                "excludeOfficeIps": "exclude_office_ips",
+                "serviceModeV2Mode": "service_mode_v2_mode",
+                "serviceModeV2Port": "service_mode_v2_port",
+                "supportUrl": "support_url",
+                "switchLocked": "switch_locked"
+            },
+            "cloudflare:index/dlpProfile:DlpProfile": {
+                "accountId": "account_id",
+                "allowedMatchCount": "allowed_match_count",
+                "entries": "entry"
+            },
+            "cloudflare:index/emailRoutingAddress:EmailRoutingAddress": {
+                "accountId": "account_id"
+            },
+            "cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll": {
+                "actions": "action",
+                "matchers": "matcher",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/emailRoutingRule:EmailRoutingRule": {
+                "actions": "action",
+                "matchers": "matcher",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/emailRoutingSettings:EmailRoutingSettings": {
+                "skipWizard": "skip_wizard",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/fallbackDomain:FallbackDomain": {
+                "accountId": "account_id",
+                "policyId": "policy_id"
+            },
+            "cloudflare:index/filter:Filter": {
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/firewallRule:FirewallRule": {
+                "filterId": "filter_id",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider": {
+                "accountId": "account_id",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/getAccountRoles:getAccountRoles": {
+                "accountId": "account_id"
+            },
+            "cloudflare:index/getAccountsAccount:getAccountsAccount": {
+                "enforceTwofactor": "enforce_twofactor"
+            },
+            "cloudflare:index/getDevices:getDevices": {
+                "accountId": "account_id"
+            },
+            "cloudflare:index/getDevicesDevice:getDevicesDevice": {
+                "deviceType": "device_type",
+                "lastSeen": "last_seen",
+                "macAddress": "mac_address",
+                "osDistroName": "os_distro_name",
+                "osDistroRevision": "os_distro_revision",
+                "osVersion": "os_version",
+                "revokedAt": "revoked_at",
+                "serialNumber": "serial_number",
+                "userEmail": "user_email",
+                "userId": "user_id",
+                "userName": "user_name"
+            },
+            "cloudflare:index/getIpRanges:getIpRanges": {
+                "chinaIpv4CidrBlocks": "china_ipv4_cidr_blocks",
+                "chinaIpv6CidrBlocks": "china_ipv6_cidr_blocks",
+                "cidrBlocks": "cidr_blocks",
+                "ipv4CidrBlocks": "ipv4_cidr_blocks",
+                "ipv6CidrBlocks": "ipv6_cidr_blocks"
+            },
+            "cloudflare:index/getList:getList": {
+                "accountId": "account_id"
+            },
+            "cloudflare:index/getLists:getLists": {
+                "accountId": "account_id"
+            },
+            "cloudflare:index/getLoadBalancerPools:getLoadBalancerPools": {
+                "accountId": "account_id"
+            },
+            "cloudflare:index/getLoadBalancerPoolsPool:getLoadBalancerPoolsPool": {
+                "checkRegions": "check_regions",
+                "createdOn": "created_on",
+                "loadSheddings": "load_shedding",
+                "minimumOrigins": "minimum_origins",
+                "modifiedOn": "modified_on",
+                "notificationEmail": "notification_email"
+            },
+            "cloudflare:index/getLoadBalancerPoolsPoolLoadShedding:getLoadBalancerPoolsPoolLoadShedding": {
+                "defaultPercent": "default_percent",
+                "defaultPolicy": "default_policy",
+                "sessionPercent": "session_percent",
+                "sessionPolicy": "session_policy"
+            },
+            "cloudflare:index/getLoadBalancerPoolsPoolOrigin:getLoadBalancerPoolsPoolOrigin": {
+                "headers": "header"
+            },
+            "cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate": {
+                "certPem": "cert_pem"
+            },
+            "cloudflare:index/getRecord:getRecord": {
+                "zoneId": "zone_id",
+                "zoneName": "zone_name"
+            },
+            "cloudflare:index/getRulesets:getRulesets": {
+                "accountId": "account_id",
+                "includeRules": "include_rules",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/getRulesetsRulesetRule:getRulesetsRulesetRule": {
+                "actionParameters": "action_parameters",
+                "exposedCredentialCheck": "exposed_credential_check",
+                "lastUpdated": "last_updated"
+            },
+            "cloudflare:index/getRulesetsRulesetRuleActionParameters:getRulesetsRulesetRuleActionParameters": {
+                "automaticHttpsRewrites": "automatic_https_rewrites",
+                "autominifies": "autominify",
+                "browserTtl": "browser_ttl",
+                "cacheKey": "cache_key",
+                "contentType": "content_type",
+                "cookieFields": "cookie_fields",
+                "disableApps": "disable_apps",
+                "disableRailgun": "disable_railgun",
+                "disableZaraz": "disable_zaraz",
+                "edgeTtl": "edge_ttl",
+                "emailObfuscation": "email_obfuscation",
+                "fromList": "from_list",
+                "fromValue": "from_value",
+                "hostHeader": "host_header",
+                "hotlinkProtection": "hotlink_protection",
+                "matchedData": "matched_data",
+                "opportunisticEncryption": "opportunistic_encryption",
+                "originErrorPagePassthru": "origin_error_page_passthru",
+                "requestFields": "request_fields",
+                "respectStrongEtags": "respect_strong_etags",
+                "responseFields": "response_fields",
+                "responses": "response",
+                "rocketLoader": "rocket_loader",
+                "securityLevel": "security_level",
+                "serveStale": "serve_stale",
+                "serverSideExcludes": "server_side_excludes",
+                "statusCode": "status_code"
+            },
+            "cloudflare:index/getRulesetsRulesetRuleActionParametersCacheKey:getRulesetsRulesetRuleActionParametersCacheKey": {
+                "cacheByDeviceType": "cache_by_device_type",
+                "cacheDeceptionArmor": "cache_deception_armor",
+                "customKey": "custom_key",
+                "ignoreQueryStringsOrder": "ignore_query_strings_order"
+            },
+            "cloudflare:index/getRulesetsRulesetRuleActionParametersCacheKeyCustomKey:getRulesetsRulesetRuleActionParametersCacheKeyCustomKey": {
+                "queryString": "query_string"
+            },
+            "cloudflare:index/getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyCookie:getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyCookie": {
+                "checkPresences": "check_presence",
+                "includes": "include"
+            },
+            "cloudflare:index/getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader:getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader": {
+                "checkPresences": "check_presence",
+                "excludeOrigin": "exclude_origin",
+                "includes": "include"
+            },
+            "cloudflare:index/getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryString:getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryString": {
+                "excludes": "exclude",
+                "includes": "include"
+            },
+            "cloudflare:index/getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUser:getRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUser": {
+                "deviceType": "device_type"
+            },
+            "cloudflare:index/getRulesetsRulesetRuleActionParametersEdgeTtl:getRulesetsRulesetRuleActionParametersEdgeTtl": {
+                "statusCodeTtls": "status_code_ttl"
+            },
+            "cloudflare:index/getRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtl:getRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtl": {
+                "statusCode": "status_code",
+                "statusCodeRanges": "status_code_range"
+            },
+            "cloudflare:index/getRulesetsRulesetRuleActionParametersFromValue:getRulesetsRulesetRuleActionParametersFromValue": {
+                "preserveQueryString": "preserve_query_string",
+                "statusCode": "status_code",
+                "targetUrl": "target_url"
+            },
+            "cloudflare:index/getRulesetsRulesetRuleActionParametersMatchedData:getRulesetsRulesetRuleActionParametersMatchedData": {
+                "publicKey": "public_key"
+            },
+            "cloudflare:index/getRulesetsRulesetRuleActionParametersOverrides:getRulesetsRulesetRuleActionParametersOverrides": {
+                "sensitivityLevel": "sensitivity_level"
+            },
+            "cloudflare:index/getRulesetsRulesetRuleActionParametersOverridesRule:getRulesetsRulesetRuleActionParametersOverridesRule": {
+                "scoreThreshold": "score_threshold",
+                "sensitivityLevel": "sensitivity_level"
+            },
+            "cloudflare:index/getRulesetsRulesetRuleActionParametersResponse:getRulesetsRulesetRuleActionParametersResponse": {
+                "contentType": "content_type",
+                "statusCode": "status_code"
+            },
+            "cloudflare:index/getRulesetsRulesetRuleActionParametersServeStale:getRulesetsRulesetRuleActionParametersServeStale": {
+                "disableStaleWhileUpdating": "disable_stale_while_updating"
+            },
+            "cloudflare:index/getRulesetsRulesetRuleExposedCredentialCheck:getRulesetsRulesetRuleExposedCredentialCheck": {
+                "passwordExpression": "password_expression",
+                "usernameExpression": "username_expression"
+            },
+            "cloudflare:index/getRulesetsRulesetRuleRatelimit:getRulesetsRulesetRuleRatelimit": {
+                "countingExpression": "counting_expression",
+                "mitigationTimeout": "mitigation_timeout",
+                "requestsPerPeriod": "requests_per_period",
+                "requestsToOrigin": "requests_to_origin",
+                "scorePerPeriod": "score_per_period",
+                "scoreResponseHeaderName": "score_response_header_name"
+            },
+            "cloudflare:index/getZone:getZone": {
+                "accountId": "account_id",
+                "nameServers": "name_servers",
+                "vanityNameServers": "vanity_name_servers",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/getZoneDnssec:getZoneDnssec": {
+                "digestAlgorithm": "digest_algorithm",
+                "digestType": "digest_type",
+                "keyTag": "key_tag",
+                "keyType": "key_type",
+                "publicKey": "public_key",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/getZonesFilter:getZonesFilter": {
+                "accountId": "account_id",
+                "lookupType": "lookup_type"
+            },
+            "cloudflare:index/greTunnel:GreTunnel": {
+                "accountId": "account_id",
+                "cloudflareGreEndpoint": "cloudflare_gre_endpoint",
+                "customerGreEndpoint": "customer_gre_endpoint",
+                "healthCheckEnabled": "health_check_enabled",
+                "healthCheckTarget": "health_check_target",
+                "healthCheckType": "health_check_type",
+                "interfaceAddress": "interface_address"
+            },
+            "cloudflare:index/healthcheck:Healthcheck": {
+                "allowInsecure": "allow_insecure",
+                "checkRegions": "check_regions",
+                "consecutiveFails": "consecutive_fails",
+                "consecutiveSuccesses": "consecutive_successes",
+                "createdOn": "created_on",
+                "expectedBody": "expected_body",
+                "expectedCodes": "expected_codes",
+                "followRedirects": "follow_redirects",
+                "headers": "header",
+                "modifiedOn": "modified_on",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/ipsecTunnel:IpsecTunnel": {
+                "accountId": "account_id",
+                "allowNullCipher": "allow_null_cipher",
+                "cloudflareEndpoint": "cloudflare_endpoint",
+                "customerEndpoint": "customer_endpoint",
+                "fqdnId": "fqdn_id",
+                "healthCheckEnabled": "health_check_enabled",
+                "healthCheckTarget": "health_check_target",
+                "healthCheckType": "health_check_type",
+                "hexId": "hex_id",
+                "interfaceAddress": "interface_address",
+                "remoteId": "remote_id",
+                "userId": "user_id"
+            },
+            "cloudflare:index/list:List": {
+                "accountId": "account_id",
+                "items": "item"
+            },
+            "cloudflare:index/listItem:ListItem": {
+                "accountId": "account_id",
+                "listId": "list_id"
+            },
+            "cloudflare:index/loadBalancer:LoadBalancer": {
+                "adaptiveRoutings": "adaptive_routing",
+                "countryPools": "country_pools",
+                "createdOn": "created_on",
+                "defaultPoolIds": "default_pool_ids",
+                "fallbackPoolId": "fallback_pool_id",
+                "locationStrategies": "location_strategy",
+                "modifiedOn": "modified_on",
+                "popPools": "pop_pools",
+                "randomSteerings": "random_steering",
+                "regionPools": "region_pools",
+                "sessionAffinity": "session_affinity",
+                "sessionAffinityAttributes": "session_affinity_attributes",
+                "sessionAffinityTtl": "session_affinity_ttl",
+                "steeringPolicy": "steering_policy",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor": {
+                "accountId": "account_id",
+                "allowInsecure": "allow_insecure",
+                "createdOn": "created_on",
+                "expectedBody": "expected_body",
+                "expectedCodes": "expected_codes",
+                "followRedirects": "follow_redirects",
+                "headers": "header",
+                "modifiedOn": "modified_on",
+                "probeZone": "probe_zone"
+            },
+            "cloudflare:index/loadBalancerPool:LoadBalancerPool": {
+                "accountId": "account_id",
+                "checkRegions": "check_regions",
+                "createdOn": "created_on",
+                "loadSheddings": "load_shedding",
+                "minimumOrigins": "minimum_origins",
+                "modifiedOn": "modified_on",
+                "notificationEmail": "notification_email",
+                "originSteerings": "origin_steering"
+            },
+            "cloudflare:index/logpullRetention:LogpullRetention": {
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/logpushJob:LogpushJob": {
+                "accountId": "account_id",
+                "destinationConf": "destination_conf",
+                "logpullOptions": "logpull_options",
+                "ownershipChallenge": "ownership_challenge",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge": {
+                "accountId": "account_id",
+                "destinationConf": "destination_conf",
+                "ownershipChallengeFilename": "ownership_challenge_filename",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset": {
+                "accountId": "account_id"
+            },
+            "cloudflare:index/managedHeaders:ManagedHeaders": {
+                "managedRequestHeaders": "managed_request_headers",
+                "managedResponseHeaders": "managed_response_headers",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/mtlsCertificate:MtlsCertificate": {
+                "accountId": "account_id",
+                "expiresOn": "expires_on",
+                "privateKey": "private_key",
+                "serialNumber": "serial_number",
+                "uploadedOn": "uploaded_on"
+            },
+            "cloudflare:index/notificationPolicy:NotificationPolicy": {
+                "accountId": "account_id",
+                "alertType": "alert_type",
+                "emailIntegrations": "email_integration",
+                "pagerdutyIntegrations": "pagerduty_integration",
+                "webhooksIntegrations": "webhooks_integration"
+            },
+            "cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks": {
+                "accountId": "account_id",
+                "createdAt": "created_at",
+                "lastFailure": "last_failure",
+                "lastSuccess": "last_success"
+            },
+            "cloudflare:index/originCaCertificate:OriginCaCertificate": {
+                "expiresOn": "expires_on",
+                "minDaysForRenewal": "min_days_for_renewal",
+                "requestType": "request_type",
+                "requestedValidity": "requested_validity"
+            },
+            "cloudflare:index/pageRule:PageRule": {
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/pagesDomain:PagesDomain": {
+                "accountId": "account_id",
+                "projectName": "project_name"
+            },
+            "cloudflare:index/pagesProject:PagesProject": {
+                "accountId": "account_id",
+                "buildConfig": "build_config",
+                "createdOn": "created_on",
+                "deploymentConfigs": "deployment_configs",
+                "productionBranch": "production_branch"
+            },
+            "cloudflare:index/queue:Queue": {
+                "accountId": "account_id"
+            },
+            "cloudflare:index/rateLimit:RateLimit": {
+                "bypassUrlPatterns": "bypass_url_patterns",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/record:Record": {
+                "allowOverwrite": "allow_overwrite",
+                "createdOn": "created_on",
+                "modifiedOn": "modified_on",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/spectrumApplication:SpectrumApplication": {
+                "argoSmartRouting": "argo_smart_routing",
+                "edgeIps": "edge_ips",
+                "ipFirewall": "ip_firewall",
+                "originDirects": "origin_direct",
+                "originDns": "origin_dns",
+                "originPort": "origin_port",
+                "originPortRange": "origin_port_range",
+                "proxyProtocol": "proxy_protocol",
+                "trafficType": "traffic_type",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/splitTunnel:SplitTunnel": {
+                "accountId": "account_id",
+                "policyId": "policy_id"
+            },
+            "cloudflare:index/staticRoute:StaticRoute": {
+                "accountId": "account_id",
+                "coloNames": "colo_names",
+                "coloRegions": "colo_regions"
+            },
+            "cloudflare:index/teamsAccount:TeamsAccount": {
+                "accountId": "account_id",
+                "activityLogEnabled": "activity_log_enabled",
+                "blockPage": "block_page",
+                "payloadLog": "payload_log",
+                "tlsDecryptEnabled": "tls_decrypt_enabled",
+                "urlBrowserIsolationEnabled": "url_browser_isolation_enabled"
+            },
+            "cloudflare:index/teamsList:TeamsList": {
+                "accountId": "account_id"
+            },
+            "cloudflare:index/teamsLocation:TeamsLocation": {
+                "accountId": "account_id",
+                "anonymizedLogsEnabled": "anonymized_logs_enabled",
+                "clientDefault": "client_default",
+                "dohSubdomain": "doh_subdomain",
+                "ipv4Destination": "ipv4_destination",
+                "policyIds": "policy_ids"
+            },
+            "cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint": {
+                "accountId": "account_id"
+            },
+            "cloudflare:index/teamsRule:TeamsRule": {
+                "accountId": "account_id",
+                "devicePosture": "device_posture",
+                "ruleSettings": "rule_settings"
+            },
+            "cloudflare:index/tieredCache:TieredCache": {
+                "cacheType": "cache_type",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/totalTls:TotalTls": {
+                "certificateAuthority": "certificate_authority",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/tunnel:Tunnel": {
+                "accountId": "account_id",
+                "tunnelToken": "tunnel_token"
+            },
+            "cloudflare:index/tunnelConfig:TunnelConfig": {
+                "accountId": "account_id",
+                "tunnelId": "tunnel_id"
+            },
+            "cloudflare:index/tunnelRoute:TunnelRoute": {
+                "accountId": "account_id",
+                "tunnelId": "tunnel_id",
+                "virtualNetworkId": "virtual_network_id"
+            },
+            "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork": {
+                "accountId": "account_id",
+                "isDefaultNetwork": "is_default_network"
+            },
+            "cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings": {
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule": {
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/waitingRoom:WaitingRoom": {
+                "customPageHtml": "custom_page_html",
+                "defaultTemplateLanguage": "default_template_language",
+                "disableSessionRenewal": "disable_session_renewal",
+                "jsonResponseEnabled": "json_response_enabled",
+                "newUsersPerMinute": "new_users_per_minute",
+                "queueAll": "queue_all",
+                "queueingMethod": "queueing_method",
+                "sessionDuration": "session_duration",
+                "totalActiveUsers": "total_active_users",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/waitingRoomEvent:WaitingRoomEvent": {
+                "createdOn": "created_on",
+                "customPageHtml": "custom_page_html",
+                "disableSessionRenewal": "disable_session_renewal",
+                "eventEndTime": "event_end_time",
+                "eventStartTime": "event_start_time",
+                "modifiedOn": "modified_on",
+                "newUsersPerMinute": "new_users_per_minute",
+                "prequeueStartTime": "prequeue_start_time",
+                "queueingMethod": "queueing_method",
+                "sessionDuration": "session_duration",
+                "shuffleAtEventStart": "shuffle_at_event_start",
+                "totalActiveUsers": "total_active_users",
+                "waitingRoomId": "waiting_room_id",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/waitingRoomRules:WaitingRoomRules": {
+                "waitingRoomId": "waiting_room_id",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/web3Hostname:Web3Hostname": {
+                "createdOn": "created_on",
+                "modifiedOn": "modified_on",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/workerCronTrigger:WorkerCronTrigger": {
+                "accountId": "account_id",
+                "scriptName": "script_name"
+            },
+            "cloudflare:index/workerDomain:WorkerDomain": {
+                "accountId": "account_id",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/workerRoute:WorkerRoute": {
+                "scriptName": "script_name",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/workerScript:WorkerScript": {
+                "accountId": "account_id",
+                "analyticsEngineBindings": "analytics_engine_binding",
+                "compatibilityDate": "compatibility_date",
+                "compatibilityFlags": "compatibility_flags",
+                "kvNamespaceBindings": "kv_namespace_binding",
+                "plainTextBindings": "plain_text_binding",
+                "queueBindings": "queue_binding",
+                "r2BucketBindings": "r2_bucket_binding",
+                "secretTextBindings": "secret_text_binding",
+                "serviceBindings": "service_binding",
+                "webassemblyBindings": "webassembly_binding"
+            },
+            "cloudflare:index/workersKv:WorkersKv": {
+                "accountId": "account_id",
+                "namespaceId": "namespace_id"
+            },
+            "cloudflare:index/workersKvNamespace:WorkersKvNamespace": {
+                "accountId": "account_id"
+            },
+            "cloudflare:index/zone:Zone": {
+                "accountId": "account_id",
+                "jumpStart": "jump_start",
+                "nameServers": "name_servers",
+                "vanityNameServers": "vanity_name_servers",
+                "verificationKey": "verification_key"
+            },
+            "cloudflare:index/zoneCacheVariants:ZoneCacheVariants": {
+                "avifs": "avif",
+                "bmps": "bmp",
+                "gifs": "gif",
+                "jp2s": "jp2",
+                "jpegs": "jpeg",
+                "jpg2s": "jpg2",
+                "jpgs": "jpg",
+                "pngs": "png",
+                "tiffs": "tiff",
+                "tifs": "tif",
+                "webps": "webp",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/zoneDnssec:ZoneDnssec": {
+                "digestAlgorithm": "digest_algorithm",
+                "digestType": "digest_type",
+                "keyTag": "key_tag",
+                "keyType": "key_type",
+                "modifiedOn": "modified_on",
+                "publicKey": "public_key",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/zoneLockdown:ZoneLockdown": {
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride": {
+                "initialSettings": "initial_settings",
+                "initialSettingsReadAt": "initial_settings_read_at",
+                "readonlySettings": "readonly_settings",
+                "zoneId": "zone_id",
+                "zoneStatus": "zone_status",
+                "zoneType": "zone_type"
+            },
+            "cloudflare:index:Provider": {
+                "apiBasePath": "api_base_path",
+                "apiClientLogging": "api_client_logging",
+                "apiHostname": "api_hostname",
+                "apiKey": "api_key",
+                "apiToken": "api_token",
+                "apiUserServiceKey": "api_user_service_key",
+                "maxBackoff": "max_backoff",
+                "minBackoff": "min_backoff"
+            }
+        },
+        "renamedConfigProperties": {
+            "apiBasePath": "api_base_path",
+            "apiClientLogging": "api_client_logging",
+            "apiHostname": "api_hostname",
+            "apiKey": "api_key",
+            "apiToken": "api_token",
+            "apiUserServiceKey": "api_user_service_key",
+            "maxBackoff": "max_backoff",
+            "minBackoff": "min_backoff"
+        }
+    }
+}
