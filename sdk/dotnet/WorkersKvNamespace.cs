@@ -12,13 +12,11 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides the ability to manage Cloudflare Workers KV Namespace features.
     /// 
-    /// &gt; This resource uses the Cloudflare account APIs. This requires setting the
-    /// `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 

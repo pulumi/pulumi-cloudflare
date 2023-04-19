@@ -16,9 +16,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides Lists (IPs, Redirects) to be used in Edge Rules Engine
- * across all zones within the same account.
- * 
  * ## Example Usage
  * 
  * ```java
@@ -112,14 +109,14 @@ public class List extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.items);
     }
     /**
-     * The type of items the list will contain.
+     * The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="kind", type=String.class, parameters={})
     private Output<String> kind;
 
     /**
-     * @return The type of items the list will contain.
+     * @return The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> kind() {

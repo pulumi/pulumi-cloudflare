@@ -13,16 +13,22 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
+        /// Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
+        [Input("actionParameters", required: true)]
+        private InputList<Inputs.RulesetRuleActionParameterArgs>? _actionParameters;
+
         /// <summary>
         /// List of parameters that configure the behavior of the ruleset rule action.
         /// </summary>
-        [Input("actionParameters")]
-        public Input<Inputs.RulesetRuleActionParametersArgs>? ActionParameters { get; set; }
+        public InputList<Inputs.RulesetRuleActionParameterArgs> ActionParameters
+        {
+            get => _actionParameters ?? (_actionParameters = new InputList<Inputs.RulesetRuleActionParameterArgs>());
+            set => _actionParameters = value;
+        }
 
         /// <summary>
         /// Brief summary of the ruleset rule and its intended use.
@@ -36,11 +42,17 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        [Input("exposedCredentialChecks", required: true)]
+        private InputList<Inputs.RulesetRuleExposedCredentialCheckArgs>? _exposedCredentialChecks;
+
         /// <summary>
         /// List of parameters that configure exposed credential checks.
         /// </summary>
-        [Input("exposedCredentialCheck")]
-        public Input<Inputs.RulesetRuleExposedCredentialCheckArgs>? ExposedCredentialCheck { get; set; }
+        public InputList<Inputs.RulesetRuleExposedCredentialCheckArgs> ExposedCredentialChecks
+        {
+            get => _exposedCredentialChecks ?? (_exposedCredentialChecks = new InputList<Inputs.RulesetRuleExposedCredentialCheckArgs>());
+            set => _exposedCredentialChecks = value;
+        }
 
         /// <summary>
         /// Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
@@ -60,17 +72,29 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("lastUpdated")]
         public Input<string>? LastUpdated { get; set; }
 
+        [Input("loggings", required: true)]
+        private InputList<Inputs.RulesetRuleLoggingArgs>? _loggings;
+
         /// <summary>
         /// List parameters to configure how the rule generates logs.
         /// </summary>
-        [Input("logging")]
-        public Input<Inputs.RulesetRuleLoggingArgs>? Logging { get; set; }
+        public InputList<Inputs.RulesetRuleLoggingArgs> Loggings
+        {
+            get => _loggings ?? (_loggings = new InputList<Inputs.RulesetRuleLoggingArgs>());
+            set => _loggings = value;
+        }
+
+        [Input("ratelimits", required: true)]
+        private InputList<Inputs.RulesetRuleRatelimitArgs>? _ratelimits;
 
         /// <summary>
         /// List of parameters that configure HTTP rate limiting behaviour.
         /// </summary>
-        [Input("ratelimit")]
-        public Input<Inputs.RulesetRuleRatelimitArgs>? Ratelimit { get; set; }
+        public InputList<Inputs.RulesetRuleRatelimitArgs> Ratelimits
+        {
+            get => _ratelimits ?? (_ratelimits = new InputList<Inputs.RulesetRuleRatelimitArgs>());
+            set => _ratelimits = value;
+        }
 
         /// <summary>
         /// Rule reference.

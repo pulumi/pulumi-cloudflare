@@ -123,7 +123,7 @@ export class DeviceSettingsPolicy extends pulumi.CustomResource {
      */
     public readonly precedence!: pulumi.Output<number | undefined>;
     /**
-     * The service mode. Defaults to `warp`.
+     * The service mode. Available values: `1dot1`, `warp`, `proxy`, `postureOnly`, `warpTunnelOnly`. Defaults to `warp`.
      */
     public readonly serviceModeV2Mode!: pulumi.Output<string | undefined>;
     /**
@@ -257,7 +257,7 @@ export interface DeviceSettingsPolicyState {
      */
     precedence?: pulumi.Input<number>;
     /**
-     * The service mode. Defaults to `warp`.
+     * The service mode. Available values: `1dot1`, `warp`, `proxy`, `postureOnly`, `warpTunnelOnly`. Defaults to `warp`.
      */
     serviceModeV2Mode?: pulumi.Input<string>;
     /**
@@ -331,7 +331,7 @@ export interface DeviceSettingsPolicyArgs {
      */
     precedence?: pulumi.Input<number>;
     /**
-     * The service mode. Defaults to `warp`.
+     * The service mode. Available values: `1dot1`, `warp`, `proxy`, `postureOnly`, `warpTunnelOnly`. Defaults to `warp`.
      */
     serviceModeV2Mode?: pulumi.Input<string>;
     /**

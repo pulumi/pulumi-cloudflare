@@ -123,6 +123,8 @@ type AccessPolicy struct {
 	// A series of access conditions, see [Access
 	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Includes AccessPolicyIncludeArrayOutput `pulumi:"includes"`
+	// Require this application to be served in an isolated browser for users matching this policy.
+	IsolationRequired pulumi.BoolPtrOutput `pulumi:"isolationRequired"`
 	// Friendly name of the Access Policy.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The unique precedence for policies on a single application.
@@ -196,6 +198,8 @@ type accessPolicyState struct {
 	// A series of access conditions, see [Access
 	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Includes []AccessPolicyInclude `pulumi:"includes"`
+	// Require this application to be served in an isolated browser for users matching this policy.
+	IsolationRequired *bool `pulumi:"isolationRequired"`
 	// Friendly name of the Access Policy.
 	Name *string `pulumi:"name"`
 	// The unique precedence for policies on a single application.
@@ -226,6 +230,8 @@ type AccessPolicyState struct {
 	// A series of access conditions, see [Access
 	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Includes AccessPolicyIncludeArrayInput
+	// Require this application to be served in an isolated browser for users matching this policy.
+	IsolationRequired pulumi.BoolPtrInput
 	// Friendly name of the Access Policy.
 	Name pulumi.StringPtrInput
 	// The unique precedence for policies on a single application.
@@ -260,6 +266,8 @@ type accessPolicyArgs struct {
 	// A series of access conditions, see [Access
 	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Includes []AccessPolicyInclude `pulumi:"includes"`
+	// Require this application to be served in an isolated browser for users matching this policy.
+	IsolationRequired *bool `pulumi:"isolationRequired"`
 	// Friendly name of the Access Policy.
 	Name string `pulumi:"name"`
 	// The unique precedence for policies on a single application.
@@ -291,6 +299,8 @@ type AccessPolicyArgs struct {
 	// A series of access conditions, see [Access
 	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Includes AccessPolicyIncludeArrayInput
+	// Require this application to be served in an isolated browser for users matching this policy.
+	IsolationRequired pulumi.BoolPtrInput
 	// Friendly name of the Access Policy.
 	Name pulumi.StringInput
 	// The unique precedence for policies on a single application.
@@ -426,6 +436,11 @@ func (o AccessPolicyOutput) Excludes() AccessPolicyExcludeArrayOutput {
 // Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 func (o AccessPolicyOutput) Includes() AccessPolicyIncludeArrayOutput {
 	return o.ApplyT(func(v *AccessPolicy) AccessPolicyIncludeArrayOutput { return v.Includes }).(AccessPolicyIncludeArrayOutput)
+}
+
+// Require this application to be served in an isolated browser for users matching this policy.
+func (o AccessPolicyOutput) IsolationRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessPolicy) pulumi.BoolPtrOutput { return v.IsolationRequired }).(pulumi.BoolPtrOutput)
 }
 
 // Friendly name of the Access Policy.

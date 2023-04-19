@@ -3,13 +3,14 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.RulesetRuleActionParameters;
+import com.pulumi.cloudflare.outputs.RulesetRuleActionParameter;
 import com.pulumi.cloudflare.outputs.RulesetRuleExposedCredentialCheck;
 import com.pulumi.cloudflare.outputs.RulesetRuleLogging;
 import com.pulumi.cloudflare.outputs.RulesetRuleRatelimit;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,7 +18,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRule {
     /**
-     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
+     * @return Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
      * 
      */
     private @Nullable String action;
@@ -25,7 +26,7 @@ public final class RulesetRule {
      * @return List of parameters that configure the behavior of the ruleset rule action.
      * 
      */
-    private @Nullable RulesetRuleActionParameters actionParameters;
+    private List<RulesetRuleActionParameter> actionParameters;
     /**
      * @return Brief summary of the ruleset rule and its intended use.
      * 
@@ -40,7 +41,7 @@ public final class RulesetRule {
      * @return List of parameters that configure exposed credential checks.
      * 
      */
-    private @Nullable RulesetRuleExposedCredentialCheck exposedCredentialCheck;
+    private List<RulesetRuleExposedCredentialCheck> exposedCredentialChecks;
     /**
      * @return Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
      * 
@@ -60,12 +61,12 @@ public final class RulesetRule {
      * @return List parameters to configure how the rule generates logs.
      * 
      */
-    private @Nullable RulesetRuleLogging logging;
+    private List<RulesetRuleLogging> loggings;
     /**
      * @return List of parameters that configure HTTP rate limiting behaviour.
      * 
      */
-    private @Nullable RulesetRuleRatelimit ratelimit;
+    private List<RulesetRuleRatelimit> ratelimits;
     /**
      * @return Rule reference.
      * 
@@ -79,7 +80,7 @@ public final class RulesetRule {
 
     private RulesetRule() {}
     /**
-     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
+     * @return Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
      * 
      */
     public Optional<String> action() {
@@ -89,8 +90,8 @@ public final class RulesetRule {
      * @return List of parameters that configure the behavior of the ruleset rule action.
      * 
      */
-    public Optional<RulesetRuleActionParameters> actionParameters() {
-        return Optional.ofNullable(this.actionParameters);
+    public List<RulesetRuleActionParameter> actionParameters() {
+        return this.actionParameters;
     }
     /**
      * @return Brief summary of the ruleset rule and its intended use.
@@ -110,8 +111,8 @@ public final class RulesetRule {
      * @return List of parameters that configure exposed credential checks.
      * 
      */
-    public Optional<RulesetRuleExposedCredentialCheck> exposedCredentialCheck() {
-        return Optional.ofNullable(this.exposedCredentialCheck);
+    public List<RulesetRuleExposedCredentialCheck> exposedCredentialChecks() {
+        return this.exposedCredentialChecks;
     }
     /**
      * @return Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
@@ -138,15 +139,15 @@ public final class RulesetRule {
      * @return List parameters to configure how the rule generates logs.
      * 
      */
-    public Optional<RulesetRuleLogging> logging() {
-        return Optional.ofNullable(this.logging);
+    public List<RulesetRuleLogging> loggings() {
+        return this.loggings;
     }
     /**
      * @return List of parameters that configure HTTP rate limiting behaviour.
      * 
      */
-    public Optional<RulesetRuleRatelimit> ratelimit() {
-        return Optional.ofNullable(this.ratelimit);
+    public List<RulesetRuleRatelimit> ratelimits() {
+        return this.ratelimits;
     }
     /**
      * @return Rule reference.
@@ -173,15 +174,15 @@ public final class RulesetRule {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String action;
-        private @Nullable RulesetRuleActionParameters actionParameters;
+        private List<RulesetRuleActionParameter> actionParameters;
         private @Nullable String description;
         private @Nullable Boolean enabled;
-        private @Nullable RulesetRuleExposedCredentialCheck exposedCredentialCheck;
+        private List<RulesetRuleExposedCredentialCheck> exposedCredentialChecks;
         private String expression;
         private @Nullable String id;
         private @Nullable String lastUpdated;
-        private @Nullable RulesetRuleLogging logging;
-        private @Nullable RulesetRuleRatelimit ratelimit;
+        private List<RulesetRuleLogging> loggings;
+        private List<RulesetRuleRatelimit> ratelimits;
         private @Nullable String ref;
         private @Nullable String version;
         public Builder() {}
@@ -191,12 +192,12 @@ public final class RulesetRule {
     	      this.actionParameters = defaults.actionParameters;
     	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
-    	      this.exposedCredentialCheck = defaults.exposedCredentialCheck;
+    	      this.exposedCredentialChecks = defaults.exposedCredentialChecks;
     	      this.expression = defaults.expression;
     	      this.id = defaults.id;
     	      this.lastUpdated = defaults.lastUpdated;
-    	      this.logging = defaults.logging;
-    	      this.ratelimit = defaults.ratelimit;
+    	      this.loggings = defaults.loggings;
+    	      this.ratelimits = defaults.ratelimits;
     	      this.ref = defaults.ref;
     	      this.version = defaults.version;
         }
@@ -207,9 +208,12 @@ public final class RulesetRule {
             return this;
         }
         @CustomType.Setter
-        public Builder actionParameters(@Nullable RulesetRuleActionParameters actionParameters) {
-            this.actionParameters = actionParameters;
+        public Builder actionParameters(List<RulesetRuleActionParameter> actionParameters) {
+            this.actionParameters = Objects.requireNonNull(actionParameters);
             return this;
+        }
+        public Builder actionParameters(RulesetRuleActionParameter... actionParameters) {
+            return actionParameters(List.of(actionParameters));
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
@@ -222,9 +226,12 @@ public final class RulesetRule {
             return this;
         }
         @CustomType.Setter
-        public Builder exposedCredentialCheck(@Nullable RulesetRuleExposedCredentialCheck exposedCredentialCheck) {
-            this.exposedCredentialCheck = exposedCredentialCheck;
+        public Builder exposedCredentialChecks(List<RulesetRuleExposedCredentialCheck> exposedCredentialChecks) {
+            this.exposedCredentialChecks = Objects.requireNonNull(exposedCredentialChecks);
             return this;
+        }
+        public Builder exposedCredentialChecks(RulesetRuleExposedCredentialCheck... exposedCredentialChecks) {
+            return exposedCredentialChecks(List.of(exposedCredentialChecks));
         }
         @CustomType.Setter
         public Builder expression(String expression) {
@@ -242,14 +249,20 @@ public final class RulesetRule {
             return this;
         }
         @CustomType.Setter
-        public Builder logging(@Nullable RulesetRuleLogging logging) {
-            this.logging = logging;
+        public Builder loggings(List<RulesetRuleLogging> loggings) {
+            this.loggings = Objects.requireNonNull(loggings);
             return this;
         }
+        public Builder loggings(RulesetRuleLogging... loggings) {
+            return loggings(List.of(loggings));
+        }
         @CustomType.Setter
-        public Builder ratelimit(@Nullable RulesetRuleRatelimit ratelimit) {
-            this.ratelimit = ratelimit;
+        public Builder ratelimits(List<RulesetRuleRatelimit> ratelimits) {
+            this.ratelimits = Objects.requireNonNull(ratelimits);
             return this;
+        }
+        public Builder ratelimits(RulesetRuleRatelimit... ratelimits) {
+            return ratelimits(List.of(ratelimits));
         }
         @CustomType.Setter
         public Builder ref(@Nullable String ref) {
@@ -267,12 +280,12 @@ public final class RulesetRule {
             o.actionParameters = actionParameters;
             o.description = description;
             o.enabled = enabled;
-            o.exposedCredentialCheck = exposedCredentialCheck;
+            o.exposedCredentialChecks = exposedCredentialChecks;
             o.expression = expression;
             o.id = id;
             o.lastUpdated = lastUpdated;
-            o.logging = logging;
-            o.ratelimit = ratelimit;
+            o.loggings = loggings;
+            o.ratelimits = ratelimits;
             o.ref = ref;
             o.version = version;
             return o;

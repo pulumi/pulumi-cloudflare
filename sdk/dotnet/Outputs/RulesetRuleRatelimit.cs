@@ -14,31 +14,31 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleRatelimit
     {
         public readonly ImmutableArray<string> Characteristics;
-        public readonly string? CountingExpression;
-        public readonly int? MitigationTimeout;
-        public readonly int? Period;
-        public readonly int? RequestsPerPeriod;
-        public readonly bool? RequestsToOrigin;
-        public readonly int? ScorePerPeriod;
-        public readonly string? ScoreResponseHeaderName;
+        public readonly string CountingExpression;
+        public readonly int MitigationTimeout;
+        public readonly int Period;
+        public readonly int RequestsPerPeriod;
+        public readonly bool RequestsToOrigin;
+        public readonly int ScorePerPeriod;
+        public readonly string ScoreResponseHeaderName;
 
         [OutputConstructor]
         private RulesetRuleRatelimit(
             ImmutableArray<string> characteristics,
 
-            string? countingExpression,
+            string countingExpression,
 
-            int? mitigationTimeout,
+            int mitigationTimeout,
 
-            int? period,
+            int period,
 
-            int? requestsPerPeriod,
+            int requestsPerPeriod,
 
-            bool? requestsToOrigin,
+            bool requestsToOrigin,
 
-            int? scorePerPeriod,
+            int scorePerPeriod,
 
-            string? scoreResponseHeaderName)
+            string scoreResponseHeaderName)
         {
             Characteristics = characteristics;
             CountingExpression = countingExpression;

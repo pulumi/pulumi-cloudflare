@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class DevicePostureRuleInput
     {
         /// <summary>
+        /// Specific volume(s) to check for encryption.
+        /// </summary>
+        public readonly ImmutableArray<string> CheckDisks;
+        /// <summary>
         /// The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
         /// </summary>
         public readonly string? ComplianceStatus;
@@ -92,6 +96,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private DevicePostureRuleInput(
+            ImmutableArray<string> checkDisks,
+
             string? complianceStatus,
 
             string? connectionId,
@@ -130,6 +136,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? versionOperator)
         {
+            CheckDisks = checkDisks;
             ComplianceStatus = complianceStatus;
             ConnectionId = connectionId;
             Domain = domain;

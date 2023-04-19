@@ -12,11 +12,8 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleLoggingGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
-
-        [Input("status")]
-        public Input<string>? Status { get; set; }
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
 
         public RulesetRuleLoggingGetArgs()
         {

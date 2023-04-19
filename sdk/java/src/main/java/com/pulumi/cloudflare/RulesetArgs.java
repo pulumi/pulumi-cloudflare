@@ -18,14 +18,14 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
     public static final RulesetArgs Empty = new RulesetArgs();
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * The account identifier to target for the resource.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -63,14 +63,14 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * Name of the ruleset.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * @return Name of the ruleset.
      * 
      */
     public Output<String> name() {
@@ -123,14 +123,14 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
+     * The zone identifier to target for the resource.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
+     * @return The zone identifier to target for the resource.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -169,7 +169,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+         * @param name Name of the ruleset.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+         * @param name Name of the ruleset.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The zone identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The zone identifier to target for the resource.
          * 
          * @return builder
          * 

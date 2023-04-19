@@ -63,7 +63,7 @@ type TeamsRule struct {
 
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
+	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`.
 	Action pulumi.StringOutput `pulumi:"action"`
 	// The description of the teams rule.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -132,7 +132,7 @@ func GetTeamsRule(ctx *pulumi.Context,
 type teamsRuleState struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
+	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`.
 	Action *string `pulumi:"action"`
 	// The description of the teams rule.
 	Description *string `pulumi:"description"`
@@ -158,7 +158,7 @@ type teamsRuleState struct {
 type TeamsRuleState struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
+	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`.
 	Action pulumi.StringPtrInput
 	// The description of the teams rule.
 	Description pulumi.StringPtrInput
@@ -188,7 +188,7 @@ func (TeamsRuleState) ElementType() reflect.Type {
 type teamsRuleArgs struct {
 	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
-	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
+	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`.
 	Action string `pulumi:"action"`
 	// The description of the teams rule.
 	Description string `pulumi:"description"`
@@ -214,7 +214,7 @@ type teamsRuleArgs struct {
 type TeamsRuleArgs struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
+	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`.
 	Action pulumi.StringInput
 	// The description of the teams rule.
 	Description pulumi.StringInput
@@ -328,7 +328,7 @@ func (o TeamsRuleOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
+// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`.
 func (o TeamsRuleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }

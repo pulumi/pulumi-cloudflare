@@ -10,68 +10,66 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleRatelimitArgs Empty = new RulesetRuleRatelimitArgs();
 
-    @Import(name="characteristics")
-    private @Nullable Output<List<String>> characteristics;
+    @Import(name="characteristics", required=true)
+    private Output<List<String>> characteristics;
 
-    public Optional<Output<List<String>>> characteristics() {
-        return Optional.ofNullable(this.characteristics);
+    public Output<List<String>> characteristics() {
+        return this.characteristics;
     }
 
-    @Import(name="countingExpression")
-    private @Nullable Output<String> countingExpression;
+    @Import(name="countingExpression", required=true)
+    private Output<String> countingExpression;
 
-    public Optional<Output<String>> countingExpression() {
-        return Optional.ofNullable(this.countingExpression);
+    public Output<String> countingExpression() {
+        return this.countingExpression;
     }
 
-    @Import(name="mitigationTimeout")
-    private @Nullable Output<Integer> mitigationTimeout;
+    @Import(name="mitigationTimeout", required=true)
+    private Output<Integer> mitigationTimeout;
 
-    public Optional<Output<Integer>> mitigationTimeout() {
-        return Optional.ofNullable(this.mitigationTimeout);
+    public Output<Integer> mitigationTimeout() {
+        return this.mitigationTimeout;
     }
 
-    @Import(name="period")
-    private @Nullable Output<Integer> period;
+    @Import(name="period", required=true)
+    private Output<Integer> period;
 
-    public Optional<Output<Integer>> period() {
-        return Optional.ofNullable(this.period);
+    public Output<Integer> period() {
+        return this.period;
     }
 
-    @Import(name="requestsPerPeriod")
-    private @Nullable Output<Integer> requestsPerPeriod;
+    @Import(name="requestsPerPeriod", required=true)
+    private Output<Integer> requestsPerPeriod;
 
-    public Optional<Output<Integer>> requestsPerPeriod() {
-        return Optional.ofNullable(this.requestsPerPeriod);
+    public Output<Integer> requestsPerPeriod() {
+        return this.requestsPerPeriod;
     }
 
-    @Import(name="requestsToOrigin")
-    private @Nullable Output<Boolean> requestsToOrigin;
+    @Import(name="requestsToOrigin", required=true)
+    private Output<Boolean> requestsToOrigin;
 
-    public Optional<Output<Boolean>> requestsToOrigin() {
-        return Optional.ofNullable(this.requestsToOrigin);
+    public Output<Boolean> requestsToOrigin() {
+        return this.requestsToOrigin;
     }
 
-    @Import(name="scorePerPeriod")
-    private @Nullable Output<Integer> scorePerPeriod;
+    @Import(name="scorePerPeriod", required=true)
+    private Output<Integer> scorePerPeriod;
 
-    public Optional<Output<Integer>> scorePerPeriod() {
-        return Optional.ofNullable(this.scorePerPeriod);
+    public Output<Integer> scorePerPeriod() {
+        return this.scorePerPeriod;
     }
 
-    @Import(name="scoreResponseHeaderName")
-    private @Nullable Output<String> scoreResponseHeaderName;
+    @Import(name="scoreResponseHeaderName", required=true)
+    private Output<String> scoreResponseHeaderName;
 
-    public Optional<Output<String>> scoreResponseHeaderName() {
-        return Optional.ofNullable(this.scoreResponseHeaderName);
+    public Output<String> scoreResponseHeaderName() {
+        return this.scoreResponseHeaderName;
     }
 
     private RulesetRuleRatelimitArgs() {}
@@ -105,7 +103,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
             $ = new RulesetRuleRatelimitArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder characteristics(@Nullable Output<List<String>> characteristics) {
+        public Builder characteristics(Output<List<String>> characteristics) {
             $.characteristics = characteristics;
             return this;
         }
@@ -118,7 +116,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
             return characteristics(List.of(characteristics));
         }
 
-        public Builder countingExpression(@Nullable Output<String> countingExpression) {
+        public Builder countingExpression(Output<String> countingExpression) {
             $.countingExpression = countingExpression;
             return this;
         }
@@ -127,7 +125,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
             return countingExpression(Output.of(countingExpression));
         }
 
-        public Builder mitigationTimeout(@Nullable Output<Integer> mitigationTimeout) {
+        public Builder mitigationTimeout(Output<Integer> mitigationTimeout) {
             $.mitigationTimeout = mitigationTimeout;
             return this;
         }
@@ -136,7 +134,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
             return mitigationTimeout(Output.of(mitigationTimeout));
         }
 
-        public Builder period(@Nullable Output<Integer> period) {
+        public Builder period(Output<Integer> period) {
             $.period = period;
             return this;
         }
@@ -145,7 +143,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
             return period(Output.of(period));
         }
 
-        public Builder requestsPerPeriod(@Nullable Output<Integer> requestsPerPeriod) {
+        public Builder requestsPerPeriod(Output<Integer> requestsPerPeriod) {
             $.requestsPerPeriod = requestsPerPeriod;
             return this;
         }
@@ -154,7 +152,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
             return requestsPerPeriod(Output.of(requestsPerPeriod));
         }
 
-        public Builder requestsToOrigin(@Nullable Output<Boolean> requestsToOrigin) {
+        public Builder requestsToOrigin(Output<Boolean> requestsToOrigin) {
             $.requestsToOrigin = requestsToOrigin;
             return this;
         }
@@ -163,7 +161,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
             return requestsToOrigin(Output.of(requestsToOrigin));
         }
 
-        public Builder scorePerPeriod(@Nullable Output<Integer> scorePerPeriod) {
+        public Builder scorePerPeriod(Output<Integer> scorePerPeriod) {
             $.scorePerPeriod = scorePerPeriod;
             return this;
         }
@@ -172,7 +170,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
             return scorePerPeriod(Output.of(scorePerPeriod));
         }
 
-        public Builder scoreResponseHeaderName(@Nullable Output<String> scoreResponseHeaderName) {
+        public Builder scoreResponseHeaderName(Output<String> scoreResponseHeaderName) {
             $.scoreResponseHeaderName = scoreResponseHeaderName;
             return this;
         }
@@ -182,6 +180,14 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         public RulesetRuleRatelimitArgs build() {
+            $.characteristics = Objects.requireNonNull($.characteristics, "expected parameter 'characteristics' to be non-null");
+            $.countingExpression = Objects.requireNonNull($.countingExpression, "expected parameter 'countingExpression' to be non-null");
+            $.mitigationTimeout = Objects.requireNonNull($.mitigationTimeout, "expected parameter 'mitigationTimeout' to be non-null");
+            $.period = Objects.requireNonNull($.period, "expected parameter 'period' to be non-null");
+            $.requestsPerPeriod = Objects.requireNonNull($.requestsPerPeriod, "expected parameter 'requestsPerPeriod' to be non-null");
+            $.requestsToOrigin = Objects.requireNonNull($.requestsToOrigin, "expected parameter 'requestsToOrigin' to be non-null");
+            $.scorePerPeriod = Objects.requireNonNull($.scorePerPeriod, "expected parameter 'scorePerPeriod' to be non-null");
+            $.scoreResponseHeaderName = Objects.requireNonNull($.scoreResponseHeaderName, "expected parameter 'scoreResponseHeaderName' to be non-null");
             return $;
         }
     }

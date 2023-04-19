@@ -2966,6 +2966,7 @@ type AccessIdentityProviderConfig struct {
 	CentrifyAccount    *string  `pulumi:"centrifyAccount"`
 	CentrifyAppId      *string  `pulumi:"centrifyAppId"`
 	CertsUrl           *string  `pulumi:"certsUrl"`
+	Claims             []string `pulumi:"claims"`
 	ClientId           *string  `pulumi:"clientId"`
 	ClientSecret       *string  `pulumi:"clientSecret"`
 	DirectoryId        *string  `pulumi:"directoryId"`
@@ -2976,6 +2977,7 @@ type AccessIdentityProviderConfig struct {
 	OneloginAccount    *string  `pulumi:"oneloginAccount"`
 	PkceEnabled        *bool    `pulumi:"pkceEnabled"`
 	RedirectUrl        *string  `pulumi:"redirectUrl"`
+	Scopes             []string `pulumi:"scopes"`
 	SignRequest        *bool    `pulumi:"signRequest"`
 	SsoTargetUrl       *string  `pulumi:"ssoTargetUrl"`
 	SupportGroups      *bool    `pulumi:"supportGroups"`
@@ -3001,6 +3003,7 @@ type AccessIdentityProviderConfigArgs struct {
 	CentrifyAccount    pulumi.StringPtrInput   `pulumi:"centrifyAccount"`
 	CentrifyAppId      pulumi.StringPtrInput   `pulumi:"centrifyAppId"`
 	CertsUrl           pulumi.StringPtrInput   `pulumi:"certsUrl"`
+	Claims             pulumi.StringArrayInput `pulumi:"claims"`
 	ClientId           pulumi.StringPtrInput   `pulumi:"clientId"`
 	ClientSecret       pulumi.StringPtrInput   `pulumi:"clientSecret"`
 	DirectoryId        pulumi.StringPtrInput   `pulumi:"directoryId"`
@@ -3011,6 +3014,7 @@ type AccessIdentityProviderConfigArgs struct {
 	OneloginAccount    pulumi.StringPtrInput   `pulumi:"oneloginAccount"`
 	PkceEnabled        pulumi.BoolPtrInput     `pulumi:"pkceEnabled"`
 	RedirectUrl        pulumi.StringPtrInput   `pulumi:"redirectUrl"`
+	Scopes             pulumi.StringArrayInput `pulumi:"scopes"`
 	SignRequest        pulumi.BoolPtrInput     `pulumi:"signRequest"`
 	SsoTargetUrl       pulumi.StringPtrInput   `pulumi:"ssoTargetUrl"`
 	SupportGroups      pulumi.BoolPtrInput     `pulumi:"supportGroups"`
@@ -3096,6 +3100,10 @@ func (o AccessIdentityProviderConfigOutput) CertsUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.CertsUrl }).(pulumi.StringPtrOutput)
 }
 
+func (o AccessIdentityProviderConfigOutput) Claims() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessIdentityProviderConfig) []string { return v.Claims }).(pulumi.StringArrayOutput)
+}
+
 func (o AccessIdentityProviderConfigOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
@@ -3136,6 +3144,10 @@ func (o AccessIdentityProviderConfigOutput) RedirectUrl() pulumi.StringPtrOutput
 	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.RedirectUrl }).(pulumi.StringPtrOutput)
 }
 
+func (o AccessIdentityProviderConfigOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessIdentityProviderConfig) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
 func (o AccessIdentityProviderConfigOutput) SignRequest() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderConfig) *bool { return v.SignRequest }).(pulumi.BoolPtrOutput)
 }
@@ -3170,6 +3182,124 @@ func (o AccessIdentityProviderConfigArrayOutput) Index(i pulumi.IntInput) Access
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessIdentityProviderConfig {
 		return vs[0].([]AccessIdentityProviderConfig)[vs[1].(int)]
 	}).(AccessIdentityProviderConfigOutput)
+}
+
+type AccessIdentityProviderScimConfig struct {
+	Enabled                *bool   `pulumi:"enabled"`
+	GroupMemberDeprovision *bool   `pulumi:"groupMemberDeprovision"`
+	SeatDeprovision        *bool   `pulumi:"seatDeprovision"`
+	Secret                 *string `pulumi:"secret"`
+	UserDeprovision        *bool   `pulumi:"userDeprovision"`
+}
+
+// AccessIdentityProviderScimConfigInput is an input type that accepts AccessIdentityProviderScimConfigArgs and AccessIdentityProviderScimConfigOutput values.
+// You can construct a concrete instance of `AccessIdentityProviderScimConfigInput` via:
+//
+//	AccessIdentityProviderScimConfigArgs{...}
+type AccessIdentityProviderScimConfigInput interface {
+	pulumi.Input
+
+	ToAccessIdentityProviderScimConfigOutput() AccessIdentityProviderScimConfigOutput
+	ToAccessIdentityProviderScimConfigOutputWithContext(context.Context) AccessIdentityProviderScimConfigOutput
+}
+
+type AccessIdentityProviderScimConfigArgs struct {
+	Enabled                pulumi.BoolPtrInput   `pulumi:"enabled"`
+	GroupMemberDeprovision pulumi.BoolPtrInput   `pulumi:"groupMemberDeprovision"`
+	SeatDeprovision        pulumi.BoolPtrInput   `pulumi:"seatDeprovision"`
+	Secret                 pulumi.StringPtrInput `pulumi:"secret"`
+	UserDeprovision        pulumi.BoolPtrInput   `pulumi:"userDeprovision"`
+}
+
+func (AccessIdentityProviderScimConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessIdentityProviderScimConfig)(nil)).Elem()
+}
+
+func (i AccessIdentityProviderScimConfigArgs) ToAccessIdentityProviderScimConfigOutput() AccessIdentityProviderScimConfigOutput {
+	return i.ToAccessIdentityProviderScimConfigOutputWithContext(context.Background())
+}
+
+func (i AccessIdentityProviderScimConfigArgs) ToAccessIdentityProviderScimConfigOutputWithContext(ctx context.Context) AccessIdentityProviderScimConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessIdentityProviderScimConfigOutput)
+}
+
+// AccessIdentityProviderScimConfigArrayInput is an input type that accepts AccessIdentityProviderScimConfigArray and AccessIdentityProviderScimConfigArrayOutput values.
+// You can construct a concrete instance of `AccessIdentityProviderScimConfigArrayInput` via:
+//
+//	AccessIdentityProviderScimConfigArray{ AccessIdentityProviderScimConfigArgs{...} }
+type AccessIdentityProviderScimConfigArrayInput interface {
+	pulumi.Input
+
+	ToAccessIdentityProviderScimConfigArrayOutput() AccessIdentityProviderScimConfigArrayOutput
+	ToAccessIdentityProviderScimConfigArrayOutputWithContext(context.Context) AccessIdentityProviderScimConfigArrayOutput
+}
+
+type AccessIdentityProviderScimConfigArray []AccessIdentityProviderScimConfigInput
+
+func (AccessIdentityProviderScimConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessIdentityProviderScimConfig)(nil)).Elem()
+}
+
+func (i AccessIdentityProviderScimConfigArray) ToAccessIdentityProviderScimConfigArrayOutput() AccessIdentityProviderScimConfigArrayOutput {
+	return i.ToAccessIdentityProviderScimConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AccessIdentityProviderScimConfigArray) ToAccessIdentityProviderScimConfigArrayOutputWithContext(ctx context.Context) AccessIdentityProviderScimConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessIdentityProviderScimConfigArrayOutput)
+}
+
+type AccessIdentityProviderScimConfigOutput struct{ *pulumi.OutputState }
+
+func (AccessIdentityProviderScimConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessIdentityProviderScimConfig)(nil)).Elem()
+}
+
+func (o AccessIdentityProviderScimConfigOutput) ToAccessIdentityProviderScimConfigOutput() AccessIdentityProviderScimConfigOutput {
+	return o
+}
+
+func (o AccessIdentityProviderScimConfigOutput) ToAccessIdentityProviderScimConfigOutputWithContext(ctx context.Context) AccessIdentityProviderScimConfigOutput {
+	return o
+}
+
+func (o AccessIdentityProviderScimConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessIdentityProviderScimConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessIdentityProviderScimConfigOutput) GroupMemberDeprovision() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessIdentityProviderScimConfig) *bool { return v.GroupMemberDeprovision }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessIdentityProviderScimConfigOutput) SeatDeprovision() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessIdentityProviderScimConfig) *bool { return v.SeatDeprovision }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessIdentityProviderScimConfigOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessIdentityProviderScimConfig) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessIdentityProviderScimConfigOutput) UserDeprovision() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessIdentityProviderScimConfig) *bool { return v.UserDeprovision }).(pulumi.BoolPtrOutput)
+}
+
+type AccessIdentityProviderScimConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessIdentityProviderScimConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessIdentityProviderScimConfig)(nil)).Elem()
+}
+
+func (o AccessIdentityProviderScimConfigArrayOutput) ToAccessIdentityProviderScimConfigArrayOutput() AccessIdentityProviderScimConfigArrayOutput {
+	return o
+}
+
+func (o AccessIdentityProviderScimConfigArrayOutput) ToAccessIdentityProviderScimConfigArrayOutputWithContext(ctx context.Context) AccessIdentityProviderScimConfigArrayOutput {
+	return o
+}
+
+func (o AccessIdentityProviderScimConfigArrayOutput) Index(i pulumi.IntInput) AccessIdentityProviderScimConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessIdentityProviderScimConfig {
+		return vs[0].([]AccessIdentityProviderScimConfig)[vs[1].(int)]
+	}).(AccessIdentityProviderScimConfigOutput)
 }
 
 type AccessOrganizationLoginDesign struct {
@@ -6204,6 +6334,218 @@ func (o AccessRuleConfigurationPtrOutput) Value() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AddressMapIp struct {
+	// An IPv4 or IPv6 address.
+	Ip string `pulumi:"ip"`
+}
+
+// AddressMapIpInput is an input type that accepts AddressMapIpArgs and AddressMapIpOutput values.
+// You can construct a concrete instance of `AddressMapIpInput` via:
+//
+//	AddressMapIpArgs{...}
+type AddressMapIpInput interface {
+	pulumi.Input
+
+	ToAddressMapIpOutput() AddressMapIpOutput
+	ToAddressMapIpOutputWithContext(context.Context) AddressMapIpOutput
+}
+
+type AddressMapIpArgs struct {
+	// An IPv4 or IPv6 address.
+	Ip pulumi.StringInput `pulumi:"ip"`
+}
+
+func (AddressMapIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressMapIp)(nil)).Elem()
+}
+
+func (i AddressMapIpArgs) ToAddressMapIpOutput() AddressMapIpOutput {
+	return i.ToAddressMapIpOutputWithContext(context.Background())
+}
+
+func (i AddressMapIpArgs) ToAddressMapIpOutputWithContext(ctx context.Context) AddressMapIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressMapIpOutput)
+}
+
+// AddressMapIpArrayInput is an input type that accepts AddressMapIpArray and AddressMapIpArrayOutput values.
+// You can construct a concrete instance of `AddressMapIpArrayInput` via:
+//
+//	AddressMapIpArray{ AddressMapIpArgs{...} }
+type AddressMapIpArrayInput interface {
+	pulumi.Input
+
+	ToAddressMapIpArrayOutput() AddressMapIpArrayOutput
+	ToAddressMapIpArrayOutputWithContext(context.Context) AddressMapIpArrayOutput
+}
+
+type AddressMapIpArray []AddressMapIpInput
+
+func (AddressMapIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AddressMapIp)(nil)).Elem()
+}
+
+func (i AddressMapIpArray) ToAddressMapIpArrayOutput() AddressMapIpArrayOutput {
+	return i.ToAddressMapIpArrayOutputWithContext(context.Background())
+}
+
+func (i AddressMapIpArray) ToAddressMapIpArrayOutputWithContext(ctx context.Context) AddressMapIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressMapIpArrayOutput)
+}
+
+type AddressMapIpOutput struct{ *pulumi.OutputState }
+
+func (AddressMapIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressMapIp)(nil)).Elem()
+}
+
+func (o AddressMapIpOutput) ToAddressMapIpOutput() AddressMapIpOutput {
+	return o
+}
+
+func (o AddressMapIpOutput) ToAddressMapIpOutputWithContext(ctx context.Context) AddressMapIpOutput {
+	return o
+}
+
+// An IPv4 or IPv6 address.
+func (o AddressMapIpOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v AddressMapIp) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+type AddressMapIpArrayOutput struct{ *pulumi.OutputState }
+
+func (AddressMapIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AddressMapIp)(nil)).Elem()
+}
+
+func (o AddressMapIpArrayOutput) ToAddressMapIpArrayOutput() AddressMapIpArrayOutput {
+	return o
+}
+
+func (o AddressMapIpArrayOutput) ToAddressMapIpArrayOutputWithContext(ctx context.Context) AddressMapIpArrayOutput {
+	return o
+}
+
+func (o AddressMapIpArrayOutput) Index(i pulumi.IntInput) AddressMapIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AddressMapIp {
+		return vs[0].([]AddressMapIp)[vs[1].(int)]
+	}).(AddressMapIpOutput)
+}
+
+type AddressMapMembership struct {
+	// Controls whether the membership can be deleted via the API or not.
+	CanDelete *bool `pulumi:"canDelete"`
+	// Identifier of the account or zone.
+	Identifier string `pulumi:"identifier"`
+	// The type of the membership.
+	Kind string `pulumi:"kind"`
+}
+
+// AddressMapMembershipInput is an input type that accepts AddressMapMembershipArgs and AddressMapMembershipOutput values.
+// You can construct a concrete instance of `AddressMapMembershipInput` via:
+//
+//	AddressMapMembershipArgs{...}
+type AddressMapMembershipInput interface {
+	pulumi.Input
+
+	ToAddressMapMembershipOutput() AddressMapMembershipOutput
+	ToAddressMapMembershipOutputWithContext(context.Context) AddressMapMembershipOutput
+}
+
+type AddressMapMembershipArgs struct {
+	// Controls whether the membership can be deleted via the API or not.
+	CanDelete pulumi.BoolPtrInput `pulumi:"canDelete"`
+	// Identifier of the account or zone.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// The type of the membership.
+	Kind pulumi.StringInput `pulumi:"kind"`
+}
+
+func (AddressMapMembershipArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressMapMembership)(nil)).Elem()
+}
+
+func (i AddressMapMembershipArgs) ToAddressMapMembershipOutput() AddressMapMembershipOutput {
+	return i.ToAddressMapMembershipOutputWithContext(context.Background())
+}
+
+func (i AddressMapMembershipArgs) ToAddressMapMembershipOutputWithContext(ctx context.Context) AddressMapMembershipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressMapMembershipOutput)
+}
+
+// AddressMapMembershipArrayInput is an input type that accepts AddressMapMembershipArray and AddressMapMembershipArrayOutput values.
+// You can construct a concrete instance of `AddressMapMembershipArrayInput` via:
+//
+//	AddressMapMembershipArray{ AddressMapMembershipArgs{...} }
+type AddressMapMembershipArrayInput interface {
+	pulumi.Input
+
+	ToAddressMapMembershipArrayOutput() AddressMapMembershipArrayOutput
+	ToAddressMapMembershipArrayOutputWithContext(context.Context) AddressMapMembershipArrayOutput
+}
+
+type AddressMapMembershipArray []AddressMapMembershipInput
+
+func (AddressMapMembershipArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AddressMapMembership)(nil)).Elem()
+}
+
+func (i AddressMapMembershipArray) ToAddressMapMembershipArrayOutput() AddressMapMembershipArrayOutput {
+	return i.ToAddressMapMembershipArrayOutputWithContext(context.Background())
+}
+
+func (i AddressMapMembershipArray) ToAddressMapMembershipArrayOutputWithContext(ctx context.Context) AddressMapMembershipArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressMapMembershipArrayOutput)
+}
+
+type AddressMapMembershipOutput struct{ *pulumi.OutputState }
+
+func (AddressMapMembershipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressMapMembership)(nil)).Elem()
+}
+
+func (o AddressMapMembershipOutput) ToAddressMapMembershipOutput() AddressMapMembershipOutput {
+	return o
+}
+
+func (o AddressMapMembershipOutput) ToAddressMapMembershipOutputWithContext(ctx context.Context) AddressMapMembershipOutput {
+	return o
+}
+
+// Controls whether the membership can be deleted via the API or not.
+func (o AddressMapMembershipOutput) CanDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressMapMembership) *bool { return v.CanDelete }).(pulumi.BoolPtrOutput)
+}
+
+// Identifier of the account or zone.
+func (o AddressMapMembershipOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v AddressMapMembership) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// The type of the membership.
+func (o AddressMapMembershipOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v AddressMapMembership) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+type AddressMapMembershipArrayOutput struct{ *pulumi.OutputState }
+
+func (AddressMapMembershipArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AddressMapMembership)(nil)).Elem()
+}
+
+func (o AddressMapMembershipArrayOutput) ToAddressMapMembershipArrayOutput() AddressMapMembershipArrayOutput {
+	return o
+}
+
+func (o AddressMapMembershipArrayOutput) ToAddressMapMembershipArrayOutputWithContext(ctx context.Context) AddressMapMembershipArrayOutput {
+	return o
+}
+
+func (o AddressMapMembershipArrayOutput) Index(i pulumi.IntInput) AddressMapMembershipOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AddressMapMembership {
+		return vs[0].([]AddressMapMembership)[vs[1].(int)]
+	}).(AddressMapMembershipOutput)
+}
+
 type ApiShieldAuthIdCharacteristic struct {
 	// The name of the characteristic.
 	Name *string `pulumi:"name"`
@@ -7761,6 +8103,181 @@ func (o CustomSslCustomSslPriorityArrayOutput) Index(i pulumi.IntInput) CustomSs
 	}).(CustomSslCustomSslPriorityOutput)
 }
 
+type DeviceDexTestData struct {
+	// The host URL for `http` test `kind`. For `traceroute`, it must be a valid hostname or IP address.
+	Host string `pulumi:"host"`
+	// The type of Device Dex Test. Available values: `http`, `traceroute`.
+	Kind string `pulumi:"kind"`
+	// The http request method. Available values: `GET`.
+	Method *string `pulumi:"method"`
+}
+
+// DeviceDexTestDataInput is an input type that accepts DeviceDexTestDataArgs and DeviceDexTestDataOutput values.
+// You can construct a concrete instance of `DeviceDexTestDataInput` via:
+//
+//	DeviceDexTestDataArgs{...}
+type DeviceDexTestDataInput interface {
+	pulumi.Input
+
+	ToDeviceDexTestDataOutput() DeviceDexTestDataOutput
+	ToDeviceDexTestDataOutputWithContext(context.Context) DeviceDexTestDataOutput
+}
+
+type DeviceDexTestDataArgs struct {
+	// The host URL for `http` test `kind`. For `traceroute`, it must be a valid hostname or IP address.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The type of Device Dex Test. Available values: `http`, `traceroute`.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The http request method. Available values: `GET`.
+	Method pulumi.StringPtrInput `pulumi:"method"`
+}
+
+func (DeviceDexTestDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceDexTestData)(nil)).Elem()
+}
+
+func (i DeviceDexTestDataArgs) ToDeviceDexTestDataOutput() DeviceDexTestDataOutput {
+	return i.ToDeviceDexTestDataOutputWithContext(context.Background())
+}
+
+func (i DeviceDexTestDataArgs) ToDeviceDexTestDataOutputWithContext(ctx context.Context) DeviceDexTestDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceDexTestDataOutput)
+}
+
+func (i DeviceDexTestDataArgs) ToDeviceDexTestDataPtrOutput() DeviceDexTestDataPtrOutput {
+	return i.ToDeviceDexTestDataPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceDexTestDataArgs) ToDeviceDexTestDataPtrOutputWithContext(ctx context.Context) DeviceDexTestDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceDexTestDataOutput).ToDeviceDexTestDataPtrOutputWithContext(ctx)
+}
+
+// DeviceDexTestDataPtrInput is an input type that accepts DeviceDexTestDataArgs, DeviceDexTestDataPtr and DeviceDexTestDataPtrOutput values.
+// You can construct a concrete instance of `DeviceDexTestDataPtrInput` via:
+//
+//	        DeviceDexTestDataArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeviceDexTestDataPtrInput interface {
+	pulumi.Input
+
+	ToDeviceDexTestDataPtrOutput() DeviceDexTestDataPtrOutput
+	ToDeviceDexTestDataPtrOutputWithContext(context.Context) DeviceDexTestDataPtrOutput
+}
+
+type deviceDexTestDataPtrType DeviceDexTestDataArgs
+
+func DeviceDexTestDataPtr(v *DeviceDexTestDataArgs) DeviceDexTestDataPtrInput {
+	return (*deviceDexTestDataPtrType)(v)
+}
+
+func (*deviceDexTestDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceDexTestData)(nil)).Elem()
+}
+
+func (i *deviceDexTestDataPtrType) ToDeviceDexTestDataPtrOutput() DeviceDexTestDataPtrOutput {
+	return i.ToDeviceDexTestDataPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceDexTestDataPtrType) ToDeviceDexTestDataPtrOutputWithContext(ctx context.Context) DeviceDexTestDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceDexTestDataPtrOutput)
+}
+
+type DeviceDexTestDataOutput struct{ *pulumi.OutputState }
+
+func (DeviceDexTestDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceDexTestData)(nil)).Elem()
+}
+
+func (o DeviceDexTestDataOutput) ToDeviceDexTestDataOutput() DeviceDexTestDataOutput {
+	return o
+}
+
+func (o DeviceDexTestDataOutput) ToDeviceDexTestDataOutputWithContext(ctx context.Context) DeviceDexTestDataOutput {
+	return o
+}
+
+func (o DeviceDexTestDataOutput) ToDeviceDexTestDataPtrOutput() DeviceDexTestDataPtrOutput {
+	return o.ToDeviceDexTestDataPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceDexTestDataOutput) ToDeviceDexTestDataPtrOutputWithContext(ctx context.Context) DeviceDexTestDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceDexTestData) *DeviceDexTestData {
+		return &v
+	}).(DeviceDexTestDataPtrOutput)
+}
+
+// The host URL for `http` test `kind`. For `traceroute`, it must be a valid hostname or IP address.
+func (o DeviceDexTestDataOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceDexTestData) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The type of Device Dex Test. Available values: `http`, `traceroute`.
+func (o DeviceDexTestDataOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceDexTestData) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The http request method. Available values: `GET`.
+func (o DeviceDexTestDataOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceDexTestData) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+type DeviceDexTestDataPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceDexTestDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceDexTestData)(nil)).Elem()
+}
+
+func (o DeviceDexTestDataPtrOutput) ToDeviceDexTestDataPtrOutput() DeviceDexTestDataPtrOutput {
+	return o
+}
+
+func (o DeviceDexTestDataPtrOutput) ToDeviceDexTestDataPtrOutputWithContext(ctx context.Context) DeviceDexTestDataPtrOutput {
+	return o
+}
+
+func (o DeviceDexTestDataPtrOutput) Elem() DeviceDexTestDataOutput {
+	return o.ApplyT(func(v *DeviceDexTestData) DeviceDexTestData {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceDexTestData
+		return ret
+	}).(DeviceDexTestDataOutput)
+}
+
+// The host URL for `http` test `kind`. For `traceroute`, it must be a valid hostname or IP address.
+func (o DeviceDexTestDataPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceDexTestData) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of Device Dex Test. Available values: `http`, `traceroute`.
+func (o DeviceDexTestDataPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceDexTestData) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// The http request method. Available values: `GET`.
+func (o DeviceDexTestDataPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceDexTestData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
 type DeviceManagedNetworksConfig struct {
 	// The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
 	Sha256 string `pulumi:"sha256"`
@@ -8060,6 +8577,8 @@ func (o DevicePostureIntegrationConfigArrayOutput) Index(i pulumi.IntInput) Devi
 }
 
 type DevicePostureRuleInputType struct {
+	// Specific volume(s) to check for encryption.
+	CheckDisks []string `pulumi:"checkDisks"`
 	// The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
 	ComplianceStatus *string `pulumi:"complianceStatus"`
 	// The workspace one connection id.
@@ -8112,6 +8631,8 @@ type DevicePostureRuleInputTypeInput interface {
 }
 
 type DevicePostureRuleInputTypeArgs struct {
+	// Specific volume(s) to check for encryption.
+	CheckDisks pulumi.StringArrayInput `pulumi:"checkDisks"`
 	// The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
 	ComplianceStatus pulumi.StringPtrInput `pulumi:"complianceStatus"`
 	// The workspace one connection id.
@@ -8201,6 +8722,11 @@ func (o DevicePostureRuleInputTypeOutput) ToDevicePostureRuleInputTypeOutput() D
 
 func (o DevicePostureRuleInputTypeOutput) ToDevicePostureRuleInputTypeOutputWithContext(ctx context.Context) DevicePostureRuleInputTypeOutput {
 	return o
+}
+
+// Specific volume(s) to check for encryption.
+func (o DevicePostureRuleInputTypeOutput) CheckDisks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) []string { return v.CheckDisks }).(pulumi.StringArrayOutput)
 }
 
 // The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
@@ -9329,107 +9855,358 @@ func (o HealthcheckHeaderArrayOutput) Index(i pulumi.IntInput) HealthcheckHeader
 	}).(HealthcheckHeaderOutput)
 }
 
-type ListItem struct {
+type ListItemType struct {
 	// An optional comment for the item.
 	Comment *string       `pulumi:"comment"`
 	Value   ListItemValue `pulumi:"value"`
 }
 
-// ListItemInput is an input type that accepts ListItemArgs and ListItemOutput values.
-// You can construct a concrete instance of `ListItemInput` via:
+// ListItemTypeInput is an input type that accepts ListItemTypeArgs and ListItemTypeOutput values.
+// You can construct a concrete instance of `ListItemTypeInput` via:
 //
-//	ListItemArgs{...}
-type ListItemInput interface {
+//	ListItemTypeArgs{...}
+type ListItemTypeInput interface {
 	pulumi.Input
 
-	ToListItemOutput() ListItemOutput
-	ToListItemOutputWithContext(context.Context) ListItemOutput
+	ToListItemTypeOutput() ListItemTypeOutput
+	ToListItemTypeOutputWithContext(context.Context) ListItemTypeOutput
 }
 
-type ListItemArgs struct {
+type ListItemTypeArgs struct {
 	// An optional comment for the item.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
 	Value   ListItemValueInput    `pulumi:"value"`
 }
 
-func (ListItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ListItem)(nil)).Elem()
+func (ListItemTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListItemType)(nil)).Elem()
 }
 
-func (i ListItemArgs) ToListItemOutput() ListItemOutput {
-	return i.ToListItemOutputWithContext(context.Background())
+func (i ListItemTypeArgs) ToListItemTypeOutput() ListItemTypeOutput {
+	return i.ToListItemTypeOutputWithContext(context.Background())
 }
 
-func (i ListItemArgs) ToListItemOutputWithContext(ctx context.Context) ListItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListItemOutput)
+func (i ListItemTypeArgs) ToListItemTypeOutputWithContext(ctx context.Context) ListItemTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListItemTypeOutput)
 }
 
-// ListItemArrayInput is an input type that accepts ListItemArray and ListItemArrayOutput values.
-// You can construct a concrete instance of `ListItemArrayInput` via:
+// ListItemTypeArrayInput is an input type that accepts ListItemTypeArray and ListItemTypeArrayOutput values.
+// You can construct a concrete instance of `ListItemTypeArrayInput` via:
 //
-//	ListItemArray{ ListItemArgs{...} }
-type ListItemArrayInput interface {
+//	ListItemTypeArray{ ListItemTypeArgs{...} }
+type ListItemTypeArrayInput interface {
 	pulumi.Input
 
-	ToListItemArrayOutput() ListItemArrayOutput
-	ToListItemArrayOutputWithContext(context.Context) ListItemArrayOutput
+	ToListItemTypeArrayOutput() ListItemTypeArrayOutput
+	ToListItemTypeArrayOutputWithContext(context.Context) ListItemTypeArrayOutput
 }
 
-type ListItemArray []ListItemInput
+type ListItemTypeArray []ListItemTypeInput
 
-func (ListItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ListItem)(nil)).Elem()
+func (ListItemTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListItemType)(nil)).Elem()
 }
 
-func (i ListItemArray) ToListItemArrayOutput() ListItemArrayOutput {
-	return i.ToListItemArrayOutputWithContext(context.Background())
+func (i ListItemTypeArray) ToListItemTypeArrayOutput() ListItemTypeArrayOutput {
+	return i.ToListItemTypeArrayOutputWithContext(context.Background())
 }
 
-func (i ListItemArray) ToListItemArrayOutputWithContext(ctx context.Context) ListItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListItemArrayOutput)
+func (i ListItemTypeArray) ToListItemTypeArrayOutputWithContext(ctx context.Context) ListItemTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListItemTypeArrayOutput)
 }
 
-type ListItemOutput struct{ *pulumi.OutputState }
+type ListItemTypeOutput struct{ *pulumi.OutputState }
 
-func (ListItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ListItem)(nil)).Elem()
+func (ListItemTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListItemType)(nil)).Elem()
 }
 
-func (o ListItemOutput) ToListItemOutput() ListItemOutput {
+func (o ListItemTypeOutput) ToListItemTypeOutput() ListItemTypeOutput {
 	return o
 }
 
-func (o ListItemOutput) ToListItemOutputWithContext(ctx context.Context) ListItemOutput {
+func (o ListItemTypeOutput) ToListItemTypeOutputWithContext(ctx context.Context) ListItemTypeOutput {
 	return o
 }
 
 // An optional comment for the item.
-func (o ListItemOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ListItem) *string { return v.Comment }).(pulumi.StringPtrOutput)
+func (o ListItemTypeOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListItemType) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-func (o ListItemOutput) Value() ListItemValueOutput {
-	return o.ApplyT(func(v ListItem) ListItemValue { return v.Value }).(ListItemValueOutput)
+func (o ListItemTypeOutput) Value() ListItemValueOutput {
+	return o.ApplyT(func(v ListItemType) ListItemValue { return v.Value }).(ListItemValueOutput)
 }
 
-type ListItemArrayOutput struct{ *pulumi.OutputState }
+type ListItemTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (ListItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ListItem)(nil)).Elem()
+func (ListItemTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListItemType)(nil)).Elem()
 }
 
-func (o ListItemArrayOutput) ToListItemArrayOutput() ListItemArrayOutput {
+func (o ListItemTypeArrayOutput) ToListItemTypeArrayOutput() ListItemTypeArrayOutput {
 	return o
 }
 
-func (o ListItemArrayOutput) ToListItemArrayOutputWithContext(ctx context.Context) ListItemArrayOutput {
+func (o ListItemTypeArrayOutput) ToListItemTypeArrayOutputWithContext(ctx context.Context) ListItemTypeArrayOutput {
 	return o
 }
 
-func (o ListItemArrayOutput) Index(i pulumi.IntInput) ListItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListItem {
-		return vs[0].([]ListItem)[vs[1].(int)]
-	}).(ListItemOutput)
+func (o ListItemTypeArrayOutput) Index(i pulumi.IntInput) ListItemTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListItemType {
+		return vs[0].([]ListItemType)[vs[1].(int)]
+	}).(ListItemTypeOutput)
+}
+
+type ListItemRedirect struct {
+	// Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+	IncludeSubdomains *string `pulumi:"includeSubdomains"`
+	// Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+	PreservePathSuffix *string `pulumi:"preservePathSuffix"`
+	// Whether the redirect target url should keep the query string of the request's url. Available values: `disabled`, `enabled`.
+	PreserveQueryString *string `pulumi:"preserveQueryString"`
+	// The source url of the redirect.
+	SourceUrl string `pulumi:"sourceUrl"`
+	// The status code to be used when redirecting a request.
+	StatusCode *int `pulumi:"statusCode"`
+	// Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+	SubpathMatching *string `pulumi:"subpathMatching"`
+	// The target url of the redirect.
+	TargetUrl string `pulumi:"targetUrl"`
+}
+
+// ListItemRedirectInput is an input type that accepts ListItemRedirectArgs and ListItemRedirectOutput values.
+// You can construct a concrete instance of `ListItemRedirectInput` via:
+//
+//	ListItemRedirectArgs{...}
+type ListItemRedirectInput interface {
+	pulumi.Input
+
+	ToListItemRedirectOutput() ListItemRedirectOutput
+	ToListItemRedirectOutputWithContext(context.Context) ListItemRedirectOutput
+}
+
+type ListItemRedirectArgs struct {
+	// Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+	IncludeSubdomains pulumi.StringPtrInput `pulumi:"includeSubdomains"`
+	// Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+	PreservePathSuffix pulumi.StringPtrInput `pulumi:"preservePathSuffix"`
+	// Whether the redirect target url should keep the query string of the request's url. Available values: `disabled`, `enabled`.
+	PreserveQueryString pulumi.StringPtrInput `pulumi:"preserveQueryString"`
+	// The source url of the redirect.
+	SourceUrl pulumi.StringInput `pulumi:"sourceUrl"`
+	// The status code to be used when redirecting a request.
+	StatusCode pulumi.IntPtrInput `pulumi:"statusCode"`
+	// Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+	SubpathMatching pulumi.StringPtrInput `pulumi:"subpathMatching"`
+	// The target url of the redirect.
+	TargetUrl pulumi.StringInput `pulumi:"targetUrl"`
+}
+
+func (ListItemRedirectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListItemRedirect)(nil)).Elem()
+}
+
+func (i ListItemRedirectArgs) ToListItemRedirectOutput() ListItemRedirectOutput {
+	return i.ToListItemRedirectOutputWithContext(context.Background())
+}
+
+func (i ListItemRedirectArgs) ToListItemRedirectOutputWithContext(ctx context.Context) ListItemRedirectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListItemRedirectOutput)
+}
+
+func (i ListItemRedirectArgs) ToListItemRedirectPtrOutput() ListItemRedirectPtrOutput {
+	return i.ToListItemRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i ListItemRedirectArgs) ToListItemRedirectPtrOutputWithContext(ctx context.Context) ListItemRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListItemRedirectOutput).ToListItemRedirectPtrOutputWithContext(ctx)
+}
+
+// ListItemRedirectPtrInput is an input type that accepts ListItemRedirectArgs, ListItemRedirectPtr and ListItemRedirectPtrOutput values.
+// You can construct a concrete instance of `ListItemRedirectPtrInput` via:
+//
+//	        ListItemRedirectArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListItemRedirectPtrInput interface {
+	pulumi.Input
+
+	ToListItemRedirectPtrOutput() ListItemRedirectPtrOutput
+	ToListItemRedirectPtrOutputWithContext(context.Context) ListItemRedirectPtrOutput
+}
+
+type listItemRedirectPtrType ListItemRedirectArgs
+
+func ListItemRedirectPtr(v *ListItemRedirectArgs) ListItemRedirectPtrInput {
+	return (*listItemRedirectPtrType)(v)
+}
+
+func (*listItemRedirectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListItemRedirect)(nil)).Elem()
+}
+
+func (i *listItemRedirectPtrType) ToListItemRedirectPtrOutput() ListItemRedirectPtrOutput {
+	return i.ToListItemRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i *listItemRedirectPtrType) ToListItemRedirectPtrOutputWithContext(ctx context.Context) ListItemRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListItemRedirectPtrOutput)
+}
+
+type ListItemRedirectOutput struct{ *pulumi.OutputState }
+
+func (ListItemRedirectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListItemRedirect)(nil)).Elem()
+}
+
+func (o ListItemRedirectOutput) ToListItemRedirectOutput() ListItemRedirectOutput {
+	return o
+}
+
+func (o ListItemRedirectOutput) ToListItemRedirectOutputWithContext(ctx context.Context) ListItemRedirectOutput {
+	return o
+}
+
+func (o ListItemRedirectOutput) ToListItemRedirectPtrOutput() ListItemRedirectPtrOutput {
+	return o.ToListItemRedirectPtrOutputWithContext(context.Background())
+}
+
+func (o ListItemRedirectOutput) ToListItemRedirectPtrOutputWithContext(ctx context.Context) ListItemRedirectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListItemRedirect) *ListItemRedirect {
+		return &v
+	}).(ListItemRedirectPtrOutput)
+}
+
+// Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+func (o ListItemRedirectOutput) IncludeSubdomains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListItemRedirect) *string { return v.IncludeSubdomains }).(pulumi.StringPtrOutput)
+}
+
+// Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+func (o ListItemRedirectOutput) PreservePathSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListItemRedirect) *string { return v.PreservePathSuffix }).(pulumi.StringPtrOutput)
+}
+
+// Whether the redirect target url should keep the query string of the request's url. Available values: `disabled`, `enabled`.
+func (o ListItemRedirectOutput) PreserveQueryString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListItemRedirect) *string { return v.PreserveQueryString }).(pulumi.StringPtrOutput)
+}
+
+// The source url of the redirect.
+func (o ListItemRedirectOutput) SourceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ListItemRedirect) string { return v.SourceUrl }).(pulumi.StringOutput)
+}
+
+// The status code to be used when redirecting a request.
+func (o ListItemRedirectOutput) StatusCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ListItemRedirect) *int { return v.StatusCode }).(pulumi.IntPtrOutput)
+}
+
+// Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+func (o ListItemRedirectOutput) SubpathMatching() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListItemRedirect) *string { return v.SubpathMatching }).(pulumi.StringPtrOutput)
+}
+
+// The target url of the redirect.
+func (o ListItemRedirectOutput) TargetUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ListItemRedirect) string { return v.TargetUrl }).(pulumi.StringOutput)
+}
+
+type ListItemRedirectPtrOutput struct{ *pulumi.OutputState }
+
+func (ListItemRedirectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListItemRedirect)(nil)).Elem()
+}
+
+func (o ListItemRedirectPtrOutput) ToListItemRedirectPtrOutput() ListItemRedirectPtrOutput {
+	return o
+}
+
+func (o ListItemRedirectPtrOutput) ToListItemRedirectPtrOutputWithContext(ctx context.Context) ListItemRedirectPtrOutput {
+	return o
+}
+
+func (o ListItemRedirectPtrOutput) Elem() ListItemRedirectOutput {
+	return o.ApplyT(func(v *ListItemRedirect) ListItemRedirect {
+		if v != nil {
+			return *v
+		}
+		var ret ListItemRedirect
+		return ret
+	}).(ListItemRedirectOutput)
+}
+
+// Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+func (o ListItemRedirectPtrOutput) IncludeSubdomains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListItemRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeSubdomains
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+func (o ListItemRedirectPtrOutput) PreservePathSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListItemRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreservePathSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the redirect target url should keep the query string of the request's url. Available values: `disabled`, `enabled`.
+func (o ListItemRedirectPtrOutput) PreserveQueryString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListItemRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreserveQueryString
+	}).(pulumi.StringPtrOutput)
+}
+
+// The source url of the redirect.
+func (o ListItemRedirectPtrOutput) SourceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListItemRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The status code to be used when redirecting a request.
+func (o ListItemRedirectPtrOutput) StatusCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ListItemRedirect) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StatusCode
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+func (o ListItemRedirectPtrOutput) SubpathMatching() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListItemRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubpathMatching
+	}).(pulumi.StringPtrOutput)
+}
+
+// The target url of the redirect.
+func (o ListItemRedirectPtrOutput) TargetUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListItemRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type ListItemValue struct {
@@ -10035,11 +10812,11 @@ func (o LoadBalancerMonitorHeaderArrayOutput) Index(i pulumi.IntInput) LoadBalan
 type LoadBalancerPoolLoadShedding struct {
 	// Percent of traffic to shed 0 - 100. Defaults to `0`.
 	DefaultPercent *float64 `pulumi:"defaultPercent"`
-	// Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`""`.
+	// Method of shedding traffic. Available values: `""`, `hash`, `random`. Defaults to `""`.
 	DefaultPolicy *string `pulumi:"defaultPolicy"`
 	// Percent of session traffic to shed 0 - 100. Defaults to `0`.
 	SessionPercent *float64 `pulumi:"sessionPercent"`
-	// Method of shedding traffic. Available values: ``,`hash`. Defaults to`""`.
+	// Method of shedding traffic. Available values: `""`, `hash`. Defaults to `""`.
 	SessionPolicy *string `pulumi:"sessionPolicy"`
 }
 
@@ -10057,11 +10834,11 @@ type LoadBalancerPoolLoadSheddingInput interface {
 type LoadBalancerPoolLoadSheddingArgs struct {
 	// Percent of traffic to shed 0 - 100. Defaults to `0`.
 	DefaultPercent pulumi.Float64PtrInput `pulumi:"defaultPercent"`
-	// Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`""`.
+	// Method of shedding traffic. Available values: `""`, `hash`, `random`. Defaults to `""`.
 	DefaultPolicy pulumi.StringPtrInput `pulumi:"defaultPolicy"`
 	// Percent of session traffic to shed 0 - 100. Defaults to `0`.
 	SessionPercent pulumi.Float64PtrInput `pulumi:"sessionPercent"`
-	// Method of shedding traffic. Available values: ``,`hash`. Defaults to`""`.
+	// Method of shedding traffic. Available values: `""`, `hash`. Defaults to `""`.
 	SessionPolicy pulumi.StringPtrInput `pulumi:"sessionPolicy"`
 }
 
@@ -10121,7 +10898,7 @@ func (o LoadBalancerPoolLoadSheddingOutput) DefaultPercent() pulumi.Float64PtrOu
 	return o.ApplyT(func(v LoadBalancerPoolLoadShedding) *float64 { return v.DefaultPercent }).(pulumi.Float64PtrOutput)
 }
 
-// Method of shedding traffic. Available values: “,`hash`,`random`. Defaults to`""`.
+// Method of shedding traffic. Available values: `""`, `hash`, `random`. Defaults to `""`.
 func (o LoadBalancerPoolLoadSheddingOutput) DefaultPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerPoolLoadShedding) *string { return v.DefaultPolicy }).(pulumi.StringPtrOutput)
 }
@@ -10131,7 +10908,7 @@ func (o LoadBalancerPoolLoadSheddingOutput) SessionPercent() pulumi.Float64PtrOu
 	return o.ApplyT(func(v LoadBalancerPoolLoadShedding) *float64 { return v.SessionPercent }).(pulumi.Float64PtrOutput)
 }
 
-// Method of shedding traffic. Available values: “,`hash`. Defaults to`""`.
+// Method of shedding traffic. Available values: `""`, `hash`. Defaults to `""`.
 func (o LoadBalancerPoolLoadSheddingOutput) SessionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerPoolLoadShedding) *string { return v.SessionPolicy }).(pulumi.StringPtrOutput)
 }
@@ -10390,7 +11167,7 @@ func (o LoadBalancerPoolOriginHeaderArrayOutput) Index(i pulumi.IntInput) LoadBa
 }
 
 type LoadBalancerPoolOriginSteering struct {
-	// Origin steering policy to be used. Available values: ``,`hash`,`random`. Defaults to`random`.
+	// Origin steering policy to be used. Available values: `""`, `hash`, `random`. Defaults to `random`.
 	Policy *string `pulumi:"policy"`
 }
 
@@ -10406,7 +11183,7 @@ type LoadBalancerPoolOriginSteeringInput interface {
 }
 
 type LoadBalancerPoolOriginSteeringArgs struct {
-	// Origin steering policy to be used. Available values: ``,`hash`,`random`. Defaults to`random`.
+	// Origin steering policy to be used. Available values: `""`, `hash`, `random`. Defaults to `random`.
 	Policy pulumi.StringPtrInput `pulumi:"policy"`
 }
 
@@ -10461,7 +11238,7 @@ func (o LoadBalancerPoolOriginSteeringOutput) ToLoadBalancerPoolOriginSteeringOu
 	return o
 }
 
-// Origin steering policy to be used. Available values: “,`hash`,`random`. Defaults to`random`.
+// Origin steering policy to be used. Available values: `""`, `hash`, `random`. Defaults to `random`.
 func (o LoadBalancerPoolOriginSteeringOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerPoolOriginSteering) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
@@ -18654,16 +19431,16 @@ func (o RecordDataPtrOutput) Weight() pulumi.IntPtrOutput {
 }
 
 type RulesetRule struct {
-	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
+	// Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
 	Action *string `pulumi:"action"`
 	// List of parameters that configure the behavior of the ruleset rule action.
-	ActionParameters *RulesetRuleActionParameters `pulumi:"actionParameters"`
+	ActionParameters []RulesetRuleActionParameter `pulumi:"actionParameters"`
 	// Brief summary of the ruleset rule and its intended use.
 	Description *string `pulumi:"description"`
 	// Whether the rule is active.
 	Enabled *bool `pulumi:"enabled"`
 	// List of parameters that configure exposed credential checks.
-	ExposedCredentialCheck *RulesetRuleExposedCredentialCheck `pulumi:"exposedCredentialCheck"`
+	ExposedCredentialChecks []RulesetRuleExposedCredentialCheck `pulumi:"exposedCredentialChecks"`
 	// Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
 	Expression string `pulumi:"expression"`
 	// Unique rule identifier.
@@ -18671,9 +19448,9 @@ type RulesetRule struct {
 	// The most recent update to this rule.
 	LastUpdated *string `pulumi:"lastUpdated"`
 	// List parameters to configure how the rule generates logs.
-	Logging *RulesetRuleLogging `pulumi:"logging"`
+	Loggings []RulesetRuleLogging `pulumi:"loggings"`
 	// List of parameters that configure HTTP rate limiting behaviour.
-	Ratelimit *RulesetRuleRatelimit `pulumi:"ratelimit"`
+	Ratelimits []RulesetRuleRatelimit `pulumi:"ratelimits"`
 	// Rule reference.
 	Ref *string `pulumi:"ref"`
 	// Version of the ruleset to deploy.
@@ -18692,16 +19469,16 @@ type RulesetRuleInput interface {
 }
 
 type RulesetRuleArgs struct {
-	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
+	// Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// List of parameters that configure the behavior of the ruleset rule action.
-	ActionParameters RulesetRuleActionParametersPtrInput `pulumi:"actionParameters"`
+	ActionParameters RulesetRuleActionParameterArrayInput `pulumi:"actionParameters"`
 	// Brief summary of the ruleset rule and its intended use.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Whether the rule is active.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// List of parameters that configure exposed credential checks.
-	ExposedCredentialCheck RulesetRuleExposedCredentialCheckPtrInput `pulumi:"exposedCredentialCheck"`
+	ExposedCredentialChecks RulesetRuleExposedCredentialCheckArrayInput `pulumi:"exposedCredentialChecks"`
 	// Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
 	Expression pulumi.StringInput `pulumi:"expression"`
 	// Unique rule identifier.
@@ -18709,9 +19486,9 @@ type RulesetRuleArgs struct {
 	// The most recent update to this rule.
 	LastUpdated pulumi.StringPtrInput `pulumi:"lastUpdated"`
 	// List parameters to configure how the rule generates logs.
-	Logging RulesetRuleLoggingPtrInput `pulumi:"logging"`
+	Loggings RulesetRuleLoggingArrayInput `pulumi:"loggings"`
 	// List of parameters that configure HTTP rate limiting behaviour.
-	Ratelimit RulesetRuleRatelimitPtrInput `pulumi:"ratelimit"`
+	Ratelimits RulesetRuleRatelimitArrayInput `pulumi:"ratelimits"`
 	// Rule reference.
 	Ref pulumi.StringPtrInput `pulumi:"ref"`
 	// Version of the ruleset to deploy.
@@ -18769,14 +19546,14 @@ func (o RulesetRuleOutput) ToRulesetRuleOutputWithContext(ctx context.Context) R
 	return o
 }
 
-// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
+// Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
 func (o RulesetRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
 // List of parameters that configure the behavior of the ruleset rule action.
-func (o RulesetRuleOutput) ActionParameters() RulesetRuleActionParametersPtrOutput {
-	return o.ApplyT(func(v RulesetRule) *RulesetRuleActionParameters { return v.ActionParameters }).(RulesetRuleActionParametersPtrOutput)
+func (o RulesetRuleOutput) ActionParameters() RulesetRuleActionParameterArrayOutput {
+	return o.ApplyT(func(v RulesetRule) []RulesetRuleActionParameter { return v.ActionParameters }).(RulesetRuleActionParameterArrayOutput)
 }
 
 // Brief summary of the ruleset rule and its intended use.
@@ -18790,8 +19567,8 @@ func (o RulesetRuleOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // List of parameters that configure exposed credential checks.
-func (o RulesetRuleOutput) ExposedCredentialCheck() RulesetRuleExposedCredentialCheckPtrOutput {
-	return o.ApplyT(func(v RulesetRule) *RulesetRuleExposedCredentialCheck { return v.ExposedCredentialCheck }).(RulesetRuleExposedCredentialCheckPtrOutput)
+func (o RulesetRuleOutput) ExposedCredentialChecks() RulesetRuleExposedCredentialCheckArrayOutput {
+	return o.ApplyT(func(v RulesetRule) []RulesetRuleExposedCredentialCheck { return v.ExposedCredentialChecks }).(RulesetRuleExposedCredentialCheckArrayOutput)
 }
 
 // Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
@@ -18810,13 +19587,13 @@ func (o RulesetRuleOutput) LastUpdated() pulumi.StringPtrOutput {
 }
 
 // List parameters to configure how the rule generates logs.
-func (o RulesetRuleOutput) Logging() RulesetRuleLoggingPtrOutput {
-	return o.ApplyT(func(v RulesetRule) *RulesetRuleLogging { return v.Logging }).(RulesetRuleLoggingPtrOutput)
+func (o RulesetRuleOutput) Loggings() RulesetRuleLoggingArrayOutput {
+	return o.ApplyT(func(v RulesetRule) []RulesetRuleLogging { return v.Loggings }).(RulesetRuleLoggingArrayOutput)
 }
 
 // List of parameters that configure HTTP rate limiting behaviour.
-func (o RulesetRuleOutput) Ratelimit() RulesetRuleRatelimitPtrOutput {
-	return o.ApplyT(func(v RulesetRule) *RulesetRuleRatelimit { return v.Ratelimit }).(RulesetRuleRatelimitPtrOutput)
+func (o RulesetRuleOutput) Ratelimits() RulesetRuleRatelimitArrayOutput {
+	return o.ApplyT(func(v RulesetRule) []RulesetRuleRatelimit { return v.Ratelimits }).(RulesetRuleRatelimitArrayOutput)
 }
 
 // Rule reference.
@@ -18849,4771 +19626,3231 @@ func (o RulesetRuleArrayOutput) Index(i pulumi.IntInput) RulesetRuleOutput {
 	}).(RulesetRuleOutput)
 }
 
-type RulesetRuleActionParameters struct {
-	AutomaticHttpsRewrites *bool                                   `pulumi:"automaticHttpsRewrites"`
-	Autominifies           []RulesetRuleActionParametersAutominify `pulumi:"autominifies"`
-	Bic                    *bool                                   `pulumi:"bic"`
-	BrowserTtl             *RulesetRuleActionParametersBrowserTtl  `pulumi:"browserTtl"`
-	Cache                  *bool                                   `pulumi:"cache"`
-	CacheKey               *RulesetRuleActionParametersCacheKey    `pulumi:"cacheKey"`
-	Content                *string                                 `pulumi:"content"`
-	ContentType            *string                                 `pulumi:"contentType"`
-	CookieFields           []string                                `pulumi:"cookieFields"`
-	DisableApps            *bool                                   `pulumi:"disableApps"`
-	DisableRailgun         *bool                                   `pulumi:"disableRailgun"`
-	DisableZaraz           *bool                                   `pulumi:"disableZaraz"`
-	EdgeTtl                *RulesetRuleActionParametersEdgeTtl     `pulumi:"edgeTtl"`
-	EmailObfuscation       *bool                                   `pulumi:"emailObfuscation"`
-	FromList               *RulesetRuleActionParametersFromList    `pulumi:"fromList"`
-	FromValue              *RulesetRuleActionParametersFromValue   `pulumi:"fromValue"`
-	Headers                []RulesetRuleActionParametersHeader     `pulumi:"headers"`
-	HostHeader             *string                                 `pulumi:"hostHeader"`
-	HotlinkProtection      *bool                                   `pulumi:"hotlinkProtection"`
-	// The ID of this resource.
-	Id                      *string                                 `pulumi:"id"`
-	Increment               *int                                    `pulumi:"increment"`
-	MatchedData             *RulesetRuleActionParametersMatchedData `pulumi:"matchedData"`
-	Mirage                  *bool                                   `pulumi:"mirage"`
-	OpportunisticEncryption *bool                                   `pulumi:"opportunisticEncryption"`
-	Origin                  *RulesetRuleActionParametersOrigin      `pulumi:"origin"`
-	OriginErrorPagePassthru *bool                                   `pulumi:"originErrorPagePassthru"`
-	Overrides               *RulesetRuleActionParametersOverrides   `pulumi:"overrides"`
+type RulesetRuleActionParameter struct {
+	AutomaticHttpsRewrites bool                                   `pulumi:"automaticHttpsRewrites"`
+	Autominifies           []RulesetRuleActionParameterAutominify `pulumi:"autominifies"`
+	Bic                    bool                                   `pulumi:"bic"`
+	BrowserTtls            []RulesetRuleActionParameterBrowserTtl `pulumi:"browserTtls"`
+	Cache                  bool                                   `pulumi:"cache"`
+	CacheKeys              []RulesetRuleActionParameterCacheKey   `pulumi:"cacheKeys"`
+	Content                string                                 `pulumi:"content"`
+	ContentType            string                                 `pulumi:"contentType"`
+	CookieFields           []string                               `pulumi:"cookieFields"`
+	DisableApps            bool                                   `pulumi:"disableApps"`
+	DisableRailgun         bool                                   `pulumi:"disableRailgun"`
+	DisableZaraz           bool                                   `pulumi:"disableZaraz"`
+	EdgeTtls               []RulesetRuleActionParameterEdgeTtl    `pulumi:"edgeTtls"`
+	EmailObfuscation       bool                                   `pulumi:"emailObfuscation"`
+	FromLists              []RulesetRuleActionParameterFromList   `pulumi:"fromLists"`
+	FromValues             []RulesetRuleActionParameterFromValue  `pulumi:"fromValues"`
+	Headers                []RulesetRuleActionParameterHeader     `pulumi:"headers"`
+	HostHeader             string                                 `pulumi:"hostHeader"`
+	HotlinkProtection      bool                                   `pulumi:"hotlinkProtection"`
+	// The identifier of this resource.
+	Id                      string                                  `pulumi:"id"`
+	Increment               int                                     `pulumi:"increment"`
+	MatchedDatas            []RulesetRuleActionParameterMatchedData `pulumi:"matchedDatas"`
+	Mirage                  bool                                    `pulumi:"mirage"`
+	OpportunisticEncryption bool                                    `pulumi:"opportunisticEncryption"`
+	OriginErrorPagePassthru bool                                    `pulumi:"originErrorPagePassthru"`
+	Origins                 []RulesetRuleActionParameterOrigin      `pulumi:"origins"`
+	Overrides               []RulesetRuleActionParameterOverride    `pulumi:"overrides"`
 	Phases                  []string                                `pulumi:"phases"`
-	Polish                  *string                                 `pulumi:"polish"`
+	Polish                  string                                  `pulumi:"polish"`
 	Products                []string                                `pulumi:"products"`
 	RequestFields           []string                                `pulumi:"requestFields"`
-	RespectStrongEtags      *bool                                   `pulumi:"respectStrongEtags"`
+	RespectStrongEtags      bool                                    `pulumi:"respectStrongEtags"`
 	ResponseFields          []string                                `pulumi:"responseFields"`
-	Responses               []RulesetRuleActionParametersResponse   `pulumi:"responses"`
-	RocketLoader            *bool                                   `pulumi:"rocketLoader"`
+	Responses               []RulesetRuleActionParameterResponse    `pulumi:"responses"`
+	RocketLoader            bool                                    `pulumi:"rocketLoader"`
 	// List of rules to apply to the ruleset.
 	Rules              map[string]string                      `pulumi:"rules"`
-	Ruleset            *string                                `pulumi:"ruleset"`
+	Ruleset            string                                 `pulumi:"ruleset"`
 	Rulesets           []string                               `pulumi:"rulesets"`
-	SecurityLevel      *string                                `pulumi:"securityLevel"`
-	ServeStale         *RulesetRuleActionParametersServeStale `pulumi:"serveStale"`
-	ServerSideExcludes *bool                                  `pulumi:"serverSideExcludes"`
-	Sni                *RulesetRuleActionParametersSni        `pulumi:"sni"`
-	Ssl                *string                                `pulumi:"ssl"`
-	StatusCode         *int                                   `pulumi:"statusCode"`
-	Sxg                *bool                                  `pulumi:"sxg"`
-	Uri                *RulesetRuleActionParametersUri        `pulumi:"uri"`
-	Version            *string                                `pulumi:"version"`
+	SecurityLevel      string                                 `pulumi:"securityLevel"`
+	ServeStales        []RulesetRuleActionParameterServeStale `pulumi:"serveStales"`
+	ServerSideExcludes bool                                   `pulumi:"serverSideExcludes"`
+	Snis               []RulesetRuleActionParameterSni        `pulumi:"snis"`
+	Ssl                string                                 `pulumi:"ssl"`
+	StatusCode         int                                    `pulumi:"statusCode"`
+	Sxg                bool                                   `pulumi:"sxg"`
+	Uris               []RulesetRuleActionParameterUri        `pulumi:"uris"`
+	Version            string                                 `pulumi:"version"`
 }
 
-// RulesetRuleActionParametersInput is an input type that accepts RulesetRuleActionParametersArgs and RulesetRuleActionParametersOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersInput` via:
+// RulesetRuleActionParameterInput is an input type that accepts RulesetRuleActionParameterArgs and RulesetRuleActionParameterOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterInput` via:
 //
-//	RulesetRuleActionParametersArgs{...}
-type RulesetRuleActionParametersInput interface {
+//	RulesetRuleActionParameterArgs{...}
+type RulesetRuleActionParameterInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersOutput() RulesetRuleActionParametersOutput
-	ToRulesetRuleActionParametersOutputWithContext(context.Context) RulesetRuleActionParametersOutput
+	ToRulesetRuleActionParameterOutput() RulesetRuleActionParameterOutput
+	ToRulesetRuleActionParameterOutputWithContext(context.Context) RulesetRuleActionParameterOutput
 }
 
-type RulesetRuleActionParametersArgs struct {
-	AutomaticHttpsRewrites pulumi.BoolPtrInput                             `pulumi:"automaticHttpsRewrites"`
-	Autominifies           RulesetRuleActionParametersAutominifyArrayInput `pulumi:"autominifies"`
-	Bic                    pulumi.BoolPtrInput                             `pulumi:"bic"`
-	BrowserTtl             RulesetRuleActionParametersBrowserTtlPtrInput   `pulumi:"browserTtl"`
-	Cache                  pulumi.BoolPtrInput                             `pulumi:"cache"`
-	CacheKey               RulesetRuleActionParametersCacheKeyPtrInput     `pulumi:"cacheKey"`
-	Content                pulumi.StringPtrInput                           `pulumi:"content"`
-	ContentType            pulumi.StringPtrInput                           `pulumi:"contentType"`
-	CookieFields           pulumi.StringArrayInput                         `pulumi:"cookieFields"`
-	DisableApps            pulumi.BoolPtrInput                             `pulumi:"disableApps"`
-	DisableRailgun         pulumi.BoolPtrInput                             `pulumi:"disableRailgun"`
-	DisableZaraz           pulumi.BoolPtrInput                             `pulumi:"disableZaraz"`
-	EdgeTtl                RulesetRuleActionParametersEdgeTtlPtrInput      `pulumi:"edgeTtl"`
-	EmailObfuscation       pulumi.BoolPtrInput                             `pulumi:"emailObfuscation"`
-	FromList               RulesetRuleActionParametersFromListPtrInput     `pulumi:"fromList"`
-	FromValue              RulesetRuleActionParametersFromValuePtrInput    `pulumi:"fromValue"`
-	Headers                RulesetRuleActionParametersHeaderArrayInput     `pulumi:"headers"`
-	HostHeader             pulumi.StringPtrInput                           `pulumi:"hostHeader"`
-	HotlinkProtection      pulumi.BoolPtrInput                             `pulumi:"hotlinkProtection"`
-	// The ID of this resource.
-	Id                      pulumi.StringPtrInput                          `pulumi:"id"`
-	Increment               pulumi.IntPtrInput                             `pulumi:"increment"`
-	MatchedData             RulesetRuleActionParametersMatchedDataPtrInput `pulumi:"matchedData"`
-	Mirage                  pulumi.BoolPtrInput                            `pulumi:"mirage"`
-	OpportunisticEncryption pulumi.BoolPtrInput                            `pulumi:"opportunisticEncryption"`
-	Origin                  RulesetRuleActionParametersOriginPtrInput      `pulumi:"origin"`
-	OriginErrorPagePassthru pulumi.BoolPtrInput                            `pulumi:"originErrorPagePassthru"`
-	Overrides               RulesetRuleActionParametersOverridesPtrInput   `pulumi:"overrides"`
-	Phases                  pulumi.StringArrayInput                        `pulumi:"phases"`
-	Polish                  pulumi.StringPtrInput                          `pulumi:"polish"`
-	Products                pulumi.StringArrayInput                        `pulumi:"products"`
-	RequestFields           pulumi.StringArrayInput                        `pulumi:"requestFields"`
-	RespectStrongEtags      pulumi.BoolPtrInput                            `pulumi:"respectStrongEtags"`
-	ResponseFields          pulumi.StringArrayInput                        `pulumi:"responseFields"`
-	Responses               RulesetRuleActionParametersResponseArrayInput  `pulumi:"responses"`
-	RocketLoader            pulumi.BoolPtrInput                            `pulumi:"rocketLoader"`
+type RulesetRuleActionParameterArgs struct {
+	AutomaticHttpsRewrites pulumi.BoolInput                               `pulumi:"automaticHttpsRewrites"`
+	Autominifies           RulesetRuleActionParameterAutominifyArrayInput `pulumi:"autominifies"`
+	Bic                    pulumi.BoolInput                               `pulumi:"bic"`
+	BrowserTtls            RulesetRuleActionParameterBrowserTtlArrayInput `pulumi:"browserTtls"`
+	Cache                  pulumi.BoolInput                               `pulumi:"cache"`
+	CacheKeys              RulesetRuleActionParameterCacheKeyArrayInput   `pulumi:"cacheKeys"`
+	Content                pulumi.StringInput                             `pulumi:"content"`
+	ContentType            pulumi.StringInput                             `pulumi:"contentType"`
+	CookieFields           pulumi.StringArrayInput                        `pulumi:"cookieFields"`
+	DisableApps            pulumi.BoolInput                               `pulumi:"disableApps"`
+	DisableRailgun         pulumi.BoolInput                               `pulumi:"disableRailgun"`
+	DisableZaraz           pulumi.BoolInput                               `pulumi:"disableZaraz"`
+	EdgeTtls               RulesetRuleActionParameterEdgeTtlArrayInput    `pulumi:"edgeTtls"`
+	EmailObfuscation       pulumi.BoolInput                               `pulumi:"emailObfuscation"`
+	FromLists              RulesetRuleActionParameterFromListArrayInput   `pulumi:"fromLists"`
+	FromValues             RulesetRuleActionParameterFromValueArrayInput  `pulumi:"fromValues"`
+	Headers                RulesetRuleActionParameterHeaderArrayInput     `pulumi:"headers"`
+	HostHeader             pulumi.StringInput                             `pulumi:"hostHeader"`
+	HotlinkProtection      pulumi.BoolInput                               `pulumi:"hotlinkProtection"`
+	// The identifier of this resource.
+	Id                      pulumi.StringInput                              `pulumi:"id"`
+	Increment               pulumi.IntInput                                 `pulumi:"increment"`
+	MatchedDatas            RulesetRuleActionParameterMatchedDataArrayInput `pulumi:"matchedDatas"`
+	Mirage                  pulumi.BoolInput                                `pulumi:"mirage"`
+	OpportunisticEncryption pulumi.BoolInput                                `pulumi:"opportunisticEncryption"`
+	OriginErrorPagePassthru pulumi.BoolInput                                `pulumi:"originErrorPagePassthru"`
+	Origins                 RulesetRuleActionParameterOriginArrayInput      `pulumi:"origins"`
+	Overrides               RulesetRuleActionParameterOverrideArrayInput    `pulumi:"overrides"`
+	Phases                  pulumi.StringArrayInput                         `pulumi:"phases"`
+	Polish                  pulumi.StringInput                              `pulumi:"polish"`
+	Products                pulumi.StringArrayInput                         `pulumi:"products"`
+	RequestFields           pulumi.StringArrayInput                         `pulumi:"requestFields"`
+	RespectStrongEtags      pulumi.BoolInput                                `pulumi:"respectStrongEtags"`
+	ResponseFields          pulumi.StringArrayInput                         `pulumi:"responseFields"`
+	Responses               RulesetRuleActionParameterResponseArrayInput    `pulumi:"responses"`
+	RocketLoader            pulumi.BoolInput                                `pulumi:"rocketLoader"`
 	// List of rules to apply to the ruleset.
-	Rules              pulumi.StringMapInput                         `pulumi:"rules"`
-	Ruleset            pulumi.StringPtrInput                         `pulumi:"ruleset"`
-	Rulesets           pulumi.StringArrayInput                       `pulumi:"rulesets"`
-	SecurityLevel      pulumi.StringPtrInput                         `pulumi:"securityLevel"`
-	ServeStale         RulesetRuleActionParametersServeStalePtrInput `pulumi:"serveStale"`
-	ServerSideExcludes pulumi.BoolPtrInput                           `pulumi:"serverSideExcludes"`
-	Sni                RulesetRuleActionParametersSniPtrInput        `pulumi:"sni"`
-	Ssl                pulumi.StringPtrInput                         `pulumi:"ssl"`
-	StatusCode         pulumi.IntPtrInput                            `pulumi:"statusCode"`
-	Sxg                pulumi.BoolPtrInput                           `pulumi:"sxg"`
-	Uri                RulesetRuleActionParametersUriPtrInput        `pulumi:"uri"`
-	Version            pulumi.StringPtrInput                         `pulumi:"version"`
+	Rules              pulumi.StringMapInput                          `pulumi:"rules"`
+	Ruleset            pulumi.StringInput                             `pulumi:"ruleset"`
+	Rulesets           pulumi.StringArrayInput                        `pulumi:"rulesets"`
+	SecurityLevel      pulumi.StringInput                             `pulumi:"securityLevel"`
+	ServeStales        RulesetRuleActionParameterServeStaleArrayInput `pulumi:"serveStales"`
+	ServerSideExcludes pulumi.BoolInput                               `pulumi:"serverSideExcludes"`
+	Snis               RulesetRuleActionParameterSniArrayInput        `pulumi:"snis"`
+	Ssl                pulumi.StringInput                             `pulumi:"ssl"`
+	StatusCode         pulumi.IntInput                                `pulumi:"statusCode"`
+	Sxg                pulumi.BoolInput                               `pulumi:"sxg"`
+	Uris               RulesetRuleActionParameterUriArrayInput        `pulumi:"uris"`
+	Version            pulumi.StringInput                             `pulumi:"version"`
 }
 
-func (RulesetRuleActionParametersArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParameters)(nil)).Elem()
+func (RulesetRuleActionParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameter)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersArgs) ToRulesetRuleActionParametersOutput() RulesetRuleActionParametersOutput {
-	return i.ToRulesetRuleActionParametersOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterArgs) ToRulesetRuleActionParameterOutput() RulesetRuleActionParameterOutput {
+	return i.ToRulesetRuleActionParameterOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersArgs) ToRulesetRuleActionParametersOutputWithContext(ctx context.Context) RulesetRuleActionParametersOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOutput)
+func (i RulesetRuleActionParameterArgs) ToRulesetRuleActionParameterOutputWithContext(ctx context.Context) RulesetRuleActionParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterOutput)
 }
 
-func (i RulesetRuleActionParametersArgs) ToRulesetRuleActionParametersPtrOutput() RulesetRuleActionParametersPtrOutput {
-	return i.ToRulesetRuleActionParametersPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersArgs) ToRulesetRuleActionParametersPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOutput).ToRulesetRuleActionParametersPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersPtrInput is an input type that accepts RulesetRuleActionParametersArgs, RulesetRuleActionParametersPtr and RulesetRuleActionParametersPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersPtrInput` via:
+// RulesetRuleActionParameterArrayInput is an input type that accepts RulesetRuleActionParameterArray and RulesetRuleActionParameterArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterArrayInput` via:
 //
-//	        RulesetRuleActionParametersArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersPtrInput interface {
+//	RulesetRuleActionParameterArray{ RulesetRuleActionParameterArgs{...} }
+type RulesetRuleActionParameterArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersPtrOutput() RulesetRuleActionParametersPtrOutput
-	ToRulesetRuleActionParametersPtrOutputWithContext(context.Context) RulesetRuleActionParametersPtrOutput
+	ToRulesetRuleActionParameterArrayOutput() RulesetRuleActionParameterArrayOutput
+	ToRulesetRuleActionParameterArrayOutputWithContext(context.Context) RulesetRuleActionParameterArrayOutput
 }
 
-type rulesetRuleActionParametersPtrType RulesetRuleActionParametersArgs
+type RulesetRuleActionParameterArray []RulesetRuleActionParameterInput
 
-func RulesetRuleActionParametersPtr(v *RulesetRuleActionParametersArgs) RulesetRuleActionParametersPtrInput {
-	return (*rulesetRuleActionParametersPtrType)(v)
+func (RulesetRuleActionParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameter)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParameters)(nil)).Elem()
+func (i RulesetRuleActionParameterArray) ToRulesetRuleActionParameterArrayOutput() RulesetRuleActionParameterArrayOutput {
+	return i.ToRulesetRuleActionParameterArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersPtrType) ToRulesetRuleActionParametersPtrOutput() RulesetRuleActionParametersPtrOutput {
-	return i.ToRulesetRuleActionParametersPtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterArray) ToRulesetRuleActionParameterArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersPtrType) ToRulesetRuleActionParametersPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersPtrOutput)
+type RulesetRuleActionParameterOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameter)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParameters)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersOutput) ToRulesetRuleActionParametersOutput() RulesetRuleActionParametersOutput {
+func (o RulesetRuleActionParameterOutput) ToRulesetRuleActionParameterOutput() RulesetRuleActionParameterOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersOutput) ToRulesetRuleActionParametersOutputWithContext(ctx context.Context) RulesetRuleActionParametersOutput {
+func (o RulesetRuleActionParameterOutput) ToRulesetRuleActionParameterOutputWithContext(ctx context.Context) RulesetRuleActionParameterOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersOutput) ToRulesetRuleActionParametersPtrOutput() RulesetRuleActionParametersPtrOutput {
-	return o.ToRulesetRuleActionParametersPtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterOutput) AutomaticHttpsRewrites() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) bool { return v.AutomaticHttpsRewrites }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) ToRulesetRuleActionParametersPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParameters) *RulesetRuleActionParameters {
-		return &v
-	}).(RulesetRuleActionParametersPtrOutput)
+func (o RulesetRuleActionParameterOutput) Autominifies() RulesetRuleActionParameterAutominifyArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) []RulesetRuleActionParameterAutominify { return v.Autominifies }).(RulesetRuleActionParameterAutominifyArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) AutomaticHttpsRewrites() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.AutomaticHttpsRewrites }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterOutput) Bic() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) bool { return v.Bic }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) Autominifies() RulesetRuleActionParametersAutominifyArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) []RulesetRuleActionParametersAutominify { return v.Autominifies }).(RulesetRuleActionParametersAutominifyArrayOutput)
+func (o RulesetRuleActionParameterOutput) BrowserTtls() RulesetRuleActionParameterBrowserTtlArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) []RulesetRuleActionParameterBrowserTtl { return v.BrowserTtls }).(RulesetRuleActionParameterBrowserTtlArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) Bic() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.Bic }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterOutput) Cache() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) bool { return v.Cache }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) BrowserTtl() RulesetRuleActionParametersBrowserTtlPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersBrowserTtl { return v.BrowserTtl }).(RulesetRuleActionParametersBrowserTtlPtrOutput)
+func (o RulesetRuleActionParameterOutput) CacheKeys() RulesetRuleActionParameterCacheKeyArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) []RulesetRuleActionParameterCacheKey { return v.CacheKeys }).(RulesetRuleActionParameterCacheKeyArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) Cache() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.Cache }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) string { return v.Content }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) CacheKey() RulesetRuleActionParametersCacheKeyPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersCacheKey { return v.CacheKey }).(RulesetRuleActionParametersCacheKeyPtrOutput)
+func (o RulesetRuleActionParameterOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) string { return v.ContentType }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.Content }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParameterOutput) CookieFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) []string { return v.CookieFields }).(pulumi.StringArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) ContentType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.ContentType }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParameterOutput) DisableApps() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) bool { return v.DisableApps }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) CookieFields() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.CookieFields }).(pulumi.StringArrayOutput)
+func (o RulesetRuleActionParameterOutput) DisableRailgun() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) bool { return v.DisableRailgun }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) DisableApps() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.DisableApps }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterOutput) DisableZaraz() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) bool { return v.DisableZaraz }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) DisableRailgun() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.DisableRailgun }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterOutput) EdgeTtls() RulesetRuleActionParameterEdgeTtlArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) []RulesetRuleActionParameterEdgeTtl { return v.EdgeTtls }).(RulesetRuleActionParameterEdgeTtlArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) DisableZaraz() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.DisableZaraz }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterOutput) EmailObfuscation() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) bool { return v.EmailObfuscation }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) EdgeTtl() RulesetRuleActionParametersEdgeTtlPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersEdgeTtl { return v.EdgeTtl }).(RulesetRuleActionParametersEdgeTtlPtrOutput)
+func (o RulesetRuleActionParameterOutput) FromLists() RulesetRuleActionParameterFromListArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) []RulesetRuleActionParameterFromList { return v.FromLists }).(RulesetRuleActionParameterFromListArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) EmailObfuscation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.EmailObfuscation }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterOutput) FromValues() RulesetRuleActionParameterFromValueArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) []RulesetRuleActionParameterFromValue { return v.FromValues }).(RulesetRuleActionParameterFromValueArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) FromList() RulesetRuleActionParametersFromListPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersFromList { return v.FromList }).(RulesetRuleActionParametersFromListPtrOutput)
+func (o RulesetRuleActionParameterOutput) Headers() RulesetRuleActionParameterHeaderArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) []RulesetRuleActionParameterHeader { return v.Headers }).(RulesetRuleActionParameterHeaderArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) FromValue() RulesetRuleActionParametersFromValuePtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersFromValue { return v.FromValue }).(RulesetRuleActionParametersFromValuePtrOutput)
+func (o RulesetRuleActionParameterOutput) HostHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) string { return v.HostHeader }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) Headers() RulesetRuleActionParametersHeaderArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) []RulesetRuleActionParametersHeader { return v.Headers }).(RulesetRuleActionParametersHeaderArrayOutput)
+func (o RulesetRuleActionParameterOutput) HotlinkProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) bool { return v.HotlinkProtection }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) HostHeader() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.HostHeader }).(pulumi.StringPtrOutput)
+// The identifier of this resource.
+func (o RulesetRuleActionParameterOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) HotlinkProtection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.HotlinkProtection }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterOutput) Increment() pulumi.IntOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) int { return v.Increment }).(pulumi.IntOutput)
 }
 
-// The ID of this resource.
-func (o RulesetRuleActionParametersOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParameterOutput) MatchedDatas() RulesetRuleActionParameterMatchedDataArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) []RulesetRuleActionParameterMatchedData { return v.MatchedDatas }).(RulesetRuleActionParameterMatchedDataArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) Increment() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *int { return v.Increment }).(pulumi.IntPtrOutput)
+func (o RulesetRuleActionParameterOutput) Mirage() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) bool { return v.Mirage }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) MatchedData() RulesetRuleActionParametersMatchedDataPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersMatchedData { return v.MatchedData }).(RulesetRuleActionParametersMatchedDataPtrOutput)
+func (o RulesetRuleActionParameterOutput) OpportunisticEncryption() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) bool { return v.OpportunisticEncryption }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) Mirage() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.Mirage }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterOutput) OriginErrorPagePassthru() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) bool { return v.OriginErrorPagePassthru }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) OpportunisticEncryption() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.OpportunisticEncryption }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterOutput) Origins() RulesetRuleActionParameterOriginArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) []RulesetRuleActionParameterOrigin { return v.Origins }).(RulesetRuleActionParameterOriginArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) Origin() RulesetRuleActionParametersOriginPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersOrigin { return v.Origin }).(RulesetRuleActionParametersOriginPtrOutput)
+func (o RulesetRuleActionParameterOutput) Overrides() RulesetRuleActionParameterOverrideArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) []RulesetRuleActionParameterOverride { return v.Overrides }).(RulesetRuleActionParameterOverrideArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) OriginErrorPagePassthru() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.OriginErrorPagePassthru }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterOutput) Phases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) []string { return v.Phases }).(pulumi.StringArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) Overrides() RulesetRuleActionParametersOverridesPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersOverrides { return v.Overrides }).(RulesetRuleActionParametersOverridesPtrOutput)
+func (o RulesetRuleActionParameterOutput) Polish() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) string { return v.Polish }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) Phases() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.Phases }).(pulumi.StringArrayOutput)
+func (o RulesetRuleActionParameterOutput) Products() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) []string { return v.Products }).(pulumi.StringArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) Polish() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.Polish }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParameterOutput) RequestFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) []string { return v.RequestFields }).(pulumi.StringArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) Products() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.Products }).(pulumi.StringArrayOutput)
+func (o RulesetRuleActionParameterOutput) RespectStrongEtags() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) bool { return v.RespectStrongEtags }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) RequestFields() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.RequestFields }).(pulumi.StringArrayOutput)
+func (o RulesetRuleActionParameterOutput) ResponseFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) []string { return v.ResponseFields }).(pulumi.StringArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) RespectStrongEtags() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.RespectStrongEtags }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterOutput) Responses() RulesetRuleActionParameterResponseArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) []RulesetRuleActionParameterResponse { return v.Responses }).(RulesetRuleActionParameterResponseArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) ResponseFields() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.ResponseFields }).(pulumi.StringArrayOutput)
-}
-
-func (o RulesetRuleActionParametersOutput) Responses() RulesetRuleActionParametersResponseArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) []RulesetRuleActionParametersResponse { return v.Responses }).(RulesetRuleActionParametersResponseArrayOutput)
-}
-
-func (o RulesetRuleActionParametersOutput) RocketLoader() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.RocketLoader }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterOutput) RocketLoader() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) bool { return v.RocketLoader }).(pulumi.BoolOutput)
 }
 
 // List of rules to apply to the ruleset.
-func (o RulesetRuleActionParametersOutput) Rules() pulumi.StringMapOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) map[string]string { return v.Rules }).(pulumi.StringMapOutput)
+func (o RulesetRuleActionParameterOutput) Rules() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) map[string]string { return v.Rules }).(pulumi.StringMapOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) Ruleset() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.Ruleset }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParameterOutput) Ruleset() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) string { return v.Ruleset }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) Rulesets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.Rulesets }).(pulumi.StringArrayOutput)
+func (o RulesetRuleActionParameterOutput) Rulesets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) []string { return v.Rulesets }).(pulumi.StringArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) SecurityLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParameterOutput) SecurityLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) string { return v.SecurityLevel }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) ServeStale() RulesetRuleActionParametersServeStalePtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersServeStale { return v.ServeStale }).(RulesetRuleActionParametersServeStalePtrOutput)
+func (o RulesetRuleActionParameterOutput) ServeStales() RulesetRuleActionParameterServeStaleArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) []RulesetRuleActionParameterServeStale { return v.ServeStales }).(RulesetRuleActionParameterServeStaleArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) ServerSideExcludes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.ServerSideExcludes }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterOutput) ServerSideExcludes() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) bool { return v.ServerSideExcludes }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) Sni() RulesetRuleActionParametersSniPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersSni { return v.Sni }).(RulesetRuleActionParametersSniPtrOutput)
+func (o RulesetRuleActionParameterOutput) Snis() RulesetRuleActionParameterSniArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) []RulesetRuleActionParameterSni { return v.Snis }).(RulesetRuleActionParameterSniArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) Ssl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.Ssl }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParameterOutput) Ssl() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) string { return v.Ssl }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) StatusCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *int { return v.StatusCode }).(pulumi.IntPtrOutput)
+func (o RulesetRuleActionParameterOutput) StatusCode() pulumi.IntOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) int { return v.StatusCode }).(pulumi.IntOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) Sxg() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.Sxg }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterOutput) Sxg() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) bool { return v.Sxg }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) Uri() RulesetRuleActionParametersUriPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersUri { return v.Uri }).(RulesetRuleActionParametersUriPtrOutput)
+func (o RulesetRuleActionParameterOutput) Uris() RulesetRuleActionParameterUriArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) []RulesetRuleActionParameterUri { return v.Uris }).(RulesetRuleActionParameterUriArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.Version }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParameterOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameter) string { return v.Version }).(pulumi.StringOutput)
 }
 
-type RulesetRuleActionParametersPtrOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParameterArrayOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParametersPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParameters)(nil)).Elem()
+func (RulesetRuleActionParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameter)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersPtrOutput) ToRulesetRuleActionParametersPtrOutput() RulesetRuleActionParametersPtrOutput {
+func (o RulesetRuleActionParameterArrayOutput) ToRulesetRuleActionParameterArrayOutput() RulesetRuleActionParameterArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersPtrOutput) ToRulesetRuleActionParametersPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersPtrOutput {
+func (o RulesetRuleActionParameterArrayOutput) ToRulesetRuleActionParameterArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersPtrOutput) Elem() RulesetRuleActionParametersOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) RulesetRuleActionParameters {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParameters
-		return ret
-	}).(RulesetRuleActionParametersOutput)
+func (o RulesetRuleActionParameterArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameter {
+		return vs[0].([]RulesetRuleActionParameter)[vs[1].(int)]
+	}).(RulesetRuleActionParameterOutput)
 }
 
-func (o RulesetRuleActionParametersPtrOutput) AutomaticHttpsRewrites() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AutomaticHttpsRewrites
-	}).(pulumi.BoolPtrOutput)
+type RulesetRuleActionParameterAutominify struct {
+	Css  bool `pulumi:"css"`
+	Html bool `pulumi:"html"`
+	Js   bool `pulumi:"js"`
 }
 
-func (o RulesetRuleActionParametersPtrOutput) Autominifies() RulesetRuleActionParametersAutominifyArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) []RulesetRuleActionParametersAutominify {
-		if v == nil {
-			return nil
-		}
-		return v.Autominifies
-	}).(RulesetRuleActionParametersAutominifyArrayOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) Bic() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Bic
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) BrowserTtl() RulesetRuleActionParametersBrowserTtlPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersBrowserTtl {
-		if v == nil {
-			return nil
-		}
-		return v.BrowserTtl
-	}).(RulesetRuleActionParametersBrowserTtlPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) Cache() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Cache
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) CacheKey() RulesetRuleActionParametersCacheKeyPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersCacheKey {
-		if v == nil {
-			return nil
-		}
-		return v.CacheKey
-	}).(RulesetRuleActionParametersCacheKeyPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Content
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) ContentType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ContentType
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) CookieFields() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) []string {
-		if v == nil {
-			return nil
-		}
-		return v.CookieFields
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) DisableApps() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DisableApps
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) DisableRailgun() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DisableRailgun
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) DisableZaraz() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DisableZaraz
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) EdgeTtl() RulesetRuleActionParametersEdgeTtlPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersEdgeTtl {
-		if v == nil {
-			return nil
-		}
-		return v.EdgeTtl
-	}).(RulesetRuleActionParametersEdgeTtlPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) EmailObfuscation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EmailObfuscation
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) FromList() RulesetRuleActionParametersFromListPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersFromList {
-		if v == nil {
-			return nil
-		}
-		return v.FromList
-	}).(RulesetRuleActionParametersFromListPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) FromValue() RulesetRuleActionParametersFromValuePtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersFromValue {
-		if v == nil {
-			return nil
-		}
-		return v.FromValue
-	}).(RulesetRuleActionParametersFromValuePtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) Headers() RulesetRuleActionParametersHeaderArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) []RulesetRuleActionParametersHeader {
-		if v == nil {
-			return nil
-		}
-		return v.Headers
-	}).(RulesetRuleActionParametersHeaderArrayOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) HostHeader() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
-		if v == nil {
-			return nil
-		}
-		return v.HostHeader
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) HotlinkProtection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.HotlinkProtection
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The ID of this resource.
-func (o RulesetRuleActionParametersPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) Increment() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Increment
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) MatchedData() RulesetRuleActionParametersMatchedDataPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersMatchedData {
-		if v == nil {
-			return nil
-		}
-		return v.MatchedData
-	}).(RulesetRuleActionParametersMatchedDataPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) Mirage() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Mirage
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) OpportunisticEncryption() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.OpportunisticEncryption
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) Origin() RulesetRuleActionParametersOriginPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersOrigin {
-		if v == nil {
-			return nil
-		}
-		return v.Origin
-	}).(RulesetRuleActionParametersOriginPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) OriginErrorPagePassthru() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.OriginErrorPagePassthru
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) Overrides() RulesetRuleActionParametersOverridesPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersOverrides {
-		if v == nil {
-			return nil
-		}
-		return v.Overrides
-	}).(RulesetRuleActionParametersOverridesPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) Phases() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Phases
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) Polish() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Polish
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) Products() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Products
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) RequestFields() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) []string {
-		if v == nil {
-			return nil
-		}
-		return v.RequestFields
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) RespectStrongEtags() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.RespectStrongEtags
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) ResponseFields() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ResponseFields
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) Responses() RulesetRuleActionParametersResponseArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) []RulesetRuleActionParametersResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Responses
-	}).(RulesetRuleActionParametersResponseArrayOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) RocketLoader() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.RocketLoader
-	}).(pulumi.BoolPtrOutput)
-}
-
-// List of rules to apply to the ruleset.
-func (o RulesetRuleActionParametersPtrOutput) Rules() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Rules
-	}).(pulumi.StringMapOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) Ruleset() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Ruleset
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) Rulesets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Rulesets
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) SecurityLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecurityLevel
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) ServeStale() RulesetRuleActionParametersServeStalePtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersServeStale {
-		if v == nil {
-			return nil
-		}
-		return v.ServeStale
-	}).(RulesetRuleActionParametersServeStalePtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) ServerSideExcludes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ServerSideExcludes
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) Sni() RulesetRuleActionParametersSniPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersSni {
-		if v == nil {
-			return nil
-		}
-		return v.Sni
-	}).(RulesetRuleActionParametersSniPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) Ssl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Ssl
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) StatusCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *int {
-		if v == nil {
-			return nil
-		}
-		return v.StatusCode
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) Sxg() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Sxg
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) Uri() RulesetRuleActionParametersUriPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersUri {
-		if v == nil {
-			return nil
-		}
-		return v.Uri
-	}).(RulesetRuleActionParametersUriPtrOutput)
-}
-
-func (o RulesetRuleActionParametersPtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
-type RulesetRuleActionParametersAutominify struct {
-	Css  *bool `pulumi:"css"`
-	Html *bool `pulumi:"html"`
-	Js   *bool `pulumi:"js"`
-}
-
-// RulesetRuleActionParametersAutominifyInput is an input type that accepts RulesetRuleActionParametersAutominifyArgs and RulesetRuleActionParametersAutominifyOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersAutominifyInput` via:
+// RulesetRuleActionParameterAutominifyInput is an input type that accepts RulesetRuleActionParameterAutominifyArgs and RulesetRuleActionParameterAutominifyOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterAutominifyInput` via:
 //
-//	RulesetRuleActionParametersAutominifyArgs{...}
-type RulesetRuleActionParametersAutominifyInput interface {
+//	RulesetRuleActionParameterAutominifyArgs{...}
+type RulesetRuleActionParameterAutominifyInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersAutominifyOutput() RulesetRuleActionParametersAutominifyOutput
-	ToRulesetRuleActionParametersAutominifyOutputWithContext(context.Context) RulesetRuleActionParametersAutominifyOutput
+	ToRulesetRuleActionParameterAutominifyOutput() RulesetRuleActionParameterAutominifyOutput
+	ToRulesetRuleActionParameterAutominifyOutputWithContext(context.Context) RulesetRuleActionParameterAutominifyOutput
 }
 
-type RulesetRuleActionParametersAutominifyArgs struct {
-	Css  pulumi.BoolPtrInput `pulumi:"css"`
-	Html pulumi.BoolPtrInput `pulumi:"html"`
-	Js   pulumi.BoolPtrInput `pulumi:"js"`
+type RulesetRuleActionParameterAutominifyArgs struct {
+	Css  pulumi.BoolInput `pulumi:"css"`
+	Html pulumi.BoolInput `pulumi:"html"`
+	Js   pulumi.BoolInput `pulumi:"js"`
 }
 
-func (RulesetRuleActionParametersAutominifyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersAutominify)(nil)).Elem()
+func (RulesetRuleActionParameterAutominifyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterAutominify)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersAutominifyArgs) ToRulesetRuleActionParametersAutominifyOutput() RulesetRuleActionParametersAutominifyOutput {
-	return i.ToRulesetRuleActionParametersAutominifyOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterAutominifyArgs) ToRulesetRuleActionParameterAutominifyOutput() RulesetRuleActionParameterAutominifyOutput {
+	return i.ToRulesetRuleActionParameterAutominifyOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersAutominifyArgs) ToRulesetRuleActionParametersAutominifyOutputWithContext(ctx context.Context) RulesetRuleActionParametersAutominifyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersAutominifyOutput)
+func (i RulesetRuleActionParameterAutominifyArgs) ToRulesetRuleActionParameterAutominifyOutputWithContext(ctx context.Context) RulesetRuleActionParameterAutominifyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterAutominifyOutput)
 }
 
-// RulesetRuleActionParametersAutominifyArrayInput is an input type that accepts RulesetRuleActionParametersAutominifyArray and RulesetRuleActionParametersAutominifyArrayOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersAutominifyArrayInput` via:
+// RulesetRuleActionParameterAutominifyArrayInput is an input type that accepts RulesetRuleActionParameterAutominifyArray and RulesetRuleActionParameterAutominifyArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterAutominifyArrayInput` via:
 //
-//	RulesetRuleActionParametersAutominifyArray{ RulesetRuleActionParametersAutominifyArgs{...} }
-type RulesetRuleActionParametersAutominifyArrayInput interface {
+//	RulesetRuleActionParameterAutominifyArray{ RulesetRuleActionParameterAutominifyArgs{...} }
+type RulesetRuleActionParameterAutominifyArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersAutominifyArrayOutput() RulesetRuleActionParametersAutominifyArrayOutput
-	ToRulesetRuleActionParametersAutominifyArrayOutputWithContext(context.Context) RulesetRuleActionParametersAutominifyArrayOutput
+	ToRulesetRuleActionParameterAutominifyArrayOutput() RulesetRuleActionParameterAutominifyArrayOutput
+	ToRulesetRuleActionParameterAutominifyArrayOutputWithContext(context.Context) RulesetRuleActionParameterAutominifyArrayOutput
 }
 
-type RulesetRuleActionParametersAutominifyArray []RulesetRuleActionParametersAutominifyInput
+type RulesetRuleActionParameterAutominifyArray []RulesetRuleActionParameterAutominifyInput
 
-func (RulesetRuleActionParametersAutominifyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParametersAutominify)(nil)).Elem()
+func (RulesetRuleActionParameterAutominifyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterAutominify)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersAutominifyArray) ToRulesetRuleActionParametersAutominifyArrayOutput() RulesetRuleActionParametersAutominifyArrayOutput {
-	return i.ToRulesetRuleActionParametersAutominifyArrayOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterAutominifyArray) ToRulesetRuleActionParameterAutominifyArrayOutput() RulesetRuleActionParameterAutominifyArrayOutput {
+	return i.ToRulesetRuleActionParameterAutominifyArrayOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersAutominifyArray) ToRulesetRuleActionParametersAutominifyArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersAutominifyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersAutominifyArrayOutput)
+func (i RulesetRuleActionParameterAutominifyArray) ToRulesetRuleActionParameterAutominifyArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterAutominifyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterAutominifyArrayOutput)
 }
 
-type RulesetRuleActionParametersAutominifyOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParameterAutominifyOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParametersAutominifyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersAutominify)(nil)).Elem()
+func (RulesetRuleActionParameterAutominifyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterAutominify)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersAutominifyOutput) ToRulesetRuleActionParametersAutominifyOutput() RulesetRuleActionParametersAutominifyOutput {
+func (o RulesetRuleActionParameterAutominifyOutput) ToRulesetRuleActionParameterAutominifyOutput() RulesetRuleActionParameterAutominifyOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersAutominifyOutput) ToRulesetRuleActionParametersAutominifyOutputWithContext(ctx context.Context) RulesetRuleActionParametersAutominifyOutput {
+func (o RulesetRuleActionParameterAutominifyOutput) ToRulesetRuleActionParameterAutominifyOutputWithContext(ctx context.Context) RulesetRuleActionParameterAutominifyOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersAutominifyOutput) Css() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersAutominify) *bool { return v.Css }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterAutominifyOutput) Css() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterAutominify) bool { return v.Css }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersAutominifyOutput) Html() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersAutominify) *bool { return v.Html }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterAutominifyOutput) Html() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterAutominify) bool { return v.Html }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersAutominifyOutput) Js() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersAutominify) *bool { return v.Js }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterAutominifyOutput) Js() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterAutominify) bool { return v.Js }).(pulumi.BoolOutput)
 }
 
-type RulesetRuleActionParametersAutominifyArrayOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParameterAutominifyArrayOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParametersAutominifyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParametersAutominify)(nil)).Elem()
+func (RulesetRuleActionParameterAutominifyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterAutominify)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersAutominifyArrayOutput) ToRulesetRuleActionParametersAutominifyArrayOutput() RulesetRuleActionParametersAutominifyArrayOutput {
+func (o RulesetRuleActionParameterAutominifyArrayOutput) ToRulesetRuleActionParameterAutominifyArrayOutput() RulesetRuleActionParameterAutominifyArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersAutominifyArrayOutput) ToRulesetRuleActionParametersAutominifyArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersAutominifyArrayOutput {
+func (o RulesetRuleActionParameterAutominifyArrayOutput) ToRulesetRuleActionParameterAutominifyArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterAutominifyArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersAutominifyArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParametersAutominifyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParametersAutominify {
-		return vs[0].([]RulesetRuleActionParametersAutominify)[vs[1].(int)]
-	}).(RulesetRuleActionParametersAutominifyOutput)
+func (o RulesetRuleActionParameterAutominifyArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterAutominifyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterAutominify {
+		return vs[0].([]RulesetRuleActionParameterAutominify)[vs[1].(int)]
+	}).(RulesetRuleActionParameterAutominifyOutput)
 }
 
-type RulesetRuleActionParametersBrowserTtl struct {
-	Default *int   `pulumi:"default"`
+type RulesetRuleActionParameterBrowserTtl struct {
+	Default int    `pulumi:"default"`
 	Mode    string `pulumi:"mode"`
 }
 
-// RulesetRuleActionParametersBrowserTtlInput is an input type that accepts RulesetRuleActionParametersBrowserTtlArgs and RulesetRuleActionParametersBrowserTtlOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersBrowserTtlInput` via:
+// RulesetRuleActionParameterBrowserTtlInput is an input type that accepts RulesetRuleActionParameterBrowserTtlArgs and RulesetRuleActionParameterBrowserTtlOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterBrowserTtlInput` via:
 //
-//	RulesetRuleActionParametersBrowserTtlArgs{...}
-type RulesetRuleActionParametersBrowserTtlInput interface {
+//	RulesetRuleActionParameterBrowserTtlArgs{...}
+type RulesetRuleActionParameterBrowserTtlInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersBrowserTtlOutput() RulesetRuleActionParametersBrowserTtlOutput
-	ToRulesetRuleActionParametersBrowserTtlOutputWithContext(context.Context) RulesetRuleActionParametersBrowserTtlOutput
+	ToRulesetRuleActionParameterBrowserTtlOutput() RulesetRuleActionParameterBrowserTtlOutput
+	ToRulesetRuleActionParameterBrowserTtlOutputWithContext(context.Context) RulesetRuleActionParameterBrowserTtlOutput
 }
 
-type RulesetRuleActionParametersBrowserTtlArgs struct {
-	Default pulumi.IntPtrInput `pulumi:"default"`
+type RulesetRuleActionParameterBrowserTtlArgs struct {
+	Default pulumi.IntInput    `pulumi:"default"`
 	Mode    pulumi.StringInput `pulumi:"mode"`
 }
 
-func (RulesetRuleActionParametersBrowserTtlArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersBrowserTtl)(nil)).Elem()
+func (RulesetRuleActionParameterBrowserTtlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterBrowserTtl)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersBrowserTtlArgs) ToRulesetRuleActionParametersBrowserTtlOutput() RulesetRuleActionParametersBrowserTtlOutput {
-	return i.ToRulesetRuleActionParametersBrowserTtlOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterBrowserTtlArgs) ToRulesetRuleActionParameterBrowserTtlOutput() RulesetRuleActionParameterBrowserTtlOutput {
+	return i.ToRulesetRuleActionParameterBrowserTtlOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersBrowserTtlArgs) ToRulesetRuleActionParametersBrowserTtlOutputWithContext(ctx context.Context) RulesetRuleActionParametersBrowserTtlOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersBrowserTtlOutput)
+func (i RulesetRuleActionParameterBrowserTtlArgs) ToRulesetRuleActionParameterBrowserTtlOutputWithContext(ctx context.Context) RulesetRuleActionParameterBrowserTtlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterBrowserTtlOutput)
 }
 
-func (i RulesetRuleActionParametersBrowserTtlArgs) ToRulesetRuleActionParametersBrowserTtlPtrOutput() RulesetRuleActionParametersBrowserTtlPtrOutput {
-	return i.ToRulesetRuleActionParametersBrowserTtlPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersBrowserTtlArgs) ToRulesetRuleActionParametersBrowserTtlPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersBrowserTtlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersBrowserTtlOutput).ToRulesetRuleActionParametersBrowserTtlPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersBrowserTtlPtrInput is an input type that accepts RulesetRuleActionParametersBrowserTtlArgs, RulesetRuleActionParametersBrowserTtlPtr and RulesetRuleActionParametersBrowserTtlPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersBrowserTtlPtrInput` via:
+// RulesetRuleActionParameterBrowserTtlArrayInput is an input type that accepts RulesetRuleActionParameterBrowserTtlArray and RulesetRuleActionParameterBrowserTtlArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterBrowserTtlArrayInput` via:
 //
-//	        RulesetRuleActionParametersBrowserTtlArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersBrowserTtlPtrInput interface {
+//	RulesetRuleActionParameterBrowserTtlArray{ RulesetRuleActionParameterBrowserTtlArgs{...} }
+type RulesetRuleActionParameterBrowserTtlArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersBrowserTtlPtrOutput() RulesetRuleActionParametersBrowserTtlPtrOutput
-	ToRulesetRuleActionParametersBrowserTtlPtrOutputWithContext(context.Context) RulesetRuleActionParametersBrowserTtlPtrOutput
+	ToRulesetRuleActionParameterBrowserTtlArrayOutput() RulesetRuleActionParameterBrowserTtlArrayOutput
+	ToRulesetRuleActionParameterBrowserTtlArrayOutputWithContext(context.Context) RulesetRuleActionParameterBrowserTtlArrayOutput
 }
 
-type rulesetRuleActionParametersBrowserTtlPtrType RulesetRuleActionParametersBrowserTtlArgs
+type RulesetRuleActionParameterBrowserTtlArray []RulesetRuleActionParameterBrowserTtlInput
 
-func RulesetRuleActionParametersBrowserTtlPtr(v *RulesetRuleActionParametersBrowserTtlArgs) RulesetRuleActionParametersBrowserTtlPtrInput {
-	return (*rulesetRuleActionParametersBrowserTtlPtrType)(v)
+func (RulesetRuleActionParameterBrowserTtlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterBrowserTtl)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersBrowserTtlPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersBrowserTtl)(nil)).Elem()
+func (i RulesetRuleActionParameterBrowserTtlArray) ToRulesetRuleActionParameterBrowserTtlArrayOutput() RulesetRuleActionParameterBrowserTtlArrayOutput {
+	return i.ToRulesetRuleActionParameterBrowserTtlArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersBrowserTtlPtrType) ToRulesetRuleActionParametersBrowserTtlPtrOutput() RulesetRuleActionParametersBrowserTtlPtrOutput {
-	return i.ToRulesetRuleActionParametersBrowserTtlPtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterBrowserTtlArray) ToRulesetRuleActionParameterBrowserTtlArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterBrowserTtlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterBrowserTtlArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersBrowserTtlPtrType) ToRulesetRuleActionParametersBrowserTtlPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersBrowserTtlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersBrowserTtlPtrOutput)
+type RulesetRuleActionParameterBrowserTtlOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterBrowserTtlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterBrowserTtl)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersBrowserTtlOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersBrowserTtlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersBrowserTtl)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersBrowserTtlOutput) ToRulesetRuleActionParametersBrowserTtlOutput() RulesetRuleActionParametersBrowserTtlOutput {
+func (o RulesetRuleActionParameterBrowserTtlOutput) ToRulesetRuleActionParameterBrowserTtlOutput() RulesetRuleActionParameterBrowserTtlOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersBrowserTtlOutput) ToRulesetRuleActionParametersBrowserTtlOutputWithContext(ctx context.Context) RulesetRuleActionParametersBrowserTtlOutput {
+func (o RulesetRuleActionParameterBrowserTtlOutput) ToRulesetRuleActionParameterBrowserTtlOutputWithContext(ctx context.Context) RulesetRuleActionParameterBrowserTtlOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersBrowserTtlOutput) ToRulesetRuleActionParametersBrowserTtlPtrOutput() RulesetRuleActionParametersBrowserTtlPtrOutput {
-	return o.ToRulesetRuleActionParametersBrowserTtlPtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterBrowserTtlOutput) Default() pulumi.IntOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterBrowserTtl) int { return v.Default }).(pulumi.IntOutput)
 }
 
-func (o RulesetRuleActionParametersBrowserTtlOutput) ToRulesetRuleActionParametersBrowserTtlPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersBrowserTtlPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersBrowserTtl) *RulesetRuleActionParametersBrowserTtl {
-		return &v
-	}).(RulesetRuleActionParametersBrowserTtlPtrOutput)
+func (o RulesetRuleActionParameterBrowserTtlOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterBrowserTtl) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersBrowserTtlOutput) Default() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersBrowserTtl) *int { return v.Default }).(pulumi.IntPtrOutput)
+type RulesetRuleActionParameterBrowserTtlArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterBrowserTtlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterBrowserTtl)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersBrowserTtlOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersBrowserTtl) string { return v.Mode }).(pulumi.StringOutput)
-}
-
-type RulesetRuleActionParametersBrowserTtlPtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersBrowserTtlPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersBrowserTtl)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersBrowserTtlPtrOutput) ToRulesetRuleActionParametersBrowserTtlPtrOutput() RulesetRuleActionParametersBrowserTtlPtrOutput {
+func (o RulesetRuleActionParameterBrowserTtlArrayOutput) ToRulesetRuleActionParameterBrowserTtlArrayOutput() RulesetRuleActionParameterBrowserTtlArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersBrowserTtlPtrOutput) ToRulesetRuleActionParametersBrowserTtlPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersBrowserTtlPtrOutput {
+func (o RulesetRuleActionParameterBrowserTtlArrayOutput) ToRulesetRuleActionParameterBrowserTtlArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterBrowserTtlArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersBrowserTtlPtrOutput) Elem() RulesetRuleActionParametersBrowserTtlOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersBrowserTtl) RulesetRuleActionParametersBrowserTtl {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParametersBrowserTtl
-		return ret
-	}).(RulesetRuleActionParametersBrowserTtlOutput)
+func (o RulesetRuleActionParameterBrowserTtlArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterBrowserTtlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterBrowserTtl {
+		return vs[0].([]RulesetRuleActionParameterBrowserTtl)[vs[1].(int)]
+	}).(RulesetRuleActionParameterBrowserTtlOutput)
 }
 
-func (o RulesetRuleActionParametersBrowserTtlPtrOutput) Default() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersBrowserTtl) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Default
-	}).(pulumi.IntPtrOutput)
+type RulesetRuleActionParameterCacheKey struct {
+	CacheByDeviceType       bool                                          `pulumi:"cacheByDeviceType"`
+	CacheDeceptionArmor     bool                                          `pulumi:"cacheDeceptionArmor"`
+	CustomKeys              []RulesetRuleActionParameterCacheKeyCustomKey `pulumi:"customKeys"`
+	IgnoreQueryStringsOrder bool                                          `pulumi:"ignoreQueryStringsOrder"`
 }
 
-func (o RulesetRuleActionParametersBrowserTtlPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersBrowserTtl) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Mode
-	}).(pulumi.StringPtrOutput)
-}
-
-type RulesetRuleActionParametersCacheKey struct {
-	CacheByDeviceType       *bool                                         `pulumi:"cacheByDeviceType"`
-	CacheDeceptionArmor     *bool                                         `pulumi:"cacheDeceptionArmor"`
-	CustomKey               *RulesetRuleActionParametersCacheKeyCustomKey `pulumi:"customKey"`
-	IgnoreQueryStringsOrder *bool                                         `pulumi:"ignoreQueryStringsOrder"`
-}
-
-// RulesetRuleActionParametersCacheKeyInput is an input type that accepts RulesetRuleActionParametersCacheKeyArgs and RulesetRuleActionParametersCacheKeyOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyInput` via:
+// RulesetRuleActionParameterCacheKeyInput is an input type that accepts RulesetRuleActionParameterCacheKeyArgs and RulesetRuleActionParameterCacheKeyOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterCacheKeyInput` via:
 //
-//	RulesetRuleActionParametersCacheKeyArgs{...}
-type RulesetRuleActionParametersCacheKeyInput interface {
+//	RulesetRuleActionParameterCacheKeyArgs{...}
+type RulesetRuleActionParameterCacheKeyInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersCacheKeyOutput() RulesetRuleActionParametersCacheKeyOutput
-	ToRulesetRuleActionParametersCacheKeyOutputWithContext(context.Context) RulesetRuleActionParametersCacheKeyOutput
+	ToRulesetRuleActionParameterCacheKeyOutput() RulesetRuleActionParameterCacheKeyOutput
+	ToRulesetRuleActionParameterCacheKeyOutputWithContext(context.Context) RulesetRuleActionParameterCacheKeyOutput
 }
 
-type RulesetRuleActionParametersCacheKeyArgs struct {
-	CacheByDeviceType       pulumi.BoolPtrInput                                  `pulumi:"cacheByDeviceType"`
-	CacheDeceptionArmor     pulumi.BoolPtrInput                                  `pulumi:"cacheDeceptionArmor"`
-	CustomKey               RulesetRuleActionParametersCacheKeyCustomKeyPtrInput `pulumi:"customKey"`
-	IgnoreQueryStringsOrder pulumi.BoolPtrInput                                  `pulumi:"ignoreQueryStringsOrder"`
+type RulesetRuleActionParameterCacheKeyArgs struct {
+	CacheByDeviceType       pulumi.BoolInput                                      `pulumi:"cacheByDeviceType"`
+	CacheDeceptionArmor     pulumi.BoolInput                                      `pulumi:"cacheDeceptionArmor"`
+	CustomKeys              RulesetRuleActionParameterCacheKeyCustomKeyArrayInput `pulumi:"customKeys"`
+	IgnoreQueryStringsOrder pulumi.BoolInput                                      `pulumi:"ignoreQueryStringsOrder"`
 }
 
-func (RulesetRuleActionParametersCacheKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersCacheKey)(nil)).Elem()
+func (RulesetRuleActionParameterCacheKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterCacheKey)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersCacheKeyArgs) ToRulesetRuleActionParametersCacheKeyOutput() RulesetRuleActionParametersCacheKeyOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterCacheKeyArgs) ToRulesetRuleActionParameterCacheKeyOutput() RulesetRuleActionParameterCacheKeyOutput {
+	return i.ToRulesetRuleActionParameterCacheKeyOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersCacheKeyArgs) ToRulesetRuleActionParametersCacheKeyOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyOutput)
+func (i RulesetRuleActionParameterCacheKeyArgs) ToRulesetRuleActionParameterCacheKeyOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterCacheKeyOutput)
 }
 
-func (i RulesetRuleActionParametersCacheKeyArgs) ToRulesetRuleActionParametersCacheKeyPtrOutput() RulesetRuleActionParametersCacheKeyPtrOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersCacheKeyArgs) ToRulesetRuleActionParametersCacheKeyPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyOutput).ToRulesetRuleActionParametersCacheKeyPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersCacheKeyPtrInput is an input type that accepts RulesetRuleActionParametersCacheKeyArgs, RulesetRuleActionParametersCacheKeyPtr and RulesetRuleActionParametersCacheKeyPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyPtrInput` via:
+// RulesetRuleActionParameterCacheKeyArrayInput is an input type that accepts RulesetRuleActionParameterCacheKeyArray and RulesetRuleActionParameterCacheKeyArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterCacheKeyArrayInput` via:
 //
-//	        RulesetRuleActionParametersCacheKeyArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersCacheKeyPtrInput interface {
+//	RulesetRuleActionParameterCacheKeyArray{ RulesetRuleActionParameterCacheKeyArgs{...} }
+type RulesetRuleActionParameterCacheKeyArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersCacheKeyPtrOutput() RulesetRuleActionParametersCacheKeyPtrOutput
-	ToRulesetRuleActionParametersCacheKeyPtrOutputWithContext(context.Context) RulesetRuleActionParametersCacheKeyPtrOutput
+	ToRulesetRuleActionParameterCacheKeyArrayOutput() RulesetRuleActionParameterCacheKeyArrayOutput
+	ToRulesetRuleActionParameterCacheKeyArrayOutputWithContext(context.Context) RulesetRuleActionParameterCacheKeyArrayOutput
 }
 
-type rulesetRuleActionParametersCacheKeyPtrType RulesetRuleActionParametersCacheKeyArgs
+type RulesetRuleActionParameterCacheKeyArray []RulesetRuleActionParameterCacheKeyInput
 
-func RulesetRuleActionParametersCacheKeyPtr(v *RulesetRuleActionParametersCacheKeyArgs) RulesetRuleActionParametersCacheKeyPtrInput {
-	return (*rulesetRuleActionParametersCacheKeyPtrType)(v)
+func (RulesetRuleActionParameterCacheKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterCacheKey)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersCacheKeyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersCacheKey)(nil)).Elem()
+func (i RulesetRuleActionParameterCacheKeyArray) ToRulesetRuleActionParameterCacheKeyArrayOutput() RulesetRuleActionParameterCacheKeyArrayOutput {
+	return i.ToRulesetRuleActionParameterCacheKeyArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersCacheKeyPtrType) ToRulesetRuleActionParametersCacheKeyPtrOutput() RulesetRuleActionParametersCacheKeyPtrOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyPtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterCacheKeyArray) ToRulesetRuleActionParameterCacheKeyArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterCacheKeyArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersCacheKeyPtrType) ToRulesetRuleActionParametersCacheKeyPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyPtrOutput)
+type RulesetRuleActionParameterCacheKeyOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterCacheKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterCacheKey)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersCacheKeyOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersCacheKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersCacheKey)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersCacheKeyOutput) ToRulesetRuleActionParametersCacheKeyOutput() RulesetRuleActionParametersCacheKeyOutput {
+func (o RulesetRuleActionParameterCacheKeyOutput) ToRulesetRuleActionParameterCacheKeyOutput() RulesetRuleActionParameterCacheKeyOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyOutput) ToRulesetRuleActionParametersCacheKeyOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyOutput {
+func (o RulesetRuleActionParameterCacheKeyOutput) ToRulesetRuleActionParameterCacheKeyOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyOutput) ToRulesetRuleActionParametersCacheKeyPtrOutput() RulesetRuleActionParametersCacheKeyPtrOutput {
-	return o.ToRulesetRuleActionParametersCacheKeyPtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterCacheKeyOutput) CacheByDeviceType() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterCacheKey) bool { return v.CacheByDeviceType }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyOutput) ToRulesetRuleActionParametersCacheKeyPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersCacheKey) *RulesetRuleActionParametersCacheKey {
-		return &v
-	}).(RulesetRuleActionParametersCacheKeyPtrOutput)
+func (o RulesetRuleActionParameterCacheKeyOutput) CacheDeceptionArmor() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterCacheKey) bool { return v.CacheDeceptionArmor }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyOutput) CacheByDeviceType() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersCacheKey) *bool { return v.CacheByDeviceType }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterCacheKeyOutput) CustomKeys() RulesetRuleActionParameterCacheKeyCustomKeyArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterCacheKey) []RulesetRuleActionParameterCacheKeyCustomKey {
+		return v.CustomKeys
+	}).(RulesetRuleActionParameterCacheKeyCustomKeyArrayOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyOutput) CacheDeceptionArmor() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersCacheKey) *bool { return v.CacheDeceptionArmor }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterCacheKeyOutput) IgnoreQueryStringsOrder() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterCacheKey) bool { return v.IgnoreQueryStringsOrder }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyOutput) CustomKey() RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersCacheKey) *RulesetRuleActionParametersCacheKeyCustomKey {
-		return v.CustomKey
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput)
+type RulesetRuleActionParameterCacheKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterCacheKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterCacheKey)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersCacheKeyOutput) IgnoreQueryStringsOrder() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersCacheKey) *bool { return v.IgnoreQueryStringsOrder }).(pulumi.BoolPtrOutput)
-}
-
-type RulesetRuleActionParametersCacheKeyPtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersCacheKeyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersCacheKey)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersCacheKeyPtrOutput) ToRulesetRuleActionParametersCacheKeyPtrOutput() RulesetRuleActionParametersCacheKeyPtrOutput {
+func (o RulesetRuleActionParameterCacheKeyArrayOutput) ToRulesetRuleActionParameterCacheKeyArrayOutput() RulesetRuleActionParameterCacheKeyArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyPtrOutput) ToRulesetRuleActionParametersCacheKeyPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyPtrOutput {
+func (o RulesetRuleActionParameterCacheKeyArrayOutput) ToRulesetRuleActionParameterCacheKeyArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyPtrOutput) Elem() RulesetRuleActionParametersCacheKeyOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKey) RulesetRuleActionParametersCacheKey {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParametersCacheKey
-		return ret
-	}).(RulesetRuleActionParametersCacheKeyOutput)
+func (o RulesetRuleActionParameterCacheKeyArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterCacheKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterCacheKey {
+		return vs[0].([]RulesetRuleActionParameterCacheKey)[vs[1].(int)]
+	}).(RulesetRuleActionParameterCacheKeyOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyPtrOutput) CacheByDeviceType() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKey) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.CacheByDeviceType
-	}).(pulumi.BoolPtrOutput)
+type RulesetRuleActionParameterCacheKeyCustomKey struct {
+	Cookies      []RulesetRuleActionParameterCacheKeyCustomKeyCookie      `pulumi:"cookies"`
+	Headers      []RulesetRuleActionParameterCacheKeyCustomKeyHeader      `pulumi:"headers"`
+	Hosts        []RulesetRuleActionParameterCacheKeyCustomKeyHost        `pulumi:"hosts"`
+	QueryStrings []RulesetRuleActionParameterCacheKeyCustomKeyQueryString `pulumi:"queryStrings"`
+	Users        []RulesetRuleActionParameterCacheKeyCustomKeyUser        `pulumi:"users"`
 }
 
-func (o RulesetRuleActionParametersCacheKeyPtrOutput) CacheDeceptionArmor() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKey) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.CacheDeceptionArmor
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o RulesetRuleActionParametersCacheKeyPtrOutput) CustomKey() RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKey) *RulesetRuleActionParametersCacheKeyCustomKey {
-		if v == nil {
-			return nil
-		}
-		return v.CustomKey
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput)
-}
-
-func (o RulesetRuleActionParametersCacheKeyPtrOutput) IgnoreQueryStringsOrder() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKey) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IgnoreQueryStringsOrder
-	}).(pulumi.BoolPtrOutput)
-}
-
-type RulesetRuleActionParametersCacheKeyCustomKey struct {
-	Cookie      *RulesetRuleActionParametersCacheKeyCustomKeyCookie      `pulumi:"cookie"`
-	Header      *RulesetRuleActionParametersCacheKeyCustomKeyHeader      `pulumi:"header"`
-	Host        *RulesetRuleActionParametersCacheKeyCustomKeyHost        `pulumi:"host"`
-	QueryString *RulesetRuleActionParametersCacheKeyCustomKeyQueryString `pulumi:"queryString"`
-	User        *RulesetRuleActionParametersCacheKeyCustomKeyUser        `pulumi:"user"`
-}
-
-// RulesetRuleActionParametersCacheKeyCustomKeyInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyArgs and RulesetRuleActionParametersCacheKeyCustomKeyOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyInput` via:
+// RulesetRuleActionParameterCacheKeyCustomKeyInput is an input type that accepts RulesetRuleActionParameterCacheKeyCustomKeyArgs and RulesetRuleActionParameterCacheKeyCustomKeyOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterCacheKeyCustomKeyInput` via:
 //
-//	RulesetRuleActionParametersCacheKeyCustomKeyArgs{...}
-type RulesetRuleActionParametersCacheKeyCustomKeyInput interface {
+//	RulesetRuleActionParameterCacheKeyCustomKeyArgs{...}
+type RulesetRuleActionParameterCacheKeyCustomKeyInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersCacheKeyCustomKeyOutput() RulesetRuleActionParametersCacheKeyCustomKeyOutput
-	ToRulesetRuleActionParametersCacheKeyCustomKeyOutputWithContext(context.Context) RulesetRuleActionParametersCacheKeyCustomKeyOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyOutput() RulesetRuleActionParameterCacheKeyCustomKeyOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyOutputWithContext(context.Context) RulesetRuleActionParameterCacheKeyCustomKeyOutput
 }
 
-type RulesetRuleActionParametersCacheKeyCustomKeyArgs struct {
-	Cookie      RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrInput      `pulumi:"cookie"`
-	Header      RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrInput      `pulumi:"header"`
-	Host        RulesetRuleActionParametersCacheKeyCustomKeyHostPtrInput        `pulumi:"host"`
-	QueryString RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrInput `pulumi:"queryString"`
-	User        RulesetRuleActionParametersCacheKeyCustomKeyUserPtrInput        `pulumi:"user"`
+type RulesetRuleActionParameterCacheKeyCustomKeyArgs struct {
+	Cookies      RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayInput      `pulumi:"cookies"`
+	Headers      RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayInput      `pulumi:"headers"`
+	Hosts        RulesetRuleActionParameterCacheKeyCustomKeyHostArrayInput        `pulumi:"hosts"`
+	QueryStrings RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayInput `pulumi:"queryStrings"`
+	Users        RulesetRuleActionParameterCacheKeyCustomKeyUserArrayInput        `pulumi:"users"`
 }
 
-func (RulesetRuleActionParametersCacheKeyCustomKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKey)(nil)).Elem()
+func (RulesetRuleActionParameterCacheKeyCustomKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKey)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersCacheKeyCustomKeyArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyOutput() RulesetRuleActionParametersCacheKeyCustomKeyOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyCustomKeyOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterCacheKeyCustomKeyArgs) ToRulesetRuleActionParameterCacheKeyCustomKeyOutput() RulesetRuleActionParameterCacheKeyCustomKeyOutput {
+	return i.ToRulesetRuleActionParameterCacheKeyCustomKeyOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersCacheKeyCustomKeyArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyCustomKeyOutput)
+func (i RulesetRuleActionParameterCacheKeyCustomKeyArgs) ToRulesetRuleActionParameterCacheKeyCustomKeyOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterCacheKeyCustomKeyOutput)
 }
 
-func (i RulesetRuleActionParametersCacheKeyCustomKeyArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyCustomKeyPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersCacheKeyCustomKeyArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyCustomKeyOutput).ToRulesetRuleActionParametersCacheKeyCustomKeyPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersCacheKeyCustomKeyPtrInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyArgs, RulesetRuleActionParametersCacheKeyCustomKeyPtr and RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyPtrInput` via:
+// RulesetRuleActionParameterCacheKeyCustomKeyArrayInput is an input type that accepts RulesetRuleActionParameterCacheKeyCustomKeyArray and RulesetRuleActionParameterCacheKeyCustomKeyArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterCacheKeyCustomKeyArrayInput` via:
 //
-//	        RulesetRuleActionParametersCacheKeyCustomKeyArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersCacheKeyCustomKeyPtrInput interface {
+//	RulesetRuleActionParameterCacheKeyCustomKeyArray{ RulesetRuleActionParameterCacheKeyCustomKeyArgs{...} }
+type RulesetRuleActionParameterCacheKeyCustomKeyArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersCacheKeyCustomKeyPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput
-	ToRulesetRuleActionParametersCacheKeyCustomKeyPtrOutputWithContext(context.Context) RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyArrayOutput() RulesetRuleActionParameterCacheKeyCustomKeyArrayOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyArrayOutputWithContext(context.Context) RulesetRuleActionParameterCacheKeyCustomKeyArrayOutput
 }
 
-type rulesetRuleActionParametersCacheKeyCustomKeyPtrType RulesetRuleActionParametersCacheKeyCustomKeyArgs
+type RulesetRuleActionParameterCacheKeyCustomKeyArray []RulesetRuleActionParameterCacheKeyCustomKeyInput
 
-func RulesetRuleActionParametersCacheKeyCustomKeyPtr(v *RulesetRuleActionParametersCacheKeyCustomKeyArgs) RulesetRuleActionParametersCacheKeyCustomKeyPtrInput {
-	return (*rulesetRuleActionParametersCacheKeyCustomKeyPtrType)(v)
+func (RulesetRuleActionParameterCacheKeyCustomKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterCacheKeyCustomKey)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersCacheKeyCustomKeyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersCacheKeyCustomKey)(nil)).Elem()
+func (i RulesetRuleActionParameterCacheKeyCustomKeyArray) ToRulesetRuleActionParameterCacheKeyCustomKeyArrayOutput() RulesetRuleActionParameterCacheKeyCustomKeyArrayOutput {
+	return i.ToRulesetRuleActionParameterCacheKeyCustomKeyArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersCacheKeyCustomKeyPtrType) ToRulesetRuleActionParametersCacheKeyCustomKeyPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyCustomKeyPtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterCacheKeyCustomKeyArray) ToRulesetRuleActionParameterCacheKeyCustomKeyArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterCacheKeyCustomKeyArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersCacheKeyCustomKeyPtrType) ToRulesetRuleActionParametersCacheKeyCustomKeyPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput)
+type RulesetRuleActionParameterCacheKeyCustomKeyOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterCacheKeyCustomKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKey)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersCacheKeyCustomKeyOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersCacheKeyCustomKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKey)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersCacheKeyCustomKeyOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyOutput() RulesetRuleActionParametersCacheKeyCustomKeyOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyOutput() RulesetRuleActionParameterCacheKeyCustomKeyOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput {
-	return o.ToRulesetRuleActionParametersCacheKeyCustomKeyPtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterCacheKeyCustomKeyOutput) Cookies() RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterCacheKeyCustomKey) []RulesetRuleActionParameterCacheKeyCustomKeyCookie {
+		return v.Cookies
+	}).(RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersCacheKeyCustomKey) *RulesetRuleActionParametersCacheKeyCustomKey {
-		return &v
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput)
+func (o RulesetRuleActionParameterCacheKeyCustomKeyOutput) Headers() RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterCacheKeyCustomKey) []RulesetRuleActionParameterCacheKeyCustomKeyHeader {
+		return v.Headers
+	}).(RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyOutput) Cookie() RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersCacheKeyCustomKey) *RulesetRuleActionParametersCacheKeyCustomKeyCookie {
-		return v.Cookie
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput)
+func (o RulesetRuleActionParameterCacheKeyCustomKeyOutput) Hosts() RulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterCacheKeyCustomKey) []RulesetRuleActionParameterCacheKeyCustomKeyHost {
+		return v.Hosts
+	}).(RulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyOutput) Header() RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersCacheKeyCustomKey) *RulesetRuleActionParametersCacheKeyCustomKeyHeader {
-		return v.Header
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput)
+func (o RulesetRuleActionParameterCacheKeyCustomKeyOutput) QueryStrings() RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterCacheKeyCustomKey) []RulesetRuleActionParameterCacheKeyCustomKeyQueryString {
+		return v.QueryStrings
+	}).(RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyOutput) Host() RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersCacheKeyCustomKey) *RulesetRuleActionParametersCacheKeyCustomKeyHost {
-		return v.Host
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput)
+func (o RulesetRuleActionParameterCacheKeyCustomKeyOutput) Users() RulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterCacheKeyCustomKey) []RulesetRuleActionParameterCacheKeyCustomKeyUser {
+		return v.Users
+	}).(RulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyOutput) QueryString() RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersCacheKeyCustomKey) *RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
-		return v.QueryString
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput)
+type RulesetRuleActionParameterCacheKeyCustomKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterCacheKeyCustomKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterCacheKeyCustomKey)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyOutput) User() RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersCacheKeyCustomKey) *RulesetRuleActionParametersCacheKeyCustomKeyUser {
-		return v.User
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput)
-}
-
-type RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersCacheKeyCustomKey)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyArrayOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyArrayOutput() RulesetRuleActionParameterCacheKeyCustomKeyArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyArrayOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput) Elem() RulesetRuleActionParametersCacheKeyCustomKeyOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKey) RulesetRuleActionParametersCacheKeyCustomKey {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParametersCacheKeyCustomKey
-		return ret
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyOutput)
+func (o RulesetRuleActionParameterCacheKeyCustomKeyArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterCacheKeyCustomKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterCacheKeyCustomKey {
+		return vs[0].([]RulesetRuleActionParameterCacheKeyCustomKey)[vs[1].(int)]
+	}).(RulesetRuleActionParameterCacheKeyCustomKeyOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput) Cookie() RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKey) *RulesetRuleActionParametersCacheKeyCustomKeyCookie {
-		if v == nil {
-			return nil
-		}
-		return v.Cookie
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput)
-}
-
-func (o RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput) Header() RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKey) *RulesetRuleActionParametersCacheKeyCustomKeyHeader {
-		if v == nil {
-			return nil
-		}
-		return v.Header
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput)
-}
-
-func (o RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput) Host() RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKey) *RulesetRuleActionParametersCacheKeyCustomKeyHost {
-		if v == nil {
-			return nil
-		}
-		return v.Host
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput)
-}
-
-func (o RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput) QueryString() RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKey) *RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
-		if v == nil {
-			return nil
-		}
-		return v.QueryString
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput)
-}
-
-func (o RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput) User() RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKey) *RulesetRuleActionParametersCacheKeyCustomKeyUser {
-		if v == nil {
-			return nil
-		}
-		return v.User
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput)
-}
-
-type RulesetRuleActionParametersCacheKeyCustomKeyCookie struct {
+type RulesetRuleActionParameterCacheKeyCustomKeyCookie struct {
 	CheckPresences []string `pulumi:"checkPresences"`
 	Includes       []string `pulumi:"includes"`
 }
 
-// RulesetRuleActionParametersCacheKeyCustomKeyCookieInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs and RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyCookieInput` via:
+// RulesetRuleActionParameterCacheKeyCustomKeyCookieInput is an input type that accepts RulesetRuleActionParameterCacheKeyCustomKeyCookieArgs and RulesetRuleActionParameterCacheKeyCustomKeyCookieOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterCacheKeyCustomKeyCookieInput` via:
 //
-//	RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs{...}
-type RulesetRuleActionParametersCacheKeyCustomKeyCookieInput interface {
+//	RulesetRuleActionParameterCacheKeyCustomKeyCookieArgs{...}
+type RulesetRuleActionParameterCacheKeyCustomKeyCookieInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput() RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput
-	ToRulesetRuleActionParametersCacheKeyCustomKeyCookieOutputWithContext(context.Context) RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyCookieOutput() RulesetRuleActionParameterCacheKeyCustomKeyCookieOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyCookieOutputWithContext(context.Context) RulesetRuleActionParameterCacheKeyCustomKeyCookieOutput
 }
 
-type RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs struct {
+type RulesetRuleActionParameterCacheKeyCustomKeyCookieArgs struct {
 	CheckPresences pulumi.StringArrayInput `pulumi:"checkPresences"`
 	Includes       pulumi.StringArrayInput `pulumi:"includes"`
 }
 
-func (RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyCookie)(nil)).Elem()
+func (RulesetRuleActionParameterCacheKeyCustomKeyCookieArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyCookie)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput() RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyCustomKeyCookieOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterCacheKeyCustomKeyCookieArgs) ToRulesetRuleActionParameterCacheKeyCustomKeyCookieOutput() RulesetRuleActionParameterCacheKeyCustomKeyCookieOutput {
+	return i.ToRulesetRuleActionParameterCacheKeyCustomKeyCookieOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyCookieOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput)
+func (i RulesetRuleActionParameterCacheKeyCustomKeyCookieArgs) ToRulesetRuleActionParameterCacheKeyCustomKeyCookieOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyCookieOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterCacheKeyCustomKeyCookieOutput)
 }
 
-func (i RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput).ToRulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs, RulesetRuleActionParametersCacheKeyCustomKeyCookiePtr and RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrInput` via:
+// RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayInput is an input type that accepts RulesetRuleActionParameterCacheKeyCustomKeyCookieArray and RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayInput` via:
 //
-//	        RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrInput interface {
+//	RulesetRuleActionParameterCacheKeyCustomKeyCookieArray{ RulesetRuleActionParameterCacheKeyCustomKeyCookieArgs{...} }
+type RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput
-	ToRulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutputWithContext(context.Context) RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutput() RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutputWithContext(context.Context) RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutput
 }
 
-type rulesetRuleActionParametersCacheKeyCustomKeyCookiePtrType RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs
+type RulesetRuleActionParameterCacheKeyCustomKeyCookieArray []RulesetRuleActionParameterCacheKeyCustomKeyCookieInput
 
-func RulesetRuleActionParametersCacheKeyCustomKeyCookiePtr(v *RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs) RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrInput {
-	return (*rulesetRuleActionParametersCacheKeyCustomKeyCookiePtrType)(v)
+func (RulesetRuleActionParameterCacheKeyCustomKeyCookieArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterCacheKeyCustomKeyCookie)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersCacheKeyCustomKeyCookiePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersCacheKeyCustomKeyCookie)(nil)).Elem()
+func (i RulesetRuleActionParameterCacheKeyCustomKeyCookieArray) ToRulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutput() RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutput {
+	return i.ToRulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersCacheKeyCustomKeyCookiePtrType) ToRulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterCacheKeyCustomKeyCookieArray) ToRulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersCacheKeyCustomKeyCookiePtrType) ToRulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput)
+type RulesetRuleActionParameterCacheKeyCustomKeyCookieOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterCacheKeyCustomKeyCookieOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyCookie)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyCookie)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput() RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyCookieOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyCookieOutput() RulesetRuleActionParameterCacheKeyCustomKeyCookieOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyCookieOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyCookieOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyCookieOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyCookieOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput {
-	return o.ToRulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterCacheKeyCustomKeyCookieOutput) CheckPresences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterCacheKeyCustomKeyCookie) []string { return v.CheckPresences }).(pulumi.StringArrayOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersCacheKeyCustomKeyCookie) *RulesetRuleActionParametersCacheKeyCustomKeyCookie {
-		return &v
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput)
+func (o RulesetRuleActionParameterCacheKeyCustomKeyCookieOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterCacheKeyCustomKeyCookie) []string { return v.Includes }).(pulumi.StringArrayOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput) CheckPresences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersCacheKeyCustomKeyCookie) []string { return v.CheckPresences }).(pulumi.StringArrayOutput)
+type RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterCacheKeyCustomKeyCookie)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput) Includes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersCacheKeyCustomKeyCookie) []string { return v.Includes }).(pulumi.StringArrayOutput)
-}
-
-type RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersCacheKeyCustomKeyCookie)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutput() RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput) Elem() RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKeyCookie) RulesetRuleActionParametersCacheKeyCustomKeyCookie {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParametersCacheKeyCustomKeyCookie
-		return ret
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput)
+func (o RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterCacheKeyCustomKeyCookieOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterCacheKeyCustomKeyCookie {
+		return vs[0].([]RulesetRuleActionParameterCacheKeyCustomKeyCookie)[vs[1].(int)]
+	}).(RulesetRuleActionParameterCacheKeyCustomKeyCookieOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput) CheckPresences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKeyCookie) []string {
-		if v == nil {
-			return nil
-		}
-		return v.CheckPresences
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput) Includes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKeyCookie) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Includes
-	}).(pulumi.StringArrayOutput)
-}
-
-type RulesetRuleActionParametersCacheKeyCustomKeyHeader struct {
+type RulesetRuleActionParameterCacheKeyCustomKeyHeader struct {
 	CheckPresences []string `pulumi:"checkPresences"`
-	ExcludeOrigin  *bool    `pulumi:"excludeOrigin"`
+	ExcludeOrigin  bool     `pulumi:"excludeOrigin"`
 	Includes       []string `pulumi:"includes"`
 }
 
-// RulesetRuleActionParametersCacheKeyCustomKeyHeaderInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs and RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyHeaderInput` via:
+// RulesetRuleActionParameterCacheKeyCustomKeyHeaderInput is an input type that accepts RulesetRuleActionParameterCacheKeyCustomKeyHeaderArgs and RulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterCacheKeyCustomKeyHeaderInput` via:
 //
-//	RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs{...}
-type RulesetRuleActionParametersCacheKeyCustomKeyHeaderInput interface {
+//	RulesetRuleActionParameterCacheKeyCustomKeyHeaderArgs{...}
+type RulesetRuleActionParameterCacheKeyCustomKeyHeaderInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput() RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput
-	ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutputWithContext(context.Context) RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput() RulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyHeaderOutputWithContext(context.Context) RulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput
 }
 
-type RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs struct {
+type RulesetRuleActionParameterCacheKeyCustomKeyHeaderArgs struct {
 	CheckPresences pulumi.StringArrayInput `pulumi:"checkPresences"`
-	ExcludeOrigin  pulumi.BoolPtrInput     `pulumi:"excludeOrigin"`
+	ExcludeOrigin  pulumi.BoolInput        `pulumi:"excludeOrigin"`
 	Includes       pulumi.StringArrayInput `pulumi:"includes"`
 }
 
-func (RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyHeader)(nil)).Elem()
+func (RulesetRuleActionParameterCacheKeyCustomKeyHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyHeader)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput() RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterCacheKeyCustomKeyHeaderArgs) ToRulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput() RulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput {
+	return i.ToRulesetRuleActionParameterCacheKeyCustomKeyHeaderOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput)
+func (i RulesetRuleActionParameterCacheKeyCustomKeyHeaderArgs) ToRulesetRuleActionParameterCacheKeyCustomKeyHeaderOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput)
 }
 
-func (i RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput).ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs, RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtr and RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrInput` via:
+// RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayInput is an input type that accepts RulesetRuleActionParameterCacheKeyCustomKeyHeaderArray and RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayInput` via:
 //
-//	        RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrInput interface {
+//	RulesetRuleActionParameterCacheKeyCustomKeyHeaderArray{ RulesetRuleActionParameterCacheKeyCustomKeyHeaderArgs{...} }
+type RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput
-	ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutputWithContext(context.Context) RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutput() RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutputWithContext(context.Context) RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutput
 }
 
-type rulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrType RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs
+type RulesetRuleActionParameterCacheKeyCustomKeyHeaderArray []RulesetRuleActionParameterCacheKeyCustomKeyHeaderInput
 
-func RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtr(v *RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs) RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrInput {
-	return (*rulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrType)(v)
+func (RulesetRuleActionParameterCacheKeyCustomKeyHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterCacheKeyCustomKeyHeader)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersCacheKeyCustomKeyHeader)(nil)).Elem()
+func (i RulesetRuleActionParameterCacheKeyCustomKeyHeaderArray) ToRulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutput() RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutput {
+	return i.ToRulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrType) ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterCacheKeyCustomKeyHeaderArray) ToRulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrType) ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput)
+type RulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyHeader)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyHeader)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput() RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput() RulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyHeaderOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput {
-	return o.ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput) CheckPresences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterCacheKeyCustomKeyHeader) []string { return v.CheckPresences }).(pulumi.StringArrayOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersCacheKeyCustomKeyHeader) *RulesetRuleActionParametersCacheKeyCustomKeyHeader {
-		return &v
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput)
+func (o RulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput) ExcludeOrigin() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterCacheKeyCustomKeyHeader) bool { return v.ExcludeOrigin }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) CheckPresences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersCacheKeyCustomKeyHeader) []string { return v.CheckPresences }).(pulumi.StringArrayOutput)
+func (o RulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterCacheKeyCustomKeyHeader) []string { return v.Includes }).(pulumi.StringArrayOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) ExcludeOrigin() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersCacheKeyCustomKeyHeader) *bool { return v.ExcludeOrigin }).(pulumi.BoolPtrOutput)
+type RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterCacheKeyCustomKeyHeader)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) Includes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersCacheKeyCustomKeyHeader) []string { return v.Includes }).(pulumi.StringArrayOutput)
-}
-
-type RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersCacheKeyCustomKeyHeader)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutput() RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput) Elem() RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKeyHeader) RulesetRuleActionParametersCacheKeyCustomKeyHeader {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParametersCacheKeyCustomKeyHeader
-		return ret
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput)
+func (o RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterCacheKeyCustomKeyHeader {
+		return vs[0].([]RulesetRuleActionParameterCacheKeyCustomKeyHeader)[vs[1].(int)]
+	}).(RulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput) CheckPresences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKeyHeader) []string {
-		if v == nil {
-			return nil
-		}
-		return v.CheckPresences
-	}).(pulumi.StringArrayOutput)
+type RulesetRuleActionParameterCacheKeyCustomKeyHost struct {
+	Resolved bool `pulumi:"resolved"`
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput) ExcludeOrigin() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKeyHeader) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludeOrigin
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput) Includes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKeyHeader) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Includes
-	}).(pulumi.StringArrayOutput)
-}
-
-type RulesetRuleActionParametersCacheKeyCustomKeyHost struct {
-	Resolved *bool `pulumi:"resolved"`
-}
-
-// RulesetRuleActionParametersCacheKeyCustomKeyHostInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyHostArgs and RulesetRuleActionParametersCacheKeyCustomKeyHostOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyHostInput` via:
+// RulesetRuleActionParameterCacheKeyCustomKeyHostInput is an input type that accepts RulesetRuleActionParameterCacheKeyCustomKeyHostArgs and RulesetRuleActionParameterCacheKeyCustomKeyHostOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterCacheKeyCustomKeyHostInput` via:
 //
-//	RulesetRuleActionParametersCacheKeyCustomKeyHostArgs{...}
-type RulesetRuleActionParametersCacheKeyCustomKeyHostInput interface {
+//	RulesetRuleActionParameterCacheKeyCustomKeyHostArgs{...}
+type RulesetRuleActionParameterCacheKeyCustomKeyHostInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersCacheKeyCustomKeyHostOutput() RulesetRuleActionParametersCacheKeyCustomKeyHostOutput
-	ToRulesetRuleActionParametersCacheKeyCustomKeyHostOutputWithContext(context.Context) RulesetRuleActionParametersCacheKeyCustomKeyHostOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyHostOutput() RulesetRuleActionParameterCacheKeyCustomKeyHostOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyHostOutputWithContext(context.Context) RulesetRuleActionParameterCacheKeyCustomKeyHostOutput
 }
 
-type RulesetRuleActionParametersCacheKeyCustomKeyHostArgs struct {
-	Resolved pulumi.BoolPtrInput `pulumi:"resolved"`
+type RulesetRuleActionParameterCacheKeyCustomKeyHostArgs struct {
+	Resolved pulumi.BoolInput `pulumi:"resolved"`
 }
 
-func (RulesetRuleActionParametersCacheKeyCustomKeyHostArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyHost)(nil)).Elem()
+func (RulesetRuleActionParameterCacheKeyCustomKeyHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyHost)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersCacheKeyCustomKeyHostArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyHostOutput() RulesetRuleActionParametersCacheKeyCustomKeyHostOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyCustomKeyHostOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterCacheKeyCustomKeyHostArgs) ToRulesetRuleActionParameterCacheKeyCustomKeyHostOutput() RulesetRuleActionParameterCacheKeyCustomKeyHostOutput {
+	return i.ToRulesetRuleActionParameterCacheKeyCustomKeyHostOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersCacheKeyCustomKeyHostArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyHostOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyHostOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyCustomKeyHostOutput)
+func (i RulesetRuleActionParameterCacheKeyCustomKeyHostArgs) ToRulesetRuleActionParameterCacheKeyCustomKeyHostOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterCacheKeyCustomKeyHostOutput)
 }
 
-func (i RulesetRuleActionParametersCacheKeyCustomKeyHostArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersCacheKeyCustomKeyHostArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyCustomKeyHostOutput).ToRulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersCacheKeyCustomKeyHostPtrInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyHostArgs, RulesetRuleActionParametersCacheKeyCustomKeyHostPtr and RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyHostPtrInput` via:
+// RulesetRuleActionParameterCacheKeyCustomKeyHostArrayInput is an input type that accepts RulesetRuleActionParameterCacheKeyCustomKeyHostArray and RulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterCacheKeyCustomKeyHostArrayInput` via:
 //
-//	        RulesetRuleActionParametersCacheKeyCustomKeyHostArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersCacheKeyCustomKeyHostPtrInput interface {
+//	RulesetRuleActionParameterCacheKeyCustomKeyHostArray{ RulesetRuleActionParameterCacheKeyCustomKeyHostArgs{...} }
+type RulesetRuleActionParameterCacheKeyCustomKeyHostArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput
-	ToRulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutputWithContext(context.Context) RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutput() RulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutputWithContext(context.Context) RulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutput
 }
 
-type rulesetRuleActionParametersCacheKeyCustomKeyHostPtrType RulesetRuleActionParametersCacheKeyCustomKeyHostArgs
+type RulesetRuleActionParameterCacheKeyCustomKeyHostArray []RulesetRuleActionParameterCacheKeyCustomKeyHostInput
 
-func RulesetRuleActionParametersCacheKeyCustomKeyHostPtr(v *RulesetRuleActionParametersCacheKeyCustomKeyHostArgs) RulesetRuleActionParametersCacheKeyCustomKeyHostPtrInput {
-	return (*rulesetRuleActionParametersCacheKeyCustomKeyHostPtrType)(v)
+func (RulesetRuleActionParameterCacheKeyCustomKeyHostArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterCacheKeyCustomKeyHost)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersCacheKeyCustomKeyHostPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersCacheKeyCustomKeyHost)(nil)).Elem()
+func (i RulesetRuleActionParameterCacheKeyCustomKeyHostArray) ToRulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutput() RulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutput {
+	return i.ToRulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersCacheKeyCustomKeyHostPtrType) ToRulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterCacheKeyCustomKeyHostArray) ToRulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersCacheKeyCustomKeyHostPtrType) ToRulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput)
+type RulesetRuleActionParameterCacheKeyCustomKeyHostOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterCacheKeyCustomKeyHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyHost)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersCacheKeyCustomKeyHostOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersCacheKeyCustomKeyHostOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyHost)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHostOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyHostOutput() RulesetRuleActionParametersCacheKeyCustomKeyHostOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyHostOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyHostOutput() RulesetRuleActionParameterCacheKeyCustomKeyHostOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHostOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyHostOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyHostOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyHostOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyHostOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyHostOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHostOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput {
-	return o.ToRulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterCacheKeyCustomKeyHostOutput) Resolved() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterCacheKeyCustomKeyHost) bool { return v.Resolved }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHostOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersCacheKeyCustomKeyHost) *RulesetRuleActionParametersCacheKeyCustomKeyHost {
-		return &v
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput)
+type RulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterCacheKeyCustomKeyHost)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHostOutput) Resolved() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersCacheKeyCustomKeyHost) *bool { return v.Resolved }).(pulumi.BoolPtrOutput)
-}
-
-type RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersCacheKeyCustomKeyHost)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutput() RulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput) Elem() RulesetRuleActionParametersCacheKeyCustomKeyHostOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKeyHost) RulesetRuleActionParametersCacheKeyCustomKeyHost {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParametersCacheKeyCustomKeyHost
-		return ret
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyHostOutput)
+func (o RulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterCacheKeyCustomKeyHostOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterCacheKeyCustomKeyHost {
+		return vs[0].([]RulesetRuleActionParameterCacheKeyCustomKeyHost)[vs[1].(int)]
+	}).(RulesetRuleActionParameterCacheKeyCustomKeyHostOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput) Resolved() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKeyHost) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Resolved
-	}).(pulumi.BoolPtrOutput)
-}
-
-type RulesetRuleActionParametersCacheKeyCustomKeyQueryString struct {
+type RulesetRuleActionParameterCacheKeyCustomKeyQueryString struct {
 	Excludes []string `pulumi:"excludes"`
 	Includes []string `pulumi:"includes"`
 }
 
-// RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs and RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInput` via:
+// RulesetRuleActionParameterCacheKeyCustomKeyQueryStringInput is an input type that accepts RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArgs and RulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterCacheKeyCustomKeyQueryStringInput` via:
 //
-//	RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs{...}
-type RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInput interface {
+//	RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArgs{...}
+type RulesetRuleActionParameterCacheKeyCustomKeyQueryStringInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput() RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput
-	ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutputWithContext(context.Context) RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutput() RulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutputWithContext(context.Context) RulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutput
 }
 
-type RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs struct {
+type RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArgs struct {
 	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
 	Includes pulumi.StringArrayInput `pulumi:"includes"`
 }
 
-func (RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyQueryString)(nil)).Elem()
+func (RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyQueryString)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput() RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArgs) ToRulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutput() RulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutput {
+	return i.ToRulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput)
+func (i RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArgs) ToRulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutput)
 }
 
-func (i RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput).ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs, RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtr and RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrInput` via:
+// RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayInput is an input type that accepts RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArray and RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayInput` via:
 //
-//	        RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrInput interface {
+//	RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArray{ RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArgs{...} }
+type RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput
-	ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutputWithContext(context.Context) RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutput() RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutputWithContext(context.Context) RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutput
 }
 
-type rulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrType RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs
+type RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArray []RulesetRuleActionParameterCacheKeyCustomKeyQueryStringInput
 
-func RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtr(v *RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs) RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrInput {
-	return (*rulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrType)(v)
+func (RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterCacheKeyCustomKeyQueryString)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersCacheKeyCustomKeyQueryString)(nil)).Elem()
+func (i RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArray) ToRulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutput() RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutput {
+	return i.ToRulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrType) ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArray) ToRulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrType) ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput)
+type RulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyQueryString)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyQueryString)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput() RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutput() RulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput {
-	return o.ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutput) Excludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterCacheKeyCustomKeyQueryString) []string { return v.Excludes }).(pulumi.StringArrayOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersCacheKeyCustomKeyQueryString) *RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
-		return &v
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput)
+func (o RulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterCacheKeyCustomKeyQueryString) []string { return v.Includes }).(pulumi.StringArrayOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput) Excludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersCacheKeyCustomKeyQueryString) []string { return v.Excludes }).(pulumi.StringArrayOutput)
+type RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterCacheKeyCustomKeyQueryString)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput) Includes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersCacheKeyCustomKeyQueryString) []string { return v.Includes }).(pulumi.StringArrayOutput)
-}
-
-type RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersCacheKeyCustomKeyQueryString)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutput() RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput) Elem() RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKeyQueryString) RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParametersCacheKeyCustomKeyQueryString
-		return ret
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput)
+func (o RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterCacheKeyCustomKeyQueryString {
+		return vs[0].([]RulesetRuleActionParameterCacheKeyCustomKeyQueryString)[vs[1].(int)]
+	}).(RulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput) Excludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKeyQueryString) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Excludes
-	}).(pulumi.StringArrayOutput)
+type RulesetRuleActionParameterCacheKeyCustomKeyUser struct {
+	DeviceType bool `pulumi:"deviceType"`
+	Geo        bool `pulumi:"geo"`
+	Lang       bool `pulumi:"lang"`
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput) Includes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKeyQueryString) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Includes
-	}).(pulumi.StringArrayOutput)
-}
-
-type RulesetRuleActionParametersCacheKeyCustomKeyUser struct {
-	DeviceType *bool `pulumi:"deviceType"`
-	Geo        *bool `pulumi:"geo"`
-	Lang       *bool `pulumi:"lang"`
-}
-
-// RulesetRuleActionParametersCacheKeyCustomKeyUserInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyUserArgs and RulesetRuleActionParametersCacheKeyCustomKeyUserOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyUserInput` via:
+// RulesetRuleActionParameterCacheKeyCustomKeyUserInput is an input type that accepts RulesetRuleActionParameterCacheKeyCustomKeyUserArgs and RulesetRuleActionParameterCacheKeyCustomKeyUserOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterCacheKeyCustomKeyUserInput` via:
 //
-//	RulesetRuleActionParametersCacheKeyCustomKeyUserArgs{...}
-type RulesetRuleActionParametersCacheKeyCustomKeyUserInput interface {
+//	RulesetRuleActionParameterCacheKeyCustomKeyUserArgs{...}
+type RulesetRuleActionParameterCacheKeyCustomKeyUserInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersCacheKeyCustomKeyUserOutput() RulesetRuleActionParametersCacheKeyCustomKeyUserOutput
-	ToRulesetRuleActionParametersCacheKeyCustomKeyUserOutputWithContext(context.Context) RulesetRuleActionParametersCacheKeyCustomKeyUserOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyUserOutput() RulesetRuleActionParameterCacheKeyCustomKeyUserOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyUserOutputWithContext(context.Context) RulesetRuleActionParameterCacheKeyCustomKeyUserOutput
 }
 
-type RulesetRuleActionParametersCacheKeyCustomKeyUserArgs struct {
-	DeviceType pulumi.BoolPtrInput `pulumi:"deviceType"`
-	Geo        pulumi.BoolPtrInput `pulumi:"geo"`
-	Lang       pulumi.BoolPtrInput `pulumi:"lang"`
+type RulesetRuleActionParameterCacheKeyCustomKeyUserArgs struct {
+	DeviceType pulumi.BoolInput `pulumi:"deviceType"`
+	Geo        pulumi.BoolInput `pulumi:"geo"`
+	Lang       pulumi.BoolInput `pulumi:"lang"`
 }
 
-func (RulesetRuleActionParametersCacheKeyCustomKeyUserArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyUser)(nil)).Elem()
+func (RulesetRuleActionParameterCacheKeyCustomKeyUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyUser)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersCacheKeyCustomKeyUserArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyUserOutput() RulesetRuleActionParametersCacheKeyCustomKeyUserOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyCustomKeyUserOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterCacheKeyCustomKeyUserArgs) ToRulesetRuleActionParameterCacheKeyCustomKeyUserOutput() RulesetRuleActionParameterCacheKeyCustomKeyUserOutput {
+	return i.ToRulesetRuleActionParameterCacheKeyCustomKeyUserOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersCacheKeyCustomKeyUserArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyUserOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyUserOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyCustomKeyUserOutput)
+func (i RulesetRuleActionParameterCacheKeyCustomKeyUserArgs) ToRulesetRuleActionParameterCacheKeyCustomKeyUserOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterCacheKeyCustomKeyUserOutput)
 }
 
-func (i RulesetRuleActionParametersCacheKeyCustomKeyUserArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersCacheKeyCustomKeyUserArgs) ToRulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyCustomKeyUserOutput).ToRulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersCacheKeyCustomKeyUserPtrInput is an input type that accepts RulesetRuleActionParametersCacheKeyCustomKeyUserArgs, RulesetRuleActionParametersCacheKeyCustomKeyUserPtr and RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersCacheKeyCustomKeyUserPtrInput` via:
+// RulesetRuleActionParameterCacheKeyCustomKeyUserArrayInput is an input type that accepts RulesetRuleActionParameterCacheKeyCustomKeyUserArray and RulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterCacheKeyCustomKeyUserArrayInput` via:
 //
-//	        RulesetRuleActionParametersCacheKeyCustomKeyUserArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersCacheKeyCustomKeyUserPtrInput interface {
+//	RulesetRuleActionParameterCacheKeyCustomKeyUserArray{ RulesetRuleActionParameterCacheKeyCustomKeyUserArgs{...} }
+type RulesetRuleActionParameterCacheKeyCustomKeyUserArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput
-	ToRulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutputWithContext(context.Context) RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutput() RulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutput
+	ToRulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutputWithContext(context.Context) RulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutput
 }
 
-type rulesetRuleActionParametersCacheKeyCustomKeyUserPtrType RulesetRuleActionParametersCacheKeyCustomKeyUserArgs
+type RulesetRuleActionParameterCacheKeyCustomKeyUserArray []RulesetRuleActionParameterCacheKeyCustomKeyUserInput
 
-func RulesetRuleActionParametersCacheKeyCustomKeyUserPtr(v *RulesetRuleActionParametersCacheKeyCustomKeyUserArgs) RulesetRuleActionParametersCacheKeyCustomKeyUserPtrInput {
-	return (*rulesetRuleActionParametersCacheKeyCustomKeyUserPtrType)(v)
+func (RulesetRuleActionParameterCacheKeyCustomKeyUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterCacheKeyCustomKeyUser)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersCacheKeyCustomKeyUserPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersCacheKeyCustomKeyUser)(nil)).Elem()
+func (i RulesetRuleActionParameterCacheKeyCustomKeyUserArray) ToRulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutput() RulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutput {
+	return i.ToRulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersCacheKeyCustomKeyUserPtrType) ToRulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput {
-	return i.ToRulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterCacheKeyCustomKeyUserArray) ToRulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersCacheKeyCustomKeyUserPtrType) ToRulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput)
+type RulesetRuleActionParameterCacheKeyCustomKeyUserOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterCacheKeyCustomKeyUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyUser)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersCacheKeyCustomKeyUserOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersCacheKeyCustomKeyUserOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyUser)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersCacheKeyCustomKeyUserOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyUserOutput() RulesetRuleActionParametersCacheKeyCustomKeyUserOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyUserOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyUserOutput() RulesetRuleActionParameterCacheKeyCustomKeyUserOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyUserOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyUserOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyUserOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyUserOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyUserOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyUserOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyUserOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput {
-	return o.ToRulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterCacheKeyCustomKeyUserOutput) DeviceType() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterCacheKeyCustomKeyUser) bool { return v.DeviceType }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyUserOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersCacheKeyCustomKeyUser) *RulesetRuleActionParametersCacheKeyCustomKeyUser {
-		return &v
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput)
+func (o RulesetRuleActionParameterCacheKeyCustomKeyUserOutput) Geo() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterCacheKeyCustomKeyUser) bool { return v.Geo }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyUserOutput) DeviceType() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersCacheKeyCustomKeyUser) *bool { return v.DeviceType }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterCacheKeyCustomKeyUserOutput) Lang() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterCacheKeyCustomKeyUser) bool { return v.Lang }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyUserOutput) Geo() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersCacheKeyCustomKeyUser) *bool { return v.Geo }).(pulumi.BoolPtrOutput)
+type RulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterCacheKeyCustomKeyUser)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyUserOutput) Lang() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersCacheKeyCustomKeyUser) *bool { return v.Lang }).(pulumi.BoolPtrOutput)
-}
-
-type RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersCacheKeyCustomKeyUser)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput() RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutput() RulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput) ToRulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput {
+func (o RulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutput) ToRulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput) Elem() RulesetRuleActionParametersCacheKeyCustomKeyUserOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKeyUser) RulesetRuleActionParametersCacheKeyCustomKeyUser {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParametersCacheKeyCustomKeyUser
-		return ret
-	}).(RulesetRuleActionParametersCacheKeyCustomKeyUserOutput)
+func (o RulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterCacheKeyCustomKeyUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterCacheKeyCustomKeyUser {
+		return vs[0].([]RulesetRuleActionParameterCacheKeyCustomKeyUser)[vs[1].(int)]
+	}).(RulesetRuleActionParameterCacheKeyCustomKeyUserOutput)
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput) DeviceType() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKeyUser) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DeviceType
-	}).(pulumi.BoolPtrOutput)
+type RulesetRuleActionParameterEdgeTtl struct {
+	Default        int                                              `pulumi:"default"`
+	Mode           string                                           `pulumi:"mode"`
+	StatusCodeTtls []RulesetRuleActionParameterEdgeTtlStatusCodeTtl `pulumi:"statusCodeTtls"`
 }
 
-func (o RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput) Geo() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKeyUser) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Geo
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput) Lang() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersCacheKeyCustomKeyUser) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Lang
-	}).(pulumi.BoolPtrOutput)
-}
-
-type RulesetRuleActionParametersEdgeTtl struct {
-	Default        *int                                              `pulumi:"default"`
-	Mode           string                                            `pulumi:"mode"`
-	StatusCodeTtls []RulesetRuleActionParametersEdgeTtlStatusCodeTtl `pulumi:"statusCodeTtls"`
-}
-
-// RulesetRuleActionParametersEdgeTtlInput is an input type that accepts RulesetRuleActionParametersEdgeTtlArgs and RulesetRuleActionParametersEdgeTtlOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersEdgeTtlInput` via:
+// RulesetRuleActionParameterEdgeTtlInput is an input type that accepts RulesetRuleActionParameterEdgeTtlArgs and RulesetRuleActionParameterEdgeTtlOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterEdgeTtlInput` via:
 //
-//	RulesetRuleActionParametersEdgeTtlArgs{...}
-type RulesetRuleActionParametersEdgeTtlInput interface {
+//	RulesetRuleActionParameterEdgeTtlArgs{...}
+type RulesetRuleActionParameterEdgeTtlInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersEdgeTtlOutput() RulesetRuleActionParametersEdgeTtlOutput
-	ToRulesetRuleActionParametersEdgeTtlOutputWithContext(context.Context) RulesetRuleActionParametersEdgeTtlOutput
+	ToRulesetRuleActionParameterEdgeTtlOutput() RulesetRuleActionParameterEdgeTtlOutput
+	ToRulesetRuleActionParameterEdgeTtlOutputWithContext(context.Context) RulesetRuleActionParameterEdgeTtlOutput
 }
 
-type RulesetRuleActionParametersEdgeTtlArgs struct {
-	Default        pulumi.IntPtrInput                                        `pulumi:"default"`
-	Mode           pulumi.StringInput                                        `pulumi:"mode"`
-	StatusCodeTtls RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput `pulumi:"statusCodeTtls"`
+type RulesetRuleActionParameterEdgeTtlArgs struct {
+	Default        pulumi.IntInput                                          `pulumi:"default"`
+	Mode           pulumi.StringInput                                       `pulumi:"mode"`
+	StatusCodeTtls RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayInput `pulumi:"statusCodeTtls"`
 }
 
-func (RulesetRuleActionParametersEdgeTtlArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersEdgeTtl)(nil)).Elem()
+func (RulesetRuleActionParameterEdgeTtlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterEdgeTtl)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersEdgeTtlArgs) ToRulesetRuleActionParametersEdgeTtlOutput() RulesetRuleActionParametersEdgeTtlOutput {
-	return i.ToRulesetRuleActionParametersEdgeTtlOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterEdgeTtlArgs) ToRulesetRuleActionParameterEdgeTtlOutput() RulesetRuleActionParameterEdgeTtlOutput {
+	return i.ToRulesetRuleActionParameterEdgeTtlOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersEdgeTtlArgs) ToRulesetRuleActionParametersEdgeTtlOutputWithContext(ctx context.Context) RulesetRuleActionParametersEdgeTtlOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersEdgeTtlOutput)
+func (i RulesetRuleActionParameterEdgeTtlArgs) ToRulesetRuleActionParameterEdgeTtlOutputWithContext(ctx context.Context) RulesetRuleActionParameterEdgeTtlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterEdgeTtlOutput)
 }
 
-func (i RulesetRuleActionParametersEdgeTtlArgs) ToRulesetRuleActionParametersEdgeTtlPtrOutput() RulesetRuleActionParametersEdgeTtlPtrOutput {
-	return i.ToRulesetRuleActionParametersEdgeTtlPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersEdgeTtlArgs) ToRulesetRuleActionParametersEdgeTtlPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersEdgeTtlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersEdgeTtlOutput).ToRulesetRuleActionParametersEdgeTtlPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersEdgeTtlPtrInput is an input type that accepts RulesetRuleActionParametersEdgeTtlArgs, RulesetRuleActionParametersEdgeTtlPtr and RulesetRuleActionParametersEdgeTtlPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersEdgeTtlPtrInput` via:
+// RulesetRuleActionParameterEdgeTtlArrayInput is an input type that accepts RulesetRuleActionParameterEdgeTtlArray and RulesetRuleActionParameterEdgeTtlArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterEdgeTtlArrayInput` via:
 //
-//	        RulesetRuleActionParametersEdgeTtlArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersEdgeTtlPtrInput interface {
+//	RulesetRuleActionParameterEdgeTtlArray{ RulesetRuleActionParameterEdgeTtlArgs{...} }
+type RulesetRuleActionParameterEdgeTtlArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersEdgeTtlPtrOutput() RulesetRuleActionParametersEdgeTtlPtrOutput
-	ToRulesetRuleActionParametersEdgeTtlPtrOutputWithContext(context.Context) RulesetRuleActionParametersEdgeTtlPtrOutput
+	ToRulesetRuleActionParameterEdgeTtlArrayOutput() RulesetRuleActionParameterEdgeTtlArrayOutput
+	ToRulesetRuleActionParameterEdgeTtlArrayOutputWithContext(context.Context) RulesetRuleActionParameterEdgeTtlArrayOutput
 }
 
-type rulesetRuleActionParametersEdgeTtlPtrType RulesetRuleActionParametersEdgeTtlArgs
+type RulesetRuleActionParameterEdgeTtlArray []RulesetRuleActionParameterEdgeTtlInput
 
-func RulesetRuleActionParametersEdgeTtlPtr(v *RulesetRuleActionParametersEdgeTtlArgs) RulesetRuleActionParametersEdgeTtlPtrInput {
-	return (*rulesetRuleActionParametersEdgeTtlPtrType)(v)
+func (RulesetRuleActionParameterEdgeTtlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterEdgeTtl)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersEdgeTtlPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersEdgeTtl)(nil)).Elem()
+func (i RulesetRuleActionParameterEdgeTtlArray) ToRulesetRuleActionParameterEdgeTtlArrayOutput() RulesetRuleActionParameterEdgeTtlArrayOutput {
+	return i.ToRulesetRuleActionParameterEdgeTtlArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersEdgeTtlPtrType) ToRulesetRuleActionParametersEdgeTtlPtrOutput() RulesetRuleActionParametersEdgeTtlPtrOutput {
-	return i.ToRulesetRuleActionParametersEdgeTtlPtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterEdgeTtlArray) ToRulesetRuleActionParameterEdgeTtlArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterEdgeTtlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterEdgeTtlArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersEdgeTtlPtrType) ToRulesetRuleActionParametersEdgeTtlPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersEdgeTtlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersEdgeTtlPtrOutput)
+type RulesetRuleActionParameterEdgeTtlOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterEdgeTtlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterEdgeTtl)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersEdgeTtlOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersEdgeTtlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersEdgeTtl)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersEdgeTtlOutput) ToRulesetRuleActionParametersEdgeTtlOutput() RulesetRuleActionParametersEdgeTtlOutput {
+func (o RulesetRuleActionParameterEdgeTtlOutput) ToRulesetRuleActionParameterEdgeTtlOutput() RulesetRuleActionParameterEdgeTtlOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersEdgeTtlOutput) ToRulesetRuleActionParametersEdgeTtlOutputWithContext(ctx context.Context) RulesetRuleActionParametersEdgeTtlOutput {
+func (o RulesetRuleActionParameterEdgeTtlOutput) ToRulesetRuleActionParameterEdgeTtlOutputWithContext(ctx context.Context) RulesetRuleActionParameterEdgeTtlOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersEdgeTtlOutput) ToRulesetRuleActionParametersEdgeTtlPtrOutput() RulesetRuleActionParametersEdgeTtlPtrOutput {
-	return o.ToRulesetRuleActionParametersEdgeTtlPtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterEdgeTtlOutput) Default() pulumi.IntOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterEdgeTtl) int { return v.Default }).(pulumi.IntOutput)
 }
 
-func (o RulesetRuleActionParametersEdgeTtlOutput) ToRulesetRuleActionParametersEdgeTtlPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersEdgeTtlPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersEdgeTtl) *RulesetRuleActionParametersEdgeTtl {
-		return &v
-	}).(RulesetRuleActionParametersEdgeTtlPtrOutput)
+func (o RulesetRuleActionParameterEdgeTtlOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterEdgeTtl) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersEdgeTtlOutput) Default() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersEdgeTtl) *int { return v.Default }).(pulumi.IntPtrOutput)
-}
-
-func (o RulesetRuleActionParametersEdgeTtlOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersEdgeTtl) string { return v.Mode }).(pulumi.StringOutput)
-}
-
-func (o RulesetRuleActionParametersEdgeTtlOutput) StatusCodeTtls() RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersEdgeTtl) []RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
+func (o RulesetRuleActionParameterEdgeTtlOutput) StatusCodeTtls() RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterEdgeTtl) []RulesetRuleActionParameterEdgeTtlStatusCodeTtl {
 		return v.StatusCodeTtls
-	}).(RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput)
+	}).(RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutput)
 }
 
-type RulesetRuleActionParametersEdgeTtlPtrOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParameterEdgeTtlArrayOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParametersEdgeTtlPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersEdgeTtl)(nil)).Elem()
+func (RulesetRuleActionParameterEdgeTtlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterEdgeTtl)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersEdgeTtlPtrOutput) ToRulesetRuleActionParametersEdgeTtlPtrOutput() RulesetRuleActionParametersEdgeTtlPtrOutput {
+func (o RulesetRuleActionParameterEdgeTtlArrayOutput) ToRulesetRuleActionParameterEdgeTtlArrayOutput() RulesetRuleActionParameterEdgeTtlArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersEdgeTtlPtrOutput) ToRulesetRuleActionParametersEdgeTtlPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersEdgeTtlPtrOutput {
+func (o RulesetRuleActionParameterEdgeTtlArrayOutput) ToRulesetRuleActionParameterEdgeTtlArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterEdgeTtlArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersEdgeTtlPtrOutput) Elem() RulesetRuleActionParametersEdgeTtlOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersEdgeTtl) RulesetRuleActionParametersEdgeTtl {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParametersEdgeTtl
-		return ret
-	}).(RulesetRuleActionParametersEdgeTtlOutput)
+func (o RulesetRuleActionParameterEdgeTtlArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterEdgeTtlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterEdgeTtl {
+		return vs[0].([]RulesetRuleActionParameterEdgeTtl)[vs[1].(int)]
+	}).(RulesetRuleActionParameterEdgeTtlOutput)
 }
 
-func (o RulesetRuleActionParametersEdgeTtlPtrOutput) Default() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersEdgeTtl) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Default
-	}).(pulumi.IntPtrOutput)
+type RulesetRuleActionParameterEdgeTtlStatusCodeTtl struct {
+	StatusCode       int                                                             `pulumi:"statusCode"`
+	StatusCodeRanges []RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRange `pulumi:"statusCodeRanges"`
+	Value            int                                                             `pulumi:"value"`
 }
 
-func (o RulesetRuleActionParametersEdgeTtlPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersEdgeTtl) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Mode
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o RulesetRuleActionParametersEdgeTtlPtrOutput) StatusCodeTtls() RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersEdgeTtl) []RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
-		if v == nil {
-			return nil
-		}
-		return v.StatusCodeTtls
-	}).(RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput)
-}
-
-type RulesetRuleActionParametersEdgeTtlStatusCodeTtl struct {
-	StatusCode       *int                                                             `pulumi:"statusCode"`
-	StatusCodeRanges []RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange `pulumi:"statusCodeRanges"`
-	Value            int                                                              `pulumi:"value"`
-}
-
-// RulesetRuleActionParametersEdgeTtlStatusCodeTtlInput is an input type that accepts RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs and RulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersEdgeTtlStatusCodeTtlInput` via:
+// RulesetRuleActionParameterEdgeTtlStatusCodeTtlInput is an input type that accepts RulesetRuleActionParameterEdgeTtlStatusCodeTtlArgs and RulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterEdgeTtlStatusCodeTtlInput` via:
 //
-//	RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs{...}
-type RulesetRuleActionParametersEdgeTtlStatusCodeTtlInput interface {
+//	RulesetRuleActionParameterEdgeTtlStatusCodeTtlArgs{...}
+type RulesetRuleActionParameterEdgeTtlStatusCodeTtlInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput() RulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput
-	ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutputWithContext(context.Context) RulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput
+	ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput() RulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput
+	ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlOutputWithContext(context.Context) RulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput
 }
 
-type RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs struct {
-	StatusCode       pulumi.IntPtrInput                                                       `pulumi:"statusCode"`
-	StatusCodeRanges RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayInput `pulumi:"statusCodeRanges"`
-	Value            pulumi.IntInput                                                          `pulumi:"value"`
+type RulesetRuleActionParameterEdgeTtlStatusCodeTtlArgs struct {
+	StatusCode       pulumi.IntInput                                                         `pulumi:"statusCode"`
+	StatusCodeRanges RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayInput `pulumi:"statusCodeRanges"`
+	Value            pulumi.IntInput                                                         `pulumi:"value"`
 }
 
-func (RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersEdgeTtlStatusCodeTtl)(nil)).Elem()
+func (RulesetRuleActionParameterEdgeTtlStatusCodeTtlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterEdgeTtlStatusCodeTtl)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs) ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput() RulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput {
-	return i.ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterEdgeTtlStatusCodeTtlArgs) ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput() RulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput {
+	return i.ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs) ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutputWithContext(ctx context.Context) RulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput)
+func (i RulesetRuleActionParameterEdgeTtlStatusCodeTtlArgs) ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlOutputWithContext(ctx context.Context) RulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput)
 }
 
-// RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput is an input type that accepts RulesetRuleActionParametersEdgeTtlStatusCodeTtlArray and RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput` via:
+// RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayInput is an input type that accepts RulesetRuleActionParameterEdgeTtlStatusCodeTtlArray and RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayInput` via:
 //
-//	RulesetRuleActionParametersEdgeTtlStatusCodeTtlArray{ RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs{...} }
-type RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput interface {
+//	RulesetRuleActionParameterEdgeTtlStatusCodeTtlArray{ RulesetRuleActionParameterEdgeTtlStatusCodeTtlArgs{...} }
+type RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput() RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput
-	ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutputWithContext(context.Context) RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput
+	ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutput() RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutput
+	ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutputWithContext(context.Context) RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutput
 }
 
-type RulesetRuleActionParametersEdgeTtlStatusCodeTtlArray []RulesetRuleActionParametersEdgeTtlStatusCodeTtlInput
+type RulesetRuleActionParameterEdgeTtlStatusCodeTtlArray []RulesetRuleActionParameterEdgeTtlStatusCodeTtlInput
 
-func (RulesetRuleActionParametersEdgeTtlStatusCodeTtlArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParametersEdgeTtlStatusCodeTtl)(nil)).Elem()
+func (RulesetRuleActionParameterEdgeTtlStatusCodeTtlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterEdgeTtlStatusCodeTtl)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersEdgeTtlStatusCodeTtlArray) ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput() RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput {
-	return i.ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterEdgeTtlStatusCodeTtlArray) ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutput() RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutput {
+	return i.ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersEdgeTtlStatusCodeTtlArray) ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput)
+func (i RulesetRuleActionParameterEdgeTtlStatusCodeTtlArray) ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutput)
 }
 
-type RulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersEdgeTtlStatusCodeTtl)(nil)).Elem()
+func (RulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterEdgeTtlStatusCodeTtl)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput) ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput() RulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput {
+func (o RulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput) ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput() RulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput) ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutputWithContext(ctx context.Context) RulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput {
+func (o RulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput) ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlOutputWithContext(ctx context.Context) RulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput) StatusCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersEdgeTtlStatusCodeTtl) *int { return v.StatusCode }).(pulumi.IntPtrOutput)
+func (o RulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput) StatusCode() pulumi.IntOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterEdgeTtlStatusCodeTtl) int { return v.StatusCode }).(pulumi.IntOutput)
 }
 
-func (o RulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput) StatusCodeRanges() RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersEdgeTtlStatusCodeTtl) []RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
+func (o RulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput) StatusCodeRanges() RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterEdgeTtlStatusCodeTtl) []RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRange {
 		return v.StatusCodeRanges
-	}).(RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput)
+	}).(RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput)
 }
 
-func (o RulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput) Value() pulumi.IntOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersEdgeTtlStatusCodeTtl) int { return v.Value }).(pulumi.IntOutput)
+func (o RulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput) Value() pulumi.IntOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterEdgeTtlStatusCodeTtl) int { return v.Value }).(pulumi.IntOutput)
 }
 
-type RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParametersEdgeTtlStatusCodeTtl)(nil)).Elem()
+func (RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterEdgeTtlStatusCodeTtl)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput) ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput() RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput {
+func (o RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutput) ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutput() RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput) ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput {
+func (o RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutput) ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
-		return vs[0].([]RulesetRuleActionParametersEdgeTtlStatusCodeTtl)[vs[1].(int)]
-	}).(RulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput)
+func (o RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterEdgeTtlStatusCodeTtl {
+		return vs[0].([]RulesetRuleActionParameterEdgeTtlStatusCodeTtl)[vs[1].(int)]
+	}).(RulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput)
 }
 
-type RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange struct {
-	From *int `pulumi:"from"`
-	To   *int `pulumi:"to"`
+type RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRange struct {
+	From int `pulumi:"from"`
+	To   int `pulumi:"to"`
 }
 
-// RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeInput is an input type that accepts RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs and RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeInput` via:
+// RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeInput is an input type that accepts RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArgs and RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeInput` via:
 //
-//	RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs{...}
-type RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeInput interface {
+//	RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArgs{...}
+type RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput() RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput
-	ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutputWithContext(context.Context) RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput
+	ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutput() RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutput
+	ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutputWithContext(context.Context) RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutput
 }
 
-type RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs struct {
-	From pulumi.IntPtrInput `pulumi:"from"`
-	To   pulumi.IntPtrInput `pulumi:"to"`
+type RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArgs struct {
+	From pulumi.IntInput `pulumi:"from"`
+	To   pulumi.IntInput `pulumi:"to"`
 }
 
-func (RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange)(nil)).Elem()
+func (RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRange)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs) ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput() RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput {
-	return i.ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArgs) ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutput() RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutput {
+	return i.ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs) ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutputWithContext(ctx context.Context) RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput)
+func (i RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArgs) ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutputWithContext(ctx context.Context) RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutput)
 }
 
-// RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayInput is an input type that accepts RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArray and RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayInput` via:
+// RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayInput is an input type that accepts RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArray and RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayInput` via:
 //
-//	RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArray{ RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs{...} }
-type RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayInput interface {
+//	RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArray{ RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArgs{...} }
+type RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput() RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput
-	ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutputWithContext(context.Context) RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput
+	ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput() RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput
+	ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutputWithContext(context.Context) RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput
 }
 
-type RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArray []RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeInput
+type RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArray []RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeInput
 
-func (RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange)(nil)).Elem()
+func (RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRange)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArray) ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput() RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput {
-	return i.ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArray) ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput() RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput {
+	return i.ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArray) ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput)
+func (i RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArray) ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput)
 }
 
-type RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange)(nil)).Elem()
+func (RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRange)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput) ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput() RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput {
+func (o RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutput) ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutput() RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput) ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutputWithContext(ctx context.Context) RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput {
+func (o RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutput) ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutputWithContext(ctx context.Context) RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput) From() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange) *int { return v.From }).(pulumi.IntPtrOutput)
+func (o RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutput) From() pulumi.IntOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRange) int { return v.From }).(pulumi.IntOutput)
 }
 
-func (o RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput) To() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange) *int { return v.To }).(pulumi.IntPtrOutput)
+func (o RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutput) To() pulumi.IntOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRange) int { return v.To }).(pulumi.IntOutput)
 }
 
-type RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange)(nil)).Elem()
+func (RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRange)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput) ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput() RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput {
+func (o RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput) ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput() RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput) ToRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput {
+func (o RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput) ToRulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
-		return vs[0].([]RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange)[vs[1].(int)]
-	}).(RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput)
+func (o RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRange {
+		return vs[0].([]RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRange)[vs[1].(int)]
+	}).(RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutput)
 }
 
-type RulesetRuleActionParametersFromList struct {
+type RulesetRuleActionParameterFromList struct {
 	Key string `pulumi:"key"`
-	// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+	// Name of the ruleset.
 	Name string `pulumi:"name"`
 }
 
-// RulesetRuleActionParametersFromListInput is an input type that accepts RulesetRuleActionParametersFromListArgs and RulesetRuleActionParametersFromListOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersFromListInput` via:
+// RulesetRuleActionParameterFromListInput is an input type that accepts RulesetRuleActionParameterFromListArgs and RulesetRuleActionParameterFromListOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterFromListInput` via:
 //
-//	RulesetRuleActionParametersFromListArgs{...}
-type RulesetRuleActionParametersFromListInput interface {
+//	RulesetRuleActionParameterFromListArgs{...}
+type RulesetRuleActionParameterFromListInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersFromListOutput() RulesetRuleActionParametersFromListOutput
-	ToRulesetRuleActionParametersFromListOutputWithContext(context.Context) RulesetRuleActionParametersFromListOutput
+	ToRulesetRuleActionParameterFromListOutput() RulesetRuleActionParameterFromListOutput
+	ToRulesetRuleActionParameterFromListOutputWithContext(context.Context) RulesetRuleActionParameterFromListOutput
 }
 
-type RulesetRuleActionParametersFromListArgs struct {
+type RulesetRuleActionParameterFromListArgs struct {
 	Key pulumi.StringInput `pulumi:"key"`
-	// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+	// Name of the ruleset.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
-func (RulesetRuleActionParametersFromListArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersFromList)(nil)).Elem()
+func (RulesetRuleActionParameterFromListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterFromList)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersFromListArgs) ToRulesetRuleActionParametersFromListOutput() RulesetRuleActionParametersFromListOutput {
-	return i.ToRulesetRuleActionParametersFromListOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterFromListArgs) ToRulesetRuleActionParameterFromListOutput() RulesetRuleActionParameterFromListOutput {
+	return i.ToRulesetRuleActionParameterFromListOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersFromListArgs) ToRulesetRuleActionParametersFromListOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromListOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersFromListOutput)
+func (i RulesetRuleActionParameterFromListArgs) ToRulesetRuleActionParameterFromListOutputWithContext(ctx context.Context) RulesetRuleActionParameterFromListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterFromListOutput)
 }
 
-func (i RulesetRuleActionParametersFromListArgs) ToRulesetRuleActionParametersFromListPtrOutput() RulesetRuleActionParametersFromListPtrOutput {
-	return i.ToRulesetRuleActionParametersFromListPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersFromListArgs) ToRulesetRuleActionParametersFromListPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromListPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersFromListOutput).ToRulesetRuleActionParametersFromListPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersFromListPtrInput is an input type that accepts RulesetRuleActionParametersFromListArgs, RulesetRuleActionParametersFromListPtr and RulesetRuleActionParametersFromListPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersFromListPtrInput` via:
+// RulesetRuleActionParameterFromListArrayInput is an input type that accepts RulesetRuleActionParameterFromListArray and RulesetRuleActionParameterFromListArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterFromListArrayInput` via:
 //
-//	        RulesetRuleActionParametersFromListArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersFromListPtrInput interface {
+//	RulesetRuleActionParameterFromListArray{ RulesetRuleActionParameterFromListArgs{...} }
+type RulesetRuleActionParameterFromListArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersFromListPtrOutput() RulesetRuleActionParametersFromListPtrOutput
-	ToRulesetRuleActionParametersFromListPtrOutputWithContext(context.Context) RulesetRuleActionParametersFromListPtrOutput
+	ToRulesetRuleActionParameterFromListArrayOutput() RulesetRuleActionParameterFromListArrayOutput
+	ToRulesetRuleActionParameterFromListArrayOutputWithContext(context.Context) RulesetRuleActionParameterFromListArrayOutput
 }
 
-type rulesetRuleActionParametersFromListPtrType RulesetRuleActionParametersFromListArgs
+type RulesetRuleActionParameterFromListArray []RulesetRuleActionParameterFromListInput
 
-func RulesetRuleActionParametersFromListPtr(v *RulesetRuleActionParametersFromListArgs) RulesetRuleActionParametersFromListPtrInput {
-	return (*rulesetRuleActionParametersFromListPtrType)(v)
+func (RulesetRuleActionParameterFromListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterFromList)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersFromListPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersFromList)(nil)).Elem()
+func (i RulesetRuleActionParameterFromListArray) ToRulesetRuleActionParameterFromListArrayOutput() RulesetRuleActionParameterFromListArrayOutput {
+	return i.ToRulesetRuleActionParameterFromListArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersFromListPtrType) ToRulesetRuleActionParametersFromListPtrOutput() RulesetRuleActionParametersFromListPtrOutput {
-	return i.ToRulesetRuleActionParametersFromListPtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterFromListArray) ToRulesetRuleActionParameterFromListArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterFromListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterFromListArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersFromListPtrType) ToRulesetRuleActionParametersFromListPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromListPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersFromListPtrOutput)
+type RulesetRuleActionParameterFromListOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterFromListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterFromList)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersFromListOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersFromListOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersFromList)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersFromListOutput) ToRulesetRuleActionParametersFromListOutput() RulesetRuleActionParametersFromListOutput {
+func (o RulesetRuleActionParameterFromListOutput) ToRulesetRuleActionParameterFromListOutput() RulesetRuleActionParameterFromListOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersFromListOutput) ToRulesetRuleActionParametersFromListOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromListOutput {
+func (o RulesetRuleActionParameterFromListOutput) ToRulesetRuleActionParameterFromListOutputWithContext(ctx context.Context) RulesetRuleActionParameterFromListOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersFromListOutput) ToRulesetRuleActionParametersFromListPtrOutput() RulesetRuleActionParametersFromListPtrOutput {
-	return o.ToRulesetRuleActionParametersFromListPtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterFromListOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterFromList) string { return v.Key }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersFromListOutput) ToRulesetRuleActionParametersFromListPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromListPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersFromList) *RulesetRuleActionParametersFromList {
-		return &v
-	}).(RulesetRuleActionParametersFromListPtrOutput)
+// Name of the ruleset.
+func (o RulesetRuleActionParameterFromListOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterFromList) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersFromListOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersFromList) string { return v.Key }).(pulumi.StringOutput)
+type RulesetRuleActionParameterFromListArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterFromListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterFromList)(nil)).Elem()
 }
 
-// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
-func (o RulesetRuleActionParametersFromListOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersFromList) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type RulesetRuleActionParametersFromListPtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersFromListPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersFromList)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersFromListPtrOutput) ToRulesetRuleActionParametersFromListPtrOutput() RulesetRuleActionParametersFromListPtrOutput {
+func (o RulesetRuleActionParameterFromListArrayOutput) ToRulesetRuleActionParameterFromListArrayOutput() RulesetRuleActionParameterFromListArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersFromListPtrOutput) ToRulesetRuleActionParametersFromListPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromListPtrOutput {
+func (o RulesetRuleActionParameterFromListArrayOutput) ToRulesetRuleActionParameterFromListArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterFromListArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersFromListPtrOutput) Elem() RulesetRuleActionParametersFromListOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersFromList) RulesetRuleActionParametersFromList {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParametersFromList
-		return ret
-	}).(RulesetRuleActionParametersFromListOutput)
+func (o RulesetRuleActionParameterFromListArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterFromListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterFromList {
+		return vs[0].([]RulesetRuleActionParameterFromList)[vs[1].(int)]
+	}).(RulesetRuleActionParameterFromListOutput)
 }
 
-func (o RulesetRuleActionParametersFromListPtrOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersFromList) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Key
-	}).(pulumi.StringPtrOutput)
+type RulesetRuleActionParameterFromValue struct {
+	PreserveQueryString bool                                           `pulumi:"preserveQueryString"`
+	StatusCode          int                                            `pulumi:"statusCode"`
+	TargetUrls          []RulesetRuleActionParameterFromValueTargetUrl `pulumi:"targetUrls"`
 }
 
-// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
-func (o RulesetRuleActionParametersFromListPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersFromList) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-type RulesetRuleActionParametersFromValue struct {
-	PreserveQueryString *bool                                          `pulumi:"preserveQueryString"`
-	StatusCode          *int                                           `pulumi:"statusCode"`
-	TargetUrl           *RulesetRuleActionParametersFromValueTargetUrl `pulumi:"targetUrl"`
-}
-
-// RulesetRuleActionParametersFromValueInput is an input type that accepts RulesetRuleActionParametersFromValueArgs and RulesetRuleActionParametersFromValueOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersFromValueInput` via:
+// RulesetRuleActionParameterFromValueInput is an input type that accepts RulesetRuleActionParameterFromValueArgs and RulesetRuleActionParameterFromValueOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterFromValueInput` via:
 //
-//	RulesetRuleActionParametersFromValueArgs{...}
-type RulesetRuleActionParametersFromValueInput interface {
+//	RulesetRuleActionParameterFromValueArgs{...}
+type RulesetRuleActionParameterFromValueInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersFromValueOutput() RulesetRuleActionParametersFromValueOutput
-	ToRulesetRuleActionParametersFromValueOutputWithContext(context.Context) RulesetRuleActionParametersFromValueOutput
+	ToRulesetRuleActionParameterFromValueOutput() RulesetRuleActionParameterFromValueOutput
+	ToRulesetRuleActionParameterFromValueOutputWithContext(context.Context) RulesetRuleActionParameterFromValueOutput
 }
 
-type RulesetRuleActionParametersFromValueArgs struct {
-	PreserveQueryString pulumi.BoolPtrInput                                   `pulumi:"preserveQueryString"`
-	StatusCode          pulumi.IntPtrInput                                    `pulumi:"statusCode"`
-	TargetUrl           RulesetRuleActionParametersFromValueTargetUrlPtrInput `pulumi:"targetUrl"`
+type RulesetRuleActionParameterFromValueArgs struct {
+	PreserveQueryString pulumi.BoolInput                                       `pulumi:"preserveQueryString"`
+	StatusCode          pulumi.IntInput                                        `pulumi:"statusCode"`
+	TargetUrls          RulesetRuleActionParameterFromValueTargetUrlArrayInput `pulumi:"targetUrls"`
 }
 
-func (RulesetRuleActionParametersFromValueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersFromValue)(nil)).Elem()
+func (RulesetRuleActionParameterFromValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterFromValue)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersFromValueArgs) ToRulesetRuleActionParametersFromValueOutput() RulesetRuleActionParametersFromValueOutput {
-	return i.ToRulesetRuleActionParametersFromValueOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterFromValueArgs) ToRulesetRuleActionParameterFromValueOutput() RulesetRuleActionParameterFromValueOutput {
+	return i.ToRulesetRuleActionParameterFromValueOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersFromValueArgs) ToRulesetRuleActionParametersFromValueOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersFromValueOutput)
+func (i RulesetRuleActionParameterFromValueArgs) ToRulesetRuleActionParameterFromValueOutputWithContext(ctx context.Context) RulesetRuleActionParameterFromValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterFromValueOutput)
 }
 
-func (i RulesetRuleActionParametersFromValueArgs) ToRulesetRuleActionParametersFromValuePtrOutput() RulesetRuleActionParametersFromValuePtrOutput {
-	return i.ToRulesetRuleActionParametersFromValuePtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersFromValueArgs) ToRulesetRuleActionParametersFromValuePtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValuePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersFromValueOutput).ToRulesetRuleActionParametersFromValuePtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersFromValuePtrInput is an input type that accepts RulesetRuleActionParametersFromValueArgs, RulesetRuleActionParametersFromValuePtr and RulesetRuleActionParametersFromValuePtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersFromValuePtrInput` via:
+// RulesetRuleActionParameterFromValueArrayInput is an input type that accepts RulesetRuleActionParameterFromValueArray and RulesetRuleActionParameterFromValueArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterFromValueArrayInput` via:
 //
-//	        RulesetRuleActionParametersFromValueArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersFromValuePtrInput interface {
+//	RulesetRuleActionParameterFromValueArray{ RulesetRuleActionParameterFromValueArgs{...} }
+type RulesetRuleActionParameterFromValueArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersFromValuePtrOutput() RulesetRuleActionParametersFromValuePtrOutput
-	ToRulesetRuleActionParametersFromValuePtrOutputWithContext(context.Context) RulesetRuleActionParametersFromValuePtrOutput
+	ToRulesetRuleActionParameterFromValueArrayOutput() RulesetRuleActionParameterFromValueArrayOutput
+	ToRulesetRuleActionParameterFromValueArrayOutputWithContext(context.Context) RulesetRuleActionParameterFromValueArrayOutput
 }
 
-type rulesetRuleActionParametersFromValuePtrType RulesetRuleActionParametersFromValueArgs
+type RulesetRuleActionParameterFromValueArray []RulesetRuleActionParameterFromValueInput
 
-func RulesetRuleActionParametersFromValuePtr(v *RulesetRuleActionParametersFromValueArgs) RulesetRuleActionParametersFromValuePtrInput {
-	return (*rulesetRuleActionParametersFromValuePtrType)(v)
+func (RulesetRuleActionParameterFromValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterFromValue)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersFromValuePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersFromValue)(nil)).Elem()
+func (i RulesetRuleActionParameterFromValueArray) ToRulesetRuleActionParameterFromValueArrayOutput() RulesetRuleActionParameterFromValueArrayOutput {
+	return i.ToRulesetRuleActionParameterFromValueArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersFromValuePtrType) ToRulesetRuleActionParametersFromValuePtrOutput() RulesetRuleActionParametersFromValuePtrOutput {
-	return i.ToRulesetRuleActionParametersFromValuePtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterFromValueArray) ToRulesetRuleActionParameterFromValueArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterFromValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterFromValueArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersFromValuePtrType) ToRulesetRuleActionParametersFromValuePtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValuePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersFromValuePtrOutput)
+type RulesetRuleActionParameterFromValueOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterFromValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterFromValue)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersFromValueOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersFromValueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersFromValue)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersFromValueOutput) ToRulesetRuleActionParametersFromValueOutput() RulesetRuleActionParametersFromValueOutput {
+func (o RulesetRuleActionParameterFromValueOutput) ToRulesetRuleActionParameterFromValueOutput() RulesetRuleActionParameterFromValueOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersFromValueOutput) ToRulesetRuleActionParametersFromValueOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValueOutput {
+func (o RulesetRuleActionParameterFromValueOutput) ToRulesetRuleActionParameterFromValueOutputWithContext(ctx context.Context) RulesetRuleActionParameterFromValueOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersFromValueOutput) ToRulesetRuleActionParametersFromValuePtrOutput() RulesetRuleActionParametersFromValuePtrOutput {
-	return o.ToRulesetRuleActionParametersFromValuePtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterFromValueOutput) PreserveQueryString() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterFromValue) bool { return v.PreserveQueryString }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersFromValueOutput) ToRulesetRuleActionParametersFromValuePtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValuePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersFromValue) *RulesetRuleActionParametersFromValue {
-		return &v
-	}).(RulesetRuleActionParametersFromValuePtrOutput)
+func (o RulesetRuleActionParameterFromValueOutput) StatusCode() pulumi.IntOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterFromValue) int { return v.StatusCode }).(pulumi.IntOutput)
 }
 
-func (o RulesetRuleActionParametersFromValueOutput) PreserveQueryString() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersFromValue) *bool { return v.PreserveQueryString }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterFromValueOutput) TargetUrls() RulesetRuleActionParameterFromValueTargetUrlArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterFromValue) []RulesetRuleActionParameterFromValueTargetUrl {
+		return v.TargetUrls
+	}).(RulesetRuleActionParameterFromValueTargetUrlArrayOutput)
 }
 
-func (o RulesetRuleActionParametersFromValueOutput) StatusCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersFromValue) *int { return v.StatusCode }).(pulumi.IntPtrOutput)
+type RulesetRuleActionParameterFromValueArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterFromValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterFromValue)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersFromValueOutput) TargetUrl() RulesetRuleActionParametersFromValueTargetUrlPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersFromValue) *RulesetRuleActionParametersFromValueTargetUrl {
-		return v.TargetUrl
-	}).(RulesetRuleActionParametersFromValueTargetUrlPtrOutput)
-}
-
-type RulesetRuleActionParametersFromValuePtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersFromValuePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersFromValue)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersFromValuePtrOutput) ToRulesetRuleActionParametersFromValuePtrOutput() RulesetRuleActionParametersFromValuePtrOutput {
+func (o RulesetRuleActionParameterFromValueArrayOutput) ToRulesetRuleActionParameterFromValueArrayOutput() RulesetRuleActionParameterFromValueArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersFromValuePtrOutput) ToRulesetRuleActionParametersFromValuePtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValuePtrOutput {
+func (o RulesetRuleActionParameterFromValueArrayOutput) ToRulesetRuleActionParameterFromValueArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterFromValueArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersFromValuePtrOutput) Elem() RulesetRuleActionParametersFromValueOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersFromValue) RulesetRuleActionParametersFromValue {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParametersFromValue
-		return ret
-	}).(RulesetRuleActionParametersFromValueOutput)
+func (o RulesetRuleActionParameterFromValueArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterFromValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterFromValue {
+		return vs[0].([]RulesetRuleActionParameterFromValue)[vs[1].(int)]
+	}).(RulesetRuleActionParameterFromValueOutput)
 }
 
-func (o RulesetRuleActionParametersFromValuePtrOutput) PreserveQueryString() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersFromValue) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.PreserveQueryString
-	}).(pulumi.BoolPtrOutput)
+type RulesetRuleActionParameterFromValueTargetUrl struct {
+	Expression string `pulumi:"expression"`
+	Value      string `pulumi:"value"`
 }
 
-func (o RulesetRuleActionParametersFromValuePtrOutput) StatusCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersFromValue) *int {
-		if v == nil {
-			return nil
-		}
-		return v.StatusCode
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o RulesetRuleActionParametersFromValuePtrOutput) TargetUrl() RulesetRuleActionParametersFromValueTargetUrlPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersFromValue) *RulesetRuleActionParametersFromValueTargetUrl {
-		if v == nil {
-			return nil
-		}
-		return v.TargetUrl
-	}).(RulesetRuleActionParametersFromValueTargetUrlPtrOutput)
-}
-
-type RulesetRuleActionParametersFromValueTargetUrl struct {
-	Expression *string `pulumi:"expression"`
-	Value      *string `pulumi:"value"`
-}
-
-// RulesetRuleActionParametersFromValueTargetUrlInput is an input type that accepts RulesetRuleActionParametersFromValueTargetUrlArgs and RulesetRuleActionParametersFromValueTargetUrlOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersFromValueTargetUrlInput` via:
+// RulesetRuleActionParameterFromValueTargetUrlInput is an input type that accepts RulesetRuleActionParameterFromValueTargetUrlArgs and RulesetRuleActionParameterFromValueTargetUrlOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterFromValueTargetUrlInput` via:
 //
-//	RulesetRuleActionParametersFromValueTargetUrlArgs{...}
-type RulesetRuleActionParametersFromValueTargetUrlInput interface {
+//	RulesetRuleActionParameterFromValueTargetUrlArgs{...}
+type RulesetRuleActionParameterFromValueTargetUrlInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersFromValueTargetUrlOutput() RulesetRuleActionParametersFromValueTargetUrlOutput
-	ToRulesetRuleActionParametersFromValueTargetUrlOutputWithContext(context.Context) RulesetRuleActionParametersFromValueTargetUrlOutput
+	ToRulesetRuleActionParameterFromValueTargetUrlOutput() RulesetRuleActionParameterFromValueTargetUrlOutput
+	ToRulesetRuleActionParameterFromValueTargetUrlOutputWithContext(context.Context) RulesetRuleActionParameterFromValueTargetUrlOutput
 }
 
-type RulesetRuleActionParametersFromValueTargetUrlArgs struct {
-	Expression pulumi.StringPtrInput `pulumi:"expression"`
-	Value      pulumi.StringPtrInput `pulumi:"value"`
+type RulesetRuleActionParameterFromValueTargetUrlArgs struct {
+	Expression pulumi.StringInput `pulumi:"expression"`
+	Value      pulumi.StringInput `pulumi:"value"`
 }
 
-func (RulesetRuleActionParametersFromValueTargetUrlArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersFromValueTargetUrl)(nil)).Elem()
+func (RulesetRuleActionParameterFromValueTargetUrlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterFromValueTargetUrl)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersFromValueTargetUrlArgs) ToRulesetRuleActionParametersFromValueTargetUrlOutput() RulesetRuleActionParametersFromValueTargetUrlOutput {
-	return i.ToRulesetRuleActionParametersFromValueTargetUrlOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterFromValueTargetUrlArgs) ToRulesetRuleActionParameterFromValueTargetUrlOutput() RulesetRuleActionParameterFromValueTargetUrlOutput {
+	return i.ToRulesetRuleActionParameterFromValueTargetUrlOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersFromValueTargetUrlArgs) ToRulesetRuleActionParametersFromValueTargetUrlOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValueTargetUrlOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersFromValueTargetUrlOutput)
+func (i RulesetRuleActionParameterFromValueTargetUrlArgs) ToRulesetRuleActionParameterFromValueTargetUrlOutputWithContext(ctx context.Context) RulesetRuleActionParameterFromValueTargetUrlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterFromValueTargetUrlOutput)
 }
 
-func (i RulesetRuleActionParametersFromValueTargetUrlArgs) ToRulesetRuleActionParametersFromValueTargetUrlPtrOutput() RulesetRuleActionParametersFromValueTargetUrlPtrOutput {
-	return i.ToRulesetRuleActionParametersFromValueTargetUrlPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersFromValueTargetUrlArgs) ToRulesetRuleActionParametersFromValueTargetUrlPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValueTargetUrlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersFromValueTargetUrlOutput).ToRulesetRuleActionParametersFromValueTargetUrlPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersFromValueTargetUrlPtrInput is an input type that accepts RulesetRuleActionParametersFromValueTargetUrlArgs, RulesetRuleActionParametersFromValueTargetUrlPtr and RulesetRuleActionParametersFromValueTargetUrlPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersFromValueTargetUrlPtrInput` via:
+// RulesetRuleActionParameterFromValueTargetUrlArrayInput is an input type that accepts RulesetRuleActionParameterFromValueTargetUrlArray and RulesetRuleActionParameterFromValueTargetUrlArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterFromValueTargetUrlArrayInput` via:
 //
-//	        RulesetRuleActionParametersFromValueTargetUrlArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersFromValueTargetUrlPtrInput interface {
+//	RulesetRuleActionParameterFromValueTargetUrlArray{ RulesetRuleActionParameterFromValueTargetUrlArgs{...} }
+type RulesetRuleActionParameterFromValueTargetUrlArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersFromValueTargetUrlPtrOutput() RulesetRuleActionParametersFromValueTargetUrlPtrOutput
-	ToRulesetRuleActionParametersFromValueTargetUrlPtrOutputWithContext(context.Context) RulesetRuleActionParametersFromValueTargetUrlPtrOutput
+	ToRulesetRuleActionParameterFromValueTargetUrlArrayOutput() RulesetRuleActionParameterFromValueTargetUrlArrayOutput
+	ToRulesetRuleActionParameterFromValueTargetUrlArrayOutputWithContext(context.Context) RulesetRuleActionParameterFromValueTargetUrlArrayOutput
 }
 
-type rulesetRuleActionParametersFromValueTargetUrlPtrType RulesetRuleActionParametersFromValueTargetUrlArgs
+type RulesetRuleActionParameterFromValueTargetUrlArray []RulesetRuleActionParameterFromValueTargetUrlInput
 
-func RulesetRuleActionParametersFromValueTargetUrlPtr(v *RulesetRuleActionParametersFromValueTargetUrlArgs) RulesetRuleActionParametersFromValueTargetUrlPtrInput {
-	return (*rulesetRuleActionParametersFromValueTargetUrlPtrType)(v)
+func (RulesetRuleActionParameterFromValueTargetUrlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterFromValueTargetUrl)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersFromValueTargetUrlPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersFromValueTargetUrl)(nil)).Elem()
+func (i RulesetRuleActionParameterFromValueTargetUrlArray) ToRulesetRuleActionParameterFromValueTargetUrlArrayOutput() RulesetRuleActionParameterFromValueTargetUrlArrayOutput {
+	return i.ToRulesetRuleActionParameterFromValueTargetUrlArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersFromValueTargetUrlPtrType) ToRulesetRuleActionParametersFromValueTargetUrlPtrOutput() RulesetRuleActionParametersFromValueTargetUrlPtrOutput {
-	return i.ToRulesetRuleActionParametersFromValueTargetUrlPtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterFromValueTargetUrlArray) ToRulesetRuleActionParameterFromValueTargetUrlArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterFromValueTargetUrlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterFromValueTargetUrlArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersFromValueTargetUrlPtrType) ToRulesetRuleActionParametersFromValueTargetUrlPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValueTargetUrlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersFromValueTargetUrlPtrOutput)
+type RulesetRuleActionParameterFromValueTargetUrlOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterFromValueTargetUrlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterFromValueTargetUrl)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersFromValueTargetUrlOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersFromValueTargetUrlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersFromValueTargetUrl)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersFromValueTargetUrlOutput) ToRulesetRuleActionParametersFromValueTargetUrlOutput() RulesetRuleActionParametersFromValueTargetUrlOutput {
+func (o RulesetRuleActionParameterFromValueTargetUrlOutput) ToRulesetRuleActionParameterFromValueTargetUrlOutput() RulesetRuleActionParameterFromValueTargetUrlOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersFromValueTargetUrlOutput) ToRulesetRuleActionParametersFromValueTargetUrlOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValueTargetUrlOutput {
+func (o RulesetRuleActionParameterFromValueTargetUrlOutput) ToRulesetRuleActionParameterFromValueTargetUrlOutputWithContext(ctx context.Context) RulesetRuleActionParameterFromValueTargetUrlOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersFromValueTargetUrlOutput) ToRulesetRuleActionParametersFromValueTargetUrlPtrOutput() RulesetRuleActionParametersFromValueTargetUrlPtrOutput {
-	return o.ToRulesetRuleActionParametersFromValueTargetUrlPtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterFromValueTargetUrlOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterFromValueTargetUrl) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersFromValueTargetUrlOutput) ToRulesetRuleActionParametersFromValueTargetUrlPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValueTargetUrlPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersFromValueTargetUrl) *RulesetRuleActionParametersFromValueTargetUrl {
-		return &v
-	}).(RulesetRuleActionParametersFromValueTargetUrlPtrOutput)
+func (o RulesetRuleActionParameterFromValueTargetUrlOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterFromValueTargetUrl) string { return v.Value }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersFromValueTargetUrlOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersFromValueTargetUrl) *string { return v.Expression }).(pulumi.StringPtrOutput)
+type RulesetRuleActionParameterFromValueTargetUrlArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterFromValueTargetUrlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterFromValueTargetUrl)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersFromValueTargetUrlOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersFromValueTargetUrl) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type RulesetRuleActionParametersFromValueTargetUrlPtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersFromValueTargetUrlPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersFromValueTargetUrl)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersFromValueTargetUrlPtrOutput) ToRulesetRuleActionParametersFromValueTargetUrlPtrOutput() RulesetRuleActionParametersFromValueTargetUrlPtrOutput {
+func (o RulesetRuleActionParameterFromValueTargetUrlArrayOutput) ToRulesetRuleActionParameterFromValueTargetUrlArrayOutput() RulesetRuleActionParameterFromValueTargetUrlArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersFromValueTargetUrlPtrOutput) ToRulesetRuleActionParametersFromValueTargetUrlPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersFromValueTargetUrlPtrOutput {
+func (o RulesetRuleActionParameterFromValueTargetUrlArrayOutput) ToRulesetRuleActionParameterFromValueTargetUrlArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterFromValueTargetUrlArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersFromValueTargetUrlPtrOutput) Elem() RulesetRuleActionParametersFromValueTargetUrlOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersFromValueTargetUrl) RulesetRuleActionParametersFromValueTargetUrl {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParametersFromValueTargetUrl
-		return ret
-	}).(RulesetRuleActionParametersFromValueTargetUrlOutput)
+func (o RulesetRuleActionParameterFromValueTargetUrlArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterFromValueTargetUrlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterFromValueTargetUrl {
+		return vs[0].([]RulesetRuleActionParameterFromValueTargetUrl)[vs[1].(int)]
+	}).(RulesetRuleActionParameterFromValueTargetUrlOutput)
 }
 
-func (o RulesetRuleActionParametersFromValueTargetUrlPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersFromValueTargetUrl) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Expression
-	}).(pulumi.StringPtrOutput)
+type RulesetRuleActionParameterHeader struct {
+	Expression string `pulumi:"expression"`
+	// Name of the ruleset.
+	Name      string `pulumi:"name"`
+	Operation string `pulumi:"operation"`
+	Value     string `pulumi:"value"`
 }
 
-func (o RulesetRuleActionParametersFromValueTargetUrlPtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersFromValueTargetUrl) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
-type RulesetRuleActionParametersHeader struct {
-	Expression *string `pulumi:"expression"`
-	// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
-	Name      *string `pulumi:"name"`
-	Operation *string `pulumi:"operation"`
-	Value     *string `pulumi:"value"`
-}
-
-// RulesetRuleActionParametersHeaderInput is an input type that accepts RulesetRuleActionParametersHeaderArgs and RulesetRuleActionParametersHeaderOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersHeaderInput` via:
+// RulesetRuleActionParameterHeaderInput is an input type that accepts RulesetRuleActionParameterHeaderArgs and RulesetRuleActionParameterHeaderOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterHeaderInput` via:
 //
-//	RulesetRuleActionParametersHeaderArgs{...}
-type RulesetRuleActionParametersHeaderInput interface {
+//	RulesetRuleActionParameterHeaderArgs{...}
+type RulesetRuleActionParameterHeaderInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersHeaderOutput() RulesetRuleActionParametersHeaderOutput
-	ToRulesetRuleActionParametersHeaderOutputWithContext(context.Context) RulesetRuleActionParametersHeaderOutput
+	ToRulesetRuleActionParameterHeaderOutput() RulesetRuleActionParameterHeaderOutput
+	ToRulesetRuleActionParameterHeaderOutputWithContext(context.Context) RulesetRuleActionParameterHeaderOutput
 }
 
-type RulesetRuleActionParametersHeaderArgs struct {
-	Expression pulumi.StringPtrInput `pulumi:"expression"`
-	// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
-	Name      pulumi.StringPtrInput `pulumi:"name"`
-	Operation pulumi.StringPtrInput `pulumi:"operation"`
-	Value     pulumi.StringPtrInput `pulumi:"value"`
+type RulesetRuleActionParameterHeaderArgs struct {
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Name of the ruleset.
+	Name      pulumi.StringInput `pulumi:"name"`
+	Operation pulumi.StringInput `pulumi:"operation"`
+	Value     pulumi.StringInput `pulumi:"value"`
 }
 
-func (RulesetRuleActionParametersHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersHeader)(nil)).Elem()
+func (RulesetRuleActionParameterHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterHeader)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersHeaderArgs) ToRulesetRuleActionParametersHeaderOutput() RulesetRuleActionParametersHeaderOutput {
-	return i.ToRulesetRuleActionParametersHeaderOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterHeaderArgs) ToRulesetRuleActionParameterHeaderOutput() RulesetRuleActionParameterHeaderOutput {
+	return i.ToRulesetRuleActionParameterHeaderOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersHeaderArgs) ToRulesetRuleActionParametersHeaderOutputWithContext(ctx context.Context) RulesetRuleActionParametersHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersHeaderOutput)
+func (i RulesetRuleActionParameterHeaderArgs) ToRulesetRuleActionParameterHeaderOutputWithContext(ctx context.Context) RulesetRuleActionParameterHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterHeaderOutput)
 }
 
-// RulesetRuleActionParametersHeaderArrayInput is an input type that accepts RulesetRuleActionParametersHeaderArray and RulesetRuleActionParametersHeaderArrayOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersHeaderArrayInput` via:
+// RulesetRuleActionParameterHeaderArrayInput is an input type that accepts RulesetRuleActionParameterHeaderArray and RulesetRuleActionParameterHeaderArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterHeaderArrayInput` via:
 //
-//	RulesetRuleActionParametersHeaderArray{ RulesetRuleActionParametersHeaderArgs{...} }
-type RulesetRuleActionParametersHeaderArrayInput interface {
+//	RulesetRuleActionParameterHeaderArray{ RulesetRuleActionParameterHeaderArgs{...} }
+type RulesetRuleActionParameterHeaderArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersHeaderArrayOutput() RulesetRuleActionParametersHeaderArrayOutput
-	ToRulesetRuleActionParametersHeaderArrayOutputWithContext(context.Context) RulesetRuleActionParametersHeaderArrayOutput
+	ToRulesetRuleActionParameterHeaderArrayOutput() RulesetRuleActionParameterHeaderArrayOutput
+	ToRulesetRuleActionParameterHeaderArrayOutputWithContext(context.Context) RulesetRuleActionParameterHeaderArrayOutput
 }
 
-type RulesetRuleActionParametersHeaderArray []RulesetRuleActionParametersHeaderInput
+type RulesetRuleActionParameterHeaderArray []RulesetRuleActionParameterHeaderInput
 
-func (RulesetRuleActionParametersHeaderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParametersHeader)(nil)).Elem()
+func (RulesetRuleActionParameterHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterHeader)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersHeaderArray) ToRulesetRuleActionParametersHeaderArrayOutput() RulesetRuleActionParametersHeaderArrayOutput {
-	return i.ToRulesetRuleActionParametersHeaderArrayOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterHeaderArray) ToRulesetRuleActionParameterHeaderArrayOutput() RulesetRuleActionParameterHeaderArrayOutput {
+	return i.ToRulesetRuleActionParameterHeaderArrayOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersHeaderArray) ToRulesetRuleActionParametersHeaderArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersHeaderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersHeaderArrayOutput)
+func (i RulesetRuleActionParameterHeaderArray) ToRulesetRuleActionParameterHeaderArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterHeaderArrayOutput)
 }
 
-type RulesetRuleActionParametersHeaderOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParameterHeaderOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParametersHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersHeader)(nil)).Elem()
+func (RulesetRuleActionParameterHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterHeader)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersHeaderOutput) ToRulesetRuleActionParametersHeaderOutput() RulesetRuleActionParametersHeaderOutput {
+func (o RulesetRuleActionParameterHeaderOutput) ToRulesetRuleActionParameterHeaderOutput() RulesetRuleActionParameterHeaderOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersHeaderOutput) ToRulesetRuleActionParametersHeaderOutputWithContext(ctx context.Context) RulesetRuleActionParametersHeaderOutput {
+func (o RulesetRuleActionParameterHeaderOutput) ToRulesetRuleActionParameterHeaderOutputWithContext(ctx context.Context) RulesetRuleActionParameterHeaderOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersHeaderOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersHeader) *string { return v.Expression }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParameterHeaderOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterHeader) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
-func (o RulesetRuleActionParametersHeaderOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+// Name of the ruleset.
+func (o RulesetRuleActionParameterHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterHeader) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersHeaderOutput) Operation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersHeader) *string { return v.Operation }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParameterHeaderOutput) Operation() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterHeader) string { return v.Operation }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersHeaderOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParameterHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterHeader) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type RulesetRuleActionParametersHeaderArrayOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParameterHeaderArrayOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParametersHeaderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParametersHeader)(nil)).Elem()
+func (RulesetRuleActionParameterHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterHeader)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersHeaderArrayOutput) ToRulesetRuleActionParametersHeaderArrayOutput() RulesetRuleActionParametersHeaderArrayOutput {
+func (o RulesetRuleActionParameterHeaderArrayOutput) ToRulesetRuleActionParameterHeaderArrayOutput() RulesetRuleActionParameterHeaderArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersHeaderArrayOutput) ToRulesetRuleActionParametersHeaderArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersHeaderArrayOutput {
+func (o RulesetRuleActionParameterHeaderArrayOutput) ToRulesetRuleActionParameterHeaderArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterHeaderArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersHeaderArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParametersHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParametersHeader {
-		return vs[0].([]RulesetRuleActionParametersHeader)[vs[1].(int)]
-	}).(RulesetRuleActionParametersHeaderOutput)
+func (o RulesetRuleActionParameterHeaderArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterHeader {
+		return vs[0].([]RulesetRuleActionParameterHeader)[vs[1].(int)]
+	}).(RulesetRuleActionParameterHeaderOutput)
 }
 
-type RulesetRuleActionParametersMatchedData struct {
-	PublicKey *string `pulumi:"publicKey"`
+type RulesetRuleActionParameterMatchedData struct {
+	PublicKey string `pulumi:"publicKey"`
 }
 
-// RulesetRuleActionParametersMatchedDataInput is an input type that accepts RulesetRuleActionParametersMatchedDataArgs and RulesetRuleActionParametersMatchedDataOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersMatchedDataInput` via:
+// RulesetRuleActionParameterMatchedDataInput is an input type that accepts RulesetRuleActionParameterMatchedDataArgs and RulesetRuleActionParameterMatchedDataOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterMatchedDataInput` via:
 //
-//	RulesetRuleActionParametersMatchedDataArgs{...}
-type RulesetRuleActionParametersMatchedDataInput interface {
+//	RulesetRuleActionParameterMatchedDataArgs{...}
+type RulesetRuleActionParameterMatchedDataInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersMatchedDataOutput() RulesetRuleActionParametersMatchedDataOutput
-	ToRulesetRuleActionParametersMatchedDataOutputWithContext(context.Context) RulesetRuleActionParametersMatchedDataOutput
+	ToRulesetRuleActionParameterMatchedDataOutput() RulesetRuleActionParameterMatchedDataOutput
+	ToRulesetRuleActionParameterMatchedDataOutputWithContext(context.Context) RulesetRuleActionParameterMatchedDataOutput
 }
 
-type RulesetRuleActionParametersMatchedDataArgs struct {
-	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
+type RulesetRuleActionParameterMatchedDataArgs struct {
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
 }
 
-func (RulesetRuleActionParametersMatchedDataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersMatchedData)(nil)).Elem()
+func (RulesetRuleActionParameterMatchedDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterMatchedData)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersMatchedDataArgs) ToRulesetRuleActionParametersMatchedDataOutput() RulesetRuleActionParametersMatchedDataOutput {
-	return i.ToRulesetRuleActionParametersMatchedDataOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterMatchedDataArgs) ToRulesetRuleActionParameterMatchedDataOutput() RulesetRuleActionParameterMatchedDataOutput {
+	return i.ToRulesetRuleActionParameterMatchedDataOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersMatchedDataArgs) ToRulesetRuleActionParametersMatchedDataOutputWithContext(ctx context.Context) RulesetRuleActionParametersMatchedDataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersMatchedDataOutput)
+func (i RulesetRuleActionParameterMatchedDataArgs) ToRulesetRuleActionParameterMatchedDataOutputWithContext(ctx context.Context) RulesetRuleActionParameterMatchedDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterMatchedDataOutput)
 }
 
-func (i RulesetRuleActionParametersMatchedDataArgs) ToRulesetRuleActionParametersMatchedDataPtrOutput() RulesetRuleActionParametersMatchedDataPtrOutput {
-	return i.ToRulesetRuleActionParametersMatchedDataPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersMatchedDataArgs) ToRulesetRuleActionParametersMatchedDataPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersMatchedDataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersMatchedDataOutput).ToRulesetRuleActionParametersMatchedDataPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersMatchedDataPtrInput is an input type that accepts RulesetRuleActionParametersMatchedDataArgs, RulesetRuleActionParametersMatchedDataPtr and RulesetRuleActionParametersMatchedDataPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersMatchedDataPtrInput` via:
+// RulesetRuleActionParameterMatchedDataArrayInput is an input type that accepts RulesetRuleActionParameterMatchedDataArray and RulesetRuleActionParameterMatchedDataArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterMatchedDataArrayInput` via:
 //
-//	        RulesetRuleActionParametersMatchedDataArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersMatchedDataPtrInput interface {
+//	RulesetRuleActionParameterMatchedDataArray{ RulesetRuleActionParameterMatchedDataArgs{...} }
+type RulesetRuleActionParameterMatchedDataArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersMatchedDataPtrOutput() RulesetRuleActionParametersMatchedDataPtrOutput
-	ToRulesetRuleActionParametersMatchedDataPtrOutputWithContext(context.Context) RulesetRuleActionParametersMatchedDataPtrOutput
+	ToRulesetRuleActionParameterMatchedDataArrayOutput() RulesetRuleActionParameterMatchedDataArrayOutput
+	ToRulesetRuleActionParameterMatchedDataArrayOutputWithContext(context.Context) RulesetRuleActionParameterMatchedDataArrayOutput
 }
 
-type rulesetRuleActionParametersMatchedDataPtrType RulesetRuleActionParametersMatchedDataArgs
+type RulesetRuleActionParameterMatchedDataArray []RulesetRuleActionParameterMatchedDataInput
 
-func RulesetRuleActionParametersMatchedDataPtr(v *RulesetRuleActionParametersMatchedDataArgs) RulesetRuleActionParametersMatchedDataPtrInput {
-	return (*rulesetRuleActionParametersMatchedDataPtrType)(v)
+func (RulesetRuleActionParameterMatchedDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterMatchedData)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersMatchedDataPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersMatchedData)(nil)).Elem()
+func (i RulesetRuleActionParameterMatchedDataArray) ToRulesetRuleActionParameterMatchedDataArrayOutput() RulesetRuleActionParameterMatchedDataArrayOutput {
+	return i.ToRulesetRuleActionParameterMatchedDataArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersMatchedDataPtrType) ToRulesetRuleActionParametersMatchedDataPtrOutput() RulesetRuleActionParametersMatchedDataPtrOutput {
-	return i.ToRulesetRuleActionParametersMatchedDataPtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterMatchedDataArray) ToRulesetRuleActionParameterMatchedDataArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterMatchedDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterMatchedDataArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersMatchedDataPtrType) ToRulesetRuleActionParametersMatchedDataPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersMatchedDataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersMatchedDataPtrOutput)
+type RulesetRuleActionParameterMatchedDataOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterMatchedDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterMatchedData)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersMatchedDataOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersMatchedDataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersMatchedData)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersMatchedDataOutput) ToRulesetRuleActionParametersMatchedDataOutput() RulesetRuleActionParametersMatchedDataOutput {
+func (o RulesetRuleActionParameterMatchedDataOutput) ToRulesetRuleActionParameterMatchedDataOutput() RulesetRuleActionParameterMatchedDataOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersMatchedDataOutput) ToRulesetRuleActionParametersMatchedDataOutputWithContext(ctx context.Context) RulesetRuleActionParametersMatchedDataOutput {
+func (o RulesetRuleActionParameterMatchedDataOutput) ToRulesetRuleActionParameterMatchedDataOutputWithContext(ctx context.Context) RulesetRuleActionParameterMatchedDataOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersMatchedDataOutput) ToRulesetRuleActionParametersMatchedDataPtrOutput() RulesetRuleActionParametersMatchedDataPtrOutput {
-	return o.ToRulesetRuleActionParametersMatchedDataPtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterMatchedDataOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterMatchedData) string { return v.PublicKey }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersMatchedDataOutput) ToRulesetRuleActionParametersMatchedDataPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersMatchedDataPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersMatchedData) *RulesetRuleActionParametersMatchedData {
-		return &v
-	}).(RulesetRuleActionParametersMatchedDataPtrOutput)
+type RulesetRuleActionParameterMatchedDataArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterMatchedDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterMatchedData)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersMatchedDataOutput) PublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersMatchedData) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
-}
-
-type RulesetRuleActionParametersMatchedDataPtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersMatchedDataPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersMatchedData)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersMatchedDataPtrOutput) ToRulesetRuleActionParametersMatchedDataPtrOutput() RulesetRuleActionParametersMatchedDataPtrOutput {
+func (o RulesetRuleActionParameterMatchedDataArrayOutput) ToRulesetRuleActionParameterMatchedDataArrayOutput() RulesetRuleActionParameterMatchedDataArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersMatchedDataPtrOutput) ToRulesetRuleActionParametersMatchedDataPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersMatchedDataPtrOutput {
+func (o RulesetRuleActionParameterMatchedDataArrayOutput) ToRulesetRuleActionParameterMatchedDataArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterMatchedDataArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersMatchedDataPtrOutput) Elem() RulesetRuleActionParametersMatchedDataOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersMatchedData) RulesetRuleActionParametersMatchedData {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParametersMatchedData
-		return ret
-	}).(RulesetRuleActionParametersMatchedDataOutput)
+func (o RulesetRuleActionParameterMatchedDataArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterMatchedDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterMatchedData {
+		return vs[0].([]RulesetRuleActionParameterMatchedData)[vs[1].(int)]
+	}).(RulesetRuleActionParameterMatchedDataOutput)
 }
 
-func (o RulesetRuleActionParametersMatchedDataPtrOutput) PublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersMatchedData) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PublicKey
-	}).(pulumi.StringPtrOutput)
+type RulesetRuleActionParameterOrigin struct {
+	Host string `pulumi:"host"`
+	Port int    `pulumi:"port"`
 }
 
-type RulesetRuleActionParametersOrigin struct {
-	Host *string `pulumi:"host"`
-	Port *int    `pulumi:"port"`
-}
-
-// RulesetRuleActionParametersOriginInput is an input type that accepts RulesetRuleActionParametersOriginArgs and RulesetRuleActionParametersOriginOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersOriginInput` via:
+// RulesetRuleActionParameterOriginInput is an input type that accepts RulesetRuleActionParameterOriginArgs and RulesetRuleActionParameterOriginOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterOriginInput` via:
 //
-//	RulesetRuleActionParametersOriginArgs{...}
-type RulesetRuleActionParametersOriginInput interface {
+//	RulesetRuleActionParameterOriginArgs{...}
+type RulesetRuleActionParameterOriginInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersOriginOutput() RulesetRuleActionParametersOriginOutput
-	ToRulesetRuleActionParametersOriginOutputWithContext(context.Context) RulesetRuleActionParametersOriginOutput
+	ToRulesetRuleActionParameterOriginOutput() RulesetRuleActionParameterOriginOutput
+	ToRulesetRuleActionParameterOriginOutputWithContext(context.Context) RulesetRuleActionParameterOriginOutput
 }
 
-type RulesetRuleActionParametersOriginArgs struct {
-	Host pulumi.StringPtrInput `pulumi:"host"`
-	Port pulumi.IntPtrInput    `pulumi:"port"`
+type RulesetRuleActionParameterOriginArgs struct {
+	Host pulumi.StringInput `pulumi:"host"`
+	Port pulumi.IntInput    `pulumi:"port"`
 }
 
-func (RulesetRuleActionParametersOriginArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersOrigin)(nil)).Elem()
+func (RulesetRuleActionParameterOriginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterOrigin)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersOriginArgs) ToRulesetRuleActionParametersOriginOutput() RulesetRuleActionParametersOriginOutput {
-	return i.ToRulesetRuleActionParametersOriginOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterOriginArgs) ToRulesetRuleActionParameterOriginOutput() RulesetRuleActionParameterOriginOutput {
+	return i.ToRulesetRuleActionParameterOriginOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersOriginArgs) ToRulesetRuleActionParametersOriginOutputWithContext(ctx context.Context) RulesetRuleActionParametersOriginOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOriginOutput)
+func (i RulesetRuleActionParameterOriginArgs) ToRulesetRuleActionParameterOriginOutputWithContext(ctx context.Context) RulesetRuleActionParameterOriginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterOriginOutput)
 }
 
-func (i RulesetRuleActionParametersOriginArgs) ToRulesetRuleActionParametersOriginPtrOutput() RulesetRuleActionParametersOriginPtrOutput {
-	return i.ToRulesetRuleActionParametersOriginPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersOriginArgs) ToRulesetRuleActionParametersOriginPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOriginPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOriginOutput).ToRulesetRuleActionParametersOriginPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersOriginPtrInput is an input type that accepts RulesetRuleActionParametersOriginArgs, RulesetRuleActionParametersOriginPtr and RulesetRuleActionParametersOriginPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersOriginPtrInput` via:
+// RulesetRuleActionParameterOriginArrayInput is an input type that accepts RulesetRuleActionParameterOriginArray and RulesetRuleActionParameterOriginArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterOriginArrayInput` via:
 //
-//	        RulesetRuleActionParametersOriginArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersOriginPtrInput interface {
+//	RulesetRuleActionParameterOriginArray{ RulesetRuleActionParameterOriginArgs{...} }
+type RulesetRuleActionParameterOriginArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersOriginPtrOutput() RulesetRuleActionParametersOriginPtrOutput
-	ToRulesetRuleActionParametersOriginPtrOutputWithContext(context.Context) RulesetRuleActionParametersOriginPtrOutput
+	ToRulesetRuleActionParameterOriginArrayOutput() RulesetRuleActionParameterOriginArrayOutput
+	ToRulesetRuleActionParameterOriginArrayOutputWithContext(context.Context) RulesetRuleActionParameterOriginArrayOutput
 }
 
-type rulesetRuleActionParametersOriginPtrType RulesetRuleActionParametersOriginArgs
+type RulesetRuleActionParameterOriginArray []RulesetRuleActionParameterOriginInput
 
-func RulesetRuleActionParametersOriginPtr(v *RulesetRuleActionParametersOriginArgs) RulesetRuleActionParametersOriginPtrInput {
-	return (*rulesetRuleActionParametersOriginPtrType)(v)
+func (RulesetRuleActionParameterOriginArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterOrigin)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersOriginPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersOrigin)(nil)).Elem()
+func (i RulesetRuleActionParameterOriginArray) ToRulesetRuleActionParameterOriginArrayOutput() RulesetRuleActionParameterOriginArrayOutput {
+	return i.ToRulesetRuleActionParameterOriginArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersOriginPtrType) ToRulesetRuleActionParametersOriginPtrOutput() RulesetRuleActionParametersOriginPtrOutput {
-	return i.ToRulesetRuleActionParametersOriginPtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterOriginArray) ToRulesetRuleActionParameterOriginArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterOriginArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterOriginArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersOriginPtrType) ToRulesetRuleActionParametersOriginPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOriginPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOriginPtrOutput)
+type RulesetRuleActionParameterOriginOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterOriginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterOrigin)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersOriginOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersOriginOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersOrigin)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersOriginOutput) ToRulesetRuleActionParametersOriginOutput() RulesetRuleActionParametersOriginOutput {
+func (o RulesetRuleActionParameterOriginOutput) ToRulesetRuleActionParameterOriginOutput() RulesetRuleActionParameterOriginOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersOriginOutput) ToRulesetRuleActionParametersOriginOutputWithContext(ctx context.Context) RulesetRuleActionParametersOriginOutput {
+func (o RulesetRuleActionParameterOriginOutput) ToRulesetRuleActionParameterOriginOutputWithContext(ctx context.Context) RulesetRuleActionParameterOriginOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersOriginOutput) ToRulesetRuleActionParametersOriginPtrOutput() RulesetRuleActionParametersOriginPtrOutput {
-	return o.ToRulesetRuleActionParametersOriginPtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterOriginOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterOrigin) string { return v.Host }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersOriginOutput) ToRulesetRuleActionParametersOriginPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOriginPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersOrigin) *RulesetRuleActionParametersOrigin {
-		return &v
-	}).(RulesetRuleActionParametersOriginPtrOutput)
+func (o RulesetRuleActionParameterOriginOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterOrigin) int { return v.Port }).(pulumi.IntOutput)
 }
 
-func (o RulesetRuleActionParametersOriginOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersOrigin) *string { return v.Host }).(pulumi.StringPtrOutput)
+type RulesetRuleActionParameterOriginArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterOriginArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterOrigin)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersOriginOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersOrigin) *int { return v.Port }).(pulumi.IntPtrOutput)
-}
-
-type RulesetRuleActionParametersOriginPtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersOriginPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersOrigin)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersOriginPtrOutput) ToRulesetRuleActionParametersOriginPtrOutput() RulesetRuleActionParametersOriginPtrOutput {
+func (o RulesetRuleActionParameterOriginArrayOutput) ToRulesetRuleActionParameterOriginArrayOutput() RulesetRuleActionParameterOriginArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersOriginPtrOutput) ToRulesetRuleActionParametersOriginPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOriginPtrOutput {
+func (o RulesetRuleActionParameterOriginArrayOutput) ToRulesetRuleActionParameterOriginArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterOriginArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersOriginPtrOutput) Elem() RulesetRuleActionParametersOriginOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersOrigin) RulesetRuleActionParametersOrigin {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParametersOrigin
-		return ret
-	}).(RulesetRuleActionParametersOriginOutput)
+func (o RulesetRuleActionParameterOriginArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterOriginOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterOrigin {
+		return vs[0].([]RulesetRuleActionParameterOrigin)[vs[1].(int)]
+	}).(RulesetRuleActionParameterOriginOutput)
 }
 
-func (o RulesetRuleActionParametersOriginPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersOrigin) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Host
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o RulesetRuleActionParametersOriginPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersOrigin) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-type RulesetRuleActionParametersOverrides struct {
-	Action     *string                                        `pulumi:"action"`
-	Categories []RulesetRuleActionParametersOverridesCategory `pulumi:"categories"`
-	// Deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-	Enabled *bool `pulumi:"enabled"`
+type RulesetRuleActionParameterOverride struct {
+	Action     string                                       `pulumi:"action"`
+	Categories []RulesetRuleActionParameterOverrideCategory `pulumi:"categories"`
+	Enabled    bool                                         `pulumi:"enabled"`
 	// List of rules to apply to the ruleset.
-	Rules            []RulesetRuleActionParametersOverridesRule `pulumi:"rules"`
-	SensitivityLevel *string                                    `pulumi:"sensitivityLevel"`
-	Status           *string                                    `pulumi:"status"`
+	Rules            []RulesetRuleActionParameterOverrideRule `pulumi:"rules"`
+	SensitivityLevel string                                   `pulumi:"sensitivityLevel"`
 }
 
-// RulesetRuleActionParametersOverridesInput is an input type that accepts RulesetRuleActionParametersOverridesArgs and RulesetRuleActionParametersOverridesOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersOverridesInput` via:
+// RulesetRuleActionParameterOverrideInput is an input type that accepts RulesetRuleActionParameterOverrideArgs and RulesetRuleActionParameterOverrideOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterOverrideInput` via:
 //
-//	RulesetRuleActionParametersOverridesArgs{...}
-type RulesetRuleActionParametersOverridesInput interface {
+//	RulesetRuleActionParameterOverrideArgs{...}
+type RulesetRuleActionParameterOverrideInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersOverridesOutput() RulesetRuleActionParametersOverridesOutput
-	ToRulesetRuleActionParametersOverridesOutputWithContext(context.Context) RulesetRuleActionParametersOverridesOutput
+	ToRulesetRuleActionParameterOverrideOutput() RulesetRuleActionParameterOverrideOutput
+	ToRulesetRuleActionParameterOverrideOutputWithContext(context.Context) RulesetRuleActionParameterOverrideOutput
 }
 
-type RulesetRuleActionParametersOverridesArgs struct {
-	Action     pulumi.StringPtrInput                                  `pulumi:"action"`
-	Categories RulesetRuleActionParametersOverridesCategoryArrayInput `pulumi:"categories"`
-	// Deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+type RulesetRuleActionParameterOverrideArgs struct {
+	Action     pulumi.StringInput                                   `pulumi:"action"`
+	Categories RulesetRuleActionParameterOverrideCategoryArrayInput `pulumi:"categories"`
+	Enabled    pulumi.BoolInput                                     `pulumi:"enabled"`
 	// List of rules to apply to the ruleset.
-	Rules            RulesetRuleActionParametersOverridesRuleArrayInput `pulumi:"rules"`
-	SensitivityLevel pulumi.StringPtrInput                              `pulumi:"sensitivityLevel"`
-	Status           pulumi.StringPtrInput                              `pulumi:"status"`
+	Rules            RulesetRuleActionParameterOverrideRuleArrayInput `pulumi:"rules"`
+	SensitivityLevel pulumi.StringInput                               `pulumi:"sensitivityLevel"`
 }
 
-func (RulesetRuleActionParametersOverridesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersOverrides)(nil)).Elem()
+func (RulesetRuleActionParameterOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterOverride)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersOverridesArgs) ToRulesetRuleActionParametersOverridesOutput() RulesetRuleActionParametersOverridesOutput {
-	return i.ToRulesetRuleActionParametersOverridesOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterOverrideArgs) ToRulesetRuleActionParameterOverrideOutput() RulesetRuleActionParameterOverrideOutput {
+	return i.ToRulesetRuleActionParameterOverrideOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersOverridesArgs) ToRulesetRuleActionParametersOverridesOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOverridesOutput)
+func (i RulesetRuleActionParameterOverrideArgs) ToRulesetRuleActionParameterOverrideOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterOverrideOutput)
 }
 
-func (i RulesetRuleActionParametersOverridesArgs) ToRulesetRuleActionParametersOverridesPtrOutput() RulesetRuleActionParametersOverridesPtrOutput {
-	return i.ToRulesetRuleActionParametersOverridesPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersOverridesArgs) ToRulesetRuleActionParametersOverridesPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOverridesOutput).ToRulesetRuleActionParametersOverridesPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersOverridesPtrInput is an input type that accepts RulesetRuleActionParametersOverridesArgs, RulesetRuleActionParametersOverridesPtr and RulesetRuleActionParametersOverridesPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersOverridesPtrInput` via:
+// RulesetRuleActionParameterOverrideArrayInput is an input type that accepts RulesetRuleActionParameterOverrideArray and RulesetRuleActionParameterOverrideArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterOverrideArrayInput` via:
 //
-//	        RulesetRuleActionParametersOverridesArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersOverridesPtrInput interface {
+//	RulesetRuleActionParameterOverrideArray{ RulesetRuleActionParameterOverrideArgs{...} }
+type RulesetRuleActionParameterOverrideArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersOverridesPtrOutput() RulesetRuleActionParametersOverridesPtrOutput
-	ToRulesetRuleActionParametersOverridesPtrOutputWithContext(context.Context) RulesetRuleActionParametersOverridesPtrOutput
+	ToRulesetRuleActionParameterOverrideArrayOutput() RulesetRuleActionParameterOverrideArrayOutput
+	ToRulesetRuleActionParameterOverrideArrayOutputWithContext(context.Context) RulesetRuleActionParameterOverrideArrayOutput
 }
 
-type rulesetRuleActionParametersOverridesPtrType RulesetRuleActionParametersOverridesArgs
+type RulesetRuleActionParameterOverrideArray []RulesetRuleActionParameterOverrideInput
 
-func RulesetRuleActionParametersOverridesPtr(v *RulesetRuleActionParametersOverridesArgs) RulesetRuleActionParametersOverridesPtrInput {
-	return (*rulesetRuleActionParametersOverridesPtrType)(v)
+func (RulesetRuleActionParameterOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterOverride)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersOverridesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersOverrides)(nil)).Elem()
+func (i RulesetRuleActionParameterOverrideArray) ToRulesetRuleActionParameterOverrideArrayOutput() RulesetRuleActionParameterOverrideArrayOutput {
+	return i.ToRulesetRuleActionParameterOverrideArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersOverridesPtrType) ToRulesetRuleActionParametersOverridesPtrOutput() RulesetRuleActionParametersOverridesPtrOutput {
-	return i.ToRulesetRuleActionParametersOverridesPtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterOverrideArray) ToRulesetRuleActionParameterOverrideArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterOverrideArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersOverridesPtrType) ToRulesetRuleActionParametersOverridesPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOverridesPtrOutput)
+type RulesetRuleActionParameterOverrideOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterOverride)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersOverridesOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersOverridesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersOverrides)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersOverridesOutput) ToRulesetRuleActionParametersOverridesOutput() RulesetRuleActionParametersOverridesOutput {
+func (o RulesetRuleActionParameterOverrideOutput) ToRulesetRuleActionParameterOverrideOutput() RulesetRuleActionParameterOverrideOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersOverridesOutput) ToRulesetRuleActionParametersOverridesOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesOutput {
+func (o RulesetRuleActionParameterOverrideOutput) ToRulesetRuleActionParameterOverrideOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverrideOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersOverridesOutput) ToRulesetRuleActionParametersOverridesPtrOutput() RulesetRuleActionParametersOverridesPtrOutput {
-	return o.ToRulesetRuleActionParametersOverridesPtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterOverrideOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterOverride) string { return v.Action }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersOverridesOutput) ToRulesetRuleActionParametersOverridesPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersOverrides) *RulesetRuleActionParametersOverrides {
-		return &v
-	}).(RulesetRuleActionParametersOverridesPtrOutput)
-}
-
-func (o RulesetRuleActionParametersOverridesOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersOverrides) *string { return v.Action }).(pulumi.StringPtrOutput)
-}
-
-func (o RulesetRuleActionParametersOverridesOutput) Categories() RulesetRuleActionParametersOverridesCategoryArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersOverrides) []RulesetRuleActionParametersOverridesCategory {
+func (o RulesetRuleActionParameterOverrideOutput) Categories() RulesetRuleActionParameterOverrideCategoryArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterOverride) []RulesetRuleActionParameterOverrideCategory {
 		return v.Categories
-	}).(RulesetRuleActionParametersOverridesCategoryArrayOutput)
+	}).(RulesetRuleActionParameterOverrideCategoryArrayOutput)
 }
 
-// Deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-func (o RulesetRuleActionParametersOverridesOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersOverrides) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterOverrideOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterOverride) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // List of rules to apply to the ruleset.
-func (o RulesetRuleActionParametersOverridesOutput) Rules() RulesetRuleActionParametersOverridesRuleArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersOverrides) []RulesetRuleActionParametersOverridesRule {
-		return v.Rules
-	}).(RulesetRuleActionParametersOverridesRuleArrayOutput)
+func (o RulesetRuleActionParameterOverrideOutput) Rules() RulesetRuleActionParameterOverrideRuleArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterOverride) []RulesetRuleActionParameterOverrideRule { return v.Rules }).(RulesetRuleActionParameterOverrideRuleArrayOutput)
 }
 
-func (o RulesetRuleActionParametersOverridesOutput) SensitivityLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersOverrides) *string { return v.SensitivityLevel }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParameterOverrideOutput) SensitivityLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterOverride) string { return v.SensitivityLevel }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersOverridesOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersOverrides) *string { return v.Status }).(pulumi.StringPtrOutput)
+type RulesetRuleActionParameterOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterOverride)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersOverridesPtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersOverridesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersOverrides)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersOverridesPtrOutput) ToRulesetRuleActionParametersOverridesPtrOutput() RulesetRuleActionParametersOverridesPtrOutput {
+func (o RulesetRuleActionParameterOverrideArrayOutput) ToRulesetRuleActionParameterOverrideArrayOutput() RulesetRuleActionParameterOverrideArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersOverridesPtrOutput) ToRulesetRuleActionParametersOverridesPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesPtrOutput {
+func (o RulesetRuleActionParameterOverrideArrayOutput) ToRulesetRuleActionParameterOverrideArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverrideArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersOverridesPtrOutput) Elem() RulesetRuleActionParametersOverridesOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersOverrides) RulesetRuleActionParametersOverrides {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParametersOverrides
-		return ret
-	}).(RulesetRuleActionParametersOverridesOutput)
+func (o RulesetRuleActionParameterOverrideArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterOverride {
+		return vs[0].([]RulesetRuleActionParameterOverride)[vs[1].(int)]
+	}).(RulesetRuleActionParameterOverrideOutput)
 }
 
-func (o RulesetRuleActionParametersOverridesPtrOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersOverrides) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Action
-	}).(pulumi.StringPtrOutput)
+type RulesetRuleActionParameterOverrideCategory struct {
+	Action   string `pulumi:"action"`
+	Category string `pulumi:"category"`
+	Enabled  bool   `pulumi:"enabled"`
 }
 
-func (o RulesetRuleActionParametersOverridesPtrOutput) Categories() RulesetRuleActionParametersOverridesCategoryArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersOverrides) []RulesetRuleActionParametersOverridesCategory {
-		if v == nil {
-			return nil
-		}
-		return v.Categories
-	}).(RulesetRuleActionParametersOverridesCategoryArrayOutput)
-}
-
-// Deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-func (o RulesetRuleActionParametersOverridesPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersOverrides) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// List of rules to apply to the ruleset.
-func (o RulesetRuleActionParametersOverridesPtrOutput) Rules() RulesetRuleActionParametersOverridesRuleArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersOverrides) []RulesetRuleActionParametersOverridesRule {
-		if v == nil {
-			return nil
-		}
-		return v.Rules
-	}).(RulesetRuleActionParametersOverridesRuleArrayOutput)
-}
-
-func (o RulesetRuleActionParametersOverridesPtrOutput) SensitivityLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersOverrides) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SensitivityLevel
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o RulesetRuleActionParametersOverridesPtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersOverrides) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-type RulesetRuleActionParametersOverridesCategory struct {
-	Action   *string `pulumi:"action"`
-	Category *string `pulumi:"category"`
-	// Deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-	Enabled *bool   `pulumi:"enabled"`
-	Status  *string `pulumi:"status"`
-}
-
-// RulesetRuleActionParametersOverridesCategoryInput is an input type that accepts RulesetRuleActionParametersOverridesCategoryArgs and RulesetRuleActionParametersOverridesCategoryOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersOverridesCategoryInput` via:
+// RulesetRuleActionParameterOverrideCategoryInput is an input type that accepts RulesetRuleActionParameterOverrideCategoryArgs and RulesetRuleActionParameterOverrideCategoryOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterOverrideCategoryInput` via:
 //
-//	RulesetRuleActionParametersOverridesCategoryArgs{...}
-type RulesetRuleActionParametersOverridesCategoryInput interface {
+//	RulesetRuleActionParameterOverrideCategoryArgs{...}
+type RulesetRuleActionParameterOverrideCategoryInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersOverridesCategoryOutput() RulesetRuleActionParametersOverridesCategoryOutput
-	ToRulesetRuleActionParametersOverridesCategoryOutputWithContext(context.Context) RulesetRuleActionParametersOverridesCategoryOutput
+	ToRulesetRuleActionParameterOverrideCategoryOutput() RulesetRuleActionParameterOverrideCategoryOutput
+	ToRulesetRuleActionParameterOverrideCategoryOutputWithContext(context.Context) RulesetRuleActionParameterOverrideCategoryOutput
 }
 
-type RulesetRuleActionParametersOverridesCategoryArgs struct {
-	Action   pulumi.StringPtrInput `pulumi:"action"`
-	Category pulumi.StringPtrInput `pulumi:"category"`
-	// Deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
-	Status  pulumi.StringPtrInput `pulumi:"status"`
+type RulesetRuleActionParameterOverrideCategoryArgs struct {
+	Action   pulumi.StringInput `pulumi:"action"`
+	Category pulumi.StringInput `pulumi:"category"`
+	Enabled  pulumi.BoolInput   `pulumi:"enabled"`
 }
 
-func (RulesetRuleActionParametersOverridesCategoryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersOverridesCategory)(nil)).Elem()
+func (RulesetRuleActionParameterOverrideCategoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterOverrideCategory)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersOverridesCategoryArgs) ToRulesetRuleActionParametersOverridesCategoryOutput() RulesetRuleActionParametersOverridesCategoryOutput {
-	return i.ToRulesetRuleActionParametersOverridesCategoryOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterOverrideCategoryArgs) ToRulesetRuleActionParameterOverrideCategoryOutput() RulesetRuleActionParameterOverrideCategoryOutput {
+	return i.ToRulesetRuleActionParameterOverrideCategoryOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersOverridesCategoryArgs) ToRulesetRuleActionParametersOverridesCategoryOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesCategoryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOverridesCategoryOutput)
+func (i RulesetRuleActionParameterOverrideCategoryArgs) ToRulesetRuleActionParameterOverrideCategoryOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverrideCategoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterOverrideCategoryOutput)
 }
 
-// RulesetRuleActionParametersOverridesCategoryArrayInput is an input type that accepts RulesetRuleActionParametersOverridesCategoryArray and RulesetRuleActionParametersOverridesCategoryArrayOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersOverridesCategoryArrayInput` via:
+// RulesetRuleActionParameterOverrideCategoryArrayInput is an input type that accepts RulesetRuleActionParameterOverrideCategoryArray and RulesetRuleActionParameterOverrideCategoryArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterOverrideCategoryArrayInput` via:
 //
-//	RulesetRuleActionParametersOverridesCategoryArray{ RulesetRuleActionParametersOverridesCategoryArgs{...} }
-type RulesetRuleActionParametersOverridesCategoryArrayInput interface {
+//	RulesetRuleActionParameterOverrideCategoryArray{ RulesetRuleActionParameterOverrideCategoryArgs{...} }
+type RulesetRuleActionParameterOverrideCategoryArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersOverridesCategoryArrayOutput() RulesetRuleActionParametersOverridesCategoryArrayOutput
-	ToRulesetRuleActionParametersOverridesCategoryArrayOutputWithContext(context.Context) RulesetRuleActionParametersOverridesCategoryArrayOutput
+	ToRulesetRuleActionParameterOverrideCategoryArrayOutput() RulesetRuleActionParameterOverrideCategoryArrayOutput
+	ToRulesetRuleActionParameterOverrideCategoryArrayOutputWithContext(context.Context) RulesetRuleActionParameterOverrideCategoryArrayOutput
 }
 
-type RulesetRuleActionParametersOverridesCategoryArray []RulesetRuleActionParametersOverridesCategoryInput
+type RulesetRuleActionParameterOverrideCategoryArray []RulesetRuleActionParameterOverrideCategoryInput
 
-func (RulesetRuleActionParametersOverridesCategoryArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParametersOverridesCategory)(nil)).Elem()
+func (RulesetRuleActionParameterOverrideCategoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterOverrideCategory)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersOverridesCategoryArray) ToRulesetRuleActionParametersOverridesCategoryArrayOutput() RulesetRuleActionParametersOverridesCategoryArrayOutput {
-	return i.ToRulesetRuleActionParametersOverridesCategoryArrayOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterOverrideCategoryArray) ToRulesetRuleActionParameterOverrideCategoryArrayOutput() RulesetRuleActionParameterOverrideCategoryArrayOutput {
+	return i.ToRulesetRuleActionParameterOverrideCategoryArrayOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersOverridesCategoryArray) ToRulesetRuleActionParametersOverridesCategoryArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesCategoryArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOverridesCategoryArrayOutput)
+func (i RulesetRuleActionParameterOverrideCategoryArray) ToRulesetRuleActionParameterOverrideCategoryArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverrideCategoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterOverrideCategoryArrayOutput)
 }
 
-type RulesetRuleActionParametersOverridesCategoryOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParameterOverrideCategoryOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParametersOverridesCategoryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersOverridesCategory)(nil)).Elem()
+func (RulesetRuleActionParameterOverrideCategoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterOverrideCategory)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersOverridesCategoryOutput) ToRulesetRuleActionParametersOverridesCategoryOutput() RulesetRuleActionParametersOverridesCategoryOutput {
+func (o RulesetRuleActionParameterOverrideCategoryOutput) ToRulesetRuleActionParameterOverrideCategoryOutput() RulesetRuleActionParameterOverrideCategoryOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersOverridesCategoryOutput) ToRulesetRuleActionParametersOverridesCategoryOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesCategoryOutput {
+func (o RulesetRuleActionParameterOverrideCategoryOutput) ToRulesetRuleActionParameterOverrideCategoryOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverrideCategoryOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersOverridesCategoryOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersOverridesCategory) *string { return v.Action }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParameterOverrideCategoryOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterOverrideCategory) string { return v.Action }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersOverridesCategoryOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersOverridesCategory) *string { return v.Category }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParameterOverrideCategoryOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterOverrideCategory) string { return v.Category }).(pulumi.StringOutput)
 }
 
-// Deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-func (o RulesetRuleActionParametersOverridesCategoryOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersOverridesCategory) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterOverrideCategoryOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterOverrideCategory) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersOverridesCategoryOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersOverridesCategory) *string { return v.Status }).(pulumi.StringPtrOutput)
+type RulesetRuleActionParameterOverrideCategoryArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterOverrideCategoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterOverrideCategory)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersOverridesCategoryArrayOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersOverridesCategoryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParametersOverridesCategory)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersOverridesCategoryArrayOutput) ToRulesetRuleActionParametersOverridesCategoryArrayOutput() RulesetRuleActionParametersOverridesCategoryArrayOutput {
+func (o RulesetRuleActionParameterOverrideCategoryArrayOutput) ToRulesetRuleActionParameterOverrideCategoryArrayOutput() RulesetRuleActionParameterOverrideCategoryArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersOverridesCategoryArrayOutput) ToRulesetRuleActionParametersOverridesCategoryArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesCategoryArrayOutput {
+func (o RulesetRuleActionParameterOverrideCategoryArrayOutput) ToRulesetRuleActionParameterOverrideCategoryArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverrideCategoryArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersOverridesCategoryArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParametersOverridesCategoryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParametersOverridesCategory {
-		return vs[0].([]RulesetRuleActionParametersOverridesCategory)[vs[1].(int)]
-	}).(RulesetRuleActionParametersOverridesCategoryOutput)
+func (o RulesetRuleActionParameterOverrideCategoryArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterOverrideCategoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterOverrideCategory {
+		return vs[0].([]RulesetRuleActionParameterOverrideCategory)[vs[1].(int)]
+	}).(RulesetRuleActionParameterOverrideCategoryOutput)
 }
 
-type RulesetRuleActionParametersOverridesRule struct {
-	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
-	Action *string `pulumi:"action"`
+type RulesetRuleActionParameterOverrideRule struct {
+	// Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
+	Action string `pulumi:"action"`
 	// Whether the rule is active.
-	//
-	// Deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-	Enabled *bool `pulumi:"enabled"`
+	Enabled bool `pulumi:"enabled"`
 	// Unique rule identifier.
-	Id               *string `pulumi:"id"`
-	ScoreThreshold   *int    `pulumi:"scoreThreshold"`
-	SensitivityLevel *string `pulumi:"sensitivityLevel"`
-	Status           *string `pulumi:"status"`
+	Id               string `pulumi:"id"`
+	ScoreThreshold   int    `pulumi:"scoreThreshold"`
+	SensitivityLevel string `pulumi:"sensitivityLevel"`
 }
 
-// RulesetRuleActionParametersOverridesRuleInput is an input type that accepts RulesetRuleActionParametersOverridesRuleArgs and RulesetRuleActionParametersOverridesRuleOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersOverridesRuleInput` via:
+// RulesetRuleActionParameterOverrideRuleInput is an input type that accepts RulesetRuleActionParameterOverrideRuleArgs and RulesetRuleActionParameterOverrideRuleOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterOverrideRuleInput` via:
 //
-//	RulesetRuleActionParametersOverridesRuleArgs{...}
-type RulesetRuleActionParametersOverridesRuleInput interface {
+//	RulesetRuleActionParameterOverrideRuleArgs{...}
+type RulesetRuleActionParameterOverrideRuleInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersOverridesRuleOutput() RulesetRuleActionParametersOverridesRuleOutput
-	ToRulesetRuleActionParametersOverridesRuleOutputWithContext(context.Context) RulesetRuleActionParametersOverridesRuleOutput
+	ToRulesetRuleActionParameterOverrideRuleOutput() RulesetRuleActionParameterOverrideRuleOutput
+	ToRulesetRuleActionParameterOverrideRuleOutputWithContext(context.Context) RulesetRuleActionParameterOverrideRuleOutput
 }
 
-type RulesetRuleActionParametersOverridesRuleArgs struct {
-	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
-	Action pulumi.StringPtrInput `pulumi:"action"`
+type RulesetRuleActionParameterOverrideRuleArgs struct {
+	// Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
+	Action pulumi.StringInput `pulumi:"action"`
 	// Whether the rule is active.
-	//
-	// Deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// Unique rule identifier.
-	Id               pulumi.StringPtrInput `pulumi:"id"`
-	ScoreThreshold   pulumi.IntPtrInput    `pulumi:"scoreThreshold"`
-	SensitivityLevel pulumi.StringPtrInput `pulumi:"sensitivityLevel"`
-	Status           pulumi.StringPtrInput `pulumi:"status"`
+	Id               pulumi.StringInput `pulumi:"id"`
+	ScoreThreshold   pulumi.IntInput    `pulumi:"scoreThreshold"`
+	SensitivityLevel pulumi.StringInput `pulumi:"sensitivityLevel"`
 }
 
-func (RulesetRuleActionParametersOverridesRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersOverridesRule)(nil)).Elem()
+func (RulesetRuleActionParameterOverrideRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterOverrideRule)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersOverridesRuleArgs) ToRulesetRuleActionParametersOverridesRuleOutput() RulesetRuleActionParametersOverridesRuleOutput {
-	return i.ToRulesetRuleActionParametersOverridesRuleOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterOverrideRuleArgs) ToRulesetRuleActionParameterOverrideRuleOutput() RulesetRuleActionParameterOverrideRuleOutput {
+	return i.ToRulesetRuleActionParameterOverrideRuleOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersOverridesRuleArgs) ToRulesetRuleActionParametersOverridesRuleOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOverridesRuleOutput)
+func (i RulesetRuleActionParameterOverrideRuleArgs) ToRulesetRuleActionParameterOverrideRuleOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverrideRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterOverrideRuleOutput)
 }
 
-// RulesetRuleActionParametersOverridesRuleArrayInput is an input type that accepts RulesetRuleActionParametersOverridesRuleArray and RulesetRuleActionParametersOverridesRuleArrayOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersOverridesRuleArrayInput` via:
+// RulesetRuleActionParameterOverrideRuleArrayInput is an input type that accepts RulesetRuleActionParameterOverrideRuleArray and RulesetRuleActionParameterOverrideRuleArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterOverrideRuleArrayInput` via:
 //
-//	RulesetRuleActionParametersOverridesRuleArray{ RulesetRuleActionParametersOverridesRuleArgs{...} }
-type RulesetRuleActionParametersOverridesRuleArrayInput interface {
+//	RulesetRuleActionParameterOverrideRuleArray{ RulesetRuleActionParameterOverrideRuleArgs{...} }
+type RulesetRuleActionParameterOverrideRuleArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersOverridesRuleArrayOutput() RulesetRuleActionParametersOverridesRuleArrayOutput
-	ToRulesetRuleActionParametersOverridesRuleArrayOutputWithContext(context.Context) RulesetRuleActionParametersOverridesRuleArrayOutput
+	ToRulesetRuleActionParameterOverrideRuleArrayOutput() RulesetRuleActionParameterOverrideRuleArrayOutput
+	ToRulesetRuleActionParameterOverrideRuleArrayOutputWithContext(context.Context) RulesetRuleActionParameterOverrideRuleArrayOutput
 }
 
-type RulesetRuleActionParametersOverridesRuleArray []RulesetRuleActionParametersOverridesRuleInput
+type RulesetRuleActionParameterOverrideRuleArray []RulesetRuleActionParameterOverrideRuleInput
 
-func (RulesetRuleActionParametersOverridesRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParametersOverridesRule)(nil)).Elem()
+func (RulesetRuleActionParameterOverrideRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterOverrideRule)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersOverridesRuleArray) ToRulesetRuleActionParametersOverridesRuleArrayOutput() RulesetRuleActionParametersOverridesRuleArrayOutput {
-	return i.ToRulesetRuleActionParametersOverridesRuleArrayOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterOverrideRuleArray) ToRulesetRuleActionParameterOverrideRuleArrayOutput() RulesetRuleActionParameterOverrideRuleArrayOutput {
+	return i.ToRulesetRuleActionParameterOverrideRuleArrayOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersOverridesRuleArray) ToRulesetRuleActionParametersOverridesRuleArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOverridesRuleArrayOutput)
+func (i RulesetRuleActionParameterOverrideRuleArray) ToRulesetRuleActionParameterOverrideRuleArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverrideRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterOverrideRuleArrayOutput)
 }
 
-type RulesetRuleActionParametersOverridesRuleOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParameterOverrideRuleOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParametersOverridesRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersOverridesRule)(nil)).Elem()
+func (RulesetRuleActionParameterOverrideRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterOverrideRule)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersOverridesRuleOutput) ToRulesetRuleActionParametersOverridesRuleOutput() RulesetRuleActionParametersOverridesRuleOutput {
+func (o RulesetRuleActionParameterOverrideRuleOutput) ToRulesetRuleActionParameterOverrideRuleOutput() RulesetRuleActionParameterOverrideRuleOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersOverridesRuleOutput) ToRulesetRuleActionParametersOverridesRuleOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesRuleOutput {
+func (o RulesetRuleActionParameterOverrideRuleOutput) ToRulesetRuleActionParameterOverrideRuleOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverrideRuleOutput {
 	return o
 }
 
-// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
-func (o RulesetRuleActionParametersOverridesRuleOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersOverridesRule) *string { return v.Action }).(pulumi.StringPtrOutput)
+// Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
+func (o RulesetRuleActionParameterOverrideRuleOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterOverrideRule) string { return v.Action }).(pulumi.StringOutput)
 }
 
 // Whether the rule is active.
-//
-// Deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-func (o RulesetRuleActionParametersOverridesRuleOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersOverridesRule) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterOverrideRuleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterOverrideRule) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // Unique rule identifier.
-func (o RulesetRuleActionParametersOverridesRuleOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersOverridesRule) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParameterOverrideRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterOverrideRule) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersOverridesRuleOutput) ScoreThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersOverridesRule) *int { return v.ScoreThreshold }).(pulumi.IntPtrOutput)
+func (o RulesetRuleActionParameterOverrideRuleOutput) ScoreThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterOverrideRule) int { return v.ScoreThreshold }).(pulumi.IntOutput)
 }
 
-func (o RulesetRuleActionParametersOverridesRuleOutput) SensitivityLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersOverridesRule) *string { return v.SensitivityLevel }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParameterOverrideRuleOutput) SensitivityLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterOverrideRule) string { return v.SensitivityLevel }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersOverridesRuleOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersOverridesRule) *string { return v.Status }).(pulumi.StringPtrOutput)
+type RulesetRuleActionParameterOverrideRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterOverrideRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterOverrideRule)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersOverridesRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersOverridesRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParametersOverridesRule)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersOverridesRuleArrayOutput) ToRulesetRuleActionParametersOverridesRuleArrayOutput() RulesetRuleActionParametersOverridesRuleArrayOutput {
+func (o RulesetRuleActionParameterOverrideRuleArrayOutput) ToRulesetRuleActionParameterOverrideRuleArrayOutput() RulesetRuleActionParameterOverrideRuleArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersOverridesRuleArrayOutput) ToRulesetRuleActionParametersOverridesRuleArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesRuleArrayOutput {
+func (o RulesetRuleActionParameterOverrideRuleArrayOutput) ToRulesetRuleActionParameterOverrideRuleArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverrideRuleArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersOverridesRuleArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParametersOverridesRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParametersOverridesRule {
-		return vs[0].([]RulesetRuleActionParametersOverridesRule)[vs[1].(int)]
-	}).(RulesetRuleActionParametersOverridesRuleOutput)
+func (o RulesetRuleActionParameterOverrideRuleArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterOverrideRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterOverrideRule {
+		return vs[0].([]RulesetRuleActionParameterOverrideRule)[vs[1].(int)]
+	}).(RulesetRuleActionParameterOverrideRuleOutput)
 }
 
-type RulesetRuleActionParametersResponse struct {
-	Content     *string `pulumi:"content"`
-	ContentType *string `pulumi:"contentType"`
-	StatusCode  *int    `pulumi:"statusCode"`
+type RulesetRuleActionParameterResponse struct {
+	Content     string `pulumi:"content"`
+	ContentType string `pulumi:"contentType"`
+	StatusCode  int    `pulumi:"statusCode"`
 }
 
-// RulesetRuleActionParametersResponseInput is an input type that accepts RulesetRuleActionParametersResponseArgs and RulesetRuleActionParametersResponseOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersResponseInput` via:
+// RulesetRuleActionParameterResponseInput is an input type that accepts RulesetRuleActionParameterResponseArgs and RulesetRuleActionParameterResponseOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterResponseInput` via:
 //
-//	RulesetRuleActionParametersResponseArgs{...}
-type RulesetRuleActionParametersResponseInput interface {
+//	RulesetRuleActionParameterResponseArgs{...}
+type RulesetRuleActionParameterResponseInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersResponseOutput() RulesetRuleActionParametersResponseOutput
-	ToRulesetRuleActionParametersResponseOutputWithContext(context.Context) RulesetRuleActionParametersResponseOutput
+	ToRulesetRuleActionParameterResponseOutput() RulesetRuleActionParameterResponseOutput
+	ToRulesetRuleActionParameterResponseOutputWithContext(context.Context) RulesetRuleActionParameterResponseOutput
 }
 
-type RulesetRuleActionParametersResponseArgs struct {
-	Content     pulumi.StringPtrInput `pulumi:"content"`
-	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
-	StatusCode  pulumi.IntPtrInput    `pulumi:"statusCode"`
+type RulesetRuleActionParameterResponseArgs struct {
+	Content     pulumi.StringInput `pulumi:"content"`
+	ContentType pulumi.StringInput `pulumi:"contentType"`
+	StatusCode  pulumi.IntInput    `pulumi:"statusCode"`
 }
 
-func (RulesetRuleActionParametersResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersResponse)(nil)).Elem()
+func (RulesetRuleActionParameterResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterResponse)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersResponseArgs) ToRulesetRuleActionParametersResponseOutput() RulesetRuleActionParametersResponseOutput {
-	return i.ToRulesetRuleActionParametersResponseOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterResponseArgs) ToRulesetRuleActionParameterResponseOutput() RulesetRuleActionParameterResponseOutput {
+	return i.ToRulesetRuleActionParameterResponseOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersResponseArgs) ToRulesetRuleActionParametersResponseOutputWithContext(ctx context.Context) RulesetRuleActionParametersResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersResponseOutput)
+func (i RulesetRuleActionParameterResponseArgs) ToRulesetRuleActionParameterResponseOutputWithContext(ctx context.Context) RulesetRuleActionParameterResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterResponseOutput)
 }
 
-// RulesetRuleActionParametersResponseArrayInput is an input type that accepts RulesetRuleActionParametersResponseArray and RulesetRuleActionParametersResponseArrayOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersResponseArrayInput` via:
+// RulesetRuleActionParameterResponseArrayInput is an input type that accepts RulesetRuleActionParameterResponseArray and RulesetRuleActionParameterResponseArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterResponseArrayInput` via:
 //
-//	RulesetRuleActionParametersResponseArray{ RulesetRuleActionParametersResponseArgs{...} }
-type RulesetRuleActionParametersResponseArrayInput interface {
+//	RulesetRuleActionParameterResponseArray{ RulesetRuleActionParameterResponseArgs{...} }
+type RulesetRuleActionParameterResponseArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersResponseArrayOutput() RulesetRuleActionParametersResponseArrayOutput
-	ToRulesetRuleActionParametersResponseArrayOutputWithContext(context.Context) RulesetRuleActionParametersResponseArrayOutput
+	ToRulesetRuleActionParameterResponseArrayOutput() RulesetRuleActionParameterResponseArrayOutput
+	ToRulesetRuleActionParameterResponseArrayOutputWithContext(context.Context) RulesetRuleActionParameterResponseArrayOutput
 }
 
-type RulesetRuleActionParametersResponseArray []RulesetRuleActionParametersResponseInput
+type RulesetRuleActionParameterResponseArray []RulesetRuleActionParameterResponseInput
 
-func (RulesetRuleActionParametersResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParametersResponse)(nil)).Elem()
+func (RulesetRuleActionParameterResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterResponse)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersResponseArray) ToRulesetRuleActionParametersResponseArrayOutput() RulesetRuleActionParametersResponseArrayOutput {
-	return i.ToRulesetRuleActionParametersResponseArrayOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterResponseArray) ToRulesetRuleActionParameterResponseArrayOutput() RulesetRuleActionParameterResponseArrayOutput {
+	return i.ToRulesetRuleActionParameterResponseArrayOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersResponseArray) ToRulesetRuleActionParametersResponseArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersResponseArrayOutput)
+func (i RulesetRuleActionParameterResponseArray) ToRulesetRuleActionParameterResponseArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterResponseArrayOutput)
 }
 
-type RulesetRuleActionParametersResponseOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParameterResponseOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParametersResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersResponse)(nil)).Elem()
+func (RulesetRuleActionParameterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterResponse)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersResponseOutput) ToRulesetRuleActionParametersResponseOutput() RulesetRuleActionParametersResponseOutput {
+func (o RulesetRuleActionParameterResponseOutput) ToRulesetRuleActionParameterResponseOutput() RulesetRuleActionParameterResponseOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersResponseOutput) ToRulesetRuleActionParametersResponseOutputWithContext(ctx context.Context) RulesetRuleActionParametersResponseOutput {
+func (o RulesetRuleActionParameterResponseOutput) ToRulesetRuleActionParameterResponseOutputWithContext(ctx context.Context) RulesetRuleActionParameterResponseOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersResponseOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersResponse) *string { return v.Content }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParameterResponseOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterResponse) string { return v.Content }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersResponseOutput) ContentType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersResponse) *string { return v.ContentType }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParameterResponseOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterResponse) string { return v.ContentType }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersResponseOutput) StatusCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersResponse) *int { return v.StatusCode }).(pulumi.IntPtrOutput)
+func (o RulesetRuleActionParameterResponseOutput) StatusCode() pulumi.IntOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterResponse) int { return v.StatusCode }).(pulumi.IntOutput)
 }
 
-type RulesetRuleActionParametersResponseArrayOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParameterResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParametersResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParametersResponse)(nil)).Elem()
+func (RulesetRuleActionParameterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterResponse)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersResponseArrayOutput) ToRulesetRuleActionParametersResponseArrayOutput() RulesetRuleActionParametersResponseArrayOutput {
+func (o RulesetRuleActionParameterResponseArrayOutput) ToRulesetRuleActionParameterResponseArrayOutput() RulesetRuleActionParameterResponseArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersResponseArrayOutput) ToRulesetRuleActionParametersResponseArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersResponseArrayOutput {
+func (o RulesetRuleActionParameterResponseArrayOutput) ToRulesetRuleActionParameterResponseArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterResponseArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersResponseArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParametersResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParametersResponse {
-		return vs[0].([]RulesetRuleActionParametersResponse)[vs[1].(int)]
-	}).(RulesetRuleActionParametersResponseOutput)
+func (o RulesetRuleActionParameterResponseArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterResponse {
+		return vs[0].([]RulesetRuleActionParameterResponse)[vs[1].(int)]
+	}).(RulesetRuleActionParameterResponseOutput)
 }
 
-type RulesetRuleActionParametersServeStale struct {
-	DisableStaleWhileUpdating *bool `pulumi:"disableStaleWhileUpdating"`
+type RulesetRuleActionParameterServeStale struct {
+	DisableStaleWhileUpdating bool `pulumi:"disableStaleWhileUpdating"`
 }
 
-// RulesetRuleActionParametersServeStaleInput is an input type that accepts RulesetRuleActionParametersServeStaleArgs and RulesetRuleActionParametersServeStaleOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersServeStaleInput` via:
+// RulesetRuleActionParameterServeStaleInput is an input type that accepts RulesetRuleActionParameterServeStaleArgs and RulesetRuleActionParameterServeStaleOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterServeStaleInput` via:
 //
-//	RulesetRuleActionParametersServeStaleArgs{...}
-type RulesetRuleActionParametersServeStaleInput interface {
+//	RulesetRuleActionParameterServeStaleArgs{...}
+type RulesetRuleActionParameterServeStaleInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersServeStaleOutput() RulesetRuleActionParametersServeStaleOutput
-	ToRulesetRuleActionParametersServeStaleOutputWithContext(context.Context) RulesetRuleActionParametersServeStaleOutput
+	ToRulesetRuleActionParameterServeStaleOutput() RulesetRuleActionParameterServeStaleOutput
+	ToRulesetRuleActionParameterServeStaleOutputWithContext(context.Context) RulesetRuleActionParameterServeStaleOutput
 }
 
-type RulesetRuleActionParametersServeStaleArgs struct {
-	DisableStaleWhileUpdating pulumi.BoolPtrInput `pulumi:"disableStaleWhileUpdating"`
+type RulesetRuleActionParameterServeStaleArgs struct {
+	DisableStaleWhileUpdating pulumi.BoolInput `pulumi:"disableStaleWhileUpdating"`
 }
 
-func (RulesetRuleActionParametersServeStaleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersServeStale)(nil)).Elem()
+func (RulesetRuleActionParameterServeStaleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterServeStale)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersServeStaleArgs) ToRulesetRuleActionParametersServeStaleOutput() RulesetRuleActionParametersServeStaleOutput {
-	return i.ToRulesetRuleActionParametersServeStaleOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterServeStaleArgs) ToRulesetRuleActionParameterServeStaleOutput() RulesetRuleActionParameterServeStaleOutput {
+	return i.ToRulesetRuleActionParameterServeStaleOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersServeStaleArgs) ToRulesetRuleActionParametersServeStaleOutputWithContext(ctx context.Context) RulesetRuleActionParametersServeStaleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersServeStaleOutput)
+func (i RulesetRuleActionParameterServeStaleArgs) ToRulesetRuleActionParameterServeStaleOutputWithContext(ctx context.Context) RulesetRuleActionParameterServeStaleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterServeStaleOutput)
 }
 
-func (i RulesetRuleActionParametersServeStaleArgs) ToRulesetRuleActionParametersServeStalePtrOutput() RulesetRuleActionParametersServeStalePtrOutput {
-	return i.ToRulesetRuleActionParametersServeStalePtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersServeStaleArgs) ToRulesetRuleActionParametersServeStalePtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersServeStalePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersServeStaleOutput).ToRulesetRuleActionParametersServeStalePtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersServeStalePtrInput is an input type that accepts RulesetRuleActionParametersServeStaleArgs, RulesetRuleActionParametersServeStalePtr and RulesetRuleActionParametersServeStalePtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersServeStalePtrInput` via:
+// RulesetRuleActionParameterServeStaleArrayInput is an input type that accepts RulesetRuleActionParameterServeStaleArray and RulesetRuleActionParameterServeStaleArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterServeStaleArrayInput` via:
 //
-//	        RulesetRuleActionParametersServeStaleArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersServeStalePtrInput interface {
+//	RulesetRuleActionParameterServeStaleArray{ RulesetRuleActionParameterServeStaleArgs{...} }
+type RulesetRuleActionParameterServeStaleArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersServeStalePtrOutput() RulesetRuleActionParametersServeStalePtrOutput
-	ToRulesetRuleActionParametersServeStalePtrOutputWithContext(context.Context) RulesetRuleActionParametersServeStalePtrOutput
+	ToRulesetRuleActionParameterServeStaleArrayOutput() RulesetRuleActionParameterServeStaleArrayOutput
+	ToRulesetRuleActionParameterServeStaleArrayOutputWithContext(context.Context) RulesetRuleActionParameterServeStaleArrayOutput
 }
 
-type rulesetRuleActionParametersServeStalePtrType RulesetRuleActionParametersServeStaleArgs
+type RulesetRuleActionParameterServeStaleArray []RulesetRuleActionParameterServeStaleInput
 
-func RulesetRuleActionParametersServeStalePtr(v *RulesetRuleActionParametersServeStaleArgs) RulesetRuleActionParametersServeStalePtrInput {
-	return (*rulesetRuleActionParametersServeStalePtrType)(v)
+func (RulesetRuleActionParameterServeStaleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterServeStale)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersServeStalePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersServeStale)(nil)).Elem()
+func (i RulesetRuleActionParameterServeStaleArray) ToRulesetRuleActionParameterServeStaleArrayOutput() RulesetRuleActionParameterServeStaleArrayOutput {
+	return i.ToRulesetRuleActionParameterServeStaleArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersServeStalePtrType) ToRulesetRuleActionParametersServeStalePtrOutput() RulesetRuleActionParametersServeStalePtrOutput {
-	return i.ToRulesetRuleActionParametersServeStalePtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterServeStaleArray) ToRulesetRuleActionParameterServeStaleArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterServeStaleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterServeStaleArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersServeStalePtrType) ToRulesetRuleActionParametersServeStalePtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersServeStalePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersServeStalePtrOutput)
+type RulesetRuleActionParameterServeStaleOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterServeStaleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterServeStale)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersServeStaleOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersServeStaleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersServeStale)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersServeStaleOutput) ToRulesetRuleActionParametersServeStaleOutput() RulesetRuleActionParametersServeStaleOutput {
+func (o RulesetRuleActionParameterServeStaleOutput) ToRulesetRuleActionParameterServeStaleOutput() RulesetRuleActionParameterServeStaleOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersServeStaleOutput) ToRulesetRuleActionParametersServeStaleOutputWithContext(ctx context.Context) RulesetRuleActionParametersServeStaleOutput {
+func (o RulesetRuleActionParameterServeStaleOutput) ToRulesetRuleActionParameterServeStaleOutputWithContext(ctx context.Context) RulesetRuleActionParameterServeStaleOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersServeStaleOutput) ToRulesetRuleActionParametersServeStalePtrOutput() RulesetRuleActionParametersServeStalePtrOutput {
-	return o.ToRulesetRuleActionParametersServeStalePtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterServeStaleOutput) DisableStaleWhileUpdating() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterServeStale) bool { return v.DisableStaleWhileUpdating }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersServeStaleOutput) ToRulesetRuleActionParametersServeStalePtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersServeStalePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersServeStale) *RulesetRuleActionParametersServeStale {
-		return &v
-	}).(RulesetRuleActionParametersServeStalePtrOutput)
+type RulesetRuleActionParameterServeStaleArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterServeStaleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterServeStale)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersServeStaleOutput) DisableStaleWhileUpdating() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersServeStale) *bool { return v.DisableStaleWhileUpdating }).(pulumi.BoolPtrOutput)
-}
-
-type RulesetRuleActionParametersServeStalePtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersServeStalePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersServeStale)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersServeStalePtrOutput) ToRulesetRuleActionParametersServeStalePtrOutput() RulesetRuleActionParametersServeStalePtrOutput {
+func (o RulesetRuleActionParameterServeStaleArrayOutput) ToRulesetRuleActionParameterServeStaleArrayOutput() RulesetRuleActionParameterServeStaleArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersServeStalePtrOutput) ToRulesetRuleActionParametersServeStalePtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersServeStalePtrOutput {
+func (o RulesetRuleActionParameterServeStaleArrayOutput) ToRulesetRuleActionParameterServeStaleArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterServeStaleArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersServeStalePtrOutput) Elem() RulesetRuleActionParametersServeStaleOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersServeStale) RulesetRuleActionParametersServeStale {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParametersServeStale
-		return ret
-	}).(RulesetRuleActionParametersServeStaleOutput)
+func (o RulesetRuleActionParameterServeStaleArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterServeStaleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterServeStale {
+		return vs[0].([]RulesetRuleActionParameterServeStale)[vs[1].(int)]
+	}).(RulesetRuleActionParameterServeStaleOutput)
 }
 
-func (o RulesetRuleActionParametersServeStalePtrOutput) DisableStaleWhileUpdating() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersServeStale) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DisableStaleWhileUpdating
-	}).(pulumi.BoolPtrOutput)
+type RulesetRuleActionParameterSni struct {
+	Value string `pulumi:"value"`
 }
 
-type RulesetRuleActionParametersSni struct {
-	Value *string `pulumi:"value"`
-}
-
-// RulesetRuleActionParametersSniInput is an input type that accepts RulesetRuleActionParametersSniArgs and RulesetRuleActionParametersSniOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersSniInput` via:
+// RulesetRuleActionParameterSniInput is an input type that accepts RulesetRuleActionParameterSniArgs and RulesetRuleActionParameterSniOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterSniInput` via:
 //
-//	RulesetRuleActionParametersSniArgs{...}
-type RulesetRuleActionParametersSniInput interface {
+//	RulesetRuleActionParameterSniArgs{...}
+type RulesetRuleActionParameterSniInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersSniOutput() RulesetRuleActionParametersSniOutput
-	ToRulesetRuleActionParametersSniOutputWithContext(context.Context) RulesetRuleActionParametersSniOutput
+	ToRulesetRuleActionParameterSniOutput() RulesetRuleActionParameterSniOutput
+	ToRulesetRuleActionParameterSniOutputWithContext(context.Context) RulesetRuleActionParameterSniOutput
 }
 
-type RulesetRuleActionParametersSniArgs struct {
-	Value pulumi.StringPtrInput `pulumi:"value"`
+type RulesetRuleActionParameterSniArgs struct {
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
-func (RulesetRuleActionParametersSniArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersSni)(nil)).Elem()
+func (RulesetRuleActionParameterSniArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterSni)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersSniArgs) ToRulesetRuleActionParametersSniOutput() RulesetRuleActionParametersSniOutput {
-	return i.ToRulesetRuleActionParametersSniOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterSniArgs) ToRulesetRuleActionParameterSniOutput() RulesetRuleActionParameterSniOutput {
+	return i.ToRulesetRuleActionParameterSniOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersSniArgs) ToRulesetRuleActionParametersSniOutputWithContext(ctx context.Context) RulesetRuleActionParametersSniOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersSniOutput)
+func (i RulesetRuleActionParameterSniArgs) ToRulesetRuleActionParameterSniOutputWithContext(ctx context.Context) RulesetRuleActionParameterSniOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterSniOutput)
 }
 
-func (i RulesetRuleActionParametersSniArgs) ToRulesetRuleActionParametersSniPtrOutput() RulesetRuleActionParametersSniPtrOutput {
-	return i.ToRulesetRuleActionParametersSniPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersSniArgs) ToRulesetRuleActionParametersSniPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersSniPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersSniOutput).ToRulesetRuleActionParametersSniPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersSniPtrInput is an input type that accepts RulesetRuleActionParametersSniArgs, RulesetRuleActionParametersSniPtr and RulesetRuleActionParametersSniPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersSniPtrInput` via:
+// RulesetRuleActionParameterSniArrayInput is an input type that accepts RulesetRuleActionParameterSniArray and RulesetRuleActionParameterSniArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterSniArrayInput` via:
 //
-//	        RulesetRuleActionParametersSniArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersSniPtrInput interface {
+//	RulesetRuleActionParameterSniArray{ RulesetRuleActionParameterSniArgs{...} }
+type RulesetRuleActionParameterSniArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersSniPtrOutput() RulesetRuleActionParametersSniPtrOutput
-	ToRulesetRuleActionParametersSniPtrOutputWithContext(context.Context) RulesetRuleActionParametersSniPtrOutput
+	ToRulesetRuleActionParameterSniArrayOutput() RulesetRuleActionParameterSniArrayOutput
+	ToRulesetRuleActionParameterSniArrayOutputWithContext(context.Context) RulesetRuleActionParameterSniArrayOutput
 }
 
-type rulesetRuleActionParametersSniPtrType RulesetRuleActionParametersSniArgs
+type RulesetRuleActionParameterSniArray []RulesetRuleActionParameterSniInput
 
-func RulesetRuleActionParametersSniPtr(v *RulesetRuleActionParametersSniArgs) RulesetRuleActionParametersSniPtrInput {
-	return (*rulesetRuleActionParametersSniPtrType)(v)
+func (RulesetRuleActionParameterSniArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterSni)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersSniPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersSni)(nil)).Elem()
+func (i RulesetRuleActionParameterSniArray) ToRulesetRuleActionParameterSniArrayOutput() RulesetRuleActionParameterSniArrayOutput {
+	return i.ToRulesetRuleActionParameterSniArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersSniPtrType) ToRulesetRuleActionParametersSniPtrOutput() RulesetRuleActionParametersSniPtrOutput {
-	return i.ToRulesetRuleActionParametersSniPtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterSniArray) ToRulesetRuleActionParameterSniArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterSniArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterSniArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersSniPtrType) ToRulesetRuleActionParametersSniPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersSniPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersSniPtrOutput)
+type RulesetRuleActionParameterSniOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterSniOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterSni)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersSniOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersSniOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersSni)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersSniOutput) ToRulesetRuleActionParametersSniOutput() RulesetRuleActionParametersSniOutput {
+func (o RulesetRuleActionParameterSniOutput) ToRulesetRuleActionParameterSniOutput() RulesetRuleActionParameterSniOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersSniOutput) ToRulesetRuleActionParametersSniOutputWithContext(ctx context.Context) RulesetRuleActionParametersSniOutput {
+func (o RulesetRuleActionParameterSniOutput) ToRulesetRuleActionParameterSniOutputWithContext(ctx context.Context) RulesetRuleActionParameterSniOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersSniOutput) ToRulesetRuleActionParametersSniPtrOutput() RulesetRuleActionParametersSniPtrOutput {
-	return o.ToRulesetRuleActionParametersSniPtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterSniOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterSni) string { return v.Value }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersSniOutput) ToRulesetRuleActionParametersSniPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersSniPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersSni) *RulesetRuleActionParametersSni {
-		return &v
-	}).(RulesetRuleActionParametersSniPtrOutput)
+type RulesetRuleActionParameterSniArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterSniArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterSni)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersSniOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersSni) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type RulesetRuleActionParametersSniPtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersSniPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersSni)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersSniPtrOutput) ToRulesetRuleActionParametersSniPtrOutput() RulesetRuleActionParametersSniPtrOutput {
+func (o RulesetRuleActionParameterSniArrayOutput) ToRulesetRuleActionParameterSniArrayOutput() RulesetRuleActionParameterSniArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersSniPtrOutput) ToRulesetRuleActionParametersSniPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersSniPtrOutput {
+func (o RulesetRuleActionParameterSniArrayOutput) ToRulesetRuleActionParameterSniArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterSniArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersSniPtrOutput) Elem() RulesetRuleActionParametersSniOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersSni) RulesetRuleActionParametersSni {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParametersSni
-		return ret
-	}).(RulesetRuleActionParametersSniOutput)
+func (o RulesetRuleActionParameterSniArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterSniOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterSni {
+		return vs[0].([]RulesetRuleActionParameterSni)[vs[1].(int)]
+	}).(RulesetRuleActionParameterSniOutput)
 }
 
-func (o RulesetRuleActionParametersSniPtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersSni) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
+type RulesetRuleActionParameterUri struct {
+	Origin  bool                                 `pulumi:"origin"`
+	Paths   []RulesetRuleActionParameterUriPath  `pulumi:"paths"`
+	Queries []RulesetRuleActionParameterUriQuery `pulumi:"queries"`
 }
 
-type RulesetRuleActionParametersUri struct {
-	Origin *bool                                `pulumi:"origin"`
-	Path   *RulesetRuleActionParametersUriPath  `pulumi:"path"`
-	Query  *RulesetRuleActionParametersUriQuery `pulumi:"query"`
-}
-
-// RulesetRuleActionParametersUriInput is an input type that accepts RulesetRuleActionParametersUriArgs and RulesetRuleActionParametersUriOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersUriInput` via:
+// RulesetRuleActionParameterUriInput is an input type that accepts RulesetRuleActionParameterUriArgs and RulesetRuleActionParameterUriOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterUriInput` via:
 //
-//	RulesetRuleActionParametersUriArgs{...}
-type RulesetRuleActionParametersUriInput interface {
+//	RulesetRuleActionParameterUriArgs{...}
+type RulesetRuleActionParameterUriInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersUriOutput() RulesetRuleActionParametersUriOutput
-	ToRulesetRuleActionParametersUriOutputWithContext(context.Context) RulesetRuleActionParametersUriOutput
+	ToRulesetRuleActionParameterUriOutput() RulesetRuleActionParameterUriOutput
+	ToRulesetRuleActionParameterUriOutputWithContext(context.Context) RulesetRuleActionParameterUriOutput
 }
 
-type RulesetRuleActionParametersUriArgs struct {
-	Origin pulumi.BoolPtrInput                         `pulumi:"origin"`
-	Path   RulesetRuleActionParametersUriPathPtrInput  `pulumi:"path"`
-	Query  RulesetRuleActionParametersUriQueryPtrInput `pulumi:"query"`
+type RulesetRuleActionParameterUriArgs struct {
+	Origin  pulumi.BoolInput                             `pulumi:"origin"`
+	Paths   RulesetRuleActionParameterUriPathArrayInput  `pulumi:"paths"`
+	Queries RulesetRuleActionParameterUriQueryArrayInput `pulumi:"queries"`
 }
 
-func (RulesetRuleActionParametersUriArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersUri)(nil)).Elem()
+func (RulesetRuleActionParameterUriArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterUri)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersUriArgs) ToRulesetRuleActionParametersUriOutput() RulesetRuleActionParametersUriOutput {
-	return i.ToRulesetRuleActionParametersUriOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterUriArgs) ToRulesetRuleActionParameterUriOutput() RulesetRuleActionParameterUriOutput {
+	return i.ToRulesetRuleActionParameterUriOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersUriArgs) ToRulesetRuleActionParametersUriOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersUriOutput)
+func (i RulesetRuleActionParameterUriArgs) ToRulesetRuleActionParameterUriOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterUriOutput)
 }
 
-func (i RulesetRuleActionParametersUriArgs) ToRulesetRuleActionParametersUriPtrOutput() RulesetRuleActionParametersUriPtrOutput {
-	return i.ToRulesetRuleActionParametersUriPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersUriArgs) ToRulesetRuleActionParametersUriPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersUriOutput).ToRulesetRuleActionParametersUriPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersUriPtrInput is an input type that accepts RulesetRuleActionParametersUriArgs, RulesetRuleActionParametersUriPtr and RulesetRuleActionParametersUriPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersUriPtrInput` via:
+// RulesetRuleActionParameterUriArrayInput is an input type that accepts RulesetRuleActionParameterUriArray and RulesetRuleActionParameterUriArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterUriArrayInput` via:
 //
-//	        RulesetRuleActionParametersUriArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersUriPtrInput interface {
+//	RulesetRuleActionParameterUriArray{ RulesetRuleActionParameterUriArgs{...} }
+type RulesetRuleActionParameterUriArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersUriPtrOutput() RulesetRuleActionParametersUriPtrOutput
-	ToRulesetRuleActionParametersUriPtrOutputWithContext(context.Context) RulesetRuleActionParametersUriPtrOutput
+	ToRulesetRuleActionParameterUriArrayOutput() RulesetRuleActionParameterUriArrayOutput
+	ToRulesetRuleActionParameterUriArrayOutputWithContext(context.Context) RulesetRuleActionParameterUriArrayOutput
 }
 
-type rulesetRuleActionParametersUriPtrType RulesetRuleActionParametersUriArgs
+type RulesetRuleActionParameterUriArray []RulesetRuleActionParameterUriInput
 
-func RulesetRuleActionParametersUriPtr(v *RulesetRuleActionParametersUriArgs) RulesetRuleActionParametersUriPtrInput {
-	return (*rulesetRuleActionParametersUriPtrType)(v)
+func (RulesetRuleActionParameterUriArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterUri)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersUriPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersUri)(nil)).Elem()
+func (i RulesetRuleActionParameterUriArray) ToRulesetRuleActionParameterUriArrayOutput() RulesetRuleActionParameterUriArrayOutput {
+	return i.ToRulesetRuleActionParameterUriArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersUriPtrType) ToRulesetRuleActionParametersUriPtrOutput() RulesetRuleActionParametersUriPtrOutput {
-	return i.ToRulesetRuleActionParametersUriPtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterUriArray) ToRulesetRuleActionParameterUriArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterUriArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersUriPtrType) ToRulesetRuleActionParametersUriPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersUriPtrOutput)
+type RulesetRuleActionParameterUriOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterUriOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterUri)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersUriOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersUriOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersUri)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersUriOutput) ToRulesetRuleActionParametersUriOutput() RulesetRuleActionParametersUriOutput {
+func (o RulesetRuleActionParameterUriOutput) ToRulesetRuleActionParameterUriOutput() RulesetRuleActionParameterUriOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersUriOutput) ToRulesetRuleActionParametersUriOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriOutput {
+func (o RulesetRuleActionParameterUriOutput) ToRulesetRuleActionParameterUriOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersUriOutput) ToRulesetRuleActionParametersUriPtrOutput() RulesetRuleActionParametersUriPtrOutput {
-	return o.ToRulesetRuleActionParametersUriPtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterUriOutput) Origin() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterUri) bool { return v.Origin }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleActionParametersUriOutput) ToRulesetRuleActionParametersUriPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersUri) *RulesetRuleActionParametersUri {
-		return &v
-	}).(RulesetRuleActionParametersUriPtrOutput)
+func (o RulesetRuleActionParameterUriOutput) Paths() RulesetRuleActionParameterUriPathArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterUri) []RulesetRuleActionParameterUriPath { return v.Paths }).(RulesetRuleActionParameterUriPathArrayOutput)
 }
 
-func (o RulesetRuleActionParametersUriOutput) Origin() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersUri) *bool { return v.Origin }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParameterUriOutput) Queries() RulesetRuleActionParameterUriQueryArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterUri) []RulesetRuleActionParameterUriQuery { return v.Queries }).(RulesetRuleActionParameterUriQueryArrayOutput)
 }
 
-func (o RulesetRuleActionParametersUriOutput) Path() RulesetRuleActionParametersUriPathPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersUri) *RulesetRuleActionParametersUriPath { return v.Path }).(RulesetRuleActionParametersUriPathPtrOutput)
+type RulesetRuleActionParameterUriArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterUriArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterUri)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersUriOutput) Query() RulesetRuleActionParametersUriQueryPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersUri) *RulesetRuleActionParametersUriQuery { return v.Query }).(RulesetRuleActionParametersUriQueryPtrOutput)
-}
-
-type RulesetRuleActionParametersUriPtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersUriPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersUri)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersUriPtrOutput) ToRulesetRuleActionParametersUriPtrOutput() RulesetRuleActionParametersUriPtrOutput {
+func (o RulesetRuleActionParameterUriArrayOutput) ToRulesetRuleActionParameterUriArrayOutput() RulesetRuleActionParameterUriArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersUriPtrOutput) ToRulesetRuleActionParametersUriPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPtrOutput {
+func (o RulesetRuleActionParameterUriArrayOutput) ToRulesetRuleActionParameterUriArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersUriPtrOutput) Elem() RulesetRuleActionParametersUriOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersUri) RulesetRuleActionParametersUri {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParametersUri
-		return ret
-	}).(RulesetRuleActionParametersUriOutput)
+func (o RulesetRuleActionParameterUriArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterUriOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterUri {
+		return vs[0].([]RulesetRuleActionParameterUri)[vs[1].(int)]
+	}).(RulesetRuleActionParameterUriOutput)
 }
 
-func (o RulesetRuleActionParametersUriPtrOutput) Origin() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersUri) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Origin
-	}).(pulumi.BoolPtrOutput)
+type RulesetRuleActionParameterUriPath struct {
+	Expression string `pulumi:"expression"`
+	Value      string `pulumi:"value"`
 }
 
-func (o RulesetRuleActionParametersUriPtrOutput) Path() RulesetRuleActionParametersUriPathPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersUri) *RulesetRuleActionParametersUriPath {
-		if v == nil {
-			return nil
-		}
-		return v.Path
-	}).(RulesetRuleActionParametersUriPathPtrOutput)
-}
-
-func (o RulesetRuleActionParametersUriPtrOutput) Query() RulesetRuleActionParametersUriQueryPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersUri) *RulesetRuleActionParametersUriQuery {
-		if v == nil {
-			return nil
-		}
-		return v.Query
-	}).(RulesetRuleActionParametersUriQueryPtrOutput)
-}
-
-type RulesetRuleActionParametersUriPath struct {
-	Expression *string `pulumi:"expression"`
-	Value      *string `pulumi:"value"`
-}
-
-// RulesetRuleActionParametersUriPathInput is an input type that accepts RulesetRuleActionParametersUriPathArgs and RulesetRuleActionParametersUriPathOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersUriPathInput` via:
+// RulesetRuleActionParameterUriPathInput is an input type that accepts RulesetRuleActionParameterUriPathArgs and RulesetRuleActionParameterUriPathOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterUriPathInput` via:
 //
-//	RulesetRuleActionParametersUriPathArgs{...}
-type RulesetRuleActionParametersUriPathInput interface {
+//	RulesetRuleActionParameterUriPathArgs{...}
+type RulesetRuleActionParameterUriPathInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersUriPathOutput() RulesetRuleActionParametersUriPathOutput
-	ToRulesetRuleActionParametersUriPathOutputWithContext(context.Context) RulesetRuleActionParametersUriPathOutput
+	ToRulesetRuleActionParameterUriPathOutput() RulesetRuleActionParameterUriPathOutput
+	ToRulesetRuleActionParameterUriPathOutputWithContext(context.Context) RulesetRuleActionParameterUriPathOutput
 }
 
-type RulesetRuleActionParametersUriPathArgs struct {
-	Expression pulumi.StringPtrInput `pulumi:"expression"`
-	Value      pulumi.StringPtrInput `pulumi:"value"`
+type RulesetRuleActionParameterUriPathArgs struct {
+	Expression pulumi.StringInput `pulumi:"expression"`
+	Value      pulumi.StringInput `pulumi:"value"`
 }
 
-func (RulesetRuleActionParametersUriPathArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersUriPath)(nil)).Elem()
+func (RulesetRuleActionParameterUriPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterUriPath)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersUriPathArgs) ToRulesetRuleActionParametersUriPathOutput() RulesetRuleActionParametersUriPathOutput {
-	return i.ToRulesetRuleActionParametersUriPathOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterUriPathArgs) ToRulesetRuleActionParameterUriPathOutput() RulesetRuleActionParameterUriPathOutput {
+	return i.ToRulesetRuleActionParameterUriPathOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersUriPathArgs) ToRulesetRuleActionParametersUriPathOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPathOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersUriPathOutput)
+func (i RulesetRuleActionParameterUriPathArgs) ToRulesetRuleActionParameterUriPathOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterUriPathOutput)
 }
 
-func (i RulesetRuleActionParametersUriPathArgs) ToRulesetRuleActionParametersUriPathPtrOutput() RulesetRuleActionParametersUriPathPtrOutput {
-	return i.ToRulesetRuleActionParametersUriPathPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersUriPathArgs) ToRulesetRuleActionParametersUriPathPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPathPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersUriPathOutput).ToRulesetRuleActionParametersUriPathPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersUriPathPtrInput is an input type that accepts RulesetRuleActionParametersUriPathArgs, RulesetRuleActionParametersUriPathPtr and RulesetRuleActionParametersUriPathPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersUriPathPtrInput` via:
+// RulesetRuleActionParameterUriPathArrayInput is an input type that accepts RulesetRuleActionParameterUriPathArray and RulesetRuleActionParameterUriPathArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterUriPathArrayInput` via:
 //
-//	        RulesetRuleActionParametersUriPathArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersUriPathPtrInput interface {
+//	RulesetRuleActionParameterUriPathArray{ RulesetRuleActionParameterUriPathArgs{...} }
+type RulesetRuleActionParameterUriPathArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersUriPathPtrOutput() RulesetRuleActionParametersUriPathPtrOutput
-	ToRulesetRuleActionParametersUriPathPtrOutputWithContext(context.Context) RulesetRuleActionParametersUriPathPtrOutput
+	ToRulesetRuleActionParameterUriPathArrayOutput() RulesetRuleActionParameterUriPathArrayOutput
+	ToRulesetRuleActionParameterUriPathArrayOutputWithContext(context.Context) RulesetRuleActionParameterUriPathArrayOutput
 }
 
-type rulesetRuleActionParametersUriPathPtrType RulesetRuleActionParametersUriPathArgs
+type RulesetRuleActionParameterUriPathArray []RulesetRuleActionParameterUriPathInput
 
-func RulesetRuleActionParametersUriPathPtr(v *RulesetRuleActionParametersUriPathArgs) RulesetRuleActionParametersUriPathPtrInput {
-	return (*rulesetRuleActionParametersUriPathPtrType)(v)
+func (RulesetRuleActionParameterUriPathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterUriPath)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersUriPathPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersUriPath)(nil)).Elem()
+func (i RulesetRuleActionParameterUriPathArray) ToRulesetRuleActionParameterUriPathArrayOutput() RulesetRuleActionParameterUriPathArrayOutput {
+	return i.ToRulesetRuleActionParameterUriPathArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersUriPathPtrType) ToRulesetRuleActionParametersUriPathPtrOutput() RulesetRuleActionParametersUriPathPtrOutput {
-	return i.ToRulesetRuleActionParametersUriPathPtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterUriPathArray) ToRulesetRuleActionParameterUriPathArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriPathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterUriPathArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersUriPathPtrType) ToRulesetRuleActionParametersUriPathPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPathPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersUriPathPtrOutput)
+type RulesetRuleActionParameterUriPathOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterUriPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterUriPath)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersUriPathOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersUriPathOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersUriPath)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersUriPathOutput) ToRulesetRuleActionParametersUriPathOutput() RulesetRuleActionParametersUriPathOutput {
+func (o RulesetRuleActionParameterUriPathOutput) ToRulesetRuleActionParameterUriPathOutput() RulesetRuleActionParameterUriPathOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersUriPathOutput) ToRulesetRuleActionParametersUriPathOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPathOutput {
+func (o RulesetRuleActionParameterUriPathOutput) ToRulesetRuleActionParameterUriPathOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriPathOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersUriPathOutput) ToRulesetRuleActionParametersUriPathPtrOutput() RulesetRuleActionParametersUriPathPtrOutput {
-	return o.ToRulesetRuleActionParametersUriPathPtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterUriPathOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterUriPath) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersUriPathOutput) ToRulesetRuleActionParametersUriPathPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPathPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersUriPath) *RulesetRuleActionParametersUriPath {
-		return &v
-	}).(RulesetRuleActionParametersUriPathPtrOutput)
+func (o RulesetRuleActionParameterUriPathOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterUriPath) string { return v.Value }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersUriPathOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersUriPath) *string { return v.Expression }).(pulumi.StringPtrOutput)
+type RulesetRuleActionParameterUriPathArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterUriPathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterUriPath)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersUriPathOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersUriPath) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type RulesetRuleActionParametersUriPathPtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersUriPathPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersUriPath)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersUriPathPtrOutput) ToRulesetRuleActionParametersUriPathPtrOutput() RulesetRuleActionParametersUriPathPtrOutput {
+func (o RulesetRuleActionParameterUriPathArrayOutput) ToRulesetRuleActionParameterUriPathArrayOutput() RulesetRuleActionParameterUriPathArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersUriPathPtrOutput) ToRulesetRuleActionParametersUriPathPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPathPtrOutput {
+func (o RulesetRuleActionParameterUriPathArrayOutput) ToRulesetRuleActionParameterUriPathArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriPathArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersUriPathPtrOutput) Elem() RulesetRuleActionParametersUriPathOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersUriPath) RulesetRuleActionParametersUriPath {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParametersUriPath
-		return ret
-	}).(RulesetRuleActionParametersUriPathOutput)
+func (o RulesetRuleActionParameterUriPathArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterUriPathOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterUriPath {
+		return vs[0].([]RulesetRuleActionParameterUriPath)[vs[1].(int)]
+	}).(RulesetRuleActionParameterUriPathOutput)
 }
 
-func (o RulesetRuleActionParametersUriPathPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersUriPath) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Expression
-	}).(pulumi.StringPtrOutput)
+type RulesetRuleActionParameterUriQuery struct {
+	Expression string `pulumi:"expression"`
+	Value      string `pulumi:"value"`
 }
 
-func (o RulesetRuleActionParametersUriPathPtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersUriPath) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
-type RulesetRuleActionParametersUriQuery struct {
-	Expression *string `pulumi:"expression"`
-	Value      *string `pulumi:"value"`
-}
-
-// RulesetRuleActionParametersUriQueryInput is an input type that accepts RulesetRuleActionParametersUriQueryArgs and RulesetRuleActionParametersUriQueryOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersUriQueryInput` via:
+// RulesetRuleActionParameterUriQueryInput is an input type that accepts RulesetRuleActionParameterUriQueryArgs and RulesetRuleActionParameterUriQueryOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterUriQueryInput` via:
 //
-//	RulesetRuleActionParametersUriQueryArgs{...}
-type RulesetRuleActionParametersUriQueryInput interface {
+//	RulesetRuleActionParameterUriQueryArgs{...}
+type RulesetRuleActionParameterUriQueryInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersUriQueryOutput() RulesetRuleActionParametersUriQueryOutput
-	ToRulesetRuleActionParametersUriQueryOutputWithContext(context.Context) RulesetRuleActionParametersUriQueryOutput
+	ToRulesetRuleActionParameterUriQueryOutput() RulesetRuleActionParameterUriQueryOutput
+	ToRulesetRuleActionParameterUriQueryOutputWithContext(context.Context) RulesetRuleActionParameterUriQueryOutput
 }
 
-type RulesetRuleActionParametersUriQueryArgs struct {
-	Expression pulumi.StringPtrInput `pulumi:"expression"`
-	Value      pulumi.StringPtrInput `pulumi:"value"`
+type RulesetRuleActionParameterUriQueryArgs struct {
+	Expression pulumi.StringInput `pulumi:"expression"`
+	Value      pulumi.StringInput `pulumi:"value"`
 }
 
-func (RulesetRuleActionParametersUriQueryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersUriQuery)(nil)).Elem()
+func (RulesetRuleActionParameterUriQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterUriQuery)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParametersUriQueryArgs) ToRulesetRuleActionParametersUriQueryOutput() RulesetRuleActionParametersUriQueryOutput {
-	return i.ToRulesetRuleActionParametersUriQueryOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterUriQueryArgs) ToRulesetRuleActionParameterUriQueryOutput() RulesetRuleActionParameterUriQueryOutput {
+	return i.ToRulesetRuleActionParameterUriQueryOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParametersUriQueryArgs) ToRulesetRuleActionParametersUriQueryOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriQueryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersUriQueryOutput)
+func (i RulesetRuleActionParameterUriQueryArgs) ToRulesetRuleActionParameterUriQueryOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterUriQueryOutput)
 }
 
-func (i RulesetRuleActionParametersUriQueryArgs) ToRulesetRuleActionParametersUriQueryPtrOutput() RulesetRuleActionParametersUriQueryPtrOutput {
-	return i.ToRulesetRuleActionParametersUriQueryPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParametersUriQueryArgs) ToRulesetRuleActionParametersUriQueryPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriQueryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersUriQueryOutput).ToRulesetRuleActionParametersUriQueryPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParametersUriQueryPtrInput is an input type that accepts RulesetRuleActionParametersUriQueryArgs, RulesetRuleActionParametersUriQueryPtr and RulesetRuleActionParametersUriQueryPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParametersUriQueryPtrInput` via:
+// RulesetRuleActionParameterUriQueryArrayInput is an input type that accepts RulesetRuleActionParameterUriQueryArray and RulesetRuleActionParameterUriQueryArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParameterUriQueryArrayInput` via:
 //
-//	        RulesetRuleActionParametersUriQueryArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleActionParametersUriQueryPtrInput interface {
+//	RulesetRuleActionParameterUriQueryArray{ RulesetRuleActionParameterUriQueryArgs{...} }
+type RulesetRuleActionParameterUriQueryArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParametersUriQueryPtrOutput() RulesetRuleActionParametersUriQueryPtrOutput
-	ToRulesetRuleActionParametersUriQueryPtrOutputWithContext(context.Context) RulesetRuleActionParametersUriQueryPtrOutput
+	ToRulesetRuleActionParameterUriQueryArrayOutput() RulesetRuleActionParameterUriQueryArrayOutput
+	ToRulesetRuleActionParameterUriQueryArrayOutputWithContext(context.Context) RulesetRuleActionParameterUriQueryArrayOutput
 }
 
-type rulesetRuleActionParametersUriQueryPtrType RulesetRuleActionParametersUriQueryArgs
+type RulesetRuleActionParameterUriQueryArray []RulesetRuleActionParameterUriQueryInput
 
-func RulesetRuleActionParametersUriQueryPtr(v *RulesetRuleActionParametersUriQueryArgs) RulesetRuleActionParametersUriQueryPtrInput {
-	return (*rulesetRuleActionParametersUriQueryPtrType)(v)
+func (RulesetRuleActionParameterUriQueryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterUriQuery)(nil)).Elem()
 }
 
-func (*rulesetRuleActionParametersUriQueryPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersUriQuery)(nil)).Elem()
+func (i RulesetRuleActionParameterUriQueryArray) ToRulesetRuleActionParameterUriQueryArrayOutput() RulesetRuleActionParameterUriQueryArrayOutput {
+	return i.ToRulesetRuleActionParameterUriQueryArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParametersUriQueryPtrType) ToRulesetRuleActionParametersUriQueryPtrOutput() RulesetRuleActionParametersUriQueryPtrOutput {
-	return i.ToRulesetRuleActionParametersUriQueryPtrOutputWithContext(context.Background())
+func (i RulesetRuleActionParameterUriQueryArray) ToRulesetRuleActionParameterUriQueryArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriQueryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterUriQueryArrayOutput)
 }
 
-func (i *rulesetRuleActionParametersUriQueryPtrType) ToRulesetRuleActionParametersUriQueryPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriQueryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersUriQueryPtrOutput)
+type RulesetRuleActionParameterUriQueryOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterUriQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameterUriQuery)(nil)).Elem()
 }
 
-type RulesetRuleActionParametersUriQueryOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersUriQueryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParametersUriQuery)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersUriQueryOutput) ToRulesetRuleActionParametersUriQueryOutput() RulesetRuleActionParametersUriQueryOutput {
+func (o RulesetRuleActionParameterUriQueryOutput) ToRulesetRuleActionParameterUriQueryOutput() RulesetRuleActionParameterUriQueryOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersUriQueryOutput) ToRulesetRuleActionParametersUriQueryOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriQueryOutput {
+func (o RulesetRuleActionParameterUriQueryOutput) ToRulesetRuleActionParameterUriQueryOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriQueryOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersUriQueryOutput) ToRulesetRuleActionParametersUriQueryPtrOutput() RulesetRuleActionParametersUriQueryPtrOutput {
-	return o.ToRulesetRuleActionParametersUriQueryPtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParameterUriQueryOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterUriQuery) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersUriQueryOutput) ToRulesetRuleActionParametersUriQueryPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriQueryPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersUriQuery) *RulesetRuleActionParametersUriQuery {
-		return &v
-	}).(RulesetRuleActionParametersUriQueryPtrOutput)
+func (o RulesetRuleActionParameterUriQueryOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameterUriQuery) string { return v.Value }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleActionParametersUriQueryOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersUriQuery) *string { return v.Expression }).(pulumi.StringPtrOutput)
+type RulesetRuleActionParameterUriQueryArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParameterUriQueryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParameterUriQuery)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParametersUriQueryOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersUriQuery) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type RulesetRuleActionParametersUriQueryPtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParametersUriQueryPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParametersUriQuery)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParametersUriQueryPtrOutput) ToRulesetRuleActionParametersUriQueryPtrOutput() RulesetRuleActionParametersUriQueryPtrOutput {
+func (o RulesetRuleActionParameterUriQueryArrayOutput) ToRulesetRuleActionParameterUriQueryArrayOutput() RulesetRuleActionParameterUriQueryArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersUriQueryPtrOutput) ToRulesetRuleActionParametersUriQueryPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriQueryPtrOutput {
+func (o RulesetRuleActionParameterUriQueryArrayOutput) ToRulesetRuleActionParameterUriQueryArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriQueryArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParametersUriQueryPtrOutput) Elem() RulesetRuleActionParametersUriQueryOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersUriQuery) RulesetRuleActionParametersUriQuery {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleActionParametersUriQuery
-		return ret
-	}).(RulesetRuleActionParametersUriQueryOutput)
-}
-
-func (o RulesetRuleActionParametersUriQueryPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersUriQuery) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Expression
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o RulesetRuleActionParametersUriQueryPtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersUriQuery) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParameterUriQueryArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterUriQueryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterUriQuery {
+		return vs[0].([]RulesetRuleActionParameterUriQuery)[vs[1].(int)]
+	}).(RulesetRuleActionParameterUriQueryOutput)
 }
 
 type RulesetRuleExposedCredentialCheck struct {
-	PasswordExpression *string `pulumi:"passwordExpression"`
-	UsernameExpression *string `pulumi:"usernameExpression"`
+	PasswordExpression string `pulumi:"passwordExpression"`
+	UsernameExpression string `pulumi:"usernameExpression"`
 }
 
 // RulesetRuleExposedCredentialCheckInput is an input type that accepts RulesetRuleExposedCredentialCheckArgs and RulesetRuleExposedCredentialCheckOutput values.
@@ -23628,8 +22865,8 @@ type RulesetRuleExposedCredentialCheckInput interface {
 }
 
 type RulesetRuleExposedCredentialCheckArgs struct {
-	PasswordExpression pulumi.StringPtrInput `pulumi:"passwordExpression"`
-	UsernameExpression pulumi.StringPtrInput `pulumi:"usernameExpression"`
+	PasswordExpression pulumi.StringInput `pulumi:"passwordExpression"`
+	UsernameExpression pulumi.StringInput `pulumi:"usernameExpression"`
 }
 
 func (RulesetRuleExposedCredentialCheckArgs) ElementType() reflect.Type {
@@ -23644,45 +22881,29 @@ func (i RulesetRuleExposedCredentialCheckArgs) ToRulesetRuleExposedCredentialChe
 	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleExposedCredentialCheckOutput)
 }
 
-func (i RulesetRuleExposedCredentialCheckArgs) ToRulesetRuleExposedCredentialCheckPtrOutput() RulesetRuleExposedCredentialCheckPtrOutput {
-	return i.ToRulesetRuleExposedCredentialCheckPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleExposedCredentialCheckArgs) ToRulesetRuleExposedCredentialCheckPtrOutputWithContext(ctx context.Context) RulesetRuleExposedCredentialCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleExposedCredentialCheckOutput).ToRulesetRuleExposedCredentialCheckPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleExposedCredentialCheckPtrInput is an input type that accepts RulesetRuleExposedCredentialCheckArgs, RulesetRuleExposedCredentialCheckPtr and RulesetRuleExposedCredentialCheckPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleExposedCredentialCheckPtrInput` via:
+// RulesetRuleExposedCredentialCheckArrayInput is an input type that accepts RulesetRuleExposedCredentialCheckArray and RulesetRuleExposedCredentialCheckArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleExposedCredentialCheckArrayInput` via:
 //
-//	        RulesetRuleExposedCredentialCheckArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleExposedCredentialCheckPtrInput interface {
+//	RulesetRuleExposedCredentialCheckArray{ RulesetRuleExposedCredentialCheckArgs{...} }
+type RulesetRuleExposedCredentialCheckArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleExposedCredentialCheckPtrOutput() RulesetRuleExposedCredentialCheckPtrOutput
-	ToRulesetRuleExposedCredentialCheckPtrOutputWithContext(context.Context) RulesetRuleExposedCredentialCheckPtrOutput
+	ToRulesetRuleExposedCredentialCheckArrayOutput() RulesetRuleExposedCredentialCheckArrayOutput
+	ToRulesetRuleExposedCredentialCheckArrayOutputWithContext(context.Context) RulesetRuleExposedCredentialCheckArrayOutput
 }
 
-type rulesetRuleExposedCredentialCheckPtrType RulesetRuleExposedCredentialCheckArgs
+type RulesetRuleExposedCredentialCheckArray []RulesetRuleExposedCredentialCheckInput
 
-func RulesetRuleExposedCredentialCheckPtr(v *RulesetRuleExposedCredentialCheckArgs) RulesetRuleExposedCredentialCheckPtrInput {
-	return (*rulesetRuleExposedCredentialCheckPtrType)(v)
+func (RulesetRuleExposedCredentialCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleExposedCredentialCheck)(nil)).Elem()
 }
 
-func (*rulesetRuleExposedCredentialCheckPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleExposedCredentialCheck)(nil)).Elem()
+func (i RulesetRuleExposedCredentialCheckArray) ToRulesetRuleExposedCredentialCheckArrayOutput() RulesetRuleExposedCredentialCheckArrayOutput {
+	return i.ToRulesetRuleExposedCredentialCheckArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleExposedCredentialCheckPtrType) ToRulesetRuleExposedCredentialCheckPtrOutput() RulesetRuleExposedCredentialCheckPtrOutput {
-	return i.ToRulesetRuleExposedCredentialCheckPtrOutputWithContext(context.Background())
-}
-
-func (i *rulesetRuleExposedCredentialCheckPtrType) ToRulesetRuleExposedCredentialCheckPtrOutputWithContext(ctx context.Context) RulesetRuleExposedCredentialCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleExposedCredentialCheckPtrOutput)
+func (i RulesetRuleExposedCredentialCheckArray) ToRulesetRuleExposedCredentialCheckArrayOutputWithContext(ctx context.Context) RulesetRuleExposedCredentialCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleExposedCredentialCheckArrayOutput)
 }
 
 type RulesetRuleExposedCredentialCheckOutput struct{ *pulumi.OutputState }
@@ -23699,70 +22920,36 @@ func (o RulesetRuleExposedCredentialCheckOutput) ToRulesetRuleExposedCredentialC
 	return o
 }
 
-func (o RulesetRuleExposedCredentialCheckOutput) ToRulesetRuleExposedCredentialCheckPtrOutput() RulesetRuleExposedCredentialCheckPtrOutput {
-	return o.ToRulesetRuleExposedCredentialCheckPtrOutputWithContext(context.Background())
+func (o RulesetRuleExposedCredentialCheckOutput) PasswordExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleExposedCredentialCheck) string { return v.PasswordExpression }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleExposedCredentialCheckOutput) ToRulesetRuleExposedCredentialCheckPtrOutputWithContext(ctx context.Context) RulesetRuleExposedCredentialCheckPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleExposedCredentialCheck) *RulesetRuleExposedCredentialCheck {
-		return &v
-	}).(RulesetRuleExposedCredentialCheckPtrOutput)
+func (o RulesetRuleExposedCredentialCheckOutput) UsernameExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleExposedCredentialCheck) string { return v.UsernameExpression }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleExposedCredentialCheckOutput) PasswordExpression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleExposedCredentialCheck) *string { return v.PasswordExpression }).(pulumi.StringPtrOutput)
+type RulesetRuleExposedCredentialCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleExposedCredentialCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleExposedCredentialCheck)(nil)).Elem()
 }
 
-func (o RulesetRuleExposedCredentialCheckOutput) UsernameExpression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleExposedCredentialCheck) *string { return v.UsernameExpression }).(pulumi.StringPtrOutput)
-}
-
-type RulesetRuleExposedCredentialCheckPtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleExposedCredentialCheckPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleExposedCredentialCheck)(nil)).Elem()
-}
-
-func (o RulesetRuleExposedCredentialCheckPtrOutput) ToRulesetRuleExposedCredentialCheckPtrOutput() RulesetRuleExposedCredentialCheckPtrOutput {
+func (o RulesetRuleExposedCredentialCheckArrayOutput) ToRulesetRuleExposedCredentialCheckArrayOutput() RulesetRuleExposedCredentialCheckArrayOutput {
 	return o
 }
 
-func (o RulesetRuleExposedCredentialCheckPtrOutput) ToRulesetRuleExposedCredentialCheckPtrOutputWithContext(ctx context.Context) RulesetRuleExposedCredentialCheckPtrOutput {
+func (o RulesetRuleExposedCredentialCheckArrayOutput) ToRulesetRuleExposedCredentialCheckArrayOutputWithContext(ctx context.Context) RulesetRuleExposedCredentialCheckArrayOutput {
 	return o
 }
 
-func (o RulesetRuleExposedCredentialCheckPtrOutput) Elem() RulesetRuleExposedCredentialCheckOutput {
-	return o.ApplyT(func(v *RulesetRuleExposedCredentialCheck) RulesetRuleExposedCredentialCheck {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleExposedCredentialCheck
-		return ret
+func (o RulesetRuleExposedCredentialCheckArrayOutput) Index(i pulumi.IntInput) RulesetRuleExposedCredentialCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleExposedCredentialCheck {
+		return vs[0].([]RulesetRuleExposedCredentialCheck)[vs[1].(int)]
 	}).(RulesetRuleExposedCredentialCheckOutput)
 }
 
-func (o RulesetRuleExposedCredentialCheckPtrOutput) PasswordExpression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleExposedCredentialCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PasswordExpression
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o RulesetRuleExposedCredentialCheckPtrOutput) UsernameExpression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleExposedCredentialCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UsernameExpression
-	}).(pulumi.StringPtrOutput)
-}
-
 type RulesetRuleLogging struct {
-	// Deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-	Enabled *bool   `pulumi:"enabled"`
-	Status  *string `pulumi:"status"`
+	Enabled bool `pulumi:"enabled"`
 }
 
 // RulesetRuleLoggingInput is an input type that accepts RulesetRuleLoggingArgs and RulesetRuleLoggingOutput values.
@@ -23777,9 +22964,7 @@ type RulesetRuleLoggingInput interface {
 }
 
 type RulesetRuleLoggingArgs struct {
-	// Deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
-	Status  pulumi.StringPtrInput `pulumi:"status"`
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
 func (RulesetRuleLoggingArgs) ElementType() reflect.Type {
@@ -23794,45 +22979,29 @@ func (i RulesetRuleLoggingArgs) ToRulesetRuleLoggingOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleLoggingOutput)
 }
 
-func (i RulesetRuleLoggingArgs) ToRulesetRuleLoggingPtrOutput() RulesetRuleLoggingPtrOutput {
-	return i.ToRulesetRuleLoggingPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleLoggingArgs) ToRulesetRuleLoggingPtrOutputWithContext(ctx context.Context) RulesetRuleLoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleLoggingOutput).ToRulesetRuleLoggingPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleLoggingPtrInput is an input type that accepts RulesetRuleLoggingArgs, RulesetRuleLoggingPtr and RulesetRuleLoggingPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleLoggingPtrInput` via:
+// RulesetRuleLoggingArrayInput is an input type that accepts RulesetRuleLoggingArray and RulesetRuleLoggingArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleLoggingArrayInput` via:
 //
-//	        RulesetRuleLoggingArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleLoggingPtrInput interface {
+//	RulesetRuleLoggingArray{ RulesetRuleLoggingArgs{...} }
+type RulesetRuleLoggingArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleLoggingPtrOutput() RulesetRuleLoggingPtrOutput
-	ToRulesetRuleLoggingPtrOutputWithContext(context.Context) RulesetRuleLoggingPtrOutput
+	ToRulesetRuleLoggingArrayOutput() RulesetRuleLoggingArrayOutput
+	ToRulesetRuleLoggingArrayOutputWithContext(context.Context) RulesetRuleLoggingArrayOutput
 }
 
-type rulesetRuleLoggingPtrType RulesetRuleLoggingArgs
+type RulesetRuleLoggingArray []RulesetRuleLoggingInput
 
-func RulesetRuleLoggingPtr(v *RulesetRuleLoggingArgs) RulesetRuleLoggingPtrInput {
-	return (*rulesetRuleLoggingPtrType)(v)
+func (RulesetRuleLoggingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleLogging)(nil)).Elem()
 }
 
-func (*rulesetRuleLoggingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleLogging)(nil)).Elem()
+func (i RulesetRuleLoggingArray) ToRulesetRuleLoggingArrayOutput() RulesetRuleLoggingArrayOutput {
+	return i.ToRulesetRuleLoggingArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleLoggingPtrType) ToRulesetRuleLoggingPtrOutput() RulesetRuleLoggingPtrOutput {
-	return i.ToRulesetRuleLoggingPtrOutputWithContext(context.Background())
-}
-
-func (i *rulesetRuleLoggingPtrType) ToRulesetRuleLoggingPtrOutputWithContext(ctx context.Context) RulesetRuleLoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleLoggingPtrOutput)
+func (i RulesetRuleLoggingArray) ToRulesetRuleLoggingArrayOutputWithContext(ctx context.Context) RulesetRuleLoggingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleLoggingArrayOutput)
 }
 
 type RulesetRuleLoggingOutput struct{ *pulumi.OutputState }
@@ -23849,77 +23018,39 @@ func (o RulesetRuleLoggingOutput) ToRulesetRuleLoggingOutputWithContext(ctx cont
 	return o
 }
 
-func (o RulesetRuleLoggingOutput) ToRulesetRuleLoggingPtrOutput() RulesetRuleLoggingPtrOutput {
-	return o.ToRulesetRuleLoggingPtrOutputWithContext(context.Background())
+func (o RulesetRuleLoggingOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleLogging) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleLoggingOutput) ToRulesetRuleLoggingPtrOutputWithContext(ctx context.Context) RulesetRuleLoggingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleLogging) *RulesetRuleLogging {
-		return &v
-	}).(RulesetRuleLoggingPtrOutput)
+type RulesetRuleLoggingArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleLoggingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleLogging)(nil)).Elem()
 }
 
-// Deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-func (o RulesetRuleLoggingOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleLogging) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-func (o RulesetRuleLoggingOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleLogging) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-type RulesetRuleLoggingPtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleLoggingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleLogging)(nil)).Elem()
-}
-
-func (o RulesetRuleLoggingPtrOutput) ToRulesetRuleLoggingPtrOutput() RulesetRuleLoggingPtrOutput {
+func (o RulesetRuleLoggingArrayOutput) ToRulesetRuleLoggingArrayOutput() RulesetRuleLoggingArrayOutput {
 	return o
 }
 
-func (o RulesetRuleLoggingPtrOutput) ToRulesetRuleLoggingPtrOutputWithContext(ctx context.Context) RulesetRuleLoggingPtrOutput {
+func (o RulesetRuleLoggingArrayOutput) ToRulesetRuleLoggingArrayOutputWithContext(ctx context.Context) RulesetRuleLoggingArrayOutput {
 	return o
 }
 
-func (o RulesetRuleLoggingPtrOutput) Elem() RulesetRuleLoggingOutput {
-	return o.ApplyT(func(v *RulesetRuleLogging) RulesetRuleLogging {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleLogging
-		return ret
+func (o RulesetRuleLoggingArrayOutput) Index(i pulumi.IntInput) RulesetRuleLoggingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleLogging {
+		return vs[0].([]RulesetRuleLogging)[vs[1].(int)]
 	}).(RulesetRuleLoggingOutput)
-}
-
-// Deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-func (o RulesetRuleLoggingPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleLogging) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o RulesetRuleLoggingPtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleLogging) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Status
-	}).(pulumi.StringPtrOutput)
 }
 
 type RulesetRuleRatelimit struct {
 	Characteristics         []string `pulumi:"characteristics"`
-	CountingExpression      *string  `pulumi:"countingExpression"`
-	MitigationTimeout       *int     `pulumi:"mitigationTimeout"`
-	Period                  *int     `pulumi:"period"`
-	RequestsPerPeriod       *int     `pulumi:"requestsPerPeriod"`
-	RequestsToOrigin        *bool    `pulumi:"requestsToOrigin"`
-	ScorePerPeriod          *int     `pulumi:"scorePerPeriod"`
-	ScoreResponseHeaderName *string  `pulumi:"scoreResponseHeaderName"`
+	CountingExpression      string   `pulumi:"countingExpression"`
+	MitigationTimeout       int      `pulumi:"mitigationTimeout"`
+	Period                  int      `pulumi:"period"`
+	RequestsPerPeriod       int      `pulumi:"requestsPerPeriod"`
+	RequestsToOrigin        bool     `pulumi:"requestsToOrigin"`
+	ScorePerPeriod          int      `pulumi:"scorePerPeriod"`
+	ScoreResponseHeaderName string   `pulumi:"scoreResponseHeaderName"`
 }
 
 // RulesetRuleRatelimitInput is an input type that accepts RulesetRuleRatelimitArgs and RulesetRuleRatelimitOutput values.
@@ -23935,13 +23066,13 @@ type RulesetRuleRatelimitInput interface {
 
 type RulesetRuleRatelimitArgs struct {
 	Characteristics         pulumi.StringArrayInput `pulumi:"characteristics"`
-	CountingExpression      pulumi.StringPtrInput   `pulumi:"countingExpression"`
-	MitigationTimeout       pulumi.IntPtrInput      `pulumi:"mitigationTimeout"`
-	Period                  pulumi.IntPtrInput      `pulumi:"period"`
-	RequestsPerPeriod       pulumi.IntPtrInput      `pulumi:"requestsPerPeriod"`
-	RequestsToOrigin        pulumi.BoolPtrInput     `pulumi:"requestsToOrigin"`
-	ScorePerPeriod          pulumi.IntPtrInput      `pulumi:"scorePerPeriod"`
-	ScoreResponseHeaderName pulumi.StringPtrInput   `pulumi:"scoreResponseHeaderName"`
+	CountingExpression      pulumi.StringInput      `pulumi:"countingExpression"`
+	MitigationTimeout       pulumi.IntInput         `pulumi:"mitigationTimeout"`
+	Period                  pulumi.IntInput         `pulumi:"period"`
+	RequestsPerPeriod       pulumi.IntInput         `pulumi:"requestsPerPeriod"`
+	RequestsToOrigin        pulumi.BoolInput        `pulumi:"requestsToOrigin"`
+	ScorePerPeriod          pulumi.IntInput         `pulumi:"scorePerPeriod"`
+	ScoreResponseHeaderName pulumi.StringInput      `pulumi:"scoreResponseHeaderName"`
 }
 
 func (RulesetRuleRatelimitArgs) ElementType() reflect.Type {
@@ -23956,45 +23087,29 @@ func (i RulesetRuleRatelimitArgs) ToRulesetRuleRatelimitOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleRatelimitOutput)
 }
 
-func (i RulesetRuleRatelimitArgs) ToRulesetRuleRatelimitPtrOutput() RulesetRuleRatelimitPtrOutput {
-	return i.ToRulesetRuleRatelimitPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleRatelimitArgs) ToRulesetRuleRatelimitPtrOutputWithContext(ctx context.Context) RulesetRuleRatelimitPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleRatelimitOutput).ToRulesetRuleRatelimitPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleRatelimitPtrInput is an input type that accepts RulesetRuleRatelimitArgs, RulesetRuleRatelimitPtr and RulesetRuleRatelimitPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleRatelimitPtrInput` via:
+// RulesetRuleRatelimitArrayInput is an input type that accepts RulesetRuleRatelimitArray and RulesetRuleRatelimitArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleRatelimitArrayInput` via:
 //
-//	        RulesetRuleRatelimitArgs{...}
-//
-//	or:
-//
-//	        nil
-type RulesetRuleRatelimitPtrInput interface {
+//	RulesetRuleRatelimitArray{ RulesetRuleRatelimitArgs{...} }
+type RulesetRuleRatelimitArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleRatelimitPtrOutput() RulesetRuleRatelimitPtrOutput
-	ToRulesetRuleRatelimitPtrOutputWithContext(context.Context) RulesetRuleRatelimitPtrOutput
+	ToRulesetRuleRatelimitArrayOutput() RulesetRuleRatelimitArrayOutput
+	ToRulesetRuleRatelimitArrayOutputWithContext(context.Context) RulesetRuleRatelimitArrayOutput
 }
 
-type rulesetRuleRatelimitPtrType RulesetRuleRatelimitArgs
+type RulesetRuleRatelimitArray []RulesetRuleRatelimitInput
 
-func RulesetRuleRatelimitPtr(v *RulesetRuleRatelimitArgs) RulesetRuleRatelimitPtrInput {
-	return (*rulesetRuleRatelimitPtrType)(v)
+func (RulesetRuleRatelimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleRatelimit)(nil)).Elem()
 }
 
-func (*rulesetRuleRatelimitPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleRatelimit)(nil)).Elem()
+func (i RulesetRuleRatelimitArray) ToRulesetRuleRatelimitArrayOutput() RulesetRuleRatelimitArrayOutput {
+	return i.ToRulesetRuleRatelimitArrayOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleRatelimitPtrType) ToRulesetRuleRatelimitPtrOutput() RulesetRuleRatelimitPtrOutput {
-	return i.ToRulesetRuleRatelimitPtrOutputWithContext(context.Background())
-}
-
-func (i *rulesetRuleRatelimitPtrType) ToRulesetRuleRatelimitPtrOutputWithContext(ctx context.Context) RulesetRuleRatelimitPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleRatelimitPtrOutput)
+func (i RulesetRuleRatelimitArray) ToRulesetRuleRatelimitArrayOutputWithContext(ctx context.Context) RulesetRuleRatelimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleRatelimitArrayOutput)
 }
 
 type RulesetRuleRatelimitOutput struct{ *pulumi.OutputState }
@@ -24011,142 +23126,56 @@ func (o RulesetRuleRatelimitOutput) ToRulesetRuleRatelimitOutputWithContext(ctx 
 	return o
 }
 
-func (o RulesetRuleRatelimitOutput) ToRulesetRuleRatelimitPtrOutput() RulesetRuleRatelimitPtrOutput {
-	return o.ToRulesetRuleRatelimitPtrOutputWithContext(context.Background())
-}
-
-func (o RulesetRuleRatelimitOutput) ToRulesetRuleRatelimitPtrOutputWithContext(ctx context.Context) RulesetRuleRatelimitPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleRatelimit) *RulesetRuleRatelimit {
-		return &v
-	}).(RulesetRuleRatelimitPtrOutput)
-}
-
 func (o RulesetRuleRatelimitOutput) Characteristics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RulesetRuleRatelimit) []string { return v.Characteristics }).(pulumi.StringArrayOutput)
 }
 
-func (o RulesetRuleRatelimitOutput) CountingExpression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleRatelimit) *string { return v.CountingExpression }).(pulumi.StringPtrOutput)
+func (o RulesetRuleRatelimitOutput) CountingExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleRatelimit) string { return v.CountingExpression }).(pulumi.StringOutput)
 }
 
-func (o RulesetRuleRatelimitOutput) MitigationTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RulesetRuleRatelimit) *int { return v.MitigationTimeout }).(pulumi.IntPtrOutput)
+func (o RulesetRuleRatelimitOutput) MitigationTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v RulesetRuleRatelimit) int { return v.MitigationTimeout }).(pulumi.IntOutput)
 }
 
-func (o RulesetRuleRatelimitOutput) Period() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RulesetRuleRatelimit) *int { return v.Period }).(pulumi.IntPtrOutput)
+func (o RulesetRuleRatelimitOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v RulesetRuleRatelimit) int { return v.Period }).(pulumi.IntOutput)
 }
 
-func (o RulesetRuleRatelimitOutput) RequestsPerPeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RulesetRuleRatelimit) *int { return v.RequestsPerPeriod }).(pulumi.IntPtrOutput)
+func (o RulesetRuleRatelimitOutput) RequestsPerPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v RulesetRuleRatelimit) int { return v.RequestsPerPeriod }).(pulumi.IntOutput)
 }
 
-func (o RulesetRuleRatelimitOutput) RequestsToOrigin() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleRatelimit) *bool { return v.RequestsToOrigin }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleRatelimitOutput) RequestsToOrigin() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleRatelimit) bool { return v.RequestsToOrigin }).(pulumi.BoolOutput)
 }
 
-func (o RulesetRuleRatelimitOutput) ScorePerPeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RulesetRuleRatelimit) *int { return v.ScorePerPeriod }).(pulumi.IntPtrOutput)
+func (o RulesetRuleRatelimitOutput) ScorePerPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v RulesetRuleRatelimit) int { return v.ScorePerPeriod }).(pulumi.IntOutput)
 }
 
-func (o RulesetRuleRatelimitOutput) ScoreResponseHeaderName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleRatelimit) *string { return v.ScoreResponseHeaderName }).(pulumi.StringPtrOutput)
+func (o RulesetRuleRatelimitOutput) ScoreResponseHeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleRatelimit) string { return v.ScoreResponseHeaderName }).(pulumi.StringOutput)
 }
 
-type RulesetRuleRatelimitPtrOutput struct{ *pulumi.OutputState }
+type RulesetRuleRatelimitArrayOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleRatelimitPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleRatelimit)(nil)).Elem()
+func (RulesetRuleRatelimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleRatelimit)(nil)).Elem()
 }
 
-func (o RulesetRuleRatelimitPtrOutput) ToRulesetRuleRatelimitPtrOutput() RulesetRuleRatelimitPtrOutput {
+func (o RulesetRuleRatelimitArrayOutput) ToRulesetRuleRatelimitArrayOutput() RulesetRuleRatelimitArrayOutput {
 	return o
 }
 
-func (o RulesetRuleRatelimitPtrOutput) ToRulesetRuleRatelimitPtrOutputWithContext(ctx context.Context) RulesetRuleRatelimitPtrOutput {
+func (o RulesetRuleRatelimitArrayOutput) ToRulesetRuleRatelimitArrayOutputWithContext(ctx context.Context) RulesetRuleRatelimitArrayOutput {
 	return o
 }
 
-func (o RulesetRuleRatelimitPtrOutput) Elem() RulesetRuleRatelimitOutput {
-	return o.ApplyT(func(v *RulesetRuleRatelimit) RulesetRuleRatelimit {
-		if v != nil {
-			return *v
-		}
-		var ret RulesetRuleRatelimit
-		return ret
+func (o RulesetRuleRatelimitArrayOutput) Index(i pulumi.IntInput) RulesetRuleRatelimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleRatelimit {
+		return vs[0].([]RulesetRuleRatelimit)[vs[1].(int)]
 	}).(RulesetRuleRatelimitOutput)
-}
-
-func (o RulesetRuleRatelimitPtrOutput) Characteristics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleRatelimit) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Characteristics
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o RulesetRuleRatelimitPtrOutput) CountingExpression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleRatelimit) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CountingExpression
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o RulesetRuleRatelimitPtrOutput) MitigationTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleRatelimit) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MitigationTimeout
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o RulesetRuleRatelimitPtrOutput) Period() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleRatelimit) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Period
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o RulesetRuleRatelimitPtrOutput) RequestsPerPeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleRatelimit) *int {
-		if v == nil {
-			return nil
-		}
-		return v.RequestsPerPeriod
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o RulesetRuleRatelimitPtrOutput) RequestsToOrigin() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleRatelimit) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.RequestsToOrigin
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o RulesetRuleRatelimitPtrOutput) ScorePerPeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleRatelimit) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ScorePerPeriod
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o RulesetRuleRatelimitPtrOutput) ScoreResponseHeaderName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleRatelimit) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ScoreResponseHeaderName
-	}).(pulumi.StringPtrOutput)
 }
 
 type SpectrumApplicationDns struct {
@@ -26635,18 +25664,26 @@ func (o TeamsLocationNetworkArrayOutput) Index(i pulumi.IntInput) TeamsLocationN
 type TeamsRuleRuleSettings struct {
 	// Add custom headers to allowed requests in the form of key-value pairs.
 	AddHeaders map[string]string `pulumi:"addHeaders"`
+	// Allow parent MSP accounts to enable bypass their children's rules.
+	AllowChildBypass *bool `pulumi:"allowChildBypass"`
+	// Settings for auditing SSH usage.
+	AuditSsh *TeamsRuleRuleSettingsAuditSsh `pulumi:"auditSsh"`
 	// Configure how browser isolation behaves.
 	BisoAdminControls *TeamsRuleRuleSettingsBisoAdminControls `pulumi:"bisoAdminControls"`
 	// Indicator of block page enablement.
 	BlockPageEnabled *bool `pulumi:"blockPageEnabled"`
 	// The displayed reason for a user being blocked.
 	BlockPageReason *string `pulumi:"blockPageReason"`
+	// Allow child MSP accounts to bypass their parent's rule.
+	BypassParentRule *bool `pulumi:"bypassParentRule"`
 	// Configure how session check behaves.
 	CheckSession *TeamsRuleRuleSettingsCheckSession `pulumi:"checkSession"`
 	// Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
 	Egress *TeamsRuleRuleSettingsEgress `pulumi:"egress"`
 	// Disable DNSSEC validation (must be Allow rule).
 	InsecureDisableDnssecValidation *bool `pulumi:"insecureDisableDnssecValidation"`
+	// Turns on IP category based filter on dns if the rule contains dns category checks.
+	IpCategories *bool `pulumi:"ipCategories"`
 	// Settings to forward layer 4 traffic.
 	L4override *TeamsRuleRuleSettingsL4override `pulumi:"l4override"`
 	// The host to override matching DNS queries with.
@@ -26673,18 +25710,26 @@ type TeamsRuleRuleSettingsInput interface {
 type TeamsRuleRuleSettingsArgs struct {
 	// Add custom headers to allowed requests in the form of key-value pairs.
 	AddHeaders pulumi.StringMapInput `pulumi:"addHeaders"`
+	// Allow parent MSP accounts to enable bypass their children's rules.
+	AllowChildBypass pulumi.BoolPtrInput `pulumi:"allowChildBypass"`
+	// Settings for auditing SSH usage.
+	AuditSsh TeamsRuleRuleSettingsAuditSshPtrInput `pulumi:"auditSsh"`
 	// Configure how browser isolation behaves.
 	BisoAdminControls TeamsRuleRuleSettingsBisoAdminControlsPtrInput `pulumi:"bisoAdminControls"`
 	// Indicator of block page enablement.
 	BlockPageEnabled pulumi.BoolPtrInput `pulumi:"blockPageEnabled"`
 	// The displayed reason for a user being blocked.
 	BlockPageReason pulumi.StringPtrInput `pulumi:"blockPageReason"`
+	// Allow child MSP accounts to bypass their parent's rule.
+	BypassParentRule pulumi.BoolPtrInput `pulumi:"bypassParentRule"`
 	// Configure how session check behaves.
 	CheckSession TeamsRuleRuleSettingsCheckSessionPtrInput `pulumi:"checkSession"`
 	// Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
 	Egress TeamsRuleRuleSettingsEgressPtrInput `pulumi:"egress"`
 	// Disable DNSSEC validation (must be Allow rule).
 	InsecureDisableDnssecValidation pulumi.BoolPtrInput `pulumi:"insecureDisableDnssecValidation"`
+	// Turns on IP category based filter on dns if the rule contains dns category checks.
+	IpCategories pulumi.BoolPtrInput `pulumi:"ipCategories"`
 	// Settings to forward layer 4 traffic.
 	L4override TeamsRuleRuleSettingsL4overridePtrInput `pulumi:"l4override"`
 	// The host to override matching DNS queries with.
@@ -26779,6 +25824,16 @@ func (o TeamsRuleRuleSettingsOutput) AddHeaders() pulumi.StringMapOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettings) map[string]string { return v.AddHeaders }).(pulumi.StringMapOutput)
 }
 
+// Allow parent MSP accounts to enable bypass their children's rules.
+func (o TeamsRuleRuleSettingsOutput) AllowChildBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) *bool { return v.AllowChildBypass }).(pulumi.BoolPtrOutput)
+}
+
+// Settings for auditing SSH usage.
+func (o TeamsRuleRuleSettingsOutput) AuditSsh() TeamsRuleRuleSettingsAuditSshPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsAuditSsh { return v.AuditSsh }).(TeamsRuleRuleSettingsAuditSshPtrOutput)
+}
+
 // Configure how browser isolation behaves.
 func (o TeamsRuleRuleSettingsOutput) BisoAdminControls() TeamsRuleRuleSettingsBisoAdminControlsPtrOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsBisoAdminControls { return v.BisoAdminControls }).(TeamsRuleRuleSettingsBisoAdminControlsPtrOutput)
@@ -26794,6 +25849,11 @@ func (o TeamsRuleRuleSettingsOutput) BlockPageReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettings) *string { return v.BlockPageReason }).(pulumi.StringPtrOutput)
 }
 
+// Allow child MSP accounts to bypass their parent's rule.
+func (o TeamsRuleRuleSettingsOutput) BypassParentRule() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) *bool { return v.BypassParentRule }).(pulumi.BoolPtrOutput)
+}
+
 // Configure how session check behaves.
 func (o TeamsRuleRuleSettingsOutput) CheckSession() TeamsRuleRuleSettingsCheckSessionPtrOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsCheckSession { return v.CheckSession }).(TeamsRuleRuleSettingsCheckSessionPtrOutput)
@@ -26807,6 +25867,11 @@ func (o TeamsRuleRuleSettingsOutput) Egress() TeamsRuleRuleSettingsEgressPtrOutp
 // Disable DNSSEC validation (must be Allow rule).
 func (o TeamsRuleRuleSettingsOutput) InsecureDisableDnssecValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettings) *bool { return v.InsecureDisableDnssecValidation }).(pulumi.BoolPtrOutput)
+}
+
+// Turns on IP category based filter on dns if the rule contains dns category checks.
+func (o TeamsRuleRuleSettingsOutput) IpCategories() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) *bool { return v.IpCategories }).(pulumi.BoolPtrOutput)
 }
 
 // Settings to forward layer 4 traffic.
@@ -26868,6 +25933,26 @@ func (o TeamsRuleRuleSettingsPtrOutput) AddHeaders() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// Allow parent MSP accounts to enable bypass their children's rules.
+func (o TeamsRuleRuleSettingsPtrOutput) AllowChildBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowChildBypass
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Settings for auditing SSH usage.
+func (o TeamsRuleRuleSettingsPtrOutput) AuditSsh() TeamsRuleRuleSettingsAuditSshPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) *TeamsRuleRuleSettingsAuditSsh {
+		if v == nil {
+			return nil
+		}
+		return v.AuditSsh
+	}).(TeamsRuleRuleSettingsAuditSshPtrOutput)
+}
+
 // Configure how browser isolation behaves.
 func (o TeamsRuleRuleSettingsPtrOutput) BisoAdminControls() TeamsRuleRuleSettingsBisoAdminControlsPtrOutput {
 	return o.ApplyT(func(v *TeamsRuleRuleSettings) *TeamsRuleRuleSettingsBisoAdminControls {
@@ -26898,6 +25983,16 @@ func (o TeamsRuleRuleSettingsPtrOutput) BlockPageReason() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow child MSP accounts to bypass their parent's rule.
+func (o TeamsRuleRuleSettingsPtrOutput) BypassParentRule() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BypassParentRule
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Configure how session check behaves.
 func (o TeamsRuleRuleSettingsPtrOutput) CheckSession() TeamsRuleRuleSettingsCheckSessionPtrOutput {
 	return o.ApplyT(func(v *TeamsRuleRuleSettings) *TeamsRuleRuleSettingsCheckSession {
@@ -26925,6 +26020,16 @@ func (o TeamsRuleRuleSettingsPtrOutput) InsecureDisableDnssecValidation() pulumi
 			return nil
 		}
 		return v.InsecureDisableDnssecValidation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Turns on IP category based filter on dns if the rule contains dns category checks.
+func (o TeamsRuleRuleSettingsPtrOutput) IpCategories() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IpCategories
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -26976,6 +26081,139 @@ func (o TeamsRuleRuleSettingsPtrOutput) UntrustedCert() TeamsRuleRuleSettingsUnt
 		}
 		return v.UntrustedCert
 	}).(TeamsRuleRuleSettingsUntrustedCertPtrOutput)
+}
+
+type TeamsRuleRuleSettingsAuditSsh struct {
+	CommandLogging bool `pulumi:"commandLogging"`
+}
+
+// TeamsRuleRuleSettingsAuditSshInput is an input type that accepts TeamsRuleRuleSettingsAuditSshArgs and TeamsRuleRuleSettingsAuditSshOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsAuditSshInput` via:
+//
+//	TeamsRuleRuleSettingsAuditSshArgs{...}
+type TeamsRuleRuleSettingsAuditSshInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsAuditSshOutput() TeamsRuleRuleSettingsAuditSshOutput
+	ToTeamsRuleRuleSettingsAuditSshOutputWithContext(context.Context) TeamsRuleRuleSettingsAuditSshOutput
+}
+
+type TeamsRuleRuleSettingsAuditSshArgs struct {
+	CommandLogging pulumi.BoolInput `pulumi:"commandLogging"`
+}
+
+func (TeamsRuleRuleSettingsAuditSshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsAuditSsh)(nil)).Elem()
+}
+
+func (i TeamsRuleRuleSettingsAuditSshArgs) ToTeamsRuleRuleSettingsAuditSshOutput() TeamsRuleRuleSettingsAuditSshOutput {
+	return i.ToTeamsRuleRuleSettingsAuditSshOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsAuditSshArgs) ToTeamsRuleRuleSettingsAuditSshOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsAuditSshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsAuditSshOutput)
+}
+
+func (i TeamsRuleRuleSettingsAuditSshArgs) ToTeamsRuleRuleSettingsAuditSshPtrOutput() TeamsRuleRuleSettingsAuditSshPtrOutput {
+	return i.ToTeamsRuleRuleSettingsAuditSshPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsAuditSshArgs) ToTeamsRuleRuleSettingsAuditSshPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsAuditSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsAuditSshOutput).ToTeamsRuleRuleSettingsAuditSshPtrOutputWithContext(ctx)
+}
+
+// TeamsRuleRuleSettingsAuditSshPtrInput is an input type that accepts TeamsRuleRuleSettingsAuditSshArgs, TeamsRuleRuleSettingsAuditSshPtr and TeamsRuleRuleSettingsAuditSshPtrOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsAuditSshPtrInput` via:
+//
+//	        TeamsRuleRuleSettingsAuditSshArgs{...}
+//
+//	or:
+//
+//	        nil
+type TeamsRuleRuleSettingsAuditSshPtrInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsAuditSshPtrOutput() TeamsRuleRuleSettingsAuditSshPtrOutput
+	ToTeamsRuleRuleSettingsAuditSshPtrOutputWithContext(context.Context) TeamsRuleRuleSettingsAuditSshPtrOutput
+}
+
+type teamsRuleRuleSettingsAuditSshPtrType TeamsRuleRuleSettingsAuditSshArgs
+
+func TeamsRuleRuleSettingsAuditSshPtr(v *TeamsRuleRuleSettingsAuditSshArgs) TeamsRuleRuleSettingsAuditSshPtrInput {
+	return (*teamsRuleRuleSettingsAuditSshPtrType)(v)
+}
+
+func (*teamsRuleRuleSettingsAuditSshPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsRuleRuleSettingsAuditSsh)(nil)).Elem()
+}
+
+func (i *teamsRuleRuleSettingsAuditSshPtrType) ToTeamsRuleRuleSettingsAuditSshPtrOutput() TeamsRuleRuleSettingsAuditSshPtrOutput {
+	return i.ToTeamsRuleRuleSettingsAuditSshPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsRuleRuleSettingsAuditSshPtrType) ToTeamsRuleRuleSettingsAuditSshPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsAuditSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsAuditSshPtrOutput)
+}
+
+type TeamsRuleRuleSettingsAuditSshOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsAuditSshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsAuditSsh)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsAuditSshOutput) ToTeamsRuleRuleSettingsAuditSshOutput() TeamsRuleRuleSettingsAuditSshOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsAuditSshOutput) ToTeamsRuleRuleSettingsAuditSshOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsAuditSshOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsAuditSshOutput) ToTeamsRuleRuleSettingsAuditSshPtrOutput() TeamsRuleRuleSettingsAuditSshPtrOutput {
+	return o.ToTeamsRuleRuleSettingsAuditSshPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsRuleRuleSettingsAuditSshOutput) ToTeamsRuleRuleSettingsAuditSshPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsAuditSshPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsRuleRuleSettingsAuditSsh) *TeamsRuleRuleSettingsAuditSsh {
+		return &v
+	}).(TeamsRuleRuleSettingsAuditSshPtrOutput)
+}
+
+func (o TeamsRuleRuleSettingsAuditSshOutput) CommandLogging() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsAuditSsh) bool { return v.CommandLogging }).(pulumi.BoolOutput)
+}
+
+type TeamsRuleRuleSettingsAuditSshPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsAuditSshPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsRuleRuleSettingsAuditSsh)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsAuditSshPtrOutput) ToTeamsRuleRuleSettingsAuditSshPtrOutput() TeamsRuleRuleSettingsAuditSshPtrOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsAuditSshPtrOutput) ToTeamsRuleRuleSettingsAuditSshPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsAuditSshPtrOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsAuditSshPtrOutput) Elem() TeamsRuleRuleSettingsAuditSshOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsAuditSsh) TeamsRuleRuleSettingsAuditSsh {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsRuleRuleSettingsAuditSsh
+		return ret
+	}).(TeamsRuleRuleSettingsAuditSshOutput)
+}
+
+func (o TeamsRuleRuleSettingsAuditSshPtrOutput) CommandLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsAuditSsh) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.CommandLogging
+	}).(pulumi.BoolPtrOutput)
 }
 
 type TeamsRuleRuleSettingsBisoAdminControls struct {
@@ -27768,7 +27006,7 @@ func (o TeamsRuleRuleSettingsPayloadLogPtrOutput) Enabled() pulumi.BoolPtrOutput
 }
 
 type TeamsRuleRuleSettingsUntrustedCert struct {
-	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
+	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`.
 	Action *string `pulumi:"action"`
 }
 
@@ -27784,7 +27022,7 @@ type TeamsRuleRuleSettingsUntrustedCertInput interface {
 }
 
 type TeamsRuleRuleSettingsUntrustedCertArgs struct {
-	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
+	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 }
 
@@ -27865,7 +27103,7 @@ func (o TeamsRuleRuleSettingsUntrustedCertOutput) ToTeamsRuleRuleSettingsUntrust
 	}).(TeamsRuleRuleSettingsUntrustedCertPtrOutput)
 }
 
-// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
+// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`.
 func (o TeamsRuleRuleSettingsUntrustedCertOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettingsUntrustedCert) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -27894,7 +27132,7 @@ func (o TeamsRuleRuleSettingsUntrustedCertPtrOutput) Elem() TeamsRuleRuleSetting
 	}).(TeamsRuleRuleSettingsUntrustedCertOutput)
 }
 
-// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
+// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`.
 func (o TeamsRuleRuleSettingsUntrustedCertPtrOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TeamsRuleRuleSettingsUntrustedCert) *string {
 		if v == nil {
@@ -32682,17 +31920,22 @@ func (o GetAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetAccountsAccou
 
 type GetDevicesDevice struct {
 	Created    *string `pulumi:"created"`
+	Deleted    *bool   `pulumi:"deleted"`
 	DeviceType *string `pulumi:"deviceType"`
 	// The ID of this resource.
 	Id               *string `pulumi:"id"`
 	Ip               *string `pulumi:"ip"`
 	Key              *string `pulumi:"key"`
 	LastSeen         *string `pulumi:"lastSeen"`
+	MacAddress       *string `pulumi:"macAddress"`
+	Manufacturer     *string `pulumi:"manufacturer"`
 	Model            *string `pulumi:"model"`
 	Name             *string `pulumi:"name"`
 	OsDistroName     *string `pulumi:"osDistroName"`
 	OsDistroRevision *string `pulumi:"osDistroRevision"`
 	OsVersion        *string `pulumi:"osVersion"`
+	RevokedAt        *string `pulumi:"revokedAt"`
+	SerialNumber     *string `pulumi:"serialNumber"`
 	Updated          *string `pulumi:"updated"`
 	UserEmail        *string `pulumi:"userEmail"`
 	UserId           *string `pulumi:"userId"`
@@ -32713,17 +31956,22 @@ type GetDevicesDeviceInput interface {
 
 type GetDevicesDeviceArgs struct {
 	Created    pulumi.StringPtrInput `pulumi:"created"`
+	Deleted    pulumi.BoolPtrInput   `pulumi:"deleted"`
 	DeviceType pulumi.StringPtrInput `pulumi:"deviceType"`
 	// The ID of this resource.
 	Id               pulumi.StringPtrInput `pulumi:"id"`
 	Ip               pulumi.StringPtrInput `pulumi:"ip"`
 	Key              pulumi.StringPtrInput `pulumi:"key"`
 	LastSeen         pulumi.StringPtrInput `pulumi:"lastSeen"`
+	MacAddress       pulumi.StringPtrInput `pulumi:"macAddress"`
+	Manufacturer     pulumi.StringPtrInput `pulumi:"manufacturer"`
 	Model            pulumi.StringPtrInput `pulumi:"model"`
 	Name             pulumi.StringPtrInput `pulumi:"name"`
 	OsDistroName     pulumi.StringPtrInput `pulumi:"osDistroName"`
 	OsDistroRevision pulumi.StringPtrInput `pulumi:"osDistroRevision"`
 	OsVersion        pulumi.StringPtrInput `pulumi:"osVersion"`
+	RevokedAt        pulumi.StringPtrInput `pulumi:"revokedAt"`
+	SerialNumber     pulumi.StringPtrInput `pulumi:"serialNumber"`
 	Updated          pulumi.StringPtrInput `pulumi:"updated"`
 	UserEmail        pulumi.StringPtrInput `pulumi:"userEmail"`
 	UserId           pulumi.StringPtrInput `pulumi:"userId"`
@@ -32786,6 +32034,10 @@ func (o GetDevicesDeviceOutput) Created() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDevicesDevice) *string { return v.Created }).(pulumi.StringPtrOutput)
 }
 
+func (o GetDevicesDeviceOutput) Deleted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDevicesDevice) *bool { return v.Deleted }).(pulumi.BoolPtrOutput)
+}
+
 func (o GetDevicesDeviceOutput) DeviceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDevicesDevice) *string { return v.DeviceType }).(pulumi.StringPtrOutput)
 }
@@ -32807,6 +32059,14 @@ func (o GetDevicesDeviceOutput) LastSeen() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDevicesDevice) *string { return v.LastSeen }).(pulumi.StringPtrOutput)
 }
 
+func (o GetDevicesDeviceOutput) MacAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesDevice) *string { return v.MacAddress }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDevicesDeviceOutput) Manufacturer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesDevice) *string { return v.Manufacturer }).(pulumi.StringPtrOutput)
+}
+
 func (o GetDevicesDeviceOutput) Model() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDevicesDevice) *string { return v.Model }).(pulumi.StringPtrOutput)
 }
@@ -32825,6 +32085,14 @@ func (o GetDevicesDeviceOutput) OsDistroRevision() pulumi.StringPtrOutput {
 
 func (o GetDevicesDeviceOutput) OsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDevicesDevice) *string { return v.OsVersion }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDevicesDeviceOutput) RevokedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesDevice) *string { return v.RevokedAt }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDevicesDeviceOutput) SerialNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesDevice) *string { return v.SerialNumber }).(pulumi.StringPtrOutput)
 }
 
 func (o GetDevicesDeviceOutput) Updated() pulumi.StringPtrOutput {
@@ -32865,6 +32133,127 @@ func (o GetDevicesDeviceArrayOutput) Index(i pulumi.IntInput) GetDevicesDeviceOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDevicesDevice {
 		return vs[0].([]GetDevicesDevice)[vs[1].(int)]
 	}).(GetDevicesDeviceOutput)
+}
+
+type GetListsList struct {
+	Description *string `pulumi:"description"`
+	// The ID of this resource.
+	Id       *string `pulumi:"id"`
+	Kind     *string `pulumi:"kind"`
+	Name     *string `pulumi:"name"`
+	Numitems *int    `pulumi:"numitems"`
+}
+
+// GetListsListInput is an input type that accepts GetListsListArgs and GetListsListOutput values.
+// You can construct a concrete instance of `GetListsListInput` via:
+//
+//	GetListsListArgs{...}
+type GetListsListInput interface {
+	pulumi.Input
+
+	ToGetListsListOutput() GetListsListOutput
+	ToGetListsListOutputWithContext(context.Context) GetListsListOutput
+}
+
+type GetListsListArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The ID of this resource.
+	Id       pulumi.StringPtrInput `pulumi:"id"`
+	Kind     pulumi.StringPtrInput `pulumi:"kind"`
+	Name     pulumi.StringPtrInput `pulumi:"name"`
+	Numitems pulumi.IntPtrInput    `pulumi:"numitems"`
+}
+
+func (GetListsListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListsList)(nil)).Elem()
+}
+
+func (i GetListsListArgs) ToGetListsListOutput() GetListsListOutput {
+	return i.ToGetListsListOutputWithContext(context.Background())
+}
+
+func (i GetListsListArgs) ToGetListsListOutputWithContext(ctx context.Context) GetListsListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListsListOutput)
+}
+
+// GetListsListArrayInput is an input type that accepts GetListsListArray and GetListsListArrayOutput values.
+// You can construct a concrete instance of `GetListsListArrayInput` via:
+//
+//	GetListsListArray{ GetListsListArgs{...} }
+type GetListsListArrayInput interface {
+	pulumi.Input
+
+	ToGetListsListArrayOutput() GetListsListArrayOutput
+	ToGetListsListArrayOutputWithContext(context.Context) GetListsListArrayOutput
+}
+
+type GetListsListArray []GetListsListInput
+
+func (GetListsListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListsList)(nil)).Elem()
+}
+
+func (i GetListsListArray) ToGetListsListArrayOutput() GetListsListArrayOutput {
+	return i.ToGetListsListArrayOutputWithContext(context.Background())
+}
+
+func (i GetListsListArray) ToGetListsListArrayOutputWithContext(ctx context.Context) GetListsListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListsListArrayOutput)
+}
+
+type GetListsListOutput struct{ *pulumi.OutputState }
+
+func (GetListsListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListsList)(nil)).Elem()
+}
+
+func (o GetListsListOutput) ToGetListsListOutput() GetListsListOutput {
+	return o
+}
+
+func (o GetListsListOutput) ToGetListsListOutputWithContext(ctx context.Context) GetListsListOutput {
+	return o
+}
+
+func (o GetListsListOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetListsList) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The ID of this resource.
+func (o GetListsListOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetListsList) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o GetListsListOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetListsList) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+func (o GetListsListOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetListsList) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetListsListOutput) Numitems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetListsList) *int { return v.Numitems }).(pulumi.IntPtrOutput)
+}
+
+type GetListsListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetListsListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListsList)(nil)).Elem()
+}
+
+func (o GetListsListArrayOutput) ToGetListsListArrayOutput() GetListsListArrayOutput {
+	return o
+}
+
+func (o GetListsListArrayOutput) ToGetListsListArrayOutputWithContext(ctx context.Context) GetListsListArrayOutput {
+	return o
+}
+
+func (o GetListsListArrayOutput) Index(i pulumi.IntInput) GetListsListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListsList {
+		return vs[0].([]GetListsList)[vs[1].(int)]
+	}).(GetListsListOutput)
 }
 
 type GetLoadBalancerPoolsFilter struct {
@@ -39620,6 +39009,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireSamlArrayInput)(nil)).Elem(), AccessGroupRequireSamlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessIdentityProviderConfigInput)(nil)).Elem(), AccessIdentityProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessIdentityProviderConfigArrayInput)(nil)).Elem(), AccessIdentityProviderConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessIdentityProviderScimConfigInput)(nil)).Elem(), AccessIdentityProviderScimConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessIdentityProviderScimConfigArrayInput)(nil)).Elem(), AccessIdentityProviderScimConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationLoginDesignInput)(nil)).Elem(), AccessOrganizationLoginDesignArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationLoginDesignArrayInput)(nil)).Elem(), AccessOrganizationLoginDesignArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyApprovalGroupInput)(nil)).Elem(), AccessPolicyApprovalGroupArgs{})
@@ -39668,6 +39059,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireSamlArrayInput)(nil)).Elem(), AccessPolicyRequireSamlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessRuleConfigurationInput)(nil)).Elem(), AccessRuleConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessRuleConfigurationPtrInput)(nil)).Elem(), AccessRuleConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressMapIpInput)(nil)).Elem(), AddressMapIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressMapIpArrayInput)(nil)).Elem(), AddressMapIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressMapMembershipInput)(nil)).Elem(), AddressMapMembershipArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressMapMembershipArrayInput)(nil)).Elem(), AddressMapMembershipArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiShieldAuthIdCharacteristicInput)(nil)).Elem(), ApiShieldAuthIdCharacteristicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiShieldAuthIdCharacteristicArrayInput)(nil)).Elem(), ApiShieldAuthIdCharacteristicArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiTokenConditionInput)(nil)).Elem(), ApiTokenConditionArgs{})
@@ -39692,6 +39087,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomSslCustomSslOptionsPtrInput)(nil)).Elem(), CustomSslCustomSslOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomSslCustomSslPriorityInput)(nil)).Elem(), CustomSslCustomSslPriorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomSslCustomSslPriorityArrayInput)(nil)).Elem(), CustomSslCustomSslPriorityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceDexTestDataInput)(nil)).Elem(), DeviceDexTestDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceDexTestDataPtrInput)(nil)).Elem(), DeviceDexTestDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceManagedNetworksConfigInput)(nil)).Elem(), DeviceManagedNetworksConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceManagedNetworksConfigPtrInput)(nil)).Elem(), DeviceManagedNetworksConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DevicePostureIntegrationConfigInput)(nil)).Elem(), DevicePostureIntegrationConfigArgs{})
@@ -39716,8 +39113,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FallbackDomainDomainArrayInput)(nil)).Elem(), FallbackDomainDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthcheckHeaderInput)(nil)).Elem(), HealthcheckHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthcheckHeaderArrayInput)(nil)).Elem(), HealthcheckHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ListItemInput)(nil)).Elem(), ListItemArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ListItemArrayInput)(nil)).Elem(), ListItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListItemTypeInput)(nil)).Elem(), ListItemTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListItemTypeArrayInput)(nil)).Elem(), ListItemTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListItemRedirectInput)(nil)).Elem(), ListItemRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListItemRedirectPtrInput)(nil)).Elem(), ListItemRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemValueInput)(nil)).Elem(), ListItemValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemValueRedirectInput)(nil)).Elem(), ListItemValueRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemValueRedirectArrayInput)(nil)).Elem(), ListItemValueRedirectArray{})
@@ -39829,68 +39228,68 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordDataPtrInput)(nil)).Elem(), RecordDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleInput)(nil)).Elem(), RulesetRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleArrayInput)(nil)).Elem(), RulesetRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersInput)(nil)).Elem(), RulesetRuleActionParametersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersPtrInput)(nil)).Elem(), RulesetRuleActionParametersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersAutominifyInput)(nil)).Elem(), RulesetRuleActionParametersAutominifyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersAutominifyArrayInput)(nil)).Elem(), RulesetRuleActionParametersAutominifyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersBrowserTtlInput)(nil)).Elem(), RulesetRuleActionParametersBrowserTtlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersBrowserTtlPtrInput)(nil)).Elem(), RulesetRuleActionParametersBrowserTtlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersCacheKeyInput)(nil)).Elem(), RulesetRuleActionParametersCacheKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersCacheKeyPtrInput)(nil)).Elem(), RulesetRuleActionParametersCacheKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyInput)(nil)).Elem(), RulesetRuleActionParametersCacheKeyCustomKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyPtrInput)(nil)).Elem(), RulesetRuleActionParametersCacheKeyCustomKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyCookieInput)(nil)).Elem(), RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrInput)(nil)).Elem(), RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyHeaderInput)(nil)).Elem(), RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrInput)(nil)).Elem(), RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyHostInput)(nil)).Elem(), RulesetRuleActionParametersCacheKeyCustomKeyHostArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyHostPtrInput)(nil)).Elem(), RulesetRuleActionParametersCacheKeyCustomKeyHostArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInput)(nil)).Elem(), RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrInput)(nil)).Elem(), RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyUserInput)(nil)).Elem(), RulesetRuleActionParametersCacheKeyCustomKeyUserArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersCacheKeyCustomKeyUserPtrInput)(nil)).Elem(), RulesetRuleActionParametersCacheKeyCustomKeyUserArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersEdgeTtlInput)(nil)).Elem(), RulesetRuleActionParametersEdgeTtlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersEdgeTtlPtrInput)(nil)).Elem(), RulesetRuleActionParametersEdgeTtlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersEdgeTtlStatusCodeTtlInput)(nil)).Elem(), RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput)(nil)).Elem(), RulesetRuleActionParametersEdgeTtlStatusCodeTtlArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeInput)(nil)).Elem(), RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayInput)(nil)).Elem(), RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersFromListInput)(nil)).Elem(), RulesetRuleActionParametersFromListArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersFromListPtrInput)(nil)).Elem(), RulesetRuleActionParametersFromListArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersFromValueInput)(nil)).Elem(), RulesetRuleActionParametersFromValueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersFromValuePtrInput)(nil)).Elem(), RulesetRuleActionParametersFromValueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersFromValueTargetUrlInput)(nil)).Elem(), RulesetRuleActionParametersFromValueTargetUrlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersFromValueTargetUrlPtrInput)(nil)).Elem(), RulesetRuleActionParametersFromValueTargetUrlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersHeaderInput)(nil)).Elem(), RulesetRuleActionParametersHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersHeaderArrayInput)(nil)).Elem(), RulesetRuleActionParametersHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersMatchedDataInput)(nil)).Elem(), RulesetRuleActionParametersMatchedDataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersMatchedDataPtrInput)(nil)).Elem(), RulesetRuleActionParametersMatchedDataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOriginInput)(nil)).Elem(), RulesetRuleActionParametersOriginArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOriginPtrInput)(nil)).Elem(), RulesetRuleActionParametersOriginArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesInput)(nil)).Elem(), RulesetRuleActionParametersOverridesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesPtrInput)(nil)).Elem(), RulesetRuleActionParametersOverridesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesCategoryInput)(nil)).Elem(), RulesetRuleActionParametersOverridesCategoryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesCategoryArrayInput)(nil)).Elem(), RulesetRuleActionParametersOverridesCategoryArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesRuleInput)(nil)).Elem(), RulesetRuleActionParametersOverridesRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesRuleArrayInput)(nil)).Elem(), RulesetRuleActionParametersOverridesRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersResponseInput)(nil)).Elem(), RulesetRuleActionParametersResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersResponseArrayInput)(nil)).Elem(), RulesetRuleActionParametersResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersServeStaleInput)(nil)).Elem(), RulesetRuleActionParametersServeStaleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersServeStalePtrInput)(nil)).Elem(), RulesetRuleActionParametersServeStaleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersSniInput)(nil)).Elem(), RulesetRuleActionParametersSniArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersSniPtrInput)(nil)).Elem(), RulesetRuleActionParametersSniArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriInput)(nil)).Elem(), RulesetRuleActionParametersUriArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriPtrInput)(nil)).Elem(), RulesetRuleActionParametersUriArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriPathInput)(nil)).Elem(), RulesetRuleActionParametersUriPathArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriPathPtrInput)(nil)).Elem(), RulesetRuleActionParametersUriPathArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriQueryInput)(nil)).Elem(), RulesetRuleActionParametersUriQueryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriQueryPtrInput)(nil)).Elem(), RulesetRuleActionParametersUriQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterInput)(nil)).Elem(), RulesetRuleActionParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterArrayInput)(nil)).Elem(), RulesetRuleActionParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterAutominifyInput)(nil)).Elem(), RulesetRuleActionParameterAutominifyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterAutominifyArrayInput)(nil)).Elem(), RulesetRuleActionParameterAutominifyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterBrowserTtlInput)(nil)).Elem(), RulesetRuleActionParameterBrowserTtlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterBrowserTtlArrayInput)(nil)).Elem(), RulesetRuleActionParameterBrowserTtlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterCacheKeyInput)(nil)).Elem(), RulesetRuleActionParameterCacheKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterCacheKeyArrayInput)(nil)).Elem(), RulesetRuleActionParameterCacheKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyInput)(nil)).Elem(), RulesetRuleActionParameterCacheKeyCustomKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyArrayInput)(nil)).Elem(), RulesetRuleActionParameterCacheKeyCustomKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyCookieInput)(nil)).Elem(), RulesetRuleActionParameterCacheKeyCustomKeyCookieArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayInput)(nil)).Elem(), RulesetRuleActionParameterCacheKeyCustomKeyCookieArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyHeaderInput)(nil)).Elem(), RulesetRuleActionParameterCacheKeyCustomKeyHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayInput)(nil)).Elem(), RulesetRuleActionParameterCacheKeyCustomKeyHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyHostInput)(nil)).Elem(), RulesetRuleActionParameterCacheKeyCustomKeyHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyHostArrayInput)(nil)).Elem(), RulesetRuleActionParameterCacheKeyCustomKeyHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyQueryStringInput)(nil)).Elem(), RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayInput)(nil)).Elem(), RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyUserInput)(nil)).Elem(), RulesetRuleActionParameterCacheKeyCustomKeyUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterCacheKeyCustomKeyUserArrayInput)(nil)).Elem(), RulesetRuleActionParameterCacheKeyCustomKeyUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterEdgeTtlInput)(nil)).Elem(), RulesetRuleActionParameterEdgeTtlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterEdgeTtlArrayInput)(nil)).Elem(), RulesetRuleActionParameterEdgeTtlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterEdgeTtlStatusCodeTtlInput)(nil)).Elem(), RulesetRuleActionParameterEdgeTtlStatusCodeTtlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayInput)(nil)).Elem(), RulesetRuleActionParameterEdgeTtlStatusCodeTtlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeInput)(nil)).Elem(), RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayInput)(nil)).Elem(), RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterFromListInput)(nil)).Elem(), RulesetRuleActionParameterFromListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterFromListArrayInput)(nil)).Elem(), RulesetRuleActionParameterFromListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterFromValueInput)(nil)).Elem(), RulesetRuleActionParameterFromValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterFromValueArrayInput)(nil)).Elem(), RulesetRuleActionParameterFromValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterFromValueTargetUrlInput)(nil)).Elem(), RulesetRuleActionParameterFromValueTargetUrlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterFromValueTargetUrlArrayInput)(nil)).Elem(), RulesetRuleActionParameterFromValueTargetUrlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterHeaderInput)(nil)).Elem(), RulesetRuleActionParameterHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterHeaderArrayInput)(nil)).Elem(), RulesetRuleActionParameterHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterMatchedDataInput)(nil)).Elem(), RulesetRuleActionParameterMatchedDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterMatchedDataArrayInput)(nil)).Elem(), RulesetRuleActionParameterMatchedDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterOriginInput)(nil)).Elem(), RulesetRuleActionParameterOriginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterOriginArrayInput)(nil)).Elem(), RulesetRuleActionParameterOriginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterOverrideInput)(nil)).Elem(), RulesetRuleActionParameterOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterOverrideArrayInput)(nil)).Elem(), RulesetRuleActionParameterOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterOverrideCategoryInput)(nil)).Elem(), RulesetRuleActionParameterOverrideCategoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterOverrideCategoryArrayInput)(nil)).Elem(), RulesetRuleActionParameterOverrideCategoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterOverrideRuleInput)(nil)).Elem(), RulesetRuleActionParameterOverrideRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterOverrideRuleArrayInput)(nil)).Elem(), RulesetRuleActionParameterOverrideRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterResponseInput)(nil)).Elem(), RulesetRuleActionParameterResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterResponseArrayInput)(nil)).Elem(), RulesetRuleActionParameterResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterServeStaleInput)(nil)).Elem(), RulesetRuleActionParameterServeStaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterServeStaleArrayInput)(nil)).Elem(), RulesetRuleActionParameterServeStaleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterSniInput)(nil)).Elem(), RulesetRuleActionParameterSniArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterSniArrayInput)(nil)).Elem(), RulesetRuleActionParameterSniArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterUriInput)(nil)).Elem(), RulesetRuleActionParameterUriArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterUriArrayInput)(nil)).Elem(), RulesetRuleActionParameterUriArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterUriPathInput)(nil)).Elem(), RulesetRuleActionParameterUriPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterUriPathArrayInput)(nil)).Elem(), RulesetRuleActionParameterUriPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterUriQueryInput)(nil)).Elem(), RulesetRuleActionParameterUriQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParameterUriQueryArrayInput)(nil)).Elem(), RulesetRuleActionParameterUriQueryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleExposedCredentialCheckInput)(nil)).Elem(), RulesetRuleExposedCredentialCheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleExposedCredentialCheckPtrInput)(nil)).Elem(), RulesetRuleExposedCredentialCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleExposedCredentialCheckArrayInput)(nil)).Elem(), RulesetRuleExposedCredentialCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleLoggingInput)(nil)).Elem(), RulesetRuleLoggingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleLoggingPtrInput)(nil)).Elem(), RulesetRuleLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleLoggingArrayInput)(nil)).Elem(), RulesetRuleLoggingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleRatelimitInput)(nil)).Elem(), RulesetRuleRatelimitArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleRatelimitPtrInput)(nil)).Elem(), RulesetRuleRatelimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleRatelimitArrayInput)(nil)).Elem(), RulesetRuleRatelimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationDnsInput)(nil)).Elem(), SpectrumApplicationDnsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationDnsPtrInput)(nil)).Elem(), SpectrumApplicationDnsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationEdgeIpsInput)(nil)).Elem(), SpectrumApplicationEdgeIpsArgs{})
@@ -39925,6 +39324,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationNetworkArrayInput)(nil)).Elem(), TeamsLocationNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsInput)(nil)).Elem(), TeamsRuleRuleSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsAuditSshInput)(nil)).Elem(), TeamsRuleRuleSettingsAuditSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsAuditSshPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsAuditSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsBisoAdminControlsInput)(nil)).Elem(), TeamsRuleRuleSettingsBisoAdminControlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsBisoAdminControlsPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsBisoAdminControlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsCheckSessionInput)(nil)).Elem(), TeamsRuleRuleSettingsCheckSessionArgs{})
@@ -39991,6 +39392,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountArrayInput)(nil)).Elem(), GetAccountsAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesDeviceInput)(nil)).Elem(), GetDevicesDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesDeviceArrayInput)(nil)).Elem(), GetDevicesDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListsListInput)(nil)).Elem(), GetListsListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListsListArrayInput)(nil)).Elem(), GetListsListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerPoolsFilterInput)(nil)).Elem(), GetLoadBalancerPoolsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerPoolsFilterPtrInput)(nil)).Elem(), GetLoadBalancerPoolsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerPoolsPoolInput)(nil)).Elem(), GetLoadBalancerPoolsPoolArgs{})
@@ -40120,6 +39523,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessGroupRequireSamlArrayOutput{})
 	pulumi.RegisterOutputType(AccessIdentityProviderConfigOutput{})
 	pulumi.RegisterOutputType(AccessIdentityProviderConfigArrayOutput{})
+	pulumi.RegisterOutputType(AccessIdentityProviderScimConfigOutput{})
+	pulumi.RegisterOutputType(AccessIdentityProviderScimConfigArrayOutput{})
 	pulumi.RegisterOutputType(AccessOrganizationLoginDesignOutput{})
 	pulumi.RegisterOutputType(AccessOrganizationLoginDesignArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyApprovalGroupOutput{})
@@ -40168,6 +39573,10 @@ func init() {
 	pulumi.RegisterOutputType(AccessPolicyRequireSamlArrayOutput{})
 	pulumi.RegisterOutputType(AccessRuleConfigurationOutput{})
 	pulumi.RegisterOutputType(AccessRuleConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(AddressMapIpOutput{})
+	pulumi.RegisterOutputType(AddressMapIpArrayOutput{})
+	pulumi.RegisterOutputType(AddressMapMembershipOutput{})
+	pulumi.RegisterOutputType(AddressMapMembershipArrayOutput{})
 	pulumi.RegisterOutputType(ApiShieldAuthIdCharacteristicOutput{})
 	pulumi.RegisterOutputType(ApiShieldAuthIdCharacteristicArrayOutput{})
 	pulumi.RegisterOutputType(ApiTokenConditionOutput{})
@@ -40192,6 +39601,8 @@ func init() {
 	pulumi.RegisterOutputType(CustomSslCustomSslOptionsPtrOutput{})
 	pulumi.RegisterOutputType(CustomSslCustomSslPriorityOutput{})
 	pulumi.RegisterOutputType(CustomSslCustomSslPriorityArrayOutput{})
+	pulumi.RegisterOutputType(DeviceDexTestDataOutput{})
+	pulumi.RegisterOutputType(DeviceDexTestDataPtrOutput{})
 	pulumi.RegisterOutputType(DeviceManagedNetworksConfigOutput{})
 	pulumi.RegisterOutputType(DeviceManagedNetworksConfigPtrOutput{})
 	pulumi.RegisterOutputType(DevicePostureIntegrationConfigOutput{})
@@ -40216,8 +39627,10 @@ func init() {
 	pulumi.RegisterOutputType(FallbackDomainDomainArrayOutput{})
 	pulumi.RegisterOutputType(HealthcheckHeaderOutput{})
 	pulumi.RegisterOutputType(HealthcheckHeaderArrayOutput{})
-	pulumi.RegisterOutputType(ListItemOutput{})
-	pulumi.RegisterOutputType(ListItemArrayOutput{})
+	pulumi.RegisterOutputType(ListItemTypeOutput{})
+	pulumi.RegisterOutputType(ListItemTypeArrayOutput{})
+	pulumi.RegisterOutputType(ListItemRedirectOutput{})
+	pulumi.RegisterOutputType(ListItemRedirectPtrOutput{})
 	pulumi.RegisterOutputType(ListItemValueOutput{})
 	pulumi.RegisterOutputType(ListItemValueRedirectOutput{})
 	pulumi.RegisterOutputType(ListItemValueRedirectArrayOutput{})
@@ -40329,68 +39742,68 @@ func init() {
 	pulumi.RegisterOutputType(RecordDataPtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleOutput{})
 	pulumi.RegisterOutputType(RulesetRuleArrayOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersPtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersAutominifyOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersAutominifyArrayOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersBrowserTtlOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersBrowserTtlPtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersCacheKeyOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersCacheKeyPtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersCacheKeyCustomKeyOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersCacheKeyCustomKeyPtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersCacheKeyCustomKeyCookieOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersCacheKeyCustomKeyCookiePtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersCacheKeyCustomKeyHeaderPtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersCacheKeyCustomKeyHostOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersCacheKeyCustomKeyHostPtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringPtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersCacheKeyCustomKeyUserOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersEdgeTtlOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersEdgeTtlPtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersFromListOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersFromListPtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersFromValueOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersFromValuePtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersFromValueTargetUrlOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersFromValueTargetUrlPtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersHeaderOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersHeaderArrayOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersMatchedDataOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersMatchedDataPtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersOriginOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersOriginPtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesPtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesCategoryOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesCategoryArrayOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesRuleOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesRuleArrayOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersResponseOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersResponseArrayOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersServeStaleOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersServeStalePtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersSniOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersSniPtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersUriOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersUriPtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersUriPathOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersUriPathPtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersUriQueryOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParametersUriQueryPtrOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterAutominifyOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterAutominifyArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterBrowserTtlOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterBrowserTtlArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterCacheKeyOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterCacheKeyArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterCacheKeyCustomKeyOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterCacheKeyCustomKeyArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterCacheKeyCustomKeyCookieOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterCacheKeyCustomKeyCookieArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterCacheKeyCustomKeyHeaderOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterCacheKeyCustomKeyHeaderArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterCacheKeyCustomKeyHostOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterCacheKeyCustomKeyHostArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterCacheKeyCustomKeyQueryStringOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterCacheKeyCustomKeyQueryStringArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterCacheKeyCustomKeyUserOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterCacheKeyCustomKeyUserArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterEdgeTtlOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterEdgeTtlArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterEdgeTtlStatusCodeTtlOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterEdgeTtlStatusCodeTtlArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRangeArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterFromListOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterFromListArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterFromValueOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterFromValueArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterFromValueTargetUrlOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterFromValueTargetUrlArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterHeaderOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterHeaderArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterMatchedDataOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterMatchedDataArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterOriginOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterOriginArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterOverrideOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterOverrideArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterOverrideCategoryOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterOverrideCategoryArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterOverrideRuleOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterOverrideRuleArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterResponseOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterResponseArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterServeStaleOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterServeStaleArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterSniOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterSniArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterUriOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterUriArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterUriPathOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterUriPathArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterUriQueryOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParameterUriQueryArrayOutput{})
 	pulumi.RegisterOutputType(RulesetRuleExposedCredentialCheckOutput{})
-	pulumi.RegisterOutputType(RulesetRuleExposedCredentialCheckPtrOutput{})
+	pulumi.RegisterOutputType(RulesetRuleExposedCredentialCheckArrayOutput{})
 	pulumi.RegisterOutputType(RulesetRuleLoggingOutput{})
-	pulumi.RegisterOutputType(RulesetRuleLoggingPtrOutput{})
+	pulumi.RegisterOutputType(RulesetRuleLoggingArrayOutput{})
 	pulumi.RegisterOutputType(RulesetRuleRatelimitOutput{})
-	pulumi.RegisterOutputType(RulesetRuleRatelimitPtrOutput{})
+	pulumi.RegisterOutputType(RulesetRuleRatelimitArrayOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationDnsOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationDnsPtrOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationEdgeIpsOutput{})
@@ -40425,6 +39838,8 @@ func init() {
 	pulumi.RegisterOutputType(TeamsLocationNetworkArrayOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsPtrOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsAuditSshOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsAuditSshPtrOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsBisoAdminControlsOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsBisoAdminControlsPtrOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsCheckSessionOutput{})
@@ -40491,6 +39906,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetDevicesDeviceOutput{})
 	pulumi.RegisterOutputType(GetDevicesDeviceArrayOutput{})
+	pulumi.RegisterOutputType(GetListsListOutput{})
+	pulumi.RegisterOutputType(GetListsListArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerPoolsFilterOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerPoolsFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerPoolsPoolOutput{})

@@ -100,9 +100,6 @@ class WorkersKvNamespace(pulumi.CustomResource):
         """
         Provides the ability to manage Cloudflare Workers KV Namespace features.
 
-        > This resource uses the Cloudflare account APIs. This requires setting the
-        `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
-
         ## Example Usage
 
         ```python
@@ -133,9 +130,6 @@ class WorkersKvNamespace(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides the ability to manage Cloudflare Workers KV Namespace features.
-
-        > This resource uses the Cloudflare account APIs. This requires setting the
-        `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
 
         ## Example Usage
 

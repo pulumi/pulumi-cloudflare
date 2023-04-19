@@ -16,13 +16,15 @@ namespace Pulumi.Cloudflare
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUser = new Cloudflare.AccountMember("exampleUser", new()
+    ///     var example = new Cloudflare.AccountMember("example", new()
     ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         EmailAddress = "user@example.com",
     ///         RoleIds = new[]
     ///         {

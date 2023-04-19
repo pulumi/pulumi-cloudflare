@@ -18,6 +18,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
@@ -53,6 +54,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("cname")]
         public Output<string> Cname { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
+        [Output("configSrc")]
+        public Output<string?> ConfigSrc { get; private set; } = null!;
 
         /// <summary>
         /// A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
@@ -130,6 +137,12 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
+        [Input("configSrc")]
+        public Input<string>? ConfigSrc { get; set; }
+
+        /// <summary>
         /// A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name", required: true)]
@@ -170,6 +183,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("cname")]
         public Input<string>? Cname { get; set; }
+
+        /// <summary>
+        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
+        [Input("configSrc")]
+        public Input<string>? ConfigSrc { get; set; }
 
         /// <summary>
         /// A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**

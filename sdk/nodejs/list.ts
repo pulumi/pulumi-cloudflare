@@ -7,9 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides Lists (IPs, Redirects) to be used in Edge Rules Engine
- * across all zones within the same account.
- *
  * ## Import
  *
  * ```sh
@@ -54,7 +51,7 @@ export class List extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly items!: pulumi.Output<outputs.ListItem[] | undefined>;
     /**
-     * The type of items the list will contain.
+     * The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly kind!: pulumi.Output<string>;
     /**
@@ -116,7 +113,7 @@ export interface ListState {
     description?: pulumi.Input<string>;
     items?: pulumi.Input<pulumi.Input<inputs.ListItem>[]>;
     /**
-     * The type of items the list will contain.
+     * The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
      */
     kind?: pulumi.Input<string>;
     /**
@@ -139,7 +136,7 @@ export interface ListArgs {
     description?: pulumi.Input<string>;
     items?: pulumi.Input<pulumi.Input<inputs.ListItem>[]>;
     /**
-     * The type of items the list will contain.
+     * The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
      */
     kind: pulumi.Input<string>;
     /**

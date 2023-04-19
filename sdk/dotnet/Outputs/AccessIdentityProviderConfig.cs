@@ -20,6 +20,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? CentrifyAccount;
         public readonly string? CentrifyAppId;
         public readonly string? CertsUrl;
+        public readonly ImmutableArray<string> Claims;
         public readonly string? ClientId;
         public readonly string? ClientSecret;
         public readonly string? DirectoryId;
@@ -30,6 +31,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? OneloginAccount;
         public readonly bool? PkceEnabled;
         public readonly string? RedirectUrl;
+        public readonly ImmutableArray<string> Scopes;
         public readonly bool? SignRequest;
         public readonly string? SsoTargetUrl;
         public readonly bool? SupportGroups;
@@ -51,6 +53,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? certsUrl,
 
+            ImmutableArray<string> claims,
+
             string? clientId,
 
             string? clientSecret,
@@ -71,6 +75,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? redirectUrl,
 
+            ImmutableArray<string> scopes,
+
             bool? signRequest,
 
             string? ssoTargetUrl,
@@ -86,6 +92,7 @@ namespace Pulumi.Cloudflare.Outputs
             CentrifyAccount = centrifyAccount;
             CentrifyAppId = centrifyAppId;
             CertsUrl = certsUrl;
+            Claims = claims;
             ClientId = clientId;
             ClientSecret = clientSecret;
             DirectoryId = directoryId;
@@ -96,6 +103,7 @@ namespace Pulumi.Cloudflare.Outputs
             OneloginAccount = oneloginAccount;
             PkceEnabled = pkceEnabled;
             RedirectUrl = redirectUrl;
+            Scopes = scopes;
             SignRequest = signRequest;
             SsoTargetUrl = ssoTargetUrl;
             SupportGroups = supportGroups;

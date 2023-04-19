@@ -44,6 +44,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Account{}
 	case "cloudflare:index/accountMember:AccountMember":
 		r = &AccountMember{}
+	case "cloudflare:index/addressMap:AddressMap":
+		r = &AddressMap{}
 	case "cloudflare:index/apiShield:ApiShield":
 		r = &ApiShield{}
 	case "cloudflare:index/apiToken:ApiToken":
@@ -66,6 +68,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomPages{}
 	case "cloudflare:index/customSsl:CustomSsl":
 		r = &CustomSsl{}
+	case "cloudflare:index/deviceDexTest:DeviceDexTest":
+		r = &DeviceDexTest{}
 	case "cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks":
 		r = &DeviceManagedNetworks{}
 	case "cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates":
@@ -100,6 +104,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IpsecTunnel{}
 	case "cloudflare:index/list:List":
 		r = &List{}
+	case "cloudflare:index/listItem:ListItem":
+		r = &ListItem{}
 	case "cloudflare:index/loadBalancer:LoadBalancer":
 		r = &LoadBalancer{}
 	case "cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor":
@@ -180,6 +186,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Web3Hostname{}
 	case "cloudflare:index/workerCronTrigger:WorkerCronTrigger":
 		r = &WorkerCronTrigger{}
+	case "cloudflare:index/workerDomain:WorkerDomain":
+		r = &WorkerDomain{}
 	case "cloudflare:index/workerRoute:WorkerRoute":
 		r = &WorkerRoute{}
 	case "cloudflare:index/workerScript:WorkerScript":
@@ -288,6 +296,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/addressMap",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/apiShield",
 		&module{version},
 	)
@@ -339,6 +352,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/customSsl",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/deviceDexTest",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -424,6 +442,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/list",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/listItem",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -624,6 +647,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/workerCronTrigger",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/workerDomain",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

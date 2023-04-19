@@ -16,6 +16,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
@@ -135,7 +136,7 @@ namespace Pulumi.Cloudflare
         public Output<int?> Precedence { get; private set; } = null!;
 
         /// <summary>
-        /// The service mode. Defaults to `warp`.
+        /// The service mode. Available values: `1dot1`, `warp`, `proxy`, `posture_only`, `warp_tunnel_only`. Defaults to `warp`.
         /// </summary>
         [Output("serviceModeV2Mode")]
         public Output<string?> ServiceModeV2Mode { get; private set; } = null!;
@@ -283,7 +284,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? Precedence { get; set; }
 
         /// <summary>
-        /// The service mode. Defaults to `warp`.
+        /// The service mode. Available values: `1dot1`, `warp`, `proxy`, `posture_only`, `warp_tunnel_only`. Defaults to `warp`.
         /// </summary>
         [Input("serviceModeV2Mode")]
         public Input<string>? ServiceModeV2Mode { get; set; }
@@ -393,7 +394,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? Precedence { get; set; }
 
         /// <summary>
-        /// The service mode. Defaults to `warp`.
+        /// The service mode. Available values: `1dot1`, `warp`, `proxy`, `posture_only`, `warp_tunnel_only`. Defaults to `warp`.
         /// </summary>
         [Input("serviceModeV2Mode")]
         public Input<string>? ServiceModeV2Mode { get; set; }

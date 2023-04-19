@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double? DefaultPercent;
         /// <summary>
-        /// Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`""`.
+        /// Method of shedding traffic. Available values: `""`, `hash`, `random`. Defaults to `""`.
         /// </summary>
         public readonly string? DefaultPolicy;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double? SessionPercent;
         /// <summary>
-        /// Method of shedding traffic. Available values: ``,`hash`. Defaults to`""`.
+        /// Method of shedding traffic. Available values: `""`, `hash`. Defaults to `""`.
         /// </summary>
         public readonly string? SessionPolicy;
 

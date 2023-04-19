@@ -31,13 +31,13 @@ import (
 type Ruleset struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Brief summary of the ruleset and its intended use.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+	// Name of the ruleset.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
 	Phase pulumi.StringOutput `pulumi:"phase"`
@@ -45,7 +45,7 @@ type Ruleset struct {
 	Rules RulesetRuleArrayOutput `pulumi:"rules"`
 	// Name of entitlement that is shareable between entities.
 	ShareableEntitlementName pulumi.StringPtrOutput `pulumi:"shareableEntitlementName"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
@@ -87,13 +87,13 @@ func GetRuleset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Ruleset resources.
 type rulesetState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
 	// Brief summary of the ruleset and its intended use.
 	Description *string `pulumi:"description"`
 	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
 	Kind *string `pulumi:"kind"`
-	// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+	// Name of the ruleset.
 	Name *string `pulumi:"name"`
 	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
 	Phase *string `pulumi:"phase"`
@@ -101,18 +101,18 @@ type rulesetState struct {
 	Rules []RulesetRule `pulumi:"rules"`
 	// Name of entitlement that is shareable between entities.
 	ShareableEntitlementName *string `pulumi:"shareableEntitlementName"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type RulesetState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
 	// Brief summary of the ruleset and its intended use.
 	Description pulumi.StringPtrInput
 	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
 	Kind pulumi.StringPtrInput
-	// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+	// Name of the ruleset.
 	Name pulumi.StringPtrInput
 	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
 	Phase pulumi.StringPtrInput
@@ -120,7 +120,7 @@ type RulesetState struct {
 	Rules RulesetRuleArrayInput
 	// Name of entitlement that is shareable between entities.
 	ShareableEntitlementName pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -129,13 +129,13 @@ func (RulesetState) ElementType() reflect.Type {
 }
 
 type rulesetArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
 	// Brief summary of the ruleset and its intended use.
 	Description *string `pulumi:"description"`
 	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
 	Kind string `pulumi:"kind"`
-	// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+	// Name of the ruleset.
 	Name string `pulumi:"name"`
 	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
 	Phase string `pulumi:"phase"`
@@ -143,19 +143,19 @@ type rulesetArgs struct {
 	Rules []RulesetRule `pulumi:"rules"`
 	// Name of entitlement that is shareable between entities.
 	ShareableEntitlementName *string `pulumi:"shareableEntitlementName"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Ruleset resource.
 type RulesetArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
 	// Brief summary of the ruleset and its intended use.
 	Description pulumi.StringPtrInput
 	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
 	Kind pulumi.StringInput
-	// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+	// Name of the ruleset.
 	Name pulumi.StringInput
 	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
 	Phase pulumi.StringInput
@@ -163,7 +163,7 @@ type RulesetArgs struct {
 	Rules RulesetRuleArrayInput
 	// Name of entitlement that is shareable between entities.
 	ShareableEntitlementName pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -254,14 +254,14 @@ func (o RulesetOutput) ToRulesetOutputWithContext(ctx context.Context) RulesetOu
 	return o
 }
 
-// The account identifier to target for the resource. Conflicts with `zoneId`.
+// The account identifier to target for the resource.
 func (o RulesetOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Brief summary of the ruleset and its intended use.
-func (o RulesetOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Ruleset) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o RulesetOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
@@ -269,7 +269,7 @@ func (o RulesetOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+// Name of the ruleset.
 func (o RulesetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -289,7 +289,7 @@ func (o RulesetOutput) ShareableEntitlementName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringPtrOutput { return v.ShareableEntitlementName }).(pulumi.StringPtrOutput)
 }
 
-// The zone identifier to target for the resource. Conflicts with `accountId`.
+// The zone identifier to target for the resource.
 func (o RulesetOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -87,6 +88,20 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
      */
     public Output<String> cname() {
         return this.cname;
+    }
+    /**
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
+    @Export(name="configSrc", type=String.class, parameters={})
+    private Output</* @Nullable */ String> configSrc;
+
+    /**
+     * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
+    public Output<Optional<String>> configSrc() {
+        return Codegen.optional(this.configSrc);
     }
     /**
      * A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**

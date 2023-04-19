@@ -65,6 +65,10 @@ export class Tunnel extends pulumi.CustomResource {
      */
     public /*out*/ readonly cname!: pulumi.Output<string>;
     /**
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+     */
+    public readonly configSrc!: pulumi.Output<string | undefined>;
+    /**
      * A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly name!: pulumi.Output<string>;
@@ -92,6 +96,7 @@ export class Tunnel extends pulumi.CustomResource {
             const state = argsOrState as TunnelState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["cname"] = state ? state.cname : undefined;
+            resourceInputs["configSrc"] = state ? state.configSrc : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["secret"] = state ? state.secret : undefined;
             resourceInputs["tunnelToken"] = state ? state.tunnelToken : undefined;
@@ -107,6 +112,7 @@ export class Tunnel extends pulumi.CustomResource {
                 throw new Error("Missing required property 'secret'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["configSrc"] = args ? args.configSrc : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
             resourceInputs["cname"] = undefined /*out*/;
@@ -132,6 +138,10 @@ export interface TunnelState {
      */
     cname?: pulumi.Input<string>;
     /**
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+     */
+    configSrc?: pulumi.Input<string>;
+    /**
      * A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
      */
     name?: pulumi.Input<string>;
@@ -153,6 +163,10 @@ export interface TunnelArgs {
      * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+     */
+    configSrc?: pulumi.Input<string>;
     /**
      * A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
      */

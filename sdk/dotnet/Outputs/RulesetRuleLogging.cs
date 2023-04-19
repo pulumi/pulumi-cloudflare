@@ -13,17 +13,12 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleLogging
     {
-        public readonly bool? Enabled;
-        public readonly string? Status;
+        public readonly bool Enabled;
 
         [OutputConstructor]
-        private RulesetRuleLogging(
-            bool? enabled,
-
-            string? status)
+        private RulesetRuleLogging(bool enabled)
         {
             Enabled = enabled;
-            Status = status;
         }
     }
 }

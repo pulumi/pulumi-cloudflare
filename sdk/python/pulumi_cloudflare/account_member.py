@@ -171,7 +171,8 @@ class AccountMember(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_user = cloudflare.AccountMember("exampleUser",
+        example = cloudflare.AccountMember("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
             email_address="user@example.com",
             role_ids=[
                 "68b329da9893e34099c7d8ad5cb9c940",
@@ -207,7 +208,8 @@ class AccountMember(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_user = cloudflare.AccountMember("exampleUser",
+        example = cloudflare.AccountMember("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
             email_address="user@example.com",
             role_ids=[
                 "68b329da9893e34099c7d8ad5cb9c940",

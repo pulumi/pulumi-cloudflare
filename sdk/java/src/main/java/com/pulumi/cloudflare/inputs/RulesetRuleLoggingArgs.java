@@ -6,47 +6,24 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class RulesetRuleLoggingArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleLoggingArgs Empty = new RulesetRuleLoggingArgs();
 
-    /**
-     * @deprecated
-     * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-     * 
-     */
-    @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
-    @Import(name="enabled")
-    private @Nullable Output<Boolean> enabled;
+    @Import(name="enabled", required=true)
+    private Output<Boolean> enabled;
 
-    /**
-     * @deprecated
-     * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-     * 
-     */
-    @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
-    public Optional<Output<Boolean>> enabled() {
-        return Optional.ofNullable(this.enabled);
-    }
-
-    @Import(name="status")
-    private @Nullable Output<String> status;
-
-    public Optional<Output<String>> status() {
-        return Optional.ofNullable(this.status);
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
 
     private RulesetRuleLoggingArgs() {}
 
     private RulesetRuleLoggingArgs(RulesetRuleLoggingArgs $) {
         this.enabled = $.enabled;
-        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -67,41 +44,17 @@ public final class RulesetRuleLoggingArgs extends com.pulumi.resources.ResourceA
             $ = new RulesetRuleLoggingArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-         * 
-         */
-        @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
-        public Builder enabled(@Nullable Output<Boolean> enabled) {
+        public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-         * 
-         */
-        @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
-        public Builder status(@Nullable Output<String> status) {
-            $.status = status;
-            return this;
-        }
-
-        public Builder status(String status) {
-            return status(Output.of(status));
-        }
-
         public RulesetRuleLoggingArgs build() {
+            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
             return $;
         }
     }

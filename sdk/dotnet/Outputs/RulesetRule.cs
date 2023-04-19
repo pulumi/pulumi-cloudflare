@@ -14,13 +14,13 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRule
     {
         /// <summary>
-        /// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
+        /// Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
         /// </summary>
         public readonly string? Action;
         /// <summary>
         /// List of parameters that configure the behavior of the ruleset rule action.
         /// </summary>
-        public readonly Outputs.RulesetRuleActionParameters? ActionParameters;
+        public readonly ImmutableArray<Outputs.RulesetRuleActionParameter> ActionParameters;
         /// <summary>
         /// Brief summary of the ruleset rule and its intended use.
         /// </summary>
@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// List of parameters that configure exposed credential checks.
         /// </summary>
-        public readonly Outputs.RulesetRuleExposedCredentialCheck? ExposedCredentialCheck;
+        public readonly ImmutableArray<Outputs.RulesetRuleExposedCredentialCheck> ExposedCredentialChecks;
         /// <summary>
         /// Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
         /// </summary>
@@ -48,11 +48,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// List parameters to configure how the rule generates logs.
         /// </summary>
-        public readonly Outputs.RulesetRuleLogging? Logging;
+        public readonly ImmutableArray<Outputs.RulesetRuleLogging> Loggings;
         /// <summary>
         /// List of parameters that configure HTTP rate limiting behaviour.
         /// </summary>
-        public readonly Outputs.RulesetRuleRatelimit? Ratelimit;
+        public readonly ImmutableArray<Outputs.RulesetRuleRatelimit> Ratelimits;
         /// <summary>
         /// Rule reference.
         /// </summary>
@@ -66,13 +66,13 @@ namespace Pulumi.Cloudflare.Outputs
         private RulesetRule(
             string? action,
 
-            Outputs.RulesetRuleActionParameters? actionParameters,
+            ImmutableArray<Outputs.RulesetRuleActionParameter> actionParameters,
 
             string? description,
 
             bool? enabled,
 
-            Outputs.RulesetRuleExposedCredentialCheck? exposedCredentialCheck,
+            ImmutableArray<Outputs.RulesetRuleExposedCredentialCheck> exposedCredentialChecks,
 
             string expression,
 
@@ -80,9 +80,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? lastUpdated,
 
-            Outputs.RulesetRuleLogging? logging,
+            ImmutableArray<Outputs.RulesetRuleLogging> loggings,
 
-            Outputs.RulesetRuleRatelimit? ratelimit,
+            ImmutableArray<Outputs.RulesetRuleRatelimit> ratelimits,
 
             string? @ref,
 
@@ -92,12 +92,12 @@ namespace Pulumi.Cloudflare.Outputs
             ActionParameters = actionParameters;
             Description = description;
             Enabled = enabled;
-            ExposedCredentialCheck = exposedCredentialCheck;
+            ExposedCredentialChecks = exposedCredentialChecks;
             Expression = expression;
             Id = id;
             LastUpdated = lastUpdated;
-            Logging = logging;
-            Ratelimit = ratelimit;
+            Loggings = loggings;
+            Ratelimits = ratelimits;
             Ref = @ref;
             Version = version;
         }

@@ -34,8 +34,9 @@ class ProviderArgs:
         :param pulumi.Input[str] api_hostname: Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
                environment variable.
         :param pulumi.Input[str] api_key: The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
-               keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-               should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+               keys are [now considered legacy by
+               Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
+               instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         :param pulumi.Input[str] api_token: The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
                Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         :param pulumi.Input[str] api_user_service_key: A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
@@ -129,8 +130,9 @@ class ProviderArgs:
     def api_key(self) -> Optional[pulumi.Input[str]]:
         """
         The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
-        keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-        should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+        keys are [now considered legacy by
+        Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
+        instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         """
         return pulumi.get(self, "api_key")
 
@@ -263,8 +265,9 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] api_hostname: Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
                environment variable.
         :param pulumi.Input[str] api_key: The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
-               keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-               should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+               keys are [now considered legacy by
+               Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
+               instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         :param pulumi.Input[str] api_token: The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
                Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         :param pulumi.Input[str] api_user_service_key: A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
@@ -378,8 +381,9 @@ class Provider(pulumi.ProviderResource):
     def api_key(self) -> pulumi.Output[Optional[str]]:
         """
         The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
-        keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-        should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+        keys are [now considered legacy by
+        Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
+        instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         """
         return pulumi.get(self, "api_key")
 

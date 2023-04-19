@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  * const example = new cloudflare.AccessOrganization("example", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     authDomain: "example.cloudflareaccess.com",
+ *     autoRedirectToIdentity: false,
  *     isUiReadOnly: false,
  *     loginDesigns: [{
  *         backgroundColor: "#ffffff",
@@ -74,6 +75,10 @@ export class AccessOrganization extends pulumi.CustomResource {
      */
     public readonly authDomain!: pulumi.Output<string>;
     /**
+     * When set to true, users skip the identity provider selection step during login.
+     */
+    public readonly autoRedirectToIdentity!: pulumi.Output<boolean | undefined>;
+    /**
      * When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
      */
     public readonly isUiReadOnly!: pulumi.Output<boolean | undefined>;
@@ -82,6 +87,10 @@ export class AccessOrganization extends pulumi.CustomResource {
      * The name of your Zero Trust organization.
      */
     public readonly name!: pulumi.Output<string | undefined>;
+    /**
+     * A description of the reason why the UI read only field is being toggled.
+     */
+    public readonly uiReadOnlyToggleReason!: pulumi.Output<string | undefined>;
     /**
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
      */
@@ -106,9 +115,11 @@ export class AccessOrganization extends pulumi.CustomResource {
             const state = argsOrState as AccessOrganizationState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["authDomain"] = state ? state.authDomain : undefined;
+            resourceInputs["autoRedirectToIdentity"] = state ? state.autoRedirectToIdentity : undefined;
             resourceInputs["isUiReadOnly"] = state ? state.isUiReadOnly : undefined;
             resourceInputs["loginDesigns"] = state ? state.loginDesigns : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["uiReadOnlyToggleReason"] = state ? state.uiReadOnlyToggleReason : undefined;
             resourceInputs["userSeatExpirationInactiveTime"] = state ? state.userSeatExpirationInactiveTime : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -118,9 +129,11 @@ export class AccessOrganization extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["authDomain"] = args ? args.authDomain : undefined;
+            resourceInputs["autoRedirectToIdentity"] = args ? args.autoRedirectToIdentity : undefined;
             resourceInputs["isUiReadOnly"] = args ? args.isUiReadOnly : undefined;
             resourceInputs["loginDesigns"] = args ? args.loginDesigns : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["uiReadOnlyToggleReason"] = args ? args.uiReadOnlyToggleReason : undefined;
             resourceInputs["userSeatExpirationInactiveTime"] = args ? args.userSeatExpirationInactiveTime : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
@@ -142,6 +155,10 @@ export interface AccessOrganizationState {
      */
     authDomain?: pulumi.Input<string>;
     /**
+     * When set to true, users skip the identity provider selection step during login.
+     */
+    autoRedirectToIdentity?: pulumi.Input<boolean>;
+    /**
      * When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
      */
     isUiReadOnly?: pulumi.Input<boolean>;
@@ -150,6 +167,10 @@ export interface AccessOrganizationState {
      * The name of your Zero Trust organization.
      */
     name?: pulumi.Input<string>;
+    /**
+     * A description of the reason why the UI read only field is being toggled.
+     */
+    uiReadOnlyToggleReason?: pulumi.Input<string>;
     /**
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
      */
@@ -173,6 +194,10 @@ export interface AccessOrganizationArgs {
      */
     authDomain: pulumi.Input<string>;
     /**
+     * When set to true, users skip the identity provider selection step during login.
+     */
+    autoRedirectToIdentity?: pulumi.Input<boolean>;
+    /**
      * When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
      */
     isUiReadOnly?: pulumi.Input<boolean>;
@@ -181,6 +206,10 @@ export interface AccessOrganizationArgs {
      * The name of your Zero Trust organization.
      */
     name?: pulumi.Input<string>;
+    /**
+     * A description of the reason why the UI read only field is being toggled.
+     */
+    uiReadOnlyToggleReason?: pulumi.Input<string>;
     /**
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
      */

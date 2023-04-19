@@ -6,20 +6,18 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleExposedCredentialCheck {
-    private @Nullable String passwordExpression;
-    private @Nullable String usernameExpression;
+    private String passwordExpression;
+    private String usernameExpression;
 
     private RulesetRuleExposedCredentialCheck() {}
-    public Optional<String> passwordExpression() {
-        return Optional.ofNullable(this.passwordExpression);
+    public String passwordExpression() {
+        return this.passwordExpression;
     }
-    public Optional<String> usernameExpression() {
-        return Optional.ofNullable(this.usernameExpression);
+    public String usernameExpression() {
+        return this.usernameExpression;
     }
 
     public static Builder builder() {
@@ -31,8 +29,8 @@ public final class RulesetRuleExposedCredentialCheck {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String passwordExpression;
-        private @Nullable String usernameExpression;
+        private String passwordExpression;
+        private String usernameExpression;
         public Builder() {}
         public Builder(RulesetRuleExposedCredentialCheck defaults) {
     	      Objects.requireNonNull(defaults);
@@ -41,13 +39,13 @@ public final class RulesetRuleExposedCredentialCheck {
         }
 
         @CustomType.Setter
-        public Builder passwordExpression(@Nullable String passwordExpression) {
-            this.passwordExpression = passwordExpression;
+        public Builder passwordExpression(String passwordExpression) {
+            this.passwordExpression = Objects.requireNonNull(passwordExpression);
             return this;
         }
         @CustomType.Setter
-        public Builder usernameExpression(@Nullable String usernameExpression) {
-            this.usernameExpression = usernameExpression;
+        public Builder usernameExpression(String usernameExpression) {
+            this.usernameExpression = Objects.requireNonNull(usernameExpression);
             return this;
         }
         public RulesetRuleExposedCredentialCheck build() {

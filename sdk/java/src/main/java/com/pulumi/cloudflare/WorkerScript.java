@@ -27,9 +27,6 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloudflare worker script resource. In order for a script to be active, you&#39;ll also need to setup a `cloudflare.WorkerRoute`.
  * 
- * &gt; This resource uses the Cloudflare account APIs. This requires setting the
- *   `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
- * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -135,6 +132,34 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.analyticsEngineBindings);
     }
     /**
+     * The date to use for the compatibility flag.
+     * 
+     */
+    @Export(name="compatibilityDate", type=String.class, parameters={})
+    private Output</* @Nullable */ String> compatibilityDate;
+
+    /**
+     * @return The date to use for the compatibility flag.
+     * 
+     */
+    public Output<Optional<String>> compatibilityDate() {
+        return Codegen.optional(this.compatibilityDate);
+    }
+    /**
+     * Compatibility flags used for Worker Scripts.
+     * 
+     */
+    @Export(name="compatibilityFlags", type=List.class, parameters={String.class})
+    private Output<List<String>> compatibilityFlags;
+
+    /**
+     * @return Compatibility flags used for Worker Scripts.
+     * 
+     */
+    public Output<List<String>> compatibilityFlags() {
+        return this.compatibilityFlags;
+    }
+    /**
      * The script content.
      * 
      */
@@ -153,6 +178,20 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<List<WorkerScriptKvNamespaceBinding>>> kvNamespaceBindings() {
         return Codegen.optional(this.kvNamespaceBindings);
+    }
+    /**
+     * Enabling allows Worker events to be sent to a defined Logpush destination.
+     * 
+     */
+    @Export(name="logpush", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> logpush;
+
+    /**
+     * @return Enabling allows Worker events to be sent to a defined Logpush destination.
+     * 
+     */
+    public Output<Optional<Boolean>> logpush() {
+        return Codegen.optional(this.logpush);
     }
     /**
      * Whether to upload Worker as a module.

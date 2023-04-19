@@ -13,10 +13,6 @@ import (
 
 // Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`.
 //
-// > This resource uses the Cloudflare account APIs. This requires setting the
-//
-//	`CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
-//
 // ## Example Usage
 //
 // ```go
@@ -127,9 +123,15 @@ type WorkerScript struct {
 	// The account identifier to target for the resource.
 	AccountId               pulumi.StringOutput                           `pulumi:"accountId"`
 	AnalyticsEngineBindings WorkerScriptAnalyticsEngineBindingArrayOutput `pulumi:"analyticsEngineBindings"`
+	// The date to use for the compatibility flag.
+	CompatibilityDate pulumi.StringPtrOutput `pulumi:"compatibilityDate"`
+	// Compatibility flags used for Worker Scripts.
+	CompatibilityFlags pulumi.StringArrayOutput `pulumi:"compatibilityFlags"`
 	// The script content.
 	Content             pulumi.StringOutput                       `pulumi:"content"`
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayOutput `pulumi:"kvNamespaceBindings"`
+	// Enabling allows Worker events to be sent to a defined Logpush destination.
+	Logpush pulumi.BoolPtrOutput `pulumi:"logpush"`
 	// Whether to upload Worker as a module.
 	Module pulumi.BoolPtrOutput `pulumi:"module"`
 	// The name for the script. **Modifying this attribute will force creation of a new resource.**
@@ -183,9 +185,15 @@ type workerScriptState struct {
 	// The account identifier to target for the resource.
 	AccountId               *string                              `pulumi:"accountId"`
 	AnalyticsEngineBindings []WorkerScriptAnalyticsEngineBinding `pulumi:"analyticsEngineBindings"`
+	// The date to use for the compatibility flag.
+	CompatibilityDate *string `pulumi:"compatibilityDate"`
+	// Compatibility flags used for Worker Scripts.
+	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
 	// The script content.
 	Content             *string                          `pulumi:"content"`
 	KvNamespaceBindings []WorkerScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
+	// Enabling allows Worker events to be sent to a defined Logpush destination.
+	Logpush *bool `pulumi:"logpush"`
 	// Whether to upload Worker as a module.
 	Module *bool `pulumi:"module"`
 	// The name for the script. **Modifying this attribute will force creation of a new resource.**
@@ -202,9 +210,15 @@ type WorkerScriptState struct {
 	// The account identifier to target for the resource.
 	AccountId               pulumi.StringPtrInput
 	AnalyticsEngineBindings WorkerScriptAnalyticsEngineBindingArrayInput
+	// The date to use for the compatibility flag.
+	CompatibilityDate pulumi.StringPtrInput
+	// Compatibility flags used for Worker Scripts.
+	CompatibilityFlags pulumi.StringArrayInput
 	// The script content.
 	Content             pulumi.StringPtrInput
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayInput
+	// Enabling allows Worker events to be sent to a defined Logpush destination.
+	Logpush pulumi.BoolPtrInput
 	// Whether to upload Worker as a module.
 	Module pulumi.BoolPtrInput
 	// The name for the script. **Modifying this attribute will force creation of a new resource.**
@@ -225,9 +239,15 @@ type workerScriptArgs struct {
 	// The account identifier to target for the resource.
 	AccountId               string                               `pulumi:"accountId"`
 	AnalyticsEngineBindings []WorkerScriptAnalyticsEngineBinding `pulumi:"analyticsEngineBindings"`
+	// The date to use for the compatibility flag.
+	CompatibilityDate *string `pulumi:"compatibilityDate"`
+	// Compatibility flags used for Worker Scripts.
+	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
 	// The script content.
 	Content             string                           `pulumi:"content"`
 	KvNamespaceBindings []WorkerScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
+	// Enabling allows Worker events to be sent to a defined Logpush destination.
+	Logpush *bool `pulumi:"logpush"`
 	// Whether to upload Worker as a module.
 	Module *bool `pulumi:"module"`
 	// The name for the script. **Modifying this attribute will force creation of a new resource.**
@@ -245,9 +265,15 @@ type WorkerScriptArgs struct {
 	// The account identifier to target for the resource.
 	AccountId               pulumi.StringInput
 	AnalyticsEngineBindings WorkerScriptAnalyticsEngineBindingArrayInput
+	// The date to use for the compatibility flag.
+	CompatibilityDate pulumi.StringPtrInput
+	// Compatibility flags used for Worker Scripts.
+	CompatibilityFlags pulumi.StringArrayInput
 	// The script content.
 	Content             pulumi.StringInput
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayInput
+	// Enabling allows Worker events to be sent to a defined Logpush destination.
+	Logpush pulumi.BoolPtrInput
 	// Whether to upload Worker as a module.
 	Module pulumi.BoolPtrInput
 	// The name for the script. **Modifying this attribute will force creation of a new resource.**
@@ -356,6 +382,16 @@ func (o WorkerScriptOutput) AnalyticsEngineBindings() WorkerScriptAnalyticsEngin
 	return o.ApplyT(func(v *WorkerScript) WorkerScriptAnalyticsEngineBindingArrayOutput { return v.AnalyticsEngineBindings }).(WorkerScriptAnalyticsEngineBindingArrayOutput)
 }
 
+// The date to use for the compatibility flag.
+func (o WorkerScriptOutput) CompatibilityDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringPtrOutput { return v.CompatibilityDate }).(pulumi.StringPtrOutput)
+}
+
+// Compatibility flags used for Worker Scripts.
+func (o WorkerScriptOutput) CompatibilityFlags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringArrayOutput { return v.CompatibilityFlags }).(pulumi.StringArrayOutput)
+}
+
 // The script content.
 func (o WorkerScriptOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
@@ -363,6 +399,11 @@ func (o WorkerScriptOutput) Content() pulumi.StringOutput {
 
 func (o WorkerScriptOutput) KvNamespaceBindings() WorkerScriptKvNamespaceBindingArrayOutput {
 	return o.ApplyT(func(v *WorkerScript) WorkerScriptKvNamespaceBindingArrayOutput { return v.KvNamespaceBindings }).(WorkerScriptKvNamespaceBindingArrayOutput)
+}
+
+// Enabling allows Worker events to be sent to a defined Logpush destination.
+func (o WorkerScriptOutput) Logpush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.BoolPtrOutput { return v.Logpush }).(pulumi.BoolPtrOutput)
 }
 
 // Whether to upload Worker as a module.
