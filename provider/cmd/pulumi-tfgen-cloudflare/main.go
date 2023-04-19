@@ -16,10 +16,9 @@ package main
 
 import (
 	cloudflare "github.com/pulumi/pulumi-cloudflare/provider/v5"
-	"github.com/pulumi/pulumi-cloudflare/provider/v5/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
 )
 
 func main() {
-	tfgen.Main("cloudflare", version.Version, cloudflare.Provider())
+	tfgen.MainWithMuxer(cloudflare.Provider())
 }
