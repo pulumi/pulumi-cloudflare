@@ -172,46 +172,26 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_magic_firewall_ruleset": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "MagicFirewallRuleset"),
 			},
-			"cloudflare_managed_headers":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ManagedHeaders")},
-			"cloudflare_notification_policy": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "NotificationPolicy")},
 			"cloudflare_notification_policy_webhooks": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "NotificationPolicyWebhooks"),
 			},
 			"cloudflare_origin_ca_certificate": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "OriginCaCertificate"),
 			},
-			"cloudflare_page_rule":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PageRule")},
-			"cloudflare_pages_domain":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PagesDomain")},
-			"cloudflare_pages_project":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PagesProject")},
-			"cloudflare_rate_limit":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RateLimit")},
-			"cloudflare_record":                     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Record")},
-			"cloudflare_ruleset":                    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Ruleset")},
-			"cloudflare_spectrum_application":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SpectrumApplication")},
-			"cloudflare_split_tunnel":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SplitTunnel")},
-			"cloudflare_static_route":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "StaticRoute")},
-			"cloudflare_teams_account":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TeamsAccount")},
-			"cloudflare_teams_list":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TeamsList")},
-			"cloudflare_teams_location":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TeamsLocation")},
-			"cloudflare_teams_proxy_endpoint":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TeamsProxyEndpoint")},
-			"cloudflare_teams_rule":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TeamsRule")},
-			"cloudflare_tiered_cache":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TieredCache")},
-			"cloudflare_total_tls":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TotalTls")},
-			"cloudflare_tunnel_config":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TunnelConfig")},
-			"cloudflare_tunnel_route":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TunnelRoute")},
-			"cloudflare_tunnel_virtual_network":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TunnelVirtualNetwork")},
-			"cloudflare_url_normalization_settings": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "UrlNormalizationSettings")},
-			"cloudflare_user_agent_blocking_rule":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "UserAgentBlockingRule")},
-			"cloudflare_waiting_room_event":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WaitingRoomEvent")},
-			"cloudflare_waiting_room_rules":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WaitingRoomRules")},
-			"cloudflare_web3_hostname":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Web3Hostname")},
-			"cloudflare_worker_route":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WorkerRoute")},
-			"cloudflare_worker_cron_trigger":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WorkerCronTrigger")},
-			"cloudflare_worker_script":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WorkerScript")},
-			"cloudflare_workers_kv":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WorkersKv")},
-			"cloudflare_workers_kv_namespace": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "WorkersKvNamespace"),
+			"cloudflare_ruleset": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Ruleset"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"rules": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"action_parameters": {
+									MaxItemsOne: tfbridge.True(),
+								},
+							},
+						},
+					},
+				},
 			},
-			"cloudflare_waiting_room": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WaitingRoom")},
 			"cloudflare_zone": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Zone"),
 				Fields: map[string]*tfbridge.SchemaInfo{
