@@ -186,6 +186,17 @@ func Provider() tfbridge.ProviderInfo {
 							Fields: map[string]*tfbridge.SchemaInfo{
 								"action_parameters": {
 									MaxItemsOne: tfbridge.True(),
+									Elem: &tfbridge.SchemaInfo{
+										Fields: map[string]*tfbridge.SchemaInfo{
+											"serve_stale":  {MaxItemsOne: tfbridge.True()},
+											"sni":          {MaxItemsOne: tfbridge.True()},
+											"uri":          {MaxItemsOne: tfbridge.True()},
+											"from_list":    {MaxItemsOne: tfbridge.True()},
+											"matched_data": {MaxItemsOne: tfbridge.True()},
+											"edge_ttl":     {MaxItemsOne: tfbridge.True()},
+											"cache_key":    {MaxItemsOne: tfbridge.True()},
+										},
+									},
 								},
 							},
 						},
