@@ -2152,7 +2152,7 @@ export interface RulesetRule {
     /**
      * List of parameters that configure the behavior of the ruleset rule action.
      */
-    actionParameters: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameter>[]>;
+    actionParameters: pulumi.Input<inputs.RulesetRuleActionParameters>;
     /**
      * Brief summary of the ruleset rule and its intended use.
      */
@@ -2195,24 +2195,24 @@ export interface RulesetRule {
     version?: pulumi.Input<string>;
 }
 
-export interface RulesetRuleActionParameter {
+export interface RulesetRuleActionParameters {
     automaticHttpsRewrites: pulumi.Input<boolean>;
-    autominifies: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterAutominify>[]>;
+    autominifies: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersAutominify>[]>;
     bic: pulumi.Input<boolean>;
-    browserTtls: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterBrowserTtl>[]>;
+    browserTtls: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersBrowserTtl>[]>;
     cache: pulumi.Input<boolean>;
-    cacheKeys: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterCacheKey>[]>;
+    cacheKeys: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersCacheKey>[]>;
     content: pulumi.Input<string>;
     contentType: pulumi.Input<string>;
     cookieFields: pulumi.Input<pulumi.Input<string>[]>;
     disableApps: pulumi.Input<boolean>;
     disableRailgun: pulumi.Input<boolean>;
     disableZaraz: pulumi.Input<boolean>;
-    edgeTtls: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterEdgeTtl>[]>;
+    edgeTtls: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtl>[]>;
     emailObfuscation: pulumi.Input<boolean>;
-    fromLists: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterFromList>[]>;
-    fromValues: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterFromValue>[]>;
-    headers: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterHeader>[]>;
+    fromLists: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersFromList>[]>;
+    fromValues: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersFromValue>[]>;
+    headers: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersHeader>[]>;
     hostHeader: pulumi.Input<string>;
     hotlinkProtection: pulumi.Input<boolean>;
     /**
@@ -2220,19 +2220,19 @@ export interface RulesetRuleActionParameter {
      */
     id: pulumi.Input<string>;
     increment: pulumi.Input<number>;
-    matchedDatas: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterMatchedData>[]>;
+    matchedDatas: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersMatchedData>[]>;
     mirage: pulumi.Input<boolean>;
     opportunisticEncryption: pulumi.Input<boolean>;
     originErrorPagePassthru: pulumi.Input<boolean>;
-    origins: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterOrigin>[]>;
-    overrides: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterOverride>[]>;
+    origins: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOrigin>[]>;
+    overrides: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOverride>[]>;
     phases: pulumi.Input<pulumi.Input<string>[]>;
     polish: pulumi.Input<string>;
     products: pulumi.Input<pulumi.Input<string>[]>;
     requestFields: pulumi.Input<pulumi.Input<string>[]>;
     respectStrongEtags: pulumi.Input<boolean>;
     responseFields: pulumi.Input<pulumi.Input<string>[]>;
-    responses: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterResponse>[]>;
+    responses: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersResponse>[]>;
     rocketLoader: pulumi.Input<boolean>;
     /**
      * List of rules to apply to the ruleset.
@@ -2241,86 +2241,86 @@ export interface RulesetRuleActionParameter {
     ruleset: pulumi.Input<string>;
     rulesets: pulumi.Input<pulumi.Input<string>[]>;
     securityLevel: pulumi.Input<string>;
-    serveStales: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterServeStale>[]>;
+    serveStales: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersServeStale>[]>;
     serverSideExcludes: pulumi.Input<boolean>;
-    snis: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterSni>[]>;
+    snis: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersSni>[]>;
     ssl: pulumi.Input<string>;
     statusCode: pulumi.Input<number>;
     sxg: pulumi.Input<boolean>;
-    uris: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterUri>[]>;
+    uris: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersUri>[]>;
     version: pulumi.Input<string>;
 }
 
-export interface RulesetRuleActionParameterAutominify {
+export interface RulesetRuleActionParametersAutominify {
     css: pulumi.Input<boolean>;
     html: pulumi.Input<boolean>;
     js: pulumi.Input<boolean>;
 }
 
-export interface RulesetRuleActionParameterBrowserTtl {
+export interface RulesetRuleActionParametersBrowserTtl {
     default: pulumi.Input<number>;
     mode: pulumi.Input<string>;
 }
 
-export interface RulesetRuleActionParameterCacheKey {
+export interface RulesetRuleActionParametersCacheKey {
     cacheByDeviceType: pulumi.Input<boolean>;
     cacheDeceptionArmor: pulumi.Input<boolean>;
-    customKeys: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterCacheKeyCustomKey>[]>;
+    customKeys: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKey>[]>;
     ignoreQueryStringsOrder: pulumi.Input<boolean>;
 }
 
-export interface RulesetRuleActionParameterCacheKeyCustomKey {
-    cookies: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterCacheKeyCustomKeyCookie>[]>;
-    headers: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterCacheKeyCustomKeyHeader>[]>;
-    hosts: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterCacheKeyCustomKeyHost>[]>;
-    queryStrings: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterCacheKeyCustomKeyQueryString>[]>;
-    users: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterCacheKeyCustomKeyUser>[]>;
+export interface RulesetRuleActionParametersCacheKeyCustomKey {
+    cookies: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie>[]>;
+    headers: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader>[]>;
+    hosts: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyHost>[]>;
+    queryStrings: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString>[]>;
+    users: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyUser>[]>;
 }
 
-export interface RulesetRuleActionParameterCacheKeyCustomKeyCookie {
+export interface RulesetRuleActionParametersCacheKeyCustomKeyCookie {
     checkPresences: pulumi.Input<pulumi.Input<string>[]>;
     includes: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface RulesetRuleActionParameterCacheKeyCustomKeyHeader {
+export interface RulesetRuleActionParametersCacheKeyCustomKeyHeader {
     checkPresences: pulumi.Input<pulumi.Input<string>[]>;
     excludeOrigin: pulumi.Input<boolean>;
     includes: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface RulesetRuleActionParameterCacheKeyCustomKeyHost {
+export interface RulesetRuleActionParametersCacheKeyCustomKeyHost {
     resolved: pulumi.Input<boolean>;
 }
 
-export interface RulesetRuleActionParameterCacheKeyCustomKeyQueryString {
+export interface RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
     excludes: pulumi.Input<pulumi.Input<string>[]>;
     includes: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface RulesetRuleActionParameterCacheKeyCustomKeyUser {
+export interface RulesetRuleActionParametersCacheKeyCustomKeyUser {
     deviceType: pulumi.Input<boolean>;
     geo: pulumi.Input<boolean>;
     lang: pulumi.Input<boolean>;
 }
 
-export interface RulesetRuleActionParameterEdgeTtl {
+export interface RulesetRuleActionParametersEdgeTtl {
     default: pulumi.Input<number>;
     mode: pulumi.Input<string>;
-    statusCodeTtls: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterEdgeTtlStatusCodeTtl>[]>;
+    statusCodeTtls: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl>[]>;
 }
 
-export interface RulesetRuleActionParameterEdgeTtlStatusCodeTtl {
+export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
     statusCode: pulumi.Input<number>;
-    statusCodeRanges: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRange>[]>;
+    statusCodeRanges: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange>[]>;
     value: pulumi.Input<number>;
 }
 
-export interface RulesetRuleActionParameterEdgeTtlStatusCodeTtlStatusCodeRange {
+export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
     from: pulumi.Input<number>;
     to: pulumi.Input<number>;
 }
 
-export interface RulesetRuleActionParameterFromList {
+export interface RulesetRuleActionParametersFromList {
     key: pulumi.Input<string>;
     /**
      * Name of the ruleset.
@@ -2328,18 +2328,18 @@ export interface RulesetRuleActionParameterFromList {
     name: pulumi.Input<string>;
 }
 
-export interface RulesetRuleActionParameterFromValue {
+export interface RulesetRuleActionParametersFromValue {
     preserveQueryString: pulumi.Input<boolean>;
     statusCode: pulumi.Input<number>;
-    targetUrls: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterFromValueTargetUrl>[]>;
+    targetUrls: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersFromValueTargetUrl>[]>;
 }
 
-export interface RulesetRuleActionParameterFromValueTargetUrl {
+export interface RulesetRuleActionParametersFromValueTargetUrl {
     expression: pulumi.Input<string>;
     value: pulumi.Input<string>;
 }
 
-export interface RulesetRuleActionParameterHeader {
+export interface RulesetRuleActionParametersHeader {
     expression: pulumi.Input<string>;
     /**
      * Name of the ruleset.
@@ -2349,33 +2349,33 @@ export interface RulesetRuleActionParameterHeader {
     value: pulumi.Input<string>;
 }
 
-export interface RulesetRuleActionParameterMatchedData {
+export interface RulesetRuleActionParametersMatchedData {
     publicKey: pulumi.Input<string>;
 }
 
-export interface RulesetRuleActionParameterOrigin {
+export interface RulesetRuleActionParametersOrigin {
     host: pulumi.Input<string>;
     port: pulumi.Input<number>;
 }
 
-export interface RulesetRuleActionParameterOverride {
+export interface RulesetRuleActionParametersOverride {
     action: pulumi.Input<string>;
-    categories: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterOverrideCategory>[]>;
+    categories: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOverrideCategory>[]>;
     enabled: pulumi.Input<boolean>;
     /**
      * List of rules to apply to the ruleset.
      */
-    rules: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterOverrideRule>[]>;
+    rules: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOverrideRule>[]>;
     sensitivityLevel: pulumi.Input<string>;
 }
 
-export interface RulesetRuleActionParameterOverrideCategory {
+export interface RulesetRuleActionParametersOverrideCategory {
     action: pulumi.Input<string>;
     category: pulumi.Input<string>;
     enabled: pulumi.Input<boolean>;
 }
 
-export interface RulesetRuleActionParameterOverrideRule {
+export interface RulesetRuleActionParametersOverrideRule {
     /**
      * Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
      */
@@ -2392,32 +2392,32 @@ export interface RulesetRuleActionParameterOverrideRule {
     sensitivityLevel: pulumi.Input<string>;
 }
 
-export interface RulesetRuleActionParameterResponse {
+export interface RulesetRuleActionParametersResponse {
     content: pulumi.Input<string>;
     contentType: pulumi.Input<string>;
     statusCode: pulumi.Input<number>;
 }
 
-export interface RulesetRuleActionParameterServeStale {
+export interface RulesetRuleActionParametersServeStale {
     disableStaleWhileUpdating: pulumi.Input<boolean>;
 }
 
-export interface RulesetRuleActionParameterSni {
+export interface RulesetRuleActionParametersSni {
     value: pulumi.Input<string>;
 }
 
-export interface RulesetRuleActionParameterUri {
+export interface RulesetRuleActionParametersUri {
     origin: pulumi.Input<boolean>;
-    paths: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterUriPath>[]>;
-    queries: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterUriQuery>[]>;
+    paths: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersUriPath>[]>;
+    queries: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersUriQuery>[]>;
 }
 
-export interface RulesetRuleActionParameterUriPath {
+export interface RulesetRuleActionParametersUriPath {
     expression: pulumi.Input<string>;
     value: pulumi.Input<string>;
 }
 
-export interface RulesetRuleActionParameterUriQuery {
+export interface RulesetRuleActionParametersUriQuery {
     expression: pulumi.Input<string>;
     value: pulumi.Input<string>;
 }

@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// List of parameters that configure the behavior of the ruleset rule action.
         /// </summary>
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParameter> ActionParameters;
+        public readonly Outputs.RulesetRuleActionParameters ActionParameters;
         /// <summary>
         /// Brief summary of the ruleset rule and its intended use.
         /// </summary>
@@ -66,7 +66,7 @@ namespace Pulumi.Cloudflare.Outputs
         private RulesetRule(
             string? action,
 
-            ImmutableArray<Outputs.RulesetRuleActionParameter> actionParameters,
+            Outputs.RulesetRuleActionParameters actionParameters,
 
             string? description,
 

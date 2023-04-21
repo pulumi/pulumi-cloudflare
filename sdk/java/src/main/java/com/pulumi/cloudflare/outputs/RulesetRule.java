@@ -3,7 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.RulesetRuleActionParameter;
+import com.pulumi.cloudflare.outputs.RulesetRuleActionParameters;
 import com.pulumi.cloudflare.outputs.RulesetRuleExposedCredentialCheck;
 import com.pulumi.cloudflare.outputs.RulesetRuleLogging;
 import com.pulumi.cloudflare.outputs.RulesetRuleRatelimit;
@@ -26,7 +26,7 @@ public final class RulesetRule {
      * @return List of parameters that configure the behavior of the ruleset rule action.
      * 
      */
-    private List<RulesetRuleActionParameter> actionParameters;
+    private RulesetRuleActionParameters actionParameters;
     /**
      * @return Brief summary of the ruleset rule and its intended use.
      * 
@@ -90,7 +90,7 @@ public final class RulesetRule {
      * @return List of parameters that configure the behavior of the ruleset rule action.
      * 
      */
-    public List<RulesetRuleActionParameter> actionParameters() {
+    public RulesetRuleActionParameters actionParameters() {
         return this.actionParameters;
     }
     /**
@@ -174,7 +174,7 @@ public final class RulesetRule {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String action;
-        private List<RulesetRuleActionParameter> actionParameters;
+        private RulesetRuleActionParameters actionParameters;
         private @Nullable String description;
         private @Nullable Boolean enabled;
         private List<RulesetRuleExposedCredentialCheck> exposedCredentialChecks;
@@ -208,12 +208,9 @@ public final class RulesetRule {
             return this;
         }
         @CustomType.Setter
-        public Builder actionParameters(List<RulesetRuleActionParameter> actionParameters) {
+        public Builder actionParameters(RulesetRuleActionParameters actionParameters) {
             this.actionParameters = Objects.requireNonNull(actionParameters);
             return this;
-        }
-        public Builder actionParameters(RulesetRuleActionParameter... actionParameters) {
-            return actionParameters(List.of(actionParameters));
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {

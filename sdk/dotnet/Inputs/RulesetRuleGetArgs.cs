@@ -18,17 +18,11 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("action")]
         public Input<string>? Action { get; set; }
 
-        [Input("actionParameters", required: true)]
-        private InputList<Inputs.RulesetRuleActionParameterGetArgs>? _actionParameters;
-
         /// <summary>
         /// List of parameters that configure the behavior of the ruleset rule action.
         /// </summary>
-        public InputList<Inputs.RulesetRuleActionParameterGetArgs> ActionParameters
-        {
-            get => _actionParameters ?? (_actionParameters = new InputList<Inputs.RulesetRuleActionParameterGetArgs>());
-            set => _actionParameters = value;
-        }
+        [Input("actionParameters", required: true)]
+        public Input<Inputs.RulesetRuleActionParametersGetArgs> ActionParameters { get; set; } = null!;
 
         /// <summary>
         /// Brief summary of the ruleset rule and its intended use.

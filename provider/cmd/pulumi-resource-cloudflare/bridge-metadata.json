@@ -867,7 +867,7 @@
                 "loggings": "logging",
                 "ratelimits": "ratelimit"
             },
-            "cloudflare:index/RulesetRuleActionParameter:RulesetRuleActionParameter": {
+            "cloudflare:index/RulesetRuleActionParameters:RulesetRuleActionParameters": {
                 "automaticHttpsRewrites": "automatic_https_rewrites",
                 "autominifies": "autominify",
                 "browserTtls": "browser_ttl",
@@ -899,65 +899,65 @@
                 "statusCode": "status_code",
                 "uris": "uri"
             },
-            "cloudflare:index/RulesetRuleActionParameterCacheKey:RulesetRuleActionParameterCacheKey": {
+            "cloudflare:index/RulesetRuleActionParametersCacheKey:RulesetRuleActionParametersCacheKey": {
                 "cacheByDeviceType": "cache_by_device_type",
                 "cacheDeceptionArmor": "cache_deception_armor",
                 "customKeys": "custom_key",
                 "ignoreQueryStringsOrder": "ignore_query_strings_order"
             },
-            "cloudflare:index/RulesetRuleActionParameterCacheKeyCustomKey:RulesetRuleActionParameterCacheKeyCustomKey": {
+            "cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKey:RulesetRuleActionParametersCacheKeyCustomKey": {
                 "cookies": "cookie",
                 "headers": "header",
                 "hosts": "host",
                 "queryStrings": "query_string",
                 "users": "user"
             },
-            "cloudflare:index/RulesetRuleActionParameterCacheKeyCustomKeyCookie:RulesetRuleActionParameterCacheKeyCustomKeyCookie": {
+            "cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyCookie:RulesetRuleActionParametersCacheKeyCustomKeyCookie": {
                 "checkPresences": "check_presence",
                 "includes": "include"
             },
-            "cloudflare:index/RulesetRuleActionParameterCacheKeyCustomKeyHeader:RulesetRuleActionParameterCacheKeyCustomKeyHeader": {
+            "cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyHeader:RulesetRuleActionParametersCacheKeyCustomKeyHeader": {
                 "checkPresences": "check_presence",
                 "excludeOrigin": "exclude_origin",
                 "includes": "include"
             },
-            "cloudflare:index/RulesetRuleActionParameterCacheKeyCustomKeyQueryString:RulesetRuleActionParameterCacheKeyCustomKeyQueryString": {
+            "cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyQueryString:RulesetRuleActionParametersCacheKeyCustomKeyQueryString": {
                 "excludes": "exclude",
                 "includes": "include"
             },
-            "cloudflare:index/RulesetRuleActionParameterCacheKeyCustomKeyUser:RulesetRuleActionParameterCacheKeyCustomKeyUser": {
+            "cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyUser:RulesetRuleActionParametersCacheKeyCustomKeyUser": {
                 "deviceType": "device_type"
             },
-            "cloudflare:index/RulesetRuleActionParameterEdgeTtl:RulesetRuleActionParameterEdgeTtl": {
+            "cloudflare:index/RulesetRuleActionParametersEdgeTtl:RulesetRuleActionParametersEdgeTtl": {
                 "statusCodeTtls": "status_code_ttl"
             },
-            "cloudflare:index/RulesetRuleActionParameterEdgeTtlStatusCodeTtl:RulesetRuleActionParameterEdgeTtlStatusCodeTtl": {
+            "cloudflare:index/RulesetRuleActionParametersEdgeTtlStatusCodeTtl:RulesetRuleActionParametersEdgeTtlStatusCodeTtl": {
                 "statusCode": "status_code",
                 "statusCodeRanges": "status_code_range"
             },
-            "cloudflare:index/RulesetRuleActionParameterFromValue:RulesetRuleActionParameterFromValue": {
+            "cloudflare:index/RulesetRuleActionParametersFromValue:RulesetRuleActionParametersFromValue": {
                 "preserveQueryString": "preserve_query_string",
                 "statusCode": "status_code",
                 "targetUrls": "target_url"
             },
-            "cloudflare:index/RulesetRuleActionParameterMatchedData:RulesetRuleActionParameterMatchedData": {
+            "cloudflare:index/RulesetRuleActionParametersMatchedData:RulesetRuleActionParametersMatchedData": {
                 "publicKey": "public_key"
             },
-            "cloudflare:index/RulesetRuleActionParameterOverride:RulesetRuleActionParameterOverride": {
+            "cloudflare:index/RulesetRuleActionParametersOverride:RulesetRuleActionParametersOverride": {
                 "sensitivityLevel": "sensitivity_level"
             },
-            "cloudflare:index/RulesetRuleActionParameterOverrideRule:RulesetRuleActionParameterOverrideRule": {
+            "cloudflare:index/RulesetRuleActionParametersOverrideRule:RulesetRuleActionParametersOverrideRule": {
                 "scoreThreshold": "score_threshold",
                 "sensitivityLevel": "sensitivity_level"
             },
-            "cloudflare:index/RulesetRuleActionParameterResponse:RulesetRuleActionParameterResponse": {
+            "cloudflare:index/RulesetRuleActionParametersResponse:RulesetRuleActionParametersResponse": {
                 "contentType": "content_type",
                 "statusCode": "status_code"
             },
-            "cloudflare:index/RulesetRuleActionParameterServeStale:RulesetRuleActionParameterServeStale": {
+            "cloudflare:index/RulesetRuleActionParametersServeStale:RulesetRuleActionParametersServeStale": {
                 "disableStaleWhileUpdating": "disable_stale_while_updating"
             },
-            "cloudflare:index/RulesetRuleActionParameterUri:RulesetRuleActionParameterUri": {
+            "cloudflare:index/RulesetRuleActionParametersUri:RulesetRuleActionParametersUri": {
                 "paths": "path",
                 "queries": "query"
             },

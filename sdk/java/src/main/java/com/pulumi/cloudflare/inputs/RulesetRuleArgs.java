@@ -3,7 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.RulesetRuleActionParameterArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleExposedCredentialCheckArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleLoggingArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleRatelimitArgs;
@@ -41,13 +41,13 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="actionParameters", required=true)
-    private Output<List<RulesetRuleActionParameterArgs>> actionParameters;
+    private Output<RulesetRuleActionParametersArgs> actionParameters;
 
     /**
      * @return List of parameters that configure the behavior of the ruleset rule action.
      * 
      */
-    public Output<List<RulesetRuleActionParameterArgs>> actionParameters() {
+    public Output<RulesetRuleActionParametersArgs> actionParameters() {
         return this.actionParameters;
     }
 
@@ -263,7 +263,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder actionParameters(Output<List<RulesetRuleActionParameterArgs>> actionParameters) {
+        public Builder actionParameters(Output<RulesetRuleActionParametersArgs> actionParameters) {
             $.actionParameters = actionParameters;
             return this;
         }
@@ -274,18 +274,8 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder actionParameters(List<RulesetRuleActionParameterArgs> actionParameters) {
+        public Builder actionParameters(RulesetRuleActionParametersArgs actionParameters) {
             return actionParameters(Output.of(actionParameters));
-        }
-
-        /**
-         * @param actionParameters List of parameters that configure the behavior of the ruleset rule action.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder actionParameters(RulesetRuleActionParameterArgs... actionParameters) {
-            return actionParameters(List.of(actionParameters));
         }
 
         /**
