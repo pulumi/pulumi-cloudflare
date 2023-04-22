@@ -9,9 +9,9 @@ require (
 	github.com/pulumi/pulumi/sdk/v3 v3.63.0
 )
 
-replace github.com/pulumi/pulumi-terraform-bridge/v3 => github.com/pulumi/pulumi-terraform-bridge/v3 v3.44.4-0.20230421174710-21718daac8cd
+replace github.com/pulumi/pulumi-terraform-bridge/v3 => github.com/pulumi/pulumi-terraform-bridge/v3 v3.44.4-0.20230422004621-ec09b2c64e86
 
-replace github.com/pulumi/pulumi-terraform-bridge/pf => github.com/pulumi/pulumi-terraform-bridge/pf v0.8.1-0.20230421174710-21718daac8cd
+replace github.com/pulumi/pulumi-terraform-bridge/pf => github.com/pulumi/pulumi-terraform-bridge/pf v0.8.1-0.20230422004621-ec09b2c64e86
 
 replace github.com/cloudflare/terraform-provider-cloudflare => ../upstream
 

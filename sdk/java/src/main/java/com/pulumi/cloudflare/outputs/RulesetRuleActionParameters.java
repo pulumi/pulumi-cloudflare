@@ -32,16 +32,16 @@ public final class RulesetRuleActionParameters {
     private Boolean bic;
     private List<RulesetRuleActionParametersBrowserTtl> browserTtls;
     private Boolean cache;
-    private List<RulesetRuleActionParametersCacheKey> cacheKeys;
+    private RulesetRuleActionParametersCacheKey cacheKey;
     private String content;
     private String contentType;
     private List<String> cookieFields;
     private Boolean disableApps;
     private Boolean disableRailgun;
     private Boolean disableZaraz;
-    private List<RulesetRuleActionParametersEdgeTtl> edgeTtls;
+    private RulesetRuleActionParametersEdgeTtl edgeTtl;
     private Boolean emailObfuscation;
-    private List<RulesetRuleActionParametersFromList> fromLists;
+    private RulesetRuleActionParametersFromList fromList;
     private List<RulesetRuleActionParametersFromValue> fromValues;
     private List<RulesetRuleActionParametersHeader> headers;
     private String hostHeader;
@@ -52,7 +52,7 @@ public final class RulesetRuleActionParameters {
      */
     private String id;
     private Integer increment;
-    private List<RulesetRuleActionParametersMatchedData> matchedDatas;
+    private RulesetRuleActionParametersMatchedData matchedData;
     private Boolean mirage;
     private Boolean opportunisticEncryption;
     private Boolean originErrorPagePassthru;
@@ -74,13 +74,13 @@ public final class RulesetRuleActionParameters {
     private String ruleset;
     private List<String> rulesets;
     private String securityLevel;
-    private List<RulesetRuleActionParametersServeStale> serveStales;
+    private RulesetRuleActionParametersServeStale serveStale;
     private Boolean serverSideExcludes;
-    private List<RulesetRuleActionParametersSni> snis;
+    private RulesetRuleActionParametersSni sni;
     private String ssl;
     private Integer statusCode;
     private Boolean sxg;
-    private List<RulesetRuleActionParametersUri> uris;
+    private RulesetRuleActionParametersUri uri;
     private String version;
 
     private RulesetRuleActionParameters() {}
@@ -99,8 +99,8 @@ public final class RulesetRuleActionParameters {
     public Boolean cache() {
         return this.cache;
     }
-    public List<RulesetRuleActionParametersCacheKey> cacheKeys() {
-        return this.cacheKeys;
+    public RulesetRuleActionParametersCacheKey cacheKey() {
+        return this.cacheKey;
     }
     public String content() {
         return this.content;
@@ -120,14 +120,14 @@ public final class RulesetRuleActionParameters {
     public Boolean disableZaraz() {
         return this.disableZaraz;
     }
-    public List<RulesetRuleActionParametersEdgeTtl> edgeTtls() {
-        return this.edgeTtls;
+    public RulesetRuleActionParametersEdgeTtl edgeTtl() {
+        return this.edgeTtl;
     }
     public Boolean emailObfuscation() {
         return this.emailObfuscation;
     }
-    public List<RulesetRuleActionParametersFromList> fromLists() {
-        return this.fromLists;
+    public RulesetRuleActionParametersFromList fromList() {
+        return this.fromList;
     }
     public List<RulesetRuleActionParametersFromValue> fromValues() {
         return this.fromValues;
@@ -151,8 +151,8 @@ public final class RulesetRuleActionParameters {
     public Integer increment() {
         return this.increment;
     }
-    public List<RulesetRuleActionParametersMatchedData> matchedDatas() {
-        return this.matchedDatas;
+    public RulesetRuleActionParametersMatchedData matchedData() {
+        return this.matchedData;
     }
     public Boolean mirage() {
         return this.mirage;
@@ -209,14 +209,14 @@ public final class RulesetRuleActionParameters {
     public String securityLevel() {
         return this.securityLevel;
     }
-    public List<RulesetRuleActionParametersServeStale> serveStales() {
-        return this.serveStales;
+    public RulesetRuleActionParametersServeStale serveStale() {
+        return this.serveStale;
     }
     public Boolean serverSideExcludes() {
         return this.serverSideExcludes;
     }
-    public List<RulesetRuleActionParametersSni> snis() {
-        return this.snis;
+    public RulesetRuleActionParametersSni sni() {
+        return this.sni;
     }
     public String ssl() {
         return this.ssl;
@@ -227,8 +227,8 @@ public final class RulesetRuleActionParameters {
     public Boolean sxg() {
         return this.sxg;
     }
-    public List<RulesetRuleActionParametersUri> uris() {
-        return this.uris;
+    public RulesetRuleActionParametersUri uri() {
+        return this.uri;
     }
     public String version() {
         return this.version;
@@ -248,23 +248,23 @@ public final class RulesetRuleActionParameters {
         private Boolean bic;
         private List<RulesetRuleActionParametersBrowserTtl> browserTtls;
         private Boolean cache;
-        private List<RulesetRuleActionParametersCacheKey> cacheKeys;
+        private RulesetRuleActionParametersCacheKey cacheKey;
         private String content;
         private String contentType;
         private List<String> cookieFields;
         private Boolean disableApps;
         private Boolean disableRailgun;
         private Boolean disableZaraz;
-        private List<RulesetRuleActionParametersEdgeTtl> edgeTtls;
+        private RulesetRuleActionParametersEdgeTtl edgeTtl;
         private Boolean emailObfuscation;
-        private List<RulesetRuleActionParametersFromList> fromLists;
+        private RulesetRuleActionParametersFromList fromList;
         private List<RulesetRuleActionParametersFromValue> fromValues;
         private List<RulesetRuleActionParametersHeader> headers;
         private String hostHeader;
         private Boolean hotlinkProtection;
         private String id;
         private Integer increment;
-        private List<RulesetRuleActionParametersMatchedData> matchedDatas;
+        private RulesetRuleActionParametersMatchedData matchedData;
         private Boolean mirage;
         private Boolean opportunisticEncryption;
         private Boolean originErrorPagePassthru;
@@ -282,13 +282,13 @@ public final class RulesetRuleActionParameters {
         private String ruleset;
         private List<String> rulesets;
         private String securityLevel;
-        private List<RulesetRuleActionParametersServeStale> serveStales;
+        private RulesetRuleActionParametersServeStale serveStale;
         private Boolean serverSideExcludes;
-        private List<RulesetRuleActionParametersSni> snis;
+        private RulesetRuleActionParametersSni sni;
         private String ssl;
         private Integer statusCode;
         private Boolean sxg;
-        private List<RulesetRuleActionParametersUri> uris;
+        private RulesetRuleActionParametersUri uri;
         private String version;
         public Builder() {}
         public Builder(RulesetRuleActionParameters defaults) {
@@ -298,23 +298,23 @@ public final class RulesetRuleActionParameters {
     	      this.bic = defaults.bic;
     	      this.browserTtls = defaults.browserTtls;
     	      this.cache = defaults.cache;
-    	      this.cacheKeys = defaults.cacheKeys;
+    	      this.cacheKey = defaults.cacheKey;
     	      this.content = defaults.content;
     	      this.contentType = defaults.contentType;
     	      this.cookieFields = defaults.cookieFields;
     	      this.disableApps = defaults.disableApps;
     	      this.disableRailgun = defaults.disableRailgun;
     	      this.disableZaraz = defaults.disableZaraz;
-    	      this.edgeTtls = defaults.edgeTtls;
+    	      this.edgeTtl = defaults.edgeTtl;
     	      this.emailObfuscation = defaults.emailObfuscation;
-    	      this.fromLists = defaults.fromLists;
+    	      this.fromList = defaults.fromList;
     	      this.fromValues = defaults.fromValues;
     	      this.headers = defaults.headers;
     	      this.hostHeader = defaults.hostHeader;
     	      this.hotlinkProtection = defaults.hotlinkProtection;
     	      this.id = defaults.id;
     	      this.increment = defaults.increment;
-    	      this.matchedDatas = defaults.matchedDatas;
+    	      this.matchedData = defaults.matchedData;
     	      this.mirage = defaults.mirage;
     	      this.opportunisticEncryption = defaults.opportunisticEncryption;
     	      this.originErrorPagePassthru = defaults.originErrorPagePassthru;
@@ -332,13 +332,13 @@ public final class RulesetRuleActionParameters {
     	      this.ruleset = defaults.ruleset;
     	      this.rulesets = defaults.rulesets;
     	      this.securityLevel = defaults.securityLevel;
-    	      this.serveStales = defaults.serveStales;
+    	      this.serveStale = defaults.serveStale;
     	      this.serverSideExcludes = defaults.serverSideExcludes;
-    	      this.snis = defaults.snis;
+    	      this.sni = defaults.sni;
     	      this.ssl = defaults.ssl;
     	      this.statusCode = defaults.statusCode;
     	      this.sxg = defaults.sxg;
-    	      this.uris = defaults.uris;
+    	      this.uri = defaults.uri;
     	      this.version = defaults.version;
         }
 
@@ -374,12 +374,9 @@ public final class RulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
-        public Builder cacheKeys(List<RulesetRuleActionParametersCacheKey> cacheKeys) {
-            this.cacheKeys = Objects.requireNonNull(cacheKeys);
+        public Builder cacheKey(RulesetRuleActionParametersCacheKey cacheKey) {
+            this.cacheKey = Objects.requireNonNull(cacheKey);
             return this;
-        }
-        public Builder cacheKeys(RulesetRuleActionParametersCacheKey... cacheKeys) {
-            return cacheKeys(List.of(cacheKeys));
         }
         @CustomType.Setter
         public Builder content(String content) {
@@ -415,12 +412,9 @@ public final class RulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
-        public Builder edgeTtls(List<RulesetRuleActionParametersEdgeTtl> edgeTtls) {
-            this.edgeTtls = Objects.requireNonNull(edgeTtls);
+        public Builder edgeTtl(RulesetRuleActionParametersEdgeTtl edgeTtl) {
+            this.edgeTtl = Objects.requireNonNull(edgeTtl);
             return this;
-        }
-        public Builder edgeTtls(RulesetRuleActionParametersEdgeTtl... edgeTtls) {
-            return edgeTtls(List.of(edgeTtls));
         }
         @CustomType.Setter
         public Builder emailObfuscation(Boolean emailObfuscation) {
@@ -428,12 +422,9 @@ public final class RulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
-        public Builder fromLists(List<RulesetRuleActionParametersFromList> fromLists) {
-            this.fromLists = Objects.requireNonNull(fromLists);
+        public Builder fromList(RulesetRuleActionParametersFromList fromList) {
+            this.fromList = Objects.requireNonNull(fromList);
             return this;
-        }
-        public Builder fromLists(RulesetRuleActionParametersFromList... fromLists) {
-            return fromLists(List.of(fromLists));
         }
         @CustomType.Setter
         public Builder fromValues(List<RulesetRuleActionParametersFromValue> fromValues) {
@@ -472,12 +463,9 @@ public final class RulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
-        public Builder matchedDatas(List<RulesetRuleActionParametersMatchedData> matchedDatas) {
-            this.matchedDatas = Objects.requireNonNull(matchedDatas);
+        public Builder matchedData(RulesetRuleActionParametersMatchedData matchedData) {
+            this.matchedData = Objects.requireNonNull(matchedData);
             return this;
-        }
-        public Builder matchedDatas(RulesetRuleActionParametersMatchedData... matchedDatas) {
-            return matchedDatas(List.of(matchedDatas));
         }
         @CustomType.Setter
         public Builder mirage(Boolean mirage) {
@@ -589,12 +577,9 @@ public final class RulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
-        public Builder serveStales(List<RulesetRuleActionParametersServeStale> serveStales) {
-            this.serveStales = Objects.requireNonNull(serveStales);
+        public Builder serveStale(RulesetRuleActionParametersServeStale serveStale) {
+            this.serveStale = Objects.requireNonNull(serveStale);
             return this;
-        }
-        public Builder serveStales(RulesetRuleActionParametersServeStale... serveStales) {
-            return serveStales(List.of(serveStales));
         }
         @CustomType.Setter
         public Builder serverSideExcludes(Boolean serverSideExcludes) {
@@ -602,12 +587,9 @@ public final class RulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
-        public Builder snis(List<RulesetRuleActionParametersSni> snis) {
-            this.snis = Objects.requireNonNull(snis);
+        public Builder sni(RulesetRuleActionParametersSni sni) {
+            this.sni = Objects.requireNonNull(sni);
             return this;
-        }
-        public Builder snis(RulesetRuleActionParametersSni... snis) {
-            return snis(List.of(snis));
         }
         @CustomType.Setter
         public Builder ssl(String ssl) {
@@ -625,12 +607,9 @@ public final class RulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
-        public Builder uris(List<RulesetRuleActionParametersUri> uris) {
-            this.uris = Objects.requireNonNull(uris);
+        public Builder uri(RulesetRuleActionParametersUri uri) {
+            this.uri = Objects.requireNonNull(uri);
             return this;
-        }
-        public Builder uris(RulesetRuleActionParametersUri... uris) {
-            return uris(List.of(uris));
         }
         @CustomType.Setter
         public Builder version(String version) {
@@ -644,23 +623,23 @@ public final class RulesetRuleActionParameters {
             o.bic = bic;
             o.browserTtls = browserTtls;
             o.cache = cache;
-            o.cacheKeys = cacheKeys;
+            o.cacheKey = cacheKey;
             o.content = content;
             o.contentType = contentType;
             o.cookieFields = cookieFields;
             o.disableApps = disableApps;
             o.disableRailgun = disableRailgun;
             o.disableZaraz = disableZaraz;
-            o.edgeTtls = edgeTtls;
+            o.edgeTtl = edgeTtl;
             o.emailObfuscation = emailObfuscation;
-            o.fromLists = fromLists;
+            o.fromList = fromList;
             o.fromValues = fromValues;
             o.headers = headers;
             o.hostHeader = hostHeader;
             o.hotlinkProtection = hotlinkProtection;
             o.id = id;
             o.increment = increment;
-            o.matchedDatas = matchedDatas;
+            o.matchedData = matchedData;
             o.mirage = mirage;
             o.opportunisticEncryption = opportunisticEncryption;
             o.originErrorPagePassthru = originErrorPagePassthru;
@@ -678,13 +657,13 @@ public final class RulesetRuleActionParameters {
             o.ruleset = ruleset;
             o.rulesets = rulesets;
             o.securityLevel = securityLevel;
-            o.serveStales = serveStales;
+            o.serveStale = serveStale;
             o.serverSideExcludes = serverSideExcludes;
-            o.snis = snis;
+            o.sni = sni;
             o.ssl = ssl;
             o.statusCode = statusCode;
             o.sxg = sxg;
-            o.uris = uris;
+            o.uri = uri;
             o.version = version;
             return o;
         }

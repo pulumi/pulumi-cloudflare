@@ -18,16 +18,16 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool Bic;
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersBrowserTtl> BrowserTtls;
         public readonly bool Cache;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersCacheKey> CacheKeys;
+        public readonly Outputs.RulesetRuleActionParametersCacheKey CacheKey;
         public readonly string Content;
         public readonly string ContentType;
         public readonly ImmutableArray<string> CookieFields;
         public readonly bool DisableApps;
         public readonly bool DisableRailgun;
         public readonly bool DisableZaraz;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersEdgeTtl> EdgeTtls;
+        public readonly Outputs.RulesetRuleActionParametersEdgeTtl EdgeTtl;
         public readonly bool EmailObfuscation;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersFromList> FromLists;
+        public readonly Outputs.RulesetRuleActionParametersFromList FromList;
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersFromValue> FromValues;
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersHeader> Headers;
         public readonly string HostHeader;
@@ -37,7 +37,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Id;
         public readonly int Increment;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersMatchedData> MatchedDatas;
+        public readonly Outputs.RulesetRuleActionParametersMatchedData MatchedData;
         public readonly bool Mirage;
         public readonly bool OpportunisticEncryption;
         public readonly bool OriginErrorPagePassthru;
@@ -58,13 +58,13 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Ruleset;
         public readonly ImmutableArray<string> Rulesets;
         public readonly string SecurityLevel;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersServeStale> ServeStales;
+        public readonly Outputs.RulesetRuleActionParametersServeStale ServeStale;
         public readonly bool ServerSideExcludes;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersSni> Snis;
+        public readonly Outputs.RulesetRuleActionParametersSni Sni;
         public readonly string Ssl;
         public readonly int StatusCode;
         public readonly bool Sxg;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersUri> Uris;
+        public readonly Outputs.RulesetRuleActionParametersUri Uri;
         public readonly string Version;
 
         [OutputConstructor]
@@ -79,7 +79,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool cache,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersCacheKey> cacheKeys,
+            Outputs.RulesetRuleActionParametersCacheKey cacheKey,
 
             string content,
 
@@ -93,11 +93,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool disableZaraz,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersEdgeTtl> edgeTtls,
+            Outputs.RulesetRuleActionParametersEdgeTtl edgeTtl,
 
             bool emailObfuscation,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersFromList> fromLists,
+            Outputs.RulesetRuleActionParametersFromList fromList,
 
             ImmutableArray<Outputs.RulesetRuleActionParametersFromValue> fromValues,
 
@@ -111,7 +111,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             int increment,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersMatchedData> matchedDatas,
+            Outputs.RulesetRuleActionParametersMatchedData matchedData,
 
             bool mirage,
 
@@ -147,11 +147,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             string securityLevel,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersServeStale> serveStales,
+            Outputs.RulesetRuleActionParametersServeStale serveStale,
 
             bool serverSideExcludes,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersSni> snis,
+            Outputs.RulesetRuleActionParametersSni sni,
 
             string ssl,
 
@@ -159,7 +159,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool sxg,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersUri> uris,
+            Outputs.RulesetRuleActionParametersUri uri,
 
             string version)
         {
@@ -168,23 +168,23 @@ namespace Pulumi.Cloudflare.Outputs
             Bic = bic;
             BrowserTtls = browserTtls;
             Cache = cache;
-            CacheKeys = cacheKeys;
+            CacheKey = cacheKey;
             Content = content;
             ContentType = contentType;
             CookieFields = cookieFields;
             DisableApps = disableApps;
             DisableRailgun = disableRailgun;
             DisableZaraz = disableZaraz;
-            EdgeTtls = edgeTtls;
+            EdgeTtl = edgeTtl;
             EmailObfuscation = emailObfuscation;
-            FromLists = fromLists;
+            FromList = fromList;
             FromValues = fromValues;
             Headers = headers;
             HostHeader = hostHeader;
             HotlinkProtection = hotlinkProtection;
             Id = id;
             Increment = increment;
-            MatchedDatas = matchedDatas;
+            MatchedData = matchedData;
             Mirage = mirage;
             OpportunisticEncryption = opportunisticEncryption;
             OriginErrorPagePassthru = originErrorPagePassthru;
@@ -202,13 +202,13 @@ namespace Pulumi.Cloudflare.Outputs
             Ruleset = ruleset;
             Rulesets = rulesets;
             SecurityLevel = securityLevel;
-            ServeStales = serveStales;
+            ServeStale = serveStale;
             ServerSideExcludes = serverSideExcludes;
-            Snis = snis;
+            Sni = sni;
             Ssl = ssl;
             StatusCode = statusCode;
             Sxg = sxg;
-            Uris = uris;
+            Uri = uri;
             Version = version;
         }
     }

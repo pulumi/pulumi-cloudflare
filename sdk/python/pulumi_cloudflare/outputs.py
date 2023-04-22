@@ -9469,8 +9469,8 @@ class RulesetRuleActionParameters(dict):
             suggest = "automatic_https_rewrites"
         elif key == "browserTtls":
             suggest = "browser_ttls"
-        elif key == "cacheKeys":
-            suggest = "cache_keys"
+        elif key == "cacheKey":
+            suggest = "cache_key"
         elif key == "contentType":
             suggest = "content_type"
         elif key == "cookieFields":
@@ -9481,20 +9481,20 @@ class RulesetRuleActionParameters(dict):
             suggest = "disable_railgun"
         elif key == "disableZaraz":
             suggest = "disable_zaraz"
-        elif key == "edgeTtls":
-            suggest = "edge_ttls"
+        elif key == "edgeTtl":
+            suggest = "edge_ttl"
         elif key == "emailObfuscation":
             suggest = "email_obfuscation"
-        elif key == "fromLists":
-            suggest = "from_lists"
+        elif key == "fromList":
+            suggest = "from_list"
         elif key == "fromValues":
             suggest = "from_values"
         elif key == "hostHeader":
             suggest = "host_header"
         elif key == "hotlinkProtection":
             suggest = "hotlink_protection"
-        elif key == "matchedDatas":
-            suggest = "matched_datas"
+        elif key == "matchedData":
+            suggest = "matched_data"
         elif key == "opportunisticEncryption":
             suggest = "opportunistic_encryption"
         elif key == "originErrorPagePassthru":
@@ -9509,8 +9509,8 @@ class RulesetRuleActionParameters(dict):
             suggest = "rocket_loader"
         elif key == "securityLevel":
             suggest = "security_level"
-        elif key == "serveStales":
-            suggest = "serve_stales"
+        elif key == "serveStale":
+            suggest = "serve_stale"
         elif key == "serverSideExcludes":
             suggest = "server_side_excludes"
         elif key == "statusCode":
@@ -9533,23 +9533,23 @@ class RulesetRuleActionParameters(dict):
                  bic: bool,
                  browser_ttls: Sequence['outputs.RulesetRuleActionParametersBrowserTtl'],
                  cache: bool,
-                 cache_keys: Sequence['outputs.RulesetRuleActionParametersCacheKey'],
+                 cache_key: 'outputs.RulesetRuleActionParametersCacheKey',
                  content: str,
                  content_type: str,
                  cookie_fields: Sequence[str],
                  disable_apps: bool,
                  disable_railgun: bool,
                  disable_zaraz: bool,
-                 edge_ttls: Sequence['outputs.RulesetRuleActionParametersEdgeTtl'],
+                 edge_ttl: 'outputs.RulesetRuleActionParametersEdgeTtl',
                  email_obfuscation: bool,
-                 from_lists: Sequence['outputs.RulesetRuleActionParametersFromList'],
+                 from_list: 'outputs.RulesetRuleActionParametersFromList',
                  from_values: Sequence['outputs.RulesetRuleActionParametersFromValue'],
                  headers: Sequence['outputs.RulesetRuleActionParametersHeader'],
                  host_header: str,
                  hotlink_protection: bool,
                  id: str,
                  increment: int,
-                 matched_datas: Sequence['outputs.RulesetRuleActionParametersMatchedData'],
+                 matched_data: 'outputs.RulesetRuleActionParametersMatchedData',
                  mirage: bool,
                  opportunistic_encryption: bool,
                  origin_error_page_passthru: bool,
@@ -9567,13 +9567,13 @@ class RulesetRuleActionParameters(dict):
                  ruleset: str,
                  rulesets: Sequence[str],
                  security_level: str,
-                 serve_stales: Sequence['outputs.RulesetRuleActionParametersServeStale'],
+                 serve_stale: 'outputs.RulesetRuleActionParametersServeStale',
                  server_side_excludes: bool,
-                 snis: Sequence['outputs.RulesetRuleActionParametersSni'],
+                 sni: 'outputs.RulesetRuleActionParametersSni',
                  ssl: str,
                  status_code: int,
                  sxg: bool,
-                 uris: Sequence['outputs.RulesetRuleActionParametersUri'],
+                 uri: 'outputs.RulesetRuleActionParametersUri',
                  version: str):
         """
         :param str id: The identifier of this resource.
@@ -9584,23 +9584,23 @@ class RulesetRuleActionParameters(dict):
         pulumi.set(__self__, "bic", bic)
         pulumi.set(__self__, "browser_ttls", browser_ttls)
         pulumi.set(__self__, "cache", cache)
-        pulumi.set(__self__, "cache_keys", cache_keys)
+        pulumi.set(__self__, "cache_key", cache_key)
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "content_type", content_type)
         pulumi.set(__self__, "cookie_fields", cookie_fields)
         pulumi.set(__self__, "disable_apps", disable_apps)
         pulumi.set(__self__, "disable_railgun", disable_railgun)
         pulumi.set(__self__, "disable_zaraz", disable_zaraz)
-        pulumi.set(__self__, "edge_ttls", edge_ttls)
+        pulumi.set(__self__, "edge_ttl", edge_ttl)
         pulumi.set(__self__, "email_obfuscation", email_obfuscation)
-        pulumi.set(__self__, "from_lists", from_lists)
+        pulumi.set(__self__, "from_list", from_list)
         pulumi.set(__self__, "from_values", from_values)
         pulumi.set(__self__, "headers", headers)
         pulumi.set(__self__, "host_header", host_header)
         pulumi.set(__self__, "hotlink_protection", hotlink_protection)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "increment", increment)
-        pulumi.set(__self__, "matched_datas", matched_datas)
+        pulumi.set(__self__, "matched_data", matched_data)
         pulumi.set(__self__, "mirage", mirage)
         pulumi.set(__self__, "opportunistic_encryption", opportunistic_encryption)
         pulumi.set(__self__, "origin_error_page_passthru", origin_error_page_passthru)
@@ -9618,13 +9618,13 @@ class RulesetRuleActionParameters(dict):
         pulumi.set(__self__, "ruleset", ruleset)
         pulumi.set(__self__, "rulesets", rulesets)
         pulumi.set(__self__, "security_level", security_level)
-        pulumi.set(__self__, "serve_stales", serve_stales)
+        pulumi.set(__self__, "serve_stale", serve_stale)
         pulumi.set(__self__, "server_side_excludes", server_side_excludes)
-        pulumi.set(__self__, "snis", snis)
+        pulumi.set(__self__, "sni", sni)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "status_code", status_code)
         pulumi.set(__self__, "sxg", sxg)
-        pulumi.set(__self__, "uris", uris)
+        pulumi.set(__self__, "uri", uri)
         pulumi.set(__self__, "version", version)
 
     @property
@@ -9653,9 +9653,9 @@ class RulesetRuleActionParameters(dict):
         return pulumi.get(self, "cache")
 
     @property
-    @pulumi.getter(name="cacheKeys")
-    def cache_keys(self) -> Sequence['outputs.RulesetRuleActionParametersCacheKey']:
-        return pulumi.get(self, "cache_keys")
+    @pulumi.getter(name="cacheKey")
+    def cache_key(self) -> 'outputs.RulesetRuleActionParametersCacheKey':
+        return pulumi.get(self, "cache_key")
 
     @property
     @pulumi.getter
@@ -9688,9 +9688,9 @@ class RulesetRuleActionParameters(dict):
         return pulumi.get(self, "disable_zaraz")
 
     @property
-    @pulumi.getter(name="edgeTtls")
-    def edge_ttls(self) -> Sequence['outputs.RulesetRuleActionParametersEdgeTtl']:
-        return pulumi.get(self, "edge_ttls")
+    @pulumi.getter(name="edgeTtl")
+    def edge_ttl(self) -> 'outputs.RulesetRuleActionParametersEdgeTtl':
+        return pulumi.get(self, "edge_ttl")
 
     @property
     @pulumi.getter(name="emailObfuscation")
@@ -9698,9 +9698,9 @@ class RulesetRuleActionParameters(dict):
         return pulumi.get(self, "email_obfuscation")
 
     @property
-    @pulumi.getter(name="fromLists")
-    def from_lists(self) -> Sequence['outputs.RulesetRuleActionParametersFromList']:
-        return pulumi.get(self, "from_lists")
+    @pulumi.getter(name="fromList")
+    def from_list(self) -> 'outputs.RulesetRuleActionParametersFromList':
+        return pulumi.get(self, "from_list")
 
     @property
     @pulumi.getter(name="fromValues")
@@ -9736,9 +9736,9 @@ class RulesetRuleActionParameters(dict):
         return pulumi.get(self, "increment")
 
     @property
-    @pulumi.getter(name="matchedDatas")
-    def matched_datas(self) -> Sequence['outputs.RulesetRuleActionParametersMatchedData']:
-        return pulumi.get(self, "matched_datas")
+    @pulumi.getter(name="matchedData")
+    def matched_data(self) -> 'outputs.RulesetRuleActionParametersMatchedData':
+        return pulumi.get(self, "matched_data")
 
     @property
     @pulumi.getter
@@ -9829,9 +9829,9 @@ class RulesetRuleActionParameters(dict):
         return pulumi.get(self, "security_level")
 
     @property
-    @pulumi.getter(name="serveStales")
-    def serve_stales(self) -> Sequence['outputs.RulesetRuleActionParametersServeStale']:
-        return pulumi.get(self, "serve_stales")
+    @pulumi.getter(name="serveStale")
+    def serve_stale(self) -> 'outputs.RulesetRuleActionParametersServeStale':
+        return pulumi.get(self, "serve_stale")
 
     @property
     @pulumi.getter(name="serverSideExcludes")
@@ -9840,8 +9840,8 @@ class RulesetRuleActionParameters(dict):
 
     @property
     @pulumi.getter
-    def snis(self) -> Sequence['outputs.RulesetRuleActionParametersSni']:
-        return pulumi.get(self, "snis")
+    def sni(self) -> 'outputs.RulesetRuleActionParametersSni':
+        return pulumi.get(self, "sni")
 
     @property
     @pulumi.getter
@@ -9860,8 +9860,8 @@ class RulesetRuleActionParameters(dict):
 
     @property
     @pulumi.getter
-    def uris(self) -> Sequence['outputs.RulesetRuleActionParametersUri']:
-        return pulumi.get(self, "uris")
+    def uri(self) -> 'outputs.RulesetRuleActionParametersUri':
+        return pulumi.get(self, "uri")
 
     @property
     @pulumi.getter

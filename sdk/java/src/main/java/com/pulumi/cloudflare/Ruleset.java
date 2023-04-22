@@ -29,6 +29,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.RulesetArgs;
  * import com.pulumi.cloudflare.inputs.RulesetRuleArgs;
  * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersEdgeTtlArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersServeStaleArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromListArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -110,7 +115,9 @@ import javax.annotation.Nullable;
  *             .rules(RulesetRuleArgs.builder()
  *                 .action(&#34;rewrite&#34;)
  *                 .actionParameters(RulesetRuleActionParametersArgs.builder()
- *                     .uri(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                     .uri(RulesetRuleActionParametersUriArgs.builder()
+ *                         .path(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                         .build())
  *                     .build())
  *                 .description(&#34;example URI path transform rule&#34;)
  *                 .enabled(true)
@@ -127,7 +134,9 @@ import javax.annotation.Nullable;
  *             .rules(RulesetRuleArgs.builder()
  *                 .action(&#34;rewrite&#34;)
  *                 .actionParameters(RulesetRuleActionParametersArgs.builder()
- *                     .uri(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                     .uri(RulesetRuleActionParametersUriArgs.builder()
+ *                         .query(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                         .build())
  *                     .build())
  *                 .description(&#34;URI transformation query example&#34;)
  *                 .enabled(true)
@@ -244,11 +253,23 @@ import javax.annotation.Nullable;
  *                 .action(&#34;set_cache_settings&#34;)
  *                 .actionParameters(RulesetRuleActionParametersArgs.builder()
  *                     .browserTtl(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .cacheKey(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .edgeTtl(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                     .cacheKey(RulesetRuleActionParametersCacheKeyArgs.builder()
+ *                         .cacheDeceptionArmor(true)
+ *                         .customKey(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                         .ignoreQueryStringsOrder(false)
+ *                         .build())
+ *                     .edgeTtl(RulesetRuleActionParametersEdgeTtlArgs.builder()
+ *                         .default_(60)
+ *                         .mode(&#34;override_origin&#34;)
+ *                         .statusCodeTtl(                        
+ *                             %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+ *                             %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                         .build())
  *                     .originErrorPagePassthru(false)
  *                     .respectStrongEtags(true)
- *                     .serveStale(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                     .serveStale(RulesetRuleActionParametersServeStaleArgs.builder()
+ *                         .disableStaleWhileUpdating(true)
+ *                         .build())
  *                     .build())
  *                 .description(&#34;set cache settings rule&#34;)
  *                 .enabled(true)
@@ -266,7 +287,10 @@ import javax.annotation.Nullable;
  *             .rules(RulesetRuleArgs.builder()
  *                 .action(&#34;redirect&#34;)
  *                 .actionParameters(RulesetRuleActionParametersArgs.builder()
- *                     .fromList(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                     .fromList(RulesetRuleActionParametersFromListArgs.builder()
+ *                         .key(&#34;http.request.full_uri&#34;)
+ *                         .name(&#34;redirect_list&#34;)
+ *                         .build())
  *                     .build())
  *                 .description(&#34;Apply redirects from redirect_list&#34;)
  *                 .enabled(true)

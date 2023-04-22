@@ -66,11 +66,11 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         return this.cache;
     }
 
-    @Import(name="cacheKeys", required=true)
-    private Output<List<RulesetRuleActionParametersCacheKeyArgs>> cacheKeys;
+    @Import(name="cacheKey", required=true)
+    private Output<RulesetRuleActionParametersCacheKeyArgs> cacheKey;
 
-    public Output<List<RulesetRuleActionParametersCacheKeyArgs>> cacheKeys() {
-        return this.cacheKeys;
+    public Output<RulesetRuleActionParametersCacheKeyArgs> cacheKey() {
+        return this.cacheKey;
     }
 
     @Import(name="content", required=true)
@@ -115,11 +115,11 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         return this.disableZaraz;
     }
 
-    @Import(name="edgeTtls", required=true)
-    private Output<List<RulesetRuleActionParametersEdgeTtlArgs>> edgeTtls;
+    @Import(name="edgeTtl", required=true)
+    private Output<RulesetRuleActionParametersEdgeTtlArgs> edgeTtl;
 
-    public Output<List<RulesetRuleActionParametersEdgeTtlArgs>> edgeTtls() {
-        return this.edgeTtls;
+    public Output<RulesetRuleActionParametersEdgeTtlArgs> edgeTtl() {
+        return this.edgeTtl;
     }
 
     @Import(name="emailObfuscation", required=true)
@@ -129,11 +129,11 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         return this.emailObfuscation;
     }
 
-    @Import(name="fromLists", required=true)
-    private Output<List<RulesetRuleActionParametersFromListArgs>> fromLists;
+    @Import(name="fromList", required=true)
+    private Output<RulesetRuleActionParametersFromListArgs> fromList;
 
-    public Output<List<RulesetRuleActionParametersFromListArgs>> fromLists() {
-        return this.fromLists;
+    public Output<RulesetRuleActionParametersFromListArgs> fromList() {
+        return this.fromList;
     }
 
     @Import(name="fromValues", required=true)
@@ -186,11 +186,11 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         return this.increment;
     }
 
-    @Import(name="matchedDatas", required=true)
-    private Output<List<RulesetRuleActionParametersMatchedDataArgs>> matchedDatas;
+    @Import(name="matchedData", required=true)
+    private Output<RulesetRuleActionParametersMatchedDataArgs> matchedData;
 
-    public Output<List<RulesetRuleActionParametersMatchedDataArgs>> matchedDatas() {
-        return this.matchedDatas;
+    public Output<RulesetRuleActionParametersMatchedDataArgs> matchedData() {
+        return this.matchedData;
     }
 
     @Import(name="mirage", required=true)
@@ -320,11 +320,11 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         return this.securityLevel;
     }
 
-    @Import(name="serveStales", required=true)
-    private Output<List<RulesetRuleActionParametersServeStaleArgs>> serveStales;
+    @Import(name="serveStale", required=true)
+    private Output<RulesetRuleActionParametersServeStaleArgs> serveStale;
 
-    public Output<List<RulesetRuleActionParametersServeStaleArgs>> serveStales() {
-        return this.serveStales;
+    public Output<RulesetRuleActionParametersServeStaleArgs> serveStale() {
+        return this.serveStale;
     }
 
     @Import(name="serverSideExcludes", required=true)
@@ -334,11 +334,11 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         return this.serverSideExcludes;
     }
 
-    @Import(name="snis", required=true)
-    private Output<List<RulesetRuleActionParametersSniArgs>> snis;
+    @Import(name="sni", required=true)
+    private Output<RulesetRuleActionParametersSniArgs> sni;
 
-    public Output<List<RulesetRuleActionParametersSniArgs>> snis() {
-        return this.snis;
+    public Output<RulesetRuleActionParametersSniArgs> sni() {
+        return this.sni;
     }
 
     @Import(name="ssl", required=true)
@@ -362,11 +362,11 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         return this.sxg;
     }
 
-    @Import(name="uris", required=true)
-    private Output<List<RulesetRuleActionParametersUriArgs>> uris;
+    @Import(name="uri", required=true)
+    private Output<RulesetRuleActionParametersUriArgs> uri;
 
-    public Output<List<RulesetRuleActionParametersUriArgs>> uris() {
-        return this.uris;
+    public Output<RulesetRuleActionParametersUriArgs> uri() {
+        return this.uri;
     }
 
     @Import(name="version", required=true)
@@ -384,23 +384,23 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.bic = $.bic;
         this.browserTtls = $.browserTtls;
         this.cache = $.cache;
-        this.cacheKeys = $.cacheKeys;
+        this.cacheKey = $.cacheKey;
         this.content = $.content;
         this.contentType = $.contentType;
         this.cookieFields = $.cookieFields;
         this.disableApps = $.disableApps;
         this.disableRailgun = $.disableRailgun;
         this.disableZaraz = $.disableZaraz;
-        this.edgeTtls = $.edgeTtls;
+        this.edgeTtl = $.edgeTtl;
         this.emailObfuscation = $.emailObfuscation;
-        this.fromLists = $.fromLists;
+        this.fromList = $.fromList;
         this.fromValues = $.fromValues;
         this.headers = $.headers;
         this.hostHeader = $.hostHeader;
         this.hotlinkProtection = $.hotlinkProtection;
         this.id = $.id;
         this.increment = $.increment;
-        this.matchedDatas = $.matchedDatas;
+        this.matchedData = $.matchedData;
         this.mirage = $.mirage;
         this.opportunisticEncryption = $.opportunisticEncryption;
         this.originErrorPagePassthru = $.originErrorPagePassthru;
@@ -418,13 +418,13 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.ruleset = $.ruleset;
         this.rulesets = $.rulesets;
         this.securityLevel = $.securityLevel;
-        this.serveStales = $.serveStales;
+        this.serveStale = $.serveStale;
         this.serverSideExcludes = $.serverSideExcludes;
-        this.snis = $.snis;
+        this.sni = $.sni;
         this.ssl = $.ssl;
         this.statusCode = $.statusCode;
         this.sxg = $.sxg;
-        this.uris = $.uris;
+        this.uri = $.uri;
         this.version = $.version;
     }
 
@@ -499,17 +499,13 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return cache(Output.of(cache));
         }
 
-        public Builder cacheKeys(Output<List<RulesetRuleActionParametersCacheKeyArgs>> cacheKeys) {
-            $.cacheKeys = cacheKeys;
+        public Builder cacheKey(Output<RulesetRuleActionParametersCacheKeyArgs> cacheKey) {
+            $.cacheKey = cacheKey;
             return this;
         }
 
-        public Builder cacheKeys(List<RulesetRuleActionParametersCacheKeyArgs> cacheKeys) {
-            return cacheKeys(Output.of(cacheKeys));
-        }
-
-        public Builder cacheKeys(RulesetRuleActionParametersCacheKeyArgs... cacheKeys) {
-            return cacheKeys(List.of(cacheKeys));
+        public Builder cacheKey(RulesetRuleActionParametersCacheKeyArgs cacheKey) {
+            return cacheKey(Output.of(cacheKey));
         }
 
         public Builder content(Output<String> content) {
@@ -570,17 +566,13 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return disableZaraz(Output.of(disableZaraz));
         }
 
-        public Builder edgeTtls(Output<List<RulesetRuleActionParametersEdgeTtlArgs>> edgeTtls) {
-            $.edgeTtls = edgeTtls;
+        public Builder edgeTtl(Output<RulesetRuleActionParametersEdgeTtlArgs> edgeTtl) {
+            $.edgeTtl = edgeTtl;
             return this;
         }
 
-        public Builder edgeTtls(List<RulesetRuleActionParametersEdgeTtlArgs> edgeTtls) {
-            return edgeTtls(Output.of(edgeTtls));
-        }
-
-        public Builder edgeTtls(RulesetRuleActionParametersEdgeTtlArgs... edgeTtls) {
-            return edgeTtls(List.of(edgeTtls));
+        public Builder edgeTtl(RulesetRuleActionParametersEdgeTtlArgs edgeTtl) {
+            return edgeTtl(Output.of(edgeTtl));
         }
 
         public Builder emailObfuscation(Output<Boolean> emailObfuscation) {
@@ -592,17 +584,13 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return emailObfuscation(Output.of(emailObfuscation));
         }
 
-        public Builder fromLists(Output<List<RulesetRuleActionParametersFromListArgs>> fromLists) {
-            $.fromLists = fromLists;
+        public Builder fromList(Output<RulesetRuleActionParametersFromListArgs> fromList) {
+            $.fromList = fromList;
             return this;
         }
 
-        public Builder fromLists(List<RulesetRuleActionParametersFromListArgs> fromLists) {
-            return fromLists(Output.of(fromLists));
-        }
-
-        public Builder fromLists(RulesetRuleActionParametersFromListArgs... fromLists) {
-            return fromLists(List.of(fromLists));
+        public Builder fromList(RulesetRuleActionParametersFromListArgs fromList) {
+            return fromList(Output.of(fromList));
         }
 
         public Builder fromValues(Output<List<RulesetRuleActionParametersFromValueArgs>> fromValues) {
@@ -679,17 +667,13 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return increment(Output.of(increment));
         }
 
-        public Builder matchedDatas(Output<List<RulesetRuleActionParametersMatchedDataArgs>> matchedDatas) {
-            $.matchedDatas = matchedDatas;
+        public Builder matchedData(Output<RulesetRuleActionParametersMatchedDataArgs> matchedData) {
+            $.matchedData = matchedData;
             return this;
         }
 
-        public Builder matchedDatas(List<RulesetRuleActionParametersMatchedDataArgs> matchedDatas) {
-            return matchedDatas(Output.of(matchedDatas));
-        }
-
-        public Builder matchedDatas(RulesetRuleActionParametersMatchedDataArgs... matchedDatas) {
-            return matchedDatas(List.of(matchedDatas));
+        public Builder matchedData(RulesetRuleActionParametersMatchedDataArgs matchedData) {
+            return matchedData(Output.of(matchedData));
         }
 
         public Builder mirage(Output<Boolean> mirage) {
@@ -889,17 +873,13 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return securityLevel(Output.of(securityLevel));
         }
 
-        public Builder serveStales(Output<List<RulesetRuleActionParametersServeStaleArgs>> serveStales) {
-            $.serveStales = serveStales;
+        public Builder serveStale(Output<RulesetRuleActionParametersServeStaleArgs> serveStale) {
+            $.serveStale = serveStale;
             return this;
         }
 
-        public Builder serveStales(List<RulesetRuleActionParametersServeStaleArgs> serveStales) {
-            return serveStales(Output.of(serveStales));
-        }
-
-        public Builder serveStales(RulesetRuleActionParametersServeStaleArgs... serveStales) {
-            return serveStales(List.of(serveStales));
+        public Builder serveStale(RulesetRuleActionParametersServeStaleArgs serveStale) {
+            return serveStale(Output.of(serveStale));
         }
 
         public Builder serverSideExcludes(Output<Boolean> serverSideExcludes) {
@@ -911,17 +891,13 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return serverSideExcludes(Output.of(serverSideExcludes));
         }
 
-        public Builder snis(Output<List<RulesetRuleActionParametersSniArgs>> snis) {
-            $.snis = snis;
+        public Builder sni(Output<RulesetRuleActionParametersSniArgs> sni) {
+            $.sni = sni;
             return this;
         }
 
-        public Builder snis(List<RulesetRuleActionParametersSniArgs> snis) {
-            return snis(Output.of(snis));
-        }
-
-        public Builder snis(RulesetRuleActionParametersSniArgs... snis) {
-            return snis(List.of(snis));
+        public Builder sni(RulesetRuleActionParametersSniArgs sni) {
+            return sni(Output.of(sni));
         }
 
         public Builder ssl(Output<String> ssl) {
@@ -951,17 +927,13 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return sxg(Output.of(sxg));
         }
 
-        public Builder uris(Output<List<RulesetRuleActionParametersUriArgs>> uris) {
-            $.uris = uris;
+        public Builder uri(Output<RulesetRuleActionParametersUriArgs> uri) {
+            $.uri = uri;
             return this;
         }
 
-        public Builder uris(List<RulesetRuleActionParametersUriArgs> uris) {
-            return uris(Output.of(uris));
-        }
-
-        public Builder uris(RulesetRuleActionParametersUriArgs... uris) {
-            return uris(List.of(uris));
+        public Builder uri(RulesetRuleActionParametersUriArgs uri) {
+            return uri(Output.of(uri));
         }
 
         public Builder version(Output<String> version) {
@@ -979,23 +951,23 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             $.bic = Objects.requireNonNull($.bic, "expected parameter 'bic' to be non-null");
             $.browserTtls = Objects.requireNonNull($.browserTtls, "expected parameter 'browserTtls' to be non-null");
             $.cache = Objects.requireNonNull($.cache, "expected parameter 'cache' to be non-null");
-            $.cacheKeys = Objects.requireNonNull($.cacheKeys, "expected parameter 'cacheKeys' to be non-null");
+            $.cacheKey = Objects.requireNonNull($.cacheKey, "expected parameter 'cacheKey' to be non-null");
             $.content = Objects.requireNonNull($.content, "expected parameter 'content' to be non-null");
             $.contentType = Objects.requireNonNull($.contentType, "expected parameter 'contentType' to be non-null");
             $.cookieFields = Objects.requireNonNull($.cookieFields, "expected parameter 'cookieFields' to be non-null");
             $.disableApps = Objects.requireNonNull($.disableApps, "expected parameter 'disableApps' to be non-null");
             $.disableRailgun = Objects.requireNonNull($.disableRailgun, "expected parameter 'disableRailgun' to be non-null");
             $.disableZaraz = Objects.requireNonNull($.disableZaraz, "expected parameter 'disableZaraz' to be non-null");
-            $.edgeTtls = Objects.requireNonNull($.edgeTtls, "expected parameter 'edgeTtls' to be non-null");
+            $.edgeTtl = Objects.requireNonNull($.edgeTtl, "expected parameter 'edgeTtl' to be non-null");
             $.emailObfuscation = Objects.requireNonNull($.emailObfuscation, "expected parameter 'emailObfuscation' to be non-null");
-            $.fromLists = Objects.requireNonNull($.fromLists, "expected parameter 'fromLists' to be non-null");
+            $.fromList = Objects.requireNonNull($.fromList, "expected parameter 'fromList' to be non-null");
             $.fromValues = Objects.requireNonNull($.fromValues, "expected parameter 'fromValues' to be non-null");
             $.headers = Objects.requireNonNull($.headers, "expected parameter 'headers' to be non-null");
             $.hostHeader = Objects.requireNonNull($.hostHeader, "expected parameter 'hostHeader' to be non-null");
             $.hotlinkProtection = Objects.requireNonNull($.hotlinkProtection, "expected parameter 'hotlinkProtection' to be non-null");
             $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
             $.increment = Objects.requireNonNull($.increment, "expected parameter 'increment' to be non-null");
-            $.matchedDatas = Objects.requireNonNull($.matchedDatas, "expected parameter 'matchedDatas' to be non-null");
+            $.matchedData = Objects.requireNonNull($.matchedData, "expected parameter 'matchedData' to be non-null");
             $.mirage = Objects.requireNonNull($.mirage, "expected parameter 'mirage' to be non-null");
             $.opportunisticEncryption = Objects.requireNonNull($.opportunisticEncryption, "expected parameter 'opportunisticEncryption' to be non-null");
             $.originErrorPagePassthru = Objects.requireNonNull($.originErrorPagePassthru, "expected parameter 'originErrorPagePassthru' to be non-null");
@@ -1013,13 +985,13 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             $.ruleset = Objects.requireNonNull($.ruleset, "expected parameter 'ruleset' to be non-null");
             $.rulesets = Objects.requireNonNull($.rulesets, "expected parameter 'rulesets' to be non-null");
             $.securityLevel = Objects.requireNonNull($.securityLevel, "expected parameter 'securityLevel' to be non-null");
-            $.serveStales = Objects.requireNonNull($.serveStales, "expected parameter 'serveStales' to be non-null");
+            $.serveStale = Objects.requireNonNull($.serveStale, "expected parameter 'serveStale' to be non-null");
             $.serverSideExcludes = Objects.requireNonNull($.serverSideExcludes, "expected parameter 'serverSideExcludes' to be non-null");
-            $.snis = Objects.requireNonNull($.snis, "expected parameter 'snis' to be non-null");
+            $.sni = Objects.requireNonNull($.sni, "expected parameter 'sni' to be non-null");
             $.ssl = Objects.requireNonNull($.ssl, "expected parameter 'ssl' to be non-null");
             $.statusCode = Objects.requireNonNull($.statusCode, "expected parameter 'statusCode' to be non-null");
             $.sxg = Objects.requireNonNull($.sxg, "expected parameter 'sxg' to be non-null");
-            $.uris = Objects.requireNonNull($.uris, "expected parameter 'uris' to be non-null");
+            $.uri = Objects.requireNonNull($.uri, "expected parameter 'uri' to be non-null");
             $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
             return $;
         }

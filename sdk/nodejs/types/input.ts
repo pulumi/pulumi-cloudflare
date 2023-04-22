@@ -2201,16 +2201,16 @@ export interface RulesetRuleActionParameters {
     bic: pulumi.Input<boolean>;
     browserTtls: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersBrowserTtl>[]>;
     cache: pulumi.Input<boolean>;
-    cacheKeys: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersCacheKey>[]>;
+    cacheKey: pulumi.Input<inputs.RulesetRuleActionParametersCacheKey>;
     content: pulumi.Input<string>;
     contentType: pulumi.Input<string>;
     cookieFields: pulumi.Input<pulumi.Input<string>[]>;
     disableApps: pulumi.Input<boolean>;
     disableRailgun: pulumi.Input<boolean>;
     disableZaraz: pulumi.Input<boolean>;
-    edgeTtls: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtl>[]>;
+    edgeTtl: pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtl>;
     emailObfuscation: pulumi.Input<boolean>;
-    fromLists: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersFromList>[]>;
+    fromList: pulumi.Input<inputs.RulesetRuleActionParametersFromList>;
     fromValues: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersFromValue>[]>;
     headers: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersHeader>[]>;
     hostHeader: pulumi.Input<string>;
@@ -2220,7 +2220,7 @@ export interface RulesetRuleActionParameters {
      */
     id: pulumi.Input<string>;
     increment: pulumi.Input<number>;
-    matchedDatas: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersMatchedData>[]>;
+    matchedData: pulumi.Input<inputs.RulesetRuleActionParametersMatchedData>;
     mirage: pulumi.Input<boolean>;
     opportunisticEncryption: pulumi.Input<boolean>;
     originErrorPagePassthru: pulumi.Input<boolean>;
@@ -2241,13 +2241,13 @@ export interface RulesetRuleActionParameters {
     ruleset: pulumi.Input<string>;
     rulesets: pulumi.Input<pulumi.Input<string>[]>;
     securityLevel: pulumi.Input<string>;
-    serveStales: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersServeStale>[]>;
+    serveStale: pulumi.Input<inputs.RulesetRuleActionParametersServeStale>;
     serverSideExcludes: pulumi.Input<boolean>;
-    snis: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersSni>[]>;
+    sni: pulumi.Input<inputs.RulesetRuleActionParametersSni>;
     ssl: pulumi.Input<string>;
     statusCode: pulumi.Input<number>;
     sxg: pulumi.Input<boolean>;
-    uris: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersUri>[]>;
+    uri: pulumi.Input<inputs.RulesetRuleActionParametersUri>;
     version: pulumi.Input<string>;
 }
 

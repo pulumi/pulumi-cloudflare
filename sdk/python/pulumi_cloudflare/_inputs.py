@@ -9840,23 +9840,23 @@ class RulesetRuleActionParametersArgs:
                  bic: pulumi.Input[bool],
                  browser_ttls: pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersBrowserTtlArgs']]],
                  cache: pulumi.Input[bool],
-                 cache_keys: pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersCacheKeyArgs']]],
+                 cache_key: pulumi.Input['RulesetRuleActionParametersCacheKeyArgs'],
                  content: pulumi.Input[str],
                  content_type: pulumi.Input[str],
                  cookie_fields: pulumi.Input[Sequence[pulumi.Input[str]]],
                  disable_apps: pulumi.Input[bool],
                  disable_railgun: pulumi.Input[bool],
                  disable_zaraz: pulumi.Input[bool],
-                 edge_ttls: pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersEdgeTtlArgs']]],
+                 edge_ttl: pulumi.Input['RulesetRuleActionParametersEdgeTtlArgs'],
                  email_obfuscation: pulumi.Input[bool],
-                 from_lists: pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersFromListArgs']]],
+                 from_list: pulumi.Input['RulesetRuleActionParametersFromListArgs'],
                  from_values: pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersFromValueArgs']]],
                  headers: pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersHeaderArgs']]],
                  host_header: pulumi.Input[str],
                  hotlink_protection: pulumi.Input[bool],
                  id: pulumi.Input[str],
                  increment: pulumi.Input[int],
-                 matched_datas: pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersMatchedDataArgs']]],
+                 matched_data: pulumi.Input['RulesetRuleActionParametersMatchedDataArgs'],
                  mirage: pulumi.Input[bool],
                  opportunistic_encryption: pulumi.Input[bool],
                  origin_error_page_passthru: pulumi.Input[bool],
@@ -9874,13 +9874,13 @@ class RulesetRuleActionParametersArgs:
                  ruleset: pulumi.Input[str],
                  rulesets: pulumi.Input[Sequence[pulumi.Input[str]]],
                  security_level: pulumi.Input[str],
-                 serve_stales: pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersServeStaleArgs']]],
+                 serve_stale: pulumi.Input['RulesetRuleActionParametersServeStaleArgs'],
                  server_side_excludes: pulumi.Input[bool],
-                 snis: pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersSniArgs']]],
+                 sni: pulumi.Input['RulesetRuleActionParametersSniArgs'],
                  ssl: pulumi.Input[str],
                  status_code: pulumi.Input[int],
                  sxg: pulumi.Input[bool],
-                 uris: pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersUriArgs']]],
+                 uri: pulumi.Input['RulesetRuleActionParametersUriArgs'],
                  version: pulumi.Input[str]):
         """
         :param pulumi.Input[str] id: The identifier of this resource.
@@ -9891,23 +9891,23 @@ class RulesetRuleActionParametersArgs:
         pulumi.set(__self__, "bic", bic)
         pulumi.set(__self__, "browser_ttls", browser_ttls)
         pulumi.set(__self__, "cache", cache)
-        pulumi.set(__self__, "cache_keys", cache_keys)
+        pulumi.set(__self__, "cache_key", cache_key)
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "content_type", content_type)
         pulumi.set(__self__, "cookie_fields", cookie_fields)
         pulumi.set(__self__, "disable_apps", disable_apps)
         pulumi.set(__self__, "disable_railgun", disable_railgun)
         pulumi.set(__self__, "disable_zaraz", disable_zaraz)
-        pulumi.set(__self__, "edge_ttls", edge_ttls)
+        pulumi.set(__self__, "edge_ttl", edge_ttl)
         pulumi.set(__self__, "email_obfuscation", email_obfuscation)
-        pulumi.set(__self__, "from_lists", from_lists)
+        pulumi.set(__self__, "from_list", from_list)
         pulumi.set(__self__, "from_values", from_values)
         pulumi.set(__self__, "headers", headers)
         pulumi.set(__self__, "host_header", host_header)
         pulumi.set(__self__, "hotlink_protection", hotlink_protection)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "increment", increment)
-        pulumi.set(__self__, "matched_datas", matched_datas)
+        pulumi.set(__self__, "matched_data", matched_data)
         pulumi.set(__self__, "mirage", mirage)
         pulumi.set(__self__, "opportunistic_encryption", opportunistic_encryption)
         pulumi.set(__self__, "origin_error_page_passthru", origin_error_page_passthru)
@@ -9925,13 +9925,13 @@ class RulesetRuleActionParametersArgs:
         pulumi.set(__self__, "ruleset", ruleset)
         pulumi.set(__self__, "rulesets", rulesets)
         pulumi.set(__self__, "security_level", security_level)
-        pulumi.set(__self__, "serve_stales", serve_stales)
+        pulumi.set(__self__, "serve_stale", serve_stale)
         pulumi.set(__self__, "server_side_excludes", server_side_excludes)
-        pulumi.set(__self__, "snis", snis)
+        pulumi.set(__self__, "sni", sni)
         pulumi.set(__self__, "ssl", ssl)
         pulumi.set(__self__, "status_code", status_code)
         pulumi.set(__self__, "sxg", sxg)
-        pulumi.set(__self__, "uris", uris)
+        pulumi.set(__self__, "uri", uri)
         pulumi.set(__self__, "version", version)
 
     @property
@@ -9980,13 +9980,13 @@ class RulesetRuleActionParametersArgs:
         pulumi.set(self, "cache", value)
 
     @property
-    @pulumi.getter(name="cacheKeys")
-    def cache_keys(self) -> pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersCacheKeyArgs']]]:
-        return pulumi.get(self, "cache_keys")
+    @pulumi.getter(name="cacheKey")
+    def cache_key(self) -> pulumi.Input['RulesetRuleActionParametersCacheKeyArgs']:
+        return pulumi.get(self, "cache_key")
 
-    @cache_keys.setter
-    def cache_keys(self, value: pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersCacheKeyArgs']]]):
-        pulumi.set(self, "cache_keys", value)
+    @cache_key.setter
+    def cache_key(self, value: pulumi.Input['RulesetRuleActionParametersCacheKeyArgs']):
+        pulumi.set(self, "cache_key", value)
 
     @property
     @pulumi.getter
@@ -10043,13 +10043,13 @@ class RulesetRuleActionParametersArgs:
         pulumi.set(self, "disable_zaraz", value)
 
     @property
-    @pulumi.getter(name="edgeTtls")
-    def edge_ttls(self) -> pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersEdgeTtlArgs']]]:
-        return pulumi.get(self, "edge_ttls")
+    @pulumi.getter(name="edgeTtl")
+    def edge_ttl(self) -> pulumi.Input['RulesetRuleActionParametersEdgeTtlArgs']:
+        return pulumi.get(self, "edge_ttl")
 
-    @edge_ttls.setter
-    def edge_ttls(self, value: pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersEdgeTtlArgs']]]):
-        pulumi.set(self, "edge_ttls", value)
+    @edge_ttl.setter
+    def edge_ttl(self, value: pulumi.Input['RulesetRuleActionParametersEdgeTtlArgs']):
+        pulumi.set(self, "edge_ttl", value)
 
     @property
     @pulumi.getter(name="emailObfuscation")
@@ -10061,13 +10061,13 @@ class RulesetRuleActionParametersArgs:
         pulumi.set(self, "email_obfuscation", value)
 
     @property
-    @pulumi.getter(name="fromLists")
-    def from_lists(self) -> pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersFromListArgs']]]:
-        return pulumi.get(self, "from_lists")
+    @pulumi.getter(name="fromList")
+    def from_list(self) -> pulumi.Input['RulesetRuleActionParametersFromListArgs']:
+        return pulumi.get(self, "from_list")
 
-    @from_lists.setter
-    def from_lists(self, value: pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersFromListArgs']]]):
-        pulumi.set(self, "from_lists", value)
+    @from_list.setter
+    def from_list(self, value: pulumi.Input['RulesetRuleActionParametersFromListArgs']):
+        pulumi.set(self, "from_list", value)
 
     @property
     @pulumi.getter(name="fromValues")
@@ -10127,13 +10127,13 @@ class RulesetRuleActionParametersArgs:
         pulumi.set(self, "increment", value)
 
     @property
-    @pulumi.getter(name="matchedDatas")
-    def matched_datas(self) -> pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersMatchedDataArgs']]]:
-        return pulumi.get(self, "matched_datas")
+    @pulumi.getter(name="matchedData")
+    def matched_data(self) -> pulumi.Input['RulesetRuleActionParametersMatchedDataArgs']:
+        return pulumi.get(self, "matched_data")
 
-    @matched_datas.setter
-    def matched_datas(self, value: pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersMatchedDataArgs']]]):
-        pulumi.set(self, "matched_datas", value)
+    @matched_data.setter
+    def matched_data(self, value: pulumi.Input['RulesetRuleActionParametersMatchedDataArgs']):
+        pulumi.set(self, "matched_data", value)
 
     @property
     @pulumi.getter
@@ -10292,13 +10292,13 @@ class RulesetRuleActionParametersArgs:
         pulumi.set(self, "security_level", value)
 
     @property
-    @pulumi.getter(name="serveStales")
-    def serve_stales(self) -> pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersServeStaleArgs']]]:
-        return pulumi.get(self, "serve_stales")
+    @pulumi.getter(name="serveStale")
+    def serve_stale(self) -> pulumi.Input['RulesetRuleActionParametersServeStaleArgs']:
+        return pulumi.get(self, "serve_stale")
 
-    @serve_stales.setter
-    def serve_stales(self, value: pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersServeStaleArgs']]]):
-        pulumi.set(self, "serve_stales", value)
+    @serve_stale.setter
+    def serve_stale(self, value: pulumi.Input['RulesetRuleActionParametersServeStaleArgs']):
+        pulumi.set(self, "serve_stale", value)
 
     @property
     @pulumi.getter(name="serverSideExcludes")
@@ -10311,12 +10311,12 @@ class RulesetRuleActionParametersArgs:
 
     @property
     @pulumi.getter
-    def snis(self) -> pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersSniArgs']]]:
-        return pulumi.get(self, "snis")
+    def sni(self) -> pulumi.Input['RulesetRuleActionParametersSniArgs']:
+        return pulumi.get(self, "sni")
 
-    @snis.setter
-    def snis(self, value: pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersSniArgs']]]):
-        pulumi.set(self, "snis", value)
+    @sni.setter
+    def sni(self, value: pulumi.Input['RulesetRuleActionParametersSniArgs']):
+        pulumi.set(self, "sni", value)
 
     @property
     @pulumi.getter
@@ -10347,12 +10347,12 @@ class RulesetRuleActionParametersArgs:
 
     @property
     @pulumi.getter
-    def uris(self) -> pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersUriArgs']]]:
-        return pulumi.get(self, "uris")
+    def uri(self) -> pulumi.Input['RulesetRuleActionParametersUriArgs']:
+        return pulumi.get(self, "uri")
 
-    @uris.setter
-    def uris(self, value: pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersUriArgs']]]):
-        pulumi.set(self, "uris", value)
+    @uri.setter
+    def uri(self, value: pulumi.Input['RulesetRuleActionParametersUriArgs']):
+        pulumi.set(self, "uri", value)
 
     @property
     @pulumi.getter

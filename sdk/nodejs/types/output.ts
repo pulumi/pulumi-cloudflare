@@ -2409,16 +2409,16 @@ export interface RulesetRuleActionParameters {
     bic: boolean;
     browserTtls: outputs.RulesetRuleActionParametersBrowserTtl[];
     cache: boolean;
-    cacheKeys: outputs.RulesetRuleActionParametersCacheKey[];
+    cacheKey: outputs.RulesetRuleActionParametersCacheKey;
     content: string;
     contentType: string;
     cookieFields: string[];
     disableApps: boolean;
     disableRailgun: boolean;
     disableZaraz: boolean;
-    edgeTtls: outputs.RulesetRuleActionParametersEdgeTtl[];
+    edgeTtl: outputs.RulesetRuleActionParametersEdgeTtl;
     emailObfuscation: boolean;
-    fromLists: outputs.RulesetRuleActionParametersFromList[];
+    fromList: outputs.RulesetRuleActionParametersFromList;
     fromValues: outputs.RulesetRuleActionParametersFromValue[];
     headers: outputs.RulesetRuleActionParametersHeader[];
     hostHeader: string;
@@ -2428,7 +2428,7 @@ export interface RulesetRuleActionParameters {
      */
     id: string;
     increment: number;
-    matchedDatas: outputs.RulesetRuleActionParametersMatchedData[];
+    matchedData: outputs.RulesetRuleActionParametersMatchedData;
     mirage: boolean;
     opportunisticEncryption: boolean;
     originErrorPagePassthru: boolean;
@@ -2449,13 +2449,13 @@ export interface RulesetRuleActionParameters {
     ruleset: string;
     rulesets: string[];
     securityLevel: string;
-    serveStales: outputs.RulesetRuleActionParametersServeStale[];
+    serveStale: outputs.RulesetRuleActionParametersServeStale;
     serverSideExcludes: boolean;
-    snis: outputs.RulesetRuleActionParametersSni[];
+    sni: outputs.RulesetRuleActionParametersSni;
     ssl: string;
     statusCode: number;
     sxg: boolean;
-    uris: outputs.RulesetRuleActionParametersUri[];
+    uri: outputs.RulesetRuleActionParametersUri;
     version: string;
 }
 
