@@ -9,12 +9,12 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class RulesetRuleActionParametersOverrideCategory {
+public final class RulesetRuleActionParametersOverridesCategory {
     private String action;
     private String category;
     private Boolean enabled;
 
-    private RulesetRuleActionParametersOverrideCategory() {}
+    private RulesetRuleActionParametersOverridesCategory() {}
     public String action() {
         return this.action;
     }
@@ -29,7 +29,7 @@ public final class RulesetRuleActionParametersOverrideCategory {
         return new Builder();
     }
 
-    public static Builder builder(RulesetRuleActionParametersOverrideCategory defaults) {
+    public static Builder builder(RulesetRuleActionParametersOverridesCategory defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -38,7 +38,7 @@ public final class RulesetRuleActionParametersOverrideCategory {
         private String category;
         private Boolean enabled;
         public Builder() {}
-        public Builder(RulesetRuleActionParametersOverrideCategory defaults) {
+        public Builder(RulesetRuleActionParametersOverridesCategory defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
     	      this.category = defaults.category;
@@ -60,8 +60,8 @@ public final class RulesetRuleActionParametersOverrideCategory {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
-        public RulesetRuleActionParametersOverrideCategory build() {
-            final var o = new RulesetRuleActionParametersOverrideCategory();
+        public RulesetRuleActionParametersOverridesCategory build() {
+            final var o = new RulesetRuleActionParametersOverridesCategory();
             o.action = action;
             o.category = category;
             o.enabled = enabled;

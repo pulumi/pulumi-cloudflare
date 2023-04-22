@@ -2372,7 +2372,7 @@ export interface RulesetRule {
     /**
      * List of parameters that configure exposed credential checks.
      */
-    exposedCredentialChecks: outputs.RulesetRuleExposedCredentialCheck[];
+    exposedCredentialCheck: outputs.RulesetRuleExposedCredentialCheck;
     /**
      * Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
      */
@@ -2388,11 +2388,11 @@ export interface RulesetRule {
     /**
      * List parameters to configure how the rule generates logs.
      */
-    loggings: outputs.RulesetRuleLogging[];
+    logging: outputs.RulesetRuleLogging;
     /**
      * List of parameters that configure HTTP rate limiting behaviour.
      */
-    ratelimits: outputs.RulesetRuleRatelimit[];
+    ratelimit: outputs.RulesetRuleRatelimit;
     /**
      * Rule reference.
      */
@@ -2407,7 +2407,7 @@ export interface RulesetRuleActionParameters {
     automaticHttpsRewrites: boolean;
     autominifies: outputs.RulesetRuleActionParametersAutominify[];
     bic: boolean;
-    browserTtls: outputs.RulesetRuleActionParametersBrowserTtl[];
+    browserTtl: outputs.RulesetRuleActionParametersBrowserTtl;
     cache: boolean;
     cacheKey: outputs.RulesetRuleActionParametersCacheKey;
     content: string;
@@ -2419,7 +2419,7 @@ export interface RulesetRuleActionParameters {
     edgeTtl: outputs.RulesetRuleActionParametersEdgeTtl;
     emailObfuscation: boolean;
     fromList: outputs.RulesetRuleActionParametersFromList;
-    fromValues: outputs.RulesetRuleActionParametersFromValue[];
+    fromValue: outputs.RulesetRuleActionParametersFromValue;
     headers: outputs.RulesetRuleActionParametersHeader[];
     hostHeader: string;
     hotlinkProtection: boolean;
@@ -2431,9 +2431,9 @@ export interface RulesetRuleActionParameters {
     matchedData: outputs.RulesetRuleActionParametersMatchedData;
     mirage: boolean;
     opportunisticEncryption: boolean;
+    origin: outputs.RulesetRuleActionParametersOrigin;
     originErrorPagePassthru: boolean;
-    origins: outputs.RulesetRuleActionParametersOrigin[];
-    overrides: outputs.RulesetRuleActionParametersOverride[];
+    overrides: outputs.RulesetRuleActionParametersOverrides;
     phases: string[];
     polish: string;
     products: string[];
@@ -2473,16 +2473,16 @@ export interface RulesetRuleActionParametersBrowserTtl {
 export interface RulesetRuleActionParametersCacheKey {
     cacheByDeviceType: boolean;
     cacheDeceptionArmor: boolean;
-    customKeys: outputs.RulesetRuleActionParametersCacheKeyCustomKey[];
+    customKey: outputs.RulesetRuleActionParametersCacheKeyCustomKey;
     ignoreQueryStringsOrder: boolean;
 }
 
 export interface RulesetRuleActionParametersCacheKeyCustomKey {
-    cookies: outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie[];
-    headers: outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader[];
-    hosts: outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost[];
-    queryStrings: outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString[];
-    users: outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser[];
+    cookie: outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie;
+    header: outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader;
+    host: outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost;
+    queryString: outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString;
+    user: outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser;
 }
 
 export interface RulesetRuleActionParametersCacheKeyCustomKeyCookie {
@@ -2539,7 +2539,7 @@ export interface RulesetRuleActionParametersFromList {
 export interface RulesetRuleActionParametersFromValue {
     preserveQueryString: boolean;
     statusCode: number;
-    targetUrls: outputs.RulesetRuleActionParametersFromValueTargetUrl[];
+    targetUrl: outputs.RulesetRuleActionParametersFromValueTargetUrl;
 }
 
 export interface RulesetRuleActionParametersFromValueTargetUrl {
@@ -2566,24 +2566,24 @@ export interface RulesetRuleActionParametersOrigin {
     port: number;
 }
 
-export interface RulesetRuleActionParametersOverride {
+export interface RulesetRuleActionParametersOverrides {
     action: string;
-    categories: outputs.RulesetRuleActionParametersOverrideCategory[];
+    categories: outputs.RulesetRuleActionParametersOverridesCategory[];
     enabled: boolean;
     /**
      * List of rules to apply to the ruleset.
      */
-    rules: outputs.RulesetRuleActionParametersOverrideRule[];
+    rules: outputs.RulesetRuleActionParametersOverridesRule[];
     sensitivityLevel: string;
 }
 
-export interface RulesetRuleActionParametersOverrideCategory {
+export interface RulesetRuleActionParametersOverridesCategory {
     action: string;
     category: string;
     enabled: boolean;
 }
 
-export interface RulesetRuleActionParametersOverrideRule {
+export interface RulesetRuleActionParametersOverridesRule {
     /**
      * Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
      */
@@ -2616,8 +2616,8 @@ export interface RulesetRuleActionParametersSni {
 
 export interface RulesetRuleActionParametersUri {
     origin: boolean;
-    paths: outputs.RulesetRuleActionParametersUriPath[];
-    queries: outputs.RulesetRuleActionParametersUriQuery[];
+    path: outputs.RulesetRuleActionParametersUriPath;
+    query: outputs.RulesetRuleActionParametersUriQuery;
 }
 
 export interface RulesetRuleActionParametersUriPath {

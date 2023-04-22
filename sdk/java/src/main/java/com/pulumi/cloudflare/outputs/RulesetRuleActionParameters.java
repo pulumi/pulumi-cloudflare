@@ -12,7 +12,7 @@ import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersFromValue;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersHeader;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersMatchedData;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersOrigin;
-import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersOverride;
+import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersOverrides;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersResponse;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersServeStale;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersSni;
@@ -30,7 +30,7 @@ public final class RulesetRuleActionParameters {
     private Boolean automaticHttpsRewrites;
     private List<RulesetRuleActionParametersAutominify> autominifies;
     private Boolean bic;
-    private List<RulesetRuleActionParametersBrowserTtl> browserTtls;
+    private RulesetRuleActionParametersBrowserTtl browserTtl;
     private Boolean cache;
     private RulesetRuleActionParametersCacheKey cacheKey;
     private String content;
@@ -42,7 +42,7 @@ public final class RulesetRuleActionParameters {
     private RulesetRuleActionParametersEdgeTtl edgeTtl;
     private Boolean emailObfuscation;
     private RulesetRuleActionParametersFromList fromList;
-    private List<RulesetRuleActionParametersFromValue> fromValues;
+    private RulesetRuleActionParametersFromValue fromValue;
     private List<RulesetRuleActionParametersHeader> headers;
     private String hostHeader;
     private Boolean hotlinkProtection;
@@ -55,9 +55,9 @@ public final class RulesetRuleActionParameters {
     private RulesetRuleActionParametersMatchedData matchedData;
     private Boolean mirage;
     private Boolean opportunisticEncryption;
+    private RulesetRuleActionParametersOrigin origin;
     private Boolean originErrorPagePassthru;
-    private List<RulesetRuleActionParametersOrigin> origins;
-    private List<RulesetRuleActionParametersOverride> overrides;
+    private RulesetRuleActionParametersOverrides overrides;
     private List<String> phases;
     private String polish;
     private List<String> products;
@@ -93,8 +93,8 @@ public final class RulesetRuleActionParameters {
     public Boolean bic() {
         return this.bic;
     }
-    public List<RulesetRuleActionParametersBrowserTtl> browserTtls() {
-        return this.browserTtls;
+    public RulesetRuleActionParametersBrowserTtl browserTtl() {
+        return this.browserTtl;
     }
     public Boolean cache() {
         return this.cache;
@@ -129,8 +129,8 @@ public final class RulesetRuleActionParameters {
     public RulesetRuleActionParametersFromList fromList() {
         return this.fromList;
     }
-    public List<RulesetRuleActionParametersFromValue> fromValues() {
-        return this.fromValues;
+    public RulesetRuleActionParametersFromValue fromValue() {
+        return this.fromValue;
     }
     public List<RulesetRuleActionParametersHeader> headers() {
         return this.headers;
@@ -160,13 +160,13 @@ public final class RulesetRuleActionParameters {
     public Boolean opportunisticEncryption() {
         return this.opportunisticEncryption;
     }
+    public RulesetRuleActionParametersOrigin origin() {
+        return this.origin;
+    }
     public Boolean originErrorPagePassthru() {
         return this.originErrorPagePassthru;
     }
-    public List<RulesetRuleActionParametersOrigin> origins() {
-        return this.origins;
-    }
-    public List<RulesetRuleActionParametersOverride> overrides() {
+    public RulesetRuleActionParametersOverrides overrides() {
         return this.overrides;
     }
     public List<String> phases() {
@@ -246,7 +246,7 @@ public final class RulesetRuleActionParameters {
         private Boolean automaticHttpsRewrites;
         private List<RulesetRuleActionParametersAutominify> autominifies;
         private Boolean bic;
-        private List<RulesetRuleActionParametersBrowserTtl> browserTtls;
+        private RulesetRuleActionParametersBrowserTtl browserTtl;
         private Boolean cache;
         private RulesetRuleActionParametersCacheKey cacheKey;
         private String content;
@@ -258,7 +258,7 @@ public final class RulesetRuleActionParameters {
         private RulesetRuleActionParametersEdgeTtl edgeTtl;
         private Boolean emailObfuscation;
         private RulesetRuleActionParametersFromList fromList;
-        private List<RulesetRuleActionParametersFromValue> fromValues;
+        private RulesetRuleActionParametersFromValue fromValue;
         private List<RulesetRuleActionParametersHeader> headers;
         private String hostHeader;
         private Boolean hotlinkProtection;
@@ -267,9 +267,9 @@ public final class RulesetRuleActionParameters {
         private RulesetRuleActionParametersMatchedData matchedData;
         private Boolean mirage;
         private Boolean opportunisticEncryption;
+        private RulesetRuleActionParametersOrigin origin;
         private Boolean originErrorPagePassthru;
-        private List<RulesetRuleActionParametersOrigin> origins;
-        private List<RulesetRuleActionParametersOverride> overrides;
+        private RulesetRuleActionParametersOverrides overrides;
         private List<String> phases;
         private String polish;
         private List<String> products;
@@ -296,7 +296,7 @@ public final class RulesetRuleActionParameters {
     	      this.automaticHttpsRewrites = defaults.automaticHttpsRewrites;
     	      this.autominifies = defaults.autominifies;
     	      this.bic = defaults.bic;
-    	      this.browserTtls = defaults.browserTtls;
+    	      this.browserTtl = defaults.browserTtl;
     	      this.cache = defaults.cache;
     	      this.cacheKey = defaults.cacheKey;
     	      this.content = defaults.content;
@@ -308,7 +308,7 @@ public final class RulesetRuleActionParameters {
     	      this.edgeTtl = defaults.edgeTtl;
     	      this.emailObfuscation = defaults.emailObfuscation;
     	      this.fromList = defaults.fromList;
-    	      this.fromValues = defaults.fromValues;
+    	      this.fromValue = defaults.fromValue;
     	      this.headers = defaults.headers;
     	      this.hostHeader = defaults.hostHeader;
     	      this.hotlinkProtection = defaults.hotlinkProtection;
@@ -317,8 +317,8 @@ public final class RulesetRuleActionParameters {
     	      this.matchedData = defaults.matchedData;
     	      this.mirage = defaults.mirage;
     	      this.opportunisticEncryption = defaults.opportunisticEncryption;
+    	      this.origin = defaults.origin;
     	      this.originErrorPagePassthru = defaults.originErrorPagePassthru;
-    	      this.origins = defaults.origins;
     	      this.overrides = defaults.overrides;
     	      this.phases = defaults.phases;
     	      this.polish = defaults.polish;
@@ -361,12 +361,9 @@ public final class RulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
-        public Builder browserTtls(List<RulesetRuleActionParametersBrowserTtl> browserTtls) {
-            this.browserTtls = Objects.requireNonNull(browserTtls);
+        public Builder browserTtl(RulesetRuleActionParametersBrowserTtl browserTtl) {
+            this.browserTtl = Objects.requireNonNull(browserTtl);
             return this;
-        }
-        public Builder browserTtls(RulesetRuleActionParametersBrowserTtl... browserTtls) {
-            return browserTtls(List.of(browserTtls));
         }
         @CustomType.Setter
         public Builder cache(Boolean cache) {
@@ -427,12 +424,9 @@ public final class RulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
-        public Builder fromValues(List<RulesetRuleActionParametersFromValue> fromValues) {
-            this.fromValues = Objects.requireNonNull(fromValues);
+        public Builder fromValue(RulesetRuleActionParametersFromValue fromValue) {
+            this.fromValue = Objects.requireNonNull(fromValue);
             return this;
-        }
-        public Builder fromValues(RulesetRuleActionParametersFromValue... fromValues) {
-            return fromValues(List.of(fromValues));
         }
         @CustomType.Setter
         public Builder headers(List<RulesetRuleActionParametersHeader> headers) {
@@ -478,25 +472,19 @@ public final class RulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
+        public Builder origin(RulesetRuleActionParametersOrigin origin) {
+            this.origin = Objects.requireNonNull(origin);
+            return this;
+        }
+        @CustomType.Setter
         public Builder originErrorPagePassthru(Boolean originErrorPagePassthru) {
             this.originErrorPagePassthru = Objects.requireNonNull(originErrorPagePassthru);
             return this;
         }
         @CustomType.Setter
-        public Builder origins(List<RulesetRuleActionParametersOrigin> origins) {
-            this.origins = Objects.requireNonNull(origins);
-            return this;
-        }
-        public Builder origins(RulesetRuleActionParametersOrigin... origins) {
-            return origins(List.of(origins));
-        }
-        @CustomType.Setter
-        public Builder overrides(List<RulesetRuleActionParametersOverride> overrides) {
+        public Builder overrides(RulesetRuleActionParametersOverrides overrides) {
             this.overrides = Objects.requireNonNull(overrides);
             return this;
-        }
-        public Builder overrides(RulesetRuleActionParametersOverride... overrides) {
-            return overrides(List.of(overrides));
         }
         @CustomType.Setter
         public Builder phases(List<String> phases) {
@@ -621,7 +609,7 @@ public final class RulesetRuleActionParameters {
             o.automaticHttpsRewrites = automaticHttpsRewrites;
             o.autominifies = autominifies;
             o.bic = bic;
-            o.browserTtls = browserTtls;
+            o.browserTtl = browserTtl;
             o.cache = cache;
             o.cacheKey = cacheKey;
             o.content = content;
@@ -633,7 +621,7 @@ public final class RulesetRuleActionParameters {
             o.edgeTtl = edgeTtl;
             o.emailObfuscation = emailObfuscation;
             o.fromList = fromList;
-            o.fromValues = fromValues;
+            o.fromValue = fromValue;
             o.headers = headers;
             o.hostHeader = hostHeader;
             o.hotlinkProtection = hotlinkProtection;
@@ -642,8 +630,8 @@ public final class RulesetRuleActionParameters {
             o.matchedData = matchedData;
             o.mirage = mirage;
             o.opportunisticEncryption = opportunisticEncryption;
+            o.origin = origin;
             o.originErrorPagePassthru = originErrorPagePassthru;
-            o.origins = origins;
             o.overrides = overrides;
             o.phases = phases;
             o.polish = polish;

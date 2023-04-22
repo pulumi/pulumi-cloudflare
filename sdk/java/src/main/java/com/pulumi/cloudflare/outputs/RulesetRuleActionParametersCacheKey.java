@@ -6,14 +6,13 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersCacheKeyCustomKey;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
-import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class RulesetRuleActionParametersCacheKey {
     private Boolean cacheByDeviceType;
     private Boolean cacheDeceptionArmor;
-    private List<RulesetRuleActionParametersCacheKeyCustomKey> customKeys;
+    private RulesetRuleActionParametersCacheKeyCustomKey customKey;
     private Boolean ignoreQueryStringsOrder;
 
     private RulesetRuleActionParametersCacheKey() {}
@@ -23,8 +22,8 @@ public final class RulesetRuleActionParametersCacheKey {
     public Boolean cacheDeceptionArmor() {
         return this.cacheDeceptionArmor;
     }
-    public List<RulesetRuleActionParametersCacheKeyCustomKey> customKeys() {
-        return this.customKeys;
+    public RulesetRuleActionParametersCacheKeyCustomKey customKey() {
+        return this.customKey;
     }
     public Boolean ignoreQueryStringsOrder() {
         return this.ignoreQueryStringsOrder;
@@ -41,14 +40,14 @@ public final class RulesetRuleActionParametersCacheKey {
     public static final class Builder {
         private Boolean cacheByDeviceType;
         private Boolean cacheDeceptionArmor;
-        private List<RulesetRuleActionParametersCacheKeyCustomKey> customKeys;
+        private RulesetRuleActionParametersCacheKeyCustomKey customKey;
         private Boolean ignoreQueryStringsOrder;
         public Builder() {}
         public Builder(RulesetRuleActionParametersCacheKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cacheByDeviceType = defaults.cacheByDeviceType;
     	      this.cacheDeceptionArmor = defaults.cacheDeceptionArmor;
-    	      this.customKeys = defaults.customKeys;
+    	      this.customKey = defaults.customKey;
     	      this.ignoreQueryStringsOrder = defaults.ignoreQueryStringsOrder;
         }
 
@@ -63,12 +62,9 @@ public final class RulesetRuleActionParametersCacheKey {
             return this;
         }
         @CustomType.Setter
-        public Builder customKeys(List<RulesetRuleActionParametersCacheKeyCustomKey> customKeys) {
-            this.customKeys = Objects.requireNonNull(customKeys);
+        public Builder customKey(RulesetRuleActionParametersCacheKeyCustomKey customKey) {
+            this.customKey = Objects.requireNonNull(customKey);
             return this;
-        }
-        public Builder customKeys(RulesetRuleActionParametersCacheKeyCustomKey... customKeys) {
-            return customKeys(List.of(customKeys));
         }
         @CustomType.Setter
         public Builder ignoreQueryStringsOrder(Boolean ignoreQueryStringsOrder) {
@@ -79,7 +75,7 @@ public final class RulesetRuleActionParametersCacheKey {
             final var o = new RulesetRuleActionParametersCacheKey();
             o.cacheByDeviceType = cacheByDeviceType;
             o.cacheDeceptionArmor = cacheDeceptionArmor;
-            o.customKeys = customKeys;
+            o.customKey = customKey;
             o.ignoreQueryStringsOrder = ignoreQueryStringsOrder;
             return o;
         }

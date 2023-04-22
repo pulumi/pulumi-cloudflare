@@ -10,7 +10,6 @@ import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKey
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyUserArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.util.List;
 import java.util.Objects;
 
 
@@ -18,49 +17,49 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
 
     public static final RulesetRuleActionParametersCacheKeyCustomKeyArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyArgs();
 
-    @Import(name="cookies", required=true)
-    private Output<List<RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs>> cookies;
+    @Import(name="cookie", required=true)
+    private Output<RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs> cookie;
 
-    public Output<List<RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs>> cookies() {
-        return this.cookies;
+    public Output<RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs> cookie() {
+        return this.cookie;
     }
 
-    @Import(name="headers", required=true)
-    private Output<List<RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs>> headers;
+    @Import(name="header", required=true)
+    private Output<RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs> header;
 
-    public Output<List<RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs>> headers() {
-        return this.headers;
+    public Output<RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs> header() {
+        return this.header;
     }
 
-    @Import(name="hosts", required=true)
-    private Output<List<RulesetRuleActionParametersCacheKeyCustomKeyHostArgs>> hosts;
+    @Import(name="host", required=true)
+    private Output<RulesetRuleActionParametersCacheKeyCustomKeyHostArgs> host;
 
-    public Output<List<RulesetRuleActionParametersCacheKeyCustomKeyHostArgs>> hosts() {
-        return this.hosts;
+    public Output<RulesetRuleActionParametersCacheKeyCustomKeyHostArgs> host() {
+        return this.host;
     }
 
-    @Import(name="queryStrings", required=true)
-    private Output<List<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs>> queryStrings;
+    @Import(name="queryString", required=true)
+    private Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs> queryString;
 
-    public Output<List<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs>> queryStrings() {
-        return this.queryStrings;
+    public Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs> queryString() {
+        return this.queryString;
     }
 
-    @Import(name="users", required=true)
-    private Output<List<RulesetRuleActionParametersCacheKeyCustomKeyUserArgs>> users;
+    @Import(name="user", required=true)
+    private Output<RulesetRuleActionParametersCacheKeyCustomKeyUserArgs> user;
 
-    public Output<List<RulesetRuleActionParametersCacheKeyCustomKeyUserArgs>> users() {
-        return this.users;
+    public Output<RulesetRuleActionParametersCacheKeyCustomKeyUserArgs> user() {
+        return this.user;
     }
 
     private RulesetRuleActionParametersCacheKeyCustomKeyArgs() {}
 
     private RulesetRuleActionParametersCacheKeyCustomKeyArgs(RulesetRuleActionParametersCacheKeyCustomKeyArgs $) {
-        this.cookies = $.cookies;
-        this.headers = $.headers;
-        this.hosts = $.hosts;
-        this.queryStrings = $.queryStrings;
-        this.users = $.users;
+        this.cookie = $.cookie;
+        this.header = $.header;
+        this.host = $.host;
+        this.queryString = $.queryString;
+        this.user = $.user;
     }
 
     public static Builder builder() {
@@ -81,77 +80,57 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
             $ = new RulesetRuleActionParametersCacheKeyCustomKeyArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder cookies(Output<List<RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs>> cookies) {
-            $.cookies = cookies;
+        public Builder cookie(Output<RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs> cookie) {
+            $.cookie = cookie;
             return this;
         }
 
-        public Builder cookies(List<RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs> cookies) {
-            return cookies(Output.of(cookies));
+        public Builder cookie(RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs cookie) {
+            return cookie(Output.of(cookie));
         }
 
-        public Builder cookies(RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs... cookies) {
-            return cookies(List.of(cookies));
-        }
-
-        public Builder headers(Output<List<RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs>> headers) {
-            $.headers = headers;
+        public Builder header(Output<RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs> header) {
+            $.header = header;
             return this;
         }
 
-        public Builder headers(List<RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs> headers) {
-            return headers(Output.of(headers));
+        public Builder header(RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs header) {
+            return header(Output.of(header));
         }
 
-        public Builder headers(RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs... headers) {
-            return headers(List.of(headers));
-        }
-
-        public Builder hosts(Output<List<RulesetRuleActionParametersCacheKeyCustomKeyHostArgs>> hosts) {
-            $.hosts = hosts;
+        public Builder host(Output<RulesetRuleActionParametersCacheKeyCustomKeyHostArgs> host) {
+            $.host = host;
             return this;
         }
 
-        public Builder hosts(List<RulesetRuleActionParametersCacheKeyCustomKeyHostArgs> hosts) {
-            return hosts(Output.of(hosts));
+        public Builder host(RulesetRuleActionParametersCacheKeyCustomKeyHostArgs host) {
+            return host(Output.of(host));
         }
 
-        public Builder hosts(RulesetRuleActionParametersCacheKeyCustomKeyHostArgs... hosts) {
-            return hosts(List.of(hosts));
-        }
-
-        public Builder queryStrings(Output<List<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs>> queryStrings) {
-            $.queryStrings = queryStrings;
+        public Builder queryString(Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs> queryString) {
+            $.queryString = queryString;
             return this;
         }
 
-        public Builder queryStrings(List<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs> queryStrings) {
-            return queryStrings(Output.of(queryStrings));
+        public Builder queryString(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs queryString) {
+            return queryString(Output.of(queryString));
         }
 
-        public Builder queryStrings(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs... queryStrings) {
-            return queryStrings(List.of(queryStrings));
-        }
-
-        public Builder users(Output<List<RulesetRuleActionParametersCacheKeyCustomKeyUserArgs>> users) {
-            $.users = users;
+        public Builder user(Output<RulesetRuleActionParametersCacheKeyCustomKeyUserArgs> user) {
+            $.user = user;
             return this;
         }
 
-        public Builder users(List<RulesetRuleActionParametersCacheKeyCustomKeyUserArgs> users) {
-            return users(Output.of(users));
-        }
-
-        public Builder users(RulesetRuleActionParametersCacheKeyCustomKeyUserArgs... users) {
-            return users(List.of(users));
+        public Builder user(RulesetRuleActionParametersCacheKeyCustomKeyUserArgs user) {
+            return user(Output.of(user));
         }
 
         public RulesetRuleActionParametersCacheKeyCustomKeyArgs build() {
-            $.cookies = Objects.requireNonNull($.cookies, "expected parameter 'cookies' to be non-null");
-            $.headers = Objects.requireNonNull($.headers, "expected parameter 'headers' to be non-null");
-            $.hosts = Objects.requireNonNull($.hosts, "expected parameter 'hosts' to be non-null");
-            $.queryStrings = Objects.requireNonNull($.queryStrings, "expected parameter 'queryStrings' to be non-null");
-            $.users = Objects.requireNonNull($.users, "expected parameter 'users' to be non-null");
+            $.cookie = Objects.requireNonNull($.cookie, "expected parameter 'cookie' to be non-null");
+            $.header = Objects.requireNonNull($.header, "expected parameter 'header' to be non-null");
+            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
+            $.queryString = Objects.requireNonNull($.queryString, "expected parameter 'queryString' to be non-null");
+            $.user = Objects.requireNonNull($.user, "expected parameter 'user' to be non-null");
             return $;
         }
     }

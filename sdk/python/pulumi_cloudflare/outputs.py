@@ -164,9 +164,9 @@ __all__ = [
     'RulesetRuleActionParametersHeader',
     'RulesetRuleActionParametersMatchedData',
     'RulesetRuleActionParametersOrigin',
-    'RulesetRuleActionParametersOverride',
-    'RulesetRuleActionParametersOverrideCategory',
-    'RulesetRuleActionParametersOverrideRule',
+    'RulesetRuleActionParametersOverrides',
+    'RulesetRuleActionParametersOverridesCategory',
+    'RulesetRuleActionParametersOverridesRule',
     'RulesetRuleActionParametersResponse',
     'RulesetRuleActionParametersServeStale',
     'RulesetRuleActionParametersSni',
@@ -9300,8 +9300,8 @@ class RulesetRule(dict):
         suggest = None
         if key == "actionParameters":
             suggest = "action_parameters"
-        elif key == "exposedCredentialChecks":
-            suggest = "exposed_credential_checks"
+        elif key == "exposedCredentialCheck":
+            suggest = "exposed_credential_check"
         elif key == "lastUpdated":
             suggest = "last_updated"
 
@@ -9318,10 +9318,10 @@ class RulesetRule(dict):
 
     def __init__(__self__, *,
                  action_parameters: 'outputs.RulesetRuleActionParameters',
-                 exposed_credential_checks: Sequence['outputs.RulesetRuleExposedCredentialCheck'],
+                 exposed_credential_check: 'outputs.RulesetRuleExposedCredentialCheck',
                  expression: str,
-                 loggings: Sequence['outputs.RulesetRuleLogging'],
-                 ratelimits: Sequence['outputs.RulesetRuleRatelimit'],
+                 logging: 'outputs.RulesetRuleLogging',
+                 ratelimit: 'outputs.RulesetRuleRatelimit',
                  action: Optional[str] = None,
                  description: Optional[str] = None,
                  enabled: Optional[bool] = None,
@@ -9331,10 +9331,10 @@ class RulesetRule(dict):
                  version: Optional[str] = None):
         """
         :param 'RulesetRuleActionParametersArgs' action_parameters: List of parameters that configure the behavior of the ruleset rule action.
-        :param Sequence['RulesetRuleExposedCredentialCheckArgs'] exposed_credential_checks: List of parameters that configure exposed credential checks.
+        :param 'RulesetRuleExposedCredentialCheckArgs' exposed_credential_check: List of parameters that configure exposed credential checks.
         :param str expression: Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
-        :param Sequence['RulesetRuleLoggingArgs'] loggings: List parameters to configure how the rule generates logs.
-        :param Sequence['RulesetRuleRatelimitArgs'] ratelimits: List of parameters that configure HTTP rate limiting behaviour.
+        :param 'RulesetRuleLoggingArgs' logging: List parameters to configure how the rule generates logs.
+        :param 'RulesetRuleRatelimitArgs' ratelimit: List of parameters that configure HTTP rate limiting behaviour.
         :param str action: Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
         :param str description: Brief summary of the ruleset rule and its intended use.
         :param bool enabled: Whether the rule is active.
@@ -9344,10 +9344,10 @@ class RulesetRule(dict):
         :param str version: Version of the ruleset to deploy.
         """
         pulumi.set(__self__, "action_parameters", action_parameters)
-        pulumi.set(__self__, "exposed_credential_checks", exposed_credential_checks)
+        pulumi.set(__self__, "exposed_credential_check", exposed_credential_check)
         pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "loggings", loggings)
-        pulumi.set(__self__, "ratelimits", ratelimits)
+        pulumi.set(__self__, "logging", logging)
+        pulumi.set(__self__, "ratelimit", ratelimit)
         if action is not None:
             pulumi.set(__self__, "action", action)
         if description is not None:
@@ -9372,12 +9372,12 @@ class RulesetRule(dict):
         return pulumi.get(self, "action_parameters")
 
     @property
-    @pulumi.getter(name="exposedCredentialChecks")
-    def exposed_credential_checks(self) -> Sequence['outputs.RulesetRuleExposedCredentialCheck']:
+    @pulumi.getter(name="exposedCredentialCheck")
+    def exposed_credential_check(self) -> 'outputs.RulesetRuleExposedCredentialCheck':
         """
         List of parameters that configure exposed credential checks.
         """
-        return pulumi.get(self, "exposed_credential_checks")
+        return pulumi.get(self, "exposed_credential_check")
 
     @property
     @pulumi.getter
@@ -9389,19 +9389,19 @@ class RulesetRule(dict):
 
     @property
     @pulumi.getter
-    def loggings(self) -> Sequence['outputs.RulesetRuleLogging']:
+    def logging(self) -> 'outputs.RulesetRuleLogging':
         """
         List parameters to configure how the rule generates logs.
         """
-        return pulumi.get(self, "loggings")
+        return pulumi.get(self, "logging")
 
     @property
     @pulumi.getter
-    def ratelimits(self) -> Sequence['outputs.RulesetRuleRatelimit']:
+    def ratelimit(self) -> 'outputs.RulesetRuleRatelimit':
         """
         List of parameters that configure HTTP rate limiting behaviour.
         """
-        return pulumi.get(self, "ratelimits")
+        return pulumi.get(self, "ratelimit")
 
     @property
     @pulumi.getter
@@ -9467,8 +9467,8 @@ class RulesetRuleActionParameters(dict):
         suggest = None
         if key == "automaticHttpsRewrites":
             suggest = "automatic_https_rewrites"
-        elif key == "browserTtls":
-            suggest = "browser_ttls"
+        elif key == "browserTtl":
+            suggest = "browser_ttl"
         elif key == "cacheKey":
             suggest = "cache_key"
         elif key == "contentType":
@@ -9487,8 +9487,8 @@ class RulesetRuleActionParameters(dict):
             suggest = "email_obfuscation"
         elif key == "fromList":
             suggest = "from_list"
-        elif key == "fromValues":
-            suggest = "from_values"
+        elif key == "fromValue":
+            suggest = "from_value"
         elif key == "hostHeader":
             suggest = "host_header"
         elif key == "hotlinkProtection":
@@ -9531,7 +9531,7 @@ class RulesetRuleActionParameters(dict):
                  automatic_https_rewrites: bool,
                  autominifies: Sequence['outputs.RulesetRuleActionParametersAutominify'],
                  bic: bool,
-                 browser_ttls: Sequence['outputs.RulesetRuleActionParametersBrowserTtl'],
+                 browser_ttl: 'outputs.RulesetRuleActionParametersBrowserTtl',
                  cache: bool,
                  cache_key: 'outputs.RulesetRuleActionParametersCacheKey',
                  content: str,
@@ -9543,7 +9543,7 @@ class RulesetRuleActionParameters(dict):
                  edge_ttl: 'outputs.RulesetRuleActionParametersEdgeTtl',
                  email_obfuscation: bool,
                  from_list: 'outputs.RulesetRuleActionParametersFromList',
-                 from_values: Sequence['outputs.RulesetRuleActionParametersFromValue'],
+                 from_value: 'outputs.RulesetRuleActionParametersFromValue',
                  headers: Sequence['outputs.RulesetRuleActionParametersHeader'],
                  host_header: str,
                  hotlink_protection: bool,
@@ -9552,9 +9552,9 @@ class RulesetRuleActionParameters(dict):
                  matched_data: 'outputs.RulesetRuleActionParametersMatchedData',
                  mirage: bool,
                  opportunistic_encryption: bool,
+                 origin: 'outputs.RulesetRuleActionParametersOrigin',
                  origin_error_page_passthru: bool,
-                 origins: Sequence['outputs.RulesetRuleActionParametersOrigin'],
-                 overrides: Sequence['outputs.RulesetRuleActionParametersOverride'],
+                 overrides: 'outputs.RulesetRuleActionParametersOverrides',
                  phases: Sequence[str],
                  polish: str,
                  products: Sequence[str],
@@ -9582,7 +9582,7 @@ class RulesetRuleActionParameters(dict):
         pulumi.set(__self__, "automatic_https_rewrites", automatic_https_rewrites)
         pulumi.set(__self__, "autominifies", autominifies)
         pulumi.set(__self__, "bic", bic)
-        pulumi.set(__self__, "browser_ttls", browser_ttls)
+        pulumi.set(__self__, "browser_ttl", browser_ttl)
         pulumi.set(__self__, "cache", cache)
         pulumi.set(__self__, "cache_key", cache_key)
         pulumi.set(__self__, "content", content)
@@ -9594,7 +9594,7 @@ class RulesetRuleActionParameters(dict):
         pulumi.set(__self__, "edge_ttl", edge_ttl)
         pulumi.set(__self__, "email_obfuscation", email_obfuscation)
         pulumi.set(__self__, "from_list", from_list)
-        pulumi.set(__self__, "from_values", from_values)
+        pulumi.set(__self__, "from_value", from_value)
         pulumi.set(__self__, "headers", headers)
         pulumi.set(__self__, "host_header", host_header)
         pulumi.set(__self__, "hotlink_protection", hotlink_protection)
@@ -9603,8 +9603,8 @@ class RulesetRuleActionParameters(dict):
         pulumi.set(__self__, "matched_data", matched_data)
         pulumi.set(__self__, "mirage", mirage)
         pulumi.set(__self__, "opportunistic_encryption", opportunistic_encryption)
+        pulumi.set(__self__, "origin", origin)
         pulumi.set(__self__, "origin_error_page_passthru", origin_error_page_passthru)
-        pulumi.set(__self__, "origins", origins)
         pulumi.set(__self__, "overrides", overrides)
         pulumi.set(__self__, "phases", phases)
         pulumi.set(__self__, "polish", polish)
@@ -9643,9 +9643,9 @@ class RulesetRuleActionParameters(dict):
         return pulumi.get(self, "bic")
 
     @property
-    @pulumi.getter(name="browserTtls")
-    def browser_ttls(self) -> Sequence['outputs.RulesetRuleActionParametersBrowserTtl']:
-        return pulumi.get(self, "browser_ttls")
+    @pulumi.getter(name="browserTtl")
+    def browser_ttl(self) -> 'outputs.RulesetRuleActionParametersBrowserTtl':
+        return pulumi.get(self, "browser_ttl")
 
     @property
     @pulumi.getter
@@ -9703,9 +9703,9 @@ class RulesetRuleActionParameters(dict):
         return pulumi.get(self, "from_list")
 
     @property
-    @pulumi.getter(name="fromValues")
-    def from_values(self) -> Sequence['outputs.RulesetRuleActionParametersFromValue']:
-        return pulumi.get(self, "from_values")
+    @pulumi.getter(name="fromValue")
+    def from_value(self) -> 'outputs.RulesetRuleActionParametersFromValue':
+        return pulumi.get(self, "from_value")
 
     @property
     @pulumi.getter
@@ -9751,18 +9751,18 @@ class RulesetRuleActionParameters(dict):
         return pulumi.get(self, "opportunistic_encryption")
 
     @property
+    @pulumi.getter
+    def origin(self) -> 'outputs.RulesetRuleActionParametersOrigin':
+        return pulumi.get(self, "origin")
+
+    @property
     @pulumi.getter(name="originErrorPagePassthru")
     def origin_error_page_passthru(self) -> bool:
         return pulumi.get(self, "origin_error_page_passthru")
 
     @property
     @pulumi.getter
-    def origins(self) -> Sequence['outputs.RulesetRuleActionParametersOrigin']:
-        return pulumi.get(self, "origins")
-
-    @property
-    @pulumi.getter
-    def overrides(self) -> Sequence['outputs.RulesetRuleActionParametersOverride']:
+    def overrides(self) -> 'outputs.RulesetRuleActionParametersOverrides':
         return pulumi.get(self, "overrides")
 
     @property
@@ -9923,8 +9923,8 @@ class RulesetRuleActionParametersCacheKey(dict):
             suggest = "cache_by_device_type"
         elif key == "cacheDeceptionArmor":
             suggest = "cache_deception_armor"
-        elif key == "customKeys":
-            suggest = "custom_keys"
+        elif key == "customKey":
+            suggest = "custom_key"
         elif key == "ignoreQueryStringsOrder":
             suggest = "ignore_query_strings_order"
 
@@ -9942,11 +9942,11 @@ class RulesetRuleActionParametersCacheKey(dict):
     def __init__(__self__, *,
                  cache_by_device_type: bool,
                  cache_deception_armor: bool,
-                 custom_keys: Sequence['outputs.RulesetRuleActionParametersCacheKeyCustomKey'],
+                 custom_key: 'outputs.RulesetRuleActionParametersCacheKeyCustomKey',
                  ignore_query_strings_order: bool):
         pulumi.set(__self__, "cache_by_device_type", cache_by_device_type)
         pulumi.set(__self__, "cache_deception_armor", cache_deception_armor)
-        pulumi.set(__self__, "custom_keys", custom_keys)
+        pulumi.set(__self__, "custom_key", custom_key)
         pulumi.set(__self__, "ignore_query_strings_order", ignore_query_strings_order)
 
     @property
@@ -9960,9 +9960,9 @@ class RulesetRuleActionParametersCacheKey(dict):
         return pulumi.get(self, "cache_deception_armor")
 
     @property
-    @pulumi.getter(name="customKeys")
-    def custom_keys(self) -> Sequence['outputs.RulesetRuleActionParametersCacheKeyCustomKey']:
-        return pulumi.get(self, "custom_keys")
+    @pulumi.getter(name="customKey")
+    def custom_key(self) -> 'outputs.RulesetRuleActionParametersCacheKeyCustomKey':
+        return pulumi.get(self, "custom_key")
 
     @property
     @pulumi.getter(name="ignoreQueryStringsOrder")
@@ -9975,8 +9975,8 @@ class RulesetRuleActionParametersCacheKeyCustomKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "queryStrings":
-            suggest = "query_strings"
+        if key == "queryString":
+            suggest = "query_string"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RulesetRuleActionParametersCacheKeyCustomKey. Access the value via the '{suggest}' property getter instead.")
@@ -9990,41 +9990,41 @@ class RulesetRuleActionParametersCacheKeyCustomKey(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 cookies: Sequence['outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie'],
-                 headers: Sequence['outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader'],
-                 hosts: Sequence['outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost'],
-                 query_strings: Sequence['outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString'],
-                 users: Sequence['outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser']):
-        pulumi.set(__self__, "cookies", cookies)
-        pulumi.set(__self__, "headers", headers)
-        pulumi.set(__self__, "hosts", hosts)
-        pulumi.set(__self__, "query_strings", query_strings)
-        pulumi.set(__self__, "users", users)
+                 cookie: 'outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie',
+                 header: 'outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader',
+                 host: 'outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost',
+                 query_string: 'outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString',
+                 user: 'outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser'):
+        pulumi.set(__self__, "cookie", cookie)
+        pulumi.set(__self__, "header", header)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "query_string", query_string)
+        pulumi.set(__self__, "user", user)
 
     @property
     @pulumi.getter
-    def cookies(self) -> Sequence['outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie']:
-        return pulumi.get(self, "cookies")
+    def cookie(self) -> 'outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie':
+        return pulumi.get(self, "cookie")
 
     @property
     @pulumi.getter
-    def headers(self) -> Sequence['outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader']:
-        return pulumi.get(self, "headers")
+    def header(self) -> 'outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader':
+        return pulumi.get(self, "header")
 
     @property
     @pulumi.getter
-    def hosts(self) -> Sequence['outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost']:
-        return pulumi.get(self, "hosts")
+    def host(self) -> 'outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost':
+        return pulumi.get(self, "host")
 
     @property
-    @pulumi.getter(name="queryStrings")
-    def query_strings(self) -> Sequence['outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString']:
-        return pulumi.get(self, "query_strings")
+    @pulumi.getter(name="queryString")
+    def query_string(self) -> 'outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString':
+        return pulumi.get(self, "query_string")
 
     @property
     @pulumi.getter
-    def users(self) -> Sequence['outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser']:
-        return pulumi.get(self, "users")
+    def user(self) -> 'outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser':
+        return pulumi.get(self, "user")
 
 
 @pulumi.output_type
@@ -10340,8 +10340,8 @@ class RulesetRuleActionParametersFromValue(dict):
             suggest = "preserve_query_string"
         elif key == "statusCode":
             suggest = "status_code"
-        elif key == "targetUrls":
-            suggest = "target_urls"
+        elif key == "targetUrl":
+            suggest = "target_url"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RulesetRuleActionParametersFromValue. Access the value via the '{suggest}' property getter instead.")
@@ -10357,10 +10357,10 @@ class RulesetRuleActionParametersFromValue(dict):
     def __init__(__self__, *,
                  preserve_query_string: bool,
                  status_code: int,
-                 target_urls: Sequence['outputs.RulesetRuleActionParametersFromValueTargetUrl']):
+                 target_url: 'outputs.RulesetRuleActionParametersFromValueTargetUrl'):
         pulumi.set(__self__, "preserve_query_string", preserve_query_string)
         pulumi.set(__self__, "status_code", status_code)
-        pulumi.set(__self__, "target_urls", target_urls)
+        pulumi.set(__self__, "target_url", target_url)
 
     @property
     @pulumi.getter(name="preserveQueryString")
@@ -10373,9 +10373,9 @@ class RulesetRuleActionParametersFromValue(dict):
         return pulumi.get(self, "status_code")
 
     @property
-    @pulumi.getter(name="targetUrls")
-    def target_urls(self) -> Sequence['outputs.RulesetRuleActionParametersFromValueTargetUrl']:
-        return pulumi.get(self, "target_urls")
+    @pulumi.getter(name="targetUrl")
+    def target_url(self) -> 'outputs.RulesetRuleActionParametersFromValueTargetUrl':
+        return pulumi.get(self, "target_url")
 
 
 @pulumi.output_type
@@ -10485,7 +10485,7 @@ class RulesetRuleActionParametersOrigin(dict):
 
 
 @pulumi.output_type
-class RulesetRuleActionParametersOverride(dict):
+class RulesetRuleActionParametersOverrides(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10493,24 +10493,24 @@ class RulesetRuleActionParametersOverride(dict):
             suggest = "sensitivity_level"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RulesetRuleActionParametersOverride. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in RulesetRuleActionParametersOverrides. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        RulesetRuleActionParametersOverride.__key_warning(key)
+        RulesetRuleActionParametersOverrides.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        RulesetRuleActionParametersOverride.__key_warning(key)
+        RulesetRuleActionParametersOverrides.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
                  action: str,
-                 categories: Sequence['outputs.RulesetRuleActionParametersOverrideCategory'],
+                 categories: Sequence['outputs.RulesetRuleActionParametersOverridesCategory'],
                  enabled: bool,
-                 rules: Sequence['outputs.RulesetRuleActionParametersOverrideRule'],
+                 rules: Sequence['outputs.RulesetRuleActionParametersOverridesRule'],
                  sensitivity_level: str):
         """
-        :param Sequence['RulesetRuleActionParametersOverrideRuleArgs'] rules: List of rules to apply to the ruleset.
+        :param Sequence['RulesetRuleActionParametersOverridesRuleArgs'] rules: List of rules to apply to the ruleset.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "categories", categories)
@@ -10525,7 +10525,7 @@ class RulesetRuleActionParametersOverride(dict):
 
     @property
     @pulumi.getter
-    def categories(self) -> Sequence['outputs.RulesetRuleActionParametersOverrideCategory']:
+    def categories(self) -> Sequence['outputs.RulesetRuleActionParametersOverridesCategory']:
         return pulumi.get(self, "categories")
 
     @property
@@ -10535,7 +10535,7 @@ class RulesetRuleActionParametersOverride(dict):
 
     @property
     @pulumi.getter
-    def rules(self) -> Sequence['outputs.RulesetRuleActionParametersOverrideRule']:
+    def rules(self) -> Sequence['outputs.RulesetRuleActionParametersOverridesRule']:
         """
         List of rules to apply to the ruleset.
         """
@@ -10548,7 +10548,7 @@ class RulesetRuleActionParametersOverride(dict):
 
 
 @pulumi.output_type
-class RulesetRuleActionParametersOverrideCategory(dict):
+class RulesetRuleActionParametersOverridesCategory(dict):
     def __init__(__self__, *,
                  action: str,
                  category: str,
@@ -10574,7 +10574,7 @@ class RulesetRuleActionParametersOverrideCategory(dict):
 
 
 @pulumi.output_type
-class RulesetRuleActionParametersOverrideRule(dict):
+class RulesetRuleActionParametersOverridesRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -10584,14 +10584,14 @@ class RulesetRuleActionParametersOverrideRule(dict):
             suggest = "sensitivity_level"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RulesetRuleActionParametersOverrideRule. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in RulesetRuleActionParametersOverridesRule. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        RulesetRuleActionParametersOverrideRule.__key_warning(key)
+        RulesetRuleActionParametersOverridesRule.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        RulesetRuleActionParametersOverrideRule.__key_warning(key)
+        RulesetRuleActionParametersOverridesRule.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -10736,11 +10736,11 @@ class RulesetRuleActionParametersSni(dict):
 class RulesetRuleActionParametersUri(dict):
     def __init__(__self__, *,
                  origin: bool,
-                 paths: Sequence['outputs.RulesetRuleActionParametersUriPath'],
-                 queries: Sequence['outputs.RulesetRuleActionParametersUriQuery']):
+                 path: 'outputs.RulesetRuleActionParametersUriPath',
+                 query: 'outputs.RulesetRuleActionParametersUriQuery'):
         pulumi.set(__self__, "origin", origin)
-        pulumi.set(__self__, "paths", paths)
-        pulumi.set(__self__, "queries", queries)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "query", query)
 
     @property
     @pulumi.getter
@@ -10749,13 +10749,13 @@ class RulesetRuleActionParametersUri(dict):
 
     @property
     @pulumi.getter
-    def paths(self) -> Sequence['outputs.RulesetRuleActionParametersUriPath']:
-        return pulumi.get(self, "paths")
+    def path(self) -> 'outputs.RulesetRuleActionParametersUriPath':
+        return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
-    def queries(self) -> Sequence['outputs.RulesetRuleActionParametersUriQuery']:
-        return pulumi.get(self, "queries")
+    def query(self) -> 'outputs.RulesetRuleActionParametersUriQuery':
+        return pulumi.get(self, "query")
 
 
 @pulumi.output_type

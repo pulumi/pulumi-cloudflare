@@ -18,13 +18,8 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("statusCode", required: true)]
         public Input<int> StatusCode { get; set; } = null!;
 
-        [Input("targetUrls", required: true)]
-        private InputList<Inputs.RulesetRuleActionParametersFromValueTargetUrlGetArgs>? _targetUrls;
-        public InputList<Inputs.RulesetRuleActionParametersFromValueTargetUrlGetArgs> TargetUrls
-        {
-            get => _targetUrls ?? (_targetUrls = new InputList<Inputs.RulesetRuleActionParametersFromValueTargetUrlGetArgs>());
-            set => _targetUrls = value;
-        }
+        [Input("targetUrl", required: true)]
+        public Input<Inputs.RulesetRuleActionParametersFromValueTargetUrlGetArgs> TargetUrl { get; set; } = null!;
 
         public RulesetRuleActionParametersFromValueGetArgs()
         {

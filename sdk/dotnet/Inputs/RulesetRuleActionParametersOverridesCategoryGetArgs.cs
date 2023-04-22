@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RulesetRuleActionParametersOverrideCategoryArgs : global::Pulumi.ResourceArgs
+    public sealed class RulesetRuleActionParametersOverridesCategoryGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -21,9 +21,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
-        public RulesetRuleActionParametersOverrideCategoryArgs()
+        public RulesetRuleActionParametersOverridesCategoryGetArgs()
         {
         }
-        public static new RulesetRuleActionParametersOverrideCategoryArgs Empty => new RulesetRuleActionParametersOverrideCategoryArgs();
+        public static new RulesetRuleActionParametersOverridesCategoryGetArgs Empty => new RulesetRuleActionParametersOverridesCategoryGetArgs();
     }
 }

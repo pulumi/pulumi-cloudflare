@@ -9,32 +9,31 @@ import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersCacheKeyCustomKe
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser;
 import com.pulumi.core.annotations.CustomType;
-import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class RulesetRuleActionParametersCacheKeyCustomKey {
-    private List<RulesetRuleActionParametersCacheKeyCustomKeyCookie> cookies;
-    private List<RulesetRuleActionParametersCacheKeyCustomKeyHeader> headers;
-    private List<RulesetRuleActionParametersCacheKeyCustomKeyHost> hosts;
-    private List<RulesetRuleActionParametersCacheKeyCustomKeyQueryString> queryStrings;
-    private List<RulesetRuleActionParametersCacheKeyCustomKeyUser> users;
+    private RulesetRuleActionParametersCacheKeyCustomKeyCookie cookie;
+    private RulesetRuleActionParametersCacheKeyCustomKeyHeader header;
+    private RulesetRuleActionParametersCacheKeyCustomKeyHost host;
+    private RulesetRuleActionParametersCacheKeyCustomKeyQueryString queryString;
+    private RulesetRuleActionParametersCacheKeyCustomKeyUser user;
 
     private RulesetRuleActionParametersCacheKeyCustomKey() {}
-    public List<RulesetRuleActionParametersCacheKeyCustomKeyCookie> cookies() {
-        return this.cookies;
+    public RulesetRuleActionParametersCacheKeyCustomKeyCookie cookie() {
+        return this.cookie;
     }
-    public List<RulesetRuleActionParametersCacheKeyCustomKeyHeader> headers() {
-        return this.headers;
+    public RulesetRuleActionParametersCacheKeyCustomKeyHeader header() {
+        return this.header;
     }
-    public List<RulesetRuleActionParametersCacheKeyCustomKeyHost> hosts() {
-        return this.hosts;
+    public RulesetRuleActionParametersCacheKeyCustomKeyHost host() {
+        return this.host;
     }
-    public List<RulesetRuleActionParametersCacheKeyCustomKeyQueryString> queryStrings() {
-        return this.queryStrings;
+    public RulesetRuleActionParametersCacheKeyCustomKeyQueryString queryString() {
+        return this.queryString;
     }
-    public List<RulesetRuleActionParametersCacheKeyCustomKeyUser> users() {
-        return this.users;
+    public RulesetRuleActionParametersCacheKeyCustomKeyUser user() {
+        return this.user;
     }
 
     public static Builder builder() {
@@ -46,68 +45,53 @@ public final class RulesetRuleActionParametersCacheKeyCustomKey {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<RulesetRuleActionParametersCacheKeyCustomKeyCookie> cookies;
-        private List<RulesetRuleActionParametersCacheKeyCustomKeyHeader> headers;
-        private List<RulesetRuleActionParametersCacheKeyCustomKeyHost> hosts;
-        private List<RulesetRuleActionParametersCacheKeyCustomKeyQueryString> queryStrings;
-        private List<RulesetRuleActionParametersCacheKeyCustomKeyUser> users;
+        private RulesetRuleActionParametersCacheKeyCustomKeyCookie cookie;
+        private RulesetRuleActionParametersCacheKeyCustomKeyHeader header;
+        private RulesetRuleActionParametersCacheKeyCustomKeyHost host;
+        private RulesetRuleActionParametersCacheKeyCustomKeyQueryString queryString;
+        private RulesetRuleActionParametersCacheKeyCustomKeyUser user;
         public Builder() {}
         public Builder(RulesetRuleActionParametersCacheKeyCustomKey defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.cookies = defaults.cookies;
-    	      this.headers = defaults.headers;
-    	      this.hosts = defaults.hosts;
-    	      this.queryStrings = defaults.queryStrings;
-    	      this.users = defaults.users;
+    	      this.cookie = defaults.cookie;
+    	      this.header = defaults.header;
+    	      this.host = defaults.host;
+    	      this.queryString = defaults.queryString;
+    	      this.user = defaults.user;
         }
 
         @CustomType.Setter
-        public Builder cookies(List<RulesetRuleActionParametersCacheKeyCustomKeyCookie> cookies) {
-            this.cookies = Objects.requireNonNull(cookies);
+        public Builder cookie(RulesetRuleActionParametersCacheKeyCustomKeyCookie cookie) {
+            this.cookie = Objects.requireNonNull(cookie);
             return this;
-        }
-        public Builder cookies(RulesetRuleActionParametersCacheKeyCustomKeyCookie... cookies) {
-            return cookies(List.of(cookies));
         }
         @CustomType.Setter
-        public Builder headers(List<RulesetRuleActionParametersCacheKeyCustomKeyHeader> headers) {
-            this.headers = Objects.requireNonNull(headers);
+        public Builder header(RulesetRuleActionParametersCacheKeyCustomKeyHeader header) {
+            this.header = Objects.requireNonNull(header);
             return this;
-        }
-        public Builder headers(RulesetRuleActionParametersCacheKeyCustomKeyHeader... headers) {
-            return headers(List.of(headers));
         }
         @CustomType.Setter
-        public Builder hosts(List<RulesetRuleActionParametersCacheKeyCustomKeyHost> hosts) {
-            this.hosts = Objects.requireNonNull(hosts);
+        public Builder host(RulesetRuleActionParametersCacheKeyCustomKeyHost host) {
+            this.host = Objects.requireNonNull(host);
             return this;
-        }
-        public Builder hosts(RulesetRuleActionParametersCacheKeyCustomKeyHost... hosts) {
-            return hosts(List.of(hosts));
         }
         @CustomType.Setter
-        public Builder queryStrings(List<RulesetRuleActionParametersCacheKeyCustomKeyQueryString> queryStrings) {
-            this.queryStrings = Objects.requireNonNull(queryStrings);
+        public Builder queryString(RulesetRuleActionParametersCacheKeyCustomKeyQueryString queryString) {
+            this.queryString = Objects.requireNonNull(queryString);
             return this;
-        }
-        public Builder queryStrings(RulesetRuleActionParametersCacheKeyCustomKeyQueryString... queryStrings) {
-            return queryStrings(List.of(queryStrings));
         }
         @CustomType.Setter
-        public Builder users(List<RulesetRuleActionParametersCacheKeyCustomKeyUser> users) {
-            this.users = Objects.requireNonNull(users);
+        public Builder user(RulesetRuleActionParametersCacheKeyCustomKeyUser user) {
+            this.user = Objects.requireNonNull(user);
             return this;
-        }
-        public Builder users(RulesetRuleActionParametersCacheKeyCustomKeyUser... users) {
-            return users(List.of(users));
         }
         public RulesetRuleActionParametersCacheKeyCustomKey build() {
             final var o = new RulesetRuleActionParametersCacheKeyCustomKey();
-            o.cookies = cookies;
-            o.headers = headers;
-            o.hosts = hosts;
-            o.queryStrings = queryStrings;
-            o.users = users;
+            o.cookie = cookie;
+            o.header = header;
+            o.host = host;
+            o.queryString = queryString;
+            o.user = user;
             return o;
         }
     }

@@ -184,17 +184,57 @@ func Provider() tfbridge.ProviderInfo {
 					"rules": {
 						Elem: &tfbridge.SchemaInfo{
 							Fields: map[string]*tfbridge.SchemaInfo{
+								"ratelimit":                {MaxItemsOne: tfbridge.True()},
+								"logging":                  {MaxItemsOne: tfbridge.True()},
+								"exposed_credential_check": {MaxItemsOne: tfbridge.True()},
 								"action_parameters": {
 									MaxItemsOne: tfbridge.True(),
 									Elem: &tfbridge.SchemaInfo{
 										Fields: map[string]*tfbridge.SchemaInfo{
-											"serve_stale":  {MaxItemsOne: tfbridge.True()},
-											"sni":          {MaxItemsOne: tfbridge.True()},
-											"uri":          {MaxItemsOne: tfbridge.True()},
+											"serve_stale": {MaxItemsOne: tfbridge.True()},
+											"sni":         {MaxItemsOne: tfbridge.True()},
+											"uri": {
+												MaxItemsOne: tfbridge.True(),
+												Elem: &tfbridge.SchemaInfo{
+													Fields: map[string]*tfbridge.SchemaInfo{
+														"path":  {MaxItemsOne: tfbridge.True()},
+														"query": {MaxItemsOne: tfbridge.True()},
+													},
+												},
+											},
 											"from_list":    {MaxItemsOne: tfbridge.True()},
 											"matched_data": {MaxItemsOne: tfbridge.True()},
 											"edge_ttl":     {MaxItemsOne: tfbridge.True()},
-											"cache_key":    {MaxItemsOne: tfbridge.True()},
+											"cache_key": {
+												MaxItemsOne: tfbridge.True(),
+												Elem: &tfbridge.SchemaInfo{
+													Fields: map[string]*tfbridge.SchemaInfo{
+														"custom_key": {
+															MaxItemsOne: tfbridge.True(),
+															Elem: &tfbridge.SchemaInfo{
+																Fields: map[string]*tfbridge.SchemaInfo{
+																	"cookie":       {MaxItemsOne: tfbridge.True()},
+																	"header":       {MaxItemsOne: tfbridge.True()},
+																	"host":         {MaxItemsOne: tfbridge.True()},
+																	"query_string": {MaxItemsOne: tfbridge.True()},
+																	"user":         {MaxItemsOne: tfbridge.True()},
+																},
+															},
+														},
+													},
+												},
+											},
+											"origin": {MaxItemsOne: tfbridge.True()},
+											"from_value": {
+												MaxItemsOne: tfbridge.True(),
+												Elem: &tfbridge.SchemaInfo{
+													Fields: map[string]*tfbridge.SchemaInfo{
+														"target_url": {MaxItemsOne: tfbridge.True()},
+													},
+												},
+											},
+											"browser_ttl": {MaxItemsOne: tfbridge.True()},
+											"overrides":   {MaxItemsOne: tfbridge.True()},
 										},
 									},
 								},

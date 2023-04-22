@@ -7,24 +7,23 @@ import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersUriPath;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersUriQuery;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
-import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class RulesetRuleActionParametersUri {
     private Boolean origin;
-    private List<RulesetRuleActionParametersUriPath> paths;
-    private List<RulesetRuleActionParametersUriQuery> queries;
+    private RulesetRuleActionParametersUriPath path;
+    private RulesetRuleActionParametersUriQuery query;
 
     private RulesetRuleActionParametersUri() {}
     public Boolean origin() {
         return this.origin;
     }
-    public List<RulesetRuleActionParametersUriPath> paths() {
-        return this.paths;
+    public RulesetRuleActionParametersUriPath path() {
+        return this.path;
     }
-    public List<RulesetRuleActionParametersUriQuery> queries() {
-        return this.queries;
+    public RulesetRuleActionParametersUriQuery query() {
+        return this.query;
     }
 
     public static Builder builder() {
@@ -37,14 +36,14 @@ public final class RulesetRuleActionParametersUri {
     @CustomType.Builder
     public static final class Builder {
         private Boolean origin;
-        private List<RulesetRuleActionParametersUriPath> paths;
-        private List<RulesetRuleActionParametersUriQuery> queries;
+        private RulesetRuleActionParametersUriPath path;
+        private RulesetRuleActionParametersUriQuery query;
         public Builder() {}
         public Builder(RulesetRuleActionParametersUri defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.origin = defaults.origin;
-    	      this.paths = defaults.paths;
-    	      this.queries = defaults.queries;
+    	      this.path = defaults.path;
+    	      this.query = defaults.query;
         }
 
         @CustomType.Setter
@@ -53,26 +52,20 @@ public final class RulesetRuleActionParametersUri {
             return this;
         }
         @CustomType.Setter
-        public Builder paths(List<RulesetRuleActionParametersUriPath> paths) {
-            this.paths = Objects.requireNonNull(paths);
+        public Builder path(RulesetRuleActionParametersUriPath path) {
+            this.path = Objects.requireNonNull(path);
             return this;
-        }
-        public Builder paths(RulesetRuleActionParametersUriPath... paths) {
-            return paths(List.of(paths));
         }
         @CustomType.Setter
-        public Builder queries(List<RulesetRuleActionParametersUriQuery> queries) {
-            this.queries = Objects.requireNonNull(queries);
+        public Builder query(RulesetRuleActionParametersUriQuery query) {
+            this.query = Objects.requireNonNull(query);
             return this;
-        }
-        public Builder queries(RulesetRuleActionParametersUriQuery... queries) {
-            return queries(List.of(queries));
         }
         public RulesetRuleActionParametersUri build() {
             final var o = new RulesetRuleActionParametersUri();
             o.origin = origin;
-            o.paths = paths;
-            o.queries = queries;
+            o.path = path;
+            o.query = query;
             return o;
         }
     }

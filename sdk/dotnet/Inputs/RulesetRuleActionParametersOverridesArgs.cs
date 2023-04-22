@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RulesetRuleActionParametersOverrideArgs : global::Pulumi.ResourceArgs
+    public sealed class RulesetRuleActionParametersOverridesArgs : global::Pulumi.ResourceArgs
     {
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
 
         [Input("categories", required: true)]
-        private InputList<Inputs.RulesetRuleActionParametersOverrideCategoryArgs>? _categories;
-        public InputList<Inputs.RulesetRuleActionParametersOverrideCategoryArgs> Categories
+        private InputList<Inputs.RulesetRuleActionParametersOverridesCategoryArgs>? _categories;
+        public InputList<Inputs.RulesetRuleActionParametersOverridesCategoryArgs> Categories
         {
-            get => _categories ?? (_categories = new InputList<Inputs.RulesetRuleActionParametersOverrideCategoryArgs>());
+            get => _categories ?? (_categories = new InputList<Inputs.RulesetRuleActionParametersOverridesCategoryArgs>());
             set => _categories = value;
         }
 
@@ -27,23 +27,23 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool> Enabled { get; set; } = null!;
 
         [Input("rules", required: true)]
-        private InputList<Inputs.RulesetRuleActionParametersOverrideRuleArgs>? _rules;
+        private InputList<Inputs.RulesetRuleActionParametersOverridesRuleArgs>? _rules;
 
         /// <summary>
         /// List of rules to apply to the ruleset.
         /// </summary>
-        public InputList<Inputs.RulesetRuleActionParametersOverrideRuleArgs> Rules
+        public InputList<Inputs.RulesetRuleActionParametersOverridesRuleArgs> Rules
         {
-            get => _rules ?? (_rules = new InputList<Inputs.RulesetRuleActionParametersOverrideRuleArgs>());
+            get => _rules ?? (_rules = new InputList<Inputs.RulesetRuleActionParametersOverridesRuleArgs>());
             set => _rules = value;
         }
 
         [Input("sensitivityLevel", required: true)]
         public Input<string> SensitivityLevel { get; set; } = null!;
 
-        public RulesetRuleActionParametersOverrideArgs()
+        public RulesetRuleActionParametersOverridesArgs()
         {
         }
-        public static new RulesetRuleActionParametersOverrideArgs Empty => new RulesetRuleActionParametersOverrideArgs();
+        public static new RulesetRuleActionParametersOverridesArgs Empty => new RulesetRuleActionParametersOverridesArgs();
     }
 }

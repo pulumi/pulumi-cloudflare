@@ -12,45 +12,20 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyArgs : global::Pulumi.ResourceArgs
     {
-        [Input("cookies", required: true)]
-        private InputList<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs>? _cookies;
-        public InputList<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs> Cookies
-        {
-            get => _cookies ?? (_cookies = new InputList<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs>());
-            set => _cookies = value;
-        }
+        [Input("cookie", required: true)]
+        public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs> Cookie { get; set; } = null!;
 
-        [Input("headers", required: true)]
-        private InputList<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs>? _headers;
-        public InputList<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs> Headers
-        {
-            get => _headers ?? (_headers = new InputList<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs>());
-            set => _headers = value;
-        }
+        [Input("header", required: true)]
+        public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs> Header { get; set; } = null!;
 
-        [Input("hosts", required: true)]
-        private InputList<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyHostArgs>? _hosts;
-        public InputList<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyHostArgs> Hosts
-        {
-            get => _hosts ?? (_hosts = new InputList<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyHostArgs>());
-            set => _hosts = value;
-        }
+        [Input("host", required: true)]
+        public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyHostArgs> Host { get; set; } = null!;
 
-        [Input("queryStrings", required: true)]
-        private InputList<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs>? _queryStrings;
-        public InputList<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs> QueryStrings
-        {
-            get => _queryStrings ?? (_queryStrings = new InputList<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs>());
-            set => _queryStrings = value;
-        }
+        [Input("queryString", required: true)]
+        public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs> QueryString { get; set; } = null!;
 
-        [Input("users", required: true)]
-        private InputList<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyUserArgs>? _users;
-        public InputList<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyUserArgs> Users
-        {
-            get => _users ?? (_users = new InputList<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyUserArgs>());
-            set => _users = value;
-        }
+        [Input("user", required: true)]
+        public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyUserArgs> User { get; set; } = null!;
 
         public RulesetRuleActionParametersCacheKeyCustomKeyArgs()
         {

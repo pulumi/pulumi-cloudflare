@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class RulesetRuleActionParametersOverrideRuleGetArgs : global::Pulumi.ResourceArgs
+    public sealed class RulesetRuleActionParametersOverridesRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
@@ -36,9 +36,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("sensitivityLevel", required: true)]
         public Input<string> SensitivityLevel { get; set; } = null!;
 
-        public RulesetRuleActionParametersOverrideRuleGetArgs()
+        public RulesetRuleActionParametersOverridesRuleArgs()
         {
         }
-        public static new RulesetRuleActionParametersOverrideRuleGetArgs Empty => new RulesetRuleActionParametersOverrideRuleGetArgs();
+        public static new RulesetRuleActionParametersOverridesRuleArgs Empty => new RulesetRuleActionParametersOverridesRuleArgs();
     }
 }

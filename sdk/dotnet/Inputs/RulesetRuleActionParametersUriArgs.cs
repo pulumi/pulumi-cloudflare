@@ -15,21 +15,11 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("origin", required: true)]
         public Input<bool> Origin { get; set; } = null!;
 
-        [Input("paths", required: true)]
-        private InputList<Inputs.RulesetRuleActionParametersUriPathArgs>? _paths;
-        public InputList<Inputs.RulesetRuleActionParametersUriPathArgs> Paths
-        {
-            get => _paths ?? (_paths = new InputList<Inputs.RulesetRuleActionParametersUriPathArgs>());
-            set => _paths = value;
-        }
+        [Input("path", required: true)]
+        public Input<Inputs.RulesetRuleActionParametersUriPathArgs> Path { get; set; } = null!;
 
-        [Input("queries", required: true)]
-        private InputList<Inputs.RulesetRuleActionParametersUriQueryArgs>? _queries;
-        public InputList<Inputs.RulesetRuleActionParametersUriQueryArgs> Queries
-        {
-            get => _queries ?? (_queries = new InputList<Inputs.RulesetRuleActionParametersUriQueryArgs>());
-            set => _queries = value;
-        }
+        [Input("query", required: true)]
+        public Input<Inputs.RulesetRuleActionParametersUriQueryArgs> Query { get; set; } = null!;
 
         public RulesetRuleActionParametersUriArgs()
         {

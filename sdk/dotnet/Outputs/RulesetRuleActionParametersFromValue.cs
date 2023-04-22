@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         public readonly bool PreserveQueryString;
         public readonly int StatusCode;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersFromValueTargetUrl> TargetUrls;
+        public readonly Outputs.RulesetRuleActionParametersFromValueTargetUrl TargetUrl;
 
         [OutputConstructor]
         private RulesetRuleActionParametersFromValue(
@@ -23,11 +23,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             int statusCode,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersFromValueTargetUrl> targetUrls)
+            Outputs.RulesetRuleActionParametersFromValueTargetUrl targetUrl)
         {
             PreserveQueryString = preserveQueryString;
             StatusCode = statusCode;
-            TargetUrls = targetUrls;
+            TargetUrl = targetUrl;
         }
     }
 }

@@ -7,44 +7,38 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Cloudflare.Outputs
+namespace Pulumi.Cloudflare.Inputs
 {
 
-    [OutputType]
-    public sealed class RulesetRuleActionParametersOverrideRule
+    public sealed class RulesetRuleActionParametersOverridesRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
         /// </summary>
-        public readonly string Action;
+        [Input("action", required: true)]
+        public Input<string> Action { get; set; } = null!;
+
         /// <summary>
         /// Whether the rule is active.
         /// </summary>
-        public readonly bool Enabled;
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
+
         /// <summary>
         /// Unique rule identifier.
         /// </summary>
-        public readonly string Id;
-        public readonly int ScoreThreshold;
-        public readonly string SensitivityLevel;
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
 
-        [OutputConstructor]
-        private RulesetRuleActionParametersOverrideRule(
-            string action,
+        [Input("scoreThreshold", required: true)]
+        public Input<int> ScoreThreshold { get; set; } = null!;
 
-            bool enabled,
+        [Input("sensitivityLevel", required: true)]
+        public Input<string> SensitivityLevel { get; set; } = null!;
 
-            string id,
-
-            int scoreThreshold,
-
-            string sensitivityLevel)
+        public RulesetRuleActionParametersOverridesRuleGetArgs()
         {
-            Action = action;
-            Enabled = enabled;
-            Id = id;
-            ScoreThreshold = scoreThreshold;
-            SensitivityLevel = sensitivityLevel;
         }
+        public static new RulesetRuleActionParametersOverridesRuleGetArgs Empty => new RulesetRuleActionParametersOverridesRuleGetArgs();
     }
 }

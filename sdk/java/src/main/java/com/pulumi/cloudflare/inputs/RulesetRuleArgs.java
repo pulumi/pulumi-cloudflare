@@ -11,7 +11,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -85,15 +84,15 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
      * List of parameters that configure exposed credential checks.
      * 
      */
-    @Import(name="exposedCredentialChecks", required=true)
-    private Output<List<RulesetRuleExposedCredentialCheckArgs>> exposedCredentialChecks;
+    @Import(name="exposedCredentialCheck", required=true)
+    private Output<RulesetRuleExposedCredentialCheckArgs> exposedCredentialCheck;
 
     /**
      * @return List of parameters that configure exposed credential checks.
      * 
      */
-    public Output<List<RulesetRuleExposedCredentialCheckArgs>> exposedCredentialChecks() {
-        return this.exposedCredentialChecks;
+    public Output<RulesetRuleExposedCredentialCheckArgs> exposedCredentialCheck() {
+        return this.exposedCredentialCheck;
     }
 
     /**
@@ -145,30 +144,30 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
      * List parameters to configure how the rule generates logs.
      * 
      */
-    @Import(name="loggings", required=true)
-    private Output<List<RulesetRuleLoggingArgs>> loggings;
+    @Import(name="logging", required=true)
+    private Output<RulesetRuleLoggingArgs> logging;
 
     /**
      * @return List parameters to configure how the rule generates logs.
      * 
      */
-    public Output<List<RulesetRuleLoggingArgs>> loggings() {
-        return this.loggings;
+    public Output<RulesetRuleLoggingArgs> logging() {
+        return this.logging;
     }
 
     /**
      * List of parameters that configure HTTP rate limiting behaviour.
      * 
      */
-    @Import(name="ratelimits", required=true)
-    private Output<List<RulesetRuleRatelimitArgs>> ratelimits;
+    @Import(name="ratelimit", required=true)
+    private Output<RulesetRuleRatelimitArgs> ratelimit;
 
     /**
      * @return List of parameters that configure HTTP rate limiting behaviour.
      * 
      */
-    public Output<List<RulesetRuleRatelimitArgs>> ratelimits() {
-        return this.ratelimits;
+    public Output<RulesetRuleRatelimitArgs> ratelimit() {
+        return this.ratelimit;
     }
 
     /**
@@ -208,12 +207,12 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         this.actionParameters = $.actionParameters;
         this.description = $.description;
         this.enabled = $.enabled;
-        this.exposedCredentialChecks = $.exposedCredentialChecks;
+        this.exposedCredentialCheck = $.exposedCredentialCheck;
         this.expression = $.expression;
         this.id = $.id;
         this.lastUpdated = $.lastUpdated;
-        this.loggings = $.loggings;
-        this.ratelimits = $.ratelimits;
+        this.logging = $.logging;
+        this.ratelimit = $.ratelimit;
         this.ref = $.ref;
         this.version = $.version;
     }
@@ -321,34 +320,24 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exposedCredentialChecks List of parameters that configure exposed credential checks.
+         * @param exposedCredentialCheck List of parameters that configure exposed credential checks.
          * 
          * @return builder
          * 
          */
-        public Builder exposedCredentialChecks(Output<List<RulesetRuleExposedCredentialCheckArgs>> exposedCredentialChecks) {
-            $.exposedCredentialChecks = exposedCredentialChecks;
+        public Builder exposedCredentialCheck(Output<RulesetRuleExposedCredentialCheckArgs> exposedCredentialCheck) {
+            $.exposedCredentialCheck = exposedCredentialCheck;
             return this;
         }
 
         /**
-         * @param exposedCredentialChecks List of parameters that configure exposed credential checks.
+         * @param exposedCredentialCheck List of parameters that configure exposed credential checks.
          * 
          * @return builder
          * 
          */
-        public Builder exposedCredentialChecks(List<RulesetRuleExposedCredentialCheckArgs> exposedCredentialChecks) {
-            return exposedCredentialChecks(Output.of(exposedCredentialChecks));
-        }
-
-        /**
-         * @param exposedCredentialChecks List of parameters that configure exposed credential checks.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder exposedCredentialChecks(RulesetRuleExposedCredentialCheckArgs... exposedCredentialChecks) {
-            return exposedCredentialChecks(List.of(exposedCredentialChecks));
+        public Builder exposedCredentialCheck(RulesetRuleExposedCredentialCheckArgs exposedCredentialCheck) {
+            return exposedCredentialCheck(Output.of(exposedCredentialCheck));
         }
 
         /**
@@ -415,65 +404,45 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loggings List parameters to configure how the rule generates logs.
+         * @param logging List parameters to configure how the rule generates logs.
          * 
          * @return builder
          * 
          */
-        public Builder loggings(Output<List<RulesetRuleLoggingArgs>> loggings) {
-            $.loggings = loggings;
+        public Builder logging(Output<RulesetRuleLoggingArgs> logging) {
+            $.logging = logging;
             return this;
         }
 
         /**
-         * @param loggings List parameters to configure how the rule generates logs.
+         * @param logging List parameters to configure how the rule generates logs.
          * 
          * @return builder
          * 
          */
-        public Builder loggings(List<RulesetRuleLoggingArgs> loggings) {
-            return loggings(Output.of(loggings));
+        public Builder logging(RulesetRuleLoggingArgs logging) {
+            return logging(Output.of(logging));
         }
 
         /**
-         * @param loggings List parameters to configure how the rule generates logs.
+         * @param ratelimit List of parameters that configure HTTP rate limiting behaviour.
          * 
          * @return builder
          * 
          */
-        public Builder loggings(RulesetRuleLoggingArgs... loggings) {
-            return loggings(List.of(loggings));
-        }
-
-        /**
-         * @param ratelimits List of parameters that configure HTTP rate limiting behaviour.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ratelimits(Output<List<RulesetRuleRatelimitArgs>> ratelimits) {
-            $.ratelimits = ratelimits;
+        public Builder ratelimit(Output<RulesetRuleRatelimitArgs> ratelimit) {
+            $.ratelimit = ratelimit;
             return this;
         }
 
         /**
-         * @param ratelimits List of parameters that configure HTTP rate limiting behaviour.
+         * @param ratelimit List of parameters that configure HTTP rate limiting behaviour.
          * 
          * @return builder
          * 
          */
-        public Builder ratelimits(List<RulesetRuleRatelimitArgs> ratelimits) {
-            return ratelimits(Output.of(ratelimits));
-        }
-
-        /**
-         * @param ratelimits List of parameters that configure HTTP rate limiting behaviour.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ratelimits(RulesetRuleRatelimitArgs... ratelimits) {
-            return ratelimits(List.of(ratelimits));
+        public Builder ratelimit(RulesetRuleRatelimitArgs ratelimit) {
+            return ratelimit(Output.of(ratelimit));
         }
 
         /**
@@ -520,10 +489,10 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
 
         public RulesetRuleArgs build() {
             $.actionParameters = Objects.requireNonNull($.actionParameters, "expected parameter 'actionParameters' to be non-null");
-            $.exposedCredentialChecks = Objects.requireNonNull($.exposedCredentialChecks, "expected parameter 'exposedCredentialChecks' to be non-null");
+            $.exposedCredentialCheck = Objects.requireNonNull($.exposedCredentialCheck, "expected parameter 'exposedCredentialCheck' to be non-null");
             $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
-            $.loggings = Objects.requireNonNull($.loggings, "expected parameter 'loggings' to be non-null");
-            $.ratelimits = Objects.requireNonNull($.ratelimits, "expected parameter 'ratelimits' to be non-null");
+            $.logging = Objects.requireNonNull($.logging, "expected parameter 'logging' to be non-null");
+            $.ratelimit = Objects.requireNonNull($.ratelimit, "expected parameter 'ratelimit' to be non-null");
             return $;
         }
     }

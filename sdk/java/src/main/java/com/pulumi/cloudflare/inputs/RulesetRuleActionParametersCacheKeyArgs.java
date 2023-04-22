@@ -7,7 +7,6 @@ import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKey
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.util.List;
 import java.util.Objects;
 
 
@@ -29,11 +28,11 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
         return this.cacheDeceptionArmor;
     }
 
-    @Import(name="customKeys", required=true)
-    private Output<List<RulesetRuleActionParametersCacheKeyCustomKeyArgs>> customKeys;
+    @Import(name="customKey", required=true)
+    private Output<RulesetRuleActionParametersCacheKeyCustomKeyArgs> customKey;
 
-    public Output<List<RulesetRuleActionParametersCacheKeyCustomKeyArgs>> customKeys() {
-        return this.customKeys;
+    public Output<RulesetRuleActionParametersCacheKeyCustomKeyArgs> customKey() {
+        return this.customKey;
     }
 
     @Import(name="ignoreQueryStringsOrder", required=true)
@@ -48,7 +47,7 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
     private RulesetRuleActionParametersCacheKeyArgs(RulesetRuleActionParametersCacheKeyArgs $) {
         this.cacheByDeviceType = $.cacheByDeviceType;
         this.cacheDeceptionArmor = $.cacheDeceptionArmor;
-        this.customKeys = $.customKeys;
+        this.customKey = $.customKey;
         this.ignoreQueryStringsOrder = $.ignoreQueryStringsOrder;
     }
 
@@ -88,17 +87,13 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
             return cacheDeceptionArmor(Output.of(cacheDeceptionArmor));
         }
 
-        public Builder customKeys(Output<List<RulesetRuleActionParametersCacheKeyCustomKeyArgs>> customKeys) {
-            $.customKeys = customKeys;
+        public Builder customKey(Output<RulesetRuleActionParametersCacheKeyCustomKeyArgs> customKey) {
+            $.customKey = customKey;
             return this;
         }
 
-        public Builder customKeys(List<RulesetRuleActionParametersCacheKeyCustomKeyArgs> customKeys) {
-            return customKeys(Output.of(customKeys));
-        }
-
-        public Builder customKeys(RulesetRuleActionParametersCacheKeyCustomKeyArgs... customKeys) {
-            return customKeys(List.of(customKeys));
+        public Builder customKey(RulesetRuleActionParametersCacheKeyCustomKeyArgs customKey) {
+            return customKey(Output.of(customKey));
         }
 
         public Builder ignoreQueryStringsOrder(Output<Boolean> ignoreQueryStringsOrder) {
@@ -113,7 +108,7 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
         public RulesetRuleActionParametersCacheKeyArgs build() {
             $.cacheByDeviceType = Objects.requireNonNull($.cacheByDeviceType, "expected parameter 'cacheByDeviceType' to be non-null");
             $.cacheDeceptionArmor = Objects.requireNonNull($.cacheDeceptionArmor, "expected parameter 'cacheDeceptionArmor' to be non-null");
-            $.customKeys = Objects.requireNonNull($.customKeys, "expected parameter 'customKeys' to be non-null");
+            $.customKey = Objects.requireNonNull($.customKey, "expected parameter 'customKey' to be non-null");
             $.ignoreQueryStringsOrder = Objects.requireNonNull($.ignoreQueryStringsOrder, "expected parameter 'ignoreQueryStringsOrder' to be non-null");
             return $;
         }

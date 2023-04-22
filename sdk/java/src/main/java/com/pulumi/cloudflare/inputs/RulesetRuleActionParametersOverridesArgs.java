@@ -3,8 +3,8 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersOverrideCategoryArgs;
-import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersOverrideRuleArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersOverridesCategoryArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersOverridesRuleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.Objects;
 
 
-public final class RulesetRuleActionParametersOverrideArgs extends com.pulumi.resources.ResourceArgs {
+public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final RulesetRuleActionParametersOverrideArgs Empty = new RulesetRuleActionParametersOverrideArgs();
+    public static final RulesetRuleActionParametersOverridesArgs Empty = new RulesetRuleActionParametersOverridesArgs();
 
     @Import(name="action", required=true)
     private Output<String> action;
@@ -25,9 +25,9 @@ public final class RulesetRuleActionParametersOverrideArgs extends com.pulumi.re
     }
 
     @Import(name="categories", required=true)
-    private Output<List<RulesetRuleActionParametersOverrideCategoryArgs>> categories;
+    private Output<List<RulesetRuleActionParametersOverridesCategoryArgs>> categories;
 
-    public Output<List<RulesetRuleActionParametersOverrideCategoryArgs>> categories() {
+    public Output<List<RulesetRuleActionParametersOverridesCategoryArgs>> categories() {
         return this.categories;
     }
 
@@ -43,13 +43,13 @@ public final class RulesetRuleActionParametersOverrideArgs extends com.pulumi.re
      * 
      */
     @Import(name="rules", required=true)
-    private Output<List<RulesetRuleActionParametersOverrideRuleArgs>> rules;
+    private Output<List<RulesetRuleActionParametersOverridesRuleArgs>> rules;
 
     /**
      * @return List of rules to apply to the ruleset.
      * 
      */
-    public Output<List<RulesetRuleActionParametersOverrideRuleArgs>> rules() {
+    public Output<List<RulesetRuleActionParametersOverridesRuleArgs>> rules() {
         return this.rules;
     }
 
@@ -60,9 +60,9 @@ public final class RulesetRuleActionParametersOverrideArgs extends com.pulumi.re
         return this.sensitivityLevel;
     }
 
-    private RulesetRuleActionParametersOverrideArgs() {}
+    private RulesetRuleActionParametersOverridesArgs() {}
 
-    private RulesetRuleActionParametersOverrideArgs(RulesetRuleActionParametersOverrideArgs $) {
+    private RulesetRuleActionParametersOverridesArgs(RulesetRuleActionParametersOverridesArgs $) {
         this.action = $.action;
         this.categories = $.categories;
         this.enabled = $.enabled;
@@ -73,19 +73,19 @@ public final class RulesetRuleActionParametersOverrideArgs extends com.pulumi.re
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(RulesetRuleActionParametersOverrideArgs defaults) {
+    public static Builder builder(RulesetRuleActionParametersOverridesArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private RulesetRuleActionParametersOverrideArgs $;
+        private RulesetRuleActionParametersOverridesArgs $;
 
         public Builder() {
-            $ = new RulesetRuleActionParametersOverrideArgs();
+            $ = new RulesetRuleActionParametersOverridesArgs();
         }
 
-        public Builder(RulesetRuleActionParametersOverrideArgs defaults) {
-            $ = new RulesetRuleActionParametersOverrideArgs(Objects.requireNonNull(defaults));
+        public Builder(RulesetRuleActionParametersOverridesArgs defaults) {
+            $ = new RulesetRuleActionParametersOverridesArgs(Objects.requireNonNull(defaults));
         }
 
         public Builder action(Output<String> action) {
@@ -97,16 +97,16 @@ public final class RulesetRuleActionParametersOverrideArgs extends com.pulumi.re
             return action(Output.of(action));
         }
 
-        public Builder categories(Output<List<RulesetRuleActionParametersOverrideCategoryArgs>> categories) {
+        public Builder categories(Output<List<RulesetRuleActionParametersOverridesCategoryArgs>> categories) {
             $.categories = categories;
             return this;
         }
 
-        public Builder categories(List<RulesetRuleActionParametersOverrideCategoryArgs> categories) {
+        public Builder categories(List<RulesetRuleActionParametersOverridesCategoryArgs> categories) {
             return categories(Output.of(categories));
         }
 
-        public Builder categories(RulesetRuleActionParametersOverrideCategoryArgs... categories) {
+        public Builder categories(RulesetRuleActionParametersOverridesCategoryArgs... categories) {
             return categories(List.of(categories));
         }
 
@@ -125,7 +125,7 @@ public final class RulesetRuleActionParametersOverrideArgs extends com.pulumi.re
          * @return builder
          * 
          */
-        public Builder rules(Output<List<RulesetRuleActionParametersOverrideRuleArgs>> rules) {
+        public Builder rules(Output<List<RulesetRuleActionParametersOverridesRuleArgs>> rules) {
             $.rules = rules;
             return this;
         }
@@ -136,7 +136,7 @@ public final class RulesetRuleActionParametersOverrideArgs extends com.pulumi.re
          * @return builder
          * 
          */
-        public Builder rules(List<RulesetRuleActionParametersOverrideRuleArgs> rules) {
+        public Builder rules(List<RulesetRuleActionParametersOverridesRuleArgs> rules) {
             return rules(Output.of(rules));
         }
 
@@ -146,7 +146,7 @@ public final class RulesetRuleActionParametersOverrideArgs extends com.pulumi.re
          * @return builder
          * 
          */
-        public Builder rules(RulesetRuleActionParametersOverrideRuleArgs... rules) {
+        public Builder rules(RulesetRuleActionParametersOverridesRuleArgs... rules) {
             return rules(List.of(rules));
         }
 
@@ -159,7 +159,7 @@ public final class RulesetRuleActionParametersOverrideArgs extends com.pulumi.re
             return sensitivityLevel(Output.of(sensitivityLevel));
         }
 
-        public RulesetRuleActionParametersOverrideArgs build() {
+        public RulesetRuleActionParametersOverridesArgs build() {
             $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
             $.categories = Objects.requireNonNull($.categories, "expected parameter 'categories' to be non-null");
             $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");

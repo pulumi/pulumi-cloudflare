@@ -2164,7 +2164,7 @@ export interface RulesetRule {
     /**
      * List of parameters that configure exposed credential checks.
      */
-    exposedCredentialChecks: pulumi.Input<pulumi.Input<inputs.RulesetRuleExposedCredentialCheck>[]>;
+    exposedCredentialCheck: pulumi.Input<inputs.RulesetRuleExposedCredentialCheck>;
     /**
      * Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
      */
@@ -2180,11 +2180,11 @@ export interface RulesetRule {
     /**
      * List parameters to configure how the rule generates logs.
      */
-    loggings: pulumi.Input<pulumi.Input<inputs.RulesetRuleLogging>[]>;
+    logging: pulumi.Input<inputs.RulesetRuleLogging>;
     /**
      * List of parameters that configure HTTP rate limiting behaviour.
      */
-    ratelimits: pulumi.Input<pulumi.Input<inputs.RulesetRuleRatelimit>[]>;
+    ratelimit: pulumi.Input<inputs.RulesetRuleRatelimit>;
     /**
      * Rule reference.
      */
@@ -2199,7 +2199,7 @@ export interface RulesetRuleActionParameters {
     automaticHttpsRewrites: pulumi.Input<boolean>;
     autominifies: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersAutominify>[]>;
     bic: pulumi.Input<boolean>;
-    browserTtls: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersBrowserTtl>[]>;
+    browserTtl: pulumi.Input<inputs.RulesetRuleActionParametersBrowserTtl>;
     cache: pulumi.Input<boolean>;
     cacheKey: pulumi.Input<inputs.RulesetRuleActionParametersCacheKey>;
     content: pulumi.Input<string>;
@@ -2211,7 +2211,7 @@ export interface RulesetRuleActionParameters {
     edgeTtl: pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtl>;
     emailObfuscation: pulumi.Input<boolean>;
     fromList: pulumi.Input<inputs.RulesetRuleActionParametersFromList>;
-    fromValues: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersFromValue>[]>;
+    fromValue: pulumi.Input<inputs.RulesetRuleActionParametersFromValue>;
     headers: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersHeader>[]>;
     hostHeader: pulumi.Input<string>;
     hotlinkProtection: pulumi.Input<boolean>;
@@ -2223,9 +2223,9 @@ export interface RulesetRuleActionParameters {
     matchedData: pulumi.Input<inputs.RulesetRuleActionParametersMatchedData>;
     mirage: pulumi.Input<boolean>;
     opportunisticEncryption: pulumi.Input<boolean>;
+    origin: pulumi.Input<inputs.RulesetRuleActionParametersOrigin>;
     originErrorPagePassthru: pulumi.Input<boolean>;
-    origins: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOrigin>[]>;
-    overrides: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOverride>[]>;
+    overrides: pulumi.Input<inputs.RulesetRuleActionParametersOverrides>;
     phases: pulumi.Input<pulumi.Input<string>[]>;
     polish: pulumi.Input<string>;
     products: pulumi.Input<pulumi.Input<string>[]>;
@@ -2265,16 +2265,16 @@ export interface RulesetRuleActionParametersBrowserTtl {
 export interface RulesetRuleActionParametersCacheKey {
     cacheByDeviceType: pulumi.Input<boolean>;
     cacheDeceptionArmor: pulumi.Input<boolean>;
-    customKeys: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKey>[]>;
+    customKey: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKey>;
     ignoreQueryStringsOrder: pulumi.Input<boolean>;
 }
 
 export interface RulesetRuleActionParametersCacheKeyCustomKey {
-    cookies: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie>[]>;
-    headers: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader>[]>;
-    hosts: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyHost>[]>;
-    queryStrings: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString>[]>;
-    users: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyUser>[]>;
+    cookie: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie>;
+    header: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader>;
+    host: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyHost>;
+    queryString: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString>;
+    user: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyUser>;
 }
 
 export interface RulesetRuleActionParametersCacheKeyCustomKeyCookie {
@@ -2331,7 +2331,7 @@ export interface RulesetRuleActionParametersFromList {
 export interface RulesetRuleActionParametersFromValue {
     preserveQueryString: pulumi.Input<boolean>;
     statusCode: pulumi.Input<number>;
-    targetUrls: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersFromValueTargetUrl>[]>;
+    targetUrl: pulumi.Input<inputs.RulesetRuleActionParametersFromValueTargetUrl>;
 }
 
 export interface RulesetRuleActionParametersFromValueTargetUrl {
@@ -2358,24 +2358,24 @@ export interface RulesetRuleActionParametersOrigin {
     port: pulumi.Input<number>;
 }
 
-export interface RulesetRuleActionParametersOverride {
+export interface RulesetRuleActionParametersOverrides {
     action: pulumi.Input<string>;
-    categories: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOverrideCategory>[]>;
+    categories: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOverridesCategory>[]>;
     enabled: pulumi.Input<boolean>;
     /**
      * List of rules to apply to the ruleset.
      */
-    rules: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOverrideRule>[]>;
+    rules: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOverridesRule>[]>;
     sensitivityLevel: pulumi.Input<string>;
 }
 
-export interface RulesetRuleActionParametersOverrideCategory {
+export interface RulesetRuleActionParametersOverridesCategory {
     action: pulumi.Input<string>;
     category: pulumi.Input<string>;
     enabled: pulumi.Input<boolean>;
 }
 
-export interface RulesetRuleActionParametersOverrideRule {
+export interface RulesetRuleActionParametersOverridesRule {
     /**
      * Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
      */
@@ -2408,8 +2408,8 @@ export interface RulesetRuleActionParametersSni {
 
 export interface RulesetRuleActionParametersUri {
     origin: pulumi.Input<boolean>;
-    paths: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersUriPath>[]>;
-    queries: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersUriQuery>[]>;
+    path: pulumi.Input<inputs.RulesetRuleActionParametersUriPath>;
+    query: pulumi.Input<inputs.RulesetRuleActionParametersUriQuery>;
 }
 
 export interface RulesetRuleActionParametersUriPath {

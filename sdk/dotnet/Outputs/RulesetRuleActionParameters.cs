@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool AutomaticHttpsRewrites;
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersAutominify> Autominifies;
         public readonly bool Bic;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersBrowserTtl> BrowserTtls;
+        public readonly Outputs.RulesetRuleActionParametersBrowserTtl BrowserTtl;
         public readonly bool Cache;
         public readonly Outputs.RulesetRuleActionParametersCacheKey CacheKey;
         public readonly string Content;
@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.RulesetRuleActionParametersEdgeTtl EdgeTtl;
         public readonly bool EmailObfuscation;
         public readonly Outputs.RulesetRuleActionParametersFromList FromList;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersFromValue> FromValues;
+        public readonly Outputs.RulesetRuleActionParametersFromValue FromValue;
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersHeader> Headers;
         public readonly string HostHeader;
         public readonly bool HotlinkProtection;
@@ -40,9 +40,9 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.RulesetRuleActionParametersMatchedData MatchedData;
         public readonly bool Mirage;
         public readonly bool OpportunisticEncryption;
+        public readonly Outputs.RulesetRuleActionParametersOrigin Origin;
         public readonly bool OriginErrorPagePassthru;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersOrigin> Origins;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersOverride> Overrides;
+        public readonly Outputs.RulesetRuleActionParametersOverrides Overrides;
         public readonly ImmutableArray<string> Phases;
         public readonly string Polish;
         public readonly ImmutableArray<string> Products;
@@ -75,7 +75,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool bic,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersBrowserTtl> browserTtls,
+            Outputs.RulesetRuleActionParametersBrowserTtl browserTtl,
 
             bool cache,
 
@@ -99,7 +99,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.RulesetRuleActionParametersFromList fromList,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersFromValue> fromValues,
+            Outputs.RulesetRuleActionParametersFromValue fromValue,
 
             ImmutableArray<Outputs.RulesetRuleActionParametersHeader> headers,
 
@@ -117,11 +117,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool opportunisticEncryption,
 
+            Outputs.RulesetRuleActionParametersOrigin origin,
+
             bool originErrorPagePassthru,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersOrigin> origins,
-
-            ImmutableArray<Outputs.RulesetRuleActionParametersOverride> overrides,
+            Outputs.RulesetRuleActionParametersOverrides overrides,
 
             ImmutableArray<string> phases,
 
@@ -166,7 +166,7 @@ namespace Pulumi.Cloudflare.Outputs
             AutomaticHttpsRewrites = automaticHttpsRewrites;
             Autominifies = autominifies;
             Bic = bic;
-            BrowserTtls = browserTtls;
+            BrowserTtl = browserTtl;
             Cache = cache;
             CacheKey = cacheKey;
             Content = content;
@@ -178,7 +178,7 @@ namespace Pulumi.Cloudflare.Outputs
             EdgeTtl = edgeTtl;
             EmailObfuscation = emailObfuscation;
             FromList = fromList;
-            FromValues = fromValues;
+            FromValue = fromValue;
             Headers = headers;
             HostHeader = hostHeader;
             HotlinkProtection = hotlinkProtection;
@@ -187,8 +187,8 @@ namespace Pulumi.Cloudflare.Outputs
             MatchedData = matchedData;
             Mirage = mirage;
             OpportunisticEncryption = opportunisticEncryption;
+            Origin = origin;
             OriginErrorPagePassthru = originErrorPagePassthru;
-            Origins = origins;
             Overrides = overrides;
             Phases = phases;
             Polish = polish;

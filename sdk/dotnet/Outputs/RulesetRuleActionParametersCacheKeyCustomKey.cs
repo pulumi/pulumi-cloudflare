@@ -13,29 +13,29 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersCacheKeyCustomKey
     {
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie> Cookies;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader> Headers;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost> Hosts;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString> QueryStrings;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser> Users;
+        public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie Cookie;
+        public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader Header;
+        public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost Host;
+        public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString QueryString;
+        public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser User;
 
         [OutputConstructor]
         private RulesetRuleActionParametersCacheKeyCustomKey(
-            ImmutableArray<Outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie> cookies,
+            Outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie cookie,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader> headers,
+            Outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader header,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost> hosts,
+            Outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost host,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString> queryStrings,
+            Outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString queryString,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser> users)
+            Outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser user)
         {
-            Cookies = cookies;
-            Headers = headers;
-            Hosts = hosts;
-            QueryStrings = queryStrings;
-            Users = users;
+            Cookie = cookie;
+            Header = header;
+            Host = host;
+            QueryString = queryString;
+            User = user;
         }
     }
 }

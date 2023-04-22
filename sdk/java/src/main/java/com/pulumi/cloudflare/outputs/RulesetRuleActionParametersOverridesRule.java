@@ -10,7 +10,7 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class RulesetRuleActionParametersOverrideRule {
+public final class RulesetRuleActionParametersOverridesRule {
     /**
      * @return Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
      * 
@@ -29,7 +29,7 @@ public final class RulesetRuleActionParametersOverrideRule {
     private Integer scoreThreshold;
     private String sensitivityLevel;
 
-    private RulesetRuleActionParametersOverrideRule() {}
+    private RulesetRuleActionParametersOverridesRule() {}
     /**
      * @return Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
      * 
@@ -62,7 +62,7 @@ public final class RulesetRuleActionParametersOverrideRule {
         return new Builder();
     }
 
-    public static Builder builder(RulesetRuleActionParametersOverrideRule defaults) {
+    public static Builder builder(RulesetRuleActionParametersOverridesRule defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -73,7 +73,7 @@ public final class RulesetRuleActionParametersOverrideRule {
         private Integer scoreThreshold;
         private String sensitivityLevel;
         public Builder() {}
-        public Builder(RulesetRuleActionParametersOverrideRule defaults) {
+        public Builder(RulesetRuleActionParametersOverridesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
     	      this.enabled = defaults.enabled;
@@ -107,8 +107,8 @@ public final class RulesetRuleActionParametersOverrideRule {
             this.sensitivityLevel = Objects.requireNonNull(sensitivityLevel);
             return this;
         }
-        public RulesetRuleActionParametersOverrideRule build() {
-            final var o = new RulesetRuleActionParametersOverrideRule();
+        public RulesetRuleActionParametersOverridesRule build() {
+            final var o = new RulesetRuleActionParametersOverridesRule();
             o.action = action;
             o.enabled = enabled;
             o.id = id;

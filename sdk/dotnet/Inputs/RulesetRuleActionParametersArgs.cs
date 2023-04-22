@@ -26,13 +26,8 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("bic", required: true)]
         public Input<bool> Bic { get; set; } = null!;
 
-        [Input("browserTtls", required: true)]
-        private InputList<Inputs.RulesetRuleActionParametersBrowserTtlArgs>? _browserTtls;
-        public InputList<Inputs.RulesetRuleActionParametersBrowserTtlArgs> BrowserTtls
-        {
-            get => _browserTtls ?? (_browserTtls = new InputList<Inputs.RulesetRuleActionParametersBrowserTtlArgs>());
-            set => _browserTtls = value;
-        }
+        [Input("browserTtl", required: true)]
+        public Input<Inputs.RulesetRuleActionParametersBrowserTtlArgs> BrowserTtl { get; set; } = null!;
 
         [Input("cache", required: true)]
         public Input<bool> Cache { get; set; } = null!;
@@ -72,13 +67,8 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("fromList", required: true)]
         public Input<Inputs.RulesetRuleActionParametersFromListArgs> FromList { get; set; } = null!;
 
-        [Input("fromValues", required: true)]
-        private InputList<Inputs.RulesetRuleActionParametersFromValueArgs>? _fromValues;
-        public InputList<Inputs.RulesetRuleActionParametersFromValueArgs> FromValues
-        {
-            get => _fromValues ?? (_fromValues = new InputList<Inputs.RulesetRuleActionParametersFromValueArgs>());
-            set => _fromValues = value;
-        }
+        [Input("fromValue", required: true)]
+        public Input<Inputs.RulesetRuleActionParametersFromValueArgs> FromValue { get; set; } = null!;
 
         [Input("headers", required: true)]
         private InputList<Inputs.RulesetRuleActionParametersHeaderArgs>? _headers;
@@ -112,24 +102,14 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("opportunisticEncryption", required: true)]
         public Input<bool> OpportunisticEncryption { get; set; } = null!;
 
+        [Input("origin", required: true)]
+        public Input<Inputs.RulesetRuleActionParametersOriginArgs> Origin { get; set; } = null!;
+
         [Input("originErrorPagePassthru", required: true)]
         public Input<bool> OriginErrorPagePassthru { get; set; } = null!;
 
-        [Input("origins", required: true)]
-        private InputList<Inputs.RulesetRuleActionParametersOriginArgs>? _origins;
-        public InputList<Inputs.RulesetRuleActionParametersOriginArgs> Origins
-        {
-            get => _origins ?? (_origins = new InputList<Inputs.RulesetRuleActionParametersOriginArgs>());
-            set => _origins = value;
-        }
-
         [Input("overrides", required: true)]
-        private InputList<Inputs.RulesetRuleActionParametersOverrideArgs>? _overrides;
-        public InputList<Inputs.RulesetRuleActionParametersOverrideArgs> Overrides
-        {
-            get => _overrides ?? (_overrides = new InputList<Inputs.RulesetRuleActionParametersOverrideArgs>());
-            set => _overrides = value;
-        }
+        public Input<Inputs.RulesetRuleActionParametersOverridesArgs> Overrides { get; set; } = null!;
 
         [Input("phases", required: true)]
         private InputList<string>? _phases;

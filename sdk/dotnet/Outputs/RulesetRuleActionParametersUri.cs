@@ -14,20 +14,20 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersUri
     {
         public readonly bool Origin;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersUriPath> Paths;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersUriQuery> Queries;
+        public readonly Outputs.RulesetRuleActionParametersUriPath Path;
+        public readonly Outputs.RulesetRuleActionParametersUriQuery Query;
 
         [OutputConstructor]
         private RulesetRuleActionParametersUri(
             bool origin,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersUriPath> paths,
+            Outputs.RulesetRuleActionParametersUriPath path,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersUriQuery> queries)
+            Outputs.RulesetRuleActionParametersUriQuery query)
         {
             Origin = origin;
-            Paths = paths;
-            Queries = queries;
+            Path = path;
+            Query = query;
         }
     }
 }

@@ -7,14 +7,13 @@ import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersFromValueTargetU
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class RulesetRuleActionParametersFromValue {
     private Boolean preserveQueryString;
     private Integer statusCode;
-    private List<RulesetRuleActionParametersFromValueTargetUrl> targetUrls;
+    private RulesetRuleActionParametersFromValueTargetUrl targetUrl;
 
     private RulesetRuleActionParametersFromValue() {}
     public Boolean preserveQueryString() {
@@ -23,8 +22,8 @@ public final class RulesetRuleActionParametersFromValue {
     public Integer statusCode() {
         return this.statusCode;
     }
-    public List<RulesetRuleActionParametersFromValueTargetUrl> targetUrls() {
-        return this.targetUrls;
+    public RulesetRuleActionParametersFromValueTargetUrl targetUrl() {
+        return this.targetUrl;
     }
 
     public static Builder builder() {
@@ -38,13 +37,13 @@ public final class RulesetRuleActionParametersFromValue {
     public static final class Builder {
         private Boolean preserveQueryString;
         private Integer statusCode;
-        private List<RulesetRuleActionParametersFromValueTargetUrl> targetUrls;
+        private RulesetRuleActionParametersFromValueTargetUrl targetUrl;
         public Builder() {}
         public Builder(RulesetRuleActionParametersFromValue defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.preserveQueryString = defaults.preserveQueryString;
     	      this.statusCode = defaults.statusCode;
-    	      this.targetUrls = defaults.targetUrls;
+    	      this.targetUrl = defaults.targetUrl;
         }
 
         @CustomType.Setter
@@ -58,18 +57,15 @@ public final class RulesetRuleActionParametersFromValue {
             return this;
         }
         @CustomType.Setter
-        public Builder targetUrls(List<RulesetRuleActionParametersFromValueTargetUrl> targetUrls) {
-            this.targetUrls = Objects.requireNonNull(targetUrls);
+        public Builder targetUrl(RulesetRuleActionParametersFromValueTargetUrl targetUrl) {
+            this.targetUrl = Objects.requireNonNull(targetUrl);
             return this;
-        }
-        public Builder targetUrls(RulesetRuleActionParametersFromValueTargetUrl... targetUrls) {
-            return targetUrls(List.of(targetUrls));
         }
         public RulesetRuleActionParametersFromValue build() {
             final var o = new RulesetRuleActionParametersFromValue();
             o.preserveQueryString = preserveQueryString;
             o.statusCode = statusCode;
-            o.targetUrls = targetUrls;
+            o.targetUrl = targetUrl;
             return o;
         }
     }

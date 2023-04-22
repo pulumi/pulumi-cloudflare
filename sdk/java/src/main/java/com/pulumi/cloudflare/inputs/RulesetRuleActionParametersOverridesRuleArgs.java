@@ -11,9 +11,9 @@ import java.lang.String;
 import java.util.Objects;
 
 
-public final class RulesetRuleActionParametersOverrideRuleArgs extends com.pulumi.resources.ResourceArgs {
+public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final RulesetRuleActionParametersOverrideRuleArgs Empty = new RulesetRuleActionParametersOverrideRuleArgs();
+    public static final RulesetRuleActionParametersOverridesRuleArgs Empty = new RulesetRuleActionParametersOverridesRuleArgs();
 
     /**
      * Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
@@ -74,9 +74,9 @@ public final class RulesetRuleActionParametersOverrideRuleArgs extends com.pulum
         return this.sensitivityLevel;
     }
 
-    private RulesetRuleActionParametersOverrideRuleArgs() {}
+    private RulesetRuleActionParametersOverridesRuleArgs() {}
 
-    private RulesetRuleActionParametersOverrideRuleArgs(RulesetRuleActionParametersOverrideRuleArgs $) {
+    private RulesetRuleActionParametersOverridesRuleArgs(RulesetRuleActionParametersOverridesRuleArgs $) {
         this.action = $.action;
         this.enabled = $.enabled;
         this.id = $.id;
@@ -87,19 +87,19 @@ public final class RulesetRuleActionParametersOverrideRuleArgs extends com.pulum
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(RulesetRuleActionParametersOverrideRuleArgs defaults) {
+    public static Builder builder(RulesetRuleActionParametersOverridesRuleArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private RulesetRuleActionParametersOverrideRuleArgs $;
+        private RulesetRuleActionParametersOverridesRuleArgs $;
 
         public Builder() {
-            $ = new RulesetRuleActionParametersOverrideRuleArgs();
+            $ = new RulesetRuleActionParametersOverridesRuleArgs();
         }
 
-        public Builder(RulesetRuleActionParametersOverrideRuleArgs defaults) {
-            $ = new RulesetRuleActionParametersOverrideRuleArgs(Objects.requireNonNull(defaults));
+        public Builder(RulesetRuleActionParametersOverridesRuleArgs defaults) {
+            $ = new RulesetRuleActionParametersOverridesRuleArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -183,7 +183,7 @@ public final class RulesetRuleActionParametersOverrideRuleArgs extends com.pulum
             return sensitivityLevel(Output.of(sensitivityLevel));
         }
 
-        public RulesetRuleActionParametersOverrideRuleArgs build() {
+        public RulesetRuleActionParametersOverridesRuleArgs build() {
             $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
             $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
             $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");

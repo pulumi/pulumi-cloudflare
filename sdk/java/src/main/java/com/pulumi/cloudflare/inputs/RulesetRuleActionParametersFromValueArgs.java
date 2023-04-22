@@ -8,7 +8,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.util.List;
 import java.util.Objects;
 
 
@@ -30,11 +29,11 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
         return this.statusCode;
     }
 
-    @Import(name="targetUrls", required=true)
-    private Output<List<RulesetRuleActionParametersFromValueTargetUrlArgs>> targetUrls;
+    @Import(name="targetUrl", required=true)
+    private Output<RulesetRuleActionParametersFromValueTargetUrlArgs> targetUrl;
 
-    public Output<List<RulesetRuleActionParametersFromValueTargetUrlArgs>> targetUrls() {
-        return this.targetUrls;
+    public Output<RulesetRuleActionParametersFromValueTargetUrlArgs> targetUrl() {
+        return this.targetUrl;
     }
 
     private RulesetRuleActionParametersFromValueArgs() {}
@@ -42,7 +41,7 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
     private RulesetRuleActionParametersFromValueArgs(RulesetRuleActionParametersFromValueArgs $) {
         this.preserveQueryString = $.preserveQueryString;
         this.statusCode = $.statusCode;
-        this.targetUrls = $.targetUrls;
+        this.targetUrl = $.targetUrl;
     }
 
     public static Builder builder() {
@@ -81,23 +80,19 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
             return statusCode(Output.of(statusCode));
         }
 
-        public Builder targetUrls(Output<List<RulesetRuleActionParametersFromValueTargetUrlArgs>> targetUrls) {
-            $.targetUrls = targetUrls;
+        public Builder targetUrl(Output<RulesetRuleActionParametersFromValueTargetUrlArgs> targetUrl) {
+            $.targetUrl = targetUrl;
             return this;
         }
 
-        public Builder targetUrls(List<RulesetRuleActionParametersFromValueTargetUrlArgs> targetUrls) {
-            return targetUrls(Output.of(targetUrls));
-        }
-
-        public Builder targetUrls(RulesetRuleActionParametersFromValueTargetUrlArgs... targetUrls) {
-            return targetUrls(List.of(targetUrls));
+        public Builder targetUrl(RulesetRuleActionParametersFromValueTargetUrlArgs targetUrl) {
+            return targetUrl(Output.of(targetUrl));
         }
 
         public RulesetRuleActionParametersFromValueArgs build() {
             $.preserveQueryString = Objects.requireNonNull($.preserveQueryString, "expected parameter 'preserveQueryString' to be non-null");
             $.statusCode = Objects.requireNonNull($.statusCode, "expected parameter 'statusCode' to be non-null");
-            $.targetUrls = Objects.requireNonNull($.targetUrls, "expected parameter 'targetUrls' to be non-null");
+            $.targetUrl = Objects.requireNonNull($.targetUrl, "expected parameter 'targetUrl' to be non-null");
             return $;
         }
     }

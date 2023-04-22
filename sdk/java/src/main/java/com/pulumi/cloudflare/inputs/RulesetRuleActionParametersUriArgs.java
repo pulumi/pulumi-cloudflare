@@ -8,7 +8,6 @@ import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriQueryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.util.List;
 import java.util.Objects;
 
 
@@ -23,26 +22,26 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
         return this.origin;
     }
 
-    @Import(name="paths", required=true)
-    private Output<List<RulesetRuleActionParametersUriPathArgs>> paths;
+    @Import(name="path", required=true)
+    private Output<RulesetRuleActionParametersUriPathArgs> path;
 
-    public Output<List<RulesetRuleActionParametersUriPathArgs>> paths() {
-        return this.paths;
+    public Output<RulesetRuleActionParametersUriPathArgs> path() {
+        return this.path;
     }
 
-    @Import(name="queries", required=true)
-    private Output<List<RulesetRuleActionParametersUriQueryArgs>> queries;
+    @Import(name="query", required=true)
+    private Output<RulesetRuleActionParametersUriQueryArgs> query;
 
-    public Output<List<RulesetRuleActionParametersUriQueryArgs>> queries() {
-        return this.queries;
+    public Output<RulesetRuleActionParametersUriQueryArgs> query() {
+        return this.query;
     }
 
     private RulesetRuleActionParametersUriArgs() {}
 
     private RulesetRuleActionParametersUriArgs(RulesetRuleActionParametersUriArgs $) {
         this.origin = $.origin;
-        this.paths = $.paths;
-        this.queries = $.queries;
+        this.path = $.path;
+        this.query = $.query;
     }
 
     public static Builder builder() {
@@ -72,36 +71,28 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
             return origin(Output.of(origin));
         }
 
-        public Builder paths(Output<List<RulesetRuleActionParametersUriPathArgs>> paths) {
-            $.paths = paths;
+        public Builder path(Output<RulesetRuleActionParametersUriPathArgs> path) {
+            $.path = path;
             return this;
         }
 
-        public Builder paths(List<RulesetRuleActionParametersUriPathArgs> paths) {
-            return paths(Output.of(paths));
+        public Builder path(RulesetRuleActionParametersUriPathArgs path) {
+            return path(Output.of(path));
         }
 
-        public Builder paths(RulesetRuleActionParametersUriPathArgs... paths) {
-            return paths(List.of(paths));
-        }
-
-        public Builder queries(Output<List<RulesetRuleActionParametersUriQueryArgs>> queries) {
-            $.queries = queries;
+        public Builder query(Output<RulesetRuleActionParametersUriQueryArgs> query) {
+            $.query = query;
             return this;
         }
 
-        public Builder queries(List<RulesetRuleActionParametersUriQueryArgs> queries) {
-            return queries(Output.of(queries));
-        }
-
-        public Builder queries(RulesetRuleActionParametersUriQueryArgs... queries) {
-            return queries(List.of(queries));
+        public Builder query(RulesetRuleActionParametersUriQueryArgs query) {
+            return query(Output.of(query));
         }
 
         public RulesetRuleActionParametersUriArgs build() {
             $.origin = Objects.requireNonNull($.origin, "expected parameter 'origin' to be non-null");
-            $.paths = Objects.requireNonNull($.paths, "expected parameter 'paths' to be non-null");
-            $.queries = Objects.requireNonNull($.queries, "expected parameter 'queries' to be non-null");
+            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
+            $.query = Objects.requireNonNull($.query, "expected parameter 'query' to be non-null");
             return $;
         }
     }

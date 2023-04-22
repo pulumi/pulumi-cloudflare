@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         public readonly bool CacheByDeviceType;
         public readonly bool CacheDeceptionArmor;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersCacheKeyCustomKey> CustomKeys;
+        public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKey CustomKey;
         public readonly bool IgnoreQueryStringsOrder;
 
         [OutputConstructor]
@@ -24,13 +24,13 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool cacheDeceptionArmor,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersCacheKeyCustomKey> customKeys,
+            Outputs.RulesetRuleActionParametersCacheKeyCustomKey customKey,
 
             bool ignoreQueryStringsOrder)
         {
             CacheByDeviceType = cacheByDeviceType;
             CacheDeceptionArmor = cacheDeceptionArmor;
-            CustomKeys = customKeys;
+            CustomKey = customKey;
             IgnoreQueryStringsOrder = ignoreQueryStringsOrder;
         }
     }

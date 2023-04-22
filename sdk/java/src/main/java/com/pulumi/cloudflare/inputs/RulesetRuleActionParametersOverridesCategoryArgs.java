@@ -10,9 +10,9 @@ import java.lang.String;
 import java.util.Objects;
 
 
-public final class RulesetRuleActionParametersOverrideCategoryArgs extends com.pulumi.resources.ResourceArgs {
+public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final RulesetRuleActionParametersOverrideCategoryArgs Empty = new RulesetRuleActionParametersOverrideCategoryArgs();
+    public static final RulesetRuleActionParametersOverridesCategoryArgs Empty = new RulesetRuleActionParametersOverridesCategoryArgs();
 
     @Import(name="action", required=true)
     private Output<String> action;
@@ -35,9 +35,9 @@ public final class RulesetRuleActionParametersOverrideCategoryArgs extends com.p
         return this.enabled;
     }
 
-    private RulesetRuleActionParametersOverrideCategoryArgs() {}
+    private RulesetRuleActionParametersOverridesCategoryArgs() {}
 
-    private RulesetRuleActionParametersOverrideCategoryArgs(RulesetRuleActionParametersOverrideCategoryArgs $) {
+    private RulesetRuleActionParametersOverridesCategoryArgs(RulesetRuleActionParametersOverridesCategoryArgs $) {
         this.action = $.action;
         this.category = $.category;
         this.enabled = $.enabled;
@@ -46,19 +46,19 @@ public final class RulesetRuleActionParametersOverrideCategoryArgs extends com.p
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(RulesetRuleActionParametersOverrideCategoryArgs defaults) {
+    public static Builder builder(RulesetRuleActionParametersOverridesCategoryArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private RulesetRuleActionParametersOverrideCategoryArgs $;
+        private RulesetRuleActionParametersOverridesCategoryArgs $;
 
         public Builder() {
-            $ = new RulesetRuleActionParametersOverrideCategoryArgs();
+            $ = new RulesetRuleActionParametersOverridesCategoryArgs();
         }
 
-        public Builder(RulesetRuleActionParametersOverrideCategoryArgs defaults) {
-            $ = new RulesetRuleActionParametersOverrideCategoryArgs(Objects.requireNonNull(defaults));
+        public Builder(RulesetRuleActionParametersOverridesCategoryArgs defaults) {
+            $ = new RulesetRuleActionParametersOverridesCategoryArgs(Objects.requireNonNull(defaults));
         }
 
         public Builder action(Output<String> action) {
@@ -88,7 +88,7 @@ public final class RulesetRuleActionParametersOverrideCategoryArgs extends com.p
             return enabled(Output.of(enabled));
         }
 
-        public RulesetRuleActionParametersOverrideCategoryArgs build() {
+        public RulesetRuleActionParametersOverridesCategoryArgs build() {
             $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
             $.category = Objects.requireNonNull($.category, "expected parameter 'category' to be non-null");
             $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");

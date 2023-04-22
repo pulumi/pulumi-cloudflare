@@ -10,7 +10,6 @@ import com.pulumi.cloudflare.outputs.RulesetRuleRatelimit;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -41,7 +40,7 @@ public final class RulesetRule {
      * @return List of parameters that configure exposed credential checks.
      * 
      */
-    private List<RulesetRuleExposedCredentialCheck> exposedCredentialChecks;
+    private RulesetRuleExposedCredentialCheck exposedCredentialCheck;
     /**
      * @return Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
      * 
@@ -61,12 +60,12 @@ public final class RulesetRule {
      * @return List parameters to configure how the rule generates logs.
      * 
      */
-    private List<RulesetRuleLogging> loggings;
+    private RulesetRuleLogging logging;
     /**
      * @return List of parameters that configure HTTP rate limiting behaviour.
      * 
      */
-    private List<RulesetRuleRatelimit> ratelimits;
+    private RulesetRuleRatelimit ratelimit;
     /**
      * @return Rule reference.
      * 
@@ -111,8 +110,8 @@ public final class RulesetRule {
      * @return List of parameters that configure exposed credential checks.
      * 
      */
-    public List<RulesetRuleExposedCredentialCheck> exposedCredentialChecks() {
-        return this.exposedCredentialChecks;
+    public RulesetRuleExposedCredentialCheck exposedCredentialCheck() {
+        return this.exposedCredentialCheck;
     }
     /**
      * @return Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
@@ -139,15 +138,15 @@ public final class RulesetRule {
      * @return List parameters to configure how the rule generates logs.
      * 
      */
-    public List<RulesetRuleLogging> loggings() {
-        return this.loggings;
+    public RulesetRuleLogging logging() {
+        return this.logging;
     }
     /**
      * @return List of parameters that configure HTTP rate limiting behaviour.
      * 
      */
-    public List<RulesetRuleRatelimit> ratelimits() {
-        return this.ratelimits;
+    public RulesetRuleRatelimit ratelimit() {
+        return this.ratelimit;
     }
     /**
      * @return Rule reference.
@@ -177,12 +176,12 @@ public final class RulesetRule {
         private RulesetRuleActionParameters actionParameters;
         private @Nullable String description;
         private @Nullable Boolean enabled;
-        private List<RulesetRuleExposedCredentialCheck> exposedCredentialChecks;
+        private RulesetRuleExposedCredentialCheck exposedCredentialCheck;
         private String expression;
         private @Nullable String id;
         private @Nullable String lastUpdated;
-        private List<RulesetRuleLogging> loggings;
-        private List<RulesetRuleRatelimit> ratelimits;
+        private RulesetRuleLogging logging;
+        private RulesetRuleRatelimit ratelimit;
         private @Nullable String ref;
         private @Nullable String version;
         public Builder() {}
@@ -192,12 +191,12 @@ public final class RulesetRule {
     	      this.actionParameters = defaults.actionParameters;
     	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
-    	      this.exposedCredentialChecks = defaults.exposedCredentialChecks;
+    	      this.exposedCredentialCheck = defaults.exposedCredentialCheck;
     	      this.expression = defaults.expression;
     	      this.id = defaults.id;
     	      this.lastUpdated = defaults.lastUpdated;
-    	      this.loggings = defaults.loggings;
-    	      this.ratelimits = defaults.ratelimits;
+    	      this.logging = defaults.logging;
+    	      this.ratelimit = defaults.ratelimit;
     	      this.ref = defaults.ref;
     	      this.version = defaults.version;
         }
@@ -223,12 +222,9 @@ public final class RulesetRule {
             return this;
         }
         @CustomType.Setter
-        public Builder exposedCredentialChecks(List<RulesetRuleExposedCredentialCheck> exposedCredentialChecks) {
-            this.exposedCredentialChecks = Objects.requireNonNull(exposedCredentialChecks);
+        public Builder exposedCredentialCheck(RulesetRuleExposedCredentialCheck exposedCredentialCheck) {
+            this.exposedCredentialCheck = Objects.requireNonNull(exposedCredentialCheck);
             return this;
-        }
-        public Builder exposedCredentialChecks(RulesetRuleExposedCredentialCheck... exposedCredentialChecks) {
-            return exposedCredentialChecks(List.of(exposedCredentialChecks));
         }
         @CustomType.Setter
         public Builder expression(String expression) {
@@ -246,20 +242,14 @@ public final class RulesetRule {
             return this;
         }
         @CustomType.Setter
-        public Builder loggings(List<RulesetRuleLogging> loggings) {
-            this.loggings = Objects.requireNonNull(loggings);
+        public Builder logging(RulesetRuleLogging logging) {
+            this.logging = Objects.requireNonNull(logging);
             return this;
-        }
-        public Builder loggings(RulesetRuleLogging... loggings) {
-            return loggings(List.of(loggings));
         }
         @CustomType.Setter
-        public Builder ratelimits(List<RulesetRuleRatelimit> ratelimits) {
-            this.ratelimits = Objects.requireNonNull(ratelimits);
+        public Builder ratelimit(RulesetRuleRatelimit ratelimit) {
+            this.ratelimit = Objects.requireNonNull(ratelimit);
             return this;
-        }
-        public Builder ratelimits(RulesetRuleRatelimit... ratelimits) {
-            return ratelimits(List.of(ratelimits));
         }
         @CustomType.Setter
         public Builder ref(@Nullable String ref) {
@@ -277,12 +267,12 @@ public final class RulesetRule {
             o.actionParameters = actionParameters;
             o.description = description;
             o.enabled = enabled;
-            o.exposedCredentialChecks = exposedCredentialChecks;
+            o.exposedCredentialCheck = exposedCredentialCheck;
             o.expression = expression;
             o.id = id;
             o.lastUpdated = lastUpdated;
-            o.loggings = loggings;
-            o.ratelimits = ratelimits;
+            o.logging = logging;
+            o.ratelimit = ratelimit;
             o.ref = ref;
             o.version = version;
             return o;

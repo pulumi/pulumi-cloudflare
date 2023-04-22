@@ -18,13 +18,8 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("cacheDeceptionArmor", required: true)]
         public Input<bool> CacheDeceptionArmor { get; set; } = null!;
 
-        [Input("customKeys", required: true)]
-        private InputList<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyArgs>? _customKeys;
-        public InputList<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyArgs> CustomKeys
-        {
-            get => _customKeys ?? (_customKeys = new InputList<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyArgs>());
-            set => _customKeys = value;
-        }
+        [Input("customKey", required: true)]
+        public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyArgs> CustomKey { get; set; } = null!;
 
         [Input("ignoreQueryStringsOrder", required: true)]
         public Input<bool> IgnoreQueryStringsOrder { get; set; } = null!;

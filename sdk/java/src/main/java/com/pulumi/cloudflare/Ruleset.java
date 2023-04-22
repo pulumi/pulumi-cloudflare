@@ -29,11 +29,25 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.RulesetArgs;
  * import com.pulumi.cloudflare.inputs.RulesetRuleArgs;
  * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersOverridesArgs;
  * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriPathArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriQueryArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleRatelimitArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersOriginArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersBrowserTtlArgs;
  * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyHostArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyUserArgs;
  * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersEdgeTtlArgs;
  * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersServeStaleArgs;
  * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromListArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromValueArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromValueTargetUrlArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -86,14 +100,14 @@ import javax.annotation.Nullable;
  *                 .action(&#34;execute&#34;)
  *                 .actionParameters(RulesetRuleActionParametersArgs.builder()
  *                     .id(&#34;efb7b8c949ac4650a09736fc376e9aee&#34;)
- *                     .overrides(RulesetRuleActionParametersOverrideArgs.builder()
+ *                     .overrides(RulesetRuleActionParametersOverridesArgs.builder()
  *                         .categories(                        
- *                             RulesetRuleActionParametersOverrideCategoryArgs.builder()
+ *                             RulesetRuleActionParametersOverridesCategoryArgs.builder()
  *                                 .action(&#34;block&#34;)
  *                                 .category(&#34;wordpress&#34;)
  *                                 .status(&#34;enabled&#34;)
  *                                 .build(),
- *                             RulesetRuleActionParametersOverrideCategoryArgs.builder()
+ *                             RulesetRuleActionParametersOverridesCategoryArgs.builder()
  *                                 .action(&#34;block&#34;)
  *                                 .category(&#34;joomla&#34;)
  *                                 .status(&#34;enabled&#34;)
@@ -116,7 +130,9 @@ import javax.annotation.Nullable;
  *                 .action(&#34;rewrite&#34;)
  *                 .actionParameters(RulesetRuleActionParametersArgs.builder()
  *                     .uri(RulesetRuleActionParametersUriArgs.builder()
- *                         .path(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                         .path(RulesetRuleActionParametersUriPathArgs.builder()
+ *                             .value(&#34;/my-new-route&#34;)
+ *                             .build())
  *                         .build())
  *                     .build())
  *                 .description(&#34;example URI path transform rule&#34;)
@@ -135,7 +151,9 @@ import javax.annotation.Nullable;
  *                 .action(&#34;rewrite&#34;)
  *                 .actionParameters(RulesetRuleActionParametersArgs.builder()
  *                     .uri(RulesetRuleActionParametersUriArgs.builder()
- *                         .query(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                         .query(RulesetRuleActionParametersUriQueryArgs.builder()
+ *                             .value(&#34;old=new_again&#34;)
+ *                             .build())
  *                         .build())
  *                     .build())
  *                 .description(&#34;URI transformation query example&#34;)
@@ -186,7 +204,7 @@ import javax.annotation.Nullable;
  *                 .description(&#34;rate limit for API&#34;)
  *                 .enabled(true)
  *                 .expression(&#34;(http.request.uri.path matches \&#34;^/api/\&#34;)&#34;)
- *                 .ratelimits(RulesetRuleRatelimitArgs.builder()
+ *                 .ratelimit(RulesetRuleRatelimitArgs.builder()
  *                     .characteristics(                    
  *                         &#34;cf.colo.id&#34;,
  *                         &#34;ip.src&#34;)
@@ -207,7 +225,10 @@ import javax.annotation.Nullable;
  *                 .action(&#34;route&#34;)
  *                 .actionParameters(RulesetRuleActionParametersArgs.builder()
  *                     .hostHeader(&#34;some.host&#34;)
- *                     .origin(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                     .origin(RulesetRuleActionParametersOriginArgs.builder()
+ *                         .host(&#34;some.host&#34;)
+ *                         .port(80)
+ *                         .build())
  *                     .build())
  *                 .description(&#34;change origin to some.host&#34;)
  *                 .enabled(true)
@@ -252,10 +273,40 @@ import javax.annotation.Nullable;
  *             .rules(RulesetRuleArgs.builder()
  *                 .action(&#34;set_cache_settings&#34;)
  *                 .actionParameters(RulesetRuleActionParametersArgs.builder()
- *                     .browserTtl(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                     .browserTtl(RulesetRuleActionParametersBrowserTtlArgs.builder()
+ *                         .mode(&#34;respect_origin&#34;)
+ *                         .build())
  *                     .cacheKey(RulesetRuleActionParametersCacheKeyArgs.builder()
  *                         .cacheDeceptionArmor(true)
- *                         .customKey(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                         .customKey(RulesetRuleActionParametersCacheKeyCustomKeyArgs.builder()
+ *                             .cookie(RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs.builder()
+ *                                 .checkPresence(                                
+ *                                     &#34;cabc_t&#34;,
+ *                                     &#34;cdef_t&#34;)
+ *                                 .include(                                
+ *                                     &#34;cabc&#34;,
+ *                                     &#34;cdef&#34;)
+ *                                 .build())
+ *                             .header(RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs.builder()
+ *                                 .checkPresence(                                
+ *                                     &#34;habc_t&#34;,
+ *                                     &#34;hdef_t&#34;)
+ *                                 .excludeOrigin(true)
+ *                                 .include(                                
+ *                                     &#34;habc&#34;,
+ *                                     &#34;hdef&#34;)
+ *                                 .build())
+ *                             .host(RulesetRuleActionParametersCacheKeyCustomKeyHostArgs.builder()
+ *                                 .resolved(true)
+ *                                 .build())
+ *                             .queryString(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs.builder()
+ *                                 .exclude(&#34;*&#34;)
+ *                                 .build())
+ *                             .user(RulesetRuleActionParametersCacheKeyCustomKeyUserArgs.builder()
+ *                                 .deviceType(true)
+ *                                 .geo(false)
+ *                                 .build())
+ *                             .build())
  *                         .ignoreQueryStringsOrder(false)
  *                         .build())
  *                     .edgeTtl(RulesetRuleActionParametersEdgeTtlArgs.builder()
@@ -306,7 +357,13 @@ import javax.annotation.Nullable;
  *             .rules(RulesetRuleArgs.builder()
  *                 .action(&#34;redirect&#34;)
  *                 .actionParameters(RulesetRuleActionParametersArgs.builder()
- *                     .fromValue(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                     .fromValue(RulesetRuleActionParametersFromValueArgs.builder()
+ *                         .preserveQueryString(true)
+ *                         .statusCode(301)
+ *                         .targetUrl(RulesetRuleActionParametersFromValueTargetUrlArgs.builder()
+ *                             .value(&#34;some_host.com&#34;)
+ *                             .build())
+ *                         .build())
  *                     .build())
  *                 .description(&#34;Apply redirect from value&#34;)
  *                 .enabled(true)

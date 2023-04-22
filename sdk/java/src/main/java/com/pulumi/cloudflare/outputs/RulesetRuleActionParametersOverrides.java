@@ -3,8 +3,8 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersOverrideCategory;
-import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersOverrideRule;
+import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersOverridesCategory;
+import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersOverridesRule;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
@@ -12,22 +12,22 @@ import java.util.List;
 import java.util.Objects;
 
 @CustomType
-public final class RulesetRuleActionParametersOverride {
+public final class RulesetRuleActionParametersOverrides {
     private String action;
-    private List<RulesetRuleActionParametersOverrideCategory> categories;
+    private List<RulesetRuleActionParametersOverridesCategory> categories;
     private Boolean enabled;
     /**
      * @return List of rules to apply to the ruleset.
      * 
      */
-    private List<RulesetRuleActionParametersOverrideRule> rules;
+    private List<RulesetRuleActionParametersOverridesRule> rules;
     private String sensitivityLevel;
 
-    private RulesetRuleActionParametersOverride() {}
+    private RulesetRuleActionParametersOverrides() {}
     public String action() {
         return this.action;
     }
-    public List<RulesetRuleActionParametersOverrideCategory> categories() {
+    public List<RulesetRuleActionParametersOverridesCategory> categories() {
         return this.categories;
     }
     public Boolean enabled() {
@@ -37,7 +37,7 @@ public final class RulesetRuleActionParametersOverride {
      * @return List of rules to apply to the ruleset.
      * 
      */
-    public List<RulesetRuleActionParametersOverrideRule> rules() {
+    public List<RulesetRuleActionParametersOverridesRule> rules() {
         return this.rules;
     }
     public String sensitivityLevel() {
@@ -48,18 +48,18 @@ public final class RulesetRuleActionParametersOverride {
         return new Builder();
     }
 
-    public static Builder builder(RulesetRuleActionParametersOverride defaults) {
+    public static Builder builder(RulesetRuleActionParametersOverrides defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
     public static final class Builder {
         private String action;
-        private List<RulesetRuleActionParametersOverrideCategory> categories;
+        private List<RulesetRuleActionParametersOverridesCategory> categories;
         private Boolean enabled;
-        private List<RulesetRuleActionParametersOverrideRule> rules;
+        private List<RulesetRuleActionParametersOverridesRule> rules;
         private String sensitivityLevel;
         public Builder() {}
-        public Builder(RulesetRuleActionParametersOverride defaults) {
+        public Builder(RulesetRuleActionParametersOverrides defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
     	      this.categories = defaults.categories;
@@ -74,11 +74,11 @@ public final class RulesetRuleActionParametersOverride {
             return this;
         }
         @CustomType.Setter
-        public Builder categories(List<RulesetRuleActionParametersOverrideCategory> categories) {
+        public Builder categories(List<RulesetRuleActionParametersOverridesCategory> categories) {
             this.categories = Objects.requireNonNull(categories);
             return this;
         }
-        public Builder categories(RulesetRuleActionParametersOverrideCategory... categories) {
+        public Builder categories(RulesetRuleActionParametersOverridesCategory... categories) {
             return categories(List.of(categories));
         }
         @CustomType.Setter
@@ -87,11 +87,11 @@ public final class RulesetRuleActionParametersOverride {
             return this;
         }
         @CustomType.Setter
-        public Builder rules(List<RulesetRuleActionParametersOverrideRule> rules) {
+        public Builder rules(List<RulesetRuleActionParametersOverridesRule> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
         }
-        public Builder rules(RulesetRuleActionParametersOverrideRule... rules) {
+        public Builder rules(RulesetRuleActionParametersOverridesRule... rules) {
             return rules(List.of(rules));
         }
         @CustomType.Setter
@@ -99,8 +99,8 @@ public final class RulesetRuleActionParametersOverride {
             this.sensitivityLevel = Objects.requireNonNull(sensitivityLevel);
             return this;
         }
-        public RulesetRuleActionParametersOverride build() {
-            final var o = new RulesetRuleActionParametersOverride();
+        public RulesetRuleActionParametersOverrides build() {
+            final var o = new RulesetRuleActionParametersOverrides();
             o.action = action;
             o.categories = categories;
             o.enabled = enabled;

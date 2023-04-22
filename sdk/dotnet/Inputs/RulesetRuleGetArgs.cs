@@ -36,17 +36,11 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        [Input("exposedCredentialChecks", required: true)]
-        private InputList<Inputs.RulesetRuleExposedCredentialCheckGetArgs>? _exposedCredentialChecks;
-
         /// <summary>
         /// List of parameters that configure exposed credential checks.
         /// </summary>
-        public InputList<Inputs.RulesetRuleExposedCredentialCheckGetArgs> ExposedCredentialChecks
-        {
-            get => _exposedCredentialChecks ?? (_exposedCredentialChecks = new InputList<Inputs.RulesetRuleExposedCredentialCheckGetArgs>());
-            set => _exposedCredentialChecks = value;
-        }
+        [Input("exposedCredentialCheck", required: true)]
+        public Input<Inputs.RulesetRuleExposedCredentialCheckGetArgs> ExposedCredentialCheck { get; set; } = null!;
 
         /// <summary>
         /// Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
@@ -66,29 +60,17 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("lastUpdated")]
         public Input<string>? LastUpdated { get; set; }
 
-        [Input("loggings", required: true)]
-        private InputList<Inputs.RulesetRuleLoggingGetArgs>? _loggings;
-
         /// <summary>
         /// List parameters to configure how the rule generates logs.
         /// </summary>
-        public InputList<Inputs.RulesetRuleLoggingGetArgs> Loggings
-        {
-            get => _loggings ?? (_loggings = new InputList<Inputs.RulesetRuleLoggingGetArgs>());
-            set => _loggings = value;
-        }
-
-        [Input("ratelimits", required: true)]
-        private InputList<Inputs.RulesetRuleRatelimitGetArgs>? _ratelimits;
+        [Input("logging", required: true)]
+        public Input<Inputs.RulesetRuleLoggingGetArgs> Logging { get; set; } = null!;
 
         /// <summary>
         /// List of parameters that configure HTTP rate limiting behaviour.
         /// </summary>
-        public InputList<Inputs.RulesetRuleRatelimitGetArgs> Ratelimits
-        {
-            get => _ratelimits ?? (_ratelimits = new InputList<Inputs.RulesetRuleRatelimitGetArgs>());
-            set => _ratelimits = value;
-        }
+        [Input("ratelimit", required: true)]
+        public Input<Inputs.RulesetRuleRatelimitGetArgs> Ratelimit { get; set; } = null!;
 
         /// <summary>
         /// Rule reference.
