@@ -12,11 +12,6 @@ jobs:
     - name: Call upgrade provider action
       uses: pulumi/pulumi-upgrade-provider-action@v0.0.4
       with:
-        branch: master
-        gh-token: ${{ secrets.PULUMI_BOT_TOKEN }}
-        git-email: bot@pulumi.com
-        git-username: Pulumi bot
-        provider-repo: pulumi-cloudflare
         slack-channel: provider-upgrade-status
         slack-webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
 name: Upgrade provider
