@@ -78,11 +78,6 @@ cleanup:
 	rm -r $(WORKING_DIR)/bin
 	rm -f provider/cmd/$(PROVIDER)/schema.go
 
-finish-patch:
-	@if [ ! -z "$$(cd upstream && git status --porcelain)" ]; then echo "Please commit your changes before finishing the patch"; exit 1; fi
-	@cd upstream && \
-		git format-patch HEAD~ -o ../patches --start-number $$(($$(ls ../patches | wc -l | xargs)+1))
-
 help:
 	@grep '^[^.#]\+:\s\+.*#' Makefile | \
 	sed "s/\(.\+\):\s*\(.*\) #\s*\(.*\)/`printf "\033[93m"`\1`printf "\033[0m"`	\3 [\2]/" | \
@@ -106,29 +101,6 @@ lint_provider: provider
 provider: tfgen install_plugins
 	(cd provider && go build $(PULUMI_PROVIDER_BUILD_PARALLELISM) -o $(WORKING_DIR)/bin/$(PROVIDER) -ldflags "-X $(PROJECT)/$(VERSION_PATH)=$(VERSION)" $(PROJECT)/$(PROVIDER_PATH)/cmd/$(PROVIDER))
 
-start-patch: upstream
-ifeq ("$(wildcard upstream)","")
-	@echo "No upstream found, so upstream can't be patched"
-	@exit 1
-else
-	# To add an additional patch:
-	#
-	#	1. Run this command (`make start-patch`).
-	#
-	#	2. Edit the `upstream` repo, making whatever changes you want to appear in the new
-	#	patch. It's fine to edit multiple files.
-	#
-	#	3. Commit your changes. The slugified first line of your commit description will
-	#	be used to generate the patch file name. Only the diff from the latest commit will
-	#	end up in the final patch.
-	#
-	#	4. Run `make finish-patch`.
-	#
-	# It is safe to run `make start-patch` as many times as you want, but any changes
-	# might be reverted until `make finish-patch` is run.
-	@cd upstream && git commit --quiet -m "existing patches"
-endif
-
 test:
 	cd examples && go test -v -tags=all -parallel $(TESTPARALLELISM) -timeout 2h
 
@@ -138,25 +110,17 @@ tfgen: install_plugins upstream
 	(cd provider && VERSION=$(VERSION) go generate cmd/$(PROVIDER)/main.go)
 
 upstream:
-ifeq ("$(wildcard upstream)","")
-	# upstream doesn't exist, so skip
-else ifeq ("$(wildcard patches/*.patch)","")
-	# upstream exists, but patches don't exist. This is probably an error.
-	@echo "No patches found within the patch operation"
-	@echo "patches were expected because upstream exists"
-	@exit 1
-else
-	# Checkout the submodule at the pinned commit.
-	# `--force`: If the submodule is at a different commit, move it to the pinned commit.
-	# `--init`: If the submodule is not initialized, initialize it.
-	git submodule update --force --init
-	# Iterating over the patches folder in sorted order,
-	# apply the patch using a 3-way merge strategy. This mirrors the default behavior of `git merge`
-	cd upstream && \
-		for patch in $(sort $(wildcard patches/*.patch)); do git apply --3way ../$$patch || exit 1; done
+ifneq ("$(wildcard upstream)","")
+	@$(SHELL) ./scripts/upstream.sh "$@" apply
 endif
+
+upstream.finalize:
+	@$(SHELL) ./scripts/upstream.sh "$@" end_rebase
+
+upstream.rebase:
+	@$(SHELL) ./scripts/upstream.sh "$@" start_rebase
 
 bin/pulumi-java-gen:
 	$(shell pulumictl download-binary -n pulumi-language-java -v $(JAVA_GEN_VERSION) -r pulumi/pulumi-java)
 
-.PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup finish-patch help install_dotnet_sdk install_nodejs_sdk install_plugins lint_provider provider start-patch test tfgen upstream
+.PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_plugins lint_provider provider test tfgen upstream upstream.finalize upstream.rebase
