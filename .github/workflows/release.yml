@@ -317,7 +317,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Publish SDKs
-      uses: pulumi/pulumi-package-publisher@v0.0.5
+      uses: pulumi/pulumi-package-publisher@v0.0.6
+    - env:
+        SLACK_CHANNEL: provider-upgrade-publish-status
+        SLACK_COLOR: "#FF0000"
+        SLACK_ICON_EMOJI: ":taco:"
+        SLACK_MESSAGE: " Publish failed :x:"
+        SLACK_TITLE: ${{ github.event.repository.name }} upgrade result
+        SLACK_USERNAME: provider-bot
+        SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK_URL }}
+      if: failure()
+      name: Send Publish Failure To Slack
+      uses: rtCamp/action-slack-notify@v2
   tag_sdk:
     name: tag_sdk
     needs: publish_sdk
