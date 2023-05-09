@@ -79,11 +79,12 @@ start_rebase() {
   cd upstream && git fetch
 
   if [ -z "$TO" ]; then
-     echo '$TO not set, assuming TO is the upstream SHAH currently committed.'
+     echo '$TO not set, assuming TO is the upstream SHA currently committed.'
   else
      git checkout "$TO"
   fi
 
+  git branch -f local
   git checkout -B pulumi-patch ${FROM}
   git branch --set-upstream-to=local pulumi-patch
 

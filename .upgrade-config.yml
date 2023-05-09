@@ -2,4 +2,5 @@
 
 ---
 upstream-provider-name: terraform-provider-cloudflare
+pulumi-infer-version: true
 
