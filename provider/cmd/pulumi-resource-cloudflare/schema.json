@@ -3960,24 +3960,16 @@
             },
             "type": "object",
             "required": [
-                "actionParameters",
-                "exposedCredentialCheck",
-                "expression",
-                "logging",
-                "ratelimit"
+                "expression"
             ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "actionParameters",
                         "description",
                         "enabled",
-                        "exposedCredentialCheck",
                         "expression",
                         "id",
                         "lastUpdated",
-                        "logging",
-                        "ratelimit",
                         "version"
                     ]
                 }
@@ -3988,11 +3980,8 @@
                 "automaticHttpsRewrites": {
                     "type": "boolean"
                 },
-                "autominifies": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersAutominify:RulesetRuleActionParametersAutominify"
-                    }
+                "autominify": {
+                    "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersAutominify:RulesetRuleActionParametersAutominify"
                 },
                 "bic": {
                     "type": "boolean"
@@ -4100,16 +4089,13 @@
                 "respectStrongEtags": {
                     "type": "boolean"
                 },
+                "response": {
+                    "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersResponse:RulesetRuleActionParametersResponse"
+                },
                 "responseFields": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
-                },
-                "responses": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersResponse:RulesetRuleActionParametersResponse"
                     }
                 },
                 "rocketLoader": {
@@ -4160,55 +4146,13 @@
                 }
             },
             "type": "object",
-            "required": [
-                "automaticHttpsRewrites",
-                "autominifies",
-                "bic",
-                "browserTtl",
-                "cache",
-                "cacheKey",
-                "content",
-                "contentType",
-                "cookieFields",
-                "disableApps",
-                "disableRailgun",
-                "disableZaraz",
-                "edgeTtl",
-                "emailObfuscation",
-                "fromList",
-                "fromValue",
-                "headers",
-                "hostHeader",
-                "hotlinkProtection",
-                "id",
-                "increment",
-                "matchedData",
-                "mirage",
-                "opportunisticEncryption",
-                "origin",
-                "originErrorPagePassthru",
-                "overrides",
-                "phases",
-                "polish",
-                "products",
-                "requestFields",
-                "respectStrongEtags",
-                "responses",
-                "responseFields",
-                "rocketLoader",
-                "rules",
-                "ruleset",
-                "rulesets",
-                "securityLevel",
-                "serveStale",
-                "serverSideExcludes",
-                "sni",
-                "ssl",
-                "statusCode",
-                "sxg",
-                "uri",
-                "version"
-            ]
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "version"
+                    ]
+                }
+            }
         },
         "cloudflare:index/RulesetRuleActionParametersAutominify:RulesetRuleActionParametersAutominify": {
             "properties": {
@@ -4222,12 +4166,7 @@
                     "type": "boolean"
                 }
             },
-            "type": "object",
-            "required": [
-                "css",
-                "html",
-                "js"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersBrowserTtl:RulesetRuleActionParametersBrowserTtl": {
             "properties": {
@@ -4238,11 +4177,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "required": [
-                "default",
-                "mode"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersCacheKey:RulesetRuleActionParametersCacheKey": {
             "properties": {
@@ -4259,13 +4194,7 @@
                     "type": "boolean"
                 }
             },
-            "type": "object",
-            "required": [
-                "cacheByDeviceType",
-                "cacheDeceptionArmor",
-                "customKey",
-                "ignoreQueryStringsOrder"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKey:RulesetRuleActionParametersCacheKeyCustomKey": {
             "properties": {
@@ -4285,14 +4214,7 @@
                     "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyUser:RulesetRuleActionParametersCacheKeyCustomKeyUser"
                 }
             },
-            "type": "object",
-            "required": [
-                "cookie",
-                "header",
-                "host",
-                "queryString",
-                "user"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyCookie:RulesetRuleActionParametersCacheKeyCustomKeyCookie": {
             "properties": {
@@ -4309,11 +4231,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "checkPresences",
-                "includes"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyHeader:RulesetRuleActionParametersCacheKeyCustomKeyHeader": {
             "properties": {
@@ -4333,12 +4251,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "checkPresences",
-                "excludeOrigin",
-                "includes"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyHost:RulesetRuleActionParametersCacheKeyCustomKeyHost": {
             "properties": {
@@ -4346,10 +4259,7 @@
                     "type": "boolean"
                 }
             },
-            "type": "object",
-            "required": [
-                "resolved"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyQueryString:RulesetRuleActionParametersCacheKeyCustomKeyQueryString": {
             "properties": {
@@ -4366,11 +4276,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "excludes",
-                "includes"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyUser:RulesetRuleActionParametersCacheKeyCustomKeyUser": {
             "properties": {
@@ -4384,12 +4290,7 @@
                     "type": "boolean"
                 }
             },
-            "type": "object",
-            "required": [
-                "deviceType",
-                "geo",
-                "lang"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersEdgeTtl:RulesetRuleActionParametersEdgeTtl": {
             "properties": {
@@ -4406,34 +4307,21 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "default",
-                "mode",
-                "statusCodeTtls"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersEdgeTtlStatusCodeTtl:RulesetRuleActionParametersEdgeTtlStatusCodeTtl": {
             "properties": {
                 "statusCode": {
                     "type": "integer"
                 },
-                "statusCodeRanges": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange:RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange"
-                    }
+                "statusCodeRange": {
+                    "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange:RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange"
                 },
                 "value": {
                     "type": "integer"
                 }
             },
-            "type": "object",
-            "required": [
-                "statusCode",
-                "statusCodeRanges",
-                "value"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange:RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange": {
             "properties": {
@@ -4444,11 +4332,7 @@
                     "type": "integer"
                 }
             },
-            "type": "object",
-            "required": [
-                "from",
-                "to"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersFromList:RulesetRuleActionParametersFromList": {
             "properties": {
@@ -4460,11 +4344,7 @@
                     "description": "Name of the ruleset.\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "key",
-                "name"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersFromValue:RulesetRuleActionParametersFromValue": {
             "properties": {
@@ -4478,12 +4358,7 @@
                     "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersFromValueTargetUrl:RulesetRuleActionParametersFromValueTargetUrl"
                 }
             },
-            "type": "object",
-            "required": [
-                "preserveQueryString",
-                "statusCode",
-                "targetUrl"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersFromValueTargetUrl:RulesetRuleActionParametersFromValueTargetUrl": {
             "properties": {
@@ -4494,11 +4369,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "required": [
-                "expression",
-                "value"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersHeader:RulesetRuleActionParametersHeader": {
             "properties": {
@@ -4516,13 +4387,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "required": [
-                "expression",
-                "name",
-                "operation",
-                "value"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersMatchedData:RulesetRuleActionParametersMatchedData": {
             "properties": {
@@ -4530,10 +4395,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "required": [
-                "publicKey"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersOrigin:RulesetRuleActionParametersOrigin": {
             "properties": {
@@ -4544,11 +4406,7 @@
                     "type": "integer"
                 }
             },
-            "type": "object",
-            "required": [
-                "host",
-                "port"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersOverrides:RulesetRuleActionParametersOverrides": {
             "properties": {
@@ -4575,14 +4433,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "required": [
-                "action",
-                "categories",
-                "enabled",
-                "rules",
-                "sensitivityLevel"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersOverridesCategory:RulesetRuleActionParametersOverridesCategory": {
             "properties": {
@@ -4596,12 +4447,7 @@
                     "type": "boolean"
                 }
             },
-            "type": "object",
-            "required": [
-                "action",
-                "category",
-                "enabled"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersOverridesRule:RulesetRuleActionParametersOverridesRule": {
             "properties": {
@@ -4624,14 +4470,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "required": [
-                "action",
-                "enabled",
-                "id",
-                "scoreThreshold",
-                "sensitivityLevel"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersResponse:RulesetRuleActionParametersResponse": {
             "properties": {
@@ -4645,12 +4484,7 @@
                     "type": "integer"
                 }
             },
-            "type": "object",
-            "required": [
-                "content",
-                "contentType",
-                "statusCode"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersServeStale:RulesetRuleActionParametersServeStale": {
             "properties": {
@@ -4658,10 +4492,7 @@
                     "type": "boolean"
                 }
             },
-            "type": "object",
-            "required": [
-                "disableStaleWhileUpdating"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersSni:RulesetRuleActionParametersSni": {
             "properties": {
@@ -4669,10 +4500,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "required": [
-                "value"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersUri:RulesetRuleActionParametersUri": {
             "properties": {
@@ -4686,12 +4514,7 @@
                     "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersUriQuery:RulesetRuleActionParametersUriQuery"
                 }
             },
-            "type": "object",
-            "required": [
-                "origin",
-                "path",
-                "query"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersUriPath:RulesetRuleActionParametersUriPath": {
             "properties": {
@@ -4702,11 +4525,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "required": [
-                "expression",
-                "value"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleActionParametersUriQuery:RulesetRuleActionParametersUriQuery": {
             "properties": {
@@ -4717,11 +4536,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "required": [
-                "expression",
-                "value"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleExposedCredentialCheck:RulesetRuleExposedCredentialCheck": {
             "properties": {
@@ -4732,11 +4547,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "required": [
-                "passwordExpression",
-                "usernameExpression"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleLogging:RulesetRuleLogging": {
             "properties": {
@@ -4744,10 +4555,7 @@
                     "type": "boolean"
                 }
             },
-            "type": "object",
-            "required": [
-                "enabled"
-            ]
+            "type": "object"
         },
         "cloudflare:index/RulesetRuleRatelimit:RulesetRuleRatelimit": {
             "properties": {
@@ -4779,17 +4587,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "required": [
-                "characteristics",
-                "countingExpression",
-                "mitigationTimeout",
-                "period",
-                "requestsPerPeriod",
-                "requestsToOrigin",
-                "scorePerPeriod",
-                "scoreResponseHeaderName"
-            ]
+            "type": "object"
         },
         "cloudflare:index/SpectrumApplicationDns:SpectrumApplicationDns": {
             "properties": {
@@ -14975,7 +14773,7 @@
             }
         },
         "cloudflare:index/ruleset:Ruleset": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.Ruleset;\nimport com.pulumi.cloudflare.RulesetArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersOverridesArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriPathArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriQueryArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleRatelimitArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersOriginArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersBrowserTtlArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyHostArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyUserArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersEdgeTtlArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersServeStaleArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromListArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromValueArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromValueTargetUrlArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var magicTransitExample = new Ruleset(\"magicTransitExample\", RulesetArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .description(\"example magic transit ruleset description\")\n            .kind(\"root\")\n            .name(\"account magic transit\")\n            .phase(\"magic_transit\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"allow\")\n                .description(\"Allow TCP Ephemeral Ports\")\n                .expression(\"tcp.dstport in { 32768..65535 }\")\n                .build())\n            .build());\n\n        var zoneLevelManagedWaf = new Ruleset(\"zoneLevelManagedWaf\", RulesetArgs.builder()        \n            .description(\"managed WAF ruleset description\")\n            .kind(\"zone\")\n            .name(\"managed WAF\")\n            .phase(\"http_request_firewall_managed\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"execute\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .id(\"efb7b8c949ac4650a09736fc376e9aee\")\n                    .build())\n                .description(\"Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\")\n                .enabled(true)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var zoneLevelManagedWafWithCategoryBasedOverrides = new Ruleset(\"zoneLevelManagedWafWithCategoryBasedOverrides\", RulesetArgs.builder()        \n            .description(\"managed WAF with tag-based overrides ruleset description\")\n            .kind(\"zone\")\n            .name(\"managed WAF with tag-based overrides\")\n            .phase(\"http_request_firewall_managed\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"execute\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .id(\"efb7b8c949ac4650a09736fc376e9aee\")\n                    .overrides(RulesetRuleActionParametersOverridesArgs.builder()\n                        .categories(                        \n                            RulesetRuleActionParametersOverridesCategoryArgs.builder()\n                                .action(\"block\")\n                                .category(\"wordpress\")\n                                .status(\"enabled\")\n                                .build(),\n                            RulesetRuleActionParametersOverridesCategoryArgs.builder()\n                                .action(\"block\")\n                                .category(\"joomla\")\n                                .status(\"enabled\")\n                                .build())\n                        .build())\n                    .build())\n                .description(\"overrides to only enable wordpress rules to block\")\n                .enabled(false)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var transformUriRulePath = new Ruleset(\"transformUriRulePath\", RulesetArgs.builder()        \n            .description(\"change the URI path to a new static path\")\n            .kind(\"zone\")\n            .name(\"transform rule for URI path\")\n            .phase(\"http_request_transform\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"rewrite\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .uri(RulesetRuleActionParametersUriArgs.builder()\n                        .path(RulesetRuleActionParametersUriPathArgs.builder()\n                            .value(\"/my-new-route\")\n                            .build())\n                        .build())\n                    .build())\n                .description(\"example URI path transform rule\")\n                .enabled(true)\n                .expression(\"(http.host eq \\\"example.com\\\" and http.request.uri.path eq \\\"/old-path\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var transformUriRuleQuery = new Ruleset(\"transformUriRuleQuery\", RulesetArgs.builder()        \n            .description(\"change the URI query to a new static query\")\n            .kind(\"zone\")\n            .name(\"transform rule for URI query parameter\")\n            .phase(\"http_request_transform\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"rewrite\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .uri(RulesetRuleActionParametersUriArgs.builder()\n                        .query(RulesetRuleActionParametersUriQueryArgs.builder()\n                            .value(\"old=new_again\")\n                            .build())\n                        .build())\n                    .build())\n                .description(\"URI transformation query example\")\n                .enabled(true)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var transformUriHttpHeaders = new Ruleset(\"transformUriHttpHeaders\", RulesetArgs.builder()        \n            .description(\"modify HTTP headers before reaching origin\")\n            .kind(\"zone\")\n            .name(\"transform rule for HTTP headers\")\n            .phase(\"http_request_late_transform\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"rewrite\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .headers(                    \n                        RulesetRuleActionParametersHeaderArgs.builder()\n                            .name(\"example-http-header-1\")\n                            .operation(\"set\")\n                            .value(\"my-http-header-value-1\")\n                            .build(),\n                        RulesetRuleActionParametersHeaderArgs.builder()\n                            .expression(\"cf.zone.name\")\n                            .name(\"example-http-header-2\")\n                            .operation(\"set\")\n                            .build(),\n                        RulesetRuleActionParametersHeaderArgs.builder()\n                            .name(\"example-http-header-3-to-remove\")\n                            .operation(\"remove\")\n                            .build())\n                    .build())\n                .description(\"example request header transform rule\")\n                .enabled(false)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var rateLimitingExample = new Ruleset(\"rateLimitingExample\", RulesetArgs.builder()        \n            .description(\"apply HTTP rate limiting for a route\")\n            .kind(\"zone\")\n            .name(\"restrict API requests count\")\n            .phase(\"http_ratelimit\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"block\")\n                .description(\"rate limit for API\")\n                .enabled(true)\n                .expression(\"(http.request.uri.path matches \\\"^/api/\\\")\")\n                .ratelimit(RulesetRuleRatelimitArgs.builder()\n                    .characteristics(                    \n                        \"cf.colo.id\",\n                        \"ip.src\")\n                    .mitigationTimeout(600)\n                    .period(60)\n                    .requestsPerPeriod(100)\n                    .build())\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var httpOriginExample = new Ruleset(\"httpOriginExample\", RulesetArgs.builder()        \n            .description(\"Change origin for a route\")\n            .kind(\"zone\")\n            .name(\"Change to some origin\")\n            .phase(\"http_request_origin\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"route\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .hostHeader(\"some.host\")\n                    .origin(RulesetRuleActionParametersOriginArgs.builder()\n                        .host(\"some.host\")\n                        .port(80)\n                        .build())\n                    .build())\n                .description(\"change origin to some.host\")\n                .enabled(true)\n                .expression(\"(http.request.uri.path matches \\\"^/api/\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var customFieldsLoggingExample = new Ruleset(\"customFieldsLoggingExample\", RulesetArgs.builder()        \n            .description(\"add custom fields to logging\")\n            .kind(\"zone\")\n            .name(\"log custom fields\")\n            .phase(\"http_log_custom_fields\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"log_custom_field\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .cookieFields(                    \n                        \"__ga\",\n                        \"accountNumber\",\n                        \"__cfruid\")\n                    .requestFields(                    \n                        \"content-type\",\n                        \"x-forwarded-for\",\n                        \"host\")\n                    .responseFields(                    \n                        \"server\",\n                        \"content-type\",\n                        \"allow\")\n                    .build())\n                .description(\"log custom fields rule\")\n                .enabled(true)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var cacheSettingsExample = new Ruleset(\"cacheSettingsExample\", RulesetArgs.builder()        \n            .description(\"set cache settings for the request\")\n            .kind(\"zone\")\n            .name(\"set cache settings\")\n            .phase(\"http_request_cache_settings\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"set_cache_settings\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .browserTtl(RulesetRuleActionParametersBrowserTtlArgs.builder()\n                        .mode(\"respect_origin\")\n                        .build())\n                    .cacheKey(RulesetRuleActionParametersCacheKeyArgs.builder()\n                        .cacheDeceptionArmor(true)\n                        .customKey(RulesetRuleActionParametersCacheKeyCustomKeyArgs.builder()\n                            .cookie(RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs.builder()\n                                .checkPresence(                                \n                                    \"cabc_t\",\n                                    \"cdef_t\")\n                                .include(                                \n                                    \"cabc\",\n                                    \"cdef\")\n                                .build())\n                            .header(RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs.builder()\n                                .checkPresence(                                \n                                    \"habc_t\",\n                                    \"hdef_t\")\n                                .excludeOrigin(true)\n                                .include(                                \n                                    \"habc\",\n                                    \"hdef\")\n                                .build())\n                            .host(RulesetRuleActionParametersCacheKeyCustomKeyHostArgs.builder()\n                                .resolved(true)\n                                .build())\n                            .queryString(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs.builder()\n                                .exclude(\"*\")\n                                .build())\n                            .user(RulesetRuleActionParametersCacheKeyCustomKeyUserArgs.builder()\n                                .deviceType(true)\n                                .geo(false)\n                                .build())\n                            .build())\n                        .ignoreQueryStringsOrder(false)\n                        .build())\n                    .edgeTtl(RulesetRuleActionParametersEdgeTtlArgs.builder()\n                        .default_(60)\n                        .mode(\"override_origin\")\n                        .statusCodeTtl(                        \n                            %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                            %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                        .build())\n                    .originErrorPagePassthru(false)\n                    .respectStrongEtags(true)\n                    .serveStale(RulesetRuleActionParametersServeStaleArgs.builder()\n                        .disableStaleWhileUpdating(true)\n                        .build())\n                    .build())\n                .description(\"set cache settings rule\")\n                .enabled(true)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var redirectFromListExample = new Ruleset(\"redirectFromListExample\", RulesetArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .description(\"Redirect ruleset\")\n            .kind(\"root\")\n            .name(\"redirects\")\n            .phase(\"http_request_redirect\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"redirect\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .fromList(RulesetRuleActionParametersFromListArgs.builder()\n                        .key(\"http.request.full_uri\")\n                        .name(\"redirect_list\")\n                        .build())\n                    .build())\n                .description(\"Apply redirects from redirect_list\")\n                .enabled(true)\n                .expression(\"http.request.full_uri in $redirect_list\")\n                .build())\n            .build());\n\n        var redirectFromValueExample = new Ruleset(\"redirectFromValueExample\", RulesetArgs.builder()        \n            .description(\"Redirect ruleset\")\n            .kind(\"root\")\n            .name(\"redirects\")\n            .phase(\"http_request_dynamic_redirect\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"redirect\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .fromValue(RulesetRuleActionParametersFromValueArgs.builder()\n                        .preserveQueryString(true)\n                        .statusCode(301)\n                        .targetUrl(RulesetRuleActionParametersFromValueTargetUrlArgs.builder()\n                            .value(\"some_host.com\")\n                            .build())\n                        .build())\n                    .build())\n                .description(\"Apply redirect from value\")\n                .enabled(true)\n                .expression(\"(http.request.uri.path matches \\\"^/api/\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var httpCustomErrorExample = new Ruleset(\"httpCustomErrorExample\", RulesetArgs.builder()        \n            .description(\"Serve some error response\")\n            .kind(\"zone\")\n            .name(\"Serve some error response\")\n            .phase(\"http_custom_errors\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"serve_error\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .content(\"some error html\")\n                    .contentType(\"text/html\")\n                    .statusCode(\"530\")\n                    .build())\n                .description(\"serve some error response\")\n                .enabled(true)\n                .expression(\"(http.request.uri.path matches \\\"^/api/\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var httpConfigRulesExample = new Ruleset(\"httpConfigRulesExample\", RulesetArgs.builder()        \n            .description(\"set config rules for request\")\n            .kind(\"zone\")\n            .name(\"set config rules\")\n            .phase(\"http_config_settings\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"set_config\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .bic(true)\n                    .emailObfuscation(true)\n                    .build())\n                .description(\"set config rules for matching request\")\n                .enabled(true)\n                .expression(\"(http.request.uri.path matches \\\"^/api/\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Magic Transit\n  magicTransitExample:\n    type: cloudflare:Ruleset\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      description: example magic transit ruleset description\n      kind: root\n      name: account magic transit\n      phase: magic_transit\n      rules:\n        - action: allow\n          description: Allow TCP Ephemeral Ports\n          expression: tcp.dstport in { 32768..65535 }\n  # Zone-level WAF Managed Ruleset\n  zoneLevelManagedWaf:\n    type: cloudflare:Ruleset\n    properties:\n      description: managed WAF ruleset description\n      kind: zone\n      name: managed WAF\n      phase: http_request_firewall_managed\n      rules:\n        - action: execute\n          actionParameters:\n            id: efb7b8c949ac4650a09736fc376e9aee\n          description: Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\n          enabled: true\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Zone-level WAF with tag-based overrides\n  zoneLevelManagedWafWithCategoryBasedOverrides:\n    type: cloudflare:Ruleset\n    properties:\n      description: managed WAF with tag-based overrides ruleset description\n      kind: zone\n      name: managed WAF with tag-based overrides\n      phase: http_request_firewall_managed\n      rules:\n        - action: execute\n          actionParameters:\n            id: efb7b8c949ac4650a09736fc376e9aee\n            overrides:\n              categories:\n                - action: block\n                  category: wordpress\n                  status: enabled\n                - action: block\n                  category: joomla\n                  status: enabled\n          description: overrides to only enable wordpress rules to block\n          enabled: false\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Rewrite the URI path component to a static path\n  transformUriRulePath:\n    type: cloudflare:Ruleset\n    properties:\n      description: change the URI path to a new static path\n      kind: zone\n      name: transform rule for URI path\n      phase: http_request_transform\n      rules:\n        - action: rewrite\n          actionParameters:\n            uri:\n              path:\n                value: /my-new-route\n          description: example URI path transform rule\n          enabled: true\n          expression: (http.host eq \"example.com\" and http.request.uri.path eq \"/old-path\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Rewrite the URI query component to a static query\n  transformUriRuleQuery:\n    type: cloudflare:Ruleset\n    properties:\n      description: change the URI query to a new static query\n      kind: zone\n      name: transform rule for URI query parameter\n      phase: http_request_transform\n      rules:\n        - action: rewrite\n          actionParameters:\n            uri:\n              query:\n                value: old=new_again\n          description: URI transformation query example\n          enabled: true\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Rewrite HTTP headers to a modified values\n  transformUriHttpHeaders:\n    type: cloudflare:Ruleset\n    properties:\n      description: modify HTTP headers before reaching origin\n      kind: zone\n      name: transform rule for HTTP headers\n      phase: http_request_late_transform\n      rules:\n        - action: rewrite\n          actionParameters:\n            headers:\n              - name: example-http-header-1\n                operation: set\n                value: my-http-header-value-1\n              - expression: cf.zone.name\n                name: example-http-header-2\n                operation: set\n              - name: example-http-header-3-to-remove\n                operation: remove\n          description: example request header transform rule\n          enabled: false\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # HTTP rate limit for an API route\n  rateLimitingExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: apply HTTP rate limiting for a route\n      kind: zone\n      name: restrict API requests count\n      phase: http_ratelimit\n      rules:\n        - action: block\n          description: rate limit for API\n          enabled: true\n          expression: (http.request.uri.path matches \"^/api/\")\n          ratelimit:\n            characteristics:\n              - cf.colo.id\n              - ip.src\n            mitigationTimeout: 600\n            period: 60\n            requestsPerPeriod: 100\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Change origin for an API route\n  httpOriginExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: Change origin for a route\n      kind: zone\n      name: Change to some origin\n      phase: http_request_origin\n      rules:\n        - action: route\n          actionParameters:\n            hostHeader: some.host\n            origin:\n              host: some.host\n              port: 80\n          description: change origin to some.host\n          enabled: true\n          expression: (http.request.uri.path matches \"^/api/\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Custom fields logging\n  customFieldsLoggingExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: add custom fields to logging\n      kind: zone\n      name: log custom fields\n      phase: http_log_custom_fields\n      rules:\n        - action: log_custom_field\n          actionParameters:\n            cookieFields:\n              - __ga\n              - accountNumber\n              - __cfruid\n            requestFields:\n              - content-type\n              - x-forwarded-for\n              - host\n            responseFields:\n              - server\n              - content-type\n              - allow\n          description: log custom fields rule\n          enabled: true\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Custom cache keys + settings\n  cacheSettingsExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: set cache settings for the request\n      kind: zone\n      name: set cache settings\n      phase: http_request_cache_settings\n      rules:\n        - action: set_cache_settings\n          actionParameters:\n            browserTtl:\n              mode: respect_origin\n            cacheKey:\n              cacheDeceptionArmor: true\n              customKey:\n                cookie:\n                  checkPresence:\n                    - cabc_t\n                    - cdef_t\n                  include:\n                    - cabc\n                    - cdef\n                header:\n                  checkPresence:\n                    - habc_t\n                    - hdef_t\n                  excludeOrigin: true\n                  include:\n                    - habc\n                    - hdef\n                host:\n                  resolved: true\n                queryString:\n                  exclude:\n                    - '*'\n                user:\n                  deviceType: true\n                  geo: false\n              ignoreQueryStringsOrder: false\n            edgeTtl:\n              default: 60\n              mode: override_origin\n              statusCodeTtl:\n                - statusCode: 200\n                  value: 50\n                - statusCodeRange:\n                    - from: 201\n                      to: 300\n                  value: 30\n            originErrorPagePassthru: false\n            respectStrongEtags: true\n            serveStale:\n              disableStaleWhileUpdating: true\n          description: set cache settings rule\n          enabled: true\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Redirects based on a List resource\n  redirectFromListExample:\n    type: cloudflare:Ruleset\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      description: Redirect ruleset\n      kind: root\n      name: redirects\n      phase: http_request_redirect\n      rules:\n        - action: redirect\n          actionParameters:\n            fromList:\n              key: http.request.full_uri\n              name: redirect_list\n          description: Apply redirects from redirect_list\n          enabled: true\n          expression: http.request.full_uri in $redirect_list\n  # Dynamic Redirects from value resource\n  redirectFromValueExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: Redirect ruleset\n      kind: root\n      name: redirects\n      phase: http_request_dynamic_redirect\n      rules:\n        - action: redirect\n          actionParameters:\n            fromValue:\n              preserveQueryString: true\n              statusCode: 301\n              targetUrl:\n                value: some_host.com\n          description: Apply redirect from value\n          enabled: true\n          expression: (http.request.uri.path matches \"^/api/\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Serve some custom error response\n  httpCustomErrorExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: Serve some error response\n      kind: zone\n      name: Serve some error response\n      phase: http_custom_errors\n      rules:\n        - action: serve_error\n          actionParameters:\n            content: some error html\n            contentType: text/html\n            statusCode: '530'\n          description: serve some error response\n          enabled: true\n          expression: (http.request.uri.path matches \"^/api/\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Set Configuration Rules for an API route\n  httpConfigRulesExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: set config rules for request\n      kind: zone\n      name: set config rules\n      phase: http_config_settings\n      rules:\n        - action: set_config\n          actionParameters:\n            bic: true\n            emailObfuscation: true\n          description: set config rules for matching request\n          enabled: true\n          expression: (http.request.uri.path matches \"^/api/\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nImport an account scoped Ruleset configuration.\n\n```sh\n $ pulumi import cloudflare:index/ruleset:Ruleset example account/\u003caccount_id\u003e/\u003cruleset_id\u003e\n```\n\n Import a zone scoped Ruleset configuration.\n\n```sh\n $ pulumi import cloudflare:index/ruleset:Ruleset example zone/\u003czone_id\u003e/\u003cruleset_id\u003e\n```\n\n ",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.Ruleset;\nimport com.pulumi.cloudflare.RulesetArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersOverridesArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriPathArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriQueryArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleRatelimitArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersOriginArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersBrowserTtlArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyHostArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyUserArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersEdgeTtlArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersServeStaleArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromListArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromValueArgs;\nimport com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromValueTargetUrlArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var magicTransitExample = new Ruleset(\"magicTransitExample\", RulesetArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .description(\"example magic transit ruleset description\")\n            .kind(\"root\")\n            .name(\"account magic transit\")\n            .phase(\"magic_transit\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"allow\")\n                .description(\"Allow TCP Ephemeral Ports\")\n                .expression(\"tcp.dstport in { 32768..65535 }\")\n                .build())\n            .build());\n\n        var zoneLevelManagedWaf = new Ruleset(\"zoneLevelManagedWaf\", RulesetArgs.builder()        \n            .description(\"managed WAF ruleset description\")\n            .kind(\"zone\")\n            .name(\"managed WAF\")\n            .phase(\"http_request_firewall_managed\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"execute\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .id(\"efb7b8c949ac4650a09736fc376e9aee\")\n                    .build())\n                .description(\"Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\")\n                .enabled(true)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var zoneLevelManagedWafWithCategoryBasedOverrides = new Ruleset(\"zoneLevelManagedWafWithCategoryBasedOverrides\", RulesetArgs.builder()        \n            .description(\"managed WAF with tag-based overrides ruleset description\")\n            .kind(\"zone\")\n            .name(\"managed WAF with tag-based overrides\")\n            .phase(\"http_request_firewall_managed\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"execute\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .id(\"efb7b8c949ac4650a09736fc376e9aee\")\n                    .overrides(RulesetRuleActionParametersOverridesArgs.builder()\n                        .categories(                        \n                            RulesetRuleActionParametersOverridesCategoryArgs.builder()\n                                .action(\"block\")\n                                .category(\"wordpress\")\n                                .status(\"enabled\")\n                                .build(),\n                            RulesetRuleActionParametersOverridesCategoryArgs.builder()\n                                .action(\"block\")\n                                .category(\"joomla\")\n                                .status(\"enabled\")\n                                .build())\n                        .build())\n                    .build())\n                .description(\"overrides to only enable wordpress rules to block\")\n                .enabled(false)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var transformUriRulePath = new Ruleset(\"transformUriRulePath\", RulesetArgs.builder()        \n            .description(\"change the URI path to a new static path\")\n            .kind(\"zone\")\n            .name(\"transform rule for URI path\")\n            .phase(\"http_request_transform\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"rewrite\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .uri(RulesetRuleActionParametersUriArgs.builder()\n                        .path(RulesetRuleActionParametersUriPathArgs.builder()\n                            .value(\"/my-new-route\")\n                            .build())\n                        .build())\n                    .build())\n                .description(\"example URI path transform rule\")\n                .enabled(true)\n                .expression(\"(http.host eq \\\"example.com\\\" and http.request.uri.path eq \\\"/old-path\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var transformUriRuleQuery = new Ruleset(\"transformUriRuleQuery\", RulesetArgs.builder()        \n            .description(\"change the URI query to a new static query\")\n            .kind(\"zone\")\n            .name(\"transform rule for URI query parameter\")\n            .phase(\"http_request_transform\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"rewrite\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .uri(RulesetRuleActionParametersUriArgs.builder()\n                        .query(RulesetRuleActionParametersUriQueryArgs.builder()\n                            .value(\"old=new_again\")\n                            .build())\n                        .build())\n                    .build())\n                .description(\"URI transformation query example\")\n                .enabled(true)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var transformUriHttpHeaders = new Ruleset(\"transformUriHttpHeaders\", RulesetArgs.builder()        \n            .description(\"modify HTTP headers before reaching origin\")\n            .kind(\"zone\")\n            .name(\"transform rule for HTTP headers\")\n            .phase(\"http_request_late_transform\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"rewrite\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .headers(                    \n                        RulesetRuleActionParametersHeaderArgs.builder()\n                            .name(\"example-http-header-1\")\n                            .operation(\"set\")\n                            .value(\"my-http-header-value-1\")\n                            .build(),\n                        RulesetRuleActionParametersHeaderArgs.builder()\n                            .expression(\"cf.zone.name\")\n                            .name(\"example-http-header-2\")\n                            .operation(\"set\")\n                            .build(),\n                        RulesetRuleActionParametersHeaderArgs.builder()\n                            .name(\"example-http-header-3-to-remove\")\n                            .operation(\"remove\")\n                            .build())\n                    .build())\n                .description(\"example request header transform rule\")\n                .enabled(false)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var rateLimitingExample = new Ruleset(\"rateLimitingExample\", RulesetArgs.builder()        \n            .description(\"apply HTTP rate limiting for a route\")\n            .kind(\"zone\")\n            .name(\"restrict API requests count\")\n            .phase(\"http_ratelimit\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"block\")\n                .description(\"rate limit for API\")\n                .enabled(true)\n                .expression(\"(http.request.uri.path matches \\\"^/api/\\\")\")\n                .ratelimit(RulesetRuleRatelimitArgs.builder()\n                    .characteristics(                    \n                        \"cf.colo.id\",\n                        \"ip.src\")\n                    .mitigationTimeout(600)\n                    .period(60)\n                    .requestsPerPeriod(100)\n                    .build())\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var httpOriginExample = new Ruleset(\"httpOriginExample\", RulesetArgs.builder()        \n            .description(\"Change origin for a route\")\n            .kind(\"zone\")\n            .name(\"Change to some origin\")\n            .phase(\"http_request_origin\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"route\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .hostHeader(\"some.host\")\n                    .origin(RulesetRuleActionParametersOriginArgs.builder()\n                        .host(\"some.host\")\n                        .port(80)\n                        .build())\n                    .build())\n                .description(\"change origin to some.host\")\n                .enabled(true)\n                .expression(\"(http.request.uri.path matches \\\"^/api/\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var customFieldsLoggingExample = new Ruleset(\"customFieldsLoggingExample\", RulesetArgs.builder()        \n            .description(\"add custom fields to logging\")\n            .kind(\"zone\")\n            .name(\"log custom fields\")\n            .phase(\"http_log_custom_fields\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"log_custom_field\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .cookieFields(                    \n                        \"__ga\",\n                        \"accountNumber\",\n                        \"__cfruid\")\n                    .requestFields(                    \n                        \"content-type\",\n                        \"x-forwarded-for\",\n                        \"host\")\n                    .responseFields(                    \n                        \"server\",\n                        \"content-type\",\n                        \"allow\")\n                    .build())\n                .description(\"log custom fields rule\")\n                .enabled(true)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var cacheSettingsExample = new Ruleset(\"cacheSettingsExample\", RulesetArgs.builder()        \n            .description(\"set cache settings for the request\")\n            .kind(\"zone\")\n            .name(\"set cache settings\")\n            .phase(\"http_request_cache_settings\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"set_cache_settings\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .browserTtl(RulesetRuleActionParametersBrowserTtlArgs.builder()\n                        .mode(\"respect_origin\")\n                        .build())\n                    .cacheKey(RulesetRuleActionParametersCacheKeyArgs.builder()\n                        .cacheDeceptionArmor(true)\n                        .customKey(RulesetRuleActionParametersCacheKeyCustomKeyArgs.builder()\n                            .cookie(RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs.builder()\n                                .checkPresence(                                \n                                    \"cabc_t\",\n                                    \"cdef_t\")\n                                .include(                                \n                                    \"cabc\",\n                                    \"cdef\")\n                                .build())\n                            .header(RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs.builder()\n                                .checkPresence(                                \n                                    \"habc_t\",\n                                    \"hdef_t\")\n                                .excludeOrigin(true)\n                                .include(                                \n                                    \"habc\",\n                                    \"hdef\")\n                                .build())\n                            .host(RulesetRuleActionParametersCacheKeyCustomKeyHostArgs.builder()\n                                .resolved(true)\n                                .build())\n                            .queryString(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs.builder()\n                                .exclude(\"*\")\n                                .build())\n                            .user(RulesetRuleActionParametersCacheKeyCustomKeyUserArgs.builder()\n                                .deviceType(true)\n                                .geo(false)\n                                .build())\n                            .build())\n                        .ignoreQueryStringsOrder(false)\n                        .build())\n                    .edgeTtl(RulesetRuleActionParametersEdgeTtlArgs.builder()\n                        .default_(60)\n                        .mode(\"override_origin\")\n                        .statusCodeTtl(                        \n                            %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                            %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                        .build())\n                    .originErrorPagePassthru(false)\n                    .respectStrongEtags(true)\n                    .serveStale(RulesetRuleActionParametersServeStaleArgs.builder()\n                        .disableStaleWhileUpdating(true)\n                        .build())\n                    .build())\n                .description(\"set cache settings rule\")\n                .enabled(true)\n                .expression(\"(http.host eq \\\"example.host.com\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var redirectFromListExample = new Ruleset(\"redirectFromListExample\", RulesetArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .description(\"Redirect ruleset\")\n            .kind(\"root\")\n            .name(\"redirects\")\n            .phase(\"http_request_redirect\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"redirect\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .fromList(RulesetRuleActionParametersFromListArgs.builder()\n                        .key(\"http.request.full_uri\")\n                        .name(\"redirect_list\")\n                        .build())\n                    .build())\n                .description(\"Apply redirects from redirect_list\")\n                .enabled(true)\n                .expression(\"http.request.full_uri in $redirect_list\")\n                .build())\n            .build());\n\n        var redirectFromValueExample = new Ruleset(\"redirectFromValueExample\", RulesetArgs.builder()        \n            .description(\"Redirect ruleset\")\n            .kind(\"root\")\n            .name(\"redirects\")\n            .phase(\"http_request_dynamic_redirect\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"redirect\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .fromValue(RulesetRuleActionParametersFromValueArgs.builder()\n                        .preserveQueryString(true)\n                        .statusCode(301)\n                        .targetUrl(RulesetRuleActionParametersFromValueTargetUrlArgs.builder()\n                            .value(\"some_host.com\")\n                            .build())\n                        .build())\n                    .build())\n                .description(\"Apply redirect from value\")\n                .enabled(true)\n                .expression(\"(http.request.uri.path matches \\\"^/api/\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var httpCustomErrorExample = new Ruleset(\"httpCustomErrorExample\", RulesetArgs.builder()        \n            .description(\"Serve some error response\")\n            .kind(\"zone\")\n            .name(\"Serve some error response\")\n            .phase(\"http_custom_errors\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"serve_error\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .content(\"some error html\")\n                    .contentType(\"text/html\")\n                    .statusCode(\"530\")\n                    .build())\n                .description(\"serve some error response\")\n                .enabled(true)\n                .expression(\"(http.request.uri.path matches \\\"^/api/\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var httpConfigRulesExample = new Ruleset(\"httpConfigRulesExample\", RulesetArgs.builder()        \n            .description(\"set config rules for request\")\n            .kind(\"zone\")\n            .name(\"set config rules\")\n            .phase(\"http_config_settings\")\n            .rules(RulesetRuleArgs.builder()\n                .action(\"set_config\")\n                .actionParameters(RulesetRuleActionParametersArgs.builder()\n                    .bic(true)\n                    .emailObfuscation(true)\n                    .build())\n                .description(\"set config rules for matching request\")\n                .enabled(true)\n                .expression(\"(http.request.uri.path matches \\\"^/api/\\\")\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Magic Transit\n  magicTransitExample:\n    type: cloudflare:Ruleset\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      description: example magic transit ruleset description\n      kind: root\n      name: account magic transit\n      phase: magic_transit\n      rules:\n        - action: allow\n          description: Allow TCP Ephemeral Ports\n          expression: tcp.dstport in { 32768..65535 }\n  # Zone-level WAF Managed Ruleset\n  zoneLevelManagedWaf:\n    type: cloudflare:Ruleset\n    properties:\n      description: managed WAF ruleset description\n      kind: zone\n      name: managed WAF\n      phase: http_request_firewall_managed\n      rules:\n        - action: execute\n          actionParameters:\n            id: efb7b8c949ac4650a09736fc376e9aee\n          description: Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\n          enabled: true\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Zone-level WAF with tag-based overrides\n  zoneLevelManagedWafWithCategoryBasedOverrides:\n    type: cloudflare:Ruleset\n    properties:\n      description: managed WAF with tag-based overrides ruleset description\n      kind: zone\n      name: managed WAF with tag-based overrides\n      phase: http_request_firewall_managed\n      rules:\n        - action: execute\n          actionParameters:\n            id: efb7b8c949ac4650a09736fc376e9aee\n            overrides:\n              categories:\n                - action: block\n                  category: wordpress\n                  status: enabled\n                - action: block\n                  category: joomla\n                  status: enabled\n          description: overrides to only enable wordpress rules to block\n          enabled: false\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Rewrite the URI path component to a static path\n  transformUriRulePath:\n    type: cloudflare:Ruleset\n    properties:\n      description: change the URI path to a new static path\n      kind: zone\n      name: transform rule for URI path\n      phase: http_request_transform\n      rules:\n        - action: rewrite\n          actionParameters:\n            uri:\n              path:\n                value: /my-new-route\n          description: example URI path transform rule\n          enabled: true\n          expression: (http.host eq \"example.com\" and http.request.uri.path eq \"/old-path\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Rewrite the URI query component to a static query\n  transformUriRuleQuery:\n    type: cloudflare:Ruleset\n    properties:\n      description: change the URI query to a new static query\n      kind: zone\n      name: transform rule for URI query parameter\n      phase: http_request_transform\n      rules:\n        - action: rewrite\n          actionParameters:\n            uri:\n              query:\n                value: old=new_again\n          description: URI transformation query example\n          enabled: true\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Rewrite HTTP headers to a modified values\n  transformUriHttpHeaders:\n    type: cloudflare:Ruleset\n    properties:\n      description: modify HTTP headers before reaching origin\n      kind: zone\n      name: transform rule for HTTP headers\n      phase: http_request_late_transform\n      rules:\n        - action: rewrite\n          actionParameters:\n            headers:\n              - name: example-http-header-1\n                operation: set\n                value: my-http-header-value-1\n              - expression: cf.zone.name\n                name: example-http-header-2\n                operation: set\n              - name: example-http-header-3-to-remove\n                operation: remove\n          description: example request header transform rule\n          enabled: false\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # HTTP rate limit for an API route\n  rateLimitingExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: apply HTTP rate limiting for a route\n      kind: zone\n      name: restrict API requests count\n      phase: http_ratelimit\n      rules:\n        - action: block\n          description: rate limit for API\n          enabled: true\n          expression: (http.request.uri.path matches \"^/api/\")\n          ratelimit:\n            characteristics:\n              - cf.colo.id\n              - ip.src\n            mitigationTimeout: 600\n            period: 60\n            requestsPerPeriod: 100\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Change origin for an API route\n  httpOriginExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: Change origin for a route\n      kind: zone\n      name: Change to some origin\n      phase: http_request_origin\n      rules:\n        - action: route\n          actionParameters:\n            hostHeader: some.host\n            origin:\n              host: some.host\n              port: 80\n          description: change origin to some.host\n          enabled: true\n          expression: (http.request.uri.path matches \"^/api/\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Custom fields logging\n  customFieldsLoggingExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: add custom fields to logging\n      kind: zone\n      name: log custom fields\n      phase: http_log_custom_fields\n      rules:\n        - action: log_custom_field\n          actionParameters:\n            cookieFields:\n              - __ga\n              - accountNumber\n              - __cfruid\n            requestFields:\n              - content-type\n              - x-forwarded-for\n              - host\n            responseFields:\n              - server\n              - content-type\n              - allow\n          description: log custom fields rule\n          enabled: true\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Custom cache keys + settings\n  cacheSettingsExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: set cache settings for the request\n      kind: zone\n      name: set cache settings\n      phase: http_request_cache_settings\n      rules:\n        - action: set_cache_settings\n          actionParameters:\n            browserTtl:\n              mode: respect_origin\n            cacheKey:\n              cacheDeceptionArmor: true\n              customKey:\n                cookie:\n                  checkPresence:\n                    - cabc_t\n                    - cdef_t\n                  include:\n                    - cabc\n                    - cdef\n                header:\n                  checkPresence:\n                    - habc_t\n                    - hdef_t\n                  excludeOrigin: true\n                  include:\n                    - habc\n                    - hdef\n                host:\n                  resolved: true\n                queryString:\n                  exclude:\n                    - '*'\n                user:\n                  deviceType: true\n                  geo: false\n              ignoreQueryStringsOrder: false\n            edgeTtl:\n              default: 60\n              mode: override_origin\n              statusCodeTtl:\n                - statusCode: 200\n                  value: 50\n                - statusCodeRange:\n                    from: 201\n                    to: 300\n                  value: 30\n            originErrorPagePassthru: false\n            respectStrongEtags: true\n            serveStale:\n              disableStaleWhileUpdating: true\n          description: set cache settings rule\n          enabled: true\n          expression: (http.host eq \"example.host.com\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Redirects based on a List resource\n  redirectFromListExample:\n    type: cloudflare:Ruleset\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      description: Redirect ruleset\n      kind: root\n      name: redirects\n      phase: http_request_redirect\n      rules:\n        - action: redirect\n          actionParameters:\n            fromList:\n              key: http.request.full_uri\n              name: redirect_list\n          description: Apply redirects from redirect_list\n          enabled: true\n          expression: http.request.full_uri in $redirect_list\n  # Dynamic Redirects from value resource\n  redirectFromValueExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: Redirect ruleset\n      kind: root\n      name: redirects\n      phase: http_request_dynamic_redirect\n      rules:\n        - action: redirect\n          actionParameters:\n            fromValue:\n              preserveQueryString: true\n              statusCode: 301\n              targetUrl:\n                value: some_host.com\n          description: Apply redirect from value\n          enabled: true\n          expression: (http.request.uri.path matches \"^/api/\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Serve some custom error response\n  httpCustomErrorExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: Serve some error response\n      kind: zone\n      name: Serve some error response\n      phase: http_custom_errors\n      rules:\n        - action: serve_error\n          actionParameters:\n            content: some error html\n            contentType: text/html\n            statusCode: '530'\n          description: serve some error response\n          enabled: true\n          expression: (http.request.uri.path matches \"^/api/\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Set Configuration Rules for an API route\n  httpConfigRulesExample:\n    type: cloudflare:Ruleset\n    properties:\n      description: set config rules for request\n      kind: zone\n      name: set config rules\n      phase: http_config_settings\n      rules:\n        - action: set_config\n          actionParameters:\n            bic: true\n            emailObfuscation: true\n          description: set config rules for matching request\n          enabled: true\n          expression: (http.request.uri.path matches \"^/api/\")\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nImport an account scoped Ruleset configuration.\n\n```sh\n $ pulumi import cloudflare:index/ruleset:Ruleset example account/\u003caccount_id\u003e/\u003cruleset_id\u003e\n```\n\n Import a zone scoped Ruleset configuration.\n\n```sh\n $ pulumi import cloudflare:index/ruleset:Ruleset example zone/\u003czone_id\u003e/\u003cruleset_id\u003e\n```\n\n ",
             "properties": {
                 "accountId": {
                     "type": "string",

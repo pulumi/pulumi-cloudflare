@@ -337,5 +337,8 @@ func Provider() tfbridge.ProviderInfo {
 	err := x.ComputeDefaults(&prov, x.TokensSingleModule("cloudflare_", mainMod,
 		x.MakeStandardToken(mainPkg)))
 	contract.AssertNoErrorf(err, "Failed to compute defaults")
+
+	err = x.AutoAliasing(&prov, prov.GetMetadata())
+	contract.AssertNoErrorf(err, "Failed to apply aliases")
 	return prov
 }
