@@ -234,10 +234,15 @@ jobs:
       uses: thollander/actions-comment-pull-request@v1
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        message: |
+        message: >+
           ### Does the PR have any schema changes?
 
+
           ${{ env.SCHEMA_CHANGES }}
+
+
+          Maintainer note: consult the [runbook](https://github.com/pulumi/platform-providers-team/blob/main/playbooks/tf-provider-updating.md) for dealing with any breaking changes.
+
     - name: Tar provider binaries
       run: tar -zcf ${{ github.workspace }}/bin/provider.tar.gz -C ${{
         github.workspace }}/bin/ pulumi-resource-${{ env.PROVIDER }}
@@ -313,7 +318,7 @@ jobs:
         SLACK_MESSAGE: "Publish failed :x:"
         SLACK_TITLE: ${{ github.event.repository.name }} upgrade result
         SLACK_USERNAME: provider-bot
-        SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK_URL }}
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
       if: failure()
       name: Send Publish Failure To Slack
       uses: rtCamp/action-slack-notify@v2

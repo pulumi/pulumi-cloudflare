@@ -11,9 +11,6 @@ jobs:
     steps:
     - name: Call upgrade provider action
       uses: pulumi/pulumi-upgrade-provider-action@v0.0.4
-      with:
-        slack-channel: provider-upgrade-status
-        slack-webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
     - env:
         SLACK_CHANNEL: provider-upgrade-publish-status
         SLACK_COLOR: "#FF0000"
@@ -24,7 +21,7 @@ jobs:
           PR opened at github.com/pulumi/${{ github.event.repository.name }}/pulls
         SLACK_TITLE: ${{ github.event.repository.name }} upgrade result
         SLACK_USERNAME: provider-bot
-        SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK_URL }}
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
       name: Send Upgrade Success To Slack
       uses: rtCamp/action-slack-notify@v2
     - env:
@@ -34,7 +31,7 @@ jobs:
         SLACK_MESSAGE: " Upgrade failed :x:"
         SLACK_TITLE: ${{ github.event.repository.name }} upgrade result
         SLACK_USERNAME: provider-bot
-        SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK_URL }}
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
       if: failure()
       name: Send Upgrade Failure To Slack
       uses: rtCamp/action-slack-notify@v2
