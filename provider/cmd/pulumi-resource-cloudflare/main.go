@@ -28,5 +28,5 @@ import (
 var pulumiSchema []byte
 
 func main() {
-	tfbridge.MainWithMuxer(context.Background(), pulumiSchema, cloudflare.Provider())
+	tfbridge.MainWithMuxer(context.Background(), "cloudflare", cloudflare.Provider(), pulumiSchema)
 }

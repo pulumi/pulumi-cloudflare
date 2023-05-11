@@ -8121,14 +8121,14 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/AccessPolicyExclude:AccessPolicyExclude"
                     },
-                    "description": "A series of access conditions, see [Access\nGroups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
+                    "description": "A series of access conditions, see Access Groups.\n"
                 },
                 "includes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/AccessPolicyInclude:AccessPolicyInclude"
                     },
-                    "description": "A series of access conditions, see [Access\nGroups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
+                    "description": "A series of access conditions, see Access Groups.\n"
                 },
                 "isolationRequired": {
                     "type": "boolean",
@@ -8155,7 +8155,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/AccessPolicyRequire:AccessPolicyRequire"
                     },
-                    "description": "A series of access conditions, see [Access\nGroups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
+                    "description": "A series of access conditions, see Access Groups.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -8198,14 +8198,14 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/AccessPolicyExclude:AccessPolicyExclude"
                     },
-                    "description": "A series of access conditions, see [Access\nGroups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
+                    "description": "A series of access conditions, see Access Groups.\n"
                 },
                 "includes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/AccessPolicyInclude:AccessPolicyInclude"
                     },
-                    "description": "A series of access conditions, see [Access\nGroups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
+                    "description": "A series of access conditions, see Access Groups.\n"
                 },
                 "isolationRequired": {
                     "type": "boolean",
@@ -8232,7 +8232,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/AccessPolicyRequire:AccessPolicyRequire"
                     },
-                    "description": "A series of access conditions, see [Access\nGroups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
+                    "description": "A series of access conditions, see Access Groups.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -8275,14 +8275,14 @@
                         "items": {
                             "$ref": "#/types/cloudflare:index/AccessPolicyExclude:AccessPolicyExclude"
                         },
-                        "description": "A series of access conditions, see [Access\nGroups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
+                        "description": "A series of access conditions, see Access Groups.\n"
                     },
                     "includes": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/cloudflare:index/AccessPolicyInclude:AccessPolicyInclude"
                         },
-                        "description": "A series of access conditions, see [Access\nGroups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
+                        "description": "A series of access conditions, see Access Groups.\n"
                     },
                     "isolationRequired": {
                         "type": "boolean",
@@ -8309,7 +8309,7 @@
                         "items": {
                             "$ref": "#/types/cloudflare:index/AccessPolicyRequire:AccessPolicyRequire"
                         },
-                        "description": "A series of access conditions, see [Access\nGroups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
+                        "description": "A series of access conditions, see Access Groups.\n"
                     },
                     "zoneId": {
                         "type": "string",
