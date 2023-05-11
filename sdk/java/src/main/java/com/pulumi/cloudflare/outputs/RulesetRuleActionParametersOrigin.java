@@ -7,18 +7,20 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersOrigin {
-    private String host;
-    private Integer port;
+    private @Nullable String host;
+    private @Nullable Integer port;
 
     private RulesetRuleActionParametersOrigin() {}
-    public String host() {
-        return this.host;
+    public Optional<String> host() {
+        return Optional.ofNullable(this.host);
     }
-    public Integer port() {
-        return this.port;
+    public Optional<Integer> port() {
+        return Optional.ofNullable(this.port);
     }
 
     public static Builder builder() {
@@ -30,8 +32,8 @@ public final class RulesetRuleActionParametersOrigin {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String host;
-        private Integer port;
+        private @Nullable String host;
+        private @Nullable Integer port;
         public Builder() {}
         public Builder(RulesetRuleActionParametersOrigin defaults) {
     	      Objects.requireNonNull(defaults);
@@ -40,13 +42,13 @@ public final class RulesetRuleActionParametersOrigin {
         }
 
         @CustomType.Setter
-        public Builder host(String host) {
-            this.host = Objects.requireNonNull(host);
+        public Builder host(@Nullable String host) {
+            this.host = host;
             return this;
         }
         @CustomType.Setter
-        public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+        public Builder port(@Nullable Integer port) {
+            this.port = port;
             return this;
         }
         public RulesetRuleActionParametersOrigin build() {

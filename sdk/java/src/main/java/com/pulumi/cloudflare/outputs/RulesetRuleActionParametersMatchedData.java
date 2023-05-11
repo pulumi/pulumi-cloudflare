@@ -6,14 +6,16 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersMatchedData {
-    private String publicKey;
+    private @Nullable String publicKey;
 
     private RulesetRuleActionParametersMatchedData() {}
-    public String publicKey() {
-        return this.publicKey;
+    public Optional<String> publicKey() {
+        return Optional.ofNullable(this.publicKey);
     }
 
     public static Builder builder() {
@@ -25,7 +27,7 @@ public final class RulesetRuleActionParametersMatchedData {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String publicKey;
+        private @Nullable String publicKey;
         public Builder() {}
         public Builder(RulesetRuleActionParametersMatchedData defaults) {
     	      Objects.requireNonNull(defaults);
@@ -33,8 +35,8 @@ public final class RulesetRuleActionParametersMatchedData {
         }
 
         @CustomType.Setter
-        public Builder publicKey(String publicKey) {
-            this.publicKey = Objects.requireNonNull(publicKey);
+        public Builder publicKey(@Nullable String publicKey) {
+            this.publicKey = publicKey;
             return this;
         }
         public RulesetRuleActionParametersMatchedData build() {

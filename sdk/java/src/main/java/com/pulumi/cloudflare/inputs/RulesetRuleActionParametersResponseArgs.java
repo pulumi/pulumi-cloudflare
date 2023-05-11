@@ -8,31 +8,33 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersResponseArgs Empty = new RulesetRuleActionParametersResponseArgs();
 
-    @Import(name="content", required=true)
-    private Output<String> content;
+    @Import(name="content")
+    private @Nullable Output<String> content;
 
-    public Output<String> content() {
-        return this.content;
+    public Optional<Output<String>> content() {
+        return Optional.ofNullable(this.content);
     }
 
-    @Import(name="contentType", required=true)
-    private Output<String> contentType;
+    @Import(name="contentType")
+    private @Nullable Output<String> contentType;
 
-    public Output<String> contentType() {
-        return this.contentType;
+    public Optional<Output<String>> contentType() {
+        return Optional.ofNullable(this.contentType);
     }
 
-    @Import(name="statusCode", required=true)
-    private Output<Integer> statusCode;
+    @Import(name="statusCode")
+    private @Nullable Output<Integer> statusCode;
 
-    public Output<Integer> statusCode() {
-        return this.statusCode;
+    public Optional<Output<Integer>> statusCode() {
+        return Optional.ofNullable(this.statusCode);
     }
 
     private RulesetRuleActionParametersResponseArgs() {}
@@ -61,7 +63,7 @@ public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.re
             $ = new RulesetRuleActionParametersResponseArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder content(Output<String> content) {
+        public Builder content(@Nullable Output<String> content) {
             $.content = content;
             return this;
         }
@@ -70,7 +72,7 @@ public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.re
             return content(Output.of(content));
         }
 
-        public Builder contentType(Output<String> contentType) {
+        public Builder contentType(@Nullable Output<String> contentType) {
             $.contentType = contentType;
             return this;
         }
@@ -79,7 +81,7 @@ public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.re
             return contentType(Output.of(contentType));
         }
 
-        public Builder statusCode(Output<Integer> statusCode) {
+        public Builder statusCode(@Nullable Output<Integer> statusCode) {
             $.statusCode = statusCode;
             return this;
         }
@@ -89,9 +91,6 @@ public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.re
         }
 
         public RulesetRuleActionParametersResponseArgs build() {
-            $.content = Objects.requireNonNull($.content, "expected parameter 'content' to be non-null");
-            $.contentType = Objects.requireNonNull($.contentType, "expected parameter 'contentType' to be non-null");
-            $.statusCode = Objects.requireNonNull($.statusCode, "expected parameter 'statusCode' to be non-null");
             return $;
         }
     }

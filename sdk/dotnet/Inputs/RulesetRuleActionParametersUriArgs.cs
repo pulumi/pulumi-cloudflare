@@ -12,14 +12,14 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersUriArgs : global::Pulumi.ResourceArgs
     {
-        [Input("origin", required: true)]
-        public Input<bool> Origin { get; set; } = null!;
+        [Input("origin")]
+        public Input<bool>? Origin { get; set; }
 
-        [Input("path", required: true)]
-        public Input<Inputs.RulesetRuleActionParametersUriPathArgs> Path { get; set; } = null!;
+        [Input("path")]
+        public Input<Inputs.RulesetRuleActionParametersUriPathArgs>? Path { get; set; }
 
-        [Input("query", required: true)]
-        public Input<Inputs.RulesetRuleActionParametersUriQueryArgs> Query { get; set; } = null!;
+        [Input("query")]
+        public Input<Inputs.RulesetRuleActionParametersUriQueryArgs>? Query { get; set; }
 
         public RulesetRuleActionParametersUriArgs()
         {

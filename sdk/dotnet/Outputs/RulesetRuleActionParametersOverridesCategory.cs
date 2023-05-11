@@ -13,17 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersOverridesCategory
     {
-        public readonly string Action;
-        public readonly string Category;
-        public readonly bool Enabled;
+        public readonly string? Action;
+        public readonly string? Category;
+        public readonly bool? Enabled;
 
         [OutputConstructor]
         private RulesetRuleActionParametersOverridesCategory(
-            string action,
+            string? action,
 
-            string category,
+            string? category,
 
-            bool enabled)
+            bool? enabled)
         {
             Action = action;
             Category = category;

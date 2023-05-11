@@ -13,17 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyUser
     {
-        public readonly bool DeviceType;
-        public readonly bool Geo;
-        public readonly bool Lang;
+        public readonly bool? DeviceType;
+        public readonly bool? Geo;
+        public readonly bool? Lang;
 
         [OutputConstructor]
         private RulesetRuleActionParametersCacheKeyCustomKeyUser(
-            bool deviceType,
+            bool? deviceType,
 
-            bool geo,
+            bool? geo,
 
-            bool lang)
+            bool? lang)
         {
             DeviceType = deviceType;
             Geo = geo;

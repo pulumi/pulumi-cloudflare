@@ -63,7 +63,7 @@ public class CustomPages extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. Conflicts with `zone_id`.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
@@ -77,7 +77,7 @@ public class CustomPages extends com.pulumi.resources.CustomResource {
      * Managed state of the custom page. Available values: `default`, `customized`.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> state;
 
     /**
@@ -91,7 +91,7 @@ public class CustomPages extends com.pulumi.resources.CustomResource {
      * The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -105,7 +105,7 @@ public class CustomPages extends com.pulumi.resources.CustomResource {
      * URL of where the custom page source is located.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
@@ -119,7 +119,7 @@ public class CustomPages extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. Conflicts with `account_id`.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**

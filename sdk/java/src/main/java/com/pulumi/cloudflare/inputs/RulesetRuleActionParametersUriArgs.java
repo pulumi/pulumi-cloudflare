@@ -9,31 +9,33 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersUriArgs Empty = new RulesetRuleActionParametersUriArgs();
 
-    @Import(name="origin", required=true)
-    private Output<Boolean> origin;
+    @Import(name="origin")
+    private @Nullable Output<Boolean> origin;
 
-    public Output<Boolean> origin() {
-        return this.origin;
+    public Optional<Output<Boolean>> origin() {
+        return Optional.ofNullable(this.origin);
     }
 
-    @Import(name="path", required=true)
-    private Output<RulesetRuleActionParametersUriPathArgs> path;
+    @Import(name="path")
+    private @Nullable Output<RulesetRuleActionParametersUriPathArgs> path;
 
-    public Output<RulesetRuleActionParametersUriPathArgs> path() {
-        return this.path;
+    public Optional<Output<RulesetRuleActionParametersUriPathArgs>> path() {
+        return Optional.ofNullable(this.path);
     }
 
-    @Import(name="query", required=true)
-    private Output<RulesetRuleActionParametersUriQueryArgs> query;
+    @Import(name="query")
+    private @Nullable Output<RulesetRuleActionParametersUriQueryArgs> query;
 
-    public Output<RulesetRuleActionParametersUriQueryArgs> query() {
-        return this.query;
+    public Optional<Output<RulesetRuleActionParametersUriQueryArgs>> query() {
+        return Optional.ofNullable(this.query);
     }
 
     private RulesetRuleActionParametersUriArgs() {}
@@ -62,7 +64,7 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
             $ = new RulesetRuleActionParametersUriArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder origin(Output<Boolean> origin) {
+        public Builder origin(@Nullable Output<Boolean> origin) {
             $.origin = origin;
             return this;
         }
@@ -71,7 +73,7 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
             return origin(Output.of(origin));
         }
 
-        public Builder path(Output<RulesetRuleActionParametersUriPathArgs> path) {
+        public Builder path(@Nullable Output<RulesetRuleActionParametersUriPathArgs> path) {
             $.path = path;
             return this;
         }
@@ -80,7 +82,7 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
             return path(Output.of(path));
         }
 
-        public Builder query(Output<RulesetRuleActionParametersUriQueryArgs> query) {
+        public Builder query(@Nullable Output<RulesetRuleActionParametersUriQueryArgs> query) {
             $.query = query;
             return this;
         }
@@ -90,9 +92,6 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
         }
 
         public RulesetRuleActionParametersUriArgs build() {
-            $.origin = Objects.requireNonNull($.origin, "expected parameter 'origin' to be non-null");
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
-            $.query = Objects.requireNonNull($.query, "expected parameter 'query' to be non-null");
             return $;
         }
     }

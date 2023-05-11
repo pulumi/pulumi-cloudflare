@@ -12,8 +12,8 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersMatchedDataGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("publicKey", required: true)]
-        public Input<string> PublicKey { get; set; } = null!;
+        [Input("publicKey")]
+        public Input<string>? PublicKey { get; set; }
 
         public RulesetRuleActionParametersMatchedDataGetArgs()
         {

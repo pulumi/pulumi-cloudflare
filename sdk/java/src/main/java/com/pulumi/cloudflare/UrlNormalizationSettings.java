@@ -55,7 +55,7 @@ public class UrlNormalizationSettings extends com.pulumi.resources.CustomResourc
      * The scope of the URL normalization.
      * 
      */
-    @Export(name="scope", type=String.class, parameters={})
+    @Export(name="scope", refs={String.class}, tree="[0]")
     private Output<String> scope;
 
     /**
@@ -69,7 +69,7 @@ public class UrlNormalizationSettings extends com.pulumi.resources.CustomResourc
      * The type of URL normalization performed by Cloudflare.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -83,7 +83,7 @@ public class UrlNormalizationSettings extends com.pulumi.resources.CustomResourc
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

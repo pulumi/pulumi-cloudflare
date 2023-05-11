@@ -13,17 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersAutominify
     {
-        public readonly bool Css;
-        public readonly bool Html;
-        public readonly bool Js;
+        public readonly bool? Css;
+        public readonly bool? Html;
+        public readonly bool? Js;
 
         [OutputConstructor]
         private RulesetRuleActionParametersAutominify(
-            bool css,
+            bool? css,
 
-            bool html,
+            bool? html,
 
-            bool js)
+            bool? js)
         {
             Css = css;
             Html = html;

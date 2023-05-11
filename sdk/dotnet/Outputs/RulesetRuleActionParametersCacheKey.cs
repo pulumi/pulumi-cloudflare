@@ -13,20 +13,20 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersCacheKey
     {
-        public readonly bool CacheByDeviceType;
-        public readonly bool CacheDeceptionArmor;
-        public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKey CustomKey;
-        public readonly bool IgnoreQueryStringsOrder;
+        public readonly bool? CacheByDeviceType;
+        public readonly bool? CacheDeceptionArmor;
+        public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKey? CustomKey;
+        public readonly bool? IgnoreQueryStringsOrder;
 
         [OutputConstructor]
         private RulesetRuleActionParametersCacheKey(
-            bool cacheByDeviceType,
+            bool? cacheByDeviceType,
 
-            bool cacheDeceptionArmor,
+            bool? cacheDeceptionArmor,
 
-            Outputs.RulesetRuleActionParametersCacheKeyCustomKey customKey,
+            Outputs.RulesetRuleActionParametersCacheKeyCustomKey? customKey,
 
-            bool ignoreQueryStringsOrder)
+            bool? ignoreQueryStringsOrder)
         {
             CacheByDeviceType = cacheByDeviceType;
             CacheDeceptionArmor = cacheDeceptionArmor;

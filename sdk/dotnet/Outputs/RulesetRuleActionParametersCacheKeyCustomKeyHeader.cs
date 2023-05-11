@@ -14,14 +14,14 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyHeader
     {
         public readonly ImmutableArray<string> CheckPresences;
-        public readonly bool ExcludeOrigin;
+        public readonly bool? ExcludeOrigin;
         public readonly ImmutableArray<string> Includes;
 
         [OutputConstructor]
         private RulesetRuleActionParametersCacheKeyCustomKeyHeader(
             ImmutableArray<string> checkPresences,
 
-            bool excludeOrigin,
+            bool? excludeOrigin,
 
             ImmutableArray<string> includes)
         {

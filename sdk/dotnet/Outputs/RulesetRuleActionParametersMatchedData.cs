@@ -13,10 +13,10 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersMatchedData
     {
-        public readonly string PublicKey;
+        public readonly string? PublicKey;
 
         [OutputConstructor]
-        private RulesetRuleActionParametersMatchedData(string publicKey)
+        private RulesetRuleActionParametersMatchedData(string? publicKey)
         {
             PublicKey = publicKey;
         }

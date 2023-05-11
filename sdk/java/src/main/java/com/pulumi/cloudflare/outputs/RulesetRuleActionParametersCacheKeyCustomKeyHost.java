@@ -6,14 +6,16 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersCacheKeyCustomKeyHost {
-    private Boolean resolved;
+    private @Nullable Boolean resolved;
 
     private RulesetRuleActionParametersCacheKeyCustomKeyHost() {}
-    public Boolean resolved() {
-        return this.resolved;
+    public Optional<Boolean> resolved() {
+        return Optional.ofNullable(this.resolved);
     }
 
     public static Builder builder() {
@@ -25,7 +27,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHost {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean resolved;
+        private @Nullable Boolean resolved;
         public Builder() {}
         public Builder(RulesetRuleActionParametersCacheKeyCustomKeyHost defaults) {
     	      Objects.requireNonNull(defaults);
@@ -33,8 +35,8 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHost {
         }
 
         @CustomType.Setter
-        public Builder resolved(Boolean resolved) {
-            this.resolved = Objects.requireNonNull(resolved);
+        public Builder resolved(@Nullable Boolean resolved) {
+            this.resolved = resolved;
             return this;
         }
         public RulesetRuleActionParametersCacheKeyCustomKeyHost build() {

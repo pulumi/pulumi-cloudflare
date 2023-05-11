@@ -12,7 +12,7 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("excludes", required: true)]
+        [Input("excludes")]
         private InputList<string>? _excludes;
         public InputList<string> Excludes
         {
@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare.Inputs
             set => _excludes = value;
         }
 
-        [Input("includes", required: true)]
+        [Input("includes")]
         private InputList<string>? _includes;
         public InputList<string> Includes
         {

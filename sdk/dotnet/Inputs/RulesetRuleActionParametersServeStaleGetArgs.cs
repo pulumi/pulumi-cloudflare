@@ -12,8 +12,8 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersServeStaleGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("disableStaleWhileUpdating", required: true)]
-        public Input<bool> DisableStaleWhileUpdating { get; set; } = null!;
+        [Input("disableStaleWhileUpdating")]
+        public Input<bool>? DisableStaleWhileUpdating { get; set; }
 
         public RulesetRuleActionParametersServeStaleGetArgs()
         {

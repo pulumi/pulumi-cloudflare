@@ -13,10 +13,10 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersSni
     {
-        public readonly string Value;
+        public readonly string? Value;
 
         [OutputConstructor]
-        private RulesetRuleActionParametersSni(string value)
+        private RulesetRuleActionParametersSni(string? value)
         {
             Value = value;
         }

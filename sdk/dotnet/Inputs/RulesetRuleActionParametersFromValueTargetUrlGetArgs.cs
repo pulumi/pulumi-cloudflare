@@ -12,11 +12,11 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersFromValueTargetUrlGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
+        [Input("expression")]
+        public Input<string>? Expression { get; set; }
 
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
         public RulesetRuleActionParametersFromValueTargetUrlGetArgs()
         {

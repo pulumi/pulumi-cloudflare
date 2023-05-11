@@ -7,17 +7,19 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersSniArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersSniArgs Empty = new RulesetRuleActionParametersSniArgs();
 
-    @Import(name="value", required=true)
-    private Output<String> value;
+    @Import(name="value")
+    private @Nullable Output<String> value;
 
-    public Output<String> value() {
-        return this.value;
+    public Optional<Output<String>> value() {
+        return Optional.ofNullable(this.value);
     }
 
     private RulesetRuleActionParametersSniArgs() {}
@@ -44,7 +46,7 @@ public final class RulesetRuleActionParametersSniArgs extends com.pulumi.resourc
             $ = new RulesetRuleActionParametersSniArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder value(Output<String> value) {
+        public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
@@ -54,7 +56,6 @@ public final class RulesetRuleActionParametersSniArgs extends com.pulumi.resourc
         }
 
         public RulesetRuleActionParametersSniArgs build() {
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
             return $;
         }
     }

@@ -13,26 +13,26 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersOverrides
     {
-        public readonly string Action;
+        public readonly string? Action;
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersOverridesCategory> Categories;
-        public readonly bool Enabled;
+        public readonly bool? Enabled;
         /// <summary>
         /// List of rules to apply to the ruleset.
         /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersOverridesRule> Rules;
-        public readonly string SensitivityLevel;
+        public readonly string? SensitivityLevel;
 
         [OutputConstructor]
         private RulesetRuleActionParametersOverrides(
-            string action,
+            string? action,
 
             ImmutableArray<Outputs.RulesetRuleActionParametersOverridesCategory> categories,
 
-            bool enabled,
+            bool? enabled,
 
             ImmutableArray<Outputs.RulesetRuleActionParametersOverridesRule> rules,
 
-            string sensitivityLevel)
+            string? sensitivityLevel)
         {
             Action = action;
             Categories = categories;

@@ -7,22 +7,24 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersResponse {
-    private String content;
-    private String contentType;
-    private Integer statusCode;
+    private @Nullable String content;
+    private @Nullable String contentType;
+    private @Nullable Integer statusCode;
 
     private RulesetRuleActionParametersResponse() {}
-    public String content() {
-        return this.content;
+    public Optional<String> content() {
+        return Optional.ofNullable(this.content);
     }
-    public String contentType() {
-        return this.contentType;
+    public Optional<String> contentType() {
+        return Optional.ofNullable(this.contentType);
     }
-    public Integer statusCode() {
-        return this.statusCode;
+    public Optional<Integer> statusCode() {
+        return Optional.ofNullable(this.statusCode);
     }
 
     public static Builder builder() {
@@ -34,9 +36,9 @@ public final class RulesetRuleActionParametersResponse {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String content;
-        private String contentType;
-        private Integer statusCode;
+        private @Nullable String content;
+        private @Nullable String contentType;
+        private @Nullable Integer statusCode;
         public Builder() {}
         public Builder(RulesetRuleActionParametersResponse defaults) {
     	      Objects.requireNonNull(defaults);
@@ -46,18 +48,18 @@ public final class RulesetRuleActionParametersResponse {
         }
 
         @CustomType.Setter
-        public Builder content(String content) {
-            this.content = Objects.requireNonNull(content);
+        public Builder content(@Nullable String content) {
+            this.content = content;
             return this;
         }
         @CustomType.Setter
-        public Builder contentType(String contentType) {
-            this.contentType = Objects.requireNonNull(contentType);
+        public Builder contentType(@Nullable String contentType) {
+            this.contentType = contentType;
             return this;
         }
         @CustomType.Setter
-        public Builder statusCode(Integer statusCode) {
-            this.statusCode = Objects.requireNonNull(statusCode);
+        public Builder statusCode(@Nullable Integer statusCode) {
+            this.statusCode = statusCode;
             return this;
         }
         public RulesetRuleActionParametersResponse build() {

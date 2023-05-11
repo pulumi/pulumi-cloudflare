@@ -24,214 +24,216 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParameters {
-    private Boolean automaticHttpsRewrites;
-    private List<RulesetRuleActionParametersAutominify> autominifies;
-    private Boolean bic;
-    private RulesetRuleActionParametersBrowserTtl browserTtl;
-    private Boolean cache;
-    private RulesetRuleActionParametersCacheKey cacheKey;
-    private String content;
-    private String contentType;
-    private List<String> cookieFields;
-    private Boolean disableApps;
-    private Boolean disableRailgun;
-    private Boolean disableZaraz;
-    private RulesetRuleActionParametersEdgeTtl edgeTtl;
-    private Boolean emailObfuscation;
-    private RulesetRuleActionParametersFromList fromList;
-    private RulesetRuleActionParametersFromValue fromValue;
-    private List<RulesetRuleActionParametersHeader> headers;
-    private String hostHeader;
-    private Boolean hotlinkProtection;
+    private @Nullable Boolean automaticHttpsRewrites;
+    private @Nullable RulesetRuleActionParametersAutominify autominify;
+    private @Nullable Boolean bic;
+    private @Nullable RulesetRuleActionParametersBrowserTtl browserTtl;
+    private @Nullable Boolean cache;
+    private @Nullable RulesetRuleActionParametersCacheKey cacheKey;
+    private @Nullable String content;
+    private @Nullable String contentType;
+    private @Nullable List<String> cookieFields;
+    private @Nullable Boolean disableApps;
+    private @Nullable Boolean disableRailgun;
+    private @Nullable Boolean disableZaraz;
+    private @Nullable RulesetRuleActionParametersEdgeTtl edgeTtl;
+    private @Nullable Boolean emailObfuscation;
+    private @Nullable RulesetRuleActionParametersFromList fromList;
+    private @Nullable RulesetRuleActionParametersFromValue fromValue;
+    private @Nullable List<RulesetRuleActionParametersHeader> headers;
+    private @Nullable String hostHeader;
+    private @Nullable Boolean hotlinkProtection;
     /**
      * @return The identifier of this resource.
      * 
      */
-    private String id;
-    private Integer increment;
-    private RulesetRuleActionParametersMatchedData matchedData;
-    private Boolean mirage;
-    private Boolean opportunisticEncryption;
-    private RulesetRuleActionParametersOrigin origin;
-    private Boolean originErrorPagePassthru;
-    private RulesetRuleActionParametersOverrides overrides;
-    private List<String> phases;
-    private String polish;
-    private List<String> products;
-    private List<String> requestFields;
-    private Boolean respectStrongEtags;
-    private List<String> responseFields;
-    private List<RulesetRuleActionParametersResponse> responses;
-    private Boolean rocketLoader;
+    private @Nullable String id;
+    private @Nullable Integer increment;
+    private @Nullable RulesetRuleActionParametersMatchedData matchedData;
+    private @Nullable Boolean mirage;
+    private @Nullable Boolean opportunisticEncryption;
+    private @Nullable RulesetRuleActionParametersOrigin origin;
+    private @Nullable Boolean originErrorPagePassthru;
+    private @Nullable RulesetRuleActionParametersOverrides overrides;
+    private @Nullable List<String> phases;
+    private @Nullable String polish;
+    private @Nullable List<String> products;
+    private @Nullable List<String> requestFields;
+    private @Nullable Boolean respectStrongEtags;
+    private @Nullable RulesetRuleActionParametersResponse response;
+    private @Nullable List<String> responseFields;
+    private @Nullable Boolean rocketLoader;
     /**
      * @return List of rules to apply to the ruleset.
      * 
      */
-    private Map<String,String> rules;
-    private String ruleset;
-    private List<String> rulesets;
-    private String securityLevel;
-    private RulesetRuleActionParametersServeStale serveStale;
-    private Boolean serverSideExcludes;
-    private RulesetRuleActionParametersSni sni;
-    private String ssl;
-    private Integer statusCode;
-    private Boolean sxg;
-    private RulesetRuleActionParametersUri uri;
-    private String version;
+    private @Nullable Map<String,String> rules;
+    private @Nullable String ruleset;
+    private @Nullable List<String> rulesets;
+    private @Nullable String securityLevel;
+    private @Nullable RulesetRuleActionParametersServeStale serveStale;
+    private @Nullable Boolean serverSideExcludes;
+    private @Nullable RulesetRuleActionParametersSni sni;
+    private @Nullable String ssl;
+    private @Nullable Integer statusCode;
+    private @Nullable Boolean sxg;
+    private @Nullable RulesetRuleActionParametersUri uri;
+    private @Nullable String version;
 
     private RulesetRuleActionParameters() {}
-    public Boolean automaticHttpsRewrites() {
-        return this.automaticHttpsRewrites;
+    public Optional<Boolean> automaticHttpsRewrites() {
+        return Optional.ofNullable(this.automaticHttpsRewrites);
     }
-    public List<RulesetRuleActionParametersAutominify> autominifies() {
-        return this.autominifies;
+    public Optional<RulesetRuleActionParametersAutominify> autominify() {
+        return Optional.ofNullable(this.autominify);
     }
-    public Boolean bic() {
-        return this.bic;
+    public Optional<Boolean> bic() {
+        return Optional.ofNullable(this.bic);
     }
-    public RulesetRuleActionParametersBrowserTtl browserTtl() {
-        return this.browserTtl;
+    public Optional<RulesetRuleActionParametersBrowserTtl> browserTtl() {
+        return Optional.ofNullable(this.browserTtl);
     }
-    public Boolean cache() {
-        return this.cache;
+    public Optional<Boolean> cache() {
+        return Optional.ofNullable(this.cache);
     }
-    public RulesetRuleActionParametersCacheKey cacheKey() {
-        return this.cacheKey;
+    public Optional<RulesetRuleActionParametersCacheKey> cacheKey() {
+        return Optional.ofNullable(this.cacheKey);
     }
-    public String content() {
-        return this.content;
+    public Optional<String> content() {
+        return Optional.ofNullable(this.content);
     }
-    public String contentType() {
-        return this.contentType;
+    public Optional<String> contentType() {
+        return Optional.ofNullable(this.contentType);
     }
     public List<String> cookieFields() {
-        return this.cookieFields;
+        return this.cookieFields == null ? List.of() : this.cookieFields;
     }
-    public Boolean disableApps() {
-        return this.disableApps;
+    public Optional<Boolean> disableApps() {
+        return Optional.ofNullable(this.disableApps);
     }
-    public Boolean disableRailgun() {
-        return this.disableRailgun;
+    public Optional<Boolean> disableRailgun() {
+        return Optional.ofNullable(this.disableRailgun);
     }
-    public Boolean disableZaraz() {
-        return this.disableZaraz;
+    public Optional<Boolean> disableZaraz() {
+        return Optional.ofNullable(this.disableZaraz);
     }
-    public RulesetRuleActionParametersEdgeTtl edgeTtl() {
-        return this.edgeTtl;
+    public Optional<RulesetRuleActionParametersEdgeTtl> edgeTtl() {
+        return Optional.ofNullable(this.edgeTtl);
     }
-    public Boolean emailObfuscation() {
-        return this.emailObfuscation;
+    public Optional<Boolean> emailObfuscation() {
+        return Optional.ofNullable(this.emailObfuscation);
     }
-    public RulesetRuleActionParametersFromList fromList() {
-        return this.fromList;
+    public Optional<RulesetRuleActionParametersFromList> fromList() {
+        return Optional.ofNullable(this.fromList);
     }
-    public RulesetRuleActionParametersFromValue fromValue() {
-        return this.fromValue;
+    public Optional<RulesetRuleActionParametersFromValue> fromValue() {
+        return Optional.ofNullable(this.fromValue);
     }
     public List<RulesetRuleActionParametersHeader> headers() {
-        return this.headers;
+        return this.headers == null ? List.of() : this.headers;
     }
-    public String hostHeader() {
-        return this.hostHeader;
+    public Optional<String> hostHeader() {
+        return Optional.ofNullable(this.hostHeader);
     }
-    public Boolean hotlinkProtection() {
-        return this.hotlinkProtection;
+    public Optional<Boolean> hotlinkProtection() {
+        return Optional.ofNullable(this.hotlinkProtection);
     }
     /**
      * @return The identifier of this resource.
      * 
      */
-    public String id() {
-        return this.id;
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
     }
-    public Integer increment() {
-        return this.increment;
+    public Optional<Integer> increment() {
+        return Optional.ofNullable(this.increment);
     }
-    public RulesetRuleActionParametersMatchedData matchedData() {
-        return this.matchedData;
+    public Optional<RulesetRuleActionParametersMatchedData> matchedData() {
+        return Optional.ofNullable(this.matchedData);
     }
-    public Boolean mirage() {
-        return this.mirage;
+    public Optional<Boolean> mirage() {
+        return Optional.ofNullable(this.mirage);
     }
-    public Boolean opportunisticEncryption() {
-        return this.opportunisticEncryption;
+    public Optional<Boolean> opportunisticEncryption() {
+        return Optional.ofNullable(this.opportunisticEncryption);
     }
-    public RulesetRuleActionParametersOrigin origin() {
-        return this.origin;
+    public Optional<RulesetRuleActionParametersOrigin> origin() {
+        return Optional.ofNullable(this.origin);
     }
-    public Boolean originErrorPagePassthru() {
-        return this.originErrorPagePassthru;
+    public Optional<Boolean> originErrorPagePassthru() {
+        return Optional.ofNullable(this.originErrorPagePassthru);
     }
-    public RulesetRuleActionParametersOverrides overrides() {
-        return this.overrides;
+    public Optional<RulesetRuleActionParametersOverrides> overrides() {
+        return Optional.ofNullable(this.overrides);
     }
     public List<String> phases() {
-        return this.phases;
+        return this.phases == null ? List.of() : this.phases;
     }
-    public String polish() {
-        return this.polish;
+    public Optional<String> polish() {
+        return Optional.ofNullable(this.polish);
     }
     public List<String> products() {
-        return this.products;
+        return this.products == null ? List.of() : this.products;
     }
     public List<String> requestFields() {
-        return this.requestFields;
+        return this.requestFields == null ? List.of() : this.requestFields;
     }
-    public Boolean respectStrongEtags() {
-        return this.respectStrongEtags;
+    public Optional<Boolean> respectStrongEtags() {
+        return Optional.ofNullable(this.respectStrongEtags);
+    }
+    public Optional<RulesetRuleActionParametersResponse> response() {
+        return Optional.ofNullable(this.response);
     }
     public List<String> responseFields() {
-        return this.responseFields;
+        return this.responseFields == null ? List.of() : this.responseFields;
     }
-    public List<RulesetRuleActionParametersResponse> responses() {
-        return this.responses;
-    }
-    public Boolean rocketLoader() {
-        return this.rocketLoader;
+    public Optional<Boolean> rocketLoader() {
+        return Optional.ofNullable(this.rocketLoader);
     }
     /**
      * @return List of rules to apply to the ruleset.
      * 
      */
     public Map<String,String> rules() {
-        return this.rules;
+        return this.rules == null ? Map.of() : this.rules;
     }
-    public String ruleset() {
-        return this.ruleset;
+    public Optional<String> ruleset() {
+        return Optional.ofNullable(this.ruleset);
     }
     public List<String> rulesets() {
-        return this.rulesets;
+        return this.rulesets == null ? List.of() : this.rulesets;
     }
-    public String securityLevel() {
-        return this.securityLevel;
+    public Optional<String> securityLevel() {
+        return Optional.ofNullable(this.securityLevel);
     }
-    public RulesetRuleActionParametersServeStale serveStale() {
-        return this.serveStale;
+    public Optional<RulesetRuleActionParametersServeStale> serveStale() {
+        return Optional.ofNullable(this.serveStale);
     }
-    public Boolean serverSideExcludes() {
-        return this.serverSideExcludes;
+    public Optional<Boolean> serverSideExcludes() {
+        return Optional.ofNullable(this.serverSideExcludes);
     }
-    public RulesetRuleActionParametersSni sni() {
-        return this.sni;
+    public Optional<RulesetRuleActionParametersSni> sni() {
+        return Optional.ofNullable(this.sni);
     }
-    public String ssl() {
-        return this.ssl;
+    public Optional<String> ssl() {
+        return Optional.ofNullable(this.ssl);
     }
-    public Integer statusCode() {
-        return this.statusCode;
+    public Optional<Integer> statusCode() {
+        return Optional.ofNullable(this.statusCode);
     }
-    public Boolean sxg() {
-        return this.sxg;
+    public Optional<Boolean> sxg() {
+        return Optional.ofNullable(this.sxg);
     }
-    public RulesetRuleActionParametersUri uri() {
-        return this.uri;
+    public Optional<RulesetRuleActionParametersUri> uri() {
+        return Optional.ofNullable(this.uri);
     }
-    public String version() {
-        return this.version;
+    public Optional<String> version() {
+        return Optional.ofNullable(this.version);
     }
 
     public static Builder builder() {
@@ -243,58 +245,58 @@ public final class RulesetRuleActionParameters {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean automaticHttpsRewrites;
-        private List<RulesetRuleActionParametersAutominify> autominifies;
-        private Boolean bic;
-        private RulesetRuleActionParametersBrowserTtl browserTtl;
-        private Boolean cache;
-        private RulesetRuleActionParametersCacheKey cacheKey;
-        private String content;
-        private String contentType;
-        private List<String> cookieFields;
-        private Boolean disableApps;
-        private Boolean disableRailgun;
-        private Boolean disableZaraz;
-        private RulesetRuleActionParametersEdgeTtl edgeTtl;
-        private Boolean emailObfuscation;
-        private RulesetRuleActionParametersFromList fromList;
-        private RulesetRuleActionParametersFromValue fromValue;
-        private List<RulesetRuleActionParametersHeader> headers;
-        private String hostHeader;
-        private Boolean hotlinkProtection;
-        private String id;
-        private Integer increment;
-        private RulesetRuleActionParametersMatchedData matchedData;
-        private Boolean mirage;
-        private Boolean opportunisticEncryption;
-        private RulesetRuleActionParametersOrigin origin;
-        private Boolean originErrorPagePassthru;
-        private RulesetRuleActionParametersOverrides overrides;
-        private List<String> phases;
-        private String polish;
-        private List<String> products;
-        private List<String> requestFields;
-        private Boolean respectStrongEtags;
-        private List<String> responseFields;
-        private List<RulesetRuleActionParametersResponse> responses;
-        private Boolean rocketLoader;
-        private Map<String,String> rules;
-        private String ruleset;
-        private List<String> rulesets;
-        private String securityLevel;
-        private RulesetRuleActionParametersServeStale serveStale;
-        private Boolean serverSideExcludes;
-        private RulesetRuleActionParametersSni sni;
-        private String ssl;
-        private Integer statusCode;
-        private Boolean sxg;
-        private RulesetRuleActionParametersUri uri;
-        private String version;
+        private @Nullable Boolean automaticHttpsRewrites;
+        private @Nullable RulesetRuleActionParametersAutominify autominify;
+        private @Nullable Boolean bic;
+        private @Nullable RulesetRuleActionParametersBrowserTtl browserTtl;
+        private @Nullable Boolean cache;
+        private @Nullable RulesetRuleActionParametersCacheKey cacheKey;
+        private @Nullable String content;
+        private @Nullable String contentType;
+        private @Nullable List<String> cookieFields;
+        private @Nullable Boolean disableApps;
+        private @Nullable Boolean disableRailgun;
+        private @Nullable Boolean disableZaraz;
+        private @Nullable RulesetRuleActionParametersEdgeTtl edgeTtl;
+        private @Nullable Boolean emailObfuscation;
+        private @Nullable RulesetRuleActionParametersFromList fromList;
+        private @Nullable RulesetRuleActionParametersFromValue fromValue;
+        private @Nullable List<RulesetRuleActionParametersHeader> headers;
+        private @Nullable String hostHeader;
+        private @Nullable Boolean hotlinkProtection;
+        private @Nullable String id;
+        private @Nullable Integer increment;
+        private @Nullable RulesetRuleActionParametersMatchedData matchedData;
+        private @Nullable Boolean mirage;
+        private @Nullable Boolean opportunisticEncryption;
+        private @Nullable RulesetRuleActionParametersOrigin origin;
+        private @Nullable Boolean originErrorPagePassthru;
+        private @Nullable RulesetRuleActionParametersOverrides overrides;
+        private @Nullable List<String> phases;
+        private @Nullable String polish;
+        private @Nullable List<String> products;
+        private @Nullable List<String> requestFields;
+        private @Nullable Boolean respectStrongEtags;
+        private @Nullable RulesetRuleActionParametersResponse response;
+        private @Nullable List<String> responseFields;
+        private @Nullable Boolean rocketLoader;
+        private @Nullable Map<String,String> rules;
+        private @Nullable String ruleset;
+        private @Nullable List<String> rulesets;
+        private @Nullable String securityLevel;
+        private @Nullable RulesetRuleActionParametersServeStale serveStale;
+        private @Nullable Boolean serverSideExcludes;
+        private @Nullable RulesetRuleActionParametersSni sni;
+        private @Nullable String ssl;
+        private @Nullable Integer statusCode;
+        private @Nullable Boolean sxg;
+        private @Nullable RulesetRuleActionParametersUri uri;
+        private @Nullable String version;
         public Builder() {}
         public Builder(RulesetRuleActionParameters defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.automaticHttpsRewrites = defaults.automaticHttpsRewrites;
-    	      this.autominifies = defaults.autominifies;
+    	      this.autominify = defaults.autominify;
     	      this.bic = defaults.bic;
     	      this.browserTtl = defaults.browserTtl;
     	      this.cache = defaults.cache;
@@ -325,8 +327,8 @@ public final class RulesetRuleActionParameters {
     	      this.products = defaults.products;
     	      this.requestFields = defaults.requestFields;
     	      this.respectStrongEtags = defaults.respectStrongEtags;
+    	      this.response = defaults.response;
     	      this.responseFields = defaults.responseFields;
-    	      this.responses = defaults.responses;
     	      this.rocketLoader = defaults.rocketLoader;
     	      this.rules = defaults.rules;
     	      this.ruleset = defaults.ruleset;
@@ -343,271 +345,265 @@ public final class RulesetRuleActionParameters {
         }
 
         @CustomType.Setter
-        public Builder automaticHttpsRewrites(Boolean automaticHttpsRewrites) {
-            this.automaticHttpsRewrites = Objects.requireNonNull(automaticHttpsRewrites);
+        public Builder automaticHttpsRewrites(@Nullable Boolean automaticHttpsRewrites) {
+            this.automaticHttpsRewrites = automaticHttpsRewrites;
             return this;
         }
         @CustomType.Setter
-        public Builder autominifies(List<RulesetRuleActionParametersAutominify> autominifies) {
-            this.autominifies = Objects.requireNonNull(autominifies);
-            return this;
-        }
-        public Builder autominifies(RulesetRuleActionParametersAutominify... autominifies) {
-            return autominifies(List.of(autominifies));
-        }
-        @CustomType.Setter
-        public Builder bic(Boolean bic) {
-            this.bic = Objects.requireNonNull(bic);
+        public Builder autominify(@Nullable RulesetRuleActionParametersAutominify autominify) {
+            this.autominify = autominify;
             return this;
         }
         @CustomType.Setter
-        public Builder browserTtl(RulesetRuleActionParametersBrowserTtl browserTtl) {
-            this.browserTtl = Objects.requireNonNull(browserTtl);
+        public Builder bic(@Nullable Boolean bic) {
+            this.bic = bic;
             return this;
         }
         @CustomType.Setter
-        public Builder cache(Boolean cache) {
-            this.cache = Objects.requireNonNull(cache);
+        public Builder browserTtl(@Nullable RulesetRuleActionParametersBrowserTtl browserTtl) {
+            this.browserTtl = browserTtl;
             return this;
         }
         @CustomType.Setter
-        public Builder cacheKey(RulesetRuleActionParametersCacheKey cacheKey) {
-            this.cacheKey = Objects.requireNonNull(cacheKey);
+        public Builder cache(@Nullable Boolean cache) {
+            this.cache = cache;
             return this;
         }
         @CustomType.Setter
-        public Builder content(String content) {
-            this.content = Objects.requireNonNull(content);
+        public Builder cacheKey(@Nullable RulesetRuleActionParametersCacheKey cacheKey) {
+            this.cacheKey = cacheKey;
             return this;
         }
         @CustomType.Setter
-        public Builder contentType(String contentType) {
-            this.contentType = Objects.requireNonNull(contentType);
+        public Builder content(@Nullable String content) {
+            this.content = content;
             return this;
         }
         @CustomType.Setter
-        public Builder cookieFields(List<String> cookieFields) {
-            this.cookieFields = Objects.requireNonNull(cookieFields);
+        public Builder contentType(@Nullable String contentType) {
+            this.contentType = contentType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cookieFields(@Nullable List<String> cookieFields) {
+            this.cookieFields = cookieFields;
             return this;
         }
         public Builder cookieFields(String... cookieFields) {
             return cookieFields(List.of(cookieFields));
         }
         @CustomType.Setter
-        public Builder disableApps(Boolean disableApps) {
-            this.disableApps = Objects.requireNonNull(disableApps);
+        public Builder disableApps(@Nullable Boolean disableApps) {
+            this.disableApps = disableApps;
             return this;
         }
         @CustomType.Setter
-        public Builder disableRailgun(Boolean disableRailgun) {
-            this.disableRailgun = Objects.requireNonNull(disableRailgun);
+        public Builder disableRailgun(@Nullable Boolean disableRailgun) {
+            this.disableRailgun = disableRailgun;
             return this;
         }
         @CustomType.Setter
-        public Builder disableZaraz(Boolean disableZaraz) {
-            this.disableZaraz = Objects.requireNonNull(disableZaraz);
+        public Builder disableZaraz(@Nullable Boolean disableZaraz) {
+            this.disableZaraz = disableZaraz;
             return this;
         }
         @CustomType.Setter
-        public Builder edgeTtl(RulesetRuleActionParametersEdgeTtl edgeTtl) {
-            this.edgeTtl = Objects.requireNonNull(edgeTtl);
+        public Builder edgeTtl(@Nullable RulesetRuleActionParametersEdgeTtl edgeTtl) {
+            this.edgeTtl = edgeTtl;
             return this;
         }
         @CustomType.Setter
-        public Builder emailObfuscation(Boolean emailObfuscation) {
-            this.emailObfuscation = Objects.requireNonNull(emailObfuscation);
+        public Builder emailObfuscation(@Nullable Boolean emailObfuscation) {
+            this.emailObfuscation = emailObfuscation;
             return this;
         }
         @CustomType.Setter
-        public Builder fromList(RulesetRuleActionParametersFromList fromList) {
-            this.fromList = Objects.requireNonNull(fromList);
+        public Builder fromList(@Nullable RulesetRuleActionParametersFromList fromList) {
+            this.fromList = fromList;
             return this;
         }
         @CustomType.Setter
-        public Builder fromValue(RulesetRuleActionParametersFromValue fromValue) {
-            this.fromValue = Objects.requireNonNull(fromValue);
+        public Builder fromValue(@Nullable RulesetRuleActionParametersFromValue fromValue) {
+            this.fromValue = fromValue;
             return this;
         }
         @CustomType.Setter
-        public Builder headers(List<RulesetRuleActionParametersHeader> headers) {
-            this.headers = Objects.requireNonNull(headers);
+        public Builder headers(@Nullable List<RulesetRuleActionParametersHeader> headers) {
+            this.headers = headers;
             return this;
         }
         public Builder headers(RulesetRuleActionParametersHeader... headers) {
             return headers(List.of(headers));
         }
         @CustomType.Setter
-        public Builder hostHeader(String hostHeader) {
-            this.hostHeader = Objects.requireNonNull(hostHeader);
+        public Builder hostHeader(@Nullable String hostHeader) {
+            this.hostHeader = hostHeader;
             return this;
         }
         @CustomType.Setter
-        public Builder hotlinkProtection(Boolean hotlinkProtection) {
-            this.hotlinkProtection = Objects.requireNonNull(hotlinkProtection);
+        public Builder hotlinkProtection(@Nullable Boolean hotlinkProtection) {
+            this.hotlinkProtection = hotlinkProtection;
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+        public Builder id(@Nullable String id) {
+            this.id = id;
             return this;
         }
         @CustomType.Setter
-        public Builder increment(Integer increment) {
-            this.increment = Objects.requireNonNull(increment);
+        public Builder increment(@Nullable Integer increment) {
+            this.increment = increment;
             return this;
         }
         @CustomType.Setter
-        public Builder matchedData(RulesetRuleActionParametersMatchedData matchedData) {
-            this.matchedData = Objects.requireNonNull(matchedData);
+        public Builder matchedData(@Nullable RulesetRuleActionParametersMatchedData matchedData) {
+            this.matchedData = matchedData;
             return this;
         }
         @CustomType.Setter
-        public Builder mirage(Boolean mirage) {
-            this.mirage = Objects.requireNonNull(mirage);
+        public Builder mirage(@Nullable Boolean mirage) {
+            this.mirage = mirage;
             return this;
         }
         @CustomType.Setter
-        public Builder opportunisticEncryption(Boolean opportunisticEncryption) {
-            this.opportunisticEncryption = Objects.requireNonNull(opportunisticEncryption);
+        public Builder opportunisticEncryption(@Nullable Boolean opportunisticEncryption) {
+            this.opportunisticEncryption = opportunisticEncryption;
             return this;
         }
         @CustomType.Setter
-        public Builder origin(RulesetRuleActionParametersOrigin origin) {
-            this.origin = Objects.requireNonNull(origin);
+        public Builder origin(@Nullable RulesetRuleActionParametersOrigin origin) {
+            this.origin = origin;
             return this;
         }
         @CustomType.Setter
-        public Builder originErrorPagePassthru(Boolean originErrorPagePassthru) {
-            this.originErrorPagePassthru = Objects.requireNonNull(originErrorPagePassthru);
+        public Builder originErrorPagePassthru(@Nullable Boolean originErrorPagePassthru) {
+            this.originErrorPagePassthru = originErrorPagePassthru;
             return this;
         }
         @CustomType.Setter
-        public Builder overrides(RulesetRuleActionParametersOverrides overrides) {
-            this.overrides = Objects.requireNonNull(overrides);
+        public Builder overrides(@Nullable RulesetRuleActionParametersOverrides overrides) {
+            this.overrides = overrides;
             return this;
         }
         @CustomType.Setter
-        public Builder phases(List<String> phases) {
-            this.phases = Objects.requireNonNull(phases);
+        public Builder phases(@Nullable List<String> phases) {
+            this.phases = phases;
             return this;
         }
         public Builder phases(String... phases) {
             return phases(List.of(phases));
         }
         @CustomType.Setter
-        public Builder polish(String polish) {
-            this.polish = Objects.requireNonNull(polish);
+        public Builder polish(@Nullable String polish) {
+            this.polish = polish;
             return this;
         }
         @CustomType.Setter
-        public Builder products(List<String> products) {
-            this.products = Objects.requireNonNull(products);
+        public Builder products(@Nullable List<String> products) {
+            this.products = products;
             return this;
         }
         public Builder products(String... products) {
             return products(List.of(products));
         }
         @CustomType.Setter
-        public Builder requestFields(List<String> requestFields) {
-            this.requestFields = Objects.requireNonNull(requestFields);
+        public Builder requestFields(@Nullable List<String> requestFields) {
+            this.requestFields = requestFields;
             return this;
         }
         public Builder requestFields(String... requestFields) {
             return requestFields(List.of(requestFields));
         }
         @CustomType.Setter
-        public Builder respectStrongEtags(Boolean respectStrongEtags) {
-            this.respectStrongEtags = Objects.requireNonNull(respectStrongEtags);
+        public Builder respectStrongEtags(@Nullable Boolean respectStrongEtags) {
+            this.respectStrongEtags = respectStrongEtags;
             return this;
         }
         @CustomType.Setter
-        public Builder responseFields(List<String> responseFields) {
-            this.responseFields = Objects.requireNonNull(responseFields);
+        public Builder response(@Nullable RulesetRuleActionParametersResponse response) {
+            this.response = response;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder responseFields(@Nullable List<String> responseFields) {
+            this.responseFields = responseFields;
             return this;
         }
         public Builder responseFields(String... responseFields) {
             return responseFields(List.of(responseFields));
         }
         @CustomType.Setter
-        public Builder responses(List<RulesetRuleActionParametersResponse> responses) {
-            this.responses = Objects.requireNonNull(responses);
-            return this;
-        }
-        public Builder responses(RulesetRuleActionParametersResponse... responses) {
-            return responses(List.of(responses));
-        }
-        @CustomType.Setter
-        public Builder rocketLoader(Boolean rocketLoader) {
-            this.rocketLoader = Objects.requireNonNull(rocketLoader);
+        public Builder rocketLoader(@Nullable Boolean rocketLoader) {
+            this.rocketLoader = rocketLoader;
             return this;
         }
         @CustomType.Setter
-        public Builder rules(Map<String,String> rules) {
-            this.rules = Objects.requireNonNull(rules);
+        public Builder rules(@Nullable Map<String,String> rules) {
+            this.rules = rules;
             return this;
         }
         @CustomType.Setter
-        public Builder ruleset(String ruleset) {
-            this.ruleset = Objects.requireNonNull(ruleset);
+        public Builder ruleset(@Nullable String ruleset) {
+            this.ruleset = ruleset;
             return this;
         }
         @CustomType.Setter
-        public Builder rulesets(List<String> rulesets) {
-            this.rulesets = Objects.requireNonNull(rulesets);
+        public Builder rulesets(@Nullable List<String> rulesets) {
+            this.rulesets = rulesets;
             return this;
         }
         public Builder rulesets(String... rulesets) {
             return rulesets(List.of(rulesets));
         }
         @CustomType.Setter
-        public Builder securityLevel(String securityLevel) {
-            this.securityLevel = Objects.requireNonNull(securityLevel);
+        public Builder securityLevel(@Nullable String securityLevel) {
+            this.securityLevel = securityLevel;
             return this;
         }
         @CustomType.Setter
-        public Builder serveStale(RulesetRuleActionParametersServeStale serveStale) {
-            this.serveStale = Objects.requireNonNull(serveStale);
+        public Builder serveStale(@Nullable RulesetRuleActionParametersServeStale serveStale) {
+            this.serveStale = serveStale;
             return this;
         }
         @CustomType.Setter
-        public Builder serverSideExcludes(Boolean serverSideExcludes) {
-            this.serverSideExcludes = Objects.requireNonNull(serverSideExcludes);
+        public Builder serverSideExcludes(@Nullable Boolean serverSideExcludes) {
+            this.serverSideExcludes = serverSideExcludes;
             return this;
         }
         @CustomType.Setter
-        public Builder sni(RulesetRuleActionParametersSni sni) {
-            this.sni = Objects.requireNonNull(sni);
+        public Builder sni(@Nullable RulesetRuleActionParametersSni sni) {
+            this.sni = sni;
             return this;
         }
         @CustomType.Setter
-        public Builder ssl(String ssl) {
-            this.ssl = Objects.requireNonNull(ssl);
+        public Builder ssl(@Nullable String ssl) {
+            this.ssl = ssl;
             return this;
         }
         @CustomType.Setter
-        public Builder statusCode(Integer statusCode) {
-            this.statusCode = Objects.requireNonNull(statusCode);
+        public Builder statusCode(@Nullable Integer statusCode) {
+            this.statusCode = statusCode;
             return this;
         }
         @CustomType.Setter
-        public Builder sxg(Boolean sxg) {
-            this.sxg = Objects.requireNonNull(sxg);
+        public Builder sxg(@Nullable Boolean sxg) {
+            this.sxg = sxg;
             return this;
         }
         @CustomType.Setter
-        public Builder uri(RulesetRuleActionParametersUri uri) {
-            this.uri = Objects.requireNonNull(uri);
+        public Builder uri(@Nullable RulesetRuleActionParametersUri uri) {
+            this.uri = uri;
             return this;
         }
         @CustomType.Setter
-        public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+        public Builder version(@Nullable String version) {
+            this.version = version;
             return this;
         }
         public RulesetRuleActionParameters build() {
             final var o = new RulesetRuleActionParameters();
             o.automaticHttpsRewrites = automaticHttpsRewrites;
-            o.autominifies = autominifies;
+            o.autominify = autominify;
             o.bic = bic;
             o.browserTtl = browserTtl;
             o.cache = cache;
@@ -638,8 +634,8 @@ public final class RulesetRuleActionParameters {
             o.products = products;
             o.requestFields = requestFields;
             o.respectStrongEtags = respectStrongEtags;
+            o.response = response;
             o.responseFields = responseFields;
-            o.responses = responses;
             o.rocketLoader = rocketLoader;
             o.rules = rules;
             o.ruleset = ruleset;

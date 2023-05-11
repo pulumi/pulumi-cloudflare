@@ -9,31 +9,33 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs();
 
-    @Import(name="checkPresences", required=true)
-    private Output<List<String>> checkPresences;
+    @Import(name="checkPresences")
+    private @Nullable Output<List<String>> checkPresences;
 
-    public Output<List<String>> checkPresences() {
-        return this.checkPresences;
+    public Optional<Output<List<String>>> checkPresences() {
+        return Optional.ofNullable(this.checkPresences);
     }
 
-    @Import(name="excludeOrigin", required=true)
-    private Output<Boolean> excludeOrigin;
+    @Import(name="excludeOrigin")
+    private @Nullable Output<Boolean> excludeOrigin;
 
-    public Output<Boolean> excludeOrigin() {
-        return this.excludeOrigin;
+    public Optional<Output<Boolean>> excludeOrigin() {
+        return Optional.ofNullable(this.excludeOrigin);
     }
 
-    @Import(name="includes", required=true)
-    private Output<List<String>> includes;
+    @Import(name="includes")
+    private @Nullable Output<List<String>> includes;
 
-    public Output<List<String>> includes() {
-        return this.includes;
+    public Optional<Output<List<String>>> includes() {
+        return Optional.ofNullable(this.includes);
     }
 
     private RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs() {}
@@ -62,7 +64,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
             $ = new RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder checkPresences(Output<List<String>> checkPresences) {
+        public Builder checkPresences(@Nullable Output<List<String>> checkPresences) {
             $.checkPresences = checkPresences;
             return this;
         }
@@ -75,7 +77,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
             return checkPresences(List.of(checkPresences));
         }
 
-        public Builder excludeOrigin(Output<Boolean> excludeOrigin) {
+        public Builder excludeOrigin(@Nullable Output<Boolean> excludeOrigin) {
             $.excludeOrigin = excludeOrigin;
             return this;
         }
@@ -84,7 +86,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
             return excludeOrigin(Output.of(excludeOrigin));
         }
 
-        public Builder includes(Output<List<String>> includes) {
+        public Builder includes(@Nullable Output<List<String>> includes) {
             $.includes = includes;
             return this;
         }
@@ -98,9 +100,6 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
         }
 
         public RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs build() {
-            $.checkPresences = Objects.requireNonNull($.checkPresences, "expected parameter 'checkPresences' to be non-null");
-            $.excludeOrigin = Objects.requireNonNull($.excludeOrigin, "expected parameter 'excludeOrigin' to be non-null");
-            $.includes = Objects.requireNonNull($.includes, "expected parameter 'includes' to be non-null");
             return $;
         }
     }

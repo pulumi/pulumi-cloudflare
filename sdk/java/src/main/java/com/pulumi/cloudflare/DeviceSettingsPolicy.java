@@ -80,7 +80,7 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -94,7 +94,7 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      * Whether to allow mode switch for this policy.
      * 
      */
-    @Export(name="allowModeSwitch", type=Boolean.class, parameters={})
+    @Export(name="allowModeSwitch", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowModeSwitch;
 
     /**
@@ -108,7 +108,7 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      * Whether to allow updates under this policy.
      * 
      */
-    @Export(name="allowUpdates", type=Boolean.class, parameters={})
+    @Export(name="allowUpdates", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowUpdates;
 
     /**
@@ -122,7 +122,7 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      * Whether to allow devices to leave the organization. Defaults to `true`.
      * 
      */
-    @Export(name="allowedToLeave", type=Boolean.class, parameters={})
+    @Export(name="allowedToLeave", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowedToLeave;
 
     /**
@@ -136,7 +136,7 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      * The amount of time in minutes to reconnect after having been disabled.
      * 
      */
-    @Export(name="autoConnect", type=Integer.class, parameters={})
+    @Export(name="autoConnect", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoConnect;
 
     /**
@@ -150,7 +150,7 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      * The captive portal value for this policy. Defaults to `180`.
      * 
      */
-    @Export(name="captivePortal", type=Integer.class, parameters={})
+    @Export(name="captivePortal", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> captivePortal;
 
     /**
@@ -164,7 +164,7 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      * Whether the policy refers to the default account policy.
      * 
      */
-    @Export(name="default", type=Boolean.class, parameters={})
+    @Export(name="default", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> default_;
 
     /**
@@ -178,7 +178,7 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      * Whether to disable auto fallback for this policy.
      * 
      */
-    @Export(name="disableAutoFallback", type=Boolean.class, parameters={})
+    @Export(name="disableAutoFallback", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableAutoFallback;
 
     /**
@@ -192,7 +192,7 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      * Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -206,7 +206,7 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      * Whether to add Microsoft IPs to split tunnel exclusions.
      * 
      */
-    @Export(name="excludeOfficeIps", type=Boolean.class, parameters={})
+    @Export(name="excludeOfficeIps", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> excludeOfficeIps;
 
     /**
@@ -220,7 +220,7 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      * Wirefilter expression to match a device against when evaluating whether this policy should take effect for that device.
      * 
      */
-    @Export(name="match", type=String.class, parameters={})
+    @Export(name="match", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> match;
 
     /**
@@ -234,7 +234,7 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      * Name of the policy.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -248,7 +248,7 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      * The precedence of the policy. Lower values indicate higher precedence.
      * 
      */
-    @Export(name="precedence", type=Integer.class, parameters={})
+    @Export(name="precedence", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> precedence;
 
     /**
@@ -262,7 +262,7 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      * The service mode. Available values: `1dot1`, `warp`, `proxy`, `posture_only`, `warp_tunnel_only`. Defaults to `warp`.
      * 
      */
-    @Export(name="serviceModeV2Mode", type=String.class, parameters={})
+    @Export(name="serviceModeV2Mode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceModeV2Mode;
 
     /**
@@ -276,7 +276,7 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      * The port to use for the proxy service mode. Required when using `service_mode_v2_mode`.
      * 
      */
-    @Export(name="serviceModeV2Port", type=Integer.class, parameters={})
+    @Export(name="serviceModeV2Port", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> serviceModeV2Port;
 
     /**
@@ -290,7 +290,7 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      * The support URL that will be opened when sending feedback.
      * 
      */
-    @Export(name="supportUrl", type=String.class, parameters={})
+    @Export(name="supportUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> supportUrl;
 
     /**
@@ -304,7 +304,7 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      * Enablement of the ZT client switch lock.
      * 
      */
-    @Export(name="switchLocked", type=Boolean.class, parameters={})
+    @Export(name="switchLocked", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> switchLocked;
 
     /**

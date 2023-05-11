@@ -13,14 +13,14 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleExposedCredentialCheck
     {
-        public readonly string PasswordExpression;
-        public readonly string UsernameExpression;
+        public readonly string? PasswordExpression;
+        public readonly string? UsernameExpression;
 
         [OutputConstructor]
         private RulesetRuleExposedCredentialCheck(
-            string passwordExpression,
+            string? passwordExpression,
 
-            string usernameExpression)
+            string? usernameExpression)
         {
             PasswordExpression = passwordExpression;
             UsernameExpression = usernameExpression;

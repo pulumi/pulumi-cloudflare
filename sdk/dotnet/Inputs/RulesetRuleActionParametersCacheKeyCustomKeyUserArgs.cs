@@ -12,14 +12,14 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs : global::Pulumi.ResourceArgs
     {
-        [Input("deviceType", required: true)]
-        public Input<bool> DeviceType { get; set; } = null!;
+        [Input("deviceType")]
+        public Input<bool>? DeviceType { get; set; }
 
-        [Input("geo", required: true)]
-        public Input<bool> Geo { get; set; } = null!;
+        [Input("geo")]
+        public Input<bool>? Geo { get; set; }
 
-        [Input("lang", required: true)]
-        public Input<bool> Lang { get; set; } = null!;
+        [Input("lang")]
+        public Input<bool>? Lang { get; set; }
 
         public RulesetRuleActionParametersCacheKeyCustomKeyUserArgs()
         {

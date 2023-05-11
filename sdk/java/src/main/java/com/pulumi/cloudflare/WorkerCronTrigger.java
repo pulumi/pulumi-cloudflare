@@ -75,7 +75,7 @@ public class WorkerCronTrigger extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -89,7 +89,7 @@ public class WorkerCronTrigger extends com.pulumi.resources.CustomResource {
      * Cron expressions to execute the Worker script.
      * 
      */
-    @Export(name="schedules", type=List.class, parameters={String.class})
+    @Export(name="schedules", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> schedules;
 
     /**
@@ -103,7 +103,7 @@ public class WorkerCronTrigger extends com.pulumi.resources.CustomResource {
      * Worker script to target for the schedules.
      * 
      */
-    @Export(name="scriptName", type=String.class, parameters={})
+    @Export(name="scriptName", refs={String.class}, tree="[0]")
     private Output<String> scriptName;
 
     /**

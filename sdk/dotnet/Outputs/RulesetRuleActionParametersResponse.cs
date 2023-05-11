@@ -13,17 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersResponse
     {
-        public readonly string Content;
-        public readonly string ContentType;
-        public readonly int StatusCode;
+        public readonly string? Content;
+        public readonly string? ContentType;
+        public readonly int? StatusCode;
 
         [OutputConstructor]
         private RulesetRuleActionParametersResponse(
-            string content,
+            string? content,
 
-            string contentType,
+            string? contentType,
 
-            int statusCode)
+            int? statusCode)
         {
             Content = content;
             ContentType = contentType;

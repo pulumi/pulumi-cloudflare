@@ -12,10 +12,10 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersOverridesGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("action", required: true)]
-        public Input<string> Action { get; set; } = null!;
+        [Input("action")]
+        public Input<string>? Action { get; set; }
 
-        [Input("categories", required: true)]
+        [Input("categories")]
         private InputList<Inputs.RulesetRuleActionParametersOverridesCategoryGetArgs>? _categories;
         public InputList<Inputs.RulesetRuleActionParametersOverridesCategoryGetArgs> Categories
         {
@@ -23,10 +23,10 @@ namespace Pulumi.Cloudflare.Inputs
             set => _categories = value;
         }
 
-        [Input("enabled", required: true)]
-        public Input<bool> Enabled { get; set; } = null!;
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
-        [Input("rules", required: true)]
+        [Input("rules")]
         private InputList<Inputs.RulesetRuleActionParametersOverridesRuleGetArgs>? _rules;
 
         /// <summary>
@@ -38,8 +38,8 @@ namespace Pulumi.Cloudflare.Inputs
             set => _rules = value;
         }
 
-        [Input("sensitivityLevel", required: true)]
-        public Input<string> SensitivityLevel { get; set; } = null!;
+        [Input("sensitivityLevel")]
+        public Input<string>? SensitivityLevel { get; set; }
 
         public RulesetRuleActionParametersOverridesGetArgs()
         {

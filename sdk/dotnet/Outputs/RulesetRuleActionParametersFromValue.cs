@@ -13,17 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersFromValue
     {
-        public readonly bool PreserveQueryString;
-        public readonly int StatusCode;
-        public readonly Outputs.RulesetRuleActionParametersFromValueTargetUrl TargetUrl;
+        public readonly bool? PreserveQueryString;
+        public readonly int? StatusCode;
+        public readonly Outputs.RulesetRuleActionParametersFromValueTargetUrl? TargetUrl;
 
         [OutputConstructor]
         private RulesetRuleActionParametersFromValue(
-            bool preserveQueryString,
+            bool? preserveQueryString,
 
-            int statusCode,
+            int? statusCode,
 
-            Outputs.RulesetRuleActionParametersFromValueTargetUrl targetUrl)
+            Outputs.RulesetRuleActionParametersFromValueTargetUrl? targetUrl)
         {
             PreserveQueryString = preserveQueryString;
             StatusCode = statusCode;

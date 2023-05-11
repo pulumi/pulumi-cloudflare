@@ -13,10 +13,10 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyHost
     {
-        public readonly bool Resolved;
+        public readonly bool? Resolved;
 
         [OutputConstructor]
-        private RulesetRuleActionParametersCacheKeyCustomKeyHost(bool resolved)
+        private RulesetRuleActionParametersCacheKeyCustomKeyHost(bool? resolved)
         {
             Resolved = resolved;
         }

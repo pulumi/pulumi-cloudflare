@@ -39,15 +39,15 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
      * List of parameters that configure the behavior of the ruleset rule action.
      * 
      */
-    @Import(name="actionParameters", required=true)
-    private Output<RulesetRuleActionParametersArgs> actionParameters;
+    @Import(name="actionParameters")
+    private @Nullable Output<RulesetRuleActionParametersArgs> actionParameters;
 
     /**
      * @return List of parameters that configure the behavior of the ruleset rule action.
      * 
      */
-    public Output<RulesetRuleActionParametersArgs> actionParameters() {
-        return this.actionParameters;
+    public Optional<Output<RulesetRuleActionParametersArgs>> actionParameters() {
+        return Optional.ofNullable(this.actionParameters);
     }
 
     /**
@@ -84,15 +84,15 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
      * List of parameters that configure exposed credential checks.
      * 
      */
-    @Import(name="exposedCredentialCheck", required=true)
-    private Output<RulesetRuleExposedCredentialCheckArgs> exposedCredentialCheck;
+    @Import(name="exposedCredentialCheck")
+    private @Nullable Output<RulesetRuleExposedCredentialCheckArgs> exposedCredentialCheck;
 
     /**
      * @return List of parameters that configure exposed credential checks.
      * 
      */
-    public Output<RulesetRuleExposedCredentialCheckArgs> exposedCredentialCheck() {
-        return this.exposedCredentialCheck;
+    public Optional<Output<RulesetRuleExposedCredentialCheckArgs>> exposedCredentialCheck() {
+        return Optional.ofNullable(this.exposedCredentialCheck);
     }
 
     /**
@@ -144,30 +144,30 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
      * List parameters to configure how the rule generates logs.
      * 
      */
-    @Import(name="logging", required=true)
-    private Output<RulesetRuleLoggingArgs> logging;
+    @Import(name="logging")
+    private @Nullable Output<RulesetRuleLoggingArgs> logging;
 
     /**
      * @return List parameters to configure how the rule generates logs.
      * 
      */
-    public Output<RulesetRuleLoggingArgs> logging() {
-        return this.logging;
+    public Optional<Output<RulesetRuleLoggingArgs>> logging() {
+        return Optional.ofNullable(this.logging);
     }
 
     /**
      * List of parameters that configure HTTP rate limiting behaviour.
      * 
      */
-    @Import(name="ratelimit", required=true)
-    private Output<RulesetRuleRatelimitArgs> ratelimit;
+    @Import(name="ratelimit")
+    private @Nullable Output<RulesetRuleRatelimitArgs> ratelimit;
 
     /**
      * @return List of parameters that configure HTTP rate limiting behaviour.
      * 
      */
-    public Output<RulesetRuleRatelimitArgs> ratelimit() {
-        return this.ratelimit;
+    public Optional<Output<RulesetRuleRatelimitArgs>> ratelimit() {
+        return Optional.ofNullable(this.ratelimit);
     }
 
     /**
@@ -262,7 +262,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder actionParameters(Output<RulesetRuleActionParametersArgs> actionParameters) {
+        public Builder actionParameters(@Nullable Output<RulesetRuleActionParametersArgs> actionParameters) {
             $.actionParameters = actionParameters;
             return this;
         }
@@ -325,7 +325,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder exposedCredentialCheck(Output<RulesetRuleExposedCredentialCheckArgs> exposedCredentialCheck) {
+        public Builder exposedCredentialCheck(@Nullable Output<RulesetRuleExposedCredentialCheckArgs> exposedCredentialCheck) {
             $.exposedCredentialCheck = exposedCredentialCheck;
             return this;
         }
@@ -409,7 +409,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder logging(Output<RulesetRuleLoggingArgs> logging) {
+        public Builder logging(@Nullable Output<RulesetRuleLoggingArgs> logging) {
             $.logging = logging;
             return this;
         }
@@ -430,7 +430,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder ratelimit(Output<RulesetRuleRatelimitArgs> ratelimit) {
+        public Builder ratelimit(@Nullable Output<RulesetRuleRatelimitArgs> ratelimit) {
             $.ratelimit = ratelimit;
             return this;
         }
@@ -488,11 +488,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RulesetRuleArgs build() {
-            $.actionParameters = Objects.requireNonNull($.actionParameters, "expected parameter 'actionParameters' to be non-null");
-            $.exposedCredentialCheck = Objects.requireNonNull($.exposedCredentialCheck, "expected parameter 'exposedCredentialCheck' to be non-null");
             $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
-            $.logging = Objects.requireNonNull($.logging, "expected parameter 'logging' to be non-null");
-            $.ratelimit = Objects.requireNonNull($.ratelimit, "expected parameter 'ratelimit' to be non-null");
             return $;
         }
     }

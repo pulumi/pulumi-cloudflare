@@ -6,18 +6,20 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersUriQuery {
-    private String expression;
-    private String value;
+    private @Nullable String expression;
+    private @Nullable String value;
 
     private RulesetRuleActionParametersUriQuery() {}
-    public String expression() {
-        return this.expression;
+    public Optional<String> expression() {
+        return Optional.ofNullable(this.expression);
     }
-    public String value() {
-        return this.value;
+    public Optional<String> value() {
+        return Optional.ofNullable(this.value);
     }
 
     public static Builder builder() {
@@ -29,8 +31,8 @@ public final class RulesetRuleActionParametersUriQuery {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String expression;
-        private String value;
+        private @Nullable String expression;
+        private @Nullable String value;
         public Builder() {}
         public Builder(RulesetRuleActionParametersUriQuery defaults) {
     	      Objects.requireNonNull(defaults);
@@ -39,13 +41,13 @@ public final class RulesetRuleActionParametersUriQuery {
         }
 
         @CustomType.Setter
-        public Builder expression(String expression) {
-            this.expression = Objects.requireNonNull(expression);
+        public Builder expression(@Nullable String expression) {
+            this.expression = expression;
             return this;
         }
         @CustomType.Setter
-        public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+        public Builder value(@Nullable String value) {
+            this.value = value;
             return this;
         }
         public RulesetRuleActionParametersUriQuery build() {

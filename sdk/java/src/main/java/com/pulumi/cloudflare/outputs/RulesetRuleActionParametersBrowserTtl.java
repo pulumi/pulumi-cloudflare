@@ -7,18 +7,20 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersBrowserTtl {
-    private Integer default_;
-    private String mode;
+    private @Nullable Integer default_;
+    private @Nullable String mode;
 
     private RulesetRuleActionParametersBrowserTtl() {}
-    public Integer default_() {
-        return this.default_;
+    public Optional<Integer> default_() {
+        return Optional.ofNullable(this.default_);
     }
-    public String mode() {
-        return this.mode;
+    public Optional<String> mode() {
+        return Optional.ofNullable(this.mode);
     }
 
     public static Builder builder() {
@@ -30,8 +32,8 @@ public final class RulesetRuleActionParametersBrowserTtl {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer default_;
-        private String mode;
+        private @Nullable Integer default_;
+        private @Nullable String mode;
         public Builder() {}
         public Builder(RulesetRuleActionParametersBrowserTtl defaults) {
     	      Objects.requireNonNull(defaults);
@@ -40,13 +42,13 @@ public final class RulesetRuleActionParametersBrowserTtl {
         }
 
         @CustomType.Setter("default")
-        public Builder default_(Integer default_) {
-            this.default_ = Objects.requireNonNull(default_);
+        public Builder default_(@Nullable Integer default_) {
+            this.default_ = default_;
             return this;
         }
         @CustomType.Setter
-        public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+        public Builder mode(@Nullable String mode) {
+            this.mode = mode;
             return this;
         }
         public RulesetRuleActionParametersBrowserTtl build() {

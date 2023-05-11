@@ -13,23 +13,23 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersCacheKeyCustomKey
     {
-        public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie Cookie;
-        public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader Header;
-        public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost Host;
-        public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString QueryString;
-        public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser User;
+        public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie? Cookie;
+        public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader? Header;
+        public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost? Host;
+        public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString? QueryString;
+        public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser? User;
 
         [OutputConstructor]
         private RulesetRuleActionParametersCacheKeyCustomKey(
-            Outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie cookie,
+            Outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie? cookie,
 
-            Outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader header,
+            Outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader? header,
 
-            Outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost host,
+            Outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost? host,
 
-            Outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString queryString,
+            Outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString? queryString,
 
-            Outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser user)
+            Outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser? user)
         {
             Cookie = cookie;
             Header = header;

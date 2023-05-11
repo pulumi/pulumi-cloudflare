@@ -6,22 +6,24 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersCacheKeyCustomKeyUser {
-    private Boolean deviceType;
-    private Boolean geo;
-    private Boolean lang;
+    private @Nullable Boolean deviceType;
+    private @Nullable Boolean geo;
+    private @Nullable Boolean lang;
 
     private RulesetRuleActionParametersCacheKeyCustomKeyUser() {}
-    public Boolean deviceType() {
-        return this.deviceType;
+    public Optional<Boolean> deviceType() {
+        return Optional.ofNullable(this.deviceType);
     }
-    public Boolean geo() {
-        return this.geo;
+    public Optional<Boolean> geo() {
+        return Optional.ofNullable(this.geo);
     }
-    public Boolean lang() {
-        return this.lang;
+    public Optional<Boolean> lang() {
+        return Optional.ofNullable(this.lang);
     }
 
     public static Builder builder() {
@@ -33,9 +35,9 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyUser {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean deviceType;
-        private Boolean geo;
-        private Boolean lang;
+        private @Nullable Boolean deviceType;
+        private @Nullable Boolean geo;
+        private @Nullable Boolean lang;
         public Builder() {}
         public Builder(RulesetRuleActionParametersCacheKeyCustomKeyUser defaults) {
     	      Objects.requireNonNull(defaults);
@@ -45,18 +47,18 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyUser {
         }
 
         @CustomType.Setter
-        public Builder deviceType(Boolean deviceType) {
-            this.deviceType = Objects.requireNonNull(deviceType);
+        public Builder deviceType(@Nullable Boolean deviceType) {
+            this.deviceType = deviceType;
             return this;
         }
         @CustomType.Setter
-        public Builder geo(Boolean geo) {
-            this.geo = Objects.requireNonNull(geo);
+        public Builder geo(@Nullable Boolean geo) {
+            this.geo = geo;
             return this;
         }
         @CustomType.Setter
-        public Builder lang(Boolean lang) {
-            this.lang = Objects.requireNonNull(lang);
+        public Builder lang(@Nullable Boolean lang) {
+            this.lang = lang;
             return this;
         }
         public RulesetRuleActionParametersCacheKeyCustomKeyUser build() {

@@ -7,18 +7,19 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
-    private List<String> excludes;
-    private List<String> includes;
+    private @Nullable List<String> excludes;
+    private @Nullable List<String> includes;
 
     private RulesetRuleActionParametersCacheKeyCustomKeyQueryString() {}
     public List<String> excludes() {
-        return this.excludes;
+        return this.excludes == null ? List.of() : this.excludes;
     }
     public List<String> includes() {
-        return this.includes;
+        return this.includes == null ? List.of() : this.includes;
     }
 
     public static Builder builder() {
@@ -30,8 +31,8 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> excludes;
-        private List<String> includes;
+        private @Nullable List<String> excludes;
+        private @Nullable List<String> includes;
         public Builder() {}
         public Builder(RulesetRuleActionParametersCacheKeyCustomKeyQueryString defaults) {
     	      Objects.requireNonNull(defaults);
@@ -40,16 +41,16 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
         }
 
         @CustomType.Setter
-        public Builder excludes(List<String> excludes) {
-            this.excludes = Objects.requireNonNull(excludes);
+        public Builder excludes(@Nullable List<String> excludes) {
+            this.excludes = excludes;
             return this;
         }
         public Builder excludes(String... excludes) {
             return excludes(List.of(excludes));
         }
         @CustomType.Setter
-        public Builder includes(List<String> includes) {
-            this.includes = Objects.requireNonNull(includes);
+        public Builder includes(@Nullable List<String> includes) {
+            this.includes = includes;
             return this;
         }
         public Builder includes(String... includes) {

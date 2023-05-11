@@ -8,24 +8,26 @@ import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs();
 
-    @Import(name="checkPresences", required=true)
-    private Output<List<String>> checkPresences;
+    @Import(name="checkPresences")
+    private @Nullable Output<List<String>> checkPresences;
 
-    public Output<List<String>> checkPresences() {
-        return this.checkPresences;
+    public Optional<Output<List<String>>> checkPresences() {
+        return Optional.ofNullable(this.checkPresences);
     }
 
-    @Import(name="includes", required=true)
-    private Output<List<String>> includes;
+    @Import(name="includes")
+    private @Nullable Output<List<String>> includes;
 
-    public Output<List<String>> includes() {
-        return this.includes;
+    public Optional<Output<List<String>>> includes() {
+        return Optional.ofNullable(this.includes);
     }
 
     private RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs() {}
@@ -53,7 +55,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs extend
             $ = new RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder checkPresences(Output<List<String>> checkPresences) {
+        public Builder checkPresences(@Nullable Output<List<String>> checkPresences) {
             $.checkPresences = checkPresences;
             return this;
         }
@@ -66,7 +68,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs extend
             return checkPresences(List.of(checkPresences));
         }
 
-        public Builder includes(Output<List<String>> includes) {
+        public Builder includes(@Nullable Output<List<String>> includes) {
             $.includes = includes;
             return this;
         }
@@ -80,8 +82,6 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs extend
         }
 
         public RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs build() {
-            $.checkPresences = Objects.requireNonNull($.checkPresences, "expected parameter 'checkPresences' to be non-null");
-            $.includes = Objects.requireNonNull($.includes, "expected parameter 'includes' to be non-null");
             return $;
         }
     }

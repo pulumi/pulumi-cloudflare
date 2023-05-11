@@ -21,8 +21,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// List of parameters that configure the behavior of the ruleset rule action.
         /// </summary>
-        [Input("actionParameters", required: true)]
-        public Input<Inputs.RulesetRuleActionParametersArgs> ActionParameters { get; set; } = null!;
+        [Input("actionParameters")]
+        public Input<Inputs.RulesetRuleActionParametersArgs>? ActionParameters { get; set; }
 
         /// <summary>
         /// Brief summary of the ruleset rule and its intended use.
@@ -39,8 +39,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// List of parameters that configure exposed credential checks.
         /// </summary>
-        [Input("exposedCredentialCheck", required: true)]
-        public Input<Inputs.RulesetRuleExposedCredentialCheckArgs> ExposedCredentialCheck { get; set; } = null!;
+        [Input("exposedCredentialCheck")]
+        public Input<Inputs.RulesetRuleExposedCredentialCheckArgs>? ExposedCredentialCheck { get; set; }
 
         /// <summary>
         /// Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
@@ -63,14 +63,14 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// List parameters to configure how the rule generates logs.
         /// </summary>
-        [Input("logging", required: true)]
-        public Input<Inputs.RulesetRuleLoggingArgs> Logging { get; set; } = null!;
+        [Input("logging")]
+        public Input<Inputs.RulesetRuleLoggingArgs>? Logging { get; set; }
 
         /// <summary>
         /// List of parameters that configure HTTP rate limiting behaviour.
         /// </summary>
-        [Input("ratelimit", required: true)]
-        public Input<Inputs.RulesetRuleRatelimitArgs> Ratelimit { get; set; } = null!;
+        [Input("ratelimit")]
+        public Input<Inputs.RulesetRuleRatelimitArgs>? Ratelimit { get; set; }
 
         /// <summary>
         /// Rule reference.

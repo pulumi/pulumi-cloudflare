@@ -64,7 +64,7 @@ public class TeamsProxyEndpoint extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -78,7 +78,7 @@ public class TeamsProxyEndpoint extends com.pulumi.resources.CustomResource {
      * The networks CIDRs that will be allowed to initiate proxy connections.
      * 
      */
-    @Export(name="ips", type=List.class, parameters={String.class})
+    @Export(name="ips", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ips;
 
     /**
@@ -92,7 +92,7 @@ public class TeamsProxyEndpoint extends com.pulumi.resources.CustomResource {
      * Name of the teams proxy endpoint.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -106,7 +106,7 @@ public class TeamsProxyEndpoint extends com.pulumi.resources.CustomResource {
      * The FQDN that proxy clients should be pointed at.
      * 
      */
-    @Export(name="subdomain", type=String.class, parameters={})
+    @Export(name="subdomain", refs={String.class}, tree="[0]")
     private Output<String> subdomain;
 
     /**

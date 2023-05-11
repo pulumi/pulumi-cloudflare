@@ -12,7 +12,7 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleRatelimitGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("characteristics", required: true)]
+        [Input("characteristics")]
         private InputList<string>? _characteristics;
         public InputList<string> Characteristics
         {
@@ -20,26 +20,26 @@ namespace Pulumi.Cloudflare.Inputs
             set => _characteristics = value;
         }
 
-        [Input("countingExpression", required: true)]
-        public Input<string> CountingExpression { get; set; } = null!;
+        [Input("countingExpression")]
+        public Input<string>? CountingExpression { get; set; }
 
-        [Input("mitigationTimeout", required: true)]
-        public Input<int> MitigationTimeout { get; set; } = null!;
+        [Input("mitigationTimeout")]
+        public Input<int>? MitigationTimeout { get; set; }
 
-        [Input("period", required: true)]
-        public Input<int> Period { get; set; } = null!;
+        [Input("period")]
+        public Input<int>? Period { get; set; }
 
-        [Input("requestsPerPeriod", required: true)]
-        public Input<int> RequestsPerPeriod { get; set; } = null!;
+        [Input("requestsPerPeriod")]
+        public Input<int>? RequestsPerPeriod { get; set; }
 
-        [Input("requestsToOrigin", required: true)]
-        public Input<bool> RequestsToOrigin { get; set; } = null!;
+        [Input("requestsToOrigin")]
+        public Input<bool>? RequestsToOrigin { get; set; }
 
-        [Input("scorePerPeriod", required: true)]
-        public Input<int> ScorePerPeriod { get; set; } = null!;
+        [Input("scorePerPeriod")]
+        public Input<int>? ScorePerPeriod { get; set; }
 
-        [Input("scoreResponseHeaderName", required: true)]
-        public Input<string> ScoreResponseHeaderName { get; set; } = null!;
+        [Input("scoreResponseHeaderName")]
+        public Input<string>? ScoreResponseHeaderName { get; set; }
 
         public RulesetRuleRatelimitGetArgs()
         {

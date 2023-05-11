@@ -25,362 +25,364 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersArgs Empty = new RulesetRuleActionParametersArgs();
 
-    @Import(name="automaticHttpsRewrites", required=true)
-    private Output<Boolean> automaticHttpsRewrites;
+    @Import(name="automaticHttpsRewrites")
+    private @Nullable Output<Boolean> automaticHttpsRewrites;
 
-    public Output<Boolean> automaticHttpsRewrites() {
-        return this.automaticHttpsRewrites;
+    public Optional<Output<Boolean>> automaticHttpsRewrites() {
+        return Optional.ofNullable(this.automaticHttpsRewrites);
     }
 
-    @Import(name="autominifies", required=true)
-    private Output<List<RulesetRuleActionParametersAutominifyArgs>> autominifies;
+    @Import(name="autominify")
+    private @Nullable Output<RulesetRuleActionParametersAutominifyArgs> autominify;
 
-    public Output<List<RulesetRuleActionParametersAutominifyArgs>> autominifies() {
-        return this.autominifies;
+    public Optional<Output<RulesetRuleActionParametersAutominifyArgs>> autominify() {
+        return Optional.ofNullable(this.autominify);
     }
 
-    @Import(name="bic", required=true)
-    private Output<Boolean> bic;
+    @Import(name="bic")
+    private @Nullable Output<Boolean> bic;
 
-    public Output<Boolean> bic() {
-        return this.bic;
+    public Optional<Output<Boolean>> bic() {
+        return Optional.ofNullable(this.bic);
     }
 
-    @Import(name="browserTtl", required=true)
-    private Output<RulesetRuleActionParametersBrowserTtlArgs> browserTtl;
+    @Import(name="browserTtl")
+    private @Nullable Output<RulesetRuleActionParametersBrowserTtlArgs> browserTtl;
 
-    public Output<RulesetRuleActionParametersBrowserTtlArgs> browserTtl() {
-        return this.browserTtl;
+    public Optional<Output<RulesetRuleActionParametersBrowserTtlArgs>> browserTtl() {
+        return Optional.ofNullable(this.browserTtl);
     }
 
-    @Import(name="cache", required=true)
-    private Output<Boolean> cache;
+    @Import(name="cache")
+    private @Nullable Output<Boolean> cache;
 
-    public Output<Boolean> cache() {
-        return this.cache;
+    public Optional<Output<Boolean>> cache() {
+        return Optional.ofNullable(this.cache);
     }
 
-    @Import(name="cacheKey", required=true)
-    private Output<RulesetRuleActionParametersCacheKeyArgs> cacheKey;
+    @Import(name="cacheKey")
+    private @Nullable Output<RulesetRuleActionParametersCacheKeyArgs> cacheKey;
 
-    public Output<RulesetRuleActionParametersCacheKeyArgs> cacheKey() {
-        return this.cacheKey;
+    public Optional<Output<RulesetRuleActionParametersCacheKeyArgs>> cacheKey() {
+        return Optional.ofNullable(this.cacheKey);
     }
 
-    @Import(name="content", required=true)
-    private Output<String> content;
+    @Import(name="content")
+    private @Nullable Output<String> content;
 
-    public Output<String> content() {
-        return this.content;
+    public Optional<Output<String>> content() {
+        return Optional.ofNullable(this.content);
     }
 
-    @Import(name="contentType", required=true)
-    private Output<String> contentType;
+    @Import(name="contentType")
+    private @Nullable Output<String> contentType;
 
-    public Output<String> contentType() {
-        return this.contentType;
+    public Optional<Output<String>> contentType() {
+        return Optional.ofNullable(this.contentType);
     }
 
-    @Import(name="cookieFields", required=true)
-    private Output<List<String>> cookieFields;
+    @Import(name="cookieFields")
+    private @Nullable Output<List<String>> cookieFields;
 
-    public Output<List<String>> cookieFields() {
-        return this.cookieFields;
+    public Optional<Output<List<String>>> cookieFields() {
+        return Optional.ofNullable(this.cookieFields);
     }
 
-    @Import(name="disableApps", required=true)
-    private Output<Boolean> disableApps;
+    @Import(name="disableApps")
+    private @Nullable Output<Boolean> disableApps;
 
-    public Output<Boolean> disableApps() {
-        return this.disableApps;
+    public Optional<Output<Boolean>> disableApps() {
+        return Optional.ofNullable(this.disableApps);
     }
 
-    @Import(name="disableRailgun", required=true)
-    private Output<Boolean> disableRailgun;
+    @Import(name="disableRailgun")
+    private @Nullable Output<Boolean> disableRailgun;
 
-    public Output<Boolean> disableRailgun() {
-        return this.disableRailgun;
+    public Optional<Output<Boolean>> disableRailgun() {
+        return Optional.ofNullable(this.disableRailgun);
     }
 
-    @Import(name="disableZaraz", required=true)
-    private Output<Boolean> disableZaraz;
+    @Import(name="disableZaraz")
+    private @Nullable Output<Boolean> disableZaraz;
 
-    public Output<Boolean> disableZaraz() {
-        return this.disableZaraz;
+    public Optional<Output<Boolean>> disableZaraz() {
+        return Optional.ofNullable(this.disableZaraz);
     }
 
-    @Import(name="edgeTtl", required=true)
-    private Output<RulesetRuleActionParametersEdgeTtlArgs> edgeTtl;
+    @Import(name="edgeTtl")
+    private @Nullable Output<RulesetRuleActionParametersEdgeTtlArgs> edgeTtl;
 
-    public Output<RulesetRuleActionParametersEdgeTtlArgs> edgeTtl() {
-        return this.edgeTtl;
+    public Optional<Output<RulesetRuleActionParametersEdgeTtlArgs>> edgeTtl() {
+        return Optional.ofNullable(this.edgeTtl);
     }
 
-    @Import(name="emailObfuscation", required=true)
-    private Output<Boolean> emailObfuscation;
+    @Import(name="emailObfuscation")
+    private @Nullable Output<Boolean> emailObfuscation;
 
-    public Output<Boolean> emailObfuscation() {
-        return this.emailObfuscation;
+    public Optional<Output<Boolean>> emailObfuscation() {
+        return Optional.ofNullable(this.emailObfuscation);
     }
 
-    @Import(name="fromList", required=true)
-    private Output<RulesetRuleActionParametersFromListArgs> fromList;
+    @Import(name="fromList")
+    private @Nullable Output<RulesetRuleActionParametersFromListArgs> fromList;
 
-    public Output<RulesetRuleActionParametersFromListArgs> fromList() {
-        return this.fromList;
+    public Optional<Output<RulesetRuleActionParametersFromListArgs>> fromList() {
+        return Optional.ofNullable(this.fromList);
     }
 
-    @Import(name="fromValue", required=true)
-    private Output<RulesetRuleActionParametersFromValueArgs> fromValue;
+    @Import(name="fromValue")
+    private @Nullable Output<RulesetRuleActionParametersFromValueArgs> fromValue;
 
-    public Output<RulesetRuleActionParametersFromValueArgs> fromValue() {
-        return this.fromValue;
+    public Optional<Output<RulesetRuleActionParametersFromValueArgs>> fromValue() {
+        return Optional.ofNullable(this.fromValue);
     }
 
-    @Import(name="headers", required=true)
-    private Output<List<RulesetRuleActionParametersHeaderArgs>> headers;
+    @Import(name="headers")
+    private @Nullable Output<List<RulesetRuleActionParametersHeaderArgs>> headers;
 
-    public Output<List<RulesetRuleActionParametersHeaderArgs>> headers() {
-        return this.headers;
+    public Optional<Output<List<RulesetRuleActionParametersHeaderArgs>>> headers() {
+        return Optional.ofNullable(this.headers);
     }
 
-    @Import(name="hostHeader", required=true)
-    private Output<String> hostHeader;
+    @Import(name="hostHeader")
+    private @Nullable Output<String> hostHeader;
 
-    public Output<String> hostHeader() {
-        return this.hostHeader;
+    public Optional<Output<String>> hostHeader() {
+        return Optional.ofNullable(this.hostHeader);
     }
 
-    @Import(name="hotlinkProtection", required=true)
-    private Output<Boolean> hotlinkProtection;
+    @Import(name="hotlinkProtection")
+    private @Nullable Output<Boolean> hotlinkProtection;
 
-    public Output<Boolean> hotlinkProtection() {
-        return this.hotlinkProtection;
+    public Optional<Output<Boolean>> hotlinkProtection() {
+        return Optional.ofNullable(this.hotlinkProtection);
     }
 
     /**
      * The identifier of this resource.
      * 
      */
-    @Import(name="id", required=true)
-    private Output<String> id;
+    @Import(name="id")
+    private @Nullable Output<String> id;
 
     /**
      * @return The identifier of this resource.
      * 
      */
-    public Output<String> id() {
-        return this.id;
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
     }
 
-    @Import(name="increment", required=true)
-    private Output<Integer> increment;
+    @Import(name="increment")
+    private @Nullable Output<Integer> increment;
 
-    public Output<Integer> increment() {
-        return this.increment;
+    public Optional<Output<Integer>> increment() {
+        return Optional.ofNullable(this.increment);
     }
 
-    @Import(name="matchedData", required=true)
-    private Output<RulesetRuleActionParametersMatchedDataArgs> matchedData;
+    @Import(name="matchedData")
+    private @Nullable Output<RulesetRuleActionParametersMatchedDataArgs> matchedData;
 
-    public Output<RulesetRuleActionParametersMatchedDataArgs> matchedData() {
-        return this.matchedData;
+    public Optional<Output<RulesetRuleActionParametersMatchedDataArgs>> matchedData() {
+        return Optional.ofNullable(this.matchedData);
     }
 
-    @Import(name="mirage", required=true)
-    private Output<Boolean> mirage;
+    @Import(name="mirage")
+    private @Nullable Output<Boolean> mirage;
 
-    public Output<Boolean> mirage() {
-        return this.mirage;
+    public Optional<Output<Boolean>> mirage() {
+        return Optional.ofNullable(this.mirage);
     }
 
-    @Import(name="opportunisticEncryption", required=true)
-    private Output<Boolean> opportunisticEncryption;
+    @Import(name="opportunisticEncryption")
+    private @Nullable Output<Boolean> opportunisticEncryption;
 
-    public Output<Boolean> opportunisticEncryption() {
-        return this.opportunisticEncryption;
+    public Optional<Output<Boolean>> opportunisticEncryption() {
+        return Optional.ofNullable(this.opportunisticEncryption);
     }
 
-    @Import(name="origin", required=true)
-    private Output<RulesetRuleActionParametersOriginArgs> origin;
+    @Import(name="origin")
+    private @Nullable Output<RulesetRuleActionParametersOriginArgs> origin;
 
-    public Output<RulesetRuleActionParametersOriginArgs> origin() {
-        return this.origin;
+    public Optional<Output<RulesetRuleActionParametersOriginArgs>> origin() {
+        return Optional.ofNullable(this.origin);
     }
 
-    @Import(name="originErrorPagePassthru", required=true)
-    private Output<Boolean> originErrorPagePassthru;
+    @Import(name="originErrorPagePassthru")
+    private @Nullable Output<Boolean> originErrorPagePassthru;
 
-    public Output<Boolean> originErrorPagePassthru() {
-        return this.originErrorPagePassthru;
+    public Optional<Output<Boolean>> originErrorPagePassthru() {
+        return Optional.ofNullable(this.originErrorPagePassthru);
     }
 
-    @Import(name="overrides", required=true)
-    private Output<RulesetRuleActionParametersOverridesArgs> overrides;
+    @Import(name="overrides")
+    private @Nullable Output<RulesetRuleActionParametersOverridesArgs> overrides;
 
-    public Output<RulesetRuleActionParametersOverridesArgs> overrides() {
-        return this.overrides;
+    public Optional<Output<RulesetRuleActionParametersOverridesArgs>> overrides() {
+        return Optional.ofNullable(this.overrides);
     }
 
-    @Import(name="phases", required=true)
-    private Output<List<String>> phases;
+    @Import(name="phases")
+    private @Nullable Output<List<String>> phases;
 
-    public Output<List<String>> phases() {
-        return this.phases;
+    public Optional<Output<List<String>>> phases() {
+        return Optional.ofNullable(this.phases);
     }
 
-    @Import(name="polish", required=true)
-    private Output<String> polish;
+    @Import(name="polish")
+    private @Nullable Output<String> polish;
 
-    public Output<String> polish() {
-        return this.polish;
+    public Optional<Output<String>> polish() {
+        return Optional.ofNullable(this.polish);
     }
 
-    @Import(name="products", required=true)
-    private Output<List<String>> products;
+    @Import(name="products")
+    private @Nullable Output<List<String>> products;
 
-    public Output<List<String>> products() {
-        return this.products;
+    public Optional<Output<List<String>>> products() {
+        return Optional.ofNullable(this.products);
     }
 
-    @Import(name="requestFields", required=true)
-    private Output<List<String>> requestFields;
+    @Import(name="requestFields")
+    private @Nullable Output<List<String>> requestFields;
 
-    public Output<List<String>> requestFields() {
-        return this.requestFields;
+    public Optional<Output<List<String>>> requestFields() {
+        return Optional.ofNullable(this.requestFields);
     }
 
-    @Import(name="respectStrongEtags", required=true)
-    private Output<Boolean> respectStrongEtags;
+    @Import(name="respectStrongEtags")
+    private @Nullable Output<Boolean> respectStrongEtags;
 
-    public Output<Boolean> respectStrongEtags() {
-        return this.respectStrongEtags;
+    public Optional<Output<Boolean>> respectStrongEtags() {
+        return Optional.ofNullable(this.respectStrongEtags);
     }
 
-    @Import(name="responseFields", required=true)
-    private Output<List<String>> responseFields;
+    @Import(name="response")
+    private @Nullable Output<RulesetRuleActionParametersResponseArgs> response;
 
-    public Output<List<String>> responseFields() {
-        return this.responseFields;
+    public Optional<Output<RulesetRuleActionParametersResponseArgs>> response() {
+        return Optional.ofNullable(this.response);
     }
 
-    @Import(name="responses", required=true)
-    private Output<List<RulesetRuleActionParametersResponseArgs>> responses;
+    @Import(name="responseFields")
+    private @Nullable Output<List<String>> responseFields;
 
-    public Output<List<RulesetRuleActionParametersResponseArgs>> responses() {
-        return this.responses;
+    public Optional<Output<List<String>>> responseFields() {
+        return Optional.ofNullable(this.responseFields);
     }
 
-    @Import(name="rocketLoader", required=true)
-    private Output<Boolean> rocketLoader;
+    @Import(name="rocketLoader")
+    private @Nullable Output<Boolean> rocketLoader;
 
-    public Output<Boolean> rocketLoader() {
-        return this.rocketLoader;
+    public Optional<Output<Boolean>> rocketLoader() {
+        return Optional.ofNullable(this.rocketLoader);
     }
 
     /**
      * List of rules to apply to the ruleset.
      * 
      */
-    @Import(name="rules", required=true)
-    private Output<Map<String,String>> rules;
+    @Import(name="rules")
+    private @Nullable Output<Map<String,String>> rules;
 
     /**
      * @return List of rules to apply to the ruleset.
      * 
      */
-    public Output<Map<String,String>> rules() {
-        return this.rules;
+    public Optional<Output<Map<String,String>>> rules() {
+        return Optional.ofNullable(this.rules);
     }
 
-    @Import(name="ruleset", required=true)
-    private Output<String> ruleset;
+    @Import(name="ruleset")
+    private @Nullable Output<String> ruleset;
 
-    public Output<String> ruleset() {
-        return this.ruleset;
+    public Optional<Output<String>> ruleset() {
+        return Optional.ofNullable(this.ruleset);
     }
 
-    @Import(name="rulesets", required=true)
-    private Output<List<String>> rulesets;
+    @Import(name="rulesets")
+    private @Nullable Output<List<String>> rulesets;
 
-    public Output<List<String>> rulesets() {
-        return this.rulesets;
+    public Optional<Output<List<String>>> rulesets() {
+        return Optional.ofNullable(this.rulesets);
     }
 
-    @Import(name="securityLevel", required=true)
-    private Output<String> securityLevel;
+    @Import(name="securityLevel")
+    private @Nullable Output<String> securityLevel;
 
-    public Output<String> securityLevel() {
-        return this.securityLevel;
+    public Optional<Output<String>> securityLevel() {
+        return Optional.ofNullable(this.securityLevel);
     }
 
-    @Import(name="serveStale", required=true)
-    private Output<RulesetRuleActionParametersServeStaleArgs> serveStale;
+    @Import(name="serveStale")
+    private @Nullable Output<RulesetRuleActionParametersServeStaleArgs> serveStale;
 
-    public Output<RulesetRuleActionParametersServeStaleArgs> serveStale() {
-        return this.serveStale;
+    public Optional<Output<RulesetRuleActionParametersServeStaleArgs>> serveStale() {
+        return Optional.ofNullable(this.serveStale);
     }
 
-    @Import(name="serverSideExcludes", required=true)
-    private Output<Boolean> serverSideExcludes;
+    @Import(name="serverSideExcludes")
+    private @Nullable Output<Boolean> serverSideExcludes;
 
-    public Output<Boolean> serverSideExcludes() {
-        return this.serverSideExcludes;
+    public Optional<Output<Boolean>> serverSideExcludes() {
+        return Optional.ofNullable(this.serverSideExcludes);
     }
 
-    @Import(name="sni", required=true)
-    private Output<RulesetRuleActionParametersSniArgs> sni;
+    @Import(name="sni")
+    private @Nullable Output<RulesetRuleActionParametersSniArgs> sni;
 
-    public Output<RulesetRuleActionParametersSniArgs> sni() {
-        return this.sni;
+    public Optional<Output<RulesetRuleActionParametersSniArgs>> sni() {
+        return Optional.ofNullable(this.sni);
     }
 
-    @Import(name="ssl", required=true)
-    private Output<String> ssl;
+    @Import(name="ssl")
+    private @Nullable Output<String> ssl;
 
-    public Output<String> ssl() {
-        return this.ssl;
+    public Optional<Output<String>> ssl() {
+        return Optional.ofNullable(this.ssl);
     }
 
-    @Import(name="statusCode", required=true)
-    private Output<Integer> statusCode;
+    @Import(name="statusCode")
+    private @Nullable Output<Integer> statusCode;
 
-    public Output<Integer> statusCode() {
-        return this.statusCode;
+    public Optional<Output<Integer>> statusCode() {
+        return Optional.ofNullable(this.statusCode);
     }
 
-    @Import(name="sxg", required=true)
-    private Output<Boolean> sxg;
+    @Import(name="sxg")
+    private @Nullable Output<Boolean> sxg;
 
-    public Output<Boolean> sxg() {
-        return this.sxg;
+    public Optional<Output<Boolean>> sxg() {
+        return Optional.ofNullable(this.sxg);
     }
 
-    @Import(name="uri", required=true)
-    private Output<RulesetRuleActionParametersUriArgs> uri;
+    @Import(name="uri")
+    private @Nullable Output<RulesetRuleActionParametersUriArgs> uri;
 
-    public Output<RulesetRuleActionParametersUriArgs> uri() {
-        return this.uri;
+    public Optional<Output<RulesetRuleActionParametersUriArgs>> uri() {
+        return Optional.ofNullable(this.uri);
     }
 
-    @Import(name="version", required=true)
-    private Output<String> version;
+    @Import(name="version")
+    private @Nullable Output<String> version;
 
-    public Output<String> version() {
-        return this.version;
+    public Optional<Output<String>> version() {
+        return Optional.ofNullable(this.version);
     }
 
     private RulesetRuleActionParametersArgs() {}
 
     private RulesetRuleActionParametersArgs(RulesetRuleActionParametersArgs $) {
         this.automaticHttpsRewrites = $.automaticHttpsRewrites;
-        this.autominifies = $.autominifies;
+        this.autominify = $.autominify;
         this.bic = $.bic;
         this.browserTtl = $.browserTtl;
         this.cache = $.cache;
@@ -411,8 +413,8 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.products = $.products;
         this.requestFields = $.requestFields;
         this.respectStrongEtags = $.respectStrongEtags;
+        this.response = $.response;
         this.responseFields = $.responseFields;
-        this.responses = $.responses;
         this.rocketLoader = $.rocketLoader;
         this.rules = $.rules;
         this.ruleset = $.ruleset;
@@ -446,7 +448,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             $ = new RulesetRuleActionParametersArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder automaticHttpsRewrites(Output<Boolean> automaticHttpsRewrites) {
+        public Builder automaticHttpsRewrites(@Nullable Output<Boolean> automaticHttpsRewrites) {
             $.automaticHttpsRewrites = automaticHttpsRewrites;
             return this;
         }
@@ -455,20 +457,16 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return automaticHttpsRewrites(Output.of(automaticHttpsRewrites));
         }
 
-        public Builder autominifies(Output<List<RulesetRuleActionParametersAutominifyArgs>> autominifies) {
-            $.autominifies = autominifies;
+        public Builder autominify(@Nullable Output<RulesetRuleActionParametersAutominifyArgs> autominify) {
+            $.autominify = autominify;
             return this;
         }
 
-        public Builder autominifies(List<RulesetRuleActionParametersAutominifyArgs> autominifies) {
-            return autominifies(Output.of(autominifies));
+        public Builder autominify(RulesetRuleActionParametersAutominifyArgs autominify) {
+            return autominify(Output.of(autominify));
         }
 
-        public Builder autominifies(RulesetRuleActionParametersAutominifyArgs... autominifies) {
-            return autominifies(List.of(autominifies));
-        }
-
-        public Builder bic(Output<Boolean> bic) {
+        public Builder bic(@Nullable Output<Boolean> bic) {
             $.bic = bic;
             return this;
         }
@@ -477,7 +475,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return bic(Output.of(bic));
         }
 
-        public Builder browserTtl(Output<RulesetRuleActionParametersBrowserTtlArgs> browserTtl) {
+        public Builder browserTtl(@Nullable Output<RulesetRuleActionParametersBrowserTtlArgs> browserTtl) {
             $.browserTtl = browserTtl;
             return this;
         }
@@ -486,7 +484,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return browserTtl(Output.of(browserTtl));
         }
 
-        public Builder cache(Output<Boolean> cache) {
+        public Builder cache(@Nullable Output<Boolean> cache) {
             $.cache = cache;
             return this;
         }
@@ -495,7 +493,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return cache(Output.of(cache));
         }
 
-        public Builder cacheKey(Output<RulesetRuleActionParametersCacheKeyArgs> cacheKey) {
+        public Builder cacheKey(@Nullable Output<RulesetRuleActionParametersCacheKeyArgs> cacheKey) {
             $.cacheKey = cacheKey;
             return this;
         }
@@ -504,7 +502,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return cacheKey(Output.of(cacheKey));
         }
 
-        public Builder content(Output<String> content) {
+        public Builder content(@Nullable Output<String> content) {
             $.content = content;
             return this;
         }
@@ -513,7 +511,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return content(Output.of(content));
         }
 
-        public Builder contentType(Output<String> contentType) {
+        public Builder contentType(@Nullable Output<String> contentType) {
             $.contentType = contentType;
             return this;
         }
@@ -522,7 +520,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return contentType(Output.of(contentType));
         }
 
-        public Builder cookieFields(Output<List<String>> cookieFields) {
+        public Builder cookieFields(@Nullable Output<List<String>> cookieFields) {
             $.cookieFields = cookieFields;
             return this;
         }
@@ -535,7 +533,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return cookieFields(List.of(cookieFields));
         }
 
-        public Builder disableApps(Output<Boolean> disableApps) {
+        public Builder disableApps(@Nullable Output<Boolean> disableApps) {
             $.disableApps = disableApps;
             return this;
         }
@@ -544,7 +542,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return disableApps(Output.of(disableApps));
         }
 
-        public Builder disableRailgun(Output<Boolean> disableRailgun) {
+        public Builder disableRailgun(@Nullable Output<Boolean> disableRailgun) {
             $.disableRailgun = disableRailgun;
             return this;
         }
@@ -553,7 +551,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return disableRailgun(Output.of(disableRailgun));
         }
 
-        public Builder disableZaraz(Output<Boolean> disableZaraz) {
+        public Builder disableZaraz(@Nullable Output<Boolean> disableZaraz) {
             $.disableZaraz = disableZaraz;
             return this;
         }
@@ -562,7 +560,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return disableZaraz(Output.of(disableZaraz));
         }
 
-        public Builder edgeTtl(Output<RulesetRuleActionParametersEdgeTtlArgs> edgeTtl) {
+        public Builder edgeTtl(@Nullable Output<RulesetRuleActionParametersEdgeTtlArgs> edgeTtl) {
             $.edgeTtl = edgeTtl;
             return this;
         }
@@ -571,7 +569,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return edgeTtl(Output.of(edgeTtl));
         }
 
-        public Builder emailObfuscation(Output<Boolean> emailObfuscation) {
+        public Builder emailObfuscation(@Nullable Output<Boolean> emailObfuscation) {
             $.emailObfuscation = emailObfuscation;
             return this;
         }
@@ -580,7 +578,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return emailObfuscation(Output.of(emailObfuscation));
         }
 
-        public Builder fromList(Output<RulesetRuleActionParametersFromListArgs> fromList) {
+        public Builder fromList(@Nullable Output<RulesetRuleActionParametersFromListArgs> fromList) {
             $.fromList = fromList;
             return this;
         }
@@ -589,7 +587,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return fromList(Output.of(fromList));
         }
 
-        public Builder fromValue(Output<RulesetRuleActionParametersFromValueArgs> fromValue) {
+        public Builder fromValue(@Nullable Output<RulesetRuleActionParametersFromValueArgs> fromValue) {
             $.fromValue = fromValue;
             return this;
         }
@@ -598,7 +596,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return fromValue(Output.of(fromValue));
         }
 
-        public Builder headers(Output<List<RulesetRuleActionParametersHeaderArgs>> headers) {
+        public Builder headers(@Nullable Output<List<RulesetRuleActionParametersHeaderArgs>> headers) {
             $.headers = headers;
             return this;
         }
@@ -611,7 +609,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return headers(List.of(headers));
         }
 
-        public Builder hostHeader(Output<String> hostHeader) {
+        public Builder hostHeader(@Nullable Output<String> hostHeader) {
             $.hostHeader = hostHeader;
             return this;
         }
@@ -620,7 +618,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return hostHeader(Output.of(hostHeader));
         }
 
-        public Builder hotlinkProtection(Output<Boolean> hotlinkProtection) {
+        public Builder hotlinkProtection(@Nullable Output<Boolean> hotlinkProtection) {
             $.hotlinkProtection = hotlinkProtection;
             return this;
         }
@@ -635,7 +633,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder id(Output<String> id) {
+        public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
@@ -650,7 +648,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return id(Output.of(id));
         }
 
-        public Builder increment(Output<Integer> increment) {
+        public Builder increment(@Nullable Output<Integer> increment) {
             $.increment = increment;
             return this;
         }
@@ -659,7 +657,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return increment(Output.of(increment));
         }
 
-        public Builder matchedData(Output<RulesetRuleActionParametersMatchedDataArgs> matchedData) {
+        public Builder matchedData(@Nullable Output<RulesetRuleActionParametersMatchedDataArgs> matchedData) {
             $.matchedData = matchedData;
             return this;
         }
@@ -668,7 +666,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return matchedData(Output.of(matchedData));
         }
 
-        public Builder mirage(Output<Boolean> mirage) {
+        public Builder mirage(@Nullable Output<Boolean> mirage) {
             $.mirage = mirage;
             return this;
         }
@@ -677,7 +675,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return mirage(Output.of(mirage));
         }
 
-        public Builder opportunisticEncryption(Output<Boolean> opportunisticEncryption) {
+        public Builder opportunisticEncryption(@Nullable Output<Boolean> opportunisticEncryption) {
             $.opportunisticEncryption = opportunisticEncryption;
             return this;
         }
@@ -686,7 +684,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return opportunisticEncryption(Output.of(opportunisticEncryption));
         }
 
-        public Builder origin(Output<RulesetRuleActionParametersOriginArgs> origin) {
+        public Builder origin(@Nullable Output<RulesetRuleActionParametersOriginArgs> origin) {
             $.origin = origin;
             return this;
         }
@@ -695,7 +693,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return origin(Output.of(origin));
         }
 
-        public Builder originErrorPagePassthru(Output<Boolean> originErrorPagePassthru) {
+        public Builder originErrorPagePassthru(@Nullable Output<Boolean> originErrorPagePassthru) {
             $.originErrorPagePassthru = originErrorPagePassthru;
             return this;
         }
@@ -704,7 +702,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return originErrorPagePassthru(Output.of(originErrorPagePassthru));
         }
 
-        public Builder overrides(Output<RulesetRuleActionParametersOverridesArgs> overrides) {
+        public Builder overrides(@Nullable Output<RulesetRuleActionParametersOverridesArgs> overrides) {
             $.overrides = overrides;
             return this;
         }
@@ -713,7 +711,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return overrides(Output.of(overrides));
         }
 
-        public Builder phases(Output<List<String>> phases) {
+        public Builder phases(@Nullable Output<List<String>> phases) {
             $.phases = phases;
             return this;
         }
@@ -726,7 +724,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return phases(List.of(phases));
         }
 
-        public Builder polish(Output<String> polish) {
+        public Builder polish(@Nullable Output<String> polish) {
             $.polish = polish;
             return this;
         }
@@ -735,7 +733,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return polish(Output.of(polish));
         }
 
-        public Builder products(Output<List<String>> products) {
+        public Builder products(@Nullable Output<List<String>> products) {
             $.products = products;
             return this;
         }
@@ -748,7 +746,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return products(List.of(products));
         }
 
-        public Builder requestFields(Output<List<String>> requestFields) {
+        public Builder requestFields(@Nullable Output<List<String>> requestFields) {
             $.requestFields = requestFields;
             return this;
         }
@@ -761,7 +759,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return requestFields(List.of(requestFields));
         }
 
-        public Builder respectStrongEtags(Output<Boolean> respectStrongEtags) {
+        public Builder respectStrongEtags(@Nullable Output<Boolean> respectStrongEtags) {
             $.respectStrongEtags = respectStrongEtags;
             return this;
         }
@@ -770,7 +768,16 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return respectStrongEtags(Output.of(respectStrongEtags));
         }
 
-        public Builder responseFields(Output<List<String>> responseFields) {
+        public Builder response(@Nullable Output<RulesetRuleActionParametersResponseArgs> response) {
+            $.response = response;
+            return this;
+        }
+
+        public Builder response(RulesetRuleActionParametersResponseArgs response) {
+            return response(Output.of(response));
+        }
+
+        public Builder responseFields(@Nullable Output<List<String>> responseFields) {
             $.responseFields = responseFields;
             return this;
         }
@@ -783,20 +790,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return responseFields(List.of(responseFields));
         }
 
-        public Builder responses(Output<List<RulesetRuleActionParametersResponseArgs>> responses) {
-            $.responses = responses;
-            return this;
-        }
-
-        public Builder responses(List<RulesetRuleActionParametersResponseArgs> responses) {
-            return responses(Output.of(responses));
-        }
-
-        public Builder responses(RulesetRuleActionParametersResponseArgs... responses) {
-            return responses(List.of(responses));
-        }
-
-        public Builder rocketLoader(Output<Boolean> rocketLoader) {
+        public Builder rocketLoader(@Nullable Output<Boolean> rocketLoader) {
             $.rocketLoader = rocketLoader;
             return this;
         }
@@ -811,7 +805,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder rules(Output<Map<String,String>> rules) {
+        public Builder rules(@Nullable Output<Map<String,String>> rules) {
             $.rules = rules;
             return this;
         }
@@ -826,7 +820,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return rules(Output.of(rules));
         }
 
-        public Builder ruleset(Output<String> ruleset) {
+        public Builder ruleset(@Nullable Output<String> ruleset) {
             $.ruleset = ruleset;
             return this;
         }
@@ -835,7 +829,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return ruleset(Output.of(ruleset));
         }
 
-        public Builder rulesets(Output<List<String>> rulesets) {
+        public Builder rulesets(@Nullable Output<List<String>> rulesets) {
             $.rulesets = rulesets;
             return this;
         }
@@ -848,7 +842,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return rulesets(List.of(rulesets));
         }
 
-        public Builder securityLevel(Output<String> securityLevel) {
+        public Builder securityLevel(@Nullable Output<String> securityLevel) {
             $.securityLevel = securityLevel;
             return this;
         }
@@ -857,7 +851,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return securityLevel(Output.of(securityLevel));
         }
 
-        public Builder serveStale(Output<RulesetRuleActionParametersServeStaleArgs> serveStale) {
+        public Builder serveStale(@Nullable Output<RulesetRuleActionParametersServeStaleArgs> serveStale) {
             $.serveStale = serveStale;
             return this;
         }
@@ -866,7 +860,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return serveStale(Output.of(serveStale));
         }
 
-        public Builder serverSideExcludes(Output<Boolean> serverSideExcludes) {
+        public Builder serverSideExcludes(@Nullable Output<Boolean> serverSideExcludes) {
             $.serverSideExcludes = serverSideExcludes;
             return this;
         }
@@ -875,7 +869,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return serverSideExcludes(Output.of(serverSideExcludes));
         }
 
-        public Builder sni(Output<RulesetRuleActionParametersSniArgs> sni) {
+        public Builder sni(@Nullable Output<RulesetRuleActionParametersSniArgs> sni) {
             $.sni = sni;
             return this;
         }
@@ -884,7 +878,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return sni(Output.of(sni));
         }
 
-        public Builder ssl(Output<String> ssl) {
+        public Builder ssl(@Nullable Output<String> ssl) {
             $.ssl = ssl;
             return this;
         }
@@ -893,7 +887,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return ssl(Output.of(ssl));
         }
 
-        public Builder statusCode(Output<Integer> statusCode) {
+        public Builder statusCode(@Nullable Output<Integer> statusCode) {
             $.statusCode = statusCode;
             return this;
         }
@@ -902,7 +896,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return statusCode(Output.of(statusCode));
         }
 
-        public Builder sxg(Output<Boolean> sxg) {
+        public Builder sxg(@Nullable Output<Boolean> sxg) {
             $.sxg = sxg;
             return this;
         }
@@ -911,7 +905,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return sxg(Output.of(sxg));
         }
 
-        public Builder uri(Output<RulesetRuleActionParametersUriArgs> uri) {
+        public Builder uri(@Nullable Output<RulesetRuleActionParametersUriArgs> uri) {
             $.uri = uri;
             return this;
         }
@@ -920,7 +914,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return uri(Output.of(uri));
         }
 
-        public Builder version(Output<String> version) {
+        public Builder version(@Nullable Output<String> version) {
             $.version = version;
             return this;
         }
@@ -930,53 +924,6 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         public RulesetRuleActionParametersArgs build() {
-            $.automaticHttpsRewrites = Objects.requireNonNull($.automaticHttpsRewrites, "expected parameter 'automaticHttpsRewrites' to be non-null");
-            $.autominifies = Objects.requireNonNull($.autominifies, "expected parameter 'autominifies' to be non-null");
-            $.bic = Objects.requireNonNull($.bic, "expected parameter 'bic' to be non-null");
-            $.browserTtl = Objects.requireNonNull($.browserTtl, "expected parameter 'browserTtl' to be non-null");
-            $.cache = Objects.requireNonNull($.cache, "expected parameter 'cache' to be non-null");
-            $.cacheKey = Objects.requireNonNull($.cacheKey, "expected parameter 'cacheKey' to be non-null");
-            $.content = Objects.requireNonNull($.content, "expected parameter 'content' to be non-null");
-            $.contentType = Objects.requireNonNull($.contentType, "expected parameter 'contentType' to be non-null");
-            $.cookieFields = Objects.requireNonNull($.cookieFields, "expected parameter 'cookieFields' to be non-null");
-            $.disableApps = Objects.requireNonNull($.disableApps, "expected parameter 'disableApps' to be non-null");
-            $.disableRailgun = Objects.requireNonNull($.disableRailgun, "expected parameter 'disableRailgun' to be non-null");
-            $.disableZaraz = Objects.requireNonNull($.disableZaraz, "expected parameter 'disableZaraz' to be non-null");
-            $.edgeTtl = Objects.requireNonNull($.edgeTtl, "expected parameter 'edgeTtl' to be non-null");
-            $.emailObfuscation = Objects.requireNonNull($.emailObfuscation, "expected parameter 'emailObfuscation' to be non-null");
-            $.fromList = Objects.requireNonNull($.fromList, "expected parameter 'fromList' to be non-null");
-            $.fromValue = Objects.requireNonNull($.fromValue, "expected parameter 'fromValue' to be non-null");
-            $.headers = Objects.requireNonNull($.headers, "expected parameter 'headers' to be non-null");
-            $.hostHeader = Objects.requireNonNull($.hostHeader, "expected parameter 'hostHeader' to be non-null");
-            $.hotlinkProtection = Objects.requireNonNull($.hotlinkProtection, "expected parameter 'hotlinkProtection' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.increment = Objects.requireNonNull($.increment, "expected parameter 'increment' to be non-null");
-            $.matchedData = Objects.requireNonNull($.matchedData, "expected parameter 'matchedData' to be non-null");
-            $.mirage = Objects.requireNonNull($.mirage, "expected parameter 'mirage' to be non-null");
-            $.opportunisticEncryption = Objects.requireNonNull($.opportunisticEncryption, "expected parameter 'opportunisticEncryption' to be non-null");
-            $.origin = Objects.requireNonNull($.origin, "expected parameter 'origin' to be non-null");
-            $.originErrorPagePassthru = Objects.requireNonNull($.originErrorPagePassthru, "expected parameter 'originErrorPagePassthru' to be non-null");
-            $.overrides = Objects.requireNonNull($.overrides, "expected parameter 'overrides' to be non-null");
-            $.phases = Objects.requireNonNull($.phases, "expected parameter 'phases' to be non-null");
-            $.polish = Objects.requireNonNull($.polish, "expected parameter 'polish' to be non-null");
-            $.products = Objects.requireNonNull($.products, "expected parameter 'products' to be non-null");
-            $.requestFields = Objects.requireNonNull($.requestFields, "expected parameter 'requestFields' to be non-null");
-            $.respectStrongEtags = Objects.requireNonNull($.respectStrongEtags, "expected parameter 'respectStrongEtags' to be non-null");
-            $.responseFields = Objects.requireNonNull($.responseFields, "expected parameter 'responseFields' to be non-null");
-            $.responses = Objects.requireNonNull($.responses, "expected parameter 'responses' to be non-null");
-            $.rocketLoader = Objects.requireNonNull($.rocketLoader, "expected parameter 'rocketLoader' to be non-null");
-            $.rules = Objects.requireNonNull($.rules, "expected parameter 'rules' to be non-null");
-            $.ruleset = Objects.requireNonNull($.ruleset, "expected parameter 'ruleset' to be non-null");
-            $.rulesets = Objects.requireNonNull($.rulesets, "expected parameter 'rulesets' to be non-null");
-            $.securityLevel = Objects.requireNonNull($.securityLevel, "expected parameter 'securityLevel' to be non-null");
-            $.serveStale = Objects.requireNonNull($.serveStale, "expected parameter 'serveStale' to be non-null");
-            $.serverSideExcludes = Objects.requireNonNull($.serverSideExcludes, "expected parameter 'serverSideExcludes' to be non-null");
-            $.sni = Objects.requireNonNull($.sni, "expected parameter 'sni' to be non-null");
-            $.ssl = Objects.requireNonNull($.ssl, "expected parameter 'ssl' to be non-null");
-            $.statusCode = Objects.requireNonNull($.statusCode, "expected parameter 'statusCode' to be non-null");
-            $.sxg = Objects.requireNonNull($.sxg, "expected parameter 'sxg' to be non-null");
-            $.uri = Objects.requireNonNull($.uri, "expected parameter 'uri' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
             return $;
         }
     }

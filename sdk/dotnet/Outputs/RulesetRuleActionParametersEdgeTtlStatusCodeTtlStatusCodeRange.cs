@@ -13,14 +13,14 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange
     {
-        public readonly int From;
-        public readonly int To;
+        public readonly int? From;
+        public readonly int? To;
 
         [OutputConstructor]
         private RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange(
-            int from,
+            int? from,
 
-            int to)
+            int? to)
         {
             From = from;
             To = to;

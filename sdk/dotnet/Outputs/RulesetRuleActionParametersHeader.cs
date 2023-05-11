@@ -13,23 +13,23 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersHeader
     {
-        public readonly string Expression;
+        public readonly string? Expression;
         /// <summary>
         /// Name of the ruleset.
         /// </summary>
-        public readonly string Name;
-        public readonly string Operation;
-        public readonly string Value;
+        public readonly string? Name;
+        public readonly string? Operation;
+        public readonly string? Value;
 
         [OutputConstructor]
         private RulesetRuleActionParametersHeader(
-            string expression,
+            string? expression,
 
-            string name,
+            string? name,
 
-            string operation,
+            string? operation,
 
-            string value)
+            string? value)
         {
             Expression = expression;
             Name = name;

@@ -38,7 +38,7 @@ public class NotificationPolicy extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -52,7 +52,7 @@ public class NotificationPolicy extends com.pulumi.resources.CustomResource {
      * The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.
      * 
      */
-    @Export(name="alertType", type=String.class, parameters={})
+    @Export(name="alertType", refs={String.class}, tree="[0]")
     private Output<String> alertType;
 
     /**
@@ -66,7 +66,7 @@ public class NotificationPolicy extends com.pulumi.resources.CustomResource {
      * When the notification policy was created.
      * 
      */
-    @Export(name="created", type=String.class, parameters={})
+    @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     /**
@@ -80,7 +80,7 @@ public class NotificationPolicy extends com.pulumi.resources.CustomResource {
      * Description of the notification policy.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -94,7 +94,7 @@ public class NotificationPolicy extends com.pulumi.resources.CustomResource {
      * The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
      * 
      */
-    @Export(name="emailIntegrations", type=List.class, parameters={NotificationPolicyEmailIntegration.class})
+    @Export(name="emailIntegrations", refs={List.class,NotificationPolicyEmailIntegration.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NotificationPolicyEmailIntegration>> emailIntegrations;
 
     /**
@@ -108,7 +108,7 @@ public class NotificationPolicy extends com.pulumi.resources.CustomResource {
      * The status of the notification policy.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -122,7 +122,7 @@ public class NotificationPolicy extends com.pulumi.resources.CustomResource {
      * An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
      * 
      */
-    @Export(name="filters", type=NotificationPolicyFilters.class, parameters={})
+    @Export(name="filters", refs={NotificationPolicyFilters.class}, tree="[0]")
     private Output</* @Nullable */ NotificationPolicyFilters> filters;
 
     /**
@@ -136,7 +136,7 @@ public class NotificationPolicy extends com.pulumi.resources.CustomResource {
      * When the notification policy was last modified.
      * 
      */
-    @Export(name="modified", type=String.class, parameters={})
+    @Export(name="modified", refs={String.class}, tree="[0]")
     private Output<String> modified;
 
     /**
@@ -150,7 +150,7 @@ public class NotificationPolicy extends com.pulumi.resources.CustomResource {
      * The name of the notification policy.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -164,7 +164,7 @@ public class NotificationPolicy extends com.pulumi.resources.CustomResource {
      * The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
      * 
      */
-    @Export(name="pagerdutyIntegrations", type=List.class, parameters={NotificationPolicyPagerdutyIntegration.class})
+    @Export(name="pagerdutyIntegrations", refs={List.class,NotificationPolicyPagerdutyIntegration.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NotificationPolicyPagerdutyIntegration>> pagerdutyIntegrations;
 
     /**
@@ -178,7 +178,7 @@ public class NotificationPolicy extends com.pulumi.resources.CustomResource {
      * The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
      * 
      */
-    @Export(name="webhooksIntegrations", type=List.class, parameters={NotificationPolicyWebhooksIntegration.class})
+    @Export(name="webhooksIntegrations", refs={List.class,NotificationPolicyWebhooksIntegration.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NotificationPolicyWebhooksIntegration>> webhooksIntegrations;
 
     /**

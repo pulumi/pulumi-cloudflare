@@ -11,45 +11,47 @@ import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKey
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersCacheKeyCustomKeyArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyArgs();
 
-    @Import(name="cookie", required=true)
-    private Output<RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs> cookie;
+    @Import(name="cookie")
+    private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs> cookie;
 
-    public Output<RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs> cookie() {
-        return this.cookie;
+    public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs>> cookie() {
+        return Optional.ofNullable(this.cookie);
     }
 
-    @Import(name="header", required=true)
-    private Output<RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs> header;
+    @Import(name="header")
+    private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs> header;
 
-    public Output<RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs> header() {
-        return this.header;
+    public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs>> header() {
+        return Optional.ofNullable(this.header);
     }
 
-    @Import(name="host", required=true)
-    private Output<RulesetRuleActionParametersCacheKeyCustomKeyHostArgs> host;
+    @Import(name="host")
+    private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyHostArgs> host;
 
-    public Output<RulesetRuleActionParametersCacheKeyCustomKeyHostArgs> host() {
-        return this.host;
+    public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyHostArgs>> host() {
+        return Optional.ofNullable(this.host);
     }
 
-    @Import(name="queryString", required=true)
-    private Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs> queryString;
+    @Import(name="queryString")
+    private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs> queryString;
 
-    public Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs> queryString() {
-        return this.queryString;
+    public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs>> queryString() {
+        return Optional.ofNullable(this.queryString);
     }
 
-    @Import(name="user", required=true)
-    private Output<RulesetRuleActionParametersCacheKeyCustomKeyUserArgs> user;
+    @Import(name="user")
+    private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyUserArgs> user;
 
-    public Output<RulesetRuleActionParametersCacheKeyCustomKeyUserArgs> user() {
-        return this.user;
+    public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyUserArgs>> user() {
+        return Optional.ofNullable(this.user);
     }
 
     private RulesetRuleActionParametersCacheKeyCustomKeyArgs() {}
@@ -80,7 +82,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
             $ = new RulesetRuleActionParametersCacheKeyCustomKeyArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder cookie(Output<RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs> cookie) {
+        public Builder cookie(@Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs> cookie) {
             $.cookie = cookie;
             return this;
         }
@@ -89,7 +91,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
             return cookie(Output.of(cookie));
         }
 
-        public Builder header(Output<RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs> header) {
+        public Builder header(@Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs> header) {
             $.header = header;
             return this;
         }
@@ -98,7 +100,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
             return header(Output.of(header));
         }
 
-        public Builder host(Output<RulesetRuleActionParametersCacheKeyCustomKeyHostArgs> host) {
+        public Builder host(@Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyHostArgs> host) {
             $.host = host;
             return this;
         }
@@ -107,7 +109,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
             return host(Output.of(host));
         }
 
-        public Builder queryString(Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs> queryString) {
+        public Builder queryString(@Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs> queryString) {
             $.queryString = queryString;
             return this;
         }
@@ -116,7 +118,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
             return queryString(Output.of(queryString));
         }
 
-        public Builder user(Output<RulesetRuleActionParametersCacheKeyCustomKeyUserArgs> user) {
+        public Builder user(@Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyUserArgs> user) {
             $.user = user;
             return this;
         }
@@ -126,11 +128,6 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
         }
 
         public RulesetRuleActionParametersCacheKeyCustomKeyArgs build() {
-            $.cookie = Objects.requireNonNull($.cookie, "expected parameter 'cookie' to be non-null");
-            $.header = Objects.requireNonNull($.header, "expected parameter 'header' to be non-null");
-            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
-            $.queryString = Objects.requireNonNull($.queryString, "expected parameter 'queryString' to be non-null");
-            $.user = Objects.requireNonNull($.user, "expected parameter 'user' to be non-null");
             return $;
         }
     }

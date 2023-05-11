@@ -6,24 +6,25 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
-import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
-    private Integer statusCode;
-    private List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRanges;
-    private Integer value;
+    private @Nullable Integer statusCode;
+    private @Nullable RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange statusCodeRange;
+    private @Nullable Integer value;
 
     private RulesetRuleActionParametersEdgeTtlStatusCodeTtl() {}
-    public Integer statusCode() {
-        return this.statusCode;
+    public Optional<Integer> statusCode() {
+        return Optional.ofNullable(this.statusCode);
     }
-    public List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRanges() {
-        return this.statusCodeRanges;
+    public Optional<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRange() {
+        return Optional.ofNullable(this.statusCodeRange);
     }
-    public Integer value() {
-        return this.value;
+    public Optional<Integer> value() {
+        return Optional.ofNullable(this.value);
     }
 
     public static Builder builder() {
@@ -35,39 +36,36 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer statusCode;
-        private List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRanges;
-        private Integer value;
+        private @Nullable Integer statusCode;
+        private @Nullable RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange statusCodeRange;
+        private @Nullable Integer value;
         public Builder() {}
         public Builder(RulesetRuleActionParametersEdgeTtlStatusCodeTtl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.statusCode = defaults.statusCode;
-    	      this.statusCodeRanges = defaults.statusCodeRanges;
+    	      this.statusCodeRange = defaults.statusCodeRange;
     	      this.value = defaults.value;
         }
 
         @CustomType.Setter
-        public Builder statusCode(Integer statusCode) {
-            this.statusCode = Objects.requireNonNull(statusCode);
+        public Builder statusCode(@Nullable Integer statusCode) {
+            this.statusCode = statusCode;
             return this;
         }
         @CustomType.Setter
-        public Builder statusCodeRanges(List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRanges) {
-            this.statusCodeRanges = Objects.requireNonNull(statusCodeRanges);
+        public Builder statusCodeRange(@Nullable RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange statusCodeRange) {
+            this.statusCodeRange = statusCodeRange;
             return this;
         }
-        public Builder statusCodeRanges(RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange... statusCodeRanges) {
-            return statusCodeRanges(List.of(statusCodeRanges));
-        }
         @CustomType.Setter
-        public Builder value(Integer value) {
-            this.value = Objects.requireNonNull(value);
+        public Builder value(@Nullable Integer value) {
+            this.value = value;
             return this;
         }
         public RulesetRuleActionParametersEdgeTtlStatusCodeTtl build() {
             final var o = new RulesetRuleActionParametersEdgeTtlStatusCodeTtl();
             o.statusCode = statusCode;
-            o.statusCodeRanges = statusCodeRanges;
+            o.statusCodeRange = statusCodeRange;
             o.value = value;
             return o;
         }

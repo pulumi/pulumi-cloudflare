@@ -8,24 +8,26 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersOriginArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersOriginArgs Empty = new RulesetRuleActionParametersOriginArgs();
 
-    @Import(name="host", required=true)
-    private Output<String> host;
+    @Import(name="host")
+    private @Nullable Output<String> host;
 
-    public Output<String> host() {
-        return this.host;
+    public Optional<Output<String>> host() {
+        return Optional.ofNullable(this.host);
     }
 
-    @Import(name="port", required=true)
-    private Output<Integer> port;
+    @Import(name="port")
+    private @Nullable Output<Integer> port;
 
-    public Output<Integer> port() {
-        return this.port;
+    public Optional<Output<Integer>> port() {
+        return Optional.ofNullable(this.port);
     }
 
     private RulesetRuleActionParametersOriginArgs() {}
@@ -53,7 +55,7 @@ public final class RulesetRuleActionParametersOriginArgs extends com.pulumi.reso
             $ = new RulesetRuleActionParametersOriginArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder host(Output<String> host) {
+        public Builder host(@Nullable Output<String> host) {
             $.host = host;
             return this;
         }
@@ -62,7 +64,7 @@ public final class RulesetRuleActionParametersOriginArgs extends com.pulumi.reso
             return host(Output.of(host));
         }
 
-        public Builder port(Output<Integer> port) {
+        public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
@@ -72,8 +74,6 @@ public final class RulesetRuleActionParametersOriginArgs extends com.pulumi.reso
         }
 
         public RulesetRuleActionParametersOriginArgs build() {
-            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
             return $;
         }
     }

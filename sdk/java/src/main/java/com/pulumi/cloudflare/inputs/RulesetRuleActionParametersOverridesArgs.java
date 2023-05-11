@@ -11,53 +11,55 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersOverridesArgs Empty = new RulesetRuleActionParametersOverridesArgs();
 
-    @Import(name="action", required=true)
-    private Output<String> action;
+    @Import(name="action")
+    private @Nullable Output<String> action;
 
-    public Output<String> action() {
-        return this.action;
+    public Optional<Output<String>> action() {
+        return Optional.ofNullable(this.action);
     }
 
-    @Import(name="categories", required=true)
-    private Output<List<RulesetRuleActionParametersOverridesCategoryArgs>> categories;
+    @Import(name="categories")
+    private @Nullable Output<List<RulesetRuleActionParametersOverridesCategoryArgs>> categories;
 
-    public Output<List<RulesetRuleActionParametersOverridesCategoryArgs>> categories() {
-        return this.categories;
+    public Optional<Output<List<RulesetRuleActionParametersOverridesCategoryArgs>>> categories() {
+        return Optional.ofNullable(this.categories);
     }
 
-    @Import(name="enabled", required=true)
-    private Output<Boolean> enabled;
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
 
-    public Output<Boolean> enabled() {
-        return this.enabled;
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
     /**
      * List of rules to apply to the ruleset.
      * 
      */
-    @Import(name="rules", required=true)
-    private Output<List<RulesetRuleActionParametersOverridesRuleArgs>> rules;
+    @Import(name="rules")
+    private @Nullable Output<List<RulesetRuleActionParametersOverridesRuleArgs>> rules;
 
     /**
      * @return List of rules to apply to the ruleset.
      * 
      */
-    public Output<List<RulesetRuleActionParametersOverridesRuleArgs>> rules() {
-        return this.rules;
+    public Optional<Output<List<RulesetRuleActionParametersOverridesRuleArgs>>> rules() {
+        return Optional.ofNullable(this.rules);
     }
 
-    @Import(name="sensitivityLevel", required=true)
-    private Output<String> sensitivityLevel;
+    @Import(name="sensitivityLevel")
+    private @Nullable Output<String> sensitivityLevel;
 
-    public Output<String> sensitivityLevel() {
-        return this.sensitivityLevel;
+    public Optional<Output<String>> sensitivityLevel() {
+        return Optional.ofNullable(this.sensitivityLevel);
     }
 
     private RulesetRuleActionParametersOverridesArgs() {}
@@ -88,7 +90,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
             $ = new RulesetRuleActionParametersOverridesArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder action(Output<String> action) {
+        public Builder action(@Nullable Output<String> action) {
             $.action = action;
             return this;
         }
@@ -97,7 +99,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
             return action(Output.of(action));
         }
 
-        public Builder categories(Output<List<RulesetRuleActionParametersOverridesCategoryArgs>> categories) {
+        public Builder categories(@Nullable Output<List<RulesetRuleActionParametersOverridesCategoryArgs>> categories) {
             $.categories = categories;
             return this;
         }
@@ -110,7 +112,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
             return categories(List.of(categories));
         }
 
-        public Builder enabled(Output<Boolean> enabled) {
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
@@ -125,7 +127,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder rules(Output<List<RulesetRuleActionParametersOverridesRuleArgs>> rules) {
+        public Builder rules(@Nullable Output<List<RulesetRuleActionParametersOverridesRuleArgs>> rules) {
             $.rules = rules;
             return this;
         }
@@ -150,7 +152,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
             return rules(List.of(rules));
         }
 
-        public Builder sensitivityLevel(Output<String> sensitivityLevel) {
+        public Builder sensitivityLevel(@Nullable Output<String> sensitivityLevel) {
             $.sensitivityLevel = sensitivityLevel;
             return this;
         }
@@ -160,11 +162,6 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         public RulesetRuleActionParametersOverridesArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.categories = Objects.requireNonNull($.categories, "expected parameter 'categories' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.rules = Objects.requireNonNull($.rules, "expected parameter 'rules' to be non-null");
-            $.sensitivityLevel = Objects.requireNonNull($.sensitivityLevel, "expected parameter 'sensitivityLevel' to be non-null");
             return $;
         }
     }

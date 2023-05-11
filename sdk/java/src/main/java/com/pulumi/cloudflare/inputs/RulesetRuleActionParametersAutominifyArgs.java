@@ -7,31 +7,33 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersAutominifyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersAutominifyArgs Empty = new RulesetRuleActionParametersAutominifyArgs();
 
-    @Import(name="css", required=true)
-    private Output<Boolean> css;
+    @Import(name="css")
+    private @Nullable Output<Boolean> css;
 
-    public Output<Boolean> css() {
-        return this.css;
+    public Optional<Output<Boolean>> css() {
+        return Optional.ofNullable(this.css);
     }
 
-    @Import(name="html", required=true)
-    private Output<Boolean> html;
+    @Import(name="html")
+    private @Nullable Output<Boolean> html;
 
-    public Output<Boolean> html() {
-        return this.html;
+    public Optional<Output<Boolean>> html() {
+        return Optional.ofNullable(this.html);
     }
 
-    @Import(name="js", required=true)
-    private Output<Boolean> js;
+    @Import(name="js")
+    private @Nullable Output<Boolean> js;
 
-    public Output<Boolean> js() {
-        return this.js;
+    public Optional<Output<Boolean>> js() {
+        return Optional.ofNullable(this.js);
     }
 
     private RulesetRuleActionParametersAutominifyArgs() {}
@@ -60,7 +62,7 @@ public final class RulesetRuleActionParametersAutominifyArgs extends com.pulumi.
             $ = new RulesetRuleActionParametersAutominifyArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder css(Output<Boolean> css) {
+        public Builder css(@Nullable Output<Boolean> css) {
             $.css = css;
             return this;
         }
@@ -69,7 +71,7 @@ public final class RulesetRuleActionParametersAutominifyArgs extends com.pulumi.
             return css(Output.of(css));
         }
 
-        public Builder html(Output<Boolean> html) {
+        public Builder html(@Nullable Output<Boolean> html) {
             $.html = html;
             return this;
         }
@@ -78,7 +80,7 @@ public final class RulesetRuleActionParametersAutominifyArgs extends com.pulumi.
             return html(Output.of(html));
         }
 
-        public Builder js(Output<Boolean> js) {
+        public Builder js(@Nullable Output<Boolean> js) {
             $.js = js;
             return this;
         }
@@ -88,9 +90,6 @@ public final class RulesetRuleActionParametersAutominifyArgs extends com.pulumi.
         }
 
         public RulesetRuleActionParametersAutominifyArgs build() {
-            $.css = Objects.requireNonNull($.css, "expected parameter 'css' to be non-null");
-            $.html = Objects.requireNonNull($.html, "expected parameter 'html' to be non-null");
-            $.js = Objects.requireNonNull($.js, "expected parameter 'js' to be non-null");
             return $;
         }
     }

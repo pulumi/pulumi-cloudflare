@@ -58,7 +58,7 @@ public class LogpushOwnershipChallenge extends com.pulumi.resources.CustomResour
      * The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
@@ -72,7 +72,7 @@ public class LogpushOwnershipChallenge extends com.pulumi.resources.CustomResour
      * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination). **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="destinationConf", type=String.class, parameters={})
+    @Export(name="destinationConf", refs={String.class}, tree="[0]")
     private Output<String> destinationConf;
 
     /**
@@ -86,7 +86,7 @@ public class LogpushOwnershipChallenge extends com.pulumi.resources.CustomResour
      * The filename of the ownership challenge which	contains the contents required for Logpush Job creation.
      * 
      */
-    @Export(name="ownershipChallengeFilename", type=String.class, parameters={})
+    @Export(name="ownershipChallengeFilename", refs={String.class}, tree="[0]")
     private Output<String> ownershipChallengeFilename;
 
     /**
@@ -100,7 +100,7 @@ public class LogpushOwnershipChallenge extends com.pulumi.resources.CustomResour
      * The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**

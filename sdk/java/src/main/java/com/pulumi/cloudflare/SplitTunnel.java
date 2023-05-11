@@ -35,7 +35,7 @@ public class SplitTunnel extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -49,7 +49,7 @@ public class SplitTunnel extends com.pulumi.resources.CustomResource {
      * The mode of the split tunnel policy. Available values: `include`, `exclude`.
      * 
      */
-    @Export(name="mode", type=String.class, parameters={})
+    @Export(name="mode", refs={String.class}, tree="[0]")
     private Output<String> mode;
 
     /**
@@ -63,7 +63,7 @@ public class SplitTunnel extends com.pulumi.resources.CustomResource {
      * The settings policy for which to configure this split tunnel policy.
      * 
      */
-    @Export(name="policyId", type=String.class, parameters={})
+    @Export(name="policyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> policyId;
 
     /**
@@ -77,7 +77,7 @@ public class SplitTunnel extends com.pulumi.resources.CustomResource {
      * The value of the tunnel attributes.
      * 
      */
-    @Export(name="tunnels", type=List.class, parameters={SplitTunnelTunnel.class})
+    @Export(name="tunnels", refs={List.class,SplitTunnelTunnel.class}, tree="[0,1]")
     private Output<List<SplitTunnelTunnel>> tunnels;
 
     /**

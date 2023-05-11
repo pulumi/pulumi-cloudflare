@@ -10,38 +10,40 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersOverrides {
-    private String action;
-    private List<RulesetRuleActionParametersOverridesCategory> categories;
-    private Boolean enabled;
+    private @Nullable String action;
+    private @Nullable List<RulesetRuleActionParametersOverridesCategory> categories;
+    private @Nullable Boolean enabled;
     /**
      * @return List of rules to apply to the ruleset.
      * 
      */
-    private List<RulesetRuleActionParametersOverridesRule> rules;
-    private String sensitivityLevel;
+    private @Nullable List<RulesetRuleActionParametersOverridesRule> rules;
+    private @Nullable String sensitivityLevel;
 
     private RulesetRuleActionParametersOverrides() {}
-    public String action() {
-        return this.action;
+    public Optional<String> action() {
+        return Optional.ofNullable(this.action);
     }
     public List<RulesetRuleActionParametersOverridesCategory> categories() {
-        return this.categories;
+        return this.categories == null ? List.of() : this.categories;
     }
-    public Boolean enabled() {
-        return this.enabled;
+    public Optional<Boolean> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
     /**
      * @return List of rules to apply to the ruleset.
      * 
      */
     public List<RulesetRuleActionParametersOverridesRule> rules() {
-        return this.rules;
+        return this.rules == null ? List.of() : this.rules;
     }
-    public String sensitivityLevel() {
-        return this.sensitivityLevel;
+    public Optional<String> sensitivityLevel() {
+        return Optional.ofNullable(this.sensitivityLevel);
     }
 
     public static Builder builder() {
@@ -53,11 +55,11 @@ public final class RulesetRuleActionParametersOverrides {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String action;
-        private List<RulesetRuleActionParametersOverridesCategory> categories;
-        private Boolean enabled;
-        private List<RulesetRuleActionParametersOverridesRule> rules;
-        private String sensitivityLevel;
+        private @Nullable String action;
+        private @Nullable List<RulesetRuleActionParametersOverridesCategory> categories;
+        private @Nullable Boolean enabled;
+        private @Nullable List<RulesetRuleActionParametersOverridesRule> rules;
+        private @Nullable String sensitivityLevel;
         public Builder() {}
         public Builder(RulesetRuleActionParametersOverrides defaults) {
     	      Objects.requireNonNull(defaults);
@@ -69,34 +71,34 @@ public final class RulesetRuleActionParametersOverrides {
         }
 
         @CustomType.Setter
-        public Builder action(String action) {
-            this.action = Objects.requireNonNull(action);
+        public Builder action(@Nullable String action) {
+            this.action = action;
             return this;
         }
         @CustomType.Setter
-        public Builder categories(List<RulesetRuleActionParametersOverridesCategory> categories) {
-            this.categories = Objects.requireNonNull(categories);
+        public Builder categories(@Nullable List<RulesetRuleActionParametersOverridesCategory> categories) {
+            this.categories = categories;
             return this;
         }
         public Builder categories(RulesetRuleActionParametersOverridesCategory... categories) {
             return categories(List.of(categories));
         }
         @CustomType.Setter
-        public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+        public Builder enabled(@Nullable Boolean enabled) {
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
-        public Builder rules(List<RulesetRuleActionParametersOverridesRule> rules) {
-            this.rules = Objects.requireNonNull(rules);
+        public Builder rules(@Nullable List<RulesetRuleActionParametersOverridesRule> rules) {
+            this.rules = rules;
             return this;
         }
         public Builder rules(RulesetRuleActionParametersOverridesRule... rules) {
             return rules(List.of(rules));
         }
         @CustomType.Setter
-        public Builder sensitivityLevel(String sensitivityLevel) {
-            this.sensitivityLevel = Objects.requireNonNull(sensitivityLevel);
+        public Builder sensitivityLevel(@Nullable String sensitivityLevel) {
+            this.sensitivityLevel = sensitivityLevel;
             return this;
         }
         public RulesetRuleActionParametersOverrides build() {

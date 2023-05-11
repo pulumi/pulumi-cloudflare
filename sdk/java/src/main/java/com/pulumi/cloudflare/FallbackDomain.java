@@ -37,7 +37,7 @@ public class FallbackDomain extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -47,7 +47,7 @@ public class FallbackDomain extends com.pulumi.resources.CustomResource {
     public Output<String> accountId() {
         return this.accountId;
     }
-    @Export(name="domains", type=List.class, parameters={FallbackDomainDomain.class})
+    @Export(name="domains", refs={List.class,FallbackDomainDomain.class}, tree="[0,1]")
     private Output<List<FallbackDomainDomain>> domains;
 
     public Output<List<FallbackDomainDomain>> domains() {
@@ -57,7 +57,7 @@ public class FallbackDomain extends com.pulumi.resources.CustomResource {
      * The settings policy for which to configure this fallback domain policy.
      * 
      */
-    @Export(name="policyId", type=String.class, parameters={})
+    @Export(name="policyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> policyId;
 
     /**

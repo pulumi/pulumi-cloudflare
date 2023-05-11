@@ -6,14 +6,16 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersServeStale {
-    private Boolean disableStaleWhileUpdating;
+    private @Nullable Boolean disableStaleWhileUpdating;
 
     private RulesetRuleActionParametersServeStale() {}
-    public Boolean disableStaleWhileUpdating() {
-        return this.disableStaleWhileUpdating;
+    public Optional<Boolean> disableStaleWhileUpdating() {
+        return Optional.ofNullable(this.disableStaleWhileUpdating);
     }
 
     public static Builder builder() {
@@ -25,7 +27,7 @@ public final class RulesetRuleActionParametersServeStale {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean disableStaleWhileUpdating;
+        private @Nullable Boolean disableStaleWhileUpdating;
         public Builder() {}
         public Builder(RulesetRuleActionParametersServeStale defaults) {
     	      Objects.requireNonNull(defaults);
@@ -33,8 +35,8 @@ public final class RulesetRuleActionParametersServeStale {
         }
 
         @CustomType.Setter
-        public Builder disableStaleWhileUpdating(Boolean disableStaleWhileUpdating) {
-            this.disableStaleWhileUpdating = Objects.requireNonNull(disableStaleWhileUpdating);
+        public Builder disableStaleWhileUpdating(@Nullable Boolean disableStaleWhileUpdating) {
+            this.disableStaleWhileUpdating = disableStaleWhileUpdating;
             return this;
         }
         public RulesetRuleActionParametersServeStale build() {

@@ -12,14 +12,14 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersFromValueArgs : global::Pulumi.ResourceArgs
     {
-        [Input("preserveQueryString", required: true)]
-        public Input<bool> PreserveQueryString { get; set; } = null!;
+        [Input("preserveQueryString")]
+        public Input<bool>? PreserveQueryString { get; set; }
 
-        [Input("statusCode", required: true)]
-        public Input<int> StatusCode { get; set; } = null!;
+        [Input("statusCode")]
+        public Input<int>? StatusCode { get; set; }
 
-        [Input("targetUrl", required: true)]
-        public Input<Inputs.RulesetRuleActionParametersFromValueTargetUrlArgs> TargetUrl { get; set; } = null!;
+        [Input("targetUrl")]
+        public Input<Inputs.RulesetRuleActionParametersFromValueTargetUrlArgs>? TargetUrl { get; set; }
 
         public RulesetRuleActionParametersFromValueArgs()
         {

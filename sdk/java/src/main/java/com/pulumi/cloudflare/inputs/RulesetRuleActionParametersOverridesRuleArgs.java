@@ -9,6 +9,8 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,59 +21,59 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
      * Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
      * 
      */
-    @Import(name="action", required=true)
-    private Output<String> action;
+    @Import(name="action")
+    private @Nullable Output<String> action;
 
     /**
      * @return Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
      * 
      */
-    public Output<String> action() {
-        return this.action;
+    public Optional<Output<String>> action() {
+        return Optional.ofNullable(this.action);
     }
 
     /**
      * Whether the rule is active.
      * 
      */
-    @Import(name="enabled", required=true)
-    private Output<Boolean> enabled;
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
 
     /**
      * @return Whether the rule is active.
      * 
      */
-    public Output<Boolean> enabled() {
-        return this.enabled;
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
     /**
      * Unique rule identifier.
      * 
      */
-    @Import(name="id", required=true)
-    private Output<String> id;
+    @Import(name="id")
+    private @Nullable Output<String> id;
 
     /**
      * @return Unique rule identifier.
      * 
      */
-    public Output<String> id() {
-        return this.id;
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
     }
 
-    @Import(name="scoreThreshold", required=true)
-    private Output<Integer> scoreThreshold;
+    @Import(name="scoreThreshold")
+    private @Nullable Output<Integer> scoreThreshold;
 
-    public Output<Integer> scoreThreshold() {
-        return this.scoreThreshold;
+    public Optional<Output<Integer>> scoreThreshold() {
+        return Optional.ofNullable(this.scoreThreshold);
     }
 
-    @Import(name="sensitivityLevel", required=true)
-    private Output<String> sensitivityLevel;
+    @Import(name="sensitivityLevel")
+    private @Nullable Output<String> sensitivityLevel;
 
-    public Output<String> sensitivityLevel() {
-        return this.sensitivityLevel;
+    public Optional<Output<String>> sensitivityLevel() {
+        return Optional.ofNullable(this.sensitivityLevel);
     }
 
     private RulesetRuleActionParametersOverridesRuleArgs() {}
@@ -108,7 +110,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
          * @return builder
          * 
          */
-        public Builder action(Output<String> action) {
+        public Builder action(@Nullable Output<String> action) {
             $.action = action;
             return this;
         }
@@ -129,7 +131,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
          * @return builder
          * 
          */
-        public Builder enabled(Output<Boolean> enabled) {
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
@@ -150,7 +152,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
          * @return builder
          * 
          */
-        public Builder id(Output<String> id) {
+        public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
@@ -165,7 +167,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
             return id(Output.of(id));
         }
 
-        public Builder scoreThreshold(Output<Integer> scoreThreshold) {
+        public Builder scoreThreshold(@Nullable Output<Integer> scoreThreshold) {
             $.scoreThreshold = scoreThreshold;
             return this;
         }
@@ -174,7 +176,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
             return scoreThreshold(Output.of(scoreThreshold));
         }
 
-        public Builder sensitivityLevel(Output<String> sensitivityLevel) {
+        public Builder sensitivityLevel(@Nullable Output<String> sensitivityLevel) {
             $.sensitivityLevel = sensitivityLevel;
             return this;
         }
@@ -184,11 +186,6 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         public RulesetRuleActionParametersOverridesRuleArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.scoreThreshold = Objects.requireNonNull($.scoreThreshold, "expected parameter 'scoreThreshold' to be non-null");
-            $.sensitivityLevel = Objects.requireNonNull($.sensitivityLevel, "expected parameter 'sensitivityLevel' to be non-null");
             return $;
         }
     }

@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// List of parameters that configure the behavior of the ruleset rule action.
         /// </summary>
-        public readonly Outputs.RulesetRuleActionParameters ActionParameters;
+        public readonly Outputs.RulesetRuleActionParameters? ActionParameters;
         /// <summary>
         /// Brief summary of the ruleset rule and its intended use.
         /// </summary>
@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// List of parameters that configure exposed credential checks.
         /// </summary>
-        public readonly Outputs.RulesetRuleExposedCredentialCheck ExposedCredentialCheck;
+        public readonly Outputs.RulesetRuleExposedCredentialCheck? ExposedCredentialCheck;
         /// <summary>
         /// Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
         /// </summary>
@@ -48,11 +48,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// List parameters to configure how the rule generates logs.
         /// </summary>
-        public readonly Outputs.RulesetRuleLogging Logging;
+        public readonly Outputs.RulesetRuleLogging? Logging;
         /// <summary>
         /// List of parameters that configure HTTP rate limiting behaviour.
         /// </summary>
-        public readonly Outputs.RulesetRuleRatelimit Ratelimit;
+        public readonly Outputs.RulesetRuleRatelimit? Ratelimit;
         /// <summary>
         /// Rule reference.
         /// </summary>
@@ -66,13 +66,13 @@ namespace Pulumi.Cloudflare.Outputs
         private RulesetRule(
             string? action,
 
-            Outputs.RulesetRuleActionParameters actionParameters,
+            Outputs.RulesetRuleActionParameters? actionParameters,
 
             string? description,
 
             bool? enabled,
 
-            Outputs.RulesetRuleExposedCredentialCheck exposedCredentialCheck,
+            Outputs.RulesetRuleExposedCredentialCheck? exposedCredentialCheck,
 
             string expression,
 
@@ -80,9 +80,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? lastUpdated,
 
-            Outputs.RulesetRuleLogging logging,
+            Outputs.RulesetRuleLogging? logging,
 
-            Outputs.RulesetRuleRatelimit ratelimit,
+            Outputs.RulesetRuleRatelimit? ratelimit,
 
             string? @ref,
 

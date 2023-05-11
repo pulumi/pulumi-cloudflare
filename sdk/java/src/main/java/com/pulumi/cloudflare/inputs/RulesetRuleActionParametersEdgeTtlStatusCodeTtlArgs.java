@@ -7,40 +7,41 @@ import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersEdgeTtlStatusCode
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
-import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs Empty = new RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs();
 
-    @Import(name="statusCode", required=true)
-    private Output<Integer> statusCode;
+    @Import(name="statusCode")
+    private @Nullable Output<Integer> statusCode;
 
-    public Output<Integer> statusCode() {
-        return this.statusCode;
+    public Optional<Output<Integer>> statusCode() {
+        return Optional.ofNullable(this.statusCode);
     }
 
-    @Import(name="statusCodeRanges", required=true)
-    private Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs>> statusCodeRanges;
+    @Import(name="statusCodeRange")
+    private @Nullable Output<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs> statusCodeRange;
 
-    public Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs>> statusCodeRanges() {
-        return this.statusCodeRanges;
+    public Optional<Output<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs>> statusCodeRange() {
+        return Optional.ofNullable(this.statusCodeRange);
     }
 
-    @Import(name="value", required=true)
-    private Output<Integer> value;
+    @Import(name="value")
+    private @Nullable Output<Integer> value;
 
-    public Output<Integer> value() {
-        return this.value;
+    public Optional<Output<Integer>> value() {
+        return Optional.ofNullable(this.value);
     }
 
     private RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs() {}
 
     private RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs(RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs $) {
         this.statusCode = $.statusCode;
-        this.statusCodeRanges = $.statusCodeRanges;
+        this.statusCodeRange = $.statusCodeRange;
         this.value = $.value;
     }
 
@@ -62,7 +63,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
             $ = new RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder statusCode(Output<Integer> statusCode) {
+        public Builder statusCode(@Nullable Output<Integer> statusCode) {
             $.statusCode = statusCode;
             return this;
         }
@@ -71,20 +72,16 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
             return statusCode(Output.of(statusCode));
         }
 
-        public Builder statusCodeRanges(Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs>> statusCodeRanges) {
-            $.statusCodeRanges = statusCodeRanges;
+        public Builder statusCodeRange(@Nullable Output<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs> statusCodeRange) {
+            $.statusCodeRange = statusCodeRange;
             return this;
         }
 
-        public Builder statusCodeRanges(List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs> statusCodeRanges) {
-            return statusCodeRanges(Output.of(statusCodeRanges));
+        public Builder statusCodeRange(RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs statusCodeRange) {
+            return statusCodeRange(Output.of(statusCodeRange));
         }
 
-        public Builder statusCodeRanges(RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs... statusCodeRanges) {
-            return statusCodeRanges(List.of(statusCodeRanges));
-        }
-
-        public Builder value(Output<Integer> value) {
+        public Builder value(@Nullable Output<Integer> value) {
             $.value = value;
             return this;
         }
@@ -94,9 +91,6 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
         }
 
         public RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs build() {
-            $.statusCode = Objects.requireNonNull($.statusCode, "expected parameter 'statusCode' to be non-null");
-            $.statusCodeRanges = Objects.requireNonNull($.statusCodeRanges, "expected parameter 'statusCodeRanges' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
             return $;
         }
     }

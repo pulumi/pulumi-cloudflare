@@ -13,14 +13,14 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersBrowserTtl
     {
-        public readonly int Default;
-        public readonly string Mode;
+        public readonly int? Default;
+        public readonly string? Mode;
 
         [OutputConstructor]
         private RulesetRuleActionParametersBrowserTtl(
-            int @default,
+            int? @default,
 
-            string mode)
+            string? mode)
         {
             Default = @default;
             Mode = mode;

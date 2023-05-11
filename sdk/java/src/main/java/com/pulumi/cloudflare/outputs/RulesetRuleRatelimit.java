@@ -9,42 +9,44 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleRatelimit {
-    private List<String> characteristics;
-    private String countingExpression;
-    private Integer mitigationTimeout;
-    private Integer period;
-    private Integer requestsPerPeriod;
-    private Boolean requestsToOrigin;
-    private Integer scorePerPeriod;
-    private String scoreResponseHeaderName;
+    private @Nullable List<String> characteristics;
+    private @Nullable String countingExpression;
+    private @Nullable Integer mitigationTimeout;
+    private @Nullable Integer period;
+    private @Nullable Integer requestsPerPeriod;
+    private @Nullable Boolean requestsToOrigin;
+    private @Nullable Integer scorePerPeriod;
+    private @Nullable String scoreResponseHeaderName;
 
     private RulesetRuleRatelimit() {}
     public List<String> characteristics() {
-        return this.characteristics;
+        return this.characteristics == null ? List.of() : this.characteristics;
     }
-    public String countingExpression() {
-        return this.countingExpression;
+    public Optional<String> countingExpression() {
+        return Optional.ofNullable(this.countingExpression);
     }
-    public Integer mitigationTimeout() {
-        return this.mitigationTimeout;
+    public Optional<Integer> mitigationTimeout() {
+        return Optional.ofNullable(this.mitigationTimeout);
     }
-    public Integer period() {
-        return this.period;
+    public Optional<Integer> period() {
+        return Optional.ofNullable(this.period);
     }
-    public Integer requestsPerPeriod() {
-        return this.requestsPerPeriod;
+    public Optional<Integer> requestsPerPeriod() {
+        return Optional.ofNullable(this.requestsPerPeriod);
     }
-    public Boolean requestsToOrigin() {
-        return this.requestsToOrigin;
+    public Optional<Boolean> requestsToOrigin() {
+        return Optional.ofNullable(this.requestsToOrigin);
     }
-    public Integer scorePerPeriod() {
-        return this.scorePerPeriod;
+    public Optional<Integer> scorePerPeriod() {
+        return Optional.ofNullable(this.scorePerPeriod);
     }
-    public String scoreResponseHeaderName() {
-        return this.scoreResponseHeaderName;
+    public Optional<String> scoreResponseHeaderName() {
+        return Optional.ofNullable(this.scoreResponseHeaderName);
     }
 
     public static Builder builder() {
@@ -56,14 +58,14 @@ public final class RulesetRuleRatelimit {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> characteristics;
-        private String countingExpression;
-        private Integer mitigationTimeout;
-        private Integer period;
-        private Integer requestsPerPeriod;
-        private Boolean requestsToOrigin;
-        private Integer scorePerPeriod;
-        private String scoreResponseHeaderName;
+        private @Nullable List<String> characteristics;
+        private @Nullable String countingExpression;
+        private @Nullable Integer mitigationTimeout;
+        private @Nullable Integer period;
+        private @Nullable Integer requestsPerPeriod;
+        private @Nullable Boolean requestsToOrigin;
+        private @Nullable Integer scorePerPeriod;
+        private @Nullable String scoreResponseHeaderName;
         public Builder() {}
         public Builder(RulesetRuleRatelimit defaults) {
     	      Objects.requireNonNull(defaults);
@@ -78,46 +80,46 @@ public final class RulesetRuleRatelimit {
         }
 
         @CustomType.Setter
-        public Builder characteristics(List<String> characteristics) {
-            this.characteristics = Objects.requireNonNull(characteristics);
+        public Builder characteristics(@Nullable List<String> characteristics) {
+            this.characteristics = characteristics;
             return this;
         }
         public Builder characteristics(String... characteristics) {
             return characteristics(List.of(characteristics));
         }
         @CustomType.Setter
-        public Builder countingExpression(String countingExpression) {
-            this.countingExpression = Objects.requireNonNull(countingExpression);
+        public Builder countingExpression(@Nullable String countingExpression) {
+            this.countingExpression = countingExpression;
             return this;
         }
         @CustomType.Setter
-        public Builder mitigationTimeout(Integer mitigationTimeout) {
-            this.mitigationTimeout = Objects.requireNonNull(mitigationTimeout);
+        public Builder mitigationTimeout(@Nullable Integer mitigationTimeout) {
+            this.mitigationTimeout = mitigationTimeout;
             return this;
         }
         @CustomType.Setter
-        public Builder period(Integer period) {
-            this.period = Objects.requireNonNull(period);
+        public Builder period(@Nullable Integer period) {
+            this.period = period;
             return this;
         }
         @CustomType.Setter
-        public Builder requestsPerPeriod(Integer requestsPerPeriod) {
-            this.requestsPerPeriod = Objects.requireNonNull(requestsPerPeriod);
+        public Builder requestsPerPeriod(@Nullable Integer requestsPerPeriod) {
+            this.requestsPerPeriod = requestsPerPeriod;
             return this;
         }
         @CustomType.Setter
-        public Builder requestsToOrigin(Boolean requestsToOrigin) {
-            this.requestsToOrigin = Objects.requireNonNull(requestsToOrigin);
+        public Builder requestsToOrigin(@Nullable Boolean requestsToOrigin) {
+            this.requestsToOrigin = requestsToOrigin;
             return this;
         }
         @CustomType.Setter
-        public Builder scorePerPeriod(Integer scorePerPeriod) {
-            this.scorePerPeriod = Objects.requireNonNull(scorePerPeriod);
+        public Builder scorePerPeriod(@Nullable Integer scorePerPeriod) {
+            this.scorePerPeriod = scorePerPeriod;
             return this;
         }
         @CustomType.Setter
-        public Builder scoreResponseHeaderName(String scoreResponseHeaderName) {
-            this.scoreResponseHeaderName = Objects.requireNonNull(scoreResponseHeaderName);
+        public Builder scoreResponseHeaderName(@Nullable String scoreResponseHeaderName) {
+            this.scoreResponseHeaderName = scoreResponseHeaderName;
             return this;
         }
         public RulesetRuleRatelimit build() {

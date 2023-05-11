@@ -8,22 +8,24 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersFromValue {
-    private Boolean preserveQueryString;
-    private Integer statusCode;
-    private RulesetRuleActionParametersFromValueTargetUrl targetUrl;
+    private @Nullable Boolean preserveQueryString;
+    private @Nullable Integer statusCode;
+    private @Nullable RulesetRuleActionParametersFromValueTargetUrl targetUrl;
 
     private RulesetRuleActionParametersFromValue() {}
-    public Boolean preserveQueryString() {
-        return this.preserveQueryString;
+    public Optional<Boolean> preserveQueryString() {
+        return Optional.ofNullable(this.preserveQueryString);
     }
-    public Integer statusCode() {
-        return this.statusCode;
+    public Optional<Integer> statusCode() {
+        return Optional.ofNullable(this.statusCode);
     }
-    public RulesetRuleActionParametersFromValueTargetUrl targetUrl() {
-        return this.targetUrl;
+    public Optional<RulesetRuleActionParametersFromValueTargetUrl> targetUrl() {
+        return Optional.ofNullable(this.targetUrl);
     }
 
     public static Builder builder() {
@@ -35,9 +37,9 @@ public final class RulesetRuleActionParametersFromValue {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean preserveQueryString;
-        private Integer statusCode;
-        private RulesetRuleActionParametersFromValueTargetUrl targetUrl;
+        private @Nullable Boolean preserveQueryString;
+        private @Nullable Integer statusCode;
+        private @Nullable RulesetRuleActionParametersFromValueTargetUrl targetUrl;
         public Builder() {}
         public Builder(RulesetRuleActionParametersFromValue defaults) {
     	      Objects.requireNonNull(defaults);
@@ -47,18 +49,18 @@ public final class RulesetRuleActionParametersFromValue {
         }
 
         @CustomType.Setter
-        public Builder preserveQueryString(Boolean preserveQueryString) {
-            this.preserveQueryString = Objects.requireNonNull(preserveQueryString);
+        public Builder preserveQueryString(@Nullable Boolean preserveQueryString) {
+            this.preserveQueryString = preserveQueryString;
             return this;
         }
         @CustomType.Setter
-        public Builder statusCode(Integer statusCode) {
-            this.statusCode = Objects.requireNonNull(statusCode);
+        public Builder statusCode(@Nullable Integer statusCode) {
+            this.statusCode = statusCode;
             return this;
         }
         @CustomType.Setter
-        public Builder targetUrl(RulesetRuleActionParametersFromValueTargetUrl targetUrl) {
-            this.targetUrl = Objects.requireNonNull(targetUrl);
+        public Builder targetUrl(@Nullable RulesetRuleActionParametersFromValueTargetUrl targetUrl) {
+            this.targetUrl = targetUrl;
             return this;
         }
         public RulesetRuleActionParametersFromValue build() {

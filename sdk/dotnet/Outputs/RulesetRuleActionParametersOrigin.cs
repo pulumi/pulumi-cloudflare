@@ -13,14 +13,14 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersOrigin
     {
-        public readonly string Host;
-        public readonly int Port;
+        public readonly string? Host;
+        public readonly int? Port;
 
         [OutputConstructor]
         private RulesetRuleActionParametersOrigin(
-            string host,
+            string? host,
 
-            int port)
+            int? port)
         {
             Host = host;
             Port = port;

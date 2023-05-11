@@ -10,31 +10,33 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersEdgeTtlArgs Empty = new RulesetRuleActionParametersEdgeTtlArgs();
 
-    @Import(name="default", required=true)
-    private Output<Integer> default_;
+    @Import(name="default")
+    private @Nullable Output<Integer> default_;
 
-    public Output<Integer> default_() {
-        return this.default_;
+    public Optional<Output<Integer>> default_() {
+        return Optional.ofNullable(this.default_);
     }
 
-    @Import(name="mode", required=true)
-    private Output<String> mode;
+    @Import(name="mode")
+    private @Nullable Output<String> mode;
 
-    public Output<String> mode() {
-        return this.mode;
+    public Optional<Output<String>> mode() {
+        return Optional.ofNullable(this.mode);
     }
 
-    @Import(name="statusCodeTtls", required=true)
-    private Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs>> statusCodeTtls;
+    @Import(name="statusCodeTtls")
+    private @Nullable Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs>> statusCodeTtls;
 
-    public Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs>> statusCodeTtls() {
-        return this.statusCodeTtls;
+    public Optional<Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs>>> statusCodeTtls() {
+        return Optional.ofNullable(this.statusCodeTtls);
     }
 
     private RulesetRuleActionParametersEdgeTtlArgs() {}
@@ -63,7 +65,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
             $ = new RulesetRuleActionParametersEdgeTtlArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder default_(Output<Integer> default_) {
+        public Builder default_(@Nullable Output<Integer> default_) {
             $.default_ = default_;
             return this;
         }
@@ -72,7 +74,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
             return default_(Output.of(default_));
         }
 
-        public Builder mode(Output<String> mode) {
+        public Builder mode(@Nullable Output<String> mode) {
             $.mode = mode;
             return this;
         }
@@ -81,7 +83,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
             return mode(Output.of(mode));
         }
 
-        public Builder statusCodeTtls(Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs>> statusCodeTtls) {
+        public Builder statusCodeTtls(@Nullable Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs>> statusCodeTtls) {
             $.statusCodeTtls = statusCodeTtls;
             return this;
         }
@@ -95,9 +97,6 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         public RulesetRuleActionParametersEdgeTtlArgs build() {
-            $.default_ = Objects.requireNonNull($.default_, "expected parameter 'default' to be non-null");
-            $.mode = Objects.requireNonNull($.mode, "expected parameter 'mode' to be non-null");
-            $.statusCodeTtls = Objects.requireNonNull($.statusCodeTtls, "expected parameter 'statusCodeTtls' to be non-null");
             return $;
         }
     }

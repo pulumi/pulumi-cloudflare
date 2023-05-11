@@ -7,17 +7,19 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleLoggingArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleLoggingArgs Empty = new RulesetRuleLoggingArgs();
 
-    @Import(name="enabled", required=true)
-    private Output<Boolean> enabled;
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
 
-    public Output<Boolean> enabled() {
-        return this.enabled;
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
     private RulesetRuleLoggingArgs() {}
@@ -44,7 +46,7 @@ public final class RulesetRuleLoggingArgs extends com.pulumi.resources.ResourceA
             $ = new RulesetRuleLoggingArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder enabled(Output<Boolean> enabled) {
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
@@ -54,7 +56,6 @@ public final class RulesetRuleLoggingArgs extends com.pulumi.resources.ResourceA
         }
 
         public RulesetRuleLoggingArgs build() {
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
             return $;
         }
     }

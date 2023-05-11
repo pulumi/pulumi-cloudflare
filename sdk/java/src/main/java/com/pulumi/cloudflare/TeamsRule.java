@@ -75,7 +75,7 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -89,7 +89,7 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
      * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`.
      * 
      */
-    @Export(name="action", type=String.class, parameters={})
+    @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
@@ -103,7 +103,7 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
      * The description of the teams rule.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -117,7 +117,7 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
      * The wirefilter expression to be used for device_posture check matching.
      * 
      */
-    @Export(name="devicePosture", type=String.class, parameters={})
+    @Export(name="devicePosture", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> devicePosture;
 
     /**
@@ -131,7 +131,7 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
      * Indicator of rule enablement.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -145,7 +145,7 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
      * The protocol or layer to evaluate the traffic and identity expressions.
      * 
      */
-    @Export(name="filters", type=List.class, parameters={String.class})
+    @Export(name="filters", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> filters;
 
     /**
@@ -159,7 +159,7 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
      * The wirefilter expression to be used for identity matching.
      * 
      */
-    @Export(name="identity", type=String.class, parameters={})
+    @Export(name="identity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> identity;
 
     /**
@@ -173,7 +173,7 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
      * The name of the teams rule.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -187,7 +187,7 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
      * The evaluation precedence of the teams rule.
      * 
      */
-    @Export(name="precedence", type=Integer.class, parameters={})
+    @Export(name="precedence", refs={Integer.class}, tree="[0]")
     private Output<Integer> precedence;
 
     /**
@@ -201,7 +201,7 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
      * Additional rule settings.
      * 
      */
-    @Export(name="ruleSettings", type=TeamsRuleRuleSettings.class, parameters={})
+    @Export(name="ruleSettings", refs={TeamsRuleRuleSettings.class}, tree="[0]")
     private Output</* @Nullable */ TeamsRuleRuleSettings> ruleSettings;
 
     /**
@@ -215,7 +215,7 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
      * The wirefilter expression to be used for traffic matching.
      * 
      */
-    @Export(name="traffic", type=String.class, parameters={})
+    @Export(name="traffic", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> traffic;
 
     /**
@@ -225,7 +225,7 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> traffic() {
         return Codegen.optional(this.traffic);
     }
-    @Export(name="version", type=Integer.class, parameters={})
+    @Export(name="version", refs={Integer.class}, tree="[0]")
     private Output<Integer> version;
 
     public Output<Integer> version() {

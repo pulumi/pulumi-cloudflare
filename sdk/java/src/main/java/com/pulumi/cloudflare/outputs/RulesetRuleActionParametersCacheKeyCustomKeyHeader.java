@@ -8,22 +8,24 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersCacheKeyCustomKeyHeader {
-    private List<String> checkPresences;
-    private Boolean excludeOrigin;
-    private List<String> includes;
+    private @Nullable List<String> checkPresences;
+    private @Nullable Boolean excludeOrigin;
+    private @Nullable List<String> includes;
 
     private RulesetRuleActionParametersCacheKeyCustomKeyHeader() {}
     public List<String> checkPresences() {
-        return this.checkPresences;
+        return this.checkPresences == null ? List.of() : this.checkPresences;
     }
-    public Boolean excludeOrigin() {
-        return this.excludeOrigin;
+    public Optional<Boolean> excludeOrigin() {
+        return Optional.ofNullable(this.excludeOrigin);
     }
     public List<String> includes() {
-        return this.includes;
+        return this.includes == null ? List.of() : this.includes;
     }
 
     public static Builder builder() {
@@ -35,9 +37,9 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeader {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> checkPresences;
-        private Boolean excludeOrigin;
-        private List<String> includes;
+        private @Nullable List<String> checkPresences;
+        private @Nullable Boolean excludeOrigin;
+        private @Nullable List<String> includes;
         public Builder() {}
         public Builder(RulesetRuleActionParametersCacheKeyCustomKeyHeader defaults) {
     	      Objects.requireNonNull(defaults);
@@ -47,21 +49,21 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeader {
         }
 
         @CustomType.Setter
-        public Builder checkPresences(List<String> checkPresences) {
-            this.checkPresences = Objects.requireNonNull(checkPresences);
+        public Builder checkPresences(@Nullable List<String> checkPresences) {
+            this.checkPresences = checkPresences;
             return this;
         }
         public Builder checkPresences(String... checkPresences) {
             return checkPresences(List.of(checkPresences));
         }
         @CustomType.Setter
-        public Builder excludeOrigin(Boolean excludeOrigin) {
-            this.excludeOrigin = Objects.requireNonNull(excludeOrigin);
+        public Builder excludeOrigin(@Nullable Boolean excludeOrigin) {
+            this.excludeOrigin = excludeOrigin;
             return this;
         }
         @CustomType.Setter
-        public Builder includes(List<String> includes) {
-            this.includes = Objects.requireNonNull(includes);
+        public Builder includes(@Nullable List<String> includes) {
+            this.includes = includes;
             return this;
         }
         public Builder includes(String... includes) {

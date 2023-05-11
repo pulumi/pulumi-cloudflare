@@ -12,11 +12,11 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleExposedCredentialCheckGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("passwordExpression", required: true)]
-        public Input<string> PasswordExpression { get; set; } = null!;
+        [Input("passwordExpression")]
+        public Input<string>? PasswordExpression { get; set; }
 
-        [Input("usernameExpression", required: true)]
-        public Input<string> UsernameExpression { get; set; } = null!;
+        [Input("usernameExpression")]
+        public Input<string>? UsernameExpression { get; set; }
 
         public RulesetRuleExposedCredentialCheckGetArgs()
         {

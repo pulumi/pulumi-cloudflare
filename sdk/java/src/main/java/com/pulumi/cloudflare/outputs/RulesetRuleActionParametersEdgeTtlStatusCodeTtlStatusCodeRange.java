@@ -6,18 +6,20 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
-    private Integer from;
-    private Integer to;
+    private @Nullable Integer from;
+    private @Nullable Integer to;
 
     private RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange() {}
-    public Integer from() {
-        return this.from;
+    public Optional<Integer> from() {
+        return Optional.ofNullable(this.from);
     }
-    public Integer to() {
-        return this.to;
+    public Optional<Integer> to() {
+        return Optional.ofNullable(this.to);
     }
 
     public static Builder builder() {
@@ -29,8 +31,8 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer from;
-        private Integer to;
+        private @Nullable Integer from;
+        private @Nullable Integer to;
         public Builder() {}
         public Builder(RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange defaults) {
     	      Objects.requireNonNull(defaults);
@@ -39,13 +41,13 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
         }
 
         @CustomType.Setter
-        public Builder from(Integer from) {
-            this.from = Objects.requireNonNull(from);
+        public Builder from(@Nullable Integer from) {
+            this.from = from;
             return this;
         }
         @CustomType.Setter
-        public Builder to(Integer to) {
-            this.to = Objects.requireNonNull(to);
+        public Builder to(@Nullable Integer to) {
+            this.to = to;
             return this;
         }
         public RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange build() {

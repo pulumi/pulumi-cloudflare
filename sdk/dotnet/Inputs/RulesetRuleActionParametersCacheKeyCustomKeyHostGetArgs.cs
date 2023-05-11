@@ -12,8 +12,8 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyHostGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("resolved", required: true)]
-        public Input<bool> Resolved { get; set; } = null!;
+        [Input("resolved")]
+        public Input<bool>? Resolved { get; set; }
 
         public RulesetRuleActionParametersCacheKeyCustomKeyHostGetArgs()
         {

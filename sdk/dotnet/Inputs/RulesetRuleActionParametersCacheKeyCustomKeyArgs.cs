@@ -12,20 +12,20 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyArgs : global::Pulumi.ResourceArgs
     {
-        [Input("cookie", required: true)]
-        public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs> Cookie { get; set; } = null!;
+        [Input("cookie")]
+        public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs>? Cookie { get; set; }
 
-        [Input("header", required: true)]
-        public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs> Header { get; set; } = null!;
+        [Input("header")]
+        public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs>? Header { get; set; }
 
-        [Input("host", required: true)]
-        public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyHostArgs> Host { get; set; } = null!;
+        [Input("host")]
+        public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyHostArgs>? Host { get; set; }
 
-        [Input("queryString", required: true)]
-        public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs> QueryString { get; set; } = null!;
+        [Input("queryString")]
+        public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs>? QueryString { get; set; }
 
-        [Input("user", required: true)]
-        public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyUserArgs> User { get; set; } = null!;
+        [Input("user")]
+        public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyUserArgs>? User { get; set; }
 
         public RulesetRuleActionParametersCacheKeyCustomKeyArgs()
         {

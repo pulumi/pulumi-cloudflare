@@ -12,14 +12,14 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersResponseArgs : global::Pulumi.ResourceArgs
     {
-        [Input("content", required: true)]
-        public Input<string> Content { get; set; } = null!;
+        [Input("content")]
+        public Input<string>? Content { get; set; }
 
-        [Input("contentType", required: true)]
-        public Input<string> ContentType { get; set; } = null!;
+        [Input("contentType")]
+        public Input<string>? ContentType { get; set; }
 
-        [Input("statusCode", required: true)]
-        public Input<int> StatusCode { get; set; } = null!;
+        [Input("statusCode")]
+        public Input<int>? StatusCode { get; set; }
 
         public RulesetRuleActionParametersResponseArgs()
         {

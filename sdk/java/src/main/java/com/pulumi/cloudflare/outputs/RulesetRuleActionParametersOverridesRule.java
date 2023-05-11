@@ -8,6 +8,8 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersOverridesRule {
@@ -15,47 +17,47 @@ public final class RulesetRuleActionParametersOverridesRule {
      * @return Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
      * 
      */
-    private String action;
+    private @Nullable String action;
     /**
      * @return Whether the rule is active.
      * 
      */
-    private Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return Unique rule identifier.
      * 
      */
-    private String id;
-    private Integer scoreThreshold;
-    private String sensitivityLevel;
+    private @Nullable String id;
+    private @Nullable Integer scoreThreshold;
+    private @Nullable String sensitivityLevel;
 
     private RulesetRuleActionParametersOverridesRule() {}
     /**
      * @return Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
      * 
      */
-    public String action() {
-        return this.action;
+    public Optional<String> action() {
+        return Optional.ofNullable(this.action);
     }
     /**
      * @return Whether the rule is active.
      * 
      */
-    public Boolean enabled() {
-        return this.enabled;
+    public Optional<Boolean> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
     /**
      * @return Unique rule identifier.
      * 
      */
-    public String id() {
-        return this.id;
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
     }
-    public Integer scoreThreshold() {
-        return this.scoreThreshold;
+    public Optional<Integer> scoreThreshold() {
+        return Optional.ofNullable(this.scoreThreshold);
     }
-    public String sensitivityLevel() {
-        return this.sensitivityLevel;
+    public Optional<String> sensitivityLevel() {
+        return Optional.ofNullable(this.sensitivityLevel);
     }
 
     public static Builder builder() {
@@ -67,11 +69,11 @@ public final class RulesetRuleActionParametersOverridesRule {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String action;
-        private Boolean enabled;
-        private String id;
-        private Integer scoreThreshold;
-        private String sensitivityLevel;
+        private @Nullable String action;
+        private @Nullable Boolean enabled;
+        private @Nullable String id;
+        private @Nullable Integer scoreThreshold;
+        private @Nullable String sensitivityLevel;
         public Builder() {}
         public Builder(RulesetRuleActionParametersOverridesRule defaults) {
     	      Objects.requireNonNull(defaults);
@@ -83,28 +85,28 @@ public final class RulesetRuleActionParametersOverridesRule {
         }
 
         @CustomType.Setter
-        public Builder action(String action) {
-            this.action = Objects.requireNonNull(action);
+        public Builder action(@Nullable String action) {
+            this.action = action;
             return this;
         }
         @CustomType.Setter
-        public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+        public Builder enabled(@Nullable Boolean enabled) {
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+        public Builder id(@Nullable String id) {
+            this.id = id;
             return this;
         }
         @CustomType.Setter
-        public Builder scoreThreshold(Integer scoreThreshold) {
-            this.scoreThreshold = Objects.requireNonNull(scoreThreshold);
+        public Builder scoreThreshold(@Nullable Integer scoreThreshold) {
+            this.scoreThreshold = scoreThreshold;
             return this;
         }
         @CustomType.Setter
-        public Builder sensitivityLevel(String sensitivityLevel) {
-            this.sensitivityLevel = Objects.requireNonNull(sensitivityLevel);
+        public Builder sensitivityLevel(@Nullable String sensitivityLevel) {
+            this.sensitivityLevel = sensitivityLevel;
             return this;
         }
         public RulesetRuleActionParametersOverridesRule build() {

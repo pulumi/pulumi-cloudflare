@@ -10,30 +10,32 @@ import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersCacheKeyCustomKe
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser;
 import com.pulumi.core.annotations.CustomType;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersCacheKeyCustomKey {
-    private RulesetRuleActionParametersCacheKeyCustomKeyCookie cookie;
-    private RulesetRuleActionParametersCacheKeyCustomKeyHeader header;
-    private RulesetRuleActionParametersCacheKeyCustomKeyHost host;
-    private RulesetRuleActionParametersCacheKeyCustomKeyQueryString queryString;
-    private RulesetRuleActionParametersCacheKeyCustomKeyUser user;
+    private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyCookie cookie;
+    private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyHeader header;
+    private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyHost host;
+    private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyQueryString queryString;
+    private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyUser user;
 
     private RulesetRuleActionParametersCacheKeyCustomKey() {}
-    public RulesetRuleActionParametersCacheKeyCustomKeyCookie cookie() {
-        return this.cookie;
+    public Optional<RulesetRuleActionParametersCacheKeyCustomKeyCookie> cookie() {
+        return Optional.ofNullable(this.cookie);
     }
-    public RulesetRuleActionParametersCacheKeyCustomKeyHeader header() {
-        return this.header;
+    public Optional<RulesetRuleActionParametersCacheKeyCustomKeyHeader> header() {
+        return Optional.ofNullable(this.header);
     }
-    public RulesetRuleActionParametersCacheKeyCustomKeyHost host() {
-        return this.host;
+    public Optional<RulesetRuleActionParametersCacheKeyCustomKeyHost> host() {
+        return Optional.ofNullable(this.host);
     }
-    public RulesetRuleActionParametersCacheKeyCustomKeyQueryString queryString() {
-        return this.queryString;
+    public Optional<RulesetRuleActionParametersCacheKeyCustomKeyQueryString> queryString() {
+        return Optional.ofNullable(this.queryString);
     }
-    public RulesetRuleActionParametersCacheKeyCustomKeyUser user() {
-        return this.user;
+    public Optional<RulesetRuleActionParametersCacheKeyCustomKeyUser> user() {
+        return Optional.ofNullable(this.user);
     }
 
     public static Builder builder() {
@@ -45,11 +47,11 @@ public final class RulesetRuleActionParametersCacheKeyCustomKey {
     }
     @CustomType.Builder
     public static final class Builder {
-        private RulesetRuleActionParametersCacheKeyCustomKeyCookie cookie;
-        private RulesetRuleActionParametersCacheKeyCustomKeyHeader header;
-        private RulesetRuleActionParametersCacheKeyCustomKeyHost host;
-        private RulesetRuleActionParametersCacheKeyCustomKeyQueryString queryString;
-        private RulesetRuleActionParametersCacheKeyCustomKeyUser user;
+        private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyCookie cookie;
+        private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyHeader header;
+        private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyHost host;
+        private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyQueryString queryString;
+        private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyUser user;
         public Builder() {}
         public Builder(RulesetRuleActionParametersCacheKeyCustomKey defaults) {
     	      Objects.requireNonNull(defaults);
@@ -61,28 +63,28 @@ public final class RulesetRuleActionParametersCacheKeyCustomKey {
         }
 
         @CustomType.Setter
-        public Builder cookie(RulesetRuleActionParametersCacheKeyCustomKeyCookie cookie) {
-            this.cookie = Objects.requireNonNull(cookie);
+        public Builder cookie(@Nullable RulesetRuleActionParametersCacheKeyCustomKeyCookie cookie) {
+            this.cookie = cookie;
             return this;
         }
         @CustomType.Setter
-        public Builder header(RulesetRuleActionParametersCacheKeyCustomKeyHeader header) {
-            this.header = Objects.requireNonNull(header);
+        public Builder header(@Nullable RulesetRuleActionParametersCacheKeyCustomKeyHeader header) {
+            this.header = header;
             return this;
         }
         @CustomType.Setter
-        public Builder host(RulesetRuleActionParametersCacheKeyCustomKeyHost host) {
-            this.host = Objects.requireNonNull(host);
+        public Builder host(@Nullable RulesetRuleActionParametersCacheKeyCustomKeyHost host) {
+            this.host = host;
             return this;
         }
         @CustomType.Setter
-        public Builder queryString(RulesetRuleActionParametersCacheKeyCustomKeyQueryString queryString) {
-            this.queryString = Objects.requireNonNull(queryString);
+        public Builder queryString(@Nullable RulesetRuleActionParametersCacheKeyCustomKeyQueryString queryString) {
+            this.queryString = queryString;
             return this;
         }
         @CustomType.Setter
-        public Builder user(RulesetRuleActionParametersCacheKeyCustomKeyUser user) {
-            this.user = Objects.requireNonNull(user);
+        public Builder user(@Nullable RulesetRuleActionParametersCacheKeyCustomKeyUser user) {
+            this.user = user;
             return this;
         }
         public RulesetRuleActionParametersCacheKeyCustomKey build() {

@@ -7,26 +7,28 @@ import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersCacheKeyCustomKe
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersCacheKey {
-    private Boolean cacheByDeviceType;
-    private Boolean cacheDeceptionArmor;
-    private RulesetRuleActionParametersCacheKeyCustomKey customKey;
-    private Boolean ignoreQueryStringsOrder;
+    private @Nullable Boolean cacheByDeviceType;
+    private @Nullable Boolean cacheDeceptionArmor;
+    private @Nullable RulesetRuleActionParametersCacheKeyCustomKey customKey;
+    private @Nullable Boolean ignoreQueryStringsOrder;
 
     private RulesetRuleActionParametersCacheKey() {}
-    public Boolean cacheByDeviceType() {
-        return this.cacheByDeviceType;
+    public Optional<Boolean> cacheByDeviceType() {
+        return Optional.ofNullable(this.cacheByDeviceType);
     }
-    public Boolean cacheDeceptionArmor() {
-        return this.cacheDeceptionArmor;
+    public Optional<Boolean> cacheDeceptionArmor() {
+        return Optional.ofNullable(this.cacheDeceptionArmor);
     }
-    public RulesetRuleActionParametersCacheKeyCustomKey customKey() {
-        return this.customKey;
+    public Optional<RulesetRuleActionParametersCacheKeyCustomKey> customKey() {
+        return Optional.ofNullable(this.customKey);
     }
-    public Boolean ignoreQueryStringsOrder() {
-        return this.ignoreQueryStringsOrder;
+    public Optional<Boolean> ignoreQueryStringsOrder() {
+        return Optional.ofNullable(this.ignoreQueryStringsOrder);
     }
 
     public static Builder builder() {
@@ -38,10 +40,10 @@ public final class RulesetRuleActionParametersCacheKey {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean cacheByDeviceType;
-        private Boolean cacheDeceptionArmor;
-        private RulesetRuleActionParametersCacheKeyCustomKey customKey;
-        private Boolean ignoreQueryStringsOrder;
+        private @Nullable Boolean cacheByDeviceType;
+        private @Nullable Boolean cacheDeceptionArmor;
+        private @Nullable RulesetRuleActionParametersCacheKeyCustomKey customKey;
+        private @Nullable Boolean ignoreQueryStringsOrder;
         public Builder() {}
         public Builder(RulesetRuleActionParametersCacheKey defaults) {
     	      Objects.requireNonNull(defaults);
@@ -52,23 +54,23 @@ public final class RulesetRuleActionParametersCacheKey {
         }
 
         @CustomType.Setter
-        public Builder cacheByDeviceType(Boolean cacheByDeviceType) {
-            this.cacheByDeviceType = Objects.requireNonNull(cacheByDeviceType);
+        public Builder cacheByDeviceType(@Nullable Boolean cacheByDeviceType) {
+            this.cacheByDeviceType = cacheByDeviceType;
             return this;
         }
         @CustomType.Setter
-        public Builder cacheDeceptionArmor(Boolean cacheDeceptionArmor) {
-            this.cacheDeceptionArmor = Objects.requireNonNull(cacheDeceptionArmor);
+        public Builder cacheDeceptionArmor(@Nullable Boolean cacheDeceptionArmor) {
+            this.cacheDeceptionArmor = cacheDeceptionArmor;
             return this;
         }
         @CustomType.Setter
-        public Builder customKey(RulesetRuleActionParametersCacheKeyCustomKey customKey) {
-            this.customKey = Objects.requireNonNull(customKey);
+        public Builder customKey(@Nullable RulesetRuleActionParametersCacheKeyCustomKey customKey) {
+            this.customKey = customKey;
             return this;
         }
         @CustomType.Setter
-        public Builder ignoreQueryStringsOrder(Boolean ignoreQueryStringsOrder) {
-            this.ignoreQueryStringsOrder = Objects.requireNonNull(ignoreQueryStringsOrder);
+        public Builder ignoreQueryStringsOrder(@Nullable Boolean ignoreQueryStringsOrder) {
+            this.ignoreQueryStringsOrder = ignoreQueryStringsOrder;
             return this;
         }
         public RulesetRuleActionParametersCacheKey build() {

@@ -88,7 +88,7 @@ public class ZoneCacheVariants extends com.pulumi.resources.CustomResource {
      * List of strings with the MIME types of all the variants that should be served for avif.
      * 
      */
-    @Export(name="avifs", type=List.class, parameters={String.class})
+    @Export(name="avifs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> avifs;
 
     /**
@@ -102,7 +102,7 @@ public class ZoneCacheVariants extends com.pulumi.resources.CustomResource {
      * List of strings with the MIME types of all the variants that should be served for bmp.
      * 
      */
-    @Export(name="bmps", type=List.class, parameters={String.class})
+    @Export(name="bmps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> bmps;
 
     /**
@@ -116,7 +116,7 @@ public class ZoneCacheVariants extends com.pulumi.resources.CustomResource {
      * List of strings with the MIME types of all the variants that should be served for gif.
      * 
      */
-    @Export(name="gifs", type=List.class, parameters={String.class})
+    @Export(name="gifs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> gifs;
 
     /**
@@ -130,7 +130,7 @@ public class ZoneCacheVariants extends com.pulumi.resources.CustomResource {
      * List of strings with the MIME types of all the variants that should be served for jp2.
      * 
      */
-    @Export(name="jp2s", type=List.class, parameters={String.class})
+    @Export(name="jp2s", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> jp2s;
 
     /**
@@ -144,7 +144,7 @@ public class ZoneCacheVariants extends com.pulumi.resources.CustomResource {
      * List of strings with the MIME types of all the variants that should be served for jpeg.
      * 
      */
-    @Export(name="jpegs", type=List.class, parameters={String.class})
+    @Export(name="jpegs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> jpegs;
 
     /**
@@ -158,7 +158,7 @@ public class ZoneCacheVariants extends com.pulumi.resources.CustomResource {
      * List of strings with the MIME types of all the variants that should be served for jpg2.
      * 
      */
-    @Export(name="jpg2s", type=List.class, parameters={String.class})
+    @Export(name="jpg2s", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> jpg2s;
 
     /**
@@ -172,7 +172,7 @@ public class ZoneCacheVariants extends com.pulumi.resources.CustomResource {
      * List of strings with the MIME types of all the variants that should be served for jpg.
      * 
      */
-    @Export(name="jpgs", type=List.class, parameters={String.class})
+    @Export(name="jpgs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> jpgs;
 
     /**
@@ -186,7 +186,7 @@ public class ZoneCacheVariants extends com.pulumi.resources.CustomResource {
      * List of strings with the MIME types of all the variants that should be served for png.
      * 
      */
-    @Export(name="pngs", type=List.class, parameters={String.class})
+    @Export(name="pngs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> pngs;
 
     /**
@@ -200,7 +200,7 @@ public class ZoneCacheVariants extends com.pulumi.resources.CustomResource {
      * List of strings with the MIME types of all the variants that should be served for tiff.
      * 
      */
-    @Export(name="tiffs", type=List.class, parameters={String.class})
+    @Export(name="tiffs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tiffs;
 
     /**
@@ -214,7 +214,7 @@ public class ZoneCacheVariants extends com.pulumi.resources.CustomResource {
      * List of strings with the MIME types of all the variants that should be served for tif.
      * 
      */
-    @Export(name="tifs", type=List.class, parameters={String.class})
+    @Export(name="tifs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tifs;
 
     /**
@@ -228,7 +228,7 @@ public class ZoneCacheVariants extends com.pulumi.resources.CustomResource {
      * List of strings with the MIME types of all the variants that should be served for webp.
      * 
      */
-    @Export(name="webps", type=List.class, parameters={String.class})
+    @Export(name="webps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> webps;
 
     /**
@@ -242,7 +242,7 @@ public class ZoneCacheVariants extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

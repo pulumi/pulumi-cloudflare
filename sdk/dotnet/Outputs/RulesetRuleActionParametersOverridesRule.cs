@@ -16,29 +16,29 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
         /// </summary>
-        public readonly string Action;
+        public readonly string? Action;
         /// <summary>
         /// Whether the rule is active.
         /// </summary>
-        public readonly bool Enabled;
+        public readonly bool? Enabled;
         /// <summary>
         /// Unique rule identifier.
         /// </summary>
-        public readonly string Id;
-        public readonly int ScoreThreshold;
-        public readonly string SensitivityLevel;
+        public readonly string? Id;
+        public readonly int? ScoreThreshold;
+        public readonly string? SensitivityLevel;
 
         [OutputConstructor]
         private RulesetRuleActionParametersOverridesRule(
-            string action,
+            string? action,
 
-            bool enabled,
+            bool? enabled,
 
-            string id,
+            string? id,
 
-            int scoreThreshold,
+            int? scoreThreshold,
 
-            string sensitivityLevel)
+            string? sensitivityLevel)
         {
             Action = action;
             Enabled = enabled;

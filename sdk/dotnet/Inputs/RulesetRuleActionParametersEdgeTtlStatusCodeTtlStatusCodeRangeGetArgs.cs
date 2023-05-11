@@ -12,11 +12,11 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("from", required: true)]
-        public Input<int> From { get; set; } = null!;
+        [Input("from")]
+        public Input<int>? From { get; set; }
 
-        [Input("to", required: true)]
-        public Input<int> To { get; set; } = null!;
+        [Input("to")]
+        public Input<int>? To { get; set; }
 
         public RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeGetArgs()
         {

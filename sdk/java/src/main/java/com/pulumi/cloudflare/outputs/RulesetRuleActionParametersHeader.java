@@ -6,34 +6,36 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersHeader {
-    private String expression;
+    private @Nullable String expression;
     /**
      * @return Name of the ruleset.
      * 
      */
-    private String name;
-    private String operation;
-    private String value;
+    private @Nullable String name;
+    private @Nullable String operation;
+    private @Nullable String value;
 
     private RulesetRuleActionParametersHeader() {}
-    public String expression() {
-        return this.expression;
+    public Optional<String> expression() {
+        return Optional.ofNullable(this.expression);
     }
     /**
      * @return Name of the ruleset.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
-    public String operation() {
-        return this.operation;
+    public Optional<String> operation() {
+        return Optional.ofNullable(this.operation);
     }
-    public String value() {
-        return this.value;
+    public Optional<String> value() {
+        return Optional.ofNullable(this.value);
     }
 
     public static Builder builder() {
@@ -45,10 +47,10 @@ public final class RulesetRuleActionParametersHeader {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String expression;
-        private String name;
-        private String operation;
-        private String value;
+        private @Nullable String expression;
+        private @Nullable String name;
+        private @Nullable String operation;
+        private @Nullable String value;
         public Builder() {}
         public Builder(RulesetRuleActionParametersHeader defaults) {
     	      Objects.requireNonNull(defaults);
@@ -59,23 +61,23 @@ public final class RulesetRuleActionParametersHeader {
         }
 
         @CustomType.Setter
-        public Builder expression(String expression) {
-            this.expression = Objects.requireNonNull(expression);
+        public Builder expression(@Nullable String expression) {
+            this.expression = expression;
             return this;
         }
         @CustomType.Setter
-        public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+        public Builder name(@Nullable String name) {
+            this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder operation(String operation) {
-            this.operation = Objects.requireNonNull(operation);
+        public Builder operation(@Nullable String operation) {
+            this.operation = operation;
             return this;
         }
         @CustomType.Setter
-        public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+        public Builder value(@Nullable String value) {
+            this.value = value;
             return this;
         }
         public RulesetRuleActionParametersHeader build() {

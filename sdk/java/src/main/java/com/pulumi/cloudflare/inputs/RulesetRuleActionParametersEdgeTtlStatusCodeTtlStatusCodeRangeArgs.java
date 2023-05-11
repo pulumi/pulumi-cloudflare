@@ -7,24 +7,26 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs Empty = new RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs();
 
-    @Import(name="from", required=true)
-    private Output<Integer> from;
+    @Import(name="from")
+    private @Nullable Output<Integer> from;
 
-    public Output<Integer> from() {
-        return this.from;
+    public Optional<Output<Integer>> from() {
+        return Optional.ofNullable(this.from);
     }
 
-    @Import(name="to", required=true)
-    private Output<Integer> to;
+    @Import(name="to")
+    private @Nullable Output<Integer> to;
 
-    public Output<Integer> to() {
-        return this.to;
+    public Optional<Output<Integer>> to() {
+        return Optional.ofNullable(this.to);
     }
 
     private RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs() {}
@@ -52,7 +54,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
             $ = new RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder from(Output<Integer> from) {
+        public Builder from(@Nullable Output<Integer> from) {
             $.from = from;
             return this;
         }
@@ -61,7 +63,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
             return from(Output.of(from));
         }
 
-        public Builder to(Output<Integer> to) {
+        public Builder to(@Nullable Output<Integer> to) {
             $.to = to;
             return this;
         }
@@ -71,8 +73,6 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
         }
 
         public RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs build() {
-            $.from = Objects.requireNonNull($.from, "expected parameter 'from' to be non-null");
-            $.to = Objects.requireNonNull($.to, "expected parameter 'to' to be non-null");
             return $;
         }
     }

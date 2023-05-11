@@ -7,46 +7,48 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersHeaderArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersHeaderArgs Empty = new RulesetRuleActionParametersHeaderArgs();
 
-    @Import(name="expression", required=true)
-    private Output<String> expression;
+    @Import(name="expression")
+    private @Nullable Output<String> expression;
 
-    public Output<String> expression() {
-        return this.expression;
+    public Optional<Output<String>> expression() {
+        return Optional.ofNullable(this.expression);
     }
 
     /**
      * Name of the ruleset.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
      * @return Name of the ruleset.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
-    @Import(name="operation", required=true)
-    private Output<String> operation;
+    @Import(name="operation")
+    private @Nullable Output<String> operation;
 
-    public Output<String> operation() {
-        return this.operation;
+    public Optional<Output<String>> operation() {
+        return Optional.ofNullable(this.operation);
     }
 
-    @Import(name="value", required=true)
-    private Output<String> value;
+    @Import(name="value")
+    private @Nullable Output<String> value;
 
-    public Output<String> value() {
-        return this.value;
+    public Optional<Output<String>> value() {
+        return Optional.ofNullable(this.value);
     }
 
     private RulesetRuleActionParametersHeaderArgs() {}
@@ -76,7 +78,7 @@ public final class RulesetRuleActionParametersHeaderArgs extends com.pulumi.reso
             $ = new RulesetRuleActionParametersHeaderArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder expression(Output<String> expression) {
+        public Builder expression(@Nullable Output<String> expression) {
             $.expression = expression;
             return this;
         }
@@ -91,7 +93,7 @@ public final class RulesetRuleActionParametersHeaderArgs extends com.pulumi.reso
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -106,7 +108,7 @@ public final class RulesetRuleActionParametersHeaderArgs extends com.pulumi.reso
             return name(Output.of(name));
         }
 
-        public Builder operation(Output<String> operation) {
+        public Builder operation(@Nullable Output<String> operation) {
             $.operation = operation;
             return this;
         }
@@ -115,7 +117,7 @@ public final class RulesetRuleActionParametersHeaderArgs extends com.pulumi.reso
             return operation(Output.of(operation));
         }
 
-        public Builder value(Output<String> value) {
+        public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
@@ -125,10 +127,6 @@ public final class RulesetRuleActionParametersHeaderArgs extends com.pulumi.reso
         }
 
         public RulesetRuleActionParametersHeaderArgs build() {
-            $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.operation = Objects.requireNonNull($.operation, "expected parameter 'operation' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
             return $;
         }
     }

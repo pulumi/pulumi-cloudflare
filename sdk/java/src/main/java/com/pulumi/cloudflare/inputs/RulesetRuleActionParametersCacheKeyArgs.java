@@ -8,38 +8,40 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersCacheKeyArgs Empty = new RulesetRuleActionParametersCacheKeyArgs();
 
-    @Import(name="cacheByDeviceType", required=true)
-    private Output<Boolean> cacheByDeviceType;
+    @Import(name="cacheByDeviceType")
+    private @Nullable Output<Boolean> cacheByDeviceType;
 
-    public Output<Boolean> cacheByDeviceType() {
-        return this.cacheByDeviceType;
+    public Optional<Output<Boolean>> cacheByDeviceType() {
+        return Optional.ofNullable(this.cacheByDeviceType);
     }
 
-    @Import(name="cacheDeceptionArmor", required=true)
-    private Output<Boolean> cacheDeceptionArmor;
+    @Import(name="cacheDeceptionArmor")
+    private @Nullable Output<Boolean> cacheDeceptionArmor;
 
-    public Output<Boolean> cacheDeceptionArmor() {
-        return this.cacheDeceptionArmor;
+    public Optional<Output<Boolean>> cacheDeceptionArmor() {
+        return Optional.ofNullable(this.cacheDeceptionArmor);
     }
 
-    @Import(name="customKey", required=true)
-    private Output<RulesetRuleActionParametersCacheKeyCustomKeyArgs> customKey;
+    @Import(name="customKey")
+    private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyArgs> customKey;
 
-    public Output<RulesetRuleActionParametersCacheKeyCustomKeyArgs> customKey() {
-        return this.customKey;
+    public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyArgs>> customKey() {
+        return Optional.ofNullable(this.customKey);
     }
 
-    @Import(name="ignoreQueryStringsOrder", required=true)
-    private Output<Boolean> ignoreQueryStringsOrder;
+    @Import(name="ignoreQueryStringsOrder")
+    private @Nullable Output<Boolean> ignoreQueryStringsOrder;
 
-    public Output<Boolean> ignoreQueryStringsOrder() {
-        return this.ignoreQueryStringsOrder;
+    public Optional<Output<Boolean>> ignoreQueryStringsOrder() {
+        return Optional.ofNullable(this.ignoreQueryStringsOrder);
     }
 
     private RulesetRuleActionParametersCacheKeyArgs() {}
@@ -69,7 +71,7 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
             $ = new RulesetRuleActionParametersCacheKeyArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder cacheByDeviceType(Output<Boolean> cacheByDeviceType) {
+        public Builder cacheByDeviceType(@Nullable Output<Boolean> cacheByDeviceType) {
             $.cacheByDeviceType = cacheByDeviceType;
             return this;
         }
@@ -78,7 +80,7 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
             return cacheByDeviceType(Output.of(cacheByDeviceType));
         }
 
-        public Builder cacheDeceptionArmor(Output<Boolean> cacheDeceptionArmor) {
+        public Builder cacheDeceptionArmor(@Nullable Output<Boolean> cacheDeceptionArmor) {
             $.cacheDeceptionArmor = cacheDeceptionArmor;
             return this;
         }
@@ -87,7 +89,7 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
             return cacheDeceptionArmor(Output.of(cacheDeceptionArmor));
         }
 
-        public Builder customKey(Output<RulesetRuleActionParametersCacheKeyCustomKeyArgs> customKey) {
+        public Builder customKey(@Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyArgs> customKey) {
             $.customKey = customKey;
             return this;
         }
@@ -96,7 +98,7 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
             return customKey(Output.of(customKey));
         }
 
-        public Builder ignoreQueryStringsOrder(Output<Boolean> ignoreQueryStringsOrder) {
+        public Builder ignoreQueryStringsOrder(@Nullable Output<Boolean> ignoreQueryStringsOrder) {
             $.ignoreQueryStringsOrder = ignoreQueryStringsOrder;
             return this;
         }
@@ -106,10 +108,6 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
         }
 
         public RulesetRuleActionParametersCacheKeyArgs build() {
-            $.cacheByDeviceType = Objects.requireNonNull($.cacheByDeviceType, "expected parameter 'cacheByDeviceType' to be non-null");
-            $.cacheDeceptionArmor = Objects.requireNonNull($.cacheDeceptionArmor, "expected parameter 'cacheDeceptionArmor' to be non-null");
-            $.customKey = Objects.requireNonNull($.customKey, "expected parameter 'customKey' to be non-null");
-            $.ignoreQueryStringsOrder = Objects.requireNonNull($.ignoreQueryStringsOrder, "expected parameter 'ignoreQueryStringsOrder' to be non-null");
             return $;
         }
     }

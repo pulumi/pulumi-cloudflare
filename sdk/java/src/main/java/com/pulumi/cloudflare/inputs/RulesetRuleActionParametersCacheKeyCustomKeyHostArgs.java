@@ -7,17 +7,19 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersCacheKeyCustomKeyHostArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersCacheKeyCustomKeyHostArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyHostArgs();
 
-    @Import(name="resolved", required=true)
-    private Output<Boolean> resolved;
+    @Import(name="resolved")
+    private @Nullable Output<Boolean> resolved;
 
-    public Output<Boolean> resolved() {
-        return this.resolved;
+    public Optional<Output<Boolean>> resolved() {
+        return Optional.ofNullable(this.resolved);
     }
 
     private RulesetRuleActionParametersCacheKeyCustomKeyHostArgs() {}
@@ -44,7 +46,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHostArgs extends 
             $ = new RulesetRuleActionParametersCacheKeyCustomKeyHostArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder resolved(Output<Boolean> resolved) {
+        public Builder resolved(@Nullable Output<Boolean> resolved) {
             $.resolved = resolved;
             return this;
         }
@@ -54,7 +56,6 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHostArgs extends 
         }
 
         public RulesetRuleActionParametersCacheKeyCustomKeyHostArgs build() {
-            $.resolved = Objects.requireNonNull($.resolved, "expected parameter 'resolved' to be non-null");
             return $;
         }
     }

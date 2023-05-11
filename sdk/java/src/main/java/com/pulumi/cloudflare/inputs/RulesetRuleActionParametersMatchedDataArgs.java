@@ -7,17 +7,19 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersMatchedDataArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersMatchedDataArgs Empty = new RulesetRuleActionParametersMatchedDataArgs();
 
-    @Import(name="publicKey", required=true)
-    private Output<String> publicKey;
+    @Import(name="publicKey")
+    private @Nullable Output<String> publicKey;
 
-    public Output<String> publicKey() {
-        return this.publicKey;
+    public Optional<Output<String>> publicKey() {
+        return Optional.ofNullable(this.publicKey);
     }
 
     private RulesetRuleActionParametersMatchedDataArgs() {}
@@ -44,7 +46,7 @@ public final class RulesetRuleActionParametersMatchedDataArgs extends com.pulumi
             $ = new RulesetRuleActionParametersMatchedDataArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder publicKey(Output<String> publicKey) {
+        public Builder publicKey(@Nullable Output<String> publicKey) {
             $.publicKey = publicKey;
             return this;
         }
@@ -54,7 +56,6 @@ public final class RulesetRuleActionParametersMatchedDataArgs extends com.pulumi
         }
 
         public RulesetRuleActionParametersMatchedDataArgs build() {
-            $.publicKey = Objects.requireNonNull($.publicKey, "expected parameter 'publicKey' to be non-null");
             return $;
         }
     }

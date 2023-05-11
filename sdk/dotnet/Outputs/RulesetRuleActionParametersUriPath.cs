@@ -13,14 +13,14 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersUriPath
     {
-        public readonly string Expression;
-        public readonly string Value;
+        public readonly string? Expression;
+        public readonly string? Value;
 
         [OutputConstructor]
         private RulesetRuleActionParametersUriPath(
-            string expression,
+            string? expression,
 
-            string value)
+            string? value)
         {
             Expression = expression;
             Value = value;

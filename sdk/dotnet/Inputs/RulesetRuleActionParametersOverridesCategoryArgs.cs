@@ -12,14 +12,14 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersOverridesCategoryArgs : global::Pulumi.ResourceArgs
     {
-        [Input("action", required: true)]
-        public Input<string> Action { get; set; } = null!;
+        [Input("action")]
+        public Input<string>? Action { get; set; }
 
-        [Input("category", required: true)]
-        public Input<string> Category { get; set; } = null!;
+        [Input("category")]
+        public Input<string>? Category { get; set; }
 
-        [Input("enabled", required: true)]
-        public Input<bool> Enabled { get; set; } = null!;
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
         public RulesetRuleActionParametersOverridesCategoryArgs()
         {

@@ -12,14 +12,14 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersAutominifyArgs : global::Pulumi.ResourceArgs
     {
-        [Input("css", required: true)]
-        public Input<bool> Css { get; set; } = null!;
+        [Input("css")]
+        public Input<bool>? Css { get; set; }
 
-        [Input("html", required: true)]
-        public Input<bool> Html { get; set; } = null!;
+        [Input("html")]
+        public Input<bool>? Html { get; set; }
 
-        [Input("js", required: true)]
-        public Input<bool> Js { get; set; } = null!;
+        [Input("js")]
+        public Input<bool>? Js { get; set; }
 
         public RulesetRuleActionParametersAutominifyArgs()
         {

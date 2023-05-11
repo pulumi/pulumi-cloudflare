@@ -12,20 +12,20 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersHeaderGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
+        [Input("expression")]
+        public Input<string>? Expression { get; set; }
 
         /// <summary>
         /// Name of the ruleset.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
-        [Input("operation", required: true)]
-        public Input<string> Operation { get; set; } = null!;
+        [Input("operation")]
+        public Input<string>? Operation { get; set; }
 
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
         public RulesetRuleActionParametersHeaderGetArgs()
         {

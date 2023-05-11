@@ -8,24 +8,26 @@ import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs();
 
-    @Import(name="excludes", required=true)
-    private Output<List<String>> excludes;
+    @Import(name="excludes")
+    private @Nullable Output<List<String>> excludes;
 
-    public Output<List<String>> excludes() {
-        return this.excludes;
+    public Optional<Output<List<String>>> excludes() {
+        return Optional.ofNullable(this.excludes);
     }
 
-    @Import(name="includes", required=true)
-    private Output<List<String>> includes;
+    @Import(name="includes")
+    private @Nullable Output<List<String>> includes;
 
-    public Output<List<String>> includes() {
-        return this.includes;
+    public Optional<Output<List<String>>> includes() {
+        return Optional.ofNullable(this.includes);
     }
 
     private RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs() {}
@@ -53,7 +55,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs e
             $ = new RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder excludes(Output<List<String>> excludes) {
+        public Builder excludes(@Nullable Output<List<String>> excludes) {
             $.excludes = excludes;
             return this;
         }
@@ -66,7 +68,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs e
             return excludes(List.of(excludes));
         }
 
-        public Builder includes(Output<List<String>> includes) {
+        public Builder includes(@Nullable Output<List<String>> includes) {
             $.includes = includes;
             return this;
         }
@@ -80,8 +82,6 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs e
         }
 
         public RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs build() {
-            $.excludes = Objects.requireNonNull($.excludes, "expected parameter 'excludes' to be non-null");
-            $.includes = Objects.requireNonNull($.includes, "expected parameter 'includes' to be non-null");
             return $;
         }
     }

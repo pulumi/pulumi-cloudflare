@@ -63,7 +63,7 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -77,7 +77,7 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
      * Custom domain. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
@@ -91,7 +91,7 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
      * Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="projectName", type=String.class, parameters={})
+    @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**
@@ -105,7 +105,7 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
      * Status of the custom domain.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

@@ -7,24 +7,26 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleExposedCredentialCheckArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleExposedCredentialCheckArgs Empty = new RulesetRuleExposedCredentialCheckArgs();
 
-    @Import(name="passwordExpression", required=true)
-    private Output<String> passwordExpression;
+    @Import(name="passwordExpression")
+    private @Nullable Output<String> passwordExpression;
 
-    public Output<String> passwordExpression() {
-        return this.passwordExpression;
+    public Optional<Output<String>> passwordExpression() {
+        return Optional.ofNullable(this.passwordExpression);
     }
 
-    @Import(name="usernameExpression", required=true)
-    private Output<String> usernameExpression;
+    @Import(name="usernameExpression")
+    private @Nullable Output<String> usernameExpression;
 
-    public Output<String> usernameExpression() {
-        return this.usernameExpression;
+    public Optional<Output<String>> usernameExpression() {
+        return Optional.ofNullable(this.usernameExpression);
     }
 
     private RulesetRuleExposedCredentialCheckArgs() {}
@@ -52,7 +54,7 @@ public final class RulesetRuleExposedCredentialCheckArgs extends com.pulumi.reso
             $ = new RulesetRuleExposedCredentialCheckArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder passwordExpression(Output<String> passwordExpression) {
+        public Builder passwordExpression(@Nullable Output<String> passwordExpression) {
             $.passwordExpression = passwordExpression;
             return this;
         }
@@ -61,7 +63,7 @@ public final class RulesetRuleExposedCredentialCheckArgs extends com.pulumi.reso
             return passwordExpression(Output.of(passwordExpression));
         }
 
-        public Builder usernameExpression(Output<String> usernameExpression) {
+        public Builder usernameExpression(@Nullable Output<String> usernameExpression) {
             $.usernameExpression = usernameExpression;
             return this;
         }
@@ -71,8 +73,6 @@ public final class RulesetRuleExposedCredentialCheckArgs extends com.pulumi.reso
         }
 
         public RulesetRuleExposedCredentialCheckArgs build() {
-            $.passwordExpression = Objects.requireNonNull($.passwordExpression, "expected parameter 'passwordExpression' to be non-null");
-            $.usernameExpression = Objects.requireNonNull($.usernameExpression, "expected parameter 'usernameExpression' to be non-null");
             return $;
         }
     }

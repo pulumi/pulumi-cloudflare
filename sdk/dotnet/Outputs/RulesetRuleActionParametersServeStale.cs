@@ -13,10 +13,10 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersServeStale
     {
-        public readonly bool DisableStaleWhileUpdating;
+        public readonly bool? DisableStaleWhileUpdating;
 
         [OutputConstructor]
-        private RulesetRuleActionParametersServeStale(bool disableStaleWhileUpdating)
+        private RulesetRuleActionParametersServeStale(bool? disableStaleWhileUpdating)
         {
             DisableStaleWhileUpdating = disableStaleWhileUpdating;
         }

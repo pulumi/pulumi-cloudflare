@@ -13,20 +13,20 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersEdgeTtlStatusCodeTtl
     {
-        public readonly int StatusCode;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> StatusCodeRanges;
-        public readonly int Value;
+        public readonly int? StatusCode;
+        public readonly Outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange? StatusCodeRange;
+        public readonly int? Value;
 
         [OutputConstructor]
         private RulesetRuleActionParametersEdgeTtlStatusCodeTtl(
-            int statusCode,
+            int? statusCode,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRanges,
+            Outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange? statusCodeRange,
 
-            int value)
+            int? value)
         {
             StatusCode = statusCode;
-            StatusCodeRanges = statusCodeRanges;
+            StatusCodeRange = statusCodeRange;
             Value = value;
         }
     }

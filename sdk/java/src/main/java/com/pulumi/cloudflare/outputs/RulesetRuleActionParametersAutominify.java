@@ -6,22 +6,24 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersAutominify {
-    private Boolean css;
-    private Boolean html;
-    private Boolean js;
+    private @Nullable Boolean css;
+    private @Nullable Boolean html;
+    private @Nullable Boolean js;
 
     private RulesetRuleActionParametersAutominify() {}
-    public Boolean css() {
-        return this.css;
+    public Optional<Boolean> css() {
+        return Optional.ofNullable(this.css);
     }
-    public Boolean html() {
-        return this.html;
+    public Optional<Boolean> html() {
+        return Optional.ofNullable(this.html);
     }
-    public Boolean js() {
-        return this.js;
+    public Optional<Boolean> js() {
+        return Optional.ofNullable(this.js);
     }
 
     public static Builder builder() {
@@ -33,9 +35,9 @@ public final class RulesetRuleActionParametersAutominify {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean css;
-        private Boolean html;
-        private Boolean js;
+        private @Nullable Boolean css;
+        private @Nullable Boolean html;
+        private @Nullable Boolean js;
         public Builder() {}
         public Builder(RulesetRuleActionParametersAutominify defaults) {
     	      Objects.requireNonNull(defaults);
@@ -45,18 +47,18 @@ public final class RulesetRuleActionParametersAutominify {
         }
 
         @CustomType.Setter
-        public Builder css(Boolean css) {
-            this.css = Objects.requireNonNull(css);
+        public Builder css(@Nullable Boolean css) {
+            this.css = css;
             return this;
         }
         @CustomType.Setter
-        public Builder html(Boolean html) {
-            this.html = Objects.requireNonNull(html);
+        public Builder html(@Nullable Boolean html) {
+            this.html = html;
             return this;
         }
         @CustomType.Setter
-        public Builder js(Boolean js) {
-            this.js = Objects.requireNonNull(js);
+        public Builder js(@Nullable Boolean js) {
+            this.js = js;
             return this;
         }
         public RulesetRuleActionParametersAutominify build() {

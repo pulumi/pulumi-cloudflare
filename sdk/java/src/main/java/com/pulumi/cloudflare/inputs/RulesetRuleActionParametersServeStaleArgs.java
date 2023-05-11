@@ -7,17 +7,19 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersServeStaleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersServeStaleArgs Empty = new RulesetRuleActionParametersServeStaleArgs();
 
-    @Import(name="disableStaleWhileUpdating", required=true)
-    private Output<Boolean> disableStaleWhileUpdating;
+    @Import(name="disableStaleWhileUpdating")
+    private @Nullable Output<Boolean> disableStaleWhileUpdating;
 
-    public Output<Boolean> disableStaleWhileUpdating() {
-        return this.disableStaleWhileUpdating;
+    public Optional<Output<Boolean>> disableStaleWhileUpdating() {
+        return Optional.ofNullable(this.disableStaleWhileUpdating);
     }
 
     private RulesetRuleActionParametersServeStaleArgs() {}
@@ -44,7 +46,7 @@ public final class RulesetRuleActionParametersServeStaleArgs extends com.pulumi.
             $ = new RulesetRuleActionParametersServeStaleArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder disableStaleWhileUpdating(Output<Boolean> disableStaleWhileUpdating) {
+        public Builder disableStaleWhileUpdating(@Nullable Output<Boolean> disableStaleWhileUpdating) {
             $.disableStaleWhileUpdating = disableStaleWhileUpdating;
             return this;
         }
@@ -54,7 +56,6 @@ public final class RulesetRuleActionParametersServeStaleArgs extends com.pulumi.
         }
 
         public RulesetRuleActionParametersServeStaleArgs build() {
-            $.disableStaleWhileUpdating = Objects.requireNonNull($.disableStaleWhileUpdating, "expected parameter 'disableStaleWhileUpdating' to be non-null");
             return $;
         }
     }

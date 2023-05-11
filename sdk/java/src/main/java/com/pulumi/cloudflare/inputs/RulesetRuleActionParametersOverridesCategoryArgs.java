@@ -8,31 +8,33 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersOverridesCategoryArgs Empty = new RulesetRuleActionParametersOverridesCategoryArgs();
 
-    @Import(name="action", required=true)
-    private Output<String> action;
+    @Import(name="action")
+    private @Nullable Output<String> action;
 
-    public Output<String> action() {
-        return this.action;
+    public Optional<Output<String>> action() {
+        return Optional.ofNullable(this.action);
     }
 
-    @Import(name="category", required=true)
-    private Output<String> category;
+    @Import(name="category")
+    private @Nullable Output<String> category;
 
-    public Output<String> category() {
-        return this.category;
+    public Optional<Output<String>> category() {
+        return Optional.ofNullable(this.category);
     }
 
-    @Import(name="enabled", required=true)
-    private Output<Boolean> enabled;
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
 
-    public Output<Boolean> enabled() {
-        return this.enabled;
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
     private RulesetRuleActionParametersOverridesCategoryArgs() {}
@@ -61,7 +63,7 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
             $ = new RulesetRuleActionParametersOverridesCategoryArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder action(Output<String> action) {
+        public Builder action(@Nullable Output<String> action) {
             $.action = action;
             return this;
         }
@@ -70,7 +72,7 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
             return action(Output.of(action));
         }
 
-        public Builder category(Output<String> category) {
+        public Builder category(@Nullable Output<String> category) {
             $.category = category;
             return this;
         }
@@ -79,7 +81,7 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
             return category(Output.of(category));
         }
 
-        public Builder enabled(Output<Boolean> enabled) {
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
@@ -89,9 +91,6 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
         }
 
         public RulesetRuleActionParametersOverridesCategoryArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.category = Objects.requireNonNull($.category, "expected parameter 'category' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
             return $;
         }
     }

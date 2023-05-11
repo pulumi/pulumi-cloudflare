@@ -7,22 +7,24 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersOverridesCategory {
-    private String action;
-    private String category;
-    private Boolean enabled;
+    private @Nullable String action;
+    private @Nullable String category;
+    private @Nullable Boolean enabled;
 
     private RulesetRuleActionParametersOverridesCategory() {}
-    public String action() {
-        return this.action;
+    public Optional<String> action() {
+        return Optional.ofNullable(this.action);
     }
-    public String category() {
-        return this.category;
+    public Optional<String> category() {
+        return Optional.ofNullable(this.category);
     }
-    public Boolean enabled() {
-        return this.enabled;
+    public Optional<Boolean> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
     public static Builder builder() {
@@ -34,9 +36,9 @@ public final class RulesetRuleActionParametersOverridesCategory {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String action;
-        private String category;
-        private Boolean enabled;
+        private @Nullable String action;
+        private @Nullable String category;
+        private @Nullable Boolean enabled;
         public Builder() {}
         public Builder(RulesetRuleActionParametersOverridesCategory defaults) {
     	      Objects.requireNonNull(defaults);
@@ -46,18 +48,18 @@ public final class RulesetRuleActionParametersOverridesCategory {
         }
 
         @CustomType.Setter
-        public Builder action(String action) {
-            this.action = Objects.requireNonNull(action);
+        public Builder action(@Nullable String action) {
+            this.action = action;
             return this;
         }
         @CustomType.Setter
-        public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+        public Builder category(@Nullable String category) {
+            this.category = category;
             return this;
         }
         @CustomType.Setter
-        public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+        public Builder enabled(@Nullable Boolean enabled) {
+            this.enabled = enabled;
             return this;
         }
         public RulesetRuleActionParametersOverridesCategory build() {

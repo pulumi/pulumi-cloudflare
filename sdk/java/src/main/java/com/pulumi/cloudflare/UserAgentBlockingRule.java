@@ -74,7 +74,7 @@ public class UserAgentBlockingRule extends com.pulumi.resources.CustomResource {
      * The configuration object for the current rule.
      * 
      */
-    @Export(name="configuration", type=UserAgentBlockingRuleConfiguration.class, parameters={})
+    @Export(name="configuration", refs={UserAgentBlockingRuleConfiguration.class}, tree="[0]")
     private Output<UserAgentBlockingRuleConfiguration> configuration;
 
     /**
@@ -88,7 +88,7 @@ public class UserAgentBlockingRule extends com.pulumi.resources.CustomResource {
      * An informative summary of the rule.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -102,7 +102,7 @@ public class UserAgentBlockingRule extends com.pulumi.resources.CustomResource {
      * The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.
      * 
      */
-    @Export(name="mode", type=String.class, parameters={})
+    @Export(name="mode", refs={String.class}, tree="[0]")
     private Output<String> mode;
 
     /**
@@ -116,7 +116,7 @@ public class UserAgentBlockingRule extends com.pulumi.resources.CustomResource {
      * When true, indicates that the rule is currently paused.
      * 
      */
-    @Export(name="paused", type=Boolean.class, parameters={})
+    @Export(name="paused", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> paused;
 
     /**
@@ -130,7 +130,7 @@ public class UserAgentBlockingRule extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

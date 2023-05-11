@@ -15,26 +15,26 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
         /// </summary>
-        [Input("action", required: true)]
-        public Input<string> Action { get; set; } = null!;
+        [Input("action")]
+        public Input<string>? Action { get; set; }
 
         /// <summary>
         /// Whether the rule is active.
         /// </summary>
-        [Input("enabled", required: true)]
-        public Input<bool> Enabled { get; set; } = null!;
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// Unique rule identifier.
         /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
+        [Input("id")]
+        public Input<string>? Id { get; set; }
 
-        [Input("scoreThreshold", required: true)]
-        public Input<int> ScoreThreshold { get; set; } = null!;
+        [Input("scoreThreshold")]
+        public Input<int>? ScoreThreshold { get; set; }
 
-        [Input("sensitivityLevel", required: true)]
-        public Input<string> SensitivityLevel { get; set; } = null!;
+        [Input("sensitivityLevel")]
+        public Input<string>? SensitivityLevel { get; set; }
 
         public RulesetRuleActionParametersOverridesRuleArgs()
         {

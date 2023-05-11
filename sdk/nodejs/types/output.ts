@@ -2360,7 +2360,7 @@ export interface RulesetRule {
     /**
      * List of parameters that configure the behavior of the ruleset rule action.
      */
-    actionParameters: outputs.RulesetRuleActionParameters;
+    actionParameters?: outputs.RulesetRuleActionParameters;
     /**
      * Brief summary of the ruleset rule and its intended use.
      */
@@ -2372,7 +2372,7 @@ export interface RulesetRule {
     /**
      * List of parameters that configure exposed credential checks.
      */
-    exposedCredentialCheck: outputs.RulesetRuleExposedCredentialCheck;
+    exposedCredentialCheck?: outputs.RulesetRuleExposedCredentialCheck;
     /**
      * Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
      */
@@ -2388,11 +2388,11 @@ export interface RulesetRule {
     /**
      * List parameters to configure how the rule generates logs.
      */
-    logging: outputs.RulesetRuleLogging;
+    logging?: outputs.RulesetRuleLogging;
     /**
      * List of parameters that configure HTTP rate limiting behaviour.
      */
-    ratelimit: outputs.RulesetRuleRatelimit;
+    ratelimit?: outputs.RulesetRuleRatelimit;
     /**
      * Rule reference.
      */
@@ -2404,250 +2404,250 @@ export interface RulesetRule {
 }
 
 export interface RulesetRuleActionParameters {
-    automaticHttpsRewrites: boolean;
-    autominifies: outputs.RulesetRuleActionParametersAutominify[];
-    bic: boolean;
-    browserTtl: outputs.RulesetRuleActionParametersBrowserTtl;
-    cache: boolean;
-    cacheKey: outputs.RulesetRuleActionParametersCacheKey;
-    content: string;
-    contentType: string;
-    cookieFields: string[];
-    disableApps: boolean;
-    disableRailgun: boolean;
-    disableZaraz: boolean;
-    edgeTtl: outputs.RulesetRuleActionParametersEdgeTtl;
-    emailObfuscation: boolean;
-    fromList: outputs.RulesetRuleActionParametersFromList;
-    fromValue: outputs.RulesetRuleActionParametersFromValue;
-    headers: outputs.RulesetRuleActionParametersHeader[];
-    hostHeader: string;
-    hotlinkProtection: boolean;
+    automaticHttpsRewrites?: boolean;
+    autominify?: outputs.RulesetRuleActionParametersAutominify;
+    bic?: boolean;
+    browserTtl?: outputs.RulesetRuleActionParametersBrowserTtl;
+    cache?: boolean;
+    cacheKey?: outputs.RulesetRuleActionParametersCacheKey;
+    content?: string;
+    contentType?: string;
+    cookieFields?: string[];
+    disableApps?: boolean;
+    disableRailgun?: boolean;
+    disableZaraz?: boolean;
+    edgeTtl?: outputs.RulesetRuleActionParametersEdgeTtl;
+    emailObfuscation?: boolean;
+    fromList?: outputs.RulesetRuleActionParametersFromList;
+    fromValue?: outputs.RulesetRuleActionParametersFromValue;
+    headers?: outputs.RulesetRuleActionParametersHeader[];
+    hostHeader?: string;
+    hotlinkProtection?: boolean;
     /**
      * The identifier of this resource.
      */
-    id: string;
-    increment: number;
-    matchedData: outputs.RulesetRuleActionParametersMatchedData;
-    mirage: boolean;
-    opportunisticEncryption: boolean;
-    origin: outputs.RulesetRuleActionParametersOrigin;
-    originErrorPagePassthru: boolean;
-    overrides: outputs.RulesetRuleActionParametersOverrides;
-    phases: string[];
-    polish: string;
-    products: string[];
-    requestFields: string[];
-    respectStrongEtags: boolean;
-    responseFields: string[];
-    responses: outputs.RulesetRuleActionParametersResponse[];
-    rocketLoader: boolean;
+    id?: string;
+    increment?: number;
+    matchedData?: outputs.RulesetRuleActionParametersMatchedData;
+    mirage?: boolean;
+    opportunisticEncryption?: boolean;
+    origin?: outputs.RulesetRuleActionParametersOrigin;
+    originErrorPagePassthru?: boolean;
+    overrides?: outputs.RulesetRuleActionParametersOverrides;
+    phases?: string[];
+    polish?: string;
+    products?: string[];
+    requestFields?: string[];
+    respectStrongEtags?: boolean;
+    response?: outputs.RulesetRuleActionParametersResponse;
+    responseFields?: string[];
+    rocketLoader?: boolean;
     /**
      * List of rules to apply to the ruleset.
      */
-    rules: {[key: string]: string};
-    ruleset: string;
-    rulesets: string[];
-    securityLevel: string;
-    serveStale: outputs.RulesetRuleActionParametersServeStale;
-    serverSideExcludes: boolean;
-    sni: outputs.RulesetRuleActionParametersSni;
-    ssl: string;
-    statusCode: number;
-    sxg: boolean;
-    uri: outputs.RulesetRuleActionParametersUri;
+    rules?: {[key: string]: string};
+    ruleset?: string;
+    rulesets?: string[];
+    securityLevel?: string;
+    serveStale?: outputs.RulesetRuleActionParametersServeStale;
+    serverSideExcludes?: boolean;
+    sni?: outputs.RulesetRuleActionParametersSni;
+    ssl?: string;
+    statusCode?: number;
+    sxg?: boolean;
+    uri?: outputs.RulesetRuleActionParametersUri;
     version: string;
 }
 
 export interface RulesetRuleActionParametersAutominify {
-    css: boolean;
-    html: boolean;
-    js: boolean;
+    css?: boolean;
+    html?: boolean;
+    js?: boolean;
 }
 
 export interface RulesetRuleActionParametersBrowserTtl {
-    default: number;
-    mode: string;
+    default?: number;
+    mode?: string;
 }
 
 export interface RulesetRuleActionParametersCacheKey {
-    cacheByDeviceType: boolean;
-    cacheDeceptionArmor: boolean;
-    customKey: outputs.RulesetRuleActionParametersCacheKeyCustomKey;
-    ignoreQueryStringsOrder: boolean;
+    cacheByDeviceType?: boolean;
+    cacheDeceptionArmor?: boolean;
+    customKey?: outputs.RulesetRuleActionParametersCacheKeyCustomKey;
+    ignoreQueryStringsOrder?: boolean;
 }
 
 export interface RulesetRuleActionParametersCacheKeyCustomKey {
-    cookie: outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie;
-    header: outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader;
-    host: outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost;
-    queryString: outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString;
-    user: outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser;
+    cookie?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie;
+    header?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader;
+    host?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost;
+    queryString?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString;
+    user?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser;
 }
 
 export interface RulesetRuleActionParametersCacheKeyCustomKeyCookie {
-    checkPresences: string[];
-    includes: string[];
+    checkPresences?: string[];
+    includes?: string[];
 }
 
 export interface RulesetRuleActionParametersCacheKeyCustomKeyHeader {
-    checkPresences: string[];
-    excludeOrigin: boolean;
-    includes: string[];
+    checkPresences?: string[];
+    excludeOrigin?: boolean;
+    includes?: string[];
 }
 
 export interface RulesetRuleActionParametersCacheKeyCustomKeyHost {
-    resolved: boolean;
+    resolved?: boolean;
 }
 
 export interface RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
-    excludes: string[];
-    includes: string[];
+    excludes?: string[];
+    includes?: string[];
 }
 
 export interface RulesetRuleActionParametersCacheKeyCustomKeyUser {
-    deviceType: boolean;
-    geo: boolean;
-    lang: boolean;
+    deviceType?: boolean;
+    geo?: boolean;
+    lang?: boolean;
 }
 
 export interface RulesetRuleActionParametersEdgeTtl {
-    default: number;
-    mode: string;
-    statusCodeTtls: outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl[];
+    default?: number;
+    mode?: string;
+    statusCodeTtls?: outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl[];
 }
 
 export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
-    statusCode: number;
-    statusCodeRanges: outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange[];
-    value: number;
+    statusCode?: number;
+    statusCodeRange?: outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange;
+    value?: number;
 }
 
 export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
-    from: number;
-    to: number;
+    from?: number;
+    to?: number;
 }
 
 export interface RulesetRuleActionParametersFromList {
-    key: string;
+    key?: string;
     /**
      * Name of the ruleset.
      */
-    name: string;
+    name?: string;
 }
 
 export interface RulesetRuleActionParametersFromValue {
-    preserveQueryString: boolean;
-    statusCode: number;
-    targetUrl: outputs.RulesetRuleActionParametersFromValueTargetUrl;
+    preserveQueryString?: boolean;
+    statusCode?: number;
+    targetUrl?: outputs.RulesetRuleActionParametersFromValueTargetUrl;
 }
 
 export interface RulesetRuleActionParametersFromValueTargetUrl {
-    expression: string;
-    value: string;
+    expression?: string;
+    value?: string;
 }
 
 export interface RulesetRuleActionParametersHeader {
-    expression: string;
+    expression?: string;
     /**
      * Name of the ruleset.
      */
-    name: string;
-    operation: string;
-    value: string;
+    name?: string;
+    operation?: string;
+    value?: string;
 }
 
 export interface RulesetRuleActionParametersMatchedData {
-    publicKey: string;
+    publicKey?: string;
 }
 
 export interface RulesetRuleActionParametersOrigin {
-    host: string;
-    port: number;
+    host?: string;
+    port?: number;
 }
 
 export interface RulesetRuleActionParametersOverrides {
-    action: string;
-    categories: outputs.RulesetRuleActionParametersOverridesCategory[];
-    enabled: boolean;
+    action?: string;
+    categories?: outputs.RulesetRuleActionParametersOverridesCategory[];
+    enabled?: boolean;
     /**
      * List of rules to apply to the ruleset.
      */
-    rules: outputs.RulesetRuleActionParametersOverridesRule[];
-    sensitivityLevel: string;
+    rules?: outputs.RulesetRuleActionParametersOverridesRule[];
+    sensitivityLevel?: string;
 }
 
 export interface RulesetRuleActionParametersOverridesCategory {
-    action: string;
-    category: string;
-    enabled: boolean;
+    action?: string;
+    category?: string;
+    enabled?: boolean;
 }
 
 export interface RulesetRuleActionParametersOverridesRule {
     /**
      * Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
      */
-    action: string;
+    action?: string;
     /**
      * Whether the rule is active.
      */
-    enabled: boolean;
+    enabled?: boolean;
     /**
      * Unique rule identifier.
      */
-    id: string;
-    scoreThreshold: number;
-    sensitivityLevel: string;
+    id?: string;
+    scoreThreshold?: number;
+    sensitivityLevel?: string;
 }
 
 export interface RulesetRuleActionParametersResponse {
-    content: string;
-    contentType: string;
-    statusCode: number;
+    content?: string;
+    contentType?: string;
+    statusCode?: number;
 }
 
 export interface RulesetRuleActionParametersServeStale {
-    disableStaleWhileUpdating: boolean;
+    disableStaleWhileUpdating?: boolean;
 }
 
 export interface RulesetRuleActionParametersSni {
-    value: string;
+    value?: string;
 }
 
 export interface RulesetRuleActionParametersUri {
-    origin: boolean;
-    path: outputs.RulesetRuleActionParametersUriPath;
-    query: outputs.RulesetRuleActionParametersUriQuery;
+    origin?: boolean;
+    path?: outputs.RulesetRuleActionParametersUriPath;
+    query?: outputs.RulesetRuleActionParametersUriQuery;
 }
 
 export interface RulesetRuleActionParametersUriPath {
-    expression: string;
-    value: string;
+    expression?: string;
+    value?: string;
 }
 
 export interface RulesetRuleActionParametersUriQuery {
-    expression: string;
-    value: string;
+    expression?: string;
+    value?: string;
 }
 
 export interface RulesetRuleExposedCredentialCheck {
-    passwordExpression: string;
-    usernameExpression: string;
+    passwordExpression?: string;
+    usernameExpression?: string;
 }
 
 export interface RulesetRuleLogging {
-    enabled: boolean;
+    enabled?: boolean;
 }
 
 export interface RulesetRuleRatelimit {
-    characteristics: string[];
-    countingExpression: string;
-    mitigationTimeout: number;
-    period: number;
-    requestsPerPeriod: number;
-    requestsToOrigin: boolean;
-    scorePerPeriod: number;
-    scoreResponseHeaderName: string;
+    characteristics?: string[];
+    countingExpression?: string;
+    mitigationTimeout?: number;
+    period?: number;
+    requestsPerPeriod?: number;
+    requestsToOrigin?: boolean;
+    scorePerPeriod?: number;
+    scoreResponseHeaderName?: string;
 }
 
 export interface SpectrumApplicationDns {

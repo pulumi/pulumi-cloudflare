@@ -9,31 +9,33 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersFromValueArgs Empty = new RulesetRuleActionParametersFromValueArgs();
 
-    @Import(name="preserveQueryString", required=true)
-    private Output<Boolean> preserveQueryString;
+    @Import(name="preserveQueryString")
+    private @Nullable Output<Boolean> preserveQueryString;
 
-    public Output<Boolean> preserveQueryString() {
-        return this.preserveQueryString;
+    public Optional<Output<Boolean>> preserveQueryString() {
+        return Optional.ofNullable(this.preserveQueryString);
     }
 
-    @Import(name="statusCode", required=true)
-    private Output<Integer> statusCode;
+    @Import(name="statusCode")
+    private @Nullable Output<Integer> statusCode;
 
-    public Output<Integer> statusCode() {
-        return this.statusCode;
+    public Optional<Output<Integer>> statusCode() {
+        return Optional.ofNullable(this.statusCode);
     }
 
-    @Import(name="targetUrl", required=true)
-    private Output<RulesetRuleActionParametersFromValueTargetUrlArgs> targetUrl;
+    @Import(name="targetUrl")
+    private @Nullable Output<RulesetRuleActionParametersFromValueTargetUrlArgs> targetUrl;
 
-    public Output<RulesetRuleActionParametersFromValueTargetUrlArgs> targetUrl() {
-        return this.targetUrl;
+    public Optional<Output<RulesetRuleActionParametersFromValueTargetUrlArgs>> targetUrl() {
+        return Optional.ofNullable(this.targetUrl);
     }
 
     private RulesetRuleActionParametersFromValueArgs() {}
@@ -62,7 +64,7 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
             $ = new RulesetRuleActionParametersFromValueArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder preserveQueryString(Output<Boolean> preserveQueryString) {
+        public Builder preserveQueryString(@Nullable Output<Boolean> preserveQueryString) {
             $.preserveQueryString = preserveQueryString;
             return this;
         }
@@ -71,7 +73,7 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
             return preserveQueryString(Output.of(preserveQueryString));
         }
 
-        public Builder statusCode(Output<Integer> statusCode) {
+        public Builder statusCode(@Nullable Output<Integer> statusCode) {
             $.statusCode = statusCode;
             return this;
         }
@@ -80,7 +82,7 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
             return statusCode(Output.of(statusCode));
         }
 
-        public Builder targetUrl(Output<RulesetRuleActionParametersFromValueTargetUrlArgs> targetUrl) {
+        public Builder targetUrl(@Nullable Output<RulesetRuleActionParametersFromValueTargetUrlArgs> targetUrl) {
             $.targetUrl = targetUrl;
             return this;
         }
@@ -90,9 +92,6 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
         }
 
         public RulesetRuleActionParametersFromValueArgs build() {
-            $.preserveQueryString = Objects.requireNonNull($.preserveQueryString, "expected parameter 'preserveQueryString' to be non-null");
-            $.statusCode = Objects.requireNonNull($.statusCode, "expected parameter 'statusCode' to be non-null");
-            $.targetUrl = Objects.requireNonNull($.targetUrl, "expected parameter 'targetUrl' to be non-null");
             return $;
         }
     }

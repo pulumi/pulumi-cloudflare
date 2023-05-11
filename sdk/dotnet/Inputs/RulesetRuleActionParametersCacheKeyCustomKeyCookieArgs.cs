@@ -12,7 +12,7 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs : global::Pulumi.ResourceArgs
     {
-        [Input("checkPresences", required: true)]
+        [Input("checkPresences")]
         private InputList<string>? _checkPresences;
         public InputList<string> CheckPresences
         {
@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare.Inputs
             set => _checkPresences = value;
         }
 
-        [Input("includes", required: true)]
+        [Input("includes")]
         private InputList<string>? _includes;
         public InputList<string> Includes
         {

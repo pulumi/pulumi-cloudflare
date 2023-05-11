@@ -13,158 +13,158 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParameters
     {
-        public readonly bool AutomaticHttpsRewrites;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersAutominify> Autominifies;
-        public readonly bool Bic;
-        public readonly Outputs.RulesetRuleActionParametersBrowserTtl BrowserTtl;
-        public readonly bool Cache;
-        public readonly Outputs.RulesetRuleActionParametersCacheKey CacheKey;
-        public readonly string Content;
-        public readonly string ContentType;
+        public readonly bool? AutomaticHttpsRewrites;
+        public readonly Outputs.RulesetRuleActionParametersAutominify? Autominify;
+        public readonly bool? Bic;
+        public readonly Outputs.RulesetRuleActionParametersBrowserTtl? BrowserTtl;
+        public readonly bool? Cache;
+        public readonly Outputs.RulesetRuleActionParametersCacheKey? CacheKey;
+        public readonly string? Content;
+        public readonly string? ContentType;
         public readonly ImmutableArray<string> CookieFields;
-        public readonly bool DisableApps;
-        public readonly bool DisableRailgun;
-        public readonly bool DisableZaraz;
-        public readonly Outputs.RulesetRuleActionParametersEdgeTtl EdgeTtl;
-        public readonly bool EmailObfuscation;
-        public readonly Outputs.RulesetRuleActionParametersFromList FromList;
-        public readonly Outputs.RulesetRuleActionParametersFromValue FromValue;
+        public readonly bool? DisableApps;
+        public readonly bool? DisableRailgun;
+        public readonly bool? DisableZaraz;
+        public readonly Outputs.RulesetRuleActionParametersEdgeTtl? EdgeTtl;
+        public readonly bool? EmailObfuscation;
+        public readonly Outputs.RulesetRuleActionParametersFromList? FromList;
+        public readonly Outputs.RulesetRuleActionParametersFromValue? FromValue;
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersHeader> Headers;
-        public readonly string HostHeader;
-        public readonly bool HotlinkProtection;
+        public readonly string? HostHeader;
+        public readonly bool? HotlinkProtection;
         /// <summary>
         /// The identifier of this resource.
         /// </summary>
-        public readonly string Id;
-        public readonly int Increment;
-        public readonly Outputs.RulesetRuleActionParametersMatchedData MatchedData;
-        public readonly bool Mirage;
-        public readonly bool OpportunisticEncryption;
-        public readonly Outputs.RulesetRuleActionParametersOrigin Origin;
-        public readonly bool OriginErrorPagePassthru;
-        public readonly Outputs.RulesetRuleActionParametersOverrides Overrides;
+        public readonly string? Id;
+        public readonly int? Increment;
+        public readonly Outputs.RulesetRuleActionParametersMatchedData? MatchedData;
+        public readonly bool? Mirage;
+        public readonly bool? OpportunisticEncryption;
+        public readonly Outputs.RulesetRuleActionParametersOrigin? Origin;
+        public readonly bool? OriginErrorPagePassthru;
+        public readonly Outputs.RulesetRuleActionParametersOverrides? Overrides;
         public readonly ImmutableArray<string> Phases;
-        public readonly string Polish;
+        public readonly string? Polish;
         public readonly ImmutableArray<string> Products;
         public readonly ImmutableArray<string> RequestFields;
-        public readonly bool RespectStrongEtags;
+        public readonly bool? RespectStrongEtags;
+        public readonly Outputs.RulesetRuleActionParametersResponse? Response;
         public readonly ImmutableArray<string> ResponseFields;
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersResponse> Responses;
-        public readonly bool RocketLoader;
+        public readonly bool? RocketLoader;
         /// <summary>
         /// List of rules to apply to the ruleset.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Rules;
-        public readonly string Ruleset;
+        public readonly ImmutableDictionary<string, string>? Rules;
+        public readonly string? Ruleset;
         public readonly ImmutableArray<string> Rulesets;
-        public readonly string SecurityLevel;
-        public readonly Outputs.RulesetRuleActionParametersServeStale ServeStale;
-        public readonly bool ServerSideExcludes;
-        public readonly Outputs.RulesetRuleActionParametersSni Sni;
-        public readonly string Ssl;
-        public readonly int StatusCode;
-        public readonly bool Sxg;
-        public readonly Outputs.RulesetRuleActionParametersUri Uri;
-        public readonly string Version;
+        public readonly string? SecurityLevel;
+        public readonly Outputs.RulesetRuleActionParametersServeStale? ServeStale;
+        public readonly bool? ServerSideExcludes;
+        public readonly Outputs.RulesetRuleActionParametersSni? Sni;
+        public readonly string? Ssl;
+        public readonly int? StatusCode;
+        public readonly bool? Sxg;
+        public readonly Outputs.RulesetRuleActionParametersUri? Uri;
+        public readonly string? Version;
 
         [OutputConstructor]
         private RulesetRuleActionParameters(
-            bool automaticHttpsRewrites,
+            bool? automaticHttpsRewrites,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersAutominify> autominifies,
+            Outputs.RulesetRuleActionParametersAutominify? autominify,
 
-            bool bic,
+            bool? bic,
 
-            Outputs.RulesetRuleActionParametersBrowserTtl browserTtl,
+            Outputs.RulesetRuleActionParametersBrowserTtl? browserTtl,
 
-            bool cache,
+            bool? cache,
 
-            Outputs.RulesetRuleActionParametersCacheKey cacheKey,
+            Outputs.RulesetRuleActionParametersCacheKey? cacheKey,
 
-            string content,
+            string? content,
 
-            string contentType,
+            string? contentType,
 
             ImmutableArray<string> cookieFields,
 
-            bool disableApps,
+            bool? disableApps,
 
-            bool disableRailgun,
+            bool? disableRailgun,
 
-            bool disableZaraz,
+            bool? disableZaraz,
 
-            Outputs.RulesetRuleActionParametersEdgeTtl edgeTtl,
+            Outputs.RulesetRuleActionParametersEdgeTtl? edgeTtl,
 
-            bool emailObfuscation,
+            bool? emailObfuscation,
 
-            Outputs.RulesetRuleActionParametersFromList fromList,
+            Outputs.RulesetRuleActionParametersFromList? fromList,
 
-            Outputs.RulesetRuleActionParametersFromValue fromValue,
+            Outputs.RulesetRuleActionParametersFromValue? fromValue,
 
             ImmutableArray<Outputs.RulesetRuleActionParametersHeader> headers,
 
-            string hostHeader,
+            string? hostHeader,
 
-            bool hotlinkProtection,
+            bool? hotlinkProtection,
 
-            string id,
+            string? id,
 
-            int increment,
+            int? increment,
 
-            Outputs.RulesetRuleActionParametersMatchedData matchedData,
+            Outputs.RulesetRuleActionParametersMatchedData? matchedData,
 
-            bool mirage,
+            bool? mirage,
 
-            bool opportunisticEncryption,
+            bool? opportunisticEncryption,
 
-            Outputs.RulesetRuleActionParametersOrigin origin,
+            Outputs.RulesetRuleActionParametersOrigin? origin,
 
-            bool originErrorPagePassthru,
+            bool? originErrorPagePassthru,
 
-            Outputs.RulesetRuleActionParametersOverrides overrides,
+            Outputs.RulesetRuleActionParametersOverrides? overrides,
 
             ImmutableArray<string> phases,
 
-            string polish,
+            string? polish,
 
             ImmutableArray<string> products,
 
             ImmutableArray<string> requestFields,
 
-            bool respectStrongEtags,
+            bool? respectStrongEtags,
+
+            Outputs.RulesetRuleActionParametersResponse? response,
 
             ImmutableArray<string> responseFields,
 
-            ImmutableArray<Outputs.RulesetRuleActionParametersResponse> responses,
+            bool? rocketLoader,
 
-            bool rocketLoader,
+            ImmutableDictionary<string, string>? rules,
 
-            ImmutableDictionary<string, string> rules,
-
-            string ruleset,
+            string? ruleset,
 
             ImmutableArray<string> rulesets,
 
-            string securityLevel,
+            string? securityLevel,
 
-            Outputs.RulesetRuleActionParametersServeStale serveStale,
+            Outputs.RulesetRuleActionParametersServeStale? serveStale,
 
-            bool serverSideExcludes,
+            bool? serverSideExcludes,
 
-            Outputs.RulesetRuleActionParametersSni sni,
+            Outputs.RulesetRuleActionParametersSni? sni,
 
-            string ssl,
+            string? ssl,
 
-            int statusCode,
+            int? statusCode,
 
-            bool sxg,
+            bool? sxg,
 
-            Outputs.RulesetRuleActionParametersUri uri,
+            Outputs.RulesetRuleActionParametersUri? uri,
 
-            string version)
+            string? version)
         {
             AutomaticHttpsRewrites = automaticHttpsRewrites;
-            Autominifies = autominifies;
+            Autominify = autominify;
             Bic = bic;
             BrowserTtl = browserTtl;
             Cache = cache;
@@ -195,8 +195,8 @@ namespace Pulumi.Cloudflare.Outputs
             Products = products;
             RequestFields = requestFields;
             RespectStrongEtags = respectStrongEtags;
+            Response = response;
             ResponseFields = responseFields;
-            Responses = responses;
             RocketLoader = rocketLoader;
             Rules = rules;
             Ruleset = ruleset;

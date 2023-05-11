@@ -7,31 +7,33 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersCacheKeyCustomKeyUserArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyUserArgs();
 
-    @Import(name="deviceType", required=true)
-    private Output<Boolean> deviceType;
+    @Import(name="deviceType")
+    private @Nullable Output<Boolean> deviceType;
 
-    public Output<Boolean> deviceType() {
-        return this.deviceType;
+    public Optional<Output<Boolean>> deviceType() {
+        return Optional.ofNullable(this.deviceType);
     }
 
-    @Import(name="geo", required=true)
-    private Output<Boolean> geo;
+    @Import(name="geo")
+    private @Nullable Output<Boolean> geo;
 
-    public Output<Boolean> geo() {
-        return this.geo;
+    public Optional<Output<Boolean>> geo() {
+        return Optional.ofNullable(this.geo);
     }
 
-    @Import(name="lang", required=true)
-    private Output<Boolean> lang;
+    @Import(name="lang")
+    private @Nullable Output<Boolean> lang;
 
-    public Output<Boolean> lang() {
-        return this.lang;
+    public Optional<Output<Boolean>> lang() {
+        return Optional.ofNullable(this.lang);
     }
 
     private RulesetRuleActionParametersCacheKeyCustomKeyUserArgs() {}
@@ -60,7 +62,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs extends 
             $ = new RulesetRuleActionParametersCacheKeyCustomKeyUserArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder deviceType(Output<Boolean> deviceType) {
+        public Builder deviceType(@Nullable Output<Boolean> deviceType) {
             $.deviceType = deviceType;
             return this;
         }
@@ -69,7 +71,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs extends 
             return deviceType(Output.of(deviceType));
         }
 
-        public Builder geo(Output<Boolean> geo) {
+        public Builder geo(@Nullable Output<Boolean> geo) {
             $.geo = geo;
             return this;
         }
@@ -78,7 +80,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs extends 
             return geo(Output.of(geo));
         }
 
-        public Builder lang(Output<Boolean> lang) {
+        public Builder lang(@Nullable Output<Boolean> lang) {
             $.lang = lang;
             return this;
         }
@@ -88,9 +90,6 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs extends 
         }
 
         public RulesetRuleActionParametersCacheKeyCustomKeyUserArgs build() {
-            $.deviceType = Objects.requireNonNull($.deviceType, "expected parameter 'deviceType' to be non-null");
-            $.geo = Objects.requireNonNull($.geo, "expected parameter 'geo' to be non-null");
-            $.lang = Objects.requireNonNull($.lang, "expected parameter 'lang' to be non-null");
             return $;
         }
     }

@@ -8,22 +8,24 @@ import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersUriQuery;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersUri {
-    private Boolean origin;
-    private RulesetRuleActionParametersUriPath path;
-    private RulesetRuleActionParametersUriQuery query;
+    private @Nullable Boolean origin;
+    private @Nullable RulesetRuleActionParametersUriPath path;
+    private @Nullable RulesetRuleActionParametersUriQuery query;
 
     private RulesetRuleActionParametersUri() {}
-    public Boolean origin() {
-        return this.origin;
+    public Optional<Boolean> origin() {
+        return Optional.ofNullable(this.origin);
     }
-    public RulesetRuleActionParametersUriPath path() {
-        return this.path;
+    public Optional<RulesetRuleActionParametersUriPath> path() {
+        return Optional.ofNullable(this.path);
     }
-    public RulesetRuleActionParametersUriQuery query() {
-        return this.query;
+    public Optional<RulesetRuleActionParametersUriQuery> query() {
+        return Optional.ofNullable(this.query);
     }
 
     public static Builder builder() {
@@ -35,9 +37,9 @@ public final class RulesetRuleActionParametersUri {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean origin;
-        private RulesetRuleActionParametersUriPath path;
-        private RulesetRuleActionParametersUriQuery query;
+        private @Nullable Boolean origin;
+        private @Nullable RulesetRuleActionParametersUriPath path;
+        private @Nullable RulesetRuleActionParametersUriQuery query;
         public Builder() {}
         public Builder(RulesetRuleActionParametersUri defaults) {
     	      Objects.requireNonNull(defaults);
@@ -47,18 +49,18 @@ public final class RulesetRuleActionParametersUri {
         }
 
         @CustomType.Setter
-        public Builder origin(Boolean origin) {
-            this.origin = Objects.requireNonNull(origin);
+        public Builder origin(@Nullable Boolean origin) {
+            this.origin = origin;
             return this;
         }
         @CustomType.Setter
-        public Builder path(RulesetRuleActionParametersUriPath path) {
-            this.path = Objects.requireNonNull(path);
+        public Builder path(@Nullable RulesetRuleActionParametersUriPath path) {
+            this.path = path;
             return this;
         }
         @CustomType.Setter
-        public Builder query(RulesetRuleActionParametersUriQuery query) {
-            this.query = Objects.requireNonNull(query);
+        public Builder query(@Nullable RulesetRuleActionParametersUriQuery query) {
+            this.query = query;
             return this;
         }
         public RulesetRuleActionParametersUri build() {
