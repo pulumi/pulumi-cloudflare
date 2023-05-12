@@ -28,6 +28,8 @@ import * as utilities from "./utilities";
  * // Manage build config
  * const buildConfig = new cloudflare.PagesProject("buildConfig", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     name: "this-is-my-project-01",
+ *     productionBranch: "main",
  *     buildConfig: {
  *         buildCommand: "npm run build",
  *         destinationDir: "build",
@@ -35,8 +37,6 @@ import * as utilities from "./utilities";
  *         webAnalyticsTag: "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
  *         webAnalyticsToken: "021e1057c18547eca7b79f2516f06o7x",
  *     },
- *     name: "this-is-my-project-01",
- *     productionBranch: "main",
  * });
  * // Manage project source
  * const sourceConfig = new cloudflare.PagesProject("sourceConfig", {
@@ -44,79 +44,86 @@ import * as utilities from "./utilities";
  *     name: "this-is-my-project-01",
  *     productionBranch: "main",
  *     source: {
+ *         type: "github",
  *         config: {
- *             deploymentsEnabled: true,
  *             owner: "cloudflare",
+ *             repoName: "ninjakittens",
+ *             productionBranch: "main",
  *             prCommentsEnabled: true,
- *             previewBranchExcludes: [
- *                 "main",
- *                 "prod",
- *             ],
+ *             deploymentsEnabled: true,
+ *             productionDeploymentEnabled: true,
+ *             previewDeploymentSetting: "custom",
  *             previewBranchIncludes: [
  *                 "dev",
  *                 "preview",
  *             ],
- *             previewDeploymentSetting: "custom",
- *             productionBranch: "main",
- *             productionDeploymentEnabled: true,
- *             repoName: "ninjakittens",
+ *             previewBranchExcludes: [
+ *                 "main",
+ *                 "prod",
+ *             ],
  *         },
- *         type: "github",
  *     },
  * });
  * // Manage deployment configs
  * const deploymentConfigs = new cloudflare.PagesProject("deploymentConfigs", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     name: "this-is-my-project-01",
+ *     productionBranch: "main",
  *     deploymentConfigs: {
  *         preview: {
- *             compatibilityDate: "2022-08-15",
- *             compatibilityFlags: ["preview_flag"],
- *             d1Databases: {
- *                 D1BINDING: "445e2955-951a-4358-a35b-a4d0c813f63",
- *             },
- *             durableObjectNamespaces: {
- *                 DOBINDING: "5eb63bbbe01eeed093cb22bb8f5acdc3",
- *             },
  *             environmentVariables: {
  *                 ENVIRONMENT: "preview",
  *             },
+ *             secrets: {
+ *                 TURNSTILE_SECRET: _var.turnstile_secret,
+ *             },
  *             kvNamespaces: {
- *                 KVBINDING: "5eb63bbbe01eeed093cb22bb8f5acdc3",
+ *                 KV_BINDING: "5eb63bbbe01eeed093cb22bb8f5acdc3",
+ *             },
+ *             durableObjectNamespaces: {
+ *                 DO_BINDING: "5eb63bbbe01eeed093cb22bb8f5acdc3",
  *             },
  *             r2Buckets: {
- *                 R2BINDING: "some-bucket",
+ *                 R2_BINDING: "some-bucket",
  *             },
+ *             d1Databases: {
+ *                 D1_BINDING: "445e2955-951a-4358-a35b-a4d0c813f63",
+ *             },
+ *             compatibilityDate: "2022-08-15",
+ *             compatibilityFlags: ["preview_flag"],
  *         },
  *         production: {
+ *             environmentVariables: {
+ *                 ENVIRONMENT: "production",
+ *                 OTHER_VALUE: "other value",
+ *             },
+ *             secrets: {
+ *                 TURNSTILE_SECRET: _var.turnstile_secret,
+ *                 TURNSTILE_INVIS_SECRET: _var.turnstile_invisible_secret,
+ *             },
+ *             kvNamespaces: {
+ *                 KV_BINDING_1: "5eb63bbbe01eeed093cb22bb8f5acdc3",
+ *                 KV_BINDING_2: "3cdca5f8bb22bc390deee10ebbb36be5",
+ *             },
+ *             durableObjectNamespaces: {
+ *                 DO_BINDING_1: "5eb63bbbe01eeed093cb22bb8f5acdc3",
+ *                 DO_BINDING_2: "3cdca5f8bb22bc390deee10ebbb36be5",
+ *             },
+ *             r2Buckets: {
+ *                 R2_BINDING_1: "some-bucket",
+ *                 R2_BINDING_2: "other-bucket",
+ *             },
+ *             d1Databases: {
+ *                 D1_BINDING_1: "445e2955-951a-4358-a35b-a4d0c813f63",
+ *                 D1_BINDING_2: "a399414b-c697-409a-a688-377db6433cd9",
+ *             },
  *             compatibilityDate: "2022-08-16",
  *             compatibilityFlags: [
  *                 "production_flag",
  *                 "second flag",
  *             ],
- *             d1Databases: {
- *                 D1BINDING1: "445e2955-951a-4358-a35b-a4d0c813f63",
- *                 D1BINDING2: "a399414b-c697-409a-a688-377db6433cd9",
- *             },
- *             durableObjectNamespaces: {
- *                 DOBINDING1: "5eb63bbbe01eeed093cb22bb8f5acdc3",
- *                 DOBINDING2: "3cdca5f8bb22bc390deee10ebbb36be5",
- *             },
- *             environmentVariables: {
- *                 ENVIRONMENT: "production",
- *                 OTHERVALUE: "other value",
- *             },
- *             kvNamespaces: {
- *                 KVBINDING1: "5eb63bbbe01eeed093cb22bb8f5acdc3",
- *                 KVBINDING2: "3cdca5f8bb22bc390deee10ebbb36be5",
- *             },
- *             r2Buckets: {
- *                 R2BINDING1: "some-bucket",
- *                 R2BINDING2: "other-bucket",
- *             },
  *         },
  *     },
- *     name: "this-is-my-project-01",
- *     productionBranch: "main",
  * });
  * ```
  *

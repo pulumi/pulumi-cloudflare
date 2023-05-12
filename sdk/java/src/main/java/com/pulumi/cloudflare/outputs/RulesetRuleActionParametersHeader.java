@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class RulesetRuleActionParametersHeader {
     private @Nullable String expression;
     /**
-     * @return Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * @return Name of the ruleset.
      * 
      */
     private @Nullable String name;
@@ -25,7 +25,7 @@ public final class RulesetRuleActionParametersHeader {
         return Optional.ofNullable(this.expression);
     }
     /**
-     * @return Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * @return Name of the ruleset.
      * 
      */
     public Optional<String> name() {

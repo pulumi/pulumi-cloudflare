@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.AccessIdentityProviderArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccessIdentityProviderState;
 import com.pulumi.cloudflare.outputs.AccessIdentityProviderConfig;
+import com.pulumi.cloudflare.outputs.AccessIdentityProviderScimConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -113,7 +114,7 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
      * The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
@@ -127,7 +128,7 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
      * Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
      * 
      */
-    @Export(name="configs", type=List.class, parameters={AccessIdentityProviderConfig.class})
+    @Export(name="configs", refs={List.class,AccessIdentityProviderConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AccessIdentityProviderConfig>> configs;
 
     /**
@@ -141,7 +142,7 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
      * Friendly name of the Access Identity Provider configuration.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -152,10 +153,24 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
         return this.name;
     }
     /**
+     * Configuration for SCIM settings for a given IDP.
+     * 
+     */
+    @Export(name="scimConfigs", refs={List.class,AccessIdentityProviderScimConfig.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<AccessIdentityProviderScimConfig>> scimConfigs;
+
+    /**
+     * @return Configuration for SCIM settings for a given IDP.
+     * 
+     */
+    public Output<Optional<List<AccessIdentityProviderScimConfig>>> scimConfigs() {
+        return Codegen.optional(this.scimConfigs);
+    }
+    /**
      * The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -169,7 +184,7 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
      * The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**

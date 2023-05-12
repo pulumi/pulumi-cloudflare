@@ -65,7 +65,7 @@ public class Filter extends com.pulumi.resources.CustomResource {
      * A note that you can use to describe the purpose of the filter.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -79,7 +79,7 @@ public class Filter extends com.pulumi.resources.CustomResource {
      * The filter expression to be used.
      * 
      */
-    @Export(name="expression", type=String.class, parameters={})
+    @Export(name="expression", refs={String.class}, tree="[0]")
     private Output<String> expression;
 
     /**
@@ -93,7 +93,7 @@ public class Filter extends com.pulumi.resources.CustomResource {
      * Whether this filter is currently paused.
      * 
      */
-    @Export(name="paused", type=Boolean.class, parameters={})
+    @Export(name="paused", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> paused;
 
     /**
@@ -107,7 +107,7 @@ public class Filter extends com.pulumi.resources.CustomResource {
      * Short reference tag to quickly select related rules.
      * 
      */
-    @Export(name="ref", type=String.class, parameters={})
+    @Export(name="ref", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ref;
 
     /**
@@ -121,7 +121,7 @@ public class Filter extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

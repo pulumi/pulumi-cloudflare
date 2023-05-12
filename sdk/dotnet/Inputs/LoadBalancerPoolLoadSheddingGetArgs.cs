@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<double>? DefaultPercent { get; set; }
 
         /// <summary>
-        /// Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`""`.
+        /// Method of shedding traffic. Available values: `""`, `hash`, `random`. Defaults to `""`.
         /// </summary>
         [Input("defaultPolicy")]
         public Input<string>? DefaultPolicy { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<double>? SessionPercent { get; set; }
 
         /// <summary>
-        /// Method of shedding traffic. Available values: ``,`hash`. Defaults to`""`.
+        /// Method of shedding traffic. Available values: `""`, `hash`. Defaults to `""`.
         /// </summary>
         [Input("sessionPolicy")]
         public Input<string>? SessionPolicy { get; set; }

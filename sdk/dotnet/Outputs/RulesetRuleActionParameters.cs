@@ -13,6 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParameters
     {
+        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersAlgorithm> Algorithms;
         public readonly bool? AutomaticHttpsRewrites;
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersAutominify> Autominifies;
         public readonly bool? Bic;
@@ -33,7 +34,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? HostHeader;
         public readonly bool? HotlinkProtection;
         /// <summary>
-        /// The ID of this resource.
+        /// The identifier of this resource.
         /// </summary>
         public readonly string? Id;
         public readonly int? Increment;
@@ -69,6 +70,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private RulesetRuleActionParameters(
+            ImmutableArray<Outputs.RulesetRuleActionParametersAlgorithm> algorithms,
+
             bool? automaticHttpsRewrites,
 
             ImmutableArray<Outputs.RulesetRuleActionParametersAutominify> autominifies,
@@ -163,6 +166,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? version)
         {
+            Algorithms = algorithms;
             AutomaticHttpsRewrites = automaticHttpsRewrites;
             Autominifies = autominifies;
             Bic = bic;

@@ -20,6 +20,7 @@ public final class AccessIdentityProviderConfig {
     private @Nullable String centrifyAccount;
     private @Nullable String centrifyAppId;
     private @Nullable String certsUrl;
+    private @Nullable List<String> claims;
     private @Nullable String clientId;
     private @Nullable String clientSecret;
     private @Nullable String directoryId;
@@ -30,6 +31,7 @@ public final class AccessIdentityProviderConfig {
     private @Nullable String oneloginAccount;
     private @Nullable Boolean pkceEnabled;
     private @Nullable String redirectUrl;
+    private @Nullable List<String> scopes;
     private @Nullable Boolean signRequest;
     private @Nullable String ssoTargetUrl;
     private @Nullable Boolean supportGroups;
@@ -56,6 +58,9 @@ public final class AccessIdentityProviderConfig {
     }
     public Optional<String> certsUrl() {
         return Optional.ofNullable(this.certsUrl);
+    }
+    public List<String> claims() {
+        return this.claims == null ? List.of() : this.claims;
     }
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
@@ -87,6 +92,9 @@ public final class AccessIdentityProviderConfig {
     public Optional<String> redirectUrl() {
         return Optional.ofNullable(this.redirectUrl);
     }
+    public List<String> scopes() {
+        return this.scopes == null ? List.of() : this.scopes;
+    }
     public Optional<Boolean> signRequest() {
         return Optional.ofNullable(this.signRequest);
     }
@@ -116,6 +124,7 @@ public final class AccessIdentityProviderConfig {
         private @Nullable String centrifyAccount;
         private @Nullable String centrifyAppId;
         private @Nullable String certsUrl;
+        private @Nullable List<String> claims;
         private @Nullable String clientId;
         private @Nullable String clientSecret;
         private @Nullable String directoryId;
@@ -126,6 +135,7 @@ public final class AccessIdentityProviderConfig {
         private @Nullable String oneloginAccount;
         private @Nullable Boolean pkceEnabled;
         private @Nullable String redirectUrl;
+        private @Nullable List<String> scopes;
         private @Nullable Boolean signRequest;
         private @Nullable String ssoTargetUrl;
         private @Nullable Boolean supportGroups;
@@ -140,6 +150,7 @@ public final class AccessIdentityProviderConfig {
     	      this.centrifyAccount = defaults.centrifyAccount;
     	      this.centrifyAppId = defaults.centrifyAppId;
     	      this.certsUrl = defaults.certsUrl;
+    	      this.claims = defaults.claims;
     	      this.clientId = defaults.clientId;
     	      this.clientSecret = defaults.clientSecret;
     	      this.directoryId = defaults.directoryId;
@@ -150,6 +161,7 @@ public final class AccessIdentityProviderConfig {
     	      this.oneloginAccount = defaults.oneloginAccount;
     	      this.pkceEnabled = defaults.pkceEnabled;
     	      this.redirectUrl = defaults.redirectUrl;
+    	      this.scopes = defaults.scopes;
     	      this.signRequest = defaults.signRequest;
     	      this.ssoTargetUrl = defaults.ssoTargetUrl;
     	      this.supportGroups = defaults.supportGroups;
@@ -193,6 +205,14 @@ public final class AccessIdentityProviderConfig {
         public Builder certsUrl(@Nullable String certsUrl) {
             this.certsUrl = certsUrl;
             return this;
+        }
+        @CustomType.Setter
+        public Builder claims(@Nullable List<String> claims) {
+            this.claims = claims;
+            return this;
+        }
+        public Builder claims(String... claims) {
+            return claims(List.of(claims));
         }
         @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
@@ -245,6 +265,14 @@ public final class AccessIdentityProviderConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder scopes(@Nullable List<String> scopes) {
+            this.scopes = scopes;
+            return this;
+        }
+        public Builder scopes(String... scopes) {
+            return scopes(List.of(scopes));
+        }
+        @CustomType.Setter
         public Builder signRequest(@Nullable Boolean signRequest) {
             this.signRequest = signRequest;
             return this;
@@ -273,6 +301,7 @@ public final class AccessIdentityProviderConfig {
             o.centrifyAccount = centrifyAccount;
             o.centrifyAppId = centrifyAppId;
             o.certsUrl = certsUrl;
+            o.claims = claims;
             o.clientId = clientId;
             o.clientSecret = clientSecret;
             o.directoryId = directoryId;
@@ -283,6 +312,7 @@ public final class AccessIdentityProviderConfig {
             o.oneloginAccount = oneloginAccount;
             o.pkceEnabled = pkceEnabled;
             o.redirectUrl = redirectUrl;
+            o.scopes = scopes;
             o.signRequest = signRequest;
             o.ssoTargetUrl = ssoTargetUrl;
             o.supportGroups = supportGroups;

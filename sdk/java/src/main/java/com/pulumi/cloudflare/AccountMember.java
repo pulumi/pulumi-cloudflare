@@ -39,7 +39,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleUser = new AccountMember(&#34;exampleUser&#34;, AccountMemberArgs.builder()        
+ *         var example = new AccountMember(&#34;example&#34;, AccountMemberArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .emailAddress(&#34;user@example.com&#34;)
  *             .roleIds(            
  *                 &#34;68b329da9893e34099c7d8ad5cb9c940&#34;,
@@ -63,7 +64,7 @@ public class AccountMember extends com.pulumi.resources.CustomResource {
      * Account ID to create the account member in.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -77,7 +78,7 @@ public class AccountMember extends com.pulumi.resources.CustomResource {
      * The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
      * 
      */
-    @Export(name="emailAddress", type=String.class, parameters={})
+    @Export(name="emailAddress", refs={String.class}, tree="[0]")
     private Output<String> emailAddress;
 
     /**
@@ -91,7 +92,7 @@ public class AccountMember extends com.pulumi.resources.CustomResource {
      * List of account role IDs that you want to assign to a member.
      * 
      */
-    @Export(name="roleIds", type=List.class, parameters={String.class})
+    @Export(name="roleIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> roleIds;
 
     /**
@@ -105,7 +106,7 @@ public class AccountMember extends com.pulumi.resources.CustomResource {
      * A member&#39;s status in the account. Available values: `accepted`, `pending`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

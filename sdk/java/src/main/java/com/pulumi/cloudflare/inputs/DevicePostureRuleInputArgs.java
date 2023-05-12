@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class DevicePostureRuleInputArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DevicePostureRuleInputArgs Empty = new DevicePostureRuleInputArgs();
+
+    /**
+     * Specific volume(s) to check for encryption.
+     * 
+     */
+    @Import(name="checkDisks")
+    private @Nullable Output<List<String>> checkDisks;
+
+    /**
+     * @return Specific volume(s) to check for encryption.
+     * 
+     */
+    public Optional<Output<List<String>>> checkDisks() {
+        return Optional.ofNullable(this.checkDisks);
+    }
 
     /**
      * The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
@@ -304,6 +320,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     private DevicePostureRuleInputArgs() {}
 
     private DevicePostureRuleInputArgs(DevicePostureRuleInputArgs $) {
+        this.checkDisks = $.checkDisks;
         this.complianceStatus = $.complianceStatus;
         this.connectionId = $.connectionId;
         this.domain = $.domain;
@@ -341,6 +358,37 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
 
         public Builder(DevicePostureRuleInputArgs defaults) {
             $ = new DevicePostureRuleInputArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param checkDisks Specific volume(s) to check for encryption.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder checkDisks(@Nullable Output<List<String>> checkDisks) {
+            $.checkDisks = checkDisks;
+            return this;
+        }
+
+        /**
+         * @param checkDisks Specific volume(s) to check for encryption.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder checkDisks(List<String> checkDisks) {
+            return checkDisks(Output.of(checkDisks));
+        }
+
+        /**
+         * @param checkDisks Specific volume(s) to check for encryption.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder checkDisks(String... checkDisks) {
+            return checkDisks(List.of(checkDisks));
         }
 
         /**

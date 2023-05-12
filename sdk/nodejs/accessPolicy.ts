@@ -111,15 +111,17 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public readonly decision!: pulumi.Output<string>;
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      */
     public readonly excludes!: pulumi.Output<outputs.AccessPolicyExclude[] | undefined>;
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      */
     public readonly includes!: pulumi.Output<outputs.AccessPolicyInclude[]>;
+    /**
+     * Require this application to be served in an isolated browser for users matching this policy.
+     */
+    public readonly isolationRequired!: pulumi.Output<boolean | undefined>;
     /**
      * Friendly name of the Access Policy.
      */
@@ -137,8 +139,7 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public readonly purposeJustificationRequired!: pulumi.Output<boolean | undefined>;
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      */
     public readonly requires!: pulumi.Output<outputs.AccessPolicyRequire[] | undefined>;
     /**
@@ -166,6 +167,7 @@ export class AccessPolicy extends pulumi.CustomResource {
             resourceInputs["decision"] = state ? state.decision : undefined;
             resourceInputs["excludes"] = state ? state.excludes : undefined;
             resourceInputs["includes"] = state ? state.includes : undefined;
+            resourceInputs["isolationRequired"] = state ? state.isolationRequired : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["precedence"] = state ? state.precedence : undefined;
             resourceInputs["purposeJustificationPrompt"] = state ? state.purposeJustificationPrompt : undefined;
@@ -196,6 +198,7 @@ export class AccessPolicy extends pulumi.CustomResource {
             resourceInputs["decision"] = args ? args.decision : undefined;
             resourceInputs["excludes"] = args ? args.excludes : undefined;
             resourceInputs["includes"] = args ? args.includes : undefined;
+            resourceInputs["isolationRequired"] = args ? args.isolationRequired : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["precedence"] = args ? args.precedence : undefined;
             resourceInputs["purposeJustificationPrompt"] = args ? args.purposeJustificationPrompt : undefined;
@@ -227,15 +230,17 @@ export interface AccessPolicyState {
      */
     decision?: pulumi.Input<string>;
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      */
     excludes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExclude>[]>;
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      */
     includes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[]>;
+    /**
+     * Require this application to be served in an isolated browser for users matching this policy.
+     */
+    isolationRequired?: pulumi.Input<boolean>;
     /**
      * Friendly name of the Access Policy.
      */
@@ -253,8 +258,7 @@ export interface AccessPolicyState {
      */
     purposeJustificationRequired?: pulumi.Input<boolean>;
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      */
     requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
     /**
@@ -282,15 +286,17 @@ export interface AccessPolicyArgs {
      */
     decision: pulumi.Input<string>;
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      */
     excludes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExclude>[]>;
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      */
     includes: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[]>;
+    /**
+     * Require this application to be served in an isolated browser for users matching this policy.
+     */
+    isolationRequired?: pulumi.Input<boolean>;
     /**
      * Friendly name of the Access Policy.
      */
@@ -308,8 +314,7 @@ export interface AccessPolicyArgs {
      */
     purposeJustificationRequired?: pulumi.Input<boolean>;
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      */
     requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
     /**

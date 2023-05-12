@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.AccessIdentityProviderConfigArgs;
+import com.pulumi.cloudflare.inputs.AccessIdentityProviderScimConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -63,6 +64,21 @@ public final class AccessIdentityProviderArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Configuration for SCIM settings for a given IDP.
+     * 
+     */
+    @Import(name="scimConfigs")
+    private @Nullable Output<List<AccessIdentityProviderScimConfigArgs>> scimConfigs;
+
+    /**
+     * @return Configuration for SCIM settings for a given IDP.
+     * 
+     */
+    public Optional<Output<List<AccessIdentityProviderScimConfigArgs>>> scimConfigs() {
+        return Optional.ofNullable(this.scimConfigs);
+    }
+
+    /**
      * The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
      * 
      */
@@ -98,6 +114,7 @@ public final class AccessIdentityProviderArgs extends com.pulumi.resources.Resou
         this.accountId = $.accountId;
         this.configs = $.configs;
         this.name = $.name;
+        this.scimConfigs = $.scimConfigs;
         this.type = $.type;
         this.zoneId = $.zoneId;
     }
@@ -191,6 +208,37 @@ public final class AccessIdentityProviderArgs extends com.pulumi.resources.Resou
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param scimConfigs Configuration for SCIM settings for a given IDP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scimConfigs(@Nullable Output<List<AccessIdentityProviderScimConfigArgs>> scimConfigs) {
+            $.scimConfigs = scimConfigs;
+            return this;
+        }
+
+        /**
+         * @param scimConfigs Configuration for SCIM settings for a given IDP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scimConfigs(List<AccessIdentityProviderScimConfigArgs> scimConfigs) {
+            return scimConfigs(Output.of(scimConfigs));
+        }
+
+        /**
+         * @param scimConfigs Configuration for SCIM settings for a given IDP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scimConfigs(AccessIdentityProviderScimConfigArgs... scimConfigs) {
+            return scimConfigs(List.of(scimConfigs));
         }
 
         /**

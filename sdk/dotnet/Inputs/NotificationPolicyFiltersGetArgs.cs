@@ -84,6 +84,18 @@ namespace Pulumi.Cloudflare.Inputs
             set => _limits = value;
         }
 
+        [Input("megabitsPerSeconds")]
+        private InputList<string>? _megabitsPerSeconds;
+
+        /// <summary>
+        /// Megabits per second threshold for dos alert.
+        /// </summary>
+        public InputList<string> MegabitsPerSeconds
+        {
+            get => _megabitsPerSeconds ?? (_megabitsPerSeconds = new InputList<string>());
+            set => _megabitsPerSeconds = value;
+        }
+
         [Input("newHealths")]
         private InputList<string>? _newHealths;
 

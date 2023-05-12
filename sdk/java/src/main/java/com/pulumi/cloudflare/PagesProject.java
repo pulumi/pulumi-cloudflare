@@ -61,6 +61,8 @@ import javax.annotation.Nullable;
  * 
  *         var buildConfig = new PagesProject(&#34;buildConfig&#34;, PagesProjectArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .name(&#34;this-is-my-project-01&#34;)
+ *             .productionBranch(&#34;main&#34;)
  *             .buildConfig(PagesProjectBuildConfigArgs.builder()
  *                 .buildCommand(&#34;npm run build&#34;)
  *                 .destinationDir(&#34;build&#34;)
@@ -68,8 +70,6 @@ import javax.annotation.Nullable;
  *                 .webAnalyticsTag(&#34;cee1c73f6e4743d0b5e6bb1a0bcaabcc&#34;)
  *                 .webAnalyticsToken(&#34;021e1057c18547eca7b79f2516f06o7x&#34;)
  *                 .build())
- *             .name(&#34;this-is-my-project-01&#34;)
- *             .productionBranch(&#34;main&#34;)
  *             .build());
  * 
  *         var sourceConfig = new PagesProject(&#34;sourceConfig&#34;, PagesProjectArgs.builder()        
@@ -77,66 +77,71 @@ import javax.annotation.Nullable;
  *             .name(&#34;this-is-my-project-01&#34;)
  *             .productionBranch(&#34;main&#34;)
  *             .source(PagesProjectSourceArgs.builder()
+ *                 .type(&#34;github&#34;)
  *                 .config(PagesProjectSourceConfigArgs.builder()
- *                     .deploymentsEnabled(true)
  *                     .owner(&#34;cloudflare&#34;)
+ *                     .repoName(&#34;ninjakittens&#34;)
+ *                     .productionBranch(&#34;main&#34;)
  *                     .prCommentsEnabled(true)
- *                     .previewBranchExcludes(                    
- *                         &#34;main&#34;,
- *                         &#34;prod&#34;)
+ *                     .deploymentsEnabled(true)
+ *                     .productionDeploymentEnabled(true)
+ *                     .previewDeploymentSetting(&#34;custom&#34;)
  *                     .previewBranchIncludes(                    
  *                         &#34;dev&#34;,
  *                         &#34;preview&#34;)
- *                     .previewDeploymentSetting(&#34;custom&#34;)
- *                     .productionBranch(&#34;main&#34;)
- *                     .productionDeploymentEnabled(true)
- *                     .repoName(&#34;ninjakittens&#34;)
+ *                     .previewBranchExcludes(                    
+ *                         &#34;main&#34;,
+ *                         &#34;prod&#34;)
  *                     .build())
- *                 .type(&#34;github&#34;)
  *                 .build())
  *             .build());
  * 
  *         var deploymentConfigs = new PagesProject(&#34;deploymentConfigs&#34;, PagesProjectArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .name(&#34;this-is-my-project-01&#34;)
+ *             .productionBranch(&#34;main&#34;)
  *             .deploymentConfigs(PagesProjectDeploymentConfigsArgs.builder()
  *                 .preview(PagesProjectDeploymentConfigsPreviewArgs.builder()
+ *                     .environmentVariables(Map.of(&#34;ENVIRONMENT&#34;, &#34;preview&#34;))
+ *                     .secrets(Map.of(&#34;TURNSTILE_SECRET&#34;, var_.turnstile_secret()))
+ *                     .kvNamespaces(Map.of(&#34;KV_BINDING&#34;, &#34;5eb63bbbe01eeed093cb22bb8f5acdc3&#34;))
+ *                     .durableObjectNamespaces(Map.of(&#34;DO_BINDING&#34;, &#34;5eb63bbbe01eeed093cb22bb8f5acdc3&#34;))
+ *                     .r2Buckets(Map.of(&#34;R2_BINDING&#34;, &#34;some-bucket&#34;))
+ *                     .d1Databases(Map.of(&#34;D1_BINDING&#34;, &#34;445e2955-951a-4358-a35b-a4d0c813f63&#34;))
  *                     .compatibilityDate(&#34;2022-08-15&#34;)
  *                     .compatibilityFlags(&#34;preview_flag&#34;)
- *                     .d1Databases(Map.of(&#34;D1BINDING&#34;, &#34;445e2955-951a-4358-a35b-a4d0c813f63&#34;))
- *                     .durableObjectNamespaces(Map.of(&#34;DOBINDING&#34;, &#34;5eb63bbbe01eeed093cb22bb8f5acdc3&#34;))
- *                     .environmentVariables(Map.of(&#34;ENVIRONMENT&#34;, &#34;preview&#34;))
- *                     .kvNamespaces(Map.of(&#34;KVBINDING&#34;, &#34;5eb63bbbe01eeed093cb22bb8f5acdc3&#34;))
- *                     .r2Buckets(Map.of(&#34;R2BINDING&#34;, &#34;some-bucket&#34;))
  *                     .build())
  *                 .production(PagesProjectDeploymentConfigsProductionArgs.builder()
+ *                     .environmentVariables(Map.ofEntries(
+ *                         Map.entry(&#34;ENVIRONMENT&#34;, &#34;production&#34;),
+ *                         Map.entry(&#34;OTHER_VALUE&#34;, &#34;other value&#34;)
+ *                     ))
+ *                     .secrets(Map.ofEntries(
+ *                         Map.entry(&#34;TURNSTILE_SECRET&#34;, var_.turnstile_secret()),
+ *                         Map.entry(&#34;TURNSTILE_INVIS_SECRET&#34;, var_.turnstile_invisible_secret())
+ *                     ))
+ *                     .kvNamespaces(Map.ofEntries(
+ *                         Map.entry(&#34;KV_BINDING_1&#34;, &#34;5eb63bbbe01eeed093cb22bb8f5acdc3&#34;),
+ *                         Map.entry(&#34;KV_BINDING_2&#34;, &#34;3cdca5f8bb22bc390deee10ebbb36be5&#34;)
+ *                     ))
+ *                     .durableObjectNamespaces(Map.ofEntries(
+ *                         Map.entry(&#34;DO_BINDING_1&#34;, &#34;5eb63bbbe01eeed093cb22bb8f5acdc3&#34;),
+ *                         Map.entry(&#34;DO_BINDING_2&#34;, &#34;3cdca5f8bb22bc390deee10ebbb36be5&#34;)
+ *                     ))
+ *                     .r2Buckets(Map.ofEntries(
+ *                         Map.entry(&#34;R2_BINDING_1&#34;, &#34;some-bucket&#34;),
+ *                         Map.entry(&#34;R2_BINDING_2&#34;, &#34;other-bucket&#34;)
+ *                     ))
+ *                     .d1Databases(Map.ofEntries(
+ *                         Map.entry(&#34;D1_BINDING_1&#34;, &#34;445e2955-951a-4358-a35b-a4d0c813f63&#34;),
+ *                         Map.entry(&#34;D1_BINDING_2&#34;, &#34;a399414b-c697-409a-a688-377db6433cd9&#34;)
+ *                     ))
  *                     .compatibilityDate(&#34;2022-08-16&#34;)
  *                     .compatibilityFlags(                    
  *                         &#34;production_flag&#34;,
  *                         &#34;second flag&#34;)
- *                     .d1Databases(Map.ofEntries(
- *                         Map.entry(&#34;D1BINDING1&#34;, &#34;445e2955-951a-4358-a35b-a4d0c813f63&#34;),
- *                         Map.entry(&#34;D1BINDING2&#34;, &#34;a399414b-c697-409a-a688-377db6433cd9&#34;)
- *                     ))
- *                     .durableObjectNamespaces(Map.ofEntries(
- *                         Map.entry(&#34;DOBINDING1&#34;, &#34;5eb63bbbe01eeed093cb22bb8f5acdc3&#34;),
- *                         Map.entry(&#34;DOBINDING2&#34;, &#34;3cdca5f8bb22bc390deee10ebbb36be5&#34;)
- *                     ))
- *                     .environmentVariables(Map.ofEntries(
- *                         Map.entry(&#34;ENVIRONMENT&#34;, &#34;production&#34;),
- *                         Map.entry(&#34;OTHERVALUE&#34;, &#34;other value&#34;)
- *                     ))
- *                     .kvNamespaces(Map.ofEntries(
- *                         Map.entry(&#34;KVBINDING1&#34;, &#34;5eb63bbbe01eeed093cb22bb8f5acdc3&#34;),
- *                         Map.entry(&#34;KVBINDING2&#34;, &#34;3cdca5f8bb22bc390deee10ebbb36be5&#34;)
- *                     ))
- *                     .r2Buckets(Map.ofEntries(
- *                         Map.entry(&#34;R2BINDING1&#34;, &#34;some-bucket&#34;),
- *                         Map.entry(&#34;R2BINDING2&#34;, &#34;other-bucket&#34;)
- *                     ))
  *                     .build())
  *                 .build())
- *             .name(&#34;this-is-my-project-01&#34;)
- *             .productionBranch(&#34;main&#34;)
  *             .build());
  * 
  *     }
@@ -158,7 +163,7 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -172,7 +177,7 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * Configuration for the project build process.
      * 
      */
-    @Export(name="buildConfig", type=PagesProjectBuildConfig.class, parameters={})
+    @Export(name="buildConfig", refs={PagesProjectBuildConfig.class}, tree="[0]")
     private Output</* @Nullable */ PagesProjectBuildConfig> buildConfig;
 
     /**
@@ -186,7 +191,7 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * When the project was created.
      * 
      */
-    @Export(name="createdOn", type=String.class, parameters={})
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
 
     /**
@@ -200,7 +205,7 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * Configuration for deployments in a project.
      * 
      */
-    @Export(name="deploymentConfigs", type=PagesProjectDeploymentConfigs.class, parameters={})
+    @Export(name="deploymentConfigs", refs={PagesProjectDeploymentConfigs.class}, tree="[0]")
     private Output</* @Nullable */ PagesProjectDeploymentConfigs> deploymentConfigs;
 
     /**
@@ -214,7 +219,7 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * A list of associated custom domains for the project.
      * 
      */
-    @Export(name="domains", type=List.class, parameters={String.class})
+    @Export(name="domains", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> domains;
 
     /**
@@ -228,7 +233,7 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * Name of the project. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -242,7 +247,7 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * The name of the branch that is used for the production environment.
      * 
      */
-    @Export(name="productionBranch", type=String.class, parameters={})
+    @Export(name="productionBranch", refs={String.class}, tree="[0]")
     private Output<String> productionBranch;
 
     /**
@@ -256,7 +261,7 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * Configuration for the project source.
      * 
      */
-    @Export(name="source", type=PagesProjectSource.class, parameters={})
+    @Export(name="source", refs={PagesProjectSource.class}, tree="[0]")
     private Output</* @Nullable */ PagesProjectSource> source;
 
     /**
@@ -270,7 +275,7 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * The Cloudflare subdomain associated with the project.
      * 
      */
-    @Export(name="subdomain", type=String.class, parameters={})
+    @Export(name="subdomain", refs={String.class}, tree="[0]")
     private Output<String> subdomain;
 
     /**

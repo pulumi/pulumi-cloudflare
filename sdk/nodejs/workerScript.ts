@@ -9,9 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`.
  *
- * > This resource uses the Cloudflare account APIs. This requires setting the
- *   `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -100,10 +97,22 @@ export class WorkerScript extends pulumi.CustomResource {
     public readonly accountId!: pulumi.Output<string>;
     public readonly analyticsEngineBindings!: pulumi.Output<outputs.WorkerScriptAnalyticsEngineBinding[] | undefined>;
     /**
+     * The date to use for the compatibility flag.
+     */
+    public readonly compatibilityDate!: pulumi.Output<string | undefined>;
+    /**
+     * Compatibility flags used for Worker Scripts.
+     */
+    public readonly compatibilityFlags!: pulumi.Output<string[]>;
+    /**
      * The script content.
      */
     public readonly content!: pulumi.Output<string>;
     public readonly kvNamespaceBindings!: pulumi.Output<outputs.WorkerScriptKvNamespaceBinding[] | undefined>;
+    /**
+     * Enabling allows Worker events to be sent to a defined Logpush destination.
+     */
+    public readonly logpush!: pulumi.Output<boolean | undefined>;
     /**
      * Whether to upload Worker as a module.
      */
@@ -134,8 +143,11 @@ export class WorkerScript extends pulumi.CustomResource {
             const state = argsOrState as WorkerScriptState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["analyticsEngineBindings"] = state ? state.analyticsEngineBindings : undefined;
+            resourceInputs["compatibilityDate"] = state ? state.compatibilityDate : undefined;
+            resourceInputs["compatibilityFlags"] = state ? state.compatibilityFlags : undefined;
             resourceInputs["content"] = state ? state.content : undefined;
             resourceInputs["kvNamespaceBindings"] = state ? state.kvNamespaceBindings : undefined;
+            resourceInputs["logpush"] = state ? state.logpush : undefined;
             resourceInputs["module"] = state ? state.module : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["plainTextBindings"] = state ? state.plainTextBindings : undefined;
@@ -157,8 +169,11 @@ export class WorkerScript extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["analyticsEngineBindings"] = args ? args.analyticsEngineBindings : undefined;
+            resourceInputs["compatibilityDate"] = args ? args.compatibilityDate : undefined;
+            resourceInputs["compatibilityFlags"] = args ? args.compatibilityFlags : undefined;
             resourceInputs["content"] = args ? args.content : undefined;
             resourceInputs["kvNamespaceBindings"] = args ? args.kvNamespaceBindings : undefined;
+            resourceInputs["logpush"] = args ? args.logpush : undefined;
             resourceInputs["module"] = args ? args.module : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["plainTextBindings"] = args ? args.plainTextBindings : undefined;
@@ -183,10 +198,22 @@ export interface WorkerScriptState {
     accountId?: pulumi.Input<string>;
     analyticsEngineBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptAnalyticsEngineBinding>[]>;
     /**
+     * The date to use for the compatibility flag.
+     */
+    compatibilityDate?: pulumi.Input<string>;
+    /**
+     * Compatibility flags used for Worker Scripts.
+     */
+    compatibilityFlags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The script content.
      */
     content?: pulumi.Input<string>;
     kvNamespaceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptKvNamespaceBinding>[]>;
+    /**
+     * Enabling allows Worker events to be sent to a defined Logpush destination.
+     */
+    logpush?: pulumi.Input<boolean>;
     /**
      * Whether to upload Worker as a module.
      */
@@ -213,10 +240,22 @@ export interface WorkerScriptArgs {
     accountId: pulumi.Input<string>;
     analyticsEngineBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptAnalyticsEngineBinding>[]>;
     /**
+     * The date to use for the compatibility flag.
+     */
+    compatibilityDate?: pulumi.Input<string>;
+    /**
+     * Compatibility flags used for Worker Scripts.
+     */
+    compatibilityFlags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The script content.
      */
     content: pulumi.Input<string>;
     kvNamespaceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptKvNamespaceBinding>[]>;
+    /**
+     * Enabling allows Worker events to be sent to a defined Logpush destination.
+     */
+    logpush?: pulumi.Input<boolean>;
     /**
      * Whether to upload Worker as a module.
      */

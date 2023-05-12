@@ -66,7 +66,7 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
      * Zone DNSSEC algorithm.
      * 
      */
-    @Export(name="algorithm", type=String.class, parameters={})
+    @Export(name="algorithm", refs={String.class}, tree="[0]")
     private Output<String> algorithm;
 
     /**
@@ -80,7 +80,7 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
      * Zone DNSSEC digest.
      * 
      */
-    @Export(name="digest", type=String.class, parameters={})
+    @Export(name="digest", refs={String.class}, tree="[0]")
     private Output<String> digest;
 
     /**
@@ -94,7 +94,7 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
      * Digest algorithm use for Zone DNSSEC.
      * 
      */
-    @Export(name="digestAlgorithm", type=String.class, parameters={})
+    @Export(name="digestAlgorithm", refs={String.class}, tree="[0]")
     private Output<String> digestAlgorithm;
 
     /**
@@ -108,7 +108,7 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
      * Digest Type for Zone DNSSEC.
      * 
      */
-    @Export(name="digestType", type=String.class, parameters={})
+    @Export(name="digestType", refs={String.class}, tree="[0]")
     private Output<String> digestType;
 
     /**
@@ -122,7 +122,7 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
      * DS for the Zone DNSSEC.
      * 
      */
-    @Export(name="ds", type=String.class, parameters={})
+    @Export(name="ds", refs={String.class}, tree="[0]")
     private Output<String> ds;
 
     /**
@@ -136,7 +136,7 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
      * Zone DNSSEC flags.
      * 
      */
-    @Export(name="flags", type=Integer.class, parameters={})
+    @Export(name="flags", refs={Integer.class}, tree="[0]")
     private Output<Integer> flags;
 
     /**
@@ -150,7 +150,7 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
      * Key Tag for the Zone DNSSEC.
      * 
      */
-    @Export(name="keyTag", type=Integer.class, parameters={})
+    @Export(name="keyTag", refs={Integer.class}, tree="[0]")
     private Output<Integer> keyTag;
 
     /**
@@ -164,7 +164,7 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
      * Key type used for Zone DNSSEC.
      * 
      */
-    @Export(name="keyType", type=String.class, parameters={})
+    @Export(name="keyType", refs={String.class}, tree="[0]")
     private Output<String> keyType;
 
     /**
@@ -178,7 +178,7 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
      * Zone DNSSEC updated time.
      * 
      */
-    @Export(name="modifiedOn", type=String.class, parameters={})
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;
 
     /**
@@ -192,7 +192,7 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
      * Public Key for the Zone DNSSEC.
      * 
      */
-    @Export(name="publicKey", type=String.class, parameters={})
+    @Export(name="publicKey", refs={String.class}, tree="[0]")
     private Output<String> publicKey;
 
     /**
@@ -206,7 +206,7 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
      * The status of the Zone DNSSEC.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -220,7 +220,7 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

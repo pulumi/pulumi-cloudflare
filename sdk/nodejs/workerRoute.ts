@@ -7,10 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare worker route resource. A route will also require a `cloudflare.WorkerScript`.
  *
- * > This resource uses the Cloudflare account APIs. This requires setting the
- * `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument
- * if you do not explicitly set the resource level `accountId` value.
- *
  * ## Example Usage
  *
  * ```typescript

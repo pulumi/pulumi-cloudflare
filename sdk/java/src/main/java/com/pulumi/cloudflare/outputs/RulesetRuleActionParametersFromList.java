@@ -6,26 +6,28 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersFromList {
-    private String key;
+    private @Nullable String key;
     /**
-     * @return Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * @return Name of the ruleset.
      * 
      */
-    private String name;
+    private @Nullable String name;
 
     private RulesetRuleActionParametersFromList() {}
-    public String key() {
-        return this.key;
+    public Optional<String> key() {
+        return Optional.ofNullable(this.key);
     }
     /**
-     * @return Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * @return Name of the ruleset.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
 
     public static Builder builder() {
@@ -37,8 +39,8 @@ public final class RulesetRuleActionParametersFromList {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String key;
-        private String name;
+        private @Nullable String key;
+        private @Nullable String name;
         public Builder() {}
         public Builder(RulesetRuleActionParametersFromList defaults) {
     	      Objects.requireNonNull(defaults);
@@ -47,13 +49,13 @@ public final class RulesetRuleActionParametersFromList {
         }
 
         @CustomType.Setter
-        public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+        public Builder key(@Nullable String key) {
+            this.key = key;
             return this;
         }
         @CustomType.Setter
-        public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+        public Builder name(@Nullable String name) {
+            this.name = name;
             return this;
         }
         public RulesetRuleActionParametersFromList build() {

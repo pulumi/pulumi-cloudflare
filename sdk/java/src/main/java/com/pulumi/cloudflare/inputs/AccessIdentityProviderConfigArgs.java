@@ -66,6 +66,13 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
         return Optional.ofNullable(this.certsUrl);
     }
 
+    @Import(name="claims")
+    private @Nullable Output<List<String>> claims;
+
+    public Optional<Output<List<String>>> claims() {
+        return Optional.ofNullable(this.claims);
+    }
+
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
@@ -136,6 +143,13 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
         return Optional.ofNullable(this.redirectUrl);
     }
 
+    @Import(name="scopes")
+    private @Nullable Output<List<String>> scopes;
+
+    public Optional<Output<List<String>>> scopes() {
+        return Optional.ofNullable(this.scopes);
+    }
+
     @Import(name="signRequest")
     private @Nullable Output<Boolean> signRequest;
 
@@ -174,6 +188,7 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
         this.centrifyAccount = $.centrifyAccount;
         this.centrifyAppId = $.centrifyAppId;
         this.certsUrl = $.certsUrl;
+        this.claims = $.claims;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
         this.directoryId = $.directoryId;
@@ -184,6 +199,7 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
         this.oneloginAccount = $.oneloginAccount;
         this.pkceEnabled = $.pkceEnabled;
         this.redirectUrl = $.redirectUrl;
+        this.scopes = $.scopes;
         this.signRequest = $.signRequest;
         this.ssoTargetUrl = $.ssoTargetUrl;
         this.supportGroups = $.supportGroups;
@@ -275,6 +291,19 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
             return certsUrl(Output.of(certsUrl));
         }
 
+        public Builder claims(@Nullable Output<List<String>> claims) {
+            $.claims = claims;
+            return this;
+        }
+
+        public Builder claims(List<String> claims) {
+            return claims(Output.of(claims));
+        }
+
+        public Builder claims(String... claims) {
+            return claims(List.of(claims));
+        }
+
         public Builder clientId(@Nullable Output<String> clientId) {
             $.clientId = clientId;
             return this;
@@ -363,6 +392,19 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
 
         public Builder redirectUrl(String redirectUrl) {
             return redirectUrl(Output.of(redirectUrl));
+        }
+
+        public Builder scopes(@Nullable Output<List<String>> scopes) {
+            $.scopes = scopes;
+            return this;
+        }
+
+        public Builder scopes(List<String> scopes) {
+            return scopes(Output.of(scopes));
+        }
+
+        public Builder scopes(String... scopes) {
+            return scopes(List.of(scopes));
         }
 
         public Builder signRequest(@Nullable Output<Boolean> signRequest) {

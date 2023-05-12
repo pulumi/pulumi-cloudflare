@@ -18,6 +18,14 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? AddHeaders;
         /// <summary>
+        /// Allow parent MSP accounts to enable bypass their children's rules.
+        /// </summary>
+        public readonly bool? AllowChildBypass;
+        /// <summary>
+        /// Settings for auditing SSH usage.
+        /// </summary>
+        public readonly Outputs.TeamsRuleRuleSettingsAuditSsh? AuditSsh;
+        /// <summary>
         /// Configure how browser isolation behaves.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsBisoAdminControls? BisoAdminControls;
@@ -30,6 +38,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? BlockPageReason;
         /// <summary>
+        /// Allow child MSP accounts to bypass their parent's rule.
+        /// </summary>
+        public readonly bool? BypassParentRule;
+        /// <summary>
         /// Configure how session check behaves.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsCheckSession? CheckSession;
@@ -41,6 +53,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Disable DNSSEC validation (must be Allow rule).
         /// </summary>
         public readonly bool? InsecureDisableDnssecValidation;
+        /// <summary>
+        /// Turns on IP category based filter on dns if the rule contains dns category checks.
+        /// </summary>
+        public readonly bool? IpCategories;
         /// <summary>
         /// Settings to forward layer 4 traffic.
         /// </summary>
@@ -66,17 +82,25 @@ namespace Pulumi.Cloudflare.Outputs
         private TeamsRuleRuleSettings(
             ImmutableDictionary<string, string>? addHeaders,
 
+            bool? allowChildBypass,
+
+            Outputs.TeamsRuleRuleSettingsAuditSsh? auditSsh,
+
             Outputs.TeamsRuleRuleSettingsBisoAdminControls? bisoAdminControls,
 
             bool? blockPageEnabled,
 
             string? blockPageReason,
 
+            bool? bypassParentRule,
+
             Outputs.TeamsRuleRuleSettingsCheckSession? checkSession,
 
             Outputs.TeamsRuleRuleSettingsEgress? egress,
 
             bool? insecureDisableDnssecValidation,
+
+            bool? ipCategories,
 
             Outputs.TeamsRuleRuleSettingsL4override? l4override,
 
@@ -89,12 +113,16 @@ namespace Pulumi.Cloudflare.Outputs
             Outputs.TeamsRuleRuleSettingsUntrustedCert? untrustedCert)
         {
             AddHeaders = addHeaders;
+            AllowChildBypass = allowChildBypass;
+            AuditSsh = auditSsh;
             BisoAdminControls = bisoAdminControls;
             BlockPageEnabled = blockPageEnabled;
             BlockPageReason = blockPageReason;
+            BypassParentRule = bypassParentRule;
             CheckSession = checkSession;
             Egress = egress;
             InsecureDisableDnssecValidation = insecureDisableDnssecValidation;
+            IpCategories = ipCategories;
             L4override = l4override;
             OverrideHost = overrideHost;
             OverrideIps = overrideIps;

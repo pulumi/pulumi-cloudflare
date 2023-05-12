@@ -74,7 +74,7 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
      * Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="certificateAuthority", type=String.class, parameters={})
+    @Export(name="certificateAuthority", refs={String.class}, tree="[0]")
     private Output<String> certificateAuthority;
 
     /**
@@ -88,7 +88,7 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
      * Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="cloudflareBranding", type=Boolean.class, parameters={})
+    @Export(name="cloudflareBranding", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cloudflareBranding;
 
     /**
@@ -102,7 +102,7 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
      * List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let&#39;s Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="hosts", type=List.class, parameters={String.class})
+    @Export(name="hosts", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> hosts;
 
     /**
@@ -116,7 +116,7 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
      * Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -126,7 +126,7 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
     public Output<String> type() {
         return this.type;
     }
-    @Export(name="validationErrors", type=List.class, parameters={CertificatePackValidationError.class})
+    @Export(name="validationErrors", refs={List.class,CertificatePackValidationError.class}, tree="[0,1]")
     private Output<List<CertificatePackValidationError>> validationErrors;
 
     public Output<List<CertificatePackValidationError>> validationErrors() {
@@ -136,7 +136,7 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
      * Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="validationMethod", type=String.class, parameters={})
+    @Export(name="validationMethod", refs={String.class}, tree="[0]")
     private Output<String> validationMethod;
 
     /**
@@ -146,7 +146,7 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
     public Output<String> validationMethod() {
         return this.validationMethod;
     }
-    @Export(name="validationRecords", type=List.class, parameters={CertificatePackValidationRecord.class})
+    @Export(name="validationRecords", refs={List.class,CertificatePackValidationRecord.class}, tree="[0,1]")
     private Output<List<CertificatePackValidationRecord>> validationRecords;
 
     public Output<List<CertificatePackValidationRecord>> validationRecords() {
@@ -156,7 +156,7 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
      * How long the certificate is valid for. Note: If using Let&#39;s Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="validityDays", type=Integer.class, parameters={})
+    @Export(name="validityDays", refs={Integer.class}, tree="[0]")
     private Output<Integer> validityDays;
 
     /**
@@ -170,7 +170,7 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
      * Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="waitForActiveStatus", type=Boolean.class, parameters={})
+    @Export(name="waitForActiveStatus", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitForActiveStatus;
 
     /**
@@ -184,7 +184,7 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

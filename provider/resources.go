@@ -15,11 +15,15 @@
 package cloudflare
 
 import (
+	"context"
 	"fmt"
 	"path/filepath"
+	// embed allows embedding files
+	_ "embed"
 
 	provShim "github.com/cloudflare/terraform-provider-cloudflare/shim"
 	"github.com/pulumi/pulumi-cloudflare/provider/v5/pkg/version"
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
@@ -34,10 +38,16 @@ const (
 	mainMod = "index" // the y module
 )
 
+//go:embed cmd/pulumi-resource-cloudflare/bridge-metadata.json
+var metadata []byte
+
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(provShim.NewProvider())
+	p := pfbridge.MuxShimWithPF(context.Background(),
+		shimv2.NewProvider(provShim.SDKProvider()),
+		provShim.PFProvider(),
+	)
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
@@ -50,6 +60,7 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:        "cloudflare",
 		Repository:       "https://github.com/pulumi/pulumi-cloudflare",
 		UpstreamRepoPath: "./upstream",
+		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
 		Config: map[string]*tfbridge.SchemaInfo{
 			"rps": {
 				Default: &tfbridge.DefaultInfo{
@@ -294,5 +305,9 @@ func Provider() tfbridge.ProviderInfo {
 	err := x.ComputeDefaults(&prov, x.TokensSingleModule("cloudflare_", mainMod,
 		x.MakeStandardToken(mainPkg)))
 	contract.AssertNoErrorf(err, "Failed to compute defaults")
+
+	err = x.AutoAliasing(&prov, prov.GetMetadata())
+	contract.AssertNoErrorf(err, "Failed to apply aliasing")
+
 	return prov
 }

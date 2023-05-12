@@ -68,7 +68,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Account ID to manage the zone resource in.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -82,7 +82,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Whether to scan for DNS records on creation. Ignored after zone is created.
      * 
      */
-    @Export(name="jumpStart", type=Boolean.class, parameters={})
+    @Export(name="jumpStart", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> jumpStart;
 
     /**
@@ -92,7 +92,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> jumpStart() {
         return Codegen.optional(this.jumpStart);
     }
-    @Export(name="meta", type=Map.class, parameters={String.class, Boolean.class})
+    @Export(name="meta", refs={Map.class,String.class,Boolean.class}, tree="[0,1,2]")
     private Output<Map<String,Boolean>> meta;
 
     public Output<Map<String,Boolean>> meta() {
@@ -102,7 +102,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
      * 
      */
-    @Export(name="nameServers", type=List.class, parameters={String.class})
+    @Export(name="nameServers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> nameServers;
 
     /**
@@ -116,7 +116,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
      * 
      */
-    @Export(name="paused", type=Boolean.class, parameters={})
+    @Export(name="paused", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> paused;
 
     /**
@@ -130,7 +130,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
      * 
      */
-    @Export(name="plan", type=String.class, parameters={})
+    @Export(name="plan", refs={String.class}, tree="[0]")
     private Output<String> plan;
 
     /**
@@ -144,7 +144,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Status of the zone. Available values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -158,7 +158,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -172,7 +172,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * List of Vanity Nameservers (if set).
      * 
      */
-    @Export(name="vanityNameServers", type=List.class, parameters={String.class})
+    @Export(name="vanityNameServers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> vanityNameServers;
 
     /**
@@ -186,7 +186,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
      * 
      */
-    @Export(name="verificationKey", type=String.class, parameters={})
+    @Export(name="verificationKey", refs={String.class}, tree="[0]")
     private Output<String> verificationKey;
 
     /**
@@ -200,7 +200,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zone", type=String.class, parameters={})
+    @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
 
     /**

@@ -65,6 +65,11 @@ export type AccountMember = import("./accountMember").AccountMember;
 export const AccountMember: typeof import("./accountMember").AccountMember = null as any;
 utilities.lazyLoad(exports, ["AccountMember"], () => require("./accountMember"));
 
+export { AddressMapArgs, AddressMapState } from "./addressMap";
+export type AddressMap = import("./addressMap").AddressMap;
+export const AddressMap: typeof import("./addressMap").AddressMap = null as any;
+utilities.lazyLoad(exports, ["AddressMap"], () => require("./addressMap"));
+
 export { ApiShieldArgs, ApiShieldState } from "./apiShield";
 export type ApiShield = import("./apiShield").ApiShield;
 export const ApiShield: typeof import("./apiShield").ApiShield = null as any;
@@ -119,6 +124,11 @@ export { CustomSslArgs, CustomSslState } from "./customSsl";
 export type CustomSsl = import("./customSsl").CustomSsl;
 export const CustomSsl: typeof import("./customSsl").CustomSsl = null as any;
 utilities.lazyLoad(exports, ["CustomSsl"], () => require("./customSsl"));
+
+export { DeviceDexTestArgs, DeviceDexTestState } from "./deviceDexTest";
+export type DeviceDexTest = import("./deviceDexTest").DeviceDexTest;
+export const DeviceDexTest: typeof import("./deviceDexTest").DeviceDexTest = null as any;
+utilities.lazyLoad(exports, ["DeviceDexTest"], () => require("./deviceDexTest"));
 
 export { DeviceManagedNetworksArgs, DeviceManagedNetworksState } from "./deviceManagedNetworks";
 export type DeviceManagedNetworks = import("./deviceManagedNetworks").DeviceManagedNetworks;
@@ -213,6 +223,16 @@ export { GetIpRangesResult } from "./getIpRanges";
 export const getIpRanges: typeof import("./getIpRanges").getIpRanges = null as any;
 utilities.lazyLoad(exports, ["getIpRanges"], () => require("./getIpRanges"));
 
+export { GetListArgs, GetListResult, GetListOutputArgs } from "./getList";
+export const getList: typeof import("./getList").getList = null as any;
+export const getListOutput: typeof import("./getList").getListOutput = null as any;
+utilities.lazyLoad(exports, ["getList","getListOutput"], () => require("./getList"));
+
+export { GetListsArgs, GetListsResult, GetListsOutputArgs } from "./getLists";
+export const getLists: typeof import("./getLists").getLists = null as any;
+export const getListsOutput: typeof import("./getLists").getListsOutput = null as any;
+utilities.lazyLoad(exports, ["getLists","getListsOutput"], () => require("./getLists"));
+
 export { GetLoadBalancerPoolsArgs, GetLoadBalancerPoolsResult, GetLoadBalancerPoolsOutputArgs } from "./getLoadBalancerPools";
 export const getLoadBalancerPools: typeof import("./getLoadBalancerPools").getLoadBalancerPools = null as any;
 export const getLoadBalancerPoolsOutput: typeof import("./getLoadBalancerPools").getLoadBalancerPoolsOutput = null as any;
@@ -267,6 +287,11 @@ export { ListArgs, ListState } from "./list";
 export type List = import("./list").List;
 export const List: typeof import("./list").List = null as any;
 utilities.lazyLoad(exports, ["List"], () => require("./list"));
+
+export { ListItemArgs, ListItemState } from "./listItem";
+export type ListItem = import("./listItem").ListItem;
+export const ListItem: typeof import("./listItem").ListItem = null as any;
+utilities.lazyLoad(exports, ["ListItem"], () => require("./listItem"));
 
 export { LoadBalancerArgs, LoadBalancerState } from "./loadBalancer";
 export type LoadBalancer = import("./loadBalancer").LoadBalancer;
@@ -363,6 +388,11 @@ export type Record = import("./record").Record;
 export const Record: typeof import("./record").Record = null as any;
 utilities.lazyLoad(exports, ["Record"], () => require("./record"));
 
+export { RegionalHostnameArgs, RegionalHostnameState } from "./regionalHostname";
+export type RegionalHostname = import("./regionalHostname").RegionalHostname;
+export const RegionalHostname: typeof import("./regionalHostname").RegionalHostname = null as any;
+utilities.lazyLoad(exports, ["RegionalHostname"], () => require("./regionalHostname"));
+
 export { RulesetArgs, RulesetState } from "./ruleset";
 export type Ruleset = import("./ruleset").Ruleset;
 export const Ruleset: typeof import("./ruleset").Ruleset = null as any;
@@ -438,6 +468,11 @@ export type TunnelVirtualNetwork = import("./tunnelVirtualNetwork").TunnelVirtua
 export const TunnelVirtualNetwork: typeof import("./tunnelVirtualNetwork").TunnelVirtualNetwork = null as any;
 utilities.lazyLoad(exports, ["TunnelVirtualNetwork"], () => require("./tunnelVirtualNetwork"));
 
+export { TurnstileWidgetArgs, TurnstileWidgetState } from "./turnstileWidget";
+export type TurnstileWidget = import("./turnstileWidget").TurnstileWidget;
+export const TurnstileWidget: typeof import("./turnstileWidget").TurnstileWidget = null as any;
+utilities.lazyLoad(exports, ["TurnstileWidget"], () => require("./turnstileWidget"));
+
 export { UrlNormalizationSettingsArgs, UrlNormalizationSettingsState } from "./urlNormalizationSettings";
 export type UrlNormalizationSettings = import("./urlNormalizationSettings").UrlNormalizationSettings;
 export const UrlNormalizationSettings: typeof import("./urlNormalizationSettings").UrlNormalizationSettings = null as any;
@@ -472,6 +507,11 @@ export { WorkerCronTriggerArgs, WorkerCronTriggerState } from "./workerCronTrigg
 export type WorkerCronTrigger = import("./workerCronTrigger").WorkerCronTrigger;
 export const WorkerCronTrigger: typeof import("./workerCronTrigger").WorkerCronTrigger = null as any;
 utilities.lazyLoad(exports, ["WorkerCronTrigger"], () => require("./workerCronTrigger"));
+
+export { WorkerDomainArgs, WorkerDomainState } from "./workerDomain";
+export type WorkerDomain = import("./workerDomain").WorkerDomain;
+export const WorkerDomain: typeof import("./workerDomain").WorkerDomain = null as any;
+utilities.lazyLoad(exports, ["WorkerDomain"], () => require("./workerDomain"));
 
 export { WorkerRouteArgs, WorkerRouteState } from "./workerRoute";
 export type WorkerRoute = import("./workerRoute").WorkerRoute;
@@ -556,6 +596,8 @@ const _module = {
                 return new Account(name, <any>undefined, { urn })
             case "cloudflare:index/accountMember:AccountMember":
                 return new AccountMember(name, <any>undefined, { urn })
+            case "cloudflare:index/addressMap:AddressMap":
+                return new AddressMap(name, <any>undefined, { urn })
             case "cloudflare:index/apiShield:ApiShield":
                 return new ApiShield(name, <any>undefined, { urn })
             case "cloudflare:index/apiToken:ApiToken":
@@ -578,6 +620,8 @@ const _module = {
                 return new CustomPages(name, <any>undefined, { urn })
             case "cloudflare:index/customSsl:CustomSsl":
                 return new CustomSsl(name, <any>undefined, { urn })
+            case "cloudflare:index/deviceDexTest:DeviceDexTest":
+                return new DeviceDexTest(name, <any>undefined, { urn })
             case "cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks":
                 return new DeviceManagedNetworks(name, <any>undefined, { urn })
             case "cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates":
@@ -612,6 +656,8 @@ const _module = {
                 return new IpsecTunnel(name, <any>undefined, { urn })
             case "cloudflare:index/list:List":
                 return new List(name, <any>undefined, { urn })
+            case "cloudflare:index/listItem:ListItem":
+                return new ListItem(name, <any>undefined, { urn })
             case "cloudflare:index/loadBalancer:LoadBalancer":
                 return new LoadBalancer(name, <any>undefined, { urn })
             case "cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor":
@@ -648,6 +694,8 @@ const _module = {
                 return new RateLimit(name, <any>undefined, { urn })
             case "cloudflare:index/record:Record":
                 return new Record(name, <any>undefined, { urn })
+            case "cloudflare:index/regionalHostname:RegionalHostname":
+                return new RegionalHostname(name, <any>undefined, { urn })
             case "cloudflare:index/ruleset:Ruleset":
                 return new Ruleset(name, <any>undefined, { urn })
             case "cloudflare:index/spectrumApplication:SpectrumApplication":
@@ -678,6 +726,8 @@ const _module = {
                 return new TunnelRoute(name, <any>undefined, { urn })
             case "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork":
                 return new TunnelVirtualNetwork(name, <any>undefined, { urn })
+            case "cloudflare:index/turnstileWidget:TurnstileWidget":
+                return new TurnstileWidget(name, <any>undefined, { urn })
             case "cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings":
                 return new UrlNormalizationSettings(name, <any>undefined, { urn })
             case "cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule":
@@ -692,6 +742,8 @@ const _module = {
                 return new Web3Hostname(name, <any>undefined, { urn })
             case "cloudflare:index/workerCronTrigger:WorkerCronTrigger":
                 return new WorkerCronTrigger(name, <any>undefined, { urn })
+            case "cloudflare:index/workerDomain:WorkerDomain":
+                return new WorkerDomain(name, <any>undefined, { urn })
             case "cloudflare:index/workerRoute:WorkerRoute":
                 return new WorkerRoute(name, <any>undefined, { urn })
             case "cloudflare:index/workerScript:WorkerScript":
@@ -727,6 +779,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/accessRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessServiceToken", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/account", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accountMember", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/addressMap", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiShield", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiToken", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/argo", _module)
@@ -738,6 +791,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/customHostname", _mod
 pulumi.runtime.registerResourceModule("cloudflare", "index/customHostnameFallbackOrigin", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customPages", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customSsl", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/deviceDexTest", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/deviceManagedNetworks", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/devicePolicyCertificates", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/devicePostureIntegration", _module)
@@ -755,6 +809,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/greTunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/healthcheck", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/ipsecTunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/list", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/listItem", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/loadBalancerMonitor", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/loadBalancerPool", _module)
@@ -773,6 +828,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/pagesProject", _modul
 pulumi.runtime.registerResourceModule("cloudflare", "index/queue", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/rateLimit", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/record", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/regionalHostname", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/ruleset", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/spectrumApplication", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/splitTunnel", _module)
@@ -788,6 +844,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/tunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelConfig", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelVirtualNetwork", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/turnstileWidget", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/urlNormalizationSettings", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/userAgentBlockingRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoom", _module)
@@ -795,6 +852,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoomEvent", _m
 pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoomRules", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/web3Hostname", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerCronTrigger", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/workerDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerScript", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKv", _module)

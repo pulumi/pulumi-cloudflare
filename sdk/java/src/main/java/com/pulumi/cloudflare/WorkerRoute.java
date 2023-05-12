@@ -17,10 +17,6 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloudflare worker route resource. A route will also require a `cloudflare.WorkerScript`.
  * 
- * &gt; This resource uses the Cloudflare account APIs. This requires setting the
- * `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument
- * if you do not explicitly set the resource level `account_id` value.
- * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -69,7 +65,7 @@ public class WorkerRoute extends com.pulumi.resources.CustomResource {
      * The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
      * 
      */
-    @Export(name="pattern", type=String.class, parameters={})
+    @Export(name="pattern", refs={String.class}, tree="[0]")
     private Output<String> pattern;
 
     /**
@@ -83,7 +79,7 @@ public class WorkerRoute extends com.pulumi.resources.CustomResource {
      * Worker script name to invoke for requests that match the route pattern.
      * 
      */
-    @Export(name="scriptName", type=String.class, parameters={})
+    @Export(name="scriptName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scriptName;
 
     /**
@@ -97,7 +93,7 @@ public class WorkerRoute extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

@@ -5,34 +5,17 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
-import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleLogging {
-    /**
-     * @deprecated
-     * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-     * 
-     */
-    @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
     private @Nullable Boolean enabled;
-    private @Nullable String status;
 
     private RulesetRuleLogging() {}
-    /**
-     * @deprecated
-     * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-     * 
-     */
-    @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
-    }
-    public Optional<String> status() {
-        return Optional.ofNullable(this.status);
     }
 
     public static Builder builder() {
@@ -45,12 +28,10 @@ public final class RulesetRuleLogging {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
-        private @Nullable String status;
         public Builder() {}
         public Builder(RulesetRuleLogging defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
-    	      this.status = defaults.status;
         }
 
         @CustomType.Setter
@@ -58,15 +39,9 @@ public final class RulesetRuleLogging {
             this.enabled = enabled;
             return this;
         }
-        @CustomType.Setter
-        public Builder status(@Nullable String status) {
-            this.status = status;
-            return this;
-        }
         public RulesetRuleLogging build() {
             final var o = new RulesetRuleLogging();
             o.enabled = enabled;
-            o.status = status;
             return o;
         }
     }

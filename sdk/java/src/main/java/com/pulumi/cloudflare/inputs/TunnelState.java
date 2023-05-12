@@ -46,6 +46,21 @@ public final class TunnelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
+    @Import(name="configSrc")
+    private @Nullable Output<String> configSrc;
+
+    /**
+     * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
+    public Optional<Output<String>> configSrc() {
+        return Optional.ofNullable(this.configSrc);
+    }
+
+    /**
      * A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
      * 
      */
@@ -95,6 +110,7 @@ public final class TunnelState extends com.pulumi.resources.ResourceArgs {
     private TunnelState(TunnelState $) {
         this.accountId = $.accountId;
         this.cname = $.cname;
+        this.configSrc = $.configSrc;
         this.name = $.name;
         this.secret = $.secret;
         this.tunnelToken = $.tunnelToken;
@@ -158,6 +174,27 @@ public final class TunnelState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder cname(String cname) {
             return cname(Output.of(cname));
+        }
+
+        /**
+         * @param configSrc Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configSrc(@Nullable Output<String> configSrc) {
+            $.configSrc = configSrc;
+            return this;
+        }
+
+        /**
+         * @param configSrc Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configSrc(String configSrc) {
+            return configSrc(Output.of(configSrc));
         }
 
         /**

@@ -299,93 +299,100 @@ class PagesProject(pulumi.CustomResource):
         # Manage build config
         build_config = cloudflare.PagesProject("buildConfig",
             account_id="f037e56e89293a057740de681ac9abbe",
+            name="this-is-my-project-01",
+            production_branch="main",
             build_config=cloudflare.PagesProjectBuildConfigArgs(
                 build_command="npm run build",
                 destination_dir="build",
                 root_dir="/",
                 web_analytics_tag="cee1c73f6e4743d0b5e6bb1a0bcaabcc",
                 web_analytics_token="021e1057c18547eca7b79f2516f06o7x",
-            ),
-            name="this-is-my-project-01",
-            production_branch="main")
+            ))
         # Manage project source
         source_config = cloudflare.PagesProject("sourceConfig",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="this-is-my-project-01",
             production_branch="main",
             source=cloudflare.PagesProjectSourceArgs(
+                type="github",
                 config=cloudflare.PagesProjectSourceConfigArgs(
-                    deployments_enabled=True,
                     owner="cloudflare",
+                    repo_name="ninjakittens",
+                    production_branch="main",
                     pr_comments_enabled=True,
-                    preview_branch_excludes=[
-                        "main",
-                        "prod",
-                    ],
+                    deployments_enabled=True,
+                    production_deployment_enabled=True,
+                    preview_deployment_setting="custom",
                     preview_branch_includes=[
                         "dev",
                         "preview",
                     ],
-                    preview_deployment_setting="custom",
-                    production_branch="main",
-                    production_deployment_enabled=True,
-                    repo_name="ninjakittens",
+                    preview_branch_excludes=[
+                        "main",
+                        "prod",
+                    ],
                 ),
-                type="github",
             ))
         # Manage deployment configs
         deployment_configs = cloudflare.PagesProject("deploymentConfigs",
             account_id="f037e56e89293a057740de681ac9abbe",
+            name="this-is-my-project-01",
+            production_branch="main",
             deployment_configs=cloudflare.PagesProjectDeploymentConfigsArgs(
                 preview=cloudflare.PagesProjectDeploymentConfigsPreviewArgs(
-                    compatibility_date="2022-08-15",
-                    compatibility_flags=["preview_flag"],
-                    d1_databases={
-                        "D1BINDING": "445e2955-951a-4358-a35b-a4d0c813f63",
-                    },
-                    durable_object_namespaces={
-                        "DOBINDING": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-                    },
                     environment_variables={
                         "ENVIRONMENT": "preview",
                     },
+                    secrets={
+                        "TURNSTILE_SECRET": var["turnstile_secret"],
+                    },
                     kv_namespaces={
-                        "KVBINDING": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+                        "KV_BINDING": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+                    },
+                    durable_object_namespaces={
+                        "DO_BINDING": "5eb63bbbe01eeed093cb22bb8f5acdc3",
                     },
                     r2_buckets={
-                        "R2BINDING": "some-bucket",
+                        "R2_BINDING": "some-bucket",
                     },
+                    d1_databases={
+                        "D1_BINDING": "445e2955-951a-4358-a35b-a4d0c813f63",
+                    },
+                    compatibility_date="2022-08-15",
+                    compatibility_flags=["preview_flag"],
                 ),
                 production=cloudflare.PagesProjectDeploymentConfigsProductionArgs(
+                    environment_variables={
+                        "ENVIRONMENT": "production",
+                        "OTHER_VALUE": "other value",
+                    },
+                    secrets={
+                        "TURNSTILE_SECRET": var["turnstile_secret"],
+                        "TURNSTILE_INVIS_SECRET": var["turnstile_invisible_secret"],
+                    },
+                    kv_namespaces={
+                        "KV_BINDING_1": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+                        "KV_BINDING_2": "3cdca5f8bb22bc390deee10ebbb36be5",
+                    },
+                    durable_object_namespaces={
+                        "DO_BINDING_1": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+                        "DO_BINDING_2": "3cdca5f8bb22bc390deee10ebbb36be5",
+                    },
+                    r2_buckets={
+                        "R2_BINDING_1": "some-bucket",
+                        "R2_BINDING_2": "other-bucket",
+                    },
+                    d1_databases={
+                        "D1_BINDING_1": "445e2955-951a-4358-a35b-a4d0c813f63",
+                        "D1_BINDING_2": "a399414b-c697-409a-a688-377db6433cd9",
+                    },
                     compatibility_date="2022-08-16",
                     compatibility_flags=[
                         "production_flag",
                         "second flag",
                     ],
-                    d1_databases={
-                        "D1BINDING1": "445e2955-951a-4358-a35b-a4d0c813f63",
-                        "D1BINDING2": "a399414b-c697-409a-a688-377db6433cd9",
-                    },
-                    durable_object_namespaces={
-                        "DOBINDING1": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-                        "DOBINDING2": "3cdca5f8bb22bc390deee10ebbb36be5",
-                    },
-                    environment_variables={
-                        "ENVIRONMENT": "production",
-                        "OTHERVALUE": "other value",
-                    },
-                    kv_namespaces={
-                        "KVBINDING1": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-                        "KVBINDING2": "3cdca5f8bb22bc390deee10ebbb36be5",
-                    },
-                    r2_buckets={
-                        "R2BINDING1": "some-bucket",
-                        "R2BINDING2": "other-bucket",
-                    },
                 ),
-            ),
-            name="this-is-my-project-01",
-            production_branch="main")
+            ))
         ```
 
         ## Import
@@ -432,93 +439,100 @@ class PagesProject(pulumi.CustomResource):
         # Manage build config
         build_config = cloudflare.PagesProject("buildConfig",
             account_id="f037e56e89293a057740de681ac9abbe",
+            name="this-is-my-project-01",
+            production_branch="main",
             build_config=cloudflare.PagesProjectBuildConfigArgs(
                 build_command="npm run build",
                 destination_dir="build",
                 root_dir="/",
                 web_analytics_tag="cee1c73f6e4743d0b5e6bb1a0bcaabcc",
                 web_analytics_token="021e1057c18547eca7b79f2516f06o7x",
-            ),
-            name="this-is-my-project-01",
-            production_branch="main")
+            ))
         # Manage project source
         source_config = cloudflare.PagesProject("sourceConfig",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="this-is-my-project-01",
             production_branch="main",
             source=cloudflare.PagesProjectSourceArgs(
+                type="github",
                 config=cloudflare.PagesProjectSourceConfigArgs(
-                    deployments_enabled=True,
                     owner="cloudflare",
+                    repo_name="ninjakittens",
+                    production_branch="main",
                     pr_comments_enabled=True,
-                    preview_branch_excludes=[
-                        "main",
-                        "prod",
-                    ],
+                    deployments_enabled=True,
+                    production_deployment_enabled=True,
+                    preview_deployment_setting="custom",
                     preview_branch_includes=[
                         "dev",
                         "preview",
                     ],
-                    preview_deployment_setting="custom",
-                    production_branch="main",
-                    production_deployment_enabled=True,
-                    repo_name="ninjakittens",
+                    preview_branch_excludes=[
+                        "main",
+                        "prod",
+                    ],
                 ),
-                type="github",
             ))
         # Manage deployment configs
         deployment_configs = cloudflare.PagesProject("deploymentConfigs",
             account_id="f037e56e89293a057740de681ac9abbe",
+            name="this-is-my-project-01",
+            production_branch="main",
             deployment_configs=cloudflare.PagesProjectDeploymentConfigsArgs(
                 preview=cloudflare.PagesProjectDeploymentConfigsPreviewArgs(
-                    compatibility_date="2022-08-15",
-                    compatibility_flags=["preview_flag"],
-                    d1_databases={
-                        "D1BINDING": "445e2955-951a-4358-a35b-a4d0c813f63",
-                    },
-                    durable_object_namespaces={
-                        "DOBINDING": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-                    },
                     environment_variables={
                         "ENVIRONMENT": "preview",
                     },
+                    secrets={
+                        "TURNSTILE_SECRET": var["turnstile_secret"],
+                    },
                     kv_namespaces={
-                        "KVBINDING": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+                        "KV_BINDING": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+                    },
+                    durable_object_namespaces={
+                        "DO_BINDING": "5eb63bbbe01eeed093cb22bb8f5acdc3",
                     },
                     r2_buckets={
-                        "R2BINDING": "some-bucket",
+                        "R2_BINDING": "some-bucket",
                     },
+                    d1_databases={
+                        "D1_BINDING": "445e2955-951a-4358-a35b-a4d0c813f63",
+                    },
+                    compatibility_date="2022-08-15",
+                    compatibility_flags=["preview_flag"],
                 ),
                 production=cloudflare.PagesProjectDeploymentConfigsProductionArgs(
+                    environment_variables={
+                        "ENVIRONMENT": "production",
+                        "OTHER_VALUE": "other value",
+                    },
+                    secrets={
+                        "TURNSTILE_SECRET": var["turnstile_secret"],
+                        "TURNSTILE_INVIS_SECRET": var["turnstile_invisible_secret"],
+                    },
+                    kv_namespaces={
+                        "KV_BINDING_1": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+                        "KV_BINDING_2": "3cdca5f8bb22bc390deee10ebbb36be5",
+                    },
+                    durable_object_namespaces={
+                        "DO_BINDING_1": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+                        "DO_BINDING_2": "3cdca5f8bb22bc390deee10ebbb36be5",
+                    },
+                    r2_buckets={
+                        "R2_BINDING_1": "some-bucket",
+                        "R2_BINDING_2": "other-bucket",
+                    },
+                    d1_databases={
+                        "D1_BINDING_1": "445e2955-951a-4358-a35b-a4d0c813f63",
+                        "D1_BINDING_2": "a399414b-c697-409a-a688-377db6433cd9",
+                    },
                     compatibility_date="2022-08-16",
                     compatibility_flags=[
                         "production_flag",
                         "second flag",
                     ],
-                    d1_databases={
-                        "D1BINDING1": "445e2955-951a-4358-a35b-a4d0c813f63",
-                        "D1BINDING2": "a399414b-c697-409a-a688-377db6433cd9",
-                    },
-                    durable_object_namespaces={
-                        "DOBINDING1": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-                        "DOBINDING2": "3cdca5f8bb22bc390deee10ebbb36be5",
-                    },
-                    environment_variables={
-                        "ENVIRONMENT": "production",
-                        "OTHERVALUE": "other value",
-                    },
-                    kv_namespaces={
-                        "KVBINDING1": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-                        "KVBINDING2": "3cdca5f8bb22bc390deee10ebbb36be5",
-                    },
-                    r2_buckets={
-                        "R2BINDING1": "some-bucket",
-                        "R2BINDING2": "other-bucket",
-                    },
                 ),
-            ),
-            name="this-is-my-project-01",
-            production_branch="main")
+            ))
         ```
 
         ## Import

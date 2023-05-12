@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testGroupAccessGroup = new AccessGroup(&#34;testGroupAccessGroup&#34;, AccessGroupArgs.builder()        
+ *         var exampleAccessGroup = new AccessGroup(&#34;exampleAccessGroup&#34;, AccessGroupArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;staging group&#34;)
  *             .includes(AccessGroupIncludeArgs.builder()
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var testGroupIndex_accessGroupAccessGroup = new AccessGroup(&#34;testGroupIndex/accessGroupAccessGroup&#34;, AccessGroupArgs.builder()        
+ *         var exampleIndex_accessGroupAccessGroup = new AccessGroup(&#34;exampleIndex/accessGroupAccessGroup&#34;, AccessGroupArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;staging group&#34;)
  *             .includes(AccessGroupIncludeArgs.builder()
@@ -68,6 +68,17 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .requires(AccessGroupRequireArgs.builder()
  *                 .ips(var_.office_ip())
+ *                 .build())
+ *             .build());
+ * 
+ *         var exampleCloudflareIndex_accessGroupAccessGroup = new AccessGroup(&#34;exampleCloudflareIndex/accessGroupAccessGroup&#34;, AccessGroupArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .name(&#34;test_group&#34;)
+ *             .includes(AccessGroupIncludeArgs.builder()
+ *                 .azures(AccessGroupIncludeAzureArgs.builder()
+ *                     .identityProviderId(&#34;ca298b82-93b5-41bf-bc2d-10493f09b761&#34;)
+ *                     .ids(&#34;86773093-5feb-48dd-814b-7ccd3676ff50&#34;)
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -88,7 +99,7 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
@@ -98,25 +109,25 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
-    @Export(name="excludes", type=List.class, parameters={AccessGroupExclude.class})
+    @Export(name="excludes", refs={List.class,AccessGroupExclude.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AccessGroupExclude>> excludes;
 
     public Output<Optional<List<AccessGroupExclude>>> excludes() {
         return Codegen.optional(this.excludes);
     }
-    @Export(name="includes", type=List.class, parameters={AccessGroupInclude.class})
+    @Export(name="includes", refs={List.class,AccessGroupInclude.class}, tree="[0,1]")
     private Output<List<AccessGroupInclude>> includes;
 
     public Output<List<AccessGroupInclude>> includes() {
         return this.includes;
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="requires", type=List.class, parameters={AccessGroupRequire.class})
+    @Export(name="requires", refs={List.class,AccessGroupRequire.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AccessGroupRequire>> requires;
 
     public Output<Optional<List<AccessGroupRequire>>> requires() {
@@ -126,7 +137,7 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. Conflicts with `account_id`.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

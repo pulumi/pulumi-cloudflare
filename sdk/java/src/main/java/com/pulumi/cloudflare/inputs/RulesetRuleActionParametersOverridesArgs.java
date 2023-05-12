@@ -33,21 +33,9 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         return Optional.ofNullable(this.categories);
     }
 
-    /**
-     * @deprecated
-     * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-     * 
-     */
-    @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
-    /**
-     * @deprecated
-     * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-     * 
-     */
-    @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -74,13 +62,6 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         return Optional.ofNullable(this.sensitivityLevel);
     }
 
-    @Import(name="status")
-    private @Nullable Output<String> status;
-
-    public Optional<Output<String>> status() {
-        return Optional.ofNullable(this.status);
-    }
-
     private RulesetRuleActionParametersOverridesArgs() {}
 
     private RulesetRuleActionParametersOverridesArgs(RulesetRuleActionParametersOverridesArgs $) {
@@ -89,7 +70,6 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         this.enabled = $.enabled;
         this.rules = $.rules;
         this.sensitivityLevel = $.sensitivityLevel;
-        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -132,27 +112,11 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
             return categories(List.of(categories));
         }
 
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-         * 
-         */
-        @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-         * 
-         */
-        @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
@@ -195,15 +159,6 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
 
         public Builder sensitivityLevel(String sensitivityLevel) {
             return sensitivityLevel(Output.of(sensitivityLevel));
-        }
-
-        public Builder status(@Nullable Output<String> status) {
-            $.status = status;
-            return this;
-        }
-
-        public Builder status(String status) {
-            return status(Output.of(status));
         }
 
         public RulesetRuleActionParametersOverridesArgs build() {

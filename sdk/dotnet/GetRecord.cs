@@ -20,6 +20,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Cloudflare = Pulumi.Cloudflare;
         /// 
@@ -48,6 +49,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Cloudflare = Pulumi.Cloudflare;
         /// 

@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersAlgorithm;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersAutominify;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersBrowserTtl;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersCacheKey;
@@ -29,6 +30,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParameters {
+    private @Nullable List<RulesetRuleActionParametersAlgorithm> algorithms;
     private @Nullable Boolean automaticHttpsRewrites;
     private @Nullable List<RulesetRuleActionParametersAutominify> autominifies;
     private @Nullable Boolean bic;
@@ -49,7 +51,7 @@ public final class RulesetRuleActionParameters {
     private @Nullable String hostHeader;
     private @Nullable Boolean hotlinkProtection;
     /**
-     * @return The ID of this resource.
+     * @return The identifier of this resource.
      * 
      */
     private @Nullable String id;
@@ -86,6 +88,9 @@ public final class RulesetRuleActionParameters {
     private @Nullable String version;
 
     private RulesetRuleActionParameters() {}
+    public List<RulesetRuleActionParametersAlgorithm> algorithms() {
+        return this.algorithms == null ? List.of() : this.algorithms;
+    }
     public Optional<Boolean> automaticHttpsRewrites() {
         return Optional.ofNullable(this.automaticHttpsRewrites);
     }
@@ -144,7 +149,7 @@ public final class RulesetRuleActionParameters {
         return Optional.ofNullable(this.hotlinkProtection);
     }
     /**
-     * @return The ID of this resource.
+     * @return The identifier of this resource.
      * 
      */
     public Optional<String> id() {
@@ -245,6 +250,7 @@ public final class RulesetRuleActionParameters {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<RulesetRuleActionParametersAlgorithm> algorithms;
         private @Nullable Boolean automaticHttpsRewrites;
         private @Nullable List<RulesetRuleActionParametersAutominify> autominifies;
         private @Nullable Boolean bic;
@@ -295,6 +301,7 @@ public final class RulesetRuleActionParameters {
         public Builder() {}
         public Builder(RulesetRuleActionParameters defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.algorithms = defaults.algorithms;
     	      this.automaticHttpsRewrites = defaults.automaticHttpsRewrites;
     	      this.autominifies = defaults.autominifies;
     	      this.bic = defaults.bic;
@@ -344,6 +351,14 @@ public final class RulesetRuleActionParameters {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
+        public Builder algorithms(@Nullable List<RulesetRuleActionParametersAlgorithm> algorithms) {
+            this.algorithms = algorithms;
+            return this;
+        }
+        public Builder algorithms(RulesetRuleActionParametersAlgorithm... algorithms) {
+            return algorithms(List.of(algorithms));
+        }
         @CustomType.Setter
         public Builder automaticHttpsRewrites(@Nullable Boolean automaticHttpsRewrites) {
             this.automaticHttpsRewrites = automaticHttpsRewrites;
@@ -608,6 +623,7 @@ public final class RulesetRuleActionParameters {
         }
         public RulesetRuleActionParameters build() {
             final var o = new RulesetRuleActionParameters();
+            o.algorithms = algorithms;
             o.automaticHttpsRewrites = automaticHttpsRewrites;
             o.autominifies = autominifies;
             o.bic = bic;

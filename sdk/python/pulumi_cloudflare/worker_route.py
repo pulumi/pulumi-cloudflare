@@ -133,10 +133,6 @@ class WorkerRoute(pulumi.CustomResource):
         """
         Provides a Cloudflare worker route resource. A route will also require a `WorkerScript`.
 
-        > This resource uses the Cloudflare account APIs. This requires setting the
-        `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument
-        if you do not explicitly set the resource level `account_id` value.
-
         ## Example Usage
 
         ```python
@@ -172,10 +168,6 @@ class WorkerRoute(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare worker route resource. A route will also require a `WorkerScript`.
-
-        > This resource uses the Cloudflare account APIs. This requires setting the
-        `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument
-        if you do not explicitly set the resource level `account_id` value.
 
         ## Example Usage
 

@@ -18,6 +18,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The [Cloudflare Managed Headers](https://developers.cloudflare.com/rules/transform/managed-transforms/)
+ * allows you to add or remove some predefined headers to one&#39;s
+ * requests or origin responses.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -58,10 +62,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
- * ## Import
- * 
- * Import is not supported for this resource.
- * 
  */
 @ResourceType(type="cloudflare:index/managedHeaders:ManagedHeaders")
 public class ManagedHeaders extends com.pulumi.resources.CustomResource {
@@ -69,7 +69,7 @@ public class ManagedHeaders extends com.pulumi.resources.CustomResource {
      * The list of managed request headers.
      * 
      */
-    @Export(name="managedRequestHeaders", type=List.class, parameters={ManagedHeadersManagedRequestHeader.class})
+    @Export(name="managedRequestHeaders", refs={List.class,ManagedHeadersManagedRequestHeader.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ManagedHeadersManagedRequestHeader>> managedRequestHeaders;
 
     /**
@@ -83,7 +83,7 @@ public class ManagedHeaders extends com.pulumi.resources.CustomResource {
      * The list of managed response headers.
      * 
      */
-    @Export(name="managedResponseHeaders", type=List.class, parameters={ManagedHeadersManagedResponseHeader.class})
+    @Export(name="managedResponseHeaders", refs={List.class,ManagedHeadersManagedResponseHeader.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ManagedHeadersManagedResponseHeader>> managedResponseHeaders;
 
     /**
@@ -97,7 +97,7 @@ public class ManagedHeaders extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

@@ -22,12 +22,15 @@ class LogpushJobArgs:
                  frequency: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  logpull_options: Optional[pulumi.Input[str]] = None,
+                 max_upload_bytes: Optional[pulumi.Input[int]] = None,
+                 max_upload_interval_seconds: Optional[pulumi.Input[int]] = None,
+                 max_upload_records: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ownership_challenge: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LogpushJob resource.
-        :param pulumi.Input[str] dataset: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`.
+        :param pulumi.Input[str] dataset: The kind of the dataset to use with the logpush job. Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.
         :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         :param pulumi.Input[bool] enabled: Whether to enable the job.
@@ -35,6 +38,9 @@ class LogpushJobArgs:
         :param pulumi.Input[str] frequency: A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
         :param pulumi.Input[str] kind: The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        :param pulumi.Input[int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+        :param pulumi.Input[int] max_upload_interval_seconds: The maximum interval in seconds for log batches. Value must be between 30 and 300.
+        :param pulumi.Input[int] max_upload_records: The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
         :param pulumi.Input[str] name: The name of the logpush job to create.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
@@ -53,6 +59,12 @@ class LogpushJobArgs:
             pulumi.set(__self__, "kind", kind)
         if logpull_options is not None:
             pulumi.set(__self__, "logpull_options", logpull_options)
+        if max_upload_bytes is not None:
+            pulumi.set(__self__, "max_upload_bytes", max_upload_bytes)
+        if max_upload_interval_seconds is not None:
+            pulumi.set(__self__, "max_upload_interval_seconds", max_upload_interval_seconds)
+        if max_upload_records is not None:
+            pulumi.set(__self__, "max_upload_records", max_upload_records)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if ownership_challenge is not None:
@@ -64,7 +76,7 @@ class LogpushJobArgs:
     @pulumi.getter
     def dataset(self) -> pulumi.Input[str]:
         """
-        Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`.
+        The kind of the dataset to use with the logpush job. Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.
         """
         return pulumi.get(self, "dataset")
 
@@ -157,6 +169,42 @@ class LogpushJobArgs:
         pulumi.set(self, "logpull_options", value)
 
     @property
+    @pulumi.getter(name="maxUploadBytes")
+    def max_upload_bytes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+        """
+        return pulumi.get(self, "max_upload_bytes")
+
+    @max_upload_bytes.setter
+    def max_upload_bytes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_upload_bytes", value)
+
+    @property
+    @pulumi.getter(name="maxUploadIntervalSeconds")
+    def max_upload_interval_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum interval in seconds for log batches. Value must be between 30 and 300.
+        """
+        return pulumi.get(self, "max_upload_interval_seconds")
+
+    @max_upload_interval_seconds.setter
+    def max_upload_interval_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_upload_interval_seconds", value)
+
+    @property
+    @pulumi.getter(name="maxUploadRecords")
+    def max_upload_records(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+        """
+        return pulumi.get(self, "max_upload_records")
+
+    @max_upload_records.setter
+    def max_upload_records(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_upload_records", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -204,19 +252,25 @@ class _LogpushJobState:
                  frequency: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  logpull_options: Optional[pulumi.Input[str]] = None,
+                 max_upload_bytes: Optional[pulumi.Input[int]] = None,
+                 max_upload_interval_seconds: Optional[pulumi.Input[int]] = None,
+                 max_upload_records: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ownership_challenge: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LogpushJob resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
-        :param pulumi.Input[str] dataset: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`.
+        :param pulumi.Input[str] dataset: The kind of the dataset to use with the logpush job. Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.
         :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
         :param pulumi.Input[bool] enabled: Whether to enable the job.
         :param pulumi.Input[str] filter: Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
         :param pulumi.Input[str] frequency: A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
         :param pulumi.Input[str] kind: The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        :param pulumi.Input[int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+        :param pulumi.Input[int] max_upload_interval_seconds: The maximum interval in seconds for log batches. Value must be between 30 and 300.
+        :param pulumi.Input[int] max_upload_records: The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
         :param pulumi.Input[str] name: The name of the logpush job to create.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
@@ -237,6 +291,12 @@ class _LogpushJobState:
             pulumi.set(__self__, "kind", kind)
         if logpull_options is not None:
             pulumi.set(__self__, "logpull_options", logpull_options)
+        if max_upload_bytes is not None:
+            pulumi.set(__self__, "max_upload_bytes", max_upload_bytes)
+        if max_upload_interval_seconds is not None:
+            pulumi.set(__self__, "max_upload_interval_seconds", max_upload_interval_seconds)
+        if max_upload_records is not None:
+            pulumi.set(__self__, "max_upload_records", max_upload_records)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if ownership_challenge is not None:
@@ -260,7 +320,7 @@ class _LogpushJobState:
     @pulumi.getter
     def dataset(self) -> Optional[pulumi.Input[str]]:
         """
-        Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`.
+        The kind of the dataset to use with the logpush job. Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.
         """
         return pulumi.get(self, "dataset")
 
@@ -341,6 +401,42 @@ class _LogpushJobState:
         pulumi.set(self, "logpull_options", value)
 
     @property
+    @pulumi.getter(name="maxUploadBytes")
+    def max_upload_bytes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+        """
+        return pulumi.get(self, "max_upload_bytes")
+
+    @max_upload_bytes.setter
+    def max_upload_bytes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_upload_bytes", value)
+
+    @property
+    @pulumi.getter(name="maxUploadIntervalSeconds")
+    def max_upload_interval_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum interval in seconds for log batches. Value must be between 30 and 300.
+        """
+        return pulumi.get(self, "max_upload_interval_seconds")
+
+    @max_upload_interval_seconds.setter
+    def max_upload_interval_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_upload_interval_seconds", value)
+
+    @property
+    @pulumi.getter(name="maxUploadRecords")
+    def max_upload_records(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+        """
+        return pulumi.get(self, "max_upload_records")
+
+    @max_upload_records.setter
+    def max_upload_records(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_upload_records", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -390,6 +486,9 @@ class LogpushJob(pulumi.CustomResource):
                  frequency: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  logpull_options: Optional[pulumi.Input[str]] = None,
+                 max_upload_bytes: Optional[pulumi.Input[int]] = None,
+                 max_upload_interval_seconds: Optional[pulumi.Input[int]] = None,
+                 max_upload_records: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ownership_challenge: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -412,13 +511,16 @@ class LogpushJob(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
-        :param pulumi.Input[str] dataset: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`.
+        :param pulumi.Input[str] dataset: The kind of the dataset to use with the logpush job. Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.
         :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
         :param pulumi.Input[bool] enabled: Whether to enable the job.
         :param pulumi.Input[str] filter: Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
         :param pulumi.Input[str] frequency: A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
         :param pulumi.Input[str] kind: The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        :param pulumi.Input[int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+        :param pulumi.Input[int] max_upload_interval_seconds: The maximum interval in seconds for log batches. Value must be between 30 and 300.
+        :param pulumi.Input[int] max_upload_records: The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
         :param pulumi.Input[str] name: The name of the logpush job to create.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
@@ -467,6 +569,9 @@ class LogpushJob(pulumi.CustomResource):
                  frequency: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  logpull_options: Optional[pulumi.Input[str]] = None,
+                 max_upload_bytes: Optional[pulumi.Input[int]] = None,
+                 max_upload_interval_seconds: Optional[pulumi.Input[int]] = None,
+                 max_upload_records: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ownership_challenge: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -491,6 +596,9 @@ class LogpushJob(pulumi.CustomResource):
             __props__.__dict__["frequency"] = frequency
             __props__.__dict__["kind"] = kind
             __props__.__dict__["logpull_options"] = logpull_options
+            __props__.__dict__["max_upload_bytes"] = max_upload_bytes
+            __props__.__dict__["max_upload_interval_seconds"] = max_upload_interval_seconds
+            __props__.__dict__["max_upload_records"] = max_upload_records
             __props__.__dict__["name"] = name
             __props__.__dict__["ownership_challenge"] = ownership_challenge
             __props__.__dict__["zone_id"] = zone_id
@@ -512,6 +620,9 @@ class LogpushJob(pulumi.CustomResource):
             frequency: Optional[pulumi.Input[str]] = None,
             kind: Optional[pulumi.Input[str]] = None,
             logpull_options: Optional[pulumi.Input[str]] = None,
+            max_upload_bytes: Optional[pulumi.Input[int]] = None,
+            max_upload_interval_seconds: Optional[pulumi.Input[int]] = None,
+            max_upload_records: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             ownership_challenge: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'LogpushJob':
@@ -523,13 +634,16 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
-        :param pulumi.Input[str] dataset: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`.
+        :param pulumi.Input[str] dataset: The kind of the dataset to use with the logpush job. Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.
         :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
         :param pulumi.Input[bool] enabled: Whether to enable the job.
         :param pulumi.Input[str] filter: Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
         :param pulumi.Input[str] frequency: A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
         :param pulumi.Input[str] kind: The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`.
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        :param pulumi.Input[int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+        :param pulumi.Input[int] max_upload_interval_seconds: The maximum interval in seconds for log batches. Value must be between 30 and 300.
+        :param pulumi.Input[int] max_upload_records: The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
         :param pulumi.Input[str] name: The name of the logpush job to create.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
@@ -546,6 +660,9 @@ class LogpushJob(pulumi.CustomResource):
         __props__.__dict__["frequency"] = frequency
         __props__.__dict__["kind"] = kind
         __props__.__dict__["logpull_options"] = logpull_options
+        __props__.__dict__["max_upload_bytes"] = max_upload_bytes
+        __props__.__dict__["max_upload_interval_seconds"] = max_upload_interval_seconds
+        __props__.__dict__["max_upload_records"] = max_upload_records
         __props__.__dict__["name"] = name
         __props__.__dict__["ownership_challenge"] = ownership_challenge
         __props__.__dict__["zone_id"] = zone_id
@@ -563,7 +680,7 @@ class LogpushJob(pulumi.CustomResource):
     @pulumi.getter
     def dataset(self) -> pulumi.Output[str]:
         """
-        Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`.
+        The kind of the dataset to use with the logpush job. Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.
         """
         return pulumi.get(self, "dataset")
 
@@ -614,6 +731,30 @@ class LogpushJob(pulumi.CustomResource):
         Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         """
         return pulumi.get(self, "logpull_options")
+
+    @property
+    @pulumi.getter(name="maxUploadBytes")
+    def max_upload_bytes(self) -> pulumi.Output[Optional[int]]:
+        """
+        The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+        """
+        return pulumi.get(self, "max_upload_bytes")
+
+    @property
+    @pulumi.getter(name="maxUploadIntervalSeconds")
+    def max_upload_interval_seconds(self) -> pulumi.Output[Optional[int]]:
+        """
+        The maximum interval in seconds for log batches. Value must be between 30 and 300.
+        """
+        return pulumi.get(self, "max_upload_interval_seconds")
+
+    @property
+    @pulumi.getter(name="maxUploadRecords")
+    def max_upload_records(self) -> pulumi.Output[Optional[int]]:
+        """
+        The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+        """
+        return pulumi.get(self, "max_upload_records")
 
     @property
     @pulumi.getter

@@ -25,6 +25,7 @@ class AccessPolicyArgs:
                  approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]] = None,
                  approval_required: Optional[pulumi.Input[bool]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]] = None,
+                 isolation_required: Optional[pulumi.Input[bool]] = None,
                  purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
                  purpose_justification_required: Optional[pulumi.Input[bool]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]] = None,
@@ -33,17 +34,15 @@ class AccessPolicyArgs:
         The set of arguments for constructing a AccessPolicy resource.
         :param pulumi.Input[str] application_id: The ID of the application the policy is associated with.
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]] includes: A series of access conditions, see [Access
-               Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]] includes: A series of access conditions, see Access Groups.
         :param pulumi.Input[str] name: Friendly name of the Access Policy.
         :param pulumi.Input[int] precedence: The unique precedence for policies on a single application.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]] excludes: A series of access conditions, see [Access
-               Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]] excludes: A series of access conditions, see Access Groups.
+        :param pulumi.Input[bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy.
         :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         :param pulumi.Input[bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]] requires: A series of access conditions, see [Access
-               Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]] requires: A series of access conditions, see Access Groups.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         pulumi.set(__self__, "application_id", application_id)
@@ -59,6 +58,8 @@ class AccessPolicyArgs:
             pulumi.set(__self__, "approval_required", approval_required)
         if excludes is not None:
             pulumi.set(__self__, "excludes", excludes)
+        if isolation_required is not None:
+            pulumi.set(__self__, "isolation_required", isolation_required)
         if purpose_justification_prompt is not None:
             pulumi.set(__self__, "purpose_justification_prompt", purpose_justification_prompt)
         if purpose_justification_required is not None:
@@ -96,8 +97,7 @@ class AccessPolicyArgs:
     @pulumi.getter
     def includes(self) -> pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]:
         """
-        A series of access conditions, see [Access
-        Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        A series of access conditions, see Access Groups.
         """
         return pulumi.get(self, "includes")
 
@@ -163,14 +163,25 @@ class AccessPolicyArgs:
     @pulumi.getter
     def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]]:
         """
-        A series of access conditions, see [Access
-        Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        A series of access conditions, see Access Groups.
         """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
     def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]]):
         pulumi.set(self, "excludes", value)
+
+    @property
+    @pulumi.getter(name="isolationRequired")
+    def isolation_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Require this application to be served in an isolated browser for users matching this policy.
+        """
+        return pulumi.get(self, "isolation_required")
+
+    @isolation_required.setter
+    def isolation_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "isolation_required", value)
 
     @property
     @pulumi.getter(name="purposeJustificationPrompt")
@@ -200,8 +211,7 @@ class AccessPolicyArgs:
     @pulumi.getter
     def requires(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]]:
         """
-        A series of access conditions, see [Access
-        Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        A series of access conditions, see Access Groups.
         """
         return pulumi.get(self, "requires")
 
@@ -232,6 +242,7 @@ class _AccessPolicyState:
                  decision: Optional[pulumi.Input[str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]] = None,
+                 isolation_required: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  precedence: Optional[pulumi.Input[int]] = None,
                  purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
@@ -243,16 +254,14 @@ class _AccessPolicyState:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] application_id: The ID of the application the policy is associated with.
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]] excludes: A series of access conditions, see [Access
-               Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]] includes: A series of access conditions, see [Access
-               Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]] excludes: A series of access conditions, see Access Groups.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]] includes: A series of access conditions, see Access Groups.
+        :param pulumi.Input[bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy.
         :param pulumi.Input[str] name: Friendly name of the Access Policy.
         :param pulumi.Input[int] precedence: The unique precedence for policies on a single application.
         :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         :param pulumi.Input[bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]] requires: A series of access conditions, see [Access
-               Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]] requires: A series of access conditions, see Access Groups.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         if account_id is not None:
@@ -269,6 +278,8 @@ class _AccessPolicyState:
             pulumi.set(__self__, "excludes", excludes)
         if includes is not None:
             pulumi.set(__self__, "includes", includes)
+        if isolation_required is not None:
+            pulumi.set(__self__, "isolation_required", isolation_required)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if precedence is not None:
@@ -340,8 +351,7 @@ class _AccessPolicyState:
     @pulumi.getter
     def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]]:
         """
-        A series of access conditions, see [Access
-        Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        A series of access conditions, see Access Groups.
         """
         return pulumi.get(self, "excludes")
 
@@ -353,14 +363,25 @@ class _AccessPolicyState:
     @pulumi.getter
     def includes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]]:
         """
-        A series of access conditions, see [Access
-        Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        A series of access conditions, see Access Groups.
         """
         return pulumi.get(self, "includes")
 
     @includes.setter
     def includes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]]):
         pulumi.set(self, "includes", value)
+
+    @property
+    @pulumi.getter(name="isolationRequired")
+    def isolation_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Require this application to be served in an isolated browser for users matching this policy.
+        """
+        return pulumi.get(self, "isolation_required")
+
+    @isolation_required.setter
+    def isolation_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "isolation_required", value)
 
     @property
     @pulumi.getter
@@ -414,8 +435,7 @@ class _AccessPolicyState:
     @pulumi.getter
     def requires(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]]:
         """
-        A series of access conditions, see [Access
-        Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        A series of access conditions, see Access Groups.
         """
         return pulumi.get(self, "requires")
 
@@ -448,6 +468,7 @@ class AccessPolicy(pulumi.CustomResource):
                  decision: Optional[pulumi.Input[str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]]] = None,
+                 isolation_required: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  precedence: Optional[pulumi.Input[int]] = None,
                  purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
@@ -520,16 +541,14 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] application_id: The ID of the application the policy is associated with.
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]] excludes: A series of access conditions, see [Access
-               Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]] includes: A series of access conditions, see [Access
-               Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]] excludes: A series of access conditions, see Access Groups.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]] includes: A series of access conditions, see Access Groups.
+        :param pulumi.Input[bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy.
         :param pulumi.Input[str] name: Friendly name of the Access Policy.
         :param pulumi.Input[int] precedence: The unique precedence for policies on a single application.
         :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         :param pulumi.Input[bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see [Access
-               Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see Access Groups.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         ...
@@ -620,6 +639,7 @@ class AccessPolicy(pulumi.CustomResource):
                  decision: Optional[pulumi.Input[str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]]] = None,
+                 isolation_required: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  precedence: Optional[pulumi.Input[int]] = None,
                  purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
@@ -648,6 +668,7 @@ class AccessPolicy(pulumi.CustomResource):
             if includes is None and not opts.urn:
                 raise TypeError("Missing required property 'includes'")
             __props__.__dict__["includes"] = includes
+            __props__.__dict__["isolation_required"] = isolation_required
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
@@ -675,6 +696,7 @@ class AccessPolicy(pulumi.CustomResource):
             decision: Optional[pulumi.Input[str]] = None,
             excludes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]]] = None,
             includes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]]] = None,
+            isolation_required: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             precedence: Optional[pulumi.Input[int]] = None,
             purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
@@ -691,16 +713,14 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] application_id: The ID of the application the policy is associated with.
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]] excludes: A series of access conditions, see [Access
-               Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]] includes: A series of access conditions, see [Access
-               Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]] excludes: A series of access conditions, see Access Groups.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]] includes: A series of access conditions, see Access Groups.
+        :param pulumi.Input[bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy.
         :param pulumi.Input[str] name: Friendly name of the Access Policy.
         :param pulumi.Input[int] precedence: The unique precedence for policies on a single application.
         :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         :param pulumi.Input[bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see [Access
-               Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see Access Groups.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -714,6 +734,7 @@ class AccessPolicy(pulumi.CustomResource):
         __props__.__dict__["decision"] = decision
         __props__.__dict__["excludes"] = excludes
         __props__.__dict__["includes"] = includes
+        __props__.__dict__["isolation_required"] = isolation_required
         __props__.__dict__["name"] = name
         __props__.__dict__["precedence"] = precedence
         __props__.__dict__["purpose_justification_prompt"] = purpose_justification_prompt
@@ -760,8 +781,7 @@ class AccessPolicy(pulumi.CustomResource):
     @pulumi.getter
     def excludes(self) -> pulumi.Output[Optional[Sequence['outputs.AccessPolicyExclude']]]:
         """
-        A series of access conditions, see [Access
-        Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        A series of access conditions, see Access Groups.
         """
         return pulumi.get(self, "excludes")
 
@@ -769,10 +789,17 @@ class AccessPolicy(pulumi.CustomResource):
     @pulumi.getter
     def includes(self) -> pulumi.Output[Sequence['outputs.AccessPolicyInclude']]:
         """
-        A series of access conditions, see [Access
-        Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        A series of access conditions, see Access Groups.
         """
         return pulumi.get(self, "includes")
+
+    @property
+    @pulumi.getter(name="isolationRequired")
+    def isolation_required(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Require this application to be served in an isolated browser for users matching this policy.
+        """
+        return pulumi.get(self, "isolation_required")
 
     @property
     @pulumi.getter
@@ -810,8 +837,7 @@ class AccessPolicy(pulumi.CustomResource):
     @pulumi.getter
     def requires(self) -> pulumi.Output[Optional[Sequence['outputs.AccessPolicyRequire']]]:
         """
-        A series of access conditions, see [Access
-        Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        A series of access conditions, see Access Groups.
         """
         return pulumi.get(self, "requires")
 

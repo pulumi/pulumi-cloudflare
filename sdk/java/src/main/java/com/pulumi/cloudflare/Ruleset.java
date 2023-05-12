@@ -409,6 +409,29 @@ import javax.annotation.Nullable;
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
+ *         var responseCompressBrotliHtml = new Ruleset(&#34;responseCompressBrotliHtml&#34;, RulesetArgs.builder()        
+ *             .description(&#34;Response compression ruleset&#34;)
+ *             .kind(&#34;zone&#34;)
+ *             .name(&#34;Brotli response compression for HTML&#34;)
+ *             .phase(&#34;http_response_compression&#34;)
+ *             .rules(RulesetRuleArgs.builder()
+ *                 .action(&#34;compress_response&#34;)
+ *                 .actionParameters(RulesetRuleActionParametersArgs.builder()
+ *                     .algorithms(                    
+ *                         RulesetRuleActionParametersAlgorithmArgs.builder()
+ *                             .name(&#34;brotli&#34;)
+ *                             .build(),
+ *                         RulesetRuleActionParametersAlgorithmArgs.builder()
+ *                             .name(&#34;default&#34;)
+ *                             .build())
+ *                     .build())
+ *                 .description(&#34;Prefer brotli compression for HTML&#34;)
+ *                 .enabled(true)
+ *                 .expression(&#34;http.response.content_type.media_type == \&#34;text/html\&#34;&#34;)
+ *                 .build())
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .build());
+ * 
  *     }
  * }
  * ```
@@ -431,14 +454,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/ruleset:Ruleset")
 public class Ruleset extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Output<Optional<String>> accountId() {
@@ -448,21 +471,21 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
      * Brief summary of the ruleset and its intended use.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
-    private Output</* @Nullable */ String> description;
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output<String> description;
 
     /**
      * @return Brief summary of the ruleset and its intended use.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
      * 
      */
-    @Export(name="kind", type=String.class, parameters={})
+    @Export(name="kind", refs={String.class}, tree="[0]")
     private Output<String> kind;
 
     /**
@@ -473,28 +496,28 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
         return this.kind;
     }
     /**
-     * Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * Name of the ruleset.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * @return Name of the ruleset.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `http_response_compression`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
      * 
      */
-    @Export(name="phase", type=String.class, parameters={})
+    @Export(name="phase", refs={String.class}, tree="[0]")
     private Output<String> phase;
 
     /**
-     * @return Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
+     * @return Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `http_response_compression`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
      * 
      */
     public Output<String> phase() {
@@ -504,7 +527,7 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
      * List of rules to apply to the ruleset.
      * 
      */
-    @Export(name="rules", type=List.class, parameters={RulesetRule.class})
+    @Export(name="rules", refs={List.class,RulesetRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<RulesetRule>> rules;
 
     /**
@@ -518,7 +541,7 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
      * Name of entitlement that is shareable between entities.
      * 
      */
-    @Export(name="shareableEntitlementName", type=String.class, parameters={})
+    @Export(name="shareableEntitlementName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> shareableEntitlementName;
 
     /**
@@ -529,14 +552,14 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.shareableEntitlementName);
     }
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
+     * The zone identifier to target for the resource.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
+     * @return The zone identifier to target for the resource.
      * 
      */
     public Output<Optional<String>> zoneId() {

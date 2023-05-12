@@ -18,7 +18,7 @@ public final class LoadBalancerPoolLoadShedding {
      */
     private @Nullable Double defaultPercent;
     /**
-     * @return Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`&#34;&#34;`.
+     * @return Method of shedding traffic. Available values: `&#34;&#34;`, `hash`, `random`. Defaults to `&#34;&#34;`.
      * 
      */
     private @Nullable String defaultPolicy;
@@ -28,7 +28,7 @@ public final class LoadBalancerPoolLoadShedding {
      */
     private @Nullable Double sessionPercent;
     /**
-     * @return Method of shedding traffic. Available values: ``,`hash`. Defaults to`&#34;&#34;`.
+     * @return Method of shedding traffic. Available values: `&#34;&#34;`, `hash`. Defaults to `&#34;&#34;`.
      * 
      */
     private @Nullable String sessionPolicy;
@@ -42,7 +42,7 @@ public final class LoadBalancerPoolLoadShedding {
         return Optional.ofNullable(this.defaultPercent);
     }
     /**
-     * @return Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`&#34;&#34;`.
+     * @return Method of shedding traffic. Available values: `&#34;&#34;`, `hash`, `random`. Defaults to `&#34;&#34;`.
      * 
      */
     public Optional<String> defaultPolicy() {
@@ -56,7 +56,7 @@ public final class LoadBalancerPoolLoadShedding {
         return Optional.ofNullable(this.sessionPercent);
     }
     /**
-     * @return Method of shedding traffic. Available values: ``,`hash`. Defaults to`&#34;&#34;`.
+     * @return Method of shedding traffic. Available values: `&#34;&#34;`, `hash`. Defaults to `&#34;&#34;`.
      * 
      */
     public Optional<String> sessionPolicy() {

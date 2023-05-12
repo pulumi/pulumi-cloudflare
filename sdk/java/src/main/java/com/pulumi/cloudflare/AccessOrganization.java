@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  *         var example = new AccessOrganization(&#34;example&#34;, AccessOrganizationArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .authDomain(&#34;example.cloudflareaccess.com&#34;)
+ *             .autoRedirectToIdentity(false)
  *             .isUiReadOnly(false)
  *             .loginDesigns(AccessOrganizationLoginDesignArgs.builder()
  *                 .backgroundColor(&#34;#ffffff&#34;)
@@ -75,7 +76,7 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. Conflicts with `zone_id`.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -89,7 +90,7 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
      * The unique subdomain assigned to your Zero Trust organization.
      * 
      */
-    @Export(name="authDomain", type=String.class, parameters={})
+    @Export(name="authDomain", refs={String.class}, tree="[0]")
     private Output<String> authDomain;
 
     /**
@@ -100,10 +101,24 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
         return this.authDomain;
     }
     /**
+     * When set to true, users skip the identity provider selection step during login.
+     * 
+     */
+    @Export(name="autoRedirectToIdentity", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoRedirectToIdentity;
+
+    /**
+     * @return When set to true, users skip the identity provider selection step during login.
+     * 
+     */
+    public Output<Optional<Boolean>> autoRedirectToIdentity() {
+        return Codegen.optional(this.autoRedirectToIdentity);
+    }
+    /**
      * When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
      * 
      */
-    @Export(name="isUiReadOnly", type=Boolean.class, parameters={})
+    @Export(name="isUiReadOnly", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isUiReadOnly;
 
     /**
@@ -113,7 +128,7 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> isUiReadOnly() {
         return Codegen.optional(this.isUiReadOnly);
     }
-    @Export(name="loginDesigns", type=List.class, parameters={AccessOrganizationLoginDesign.class})
+    @Export(name="loginDesigns", refs={List.class,AccessOrganizationLoginDesign.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AccessOrganizationLoginDesign>> loginDesigns;
 
     public Output<Optional<List<AccessOrganizationLoginDesign>>> loginDesigns() {
@@ -123,7 +138,7 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
      * The name of your Zero Trust organization.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> name;
 
     /**
@@ -134,10 +149,24 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.name);
     }
     /**
+     * A description of the reason why the UI read only field is being toggled.
+     * 
+     */
+    @Export(name="uiReadOnlyToggleReason", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> uiReadOnlyToggleReason;
+
+    /**
+     * @return A description of the reason why the UI read only field is being toggled.
+     * 
+     */
+    public Output<Optional<String>> uiReadOnlyToggleReason() {
+        return Codegen.optional(this.uiReadOnlyToggleReason);
+    }
+    /**
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
      * 
      */
-    @Export(name="userSeatExpirationInactiveTime", type=String.class, parameters={})
+    @Export(name="userSeatExpirationInactiveTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userSeatExpirationInactiveTime;
 
     /**
@@ -151,7 +180,7 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. Conflicts with `account_id`.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

@@ -27,7 +27,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * environment variable.
      * 
      */
-    @Export(name="apiBasePath", type=String.class, parameters={})
+    @Export(name="apiBasePath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apiBasePath;
 
     /**
@@ -43,7 +43,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * environment variable.
      * 
      */
-    @Export(name="apiHostname", type=String.class, parameters={})
+    @Export(name="apiHostname", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apiHostname;
 
     /**
@@ -56,17 +56,19 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     }
     /**
      * The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
-     * keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-     * should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+     * keys are [now considered legacy by
+     * Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
+     * instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
      * 
      */
-    @Export(name="apiKey", type=String.class, parameters={})
+    @Export(name="apiKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apiKey;
 
     /**
      * @return The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
-     * keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-     * should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+     * keys are [now considered legacy by
+     * Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
+     * instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
      * 
      */
     public Output<Optional<String>> apiKey() {
@@ -77,7 +79,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
      * 
      */
-    @Export(name="apiToken", type=String.class, parameters={})
+    @Export(name="apiToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apiToken;
 
     /**
@@ -94,7 +96,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * `api_user_service_key`.
      * 
      */
-    @Export(name="apiUserServiceKey", type=String.class, parameters={})
+    @Export(name="apiUserServiceKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apiUserServiceKey;
 
     /**
@@ -111,7 +113,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * variable. Required when using `api_key`. Conflicts with `api_token`.
      * 
      */
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> email;
 
     /**

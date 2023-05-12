@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersOverridesRule
     {
         /// <summary>
-        /// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
+        /// Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`, `compress_response`.
         /// </summary>
         public readonly string? Action;
         /// <summary>
@@ -27,7 +27,6 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Id;
         public readonly int? ScoreThreshold;
         public readonly string? SensitivityLevel;
-        public readonly string? Status;
 
         [OutputConstructor]
         private RulesetRuleActionParametersOverridesRule(
@@ -39,16 +38,13 @@ namespace Pulumi.Cloudflare.Outputs
 
             int? scoreThreshold,
 
-            string? sensitivityLevel,
-
-            string? status)
+            string? sensitivityLevel)
         {
             Action = action;
             Enabled = enabled;
             Id = id;
             ScoreThreshold = scoreThreshold;
             SensitivityLevel = sensitivityLevel;
-            Status = status;
         }
     }
 }

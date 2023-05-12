@@ -18,29 +18,37 @@ class AccessOrganizationArgs:
     def __init__(__self__, *,
                  auth_domain: pulumi.Input[str],
                  account_id: Optional[pulumi.Input[str]] = None,
+                 auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  is_ui_read_only: Optional[pulumi.Input[bool]] = None,
                  login_designs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationLoginDesignArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
                  user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessOrganization resource.
         :param pulumi.Input[str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
+        :param pulumi.Input[bool] auto_redirect_to_identity: When set to true, users skip the identity provider selection step during login.
         :param pulumi.Input[bool] is_ui_read_only: When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
         :param pulumi.Input[str] name: The name of your Zero Trust organization.
+        :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         pulumi.set(__self__, "auth_domain", auth_domain)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if auto_redirect_to_identity is not None:
+            pulumi.set(__self__, "auto_redirect_to_identity", auto_redirect_to_identity)
         if is_ui_read_only is not None:
             pulumi.set(__self__, "is_ui_read_only", is_ui_read_only)
         if login_designs is not None:
             pulumi.set(__self__, "login_designs", login_designs)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if ui_read_only_toggle_reason is not None:
+            pulumi.set(__self__, "ui_read_only_toggle_reason", ui_read_only_toggle_reason)
         if user_seat_expiration_inactive_time is not None:
             pulumi.set(__self__, "user_seat_expiration_inactive_time", user_seat_expiration_inactive_time)
         if zone_id is not None:
@@ -69,6 +77,18 @@ class AccessOrganizationArgs:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="autoRedirectToIdentity")
+    def auto_redirect_to_identity(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, users skip the identity provider selection step during login.
+        """
+        return pulumi.get(self, "auto_redirect_to_identity")
+
+    @auto_redirect_to_identity.setter
+    def auto_redirect_to_identity(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_redirect_to_identity", value)
 
     @property
     @pulumi.getter(name="isUiReadOnly")
@@ -102,6 +122,18 @@ class AccessOrganizationArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="uiReadOnlyToggleReason")
+    def ui_read_only_toggle_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the reason why the UI read only field is being toggled.
+        """
+        return pulumi.get(self, "ui_read_only_toggle_reason")
+
+    @ui_read_only_toggle_reason.setter
+    def ui_read_only_toggle_reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ui_read_only_toggle_reason", value)
 
     @property
     @pulumi.getter(name="userSeatExpirationInactiveTime")
@@ -133,17 +165,21 @@ class _AccessOrganizationState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
+                 auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  is_ui_read_only: Optional[pulumi.Input[bool]] = None,
                  login_designs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationLoginDesignArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
                  user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessOrganization resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
+        :param pulumi.Input[bool] auto_redirect_to_identity: When set to true, users skip the identity provider selection step during login.
         :param pulumi.Input[bool] is_ui_read_only: When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
         :param pulumi.Input[str] name: The name of your Zero Trust organization.
+        :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
@@ -151,12 +187,16 @@ class _AccessOrganizationState:
             pulumi.set(__self__, "account_id", account_id)
         if auth_domain is not None:
             pulumi.set(__self__, "auth_domain", auth_domain)
+        if auto_redirect_to_identity is not None:
+            pulumi.set(__self__, "auto_redirect_to_identity", auto_redirect_to_identity)
         if is_ui_read_only is not None:
             pulumi.set(__self__, "is_ui_read_only", is_ui_read_only)
         if login_designs is not None:
             pulumi.set(__self__, "login_designs", login_designs)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if ui_read_only_toggle_reason is not None:
+            pulumi.set(__self__, "ui_read_only_toggle_reason", ui_read_only_toggle_reason)
         if user_seat_expiration_inactive_time is not None:
             pulumi.set(__self__, "user_seat_expiration_inactive_time", user_seat_expiration_inactive_time)
         if zone_id is not None:
@@ -185,6 +225,18 @@ class _AccessOrganizationState:
     @auth_domain.setter
     def auth_domain(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "auth_domain", value)
+
+    @property
+    @pulumi.getter(name="autoRedirectToIdentity")
+    def auto_redirect_to_identity(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, users skip the identity provider selection step during login.
+        """
+        return pulumi.get(self, "auto_redirect_to_identity")
+
+    @auto_redirect_to_identity.setter
+    def auto_redirect_to_identity(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_redirect_to_identity", value)
 
     @property
     @pulumi.getter(name="isUiReadOnly")
@@ -218,6 +270,18 @@ class _AccessOrganizationState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="uiReadOnlyToggleReason")
+    def ui_read_only_toggle_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the reason why the UI read only field is being toggled.
+        """
+        return pulumi.get(self, "ui_read_only_toggle_reason")
+
+    @ui_read_only_toggle_reason.setter
+    def ui_read_only_toggle_reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ui_read_only_toggle_reason", value)
 
     @property
     @pulumi.getter(name="userSeatExpirationInactiveTime")
@@ -251,9 +315,11 @@ class AccessOrganization(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
+                 auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  is_ui_read_only: Optional[pulumi.Input[bool]] = None,
                  login_designs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationLoginDesignArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
                  user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -269,6 +335,7 @@ class AccessOrganization(pulumi.CustomResource):
         example = cloudflare.AccessOrganization("example",
             account_id="f037e56e89293a057740de681ac9abbe",
             auth_domain="example.cloudflareaccess.com",
+            auto_redirect_to_identity=False,
             is_ui_read_only=False,
             login_designs=[cloudflare.AccessOrganizationLoginDesignArgs(
                 background_color="#ffffff",
@@ -291,8 +358,10 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
+        :param pulumi.Input[bool] auto_redirect_to_identity: When set to true, users skip the identity provider selection step during login.
         :param pulumi.Input[bool] is_ui_read_only: When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
         :param pulumi.Input[str] name: The name of your Zero Trust organization.
+        :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
@@ -314,6 +383,7 @@ class AccessOrganization(pulumi.CustomResource):
         example = cloudflare.AccessOrganization("example",
             account_id="f037e56e89293a057740de681ac9abbe",
             auth_domain="example.cloudflareaccess.com",
+            auto_redirect_to_identity=False,
             is_ui_read_only=False,
             login_designs=[cloudflare.AccessOrganizationLoginDesignArgs(
                 background_color="#ffffff",
@@ -349,9 +419,11 @@ class AccessOrganization(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
+                 auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  is_ui_read_only: Optional[pulumi.Input[bool]] = None,
                  login_designs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationLoginDesignArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
                  user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -367,9 +439,11 @@ class AccessOrganization(pulumi.CustomResource):
             if auth_domain is None and not opts.urn:
                 raise TypeError("Missing required property 'auth_domain'")
             __props__.__dict__["auth_domain"] = auth_domain
+            __props__.__dict__["auto_redirect_to_identity"] = auto_redirect_to_identity
             __props__.__dict__["is_ui_read_only"] = is_ui_read_only
             __props__.__dict__["login_designs"] = login_designs
             __props__.__dict__["name"] = name
+            __props__.__dict__["ui_read_only_toggle_reason"] = ui_read_only_toggle_reason
             __props__.__dict__["user_seat_expiration_inactive_time"] = user_seat_expiration_inactive_time
             __props__.__dict__["zone_id"] = zone_id
         super(AccessOrganization, __self__).__init__(
@@ -384,9 +458,11 @@ class AccessOrganization(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             auth_domain: Optional[pulumi.Input[str]] = None,
+            auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
             is_ui_read_only: Optional[pulumi.Input[bool]] = None,
             login_designs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationLoginDesignArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
             user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'AccessOrganization':
         """
@@ -398,8 +474,10 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
+        :param pulumi.Input[bool] auto_redirect_to_identity: When set to true, users skip the identity provider selection step during login.
         :param pulumi.Input[bool] is_ui_read_only: When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
         :param pulumi.Input[str] name: The name of your Zero Trust organization.
+        :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
@@ -409,9 +487,11 @@ class AccessOrganization(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["auth_domain"] = auth_domain
+        __props__.__dict__["auto_redirect_to_identity"] = auto_redirect_to_identity
         __props__.__dict__["is_ui_read_only"] = is_ui_read_only
         __props__.__dict__["login_designs"] = login_designs
         __props__.__dict__["name"] = name
+        __props__.__dict__["ui_read_only_toggle_reason"] = ui_read_only_toggle_reason
         __props__.__dict__["user_seat_expiration_inactive_time"] = user_seat_expiration_inactive_time
         __props__.__dict__["zone_id"] = zone_id
         return AccessOrganization(resource_name, opts=opts, __props__=__props__)
@@ -433,6 +513,14 @@ class AccessOrganization(pulumi.CustomResource):
         return pulumi.get(self, "auth_domain")
 
     @property
+    @pulumi.getter(name="autoRedirectToIdentity")
+    def auto_redirect_to_identity(self) -> pulumi.Output[Optional[bool]]:
+        """
+        When set to true, users skip the identity provider selection step during login.
+        """
+        return pulumi.get(self, "auto_redirect_to_identity")
+
+    @property
     @pulumi.getter(name="isUiReadOnly")
     def is_ui_read_only(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -452,6 +540,14 @@ class AccessOrganization(pulumi.CustomResource):
         The name of your Zero Trust organization.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="uiReadOnlyToggleReason")
+    def ui_read_only_toggle_reason(self) -> pulumi.Output[Optional[str]]:
+        """
+        A description of the reason why the UI read only field is being toggled.
+        """
+        return pulumi.get(self, "ui_read_only_toggle_reason")
 
     @property
     @pulumi.getter(name="userSeatExpirationInactiveTime")

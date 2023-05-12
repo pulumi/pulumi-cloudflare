@@ -232,11 +232,12 @@ export interface AccessGroupRequireSaml {
 export interface AccessIdentityProviderConfig {
     apiToken?: string;
     appsDomain?: string;
-    attributes?: string[];
+    attributes: string[];
     authUrl?: string;
     centrifyAccount?: string;
     centrifyAppId?: string;
     certsUrl?: string;
+    claims: string[];
     clientId?: string;
     clientSecret?: string;
     directoryId?: string;
@@ -247,10 +248,19 @@ export interface AccessIdentityProviderConfig {
     oneloginAccount?: string;
     pkceEnabled?: boolean;
     redirectUrl: string;
+    scopes: string[];
     signRequest?: boolean;
     ssoTargetUrl?: string;
     supportGroups?: boolean;
     tokenUrl?: string;
+}
+
+export interface AccessIdentityProviderScimConfig {
+    enabled?: boolean;
+    groupMemberDeprovision?: boolean;
+    seatDeprovision?: boolean;
+    secret: string;
+    userDeprovision?: boolean;
 }
 
 export interface AccessOrganizationLoginDesign {
@@ -491,6 +501,28 @@ export interface AccessRuleConfiguration {
     value: string;
 }
 
+export interface AddressMapIp {
+    /**
+     * An IPv4 or IPv6 address.
+     */
+    ip: string;
+}
+
+export interface AddressMapMembership {
+    /**
+     * Controls whether the membership can be deleted via the API or not.
+     */
+    canDelete: boolean;
+    /**
+     * Identifier of the account or zone.
+     */
+    identifier: string;
+    /**
+     * The type of the membership.
+     */
+    kind: string;
+}
+
 export interface ApiShieldAuthIdCharacteristic {
     /**
      * The name of the characteristic.
@@ -630,6 +662,21 @@ export interface CustomSslCustomSslPriority {
     priority?: number;
 }
 
+export interface DeviceDexTestData {
+    /**
+     * The host URL for `http` test `kind`. For `traceroute`, it must be a valid hostname or IP address.
+     */
+    host: string;
+    /**
+     * The type of Device Dex Test. Available values: `http`, `traceroute`.
+     */
+    kind: string;
+    /**
+     * The http request method. Available values: `GET`.
+     */
+    method?: string;
+}
+
 export interface DeviceManagedNetworksConfig {
     /**
      * The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
@@ -669,6 +716,10 @@ export interface DevicePostureIntegrationConfig {
 }
 
 export interface DevicePostureRuleInput {
+    /**
+     * Specific volume(s) to check for encryption.
+     */
+    checkDisks?: string[];
     /**
      * The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
      */
@@ -858,6 +909,7 @@ export interface GetAccountsAccount {
 
 export interface GetDevicesDevice {
     created?: string;
+    deleted?: boolean;
     deviceType?: string;
     /**
      * The ID of this resource.
@@ -866,16 +918,31 @@ export interface GetDevicesDevice {
     ip?: string;
     key?: string;
     lastSeen?: string;
+    macAddress?: string;
+    manufacturer?: string;
     model?: string;
     name?: string;
     osDistroName?: string;
     osDistroRevision?: string;
     osVersion?: string;
+    revokedAt?: string;
+    serialNumber?: string;
     updated?: string;
     userEmail?: string;
     userId?: string;
     userName?: string;
     version?: string;
+}
+
+export interface GetListsList {
+    description?: string;
+    /**
+     * The ID of this resource.
+     */
+    id?: string;
+    kind?: string;
+    name?: string;
+    numitems?: number;
 }
 
 export interface GetLoadBalancerPoolsFilter {
@@ -978,7 +1045,7 @@ export interface GetRulesetsFilter {
      */
     name?: string;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `httpResponseCompression`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
      */
     phase?: string;
     /**
@@ -1317,6 +1384,37 @@ export interface ListItem {
     value: outputs.ListItemValue;
 }
 
+export interface ListItemRedirect {
+    /**
+     * Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+     */
+    includeSubdomains?: string;
+    /**
+     * Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+     */
+    preservePathSuffix?: string;
+    /**
+     * Whether the redirect target url should keep the query string of the request's url. Available values: `disabled`, `enabled`.
+     */
+    preserveQueryString?: string;
+    /**
+     * The source url of the redirect.
+     */
+    sourceUrl: string;
+    /**
+     * The status code to be used when redirecting a request.
+     */
+    statusCode?: number;
+    /**
+     * Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+     */
+    subpathMatching?: string;
+    /**
+     * The target url of the redirect.
+     */
+    targetUrl: string;
+}
+
 export interface ListItemValue {
     ip?: string;
     redirects?: outputs.ListItemValueRedirect[];
@@ -1378,7 +1476,7 @@ export interface LoadBalancerPoolLoadShedding {
      */
     defaultPercent?: number;
     /**
-     * Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`""`.
+     * Method of shedding traffic. Available values: `""`, `hash`, `random`. Defaults to `""`.
      */
     defaultPolicy?: string;
     /**
@@ -1386,7 +1484,7 @@ export interface LoadBalancerPoolLoadShedding {
      */
     sessionPercent?: number;
     /**
-     * Method of shedding traffic. Available values: ``,`hash`. Defaults to`""`.
+     * Method of shedding traffic. Available values: `""`, `hash`. Defaults to `""`.
      */
     sessionPolicy?: string;
 }
@@ -1421,7 +1519,7 @@ export interface LoadBalancerPoolOriginHeader {
 
 export interface LoadBalancerPoolOriginSteering {
     /**
-     * Origin steering policy to be used. Available values: ``,`hash`,`random`. Defaults to`random`.
+     * Origin steering policy to be used. Available values: `""`, `hash`, `random`. Defaults to `random`.
      */
     policy?: string;
 }
@@ -1700,6 +1798,10 @@ export interface NotificationPolicyFilters {
      * A numerical limit. Example: `100`.
      */
     limits?: string[];
+    /**
+     * Megabits per second threshold for dos alert.
+     */
+    megabitsPerSeconds?: string[];
     /**
      * Health status to alert on for pool or origin.
      */
@@ -2002,6 +2104,46 @@ export interface PageRuleActionsCacheKeyFieldsUser {
     geo: boolean;
     /**
      * `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
+     *
+     * Example:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as cloudflare from "@pulumi/cloudflare";
+     *
+     * // Unrealistic example with all features used
+     * const foobar = new cloudflare.PageRule("foobar", {
+     *     zoneId: _var.cloudflare_zone_id,
+     *     target: `${_var.cloudflare_zone}/app/*`,
+     *     priority: 1,
+     *     actions: {
+     *         cacheKeyFields: {
+     *             cookie: {
+     *                 checkPresences: ["wordpress_test_cookie"],
+     *             },
+     *             header: {
+     *                 checkPresences: ["header_present"],
+     *                 excludes: ["origin"],
+     *                 includes: [
+     *                     "api-key",
+     *                     "dnt",
+     *                 ],
+     *             },
+     *             host: {
+     *                 resolved: true,
+     *             },
+     *             queryString: {
+     *                 ignore: true,
+     *             },
+     *             user: {
+     *                 deviceType: false,
+     *                 geo: true,
+     *                 lang: true,
+     *             },
+     *         },
+     *     },
+     * });
+     * ```
      */
     lang: boolean;
 }
@@ -2088,6 +2230,7 @@ export interface PagesProjectDeploymentConfigsPreview {
     failOpen?: boolean;
     kvNamespaces?: {[key: string]: any};
     r2Buckets?: {[key: string]: any};
+    secrets?: {[key: string]: any};
     serviceBindings?: outputs.PagesProjectDeploymentConfigsPreviewServiceBinding[];
     usageModel?: string;
 }
@@ -2111,6 +2254,7 @@ export interface PagesProjectDeploymentConfigsProduction {
     failOpen?: boolean;
     kvNamespaces?: {[key: string]: any};
     r2Buckets?: {[key: string]: any};
+    secrets?: {[key: string]: any};
     serviceBindings?: outputs.PagesProjectDeploymentConfigsProductionServiceBinding[];
     usageModel?: string;
 }
@@ -2256,7 +2400,7 @@ export interface RecordData {
 
 export interface RulesetRule {
     /**
-     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
+     * Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`, `compressResponse`.
      */
     action?: string;
     /**
@@ -2266,11 +2410,11 @@ export interface RulesetRule {
     /**
      * Brief summary of the ruleset rule and its intended use.
      */
-    description?: string;
+    description: string;
     /**
      * Whether the rule is active.
      */
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * List of parameters that configure exposed credential checks.
      */
@@ -2286,7 +2430,7 @@ export interface RulesetRule {
     /**
      * The most recent update to this rule.
      */
-    lastUpdated?: string;
+    lastUpdated: string;
     /**
      * List parameters to configure how the rule generates logs.
      */
@@ -2298,7 +2442,7 @@ export interface RulesetRule {
     /**
      * Rule reference.
      */
-    ref: string;
+    ref?: string;
     /**
      * Version of the ruleset to deploy.
      */
@@ -2306,6 +2450,7 @@ export interface RulesetRule {
 }
 
 export interface RulesetRuleActionParameters {
+    algorithms?: outputs.RulesetRuleActionParametersAlgorithm[];
     automaticHttpsRewrites?: boolean;
     autominifies?: outputs.RulesetRuleActionParametersAutominify[];
     bic?: boolean;
@@ -2326,7 +2471,7 @@ export interface RulesetRuleActionParameters {
     hostHeader?: string;
     hotlinkProtection?: boolean;
     /**
-     * The ID of this resource.
+     * The identifier of this resource.
      */
     id?: string;
     increment?: number;
@@ -2361,6 +2506,13 @@ export interface RulesetRuleActionParameters {
     version: string;
 }
 
+export interface RulesetRuleActionParametersAlgorithm {
+    /**
+     * Name of the ruleset.
+     */
+    name: string;
+}
+
 export interface RulesetRuleActionParametersAutominify {
     css?: boolean;
     html?: boolean;
@@ -2369,7 +2521,7 @@ export interface RulesetRuleActionParametersAutominify {
 
 export interface RulesetRuleActionParametersBrowserTtl {
     default?: number;
-    mode: string;
+    mode?: string;
 }
 
 export interface RulesetRuleActionParametersCacheKey {
@@ -2415,14 +2567,14 @@ export interface RulesetRuleActionParametersCacheKeyCustomKeyUser {
 
 export interface RulesetRuleActionParametersEdgeTtl {
     default?: number;
-    mode: string;
+    mode?: string;
     statusCodeTtls?: outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl[];
 }
 
 export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
     statusCode?: number;
     statusCodeRanges?: outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange[];
-    value: number;
+    value?: number;
 }
 
 export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
@@ -2431,11 +2583,11 @@ export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange 
 }
 
 export interface RulesetRuleActionParametersFromList {
-    key: string;
+    key?: string;
     /**
-     * Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * Name of the ruleset.
      */
-    name: string;
+    name?: string;
 }
 
 export interface RulesetRuleActionParametersFromValue {
@@ -2452,7 +2604,7 @@ export interface RulesetRuleActionParametersFromValueTargetUrl {
 export interface RulesetRuleActionParametersHeader {
     expression?: string;
     /**
-     * Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * Name of the ruleset.
      */
     name?: string;
     operation?: string;
@@ -2471,37 +2623,27 @@ export interface RulesetRuleActionParametersOrigin {
 export interface RulesetRuleActionParametersOverrides {
     action?: string;
     categories?: outputs.RulesetRuleActionParametersOverridesCategory[];
-    /**
-     * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-     */
     enabled?: boolean;
     /**
      * List of rules to apply to the ruleset.
      */
     rules?: outputs.RulesetRuleActionParametersOverridesRule[];
     sensitivityLevel?: string;
-    status?: string;
 }
 
 export interface RulesetRuleActionParametersOverridesCategory {
     action?: string;
     category?: string;
-    /**
-     * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-     */
     enabled?: boolean;
-    status?: string;
 }
 
 export interface RulesetRuleActionParametersOverridesRule {
     /**
-     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
+     * Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`, `compressResponse`.
      */
     action?: string;
     /**
      * Whether the rule is active.
-     *
-     * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      */
     enabled?: boolean;
     /**
@@ -2510,7 +2652,6 @@ export interface RulesetRuleActionParametersOverridesRule {
     id?: string;
     scoreThreshold?: number;
     sensitivityLevel?: string;
-    status?: string;
 }
 
 export interface RulesetRuleActionParametersResponse {
@@ -2549,11 +2690,7 @@ export interface RulesetRuleExposedCredentialCheck {
 }
 
 export interface RulesetRuleLogging {
-    /**
-     * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-     */
     enabled?: boolean;
-    status?: string;
 }
 
 export interface RulesetRuleRatelimit {
@@ -2750,6 +2887,14 @@ export interface TeamsRuleRuleSettings {
      */
     addHeaders?: {[key: string]: string};
     /**
+     * Allow parent MSP accounts to enable bypass their children's rules.
+     */
+    allowChildBypass?: boolean;
+    /**
+     * Settings for auditing SSH usage.
+     */
+    auditSsh?: outputs.TeamsRuleRuleSettingsAuditSsh;
+    /**
      * Configure how browser isolation behaves.
      */
     bisoAdminControls?: outputs.TeamsRuleRuleSettingsBisoAdminControls;
@@ -2762,6 +2907,10 @@ export interface TeamsRuleRuleSettings {
      */
     blockPageReason?: string;
     /**
+     * Allow child MSP accounts to bypass their parent's rule.
+     */
+    bypassParentRule?: boolean;
+    /**
      * Configure how session check behaves.
      */
     checkSession?: outputs.TeamsRuleRuleSettingsCheckSession;
@@ -2773,6 +2922,10 @@ export interface TeamsRuleRuleSettings {
      * Disable DNSSEC validation (must be Allow rule).
      */
     insecureDisableDnssecValidation?: boolean;
+    /**
+     * Turns on IP category based filter on dns if the rule contains dns category checks.
+     */
+    ipCategories?: boolean;
     /**
      * Settings to forward layer 4 traffic.
      */
@@ -2793,6 +2946,10 @@ export interface TeamsRuleRuleSettings {
      * Configure untrusted certificate settings for this rule.
      */
     untrustedCert?: outputs.TeamsRuleRuleSettingsUntrustedCert;
+}
+
+export interface TeamsRuleRuleSettingsAuditSsh {
+    commandLogging: boolean;
 }
 
 export interface TeamsRuleRuleSettingsBisoAdminControls {
@@ -2828,7 +2985,7 @@ export interface TeamsRuleRuleSettingsPayloadLog {
 
 export interface TeamsRuleRuleSettingsUntrustedCert {
     /**
-     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
+     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`.
      */
     action?: string;
 }

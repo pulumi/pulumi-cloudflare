@@ -52,7 +52,7 @@ export class LogpushJob extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`.
+     * The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`.
      */
     public readonly dataset!: pulumi.Output<string>;
     /**
@@ -79,6 +79,18 @@ export class LogpushJob extends pulumi.CustomResource {
      * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
      */
     public readonly logpullOptions!: pulumi.Output<string | undefined>;
+    /**
+     * The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+     */
+    public readonly maxUploadBytes!: pulumi.Output<number | undefined>;
+    /**
+     * The maximum interval in seconds for log batches. Value must be between 30 and 300.
+     */
+    public readonly maxUploadIntervalSeconds!: pulumi.Output<number | undefined>;
+    /**
+     * The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+     */
+    public readonly maxUploadRecords!: pulumi.Output<number | undefined>;
     /**
      * The name of the logpush job to create.
      */
@@ -113,6 +125,9 @@ export class LogpushJob extends pulumi.CustomResource {
             resourceInputs["frequency"] = state ? state.frequency : undefined;
             resourceInputs["kind"] = state ? state.kind : undefined;
             resourceInputs["logpullOptions"] = state ? state.logpullOptions : undefined;
+            resourceInputs["maxUploadBytes"] = state ? state.maxUploadBytes : undefined;
+            resourceInputs["maxUploadIntervalSeconds"] = state ? state.maxUploadIntervalSeconds : undefined;
+            resourceInputs["maxUploadRecords"] = state ? state.maxUploadRecords : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["ownershipChallenge"] = state ? state.ownershipChallenge : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
@@ -132,6 +147,9 @@ export class LogpushJob extends pulumi.CustomResource {
             resourceInputs["frequency"] = args ? args.frequency : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["logpullOptions"] = args ? args.logpullOptions : undefined;
+            resourceInputs["maxUploadBytes"] = args ? args.maxUploadBytes : undefined;
+            resourceInputs["maxUploadIntervalSeconds"] = args ? args.maxUploadIntervalSeconds : undefined;
+            resourceInputs["maxUploadRecords"] = args ? args.maxUploadRecords : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["ownershipChallenge"] = args ? args.ownershipChallenge : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
@@ -150,7 +168,7 @@ export interface LogpushJobState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`.
+     * The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`.
      */
     dataset?: pulumi.Input<string>;
     /**
@@ -178,6 +196,18 @@ export interface LogpushJobState {
      */
     logpullOptions?: pulumi.Input<string>;
     /**
+     * The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+     */
+    maxUploadBytes?: pulumi.Input<number>;
+    /**
+     * The maximum interval in seconds for log batches. Value must be between 30 and 300.
+     */
+    maxUploadIntervalSeconds?: pulumi.Input<number>;
+    /**
+     * The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+     */
+    maxUploadRecords?: pulumi.Input<number>;
+    /**
      * The name of the logpush job to create.
      */
     name?: pulumi.Input<string>;
@@ -200,7 +230,7 @@ export interface LogpushJobArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`.
+     * The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`.
      */
     dataset: pulumi.Input<string>;
     /**
@@ -227,6 +257,18 @@ export interface LogpushJobArgs {
      * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
      */
     logpullOptions?: pulumi.Input<string>;
+    /**
+     * The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+     */
+    maxUploadBytes?: pulumi.Input<number>;
+    /**
+     * The maximum interval in seconds for log batches. Value must be between 30 and 300.
+     */
+    maxUploadIntervalSeconds?: pulumi.Input<number>;
+    /**
+     * The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+     */
+    maxUploadRecords?: pulumi.Input<number>;
     /**
      * The name of the logpush job to create.
      */

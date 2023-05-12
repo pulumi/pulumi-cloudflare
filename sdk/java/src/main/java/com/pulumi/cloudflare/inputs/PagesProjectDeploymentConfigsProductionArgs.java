@@ -83,6 +83,13 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
         return Optional.ofNullable(this.r2Buckets);
     }
 
+    @Import(name="secrets")
+    private @Nullable Output<Map<String,Object>> secrets;
+
+    public Optional<Output<Map<String,Object>>> secrets() {
+        return Optional.ofNullable(this.secrets);
+    }
+
     @Import(name="serviceBindings")
     private @Nullable Output<List<PagesProjectDeploymentConfigsProductionServiceBindingArgs>> serviceBindings;
 
@@ -109,6 +116,7 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
         this.failOpen = $.failOpen;
         this.kvNamespaces = $.kvNamespaces;
         this.r2Buckets = $.r2Buckets;
+        this.secrets = $.secrets;
         this.serviceBindings = $.serviceBindings;
         this.usageModel = $.usageModel;
     }
@@ -214,6 +222,15 @@ public final class PagesProjectDeploymentConfigsProductionArgs extends com.pulum
 
         public Builder r2Buckets(Map<String,Object> r2Buckets) {
             return r2Buckets(Output.of(r2Buckets));
+        }
+
+        public Builder secrets(@Nullable Output<Map<String,Object>> secrets) {
+            $.secrets = secrets;
+            return this;
+        }
+
+        public Builder secrets(Map<String,Object> secrets) {
+            return secrets(Output.of(secrets));
         }
 
         public Builder serviceBindings(@Nullable Output<List<PagesProjectDeploymentConfigsProductionServiceBindingArgs>> serviceBindings) {

@@ -16,7 +16,6 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Action;
         public readonly string? Category;
         public readonly bool? Enabled;
-        public readonly string? Status;
 
         [OutputConstructor]
         private RulesetRuleActionParametersOverridesCategory(
@@ -24,14 +23,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? category,
 
-            bool? enabled,
-
-            string? status)
+            bool? enabled)
         {
             Action = action;
             Category = category;
             Enabled = enabled;
-            Status = status;
         }
     }
 }

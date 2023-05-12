@@ -16,9 +16,6 @@ import javax.annotation.Nullable;
 /**
  * Provides the ability to manage Cloudflare Workers KV Namespace features.
  * 
- * &gt; This resource uses the Cloudflare account APIs. This requires setting the
- * `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
- * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -63,7 +60,7 @@ public class WorkersKvNamespace extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -77,7 +74,7 @@ public class WorkersKvNamespace extends com.pulumi.resources.CustomResource {
      * Title value of the Worker KV Namespace.
      * 
      */
-    @Export(name="title", type=String.class, parameters={})
+    @Export(name="title", refs={String.class}, tree="[0]")
     private Output<String> title;
 
     /**

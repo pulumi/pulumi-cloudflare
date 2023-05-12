@@ -20,10 +20,6 @@ import javax.annotation.Nullable;
  * schedule. Worker Cron Triggers are ideal for running periodic jobs for
  * maintenance or calling third-party APIs to collect up-to-date data.
  * 
- * &gt; This resource uses the Cloudflare account APIs. This requires setting the
- * `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument
- * if you do not explicitly set the resource level `account_id` value.
- * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -79,7 +75,7 @@ public class WorkerCronTrigger extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -93,7 +89,7 @@ public class WorkerCronTrigger extends com.pulumi.resources.CustomResource {
      * Cron expressions to execute the Worker script.
      * 
      */
-    @Export(name="schedules", type=List.class, parameters={String.class})
+    @Export(name="schedules", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> schedules;
 
     /**
@@ -107,7 +103,7 @@ public class WorkerCronTrigger extends com.pulumi.resources.CustomResource {
      * Worker script to target for the schedules.
      * 
      */
-    @Export(name="scriptName", type=String.class, parameters={})
+    @Export(name="scriptName", refs={String.class}, tree="[0]")
     private Output<String> scriptName;
 
     /**

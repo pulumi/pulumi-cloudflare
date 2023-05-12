@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
     private @Nullable Integer statusCode;
     private @Nullable List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRanges;
-    private Integer value;
+    private @Nullable Integer value;
 
     private RulesetRuleActionParametersEdgeTtlStatusCodeTtl() {}
     public Optional<Integer> statusCode() {
@@ -24,8 +24,8 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
     public List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRanges() {
         return this.statusCodeRanges == null ? List.of() : this.statusCodeRanges;
     }
-    public Integer value() {
-        return this.value;
+    public Optional<Integer> value() {
+        return Optional.ofNullable(this.value);
     }
 
     public static Builder builder() {
@@ -39,7 +39,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
     public static final class Builder {
         private @Nullable Integer statusCode;
         private @Nullable List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRanges;
-        private Integer value;
+        private @Nullable Integer value;
         public Builder() {}
         public Builder(RulesetRuleActionParametersEdgeTtlStatusCodeTtl defaults) {
     	      Objects.requireNonNull(defaults);
@@ -62,8 +62,8 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
             return statusCodeRanges(List.of(statusCodeRanges));
         }
         @CustomType.Setter
-        public Builder value(Integer value) {
-            this.value = Objects.requireNonNull(value);
+        public Builder value(@Nullable Integer value) {
+            this.value = value;
             return this;
         }
         public RulesetRuleActionParametersEdgeTtlStatusCodeTtl build() {

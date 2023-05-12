@@ -12,6 +12,14 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("algorithms")]
+        private InputList<Inputs.RulesetRuleActionParametersAlgorithmGetArgs>? _algorithms;
+        public InputList<Inputs.RulesetRuleActionParametersAlgorithmGetArgs> Algorithms
+        {
+            get => _algorithms ?? (_algorithms = new InputList<Inputs.RulesetRuleActionParametersAlgorithmGetArgs>());
+            set => _algorithms = value;
+        }
+
         [Input("automaticHttpsRewrites")]
         public Input<bool>? AutomaticHttpsRewrites { get; set; }
 
@@ -85,7 +93,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? HotlinkProtection { get; set; }
 
         /// <summary>
-        /// The ID of this resource.
+        /// The identifier of this resource.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

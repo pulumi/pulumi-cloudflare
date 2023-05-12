@@ -49,6 +49,21 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
     }
 
     /**
+     * When set to true, users skip the identity provider selection step during login.
+     * 
+     */
+    @Import(name="autoRedirectToIdentity")
+    private @Nullable Output<Boolean> autoRedirectToIdentity;
+
+    /**
+     * @return When set to true, users skip the identity provider selection step during login.
+     * 
+     */
+    public Optional<Output<Boolean>> autoRedirectToIdentity() {
+        return Optional.ofNullable(this.autoRedirectToIdentity);
+    }
+
+    /**
      * When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
      * 
      */
@@ -86,6 +101,21 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
     }
 
     /**
+     * A description of the reason why the UI read only field is being toggled.
+     * 
+     */
+    @Import(name="uiReadOnlyToggleReason")
+    private @Nullable Output<String> uiReadOnlyToggleReason;
+
+    /**
+     * @return A description of the reason why the UI read only field is being toggled.
+     * 
+     */
+    public Optional<Output<String>> uiReadOnlyToggleReason() {
+        return Optional.ofNullable(this.uiReadOnlyToggleReason);
+    }
+
+    /**
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
      * 
      */
@@ -120,9 +150,11 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
     private AccessOrganizationState(AccessOrganizationState $) {
         this.accountId = $.accountId;
         this.authDomain = $.authDomain;
+        this.autoRedirectToIdentity = $.autoRedirectToIdentity;
         this.isUiReadOnly = $.isUiReadOnly;
         this.loginDesigns = $.loginDesigns;
         this.name = $.name;
+        this.uiReadOnlyToggleReason = $.uiReadOnlyToggleReason;
         this.userSeatExpirationInactiveTime = $.userSeatExpirationInactiveTime;
         this.zoneId = $.zoneId;
     }
@@ -188,6 +220,27 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param autoRedirectToIdentity When set to true, users skip the identity provider selection step during login.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRedirectToIdentity(@Nullable Output<Boolean> autoRedirectToIdentity) {
+            $.autoRedirectToIdentity = autoRedirectToIdentity;
+            return this;
+        }
+
+        /**
+         * @param autoRedirectToIdentity When set to true, users skip the identity provider selection step during login.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRedirectToIdentity(Boolean autoRedirectToIdentity) {
+            return autoRedirectToIdentity(Output.of(autoRedirectToIdentity));
+        }
+
+        /**
          * @param isUiReadOnly When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
          * 
          * @return builder
@@ -240,6 +293,27 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param uiReadOnlyToggleReason A description of the reason why the UI read only field is being toggled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uiReadOnlyToggleReason(@Nullable Output<String> uiReadOnlyToggleReason) {
+            $.uiReadOnlyToggleReason = uiReadOnlyToggleReason;
+            return this;
+        }
+
+        /**
+         * @param uiReadOnlyToggleReason A description of the reason why the UI read only field is being toggled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uiReadOnlyToggleReason(String uiReadOnlyToggleReason) {
+            return uiReadOnlyToggleReason(Output.of(uiReadOnlyToggleReason));
         }
 
         /**

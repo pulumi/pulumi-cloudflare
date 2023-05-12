@@ -70,7 +70,7 @@ public class TeamsList extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -84,7 +84,7 @@ public class TeamsList extends com.pulumi.resources.CustomResource {
      * The description of the teams list.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -98,7 +98,7 @@ public class TeamsList extends com.pulumi.resources.CustomResource {
      * The items of the teams list.
      * 
      */
-    @Export(name="items", type=List.class, parameters={String.class})
+    @Export(name="items", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> items;
 
     /**
@@ -112,7 +112,7 @@ public class TeamsList extends com.pulumi.resources.CustomResource {
      * Name of the teams list.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -126,7 +126,7 @@ public class TeamsList extends com.pulumi.resources.CustomResource {
      * The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

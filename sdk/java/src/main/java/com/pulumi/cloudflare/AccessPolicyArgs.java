@@ -82,16 +82,14 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      * 
      */
     @Import(name="excludes")
     private @Nullable Output<List<AccessPolicyExcludeArgs>> excludes;
 
     /**
-     * @return A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * @return A series of access conditions, see Access Groups.
      * 
      */
     public Optional<Output<List<AccessPolicyExcludeArgs>>> excludes() {
@@ -99,20 +97,33 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      * 
      */
     @Import(name="includes", required=true)
     private Output<List<AccessPolicyIncludeArgs>> includes;
 
     /**
-     * @return A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * @return A series of access conditions, see Access Groups.
      * 
      */
     public Output<List<AccessPolicyIncludeArgs>> includes() {
         return this.includes;
+    }
+
+    /**
+     * Require this application to be served in an isolated browser for users matching this policy.
+     * 
+     */
+    @Import(name="isolationRequired")
+    private @Nullable Output<Boolean> isolationRequired;
+
+    /**
+     * @return Require this application to be served in an isolated browser for users matching this policy.
+     * 
+     */
+    public Optional<Output<Boolean>> isolationRequired() {
+        return Optional.ofNullable(this.isolationRequired);
     }
 
     /**
@@ -176,16 +187,14 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      * 
      */
     @Import(name="requires")
     private @Nullable Output<List<AccessPolicyRequireArgs>> requires;
 
     /**
-     * @return A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * @return A series of access conditions, see Access Groups.
      * 
      */
     public Optional<Output<List<AccessPolicyRequireArgs>>> requires() {
@@ -217,6 +226,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         this.decision = $.decision;
         this.excludes = $.excludes;
         this.includes = $.includes;
+        this.isolationRequired = $.isolationRequired;
         this.name = $.name;
         this.precedence = $.precedence;
         this.purposeJustificationPrompt = $.purposeJustificationPrompt;
@@ -329,8 +339,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param excludes A series of access conditions, see [Access
-         * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+         * @param excludes A series of access conditions, see Access Groups.
          * 
          * @return builder
          * 
@@ -341,8 +350,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param excludes A series of access conditions, see [Access
-         * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+         * @param excludes A series of access conditions, see Access Groups.
          * 
          * @return builder
          * 
@@ -352,8 +360,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param excludes A series of access conditions, see [Access
-         * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+         * @param excludes A series of access conditions, see Access Groups.
          * 
          * @return builder
          * 
@@ -363,8 +370,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includes A series of access conditions, see [Access
-         * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+         * @param includes A series of access conditions, see Access Groups.
          * 
          * @return builder
          * 
@@ -375,8 +381,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includes A series of access conditions, see [Access
-         * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+         * @param includes A series of access conditions, see Access Groups.
          * 
          * @return builder
          * 
@@ -386,14 +391,34 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includes A series of access conditions, see [Access
-         * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+         * @param includes A series of access conditions, see Access Groups.
          * 
          * @return builder
          * 
          */
         public Builder includes(AccessPolicyIncludeArgs... includes) {
             return includes(List.of(includes));
+        }
+
+        /**
+         * @param isolationRequired Require this application to be served in an isolated browser for users matching this policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolationRequired(@Nullable Output<Boolean> isolationRequired) {
+            $.isolationRequired = isolationRequired;
+            return this;
+        }
+
+        /**
+         * @param isolationRequired Require this application to be served in an isolated browser for users matching this policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolationRequired(Boolean isolationRequired) {
+            return isolationRequired(Output.of(isolationRequired));
         }
 
         /**
@@ -481,8 +506,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requires A series of access conditions, see [Access
-         * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+         * @param requires A series of access conditions, see Access Groups.
          * 
          * @return builder
          * 
@@ -493,8 +517,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requires A series of access conditions, see [Access
-         * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+         * @param requires A series of access conditions, see Access Groups.
          * 
          * @return builder
          * 
@@ -504,8 +527,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requires A series of access conditions, see [Access
-         * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+         * @param requires A series of access conditions, see Access Groups.
          * 
          * @return builder
          * 

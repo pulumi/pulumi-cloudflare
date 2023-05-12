@@ -22,8 +22,33 @@ namespace Pulumi.Cloudflare
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// {{tffile "examples/data-sources/cloudflare_zone/data-source.tf"}}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZone = Cloudflare.GetZone.Invoke(new()
+        ///     {
+        ///         Name = "example.com",
+        ///     });
+        /// 
+        ///     var exampleRecord = new Cloudflare.Record("exampleRecord", new()
+        ///     {
+        ///         ZoneId = exampleZone.Apply(getZoneResult =&gt; getZoneResult.Id),
+        ///         Name = "www",
+        ///         Value = "203.0.113.1",
+        ///         Type = "A",
+        ///         Proxied = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetZoneResult> InvokeAsync(GetZoneArgs? args = null, InvokeOptions? options = null)
@@ -40,8 +65,33 @@ namespace Pulumi.Cloudflare
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// {{tffile "examples/data-sources/cloudflare_zone/data-source.tf"}}
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZone = Cloudflare.GetZone.Invoke(new()
+        ///     {
+        ///         Name = "example.com",
+        ///     });
+        /// 
+        ///     var exampleRecord = new Cloudflare.Record("exampleRecord", new()
+        ///     {
+        ///         ZoneId = exampleZone.Apply(getZoneResult =&gt; getZoneResult.Id),
+        ///         Name = "www",
+        ///         Value = "203.0.113.1",
+        ///         Type = "A",
+        ///         Proxied = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetZoneResult> Invoke(GetZoneInvokeArgs? args = null, InvokeOptions? options = null)

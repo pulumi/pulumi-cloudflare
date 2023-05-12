@@ -40,7 +40,9 @@ import (
 //				return err
 //			}
 //			_, err = cloudflare.NewPagesProject(ctx, "buildConfig", &cloudflare.PagesProjectArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				AccountId:        pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:             pulumi.String("this-is-my-project-01"),
+//				ProductionBranch: pulumi.String("main"),
 //				BuildConfig: &cloudflare.PagesProjectBuildConfigArgs{
 //					BuildCommand:      pulumi.String("npm run build"),
 //					DestinationDir:    pulumi.String("build"),
@@ -48,8 +50,6 @@ import (
 //					WebAnalyticsTag:   pulumi.String("cee1c73f6e4743d0b5e6bb1a0bcaabcc"),
 //					WebAnalyticsToken: pulumi.String("021e1057c18547eca7b79f2516f06o7x"),
 //				},
-//				Name:             pulumi.String("this-is-my-project-01"),
-//				ProductionBranch: pulumi.String("main"),
 //			})
 //			if err != nil {
 //				return err
@@ -59,83 +59,90 @@ import (
 //				Name:             pulumi.String("this-is-my-project-01"),
 //				ProductionBranch: pulumi.String("main"),
 //				Source: &cloudflare.PagesProjectSourceArgs{
+//					Type: pulumi.String("github"),
 //					Config: &cloudflare.PagesProjectSourceConfigArgs{
-//						DeploymentsEnabled: pulumi.Bool(true),
-//						Owner:              pulumi.String("cloudflare"),
-//						PrCommentsEnabled:  pulumi.Bool(true),
-//						PreviewBranchExcludes: pulumi.StringArray{
-//							pulumi.String("main"),
-//							pulumi.String("prod"),
-//						},
+//						Owner:                       pulumi.String("cloudflare"),
+//						RepoName:                    pulumi.String("ninjakittens"),
+//						ProductionBranch:            pulumi.String("main"),
+//						PrCommentsEnabled:           pulumi.Bool(true),
+//						DeploymentsEnabled:          pulumi.Bool(true),
+//						ProductionDeploymentEnabled: pulumi.Bool(true),
+//						PreviewDeploymentSetting:    pulumi.String("custom"),
 //						PreviewBranchIncludes: pulumi.StringArray{
 //							pulumi.String("dev"),
 //							pulumi.String("preview"),
 //						},
-//						PreviewDeploymentSetting:    pulumi.String("custom"),
-//						ProductionBranch:            pulumi.String("main"),
-//						ProductionDeploymentEnabled: pulumi.Bool(true),
-//						RepoName:                    pulumi.String("ninjakittens"),
+//						PreviewBranchExcludes: pulumi.StringArray{
+//							pulumi.String("main"),
+//							pulumi.String("prod"),
+//						},
 //					},
-//					Type: pulumi.String("github"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cloudflare.NewPagesProject(ctx, "deploymentConfigs", &cloudflare.PagesProjectArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				AccountId:        pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:             pulumi.String("this-is-my-project-01"),
+//				ProductionBranch: pulumi.String("main"),
 //				DeploymentConfigs: &cloudflare.PagesProjectDeploymentConfigsArgs{
 //					Preview: &cloudflare.PagesProjectDeploymentConfigsPreviewArgs{
+//						EnvironmentVariables: pulumi.AnyMap{
+//							"ENVIRONMENT": pulumi.Any("preview"),
+//						},
+//						Secrets: pulumi.AnyMap{
+//							"TURNSTILE_SECRET": pulumi.Any(_var.Turnstile_secret),
+//						},
+//						KvNamespaces: pulumi.AnyMap{
+//							"KV_BINDING": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
+//						},
+//						DurableObjectNamespaces: pulumi.AnyMap{
+//							"DO_BINDING": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
+//						},
+//						R2Buckets: pulumi.AnyMap{
+//							"R2_BINDING": pulumi.Any("some-bucket"),
+//						},
+//						D1Databases: pulumi.AnyMap{
+//							"D1_BINDING": pulumi.Any("445e2955-951a-4358-a35b-a4d0c813f63"),
+//						},
 //						CompatibilityDate: pulumi.String("2022-08-15"),
 //						CompatibilityFlags: pulumi.StringArray{
 //							pulumi.String("preview_flag"),
 //						},
-//						D1Databases: pulumi.AnyMap{
-//							"D1BINDING": pulumi.Any("445e2955-951a-4358-a35b-a4d0c813f63"),
-//						},
-//						DurableObjectNamespaces: pulumi.AnyMap{
-//							"DOBINDING": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
-//						},
-//						EnvironmentVariables: pulumi.AnyMap{
-//							"ENVIRONMENT": pulumi.Any("preview"),
-//						},
-//						KvNamespaces: pulumi.AnyMap{
-//							"KVBINDING": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
-//						},
-//						R2Buckets: pulumi.AnyMap{
-//							"R2BINDING": pulumi.Any("some-bucket"),
-//						},
 //					},
 //					Production: &cloudflare.PagesProjectDeploymentConfigsProductionArgs{
+//						EnvironmentVariables: pulumi.AnyMap{
+//							"ENVIRONMENT": pulumi.Any("production"),
+//							"OTHER_VALUE": pulumi.Any("other value"),
+//						},
+//						Secrets: pulumi.AnyMap{
+//							"TURNSTILE_SECRET":       pulumi.Any(_var.Turnstile_secret),
+//							"TURNSTILE_INVIS_SECRET": pulumi.Any(_var.Turnstile_invisible_secret),
+//						},
+//						KvNamespaces: pulumi.AnyMap{
+//							"KV_BINDING_1": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
+//							"KV_BINDING_2": pulumi.Any("3cdca5f8bb22bc390deee10ebbb36be5"),
+//						},
+//						DurableObjectNamespaces: pulumi.AnyMap{
+//							"DO_BINDING_1": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
+//							"DO_BINDING_2": pulumi.Any("3cdca5f8bb22bc390deee10ebbb36be5"),
+//						},
+//						R2Buckets: pulumi.AnyMap{
+//							"R2_BINDING_1": pulumi.Any("some-bucket"),
+//							"R2_BINDING_2": pulumi.Any("other-bucket"),
+//						},
+//						D1Databases: pulumi.AnyMap{
+//							"D1_BINDING_1": pulumi.Any("445e2955-951a-4358-a35b-a4d0c813f63"),
+//							"D1_BINDING_2": pulumi.Any("a399414b-c697-409a-a688-377db6433cd9"),
+//						},
 //						CompatibilityDate: pulumi.String("2022-08-16"),
 //						CompatibilityFlags: pulumi.StringArray{
 //							pulumi.String("production_flag"),
 //							pulumi.String("second flag"),
 //						},
-//						D1Databases: pulumi.AnyMap{
-//							"D1BINDING1": pulumi.Any("445e2955-951a-4358-a35b-a4d0c813f63"),
-//							"D1BINDING2": pulumi.Any("a399414b-c697-409a-a688-377db6433cd9"),
-//						},
-//						DurableObjectNamespaces: pulumi.AnyMap{
-//							"DOBINDING1": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
-//							"DOBINDING2": pulumi.Any("3cdca5f8bb22bc390deee10ebbb36be5"),
-//						},
-//						EnvironmentVariables: pulumi.AnyMap{
-//							"ENVIRONMENT": pulumi.Any("production"),
-//							"OTHERVALUE":  pulumi.Any("other value"),
-//						},
-//						KvNamespaces: pulumi.AnyMap{
-//							"KVBINDING1": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
-//							"KVBINDING2": pulumi.Any("3cdca5f8bb22bc390deee10ebbb36be5"),
-//						},
-//						R2Buckets: pulumi.AnyMap{
-//							"R2BINDING1": pulumi.Any("some-bucket"),
-//							"R2BINDING2": pulumi.Any("other-bucket"),
-//						},
 //					},
 //				},
-//				Name:             pulumi.String("this-is-my-project-01"),
-//				ProductionBranch: pulumi.String("main"),
 //			})
 //			if err != nil {
 //				return err

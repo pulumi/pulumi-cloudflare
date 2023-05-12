@@ -86,6 +86,14 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import cloudflare:index/loadBalancerPool:LoadBalancerPool example <account_id>/<load_balancer_poool_id>
+//
+// ```
 type LoadBalancerPool struct {
 	pulumi.CustomResourceState
 

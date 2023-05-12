@@ -34,7 +34,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`.
+        /// The kind of the dataset to use with the logpush job. Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.
         /// </summary>
         [Output("dataset")]
         public Output<string> Dataset { get; private set; } = null!;
@@ -74,6 +74,24 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("logpullOptions")]
         public Output<string?> LogpullOptions { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+        /// </summary>
+        [Output("maxUploadBytes")]
+        public Output<int?> MaxUploadBytes { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum interval in seconds for log batches. Value must be between 30 and 300.
+        /// </summary>
+        [Output("maxUploadIntervalSeconds")]
+        public Output<int?> MaxUploadIntervalSeconds { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+        /// </summary>
+        [Output("maxUploadRecords")]
+        public Output<int?> MaxUploadRecords { get; private set; } = null!;
 
         /// <summary>
         /// The name of the logpush job to create.
@@ -146,7 +164,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`.
+        /// The kind of the dataset to use with the logpush job. Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.
         /// </summary>
         [Input("dataset", required: true)]
         public Input<string> Dataset { get; set; } = null!;
@@ -188,6 +206,24 @@ namespace Pulumi.Cloudflare
         public Input<string>? LogpullOptions { get; set; }
 
         /// <summary>
+        /// The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+        /// </summary>
+        [Input("maxUploadBytes")]
+        public Input<int>? MaxUploadBytes { get; set; }
+
+        /// <summary>
+        /// The maximum interval in seconds for log batches. Value must be between 30 and 300.
+        /// </summary>
+        [Input("maxUploadIntervalSeconds")]
+        public Input<int>? MaxUploadIntervalSeconds { get; set; }
+
+        /// <summary>
+        /// The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+        /// </summary>
+        [Input("maxUploadRecords")]
+        public Input<int>? MaxUploadRecords { get; set; }
+
+        /// <summary>
         /// The name of the logpush job to create.
         /// </summary>
         [Input("name")]
@@ -220,7 +256,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`.
+        /// The kind of the dataset to use with the logpush job. Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.
         /// </summary>
         [Input("dataset")]
         public Input<string>? Dataset { get; set; }
@@ -260,6 +296,24 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("logpullOptions")]
         public Input<string>? LogpullOptions { get; set; }
+
+        /// <summary>
+        /// The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+        /// </summary>
+        [Input("maxUploadBytes")]
+        public Input<int>? MaxUploadBytes { get; set; }
+
+        /// <summary>
+        /// The maximum interval in seconds for log batches. Value must be between 30 and 300.
+        /// </summary>
+        [Input("maxUploadIntervalSeconds")]
+        public Input<int>? MaxUploadIntervalSeconds { get; set; }
+
+        /// <summary>
+        /// The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+        /// </summary>
+        [Input("maxUploadRecords")]
+        public Input<int>? MaxUploadRecords { get; set; }
 
         /// <summary>
         /// The name of the logpush job to create.

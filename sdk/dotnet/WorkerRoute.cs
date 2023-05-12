@@ -12,14 +12,11 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare worker route resource. A route will also require a `cloudflare.WorkerScript`.
     /// 
-    /// &gt; This resource uses the Cloudflare account APIs. This requires setting the
-    /// `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument
-    /// if you do not explicitly set the resource level `account_id` value.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
