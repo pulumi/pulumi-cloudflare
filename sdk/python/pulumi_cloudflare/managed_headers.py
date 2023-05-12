@@ -134,6 +134,10 @@ class ManagedHeaders(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        The [Cloudflare Managed Headers](https://developers.cloudflare.com/rules/transform/managed-transforms/)
+        allows you to add or remove some predefined headers to one's
+        requests or origin responses.
+
         ## Example Usage
 
         ```python
@@ -152,10 +156,6 @@ class ManagedHeaders(pulumi.CustomResource):
             )],
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
-
-        ## Import
-
-        Import is not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -170,6 +170,10 @@ class ManagedHeaders(pulumi.CustomResource):
                  args: ManagedHeadersArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The [Cloudflare Managed Headers](https://developers.cloudflare.com/rules/transform/managed-transforms/)
+        allows you to add or remove some predefined headers to one's
+        requests or origin responses.
+
         ## Example Usage
 
         ```python
@@ -188,10 +192,6 @@ class ManagedHeaders(pulumi.CustomResource):
             )],
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
-
-        ## Import
-
-        Import is not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param ManagedHeadersArgs args: The arguments to use to populate this resource's properties.

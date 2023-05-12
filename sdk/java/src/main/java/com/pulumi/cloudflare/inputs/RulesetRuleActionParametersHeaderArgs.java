@@ -23,14 +23,14 @@ public final class RulesetRuleActionParametersHeaderArgs extends com.pulumi.reso
     }
 
     /**
-     * Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * Name of the ruleset.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * @return Name of the ruleset.
      * 
      */
     public Optional<Output<String>> name() {
@@ -88,7 +88,7 @@ public final class RulesetRuleActionParametersHeaderArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+         * @param name Name of the ruleset.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class RulesetRuleActionParametersHeaderArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+         * @param name Name of the ruleset.
          * 
          * @return builder
          * 

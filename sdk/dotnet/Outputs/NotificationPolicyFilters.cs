@@ -38,6 +38,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Limits;
         /// <summary>
+        /// Megabits per second threshold for dos alert.
+        /// </summary>
+        public readonly ImmutableArray<string> MegabitsPerSeconds;
+        /// <summary>
         /// Health status to alert on for pool or origin.
         /// </summary>
         public readonly ImmutableArray<string> NewHealths;
@@ -97,6 +101,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> limits,
 
+            ImmutableArray<string> megabitsPerSeconds,
+
             ImmutableArray<string> newHealths,
 
             ImmutableArray<string> packetsPerSeconds,
@@ -127,6 +133,7 @@ namespace Pulumi.Cloudflare.Outputs
             HealthCheckIds = healthCheckIds;
             InputIds = inputIds;
             Limits = limits;
+            MegabitsPerSeconds = megabitsPerSeconds;
             NewHealths = newHealths;
             PacketsPerSeconds = packetsPerSeconds;
             PoolIds = poolIds;

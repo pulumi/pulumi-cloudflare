@@ -42,6 +42,11 @@ public final class NotificationPolicyFilters {
      */
     private @Nullable List<String> limits;
     /**
+     * @return Megabits per second threshold for dos alert.
+     * 
+     */
+    private @Nullable List<String> megabitsPerSeconds;
+    /**
      * @return Health status to alert on for pool or origin.
      * 
      */
@@ -142,6 +147,13 @@ public final class NotificationPolicyFilters {
         return this.limits == null ? List.of() : this.limits;
     }
     /**
+     * @return Megabits per second threshold for dos alert.
+     * 
+     */
+    public List<String> megabitsPerSeconds() {
+        return this.megabitsPerSeconds == null ? List.of() : this.megabitsPerSeconds;
+    }
+    /**
      * @return Health status to alert on for pool or origin.
      * 
      */
@@ -237,6 +249,7 @@ public final class NotificationPolicyFilters {
         private @Nullable List<String> healthCheckIds;
         private @Nullable List<String> inputIds;
         private @Nullable List<String> limits;
+        private @Nullable List<String> megabitsPerSeconds;
         private @Nullable List<String> newHealths;
         private @Nullable List<String> packetsPerSeconds;
         private @Nullable List<String> poolIds;
@@ -258,6 +271,7 @@ public final class NotificationPolicyFilters {
     	      this.healthCheckIds = defaults.healthCheckIds;
     	      this.inputIds = defaults.inputIds;
     	      this.limits = defaults.limits;
+    	      this.megabitsPerSeconds = defaults.megabitsPerSeconds;
     	      this.newHealths = defaults.newHealths;
     	      this.packetsPerSeconds = defaults.packetsPerSeconds;
     	      this.poolIds = defaults.poolIds;
@@ -319,6 +333,14 @@ public final class NotificationPolicyFilters {
         }
         public Builder limits(String... limits) {
             return limits(List.of(limits));
+        }
+        @CustomType.Setter
+        public Builder megabitsPerSeconds(@Nullable List<String> megabitsPerSeconds) {
+            this.megabitsPerSeconds = megabitsPerSeconds;
+            return this;
+        }
+        public Builder megabitsPerSeconds(String... megabitsPerSeconds) {
+            return megabitsPerSeconds(List.of(megabitsPerSeconds));
         }
         @CustomType.Setter
         public Builder newHealths(@Nullable List<String> newHealths) {
@@ -424,6 +446,7 @@ public final class NotificationPolicyFilters {
             o.healthCheckIds = healthCheckIds;
             o.inputIds = inputIds;
             o.limits = limits;
+            o.megabitsPerSeconds = megabitsPerSeconds;
             o.newHealths = newHealths;
             o.packetsPerSeconds = packetsPerSeconds;
             o.poolIds = poolIds;

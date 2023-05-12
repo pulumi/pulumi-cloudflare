@@ -23,11 +23,11 @@ public final class RulesetRuleActionParametersBrowserTtlArgs extends com.pulumi.
         return Optional.ofNullable(this.default_);
     }
 
-    @Import(name="mode", required=true)
-    private Output<String> mode;
+    @Import(name="mode")
+    private @Nullable Output<String> mode;
 
-    public Output<String> mode() {
-        return this.mode;
+    public Optional<Output<String>> mode() {
+        return Optional.ofNullable(this.mode);
     }
 
     private RulesetRuleActionParametersBrowserTtlArgs() {}
@@ -64,7 +64,7 @@ public final class RulesetRuleActionParametersBrowserTtlArgs extends com.pulumi.
             return default_(Output.of(default_));
         }
 
-        public Builder mode(Output<String> mode) {
+        public Builder mode(@Nullable Output<String> mode) {
             $.mode = mode;
             return this;
         }
@@ -74,7 +74,6 @@ public final class RulesetRuleActionParametersBrowserTtlArgs extends com.pulumi.
         }
 
         public RulesetRuleActionParametersBrowserTtlArgs build() {
-            $.mode = Objects.requireNonNull($.mode, "expected parameter 'mode' to be non-null");
             return $;
         }
     }

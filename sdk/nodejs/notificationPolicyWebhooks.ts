@@ -81,7 +81,7 @@ export class NotificationPolicyWebhooks extends pulumi.CustomResource {
     public readonly secret!: pulumi.Output<string | undefined>;
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * The URL of the webhook destinations.
+     * The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly url!: pulumi.Output<string | undefined>;
 
@@ -158,7 +158,7 @@ export interface NotificationPolicyWebhooksState {
     secret?: pulumi.Input<string>;
     type?: pulumi.Input<string>;
     /**
-     * The URL of the webhook destinations.
+     * The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
      */
     url?: pulumi.Input<string>;
 }
@@ -180,7 +180,7 @@ export interface NotificationPolicyWebhooksArgs {
      */
     secret?: pulumi.Input<string>;
     /**
-     * The URL of the webhook destinations.
+     * The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
      */
     url?: pulumi.Input<string>;
 }

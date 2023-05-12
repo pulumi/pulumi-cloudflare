@@ -22,6 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool? FailOpen;
         public readonly ImmutableDictionary<string, object>? KvNamespaces;
         public readonly ImmutableDictionary<string, object>? R2Buckets;
+        public readonly ImmutableDictionary<string, object>? Secrets;
         public readonly ImmutableArray<Outputs.PagesProjectDeploymentConfigsProductionServiceBinding> ServiceBindings;
         public readonly string? UsageModel;
 
@@ -45,6 +46,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableDictionary<string, object>? r2Buckets,
 
+            ImmutableDictionary<string, object>? secrets,
+
             ImmutableArray<Outputs.PagesProjectDeploymentConfigsProductionServiceBinding> serviceBindings,
 
             string? usageModel)
@@ -58,6 +61,7 @@ namespace Pulumi.Cloudflare.Outputs
             FailOpen = failOpen;
             KvNamespaces = kvNamespaces;
             R2Buckets = r2Buckets;
+            Secrets = secrets;
             ServiceBindings = serviceBindings;
             UsageModel = usageModel;
         }

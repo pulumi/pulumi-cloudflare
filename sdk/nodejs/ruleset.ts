@@ -50,23 +50,23 @@ export class Ruleset extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`.
+     * The account identifier to target for the resource.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
      * Brief summary of the ruleset and its intended use.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
      */
     public readonly kind!: pulumi.Output<string>;
     /**
-     * Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * Name of the ruleset.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `httpResponseCompression`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
      */
     public readonly phase!: pulumi.Output<string>;
     /**
@@ -78,7 +78,7 @@ export class Ruleset extends pulumi.CustomResource {
      */
     public readonly shareableEntitlementName!: pulumi.Output<string | undefined>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
+     * The zone identifier to target for the resource.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
 
@@ -133,7 +133,7 @@ export class Ruleset extends pulumi.CustomResource {
  */
 export interface RulesetState {
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -145,11 +145,11 @@ export interface RulesetState {
      */
     kind?: pulumi.Input<string>;
     /**
-     * Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * Name of the ruleset.
      */
     name?: pulumi.Input<string>;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `httpResponseCompression`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
      */
     phase?: pulumi.Input<string>;
     /**
@@ -161,7 +161,7 @@ export interface RulesetState {
      */
     shareableEntitlementName?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -171,7 +171,7 @@ export interface RulesetState {
  */
 export interface RulesetArgs {
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -183,11 +183,11 @@ export interface RulesetArgs {
      */
     kind: pulumi.Input<string>;
     /**
-     * Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * Name of the ruleset.
      */
     name: pulumi.Input<string>;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `httpResponseCompression`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
      */
     phase: pulumi.Input<string>;
     /**
@@ -199,7 +199,7 @@ export interface RulesetArgs {
      */
     shareableEntitlementName?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }

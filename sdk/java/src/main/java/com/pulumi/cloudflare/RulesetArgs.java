@@ -18,14 +18,14 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
     public static final RulesetArgs Empty = new RulesetArgs();
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * The account identifier to target for the resource.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return The account identifier to target for the resource.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -63,14 +63,14 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * Name of the ruleset.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * @return Name of the ruleset.
      * 
      */
     public Output<String> name() {
@@ -78,14 +78,14 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `http_response_compression`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
      * 
      */
     @Import(name="phase", required=true)
     private Output<String> phase;
 
     /**
-     * @return Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
+     * @return Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `http_response_compression`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
      * 
      */
     public Output<String> phase() {
@@ -123,14 +123,14 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
+     * The zone identifier to target for the resource.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
+     * @return The zone identifier to target for the resource.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -169,7 +169,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+         * @param name Name of the ruleset.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+         * @param name Name of the ruleset.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param phase Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
+         * @param phase Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `http_response_compression`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param phase Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
+         * @param phase Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `http_response_compression`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The zone identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The zone identifier to target for the resource.
          * 
          * @return builder
          * 

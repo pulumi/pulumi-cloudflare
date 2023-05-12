@@ -148,6 +148,12 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.AccessPolicyInclude>> Includes { get; private set; } = null!;
 
         /// <summary>
+        /// Require this application to be served in an isolated browser for users matching this policy.
+        /// </summary>
+        [Output("isolationRequired")]
+        public Output<bool?> IsolationRequired { get; private set; } = null!;
+
+        /// <summary>
         /// Friendly name of the Access Policy.
         /// </summary>
         [Output("name")]
@@ -283,6 +289,12 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// Require this application to be served in an isolated browser for users matching this policy.
+        /// </summary>
+        [Input("isolationRequired")]
+        public Input<bool>? IsolationRequired { get; set; }
+
+        /// <summary>
         /// Friendly name of the Access Policy.
         /// </summary>
         [Input("name", required: true)]
@@ -384,6 +396,12 @@ namespace Pulumi.Cloudflare
             get => _includes ?? (_includes = new InputList<Inputs.AccessPolicyIncludeGetArgs>());
             set => _includes = value;
         }
+
+        /// <summary>
+        /// Require this application to be served in an isolated browser for users matching this policy.
+        /// </summary>
+        [Input("isolationRequired")]
+        public Input<bool>? IsolationRequired { get; set; }
 
         /// <summary>
         /// Friendly name of the Access Policy.

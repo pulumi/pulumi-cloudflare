@@ -57,6 +57,8 @@ type Tunnel struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Usable CNAME for accessing the Tunnel.
 	Cname pulumi.StringOutput `pulumi:"cname"`
+	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+	ConfigSrc pulumi.StringPtrOutput `pulumi:"configSrc"`
 	// A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringOutput `pulumi:"name"`
 	// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
@@ -115,6 +117,8 @@ type tunnelState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Usable CNAME for accessing the Tunnel.
 	Cname *string `pulumi:"cname"`
+	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+	ConfigSrc *string `pulumi:"configSrc"`
 	// A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
 	Name *string `pulumi:"name"`
 	// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
@@ -128,6 +132,8 @@ type TunnelState struct {
 	AccountId pulumi.StringPtrInput
 	// Usable CNAME for accessing the Tunnel.
 	Cname pulumi.StringPtrInput
+	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+	ConfigSrc pulumi.StringPtrInput
 	// A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringPtrInput
 	// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
@@ -143,6 +149,8 @@ func (TunnelState) ElementType() reflect.Type {
 type tunnelArgs struct {
 	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId string `pulumi:"accountId"`
+	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+	ConfigSrc *string `pulumi:"configSrc"`
 	// A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
 	Name string `pulumi:"name"`
 	// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
@@ -153,6 +161,8 @@ type tunnelArgs struct {
 type TunnelArgs struct {
 	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringInput
+	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+	ConfigSrc pulumi.StringPtrInput
 	// A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringInput
 	// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
@@ -254,6 +264,11 @@ func (o TunnelOutput) AccountId() pulumi.StringOutput {
 // Usable CNAME for accessing the Tunnel.
 func (o TunnelOutput) Cname() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tunnel) pulumi.StringOutput { return v.Cname }).(pulumi.StringOutput)
+}
+
+// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+func (o TunnelOutput) ConfigSrc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Tunnel) pulumi.StringPtrOutput { return v.ConfigSrc }).(pulumi.StringPtrOutput)
 }
 
 // A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**

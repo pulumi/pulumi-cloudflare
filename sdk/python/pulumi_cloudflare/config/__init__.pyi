@@ -30,8 +30,9 @@ environment variable.
 apiKey: Optional[str]
 """
 The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
-keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/api/keys/#limitations), API tokens
-should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+keys are [now considered legacy by
+Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
+instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
 """
 
 apiToken: Optional[str]

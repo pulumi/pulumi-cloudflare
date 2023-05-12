@@ -16,16 +16,20 @@ class TunnelArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
                  name: pulumi.Input[str],
-                 secret: pulumi.Input[str]):
+                 secret: pulumi.Input[str],
+                 config_src: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Tunnel resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] name: A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] secret: 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] config_src: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "secret", secret)
+        if config_src is not None:
+            pulumi.set(__self__, "config_src", config_src)
 
     @property
     @pulumi.getter(name="accountId")
@@ -63,12 +67,25 @@ class TunnelArgs:
     def secret(self, value: pulumi.Input[str]):
         pulumi.set(self, "secret", value)
 
+    @property
+    @pulumi.getter(name="configSrc")
+    def config_src(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+        """
+        return pulumi.get(self, "config_src")
+
+    @config_src.setter
+    def config_src(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config_src", value)
+
 
 @pulumi.input_type
 class _TunnelState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  cname: Optional[pulumi.Input[str]] = None,
+                 config_src: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  tunnel_token: Optional[pulumi.Input[str]] = None):
@@ -76,6 +93,7 @@ class _TunnelState:
         Input properties used for looking up and filtering Tunnel resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] cname: Usable CNAME for accessing the Tunnel.
+        :param pulumi.Input[str] config_src: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] name: A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] secret: 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] tunnel_token: Token used by a connector to authenticate and run the tunnel.
@@ -84,6 +102,8 @@ class _TunnelState:
             pulumi.set(__self__, "account_id", account_id)
         if cname is not None:
             pulumi.set(__self__, "cname", cname)
+        if config_src is not None:
+            pulumi.set(__self__, "config_src", config_src)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if secret is not None:
@@ -114,6 +134,18 @@ class _TunnelState:
     @cname.setter
     def cname(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cname", value)
+
+    @property
+    @pulumi.getter(name="configSrc")
+    def config_src(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+        """
+        return pulumi.get(self, "config_src")
+
+    @config_src.setter
+    def config_src(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config_src", value)
 
     @property
     @pulumi.getter
@@ -158,6 +190,7 @@ class Tunnel(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 config_src: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -187,6 +220,7 @@ class Tunnel(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] config_src: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] name: A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] secret: 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
         """
@@ -235,6 +269,7 @@ class Tunnel(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 config_src: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -249,6 +284,7 @@ class Tunnel(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["config_src"] = config_src
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
@@ -271,6 +307,7 @@ class Tunnel(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             cname: Optional[pulumi.Input[str]] = None,
+            config_src: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             secret: Optional[pulumi.Input[str]] = None,
             tunnel_token: Optional[pulumi.Input[str]] = None) -> 'Tunnel':
@@ -283,6 +320,7 @@ class Tunnel(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] cname: Usable CNAME for accessing the Tunnel.
+        :param pulumi.Input[str] config_src: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] name: A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] secret: 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] tunnel_token: Token used by a connector to authenticate and run the tunnel.
@@ -293,6 +331,7 @@ class Tunnel(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["cname"] = cname
+        __props__.__dict__["config_src"] = config_src
         __props__.__dict__["name"] = name
         __props__.__dict__["secret"] = secret
         __props__.__dict__["tunnel_token"] = tunnel_token
@@ -313,6 +352,14 @@ class Tunnel(pulumi.CustomResource):
         Usable CNAME for accessing the Tunnel.
         """
         return pulumi.get(self, "cname")
+
+    @property
+    @pulumi.getter(name="configSrc")
+    def config_src(self) -> pulumi.Output[Optional[str]]:
+        """
+        Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
+        """
+        return pulumi.get(self, "config_src")
 
     @property
     @pulumi.getter

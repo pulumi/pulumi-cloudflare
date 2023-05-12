@@ -11,9 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides Lists (IPs, Redirects) to be used in Edge Rules Engine
-// across all zones within the same account.
-//
 // ## Import
 //
 // ```sh
@@ -27,9 +24,9 @@ type List struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// An optional description of the list.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	Items       ListItemArrayOutput    `pulumi:"items"`
-	// The type of items the list will contain.
+	Description pulumi.StringPtrOutput  `pulumi:"description"`
+	Items       ListItemTypeArrayOutput `pulumi:"items"`
+	// The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The name of the list. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -76,9 +73,9 @@ type listState struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
 	// An optional description of the list.
-	Description *string    `pulumi:"description"`
-	Items       []ListItem `pulumi:"items"`
-	// The type of items the list will contain.
+	Description *string        `pulumi:"description"`
+	Items       []ListItemType `pulumi:"items"`
+	// The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
 	Kind *string `pulumi:"kind"`
 	// The name of the list. **Modifying this attribute will force creation of a new resource.**
 	Name *string `pulumi:"name"`
@@ -89,8 +86,8 @@ type ListState struct {
 	AccountId pulumi.StringPtrInput
 	// An optional description of the list.
 	Description pulumi.StringPtrInput
-	Items       ListItemArrayInput
-	// The type of items the list will contain.
+	Items       ListItemTypeArrayInput
+	// The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
 	Kind pulumi.StringPtrInput
 	// The name of the list. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringPtrInput
@@ -104,9 +101,9 @@ type listArgs struct {
 	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
 	// An optional description of the list.
-	Description *string    `pulumi:"description"`
-	Items       []ListItem `pulumi:"items"`
-	// The type of items the list will contain.
+	Description *string        `pulumi:"description"`
+	Items       []ListItemType `pulumi:"items"`
+	// The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
 	Kind string `pulumi:"kind"`
 	// The name of the list. **Modifying this attribute will force creation of a new resource.**
 	Name string `pulumi:"name"`
@@ -118,8 +115,8 @@ type ListArgs struct {
 	AccountId pulumi.StringInput
 	// An optional description of the list.
 	Description pulumi.StringPtrInput
-	Items       ListItemArrayInput
-	// The type of items the list will contain.
+	Items       ListItemTypeArrayInput
+	// The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
 	Kind pulumi.StringInput
 	// The name of the list. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringInput
@@ -222,11 +219,11 @@ func (o ListOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *List) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o ListOutput) Items() ListItemArrayOutput {
-	return o.ApplyT(func(v *List) ListItemArrayOutput { return v.Items }).(ListItemArrayOutput)
+func (o ListOutput) Items() ListItemTypeArrayOutput {
+	return o.ApplyT(func(v *List) ListItemTypeArrayOutput { return v.Items }).(ListItemTypeArrayOutput)
 }
 
-// The type of items the list will contain.
+// The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
 func (o ListOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *List) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }

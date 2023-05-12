@@ -31,11 +31,11 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
         return Optional.ofNullable(this.statusCodeRanges);
     }
 
-    @Import(name="value", required=true)
-    private Output<Integer> value;
+    @Import(name="value")
+    private @Nullable Output<Integer> value;
 
-    public Output<Integer> value() {
-        return this.value;
+    public Optional<Output<Integer>> value() {
+        return Optional.ofNullable(this.value);
     }
 
     private RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs() {}
@@ -86,7 +86,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
             return statusCodeRanges(List.of(statusCodeRanges));
         }
 
-        public Builder value(Output<Integer> value) {
+        public Builder value(@Nullable Output<Integer> value) {
             $.value = value;
             return this;
         }
@@ -96,7 +96,6 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
         }
 
         public RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs build() {
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
             return $;
         }
     }

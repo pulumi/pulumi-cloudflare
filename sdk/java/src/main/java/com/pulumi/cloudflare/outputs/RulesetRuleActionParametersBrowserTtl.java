@@ -13,14 +13,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersBrowserTtl {
     private @Nullable Integer default_;
-    private String mode;
+    private @Nullable String mode;
 
     private RulesetRuleActionParametersBrowserTtl() {}
     public Optional<Integer> default_() {
         return Optional.ofNullable(this.default_);
     }
-    public String mode() {
-        return this.mode;
+    public Optional<String> mode() {
+        return Optional.ofNullable(this.mode);
     }
 
     public static Builder builder() {
@@ -33,7 +33,7 @@ public final class RulesetRuleActionParametersBrowserTtl {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer default_;
-        private String mode;
+        private @Nullable String mode;
         public Builder() {}
         public Builder(RulesetRuleActionParametersBrowserTtl defaults) {
     	      Objects.requireNonNull(defaults);
@@ -47,8 +47,8 @@ public final class RulesetRuleActionParametersBrowserTtl {
             return this;
         }
         @CustomType.Setter
-        public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+        public Builder mode(@Nullable String mode) {
+            this.mode = mode;
             return this;
         }
         public RulesetRuleActionParametersBrowserTtl build() {

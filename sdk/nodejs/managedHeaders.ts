@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * The [Cloudflare Managed Headers](https://developers.cloudflare.com/rules/transform/managed-transforms/)
+ * allows you to add or remove some predefined headers to one's
+ * requests or origin responses.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -26,10 +30,6 @@ import * as utilities from "./utilities";
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
- *
- * ## Import
- *
- * Import is not supported for this resource.
  */
 export class ManagedHeaders extends pulumi.CustomResource {
     /**

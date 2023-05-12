@@ -12,9 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`.
     /// 
-    /// &gt; This resource uses the Cloudflare account APIs. This requires setting the
-    ///   `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -124,6 +121,18 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.WorkerScriptAnalyticsEngineBinding>> AnalyticsEngineBindings { get; private set; } = null!;
 
         /// <summary>
+        /// The date to use for the compatibility flag.
+        /// </summary>
+        [Output("compatibilityDate")]
+        public Output<string?> CompatibilityDate { get; private set; } = null!;
+
+        /// <summary>
+        /// Compatibility flags used for Worker Scripts.
+        /// </summary>
+        [Output("compatibilityFlags")]
+        public Output<ImmutableArray<string>> CompatibilityFlags { get; private set; } = null!;
+
+        /// <summary>
         /// The script content.
         /// </summary>
         [Output("content")]
@@ -131,6 +140,12 @@ namespace Pulumi.Cloudflare
 
         [Output("kvNamespaceBindings")]
         public Output<ImmutableArray<Outputs.WorkerScriptKvNamespaceBinding>> KvNamespaceBindings { get; private set; } = null!;
+
+        /// <summary>
+        /// Enabling allows Worker events to be sent to a defined Logpush destination.
+        /// </summary>
+        [Output("logpush")]
+        public Output<bool?> Logpush { get; private set; } = null!;
 
         /// <summary>
         /// Whether to upload Worker as a module.
@@ -223,6 +238,24 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// The date to use for the compatibility flag.
+        /// </summary>
+        [Input("compatibilityDate")]
+        public Input<string>? CompatibilityDate { get; set; }
+
+        [Input("compatibilityFlags")]
+        private InputList<string>? _compatibilityFlags;
+
+        /// <summary>
+        /// Compatibility flags used for Worker Scripts.
+        /// </summary>
+        public InputList<string> CompatibilityFlags
+        {
+            get => _compatibilityFlags ?? (_compatibilityFlags = new InputList<string>());
+            set => _compatibilityFlags = value;
+        }
+
+        /// <summary>
         /// The script content.
         /// </summary>
         [Input("content", required: true)]
@@ -235,6 +268,12 @@ namespace Pulumi.Cloudflare
             get => _kvNamespaceBindings ?? (_kvNamespaceBindings = new InputList<Inputs.WorkerScriptKvNamespaceBindingArgs>());
             set => _kvNamespaceBindings = value;
         }
+
+        /// <summary>
+        /// Enabling allows Worker events to be sent to a defined Logpush destination.
+        /// </summary>
+        [Input("logpush")]
+        public Input<bool>? Logpush { get; set; }
 
         /// <summary>
         /// Whether to upload Worker as a module.
@@ -319,6 +358,24 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// The date to use for the compatibility flag.
+        /// </summary>
+        [Input("compatibilityDate")]
+        public Input<string>? CompatibilityDate { get; set; }
+
+        [Input("compatibilityFlags")]
+        private InputList<string>? _compatibilityFlags;
+
+        /// <summary>
+        /// Compatibility flags used for Worker Scripts.
+        /// </summary>
+        public InputList<string> CompatibilityFlags
+        {
+            get => _compatibilityFlags ?? (_compatibilityFlags = new InputList<string>());
+            set => _compatibilityFlags = value;
+        }
+
+        /// <summary>
         /// The script content.
         /// </summary>
         [Input("content")]
@@ -331,6 +388,12 @@ namespace Pulumi.Cloudflare
             get => _kvNamespaceBindings ?? (_kvNamespaceBindings = new InputList<Inputs.WorkerScriptKvNamespaceBindingGetArgs>());
             set => _kvNamespaceBindings = value;
         }
+
+        /// <summary>
+        /// Enabling allows Worker events to be sent to a defined Logpush destination.
+        /// </summary>
+        [Input("logpush")]
+        public Input<bool>? Logpush { get; set; }
 
         /// <summary>
         /// Whether to upload Worker as a module.

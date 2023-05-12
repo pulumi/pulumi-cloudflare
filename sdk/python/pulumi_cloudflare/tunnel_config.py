@@ -136,6 +136,67 @@ class TunnelConfig(pulumi.CustomResource):
 
         !> When you delete a tunnel configuration, the tunnel will be deleted. You need to make sure that the tunnel is not in use before deleting the configuration.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_tunnel = cloudflare.Tunnel("exampleTunnel",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="example_tunnel",
+            secret="<32 character secret>")
+        example_config = cloudflare.TunnelConfig("exampleConfig",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            tunnel_id=example_tunnel.id,
+            config=cloudflare.TunnelConfigConfigArgs(
+                warp_routing=cloudflare.TunnelConfigConfigWarpRoutingArgs(
+                    enabled=True,
+                ),
+                origin_request=cloudflare.TunnelConfigConfigOriginRequestArgs(
+                    connect_timeout="1m0s",
+                    tls_timeout="1m0s",
+                    tcp_keep_alive="1m0s",
+                    no_happy_eyeballs=False,
+                    keep_alive_connections=1024,
+                    keep_alive_timeout="1m0s",
+                    http_host_header="baz",
+                    origin_server_name="foobar",
+                    ca_pool="/path/to/unsigned/ca/pool",
+                    no_tls_verify=False,
+                    disable_chunked_encoding=False,
+                    bastion_mode=False,
+                    proxy_address="10.0.0.1",
+                    proxy_port=8123,
+                    proxy_type="socks",
+                    ip_rules=[cloudflare.TunnelConfigConfigOriginRequestIpRuleArgs(
+                        prefix="/web",
+                        ports=[
+                            80,
+                            443,
+                        ],
+                        allow=False,
+                    )],
+                ),
+                ingress_rules=[
+                    cloudflare.TunnelConfigConfigIngressRuleArgs(
+                        hostname="foo",
+                        path="/bar",
+                        service="http://10.0.0.2:8080",
+                    ),
+                    cloudflare.TunnelConfigConfigIngressRuleArgs(
+                        service="https://10.0.0.3:8081",
+                    ),
+                ],
+            ))
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/tunnelConfig:TunnelConfig example <account_id>/<tunnel_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
@@ -152,6 +213,67 @@ class TunnelConfig(pulumi.CustomResource):
         Provides a Cloudflare Tunnel configuration resource.
 
         !> When you delete a tunnel configuration, the tunnel will be deleted. You need to make sure that the tunnel is not in use before deleting the configuration.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_tunnel = cloudflare.Tunnel("exampleTunnel",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="example_tunnel",
+            secret="<32 character secret>")
+        example_config = cloudflare.TunnelConfig("exampleConfig",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            tunnel_id=example_tunnel.id,
+            config=cloudflare.TunnelConfigConfigArgs(
+                warp_routing=cloudflare.TunnelConfigConfigWarpRoutingArgs(
+                    enabled=True,
+                ),
+                origin_request=cloudflare.TunnelConfigConfigOriginRequestArgs(
+                    connect_timeout="1m0s",
+                    tls_timeout="1m0s",
+                    tcp_keep_alive="1m0s",
+                    no_happy_eyeballs=False,
+                    keep_alive_connections=1024,
+                    keep_alive_timeout="1m0s",
+                    http_host_header="baz",
+                    origin_server_name="foobar",
+                    ca_pool="/path/to/unsigned/ca/pool",
+                    no_tls_verify=False,
+                    disable_chunked_encoding=False,
+                    bastion_mode=False,
+                    proxy_address="10.0.0.1",
+                    proxy_port=8123,
+                    proxy_type="socks",
+                    ip_rules=[cloudflare.TunnelConfigConfigOriginRequestIpRuleArgs(
+                        prefix="/web",
+                        ports=[
+                            80,
+                            443,
+                        ],
+                        allow=False,
+                    )],
+                ),
+                ingress_rules=[
+                    cloudflare.TunnelConfigConfigIngressRuleArgs(
+                        hostname="foo",
+                        path="/bar",
+                        service="http://10.0.0.2:8080",
+                    ),
+                    cloudflare.TunnelConfigConfigIngressRuleArgs(
+                        service="https://10.0.0.3:8081",
+                    ),
+                ],
+            ))
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/tunnelConfig:TunnelConfig example <account_id>/<tunnel_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param TunnelConfigArgs args: The arguments to use to populate this resource's properties.

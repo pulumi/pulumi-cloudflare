@@ -25,6 +25,18 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
+        /// Allow parent MSP accounts to enable bypass their children's rules.
+        /// </summary>
+        [Input("allowChildBypass")]
+        public Input<bool>? AllowChildBypass { get; set; }
+
+        /// <summary>
+        /// Settings for auditing SSH usage.
+        /// </summary>
+        [Input("auditSsh")]
+        public Input<Inputs.TeamsRuleRuleSettingsAuditSshGetArgs>? AuditSsh { get; set; }
+
+        /// <summary>
         /// Configure how browser isolation behaves.
         /// </summary>
         [Input("bisoAdminControls")]
@@ -43,6 +55,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? BlockPageReason { get; set; }
 
         /// <summary>
+        /// Allow child MSP accounts to bypass their parent's rule.
+        /// </summary>
+        [Input("bypassParentRule")]
+        public Input<bool>? BypassParentRule { get; set; }
+
+        /// <summary>
         /// Configure how session check behaves.
         /// </summary>
         [Input("checkSession")]
@@ -59,6 +77,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("insecureDisableDnssecValidation")]
         public Input<bool>? InsecureDisableDnssecValidation { get; set; }
+
+        /// <summary>
+        /// Turns on IP category based filter on dns if the rule contains dns category checks.
+        /// </summary>
+        [Input("ipCategories")]
+        public Input<bool>? IpCategories { get; set; }
 
         /// <summary>
         /// Settings to forward layer 4 traffic.

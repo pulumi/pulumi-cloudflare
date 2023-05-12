@@ -28,9 +28,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewAccessOrganization(ctx, "example", &cloudflare.AccessOrganizationArgs{
-//				AccountId:    pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				AuthDomain:   pulumi.String("example.cloudflareaccess.com"),
-//				IsUiReadOnly: pulumi.Bool(false),
+//				AccountId:              pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				AuthDomain:             pulumi.String("example.cloudflareaccess.com"),
+//				AutoRedirectToIdentity: pulumi.Bool(false),
+//				IsUiReadOnly:           pulumi.Bool(false),
 //				LoginDesigns: cloudflare.AccessOrganizationLoginDesignArray{
 //					&cloudflare.AccessOrganizationLoginDesignArgs{
 //						BackgroundColor: pulumi.String("#ffffff"),
@@ -66,11 +67,15 @@ type AccessOrganization struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The unique subdomain assigned to your Zero Trust organization.
 	AuthDomain pulumi.StringOutput `pulumi:"authDomain"`
+	// When set to true, users skip the identity provider selection step during login.
+	AutoRedirectToIdentity pulumi.BoolPtrOutput `pulumi:"autoRedirectToIdentity"`
 	// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
 	IsUiReadOnly pulumi.BoolPtrOutput                     `pulumi:"isUiReadOnly"`
 	LoginDesigns AccessOrganizationLoginDesignArrayOutput `pulumi:"loginDesigns"`
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
+	// A description of the reason why the UI read only field is being toggled.
+	UiReadOnlyToggleReason pulumi.StringPtrOutput `pulumi:"uiReadOnlyToggleReason"`
 	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
 	UserSeatExpirationInactiveTime pulumi.StringPtrOutput `pulumi:"userSeatExpirationInactiveTime"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
@@ -113,11 +118,15 @@ type accessOrganizationState struct {
 	AccountId *string `pulumi:"accountId"`
 	// The unique subdomain assigned to your Zero Trust organization.
 	AuthDomain *string `pulumi:"authDomain"`
+	// When set to true, users skip the identity provider selection step during login.
+	AutoRedirectToIdentity *bool `pulumi:"autoRedirectToIdentity"`
 	// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
 	IsUiReadOnly *bool                           `pulumi:"isUiReadOnly"`
 	LoginDesigns []AccessOrganizationLoginDesign `pulumi:"loginDesigns"`
 	// The name of your Zero Trust organization.
 	Name *string `pulumi:"name"`
+	// A description of the reason why the UI read only field is being toggled.
+	UiReadOnlyToggleReason *string `pulumi:"uiReadOnlyToggleReason"`
 	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
 	UserSeatExpirationInactiveTime *string `pulumi:"userSeatExpirationInactiveTime"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
@@ -129,11 +138,15 @@ type AccessOrganizationState struct {
 	AccountId pulumi.StringPtrInput
 	// The unique subdomain assigned to your Zero Trust organization.
 	AuthDomain pulumi.StringPtrInput
+	// When set to true, users skip the identity provider selection step during login.
+	AutoRedirectToIdentity pulumi.BoolPtrInput
 	// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
 	IsUiReadOnly pulumi.BoolPtrInput
 	LoginDesigns AccessOrganizationLoginDesignArrayInput
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrInput
+	// A description of the reason why the UI read only field is being toggled.
+	UiReadOnlyToggleReason pulumi.StringPtrInput
 	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
 	UserSeatExpirationInactiveTime pulumi.StringPtrInput
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
@@ -149,11 +162,15 @@ type accessOrganizationArgs struct {
 	AccountId *string `pulumi:"accountId"`
 	// The unique subdomain assigned to your Zero Trust organization.
 	AuthDomain string `pulumi:"authDomain"`
+	// When set to true, users skip the identity provider selection step during login.
+	AutoRedirectToIdentity *bool `pulumi:"autoRedirectToIdentity"`
 	// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
 	IsUiReadOnly *bool                           `pulumi:"isUiReadOnly"`
 	LoginDesigns []AccessOrganizationLoginDesign `pulumi:"loginDesigns"`
 	// The name of your Zero Trust organization.
 	Name *string `pulumi:"name"`
+	// A description of the reason why the UI read only field is being toggled.
+	UiReadOnlyToggleReason *string `pulumi:"uiReadOnlyToggleReason"`
 	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
 	UserSeatExpirationInactiveTime *string `pulumi:"userSeatExpirationInactiveTime"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
@@ -166,11 +183,15 @@ type AccessOrganizationArgs struct {
 	AccountId pulumi.StringPtrInput
 	// The unique subdomain assigned to your Zero Trust organization.
 	AuthDomain pulumi.StringInput
+	// When set to true, users skip the identity provider selection step during login.
+	AutoRedirectToIdentity pulumi.BoolPtrInput
 	// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
 	IsUiReadOnly pulumi.BoolPtrInput
 	LoginDesigns AccessOrganizationLoginDesignArrayInput
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrInput
+	// A description of the reason why the UI read only field is being toggled.
+	UiReadOnlyToggleReason pulumi.StringPtrInput
 	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
 	UserSeatExpirationInactiveTime pulumi.StringPtrInput
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
@@ -274,6 +295,11 @@ func (o AccessOrganizationOutput) AuthDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessOrganization) pulumi.StringOutput { return v.AuthDomain }).(pulumi.StringOutput)
 }
 
+// When set to true, users skip the identity provider selection step during login.
+func (o AccessOrganizationOutput) AutoRedirectToIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessOrganization) pulumi.BoolPtrOutput { return v.AutoRedirectToIdentity }).(pulumi.BoolPtrOutput)
+}
+
 // When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
 func (o AccessOrganizationOutput) IsUiReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessOrganization) pulumi.BoolPtrOutput { return v.IsUiReadOnly }).(pulumi.BoolPtrOutput)
@@ -286,6 +312,11 @@ func (o AccessOrganizationOutput) LoginDesigns() AccessOrganizationLoginDesignAr
 // The name of your Zero Trust organization.
 func (o AccessOrganizationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessOrganization) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// A description of the reason why the UI read only field is being toggled.
+func (o AccessOrganizationOutput) UiReadOnlyToggleReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessOrganization) pulumi.StringPtrOutput { return v.UiReadOnlyToggleReason }).(pulumi.StringPtrOutput)
 }
 
 // The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.

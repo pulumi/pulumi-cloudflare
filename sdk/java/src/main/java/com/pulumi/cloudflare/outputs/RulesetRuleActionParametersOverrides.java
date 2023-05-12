@@ -17,12 +17,6 @@ import javax.annotation.Nullable;
 public final class RulesetRuleActionParametersOverrides {
     private @Nullable String action;
     private @Nullable List<RulesetRuleActionParametersOverridesCategory> categories;
-    /**
-     * @deprecated
-     * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-     * 
-     */
-    @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
     private @Nullable Boolean enabled;
     /**
      * @return List of rules to apply to the ruleset.
@@ -30,7 +24,6 @@ public final class RulesetRuleActionParametersOverrides {
      */
     private @Nullable List<RulesetRuleActionParametersOverridesRule> rules;
     private @Nullable String sensitivityLevel;
-    private @Nullable String status;
 
     private RulesetRuleActionParametersOverrides() {}
     public Optional<String> action() {
@@ -39,12 +32,6 @@ public final class RulesetRuleActionParametersOverrides {
     public List<RulesetRuleActionParametersOverridesCategory> categories() {
         return this.categories == null ? List.of() : this.categories;
     }
-    /**
-     * @deprecated
-     * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-     * 
-     */
-    @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -57,9 +44,6 @@ public final class RulesetRuleActionParametersOverrides {
     }
     public Optional<String> sensitivityLevel() {
         return Optional.ofNullable(this.sensitivityLevel);
-    }
-    public Optional<String> status() {
-        return Optional.ofNullable(this.status);
     }
 
     public static Builder builder() {
@@ -76,7 +60,6 @@ public final class RulesetRuleActionParametersOverrides {
         private @Nullable Boolean enabled;
         private @Nullable List<RulesetRuleActionParametersOverridesRule> rules;
         private @Nullable String sensitivityLevel;
-        private @Nullable String status;
         public Builder() {}
         public Builder(RulesetRuleActionParametersOverrides defaults) {
     	      Objects.requireNonNull(defaults);
@@ -85,7 +68,6 @@ public final class RulesetRuleActionParametersOverrides {
     	      this.enabled = defaults.enabled;
     	      this.rules = defaults.rules;
     	      this.sensitivityLevel = defaults.sensitivityLevel;
-    	      this.status = defaults.status;
         }
 
         @CustomType.Setter
@@ -119,11 +101,6 @@ public final class RulesetRuleActionParametersOverrides {
             this.sensitivityLevel = sensitivityLevel;
             return this;
         }
-        @CustomType.Setter
-        public Builder status(@Nullable String status) {
-            this.status = status;
-            return this;
-        }
         public RulesetRuleActionParametersOverrides build() {
             final var o = new RulesetRuleActionParametersOverrides();
             o.action = action;
@@ -131,7 +108,6 @@ public final class RulesetRuleActionParametersOverrides {
             o.enabled = enabled;
             o.rules = rules;
             o.sensitivityLevel = sensitivityLevel;
-            o.status = status;
             return o;
         }
     }

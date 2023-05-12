@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class LoadBalancerPoolOriginSteeringArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Origin steering policy to be used. Available values: ``,`hash`,`random`. Defaults to`random`.
+        /// Origin steering policy to be used. Available values: `""`, `hash`, `random`. Defaults to `random`.
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }

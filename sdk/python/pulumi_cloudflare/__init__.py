@@ -17,6 +17,7 @@ from .access_rule import *
 from .access_service_token import *
 from .account import *
 from .account_member import *
+from .address_map import *
 from .api_shield import *
 from .api_token import *
 from .argo import *
@@ -28,6 +29,7 @@ from .custom_hostname import *
 from .custom_hostname_fallback_origin import *
 from .custom_pages import *
 from .custom_ssl import *
+from .device_dex_test import *
 from .device_managed_networks import *
 from .device_policy_certificates import *
 from .device_posture_integration import *
@@ -47,6 +49,8 @@ from .get_accounts import *
 from .get_api_token_permission_groups import *
 from .get_devices import *
 from .get_ip_ranges import *
+from .get_list import *
+from .get_lists import *
 from .get_load_balancer_pools import *
 from .get_origin_ca_root_certificate import *
 from .get_record import *
@@ -58,6 +62,7 @@ from .gre_tunnel import *
 from .healthcheck import *
 from .ipsec_tunnel import *
 from .list import *
+from .list_item import *
 from .load_balancer import *
 from .load_balancer_monitor import *
 from .load_balancer_pool import *
@@ -77,6 +82,7 @@ from .provider import *
 from .queue import *
 from .rate_limit import *
 from .record import *
+from .regional_hostname import *
 from .ruleset import *
 from .spectrum_application import *
 from .split_tunnel import *
@@ -92,6 +98,7 @@ from .tunnel import *
 from .tunnel_config import *
 from .tunnel_route import *
 from .tunnel_virtual_network import *
+from .turnstile_widget import *
 from .url_normalization_settings import *
 from .user_agent_blocking_rule import *
 from .waiting_room import *
@@ -99,6 +106,7 @@ from .waiting_room_event import *
 from .waiting_room_rules import *
 from .web3_hostname import *
 from .worker_cron_trigger import *
+from .worker_domain import *
 from .worker_route import *
 from .worker_script import *
 from .workers_kv import *
@@ -219,6 +227,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/addressMap",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/addressMap:AddressMap": "AddressMap"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/apiShield",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -303,6 +319,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/customSsl:CustomSsl": "CustomSsl"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/deviceDexTest",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/deviceDexTest:DeviceDexTest": "DeviceDexTest"
   }
  },
  {
@@ -439,6 +463,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/list:List": "List"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/listItem",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/listItem:ListItem": "ListItem"
   }
  },
  {
@@ -587,6 +619,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/regionalHostname",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/regionalHostname:RegionalHostname": "RegionalHostname"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/ruleset",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -707,6 +747,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/turnstileWidget",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/turnstileWidget:TurnstileWidget": "TurnstileWidget"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/urlNormalizationSettings",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -759,6 +807,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/workerCronTrigger:WorkerCronTrigger": "WorkerCronTrigger"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/workerDomain",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/workerDomain:WorkerDomain": "WorkerDomain"
   }
  },
  {

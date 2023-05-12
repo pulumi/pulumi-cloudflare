@@ -12,14 +12,14 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersFromListArgs : global::Pulumi.ResourceArgs
     {
-        [Input("key", required: true)]
-        public Input<string> Key { get; set; } = null!;
+        [Input("key")]
+        public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+        /// Name of the ruleset.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         public RulesetRuleActionParametersFromListArgs()
         {

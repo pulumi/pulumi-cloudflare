@@ -150,14 +150,14 @@ public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResou
         return this.type;
     }
     /**
-     * The URL of the webhook destinations.
+     * The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> url;
 
     /**
-     * @return The URL of the webhook destinations.
+     * @return The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<Optional<String>> url() {

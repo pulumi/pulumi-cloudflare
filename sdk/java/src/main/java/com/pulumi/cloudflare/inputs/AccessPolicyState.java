@@ -112,6 +112,21 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Require this application to be served in an isolated browser for users matching this policy.
+     * 
+     */
+    @Import(name="isolationRequired")
+    private @Nullable Output<Boolean> isolationRequired;
+
+    /**
+     * @return Require this application to be served in an isolated browser for users matching this policy.
+     * 
+     */
+    public Optional<Output<Boolean>> isolationRequired() {
+        return Optional.ofNullable(this.isolationRequired);
+    }
+
+    /**
      * Friendly name of the Access Policy.
      * 
      */
@@ -211,6 +226,7 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
         this.decision = $.decision;
         this.excludes = $.excludes;
         this.includes = $.includes;
+        this.isolationRequired = $.isolationRequired;
         this.name = $.name;
         this.precedence = $.precedence;
         this.purposeJustificationPrompt = $.purposeJustificationPrompt;
@@ -382,6 +398,27 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder includes(AccessPolicyIncludeArgs... includes) {
             return includes(List.of(includes));
+        }
+
+        /**
+         * @param isolationRequired Require this application to be served in an isolated browser for users matching this policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolationRequired(@Nullable Output<Boolean> isolationRequired) {
+            $.isolationRequired = isolationRequired;
+            return this;
+        }
+
+        /**
+         * @param isolationRequired Require this application to be served in an isolated browser for users matching this policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolationRequired(Boolean isolationRequired) {
+            return isolationRequired(Output.of(isolationRequired));
         }
 
         /**

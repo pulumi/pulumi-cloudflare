@@ -159,14 +159,14 @@ public class DevicePostureRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.schedule);
     }
     /**
-     * The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`.
+     * The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`.
+     * @return The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`.
      * 
      */
     public Output<String> type() {

@@ -133,14 +133,14 @@ public class DevicePostureIntegration extends com.pulumi.resources.CustomResourc
         return this.name;
     }
     /**
-     * The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`.
+     * The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`.
+     * @return The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`.
      * 
      */
     public Output<String> type() {

@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  *         var example = new AccessOrganization(&#34;example&#34;, AccessOrganizationArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .authDomain(&#34;example.cloudflareaccess.com&#34;)
+ *             .autoRedirectToIdentity(false)
  *             .isUiReadOnly(false)
  *             .loginDesigns(AccessOrganizationLoginDesignArgs.builder()
  *                 .backgroundColor(&#34;#ffffff&#34;)
@@ -100,6 +101,20 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
         return this.authDomain;
     }
     /**
+     * When set to true, users skip the identity provider selection step during login.
+     * 
+     */
+    @Export(name="autoRedirectToIdentity", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoRedirectToIdentity;
+
+    /**
+     * @return When set to true, users skip the identity provider selection step during login.
+     * 
+     */
+    public Output<Optional<Boolean>> autoRedirectToIdentity() {
+        return Codegen.optional(this.autoRedirectToIdentity);
+    }
+    /**
      * When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
      * 
      */
@@ -132,6 +147,20 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> name() {
         return Codegen.optional(this.name);
+    }
+    /**
+     * A description of the reason why the UI read only field is being toggled.
+     * 
+     */
+    @Export(name="uiReadOnlyToggleReason", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> uiReadOnlyToggleReason;
+
+    /**
+     * @return A description of the reason why the UI read only field is being toggled.
+     * 
+     */
+    public Output<Optional<String>> uiReadOnlyToggleReason() {
+        return Codegen.optional(this.uiReadOnlyToggleReason);
     }
     /**
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.

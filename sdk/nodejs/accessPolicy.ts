@@ -119,6 +119,10 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public readonly includes!: pulumi.Output<outputs.AccessPolicyInclude[]>;
     /**
+     * Require this application to be served in an isolated browser for users matching this policy.
+     */
+    public readonly isolationRequired!: pulumi.Output<boolean | undefined>;
+    /**
      * Friendly name of the Access Policy.
      */
     public readonly name!: pulumi.Output<string>;
@@ -163,6 +167,7 @@ export class AccessPolicy extends pulumi.CustomResource {
             resourceInputs["decision"] = state ? state.decision : undefined;
             resourceInputs["excludes"] = state ? state.excludes : undefined;
             resourceInputs["includes"] = state ? state.includes : undefined;
+            resourceInputs["isolationRequired"] = state ? state.isolationRequired : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["precedence"] = state ? state.precedence : undefined;
             resourceInputs["purposeJustificationPrompt"] = state ? state.purposeJustificationPrompt : undefined;
@@ -193,6 +198,7 @@ export class AccessPolicy extends pulumi.CustomResource {
             resourceInputs["decision"] = args ? args.decision : undefined;
             resourceInputs["excludes"] = args ? args.excludes : undefined;
             resourceInputs["includes"] = args ? args.includes : undefined;
+            resourceInputs["isolationRequired"] = args ? args.isolationRequired : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["precedence"] = args ? args.precedence : undefined;
             resourceInputs["purposeJustificationPrompt"] = args ? args.purposeJustificationPrompt : undefined;
@@ -231,6 +237,10 @@ export interface AccessPolicyState {
      * A series of access conditions, see Access Groups.
      */
     includes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[]>;
+    /**
+     * Require this application to be served in an isolated browser for users matching this policy.
+     */
+    isolationRequired?: pulumi.Input<boolean>;
     /**
      * Friendly name of the Access Policy.
      */
@@ -283,6 +293,10 @@ export interface AccessPolicyArgs {
      * A series of access conditions, see Access Groups.
      */
     includes: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[]>;
+    /**
+     * Require this application to be served in an isolated browser for users matching this policy.
+     */
+    isolationRequired?: pulumi.Input<boolean>;
     /**
      * Friendly name of the Access Policy.
      */

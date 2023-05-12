@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Allowing access to `test@example.com` email address only
-    ///     var testGroupAccessGroup = new Cloudflare.AccessGroup("testGroupAccessGroup", new()
+    ///     var exampleAccessGroup = new Cloudflare.AccessGroup("exampleAccessGroup", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Name = "staging group",
@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
     /// 
     ///     // Allowing `test@example.com` to access but only when coming from a
     ///     // specific IP.
-    ///     var testGroupIndex_accessGroupAccessGroup = new Cloudflare.AccessGroup("testGroupIndex/accessGroupAccessGroup", new()
+    ///     var exampleIndex_accessGroupAccessGroup = new Cloudflare.AccessGroup("exampleIndex/accessGroupAccessGroup", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Name = "staging group",
@@ -69,6 +69,30 @@ namespace Pulumi.Cloudflare
     ///             {
     ///                 @var.Office_ip,
     ///             } },
+    ///         },
+    ///     });
+    /// 
+    ///     // Allow members of an Azure Group. The ID is the group UUID (id) in Azure.
+    ///     var exampleCloudflareIndex_accessGroupAccessGroup = new Cloudflare.AccessGroup("exampleCloudflareIndex/accessGroupAccessGroup", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "test_group",
+    ///         Includes = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.AccessGroupIncludeArgs
+    ///             {
+    ///                 Azures = new[]
+    ///                 {
+    ///                     new Cloudflare.Inputs.AccessGroupIncludeAzureArgs
+    ///                     {
+    ///                         IdentityProviderId = "ca298b82-93b5-41bf-bc2d-10493f09b761",
+    ///                         Ids = new[]
+    ///                         {
+    ///                             "86773093-5feb-48dd-814b-7ccd3676ff50",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
     ///         },
     ///     });
     /// 

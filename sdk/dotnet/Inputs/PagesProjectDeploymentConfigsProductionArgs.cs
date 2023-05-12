@@ -69,6 +69,18 @@ namespace Pulumi.Cloudflare.Inputs
             set => _r2Buckets = value;
         }
 
+        [Input("secrets")]
+        private InputMap<object>? _secrets;
+        public InputMap<object> Secrets
+        {
+            get => _secrets ?? (_secrets = new InputMap<object>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _secrets = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         [Input("serviceBindings")]
         private InputList<Inputs.PagesProjectDeploymentConfigsProductionServiceBindingArgs>? _serviceBindings;
         public InputList<Inputs.PagesProjectDeploymentConfigsProductionServiceBindingArgs> ServiceBindings

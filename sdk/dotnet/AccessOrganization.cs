@@ -26,6 +26,7 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         AuthDomain = "example.cloudflareaccess.com",
+    ///         AutoRedirectToIdentity = false,
     ///         IsUiReadOnly = false,
     ///         LoginDesigns = new[]
     ///         {
@@ -67,6 +68,12 @@ namespace Pulumi.Cloudflare
         public Output<string> AuthDomain { get; private set; } = null!;
 
         /// <summary>
+        /// When set to true, users skip the identity provider selection step during login.
+        /// </summary>
+        [Output("autoRedirectToIdentity")]
+        public Output<bool?> AutoRedirectToIdentity { get; private set; } = null!;
+
+        /// <summary>
         /// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
         /// </summary>
         [Output("isUiReadOnly")]
@@ -80,6 +87,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("name")]
         public Output<string?> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// A description of the reason why the UI read only field is being toggled.
+        /// </summary>
+        [Output("uiReadOnlyToggleReason")]
+        public Output<string?> UiReadOnlyToggleReason { get; private set; } = null!;
 
         /// <summary>
         /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
@@ -152,6 +165,12 @@ namespace Pulumi.Cloudflare
         public Input<string> AuthDomain { get; set; } = null!;
 
         /// <summary>
+        /// When set to true, users skip the identity provider selection step during login.
+        /// </summary>
+        [Input("autoRedirectToIdentity")]
+        public Input<bool>? AutoRedirectToIdentity { get; set; }
+
+        /// <summary>
         /// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
         /// </summary>
         [Input("isUiReadOnly")]
@@ -170,6 +189,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// A description of the reason why the UI read only field is being toggled.
+        /// </summary>
+        [Input("uiReadOnlyToggleReason")]
+        public Input<string>? UiReadOnlyToggleReason { get; set; }
 
         /// <summary>
         /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
@@ -204,6 +229,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? AuthDomain { get; set; }
 
         /// <summary>
+        /// When set to true, users skip the identity provider selection step during login.
+        /// </summary>
+        [Input("autoRedirectToIdentity")]
+        public Input<bool>? AutoRedirectToIdentity { get; set; }
+
+        /// <summary>
         /// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
         /// </summary>
         [Input("isUiReadOnly")]
@@ -222,6 +253,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// A description of the reason why the UI read only field is being toggled.
+        /// </summary>
+        [Input("uiReadOnlyToggleReason")]
+        public Input<string>? UiReadOnlyToggleReason { get; set; }
 
         /// <summary>
         /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.

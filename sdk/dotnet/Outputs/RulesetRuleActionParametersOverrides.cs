@@ -21,7 +21,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersOverridesRule> Rules;
         public readonly string? SensitivityLevel;
-        public readonly string? Status;
 
         [OutputConstructor]
         private RulesetRuleActionParametersOverrides(
@@ -33,16 +32,13 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<Outputs.RulesetRuleActionParametersOverridesRule> rules,
 
-            string? sensitivityLevel,
-
-            string? status)
+            string? sensitivityLevel)
         {
             Action = action;
             Categories = categories;
             Enabled = enabled;
             Rules = rules;
             SensitivityLevel = sensitivityLevel;
-            Status = status;
         }
     }
 }

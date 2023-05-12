@@ -25,6 +25,7 @@ public final class PagesProjectDeploymentConfigsProduction {
     private @Nullable Boolean failOpen;
     private @Nullable Map<String,Object> kvNamespaces;
     private @Nullable Map<String,Object> r2Buckets;
+    private @Nullable Map<String,Object> secrets;
     private @Nullable List<PagesProjectDeploymentConfigsProductionServiceBinding> serviceBindings;
     private @Nullable String usageModel;
 
@@ -56,6 +57,9 @@ public final class PagesProjectDeploymentConfigsProduction {
     public Map<String,Object> r2Buckets() {
         return this.r2Buckets == null ? Map.of() : this.r2Buckets;
     }
+    public Map<String,Object> secrets() {
+        return this.secrets == null ? Map.of() : this.secrets;
+    }
     public List<PagesProjectDeploymentConfigsProductionServiceBinding> serviceBindings() {
         return this.serviceBindings == null ? List.of() : this.serviceBindings;
     }
@@ -81,6 +85,7 @@ public final class PagesProjectDeploymentConfigsProduction {
         private @Nullable Boolean failOpen;
         private @Nullable Map<String,Object> kvNamespaces;
         private @Nullable Map<String,Object> r2Buckets;
+        private @Nullable Map<String,Object> secrets;
         private @Nullable List<PagesProjectDeploymentConfigsProductionServiceBinding> serviceBindings;
         private @Nullable String usageModel;
         public Builder() {}
@@ -95,6 +100,7 @@ public final class PagesProjectDeploymentConfigsProduction {
     	      this.failOpen = defaults.failOpen;
     	      this.kvNamespaces = defaults.kvNamespaces;
     	      this.r2Buckets = defaults.r2Buckets;
+    	      this.secrets = defaults.secrets;
     	      this.serviceBindings = defaults.serviceBindings;
     	      this.usageModel = defaults.usageModel;
         }
@@ -148,6 +154,11 @@ public final class PagesProjectDeploymentConfigsProduction {
             return this;
         }
         @CustomType.Setter
+        public Builder secrets(@Nullable Map<String,Object> secrets) {
+            this.secrets = secrets;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceBindings(@Nullable List<PagesProjectDeploymentConfigsProductionServiceBinding> serviceBindings) {
             this.serviceBindings = serviceBindings;
             return this;
@@ -171,6 +182,7 @@ public final class PagesProjectDeploymentConfigsProduction {
             o.failOpen = failOpen;
             o.kvNamespaces = kvNamespaces;
             o.r2Buckets = r2Buckets;
+            o.secrets = secrets;
             o.serviceBindings = serviceBindings;
             o.usageModel = usageModel;
             return o;

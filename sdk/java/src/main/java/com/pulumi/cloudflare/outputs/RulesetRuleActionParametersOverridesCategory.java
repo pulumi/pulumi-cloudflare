@@ -14,14 +14,7 @@ import javax.annotation.Nullable;
 public final class RulesetRuleActionParametersOverridesCategory {
     private @Nullable String action;
     private @Nullable String category;
-    /**
-     * @deprecated
-     * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-     * 
-     */
-    @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
     private @Nullable Boolean enabled;
-    private @Nullable String status;
 
     private RulesetRuleActionParametersOverridesCategory() {}
     public Optional<String> action() {
@@ -30,17 +23,8 @@ public final class RulesetRuleActionParametersOverridesCategory {
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
-    /**
-     * @deprecated
-     * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-     * 
-     */
-    @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
-    }
-    public Optional<String> status() {
-        return Optional.ofNullable(this.status);
     }
 
     public static Builder builder() {
@@ -55,14 +39,12 @@ public final class RulesetRuleActionParametersOverridesCategory {
         private @Nullable String action;
         private @Nullable String category;
         private @Nullable Boolean enabled;
-        private @Nullable String status;
         public Builder() {}
         public Builder(RulesetRuleActionParametersOverridesCategory defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
     	      this.category = defaults.category;
     	      this.enabled = defaults.enabled;
-    	      this.status = defaults.status;
         }
 
         @CustomType.Setter
@@ -80,17 +62,11 @@ public final class RulesetRuleActionParametersOverridesCategory {
             this.enabled = enabled;
             return this;
         }
-        @CustomType.Setter
-        public Builder status(@Nullable String status) {
-            this.status = status;
-            return this;
-        }
         public RulesetRuleActionParametersOverridesCategory build() {
             final var o = new RulesetRuleActionParametersOverridesCategory();
             o.action = action;
             o.category = category;
             o.enabled = enabled;
-            o.status = status;
             return o;
         }
     }

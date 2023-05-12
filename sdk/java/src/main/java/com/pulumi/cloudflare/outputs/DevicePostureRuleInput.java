@@ -6,12 +6,18 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class DevicePostureRuleInput {
+    /**
+     * @return Specific volume(s) to check for encryption.
+     * 
+     */
+    private @Nullable List<String> checkDisks;
     /**
      * @return The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
      * 
@@ -109,6 +115,13 @@ public final class DevicePostureRuleInput {
     private @Nullable String versionOperator;
 
     private DevicePostureRuleInput() {}
+    /**
+     * @return Specific volume(s) to check for encryption.
+     * 
+     */
+    public List<String> checkDisks() {
+        return this.checkDisks == null ? List.of() : this.checkDisks;
+    }
     /**
      * @return The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
      * 
@@ -252,6 +265,7 @@ public final class DevicePostureRuleInput {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> checkDisks;
         private @Nullable String complianceStatus;
         private @Nullable String connectionId;
         private @Nullable String domain;
@@ -274,6 +288,7 @@ public final class DevicePostureRuleInput {
         public Builder() {}
         public Builder(DevicePostureRuleInput defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.checkDisks = defaults.checkDisks;
     	      this.complianceStatus = defaults.complianceStatus;
     	      this.connectionId = defaults.connectionId;
     	      this.domain = defaults.domain;
@@ -295,6 +310,14 @@ public final class DevicePostureRuleInput {
     	      this.versionOperator = defaults.versionOperator;
         }
 
+        @CustomType.Setter
+        public Builder checkDisks(@Nullable List<String> checkDisks) {
+            this.checkDisks = checkDisks;
+            return this;
+        }
+        public Builder checkDisks(String... checkDisks) {
+            return checkDisks(List.of(checkDisks));
+        }
         @CustomType.Setter
         public Builder complianceStatus(@Nullable String complianceStatus) {
             this.complianceStatus = complianceStatus;
@@ -392,6 +415,7 @@ public final class DevicePostureRuleInput {
         }
         public DevicePostureRuleInput build() {
             final var o = new DevicePostureRuleInput();
+            o.checkDisks = checkDisks;
             o.complianceStatus = complianceStatus;
             o.connectionId = connectionId;
             o.domain = domain;

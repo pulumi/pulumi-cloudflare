@@ -33,7 +33,7 @@ type LogpushJob struct {
 
 	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`.
+	// The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`.
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
 	DestinationConf pulumi.StringOutput `pulumi:"destinationConf"`
@@ -47,6 +47,12 @@ type LogpushJob struct {
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrOutput `pulumi:"logpullOptions"`
+	// The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+	MaxUploadBytes pulumi.IntPtrOutput `pulumi:"maxUploadBytes"`
+	// The maximum interval in seconds for log batches. Value must be between 30 and 300.
+	MaxUploadIntervalSeconds pulumi.IntPtrOutput `pulumi:"maxUploadIntervalSeconds"`
+	// The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+	MaxUploadRecords pulumi.IntPtrOutput `pulumi:"maxUploadRecords"`
 	// The name of the logpush job to create.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
@@ -92,7 +98,7 @@ func GetLogpushJob(ctx *pulumi.Context,
 type logpushJobState struct {
 	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 	AccountId *string `pulumi:"accountId"`
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`.
+	// The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`.
 	Dataset *string `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
 	DestinationConf *string `pulumi:"destinationConf"`
@@ -106,6 +112,12 @@ type logpushJobState struct {
 	Kind *string `pulumi:"kind"`
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions *string `pulumi:"logpullOptions"`
+	// The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+	MaxUploadBytes *int `pulumi:"maxUploadBytes"`
+	// The maximum interval in seconds for log batches. Value must be between 30 and 300.
+	MaxUploadIntervalSeconds *int `pulumi:"maxUploadIntervalSeconds"`
+	// The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+	MaxUploadRecords *int `pulumi:"maxUploadRecords"`
 	// The name of the logpush job to create.
 	Name *string `pulumi:"name"`
 	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
@@ -117,7 +129,7 @@ type logpushJobState struct {
 type LogpushJobState struct {
 	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 	AccountId pulumi.StringPtrInput
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`.
+	// The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`.
 	Dataset pulumi.StringPtrInput
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
 	DestinationConf pulumi.StringPtrInput
@@ -131,6 +143,12 @@ type LogpushJobState struct {
 	Kind pulumi.StringPtrInput
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrInput
+	// The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+	MaxUploadBytes pulumi.IntPtrInput
+	// The maximum interval in seconds for log batches. Value must be between 30 and 300.
+	MaxUploadIntervalSeconds pulumi.IntPtrInput
+	// The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+	MaxUploadRecords pulumi.IntPtrInput
 	// The name of the logpush job to create.
 	Name pulumi.StringPtrInput
 	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
@@ -146,7 +164,7 @@ func (LogpushJobState) ElementType() reflect.Type {
 type logpushJobArgs struct {
 	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 	AccountId *string `pulumi:"accountId"`
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`.
+	// The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`.
 	Dataset string `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
 	DestinationConf string `pulumi:"destinationConf"`
@@ -160,6 +178,12 @@ type logpushJobArgs struct {
 	Kind *string `pulumi:"kind"`
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions *string `pulumi:"logpullOptions"`
+	// The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+	MaxUploadBytes *int `pulumi:"maxUploadBytes"`
+	// The maximum interval in seconds for log batches. Value must be between 30 and 300.
+	MaxUploadIntervalSeconds *int `pulumi:"maxUploadIntervalSeconds"`
+	// The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+	MaxUploadRecords *int `pulumi:"maxUploadRecords"`
 	// The name of the logpush job to create.
 	Name *string `pulumi:"name"`
 	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
@@ -172,7 +196,7 @@ type logpushJobArgs struct {
 type LogpushJobArgs struct {
 	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 	AccountId pulumi.StringPtrInput
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`.
+	// The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`.
 	Dataset pulumi.StringInput
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
 	DestinationConf pulumi.StringInput
@@ -186,6 +210,12 @@ type LogpushJobArgs struct {
 	Kind pulumi.StringPtrInput
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrInput
+	// The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+	MaxUploadBytes pulumi.IntPtrInput
+	// The maximum interval in seconds for log batches. Value must be between 30 and 300.
+	MaxUploadIntervalSeconds pulumi.IntPtrInput
+	// The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+	MaxUploadRecords pulumi.IntPtrInput
 	// The name of the logpush job to create.
 	Name pulumi.StringPtrInput
 	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
@@ -286,7 +316,7 @@ func (o LogpushJobOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`.
+// The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`.
 func (o LogpushJobOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringOutput { return v.Dataset }).(pulumi.StringOutput)
 }
@@ -319,6 +349,21 @@ func (o LogpushJobOutput) Kind() pulumi.StringPtrOutput {
 // Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 func (o LogpushJobOutput) LogpullOptions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.LogpullOptions }).(pulumi.StringPtrOutput)
+}
+
+// The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+func (o LogpushJobOutput) MaxUploadBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.IntPtrOutput { return v.MaxUploadBytes }).(pulumi.IntPtrOutput)
+}
+
+// The maximum interval in seconds for log batches. Value must be between 30 and 300.
+func (o LogpushJobOutput) MaxUploadIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.IntPtrOutput { return v.MaxUploadIntervalSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+func (o LogpushJobOutput) MaxUploadRecords() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.IntPtrOutput { return v.MaxUploadRecords }).(pulumi.IntPtrOutput)
 }
 
 // The name of the logpush job to create.

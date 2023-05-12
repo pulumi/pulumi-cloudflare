@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // Allowing access to `test@example.com` email address only
- * const testGroupAccessGroup = new cloudflare.AccessGroup("testGroupAccessGroup", {
+ * const exampleAccessGroup = new cloudflare.AccessGroup("exampleAccessGroup", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "staging group",
  *     includes: [{
@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  * });
  * // Allowing `test@example.com` to access but only when coming from a
  * // specific IP.
- * const testGroupIndex_accessGroupAccessGroup = new cloudflare.AccessGroup("testGroupIndex/accessGroupAccessGroup", {
+ * const exampleIndex_accessGroupAccessGroup = new cloudflare.AccessGroup("exampleIndex/accessGroupAccessGroup", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "staging group",
  *     includes: [{
@@ -42,6 +42,17 @@ import * as utilities from "./utilities";
  *     requires: {
  *         ips: [_var.office_ip],
  *     },
+ * });
+ * // Allow members of an Azure Group. The ID is the group UUID (id) in Azure.
+ * const exampleCloudflareIndex_accessGroupAccessGroup = new cloudflare.AccessGroup("exampleCloudflareIndex/accessGroupAccessGroup", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     name: "test_group",
+ *     includes: [{
+ *         azures: [{
+ *             identityProviderId: "ca298b82-93b5-41bf-bc2d-10493f09b761",
+ *             ids: ["86773093-5feb-48dd-814b-7ccd3676ff50"],
+ *         }],
+ *     }],
  * });
  * ```
  *

@@ -23,8 +23,8 @@ namespace Pulumi.Cloudflare.Inputs
             set => _statusCodeRanges = value;
         }
 
-        [Input("value", required: true)]
-        public Input<int> Value { get; set; } = null!;
+        [Input("value")]
+        public Input<int>? Value { get; set; }
 
         public RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs()
         {

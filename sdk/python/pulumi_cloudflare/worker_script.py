@@ -20,7 +20,10 @@ class WorkerScriptArgs:
                  content: pulumi.Input[str],
                  name: pulumi.Input[str],
                  analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptAnalyticsEngineBindingArgs']]]] = None,
+                 compatibility_date: Optional[pulumi.Input[str]] = None,
+                 compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]] = None,
+                 logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
                  plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlainTextBindingArgs']]]] = None,
                  queue_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptQueueBindingArgs']]]] = None,
@@ -33,6 +36,9 @@ class WorkerScriptArgs:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] content: The script content.
         :param pulumi.Input[str] name: The name for the script. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] compatibility_date: The date to use for the compatibility flag.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] compatibility_flags: Compatibility flags used for Worker Scripts.
+        :param pulumi.Input[bool] logpush: Enabling allows Worker events to be sent to a defined Logpush destination.
         :param pulumi.Input[bool] module: Whether to upload Worker as a module.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -40,8 +46,14 @@ class WorkerScriptArgs:
         pulumi.set(__self__, "name", name)
         if analytics_engine_bindings is not None:
             pulumi.set(__self__, "analytics_engine_bindings", analytics_engine_bindings)
+        if compatibility_date is not None:
+            pulumi.set(__self__, "compatibility_date", compatibility_date)
+        if compatibility_flags is not None:
+            pulumi.set(__self__, "compatibility_flags", compatibility_flags)
         if kv_namespace_bindings is not None:
             pulumi.set(__self__, "kv_namespace_bindings", kv_namespace_bindings)
+        if logpush is not None:
+            pulumi.set(__self__, "logpush", logpush)
         if module is not None:
             pulumi.set(__self__, "module", module)
         if plain_text_bindings is not None:
@@ -103,6 +115,30 @@ class WorkerScriptArgs:
         pulumi.set(self, "analytics_engine_bindings", value)
 
     @property
+    @pulumi.getter(name="compatibilityDate")
+    def compatibility_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date to use for the compatibility flag.
+        """
+        return pulumi.get(self, "compatibility_date")
+
+    @compatibility_date.setter
+    def compatibility_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compatibility_date", value)
+
+    @property
+    @pulumi.getter(name="compatibilityFlags")
+    def compatibility_flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Compatibility flags used for Worker Scripts.
+        """
+        return pulumi.get(self, "compatibility_flags")
+
+    @compatibility_flags.setter
+    def compatibility_flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "compatibility_flags", value)
+
+    @property
     @pulumi.getter(name="kvNamespaceBindings")
     def kv_namespace_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]]:
         return pulumi.get(self, "kv_namespace_bindings")
@@ -110,6 +146,18 @@ class WorkerScriptArgs:
     @kv_namespace_bindings.setter
     def kv_namespace_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]]):
         pulumi.set(self, "kv_namespace_bindings", value)
+
+    @property
+    @pulumi.getter
+    def logpush(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enabling allows Worker events to be sent to a defined Logpush destination.
+        """
+        return pulumi.get(self, "logpush")
+
+    @logpush.setter
+    def logpush(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "logpush", value)
 
     @property
     @pulumi.getter
@@ -183,8 +231,11 @@ class _WorkerScriptState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptAnalyticsEngineBindingArgs']]]] = None,
+                 compatibility_date: Optional[pulumi.Input[str]] = None,
+                 compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]] = None,
+                 logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlainTextBindingArgs']]]] = None,
@@ -196,7 +247,10 @@ class _WorkerScriptState:
         """
         Input properties used for looking up and filtering WorkerScript resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] compatibility_date: The date to use for the compatibility flag.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] compatibility_flags: Compatibility flags used for Worker Scripts.
         :param pulumi.Input[str] content: The script content.
+        :param pulumi.Input[bool] logpush: Enabling allows Worker events to be sent to a defined Logpush destination.
         :param pulumi.Input[bool] module: Whether to upload Worker as a module.
         :param pulumi.Input[str] name: The name for the script. **Modifying this attribute will force creation of a new resource.**
         """
@@ -204,10 +258,16 @@ class _WorkerScriptState:
             pulumi.set(__self__, "account_id", account_id)
         if analytics_engine_bindings is not None:
             pulumi.set(__self__, "analytics_engine_bindings", analytics_engine_bindings)
+        if compatibility_date is not None:
+            pulumi.set(__self__, "compatibility_date", compatibility_date)
+        if compatibility_flags is not None:
+            pulumi.set(__self__, "compatibility_flags", compatibility_flags)
         if content is not None:
             pulumi.set(__self__, "content", content)
         if kv_namespace_bindings is not None:
             pulumi.set(__self__, "kv_namespace_bindings", kv_namespace_bindings)
+        if logpush is not None:
+            pulumi.set(__self__, "logpush", logpush)
         if module is not None:
             pulumi.set(__self__, "module", module)
         if name is not None:
@@ -247,6 +307,30 @@ class _WorkerScriptState:
         pulumi.set(self, "analytics_engine_bindings", value)
 
     @property
+    @pulumi.getter(name="compatibilityDate")
+    def compatibility_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date to use for the compatibility flag.
+        """
+        return pulumi.get(self, "compatibility_date")
+
+    @compatibility_date.setter
+    def compatibility_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compatibility_date", value)
+
+    @property
+    @pulumi.getter(name="compatibilityFlags")
+    def compatibility_flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Compatibility flags used for Worker Scripts.
+        """
+        return pulumi.get(self, "compatibility_flags")
+
+    @compatibility_flags.setter
+    def compatibility_flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "compatibility_flags", value)
+
+    @property
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[str]]:
         """
@@ -266,6 +350,18 @@ class _WorkerScriptState:
     @kv_namespace_bindings.setter
     def kv_namespace_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]]):
         pulumi.set(self, "kv_namespace_bindings", value)
+
+    @property
+    @pulumi.getter
+    def logpush(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enabling allows Worker events to be sent to a defined Logpush destination.
+        """
+        return pulumi.get(self, "logpush")
+
+    @logpush.setter
+    def logpush(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "logpush", value)
 
     @property
     @pulumi.getter
@@ -353,8 +449,11 @@ class WorkerScript(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptAnalyticsEngineBindingArgs']]]]] = None,
+                 compatibility_date: Optional[pulumi.Input[str]] = None,
+                 compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
+                 logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptPlainTextBindingArgs']]]]] = None,
@@ -366,9 +465,6 @@ class WorkerScript(pulumi.CustomResource):
                  __props__=None):
         """
         Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`.
-
-        > This resource uses the Cloudflare account APIs. This requires setting the
-          `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
 
         ## Example Usage
 
@@ -425,7 +521,10 @@ class WorkerScript(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] compatibility_date: The date to use for the compatibility flag.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] compatibility_flags: Compatibility flags used for Worker Scripts.
         :param pulumi.Input[str] content: The script content.
+        :param pulumi.Input[bool] logpush: Enabling allows Worker events to be sent to a defined Logpush destination.
         :param pulumi.Input[bool] module: Whether to upload Worker as a module.
         :param pulumi.Input[str] name: The name for the script. **Modifying this attribute will force creation of a new resource.**
         """
@@ -437,9 +536,6 @@ class WorkerScript(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`.
-
-        > This resource uses the Cloudflare account APIs. This requires setting the
-          `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
 
         ## Example Usage
 
@@ -510,8 +606,11 @@ class WorkerScript(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptAnalyticsEngineBindingArgs']]]]] = None,
+                 compatibility_date: Optional[pulumi.Input[str]] = None,
+                 compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
+                 logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptPlainTextBindingArgs']]]]] = None,
@@ -533,10 +632,13 @@ class WorkerScript(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["analytics_engine_bindings"] = analytics_engine_bindings
+            __props__.__dict__["compatibility_date"] = compatibility_date
+            __props__.__dict__["compatibility_flags"] = compatibility_flags
             if content is None and not opts.urn:
                 raise TypeError("Missing required property 'content'")
             __props__.__dict__["content"] = content
             __props__.__dict__["kv_namespace_bindings"] = kv_namespace_bindings
+            __props__.__dict__["logpush"] = logpush
             __props__.__dict__["module"] = module
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
@@ -559,8 +661,11 @@ class WorkerScript(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptAnalyticsEngineBindingArgs']]]]] = None,
+            compatibility_date: Optional[pulumi.Input[str]] = None,
+            compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             content: Optional[pulumi.Input[str]] = None,
             kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
+            logpush: Optional[pulumi.Input[bool]] = None,
             module: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptPlainTextBindingArgs']]]]] = None,
@@ -577,7 +682,10 @@ class WorkerScript(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] compatibility_date: The date to use for the compatibility flag.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] compatibility_flags: Compatibility flags used for Worker Scripts.
         :param pulumi.Input[str] content: The script content.
+        :param pulumi.Input[bool] logpush: Enabling allows Worker events to be sent to a defined Logpush destination.
         :param pulumi.Input[bool] module: Whether to upload Worker as a module.
         :param pulumi.Input[str] name: The name for the script. **Modifying this attribute will force creation of a new resource.**
         """
@@ -587,8 +695,11 @@ class WorkerScript(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["analytics_engine_bindings"] = analytics_engine_bindings
+        __props__.__dict__["compatibility_date"] = compatibility_date
+        __props__.__dict__["compatibility_flags"] = compatibility_flags
         __props__.__dict__["content"] = content
         __props__.__dict__["kv_namespace_bindings"] = kv_namespace_bindings
+        __props__.__dict__["logpush"] = logpush
         __props__.__dict__["module"] = module
         __props__.__dict__["name"] = name
         __props__.__dict__["plain_text_bindings"] = plain_text_bindings
@@ -613,6 +724,22 @@ class WorkerScript(pulumi.CustomResource):
         return pulumi.get(self, "analytics_engine_bindings")
 
     @property
+    @pulumi.getter(name="compatibilityDate")
+    def compatibility_date(self) -> pulumi.Output[Optional[str]]:
+        """
+        The date to use for the compatibility flag.
+        """
+        return pulumi.get(self, "compatibility_date")
+
+    @property
+    @pulumi.getter(name="compatibilityFlags")
+    def compatibility_flags(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Compatibility flags used for Worker Scripts.
+        """
+        return pulumi.get(self, "compatibility_flags")
+
+    @property
     @pulumi.getter
     def content(self) -> pulumi.Output[str]:
         """
@@ -624,6 +751,14 @@ class WorkerScript(pulumi.CustomResource):
     @pulumi.getter(name="kvNamespaceBindings")
     def kv_namespace_bindings(self) -> pulumi.Output[Optional[Sequence['outputs.WorkerScriptKvNamespaceBinding']]]:
         return pulumi.get(self, "kv_namespace_bindings")
+
+    @property
+    @pulumi.getter
+    def logpush(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enabling allows Worker events to be sent to a defined Logpush destination.
+        """
+        return pulumi.get(self, "logpush")
 
     @property
     @pulumi.getter

@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,14 +33,14 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`.
+     * The kind of the dataset to use with the logpush job. Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.
      * 
      */
     @Import(name="dataset", required=true)
     private Output<String> dataset;
 
     /**
-     * @return Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`.
+     * @return The kind of the dataset to use with the logpush job. Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.
      * 
      */
     public Output<String> dataset() {
@@ -137,6 +138,51 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+     * 
+     */
+    @Import(name="maxUploadBytes")
+    private @Nullable Output<Integer> maxUploadBytes;
+
+    /**
+     * @return The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+     * 
+     */
+    public Optional<Output<Integer>> maxUploadBytes() {
+        return Optional.ofNullable(this.maxUploadBytes);
+    }
+
+    /**
+     * The maximum interval in seconds for log batches. Value must be between 30 and 300.
+     * 
+     */
+    @Import(name="maxUploadIntervalSeconds")
+    private @Nullable Output<Integer> maxUploadIntervalSeconds;
+
+    /**
+     * @return The maximum interval in seconds for log batches. Value must be between 30 and 300.
+     * 
+     */
+    public Optional<Output<Integer>> maxUploadIntervalSeconds() {
+        return Optional.ofNullable(this.maxUploadIntervalSeconds);
+    }
+
+    /**
+     * The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+     * 
+     */
+    @Import(name="maxUploadRecords")
+    private @Nullable Output<Integer> maxUploadRecords;
+
+    /**
+     * @return The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+     * 
+     */
+    public Optional<Output<Integer>> maxUploadRecords() {
+        return Optional.ofNullable(this.maxUploadRecords);
+    }
+
+    /**
      * The name of the logpush job to create.
      * 
      */
@@ -192,6 +238,9 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
         this.frequency = $.frequency;
         this.kind = $.kind;
         this.logpullOptions = $.logpullOptions;
+        this.maxUploadBytes = $.maxUploadBytes;
+        this.maxUploadIntervalSeconds = $.maxUploadIntervalSeconds;
+        this.maxUploadRecords = $.maxUploadRecords;
         this.name = $.name;
         this.ownershipChallenge = $.ownershipChallenge;
         this.zoneId = $.zoneId;
@@ -237,7 +286,7 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataset Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`.
+         * @param dataset The kind of the dataset to use with the logpush job. Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.
          * 
          * @return builder
          * 
@@ -248,7 +297,7 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataset Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`.
+         * @param dataset The kind of the dataset to use with the logpush job. Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.
          * 
          * @return builder
          * 
@@ -381,6 +430,69 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder logpullOptions(String logpullOptions) {
             return logpullOptions(Output.of(logpullOptions));
+        }
+
+        /**
+         * @param maxUploadBytes The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxUploadBytes(@Nullable Output<Integer> maxUploadBytes) {
+            $.maxUploadBytes = maxUploadBytes;
+            return this;
+        }
+
+        /**
+         * @param maxUploadBytes The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxUploadBytes(Integer maxUploadBytes) {
+            return maxUploadBytes(Output.of(maxUploadBytes));
+        }
+
+        /**
+         * @param maxUploadIntervalSeconds The maximum interval in seconds for log batches. Value must be between 30 and 300.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxUploadIntervalSeconds(@Nullable Output<Integer> maxUploadIntervalSeconds) {
+            $.maxUploadIntervalSeconds = maxUploadIntervalSeconds;
+            return this;
+        }
+
+        /**
+         * @param maxUploadIntervalSeconds The maximum interval in seconds for log batches. Value must be between 30 and 300.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxUploadIntervalSeconds(Integer maxUploadIntervalSeconds) {
+            return maxUploadIntervalSeconds(Output.of(maxUploadIntervalSeconds));
+        }
+
+        /**
+         * @param maxUploadRecords The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxUploadRecords(@Nullable Output<Integer> maxUploadRecords) {
+            $.maxUploadRecords = maxUploadRecords;
+            return this;
+        }
+
+        /**
+         * @param maxUploadRecords The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxUploadRecords(Integer maxUploadRecords) {
+            return maxUploadRecords(Output.of(maxUploadRecords));
         }
 
         /**

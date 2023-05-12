@@ -15,15 +15,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersEdgeTtl {
     private @Nullable Integer default_;
-    private String mode;
+    private @Nullable String mode;
     private @Nullable List<RulesetRuleActionParametersEdgeTtlStatusCodeTtl> statusCodeTtls;
 
     private RulesetRuleActionParametersEdgeTtl() {}
     public Optional<Integer> default_() {
         return Optional.ofNullable(this.default_);
     }
-    public String mode() {
-        return this.mode;
+    public Optional<String> mode() {
+        return Optional.ofNullable(this.mode);
     }
     public List<RulesetRuleActionParametersEdgeTtlStatusCodeTtl> statusCodeTtls() {
         return this.statusCodeTtls == null ? List.of() : this.statusCodeTtls;
@@ -39,7 +39,7 @@ public final class RulesetRuleActionParametersEdgeTtl {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer default_;
-        private String mode;
+        private @Nullable String mode;
         private @Nullable List<RulesetRuleActionParametersEdgeTtlStatusCodeTtl> statusCodeTtls;
         public Builder() {}
         public Builder(RulesetRuleActionParametersEdgeTtl defaults) {
@@ -55,8 +55,8 @@ public final class RulesetRuleActionParametersEdgeTtl {
             return this;
         }
         @CustomType.Setter
-        public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+        public Builder mode(@Nullable String mode) {
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter

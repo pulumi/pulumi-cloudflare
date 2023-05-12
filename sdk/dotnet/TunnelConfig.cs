@@ -13,6 +13,89 @@ namespace Pulumi.Cloudflare
     /// Provides a Cloudflare Tunnel configuration resource.
     /// 
     /// !&gt; When you delete a tunnel configuration, the tunnel will be deleted. You need to make sure that the tunnel is not in use before deleting the configuration.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleTunnel = new Cloudflare.Tunnel("exampleTunnel", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "example_tunnel",
+    ///         Secret = "&lt;32 character secret&gt;",
+    ///     });
+    /// 
+    ///     var exampleConfig = new Cloudflare.TunnelConfig("exampleConfig", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         TunnelId = exampleTunnel.Id,
+    ///         Config = new Cloudflare.Inputs.TunnelConfigConfigArgs
+    ///         {
+    ///             WarpRouting = new Cloudflare.Inputs.TunnelConfigConfigWarpRoutingArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///             OriginRequest = new Cloudflare.Inputs.TunnelConfigConfigOriginRequestArgs
+    ///             {
+    ///                 ConnectTimeout = "1m0s",
+    ///                 TlsTimeout = "1m0s",
+    ///                 TcpKeepAlive = "1m0s",
+    ///                 NoHappyEyeballs = false,
+    ///                 KeepAliveConnections = 1024,
+    ///                 KeepAliveTimeout = "1m0s",
+    ///                 HttpHostHeader = "baz",
+    ///                 OriginServerName = "foobar",
+    ///                 CaPool = "/path/to/unsigned/ca/pool",
+    ///                 NoTlsVerify = false,
+    ///                 DisableChunkedEncoding = false,
+    ///                 BastionMode = false,
+    ///                 ProxyAddress = "10.0.0.1",
+    ///                 ProxyPort = 8123,
+    ///                 ProxyType = "socks",
+    ///                 IpRules = new[]
+    ///                 {
+    ///                     new Cloudflare.Inputs.TunnelConfigConfigOriginRequestIpRuleArgs
+    ///                     {
+    ///                         Prefix = "/web",
+    ///                         Ports = new[]
+    ///                         {
+    ///                             80,
+    ///                             443,
+    ///                         },
+    ///                         Allow = false,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             IngressRules = new[]
+    ///             {
+    ///                 new Cloudflare.Inputs.TunnelConfigConfigIngressRuleArgs
+    ///                 {
+    ///                     Hostname = "foo",
+    ///                     Path = "/bar",
+    ///                     Service = "http://10.0.0.2:8080",
+    ///                 },
+    ///                 new Cloudflare.Inputs.TunnelConfigConfigIngressRuleArgs
+    ///                 {
+    ///                     Service = "https://10.0.0.3:8081",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/tunnelConfig:TunnelConfig example &lt;account_id&gt;/&lt;tunnel_id&gt;
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/tunnelConfig:TunnelConfig")]
     public partial class TunnelConfig : global::Pulumi.CustomResource

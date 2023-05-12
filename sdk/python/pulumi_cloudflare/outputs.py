@@ -35,6 +35,7 @@ __all__ = [
     'AccessGroupRequireOkta',
     'AccessGroupRequireSaml',
     'AccessIdentityProviderConfig',
+    'AccessIdentityProviderScimConfig',
     'AccessOrganizationLoginDesign',
     'AccessPolicyApprovalGroup',
     'AccessPolicyExclude',
@@ -59,6 +60,8 @@ __all__ = [
     'AccessPolicyRequireOkta',
     'AccessPolicyRequireSaml',
     'AccessRuleConfiguration',
+    'AddressMapIp',
+    'AddressMapMembership',
     'ApiShieldAuthIdCharacteristic',
     'ApiTokenCondition',
     'ApiTokenConditionRequestIp',
@@ -71,6 +74,7 @@ __all__ = [
     'CustomHostnameSslValidationRecord',
     'CustomSslCustomSslOptions',
     'CustomSslCustomSslPriority',
+    'DeviceDexTestData',
     'DeviceManagedNetworksConfig',
     'DevicePostureIntegrationConfig',
     'DevicePostureRuleInput',
@@ -84,6 +88,7 @@ __all__ = [
     'FallbackDomainDomain',
     'HealthcheckHeader',
     'ListItem',
+    'ListItemRedirect',
     'ListItemValue',
     'ListItemValueRedirect',
     'LoadBalancerAdaptiveRouting',
@@ -141,6 +146,7 @@ __all__ = [
     'RecordData',
     'RulesetRule',
     'RulesetRuleActionParameters',
+    'RulesetRuleActionParametersAlgorithm',
     'RulesetRuleActionParametersAutominify',
     'RulesetRuleActionParametersBrowserTtl',
     'RulesetRuleActionParametersCacheKey',
@@ -188,6 +194,7 @@ __all__ = [
     'TeamsAccountProxy',
     'TeamsLocationNetwork',
     'TeamsRuleRuleSettings',
+    'TeamsRuleRuleSettingsAuditSsh',
     'TeamsRuleRuleSettingsBisoAdminControls',
     'TeamsRuleRuleSettingsCheckSession',
     'TeamsRuleRuleSettingsEgress',
@@ -221,6 +228,7 @@ __all__ = [
     'GetAccountRolesRoleResult',
     'GetAccountsAccountResult',
     'GetDevicesDeviceResult',
+    'GetListsListResult',
     'GetLoadBalancerPoolsFilterResult',
     'GetLoadBalancerPoolsPoolResult',
     'GetLoadBalancerPoolsPoolLoadSheddingResult',
@@ -1887,6 +1895,7 @@ class AccessIdentityProviderConfig(dict):
                  centrify_account: Optional[str] = None,
                  centrify_app_id: Optional[str] = None,
                  certs_url: Optional[str] = None,
+                 claims: Optional[Sequence[str]] = None,
                  client_id: Optional[str] = None,
                  client_secret: Optional[str] = None,
                  directory_id: Optional[str] = None,
@@ -1897,6 +1906,7 @@ class AccessIdentityProviderConfig(dict):
                  onelogin_account: Optional[str] = None,
                  pkce_enabled: Optional[bool] = None,
                  redirect_url: Optional[str] = None,
+                 scopes: Optional[Sequence[str]] = None,
                  sign_request: Optional[bool] = None,
                  sso_target_url: Optional[str] = None,
                  support_groups: Optional[bool] = None,
@@ -1915,6 +1925,8 @@ class AccessIdentityProviderConfig(dict):
             pulumi.set(__self__, "centrify_app_id", centrify_app_id)
         if certs_url is not None:
             pulumi.set(__self__, "certs_url", certs_url)
+        if claims is not None:
+            pulumi.set(__self__, "claims", claims)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
@@ -1935,6 +1947,8 @@ class AccessIdentityProviderConfig(dict):
             pulumi.set(__self__, "pkce_enabled", pkce_enabled)
         if redirect_url is not None:
             pulumi.set(__self__, "redirect_url", redirect_url)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
         if sign_request is not None:
             pulumi.set(__self__, "sign_request", sign_request)
         if sso_target_url is not None:
@@ -1978,6 +1992,11 @@ class AccessIdentityProviderConfig(dict):
     @pulumi.getter(name="certsUrl")
     def certs_url(self) -> Optional[str]:
         return pulumi.get(self, "certs_url")
+
+    @property
+    @pulumi.getter
+    def claims(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "claims")
 
     @property
     @pulumi.getter(name="clientId")
@@ -2030,6 +2049,11 @@ class AccessIdentityProviderConfig(dict):
         return pulumi.get(self, "redirect_url")
 
     @property
+    @pulumi.getter
+    def scopes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "scopes")
+
+    @property
     @pulumi.getter(name="signRequest")
     def sign_request(self) -> Optional[bool]:
         return pulumi.get(self, "sign_request")
@@ -2048,6 +2072,72 @@ class AccessIdentityProviderConfig(dict):
     @pulumi.getter(name="tokenUrl")
     def token_url(self) -> Optional[str]:
         return pulumi.get(self, "token_url")
+
+
+@pulumi.output_type
+class AccessIdentityProviderScimConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupMemberDeprovision":
+            suggest = "group_member_deprovision"
+        elif key == "seatDeprovision":
+            suggest = "seat_deprovision"
+        elif key == "userDeprovision":
+            suggest = "user_deprovision"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessIdentityProviderScimConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessIdentityProviderScimConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessIdentityProviderScimConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 group_member_deprovision: Optional[bool] = None,
+                 seat_deprovision: Optional[bool] = None,
+                 secret: Optional[str] = None,
+                 user_deprovision: Optional[bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if group_member_deprovision is not None:
+            pulumi.set(__self__, "group_member_deprovision", group_member_deprovision)
+        if seat_deprovision is not None:
+            pulumi.set(__self__, "seat_deprovision", seat_deprovision)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if user_deprovision is not None:
+            pulumi.set(__self__, "user_deprovision", user_deprovision)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="groupMemberDeprovision")
+    def group_member_deprovision(self) -> Optional[bool]:
+        return pulumi.get(self, "group_member_deprovision")
+
+    @property
+    @pulumi.getter(name="seatDeprovision")
+    def seat_deprovision(self) -> Optional[bool]:
+        return pulumi.get(self, "seat_deprovision")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[str]:
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter(name="userDeprovision")
+    def user_deprovision(self) -> Optional[bool]:
+        return pulumi.get(self, "user_deprovision")
 
 
 @pulumi.output_type
@@ -3629,6 +3719,82 @@ class AccessRuleConfiguration(dict):
 
 
 @pulumi.output_type
+class AddressMapIp(dict):
+    def __init__(__self__, *,
+                 ip: str):
+        """
+        :param str ip: An IPv4 or IPv6 address.
+        """
+        pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        An IPv4 or IPv6 address.
+        """
+        return pulumi.get(self, "ip")
+
+
+@pulumi.output_type
+class AddressMapMembership(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "canDelete":
+            suggest = "can_delete"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AddressMapMembership. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AddressMapMembership.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AddressMapMembership.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identifier: str,
+                 kind: str,
+                 can_delete: Optional[bool] = None):
+        """
+        :param str identifier: Identifier of the account or zone.
+        :param str kind: The type of the membership.
+        :param bool can_delete: Controls whether the membership can be deleted via the API or not.
+        """
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "kind", kind)
+        if can_delete is not None:
+            pulumi.set(__self__, "can_delete", can_delete)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> str:
+        """
+        Identifier of the account or zone.
+        """
+        return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        """
+        The type of the membership.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="canDelete")
+    def can_delete(self) -> Optional[bool]:
+        """
+        Controls whether the membership can be deleted via the API or not.
+        """
+        return pulumi.get(self, "can_delete")
+
+
+@pulumi.output_type
 class ApiShieldAuthIdCharacteristic(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None,
@@ -4313,6 +4479,47 @@ class CustomSslCustomSslPriority(dict):
 
 
 @pulumi.output_type
+class DeviceDexTestData(dict):
+    def __init__(__self__, *,
+                 host: str,
+                 kind: str,
+                 method: Optional[str] = None):
+        """
+        :param str host: The host URL for `http` test `kind`. For `traceroute`, it must be a valid hostname or IP address.
+        :param str kind: The type of Device Dex Test. Available values: `http`, `traceroute`.
+        :param str method: The http request method. Available values: `GET`.
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "kind", kind)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        The host URL for `http` test `kind`. For `traceroute`, it must be a valid hostname or IP address.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        """
+        The type of Device Dex Test. Available values: `http`, `traceroute`.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[str]:
+        """
+        The http request method. Available values: `GET`.
+        """
+        return pulumi.get(self, "method")
+
+
+@pulumi.output_type
 class DeviceManagedNetworksConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4469,7 +4676,9 @@ class DevicePostureRuleInput(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "complianceStatus":
+        if key == "checkDisks":
+            suggest = "check_disks"
+        elif key == "complianceStatus":
             suggest = "compliance_status"
         elif key == "connectionId":
             suggest = "connection_id"
@@ -4496,6 +4705,7 @@ class DevicePostureRuleInput(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 check_disks: Optional[Sequence[str]] = None,
                  compliance_status: Optional[str] = None,
                  connection_id: Optional[str] = None,
                  domain: Optional[str] = None,
@@ -4516,6 +4726,7 @@ class DevicePostureRuleInput(dict):
                  version: Optional[str] = None,
                  version_operator: Optional[str] = None):
         """
+        :param Sequence[str] check_disks: Specific volume(s) to check for encryption.
         :param str compliance_status: The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
         :param str connection_id: The workspace one connection id.
         :param str domain: The domain that the client must join.
@@ -4536,6 +4747,8 @@ class DevicePostureRuleInput(dict):
         :param str version: The operating system semantic version.
         :param str version_operator: The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
         """
+        if check_disks is not None:
+            pulumi.set(__self__, "check_disks", check_disks)
         if compliance_status is not None:
             pulumi.set(__self__, "compliance_status", compliance_status)
         if connection_id is not None:
@@ -4574,6 +4787,14 @@ class DevicePostureRuleInput(dict):
             pulumi.set(__self__, "version", version)
         if version_operator is not None:
             pulumi.set(__self__, "version_operator", version_operator)
+
+    @property
+    @pulumi.getter(name="checkDisks")
+    def check_disks(self) -> Optional[Sequence[str]]:
+        """
+        Specific volume(s) to check for encryption.
+        """
+        return pulumi.get(self, "check_disks")
 
     @property
     @pulumi.getter(name="complianceStatus")
@@ -5051,6 +5272,124 @@ class ListItem(dict):
 
 
 @pulumi.output_type
+class ListItemRedirect(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceUrl":
+            suggest = "source_url"
+        elif key == "targetUrl":
+            suggest = "target_url"
+        elif key == "includeSubdomains":
+            suggest = "include_subdomains"
+        elif key == "preservePathSuffix":
+            suggest = "preserve_path_suffix"
+        elif key == "preserveQueryString":
+            suggest = "preserve_query_string"
+        elif key == "statusCode":
+            suggest = "status_code"
+        elif key == "subpathMatching":
+            suggest = "subpath_matching"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ListItemRedirect. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ListItemRedirect.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ListItemRedirect.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_url: str,
+                 target_url: str,
+                 include_subdomains: Optional[str] = None,
+                 preserve_path_suffix: Optional[str] = None,
+                 preserve_query_string: Optional[str] = None,
+                 status_code: Optional[int] = None,
+                 subpath_matching: Optional[str] = None):
+        """
+        :param str source_url: The source url of the redirect.
+        :param str target_url: The target url of the redirect.
+        :param str include_subdomains: Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+        :param str preserve_path_suffix: Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+        :param str preserve_query_string: Whether the redirect target url should keep the query string of the request's url. Available values: `disabled`, `enabled`.
+        :param int status_code: The status code to be used when redirecting a request.
+        :param str subpath_matching: Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+        """
+        pulumi.set(__self__, "source_url", source_url)
+        pulumi.set(__self__, "target_url", target_url)
+        if include_subdomains is not None:
+            pulumi.set(__self__, "include_subdomains", include_subdomains)
+        if preserve_path_suffix is not None:
+            pulumi.set(__self__, "preserve_path_suffix", preserve_path_suffix)
+        if preserve_query_string is not None:
+            pulumi.set(__self__, "preserve_query_string", preserve_query_string)
+        if status_code is not None:
+            pulumi.set(__self__, "status_code", status_code)
+        if subpath_matching is not None:
+            pulumi.set(__self__, "subpath_matching", subpath_matching)
+
+    @property
+    @pulumi.getter(name="sourceUrl")
+    def source_url(self) -> str:
+        """
+        The source url of the redirect.
+        """
+        return pulumi.get(self, "source_url")
+
+    @property
+    @pulumi.getter(name="targetUrl")
+    def target_url(self) -> str:
+        """
+        The target url of the redirect.
+        """
+        return pulumi.get(self, "target_url")
+
+    @property
+    @pulumi.getter(name="includeSubdomains")
+    def include_subdomains(self) -> Optional[str]:
+        """
+        Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+        """
+        return pulumi.get(self, "include_subdomains")
+
+    @property
+    @pulumi.getter(name="preservePathSuffix")
+    def preserve_path_suffix(self) -> Optional[str]:
+        """
+        Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+        """
+        return pulumi.get(self, "preserve_path_suffix")
+
+    @property
+    @pulumi.getter(name="preserveQueryString")
+    def preserve_query_string(self) -> Optional[str]:
+        """
+        Whether the redirect target url should keep the query string of the request's url. Available values: `disabled`, `enabled`.
+        """
+        return pulumi.get(self, "preserve_query_string")
+
+    @property
+    @pulumi.getter(name="statusCode")
+    def status_code(self) -> Optional[int]:
+        """
+        The status code to be used when redirecting a request.
+        """
+        return pulumi.get(self, "status_code")
+
+    @property
+    @pulumi.getter(name="subpathMatching")
+    def subpath_matching(self) -> Optional[str]:
+        """
+        Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+        """
+        return pulumi.get(self, "subpath_matching")
+
+
+@pulumi.output_type
 class ListItemValue(dict):
     def __init__(__self__, *,
                  ip: Optional[str] = None,
@@ -5350,9 +5689,9 @@ class LoadBalancerPoolLoadShedding(dict):
                  session_policy: Optional[str] = None):
         """
         :param float default_percent: Percent of traffic to shed 0 - 100. Defaults to `0`.
-        :param str default_policy: Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`""`.
+        :param str default_policy: Method of shedding traffic. Available values: `""`, `hash`, `random`. Defaults to `""`.
         :param float session_percent: Percent of session traffic to shed 0 - 100. Defaults to `0`.
-        :param str session_policy: Method of shedding traffic. Available values: ``,`hash`. Defaults to`""`.
+        :param str session_policy: Method of shedding traffic. Available values: `""`, `hash`. Defaults to `""`.
         """
         if default_percent is not None:
             pulumi.set(__self__, "default_percent", default_percent)
@@ -5375,7 +5714,7 @@ class LoadBalancerPoolLoadShedding(dict):
     @pulumi.getter(name="defaultPolicy")
     def default_policy(self) -> Optional[str]:
         """
-        Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`""`.
+        Method of shedding traffic. Available values: `""`, `hash`, `random`. Defaults to `""`.
         """
         return pulumi.get(self, "default_policy")
 
@@ -5391,7 +5730,7 @@ class LoadBalancerPoolLoadShedding(dict):
     @pulumi.getter(name="sessionPolicy")
     def session_policy(self) -> Optional[str]:
         """
-        Method of shedding traffic. Available values: ``,`hash`. Defaults to`""`.
+        Method of shedding traffic. Available values: `""`, `hash`. Defaults to `""`.
         """
         return pulumi.get(self, "session_policy")
 
@@ -5485,7 +5824,7 @@ class LoadBalancerPoolOriginSteering(dict):
     def __init__(__self__, *,
                  policy: Optional[str] = None):
         """
-        :param str policy: Origin steering policy to be used. Available values: ``,`hash`,`random`. Defaults to`random`.
+        :param str policy: Origin steering policy to be used. Available values: `""`, `hash`, `random`. Defaults to `random`.
         """
         if policy is not None:
             pulumi.set(__self__, "policy", policy)
@@ -5494,7 +5833,7 @@ class LoadBalancerPoolOriginSteering(dict):
     @pulumi.getter
     def policy(self) -> Optional[str]:
         """
-        Origin steering policy to be used. Available values: ``,`hash`,`random`. Defaults to`random`.
+        Origin steering policy to be used. Available values: `""`, `hash`, `random`. Defaults to `random`.
         """
         return pulumi.get(self, "policy")
 
@@ -6507,6 +6846,8 @@ class NotificationPolicyFilters(dict):
             suggest = "health_check_ids"
         elif key == "inputIds":
             suggest = "input_ids"
+        elif key == "megabitsPerSeconds":
+            suggest = "megabits_per_seconds"
         elif key == "newHealths":
             suggest = "new_healths"
         elif key == "packetsPerSeconds":
@@ -6538,6 +6879,7 @@ class NotificationPolicyFilters(dict):
                  health_check_ids: Optional[Sequence[str]] = None,
                  input_ids: Optional[Sequence[str]] = None,
                  limits: Optional[Sequence[str]] = None,
+                 megabits_per_seconds: Optional[Sequence[str]] = None,
                  new_healths: Optional[Sequence[str]] = None,
                  packets_per_seconds: Optional[Sequence[str]] = None,
                  pool_ids: Optional[Sequence[str]] = None,
@@ -6557,6 +6899,7 @@ class NotificationPolicyFilters(dict):
         :param Sequence[str] health_check_ids: Identifier health check. Required when using `filters.0.status`.
         :param Sequence[str] input_ids: Stream input id to alert on.
         :param Sequence[str] limits: A numerical limit. Example: `100`.
+        :param Sequence[str] megabits_per_seconds: Megabits per second threshold for dos alert.
         :param Sequence[str] new_healths: Health status to alert on for pool or origin.
         :param Sequence[str] packets_per_seconds: Packets per second threshold for dos alert.
         :param Sequence[str] pool_ids: Load balancer pool identifier.
@@ -6581,6 +6924,8 @@ class NotificationPolicyFilters(dict):
             pulumi.set(__self__, "input_ids", input_ids)
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
+        if megabits_per_seconds is not None:
+            pulumi.set(__self__, "megabits_per_seconds", megabits_per_seconds)
         if new_healths is not None:
             pulumi.set(__self__, "new_healths", new_healths)
         if packets_per_seconds is not None:
@@ -6653,6 +6998,14 @@ class NotificationPolicyFilters(dict):
         A numerical limit. Example: `100`.
         """
         return pulumi.get(self, "limits")
+
+    @property
+    @pulumi.getter(name="megabitsPerSeconds")
+    def megabits_per_seconds(self) -> Optional[Sequence[str]]:
+        """
+        Megabits per second threshold for dos alert.
+        """
+        return pulumi.get(self, "megabits_per_seconds")
 
     @property
     @pulumi.getter(name="newHealths")
@@ -7936,6 +8289,7 @@ class PagesProjectDeploymentConfigsPreview(dict):
                  fail_open: Optional[bool] = None,
                  kv_namespaces: Optional[Mapping[str, Any]] = None,
                  r2_buckets: Optional[Mapping[str, Any]] = None,
+                 secrets: Optional[Mapping[str, Any]] = None,
                  service_bindings: Optional[Sequence['outputs.PagesProjectDeploymentConfigsPreviewServiceBinding']] = None,
                  usage_model: Optional[str] = None):
         if always_use_latest_compatibility_date is not None:
@@ -7956,6 +8310,8 @@ class PagesProjectDeploymentConfigsPreview(dict):
             pulumi.set(__self__, "kv_namespaces", kv_namespaces)
         if r2_buckets is not None:
             pulumi.set(__self__, "r2_buckets", r2_buckets)
+        if secrets is not None:
+            pulumi.set(__self__, "secrets", secrets)
         if service_bindings is not None:
             pulumi.set(__self__, "service_bindings", service_bindings)
         if usage_model is not None:
@@ -8005,6 +8361,11 @@ class PagesProjectDeploymentConfigsPreview(dict):
     @pulumi.getter(name="r2Buckets")
     def r2_buckets(self) -> Optional[Mapping[str, Any]]:
         return pulumi.get(self, "r2_buckets")
+
+    @property
+    @pulumi.getter
+    def secrets(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "secrets")
 
     @property
     @pulumi.getter(name="serviceBindings")
@@ -8099,6 +8460,7 @@ class PagesProjectDeploymentConfigsProduction(dict):
                  fail_open: Optional[bool] = None,
                  kv_namespaces: Optional[Mapping[str, Any]] = None,
                  r2_buckets: Optional[Mapping[str, Any]] = None,
+                 secrets: Optional[Mapping[str, Any]] = None,
                  service_bindings: Optional[Sequence['outputs.PagesProjectDeploymentConfigsProductionServiceBinding']] = None,
                  usage_model: Optional[str] = None):
         if always_use_latest_compatibility_date is not None:
@@ -8119,6 +8481,8 @@ class PagesProjectDeploymentConfigsProduction(dict):
             pulumi.set(__self__, "kv_namespaces", kv_namespaces)
         if r2_buckets is not None:
             pulumi.set(__self__, "r2_buckets", r2_buckets)
+        if secrets is not None:
+            pulumi.set(__self__, "secrets", secrets)
         if service_bindings is not None:
             pulumi.set(__self__, "service_bindings", service_bindings)
         if usage_model is not None:
@@ -8168,6 +8532,11 @@ class PagesProjectDeploymentConfigsProduction(dict):
     @pulumi.getter(name="r2Buckets")
     def r2_buckets(self) -> Optional[Mapping[str, Any]]:
         return pulumi.get(self, "r2_buckets")
+
+    @property
+    @pulumi.getter
+    def secrets(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "secrets")
 
     @property
     @pulumi.getter(name="serviceBindings")
@@ -8993,7 +9362,7 @@ class RulesetRule(dict):
                  version: Optional[str] = None):
         """
         :param str expression: Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
-        :param str action: Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
+        :param str action: Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`, `compress_response`.
         :param 'RulesetRuleActionParametersArgs' action_parameters: List of parameters that configure the behavior of the ruleset rule action.
         :param str description: Brief summary of the ruleset rule and its intended use.
         :param bool enabled: Whether the rule is active.
@@ -9041,7 +9410,7 @@ class RulesetRule(dict):
     @pulumi.getter
     def action(self) -> Optional[str]:
         """
-        Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
+        Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`, `compress_response`.
         """
         return pulumi.get(self, "action")
 
@@ -9194,6 +9563,7 @@ class RulesetRuleActionParameters(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 algorithms: Optional[Sequence['outputs.RulesetRuleActionParametersAlgorithm']] = None,
                  automatic_https_rewrites: Optional[bool] = None,
                  autominifies: Optional[Sequence['outputs.RulesetRuleActionParametersAutominify']] = None,
                  bic: Optional[bool] = None,
@@ -9242,9 +9612,11 @@ class RulesetRuleActionParameters(dict):
                  uri: Optional['outputs.RulesetRuleActionParametersUri'] = None,
                  version: Optional[str] = None):
         """
-        :param str id: The ID of this resource.
+        :param str id: The identifier of this resource.
         :param Mapping[str, str] rules: List of rules to apply to the ruleset.
         """
+        if algorithms is not None:
+            pulumi.set(__self__, "algorithms", algorithms)
         if automatic_https_rewrites is not None:
             pulumi.set(__self__, "automatic_https_rewrites", automatic_https_rewrites)
         if autominifies is not None:
@@ -9339,6 +9711,11 @@ class RulesetRuleActionParameters(dict):
             pulumi.set(__self__, "uri", uri)
         if version is not None:
             pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def algorithms(self) -> Optional[Sequence['outputs.RulesetRuleActionParametersAlgorithm']]:
+        return pulumi.get(self, "algorithms")
 
     @property
     @pulumi.getter(name="automaticHttpsRewrites")
@@ -9439,7 +9816,7 @@ class RulesetRuleActionParameters(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        The ID of this resource.
+        The identifier of this resource.
         """
         return pulumi.get(self, "id")
 
@@ -9583,6 +9960,24 @@ class RulesetRuleActionParameters(dict):
 
 
 @pulumi.output_type
+class RulesetRuleActionParametersAlgorithm(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: Name of the ruleset.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the ruleset.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class RulesetRuleActionParametersAutominify(dict):
     def __init__(__self__, *,
                  css: Optional[bool] = None,
@@ -9614,21 +10009,22 @@ class RulesetRuleActionParametersAutominify(dict):
 @pulumi.output_type
 class RulesetRuleActionParametersBrowserTtl(dict):
     def __init__(__self__, *,
-                 mode: str,
-                 default: Optional[int] = None):
-        pulumi.set(__self__, "mode", mode)
+                 default: Optional[int] = None,
+                 mode: Optional[str] = None):
         if default is not None:
             pulumi.set(__self__, "default", default)
-
-    @property
-    @pulumi.getter
-    def mode(self) -> str:
-        return pulumi.get(self, "mode")
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
 
     @property
     @pulumi.getter
     def default(self) -> Optional[int]:
         return pulumi.get(self, "default")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type
@@ -9939,24 +10335,25 @@ class RulesetRuleActionParametersEdgeTtl(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 mode: str,
                  default: Optional[int] = None,
+                 mode: Optional[str] = None,
                  status_code_ttls: Optional[Sequence['outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl']] = None):
-        pulumi.set(__self__, "mode", mode)
         if default is not None:
             pulumi.set(__self__, "default", default)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
         if status_code_ttls is not None:
             pulumi.set(__self__, "status_code_ttls", status_code_ttls)
 
     @property
     @pulumi.getter
-    def mode(self) -> str:
-        return pulumi.get(self, "mode")
+    def default(self) -> Optional[int]:
+        return pulumi.get(self, "default")
 
     @property
     @pulumi.getter
-    def default(self) -> Optional[int]:
-        return pulumi.get(self, "default")
+    def mode(self) -> Optional[str]:
+        return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter(name="statusCodeTtls")
@@ -9986,19 +10383,15 @@ class RulesetRuleActionParametersEdgeTtlStatusCodeTtl(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 value: int,
                  status_code: Optional[int] = None,
-                 status_code_ranges: Optional[Sequence['outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange']] = None):
-        pulumi.set(__self__, "value", value)
+                 status_code_ranges: Optional[Sequence['outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange']] = None,
+                 value: Optional[int] = None):
         if status_code is not None:
             pulumi.set(__self__, "status_code", status_code)
         if status_code_ranges is not None:
             pulumi.set(__self__, "status_code_ranges", status_code_ranges)
-
-    @property
-    @pulumi.getter
-    def value(self) -> int:
-        return pulumi.get(self, "value")
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter(name="statusCode")
@@ -10009,6 +10402,11 @@ class RulesetRuleActionParametersEdgeTtlStatusCodeTtl(dict):
     @pulumi.getter(name="statusCodeRanges")
     def status_code_ranges(self) -> Optional[Sequence['outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange']]:
         return pulumi.get(self, "status_code_ranges")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[int]:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -10052,24 +10450,26 @@ class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange(dict):
 @pulumi.output_type
 class RulesetRuleActionParametersFromList(dict):
     def __init__(__self__, *,
-                 key: str,
-                 name: str):
+                 key: Optional[str] = None,
+                 name: Optional[str] = None):
         """
-        :param str name: Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+        :param str name: Name of the ruleset.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "name", name)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
-    def key(self) -> str:
+    def key(self) -> Optional[str]:
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         """
-        Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+        Name of the ruleset.
         """
         return pulumi.get(self, "name")
 
@@ -10153,7 +10553,7 @@ class RulesetRuleActionParametersHeader(dict):
                  operation: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str name: Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+        :param str name: Name of the ruleset.
         """
         if expression is not None:
             pulumi.set(__self__, "expression", expression)
@@ -10173,7 +10573,7 @@ class RulesetRuleActionParametersHeader(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+        Name of the ruleset.
         """
         return pulumi.get(self, "name")
 
@@ -10263,8 +10663,7 @@ class RulesetRuleActionParametersOverrides(dict):
                  categories: Optional[Sequence['outputs.RulesetRuleActionParametersOverridesCategory']] = None,
                  enabled: Optional[bool] = None,
                  rules: Optional[Sequence['outputs.RulesetRuleActionParametersOverridesRule']] = None,
-                 sensitivity_level: Optional[str] = None,
-                 status: Optional[str] = None):
+                 sensitivity_level: Optional[str] = None):
         """
         :param Sequence['RulesetRuleActionParametersOverridesRuleArgs'] rules: List of rules to apply to the ruleset.
         """
@@ -10278,8 +10677,6 @@ class RulesetRuleActionParametersOverrides(dict):
             pulumi.set(__self__, "rules", rules)
         if sensitivity_level is not None:
             pulumi.set(__self__, "sensitivity_level", sensitivity_level)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -10309,27 +10706,19 @@ class RulesetRuleActionParametersOverrides(dict):
     def sensitivity_level(self) -> Optional[str]:
         return pulumi.get(self, "sensitivity_level")
 
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[str]:
-        return pulumi.get(self, "status")
-
 
 @pulumi.output_type
 class RulesetRuleActionParametersOverridesCategory(dict):
     def __init__(__self__, *,
                  action: Optional[str] = None,
                  category: Optional[str] = None,
-                 enabled: Optional[bool] = None,
-                 status: Optional[str] = None):
+                 enabled: Optional[bool] = None):
         if action is not None:
             pulumi.set(__self__, "action", action)
         if category is not None:
             pulumi.set(__self__, "category", category)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -10345,11 +10734,6 @@ class RulesetRuleActionParametersOverridesCategory(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         return pulumi.get(self, "enabled")
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[str]:
-        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
@@ -10378,10 +10762,9 @@ class RulesetRuleActionParametersOverridesRule(dict):
                  enabled: Optional[bool] = None,
                  id: Optional[str] = None,
                  score_threshold: Optional[int] = None,
-                 sensitivity_level: Optional[str] = None,
-                 status: Optional[str] = None):
+                 sensitivity_level: Optional[str] = None):
         """
-        :param str action: Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
+        :param str action: Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`, `compress_response`.
         :param bool enabled: Whether the rule is active.
         :param str id: Unique rule identifier.
         """
@@ -10395,14 +10778,12 @@ class RulesetRuleActionParametersOverridesRule(dict):
             pulumi.set(__self__, "score_threshold", score_threshold)
         if sensitivity_level is not None:
             pulumi.set(__self__, "sensitivity_level", sensitivity_level)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
     def action(self) -> Optional[str]:
         """
-        Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
+        Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`, `compress_response`.
         """
         return pulumi.get(self, "action")
 
@@ -10431,11 +10812,6 @@ class RulesetRuleActionParametersOverridesRule(dict):
     @pulumi.getter(name="sensitivityLevel")
     def sensitivity_level(self) -> Optional[str]:
         return pulumi.get(self, "sensitivity_level")
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[str]:
-        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
@@ -10643,22 +11019,14 @@ class RulesetRuleExposedCredentialCheck(dict):
 @pulumi.output_type
 class RulesetRuleLogging(dict):
     def __init__(__self__, *,
-                 enabled: Optional[bool] = None,
-                 status: Optional[str] = None):
+                 enabled: Optional[bool] = None):
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         return pulumi.get(self, "enabled")
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[str]:
-        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
@@ -11417,16 +11785,24 @@ class TeamsRuleRuleSettings(dict):
         suggest = None
         if key == "addHeaders":
             suggest = "add_headers"
+        elif key == "allowChildBypass":
+            suggest = "allow_child_bypass"
+        elif key == "auditSsh":
+            suggest = "audit_ssh"
         elif key == "bisoAdminControls":
             suggest = "biso_admin_controls"
         elif key == "blockPageEnabled":
             suggest = "block_page_enabled"
         elif key == "blockPageReason":
             suggest = "block_page_reason"
+        elif key == "bypassParentRule":
+            suggest = "bypass_parent_rule"
         elif key == "checkSession":
             suggest = "check_session"
         elif key == "insecureDisableDnssecValidation":
             suggest = "insecure_disable_dnssec_validation"
+        elif key == "ipCategories":
+            suggest = "ip_categories"
         elif key == "overrideHost":
             suggest = "override_host"
         elif key == "overrideIps":
@@ -11449,12 +11825,16 @@ class TeamsRuleRuleSettings(dict):
 
     def __init__(__self__, *,
                  add_headers: Optional[Mapping[str, str]] = None,
+                 allow_child_bypass: Optional[bool] = None,
+                 audit_ssh: Optional['outputs.TeamsRuleRuleSettingsAuditSsh'] = None,
                  biso_admin_controls: Optional['outputs.TeamsRuleRuleSettingsBisoAdminControls'] = None,
                  block_page_enabled: Optional[bool] = None,
                  block_page_reason: Optional[str] = None,
+                 bypass_parent_rule: Optional[bool] = None,
                  check_session: Optional['outputs.TeamsRuleRuleSettingsCheckSession'] = None,
                  egress: Optional['outputs.TeamsRuleRuleSettingsEgress'] = None,
                  insecure_disable_dnssec_validation: Optional[bool] = None,
+                 ip_categories: Optional[bool] = None,
                  l4override: Optional['outputs.TeamsRuleRuleSettingsL4override'] = None,
                  override_host: Optional[str] = None,
                  override_ips: Optional[Sequence[str]] = None,
@@ -11462,12 +11842,16 @@ class TeamsRuleRuleSettings(dict):
                  untrusted_cert: Optional['outputs.TeamsRuleRuleSettingsUntrustedCert'] = None):
         """
         :param Mapping[str, str] add_headers: Add custom headers to allowed requests in the form of key-value pairs.
+        :param bool allow_child_bypass: Allow parent MSP accounts to enable bypass their children's rules.
+        :param 'TeamsRuleRuleSettingsAuditSshArgs' audit_ssh: Settings for auditing SSH usage.
         :param 'TeamsRuleRuleSettingsBisoAdminControlsArgs' biso_admin_controls: Configure how browser isolation behaves.
         :param bool block_page_enabled: Indicator of block page enablement.
         :param str block_page_reason: The displayed reason for a user being blocked.
+        :param bool bypass_parent_rule: Allow child MSP accounts to bypass their parent's rule.
         :param 'TeamsRuleRuleSettingsCheckSessionArgs' check_session: Configure how session check behaves.
         :param 'TeamsRuleRuleSettingsEgressArgs' egress: Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
         :param bool insecure_disable_dnssec_validation: Disable DNSSEC validation (must be Allow rule).
+        :param bool ip_categories: Turns on IP category based filter on dns if the rule contains dns category checks.
         :param 'TeamsRuleRuleSettingsL4overrideArgs' l4override: Settings to forward layer 4 traffic.
         :param str override_host: The host to override matching DNS queries with.
         :param Sequence[str] override_ips: The IPs to override matching DNS queries with.
@@ -11476,18 +11860,26 @@ class TeamsRuleRuleSettings(dict):
         """
         if add_headers is not None:
             pulumi.set(__self__, "add_headers", add_headers)
+        if allow_child_bypass is not None:
+            pulumi.set(__self__, "allow_child_bypass", allow_child_bypass)
+        if audit_ssh is not None:
+            pulumi.set(__self__, "audit_ssh", audit_ssh)
         if biso_admin_controls is not None:
             pulumi.set(__self__, "biso_admin_controls", biso_admin_controls)
         if block_page_enabled is not None:
             pulumi.set(__self__, "block_page_enabled", block_page_enabled)
         if block_page_reason is not None:
             pulumi.set(__self__, "block_page_reason", block_page_reason)
+        if bypass_parent_rule is not None:
+            pulumi.set(__self__, "bypass_parent_rule", bypass_parent_rule)
         if check_session is not None:
             pulumi.set(__self__, "check_session", check_session)
         if egress is not None:
             pulumi.set(__self__, "egress", egress)
         if insecure_disable_dnssec_validation is not None:
             pulumi.set(__self__, "insecure_disable_dnssec_validation", insecure_disable_dnssec_validation)
+        if ip_categories is not None:
+            pulumi.set(__self__, "ip_categories", ip_categories)
         if l4override is not None:
             pulumi.set(__self__, "l4override", l4override)
         if override_host is not None:
@@ -11506,6 +11898,22 @@ class TeamsRuleRuleSettings(dict):
         Add custom headers to allowed requests in the form of key-value pairs.
         """
         return pulumi.get(self, "add_headers")
+
+    @property
+    @pulumi.getter(name="allowChildBypass")
+    def allow_child_bypass(self) -> Optional[bool]:
+        """
+        Allow parent MSP accounts to enable bypass their children's rules.
+        """
+        return pulumi.get(self, "allow_child_bypass")
+
+    @property
+    @pulumi.getter(name="auditSsh")
+    def audit_ssh(self) -> Optional['outputs.TeamsRuleRuleSettingsAuditSsh']:
+        """
+        Settings for auditing SSH usage.
+        """
+        return pulumi.get(self, "audit_ssh")
 
     @property
     @pulumi.getter(name="bisoAdminControls")
@@ -11532,6 +11940,14 @@ class TeamsRuleRuleSettings(dict):
         return pulumi.get(self, "block_page_reason")
 
     @property
+    @pulumi.getter(name="bypassParentRule")
+    def bypass_parent_rule(self) -> Optional[bool]:
+        """
+        Allow child MSP accounts to bypass their parent's rule.
+        """
+        return pulumi.get(self, "bypass_parent_rule")
+
+    @property
     @pulumi.getter(name="checkSession")
     def check_session(self) -> Optional['outputs.TeamsRuleRuleSettingsCheckSession']:
         """
@@ -11554,6 +11970,14 @@ class TeamsRuleRuleSettings(dict):
         Disable DNSSEC validation (must be Allow rule).
         """
         return pulumi.get(self, "insecure_disable_dnssec_validation")
+
+    @property
+    @pulumi.getter(name="ipCategories")
+    def ip_categories(self) -> Optional[bool]:
+        """
+        Turns on IP category based filter on dns if the rule contains dns category checks.
+        """
+        return pulumi.get(self, "ip_categories")
 
     @property
     @pulumi.getter
@@ -11594,6 +12018,35 @@ class TeamsRuleRuleSettings(dict):
         Configure untrusted certificate settings for this rule.
         """
         return pulumi.get(self, "untrusted_cert")
+
+
+@pulumi.output_type
+class TeamsRuleRuleSettingsAuditSsh(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "commandLogging":
+            suggest = "command_logging"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamsRuleRuleSettingsAuditSsh. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamsRuleRuleSettingsAuditSsh.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamsRuleRuleSettingsAuditSsh.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 command_logging: bool):
+        pulumi.set(__self__, "command_logging", command_logging)
+
+    @property
+    @pulumi.getter(name="commandLogging")
+    def command_logging(self) -> bool:
+        return pulumi.get(self, "command_logging")
 
 
 @pulumi.output_type
@@ -11771,7 +12224,7 @@ class TeamsRuleRuleSettingsUntrustedCert(dict):
     def __init__(__self__, *,
                  action: Optional[str] = None):
         """
-        :param str action: The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
+        :param str action: The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -11780,7 +12233,7 @@ class TeamsRuleRuleSettingsUntrustedCert(dict):
     @pulumi.getter
     def action(self) -> Optional[str]:
         """
-        The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`.
+        The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`.
         """
         return pulumi.get(self, "action")
 
@@ -13951,16 +14404,21 @@ class GetAccountsAccountResult(dict):
 class GetDevicesDeviceResult(dict):
     def __init__(__self__, *,
                  created: Optional[str] = None,
+                 deleted: Optional[bool] = None,
                  device_type: Optional[str] = None,
                  id: Optional[str] = None,
                  ip: Optional[str] = None,
                  key: Optional[str] = None,
                  last_seen: Optional[str] = None,
+                 mac_address: Optional[str] = None,
+                 manufacturer: Optional[str] = None,
                  model: Optional[str] = None,
                  name: Optional[str] = None,
                  os_distro_name: Optional[str] = None,
                  os_distro_revision: Optional[str] = None,
                  os_version: Optional[str] = None,
+                 revoked_at: Optional[str] = None,
+                 serial_number: Optional[str] = None,
                  updated: Optional[str] = None,
                  user_email: Optional[str] = None,
                  user_id: Optional[str] = None,
@@ -13971,6 +14429,8 @@ class GetDevicesDeviceResult(dict):
         """
         if created is not None:
             pulumi.set(__self__, "created", created)
+        if deleted is not None:
+            pulumi.set(__self__, "deleted", deleted)
         if device_type is not None:
             pulumi.set(__self__, "device_type", device_type)
         if id is not None:
@@ -13981,6 +14441,10 @@ class GetDevicesDeviceResult(dict):
             pulumi.set(__self__, "key", key)
         if last_seen is not None:
             pulumi.set(__self__, "last_seen", last_seen)
+        if mac_address is not None:
+            pulumi.set(__self__, "mac_address", mac_address)
+        if manufacturer is not None:
+            pulumi.set(__self__, "manufacturer", manufacturer)
         if model is not None:
             pulumi.set(__self__, "model", model)
         if name is not None:
@@ -13991,6 +14455,10 @@ class GetDevicesDeviceResult(dict):
             pulumi.set(__self__, "os_distro_revision", os_distro_revision)
         if os_version is not None:
             pulumi.set(__self__, "os_version", os_version)
+        if revoked_at is not None:
+            pulumi.set(__self__, "revoked_at", revoked_at)
+        if serial_number is not None:
+            pulumi.set(__self__, "serial_number", serial_number)
         if updated is not None:
             pulumi.set(__self__, "updated", updated)
         if user_email is not None:
@@ -14006,6 +14474,11 @@ class GetDevicesDeviceResult(dict):
     @pulumi.getter
     def created(self) -> Optional[str]:
         return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def deleted(self) -> Optional[bool]:
+        return pulumi.get(self, "deleted")
 
     @property
     @pulumi.getter(name="deviceType")
@@ -14036,6 +14509,16 @@ class GetDevicesDeviceResult(dict):
         return pulumi.get(self, "last_seen")
 
     @property
+    @pulumi.getter(name="macAddress")
+    def mac_address(self) -> Optional[str]:
+        return pulumi.get(self, "mac_address")
+
+    @property
+    @pulumi.getter
+    def manufacturer(self) -> Optional[str]:
+        return pulumi.get(self, "manufacturer")
+
+    @property
     @pulumi.getter
     def model(self) -> Optional[str]:
         return pulumi.get(self, "model")
@@ -14061,6 +14544,16 @@ class GetDevicesDeviceResult(dict):
         return pulumi.get(self, "os_version")
 
     @property
+    @pulumi.getter(name="revokedAt")
+    def revoked_at(self) -> Optional[str]:
+        return pulumi.get(self, "revoked_at")
+
+    @property
+    @pulumi.getter(name="serialNumber")
+    def serial_number(self) -> Optional[str]:
+        return pulumi.get(self, "serial_number")
+
+    @property
     @pulumi.getter
     def updated(self) -> Optional[str]:
         return pulumi.get(self, "updated")
@@ -14084,6 +14577,57 @@ class GetDevicesDeviceResult(dict):
     @pulumi.getter
     def version(self) -> Optional[str]:
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetListsListResult(dict):
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 id: Optional[str] = None,
+                 kind: Optional[str] = None,
+                 name: Optional[str] = None,
+                 numitems: Optional[int] = None):
+        """
+        :param str id: The ID of this resource.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if numitems is not None:
+            pulumi.set(__self__, "numitems", numitems)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def numitems(self) -> Optional[int]:
+        return pulumi.get(self, "numitems")
 
 
 @pulumi.output_type
@@ -14377,7 +14921,7 @@ class GetRulesetsFilterResult(dict):
         :param str id: The ID of the Ruleset to target.
         :param str kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
         :param str name: Name of the ruleset.
-        :param str phase: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
+        :param str phase: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `http_response_compression`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
         :param str version: Version of the ruleset to filter on.
         """
         if id is not None:
@@ -14419,7 +14963,7 @@ class GetRulesetsFilterResult(dict):
     @pulumi.getter
     def phase(self) -> Optional[str]:
         """
-        Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
+        Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `http_response_compression`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
         """
         return pulumi.get(self, "phase")
 

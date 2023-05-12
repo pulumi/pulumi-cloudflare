@@ -39,7 +39,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleUser = new AccountMember(&#34;exampleUser&#34;, AccountMemberArgs.builder()        
+ *         var example = new AccountMember(&#34;example&#34;, AccountMemberArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .emailAddress(&#34;user@example.com&#34;)
  *             .roleIds(            
  *                 &#34;68b329da9893e34099c7d8ad5cb9c940&#34;,

@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         public readonly int? StatusCode;
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> StatusCodeRanges;
-        public readonly int Value;
+        public readonly int? Value;
 
         [OutputConstructor]
         private RulesetRuleActionParametersEdgeTtlStatusCodeTtl(
@@ -23,7 +23,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<Outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRanges,
 
-            int value)
+            int? value)
         {
             StatusCode = statusCode;
             StatusCodeRanges = statusCodeRanges;

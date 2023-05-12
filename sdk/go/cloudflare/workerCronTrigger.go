@@ -16,10 +16,6 @@ import (
 // schedule. Worker Cron Triggers are ideal for running periodic jobs for
 // maintenance or calling third-party APIs to collect up-to-date data.
 //
-// > This resource uses the Cloudflare account APIs. This requires setting the
-// `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument
-// if you do not explicitly set the resource level `accountId` value.
-//
 // ## Example Usage
 //
 // ```go

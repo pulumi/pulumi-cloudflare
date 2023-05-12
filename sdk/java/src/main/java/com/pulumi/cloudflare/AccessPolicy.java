@@ -188,6 +188,20 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
         return this.includes;
     }
     /**
+     * Require this application to be served in an isolated browser for users matching this policy.
+     * 
+     */
+    @Export(name="isolationRequired", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isolationRequired;
+
+    /**
+     * @return Require this application to be served in an isolated browser for users matching this policy.
+     * 
+     */
+    public Output<Optional<Boolean>> isolationRequired() {
+        return Codegen.optional(this.isolationRequired);
+    }
+    /**
      * Friendly name of the Access Policy.
      * 
      */

@@ -48,6 +48,36 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The date to use for the compatibility flag.
+     * 
+     */
+    @Import(name="compatibilityDate")
+    private @Nullable Output<String> compatibilityDate;
+
+    /**
+     * @return The date to use for the compatibility flag.
+     * 
+     */
+    public Optional<Output<String>> compatibilityDate() {
+        return Optional.ofNullable(this.compatibilityDate);
+    }
+
+    /**
+     * Compatibility flags used for Worker Scripts.
+     * 
+     */
+    @Import(name="compatibilityFlags")
+    private @Nullable Output<List<String>> compatibilityFlags;
+
+    /**
+     * @return Compatibility flags used for Worker Scripts.
+     * 
+     */
+    public Optional<Output<List<String>>> compatibilityFlags() {
+        return Optional.ofNullable(this.compatibilityFlags);
+    }
+
+    /**
      * The script content.
      * 
      */
@@ -67,6 +97,21 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<List<WorkerScriptKvNamespaceBindingArgs>>> kvNamespaceBindings() {
         return Optional.ofNullable(this.kvNamespaceBindings);
+    }
+
+    /**
+     * Enabling allows Worker events to be sent to a defined Logpush destination.
+     * 
+     */
+    @Import(name="logpush")
+    private @Nullable Output<Boolean> logpush;
+
+    /**
+     * @return Enabling allows Worker events to be sent to a defined Logpush destination.
+     * 
+     */
+    public Optional<Output<Boolean>> logpush() {
+        return Optional.ofNullable(this.logpush);
     }
 
     /**
@@ -146,8 +191,11 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
     private WorkerScriptArgs(WorkerScriptArgs $) {
         this.accountId = $.accountId;
         this.analyticsEngineBindings = $.analyticsEngineBindings;
+        this.compatibilityDate = $.compatibilityDate;
+        this.compatibilityFlags = $.compatibilityFlags;
         this.content = $.content;
         this.kvNamespaceBindings = $.kvNamespaceBindings;
+        this.logpush = $.logpush;
         this.module = $.module;
         this.name = $.name;
         this.plainTextBindings = $.plainTextBindings;
@@ -211,6 +259,58 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param compatibilityDate The date to use for the compatibility flag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compatibilityDate(@Nullable Output<String> compatibilityDate) {
+            $.compatibilityDate = compatibilityDate;
+            return this;
+        }
+
+        /**
+         * @param compatibilityDate The date to use for the compatibility flag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compatibilityDate(String compatibilityDate) {
+            return compatibilityDate(Output.of(compatibilityDate));
+        }
+
+        /**
+         * @param compatibilityFlags Compatibility flags used for Worker Scripts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compatibilityFlags(@Nullable Output<List<String>> compatibilityFlags) {
+            $.compatibilityFlags = compatibilityFlags;
+            return this;
+        }
+
+        /**
+         * @param compatibilityFlags Compatibility flags used for Worker Scripts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compatibilityFlags(List<String> compatibilityFlags) {
+            return compatibilityFlags(Output.of(compatibilityFlags));
+        }
+
+        /**
+         * @param compatibilityFlags Compatibility flags used for Worker Scripts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compatibilityFlags(String... compatibilityFlags) {
+            return compatibilityFlags(List.of(compatibilityFlags));
+        }
+
+        /**
          * @param content The script content.
          * 
          * @return builder
@@ -242,6 +342,27 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder kvNamespaceBindings(WorkerScriptKvNamespaceBindingArgs... kvNamespaceBindings) {
             return kvNamespaceBindings(List.of(kvNamespaceBindings));
+        }
+
+        /**
+         * @param logpush Enabling allows Worker events to be sent to a defined Logpush destination.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logpush(@Nullable Output<Boolean> logpush) {
+            $.logpush = logpush;
+            return this;
+        }
+
+        /**
+         * @param logpush Enabling allows Worker events to be sent to a defined Logpush destination.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logpush(Boolean logpush) {
+            return logpush(Output.of(logpush));
         }
 
         /**

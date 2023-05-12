@@ -18,6 +18,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The [Cloudflare Managed Headers](https://developers.cloudflare.com/rules/transform/managed-transforms/)
+ * allows you to add or remove some predefined headers to one&#39;s
+ * requests or origin responses.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -57,10 +61,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * 
- * ## Import
- * 
- * Import is not supported for this resource.
  * 
  */
 @ResourceType(type="cloudflare:index/managedHeaders:ManagedHeaders")

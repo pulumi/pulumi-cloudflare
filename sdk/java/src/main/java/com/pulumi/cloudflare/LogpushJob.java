@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -48,14 +49,14 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accountId);
     }
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`.
+     * The kind of the dataset to use with the logpush job. Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.
      * 
      */
     @Export(name="dataset", refs={String.class}, tree="[0]")
     private Output<String> dataset;
 
     /**
-     * @return Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`.
+     * @return The kind of the dataset to use with the logpush job. Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.
      * 
      */
     public Output<String> dataset() {
@@ -144,6 +145,48 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> logpullOptions() {
         return Codegen.optional(this.logpullOptions);
+    }
+    /**
+     * The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+     * 
+     */
+    @Export(name="maxUploadBytes", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> maxUploadBytes;
+
+    /**
+     * @return The maximum uncompressed file size of a batch of logs. Value must be between 5MB and 1GB.
+     * 
+     */
+    public Output<Optional<Integer>> maxUploadBytes() {
+        return Codegen.optional(this.maxUploadBytes);
+    }
+    /**
+     * The maximum interval in seconds for log batches. Value must be between 30 and 300.
+     * 
+     */
+    @Export(name="maxUploadIntervalSeconds", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> maxUploadIntervalSeconds;
+
+    /**
+     * @return The maximum interval in seconds for log batches. Value must be between 30 and 300.
+     * 
+     */
+    public Output<Optional<Integer>> maxUploadIntervalSeconds() {
+        return Codegen.optional(this.maxUploadIntervalSeconds);
+    }
+    /**
+     * The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+     * 
+     */
+    @Export(name="maxUploadRecords", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> maxUploadRecords;
+
+    /**
+     * @return The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
+     * 
+     */
+    public Output<Optional<Integer>> maxUploadRecords() {
+        return Codegen.optional(this.maxUploadRecords);
     }
     /**
      * The name of the logpush job to create.

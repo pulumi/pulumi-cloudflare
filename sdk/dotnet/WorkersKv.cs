@@ -12,10 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a resource to manage a Cloudflare Workers KV Pair.
     /// 
-    /// &gt; This resource uses the Cloudflare account APIs. This requires setting the
-    /// `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument
-    /// if you do not explicitly set the resource level `account_id` value.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

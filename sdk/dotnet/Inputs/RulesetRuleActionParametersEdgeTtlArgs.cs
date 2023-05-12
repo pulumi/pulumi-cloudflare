@@ -15,8 +15,8 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("default")]
         public Input<int>? Default { get; set; }
 
-        [Input("mode", required: true)]
-        public Input<string> Mode { get; set; } = null!;
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
 
         [Input("statusCodeTtls")]
         private InputList<Inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs>? _statusCodeTtls;

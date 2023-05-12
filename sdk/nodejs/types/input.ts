@@ -237,6 +237,7 @@ export interface AccessIdentityProviderConfig {
     centrifyAccount?: pulumi.Input<string>;
     centrifyAppId?: pulumi.Input<string>;
     certsUrl?: pulumi.Input<string>;
+    claims?: pulumi.Input<pulumi.Input<string>[]>;
     clientId?: pulumi.Input<string>;
     clientSecret?: pulumi.Input<string>;
     directoryId?: pulumi.Input<string>;
@@ -247,10 +248,19 @@ export interface AccessIdentityProviderConfig {
     oneloginAccount?: pulumi.Input<string>;
     pkceEnabled?: pulumi.Input<boolean>;
     redirectUrl?: pulumi.Input<string>;
+    scopes?: pulumi.Input<pulumi.Input<string>[]>;
     signRequest?: pulumi.Input<boolean>;
     ssoTargetUrl?: pulumi.Input<string>;
     supportGroups?: pulumi.Input<boolean>;
     tokenUrl?: pulumi.Input<string>;
+}
+
+export interface AccessIdentityProviderScimConfig {
+    enabled?: pulumi.Input<boolean>;
+    groupMemberDeprovision?: pulumi.Input<boolean>;
+    seatDeprovision?: pulumi.Input<boolean>;
+    secret?: pulumi.Input<string>;
+    userDeprovision?: pulumi.Input<boolean>;
 }
 
 export interface AccessOrganizationLoginDesign {
@@ -491,6 +501,28 @@ export interface AccessRuleConfiguration {
     value: pulumi.Input<string>;
 }
 
+export interface AddressMapIp {
+    /**
+     * An IPv4 or IPv6 address.
+     */
+    ip: pulumi.Input<string>;
+}
+
+export interface AddressMapMembership {
+    /**
+     * Controls whether the membership can be deleted via the API or not.
+     */
+    canDelete?: pulumi.Input<boolean>;
+    /**
+     * Identifier of the account or zone.
+     */
+    identifier: pulumi.Input<string>;
+    /**
+     * The type of the membership.
+     */
+    kind: pulumi.Input<string>;
+}
+
 export interface ApiShieldAuthIdCharacteristic {
     /**
      * The name of the characteristic.
@@ -630,6 +662,21 @@ export interface CustomSslCustomSslPriority {
     priority?: pulumi.Input<number>;
 }
 
+export interface DeviceDexTestData {
+    /**
+     * The host URL for `http` test `kind`. For `traceroute`, it must be a valid hostname or IP address.
+     */
+    host: pulumi.Input<string>;
+    /**
+     * The type of Device Dex Test. Available values: `http`, `traceroute`.
+     */
+    kind: pulumi.Input<string>;
+    /**
+     * The http request method. Available values: `GET`.
+     */
+    method?: pulumi.Input<string>;
+}
+
 export interface DeviceManagedNetworksConfig {
     /**
      * The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
@@ -669,6 +716,10 @@ export interface DevicePostureIntegrationConfig {
 }
 
 export interface DevicePostureRuleInput {
+    /**
+     * Specific volume(s) to check for encryption.
+     */
+    checkDisks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
      */
@@ -1020,7 +1071,7 @@ export interface GetRulesetsFilter {
      */
     name?: string;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `httpResponseCompression`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
      */
     phase?: string;
     /**
@@ -1043,7 +1094,7 @@ export interface GetRulesetsFilterArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `httpResponseCompression`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
      */
     phase?: pulumi.Input<string>;
     /**
@@ -1125,6 +1176,37 @@ export interface ListItem {
     value: pulumi.Input<inputs.ListItemValue>;
 }
 
+export interface ListItemRedirect {
+    /**
+     * Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+     */
+    includeSubdomains?: pulumi.Input<string>;
+    /**
+     * Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+     */
+    preservePathSuffix?: pulumi.Input<string>;
+    /**
+     * Whether the redirect target url should keep the query string of the request's url. Available values: `disabled`, `enabled`.
+     */
+    preserveQueryString?: pulumi.Input<string>;
+    /**
+     * The source url of the redirect.
+     */
+    sourceUrl: pulumi.Input<string>;
+    /**
+     * The status code to be used when redirecting a request.
+     */
+    statusCode?: pulumi.Input<number>;
+    /**
+     * Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+     */
+    subpathMatching?: pulumi.Input<string>;
+    /**
+     * The target url of the redirect.
+     */
+    targetUrl: pulumi.Input<string>;
+}
+
 export interface ListItemValue {
     ip?: pulumi.Input<string>;
     redirects?: pulumi.Input<pulumi.Input<inputs.ListItemValueRedirect>[]>;
@@ -1186,7 +1268,7 @@ export interface LoadBalancerPoolLoadShedding {
      */
     defaultPercent?: pulumi.Input<number>;
     /**
-     * Method of shedding traffic. Available values: ``,`hash`,`random`. Defaults to`""`.
+     * Method of shedding traffic. Available values: `""`, `hash`, `random`. Defaults to `""`.
      */
     defaultPolicy?: pulumi.Input<string>;
     /**
@@ -1194,7 +1276,7 @@ export interface LoadBalancerPoolLoadShedding {
      */
     sessionPercent?: pulumi.Input<number>;
     /**
-     * Method of shedding traffic. Available values: ``,`hash`. Defaults to`""`.
+     * Method of shedding traffic. Available values: `""`, `hash`. Defaults to `""`.
      */
     sessionPolicy?: pulumi.Input<string>;
 }
@@ -1229,7 +1311,7 @@ export interface LoadBalancerPoolOriginHeader {
 
 export interface LoadBalancerPoolOriginSteering {
     /**
-     * Origin steering policy to be used. Available values: ``,`hash`,`random`. Defaults to`random`.
+     * Origin steering policy to be used. Available values: `""`, `hash`, `random`. Defaults to `random`.
      */
     policy?: pulumi.Input<string>;
 }
@@ -1508,6 +1590,10 @@ export interface NotificationPolicyFilters {
      * A numerical limit. Example: `100`.
      */
     limits?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Megabits per second threshold for dos alert.
+     */
+    megabitsPerSeconds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Health status to alert on for pool or origin.
      */
@@ -1896,6 +1982,7 @@ export interface PagesProjectDeploymentConfigsPreview {
     failOpen?: pulumi.Input<boolean>;
     kvNamespaces?: pulumi.Input<{[key: string]: any}>;
     r2Buckets?: pulumi.Input<{[key: string]: any}>;
+    secrets?: pulumi.Input<{[key: string]: any}>;
     serviceBindings?: pulumi.Input<pulumi.Input<inputs.PagesProjectDeploymentConfigsPreviewServiceBinding>[]>;
     usageModel?: pulumi.Input<string>;
 }
@@ -1919,6 +2006,7 @@ export interface PagesProjectDeploymentConfigsProduction {
     failOpen?: pulumi.Input<boolean>;
     kvNamespaces?: pulumi.Input<{[key: string]: any}>;
     r2Buckets?: pulumi.Input<{[key: string]: any}>;
+    secrets?: pulumi.Input<{[key: string]: any}>;
     serviceBindings?: pulumi.Input<pulumi.Input<inputs.PagesProjectDeploymentConfigsProductionServiceBinding>[]>;
     usageModel?: pulumi.Input<string>;
 }
@@ -2064,7 +2152,7 @@ export interface RecordData {
 
 export interface RulesetRule {
     /**
-     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
+     * Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`, `compressResponse`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -2114,6 +2202,7 @@ export interface RulesetRule {
 }
 
 export interface RulesetRuleActionParameters {
+    algorithms?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersAlgorithm>[]>;
     automaticHttpsRewrites?: pulumi.Input<boolean>;
     autominifies?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersAutominify>[]>;
     bic?: pulumi.Input<boolean>;
@@ -2134,7 +2223,7 @@ export interface RulesetRuleActionParameters {
     hostHeader?: pulumi.Input<string>;
     hotlinkProtection?: pulumi.Input<boolean>;
     /**
-     * The ID of this resource.
+     * The identifier of this resource.
      */
     id?: pulumi.Input<string>;
     increment?: pulumi.Input<number>;
@@ -2169,6 +2258,13 @@ export interface RulesetRuleActionParameters {
     version?: pulumi.Input<string>;
 }
 
+export interface RulesetRuleActionParametersAlgorithm {
+    /**
+     * Name of the ruleset.
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface RulesetRuleActionParametersAutominify {
     css?: pulumi.Input<boolean>;
     html?: pulumi.Input<boolean>;
@@ -2177,7 +2273,7 @@ export interface RulesetRuleActionParametersAutominify {
 
 export interface RulesetRuleActionParametersBrowserTtl {
     default?: pulumi.Input<number>;
-    mode: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersCacheKey {
@@ -2223,14 +2319,14 @@ export interface RulesetRuleActionParametersCacheKeyCustomKeyUser {
 
 export interface RulesetRuleActionParametersEdgeTtl {
     default?: pulumi.Input<number>;
-    mode: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
     statusCodeTtls?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl>[]>;
 }
 
 export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
     statusCode?: pulumi.Input<number>;
     statusCodeRanges?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange>[]>;
-    value: pulumi.Input<number>;
+    value?: pulumi.Input<number>;
 }
 
 export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
@@ -2239,11 +2335,11 @@ export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange 
 }
 
 export interface RulesetRuleActionParametersFromList {
-    key: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
     /**
-     * Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * Name of the ruleset.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersFromValue {
@@ -2260,7 +2356,7 @@ export interface RulesetRuleActionParametersFromValueTargetUrl {
 export interface RulesetRuleActionParametersHeader {
     expression?: pulumi.Input<string>;
     /**
-     * Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * Name of the ruleset.
      */
     name?: pulumi.Input<string>;
     operation?: pulumi.Input<string>;
@@ -2279,37 +2375,27 @@ export interface RulesetRuleActionParametersOrigin {
 export interface RulesetRuleActionParametersOverrides {
     action?: pulumi.Input<string>;
     categories?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOverridesCategory>[]>;
-    /**
-     * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-     */
     enabled?: pulumi.Input<boolean>;
     /**
      * List of rules to apply to the ruleset.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOverridesRule>[]>;
     sensitivityLevel?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersOverridesCategory {
     action?: pulumi.Input<string>;
     category?: pulumi.Input<string>;
-    /**
-     * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-     */
     enabled?: pulumi.Input<boolean>;
-    status?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersOverridesRule {
     /**
-     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`.
+     * Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`, `compressResponse`.
      */
     action?: pulumi.Input<string>;
     /**
      * Whether the rule is active.
-     *
-     * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -2318,7 +2404,6 @@ export interface RulesetRuleActionParametersOverridesRule {
     id?: pulumi.Input<string>;
     scoreThreshold?: pulumi.Input<number>;
     sensitivityLevel?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersResponse {
@@ -2357,11 +2442,7 @@ export interface RulesetRuleExposedCredentialCheck {
 }
 
 export interface RulesetRuleLogging {
-    /**
-     * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-     */
     enabled?: pulumi.Input<boolean>;
-    status?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleRatelimit {
@@ -2558,6 +2639,14 @@ export interface TeamsRuleRuleSettings {
      */
     addHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Allow parent MSP accounts to enable bypass their children's rules.
+     */
+    allowChildBypass?: pulumi.Input<boolean>;
+    /**
+     * Settings for auditing SSH usage.
+     */
+    auditSsh?: pulumi.Input<inputs.TeamsRuleRuleSettingsAuditSsh>;
+    /**
      * Configure how browser isolation behaves.
      */
     bisoAdminControls?: pulumi.Input<inputs.TeamsRuleRuleSettingsBisoAdminControls>;
@@ -2570,6 +2659,10 @@ export interface TeamsRuleRuleSettings {
      */
     blockPageReason?: pulumi.Input<string>;
     /**
+     * Allow child MSP accounts to bypass their parent's rule.
+     */
+    bypassParentRule?: pulumi.Input<boolean>;
+    /**
      * Configure how session check behaves.
      */
     checkSession?: pulumi.Input<inputs.TeamsRuleRuleSettingsCheckSession>;
@@ -2581,6 +2674,10 @@ export interface TeamsRuleRuleSettings {
      * Disable DNSSEC validation (must be Allow rule).
      */
     insecureDisableDnssecValidation?: pulumi.Input<boolean>;
+    /**
+     * Turns on IP category based filter on dns if the rule contains dns category checks.
+     */
+    ipCategories?: pulumi.Input<boolean>;
     /**
      * Settings to forward layer 4 traffic.
      */
@@ -2601,6 +2698,10 @@ export interface TeamsRuleRuleSettings {
      * Configure untrusted certificate settings for this rule.
      */
     untrustedCert?: pulumi.Input<inputs.TeamsRuleRuleSettingsUntrustedCert>;
+}
+
+export interface TeamsRuleRuleSettingsAuditSsh {
+    commandLogging: pulumi.Input<boolean>;
 }
 
 export interface TeamsRuleRuleSettingsBisoAdminControls {
@@ -2636,7 +2737,7 @@ export interface TeamsRuleRuleSettingsPayloadLog {
 
 export interface TeamsRuleRuleSettingsUntrustedCert {
     /**
-     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`.
+     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`.
      */
     action?: pulumi.Input<string>;
 }

@@ -107,6 +107,21 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Megabits per second threshold for dos alert.
+     * 
+     */
+    @Import(name="megabitsPerSeconds")
+    private @Nullable Output<List<String>> megabitsPerSeconds;
+
+    /**
+     * @return Megabits per second threshold for dos alert.
+     * 
+     */
+    public Optional<Output<List<String>>> megabitsPerSeconds() {
+        return Optional.ofNullable(this.megabitsPerSeconds);
+    }
+
+    /**
      * Health status to alert on for pool or origin.
      * 
      */
@@ -287,6 +302,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         this.healthCheckIds = $.healthCheckIds;
         this.inputIds = $.inputIds;
         this.limits = $.limits;
+        this.megabitsPerSeconds = $.megabitsPerSeconds;
         this.newHealths = $.newHealths;
         this.packetsPerSeconds = $.packetsPerSeconds;
         this.poolIds = $.poolIds;
@@ -503,6 +519,37 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
          */
         public Builder limits(String... limits) {
             return limits(List.of(limits));
+        }
+
+        /**
+         * @param megabitsPerSeconds Megabits per second threshold for dos alert.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder megabitsPerSeconds(@Nullable Output<List<String>> megabitsPerSeconds) {
+            $.megabitsPerSeconds = megabitsPerSeconds;
+            return this;
+        }
+
+        /**
+         * @param megabitsPerSeconds Megabits per second threshold for dos alert.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder megabitsPerSeconds(List<String> megabitsPerSeconds) {
+            return megabitsPerSeconds(Output.of(megabitsPerSeconds));
+        }
+
+        /**
+         * @param megabitsPerSeconds Megabits per second threshold for dos alert.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder megabitsPerSeconds(String... megabitsPerSeconds) {
+            return megabitsPerSeconds(List.of(megabitsPerSeconds));
         }
 
         /**

@@ -38,6 +38,8 @@ namespace Pulumi.Cloudflare
     ///     var buildConfig = new Cloudflare.PagesProject("buildConfig", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "this-is-my-project-01",
+    ///         ProductionBranch = "main",
     ///         BuildConfig = new Cloudflare.Inputs.PagesProjectBuildConfigArgs
     ///         {
     ///             BuildCommand = "npm run build",
@@ -46,8 +48,6 @@ namespace Pulumi.Cloudflare
     ///             WebAnalyticsTag = "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
     ///             WebAnalyticsToken = "021e1057c18547eca7b79f2516f06o7x",
     ///         },
-    ///         Name = "this-is-my-project-01",
-    ///         ProductionBranch = "main",
     ///     });
     /// 
     ///     // Manage project source
@@ -58,27 +58,27 @@ namespace Pulumi.Cloudflare
     ///         ProductionBranch = "main",
     ///         Source = new Cloudflare.Inputs.PagesProjectSourceArgs
     ///         {
+    ///             Type = "github",
     ///             Config = new Cloudflare.Inputs.PagesProjectSourceConfigArgs
     ///             {
-    ///                 DeploymentsEnabled = true,
     ///                 Owner = "cloudflare",
+    ///                 RepoName = "ninjakittens",
+    ///                 ProductionBranch = "main",
     ///                 PrCommentsEnabled = true,
-    ///                 PreviewBranchExcludes = new[]
-    ///                 {
-    ///                     "main",
-    ///                     "prod",
-    ///                 },
+    ///                 DeploymentsEnabled = true,
+    ///                 ProductionDeploymentEnabled = true,
+    ///                 PreviewDeploymentSetting = "custom",
     ///                 PreviewBranchIncludes = new[]
     ///                 {
     ///                     "dev",
     ///                     "preview",
     ///                 },
-    ///                 PreviewDeploymentSetting = "custom",
-    ///                 ProductionBranch = "main",
-    ///                 ProductionDeploymentEnabled = true,
-    ///                 RepoName = "ninjakittens",
+    ///                 PreviewBranchExcludes = new[]
+    ///                 {
+    ///                     "main",
+    ///                     "prod",
+    ///                 },
     ///             },
-    ///             Type = "github",
     ///         },
     ///     });
     /// 
@@ -86,73 +86,82 @@ namespace Pulumi.Cloudflare
     ///     var deploymentConfigs = new Cloudflare.PagesProject("deploymentConfigs", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "this-is-my-project-01",
+    ///         ProductionBranch = "main",
     ///         DeploymentConfigs = new Cloudflare.Inputs.PagesProjectDeploymentConfigsArgs
     ///         {
     ///             Preview = new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewArgs
     ///             {
+    ///                 EnvironmentVariables = 
+    ///                 {
+    ///                     { "ENVIRONMENT", "preview" },
+    ///                 },
+    ///                 Secrets = 
+    ///                 {
+    ///                     { "TURNSTILE_SECRET", @var.Turnstile_secret },
+    ///                 },
+    ///                 KvNamespaces = 
+    ///                 {
+    ///                     { "KV_BINDING", "5eb63bbbe01eeed093cb22bb8f5acdc3" },
+    ///                 },
+    ///                 DurableObjectNamespaces = 
+    ///                 {
+    ///                     { "DO_BINDING", "5eb63bbbe01eeed093cb22bb8f5acdc3" },
+    ///                 },
+    ///                 R2Buckets = 
+    ///                 {
+    ///                     { "R2_BINDING", "some-bucket" },
+    ///                 },
+    ///                 D1Databases = 
+    ///                 {
+    ///                     { "D1_BINDING", "445e2955-951a-4358-a35b-a4d0c813f63" },
+    ///                 },
     ///                 CompatibilityDate = "2022-08-15",
     ///                 CompatibilityFlags = new[]
     ///                 {
     ///                     "preview_flag",
     ///                 },
-    ///                 D1Databases = 
-    ///                 {
-    ///                     { "D1BINDING", "445e2955-951a-4358-a35b-a4d0c813f63" },
-    ///                 },
-    ///                 DurableObjectNamespaces = 
-    ///                 {
-    ///                     { "DOBINDING", "5eb63bbbe01eeed093cb22bb8f5acdc3" },
-    ///                 },
-    ///                 EnvironmentVariables = 
-    ///                 {
-    ///                     { "ENVIRONMENT", "preview" },
-    ///                 },
-    ///                 KvNamespaces = 
-    ///                 {
-    ///                     { "KVBINDING", "5eb63bbbe01eeed093cb22bb8f5acdc3" },
-    ///                 },
-    ///                 R2Buckets = 
-    ///                 {
-    ///                     { "R2BINDING", "some-bucket" },
-    ///                 },
     ///             },
     ///             Production = new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionArgs
     ///             {
+    ///                 EnvironmentVariables = 
+    ///                 {
+    ///                     { "ENVIRONMENT", "production" },
+    ///                     { "OTHER_VALUE", "other value" },
+    ///                 },
+    ///                 Secrets = 
+    ///                 {
+    ///                     { "TURNSTILE_SECRET", @var.Turnstile_secret },
+    ///                     { "TURNSTILE_INVIS_SECRET", @var.Turnstile_invisible_secret },
+    ///                 },
+    ///                 KvNamespaces = 
+    ///                 {
+    ///                     { "KV_BINDING_1", "5eb63bbbe01eeed093cb22bb8f5acdc3" },
+    ///                     { "KV_BINDING_2", "3cdca5f8bb22bc390deee10ebbb36be5" },
+    ///                 },
+    ///                 DurableObjectNamespaces = 
+    ///                 {
+    ///                     { "DO_BINDING_1", "5eb63bbbe01eeed093cb22bb8f5acdc3" },
+    ///                     { "DO_BINDING_2", "3cdca5f8bb22bc390deee10ebbb36be5" },
+    ///                 },
+    ///                 R2Buckets = 
+    ///                 {
+    ///                     { "R2_BINDING_1", "some-bucket" },
+    ///                     { "R2_BINDING_2", "other-bucket" },
+    ///                 },
+    ///                 D1Databases = 
+    ///                 {
+    ///                     { "D1_BINDING_1", "445e2955-951a-4358-a35b-a4d0c813f63" },
+    ///                     { "D1_BINDING_2", "a399414b-c697-409a-a688-377db6433cd9" },
+    ///                 },
     ///                 CompatibilityDate = "2022-08-16",
     ///                 CompatibilityFlags = new[]
     ///                 {
     ///                     "production_flag",
     ///                     "second flag",
     ///                 },
-    ///                 D1Databases = 
-    ///                 {
-    ///                     { "D1BINDING1", "445e2955-951a-4358-a35b-a4d0c813f63" },
-    ///                     { "D1BINDING2", "a399414b-c697-409a-a688-377db6433cd9" },
-    ///                 },
-    ///                 DurableObjectNamespaces = 
-    ///                 {
-    ///                     { "DOBINDING1", "5eb63bbbe01eeed093cb22bb8f5acdc3" },
-    ///                     { "DOBINDING2", "3cdca5f8bb22bc390deee10ebbb36be5" },
-    ///                 },
-    ///                 EnvironmentVariables = 
-    ///                 {
-    ///                     { "ENVIRONMENT", "production" },
-    ///                     { "OTHERVALUE", "other value" },
-    ///                 },
-    ///                 KvNamespaces = 
-    ///                 {
-    ///                     { "KVBINDING1", "5eb63bbbe01eeed093cb22bb8f5acdc3" },
-    ///                     { "KVBINDING2", "3cdca5f8bb22bc390deee10ebbb36be5" },
-    ///                 },
-    ///                 R2Buckets = 
-    ///                 {
-    ///                     { "R2BINDING1", "some-bucket" },
-    ///                     { "R2BINDING2", "other-bucket" },
-    ///                 },
     ///             },
     ///         },
-    ///         Name = "this-is-my-project-01",
-    ///         ProductionBranch = "main",
     ///     });
     /// 
     /// });

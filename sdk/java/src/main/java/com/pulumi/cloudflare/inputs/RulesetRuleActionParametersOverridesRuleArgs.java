@@ -18,14 +18,14 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
     public static final RulesetRuleActionParametersOverridesRuleArgs Empty = new RulesetRuleActionParametersOverridesRuleArgs();
 
     /**
-     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
+     * Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`, `compress_response`.
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
+     * @return Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`, `compress_response`.
      * 
      */
     public Optional<Output<String>> action() {
@@ -35,22 +35,14 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
     /**
      * Whether the rule is active.
      * 
-     * @deprecated
-     * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-     * 
      */
-    @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
      * @return Whether the rule is active.
      * 
-     * @deprecated
-     * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-     * 
      */
-    @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -84,13 +76,6 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         return Optional.ofNullable(this.sensitivityLevel);
     }
 
-    @Import(name="status")
-    private @Nullable Output<String> status;
-
-    public Optional<Output<String>> status() {
-        return Optional.ofNullable(this.status);
-    }
-
     private RulesetRuleActionParametersOverridesRuleArgs() {}
 
     private RulesetRuleActionParametersOverridesRuleArgs(RulesetRuleActionParametersOverridesRuleArgs $) {
@@ -99,7 +84,6 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         this.id = $.id;
         this.scoreThreshold = $.scoreThreshold;
         this.sensitivityLevel = $.sensitivityLevel;
-        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -121,7 +105,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         /**
-         * @param action Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
+         * @param action Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`, `compress_response`.
          * 
          * @return builder
          * 
@@ -132,7 +116,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         /**
-         * @param action Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
+         * @param action Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`, `compress_response`.
          * 
          * @return builder
          * 
@@ -146,11 +130,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-         * 
          */
-        @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
@@ -161,11 +141,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-         * 
          */
-        @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
@@ -207,15 +183,6 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
 
         public Builder sensitivityLevel(String sensitivityLevel) {
             return sensitivityLevel(Output.of(sensitivityLevel));
-        }
-
-        public Builder status(@Nullable Output<String> status) {
-            $.status = status;
-            return this;
-        }
-
-        public Builder status(String status) {
-            return status(Output.of(status));
         }
 
         public RulesetRuleActionParametersOverridesRuleArgs build() {

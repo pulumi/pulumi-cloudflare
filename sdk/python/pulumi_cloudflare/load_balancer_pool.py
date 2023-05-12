@@ -542,6 +542,12 @@ class LoadBalancerPool(pulumi.CustomResource):
             ])
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/loadBalancerPool:LoadBalancerPool example <account_id>/<load_balancer_poool_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
@@ -611,6 +617,12 @@ class LoadBalancerPool(pulumi.CustomResource):
                     name="example-2",
                 ),
             ])
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/loadBalancerPool:LoadBalancerPool example <account_id>/<load_balancer_poool_id>
         ```
 
         :param str resource_name: The name of the resource.

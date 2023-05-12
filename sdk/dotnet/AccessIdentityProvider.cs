@@ -128,6 +128,12 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for SCIM settings for a given IDP.
+        /// </summary>
+        [Output("scimConfigs")]
+        public Output<ImmutableArray<Outputs.AccessIdentityProviderScimConfig>> ScimConfigs { get; private set; } = null!;
+
+        /// <summary>
         /// The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
         /// </summary>
         [Output("type")]
@@ -209,6 +215,18 @@ namespace Pulumi.Cloudflare
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        [Input("scimConfigs")]
+        private InputList<Inputs.AccessIdentityProviderScimConfigArgs>? _scimConfigs;
+
+        /// <summary>
+        /// Configuration for SCIM settings for a given IDP.
+        /// </summary>
+        public InputList<Inputs.AccessIdentityProviderScimConfigArgs> ScimConfigs
+        {
+            get => _scimConfigs ?? (_scimConfigs = new InputList<Inputs.AccessIdentityProviderScimConfigArgs>());
+            set => _scimConfigs = value;
+        }
+
         /// <summary>
         /// The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
         /// </summary>
@@ -252,6 +270,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("scimConfigs")]
+        private InputList<Inputs.AccessIdentityProviderScimConfigGetArgs>? _scimConfigs;
+
+        /// <summary>
+        /// Configuration for SCIM settings for a given IDP.
+        /// </summary>
+        public InputList<Inputs.AccessIdentityProviderScimConfigGetArgs> ScimConfigs
+        {
+            get => _scimConfigs ?? (_scimConfigs = new InputList<Inputs.AccessIdentityProviderScimConfigGetArgs>());
+            set => _scimConfigs = value;
+        }
 
         /// <summary>
         /// The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.

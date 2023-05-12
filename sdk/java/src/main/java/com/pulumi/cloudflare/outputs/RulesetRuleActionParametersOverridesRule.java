@@ -14,18 +14,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersOverridesRule {
     /**
-     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
+     * @return Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`, `compress_response`.
      * 
      */
     private @Nullable String action;
     /**
      * @return Whether the rule is active.
      * 
-     * @deprecated
-     * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-     * 
      */
-    @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
     private @Nullable Boolean enabled;
     /**
      * @return Unique rule identifier.
@@ -34,11 +30,10 @@ public final class RulesetRuleActionParametersOverridesRule {
     private @Nullable String id;
     private @Nullable Integer scoreThreshold;
     private @Nullable String sensitivityLevel;
-    private @Nullable String status;
 
     private RulesetRuleActionParametersOverridesRule() {}
     /**
-     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`.
+     * @return Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`, `compress_response`.
      * 
      */
     public Optional<String> action() {
@@ -47,11 +42,7 @@ public final class RulesetRuleActionParametersOverridesRule {
     /**
      * @return Whether the rule is active.
      * 
-     * @deprecated
-     * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
-     * 
      */
-    @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -68,9 +59,6 @@ public final class RulesetRuleActionParametersOverridesRule {
     public Optional<String> sensitivityLevel() {
         return Optional.ofNullable(this.sensitivityLevel);
     }
-    public Optional<String> status() {
-        return Optional.ofNullable(this.status);
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -86,7 +74,6 @@ public final class RulesetRuleActionParametersOverridesRule {
         private @Nullable String id;
         private @Nullable Integer scoreThreshold;
         private @Nullable String sensitivityLevel;
-        private @Nullable String status;
         public Builder() {}
         public Builder(RulesetRuleActionParametersOverridesRule defaults) {
     	      Objects.requireNonNull(defaults);
@@ -95,7 +82,6 @@ public final class RulesetRuleActionParametersOverridesRule {
     	      this.id = defaults.id;
     	      this.scoreThreshold = defaults.scoreThreshold;
     	      this.sensitivityLevel = defaults.sensitivityLevel;
-    	      this.status = defaults.status;
         }
 
         @CustomType.Setter
@@ -123,11 +109,6 @@ public final class RulesetRuleActionParametersOverridesRule {
             this.sensitivityLevel = sensitivityLevel;
             return this;
         }
-        @CustomType.Setter
-        public Builder status(@Nullable String status) {
-            this.status = status;
-            return this;
-        }
         public RulesetRuleActionParametersOverridesRule build() {
             final var o = new RulesetRuleActionParametersOverridesRule();
             o.action = action;
@@ -135,7 +116,6 @@ public final class RulesetRuleActionParametersOverridesRule {
             o.id = id;
             o.scoreThreshold = scoreThreshold;
             o.sensitivityLevel = sensitivityLevel;
-            o.status = status;
             return o;
         }
     }

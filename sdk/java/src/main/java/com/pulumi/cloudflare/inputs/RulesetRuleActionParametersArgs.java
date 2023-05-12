@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersAlgorithmArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersAutominifyArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersBrowserTtlArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyArgs;
@@ -32,6 +33,13 @@ import javax.annotation.Nullable;
 public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersArgs Empty = new RulesetRuleActionParametersArgs();
+
+    @Import(name="algorithms")
+    private @Nullable Output<List<RulesetRuleActionParametersAlgorithmArgs>> algorithms;
+
+    public Optional<Output<List<RulesetRuleActionParametersAlgorithmArgs>>> algorithms() {
+        return Optional.ofNullable(this.algorithms);
+    }
 
     @Import(name="automaticHttpsRewrites")
     private @Nullable Output<Boolean> automaticHttpsRewrites;
@@ -167,14 +175,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * The ID of this resource.
+     * The identifier of this resource.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return The ID of this resource.
+     * @return The identifier of this resource.
      * 
      */
     public Optional<Output<String>> id() {
@@ -381,6 +389,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     private RulesetRuleActionParametersArgs() {}
 
     private RulesetRuleActionParametersArgs(RulesetRuleActionParametersArgs $) {
+        this.algorithms = $.algorithms;
         this.automaticHttpsRewrites = $.automaticHttpsRewrites;
         this.autominifies = $.autominifies;
         this.bic = $.bic;
@@ -446,6 +455,19 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         public Builder(RulesetRuleActionParametersArgs defaults) {
             $ = new RulesetRuleActionParametersArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder algorithms(@Nullable Output<List<RulesetRuleActionParametersAlgorithmArgs>> algorithms) {
+            $.algorithms = algorithms;
+            return this;
+        }
+
+        public Builder algorithms(List<RulesetRuleActionParametersAlgorithmArgs> algorithms) {
+            return algorithms(Output.of(algorithms));
+        }
+
+        public Builder algorithms(RulesetRuleActionParametersAlgorithmArgs... algorithms) {
+            return algorithms(List.of(algorithms));
         }
 
         public Builder automaticHttpsRewrites(@Nullable Output<Boolean> automaticHttpsRewrites) {
@@ -632,7 +654,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param id The ID of this resource.
+         * @param id The identifier of this resource.
          * 
          * @return builder
          * 
@@ -643,7 +665,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param id The ID of this resource.
+         * @param id The identifier of this resource.
          * 
          * @return builder
          * 

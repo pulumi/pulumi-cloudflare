@@ -7,32 +7,34 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RulesetRuleActionParametersFromListArgs Empty = new RulesetRuleActionParametersFromListArgs();
 
-    @Import(name="key", required=true)
-    private Output<String> key;
+    @Import(name="key")
+    private @Nullable Output<String> key;
 
-    public Output<String> key() {
-        return this.key;
+    public Optional<Output<String>> key() {
+        return Optional.ofNullable(this.key);
     }
 
     /**
-     * Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * Name of the ruleset.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
-     * @return Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+     * @return Name of the ruleset.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     private RulesetRuleActionParametersFromListArgs() {}
@@ -60,7 +62,7 @@ public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.re
             $ = new RulesetRuleActionParametersFromListArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder key(Output<String> key) {
+        public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
@@ -70,18 +72,18 @@ public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.re
         }
 
         /**
-         * @param name Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+         * @param name Name of the ruleset.
          * 
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Name of the ruleset. **Modifying this attribute will force creation of a new resource.**
+         * @param name Name of the ruleset.
          * 
          * @return builder
          * 
@@ -91,8 +93,6 @@ public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.re
         }
 
         public RulesetRuleActionParametersFromListArgs build() {
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             return $;
         }
     }
