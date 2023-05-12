@@ -7969,6 +7969,45 @@ class PageRuleActionsCacheKeyFieldsUser(dict):
         :param bool device_type: `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
         :param bool geo: `true` - includes the client’s country, derived from the IP address; defaults to `false`.
         :param bool lang: `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
+               
+               Example:
+               
+               ```python
+               import pulumi
+               import pulumi_cloudflare as cloudflare
+               
+               # Unrealistic example with all features used
+               foobar = cloudflare.PageRule("foobar",
+                   zone_id=var["cloudflare_zone_id"],
+                   target=f"{var['cloudflare_zone']}/app/*",
+                   priority=1,
+                   actions=cloudflare.PageRuleActionsArgs(
+                       cache_key_fields=cloudflare.PageRuleActionsCacheKeyFieldsArgs(
+                           cookie=cloudflare.PageRuleActionsCacheKeyFieldsCookieArgs(
+                               check_presences=["wordpress_test_cookie"],
+                           ),
+                           header=cloudflare.PageRuleActionsCacheKeyFieldsHeaderArgs(
+                               check_presences=["header_present"],
+                               excludes=["origin"],
+                               includes=[
+                                   "api-key",
+                                   "dnt",
+                               ],
+                           ),
+                           host=cloudflare.PageRuleActionsCacheKeyFieldsHostArgs(
+                               resolved=True,
+                           ),
+                           query_string=cloudflare.PageRuleActionsCacheKeyFieldsQueryStringArgs(
+                               ignore=True,
+                           ),
+                           user=cloudflare.PageRuleActionsCacheKeyFieldsUserArgs(
+                               device_type=False,
+                               geo=True,
+                               lang=True,
+                           ),
+                       ),
+                   ))
+               ```
         """
         if device_type is not None:
             pulumi.set(__self__, "device_type", device_type)
@@ -7998,6 +8037,45 @@ class PageRuleActionsCacheKeyFieldsUser(dict):
     def lang(self) -> Optional[bool]:
         """
         `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
+
+        Example:
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Unrealistic example with all features used
+        foobar = cloudflare.PageRule("foobar",
+            zone_id=var["cloudflare_zone_id"],
+            target=f"{var['cloudflare_zone']}/app/*",
+            priority=1,
+            actions=cloudflare.PageRuleActionsArgs(
+                cache_key_fields=cloudflare.PageRuleActionsCacheKeyFieldsArgs(
+                    cookie=cloudflare.PageRuleActionsCacheKeyFieldsCookieArgs(
+                        check_presences=["wordpress_test_cookie"],
+                    ),
+                    header=cloudflare.PageRuleActionsCacheKeyFieldsHeaderArgs(
+                        check_presences=["header_present"],
+                        excludes=["origin"],
+                        includes=[
+                            "api-key",
+                            "dnt",
+                        ],
+                    ),
+                    host=cloudflare.PageRuleActionsCacheKeyFieldsHostArgs(
+                        resolved=True,
+                    ),
+                    query_string=cloudflare.PageRuleActionsCacheKeyFieldsQueryStringArgs(
+                        ignore=True,
+                    ),
+                    user=cloudflare.PageRuleActionsCacheKeyFieldsUserArgs(
+                        device_type=False,
+                        geo=True,
+                        lang=True,
+                    ),
+                ),
+            ))
+        ```
         """
         return pulumi.get(self, "lang")
 

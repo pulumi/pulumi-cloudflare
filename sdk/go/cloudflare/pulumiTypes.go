@@ -15667,6 +15667,65 @@ type PageRuleActionsCacheKeyFieldsUser struct {
 	// `true` - includes the client’s country, derived from the IP address; defaults to `false`.
 	Geo *bool `pulumi:"geo"`
 	// `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
+	//
+	// Example:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"fmt"
+	//
+	// 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
+	// 			ZoneId:   pulumi.Any(_var.Cloudflare_zone_id),
+	// 			Target:   pulumi.String(fmt.Sprintf("%v/app/*", _var.Cloudflare_zone)),
+	// 			Priority: pulumi.Int(1),
+	// 			Actions: &cloudflare.PageRuleActionsArgs{
+	// 				CacheKeyFields: &cloudflare.PageRuleActionsCacheKeyFieldsArgs{
+	// 					Cookie: &cloudflare.PageRuleActionsCacheKeyFieldsCookieArgs{
+	// 						CheckPresences: pulumi.StringArray{
+	// 							pulumi.String("wordpress_test_cookie"),
+	// 						},
+	// 					},
+	// 					Header: &cloudflare.PageRuleActionsCacheKeyFieldsHeaderArgs{
+	// 						CheckPresences: pulumi.StringArray{
+	// 							pulumi.String("header_present"),
+	// 						},
+	// 						Excludes: pulumi.StringArray{
+	// 							pulumi.String("origin"),
+	// 						},
+	// 						Includes: pulumi.StringArray{
+	// 							pulumi.String("api-key"),
+	// 							pulumi.String("dnt"),
+	// 						},
+	// 					},
+	// 					Host: &cloudflare.PageRuleActionsCacheKeyFieldsHostArgs{
+	// 						Resolved: pulumi.Bool(true),
+	// 					},
+	// 					QueryString: &cloudflare.PageRuleActionsCacheKeyFieldsQueryStringArgs{
+	// 						Ignore: pulumi.Bool(true),
+	// 					},
+	// 					User: &cloudflare.PageRuleActionsCacheKeyFieldsUserArgs{
+	// 						DeviceType: pulumi.Bool(false),
+	// 						Geo:        pulumi.Bool(true),
+	// 						Lang:       pulumi.Bool(true),
+	// 					},
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Lang *bool `pulumi:"lang"`
 }
 
@@ -15687,6 +15746,65 @@ type PageRuleActionsCacheKeyFieldsUserArgs struct {
 	// `true` - includes the client’s country, derived from the IP address; defaults to `false`.
 	Geo pulumi.BoolPtrInput `pulumi:"geo"`
 	// `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
+	//
+	// Example:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"fmt"
+	//
+	// 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
+	// 			ZoneId:   pulumi.Any(_var.Cloudflare_zone_id),
+	// 			Target:   pulumi.String(fmt.Sprintf("%v/app/*", _var.Cloudflare_zone)),
+	// 			Priority: pulumi.Int(1),
+	// 			Actions: &cloudflare.PageRuleActionsArgs{
+	// 				CacheKeyFields: &cloudflare.PageRuleActionsCacheKeyFieldsArgs{
+	// 					Cookie: &cloudflare.PageRuleActionsCacheKeyFieldsCookieArgs{
+	// 						CheckPresences: pulumi.StringArray{
+	// 							pulumi.String("wordpress_test_cookie"),
+	// 						},
+	// 					},
+	// 					Header: &cloudflare.PageRuleActionsCacheKeyFieldsHeaderArgs{
+	// 						CheckPresences: pulumi.StringArray{
+	// 							pulumi.String("header_present"),
+	// 						},
+	// 						Excludes: pulumi.StringArray{
+	// 							pulumi.String("origin"),
+	// 						},
+	// 						Includes: pulumi.StringArray{
+	// 							pulumi.String("api-key"),
+	// 							pulumi.String("dnt"),
+	// 						},
+	// 					},
+	// 					Host: &cloudflare.PageRuleActionsCacheKeyFieldsHostArgs{
+	// 						Resolved: pulumi.Bool(true),
+	// 					},
+	// 					QueryString: &cloudflare.PageRuleActionsCacheKeyFieldsQueryStringArgs{
+	// 						Ignore: pulumi.Bool(true),
+	// 					},
+	// 					User: &cloudflare.PageRuleActionsCacheKeyFieldsUserArgs{
+	// 						DeviceType: pulumi.Bool(false),
+	// 						Geo:        pulumi.Bool(true),
+	// 						Lang:       pulumi.Bool(true),
+	// 					},
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Lang pulumi.BoolPtrInput `pulumi:"lang"`
 }
 
@@ -15778,6 +15896,68 @@ func (o PageRuleActionsCacheKeyFieldsUserOutput) Geo() pulumi.BoolPtrOutput {
 }
 
 // `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
+//
+// Example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
+//				ZoneId:   pulumi.Any(_var.Cloudflare_zone_id),
+//				Target:   pulumi.String(fmt.Sprintf("%v/app/*", _var.Cloudflare_zone)),
+//				Priority: pulumi.Int(1),
+//				Actions: &cloudflare.PageRuleActionsArgs{
+//					CacheKeyFields: &cloudflare.PageRuleActionsCacheKeyFieldsArgs{
+//						Cookie: &cloudflare.PageRuleActionsCacheKeyFieldsCookieArgs{
+//							CheckPresences: pulumi.StringArray{
+//								pulumi.String("wordpress_test_cookie"),
+//							},
+//						},
+//						Header: &cloudflare.PageRuleActionsCacheKeyFieldsHeaderArgs{
+//							CheckPresences: pulumi.StringArray{
+//								pulumi.String("header_present"),
+//							},
+//							Excludes: pulumi.StringArray{
+//								pulumi.String("origin"),
+//							},
+//							Includes: pulumi.StringArray{
+//								pulumi.String("api-key"),
+//								pulumi.String("dnt"),
+//							},
+//						},
+//						Host: &cloudflare.PageRuleActionsCacheKeyFieldsHostArgs{
+//							Resolved: pulumi.Bool(true),
+//						},
+//						QueryString: &cloudflare.PageRuleActionsCacheKeyFieldsQueryStringArgs{
+//							Ignore: pulumi.Bool(true),
+//						},
+//						User: &cloudflare.PageRuleActionsCacheKeyFieldsUserArgs{
+//							DeviceType: pulumi.Bool(false),
+//							Geo:        pulumi.Bool(true),
+//							Lang:       pulumi.Bool(true),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o PageRuleActionsCacheKeyFieldsUserOutput) Lang() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsUser) *bool { return v.Lang }).(pulumi.BoolPtrOutput)
 }
@@ -15827,6 +16007,68 @@ func (o PageRuleActionsCacheKeyFieldsUserPtrOutput) Geo() pulumi.BoolPtrOutput {
 }
 
 // `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
+//
+// Example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
+//				ZoneId:   pulumi.Any(_var.Cloudflare_zone_id),
+//				Target:   pulumi.String(fmt.Sprintf("%v/app/*", _var.Cloudflare_zone)),
+//				Priority: pulumi.Int(1),
+//				Actions: &cloudflare.PageRuleActionsArgs{
+//					CacheKeyFields: &cloudflare.PageRuleActionsCacheKeyFieldsArgs{
+//						Cookie: &cloudflare.PageRuleActionsCacheKeyFieldsCookieArgs{
+//							CheckPresences: pulumi.StringArray{
+//								pulumi.String("wordpress_test_cookie"),
+//							},
+//						},
+//						Header: &cloudflare.PageRuleActionsCacheKeyFieldsHeaderArgs{
+//							CheckPresences: pulumi.StringArray{
+//								pulumi.String("header_present"),
+//							},
+//							Excludes: pulumi.StringArray{
+//								pulumi.String("origin"),
+//							},
+//							Includes: pulumi.StringArray{
+//								pulumi.String("api-key"),
+//								pulumi.String("dnt"),
+//							},
+//						},
+//						Host: &cloudflare.PageRuleActionsCacheKeyFieldsHostArgs{
+//							Resolved: pulumi.Bool(true),
+//						},
+//						QueryString: &cloudflare.PageRuleActionsCacheKeyFieldsQueryStringArgs{
+//							Ignore: pulumi.Bool(true),
+//						},
+//						User: &cloudflare.PageRuleActionsCacheKeyFieldsUserArgs{
+//							DeviceType: pulumi.Bool(false),
+//							Geo:        pulumi.Bool(true),
+//							Lang:       pulumi.Bool(true),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o PageRuleActionsCacheKeyFieldsUserPtrOutput) Lang() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsUser) *bool {
 		if v == nil {

@@ -1896,6 +1896,46 @@ export interface PageRuleActionsCacheKeyFieldsUser {
     geo?: pulumi.Input<boolean>;
     /**
      * `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
+     *
+     * Example:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as cloudflare from "@pulumi/cloudflare";
+     *
+     * // Unrealistic example with all features used
+     * const foobar = new cloudflare.PageRule("foobar", {
+     *     zoneId: _var.cloudflare_zone_id,
+     *     target: `${_var.cloudflare_zone}/app/*`,
+     *     priority: 1,
+     *     actions: {
+     *         cacheKeyFields: {
+     *             cookie: {
+     *                 checkPresences: ["wordpress_test_cookie"],
+     *             },
+     *             header: {
+     *                 checkPresences: ["header_present"],
+     *                 excludes: ["origin"],
+     *                 includes: [
+     *                     "api-key",
+     *                     "dnt",
+     *                 ],
+     *             },
+     *             host: {
+     *                 resolved: true,
+     *             },
+     *             queryString: {
+     *                 ignore: true,
+     *             },
+     *             user: {
+     *                 deviceType: false,
+     *                 geo: true,
+     *                 lang: true,
+     *             },
+     *         },
+     *     },
+     * });
+     * ```
      */
     lang?: pulumi.Input<boolean>;
 }
