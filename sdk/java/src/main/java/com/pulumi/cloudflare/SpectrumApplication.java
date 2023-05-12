@@ -84,7 +84,7 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      * Enables Argo Smart Routing. Defaults to `false`.
      * 
      */
-    @Export(name="argoSmartRouting", type=Boolean.class, parameters={})
+    @Export(name="argoSmartRouting", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> argoSmartRouting;
 
     /**
@@ -98,7 +98,7 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      * The name and type of DNS record for the Spectrum application.
      * 
      */
-    @Export(name="dns", type=SpectrumApplicationDns.class, parameters={})
+    @Export(name="dns", refs={SpectrumApplicationDns.class}, tree="[0]")
     private Output<SpectrumApplicationDns> dns;
 
     /**
@@ -112,7 +112,7 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      * The anycast edge IP configuration for the hostname of this application.
      * 
      */
-    @Export(name="edgeIps", type=SpectrumApplicationEdgeIps.class, parameters={})
+    @Export(name="edgeIps", refs={SpectrumApplicationEdgeIps.class}, tree="[0]")
     private Output</* @Nullable */ SpectrumApplicationEdgeIps> edgeIps;
 
     /**
@@ -126,7 +126,7 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      * Enables the IP Firewall for this application. Defaults to `true`.
      * 
      */
-    @Export(name="ipFirewall", type=Boolean.class, parameters={})
+    @Export(name="ipFirewall", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ipFirewall;
 
     /**
@@ -140,7 +140,7 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      * A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
      * 
      */
-    @Export(name="originDirects", type=List.class, parameters={String.class})
+    @Export(name="originDirects", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> originDirects;
 
     /**
@@ -154,7 +154,7 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      * A destination DNS addresses to the origin.
      * 
      */
-    @Export(name="originDns", type=SpectrumApplicationOriginDns.class, parameters={})
+    @Export(name="originDns", refs={SpectrumApplicationOriginDns.class}, tree="[0]")
     private Output</* @Nullable */ SpectrumApplicationOriginDns> originDns;
 
     /**
@@ -168,7 +168,7 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      * Origin port to proxy traffice to. Conflicts with `origin_port_range`.
      * 
      */
-    @Export(name="originPort", type=Integer.class, parameters={})
+    @Export(name="originPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> originPort;
 
     /**
@@ -182,7 +182,7 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      * Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `origin_port`.
      * 
      */
-    @Export(name="originPortRange", type=SpectrumApplicationOriginPortRange.class, parameters={})
+    @Export(name="originPortRange", refs={SpectrumApplicationOriginPortRange.class}, tree="[0]")
     private Output</* @Nullable */ SpectrumApplicationOriginPortRange> originPortRange;
 
     /**
@@ -196,7 +196,7 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      * The port configuration at Cloudflare&#39;s edge. e.g. `tcp/22`.
      * 
      */
-    @Export(name="protocol", type=String.class, parameters={})
+    @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
@@ -210,7 +210,7 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      * Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
      * 
      */
-    @Export(name="proxyProtocol", type=String.class, parameters={})
+    @Export(name="proxyProtocol", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> proxyProtocol;
 
     /**
@@ -224,7 +224,7 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      * TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
      * 
      */
-    @Export(name="tls", type=String.class, parameters={})
+    @Export(name="tls", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tls;
 
     /**
@@ -238,7 +238,7 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      * Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
      * 
      */
-    @Export(name="trafficType", type=String.class, parameters={})
+    @Export(name="trafficType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> trafficType;
 
     /**
@@ -252,7 +252,7 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

@@ -60,7 +60,7 @@ public class CustomHostnameFallbackOrigin extends com.pulumi.resources.CustomRes
      * Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
      * 
      */
-    @Export(name="origin", type=String.class, parameters={})
+    @Export(name="origin", refs={String.class}, tree="[0]")
     private Output<String> origin;
 
     /**
@@ -74,7 +74,7 @@ public class CustomHostnameFallbackOrigin extends com.pulumi.resources.CustomRes
      * Status of the fallback origin&#39;s activation.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -88,7 +88,7 @@ public class CustomHostnameFallbackOrigin extends com.pulumi.resources.CustomRes
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

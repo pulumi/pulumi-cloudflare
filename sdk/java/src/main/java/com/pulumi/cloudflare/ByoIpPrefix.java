@@ -63,7 +63,7 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -77,7 +77,7 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
      * Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
      * 
      */
-    @Export(name="advertisement", type=String.class, parameters={})
+    @Export(name="advertisement", refs={String.class}, tree="[0]")
     private Output<String> advertisement;
 
     /**
@@ -91,7 +91,7 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
      * Description of the BYO IP prefix.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -105,7 +105,7 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
      * The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="prefixId", type=String.class, parameters={})
+    @Export(name="prefixId", refs={String.class}, tree="[0]")
     private Output<String> prefixId;
 
     /**

@@ -158,7 +158,7 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -172,7 +172,7 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * Configuration for the project build process.
      * 
      */
-    @Export(name="buildConfig", type=PagesProjectBuildConfig.class, parameters={})
+    @Export(name="buildConfig", refs={PagesProjectBuildConfig.class}, tree="[0]")
     private Output</* @Nullable */ PagesProjectBuildConfig> buildConfig;
 
     /**
@@ -186,7 +186,7 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * When the project was created.
      * 
      */
-    @Export(name="createdOn", type=String.class, parameters={})
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
 
     /**
@@ -200,7 +200,7 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * Configuration for deployments in a project.
      * 
      */
-    @Export(name="deploymentConfigs", type=PagesProjectDeploymentConfigs.class, parameters={})
+    @Export(name="deploymentConfigs", refs={PagesProjectDeploymentConfigs.class}, tree="[0]")
     private Output</* @Nullable */ PagesProjectDeploymentConfigs> deploymentConfigs;
 
     /**
@@ -214,7 +214,7 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * A list of associated custom domains for the project.
      * 
      */
-    @Export(name="domains", type=List.class, parameters={String.class})
+    @Export(name="domains", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> domains;
 
     /**
@@ -228,7 +228,7 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * Name of the project. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -242,7 +242,7 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * The name of the branch that is used for the production environment.
      * 
      */
-    @Export(name="productionBranch", type=String.class, parameters={})
+    @Export(name="productionBranch", refs={String.class}, tree="[0]")
     private Output<String> productionBranch;
 
     /**
@@ -256,7 +256,7 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * Configuration for the project source.
      * 
      */
-    @Export(name="source", type=PagesProjectSource.class, parameters={})
+    @Export(name="source", refs={PagesProjectSource.class}, tree="[0]")
     private Output</* @Nullable */ PagesProjectSource> source;
 
     /**
@@ -270,7 +270,7 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * The Cloudflare subdomain associated with the project.
      * 
      */
-    @Export(name="subdomain", type=String.class, parameters={})
+    @Export(name="subdomain", refs={String.class}, tree="[0]")
     private Output<String> subdomain;
 
     /**

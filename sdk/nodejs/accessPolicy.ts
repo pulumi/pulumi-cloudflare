@@ -111,13 +111,11 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public readonly decision!: pulumi.Output<string>;
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      */
     public readonly excludes!: pulumi.Output<outputs.AccessPolicyExclude[] | undefined>;
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      */
     public readonly includes!: pulumi.Output<outputs.AccessPolicyInclude[]>;
     /**
@@ -137,8 +135,7 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public readonly purposeJustificationRequired!: pulumi.Output<boolean | undefined>;
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      */
     public readonly requires!: pulumi.Output<outputs.AccessPolicyRequire[] | undefined>;
     /**
@@ -227,13 +224,11 @@ export interface AccessPolicyState {
      */
     decision?: pulumi.Input<string>;
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      */
     excludes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExclude>[]>;
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      */
     includes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[]>;
     /**
@@ -253,8 +248,7 @@ export interface AccessPolicyState {
      */
     purposeJustificationRequired?: pulumi.Input<boolean>;
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      */
     requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
     /**
@@ -282,13 +276,11 @@ export interface AccessPolicyArgs {
      */
     decision: pulumi.Input<string>;
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      */
     excludes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExclude>[]>;
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      */
     includes: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[]>;
     /**
@@ -308,8 +300,7 @@ export interface AccessPolicyArgs {
      */
     purposeJustificationRequired?: pulumi.Input<boolean>;
     /**
-     * A series of access conditions, see [Access
-     * Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+     * A series of access conditions, see Access Groups.
      */
     requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
     /**

@@ -37,7 +37,7 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
@@ -51,7 +51,7 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`.
      * 
      */
-    @Export(name="dataset", type=String.class, parameters={})
+    @Export(name="dataset", refs={String.class}, tree="[0]")
     private Output<String> dataset;
 
     /**
@@ -65,7 +65,7 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
      * 
      */
-    @Export(name="destinationConf", type=String.class, parameters={})
+    @Export(name="destinationConf", refs={String.class}, tree="[0]")
     private Output<String> destinationConf;
 
     /**
@@ -79,7 +79,7 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      * Whether to enable the job.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -93,7 +93,7 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      * Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
      * 
      */
-    @Export(name="filter", type=String.class, parameters={})
+    @Export(name="filter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> filter;
 
     /**
@@ -107,7 +107,7 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      * A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less often with larger files. Available values: `high`, `low`. Defaults to `high`.
      * 
      */
-    @Export(name="frequency", type=String.class, parameters={})
+    @Export(name="frequency", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> frequency;
 
     /**
@@ -121,7 +121,7 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      * The kind of logpush job to create. Available values: `edge`, `instant-logs`, `&#34;&#34;`.
      * 
      */
-    @Export(name="kind", type=String.class, parameters={})
+    @Export(name="kind", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kind;
 
     /**
@@ -135,7 +135,7 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpush options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
      * 
      */
-    @Export(name="logpullOptions", type=String.class, parameters={})
+    @Export(name="logpullOptions", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logpullOptions;
 
     /**
@@ -149,7 +149,7 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      * The name of the logpush job to create.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> name;
 
     /**
@@ -163,7 +163,7 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      * Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
      * 
      */
-    @Export(name="ownershipChallenge", type=String.class, parameters={})
+    @Export(name="ownershipChallenge", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ownershipChallenge;
 
     /**
@@ -177,7 +177,7 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**

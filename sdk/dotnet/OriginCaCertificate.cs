@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// using Tls = Pulumi.Tls;

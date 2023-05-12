@@ -73,7 +73,7 @@ public class MtlsCertificate extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -87,7 +87,7 @@ public class MtlsCertificate extends com.pulumi.resources.CustomResource {
      * Whether this is a CA or leaf certificate. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="ca", type=Boolean.class, parameters={})
+    @Export(name="ca", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> ca;
 
     /**
@@ -101,7 +101,7 @@ public class MtlsCertificate extends com.pulumi.resources.CustomResource {
      * Certificate you intend to use with mTLS-enabled services. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="certificates", type=String.class, parameters={})
+    @Export(name="certificates", refs={String.class}, tree="[0]")
     private Output<String> certificates;
 
     /**
@@ -115,7 +115,7 @@ public class MtlsCertificate extends com.pulumi.resources.CustomResource {
      * **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="expiresOn", type=String.class, parameters={})
+    @Export(name="expiresOn", refs={String.class}, tree="[0]")
     private Output<String> expiresOn;
 
     /**
@@ -129,7 +129,7 @@ public class MtlsCertificate extends com.pulumi.resources.CustomResource {
      * **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="issuer", type=String.class, parameters={})
+    @Export(name="issuer", refs={String.class}, tree="[0]")
     private Output<String> issuer;
 
     /**
@@ -143,7 +143,7 @@ public class MtlsCertificate extends com.pulumi.resources.CustomResource {
      * Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> name;
 
     /**
@@ -157,7 +157,7 @@ public class MtlsCertificate extends com.pulumi.resources.CustomResource {
      * The certificate&#39;s private key. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="privateKey", type=String.class, parameters={})
+    @Export(name="privateKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateKey;
 
     /**
@@ -171,7 +171,7 @@ public class MtlsCertificate extends com.pulumi.resources.CustomResource {
      * **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="serialNumber", type=String.class, parameters={})
+    @Export(name="serialNumber", refs={String.class}, tree="[0]")
     private Output<String> serialNumber;
 
     /**
@@ -185,7 +185,7 @@ public class MtlsCertificate extends com.pulumi.resources.CustomResource {
      * **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="signature", type=String.class, parameters={})
+    @Export(name="signature", refs={String.class}, tree="[0]")
     private Output<String> signature;
 
     /**
@@ -199,7 +199,7 @@ public class MtlsCertificate extends com.pulumi.resources.CustomResource {
      * **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="uploadedOn", type=String.class, parameters={})
+    @Export(name="uploadedOn", refs={String.class}, tree="[0]")
     private Output<String> uploadedOn;
 
     /**

@@ -60,7 +60,7 @@ public class Queue extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -74,7 +74,7 @@ public class Queue extends com.pulumi.resources.CustomResource {
      * The name of the queue.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

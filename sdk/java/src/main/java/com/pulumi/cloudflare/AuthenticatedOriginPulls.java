@@ -107,7 +107,7 @@ public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResourc
      * The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
      * 
      */
-    @Export(name="authenticatedOriginPullsCertificate", type=String.class, parameters={})
+    @Export(name="authenticatedOriginPullsCertificate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authenticatedOriginPullsCertificate;
 
     /**
@@ -121,7 +121,7 @@ public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResourc
      * Whether to enable Authenticated Origin Pulls on the given zone or hostname.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -135,7 +135,7 @@ public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResourc
      * Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
      * 
      */
-    @Export(name="hostname", type=String.class, parameters={})
+    @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hostname;
 
     /**
@@ -149,7 +149,7 @@ public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResourc
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

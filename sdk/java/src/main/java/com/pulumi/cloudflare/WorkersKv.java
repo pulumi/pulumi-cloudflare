@@ -73,7 +73,7 @@ public class WorkersKv extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -87,7 +87,7 @@ public class WorkersKv extends com.pulumi.resources.CustomResource {
      * Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     /**
@@ -101,7 +101,7 @@ public class WorkersKv extends com.pulumi.resources.CustomResource {
      * The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="namespaceId", type=String.class, parameters={})
+    @Export(name="namespaceId", refs={String.class}, tree="[0]")
     private Output<String> namespaceId;
 
     /**
@@ -115,7 +115,7 @@ public class WorkersKv extends com.pulumi.resources.CustomResource {
      * Value of the KV pair.
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**

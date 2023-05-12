@@ -81,7 +81,7 @@ public class List extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -95,7 +95,7 @@ public class List extends com.pulumi.resources.CustomResource {
      * An optional description of the list.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -105,7 +105,7 @@ public class List extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="items", type=java.util.List.class, parameters={ListItem.class})
+    @Export(name="items", refs={java.util.List.class,ListItem.class}, tree="[0,1]")
     private Output</* @Nullable */ java.util.List<ListItem>> items;
 
     public Output<Optional<java.util.List<ListItem>>> items() {
@@ -115,7 +115,7 @@ public class List extends com.pulumi.resources.CustomResource {
      * The type of items the list will contain.
      * 
      */
-    @Export(name="kind", type=String.class, parameters={})
+    @Export(name="kind", refs={String.class}, tree="[0]")
     private Output<String> kind;
 
     /**
@@ -129,7 +129,7 @@ public class List extends com.pulumi.resources.CustomResource {
      * The name of the list. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
