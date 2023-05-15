@@ -1,6 +1,11 @@
+import pulumi
 import pulumi_cloudflare as cloudflare
 
-zone = cloudflare.Zone("my-zone", zone="py-test-cloudflare-pulumi.com")
+config = pulumi.Config()
+
+account_id = config.require('accountId')
+
+zone = cloudflare.Zone("my-zone", zone="py-test-cloudflare-pulumi.com", account_id=account_id)
 
 record = cloudflare.Record("my-record-py",
                            name="my-record-py", zone_id=zone.id,
