@@ -10,14 +10,14 @@ class MyStack : Stack
 
         var zone = new Cloudflare.Zone("my-zone", new Cloudflare.ZoneArgs
         {
-            Name = "cs-test-cloudflare-pulumi.com",
+            ZoneName = "cs-test-cloudflare-pulumi.com",
             AccountId = accountId
         });
 
         var foobar = new Cloudflare.Record("foobar", new Cloudflare.RecordArgs
         {
             Name = "my-record-csharp",
-            ZoneId = zone.ID,
+            ZoneId = zone.Id,
             Value = "162.168.0.14",
             Type = "A",
             Ttl = 3600,
