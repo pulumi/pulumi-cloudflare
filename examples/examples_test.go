@@ -9,13 +9,12 @@ import (
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 )
 
-func getZoneId(t *testing.T) string {
-	zoneId := os.Getenv("CLOUDFLARE_ZONE_ID")
-	if zoneId == "" {
-		t.Skipf("Skipping test due to missing CLOUDFLARE_ZONE_ID environment variable")
+func getAccountId(t *testing.T) string {
+	id := os.Getenv("CLOUDFLARE_ACCOUNT_ID")
+	if id == "" {
+		t.Skipf("Skipping test due to missing CLOUDFLARE_ACCOUNT_ID environment variable")
 	}
-
-	return zoneId
+	return id
 }
 
 func getCwd(t *testing.T) string {
@@ -28,5 +27,10 @@ func getCwd(t *testing.T) string {
 }
 
 func getBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	return integration.ProgramTestOptions{}
+	accountId := getAccountId(t)
+	return integration.ProgramTestOptions{
+		Config: map[string]string{
+			"accountId": accountId,
+		},
+	}
 }
