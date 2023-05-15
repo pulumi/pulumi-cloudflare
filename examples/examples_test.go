@@ -28,10 +28,5 @@ func getCwd(t *testing.T) string {
 }
 
 func getBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	zoneId := getZoneId(t)
-	return integration.ProgramTestOptions{
-		Config: map[string]string{
-			"zone_id": zoneId,
-		},
-	}
+	return integration.ProgramTestOptions{}
 }
