@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
@@ -14,10 +14,10 @@ func main() {
 
 		zone, err := cloudflare.NewZone(ctx, "my-zone", &cloudflare.ZoneArgs{
 			Zone:      pulumi.String("go-test-cloudflare-pulumi.com"),
-			AccountId: accountId,
+			AccountId: pulumi.String(accountId),
 		})
 
-		_, err := cloudflare.NewRecord(ctx, "my-record-go", &cloudflare.RecordArgs{
+		_, err = cloudflare.NewRecord(ctx, "my-record-go", &cloudflare.RecordArgs{
 			Name:   pulumi.String("my-record-go"),
 			ZoneId: zone.ID(),
 			Type:   pulumi.String("A"),
