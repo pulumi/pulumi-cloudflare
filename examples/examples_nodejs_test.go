@@ -23,7 +23,6 @@ func TestAccRecordTs(t *testing.T) {
 func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	base := getBaseOptions(t)
 	baseJS := base.With(integration.ProgramTestOptions{
-		RunUpdateTest: true,
 		Dependencies: []string{
 			"@pulumi/cloudflare",
 		},

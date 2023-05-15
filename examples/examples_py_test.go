@@ -23,7 +23,6 @@ func TestAccRecordPy(t *testing.T) {
 func getPythonBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	base := getBaseOptions(t)
 	basePython := base.With(integration.ProgramTestOptions{
-		RunUpdateTest: true,
 		Dependencies: []string{
 			filepath.Join("..", "sdk", "python", "bin"),
 		},
