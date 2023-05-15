@@ -4,6 +4,7 @@ go 1.19
 
 require (
 	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220823222840-b2cee3be8c57
+	github.com/cloudflare/terraform-provider-cloudflare/shim v0.0.0-00010101000000-000000000000
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.9.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.47.2
 	github.com/pulumi/pulumi/sdk/v3 v3.64.0
@@ -76,7 +77,7 @@ require (
 	github.com/blang/semver v3.5.1+incompatible // indirect
 	github.com/cenkalti/backoff/v3 v3.2.2 // indirect
 	github.com/cheggaaa/pb v1.0.29 // indirect
-	github.com/cloudflare/circl v1.1.0 // indirect
+	github.com/cloudflare/circl v1.3.3 // indirect
 	github.com/cloudflare/cloudflare-go v0.66.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dimchansky/utfbom v1.1.1 // indirect
