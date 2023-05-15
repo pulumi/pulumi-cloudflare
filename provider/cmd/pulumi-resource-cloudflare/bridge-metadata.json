@@ -3,6 +3,7 @@
         "resources": {
             "cloudflare_access_application": {
                 "current": "cloudflare:index/accessApplication:AccessApplication",
+                "majorVersion": 5,
                 "fields": {
                     "allowed_idps": {
                         "maxItemsOne": false
@@ -29,10 +30,12 @@
                 }
             },
             "cloudflare_access_ca_certificate": {
-                "current": "cloudflare:index/accessCaCertificate:AccessCaCertificate"
+                "current": "cloudflare:index/accessCaCertificate:AccessCaCertificate",
+                "majorVersion": 5
             },
             "cloudflare_access_group": {
                 "current": "cloudflare:index/accessGroup:AccessGroup",
+                "majorVersion": 5,
                 "fields": {
                     "exclude": {
                         "maxItemsOne": false,
@@ -278,6 +281,7 @@
             },
             "cloudflare_access_identity_provider": {
                 "current": "cloudflare:index/accessIdentityProvider:AccessIdentityProvider",
+                "majorVersion": 5,
                 "fields": {
                     "config": {
                         "maxItemsOne": false,
@@ -301,10 +305,12 @@
                 }
             },
             "cloudflare_access_keys_configuration": {
-                "current": "cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration"
+                "current": "cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration",
+                "majorVersion": 5
             },
             "cloudflare_access_mutual_tls_certificate": {
                 "current": "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate",
+                "majorVersion": 5,
                 "fields": {
                     "associated_hostnames": {
                         "maxItemsOne": false
@@ -313,6 +319,7 @@
             },
             "cloudflare_access_organization": {
                 "current": "cloudflare:index/accessOrganization:AccessOrganization",
+                "majorVersion": 5,
                 "fields": {
                     "login_design": {
                         "maxItemsOne": false
@@ -321,6 +328,7 @@
             },
             "cloudflare_access_policy": {
                 "current": "cloudflare:index/accessPolicy:AccessPolicy",
+                "majorVersion": 5,
                 "fields": {
                     "approval_group": {
                         "maxItemsOne": false,
@@ -576,6 +584,7 @@
             },
             "cloudflare_access_rule": {
                 "current": "cloudflare:index/accessRule:AccessRule",
+                "majorVersion": 5,
                 "fields": {
                     "configuration": {
                         "maxItemsOne": true
@@ -583,13 +592,16 @@
                 }
             },
             "cloudflare_access_service_token": {
-                "current": "cloudflare:index/accessServiceToken:AccessServiceToken"
+                "current": "cloudflare:index/accessServiceToken:AccessServiceToken",
+                "majorVersion": 5
             },
             "cloudflare_account": {
-                "current": "cloudflare:index/account:Account"
+                "current": "cloudflare:index/account:Account",
+                "majorVersion": 5
             },
             "cloudflare_account_member": {
                 "current": "cloudflare:index/accountMember:AccountMember",
+                "majorVersion": 5,
                 "fields": {
                     "role_ids": {
                         "maxItemsOne": false
@@ -598,6 +610,7 @@
             },
             "cloudflare_address_map": {
                 "current": "cloudflare:index/addressMap:AddressMap",
+                "majorVersion": 5,
                 "fields": {
                     "ips": {
                         "maxItemsOne": false
@@ -609,6 +622,7 @@
             },
             "cloudflare_api_shield": {
                 "current": "cloudflare:index/apiShield:ApiShield",
+                "majorVersion": 5,
                 "fields": {
                     "auth_id_characteristics": {
                         "maxItemsOne": false
@@ -617,6 +631,7 @@
             },
             "cloudflare_api_token": {
                 "current": "cloudflare:index/apiToken:ApiToken",
+                "majorVersion": 5,
                 "fields": {
                     "condition": {
                         "maxItemsOne": true,
@@ -651,19 +666,24 @@
                 }
             },
             "cloudflare_argo": {
-                "current": "cloudflare:index/argo:Argo"
+                "current": "cloudflare:index/argo:Argo",
+                "majorVersion": 5
             },
             "cloudflare_authenticated_origin_pulls": {
-                "current": "cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls"
+                "current": "cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls",
+                "majorVersion": 5
             },
             "cloudflare_authenticated_origin_pulls_certificate": {
-                "current": "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate"
+                "current": "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate",
+                "majorVersion": 5
             },
             "cloudflare_byo_ip_prefix": {
-                "current": "cloudflare:index/byoIpPrefix:ByoIpPrefix"
+                "current": "cloudflare:index/byoIpPrefix:ByoIpPrefix",
+                "majorVersion": 5
             },
             "cloudflare_certificate_pack": {
                 "current": "cloudflare:index/certificatePack:CertificatePack",
+                "majorVersion": 5,
                 "fields": {
                     "hosts": {
                         "maxItemsOne": false
@@ -685,6 +705,7 @@
             },
             "cloudflare_custom_hostname": {
                 "current": "cloudflare:index/customHostname:CustomHostname",
+                "majorVersion": 5,
                 "fields": {
                     "ssl": {
                         "maxItemsOne": false,
@@ -719,13 +740,16 @@
                 }
             },
             "cloudflare_custom_hostname_fallback_origin": {
-                "current": "cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin"
+                "current": "cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin",
+                "majorVersion": 5
             },
             "cloudflare_custom_pages": {
-                "current": "cloudflare:index/customPages:CustomPages"
+                "current": "cloudflare:index/customPages:CustomPages",
+                "majorVersion": 5
             },
             "cloudflare_custom_ssl": {
                 "current": "cloudflare:index/customSsl:CustomSsl",
+                "majorVersion": 5,
                 "fields": {
                     "custom_ssl_options": {
                         "maxItemsOne": true
@@ -740,6 +764,7 @@
             },
             "cloudflare_device_dex_test": {
                 "current": "cloudflare:index/deviceDexTest:DeviceDexTest",
+                "majorVersion": 5,
                 "fields": {
                     "data": {
                         "maxItemsOne": true
@@ -748,6 +773,7 @@
             },
             "cloudflare_device_managed_networks": {
                 "current": "cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks",
+                "majorVersion": 5,
                 "fields": {
                     "config": {
                         "maxItemsOne": true
@@ -755,10 +781,12 @@
                 }
             },
             "cloudflare_device_policy_certificates": {
-                "current": "cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates"
+                "current": "cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates",
+                "majorVersion": 5
             },
             "cloudflare_device_posture_integration": {
                 "current": "cloudflare:index/devicePostureIntegration:DevicePostureIntegration",
+                "majorVersion": 5,
                 "fields": {
                     "config": {
                         "maxItemsOne": false
@@ -767,6 +795,7 @@
             },
             "cloudflare_device_posture_rule": {
                 "current": "cloudflare:index/devicePostureRule:DevicePostureRule",
+                "majorVersion": 5,
                 "fields": {
                     "input": {
                         "maxItemsOne": false,
@@ -784,10 +813,12 @@
                 }
             },
             "cloudflare_device_settings_policy": {
-                "current": "cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy"
+                "current": "cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy",
+                "majorVersion": 5
             },
             "cloudflare_dlp_profile": {
                 "current": "cloudflare:index/dlpProfile:DlpProfile",
+                "majorVersion": 5,
                 "fields": {
                     "entry": {
                         "maxItemsOne": false,
@@ -802,10 +833,12 @@
                 }
             },
             "cloudflare_email_routing_address": {
-                "current": "cloudflare:index/emailRoutingAddress:EmailRoutingAddress"
+                "current": "cloudflare:index/emailRoutingAddress:EmailRoutingAddress",
+                "majorVersion": 5
             },
             "cloudflare_email_routing_catch_all": {
                 "current": "cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll",
+                "majorVersion": 5,
                 "fields": {
                     "action": {
                         "maxItemsOne": false,
@@ -824,6 +857,7 @@
             },
             "cloudflare_email_routing_rule": {
                 "current": "cloudflare:index/emailRoutingRule:EmailRoutingRule",
+                "majorVersion": 5,
                 "fields": {
                     "action": {
                         "maxItemsOne": false,
@@ -841,10 +875,12 @@
                 }
             },
             "cloudflare_email_routing_settings": {
-                "current": "cloudflare:index/emailRoutingSettings:EmailRoutingSettings"
+                "current": "cloudflare:index/emailRoutingSettings:EmailRoutingSettings",
+                "majorVersion": 5
             },
             "cloudflare_fallback_domain": {
                 "current": "cloudflare:index/fallbackDomain:FallbackDomain",
+                "majorVersion": 5,
                 "fields": {
                     "domains": {
                         "maxItemsOne": false,
@@ -859,10 +895,12 @@
                 }
             },
             "cloudflare_filter": {
-                "current": "cloudflare:index/filter:Filter"
+                "current": "cloudflare:index/filter:Filter",
+                "majorVersion": 5
             },
             "cloudflare_firewall_rule": {
                 "current": "cloudflare:index/firewallRule:FirewallRule",
+                "majorVersion": 5,
                 "fields": {
                     "products": {
                         "maxItemsOne": false
@@ -870,10 +908,12 @@
                 }
             },
             "cloudflare_gre_tunnel": {
-                "current": "cloudflare:index/greTunnel:GreTunnel"
+                "current": "cloudflare:index/greTunnel:GreTunnel",
+                "majorVersion": 5
             },
             "cloudflare_healthcheck": {
                 "current": "cloudflare:index/healthcheck:Healthcheck",
+                "majorVersion": 5,
                 "fields": {
                     "check_regions": {
                         "maxItemsOne": false
@@ -894,10 +934,12 @@
                 }
             },
             "cloudflare_ipsec_tunnel": {
-                "current": "cloudflare:index/ipsecTunnel:IpsecTunnel"
+                "current": "cloudflare:index/ipsecTunnel:IpsecTunnel",
+                "majorVersion": 5
             },
             "cloudflare_list": {
                 "current": "cloudflare:index/list:List",
+                "majorVersion": 5,
                 "fields": {
                     "item": {
                         "maxItemsOne": false,
@@ -920,6 +962,7 @@
             },
             "cloudflare_list_item": {
                 "current": "cloudflare:index/listItem:ListItem",
+                "majorVersion": 5,
                 "fields": {
                     "redirect": {
                         "maxItemsOne": true
@@ -928,6 +971,7 @@
             },
             "cloudflare_load_balancer": {
                 "current": "cloudflare:index/loadBalancer:LoadBalancer",
+                "majorVersion": 5,
                 "fields": {
                     "adaptive_routing": {
                         "maxItemsOne": false
@@ -1040,6 +1084,7 @@
             },
             "cloudflare_load_balancer_monitor": {
                 "current": "cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor",
+                "majorVersion": 5,
                 "fields": {
                     "header": {
                         "maxItemsOne": false,
@@ -1055,6 +1100,7 @@
             },
             "cloudflare_load_balancer_pool": {
                 "current": "cloudflare:index/loadBalancerPool:LoadBalancerPool",
+                "majorVersion": 5,
                 "fields": {
                     "check_regions": {
                         "maxItemsOne": false
@@ -1085,16 +1131,20 @@
                 }
             },
             "cloudflare_logpull_retention": {
-                "current": "cloudflare:index/logpullRetention:LogpullRetention"
+                "current": "cloudflare:index/logpullRetention:LogpullRetention",
+                "majorVersion": 5
             },
             "cloudflare_logpush_job": {
-                "current": "cloudflare:index/logpushJob:LogpushJob"
+                "current": "cloudflare:index/logpushJob:LogpushJob",
+                "majorVersion": 5
             },
             "cloudflare_logpush_ownership_challenge": {
-                "current": "cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge"
+                "current": "cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge",
+                "majorVersion": 5
             },
             "cloudflare_magic_firewall_ruleset": {
                 "current": "cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset",
+                "majorVersion": 5,
                 "fields": {
                     "rules": {
                         "maxItemsOne": false
@@ -1103,6 +1153,7 @@
             },
             "cloudflare_managed_headers": {
                 "current": "cloudflare:index/managedHeaders:ManagedHeaders",
+                "majorVersion": 5,
                 "fields": {
                     "managed_request_headers": {
                         "maxItemsOne": false
@@ -1113,10 +1164,12 @@
                 }
             },
             "cloudflare_mtls_certificate": {
-                "current": "cloudflare:index/mtlsCertificate:MtlsCertificate"
+                "current": "cloudflare:index/mtlsCertificate:MtlsCertificate",
+                "majorVersion": 5
             },
             "cloudflare_notification_policy": {
                 "current": "cloudflare:index/notificationPolicy:NotificationPolicy",
+                "majorVersion": 5,
                 "fields": {
                     "email_integration": {
                         "maxItemsOne": false
@@ -1194,10 +1247,12 @@
                 }
             },
             "cloudflare_notification_policy_webhooks": {
-                "current": "cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks"
+                "current": "cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks",
+                "majorVersion": 5
             },
             "cloudflare_origin_ca_certificate": {
                 "current": "cloudflare:index/originCaCertificate:OriginCaCertificate",
+                "majorVersion": 5,
                 "fields": {
                     "hostnames": {
                         "maxItemsOne": false
@@ -1206,6 +1261,7 @@
             },
             "cloudflare_page_rule": {
                 "current": "cloudflare:index/pageRule:PageRule",
+                "majorVersion": 5,
                 "fields": {
                     "actions": {
                         "maxItemsOne": true,
@@ -1281,10 +1337,12 @@
                 }
             },
             "cloudflare_pages_domain": {
-                "current": "cloudflare:index/pagesDomain:PagesDomain"
+                "current": "cloudflare:index/pagesDomain:PagesDomain",
+                "majorVersion": 5
             },
             "cloudflare_pages_project": {
                 "current": "cloudflare:index/pagesProject:PagesProject",
+                "majorVersion": 5,
                 "fields": {
                     "build_config": {
                         "maxItemsOne": true
@@ -1348,10 +1406,12 @@
                 }
             },
             "cloudflare_queue": {
-                "current": "cloudflare:index/queue:Queue"
+                "current": "cloudflare:index/queue:Queue",
+                "majorVersion": 5
             },
             "cloudflare_rate_limit": {
                 "current": "cloudflare:index/rateLimit:RateLimit",
+                "majorVersion": 5,
                 "fields": {
                     "action": {
                         "maxItemsOne": true,
@@ -1406,6 +1466,7 @@
             },
             "cloudflare_record": {
                 "current": "cloudflare:index/record:Record",
+                "majorVersion": 5,
                 "fields": {
                     "data": {
                         "maxItemsOne": true
@@ -1416,10 +1477,12 @@
                 }
             },
             "cloudflare_regional_hostname": {
-                "current": "cloudflare:index/regionalHostname:RegionalHostname"
+                "current": "cloudflare:index/regionalHostname:RegionalHostname",
+                "majorVersion": 5
             },
             "cloudflare_ruleset": {
                 "current": "cloudflare:index/ruleset:Ruleset",
+                "majorVersion": 5,
                 "fields": {
                     "rules": {
                         "maxItemsOne": false,
@@ -1615,6 +1678,7 @@
             },
             "cloudflare_spectrum_application": {
                 "current": "cloudflare:index/spectrumApplication:SpectrumApplication",
+                "majorVersion": 5,
                 "fields": {
                     "dns": {
                         "maxItemsOne": true
@@ -1642,6 +1706,7 @@
             },
             "cloudflare_split_tunnel": {
                 "current": "cloudflare:index/splitTunnel:SplitTunnel",
+                "majorVersion": 5,
                 "fields": {
                     "tunnels": {
                         "maxItemsOne": false
@@ -1650,6 +1715,7 @@
             },
             "cloudflare_static_route": {
                 "current": "cloudflare:index/staticRoute:StaticRoute",
+                "majorVersion": 5,
                 "fields": {
                     "colo_names": {
                         "maxItemsOne": false
@@ -1661,6 +1727,7 @@
             },
             "cloudflare_teams_account": {
                 "current": "cloudflare:index/teamsAccount:TeamsAccount",
+                "majorVersion": 5,
                 "fields": {
                     "antivirus": {
                         "maxItemsOne": true
@@ -1704,6 +1771,7 @@
             },
             "cloudflare_teams_list": {
                 "current": "cloudflare:index/teamsList:TeamsList",
+                "majorVersion": 5,
                 "fields": {
                     "items": {
                         "maxItemsOne": false
@@ -1712,6 +1780,7 @@
             },
             "cloudflare_teams_location": {
                 "current": "cloudflare:index/teamsLocation:TeamsLocation",
+                "majorVersion": 5,
                 "fields": {
                     "networks": {
                         "maxItemsOne": false
@@ -1723,6 +1792,7 @@
             },
             "cloudflare_teams_proxy_endpoint": {
                 "current": "cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint",
+                "majorVersion": 5,
                 "fields": {
                     "ips": {
                         "maxItemsOne": false
@@ -1731,6 +1801,7 @@
             },
             "cloudflare_teams_rule": {
                 "current": "cloudflare:index/teamsRule:TeamsRule",
+                "majorVersion": 5,
                 "fields": {
                     "filters": {
                         "maxItemsOne": false
@@ -1769,16 +1840,20 @@
                 }
             },
             "cloudflare_tiered_cache": {
-                "current": "cloudflare:index/tieredCache:TieredCache"
+                "current": "cloudflare:index/tieredCache:TieredCache",
+                "majorVersion": 5
             },
             "cloudflare_total_tls": {
-                "current": "cloudflare:index/totalTls:TotalTls"
+                "current": "cloudflare:index/totalTls:TotalTls",
+                "majorVersion": 5
             },
             "cloudflare_tunnel": {
-                "current": "cloudflare:index/tunnel:Tunnel"
+                "current": "cloudflare:index/tunnel:Tunnel",
+                "majorVersion": 5
             },
             "cloudflare_tunnel_config": {
                 "current": "cloudflare:index/tunnelConfig:TunnelConfig",
+                "majorVersion": 5,
                 "fields": {
                     "config": {
                         "maxItemsOne": true,
@@ -1813,13 +1888,16 @@
                 }
             },
             "cloudflare_tunnel_route": {
-                "current": "cloudflare:index/tunnelRoute:TunnelRoute"
+                "current": "cloudflare:index/tunnelRoute:TunnelRoute",
+                "majorVersion": 5
             },
             "cloudflare_tunnel_virtual_network": {
-                "current": "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork"
+                "current": "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork",
+                "majorVersion": 5
             },
             "cloudflare_turnstile_widget": {
                 "current": "cloudflare:index/turnstileWidget:TurnstileWidget",
+                "majorVersion": 5,
                 "fields": {
                     "domains": {
                         "maxItemsOne": false
@@ -1827,10 +1905,12 @@
                 }
             },
             "cloudflare_url_normalization_settings": {
-                "current": "cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings"
+                "current": "cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings",
+                "majorVersion": 5
             },
             "cloudflare_user_agent_blocking_rule": {
                 "current": "cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule",
+                "majorVersion": 5,
                 "fields": {
                     "configuration": {
                         "maxItemsOne": true
@@ -1838,13 +1918,16 @@
                 }
             },
             "cloudflare_waiting_room": {
-                "current": "cloudflare:index/waitingRoom:WaitingRoom"
+                "current": "cloudflare:index/waitingRoom:WaitingRoom",
+                "majorVersion": 5
             },
             "cloudflare_waiting_room_event": {
-                "current": "cloudflare:index/waitingRoomEvent:WaitingRoomEvent"
+                "current": "cloudflare:index/waitingRoomEvent:WaitingRoomEvent",
+                "majorVersion": 5
             },
             "cloudflare_waiting_room_rules": {
                 "current": "cloudflare:index/waitingRoomRules:WaitingRoomRules",
+                "majorVersion": 5,
                 "fields": {
                     "rules": {
                         "maxItemsOne": false
@@ -1852,10 +1935,12 @@
                 }
             },
             "cloudflare_web3_hostname": {
-                "current": "cloudflare:index/web3Hostname:Web3Hostname"
+                "current": "cloudflare:index/web3Hostname:Web3Hostname",
+                "majorVersion": 5
             },
             "cloudflare_worker_cron_trigger": {
                 "current": "cloudflare:index/workerCronTrigger:WorkerCronTrigger",
+                "majorVersion": 5,
                 "fields": {
                     "schedules": {
                         "maxItemsOne": false
@@ -1863,13 +1948,16 @@
                 }
             },
             "cloudflare_worker_domain": {
-                "current": "cloudflare:index/workerDomain:WorkerDomain"
+                "current": "cloudflare:index/workerDomain:WorkerDomain",
+                "majorVersion": 5
             },
             "cloudflare_worker_route": {
-                "current": "cloudflare:index/workerRoute:WorkerRoute"
+                "current": "cloudflare:index/workerRoute:WorkerRoute",
+                "majorVersion": 5
             },
             "cloudflare_worker_script": {
                 "current": "cloudflare:index/workerScript:WorkerScript",
+                "majorVersion": 5,
                 "fields": {
                     "analytics_engine_binding": {
                         "maxItemsOne": false
@@ -1901,13 +1989,16 @@
                 }
             },
             "cloudflare_workers_kv": {
-                "current": "cloudflare:index/workersKv:WorkersKv"
+                "current": "cloudflare:index/workersKv:WorkersKv",
+                "majorVersion": 5
             },
             "cloudflare_workers_kv_namespace": {
-                "current": "cloudflare:index/workersKvNamespace:WorkersKvNamespace"
+                "current": "cloudflare:index/workersKvNamespace:WorkersKvNamespace",
+                "majorVersion": 5
             },
             "cloudflare_zone": {
                 "current": "cloudflare:index/zone:Zone",
+                "majorVersion": 5,
                 "fields": {
                     "name_servers": {
                         "maxItemsOne": false
@@ -1919,6 +2010,7 @@
             },
             "cloudflare_zone_cache_variants": {
                 "current": "cloudflare:index/zoneCacheVariants:ZoneCacheVariants",
+                "majorVersion": 5,
                 "fields": {
                     "avif": {
                         "maxItemsOne": false
@@ -1956,10 +2048,12 @@
                 }
             },
             "cloudflare_zone_dnssec": {
-                "current": "cloudflare:index/zoneDnssec:ZoneDnssec"
+                "current": "cloudflare:index/zoneDnssec:ZoneDnssec",
+                "majorVersion": 5
             },
             "cloudflare_zone_lockdown": {
                 "current": "cloudflare:index/zoneLockdown:ZoneLockdown",
+                "majorVersion": 5,
                 "fields": {
                     "configurations": {
                         "maxItemsOne": false
@@ -1971,6 +2065,7 @@
             },
             "cloudflare_zone_settings_override": {
                 "current": "cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride",
+                "majorVersion": 5,
                 "fields": {
                     "initial_settings": {
                         "maxItemsOne": false,
