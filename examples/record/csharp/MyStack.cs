@@ -5,9 +5,13 @@ class MyStack : Stack
 {
     public MyStack()
     {
+        var config = new Pulumi.Config();
+        var accountId = config.Require("accountId");
+
         var zone = new Cloudflare.Zone("my-zone", new Cloudflare.ZoneArgs
         {
-            Name = "cs-test-cloudflare-pulumi.com"
+            Name = "cs-test-cloudflare-pulumi.com",
+            AccountId = accountId
         });
 
         var foobar = new Cloudflare.Record("foobar", new Cloudflare.RecordArgs
