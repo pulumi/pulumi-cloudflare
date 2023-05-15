@@ -60,6 +60,7 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:        "cloudflare",
 		Repository:       "https://github.com/pulumi/pulumi-cloudflare",
 		UpstreamRepoPath: "./upstream",
+		Version:          version.Version,
 		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
 		Config: map[string]*tfbridge.SchemaInfo{
 			"rps": {

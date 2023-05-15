@@ -12,8 +12,6 @@ import (
 )
 
 func TestAccRecordCSharp(t *testing.T) {
-	t.Skip("Temporarily skip while releasing new major version")
-
 	test := getCsharpBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: filepath.Join(getCwd(t), "record", "csharp"),
