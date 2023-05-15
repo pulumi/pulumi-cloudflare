@@ -1,14 +1,14 @@
 import * as cloudflare from "@pulumi/cloudflare";
-import * as pulumi from "@pulumi/pulumi";
 
-const config = new pulumi.Config();
-const zone_id = config.require("zone_id");
+const zone = new cloudflare.Zone("my-zone", {
+    "zone": "ts-test-cloudflare-pulumi.com",
+    "plan": "free"
+});
 
 const record = new cloudflare.Record("my-record", {
     name: "my-record-ts",
-    zoneId: zone_id,
+    zoneId: zone.id,
     type: "A",
     value: "192.168.0.11",
     ttl: 3600,
 })
-
