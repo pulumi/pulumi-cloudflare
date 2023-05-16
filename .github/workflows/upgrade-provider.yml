@@ -5,12 +5,12 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   upgrade_provider:
-    if: contains(${{ github.event.issue.title }}, 'Upgrade terraform-provider-')
+    if: ${{ contains(github.event.issue.title, 'Upgrade terraform-provider-') }}
     name: upgrade-provider
     runs-on: ubuntu-latest
     steps:
     - name: Call upgrade provider action
-      uses: pulumi/pulumi-upgrade-provider-action@v0.0.4
+      uses: pulumi/pulumi-upgrade-provider-action@v0.0.5
     - env:
         SLACK_CHANNEL: provider-upgrade-publish-status
         SLACK_COLOR: "#7CFC00"
