@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// The [Challenge Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
+    /// The [Turnstile Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
     /// 
     /// ## Example Usage
     /// 
@@ -37,6 +37,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example &lt;account_id&gt;/&lt;site_key&gt;
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/turnstileWidget:TurnstileWidget")]
     public partial class TurnstileWidget : global::Pulumi.CustomResource
@@ -51,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
         /// </summary>
         [Output("botFightMode")]
-        public Output<bool?> BotFightMode { get; private set; } = null!;
+        public Output<bool> BotFightMode { get; private set; } = null!;
 
         /// <summary>
         /// Domains where the widget is deployed
@@ -60,10 +66,10 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> Domains { get; private set; } = null!;
 
         /// <summary>
-        /// Widget Mode
+        /// Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
         /// </summary>
         [Output("mode")]
-        public Output<string?> Mode { get; private set; } = null!;
+        public Output<string> Mode { get; private set; } = null!;
 
         /// <summary>
         /// Human readable widget name.
@@ -81,7 +87,7 @@ namespace Pulumi.Cloudflare
         /// Region where this widget can be used.
         /// </summary>
         [Output("region")]
-        public Output<string?> Region { get; private set; } = null!;
+        public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
         /// Secret key for this widget.
@@ -164,10 +170,10 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Widget Mode
+        /// Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
         /// </summary>
-        [Input("mode")]
-        public Input<string>? Mode { get; set; }
+        [Input("mode", required: true)]
+        public Input<string> Mode { get; set; } = null!;
 
         /// <summary>
         /// Human readable widget name.
@@ -220,7 +226,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Widget Mode
+        /// Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

@@ -498,6 +498,11 @@ export type WaitingRoomRules = import("./waitingRoomRules").WaitingRoomRules;
 export const WaitingRoomRules: typeof import("./waitingRoomRules").WaitingRoomRules = null as any;
 utilities.lazyLoad(exports, ["WaitingRoomRules"], () => require("./waitingRoomRules"));
 
+export { WaitingRoomSettingsArgs, WaitingRoomSettingsState } from "./waitingRoomSettings";
+export type WaitingRoomSettings = import("./waitingRoomSettings").WaitingRoomSettings;
+export const WaitingRoomSettings: typeof import("./waitingRoomSettings").WaitingRoomSettings = null as any;
+utilities.lazyLoad(exports, ["WaitingRoomSettings"], () => require("./waitingRoomSettings"));
+
 export { Web3HostnameArgs, Web3HostnameState } from "./web3Hostname";
 export type Web3Hostname = import("./web3Hostname").Web3Hostname;
 export const Web3Hostname: typeof import("./web3Hostname").Web3Hostname = null as any;
@@ -738,6 +743,8 @@ const _module = {
                 return new WaitingRoomEvent(name, <any>undefined, { urn })
             case "cloudflare:index/waitingRoomRules:WaitingRoomRules":
                 return new WaitingRoomRules(name, <any>undefined, { urn })
+            case "cloudflare:index/waitingRoomSettings:WaitingRoomSettings":
+                return new WaitingRoomSettings(name, <any>undefined, { urn })
             case "cloudflare:index/web3Hostname:Web3Hostname":
                 return new Web3Hostname(name, <any>undefined, { urn })
             case "cloudflare:index/workerCronTrigger:WorkerCronTrigger":
@@ -850,6 +857,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/userAgentBlockingRule
 pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoom", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoomEvent", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoomRules", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoomSettings", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/web3Hostname", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerCronTrigger", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerDomain", _module)

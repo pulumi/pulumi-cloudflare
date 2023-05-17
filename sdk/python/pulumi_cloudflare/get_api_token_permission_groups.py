@@ -99,6 +99,18 @@ def get_api_token_permission_groups(opts: Optional[pulumi.InvokeOptions] = None)
     """
     Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions).
     Commonly used as references within [`cloudflare_token`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    all = cloudflare.get_api_token_permission_groups()
+    pulumi.export("dnsReadPermissionId", all.zone["DNS Read"])
+    pulumi.export("accountLbMonitorsAndReadId", all.account["Load Balancing: Monitors and Pools Read"])
+    pulumi.export("userMembershipsReadId", all.user["Memberships Read"])
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

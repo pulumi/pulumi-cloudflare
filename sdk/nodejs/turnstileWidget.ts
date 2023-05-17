@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The [Challenge Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
+ * The [Turnstile Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
  *
  * ## Example Usage
  *
@@ -21,6 +21,12 @@ import * as utilities from "./utilities";
  *     name: "example widget",
  *     region: "world",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example <account_id>/<site_key>
  * ```
  */
 export class TurnstileWidget extends pulumi.CustomResource {
@@ -58,15 +64,15 @@ export class TurnstileWidget extends pulumi.CustomResource {
     /**
      * If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
      */
-    public readonly botFightMode!: pulumi.Output<boolean | undefined>;
+    public readonly botFightMode!: pulumi.Output<boolean>;
     /**
      * Domains where the widget is deployed
      */
     public readonly domains!: pulumi.Output<string[]>;
     /**
-     * Widget Mode
+     * Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
      */
-    public readonly mode!: pulumi.Output<string | undefined>;
+    public readonly mode!: pulumi.Output<string>;
     /**
      * Human readable widget name.
      */
@@ -78,7 +84,7 @@ export class TurnstileWidget extends pulumi.CustomResource {
     /**
      * Region where this widget can be used.
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Secret key for this widget.
      */
@@ -112,6 +118,9 @@ export class TurnstileWidget extends pulumi.CustomResource {
             }
             if ((!args || args.domains === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domains'");
+            }
+            if ((!args || args.mode === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'mode'");
             }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
@@ -149,7 +158,7 @@ export interface TurnstileWidgetState {
      */
     domains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Widget Mode
+     * Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
      */
     mode?: pulumi.Input<string>;
     /**
@@ -187,9 +196,9 @@ export interface TurnstileWidgetArgs {
      */
     domains: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Widget Mode
+     * Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
      */
-    mode?: pulumi.Input<string>;
+    mode: pulumi.Input<string>;
     /**
      * Human readable widget name.
      */

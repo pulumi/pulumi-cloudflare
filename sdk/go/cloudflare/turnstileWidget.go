@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The [Challenge Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
+// The [Turnstile Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
 //
 // ## Example Usage
 //
@@ -45,23 +45,31 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example <account_id>/<site_key>
+//
+// ```
 type TurnstileWidget struct {
 	pulumi.CustomResourceState
 
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
-	BotFightMode pulumi.BoolPtrOutput `pulumi:"botFightMode"`
+	BotFightMode pulumi.BoolOutput `pulumi:"botFightMode"`
 	// Domains where the widget is deployed
 	Domains pulumi.StringArrayOutput `pulumi:"domains"`
-	// Widget Mode
-	Mode pulumi.StringPtrOutput `pulumi:"mode"`
+	// Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+	Mode pulumi.StringOutput `pulumi:"mode"`
 	// Human readable widget name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Do not show any Cloudflare branding on the widget (Enterprise only).
 	Offlabel pulumi.BoolOutput `pulumi:"offlabel"`
 	// Region where this widget can be used.
-	Region pulumi.StringPtrOutput `pulumi:"region"`
+	Region pulumi.StringOutput `pulumi:"region"`
 	// Secret key for this widget.
 	Secret pulumi.StringOutput `pulumi:"secret"`
 }
@@ -78,6 +86,9 @@ func NewTurnstileWidget(ctx *pulumi.Context,
 	}
 	if args.Domains == nil {
 		return nil, errors.New("invalid value for required argument 'Domains'")
+	}
+	if args.Mode == nil {
+		return nil, errors.New("invalid value for required argument 'Mode'")
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
@@ -114,7 +125,7 @@ type turnstileWidgetState struct {
 	BotFightMode *bool `pulumi:"botFightMode"`
 	// Domains where the widget is deployed
 	Domains []string `pulumi:"domains"`
-	// Widget Mode
+	// Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
 	Mode *string `pulumi:"mode"`
 	// Human readable widget name.
 	Name *string `pulumi:"name"`
@@ -133,7 +144,7 @@ type TurnstileWidgetState struct {
 	BotFightMode pulumi.BoolPtrInput
 	// Domains where the widget is deployed
 	Domains pulumi.StringArrayInput
-	// Widget Mode
+	// Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
 	Mode pulumi.StringPtrInput
 	// Human readable widget name.
 	Name pulumi.StringPtrInput
@@ -156,8 +167,8 @@ type turnstileWidgetArgs struct {
 	BotFightMode *bool `pulumi:"botFightMode"`
 	// Domains where the widget is deployed
 	Domains []string `pulumi:"domains"`
-	// Widget Mode
-	Mode *string `pulumi:"mode"`
+	// Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+	Mode string `pulumi:"mode"`
 	// Human readable widget name.
 	Name string `pulumi:"name"`
 	// Do not show any Cloudflare branding on the widget (Enterprise only).
@@ -174,8 +185,8 @@ type TurnstileWidgetArgs struct {
 	BotFightMode pulumi.BoolPtrInput
 	// Domains where the widget is deployed
 	Domains pulumi.StringArrayInput
-	// Widget Mode
-	Mode pulumi.StringPtrInput
+	// Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+	Mode pulumi.StringInput
 	// Human readable widget name.
 	Name pulumi.StringInput
 	// Do not show any Cloudflare branding on the widget (Enterprise only).
@@ -277,8 +288,8 @@ func (o TurnstileWidgetOutput) AccountId() pulumi.StringOutput {
 }
 
 // If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
-func (o TurnstileWidgetOutput) BotFightMode() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TurnstileWidget) pulumi.BoolPtrOutput { return v.BotFightMode }).(pulumi.BoolPtrOutput)
+func (o TurnstileWidgetOutput) BotFightMode() pulumi.BoolOutput {
+	return o.ApplyT(func(v *TurnstileWidget) pulumi.BoolOutput { return v.BotFightMode }).(pulumi.BoolOutput)
 }
 
 // Domains where the widget is deployed
@@ -286,9 +297,9 @@ func (o TurnstileWidgetOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringArrayOutput { return v.Domains }).(pulumi.StringArrayOutput)
 }
 
-// Widget Mode
-func (o TurnstileWidgetOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringPtrOutput { return v.Mode }).(pulumi.StringPtrOutput)
+// Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+func (o TurnstileWidgetOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }
 
 // Human readable widget name.
@@ -302,8 +313,8 @@ func (o TurnstileWidgetOutput) Offlabel() pulumi.BoolOutput {
 }
 
 // Region where this widget can be used.
-func (o TurnstileWidgetOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+func (o TurnstileWidgetOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // Secret key for this widget.

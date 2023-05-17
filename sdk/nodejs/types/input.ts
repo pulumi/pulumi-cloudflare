@@ -1630,7 +1630,7 @@ export interface NotificationPolicyFilters {
     /**
      * Target host to alert on for dos.
      */
-    targetHosts?: pulumi.Input<pulumi.Input<string>[]>;
+    targetHostnames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Target domain to alert on.
      */

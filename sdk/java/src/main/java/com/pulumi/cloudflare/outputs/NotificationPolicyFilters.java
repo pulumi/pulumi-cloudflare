@@ -91,7 +91,7 @@ public final class NotificationPolicyFilters {
      * @return Target host to alert on for dos.
      * 
      */
-    private @Nullable List<String> targetHosts;
+    private @Nullable List<String> targetHostnames;
     /**
      * @return Target domain to alert on.
      * 
@@ -216,8 +216,8 @@ public final class NotificationPolicyFilters {
      * @return Target host to alert on for dos.
      * 
      */
-    public List<String> targetHosts() {
-        return this.targetHosts == null ? List.of() : this.targetHosts;
+    public List<String> targetHostnames() {
+        return this.targetHostnames == null ? List.of() : this.targetHostnames;
     }
     /**
      * @return Target domain to alert on.
@@ -259,7 +259,7 @@ public final class NotificationPolicyFilters {
         private @Nullable List<String> services;
         private @Nullable List<String> slos;
         private @Nullable List<String> statuses;
-        private @Nullable List<String> targetHosts;
+        private @Nullable List<String> targetHostnames;
         private @Nullable List<String> targetZoneNames;
         private @Nullable List<String> zones;
         public Builder() {}
@@ -281,7 +281,7 @@ public final class NotificationPolicyFilters {
     	      this.services = defaults.services;
     	      this.slos = defaults.slos;
     	      this.statuses = defaults.statuses;
-    	      this.targetHosts = defaults.targetHosts;
+    	      this.targetHostnames = defaults.targetHostnames;
     	      this.targetZoneNames = defaults.targetZoneNames;
     	      this.zones = defaults.zones;
         }
@@ -415,12 +415,12 @@ public final class NotificationPolicyFilters {
             return statuses(List.of(statuses));
         }
         @CustomType.Setter
-        public Builder targetHosts(@Nullable List<String> targetHosts) {
-            this.targetHosts = targetHosts;
+        public Builder targetHostnames(@Nullable List<String> targetHostnames) {
+            this.targetHostnames = targetHostnames;
             return this;
         }
-        public Builder targetHosts(String... targetHosts) {
-            return targetHosts(List.of(targetHosts));
+        public Builder targetHostnames(String... targetHostnames) {
+            return targetHostnames(List.of(targetHostnames));
         }
         @CustomType.Setter
         public Builder targetZoneNames(@Nullable List<String> targetZoneNames) {
@@ -456,7 +456,7 @@ public final class NotificationPolicyFilters {
             o.services = services;
             o.slos = slos;
             o.statuses = statuses;
-            o.targetHosts = targetHosts;
+            o.targetHostnames = targetHostnames;
             o.targetZoneNames = targetZoneNames;
             o.zones = zones;
             return o;
