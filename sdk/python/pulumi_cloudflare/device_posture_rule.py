@@ -301,7 +301,7 @@ class DevicePostureRule(pulumi.CustomResource):
                 platform="linux",
             )],
             inputs=[cloudflare.DevicePostureRuleInputArgs(
-                id=cloudflare_teams_list["corporate_devices"]["id"],
+                id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                 version="1.0.0",
                 operator="<",
                 os_distro_name="ubuntu",
@@ -350,7 +350,7 @@ class DevicePostureRule(pulumi.CustomResource):
                 platform="linux",
             )],
             inputs=[cloudflare.DevicePostureRuleInputArgs(
-                id=cloudflare_teams_list["corporate_devices"]["id"],
+                id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                 version="1.0.0",
                 operator="<",
                 os_distro_name="ubuntu",

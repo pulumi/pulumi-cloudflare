@@ -13330,7 +13330,7 @@ type NotificationPolicyFilters struct {
 	// Status to alert on.
 	Statuses []string `pulumi:"statuses"`
 	// Target host to alert on for dos.
-	TargetHosts []string `pulumi:"targetHosts"`
+	TargetHostnames []string `pulumi:"targetHostnames"`
 	// Target domain to alert on.
 	TargetZoneNames []string `pulumi:"targetZoneNames"`
 	// A list of zone identifiers.
@@ -13381,7 +13381,7 @@ type NotificationPolicyFiltersArgs struct {
 	// Status to alert on.
 	Statuses pulumi.StringArrayInput `pulumi:"statuses"`
 	// Target host to alert on for dos.
-	TargetHosts pulumi.StringArrayInput `pulumi:"targetHosts"`
+	TargetHostnames pulumi.StringArrayInput `pulumi:"targetHostnames"`
 	// Target domain to alert on.
 	TargetZoneNames pulumi.StringArrayInput `pulumi:"targetZoneNames"`
 	// A list of zone identifiers.
@@ -13545,8 +13545,8 @@ func (o NotificationPolicyFiltersOutput) Statuses() pulumi.StringArrayOutput {
 }
 
 // Target host to alert on for dos.
-func (o NotificationPolicyFiltersOutput) TargetHosts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.TargetHosts }).(pulumi.StringArrayOutput)
+func (o NotificationPolicyFiltersOutput) TargetHostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.TargetHostnames }).(pulumi.StringArrayOutput)
 }
 
 // Target domain to alert on.
@@ -13743,12 +13743,12 @@ func (o NotificationPolicyFiltersPtrOutput) Statuses() pulumi.StringArrayOutput 
 }
 
 // Target host to alert on for dos.
-func (o NotificationPolicyFiltersPtrOutput) TargetHosts() pulumi.StringArrayOutput {
+func (o NotificationPolicyFiltersPtrOutput) TargetHostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
 		if v == nil {
 			return nil
 		}
-		return v.TargetHosts
+		return v.TargetHostnames
 	}).(pulumi.StringArrayOutput)
 }
 

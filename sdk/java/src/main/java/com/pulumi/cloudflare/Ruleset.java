@@ -422,7 +422,7 @@ import javax.annotation.Nullable;
  *                             .name(&#34;brotli&#34;)
  *                             .build(),
  *                         RulesetRuleActionParametersAlgorithmArgs.builder()
- *                             .name(&#34;default&#34;)
+ *                             .name(&#34;auto&#34;)
  *                             .build())
  *                     .build())
  *                 .description(&#34;Prefer brotli compression for HTML&#34;)

@@ -13,11 +13,10 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The [Challenge Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
+ * The [Turnstile Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
  * 
  * ## Example Usage
  * ```java
@@ -54,6 +53,12 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example &lt;account_id&gt;/&lt;site_key&gt;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/turnstileWidget:TurnstileWidget")
 public class TurnstileWidget extends com.pulumi.resources.CustomResource {
@@ -76,14 +81,14 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="botFightMode", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> botFightMode;
+    private Output<Boolean> botFightMode;
 
     /**
      * @return If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
      * 
      */
-    public Output<Optional<Boolean>> botFightMode() {
-        return Codegen.optional(this.botFightMode);
+    public Output<Boolean> botFightMode() {
+        return this.botFightMode;
     }
     /**
      * Domains where the widget is deployed
@@ -100,18 +105,18 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
         return this.domains;
     }
     /**
-     * Widget Mode
+     * Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
      * 
      */
     @Export(name="mode", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> mode;
+    private Output<String> mode;
 
     /**
-     * @return Widget Mode
+     * @return Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
      * 
      */
-    public Output<Optional<String>> mode() {
-        return Codegen.optional(this.mode);
+    public Output<String> mode() {
+        return this.mode;
     }
     /**
      * Human readable widget name.
@@ -146,14 +151,14 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> region;
+    private Output<String> region;
 
     /**
      * @return Region where this widget can be used.
      * 
      */
-    public Output<Optional<String>> region() {
-        return Codegen.optional(this.region);
+    public Output<String> region() {
+        return this.region;
     }
     /**
      * Secret key for this widget.

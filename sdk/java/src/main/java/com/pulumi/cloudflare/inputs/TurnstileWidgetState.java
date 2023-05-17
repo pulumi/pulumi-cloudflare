@@ -63,14 +63,14 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Widget Mode
+     * Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Widget Mode
+     * @return Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
      * 
      */
     public Optional<Output<String>> mode() {
@@ -242,7 +242,7 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mode Widget Mode
+         * @param mode Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mode Widget Mode
+         * @param mode Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
          * 
          * @return builder
          * 

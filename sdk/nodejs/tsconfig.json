@@ -119,6 +119,7 @@
         "waitingRoom.ts",
         "waitingRoomEvent.ts",
         "waitingRoomRules.ts",
+        "waitingRoomSettings.ts",
         "web3Hostname.ts",
         "workerCronTrigger.ts",
         "workerDomain.ts",

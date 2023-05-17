@@ -200,16 +200,16 @@ namespace Pulumi.Cloudflare.Inputs
             set => _statuses = value;
         }
 
-        [Input("targetHosts")]
-        private InputList<string>? _targetHosts;
+        [Input("targetHostnames")]
+        private InputList<string>? _targetHostnames;
 
         /// <summary>
         /// Target host to alert on for dos.
         /// </summary>
-        public InputList<string> TargetHosts
+        public InputList<string> TargetHostnames
         {
-            get => _targetHosts ?? (_targetHosts = new InputList<string>());
-            set => _targetHosts = value;
+            get => _targetHostnames ?? (_targetHostnames = new InputList<string>());
+            set => _targetHostnames = value;
         }
 
         [Input("targetZoneNames")]

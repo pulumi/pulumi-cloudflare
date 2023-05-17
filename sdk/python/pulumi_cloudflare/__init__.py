@@ -104,6 +104,7 @@ from .user_agent_blocking_rule import *
 from .waiting_room import *
 from .waiting_room_event import *
 from .waiting_room_rules import *
+from .waiting_room_settings import *
 from .web3_hostname import *
 from .worker_cron_trigger import *
 from .worker_domain import *
@@ -791,6 +792,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/waitingRoomRules:WaitingRoomRules": "WaitingRoomRules"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/waitingRoomSettings",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/waitingRoomSettings:WaitingRoomSettings": "WaitingRoomSettings"
   }
  },
  {

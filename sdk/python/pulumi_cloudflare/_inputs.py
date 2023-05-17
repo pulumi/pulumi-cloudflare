@@ -6892,7 +6892,7 @@ class NotificationPolicyFiltersArgs:
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  slos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 target_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 target_hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -6911,7 +6911,7 @@ class NotificationPolicyFiltersArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] requests_per_seconds: Requests per second threshold for dos alert.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] slos: A numerical limit. Example: `99.9`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: Status to alert on.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_hosts: Target host to alert on for dos.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_hostnames: Target host to alert on for dos.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_zone_names: Target domain to alert on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: A list of zone identifiers.
         """
@@ -6947,8 +6947,8 @@ class NotificationPolicyFiltersArgs:
             pulumi.set(__self__, "slos", slos)
         if statuses is not None:
             pulumi.set(__self__, "statuses", statuses)
-        if target_hosts is not None:
-            pulumi.set(__self__, "target_hosts", target_hosts)
+        if target_hostnames is not None:
+            pulumi.set(__self__, "target_hostnames", target_hostnames)
         if target_zone_names is not None:
             pulumi.set(__self__, "target_zone_names", target_zone_names)
         if zones is not None:
@@ -7144,16 +7144,16 @@ class NotificationPolicyFiltersArgs:
         pulumi.set(self, "statuses", value)
 
     @property
-    @pulumi.getter(name="targetHosts")
-    def target_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    @pulumi.getter(name="targetHostnames")
+    def target_hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Target host to alert on for dos.
         """
-        return pulumi.get(self, "target_hosts")
+        return pulumi.get(self, "target_hostnames")
 
-    @target_hosts.setter
-    def target_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "target_hosts", value)
+    @target_hostnames.setter
+    def target_hostnames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "target_hostnames", value)
 
     @property
     @pulumi.getter(name="targetZoneNames")

@@ -63,18 +63,18 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Widget Mode
+     * Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
      * 
      */
-    @Import(name="mode")
-    private @Nullable Output<String> mode;
+    @Import(name="mode", required=true)
+    private Output<String> mode;
 
     /**
-     * @return Widget Mode
+     * @return Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
      * 
      */
-    public Optional<Output<String>> mode() {
-        return Optional.ofNullable(this.mode);
+    public Output<String> mode() {
+        return this.mode;
     }
 
     /**
@@ -226,18 +226,18 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mode Widget Mode
+         * @param mode Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
          * 
          * @return builder
          * 
          */
-        public Builder mode(@Nullable Output<String> mode) {
+        public Builder mode(Output<String> mode) {
             $.mode = mode;
             return this;
         }
 
         /**
-         * @param mode Widget Mode
+         * @param mode Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
          * 
          * @return builder
          * 
@@ -312,6 +312,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
         public TurnstileWidgetArgs build() {
             $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
             $.domains = Objects.requireNonNull($.domains, "expected parameter 'domains' to be non-null");
+            $.mode = Objects.requireNonNull($.mode, "expected parameter 'mode' to be non-null");
             $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             return $;
         }

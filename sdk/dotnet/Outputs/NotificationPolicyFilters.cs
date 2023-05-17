@@ -77,7 +77,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Target host to alert on for dos.
         /// </summary>
-        public readonly ImmutableArray<string> TargetHosts;
+        public readonly ImmutableArray<string> TargetHostnames;
         /// <summary>
         /// Target domain to alert on.
         /// </summary>
@@ -121,7 +121,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> statuses,
 
-            ImmutableArray<string> targetHosts,
+            ImmutableArray<string> targetHostnames,
 
             ImmutableArray<string> targetZoneNames,
 
@@ -143,7 +143,7 @@ namespace Pulumi.Cloudflare.Outputs
             Services = services;
             Slos = slos;
             Statuses = statuses;
-            TargetHosts = targetHosts;
+            TargetHostnames = targetHostnames;
             TargetZoneNames = targetZoneNames;
             Zones = zones;
         }

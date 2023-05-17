@@ -1838,7 +1838,7 @@ export interface NotificationPolicyFilters {
     /**
      * Target host to alert on for dos.
      */
-    targetHosts?: string[];
+    targetHostnames?: string[];
     /**
      * Target domain to alert on.
      */

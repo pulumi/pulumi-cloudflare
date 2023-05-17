@@ -252,15 +252,15 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
      * Target host to alert on for dos.
      * 
      */
-    @Import(name="targetHosts")
-    private @Nullable Output<List<String>> targetHosts;
+    @Import(name="targetHostnames")
+    private @Nullable Output<List<String>> targetHostnames;
 
     /**
      * @return Target host to alert on for dos.
      * 
      */
-    public Optional<Output<List<String>>> targetHosts() {
-        return Optional.ofNullable(this.targetHosts);
+    public Optional<Output<List<String>>> targetHostnames() {
+        return Optional.ofNullable(this.targetHostnames);
     }
 
     /**
@@ -312,7 +312,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         this.services = $.services;
         this.slos = $.slos;
         this.statuses = $.statuses;
-        this.targetHosts = $.targetHosts;
+        this.targetHostnames = $.targetHostnames;
         this.targetZoneNames = $.targetZoneNames;
         this.zones = $.zones;
     }
@@ -814,34 +814,34 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param targetHosts Target host to alert on for dos.
+         * @param targetHostnames Target host to alert on for dos.
          * 
          * @return builder
          * 
          */
-        public Builder targetHosts(@Nullable Output<List<String>> targetHosts) {
-            $.targetHosts = targetHosts;
+        public Builder targetHostnames(@Nullable Output<List<String>> targetHostnames) {
+            $.targetHostnames = targetHostnames;
             return this;
         }
 
         /**
-         * @param targetHosts Target host to alert on for dos.
+         * @param targetHostnames Target host to alert on for dos.
          * 
          * @return builder
          * 
          */
-        public Builder targetHosts(List<String> targetHosts) {
-            return targetHosts(Output.of(targetHosts));
+        public Builder targetHostnames(List<String> targetHostnames) {
+            return targetHostnames(Output.of(targetHostnames));
         }
 
         /**
-         * @param targetHosts Target host to alert on for dos.
+         * @param targetHostnames Target host to alert on for dos.
          * 
          * @return builder
          * 
          */
-        public Builder targetHosts(String... targetHosts) {
-            return targetHosts(List.of(targetHosts));
+        public Builder targetHostnames(String... targetHostnames) {
+            return targetHostnames(List.of(targetHostnames));
         }
 
         /**

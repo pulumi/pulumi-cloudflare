@@ -6856,8 +6856,8 @@ class NotificationPolicyFilters(dict):
             suggest = "pool_ids"
         elif key == "requestsPerSeconds":
             suggest = "requests_per_seconds"
-        elif key == "targetHosts":
-            suggest = "target_hosts"
+        elif key == "targetHostnames":
+            suggest = "target_hostnames"
         elif key == "targetZoneNames":
             suggest = "target_zone_names"
 
@@ -6889,7 +6889,7 @@ class NotificationPolicyFilters(dict):
                  services: Optional[Sequence[str]] = None,
                  slos: Optional[Sequence[str]] = None,
                  statuses: Optional[Sequence[str]] = None,
-                 target_hosts: Optional[Sequence[str]] = None,
+                 target_hostnames: Optional[Sequence[str]] = None,
                  target_zone_names: Optional[Sequence[str]] = None,
                  zones: Optional[Sequence[str]] = None):
         """
@@ -6908,7 +6908,7 @@ class NotificationPolicyFilters(dict):
         :param Sequence[str] requests_per_seconds: Requests per second threshold for dos alert.
         :param Sequence[str] slos: A numerical limit. Example: `99.9`.
         :param Sequence[str] statuses: Status to alert on.
-        :param Sequence[str] target_hosts: Target host to alert on for dos.
+        :param Sequence[str] target_hostnames: Target host to alert on for dos.
         :param Sequence[str] target_zone_names: Target domain to alert on.
         :param Sequence[str] zones: A list of zone identifiers.
         """
@@ -6944,8 +6944,8 @@ class NotificationPolicyFilters(dict):
             pulumi.set(__self__, "slos", slos)
         if statuses is not None:
             pulumi.set(__self__, "statuses", statuses)
-        if target_hosts is not None:
-            pulumi.set(__self__, "target_hosts", target_hosts)
+        if target_hostnames is not None:
+            pulumi.set(__self__, "target_hostnames", target_hostnames)
         if target_zone_names is not None:
             pulumi.set(__self__, "target_zone_names", target_zone_names)
         if zones is not None:
@@ -7077,12 +7077,12 @@ class NotificationPolicyFilters(dict):
         return pulumi.get(self, "statuses")
 
     @property
-    @pulumi.getter(name="targetHosts")
-    def target_hosts(self) -> Optional[Sequence[str]]:
+    @pulumi.getter(name="targetHostnames")
+    def target_hostnames(self) -> Optional[Sequence[str]]:
         """
         Target host to alert on for dos.
         """
-        return pulumi.get(self, "target_hosts")
+        return pulumi.get(self, "target_hostnames")
 
     @property
     @pulumi.getter(name="targetZoneNames")

@@ -16,28 +16,27 @@ class TurnstileWidgetArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
                  domains: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 mode: pulumi.Input[str],
                  name: pulumi.Input[str],
                  bot_fight_mode: Optional[pulumi.Input[bool]] = None,
-                 mode: Optional[pulumi.Input[str]] = None,
                  offlabel: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TurnstileWidget resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: Domains where the widget is deployed
+        :param pulumi.Input[str] mode: Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
         :param pulumi.Input[str] name: Human readable widget name.
         :param pulumi.Input[bool] bot_fight_mode: If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
-        :param pulumi.Input[str] mode: Widget Mode
         :param pulumi.Input[bool] offlabel: Do not show any Cloudflare branding on the widget (Enterprise only).
         :param pulumi.Input[str] region: Region where this widget can be used.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "domains", domains)
+        pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "name", name)
         if bot_fight_mode is not None:
             pulumi.set(__self__, "bot_fight_mode", bot_fight_mode)
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
         if offlabel is not None:
             pulumi.set(__self__, "offlabel", offlabel)
         if region is not None:
@@ -69,6 +68,18 @@ class TurnstileWidgetArgs:
 
     @property
     @pulumi.getter
+    def mode(self) -> pulumi.Input[str]:
+        """
+        Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
         Human readable widget name.
@@ -90,18 +101,6 @@ class TurnstileWidgetArgs:
     @bot_fight_mode.setter
     def bot_fight_mode(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "bot_fight_mode", value)
-
-    @property
-    @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[str]]:
-        """
-        Widget Mode
-        """
-        return pulumi.get(self, "mode")
-
-    @mode.setter
-    def mode(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "mode", value)
 
     @property
     @pulumi.getter
@@ -144,7 +143,7 @@ class _TurnstileWidgetState:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] bot_fight_mode: If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: Domains where the widget is deployed
-        :param pulumi.Input[str] mode: Widget Mode
+        :param pulumi.Input[str] mode: Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
         :param pulumi.Input[str] name: Human readable widget name.
         :param pulumi.Input[bool] offlabel: Do not show any Cloudflare branding on the widget (Enterprise only).
         :param pulumi.Input[str] region: Region where this widget can be used.
@@ -207,7 +206,7 @@ class _TurnstileWidgetState:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Widget Mode
+        Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
         """
         return pulumi.get(self, "mode")
 
@@ -278,7 +277,7 @@ class TurnstileWidget(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The [Challenge Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
+        The [Turnstile Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
 
         ## Example Usage
 
@@ -295,12 +294,18 @@ class TurnstileWidget(pulumi.CustomResource):
             region="world")
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example <account_id>/<site_key>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] bot_fight_mode: If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: Domains where the widget is deployed
-        :param pulumi.Input[str] mode: Widget Mode
+        :param pulumi.Input[str] mode: Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
         :param pulumi.Input[str] name: Human readable widget name.
         :param pulumi.Input[bool] offlabel: Do not show any Cloudflare branding on the widget (Enterprise only).
         :param pulumi.Input[str] region: Region where this widget can be used.
@@ -312,7 +317,7 @@ class TurnstileWidget(pulumi.CustomResource):
                  args: TurnstileWidgetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The [Challenge Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
+        The [Turnstile Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
 
         ## Example Usage
 
@@ -327,6 +332,12 @@ class TurnstileWidget(pulumi.CustomResource):
             mode="invisible",
             name="example widget",
             region="world")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example <account_id>/<site_key>
         ```
 
         :param str resource_name: The name of the resource.
@@ -367,6 +378,8 @@ class TurnstileWidget(pulumi.CustomResource):
             if domains is None and not opts.urn:
                 raise TypeError("Missing required property 'domains'")
             __props__.__dict__["domains"] = domains
+            if mode is None and not opts.urn:
+                raise TypeError("Missing required property 'mode'")
             __props__.__dict__["mode"] = mode
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
@@ -404,7 +417,7 @@ class TurnstileWidget(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] bot_fight_mode: If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: Domains where the widget is deployed
-        :param pulumi.Input[str] mode: Widget Mode
+        :param pulumi.Input[str] mode: Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
         :param pulumi.Input[str] name: Human readable widget name.
         :param pulumi.Input[bool] offlabel: Do not show any Cloudflare branding on the widget (Enterprise only).
         :param pulumi.Input[str] region: Region where this widget can be used.
@@ -434,7 +447,7 @@ class TurnstileWidget(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="botFightMode")
-    def bot_fight_mode(self) -> pulumi.Output[Optional[bool]]:
+    def bot_fight_mode(self) -> pulumi.Output[bool]:
         """
         If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
         """
@@ -450,9 +463,9 @@ class TurnstileWidget(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mode(self) -> pulumi.Output[Optional[str]]:
+    def mode(self) -> pulumi.Output[str]:
         """
-        Widget Mode
+        Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
         """
         return pulumi.get(self, "mode")
 
@@ -474,7 +487,7 @@ class TurnstileWidget(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> pulumi.Output[Optional[str]]:
+    def region(self) -> pulumi.Output[str]:
         """
         Region where this widget can be used.
         """
