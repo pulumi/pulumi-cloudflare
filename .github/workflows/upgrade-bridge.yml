@@ -5,14 +5,13 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   upgrade_provider:
-    if: ${{ contains(github.event.issue.title, 'Upgrade terraform-provider-') }}
     name: upgrade-provider
     runs-on: ubuntu-latest
     steps:
     - name: Call upgrade provider action
       uses: pulumi/pulumi-upgrade-provider-action@v0.0.5
       with:
-        kind: all
+        kind: bridge
     - env:
         SLACK_CHANNEL: provider-upgrade-publish-status
         SLACK_COLOR: "#7CFC00"
@@ -37,9 +36,6 @@ jobs:
       if: failure()
       name: Send Upgrade Failure To Slack
       uses: rtCamp/action-slack-notify@v2
-name: Upgrade provider
+name: Upgrade bridge
 on:
-  issues:
-    types:
-    - opened
   workflow_dispatch: {}
