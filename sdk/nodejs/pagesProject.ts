@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  *     buildConfig: {
  *         buildCommand: "npm run build",
  *         destinationDir: "build",
- *         rootDir: "/",
+ *         rootDir: "",
  *         webAnalyticsTag: "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
  *         webAnalyticsToken: "021e1057c18547eca7b79f2516f06o7x",
  *     },

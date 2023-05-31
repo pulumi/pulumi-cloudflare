@@ -25,11 +25,11 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         return Optional.ofNullable(this.default_);
     }
 
-    @Import(name="mode")
-    private @Nullable Output<String> mode;
+    @Import(name="mode", required=true)
+    private Output<String> mode;
 
-    public Optional<Output<String>> mode() {
-        return Optional.ofNullable(this.mode);
+    public Output<String> mode() {
+        return this.mode;
     }
 
     @Import(name="statusCodeTtls")
@@ -74,7 +74,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
             return default_(Output.of(default_));
         }
 
-        public Builder mode(@Nullable Output<String> mode) {
+        public Builder mode(Output<String> mode) {
             $.mode = mode;
             return this;
         }
@@ -97,6 +97,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         public RulesetRuleActionParametersEdgeTtlArgs build() {
+            $.mode = Objects.requireNonNull($.mode, "expected parameter 'mode' to be non-null");
             return $;
         }
     }

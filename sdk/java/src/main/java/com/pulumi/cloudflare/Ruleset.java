@@ -17,6 +17,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The [Cloudflare Ruleset Engine](https://developers.cloudflare.com/firewall/cf-rulesets)
+ * allows you to create and deploy rules and rulesets.
+ * 
+ * The engine syntax, inspired by the Wireshark Display Filter language, is the
+ * same syntax used in custom Firewall Rules. Cloudflare uses the Ruleset Engine
+ * in different products, allowing you to configure several products using the same
+ * basic syntax.
+ * 
  * ## Example Usage
  * 
  * ```java

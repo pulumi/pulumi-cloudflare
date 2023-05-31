@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .buildConfig(PagesProjectBuildConfigArgs.builder()
  *                 .buildCommand(&#34;npm run build&#34;)
  *                 .destinationDir(&#34;build&#34;)
- *                 .rootDir(&#34;/&#34;)
+ *                 .rootDir(&#34;&#34;)
  *                 .webAnalyticsTag(&#34;cee1c73f6e4743d0b5e6bb1a0bcaabcc&#34;)
  *                 .webAnalyticsToken(&#34;021e1057c18547eca7b79f2516f06o7x&#34;)
  *                 .build())

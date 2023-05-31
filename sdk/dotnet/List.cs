@@ -35,7 +35,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.ListItem>> Items { get; private set; } = null!;
 
         /// <summary>
-        /// The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
+        /// The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -113,7 +113,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
+        /// The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
+        /// The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

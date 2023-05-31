@@ -14,14 +14,14 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersEdgeTtl
     {
         public readonly int? Default;
-        public readonly string? Mode;
+        public readonly string Mode;
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl> StatusCodeTtls;
 
         [OutputConstructor]
         private RulesetRuleActionParametersEdgeTtl(
             int? @default,
 
-            string? mode,
+            string mode,
 
             ImmutableArray<Outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl> statusCodeTtls)
         {

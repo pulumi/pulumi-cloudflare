@@ -51,7 +51,7 @@ export class List extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly items!: pulumi.Output<outputs.ListItem[] | undefined>;
     /**
-     * The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
+     * The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly kind!: pulumi.Output<string>;
     /**
@@ -113,7 +113,7 @@ export interface ListState {
     description?: pulumi.Input<string>;
     items?: pulumi.Input<pulumi.Input<inputs.ListItem>[]>;
     /**
-     * The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
+     * The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
      */
     kind?: pulumi.Input<string>;
     /**
@@ -136,7 +136,7 @@ export interface ListArgs {
     description?: pulumi.Input<string>;
     items?: pulumi.Input<pulumi.Input<inputs.ListItem>[]>;
     /**
-     * The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
+     * The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
      */
     kind: pulumi.Input<string>;
     /**

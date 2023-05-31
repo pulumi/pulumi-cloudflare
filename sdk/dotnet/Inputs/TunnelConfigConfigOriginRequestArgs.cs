@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class TunnelConfigConfigOriginRequestArgs : global::Pulumi.ResourceArgs
     {
+        [Input("access")]
+        public Input<Inputs.TunnelConfigConfigOriginRequestAccessArgs>? Access { get; set; }
+
         [Input("bastionMode")]
         public Input<bool>? BastionMode { get; set; }
 
@@ -23,6 +26,9 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("disableChunkedEncoding")]
         public Input<bool>? DisableChunkedEncoding { get; set; }
+
+        [Input("http2Origin")]
+        public Input<bool>? Http2Origin { get; set; }
 
         [Input("httpHostHeader")]
         public Input<string>? HttpHostHeader { get; set; }

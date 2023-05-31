@@ -24,7 +24,7 @@ class ListArgs:
         """
         The set of arguments for constructing a List resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] kind: The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] kind: The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] name: The name of the list. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] description: An optional description of the list.
         """
@@ -52,7 +52,7 @@ class ListArgs:
     @pulumi.getter
     def kind(self) -> pulumi.Input[str]:
         """
-        The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
+        The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "kind")
 
@@ -106,7 +106,7 @@ class _ListState:
         Input properties used for looking up and filtering List resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: An optional description of the list.
-        :param pulumi.Input[str] kind: The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] kind: The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] name: The name of the list. **Modifying this attribute will force creation of a new resource.**
         """
         if account_id is not None:
@@ -157,7 +157,7 @@ class _ListState:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
+        The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "kind")
 
@@ -200,7 +200,7 @@ class List(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: An optional description of the list.
-        :param pulumi.Input[str] kind: The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] kind: The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] name: The name of the list. **Modifying this attribute will force creation of a new resource.**
         """
         ...
@@ -280,7 +280,7 @@ class List(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: An optional description of the list.
-        :param pulumi.Input[str] kind: The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] kind: The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] name: The name of the list. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -319,7 +319,7 @@ class List(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
+        The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "kind")
 

@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? DestinationDir;
         /// <summary>
-        /// Directory to run the command.
+        /// Your project's root directory, where Cloudflare runs the build command. If your site is not in a subdirectory, leave this path value empty.
         /// </summary>
         public readonly string? RootDir;
         /// <summary>

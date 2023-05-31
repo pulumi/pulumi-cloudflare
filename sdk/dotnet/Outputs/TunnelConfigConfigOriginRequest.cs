@@ -13,10 +13,12 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class TunnelConfigConfigOriginRequest
     {
+        public readonly Outputs.TunnelConfigConfigOriginRequestAccess? Access;
         public readonly bool? BastionMode;
         public readonly string? CaPool;
         public readonly string? ConnectTimeout;
         public readonly bool? DisableChunkedEncoding;
+        public readonly bool? Http2Origin;
         public readonly string? HttpHostHeader;
         public readonly ImmutableArray<Outputs.TunnelConfigConfigOriginRequestIpRule> IpRules;
         public readonly int? KeepAliveConnections;
@@ -32,6 +34,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private TunnelConfigConfigOriginRequest(
+            Outputs.TunnelConfigConfigOriginRequestAccess? access,
+
             bool? bastionMode,
 
             string? caPool,
@@ -39,6 +43,8 @@ namespace Pulumi.Cloudflare.Outputs
             string? connectTimeout,
 
             bool? disableChunkedEncoding,
+
+            bool? http2Origin,
 
             string? httpHostHeader,
 
@@ -64,10 +70,12 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? tlsTimeout)
         {
+            Access = access;
             BastionMode = bastionMode;
             CaPool = caPool;
             ConnectTimeout = connectTimeout;
             DisableChunkedEncoding = disableChunkedEncoding;
+            Http2Origin = http2Origin;
             HttpHostHeader = httpHostHeader;
             IpRules = ipRules;
             KeepAliveConnections = keepAliveConnections;

@@ -54,6 +54,42 @@ namespace Pulumi.Cloudflare
     ///         },
     ///     });
     /// 
+    ///     // ASN list
+    ///     var exampleAsnList = new Cloudflare.List("exampleAsnList", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "example_asn_list",
+    ///         Description = "example ASNs for a list",
+    ///         Kind = "asn",
+    ///     });
+    /// 
+    ///     // ASN List Item
+    ///     var exampleAsnItem = new Cloudflare.ListItem("exampleAsnItem", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         ListId = exampleAsnList.Id,
+    ///         Comment = "List Item Comment",
+    ///         Asn = 6789,
+    ///     });
+    /// 
+    ///     // Hostname list
+    ///     var exampleHostnameList = new Cloudflare.List("exampleHostnameList", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "example_hostname_list",
+    ///         Description = "example Hostnames for a list",
+    ///         Kind = "hostname",
+    ///     });
+    /// 
+    ///     // Hostname List Item
+    ///     var exampleHostnameItem = new Cloudflare.ListItem("exampleHostnameItem", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         ListId = exampleHostnameList.Id,
+    ///         Comment = "List Item Comment",
+    ///         Asn = "example.com",
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -73,13 +109,25 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
+        /// Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
+        [Output("asn")]
+        public Output<int?> Asn { get; private set; } = null!;
+
+        /// <summary>
         /// An optional comment for the item.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// IP address to include in the list. Must provide only one of `ip`, `redirect`. **Modifying this attribute will force creation of a new resource.**
+        /// Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
+        [Output("hostname")]
+        public Output<Outputs.ListItemHostname?> Hostname { get; private set; } = null!;
+
+        /// <summary>
+        /// IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("ip")]
         public Output<string?> Ip { get; private set; } = null!;
@@ -91,7 +139,7 @@ namespace Pulumi.Cloudflare
         public Output<string> ListId { get; private set; } = null!;
 
         /// <summary>
-        /// Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`. **Modifying this attribute will force creation of a new resource.**
+        /// Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("redirect")]
         public Output<Outputs.ListItemRedirect?> Redirect { get; private set; } = null!;
@@ -149,13 +197,25 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
+        [Input("asn")]
+        public Input<int>? Asn { get; set; }
+
+        /// <summary>
         /// An optional comment for the item.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// IP address to include in the list. Must provide only one of `ip`, `redirect`. **Modifying this attribute will force creation of a new resource.**
+        /// Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
+        [Input("hostname")]
+        public Input<Inputs.ListItemHostnameArgs>? Hostname { get; set; }
+
+        /// <summary>
+        /// IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
@@ -167,7 +227,7 @@ namespace Pulumi.Cloudflare
         public Input<string> ListId { get; set; } = null!;
 
         /// <summary>
-        /// Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`. **Modifying this attribute will force creation of a new resource.**
+        /// Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("redirect")]
         public Input<Inputs.ListItemRedirectArgs>? Redirect { get; set; }
@@ -187,13 +247,25 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
+        /// Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
+        [Input("asn")]
+        public Input<int>? Asn { get; set; }
+
+        /// <summary>
         /// An optional comment for the item.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// IP address to include in the list. Must provide only one of `ip`, `redirect`. **Modifying this attribute will force creation of a new resource.**
+        /// Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
+        [Input("hostname")]
+        public Input<Inputs.ListItemHostnameGetArgs>? Hostname { get; set; }
+
+        /// <summary>
+        /// IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
@@ -205,7 +277,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? ListId { get; set; }
 
         /// <summary>
-        /// Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`. **Modifying this attribute will force creation of a new resource.**
+        /// Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("redirect")]
         public Input<Inputs.ListItemRedirectGetArgs>? Redirect { get; set; }

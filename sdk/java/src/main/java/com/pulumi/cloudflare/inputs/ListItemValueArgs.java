@@ -3,9 +3,11 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ListItemValueHostnameArgs;
 import com.pulumi.cloudflare.inputs.ListItemValueRedirectArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,6 +18,20 @@ import javax.annotation.Nullable;
 public final class ListItemValueArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ListItemValueArgs Empty = new ListItemValueArgs();
+
+    @Import(name="asn")
+    private @Nullable Output<Integer> asn;
+
+    public Optional<Output<Integer>> asn() {
+        return Optional.ofNullable(this.asn);
+    }
+
+    @Import(name="hostnames")
+    private @Nullable Output<List<ListItemValueHostnameArgs>> hostnames;
+
+    public Optional<Output<List<ListItemValueHostnameArgs>>> hostnames() {
+        return Optional.ofNullable(this.hostnames);
+    }
 
     @Import(name="ip")
     private @Nullable Output<String> ip;
@@ -34,6 +50,8 @@ public final class ListItemValueArgs extends com.pulumi.resources.ResourceArgs {
     private ListItemValueArgs() {}
 
     private ListItemValueArgs(ListItemValueArgs $) {
+        this.asn = $.asn;
+        this.hostnames = $.hostnames;
         this.ip = $.ip;
         this.redirects = $.redirects;
     }
@@ -54,6 +72,28 @@ public final class ListItemValueArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ListItemValueArgs defaults) {
             $ = new ListItemValueArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder asn(@Nullable Output<Integer> asn) {
+            $.asn = asn;
+            return this;
+        }
+
+        public Builder asn(Integer asn) {
+            return asn(Output.of(asn));
+        }
+
+        public Builder hostnames(@Nullable Output<List<ListItemValueHostnameArgs>> hostnames) {
+            $.hostnames = hostnames;
+            return this;
+        }
+
+        public Builder hostnames(List<ListItemValueHostnameArgs> hostnames) {
+            return hostnames(Output.of(hostnames));
+        }
+
+        public Builder hostnames(ListItemValueHostnameArgs... hostnames) {
+            return hostnames(List.of(hostnames));
         }
 
         public Builder ip(@Nullable Output<String> ip) {

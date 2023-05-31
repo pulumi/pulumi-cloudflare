@@ -12,6 +12,17 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ListItemValueArgs : global::Pulumi.ResourceArgs
     {
+        [Input("asn")]
+        public Input<int>? Asn { get; set; }
+
+        [Input("hostnames")]
+        private InputList<Inputs.ListItemValueHostnameArgs>? _hostnames;
+        public InputList<Inputs.ListItemValueHostnameArgs> Hostnames
+        {
+            get => _hostnames ?? (_hostnames = new InputList<Inputs.ListItemValueHostnameArgs>());
+            set => _hostnames = value;
+        }
+
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 

@@ -1176,6 +1176,13 @@ export interface ListItem {
     value: pulumi.Input<inputs.ListItemValue>;
 }
 
+export interface ListItemHostname {
+    /**
+     * The FQDN to match on.
+     */
+    urlHostname: pulumi.Input<string>;
+}
+
 export interface ListItemRedirect {
     /**
      * Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
@@ -1208,8 +1215,14 @@ export interface ListItemRedirect {
 }
 
 export interface ListItemValue {
+    asn?: pulumi.Input<number>;
+    hostnames?: pulumi.Input<pulumi.Input<inputs.ListItemValueHostname>[]>;
     ip?: pulumi.Input<string>;
     redirects?: pulumi.Input<pulumi.Input<inputs.ListItemValueRedirect>[]>;
+}
+
+export interface ListItemValueHostname {
+    urlHostname: pulumi.Input<string>;
 }
 
 export interface ListItemValueRedirect {
@@ -1988,7 +2001,7 @@ export interface PagesProjectBuildConfig {
      */
     destinationDir?: pulumi.Input<string>;
     /**
-     * Directory to run the command.
+     * Your project's root directory, where Cloudflare runs the build command. If your site is not in a subdirectory, leave this path value empty.
      */
     rootDir?: pulumi.Input<string>;
     /**
@@ -2313,7 +2326,7 @@ export interface RulesetRuleActionParametersAutominify {
 
 export interface RulesetRuleActionParametersBrowserTtl {
     default?: pulumi.Input<number>;
-    mode?: pulumi.Input<string>;
+    mode: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersCacheKey {
@@ -2359,7 +2372,7 @@ export interface RulesetRuleActionParametersCacheKeyCustomKeyUser {
 
 export interface RulesetRuleActionParametersEdgeTtl {
     default?: pulumi.Input<number>;
-    mode?: pulumi.Input<string>;
+    mode: pulumi.Input<string>;
     statusCodeTtls?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl>[]>;
 }
 
@@ -2796,15 +2809,51 @@ export interface TunnelConfigConfig {
 
 export interface TunnelConfigConfigIngressRule {
     hostname?: pulumi.Input<string>;
+    originRequest?: pulumi.Input<inputs.TunnelConfigConfigIngressRuleOriginRequest>;
     path?: pulumi.Input<string>;
     service: pulumi.Input<string>;
 }
 
-export interface TunnelConfigConfigOriginRequest {
+export interface TunnelConfigConfigIngressRuleOriginRequest {
+    access?: pulumi.Input<inputs.TunnelConfigConfigIngressRuleOriginRequestAccess>;
     bastionMode?: pulumi.Input<boolean>;
     caPool?: pulumi.Input<string>;
     connectTimeout?: pulumi.Input<string>;
     disableChunkedEncoding?: pulumi.Input<boolean>;
+    http2Origin?: pulumi.Input<boolean>;
+    httpHostHeader?: pulumi.Input<string>;
+    ipRules?: pulumi.Input<pulumi.Input<inputs.TunnelConfigConfigIngressRuleOriginRequestIpRule>[]>;
+    keepAliveConnections?: pulumi.Input<number>;
+    keepAliveTimeout?: pulumi.Input<string>;
+    noHappyEyeballs?: pulumi.Input<boolean>;
+    noTlsVerify?: pulumi.Input<boolean>;
+    originServerName?: pulumi.Input<string>;
+    proxyAddress?: pulumi.Input<string>;
+    proxyPort?: pulumi.Input<number>;
+    proxyType?: pulumi.Input<string>;
+    tcpKeepAlive?: pulumi.Input<string>;
+    tlsTimeout?: pulumi.Input<string>;
+}
+
+export interface TunnelConfigConfigIngressRuleOriginRequestAccess {
+    audTags?: pulumi.Input<pulumi.Input<string>[]>;
+    required?: pulumi.Input<boolean>;
+    teamName?: pulumi.Input<string>;
+}
+
+export interface TunnelConfigConfigIngressRuleOriginRequestIpRule {
+    allow?: pulumi.Input<boolean>;
+    ports?: pulumi.Input<pulumi.Input<number>[]>;
+    prefix?: pulumi.Input<string>;
+}
+
+export interface TunnelConfigConfigOriginRequest {
+    access?: pulumi.Input<inputs.TunnelConfigConfigOriginRequestAccess>;
+    bastionMode?: pulumi.Input<boolean>;
+    caPool?: pulumi.Input<string>;
+    connectTimeout?: pulumi.Input<string>;
+    disableChunkedEncoding?: pulumi.Input<boolean>;
+    http2Origin?: pulumi.Input<boolean>;
     httpHostHeader?: pulumi.Input<string>;
     ipRules?: pulumi.Input<pulumi.Input<inputs.TunnelConfigConfigOriginRequestIpRule>[]>;
     keepAliveConnections?: pulumi.Input<number>;
@@ -2817,6 +2866,12 @@ export interface TunnelConfigConfigOriginRequest {
     proxyType?: pulumi.Input<string>;
     tcpKeepAlive?: pulumi.Input<string>;
     tlsTimeout?: pulumi.Input<string>;
+}
+
+export interface TunnelConfigConfigOriginRequestAccess {
+    audTags?: pulumi.Input<pulumi.Input<string>[]>;
+    required?: pulumi.Input<boolean>;
+    teamName?: pulumi.Input<string>;
 }
 
 export interface TunnelConfigConfigOriginRequestIpRule {

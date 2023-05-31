@@ -378,6 +378,11 @@ export type Queue = import("./queue").Queue;
 export const Queue: typeof import("./queue").Queue = null as any;
 utilities.lazyLoad(exports, ["Queue"], () => require("./queue"));
 
+export { R2BucketArgs, R2BucketState } from "./r2bucket";
+export type R2Bucket = import("./r2bucket").R2Bucket;
+export const R2Bucket: typeof import("./r2bucket").R2Bucket = null as any;
+utilities.lazyLoad(exports, ["R2Bucket"], () => require("./r2bucket"));
+
 export { RateLimitArgs, RateLimitState } from "./rateLimit";
 export type RateLimit = import("./rateLimit").RateLimit;
 export const RateLimit: typeof import("./rateLimit").RateLimit = null as any;
@@ -695,6 +700,8 @@ const _module = {
                 return new PagesProject(name, <any>undefined, { urn })
             case "cloudflare:index/queue:Queue":
                 return new Queue(name, <any>undefined, { urn })
+            case "cloudflare:index/r2Bucket:R2Bucket":
+                return new R2Bucket(name, <any>undefined, { urn })
             case "cloudflare:index/rateLimit:RateLimit":
                 return new RateLimit(name, <any>undefined, { urn })
             case "cloudflare:index/record:Record":
@@ -833,6 +840,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/pageRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/pagesDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/pagesProject", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/queue", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/r2Bucket", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/rateLimit", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/record", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/regionalHostname", _module)

@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.TunnelConfigConfigIngressRuleOriginRequest;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
@@ -12,12 +13,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TunnelConfigConfigIngressRule {
     private @Nullable String hostname;
+    private @Nullable TunnelConfigConfigIngressRuleOriginRequest originRequest;
     private @Nullable String path;
     private String service;
 
     private TunnelConfigConfigIngressRule() {}
     public Optional<String> hostname() {
         return Optional.ofNullable(this.hostname);
+    }
+    public Optional<TunnelConfigConfigIngressRuleOriginRequest> originRequest() {
+        return Optional.ofNullable(this.originRequest);
     }
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
@@ -36,12 +41,14 @@ public final class TunnelConfigConfigIngressRule {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String hostname;
+        private @Nullable TunnelConfigConfigIngressRuleOriginRequest originRequest;
         private @Nullable String path;
         private String service;
         public Builder() {}
         public Builder(TunnelConfigConfigIngressRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hostname = defaults.hostname;
+    	      this.originRequest = defaults.originRequest;
     	      this.path = defaults.path;
     	      this.service = defaults.service;
         }
@@ -49,6 +56,11 @@ public final class TunnelConfigConfigIngressRule {
         @CustomType.Setter
         public Builder hostname(@Nullable String hostname) {
             this.hostname = hostname;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder originRequest(@Nullable TunnelConfigConfigIngressRuleOriginRequest originRequest) {
+            this.originRequest = originRequest;
             return this;
         }
         @CustomType.Setter
@@ -64,6 +76,7 @@ public final class TunnelConfigConfigIngressRule {
         public TunnelConfigConfigIngressRule build() {
             final var o = new TunnelConfigConfigIngressRule();
             o.hostname = hostname;
+            o.originRequest = originRequest;
             o.path = path;
             o.service = service;
             return o;

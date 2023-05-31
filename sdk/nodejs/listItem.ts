@@ -40,6 +40,34 @@ import * as utilities from "./utilities";
  *         subpathMatching: "enabled",
  *     },
  * });
+ * // ASN list
+ * const exampleAsnList = new cloudflare.List("exampleAsnList", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     name: "example_asn_list",
+ *     description: "example ASNs for a list",
+ *     kind: "asn",
+ * });
+ * // ASN List Item
+ * const exampleAsnItem = new cloudflare.ListItem("exampleAsnItem", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     listId: exampleAsnList.id,
+ *     comment: "List Item Comment",
+ *     asn: 6789,
+ * });
+ * // Hostname list
+ * const exampleHostnameList = new cloudflare.List("exampleHostnameList", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     name: "example_hostname_list",
+ *     description: "example Hostnames for a list",
+ *     kind: "hostname",
+ * });
+ * // Hostname List Item
+ * const exampleHostnameItem = new cloudflare.ListItem("exampleHostnameItem", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     listId: exampleHostnameList.id,
+ *     comment: "List Item Comment",
+ *     asn: "example.com",
+ * });
  * ```
  *
  * ## Import
@@ -81,11 +109,19 @@ export class ListItem extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
+     * Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     */
+    public readonly asn!: pulumi.Output<number | undefined>;
+    /**
      * An optional comment for the item.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
-     * IP address to include in the list. Must provide only one of `ip`, `redirect`. **Modifying this attribute will force creation of a new resource.**
+     * Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     */
+    public readonly hostname!: pulumi.Output<outputs.ListItemHostname | undefined>;
+    /**
+     * IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly ip!: pulumi.Output<string | undefined>;
     /**
@@ -93,7 +129,7 @@ export class ListItem extends pulumi.CustomResource {
      */
     public readonly listId!: pulumi.Output<string>;
     /**
-     * Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`. **Modifying this attribute will force creation of a new resource.**
+     * Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly redirect!: pulumi.Output<outputs.ListItemRedirect | undefined>;
 
@@ -111,7 +147,9 @@ export class ListItem extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ListItemState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["asn"] = state ? state.asn : undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["ip"] = state ? state.ip : undefined;
             resourceInputs["listId"] = state ? state.listId : undefined;
             resourceInputs["redirect"] = state ? state.redirect : undefined;
@@ -124,7 +162,9 @@ export class ListItem extends pulumi.CustomResource {
                 throw new Error("Missing required property 'listId'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["asn"] = args ? args.asn : undefined;
             resourceInputs["comment"] = args ? args.comment : undefined;
+            resourceInputs["hostname"] = args ? args.hostname : undefined;
             resourceInputs["ip"] = args ? args.ip : undefined;
             resourceInputs["listId"] = args ? args.listId : undefined;
             resourceInputs["redirect"] = args ? args.redirect : undefined;
@@ -143,11 +183,19 @@ export interface ListItemState {
      */
     accountId?: pulumi.Input<string>;
     /**
+     * Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     */
+    asn?: pulumi.Input<number>;
+    /**
      * An optional comment for the item.
      */
     comment?: pulumi.Input<string>;
     /**
-     * IP address to include in the list. Must provide only one of `ip`, `redirect`. **Modifying this attribute will force creation of a new resource.**
+     * Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     */
+    hostname?: pulumi.Input<inputs.ListItemHostname>;
+    /**
+     * IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
      */
     ip?: pulumi.Input<string>;
     /**
@@ -155,7 +203,7 @@ export interface ListItemState {
      */
     listId?: pulumi.Input<string>;
     /**
-     * Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`. **Modifying this attribute will force creation of a new resource.**
+     * Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
      */
     redirect?: pulumi.Input<inputs.ListItemRedirect>;
 }
@@ -169,11 +217,19 @@ export interface ListItemArgs {
      */
     accountId: pulumi.Input<string>;
     /**
+     * Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     */
+    asn?: pulumi.Input<number>;
+    /**
      * An optional comment for the item.
      */
     comment?: pulumi.Input<string>;
     /**
-     * IP address to include in the list. Must provide only one of `ip`, `redirect`. **Modifying this attribute will force creation of a new resource.**
+     * Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     */
+    hostname?: pulumi.Input<inputs.ListItemHostname>;
+    /**
+     * IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
      */
     ip?: pulumi.Input<string>;
     /**
@@ -181,7 +237,7 @@ export interface ListItemArgs {
      */
     listId: pulumi.Input<string>;
     /**
-     * Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`. **Modifying this attribute will force creation of a new resource.**
+     * Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
      */
     redirect?: pulumi.Input<inputs.ListItemRedirect>;
 }

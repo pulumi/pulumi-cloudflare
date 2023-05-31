@@ -79,6 +79,19 @@ namespace Pulumi.Cloudflare
     ///                     Hostname = "foo",
     ///                     Path = "/bar",
     ///                     Service = "http://10.0.0.2:8080",
+    ///                     OriginRequest = new Cloudflare.Inputs.TunnelConfigConfigIngressRuleOriginRequestArgs
+    ///                     {
+    ///                         ConnectTimeout = "2m0s",
+    ///                         Access = new Cloudflare.Inputs.TunnelConfigConfigIngressRuleOriginRequestAccessArgs
+    ///                         {
+    ///                             Required = true,
+    ///                             TeamName = "terraform",
+    ///                             AudTags = new[]
+    ///                             {
+    ///                                 "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    ///                             },
+    ///                         },
+    ///                     },
     ///                 },
     ///                 new Cloudflare.Inputs.TunnelConfigConfigIngressRuleArgs
     ///                 {

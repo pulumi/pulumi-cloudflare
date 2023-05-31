@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.TunnelConfigConfigIngressRuleOriginRequestArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -20,6 +21,13 @@ public final class TunnelConfigConfigIngressRuleArgs extends com.pulumi.resource
 
     public Optional<Output<String>> hostname() {
         return Optional.ofNullable(this.hostname);
+    }
+
+    @Import(name="originRequest")
+    private @Nullable Output<TunnelConfigConfigIngressRuleOriginRequestArgs> originRequest;
+
+    public Optional<Output<TunnelConfigConfigIngressRuleOriginRequestArgs>> originRequest() {
+        return Optional.ofNullable(this.originRequest);
     }
 
     @Import(name="path")
@@ -40,6 +48,7 @@ public final class TunnelConfigConfigIngressRuleArgs extends com.pulumi.resource
 
     private TunnelConfigConfigIngressRuleArgs(TunnelConfigConfigIngressRuleArgs $) {
         this.hostname = $.hostname;
+        this.originRequest = $.originRequest;
         this.path = $.path;
         this.service = $.service;
     }
@@ -69,6 +78,15 @@ public final class TunnelConfigConfigIngressRuleArgs extends com.pulumi.resource
 
         public Builder hostname(String hostname) {
             return hostname(Output.of(hostname));
+        }
+
+        public Builder originRequest(@Nullable Output<TunnelConfigConfigIngressRuleOriginRequestArgs> originRequest) {
+            $.originRequest = originRequest;
+            return this;
+        }
+
+        public Builder originRequest(TunnelConfigConfigIngressRuleOriginRequestArgs originRequest) {
+            return originRequest(Output.of(originRequest));
         }
 
         public Builder path(@Nullable Output<String> path) {

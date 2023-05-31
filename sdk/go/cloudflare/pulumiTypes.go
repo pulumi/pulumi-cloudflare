@@ -9958,6 +9958,143 @@ func (o ListItemTypeArrayOutput) Index(i pulumi.IntInput) ListItemTypeOutput {
 	}).(ListItemTypeOutput)
 }
 
+type ListItemHostname struct {
+	// The FQDN to match on.
+	UrlHostname string `pulumi:"urlHostname"`
+}
+
+// ListItemHostnameInput is an input type that accepts ListItemHostnameArgs and ListItemHostnameOutput values.
+// You can construct a concrete instance of `ListItemHostnameInput` via:
+//
+//	ListItemHostnameArgs{...}
+type ListItemHostnameInput interface {
+	pulumi.Input
+
+	ToListItemHostnameOutput() ListItemHostnameOutput
+	ToListItemHostnameOutputWithContext(context.Context) ListItemHostnameOutput
+}
+
+type ListItemHostnameArgs struct {
+	// The FQDN to match on.
+	UrlHostname pulumi.StringInput `pulumi:"urlHostname"`
+}
+
+func (ListItemHostnameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListItemHostname)(nil)).Elem()
+}
+
+func (i ListItemHostnameArgs) ToListItemHostnameOutput() ListItemHostnameOutput {
+	return i.ToListItemHostnameOutputWithContext(context.Background())
+}
+
+func (i ListItemHostnameArgs) ToListItemHostnameOutputWithContext(ctx context.Context) ListItemHostnameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListItemHostnameOutput)
+}
+
+func (i ListItemHostnameArgs) ToListItemHostnamePtrOutput() ListItemHostnamePtrOutput {
+	return i.ToListItemHostnamePtrOutputWithContext(context.Background())
+}
+
+func (i ListItemHostnameArgs) ToListItemHostnamePtrOutputWithContext(ctx context.Context) ListItemHostnamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListItemHostnameOutput).ToListItemHostnamePtrOutputWithContext(ctx)
+}
+
+// ListItemHostnamePtrInput is an input type that accepts ListItemHostnameArgs, ListItemHostnamePtr and ListItemHostnamePtrOutput values.
+// You can construct a concrete instance of `ListItemHostnamePtrInput` via:
+//
+//	        ListItemHostnameArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListItemHostnamePtrInput interface {
+	pulumi.Input
+
+	ToListItemHostnamePtrOutput() ListItemHostnamePtrOutput
+	ToListItemHostnamePtrOutputWithContext(context.Context) ListItemHostnamePtrOutput
+}
+
+type listItemHostnamePtrType ListItemHostnameArgs
+
+func ListItemHostnamePtr(v *ListItemHostnameArgs) ListItemHostnamePtrInput {
+	return (*listItemHostnamePtrType)(v)
+}
+
+func (*listItemHostnamePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListItemHostname)(nil)).Elem()
+}
+
+func (i *listItemHostnamePtrType) ToListItemHostnamePtrOutput() ListItemHostnamePtrOutput {
+	return i.ToListItemHostnamePtrOutputWithContext(context.Background())
+}
+
+func (i *listItemHostnamePtrType) ToListItemHostnamePtrOutputWithContext(ctx context.Context) ListItemHostnamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListItemHostnamePtrOutput)
+}
+
+type ListItemHostnameOutput struct{ *pulumi.OutputState }
+
+func (ListItemHostnameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListItemHostname)(nil)).Elem()
+}
+
+func (o ListItemHostnameOutput) ToListItemHostnameOutput() ListItemHostnameOutput {
+	return o
+}
+
+func (o ListItemHostnameOutput) ToListItemHostnameOutputWithContext(ctx context.Context) ListItemHostnameOutput {
+	return o
+}
+
+func (o ListItemHostnameOutput) ToListItemHostnamePtrOutput() ListItemHostnamePtrOutput {
+	return o.ToListItemHostnamePtrOutputWithContext(context.Background())
+}
+
+func (o ListItemHostnameOutput) ToListItemHostnamePtrOutputWithContext(ctx context.Context) ListItemHostnamePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListItemHostname) *ListItemHostname {
+		return &v
+	}).(ListItemHostnamePtrOutput)
+}
+
+// The FQDN to match on.
+func (o ListItemHostnameOutput) UrlHostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ListItemHostname) string { return v.UrlHostname }).(pulumi.StringOutput)
+}
+
+type ListItemHostnamePtrOutput struct{ *pulumi.OutputState }
+
+func (ListItemHostnamePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListItemHostname)(nil)).Elem()
+}
+
+func (o ListItemHostnamePtrOutput) ToListItemHostnamePtrOutput() ListItemHostnamePtrOutput {
+	return o
+}
+
+func (o ListItemHostnamePtrOutput) ToListItemHostnamePtrOutputWithContext(ctx context.Context) ListItemHostnamePtrOutput {
+	return o
+}
+
+func (o ListItemHostnamePtrOutput) Elem() ListItemHostnameOutput {
+	return o.ApplyT(func(v *ListItemHostname) ListItemHostname {
+		if v != nil {
+			return *v
+		}
+		var ret ListItemHostname
+		return ret
+	}).(ListItemHostnameOutput)
+}
+
+// The FQDN to match on.
+func (o ListItemHostnamePtrOutput) UrlHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListItemHostname) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UrlHostname
+	}).(pulumi.StringPtrOutput)
+}
+
 type ListItemRedirect struct {
 	// Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
 	IncludeSubdomains *string `pulumi:"includeSubdomains"`
@@ -10210,6 +10347,8 @@ func (o ListItemRedirectPtrOutput) TargetUrl() pulumi.StringPtrOutput {
 }
 
 type ListItemValue struct {
+	Asn       *int                    `pulumi:"asn"`
+	Hostnames []ListItemValueHostname `pulumi:"hostnames"`
 	Ip        *string                 `pulumi:"ip"`
 	Redirects []ListItemValueRedirect `pulumi:"redirects"`
 }
@@ -10226,6 +10365,8 @@ type ListItemValueInput interface {
 }
 
 type ListItemValueArgs struct {
+	Asn       pulumi.IntPtrInput              `pulumi:"asn"`
+	Hostnames ListItemValueHostnameArrayInput `pulumi:"hostnames"`
 	Ip        pulumi.StringPtrInput           `pulumi:"ip"`
 	Redirects ListItemValueRedirectArrayInput `pulumi:"redirects"`
 }
@@ -10256,12 +10397,114 @@ func (o ListItemValueOutput) ToListItemValueOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o ListItemValueOutput) Asn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ListItemValue) *int { return v.Asn }).(pulumi.IntPtrOutput)
+}
+
+func (o ListItemValueOutput) Hostnames() ListItemValueHostnameArrayOutput {
+	return o.ApplyT(func(v ListItemValue) []ListItemValueHostname { return v.Hostnames }).(ListItemValueHostnameArrayOutput)
+}
+
 func (o ListItemValueOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListItemValue) *string { return v.Ip }).(pulumi.StringPtrOutput)
 }
 
 func (o ListItemValueOutput) Redirects() ListItemValueRedirectArrayOutput {
 	return o.ApplyT(func(v ListItemValue) []ListItemValueRedirect { return v.Redirects }).(ListItemValueRedirectArrayOutput)
+}
+
+type ListItemValueHostname struct {
+	UrlHostname string `pulumi:"urlHostname"`
+}
+
+// ListItemValueHostnameInput is an input type that accepts ListItemValueHostnameArgs and ListItemValueHostnameOutput values.
+// You can construct a concrete instance of `ListItemValueHostnameInput` via:
+//
+//	ListItemValueHostnameArgs{...}
+type ListItemValueHostnameInput interface {
+	pulumi.Input
+
+	ToListItemValueHostnameOutput() ListItemValueHostnameOutput
+	ToListItemValueHostnameOutputWithContext(context.Context) ListItemValueHostnameOutput
+}
+
+type ListItemValueHostnameArgs struct {
+	UrlHostname pulumi.StringInput `pulumi:"urlHostname"`
+}
+
+func (ListItemValueHostnameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListItemValueHostname)(nil)).Elem()
+}
+
+func (i ListItemValueHostnameArgs) ToListItemValueHostnameOutput() ListItemValueHostnameOutput {
+	return i.ToListItemValueHostnameOutputWithContext(context.Background())
+}
+
+func (i ListItemValueHostnameArgs) ToListItemValueHostnameOutputWithContext(ctx context.Context) ListItemValueHostnameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListItemValueHostnameOutput)
+}
+
+// ListItemValueHostnameArrayInput is an input type that accepts ListItemValueHostnameArray and ListItemValueHostnameArrayOutput values.
+// You can construct a concrete instance of `ListItemValueHostnameArrayInput` via:
+//
+//	ListItemValueHostnameArray{ ListItemValueHostnameArgs{...} }
+type ListItemValueHostnameArrayInput interface {
+	pulumi.Input
+
+	ToListItemValueHostnameArrayOutput() ListItemValueHostnameArrayOutput
+	ToListItemValueHostnameArrayOutputWithContext(context.Context) ListItemValueHostnameArrayOutput
+}
+
+type ListItemValueHostnameArray []ListItemValueHostnameInput
+
+func (ListItemValueHostnameArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListItemValueHostname)(nil)).Elem()
+}
+
+func (i ListItemValueHostnameArray) ToListItemValueHostnameArrayOutput() ListItemValueHostnameArrayOutput {
+	return i.ToListItemValueHostnameArrayOutputWithContext(context.Background())
+}
+
+func (i ListItemValueHostnameArray) ToListItemValueHostnameArrayOutputWithContext(ctx context.Context) ListItemValueHostnameArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListItemValueHostnameArrayOutput)
+}
+
+type ListItemValueHostnameOutput struct{ *pulumi.OutputState }
+
+func (ListItemValueHostnameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListItemValueHostname)(nil)).Elem()
+}
+
+func (o ListItemValueHostnameOutput) ToListItemValueHostnameOutput() ListItemValueHostnameOutput {
+	return o
+}
+
+func (o ListItemValueHostnameOutput) ToListItemValueHostnameOutputWithContext(ctx context.Context) ListItemValueHostnameOutput {
+	return o
+}
+
+func (o ListItemValueHostnameOutput) UrlHostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ListItemValueHostname) string { return v.UrlHostname }).(pulumi.StringOutput)
+}
+
+type ListItemValueHostnameArrayOutput struct{ *pulumi.OutputState }
+
+func (ListItemValueHostnameArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListItemValueHostname)(nil)).Elem()
+}
+
+func (o ListItemValueHostnameArrayOutput) ToListItemValueHostnameArrayOutput() ListItemValueHostnameArrayOutput {
+	return o
+}
+
+func (o ListItemValueHostnameArrayOutput) ToListItemValueHostnameArrayOutputWithContext(ctx context.Context) ListItemValueHostnameArrayOutput {
+	return o
+}
+
+func (o ListItemValueHostnameArrayOutput) Index(i pulumi.IntInput) ListItemValueHostnameOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListItemValueHostname {
+		return vs[0].([]ListItemValueHostname)[vs[1].(int)]
+	}).(ListItemValueHostnameOutput)
 }
 
 type ListItemValueRedirect struct {
@@ -16463,7 +16706,7 @@ type PagesProjectBuildConfig struct {
 	BuildCommand *string `pulumi:"buildCommand"`
 	// Output directory of the build.
 	DestinationDir *string `pulumi:"destinationDir"`
-	// Directory to run the command.
+	// Your project's root directory, where Cloudflare runs the build command. If your site is not in a subdirectory, leave this path value empty.
 	RootDir *string `pulumi:"rootDir"`
 	// The classifying tag for analytics.
 	WebAnalyticsTag *string `pulumi:"webAnalyticsTag"`
@@ -16487,7 +16730,7 @@ type PagesProjectBuildConfigArgs struct {
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// Output directory of the build.
 	DestinationDir pulumi.StringPtrInput `pulumi:"destinationDir"`
-	// Directory to run the command.
+	// Your project's root directory, where Cloudflare runs the build command. If your site is not in a subdirectory, leave this path value empty.
 	RootDir pulumi.StringPtrInput `pulumi:"rootDir"`
 	// The classifying tag for analytics.
 	WebAnalyticsTag pulumi.StringPtrInput `pulumi:"webAnalyticsTag"`
@@ -16582,7 +16825,7 @@ func (o PagesProjectBuildConfigOutput) DestinationDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PagesProjectBuildConfig) *string { return v.DestinationDir }).(pulumi.StringPtrOutput)
 }
 
-// Directory to run the command.
+// Your project's root directory, where Cloudflare runs the build command. If your site is not in a subdirectory, leave this path value empty.
 func (o PagesProjectBuildConfigOutput) RootDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PagesProjectBuildConfig) *string { return v.RootDir }).(pulumi.StringPtrOutput)
 }
@@ -16641,7 +16884,7 @@ func (o PagesProjectBuildConfigPtrOutput) DestinationDir() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Directory to run the command.
+// Your project's root directory, where Cloudflare runs the build command. If your site is not in a subdirectory, leave this path value empty.
 func (o PagesProjectBuildConfigPtrOutput) RootDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PagesProjectBuildConfig) *string {
 		if v == nil {
@@ -20967,8 +21210,8 @@ func (o RulesetRuleActionParametersAutominifyArrayOutput) Index(i pulumi.IntInpu
 }
 
 type RulesetRuleActionParametersBrowserTtl struct {
-	Default *int    `pulumi:"default"`
-	Mode    *string `pulumi:"mode"`
+	Default *int   `pulumi:"default"`
+	Mode    string `pulumi:"mode"`
 }
 
 // RulesetRuleActionParametersBrowserTtlInput is an input type that accepts RulesetRuleActionParametersBrowserTtlArgs and RulesetRuleActionParametersBrowserTtlOutput values.
@@ -20983,8 +21226,8 @@ type RulesetRuleActionParametersBrowserTtlInput interface {
 }
 
 type RulesetRuleActionParametersBrowserTtlArgs struct {
-	Default pulumi.IntPtrInput    `pulumi:"default"`
-	Mode    pulumi.StringPtrInput `pulumi:"mode"`
+	Default pulumi.IntPtrInput `pulumi:"default"`
+	Mode    pulumi.StringInput `pulumi:"mode"`
 }
 
 func (RulesetRuleActionParametersBrowserTtlArgs) ElementType() reflect.Type {
@@ -21068,8 +21311,8 @@ func (o RulesetRuleActionParametersBrowserTtlOutput) Default() pulumi.IntPtrOutp
 	return o.ApplyT(func(v RulesetRuleActionParametersBrowserTtl) *int { return v.Default }).(pulumi.IntPtrOutput)
 }
 
-func (o RulesetRuleActionParametersBrowserTtlOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersBrowserTtl) *string { return v.Mode }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParametersBrowserTtlOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersBrowserTtl) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 type RulesetRuleActionParametersBrowserTtlPtrOutput struct{ *pulumi.OutputState }
@@ -21110,7 +21353,7 @@ func (o RulesetRuleActionParametersBrowserTtlPtrOutput) Mode() pulumi.StringPtrO
 		if v == nil {
 			return nil
 		}
-		return v.Mode
+		return &v.Mode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -22254,7 +22497,7 @@ func (o RulesetRuleActionParametersCacheKeyCustomKeyUserPtrOutput) Lang() pulumi
 
 type RulesetRuleActionParametersEdgeTtl struct {
 	Default        *int                                              `pulumi:"default"`
-	Mode           *string                                           `pulumi:"mode"`
+	Mode           string                                            `pulumi:"mode"`
 	StatusCodeTtls []RulesetRuleActionParametersEdgeTtlStatusCodeTtl `pulumi:"statusCodeTtls"`
 }
 
@@ -22271,7 +22514,7 @@ type RulesetRuleActionParametersEdgeTtlInput interface {
 
 type RulesetRuleActionParametersEdgeTtlArgs struct {
 	Default        pulumi.IntPtrInput                                        `pulumi:"default"`
-	Mode           pulumi.StringPtrInput                                     `pulumi:"mode"`
+	Mode           pulumi.StringInput                                        `pulumi:"mode"`
 	StatusCodeTtls RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput `pulumi:"statusCodeTtls"`
 }
 
@@ -22356,8 +22599,8 @@ func (o RulesetRuleActionParametersEdgeTtlOutput) Default() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v RulesetRuleActionParametersEdgeTtl) *int { return v.Default }).(pulumi.IntPtrOutput)
 }
 
-func (o RulesetRuleActionParametersEdgeTtlOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersEdgeTtl) *string { return v.Mode }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParametersEdgeTtlOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersEdgeTtl) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 func (o RulesetRuleActionParametersEdgeTtlOutput) StatusCodeTtls() RulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput {
@@ -22404,7 +22647,7 @@ func (o RulesetRuleActionParametersEdgeTtlPtrOutput) Mode() pulumi.StringPtrOutp
 		if v == nil {
 			return nil
 		}
-		return v.Mode
+		return &v.Mode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29406,9 +29649,10 @@ func (o TunnelConfigConfigPtrOutput) WarpRouting() TunnelConfigConfigWarpRouting
 }
 
 type TunnelConfigConfigIngressRule struct {
-	Hostname *string `pulumi:"hostname"`
-	Path     *string `pulumi:"path"`
-	Service  string  `pulumi:"service"`
+	Hostname      *string                                     `pulumi:"hostname"`
+	OriginRequest *TunnelConfigConfigIngressRuleOriginRequest `pulumi:"originRequest"`
+	Path          *string                                     `pulumi:"path"`
+	Service       string                                      `pulumi:"service"`
 }
 
 // TunnelConfigConfigIngressRuleInput is an input type that accepts TunnelConfigConfigIngressRuleArgs and TunnelConfigConfigIngressRuleOutput values.
@@ -29423,9 +29667,10 @@ type TunnelConfigConfigIngressRuleInput interface {
 }
 
 type TunnelConfigConfigIngressRuleArgs struct {
-	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
-	Path     pulumi.StringPtrInput `pulumi:"path"`
-	Service  pulumi.StringInput    `pulumi:"service"`
+	Hostname      pulumi.StringPtrInput                              `pulumi:"hostname"`
+	OriginRequest TunnelConfigConfigIngressRuleOriginRequestPtrInput `pulumi:"originRequest"`
+	Path          pulumi.StringPtrInput                              `pulumi:"path"`
+	Service       pulumi.StringInput                                 `pulumi:"service"`
 }
 
 func (TunnelConfigConfigIngressRuleArgs) ElementType() reflect.Type {
@@ -29483,6 +29728,12 @@ func (o TunnelConfigConfigIngressRuleOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TunnelConfigConfigIngressRule) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
+func (o TunnelConfigConfigIngressRuleOutput) OriginRequest() TunnelConfigConfigIngressRuleOriginRequestPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRule) *TunnelConfigConfigIngressRuleOriginRequest {
+		return v.OriginRequest
+	}).(TunnelConfigConfigIngressRuleOriginRequestPtrOutput)
+}
+
 func (o TunnelConfigConfigIngressRuleOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TunnelConfigConfigIngressRule) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -29511,11 +29762,674 @@ func (o TunnelConfigConfigIngressRuleArrayOutput) Index(i pulumi.IntInput) Tunne
 	}).(TunnelConfigConfigIngressRuleOutput)
 }
 
+type TunnelConfigConfigIngressRuleOriginRequest struct {
+	Access                 *TunnelConfigConfigIngressRuleOriginRequestAccess  `pulumi:"access"`
+	BastionMode            *bool                                              `pulumi:"bastionMode"`
+	CaPool                 *string                                            `pulumi:"caPool"`
+	ConnectTimeout         *string                                            `pulumi:"connectTimeout"`
+	DisableChunkedEncoding *bool                                              `pulumi:"disableChunkedEncoding"`
+	Http2Origin            *bool                                              `pulumi:"http2Origin"`
+	HttpHostHeader         *string                                            `pulumi:"httpHostHeader"`
+	IpRules                []TunnelConfigConfigIngressRuleOriginRequestIpRule `pulumi:"ipRules"`
+	KeepAliveConnections   *int                                               `pulumi:"keepAliveConnections"`
+	KeepAliveTimeout       *string                                            `pulumi:"keepAliveTimeout"`
+	NoHappyEyeballs        *bool                                              `pulumi:"noHappyEyeballs"`
+	NoTlsVerify            *bool                                              `pulumi:"noTlsVerify"`
+	OriginServerName       *string                                            `pulumi:"originServerName"`
+	ProxyAddress           *string                                            `pulumi:"proxyAddress"`
+	ProxyPort              *int                                               `pulumi:"proxyPort"`
+	ProxyType              *string                                            `pulumi:"proxyType"`
+	TcpKeepAlive           *string                                            `pulumi:"tcpKeepAlive"`
+	TlsTimeout             *string                                            `pulumi:"tlsTimeout"`
+}
+
+// TunnelConfigConfigIngressRuleOriginRequestInput is an input type that accepts TunnelConfigConfigIngressRuleOriginRequestArgs and TunnelConfigConfigIngressRuleOriginRequestOutput values.
+// You can construct a concrete instance of `TunnelConfigConfigIngressRuleOriginRequestInput` via:
+//
+//	TunnelConfigConfigIngressRuleOriginRequestArgs{...}
+type TunnelConfigConfigIngressRuleOriginRequestInput interface {
+	pulumi.Input
+
+	ToTunnelConfigConfigIngressRuleOriginRequestOutput() TunnelConfigConfigIngressRuleOriginRequestOutput
+	ToTunnelConfigConfigIngressRuleOriginRequestOutputWithContext(context.Context) TunnelConfigConfigIngressRuleOriginRequestOutput
+}
+
+type TunnelConfigConfigIngressRuleOriginRequestArgs struct {
+	Access                 TunnelConfigConfigIngressRuleOriginRequestAccessPtrInput   `pulumi:"access"`
+	BastionMode            pulumi.BoolPtrInput                                        `pulumi:"bastionMode"`
+	CaPool                 pulumi.StringPtrInput                                      `pulumi:"caPool"`
+	ConnectTimeout         pulumi.StringPtrInput                                      `pulumi:"connectTimeout"`
+	DisableChunkedEncoding pulumi.BoolPtrInput                                        `pulumi:"disableChunkedEncoding"`
+	Http2Origin            pulumi.BoolPtrInput                                        `pulumi:"http2Origin"`
+	HttpHostHeader         pulumi.StringPtrInput                                      `pulumi:"httpHostHeader"`
+	IpRules                TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayInput `pulumi:"ipRules"`
+	KeepAliveConnections   pulumi.IntPtrInput                                         `pulumi:"keepAliveConnections"`
+	KeepAliveTimeout       pulumi.StringPtrInput                                      `pulumi:"keepAliveTimeout"`
+	NoHappyEyeballs        pulumi.BoolPtrInput                                        `pulumi:"noHappyEyeballs"`
+	NoTlsVerify            pulumi.BoolPtrInput                                        `pulumi:"noTlsVerify"`
+	OriginServerName       pulumi.StringPtrInput                                      `pulumi:"originServerName"`
+	ProxyAddress           pulumi.StringPtrInput                                      `pulumi:"proxyAddress"`
+	ProxyPort              pulumi.IntPtrInput                                         `pulumi:"proxyPort"`
+	ProxyType              pulumi.StringPtrInput                                      `pulumi:"proxyType"`
+	TcpKeepAlive           pulumi.StringPtrInput                                      `pulumi:"tcpKeepAlive"`
+	TlsTimeout             pulumi.StringPtrInput                                      `pulumi:"tlsTimeout"`
+}
+
+func (TunnelConfigConfigIngressRuleOriginRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelConfigConfigIngressRuleOriginRequest)(nil)).Elem()
+}
+
+func (i TunnelConfigConfigIngressRuleOriginRequestArgs) ToTunnelConfigConfigIngressRuleOriginRequestOutput() TunnelConfigConfigIngressRuleOriginRequestOutput {
+	return i.ToTunnelConfigConfigIngressRuleOriginRequestOutputWithContext(context.Background())
+}
+
+func (i TunnelConfigConfigIngressRuleOriginRequestArgs) ToTunnelConfigConfigIngressRuleOriginRequestOutputWithContext(ctx context.Context) TunnelConfigConfigIngressRuleOriginRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigIngressRuleOriginRequestOutput)
+}
+
+func (i TunnelConfigConfigIngressRuleOriginRequestArgs) ToTunnelConfigConfigIngressRuleOriginRequestPtrOutput() TunnelConfigConfigIngressRuleOriginRequestPtrOutput {
+	return i.ToTunnelConfigConfigIngressRuleOriginRequestPtrOutputWithContext(context.Background())
+}
+
+func (i TunnelConfigConfigIngressRuleOriginRequestArgs) ToTunnelConfigConfigIngressRuleOriginRequestPtrOutputWithContext(ctx context.Context) TunnelConfigConfigIngressRuleOriginRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigIngressRuleOriginRequestOutput).ToTunnelConfigConfigIngressRuleOriginRequestPtrOutputWithContext(ctx)
+}
+
+// TunnelConfigConfigIngressRuleOriginRequestPtrInput is an input type that accepts TunnelConfigConfigIngressRuleOriginRequestArgs, TunnelConfigConfigIngressRuleOriginRequestPtr and TunnelConfigConfigIngressRuleOriginRequestPtrOutput values.
+// You can construct a concrete instance of `TunnelConfigConfigIngressRuleOriginRequestPtrInput` via:
+//
+//	        TunnelConfigConfigIngressRuleOriginRequestArgs{...}
+//
+//	or:
+//
+//	        nil
+type TunnelConfigConfigIngressRuleOriginRequestPtrInput interface {
+	pulumi.Input
+
+	ToTunnelConfigConfigIngressRuleOriginRequestPtrOutput() TunnelConfigConfigIngressRuleOriginRequestPtrOutput
+	ToTunnelConfigConfigIngressRuleOriginRequestPtrOutputWithContext(context.Context) TunnelConfigConfigIngressRuleOriginRequestPtrOutput
+}
+
+type tunnelConfigConfigIngressRuleOriginRequestPtrType TunnelConfigConfigIngressRuleOriginRequestArgs
+
+func TunnelConfigConfigIngressRuleOriginRequestPtr(v *TunnelConfigConfigIngressRuleOriginRequestArgs) TunnelConfigConfigIngressRuleOriginRequestPtrInput {
+	return (*tunnelConfigConfigIngressRuleOriginRequestPtrType)(v)
+}
+
+func (*tunnelConfigConfigIngressRuleOriginRequestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelConfigConfigIngressRuleOriginRequest)(nil)).Elem()
+}
+
+func (i *tunnelConfigConfigIngressRuleOriginRequestPtrType) ToTunnelConfigConfigIngressRuleOriginRequestPtrOutput() TunnelConfigConfigIngressRuleOriginRequestPtrOutput {
+	return i.ToTunnelConfigConfigIngressRuleOriginRequestPtrOutputWithContext(context.Background())
+}
+
+func (i *tunnelConfigConfigIngressRuleOriginRequestPtrType) ToTunnelConfigConfigIngressRuleOriginRequestPtrOutputWithContext(ctx context.Context) TunnelConfigConfigIngressRuleOriginRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigIngressRuleOriginRequestPtrOutput)
+}
+
+type TunnelConfigConfigIngressRuleOriginRequestOutput struct{ *pulumi.OutputState }
+
+func (TunnelConfigConfigIngressRuleOriginRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelConfigConfigIngressRuleOriginRequest)(nil)).Elem()
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) ToTunnelConfigConfigIngressRuleOriginRequestOutput() TunnelConfigConfigIngressRuleOriginRequestOutput {
+	return o
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) ToTunnelConfigConfigIngressRuleOriginRequestOutputWithContext(ctx context.Context) TunnelConfigConfigIngressRuleOriginRequestOutput {
+	return o
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) ToTunnelConfigConfigIngressRuleOriginRequestPtrOutput() TunnelConfigConfigIngressRuleOriginRequestPtrOutput {
+	return o.ToTunnelConfigConfigIngressRuleOriginRequestPtrOutputWithContext(context.Background())
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) ToTunnelConfigConfigIngressRuleOriginRequestPtrOutputWithContext(ctx context.Context) TunnelConfigConfigIngressRuleOriginRequestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelConfigConfigIngressRuleOriginRequest) *TunnelConfigConfigIngressRuleOriginRequest {
+		return &v
+	}).(TunnelConfigConfigIngressRuleOriginRequestPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) Access() TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequest) *TunnelConfigConfigIngressRuleOriginRequestAccess {
+		return v.Access
+	}).(TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) BastionMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequest) *bool { return v.BastionMode }).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) CaPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequest) *string { return v.CaPool }).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) ConnectTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequest) *string { return v.ConnectTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) DisableChunkedEncoding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequest) *bool { return v.DisableChunkedEncoding }).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) Http2Origin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequest) *bool { return v.Http2Origin }).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) HttpHostHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequest) *string { return v.HttpHostHeader }).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) IpRules() TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequest) []TunnelConfigConfigIngressRuleOriginRequestIpRule {
+		return v.IpRules
+	}).(TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) KeepAliveConnections() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequest) *int { return v.KeepAliveConnections }).(pulumi.IntPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) KeepAliveTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequest) *string { return v.KeepAliveTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) NoHappyEyeballs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequest) *bool { return v.NoHappyEyeballs }).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) NoTlsVerify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequest) *bool { return v.NoTlsVerify }).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) OriginServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequest) *string { return v.OriginServerName }).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) ProxyAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequest) *string { return v.ProxyAddress }).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) ProxyPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequest) *int { return v.ProxyPort }).(pulumi.IntPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) ProxyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequest) *string { return v.ProxyType }).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) TcpKeepAlive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequest) *string { return v.TcpKeepAlive }).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestOutput) TlsTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequest) *string { return v.TlsTimeout }).(pulumi.StringPtrOutput)
+}
+
+type TunnelConfigConfigIngressRuleOriginRequestPtrOutput struct{ *pulumi.OutputState }
+
+func (TunnelConfigConfigIngressRuleOriginRequestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelConfigConfigIngressRuleOriginRequest)(nil)).Elem()
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) ToTunnelConfigConfigIngressRuleOriginRequestPtrOutput() TunnelConfigConfigIngressRuleOriginRequestPtrOutput {
+	return o
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) ToTunnelConfigConfigIngressRuleOriginRequestPtrOutputWithContext(ctx context.Context) TunnelConfigConfigIngressRuleOriginRequestPtrOutput {
+	return o
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) Elem() TunnelConfigConfigIngressRuleOriginRequestOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequest) TunnelConfigConfigIngressRuleOriginRequest {
+		if v != nil {
+			return *v
+		}
+		var ret TunnelConfigConfigIngressRuleOriginRequest
+		return ret
+	}).(TunnelConfigConfigIngressRuleOriginRequestOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) Access() TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequest) *TunnelConfigConfigIngressRuleOriginRequestAccess {
+		if v == nil {
+			return nil
+		}
+		return v.Access
+	}).(TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) BastionMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BastionMode
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) CaPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaPool
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) ConnectTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) DisableChunkedEncoding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableChunkedEncoding
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) Http2Origin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Http2Origin
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) HttpHostHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHostHeader
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) IpRules() TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequest) []TunnelConfigConfigIngressRuleOriginRequestIpRule {
+		if v == nil {
+			return nil
+		}
+		return v.IpRules
+	}).(TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) KeepAliveConnections() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequest) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepAliveConnections
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) KeepAliveTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeepAliveTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) NoHappyEyeballs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoHappyEyeballs
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) NoTlsVerify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoTlsVerify
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) OriginServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OriginServerName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) ProxyAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) ProxyPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequest) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyPort
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) ProxyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) TcpKeepAlive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TcpKeepAlive
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestPtrOutput) TlsTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TlsTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+type TunnelConfigConfigIngressRuleOriginRequestAccess struct {
+	AudTags  []string `pulumi:"audTags"`
+	Required *bool    `pulumi:"required"`
+	TeamName *string  `pulumi:"teamName"`
+}
+
+// TunnelConfigConfigIngressRuleOriginRequestAccessInput is an input type that accepts TunnelConfigConfigIngressRuleOriginRequestAccessArgs and TunnelConfigConfigIngressRuleOriginRequestAccessOutput values.
+// You can construct a concrete instance of `TunnelConfigConfigIngressRuleOriginRequestAccessInput` via:
+//
+//	TunnelConfigConfigIngressRuleOriginRequestAccessArgs{...}
+type TunnelConfigConfigIngressRuleOriginRequestAccessInput interface {
+	pulumi.Input
+
+	ToTunnelConfigConfigIngressRuleOriginRequestAccessOutput() TunnelConfigConfigIngressRuleOriginRequestAccessOutput
+	ToTunnelConfigConfigIngressRuleOriginRequestAccessOutputWithContext(context.Context) TunnelConfigConfigIngressRuleOriginRequestAccessOutput
+}
+
+type TunnelConfigConfigIngressRuleOriginRequestAccessArgs struct {
+	AudTags  pulumi.StringArrayInput `pulumi:"audTags"`
+	Required pulumi.BoolPtrInput     `pulumi:"required"`
+	TeamName pulumi.StringPtrInput   `pulumi:"teamName"`
+}
+
+func (TunnelConfigConfigIngressRuleOriginRequestAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelConfigConfigIngressRuleOriginRequestAccess)(nil)).Elem()
+}
+
+func (i TunnelConfigConfigIngressRuleOriginRequestAccessArgs) ToTunnelConfigConfigIngressRuleOriginRequestAccessOutput() TunnelConfigConfigIngressRuleOriginRequestAccessOutput {
+	return i.ToTunnelConfigConfigIngressRuleOriginRequestAccessOutputWithContext(context.Background())
+}
+
+func (i TunnelConfigConfigIngressRuleOriginRequestAccessArgs) ToTunnelConfigConfigIngressRuleOriginRequestAccessOutputWithContext(ctx context.Context) TunnelConfigConfigIngressRuleOriginRequestAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigIngressRuleOriginRequestAccessOutput)
+}
+
+func (i TunnelConfigConfigIngressRuleOriginRequestAccessArgs) ToTunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput() TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput {
+	return i.ToTunnelConfigConfigIngressRuleOriginRequestAccessPtrOutputWithContext(context.Background())
+}
+
+func (i TunnelConfigConfigIngressRuleOriginRequestAccessArgs) ToTunnelConfigConfigIngressRuleOriginRequestAccessPtrOutputWithContext(ctx context.Context) TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigIngressRuleOriginRequestAccessOutput).ToTunnelConfigConfigIngressRuleOriginRequestAccessPtrOutputWithContext(ctx)
+}
+
+// TunnelConfigConfigIngressRuleOriginRequestAccessPtrInput is an input type that accepts TunnelConfigConfigIngressRuleOriginRequestAccessArgs, TunnelConfigConfigIngressRuleOriginRequestAccessPtr and TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput values.
+// You can construct a concrete instance of `TunnelConfigConfigIngressRuleOriginRequestAccessPtrInput` via:
+//
+//	        TunnelConfigConfigIngressRuleOriginRequestAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type TunnelConfigConfigIngressRuleOriginRequestAccessPtrInput interface {
+	pulumi.Input
+
+	ToTunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput() TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput
+	ToTunnelConfigConfigIngressRuleOriginRequestAccessPtrOutputWithContext(context.Context) TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput
+}
+
+type tunnelConfigConfigIngressRuleOriginRequestAccessPtrType TunnelConfigConfigIngressRuleOriginRequestAccessArgs
+
+func TunnelConfigConfigIngressRuleOriginRequestAccessPtr(v *TunnelConfigConfigIngressRuleOriginRequestAccessArgs) TunnelConfigConfigIngressRuleOriginRequestAccessPtrInput {
+	return (*tunnelConfigConfigIngressRuleOriginRequestAccessPtrType)(v)
+}
+
+func (*tunnelConfigConfigIngressRuleOriginRequestAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelConfigConfigIngressRuleOriginRequestAccess)(nil)).Elem()
+}
+
+func (i *tunnelConfigConfigIngressRuleOriginRequestAccessPtrType) ToTunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput() TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput {
+	return i.ToTunnelConfigConfigIngressRuleOriginRequestAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *tunnelConfigConfigIngressRuleOriginRequestAccessPtrType) ToTunnelConfigConfigIngressRuleOriginRequestAccessPtrOutputWithContext(ctx context.Context) TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput)
+}
+
+type TunnelConfigConfigIngressRuleOriginRequestAccessOutput struct{ *pulumi.OutputState }
+
+func (TunnelConfigConfigIngressRuleOriginRequestAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelConfigConfigIngressRuleOriginRequestAccess)(nil)).Elem()
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestAccessOutput) ToTunnelConfigConfigIngressRuleOriginRequestAccessOutput() TunnelConfigConfigIngressRuleOriginRequestAccessOutput {
+	return o
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestAccessOutput) ToTunnelConfigConfigIngressRuleOriginRequestAccessOutputWithContext(ctx context.Context) TunnelConfigConfigIngressRuleOriginRequestAccessOutput {
+	return o
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestAccessOutput) ToTunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput() TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput {
+	return o.ToTunnelConfigConfigIngressRuleOriginRequestAccessPtrOutputWithContext(context.Background())
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestAccessOutput) ToTunnelConfigConfigIngressRuleOriginRequestAccessPtrOutputWithContext(ctx context.Context) TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelConfigConfigIngressRuleOriginRequestAccess) *TunnelConfigConfigIngressRuleOriginRequestAccess {
+		return &v
+	}).(TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestAccessOutput) AudTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequestAccess) []string { return v.AudTags }).(pulumi.StringArrayOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestAccessOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequestAccess) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestAccessOutput) TeamName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequestAccess) *string { return v.TeamName }).(pulumi.StringPtrOutput)
+}
+
+type TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelConfigConfigIngressRuleOriginRequestAccess)(nil)).Elem()
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput) ToTunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput() TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput {
+	return o
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput) ToTunnelConfigConfigIngressRuleOriginRequestAccessPtrOutputWithContext(ctx context.Context) TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput {
+	return o
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput) Elem() TunnelConfigConfigIngressRuleOriginRequestAccessOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequestAccess) TunnelConfigConfigIngressRuleOriginRequestAccess {
+		if v != nil {
+			return *v
+		}
+		var ret TunnelConfigConfigIngressRuleOriginRequestAccess
+		return ret
+	}).(TunnelConfigConfigIngressRuleOriginRequestAccessOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput) AudTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequestAccess) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AudTags
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequestAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Required
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput) TeamName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigIngressRuleOriginRequestAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TeamName
+	}).(pulumi.StringPtrOutput)
+}
+
+type TunnelConfigConfigIngressRuleOriginRequestIpRule struct {
+	Allow  *bool   `pulumi:"allow"`
+	Ports  []int   `pulumi:"ports"`
+	Prefix *string `pulumi:"prefix"`
+}
+
+// TunnelConfigConfigIngressRuleOriginRequestIpRuleInput is an input type that accepts TunnelConfigConfigIngressRuleOriginRequestIpRuleArgs and TunnelConfigConfigIngressRuleOriginRequestIpRuleOutput values.
+// You can construct a concrete instance of `TunnelConfigConfigIngressRuleOriginRequestIpRuleInput` via:
+//
+//	TunnelConfigConfigIngressRuleOriginRequestIpRuleArgs{...}
+type TunnelConfigConfigIngressRuleOriginRequestIpRuleInput interface {
+	pulumi.Input
+
+	ToTunnelConfigConfigIngressRuleOriginRequestIpRuleOutput() TunnelConfigConfigIngressRuleOriginRequestIpRuleOutput
+	ToTunnelConfigConfigIngressRuleOriginRequestIpRuleOutputWithContext(context.Context) TunnelConfigConfigIngressRuleOriginRequestIpRuleOutput
+}
+
+type TunnelConfigConfigIngressRuleOriginRequestIpRuleArgs struct {
+	Allow  pulumi.BoolPtrInput   `pulumi:"allow"`
+	Ports  pulumi.IntArrayInput  `pulumi:"ports"`
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+}
+
+func (TunnelConfigConfigIngressRuleOriginRequestIpRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelConfigConfigIngressRuleOriginRequestIpRule)(nil)).Elem()
+}
+
+func (i TunnelConfigConfigIngressRuleOriginRequestIpRuleArgs) ToTunnelConfigConfigIngressRuleOriginRequestIpRuleOutput() TunnelConfigConfigIngressRuleOriginRequestIpRuleOutput {
+	return i.ToTunnelConfigConfigIngressRuleOriginRequestIpRuleOutputWithContext(context.Background())
+}
+
+func (i TunnelConfigConfigIngressRuleOriginRequestIpRuleArgs) ToTunnelConfigConfigIngressRuleOriginRequestIpRuleOutputWithContext(ctx context.Context) TunnelConfigConfigIngressRuleOriginRequestIpRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigIngressRuleOriginRequestIpRuleOutput)
+}
+
+// TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayInput is an input type that accepts TunnelConfigConfigIngressRuleOriginRequestIpRuleArray and TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput values.
+// You can construct a concrete instance of `TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayInput` via:
+//
+//	TunnelConfigConfigIngressRuleOriginRequestIpRuleArray{ TunnelConfigConfigIngressRuleOriginRequestIpRuleArgs{...} }
+type TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayInput interface {
+	pulumi.Input
+
+	ToTunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput() TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput
+	ToTunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutputWithContext(context.Context) TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput
+}
+
+type TunnelConfigConfigIngressRuleOriginRequestIpRuleArray []TunnelConfigConfigIngressRuleOriginRequestIpRuleInput
+
+func (TunnelConfigConfigIngressRuleOriginRequestIpRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TunnelConfigConfigIngressRuleOriginRequestIpRule)(nil)).Elem()
+}
+
+func (i TunnelConfigConfigIngressRuleOriginRequestIpRuleArray) ToTunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput() TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput {
+	return i.ToTunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutputWithContext(context.Background())
+}
+
+func (i TunnelConfigConfigIngressRuleOriginRequestIpRuleArray) ToTunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutputWithContext(ctx context.Context) TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput)
+}
+
+type TunnelConfigConfigIngressRuleOriginRequestIpRuleOutput struct{ *pulumi.OutputState }
+
+func (TunnelConfigConfigIngressRuleOriginRequestIpRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelConfigConfigIngressRuleOriginRequestIpRule)(nil)).Elem()
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestIpRuleOutput) ToTunnelConfigConfigIngressRuleOriginRequestIpRuleOutput() TunnelConfigConfigIngressRuleOriginRequestIpRuleOutput {
+	return o
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestIpRuleOutput) ToTunnelConfigConfigIngressRuleOriginRequestIpRuleOutputWithContext(ctx context.Context) TunnelConfigConfigIngressRuleOriginRequestIpRuleOutput {
+	return o
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestIpRuleOutput) Allow() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequestIpRule) *bool { return v.Allow }).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestIpRuleOutput) Ports() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequestIpRule) []int { return v.Ports }).(pulumi.IntArrayOutput)
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestIpRuleOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigIngressRuleOriginRequestIpRule) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+type TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TunnelConfigConfigIngressRuleOriginRequestIpRule)(nil)).Elem()
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput) ToTunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput() TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput {
+	return o
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput) ToTunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutputWithContext(ctx context.Context) TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput {
+	return o
+}
+
+func (o TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput) Index(i pulumi.IntInput) TunnelConfigConfigIngressRuleOriginRequestIpRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TunnelConfigConfigIngressRuleOriginRequestIpRule {
+		return vs[0].([]TunnelConfigConfigIngressRuleOriginRequestIpRule)[vs[1].(int)]
+	}).(TunnelConfigConfigIngressRuleOriginRequestIpRuleOutput)
+}
+
 type TunnelConfigConfigOriginRequest struct {
+	Access                 *TunnelConfigConfigOriginRequestAccess  `pulumi:"access"`
 	BastionMode            *bool                                   `pulumi:"bastionMode"`
 	CaPool                 *string                                 `pulumi:"caPool"`
 	ConnectTimeout         *string                                 `pulumi:"connectTimeout"`
 	DisableChunkedEncoding *bool                                   `pulumi:"disableChunkedEncoding"`
+	Http2Origin            *bool                                   `pulumi:"http2Origin"`
 	HttpHostHeader         *string                                 `pulumi:"httpHostHeader"`
 	IpRules                []TunnelConfigConfigOriginRequestIpRule `pulumi:"ipRules"`
 	KeepAliveConnections   *int                                    `pulumi:"keepAliveConnections"`
@@ -29542,10 +30456,12 @@ type TunnelConfigConfigOriginRequestInput interface {
 }
 
 type TunnelConfigConfigOriginRequestArgs struct {
+	Access                 TunnelConfigConfigOriginRequestAccessPtrInput   `pulumi:"access"`
 	BastionMode            pulumi.BoolPtrInput                             `pulumi:"bastionMode"`
 	CaPool                 pulumi.StringPtrInput                           `pulumi:"caPool"`
 	ConnectTimeout         pulumi.StringPtrInput                           `pulumi:"connectTimeout"`
 	DisableChunkedEncoding pulumi.BoolPtrInput                             `pulumi:"disableChunkedEncoding"`
+	Http2Origin            pulumi.BoolPtrInput                             `pulumi:"http2Origin"`
 	HttpHostHeader         pulumi.StringPtrInput                           `pulumi:"httpHostHeader"`
 	IpRules                TunnelConfigConfigOriginRequestIpRuleArrayInput `pulumi:"ipRules"`
 	KeepAliveConnections   pulumi.IntPtrInput                              `pulumi:"keepAliveConnections"`
@@ -29637,6 +30553,10 @@ func (o TunnelConfigConfigOriginRequestOutput) ToTunnelConfigConfigOriginRequest
 	}).(TunnelConfigConfigOriginRequestPtrOutput)
 }
 
+func (o TunnelConfigConfigOriginRequestOutput) Access() TunnelConfigConfigOriginRequestAccessPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequest) *TunnelConfigConfigOriginRequestAccess { return v.Access }).(TunnelConfigConfigOriginRequestAccessPtrOutput)
+}
+
 func (o TunnelConfigConfigOriginRequestOutput) BastionMode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TunnelConfigConfigOriginRequest) *bool { return v.BastionMode }).(pulumi.BoolPtrOutput)
 }
@@ -29651,6 +30571,10 @@ func (o TunnelConfigConfigOriginRequestOutput) ConnectTimeout() pulumi.StringPtr
 
 func (o TunnelConfigConfigOriginRequestOutput) DisableChunkedEncoding() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TunnelConfigConfigOriginRequest) *bool { return v.DisableChunkedEncoding }).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestOutput) Http2Origin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequest) *bool { return v.Http2Origin }).(pulumi.BoolPtrOutput)
 }
 
 func (o TunnelConfigConfigOriginRequestOutput) HttpHostHeader() pulumi.StringPtrOutput {
@@ -29725,6 +30649,15 @@ func (o TunnelConfigConfigOriginRequestPtrOutput) Elem() TunnelConfigConfigOrigi
 	}).(TunnelConfigConfigOriginRequestOutput)
 }
 
+func (o TunnelConfigConfigOriginRequestPtrOutput) Access() TunnelConfigConfigOriginRequestAccessPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequest) *TunnelConfigConfigOriginRequestAccess {
+		if v == nil {
+			return nil
+		}
+		return v.Access
+	}).(TunnelConfigConfigOriginRequestAccessPtrOutput)
+}
+
 func (o TunnelConfigConfigOriginRequestPtrOutput) BastionMode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TunnelConfigConfigOriginRequest) *bool {
 		if v == nil {
@@ -29758,6 +30691,15 @@ func (o TunnelConfigConfigOriginRequestPtrOutput) DisableChunkedEncoding() pulum
 			return nil
 		}
 		return v.DisableChunkedEncoding
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestPtrOutput) Http2Origin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Http2Origin
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -29866,6 +30808,169 @@ func (o TunnelConfigConfigOriginRequestPtrOutput) TlsTimeout() pulumi.StringPtrO
 			return nil
 		}
 		return v.TlsTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+type TunnelConfigConfigOriginRequestAccess struct {
+	AudTags  []string `pulumi:"audTags"`
+	Required *bool    `pulumi:"required"`
+	TeamName *string  `pulumi:"teamName"`
+}
+
+// TunnelConfigConfigOriginRequestAccessInput is an input type that accepts TunnelConfigConfigOriginRequestAccessArgs and TunnelConfigConfigOriginRequestAccessOutput values.
+// You can construct a concrete instance of `TunnelConfigConfigOriginRequestAccessInput` via:
+//
+//	TunnelConfigConfigOriginRequestAccessArgs{...}
+type TunnelConfigConfigOriginRequestAccessInput interface {
+	pulumi.Input
+
+	ToTunnelConfigConfigOriginRequestAccessOutput() TunnelConfigConfigOriginRequestAccessOutput
+	ToTunnelConfigConfigOriginRequestAccessOutputWithContext(context.Context) TunnelConfigConfigOriginRequestAccessOutput
+}
+
+type TunnelConfigConfigOriginRequestAccessArgs struct {
+	AudTags  pulumi.StringArrayInput `pulumi:"audTags"`
+	Required pulumi.BoolPtrInput     `pulumi:"required"`
+	TeamName pulumi.StringPtrInput   `pulumi:"teamName"`
+}
+
+func (TunnelConfigConfigOriginRequestAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelConfigConfigOriginRequestAccess)(nil)).Elem()
+}
+
+func (i TunnelConfigConfigOriginRequestAccessArgs) ToTunnelConfigConfigOriginRequestAccessOutput() TunnelConfigConfigOriginRequestAccessOutput {
+	return i.ToTunnelConfigConfigOriginRequestAccessOutputWithContext(context.Background())
+}
+
+func (i TunnelConfigConfigOriginRequestAccessArgs) ToTunnelConfigConfigOriginRequestAccessOutputWithContext(ctx context.Context) TunnelConfigConfigOriginRequestAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigOriginRequestAccessOutput)
+}
+
+func (i TunnelConfigConfigOriginRequestAccessArgs) ToTunnelConfigConfigOriginRequestAccessPtrOutput() TunnelConfigConfigOriginRequestAccessPtrOutput {
+	return i.ToTunnelConfigConfigOriginRequestAccessPtrOutputWithContext(context.Background())
+}
+
+func (i TunnelConfigConfigOriginRequestAccessArgs) ToTunnelConfigConfigOriginRequestAccessPtrOutputWithContext(ctx context.Context) TunnelConfigConfigOriginRequestAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigOriginRequestAccessOutput).ToTunnelConfigConfigOriginRequestAccessPtrOutputWithContext(ctx)
+}
+
+// TunnelConfigConfigOriginRequestAccessPtrInput is an input type that accepts TunnelConfigConfigOriginRequestAccessArgs, TunnelConfigConfigOriginRequestAccessPtr and TunnelConfigConfigOriginRequestAccessPtrOutput values.
+// You can construct a concrete instance of `TunnelConfigConfigOriginRequestAccessPtrInput` via:
+//
+//	        TunnelConfigConfigOriginRequestAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type TunnelConfigConfigOriginRequestAccessPtrInput interface {
+	pulumi.Input
+
+	ToTunnelConfigConfigOriginRequestAccessPtrOutput() TunnelConfigConfigOriginRequestAccessPtrOutput
+	ToTunnelConfigConfigOriginRequestAccessPtrOutputWithContext(context.Context) TunnelConfigConfigOriginRequestAccessPtrOutput
+}
+
+type tunnelConfigConfigOriginRequestAccessPtrType TunnelConfigConfigOriginRequestAccessArgs
+
+func TunnelConfigConfigOriginRequestAccessPtr(v *TunnelConfigConfigOriginRequestAccessArgs) TunnelConfigConfigOriginRequestAccessPtrInput {
+	return (*tunnelConfigConfigOriginRequestAccessPtrType)(v)
+}
+
+func (*tunnelConfigConfigOriginRequestAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelConfigConfigOriginRequestAccess)(nil)).Elem()
+}
+
+func (i *tunnelConfigConfigOriginRequestAccessPtrType) ToTunnelConfigConfigOriginRequestAccessPtrOutput() TunnelConfigConfigOriginRequestAccessPtrOutput {
+	return i.ToTunnelConfigConfigOriginRequestAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *tunnelConfigConfigOriginRequestAccessPtrType) ToTunnelConfigConfigOriginRequestAccessPtrOutputWithContext(ctx context.Context) TunnelConfigConfigOriginRequestAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelConfigConfigOriginRequestAccessPtrOutput)
+}
+
+type TunnelConfigConfigOriginRequestAccessOutput struct{ *pulumi.OutputState }
+
+func (TunnelConfigConfigOriginRequestAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelConfigConfigOriginRequestAccess)(nil)).Elem()
+}
+
+func (o TunnelConfigConfigOriginRequestAccessOutput) ToTunnelConfigConfigOriginRequestAccessOutput() TunnelConfigConfigOriginRequestAccessOutput {
+	return o
+}
+
+func (o TunnelConfigConfigOriginRequestAccessOutput) ToTunnelConfigConfigOriginRequestAccessOutputWithContext(ctx context.Context) TunnelConfigConfigOriginRequestAccessOutput {
+	return o
+}
+
+func (o TunnelConfigConfigOriginRequestAccessOutput) ToTunnelConfigConfigOriginRequestAccessPtrOutput() TunnelConfigConfigOriginRequestAccessPtrOutput {
+	return o.ToTunnelConfigConfigOriginRequestAccessPtrOutputWithContext(context.Background())
+}
+
+func (o TunnelConfigConfigOriginRequestAccessOutput) ToTunnelConfigConfigOriginRequestAccessPtrOutputWithContext(ctx context.Context) TunnelConfigConfigOriginRequestAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelConfigConfigOriginRequestAccess) *TunnelConfigConfigOriginRequestAccess {
+		return &v
+	}).(TunnelConfigConfigOriginRequestAccessPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestAccessOutput) AudTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequestAccess) []string { return v.AudTags }).(pulumi.StringArrayOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestAccessOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequestAccess) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestAccessOutput) TeamName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelConfigConfigOriginRequestAccess) *string { return v.TeamName }).(pulumi.StringPtrOutput)
+}
+
+type TunnelConfigConfigOriginRequestAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (TunnelConfigConfigOriginRequestAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelConfigConfigOriginRequestAccess)(nil)).Elem()
+}
+
+func (o TunnelConfigConfigOriginRequestAccessPtrOutput) ToTunnelConfigConfigOriginRequestAccessPtrOutput() TunnelConfigConfigOriginRequestAccessPtrOutput {
+	return o
+}
+
+func (o TunnelConfigConfigOriginRequestAccessPtrOutput) ToTunnelConfigConfigOriginRequestAccessPtrOutputWithContext(ctx context.Context) TunnelConfigConfigOriginRequestAccessPtrOutput {
+	return o
+}
+
+func (o TunnelConfigConfigOriginRequestAccessPtrOutput) Elem() TunnelConfigConfigOriginRequestAccessOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequestAccess) TunnelConfigConfigOriginRequestAccess {
+		if v != nil {
+			return *v
+		}
+		var ret TunnelConfigConfigOriginRequestAccess
+		return ret
+	}).(TunnelConfigConfigOriginRequestAccessOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestAccessPtrOutput) AudTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequestAccess) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AudTags
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestAccessPtrOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequestAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Required
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TunnelConfigConfigOriginRequestAccessPtrOutput) TeamName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelConfigConfigOriginRequestAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TeamName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -41207,9 +42312,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthcheckHeaderArrayInput)(nil)).Elem(), HealthcheckHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemTypeInput)(nil)).Elem(), ListItemTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemTypeArrayInput)(nil)).Elem(), ListItemTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListItemHostnameInput)(nil)).Elem(), ListItemHostnameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListItemHostnamePtrInput)(nil)).Elem(), ListItemHostnameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemRedirectInput)(nil)).Elem(), ListItemRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemRedirectPtrInput)(nil)).Elem(), ListItemRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemValueInput)(nil)).Elem(), ListItemValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListItemValueHostnameInput)(nil)).Elem(), ListItemValueHostnameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListItemValueHostnameArrayInput)(nil)).Elem(), ListItemValueHostnameArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemValueRedirectInput)(nil)).Elem(), ListItemValueRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemValueRedirectArrayInput)(nil)).Elem(), ListItemValueRedirectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerAdaptiveRoutingInput)(nil)).Elem(), LoadBalancerAdaptiveRoutingArgs{})
@@ -41436,8 +42545,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigPtrInput)(nil)).Elem(), TunnelConfigConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigIngressRuleInput)(nil)).Elem(), TunnelConfigConfigIngressRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigIngressRuleArrayInput)(nil)).Elem(), TunnelConfigConfigIngressRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigIngressRuleOriginRequestInput)(nil)).Elem(), TunnelConfigConfigIngressRuleOriginRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigIngressRuleOriginRequestPtrInput)(nil)).Elem(), TunnelConfigConfigIngressRuleOriginRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigIngressRuleOriginRequestAccessInput)(nil)).Elem(), TunnelConfigConfigIngressRuleOriginRequestAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigIngressRuleOriginRequestAccessPtrInput)(nil)).Elem(), TunnelConfigConfigIngressRuleOriginRequestAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigIngressRuleOriginRequestIpRuleInput)(nil)).Elem(), TunnelConfigConfigIngressRuleOriginRequestIpRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayInput)(nil)).Elem(), TunnelConfigConfigIngressRuleOriginRequestIpRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigOriginRequestInput)(nil)).Elem(), TunnelConfigConfigOriginRequestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigOriginRequestPtrInput)(nil)).Elem(), TunnelConfigConfigOriginRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigOriginRequestAccessInput)(nil)).Elem(), TunnelConfigConfigOriginRequestAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigOriginRequestAccessPtrInput)(nil)).Elem(), TunnelConfigConfigOriginRequestAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigOriginRequestIpRuleInput)(nil)).Elem(), TunnelConfigConfigOriginRequestIpRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigOriginRequestIpRuleArrayInput)(nil)).Elem(), TunnelConfigConfigOriginRequestIpRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigWarpRoutingInput)(nil)).Elem(), TunnelConfigConfigWarpRoutingArgs{})
@@ -41723,9 +42840,13 @@ func init() {
 	pulumi.RegisterOutputType(HealthcheckHeaderArrayOutput{})
 	pulumi.RegisterOutputType(ListItemTypeOutput{})
 	pulumi.RegisterOutputType(ListItemTypeArrayOutput{})
+	pulumi.RegisterOutputType(ListItemHostnameOutput{})
+	pulumi.RegisterOutputType(ListItemHostnamePtrOutput{})
 	pulumi.RegisterOutputType(ListItemRedirectOutput{})
 	pulumi.RegisterOutputType(ListItemRedirectPtrOutput{})
 	pulumi.RegisterOutputType(ListItemValueOutput{})
+	pulumi.RegisterOutputType(ListItemValueHostnameOutput{})
+	pulumi.RegisterOutputType(ListItemValueHostnameArrayOutput{})
 	pulumi.RegisterOutputType(ListItemValueRedirectOutput{})
 	pulumi.RegisterOutputType(ListItemValueRedirectArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerAdaptiveRoutingOutput{})
@@ -41952,8 +43073,16 @@ func init() {
 	pulumi.RegisterOutputType(TunnelConfigConfigPtrOutput{})
 	pulumi.RegisterOutputType(TunnelConfigConfigIngressRuleOutput{})
 	pulumi.RegisterOutputType(TunnelConfigConfigIngressRuleArrayOutput{})
+	pulumi.RegisterOutputType(TunnelConfigConfigIngressRuleOriginRequestOutput{})
+	pulumi.RegisterOutputType(TunnelConfigConfigIngressRuleOriginRequestPtrOutput{})
+	pulumi.RegisterOutputType(TunnelConfigConfigIngressRuleOriginRequestAccessOutput{})
+	pulumi.RegisterOutputType(TunnelConfigConfigIngressRuleOriginRequestAccessPtrOutput{})
+	pulumi.RegisterOutputType(TunnelConfigConfigIngressRuleOriginRequestIpRuleOutput{})
+	pulumi.RegisterOutputType(TunnelConfigConfigIngressRuleOriginRequestIpRuleArrayOutput{})
 	pulumi.RegisterOutputType(TunnelConfigConfigOriginRequestOutput{})
 	pulumi.RegisterOutputType(TunnelConfigConfigOriginRequestPtrOutput{})
+	pulumi.RegisterOutputType(TunnelConfigConfigOriginRequestAccessOutput{})
+	pulumi.RegisterOutputType(TunnelConfigConfigOriginRequestAccessPtrOutput{})
 	pulumi.RegisterOutputType(TunnelConfigConfigOriginRequestIpRuleOutput{})
 	pulumi.RegisterOutputType(TunnelConfigConfigOriginRequestIpRuleArrayOutput{})
 	pulumi.RegisterOutputType(TunnelConfigConfigWarpRoutingOutput{})

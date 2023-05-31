@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.TunnelConfigConfigOriginRequestAccess;
 import com.pulumi.cloudflare.outputs.TunnelConfigConfigOriginRequestIpRule;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
@@ -15,10 +16,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TunnelConfigConfigOriginRequest {
+    private @Nullable TunnelConfigConfigOriginRequestAccess access;
     private @Nullable Boolean bastionMode;
     private @Nullable String caPool;
     private @Nullable String connectTimeout;
     private @Nullable Boolean disableChunkedEncoding;
+    private @Nullable Boolean http2Origin;
     private @Nullable String httpHostHeader;
     private @Nullable List<TunnelConfigConfigOriginRequestIpRule> ipRules;
     private @Nullable Integer keepAliveConnections;
@@ -33,6 +36,9 @@ public final class TunnelConfigConfigOriginRequest {
     private @Nullable String tlsTimeout;
 
     private TunnelConfigConfigOriginRequest() {}
+    public Optional<TunnelConfigConfigOriginRequestAccess> access() {
+        return Optional.ofNullable(this.access);
+    }
     public Optional<Boolean> bastionMode() {
         return Optional.ofNullable(this.bastionMode);
     }
@@ -44,6 +50,9 @@ public final class TunnelConfigConfigOriginRequest {
     }
     public Optional<Boolean> disableChunkedEncoding() {
         return Optional.ofNullable(this.disableChunkedEncoding);
+    }
+    public Optional<Boolean> http2Origin() {
+        return Optional.ofNullable(this.http2Origin);
     }
     public Optional<String> httpHostHeader() {
         return Optional.ofNullable(this.httpHostHeader);
@@ -91,10 +100,12 @@ public final class TunnelConfigConfigOriginRequest {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable TunnelConfigConfigOriginRequestAccess access;
         private @Nullable Boolean bastionMode;
         private @Nullable String caPool;
         private @Nullable String connectTimeout;
         private @Nullable Boolean disableChunkedEncoding;
+        private @Nullable Boolean http2Origin;
         private @Nullable String httpHostHeader;
         private @Nullable List<TunnelConfigConfigOriginRequestIpRule> ipRules;
         private @Nullable Integer keepAliveConnections;
@@ -110,10 +121,12 @@ public final class TunnelConfigConfigOriginRequest {
         public Builder() {}
         public Builder(TunnelConfigConfigOriginRequest defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.access = defaults.access;
     	      this.bastionMode = defaults.bastionMode;
     	      this.caPool = defaults.caPool;
     	      this.connectTimeout = defaults.connectTimeout;
     	      this.disableChunkedEncoding = defaults.disableChunkedEncoding;
+    	      this.http2Origin = defaults.http2Origin;
     	      this.httpHostHeader = defaults.httpHostHeader;
     	      this.ipRules = defaults.ipRules;
     	      this.keepAliveConnections = defaults.keepAliveConnections;
@@ -128,6 +141,11 @@ public final class TunnelConfigConfigOriginRequest {
     	      this.tlsTimeout = defaults.tlsTimeout;
         }
 
+        @CustomType.Setter
+        public Builder access(@Nullable TunnelConfigConfigOriginRequestAccess access) {
+            this.access = access;
+            return this;
+        }
         @CustomType.Setter
         public Builder bastionMode(@Nullable Boolean bastionMode) {
             this.bastionMode = bastionMode;
@@ -146,6 +164,11 @@ public final class TunnelConfigConfigOriginRequest {
         @CustomType.Setter
         public Builder disableChunkedEncoding(@Nullable Boolean disableChunkedEncoding) {
             this.disableChunkedEncoding = disableChunkedEncoding;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder http2Origin(@Nullable Boolean http2Origin) {
+            this.http2Origin = http2Origin;
             return this;
         }
         @CustomType.Setter
@@ -213,10 +236,12 @@ public final class TunnelConfigConfigOriginRequest {
         }
         public TunnelConfigConfigOriginRequest build() {
             final var o = new TunnelConfigConfigOriginRequest();
+            o.access = access;
             o.bastionMode = bastionMode;
             o.caPool = caPool;
             o.connectTimeout = connectTimeout;
             o.disableChunkedEncoding = disableChunkedEncoding;
+            o.http2Origin = http2Origin;
             o.httpHostHeader = httpHostHeader;
             o.ipRules = ipRules;
             o.keepAliveConnections = keepAliveConnections;
