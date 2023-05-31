@@ -262,18 +262,6 @@ class FirewallRule(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Define Firewall rules using filter expressions for more control over
-        how traffic is matched to the rule. A filter expression permits
-        selecting traffic by multiple criteria allowing greater freedom in
-        rule creation.
-
-        Filter expressions needs to be created first before using Firewall
-        Rule.
-
-        > If you want to configure Custom Firewall rules, you need to use
-        `Ruleset`, because Custom Rules are built upon the
-        [Cloudflare Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/).
-
         ## Example Usage
 
         ```python
@@ -314,18 +302,6 @@ class FirewallRule(pulumi.CustomResource):
                  args: FirewallRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Define Firewall rules using filter expressions for more control over
-        how traffic is matched to the rule. A filter expression permits
-        selecting traffic by multiple criteria allowing greater freedom in
-        rule creation.
-
-        Filter expressions needs to be created first before using Firewall
-        Rule.
-
-        > If you want to configure Custom Firewall rules, you need to use
-        `Ruleset`, because Custom Rules are built upon the
-        [Cloudflare Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/).
-
         ## Example Usage
 
         ```python

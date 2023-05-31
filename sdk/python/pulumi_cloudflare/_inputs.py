@@ -87,8 +87,10 @@ __all__ = [
     'FallbackDomainDomainArgs',
     'HealthcheckHeaderArgs',
     'ListItemArgs',
+    'ListItemHostnameArgs',
     'ListItemRedirectArgs',
     'ListItemValueArgs',
+    'ListItemValueHostnameArgs',
     'ListItemValueRedirectArgs',
     'LoadBalancerAdaptiveRoutingArgs',
     'LoadBalancerCountryPoolArgs',
@@ -202,7 +204,11 @@ __all__ = [
     'TeamsRuleRuleSettingsUntrustedCertArgs',
     'TunnelConfigConfigArgs',
     'TunnelConfigConfigIngressRuleArgs',
+    'TunnelConfigConfigIngressRuleOriginRequestArgs',
+    'TunnelConfigConfigIngressRuleOriginRequestAccessArgs',
+    'TunnelConfigConfigIngressRuleOriginRequestIpRuleArgs',
     'TunnelConfigConfigOriginRequestArgs',
+    'TunnelConfigConfigOriginRequestAccessArgs',
     'TunnelConfigConfigOriginRequestIpRuleArgs',
     'TunnelConfigConfigWarpRoutingArgs',
     'UserAgentBlockingRuleConfigurationArgs',
@@ -5358,6 +5364,28 @@ class ListItemArgs:
 
 
 @pulumi.input_type
+class ListItemHostnameArgs:
+    def __init__(__self__, *,
+                 url_hostname: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] url_hostname: The FQDN to match on.
+        """
+        pulumi.set(__self__, "url_hostname", url_hostname)
+
+    @property
+    @pulumi.getter(name="urlHostname")
+    def url_hostname(self) -> pulumi.Input[str]:
+        """
+        The FQDN to match on.
+        """
+        return pulumi.get(self, "url_hostname")
+
+    @url_hostname.setter
+    def url_hostname(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url_hostname", value)
+
+
+@pulumi.input_type
 class ListItemRedirectArgs:
     def __init__(__self__, *,
                  source_url: pulumi.Input[str],
@@ -5477,12 +5505,36 @@ class ListItemRedirectArgs:
 @pulumi.input_type
 class ListItemValueArgs:
     def __init__(__self__, *,
+                 asn: Optional[pulumi.Input[int]] = None,
+                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input['ListItemValueHostnameArgs']]]] = None,
                  ip: Optional[pulumi.Input[str]] = None,
                  redirects: Optional[pulumi.Input[Sequence[pulumi.Input['ListItemValueRedirectArgs']]]] = None):
+        if asn is not None:
+            pulumi.set(__self__, "asn", asn)
+        if hostnames is not None:
+            pulumi.set(__self__, "hostnames", hostnames)
         if ip is not None:
             pulumi.set(__self__, "ip", ip)
         if redirects is not None:
             pulumi.set(__self__, "redirects", redirects)
+
+    @property
+    @pulumi.getter
+    def asn(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "asn")
+
+    @asn.setter
+    def asn(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "asn", value)
+
+    @property
+    @pulumi.getter
+    def hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListItemValueHostnameArgs']]]]:
+        return pulumi.get(self, "hostnames")
+
+    @hostnames.setter
+    def hostnames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListItemValueHostnameArgs']]]]):
+        pulumi.set(self, "hostnames", value)
 
     @property
     @pulumi.getter
@@ -5501,6 +5553,22 @@ class ListItemValueArgs:
     @redirects.setter
     def redirects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListItemValueRedirectArgs']]]]):
         pulumi.set(self, "redirects", value)
+
+
+@pulumi.input_type
+class ListItemValueHostnameArgs:
+    def __init__(__self__, *,
+                 url_hostname: pulumi.Input[str]):
+        pulumi.set(__self__, "url_hostname", url_hostname)
+
+    @property
+    @pulumi.getter(name="urlHostname")
+    def url_hostname(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "url_hostname")
+
+    @url_hostname.setter
+    def url_hostname(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url_hostname", value)
 
 
 @pulumi.input_type
@@ -8383,7 +8451,7 @@ class PagesProjectBuildConfigArgs:
         """
         :param pulumi.Input[str] build_command: Command used to build project.
         :param pulumi.Input[str] destination_dir: Output directory of the build.
-        :param pulumi.Input[str] root_dir: Directory to run the command.
+        :param pulumi.Input[str] root_dir: Your project's root directory, where Cloudflare runs the build command. If your site is not in a subdirectory, leave this path value empty.
         :param pulumi.Input[str] web_analytics_tag: The classifying tag for analytics.
         :param pulumi.Input[str] web_analytics_token: The auth token for analytics.
         """
@@ -8426,7 +8494,7 @@ class PagesProjectBuildConfigArgs:
     @pulumi.getter(name="rootDir")
     def root_dir(self) -> Optional[pulumi.Input[str]]:
         """
-        Directory to run the command.
+        Your project's root directory, where Cloudflare runs the build command. If your site is not in a subdirectory, leave this path value empty.
         """
         return pulumi.get(self, "root_dir")
 
@@ -10612,12 +10680,20 @@ class RulesetRuleActionParametersAutominifyArgs:
 @pulumi.input_type
 class RulesetRuleActionParametersBrowserTtlArgs:
     def __init__(__self__, *,
-                 default: Optional[pulumi.Input[int]] = None,
-                 mode: Optional[pulumi.Input[str]] = None):
+                 mode: pulumi.Input[str],
+                 default: Optional[pulumi.Input[int]] = None):
+        pulumi.set(__self__, "mode", mode)
         if default is not None:
             pulumi.set(__self__, "default", default)
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "mode", value)
 
     @property
     @pulumi.getter
@@ -10627,15 +10703,6 @@ class RulesetRuleActionParametersBrowserTtlArgs:
     @default.setter
     def default(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "default", value)
-
-    @property
-    @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "mode")
-
-    @mode.setter
-    def mode(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "mode", value)
 
 
 @pulumi.input_type
@@ -10916,15 +10983,23 @@ class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs:
 @pulumi.input_type
 class RulesetRuleActionParametersEdgeTtlArgs:
     def __init__(__self__, *,
+                 mode: pulumi.Input[str],
                  default: Optional[pulumi.Input[int]] = None,
-                 mode: Optional[pulumi.Input[str]] = None,
                  status_code_ttls: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs']]]] = None):
+        pulumi.set(__self__, "mode", mode)
         if default is not None:
             pulumi.set(__self__, "default", default)
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
         if status_code_ttls is not None:
             pulumi.set(__self__, "status_code_ttls", status_code_ttls)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "mode", value)
 
     @property
     @pulumi.getter
@@ -10934,15 +11009,6 @@ class RulesetRuleActionParametersEdgeTtlArgs:
     @default.setter
     def default(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "default", value)
-
-    @property
-    @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "mode")
-
-    @mode.setter
-    def mode(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "mode", value)
 
     @property
     @pulumi.getter(name="statusCodeTtls")
@@ -12951,10 +13017,13 @@ class TunnelConfigConfigIngressRuleArgs:
     def __init__(__self__, *,
                  service: pulumi.Input[str],
                  hostname: Optional[pulumi.Input[str]] = None,
+                 origin_request: Optional[pulumi.Input['TunnelConfigConfigIngressRuleOriginRequestArgs']] = None,
                  path: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "service", service)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
+        if origin_request is not None:
+            pulumi.set(__self__, "origin_request", origin_request)
         if path is not None:
             pulumi.set(__self__, "path", path)
 
@@ -12977,6 +13046,15 @@ class TunnelConfigConfigIngressRuleArgs:
         pulumi.set(self, "hostname", value)
 
     @property
+    @pulumi.getter(name="originRequest")
+    def origin_request(self) -> Optional[pulumi.Input['TunnelConfigConfigIngressRuleOriginRequestArgs']]:
+        return pulumi.get(self, "origin_request")
+
+    @origin_request.setter
+    def origin_request(self, value: Optional[pulumi.Input['TunnelConfigConfigIngressRuleOriginRequestArgs']]):
+        pulumi.set(self, "origin_request", value)
+
+    @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "path")
@@ -12987,14 +13065,16 @@ class TunnelConfigConfigIngressRuleArgs:
 
 
 @pulumi.input_type
-class TunnelConfigConfigOriginRequestArgs:
+class TunnelConfigConfigIngressRuleOriginRequestArgs:
     def __init__(__self__, *,
+                 access: Optional[pulumi.Input['TunnelConfigConfigIngressRuleOriginRequestAccessArgs']] = None,
                  bastion_mode: Optional[pulumi.Input[bool]] = None,
                  ca_pool: Optional[pulumi.Input[str]] = None,
                  connect_timeout: Optional[pulumi.Input[str]] = None,
                  disable_chunked_encoding: Optional[pulumi.Input[bool]] = None,
+                 http2_origin: Optional[pulumi.Input[bool]] = None,
                  http_host_header: Optional[pulumi.Input[str]] = None,
-                 ip_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigOriginRequestIpRuleArgs']]]] = None,
+                 ip_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigIngressRuleOriginRequestIpRuleArgs']]]] = None,
                  keep_alive_connections: Optional[pulumi.Input[int]] = None,
                  keep_alive_timeout: Optional[pulumi.Input[str]] = None,
                  no_happy_eyeballs: Optional[pulumi.Input[bool]] = None,
@@ -13005,6 +13085,8 @@ class TunnelConfigConfigOriginRequestArgs:
                  proxy_type: Optional[pulumi.Input[str]] = None,
                  tcp_keep_alive: Optional[pulumi.Input[str]] = None,
                  tls_timeout: Optional[pulumi.Input[str]] = None):
+        if access is not None:
+            pulumi.set(__self__, "access", access)
         if bastion_mode is not None:
             pulumi.set(__self__, "bastion_mode", bastion_mode)
         if ca_pool is not None:
@@ -13013,6 +13095,8 @@ class TunnelConfigConfigOriginRequestArgs:
             pulumi.set(__self__, "connect_timeout", connect_timeout)
         if disable_chunked_encoding is not None:
             pulumi.set(__self__, "disable_chunked_encoding", disable_chunked_encoding)
+        if http2_origin is not None:
+            pulumi.set(__self__, "http2_origin", http2_origin)
         if http_host_header is not None:
             pulumi.set(__self__, "http_host_header", http_host_header)
         if ip_rules is not None:
@@ -13037,6 +13121,15 @@ class TunnelConfigConfigOriginRequestArgs:
             pulumi.set(__self__, "tcp_keep_alive", tcp_keep_alive)
         if tls_timeout is not None:
             pulumi.set(__self__, "tls_timeout", tls_timeout)
+
+    @property
+    @pulumi.getter
+    def access(self) -> Optional[pulumi.Input['TunnelConfigConfigIngressRuleOriginRequestAccessArgs']]:
+        return pulumi.get(self, "access")
+
+    @access.setter
+    def access(self, value: Optional[pulumi.Input['TunnelConfigConfigIngressRuleOriginRequestAccessArgs']]):
+        pulumi.set(self, "access", value)
 
     @property
     @pulumi.getter(name="bastionMode")
@@ -13073,6 +13166,318 @@ class TunnelConfigConfigOriginRequestArgs:
     @disable_chunked_encoding.setter
     def disable_chunked_encoding(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disable_chunked_encoding", value)
+
+    @property
+    @pulumi.getter(name="http2Origin")
+    def http2_origin(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "http2_origin")
+
+    @http2_origin.setter
+    def http2_origin(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "http2_origin", value)
+
+    @property
+    @pulumi.getter(name="httpHostHeader")
+    def http_host_header(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "http_host_header")
+
+    @http_host_header.setter
+    def http_host_header(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_host_header", value)
+
+    @property
+    @pulumi.getter(name="ipRules")
+    def ip_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigIngressRuleOriginRequestIpRuleArgs']]]]:
+        return pulumi.get(self, "ip_rules")
+
+    @ip_rules.setter
+    def ip_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigIngressRuleOriginRequestIpRuleArgs']]]]):
+        pulumi.set(self, "ip_rules", value)
+
+    @property
+    @pulumi.getter(name="keepAliveConnections")
+    def keep_alive_connections(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "keep_alive_connections")
+
+    @keep_alive_connections.setter
+    def keep_alive_connections(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "keep_alive_connections", value)
+
+    @property
+    @pulumi.getter(name="keepAliveTimeout")
+    def keep_alive_timeout(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "keep_alive_timeout")
+
+    @keep_alive_timeout.setter
+    def keep_alive_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "keep_alive_timeout", value)
+
+    @property
+    @pulumi.getter(name="noHappyEyeballs")
+    def no_happy_eyeballs(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "no_happy_eyeballs")
+
+    @no_happy_eyeballs.setter
+    def no_happy_eyeballs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_happy_eyeballs", value)
+
+    @property
+    @pulumi.getter(name="noTlsVerify")
+    def no_tls_verify(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "no_tls_verify")
+
+    @no_tls_verify.setter
+    def no_tls_verify(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_tls_verify", value)
+
+    @property
+    @pulumi.getter(name="originServerName")
+    def origin_server_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "origin_server_name")
+
+    @origin_server_name.setter
+    def origin_server_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "origin_server_name", value)
+
+    @property
+    @pulumi.getter(name="proxyAddress")
+    def proxy_address(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "proxy_address")
+
+    @proxy_address.setter
+    def proxy_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy_address", value)
+
+    @property
+    @pulumi.getter(name="proxyPort")
+    def proxy_port(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "proxy_port")
+
+    @proxy_port.setter
+    def proxy_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "proxy_port", value)
+
+    @property
+    @pulumi.getter(name="proxyType")
+    def proxy_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "proxy_type")
+
+    @proxy_type.setter
+    def proxy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy_type", value)
+
+    @property
+    @pulumi.getter(name="tcpKeepAlive")
+    def tcp_keep_alive(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tcp_keep_alive")
+
+    @tcp_keep_alive.setter
+    def tcp_keep_alive(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tcp_keep_alive", value)
+
+    @property
+    @pulumi.getter(name="tlsTimeout")
+    def tls_timeout(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tls_timeout")
+
+    @tls_timeout.setter
+    def tls_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tls_timeout", value)
+
+
+@pulumi.input_type
+class TunnelConfigConfigIngressRuleOriginRequestAccessArgs:
+    def __init__(__self__, *,
+                 aud_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 required: Optional[pulumi.Input[bool]] = None,
+                 team_name: Optional[pulumi.Input[str]] = None):
+        if aud_tags is not None:
+            pulumi.set(__self__, "aud_tags", aud_tags)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if team_name is not None:
+            pulumi.set(__self__, "team_name", team_name)
+
+    @property
+    @pulumi.getter(name="audTags")
+    def aud_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "aud_tags")
+
+    @aud_tags.setter
+    def aud_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "aud_tags", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter(name="teamName")
+    def team_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "team_name")
+
+    @team_name.setter
+    def team_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team_name", value)
+
+
+@pulumi.input_type
+class TunnelConfigConfigIngressRuleOriginRequestIpRuleArgs:
+    def __init__(__self__, *,
+                 allow: Optional[pulumi.Input[bool]] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 prefix: Optional[pulumi.Input[str]] = None):
+        if allow is not None:
+            pulumi.set(__self__, "allow", allow)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+
+    @property
+    @pulumi.getter
+    def allow(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "allow")
+
+    @allow.setter
+    def allow(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow", value)
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "ports", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix", value)
+
+
+@pulumi.input_type
+class TunnelConfigConfigOriginRequestArgs:
+    def __init__(__self__, *,
+                 access: Optional[pulumi.Input['TunnelConfigConfigOriginRequestAccessArgs']] = None,
+                 bastion_mode: Optional[pulumi.Input[bool]] = None,
+                 ca_pool: Optional[pulumi.Input[str]] = None,
+                 connect_timeout: Optional[pulumi.Input[str]] = None,
+                 disable_chunked_encoding: Optional[pulumi.Input[bool]] = None,
+                 http2_origin: Optional[pulumi.Input[bool]] = None,
+                 http_host_header: Optional[pulumi.Input[str]] = None,
+                 ip_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigOriginRequestIpRuleArgs']]]] = None,
+                 keep_alive_connections: Optional[pulumi.Input[int]] = None,
+                 keep_alive_timeout: Optional[pulumi.Input[str]] = None,
+                 no_happy_eyeballs: Optional[pulumi.Input[bool]] = None,
+                 no_tls_verify: Optional[pulumi.Input[bool]] = None,
+                 origin_server_name: Optional[pulumi.Input[str]] = None,
+                 proxy_address: Optional[pulumi.Input[str]] = None,
+                 proxy_port: Optional[pulumi.Input[int]] = None,
+                 proxy_type: Optional[pulumi.Input[str]] = None,
+                 tcp_keep_alive: Optional[pulumi.Input[str]] = None,
+                 tls_timeout: Optional[pulumi.Input[str]] = None):
+        if access is not None:
+            pulumi.set(__self__, "access", access)
+        if bastion_mode is not None:
+            pulumi.set(__self__, "bastion_mode", bastion_mode)
+        if ca_pool is not None:
+            pulumi.set(__self__, "ca_pool", ca_pool)
+        if connect_timeout is not None:
+            pulumi.set(__self__, "connect_timeout", connect_timeout)
+        if disable_chunked_encoding is not None:
+            pulumi.set(__self__, "disable_chunked_encoding", disable_chunked_encoding)
+        if http2_origin is not None:
+            pulumi.set(__self__, "http2_origin", http2_origin)
+        if http_host_header is not None:
+            pulumi.set(__self__, "http_host_header", http_host_header)
+        if ip_rules is not None:
+            pulumi.set(__self__, "ip_rules", ip_rules)
+        if keep_alive_connections is not None:
+            pulumi.set(__self__, "keep_alive_connections", keep_alive_connections)
+        if keep_alive_timeout is not None:
+            pulumi.set(__self__, "keep_alive_timeout", keep_alive_timeout)
+        if no_happy_eyeballs is not None:
+            pulumi.set(__self__, "no_happy_eyeballs", no_happy_eyeballs)
+        if no_tls_verify is not None:
+            pulumi.set(__self__, "no_tls_verify", no_tls_verify)
+        if origin_server_name is not None:
+            pulumi.set(__self__, "origin_server_name", origin_server_name)
+        if proxy_address is not None:
+            pulumi.set(__self__, "proxy_address", proxy_address)
+        if proxy_port is not None:
+            pulumi.set(__self__, "proxy_port", proxy_port)
+        if proxy_type is not None:
+            pulumi.set(__self__, "proxy_type", proxy_type)
+        if tcp_keep_alive is not None:
+            pulumi.set(__self__, "tcp_keep_alive", tcp_keep_alive)
+        if tls_timeout is not None:
+            pulumi.set(__self__, "tls_timeout", tls_timeout)
+
+    @property
+    @pulumi.getter
+    def access(self) -> Optional[pulumi.Input['TunnelConfigConfigOriginRequestAccessArgs']]:
+        return pulumi.get(self, "access")
+
+    @access.setter
+    def access(self, value: Optional[pulumi.Input['TunnelConfigConfigOriginRequestAccessArgs']]):
+        pulumi.set(self, "access", value)
+
+    @property
+    @pulumi.getter(name="bastionMode")
+    def bastion_mode(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "bastion_mode")
+
+    @bastion_mode.setter
+    def bastion_mode(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bastion_mode", value)
+
+    @property
+    @pulumi.getter(name="caPool")
+    def ca_pool(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ca_pool")
+
+    @ca_pool.setter
+    def ca_pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ca_pool", value)
+
+    @property
+    @pulumi.getter(name="connectTimeout")
+    def connect_timeout(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "connect_timeout")
+
+    @connect_timeout.setter
+    def connect_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connect_timeout", value)
+
+    @property
+    @pulumi.getter(name="disableChunkedEncoding")
+    def disable_chunked_encoding(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "disable_chunked_encoding")
+
+    @disable_chunked_encoding.setter
+    def disable_chunked_encoding(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_chunked_encoding", value)
+
+    @property
+    @pulumi.getter(name="http2Origin")
+    def http2_origin(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "http2_origin")
+
+    @http2_origin.setter
+    def http2_origin(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "http2_origin", value)
 
     @property
     @pulumi.getter(name="httpHostHeader")
@@ -13181,6 +13586,47 @@ class TunnelConfigConfigOriginRequestArgs:
     @tls_timeout.setter
     def tls_timeout(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tls_timeout", value)
+
+
+@pulumi.input_type
+class TunnelConfigConfigOriginRequestAccessArgs:
+    def __init__(__self__, *,
+                 aud_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 required: Optional[pulumi.Input[bool]] = None,
+                 team_name: Optional[pulumi.Input[str]] = None):
+        if aud_tags is not None:
+            pulumi.set(__self__, "aud_tags", aud_tags)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if team_name is not None:
+            pulumi.set(__self__, "team_name", team_name)
+
+    @property
+    @pulumi.getter(name="audTags")
+    def aud_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "aud_tags")
+
+    @aud_tags.setter
+    def aud_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "aud_tags", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter(name="teamName")
+    def team_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "team_name")
+
+    @team_name.setter
+    def team_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team_name", value)
 
 
 @pulumi.input_type

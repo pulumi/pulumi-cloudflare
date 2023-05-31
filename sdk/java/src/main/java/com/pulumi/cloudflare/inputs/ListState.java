@@ -55,14 +55,14 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
+     * The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="kind")
     private @Nullable Output<String> kind;
 
     /**
-     * @return The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
+     * @return The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> kind() {
@@ -168,7 +168,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kind The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
+         * @param kind The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kind The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
+         * @param kind The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

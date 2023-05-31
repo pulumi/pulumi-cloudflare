@@ -5,10 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Filter expressions that can be referenced across multiple features,
- * e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/)
- * for more details and available fields and operators.
- *
  * ## Example Usage
  *
  * ```typescript

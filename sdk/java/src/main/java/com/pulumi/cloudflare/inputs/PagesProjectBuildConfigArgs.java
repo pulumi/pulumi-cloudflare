@@ -46,14 +46,14 @@ public final class PagesProjectBuildConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Directory to run the command.
+     * Your project&#39;s root directory, where Cloudflare runs the build command. If your site is not in a subdirectory, leave this path value empty.
      * 
      */
     @Import(name="rootDir")
     private @Nullable Output<String> rootDir;
 
     /**
-     * @return Directory to run the command.
+     * @return Your project&#39;s root directory, where Cloudflare runs the build command. If your site is not in a subdirectory, leave this path value empty.
      * 
      */
     public Optional<Output<String>> rootDir() {
@@ -161,7 +161,7 @@ public final class PagesProjectBuildConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param rootDir Directory to run the command.
+         * @param rootDir Your project&#39;s root directory, where Cloudflare runs the build command. If your site is not in a subdirectory, leave this path value empty.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class PagesProjectBuildConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param rootDir Directory to run the command.
+         * @param rootDir Your project&#39;s root directory, where Cloudflare runs the build command. If your site is not in a subdirectory, leave this path value empty.
          * 
          * @return builder
          * 

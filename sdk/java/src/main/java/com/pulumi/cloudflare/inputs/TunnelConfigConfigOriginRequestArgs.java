@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.TunnelConfigConfigOriginRequestAccessArgs;
 import com.pulumi.cloudflare.inputs.TunnelConfigConfigOriginRequestIpRuleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -18,6 +19,13 @@ import javax.annotation.Nullable;
 public final class TunnelConfigConfigOriginRequestArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TunnelConfigConfigOriginRequestArgs Empty = new TunnelConfigConfigOriginRequestArgs();
+
+    @Import(name="access")
+    private @Nullable Output<TunnelConfigConfigOriginRequestAccessArgs> access;
+
+    public Optional<Output<TunnelConfigConfigOriginRequestAccessArgs>> access() {
+        return Optional.ofNullable(this.access);
+    }
 
     @Import(name="bastionMode")
     private @Nullable Output<Boolean> bastionMode;
@@ -45,6 +53,13 @@ public final class TunnelConfigConfigOriginRequestArgs extends com.pulumi.resour
 
     public Optional<Output<Boolean>> disableChunkedEncoding() {
         return Optional.ofNullable(this.disableChunkedEncoding);
+    }
+
+    @Import(name="http2Origin")
+    private @Nullable Output<Boolean> http2Origin;
+
+    public Optional<Output<Boolean>> http2Origin() {
+        return Optional.ofNullable(this.http2Origin);
     }
 
     @Import(name="httpHostHeader")
@@ -134,10 +149,12 @@ public final class TunnelConfigConfigOriginRequestArgs extends com.pulumi.resour
     private TunnelConfigConfigOriginRequestArgs() {}
 
     private TunnelConfigConfigOriginRequestArgs(TunnelConfigConfigOriginRequestArgs $) {
+        this.access = $.access;
         this.bastionMode = $.bastionMode;
         this.caPool = $.caPool;
         this.connectTimeout = $.connectTimeout;
         this.disableChunkedEncoding = $.disableChunkedEncoding;
+        this.http2Origin = $.http2Origin;
         this.httpHostHeader = $.httpHostHeader;
         this.ipRules = $.ipRules;
         this.keepAliveConnections = $.keepAliveConnections;
@@ -168,6 +185,15 @@ public final class TunnelConfigConfigOriginRequestArgs extends com.pulumi.resour
 
         public Builder(TunnelConfigConfigOriginRequestArgs defaults) {
             $ = new TunnelConfigConfigOriginRequestArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder access(@Nullable Output<TunnelConfigConfigOriginRequestAccessArgs> access) {
+            $.access = access;
+            return this;
+        }
+
+        public Builder access(TunnelConfigConfigOriginRequestAccessArgs access) {
+            return access(Output.of(access));
         }
 
         public Builder bastionMode(@Nullable Output<Boolean> bastionMode) {
@@ -204,6 +230,15 @@ public final class TunnelConfigConfigOriginRequestArgs extends com.pulumi.resour
 
         public Builder disableChunkedEncoding(Boolean disableChunkedEncoding) {
             return disableChunkedEncoding(Output.of(disableChunkedEncoding));
+        }
+
+        public Builder http2Origin(@Nullable Output<Boolean> http2Origin) {
+            $.http2Origin = http2Origin;
+            return this;
+        }
+
+        public Builder http2Origin(Boolean http2Origin) {
+            return http2Origin(Output.of(http2Origin));
         }
 
         public Builder httpHostHeader(@Nullable Output<String> httpHostHeader) {

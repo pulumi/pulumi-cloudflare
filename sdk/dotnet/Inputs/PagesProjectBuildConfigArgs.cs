@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? DestinationDir { get; set; }
 
         /// <summary>
-        /// Directory to run the command.
+        /// Your project's root directory, where Cloudflare runs the build command. If your site is not in a subdirectory, leave this path value empty.
         /// </summary>
         [Input("rootDir")]
         public Input<string>? RootDir { get; set; }

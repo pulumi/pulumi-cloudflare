@@ -183,6 +183,14 @@ class TunnelConfig(pulumi.CustomResource):
                         hostname="foo",
                         path="/bar",
                         service="http://10.0.0.2:8080",
+                        origin_request=cloudflare.TunnelConfigConfigIngressRuleOriginRequestArgs(
+                            connect_timeout="2m0s",
+                            access=cloudflare.TunnelConfigConfigIngressRuleOriginRequestAccessArgs(
+                                required=True,
+                                team_name="terraform",
+                                aud_tags=["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"],
+                            ),
+                        ),
                     ),
                     cloudflare.TunnelConfigConfigIngressRuleArgs(
                         service="https://10.0.0.3:8081",
@@ -261,6 +269,14 @@ class TunnelConfig(pulumi.CustomResource):
                         hostname="foo",
                         path="/bar",
                         service="http://10.0.0.2:8080",
+                        origin_request=cloudflare.TunnelConfigConfigIngressRuleOriginRequestArgs(
+                            connect_timeout="2m0s",
+                            access=cloudflare.TunnelConfigConfigIngressRuleOriginRequestAccessArgs(
+                                required=True,
+                                team_name="terraform",
+                                aud_tags=["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"],
+                            ),
+                        ),
                     ),
                     cloudflare.TunnelConfigConfigIngressRuleArgs(
                         service="https://10.0.0.3:8081",

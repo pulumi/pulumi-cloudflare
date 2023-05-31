@@ -1384,6 +1384,13 @@ export interface ListItem {
     value: outputs.ListItemValue;
 }
 
+export interface ListItemHostname {
+    /**
+     * The FQDN to match on.
+     */
+    urlHostname: string;
+}
+
 export interface ListItemRedirect {
     /**
      * Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
@@ -1416,8 +1423,14 @@ export interface ListItemRedirect {
 }
 
 export interface ListItemValue {
+    asn?: number;
+    hostnames?: outputs.ListItemValueHostname[];
     ip?: string;
     redirects?: outputs.ListItemValueRedirect[];
+}
+
+export interface ListItemValueHostname {
+    urlHostname: string;
 }
 
 export interface ListItemValueRedirect {
@@ -2196,7 +2209,7 @@ export interface PagesProjectBuildConfig {
      */
     destinationDir?: string;
     /**
-     * Directory to run the command.
+     * Your project's root directory, where Cloudflare runs the build command. If your site is not in a subdirectory, leave this path value empty.
      */
     rootDir?: string;
     /**
@@ -2521,7 +2534,7 @@ export interface RulesetRuleActionParametersAutominify {
 
 export interface RulesetRuleActionParametersBrowserTtl {
     default?: number;
-    mode?: string;
+    mode: string;
 }
 
 export interface RulesetRuleActionParametersCacheKey {
@@ -2567,7 +2580,7 @@ export interface RulesetRuleActionParametersCacheKeyCustomKeyUser {
 
 export interface RulesetRuleActionParametersEdgeTtl {
     default?: number;
-    mode?: string;
+    mode: string;
     statusCodeTtls?: outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl[];
 }
 
@@ -3004,15 +3017,51 @@ export interface TunnelConfigConfig {
 
 export interface TunnelConfigConfigIngressRule {
     hostname?: string;
+    originRequest?: outputs.TunnelConfigConfigIngressRuleOriginRequest;
     path?: string;
     service: string;
 }
 
-export interface TunnelConfigConfigOriginRequest {
+export interface TunnelConfigConfigIngressRuleOriginRequest {
+    access?: outputs.TunnelConfigConfigIngressRuleOriginRequestAccess;
     bastionMode?: boolean;
     caPool?: string;
     connectTimeout?: string;
     disableChunkedEncoding?: boolean;
+    http2Origin?: boolean;
+    httpHostHeader?: string;
+    ipRules?: outputs.TunnelConfigConfigIngressRuleOriginRequestIpRule[];
+    keepAliveConnections?: number;
+    keepAliveTimeout?: string;
+    noHappyEyeballs?: boolean;
+    noTlsVerify?: boolean;
+    originServerName?: string;
+    proxyAddress?: string;
+    proxyPort?: number;
+    proxyType?: string;
+    tcpKeepAlive?: string;
+    tlsTimeout?: string;
+}
+
+export interface TunnelConfigConfigIngressRuleOriginRequestAccess {
+    audTags?: string[];
+    required?: boolean;
+    teamName?: string;
+}
+
+export interface TunnelConfigConfigIngressRuleOriginRequestIpRule {
+    allow?: boolean;
+    ports?: number[];
+    prefix?: string;
+}
+
+export interface TunnelConfigConfigOriginRequest {
+    access?: outputs.TunnelConfigConfigOriginRequestAccess;
+    bastionMode?: boolean;
+    caPool?: string;
+    connectTimeout?: string;
+    disableChunkedEncoding?: boolean;
+    http2Origin?: boolean;
     httpHostHeader?: string;
     ipRules?: outputs.TunnelConfigConfigOriginRequestIpRule[];
     keepAliveConnections?: number;
@@ -3025,6 +3074,12 @@ export interface TunnelConfigConfigOriginRequest {
     proxyType?: string;
     tcpKeepAlive?: string;
     tlsTimeout?: string;
+}
+
+export interface TunnelConfigConfigOriginRequestAccess {
+    audTags?: string[];
+    required?: boolean;
+    teamName?: string;
 }
 
 export interface TunnelConfigConfigOriginRequestIpRule {

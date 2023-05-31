@@ -43,21 +43,21 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new List(&#34;example&#34;, ListArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .description(&#34;example redirects for a list&#34;)
+ *             .description(&#34;example hostnames for a list&#34;)
  *             .items(            
  *                 ListItemArgs.builder()
  *                     .comment(&#34;one&#34;)
  *                     .value(ListItemValueArgs.builder()
- *                         .redirect(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                         .hostname(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *                         .build())
  *                     .build(),
  *                 ListItemArgs.builder()
  *                     .comment(&#34;two&#34;)
  *                     .value(ListItemValueArgs.builder()
- *                         .redirect(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                         .hostname(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *                         .build())
  *                     .build())
- *             .kind(&#34;redirect&#34;)
+ *             .kind(&#34;hostname&#34;)
  *             .name(&#34;example_list&#34;)
  *             .build());
  * 
@@ -109,14 +109,14 @@ public class List extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.items);
     }
     /**
-     * The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
+     * The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
     private Output<String> kind;
 
     /**
-     * @return The type of items the list will contain. **Modifying this attribute will force creation of a new resource.**
+     * @return The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> kind() {

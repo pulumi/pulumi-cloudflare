@@ -15,6 +15,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
+        [Input("originRequest")]
+        public Input<Inputs.TunnelConfigConfigIngressRuleOriginRequestGetArgs>? OriginRequest { get; set; }
+
         [Input("path")]
         public Input<string>? Path { get; set; }
 

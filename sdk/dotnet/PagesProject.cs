@@ -44,7 +44,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             BuildCommand = "npm run build",
     ///             DestinationDir = "build",
-    ///             RootDir = "/",
+    ///             RootDir = "",
     ///             WebAnalyticsTag = "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
     ///             WebAnalyticsToken = "021e1057c18547eca7b79f2516f06o7x",
     ///         },

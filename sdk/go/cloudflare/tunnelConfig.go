@@ -76,6 +76,16 @@ import (
 //							Hostname: pulumi.String("foo"),
 //							Path:     pulumi.String("/bar"),
 //							Service:  pulumi.String("http://10.0.0.2:8080"),
+//							OriginRequest: &cloudflare.TunnelConfigConfigIngressRuleOriginRequestArgs{
+//								ConnectTimeout: pulumi.String("2m0s"),
+//								Access: &cloudflare.TunnelConfigConfigIngressRuleOriginRequestAccessArgs{
+//									Required: pulumi.Bool(true),
+//									TeamName: pulumi.String("terraform"),
+//									AudTags: pulumi.StringArray{
+//										pulumi.String("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),
+//									},
+//								},
+//							},
 //						},
 //						&cloudflare.TunnelConfigConfigIngressRuleArgs{
 //							Service: pulumi.String("https://10.0.0.3:8081"),

@@ -3,8 +3,10 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.ListItemValueHostname;
 import com.pulumi.cloudflare.outputs.ListItemValueRedirect;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,10 +15,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ListItemValue {
+    private @Nullable Integer asn;
+    private @Nullable List<ListItemValueHostname> hostnames;
     private @Nullable String ip;
     private @Nullable List<ListItemValueRedirect> redirects;
 
     private ListItemValue() {}
+    public Optional<Integer> asn() {
+        return Optional.ofNullable(this.asn);
+    }
+    public List<ListItemValueHostname> hostnames() {
+        return this.hostnames == null ? List.of() : this.hostnames;
+    }
     public Optional<String> ip() {
         return Optional.ofNullable(this.ip);
     }
@@ -33,15 +43,32 @@ public final class ListItemValue {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer asn;
+        private @Nullable List<ListItemValueHostname> hostnames;
         private @Nullable String ip;
         private @Nullable List<ListItemValueRedirect> redirects;
         public Builder() {}
         public Builder(ListItemValue defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.asn = defaults.asn;
+    	      this.hostnames = defaults.hostnames;
     	      this.ip = defaults.ip;
     	      this.redirects = defaults.redirects;
         }
 
+        @CustomType.Setter
+        public Builder asn(@Nullable Integer asn) {
+            this.asn = asn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostnames(@Nullable List<ListItemValueHostname> hostnames) {
+            this.hostnames = hostnames;
+            return this;
+        }
+        public Builder hostnames(ListItemValueHostname... hostnames) {
+            return hostnames(List.of(hostnames));
+        }
         @CustomType.Setter
         public Builder ip(@Nullable String ip) {
             this.ip = ip;
@@ -57,6 +84,8 @@ public final class ListItemValue {
         }
         public ListItemValue build() {
             final var o = new ListItemValue();
+            o.asn = asn;
+            o.hostnames = hostnames;
             o.ip = ip;
             o.redirects = redirects;
             return o;

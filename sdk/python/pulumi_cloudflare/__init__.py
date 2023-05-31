@@ -80,6 +80,7 @@ from .pages_domain import *
 from .pages_project import *
 from .provider import *
 from .queue import *
+from .r2_bucket import *
 from .rate_limit import *
 from .record import *
 from .regional_hostname import *
@@ -600,6 +601,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/queue:Queue": "Queue"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/r2Bucket",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/r2Bucket:R2Bucket": "R2Bucket"
   }
  },
  {

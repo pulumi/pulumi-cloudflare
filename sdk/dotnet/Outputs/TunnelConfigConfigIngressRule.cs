@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TunnelConfigConfigIngressRule
     {
         public readonly string? Hostname;
+        public readonly Outputs.TunnelConfigConfigIngressRuleOriginRequest? OriginRequest;
         public readonly string? Path;
         public readonly string Service;
 
@@ -21,11 +22,14 @@ namespace Pulumi.Cloudflare.Outputs
         private TunnelConfigConfigIngressRule(
             string? hostname,
 
+            Outputs.TunnelConfigConfigIngressRuleOriginRequest? originRequest,
+
             string? path,
 
             string service)
         {
             Hostname = hostname;
+            OriginRequest = originRequest;
             Path = path;
             Service = service;
         }

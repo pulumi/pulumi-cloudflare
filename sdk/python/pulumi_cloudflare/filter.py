@@ -197,10 +197,6 @@ class Filter(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Filter expressions that can be referenced across multiple features,
-        e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/)
-        for more details and available fields and operators.
-
         ## Example Usage
 
         ```python
@@ -234,10 +230,6 @@ class Filter(pulumi.CustomResource):
                  args: FilterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Filter expressions that can be referenced across multiple features,
-        e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/)
-        for more details and available fields and operators.
-
         ## Example Usage
 
         ```python

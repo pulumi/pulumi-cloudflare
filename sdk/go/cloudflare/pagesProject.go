@@ -46,7 +46,7 @@ import (
 //				BuildConfig: &cloudflare.PagesProjectBuildConfigArgs{
 //					BuildCommand:      pulumi.String("npm run build"),
 //					DestinationDir:    pulumi.String("build"),
-//					RootDir:           pulumi.String("/"),
+//					RootDir:           pulumi.String(""),
 //					WebAnalyticsTag:   pulumi.String("cee1c73f6e4743d0b5e6bb1a0bcaabcc"),
 //					WebAnalyticsToken: pulumi.String("021e1057c18547eca7b79f2516f06o7x"),
 //				},

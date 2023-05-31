@@ -5,18 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Define Firewall rules using filter expressions for more control over
- * how traffic is matched to the rule. A filter expression permits
- * selecting traffic by multiple criteria allowing greater freedom in
- * rule creation.
- *
- * Filter expressions needs to be created first before using Firewall
- * Rule.
- *
- * > If you want to configure Custom Firewall rules, you need to use
- * `cloudflare.Ruleset`, because Custom Rules are built upon the
- * [Cloudflare Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/).
- *
  * ## Example Usage
  *
  * ```typescript

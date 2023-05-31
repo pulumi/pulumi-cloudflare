@@ -59,6 +59,14 @@ import * as utilities from "./utilities";
  *                 hostname: "foo",
  *                 path: "/bar",
  *                 service: "http://10.0.0.2:8080",
+ *                 originRequest: {
+ *                     connectTimeout: "2m0s",
+ *                     access: {
+ *                         required: true,
+ *                         teamName: "terraform",
+ *                         audTags: ["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"],
+ *                     },
+ *                 },
  *             },
  *             {
  *                 service: "https://10.0.0.3:8081",
