@@ -3,7 +3,7 @@
 [![NPM version](https://badge.fury.io/js/%40pulumi%2Fcloudflare.svg)](https://www.npmjs.com/package/@pulumi/cloudflare)
 [![Python version](https://badge.fury.io/py/pulumi-cloudflare.svg)](https://pypi.org/project/pulumi-cloudflare)
 [![NuGet version](https://badge.fury.io/nu/pulumi.cloudflare.svg)](https://badge.fury.io/nu/pulumi.cloudflare)
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-cloudflare/sdk/v3/go)](https://pkg.go.dev/github.com/pulumi/pulumi-cloudflare/sdk/v3/go)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare)](https://pkg.go.dev/github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare)
 [![License](https://img.shields.io/npm/l/%40pulumi%2Fpulumi.svg)](https://github.com/pulumi/pulumi-cloudflare/blob/master/LICENSE)
 
 # Cloudflare Provider
