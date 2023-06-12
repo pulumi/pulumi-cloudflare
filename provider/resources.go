@@ -18,6 +18,7 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
+
 	// embed allows embedding files
 	_ "embed"
 
@@ -262,13 +263,10 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_origin_ca_root_certificate": {
 				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getOriginCaRootCertificate"),
 			},
-			"cloudflare_record":       {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRecord")},
-			"cloudflare_waf_groups":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWafGroups")},
-			"cloudflare_waf_packages": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWafPackages")},
-			"cloudflare_waf_rules":    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWafRules")},
-			"cloudflare_zone":         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getZone")},
-			"cloudflare_zone_dnssec":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getZoneDnssec")},
-			"cloudflare_zones":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getZones")},
+			"cloudflare_record":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRecord")},
+			"cloudflare_zone":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getZone")},
+			"cloudflare_zone_dnssec": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getZoneDnssec")},
+			"cloudflare_zones":       {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getZones")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
