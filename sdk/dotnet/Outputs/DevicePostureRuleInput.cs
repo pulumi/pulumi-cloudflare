@@ -26,6 +26,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? ConnectionId;
         /// <summary>
+        /// The count comparison operator for kolide. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+        /// </summary>
+        public readonly string? CountOperator;
+        /// <summary>
         /// The domain that the client must join.
         /// </summary>
         public readonly string? Domain;
@@ -41,6 +45,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// The Teams List id.
         /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// The number of issues for kolide.
+        /// </summary>
+        public readonly string? IssueCount;
         /// <summary>
         /// The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
         /// </summary>
@@ -102,6 +110,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? connectionId,
 
+            string? countOperator,
+
             string? domain,
 
             bool? enabled,
@@ -109,6 +119,8 @@ namespace Pulumi.Cloudflare.Outputs
             bool? exists,
 
             string? id,
+
+            string? issueCount,
 
             string? @operator,
 
@@ -139,10 +151,12 @@ namespace Pulumi.Cloudflare.Outputs
             CheckDisks = checkDisks;
             ComplianceStatus = complianceStatus;
             ConnectionId = connectionId;
+            CountOperator = countOperator;
             Domain = domain;
             Enabled = enabled;
             Exists = exists;
             Id = id;
+            IssueCount = issueCount;
             Operator = @operator;
             Os = os;
             OsDistroName = osDistroName;

@@ -7277,6 +7277,8 @@ func (o CertificatePackValidationRecordArrayOutput) Index(i pulumi.IntInput) Cer
 }
 
 type CustomHostnameSsl struct {
+	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+	BundleMethod         *string `pulumi:"bundleMethod"`
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
 	// If a custom uploaded certificate is used.
 	CustomCertificate *string `pulumi:"customCertificate"`
@@ -7308,6 +7310,8 @@ type CustomHostnameSslInput interface {
 }
 
 type CustomHostnameSslArgs struct {
+	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+	BundleMethod         pulumi.StringPtrInput `pulumi:"bundleMethod"`
 	CertificateAuthority pulumi.StringPtrInput `pulumi:"certificateAuthority"`
 	// If a custom uploaded certificate is used.
 	CustomCertificate pulumi.StringPtrInput `pulumi:"customCertificate"`
@@ -7376,6 +7380,11 @@ func (o CustomHostnameSslOutput) ToCustomHostnameSslOutput() CustomHostnameSslOu
 
 func (o CustomHostnameSslOutput) ToCustomHostnameSslOutputWithContext(ctx context.Context) CustomHostnameSslOutput {
 	return o
+}
+
+// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+func (o CustomHostnameSslOutput) BundleMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSsl) *string { return v.BundleMethod }).(pulumi.StringPtrOutput)
 }
 
 func (o CustomHostnameSslOutput) CertificateAuthority() pulumi.StringPtrOutput {
@@ -8583,6 +8592,8 @@ type DevicePostureRuleInputType struct {
 	ComplianceStatus *string `pulumi:"complianceStatus"`
 	// The workspace one connection id.
 	ConnectionId *string `pulumi:"connectionId"`
+	// The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
+	CountOperator *string `pulumi:"countOperator"`
 	// The domain that the client must join.
 	Domain *string `pulumi:"domain"`
 	// True if the firewall must be enabled.
@@ -8591,6 +8602,8 @@ type DevicePostureRuleInputType struct {
 	Exists *bool `pulumi:"exists"`
 	// The Teams List id.
 	Id *string `pulumi:"id"`
+	// The number of issues for kolide.
+	IssueCount *string `pulumi:"issueCount"`
 	// The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
 	Operator *string `pulumi:"operator"`
 	// OS signal score from Crowdstrike. Value must be between 1 and 100.
@@ -8637,6 +8650,8 @@ type DevicePostureRuleInputTypeArgs struct {
 	ComplianceStatus pulumi.StringPtrInput `pulumi:"complianceStatus"`
 	// The workspace one connection id.
 	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
+	// The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
+	CountOperator pulumi.StringPtrInput `pulumi:"countOperator"`
 	// The domain that the client must join.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
 	// True if the firewall must be enabled.
@@ -8645,6 +8660,8 @@ type DevicePostureRuleInputTypeArgs struct {
 	Exists pulumi.BoolPtrInput `pulumi:"exists"`
 	// The Teams List id.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The number of issues for kolide.
+	IssueCount pulumi.StringPtrInput `pulumi:"issueCount"`
 	// The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// OS signal score from Crowdstrike. Value must be between 1 and 100.
@@ -8739,6 +8756,11 @@ func (o DevicePostureRuleInputTypeOutput) ConnectionId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.ConnectionId }).(pulumi.StringPtrOutput)
 }
 
+// The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
+func (o DevicePostureRuleInputTypeOutput) CountOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.CountOperator }).(pulumi.StringPtrOutput)
+}
+
 // The domain that the client must join.
 func (o DevicePostureRuleInputTypeOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Domain }).(pulumi.StringPtrOutput)
@@ -8757,6 +8779,11 @@ func (o DevicePostureRuleInputTypeOutput) Exists() pulumi.BoolPtrOutput {
 // The Teams List id.
 func (o DevicePostureRuleInputTypeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The number of issues for kolide.
+func (o DevicePostureRuleInputTypeOutput) IssueCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.IssueCount }).(pulumi.StringPtrOutput)
 }
 
 // The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
@@ -11185,7 +11212,7 @@ type LoadBalancerPoolOrigin struct {
 	Headers []LoadBalancerPoolOriginHeader `pulumi:"headers"`
 	// A human-identifiable name for the origin.
 	Name string `pulumi:"name"`
-	// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Defaults to `1`.
+	// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. Defaults to `1`.
 	Weight *float64 `pulumi:"weight"`
 }
 
@@ -11209,7 +11236,7 @@ type LoadBalancerPoolOriginArgs struct {
 	Headers LoadBalancerPoolOriginHeaderArrayInput `pulumi:"headers"`
 	// A human-identifiable name for the origin.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Defaults to `1`.
+	// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. Defaults to `1`.
 	Weight pulumi.Float64PtrInput `pulumi:"weight"`
 }
 
@@ -11284,7 +11311,7 @@ func (o LoadBalancerPoolOriginOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerPoolOrigin) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Defaults to `1`.
+// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. Defaults to `1`.
 func (o LoadBalancerPoolOriginOutput) Weight() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LoadBalancerPoolOrigin) *float64 { return v.Weight }).(pulumi.Float64PtrOutput)
 }
@@ -11410,7 +11437,7 @@ func (o LoadBalancerPoolOriginHeaderArrayOutput) Index(i pulumi.IntInput) LoadBa
 }
 
 type LoadBalancerPoolOriginSteering struct {
-	// Origin steering policy to be used. Available values: `""`, `hash`, `random`. Defaults to `random`.
+	// Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `leastOutstandingRequests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Available values: `""`, `hash`, `random`, `leastOutstandingRequests`. Defaults to `random`.
 	Policy *string `pulumi:"policy"`
 }
 
@@ -11426,7 +11453,7 @@ type LoadBalancerPoolOriginSteeringInput interface {
 }
 
 type LoadBalancerPoolOriginSteeringArgs struct {
-	// Origin steering policy to be used. Available values: `""`, `hash`, `random`. Defaults to `random`.
+	// Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `leastOutstandingRequests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Available values: `""`, `hash`, `random`, `leastOutstandingRequests`. Defaults to `random`.
 	Policy pulumi.StringPtrInput `pulumi:"policy"`
 }
 
@@ -11481,7 +11508,7 @@ func (o LoadBalancerPoolOriginSteeringOutput) ToLoadBalancerPoolOriginSteeringOu
 	return o
 }
 
-// Origin steering policy to be used. Available values: `""`, `hash`, `random`. Defaults to `random`.
+// Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `leastOutstandingRequests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Available values: `""`, `hash`, `random`, `leastOutstandingRequests`. Defaults to `random`.
 func (o LoadBalancerPoolOriginSteeringOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerPoolOriginSteering) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
@@ -12164,7 +12191,7 @@ type LoadBalancerRuleOverride struct {
 	LocationStrategies []LoadBalancerRuleOverrideLocationStrategy `pulumi:"locationStrategies"`
 	// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
 	PopPools []LoadBalancerRuleOverridePopPool `pulumi:"popPools"`
-	// Configures pool weights for random steering. When the `steering_policy="random"`, a random pool is selected with probability proportional to these pool weights.
+	// Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="leastOutstandingRequests"`, pool weights are used to scale each pool's outstanding requests.
 	RandomSteerings []LoadBalancerRuleOverrideRandomSteering `pulumi:"randomSteerings"`
 	// A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
 	RegionPools []LoadBalancerRuleOverrideRegionPool `pulumi:"regionPools"`
@@ -12174,7 +12201,7 @@ type LoadBalancerRuleOverride struct {
 	SessionAffinityAttributes []LoadBalancerRuleOverrideSessionAffinityAttribute `pulumi:"sessionAffinityAttributes"`
 	// Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
 	SessionAffinityTtl *int `pulumi:"sessionAffinityTtl"`
-	// The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `""` Defaults to `""`.
+	// The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `leastOutstandingRequests` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `leastOutstandingRequests`, `""` Defaults to `""`.
 	SteeringPolicy *string `pulumi:"steeringPolicy"`
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
 	Ttl *int `pulumi:"ttl"`
@@ -12202,7 +12229,7 @@ type LoadBalancerRuleOverrideArgs struct {
 	LocationStrategies LoadBalancerRuleOverrideLocationStrategyArrayInput `pulumi:"locationStrategies"`
 	// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
 	PopPools LoadBalancerRuleOverridePopPoolArrayInput `pulumi:"popPools"`
-	// Configures pool weights for random steering. When the `steering_policy="random"`, a random pool is selected with probability proportional to these pool weights.
+	// Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="leastOutstandingRequests"`, pool weights are used to scale each pool's outstanding requests.
 	RandomSteerings LoadBalancerRuleOverrideRandomSteeringArrayInput `pulumi:"randomSteerings"`
 	// A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
 	RegionPools LoadBalancerRuleOverrideRegionPoolArrayInput `pulumi:"regionPools"`
@@ -12212,7 +12239,7 @@ type LoadBalancerRuleOverrideArgs struct {
 	SessionAffinityAttributes LoadBalancerRuleOverrideSessionAffinityAttributeArrayInput `pulumi:"sessionAffinityAttributes"`
 	// Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
 	SessionAffinityTtl pulumi.IntPtrInput `pulumi:"sessionAffinityTtl"`
-	// The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `""` Defaults to `""`.
+	// The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `leastOutstandingRequests` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `leastOutstandingRequests`, `""` Defaults to `""`.
 	SteeringPolicy pulumi.StringPtrInput `pulumi:"steeringPolicy"`
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
 	Ttl pulumi.IntPtrInput `pulumi:"ttl"`
@@ -12299,7 +12326,7 @@ func (o LoadBalancerRuleOverrideOutput) PopPools() LoadBalancerRuleOverridePopPo
 	return o.ApplyT(func(v LoadBalancerRuleOverride) []LoadBalancerRuleOverridePopPool { return v.PopPools }).(LoadBalancerRuleOverridePopPoolArrayOutput)
 }
 
-// Configures pool weights for random steering. When the `steering_policy="random"`, a random pool is selected with probability proportional to these pool weights.
+// Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="leastOutstandingRequests"`, pool weights are used to scale each pool's outstanding requests.
 func (o LoadBalancerRuleOverrideOutput) RandomSteerings() LoadBalancerRuleOverrideRandomSteeringArrayOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverride) []LoadBalancerRuleOverrideRandomSteering { return v.RandomSteerings }).(LoadBalancerRuleOverrideRandomSteeringArrayOutput)
 }
@@ -12326,7 +12353,7 @@ func (o LoadBalancerRuleOverrideOutput) SessionAffinityTtl() pulumi.IntPtrOutput
 	return o.ApplyT(func(v LoadBalancerRuleOverride) *int { return v.SessionAffinityTtl }).(pulumi.IntPtrOutput)
 }
 
-// The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `""` Defaults to `""`.
+// The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `leastOutstandingRequests` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `leastOutstandingRequests`, `""` Defaults to `""`.
 func (o LoadBalancerRuleOverrideOutput) SteeringPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverride) *string { return v.SteeringPolicy }).(pulumi.StringPtrOutput)
 }
@@ -17079,6 +17106,7 @@ type PagesProjectDeploymentConfigsPreview struct {
 	EnvironmentVariables             map[string]interface{}                               `pulumi:"environmentVariables"`
 	FailOpen                         *bool                                                `pulumi:"failOpen"`
 	KvNamespaces                     map[string]interface{}                               `pulumi:"kvNamespaces"`
+	Placement                        *PagesProjectDeploymentConfigsPreviewPlacement       `pulumi:"placement"`
 	R2Buckets                        map[string]interface{}                               `pulumi:"r2Buckets"`
 	Secrets                          map[string]interface{}                               `pulumi:"secrets"`
 	ServiceBindings                  []PagesProjectDeploymentConfigsPreviewServiceBinding `pulumi:"serviceBindings"`
@@ -17105,6 +17133,7 @@ type PagesProjectDeploymentConfigsPreviewArgs struct {
 	EnvironmentVariables             pulumi.MapInput                                              `pulumi:"environmentVariables"`
 	FailOpen                         pulumi.BoolPtrInput                                          `pulumi:"failOpen"`
 	KvNamespaces                     pulumi.MapInput                                              `pulumi:"kvNamespaces"`
+	Placement                        PagesProjectDeploymentConfigsPreviewPlacementPtrInput        `pulumi:"placement"`
 	R2Buckets                        pulumi.MapInput                                              `pulumi:"r2Buckets"`
 	Secrets                          pulumi.MapInput                                              `pulumi:"secrets"`
 	ServiceBindings                  PagesProjectDeploymentConfigsPreviewServiceBindingArrayInput `pulumi:"serviceBindings"`
@@ -17218,6 +17247,12 @@ func (o PagesProjectDeploymentConfigsPreviewOutput) FailOpen() pulumi.BoolPtrOut
 
 func (o PagesProjectDeploymentConfigsPreviewOutput) KvNamespaces() pulumi.MapOutput {
 	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) map[string]interface{} { return v.KvNamespaces }).(pulumi.MapOutput)
+}
+
+func (o PagesProjectDeploymentConfigsPreviewOutput) Placement() PagesProjectDeploymentConfigsPreviewPlacementPtrOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) *PagesProjectDeploymentConfigsPreviewPlacement {
+		return v.Placement
+	}).(PagesProjectDeploymentConfigsPreviewPlacementPtrOutput)
 }
 
 func (o PagesProjectDeploymentConfigsPreviewOutput) R2Buckets() pulumi.MapOutput {
@@ -17334,6 +17369,15 @@ func (o PagesProjectDeploymentConfigsPreviewPtrOutput) KvNamespaces() pulumi.Map
 	}).(pulumi.MapOutput)
 }
 
+func (o PagesProjectDeploymentConfigsPreviewPtrOutput) Placement() PagesProjectDeploymentConfigsPreviewPlacementPtrOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) *PagesProjectDeploymentConfigsPreviewPlacement {
+		if v == nil {
+			return nil
+		}
+		return v.Placement
+	}).(PagesProjectDeploymentConfigsPreviewPlacementPtrOutput)
+}
+
 func (o PagesProjectDeploymentConfigsPreviewPtrOutput) R2Buckets() pulumi.MapOutput {
 	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) map[string]interface{} {
 		if v == nil {
@@ -17367,6 +17411,139 @@ func (o PagesProjectDeploymentConfigsPreviewPtrOutput) UsageModel() pulumi.Strin
 			return nil
 		}
 		return v.UsageModel
+	}).(pulumi.StringPtrOutput)
+}
+
+type PagesProjectDeploymentConfigsPreviewPlacement struct {
+	Mode *string `pulumi:"mode"`
+}
+
+// PagesProjectDeploymentConfigsPreviewPlacementInput is an input type that accepts PagesProjectDeploymentConfigsPreviewPlacementArgs and PagesProjectDeploymentConfigsPreviewPlacementOutput values.
+// You can construct a concrete instance of `PagesProjectDeploymentConfigsPreviewPlacementInput` via:
+//
+//	PagesProjectDeploymentConfigsPreviewPlacementArgs{...}
+type PagesProjectDeploymentConfigsPreviewPlacementInput interface {
+	pulumi.Input
+
+	ToPagesProjectDeploymentConfigsPreviewPlacementOutput() PagesProjectDeploymentConfigsPreviewPlacementOutput
+	ToPagesProjectDeploymentConfigsPreviewPlacementOutputWithContext(context.Context) PagesProjectDeploymentConfigsPreviewPlacementOutput
+}
+
+type PagesProjectDeploymentConfigsPreviewPlacementArgs struct {
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (PagesProjectDeploymentConfigsPreviewPlacementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesProjectDeploymentConfigsPreviewPlacement)(nil)).Elem()
+}
+
+func (i PagesProjectDeploymentConfigsPreviewPlacementArgs) ToPagesProjectDeploymentConfigsPreviewPlacementOutput() PagesProjectDeploymentConfigsPreviewPlacementOutput {
+	return i.ToPagesProjectDeploymentConfigsPreviewPlacementOutputWithContext(context.Background())
+}
+
+func (i PagesProjectDeploymentConfigsPreviewPlacementArgs) ToPagesProjectDeploymentConfigsPreviewPlacementOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsPreviewPlacementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectDeploymentConfigsPreviewPlacementOutput)
+}
+
+func (i PagesProjectDeploymentConfigsPreviewPlacementArgs) ToPagesProjectDeploymentConfigsPreviewPlacementPtrOutput() PagesProjectDeploymentConfigsPreviewPlacementPtrOutput {
+	return i.ToPagesProjectDeploymentConfigsPreviewPlacementPtrOutputWithContext(context.Background())
+}
+
+func (i PagesProjectDeploymentConfigsPreviewPlacementArgs) ToPagesProjectDeploymentConfigsPreviewPlacementPtrOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsPreviewPlacementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectDeploymentConfigsPreviewPlacementOutput).ToPagesProjectDeploymentConfigsPreviewPlacementPtrOutputWithContext(ctx)
+}
+
+// PagesProjectDeploymentConfigsPreviewPlacementPtrInput is an input type that accepts PagesProjectDeploymentConfigsPreviewPlacementArgs, PagesProjectDeploymentConfigsPreviewPlacementPtr and PagesProjectDeploymentConfigsPreviewPlacementPtrOutput values.
+// You can construct a concrete instance of `PagesProjectDeploymentConfigsPreviewPlacementPtrInput` via:
+//
+//	        PagesProjectDeploymentConfigsPreviewPlacementArgs{...}
+//
+//	or:
+//
+//	        nil
+type PagesProjectDeploymentConfigsPreviewPlacementPtrInput interface {
+	pulumi.Input
+
+	ToPagesProjectDeploymentConfigsPreviewPlacementPtrOutput() PagesProjectDeploymentConfigsPreviewPlacementPtrOutput
+	ToPagesProjectDeploymentConfigsPreviewPlacementPtrOutputWithContext(context.Context) PagesProjectDeploymentConfigsPreviewPlacementPtrOutput
+}
+
+type pagesProjectDeploymentConfigsPreviewPlacementPtrType PagesProjectDeploymentConfigsPreviewPlacementArgs
+
+func PagesProjectDeploymentConfigsPreviewPlacementPtr(v *PagesProjectDeploymentConfigsPreviewPlacementArgs) PagesProjectDeploymentConfigsPreviewPlacementPtrInput {
+	return (*pagesProjectDeploymentConfigsPreviewPlacementPtrType)(v)
+}
+
+func (*pagesProjectDeploymentConfigsPreviewPlacementPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesProjectDeploymentConfigsPreviewPlacement)(nil)).Elem()
+}
+
+func (i *pagesProjectDeploymentConfigsPreviewPlacementPtrType) ToPagesProjectDeploymentConfigsPreviewPlacementPtrOutput() PagesProjectDeploymentConfigsPreviewPlacementPtrOutput {
+	return i.ToPagesProjectDeploymentConfigsPreviewPlacementPtrOutputWithContext(context.Background())
+}
+
+func (i *pagesProjectDeploymentConfigsPreviewPlacementPtrType) ToPagesProjectDeploymentConfigsPreviewPlacementPtrOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsPreviewPlacementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectDeploymentConfigsPreviewPlacementPtrOutput)
+}
+
+type PagesProjectDeploymentConfigsPreviewPlacementOutput struct{ *pulumi.OutputState }
+
+func (PagesProjectDeploymentConfigsPreviewPlacementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesProjectDeploymentConfigsPreviewPlacement)(nil)).Elem()
+}
+
+func (o PagesProjectDeploymentConfigsPreviewPlacementOutput) ToPagesProjectDeploymentConfigsPreviewPlacementOutput() PagesProjectDeploymentConfigsPreviewPlacementOutput {
+	return o
+}
+
+func (o PagesProjectDeploymentConfigsPreviewPlacementOutput) ToPagesProjectDeploymentConfigsPreviewPlacementOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsPreviewPlacementOutput {
+	return o
+}
+
+func (o PagesProjectDeploymentConfigsPreviewPlacementOutput) ToPagesProjectDeploymentConfigsPreviewPlacementPtrOutput() PagesProjectDeploymentConfigsPreviewPlacementPtrOutput {
+	return o.ToPagesProjectDeploymentConfigsPreviewPlacementPtrOutputWithContext(context.Background())
+}
+
+func (o PagesProjectDeploymentConfigsPreviewPlacementOutput) ToPagesProjectDeploymentConfigsPreviewPlacementPtrOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsPreviewPlacementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PagesProjectDeploymentConfigsPreviewPlacement) *PagesProjectDeploymentConfigsPreviewPlacement {
+		return &v
+	}).(PagesProjectDeploymentConfigsPreviewPlacementPtrOutput)
+}
+
+func (o PagesProjectDeploymentConfigsPreviewPlacementOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreviewPlacement) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type PagesProjectDeploymentConfigsPreviewPlacementPtrOutput struct{ *pulumi.OutputState }
+
+func (PagesProjectDeploymentConfigsPreviewPlacementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesProjectDeploymentConfigsPreviewPlacement)(nil)).Elem()
+}
+
+func (o PagesProjectDeploymentConfigsPreviewPlacementPtrOutput) ToPagesProjectDeploymentConfigsPreviewPlacementPtrOutput() PagesProjectDeploymentConfigsPreviewPlacementPtrOutput {
+	return o
+}
+
+func (o PagesProjectDeploymentConfigsPreviewPlacementPtrOutput) ToPagesProjectDeploymentConfigsPreviewPlacementPtrOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsPreviewPlacementPtrOutput {
+	return o
+}
+
+func (o PagesProjectDeploymentConfigsPreviewPlacementPtrOutput) Elem() PagesProjectDeploymentConfigsPreviewPlacementOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreviewPlacement) PagesProjectDeploymentConfigsPreviewPlacement {
+		if v != nil {
+			return *v
+		}
+		var ret PagesProjectDeploymentConfigsPreviewPlacement
+		return ret
+	}).(PagesProjectDeploymentConfigsPreviewPlacementOutput)
+}
+
+func (o PagesProjectDeploymentConfigsPreviewPlacementPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreviewPlacement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17488,6 +17665,7 @@ type PagesProjectDeploymentConfigsProduction struct {
 	EnvironmentVariables             map[string]interface{}                                  `pulumi:"environmentVariables"`
 	FailOpen                         *bool                                                   `pulumi:"failOpen"`
 	KvNamespaces                     map[string]interface{}                                  `pulumi:"kvNamespaces"`
+	Placement                        *PagesProjectDeploymentConfigsProductionPlacement       `pulumi:"placement"`
 	R2Buckets                        map[string]interface{}                                  `pulumi:"r2Buckets"`
 	Secrets                          map[string]interface{}                                  `pulumi:"secrets"`
 	ServiceBindings                  []PagesProjectDeploymentConfigsProductionServiceBinding `pulumi:"serviceBindings"`
@@ -17514,6 +17692,7 @@ type PagesProjectDeploymentConfigsProductionArgs struct {
 	EnvironmentVariables             pulumi.MapInput                                                 `pulumi:"environmentVariables"`
 	FailOpen                         pulumi.BoolPtrInput                                             `pulumi:"failOpen"`
 	KvNamespaces                     pulumi.MapInput                                                 `pulumi:"kvNamespaces"`
+	Placement                        PagesProjectDeploymentConfigsProductionPlacementPtrInput        `pulumi:"placement"`
 	R2Buckets                        pulumi.MapInput                                                 `pulumi:"r2Buckets"`
 	Secrets                          pulumi.MapInput                                                 `pulumi:"secrets"`
 	ServiceBindings                  PagesProjectDeploymentConfigsProductionServiceBindingArrayInput `pulumi:"serviceBindings"`
@@ -17631,6 +17810,12 @@ func (o PagesProjectDeploymentConfigsProductionOutput) KvNamespaces() pulumi.Map
 	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) map[string]interface{} { return v.KvNamespaces }).(pulumi.MapOutput)
 }
 
+func (o PagesProjectDeploymentConfigsProductionOutput) Placement() PagesProjectDeploymentConfigsProductionPlacementPtrOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) *PagesProjectDeploymentConfigsProductionPlacement {
+		return v.Placement
+	}).(PagesProjectDeploymentConfigsProductionPlacementPtrOutput)
+}
+
 func (o PagesProjectDeploymentConfigsProductionOutput) R2Buckets() pulumi.MapOutput {
 	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) map[string]interface{} { return v.R2Buckets }).(pulumi.MapOutput)
 }
@@ -17745,6 +17930,15 @@ func (o PagesProjectDeploymentConfigsProductionPtrOutput) KvNamespaces() pulumi.
 	}).(pulumi.MapOutput)
 }
 
+func (o PagesProjectDeploymentConfigsProductionPtrOutput) Placement() PagesProjectDeploymentConfigsProductionPlacementPtrOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) *PagesProjectDeploymentConfigsProductionPlacement {
+		if v == nil {
+			return nil
+		}
+		return v.Placement
+	}).(PagesProjectDeploymentConfigsProductionPlacementPtrOutput)
+}
+
 func (o PagesProjectDeploymentConfigsProductionPtrOutput) R2Buckets() pulumi.MapOutput {
 	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) map[string]interface{} {
 		if v == nil {
@@ -17778,6 +17972,139 @@ func (o PagesProjectDeploymentConfigsProductionPtrOutput) UsageModel() pulumi.St
 			return nil
 		}
 		return v.UsageModel
+	}).(pulumi.StringPtrOutput)
+}
+
+type PagesProjectDeploymentConfigsProductionPlacement struct {
+	Mode *string `pulumi:"mode"`
+}
+
+// PagesProjectDeploymentConfigsProductionPlacementInput is an input type that accepts PagesProjectDeploymentConfigsProductionPlacementArgs and PagesProjectDeploymentConfigsProductionPlacementOutput values.
+// You can construct a concrete instance of `PagesProjectDeploymentConfigsProductionPlacementInput` via:
+//
+//	PagesProjectDeploymentConfigsProductionPlacementArgs{...}
+type PagesProjectDeploymentConfigsProductionPlacementInput interface {
+	pulumi.Input
+
+	ToPagesProjectDeploymentConfigsProductionPlacementOutput() PagesProjectDeploymentConfigsProductionPlacementOutput
+	ToPagesProjectDeploymentConfigsProductionPlacementOutputWithContext(context.Context) PagesProjectDeploymentConfigsProductionPlacementOutput
+}
+
+type PagesProjectDeploymentConfigsProductionPlacementArgs struct {
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (PagesProjectDeploymentConfigsProductionPlacementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesProjectDeploymentConfigsProductionPlacement)(nil)).Elem()
+}
+
+func (i PagesProjectDeploymentConfigsProductionPlacementArgs) ToPagesProjectDeploymentConfigsProductionPlacementOutput() PagesProjectDeploymentConfigsProductionPlacementOutput {
+	return i.ToPagesProjectDeploymentConfigsProductionPlacementOutputWithContext(context.Background())
+}
+
+func (i PagesProjectDeploymentConfigsProductionPlacementArgs) ToPagesProjectDeploymentConfigsProductionPlacementOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsProductionPlacementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectDeploymentConfigsProductionPlacementOutput)
+}
+
+func (i PagesProjectDeploymentConfigsProductionPlacementArgs) ToPagesProjectDeploymentConfigsProductionPlacementPtrOutput() PagesProjectDeploymentConfigsProductionPlacementPtrOutput {
+	return i.ToPagesProjectDeploymentConfigsProductionPlacementPtrOutputWithContext(context.Background())
+}
+
+func (i PagesProjectDeploymentConfigsProductionPlacementArgs) ToPagesProjectDeploymentConfigsProductionPlacementPtrOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsProductionPlacementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectDeploymentConfigsProductionPlacementOutput).ToPagesProjectDeploymentConfigsProductionPlacementPtrOutputWithContext(ctx)
+}
+
+// PagesProjectDeploymentConfigsProductionPlacementPtrInput is an input type that accepts PagesProjectDeploymentConfigsProductionPlacementArgs, PagesProjectDeploymentConfigsProductionPlacementPtr and PagesProjectDeploymentConfigsProductionPlacementPtrOutput values.
+// You can construct a concrete instance of `PagesProjectDeploymentConfigsProductionPlacementPtrInput` via:
+//
+//	        PagesProjectDeploymentConfigsProductionPlacementArgs{...}
+//
+//	or:
+//
+//	        nil
+type PagesProjectDeploymentConfigsProductionPlacementPtrInput interface {
+	pulumi.Input
+
+	ToPagesProjectDeploymentConfigsProductionPlacementPtrOutput() PagesProjectDeploymentConfigsProductionPlacementPtrOutput
+	ToPagesProjectDeploymentConfigsProductionPlacementPtrOutputWithContext(context.Context) PagesProjectDeploymentConfigsProductionPlacementPtrOutput
+}
+
+type pagesProjectDeploymentConfigsProductionPlacementPtrType PagesProjectDeploymentConfigsProductionPlacementArgs
+
+func PagesProjectDeploymentConfigsProductionPlacementPtr(v *PagesProjectDeploymentConfigsProductionPlacementArgs) PagesProjectDeploymentConfigsProductionPlacementPtrInput {
+	return (*pagesProjectDeploymentConfigsProductionPlacementPtrType)(v)
+}
+
+func (*pagesProjectDeploymentConfigsProductionPlacementPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesProjectDeploymentConfigsProductionPlacement)(nil)).Elem()
+}
+
+func (i *pagesProjectDeploymentConfigsProductionPlacementPtrType) ToPagesProjectDeploymentConfigsProductionPlacementPtrOutput() PagesProjectDeploymentConfigsProductionPlacementPtrOutput {
+	return i.ToPagesProjectDeploymentConfigsProductionPlacementPtrOutputWithContext(context.Background())
+}
+
+func (i *pagesProjectDeploymentConfigsProductionPlacementPtrType) ToPagesProjectDeploymentConfigsProductionPlacementPtrOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsProductionPlacementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectDeploymentConfigsProductionPlacementPtrOutput)
+}
+
+type PagesProjectDeploymentConfigsProductionPlacementOutput struct{ *pulumi.OutputState }
+
+func (PagesProjectDeploymentConfigsProductionPlacementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesProjectDeploymentConfigsProductionPlacement)(nil)).Elem()
+}
+
+func (o PagesProjectDeploymentConfigsProductionPlacementOutput) ToPagesProjectDeploymentConfigsProductionPlacementOutput() PagesProjectDeploymentConfigsProductionPlacementOutput {
+	return o
+}
+
+func (o PagesProjectDeploymentConfigsProductionPlacementOutput) ToPagesProjectDeploymentConfigsProductionPlacementOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsProductionPlacementOutput {
+	return o
+}
+
+func (o PagesProjectDeploymentConfigsProductionPlacementOutput) ToPagesProjectDeploymentConfigsProductionPlacementPtrOutput() PagesProjectDeploymentConfigsProductionPlacementPtrOutput {
+	return o.ToPagesProjectDeploymentConfigsProductionPlacementPtrOutputWithContext(context.Background())
+}
+
+func (o PagesProjectDeploymentConfigsProductionPlacementOutput) ToPagesProjectDeploymentConfigsProductionPlacementPtrOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsProductionPlacementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PagesProjectDeploymentConfigsProductionPlacement) *PagesProjectDeploymentConfigsProductionPlacement {
+		return &v
+	}).(PagesProjectDeploymentConfigsProductionPlacementPtrOutput)
+}
+
+func (o PagesProjectDeploymentConfigsProductionPlacementOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigsProductionPlacement) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type PagesProjectDeploymentConfigsProductionPlacementPtrOutput struct{ *pulumi.OutputState }
+
+func (PagesProjectDeploymentConfigsProductionPlacementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesProjectDeploymentConfigsProductionPlacement)(nil)).Elem()
+}
+
+func (o PagesProjectDeploymentConfigsProductionPlacementPtrOutput) ToPagesProjectDeploymentConfigsProductionPlacementPtrOutput() PagesProjectDeploymentConfigsProductionPlacementPtrOutput {
+	return o
+}
+
+func (o PagesProjectDeploymentConfigsProductionPlacementPtrOutput) ToPagesProjectDeploymentConfigsProductionPlacementPtrOutputWithContext(ctx context.Context) PagesProjectDeploymentConfigsProductionPlacementPtrOutput {
+	return o
+}
+
+func (o PagesProjectDeploymentConfigsProductionPlacementPtrOutput) Elem() PagesProjectDeploymentConfigsProductionPlacementOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProductionPlacement) PagesProjectDeploymentConfigsProductionPlacement {
+		if v != nil {
+			return *v
+		}
+		var ret PagesProjectDeploymentConfigsProductionPlacement
+		return ret
+	}).(PagesProjectDeploymentConfigsProductionPlacementOutput)
+}
+
+func (o PagesProjectDeploymentConfigsProductionPlacementPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProductionPlacement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27735,6 +28062,8 @@ func (o TeamsAccountPayloadLogPtrOutput) PublicKey() pulumi.StringPtrOutput {
 }
 
 type TeamsAccountProxy struct {
+	// Whether root ca is enabled account wide for ZT clients.
+	RootCa bool `pulumi:"rootCa"`
 	// Whether gateway proxy is enabled on gateway devices for TCP traffic.
 	Tcp bool `pulumi:"tcp"`
 	// Whether gateway proxy is enabled on gateway devices for UDP traffic.
@@ -27753,6 +28082,8 @@ type TeamsAccountProxyInput interface {
 }
 
 type TeamsAccountProxyArgs struct {
+	// Whether root ca is enabled account wide for ZT clients.
+	RootCa pulumi.BoolInput `pulumi:"rootCa"`
 	// Whether gateway proxy is enabled on gateway devices for TCP traffic.
 	Tcp pulumi.BoolInput `pulumi:"tcp"`
 	// Whether gateway proxy is enabled on gateway devices for UDP traffic.
@@ -27836,6 +28167,11 @@ func (o TeamsAccountProxyOutput) ToTeamsAccountProxyPtrOutputWithContext(ctx con
 	}).(TeamsAccountProxyPtrOutput)
 }
 
+// Whether root ca is enabled account wide for ZT clients.
+func (o TeamsAccountProxyOutput) RootCa() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsAccountProxy) bool { return v.RootCa }).(pulumi.BoolOutput)
+}
+
 // Whether gateway proxy is enabled on gateway devices for TCP traffic.
 func (o TeamsAccountProxyOutput) Tcp() pulumi.BoolOutput {
 	return o.ApplyT(func(v TeamsAccountProxy) bool { return v.Tcp }).(pulumi.BoolOutput)
@@ -27868,6 +28204,16 @@ func (o TeamsAccountProxyPtrOutput) Elem() TeamsAccountProxyOutput {
 		var ret TeamsAccountProxy
 		return ret
 	}).(TeamsAccountProxyOutput)
+}
+
+// Whether root ca is enabled account wide for ZT clients.
+func (o TeamsAccountProxyPtrOutput) RootCa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountProxy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.RootCa
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Whether gateway proxy is enabled on gateway devices for TCP traffic.
@@ -42403,10 +42749,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectDeploymentConfigsPtrInput)(nil)).Elem(), PagesProjectDeploymentConfigsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectDeploymentConfigsPreviewInput)(nil)).Elem(), PagesProjectDeploymentConfigsPreviewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectDeploymentConfigsPreviewPtrInput)(nil)).Elem(), PagesProjectDeploymentConfigsPreviewArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectDeploymentConfigsPreviewPlacementInput)(nil)).Elem(), PagesProjectDeploymentConfigsPreviewPlacementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectDeploymentConfigsPreviewPlacementPtrInput)(nil)).Elem(), PagesProjectDeploymentConfigsPreviewPlacementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectDeploymentConfigsPreviewServiceBindingInput)(nil)).Elem(), PagesProjectDeploymentConfigsPreviewServiceBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectDeploymentConfigsPreviewServiceBindingArrayInput)(nil)).Elem(), PagesProjectDeploymentConfigsPreviewServiceBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectDeploymentConfigsProductionInput)(nil)).Elem(), PagesProjectDeploymentConfigsProductionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectDeploymentConfigsProductionPtrInput)(nil)).Elem(), PagesProjectDeploymentConfigsProductionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectDeploymentConfigsProductionPlacementInput)(nil)).Elem(), PagesProjectDeploymentConfigsProductionPlacementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectDeploymentConfigsProductionPlacementPtrInput)(nil)).Elem(), PagesProjectDeploymentConfigsProductionPlacementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectDeploymentConfigsProductionServiceBindingInput)(nil)).Elem(), PagesProjectDeploymentConfigsProductionServiceBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectDeploymentConfigsProductionServiceBindingArrayInput)(nil)).Elem(), PagesProjectDeploymentConfigsProductionServiceBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectSourceInput)(nil)).Elem(), PagesProjectSourceArgs{})
@@ -42931,10 +43281,14 @@ func init() {
 	pulumi.RegisterOutputType(PagesProjectDeploymentConfigsPtrOutput{})
 	pulumi.RegisterOutputType(PagesProjectDeploymentConfigsPreviewOutput{})
 	pulumi.RegisterOutputType(PagesProjectDeploymentConfigsPreviewPtrOutput{})
+	pulumi.RegisterOutputType(PagesProjectDeploymentConfigsPreviewPlacementOutput{})
+	pulumi.RegisterOutputType(PagesProjectDeploymentConfigsPreviewPlacementPtrOutput{})
 	pulumi.RegisterOutputType(PagesProjectDeploymentConfigsPreviewServiceBindingOutput{})
 	pulumi.RegisterOutputType(PagesProjectDeploymentConfigsPreviewServiceBindingArrayOutput{})
 	pulumi.RegisterOutputType(PagesProjectDeploymentConfigsProductionOutput{})
 	pulumi.RegisterOutputType(PagesProjectDeploymentConfigsProductionPtrOutput{})
+	pulumi.RegisterOutputType(PagesProjectDeploymentConfigsProductionPlacementOutput{})
+	pulumi.RegisterOutputType(PagesProjectDeploymentConfigsProductionPlacementPtrOutput{})
 	pulumi.RegisterOutputType(PagesProjectDeploymentConfigsProductionServiceBindingOutput{})
 	pulumi.RegisterOutputType(PagesProjectDeploymentConfigsProductionServiceBindingArrayOutput{})
 	pulumi.RegisterOutputType(PagesProjectSourceOutput{})

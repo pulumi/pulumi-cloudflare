@@ -9,6 +9,30 @@ import (
 
 // Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions).
 // Commonly used as references within [`cloudflareToken`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// all, err := cloudflare.GetApiTokenPermissionGroups(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("dnsReadPermissionId", all.Zone.DNS Read)
+// ctx.Export("accountLbMonitorsAndReadId", all.Account.Load Balancing: Monitors and Pools Read)
+// ctx.Export("userMembershipsReadId", all.User.Memberships Read)
+// return nil
+// })
+// }
+// ```
 func GetApiTokenPermissionGroups(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetApiTokenPermissionGroupsResult, error) {
 	var rv GetApiTokenPermissionGroupsResult
 	err := ctx.Invoke("cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups", nil, &rv, opts...)

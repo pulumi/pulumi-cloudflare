@@ -21,15 +21,15 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
      * The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Import(name="csr")
-    private @Nullable Output<String> csr;
+    @Import(name="csr", required=true)
+    private Output<String> csr;
 
     /**
      * @return The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    public Optional<Output<String>> csr() {
-        return Optional.ofNullable(this.csr);
+    public Output<String> csr() {
+        return this.csr;
     }
 
     /**
@@ -126,7 +126,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder csr(@Nullable Output<String> csr) {
+        public Builder csr(Output<String> csr) {
             $.csr = csr;
             return this;
         }
@@ -236,6 +236,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         public OriginCaCertificateArgs build() {
+            $.csr = Objects.requireNonNull($.csr, "expected parameter 'csr' to be non-null");
             $.hostnames = Objects.requireNonNull($.hostnames, "expected parameter 'hostnames' to be non-null");
             $.requestType = Objects.requireNonNull($.requestType, "expected parameter 'requestType' to be non-null");
             return $;

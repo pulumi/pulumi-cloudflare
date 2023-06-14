@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.LoadBalancerRuleOverridePopPool> PopPools;
         /// <summary>
-        /// Configures pool weights for random steering. When the `steering_policy="random"`, a random pool is selected with probability proportional to these pool weights.
+        /// Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="least_outstanding_requests"`, pool weights are used to scale each pool's outstanding requests.
         /// </summary>
         public readonly ImmutableArray<Outputs.LoadBalancerRuleOverrideRandomSteering> RandomSteerings;
         /// <summary>
@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly int? SessionAffinityTtl;
         /// <summary>
-        /// The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `""` Defaults to `""`.
+        /// The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `""` Defaults to `""`.
         /// </summary>
         public readonly string? SteeringPolicy;
         /// <summary>

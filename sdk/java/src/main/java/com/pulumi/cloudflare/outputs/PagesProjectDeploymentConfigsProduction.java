@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsProductionPlacement;
 import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsProductionServiceBinding;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
@@ -24,6 +25,7 @@ public final class PagesProjectDeploymentConfigsProduction {
     private @Nullable Map<String,Object> environmentVariables;
     private @Nullable Boolean failOpen;
     private @Nullable Map<String,Object> kvNamespaces;
+    private @Nullable PagesProjectDeploymentConfigsProductionPlacement placement;
     private @Nullable Map<String,Object> r2Buckets;
     private @Nullable Map<String,Object> secrets;
     private @Nullable List<PagesProjectDeploymentConfigsProductionServiceBinding> serviceBindings;
@@ -53,6 +55,9 @@ public final class PagesProjectDeploymentConfigsProduction {
     }
     public Map<String,Object> kvNamespaces() {
         return this.kvNamespaces == null ? Map.of() : this.kvNamespaces;
+    }
+    public Optional<PagesProjectDeploymentConfigsProductionPlacement> placement() {
+        return Optional.ofNullable(this.placement);
     }
     public Map<String,Object> r2Buckets() {
         return this.r2Buckets == null ? Map.of() : this.r2Buckets;
@@ -84,6 +89,7 @@ public final class PagesProjectDeploymentConfigsProduction {
         private @Nullable Map<String,Object> environmentVariables;
         private @Nullable Boolean failOpen;
         private @Nullable Map<String,Object> kvNamespaces;
+        private @Nullable PagesProjectDeploymentConfigsProductionPlacement placement;
         private @Nullable Map<String,Object> r2Buckets;
         private @Nullable Map<String,Object> secrets;
         private @Nullable List<PagesProjectDeploymentConfigsProductionServiceBinding> serviceBindings;
@@ -99,6 +105,7 @@ public final class PagesProjectDeploymentConfigsProduction {
     	      this.environmentVariables = defaults.environmentVariables;
     	      this.failOpen = defaults.failOpen;
     	      this.kvNamespaces = defaults.kvNamespaces;
+    	      this.placement = defaults.placement;
     	      this.r2Buckets = defaults.r2Buckets;
     	      this.secrets = defaults.secrets;
     	      this.serviceBindings = defaults.serviceBindings;
@@ -149,6 +156,11 @@ public final class PagesProjectDeploymentConfigsProduction {
             return this;
         }
         @CustomType.Setter
+        public Builder placement(@Nullable PagesProjectDeploymentConfigsProductionPlacement placement) {
+            this.placement = placement;
+            return this;
+        }
+        @CustomType.Setter
         public Builder r2Buckets(@Nullable Map<String,Object> r2Buckets) {
             this.r2Buckets = r2Buckets;
             return this;
@@ -181,6 +193,7 @@ public final class PagesProjectDeploymentConfigsProduction {
             o.environmentVariables = environmentVariables;
             o.failOpen = failOpen;
             o.kvNamespaces = kvNamespaces;
+            o.placement = placement;
             o.r2Buckets = r2Buckets;
             o.secrets = secrets;
             o.serviceBindings = serviceBindings;

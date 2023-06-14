@@ -29,6 +29,11 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable String connectionId;
     /**
+     * @return The count comparison operator for kolide. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * 
+     */
+    private @Nullable String countOperator;
+    /**
      * @return The domain that the client must join.
      * 
      */
@@ -48,6 +53,11 @@ public final class DevicePostureRuleInput {
      * 
      */
     private @Nullable String id;
+    /**
+     * @return The number of issues for kolide.
+     * 
+     */
+    private @Nullable String issueCount;
     /**
      * @return The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
      * 
@@ -137,6 +147,13 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.connectionId);
     }
     /**
+     * @return The count comparison operator for kolide. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * 
+     */
+    public Optional<String> countOperator() {
+        return Optional.ofNullable(this.countOperator);
+    }
+    /**
      * @return The domain that the client must join.
      * 
      */
@@ -163,6 +180,13 @@ public final class DevicePostureRuleInput {
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
+    }
+    /**
+     * @return The number of issues for kolide.
+     * 
+     */
+    public Optional<String> issueCount() {
+        return Optional.ofNullable(this.issueCount);
     }
     /**
      * @return The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
@@ -268,10 +292,12 @@ public final class DevicePostureRuleInput {
         private @Nullable List<String> checkDisks;
         private @Nullable String complianceStatus;
         private @Nullable String connectionId;
+        private @Nullable String countOperator;
         private @Nullable String domain;
         private @Nullable Boolean enabled;
         private @Nullable Boolean exists;
         private @Nullable String id;
+        private @Nullable String issueCount;
         private @Nullable String operator;
         private @Nullable String os;
         private @Nullable String osDistroName;
@@ -291,10 +317,12 @@ public final class DevicePostureRuleInput {
     	      this.checkDisks = defaults.checkDisks;
     	      this.complianceStatus = defaults.complianceStatus;
     	      this.connectionId = defaults.connectionId;
+    	      this.countOperator = defaults.countOperator;
     	      this.domain = defaults.domain;
     	      this.enabled = defaults.enabled;
     	      this.exists = defaults.exists;
     	      this.id = defaults.id;
+    	      this.issueCount = defaults.issueCount;
     	      this.operator = defaults.operator;
     	      this.os = defaults.os;
     	      this.osDistroName = defaults.osDistroName;
@@ -329,6 +357,11 @@ public final class DevicePostureRuleInput {
             return this;
         }
         @CustomType.Setter
+        public Builder countOperator(@Nullable String countOperator) {
+            this.countOperator = countOperator;
+            return this;
+        }
+        @CustomType.Setter
         public Builder domain(@Nullable String domain) {
             this.domain = domain;
             return this;
@@ -346,6 +379,11 @@ public final class DevicePostureRuleInput {
         @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder issueCount(@Nullable String issueCount) {
+            this.issueCount = issueCount;
             return this;
         }
         @CustomType.Setter
@@ -418,10 +456,12 @@ public final class DevicePostureRuleInput {
             o.checkDisks = checkDisks;
             o.complianceStatus = complianceStatus;
             o.connectionId = connectionId;
+            o.countOperator = countOperator;
             o.domain = domain;
             o.enabled = enabled;
             o.exists = exists;
             o.id = id;
+            o.issueCount = issueCount;
             o.operator = operator;
             o.os = os;
             o.osDistroName = osDistroName;

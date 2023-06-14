@@ -63,6 +63,21 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * The count comparison operator for kolide. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * 
+     */
+    @Import(name="countOperator")
+    private @Nullable Output<String> countOperator;
+
+    /**
+     * @return The count comparison operator for kolide. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * 
+     */
+    public Optional<Output<String>> countOperator() {
+        return Optional.ofNullable(this.countOperator);
+    }
+
+    /**
      * The domain that the client must join.
      * 
      */
@@ -120,6 +135,21 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
      */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
+    }
+
+    /**
+     * The number of issues for kolide.
+     * 
+     */
+    @Import(name="issueCount")
+    private @Nullable Output<String> issueCount;
+
+    /**
+     * @return The number of issues for kolide.
+     * 
+     */
+    public Optional<Output<String>> issueCount() {
+        return Optional.ofNullable(this.issueCount);
     }
 
     /**
@@ -323,10 +353,12 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         this.checkDisks = $.checkDisks;
         this.complianceStatus = $.complianceStatus;
         this.connectionId = $.connectionId;
+        this.countOperator = $.countOperator;
         this.domain = $.domain;
         this.enabled = $.enabled;
         this.exists = $.exists;
         this.id = $.id;
+        this.issueCount = $.issueCount;
         this.operator = $.operator;
         this.os = $.os;
         this.osDistroName = $.osDistroName;
@@ -434,6 +466,27 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param countOperator The count comparison operator for kolide. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder countOperator(@Nullable Output<String> countOperator) {
+            $.countOperator = countOperator;
+            return this;
+        }
+
+        /**
+         * @param countOperator The count comparison operator for kolide. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder countOperator(String countOperator) {
+            return countOperator(Output.of(countOperator));
+        }
+
+        /**
          * @param domain The domain that the client must join.
          * 
          * @return builder
@@ -515,6 +568,27 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
          */
         public Builder id(String id) {
             return id(Output.of(id));
+        }
+
+        /**
+         * @param issueCount The number of issues for kolide.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder issueCount(@Nullable Output<String> issueCount) {
+            $.issueCount = issueCount;
+            return this;
+        }
+
+        /**
+         * @param issueCount The number of issues for kolide.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder issueCount(String issueCount) {
+            return issueCount(Output.of(issueCount));
         }
 
         /**

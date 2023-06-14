@@ -21,7 +21,11 @@ func GetApiClientLogging(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault(false, parseEnvBool, "CLOUDFLARE_API_CLIENT_LOGGING").(bool)
+	var value bool
+	if d := getEnvOrDefault(false, parseEnvBool, "CLOUDFLARE_API_CLIENT_LOGGING"); d != nil {
+		value = d.(bool)
+	}
+	return value
 }
 
 // Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
@@ -64,7 +68,11 @@ func GetMaxBackoff(ctx *pulumi.Context) int {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault(30, parseEnvInt, "CLOUDFLARE_MAX_BACKOFF").(int)
+	var value int
+	if d := getEnvOrDefault(30, parseEnvInt, "CLOUDFLARE_MAX_BACKOFF"); d != nil {
+		value = d.(int)
+	}
+	return value
 }
 
 // Minimum backoff period in seconds after failed API calls. Alternatively, can be configured using the
@@ -74,7 +82,11 @@ func GetMinBackoff(ctx *pulumi.Context) int {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault(1, parseEnvInt, "CLOUDFLARE_MIN_BACKOFF").(int)
+	var value int
+	if d := getEnvOrDefault(1, parseEnvInt, "CLOUDFLARE_MIN_BACKOFF"); d != nil {
+		value = d.(int)
+	}
+	return value
 }
 
 // Maximum number of retries to perform when an API request fails. Alternatively, can be configured using the
@@ -84,7 +96,11 @@ func GetRetries(ctx *pulumi.Context) int {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault(3, parseEnvInt, "CLOUDFLARE_RETRIES").(int)
+	var value int
+	if d := getEnvOrDefault(3, parseEnvInt, "CLOUDFLARE_RETRIES"); d != nil {
+		value = d.(int)
+	}
+	return value
 }
 
 // RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
@@ -94,5 +110,9 @@ func GetRps(ctx *pulumi.Context) int {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault(4, parseEnvInt, "CLOUDFLARE_RPS").(int)
+	var value int
+	if d := getEnvOrDefault(4, parseEnvInt, "CLOUDFLARE_RPS"); d != nil {
+		value = d.(int)
+	}
+	return value
 }

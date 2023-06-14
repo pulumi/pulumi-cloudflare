@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewPlacementArgs;
 import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewServiceBindingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -76,6 +77,13 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
         return Optional.ofNullable(this.kvNamespaces);
     }
 
+    @Import(name="placement")
+    private @Nullable Output<PagesProjectDeploymentConfigsPreviewPlacementArgs> placement;
+
+    public Optional<Output<PagesProjectDeploymentConfigsPreviewPlacementArgs>> placement() {
+        return Optional.ofNullable(this.placement);
+    }
+
     @Import(name="r2Buckets")
     private @Nullable Output<Map<String,Object>> r2Buckets;
 
@@ -115,6 +123,7 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
         this.environmentVariables = $.environmentVariables;
         this.failOpen = $.failOpen;
         this.kvNamespaces = $.kvNamespaces;
+        this.placement = $.placement;
         this.r2Buckets = $.r2Buckets;
         this.secrets = $.secrets;
         this.serviceBindings = $.serviceBindings;
@@ -213,6 +222,15 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
 
         public Builder kvNamespaces(Map<String,Object> kvNamespaces) {
             return kvNamespaces(Output.of(kvNamespaces));
+        }
+
+        public Builder placement(@Nullable Output<PagesProjectDeploymentConfigsPreviewPlacementArgs> placement) {
+            $.placement = placement;
+            return this;
+        }
+
+        public Builder placement(PagesProjectDeploymentConfigsPreviewPlacementArgs placement) {
+            return placement(Output.of(placement));
         }
 
         public Builder r2Buckets(@Nullable Output<Map<String,Object>> r2Buckets) {

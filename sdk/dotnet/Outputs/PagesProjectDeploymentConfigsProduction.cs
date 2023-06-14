@@ -21,6 +21,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableDictionary<string, object>? EnvironmentVariables;
         public readonly bool? FailOpen;
         public readonly ImmutableDictionary<string, object>? KvNamespaces;
+        public readonly Outputs.PagesProjectDeploymentConfigsProductionPlacement? Placement;
         public readonly ImmutableDictionary<string, object>? R2Buckets;
         public readonly ImmutableDictionary<string, object>? Secrets;
         public readonly ImmutableArray<Outputs.PagesProjectDeploymentConfigsProductionServiceBinding> ServiceBindings;
@@ -44,6 +45,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableDictionary<string, object>? kvNamespaces,
 
+            Outputs.PagesProjectDeploymentConfigsProductionPlacement? placement,
+
             ImmutableDictionary<string, object>? r2Buckets,
 
             ImmutableDictionary<string, object>? secrets,
@@ -60,6 +63,7 @@ namespace Pulumi.Cloudflare.Outputs
             EnvironmentVariables = environmentVariables;
             FailOpen = failOpen;
             KvNamespaces = kvNamespaces;
+            Placement = placement;
             R2Buckets = r2Buckets;
             Secrets = secrets;
             ServiceBindings = serviceBindings;

@@ -133,8 +133,10 @@ __all__ = [
     'PagesProjectBuildConfigArgs',
     'PagesProjectDeploymentConfigsArgs',
     'PagesProjectDeploymentConfigsPreviewArgs',
+    'PagesProjectDeploymentConfigsPreviewPlacementArgs',
     'PagesProjectDeploymentConfigsPreviewServiceBindingArgs',
     'PagesProjectDeploymentConfigsProductionArgs',
+    'PagesProjectDeploymentConfigsProductionPlacementArgs',
     'PagesProjectDeploymentConfigsProductionServiceBindingArgs',
     'PagesProjectSourceArgs',
     'PagesProjectSourceConfigArgs',
@@ -4005,6 +4007,7 @@ class CertificatePackValidationRecordArgs:
 @pulumi.input_type
 class CustomHostnameSslArgs:
     def __init__(__self__, *,
+                 bundle_method: Optional[pulumi.Input[str]] = None,
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  custom_certificate: Optional[pulumi.Input[str]] = None,
                  custom_key: Optional[pulumi.Input[str]] = None,
@@ -4016,6 +4019,7 @@ class CustomHostnameSslArgs:
                  validation_records: Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslValidationRecordArgs']]]] = None,
                  wildcard: Optional[pulumi.Input[bool]] = None):
         """
+        :param pulumi.Input[str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
         :param pulumi.Input[str] custom_certificate: If a custom uploaded certificate is used.
         :param pulumi.Input[str] custom_key: The key for a custom uploaded certificate.
         :param pulumi.Input[str] method: Domain control validation (DCV) method used for this hostname. Available values: `http`, `txt`, `email`.
@@ -4024,6 +4028,8 @@ class CustomHostnameSslArgs:
         :param pulumi.Input[str] type: Level of validation to be used for this hostname. Available values: `dv`. Defaults to `dv`.
         :param pulumi.Input[bool] wildcard: Indicates whether the certificate covers a wildcard.
         """
+        if bundle_method is not None:
+            pulumi.set(__self__, "bundle_method", bundle_method)
         if certificate_authority is not None:
             pulumi.set(__self__, "certificate_authority", certificate_authority)
         if custom_certificate is not None:
@@ -4044,6 +4050,18 @@ class CustomHostnameSslArgs:
             pulumi.set(__self__, "validation_records", validation_records)
         if wildcard is not None:
             pulumi.set(__self__, "wildcard", wildcard)
+
+    @property
+    @pulumi.getter(name="bundleMethod")
+    def bundle_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+        """
+        return pulumi.get(self, "bundle_method")
+
+    @bundle_method.setter
+    def bundle_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bundle_method", value)
 
     @property
     @pulumi.getter(name="certificateAuthority")
@@ -4649,10 +4667,12 @@ class DevicePostureRuleInputArgs:
                  check_disks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  compliance_status: Optional[pulumi.Input[str]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
+                 count_operator: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  exists: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
+                 issue_count: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  os: Optional[pulumi.Input[str]] = None,
                  os_distro_name: Optional[pulumi.Input[str]] = None,
@@ -4670,10 +4690,12 @@ class DevicePostureRuleInputArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] check_disks: Specific volume(s) to check for encryption.
         :param pulumi.Input[str] compliance_status: The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
         :param pulumi.Input[str] connection_id: The workspace one connection id.
+        :param pulumi.Input[str] count_operator: The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
         :param pulumi.Input[str] domain: The domain that the client must join.
         :param pulumi.Input[bool] enabled: True if the firewall must be enabled.
         :param pulumi.Input[bool] exists: Checks if the file should exist.
         :param pulumi.Input[str] id: The Teams List id.
+        :param pulumi.Input[str] issue_count: The number of issues for kolide.
         :param pulumi.Input[str] operator: The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
         :param pulumi.Input[str] os: OS signal score from Crowdstrike. Value must be between 1 and 100.
         :param pulumi.Input[str] os_distro_name: The operating system excluding version information.
@@ -4694,6 +4716,8 @@ class DevicePostureRuleInputArgs:
             pulumi.set(__self__, "compliance_status", compliance_status)
         if connection_id is not None:
             pulumi.set(__self__, "connection_id", connection_id)
+        if count_operator is not None:
+            pulumi.set(__self__, "count_operator", count_operator)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if enabled is not None:
@@ -4702,6 +4726,8 @@ class DevicePostureRuleInputArgs:
             pulumi.set(__self__, "exists", exists)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if issue_count is not None:
+            pulumi.set(__self__, "issue_count", issue_count)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if os is not None:
@@ -4766,6 +4792,18 @@ class DevicePostureRuleInputArgs:
         pulumi.set(self, "connection_id", value)
 
     @property
+    @pulumi.getter(name="countOperator")
+    def count_operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
+        """
+        return pulumi.get(self, "count_operator")
+
+    @count_operator.setter
+    def count_operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "count_operator", value)
+
+    @property
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -4812,6 +4850,18 @@ class DevicePostureRuleInputArgs:
     @id.setter
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="issueCount")
+    def issue_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of issues for kolide.
+        """
+        return pulumi.get(self, "issue_count")
+
+    @issue_count.setter
+    def issue_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issue_count", value)
 
     @property
     @pulumi.getter
@@ -5878,7 +5928,7 @@ class LoadBalancerPoolOriginArgs:
         :param pulumi.Input[str] name: A human-identifiable name for the origin.
         :param pulumi.Input[bool] enabled: Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginHeaderArgs']]] headers: HTTP request headers.
-        :param pulumi.Input[float] weight: The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Defaults to `1`.
+        :param pulumi.Input[float] weight: The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="least_outstanding_requests"`, weight is used to scale the origin's outstanding requests. Defaults to `1`.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "name", name)
@@ -5941,7 +5991,7 @@ class LoadBalancerPoolOriginArgs:
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[float]]:
         """
-        The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Defaults to `1`.
+        The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="least_outstanding_requests"`, weight is used to scale the origin's outstanding requests. Defaults to `1`.
         """
         return pulumi.get(self, "weight")
 
@@ -5982,7 +6032,7 @@ class LoadBalancerPoolOriginSteeringArgs:
     def __init__(__self__, *,
                  policy: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] policy: Origin steering policy to be used. Available values: `""`, `hash`, `random`. Defaults to `random`.
+        :param pulumi.Input[str] policy: Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `least_outstanding_requests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Available values: `""`, `hash`, `random`, `least_outstanding_requests`. Defaults to `random`.
         """
         if policy is not None:
             pulumi.set(__self__, "policy", policy)
@@ -5991,7 +6041,7 @@ class LoadBalancerPoolOriginSteeringArgs:
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Origin steering policy to be used. Available values: `""`, `hash`, `random`. Defaults to `random`.
+        Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `least_outstanding_requests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Available values: `""`, `hash`, `random`, `least_outstanding_requests`. Defaults to `random`.
         """
         return pulumi.get(self, "policy")
 
@@ -6305,12 +6355,12 @@ class LoadBalancerRuleOverrideArgs:
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideCountryPoolArgs']]] country_pools: A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideLocationStrategyArgs']]] location_strategies: Controls location-based steering for non-proxied requests.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverridePopPoolArgs']]] pop_pools: A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRandomSteeringArgs']]] random_steerings: Configures pool weights for random steering. When the `steering_policy="random"`, a random pool is selected with probability proportional to these pool weights.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRandomSteeringArgs']]] random_steerings: Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="least_outstanding_requests"`, pool weights are used to scale each pool's outstanding requests.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRegionPoolArgs']]] region_pools: A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
         :param pulumi.Input[str] session_affinity: Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ip_cookie`. Defaults to `none`.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideSessionAffinityAttributeArgs']]] session_affinity_attributes: Configure cookie attributes for session affinity cookie.
         :param pulumi.Input[int] session_affinity_ttl: Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
-        :param pulumi.Input[str] steering_policy: The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `""` Defaults to `""`.
+        :param pulumi.Input[str] steering_policy: The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `""` Defaults to `""`.
         :param pulumi.Input[int] ttl: Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
         """
         if adaptive_routings is not None:
@@ -6410,7 +6460,7 @@ class LoadBalancerRuleOverrideArgs:
     @pulumi.getter(name="randomSteerings")
     def random_steerings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRandomSteeringArgs']]]]:
         """
-        Configures pool weights for random steering. When the `steering_policy="random"`, a random pool is selected with probability proportional to these pool weights.
+        Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="least_outstanding_requests"`, pool weights are used to scale each pool's outstanding requests.
         """
         return pulumi.get(self, "random_steerings")
 
@@ -6470,7 +6520,7 @@ class LoadBalancerRuleOverrideArgs:
     @pulumi.getter(name="steeringPolicy")
     def steering_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `""` Defaults to `""`.
+        The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `""` Defaults to `""`.
         """
         return pulumi.get(self, "steering_policy")
 
@@ -8575,6 +8625,7 @@ class PagesProjectDeploymentConfigsPreviewArgs:
                  environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  fail_open: Optional[pulumi.Input[bool]] = None,
                  kv_namespaces: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 placement: Optional[pulumi.Input['PagesProjectDeploymentConfigsPreviewPlacementArgs']] = None,
                  r2_buckets: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  secrets: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['PagesProjectDeploymentConfigsPreviewServiceBindingArgs']]]] = None,
@@ -8595,6 +8646,8 @@ class PagesProjectDeploymentConfigsPreviewArgs:
             pulumi.set(__self__, "fail_open", fail_open)
         if kv_namespaces is not None:
             pulumi.set(__self__, "kv_namespaces", kv_namespaces)
+        if placement is not None:
+            pulumi.set(__self__, "placement", placement)
         if r2_buckets is not None:
             pulumi.set(__self__, "r2_buckets", r2_buckets)
         if secrets is not None:
@@ -8677,6 +8730,15 @@ class PagesProjectDeploymentConfigsPreviewArgs:
         pulumi.set(self, "kv_namespaces", value)
 
     @property
+    @pulumi.getter
+    def placement(self) -> Optional[pulumi.Input['PagesProjectDeploymentConfigsPreviewPlacementArgs']]:
+        return pulumi.get(self, "placement")
+
+    @placement.setter
+    def placement(self, value: Optional[pulumi.Input['PagesProjectDeploymentConfigsPreviewPlacementArgs']]):
+        pulumi.set(self, "placement", value)
+
+    @property
     @pulumi.getter(name="r2Buckets")
     def r2_buckets(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         return pulumi.get(self, "r2_buckets")
@@ -8711,6 +8773,23 @@ class PagesProjectDeploymentConfigsPreviewArgs:
     @usage_model.setter
     def usage_model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "usage_model", value)
+
+
+@pulumi.input_type
+class PagesProjectDeploymentConfigsPreviewPlacementArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input[str]] = None):
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
 
 
 @pulumi.input_type
@@ -8769,6 +8848,7 @@ class PagesProjectDeploymentConfigsProductionArgs:
                  environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  fail_open: Optional[pulumi.Input[bool]] = None,
                  kv_namespaces: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 placement: Optional[pulumi.Input['PagesProjectDeploymentConfigsProductionPlacementArgs']] = None,
                  r2_buckets: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  secrets: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['PagesProjectDeploymentConfigsProductionServiceBindingArgs']]]] = None,
@@ -8789,6 +8869,8 @@ class PagesProjectDeploymentConfigsProductionArgs:
             pulumi.set(__self__, "fail_open", fail_open)
         if kv_namespaces is not None:
             pulumi.set(__self__, "kv_namespaces", kv_namespaces)
+        if placement is not None:
+            pulumi.set(__self__, "placement", placement)
         if r2_buckets is not None:
             pulumi.set(__self__, "r2_buckets", r2_buckets)
         if secrets is not None:
@@ -8871,6 +8953,15 @@ class PagesProjectDeploymentConfigsProductionArgs:
         pulumi.set(self, "kv_namespaces", value)
 
     @property
+    @pulumi.getter
+    def placement(self) -> Optional[pulumi.Input['PagesProjectDeploymentConfigsProductionPlacementArgs']]:
+        return pulumi.get(self, "placement")
+
+    @placement.setter
+    def placement(self, value: Optional[pulumi.Input['PagesProjectDeploymentConfigsProductionPlacementArgs']]):
+        pulumi.set(self, "placement", value)
+
+    @property
     @pulumi.getter(name="r2Buckets")
     def r2_buckets(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         return pulumi.get(self, "r2_buckets")
@@ -8905,6 +8996,23 @@ class PagesProjectDeploymentConfigsProductionArgs:
     @usage_model.setter
     def usage_model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "usage_model", value)
+
+
+@pulumi.input_type
+class PagesProjectDeploymentConfigsProductionPlacementArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input[str]] = None):
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
 
 
 @pulumi.input_type
@@ -12408,14 +12516,29 @@ class TeamsAccountPayloadLogArgs:
 @pulumi.input_type
 class TeamsAccountProxyArgs:
     def __init__(__self__, *,
+                 root_ca: pulumi.Input[bool],
                  tcp: pulumi.Input[bool],
                  udp: pulumi.Input[bool]):
         """
+        :param pulumi.Input[bool] root_ca: Whether root ca is enabled account wide for ZT clients.
         :param pulumi.Input[bool] tcp: Whether gateway proxy is enabled on gateway devices for TCP traffic.
         :param pulumi.Input[bool] udp: Whether gateway proxy is enabled on gateway devices for UDP traffic.
         """
+        pulumi.set(__self__, "root_ca", root_ca)
         pulumi.set(__self__, "tcp", tcp)
         pulumi.set(__self__, "udp", udp)
+
+    @property
+    @pulumi.getter(name="rootCa")
+    def root_ca(self) -> pulumi.Input[bool]:
+        """
+        Whether root ca is enabled account wide for ZT clients.
+        """
+        return pulumi.get(self, "root_ca")
+
+    @root_ca.setter
+    def root_ca(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "root_ca", value)
 
     @property
     @pulumi.getter

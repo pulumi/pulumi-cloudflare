@@ -13,6 +13,10 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class CustomHostnameSsl
     {
+        /// <summary>
+        /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+        /// </summary>
+        public readonly string? BundleMethod;
         public readonly string? CertificateAuthority;
         /// <summary>
         /// If a custom uploaded certificate is used.
@@ -47,6 +51,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private CustomHostnameSsl(
+            string? bundleMethod,
+
             string? certificateAuthority,
 
             string? customCertificate,
@@ -67,6 +73,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? wildcard)
         {
+            BundleMethod = bundleMethod;
             CertificateAuthority = certificateAuthority;
             CustomCertificate = customCertificate;
             CustomKey = customKey;

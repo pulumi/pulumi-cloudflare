@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  *             .autoConnect(0)
  *             .captivePortal(5)
  *             .default_(false)
+ *             .description(&#34;Developers WARP settings policy description&#34;)
  *             .disableAutoFallback(true)
  *             .enabled(true)
  *             .excludeOfficeIps(false)
@@ -173,6 +174,20 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> default_() {
         return Codegen.optional(this.default_);
+    }
+    /**
+     * Description of Policy.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output<String> description;
+
+    /**
+     * @return Description of Policy.
+     * 
+     */
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * Whether to disable auto fallback for this policy.

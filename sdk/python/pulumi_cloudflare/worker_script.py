@@ -491,7 +491,7 @@ class WorkerScript(pulumi.CustomResource):
             )],
             secret_text_bindings=[cloudflare.WorkerScriptSecretTextBindingArgs(
                 name="MY_EXAMPLE_SECRET_TEXT",
-                text=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                text=var["secret_foo_value"],
             )],
             webassembly_bindings=[cloudflare.WorkerScriptWebassemblyBindingArgs(
                 name="MY_EXAMPLE_WASM",
@@ -562,7 +562,7 @@ class WorkerScript(pulumi.CustomResource):
             )],
             secret_text_bindings=[cloudflare.WorkerScriptSecretTextBindingArgs(
                 name="MY_EXAMPLE_SECRET_TEXT",
-                text=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                text=var["secret_foo_value"],
             )],
             webassembly_bindings=[cloudflare.WorkerScriptWebassemblyBindingArgs(
                 name="MY_EXAMPLE_WASM",

@@ -10,6 +10,11 @@ import java.util.Objects;
 @CustomType
 public final class TeamsAccountProxy {
     /**
+     * @return Whether root ca is enabled account wide for ZT clients.
+     * 
+     */
+    private Boolean rootCa;
+    /**
      * @return Whether gateway proxy is enabled on gateway devices for TCP traffic.
      * 
      */
@@ -21,6 +26,13 @@ public final class TeamsAccountProxy {
     private Boolean udp;
 
     private TeamsAccountProxy() {}
+    /**
+     * @return Whether root ca is enabled account wide for ZT clients.
+     * 
+     */
+    public Boolean rootCa() {
+        return this.rootCa;
+    }
     /**
      * @return Whether gateway proxy is enabled on gateway devices for TCP traffic.
      * 
@@ -45,15 +57,22 @@ public final class TeamsAccountProxy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean rootCa;
         private Boolean tcp;
         private Boolean udp;
         public Builder() {}
         public Builder(TeamsAccountProxy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.rootCa = defaults.rootCa;
     	      this.tcp = defaults.tcp;
     	      this.udp = defaults.udp;
         }
 
+        @CustomType.Setter
+        public Builder rootCa(Boolean rootCa) {
+            this.rootCa = Objects.requireNonNull(rootCa);
+            return this;
+        }
         @CustomType.Setter
         public Builder tcp(Boolean tcp) {
             this.tcp = Objects.requireNonNull(tcp);
@@ -66,6 +85,7 @@ public final class TeamsAccountProxy {
         }
         public TeamsAccountProxy build() {
             final var o = new TeamsAccountProxy();
+            o.rootCa = rootCa;
             o.tcp = tcp;
             o.udp = udp;
             return o;

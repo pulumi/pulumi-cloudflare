@@ -161,6 +161,13 @@ namespace Pulumi.Cloudflare
         public Output<string?> SameSiteCookieAttribute { get; private set; } = null!;
 
         /// <summary>
+        /// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+        /// value set as `domain`
+        /// </summary>
+        [Output("selfHostedDomains")]
+        public Output<ImmutableArray<string>> SelfHostedDomains { get; private set; } = null!;
+
+        /// <summary>
         /// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         /// </summary>
         [Output("serviceAuth401Redirect")]
@@ -332,6 +339,19 @@ namespace Pulumi.Cloudflare
         [Input("sameSiteCookieAttribute")]
         public Input<string>? SameSiteCookieAttribute { get; set; }
 
+        [Input("selfHostedDomains")]
+        private InputList<string>? _selfHostedDomains;
+
+        /// <summary>
+        /// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+        /// value set as `domain`
+        /// </summary>
+        public InputList<string> SelfHostedDomains
+        {
+            get => _selfHostedDomains ?? (_selfHostedDomains = new InputList<string>());
+            set => _selfHostedDomains = value;
+        }
+
         /// <summary>
         /// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         /// </summary>
@@ -471,6 +491,19 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("sameSiteCookieAttribute")]
         public Input<string>? SameSiteCookieAttribute { get; set; }
+
+        [Input("selfHostedDomains")]
+        private InputList<string>? _selfHostedDomains;
+
+        /// <summary>
+        /// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+        /// value set as `domain`
+        /// </summary>
+        public InputList<string> SelfHostedDomains
+        {
+            get => _selfHostedDomains ?? (_selfHostedDomains = new InputList<string>());
+            set => _selfHostedDomains = value;
+        }
 
         /// <summary>
         /// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.

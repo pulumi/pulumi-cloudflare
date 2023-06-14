@@ -14,27 +14,38 @@ __all__ = ['OriginCaCertificateArgs', 'OriginCaCertificate']
 @pulumi.input_type
 class OriginCaCertificateArgs:
     def __init__(__self__, *,
+                 csr: pulumi.Input[str],
                  hostnames: pulumi.Input[Sequence[pulumi.Input[str]]],
                  request_type: pulumi.Input[str],
-                 csr: Optional[pulumi.Input[str]] = None,
                  min_days_for_renewal: Optional[pulumi.Input[int]] = None,
                  requested_validity: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a OriginCaCertificate resource.
+        :param pulumi.Input[str] csr: The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] request_type: The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] csr: The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] min_days_for_renewal: Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
         :param pulumi.Input[int] requested_validity: The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
         """
+        pulumi.set(__self__, "csr", csr)
         pulumi.set(__self__, "hostnames", hostnames)
         pulumi.set(__self__, "request_type", request_type)
-        if csr is not None:
-            pulumi.set(__self__, "csr", csr)
         if min_days_for_renewal is not None:
             pulumi.set(__self__, "min_days_for_renewal", min_days_for_renewal)
         if requested_validity is not None:
             pulumi.set(__self__, "requested_validity", requested_validity)
+
+    @property
+    @pulumi.getter
+    def csr(self) -> pulumi.Input[str]:
+        """
+        The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
+        """
+        return pulumi.get(self, "csr")
+
+    @csr.setter
+    def csr(self, value: pulumi.Input[str]):
+        pulumi.set(self, "csr", value)
 
     @property
     @pulumi.getter
@@ -59,18 +70,6 @@ class OriginCaCertificateArgs:
     @request_type.setter
     def request_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "request_type", value)
-
-    @property
-    @pulumi.getter
-    def csr(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
-        """
-        return pulumi.get(self, "csr")
-
-    @csr.setter
-    def csr(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "csr", value)
 
     @property
     @pulumi.getter(name="minDaysForRenewal")
@@ -331,6 +330,8 @@ class OriginCaCertificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OriginCaCertificateArgs.__new__(OriginCaCertificateArgs)
 
+            if csr is None and not opts.urn:
+                raise TypeError("Missing required property 'csr'")
             __props__.__dict__["csr"] = csr
             if hostnames is None and not opts.urn:
                 raise TypeError("Missing required property 'hostnames'")
@@ -397,7 +398,7 @@ class OriginCaCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def csr(self) -> pulumi.Output[Optional[str]]:
+    def csr(self) -> pulumi.Output[str]:
         """
         The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
         """

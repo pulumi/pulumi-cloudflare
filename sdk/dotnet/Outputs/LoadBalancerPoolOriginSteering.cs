@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class LoadBalancerPoolOriginSteering
     {
         /// <summary>
-        /// Origin steering policy to be used. Available values: `""`, `hash`, `random`. Defaults to `random`.
+        /// Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `least_outstanding_requests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Available values: `""`, `hash`, `random`, `least_outstanding_requests`. Defaults to `random`.
         /// </summary>
         public readonly string? Policy;
 

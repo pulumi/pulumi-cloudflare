@@ -36,7 +36,7 @@ public final class LoadBalancerPoolOrigin {
      */
     private String name;
     /**
-     * @return The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Defaults to `1`.
+     * @return The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=&#34;least_outstanding_requests&#34;`, weight is used to scale the origin&#39;s outstanding requests. Defaults to `1`.
      * 
      */
     private @Nullable Double weight;
@@ -71,7 +71,7 @@ public final class LoadBalancerPoolOrigin {
         return this.name;
     }
     /**
-     * @return The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Defaults to `1`.
+     * @return The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=&#34;least_outstanding_requests&#34;`, weight is used to scale the origin&#39;s outstanding requests. Defaults to `1`.
      * 
      */
     public Optional<Double> weight() {

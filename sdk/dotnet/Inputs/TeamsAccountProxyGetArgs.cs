@@ -13,6 +13,12 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsAccountProxyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether root ca is enabled account wide for ZT clients.
+        /// </summary>
+        [Input("rootCa", required: true)]
+        public Input<bool> RootCa { get; set; } = null!;
+
+        /// <summary>
         /// Whether gateway proxy is enabled on gateway devices for TCP traffic.
         /// </summary>
         [Input("tcp", required: true)]

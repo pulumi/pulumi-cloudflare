@@ -80,14 +80,14 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * SSL configuration of the certificate.
+     * SSL properties used when creating the custom hostname.
      * 
      */
     @Import(name="ssls")
     private @Nullable Output<List<CustomHostnameSslArgs>> ssls;
 
     /**
-     * @return SSL configuration of the certificate.
+     * @return SSL properties used when creating the custom hostname.
      * 
      */
     public Optional<Output<List<CustomHostnameSslArgs>>> ssls() {
@@ -239,7 +239,7 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ssls SSL configuration of the certificate.
+         * @param ssls SSL properties used when creating the custom hostname.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ssls SSL configuration of the certificate.
+         * @param ssls SSL properties used when creating the custom hostname.
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ssls SSL configuration of the certificate.
+         * @param ssls SSL properties used when creating the custom hostname.
          * 
          * @return builder
          * 
