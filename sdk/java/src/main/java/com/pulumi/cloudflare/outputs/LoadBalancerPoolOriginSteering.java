@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerPoolOriginSteering {
     /**
-     * @return Origin steering policy to be used. Available values: `&#34;&#34;`, `hash`, `random`. Defaults to `random`.
+     * @return Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `least_outstanding_requests` selects an origin by taking into consideration origin weights, as well as each origin&#39;s number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Available values: `&#34;&#34;`, `hash`, `random`, `least_outstanding_requests`. Defaults to `random`.
      * 
      */
     private @Nullable String policy;
 
     private LoadBalancerPoolOriginSteering() {}
     /**
-     * @return Origin steering policy to be used. Available values: `&#34;&#34;`, `hash`, `random`. Defaults to `random`.
+     * @return Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `least_outstanding_requests` selects an origin by taking into consideration origin weights, as well as each origin&#39;s number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Available values: `&#34;&#34;`, `hash`, `random`, `least_outstanding_requests`. Defaults to `random`.
      * 
      */
     public Optional<String> policy() {

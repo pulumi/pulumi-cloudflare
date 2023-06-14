@@ -134,14 +134,14 @@ public class CustomHostname extends com.pulumi.resources.CustomResource {
         return this.ownershipVerificationHttp;
     }
     /**
-     * SSL configuration of the certificate.
+     * SSL properties used when creating the custom hostname.
      * 
      */
     @Export(name="ssls", refs={List.class,CustomHostnameSsl.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CustomHostnameSsl>> ssls;
 
     /**
-     * @return SSL configuration of the certificate.
+     * @return SSL properties used when creating the custom hostname.
      * 
      */
     public Output<Optional<List<CustomHostnameSsl>>> ssls() {

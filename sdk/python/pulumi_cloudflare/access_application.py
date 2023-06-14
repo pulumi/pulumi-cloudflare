@@ -30,6 +30,7 @@ class AccessApplicationArgs:
                  logo_url: Optional[pulumi.Input[str]] = None,
                  saas_app: Optional[pulumi.Input['AccessApplicationSaasAppArgs']] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
+                 self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
                  skip_interstitial: Optional[pulumi.Input[bool]] = None,
@@ -51,6 +52,8 @@ class AccessApplicationArgs:
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
         :param pulumi.Input['AccessApplicationSaasAppArgs'] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+               value set as `domain`
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
@@ -84,6 +87,8 @@ class AccessApplicationArgs:
             pulumi.set(__self__, "saas_app", saas_app)
         if same_site_cookie_attribute is not None:
             pulumi.set(__self__, "same_site_cookie_attribute", same_site_cookie_attribute)
+        if self_hosted_domains is not None:
+            pulumi.set(__self__, "self_hosted_domains", self_hosted_domains)
         if service_auth401_redirect is not None:
             pulumi.set(__self__, "service_auth401_redirect", service_auth401_redirect)
         if session_duration is not None:
@@ -264,6 +269,19 @@ class AccessApplicationArgs:
         pulumi.set(self, "same_site_cookie_attribute", value)
 
     @property
+    @pulumi.getter(name="selfHostedDomains")
+    def self_hosted_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+        value set as `domain`
+        """
+        return pulumi.get(self, "self_hosted_domains")
+
+    @self_hosted_domains.setter
+    def self_hosted_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "self_hosted_domains", value)
+
+    @property
     @pulumi.getter(name="serviceAuth401Redirect")
     def service_auth401_redirect(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -342,6 +360,7 @@ class _AccessApplicationState:
                  name: Optional[pulumi.Input[str]] = None,
                  saas_app: Optional[pulumi.Input['AccessApplicationSaasAppArgs']] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
+                 self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
                  skip_interstitial: Optional[pulumi.Input[bool]] = None,
@@ -364,6 +383,8 @@ class _AccessApplicationState:
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input['AccessApplicationSaasAppArgs'] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+               value set as `domain`
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
@@ -400,6 +421,8 @@ class _AccessApplicationState:
             pulumi.set(__self__, "saas_app", saas_app)
         if same_site_cookie_attribute is not None:
             pulumi.set(__self__, "same_site_cookie_attribute", same_site_cookie_attribute)
+        if self_hosted_domains is not None:
+            pulumi.set(__self__, "self_hosted_domains", self_hosted_domains)
         if service_auth401_redirect is not None:
             pulumi.set(__self__, "service_auth401_redirect", service_auth401_redirect)
         if session_duration is not None:
@@ -592,6 +615,19 @@ class _AccessApplicationState:
         pulumi.set(self, "same_site_cookie_attribute", value)
 
     @property
+    @pulumi.getter(name="selfHostedDomains")
+    def self_hosted_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+        value set as `domain`
+        """
+        return pulumi.get(self, "self_hosted_domains")
+
+    @self_hosted_domains.setter
+    def self_hosted_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "self_hosted_domains", value)
+
+    @property
     @pulumi.getter(name="serviceAuth401Redirect")
     def service_auth401_redirect(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -671,6 +707,7 @@ class AccessApplication(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  saas_app: Optional[pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']]] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
+                 self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
                  skip_interstitial: Optional[pulumi.Input[bool]] = None,
@@ -735,6 +772,8 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+               value set as `domain`
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
@@ -818,6 +857,7 @@ class AccessApplication(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  saas_app: Optional[pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']]] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
+                 self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
                  skip_interstitial: Optional[pulumi.Input[bool]] = None,
@@ -848,6 +888,7 @@ class AccessApplication(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["saas_app"] = saas_app
             __props__.__dict__["same_site_cookie_attribute"] = same_site_cookie_attribute
+            __props__.__dict__["self_hosted_domains"] = self_hosted_domains
             __props__.__dict__["service_auth401_redirect"] = service_auth401_redirect
             __props__.__dict__["session_duration"] = session_duration
             __props__.__dict__["skip_interstitial"] = skip_interstitial
@@ -879,6 +920,7 @@ class AccessApplication(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             saas_app: Optional[pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']]] = None,
             same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
+            self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
             session_duration: Optional[pulumi.Input[str]] = None,
             skip_interstitial: Optional[pulumi.Input[bool]] = None,
@@ -906,6 +948,8 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+               value set as `domain`
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
@@ -931,6 +975,7 @@ class AccessApplication(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["saas_app"] = saas_app
         __props__.__dict__["same_site_cookie_attribute"] = same_site_cookie_attribute
+        __props__.__dict__["self_hosted_domains"] = self_hosted_domains
         __props__.__dict__["service_auth401_redirect"] = service_auth401_redirect
         __props__.__dict__["session_duration"] = session_duration
         __props__.__dict__["skip_interstitial"] = skip_interstitial
@@ -1057,6 +1102,15 @@ class AccessApplication(pulumi.CustomResource):
         Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
         """
         return pulumi.get(self, "same_site_cookie_attribute")
+
+    @property
+    @pulumi.getter(name="selfHostedDomains")
+    def self_hosted_domains(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+        value set as `domain`
+        """
+        return pulumi.get(self, "self_hosted_domains")
 
     @property
     @pulumi.getter(name="serviceAuth401Redirect")

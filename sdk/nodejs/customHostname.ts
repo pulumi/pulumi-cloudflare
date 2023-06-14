@@ -77,7 +77,7 @@ export class CustomHostname extends pulumi.CustomResource {
     public /*out*/ readonly ownershipVerification!: pulumi.Output<{[key: string]: string}>;
     public /*out*/ readonly ownershipVerificationHttp!: pulumi.Output<{[key: string]: string}>;
     /**
-     * SSL configuration of the certificate.
+     * SSL properties used when creating the custom hostname.
      */
     public readonly ssls!: pulumi.Output<outputs.CustomHostnameSsl[] | undefined>;
     /**
@@ -163,7 +163,7 @@ export interface CustomHostnameState {
     ownershipVerification?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     ownershipVerificationHttp?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * SSL configuration of the certificate.
+     * SSL properties used when creating the custom hostname.
      */
     ssls?: pulumi.Input<pulumi.Input<inputs.CustomHostnameSsl>[]>;
     /**
@@ -201,7 +201,7 @@ export interface CustomHostnameArgs {
      */
     hostname: pulumi.Input<string>;
     /**
-     * SSL configuration of the certificate.
+     * SSL properties used when creating the custom hostname.
      */
     ssls?: pulumi.Input<pulumi.Input<inputs.CustomHostnameSsl>[]>;
     /**

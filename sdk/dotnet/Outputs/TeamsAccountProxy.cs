@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsAccountProxy
     {
         /// <summary>
+        /// Whether root ca is enabled account wide for ZT clients.
+        /// </summary>
+        public readonly bool RootCa;
+        /// <summary>
         /// Whether gateway proxy is enabled on gateway devices for TCP traffic.
         /// </summary>
         public readonly bool Tcp;
@@ -24,10 +28,13 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private TeamsAccountProxy(
+            bool rootCa,
+
             bool tcp,
 
             bool udp)
         {
+            RootCa = rootCa;
             Tcp = tcp;
             Udp = udp;
         }

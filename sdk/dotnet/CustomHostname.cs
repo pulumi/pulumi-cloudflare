@@ -78,7 +78,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableDictionary<string, string>> OwnershipVerificationHttp { get; private set; } = null!;
 
         /// <summary>
-        /// SSL configuration of the certificate.
+        /// SSL properties used when creating the custom hostname.
         /// </summary>
         [Output("ssls")]
         public Output<ImmutableArray<Outputs.CustomHostnameSsl>> Ssls { get; private set; } = null!;
@@ -181,7 +181,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.CustomHostnameSslArgs>? _ssls;
 
         /// <summary>
-        /// SSL configuration of the certificate.
+        /// SSL properties used when creating the custom hostname.
         /// </summary>
         public InputList<Inputs.CustomHostnameSslArgs> Ssls
         {
@@ -259,7 +259,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.CustomHostnameSslGetArgs>? _ssls;
 
         /// <summary>
-        /// SSL configuration of the certificate.
+        /// SSL properties used when creating the custom hostname.
         /// </summary>
         public InputList<Inputs.CustomHostnameSslGetArgs> Ssls
         {

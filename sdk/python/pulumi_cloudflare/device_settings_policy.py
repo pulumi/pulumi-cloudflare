@@ -15,6 +15,7 @@ __all__ = ['DeviceSettingsPolicyArgs', 'DeviceSettingsPolicy']
 class DeviceSettingsPolicyArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
+                 description: pulumi.Input[str],
                  name: pulumi.Input[str],
                  allow_mode_switch: Optional[pulumi.Input[bool]] = None,
                  allow_updates: Optional[pulumi.Input[bool]] = None,
@@ -34,6 +35,7 @@ class DeviceSettingsPolicyArgs:
         """
         The set of arguments for constructing a DeviceSettingsPolicy resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] description: Description of Policy.
         :param pulumi.Input[str] name: Name of the policy.
         :param pulumi.Input[bool] allow_mode_switch: Whether to allow mode switch for this policy.
         :param pulumi.Input[bool] allow_updates: Whether to allow updates under this policy.
@@ -52,6 +54,7 @@ class DeviceSettingsPolicyArgs:
         :param pulumi.Input[bool] switch_locked: Enablement of the ZT client switch lock.
         """
         pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "name", name)
         if allow_mode_switch is not None:
             pulumi.set(__self__, "allow_mode_switch", allow_mode_switch)
@@ -95,6 +98,18 @@ class DeviceSettingsPolicyArgs:
     @account_id.setter
     def account_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[str]:
+        """
+        Description of Policy.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[str]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter
@@ -299,6 +314,7 @@ class _DeviceSettingsPolicyState:
                  auto_connect: Optional[pulumi.Input[int]] = None,
                  captive_portal: Optional[pulumi.Input[int]] = None,
                  default: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  disable_auto_fallback: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  exclude_office_ips: Optional[pulumi.Input[bool]] = None,
@@ -318,6 +334,7 @@ class _DeviceSettingsPolicyState:
         :param pulumi.Input[int] auto_connect: The amount of time in minutes to reconnect after having been disabled.
         :param pulumi.Input[int] captive_portal: The captive portal value for this policy. Defaults to `180`.
         :param pulumi.Input[bool] default: Whether the policy refers to the default account policy.
+        :param pulumi.Input[str] description: Description of Policy.
         :param pulumi.Input[bool] disable_auto_fallback: Whether to disable auto fallback for this policy.
         :param pulumi.Input[bool] enabled: Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
         :param pulumi.Input[bool] exclude_office_ips: Whether to add Microsoft IPs to split tunnel exclusions.
@@ -343,6 +360,8 @@ class _DeviceSettingsPolicyState:
             pulumi.set(__self__, "captive_portal", captive_portal)
         if default is not None:
             pulumi.set(__self__, "default", default)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if disable_auto_fallback is not None:
             pulumi.set(__self__, "disable_auto_fallback", disable_auto_fallback)
         if enabled is not None:
@@ -447,6 +466,18 @@ class _DeviceSettingsPolicyState:
     @default.setter
     def default(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "default", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of Policy.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter(name="disableAutoFallback")
@@ -581,6 +612,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
                  auto_connect: Optional[pulumi.Input[int]] = None,
                  captive_portal: Optional[pulumi.Input[int]] = None,
                  default: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  disable_auto_fallback: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  exclude_office_ips: Optional[pulumi.Input[bool]] = None,
@@ -609,6 +641,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
             auto_connect=0,
             captive_portal=5,
             default=False,
+            description="Developers WARP settings policy description",
             disable_auto_fallback=True,
             enabled=True,
             exclude_office_ips=False,
@@ -638,6 +671,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         :param pulumi.Input[int] auto_connect: The amount of time in minutes to reconnect after having been disabled.
         :param pulumi.Input[int] captive_portal: The captive portal value for this policy. Defaults to `180`.
         :param pulumi.Input[bool] default: Whether the policy refers to the default account policy.
+        :param pulumi.Input[str] description: Description of Policy.
         :param pulumi.Input[bool] disable_auto_fallback: Whether to disable auto fallback for this policy.
         :param pulumi.Input[bool] enabled: Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
         :param pulumi.Input[bool] exclude_office_ips: Whether to add Microsoft IPs to split tunnel exclusions.
@@ -672,6 +706,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
             auto_connect=0,
             captive_portal=5,
             default=False,
+            description="Developers WARP settings policy description",
             disable_auto_fallback=True,
             enabled=True,
             exclude_office_ips=False,
@@ -714,6 +749,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
                  auto_connect: Optional[pulumi.Input[int]] = None,
                  captive_portal: Optional[pulumi.Input[int]] = None,
                  default: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  disable_auto_fallback: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  exclude_office_ips: Optional[pulumi.Input[bool]] = None,
@@ -742,6 +778,9 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
             __props__.__dict__["auto_connect"] = auto_connect
             __props__.__dict__["captive_portal"] = captive_portal
             __props__.__dict__["default"] = default
+            if description is None and not opts.urn:
+                raise TypeError("Missing required property 'description'")
+            __props__.__dict__["description"] = description
             __props__.__dict__["disable_auto_fallback"] = disable_auto_fallback
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["exclude_office_ips"] = exclude_office_ips
@@ -771,6 +810,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
             auto_connect: Optional[pulumi.Input[int]] = None,
             captive_portal: Optional[pulumi.Input[int]] = None,
             default: Optional[pulumi.Input[bool]] = None,
+            description: Optional[pulumi.Input[str]] = None,
             disable_auto_fallback: Optional[pulumi.Input[bool]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             exclude_office_ips: Optional[pulumi.Input[bool]] = None,
@@ -795,6 +835,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         :param pulumi.Input[int] auto_connect: The amount of time in minutes to reconnect after having been disabled.
         :param pulumi.Input[int] captive_portal: The captive portal value for this policy. Defaults to `180`.
         :param pulumi.Input[bool] default: Whether the policy refers to the default account policy.
+        :param pulumi.Input[str] description: Description of Policy.
         :param pulumi.Input[bool] disable_auto_fallback: Whether to disable auto fallback for this policy.
         :param pulumi.Input[bool] enabled: Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
         :param pulumi.Input[bool] exclude_office_ips: Whether to add Microsoft IPs to split tunnel exclusions.
@@ -817,6 +858,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         __props__.__dict__["auto_connect"] = auto_connect
         __props__.__dict__["captive_portal"] = captive_portal
         __props__.__dict__["default"] = default
+        __props__.__dict__["description"] = description
         __props__.__dict__["disable_auto_fallback"] = disable_auto_fallback
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["exclude_office_ips"] = exclude_office_ips
@@ -884,6 +926,14 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         Whether the policy refers to the default account policy.
         """
         return pulumi.get(self, "default")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Description of Policy.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="disableAutoFallback")

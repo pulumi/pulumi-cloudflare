@@ -123,6 +123,21 @@ public final class DeviceSettingsPolicyState extends com.pulumi.resources.Resour
     }
 
     /**
+     * Description of Policy.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return Description of Policy.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * Whether to disable auto fallback for this policy.
      * 
      */
@@ -282,6 +297,7 @@ public final class DeviceSettingsPolicyState extends com.pulumi.resources.Resour
         this.autoConnect = $.autoConnect;
         this.captivePortal = $.captivePortal;
         this.default_ = $.default_;
+        this.description = $.description;
         this.disableAutoFallback = $.disableAutoFallback;
         this.enabled = $.enabled;
         this.excludeOfficeIps = $.excludeOfficeIps;
@@ -457,6 +473,27 @@ public final class DeviceSettingsPolicyState extends com.pulumi.resources.Resour
          */
         public Builder default_(Boolean default_) {
             return default_(Output.of(default_));
+        }
+
+        /**
+         * @param description Description of Policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description Description of Policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**

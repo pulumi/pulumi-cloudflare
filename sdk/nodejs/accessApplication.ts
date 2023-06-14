@@ -138,6 +138,11 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly sameSiteCookieAttribute!: pulumi.Output<string | undefined>;
     /**
+     * List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+     * value set as `domain`
+     */
+    public readonly selfHostedDomains!: pulumi.Output<string[] | undefined>;
+    /**
      * Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
      */
     public readonly serviceAuth401Redirect!: pulumi.Output<boolean | undefined>;
@@ -186,6 +191,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["saasApp"] = state ? state.saasApp : undefined;
             resourceInputs["sameSiteCookieAttribute"] = state ? state.sameSiteCookieAttribute : undefined;
+            resourceInputs["selfHostedDomains"] = state ? state.selfHostedDomains : undefined;
             resourceInputs["serviceAuth401Redirect"] = state ? state.serviceAuth401Redirect : undefined;
             resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
             resourceInputs["skipInterstitial"] = state ? state.skipInterstitial : undefined;
@@ -210,6 +216,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["saasApp"] = args ? args.saasApp : undefined;
             resourceInputs["sameSiteCookieAttribute"] = args ? args.sameSiteCookieAttribute : undefined;
+            resourceInputs["selfHostedDomains"] = args ? args.selfHostedDomains : undefined;
             resourceInputs["serviceAuth401Redirect"] = args ? args.serviceAuth401Redirect : undefined;
             resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
             resourceInputs["skipInterstitial"] = args ? args.skipInterstitial : undefined;
@@ -286,6 +293,11 @@ export interface AccessApplicationState {
      * Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
      */
     sameSiteCookieAttribute?: pulumi.Input<string>;
+    /**
+     * List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+     * value set as `domain`
+     */
+    selfHostedDomains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
      */
@@ -368,6 +380,11 @@ export interface AccessApplicationArgs {
      * Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
      */
     sameSiteCookieAttribute?: pulumi.Input<string>;
+    /**
+     * List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+     * value set as `domain`
+     */
+    selfHostedDomains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
      */

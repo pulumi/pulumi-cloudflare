@@ -96,14 +96,14 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="csr", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> csr;
+    private Output<String> csr;
 
     /**
      * @return The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    public Output<Optional<String>> csr() {
-        return Codegen.optional(this.csr);
+    public Output<String> csr() {
+        return this.csr;
     }
     /**
      * The datetime when the certificate will expire.

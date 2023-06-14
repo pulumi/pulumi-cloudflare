@@ -14,6 +14,21 @@ public final class TeamsAccountProxyArgs extends com.pulumi.resources.ResourceAr
     public static final TeamsAccountProxyArgs Empty = new TeamsAccountProxyArgs();
 
     /**
+     * Whether root ca is enabled account wide for ZT clients.
+     * 
+     */
+    @Import(name="rootCa", required=true)
+    private Output<Boolean> rootCa;
+
+    /**
+     * @return Whether root ca is enabled account wide for ZT clients.
+     * 
+     */
+    public Output<Boolean> rootCa() {
+        return this.rootCa;
+    }
+
+    /**
      * Whether gateway proxy is enabled on gateway devices for TCP traffic.
      * 
      */
@@ -46,6 +61,7 @@ public final class TeamsAccountProxyArgs extends com.pulumi.resources.ResourceAr
     private TeamsAccountProxyArgs() {}
 
     private TeamsAccountProxyArgs(TeamsAccountProxyArgs $) {
+        this.rootCa = $.rootCa;
         this.tcp = $.tcp;
         this.udp = $.udp;
     }
@@ -66,6 +82,27 @@ public final class TeamsAccountProxyArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(TeamsAccountProxyArgs defaults) {
             $ = new TeamsAccountProxyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param rootCa Whether root ca is enabled account wide for ZT clients.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rootCa(Output<Boolean> rootCa) {
+            $.rootCa = rootCa;
+            return this;
+        }
+
+        /**
+         * @param rootCa Whether root ca is enabled account wide for ZT clients.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rootCa(Boolean rootCa) {
+            return rootCa(Output.of(rootCa));
         }
 
         /**
@@ -111,6 +148,7 @@ public final class TeamsAccountProxyArgs extends com.pulumi.resources.ResourceAr
         }
 
         public TeamsAccountProxyArgs build() {
+            $.rootCa = Objects.requireNonNull($.rootCa, "expected parameter 'rootCa' to be non-null");
             $.tcp = Objects.requireNonNull($.tcp, "expected parameter 'tcp' to be non-null");
             $.udp = Objects.requireNonNull($.udp, "expected parameter 'udp' to be non-null");
             return $;

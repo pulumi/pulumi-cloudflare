@@ -576,6 +576,10 @@ export interface CertificatePackValidationRecord {
 }
 
 export interface CustomHostnameSsl {
+    /**
+     * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+     */
+    bundleMethod?: string;
     certificateAuthority: string;
     /**
      * If a custom uploaded certificate is used.
@@ -729,6 +733,10 @@ export interface DevicePostureRuleInput {
      */
     connectionId?: string;
     /**
+     * The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
+     */
+    countOperator?: string;
+    /**
      * The domain that the client must join.
      */
     domain?: string;
@@ -744,6 +752,10 @@ export interface DevicePostureRuleInput {
      * The Teams List id.
      */
     id?: string;
+    /**
+     * The number of issues for kolide.
+     */
+    issueCount?: string;
     /**
      * The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
      */
@@ -1520,7 +1532,7 @@ export interface LoadBalancerPoolOrigin {
      */
     name: string;
     /**
-     * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Defaults to `1`.
+     * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. Defaults to `1`.
      */
     weight?: number;
 }
@@ -1532,7 +1544,7 @@ export interface LoadBalancerPoolOriginHeader {
 
 export interface LoadBalancerPoolOriginSteering {
     /**
-     * Origin steering policy to be used. Available values: `""`, `hash`, `random`. Defaults to `random`.
+     * Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `leastOutstandingRequests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Available values: `""`, `hash`, `random`, `leastOutstandingRequests`. Defaults to `random`.
      */
     policy?: string;
 }
@@ -1628,7 +1640,7 @@ export interface LoadBalancerRuleOverride {
      */
     popPools: outputs.LoadBalancerRuleOverridePopPool[];
     /**
-     * Configures pool weights for random steering. When the `steering_policy="random"`, a random pool is selected with probability proportional to these pool weights.
+     * Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="leastOutstandingRequests"`, pool weights are used to scale each pool's outstanding requests.
      */
     randomSteerings?: outputs.LoadBalancerRuleOverrideRandomSteering[];
     /**
@@ -1648,7 +1660,7 @@ export interface LoadBalancerRuleOverride {
      */
     sessionAffinityTtl?: number;
     /**
-     * The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `""` Defaults to `""`.
+     * The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `leastOutstandingRequests` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `leastOutstandingRequests`, `""` Defaults to `""`.
      */
     steeringPolicy?: string;
     /**
@@ -2242,10 +2254,15 @@ export interface PagesProjectDeploymentConfigsPreview {
     environmentVariables?: {[key: string]: any};
     failOpen?: boolean;
     kvNamespaces?: {[key: string]: any};
+    placement?: outputs.PagesProjectDeploymentConfigsPreviewPlacement;
     r2Buckets?: {[key: string]: any};
     secrets?: {[key: string]: any};
     serviceBindings?: outputs.PagesProjectDeploymentConfigsPreviewServiceBinding[];
     usageModel?: string;
+}
+
+export interface PagesProjectDeploymentConfigsPreviewPlacement {
+    mode?: string;
 }
 
 export interface PagesProjectDeploymentConfigsPreviewServiceBinding {
@@ -2266,10 +2283,15 @@ export interface PagesProjectDeploymentConfigsProduction {
     environmentVariables?: {[key: string]: any};
     failOpen?: boolean;
     kvNamespaces?: {[key: string]: any};
+    placement?: outputs.PagesProjectDeploymentConfigsProductionPlacement;
     r2Buckets?: {[key: string]: any};
     secrets?: {[key: string]: any};
     serviceBindings?: outputs.PagesProjectDeploymentConfigsProductionServiceBinding[];
     usageModel?: string;
+}
+
+export interface PagesProjectDeploymentConfigsProductionPlacement {
+    mode?: string;
 }
 
 export interface PagesProjectDeploymentConfigsProductionServiceBinding {
@@ -2455,7 +2477,7 @@ export interface RulesetRule {
     /**
      * Rule reference.
      */
-    ref?: string;
+    ref: string;
     /**
      * Version of the ruleset to deploy.
      */
@@ -2873,6 +2895,10 @@ export interface TeamsAccountPayloadLog {
 }
 
 export interface TeamsAccountProxy {
+    /**
+     * Whether root ca is enabled account wide for ZT clients.
+     */
+    rootCa: boolean;
     /**
      * Whether gateway proxy is enabled on gateway devices for TCP traffic.
      */

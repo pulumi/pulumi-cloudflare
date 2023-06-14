@@ -105,6 +105,9 @@ type AccessApplication struct {
 	SaasApp AccessApplicationSaasAppPtrOutput `pulumi:"saasApp"`
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 	SameSiteCookieAttribute pulumi.StringPtrOutput `pulumi:"sameSiteCookieAttribute"`
+	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+	// value set as `domain`
+	SelfHostedDomains pulumi.StringArrayOutput `pulumi:"selfHostedDomains"`
 	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
 	ServiceAuth401Redirect pulumi.BoolPtrOutput `pulumi:"serviceAuth401Redirect"`
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
@@ -179,6 +182,9 @@ type accessApplicationState struct {
 	SaasApp *AccessApplicationSaasApp `pulumi:"saasApp"`
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 	SameSiteCookieAttribute *string `pulumi:"sameSiteCookieAttribute"`
+	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+	// value set as `domain`
+	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
 	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
 	ServiceAuth401Redirect *bool `pulumi:"serviceAuth401Redirect"`
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
@@ -222,6 +228,9 @@ type AccessApplicationState struct {
 	SaasApp AccessApplicationSaasAppPtrInput
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 	SameSiteCookieAttribute pulumi.StringPtrInput
+	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+	// value set as `domain`
+	SelfHostedDomains pulumi.StringArrayInput
 	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
 	ServiceAuth401Redirect pulumi.BoolPtrInput
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
@@ -267,6 +276,9 @@ type accessApplicationArgs struct {
 	SaasApp *AccessApplicationSaasApp `pulumi:"saasApp"`
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 	SameSiteCookieAttribute *string `pulumi:"sameSiteCookieAttribute"`
+	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+	// value set as `domain`
+	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
 	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
 	ServiceAuth401Redirect *bool `pulumi:"serviceAuth401Redirect"`
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
@@ -309,6 +321,9 @@ type AccessApplicationArgs struct {
 	SaasApp AccessApplicationSaasAppPtrInput
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 	SameSiteCookieAttribute pulumi.StringPtrInput
+	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+	// value set as `domain`
+	SelfHostedDomains pulumi.StringArrayInput
 	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
 	ServiceAuth401Redirect pulumi.BoolPtrInput
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
@@ -481,6 +496,12 @@ func (o AccessApplicationOutput) SaasApp() AccessApplicationSaasAppPtrOutput {
 // Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 func (o AccessApplicationOutput) SameSiteCookieAttribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.SameSiteCookieAttribute }).(pulumi.StringPtrOutput)
+}
+
+// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+// value set as `domain`
+func (o AccessApplicationOutput) SelfHostedDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringArrayOutput { return v.SelfHostedDomains }).(pulumi.StringArrayOutput)
 }
 
 // Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.

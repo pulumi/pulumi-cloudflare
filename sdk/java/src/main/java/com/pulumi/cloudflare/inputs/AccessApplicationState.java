@@ -245,6 +245,23 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+     * value set as `domain`
+     * 
+     */
+    @Import(name="selfHostedDomains")
+    private @Nullable Output<List<String>> selfHostedDomains;
+
+    /**
+     * @return List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+     * value set as `domain`
+     * 
+     */
+    public Optional<Output<List<String>>> selfHostedDomains() {
+        return Optional.ofNullable(this.selfHostedDomains);
+    }
+
+    /**
      * Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
      * 
      */
@@ -337,6 +354,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         this.name = $.name;
         this.saasApp = $.saasApp;
         this.sameSiteCookieAttribute = $.sameSiteCookieAttribute;
+        this.selfHostedDomains = $.selfHostedDomains;
         this.serviceAuth401Redirect = $.serviceAuth401Redirect;
         this.sessionDuration = $.sessionDuration;
         this.skipInterstitial = $.skipInterstitial;
@@ -695,6 +713,40 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
          */
         public Builder sameSiteCookieAttribute(String sameSiteCookieAttribute) {
             return sameSiteCookieAttribute(Output.of(sameSiteCookieAttribute));
+        }
+
+        /**
+         * @param selfHostedDomains List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+         * value set as `domain`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selfHostedDomains(@Nullable Output<List<String>> selfHostedDomains) {
+            $.selfHostedDomains = selfHostedDomains;
+            return this;
+        }
+
+        /**
+         * @param selfHostedDomains List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+         * value set as `domain`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selfHostedDomains(List<String> selfHostedDomains) {
+            return selfHostedDomains(Output.of(selfHostedDomains));
+        }
+
+        /**
+         * @param selfHostedDomains List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+         * value set as `domain`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selfHostedDomains(String... selfHostedDomains) {
+            return selfHostedDomains(List.of(selfHostedDomains));
         }
 
         /**

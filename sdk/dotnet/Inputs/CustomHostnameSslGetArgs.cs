@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class CustomHostnameSslGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+        /// </summary>
+        [Input("bundleMethod")]
+        public Input<string>? BundleMethod { get; set; }
+
         [Input("certificateAuthority")]
         public Input<string>? CertificateAuthority { get; set; }
 

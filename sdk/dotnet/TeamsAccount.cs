@@ -67,6 +67,7 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         Proxy = new Cloudflare.Inputs.TeamsAccountProxyArgs
     ///         {
+    ///             RootCa = true,
     ///             Tcp = true,
     ///             Udp = true,
     ///         },

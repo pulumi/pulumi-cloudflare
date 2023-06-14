@@ -31,6 +31,7 @@ namespace Pulumi.Cloudflare
     ///         AutoConnect = 0,
     ///         CaptivePortal = 5,
     ///         Default = false,
+    ///         Description = "Developers WARP settings policy description",
     ///         DisableAutoFallback = true,
     ///         Enabled = true,
     ///         ExcludeOfficeIps = false,
@@ -98,6 +99,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("default")]
         public Output<bool?> Default { get; private set; } = null!;
+
+        /// <summary>
+        /// Description of Policy.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// Whether to disable auto fallback for this policy.
@@ -248,6 +255,12 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Default { get; set; }
 
         /// <summary>
+        /// Description of Policy.
+        /// </summary>
+        [Input("description", required: true)]
+        public Input<string> Description { get; set; } = null!;
+
+        /// <summary>
         /// Whether to disable auto fallback for this policy.
         /// </summary>
         [Input("disableAutoFallback")]
@@ -356,6 +369,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("default")]
         public Input<bool>? Default { get; set; }
+
+        /// <summary>
+        /// Description of Policy.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// Whether to disable auto fallback for this policy.

@@ -35,6 +35,7 @@ import (
 //				AutoConnect:         pulumi.Int(0),
 //				CaptivePortal:       pulumi.Int(5),
 //				Default:             pulumi.Bool(false),
+//				Description:         pulumi.String("Developers WARP settings policy description"),
 //				DisableAutoFallback: pulumi.Bool(true),
 //				Enabled:             pulumi.Bool(true),
 //				ExcludeOfficeIps:    pulumi.Bool(false),
@@ -81,6 +82,8 @@ type DeviceSettingsPolicy struct {
 	CaptivePortal pulumi.IntPtrOutput `pulumi:"captivePortal"`
 	// Whether the policy refers to the default account policy.
 	Default pulumi.BoolPtrOutput `pulumi:"default"`
+	// Description of Policy.
+	Description pulumi.StringOutput `pulumi:"description"`
 	// Whether to disable auto fallback for this policy.
 	DisableAutoFallback pulumi.BoolPtrOutput `pulumi:"disableAutoFallback"`
 	// Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
@@ -112,6 +115,9 @@ func NewDeviceSettingsPolicy(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
@@ -152,6 +158,8 @@ type deviceSettingsPolicyState struct {
 	CaptivePortal *int `pulumi:"captivePortal"`
 	// Whether the policy refers to the default account policy.
 	Default *bool `pulumi:"default"`
+	// Description of Policy.
+	Description *string `pulumi:"description"`
 	// Whether to disable auto fallback for this policy.
 	DisableAutoFallback *bool `pulumi:"disableAutoFallback"`
 	// Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
@@ -189,6 +197,8 @@ type DeviceSettingsPolicyState struct {
 	CaptivePortal pulumi.IntPtrInput
 	// Whether the policy refers to the default account policy.
 	Default pulumi.BoolPtrInput
+	// Description of Policy.
+	Description pulumi.StringPtrInput
 	// Whether to disable auto fallback for this policy.
 	DisableAutoFallback pulumi.BoolPtrInput
 	// Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
@@ -230,6 +240,8 @@ type deviceSettingsPolicyArgs struct {
 	CaptivePortal *int `pulumi:"captivePortal"`
 	// Whether the policy refers to the default account policy.
 	Default *bool `pulumi:"default"`
+	// Description of Policy.
+	Description string `pulumi:"description"`
 	// Whether to disable auto fallback for this policy.
 	DisableAutoFallback *bool `pulumi:"disableAutoFallback"`
 	// Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
@@ -268,6 +280,8 @@ type DeviceSettingsPolicyArgs struct {
 	CaptivePortal pulumi.IntPtrInput
 	// Whether the policy refers to the default account policy.
 	Default pulumi.BoolPtrInput
+	// Description of Policy.
+	Description pulumi.StringInput
 	// Whether to disable auto fallback for this policy.
 	DisableAutoFallback pulumi.BoolPtrInput
 	// Whether the policy is enabled (cannot be set for default policies). Defaults to `true`.
@@ -410,6 +424,11 @@ func (o DeviceSettingsPolicyOutput) CaptivePortal() pulumi.IntPtrOutput {
 // Whether the policy refers to the default account policy.
 func (o DeviceSettingsPolicyOutput) Default() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DeviceSettingsPolicy) pulumi.BoolPtrOutput { return v.Default }).(pulumi.BoolPtrOutput)
+}
+
+// Description of Policy.
+func (o DeviceSettingsPolicyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeviceSettingsPolicy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // Whether to disable auto fallback for this policy.

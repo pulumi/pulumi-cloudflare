@@ -20,6 +20,21 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
 
     public static final CustomHostnameSslArgs Empty = new CustomHostnameSslArgs();
 
+    /**
+     * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+     * 
+     */
+    @Import(name="bundleMethod")
+    private @Nullable Output<String> bundleMethod;
+
+    /**
+     * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+     * 
+     */
+    public Optional<Output<String>> bundleMethod() {
+        return Optional.ofNullable(this.bundleMethod);
+    }
+
     @Import(name="certificateAuthority")
     private @Nullable Output<String> certificateAuthority;
 
@@ -149,6 +164,7 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
     private CustomHostnameSslArgs() {}
 
     private CustomHostnameSslArgs(CustomHostnameSslArgs $) {
+        this.bundleMethod = $.bundleMethod;
         this.certificateAuthority = $.certificateAuthority;
         this.customCertificate = $.customCertificate;
         this.customKey = $.customKey;
@@ -177,6 +193,27 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(CustomHostnameSslArgs defaults) {
             $ = new CustomHostnameSslArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param bundleMethod A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bundleMethod(@Nullable Output<String> bundleMethod) {
+            $.bundleMethod = bundleMethod;
+            return this;
+        }
+
+        /**
+         * @param bundleMethod A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bundleMethod(String bundleMethod) {
+            return bundleMethod(Output.of(bundleMethod));
         }
 
         public Builder certificateAuthority(@Nullable Output<String> certificateAuthority) {

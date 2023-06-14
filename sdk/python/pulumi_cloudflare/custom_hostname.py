@@ -30,7 +30,7 @@ class CustomHostnameArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_metadata: Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
         :param pulumi.Input[str] custom_origin_server: The custom origin server used for certificates.
         :param pulumi.Input[str] custom_origin_sni: The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
-        :param pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]] ssls: SSL configuration of the certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]] ssls: SSL properties used when creating the custom hostname.
         :param pulumi.Input[bool] wait_for_ssl_pending_validation: Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
         """
         pulumi.set(__self__, "hostname", hostname)
@@ -110,7 +110,7 @@ class CustomHostnameArgs:
     @pulumi.getter
     def ssls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]]:
         """
-        SSL configuration of the certificate.
+        SSL properties used when creating the custom hostname.
         """
         return pulumi.get(self, "ssls")
 
@@ -150,7 +150,7 @@ class _CustomHostnameState:
         :param pulumi.Input[str] custom_origin_server: The custom origin server used for certificates.
         :param pulumi.Input[str] custom_origin_sni: The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
         :param pulumi.Input[str] hostname: Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]] ssls: SSL configuration of the certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]] ssls: SSL properties used when creating the custom hostname.
         :param pulumi.Input[str] status: Status of the certificate.
         :param pulumi.Input[bool] wait_for_ssl_pending_validation: Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -246,7 +246,7 @@ class _CustomHostnameState:
     @pulumi.getter
     def ssls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]]:
         """
-        SSL configuration of the certificate.
+        SSL properties used when creating the custom hostname.
         """
         return pulumi.get(self, "ssls")
 
@@ -333,7 +333,7 @@ class CustomHostname(pulumi.CustomResource):
         :param pulumi.Input[str] custom_origin_server: The custom origin server used for certificates.
         :param pulumi.Input[str] custom_origin_sni: The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
         :param pulumi.Input[str] hostname: Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]] ssls: SSL configuration of the certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]] ssls: SSL properties used when creating the custom hostname.
         :param pulumi.Input[bool] wait_for_ssl_pending_validation: Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
@@ -442,7 +442,7 @@ class CustomHostname(pulumi.CustomResource):
         :param pulumi.Input[str] custom_origin_server: The custom origin server used for certificates.
         :param pulumi.Input[str] custom_origin_sni: The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
         :param pulumi.Input[str] hostname: Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]] ssls: SSL configuration of the certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]] ssls: SSL properties used when creating the custom hostname.
         :param pulumi.Input[str] status: Status of the certificate.
         :param pulumi.Input[bool] wait_for_ssl_pending_validation: Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -509,7 +509,7 @@ class CustomHostname(pulumi.CustomResource):
     @pulumi.getter
     def ssls(self) -> pulumi.Output[Optional[Sequence['outputs.CustomHostnameSsl']]]:
         """
-        SSL configuration of the certificate.
+        SSL properties used when creating the custom hostname.
         """
         return pulumi.get(self, "ssls")
 

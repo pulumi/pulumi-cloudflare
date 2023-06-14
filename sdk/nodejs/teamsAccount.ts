@@ -50,6 +50,7 @@ import * as utilities from "./utilities";
  *         },
  *     },
  *     proxy: {
+ *         rootCa: true,
  *         tcp: true,
  *         udp: true,
  *     },

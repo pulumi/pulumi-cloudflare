@@ -293,6 +293,22 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sameSiteCookieAttribute);
     }
     /**
+     * List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+     * value set as `domain`
+     * 
+     */
+    @Export(name="selfHostedDomains", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> selfHostedDomains;
+
+    /**
+     * @return List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
+     * value set as `domain`
+     * 
+     */
+    public Output<Optional<List<String>>> selfHostedDomains() {
+        return Codegen.optional(this.selfHostedDomains);
+    }
+    /**
      * Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
      * 
      */

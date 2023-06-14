@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  *     autoConnect: 0,
  *     captivePortal: 5,
  *     "default": false,
+ *     description: "Developers WARP settings policy description",
  *     disableAutoFallback: true,
  *     enabled: true,
  *     excludeOfficeIps: false,
@@ -99,6 +100,10 @@ export class DeviceSettingsPolicy extends pulumi.CustomResource {
      */
     public readonly default!: pulumi.Output<boolean | undefined>;
     /**
+     * Description of Policy.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
      * Whether to disable auto fallback for this policy.
      */
     public readonly disableAutoFallback!: pulumi.Output<boolean | undefined>;
@@ -159,6 +164,7 @@ export class DeviceSettingsPolicy extends pulumi.CustomResource {
             resourceInputs["autoConnect"] = state ? state.autoConnect : undefined;
             resourceInputs["captivePortal"] = state ? state.captivePortal : undefined;
             resourceInputs["default"] = state ? state.default : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disableAutoFallback"] = state ? state.disableAutoFallback : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["excludeOfficeIps"] = state ? state.excludeOfficeIps : undefined;
@@ -174,6 +180,9 @@ export class DeviceSettingsPolicy extends pulumi.CustomResource {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
+            if ((!args || args.description === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'description'");
+            }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -184,6 +193,7 @@ export class DeviceSettingsPolicy extends pulumi.CustomResource {
             resourceInputs["autoConnect"] = args ? args.autoConnect : undefined;
             resourceInputs["captivePortal"] = args ? args.captivePortal : undefined;
             resourceInputs["default"] = args ? args.default : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disableAutoFallback"] = args ? args.disableAutoFallback : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["excludeOfficeIps"] = args ? args.excludeOfficeIps : undefined;
@@ -232,6 +242,10 @@ export interface DeviceSettingsPolicyState {
      * Whether the policy refers to the default account policy.
      */
     default?: pulumi.Input<boolean>;
+    /**
+     * Description of Policy.
+     */
+    description?: pulumi.Input<string>;
     /**
      * Whether to disable auto fallback for this policy.
      */
@@ -306,6 +320,10 @@ export interface DeviceSettingsPolicyArgs {
      * Whether the policy refers to the default account policy.
      */
     default?: pulumi.Input<boolean>;
+    /**
+     * Description of Policy.
+     */
+    description: pulumi.Input<string>;
     /**
      * Whether to disable auto fallback for this policy.
      */

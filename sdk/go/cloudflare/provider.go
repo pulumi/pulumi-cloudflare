@@ -48,19 +48,29 @@ func NewProvider(ctx *pulumi.Context,
 	}
 
 	if args.ApiClientLogging == nil {
-		args.ApiClientLogging = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "CLOUDFLARE_API_CLIENT_LOGGING").(bool))
+		if d := getEnvOrDefault(false, parseEnvBool, "CLOUDFLARE_API_CLIENT_LOGGING"); d != nil {
+			args.ApiClientLogging = pulumi.BoolPtr(d.(bool))
+		}
 	}
 	if args.MaxBackoff == nil {
-		args.MaxBackoff = pulumi.IntPtr(getEnvOrDefault(30, parseEnvInt, "CLOUDFLARE_MAX_BACKOFF").(int))
+		if d := getEnvOrDefault(30, parseEnvInt, "CLOUDFLARE_MAX_BACKOFF"); d != nil {
+			args.MaxBackoff = pulumi.IntPtr(d.(int))
+		}
 	}
 	if args.MinBackoff == nil {
-		args.MinBackoff = pulumi.IntPtr(getEnvOrDefault(1, parseEnvInt, "CLOUDFLARE_MIN_BACKOFF").(int))
+		if d := getEnvOrDefault(1, parseEnvInt, "CLOUDFLARE_MIN_BACKOFF"); d != nil {
+			args.MinBackoff = pulumi.IntPtr(d.(int))
+		}
 	}
 	if args.Retries == nil {
-		args.Retries = pulumi.IntPtr(getEnvOrDefault(3, parseEnvInt, "CLOUDFLARE_RETRIES").(int))
+		if d := getEnvOrDefault(3, parseEnvInt, "CLOUDFLARE_RETRIES"); d != nil {
+			args.Retries = pulumi.IntPtr(d.(int))
+		}
 	}
 	if args.Rps == nil {
-		args.Rps = pulumi.IntPtr(getEnvOrDefault(4, parseEnvInt, "CLOUDFLARE_RPS").(int))
+		if d := getEnvOrDefault(4, parseEnvInt, "CLOUDFLARE_RPS"); d != nil {
+			args.Rps = pulumi.IntPtr(d.(int))
+		}
 	}
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:cloudflare", name, args, &resource, opts...)

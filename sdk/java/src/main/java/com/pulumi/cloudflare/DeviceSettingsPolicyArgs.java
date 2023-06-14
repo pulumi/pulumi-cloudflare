@@ -123,6 +123,21 @@ public final class DeviceSettingsPolicyArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Description of Policy.
+     * 
+     */
+    @Import(name="description", required=true)
+    private Output<String> description;
+
+    /**
+     * @return Description of Policy.
+     * 
+     */
+    public Output<String> description() {
+        return this.description;
+    }
+
+    /**
      * Whether to disable auto fallback for this policy.
      * 
      */
@@ -282,6 +297,7 @@ public final class DeviceSettingsPolicyArgs extends com.pulumi.resources.Resourc
         this.autoConnect = $.autoConnect;
         this.captivePortal = $.captivePortal;
         this.default_ = $.default_;
+        this.description = $.description;
         this.disableAutoFallback = $.disableAutoFallback;
         this.enabled = $.enabled;
         this.excludeOfficeIps = $.excludeOfficeIps;
@@ -457,6 +473,27 @@ public final class DeviceSettingsPolicyArgs extends com.pulumi.resources.Resourc
          */
         public Builder default_(Boolean default_) {
             return default_(Output.of(default_));
+        }
+
+        /**
+         * @param description Description of Policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description Description of Policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**
@@ -671,6 +708,7 @@ public final class DeviceSettingsPolicyArgs extends com.pulumi.resources.Resourc
 
         public DeviceSettingsPolicyArgs build() {
             $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
+            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
             $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             return $;
         }

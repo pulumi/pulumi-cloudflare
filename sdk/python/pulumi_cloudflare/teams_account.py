@@ -400,6 +400,7 @@ class TeamsAccount(pulumi.CustomResource):
                 ),
             ),
             proxy=cloudflare.TeamsAccountProxyArgs(
+                root_ca=True,
                 tcp=True,
                 udp=True,
             ),
@@ -475,6 +476,7 @@ class TeamsAccount(pulumi.CustomResource):
                 ),
             ),
             proxy=cloudflare.TeamsAccountProxyArgs(
+                root_ca=True,
                 tcp=True,
                 udp=True,
             ),

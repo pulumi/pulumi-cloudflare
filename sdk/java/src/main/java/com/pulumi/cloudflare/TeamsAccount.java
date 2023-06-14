@@ -90,6 +90,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .proxy(TeamsAccountProxyArgs.builder()
+ *                 .rootCa(true)
  *                 .tcp(true)
  *                 .udp(true)
  *                 .build())

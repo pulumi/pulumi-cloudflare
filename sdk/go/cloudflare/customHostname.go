@@ -65,7 +65,7 @@ type CustomHostname struct {
 	Hostname                  pulumi.StringOutput    `pulumi:"hostname"`
 	OwnershipVerification     pulumi.StringMapOutput `pulumi:"ownershipVerification"`
 	OwnershipVerificationHttp pulumi.StringMapOutput `pulumi:"ownershipVerificationHttp"`
-	// SSL configuration of the certificate.
+	// SSL properties used when creating the custom hostname.
 	Ssls CustomHostnameSslArrayOutput `pulumi:"ssls"`
 	// Status of the certificate.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -120,7 +120,7 @@ type customHostnameState struct {
 	Hostname                  *string           `pulumi:"hostname"`
 	OwnershipVerification     map[string]string `pulumi:"ownershipVerification"`
 	OwnershipVerificationHttp map[string]string `pulumi:"ownershipVerificationHttp"`
-	// SSL configuration of the certificate.
+	// SSL properties used when creating the custom hostname.
 	Ssls []CustomHostnameSsl `pulumi:"ssls"`
 	// Status of the certificate.
 	Status *string `pulumi:"status"`
@@ -141,7 +141,7 @@ type CustomHostnameState struct {
 	Hostname                  pulumi.StringPtrInput
 	OwnershipVerification     pulumi.StringMapInput
 	OwnershipVerificationHttp pulumi.StringMapInput
-	// SSL configuration of the certificate.
+	// SSL properties used when creating the custom hostname.
 	Ssls CustomHostnameSslArrayInput
 	// Status of the certificate.
 	Status pulumi.StringPtrInput
@@ -164,7 +164,7 @@ type customHostnameArgs struct {
 	CustomOriginSni *string `pulumi:"customOriginSni"`
 	// Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
 	Hostname string `pulumi:"hostname"`
-	// SSL configuration of the certificate.
+	// SSL properties used when creating the custom hostname.
 	Ssls []CustomHostnameSsl `pulumi:"ssls"`
 	// Whether to wait for a custom hostname SSL sub-object to reach status `pendingValidation` during creation. Defaults to `false`.
 	WaitForSslPendingValidation *bool `pulumi:"waitForSslPendingValidation"`
@@ -182,7 +182,7 @@ type CustomHostnameArgs struct {
 	CustomOriginSni pulumi.StringPtrInput
 	// Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
 	Hostname pulumi.StringInput
-	// SSL configuration of the certificate.
+	// SSL properties used when creating the custom hostname.
 	Ssls CustomHostnameSslArrayInput
 	// Whether to wait for a custom hostname SSL sub-object to reach status `pendingValidation` during creation. Defaults to `false`.
 	WaitForSslPendingValidation pulumi.BoolPtrInput
@@ -305,7 +305,7 @@ func (o CustomHostnameOutput) OwnershipVerificationHttp() pulumi.StringMapOutput
 	return o.ApplyT(func(v *CustomHostname) pulumi.StringMapOutput { return v.OwnershipVerificationHttp }).(pulumi.StringMapOutput)
 }
 
-// SSL configuration of the certificate.
+// SSL properties used when creating the custom hostname.
 func (o CustomHostnameOutput) Ssls() CustomHostnameSslArrayOutput {
 	return o.ApplyT(func(v *CustomHostname) CustomHostnameSslArrayOutput { return v.Ssls }).(CustomHostnameSslArrayOutput)
 }

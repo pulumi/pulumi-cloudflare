@@ -37,6 +37,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? ConnectionId { get; set; }
 
         /// <summary>
+        /// The count comparison operator for kolide. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+        /// </summary>
+        [Input("countOperator")]
+        public Input<string>? CountOperator { get; set; }
+
+        /// <summary>
         /// The domain that the client must join.
         /// </summary>
         [Input("domain")]
@@ -59,6 +65,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// The number of issues for kolide.
+        /// </summary>
+        [Input("issueCount")]
+        public Input<string>? IssueCount { get; set; }
 
         /// <summary>
         /// The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.

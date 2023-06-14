@@ -134,8 +134,10 @@ __all__ = [
     'PagesProjectBuildConfig',
     'PagesProjectDeploymentConfigs',
     'PagesProjectDeploymentConfigsPreview',
+    'PagesProjectDeploymentConfigsPreviewPlacement',
     'PagesProjectDeploymentConfigsPreviewServiceBinding',
     'PagesProjectDeploymentConfigsProduction',
+    'PagesProjectDeploymentConfigsProductionPlacement',
     'PagesProjectDeploymentConfigsProductionServiceBinding',
     'PagesProjectSource',
     'PagesProjectSourceConfig',
@@ -4069,7 +4071,9 @@ class CustomHostnameSsl(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "certificateAuthority":
+        if key == "bundleMethod":
+            suggest = "bundle_method"
+        elif key == "certificateAuthority":
             suggest = "certificate_authority"
         elif key == "customCertificate":
             suggest = "custom_certificate"
@@ -4092,6 +4096,7 @@ class CustomHostnameSsl(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 bundle_method: Optional[str] = None,
                  certificate_authority: Optional[str] = None,
                  custom_certificate: Optional[str] = None,
                  custom_key: Optional[str] = None,
@@ -4103,6 +4108,7 @@ class CustomHostnameSsl(dict):
                  validation_records: Optional[Sequence['outputs.CustomHostnameSslValidationRecord']] = None,
                  wildcard: Optional[bool] = None):
         """
+        :param str bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
         :param str custom_certificate: If a custom uploaded certificate is used.
         :param str custom_key: The key for a custom uploaded certificate.
         :param str method: Domain control validation (DCV) method used for this hostname. Available values: `http`, `txt`, `email`.
@@ -4111,6 +4117,8 @@ class CustomHostnameSsl(dict):
         :param str type: Level of validation to be used for this hostname. Available values: `dv`. Defaults to `dv`.
         :param bool wildcard: Indicates whether the certificate covers a wildcard.
         """
+        if bundle_method is not None:
+            pulumi.set(__self__, "bundle_method", bundle_method)
         if certificate_authority is not None:
             pulumi.set(__self__, "certificate_authority", certificate_authority)
         if custom_certificate is not None:
@@ -4131,6 +4139,14 @@ class CustomHostnameSsl(dict):
             pulumi.set(__self__, "validation_records", validation_records)
         if wildcard is not None:
             pulumi.set(__self__, "wildcard", wildcard)
+
+    @property
+    @pulumi.getter(name="bundleMethod")
+    def bundle_method(self) -> Optional[str]:
+        """
+        A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+        """
+        return pulumi.get(self, "bundle_method")
 
     @property
     @pulumi.getter(name="certificateAuthority")
@@ -4688,6 +4704,10 @@ class DevicePostureRuleInput(dict):
             suggest = "compliance_status"
         elif key == "connectionId":
             suggest = "connection_id"
+        elif key == "countOperator":
+            suggest = "count_operator"
+        elif key == "issueCount":
+            suggest = "issue_count"
         elif key == "osDistroName":
             suggest = "os_distro_name"
         elif key == "osDistroRevision":
@@ -4714,10 +4734,12 @@ class DevicePostureRuleInput(dict):
                  check_disks: Optional[Sequence[str]] = None,
                  compliance_status: Optional[str] = None,
                  connection_id: Optional[str] = None,
+                 count_operator: Optional[str] = None,
                  domain: Optional[str] = None,
                  enabled: Optional[bool] = None,
                  exists: Optional[bool] = None,
                  id: Optional[str] = None,
+                 issue_count: Optional[str] = None,
                  operator: Optional[str] = None,
                  os: Optional[str] = None,
                  os_distro_name: Optional[str] = None,
@@ -4735,10 +4757,12 @@ class DevicePostureRuleInput(dict):
         :param Sequence[str] check_disks: Specific volume(s) to check for encryption.
         :param str compliance_status: The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
         :param str connection_id: The workspace one connection id.
+        :param str count_operator: The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
         :param str domain: The domain that the client must join.
         :param bool enabled: True if the firewall must be enabled.
         :param bool exists: Checks if the file should exist.
         :param str id: The Teams List id.
+        :param str issue_count: The number of issues for kolide.
         :param str operator: The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
         :param str os: OS signal score from Crowdstrike. Value must be between 1 and 100.
         :param str os_distro_name: The operating system excluding version information.
@@ -4759,6 +4783,8 @@ class DevicePostureRuleInput(dict):
             pulumi.set(__self__, "compliance_status", compliance_status)
         if connection_id is not None:
             pulumi.set(__self__, "connection_id", connection_id)
+        if count_operator is not None:
+            pulumi.set(__self__, "count_operator", count_operator)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if enabled is not None:
@@ -4767,6 +4793,8 @@ class DevicePostureRuleInput(dict):
             pulumi.set(__self__, "exists", exists)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if issue_count is not None:
+            pulumi.set(__self__, "issue_count", issue_count)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if os is not None:
@@ -4819,6 +4847,14 @@ class DevicePostureRuleInput(dict):
         return pulumi.get(self, "connection_id")
 
     @property
+    @pulumi.getter(name="countOperator")
+    def count_operator(self) -> Optional[str]:
+        """
+        The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
+        """
+        return pulumi.get(self, "count_operator")
+
+    @property
     @pulumi.getter
     def domain(self) -> Optional[str]:
         """
@@ -4849,6 +4885,14 @@ class DevicePostureRuleInput(dict):
         The Teams List id.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="issueCount")
+    def issue_count(self) -> Optional[str]:
+        """
+        The number of issues for kolide.
+        """
+        return pulumi.get(self, "issue_count")
 
     @property
     @pulumi.getter
@@ -5834,7 +5878,7 @@ class LoadBalancerPoolOrigin(dict):
         :param str name: A human-identifiable name for the origin.
         :param bool enabled: Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
         :param Sequence['LoadBalancerPoolOriginHeaderArgs'] headers: HTTP request headers.
-        :param float weight: The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Defaults to `1`.
+        :param float weight: The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="least_outstanding_requests"`, weight is used to scale the origin's outstanding requests. Defaults to `1`.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "name", name)
@@ -5881,7 +5925,7 @@ class LoadBalancerPoolOrigin(dict):
     @pulumi.getter
     def weight(self) -> Optional[float]:
         """
-        The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Defaults to `1`.
+        The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="least_outstanding_requests"`, weight is used to scale the origin's outstanding requests. Defaults to `1`.
         """
         return pulumi.get(self, "weight")
 
@@ -5910,7 +5954,7 @@ class LoadBalancerPoolOriginSteering(dict):
     def __init__(__self__, *,
                  policy: Optional[str] = None):
         """
-        :param str policy: Origin steering policy to be used. Available values: `""`, `hash`, `random`. Defaults to `random`.
+        :param str policy: Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `least_outstanding_requests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Available values: `""`, `hash`, `random`, `least_outstanding_requests`. Defaults to `random`.
         """
         if policy is not None:
             pulumi.set(__self__, "policy", policy)
@@ -5919,7 +5963,7 @@ class LoadBalancerPoolOriginSteering(dict):
     @pulumi.getter
     def policy(self) -> Optional[str]:
         """
-        Origin steering policy to be used. Available values: `""`, `hash`, `random`. Defaults to `random`.
+        Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `least_outstanding_requests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Available values: `""`, `hash`, `random`, `least_outstanding_requests`. Defaults to `random`.
         """
         return pulumi.get(self, "policy")
 
@@ -6291,12 +6335,12 @@ class LoadBalancerRuleOverride(dict):
         :param Sequence['LoadBalancerRuleOverrideCountryPoolArgs'] country_pools: A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
         :param Sequence['LoadBalancerRuleOverrideLocationStrategyArgs'] location_strategies: Controls location-based steering for non-proxied requests.
         :param Sequence['LoadBalancerRuleOverridePopPoolArgs'] pop_pools: A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
-        :param Sequence['LoadBalancerRuleOverrideRandomSteeringArgs'] random_steerings: Configures pool weights for random steering. When the `steering_policy="random"`, a random pool is selected with probability proportional to these pool weights.
+        :param Sequence['LoadBalancerRuleOverrideRandomSteeringArgs'] random_steerings: Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="least_outstanding_requests"`, pool weights are used to scale each pool's outstanding requests.
         :param Sequence['LoadBalancerRuleOverrideRegionPoolArgs'] region_pools: A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
         :param str session_affinity: Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ip_cookie`. Defaults to `none`.
         :param Sequence['LoadBalancerRuleOverrideSessionAffinityAttributeArgs'] session_affinity_attributes: Configure cookie attributes for session affinity cookie.
         :param int session_affinity_ttl: Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
-        :param str steering_policy: The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `""` Defaults to `""`.
+        :param str steering_policy: The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `""` Defaults to `""`.
         :param int ttl: Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
         """
         if adaptive_routings is not None:
@@ -6372,7 +6416,7 @@ class LoadBalancerRuleOverride(dict):
     @pulumi.getter(name="randomSteerings")
     def random_steerings(self) -> Optional[Sequence['outputs.LoadBalancerRuleOverrideRandomSteering']]:
         """
-        Configures pool weights for random steering. When the `steering_policy="random"`, a random pool is selected with probability proportional to these pool weights.
+        Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="least_outstanding_requests"`, pool weights are used to scale each pool's outstanding requests.
         """
         return pulumi.get(self, "random_steerings")
 
@@ -6412,7 +6456,7 @@ class LoadBalancerRuleOverride(dict):
     @pulumi.getter(name="steeringPolicy")
     def steering_policy(self) -> Optional[str]:
         """
-        The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `""` Defaults to `""`.
+        The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `""` Defaults to `""`.
         """
         return pulumi.get(self, "steering_policy")
 
@@ -8452,6 +8496,7 @@ class PagesProjectDeploymentConfigsPreview(dict):
                  environment_variables: Optional[Mapping[str, Any]] = None,
                  fail_open: Optional[bool] = None,
                  kv_namespaces: Optional[Mapping[str, Any]] = None,
+                 placement: Optional['outputs.PagesProjectDeploymentConfigsPreviewPlacement'] = None,
                  r2_buckets: Optional[Mapping[str, Any]] = None,
                  secrets: Optional[Mapping[str, Any]] = None,
                  service_bindings: Optional[Sequence['outputs.PagesProjectDeploymentConfigsPreviewServiceBinding']] = None,
@@ -8472,6 +8517,8 @@ class PagesProjectDeploymentConfigsPreview(dict):
             pulumi.set(__self__, "fail_open", fail_open)
         if kv_namespaces is not None:
             pulumi.set(__self__, "kv_namespaces", kv_namespaces)
+        if placement is not None:
+            pulumi.set(__self__, "placement", placement)
         if r2_buckets is not None:
             pulumi.set(__self__, "r2_buckets", r2_buckets)
         if secrets is not None:
@@ -8522,6 +8569,11 @@ class PagesProjectDeploymentConfigsPreview(dict):
         return pulumi.get(self, "kv_namespaces")
 
     @property
+    @pulumi.getter
+    def placement(self) -> Optional['outputs.PagesProjectDeploymentConfigsPreviewPlacement']:
+        return pulumi.get(self, "placement")
+
+    @property
     @pulumi.getter(name="r2Buckets")
     def r2_buckets(self) -> Optional[Mapping[str, Any]]:
         return pulumi.get(self, "r2_buckets")
@@ -8540,6 +8592,19 @@ class PagesProjectDeploymentConfigsPreview(dict):
     @pulumi.getter(name="usageModel")
     def usage_model(self) -> Optional[str]:
         return pulumi.get(self, "usage_model")
+
+
+@pulumi.output_type
+class PagesProjectDeploymentConfigsPreviewPlacement(dict):
+    def __init__(__self__, *,
+                 mode: Optional[str] = None):
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type
@@ -8623,6 +8688,7 @@ class PagesProjectDeploymentConfigsProduction(dict):
                  environment_variables: Optional[Mapping[str, Any]] = None,
                  fail_open: Optional[bool] = None,
                  kv_namespaces: Optional[Mapping[str, Any]] = None,
+                 placement: Optional['outputs.PagesProjectDeploymentConfigsProductionPlacement'] = None,
                  r2_buckets: Optional[Mapping[str, Any]] = None,
                  secrets: Optional[Mapping[str, Any]] = None,
                  service_bindings: Optional[Sequence['outputs.PagesProjectDeploymentConfigsProductionServiceBinding']] = None,
@@ -8643,6 +8709,8 @@ class PagesProjectDeploymentConfigsProduction(dict):
             pulumi.set(__self__, "fail_open", fail_open)
         if kv_namespaces is not None:
             pulumi.set(__self__, "kv_namespaces", kv_namespaces)
+        if placement is not None:
+            pulumi.set(__self__, "placement", placement)
         if r2_buckets is not None:
             pulumi.set(__self__, "r2_buckets", r2_buckets)
         if secrets is not None:
@@ -8693,6 +8761,11 @@ class PagesProjectDeploymentConfigsProduction(dict):
         return pulumi.get(self, "kv_namespaces")
 
     @property
+    @pulumi.getter
+    def placement(self) -> Optional['outputs.PagesProjectDeploymentConfigsProductionPlacement']:
+        return pulumi.get(self, "placement")
+
+    @property
     @pulumi.getter(name="r2Buckets")
     def r2_buckets(self) -> Optional[Mapping[str, Any]]:
         return pulumi.get(self, "r2_buckets")
@@ -8711,6 +8784,19 @@ class PagesProjectDeploymentConfigsProduction(dict):
     @pulumi.getter(name="usageModel")
     def usage_model(self) -> Optional[str]:
         return pulumi.get(self, "usage_model")
+
+
+@pulumi.output_type
+class PagesProjectDeploymentConfigsProductionPlacement(dict):
+    def __init__(__self__, *,
+                 mode: Optional[str] = None):
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type
@@ -11883,15 +11969,43 @@ class TeamsAccountPayloadLog(dict):
 
 @pulumi.output_type
 class TeamsAccountProxy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rootCa":
+            suggest = "root_ca"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamsAccountProxy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamsAccountProxy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamsAccountProxy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 root_ca: bool,
                  tcp: bool,
                  udp: bool):
         """
+        :param bool root_ca: Whether root ca is enabled account wide for ZT clients.
         :param bool tcp: Whether gateway proxy is enabled on gateway devices for TCP traffic.
         :param bool udp: Whether gateway proxy is enabled on gateway devices for UDP traffic.
         """
+        pulumi.set(__self__, "root_ca", root_ca)
         pulumi.set(__self__, "tcp", tcp)
         pulumi.set(__self__, "udp", udp)
+
+    @property
+    @pulumi.getter(name="rootCa")
+    def root_ca(self) -> bool:
+        """
+        Whether root ca is enabled account wide for ZT clients.
+        """
+        return pulumi.get(self, "root_ca")
 
     @property
     @pulumi.getter

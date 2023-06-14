@@ -61,6 +61,9 @@ namespace Pulumi.Cloudflare.Inputs
             set => _kvNamespaces = value;
         }
 
+        [Input("placement")]
+        public Input<Inputs.PagesProjectDeploymentConfigsProductionPlacementGetArgs>? Placement { get; set; }
+
         [Input("r2Buckets")]
         private InputMap<object>? _r2Buckets;
         public InputMap<object> R2Buckets

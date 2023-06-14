@@ -16,6 +16,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CustomHostnameSsl {
+    /**
+     * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+     * 
+     */
+    private @Nullable String bundleMethod;
     private @Nullable String certificateAuthority;
     /**
      * @return If a custom uploaded certificate is used.
@@ -56,6 +61,13 @@ public final class CustomHostnameSsl {
     private @Nullable Boolean wildcard;
 
     private CustomHostnameSsl() {}
+    /**
+     * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+     * 
+     */
+    public Optional<String> bundleMethod() {
+        return Optional.ofNullable(this.bundleMethod);
+    }
     public Optional<String> certificateAuthority() {
         return Optional.ofNullable(this.certificateAuthority);
     }
@@ -124,6 +136,7 @@ public final class CustomHostnameSsl {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String bundleMethod;
         private @Nullable String certificateAuthority;
         private @Nullable String customCertificate;
         private @Nullable String customKey;
@@ -137,6 +150,7 @@ public final class CustomHostnameSsl {
         public Builder() {}
         public Builder(CustomHostnameSsl defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bundleMethod = defaults.bundleMethod;
     	      this.certificateAuthority = defaults.certificateAuthority;
     	      this.customCertificate = defaults.customCertificate;
     	      this.customKey = defaults.customKey;
@@ -149,6 +163,11 @@ public final class CustomHostnameSsl {
     	      this.wildcard = defaults.wildcard;
         }
 
+        @CustomType.Setter
+        public Builder bundleMethod(@Nullable String bundleMethod) {
+            this.bundleMethod = bundleMethod;
+            return this;
+        }
         @CustomType.Setter
         public Builder certificateAuthority(@Nullable String certificateAuthority) {
             this.certificateAuthority = certificateAuthority;
@@ -210,6 +229,7 @@ public final class CustomHostnameSsl {
         }
         public CustomHostnameSsl build() {
             final var o = new CustomHostnameSsl();
+            o.bundleMethod = bundleMethod;
             o.certificateAuthority = certificateAuthority;
             o.customCertificate = customCertificate;
             o.customKey = customKey;
