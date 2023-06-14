@@ -26,6 +26,9 @@
                     },
                     "saas_app": {
                         "maxItemsOne": true
+                    },
+                    "self_hosted_domains": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -1367,6 +1370,9 @@
                                             "compatibility_flags": {
                                                 "maxItemsOne": false
                                             },
+                                            "placement": {
+                                                "maxItemsOne": true
+                                            },
                                             "service_binding": {
                                                 "maxItemsOne": false
                                             }
@@ -1379,6 +1385,9 @@
                                         "fields": {
                                             "compatibility_flags": {
                                                 "maxItemsOne": false
+                                            },
+                                            "placement": {
+                                                "maxItemsOne": true
                                             },
                                             "service_binding": {
                                                 "maxItemsOne": false
@@ -2802,6 +2811,7 @@
                 "txtValue": "txt_value"
             },
             "cloudflare:index/CustomHostnameSsl:CustomHostnameSsl": {
+                "bundleMethod": "bundle_method",
                 "certificateAuthority": "certificate_authority",
                 "customCertificate": "custom_certificate",
                 "customKey": "custom_key",
@@ -2840,6 +2850,8 @@
                 "checkDisks": "check_disks",
                 "complianceStatus": "compliance_status",
                 "connectionId": "connection_id",
+                "countOperator": "count_operator",
+                "issueCount": "issue_count",
                 "osDistroName": "os_distro_name",
                 "osDistroRevision": "os_distro_revision",
                 "requireAll": "require_all",
@@ -3235,6 +3247,9 @@
             "cloudflare:index/TeamsAccountPayloadLog:TeamsAccountPayloadLog": {
                 "publicKey": "public_key"
             },
+            "cloudflare:index/TeamsAccountProxy:TeamsAccountProxy": {
+                "rootCa": "root_ca"
+            },
             "cloudflare:index/TeamsRuleRuleSettings:TeamsRuleRuleSettings": {
                 "addHeaders": "add_headers",
                 "allowChildBypass": "allow_child_bypass",
@@ -3443,6 +3458,7 @@
                 "logoUrl": "logo_url",
                 "saasApp": "saas_app",
                 "sameSiteCookieAttribute": "same_site_cookie_attribute",
+                "selfHostedDomains": "self_hosted_domains",
                 "serviceAuth401Redirect": "service_auth_401_redirect",
                 "sessionDuration": "session_duration",
                 "skipInterstitial": "skip_interstitial",
