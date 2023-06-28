@@ -3,11 +3,13 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.WaitingRoomAdditionalRouteArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +18,36 @@ import javax.annotation.Nullable;
 public final class WaitingRoomArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WaitingRoomArgs Empty = new WaitingRoomArgs();
+
+    /**
+     * A list of additional hostname and paths combination to be applied on the waiting room.
+     * 
+     */
+    @Import(name="additionalRoutes")
+    private @Nullable Output<List<WaitingRoomAdditionalRouteArgs>> additionalRoutes;
+
+    /**
+     * @return A list of additional hostname and paths combination to be applied on the waiting room.
+     * 
+     */
+    public Optional<Output<List<WaitingRoomAdditionalRouteArgs>>> additionalRoutes() {
+        return Optional.ofNullable(this.additionalRoutes);
+    }
+
+    /**
+     * A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+     * 
+     */
+    @Import(name="cookieSuffix")
+    private @Nullable Output<String> cookieSuffix;
+
+    /**
+     * @return A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+     * 
+     */
+    public Optional<Output<String>> cookieSuffix() {
+        return Optional.ofNullable(this.cookieSuffix);
+    }
 
     /**
      * This is a templated html file that will be rendered at the edge.
@@ -245,6 +277,8 @@ public final class WaitingRoomArgs extends com.pulumi.resources.ResourceArgs {
     private WaitingRoomArgs() {}
 
     private WaitingRoomArgs(WaitingRoomArgs $) {
+        this.additionalRoutes = $.additionalRoutes;
+        this.cookieSuffix = $.cookieSuffix;
         this.customPageHtml = $.customPageHtml;
         this.defaultTemplateLanguage = $.defaultTemplateLanguage;
         this.description = $.description;
@@ -278,6 +312,58 @@ public final class WaitingRoomArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(WaitingRoomArgs defaults) {
             $ = new WaitingRoomArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additionalRoutes A list of additional hostname and paths combination to be applied on the waiting room.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalRoutes(@Nullable Output<List<WaitingRoomAdditionalRouteArgs>> additionalRoutes) {
+            $.additionalRoutes = additionalRoutes;
+            return this;
+        }
+
+        /**
+         * @param additionalRoutes A list of additional hostname and paths combination to be applied on the waiting room.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalRoutes(List<WaitingRoomAdditionalRouteArgs> additionalRoutes) {
+            return additionalRoutes(Output.of(additionalRoutes));
+        }
+
+        /**
+         * @param additionalRoutes A list of additional hostname and paths combination to be applied on the waiting room.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalRoutes(WaitingRoomAdditionalRouteArgs... additionalRoutes) {
+            return additionalRoutes(List.of(additionalRoutes));
+        }
+
+        /**
+         * @param cookieSuffix A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cookieSuffix(@Nullable Output<String> cookieSuffix) {
+            $.cookieSuffix = cookieSuffix;
+            return this;
+        }
+
+        /**
+         * @param cookieSuffix A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cookieSuffix(String cookieSuffix) {
+            return cookieSuffix(Output.of(cookieSuffix));
         }
 
         /**

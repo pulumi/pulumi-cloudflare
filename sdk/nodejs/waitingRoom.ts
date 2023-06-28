@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -15,6 +17,16 @@ import * as utilities from "./utilities";
  *
  * // Waiting Room
  * const example = new cloudflare.WaitingRoom("example", {
+ *     additionalRoutes: [
+ *         {
+ *             host: "shop1.example.com",
+ *             path: "/example-path",
+ *         },
+ *         {
+ *             host: "shop2.example.com",
+ *         },
+ *     ],
+ *     cookieSuffix: "queue1",
  *     host: "foo.example.com",
  *     name: "foo",
  *     newUsersPerMinute: 200,
@@ -60,6 +72,14 @@ export class WaitingRoom extends pulumi.CustomResource {
         return obj['__pulumiType'] === WaitingRoom.__pulumiType;
     }
 
+    /**
+     * A list of additional hostname and paths combination to be applied on the waiting room.
+     */
+    public readonly additionalRoutes!: pulumi.Output<outputs.WaitingRoomAdditionalRoute[] | undefined>;
+    /**
+     * A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+     */
+    public readonly cookieSuffix!: pulumi.Output<string | undefined>;
     /**
      * This is a templated html file that will be rendered at the edge.
      */
@@ -134,6 +154,8 @@ export class WaitingRoom extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WaitingRoomState | undefined;
+            resourceInputs["additionalRoutes"] = state ? state.additionalRoutes : undefined;
+            resourceInputs["cookieSuffix"] = state ? state.cookieSuffix : undefined;
             resourceInputs["customPageHtml"] = state ? state.customPageHtml : undefined;
             resourceInputs["defaultTemplateLanguage"] = state ? state.defaultTemplateLanguage : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -166,6 +188,8 @@ export class WaitingRoom extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            resourceInputs["additionalRoutes"] = args ? args.additionalRoutes : undefined;
+            resourceInputs["cookieSuffix"] = args ? args.cookieSuffix : undefined;
             resourceInputs["customPageHtml"] = args ? args.customPageHtml : undefined;
             resourceInputs["defaultTemplateLanguage"] = args ? args.defaultTemplateLanguage : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -191,6 +215,14 @@ export class WaitingRoom extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WaitingRoom resources.
  */
 export interface WaitingRoomState {
+    /**
+     * A list of additional hostname and paths combination to be applied on the waiting room.
+     */
+    additionalRoutes?: pulumi.Input<pulumi.Input<inputs.WaitingRoomAdditionalRoute>[]>;
+    /**
+     * A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+     */
+    cookieSuffix?: pulumi.Input<string>;
     /**
      * This is a templated html file that will be rendered at the edge.
      */
@@ -257,6 +289,14 @@ export interface WaitingRoomState {
  * The set of arguments for constructing a WaitingRoom resource.
  */
 export interface WaitingRoomArgs {
+    /**
+     * A list of additional hostname and paths combination to be applied on the waiting room.
+     */
+    additionalRoutes?: pulumi.Input<pulumi.Input<inputs.WaitingRoomAdditionalRoute>[]>;
+    /**
+     * A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+     */
+    cookieSuffix?: pulumi.Input<string>;
     /**
      * This is a templated html file that will be rendered at the edge.
      */

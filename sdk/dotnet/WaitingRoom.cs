@@ -25,6 +25,19 @@ namespace Pulumi.Cloudflare
     ///     // Waiting Room
     ///     var example = new Cloudflare.WaitingRoom("example", new()
     ///     {
+    ///         AdditionalRoutes = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WaitingRoomAdditionalRouteArgs
+    ///             {
+    ///                 Host = "shop1.example.com",
+    ///                 Path = "/example-path",
+    ///             },
+    ///             new Cloudflare.Inputs.WaitingRoomAdditionalRouteArgs
+    ///             {
+    ///                 Host = "shop2.example.com",
+    ///             },
+    ///         },
+    ///         CookieSuffix = "queue1",
     ///         Host = "foo.example.com",
     ///         Name = "foo",
     ///         NewUsersPerMinute = 200,
@@ -47,6 +60,18 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/waitingRoom:WaitingRoom")]
     public partial class WaitingRoom : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// A list of additional hostname and paths combination to be applied on the waiting room.
+        /// </summary>
+        [Output("additionalRoutes")]
+        public Output<ImmutableArray<Outputs.WaitingRoomAdditionalRoute>> AdditionalRoutes { get; private set; } = null!;
+
+        /// <summary>
+        /// A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+        /// </summary>
+        [Output("cookieSuffix")]
+        public Output<string?> CookieSuffix { get; private set; } = null!;
+
         /// <summary>
         /// This is a templated html file that will be rendered at the edge.
         /// </summary>
@@ -183,6 +208,24 @@ namespace Pulumi.Cloudflare
 
     public sealed class WaitingRoomArgs : global::Pulumi.ResourceArgs
     {
+        [Input("additionalRoutes")]
+        private InputList<Inputs.WaitingRoomAdditionalRouteArgs>? _additionalRoutes;
+
+        /// <summary>
+        /// A list of additional hostname and paths combination to be applied on the waiting room.
+        /// </summary>
+        public InputList<Inputs.WaitingRoomAdditionalRouteArgs> AdditionalRoutes
+        {
+            get => _additionalRoutes ?? (_additionalRoutes = new InputList<Inputs.WaitingRoomAdditionalRouteArgs>());
+            set => _additionalRoutes = value;
+        }
+
+        /// <summary>
+        /// A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+        /// </summary>
+        [Input("cookieSuffix")]
+        public Input<string>? CookieSuffix { get; set; }
+
         /// <summary>
         /// This is a templated html file that will be rendered at the edge.
         /// </summary>
@@ -281,6 +324,24 @@ namespace Pulumi.Cloudflare
 
     public sealed class WaitingRoomState : global::Pulumi.ResourceArgs
     {
+        [Input("additionalRoutes")]
+        private InputList<Inputs.WaitingRoomAdditionalRouteGetArgs>? _additionalRoutes;
+
+        /// <summary>
+        /// A list of additional hostname and paths combination to be applied on the waiting room.
+        /// </summary>
+        public InputList<Inputs.WaitingRoomAdditionalRouteGetArgs> AdditionalRoutes
+        {
+            get => _additionalRoutes ?? (_additionalRoutes = new InputList<Inputs.WaitingRoomAdditionalRouteGetArgs>());
+            set => _additionalRoutes = value;
+        }
+
+        /// <summary>
+        /// A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+        /// </summary>
+        [Input("cookieSuffix")]
+        public Input<string>? CookieSuffix { get; set; }
+
         /// <summary>
         /// This is a templated html file that will be rendered at the edge.
         /// </summary>

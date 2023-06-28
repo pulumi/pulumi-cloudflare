@@ -359,7 +359,7 @@ import javax.annotation.Nullable;
  * 
  *         var redirectFromValueExample = new Ruleset(&#34;redirectFromValueExample&#34;, RulesetArgs.builder()        
  *             .description(&#34;Redirect ruleset&#34;)
- *             .kind(&#34;root&#34;)
+ *             .kind(&#34;zone&#34;)
  *             .name(&#34;redirects&#34;)
  *             .phase(&#34;http_request_dynamic_redirect&#34;)
  *             .rules(RulesetRuleArgs.builder()

@@ -119,7 +119,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> CustomDenyUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        /// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
@@ -161,8 +161,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> SameSiteCookieAttribute { get; private set; } = null!;
 
         /// <summary>
-        /// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
-        /// value set as `domain`
+        /// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         /// </summary>
         [Output("selfHostedDomains")]
         public Output<ImmutableArray<string>> SelfHostedDomains { get; private set; } = null!;
@@ -298,7 +297,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CustomDenyUrl { get; set; }
 
         /// <summary>
-        /// The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        /// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
@@ -343,8 +342,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _selfHostedDomains;
 
         /// <summary>
-        /// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
-        /// value set as `domain`
+        /// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         /// </summary>
         public InputList<string> SelfHostedDomains
         {
@@ -451,7 +449,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CustomDenyUrl { get; set; }
 
         /// <summary>
-        /// The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        /// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
@@ -496,8 +494,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _selfHostedDomains;
 
         /// <summary>
-        /// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
-        /// value set as `domain`
+        /// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         /// </summary>
         public InputList<string> SelfHostedDomains
         {

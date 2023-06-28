@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class NotificationPolicyFilters
     {
         /// <summary>
+        /// Alert trigger preferences. Example: `slo`.
+        /// </summary>
+        public readonly ImmutableArray<string> AlertTriggerPreferences;
+        /// <summary>
         /// State of the pool to alert on.
         /// </summary>
         public readonly ImmutableArray<string> Enableds;
@@ -89,6 +93,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private NotificationPolicyFilters(
+            ImmutableArray<string> alertTriggerPreferences,
+
             ImmutableArray<string> enableds,
 
             ImmutableArray<string> eventSources,
@@ -127,6 +133,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> zones)
         {
+            AlertTriggerPreferences = alertTriggerPreferences;
             Enableds = enableds;
             EventSources = eventSources;
             EventTypes = eventTypes;

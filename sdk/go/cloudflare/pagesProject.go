@@ -40,9 +40,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudflare.NewPagesProject(ctx, "buildConfig", &cloudflare.PagesProjectArgs{
-//				AccountId:        pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:             pulumi.String("this-is-my-project-01"),
-//				ProductionBranch: pulumi.String("main"),
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				BuildConfig: &cloudflare.PagesProjectBuildConfigArgs{
 //					BuildCommand:      pulumi.String("npm run build"),
 //					DestinationDir:    pulumi.String("build"),
@@ -50,6 +48,8 @@ import (
 //					WebAnalyticsTag:   pulumi.String("cee1c73f6e4743d0b5e6bb1a0bcaabcc"),
 //					WebAnalyticsToken: pulumi.String("021e1057c18547eca7b79f2516f06o7x"),
 //				},
+//				Name:             pulumi.String("this-is-my-project-01"),
+//				ProductionBranch: pulumi.String("main"),
 //			})
 //			if err != nil {
 //				return err
@@ -59,89 +59,116 @@ import (
 //				Name:             pulumi.String("this-is-my-project-01"),
 //				ProductionBranch: pulumi.String("main"),
 //				Source: &cloudflare.PagesProjectSourceArgs{
-//					Type: pulumi.String("github"),
 //					Config: &cloudflare.PagesProjectSourceConfigArgs{
-//						Owner:                       pulumi.String("cloudflare"),
-//						RepoName:                    pulumi.String("ninjakittens"),
-//						ProductionBranch:            pulumi.String("main"),
-//						PrCommentsEnabled:           pulumi.Bool(true),
-//						DeploymentsEnabled:          pulumi.Bool(true),
-//						ProductionDeploymentEnabled: pulumi.Bool(true),
-//						PreviewDeploymentSetting:    pulumi.String("custom"),
-//						PreviewBranchIncludes: pulumi.StringArray{
-//							pulumi.String("dev"),
-//							pulumi.String("preview"),
-//						},
+//						DeploymentsEnabled: pulumi.Bool(true),
+//						Owner:              pulumi.String("cloudflare"),
+//						PrCommentsEnabled:  pulumi.Bool(true),
 //						PreviewBranchExcludes: pulumi.StringArray{
 //							pulumi.String("main"),
 //							pulumi.String("prod"),
 //						},
+//						PreviewBranchIncludes: pulumi.StringArray{
+//							pulumi.String("dev"),
+//							pulumi.String("preview"),
+//						},
+//						PreviewDeploymentSetting:    pulumi.String("custom"),
+//						ProductionBranch:            pulumi.String("main"),
+//						ProductionDeploymentEnabled: pulumi.Bool(true),
+//						RepoName:                    pulumi.String("ninjakittens"),
 //					},
+//					Type: pulumi.String("github"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cloudflare.NewPagesProject(ctx, "deploymentConfigs", &cloudflare.PagesProjectArgs{
-//				AccountId:        pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:             pulumi.String("this-is-my-project-01"),
-//				ProductionBranch: pulumi.String("main"),
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				BuildConfig: &cloudflare.PagesProjectBuildConfigArgs{
+//					BuildCommand:      pulumi.String("npm run build"),
+//					DestinationDir:    pulumi.String("build"),
+//					RootDir:           pulumi.String(""),
+//					WebAnalyticsTag:   pulumi.String("cee1c73f6e4743d0b5e6bb1a0bcaabcc"),
+//					WebAnalyticsToken: pulumi.String("021e1057c18547eca7b79f2516f06o7x"),
+//				},
 //				DeploymentConfigs: &cloudflare.PagesProjectDeploymentConfigsArgs{
 //					Preview: &cloudflare.PagesProjectDeploymentConfigsPreviewArgs{
+//						CompatibilityDate: pulumi.String("2022-08-15"),
+//						CompatibilityFlags: pulumi.StringArray{
+//							pulumi.String("nodejs_compat"),
+//						},
+//						D1Databases: pulumi.AnyMap{
+//							"D1BINDING": pulumi.Any("445e2955-951a-4358-a35b-a4d0c813f63"),
+//						},
+//						DurableObjectNamespaces: pulumi.AnyMap{
+//							"DOBINDING": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
+//						},
 //						EnvironmentVariables: pulumi.AnyMap{
 //							"ENVIRONMENT": pulumi.Any("preview"),
 //						},
-//						Secrets: pulumi.AnyMap{
-//							"TURNSTILE_SECRET": pulumi.Any(_var.Turnstile_secret),
-//						},
 //						KvNamespaces: pulumi.AnyMap{
-//							"KV_BINDING": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
-//						},
-//						DurableObjectNamespaces: pulumi.AnyMap{
-//							"DO_BINDING": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
+//							"KVBINDING": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
 //						},
 //						R2Buckets: pulumi.AnyMap{
-//							"R2_BINDING": pulumi.Any("some-bucket"),
+//							"R2BINDING": pulumi.Any("some-bucket"),
 //						},
-//						D1Databases: pulumi.AnyMap{
-//							"D1_BINDING": pulumi.Any("445e2955-951a-4358-a35b-a4d0c813f63"),
-//						},
-//						CompatibilityDate: pulumi.String("2022-08-15"),
-//						CompatibilityFlags: pulumi.StringArray{
-//							pulumi.String("preview_flag"),
+//						Secrets: pulumi.AnyMap{
+//							"TURNSTILESECRET": pulumi.Any("1x0000000000000000000000000000000AA"),
 //						},
 //					},
 //					Production: &cloudflare.PagesProjectDeploymentConfigsProductionArgs{
-//						EnvironmentVariables: pulumi.AnyMap{
-//							"ENVIRONMENT": pulumi.Any("production"),
-//							"OTHER_VALUE": pulumi.Any("other value"),
-//						},
-//						Secrets: pulumi.AnyMap{
-//							"TURNSTILE_SECRET":       pulumi.Any(_var.Turnstile_secret),
-//							"TURNSTILE_INVIS_SECRET": pulumi.Any(_var.Turnstile_invisible_secret),
-//						},
-//						KvNamespaces: pulumi.AnyMap{
-//							"KV_BINDING_1": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
-//							"KV_BINDING_2": pulumi.Any("3cdca5f8bb22bc390deee10ebbb36be5"),
-//						},
-//						DurableObjectNamespaces: pulumi.AnyMap{
-//							"DO_BINDING_1": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
-//							"DO_BINDING_2": pulumi.Any("3cdca5f8bb22bc390deee10ebbb36be5"),
-//						},
-//						R2Buckets: pulumi.AnyMap{
-//							"R2_BINDING_1": pulumi.Any("some-bucket"),
-//							"R2_BINDING_2": pulumi.Any("other-bucket"),
-//						},
-//						D1Databases: pulumi.AnyMap{
-//							"D1_BINDING_1": pulumi.Any("445e2955-951a-4358-a35b-a4d0c813f63"),
-//							"D1_BINDING_2": pulumi.Any("a399414b-c697-409a-a688-377db6433cd9"),
-//						},
 //						CompatibilityDate: pulumi.String("2022-08-16"),
 //						CompatibilityFlags: pulumi.StringArray{
-//							pulumi.String("production_flag"),
-//							pulumi.String("second flag"),
+//							pulumi.String("nodejs_compat"),
+//							pulumi.String("streams_enable_constructors"),
+//						},
+//						D1Databases: pulumi.AnyMap{
+//							"D1BINDING1": pulumi.Any("445e2955-951a-4358-a35b-a4d0c813f63"),
+//							"D1BINDING2": pulumi.Any("a399414b-c697-409a-a688-377db6433cd9"),
+//						},
+//						DurableObjectNamespaces: pulumi.AnyMap{
+//							"DOBINDING1": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
+//							"DOBINDING2": pulumi.Any("3cdca5f8bb22bc390deee10ebbb36be5"),
+//						},
+//						EnvironmentVariables: pulumi.AnyMap{
+//							"ENVIRONMENT": pulumi.Any("production"),
+//							"OTHERVALUE":  pulumi.Any("other value"),
+//						},
+//						KvNamespaces: pulumi.AnyMap{
+//							"KVBINDING1": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
+//							"KVBINDING2": pulumi.Any("3cdca5f8bb22bc390deee10ebbb36be5"),
+//						},
+//						R2Buckets: pulumi.AnyMap{
+//							"R2BINDING1": pulumi.Any("some-bucket"),
+//							"R2BINDING2": pulumi.Any("other-bucket"),
+//						},
+//						Secrets: pulumi.AnyMap{
+//							"TURNSTILEINVISSECRET": pulumi.Any("2x0000000000000000000000000000000AA"),
+//							"TURNSTILESECRET":      pulumi.Any("1x0000000000000000000000000000000AA"),
 //						},
 //					},
+//				},
+//				Name:             pulumi.String("this-is-my-project-01"),
+//				ProductionBranch: pulumi.String("main"),
+//				Source: &cloudflare.PagesProjectSourceArgs{
+//					Config: &cloudflare.PagesProjectSourceConfigArgs{
+//						DeploymentsEnabled: pulumi.Bool(true),
+//						Owner:              pulumi.String("cloudflare"),
+//						PrCommentsEnabled:  pulumi.Bool(true),
+//						PreviewBranchExcludes: pulumi.StringArray{
+//							pulumi.String("main"),
+//							pulumi.String("prod"),
+//						},
+//						PreviewBranchIncludes: pulumi.StringArray{
+//							pulumi.String("dev"),
+//							pulumi.String("preview"),
+//						},
+//						PreviewDeploymentSetting:    pulumi.String("custom"),
+//						ProductionBranch:            pulumi.String("main"),
+//						ProductionDeploymentEnabled: pulumi.Bool(true),
+//						RepoName:                    pulumi.String("ninjakittens"),
+//					},
+//					Type: pulumi.String("github"),
 //				},
 //			})
 //			if err != nil {
@@ -169,7 +196,7 @@ type PagesProject struct {
 
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Configuration for the project build process.
+	// Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
 	BuildConfig PagesProjectBuildConfigPtrOutput `pulumi:"buildConfig"`
 	// When the project was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
@@ -181,7 +208,7 @@ type PagesProject struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the branch that is used for the production environment.
 	ProductionBranch pulumi.StringOutput `pulumi:"productionBranch"`
-	// Configuration for the project source.
+	// Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
 	Source PagesProjectSourcePtrOutput `pulumi:"source"`
 	// The Cloudflare subdomain associated with the project.
 	Subdomain pulumi.StringOutput `pulumi:"subdomain"`
@@ -227,7 +254,7 @@ func GetPagesProject(ctx *pulumi.Context,
 type pagesProjectState struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// Configuration for the project build process.
+	// Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
 	BuildConfig *PagesProjectBuildConfig `pulumi:"buildConfig"`
 	// When the project was created.
 	CreatedOn *string `pulumi:"createdOn"`
@@ -239,7 +266,7 @@ type pagesProjectState struct {
 	Name *string `pulumi:"name"`
 	// The name of the branch that is used for the production environment.
 	ProductionBranch *string `pulumi:"productionBranch"`
-	// Configuration for the project source.
+	// Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
 	Source *PagesProjectSource `pulumi:"source"`
 	// The Cloudflare subdomain associated with the project.
 	Subdomain *string `pulumi:"subdomain"`
@@ -248,7 +275,7 @@ type pagesProjectState struct {
 type PagesProjectState struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// Configuration for the project build process.
+	// Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
 	BuildConfig PagesProjectBuildConfigPtrInput
 	// When the project was created.
 	CreatedOn pulumi.StringPtrInput
@@ -260,7 +287,7 @@ type PagesProjectState struct {
 	Name pulumi.StringPtrInput
 	// The name of the branch that is used for the production environment.
 	ProductionBranch pulumi.StringPtrInput
-	// Configuration for the project source.
+	// Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
 	Source PagesProjectSourcePtrInput
 	// The Cloudflare subdomain associated with the project.
 	Subdomain pulumi.StringPtrInput
@@ -273,7 +300,7 @@ func (PagesProjectState) ElementType() reflect.Type {
 type pagesProjectArgs struct {
 	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
-	// Configuration for the project build process.
+	// Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
 	BuildConfig *PagesProjectBuildConfig `pulumi:"buildConfig"`
 	// Configuration for deployments in a project.
 	DeploymentConfigs *PagesProjectDeploymentConfigs `pulumi:"deploymentConfigs"`
@@ -281,7 +308,7 @@ type pagesProjectArgs struct {
 	Name string `pulumi:"name"`
 	// The name of the branch that is used for the production environment.
 	ProductionBranch string `pulumi:"productionBranch"`
-	// Configuration for the project source.
+	// Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
 	Source *PagesProjectSource `pulumi:"source"`
 }
 
@@ -289,7 +316,7 @@ type pagesProjectArgs struct {
 type PagesProjectArgs struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// Configuration for the project build process.
+	// Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
 	BuildConfig PagesProjectBuildConfigPtrInput
 	// Configuration for deployments in a project.
 	DeploymentConfigs PagesProjectDeploymentConfigsPtrInput
@@ -297,7 +324,7 @@ type PagesProjectArgs struct {
 	Name pulumi.StringInput
 	// The name of the branch that is used for the production environment.
 	ProductionBranch pulumi.StringInput
-	// Configuration for the project source.
+	// Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
 	Source PagesProjectSourcePtrInput
 }
 
@@ -393,7 +420,7 @@ func (o PagesProjectOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Configuration for the project build process.
+// Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
 func (o PagesProjectOutput) BuildConfig() PagesProjectBuildConfigPtrOutput {
 	return o.ApplyT(func(v *PagesProject) PagesProjectBuildConfigPtrOutput { return v.BuildConfig }).(PagesProjectBuildConfigPtrOutput)
 }
@@ -423,7 +450,7 @@ func (o PagesProjectOutput) ProductionBranch() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.ProductionBranch }).(pulumi.StringOutput)
 }
 
-// Configuration for the project source.
+// Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
 func (o PagesProjectOutput) Source() PagesProjectSourcePtrOutput {
 	return o.ApplyT(func(v *PagesProject) PagesProjectSourcePtrOutput { return v.Source }).(PagesProjectSourcePtrOutput)
 }

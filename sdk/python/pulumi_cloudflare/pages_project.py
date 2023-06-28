@@ -27,9 +27,9 @@ class PagesProjectArgs:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] name: Name of the project. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] production_branch: The name of the branch that is used for the production environment.
-        :param pulumi.Input['PagesProjectBuildConfigArgs'] build_config: Configuration for the project build process.
+        :param pulumi.Input['PagesProjectBuildConfigArgs'] build_config: Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
         :param pulumi.Input['PagesProjectDeploymentConfigsArgs'] deployment_configs: Configuration for deployments in a project.
-        :param pulumi.Input['PagesProjectSourceArgs'] source: Configuration for the project source.
+        :param pulumi.Input['PagesProjectSourceArgs'] source: Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
@@ -81,7 +81,7 @@ class PagesProjectArgs:
     @pulumi.getter(name="buildConfig")
     def build_config(self) -> Optional[pulumi.Input['PagesProjectBuildConfigArgs']]:
         """
-        Configuration for the project build process.
+        Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
         """
         return pulumi.get(self, "build_config")
 
@@ -105,7 +105,7 @@ class PagesProjectArgs:
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input['PagesProjectSourceArgs']]:
         """
-        Configuration for the project source.
+        Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
         """
         return pulumi.get(self, "source")
 
@@ -129,13 +129,13 @@ class _PagesProjectState:
         """
         Input properties used for looking up and filtering PagesProject resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input['PagesProjectBuildConfigArgs'] build_config: Configuration for the project build process.
+        :param pulumi.Input['PagesProjectBuildConfigArgs'] build_config: Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
         :param pulumi.Input[str] created_on: When the project was created.
         :param pulumi.Input['PagesProjectDeploymentConfigsArgs'] deployment_configs: Configuration for deployments in a project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: A list of associated custom domains for the project.
         :param pulumi.Input[str] name: Name of the project. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] production_branch: The name of the branch that is used for the production environment.
-        :param pulumi.Input['PagesProjectSourceArgs'] source: Configuration for the project source.
+        :param pulumi.Input['PagesProjectSourceArgs'] source: Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
         :param pulumi.Input[str] subdomain: The Cloudflare subdomain associated with the project.
         """
         if account_id is not None:
@@ -173,7 +173,7 @@ class _PagesProjectState:
     @pulumi.getter(name="buildConfig")
     def build_config(self) -> Optional[pulumi.Input['PagesProjectBuildConfigArgs']]:
         """
-        Configuration for the project build process.
+        Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
         """
         return pulumi.get(self, "build_config")
 
@@ -245,7 +245,7 @@ class _PagesProjectState:
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input['PagesProjectSourceArgs']]:
         """
-        Configuration for the project source.
+        Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
         """
         return pulumi.get(self, "source")
 
@@ -291,107 +291,134 @@ class PagesProject(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # Basic project
+        # Direct upload Pages project
         basic_project = cloudflare.PagesProject("basicProject",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="this-is-my-project-01",
             production_branch="main")
-        # Manage build config
+        # Pages project with managing build config
         build_config = cloudflare.PagesProject("buildConfig",
             account_id="f037e56e89293a057740de681ac9abbe",
-            name="this-is-my-project-01",
-            production_branch="main",
             build_config=cloudflare.PagesProjectBuildConfigArgs(
                 build_command="npm run build",
                 destination_dir="build",
                 root_dir="",
                 web_analytics_tag="cee1c73f6e4743d0b5e6bb1a0bcaabcc",
                 web_analytics_token="021e1057c18547eca7b79f2516f06o7x",
-            ))
-        # Manage project source
+            ),
+            name="this-is-my-project-01",
+            production_branch="main")
+        # Pages project managing project source
         source_config = cloudflare.PagesProject("sourceConfig",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="this-is-my-project-01",
             production_branch="main",
             source=cloudflare.PagesProjectSourceArgs(
-                type="github",
                 config=cloudflare.PagesProjectSourceConfigArgs(
-                    owner="cloudflare",
-                    repo_name="ninjakittens",
-                    production_branch="main",
-                    pr_comments_enabled=True,
                     deployments_enabled=True,
-                    production_deployment_enabled=True,
-                    preview_deployment_setting="custom",
-                    preview_branch_includes=[
-                        "dev",
-                        "preview",
-                    ],
+                    owner="cloudflare",
+                    pr_comments_enabled=True,
                     preview_branch_excludes=[
                         "main",
                         "prod",
                     ],
+                    preview_branch_includes=[
+                        "dev",
+                        "preview",
+                    ],
+                    preview_deployment_setting="custom",
+                    production_branch="main",
+                    production_deployment_enabled=True,
+                    repo_name="ninjakittens",
                 ),
+                type="github",
             ))
-        # Manage deployment configs
+        # Pages project managing all configs
         deployment_configs = cloudflare.PagesProject("deploymentConfigs",
             account_id="f037e56e89293a057740de681ac9abbe",
-            name="this-is-my-project-01",
-            production_branch="main",
+            build_config=cloudflare.PagesProjectBuildConfigArgs(
+                build_command="npm run build",
+                destination_dir="build",
+                root_dir="",
+                web_analytics_tag="cee1c73f6e4743d0b5e6bb1a0bcaabcc",
+                web_analytics_token="021e1057c18547eca7b79f2516f06o7x",
+            ),
             deployment_configs=cloudflare.PagesProjectDeploymentConfigsArgs(
                 preview=cloudflare.PagesProjectDeploymentConfigsPreviewArgs(
+                    compatibility_date="2022-08-15",
+                    compatibility_flags=["nodejs_compat"],
+                    d1_databases={
+                        "D1BINDING": "445e2955-951a-4358-a35b-a4d0c813f63",
+                    },
+                    durable_object_namespaces={
+                        "DOBINDING": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+                    },
                     environment_variables={
                         "ENVIRONMENT": "preview",
                     },
-                    secrets={
-                        "TURNSTILE_SECRET": var["turnstile_secret"],
-                    },
                     kv_namespaces={
-                        "KV_BINDING": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-                    },
-                    durable_object_namespaces={
-                        "DO_BINDING": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+                        "KVBINDING": "5eb63bbbe01eeed093cb22bb8f5acdc3",
                     },
                     r2_buckets={
-                        "R2_BINDING": "some-bucket",
+                        "R2BINDING": "some-bucket",
                     },
-                    d1_databases={
-                        "D1_BINDING": "445e2955-951a-4358-a35b-a4d0c813f63",
+                    secrets={
+                        "TURNSTILESECRET": "1x0000000000000000000000000000000AA",
                     },
-                    compatibility_date="2022-08-15",
-                    compatibility_flags=["preview_flag"],
                 ),
                 production=cloudflare.PagesProjectDeploymentConfigsProductionArgs(
-                    environment_variables={
-                        "ENVIRONMENT": "production",
-                        "OTHER_VALUE": "other value",
-                    },
-                    secrets={
-                        "TURNSTILE_SECRET": var["turnstile_secret"],
-                        "TURNSTILE_INVIS_SECRET": var["turnstile_invisible_secret"],
-                    },
-                    kv_namespaces={
-                        "KV_BINDING_1": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-                        "KV_BINDING_2": "3cdca5f8bb22bc390deee10ebbb36be5",
-                    },
-                    durable_object_namespaces={
-                        "DO_BINDING_1": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-                        "DO_BINDING_2": "3cdca5f8bb22bc390deee10ebbb36be5",
-                    },
-                    r2_buckets={
-                        "R2_BINDING_1": "some-bucket",
-                        "R2_BINDING_2": "other-bucket",
-                    },
-                    d1_databases={
-                        "D1_BINDING_1": "445e2955-951a-4358-a35b-a4d0c813f63",
-                        "D1_BINDING_2": "a399414b-c697-409a-a688-377db6433cd9",
-                    },
                     compatibility_date="2022-08-16",
                     compatibility_flags=[
-                        "production_flag",
-                        "second flag",
+                        "nodejs_compat",
+                        "streams_enable_constructors",
                     ],
+                    d1_databases={
+                        "D1BINDING1": "445e2955-951a-4358-a35b-a4d0c813f63",
+                        "D1BINDING2": "a399414b-c697-409a-a688-377db6433cd9",
+                    },
+                    durable_object_namespaces={
+                        "DOBINDING1": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+                        "DOBINDING2": "3cdca5f8bb22bc390deee10ebbb36be5",
+                    },
+                    environment_variables={
+                        "ENVIRONMENT": "production",
+                        "OTHERVALUE": "other value",
+                    },
+                    kv_namespaces={
+                        "KVBINDING1": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+                        "KVBINDING2": "3cdca5f8bb22bc390deee10ebbb36be5",
+                    },
+                    r2_buckets={
+                        "R2BINDING1": "some-bucket",
+                        "R2BINDING2": "other-bucket",
+                    },
+                    secrets={
+                        "TURNSTILEINVISSECRET": "2x0000000000000000000000000000000AA",
+                        "TURNSTILESECRET": "1x0000000000000000000000000000000AA",
+                    },
                 ),
+            ),
+            name="this-is-my-project-01",
+            production_branch="main",
+            source=cloudflare.PagesProjectSourceArgs(
+                config=cloudflare.PagesProjectSourceConfigArgs(
+                    deployments_enabled=True,
+                    owner="cloudflare",
+                    pr_comments_enabled=True,
+                    preview_branch_excludes=[
+                        "main",
+                        "prod",
+                    ],
+                    preview_branch_includes=[
+                        "dev",
+                        "preview",
+                    ],
+                    preview_deployment_setting="custom",
+                    production_branch="main",
+                    production_deployment_enabled=True,
+                    repo_name="ninjakittens",
+                ),
+                type="github",
             ))
         ```
 
@@ -408,11 +435,11 @@ class PagesProject(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[pulumi.InputType['PagesProjectBuildConfigArgs']] build_config: Configuration for the project build process.
+        :param pulumi.Input[pulumi.InputType['PagesProjectBuildConfigArgs']] build_config: Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
         :param pulumi.Input[pulumi.InputType['PagesProjectDeploymentConfigsArgs']] deployment_configs: Configuration for deployments in a project.
         :param pulumi.Input[str] name: Name of the project. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] production_branch: The name of the branch that is used for the production environment.
-        :param pulumi.Input[pulumi.InputType['PagesProjectSourceArgs']] source: Configuration for the project source.
+        :param pulumi.Input[pulumi.InputType['PagesProjectSourceArgs']] source: Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
         """
         ...
     @overload
@@ -433,107 +460,134 @@ class PagesProject(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # Basic project
+        # Direct upload Pages project
         basic_project = cloudflare.PagesProject("basicProject",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="this-is-my-project-01",
             production_branch="main")
-        # Manage build config
+        # Pages project with managing build config
         build_config = cloudflare.PagesProject("buildConfig",
             account_id="f037e56e89293a057740de681ac9abbe",
-            name="this-is-my-project-01",
-            production_branch="main",
             build_config=cloudflare.PagesProjectBuildConfigArgs(
                 build_command="npm run build",
                 destination_dir="build",
                 root_dir="",
                 web_analytics_tag="cee1c73f6e4743d0b5e6bb1a0bcaabcc",
                 web_analytics_token="021e1057c18547eca7b79f2516f06o7x",
-            ))
-        # Manage project source
+            ),
+            name="this-is-my-project-01",
+            production_branch="main")
+        # Pages project managing project source
         source_config = cloudflare.PagesProject("sourceConfig",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="this-is-my-project-01",
             production_branch="main",
             source=cloudflare.PagesProjectSourceArgs(
-                type="github",
                 config=cloudflare.PagesProjectSourceConfigArgs(
-                    owner="cloudflare",
-                    repo_name="ninjakittens",
-                    production_branch="main",
-                    pr_comments_enabled=True,
                     deployments_enabled=True,
-                    production_deployment_enabled=True,
-                    preview_deployment_setting="custom",
-                    preview_branch_includes=[
-                        "dev",
-                        "preview",
-                    ],
+                    owner="cloudflare",
+                    pr_comments_enabled=True,
                     preview_branch_excludes=[
                         "main",
                         "prod",
                     ],
+                    preview_branch_includes=[
+                        "dev",
+                        "preview",
+                    ],
+                    preview_deployment_setting="custom",
+                    production_branch="main",
+                    production_deployment_enabled=True,
+                    repo_name="ninjakittens",
                 ),
+                type="github",
             ))
-        # Manage deployment configs
+        # Pages project managing all configs
         deployment_configs = cloudflare.PagesProject("deploymentConfigs",
             account_id="f037e56e89293a057740de681ac9abbe",
-            name="this-is-my-project-01",
-            production_branch="main",
+            build_config=cloudflare.PagesProjectBuildConfigArgs(
+                build_command="npm run build",
+                destination_dir="build",
+                root_dir="",
+                web_analytics_tag="cee1c73f6e4743d0b5e6bb1a0bcaabcc",
+                web_analytics_token="021e1057c18547eca7b79f2516f06o7x",
+            ),
             deployment_configs=cloudflare.PagesProjectDeploymentConfigsArgs(
                 preview=cloudflare.PagesProjectDeploymentConfigsPreviewArgs(
+                    compatibility_date="2022-08-15",
+                    compatibility_flags=["nodejs_compat"],
+                    d1_databases={
+                        "D1BINDING": "445e2955-951a-4358-a35b-a4d0c813f63",
+                    },
+                    durable_object_namespaces={
+                        "DOBINDING": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+                    },
                     environment_variables={
                         "ENVIRONMENT": "preview",
                     },
-                    secrets={
-                        "TURNSTILE_SECRET": var["turnstile_secret"],
-                    },
                     kv_namespaces={
-                        "KV_BINDING": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-                    },
-                    durable_object_namespaces={
-                        "DO_BINDING": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+                        "KVBINDING": "5eb63bbbe01eeed093cb22bb8f5acdc3",
                     },
                     r2_buckets={
-                        "R2_BINDING": "some-bucket",
+                        "R2BINDING": "some-bucket",
                     },
-                    d1_databases={
-                        "D1_BINDING": "445e2955-951a-4358-a35b-a4d0c813f63",
+                    secrets={
+                        "TURNSTILESECRET": "1x0000000000000000000000000000000AA",
                     },
-                    compatibility_date="2022-08-15",
-                    compatibility_flags=["preview_flag"],
                 ),
                 production=cloudflare.PagesProjectDeploymentConfigsProductionArgs(
-                    environment_variables={
-                        "ENVIRONMENT": "production",
-                        "OTHER_VALUE": "other value",
-                    },
-                    secrets={
-                        "TURNSTILE_SECRET": var["turnstile_secret"],
-                        "TURNSTILE_INVIS_SECRET": var["turnstile_invisible_secret"],
-                    },
-                    kv_namespaces={
-                        "KV_BINDING_1": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-                        "KV_BINDING_2": "3cdca5f8bb22bc390deee10ebbb36be5",
-                    },
-                    durable_object_namespaces={
-                        "DO_BINDING_1": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-                        "DO_BINDING_2": "3cdca5f8bb22bc390deee10ebbb36be5",
-                    },
-                    r2_buckets={
-                        "R2_BINDING_1": "some-bucket",
-                        "R2_BINDING_2": "other-bucket",
-                    },
-                    d1_databases={
-                        "D1_BINDING_1": "445e2955-951a-4358-a35b-a4d0c813f63",
-                        "D1_BINDING_2": "a399414b-c697-409a-a688-377db6433cd9",
-                    },
                     compatibility_date="2022-08-16",
                     compatibility_flags=[
-                        "production_flag",
-                        "second flag",
+                        "nodejs_compat",
+                        "streams_enable_constructors",
                     ],
+                    d1_databases={
+                        "D1BINDING1": "445e2955-951a-4358-a35b-a4d0c813f63",
+                        "D1BINDING2": "a399414b-c697-409a-a688-377db6433cd9",
+                    },
+                    durable_object_namespaces={
+                        "DOBINDING1": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+                        "DOBINDING2": "3cdca5f8bb22bc390deee10ebbb36be5",
+                    },
+                    environment_variables={
+                        "ENVIRONMENT": "production",
+                        "OTHERVALUE": "other value",
+                    },
+                    kv_namespaces={
+                        "KVBINDING1": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+                        "KVBINDING2": "3cdca5f8bb22bc390deee10ebbb36be5",
+                    },
+                    r2_buckets={
+                        "R2BINDING1": "some-bucket",
+                        "R2BINDING2": "other-bucket",
+                    },
+                    secrets={
+                        "TURNSTILEINVISSECRET": "2x0000000000000000000000000000000AA",
+                        "TURNSTILESECRET": "1x0000000000000000000000000000000AA",
+                    },
                 ),
+            ),
+            name="this-is-my-project-01",
+            production_branch="main",
+            source=cloudflare.PagesProjectSourceArgs(
+                config=cloudflare.PagesProjectSourceConfigArgs(
+                    deployments_enabled=True,
+                    owner="cloudflare",
+                    pr_comments_enabled=True,
+                    preview_branch_excludes=[
+                        "main",
+                        "prod",
+                    ],
+                    preview_branch_includes=[
+                        "dev",
+                        "preview",
+                    ],
+                    preview_deployment_setting="custom",
+                    production_branch="main",
+                    production_deployment_enabled=True,
+                    repo_name="ninjakittens",
+                ),
+                type="github",
             ))
         ```
 
@@ -619,13 +673,13 @@ class PagesProject(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[pulumi.InputType['PagesProjectBuildConfigArgs']] build_config: Configuration for the project build process.
+        :param pulumi.Input[pulumi.InputType['PagesProjectBuildConfigArgs']] build_config: Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
         :param pulumi.Input[str] created_on: When the project was created.
         :param pulumi.Input[pulumi.InputType['PagesProjectDeploymentConfigsArgs']] deployment_configs: Configuration for deployments in a project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: A list of associated custom domains for the project.
         :param pulumi.Input[str] name: Name of the project. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] production_branch: The name of the branch that is used for the production environment.
-        :param pulumi.Input[pulumi.InputType['PagesProjectSourceArgs']] source: Configuration for the project source.
+        :param pulumi.Input[pulumi.InputType['PagesProjectSourceArgs']] source: Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
         :param pulumi.Input[str] subdomain: The Cloudflare subdomain associated with the project.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -655,7 +709,7 @@ class PagesProject(pulumi.CustomResource):
     @pulumi.getter(name="buildConfig")
     def build_config(self) -> pulumi.Output[Optional['outputs.PagesProjectBuildConfig']]:
         """
-        Configuration for the project build process.
+        Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
         """
         return pulumi.get(self, "build_config")
 
@@ -703,7 +757,7 @@ class PagesProject(pulumi.CustomResource):
     @pulumi.getter
     def source(self) -> pulumi.Output[Optional['outputs.PagesProjectSource']]:
         """
-        Configuration for the project source.
+        Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
         """
         return pulumi.get(self, "source")
 

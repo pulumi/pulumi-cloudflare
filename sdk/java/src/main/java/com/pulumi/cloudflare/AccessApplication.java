@@ -195,14 +195,14 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customDenyUrl);
     }
     /**
-     * The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+     * The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
      * 
      */
     @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
-     * @return The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+     * @return The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
      * 
      */
     public Output<String> domain() {
@@ -293,16 +293,14 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sameSiteCookieAttribute);
     }
     /**
-     * List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
-     * value set as `domain`
+     * List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
      * 
      */
     @Export(name="selfHostedDomains", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> selfHostedDomains;
 
     /**
-     * @return List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
-     * value set as `domain`
+     * @return List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
      * 
      */
     public Output<Optional<List<String>>> selfHostedDomains() {

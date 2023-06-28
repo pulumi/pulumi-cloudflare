@@ -12,6 +12,18 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class NotificationPolicyFiltersArgs : global::Pulumi.ResourceArgs
     {
+        [Input("alertTriggerPreferences")]
+        private InputList<string>? _alertTriggerPreferences;
+
+        /// <summary>
+        /// Alert trigger preferences. Example: `slo`.
+        /// </summary>
+        public InputList<string> AlertTriggerPreferences
+        {
+            get => _alertTriggerPreferences ?? (_alertTriggerPreferences = new InputList<string>());
+            set => _alertTriggerPreferences = value;
+        }
+
         [Input("enableds")]
         private InputList<string>? _enableds;
 

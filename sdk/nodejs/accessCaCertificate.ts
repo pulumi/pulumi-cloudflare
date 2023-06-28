@@ -38,13 +38,13 @@ import * as utilities from "./utilities";
  * Account level CA certificate import.
  *
  * ```sh
- *  $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<certificate_id>
+ *  $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<application_id>/<certificate_id>
  * ```
  *
  *  Zone level CA certificate import.
  *
  * ```sh
- *  $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<certificate_id>
+ *  $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<application_id>/<certificate_id>
  * ```
  */
 export class AccessCaCertificate extends pulumi.CustomResource {

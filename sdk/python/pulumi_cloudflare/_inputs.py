@@ -214,6 +214,7 @@ __all__ = [
     'TunnelConfigConfigOriginRequestIpRuleArgs',
     'TunnelConfigConfigWarpRoutingArgs',
     'UserAgentBlockingRuleConfigurationArgs',
+    'WaitingRoomAdditionalRouteArgs',
     'WaitingRoomRulesRuleArgs',
     'WorkerScriptAnalyticsEngineBindingArgs',
     'WorkerScriptKvNamespaceBindingArgs',
@@ -6994,6 +6995,7 @@ class NotificationPolicyEmailIntegrationArgs:
 @pulumi.input_type
 class NotificationPolicyFiltersArgs:
     def __init__(__self__, *,
+                 alert_trigger_preferences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enableds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  event_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -7014,6 +7016,7 @@ class NotificationPolicyFiltersArgs:
                  target_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] alert_trigger_preferences: Alert trigger preferences. Example: `slo`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enableds: State of the pool to alert on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] event_sources: Source configuration to alert on for pool or origin.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] event_types: Stream event type to alert on.
@@ -7033,6 +7036,8 @@ class NotificationPolicyFiltersArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_zone_names: Target domain to alert on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: A list of zone identifiers.
         """
+        if alert_trigger_preferences is not None:
+            pulumi.set(__self__, "alert_trigger_preferences", alert_trigger_preferences)
         if enableds is not None:
             pulumi.set(__self__, "enableds", enableds)
         if event_sources is not None:
@@ -7071,6 +7076,18 @@ class NotificationPolicyFiltersArgs:
             pulumi.set(__self__, "target_zone_names", target_zone_names)
         if zones is not None:
             pulumi.set(__self__, "zones", zones)
+
+    @property
+    @pulumi.getter(name="alertTriggerPreferences")
+    def alert_trigger_preferences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Alert trigger preferences. Example: `slo`.
+        """
+        return pulumi.get(self, "alert_trigger_preferences")
+
+    @alert_trigger_preferences.setter
+    def alert_trigger_preferences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "alert_trigger_preferences", value)
 
     @property
     @pulumi.getter
@@ -13845,6 +13862,44 @@ class UserAgentBlockingRuleConfigurationArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class WaitingRoomAdditionalRouteArgs:
+    def __init__(__self__, *,
+                 host: pulumi.Input[str],
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] host: The additional host name for which the waiting room to be applied on (no wildcards).
+        :param pulumi.Input[str] path: The path within the additional host to enable the waiting room on. Defaults to `/`.
+        """
+        pulumi.set(__self__, "host", host)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[str]:
+        """
+        The additional host name for which the waiting room to be applied on (no wildcards).
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path within the additional host to enable the waiting room on. Defaults to `/`.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
 
 
 @pulumi.input_type
