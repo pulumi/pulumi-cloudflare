@@ -46,14 +46,13 @@ class AccessApplicationArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
         :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
         :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application.
-        :param pulumi.Input[str] domain: The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
         :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
         :param pulumi.Input['AccessApplicationSaasAppArgs'] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
-               value set as `domain`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
@@ -200,7 +199,7 @@ class AccessApplicationArgs:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         """
         return pulumi.get(self, "domain")
 
@@ -272,8 +271,7 @@ class AccessApplicationArgs:
     @pulumi.getter(name="selfHostedDomains")
     def self_hosted_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
-        value set as `domain`
+        List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         """
         return pulumi.get(self, "self_hosted_domains")
 
@@ -376,15 +374,14 @@ class _AccessApplicationState:
         :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
         :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
         :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application.
-        :param pulumi.Input[str] domain: The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
         :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input['AccessApplicationSaasAppArgs'] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
-               value set as `domain`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
@@ -534,7 +531,7 @@ class _AccessApplicationState:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         """
         return pulumi.get(self, "domain")
 
@@ -618,8 +615,7 @@ class _AccessApplicationState:
     @pulumi.getter(name="selfHostedDomains")
     def self_hosted_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
-        value set as `domain`
+        List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         """
         return pulumi.get(self, "self_hosted_domains")
 
@@ -765,15 +761,14 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
         :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
         :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application.
-        :param pulumi.Input[str] domain: The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
         :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
-               value set as `domain`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
@@ -941,15 +936,14 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
         :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
         :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application.
-        :param pulumi.Input[str] domain: The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
         :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
-               value set as `domain`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
@@ -1051,7 +1045,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter
     def domain(self) -> pulumi.Output[str]:
         """
-        The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         """
         return pulumi.get(self, "domain")
 
@@ -1107,8 +1101,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="selfHostedDomains")
     def self_hosted_domains(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
-        value set as `domain`
+        List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         """
         return pulumi.get(self, "self_hosted_domains")
 

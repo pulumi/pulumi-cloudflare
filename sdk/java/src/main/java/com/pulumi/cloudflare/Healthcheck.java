@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *                 &#34;WEU&#34;,
  *                 &#34;EEU&#34;)
  *             .type(&#34;HTTPS&#34;)
- *             .port(&#34;443&#34;)
+ *             .port(443)
  *             .method(&#34;GET&#34;)
  *             .path(&#34;/health&#34;)
  *             .expectedBody(&#34;alive&#34;)
@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  *                 &#34;WEU&#34;,
  *                 &#34;EEU&#34;)
  *             .type(&#34;TCP&#34;)
- *             .port(&#34;22&#34;)
+ *             .port(22)
  *             .method(&#34;connection_established&#34;)
  *             .timeout(10)
  *             .retries(2)

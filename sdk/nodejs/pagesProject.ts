@@ -19,17 +19,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * // Basic project
+ * // Direct upload Pages project
  * const basicProject = new cloudflare.PagesProject("basicProject", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "this-is-my-project-01",
  *     productionBranch: "main",
  * });
- * // Manage build config
+ * // Pages project with managing build config
  * const buildConfig = new cloudflare.PagesProject("buildConfig", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "this-is-my-project-01",
- *     productionBranch: "main",
  *     buildConfig: {
  *         buildCommand: "npm run build",
  *         destinationDir: "build",
@@ -37,92 +35,121 @@ import * as utilities from "./utilities";
  *         webAnalyticsTag: "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
  *         webAnalyticsToken: "021e1057c18547eca7b79f2516f06o7x",
  *     },
+ *     name: "this-is-my-project-01",
+ *     productionBranch: "main",
  * });
- * // Manage project source
+ * // Pages project managing project source
  * const sourceConfig = new cloudflare.PagesProject("sourceConfig", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "this-is-my-project-01",
  *     productionBranch: "main",
  *     source: {
- *         type: "github",
  *         config: {
- *             owner: "cloudflare",
- *             repoName: "ninjakittens",
- *             productionBranch: "main",
- *             prCommentsEnabled: true,
  *             deploymentsEnabled: true,
- *             productionDeploymentEnabled: true,
- *             previewDeploymentSetting: "custom",
- *             previewBranchIncludes: [
- *                 "dev",
- *                 "preview",
- *             ],
+ *             owner: "cloudflare",
+ *             prCommentsEnabled: true,
  *             previewBranchExcludes: [
  *                 "main",
  *                 "prod",
  *             ],
+ *             previewBranchIncludes: [
+ *                 "dev",
+ *                 "preview",
+ *             ],
+ *             previewDeploymentSetting: "custom",
+ *             productionBranch: "main",
+ *             productionDeploymentEnabled: true,
+ *             repoName: "ninjakittens",
  *         },
+ *         type: "github",
  *     },
  * });
- * // Manage deployment configs
+ * // Pages project managing all configs
  * const deploymentConfigs = new cloudflare.PagesProject("deploymentConfigs", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "this-is-my-project-01",
- *     productionBranch: "main",
+ *     buildConfig: {
+ *         buildCommand: "npm run build",
+ *         destinationDir: "build",
+ *         rootDir: "",
+ *         webAnalyticsTag: "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
+ *         webAnalyticsToken: "021e1057c18547eca7b79f2516f06o7x",
+ *     },
  *     deploymentConfigs: {
  *         preview: {
+ *             compatibilityDate: "2022-08-15",
+ *             compatibilityFlags: ["nodejs_compat"],
+ *             d1Databases: {
+ *                 D1BINDING: "445e2955-951a-4358-a35b-a4d0c813f63",
+ *             },
+ *             durableObjectNamespaces: {
+ *                 DOBINDING: "5eb63bbbe01eeed093cb22bb8f5acdc3",
+ *             },
  *             environmentVariables: {
  *                 ENVIRONMENT: "preview",
  *             },
- *             secrets: {
- *                 TURNSTILE_SECRET: _var.turnstile_secret,
- *             },
  *             kvNamespaces: {
- *                 KV_BINDING: "5eb63bbbe01eeed093cb22bb8f5acdc3",
- *             },
- *             durableObjectNamespaces: {
- *                 DO_BINDING: "5eb63bbbe01eeed093cb22bb8f5acdc3",
+ *                 KVBINDING: "5eb63bbbe01eeed093cb22bb8f5acdc3",
  *             },
  *             r2Buckets: {
- *                 R2_BINDING: "some-bucket",
+ *                 R2BINDING: "some-bucket",
  *             },
- *             d1Databases: {
- *                 D1_BINDING: "445e2955-951a-4358-a35b-a4d0c813f63",
+ *             secrets: {
+ *                 TURNSTILESECRET: "1x0000000000000000000000000000000AA",
  *             },
- *             compatibilityDate: "2022-08-15",
- *             compatibilityFlags: ["preview_flag"],
  *         },
  *         production: {
- *             environmentVariables: {
- *                 ENVIRONMENT: "production",
- *                 OTHER_VALUE: "other value",
- *             },
- *             secrets: {
- *                 TURNSTILE_SECRET: _var.turnstile_secret,
- *                 TURNSTILE_INVIS_SECRET: _var.turnstile_invisible_secret,
- *             },
- *             kvNamespaces: {
- *                 KV_BINDING_1: "5eb63bbbe01eeed093cb22bb8f5acdc3",
- *                 KV_BINDING_2: "3cdca5f8bb22bc390deee10ebbb36be5",
- *             },
- *             durableObjectNamespaces: {
- *                 DO_BINDING_1: "5eb63bbbe01eeed093cb22bb8f5acdc3",
- *                 DO_BINDING_2: "3cdca5f8bb22bc390deee10ebbb36be5",
- *             },
- *             r2Buckets: {
- *                 R2_BINDING_1: "some-bucket",
- *                 R2_BINDING_2: "other-bucket",
- *             },
- *             d1Databases: {
- *                 D1_BINDING_1: "445e2955-951a-4358-a35b-a4d0c813f63",
- *                 D1_BINDING_2: "a399414b-c697-409a-a688-377db6433cd9",
- *             },
  *             compatibilityDate: "2022-08-16",
  *             compatibilityFlags: [
- *                 "production_flag",
- *                 "second flag",
+ *                 "nodejs_compat",
+ *                 "streams_enable_constructors",
  *             ],
+ *             d1Databases: {
+ *                 D1BINDING1: "445e2955-951a-4358-a35b-a4d0c813f63",
+ *                 D1BINDING2: "a399414b-c697-409a-a688-377db6433cd9",
+ *             },
+ *             durableObjectNamespaces: {
+ *                 DOBINDING1: "5eb63bbbe01eeed093cb22bb8f5acdc3",
+ *                 DOBINDING2: "3cdca5f8bb22bc390deee10ebbb36be5",
+ *             },
+ *             environmentVariables: {
+ *                 ENVIRONMENT: "production",
+ *                 OTHERVALUE: "other value",
+ *             },
+ *             kvNamespaces: {
+ *                 KVBINDING1: "5eb63bbbe01eeed093cb22bb8f5acdc3",
+ *                 KVBINDING2: "3cdca5f8bb22bc390deee10ebbb36be5",
+ *             },
+ *             r2Buckets: {
+ *                 R2BINDING1: "some-bucket",
+ *                 R2BINDING2: "other-bucket",
+ *             },
+ *             secrets: {
+ *                 TURNSTILEINVISSECRET: "2x0000000000000000000000000000000AA",
+ *                 TURNSTILESECRET: "1x0000000000000000000000000000000AA",
+ *             },
  *         },
+ *     },
+ *     name: "this-is-my-project-01",
+ *     productionBranch: "main",
+ *     source: {
+ *         config: {
+ *             deploymentsEnabled: true,
+ *             owner: "cloudflare",
+ *             prCommentsEnabled: true,
+ *             previewBranchExcludes: [
+ *                 "main",
+ *                 "prod",
+ *             ],
+ *             previewBranchIncludes: [
+ *                 "dev",
+ *                 "preview",
+ *             ],
+ *             previewDeploymentSetting: "custom",
+ *             productionBranch: "main",
+ *             productionDeploymentEnabled: true,
+ *             repoName: "ninjakittens",
+ *         },
+ *         type: "github",
  *     },
  * });
  * ```
@@ -170,7 +197,7 @@ export class PagesProject extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Configuration for the project build process.
+     * Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
      */
     public readonly buildConfig!: pulumi.Output<outputs.PagesProjectBuildConfig | undefined>;
     /**
@@ -194,7 +221,7 @@ export class PagesProject extends pulumi.CustomResource {
      */
     public readonly productionBranch!: pulumi.Output<string>;
     /**
-     * Configuration for the project source.
+     * Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
      */
     public readonly source!: pulumi.Output<outputs.PagesProjectSource | undefined>;
     /**
@@ -259,7 +286,7 @@ export interface PagesProjectState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Configuration for the project build process.
+     * Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
      */
     buildConfig?: pulumi.Input<inputs.PagesProjectBuildConfig>;
     /**
@@ -283,7 +310,7 @@ export interface PagesProjectState {
      */
     productionBranch?: pulumi.Input<string>;
     /**
-     * Configuration for the project source.
+     * Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
      */
     source?: pulumi.Input<inputs.PagesProjectSource>;
     /**
@@ -301,7 +328,7 @@ export interface PagesProjectArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * Configuration for the project build process.
+     * Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
      */
     buildConfig?: pulumi.Input<inputs.PagesProjectBuildConfig>;
     /**
@@ -317,7 +344,7 @@ export interface PagesProjectArgs {
      */
     productionBranch: pulumi.Input<string>;
     /**
-     * Configuration for the project source.
+     * Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
      */
     source?: pulumi.Input<inputs.PagesProjectSource>;
 }

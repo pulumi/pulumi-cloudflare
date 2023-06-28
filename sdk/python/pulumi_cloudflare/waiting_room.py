@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['WaitingRoomArgs', 'WaitingRoom']
 
@@ -19,6 +21,8 @@ class WaitingRoomArgs:
                  new_users_per_minute: pulumi.Input[int],
                  total_active_users: pulumi.Input[int],
                  zone_id: pulumi.Input[str],
+                 additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]] = None,
+                 cookie_suffix: Optional[pulumi.Input[str]] = None,
                  custom_page_html: Optional[pulumi.Input[str]] = None,
                  default_template_language: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -36,6 +40,8 @@ class WaitingRoomArgs:
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]] additional_routes: A list of additional hostname and paths combination to be applied on the waiting room.
+        :param pulumi.Input[str] cookie_suffix: A cookie suffix to be appended to the Cloudflare waiting room cookie name.
         :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
         :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
@@ -52,6 +58,10 @@ class WaitingRoomArgs:
         pulumi.set(__self__, "new_users_per_minute", new_users_per_minute)
         pulumi.set(__self__, "total_active_users", total_active_users)
         pulumi.set(__self__, "zone_id", zone_id)
+        if additional_routes is not None:
+            pulumi.set(__self__, "additional_routes", additional_routes)
+        if cookie_suffix is not None:
+            pulumi.set(__self__, "cookie_suffix", cookie_suffix)
         if custom_page_html is not None:
             pulumi.set(__self__, "custom_page_html", custom_page_html)
         if default_template_language is not None:
@@ -132,6 +142,30 @@ class WaitingRoomArgs:
     @zone_id.setter
     def zone_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter(name="additionalRoutes")
+    def additional_routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]]:
+        """
+        A list of additional hostname and paths combination to be applied on the waiting room.
+        """
+        return pulumi.get(self, "additional_routes")
+
+    @additional_routes.setter
+    def additional_routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]]):
+        pulumi.set(self, "additional_routes", value)
+
+    @property
+    @pulumi.getter(name="cookieSuffix")
+    def cookie_suffix(self) -> Optional[pulumi.Input[str]]:
+        """
+        A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+        """
+        return pulumi.get(self, "cookie_suffix")
+
+    @cookie_suffix.setter
+    def cookie_suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cookie_suffix", value)
 
     @property
     @pulumi.getter(name="customPageHtml")
@@ -257,6 +291,8 @@ class WaitingRoomArgs:
 @pulumi.input_type
 class _WaitingRoomState:
     def __init__(__self__, *,
+                 additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]] = None,
+                 cookie_suffix: Optional[pulumi.Input[str]] = None,
                  custom_page_html: Optional[pulumi.Input[str]] = None,
                  default_template_language: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -274,6 +310,8 @@ class _WaitingRoomState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WaitingRoom resources.
+        :param pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]] additional_routes: A list of additional hostname and paths combination to be applied on the waiting room.
+        :param pulumi.Input[str] cookie_suffix: A cookie suffix to be appended to the Cloudflare waiting room cookie name.
         :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
         :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
@@ -290,6 +328,10 @@ class _WaitingRoomState:
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
+        if additional_routes is not None:
+            pulumi.set(__self__, "additional_routes", additional_routes)
+        if cookie_suffix is not None:
+            pulumi.set(__self__, "cookie_suffix", cookie_suffix)
         if custom_page_html is not None:
             pulumi.set(__self__, "custom_page_html", custom_page_html)
         if default_template_language is not None:
@@ -320,6 +362,30 @@ class _WaitingRoomState:
             pulumi.set(__self__, "total_active_users", total_active_users)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="additionalRoutes")
+    def additional_routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]]:
+        """
+        A list of additional hostname and paths combination to be applied on the waiting room.
+        """
+        return pulumi.get(self, "additional_routes")
+
+    @additional_routes.setter
+    def additional_routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]]):
+        pulumi.set(self, "additional_routes", value)
+
+    @property
+    @pulumi.getter(name="cookieSuffix")
+    def cookie_suffix(self) -> Optional[pulumi.Input[str]]:
+        """
+        A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+        """
+        return pulumi.get(self, "cookie_suffix")
+
+    @cookie_suffix.setter
+    def cookie_suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cookie_suffix", value)
 
     @property
     @pulumi.getter(name="customPageHtml")
@@ -507,6 +573,8 @@ class WaitingRoom(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WaitingRoomAdditionalRouteArgs']]]]] = None,
+                 cookie_suffix: Optional[pulumi.Input[str]] = None,
                  custom_page_html: Optional[pulumi.Input[str]] = None,
                  default_template_language: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -534,6 +602,16 @@ class WaitingRoom(pulumi.CustomResource):
 
         # Waiting Room
         example = cloudflare.WaitingRoom("example",
+            additional_routes=[
+                cloudflare.WaitingRoomAdditionalRouteArgs(
+                    host="shop1.example.com",
+                    path="/example-path",
+                ),
+                cloudflare.WaitingRoomAdditionalRouteArgs(
+                    host="shop2.example.com",
+                ),
+            ],
+            cookie_suffix="queue1",
             host="foo.example.com",
             name="foo",
             new_users_per_minute=200,
@@ -552,6 +630,8 @@ class WaitingRoom(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WaitingRoomAdditionalRouteArgs']]]] additional_routes: A list of additional hostname and paths combination to be applied on the waiting room.
+        :param pulumi.Input[str] cookie_suffix: A cookie suffix to be appended to the Cloudflare waiting room cookie name.
         :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
         :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
@@ -585,6 +665,16 @@ class WaitingRoom(pulumi.CustomResource):
 
         # Waiting Room
         example = cloudflare.WaitingRoom("example",
+            additional_routes=[
+                cloudflare.WaitingRoomAdditionalRouteArgs(
+                    host="shop1.example.com",
+                    path="/example-path",
+                ),
+                cloudflare.WaitingRoomAdditionalRouteArgs(
+                    host="shop2.example.com",
+                ),
+            ],
+            cookie_suffix="queue1",
             host="foo.example.com",
             name="foo",
             new_users_per_minute=200,
@@ -616,6 +706,8 @@ class WaitingRoom(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WaitingRoomAdditionalRouteArgs']]]]] = None,
+                 cookie_suffix: Optional[pulumi.Input[str]] = None,
                  custom_page_html: Optional[pulumi.Input[str]] = None,
                  default_template_language: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -640,6 +732,8 @@ class WaitingRoom(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WaitingRoomArgs.__new__(WaitingRoomArgs)
 
+            __props__.__dict__["additional_routes"] = additional_routes
+            __props__.__dict__["cookie_suffix"] = cookie_suffix
             __props__.__dict__["custom_page_html"] = custom_page_html
             __props__.__dict__["default_template_language"] = default_template_language
             __props__.__dict__["description"] = description
@@ -675,6 +769,8 @@ class WaitingRoom(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WaitingRoomAdditionalRouteArgs']]]]] = None,
+            cookie_suffix: Optional[pulumi.Input[str]] = None,
             custom_page_html: Optional[pulumi.Input[str]] = None,
             default_template_language: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -697,6 +793,8 @@ class WaitingRoom(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WaitingRoomAdditionalRouteArgs']]]] additional_routes: A list of additional hostname and paths combination to be applied on the waiting room.
+        :param pulumi.Input[str] cookie_suffix: A cookie suffix to be appended to the Cloudflare waiting room cookie name.
         :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
         :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
@@ -717,6 +815,8 @@ class WaitingRoom(pulumi.CustomResource):
 
         __props__ = _WaitingRoomState.__new__(_WaitingRoomState)
 
+        __props__.__dict__["additional_routes"] = additional_routes
+        __props__.__dict__["cookie_suffix"] = cookie_suffix
         __props__.__dict__["custom_page_html"] = custom_page_html
         __props__.__dict__["default_template_language"] = default_template_language
         __props__.__dict__["description"] = description
@@ -733,6 +833,22 @@ class WaitingRoom(pulumi.CustomResource):
         __props__.__dict__["total_active_users"] = total_active_users
         __props__.__dict__["zone_id"] = zone_id
         return WaitingRoom(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="additionalRoutes")
+    def additional_routes(self) -> pulumi.Output[Optional[Sequence['outputs.WaitingRoomAdditionalRoute']]]:
+        """
+        A list of additional hostname and paths combination to be applied on the waiting room.
+        """
+        return pulumi.get(self, "additional_routes")
+
+    @property
+    @pulumi.getter(name="cookieSuffix")
+    def cookie_suffix(self) -> pulumi.Output[Optional[str]]:
+        """
+        A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+        """
+        return pulumi.get(self, "cookie_suffix")
 
     @property
     @pulumi.getter(name="customPageHtml")

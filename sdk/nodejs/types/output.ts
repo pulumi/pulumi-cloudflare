@@ -1800,6 +1800,10 @@ export interface NotificationPolicyEmailIntegration {
 
 export interface NotificationPolicyFilters {
     /**
+     * Alert trigger preferences. Example: `slo`.
+     */
+    alertTriggerPreferences?: string[];
+    /**
      * State of the pool to alert on.
      */
     enableds?: string[];
@@ -3127,6 +3131,17 @@ export interface UserAgentBlockingRuleConfiguration {
      * The exact user agent string to match. This value will be compared to the received User-Agent HTTP header value.
      */
     value: string;
+}
+
+export interface WaitingRoomAdditionalRoute {
+    /**
+     * The additional host name for which the waiting room to be applied on (no wildcards).
+     */
+    host: string;
+    /**
+     * The path within the additional host to enable the waiting room on. Defaults to `/`.
+     */
+    path?: string;
 }
 
 export interface WaitingRoomRulesRule {

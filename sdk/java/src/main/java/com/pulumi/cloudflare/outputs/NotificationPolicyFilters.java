@@ -12,6 +12,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NotificationPolicyFilters {
     /**
+     * @return Alert trigger preferences. Example: `slo`.
+     * 
+     */
+    private @Nullable List<String> alertTriggerPreferences;
+    /**
      * @return State of the pool to alert on.
      * 
      */
@@ -104,6 +109,13 @@ public final class NotificationPolicyFilters {
     private @Nullable List<String> zones;
 
     private NotificationPolicyFilters() {}
+    /**
+     * @return Alert trigger preferences. Example: `slo`.
+     * 
+     */
+    public List<String> alertTriggerPreferences() {
+        return this.alertTriggerPreferences == null ? List.of() : this.alertTriggerPreferences;
+    }
     /**
      * @return State of the pool to alert on.
      * 
@@ -243,6 +255,7 @@ public final class NotificationPolicyFilters {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> alertTriggerPreferences;
         private @Nullable List<String> enableds;
         private @Nullable List<String> eventSources;
         private @Nullable List<String> eventTypes;
@@ -265,6 +278,7 @@ public final class NotificationPolicyFilters {
         public Builder() {}
         public Builder(NotificationPolicyFilters defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.alertTriggerPreferences = defaults.alertTriggerPreferences;
     	      this.enableds = defaults.enableds;
     	      this.eventSources = defaults.eventSources;
     	      this.eventTypes = defaults.eventTypes;
@@ -286,6 +300,14 @@ public final class NotificationPolicyFilters {
     	      this.zones = defaults.zones;
         }
 
+        @CustomType.Setter
+        public Builder alertTriggerPreferences(@Nullable List<String> alertTriggerPreferences) {
+            this.alertTriggerPreferences = alertTriggerPreferences;
+            return this;
+        }
+        public Builder alertTriggerPreferences(String... alertTriggerPreferences) {
+            return alertTriggerPreferences(List.of(alertTriggerPreferences));
+        }
         @CustomType.Setter
         public Builder enableds(@Nullable List<String> enableds) {
             this.enableds = enableds;
@@ -440,6 +462,7 @@ public final class NotificationPolicyFilters {
         }
         public NotificationPolicyFilters build() {
             final var o = new NotificationPolicyFilters();
+            o.alertTriggerPreferences = alertTriggerPreferences;
             o.enableds = enableds;
             o.eventSources = eventSources;
             o.eventTypes = eventTypes;

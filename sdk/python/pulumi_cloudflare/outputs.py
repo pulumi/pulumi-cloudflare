@@ -215,6 +215,7 @@ __all__ = [
     'TunnelConfigConfigOriginRequestIpRule',
     'TunnelConfigConfigWarpRouting',
     'UserAgentBlockingRuleConfiguration',
+    'WaitingRoomAdditionalRoute',
     'WaitingRoomRulesRule',
     'WorkerScriptAnalyticsEngineBinding',
     'WorkerScriptKvNamespaceBinding',
@@ -6968,7 +6969,9 @@ class NotificationPolicyFilters(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "eventSources":
+        if key == "alertTriggerPreferences":
+            suggest = "alert_trigger_preferences"
+        elif key == "eventSources":
             suggest = "event_sources"
         elif key == "eventTypes":
             suggest = "event_types"
@@ -7003,6 +7006,7 @@ class NotificationPolicyFilters(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 alert_trigger_preferences: Optional[Sequence[str]] = None,
                  enableds: Optional[Sequence[str]] = None,
                  event_sources: Optional[Sequence[str]] = None,
                  event_types: Optional[Sequence[str]] = None,
@@ -7023,6 +7027,7 @@ class NotificationPolicyFilters(dict):
                  target_zone_names: Optional[Sequence[str]] = None,
                  zones: Optional[Sequence[str]] = None):
         """
+        :param Sequence[str] alert_trigger_preferences: Alert trigger preferences. Example: `slo`.
         :param Sequence[str] enableds: State of the pool to alert on.
         :param Sequence[str] event_sources: Source configuration to alert on for pool or origin.
         :param Sequence[str] event_types: Stream event type to alert on.
@@ -7042,6 +7047,8 @@ class NotificationPolicyFilters(dict):
         :param Sequence[str] target_zone_names: Target domain to alert on.
         :param Sequence[str] zones: A list of zone identifiers.
         """
+        if alert_trigger_preferences is not None:
+            pulumi.set(__self__, "alert_trigger_preferences", alert_trigger_preferences)
         if enableds is not None:
             pulumi.set(__self__, "enableds", enableds)
         if event_sources is not None:
@@ -7080,6 +7087,14 @@ class NotificationPolicyFilters(dict):
             pulumi.set(__self__, "target_zone_names", target_zone_names)
         if zones is not None:
             pulumi.set(__self__, "zones", zones)
+
+    @property
+    @pulumi.getter(name="alertTriggerPreferences")
+    def alert_trigger_preferences(self) -> Optional[Sequence[str]]:
+        """
+        Alert trigger preferences. Example: `slo`.
+        """
+        return pulumi.get(self, "alert_trigger_preferences")
 
     @property
     @pulumi.getter
@@ -13216,6 +13231,36 @@ class UserAgentBlockingRuleConfiguration(dict):
         The exact user agent string to match. This value will be compared to the received User-Agent HTTP header value.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class WaitingRoomAdditionalRoute(dict):
+    def __init__(__self__, *,
+                 host: str,
+                 path: Optional[str] = None):
+        """
+        :param str host: The additional host name for which the waiting room to be applied on (no wildcards).
+        :param str path: The path within the additional host to enable the waiting room on. Defaults to `/`.
+        """
+        pulumi.set(__self__, "host", host)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        The additional host name for which the waiting room to be applied on (no wildcards).
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        The path within the additional host to enable the waiting room on. Defaults to `/`.
+        """
+        return pulumi.get(self, "path")
 
 
 @pulumi.output_type

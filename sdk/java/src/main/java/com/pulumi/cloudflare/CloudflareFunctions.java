@@ -882,12 +882,84 @@ public final class CloudflareFunctions {
     /**
      * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
      * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.example.example_firewall_resource;
+     * import com.pulumi.example.Example_firewall_resourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cloudflare = CloudflareFunctions.getIpRanges();
+     * 
+     *         var example = new Example_firewall_resource(&#34;example&#34;, Example_firewall_resourceArgs.builder()        
+     *             .name(&#34;from-cloudflare&#34;)
+     *             .network(&#34;default&#34;)
+     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -&gt; getIpRangesResult.ipv4CidrBlocks()))
+     *             .allow(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpRangesResult> getIpRanges() {
         return getIpRanges(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.example.example_firewall_resource;
+     * import com.pulumi.example.Example_firewall_resourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cloudflare = CloudflareFunctions.getIpRanges();
+     * 
+     *         var example = new Example_firewall_resource(&#34;example&#34;, Example_firewall_resourceArgs.builder()        
+     *             .name(&#34;from-cloudflare&#34;)
+     *             .network(&#34;default&#34;)
+     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -&gt; getIpRangesResult.ipv4CidrBlocks()))
+     *             .allow(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpRangesResult> getIpRangesPlain() {
@@ -896,12 +968,84 @@ public final class CloudflareFunctions {
     /**
      * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
      * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.example.example_firewall_resource;
+     * import com.pulumi.example.Example_firewall_resourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cloudflare = CloudflareFunctions.getIpRanges();
+     * 
+     *         var example = new Example_firewall_resource(&#34;example&#34;, Example_firewall_resourceArgs.builder()        
+     *             .name(&#34;from-cloudflare&#34;)
+     *             .network(&#34;default&#34;)
+     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -&gt; getIpRangesResult.ipv4CidrBlocks()))
+     *             .allow(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpRangesResult> getIpRanges(InvokeArgs args) {
         return getIpRanges(args, InvokeOptions.Empty);
     }
     /**
      * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.example.example_firewall_resource;
+     * import com.pulumi.example.Example_firewall_resourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cloudflare = CloudflareFunctions.getIpRanges();
+     * 
+     *         var example = new Example_firewall_resource(&#34;example&#34;, Example_firewall_resourceArgs.builder()        
+     *             .name(&#34;from-cloudflare&#34;)
+     *             .network(&#34;default&#34;)
+     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -&gt; getIpRangesResult.ipv4CidrBlocks()))
+     *             .allow(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpRangesResult> getIpRangesPlain(InvokeArgs args) {
@@ -910,12 +1054,84 @@ public final class CloudflareFunctions {
     /**
      * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
      * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.example.example_firewall_resource;
+     * import com.pulumi.example.Example_firewall_resourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cloudflare = CloudflareFunctions.getIpRanges();
+     * 
+     *         var example = new Example_firewall_resource(&#34;example&#34;, Example_firewall_resourceArgs.builder()        
+     *             .name(&#34;from-cloudflare&#34;)
+     *             .network(&#34;default&#34;)
+     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -&gt; getIpRangesResult.ipv4CidrBlocks()))
+     *             .allow(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetIpRangesResult> getIpRanges(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getIpRanges:getIpRanges", TypeShape.of(GetIpRangesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.example.example_firewall_resource;
+     * import com.pulumi.example.Example_firewall_resourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cloudflare = CloudflareFunctions.getIpRanges();
+     * 
+     *         var example = new Example_firewall_resource(&#34;example&#34;, Example_firewall_resourceArgs.builder()        
+     *             .name(&#34;from-cloudflare&#34;)
+     *             .network(&#34;default&#34;)
+     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -&gt; getIpRangesResult.ipv4CidrBlocks()))
+     *             .allow(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetIpRangesResult> getIpRangesPlain(InvokeArgs args, InvokeOptions options) {

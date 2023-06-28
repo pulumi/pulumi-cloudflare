@@ -1187,6 +1187,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "alert_trigger_preferences": {
+                                    "maxItemsOne": false
+                                },
                                 "enabled": {
                                     "maxItemsOne": false
                                 },
@@ -1982,7 +1985,12 @@
             },
             "cloudflare_waiting_room": {
                 "current": "cloudflare:index/waitingRoom:WaitingRoom",
-                "majorVersion": 5
+                "majorVersion": 5,
+                "fields": {
+                    "additional_routes": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_waiting_room_event": {
                 "current": "cloudflare:index/waitingRoomEvent:WaitingRoomEvent",
@@ -2180,40 +2188,323 @@
         },
         "datasources": {
             "cloudflare_access_identity_provider": {
-                "current": "cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider"
+                "current": "cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider",
+                "majorVersion": 5
             },
             "cloudflare_account_roles": {
-                "current": "cloudflare:index/getAccountRoles:getAccountRoles"
+                "current": "cloudflare:index/getAccountRoles:getAccountRoles",
+                "majorVersion": 5,
+                "fields": {
+                    "roles": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_accounts": {
-                "current": "cloudflare:index/getAccounts:getAccounts"
+                "current": "cloudflare:index/getAccounts:getAccounts",
+                "majorVersion": 5,
+                "fields": {
+                    "accounts": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_api_token_permission_groups": {
-                "current": "cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups"
+                "current": "cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups",
+                "majorVersion": 5
             },
             "cloudflare_devices": {
-                "current": "cloudflare:index/getDevices:getDevices"
+                "current": "cloudflare:index/getDevices:getDevices",
+                "majorVersion": 5,
+                "fields": {
+                    "devices": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_ip_ranges": {
-                "current": "cloudflare:index/getIpRanges:getIpRanges"
+                "current": "cloudflare:index/getIpRanges:getIpRanges",
+                "majorVersion": 5,
+                "fields": {
+                    "china_ipv4_cidr_blocks": {
+                        "maxItemsOne": false
+                    },
+                    "china_ipv6_cidr_blocks": {
+                        "maxItemsOne": false
+                    },
+                    "cidr_blocks": {
+                        "maxItemsOne": false
+                    },
+                    "ipv4_cidr_blocks": {
+                        "maxItemsOne": false
+                    },
+                    "ipv6_cidr_blocks": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_list": {
-                "current": "cloudflare:index/getList:getList"
+                "current": "cloudflare:index/getList:getList",
+                "majorVersion": 5
             },
             "cloudflare_lists": {
-                "current": "cloudflare:index/getLists:getLists"
+                "current": "cloudflare:index/getLists:getLists",
+                "majorVersion": 5,
+                "fields": {
+                    "lists": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_load_balancer_pools": {
-                "current": "cloudflare:index/getLoadBalancerPools:getLoadBalancerPools"
+                "current": "cloudflare:index/getLoadBalancerPools:getLoadBalancerPools",
+                "majorVersion": 5,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": true
+                    },
+                    "pools": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "check_regions": {
+                                    "maxItemsOne": false
+                                },
+                                "load_shedding": {
+                                    "maxItemsOne": false
+                                },
+                                "origins": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "header": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "cloudflare_origin_ca_root_certificate": {
-                "current": "cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate"
+                "current": "cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate",
+                "majorVersion": 5
             },
             "cloudflare_record": {
-                "current": "cloudflare:index/getRecord:getRecord"
+                "current": "cloudflare:index/getRecord:getRecord",
+                "majorVersion": 5
             },
             "cloudflare_rulesets": {
-                "current": "cloudflare:index/getRulesets:getRulesets"
+                "current": "cloudflare:index/getRulesets:getRulesets",
+                "majorVersion": 5,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": true
+                    },
+                    "rulesets": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "rules": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "action_parameters": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "autominify": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "browser_ttl": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "cache_key": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "custom_key": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "cookie": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "check_presence": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "include": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "header": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "check_presence": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "include": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "host": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "query_string": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "exclude": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "include": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "user": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "cookie_fields": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "edge_ttl": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "status_code_ttl": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "status_code_range": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "from_list": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "from_value": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "target_url": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "headers": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "matched_data": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "origin": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "overrides": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "categories": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "rules": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "phases": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "products": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "request_fields": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "response": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "response_fields": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "rulesets": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "serve_stale": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "sni": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "uri": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "path": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "query": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "exposed_credential_check": {
+                                                "maxItemsOne": true
+                                            },
+                                            "logging": {
+                                                "maxItemsOne": true
+                                            },
+                                            "ratelimit": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "characteristics": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "cloudflare_waf_groups": {
                 "current": "cloudflare:index/getWafGroups:getWafGroups"
@@ -2225,13 +2516,32 @@
                 "current": "cloudflare:index/getWafRules:getWafRules"
             },
             "cloudflare_zone": {
-                "current": "cloudflare:index/getZone:getZone"
+                "current": "cloudflare:index/getZone:getZone",
+                "majorVersion": 5,
+                "fields": {
+                    "name_servers": {
+                        "maxItemsOne": false
+                    },
+                    "vanity_name_servers": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_zone_dnssec": {
-                "current": "cloudflare:index/getZoneDnssec:getZoneDnssec"
+                "current": "cloudflare:index/getZoneDnssec:getZoneDnssec",
+                "majorVersion": 5
             },
             "cloudflare_zones": {
-                "current": "cloudflare:index/getZones:getZones"
+                "current": "cloudflare:index/getZones:getZones",
+                "majorVersion": 5,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": true
+                    },
+                    "zones": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         }
     },
@@ -2972,6 +3282,7 @@
                 "zeroDowntimeFailover": "zero_downtime_failover"
             },
             "cloudflare:index/NotificationPolicyFilters:NotificationPolicyFilters": {
+                "alertTriggerPreferences": "alert_trigger_preferences",
                 "enableds": "enabled",
                 "eventSources": "event_source",
                 "eventTypes": "event_type",
@@ -4121,6 +4432,8 @@
                 "zoneId": "zone_id"
             },
             "cloudflare:index/waitingRoom:WaitingRoom": {
+                "additionalRoutes": "additional_routes",
+                "cookieSuffix": "cookie_suffix",
                 "customPageHtml": "custom_page_html",
                 "defaultTemplateLanguage": "default_template_language",
                 "disableSessionRenewal": "disable_session_renewal",

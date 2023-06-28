@@ -17,6 +17,21 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     public static final NotificationPolicyFiltersArgs Empty = new NotificationPolicyFiltersArgs();
 
     /**
+     * Alert trigger preferences. Example: `slo`.
+     * 
+     */
+    @Import(name="alertTriggerPreferences")
+    private @Nullable Output<List<String>> alertTriggerPreferences;
+
+    /**
+     * @return Alert trigger preferences. Example: `slo`.
+     * 
+     */
+    public Optional<Output<List<String>>> alertTriggerPreferences() {
+        return Optional.ofNullable(this.alertTriggerPreferences);
+    }
+
+    /**
      * State of the pool to alert on.
      * 
      */
@@ -296,6 +311,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     private NotificationPolicyFiltersArgs() {}
 
     private NotificationPolicyFiltersArgs(NotificationPolicyFiltersArgs $) {
+        this.alertTriggerPreferences = $.alertTriggerPreferences;
         this.enableds = $.enableds;
         this.eventSources = $.eventSources;
         this.eventTypes = $.eventTypes;
@@ -333,6 +349,37 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
 
         public Builder(NotificationPolicyFiltersArgs defaults) {
             $ = new NotificationPolicyFiltersArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param alertTriggerPreferences Alert trigger preferences. Example: `slo`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alertTriggerPreferences(@Nullable Output<List<String>> alertTriggerPreferences) {
+            $.alertTriggerPreferences = alertTriggerPreferences;
+            return this;
+        }
+
+        /**
+         * @param alertTriggerPreferences Alert trigger preferences. Example: `slo`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alertTriggerPreferences(List<String> alertTriggerPreferences) {
+            return alertTriggerPreferences(Output.of(alertTriggerPreferences));
+        }
+
+        /**
+         * @param alertTriggerPreferences Alert trigger preferences. Example: `slo`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alertTriggerPreferences(String... alertTriggerPreferences) {
+            return alertTriggerPreferences(List.of(alertTriggerPreferences));
         }
 
         /**

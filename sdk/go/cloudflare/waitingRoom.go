@@ -28,6 +28,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewWaitingRoom(ctx, "example", &cloudflare.WaitingRoomArgs{
+//				AdditionalRoutes: cloudflare.WaitingRoomAdditionalRouteArray{
+//					&cloudflare.WaitingRoomAdditionalRouteArgs{
+//						Host: pulumi.String("shop1.example.com"),
+//						Path: pulumi.String("/example-path"),
+//					},
+//					&cloudflare.WaitingRoomAdditionalRouteArgs{
+//						Host: pulumi.String("shop2.example.com"),
+//					},
+//				},
+//				CookieSuffix:      pulumi.String("queue1"),
 //				Host:              pulumi.String("foo.example.com"),
 //				Name:              pulumi.String("foo"),
 //				NewUsersPerMinute: pulumi.Int(200),
@@ -56,6 +66,10 @@ import (
 type WaitingRoom struct {
 	pulumi.CustomResourceState
 
+	// A list of additional hostname and paths combination to be applied on the waiting room.
+	AdditionalRoutes WaitingRoomAdditionalRouteArrayOutput `pulumi:"additionalRoutes"`
+	// A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+	CookieSuffix pulumi.StringPtrOutput `pulumi:"cookieSuffix"`
 	// This is a templated html file that will be rendered at the edge.
 	CustomPageHtml pulumi.StringPtrOutput `pulumi:"customPageHtml"`
 	// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
@@ -132,6 +146,10 @@ func GetWaitingRoom(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WaitingRoom resources.
 type waitingRoomState struct {
+	// A list of additional hostname and paths combination to be applied on the waiting room.
+	AdditionalRoutes []WaitingRoomAdditionalRoute `pulumi:"additionalRoutes"`
+	// A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+	CookieSuffix *string `pulumi:"cookieSuffix"`
 	// This is a templated html file that will be rendered at the edge.
 	CustomPageHtml *string `pulumi:"customPageHtml"`
 	// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
@@ -165,6 +183,10 @@ type waitingRoomState struct {
 }
 
 type WaitingRoomState struct {
+	// A list of additional hostname and paths combination to be applied on the waiting room.
+	AdditionalRoutes WaitingRoomAdditionalRouteArrayInput
+	// A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+	CookieSuffix pulumi.StringPtrInput
 	// This is a templated html file that will be rendered at the edge.
 	CustomPageHtml pulumi.StringPtrInput
 	// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
@@ -202,6 +224,10 @@ func (WaitingRoomState) ElementType() reflect.Type {
 }
 
 type waitingRoomArgs struct {
+	// A list of additional hostname and paths combination to be applied on the waiting room.
+	AdditionalRoutes []WaitingRoomAdditionalRoute `pulumi:"additionalRoutes"`
+	// A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+	CookieSuffix *string `pulumi:"cookieSuffix"`
 	// This is a templated html file that will be rendered at the edge.
 	CustomPageHtml *string `pulumi:"customPageHtml"`
 	// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
@@ -236,6 +262,10 @@ type waitingRoomArgs struct {
 
 // The set of arguments for constructing a WaitingRoom resource.
 type WaitingRoomArgs struct {
+	// A list of additional hostname and paths combination to be applied on the waiting room.
+	AdditionalRoutes WaitingRoomAdditionalRouteArrayInput
+	// A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+	CookieSuffix pulumi.StringPtrInput
 	// This is a templated html file that will be rendered at the edge.
 	CustomPageHtml pulumi.StringPtrInput
 	// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
@@ -353,6 +383,16 @@ func (o WaitingRoomOutput) ToWaitingRoomOutput() WaitingRoomOutput {
 
 func (o WaitingRoomOutput) ToWaitingRoomOutputWithContext(ctx context.Context) WaitingRoomOutput {
 	return o
+}
+
+// A list of additional hostname and paths combination to be applied on the waiting room.
+func (o WaitingRoomOutput) AdditionalRoutes() WaitingRoomAdditionalRouteArrayOutput {
+	return o.ApplyT(func(v *WaitingRoom) WaitingRoomAdditionalRouteArrayOutput { return v.AdditionalRoutes }).(WaitingRoomAdditionalRouteArrayOutput)
+}
+
+// A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+func (o WaitingRoomOutput) CookieSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.CookieSuffix }).(pulumi.StringPtrOutput)
 }
 
 // This is a templated html file that will be rendered at the edge.

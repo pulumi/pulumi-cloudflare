@@ -35,14 +35,14 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration for the project build process.
+     * Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
      * 
      */
     @Import(name="buildConfig")
     private @Nullable Output<PagesProjectBuildConfigArgs> buildConfig;
 
     /**
-     * @return Configuration for the project build process.
+     * @return Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
      * 
      */
     public Optional<Output<PagesProjectBuildConfigArgs>> buildConfig() {
@@ -125,14 +125,14 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration for the project source.
+     * Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
      * 
      */
     @Import(name="source")
     private @Nullable Output<PagesProjectSourceArgs> source;
 
     /**
-     * @return Configuration for the project source.
+     * @return Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
      * 
      */
     public Optional<Output<PagesProjectSourceArgs>> source() {
@@ -208,7 +208,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param buildConfig Configuration for the project build process.
+         * @param buildConfig Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param buildConfig Configuration for the project build process.
+         * @param buildConfig Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param source Configuration for the project source.
+         * @param source Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
          * 
          * @return builder
          * 
@@ -355,7 +355,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param source Configuration for the project source.
+         * @param source Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
          * 
          * @return builder
          * 

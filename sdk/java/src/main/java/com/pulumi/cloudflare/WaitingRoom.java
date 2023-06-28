@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WaitingRoomArgs;
 import com.pulumi.cloudflare.inputs.WaitingRoomState;
+import com.pulumi.cloudflare.outputs.WaitingRoomAdditionalRoute;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -13,6 +14,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -28,6 +30,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.WaitingRoom;
  * import com.pulumi.cloudflare.WaitingRoomArgs;
+ * import com.pulumi.cloudflare.inputs.WaitingRoomAdditionalRouteArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -42,6 +45,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new WaitingRoom(&#34;example&#34;, WaitingRoomArgs.builder()        
+ *             .additionalRoutes(            
+ *                 WaitingRoomAdditionalRouteArgs.builder()
+ *                     .host(&#34;shop1.example.com&#34;)
+ *                     .path(&#34;/example-path&#34;)
+ *                     .build(),
+ *                 WaitingRoomAdditionalRouteArgs.builder()
+ *                     .host(&#34;shop2.example.com&#34;)
+ *                     .build())
+ *             .cookieSuffix(&#34;queue1&#34;)
  *             .host(&#34;foo.example.com&#34;)
  *             .name(&#34;foo&#34;)
  *             .newUsersPerMinute(200)
@@ -65,6 +77,34 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="cloudflare:index/waitingRoom:WaitingRoom")
 public class WaitingRoom extends com.pulumi.resources.CustomResource {
+    /**
+     * A list of additional hostname and paths combination to be applied on the waiting room.
+     * 
+     */
+    @Export(name="additionalRoutes", refs={List.class,WaitingRoomAdditionalRoute.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<WaitingRoomAdditionalRoute>> additionalRoutes;
+
+    /**
+     * @return A list of additional hostname and paths combination to be applied on the waiting room.
+     * 
+     */
+    public Output<Optional<List<WaitingRoomAdditionalRoute>>> additionalRoutes() {
+        return Codegen.optional(this.additionalRoutes);
+    }
+    /**
+     * A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+     * 
+     */
+    @Export(name="cookieSuffix", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> cookieSuffix;
+
+    /**
+     * @return A cookie suffix to be appended to the Cloudflare waiting room cookie name.
+     * 
+     */
+    public Output<Optional<String>> cookieSuffix() {
+        return Codegen.optional(this.cookieSuffix);
+    }
     /**
      * This is a templated html file that will be rendered at the edge.
      * 

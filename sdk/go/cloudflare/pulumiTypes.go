@@ -13568,6 +13568,8 @@ func (o NotificationPolicyEmailIntegrationArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type NotificationPolicyFilters struct {
+	// Alert trigger preferences. Example: `slo`.
+	AlertTriggerPreferences []string `pulumi:"alertTriggerPreferences"`
 	// State of the pool to alert on.
 	Enableds []string `pulumi:"enableds"`
 	// Source configuration to alert on for pool or origin.
@@ -13619,6 +13621,8 @@ type NotificationPolicyFiltersInput interface {
 }
 
 type NotificationPolicyFiltersArgs struct {
+	// Alert trigger preferences. Example: `slo`.
+	AlertTriggerPreferences pulumi.StringArrayInput `pulumi:"alertTriggerPreferences"`
 	// State of the pool to alert on.
 	Enableds pulumi.StringArrayInput `pulumi:"enableds"`
 	// Source configuration to alert on for pool or origin.
@@ -13733,6 +13737,11 @@ func (o NotificationPolicyFiltersOutput) ToNotificationPolicyFiltersPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationPolicyFilters) *NotificationPolicyFilters {
 		return &v
 	}).(NotificationPolicyFiltersPtrOutput)
+}
+
+// Alert trigger preferences. Example: `slo`.
+func (o NotificationPolicyFiltersOutput) AlertTriggerPreferences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.AlertTriggerPreferences }).(pulumi.StringArrayOutput)
 }
 
 // State of the pool to alert on.
@@ -13851,6 +13860,16 @@ func (o NotificationPolicyFiltersPtrOutput) Elem() NotificationPolicyFiltersOutp
 		var ret NotificationPolicyFilters
 		return ret
 	}).(NotificationPolicyFiltersOutput)
+}
+
+// Alert trigger preferences. Example: `slo`.
+func (o NotificationPolicyFiltersPtrOutput) AlertTriggerPreferences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AlertTriggerPreferences
+	}).(pulumi.StringArrayOutput)
 }
 
 // State of the pool to alert on.
@@ -31715,6 +31734,112 @@ func (o UserAgentBlockingRuleConfigurationPtrOutput) Value() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type WaitingRoomAdditionalRoute struct {
+	// The additional host name for which the waiting room to be applied on (no wildcards).
+	Host string `pulumi:"host"`
+	// The path within the additional host to enable the waiting room on. Defaults to `/`.
+	Path *string `pulumi:"path"`
+}
+
+// WaitingRoomAdditionalRouteInput is an input type that accepts WaitingRoomAdditionalRouteArgs and WaitingRoomAdditionalRouteOutput values.
+// You can construct a concrete instance of `WaitingRoomAdditionalRouteInput` via:
+//
+//	WaitingRoomAdditionalRouteArgs{...}
+type WaitingRoomAdditionalRouteInput interface {
+	pulumi.Input
+
+	ToWaitingRoomAdditionalRouteOutput() WaitingRoomAdditionalRouteOutput
+	ToWaitingRoomAdditionalRouteOutputWithContext(context.Context) WaitingRoomAdditionalRouteOutput
+}
+
+type WaitingRoomAdditionalRouteArgs struct {
+	// The additional host name for which the waiting room to be applied on (no wildcards).
+	Host pulumi.StringInput `pulumi:"host"`
+	// The path within the additional host to enable the waiting room on. Defaults to `/`.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (WaitingRoomAdditionalRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WaitingRoomAdditionalRoute)(nil)).Elem()
+}
+
+func (i WaitingRoomAdditionalRouteArgs) ToWaitingRoomAdditionalRouteOutput() WaitingRoomAdditionalRouteOutput {
+	return i.ToWaitingRoomAdditionalRouteOutputWithContext(context.Background())
+}
+
+func (i WaitingRoomAdditionalRouteArgs) ToWaitingRoomAdditionalRouteOutputWithContext(ctx context.Context) WaitingRoomAdditionalRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WaitingRoomAdditionalRouteOutput)
+}
+
+// WaitingRoomAdditionalRouteArrayInput is an input type that accepts WaitingRoomAdditionalRouteArray and WaitingRoomAdditionalRouteArrayOutput values.
+// You can construct a concrete instance of `WaitingRoomAdditionalRouteArrayInput` via:
+//
+//	WaitingRoomAdditionalRouteArray{ WaitingRoomAdditionalRouteArgs{...} }
+type WaitingRoomAdditionalRouteArrayInput interface {
+	pulumi.Input
+
+	ToWaitingRoomAdditionalRouteArrayOutput() WaitingRoomAdditionalRouteArrayOutput
+	ToWaitingRoomAdditionalRouteArrayOutputWithContext(context.Context) WaitingRoomAdditionalRouteArrayOutput
+}
+
+type WaitingRoomAdditionalRouteArray []WaitingRoomAdditionalRouteInput
+
+func (WaitingRoomAdditionalRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WaitingRoomAdditionalRoute)(nil)).Elem()
+}
+
+func (i WaitingRoomAdditionalRouteArray) ToWaitingRoomAdditionalRouteArrayOutput() WaitingRoomAdditionalRouteArrayOutput {
+	return i.ToWaitingRoomAdditionalRouteArrayOutputWithContext(context.Background())
+}
+
+func (i WaitingRoomAdditionalRouteArray) ToWaitingRoomAdditionalRouteArrayOutputWithContext(ctx context.Context) WaitingRoomAdditionalRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WaitingRoomAdditionalRouteArrayOutput)
+}
+
+type WaitingRoomAdditionalRouteOutput struct{ *pulumi.OutputState }
+
+func (WaitingRoomAdditionalRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WaitingRoomAdditionalRoute)(nil)).Elem()
+}
+
+func (o WaitingRoomAdditionalRouteOutput) ToWaitingRoomAdditionalRouteOutput() WaitingRoomAdditionalRouteOutput {
+	return o
+}
+
+func (o WaitingRoomAdditionalRouteOutput) ToWaitingRoomAdditionalRouteOutputWithContext(ctx context.Context) WaitingRoomAdditionalRouteOutput {
+	return o
+}
+
+// The additional host name for which the waiting room to be applied on (no wildcards).
+func (o WaitingRoomAdditionalRouteOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v WaitingRoomAdditionalRoute) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The path within the additional host to enable the waiting room on. Defaults to `/`.
+func (o WaitingRoomAdditionalRouteOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WaitingRoomAdditionalRoute) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type WaitingRoomAdditionalRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (WaitingRoomAdditionalRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WaitingRoomAdditionalRoute)(nil)).Elem()
+}
+
+func (o WaitingRoomAdditionalRouteArrayOutput) ToWaitingRoomAdditionalRouteArrayOutput() WaitingRoomAdditionalRouteArrayOutput {
+	return o
+}
+
+func (o WaitingRoomAdditionalRouteArrayOutput) ToWaitingRoomAdditionalRouteArrayOutputWithContext(ctx context.Context) WaitingRoomAdditionalRouteArrayOutput {
+	return o
+}
+
+func (o WaitingRoomAdditionalRouteArrayOutput) Index(i pulumi.IntInput) WaitingRoomAdditionalRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WaitingRoomAdditionalRoute {
+		return vs[0].([]WaitingRoomAdditionalRoute)[vs[1].(int)]
+	}).(WaitingRoomAdditionalRouteOutput)
+}
+
 type WaitingRoomRulesRule struct {
 	// Action to perform in the ruleset rule. Available values: `bypassWaitingRoom`.
 	Action string `pulumi:"action"`
@@ -42911,6 +43036,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelConfigConfigWarpRoutingPtrInput)(nil)).Elem(), TunnelConfigConfigWarpRoutingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserAgentBlockingRuleConfigurationInput)(nil)).Elem(), UserAgentBlockingRuleConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserAgentBlockingRuleConfigurationPtrInput)(nil)).Elem(), UserAgentBlockingRuleConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomAdditionalRouteInput)(nil)).Elem(), WaitingRoomAdditionalRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomAdditionalRouteArrayInput)(nil)).Elem(), WaitingRoomAdditionalRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomRulesRuleInput)(nil)).Elem(), WaitingRoomRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomRulesRuleArrayInput)(nil)).Elem(), WaitingRoomRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptAnalyticsEngineBindingInput)(nil)).Elem(), WorkerScriptAnalyticsEngineBindingArgs{})
@@ -43443,6 +43570,8 @@ func init() {
 	pulumi.RegisterOutputType(TunnelConfigConfigWarpRoutingPtrOutput{})
 	pulumi.RegisterOutputType(UserAgentBlockingRuleConfigurationOutput{})
 	pulumi.RegisterOutputType(UserAgentBlockingRuleConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(WaitingRoomAdditionalRouteOutput{})
+	pulumi.RegisterOutputType(WaitingRoomAdditionalRouteArrayOutput{})
 	pulumi.RegisterOutputType(WaitingRoomRulesRuleOutput{})
 	pulumi.RegisterOutputType(WaitingRoomRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptAnalyticsEngineBindingOutput{})

@@ -91,7 +91,7 @@ type AccessApplication struct {
 	CustomDenyMessage pulumi.StringPtrOutput `pulumi:"customDenyMessage"`
 	// Option that redirects to a custom URL when a user is denied access to the application.
 	CustomDenyUrl pulumi.StringPtrOutput `pulumi:"customDenyUrl"`
-	// The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
 	EnableBindingCookie pulumi.BoolPtrOutput `pulumi:"enableBindingCookie"`
@@ -105,8 +105,7 @@ type AccessApplication struct {
 	SaasApp AccessApplicationSaasAppPtrOutput `pulumi:"saasApp"`
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 	SameSiteCookieAttribute pulumi.StringPtrOutput `pulumi:"sameSiteCookieAttribute"`
-	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
-	// value set as `domain`
+	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
 	SelfHostedDomains pulumi.StringArrayOutput `pulumi:"selfHostedDomains"`
 	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
 	ServiceAuth401Redirect pulumi.BoolPtrOutput `pulumi:"serviceAuth401Redirect"`
@@ -168,7 +167,7 @@ type accessApplicationState struct {
 	CustomDenyMessage *string `pulumi:"customDenyMessage"`
 	// Option that redirects to a custom URL when a user is denied access to the application.
 	CustomDenyUrl *string `pulumi:"customDenyUrl"`
-	// The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
 	Domain *string `pulumi:"domain"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
 	EnableBindingCookie *bool `pulumi:"enableBindingCookie"`
@@ -182,8 +181,7 @@ type accessApplicationState struct {
 	SaasApp *AccessApplicationSaasApp `pulumi:"saasApp"`
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 	SameSiteCookieAttribute *string `pulumi:"sameSiteCookieAttribute"`
-	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
-	// value set as `domain`
+	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
 	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
 	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
 	ServiceAuth401Redirect *bool `pulumi:"serviceAuth401Redirect"`
@@ -214,7 +212,7 @@ type AccessApplicationState struct {
 	CustomDenyMessage pulumi.StringPtrInput
 	// Option that redirects to a custom URL when a user is denied access to the application.
 	CustomDenyUrl pulumi.StringPtrInput
-	// The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
 	Domain pulumi.StringPtrInput
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
 	EnableBindingCookie pulumi.BoolPtrInput
@@ -228,8 +226,7 @@ type AccessApplicationState struct {
 	SaasApp AccessApplicationSaasAppPtrInput
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 	SameSiteCookieAttribute pulumi.StringPtrInput
-	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
-	// value set as `domain`
+	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
 	SelfHostedDomains pulumi.StringArrayInput
 	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
 	ServiceAuth401Redirect pulumi.BoolPtrInput
@@ -262,7 +259,7 @@ type accessApplicationArgs struct {
 	CustomDenyMessage *string `pulumi:"customDenyMessage"`
 	// Option that redirects to a custom URL when a user is denied access to the application.
 	CustomDenyUrl *string `pulumi:"customDenyUrl"`
-	// The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
 	Domain *string `pulumi:"domain"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
 	EnableBindingCookie *bool `pulumi:"enableBindingCookie"`
@@ -276,8 +273,7 @@ type accessApplicationArgs struct {
 	SaasApp *AccessApplicationSaasApp `pulumi:"saasApp"`
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 	SameSiteCookieAttribute *string `pulumi:"sameSiteCookieAttribute"`
-	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
-	// value set as `domain`
+	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
 	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
 	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
 	ServiceAuth401Redirect *bool `pulumi:"serviceAuth401Redirect"`
@@ -307,7 +303,7 @@ type AccessApplicationArgs struct {
 	CustomDenyMessage pulumi.StringPtrInput
 	// Option that redirects to a custom URL when a user is denied access to the application.
 	CustomDenyUrl pulumi.StringPtrInput
-	// The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
 	Domain pulumi.StringPtrInput
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
 	EnableBindingCookie pulumi.BoolPtrInput
@@ -321,8 +317,7 @@ type AccessApplicationArgs struct {
 	SaasApp AccessApplicationSaasAppPtrInput
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 	SameSiteCookieAttribute pulumi.StringPtrInput
-	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
-	// value set as `domain`
+	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
 	SelfHostedDomains pulumi.StringArrayInput
 	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
 	ServiceAuth401Redirect pulumi.BoolPtrInput
@@ -463,7 +458,7 @@ func (o AccessApplicationOutput) CustomDenyUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.CustomDenyUrl }).(pulumi.StringPtrOutput)
 }
 
-// The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
 func (o AccessApplicationOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
@@ -498,8 +493,7 @@ func (o AccessApplicationOutput) SameSiteCookieAttribute() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.SameSiteCookieAttribute }).(pulumi.StringPtrOutput)
 }
 
-// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the
-// value set as `domain`
+// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
 func (o AccessApplicationOutput) SelfHostedDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringArrayOutput { return v.SelfHostedDomains }).(pulumi.StringArrayOutput)
 }
