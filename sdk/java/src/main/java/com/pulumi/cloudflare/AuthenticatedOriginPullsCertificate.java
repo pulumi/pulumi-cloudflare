@@ -72,7 +72,7 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
      * The public client certificate. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="certificate", refs={String.class}, tree="[0]")
+    @Export(name="certificate", type=String.class, parameters={})
     private Output<String> certificate;
 
     /**
@@ -86,7 +86,7 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
      * **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="expiresOn", refs={String.class}, tree="[0]")
+    @Export(name="expiresOn", type=String.class, parameters={})
     private Output<String> expiresOn;
 
     /**
@@ -100,7 +100,7 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
      * **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="issuer", refs={String.class}, tree="[0]")
+    @Export(name="issuer", type=String.class, parameters={})
     private Output<String> issuer;
 
     /**
@@ -114,7 +114,7 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
      * The private key of the client certificate. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="privateKey", refs={String.class}, tree="[0]")
+    @Export(name="privateKey", type=String.class, parameters={})
     private Output<String> privateKey;
 
     /**
@@ -128,7 +128,7 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
      * **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="serialNumber", refs={String.class}, tree="[0]")
+    @Export(name="serialNumber", type=String.class, parameters={})
     private Output<String> serialNumber;
 
     /**
@@ -142,7 +142,7 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
      * **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="signature", refs={String.class}, tree="[0]")
+    @Export(name="signature", type=String.class, parameters={})
     private Output<String> signature;
 
     /**
@@ -156,7 +156,7 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
      * **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="status", refs={String.class}, tree="[0]")
+    @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
@@ -170,7 +170,7 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
      * The form of Authenticated Origin Pulls to upload the certificate to. Available values: `per-zone`, `per-hostname`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
@@ -184,7 +184,7 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
      * **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="uploadedOn", refs={String.class}, tree="[0]")
+    @Export(name="uploadedOn", type=String.class, parameters={})
     private Output<String> uploadedOn;
 
     /**
@@ -198,7 +198,7 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**

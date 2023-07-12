@@ -82,7 +82,7 @@ public class TunnelRoute extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="accountId", refs={String.class}, tree="[0]")
+    @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
@@ -96,7 +96,7 @@ public class TunnelRoute extends com.pulumi.resources.CustomResource {
      * Description of the tunnel route.
      * 
      */
-    @Export(name="comment", refs={String.class}, tree="[0]")
+    @Export(name="comment", type=String.class, parameters={})
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -110,7 +110,7 @@ public class TunnelRoute extends com.pulumi.resources.CustomResource {
      * The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
      * 
      */
-    @Export(name="network", refs={String.class}, tree="[0]")
+    @Export(name="network", type=String.class, parameters={})
     private Output<String> network;
 
     /**
@@ -124,7 +124,7 @@ public class TunnelRoute extends com.pulumi.resources.CustomResource {
      * The ID of the tunnel that will service the tunnel route.
      * 
      */
-    @Export(name="tunnelId", refs={String.class}, tree="[0]")
+    @Export(name="tunnelId", type=String.class, parameters={})
     private Output<String> tunnelId;
 
     /**
@@ -138,7 +138,7 @@ public class TunnelRoute extends com.pulumi.resources.CustomResource {
      * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="virtualNetworkId", refs={String.class}, tree="[0]")
+    @Export(name="virtualNetworkId", type=String.class, parameters={})
     private Output</* @Nullable */ String> virtualNetworkId;
 
     /**

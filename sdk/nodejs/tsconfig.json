@@ -53,6 +53,7 @@
         "fallbackDomain.ts",
         "filter.ts",
         "firewallRule.ts",
+        "getAccessApplication.ts",
         "getAccessIdentityProvider.ts",
         "getAccountRoles.ts",
         "getAccounts.ts",

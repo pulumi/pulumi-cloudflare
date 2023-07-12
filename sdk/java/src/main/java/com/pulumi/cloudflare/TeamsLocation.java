@@ -74,7 +74,7 @@ public class TeamsLocation extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", refs={String.class}, tree="[0]")
+    @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
@@ -88,7 +88,7 @@ public class TeamsLocation extends com.pulumi.resources.CustomResource {
      * Indicator that anonymized logs are enabled.
      * 
      */
-    @Export(name="anonymizedLogsEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="anonymizedLogsEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> anonymizedLogsEnabled;
 
     /**
@@ -102,7 +102,7 @@ public class TeamsLocation extends com.pulumi.resources.CustomResource {
      * Indicator that this is the default location.
      * 
      */
-    @Export(name="clientDefault", refs={Boolean.class}, tree="[0]")
+    @Export(name="clientDefault", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> clientDefault;
 
     /**
@@ -116,7 +116,7 @@ public class TeamsLocation extends com.pulumi.resources.CustomResource {
      * The FQDN that DoH clients should be pointed at.
      * 
      */
-    @Export(name="dohSubdomain", refs={String.class}, tree="[0]")
+    @Export(name="dohSubdomain", type=String.class, parameters={})
     private Output<String> dohSubdomain;
 
     /**
@@ -130,7 +130,7 @@ public class TeamsLocation extends com.pulumi.resources.CustomResource {
      * Client IP address.
      * 
      */
-    @Export(name="ip", refs={String.class}, tree="[0]")
+    @Export(name="ip", type=String.class, parameters={})
     private Output<String> ip;
 
     /**
@@ -144,7 +144,7 @@ public class TeamsLocation extends com.pulumi.resources.CustomResource {
      * IP to direct all IPv4 DNS queries to.
      * 
      */
-    @Export(name="ipv4Destination", refs={String.class}, tree="[0]")
+    @Export(name="ipv4Destination", type=String.class, parameters={})
     private Output<String> ipv4Destination;
 
     /**
@@ -158,7 +158,7 @@ public class TeamsLocation extends com.pulumi.resources.CustomResource {
      * Name of the teams location.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -172,7 +172,7 @@ public class TeamsLocation extends com.pulumi.resources.CustomResource {
      * The networks CIDRs that comprise the location.
      * 
      */
-    @Export(name="networks", refs={List.class,TeamsLocationNetwork.class}, tree="[0,1]")
+    @Export(name="networks", type=List.class, parameters={TeamsLocationNetwork.class})
     private Output</* @Nullable */ List<TeamsLocationNetwork>> networks;
 
     /**
@@ -182,7 +182,7 @@ public class TeamsLocation extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<TeamsLocationNetwork>>> networks() {
         return Codegen.optional(this.networks);
     }
-    @Export(name="policyIds", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="policyIds", type=List.class, parameters={String.class})
     private Output<List<String>> policyIds;
 
     public Output<List<String>> policyIds() {

@@ -63,7 +63,7 @@ public class DevicePolicyCertificates extends com.pulumi.resources.CustomResourc
      * `true` if certificate generation is enabled.
      * 
      */
-    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="enabled", type=Boolean.class, parameters={})
     private Output<Boolean> enabled;
 
     /**
@@ -77,7 +77,7 @@ public class DevicePolicyCertificates extends com.pulumi.resources.CustomResourc
      * The zone identifier to target for the resource.
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**

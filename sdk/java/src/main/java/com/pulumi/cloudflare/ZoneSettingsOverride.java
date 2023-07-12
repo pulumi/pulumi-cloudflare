@@ -77,25 +77,25 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride")
 public class ZoneSettingsOverride extends com.pulumi.resources.CustomResource {
-    @Export(name="initialSettings", refs={List.class,ZoneSettingsOverrideInitialSetting.class}, tree="[0,1]")
+    @Export(name="initialSettings", type=List.class, parameters={ZoneSettingsOverrideInitialSetting.class})
     private Output<List<ZoneSettingsOverrideInitialSetting>> initialSettings;
 
     public Output<List<ZoneSettingsOverrideInitialSetting>> initialSettings() {
         return this.initialSettings;
     }
-    @Export(name="initialSettingsReadAt", refs={String.class}, tree="[0]")
+    @Export(name="initialSettingsReadAt", type=String.class, parameters={})
     private Output<String> initialSettingsReadAt;
 
     public Output<String> initialSettingsReadAt() {
         return this.initialSettingsReadAt;
     }
-    @Export(name="readonlySettings", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="readonlySettings", type=List.class, parameters={String.class})
     private Output<List<String>> readonlySettings;
 
     public Output<List<String>> readonlySettings() {
         return this.readonlySettings;
     }
-    @Export(name="settings", refs={ZoneSettingsOverrideSettings.class}, tree="[0]")
+    @Export(name="settings", type=ZoneSettingsOverrideSettings.class, parameters={})
     private Output<ZoneSettingsOverrideSettings> settings;
 
     public Output<ZoneSettingsOverrideSettings> settings() {
@@ -105,7 +105,7 @@ public class ZoneSettingsOverride extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
@@ -115,13 +115,13 @@ public class ZoneSettingsOverride extends com.pulumi.resources.CustomResource {
     public Output<String> zoneId() {
         return this.zoneId;
     }
-    @Export(name="zoneStatus", refs={String.class}, tree="[0]")
+    @Export(name="zoneStatus", type=String.class, parameters={})
     private Output<String> zoneStatus;
 
     public Output<String> zoneStatus() {
         return this.zoneStatus;
     }
-    @Export(name="zoneType", refs={String.class}, tree="[0]")
+    @Export(name="zoneType", type=String.class, parameters={})
     private Output<String> zoneType;
 
     public Output<String> zoneType() {

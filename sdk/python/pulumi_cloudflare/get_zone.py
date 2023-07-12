@@ -181,15 +181,15 @@ def get_zone(account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZone:getZone', __args__, opts=opts, typ=GetZoneResult).value
 
     return AwaitableGetZoneResult(
-        account_id=__ret__.account_id,
-        id=__ret__.id,
-        name=__ret__.name,
-        name_servers=__ret__.name_servers,
-        paused=__ret__.paused,
-        plan=__ret__.plan,
-        status=__ret__.status,
-        vanity_name_servers=__ret__.vanity_name_servers,
-        zone_id=__ret__.zone_id)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        name_servers=pulumi.get(__ret__, 'name_servers'),
+        paused=pulumi.get(__ret__, 'paused'),
+        plan=pulumi.get(__ret__, 'plan'),
+        status=pulumi.get(__ret__, 'status'),
+        vanity_name_servers=pulumi.get(__ret__, 'vanity_name_servers'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_zone)

@@ -93,9 +93,9 @@ def get_origin_ca_root_certificate(algorithm: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate', __args__, opts=opts, typ=GetOriginCaRootCertificateResult).value
 
     return AwaitableGetOriginCaRootCertificateResult(
-        algorithm=__ret__.algorithm,
-        cert_pem=__ret__.cert_pem,
-        id=__ret__.id)
+        algorithm=pulumi.get(__ret__, 'algorithm'),
+        cert_pem=pulumi.get(__ret__, 'cert_pem'),
+        id=pulumi.get(__ret__, 'id'))
 
 
 @_utilities.lift_output_func(get_origin_ca_root_certificate)

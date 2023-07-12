@@ -65,7 +65,7 @@ public class RegionalHostname extends com.pulumi.resources.CustomResource {
      * The RFC3339 timestamp of when the hostname was created.
      * 
      */
-    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    @Export(name="createdOn", type=String.class, parameters={})
     private Output<String> createdOn;
 
     /**
@@ -79,7 +79,7 @@ public class RegionalHostname extends com.pulumi.resources.CustomResource {
      * The hostname to regionalize.
      * 
      */
-    @Export(name="hostname", refs={String.class}, tree="[0]")
+    @Export(name="hostname", type=String.class, parameters={})
     private Output<String> hostname;
 
     /**
@@ -93,7 +93,7 @@ public class RegionalHostname extends com.pulumi.resources.CustomResource {
      * The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
      * 
      */
-    @Export(name="regionKey", refs={String.class}, tree="[0]")
+    @Export(name="regionKey", type=String.class, parameters={})
     private Output<String> regionKey;
 
     /**
@@ -107,7 +107,7 @@ public class RegionalHostname extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource.
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**

@@ -69,7 +69,7 @@ public class ManagedHeaders extends com.pulumi.resources.CustomResource {
      * The list of managed request headers.
      * 
      */
-    @Export(name="managedRequestHeaders", refs={List.class,ManagedHeadersManagedRequestHeader.class}, tree="[0,1]")
+    @Export(name="managedRequestHeaders", type=List.class, parameters={ManagedHeadersManagedRequestHeader.class})
     private Output</* @Nullable */ List<ManagedHeadersManagedRequestHeader>> managedRequestHeaders;
 
     /**
@@ -83,7 +83,7 @@ public class ManagedHeaders extends com.pulumi.resources.CustomResource {
      * The list of managed response headers.
      * 
      */
-    @Export(name="managedResponseHeaders", refs={List.class,ManagedHeadersManagedResponseHeader.class}, tree="[0,1]")
+    @Export(name="managedResponseHeaders", type=List.class, parameters={ManagedHeadersManagedResponseHeader.class})
     private Output</* @Nullable */ List<ManagedHeadersManagedResponseHeader>> managedResponseHeaders;
 
     /**
@@ -97,7 +97,7 @@ public class ManagedHeaders extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource.
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**

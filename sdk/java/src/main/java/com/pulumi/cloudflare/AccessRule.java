@@ -113,7 +113,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="accountId", refs={String.class}, tree="[0]")
+    @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
@@ -127,7 +127,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="configuration", refs={AccessRuleConfiguration.class}, tree="[0]")
+    @Export(name="configuration", type=AccessRuleConfiguration.class, parameters={})
     private Output<AccessRuleConfiguration> configuration;
 
     /**
@@ -141,7 +141,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
      * 
      */
-    @Export(name="mode", refs={String.class}, tree="[0]")
+    @Export(name="mode", type=String.class, parameters={})
     private Output<String> mode;
 
     /**
@@ -155,7 +155,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * A personal note about the rule. Typically used as a reminder or explanation for the rule.
      * 
      */
-    @Export(name="notes", refs={String.class}, tree="[0]")
+    @Export(name="notes", type=String.class, parameters={})
     private Output</* @Nullable */ String> notes;
 
     /**
@@ -169,7 +169,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**

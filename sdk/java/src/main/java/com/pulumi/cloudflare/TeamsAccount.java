@@ -115,7 +115,7 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", refs={String.class}, tree="[0]")
+    @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
@@ -129,7 +129,7 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
      * Whether to enable the activity log.
      * 
      */
-    @Export(name="activityLogEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="activityLogEnabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> activityLogEnabled;
 
     /**
@@ -143,7 +143,7 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
      * Configuration block for antivirus traffic scanning.
      * 
      */
-    @Export(name="antivirus", refs={TeamsAccountAntivirus.class}, tree="[0]")
+    @Export(name="antivirus", type=TeamsAccountAntivirus.class, parameters={})
     private Output</* @Nullable */ TeamsAccountAntivirus> antivirus;
 
     /**
@@ -157,7 +157,7 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
      * Configuration for a custom block page.
      * 
      */
-    @Export(name="blockPage", refs={TeamsAccountBlockPage.class}, tree="[0]")
+    @Export(name="blockPage", type=TeamsAccountBlockPage.class, parameters={})
     private Output</* @Nullable */ TeamsAccountBlockPage> blockPage;
 
     /**
@@ -171,7 +171,7 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
      * Configure compliance with Federal Information Processing Standards.
      * 
      */
-    @Export(name="fips", refs={TeamsAccountFips.class}, tree="[0]")
+    @Export(name="fips", type=TeamsAccountFips.class, parameters={})
     private Output</* @Nullable */ TeamsAccountFips> fips;
 
     /**
@@ -181,7 +181,7 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
     public Output<Optional<TeamsAccountFips>> fips() {
         return Codegen.optional(this.fips);
     }
-    @Export(name="logging", refs={TeamsAccountLogging.class}, tree="[0]")
+    @Export(name="logging", type=TeamsAccountLogging.class, parameters={})
     private Output</* @Nullable */ TeamsAccountLogging> logging;
 
     public Output<Optional<TeamsAccountLogging>> logging() {
@@ -191,7 +191,7 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
      * Configuration for DLP Payload Logging.
      * 
      */
-    @Export(name="payloadLog", refs={TeamsAccountPayloadLog.class}, tree="[0]")
+    @Export(name="payloadLog", type=TeamsAccountPayloadLog.class, parameters={})
     private Output</* @Nullable */ TeamsAccountPayloadLog> payloadLog;
 
     /**
@@ -205,7 +205,7 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
      * Configuration block for specifying which protocols are proxied.
      * 
      */
-    @Export(name="proxy", refs={TeamsAccountProxy.class}, tree="[0]")
+    @Export(name="proxy", type=TeamsAccountProxy.class, parameters={})
     private Output</* @Nullable */ TeamsAccountProxy> proxy;
 
     /**
@@ -219,7 +219,7 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
      * Indicator that decryption of TLS traffic is enabled.
      * 
      */
-    @Export(name="tlsDecryptEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="tlsDecryptEnabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> tlsDecryptEnabled;
 
     /**
@@ -233,7 +233,7 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
      * Safely browse websites in Browser Isolation through a URL.
      * 
      */
-    @Export(name="urlBrowserIsolationEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="urlBrowserIsolationEnabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> urlBrowserIsolationEnabled;
 
     /**

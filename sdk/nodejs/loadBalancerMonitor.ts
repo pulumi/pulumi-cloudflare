@@ -30,6 +30,12 @@ import * as utilities from "./utilities";
  *     type: "tcp",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor example <account_id>/<load_balancer_monitor_id>
+ * ```
  */
 export class LoadBalancerMonitor extends pulumi.CustomResource {
     /**

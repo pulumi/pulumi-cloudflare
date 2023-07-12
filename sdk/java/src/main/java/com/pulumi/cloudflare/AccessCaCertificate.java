@@ -65,13 +65,13 @@ import javax.annotation.Nullable;
  * Account level CA certificate import.
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/&lt;account_id&gt;/&lt;application_id&gt;/&lt;certificate_id&gt;
+ *  $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/&lt;account_id&gt;/&lt;application_id&gt;
  * ```
  * 
  *  Zone level CA certificate import.
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/&lt;zone_id&gt;/&lt;application_id&gt;/&lt;certificate_id&gt;
+ *  $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/&lt;zone_id&gt;/&lt;application_id&gt;
  * ```
  * 
  */
@@ -81,7 +81,7 @@ public class AccessCaCertificate extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. Conflicts with `zone_id`.
      * 
      */
-    @Export(name="accountId", refs={String.class}, tree="[0]")
+    @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
@@ -95,7 +95,7 @@ public class AccessCaCertificate extends com.pulumi.resources.CustomResource {
      * The Access Application ID to associate with the CA certificate.
      * 
      */
-    @Export(name="applicationId", refs={String.class}, tree="[0]")
+    @Export(name="applicationId", type=String.class, parameters={})
     private Output<String> applicationId;
 
     /**
@@ -109,7 +109,7 @@ public class AccessCaCertificate extends com.pulumi.resources.CustomResource {
      * Application Audience (AUD) Tag of the CA certificate.
      * 
      */
-    @Export(name="aud", refs={String.class}, tree="[0]")
+    @Export(name="aud", type=String.class, parameters={})
     private Output<String> aud;
 
     /**
@@ -123,7 +123,7 @@ public class AccessCaCertificate extends com.pulumi.resources.CustomResource {
      * Cryptographic public key of the generated CA certificate.
      * 
      */
-    @Export(name="publicKey", refs={String.class}, tree="[0]")
+    @Export(name="publicKey", type=String.class, parameters={})
     private Output<String> publicKey;
 
     /**
@@ -137,7 +137,7 @@ public class AccessCaCertificate extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. Conflicts with `account_id`.
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**

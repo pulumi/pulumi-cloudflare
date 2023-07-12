@@ -81,7 +81,7 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * A list of additional hostname and paths combination to be applied on the waiting room.
      * 
      */
-    @Export(name="additionalRoutes", refs={List.class,WaitingRoomAdditionalRoute.class}, tree="[0,1]")
+    @Export(name="additionalRoutes", type=List.class, parameters={WaitingRoomAdditionalRoute.class})
     private Output</* @Nullable */ List<WaitingRoomAdditionalRoute>> additionalRoutes;
 
     /**
@@ -95,7 +95,7 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * A cookie suffix to be appended to the Cloudflare waiting room cookie name.
      * 
      */
-    @Export(name="cookieSuffix", refs={String.class}, tree="[0]")
+    @Export(name="cookieSuffix", type=String.class, parameters={})
     private Output</* @Nullable */ String> cookieSuffix;
 
     /**
@@ -109,7 +109,7 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * This is a templated html file that will be rendered at the edge.
      * 
      */
-    @Export(name="customPageHtml", refs={String.class}, tree="[0]")
+    @Export(name="customPageHtml", type=String.class, parameters={})
     private Output</* @Nullable */ String> customPageHtml;
 
     /**
@@ -123,7 +123,7 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
      * 
      */
-    @Export(name="defaultTemplateLanguage", refs={String.class}, tree="[0]")
+    @Export(name="defaultTemplateLanguage", type=String.class, parameters={})
     private Output</* @Nullable */ String> defaultTemplateLanguage;
 
     /**
@@ -137,7 +137,7 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * A description to add more details about the waiting room.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -151,7 +151,7 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * Disables automatic renewal of session cookies.
      * 
      */
-    @Export(name="disableSessionRenewal", refs={Boolean.class}, tree="[0]")
+    @Export(name="disableSessionRenewal", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> disableSessionRenewal;
 
     /**
@@ -165,7 +165,7 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * Host name for which the waiting room will be applied (no wildcards).
      * 
      */
-    @Export(name="host", refs={String.class}, tree="[0]")
+    @Export(name="host", type=String.class, parameters={})
     private Output<String> host;
 
     /**
@@ -179,7 +179,7 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
      * 
      */
-    @Export(name="jsonResponseEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="jsonResponseEnabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> jsonResponseEnabled;
 
     /**
@@ -193,7 +193,7 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -207,7 +207,7 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * The number of new users that will be let into the route every minute.
      * 
      */
-    @Export(name="newUsersPerMinute", refs={Integer.class}, tree="[0]")
+    @Export(name="newUsersPerMinute", type=Integer.class, parameters={})
     private Output<Integer> newUsersPerMinute;
 
     /**
@@ -221,7 +221,7 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * The path within the host to enable the waiting room on. Defaults to `/`.
      * 
      */
-    @Export(name="path", refs={String.class}, tree="[0]")
+    @Export(name="path", type=String.class, parameters={})
     private Output</* @Nullable */ String> path;
 
     /**
@@ -235,7 +235,7 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * If queue_all is true, then all traffic will be sent to the waiting room.
      * 
      */
-    @Export(name="queueAll", refs={Boolean.class}, tree="[0]")
+    @Export(name="queueAll", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> queueAll;
 
     /**
@@ -249,7 +249,7 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
      * 
      */
-    @Export(name="queueingMethod", refs={String.class}, tree="[0]")
+    @Export(name="queueingMethod", type=String.class, parameters={})
     private Output</* @Nullable */ String> queueingMethod;
 
     /**
@@ -263,7 +263,7 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
      * 
      */
-    @Export(name="sessionDuration", refs={Integer.class}, tree="[0]")
+    @Export(name="sessionDuration", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> sessionDuration;
 
     /**
@@ -277,7 +277,7 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * Suspends the waiting room.
      * 
      */
-    @Export(name="suspended", refs={Boolean.class}, tree="[0]")
+    @Export(name="suspended", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> suspended;
 
     /**
@@ -291,7 +291,7 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * The total number of active user sessions on the route at a point in time.
      * 
      */
-    @Export(name="totalActiveUsers", refs={Integer.class}, tree="[0]")
+    @Export(name="totalActiveUsers", type=Integer.class, parameters={})
     private Output<Integer> totalActiveUsers;
 
     /**
@@ -305,7 +305,7 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**

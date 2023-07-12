@@ -197,17 +197,17 @@ def get_record(hostname: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getRecord:getRecord', __args__, opts=opts, typ=GetRecordResult).value
 
     return AwaitableGetRecordResult(
-        hostname=__ret__.hostname,
-        id=__ret__.id,
-        locked=__ret__.locked,
-        priority=__ret__.priority,
-        proxiable=__ret__.proxiable,
-        proxied=__ret__.proxied,
-        ttl=__ret__.ttl,
-        type=__ret__.type,
-        value=__ret__.value,
-        zone_id=__ret__.zone_id,
-        zone_name=__ret__.zone_name)
+        hostname=pulumi.get(__ret__, 'hostname'),
+        id=pulumi.get(__ret__, 'id'),
+        locked=pulumi.get(__ret__, 'locked'),
+        priority=pulumi.get(__ret__, 'priority'),
+        proxiable=pulumi.get(__ret__, 'proxiable'),
+        proxied=pulumi.get(__ret__, 'proxied'),
+        ttl=pulumi.get(__ret__, 'ttl'),
+        type=pulumi.get(__ret__, 'type'),
+        value=pulumi.get(__ret__, 'value'),
+        zone_id=pulumi.get(__ret__, 'zone_id'),
+        zone_name=pulumi.get(__ret__, 'zone_name'))
 
 
 @_utilities.lift_output_func(get_record)

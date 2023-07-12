@@ -14932,6 +14932,9 @@ class ZoneSettingsOverrideInitialSettingArgs:
     @property
     @pulumi.getter(name="tls12Only")
     def tls12_only(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""tls_1_2_only has been deprecated in favour of using `min_tls_version = \"1.2\"` instead.""", DeprecationWarning)
+        pulumi.log.warn("""tls12_only is deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = \"1.2\"` instead.""")
+
         return pulumi.get(self, "tls12_only")
 
     @tls12_only.setter
@@ -15741,6 +15744,9 @@ class ZoneSettingsOverrideSettingsArgs:
     @property
     @pulumi.getter(name="tls12Only")
     def tls12_only(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""tls_1_2_only has been deprecated in favour of using `min_tls_version = \"1.2\"` instead.""", DeprecationWarning)
+        pulumi.log.warn("""tls12_only is deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = \"1.2\"` instead.""")
+
         return pulumi.get(self, "tls12_only")
 
     @tls12_only.setter

@@ -86,7 +86,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. Conflicts with `zone_id`.
      * 
      */
-    @Export(name="accountId", refs={String.class}, tree="[0]")
+    @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
@@ -100,7 +100,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * The identity providers selected for the application.
      * 
      */
-    @Export(name="allowedIdps", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="allowedIdps", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> allowedIdps;
 
     /**
@@ -114,7 +114,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * Option to show/hide applications in App Launcher. Defaults to `true`.
      * 
      */
-    @Export(name="appLauncherVisible", refs={Boolean.class}, tree="[0]")
+    @Export(name="appLauncherVisible", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> appLauncherVisible;
 
     /**
@@ -128,7 +128,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * Application Audience (AUD) Tag of the application.
      * 
      */
-    @Export(name="aud", refs={String.class}, tree="[0]")
+    @Export(name="aud", type=String.class, parameters={})
     private Output<String> aud;
 
     /**
@@ -142,7 +142,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
      * 
      */
-    @Export(name="autoRedirectToIdentity", refs={Boolean.class}, tree="[0]")
+    @Export(name="autoRedirectToIdentity", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> autoRedirectToIdentity;
 
     /**
@@ -156,7 +156,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * CORS configuration for the Access Application. See below for reference structure.
      * 
      */
-    @Export(name="corsHeaders", refs={List.class,AccessApplicationCorsHeader.class}, tree="[0,1]")
+    @Export(name="corsHeaders", type=List.class, parameters={AccessApplicationCorsHeader.class})
     private Output</* @Nullable */ List<AccessApplicationCorsHeader>> corsHeaders;
 
     /**
@@ -170,7 +170,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * Option that returns a custom error message when a user is denied access to the application.
      * 
      */
-    @Export(name="customDenyMessage", refs={String.class}, tree="[0]")
+    @Export(name="customDenyMessage", type=String.class, parameters={})
     private Output</* @Nullable */ String> customDenyMessage;
 
     /**
@@ -184,7 +184,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * Option that redirects to a custom URL when a user is denied access to the application.
      * 
      */
-    @Export(name="customDenyUrl", refs={String.class}, tree="[0]")
+    @Export(name="customDenyUrl", type=String.class, parameters={})
     private Output</* @Nullable */ String> customDenyUrl;
 
     /**
@@ -198,7 +198,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
      * 
      */
-    @Export(name="domain", refs={String.class}, tree="[0]")
+    @Export(name="domain", type=String.class, parameters={})
     private Output<String> domain;
 
     /**
@@ -212,7 +212,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional &#34;binding&#34; cookie on requests. Defaults to `false`.
      * 
      */
-    @Export(name="enableBindingCookie", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableBindingCookie", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableBindingCookie;
 
     /**
@@ -226,7 +226,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * Option to add the `HttpOnly` cookie flag to access tokens.
      * 
      */
-    @Export(name="httpOnlyCookieAttribute", refs={Boolean.class}, tree="[0]")
+    @Export(name="httpOnlyCookieAttribute", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> httpOnlyCookieAttribute;
 
     /**
@@ -240,7 +240,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * Image URL for the logo shown in the app launcher dashboard.
      * 
      */
-    @Export(name="logoUrl", refs={String.class}, tree="[0]")
+    @Export(name="logoUrl", type=String.class, parameters={})
     private Output</* @Nullable */ String> logoUrl;
 
     /**
@@ -254,7 +254,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * Friendly name of the Access Application.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -268,7 +268,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * SaaS configuration for the Access Application.
      * 
      */
-    @Export(name="saasApp", refs={AccessApplicationSaasApp.class}, tree="[0]")
+    @Export(name="saasApp", type=AccessApplicationSaasApp.class, parameters={})
     private Output</* @Nullable */ AccessApplicationSaasApp> saasApp;
 
     /**
@@ -282,7 +282,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
      * 
      */
-    @Export(name="sameSiteCookieAttribute", refs={String.class}, tree="[0]")
+    @Export(name="sameSiteCookieAttribute", type=String.class, parameters={})
     private Output</* @Nullable */ String> sameSiteCookieAttribute;
 
     /**
@@ -296,7 +296,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
      * 
      */
-    @Export(name="selfHostedDomains", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="selfHostedDomains", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> selfHostedDomains;
 
     /**
@@ -310,7 +310,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
      * 
      */
-    @Export(name="serviceAuth401Redirect", refs={Boolean.class}, tree="[0]")
+    @Export(name="serviceAuth401Redirect", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> serviceAuth401Redirect;
 
     /**
@@ -324,7 +324,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
      * 
      */
-    @Export(name="sessionDuration", refs={String.class}, tree="[0]")
+    @Export(name="sessionDuration", type=String.class, parameters={})
     private Output</* @Nullable */ String> sessionDuration;
 
     /**
@@ -338,7 +338,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
      * 
      */
-    @Export(name="skipInterstitial", refs={Boolean.class}, tree="[0]")
+    @Export(name="skipInterstitial", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> skipInterstitial;
 
     /**
@@ -352,7 +352,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output</* @Nullable */ String> type;
 
     /**
@@ -366,7 +366,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. Conflicts with `account_id`.
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**

@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/loadBalancerPool:LoadBalancerPool example &lt;account_id&gt;/&lt;load_balancer_poool_id&gt;
+    ///  $ pulumi import cloudflare:index/loadBalancerPool:LoadBalancerPool example &lt;account_id&gt;/&lt;load_balancer_pool_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/loadBalancerPool:LoadBalancerPool")]

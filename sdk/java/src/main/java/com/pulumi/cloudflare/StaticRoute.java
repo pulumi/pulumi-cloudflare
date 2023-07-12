@@ -71,7 +71,7 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="accountId", refs={String.class}, tree="[0]")
+    @Export(name="accountId", type=String.class, parameters={})
     private Output</* @Nullable */ String> accountId;
 
     /**
@@ -85,7 +85,7 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
      * List of Cloudflare colocation regions for this static route.
      * 
      */
-    @Export(name="coloNames", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="coloNames", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> coloNames;
 
     /**
@@ -99,7 +99,7 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
      * List of Cloudflare colocation names for this static route.
      * 
      */
-    @Export(name="coloRegions", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="coloRegions", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> coloRegions;
 
     /**
@@ -113,7 +113,7 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
      * Description of the static route.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -127,7 +127,7 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
      * The nexthop IP address where traffic will be routed to.
      * 
      */
-    @Export(name="nexthop", refs={String.class}, tree="[0]")
+    @Export(name="nexthop", type=String.class, parameters={})
     private Output<String> nexthop;
 
     /**
@@ -141,7 +141,7 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
      * Your network prefix using CIDR notation.
      * 
      */
-    @Export(name="prefix", refs={String.class}, tree="[0]")
+    @Export(name="prefix", type=String.class, parameters={})
     private Output<String> prefix;
 
     /**
@@ -155,7 +155,7 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
      * The priority for the static route.
      * 
      */
-    @Export(name="priority", refs={Integer.class}, tree="[0]")
+    @Export(name="priority", type=Integer.class, parameters={})
     private Output<Integer> priority;
 
     /**
@@ -169,7 +169,7 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
      * The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="weight", refs={Integer.class}, tree="[0]")
+    @Export(name="weight", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> weight;
 
     /**

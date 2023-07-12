@@ -76,7 +76,7 @@ public class ZoneLockdown extends com.pulumi.resources.CustomResource {
      * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
      * 
      */
-    @Export(name="configurations", refs={List.class,ZoneLockdownConfiguration.class}, tree="[0,1]")
+    @Export(name="configurations", type=List.class, parameters={ZoneLockdownConfiguration.class})
     private Output<List<ZoneLockdownConfiguration>> configurations;
 
     /**
@@ -90,7 +90,7 @@ public class ZoneLockdown extends com.pulumi.resources.CustomResource {
      * A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -104,7 +104,7 @@ public class ZoneLockdown extends com.pulumi.resources.CustomResource {
      * Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
      * 
      */
-    @Export(name="paused", refs={Boolean.class}, tree="[0]")
+    @Export(name="paused", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> paused;
 
     /**
@@ -114,7 +114,7 @@ public class ZoneLockdown extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> paused() {
         return Codegen.optional(this.paused);
     }
-    @Export(name="priority", refs={Integer.class}, tree="[0]")
+    @Export(name="priority", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> priority;
 
     public Output<Optional<Integer>> priority() {
@@ -124,7 +124,7 @@ public class ZoneLockdown extends com.pulumi.resources.CustomResource {
      * A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
      * 
      */
-    @Export(name="urls", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="urls", type=List.class, parameters={String.class})
     private Output<List<String>> urls;
 
     /**
@@ -138,7 +138,7 @@ public class ZoneLockdown extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**

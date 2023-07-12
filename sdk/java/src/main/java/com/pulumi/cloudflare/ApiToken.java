@@ -30,7 +30,7 @@ public class ApiToken extends com.pulumi.resources.CustomResource {
      * Conditions under which the token should be considered valid.
      * 
      */
-    @Export(name="condition", refs={ApiTokenCondition.class}, tree="[0]")
+    @Export(name="condition", type=ApiTokenCondition.class, parameters={})
     private Output</* @Nullable */ ApiTokenCondition> condition;
 
     /**
@@ -44,7 +44,7 @@ public class ApiToken extends com.pulumi.resources.CustomResource {
      * The expiration time on or after which the token MUST NOT be accepted for processing.
      * 
      */
-    @Export(name="expiresOn", refs={String.class}, tree="[0]")
+    @Export(name="expiresOn", type=String.class, parameters={})
     private Output</* @Nullable */ String> expiresOn;
 
     /**
@@ -58,7 +58,7 @@ public class ApiToken extends com.pulumi.resources.CustomResource {
      * Timestamp of when the token was issued.
      * 
      */
-    @Export(name="issuedOn", refs={String.class}, tree="[0]")
+    @Export(name="issuedOn", type=String.class, parameters={})
     private Output<String> issuedOn;
 
     /**
@@ -72,7 +72,7 @@ public class ApiToken extends com.pulumi.resources.CustomResource {
      * Timestamp of when the token was last modified.
      * 
      */
-    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    @Export(name="modifiedOn", type=String.class, parameters={})
     private Output<String> modifiedOn;
 
     /**
@@ -86,7 +86,7 @@ public class ApiToken extends com.pulumi.resources.CustomResource {
      * Name of the API Token.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -100,7 +100,7 @@ public class ApiToken extends com.pulumi.resources.CustomResource {
      * The time before which the token MUST NOT be accepted for processing.
      * 
      */
-    @Export(name="notBefore", refs={String.class}, tree="[0]")
+    @Export(name="notBefore", type=String.class, parameters={})
     private Output</* @Nullable */ String> notBefore;
 
     /**
@@ -114,7 +114,7 @@ public class ApiToken extends com.pulumi.resources.CustomResource {
      * Permissions policy. Multiple policy blocks can be defined.
      * 
      */
-    @Export(name="policies", refs={List.class,ApiTokenPolicy.class}, tree="[0,1]")
+    @Export(name="policies", type=List.class, parameters={ApiTokenPolicy.class})
     private Output<List<ApiTokenPolicy>> policies;
 
     /**
@@ -124,7 +124,7 @@ public class ApiToken extends com.pulumi.resources.CustomResource {
     public Output<List<ApiTokenPolicy>> policies() {
         return this.policies;
     }
-    @Export(name="status", refs={String.class}, tree="[0]")
+    @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     public Output<String> status() {
@@ -134,7 +134,7 @@ public class ApiToken extends com.pulumi.resources.CustomResource {
      * The value of the API Token.
      * 
      */
-    @Export(name="value", refs={String.class}, tree="[0]")
+    @Export(name="value", type=String.class, parameters={})
     private Output<String> value;
 
     /**

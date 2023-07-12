@@ -114,7 +114,7 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
      * The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="accountId", refs={String.class}, tree="[0]")
+    @Export(name="accountId", type=String.class, parameters={})
     private Output</* @Nullable */ String> accountId;
 
     /**
@@ -128,7 +128,7 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
      * Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
      * 
      */
-    @Export(name="configs", refs={List.class,AccessIdentityProviderConfig.class}, tree="[0,1]")
+    @Export(name="configs", type=List.class, parameters={AccessIdentityProviderConfig.class})
     private Output</* @Nullable */ List<AccessIdentityProviderConfig>> configs;
 
     /**
@@ -142,7 +142,7 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
      * Friendly name of the Access Identity Provider configuration.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -156,7 +156,7 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
      * Configuration for SCIM settings for a given IDP.
      * 
      */
-    @Export(name="scimConfigs", refs={List.class,AccessIdentityProviderScimConfig.class}, tree="[0,1]")
+    @Export(name="scimConfigs", type=List.class, parameters={AccessIdentityProviderScimConfig.class})
     private Output</* @Nullable */ List<AccessIdentityProviderScimConfig>> scimConfigs;
 
     /**
@@ -170,7 +170,7 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
      * The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
@@ -184,7 +184,7 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
      * The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output</* @Nullable */ String> zoneId;
 
     /**

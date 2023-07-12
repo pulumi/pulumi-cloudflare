@@ -62,7 +62,7 @@ public class WaitingRoomSettings extends com.pulumi.resources.CustomResource {
      * Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
      * 
      */
-    @Export(name="searchEngineCrawlerBypass", refs={Boolean.class}, tree="[0]")
+    @Export(name="searchEngineCrawlerBypass", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> searchEngineCrawlerBypass;
 
     /**
@@ -76,7 +76,7 @@ public class WaitingRoomSettings extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**

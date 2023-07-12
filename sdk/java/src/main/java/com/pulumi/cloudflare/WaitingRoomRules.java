@@ -77,7 +77,7 @@ public class WaitingRoomRules extends com.pulumi.resources.CustomResource {
      * List of rules to apply to the ruleset.
      * 
      */
-    @Export(name="rules", refs={List.class,WaitingRoomRulesRule.class}, tree="[0,1]")
+    @Export(name="rules", type=List.class, parameters={WaitingRoomRulesRule.class})
     private Output</* @Nullable */ List<WaitingRoomRulesRule>> rules;
 
     /**
@@ -91,7 +91,7 @@ public class WaitingRoomRules extends com.pulumi.resources.CustomResource {
      * The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="waitingRoomId", refs={String.class}, tree="[0]")
+    @Export(name="waitingRoomId", type=String.class, parameters={})
     private Output<String> waitingRoomId;
 
     /**
@@ -105,7 +105,7 @@ public class WaitingRoomRules extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**

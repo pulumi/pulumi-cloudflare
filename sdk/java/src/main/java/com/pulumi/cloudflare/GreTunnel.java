@@ -72,7 +72,7 @@ public class GreTunnel extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="accountId", refs={String.class}, tree="[0]")
+    @Export(name="accountId", type=String.class, parameters={})
     private Output</* @Nullable */ String> accountId;
 
     /**
@@ -86,7 +86,7 @@ public class GreTunnel extends com.pulumi.resources.CustomResource {
      * The IP address assigned to the Cloudflare side of the GRE tunnel.
      * 
      */
-    @Export(name="cloudflareGreEndpoint", refs={String.class}, tree="[0]")
+    @Export(name="cloudflareGreEndpoint", type=String.class, parameters={})
     private Output<String> cloudflareGreEndpoint;
 
     /**
@@ -100,7 +100,7 @@ public class GreTunnel extends com.pulumi.resources.CustomResource {
      * The IP address assigned to the customer side of the GRE tunnel.
      * 
      */
-    @Export(name="customerGreEndpoint", refs={String.class}, tree="[0]")
+    @Export(name="customerGreEndpoint", type=String.class, parameters={})
     private Output<String> customerGreEndpoint;
 
     /**
@@ -114,7 +114,7 @@ public class GreTunnel extends com.pulumi.resources.CustomResource {
      * Description of the GRE tunnel intent.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -128,7 +128,7 @@ public class GreTunnel extends com.pulumi.resources.CustomResource {
      * Specifies if ICMP tunnel health checks are enabled.
      * 
      */
-    @Export(name="healthCheckEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="healthCheckEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> healthCheckEnabled;
 
     /**
@@ -142,7 +142,7 @@ public class GreTunnel extends com.pulumi.resources.CustomResource {
      * The IP address of the customer endpoint that will receive tunnel health checks.
      * 
      */
-    @Export(name="healthCheckTarget", refs={String.class}, tree="[0]")
+    @Export(name="healthCheckTarget", type=String.class, parameters={})
     private Output<String> healthCheckTarget;
 
     /**
@@ -156,7 +156,7 @@ public class GreTunnel extends com.pulumi.resources.CustomResource {
      * Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
      * 
      */
-    @Export(name="healthCheckType", refs={String.class}, tree="[0]")
+    @Export(name="healthCheckType", type=String.class, parameters={})
     private Output<String> healthCheckType;
 
     /**
@@ -170,7 +170,7 @@ public class GreTunnel extends com.pulumi.resources.CustomResource {
      * 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
      * 
      */
-    @Export(name="interfaceAddress", refs={String.class}, tree="[0]")
+    @Export(name="interfaceAddress", type=String.class, parameters={})
     private Output<String> interfaceAddress;
 
     /**
@@ -184,7 +184,7 @@ public class GreTunnel extends com.pulumi.resources.CustomResource {
      * Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
      * 
      */
-    @Export(name="mtu", refs={Integer.class}, tree="[0]")
+    @Export(name="mtu", type=Integer.class, parameters={})
     private Output<Integer> mtu;
 
     /**
@@ -198,7 +198,7 @@ public class GreTunnel extends com.pulumi.resources.CustomResource {
      * Name of the GRE tunnel.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -212,7 +212,7 @@ public class GreTunnel extends com.pulumi.resources.CustomResource {
      * Time To Live (TTL) in number of hops of the GRE tunnel.
      * 
      */
-    @Export(name="ttl", refs={Integer.class}, tree="[0]")
+    @Export(name="ttl", type=Integer.class, parameters={})
     private Output<Integer> ttl;
 
     /**
