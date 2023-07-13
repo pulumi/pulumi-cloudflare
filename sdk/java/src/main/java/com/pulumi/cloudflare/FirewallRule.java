@@ -72,7 +72,7 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
      * The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`, `managed_challenge`, `log`, `bypass`.
      * 
      */
-    @Export(name="action", type=String.class, parameters={})
+    @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
@@ -86,7 +86,7 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
      * A description of the rule to help identify it.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -100,7 +100,7 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
      * The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
      * 
      */
-    @Export(name="filterId", type=String.class, parameters={})
+    @Export(name="filterId", refs={String.class}, tree="[0]")
     private Output<String> filterId;
 
     /**
@@ -114,7 +114,7 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
      * Whether this filter based firewall rule is currently paused.
      * 
      */
-    @Export(name="paused", type=Boolean.class, parameters={})
+    @Export(name="paused", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> paused;
 
     /**
@@ -128,7 +128,7 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
      * The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> priority;
 
     /**
@@ -142,7 +142,7 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
      * List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
      * 
      */
-    @Export(name="products", type=List.class, parameters={String.class})
+    @Export(name="products", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> products;
 
     /**
@@ -156,7 +156,7 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

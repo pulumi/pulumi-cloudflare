@@ -127,7 +127,7 @@ public class RateLimit extends com.pulumi.resources.CustomResource {
      * The action to be performed when the threshold of matched traffic within the period defined is exceeded.
      * 
      */
-    @Export(name="action", type=RateLimitAction.class, parameters={})
+    @Export(name="action", refs={RateLimitAction.class}, tree="[0]")
     private Output<RateLimitAction> action;
 
     /**
@@ -137,7 +137,7 @@ public class RateLimit extends com.pulumi.resources.CustomResource {
     public Output<RateLimitAction> action() {
         return this.action;
     }
-    @Export(name="bypassUrlPatterns", type=List.class, parameters={String.class})
+    @Export(name="bypassUrlPatterns", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> bypassUrlPatterns;
 
     public Output<Optional<List<String>>> bypassUrlPatterns() {
@@ -147,7 +147,7 @@ public class RateLimit extends com.pulumi.resources.CustomResource {
      * Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
      * 
      */
-    @Export(name="correlate", type=RateLimitCorrelate.class, parameters={})
+    @Export(name="correlate", refs={RateLimitCorrelate.class}, tree="[0]")
     private Output</* @Nullable */ RateLimitCorrelate> correlate;
 
     /**
@@ -161,7 +161,7 @@ public class RateLimit extends com.pulumi.resources.CustomResource {
      * A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -175,7 +175,7 @@ public class RateLimit extends com.pulumi.resources.CustomResource {
      * Whether this ratelimit is currently disabled. Defaults to `false`.
      * 
      */
-    @Export(name="disabled", type=Boolean.class, parameters={})
+    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
@@ -189,7 +189,7 @@ public class RateLimit extends com.pulumi.resources.CustomResource {
      * Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
      * 
      */
-    @Export(name="match", type=RateLimitMatch.class, parameters={})
+    @Export(name="match", refs={RateLimitMatch.class}, tree="[0]")
     private Output<RateLimitMatch> match;
 
     /**
@@ -203,7 +203,7 @@ public class RateLimit extends com.pulumi.resources.CustomResource {
      * The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output<Integer> period;
 
     /**
@@ -217,7 +217,7 @@ public class RateLimit extends com.pulumi.resources.CustomResource {
      * The threshold that triggers the rate limit mitigations, combine with period.
      * 
      */
-    @Export(name="threshold", type=Integer.class, parameters={})
+    @Export(name="threshold", refs={Integer.class}, tree="[0]")
     private Output<Integer> threshold;
 
     /**
@@ -231,7 +231,7 @@ public class RateLimit extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

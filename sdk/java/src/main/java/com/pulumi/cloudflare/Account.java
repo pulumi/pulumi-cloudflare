@@ -64,7 +64,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * Whether 2FA is enforced on the account. Defaults to `false`.
      * 
      */
-    @Export(name="enforceTwofactor", type=Boolean.class, parameters={})
+    @Export(name="enforceTwofactor", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enforceTwofactor;
 
     /**
@@ -78,7 +78,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The name of the account that is displayed in the Cloudflare dashboard.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -92,7 +92,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**

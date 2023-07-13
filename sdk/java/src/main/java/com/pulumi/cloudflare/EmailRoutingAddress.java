@@ -54,7 +54,7 @@ public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -68,7 +68,7 @@ public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
      * The date and time the destination address has been created.
      * 
      */
-    @Export(name="created", type=String.class, parameters={})
+    @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     /**
@@ -82,7 +82,7 @@ public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
      * The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output<String> email;
 
     /**
@@ -96,7 +96,7 @@ public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
      * The date and time the destination address was last modified.
      * 
      */
-    @Export(name="modified", type=String.class, parameters={})
+    @Export(name="modified", refs={String.class}, tree="[0]")
     private Output<String> modified;
 
     /**
@@ -110,7 +110,7 @@ public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
      * Destination address identifier.
      * 
      */
-    @Export(name="tag", type=String.class, parameters={})
+    @Export(name="tag", refs={String.class}, tree="[0]")
     private Output<String> tag;
 
     /**
@@ -124,7 +124,7 @@ public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
      * The date and time the destination address has been verified. Null means not verified yet.
      * 
      */
-    @Export(name="verified", type=String.class, parameters={})
+    @Export(name="verified", refs={String.class}, tree="[0]")
     private Output<String> verified;
 
     /**

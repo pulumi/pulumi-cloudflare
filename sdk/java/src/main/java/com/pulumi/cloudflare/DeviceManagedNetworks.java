@@ -67,7 +67,7 @@ public class DeviceManagedNetworks extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -81,7 +81,7 @@ public class DeviceManagedNetworks extends com.pulumi.resources.CustomResource {
      * The configuration containing information for the WARP client to detect the managed network.
      * 
      */
-    @Export(name="config", type=DeviceManagedNetworksConfig.class, parameters={})
+    @Export(name="config", refs={DeviceManagedNetworksConfig.class}, tree="[0]")
     private Output<DeviceManagedNetworksConfig> config;
 
     /**
@@ -95,7 +95,7 @@ public class DeviceManagedNetworks extends com.pulumi.resources.CustomResource {
      * The name of the Device Managed Network. Must be unique.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -109,7 +109,7 @@ public class DeviceManagedNetworks extends com.pulumi.resources.CustomResource {
      * The type of Device Managed Network. Available values: `tls`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

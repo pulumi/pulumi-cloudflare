@@ -115,7 +115,7 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -125,7 +125,7 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
     public Output<String> accountId() {
         return this.accountId;
     }
-    @Export(name="analyticsEngineBindings", type=List.class, parameters={WorkerScriptAnalyticsEngineBinding.class})
+    @Export(name="analyticsEngineBindings", refs={List.class,WorkerScriptAnalyticsEngineBinding.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WorkerScriptAnalyticsEngineBinding>> analyticsEngineBindings;
 
     public Output<Optional<List<WorkerScriptAnalyticsEngineBinding>>> analyticsEngineBindings() {
@@ -135,7 +135,7 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      * The date to use for the compatibility flag.
      * 
      */
-    @Export(name="compatibilityDate", type=String.class, parameters={})
+    @Export(name="compatibilityDate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> compatibilityDate;
 
     /**
@@ -149,7 +149,7 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      * Compatibility flags used for Worker Scripts.
      * 
      */
-    @Export(name="compatibilityFlags", type=List.class, parameters={String.class})
+    @Export(name="compatibilityFlags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> compatibilityFlags;
 
     /**
@@ -163,7 +163,7 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      * The script content.
      * 
      */
-    @Export(name="content", type=String.class, parameters={})
+    @Export(name="content", refs={String.class}, tree="[0]")
     private Output<String> content;
 
     /**
@@ -173,7 +173,7 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
     public Output<String> content() {
         return this.content;
     }
-    @Export(name="kvNamespaceBindings", type=List.class, parameters={WorkerScriptKvNamespaceBinding.class})
+    @Export(name="kvNamespaceBindings", refs={List.class,WorkerScriptKvNamespaceBinding.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WorkerScriptKvNamespaceBinding>> kvNamespaceBindings;
 
     public Output<Optional<List<WorkerScriptKvNamespaceBinding>>> kvNamespaceBindings() {
@@ -183,7 +183,7 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      * Enabling allows Worker events to be sent to a defined Logpush destination.
      * 
      */
-    @Export(name="logpush", type=Boolean.class, parameters={})
+    @Export(name="logpush", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> logpush;
 
     /**
@@ -197,7 +197,7 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      * Whether to upload Worker as a module.
      * 
      */
-    @Export(name="module", type=Boolean.class, parameters={})
+    @Export(name="module", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> module;
 
     /**
@@ -211,7 +211,7 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      * The name for the script. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -221,37 +221,37 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="plainTextBindings", type=List.class, parameters={WorkerScriptPlainTextBinding.class})
+    @Export(name="plainTextBindings", refs={List.class,WorkerScriptPlainTextBinding.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WorkerScriptPlainTextBinding>> plainTextBindings;
 
     public Output<Optional<List<WorkerScriptPlainTextBinding>>> plainTextBindings() {
         return Codegen.optional(this.plainTextBindings);
     }
-    @Export(name="queueBindings", type=List.class, parameters={WorkerScriptQueueBinding.class})
+    @Export(name="queueBindings", refs={List.class,WorkerScriptQueueBinding.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WorkerScriptQueueBinding>> queueBindings;
 
     public Output<Optional<List<WorkerScriptQueueBinding>>> queueBindings() {
         return Codegen.optional(this.queueBindings);
     }
-    @Export(name="r2BucketBindings", type=List.class, parameters={WorkerScriptR2BucketBinding.class})
+    @Export(name="r2BucketBindings", refs={List.class,WorkerScriptR2BucketBinding.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WorkerScriptR2BucketBinding>> r2BucketBindings;
 
     public Output<Optional<List<WorkerScriptR2BucketBinding>>> r2BucketBindings() {
         return Codegen.optional(this.r2BucketBindings);
     }
-    @Export(name="secretTextBindings", type=List.class, parameters={WorkerScriptSecretTextBinding.class})
+    @Export(name="secretTextBindings", refs={List.class,WorkerScriptSecretTextBinding.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WorkerScriptSecretTextBinding>> secretTextBindings;
 
     public Output<Optional<List<WorkerScriptSecretTextBinding>>> secretTextBindings() {
         return Codegen.optional(this.secretTextBindings);
     }
-    @Export(name="serviceBindings", type=List.class, parameters={WorkerScriptServiceBinding.class})
+    @Export(name="serviceBindings", refs={List.class,WorkerScriptServiceBinding.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WorkerScriptServiceBinding>> serviceBindings;
 
     public Output<Optional<List<WorkerScriptServiceBinding>>> serviceBindings() {
         return Codegen.optional(this.serviceBindings);
     }
-    @Export(name="webassemblyBindings", type=List.class, parameters={WorkerScriptWebassemblyBinding.class})
+    @Export(name="webassemblyBindings", refs={List.class,WorkerScriptWebassemblyBinding.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WorkerScriptWebassemblyBinding>> webassemblyBindings;
 
     public Output<Optional<List<WorkerScriptWebassemblyBinding>>> webassemblyBindings() {

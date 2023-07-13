@@ -71,7 +71,7 @@ public class DeviceDexTest extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -85,7 +85,7 @@ public class DeviceDexTest extends com.pulumi.resources.CustomResource {
      * Timestamp of when the Dex Test was created.
      * 
      */
-    @Export(name="created", type=String.class, parameters={})
+    @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     /**
@@ -99,7 +99,7 @@ public class DeviceDexTest extends com.pulumi.resources.CustomResource {
      * The configuration object which contains the details for the WARP client to conduct the test.
      * 
      */
-    @Export(name="data", type=DeviceDexTestData.class, parameters={})
+    @Export(name="data", refs={DeviceDexTestData.class}, tree="[0]")
     private Output<DeviceDexTestData> data;
 
     /**
@@ -113,7 +113,7 @@ public class DeviceDexTest extends com.pulumi.resources.CustomResource {
      * Additional details about the test.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -127,7 +127,7 @@ public class DeviceDexTest extends com.pulumi.resources.CustomResource {
      * Determines whether or not the test is active.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -141,7 +141,7 @@ public class DeviceDexTest extends com.pulumi.resources.CustomResource {
      * How often the test will run.
      * 
      */
-    @Export(name="interval", type=String.class, parameters={})
+    @Export(name="interval", refs={String.class}, tree="[0]")
     private Output<String> interval;
 
     /**
@@ -155,7 +155,7 @@ public class DeviceDexTest extends com.pulumi.resources.CustomResource {
      * The name of the Device Dex Test. Must be unique.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -169,7 +169,7 @@ public class DeviceDexTest extends com.pulumi.resources.CustomResource {
      * Timestamp of when the Dex Test was last updated.
      * 
      */
-    @Export(name="updated", type=String.class, parameters={})
+    @Export(name="updated", refs={String.class}, tree="[0]")
     private Output<String> updated;
 
     /**

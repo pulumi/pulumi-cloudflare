@@ -68,7 +68,7 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
      * Creation time.
      * 
      */
-    @Export(name="createdOn", type=String.class, parameters={})
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
 
     /**
@@ -82,7 +82,7 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
      * This is a templated html file that will be rendered at the edge.
      * 
      */
-    @Export(name="customPageHtml", type=String.class, parameters={})
+    @Export(name="customPageHtml", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customPageHtml;
 
     /**
@@ -96,7 +96,7 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
      * A description to let users add more details about the event.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -110,7 +110,7 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
      * Disables automatic renewal of session cookies.
      * 
      */
-    @Export(name="disableSessionRenewal", type=Boolean.class, parameters={})
+    @Export(name="disableSessionRenewal", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableSessionRenewal;
 
     /**
@@ -124,7 +124,7 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
      * ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="eventEndTime", type=String.class, parameters={})
+    @Export(name="eventEndTime", refs={String.class}, tree="[0]")
     private Output<String> eventEndTime;
 
     /**
@@ -138,7 +138,7 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
      * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="eventStartTime", type=String.class, parameters={})
+    @Export(name="eventStartTime", refs={String.class}, tree="[0]")
     private Output<String> eventStartTime;
 
     /**
@@ -152,7 +152,7 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
      * Last modified time.
      * 
      */
-    @Export(name="modifiedOn", type=String.class, parameters={})
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;
 
     /**
@@ -166,7 +166,7 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
      * A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -180,7 +180,7 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
      * The number of new users that will be let into the route every minute.
      * 
      */
-    @Export(name="newUsersPerMinute", type=Integer.class, parameters={})
+    @Export(name="newUsersPerMinute", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> newUsersPerMinute;
 
     /**
@@ -194,7 +194,7 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
      * ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `event_start_time`.
      * 
      */
-    @Export(name="prequeueStartTime", type=String.class, parameters={})
+    @Export(name="prequeueStartTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> prequeueStartTime;
 
     /**
@@ -208,7 +208,7 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
      * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
      * 
      */
-    @Export(name="queueingMethod", type=String.class, parameters={})
+    @Export(name="queueingMethod", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> queueingMethod;
 
     /**
@@ -222,7 +222,7 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
      * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
      * 
      */
-    @Export(name="sessionDuration", type=Integer.class, parameters={})
+    @Export(name="sessionDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sessionDuration;
 
     /**
@@ -236,7 +236,7 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
      * Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Defaults to `false`.
      * 
      */
-    @Export(name="shuffleAtEventStart", type=Boolean.class, parameters={})
+    @Export(name="shuffleAtEventStart", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> shuffleAtEventStart;
 
     /**
@@ -250,7 +250,7 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
      * If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
      * 
      */
-    @Export(name="suspended", type=Boolean.class, parameters={})
+    @Export(name="suspended", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> suspended;
 
     /**
@@ -264,7 +264,7 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
      * The total number of active user sessions on the route at a point in time.
      * 
      */
-    @Export(name="totalActiveUsers", type=Integer.class, parameters={})
+    @Export(name="totalActiveUsers", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> totalActiveUsers;
 
     /**
@@ -278,7 +278,7 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
      * The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="waitingRoomId", type=String.class, parameters={})
+    @Export(name="waitingRoomId", refs={String.class}, tree="[0]")
     private Output<String> waitingRoomId;
 
     /**
@@ -292,7 +292,7 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

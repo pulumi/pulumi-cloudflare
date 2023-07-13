@@ -74,7 +74,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -88,7 +88,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
      * 
      */
-    @Export(name="allowInsecure", type=Boolean.class, parameters={})
+    @Export(name="allowInsecure", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowInsecure;
 
     /**
@@ -102,7 +102,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * The RFC3339 timestamp of when the load balancer monitor was created.
      * 
      */
-    @Export(name="createdOn", type=String.class, parameters={})
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
 
     /**
@@ -116,7 +116,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * Free text description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -130,7 +130,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
      * 
      */
-    @Export(name="expectedBody", type=String.class, parameters={})
+    @Export(name="expectedBody", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expectedBody;
 
     /**
@@ -144,7 +144,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is &#34;http&#34; or &#34;https&#34;.
      * 
      */
-    @Export(name="expectedCodes", type=String.class, parameters={})
+    @Export(name="expectedCodes", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expectedCodes;
 
     /**
@@ -158,7 +158,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * Follow redirects if returned by the origin. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
      * 
      */
-    @Export(name="followRedirects", type=Boolean.class, parameters={})
+    @Export(name="followRedirects", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> followRedirects;
 
     /**
@@ -172,7 +172,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
      * 
      */
-    @Export(name="headers", type=List.class, parameters={LoadBalancerMonitorHeader.class})
+    @Export(name="headers", refs={List.class,LoadBalancerMonitorHeader.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LoadBalancerMonitorHeader>> headers;
 
     /**
@@ -186,7 +186,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
      * 
      */
-    @Export(name="interval", type=Integer.class, parameters={})
+    @Export(name="interval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> interval;
 
     /**
@@ -200,7 +200,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * The method to use for the health check.
      * 
      */
-    @Export(name="method", type=String.class, parameters={})
+    @Export(name="method", refs={String.class}, tree="[0]")
     private Output<String> method;
 
     /**
@@ -214,7 +214,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * The RFC3339 timestamp of when the load balancer monitor was last modified.
      * 
      */
-    @Export(name="modifiedOn", type=String.class, parameters={})
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;
 
     /**
@@ -228,7 +228,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * The endpoint path to health check against.
      * 
      */
-    @Export(name="path", type=String.class, parameters={})
+    @Export(name="path", refs={String.class}, tree="[0]")
     private Output<String> path;
 
     /**
@@ -242,7 +242,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * The port number to use for the healthcheck, required when creating a TCP monitor.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> port;
 
     /**
@@ -256,7 +256,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * Assign this monitor to emulate the specified zone while probing. Only valid if `type` is &#34;http&#34; or &#34;https&#34;.
      * 
      */
-    @Export(name="probeZone", type=String.class, parameters={})
+    @Export(name="probeZone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> probeZone;
 
     /**
@@ -270,7 +270,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
      * 
      */
-    @Export(name="retries", type=Integer.class, parameters={})
+    @Export(name="retries", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> retries;
 
     /**
@@ -284,7 +284,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
      * 
      */
-    @Export(name="timeout", type=Integer.class, parameters={})
+    @Export(name="timeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeout;
 
     /**
@@ -298,7 +298,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**

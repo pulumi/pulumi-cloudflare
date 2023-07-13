@@ -20,7 +20,7 @@ public class AccessKeysConfiguration extends com.pulumi.resources.CustomResource
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -34,7 +34,7 @@ public class AccessKeysConfiguration extends com.pulumi.resources.CustomResource
      * Number of days to trigger a rotation of the keys.
      * 
      */
-    @Export(name="keyRotationIntervalDays", type=Integer.class, parameters={})
+    @Export(name="keyRotationIntervalDays", refs={Integer.class}, tree="[0]")
     private Output<Integer> keyRotationIntervalDays;
 
     /**

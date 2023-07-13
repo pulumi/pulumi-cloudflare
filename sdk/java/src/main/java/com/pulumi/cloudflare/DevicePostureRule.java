@@ -80,7 +80,7 @@ public class DevicePostureRule extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -90,7 +90,7 @@ public class DevicePostureRule extends com.pulumi.resources.CustomResource {
     public Output<String> accountId() {
         return this.accountId;
     }
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     public Output<Optional<String>> description() {
@@ -100,7 +100,7 @@ public class DevicePostureRule extends com.pulumi.resources.CustomResource {
      * Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
      * 
      */
-    @Export(name="expiration", type=String.class, parameters={})
+    @Export(name="expiration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expiration;
 
     /**
@@ -110,7 +110,7 @@ public class DevicePostureRule extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> expiration() {
         return Codegen.optional(this.expiration);
     }
-    @Export(name="inputs", type=List.class, parameters={DevicePostureRuleInput.class})
+    @Export(name="inputs", refs={List.class,DevicePostureRuleInput.class}, tree="[0,1]")
     private Output<List<DevicePostureRuleInput>> inputs;
 
     public Output<List<DevicePostureRuleInput>> inputs() {
@@ -120,7 +120,7 @@ public class DevicePostureRule extends com.pulumi.resources.CustomResource {
      * The conditions that the client must match to run the rule.
      * 
      */
-    @Export(name="matches", type=List.class, parameters={DevicePostureRuleMatch.class})
+    @Export(name="matches", refs={List.class,DevicePostureRuleMatch.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DevicePostureRuleMatch>> matches;
 
     /**
@@ -134,7 +134,7 @@ public class DevicePostureRule extends com.pulumi.resources.CustomResource {
      * Name of the device posture rule.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> name;
 
     /**
@@ -148,7 +148,7 @@ public class DevicePostureRule extends com.pulumi.resources.CustomResource {
      * Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
      * 
      */
-    @Export(name="schedule", type=String.class, parameters={})
+    @Export(name="schedule", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schedule;
 
     /**
@@ -162,7 +162,7 @@ public class DevicePostureRule extends com.pulumi.resources.CustomResource {
      * The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

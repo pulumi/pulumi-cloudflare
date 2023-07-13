@@ -82,7 +82,7 @@ public class AccessMutualTlsCertificate extends com.pulumi.resources.CustomResou
      * The account identifier to target for the resource. Conflicts with `zone_id`.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -96,7 +96,7 @@ public class AccessMutualTlsCertificate extends com.pulumi.resources.CustomResou
      * The hostnames that will be prompted for this certificate.
      * 
      */
-    @Export(name="associatedHostnames", type=List.class, parameters={String.class})
+    @Export(name="associatedHostnames", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> associatedHostnames;
 
     /**
@@ -110,7 +110,7 @@ public class AccessMutualTlsCertificate extends com.pulumi.resources.CustomResou
      * The Root CA for your certificates.
      * 
      */
-    @Export(name="certificate", type=String.class, parameters={})
+    @Export(name="certificate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certificate;
 
     /**
@@ -120,7 +120,7 @@ public class AccessMutualTlsCertificate extends com.pulumi.resources.CustomResou
     public Output<Optional<String>> certificate() {
         return Codegen.optional(this.certificate);
     }
-    @Export(name="fingerprint", type=String.class, parameters={})
+    @Export(name="fingerprint", refs={String.class}, tree="[0]")
     private Output<String> fingerprint;
 
     public Output<String> fingerprint() {
@@ -130,7 +130,7 @@ public class AccessMutualTlsCertificate extends com.pulumi.resources.CustomResou
      * The name of the certificate.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -144,7 +144,7 @@ public class AccessMutualTlsCertificate extends com.pulumi.resources.CustomResou
      * The zone identifier to target for the resource. Conflicts with `account_id`.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

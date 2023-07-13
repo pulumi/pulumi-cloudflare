@@ -120,7 +120,7 @@ public class TunnelConfig extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -134,7 +134,7 @@ public class TunnelConfig extends com.pulumi.resources.CustomResource {
      * Configuration block for Tunnel Configuration.
      * 
      */
-    @Export(name="config", type=TunnelConfigConfig.class, parameters={})
+    @Export(name="config", refs={TunnelConfigConfig.class}, tree="[0]")
     private Output<TunnelConfigConfig> config;
 
     /**
@@ -148,7 +148,7 @@ public class TunnelConfig extends com.pulumi.resources.CustomResource {
      * Identifier of the Tunnel to target for this configuration.
      * 
      */
-    @Export(name="tunnelId", type=String.class, parameters={})
+    @Export(name="tunnelId", refs={String.class}, tree="[0]")
     private Output<String> tunnelId;
 
     /**

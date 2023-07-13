@@ -66,7 +66,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -80,7 +80,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      * If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
      * 
      */
-    @Export(name="botFightMode", type=Boolean.class, parameters={})
+    @Export(name="botFightMode", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> botFightMode;
 
     /**
@@ -94,7 +94,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      * Domains where the widget is deployed
      * 
      */
-    @Export(name="domains", type=List.class, parameters={String.class})
+    @Export(name="domains", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> domains;
 
     /**
@@ -108,7 +108,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      * Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
      * 
      */
-    @Export(name="mode", type=String.class, parameters={})
+    @Export(name="mode", refs={String.class}, tree="[0]")
     private Output<String> mode;
 
     /**
@@ -122,7 +122,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      * Human readable widget name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -136,7 +136,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      * Do not show any Cloudflare branding on the widget (Enterprise only).
      * 
      */
-    @Export(name="offlabel", type=Boolean.class, parameters={})
+    @Export(name="offlabel", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> offlabel;
 
     /**
@@ -150,7 +150,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      * Region where this widget can be used.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -164,7 +164,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      * Secret key for this widget.
      * 
      */
-    @Export(name="secret", type=String.class, parameters={})
+    @Export(name="secret", refs={String.class}, tree="[0]")
     private Output<String> secret;
 
     /**

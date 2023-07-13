@@ -116,7 +116,7 @@ public class ListItem extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -130,7 +130,7 @@ public class ListItem extends com.pulumi.resources.CustomResource {
      * Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="asn", type=Integer.class, parameters={})
+    @Export(name="asn", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> asn;
 
     /**
@@ -144,7 +144,7 @@ public class ListItem extends com.pulumi.resources.CustomResource {
      * An optional comment for the item.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -158,7 +158,7 @@ public class ListItem extends com.pulumi.resources.CustomResource {
      * Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="hostname", type=ListItemHostname.class, parameters={})
+    @Export(name="hostname", refs={ListItemHostname.class}, tree="[0]")
     private Output</* @Nullable */ ListItemHostname> hostname;
 
     /**
@@ -172,7 +172,7 @@ public class ListItem extends com.pulumi.resources.CustomResource {
      * IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="ip", type=String.class, parameters={})
+    @Export(name="ip", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ip;
 
     /**
@@ -186,7 +186,7 @@ public class ListItem extends com.pulumi.resources.CustomResource {
      * The list identifier to target for the resource.
      * 
      */
-    @Export(name="listId", type=String.class, parameters={})
+    @Export(name="listId", refs={String.class}, tree="[0]")
     private Output<String> listId;
 
     /**
@@ -200,7 +200,7 @@ public class ListItem extends com.pulumi.resources.CustomResource {
      * Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="redirect", type=ListItemRedirect.class, parameters={})
+    @Export(name="redirect", refs={ListItemRedirect.class}, tree="[0]")
     private Output</* @Nullable */ ListItemRedirect> redirect;
 
     /**
