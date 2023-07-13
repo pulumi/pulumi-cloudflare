@@ -130,11 +130,11 @@ def get_access_identity_provider(account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider', __args__, opts=opts, typ=GetAccessIdentityProviderResult).value
 
     return AwaitableGetAccessIdentityProviderResult(
-        account_id=__ret__.account_id,
-        id=__ret__.id,
-        name=__ret__.name,
-        type=__ret__.type,
-        zone_id=__ret__.zone_id)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        type=pulumi.get(__ret__, 'type'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_access_identity_provider)

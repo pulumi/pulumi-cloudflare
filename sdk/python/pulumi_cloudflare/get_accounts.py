@@ -89,9 +89,9 @@ def get_accounts(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getAccounts:getAccounts', __args__, opts=opts, typ=GetAccountsResult).value
 
     return AwaitableGetAccountsResult(
-        accounts=__ret__.accounts,
-        id=__ret__.id,
-        name=__ret__.name)
+        accounts=pulumi.get(__ret__, 'accounts'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_accounts)

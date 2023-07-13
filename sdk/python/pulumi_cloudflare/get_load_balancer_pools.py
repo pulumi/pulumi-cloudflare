@@ -114,10 +114,10 @@ def get_load_balancer_pools(account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getLoadBalancerPools:getLoadBalancerPools', __args__, opts=opts, typ=GetLoadBalancerPoolsResult).value
 
     return AwaitableGetLoadBalancerPoolsResult(
-        account_id=__ret__.account_id,
-        filter=__ret__.filter,
-        id=__ret__.id,
-        pools=__ret__.pools)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        filter=pulumi.get(__ret__, 'filter'),
+        id=pulumi.get(__ret__, 'id'),
+        pools=pulumi.get(__ret__, 'pools'))
 
 
 @_utilities.lift_output_func(get_load_balancer_pools)

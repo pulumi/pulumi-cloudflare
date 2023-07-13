@@ -96,9 +96,9 @@ def get_zones(filter: Optional[pulumi.InputType['GetZonesFilterArgs']] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
 
     return AwaitableGetZonesResult(
-        filter=__ret__.filter,
-        id=__ret__.id,
-        zones=__ret__.zones)
+        filter=pulumi.get(__ret__, 'filter'),
+        id=pulumi.get(__ret__, 'id'),
+        zones=pulumi.get(__ret__, 'zones'))
 
 
 @_utilities.lift_output_func(get_zones)

@@ -585,6 +585,12 @@ class LoadBalancerMonitor(pulumi.CustomResource):
             type="tcp")
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor example <account_id>/<load_balancer_monitor_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
@@ -631,6 +637,12 @@ class LoadBalancerMonitor(pulumi.CustomResource):
             retries=5,
             timeout=7,
             type="tcp")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor example <account_id>/<load_balancer_monitor_id>
         ```
 
         :param str resource_name: The name of the resource.

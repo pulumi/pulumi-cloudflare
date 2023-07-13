@@ -14143,6 +14143,9 @@ class ZoneSettingsOverrideInitialSetting(dict):
     @property
     @pulumi.getter(name="tls12Only")
     def tls12_only(self) -> Optional[str]:
+        warnings.warn("""tls_1_2_only has been deprecated in favour of using `min_tls_version = \"1.2\"` instead.""", DeprecationWarning)
+        pulumi.log.warn("""tls12_only is deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = \"1.2\"` instead.""")
+
         return pulumi.get(self, "tls12_only")
 
     @property
@@ -14822,6 +14825,9 @@ class ZoneSettingsOverrideSettings(dict):
     @property
     @pulumi.getter(name="tls12Only")
     def tls12_only(self) -> Optional[str]:
+        warnings.warn("""tls_1_2_only has been deprecated in favour of using `min_tls_version = \"1.2\"` instead.""", DeprecationWarning)
+        pulumi.log.warn("""tls12_only is deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = \"1.2\"` instead.""")
+
         return pulumi.get(self, "tls12_only")
 
     @property
@@ -16710,6 +16716,9 @@ class GetRulesetsRulesetRuleActionParametersOverridesResult(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        warnings.warn("""Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.""", DeprecationWarning)
+        pulumi.log.warn("""enabled is deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.""")
+
         return pulumi.get(self, "enabled")
 
     @property
@@ -16757,6 +16766,9 @@ class GetRulesetsRulesetRuleActionParametersOverridesCategoryResult(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        warnings.warn("""Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.""", DeprecationWarning)
+        pulumi.log.warn("""enabled is deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.""")
+
         return pulumi.get(self, "enabled")
 
     @property
@@ -16798,6 +16810,9 @@ class GetRulesetsRulesetRuleActionParametersOverridesRuleResult(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        warnings.warn("""Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.""", DeprecationWarning)
+        pulumi.log.warn("""enabled is deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.""")
+
         return pulumi.get(self, "enabled")
 
     @property
@@ -16984,6 +16999,9 @@ class GetRulesetsRulesetRuleLoggingResult(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        warnings.warn("""Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.""", DeprecationWarning)
+        pulumi.log.warn("""enabled is deprecated: Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.""")
+
         return pulumi.get(self, "enabled")
 
     @property

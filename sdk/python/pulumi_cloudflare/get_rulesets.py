@@ -134,12 +134,12 @@ def get_rulesets(account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getRulesets:getRulesets', __args__, opts=opts, typ=GetRulesetsResult).value
 
     return AwaitableGetRulesetsResult(
-        account_id=__ret__.account_id,
-        filter=__ret__.filter,
-        id=__ret__.id,
-        include_rules=__ret__.include_rules,
-        rulesets=__ret__.rulesets,
-        zone_id=__ret__.zone_id)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        filter=pulumi.get(__ret__, 'filter'),
+        id=pulumi.get(__ret__, 'id'),
+        include_rules=pulumi.get(__ret__, 'include_rules'),
+        rulesets=pulumi.get(__ret__, 'rulesets'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_rulesets)

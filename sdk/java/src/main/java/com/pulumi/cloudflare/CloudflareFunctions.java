@@ -4,6 +4,8 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.Utilities;
+import com.pulumi.cloudflare.inputs.GetAccessApplicationArgs;
+import com.pulumi.cloudflare.inputs.GetAccessApplicationPlainArgs;
 import com.pulumi.cloudflare.inputs.GetAccessIdentityProviderArgs;
 import com.pulumi.cloudflare.inputs.GetAccessIdentityProviderPlainArgs;
 import com.pulumi.cloudflare.inputs.GetAccountRolesArgs;
@@ -30,6 +32,7 @@ import com.pulumi.cloudflare.inputs.GetZoneDnssecPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZonePlainArgs;
 import com.pulumi.cloudflare.inputs.GetZonesArgs;
 import com.pulumi.cloudflare.inputs.GetZonesPlainArgs;
+import com.pulumi.cloudflare.outputs.GetAccessApplicationResult;
 import com.pulumi.cloudflare.outputs.GetAccessIdentityProviderResult;
 import com.pulumi.cloudflare.outputs.GetAccountRolesResult;
 import com.pulumi.cloudflare.outputs.GetAccountsResult;
@@ -53,6 +56,48 @@ import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
 public final class CloudflareFunctions {
+    /**
+     * Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
+     * 
+     */
+    public static Output<GetAccessApplicationResult> getAccessApplication() {
+        return getAccessApplication(GetAccessApplicationArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
+     * 
+     */
+    public static CompletableFuture<GetAccessApplicationResult> getAccessApplicationPlain() {
+        return getAccessApplicationPlain(GetAccessApplicationPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
+     * 
+     */
+    public static Output<GetAccessApplicationResult> getAccessApplication(GetAccessApplicationArgs args) {
+        return getAccessApplication(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
+     * 
+     */
+    public static CompletableFuture<GetAccessApplicationResult> getAccessApplicationPlain(GetAccessApplicationPlainArgs args) {
+        return getAccessApplicationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
+     * 
+     */
+    public static Output<GetAccessApplicationResult> getAccessApplication(GetAccessApplicationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getAccessApplication:getAccessApplication", TypeShape.of(GetAccessApplicationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
+     * 
+     */
+    public static CompletableFuture<GetAccessApplicationResult> getAccessApplicationPlain(GetAccessApplicationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getAccessApplication:getAccessApplication", TypeShape.of(GetAccessApplicationResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
      * 

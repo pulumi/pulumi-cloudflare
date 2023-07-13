@@ -89,9 +89,9 @@ def get_devices(account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getDevices:getDevices', __args__, opts=opts, typ=GetDevicesResult).value
 
     return AwaitableGetDevicesResult(
-        account_id=__ret__.account_id,
-        devices=__ret__.devices,
-        id=__ret__.id)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        devices=pulumi.get(__ret__, 'devices'),
+        id=pulumi.get(__ret__, 'id'))
 
 
 @_utilities.lift_output_func(get_devices)

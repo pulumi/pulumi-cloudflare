@@ -195,6 +195,11 @@ export type FirewallRule = import("./firewallRule").FirewallRule;
 export const FirewallRule: typeof import("./firewallRule").FirewallRule = null as any;
 utilities.lazyLoad(exports, ["FirewallRule"], () => require("./firewallRule"));
 
+export { GetAccessApplicationArgs, GetAccessApplicationResult, GetAccessApplicationOutputArgs } from "./getAccessApplication";
+export const getAccessApplication: typeof import("./getAccessApplication").getAccessApplication = null as any;
+export const getAccessApplicationOutput: typeof import("./getAccessApplication").getAccessApplicationOutput = null as any;
+utilities.lazyLoad(exports, ["getAccessApplication","getAccessApplicationOutput"], () => require("./getAccessApplication"));
+
 export { GetAccessIdentityProviderArgs, GetAccessIdentityProviderResult, GetAccessIdentityProviderOutputArgs } from "./getAccessIdentityProvider";
 export const getAccessIdentityProvider: typeof import("./getAccessIdentityProvider").getAccessIdentityProvider = null as any;
 export const getAccessIdentityProviderOutput: typeof import("./getAccessIdentityProvider").getAccessIdentityProviderOutput = null as any;

@@ -83,9 +83,9 @@ def get_account_roles(account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getAccountRoles:getAccountRoles', __args__, opts=opts, typ=GetAccountRolesResult).value
 
     return AwaitableGetAccountRolesResult(
-        account_id=__ret__.account_id,
-        id=__ret__.id,
-        roles=__ret__.roles)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        id=pulumi.get(__ret__, 'id'),
+        roles=pulumi.get(__ret__, 'roles'))
 
 
 @_utilities.lift_output_func(get_account_roles)

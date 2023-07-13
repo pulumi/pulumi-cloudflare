@@ -130,9 +130,9 @@ def get_ip_ranges(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIp
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getIpRanges:getIpRanges', __args__, opts=opts, typ=GetIpRangesResult).value
 
     return AwaitableGetIpRangesResult(
-        china_ipv4_cidr_blocks=__ret__.china_ipv4_cidr_blocks,
-        china_ipv6_cidr_blocks=__ret__.china_ipv6_cidr_blocks,
-        cidr_blocks=__ret__.cidr_blocks,
-        id=__ret__.id,
-        ipv4_cidr_blocks=__ret__.ipv4_cidr_blocks,
-        ipv6_cidr_blocks=__ret__.ipv6_cidr_blocks)
+        china_ipv4_cidr_blocks=pulumi.get(__ret__, 'china_ipv4_cidr_blocks'),
+        china_ipv6_cidr_blocks=pulumi.get(__ret__, 'china_ipv6_cidr_blocks'),
+        cidr_blocks=pulumi.get(__ret__, 'cidr_blocks'),
+        id=pulumi.get(__ret__, 'id'),
+        ipv4_cidr_blocks=pulumi.get(__ret__, 'ipv4_cidr_blocks'),
+        ipv6_cidr_blocks=pulumi.get(__ret__, 'ipv6_cidr_blocks'))

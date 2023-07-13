@@ -89,9 +89,9 @@ def get_lists(account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getLists:getLists', __args__, opts=opts, typ=GetListsResult).value
 
     return AwaitableGetListsResult(
-        account_id=__ret__.account_id,
-        id=__ret__.id,
-        lists=__ret__.lists)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        id=pulumi.get(__ret__, 'id'),
+        lists=pulumi.get(__ret__, 'lists'))
 
 
 @_utilities.lift_output_func(get_lists)

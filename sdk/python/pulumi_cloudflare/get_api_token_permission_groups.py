@@ -29,10 +29,6 @@ class GetApiTokenPermissionGroupsResult:
         pulumi.set(__self__, "id", id)
         if permissions and not isinstance(permissions, dict):
             raise TypeError("Expected argument 'permissions' to be a dict")
-        if permissions is not None:
-            warnings.warn("""Use specific account, zone or user attributes instead.""", DeprecationWarning)
-            pulumi.log.warn("""permissions is deprecated: Use specific account, zone or user attributes instead.""")
-
         pulumi.set(__self__, "permissions", permissions)
         if user and not isinstance(user, dict):
             raise TypeError("Expected argument 'user' to be a dict")
@@ -63,6 +59,9 @@ class GetApiTokenPermissionGroupsResult:
         """
         Map of all permissions available. Should not be used as some permissions will overlap resource scope. Instead, use resource level specific attributes.
         """
+        warnings.warn("""Use specific account, zone or user attributes instead.""", DeprecationWarning)
+        pulumi.log.warn("""permissions is deprecated: Use specific account, zone or user attributes instead.""")
+
         return pulumi.get(self, "permissions")
 
     @property
@@ -117,8 +116,8 @@ def get_api_token_permission_groups(opts: Optional[pulumi.InvokeOptions] = None)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups', __args__, opts=opts, typ=GetApiTokenPermissionGroupsResult).value
 
     return AwaitableGetApiTokenPermissionGroupsResult(
-        account=__ret__.account,
-        id=__ret__.id,
-        permissions=__ret__.permissions,
-        user=__ret__.user,
-        zone=__ret__.zone)
+        account=pulumi.get(__ret__, 'account'),
+        id=pulumi.get(__ret__, 'id'),
+        permissions=pulumi.get(__ret__, 'permissions'),
+        user=pulumi.get(__ret__, 'user'),
+        zone=pulumi.get(__ret__, 'zone'))

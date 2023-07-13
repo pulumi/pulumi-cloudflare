@@ -61,6 +61,12 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor example &lt;account_id&gt;/&lt;load_balancer_monitor_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor")
 public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {

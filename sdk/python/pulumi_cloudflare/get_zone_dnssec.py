@@ -199,18 +199,18 @@ def get_zone_dnssec(zone_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZoneDnssec:getZoneDnssec', __args__, opts=opts, typ=GetZoneDnssecResult).value
 
     return AwaitableGetZoneDnssecResult(
-        algorithm=__ret__.algorithm,
-        digest=__ret__.digest,
-        digest_algorithm=__ret__.digest_algorithm,
-        digest_type=__ret__.digest_type,
-        ds=__ret__.ds,
-        flags=__ret__.flags,
-        id=__ret__.id,
-        key_tag=__ret__.key_tag,
-        key_type=__ret__.key_type,
-        public_key=__ret__.public_key,
-        status=__ret__.status,
-        zone_id=__ret__.zone_id)
+        algorithm=pulumi.get(__ret__, 'algorithm'),
+        digest=pulumi.get(__ret__, 'digest'),
+        digest_algorithm=pulumi.get(__ret__, 'digest_algorithm'),
+        digest_type=pulumi.get(__ret__, 'digest_type'),
+        ds=pulumi.get(__ret__, 'ds'),
+        flags=pulumi.get(__ret__, 'flags'),
+        id=pulumi.get(__ret__, 'id'),
+        key_tag=pulumi.get(__ret__, 'key_tag'),
+        key_type=pulumi.get(__ret__, 'key_type'),
+        public_key=pulumi.get(__ret__, 'public_key'),
+        status=pulumi.get(__ret__, 'status'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_zone_dnssec)

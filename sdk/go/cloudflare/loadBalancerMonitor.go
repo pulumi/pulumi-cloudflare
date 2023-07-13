@@ -48,6 +48,14 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor example <account_id>/<load_balancer_monitor_id>
+//
+// ```
 type LoadBalancerMonitor struct {
 	pulumi.CustomResourceState
 

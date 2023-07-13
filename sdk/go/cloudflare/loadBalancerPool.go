@@ -91,7 +91,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import cloudflare:index/loadBalancerPool:LoadBalancerPool example <account_id>/<load_balancer_poool_id>
+//	$ pulumi import cloudflare:index/loadBalancerPool:LoadBalancerPool example <account_id>/<load_balancer_pool_id>
 //
 // ```
 type LoadBalancerPool struct {

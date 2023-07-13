@@ -43,6 +43,7 @@ from .email_routing_settings import *
 from .fallback_domain import *
 from .filter import *
 from .firewall_rule import *
+from .get_access_application import *
 from .get_access_identity_provider import *
 from .get_account_roles import *
 from .get_accounts import *

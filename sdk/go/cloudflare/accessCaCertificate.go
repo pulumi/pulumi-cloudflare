@@ -61,7 +61,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<application_id>/<certificate_id>
+//	$ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<application_id>
 //
 // ```
 //
@@ -69,7 +69,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<application_id>/<certificate_id>
+//	$ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<application_id>
 //
 // ```
 type AccessCaCertificate struct {

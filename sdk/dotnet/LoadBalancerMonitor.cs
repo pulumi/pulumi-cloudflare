@@ -40,6 +40,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor example &lt;account_id&gt;/&lt;load_balancer_monitor_id&gt;
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor")]
     public partial class LoadBalancerMonitor : global::Pulumi.CustomResource
