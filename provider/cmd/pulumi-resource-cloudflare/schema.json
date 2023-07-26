@@ -1962,12 +1962,24 @@
         },
         "cloudflare:index/DevicePostureRuleInput:DevicePostureRuleInput": {
             "properties": {
+                "activeThreats": {
+                    "type": "integer",
+                    "description": "The number of active threats from SentinelOne.\n"
+                },
+                "certificateId": {
+                    "type": "string",
+                    "description": "The UUID of a Cloudflare managed certificate.\n"
+                },
                 "checkDisks": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
                     "description": "Specific volume(s) to check for encryption.\n"
+                },
+                "cn": {
+                    "type": "string",
+                    "description": "The common name for a certificate.\n"
                 },
                 "complianceStatus": {
                     "type": "string",
@@ -1997,9 +2009,21 @@
                     "type": "string",
                     "description": "The Teams List id.\n"
                 },
+                "infected": {
+                    "type": "boolean",
+                    "description": "True if SentinelOne device is infected.\n"
+                },
+                "isActive": {
+                    "type": "boolean",
+                    "description": "True if SentinelOne device is active.\n"
+                },
                 "issueCount": {
                     "type": "string",
                     "description": "The number of issues for kolide.\n"
+                },
+                "networkStatus": {
+                    "type": "string",
+                    "description": "The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.\n"
                 },
                 "operator": {
                     "type": "string",
@@ -2060,6 +2084,8 @@
                     "requiredOutputs": [
                         "enabled",
                         "exists",
+                        "infected",
+                        "isActive",
                         "requireAll",
                         "running"
                     ]
@@ -2363,8 +2389,7 @@
         "cloudflare:index/LoadBalancerAdaptiveRouting:LoadBalancerAdaptiveRouting": {
             "properties": {
                 "failoverAcrossPools": {
-                    "type": "boolean",
-                    "description": "Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -2372,15 +2397,13 @@
         "cloudflare:index/LoadBalancerCountryPool:LoadBalancerCountryPool": {
             "properties": {
                 "country": {
-                    "type": "string",
-                    "description": "A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.\n"
+                    "type": "string"
                 },
                 "poolIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "A list of pool IDs in failover priority to use in the given country.\n"
+                    }
                 }
             },
             "type": "object",
@@ -2392,12 +2415,10 @@
         "cloudflare:index/LoadBalancerLocationStrategy:LoadBalancerLocationStrategy": {
             "properties": {
                 "mode": {
-                    "type": "string",
-                    "description": "Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`. Defaults to `pop`.\n"
+                    "type": "string"
                 },
                 "preferEcs": {
-                    "type": "string",
-                    "description": "Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy=\"proximity\"`, and `geo` will prefer ECS only when `steering_policy=\"geo\"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.\n"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2508,12 +2529,10 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "A list of pool IDs in failover priority to use for traffic reaching the given PoP.\n"
+                    }
                 },
                 "pop": {
-                    "type": "string",
-                    "description": "A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.\n"
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -2525,15 +2544,13 @@
         "cloudflare:index/LoadBalancerRandomSteering:LoadBalancerRandomSteering": {
             "properties": {
                 "defaultWeight": {
-                    "type": "number",
-                    "description": "The default weight for pools in the load balancer that are not specified in the `pool_weights` map.\n"
+                    "type": "number"
                 },
                 "poolWeights": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "number"
-                    },
-                    "description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.\n"
+                    }
                 }
             },
             "type": "object"
@@ -2544,12 +2561,10 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "A list of pool IDs in failover priority to use in the given region.\n"
+                    }
                 },
                 "region": {
-                    "type": "string",
-                    "description": "A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.\n"
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -2561,35 +2576,28 @@
         "cloudflare:index/LoadBalancerRule:LoadBalancerRule": {
             "properties": {
                 "condition": {
-                    "type": "string",
-                    "description": "The statement to evaluate to determine if this rule's effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).\n"
+                    "type": "string"
                 },
                 "disabled": {
-                    "type": "boolean",
-                    "description": "A disabled rule will not be executed.\n"
+                    "type": "boolean"
                 },
                 "fixedResponse": {
-                    "$ref": "#/types/cloudflare:index/LoadBalancerRuleFixedResponse:LoadBalancerRuleFixedResponse",
-                    "description": "Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: `overrides` or `fixed_response` must be set.\n"
+                    "$ref": "#/types/cloudflare:index/LoadBalancerRuleFixedResponse:LoadBalancerRuleFixedResponse"
                 },
                 "name": {
-                    "type": "string",
-                    "description": "Human readable name for this rule.\n"
+                    "type": "string"
                 },
                 "overrides": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerRuleOverride:LoadBalancerRuleOverride"
-                    },
-                    "description": "The load balancer settings to alter if this rule's `condition` is true. Note: `overrides` or `fixed_response` must be set.\n"
+                    }
                 },
                 "priority": {
-                    "type": "integer",
-                    "description": "Priority used when determining the order of rule execution. Lower values are executed first. If not provided, the list order will be used.\n"
+                    "type": "integer"
                 },
                 "terminates": {
-                    "type": "boolean",
-                    "description": "Terminates indicates that if this rule is true no further rules should be executed. Note: setting a `fixed_response` forces this field to `true`.\n"
+                    "type": "boolean"
                 }
             },
             "type": "object",
@@ -2629,15 +2637,13 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerRuleOverrideAdaptiveRouting:LoadBalancerRuleOverrideAdaptiveRouting"
-                    },
-                    "description": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.\n"
+                    }
                 },
                 "countryPools": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerRuleOverrideCountryPool:LoadBalancerRuleOverrideCountryPool"
-                    },
-                    "description": "A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.\n"
+                    }
                 },
                 "defaultPools": {
                     "type": "array",
@@ -2652,52 +2658,43 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerRuleOverrideLocationStrategy:LoadBalancerRuleOverrideLocationStrategy"
-                    },
-                    "description": "Controls location-based steering for non-proxied requests.\n"
+                    }
                 },
                 "popPools": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerRuleOverridePopPool:LoadBalancerRuleOverridePopPool"
-                    },
-                    "description": "A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.\n"
+                    }
                 },
                 "randomSteerings": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerRuleOverrideRandomSteering:LoadBalancerRuleOverrideRandomSteering"
-                    },
-                    "description": "Configures pool weights. When `steering_policy=\"random\"`, a random pool is selected with probability proportional to pool weights. When `steering_policy=\"least_outstanding_requests\"`, pool weights are used to scale each pool's outstanding requests.\n"
+                    }
                 },
                 "regionPools": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerRuleOverrideRegionPool:LoadBalancerRuleOverrideRegionPool"
-                    },
-                    "description": "A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.\n"
+                    }
                 },
                 "sessionAffinity": {
-                    "type": "string",
-                    "description": "Specifies the type of session affinity the load balancer should use unless specified as `none` or `\"\"` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `\"\"`, `none`, `cookie`, `ip_cookie`. Defaults to `none`.\n"
+                    "type": "string"
                 },
                 "sessionAffinityAttributes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerRuleOverrideSessionAffinityAttribute:LoadBalancerRuleOverrideSessionAffinityAttribute"
-                    },
-                    "description": "Configure cookie attributes for session affinity cookie.\n"
+                    }
                 },
                 "sessionAffinityTtl": {
-                    "type": "integer",
-                    "description": "Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.\n"
+                    "type": "integer"
                 },
                 "steeringPolicy": {
-                    "type": "string",
-                    "description": "The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `\"\"` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `\"\"` Defaults to `\"\"`.\n"
+                    "type": "string"
                 },
                 "ttl": {
-                    "type": "integer",
-                    "description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.\n"
+                    "type": "integer"
                 }
             },
             "type": "object",
@@ -2714,8 +2711,7 @@
         "cloudflare:index/LoadBalancerRuleOverrideAdaptiveRouting:LoadBalancerRuleOverrideAdaptiveRouting": {
             "properties": {
                 "failoverAcrossPools": {
-                    "type": "boolean",
-                    "description": "Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -2723,15 +2719,13 @@
         "cloudflare:index/LoadBalancerRuleOverrideCountryPool:LoadBalancerRuleOverrideCountryPool": {
             "properties": {
                 "country": {
-                    "type": "string",
-                    "description": "A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.\n"
+                    "type": "string"
                 },
                 "poolIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "A list of pool IDs in failover priority to use in the given country.\n"
+                    }
                 }
             },
             "type": "object",
@@ -2743,12 +2737,10 @@
         "cloudflare:index/LoadBalancerRuleOverrideLocationStrategy:LoadBalancerRuleOverrideLocationStrategy": {
             "properties": {
                 "mode": {
-                    "type": "string",
-                    "description": "Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`. Defaults to `pop`.\n"
+                    "type": "string"
                 },
                 "preferEcs": {
-                    "type": "string",
-                    "description": "Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy=\"proximity\"`, and `geo` will prefer ECS only when `steering_policy=\"geo\"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.\n"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2759,12 +2751,10 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "A list of pool IDs in failover priority to use for traffic reaching the given PoP.\n"
+                    }
                 },
                 "pop": {
-                    "type": "string",
-                    "description": "A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.\n"
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -2776,15 +2766,13 @@
         "cloudflare:index/LoadBalancerRuleOverrideRandomSteering:LoadBalancerRuleOverrideRandomSteering": {
             "properties": {
                 "defaultWeight": {
-                    "type": "number",
-                    "description": "The default weight for pools in the load balancer that are not specified in the `pool_weights` map.\n"
+                    "type": "number"
                 },
                 "poolWeights": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "number"
-                    },
-                    "description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.\n"
+                    }
                 }
             },
             "type": "object"
@@ -2795,12 +2783,10 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "A list of pool IDs in failover priority to use in the given region.\n"
+                    }
                 },
                 "region": {
-                    "type": "string",
-                    "description": "A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.\n"
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -2811,17 +2797,23 @@
         },
         "cloudflare:index/LoadBalancerRuleOverrideSessionAffinityAttribute:LoadBalancerRuleOverrideSessionAffinityAttribute": {
             "properties": {
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "requireAllHeaders": {
+                    "type": "boolean"
+                },
                 "samesite": {
-                    "type": "string",
-                    "description": "Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure=\"Never\"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.\n"
+                    "type": "string"
                 },
                 "secure": {
-                    "type": "string",
-                    "description": "Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.\n"
+                    "type": "string"
                 },
                 "zeroDowntimeFailover": {
-                    "type": "string",
-                    "description": "Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.\n"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2829,20 +2821,25 @@
         "cloudflare:index/LoadBalancerSessionAffinityAttribute:LoadBalancerSessionAffinityAttribute": {
             "properties": {
                 "drainDuration": {
-                    "type": "integer",
-                    "description": "Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. Defaults to `0`.\n"
+                    "type": "integer"
+                },
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "requireAllHeaders": {
+                    "type": "boolean"
                 },
                 "samesite": {
-                    "type": "string",
-                    "description": "Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure=\"Never\"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.\n"
+                    "type": "string"
                 },
                 "secure": {
-                    "type": "string",
-                    "description": "Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.\n"
+                    "type": "string"
                 },
                 "zeroDowntimeFailover": {
-                    "type": "string",
-                    "description": "Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.\n"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3988,7 +3985,7 @@
                 },
                 "type": {
                     "type": "integer",
-                    "description": "The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`. **Modifying this attribute will force creation of a new resource.**\n"
+                    "description": "The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**\n"
                 },
                 "usage": {
                     "type": "integer"
@@ -4375,7 +4372,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "excludeOrigin"
+                    ]
+                }
+            }
         },
         "cloudflare:index/RulesetRuleActionParametersCacheKeyCustomKeyHost:RulesetRuleActionParametersCacheKeyCustomKeyHost": {
             "properties": {
@@ -10468,7 +10472,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`.\n"
+                    "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`.\n"
                 }
             },
             "required": [
@@ -10501,7 +10505,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`.\n"
+                    "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`.\n"
                 }
             },
             "requiredInputs": [
@@ -10536,7 +10540,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`.\n"
+                        "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`.\n"
                     }
                 },
                 "type": "object"
@@ -10579,7 +10583,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`.\n"
+                    "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.\n"
                 }
             },
             "required": [
@@ -10622,7 +10626,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`.\n"
+                    "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.\n"
                 }
             },
             "requiredInputs": [
@@ -10666,7 +10670,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`.\n"
+                        "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.\n"
                     }
                 },
                 "type": "object"
@@ -12628,14 +12632,14 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerAdaptiveRouting:LoadBalancerAdaptiveRouting"
                     },
-                    "description": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.\n"
+                    "description": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as\nduring the interval between active health monitoring requests.\n"
                 },
                 "countryPools": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerCountryPool:LoadBalancerCountryPool"
                     },
-                    "description": "A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.\n"
+                    "description": "A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given\ncountry.\n"
                 },
                 "createdOn": {
                     "type": "string",
@@ -12646,7 +12650,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.\n"
+                    "description": "A list of pool IDs ordered by their failover priority. Used whenever\n[`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools) are not defined.\n"
                 },
                 "description": {
                     "type": "string",
@@ -12654,7 +12658,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enable or disable the load balancer. Defaults to `true`.\n"
+                    "description": "Enable or disable the load balancer.\n"
                 },
                 "fallbackPoolId": {
                     "type": "string",
@@ -12673,32 +12677,32 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the load balancer will take precedence and the DNS record will not be used.\n"
+                    "description": "The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's\nDNS, the load balancer will take precedence and the DNS record will not be used.\n"
                 },
                 "popPools": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerPopPool:LoadBalancerPopPool"
                     },
-                    "description": "A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.\n"
+                    "description": "A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their\nfailover priority) for the PoP (datacenter). This feature is only available to enterprise customers.\n"
                 },
                 "proxied": {
                     "type": "boolean",
-                    "description": "Whether the hostname gets Cloudflare's origin protection. Defaults to `false`. Conflicts with `ttl`.\n"
+                    "description": "Whether the hostname gets Cloudflare's origin protection.\n"
                 },
                 "randomSteerings": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerRandomSteering:LoadBalancerRandomSteering"
                     },
-                    "description": "Configures pool weights. When `steering_policy=\"random\"`, a random pool is selected with probability proportional to pool weights. When `steering_policy=\"least_outstanding_requests\"`, pool weights are used to scale each pool's outstanding requests.\n"
+                    "description": "Configures pool weights. When [`steering_policy=\"random\"`](#steering_policy), a random pool is selected with probability\nproportional to pool weights. When [`steering_policy=\"least_outstanding_requests\"`](#steering_policy), pool weights are\nused to scale each pool's outstanding requests.\n"
                 },
                 "regionPools": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerRegionPool:LoadBalancerRegionPool"
                     },
-                    "description": "A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.\n"
+                    "description": "A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given\nregion.\n"
                 },
                 "rules": {
                     "type": "array",
@@ -12709,30 +12713,30 @@
                 },
                 "sessionAffinity": {
                     "type": "string",
-                    "description": "Specifies the type of session affinity the load balancer should use unless specified as `none` or `\"\"` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `\"\"`, `none`, `cookie`, `ip_cookie`. Defaults to `none`.\n"
+                    "description": "Specifies the type of session affinity the load balancer should use unless specified as `none` or `\"\"` (default). With\nvalue `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which\norigin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent\nto the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains\nhealthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used.\nValue `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's\nIP address. Available values: `\"\"`, `none`, `cookie`, `ip_cookie`, `header`\n"
                 },
                 "sessionAffinityAttributes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerSessionAffinityAttribute:LoadBalancerSessionAffinityAttribute"
                     },
-                    "description": "Configure cookie attributes for session affinity cookie.\n"
+                    "description": "Configure attributes for session affinity.\n"
                 },
                 "sessionAffinityTtl": {
                     "type": "integer",
-                    "description": "Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.\n"
+                    "description": "Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is\nignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless\n[`session_affinity_ttl`](#session_affinity_ttl) is explicitly set. Once the expiry time has been reached, subsequent\nrequests may get sent to a different origin server. Valid values are between `1800` and `604800`.\n"
                 },
                 "steeringPolicy": {
                     "type": "string",
-                    "description": "The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `\"\"` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `\"\"` Defaults to `\"\"`.\n"
+                    "description": "The method the load balancer uses to determine the route to your origin. Value `off` uses\n[`default_pool_ids`](#default_pool_ids). Value `geo` uses\n[`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools). For non-proxied requests,\nthe [`country`](#country) for [`country_pools`](#country_pools) is determined by\n[`location_strategy`](#location_strategy). Value `random` selects a pool randomly. Value `dynamic_latency` uses round\ntrip time to select the closest pool in [`default_pool_ids`](#default_pool_ids) (requires pool health checks). Value\n`proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for\nproxied requests or the location determined by [`location_strategy`](#location_strategy) for non-proxied requests. Value\n`least_outstanding_requests` selects a pool by taking into consideration [`random_steering`](#random_steering) weights,\nas well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately\nless relative to others. Value `\"\"` maps to `geo` if you use\n[`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools) otherwise `off`. Available\nvalues: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `\"\"` Defaults to `\"\"`.\n"
                 },
                 "ttl": {
                     "type": "integer",
-                    "description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.\n"
+                    "description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied\nload balancers. Defaults to `30`.\n"
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**\n"
+                    "description": "The zone ID to add the load balancer to.\n"
                 }
             },
             "required": [
@@ -12754,21 +12758,21 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerAdaptiveRouting:LoadBalancerAdaptiveRouting"
                     },
-                    "description": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.\n"
+                    "description": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as\nduring the interval between active health monitoring requests.\n"
                 },
                 "countryPools": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerCountryPool:LoadBalancerCountryPool"
                     },
-                    "description": "A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.\n"
+                    "description": "A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given\ncountry.\n"
                 },
                 "defaultPoolIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.\n"
+                    "description": "A list of pool IDs ordered by their failover priority. Used whenever\n[`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools) are not defined.\n"
                 },
                 "description": {
                     "type": "string",
@@ -12776,7 +12780,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enable or disable the load balancer. Defaults to `true`.\n"
+                    "description": "Enable or disable the load balancer.\n"
                 },
                 "fallbackPoolId": {
                     "type": "string",
@@ -12791,32 +12795,32 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the load balancer will take precedence and the DNS record will not be used.\n"
+                    "description": "The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's\nDNS, the load balancer will take precedence and the DNS record will not be used.\n"
                 },
                 "popPools": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerPopPool:LoadBalancerPopPool"
                     },
-                    "description": "A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.\n"
+                    "description": "A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their\nfailover priority) for the PoP (datacenter). This feature is only available to enterprise customers.\n"
                 },
                 "proxied": {
                     "type": "boolean",
-                    "description": "Whether the hostname gets Cloudflare's origin protection. Defaults to `false`. Conflicts with `ttl`.\n"
+                    "description": "Whether the hostname gets Cloudflare's origin protection.\n"
                 },
                 "randomSteerings": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerRandomSteering:LoadBalancerRandomSteering"
                     },
-                    "description": "Configures pool weights. When `steering_policy=\"random\"`, a random pool is selected with probability proportional to pool weights. When `steering_policy=\"least_outstanding_requests\"`, pool weights are used to scale each pool's outstanding requests.\n"
+                    "description": "Configures pool weights. When [`steering_policy=\"random\"`](#steering_policy), a random pool is selected with probability\nproportional to pool weights. When [`steering_policy=\"least_outstanding_requests\"`](#steering_policy), pool weights are\nused to scale each pool's outstanding requests.\n"
                 },
                 "regionPools": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerRegionPool:LoadBalancerRegionPool"
                     },
-                    "description": "A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.\n"
+                    "description": "A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given\nregion.\n"
                 },
                 "rules": {
                     "type": "array",
@@ -12827,30 +12831,30 @@
                 },
                 "sessionAffinity": {
                     "type": "string",
-                    "description": "Specifies the type of session affinity the load balancer should use unless specified as `none` or `\"\"` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `\"\"`, `none`, `cookie`, `ip_cookie`. Defaults to `none`.\n"
+                    "description": "Specifies the type of session affinity the load balancer should use unless specified as `none` or `\"\"` (default). With\nvalue `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which\norigin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent\nto the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains\nhealthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used.\nValue `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's\nIP address. Available values: `\"\"`, `none`, `cookie`, `ip_cookie`, `header`\n"
                 },
                 "sessionAffinityAttributes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerSessionAffinityAttribute:LoadBalancerSessionAffinityAttribute"
                     },
-                    "description": "Configure cookie attributes for session affinity cookie.\n"
+                    "description": "Configure attributes for session affinity.\n"
                 },
                 "sessionAffinityTtl": {
                     "type": "integer",
-                    "description": "Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.\n"
+                    "description": "Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is\nignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless\n[`session_affinity_ttl`](#session_affinity_ttl) is explicitly set. Once the expiry time has been reached, subsequent\nrequests may get sent to a different origin server. Valid values are between `1800` and `604800`.\n"
                 },
                 "steeringPolicy": {
                     "type": "string",
-                    "description": "The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `\"\"` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `\"\"` Defaults to `\"\"`.\n"
+                    "description": "The method the load balancer uses to determine the route to your origin. Value `off` uses\n[`default_pool_ids`](#default_pool_ids). Value `geo` uses\n[`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools). For non-proxied requests,\nthe [`country`](#country) for [`country_pools`](#country_pools) is determined by\n[`location_strategy`](#location_strategy). Value `random` selects a pool randomly. Value `dynamic_latency` uses round\ntrip time to select the closest pool in [`default_pool_ids`](#default_pool_ids) (requires pool health checks). Value\n`proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for\nproxied requests or the location determined by [`location_strategy`](#location_strategy) for non-proxied requests. Value\n`least_outstanding_requests` selects a pool by taking into consideration [`random_steering`](#random_steering) weights,\nas well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately\nless relative to others. Value `\"\"` maps to `geo` if you use\n[`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools) otherwise `off`. Available\nvalues: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `\"\"` Defaults to `\"\"`.\n"
                 },
                 "ttl": {
                     "type": "integer",
-                    "description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.\n"
+                    "description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied\nload balancers. Defaults to `30`.\n"
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**\n",
+                    "description": "The zone ID to add the load balancer to.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -12868,14 +12872,14 @@
                         "items": {
                             "$ref": "#/types/cloudflare:index/LoadBalancerAdaptiveRouting:LoadBalancerAdaptiveRouting"
                         },
-                        "description": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.\n"
+                        "description": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as\nduring the interval between active health monitoring requests.\n"
                     },
                     "countryPools": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/cloudflare:index/LoadBalancerCountryPool:LoadBalancerCountryPool"
                         },
-                        "description": "A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.\n"
+                        "description": "A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given\ncountry.\n"
                     },
                     "createdOn": {
                         "type": "string",
@@ -12886,7 +12890,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.\n"
+                        "description": "A list of pool IDs ordered by their failover priority. Used whenever\n[`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools) are not defined.\n"
                     },
                     "description": {
                         "type": "string",
@@ -12894,7 +12898,7 @@
                     },
                     "enabled": {
                         "type": "boolean",
-                        "description": "Enable or disable the load balancer. Defaults to `true`.\n"
+                        "description": "Enable or disable the load balancer.\n"
                     },
                     "fallbackPoolId": {
                         "type": "string",
@@ -12913,32 +12917,32 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the load balancer will take precedence and the DNS record will not be used.\n"
+                        "description": "The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's\nDNS, the load balancer will take precedence and the DNS record will not be used.\n"
                     },
                     "popPools": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/cloudflare:index/LoadBalancerPopPool:LoadBalancerPopPool"
                         },
-                        "description": "A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.\n"
+                        "description": "A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their\nfailover priority) for the PoP (datacenter). This feature is only available to enterprise customers.\n"
                     },
                     "proxied": {
                         "type": "boolean",
-                        "description": "Whether the hostname gets Cloudflare's origin protection. Defaults to `false`. Conflicts with `ttl`.\n"
+                        "description": "Whether the hostname gets Cloudflare's origin protection.\n"
                     },
                     "randomSteerings": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/cloudflare:index/LoadBalancerRandomSteering:LoadBalancerRandomSteering"
                         },
-                        "description": "Configures pool weights. When `steering_policy=\"random\"`, a random pool is selected with probability proportional to pool weights. When `steering_policy=\"least_outstanding_requests\"`, pool weights are used to scale each pool's outstanding requests.\n"
+                        "description": "Configures pool weights. When [`steering_policy=\"random\"`](#steering_policy), a random pool is selected with probability\nproportional to pool weights. When [`steering_policy=\"least_outstanding_requests\"`](#steering_policy), pool weights are\nused to scale each pool's outstanding requests.\n"
                     },
                     "regionPools": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/cloudflare:index/LoadBalancerRegionPool:LoadBalancerRegionPool"
                         },
-                        "description": "A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.\n"
+                        "description": "A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given\nregion.\n"
                     },
                     "rules": {
                         "type": "array",
@@ -12949,30 +12953,30 @@
                     },
                     "sessionAffinity": {
                         "type": "string",
-                        "description": "Specifies the type of session affinity the load balancer should use unless specified as `none` or `\"\"` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `\"\"`, `none`, `cookie`, `ip_cookie`. Defaults to `none`.\n"
+                        "description": "Specifies the type of session affinity the load balancer should use unless specified as `none` or `\"\"` (default). With\nvalue `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which\norigin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent\nto the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains\nhealthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used.\nValue `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's\nIP address. Available values: `\"\"`, `none`, `cookie`, `ip_cookie`, `header`\n"
                     },
                     "sessionAffinityAttributes": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/cloudflare:index/LoadBalancerSessionAffinityAttribute:LoadBalancerSessionAffinityAttribute"
                         },
-                        "description": "Configure cookie attributes for session affinity cookie.\n"
+                        "description": "Configure attributes for session affinity.\n"
                     },
                     "sessionAffinityTtl": {
                         "type": "integer",
-                        "description": "Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.\n"
+                        "description": "Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is\nignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless\n[`session_affinity_ttl`](#session_affinity_ttl) is explicitly set. Once the expiry time has been reached, subsequent\nrequests may get sent to a different origin server. Valid values are between `1800` and `604800`.\n"
                     },
                     "steeringPolicy": {
                         "type": "string",
-                        "description": "The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `\"\"` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `\"\"` Defaults to `\"\"`.\n"
+                        "description": "The method the load balancer uses to determine the route to your origin. Value `off` uses\n[`default_pool_ids`](#default_pool_ids). Value `geo` uses\n[`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools). For non-proxied requests,\nthe [`country`](#country) for [`country_pools`](#country_pools) is determined by\n[`location_strategy`](#location_strategy). Value `random` selects a pool randomly. Value `dynamic_latency` uses round\ntrip time to select the closest pool in [`default_pool_ids`](#default_pool_ids) (requires pool health checks). Value\n`proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for\nproxied requests or the location determined by [`location_strategy`](#location_strategy) for non-proxied requests. Value\n`least_outstanding_requests` selects a pool by taking into consideration [`random_steering`](#random_steering) weights,\nas well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately\nless relative to others. Value `\"\"` maps to `geo` if you use\n[`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools) otherwise `off`. Available\nvalues: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `\"\"` Defaults to `\"\"`.\n"
                     },
                     "ttl": {
                         "type": "integer",
-                        "description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.\n"
+                        "description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied\nload balancers. Defaults to `30`.\n"
                     },
                     "zoneId": {
                         "type": "string",
-                        "description": "The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**\n",
+                        "description": "The zone ID to add the load balancer to.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -15044,7 +15048,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`. **Modifying this attribute will force creation of a new resource.**\n"
+                    "description": "The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**\n"
                 },
                 "value": {
                     "type": "string",
@@ -15106,7 +15110,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`. **Modifying this attribute will force creation of a new resource.**\n",
+                    "description": "The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**\n",
                     "willReplaceOnChanges": true
                 },
                 "value": {
@@ -15188,7 +15192,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`. **Modifying this attribute will force creation of a new resource.**\n",
+                        "description": "The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**\n",
                         "willReplaceOnChanges": true
                     },
                     "value": {
@@ -15263,6 +15267,51 @@
                     "regionKey": {
                         "type": "string",
                         "description": "The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/regionalTieredCache:RegionalTieredCache": {
+            "description": "Instructs Cloudflare to check a regional hub data center on the way to your upper tier.\nThis can help improve performance for smart and custom tiered cache topologies.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.RegionalTieredCache(\"example\", {\n    value: \"on\",\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.RegionalTieredCache(\"example\",\n    value=\"on\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.RegionalTieredCache(\"example\", new()\n    {\n        Value = \"on\",\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewRegionalTieredCache(ctx, \"example\", \u0026cloudflare.RegionalTieredCacheArgs{\n\t\t\tValue:  pulumi.String(\"on\"),\n\t\t\tZoneId: pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.RegionalTieredCache;\nimport com.pulumi.cloudflare.RegionalTieredCacheArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new RegionalTieredCache(\"example\", RegionalTieredCacheArgs.builder()        \n            .value(\"on\")\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:RegionalTieredCache\n    properties:\n      value: on\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example \u003czone_id\u003e\n```\n\n ",
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "description": "Value of the Regional Tiered Cache zone setting.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource.\n"
+                }
+            },
+            "required": [
+                "value",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "value": {
+                    "type": "string",
+                    "description": "Value of the Regional Tiered Cache zone setting.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource.\n"
+                }
+            },
+            "requiredInputs": [
+                "value",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RegionalTieredCache resources.\n",
+                "properties": {
+                    "value": {
+                        "type": "string",
+                        "description": "Value of the Regional Tiered Cache zone setting.\n"
                     },
                     "zoneId": {
                         "type": "string",
