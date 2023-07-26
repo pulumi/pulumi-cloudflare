@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
 // environment variable.
@@ -22,7 +25,7 @@ func GetApiClientLogging(ctx *pulumi.Context) bool {
 		return v
 	}
 	var value bool
-	if d := getEnvOrDefault(false, parseEnvBool, "CLOUDFLARE_API_CLIENT_LOGGING"); d != nil {
+	if d := internal.GetEnvOrDefault(false, internal.ParseEnvBool, "CLOUDFLARE_API_CLIENT_LOGGING"); d != nil {
 		value = d.(bool)
 	}
 	return value
@@ -69,7 +72,7 @@ func GetMaxBackoff(ctx *pulumi.Context) int {
 		return v
 	}
 	var value int
-	if d := getEnvOrDefault(30, parseEnvInt, "CLOUDFLARE_MAX_BACKOFF"); d != nil {
+	if d := internal.GetEnvOrDefault(30, internal.ParseEnvInt, "CLOUDFLARE_MAX_BACKOFF"); d != nil {
 		value = d.(int)
 	}
 	return value
@@ -83,7 +86,7 @@ func GetMinBackoff(ctx *pulumi.Context) int {
 		return v
 	}
 	var value int
-	if d := getEnvOrDefault(1, parseEnvInt, "CLOUDFLARE_MIN_BACKOFF"); d != nil {
+	if d := internal.GetEnvOrDefault(1, internal.ParseEnvInt, "CLOUDFLARE_MIN_BACKOFF"); d != nil {
 		value = d.(int)
 	}
 	return value
@@ -97,7 +100,7 @@ func GetRetries(ctx *pulumi.Context) int {
 		return v
 	}
 	var value int
-	if d := getEnvOrDefault(3, parseEnvInt, "CLOUDFLARE_RETRIES"); d != nil {
+	if d := internal.GetEnvOrDefault(3, internal.ParseEnvInt, "CLOUDFLARE_RETRIES"); d != nil {
 		value = d.(int)
 	}
 	return value
@@ -111,7 +114,7 @@ func GetRps(ctx *pulumi.Context) int {
 		return v
 	}
 	var value int
-	if d := getEnvOrDefault(4, parseEnvInt, "CLOUDFLARE_RPS"); d != nil {
+	if d := internal.GetEnvOrDefault(4, internal.ParseEnvInt, "CLOUDFLARE_RPS"); d != nil {
 		value = d.(int)
 	}
 	return value

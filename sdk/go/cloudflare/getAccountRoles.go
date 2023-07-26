@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
 func GetAccountRoles(ctx *pulumi.Context, args *GetAccountRolesArgs, opts ...pulumi.InvokeOption) (*GetAccountRolesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountRolesResult
 	err := ctx.Invoke("cloudflare:index/getAccountRoles:getAccountRoles", args, &rv, opts...)
 	if err != nil {

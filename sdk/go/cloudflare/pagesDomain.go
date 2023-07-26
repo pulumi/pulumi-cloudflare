@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,6 +80,7 @@ func NewPagesDomain(ctx *pulumi.Context,
 	if args.ProjectName == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PagesDomain
 	err := ctx.RegisterResource("cloudflare:index/pagesDomain:PagesDomain", name, args, &resource, opts...)
 	if err != nil {

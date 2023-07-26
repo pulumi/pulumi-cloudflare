@@ -13,33 +13,12 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class LoadBalancerRule
     {
-        /// <summary>
-        /// The statement to evaluate to determine if this rule's effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
-        /// </summary>
         public readonly string? Condition;
-        /// <summary>
-        /// A disabled rule will not be executed.
-        /// </summary>
         public readonly bool? Disabled;
-        /// <summary>
-        /// Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: `overrides` or `fixed_response` must be set.
-        /// </summary>
         public readonly Outputs.LoadBalancerRuleFixedResponse? FixedResponse;
-        /// <summary>
-        /// Human readable name for this rule.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// The load balancer settings to alter if this rule's `condition` is true. Note: `overrides` or `fixed_response` must be set.
-        /// </summary>
         public readonly ImmutableArray<Outputs.LoadBalancerRuleOverride> Overrides;
-        /// <summary>
-        /// Priority used when determining the order of rule execution. Lower values are executed first. If not provided, the list order will be used.
-        /// </summary>
         public readonly int? Priority;
-        /// <summary>
-        /// Terminates indicates that if this rule is true no further rules should be executed. Note: setting a `fixed_response` forces this field to `true`.
-        /// </summary>
         public readonly bool? Terminates;
 
         [OutputConstructor]

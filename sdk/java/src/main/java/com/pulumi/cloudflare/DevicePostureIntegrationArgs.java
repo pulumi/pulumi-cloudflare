@@ -85,14 +85,14 @@ public final class DevicePostureIntegrationArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`.
+     * The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`.
+     * @return The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`.
      * 
      */
     public Output<String> type() {
@@ -232,7 +232,7 @@ public final class DevicePostureIntegrationArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`.
+         * @param type The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class DevicePostureIntegrationArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`.
+         * @param type The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`.
          * 
          * @return builder
          * 

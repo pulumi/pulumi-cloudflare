@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func GetOriginCaRootCertificate(ctx *pulumi.Context, args *GetOriginCaRootCertificateArgs, opts ...pulumi.InvokeOption) (*GetOriginCaRootCertificateResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOriginCaRootCertificateResult
 	err := ctx.Invoke("cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate", args, &rv, opts...)
 	if err != nil {

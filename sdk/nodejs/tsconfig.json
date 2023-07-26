@@ -96,6 +96,7 @@
         "rateLimit.ts",
         "record.ts",
         "regionalHostname.ts",
+        "regionalTieredCache.ts",
         "ruleset.ts",
         "spectrumApplication.ts",
         "splitTunnel.ts",

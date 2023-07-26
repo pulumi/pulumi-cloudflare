@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupZoneDnssec(ctx *pulumi.Context, args *LookupZoneDnssecArgs, opts ...pulumi.InvokeOption) (*LookupZoneDnssecResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZoneDnssecResult
 	err := ctx.Invoke("cloudflare:index/getZoneDnssec:getZoneDnssec", args, &rv, opts...)
 	if err != nil {

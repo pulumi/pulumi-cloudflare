@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ import (
 //
 // ```
 func GetIpRanges(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetIpRangesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpRangesResult
 	err := ctx.Invoke("cloudflare:index/getIpRanges:getIpRanges", nil, &rv, opts...)
 	if err != nil {

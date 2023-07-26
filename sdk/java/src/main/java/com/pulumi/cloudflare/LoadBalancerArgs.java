@@ -27,14 +27,16 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     public static final LoadBalancerArgs Empty = new LoadBalancerArgs();
 
     /**
-     * Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+     * Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as
+     * during the interval between active health monitoring requests.
      * 
      */
     @Import(name="adaptiveRoutings")
     private @Nullable Output<List<LoadBalancerAdaptiveRoutingArgs>> adaptiveRoutings;
 
     /**
-     * @return Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+     * @return Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as
+     * during the interval between active health monitoring requests.
      * 
      */
     public Optional<Output<List<LoadBalancerAdaptiveRoutingArgs>>> adaptiveRoutings() {
@@ -42,14 +44,16 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
+     * A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given
+     * country.
      * 
      */
     @Import(name="countryPools")
     private @Nullable Output<List<LoadBalancerCountryPoolArgs>> countryPools;
 
     /**
-     * @return A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
+     * @return A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given
+     * country.
      * 
      */
     public Optional<Output<List<LoadBalancerCountryPoolArgs>>> countryPools() {
@@ -57,14 +61,16 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.
+     * A list of pool IDs ordered by their failover priority. Used whenever
+     * [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools) are not defined.
      * 
      */
     @Import(name="defaultPoolIds", required=true)
     private Output<List<String>> defaultPoolIds;
 
     /**
-     * @return A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.
+     * @return A list of pool IDs ordered by their failover priority. Used whenever
+     * [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools) are not defined.
      * 
      */
     public Output<List<String>> defaultPoolIds() {
@@ -87,14 +93,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable or disable the load balancer. Defaults to `true`.
+     * Enable or disable the load balancer.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable or disable the load balancer. Defaults to `true`.
+     * @return Enable or disable the load balancer.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -132,14 +138,16 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare&#39;s DNS, the load balancer will take precedence and the DNS record will not be used.
+     * The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare&#39;s
+     * DNS, the load balancer will take precedence and the DNS record will not be used.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare&#39;s DNS, the load balancer will take precedence and the DNS record will not be used.
+     * @return The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare&#39;s
+     * DNS, the load balancer will take precedence and the DNS record will not be used.
      * 
      */
     public Output<String> name() {
@@ -147,14 +155,16 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+     * A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their
+     * failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
      * 
      */
     @Import(name="popPools")
     private @Nullable Output<List<LoadBalancerPopPoolArgs>> popPools;
 
     /**
-     * @return A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+     * @return A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their
+     * failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
      * 
      */
     public Optional<Output<List<LoadBalancerPopPoolArgs>>> popPools() {
@@ -162,14 +172,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the hostname gets Cloudflare&#39;s origin protection. Defaults to `false`. Conflicts with `ttl`.
+     * Whether the hostname gets Cloudflare&#39;s origin protection.
      * 
      */
     @Import(name="proxied")
     private @Nullable Output<Boolean> proxied;
 
     /**
-     * @return Whether the hostname gets Cloudflare&#39;s origin protection. Defaults to `false`. Conflicts with `ttl`.
+     * @return Whether the hostname gets Cloudflare&#39;s origin protection.
      * 
      */
     public Optional<Output<Boolean>> proxied() {
@@ -177,14 +187,18 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configures pool weights. When `steering_policy=&#34;random&#34;`, a random pool is selected with probability proportional to pool weights. When `steering_policy=&#34;least_outstanding_requests&#34;`, pool weights are used to scale each pool&#39;s outstanding requests.
+     * Configures pool weights. When [`steering_policy=&#34;random&#34;`](#steering_policy), a random pool is selected with probability
+     * proportional to pool weights. When [`steering_policy=&#34;least_outstanding_requests&#34;`](#steering_policy), pool weights are
+     * used to scale each pool&#39;s outstanding requests.
      * 
      */
     @Import(name="randomSteerings")
     private @Nullable Output<List<LoadBalancerRandomSteeringArgs>> randomSteerings;
 
     /**
-     * @return Configures pool weights. When `steering_policy=&#34;random&#34;`, a random pool is selected with probability proportional to pool weights. When `steering_policy=&#34;least_outstanding_requests&#34;`, pool weights are used to scale each pool&#39;s outstanding requests.
+     * @return Configures pool weights. When [`steering_policy=&#34;random&#34;`](#steering_policy), a random pool is selected with probability
+     * proportional to pool weights. When [`steering_policy=&#34;least_outstanding_requests&#34;`](#steering_policy), pool weights are
+     * used to scale each pool&#39;s outstanding requests.
      * 
      */
     public Optional<Output<List<LoadBalancerRandomSteeringArgs>>> randomSteerings() {
@@ -192,14 +206,16 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
+     * A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given
+     * region.
      * 
      */
     @Import(name="regionPools")
     private @Nullable Output<List<LoadBalancerRegionPoolArgs>> regionPools;
 
     /**
-     * @return A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
+     * @return A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given
+     * region.
      * 
      */
     public Optional<Output<List<LoadBalancerRegionPoolArgs>>> regionPools() {
@@ -222,14 +238,26 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the type of session affinity the load balancer should use unless specified as `none` or `&#34;&#34;` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client&#39;s IP address. Available values: `&#34;&#34;`, `none`, `cookie`, `ip_cookie`. Defaults to `none`.
+     * Specifies the type of session affinity the load balancer should use unless specified as `none` or `&#34;&#34;` (default). With
+     * value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which
+     * origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent
+     * to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains
+     * healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used.
+     * Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client&#39;s
+     * IP address. Available values: `&#34;&#34;`, `none`, `cookie`, `ip_cookie`, `header`
      * 
      */
     @Import(name="sessionAffinity")
     private @Nullable Output<String> sessionAffinity;
 
     /**
-     * @return Specifies the type of session affinity the load balancer should use unless specified as `none` or `&#34;&#34;` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client&#39;s IP address. Available values: `&#34;&#34;`, `none`, `cookie`, `ip_cookie`. Defaults to `none`.
+     * @return Specifies the type of session affinity the load balancer should use unless specified as `none` or `&#34;&#34;` (default). With
+     * value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which
+     * origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent
+     * to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains
+     * healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used.
+     * Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client&#39;s
+     * IP address. Available values: `&#34;&#34;`, `none`, `cookie`, `ip_cookie`, `header`
      * 
      */
     public Optional<Output<String>> sessionAffinity() {
@@ -237,14 +265,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configure cookie attributes for session affinity cookie.
+     * Configure attributes for session affinity.
      * 
      */
     @Import(name="sessionAffinityAttributes")
     private @Nullable Output<List<LoadBalancerSessionAffinityAttributeArgs>> sessionAffinityAttributes;
 
     /**
-     * @return Configure cookie attributes for session affinity cookie.
+     * @return Configure attributes for session affinity.
      * 
      */
     public Optional<Output<List<LoadBalancerSessionAffinityAttributeArgs>>> sessionAffinityAttributes() {
@@ -252,14 +280,20 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Time, in seconds, until this load balancer&#39;s session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
+     * Time, in seconds, until this load balancer&#39;s session affinity cookie expires after being created. This parameter is
+     * ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless
+     * [`session_affinity_ttl`](#session_affinity_ttl) is explicitly set. Once the expiry time has been reached, subsequent
+     * requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
      * 
      */
     @Import(name="sessionAffinityTtl")
     private @Nullable Output<Integer> sessionAffinityTtl;
 
     /**
-     * @return Time, in seconds, until this load balancer&#39;s session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
+     * @return Time, in seconds, until this load balancer&#39;s session affinity cookie expires after being created. This parameter is
+     * ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless
+     * [`session_affinity_ttl`](#session_affinity_ttl) is explicitly set. Once the expiry time has been reached, subsequent
+     * requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
      * 
      */
     public Optional<Output<Integer>> sessionAffinityTtl() {
@@ -267,14 +301,38 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools&#39; latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool&#39;s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `&#34;&#34;` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `&#34;&#34;` Defaults to `&#34;&#34;`.
+     * The method the load balancer uses to determine the route to your origin. Value `off` uses
+     * [`default_pool_ids`](#default_pool_ids). Value `geo` uses
+     * [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools). For non-proxied requests,
+     * the [`country`](#country) for [`country_pools`](#country_pools) is determined by
+     * [`location_strategy`](#location_strategy). Value `random` selects a pool randomly. Value `dynamic_latency` uses round
+     * trip time to select the closest pool in [`default_pool_ids`](#default_pool_ids) (requires pool health checks). Value
+     * `proximity` uses the pools&#39; latitude and longitude to select the closest pool using the Cloudflare PoP location for
+     * proxied requests or the location determined by [`location_strategy`](#location_strategy) for non-proxied requests. Value
+     * `least_outstanding_requests` selects a pool by taking into consideration [`random_steering`](#random_steering) weights,
+     * as well as each pool&#39;s number of outstanding requests. Pools with more pending requests are weighted proportionately
+     * less relative to others. Value `&#34;&#34;` maps to `geo` if you use
+     * [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools) otherwise `off`. Available
+     * values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `&#34;&#34;` Defaults to `&#34;&#34;`.
      * 
      */
     @Import(name="steeringPolicy")
     private @Nullable Output<String> steeringPolicy;
 
     /**
-     * @return The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools&#39; latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool&#39;s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `&#34;&#34;` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `&#34;&#34;` Defaults to `&#34;&#34;`.
+     * @return The method the load balancer uses to determine the route to your origin. Value `off` uses
+     * [`default_pool_ids`](#default_pool_ids). Value `geo` uses
+     * [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools). For non-proxied requests,
+     * the [`country`](#country) for [`country_pools`](#country_pools) is determined by
+     * [`location_strategy`](#location_strategy). Value `random` selects a pool randomly. Value `dynamic_latency` uses round
+     * trip time to select the closest pool in [`default_pool_ids`](#default_pool_ids) (requires pool health checks). Value
+     * `proximity` uses the pools&#39; latitude and longitude to select the closest pool using the Cloudflare PoP location for
+     * proxied requests or the location determined by [`location_strategy`](#location_strategy) for non-proxied requests. Value
+     * `least_outstanding_requests` selects a pool by taking into consideration [`random_steering`](#random_steering) weights,
+     * as well as each pool&#39;s number of outstanding requests. Pools with more pending requests are weighted proportionately
+     * less relative to others. Value `&#34;&#34;` maps to `geo` if you use
+     * [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools) otherwise `off`. Available
+     * values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `&#34;&#34;` Defaults to `&#34;&#34;`.
      * 
      */
     public Optional<Output<String>> steeringPolicy() {
@@ -282,14 +340,16 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied
+     * load balancers. Defaults to `30`.
      * 
      */
     @Import(name="ttl")
     private @Nullable Output<Integer> ttl;
 
     /**
-     * @return Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+     * @return Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied
+     * load balancers. Defaults to `30`.
      * 
      */
     public Optional<Output<Integer>> ttl() {
@@ -297,14 +357,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
+     * The zone ID to add the load balancer to.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
+     * @return The zone ID to add the load balancer to.
      * 
      */
     public Output<String> zoneId() {
@@ -354,7 +414,8 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param adaptiveRoutings Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+         * @param adaptiveRoutings Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as
+         * during the interval between active health monitoring requests.
          * 
          * @return builder
          * 
@@ -365,7 +426,8 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param adaptiveRoutings Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+         * @param adaptiveRoutings Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as
+         * during the interval between active health monitoring requests.
          * 
          * @return builder
          * 
@@ -375,7 +437,8 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param adaptiveRoutings Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+         * @param adaptiveRoutings Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as
+         * during the interval between active health monitoring requests.
          * 
          * @return builder
          * 
@@ -385,7 +448,8 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param countryPools A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
+         * @param countryPools A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given
+         * country.
          * 
          * @return builder
          * 
@@ -396,7 +460,8 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param countryPools A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
+         * @param countryPools A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given
+         * country.
          * 
          * @return builder
          * 
@@ -406,7 +471,8 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param countryPools A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
+         * @param countryPools A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given
+         * country.
          * 
          * @return builder
          * 
@@ -416,7 +482,8 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultPoolIds A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.
+         * @param defaultPoolIds A list of pool IDs ordered by their failover priority. Used whenever
+         * [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools) are not defined.
          * 
          * @return builder
          * 
@@ -427,7 +494,8 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultPoolIds A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.
+         * @param defaultPoolIds A list of pool IDs ordered by their failover priority. Used whenever
+         * [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools) are not defined.
          * 
          * @return builder
          * 
@@ -437,7 +505,8 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultPoolIds A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.
+         * @param defaultPoolIds A list of pool IDs ordered by their failover priority. Used whenever
+         * [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools) are not defined.
          * 
          * @return builder
          * 
@@ -468,7 +537,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Enable or disable the load balancer. Defaults to `true`.
+         * @param enabled Enable or disable the load balancer.
          * 
          * @return builder
          * 
@@ -479,7 +548,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Enable or disable the load balancer. Defaults to `true`.
+         * @param enabled Enable or disable the load balancer.
          * 
          * @return builder
          * 
@@ -541,7 +610,8 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare&#39;s DNS, the load balancer will take precedence and the DNS record will not be used.
+         * @param name The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare&#39;s
+         * DNS, the load balancer will take precedence and the DNS record will not be used.
          * 
          * @return builder
          * 
@@ -552,7 +622,8 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare&#39;s DNS, the load balancer will take precedence and the DNS record will not be used.
+         * @param name The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare&#39;s
+         * DNS, the load balancer will take precedence and the DNS record will not be used.
          * 
          * @return builder
          * 
@@ -562,7 +633,8 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param popPools A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+         * @param popPools A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their
+         * failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
          * 
          * @return builder
          * 
@@ -573,7 +645,8 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param popPools A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+         * @param popPools A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their
+         * failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
          * 
          * @return builder
          * 
@@ -583,7 +656,8 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param popPools A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+         * @param popPools A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their
+         * failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
          * 
          * @return builder
          * 
@@ -593,7 +667,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxied Whether the hostname gets Cloudflare&#39;s origin protection. Defaults to `false`. Conflicts with `ttl`.
+         * @param proxied Whether the hostname gets Cloudflare&#39;s origin protection.
          * 
          * @return builder
          * 
@@ -604,7 +678,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxied Whether the hostname gets Cloudflare&#39;s origin protection. Defaults to `false`. Conflicts with `ttl`.
+         * @param proxied Whether the hostname gets Cloudflare&#39;s origin protection.
          * 
          * @return builder
          * 
@@ -614,7 +688,9 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param randomSteerings Configures pool weights. When `steering_policy=&#34;random&#34;`, a random pool is selected with probability proportional to pool weights. When `steering_policy=&#34;least_outstanding_requests&#34;`, pool weights are used to scale each pool&#39;s outstanding requests.
+         * @param randomSteerings Configures pool weights. When [`steering_policy=&#34;random&#34;`](#steering_policy), a random pool is selected with probability
+         * proportional to pool weights. When [`steering_policy=&#34;least_outstanding_requests&#34;`](#steering_policy), pool weights are
+         * used to scale each pool&#39;s outstanding requests.
          * 
          * @return builder
          * 
@@ -625,7 +701,9 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param randomSteerings Configures pool weights. When `steering_policy=&#34;random&#34;`, a random pool is selected with probability proportional to pool weights. When `steering_policy=&#34;least_outstanding_requests&#34;`, pool weights are used to scale each pool&#39;s outstanding requests.
+         * @param randomSteerings Configures pool weights. When [`steering_policy=&#34;random&#34;`](#steering_policy), a random pool is selected with probability
+         * proportional to pool weights. When [`steering_policy=&#34;least_outstanding_requests&#34;`](#steering_policy), pool weights are
+         * used to scale each pool&#39;s outstanding requests.
          * 
          * @return builder
          * 
@@ -635,7 +713,9 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param randomSteerings Configures pool weights. When `steering_policy=&#34;random&#34;`, a random pool is selected with probability proportional to pool weights. When `steering_policy=&#34;least_outstanding_requests&#34;`, pool weights are used to scale each pool&#39;s outstanding requests.
+         * @param randomSteerings Configures pool weights. When [`steering_policy=&#34;random&#34;`](#steering_policy), a random pool is selected with probability
+         * proportional to pool weights. When [`steering_policy=&#34;least_outstanding_requests&#34;`](#steering_policy), pool weights are
+         * used to scale each pool&#39;s outstanding requests.
          * 
          * @return builder
          * 
@@ -645,7 +725,8 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regionPools A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
+         * @param regionPools A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given
+         * region.
          * 
          * @return builder
          * 
@@ -656,7 +737,8 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regionPools A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
+         * @param regionPools A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given
+         * region.
          * 
          * @return builder
          * 
@@ -666,7 +748,8 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regionPools A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
+         * @param regionPools A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given
+         * region.
          * 
          * @return builder
          * 
@@ -707,7 +790,13 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionAffinity Specifies the type of session affinity the load balancer should use unless specified as `none` or `&#34;&#34;` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client&#39;s IP address. Available values: `&#34;&#34;`, `none`, `cookie`, `ip_cookie`. Defaults to `none`.
+         * @param sessionAffinity Specifies the type of session affinity the load balancer should use unless specified as `none` or `&#34;&#34;` (default). With
+         * value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which
+         * origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent
+         * to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains
+         * healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used.
+         * Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client&#39;s
+         * IP address. Available values: `&#34;&#34;`, `none`, `cookie`, `ip_cookie`, `header`
          * 
          * @return builder
          * 
@@ -718,7 +807,13 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionAffinity Specifies the type of session affinity the load balancer should use unless specified as `none` or `&#34;&#34;` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client&#39;s IP address. Available values: `&#34;&#34;`, `none`, `cookie`, `ip_cookie`. Defaults to `none`.
+         * @param sessionAffinity Specifies the type of session affinity the load balancer should use unless specified as `none` or `&#34;&#34;` (default). With
+         * value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which
+         * origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent
+         * to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains
+         * healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used.
+         * Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client&#39;s
+         * IP address. Available values: `&#34;&#34;`, `none`, `cookie`, `ip_cookie`, `header`
          * 
          * @return builder
          * 
@@ -728,7 +823,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionAffinityAttributes Configure cookie attributes for session affinity cookie.
+         * @param sessionAffinityAttributes Configure attributes for session affinity.
          * 
          * @return builder
          * 
@@ -739,7 +834,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionAffinityAttributes Configure cookie attributes for session affinity cookie.
+         * @param sessionAffinityAttributes Configure attributes for session affinity.
          * 
          * @return builder
          * 
@@ -749,7 +844,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionAffinityAttributes Configure cookie attributes for session affinity cookie.
+         * @param sessionAffinityAttributes Configure attributes for session affinity.
          * 
          * @return builder
          * 
@@ -759,7 +854,10 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionAffinityTtl Time, in seconds, until this load balancer&#39;s session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
+         * @param sessionAffinityTtl Time, in seconds, until this load balancer&#39;s session affinity cookie expires after being created. This parameter is
+         * ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless
+         * [`session_affinity_ttl`](#session_affinity_ttl) is explicitly set. Once the expiry time has been reached, subsequent
+         * requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
          * 
          * @return builder
          * 
@@ -770,7 +868,10 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionAffinityTtl Time, in seconds, until this load balancer&#39;s session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
+         * @param sessionAffinityTtl Time, in seconds, until this load balancer&#39;s session affinity cookie expires after being created. This parameter is
+         * ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless
+         * [`session_affinity_ttl`](#session_affinity_ttl) is explicitly set. Once the expiry time has been reached, subsequent
+         * requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
          * 
          * @return builder
          * 
@@ -780,7 +881,19 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param steeringPolicy The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools&#39; latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool&#39;s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `&#34;&#34;` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `&#34;&#34;` Defaults to `&#34;&#34;`.
+         * @param steeringPolicy The method the load balancer uses to determine the route to your origin. Value `off` uses
+         * [`default_pool_ids`](#default_pool_ids). Value `geo` uses
+         * [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools). For non-proxied requests,
+         * the [`country`](#country) for [`country_pools`](#country_pools) is determined by
+         * [`location_strategy`](#location_strategy). Value `random` selects a pool randomly. Value `dynamic_latency` uses round
+         * trip time to select the closest pool in [`default_pool_ids`](#default_pool_ids) (requires pool health checks). Value
+         * `proximity` uses the pools&#39; latitude and longitude to select the closest pool using the Cloudflare PoP location for
+         * proxied requests or the location determined by [`location_strategy`](#location_strategy) for non-proxied requests. Value
+         * `least_outstanding_requests` selects a pool by taking into consideration [`random_steering`](#random_steering) weights,
+         * as well as each pool&#39;s number of outstanding requests. Pools with more pending requests are weighted proportionately
+         * less relative to others. Value `&#34;&#34;` maps to `geo` if you use
+         * [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools) otherwise `off`. Available
+         * values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `&#34;&#34;` Defaults to `&#34;&#34;`.
          * 
          * @return builder
          * 
@@ -791,7 +904,19 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param steeringPolicy The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools&#39; latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool&#39;s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `&#34;&#34;` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `&#34;&#34;` Defaults to `&#34;&#34;`.
+         * @param steeringPolicy The method the load balancer uses to determine the route to your origin. Value `off` uses
+         * [`default_pool_ids`](#default_pool_ids). Value `geo` uses
+         * [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools). For non-proxied requests,
+         * the [`country`](#country) for [`country_pools`](#country_pools) is determined by
+         * [`location_strategy`](#location_strategy). Value `random` selects a pool randomly. Value `dynamic_latency` uses round
+         * trip time to select the closest pool in [`default_pool_ids`](#default_pool_ids) (requires pool health checks). Value
+         * `proximity` uses the pools&#39; latitude and longitude to select the closest pool using the Cloudflare PoP location for
+         * proxied requests or the location determined by [`location_strategy`](#location_strategy) for non-proxied requests. Value
+         * `least_outstanding_requests` selects a pool by taking into consideration [`random_steering`](#random_steering) weights,
+         * as well as each pool&#39;s number of outstanding requests. Pools with more pending requests are weighted proportionately
+         * less relative to others. Value `&#34;&#34;` maps to `geo` if you use
+         * [`pop_pools`](#pop_pools)/[`country_pools`](#country_pools)/[`region_pools`](#region_pools) otherwise `off`. Available
+         * values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `&#34;&#34;` Defaults to `&#34;&#34;`.
          * 
          * @return builder
          * 
@@ -801,7 +926,8 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ttl Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+         * @param ttl Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied
+         * load balancers. Defaults to `30`.
          * 
          * @return builder
          * 
@@ -812,7 +938,8 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ttl Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+         * @param ttl Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied
+         * load balancers. Defaults to `30`.
          * 
          * @return builder
          * 
@@ -822,7 +949,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId The zone ID to add the load balancer to.
          * 
          * @return builder
          * 
@@ -833,7 +960,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId The zone ID to add the load balancer to.
          * 
          * @return builder
          * 

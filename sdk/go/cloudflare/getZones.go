@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetZonesResult
 	err := ctx.Invoke("cloudflare:index/getZones:getZones", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetLoadBalancerPools(ctx *pulumi.Context, args *GetLoadBalancerPoolsArgs, opts ...pulumi.InvokeOption) (*GetLoadBalancerPoolsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLoadBalancerPoolsResult
 	err := ctx.Invoke("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", args, &rv, opts...)
 	if err != nil {

@@ -12,6 +12,18 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class DevicePostureRuleInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The number of active threats from SentinelOne.
+        /// </summary>
+        [Input("activeThreats")]
+        public Input<int>? ActiveThreats { get; set; }
+
+        /// <summary>
+        /// The UUID of a Cloudflare managed certificate.
+        /// </summary>
+        [Input("certificateId")]
+        public Input<string>? CertificateId { get; set; }
+
         [Input("checkDisks")]
         private InputList<string>? _checkDisks;
 
@@ -23,6 +35,12 @@ namespace Pulumi.Cloudflare.Inputs
             get => _checkDisks ?? (_checkDisks = new InputList<string>());
             set => _checkDisks = value;
         }
+
+        /// <summary>
+        /// The common name for a certificate.
+        /// </summary>
+        [Input("cn")]
+        public Input<string>? Cn { get; set; }
 
         /// <summary>
         /// The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
@@ -67,10 +85,28 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
+        /// True if SentinelOne device is infected.
+        /// </summary>
+        [Input("infected")]
+        public Input<bool>? Infected { get; set; }
+
+        /// <summary>
+        /// True if SentinelOne device is active.
+        /// </summary>
+        [Input("isActive")]
+        public Input<bool>? IsActive { get; set; }
+
+        /// <summary>
         /// The number of issues for kolide.
         /// </summary>
         [Input("issueCount")]
         public Input<string>? IssueCount { get; set; }
+
+        /// <summary>
+        /// The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+        /// </summary>
+        [Input("networkStatus")]
+        public Input<string>? NetworkStatus { get; set; }
 
         /// <summary>
         /// The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.

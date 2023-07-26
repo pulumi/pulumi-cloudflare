@@ -12,18 +12,11 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class LoadBalancerRuleOverrideCountryPoolGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
-        /// </summary>
         [Input("country", required: true)]
         public Input<string> Country { get; set; } = null!;
 
         [Input("poolIds", required: true)]
         private InputList<string>? _poolIds;
-
-        /// <summary>
-        /// A list of pool IDs in failover priority to use in the given country.
-        /// </summary>
         public InputList<string> PoolIds
         {
             get => _poolIds ?? (_poolIds = new InputList<string>());

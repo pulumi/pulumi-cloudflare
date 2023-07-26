@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
 func LookupAccessApplication(ctx *pulumi.Context, args *LookupAccessApplicationArgs, opts ...pulumi.InvokeOption) (*LookupAccessApplicationResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccessApplicationResult
 	err := ctx.Invoke("cloudflare:index/getAccessApplication:getAccessApplication", args, &rv, opts...)
 	if err != nil {

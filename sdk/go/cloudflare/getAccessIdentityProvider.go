@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,6 +54,7 @@ import (
 //
 // ```
 func LookupAccessIdentityProvider(ctx *pulumi.Context, args *LookupAccessIdentityProviderArgs, opts ...pulumi.InvokeOption) (*LookupAccessIdentityProviderResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccessIdentityProviderResult
 	err := ctx.Invoke("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", args, &rv, opts...)
 	if err != nil {

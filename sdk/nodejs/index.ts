@@ -403,6 +403,11 @@ export type RegionalHostname = import("./regionalHostname").RegionalHostname;
 export const RegionalHostname: typeof import("./regionalHostname").RegionalHostname = null as any;
 utilities.lazyLoad(exports, ["RegionalHostname"], () => require("./regionalHostname"));
 
+export { RegionalTieredCacheArgs, RegionalTieredCacheState } from "./regionalTieredCache";
+export type RegionalTieredCache = import("./regionalTieredCache").RegionalTieredCache;
+export const RegionalTieredCache: typeof import("./regionalTieredCache").RegionalTieredCache = null as any;
+utilities.lazyLoad(exports, ["RegionalTieredCache"], () => require("./regionalTieredCache"));
+
 export { RulesetArgs, RulesetState } from "./ruleset";
 export type Ruleset = import("./ruleset").Ruleset;
 export const Ruleset: typeof import("./ruleset").Ruleset = null as any;
@@ -713,6 +718,8 @@ const _module = {
                 return new Record(name, <any>undefined, { urn })
             case "cloudflare:index/regionalHostname:RegionalHostname":
                 return new RegionalHostname(name, <any>undefined, { urn })
+            case "cloudflare:index/regionalTieredCache:RegionalTieredCache":
+                return new RegionalTieredCache(name, <any>undefined, { urn })
             case "cloudflare:index/ruleset:Ruleset":
                 return new Ruleset(name, <any>undefined, { urn })
             case "cloudflare:index/spectrumApplication:SpectrumApplication":
@@ -849,6 +856,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/r2Bucket", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/rateLimit", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/record", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/regionalHostname", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/regionalTieredCache", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/ruleset", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/spectrumApplication", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/splitTunnel", _module)

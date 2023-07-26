@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -102,6 +103,7 @@ func NewAddressMap(ctx *pulumi.Context,
 	if args.Enabled == nil {
 		return nil, errors.New("invalid value for required argument 'Enabled'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AddressMap
 	err := ctx.RegisterResource("cloudflare:index/addressMap:AddressMap", name, args, &resource, opts...)
 	if err != nil {

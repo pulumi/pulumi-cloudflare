@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -230,6 +231,7 @@ func NewPagesProject(ctx *pulumi.Context,
 	if args.ProductionBranch == nil {
 		return nil, errors.New("invalid value for required argument 'ProductionBranch'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PagesProject
 	err := ctx.RegisterResource("cloudflare:index/pagesProject:PagesProject", name, args, &resource, opts...)
 	if err != nil {

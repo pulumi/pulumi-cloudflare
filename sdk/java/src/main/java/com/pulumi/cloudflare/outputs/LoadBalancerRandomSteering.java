@@ -13,29 +13,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LoadBalancerRandomSteering {
-    /**
-     * @return The default weight for pools in the load balancer that are not specified in the `pool_weights` map.
-     * 
-     */
     private @Nullable Double defaultWeight;
-    /**
-     * @return A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
-     * 
-     */
     private @Nullable Map<String,Double> poolWeights;
 
     private LoadBalancerRandomSteering() {}
-    /**
-     * @return The default weight for pools in the load balancer that are not specified in the `pool_weights` map.
-     * 
-     */
     public Optional<Double> defaultWeight() {
         return Optional.ofNullable(this.defaultWeight);
     }
-    /**
-     * @return A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
-     * 
-     */
     public Map<String,Double> poolWeights() {
         return this.poolWeights == null ? Map.of() : this.poolWeights;
     }

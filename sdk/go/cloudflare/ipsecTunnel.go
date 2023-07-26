@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -117,6 +118,7 @@ func NewIpsecTunnel(ctx *pulumi.Context,
 		"psk",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IpsecTunnel
 	err := ctx.RegisterResource("cloudflare:index/ipsecTunnel:IpsecTunnel", name, args, &resource, opts...)
 	if err != nil {

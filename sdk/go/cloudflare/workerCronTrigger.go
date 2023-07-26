@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -99,6 +100,7 @@ func NewWorkerCronTrigger(ctx *pulumi.Context,
 	if args.ScriptName == nil {
 		return nil, errors.New("invalid value for required argument 'ScriptName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkerCronTrigger
 	err := ctx.RegisterResource("cloudflare:index/workerCronTrigger:WorkerCronTrigger", name, args, &resource, opts...)
 	if err != nil {
