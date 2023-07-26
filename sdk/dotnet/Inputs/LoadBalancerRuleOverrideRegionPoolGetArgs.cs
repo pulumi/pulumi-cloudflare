@@ -14,19 +14,12 @@ namespace Pulumi.Cloudflare.Inputs
     {
         [Input("poolIds", required: true)]
         private InputList<string>? _poolIds;
-
-        /// <summary>
-        /// A list of pool IDs in failover priority to use in the given region.
-        /// </summary>
         public InputList<string> PoolIds
         {
             get => _poolIds ?? (_poolIds = new InputList<string>());
             set => _poolIds = value;
         }
 
-        /// <summary>
-        /// A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
-        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 

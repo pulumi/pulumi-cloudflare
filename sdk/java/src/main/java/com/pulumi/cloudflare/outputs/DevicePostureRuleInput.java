@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -14,10 +15,25 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DevicePostureRuleInput {
     /**
+     * @return The number of active threats from SentinelOne.
+     * 
+     */
+    private @Nullable Integer activeThreats;
+    /**
+     * @return The UUID of a Cloudflare managed certificate.
+     * 
+     */
+    private @Nullable String certificateId;
+    /**
      * @return Specific volume(s) to check for encryption.
      * 
      */
     private @Nullable List<String> checkDisks;
+    /**
+     * @return The common name for a certificate.
+     * 
+     */
+    private @Nullable String cn;
     /**
      * @return The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
      * 
@@ -54,10 +70,25 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable String id;
     /**
+     * @return True if SentinelOne device is infected.
+     * 
+     */
+    private @Nullable Boolean infected;
+    /**
+     * @return True if SentinelOne device is active.
+     * 
+     */
+    private @Nullable Boolean isActive;
+    /**
      * @return The number of issues for kolide.
      * 
      */
     private @Nullable String issueCount;
+    /**
+     * @return The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+     * 
+     */
+    private @Nullable String networkStatus;
     /**
      * @return The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
      * 
@@ -126,11 +157,32 @@ public final class DevicePostureRuleInput {
 
     private DevicePostureRuleInput() {}
     /**
+     * @return The number of active threats from SentinelOne.
+     * 
+     */
+    public Optional<Integer> activeThreats() {
+        return Optional.ofNullable(this.activeThreats);
+    }
+    /**
+     * @return The UUID of a Cloudflare managed certificate.
+     * 
+     */
+    public Optional<String> certificateId() {
+        return Optional.ofNullable(this.certificateId);
+    }
+    /**
      * @return Specific volume(s) to check for encryption.
      * 
      */
     public List<String> checkDisks() {
         return this.checkDisks == null ? List.of() : this.checkDisks;
+    }
+    /**
+     * @return The common name for a certificate.
+     * 
+     */
+    public Optional<String> cn() {
+        return Optional.ofNullable(this.cn);
     }
     /**
      * @return The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
@@ -182,11 +234,32 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.id);
     }
     /**
+     * @return True if SentinelOne device is infected.
+     * 
+     */
+    public Optional<Boolean> infected() {
+        return Optional.ofNullable(this.infected);
+    }
+    /**
+     * @return True if SentinelOne device is active.
+     * 
+     */
+    public Optional<Boolean> isActive() {
+        return Optional.ofNullable(this.isActive);
+    }
+    /**
      * @return The number of issues for kolide.
      * 
      */
     public Optional<String> issueCount() {
         return Optional.ofNullable(this.issueCount);
+    }
+    /**
+     * @return The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+     * 
+     */
+    public Optional<String> networkStatus() {
+        return Optional.ofNullable(this.networkStatus);
     }
     /**
      * @return The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
@@ -289,7 +362,10 @@ public final class DevicePostureRuleInput {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer activeThreats;
+        private @Nullable String certificateId;
         private @Nullable List<String> checkDisks;
+        private @Nullable String cn;
         private @Nullable String complianceStatus;
         private @Nullable String connectionId;
         private @Nullable String countOperator;
@@ -297,7 +373,10 @@ public final class DevicePostureRuleInput {
         private @Nullable Boolean enabled;
         private @Nullable Boolean exists;
         private @Nullable String id;
+        private @Nullable Boolean infected;
+        private @Nullable Boolean isActive;
         private @Nullable String issueCount;
+        private @Nullable String networkStatus;
         private @Nullable String operator;
         private @Nullable String os;
         private @Nullable String osDistroName;
@@ -314,7 +393,10 @@ public final class DevicePostureRuleInput {
         public Builder() {}
         public Builder(DevicePostureRuleInput defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.activeThreats = defaults.activeThreats;
+    	      this.certificateId = defaults.certificateId;
     	      this.checkDisks = defaults.checkDisks;
+    	      this.cn = defaults.cn;
     	      this.complianceStatus = defaults.complianceStatus;
     	      this.connectionId = defaults.connectionId;
     	      this.countOperator = defaults.countOperator;
@@ -322,7 +404,10 @@ public final class DevicePostureRuleInput {
     	      this.enabled = defaults.enabled;
     	      this.exists = defaults.exists;
     	      this.id = defaults.id;
+    	      this.infected = defaults.infected;
+    	      this.isActive = defaults.isActive;
     	      this.issueCount = defaults.issueCount;
+    	      this.networkStatus = defaults.networkStatus;
     	      this.operator = defaults.operator;
     	      this.os = defaults.os;
     	      this.osDistroName = defaults.osDistroName;
@@ -339,12 +424,27 @@ public final class DevicePostureRuleInput {
         }
 
         @CustomType.Setter
+        public Builder activeThreats(@Nullable Integer activeThreats) {
+            this.activeThreats = activeThreats;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder certificateId(@Nullable String certificateId) {
+            this.certificateId = certificateId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder checkDisks(@Nullable List<String> checkDisks) {
             this.checkDisks = checkDisks;
             return this;
         }
         public Builder checkDisks(String... checkDisks) {
             return checkDisks(List.of(checkDisks));
+        }
+        @CustomType.Setter
+        public Builder cn(@Nullable String cn) {
+            this.cn = cn;
+            return this;
         }
         @CustomType.Setter
         public Builder complianceStatus(@Nullable String complianceStatus) {
@@ -382,8 +482,23 @@ public final class DevicePostureRuleInput {
             return this;
         }
         @CustomType.Setter
+        public Builder infected(@Nullable Boolean infected) {
+            this.infected = infected;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isActive(@Nullable Boolean isActive) {
+            this.isActive = isActive;
+            return this;
+        }
+        @CustomType.Setter
         public Builder issueCount(@Nullable String issueCount) {
             this.issueCount = issueCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder networkStatus(@Nullable String networkStatus) {
+            this.networkStatus = networkStatus;
             return this;
         }
         @CustomType.Setter
@@ -453,7 +568,10 @@ public final class DevicePostureRuleInput {
         }
         public DevicePostureRuleInput build() {
             final var o = new DevicePostureRuleInput();
+            o.activeThreats = activeThreats;
+            o.certificateId = certificateId;
             o.checkDisks = checkDisks;
+            o.cn = cn;
             o.complianceStatus = complianceStatus;
             o.connectionId = connectionId;
             o.countOperator = countOperator;
@@ -461,7 +579,10 @@ public final class DevicePostureRuleInput {
             o.enabled = enabled;
             o.exists = exists;
             o.id = id;
+            o.infected = infected;
+            o.isActive = isActive;
             o.issueCount = issueCount;
+            o.networkStatus = networkStatus;
             o.operator = operator;
             o.os = os;
             o.osDistroName = osDistroName;

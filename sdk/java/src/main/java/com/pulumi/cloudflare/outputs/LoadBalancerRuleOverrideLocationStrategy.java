@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LoadBalancerRuleOverrideLocationStrategy {
-    /**
-     * @return Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`. Defaults to `pop`.
-     * 
-     */
     private @Nullable String mode;
-    /**
-     * @return Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy=&#34;proximity&#34;`, and `geo` will prefer ECS only when `steering_policy=&#34;geo&#34;`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
-     * 
-     */
     private @Nullable String preferEcs;
 
     private LoadBalancerRuleOverrideLocationStrategy() {}
-    /**
-     * @return Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`. Defaults to `pop`.
-     * 
-     */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
-    /**
-     * @return Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy=&#34;proximity&#34;`, and `geo` will prefer ECS only when `steering_policy=&#34;geo&#34;`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
-     * 
-     */
     public Optional<String> preferEcs() {
         return Optional.ofNullable(this.preferEcs);
     }

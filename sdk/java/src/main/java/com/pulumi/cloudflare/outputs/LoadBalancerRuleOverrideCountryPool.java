@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class LoadBalancerRuleOverrideCountryPool {
-    /**
-     * @return A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
-     * 
-     */
     private String country;
-    /**
-     * @return A list of pool IDs in failover priority to use in the given country.
-     * 
-     */
     private List<String> poolIds;
 
     private LoadBalancerRuleOverrideCountryPool() {}
-    /**
-     * @return A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
-     * 
-     */
     public String country() {
         return this.country;
     }
-    /**
-     * @return A list of pool IDs in failover priority to use in the given country.
-     * 
-     */
     public List<String> poolIds() {
         return this.poolIds;
     }

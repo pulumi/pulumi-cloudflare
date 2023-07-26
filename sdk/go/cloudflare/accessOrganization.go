@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -92,6 +93,7 @@ func NewAccessOrganization(ctx *pulumi.Context,
 	if args.AuthDomain == nil {
 		return nil, errors.New("invalid value for required argument 'AuthDomain'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessOrganization
 	err := ctx.RegisterResource("cloudflare:index/accessOrganization:AccessOrganization", name, args, &resource, opts...)
 	if err != nil {

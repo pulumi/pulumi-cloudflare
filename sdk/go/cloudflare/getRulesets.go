@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetRulesets(ctx *pulumi.Context, args *GetRulesetsArgs, opts ...pulumi.InvokeOption) (*GetRulesetsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRulesetsResult
 	err := ctx.Invoke("cloudflare:index/getRulesets:getRulesets", args, &rv, opts...)
 	if err != nil {

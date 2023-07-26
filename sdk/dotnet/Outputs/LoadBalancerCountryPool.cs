@@ -13,13 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class LoadBalancerCountryPool
     {
-        /// <summary>
-        /// A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
-        /// </summary>
         public readonly string Country;
-        /// <summary>
-        /// A list of pool IDs in failover priority to use in the given country.
-        /// </summary>
         public readonly ImmutableArray<string> PoolIds;
 
         [OutputConstructor]

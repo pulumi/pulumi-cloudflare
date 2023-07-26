@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -136,6 +137,7 @@ func NewTunnelConfig(ctx *pulumi.Context,
 	if args.TunnelId == nil {
 		return nil, errors.New("invalid value for required argument 'TunnelId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TunnelConfig
 	err := ctx.RegisterResource("cloudflare:index/tunnelConfig:TunnelConfig", name, args, &resource, opts...)
 	if err != nil {

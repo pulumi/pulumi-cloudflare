@@ -14,19 +14,12 @@ namespace Pulumi.Cloudflare.Inputs
     {
         [Input("poolIds", required: true)]
         private InputList<string>? _poolIds;
-
-        /// <summary>
-        /// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
-        /// </summary>
         public InputList<string> PoolIds
         {
             get => _poolIds ?? (_poolIds = new InputList<string>());
             set => _poolIds = value;
         }
 
-        /// <summary>
-        /// A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
-        /// </summary>
         [Input("pop", required: true)]
         public Input<string> Pop { get; set; } = null!;
 

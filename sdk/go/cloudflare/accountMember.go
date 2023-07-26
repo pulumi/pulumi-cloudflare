@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,6 +81,7 @@ func NewAccountMember(ctx *pulumi.Context,
 	if args.RoleIds == nil {
 		return nil, errors.New("invalid value for required argument 'RoleIds'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccountMember
 	err := ctx.RegisterResource("cloudflare:index/accountMember:AccountMember", name, args, &resource, opts...)
 	if err != nil {

@@ -85,6 +85,7 @@ from .r2_bucket import *
 from .rate_limit import *
 from .record import *
 from .regional_hostname import *
+from .regional_tiered_cache import *
 from .ruleset import *
 from .spectrum_application import *
 from .split_tunnel import *
@@ -634,6 +635,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/regionalHostname:RegionalHostname": "RegionalHostname"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/regionalTieredCache",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/regionalTieredCache:RegionalTieredCache": "RegionalTieredCache"
   }
  },
  {

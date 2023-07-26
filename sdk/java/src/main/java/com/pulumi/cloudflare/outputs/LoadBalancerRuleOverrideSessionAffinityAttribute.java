@@ -4,48 +4,34 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class LoadBalancerRuleOverrideSessionAffinityAttribute {
-    /**
-     * @return Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure=&#34;Never&#34;`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
-     * 
-     */
+    private @Nullable List<String> headers;
+    private @Nullable Boolean requireAllHeaders;
     private @Nullable String samesite;
-    /**
-     * @return Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
-     * 
-     */
     private @Nullable String secure;
-    /**
-     * @return Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
-     * 
-     */
     private @Nullable String zeroDowntimeFailover;
 
     private LoadBalancerRuleOverrideSessionAffinityAttribute() {}
-    /**
-     * @return Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure=&#34;Never&#34;`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
-     * 
-     */
+    public List<String> headers() {
+        return this.headers == null ? List.of() : this.headers;
+    }
+    public Optional<Boolean> requireAllHeaders() {
+        return Optional.ofNullable(this.requireAllHeaders);
+    }
     public Optional<String> samesite() {
         return Optional.ofNullable(this.samesite);
     }
-    /**
-     * @return Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
-     * 
-     */
     public Optional<String> secure() {
         return Optional.ofNullable(this.secure);
     }
-    /**
-     * @return Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
-     * 
-     */
     public Optional<String> zeroDowntimeFailover() {
         return Optional.ofNullable(this.zeroDowntimeFailover);
     }
@@ -59,17 +45,34 @@ public final class LoadBalancerRuleOverrideSessionAffinityAttribute {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> headers;
+        private @Nullable Boolean requireAllHeaders;
         private @Nullable String samesite;
         private @Nullable String secure;
         private @Nullable String zeroDowntimeFailover;
         public Builder() {}
         public Builder(LoadBalancerRuleOverrideSessionAffinityAttribute defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.headers = defaults.headers;
+    	      this.requireAllHeaders = defaults.requireAllHeaders;
     	      this.samesite = defaults.samesite;
     	      this.secure = defaults.secure;
     	      this.zeroDowntimeFailover = defaults.zeroDowntimeFailover;
         }
 
+        @CustomType.Setter
+        public Builder headers(@Nullable List<String> headers) {
+            this.headers = headers;
+            return this;
+        }
+        public Builder headers(String... headers) {
+            return headers(List.of(headers));
+        }
+        @CustomType.Setter
+        public Builder requireAllHeaders(@Nullable Boolean requireAllHeaders) {
+            this.requireAllHeaders = requireAllHeaders;
+            return this;
+        }
         @CustomType.Setter
         public Builder samesite(@Nullable String samesite) {
             this.samesite = samesite;
@@ -87,6 +90,8 @@ public final class LoadBalancerRuleOverrideSessionAffinityAttribute {
         }
         public LoadBalancerRuleOverrideSessionAffinityAttribute build() {
             final var o = new LoadBalancerRuleOverrideSessionAffinityAttribute();
+            o.headers = headers;
+            o.requireAllHeaders = requireAllHeaders;
             o.samesite = samesite;
             o.secure = secure;
             o.zeroDowntimeFailover = zeroDowntimeFailover;

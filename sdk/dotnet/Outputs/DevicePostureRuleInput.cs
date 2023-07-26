@@ -14,9 +14,21 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class DevicePostureRuleInput
     {
         /// <summary>
+        /// The number of active threats from SentinelOne.
+        /// </summary>
+        public readonly int? ActiveThreats;
+        /// <summary>
+        /// The UUID of a Cloudflare managed certificate.
+        /// </summary>
+        public readonly string? CertificateId;
+        /// <summary>
         /// Specific volume(s) to check for encryption.
         /// </summary>
         public readonly ImmutableArray<string> CheckDisks;
+        /// <summary>
+        /// The common name for a certificate.
+        /// </summary>
+        public readonly string? Cn;
         /// <summary>
         /// The workspace one device compliance status. Available values: `compliant`, `noncompliant`.
         /// </summary>
@@ -46,9 +58,21 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
+        /// True if SentinelOne device is infected.
+        /// </summary>
+        public readonly bool? Infected;
+        /// <summary>
+        /// True if SentinelOne device is active.
+        /// </summary>
+        public readonly bool? IsActive;
+        /// <summary>
         /// The number of issues for kolide.
         /// </summary>
         public readonly string? IssueCount;
+        /// <summary>
+        /// The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+        /// </summary>
+        public readonly string? NetworkStatus;
         /// <summary>
         /// The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
         /// </summary>
@@ -104,7 +128,13 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private DevicePostureRuleInput(
+            int? activeThreats,
+
+            string? certificateId,
+
             ImmutableArray<string> checkDisks,
+
+            string? cn,
 
             string? complianceStatus,
 
@@ -120,7 +150,13 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? id,
 
+            bool? infected,
+
+            bool? isActive,
+
             string? issueCount,
+
+            string? networkStatus,
 
             string? @operator,
 
@@ -148,7 +184,10 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? versionOperator)
         {
+            ActiveThreats = activeThreats;
+            CertificateId = certificateId;
             CheckDisks = checkDisks;
+            Cn = cn;
             ComplianceStatus = complianceStatus;
             ConnectionId = connectionId;
             CountOperator = countOperator;
@@ -156,7 +195,10 @@ namespace Pulumi.Cloudflare.Outputs
             Enabled = enabled;
             Exists = exists;
             Id = id;
+            Infected = infected;
+            IsActive = isActive;
             IssueCount = issueCount;
+            NetworkStatus = networkStatus;
             Operator = @operator;
             Os = os;
             OsDistroName = osDistroName;

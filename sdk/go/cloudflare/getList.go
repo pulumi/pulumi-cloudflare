@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupList(ctx *pulumi.Context, args *LookupListArgs, opts ...pulumi.InvokeOption) (*LookupListResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupListResult
 	err := ctx.Invoke("cloudflare:index/getList:getList", args, &rv, opts...)
 	if err != nil {

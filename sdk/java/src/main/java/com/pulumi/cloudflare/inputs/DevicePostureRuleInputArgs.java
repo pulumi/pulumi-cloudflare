@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,6 +17,36 @@ import javax.annotation.Nullable;
 public final class DevicePostureRuleInputArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DevicePostureRuleInputArgs Empty = new DevicePostureRuleInputArgs();
+
+    /**
+     * The number of active threats from SentinelOne.
+     * 
+     */
+    @Import(name="activeThreats")
+    private @Nullable Output<Integer> activeThreats;
+
+    /**
+     * @return The number of active threats from SentinelOne.
+     * 
+     */
+    public Optional<Output<Integer>> activeThreats() {
+        return Optional.ofNullable(this.activeThreats);
+    }
+
+    /**
+     * The UUID of a Cloudflare managed certificate.
+     * 
+     */
+    @Import(name="certificateId")
+    private @Nullable Output<String> certificateId;
+
+    /**
+     * @return The UUID of a Cloudflare managed certificate.
+     * 
+     */
+    public Optional<Output<String>> certificateId() {
+        return Optional.ofNullable(this.certificateId);
+    }
 
     /**
      * Specific volume(s) to check for encryption.
@@ -30,6 +61,21 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
      */
     public Optional<Output<List<String>>> checkDisks() {
         return Optional.ofNullable(this.checkDisks);
+    }
+
+    /**
+     * The common name for a certificate.
+     * 
+     */
+    @Import(name="cn")
+    private @Nullable Output<String> cn;
+
+    /**
+     * @return The common name for a certificate.
+     * 
+     */
+    public Optional<Output<String>> cn() {
+        return Optional.ofNullable(this.cn);
     }
 
     /**
@@ -138,6 +184,36 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * True if SentinelOne device is infected.
+     * 
+     */
+    @Import(name="infected")
+    private @Nullable Output<Boolean> infected;
+
+    /**
+     * @return True if SentinelOne device is infected.
+     * 
+     */
+    public Optional<Output<Boolean>> infected() {
+        return Optional.ofNullable(this.infected);
+    }
+
+    /**
+     * True if SentinelOne device is active.
+     * 
+     */
+    @Import(name="isActive")
+    private @Nullable Output<Boolean> isActive;
+
+    /**
+     * @return True if SentinelOne device is active.
+     * 
+     */
+    public Optional<Output<Boolean>> isActive() {
+        return Optional.ofNullable(this.isActive);
+    }
+
+    /**
      * The number of issues for kolide.
      * 
      */
@@ -150,6 +226,21 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
      */
     public Optional<Output<String>> issueCount() {
         return Optional.ofNullable(this.issueCount);
+    }
+
+    /**
+     * The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+     * 
+     */
+    @Import(name="networkStatus")
+    private @Nullable Output<String> networkStatus;
+
+    /**
+     * @return The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+     * 
+     */
+    public Optional<Output<String>> networkStatus() {
+        return Optional.ofNullable(this.networkStatus);
     }
 
     /**
@@ -350,7 +441,10 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     private DevicePostureRuleInputArgs() {}
 
     private DevicePostureRuleInputArgs(DevicePostureRuleInputArgs $) {
+        this.activeThreats = $.activeThreats;
+        this.certificateId = $.certificateId;
         this.checkDisks = $.checkDisks;
+        this.cn = $.cn;
         this.complianceStatus = $.complianceStatus;
         this.connectionId = $.connectionId;
         this.countOperator = $.countOperator;
@@ -358,7 +452,10 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         this.enabled = $.enabled;
         this.exists = $.exists;
         this.id = $.id;
+        this.infected = $.infected;
+        this.isActive = $.isActive;
         this.issueCount = $.issueCount;
+        this.networkStatus = $.networkStatus;
         this.operator = $.operator;
         this.os = $.os;
         this.osDistroName = $.osDistroName;
@@ -393,6 +490,48 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param activeThreats The number of active threats from SentinelOne.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder activeThreats(@Nullable Output<Integer> activeThreats) {
+            $.activeThreats = activeThreats;
+            return this;
+        }
+
+        /**
+         * @param activeThreats The number of active threats from SentinelOne.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder activeThreats(Integer activeThreats) {
+            return activeThreats(Output.of(activeThreats));
+        }
+
+        /**
+         * @param certificateId The UUID of a Cloudflare managed certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateId(@Nullable Output<String> certificateId) {
+            $.certificateId = certificateId;
+            return this;
+        }
+
+        /**
+         * @param certificateId The UUID of a Cloudflare managed certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateId(String certificateId) {
+            return certificateId(Output.of(certificateId));
+        }
+
+        /**
          * @param checkDisks Specific volume(s) to check for encryption.
          * 
          * @return builder
@@ -421,6 +560,27 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
          */
         public Builder checkDisks(String... checkDisks) {
             return checkDisks(List.of(checkDisks));
+        }
+
+        /**
+         * @param cn The common name for a certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cn(@Nullable Output<String> cn) {
+            $.cn = cn;
+            return this;
+        }
+
+        /**
+         * @param cn The common name for a certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cn(String cn) {
+            return cn(Output.of(cn));
         }
 
         /**
@@ -571,6 +731,48 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param infected True if SentinelOne device is infected.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder infected(@Nullable Output<Boolean> infected) {
+            $.infected = infected;
+            return this;
+        }
+
+        /**
+         * @param infected True if SentinelOne device is infected.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder infected(Boolean infected) {
+            return infected(Output.of(infected));
+        }
+
+        /**
+         * @param isActive True if SentinelOne device is active.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isActive(@Nullable Output<Boolean> isActive) {
+            $.isActive = isActive;
+            return this;
+        }
+
+        /**
+         * @param isActive True if SentinelOne device is active.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isActive(Boolean isActive) {
+            return isActive(Output.of(isActive));
+        }
+
+        /**
          * @param issueCount The number of issues for kolide.
          * 
          * @return builder
@@ -589,6 +791,27 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
          */
         public Builder issueCount(String issueCount) {
             return issueCount(Output.of(issueCount));
+        }
+
+        /**
+         * @param networkStatus The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkStatus(@Nullable Output<String> networkStatus) {
+            $.networkStatus = networkStatus;
+            return this;
+        }
+
+        /**
+         * @param networkStatus The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkStatus(String networkStatus) {
+            return networkStatus(Output.of(networkStatus));
         }
 
         /**

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func GetDevices(ctx *pulumi.Context, args *GetDevicesArgs, opts ...pulumi.InvokeOption) (*GetDevicesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDevicesResult
 	err := ctx.Invoke("cloudflare:index/getDevices:getDevices", args, &rv, opts...)
 	if err != nil {

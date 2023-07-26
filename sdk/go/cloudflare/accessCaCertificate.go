@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -97,6 +98,7 @@ func NewAccessCaCertificate(ctx *pulumi.Context,
 	if args.ApplicationId == nil {
 		return nil, errors.New("invalid value for required argument 'ApplicationId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessCaCertificate
 	err := ctx.RegisterResource("cloudflare:index/accessCaCertificate:AccessCaCertificate", name, args, &resource, opts...)
 	if err != nil {

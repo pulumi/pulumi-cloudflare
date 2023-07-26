@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -140,6 +141,7 @@ func NewListItem(ctx *pulumi.Context,
 	if args.ListId == nil {
 		return nil, errors.New("invalid value for required argument 'ListId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ListItem
 	err := ctx.RegisterResource("cloudflare:index/listItem:ListItem", name, args, &resource, opts...)
 	if err != nil {

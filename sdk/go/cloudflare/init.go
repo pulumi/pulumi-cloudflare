@@ -7,6 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -146,6 +147,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Record{}
 	case "cloudflare:index/regionalHostname:RegionalHostname":
 		r = &RegionalHostname{}
+	case "cloudflare:index/regionalTieredCache:RegionalTieredCache":
+		r = &RegionalTieredCache{}
 	case "cloudflare:index/ruleset:Ruleset":
 		r = &Ruleset{}
 	case "cloudflare:index/spectrumApplication:SpectrumApplication":
@@ -241,7 +244,10 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 }
 
 func init() {
-	version, _ := PkgVersion()
+	version, err := internal.PkgVersion()
+	if err != nil {
+		version = semver.Version{Major: 1}
+	}
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/accessApplication",
@@ -555,6 +561,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/regionalHostname",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/regionalTieredCache",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

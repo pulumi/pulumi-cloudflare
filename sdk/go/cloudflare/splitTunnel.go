@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -136,6 +137,7 @@ func NewSplitTunnel(ctx *pulumi.Context,
 	if args.Tunnels == nil {
 		return nil, errors.New("invalid value for required argument 'Tunnels'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SplitTunnel
 	err := ctx.RegisterResource("cloudflare:index/splitTunnel:SplitTunnel", name, args, &resource, opts...)
 	if err != nil {
