@@ -38,7 +38,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * const config = new pulumi.Config();
- * const myOffice = config.getObject("myOffice") || [
+ * const myOffice = config.getObject<Array<string>>("myOffice") || [
  *     "192.0.2.0/24",
  *     "198.51.100.0/24",
  *     "2001:db8::/56",
