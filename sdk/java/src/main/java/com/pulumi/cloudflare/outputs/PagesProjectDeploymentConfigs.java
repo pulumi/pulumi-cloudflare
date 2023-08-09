@@ -7,6 +7,8 @@ import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsPreview;
 import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigsProduction;
 import com.pulumi.core.annotations.CustomType;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class PagesProjectDeploymentConfigs {
@@ -14,27 +16,27 @@ public final class PagesProjectDeploymentConfigs {
      * @return Configuration for preview deploys.
      * 
      */
-    private PagesProjectDeploymentConfigsPreview preview;
+    private @Nullable PagesProjectDeploymentConfigsPreview preview;
     /**
      * @return Configuration for production deploys.
      * 
      */
-    private PagesProjectDeploymentConfigsProduction production;
+    private @Nullable PagesProjectDeploymentConfigsProduction production;
 
     private PagesProjectDeploymentConfigs() {}
     /**
      * @return Configuration for preview deploys.
      * 
      */
-    public PagesProjectDeploymentConfigsPreview preview() {
-        return this.preview;
+    public Optional<PagesProjectDeploymentConfigsPreview> preview() {
+        return Optional.ofNullable(this.preview);
     }
     /**
      * @return Configuration for production deploys.
      * 
      */
-    public PagesProjectDeploymentConfigsProduction production() {
-        return this.production;
+    public Optional<PagesProjectDeploymentConfigsProduction> production() {
+        return Optional.ofNullable(this.production);
     }
 
     public static Builder builder() {
@@ -46,8 +48,8 @@ public final class PagesProjectDeploymentConfigs {
     }
     @CustomType.Builder
     public static final class Builder {
-        private PagesProjectDeploymentConfigsPreview preview;
-        private PagesProjectDeploymentConfigsProduction production;
+        private @Nullable PagesProjectDeploymentConfigsPreview preview;
+        private @Nullable PagesProjectDeploymentConfigsProduction production;
         public Builder() {}
         public Builder(PagesProjectDeploymentConfigs defaults) {
     	      Objects.requireNonNull(defaults);
@@ -56,13 +58,13 @@ public final class PagesProjectDeploymentConfigs {
         }
 
         @CustomType.Setter
-        public Builder preview(PagesProjectDeploymentConfigsPreview preview) {
-            this.preview = Objects.requireNonNull(preview);
+        public Builder preview(@Nullable PagesProjectDeploymentConfigsPreview preview) {
+            this.preview = preview;
             return this;
         }
         @CustomType.Setter
-        public Builder production(PagesProjectDeploymentConfigsProduction production) {
-            this.production = Objects.requireNonNull(production);
+        public Builder production(@Nullable PagesProjectDeploymentConfigsProduction production) {
+            this.production = production;
             return this;
         }
         public PagesProjectDeploymentConfigs build() {

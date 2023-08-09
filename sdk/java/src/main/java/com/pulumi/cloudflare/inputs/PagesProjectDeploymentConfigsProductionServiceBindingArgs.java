@@ -23,14 +23,14 @@ public final class PagesProjectDeploymentConfigsProductionServiceBindingArgs ext
     }
 
     /**
-     * Name of the project. **Modifying this attribute will force creation of a new resource.**
+     * Name of the project.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the project. **Modifying this attribute will force creation of a new resource.**
+     * @return Name of the project.
      * 
      */
     public Output<String> name() {
@@ -80,7 +80,7 @@ public final class PagesProjectDeploymentConfigsProductionServiceBindingArgs ext
         }
 
         /**
-         * @param name Name of the project. **Modifying this attribute will force creation of a new resource.**
+         * @param name Name of the project.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class PagesProjectDeploymentConfigsProductionServiceBindingArgs ext
         }
 
         /**
-         * @param name Name of the project. **Modifying this attribute will force creation of a new resource.**
+         * @param name Name of the project.
          * 
          * @return builder
          * 

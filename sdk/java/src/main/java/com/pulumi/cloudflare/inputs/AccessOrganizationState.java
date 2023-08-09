@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.AccessOrganizationCustomPageArgs;
 import com.pulumi.cloudflare.inputs.AccessOrganizationLoginDesignArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -61,6 +62,21 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
      */
     public Optional<Output<Boolean>> autoRedirectToIdentity() {
         return Optional.ofNullable(this.autoRedirectToIdentity);
+    }
+
+    /**
+     * Custom pages for your Zero Trust organization.
+     * 
+     */
+    @Import(name="customPages")
+    private @Nullable Output<List<AccessOrganizationCustomPageArgs>> customPages;
+
+    /**
+     * @return Custom pages for your Zero Trust organization.
+     * 
+     */
+    public Optional<Output<List<AccessOrganizationCustomPageArgs>>> customPages() {
+        return Optional.ofNullable(this.customPages);
     }
 
     /**
@@ -151,6 +167,7 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
         this.accountId = $.accountId;
         this.authDomain = $.authDomain;
         this.autoRedirectToIdentity = $.autoRedirectToIdentity;
+        this.customPages = $.customPages;
         this.isUiReadOnly = $.isUiReadOnly;
         this.loginDesigns = $.loginDesigns;
         this.name = $.name;
@@ -238,6 +255,37 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
          */
         public Builder autoRedirectToIdentity(Boolean autoRedirectToIdentity) {
             return autoRedirectToIdentity(Output.of(autoRedirectToIdentity));
+        }
+
+        /**
+         * @param customPages Custom pages for your Zero Trust organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customPages(@Nullable Output<List<AccessOrganizationCustomPageArgs>> customPages) {
+            $.customPages = customPages;
+            return this;
+        }
+
+        /**
+         * @param customPages Custom pages for your Zero Trust organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customPages(List<AccessOrganizationCustomPageArgs> customPages) {
+            return customPages(Output.of(customPages));
+        }
+
+        /**
+         * @param customPages Custom pages for your Zero Trust organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customPages(AccessOrganizationCustomPageArgs... customPages) {
+            return customPages(List.of(customPages));
         }
 
         /**

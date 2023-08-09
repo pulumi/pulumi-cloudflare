@@ -14,29 +14,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LoadBalancerSessionAffinityAttribute {
+    /**
+     * @return Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. Defaults to `0`.
+     * 
+     */
     private @Nullable Integer drainDuration;
+    /**
+     * @return Configures the HTTP header names to use when header session affinity is enabled.
+     * 
+     */
     private @Nullable List<String> headers;
+    /**
+     * @return Configures how headers are used when header session affinity is enabled. Set to true to require all headers to be present on requests in order for sessions to be created or false to require at least one header to be present. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean requireAllHeaders;
+    /**
+     * @return Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure=&#34;Never&#34;`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+     * 
+     */
     private @Nullable String samesite;
+    /**
+     * @return Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+     * 
+     */
     private @Nullable String secure;
+    /**
+     * @return Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+     * 
+     */
     private @Nullable String zeroDowntimeFailover;
 
     private LoadBalancerSessionAffinityAttribute() {}
+    /**
+     * @return Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. Defaults to `0`.
+     * 
+     */
     public Optional<Integer> drainDuration() {
         return Optional.ofNullable(this.drainDuration);
     }
+    /**
+     * @return Configures the HTTP header names to use when header session affinity is enabled.
+     * 
+     */
     public List<String> headers() {
         return this.headers == null ? List.of() : this.headers;
     }
+    /**
+     * @return Configures how headers are used when header session affinity is enabled. Set to true to require all headers to be present on requests in order for sessions to be created or false to require at least one header to be present. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> requireAllHeaders() {
         return Optional.ofNullable(this.requireAllHeaders);
     }
+    /**
+     * @return Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure=&#34;Never&#34;`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+     * 
+     */
     public Optional<String> samesite() {
         return Optional.ofNullable(this.samesite);
     }
+    /**
+     * @return Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+     * 
+     */
     public Optional<String> secure() {
         return Optional.ofNullable(this.secure);
     }
+    /**
+     * @return Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+     * 
+     */
     public Optional<String> zeroDowntimeFailover() {
         return Optional.ofNullable(this.zeroDowntimeFailover);
     }

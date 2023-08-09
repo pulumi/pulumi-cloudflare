@@ -120,6 +120,21 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicator that protocol detection is enabled.
+     * 
+     */
+    @Import(name="protocolDetectionEnabled")
+    private @Nullable Output<Boolean> protocolDetectionEnabled;
+
+    /**
+     * @return Indicator that protocol detection is enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> protocolDetectionEnabled() {
+        return Optional.ofNullable(this.protocolDetectionEnabled);
+    }
+
+    /**
      * Configuration block for specifying which protocols are proxied.
      * 
      */
@@ -174,6 +189,7 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
         this.fips = $.fips;
         this.logging = $.logging;
         this.payloadLog = $.payloadLog;
+        this.protocolDetectionEnabled = $.protocolDetectionEnabled;
         this.proxy = $.proxy;
         this.tlsDecryptEnabled = $.tlsDecryptEnabled;
         this.urlBrowserIsolationEnabled = $.urlBrowserIsolationEnabled;
@@ -330,6 +346,27 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder payloadLog(TeamsAccountPayloadLogArgs payloadLog) {
             return payloadLog(Output.of(payloadLog));
+        }
+
+        /**
+         * @param protocolDetectionEnabled Indicator that protocol detection is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protocolDetectionEnabled(@Nullable Output<Boolean> protocolDetectionEnabled) {
+            $.protocolDetectionEnabled = protocolDetectionEnabled;
+            return this;
+        }
+
+        /**
+         * @param protocolDetectionEnabled Indicator that protocol detection is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protocolDetectionEnabled(Boolean protocolDetectionEnabled) {
+            return protocolDetectionEnabled(Output.of(protocolDetectionEnabled));
         }
 
         /**

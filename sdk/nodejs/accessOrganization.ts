@@ -79,6 +79,10 @@ export class AccessOrganization extends pulumi.CustomResource {
      */
     public readonly autoRedirectToIdentity!: pulumi.Output<boolean | undefined>;
     /**
+     * Custom pages for your Zero Trust organization.
+     */
+    public readonly customPages!: pulumi.Output<outputs.AccessOrganizationCustomPage[] | undefined>;
+    /**
      * When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
      */
     public readonly isUiReadOnly!: pulumi.Output<boolean | undefined>;
@@ -116,6 +120,7 @@ export class AccessOrganization extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["authDomain"] = state ? state.authDomain : undefined;
             resourceInputs["autoRedirectToIdentity"] = state ? state.autoRedirectToIdentity : undefined;
+            resourceInputs["customPages"] = state ? state.customPages : undefined;
             resourceInputs["isUiReadOnly"] = state ? state.isUiReadOnly : undefined;
             resourceInputs["loginDesigns"] = state ? state.loginDesigns : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -130,6 +135,7 @@ export class AccessOrganization extends pulumi.CustomResource {
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["authDomain"] = args ? args.authDomain : undefined;
             resourceInputs["autoRedirectToIdentity"] = args ? args.autoRedirectToIdentity : undefined;
+            resourceInputs["customPages"] = args ? args.customPages : undefined;
             resourceInputs["isUiReadOnly"] = args ? args.isUiReadOnly : undefined;
             resourceInputs["loginDesigns"] = args ? args.loginDesigns : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -158,6 +164,10 @@ export interface AccessOrganizationState {
      * When set to true, users skip the identity provider selection step during login.
      */
     autoRedirectToIdentity?: pulumi.Input<boolean>;
+    /**
+     * Custom pages for your Zero Trust organization.
+     */
+    customPages?: pulumi.Input<pulumi.Input<inputs.AccessOrganizationCustomPage>[]>;
     /**
      * When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
      */
@@ -197,6 +207,10 @@ export interface AccessOrganizationArgs {
      * When set to true, users skip the identity provider selection step during login.
      */
     autoRedirectToIdentity?: pulumi.Input<boolean>;
+    /**
+     * Custom pages for your Zero Trust organization.
+     */
+    customPages?: pulumi.Input<pulumi.Input<inputs.AccessOrganizationCustomPage>[]>;
     /**
      * When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
      */

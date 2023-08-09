@@ -202,10 +202,10 @@ type PagesProject struct {
 	// When the project was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// Configuration for deployments in a project.
-	DeploymentConfigs PagesProjectDeploymentConfigsPtrOutput `pulumi:"deploymentConfigs"`
+	DeploymentConfigs PagesProjectDeploymentConfigsOutput `pulumi:"deploymentConfigs"`
 	// A list of associated custom domains for the project.
 	Domains pulumi.StringArrayOutput `pulumi:"domains"`
-	// Name of the project. **Modifying this attribute will force creation of a new resource.**
+	// Name of the project.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the branch that is used for the production environment.
 	ProductionBranch pulumi.StringOutput `pulumi:"productionBranch"`
@@ -264,7 +264,7 @@ type pagesProjectState struct {
 	DeploymentConfigs *PagesProjectDeploymentConfigs `pulumi:"deploymentConfigs"`
 	// A list of associated custom domains for the project.
 	Domains []string `pulumi:"domains"`
-	// Name of the project. **Modifying this attribute will force creation of a new resource.**
+	// Name of the project.
 	Name *string `pulumi:"name"`
 	// The name of the branch that is used for the production environment.
 	ProductionBranch *string `pulumi:"productionBranch"`
@@ -285,7 +285,7 @@ type PagesProjectState struct {
 	DeploymentConfigs PagesProjectDeploymentConfigsPtrInput
 	// A list of associated custom domains for the project.
 	Domains pulumi.StringArrayInput
-	// Name of the project. **Modifying this attribute will force creation of a new resource.**
+	// Name of the project.
 	Name pulumi.StringPtrInput
 	// The name of the branch that is used for the production environment.
 	ProductionBranch pulumi.StringPtrInput
@@ -306,7 +306,7 @@ type pagesProjectArgs struct {
 	BuildConfig *PagesProjectBuildConfig `pulumi:"buildConfig"`
 	// Configuration for deployments in a project.
 	DeploymentConfigs *PagesProjectDeploymentConfigs `pulumi:"deploymentConfigs"`
-	// Name of the project. **Modifying this attribute will force creation of a new resource.**
+	// Name of the project.
 	Name string `pulumi:"name"`
 	// The name of the branch that is used for the production environment.
 	ProductionBranch string `pulumi:"productionBranch"`
@@ -322,7 +322,7 @@ type PagesProjectArgs struct {
 	BuildConfig PagesProjectBuildConfigPtrInput
 	// Configuration for deployments in a project.
 	DeploymentConfigs PagesProjectDeploymentConfigsPtrInput
-	// Name of the project. **Modifying this attribute will force creation of a new resource.**
+	// Name of the project.
 	Name pulumi.StringInput
 	// The name of the branch that is used for the production environment.
 	ProductionBranch pulumi.StringInput
@@ -433,8 +433,8 @@ func (o PagesProjectOutput) CreatedOn() pulumi.StringOutput {
 }
 
 // Configuration for deployments in a project.
-func (o PagesProjectOutput) DeploymentConfigs() PagesProjectDeploymentConfigsPtrOutput {
-	return o.ApplyT(func(v *PagesProject) PagesProjectDeploymentConfigsPtrOutput { return v.DeploymentConfigs }).(PagesProjectDeploymentConfigsPtrOutput)
+func (o PagesProjectOutput) DeploymentConfigs() PagesProjectDeploymentConfigsOutput {
+	return o.ApplyT(func(v *PagesProject) PagesProjectDeploymentConfigsOutput { return v.DeploymentConfigs }).(PagesProjectDeploymentConfigsOutput)
 }
 
 // A list of associated custom domains for the project.
@@ -442,7 +442,7 @@ func (o PagesProjectOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PagesProject) pulumi.StringArrayOutput { return v.Domains }).(pulumi.StringArrayOutput)
 }
 
-// Name of the project. **Modifying this attribute will force creation of a new resource.**
+// Name of the project.
 func (o PagesProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

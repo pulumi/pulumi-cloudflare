@@ -231,9 +231,9 @@ class AccessGroup(pulumi.CustomResource):
             includes=[cloudflare.AccessGroupIncludeArgs(
                 emails=["test@example.com"],
             )],
-            requires={
-                "ips": [var["office_ip"]],
-            })
+            requires=[cloudflare.AccessGroupRequireArgs(
+                ips=[var["office_ip"]],
+            )])
         # Allow members of an Azure Group. The ID is the group UUID (id) in Azure.
         example_cloudflare_index_access_group_access_group = cloudflare.AccessGroup("exampleCloudflareIndex/accessGroupAccessGroup",
             account_id="f037e56e89293a057740de681ac9abbe",
@@ -295,9 +295,9 @@ class AccessGroup(pulumi.CustomResource):
             includes=[cloudflare.AccessGroupIncludeArgs(
                 emails=["test@example.com"],
             )],
-            requires={
-                "ips": [var["office_ip"]],
-            })
+            requires=[cloudflare.AccessGroupRequireArgs(
+                ips=[var["office_ip"]],
+            )])
         # Allow members of an Azure Group. The ID is the group UUID (id) in Azure.
         example_cloudflare_index_access_group_access_group = cloudflare.AccessGroup("exampleCloudflareIndex/accessGroupAccessGroup",
             account_id="f037e56e89293a057740de681ac9abbe",

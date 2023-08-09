@@ -233,14 +233,14 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="deploymentConfigs", refs={PagesProjectDeploymentConfigs.class}, tree="[0]")
-    private Output</* @Nullable */ PagesProjectDeploymentConfigs> deploymentConfigs;
+    private Output<PagesProjectDeploymentConfigs> deploymentConfigs;
 
     /**
      * @return Configuration for deployments in a project.
      * 
      */
-    public Output<Optional<PagesProjectDeploymentConfigs>> deploymentConfigs() {
-        return Codegen.optional(this.deploymentConfigs);
+    public Output<PagesProjectDeploymentConfigs> deploymentConfigs() {
+        return this.deploymentConfigs;
     }
     /**
      * A list of associated custom domains for the project.
@@ -257,14 +257,14 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
         return this.domains;
     }
     /**
-     * Name of the project. **Modifying this attribute will force creation of a new resource.**
+     * Name of the project.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the project. **Modifying this attribute will force creation of a new resource.**
+     * @return Name of the project.
      * 
      */
     public Output<String> name() {

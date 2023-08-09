@@ -48,14 +48,14 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
      * 
      */
     @Import(name="kind")
     private @Nullable Output<String> kind;
 
     /**
-     * @return Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+     * @return Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
      * 
      */
     public Optional<Output<String>> kind() {
@@ -108,21 +108,6 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of entitlement that is shareable between entities.
-     * 
-     */
-    @Import(name="shareableEntitlementName")
-    private @Nullable Output<String> shareableEntitlementName;
-
-    /**
-     * @return Name of entitlement that is shareable between entities.
-     * 
-     */
-    public Optional<Output<String>> shareableEntitlementName() {
-        return Optional.ofNullable(this.shareableEntitlementName);
-    }
-
-    /**
      * The zone identifier to target for the resource.
      * 
      */
@@ -146,7 +131,6 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.phase = $.phase;
         this.rules = $.rules;
-        this.shareableEntitlementName = $.shareableEntitlementName;
         this.zoneId = $.zoneId;
     }
 
@@ -211,7 +195,7 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kind Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+         * @param kind Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
          * 
          * @return builder
          * 
@@ -222,7 +206,7 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kind Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+         * @param kind Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
          * 
          * @return builder
          * 
@@ -302,27 +286,6 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder rules(RulesetRuleArgs... rules) {
             return rules(List.of(rules));
-        }
-
-        /**
-         * @param shareableEntitlementName Name of entitlement that is shareable between entities.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder shareableEntitlementName(@Nullable Output<String> shareableEntitlementName) {
-            $.shareableEntitlementName = shareableEntitlementName;
-            return this;
-        }
-
-        /**
-         * @param shareableEntitlementName Name of entitlement that is shareable between entities.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder shareableEntitlementName(String shareableEntitlementName) {
-            return shareableEntitlementName(Output.of(shareableEntitlementName));
         }
 
         /**

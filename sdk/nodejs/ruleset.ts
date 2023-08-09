@@ -66,7 +66,7 @@ export class Ruleset extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
      */
     public readonly kind!: pulumi.Output<string>;
     /**
@@ -81,10 +81,6 @@ export class Ruleset extends pulumi.CustomResource {
      * List of rules to apply to the ruleset.
      */
     public readonly rules!: pulumi.Output<outputs.RulesetRule[] | undefined>;
-    /**
-     * Name of entitlement that is shareable between entities.
-     */
-    public readonly shareableEntitlementName!: pulumi.Output<string | undefined>;
     /**
      * The zone identifier to target for the resource.
      */
@@ -109,7 +105,6 @@ export class Ruleset extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["phase"] = state ? state.phase : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["shareableEntitlementName"] = state ? state.shareableEntitlementName : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as RulesetArgs | undefined;
@@ -128,7 +123,6 @@ export class Ruleset extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["phase"] = args ? args.phase : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["shareableEntitlementName"] = args ? args.shareableEntitlementName : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -149,7 +143,7 @@ export interface RulesetState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
      */
     kind?: pulumi.Input<string>;
     /**
@@ -164,10 +158,6 @@ export interface RulesetState {
      * List of rules to apply to the ruleset.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.RulesetRule>[]>;
-    /**
-     * Name of entitlement that is shareable between entities.
-     */
-    shareableEntitlementName?: pulumi.Input<string>;
     /**
      * The zone identifier to target for the resource.
      */
@@ -187,7 +177,7 @@ export interface RulesetArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
      */
     kind: pulumi.Input<string>;
     /**
@@ -202,10 +192,6 @@ export interface RulesetArgs {
      * List of rules to apply to the ruleset.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.RulesetRule>[]>;
-    /**
-     * Name of entitlement that is shareable between entities.
-     */
-    shareableEntitlementName?: pulumi.Input<string>;
     /**
      * The zone identifier to target for the resource.
      */

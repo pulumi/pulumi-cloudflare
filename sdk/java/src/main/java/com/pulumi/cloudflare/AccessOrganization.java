@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.AccessOrganizationArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccessOrganizationState;
+import com.pulumi.cloudflare.outputs.AccessOrganizationCustomPage;
 import com.pulumi.cloudflare.outputs.AccessOrganizationLoginDesign;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -113,6 +114,20 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> autoRedirectToIdentity() {
         return Codegen.optional(this.autoRedirectToIdentity);
+    }
+    /**
+     * Custom pages for your Zero Trust organization.
+     * 
+     */
+    @Export(name="customPages", refs={List.class,AccessOrganizationCustomPage.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<AccessOrganizationCustomPage>> customPages;
+
+    /**
+     * @return Custom pages for your Zero Trust organization.
+     * 
+     */
+    public Output<Optional<List<AccessOrganizationCustomPage>>> customPages() {
+        return Codegen.optional(this.customPages);
     }
     /**
      * When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.

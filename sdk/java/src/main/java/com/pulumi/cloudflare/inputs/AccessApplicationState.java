@@ -140,6 +140,21 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The custom pages selected for the application.
+     * 
+     */
+    @Import(name="customPages")
+    private @Nullable Output<List<String>> customPages;
+
+    /**
+     * @return The custom pages selected for the application.
+     * 
+     */
+    public Optional<Output<List<String>>> customPages() {
+        return Optional.ofNullable(this.customPages);
+    }
+
+    /**
      * The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
      * 
      */
@@ -345,6 +360,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         this.corsHeaders = $.corsHeaders;
         this.customDenyMessage = $.customDenyMessage;
         this.customDenyUrl = $.customDenyUrl;
+        this.customPages = $.customPages;
         this.domain = $.domain;
         this.enableBindingCookie = $.enableBindingCookie;
         this.httpOnlyCookieAttribute = $.httpOnlyCookieAttribute;
@@ -564,6 +580,37 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
          */
         public Builder customDenyUrl(String customDenyUrl) {
             return customDenyUrl(Output.of(customDenyUrl));
+        }
+
+        /**
+         * @param customPages The custom pages selected for the application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customPages(@Nullable Output<List<String>> customPages) {
+            $.customPages = customPages;
+            return this;
+        }
+
+        /**
+         * @param customPages The custom pages selected for the application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customPages(List<String> customPages) {
+            return customPages(Output.of(customPages));
+        }
+
+        /**
+         * @param customPages The custom pages selected for the application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customPages(String... customPages) {
+            return customPages(List.of(customPages));
         }
 
         /**

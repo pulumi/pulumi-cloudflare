@@ -89,6 +89,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
+ *             .protocolDetectionEnabled(true)
  *             .proxy(TeamsAccountProxyArgs.builder()
  *                 .rootCa(true)
  *                 .tcp(true)
@@ -200,6 +201,20 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<TeamsAccountPayloadLog>> payloadLog() {
         return Codegen.optional(this.payloadLog);
+    }
+    /**
+     * Indicator that protocol detection is enabled.
+     * 
+     */
+    @Export(name="protocolDetectionEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> protocolDetectionEnabled;
+
+    /**
+     * @return Indicator that protocol detection is enabled.
+     * 
+     */
+    public Output<Optional<Boolean>> protocolDetectionEnabled() {
+        return Codegen.optional(this.protocolDetectionEnabled);
     }
     /**
      * Configuration block for specifying which protocols are proxied.

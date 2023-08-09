@@ -8,6 +8,8 @@ import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PagesProjectDeploymentConfigsArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,30 +20,30 @@ public final class PagesProjectDeploymentConfigsArgs extends com.pulumi.resource
      * Configuration for preview deploys.
      * 
      */
-    @Import(name="preview", required=true)
-    private Output<PagesProjectDeploymentConfigsPreviewArgs> preview;
+    @Import(name="preview")
+    private @Nullable Output<PagesProjectDeploymentConfigsPreviewArgs> preview;
 
     /**
      * @return Configuration for preview deploys.
      * 
      */
-    public Output<PagesProjectDeploymentConfigsPreviewArgs> preview() {
-        return this.preview;
+    public Optional<Output<PagesProjectDeploymentConfigsPreviewArgs>> preview() {
+        return Optional.ofNullable(this.preview);
     }
 
     /**
      * Configuration for production deploys.
      * 
      */
-    @Import(name="production", required=true)
-    private Output<PagesProjectDeploymentConfigsProductionArgs> production;
+    @Import(name="production")
+    private @Nullable Output<PagesProjectDeploymentConfigsProductionArgs> production;
 
     /**
      * @return Configuration for production deploys.
      * 
      */
-    public Output<PagesProjectDeploymentConfigsProductionArgs> production() {
-        return this.production;
+    public Optional<Output<PagesProjectDeploymentConfigsProductionArgs>> production() {
+        return Optional.ofNullable(this.production);
     }
 
     private PagesProjectDeploymentConfigsArgs() {}
@@ -75,7 +77,7 @@ public final class PagesProjectDeploymentConfigsArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder preview(Output<PagesProjectDeploymentConfigsPreviewArgs> preview) {
+        public Builder preview(@Nullable Output<PagesProjectDeploymentConfigsPreviewArgs> preview) {
             $.preview = preview;
             return this;
         }
@@ -96,7 +98,7 @@ public final class PagesProjectDeploymentConfigsArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder production(Output<PagesProjectDeploymentConfigsProductionArgs> production) {
+        public Builder production(@Nullable Output<PagesProjectDeploymentConfigsProductionArgs> production) {
             $.production = production;
             return this;
         }
@@ -112,8 +114,6 @@ public final class PagesProjectDeploymentConfigsArgs extends com.pulumi.resource
         }
 
         public PagesProjectDeploymentConfigsArgs build() {
-            $.preview = Objects.requireNonNull($.preview, "expected parameter 'preview' to be non-null");
-            $.production = Objects.requireNonNull($.production, "expected parameter 'production' to be non-null");
             return $;
         }
     }

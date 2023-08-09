@@ -14,16 +14,32 @@ public final class LoadBalancerRegionPoolArgs extends com.pulumi.resources.Resou
 
     public static final LoadBalancerRegionPoolArgs Empty = new LoadBalancerRegionPoolArgs();
 
+    /**
+     * A list of pool IDs in failover priority to use in the given region.
+     * 
+     */
     @Import(name="poolIds", required=true)
     private Output<List<String>> poolIds;
 
+    /**
+     * @return A list of pool IDs in failover priority to use in the given region.
+     * 
+     */
     public Output<List<String>> poolIds() {
         return this.poolIds;
     }
 
+    /**
+     * A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
+     * 
+     */
     @Import(name="region", required=true)
     private Output<String> region;
 
+    /**
+     * @return A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
+     * 
+     */
     public Output<String> region() {
         return this.region;
     }
@@ -53,24 +69,54 @@ public final class LoadBalancerRegionPoolArgs extends com.pulumi.resources.Resou
             $ = new LoadBalancerRegionPoolArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param poolIds A list of pool IDs in failover priority to use in the given region.
+         * 
+         * @return builder
+         * 
+         */
         public Builder poolIds(Output<List<String>> poolIds) {
             $.poolIds = poolIds;
             return this;
         }
 
+        /**
+         * @param poolIds A list of pool IDs in failover priority to use in the given region.
+         * 
+         * @return builder
+         * 
+         */
         public Builder poolIds(List<String> poolIds) {
             return poolIds(Output.of(poolIds));
         }
 
+        /**
+         * @param poolIds A list of pool IDs in failover priority to use in the given region.
+         * 
+         * @return builder
+         * 
+         */
         public Builder poolIds(String... poolIds) {
             return poolIds(List.of(poolIds));
         }
 
+        /**
+         * @param region A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }

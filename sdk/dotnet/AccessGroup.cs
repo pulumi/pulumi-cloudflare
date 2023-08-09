@@ -63,12 +63,15 @@ namespace Pulumi.Cloudflare
     ///                 },
     ///             },
     ///         },
-    ///         Requires = 
+    ///         Requires = new[]
     ///         {
-    ///             { "ips", new[]
+    ///             new Cloudflare.Inputs.AccessGroupRequireArgs
     ///             {
-    ///                 @var.Office_ip,
-    ///             } },
+    ///                 Ips = new[]
+    ///                 {
+    ///                     @var.Office_ip,
+    ///                 },
+    ///             },
     ///         },
     ///     });
     /// 

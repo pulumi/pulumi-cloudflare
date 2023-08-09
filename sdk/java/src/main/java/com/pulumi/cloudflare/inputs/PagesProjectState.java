@@ -95,14 +95,14 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the project. **Modifying this attribute will force creation of a new resource.**
+     * Name of the project.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the project. **Modifying this attribute will force creation of a new resource.**
+     * @return Name of the project.
      * 
      */
     public Optional<Output<String>> name() {
@@ -302,7 +302,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the project. **Modifying this attribute will force creation of a new resource.**
+         * @param name Name of the project.
          * 
          * @return builder
          * 
@@ -313,7 +313,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the project. **Modifying this attribute will force creation of a new resource.**
+         * @param name Name of the project.
          * 
          * @return builder
          * 

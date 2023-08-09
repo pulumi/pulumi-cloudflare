@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class LoadBalancerRegionPool {
+    /**
+     * @return A list of pool IDs in failover priority to use in the given region.
+     * 
+     */
     private List<String> poolIds;
+    /**
+     * @return A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
+     * 
+     */
     private String region;
 
     private LoadBalancerRegionPool() {}
+    /**
+     * @return A list of pool IDs in failover priority to use in the given region.
+     * 
+     */
     public List<String> poolIds() {
         return this.poolIds;
     }
+    /**
+     * @return A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
+     * 
+     */
     public String region() {
         return this.region;
     }

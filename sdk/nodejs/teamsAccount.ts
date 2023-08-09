@@ -49,6 +49,7 @@ import * as utilities from "./utilities";
  *             },
  *         },
  *     },
+ *     protocolDetectionEnabled: true,
  *     proxy: {
  *         rootCa: true,
  *         tcp: true,
@@ -119,6 +120,10 @@ export class TeamsAccount extends pulumi.CustomResource {
      */
     public readonly payloadLog!: pulumi.Output<outputs.TeamsAccountPayloadLog | undefined>;
     /**
+     * Indicator that protocol detection is enabled.
+     */
+    public readonly protocolDetectionEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * Configuration block for specifying which protocols are proxied.
      */
     public readonly proxy!: pulumi.Output<outputs.TeamsAccountProxy | undefined>;
@@ -151,6 +156,7 @@ export class TeamsAccount extends pulumi.CustomResource {
             resourceInputs["fips"] = state ? state.fips : undefined;
             resourceInputs["logging"] = state ? state.logging : undefined;
             resourceInputs["payloadLog"] = state ? state.payloadLog : undefined;
+            resourceInputs["protocolDetectionEnabled"] = state ? state.protocolDetectionEnabled : undefined;
             resourceInputs["proxy"] = state ? state.proxy : undefined;
             resourceInputs["tlsDecryptEnabled"] = state ? state.tlsDecryptEnabled : undefined;
             resourceInputs["urlBrowserIsolationEnabled"] = state ? state.urlBrowserIsolationEnabled : undefined;
@@ -166,6 +172,7 @@ export class TeamsAccount extends pulumi.CustomResource {
             resourceInputs["fips"] = args ? args.fips : undefined;
             resourceInputs["logging"] = args ? args.logging : undefined;
             resourceInputs["payloadLog"] = args ? args.payloadLog : undefined;
+            resourceInputs["protocolDetectionEnabled"] = args ? args.protocolDetectionEnabled : undefined;
             resourceInputs["proxy"] = args ? args.proxy : undefined;
             resourceInputs["tlsDecryptEnabled"] = args ? args.tlsDecryptEnabled : undefined;
             resourceInputs["urlBrowserIsolationEnabled"] = args ? args.urlBrowserIsolationEnabled : undefined;
@@ -204,6 +211,10 @@ export interface TeamsAccountState {
      * Configuration for DLP Payload Logging.
      */
     payloadLog?: pulumi.Input<inputs.TeamsAccountPayloadLog>;
+    /**
+     * Indicator that protocol detection is enabled.
+     */
+    protocolDetectionEnabled?: pulumi.Input<boolean>;
     /**
      * Configuration block for specifying which protocols are proxied.
      */
@@ -247,6 +258,10 @@ export interface TeamsAccountArgs {
      * Configuration for DLP Payload Logging.
      */
     payloadLog?: pulumi.Input<inputs.TeamsAccountPayloadLog>;
+    /**
+     * Indicator that protocol detection is enabled.
+     */
+    protocolDetectionEnabled?: pulumi.Input<boolean>;
     /**
      * Configuration block for specifying which protocols are proxied.
      */

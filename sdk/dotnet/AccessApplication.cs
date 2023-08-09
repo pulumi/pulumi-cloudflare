@@ -119,6 +119,12 @@ namespace Pulumi.Cloudflare
         public Output<string?> CustomDenyUrl { get; private set; } = null!;
 
         /// <summary>
+        /// The custom pages selected for the application.
+        /// </summary>
+        [Output("customPages")]
+        public Output<ImmutableArray<string>> CustomPages { get; private set; } = null!;
+
+        /// <summary>
         /// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         /// </summary>
         [Output("domain")]
@@ -296,6 +302,18 @@ namespace Pulumi.Cloudflare
         [Input("customDenyUrl")]
         public Input<string>? CustomDenyUrl { get; set; }
 
+        [Input("customPages")]
+        private InputList<string>? _customPages;
+
+        /// <summary>
+        /// The custom pages selected for the application.
+        /// </summary>
+        public InputList<string> CustomPages
+        {
+            get => _customPages ?? (_customPages = new InputList<string>());
+            set => _customPages = value;
+        }
+
         /// <summary>
         /// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         /// </summary>
@@ -447,6 +465,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("customDenyUrl")]
         public Input<string>? CustomDenyUrl { get; set; }
+
+        [Input("customPages")]
+        private InputList<string>? _customPages;
+
+        /// <summary>
+        /// The custom pages selected for the application.
+        /// </summary>
+        public InputList<string> CustomPages
+        {
+            get => _customPages ?? (_customPages = new InputList<string>());
+            set => _customPages = value;
+        }
 
         /// <summary>
         /// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.

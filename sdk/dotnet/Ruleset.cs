@@ -48,7 +48,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+        /// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -70,12 +70,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.RulesetRule>> Rules { get; private set; } = null!;
-
-        /// <summary>
-        /// Name of entitlement that is shareable between entities.
-        /// </summary>
-        [Output("shareableEntitlementName")]
-        public Output<string?> ShareableEntitlementName { get; private set; } = null!;
 
         /// <summary>
         /// The zone identifier to target for the resource.
@@ -142,7 +136,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+        /// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
@@ -172,12 +166,6 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Name of entitlement that is shareable between entities.
-        /// </summary>
-        [Input("shareableEntitlementName")]
-        public Input<string>? ShareableEntitlementName { get; set; }
-
-        /// <summary>
         /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
@@ -204,7 +192,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+        /// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -232,12 +220,6 @@ namespace Pulumi.Cloudflare
             get => _rules ?? (_rules = new InputList<Inputs.RulesetRuleGetArgs>());
             set => _rules = value;
         }
-
-        /// <summary>
-        /// Name of entitlement that is shareable between entities.
-        /// </summary>
-        [Input("shareableEntitlementName")]
-        public Input<string>? ShareableEntitlementName { get; set; }
 
         /// <summary>
         /// The zone identifier to target for the resource.

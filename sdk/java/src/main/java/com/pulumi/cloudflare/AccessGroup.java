@@ -39,6 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.AccessGroup;
  * import com.pulumi.cloudflare.AccessGroupArgs;
  * import com.pulumi.cloudflare.inputs.AccessGroupIncludeArgs;
+ * import com.pulumi.cloudflare.inputs.AccessGroupRequireArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
