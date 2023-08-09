@@ -7,6 +7,7 @@ import typing
 # Export this package's modules as members:
 from .access_application import *
 from .access_ca_certificate import *
+from .access_custom_page import *
 from .access_group import *
 from .access_identity_provider import *
 from .access_keys_configuration import *
@@ -57,6 +58,7 @@ from .get_origin_ca_root_certificate import *
 from .get_record import *
 from .get_rulesets import *
 from .get_zone import *
+from .get_zone_cache_reserve import *
 from .get_zone_dnssec import *
 from .get_zones import *
 from .gre_tunnel import *
@@ -116,6 +118,7 @@ from .worker_script import *
 from .workers_kv import *
 from .workers_kv_namespace import *
 from .zone import *
+from .zone_cache_reserve import *
 from .zone_cache_variants import *
 from .zone_dnssec import *
 from .zone_lockdown import *
@@ -147,6 +150,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/accessCaCertificate:AccessCaCertificate": "AccessCaCertificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/accessCustomPage",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/accessCustomPage:AccessCustomPage": "AccessCustomPage"
   }
  },
  {
@@ -883,6 +894,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zone:Zone": "Zone"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zoneCacheReserve",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zoneCacheReserve:ZoneCacheReserve": "ZoneCacheReserve"
   }
  },
  {

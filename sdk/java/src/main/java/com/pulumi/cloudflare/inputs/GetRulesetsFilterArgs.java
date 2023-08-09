@@ -31,14 +31,14 @@ public final class GetRulesetsFilterArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
      * 
      */
     @Import(name="kind")
     private @Nullable Output<String> kind;
 
     /**
-     * @return Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+     * @return Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
      * 
      */
     public Optional<Output<String>> kind() {
@@ -140,7 +140,7 @@ public final class GetRulesetsFilterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param kind Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+         * @param kind Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class GetRulesetsFilterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param kind Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+         * @param kind Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
          * 
          * @return builder
          * 

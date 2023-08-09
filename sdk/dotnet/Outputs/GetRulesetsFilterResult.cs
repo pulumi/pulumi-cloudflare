@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+        /// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
         /// </summary>
         public readonly string? Kind;
         /// <summary>

@@ -224,6 +224,12 @@ class UserAgentBlockingRule(pulumi.CustomResource):
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example <zone_id>/<user_agent_blocking_rule_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['UserAgentBlockingRuleConfigurationArgs']] configuration: The configuration object for the current rule.
@@ -265,6 +271,12 @@ class UserAgentBlockingRule(pulumi.CustomResource):
             mode="challenge",
             paused=True,
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example <zone_id>/<user_agent_blocking_rule_id>
         ```
 
         :param str resource_name: The name of the resource.

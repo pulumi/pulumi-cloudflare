@@ -74,6 +74,12 @@ namespace Pulumi.Cloudflare
         public Output<bool?> AutoRedirectToIdentity { get; private set; } = null!;
 
         /// <summary>
+        /// Custom pages for your Zero Trust organization.
+        /// </summary>
+        [Output("customPages")]
+        public Output<ImmutableArray<Outputs.AccessOrganizationCustomPage>> CustomPages { get; private set; } = null!;
+
+        /// <summary>
         /// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
         /// </summary>
         [Output("isUiReadOnly")]
@@ -170,6 +176,18 @@ namespace Pulumi.Cloudflare
         [Input("autoRedirectToIdentity")]
         public Input<bool>? AutoRedirectToIdentity { get; set; }
 
+        [Input("customPages")]
+        private InputList<Inputs.AccessOrganizationCustomPageArgs>? _customPages;
+
+        /// <summary>
+        /// Custom pages for your Zero Trust organization.
+        /// </summary>
+        public InputList<Inputs.AccessOrganizationCustomPageArgs> CustomPages
+        {
+            get => _customPages ?? (_customPages = new InputList<Inputs.AccessOrganizationCustomPageArgs>());
+            set => _customPages = value;
+        }
+
         /// <summary>
         /// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
         /// </summary>
@@ -233,6 +251,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("autoRedirectToIdentity")]
         public Input<bool>? AutoRedirectToIdentity { get; set; }
+
+        [Input("customPages")]
+        private InputList<Inputs.AccessOrganizationCustomPageGetArgs>? _customPages;
+
+        /// <summary>
+        /// Custom pages for your Zero Trust organization.
+        /// </summary>
+        public InputList<Inputs.AccessOrganizationCustomPageGetArgs> CustomPages
+        {
+            get => _customPages ?? (_customPages = new InputList<Inputs.AccessOrganizationCustomPageGetArgs>());
+            set => _customPages = value;
+        }
 
         /// <summary>
         /// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.

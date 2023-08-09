@@ -67,6 +67,12 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example &lt;zone_id&gt;/&lt;user_agent_blocking_rule_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule")
 public class UserAgentBlockingRule extends com.pulumi.resources.CustomResource {

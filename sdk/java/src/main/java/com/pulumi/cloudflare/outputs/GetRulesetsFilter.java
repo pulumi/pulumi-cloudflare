@@ -17,7 +17,7 @@ public final class GetRulesetsFilter {
      */
     private @Nullable String id;
     /**
-     * @return Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+     * @return Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
      * 
      */
     private @Nullable String kind;
@@ -46,7 +46,7 @@ public final class GetRulesetsFilter {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+     * @return Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
      * 
      */
     public Optional<String> kind() {

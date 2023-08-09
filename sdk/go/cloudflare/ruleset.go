@@ -44,7 +44,7 @@ type Ruleset struct {
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Brief summary of the ruleset and its intended use.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Name of the ruleset.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -52,8 +52,6 @@ type Ruleset struct {
 	Phase pulumi.StringOutput `pulumi:"phase"`
 	// List of rules to apply to the ruleset.
 	Rules RulesetRuleArrayOutput `pulumi:"rules"`
-	// Name of entitlement that is shareable between entities.
-	ShareableEntitlementName pulumi.StringPtrOutput `pulumi:"shareableEntitlementName"`
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
@@ -101,7 +99,7 @@ type rulesetState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Brief summary of the ruleset and its intended use.
 	Description *string `pulumi:"description"`
-	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
 	Kind *string `pulumi:"kind"`
 	// Name of the ruleset.
 	Name *string `pulumi:"name"`
@@ -109,8 +107,6 @@ type rulesetState struct {
 	Phase *string `pulumi:"phase"`
 	// List of rules to apply to the ruleset.
 	Rules []RulesetRule `pulumi:"rules"`
-	// Name of entitlement that is shareable between entities.
-	ShareableEntitlementName *string `pulumi:"shareableEntitlementName"`
 	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -120,7 +116,7 @@ type RulesetState struct {
 	AccountId pulumi.StringPtrInput
 	// Brief summary of the ruleset and its intended use.
 	Description pulumi.StringPtrInput
-	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
 	Kind pulumi.StringPtrInput
 	// Name of the ruleset.
 	Name pulumi.StringPtrInput
@@ -128,8 +124,6 @@ type RulesetState struct {
 	Phase pulumi.StringPtrInput
 	// List of rules to apply to the ruleset.
 	Rules RulesetRuleArrayInput
-	// Name of entitlement that is shareable between entities.
-	ShareableEntitlementName pulumi.StringPtrInput
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
@@ -143,7 +137,7 @@ type rulesetArgs struct {
 	AccountId *string `pulumi:"accountId"`
 	// Brief summary of the ruleset and its intended use.
 	Description *string `pulumi:"description"`
-	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
 	Kind string `pulumi:"kind"`
 	// Name of the ruleset.
 	Name string `pulumi:"name"`
@@ -151,8 +145,6 @@ type rulesetArgs struct {
 	Phase string `pulumi:"phase"`
 	// List of rules to apply to the ruleset.
 	Rules []RulesetRule `pulumi:"rules"`
-	// Name of entitlement that is shareable between entities.
-	ShareableEntitlementName *string `pulumi:"shareableEntitlementName"`
 	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -163,7 +155,7 @@ type RulesetArgs struct {
 	AccountId pulumi.StringPtrInput
 	// Brief summary of the ruleset and its intended use.
 	Description pulumi.StringPtrInput
-	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
 	Kind pulumi.StringInput
 	// Name of the ruleset.
 	Name pulumi.StringInput
@@ -171,8 +163,6 @@ type RulesetArgs struct {
 	Phase pulumi.StringInput
 	// List of rules to apply to the ruleset.
 	Rules RulesetRuleArrayInput
-	// Name of entitlement that is shareable between entities.
-	ShareableEntitlementName pulumi.StringPtrInput
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
@@ -274,7 +264,7 @@ func (o RulesetOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
 func (o RulesetOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
@@ -292,11 +282,6 @@ func (o RulesetOutput) Phase() pulumi.StringOutput {
 // List of rules to apply to the ruleset.
 func (o RulesetOutput) Rules() RulesetRuleArrayOutput {
 	return o.ApplyT(func(v *Ruleset) RulesetRuleArrayOutput { return v.Rules }).(RulesetRuleArrayOutput)
-}
-
-// Name of entitlement that is shareable between entities.
-func (o RulesetOutput) ShareableEntitlementName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Ruleset) pulumi.StringPtrOutput { return v.ShareableEntitlementName }).(pulumi.StringPtrOutput)
 }
 
 // The zone identifier to target for the resource.

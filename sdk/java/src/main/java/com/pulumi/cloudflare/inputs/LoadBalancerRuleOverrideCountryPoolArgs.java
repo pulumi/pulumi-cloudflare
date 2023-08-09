@@ -14,16 +14,32 @@ public final class LoadBalancerRuleOverrideCountryPoolArgs extends com.pulumi.re
 
     public static final LoadBalancerRuleOverrideCountryPoolArgs Empty = new LoadBalancerRuleOverrideCountryPoolArgs();
 
+    /**
+     * A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+     * 
+     */
     @Import(name="country", required=true)
     private Output<String> country;
 
+    /**
+     * @return A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+     * 
+     */
     public Output<String> country() {
         return this.country;
     }
 
+    /**
+     * A list of pool IDs in failover priority to use in the given country.
+     * 
+     */
     @Import(name="poolIds", required=true)
     private Output<List<String>> poolIds;
 
+    /**
+     * @return A list of pool IDs in failover priority to use in the given country.
+     * 
+     */
     public Output<List<String>> poolIds() {
         return this.poolIds;
     }
@@ -53,24 +69,54 @@ public final class LoadBalancerRuleOverrideCountryPoolArgs extends com.pulumi.re
             $ = new LoadBalancerRuleOverrideCountryPoolArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param country A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+         * 
+         * @return builder
+         * 
+         */
         public Builder country(Output<String> country) {
             $.country = country;
             return this;
         }
 
+        /**
+         * @param country A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+         * 
+         * @return builder
+         * 
+         */
         public Builder country(String country) {
             return country(Output.of(country));
         }
 
+        /**
+         * @param poolIds A list of pool IDs in failover priority to use in the given country.
+         * 
+         * @return builder
+         * 
+         */
         public Builder poolIds(Output<List<String>> poolIds) {
             $.poolIds = poolIds;
             return this;
         }
 
+        /**
+         * @param poolIds A list of pool IDs in failover priority to use in the given country.
+         * 
+         * @return builder
+         * 
+         */
         public Builder poolIds(List<String> poolIds) {
             return poolIds(Output.of(poolIds));
         }
 
+        /**
+         * @param poolIds A list of pool IDs in failover priority to use in the given country.
+         * 
+         * @return builder
+         * 
+         */
         public Builder poolIds(String... poolIds) {
             return poolIds(List.of(poolIds));
         }

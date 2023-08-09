@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class LoadBalancerPopPool {
+    /**
+     * @return A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     * 
+     */
     private List<String> poolIds;
+    /**
+     * @return A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+     * 
+     */
     private String pop;
 
     private LoadBalancerPopPool() {}
+    /**
+     * @return A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     * 
+     */
     public List<String> poolIds() {
         return this.poolIds;
     }
+    /**
+     * @return A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+     * 
+     */
     public String pop() {
         return this.pop;
     }

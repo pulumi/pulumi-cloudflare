@@ -22,17 +22,15 @@ class RulesetArgs:
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]]] = None,
-                 shareable_entitlement_name: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Ruleset resource.
-        :param pulumi.Input[str] kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+        :param pulumi.Input[str] kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
         :param pulumi.Input[str] name: Name of the ruleset.
         :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `http_response_compression`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: Brief summary of the ruleset and its intended use.
         :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]] rules: List of rules to apply to the ruleset.
-        :param pulumi.Input[str] shareable_entitlement_name: Name of entitlement that is shareable between entities.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         pulumi.set(__self__, "kind", kind)
@@ -44,8 +42,6 @@ class RulesetArgs:
             pulumi.set(__self__, "description", description)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
-        if shareable_entitlement_name is not None:
-            pulumi.set(__self__, "shareable_entitlement_name", shareable_entitlement_name)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -53,7 +49,7 @@ class RulesetArgs:
     @pulumi.getter
     def kind(self) -> pulumi.Input[str]:
         """
-        Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+        Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
         """
         return pulumi.get(self, "kind")
 
@@ -122,18 +118,6 @@ class RulesetArgs:
         pulumi.set(self, "rules", value)
 
     @property
-    @pulumi.getter(name="shareableEntitlementName")
-    def shareable_entitlement_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of entitlement that is shareable between entities.
-        """
-        return pulumi.get(self, "shareable_entitlement_name")
-
-    @shareable_entitlement_name.setter
-    def shareable_entitlement_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "shareable_entitlement_name", value)
-
-    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -155,17 +139,15 @@ class _RulesetState:
                  name: Optional[pulumi.Input[str]] = None,
                  phase: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]]] = None,
-                 shareable_entitlement_name: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Ruleset resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: Brief summary of the ruleset and its intended use.
-        :param pulumi.Input[str] kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+        :param pulumi.Input[str] kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
         :param pulumi.Input[str] name: Name of the ruleset.
         :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `http_response_compression`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
         :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]] rules: List of rules to apply to the ruleset.
-        :param pulumi.Input[str] shareable_entitlement_name: Name of entitlement that is shareable between entities.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         if account_id is not None:
@@ -180,8 +162,6 @@ class _RulesetState:
             pulumi.set(__self__, "phase", phase)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
-        if shareable_entitlement_name is not None:
-            pulumi.set(__self__, "shareable_entitlement_name", shareable_entitlement_name)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -213,7 +193,7 @@ class _RulesetState:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+        Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
         """
         return pulumi.get(self, "kind")
 
@@ -258,18 +238,6 @@ class _RulesetState:
         pulumi.set(self, "rules", value)
 
     @property
-    @pulumi.getter(name="shareableEntitlementName")
-    def shareable_entitlement_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of entitlement that is shareable between entities.
-        """
-        return pulumi.get(self, "shareable_entitlement_name")
-
-    @shareable_entitlement_name.setter
-    def shareable_entitlement_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "shareable_entitlement_name", value)
-
-    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -293,7 +261,6 @@ class Ruleset(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  phase: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesetRuleArgs']]]]] = None,
-                 shareable_entitlement_name: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -323,11 +290,10 @@ class Ruleset(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: Brief summary of the ruleset and its intended use.
-        :param pulumi.Input[str] kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+        :param pulumi.Input[str] kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
         :param pulumi.Input[str] name: Name of the ruleset.
         :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `http_response_compression`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesetRuleArgs']]]] rules: List of rules to apply to the ruleset.
-        :param pulumi.Input[str] shareable_entitlement_name: Name of entitlement that is shareable between entities.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         ...
@@ -380,7 +346,6 @@ class Ruleset(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  phase: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesetRuleArgs']]]]] = None,
-                 shareable_entitlement_name: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -403,7 +368,6 @@ class Ruleset(pulumi.CustomResource):
                 raise TypeError("Missing required property 'phase'")
             __props__.__dict__["phase"] = phase
             __props__.__dict__["rules"] = rules
-            __props__.__dict__["shareable_entitlement_name"] = shareable_entitlement_name
             __props__.__dict__["zone_id"] = zone_id
         super(Ruleset, __self__).__init__(
             'cloudflare:index/ruleset:Ruleset',
@@ -421,7 +385,6 @@ class Ruleset(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             phase: Optional[pulumi.Input[str]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesetRuleArgs']]]]] = None,
-            shareable_entitlement_name: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Ruleset':
         """
         Get an existing Ruleset resource's state with the given name, id, and optional extra
@@ -432,11 +395,10 @@ class Ruleset(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: Brief summary of the ruleset and its intended use.
-        :param pulumi.Input[str] kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+        :param pulumi.Input[str] kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
         :param pulumi.Input[str] name: Name of the ruleset.
         :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `http_response_compression`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesetRuleArgs']]]] rules: List of rules to apply to the ruleset.
-        :param pulumi.Input[str] shareable_entitlement_name: Name of entitlement that is shareable between entities.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -449,7 +411,6 @@ class Ruleset(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["phase"] = phase
         __props__.__dict__["rules"] = rules
-        __props__.__dict__["shareable_entitlement_name"] = shareable_entitlement_name
         __props__.__dict__["zone_id"] = zone_id
         return Ruleset(resource_name, opts=opts, __props__=__props__)
 
@@ -473,7 +434,7 @@ class Ruleset(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+        Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
         """
         return pulumi.get(self, "kind")
 
@@ -500,14 +461,6 @@ class Ruleset(pulumi.CustomResource):
         List of rules to apply to the ruleset.
         """
         return pulumi.get(self, "rules")
-
-    @property
-    @pulumi.getter(name="shareableEntitlementName")
-    def shareable_entitlement_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        Name of entitlement that is shareable between entities.
-        """
-        return pulumi.get(self, "shareable_entitlement_name")
 
     @property
     @pulumi.getter(name="zoneId")

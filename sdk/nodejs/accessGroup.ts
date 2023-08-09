@@ -39,9 +39,9 @@ import * as utilities from "./utilities";
  *     includes: [{
  *         emails: ["test@example.com"],
  *     }],
- *     requires: {
+ *     requires: [{
  *         ips: [_var.office_ip],
- *     },
+ *     }],
  * });
  * // Allow members of an Azure Group. The ID is the group UUID (id) in Azure.
  * const exampleCloudflareIndex_accessGroupAccessGroup = new cloudflare.AccessGroup("exampleCloudflareIndex/accessGroupAccessGroup", {

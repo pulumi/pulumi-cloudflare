@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LoadBalancerRuleOverrideAdaptiveRouting {
+    /**
+     * @return Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean failoverAcrossPools;
 
     private LoadBalancerRuleOverrideAdaptiveRouting() {}
+    /**
+     * @return Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> failoverAcrossPools() {
         return Optional.ofNullable(this.failoverAcrossPools);
     }

@@ -59,6 +59,14 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example <zone_id>/<user_agent_blocking_rule_id>
+//
+// ```
 type UserAgentBlockingRule struct {
 	pulumi.CustomResourceState
 

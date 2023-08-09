@@ -15,6 +15,11 @@ export type AccessCaCertificate = import("./accessCaCertificate").AccessCaCertif
 export const AccessCaCertificate: typeof import("./accessCaCertificate").AccessCaCertificate = null as any;
 utilities.lazyLoad(exports, ["AccessCaCertificate"], () => require("./accessCaCertificate"));
 
+export { AccessCustomPageArgs, AccessCustomPageState } from "./accessCustomPage";
+export type AccessCustomPage = import("./accessCustomPage").AccessCustomPage;
+export const AccessCustomPage: typeof import("./accessCustomPage").AccessCustomPage = null as any;
+utilities.lazyLoad(exports, ["AccessCustomPage"], () => require("./accessCustomPage"));
+
 export { AccessGroupArgs, AccessGroupState } from "./accessGroup";
 export type AccessGroup = import("./accessGroup").AccessGroup;
 export const AccessGroup: typeof import("./accessGroup").AccessGroup = null as any;
@@ -262,6 +267,11 @@ export { GetZoneArgs, GetZoneResult, GetZoneOutputArgs } from "./getZone";
 export const getZone: typeof import("./getZone").getZone = null as any;
 export const getZoneOutput: typeof import("./getZone").getZoneOutput = null as any;
 utilities.lazyLoad(exports, ["getZone","getZoneOutput"], () => require("./getZone"));
+
+export { GetZoneCacheReserveArgs, GetZoneCacheReserveResult, GetZoneCacheReserveOutputArgs } from "./getZoneCacheReserve";
+export const getZoneCacheReserve: typeof import("./getZoneCacheReserve").getZoneCacheReserve = null as any;
+export const getZoneCacheReserveOutput: typeof import("./getZoneCacheReserve").getZoneCacheReserveOutput = null as any;
+utilities.lazyLoad(exports, ["getZoneCacheReserve","getZoneCacheReserveOutput"], () => require("./getZoneCacheReserve"));
 
 export { GetZoneDnssecArgs, GetZoneDnssecResult, GetZoneDnssecOutputArgs } from "./getZoneDnssec";
 export const getZoneDnssec: typeof import("./getZoneDnssec").getZoneDnssec = null as any;
@@ -558,6 +568,11 @@ export type Zone = import("./zone").Zone;
 export const Zone: typeof import("./zone").Zone = null as any;
 utilities.lazyLoad(exports, ["Zone"], () => require("./zone"));
 
+export { ZoneCacheReserveArgs, ZoneCacheReserveState } from "./zoneCacheReserve";
+export type ZoneCacheReserve = import("./zoneCacheReserve").ZoneCacheReserve;
+export const ZoneCacheReserve: typeof import("./zoneCacheReserve").ZoneCacheReserve = null as any;
+utilities.lazyLoad(exports, ["ZoneCacheReserve"], () => require("./zoneCacheReserve"));
+
 export { ZoneCacheVariantsArgs, ZoneCacheVariantsState } from "./zoneCacheVariants";
 export type ZoneCacheVariants = import("./zoneCacheVariants").ZoneCacheVariants;
 export const ZoneCacheVariants: typeof import("./zoneCacheVariants").ZoneCacheVariants = null as any;
@@ -596,6 +611,8 @@ const _module = {
                 return new AccessApplication(name, <any>undefined, { urn })
             case "cloudflare:index/accessCaCertificate:AccessCaCertificate":
                 return new AccessCaCertificate(name, <any>undefined, { urn })
+            case "cloudflare:index/accessCustomPage:AccessCustomPage":
+                return new AccessCustomPage(name, <any>undefined, { urn })
             case "cloudflare:index/accessGroup:AccessGroup":
                 return new AccessGroup(name, <any>undefined, { urn })
             case "cloudflare:index/accessIdentityProvider:AccessIdentityProvider":
@@ -780,6 +797,8 @@ const _module = {
                 return new WorkersKvNamespace(name, <any>undefined, { urn })
             case "cloudflare:index/zone:Zone":
                 return new Zone(name, <any>undefined, { urn })
+            case "cloudflare:index/zoneCacheReserve:ZoneCacheReserve":
+                return new ZoneCacheReserve(name, <any>undefined, { urn })
             case "cloudflare:index/zoneCacheVariants:ZoneCacheVariants":
                 return new ZoneCacheVariants(name, <any>undefined, { urn })
             case "cloudflare:index/zoneDnssec:ZoneDnssec":
@@ -795,6 +814,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessApplication", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessCaCertificate", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/accessCustomPage", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessGroup", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessIdentityProvider", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessKeysConfiguration", _module)
@@ -887,6 +907,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/workerScript", _modul
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKv", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKvNamespace", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zone", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zoneCacheReserve", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zoneCacheVariants", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zoneDnssec", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zoneLockdown", _module)

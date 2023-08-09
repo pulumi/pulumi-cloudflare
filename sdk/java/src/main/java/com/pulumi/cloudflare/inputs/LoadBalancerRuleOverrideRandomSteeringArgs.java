@@ -17,16 +17,32 @@ public final class LoadBalancerRuleOverrideRandomSteeringArgs extends com.pulumi
 
     public static final LoadBalancerRuleOverrideRandomSteeringArgs Empty = new LoadBalancerRuleOverrideRandomSteeringArgs();
 
+    /**
+     * The default weight for pools in the load balancer that are not specified in the `pool_weights` map.
+     * 
+     */
     @Import(name="defaultWeight")
     private @Nullable Output<Double> defaultWeight;
 
+    /**
+     * @return The default weight for pools in the load balancer that are not specified in the `pool_weights` map.
+     * 
+     */
     public Optional<Output<Double>> defaultWeight() {
         return Optional.ofNullable(this.defaultWeight);
     }
 
+    /**
+     * A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
+     * 
+     */
     @Import(name="poolWeights")
     private @Nullable Output<Map<String,Double>> poolWeights;
 
+    /**
+     * @return A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
+     * 
+     */
     public Optional<Output<Map<String,Double>>> poolWeights() {
         return Optional.ofNullable(this.poolWeights);
     }
@@ -56,20 +72,44 @@ public final class LoadBalancerRuleOverrideRandomSteeringArgs extends com.pulumi
             $ = new LoadBalancerRuleOverrideRandomSteeringArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param defaultWeight The default weight for pools in the load balancer that are not specified in the `pool_weights` map.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultWeight(@Nullable Output<Double> defaultWeight) {
             $.defaultWeight = defaultWeight;
             return this;
         }
 
+        /**
+         * @param defaultWeight The default weight for pools in the load balancer that are not specified in the `pool_weights` map.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultWeight(Double defaultWeight) {
             return defaultWeight(Output.of(defaultWeight));
         }
 
+        /**
+         * @param poolWeights A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
+         * 
+         * @return builder
+         * 
+         */
         public Builder poolWeights(@Nullable Output<Map<String,Double>> poolWeights) {
             $.poolWeights = poolWeights;
             return this;
         }
 
+        /**
+         * @param poolWeights A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
+         * 
+         * @return builder
+         * 
+         */
         public Builder poolWeights(Map<String,Double> poolWeights) {
             return poolWeights(Output.of(poolWeights));
         }

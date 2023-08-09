@@ -50,6 +50,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example &lt;zone_id&gt;/&lt;user_agent_blocking_rule_id&gt;
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule")]
     public partial class UserAgentBlockingRule : global::Pulumi.CustomResource

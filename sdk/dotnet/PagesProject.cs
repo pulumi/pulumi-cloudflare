@@ -234,7 +234,7 @@ namespace Pulumi.Cloudflare
         /// Configuration for deployments in a project.
         /// </summary>
         [Output("deploymentConfigs")]
-        public Output<Outputs.PagesProjectDeploymentConfigs?> DeploymentConfigs { get; private set; } = null!;
+        public Output<Outputs.PagesProjectDeploymentConfigs> DeploymentConfigs { get; private set; } = null!;
 
         /// <summary>
         /// A list of associated custom domains for the project.
@@ -243,7 +243,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> Domains { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the project. **Modifying this attribute will force creation of a new resource.**
+        /// Name of the project.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -331,7 +331,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.PagesProjectDeploymentConfigsArgs>? DeploymentConfigs { get; set; }
 
         /// <summary>
-        /// Name of the project. **Modifying this attribute will force creation of a new resource.**
+        /// Name of the project.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -393,7 +393,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Name of the project. **Modifying this attribute will force creation of a new resource.**
+        /// Name of the project.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

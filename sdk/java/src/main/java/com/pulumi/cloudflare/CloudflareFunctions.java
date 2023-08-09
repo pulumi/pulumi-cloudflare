@@ -27,6 +27,8 @@ import com.pulumi.cloudflare.inputs.GetRecordPlainArgs;
 import com.pulumi.cloudflare.inputs.GetRulesetsArgs;
 import com.pulumi.cloudflare.inputs.GetRulesetsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZoneArgs;
+import com.pulumi.cloudflare.inputs.GetZoneCacheReserveArgs;
+import com.pulumi.cloudflare.inputs.GetZoneCacheReservePlainArgs;
 import com.pulumi.cloudflare.inputs.GetZoneDnssecArgs;
 import com.pulumi.cloudflare.inputs.GetZoneDnssecPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZonePlainArgs;
@@ -45,6 +47,7 @@ import com.pulumi.cloudflare.outputs.GetLoadBalancerPoolsResult;
 import com.pulumi.cloudflare.outputs.GetOriginCaRootCertificateResult;
 import com.pulumi.cloudflare.outputs.GetRecordResult;
 import com.pulumi.cloudflare.outputs.GetRulesetsResult;
+import com.pulumi.cloudflare.outputs.GetZoneCacheReserveResult;
 import com.pulumi.cloudflare.outputs.GetZoneDnssecResult;
 import com.pulumi.cloudflare.outputs.GetZoneResult;
 import com.pulumi.cloudflare.outputs.GetZonesResult;
@@ -2517,6 +2520,158 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetZoneResult> getZonePlain(GetZonePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getZone:getZone", TypeShape.of(GetZoneResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a Cloudflare data source to look up Cache Reserve
+     * status for a given zone.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZoneCacheReserveArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getZoneCacheReserve(GetZoneCacheReserveArgs.builder()
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetZoneCacheReserveResult> getZoneCacheReserve(GetZoneCacheReserveArgs args) {
+        return getZoneCacheReserve(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a Cloudflare data source to look up Cache Reserve
+     * status for a given zone.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZoneCacheReserveArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getZoneCacheReserve(GetZoneCacheReserveArgs.builder()
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetZoneCacheReserveResult> getZoneCacheReservePlain(GetZoneCacheReservePlainArgs args) {
+        return getZoneCacheReservePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a Cloudflare data source to look up Cache Reserve
+     * status for a given zone.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZoneCacheReserveArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getZoneCacheReserve(GetZoneCacheReserveArgs.builder()
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetZoneCacheReserveResult> getZoneCacheReserve(GetZoneCacheReserveArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZoneCacheReserve:getZoneCacheReserve", TypeShape.of(GetZoneCacheReserveResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a Cloudflare data source to look up Cache Reserve
+     * status for a given zone.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZoneCacheReserveArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getZoneCacheReserve(GetZoneCacheReserveArgs.builder()
+     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetZoneCacheReserveResult> getZoneCacheReservePlain(GetZoneCacheReservePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZoneCacheReserve:getZoneCacheReserve", TypeShape.of(GetZoneCacheReserveResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to look up Zone DNSSEC settings.

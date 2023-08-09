@@ -62,6 +62,7 @@ import (
 //						},
 //					},
 //				},
+//				ProtocolDetectionEnabled: pulumi.Bool(true),
 //				Proxy: &cloudflare.TeamsAccountProxyArgs{
 //					RootCa: pulumi.Bool(true),
 //					Tcp:    pulumi.Bool(true),
@@ -102,6 +103,8 @@ type TeamsAccount struct {
 	Logging TeamsAccountLoggingPtrOutput `pulumi:"logging"`
 	// Configuration for DLP Payload Logging.
 	PayloadLog TeamsAccountPayloadLogPtrOutput `pulumi:"payloadLog"`
+	// Indicator that protocol detection is enabled.
+	ProtocolDetectionEnabled pulumi.BoolPtrOutput `pulumi:"protocolDetectionEnabled"`
 	// Configuration block for specifying which protocols are proxied.
 	Proxy TeamsAccountProxyPtrOutput `pulumi:"proxy"`
 	// Indicator that decryption of TLS traffic is enabled.
@@ -156,6 +159,8 @@ type teamsAccountState struct {
 	Logging *TeamsAccountLogging `pulumi:"logging"`
 	// Configuration for DLP Payload Logging.
 	PayloadLog *TeamsAccountPayloadLog `pulumi:"payloadLog"`
+	// Indicator that protocol detection is enabled.
+	ProtocolDetectionEnabled *bool `pulumi:"protocolDetectionEnabled"`
 	// Configuration block for specifying which protocols are proxied.
 	Proxy *TeamsAccountProxy `pulumi:"proxy"`
 	// Indicator that decryption of TLS traffic is enabled.
@@ -178,6 +183,8 @@ type TeamsAccountState struct {
 	Logging TeamsAccountLoggingPtrInput
 	// Configuration for DLP Payload Logging.
 	PayloadLog TeamsAccountPayloadLogPtrInput
+	// Indicator that protocol detection is enabled.
+	ProtocolDetectionEnabled pulumi.BoolPtrInput
 	// Configuration block for specifying which protocols are proxied.
 	Proxy TeamsAccountProxyPtrInput
 	// Indicator that decryption of TLS traffic is enabled.
@@ -204,6 +211,8 @@ type teamsAccountArgs struct {
 	Logging *TeamsAccountLogging `pulumi:"logging"`
 	// Configuration for DLP Payload Logging.
 	PayloadLog *TeamsAccountPayloadLog `pulumi:"payloadLog"`
+	// Indicator that protocol detection is enabled.
+	ProtocolDetectionEnabled *bool `pulumi:"protocolDetectionEnabled"`
 	// Configuration block for specifying which protocols are proxied.
 	Proxy *TeamsAccountProxy `pulumi:"proxy"`
 	// Indicator that decryption of TLS traffic is enabled.
@@ -227,6 +236,8 @@ type TeamsAccountArgs struct {
 	Logging TeamsAccountLoggingPtrInput
 	// Configuration for DLP Payload Logging.
 	PayloadLog TeamsAccountPayloadLogPtrInput
+	// Indicator that protocol detection is enabled.
+	ProtocolDetectionEnabled pulumi.BoolPtrInput
 	// Configuration block for specifying which protocols are proxied.
 	Proxy TeamsAccountProxyPtrInput
 	// Indicator that decryption of TLS traffic is enabled.
@@ -354,6 +365,11 @@ func (o TeamsAccountOutput) Logging() TeamsAccountLoggingPtrOutput {
 // Configuration for DLP Payload Logging.
 func (o TeamsAccountOutput) PayloadLog() TeamsAccountPayloadLogPtrOutput {
 	return o.ApplyT(func(v *TeamsAccount) TeamsAccountPayloadLogPtrOutput { return v.PayloadLog }).(TeamsAccountPayloadLogPtrOutput)
+}
+
+// Indicator that protocol detection is enabled.
+func (o TeamsAccountOutput) ProtocolDetectionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccount) pulumi.BoolPtrOutput { return v.ProtocolDetectionEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Configuration block for specifying which protocols are proxied.

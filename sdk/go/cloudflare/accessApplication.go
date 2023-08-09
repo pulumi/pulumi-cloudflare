@@ -92,6 +92,8 @@ type AccessApplication struct {
 	CustomDenyMessage pulumi.StringPtrOutput `pulumi:"customDenyMessage"`
 	// Option that redirects to a custom URL when a user is denied access to the application.
 	CustomDenyUrl pulumi.StringPtrOutput `pulumi:"customDenyUrl"`
+	// The custom pages selected for the application.
+	CustomPages pulumi.StringArrayOutput `pulumi:"customPages"`
 	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
@@ -169,6 +171,8 @@ type accessApplicationState struct {
 	CustomDenyMessage *string `pulumi:"customDenyMessage"`
 	// Option that redirects to a custom URL when a user is denied access to the application.
 	CustomDenyUrl *string `pulumi:"customDenyUrl"`
+	// The custom pages selected for the application.
+	CustomPages []string `pulumi:"customPages"`
 	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
 	Domain *string `pulumi:"domain"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
@@ -214,6 +218,8 @@ type AccessApplicationState struct {
 	CustomDenyMessage pulumi.StringPtrInput
 	// Option that redirects to a custom URL when a user is denied access to the application.
 	CustomDenyUrl pulumi.StringPtrInput
+	// The custom pages selected for the application.
+	CustomPages pulumi.StringArrayInput
 	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
 	Domain pulumi.StringPtrInput
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
@@ -261,6 +267,8 @@ type accessApplicationArgs struct {
 	CustomDenyMessage *string `pulumi:"customDenyMessage"`
 	// Option that redirects to a custom URL when a user is denied access to the application.
 	CustomDenyUrl *string `pulumi:"customDenyUrl"`
+	// The custom pages selected for the application.
+	CustomPages []string `pulumi:"customPages"`
 	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
 	Domain *string `pulumi:"domain"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
@@ -305,6 +313,8 @@ type AccessApplicationArgs struct {
 	CustomDenyMessage pulumi.StringPtrInput
 	// Option that redirects to a custom URL when a user is denied access to the application.
 	CustomDenyUrl pulumi.StringPtrInput
+	// The custom pages selected for the application.
+	CustomPages pulumi.StringArrayInput
 	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
 	Domain pulumi.StringPtrInput
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
@@ -458,6 +468,11 @@ func (o AccessApplicationOutput) CustomDenyMessage() pulumi.StringPtrOutput {
 // Option that redirects to a custom URL when a user is denied access to the application.
 func (o AccessApplicationOutput) CustomDenyUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.CustomDenyUrl }).(pulumi.StringPtrOutput)
+}
+
+// The custom pages selected for the application.
+func (o AccessApplicationOutput) CustomPages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringArrayOutput { return v.CustomPages }).(pulumi.StringArrayOutput)
 }
 
 // The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.

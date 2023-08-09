@@ -3305,6 +3305,112 @@ func (o AccessIdentityProviderScimConfigArrayOutput) Index(i pulumi.IntInput) Ac
 	}).(AccessIdentityProviderScimConfigOutput)
 }
 
+type AccessOrganizationCustomPage struct {
+	// The id of the forbidden page.
+	Forbidden *string `pulumi:"forbidden"`
+	// The id of the identity denied page.
+	IdentityDenied *string `pulumi:"identityDenied"`
+}
+
+// AccessOrganizationCustomPageInput is an input type that accepts AccessOrganizationCustomPageArgs and AccessOrganizationCustomPageOutput values.
+// You can construct a concrete instance of `AccessOrganizationCustomPageInput` via:
+//
+//	AccessOrganizationCustomPageArgs{...}
+type AccessOrganizationCustomPageInput interface {
+	pulumi.Input
+
+	ToAccessOrganizationCustomPageOutput() AccessOrganizationCustomPageOutput
+	ToAccessOrganizationCustomPageOutputWithContext(context.Context) AccessOrganizationCustomPageOutput
+}
+
+type AccessOrganizationCustomPageArgs struct {
+	// The id of the forbidden page.
+	Forbidden pulumi.StringPtrInput `pulumi:"forbidden"`
+	// The id of the identity denied page.
+	IdentityDenied pulumi.StringPtrInput `pulumi:"identityDenied"`
+}
+
+func (AccessOrganizationCustomPageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessOrganizationCustomPage)(nil)).Elem()
+}
+
+func (i AccessOrganizationCustomPageArgs) ToAccessOrganizationCustomPageOutput() AccessOrganizationCustomPageOutput {
+	return i.ToAccessOrganizationCustomPageOutputWithContext(context.Background())
+}
+
+func (i AccessOrganizationCustomPageArgs) ToAccessOrganizationCustomPageOutputWithContext(ctx context.Context) AccessOrganizationCustomPageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessOrganizationCustomPageOutput)
+}
+
+// AccessOrganizationCustomPageArrayInput is an input type that accepts AccessOrganizationCustomPageArray and AccessOrganizationCustomPageArrayOutput values.
+// You can construct a concrete instance of `AccessOrganizationCustomPageArrayInput` via:
+//
+//	AccessOrganizationCustomPageArray{ AccessOrganizationCustomPageArgs{...} }
+type AccessOrganizationCustomPageArrayInput interface {
+	pulumi.Input
+
+	ToAccessOrganizationCustomPageArrayOutput() AccessOrganizationCustomPageArrayOutput
+	ToAccessOrganizationCustomPageArrayOutputWithContext(context.Context) AccessOrganizationCustomPageArrayOutput
+}
+
+type AccessOrganizationCustomPageArray []AccessOrganizationCustomPageInput
+
+func (AccessOrganizationCustomPageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessOrganizationCustomPage)(nil)).Elem()
+}
+
+func (i AccessOrganizationCustomPageArray) ToAccessOrganizationCustomPageArrayOutput() AccessOrganizationCustomPageArrayOutput {
+	return i.ToAccessOrganizationCustomPageArrayOutputWithContext(context.Background())
+}
+
+func (i AccessOrganizationCustomPageArray) ToAccessOrganizationCustomPageArrayOutputWithContext(ctx context.Context) AccessOrganizationCustomPageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessOrganizationCustomPageArrayOutput)
+}
+
+type AccessOrganizationCustomPageOutput struct{ *pulumi.OutputState }
+
+func (AccessOrganizationCustomPageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessOrganizationCustomPage)(nil)).Elem()
+}
+
+func (o AccessOrganizationCustomPageOutput) ToAccessOrganizationCustomPageOutput() AccessOrganizationCustomPageOutput {
+	return o
+}
+
+func (o AccessOrganizationCustomPageOutput) ToAccessOrganizationCustomPageOutputWithContext(ctx context.Context) AccessOrganizationCustomPageOutput {
+	return o
+}
+
+// The id of the forbidden page.
+func (o AccessOrganizationCustomPageOutput) Forbidden() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessOrganizationCustomPage) *string { return v.Forbidden }).(pulumi.StringPtrOutput)
+}
+
+// The id of the identity denied page.
+func (o AccessOrganizationCustomPageOutput) IdentityDenied() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessOrganizationCustomPage) *string { return v.IdentityDenied }).(pulumi.StringPtrOutput)
+}
+
+type AccessOrganizationCustomPageArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessOrganizationCustomPageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessOrganizationCustomPage)(nil)).Elem()
+}
+
+func (o AccessOrganizationCustomPageArrayOutput) ToAccessOrganizationCustomPageArrayOutput() AccessOrganizationCustomPageArrayOutput {
+	return o
+}
+
+func (o AccessOrganizationCustomPageArrayOutput) ToAccessOrganizationCustomPageArrayOutputWithContext(ctx context.Context) AccessOrganizationCustomPageArrayOutput {
+	return o
+}
+
+func (o AccessOrganizationCustomPageArrayOutput) Index(i pulumi.IntInput) AccessOrganizationCustomPageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessOrganizationCustomPage {
+		return vs[0].([]AccessOrganizationCustomPage)[vs[1].(int)]
+	}).(AccessOrganizationCustomPageOutput)
+}
+
 type AccessOrganizationLoginDesign struct {
 	// The background color on the login page.
 	BackgroundColor *string `pulumi:"backgroundColor"`
@@ -10722,6 +10828,7 @@ func (o ListItemValueRedirectArrayOutput) Index(i pulumi.IntInput) ListItemValue
 }
 
 type LoadBalancerAdaptiveRouting struct {
+	// Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
 	FailoverAcrossPools *bool `pulumi:"failoverAcrossPools"`
 }
 
@@ -10737,6 +10844,7 @@ type LoadBalancerAdaptiveRoutingInput interface {
 }
 
 type LoadBalancerAdaptiveRoutingArgs struct {
+	// Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
 	FailoverAcrossPools pulumi.BoolPtrInput `pulumi:"failoverAcrossPools"`
 }
 
@@ -10791,6 +10899,7 @@ func (o LoadBalancerAdaptiveRoutingOutput) ToLoadBalancerAdaptiveRoutingOutputWi
 	return o
 }
 
+// Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
 func (o LoadBalancerAdaptiveRoutingOutput) FailoverAcrossPools() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LoadBalancerAdaptiveRouting) *bool { return v.FailoverAcrossPools }).(pulumi.BoolPtrOutput)
 }
@@ -10816,7 +10925,9 @@ func (o LoadBalancerAdaptiveRoutingArrayOutput) Index(i pulumi.IntInput) LoadBal
 }
 
 type LoadBalancerCountryPool struct {
-	Country string   `pulumi:"country"`
+	// A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+	Country string `pulumi:"country"`
+	// A list of pool IDs in failover priority to use in the given country.
 	PoolIds []string `pulumi:"poolIds"`
 }
 
@@ -10832,7 +10943,9 @@ type LoadBalancerCountryPoolInput interface {
 }
 
 type LoadBalancerCountryPoolArgs struct {
-	Country pulumi.StringInput      `pulumi:"country"`
+	// A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+	Country pulumi.StringInput `pulumi:"country"`
+	// A list of pool IDs in failover priority to use in the given country.
 	PoolIds pulumi.StringArrayInput `pulumi:"poolIds"`
 }
 
@@ -10887,10 +11000,12 @@ func (o LoadBalancerCountryPoolOutput) ToLoadBalancerCountryPoolOutputWithContex
 	return o
 }
 
+// A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
 func (o LoadBalancerCountryPoolOutput) Country() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerCountryPool) string { return v.Country }).(pulumi.StringOutput)
 }
 
+// A list of pool IDs in failover priority to use in the given country.
 func (o LoadBalancerCountryPoolOutput) PoolIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LoadBalancerCountryPool) []string { return v.PoolIds }).(pulumi.StringArrayOutput)
 }
@@ -10916,7 +11031,9 @@ func (o LoadBalancerCountryPoolArrayOutput) Index(i pulumi.IntInput) LoadBalance
 }
 
 type LoadBalancerLocationStrategy struct {
-	Mode      *string `pulumi:"mode"`
+	// Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolverIp` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolverIp`. Defaults to `pop`.
+	Mode *string `pulumi:"mode"`
+	// Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
 	PreferEcs *string `pulumi:"preferEcs"`
 }
 
@@ -10932,7 +11049,9 @@ type LoadBalancerLocationStrategyInput interface {
 }
 
 type LoadBalancerLocationStrategyArgs struct {
-	Mode      pulumi.StringPtrInput `pulumi:"mode"`
+	// Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolverIp` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolverIp`. Defaults to `pop`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
 	PreferEcs pulumi.StringPtrInput `pulumi:"preferEcs"`
 }
 
@@ -10987,10 +11106,12 @@ func (o LoadBalancerLocationStrategyOutput) ToLoadBalancerLocationStrategyOutput
 	return o
 }
 
+// Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolverIp` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolverIp`. Defaults to `pop`.
 func (o LoadBalancerLocationStrategyOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerLocationStrategy) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
+// Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
 func (o LoadBalancerLocationStrategyOutput) PreferEcs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerLocationStrategy) *string { return v.PreferEcs }).(pulumi.StringPtrOutput)
 }
@@ -11576,8 +11697,10 @@ func (o LoadBalancerPoolOriginSteeringArrayOutput) Index(i pulumi.IntInput) Load
 }
 
 type LoadBalancerPopPool struct {
+	// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
 	PoolIds []string `pulumi:"poolIds"`
-	Pop     string   `pulumi:"pop"`
+	// A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+	Pop string `pulumi:"pop"`
 }
 
 // LoadBalancerPopPoolInput is an input type that accepts LoadBalancerPopPoolArgs and LoadBalancerPopPoolOutput values.
@@ -11592,8 +11715,10 @@ type LoadBalancerPopPoolInput interface {
 }
 
 type LoadBalancerPopPoolArgs struct {
+	// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
 	PoolIds pulumi.StringArrayInput `pulumi:"poolIds"`
-	Pop     pulumi.StringInput      `pulumi:"pop"`
+	// A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+	Pop pulumi.StringInput `pulumi:"pop"`
 }
 
 func (LoadBalancerPopPoolArgs) ElementType() reflect.Type {
@@ -11647,10 +11772,12 @@ func (o LoadBalancerPopPoolOutput) ToLoadBalancerPopPoolOutputWithContext(ctx co
 	return o
 }
 
+// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
 func (o LoadBalancerPopPoolOutput) PoolIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LoadBalancerPopPool) []string { return v.PoolIds }).(pulumi.StringArrayOutput)
 }
 
+// A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
 func (o LoadBalancerPopPoolOutput) Pop() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerPopPool) string { return v.Pop }).(pulumi.StringOutput)
 }
@@ -11676,8 +11803,10 @@ func (o LoadBalancerPopPoolArrayOutput) Index(i pulumi.IntInput) LoadBalancerPop
 }
 
 type LoadBalancerRandomSteering struct {
-	DefaultWeight *float64           `pulumi:"defaultWeight"`
-	PoolWeights   map[string]float64 `pulumi:"poolWeights"`
+	// The default weight for pools in the load balancer that are not specified in the `poolWeights` map.
+	DefaultWeight *float64 `pulumi:"defaultWeight"`
+	// A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
+	PoolWeights map[string]float64 `pulumi:"poolWeights"`
 }
 
 // LoadBalancerRandomSteeringInput is an input type that accepts LoadBalancerRandomSteeringArgs and LoadBalancerRandomSteeringOutput values.
@@ -11692,8 +11821,10 @@ type LoadBalancerRandomSteeringInput interface {
 }
 
 type LoadBalancerRandomSteeringArgs struct {
+	// The default weight for pools in the load balancer that are not specified in the `poolWeights` map.
 	DefaultWeight pulumi.Float64PtrInput `pulumi:"defaultWeight"`
-	PoolWeights   pulumi.Float64MapInput `pulumi:"poolWeights"`
+	// A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
+	PoolWeights pulumi.Float64MapInput `pulumi:"poolWeights"`
 }
 
 func (LoadBalancerRandomSteeringArgs) ElementType() reflect.Type {
@@ -11747,10 +11878,12 @@ func (o LoadBalancerRandomSteeringOutput) ToLoadBalancerRandomSteeringOutputWith
 	return o
 }
 
+// The default weight for pools in the load balancer that are not specified in the `poolWeights` map.
 func (o LoadBalancerRandomSteeringOutput) DefaultWeight() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LoadBalancerRandomSteering) *float64 { return v.DefaultWeight }).(pulumi.Float64PtrOutput)
 }
 
+// A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
 func (o LoadBalancerRandomSteeringOutput) PoolWeights() pulumi.Float64MapOutput {
 	return o.ApplyT(func(v LoadBalancerRandomSteering) map[string]float64 { return v.PoolWeights }).(pulumi.Float64MapOutput)
 }
@@ -11776,8 +11909,10 @@ func (o LoadBalancerRandomSteeringArrayOutput) Index(i pulumi.IntInput) LoadBala
 }
 
 type LoadBalancerRegionPool struct {
+	// A list of pool IDs in failover priority to use in the given region.
 	PoolIds []string `pulumi:"poolIds"`
-	Region  string   `pulumi:"region"`
+	// A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
+	Region string `pulumi:"region"`
 }
 
 // LoadBalancerRegionPoolInput is an input type that accepts LoadBalancerRegionPoolArgs and LoadBalancerRegionPoolOutput values.
@@ -11792,8 +11927,10 @@ type LoadBalancerRegionPoolInput interface {
 }
 
 type LoadBalancerRegionPoolArgs struct {
+	// A list of pool IDs in failover priority to use in the given region.
 	PoolIds pulumi.StringArrayInput `pulumi:"poolIds"`
-	Region  pulumi.StringInput      `pulumi:"region"`
+	// A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
+	Region pulumi.StringInput `pulumi:"region"`
 }
 
 func (LoadBalancerRegionPoolArgs) ElementType() reflect.Type {
@@ -11847,10 +11984,12 @@ func (o LoadBalancerRegionPoolOutput) ToLoadBalancerRegionPoolOutputWithContext(
 	return o
 }
 
+// A list of pool IDs in failover priority to use in the given region.
 func (o LoadBalancerRegionPoolOutput) PoolIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LoadBalancerRegionPool) []string { return v.PoolIds }).(pulumi.StringArrayOutput)
 }
 
+// A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
 func (o LoadBalancerRegionPoolOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerRegionPool) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -11876,13 +12015,20 @@ func (o LoadBalancerRegionPoolArrayOutput) Index(i pulumi.IntInput) LoadBalancer
 }
 
 type LoadBalancerRule struct {
-	Condition     *string                        `pulumi:"condition"`
-	Disabled      *bool                          `pulumi:"disabled"`
+	// The statement to evaluate to determine if this rule's effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+	Condition *string `pulumi:"condition"`
+	// A disabled rule will not be executed.
+	Disabled *bool `pulumi:"disabled"`
+	// Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: `overrides` or `fixedResponse` must be set.
 	FixedResponse *LoadBalancerRuleFixedResponse `pulumi:"fixedResponse"`
-	Name          string                         `pulumi:"name"`
-	Overrides     []LoadBalancerRuleOverride     `pulumi:"overrides"`
-	Priority      *int                           `pulumi:"priority"`
-	Terminates    *bool                          `pulumi:"terminates"`
+	// Human readable name for this rule.
+	Name string `pulumi:"name"`
+	// The load balancer settings to alter if this rule's `condition` is true. Note: `overrides` or `fixedResponse` must be set.
+	Overrides []LoadBalancerRuleOverride `pulumi:"overrides"`
+	// Priority used when determining the order of rule execution. Lower values are executed first. If not provided, the list order will be used.
+	Priority *int `pulumi:"priority"`
+	// Terminates indicates that if this rule is true no further rules should be executed. Note: setting a `fixedResponse` forces this field to `true`.
+	Terminates *bool `pulumi:"terminates"`
 }
 
 // LoadBalancerRuleInput is an input type that accepts LoadBalancerRuleArgs and LoadBalancerRuleOutput values.
@@ -11897,13 +12043,20 @@ type LoadBalancerRuleInput interface {
 }
 
 type LoadBalancerRuleArgs struct {
-	Condition     pulumi.StringPtrInput                 `pulumi:"condition"`
-	Disabled      pulumi.BoolPtrInput                   `pulumi:"disabled"`
+	// The statement to evaluate to determine if this rule's effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
+	// A disabled rule will not be executed.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: `overrides` or `fixedResponse` must be set.
 	FixedResponse LoadBalancerRuleFixedResponsePtrInput `pulumi:"fixedResponse"`
-	Name          pulumi.StringInput                    `pulumi:"name"`
-	Overrides     LoadBalancerRuleOverrideArrayInput    `pulumi:"overrides"`
-	Priority      pulumi.IntPtrInput                    `pulumi:"priority"`
-	Terminates    pulumi.BoolPtrInput                   `pulumi:"terminates"`
+	// Human readable name for this rule.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The load balancer settings to alter if this rule's `condition` is true. Note: `overrides` or `fixedResponse` must be set.
+	Overrides LoadBalancerRuleOverrideArrayInput `pulumi:"overrides"`
+	// Priority used when determining the order of rule execution. Lower values are executed first. If not provided, the list order will be used.
+	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// Terminates indicates that if this rule is true no further rules should be executed. Note: setting a `fixedResponse` forces this field to `true`.
+	Terminates pulumi.BoolPtrInput `pulumi:"terminates"`
 }
 
 func (LoadBalancerRuleArgs) ElementType() reflect.Type {
@@ -11957,30 +12110,37 @@ func (o LoadBalancerRuleOutput) ToLoadBalancerRuleOutputWithContext(ctx context.
 	return o
 }
 
+// The statement to evaluate to determine if this rule's effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
 func (o LoadBalancerRuleOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerRule) *string { return v.Condition }).(pulumi.StringPtrOutput)
 }
 
+// A disabled rule will not be executed.
 func (o LoadBalancerRuleOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LoadBalancerRule) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
+// Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: `overrides` or `fixedResponse` must be set.
 func (o LoadBalancerRuleOutput) FixedResponse() LoadBalancerRuleFixedResponsePtrOutput {
 	return o.ApplyT(func(v LoadBalancerRule) *LoadBalancerRuleFixedResponse { return v.FixedResponse }).(LoadBalancerRuleFixedResponsePtrOutput)
 }
 
+// Human readable name for this rule.
 func (o LoadBalancerRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerRule) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The load balancer settings to alter if this rule's `condition` is true. Note: `overrides` or `fixedResponse` must be set.
 func (o LoadBalancerRuleOutput) Overrides() LoadBalancerRuleOverrideArrayOutput {
 	return o.ApplyT(func(v LoadBalancerRule) []LoadBalancerRuleOverride { return v.Overrides }).(LoadBalancerRuleOverrideArrayOutput)
 }
 
+// Priority used when determining the order of rule execution. Lower values are executed first. If not provided, the list order will be used.
 func (o LoadBalancerRuleOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LoadBalancerRule) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
+// Terminates indicates that if this rule is true no further rules should be executed. Note: setting a `fixedResponse` forces this field to `true`.
 func (o LoadBalancerRuleOutput) Terminates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LoadBalancerRule) *bool { return v.Terminates }).(pulumi.BoolPtrOutput)
 }
@@ -12184,19 +12344,30 @@ func (o LoadBalancerRuleFixedResponsePtrOutput) StatusCode() pulumi.IntPtrOutput
 }
 
 type LoadBalancerRuleOverride struct {
-	AdaptiveRoutings          []LoadBalancerRuleOverrideAdaptiveRouting          `pulumi:"adaptiveRoutings"`
-	CountryPools              []LoadBalancerRuleOverrideCountryPool              `pulumi:"countryPools"`
-	DefaultPools              []string                                           `pulumi:"defaultPools"`
-	FallbackPool              *string                                            `pulumi:"fallbackPool"`
-	LocationStrategies        []LoadBalancerRuleOverrideLocationStrategy         `pulumi:"locationStrategies"`
-	PopPools                  []LoadBalancerRuleOverridePopPool                  `pulumi:"popPools"`
-	RandomSteerings           []LoadBalancerRuleOverrideRandomSteering           `pulumi:"randomSteerings"`
-	RegionPools               []LoadBalancerRuleOverrideRegionPool               `pulumi:"regionPools"`
-	SessionAffinity           *string                                            `pulumi:"sessionAffinity"`
+	// Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+	AdaptiveRoutings []LoadBalancerRuleOverrideAdaptiveRouting `pulumi:"adaptiveRoutings"`
+	// A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
+	CountryPools []LoadBalancerRuleOverrideCountryPool `pulumi:"countryPools"`
+	DefaultPools []string                              `pulumi:"defaultPools"`
+	FallbackPool *string                               `pulumi:"fallbackPool"`
+	// Controls location-based steering for non-proxied requests.
+	LocationStrategies []LoadBalancerRuleOverrideLocationStrategy `pulumi:"locationStrategies"`
+	// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+	PopPools []LoadBalancerRuleOverridePopPool `pulumi:"popPools"`
+	// Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="leastOutstandingRequests"`, pool weights are used to scale each pool's outstanding requests.
+	RandomSteerings []LoadBalancerRuleOverrideRandomSteering `pulumi:"randomSteerings"`
+	// A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
+	RegionPools []LoadBalancerRuleOverrideRegionPool `pulumi:"regionPools"`
+	// Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ipCookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ipCookie`, `header`. Defaults to `none`.
+	SessionAffinity *string `pulumi:"sessionAffinity"`
+	// Configure attributes for session affinity.
 	SessionAffinityAttributes []LoadBalancerRuleOverrideSessionAffinityAttribute `pulumi:"sessionAffinityAttributes"`
-	SessionAffinityTtl        *int                                               `pulumi:"sessionAffinityTtl"`
-	SteeringPolicy            *string                                            `pulumi:"steeringPolicy"`
-	Ttl                       *int                                               `pulumi:"ttl"`
+	// Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
+	SessionAffinityTtl *int `pulumi:"sessionAffinityTtl"`
+	// The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `leastOutstandingRequests` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `leastOutstandingRequests`, `""` Defaults to `""`.
+	SteeringPolicy *string `pulumi:"steeringPolicy"`
+	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+	Ttl *int `pulumi:"ttl"`
 }
 
 // LoadBalancerRuleOverrideInput is an input type that accepts LoadBalancerRuleOverrideArgs and LoadBalancerRuleOverrideOutput values.
@@ -12211,19 +12382,30 @@ type LoadBalancerRuleOverrideInput interface {
 }
 
 type LoadBalancerRuleOverrideArgs struct {
-	AdaptiveRoutings          LoadBalancerRuleOverrideAdaptiveRoutingArrayInput          `pulumi:"adaptiveRoutings"`
-	CountryPools              LoadBalancerRuleOverrideCountryPoolArrayInput              `pulumi:"countryPools"`
-	DefaultPools              pulumi.StringArrayInput                                    `pulumi:"defaultPools"`
-	FallbackPool              pulumi.StringPtrInput                                      `pulumi:"fallbackPool"`
-	LocationStrategies        LoadBalancerRuleOverrideLocationStrategyArrayInput         `pulumi:"locationStrategies"`
-	PopPools                  LoadBalancerRuleOverridePopPoolArrayInput                  `pulumi:"popPools"`
-	RandomSteerings           LoadBalancerRuleOverrideRandomSteeringArrayInput           `pulumi:"randomSteerings"`
-	RegionPools               LoadBalancerRuleOverrideRegionPoolArrayInput               `pulumi:"regionPools"`
-	SessionAffinity           pulumi.StringPtrInput                                      `pulumi:"sessionAffinity"`
+	// Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+	AdaptiveRoutings LoadBalancerRuleOverrideAdaptiveRoutingArrayInput `pulumi:"adaptiveRoutings"`
+	// A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
+	CountryPools LoadBalancerRuleOverrideCountryPoolArrayInput `pulumi:"countryPools"`
+	DefaultPools pulumi.StringArrayInput                       `pulumi:"defaultPools"`
+	FallbackPool pulumi.StringPtrInput                         `pulumi:"fallbackPool"`
+	// Controls location-based steering for non-proxied requests.
+	LocationStrategies LoadBalancerRuleOverrideLocationStrategyArrayInput `pulumi:"locationStrategies"`
+	// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+	PopPools LoadBalancerRuleOverridePopPoolArrayInput `pulumi:"popPools"`
+	// Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="leastOutstandingRequests"`, pool weights are used to scale each pool's outstanding requests.
+	RandomSteerings LoadBalancerRuleOverrideRandomSteeringArrayInput `pulumi:"randomSteerings"`
+	// A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
+	RegionPools LoadBalancerRuleOverrideRegionPoolArrayInput `pulumi:"regionPools"`
+	// Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ipCookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ipCookie`, `header`. Defaults to `none`.
+	SessionAffinity pulumi.StringPtrInput `pulumi:"sessionAffinity"`
+	// Configure attributes for session affinity.
 	SessionAffinityAttributes LoadBalancerRuleOverrideSessionAffinityAttributeArrayInput `pulumi:"sessionAffinityAttributes"`
-	SessionAffinityTtl        pulumi.IntPtrInput                                         `pulumi:"sessionAffinityTtl"`
-	SteeringPolicy            pulumi.StringPtrInput                                      `pulumi:"steeringPolicy"`
-	Ttl                       pulumi.IntPtrInput                                         `pulumi:"ttl"`
+	// Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
+	SessionAffinityTtl pulumi.IntPtrInput `pulumi:"sessionAffinityTtl"`
+	// The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `leastOutstandingRequests` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `leastOutstandingRequests`, `""` Defaults to `""`.
+	SteeringPolicy pulumi.StringPtrInput `pulumi:"steeringPolicy"`
+	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+	Ttl pulumi.IntPtrInput `pulumi:"ttl"`
 }
 
 func (LoadBalancerRuleOverrideArgs) ElementType() reflect.Type {
@@ -12277,10 +12459,12 @@ func (o LoadBalancerRuleOverrideOutput) ToLoadBalancerRuleOverrideOutputWithCont
 	return o
 }
 
+// Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
 func (o LoadBalancerRuleOverrideOutput) AdaptiveRoutings() LoadBalancerRuleOverrideAdaptiveRoutingArrayOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverride) []LoadBalancerRuleOverrideAdaptiveRouting { return v.AdaptiveRoutings }).(LoadBalancerRuleOverrideAdaptiveRoutingArrayOutput)
 }
 
+// A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
 func (o LoadBalancerRuleOverrideOutput) CountryPools() LoadBalancerRuleOverrideCountryPoolArrayOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverride) []LoadBalancerRuleOverrideCountryPool { return v.CountryPools }).(LoadBalancerRuleOverrideCountryPoolArrayOutput)
 }
@@ -12293,42 +12477,51 @@ func (o LoadBalancerRuleOverrideOutput) FallbackPool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverride) *string { return v.FallbackPool }).(pulumi.StringPtrOutput)
 }
 
+// Controls location-based steering for non-proxied requests.
 func (o LoadBalancerRuleOverrideOutput) LocationStrategies() LoadBalancerRuleOverrideLocationStrategyArrayOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverride) []LoadBalancerRuleOverrideLocationStrategy {
 		return v.LocationStrategies
 	}).(LoadBalancerRuleOverrideLocationStrategyArrayOutput)
 }
 
+// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
 func (o LoadBalancerRuleOverrideOutput) PopPools() LoadBalancerRuleOverridePopPoolArrayOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverride) []LoadBalancerRuleOverridePopPool { return v.PopPools }).(LoadBalancerRuleOverridePopPoolArrayOutput)
 }
 
+// Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="leastOutstandingRequests"`, pool weights are used to scale each pool's outstanding requests.
 func (o LoadBalancerRuleOverrideOutput) RandomSteerings() LoadBalancerRuleOverrideRandomSteeringArrayOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverride) []LoadBalancerRuleOverrideRandomSteering { return v.RandomSteerings }).(LoadBalancerRuleOverrideRandomSteeringArrayOutput)
 }
 
+// A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
 func (o LoadBalancerRuleOverrideOutput) RegionPools() LoadBalancerRuleOverrideRegionPoolArrayOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverride) []LoadBalancerRuleOverrideRegionPool { return v.RegionPools }).(LoadBalancerRuleOverrideRegionPoolArrayOutput)
 }
 
+// Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ipCookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ipCookie`, `header`. Defaults to `none`.
 func (o LoadBalancerRuleOverrideOutput) SessionAffinity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverride) *string { return v.SessionAffinity }).(pulumi.StringPtrOutput)
 }
 
+// Configure attributes for session affinity.
 func (o LoadBalancerRuleOverrideOutput) SessionAffinityAttributes() LoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverride) []LoadBalancerRuleOverrideSessionAffinityAttribute {
 		return v.SessionAffinityAttributes
 	}).(LoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput)
 }
 
+// Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
 func (o LoadBalancerRuleOverrideOutput) SessionAffinityTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverride) *int { return v.SessionAffinityTtl }).(pulumi.IntPtrOutput)
 }
 
+// The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `leastOutstandingRequests` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `leastOutstandingRequests`, `""` Defaults to `""`.
 func (o LoadBalancerRuleOverrideOutput) SteeringPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverride) *string { return v.SteeringPolicy }).(pulumi.StringPtrOutput)
 }
 
+// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
 func (o LoadBalancerRuleOverrideOutput) Ttl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverride) *int { return v.Ttl }).(pulumi.IntPtrOutput)
 }
@@ -12354,6 +12547,7 @@ func (o LoadBalancerRuleOverrideArrayOutput) Index(i pulumi.IntInput) LoadBalanc
 }
 
 type LoadBalancerRuleOverrideAdaptiveRouting struct {
+	// Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
 	FailoverAcrossPools *bool `pulumi:"failoverAcrossPools"`
 }
 
@@ -12369,6 +12563,7 @@ type LoadBalancerRuleOverrideAdaptiveRoutingInput interface {
 }
 
 type LoadBalancerRuleOverrideAdaptiveRoutingArgs struct {
+	// Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
 	FailoverAcrossPools pulumi.BoolPtrInput `pulumi:"failoverAcrossPools"`
 }
 
@@ -12423,6 +12618,7 @@ func (o LoadBalancerRuleOverrideAdaptiveRoutingOutput) ToLoadBalancerRuleOverrid
 	return o
 }
 
+// Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
 func (o LoadBalancerRuleOverrideAdaptiveRoutingOutput) FailoverAcrossPools() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverrideAdaptiveRouting) *bool { return v.FailoverAcrossPools }).(pulumi.BoolPtrOutput)
 }
@@ -12448,7 +12644,9 @@ func (o LoadBalancerRuleOverrideAdaptiveRoutingArrayOutput) Index(i pulumi.IntIn
 }
 
 type LoadBalancerRuleOverrideCountryPool struct {
-	Country string   `pulumi:"country"`
+	// A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+	Country string `pulumi:"country"`
+	// A list of pool IDs in failover priority to use in the given country.
 	PoolIds []string `pulumi:"poolIds"`
 }
 
@@ -12464,7 +12662,9 @@ type LoadBalancerRuleOverrideCountryPoolInput interface {
 }
 
 type LoadBalancerRuleOverrideCountryPoolArgs struct {
-	Country pulumi.StringInput      `pulumi:"country"`
+	// A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+	Country pulumi.StringInput `pulumi:"country"`
+	// A list of pool IDs in failover priority to use in the given country.
 	PoolIds pulumi.StringArrayInput `pulumi:"poolIds"`
 }
 
@@ -12519,10 +12719,12 @@ func (o LoadBalancerRuleOverrideCountryPoolOutput) ToLoadBalancerRuleOverrideCou
 	return o
 }
 
+// A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
 func (o LoadBalancerRuleOverrideCountryPoolOutput) Country() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverrideCountryPool) string { return v.Country }).(pulumi.StringOutput)
 }
 
+// A list of pool IDs in failover priority to use in the given country.
 func (o LoadBalancerRuleOverrideCountryPoolOutput) PoolIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverrideCountryPool) []string { return v.PoolIds }).(pulumi.StringArrayOutput)
 }
@@ -12548,7 +12750,9 @@ func (o LoadBalancerRuleOverrideCountryPoolArrayOutput) Index(i pulumi.IntInput)
 }
 
 type LoadBalancerRuleOverrideLocationStrategy struct {
-	Mode      *string `pulumi:"mode"`
+	// Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolverIp` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolverIp`. Defaults to `pop`.
+	Mode *string `pulumi:"mode"`
+	// Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
 	PreferEcs *string `pulumi:"preferEcs"`
 }
 
@@ -12564,7 +12768,9 @@ type LoadBalancerRuleOverrideLocationStrategyInput interface {
 }
 
 type LoadBalancerRuleOverrideLocationStrategyArgs struct {
-	Mode      pulumi.StringPtrInput `pulumi:"mode"`
+	// Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolverIp` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolverIp`. Defaults to `pop`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
 	PreferEcs pulumi.StringPtrInput `pulumi:"preferEcs"`
 }
 
@@ -12619,10 +12825,12 @@ func (o LoadBalancerRuleOverrideLocationStrategyOutput) ToLoadBalancerRuleOverri
 	return o
 }
 
+// Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolverIp` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolverIp`. Defaults to `pop`.
 func (o LoadBalancerRuleOverrideLocationStrategyOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverrideLocationStrategy) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
+// Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
 func (o LoadBalancerRuleOverrideLocationStrategyOutput) PreferEcs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverrideLocationStrategy) *string { return v.PreferEcs }).(pulumi.StringPtrOutput)
 }
@@ -12648,8 +12856,10 @@ func (o LoadBalancerRuleOverrideLocationStrategyArrayOutput) Index(i pulumi.IntI
 }
 
 type LoadBalancerRuleOverridePopPool struct {
+	// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
 	PoolIds []string `pulumi:"poolIds"`
-	Pop     string   `pulumi:"pop"`
+	// A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+	Pop string `pulumi:"pop"`
 }
 
 // LoadBalancerRuleOverridePopPoolInput is an input type that accepts LoadBalancerRuleOverridePopPoolArgs and LoadBalancerRuleOverridePopPoolOutput values.
@@ -12664,8 +12874,10 @@ type LoadBalancerRuleOverridePopPoolInput interface {
 }
 
 type LoadBalancerRuleOverridePopPoolArgs struct {
+	// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
 	PoolIds pulumi.StringArrayInput `pulumi:"poolIds"`
-	Pop     pulumi.StringInput      `pulumi:"pop"`
+	// A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+	Pop pulumi.StringInput `pulumi:"pop"`
 }
 
 func (LoadBalancerRuleOverridePopPoolArgs) ElementType() reflect.Type {
@@ -12719,10 +12931,12 @@ func (o LoadBalancerRuleOverridePopPoolOutput) ToLoadBalancerRuleOverridePopPool
 	return o
 }
 
+// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
 func (o LoadBalancerRuleOverridePopPoolOutput) PoolIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverridePopPool) []string { return v.PoolIds }).(pulumi.StringArrayOutput)
 }
 
+// A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
 func (o LoadBalancerRuleOverridePopPoolOutput) Pop() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverridePopPool) string { return v.Pop }).(pulumi.StringOutput)
 }
@@ -12748,8 +12962,10 @@ func (o LoadBalancerRuleOverridePopPoolArrayOutput) Index(i pulumi.IntInput) Loa
 }
 
 type LoadBalancerRuleOverrideRandomSteering struct {
-	DefaultWeight *float64           `pulumi:"defaultWeight"`
-	PoolWeights   map[string]float64 `pulumi:"poolWeights"`
+	// The default weight for pools in the load balancer that are not specified in the `poolWeights` map.
+	DefaultWeight *float64 `pulumi:"defaultWeight"`
+	// A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
+	PoolWeights map[string]float64 `pulumi:"poolWeights"`
 }
 
 // LoadBalancerRuleOverrideRandomSteeringInput is an input type that accepts LoadBalancerRuleOverrideRandomSteeringArgs and LoadBalancerRuleOverrideRandomSteeringOutput values.
@@ -12764,8 +12980,10 @@ type LoadBalancerRuleOverrideRandomSteeringInput interface {
 }
 
 type LoadBalancerRuleOverrideRandomSteeringArgs struct {
+	// The default weight for pools in the load balancer that are not specified in the `poolWeights` map.
 	DefaultWeight pulumi.Float64PtrInput `pulumi:"defaultWeight"`
-	PoolWeights   pulumi.Float64MapInput `pulumi:"poolWeights"`
+	// A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
+	PoolWeights pulumi.Float64MapInput `pulumi:"poolWeights"`
 }
 
 func (LoadBalancerRuleOverrideRandomSteeringArgs) ElementType() reflect.Type {
@@ -12819,10 +13037,12 @@ func (o LoadBalancerRuleOverrideRandomSteeringOutput) ToLoadBalancerRuleOverride
 	return o
 }
 
+// The default weight for pools in the load balancer that are not specified in the `poolWeights` map.
 func (o LoadBalancerRuleOverrideRandomSteeringOutput) DefaultWeight() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverrideRandomSteering) *float64 { return v.DefaultWeight }).(pulumi.Float64PtrOutput)
 }
 
+// A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
 func (o LoadBalancerRuleOverrideRandomSteeringOutput) PoolWeights() pulumi.Float64MapOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverrideRandomSteering) map[string]float64 { return v.PoolWeights }).(pulumi.Float64MapOutput)
 }
@@ -12848,8 +13068,10 @@ func (o LoadBalancerRuleOverrideRandomSteeringArrayOutput) Index(i pulumi.IntInp
 }
 
 type LoadBalancerRuleOverrideRegionPool struct {
+	// A list of pool IDs in failover priority to use in the given region.
 	PoolIds []string `pulumi:"poolIds"`
-	Region  string   `pulumi:"region"`
+	// A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
+	Region string `pulumi:"region"`
 }
 
 // LoadBalancerRuleOverrideRegionPoolInput is an input type that accepts LoadBalancerRuleOverrideRegionPoolArgs and LoadBalancerRuleOverrideRegionPoolOutput values.
@@ -12864,8 +13086,10 @@ type LoadBalancerRuleOverrideRegionPoolInput interface {
 }
 
 type LoadBalancerRuleOverrideRegionPoolArgs struct {
+	// A list of pool IDs in failover priority to use in the given region.
 	PoolIds pulumi.StringArrayInput `pulumi:"poolIds"`
-	Region  pulumi.StringInput      `pulumi:"region"`
+	// A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
+	Region pulumi.StringInput `pulumi:"region"`
 }
 
 func (LoadBalancerRuleOverrideRegionPoolArgs) ElementType() reflect.Type {
@@ -12919,10 +13143,12 @@ func (o LoadBalancerRuleOverrideRegionPoolOutput) ToLoadBalancerRuleOverrideRegi
 	return o
 }
 
+// A list of pool IDs in failover priority to use in the given region.
 func (o LoadBalancerRuleOverrideRegionPoolOutput) PoolIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverrideRegionPool) []string { return v.PoolIds }).(pulumi.StringArrayOutput)
 }
 
+// A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
 func (o LoadBalancerRuleOverrideRegionPoolOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverrideRegionPool) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -12948,11 +13174,16 @@ func (o LoadBalancerRuleOverrideRegionPoolArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type LoadBalancerRuleOverrideSessionAffinityAttribute struct {
-	Headers              []string `pulumi:"headers"`
-	RequireAllHeaders    *bool    `pulumi:"requireAllHeaders"`
-	Samesite             *string  `pulumi:"samesite"`
-	Secure               *string  `pulumi:"secure"`
-	ZeroDowntimeFailover *string  `pulumi:"zeroDowntimeFailover"`
+	// Configures the HTTP header names to use when header session affinity is enabled.
+	Headers []string `pulumi:"headers"`
+	// Configures how headers are used when header session affinity is enabled. Set to true to require all headers to be present on requests in order for sessions to be created or false to require at least one header to be present. Defaults to `false`.
+	RequireAllHeaders *bool `pulumi:"requireAllHeaders"`
+	// Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+	Samesite *string `pulumi:"samesite"`
+	// Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+	Secure *string `pulumi:"secure"`
+	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+	ZeroDowntimeFailover *string `pulumi:"zeroDowntimeFailover"`
 }
 
 // LoadBalancerRuleOverrideSessionAffinityAttributeInput is an input type that accepts LoadBalancerRuleOverrideSessionAffinityAttributeArgs and LoadBalancerRuleOverrideSessionAffinityAttributeOutput values.
@@ -12967,11 +13198,16 @@ type LoadBalancerRuleOverrideSessionAffinityAttributeInput interface {
 }
 
 type LoadBalancerRuleOverrideSessionAffinityAttributeArgs struct {
-	Headers              pulumi.StringArrayInput `pulumi:"headers"`
-	RequireAllHeaders    pulumi.BoolPtrInput     `pulumi:"requireAllHeaders"`
-	Samesite             pulumi.StringPtrInput   `pulumi:"samesite"`
-	Secure               pulumi.StringPtrInput   `pulumi:"secure"`
-	ZeroDowntimeFailover pulumi.StringPtrInput   `pulumi:"zeroDowntimeFailover"`
+	// Configures the HTTP header names to use when header session affinity is enabled.
+	Headers pulumi.StringArrayInput `pulumi:"headers"`
+	// Configures how headers are used when header session affinity is enabled. Set to true to require all headers to be present on requests in order for sessions to be created or false to require at least one header to be present. Defaults to `false`.
+	RequireAllHeaders pulumi.BoolPtrInput `pulumi:"requireAllHeaders"`
+	// Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+	Samesite pulumi.StringPtrInput `pulumi:"samesite"`
+	// Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+	Secure pulumi.StringPtrInput `pulumi:"secure"`
+	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+	ZeroDowntimeFailover pulumi.StringPtrInput `pulumi:"zeroDowntimeFailover"`
 }
 
 func (LoadBalancerRuleOverrideSessionAffinityAttributeArgs) ElementType() reflect.Type {
@@ -13025,22 +13261,27 @@ func (o LoadBalancerRuleOverrideSessionAffinityAttributeOutput) ToLoadBalancerRu
 	return o
 }
 
+// Configures the HTTP header names to use when header session affinity is enabled.
 func (o LoadBalancerRuleOverrideSessionAffinityAttributeOutput) Headers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverrideSessionAffinityAttribute) []string { return v.Headers }).(pulumi.StringArrayOutput)
 }
 
+// Configures how headers are used when header session affinity is enabled. Set to true to require all headers to be present on requests in order for sessions to be created or false to require at least one header to be present. Defaults to `false`.
 func (o LoadBalancerRuleOverrideSessionAffinityAttributeOutput) RequireAllHeaders() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverrideSessionAffinityAttribute) *bool { return v.RequireAllHeaders }).(pulumi.BoolPtrOutput)
 }
 
+// Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
 func (o LoadBalancerRuleOverrideSessionAffinityAttributeOutput) Samesite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverrideSessionAffinityAttribute) *string { return v.Samesite }).(pulumi.StringPtrOutput)
 }
 
+// Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
 func (o LoadBalancerRuleOverrideSessionAffinityAttributeOutput) Secure() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverrideSessionAffinityAttribute) *string { return v.Secure }).(pulumi.StringPtrOutput)
 }
 
+// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
 func (o LoadBalancerRuleOverrideSessionAffinityAttributeOutput) ZeroDowntimeFailover() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverrideSessionAffinityAttribute) *string { return v.ZeroDowntimeFailover }).(pulumi.StringPtrOutput)
 }
@@ -13066,12 +13307,18 @@ func (o LoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput) Index(i pul
 }
 
 type LoadBalancerSessionAffinityAttribute struct {
-	DrainDuration        *int     `pulumi:"drainDuration"`
-	Headers              []string `pulumi:"headers"`
-	RequireAllHeaders    *bool    `pulumi:"requireAllHeaders"`
-	Samesite             *string  `pulumi:"samesite"`
-	Secure               *string  `pulumi:"secure"`
-	ZeroDowntimeFailover *string  `pulumi:"zeroDowntimeFailover"`
+	// Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. Defaults to `0`.
+	DrainDuration *int `pulumi:"drainDuration"`
+	// Configures the HTTP header names to use when header session affinity is enabled.
+	Headers []string `pulumi:"headers"`
+	// Configures how headers are used when header session affinity is enabled. Set to true to require all headers to be present on requests in order for sessions to be created or false to require at least one header to be present. Defaults to `false`.
+	RequireAllHeaders *bool `pulumi:"requireAllHeaders"`
+	// Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+	Samesite *string `pulumi:"samesite"`
+	// Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+	Secure *string `pulumi:"secure"`
+	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+	ZeroDowntimeFailover *string `pulumi:"zeroDowntimeFailover"`
 }
 
 // LoadBalancerSessionAffinityAttributeInput is an input type that accepts LoadBalancerSessionAffinityAttributeArgs and LoadBalancerSessionAffinityAttributeOutput values.
@@ -13086,12 +13333,18 @@ type LoadBalancerSessionAffinityAttributeInput interface {
 }
 
 type LoadBalancerSessionAffinityAttributeArgs struct {
-	DrainDuration        pulumi.IntPtrInput      `pulumi:"drainDuration"`
-	Headers              pulumi.StringArrayInput `pulumi:"headers"`
-	RequireAllHeaders    pulumi.BoolPtrInput     `pulumi:"requireAllHeaders"`
-	Samesite             pulumi.StringPtrInput   `pulumi:"samesite"`
-	Secure               pulumi.StringPtrInput   `pulumi:"secure"`
-	ZeroDowntimeFailover pulumi.StringPtrInput   `pulumi:"zeroDowntimeFailover"`
+	// Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. Defaults to `0`.
+	DrainDuration pulumi.IntPtrInput `pulumi:"drainDuration"`
+	// Configures the HTTP header names to use when header session affinity is enabled.
+	Headers pulumi.StringArrayInput `pulumi:"headers"`
+	// Configures how headers are used when header session affinity is enabled. Set to true to require all headers to be present on requests in order for sessions to be created or false to require at least one header to be present. Defaults to `false`.
+	RequireAllHeaders pulumi.BoolPtrInput `pulumi:"requireAllHeaders"`
+	// Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+	Samesite pulumi.StringPtrInput `pulumi:"samesite"`
+	// Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+	Secure pulumi.StringPtrInput `pulumi:"secure"`
+	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+	ZeroDowntimeFailover pulumi.StringPtrInput `pulumi:"zeroDowntimeFailover"`
 }
 
 func (LoadBalancerSessionAffinityAttributeArgs) ElementType() reflect.Type {
@@ -13145,26 +13398,32 @@ func (o LoadBalancerSessionAffinityAttributeOutput) ToLoadBalancerSessionAffinit
 	return o
 }
 
+// Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. Defaults to `0`.
 func (o LoadBalancerSessionAffinityAttributeOutput) DrainDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LoadBalancerSessionAffinityAttribute) *int { return v.DrainDuration }).(pulumi.IntPtrOutput)
 }
 
+// Configures the HTTP header names to use when header session affinity is enabled.
 func (o LoadBalancerSessionAffinityAttributeOutput) Headers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LoadBalancerSessionAffinityAttribute) []string { return v.Headers }).(pulumi.StringArrayOutput)
 }
 
+// Configures how headers are used when header session affinity is enabled. Set to true to require all headers to be present on requests in order for sessions to be created or false to require at least one header to be present. Defaults to `false`.
 func (o LoadBalancerSessionAffinityAttributeOutput) RequireAllHeaders() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LoadBalancerSessionAffinityAttribute) *bool { return v.RequireAllHeaders }).(pulumi.BoolPtrOutput)
 }
 
+// Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
 func (o LoadBalancerSessionAffinityAttributeOutput) Samesite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerSessionAffinityAttribute) *string { return v.Samesite }).(pulumi.StringPtrOutput)
 }
 
+// Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
 func (o LoadBalancerSessionAffinityAttributeOutput) Secure() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerSessionAffinityAttribute) *string { return v.Secure }).(pulumi.StringPtrOutput)
 }
 
+// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
 func (o LoadBalancerSessionAffinityAttributeOutput) ZeroDowntimeFailover() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerSessionAffinityAttribute) *string { return v.ZeroDowntimeFailover }).(pulumi.StringPtrOutput)
 }
@@ -16902,9 +17161,9 @@ func (o PagesProjectBuildConfigPtrOutput) WebAnalyticsToken() pulumi.StringPtrOu
 
 type PagesProjectDeploymentConfigs struct {
 	// Configuration for preview deploys.
-	Preview PagesProjectDeploymentConfigsPreview `pulumi:"preview"`
+	Preview *PagesProjectDeploymentConfigsPreview `pulumi:"preview"`
 	// Configuration for production deploys.
-	Production PagesProjectDeploymentConfigsProduction `pulumi:"production"`
+	Production *PagesProjectDeploymentConfigsProduction `pulumi:"production"`
 }
 
 // PagesProjectDeploymentConfigsInput is an input type that accepts PagesProjectDeploymentConfigsArgs and PagesProjectDeploymentConfigsOutput values.
@@ -16920,9 +17179,9 @@ type PagesProjectDeploymentConfigsInput interface {
 
 type PagesProjectDeploymentConfigsArgs struct {
 	// Configuration for preview deploys.
-	Preview PagesProjectDeploymentConfigsPreviewInput `pulumi:"preview"`
+	Preview PagesProjectDeploymentConfigsPreviewPtrInput `pulumi:"preview"`
 	// Configuration for production deploys.
-	Production PagesProjectDeploymentConfigsProductionInput `pulumi:"production"`
+	Production PagesProjectDeploymentConfigsProductionPtrInput `pulumi:"production"`
 }
 
 func (PagesProjectDeploymentConfigsArgs) ElementType() reflect.Type {
@@ -17003,13 +17262,13 @@ func (o PagesProjectDeploymentConfigsOutput) ToPagesProjectDeploymentConfigsPtrO
 }
 
 // Configuration for preview deploys.
-func (o PagesProjectDeploymentConfigsOutput) Preview() PagesProjectDeploymentConfigsPreviewOutput {
-	return o.ApplyT(func(v PagesProjectDeploymentConfigs) PagesProjectDeploymentConfigsPreview { return v.Preview }).(PagesProjectDeploymentConfigsPreviewOutput)
+func (o PagesProjectDeploymentConfigsOutput) Preview() PagesProjectDeploymentConfigsPreviewPtrOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigs) *PagesProjectDeploymentConfigsPreview { return v.Preview }).(PagesProjectDeploymentConfigsPreviewPtrOutput)
 }
 
 // Configuration for production deploys.
-func (o PagesProjectDeploymentConfigsOutput) Production() PagesProjectDeploymentConfigsProductionOutput {
-	return o.ApplyT(func(v PagesProjectDeploymentConfigs) PagesProjectDeploymentConfigsProduction { return v.Production }).(PagesProjectDeploymentConfigsProductionOutput)
+func (o PagesProjectDeploymentConfigsOutput) Production() PagesProjectDeploymentConfigsProductionPtrOutput {
+	return o.ApplyT(func(v PagesProjectDeploymentConfigs) *PagesProjectDeploymentConfigsProduction { return v.Production }).(PagesProjectDeploymentConfigsProductionPtrOutput)
 }
 
 type PagesProjectDeploymentConfigsPtrOutput struct{ *pulumi.OutputState }
@@ -17042,7 +17301,7 @@ func (o PagesProjectDeploymentConfigsPtrOutput) Preview() PagesProjectDeployment
 		if v == nil {
 			return nil
 		}
-		return &v.Preview
+		return v.Preview
 	}).(PagesProjectDeploymentConfigsPreviewPtrOutput)
 }
 
@@ -17052,7 +17311,7 @@ func (o PagesProjectDeploymentConfigsPtrOutput) Production() PagesProjectDeploym
 		if v == nil {
 			return nil
 		}
-		return &v.Production
+		return v.Production
 	}).(PagesProjectDeploymentConfigsProductionPtrOutput)
 }
 
@@ -17508,7 +17767,7 @@ func (o PagesProjectDeploymentConfigsPreviewPlacementPtrOutput) Mode() pulumi.St
 
 type PagesProjectDeploymentConfigsPreviewServiceBinding struct {
 	Environment *string `pulumi:"environment"`
-	// Name of the project. **Modifying this attribute will force creation of a new resource.**
+	// Name of the project.
 	Name    string `pulumi:"name"`
 	Service string `pulumi:"service"`
 }
@@ -17526,7 +17785,7 @@ type PagesProjectDeploymentConfigsPreviewServiceBindingInput interface {
 
 type PagesProjectDeploymentConfigsPreviewServiceBindingArgs struct {
 	Environment pulumi.StringPtrInput `pulumi:"environment"`
-	// Name of the project. **Modifying this attribute will force creation of a new resource.**
+	// Name of the project.
 	Name    pulumi.StringInput `pulumi:"name"`
 	Service pulumi.StringInput `pulumi:"service"`
 }
@@ -17586,7 +17845,7 @@ func (o PagesProjectDeploymentConfigsPreviewServiceBindingOutput) Environment() 
 	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreviewServiceBinding) *string { return v.Environment }).(pulumi.StringPtrOutput)
 }
 
-// Name of the project. **Modifying this attribute will force creation of a new resource.**
+// Name of the project.
 func (o PagesProjectDeploymentConfigsPreviewServiceBindingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreviewServiceBinding) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -18069,7 +18328,7 @@ func (o PagesProjectDeploymentConfigsProductionPlacementPtrOutput) Mode() pulumi
 
 type PagesProjectDeploymentConfigsProductionServiceBinding struct {
 	Environment *string `pulumi:"environment"`
-	// Name of the project. **Modifying this attribute will force creation of a new resource.**
+	// Name of the project.
 	Name    string `pulumi:"name"`
 	Service string `pulumi:"service"`
 }
@@ -18087,7 +18346,7 @@ type PagesProjectDeploymentConfigsProductionServiceBindingInput interface {
 
 type PagesProjectDeploymentConfigsProductionServiceBindingArgs struct {
 	Environment pulumi.StringPtrInput `pulumi:"environment"`
-	// Name of the project. **Modifying this attribute will force creation of a new resource.**
+	// Name of the project.
 	Name    pulumi.StringInput `pulumi:"name"`
 	Service pulumi.StringInput `pulumi:"service"`
 }
@@ -18147,7 +18406,7 @@ func (o PagesProjectDeploymentConfigsProductionServiceBindingOutput) Environment
 	return o.ApplyT(func(v PagesProjectDeploymentConfigsProductionServiceBinding) *string { return v.Environment }).(pulumi.StringPtrOutput)
 }
 
-// Name of the project. **Modifying this attribute will force creation of a new resource.**
+// Name of the project.
 func (o PagesProjectDeploymentConfigsProductionServiceBindingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PagesProjectDeploymentConfigsProductionServiceBinding) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -36548,7 +36807,7 @@ func (o GetLoadBalancerPoolsPoolOriginHeaderArrayOutput) Index(i pulumi.IntInput
 type GetRulesetsFilter struct {
 	// The ID of the Ruleset to target.
 	Id *string `pulumi:"id"`
-	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
 	Kind *string `pulumi:"kind"`
 	// Name of the ruleset.
 	Name *string `pulumi:"name"`
@@ -36572,7 +36831,7 @@ type GetRulesetsFilterInput interface {
 type GetRulesetsFilterArgs struct {
 	// The ID of the Ruleset to target.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Name of the ruleset.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -36664,7 +36923,7 @@ func (o GetRulesetsFilterOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesetsFilter) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
 func (o GetRulesetsFilterOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesetsFilter) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -36718,7 +36977,7 @@ func (o GetRulesetsFilterPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
 func (o GetRulesetsFilterPtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRulesetsFilter) *string {
 		if v == nil {
@@ -42619,6 +42878,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessIdentityProviderConfigArrayInput)(nil)).Elem(), AccessIdentityProviderConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessIdentityProviderScimConfigInput)(nil)).Elem(), AccessIdentityProviderScimConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessIdentityProviderScimConfigArrayInput)(nil)).Elem(), AccessIdentityProviderScimConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationCustomPageInput)(nil)).Elem(), AccessOrganizationCustomPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationCustomPageArrayInput)(nil)).Elem(), AccessOrganizationCustomPageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationLoginDesignInput)(nil)).Elem(), AccessOrganizationLoginDesignArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationLoginDesignArrayInput)(nil)).Elem(), AccessOrganizationLoginDesignArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyApprovalGroupInput)(nil)).Elem(), AccessPolicyApprovalGroupArgs{})
@@ -43153,6 +43414,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessIdentityProviderConfigArrayOutput{})
 	pulumi.RegisterOutputType(AccessIdentityProviderScimConfigOutput{})
 	pulumi.RegisterOutputType(AccessIdentityProviderScimConfigArrayOutput{})
+	pulumi.RegisterOutputType(AccessOrganizationCustomPageOutput{})
+	pulumi.RegisterOutputType(AccessOrganizationCustomPageArrayOutput{})
 	pulumi.RegisterOutputType(AccessOrganizationLoginDesignOutput{})
 	pulumi.RegisterOutputType(AccessOrganizationLoginDesignArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyApprovalGroupOutput{})

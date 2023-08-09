@@ -16,17 +16,17 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Configuration for preview deploys.
         /// </summary>
-        public readonly Outputs.PagesProjectDeploymentConfigsPreview Preview;
+        public readonly Outputs.PagesProjectDeploymentConfigsPreview? Preview;
         /// <summary>
         /// Configuration for production deploys.
         /// </summary>
-        public readonly Outputs.PagesProjectDeploymentConfigsProduction Production;
+        public readonly Outputs.PagesProjectDeploymentConfigsProduction? Production;
 
         [OutputConstructor]
         private PagesProjectDeploymentConfigs(
-            Outputs.PagesProjectDeploymentConfigsPreview preview,
+            Outputs.PagesProjectDeploymentConfigsPreview? preview,
 
-            Outputs.PagesProjectDeploymentConfigsProduction production)
+            Outputs.PagesProjectDeploymentConfigsProduction? production)
         {
             Preview = preview;
             Production = production;

@@ -490,14 +490,14 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
-     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
      * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
     private Output<String> kind;
 
     /**
-     * @return Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+     * @return Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
      * 
      */
     public Output<String> kind() {
@@ -544,20 +544,6 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<RulesetRule>>> rules() {
         return Codegen.optional(this.rules);
-    }
-    /**
-     * Name of entitlement that is shareable between entities.
-     * 
-     */
-    @Export(name="shareableEntitlementName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> shareableEntitlementName;
-
-    /**
-     * @return Name of entitlement that is shareable between entities.
-     * 
-     */
-    public Output<Optional<String>> shareableEntitlementName() {
-        return Codegen.optional(this.shareableEntitlementName);
     }
     /**
      * The zone identifier to target for the resource.

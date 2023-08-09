@@ -14,16 +14,32 @@ public final class LoadBalancerRuleOverridePopPoolArgs extends com.pulumi.resour
 
     public static final LoadBalancerRuleOverridePopPoolArgs Empty = new LoadBalancerRuleOverridePopPoolArgs();
 
+    /**
+     * A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     * 
+     */
     @Import(name="poolIds", required=true)
     private Output<List<String>> poolIds;
 
+    /**
+     * @return A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     * 
+     */
     public Output<List<String>> poolIds() {
         return this.poolIds;
     }
 
+    /**
+     * A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+     * 
+     */
     @Import(name="pop", required=true)
     private Output<String> pop;
 
+    /**
+     * @return A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+     * 
+     */
     public Output<String> pop() {
         return this.pop;
     }
@@ -53,24 +69,54 @@ public final class LoadBalancerRuleOverridePopPoolArgs extends com.pulumi.resour
             $ = new LoadBalancerRuleOverridePopPoolArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param poolIds A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder poolIds(Output<List<String>> poolIds) {
             $.poolIds = poolIds;
             return this;
         }
 
+        /**
+         * @param poolIds A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder poolIds(List<String> poolIds) {
             return poolIds(Output.of(poolIds));
         }
 
+        /**
+         * @param poolIds A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder poolIds(String... poolIds) {
             return poolIds(List.of(poolIds));
         }
 
+        /**
+         * @param pop A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pop(Output<String> pop) {
             $.pop = pop;
             return this;
         }
 
+        /**
+         * @param pop A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pop(String pop) {
             return pop(Output.of(pop));
         }

@@ -61,8 +61,10 @@ import (
 //					},
 //				},
 //				Requires: cloudflare.AccessGroupRequireArray{
-//					Ips: cloudflare.AccessGroupRequireArgs{
-//						_var.Office_ip,
+//					&cloudflare.AccessGroupRequireArgs{
+//						Ips: pulumi.StringArray{
+//							_var.Office_ip,
+//						},
 //					},
 //				},
 //			})

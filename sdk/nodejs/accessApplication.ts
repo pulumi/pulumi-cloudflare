@@ -110,6 +110,10 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly customDenyUrl!: pulumi.Output<string | undefined>;
     /**
+     * The custom pages selected for the application.
+     */
+    public readonly customPages!: pulumi.Output<string[] | undefined>;
+    /**
      * The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
      */
     public readonly domain!: pulumi.Output<string>;
@@ -183,6 +187,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["corsHeaders"] = state ? state.corsHeaders : undefined;
             resourceInputs["customDenyMessage"] = state ? state.customDenyMessage : undefined;
             resourceInputs["customDenyUrl"] = state ? state.customDenyUrl : undefined;
+            resourceInputs["customPages"] = state ? state.customPages : undefined;
             resourceInputs["domain"] = state ? state.domain : undefined;
             resourceInputs["enableBindingCookie"] = state ? state.enableBindingCookie : undefined;
             resourceInputs["httpOnlyCookieAttribute"] = state ? state.httpOnlyCookieAttribute : undefined;
@@ -208,6 +213,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["corsHeaders"] = args ? args.corsHeaders : undefined;
             resourceInputs["customDenyMessage"] = args ? args.customDenyMessage : undefined;
             resourceInputs["customDenyUrl"] = args ? args.customDenyUrl : undefined;
+            resourceInputs["customPages"] = args ? args.customPages : undefined;
             resourceInputs["domain"] = args ? args.domain : undefined;
             resourceInputs["enableBindingCookie"] = args ? args.enableBindingCookie : undefined;
             resourceInputs["httpOnlyCookieAttribute"] = args ? args.httpOnlyCookieAttribute : undefined;
@@ -264,6 +270,10 @@ export interface AccessApplicationState {
      * Option that redirects to a custom URL when a user is denied access to the application.
      */
     customDenyUrl?: pulumi.Input<string>;
+    /**
+     * The custom pages selected for the application.
+     */
+    customPages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
      */
@@ -350,6 +360,10 @@ export interface AccessApplicationArgs {
      * Option that redirects to a custom URL when a user is denied access to the application.
      */
     customDenyUrl?: pulumi.Input<string>;
+    /**
+     * The custom pages selected for the application.
+     */
+    customPages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
      */

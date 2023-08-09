@@ -70,6 +70,8 @@ type AccessOrganization struct {
 	AuthDomain pulumi.StringOutput `pulumi:"authDomain"`
 	// When set to true, users skip the identity provider selection step during login.
 	AutoRedirectToIdentity pulumi.BoolPtrOutput `pulumi:"autoRedirectToIdentity"`
+	// Custom pages for your Zero Trust organization.
+	CustomPages AccessOrganizationCustomPageArrayOutput `pulumi:"customPages"`
 	// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
 	IsUiReadOnly pulumi.BoolPtrOutput                     `pulumi:"isUiReadOnly"`
 	LoginDesigns AccessOrganizationLoginDesignArrayOutput `pulumi:"loginDesigns"`
@@ -122,6 +124,8 @@ type accessOrganizationState struct {
 	AuthDomain *string `pulumi:"authDomain"`
 	// When set to true, users skip the identity provider selection step during login.
 	AutoRedirectToIdentity *bool `pulumi:"autoRedirectToIdentity"`
+	// Custom pages for your Zero Trust organization.
+	CustomPages []AccessOrganizationCustomPage `pulumi:"customPages"`
 	// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
 	IsUiReadOnly *bool                           `pulumi:"isUiReadOnly"`
 	LoginDesigns []AccessOrganizationLoginDesign `pulumi:"loginDesigns"`
@@ -142,6 +146,8 @@ type AccessOrganizationState struct {
 	AuthDomain pulumi.StringPtrInput
 	// When set to true, users skip the identity provider selection step during login.
 	AutoRedirectToIdentity pulumi.BoolPtrInput
+	// Custom pages for your Zero Trust organization.
+	CustomPages AccessOrganizationCustomPageArrayInput
 	// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
 	IsUiReadOnly pulumi.BoolPtrInput
 	LoginDesigns AccessOrganizationLoginDesignArrayInput
@@ -166,6 +172,8 @@ type accessOrganizationArgs struct {
 	AuthDomain string `pulumi:"authDomain"`
 	// When set to true, users skip the identity provider selection step during login.
 	AutoRedirectToIdentity *bool `pulumi:"autoRedirectToIdentity"`
+	// Custom pages for your Zero Trust organization.
+	CustomPages []AccessOrganizationCustomPage `pulumi:"customPages"`
 	// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
 	IsUiReadOnly *bool                           `pulumi:"isUiReadOnly"`
 	LoginDesigns []AccessOrganizationLoginDesign `pulumi:"loginDesigns"`
@@ -187,6 +195,8 @@ type AccessOrganizationArgs struct {
 	AuthDomain pulumi.StringInput
 	// When set to true, users skip the identity provider selection step during login.
 	AutoRedirectToIdentity pulumi.BoolPtrInput
+	// Custom pages for your Zero Trust organization.
+	CustomPages AccessOrganizationCustomPageArrayInput
 	// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
 	IsUiReadOnly pulumi.BoolPtrInput
 	LoginDesigns AccessOrganizationLoginDesignArrayInput
@@ -300,6 +310,11 @@ func (o AccessOrganizationOutput) AuthDomain() pulumi.StringOutput {
 // When set to true, users skip the identity provider selection step during login.
 func (o AccessOrganizationOutput) AutoRedirectToIdentity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessOrganization) pulumi.BoolPtrOutput { return v.AutoRedirectToIdentity }).(pulumi.BoolPtrOutput)
+}
+
+// Custom pages for your Zero Trust organization.
+func (o AccessOrganizationOutput) CustomPages() AccessOrganizationCustomPageArrayOutput {
+	return o.ApplyT(func(v *AccessOrganization) AccessOrganizationCustomPageArrayOutput { return v.CustomPages }).(AccessOrganizationCustomPageArrayOutput)
 }
 
 // When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.

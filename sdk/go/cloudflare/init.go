@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccessApplication{}
 	case "cloudflare:index/accessCaCertificate:AccessCaCertificate":
 		r = &AccessCaCertificate{}
+	case "cloudflare:index/accessCustomPage:AccessCustomPage":
+		r = &AccessCustomPage{}
 	case "cloudflare:index/accessGroup:AccessGroup":
 		r = &AccessGroup{}
 	case "cloudflare:index/accessIdentityProvider:AccessIdentityProvider":
@@ -209,6 +211,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkersKvNamespace{}
 	case "cloudflare:index/zone:Zone":
 		r = &Zone{}
+	case "cloudflare:index/zoneCacheReserve:ZoneCacheReserve":
+		r = &ZoneCacheReserve{}
 	case "cloudflare:index/zoneCacheVariants:ZoneCacheVariants":
 		r = &ZoneCacheVariants{}
 	case "cloudflare:index/zoneDnssec:ZoneDnssec":
@@ -256,6 +260,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/accessCaCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/accessCustomPage",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -716,6 +725,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zone",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zoneCacheReserve",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

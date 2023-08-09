@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Environment { get; set; }
 
         /// <summary>
-        /// Name of the project. **Modifying this attribute will force creation of a new resource.**
+        /// Name of the project.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

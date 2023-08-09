@@ -65,6 +65,7 @@ namespace Pulumi.Cloudflare
     ///                 },
     ///             },
     ///         },
+    ///         ProtocolDetectionEnabled = true,
     ///         Proxy = new Cloudflare.Inputs.TeamsAccountProxyArgs
     ///         {
     ///             RootCa = true,
@@ -125,6 +126,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("payloadLog")]
         public Output<Outputs.TeamsAccountPayloadLog?> PayloadLog { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicator that protocol detection is enabled.
+        /// </summary>
+        [Output("protocolDetectionEnabled")]
+        public Output<bool?> ProtocolDetectionEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Configuration block for specifying which protocols are proxied.
@@ -230,6 +237,12 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.TeamsAccountPayloadLogArgs>? PayloadLog { get; set; }
 
         /// <summary>
+        /// Indicator that protocol detection is enabled.
+        /// </summary>
+        [Input("protocolDetectionEnabled")]
+        public Input<bool>? ProtocolDetectionEnabled { get; set; }
+
+        /// <summary>
         /// Configuration block for specifying which protocols are proxied.
         /// </summary>
         [Input("proxy")]
@@ -293,6 +306,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("payloadLog")]
         public Input<Inputs.TeamsAccountPayloadLogGetArgs>? PayloadLog { get; set; }
+
+        /// <summary>
+        /// Indicator that protocol detection is enabled.
+        /// </summary>
+        [Input("protocolDetectionEnabled")]
+        public Input<bool>? ProtocolDetectionEnabled { get; set; }
 
         /// <summary>
         /// Configuration block for specifying which protocols are proxied.

@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         public string? Id { get; set; }
 
         /// <summary>
-        /// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+        /// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
         /// </summary>
         [Input("kind")]
         public string? Kind { get; set; }

@@ -15,14 +15,14 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Configuration for preview deploys.
         /// </summary>
-        [Input("preview", required: true)]
-        public Input<Inputs.PagesProjectDeploymentConfigsPreviewGetArgs> Preview { get; set; } = null!;
+        [Input("preview")]
+        public Input<Inputs.PagesProjectDeploymentConfigsPreviewGetArgs>? Preview { get; set; }
 
         /// <summary>
         /// Configuration for production deploys.
         /// </summary>
-        [Input("production", required: true)]
-        public Input<Inputs.PagesProjectDeploymentConfigsProductionGetArgs> Production { get; set; } = null!;
+        [Input("production")]
+        public Input<Inputs.PagesProjectDeploymentConfigsProductionGetArgs>? Production { get; set; }
 
         public PagesProjectDeploymentConfigsGetArgs()
         {

@@ -25,7 +25,7 @@ class PagesProjectArgs:
         """
         The set of arguments for constructing a PagesProject resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] name: Name of the project. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] name: Name of the project.
         :param pulumi.Input[str] production_branch: The name of the branch that is used for the production environment.
         :param pulumi.Input['PagesProjectBuildConfigArgs'] build_config: Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
         :param pulumi.Input['PagesProjectDeploymentConfigsArgs'] deployment_configs: Configuration for deployments in a project.
@@ -57,7 +57,7 @@ class PagesProjectArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the project. **Modifying this attribute will force creation of a new resource.**
+        Name of the project.
         """
         return pulumi.get(self, "name")
 
@@ -133,7 +133,7 @@ class _PagesProjectState:
         :param pulumi.Input[str] created_on: When the project was created.
         :param pulumi.Input['PagesProjectDeploymentConfigsArgs'] deployment_configs: Configuration for deployments in a project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: A list of associated custom domains for the project.
-        :param pulumi.Input[str] name: Name of the project. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] name: Name of the project.
         :param pulumi.Input[str] production_branch: The name of the branch that is used for the production environment.
         :param pulumi.Input['PagesProjectSourceArgs'] source: Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
         :param pulumi.Input[str] subdomain: The Cloudflare subdomain associated with the project.
@@ -221,7 +221,7 @@ class _PagesProjectState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the project. **Modifying this attribute will force creation of a new resource.**
+        Name of the project.
         """
         return pulumi.get(self, "name")
 
@@ -437,7 +437,7 @@ class PagesProject(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[pulumi.InputType['PagesProjectBuildConfigArgs']] build_config: Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
         :param pulumi.Input[pulumi.InputType['PagesProjectDeploymentConfigsArgs']] deployment_configs: Configuration for deployments in a project.
-        :param pulumi.Input[str] name: Name of the project. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] name: Name of the project.
         :param pulumi.Input[str] production_branch: The name of the branch that is used for the production environment.
         :param pulumi.Input[pulumi.InputType['PagesProjectSourceArgs']] source: Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
         """
@@ -677,7 +677,7 @@ class PagesProject(pulumi.CustomResource):
         :param pulumi.Input[str] created_on: When the project was created.
         :param pulumi.Input[pulumi.InputType['PagesProjectDeploymentConfigsArgs']] deployment_configs: Configuration for deployments in a project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: A list of associated custom domains for the project.
-        :param pulumi.Input[str] name: Name of the project. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] name: Name of the project.
         :param pulumi.Input[str] production_branch: The name of the branch that is used for the production environment.
         :param pulumi.Input[pulumi.InputType['PagesProjectSourceArgs']] source: Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
         :param pulumi.Input[str] subdomain: The Cloudflare subdomain associated with the project.
@@ -723,7 +723,7 @@ class PagesProject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deploymentConfigs")
-    def deployment_configs(self) -> pulumi.Output[Optional['outputs.PagesProjectDeploymentConfigs']]:
+    def deployment_configs(self) -> pulumi.Output['outputs.PagesProjectDeploymentConfigs']:
         """
         Configuration for deployments in a project.
         """
@@ -741,7 +741,7 @@ class PagesProject(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the project. **Modifying this attribute will force creation of a new resource.**
+        Name of the project.
         """
         return pulumi.get(self, "name")
 

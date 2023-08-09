@@ -19,6 +19,7 @@ class AccessOrganizationArgs:
                  auth_domain: pulumi.Input[str],
                  account_id: Optional[pulumi.Input[str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
+                 custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]]] = None,
                  is_ui_read_only: Optional[pulumi.Input[bool]] = None,
                  login_designs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationLoginDesignArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -30,6 +31,7 @@ class AccessOrganizationArgs:
         :param pulumi.Input[str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[bool] auto_redirect_to_identity: When set to true, users skip the identity provider selection step during login.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]] custom_pages: Custom pages for your Zero Trust organization.
         :param pulumi.Input[bool] is_ui_read_only: When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
         :param pulumi.Input[str] name: The name of your Zero Trust organization.
         :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
@@ -41,6 +43,8 @@ class AccessOrganizationArgs:
             pulumi.set(__self__, "account_id", account_id)
         if auto_redirect_to_identity is not None:
             pulumi.set(__self__, "auto_redirect_to_identity", auto_redirect_to_identity)
+        if custom_pages is not None:
+            pulumi.set(__self__, "custom_pages", custom_pages)
         if is_ui_read_only is not None:
             pulumi.set(__self__, "is_ui_read_only", is_ui_read_only)
         if login_designs is not None:
@@ -89,6 +93,18 @@ class AccessOrganizationArgs:
     @auto_redirect_to_identity.setter
     def auto_redirect_to_identity(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_redirect_to_identity", value)
+
+    @property
+    @pulumi.getter(name="customPages")
+    def custom_pages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]]]:
+        """
+        Custom pages for your Zero Trust organization.
+        """
+        return pulumi.get(self, "custom_pages")
+
+    @custom_pages.setter
+    def custom_pages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]]]):
+        pulumi.set(self, "custom_pages", value)
 
     @property
     @pulumi.getter(name="isUiReadOnly")
@@ -166,6 +182,7 @@ class _AccessOrganizationState:
                  account_id: Optional[pulumi.Input[str]] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
+                 custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]]] = None,
                  is_ui_read_only: Optional[pulumi.Input[bool]] = None,
                  login_designs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationLoginDesignArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -177,6 +194,7 @@ class _AccessOrganizationState:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[bool] auto_redirect_to_identity: When set to true, users skip the identity provider selection step during login.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]] custom_pages: Custom pages for your Zero Trust organization.
         :param pulumi.Input[bool] is_ui_read_only: When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
         :param pulumi.Input[str] name: The name of your Zero Trust organization.
         :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
@@ -189,6 +207,8 @@ class _AccessOrganizationState:
             pulumi.set(__self__, "auth_domain", auth_domain)
         if auto_redirect_to_identity is not None:
             pulumi.set(__self__, "auto_redirect_to_identity", auto_redirect_to_identity)
+        if custom_pages is not None:
+            pulumi.set(__self__, "custom_pages", custom_pages)
         if is_ui_read_only is not None:
             pulumi.set(__self__, "is_ui_read_only", is_ui_read_only)
         if login_designs is not None:
@@ -237,6 +257,18 @@ class _AccessOrganizationState:
     @auto_redirect_to_identity.setter
     def auto_redirect_to_identity(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_redirect_to_identity", value)
+
+    @property
+    @pulumi.getter(name="customPages")
+    def custom_pages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]]]:
+        """
+        Custom pages for your Zero Trust organization.
+        """
+        return pulumi.get(self, "custom_pages")
+
+    @custom_pages.setter
+    def custom_pages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]]]):
+        pulumi.set(self, "custom_pages", value)
 
     @property
     @pulumi.getter(name="isUiReadOnly")
@@ -316,6 +348,7 @@ class AccessOrganization(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
+                 custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationCustomPageArgs']]]]] = None,
                  is_ui_read_only: Optional[pulumi.Input[bool]] = None,
                  login_designs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationLoginDesignArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -359,6 +392,7 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[bool] auto_redirect_to_identity: When set to true, users skip the identity provider selection step during login.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationCustomPageArgs']]]] custom_pages: Custom pages for your Zero Trust organization.
         :param pulumi.Input[bool] is_ui_read_only: When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
         :param pulumi.Input[str] name: The name of your Zero Trust organization.
         :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
@@ -420,6 +454,7 @@ class AccessOrganization(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
+                 custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationCustomPageArgs']]]]] = None,
                  is_ui_read_only: Optional[pulumi.Input[bool]] = None,
                  login_designs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationLoginDesignArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -440,6 +475,7 @@ class AccessOrganization(pulumi.CustomResource):
                 raise TypeError("Missing required property 'auth_domain'")
             __props__.__dict__["auth_domain"] = auth_domain
             __props__.__dict__["auto_redirect_to_identity"] = auto_redirect_to_identity
+            __props__.__dict__["custom_pages"] = custom_pages
             __props__.__dict__["is_ui_read_only"] = is_ui_read_only
             __props__.__dict__["login_designs"] = login_designs
             __props__.__dict__["name"] = name
@@ -459,6 +495,7 @@ class AccessOrganization(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             auth_domain: Optional[pulumi.Input[str]] = None,
             auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
+            custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationCustomPageArgs']]]]] = None,
             is_ui_read_only: Optional[pulumi.Input[bool]] = None,
             login_designs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationLoginDesignArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -475,6 +512,7 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[bool] auto_redirect_to_identity: When set to true, users skip the identity provider selection step during login.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationCustomPageArgs']]]] custom_pages: Custom pages for your Zero Trust organization.
         :param pulumi.Input[bool] is_ui_read_only: When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
         :param pulumi.Input[str] name: The name of your Zero Trust organization.
         :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
@@ -488,6 +526,7 @@ class AccessOrganization(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["auth_domain"] = auth_domain
         __props__.__dict__["auto_redirect_to_identity"] = auto_redirect_to_identity
+        __props__.__dict__["custom_pages"] = custom_pages
         __props__.__dict__["is_ui_read_only"] = is_ui_read_only
         __props__.__dict__["login_designs"] = login_designs
         __props__.__dict__["name"] = name
@@ -519,6 +558,14 @@ class AccessOrganization(pulumi.CustomResource):
         When set to true, users skip the identity provider selection step during login.
         """
         return pulumi.get(self, "auto_redirect_to_identity")
+
+    @property
+    @pulumi.getter(name="customPages")
+    def custom_pages(self) -> pulumi.Output[Optional[Sequence['outputs.AccessOrganizationCustomPage']]]:
+        """
+        Custom pages for your Zero Trust organization.
+        """
+        return pulumi.get(self, "custom_pages")
 
     @property
     @pulumi.getter(name="isUiReadOnly")

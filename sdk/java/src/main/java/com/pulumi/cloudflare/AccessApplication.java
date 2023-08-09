@@ -195,6 +195,20 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customDenyUrl);
     }
     /**
+     * The custom pages selected for the application.
+     * 
+     */
+    @Export(name="customPages", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> customPages;
+
+    /**
+     * @return The custom pages selected for the application.
+     * 
+     */
+    public Output<Optional<List<String>>> customPages() {
+        return Codegen.optional(this.customPages);
+    }
+    /**
      * The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
      * 
      */

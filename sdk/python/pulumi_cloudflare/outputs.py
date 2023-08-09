@@ -36,6 +36,7 @@ __all__ = [
     'AccessGroupRequireSaml',
     'AccessIdentityProviderConfig',
     'AccessIdentityProviderScimConfig',
+    'AccessOrganizationCustomPage',
     'AccessOrganizationLoginDesign',
     'AccessPolicyApprovalGroup',
     'AccessPolicyExclude',
@@ -2147,6 +2148,54 @@ class AccessIdentityProviderScimConfig(dict):
     @pulumi.getter(name="userDeprovision")
     def user_deprovision(self) -> Optional[bool]:
         return pulumi.get(self, "user_deprovision")
+
+
+@pulumi.output_type
+class AccessOrganizationCustomPage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityDenied":
+            suggest = "identity_denied"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessOrganizationCustomPage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessOrganizationCustomPage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessOrganizationCustomPage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 forbidden: Optional[str] = None,
+                 identity_denied: Optional[str] = None):
+        """
+        :param str forbidden: The id of the forbidden page.
+        :param str identity_denied: The id of the identity denied page.
+        """
+        if forbidden is not None:
+            pulumi.set(__self__, "forbidden", forbidden)
+        if identity_denied is not None:
+            pulumi.set(__self__, "identity_denied", identity_denied)
+
+    @property
+    @pulumi.getter
+    def forbidden(self) -> Optional[str]:
+        """
+        The id of the forbidden page.
+        """
+        return pulumi.get(self, "forbidden")
+
+    @property
+    @pulumi.getter(name="identityDenied")
+    def identity_denied(self) -> Optional[str]:
+        """
+        The id of the identity denied page.
+        """
+        return pulumi.get(self, "identity_denied")
 
 
 @pulumi.output_type
@@ -5730,12 +5779,18 @@ class LoadBalancerAdaptiveRouting(dict):
 
     def __init__(__self__, *,
                  failover_across_pools: Optional[bool] = None):
+        """
+        :param bool failover_across_pools: Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+        """
         if failover_across_pools is not None:
             pulumi.set(__self__, "failover_across_pools", failover_across_pools)
 
     @property
     @pulumi.getter(name="failoverAcrossPools")
     def failover_across_pools(self) -> Optional[bool]:
+        """
+        Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+        """
         return pulumi.get(self, "failover_across_pools")
 
 
@@ -5761,17 +5816,27 @@ class LoadBalancerCountryPool(dict):
     def __init__(__self__, *,
                  country: str,
                  pool_ids: Sequence[str]):
+        """
+        :param str country: A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+        :param Sequence[str] pool_ids: A list of pool IDs in failover priority to use in the given country.
+        """
         pulumi.set(__self__, "country", country)
         pulumi.set(__self__, "pool_ids", pool_ids)
 
     @property
     @pulumi.getter
     def country(self) -> str:
+        """
+        A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+        """
         return pulumi.get(self, "country")
 
     @property
     @pulumi.getter(name="poolIds")
     def pool_ids(self) -> Sequence[str]:
+        """
+        A list of pool IDs in failover priority to use in the given country.
+        """
         return pulumi.get(self, "pool_ids")
 
 
@@ -5797,6 +5862,10 @@ class LoadBalancerLocationStrategy(dict):
     def __init__(__self__, *,
                  mode: Optional[str] = None,
                  prefer_ecs: Optional[str] = None):
+        """
+        :param str mode: Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`. Defaults to `pop`.
+        :param str prefer_ecs: Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
+        """
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if prefer_ecs is not None:
@@ -5805,11 +5874,17 @@ class LoadBalancerLocationStrategy(dict):
     @property
     @pulumi.getter
     def mode(self) -> Optional[str]:
+        """
+        Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`. Defaults to `pop`.
+        """
         return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter(name="preferEcs")
     def prefer_ecs(self) -> Optional[str]:
+        """
+        Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
+        """
         return pulumi.get(self, "prefer_ecs")
 
 
@@ -6045,17 +6120,27 @@ class LoadBalancerPopPool(dict):
     def __init__(__self__, *,
                  pool_ids: Sequence[str],
                  pop: str):
+        """
+        :param Sequence[str] pool_ids: A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        :param str pop: A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+        """
         pulumi.set(__self__, "pool_ids", pool_ids)
         pulumi.set(__self__, "pop", pop)
 
     @property
     @pulumi.getter(name="poolIds")
     def pool_ids(self) -> Sequence[str]:
+        """
+        A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        """
         return pulumi.get(self, "pool_ids")
 
     @property
     @pulumi.getter
     def pop(self) -> str:
+        """
+        A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+        """
         return pulumi.get(self, "pop")
 
 
@@ -6083,6 +6168,10 @@ class LoadBalancerRandomSteering(dict):
     def __init__(__self__, *,
                  default_weight: Optional[float] = None,
                  pool_weights: Optional[Mapping[str, float]] = None):
+        """
+        :param float default_weight: The default weight for pools in the load balancer that are not specified in the `pool_weights` map.
+        :param Mapping[str, float] pool_weights: A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
+        """
         if default_weight is not None:
             pulumi.set(__self__, "default_weight", default_weight)
         if pool_weights is not None:
@@ -6091,11 +6180,17 @@ class LoadBalancerRandomSteering(dict):
     @property
     @pulumi.getter(name="defaultWeight")
     def default_weight(self) -> Optional[float]:
+        """
+        The default weight for pools in the load balancer that are not specified in the `pool_weights` map.
+        """
         return pulumi.get(self, "default_weight")
 
     @property
     @pulumi.getter(name="poolWeights")
     def pool_weights(self) -> Optional[Mapping[str, float]]:
+        """
+        A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
+        """
         return pulumi.get(self, "pool_weights")
 
 
@@ -6121,17 +6216,27 @@ class LoadBalancerRegionPool(dict):
     def __init__(__self__, *,
                  pool_ids: Sequence[str],
                  region: str):
+        """
+        :param Sequence[str] pool_ids: A list of pool IDs in failover priority to use in the given region.
+        :param str region: A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
+        """
         pulumi.set(__self__, "pool_ids", pool_ids)
         pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="poolIds")
     def pool_ids(self) -> Sequence[str]:
+        """
+        A list of pool IDs in failover priority to use in the given region.
+        """
         return pulumi.get(self, "pool_ids")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
+        """
         return pulumi.get(self, "region")
 
 
@@ -6162,6 +6267,15 @@ class LoadBalancerRule(dict):
                  overrides: Optional[Sequence['outputs.LoadBalancerRuleOverride']] = None,
                  priority: Optional[int] = None,
                  terminates: Optional[bool] = None):
+        """
+        :param str name: Human readable name for this rule.
+        :param str condition: The statement to evaluate to determine if this rule's effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+        :param bool disabled: A disabled rule will not be executed.
+        :param 'LoadBalancerRuleFixedResponseArgs' fixed_response: Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: `overrides` or `fixed_response` must be set.
+        :param Sequence['LoadBalancerRuleOverrideArgs'] overrides: The load balancer settings to alter if this rule's `condition` is true. Note: `overrides` or `fixed_response` must be set.
+        :param int priority: Priority used when determining the order of rule execution. Lower values are executed first. If not provided, the list order will be used.
+        :param bool terminates: Terminates indicates that if this rule is true no further rules should be executed. Note: setting a `fixed_response` forces this field to `true`.
+        """
         pulumi.set(__self__, "name", name)
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -6179,36 +6293,57 @@ class LoadBalancerRule(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Human readable name for this rule.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def condition(self) -> Optional[str]:
+        """
+        The statement to evaluate to determine if this rule's effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+        """
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter
     def disabled(self) -> Optional[bool]:
+        """
+        A disabled rule will not be executed.
+        """
         return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter(name="fixedResponse")
     def fixed_response(self) -> Optional['outputs.LoadBalancerRuleFixedResponse']:
+        """
+        Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: `overrides` or `fixed_response` must be set.
+        """
         return pulumi.get(self, "fixed_response")
 
     @property
     @pulumi.getter
     def overrides(self) -> Optional[Sequence['outputs.LoadBalancerRuleOverride']]:
+        """
+        The load balancer settings to alter if this rule's `condition` is true. Note: `overrides` or `fixed_response` must be set.
+        """
         return pulumi.get(self, "overrides")
 
     @property
     @pulumi.getter
     def priority(self) -> Optional[int]:
+        """
+        Priority used when determining the order of rule execution. Lower values are executed first. If not provided, the list order will be used.
+        """
         return pulumi.get(self, "priority")
 
     @property
     @pulumi.getter
     def terminates(self) -> Optional[bool]:
+        """
+        Terminates indicates that if this rule is true no further rules should be executed. Note: setting a `fixed_response` forces this field to `true`.
+        """
         return pulumi.get(self, "terminates")
 
 
@@ -6325,6 +6460,19 @@ class LoadBalancerRuleOverride(dict):
                  session_affinity_ttl: Optional[int] = None,
                  steering_policy: Optional[str] = None,
                  ttl: Optional[int] = None):
+        """
+        :param Sequence['LoadBalancerRuleOverrideAdaptiveRoutingArgs'] adaptive_routings: Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+        :param Sequence['LoadBalancerRuleOverrideCountryPoolArgs'] country_pools: A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
+        :param Sequence['LoadBalancerRuleOverrideLocationStrategyArgs'] location_strategies: Controls location-based steering for non-proxied requests.
+        :param Sequence['LoadBalancerRuleOverridePopPoolArgs'] pop_pools: A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+        :param Sequence['LoadBalancerRuleOverrideRandomSteeringArgs'] random_steerings: Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="least_outstanding_requests"`, pool weights are used to scale each pool's outstanding requests.
+        :param Sequence['LoadBalancerRuleOverrideRegionPoolArgs'] region_pools: A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
+        :param str session_affinity: Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.
+        :param Sequence['LoadBalancerRuleOverrideSessionAffinityAttributeArgs'] session_affinity_attributes: Configure attributes for session affinity.
+        :param int session_affinity_ttl: Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
+        :param str steering_policy: The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `""` Defaults to `""`.
+        :param int ttl: Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+        """
         if adaptive_routings is not None:
             pulumi.set(__self__, "adaptive_routings", adaptive_routings)
         if country_pools is not None:
@@ -6355,11 +6503,17 @@ class LoadBalancerRuleOverride(dict):
     @property
     @pulumi.getter(name="adaptiveRoutings")
     def adaptive_routings(self) -> Optional[Sequence['outputs.LoadBalancerRuleOverrideAdaptiveRouting']]:
+        """
+        Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
+        """
         return pulumi.get(self, "adaptive_routings")
 
     @property
     @pulumi.getter(name="countryPools")
     def country_pools(self) -> Optional[Sequence['outputs.LoadBalancerRuleOverrideCountryPool']]:
+        """
+        A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
+        """
         return pulumi.get(self, "country_pools")
 
     @property
@@ -6375,46 +6529,73 @@ class LoadBalancerRuleOverride(dict):
     @property
     @pulumi.getter(name="locationStrategies")
     def location_strategies(self) -> Optional[Sequence['outputs.LoadBalancerRuleOverrideLocationStrategy']]:
+        """
+        Controls location-based steering for non-proxied requests.
+        """
         return pulumi.get(self, "location_strategies")
 
     @property
     @pulumi.getter(name="popPools")
     def pop_pools(self) -> Optional[Sequence['outputs.LoadBalancerRuleOverridePopPool']]:
+        """
+        A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
+        """
         return pulumi.get(self, "pop_pools")
 
     @property
     @pulumi.getter(name="randomSteerings")
     def random_steerings(self) -> Optional[Sequence['outputs.LoadBalancerRuleOverrideRandomSteering']]:
+        """
+        Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="least_outstanding_requests"`, pool weights are used to scale each pool's outstanding requests.
+        """
         return pulumi.get(self, "random_steerings")
 
     @property
     @pulumi.getter(name="regionPools")
     def region_pools(self) -> Optional[Sequence['outputs.LoadBalancerRuleOverrideRegionPool']]:
+        """
+        A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
+        """
         return pulumi.get(self, "region_pools")
 
     @property
     @pulumi.getter(name="sessionAffinity")
     def session_affinity(self) -> Optional[str]:
+        """
+        Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.
+        """
         return pulumi.get(self, "session_affinity")
 
     @property
     @pulumi.getter(name="sessionAffinityAttributes")
     def session_affinity_attributes(self) -> Optional[Sequence['outputs.LoadBalancerRuleOverrideSessionAffinityAttribute']]:
+        """
+        Configure attributes for session affinity.
+        """
         return pulumi.get(self, "session_affinity_attributes")
 
     @property
     @pulumi.getter(name="sessionAffinityTtl")
     def session_affinity_ttl(self) -> Optional[int]:
+        """
+        Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
+        """
         return pulumi.get(self, "session_affinity_ttl")
 
     @property
     @pulumi.getter(name="steeringPolicy")
     def steering_policy(self) -> Optional[str]:
+        """
+        The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `""` Defaults to `""`.
+        """
         return pulumi.get(self, "steering_policy")
 
     @property
     @pulumi.getter
     def ttl(self) -> Optional[int]:
+        """
+        Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+        """
         return pulumi.get(self, "ttl")
 
 
@@ -6439,12 +6620,18 @@ class LoadBalancerRuleOverrideAdaptiveRouting(dict):
 
     def __init__(__self__, *,
                  failover_across_pools: Optional[bool] = None):
+        """
+        :param bool failover_across_pools: Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+        """
         if failover_across_pools is not None:
             pulumi.set(__self__, "failover_across_pools", failover_across_pools)
 
     @property
     @pulumi.getter(name="failoverAcrossPools")
     def failover_across_pools(self) -> Optional[bool]:
+        """
+        Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+        """
         return pulumi.get(self, "failover_across_pools")
 
 
@@ -6470,17 +6657,27 @@ class LoadBalancerRuleOverrideCountryPool(dict):
     def __init__(__self__, *,
                  country: str,
                  pool_ids: Sequence[str]):
+        """
+        :param str country: A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+        :param Sequence[str] pool_ids: A list of pool IDs in failover priority to use in the given country.
+        """
         pulumi.set(__self__, "country", country)
         pulumi.set(__self__, "pool_ids", pool_ids)
 
     @property
     @pulumi.getter
     def country(self) -> str:
+        """
+        A country code which can be determined with the Load Balancing Regions API described [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/). Multiple entries should not be specified with the same country.
+        """
         return pulumi.get(self, "country")
 
     @property
     @pulumi.getter(name="poolIds")
     def pool_ids(self) -> Sequence[str]:
+        """
+        A list of pool IDs in failover priority to use in the given country.
+        """
         return pulumi.get(self, "pool_ids")
 
 
@@ -6506,6 +6703,10 @@ class LoadBalancerRuleOverrideLocationStrategy(dict):
     def __init__(__self__, *,
                  mode: Optional[str] = None,
                  prefer_ecs: Optional[str] = None):
+        """
+        :param str mode: Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`. Defaults to `pop`.
+        :param str prefer_ecs: Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
+        """
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if prefer_ecs is not None:
@@ -6514,11 +6715,17 @@ class LoadBalancerRuleOverrideLocationStrategy(dict):
     @property
     @pulumi.getter
     def mode(self) -> Optional[str]:
+        """
+        Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`. Defaults to `pop`.
+        """
         return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter(name="preferEcs")
     def prefer_ecs(self) -> Optional[str]:
+        """
+        Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
+        """
         return pulumi.get(self, "prefer_ecs")
 
 
@@ -6544,17 +6751,27 @@ class LoadBalancerRuleOverridePopPool(dict):
     def __init__(__self__, *,
                  pool_ids: Sequence[str],
                  pop: str):
+        """
+        :param Sequence[str] pool_ids: A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        :param str pop: A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+        """
         pulumi.set(__self__, "pool_ids", pool_ids)
         pulumi.set(__self__, "pop", pop)
 
     @property
     @pulumi.getter(name="poolIds")
     def pool_ids(self) -> Sequence[str]:
+        """
+        A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        """
         return pulumi.get(self, "pool_ids")
 
     @property
     @pulumi.getter
     def pop(self) -> str:
+        """
+        A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+        """
         return pulumi.get(self, "pop")
 
 
@@ -6582,6 +6799,10 @@ class LoadBalancerRuleOverrideRandomSteering(dict):
     def __init__(__self__, *,
                  default_weight: Optional[float] = None,
                  pool_weights: Optional[Mapping[str, float]] = None):
+        """
+        :param float default_weight: The default weight for pools in the load balancer that are not specified in the `pool_weights` map.
+        :param Mapping[str, float] pool_weights: A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
+        """
         if default_weight is not None:
             pulumi.set(__self__, "default_weight", default_weight)
         if pool_weights is not None:
@@ -6590,11 +6811,17 @@ class LoadBalancerRuleOverrideRandomSteering(dict):
     @property
     @pulumi.getter(name="defaultWeight")
     def default_weight(self) -> Optional[float]:
+        """
+        The default weight for pools in the load balancer that are not specified in the `pool_weights` map.
+        """
         return pulumi.get(self, "default_weight")
 
     @property
     @pulumi.getter(name="poolWeights")
     def pool_weights(self) -> Optional[Mapping[str, float]]:
+        """
+        A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.
+        """
         return pulumi.get(self, "pool_weights")
 
 
@@ -6620,17 +6847,27 @@ class LoadBalancerRuleOverrideRegionPool(dict):
     def __init__(__self__, *,
                  pool_ids: Sequence[str],
                  region: str):
+        """
+        :param Sequence[str] pool_ids: A list of pool IDs in failover priority to use in the given region.
+        :param str region: A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
+        """
         pulumi.set(__self__, "pool_ids", pool_ids)
         pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="poolIds")
     def pool_ids(self) -> Sequence[str]:
+        """
+        A list of pool IDs in failover priority to use in the given region.
+        """
         return pulumi.get(self, "pool_ids")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        A region code which must be in the list defined [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions). Multiple entries should not be specified with the same region.
+        """
         return pulumi.get(self, "region")
 
 
@@ -6661,6 +6898,13 @@ class LoadBalancerRuleOverrideSessionAffinityAttribute(dict):
                  samesite: Optional[str] = None,
                  secure: Optional[str] = None,
                  zero_downtime_failover: Optional[str] = None):
+        """
+        :param Sequence[str] headers: Configures the HTTP header names to use when header session affinity is enabled.
+        :param bool require_all_headers: Configures how headers are used when header session affinity is enabled. Set to true to require all headers to be present on requests in order for sessions to be created or false to require at least one header to be present. Defaults to `false`.
+        :param str samesite: Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+        :param str secure: Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+        :param str zero_downtime_failover: Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+        """
         if headers is not None:
             pulumi.set(__self__, "headers", headers)
         if require_all_headers is not None:
@@ -6675,26 +6919,41 @@ class LoadBalancerRuleOverrideSessionAffinityAttribute(dict):
     @property
     @pulumi.getter
     def headers(self) -> Optional[Sequence[str]]:
+        """
+        Configures the HTTP header names to use when header session affinity is enabled.
+        """
         return pulumi.get(self, "headers")
 
     @property
     @pulumi.getter(name="requireAllHeaders")
     def require_all_headers(self) -> Optional[bool]:
+        """
+        Configures how headers are used when header session affinity is enabled. Set to true to require all headers to be present on requests in order for sessions to be created or false to require at least one header to be present. Defaults to `false`.
+        """
         return pulumi.get(self, "require_all_headers")
 
     @property
     @pulumi.getter
     def samesite(self) -> Optional[str]:
+        """
+        Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+        """
         return pulumi.get(self, "samesite")
 
     @property
     @pulumi.getter
     def secure(self) -> Optional[str]:
+        """
+        Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+        """
         return pulumi.get(self, "secure")
 
     @property
     @pulumi.getter(name="zeroDowntimeFailover")
     def zero_downtime_failover(self) -> Optional[str]:
+        """
+        Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+        """
         return pulumi.get(self, "zero_downtime_failover")
 
 
@@ -6728,6 +6987,14 @@ class LoadBalancerSessionAffinityAttribute(dict):
                  samesite: Optional[str] = None,
                  secure: Optional[str] = None,
                  zero_downtime_failover: Optional[str] = None):
+        """
+        :param int drain_duration: Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. Defaults to `0`.
+        :param Sequence[str] headers: Configures the HTTP header names to use when header session affinity is enabled.
+        :param bool require_all_headers: Configures how headers are used when header session affinity is enabled. Set to true to require all headers to be present on requests in order for sessions to be created or false to require at least one header to be present. Defaults to `false`.
+        :param str samesite: Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+        :param str secure: Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+        :param str zero_downtime_failover: Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+        """
         if drain_duration is not None:
             pulumi.set(__self__, "drain_duration", drain_duration)
         if headers is not None:
@@ -6744,31 +7011,49 @@ class LoadBalancerSessionAffinityAttribute(dict):
     @property
     @pulumi.getter(name="drainDuration")
     def drain_duration(self) -> Optional[int]:
+        """
+        Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. Defaults to `0`.
+        """
         return pulumi.get(self, "drain_duration")
 
     @property
     @pulumi.getter
     def headers(self) -> Optional[Sequence[str]]:
+        """
+        Configures the HTTP header names to use when header session affinity is enabled.
+        """
         return pulumi.get(self, "headers")
 
     @property
     @pulumi.getter(name="requireAllHeaders")
     def require_all_headers(self) -> Optional[bool]:
+        """
+        Configures how headers are used when header session affinity is enabled. Set to true to require all headers to be present on requests in order for sessions to be created or false to require at least one header to be present. Defaults to `false`.
+        """
         return pulumi.get(self, "require_all_headers")
 
     @property
     @pulumi.getter
     def samesite(self) -> Optional[str]:
+        """
+        Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+        """
         return pulumi.get(self, "samesite")
 
     @property
     @pulumi.getter
     def secure(self) -> Optional[str]:
+        """
+        Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+        """
         return pulumi.get(self, "secure")
 
     @property
     @pulumi.getter(name="zeroDowntimeFailover")
     def zero_downtime_failover(self) -> Optional[str]:
+        """
+        Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+        """
         return pulumi.get(self, "zero_downtime_failover")
 
 
@@ -8333,18 +8618,20 @@ class PagesProjectBuildConfig(dict):
 @pulumi.output_type
 class PagesProjectDeploymentConfigs(dict):
     def __init__(__self__, *,
-                 preview: 'outputs.PagesProjectDeploymentConfigsPreview',
-                 production: 'outputs.PagesProjectDeploymentConfigsProduction'):
+                 preview: Optional['outputs.PagesProjectDeploymentConfigsPreview'] = None,
+                 production: Optional['outputs.PagesProjectDeploymentConfigsProduction'] = None):
         """
         :param 'PagesProjectDeploymentConfigsPreviewArgs' preview: Configuration for preview deploys.
         :param 'PagesProjectDeploymentConfigsProductionArgs' production: Configuration for production deploys.
         """
-        pulumi.set(__self__, "preview", preview)
-        pulumi.set(__self__, "production", production)
+        if preview is not None:
+            pulumi.set(__self__, "preview", preview)
+        if production is not None:
+            pulumi.set(__self__, "production", production)
 
     @property
     @pulumi.getter
-    def preview(self) -> 'outputs.PagesProjectDeploymentConfigsPreview':
+    def preview(self) -> Optional['outputs.PagesProjectDeploymentConfigsPreview']:
         """
         Configuration for preview deploys.
         """
@@ -8352,7 +8639,7 @@ class PagesProjectDeploymentConfigs(dict):
 
     @property
     @pulumi.getter
-    def production(self) -> 'outputs.PagesProjectDeploymentConfigsProduction':
+    def production(self) -> Optional['outputs.PagesProjectDeploymentConfigsProduction']:
         """
         Configuration for production deploys.
         """
@@ -8525,7 +8812,7 @@ class PagesProjectDeploymentConfigsPreviewServiceBinding(dict):
                  service: str,
                  environment: Optional[str] = None):
         """
-        :param str name: Name of the project. **Modifying this attribute will force creation of a new resource.**
+        :param str name: Name of the project.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "service", service)
@@ -8536,7 +8823,7 @@ class PagesProjectDeploymentConfigsPreviewServiceBinding(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the project. **Modifying this attribute will force creation of a new resource.**
+        Name of the project.
         """
         return pulumi.get(self, "name")
 
@@ -8717,7 +9004,7 @@ class PagesProjectDeploymentConfigsProductionServiceBinding(dict):
                  service: str,
                  environment: Optional[str] = None):
         """
-        :param str name: Name of the project. **Modifying this attribute will force creation of a new resource.**
+        :param str name: Name of the project.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "service", service)
@@ -8728,7 +9015,7 @@ class PagesProjectDeploymentConfigsProductionServiceBinding(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the project. **Modifying this attribute will force creation of a new resource.**
+        Name of the project.
         """
         return pulumi.get(self, "name")
 
@@ -15508,7 +15795,7 @@ class GetRulesetsFilterResult(dict):
                  version: Optional[str] = None):
         """
         :param str id: The ID of the Ruleset to target.
-        :param str kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+        :param str kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
         :param str name: Name of the ruleset.
         :param str phase: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `http_response_compression`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
         :param str version: Version of the ruleset to filter on.
@@ -15536,7 +15823,7 @@ class GetRulesetsFilterResult(dict):
     @pulumi.getter
     def kind(self) -> Optional[str]:
         """
-        Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`.
+        Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
         """
         return pulumi.get(self, "kind")
 
