@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-cloudflare/examples/record/go
 
-go 1.19
+go 1.20
 
 require (
 	github.com/pulumi/pulumi-cloudflare/sdk/v5 v5.0.0
