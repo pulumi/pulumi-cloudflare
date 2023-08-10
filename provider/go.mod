@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-cloudflare/provider/v5
 
-go 1.19
+go 1.20
 
 require (
 	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220823222840-b2cee3be8c57
