@@ -22,6 +22,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Enableds;
         /// <summary>
+        /// Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+        /// </summary>
+        public readonly ImmutableArray<string> Environments;
+        /// <summary>
         /// Source configuration to alert on for pool or origin.
         /// </summary>
         public readonly ImmutableArray<string> EventSources;
@@ -29,6 +33,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Stream event type to alert on.
         /// </summary>
         public readonly ImmutableArray<string> EventTypes;
+        /// <summary>
+        /// Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+        /// </summary>
+        public readonly ImmutableArray<string> Events;
         /// <summary>
         /// Identifier health check. Required when using `filters.0.status`.
         /// </summary>
@@ -61,6 +69,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Product name. Available values: `worker_requests`, `worker_durable_objects_requests`, `worker_durable_objects_duration`, `worker_durable_objects_data_transfer`, `worker_durable_objects_stored_data`, `worker_durable_objects_storage_deletes`, `worker_durable_objects_storage_writes`, `worker_durable_objects_storage_reads`.
         /// </summary>
         public readonly ImmutableArray<string> Products;
+        /// <summary>
+        /// Identifier of pages project.
+        /// </summary>
+        public readonly ImmutableArray<string> ProjectIds;
         /// <summary>
         /// Protocol to alert on for dos.
         /// </summary>
@@ -97,9 +109,13 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> enableds,
 
+            ImmutableArray<string> environments,
+
             ImmutableArray<string> eventSources,
 
             ImmutableArray<string> eventTypes,
+
+            ImmutableArray<string> events,
 
             ImmutableArray<string> healthCheckIds,
 
@@ -116,6 +132,8 @@ namespace Pulumi.Cloudflare.Outputs
             ImmutableArray<string> poolIds,
 
             ImmutableArray<string> products,
+
+            ImmutableArray<string> projectIds,
 
             ImmutableArray<string> protocols,
 
@@ -135,8 +153,10 @@ namespace Pulumi.Cloudflare.Outputs
         {
             AlertTriggerPreferences = alertTriggerPreferences;
             Enableds = enableds;
+            Environments = environments;
             EventSources = eventSources;
             EventTypes = eventTypes;
+            Events = events;
             HealthCheckIds = healthCheckIds;
             InputIds = inputIds;
             Limits = limits;
@@ -145,6 +165,7 @@ namespace Pulumi.Cloudflare.Outputs
             PacketsPerSeconds = packetsPerSeconds;
             PoolIds = poolIds;
             Products = products;
+            ProjectIds = projectIds;
             Protocols = protocols;
             RequestsPerSeconds = requestsPerSeconds;
             Services = services;

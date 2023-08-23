@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.GreTunnel("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         CloudflareGreEndpoint = "203.0.113.1",
+    ///         CloudflareGreEndpoint = "203.0.113.2",
     ///         CustomerGreEndpoint = "203.0.113.1",
     ///         Description = "Tunnel for ISP X",
     ///         HealthCheckEnabled = true,

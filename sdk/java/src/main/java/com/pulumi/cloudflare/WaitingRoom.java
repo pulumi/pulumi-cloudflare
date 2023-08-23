@@ -58,6 +58,7 @@ import javax.annotation.Nullable;
  *             .name(&#34;foo&#34;)
  *             .newUsersPerMinute(200)
  *             .path(&#34;/&#34;)
+ *             .queueingStatusCode(200)
  *             .totalActiveUsers(200)
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
@@ -258,6 +259,20 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> queueingMethod() {
         return Codegen.optional(this.queueingMethod);
+    }
+    /**
+     * HTTP status code returned to a user while in the queue.
+     * 
+     */
+    @Export(name="queueingStatusCode", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> queueingStatusCode;
+
+    /**
+     * @return HTTP status code returned to a user while in the queue.
+     * 
+     */
+    public Output<Optional<Integer>> queueingStatusCode() {
+        return Codegen.optional(this.queueingStatusCode);
     }
     /**
      * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.

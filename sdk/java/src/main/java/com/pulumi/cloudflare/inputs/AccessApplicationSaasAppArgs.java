@@ -3,9 +3,11 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.AccessApplicationSaasAppCustomAttributeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -28,6 +30,21 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
      */
     public Output<String> consumerServiceUrl() {
         return this.consumerServiceUrl;
+    }
+
+    /**
+     * Custom attribute mapped from IDPs.
+     * 
+     */
+    @Import(name="customAttributes")
+    private @Nullable Output<List<AccessApplicationSaasAppCustomAttributeArgs>> customAttributes;
+
+    /**
+     * @return Custom attribute mapped from IDPs.
+     * 
+     */
+    public Optional<Output<List<AccessApplicationSaasAppCustomAttributeArgs>>> customAttributes() {
+        return Optional.ofNullable(this.customAttributes);
     }
 
     /**
@@ -64,6 +81,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
 
     private AccessApplicationSaasAppArgs(AccessApplicationSaasAppArgs $) {
         this.consumerServiceUrl = $.consumerServiceUrl;
+        this.customAttributes = $.customAttributes;
         this.nameIdFormat = $.nameIdFormat;
         this.spEntityId = $.spEntityId;
     }
@@ -105,6 +123,37 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
          */
         public Builder consumerServiceUrl(String consumerServiceUrl) {
             return consumerServiceUrl(Output.of(consumerServiceUrl));
+        }
+
+        /**
+         * @param customAttributes Custom attribute mapped from IDPs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customAttributes(@Nullable Output<List<AccessApplicationSaasAppCustomAttributeArgs>> customAttributes) {
+            $.customAttributes = customAttributes;
+            return this;
+        }
+
+        /**
+         * @param customAttributes Custom attribute mapped from IDPs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customAttributes(List<AccessApplicationSaasAppCustomAttributeArgs> customAttributes) {
+            return customAttributes(Output.of(customAttributes));
+        }
+
+        /**
+         * @param customAttributes Custom attribute mapped from IDPs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customAttributes(AccessApplicationSaasAppCustomAttributeArgs... customAttributes) {
+            return customAttributes(List.of(customAttributes));
         }
 
         /**

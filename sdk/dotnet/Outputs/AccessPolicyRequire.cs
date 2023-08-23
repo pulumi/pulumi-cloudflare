@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessPolicyRequire
     {
         public readonly bool? AnyValidServiceToken;
+        public readonly ImmutableArray<Outputs.AccessPolicyRequireAuthContext> AuthContexts;
         public readonly string? AuthMethod;
         public readonly ImmutableArray<Outputs.AccessPolicyRequireAzure> Azures;
         public readonly bool? Certificate;
@@ -37,6 +38,8 @@ namespace Pulumi.Cloudflare.Outputs
         [OutputConstructor]
         private AccessPolicyRequire(
             bool? anyValidServiceToken,
+
+            ImmutableArray<Outputs.AccessPolicyRequireAuthContext> authContexts,
 
             string? authMethod,
 
@@ -77,6 +80,7 @@ namespace Pulumi.Cloudflare.Outputs
             ImmutableArray<string> serviceTokens)
         {
             AnyValidServiceToken = anyValidServiceToken;
+            AuthContexts = authContexts;
             AuthMethod = authMethod;
             Azures = azures;
             Certificate = certificate;

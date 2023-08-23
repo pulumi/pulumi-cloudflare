@@ -403,7 +403,7 @@ class GreTunnel(pulumi.CustomResource):
 
         example = cloudflare.GreTunnel("example",
             account_id="f037e56e89293a057740de681ac9abbe",
-            cloudflare_gre_endpoint="203.0.113.1",
+            cloudflare_gre_endpoint="203.0.113.2",
             customer_gre_endpoint="203.0.113.1",
             description="Tunnel for ISP X",
             health_check_enabled=True,
@@ -452,7 +452,7 @@ class GreTunnel(pulumi.CustomResource):
 
         example = cloudflare.GreTunnel("example",
             account_id="f037e56e89293a057740de681ac9abbe",
-            cloudflare_gre_endpoint="203.0.113.1",
+            cloudflare_gre_endpoint="203.0.113.2",
             customer_gre_endpoint="203.0.113.1",
             description="Tunnel for ISP X",
             health_check_enabled=True,

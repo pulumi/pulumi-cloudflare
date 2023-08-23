@@ -12,10 +12,8 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  * import * as tls from "@pulumi/tls";
  *
- * // Create a CSR and generate a CA certificate
  * const examplePrivateKey = new tls.PrivateKey("examplePrivateKey", {algorithm: "RSA"});
  * const exampleCertRequest = new tls.CertRequest("exampleCertRequest", {
- *     keyAlgorithm: examplePrivateKey.algorithm,
  *     privateKeyPem: examplePrivateKey.privateKeyPem,
  *     subjects: [{
  *         commonName: "",

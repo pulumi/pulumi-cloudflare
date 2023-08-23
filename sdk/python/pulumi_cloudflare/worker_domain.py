@@ -210,6 +210,12 @@ class WorkerDomain(pulumi.CustomResource):
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/workerDomain:WorkerDomain example <account_id>/<worker_domain_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -238,6 +244,12 @@ class WorkerDomain(pulumi.CustomResource):
             hostname="subdomain.example.com",
             service="my-service",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/workerDomain:WorkerDomain example <account_id>/<worker_domain_id>
         ```
 
         :param str resource_name: The name of the resource.

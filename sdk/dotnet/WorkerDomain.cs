@@ -32,6 +32,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/workerDomain:WorkerDomain example &lt;account_id&gt;/&lt;worker_domain_id&gt;
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workerDomain:WorkerDomain")]
     public partial class WorkerDomain : global::Pulumi.CustomResource

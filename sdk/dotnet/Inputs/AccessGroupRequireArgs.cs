@@ -15,6 +15,14 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("anyValidServiceToken")]
         public Input<bool>? AnyValidServiceToken { get; set; }
 
+        [Input("authContexts")]
+        private InputList<Inputs.AccessGroupRequireAuthContextArgs>? _authContexts;
+        public InputList<Inputs.AccessGroupRequireAuthContextArgs> AuthContexts
+        {
+            get => _authContexts ?? (_authContexts = new InputList<Inputs.AccessGroupRequireAuthContextArgs>());
+            set => _authContexts = value;
+        }
+
         [Input("authMethod")]
         public Input<string>? AuthMethod { get; set; }
 

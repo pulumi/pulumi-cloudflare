@@ -50,6 +50,12 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import cloudflare:index/workerDomain:WorkerDomain example &lt;account_id&gt;/&lt;worker_domain_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/workerDomain:WorkerDomain")
 public class WorkerDomain extends com.pulumi.resources.CustomResource {

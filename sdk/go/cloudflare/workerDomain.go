@@ -42,6 +42,14 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import cloudflare:index/workerDomain:WorkerDomain example <account_id>/<worker_domain_id>
+//
+// ```
 type WorkerDomain struct {
 	pulumi.CustomResourceState
 

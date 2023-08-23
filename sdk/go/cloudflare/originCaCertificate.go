@@ -34,7 +34,6 @@ import (
 //				return err
 //			}
 //			exampleCertRequest, err := tls.NewCertRequest(ctx, "exampleCertRequest", &tls.CertRequestArgs{
-//				KeyAlgorithm:  examplePrivateKey.Algorithm,
 //				PrivateKeyPem: examplePrivateKey.PrivateKeyPem,
 //				Subjects: tls.CertRequestSubjectArray{
 //					&tls.CertRequestSubjectArgs{

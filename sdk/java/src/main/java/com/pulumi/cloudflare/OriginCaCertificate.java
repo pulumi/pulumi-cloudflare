@@ -49,7 +49,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleCertRequest = new CertRequest(&#34;exampleCertRequest&#34;, CertRequestArgs.builder()        
- *             .keyAlgorithm(examplePrivateKey.algorithm())
  *             .privateKeyPem(examplePrivateKey.privateKeyPem())
  *             .subjects(CertRequestSubjectArgs.builder()
  *                 .commonName(&#34;&#34;)

@@ -31,6 +31,7 @@ class WaitingRoomArgs:
                  path: Optional[pulumi.Input[str]] = None,
                  queue_all: Optional[pulumi.Input[bool]] = None,
                  queueing_method: Optional[pulumi.Input[str]] = None,
+                 queueing_status_code: Optional[pulumi.Input[int]] = None,
                  session_duration: Optional[pulumi.Input[int]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None):
         """
@@ -50,6 +51,7 @@ class WaitingRoomArgs:
         :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Defaults to `/`.
         :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
         :param pulumi.Input[str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
+        :param pulumi.Input[int] queueing_status_code: HTTP status code returned to a user while in the queue.
         :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
         :param pulumi.Input[bool] suspended: Suspends the waiting room.
         """
@@ -78,6 +80,8 @@ class WaitingRoomArgs:
             pulumi.set(__self__, "queue_all", queue_all)
         if queueing_method is not None:
             pulumi.set(__self__, "queueing_method", queueing_method)
+        if queueing_status_code is not None:
+            pulumi.set(__self__, "queueing_status_code", queueing_status_code)
         if session_duration is not None:
             pulumi.set(__self__, "session_duration", session_duration)
         if suspended is not None:
@@ -264,6 +268,18 @@ class WaitingRoomArgs:
         pulumi.set(self, "queueing_method", value)
 
     @property
+    @pulumi.getter(name="queueingStatusCode")
+    def queueing_status_code(self) -> Optional[pulumi.Input[int]]:
+        """
+        HTTP status code returned to a user while in the queue.
+        """
+        return pulumi.get(self, "queueing_status_code")
+
+    @queueing_status_code.setter
+    def queueing_status_code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "queueing_status_code", value)
+
+    @property
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[int]]:
         """
@@ -304,6 +320,7 @@ class _WaitingRoomState:
                  path: Optional[pulumi.Input[str]] = None,
                  queue_all: Optional[pulumi.Input[bool]] = None,
                  queueing_method: Optional[pulumi.Input[str]] = None,
+                 queueing_status_code: Optional[pulumi.Input[int]] = None,
                  session_duration: Optional[pulumi.Input[int]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  total_active_users: Optional[pulumi.Input[int]] = None,
@@ -323,6 +340,7 @@ class _WaitingRoomState:
         :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Defaults to `/`.
         :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
         :param pulumi.Input[str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
+        :param pulumi.Input[int] queueing_status_code: HTTP status code returned to a user while in the queue.
         :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
         :param pulumi.Input[bool] suspended: Suspends the waiting room.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
@@ -354,6 +372,8 @@ class _WaitingRoomState:
             pulumi.set(__self__, "queue_all", queue_all)
         if queueing_method is not None:
             pulumi.set(__self__, "queueing_method", queueing_method)
+        if queueing_status_code is not None:
+            pulumi.set(__self__, "queueing_status_code", queueing_status_code)
         if session_duration is not None:
             pulumi.set(__self__, "session_duration", session_duration)
         if suspended is not None:
@@ -520,6 +540,18 @@ class _WaitingRoomState:
         pulumi.set(self, "queueing_method", value)
 
     @property
+    @pulumi.getter(name="queueingStatusCode")
+    def queueing_status_code(self) -> Optional[pulumi.Input[int]]:
+        """
+        HTTP status code returned to a user while in the queue.
+        """
+        return pulumi.get(self, "queueing_status_code")
+
+    @queueing_status_code.setter
+    def queueing_status_code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "queueing_status_code", value)
+
+    @property
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[int]]:
         """
@@ -586,6 +618,7 @@ class WaitingRoom(pulumi.CustomResource):
                  path: Optional[pulumi.Input[str]] = None,
                  queue_all: Optional[pulumi.Input[bool]] = None,
                  queueing_method: Optional[pulumi.Input[str]] = None,
+                 queueing_status_code: Optional[pulumi.Input[int]] = None,
                  session_duration: Optional[pulumi.Input[int]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  total_active_users: Optional[pulumi.Input[int]] = None,
@@ -616,6 +649,7 @@ class WaitingRoom(pulumi.CustomResource):
             name="foo",
             new_users_per_minute=200,
             path="/",
+            queueing_status_code=200,
             total_active_users=200,
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
@@ -643,6 +677,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Defaults to `/`.
         :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
         :param pulumi.Input[str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
+        :param pulumi.Input[int] queueing_status_code: HTTP status code returned to a user while in the queue.
         :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
         :param pulumi.Input[bool] suspended: Suspends the waiting room.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
@@ -679,6 +714,7 @@ class WaitingRoom(pulumi.CustomResource):
             name="foo",
             new_users_per_minute=200,
             path="/",
+            queueing_status_code=200,
             total_active_users=200,
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
@@ -719,6 +755,7 @@ class WaitingRoom(pulumi.CustomResource):
                  path: Optional[pulumi.Input[str]] = None,
                  queue_all: Optional[pulumi.Input[bool]] = None,
                  queueing_method: Optional[pulumi.Input[str]] = None,
+                 queueing_status_code: Optional[pulumi.Input[int]] = None,
                  session_duration: Optional[pulumi.Input[int]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  total_active_users: Optional[pulumi.Input[int]] = None,
@@ -751,6 +788,7 @@ class WaitingRoom(pulumi.CustomResource):
             __props__.__dict__["path"] = path
             __props__.__dict__["queue_all"] = queue_all
             __props__.__dict__["queueing_method"] = queueing_method
+            __props__.__dict__["queueing_status_code"] = queueing_status_code
             __props__.__dict__["session_duration"] = session_duration
             __props__.__dict__["suspended"] = suspended
             if total_active_users is None and not opts.urn:
@@ -782,6 +820,7 @@ class WaitingRoom(pulumi.CustomResource):
             path: Optional[pulumi.Input[str]] = None,
             queue_all: Optional[pulumi.Input[bool]] = None,
             queueing_method: Optional[pulumi.Input[str]] = None,
+            queueing_status_code: Optional[pulumi.Input[int]] = None,
             session_duration: Optional[pulumi.Input[int]] = None,
             suspended: Optional[pulumi.Input[bool]] = None,
             total_active_users: Optional[pulumi.Input[int]] = None,
@@ -806,6 +845,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Defaults to `/`.
         :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
         :param pulumi.Input[str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
+        :param pulumi.Input[int] queueing_status_code: HTTP status code returned to a user while in the queue.
         :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
         :param pulumi.Input[bool] suspended: Suspends the waiting room.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
@@ -828,6 +868,7 @@ class WaitingRoom(pulumi.CustomResource):
         __props__.__dict__["path"] = path
         __props__.__dict__["queue_all"] = queue_all
         __props__.__dict__["queueing_method"] = queueing_method
+        __props__.__dict__["queueing_status_code"] = queueing_status_code
         __props__.__dict__["session_duration"] = session_duration
         __props__.__dict__["suspended"] = suspended
         __props__.__dict__["total_active_users"] = total_active_users
@@ -937,6 +978,14 @@ class WaitingRoom(pulumi.CustomResource):
         The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
         """
         return pulumi.get(self, "queueing_method")
+
+    @property
+    @pulumi.getter(name="queueingStatusCode")
+    def queueing_status_code(self) -> pulumi.Output[Optional[int]]:
+        """
+        HTTP status code returned to a user while in the queue.
+        """
+        return pulumi.get(self, "queueing_status_code")
 
     @property
     @pulumi.getter(name="sessionDuration")

@@ -83,7 +83,7 @@ export class DevicePostureIntegration extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The device posture integration type. Available values: `workspaceOne`, `uptycs`, `crowdstrikeS2s`, `intune`, `kolide`, `sentineloneS2s`.
+     * The device posture integration type. Available values: `workspaceOne`, `uptycs`, `crowdstrikeS2s`, `intune`, `kolide`, `sentineloneS2s`, `taniumS2s`.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -151,7 +151,7 @@ export interface DevicePostureIntegrationState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The device posture integration type. Available values: `workspaceOne`, `uptycs`, `crowdstrikeS2s`, `intune`, `kolide`, `sentineloneS2s`.
+     * The device posture integration type. Available values: `workspaceOne`, `uptycs`, `crowdstrikeS2s`, `intune`, `kolide`, `sentineloneS2s`, `taniumS2s`.
      */
     type?: pulumi.Input<string>;
 }
@@ -178,7 +178,7 @@ export interface DevicePostureIntegrationArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The device posture integration type. Available values: `workspaceOne`, `uptycs`, `crowdstrikeS2s`, `intune`, `kolide`, `sentineloneS2s`.
+     * The device posture integration type. Available values: `workspaceOne`, `uptycs`, `crowdstrikeS2s`, `intune`, `kolide`, `sentineloneS2s`, `taniumS2s`.
      */
     type: pulumi.Input<string>;
 }

@@ -34,9 +34,9 @@ export interface GetApiTokenPermissionGroupsResult {
     /**
      * Map of permissions for account level resources.
      */
-    readonly account: {[key: string]: any};
+    readonly account: {[key: string]: string};
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Checksum of permissions.
      */
     readonly id: string;
     /**
@@ -44,13 +44,17 @@ export interface GetApiTokenPermissionGroupsResult {
      *
      * @deprecated Use specific account, zone or user attributes instead.
      */
-    readonly permissions: {[key: string]: any};
+    readonly permissions: {[key: string]: string};
+    /**
+     * Map of permissions for r2 level resources.
+     */
+    readonly r2: {[key: string]: string};
     /**
      * Map of permissions for user level resources.
      */
-    readonly user: {[key: string]: any};
+    readonly user: {[key: string]: string};
     /**
      * Map of permissions for zone level resources.
      */
-    readonly zone: {[key: string]: any};
+    readonly zone: {[key: string]: string};
 }

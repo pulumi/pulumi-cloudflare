@@ -106,6 +106,20 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
         return this.clientSecret;
     }
     /**
+     * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+     * 
+     */
+    @Export(name="duration", refs={String.class}, tree="[0]")
+    private Output<String> duration;
+
+    /**
+     * @return Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+     * 
+     */
+    public Output<String> duration() {
+        return this.duration;
+    }
+    /**
      * Date when the token expires.
      * 
      */

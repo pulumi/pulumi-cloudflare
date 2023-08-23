@@ -48,15 +48,17 @@ func GetApiTokenPermissionGroups(ctx *pulumi.Context, opts ...pulumi.InvokeOptio
 // A collection of values returned by getApiTokenPermissionGroups.
 type GetApiTokenPermissionGroupsResult struct {
 	// Map of permissions for account level resources.
-	Account map[string]interface{} `pulumi:"account"`
-	// The provider-assigned unique ID for this managed resource.
+	Account map[string]string `pulumi:"account"`
+	// Checksum of permissions.
 	Id string `pulumi:"id"`
 	// Map of all permissions available. Should not be used as some permissions will overlap resource scope. Instead, use resource level specific attributes.
 	//
 	// Deprecated: Use specific account, zone or user attributes instead.
-	Permissions map[string]interface{} `pulumi:"permissions"`
+	Permissions map[string]string `pulumi:"permissions"`
+	// Map of permissions for r2 level resources.
+	R2 map[string]string `pulumi:"r2"`
 	// Map of permissions for user level resources.
-	User map[string]interface{} `pulumi:"user"`
+	User map[string]string `pulumi:"user"`
 	// Map of permissions for zone level resources.
-	Zone map[string]interface{} `pulumi:"zone"`
+	Zone map[string]string `pulumi:"zone"`
 }

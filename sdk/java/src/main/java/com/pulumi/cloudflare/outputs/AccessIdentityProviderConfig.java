@@ -23,6 +23,7 @@ public final class AccessIdentityProviderConfig {
     private @Nullable List<String> claims;
     private @Nullable String clientId;
     private @Nullable String clientSecret;
+    private @Nullable Boolean conditionalAccessEnabled;
     private @Nullable String directoryId;
     private @Nullable String emailAttributeName;
     private @Nullable String idpPublicCert;
@@ -67,6 +68,9 @@ public final class AccessIdentityProviderConfig {
     }
     public Optional<String> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
+    }
+    public Optional<Boolean> conditionalAccessEnabled() {
+        return Optional.ofNullable(this.conditionalAccessEnabled);
     }
     public Optional<String> directoryId() {
         return Optional.ofNullable(this.directoryId);
@@ -127,6 +131,7 @@ public final class AccessIdentityProviderConfig {
         private @Nullable List<String> claims;
         private @Nullable String clientId;
         private @Nullable String clientSecret;
+        private @Nullable Boolean conditionalAccessEnabled;
         private @Nullable String directoryId;
         private @Nullable String emailAttributeName;
         private @Nullable String idpPublicCert;
@@ -153,6 +158,7 @@ public final class AccessIdentityProviderConfig {
     	      this.claims = defaults.claims;
     	      this.clientId = defaults.clientId;
     	      this.clientSecret = defaults.clientSecret;
+    	      this.conditionalAccessEnabled = defaults.conditionalAccessEnabled;
     	      this.directoryId = defaults.directoryId;
     	      this.emailAttributeName = defaults.emailAttributeName;
     	      this.idpPublicCert = defaults.idpPublicCert;
@@ -222,6 +228,11 @@ public final class AccessIdentityProviderConfig {
         @CustomType.Setter
         public Builder clientSecret(@Nullable String clientSecret) {
             this.clientSecret = clientSecret;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder conditionalAccessEnabled(@Nullable Boolean conditionalAccessEnabled) {
+            this.conditionalAccessEnabled = conditionalAccessEnabled;
             return this;
         }
         @CustomType.Setter
@@ -304,6 +315,7 @@ public final class AccessIdentityProviderConfig {
             o.claims = claims;
             o.clientId = clientId;
             o.clientSecret = clientSecret;
+            o.conditionalAccessEnabled = conditionalAccessEnabled;
             o.directoryId = directoryId;
             o.emailAttributeName = emailAttributeName;
             o.idpPublicCert = idpPublicCert;

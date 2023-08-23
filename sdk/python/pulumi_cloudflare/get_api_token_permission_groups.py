@@ -20,7 +20,7 @@ class GetApiTokenPermissionGroupsResult:
     """
     A collection of values returned by getApiTokenPermissionGroups.
     """
-    def __init__(__self__, account=None, id=None, permissions=None, user=None, zone=None):
+    def __init__(__self__, account=None, id=None, permissions=None, r2=None, user=None, zone=None):
         if account and not isinstance(account, dict):
             raise TypeError("Expected argument 'account' to be a dict")
         pulumi.set(__self__, "account", account)
@@ -30,6 +30,9 @@ class GetApiTokenPermissionGroupsResult:
         if permissions and not isinstance(permissions, dict):
             raise TypeError("Expected argument 'permissions' to be a dict")
         pulumi.set(__self__, "permissions", permissions)
+        if r2 and not isinstance(r2, dict):
+            raise TypeError("Expected argument 'r2' to be a dict")
+        pulumi.set(__self__, "r2", r2)
         if user and not isinstance(user, dict):
             raise TypeError("Expected argument 'user' to be a dict")
         pulumi.set(__self__, "user", user)
@@ -39,7 +42,7 @@ class GetApiTokenPermissionGroupsResult:
 
     @property
     @pulumi.getter
-    def account(self) -> Mapping[str, Any]:
+    def account(self) -> Mapping[str, str]:
         """
         Map of permissions for account level resources.
         """
@@ -49,13 +52,13 @@ class GetApiTokenPermissionGroupsResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Checksum of permissions.
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
-    def permissions(self) -> Mapping[str, Any]:
+    def permissions(self) -> Mapping[str, str]:
         """
         Map of all permissions available. Should not be used as some permissions will overlap resource scope. Instead, use resource level specific attributes.
         """
@@ -66,7 +69,15 @@ class GetApiTokenPermissionGroupsResult:
 
     @property
     @pulumi.getter
-    def user(self) -> Mapping[str, Any]:
+    def r2(self) -> Mapping[str, str]:
+        """
+        Map of permissions for r2 level resources.
+        """
+        return pulumi.get(self, "r2")
+
+    @property
+    @pulumi.getter
+    def user(self) -> Mapping[str, str]:
         """
         Map of permissions for user level resources.
         """
@@ -74,7 +85,7 @@ class GetApiTokenPermissionGroupsResult:
 
     @property
     @pulumi.getter
-    def zone(self) -> Mapping[str, Any]:
+    def zone(self) -> Mapping[str, str]:
         """
         Map of permissions for zone level resources.
         """
@@ -90,6 +101,7 @@ class AwaitableGetApiTokenPermissionGroupsResult(GetApiTokenPermissionGroupsResu
             account=self.account,
             id=self.id,
             permissions=self.permissions,
+            r2=self.r2,
             user=self.user,
             zone=self.zone)
 
@@ -119,5 +131,6 @@ def get_api_token_permission_groups(opts: Optional[pulumi.InvokeOptions] = None)
         account=pulumi.get(__ret__, 'account'),
         id=pulumi.get(__ret__, 'id'),
         permissions=pulumi.get(__ret__, 'permissions'),
+        r2=pulumi.get(__ret__, 'r2'),
         user=pulumi.get(__ret__, 'user'),
         zone=pulumi.get(__ret__, 'zone'))

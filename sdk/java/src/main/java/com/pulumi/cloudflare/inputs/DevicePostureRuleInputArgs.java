@@ -139,6 +139,21 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * The datetime a device last seen in RFC 3339 format from Tanium.
+     * 
+     */
+    @Import(name="eidLastSeen")
+    private @Nullable Output<String> eidLastSeen;
+
+    /**
+     * @return The datetime a device last seen in RFC 3339 format from Tanium.
+     * 
+     */
+    public Optional<Output<String>> eidLastSeen() {
+        return Optional.ofNullable(this.eidLastSeen);
+    }
+
+    /**
      * True if the firewall must be enabled.
      * 
      */
@@ -349,6 +364,21 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+     * 
+     */
+    @Import(name="riskLevel")
+    private @Nullable Output<String> riskLevel;
+
+    /**
+     * @return The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+     * 
+     */
+    public Optional<Output<String>> riskLevel() {
+        return Optional.ofNullable(this.riskLevel);
+    }
+
+    /**
      * Checks if the application should be running.
      * 
      */
@@ -409,6 +439,21 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * The total score from Tanium.
+     * 
+     */
+    @Import(name="totalScore")
+    private @Nullable Output<Integer> totalScore;
+
+    /**
+     * @return The total score from Tanium.
+     * 
+     */
+    public Optional<Output<Integer>> totalScore() {
+        return Optional.ofNullable(this.totalScore);
+    }
+
+    /**
      * The operating system semantic version.
      * 
      */
@@ -449,6 +494,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         this.connectionId = $.connectionId;
         this.countOperator = $.countOperator;
         this.domain = $.domain;
+        this.eidLastSeen = $.eidLastSeen;
         this.enabled = $.enabled;
         this.exists = $.exists;
         this.id = $.id;
@@ -463,10 +509,12 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         this.overall = $.overall;
         this.path = $.path;
         this.requireAll = $.requireAll;
+        this.riskLevel = $.riskLevel;
         this.running = $.running;
         this.sensorConfig = $.sensorConfig;
         this.sha256 = $.sha256;
         this.thumbprint = $.thumbprint;
+        this.totalScore = $.totalScore;
         this.version = $.version;
         this.versionOperator = $.versionOperator;
     }
@@ -665,6 +713,27 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
          */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
+        }
+
+        /**
+         * @param eidLastSeen The datetime a device last seen in RFC 3339 format from Tanium.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eidLastSeen(@Nullable Output<String> eidLastSeen) {
+            $.eidLastSeen = eidLastSeen;
+            return this;
+        }
+
+        /**
+         * @param eidLastSeen The datetime a device last seen in RFC 3339 format from Tanium.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eidLastSeen(String eidLastSeen) {
+            return eidLastSeen(Output.of(eidLastSeen));
         }
 
         /**
@@ -962,6 +1031,27 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param riskLevel The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder riskLevel(@Nullable Output<String> riskLevel) {
+            $.riskLevel = riskLevel;
+            return this;
+        }
+
+        /**
+         * @param riskLevel The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder riskLevel(String riskLevel) {
+            return riskLevel(Output.of(riskLevel));
+        }
+
+        /**
          * @param running Checks if the application should be running.
          * 
          * @return builder
@@ -1043,6 +1133,27 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
          */
         public Builder thumbprint(String thumbprint) {
             return thumbprint(Output.of(thumbprint));
+        }
+
+        /**
+         * @param totalScore The total score from Tanium.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder totalScore(@Nullable Output<Integer> totalScore) {
+            $.totalScore = totalScore;
+            return this;
+        }
+
+        /**
+         * @param totalScore The total score from Tanium.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder totalScore(Integer totalScore) {
+            return totalScore(Output.of(totalScore));
         }
 
         /**

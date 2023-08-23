@@ -32,6 +32,21 @@ public final class AccessServiceTokenArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+     * 
+     */
+    @Import(name="duration")
+    private @Nullable Output<String> duration;
+
+    /**
+     * @return Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+     * 
+     */
+    public Optional<Output<String>> duration() {
+        return Optional.ofNullable(this.duration);
+    }
+
+    /**
      * Refresh the token if terraform is run within the specified amount of days before expiration
      * 
      */
@@ -80,6 +95,7 @@ public final class AccessServiceTokenArgs extends com.pulumi.resources.ResourceA
 
     private AccessServiceTokenArgs(AccessServiceTokenArgs $) {
         this.accountId = $.accountId;
+        this.duration = $.duration;
         this.minDaysForRenewal = $.minDaysForRenewal;
         this.name = $.name;
         this.zoneId = $.zoneId;
@@ -122,6 +138,27 @@ public final class AccessServiceTokenArgs extends com.pulumi.resources.ResourceA
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param duration Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duration(@Nullable Output<String> duration) {
+            $.duration = duration;
+            return this;
+        }
+
+        /**
+         * @param duration Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duration(String duration) {
+            return duration(Output.of(duration));
         }
 
         /**

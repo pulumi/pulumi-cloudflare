@@ -16,18 +16,22 @@ class AccessServiceTokenArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  account_id: Optional[pulumi.Input[str]] = None,
+                 duration: Optional[pulumi.Input[str]] = None,
                  min_days_for_renewal: Optional[pulumi.Input[int]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessServiceToken resource.
         :param pulumi.Input[str] name: Friendly name of the token's intent.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
+        :param pulumi.Input[str] duration: Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
         :param pulumi.Input[int] min_days_for_renewal: Refresh the token if terraform is run within the specified amount of days before expiration
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         pulumi.set(__self__, "name", name)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
         if min_days_for_renewal is not None:
             pulumi.set(__self__, "min_days_for_renewal", min_days_for_renewal)
         if zone_id is not None:
@@ -56,6 +60,18 @@ class AccessServiceTokenArgs:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "duration", value)
 
     @property
     @pulumi.getter(name="minDaysForRenewal")
@@ -88,6 +104,7 @@ class _AccessServiceTokenState:
                  account_id: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
+                 duration: Optional[pulumi.Input[str]] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
                  min_days_for_renewal: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -97,6 +114,7 @@ class _AccessServiceTokenState:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] client_id: UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] client_secret: A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] duration: Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
         :param pulumi.Input[str] expires_at: Date when the token expires.
         :param pulumi.Input[int] min_days_for_renewal: Refresh the token if terraform is run within the specified amount of days before expiration
         :param pulumi.Input[str] name: Friendly name of the token's intent.
@@ -108,6 +126,8 @@ class _AccessServiceTokenState:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
             pulumi.set(__self__, "client_secret", client_secret)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
         if expires_at is not None:
             pulumi.set(__self__, "expires_at", expires_at)
         if min_days_for_renewal is not None:
@@ -152,6 +172,18 @@ class _AccessServiceTokenState:
     @client_secret.setter
     def client_secret(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "duration", value)
 
     @property
     @pulumi.getter(name="expiresAt")
@@ -208,6 +240,7 @@ class AccessServiceToken(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 duration: Optional[pulumi.Input[str]] = None,
                  min_days_for_renewal: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -240,6 +273,7 @@ class AccessServiceToken(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
+        :param pulumi.Input[str] duration: Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
         :param pulumi.Input[int] min_days_for_renewal: Refresh the token if terraform is run within the specified amount of days before expiration
         :param pulumi.Input[str] name: Friendly name of the token's intent.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
@@ -291,6 +325,7 @@ class AccessServiceToken(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 duration: Optional[pulumi.Input[str]] = None,
                  min_days_for_renewal: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -304,6 +339,7 @@ class AccessServiceToken(pulumi.CustomResource):
             __props__ = AccessServiceTokenArgs.__new__(AccessServiceTokenArgs)
 
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["duration"] = duration
             __props__.__dict__["min_days_for_renewal"] = min_days_for_renewal
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
@@ -327,6 +363,7 @@ class AccessServiceToken(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             client_id: Optional[pulumi.Input[str]] = None,
             client_secret: Optional[pulumi.Input[str]] = None,
+            duration: Optional[pulumi.Input[str]] = None,
             expires_at: Optional[pulumi.Input[str]] = None,
             min_days_for_renewal: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -341,6 +378,7 @@ class AccessServiceToken(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] client_id: UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] client_secret: A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] duration: Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
         :param pulumi.Input[str] expires_at: Date when the token expires.
         :param pulumi.Input[int] min_days_for_renewal: Refresh the token if terraform is run within the specified amount of days before expiration
         :param pulumi.Input[str] name: Friendly name of the token's intent.
@@ -353,6 +391,7 @@ class AccessServiceToken(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["client_id"] = client_id
         __props__.__dict__["client_secret"] = client_secret
+        __props__.__dict__["duration"] = duration
         __props__.__dict__["expires_at"] = expires_at
         __props__.__dict__["min_days_for_renewal"] = min_days_for_renewal
         __props__.__dict__["name"] = name
@@ -382,6 +421,14 @@ class AccessServiceToken(pulumi.CustomResource):
         A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Output[str]:
+        """
+        Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+        """
+        return pulumi.get(self, "duration")
 
     @property
     @pulumi.getter(name="expiresAt")

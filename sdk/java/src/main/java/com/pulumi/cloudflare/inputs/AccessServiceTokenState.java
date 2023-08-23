@@ -62,6 +62,21 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
     }
 
     /**
+     * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+     * 
+     */
+    @Import(name="duration")
+    private @Nullable Output<String> duration;
+
+    /**
+     * @return Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+     * 
+     */
+    public Optional<Output<String>> duration() {
+        return Optional.ofNullable(this.duration);
+    }
+
+    /**
      * Date when the token expires.
      * 
      */
@@ -127,6 +142,7 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
         this.accountId = $.accountId;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
+        this.duration = $.duration;
         this.expiresAt = $.expiresAt;
         this.minDaysForRenewal = $.minDaysForRenewal;
         this.name = $.name;
@@ -212,6 +228,27 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
          */
         public Builder clientSecret(String clientSecret) {
             return clientSecret(Output.of(clientSecret));
+        }
+
+        /**
+         * @param duration Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duration(@Nullable Output<String> duration) {
+            $.duration = duration;
+            return this;
+        }
+
+        /**
+         * @param duration Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duration(String duration) {
+            return duration(Output.of(duration));
         }
 
         /**

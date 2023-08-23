@@ -67,6 +67,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Domain { get; set; }
 
         /// <summary>
+        /// The datetime a device last seen in RFC 3339 format from Tanium.
+        /// </summary>
+        [Input("eidLastSeen")]
+        public Input<string>? EidLastSeen { get; set; }
+
+        /// <summary>
         /// True if the firewall must be enabled.
         /// </summary>
         [Input("enabled")]
@@ -151,6 +157,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? RequireAll { get; set; }
 
         /// <summary>
+        /// The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+        /// </summary>
+        [Input("riskLevel")]
+        public Input<string>? RiskLevel { get; set; }
+
+        /// <summary>
         /// Checks if the application should be running.
         /// </summary>
         [Input("running")]
@@ -173,6 +185,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("thumbprint")]
         public Input<string>? Thumbprint { get; set; }
+
+        /// <summary>
+        /// The total score from Tanium.
+        /// </summary>
+        [Input("totalScore")]
+        public Input<int>? TotalScore { get; set; }
 
         /// <summary>
         /// The operating system semantic version.

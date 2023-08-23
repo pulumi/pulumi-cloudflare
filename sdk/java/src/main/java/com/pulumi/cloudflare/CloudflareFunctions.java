@@ -47,6 +47,7 @@ import com.pulumi.cloudflare.outputs.GetLoadBalancerPoolsResult;
 import com.pulumi.cloudflare.outputs.GetOriginCaRootCertificateResult;
 import com.pulumi.cloudflare.outputs.GetRecordResult;
 import com.pulumi.cloudflare.outputs.GetRulesetsResult;
+import com.pulumi.cloudflare.outputs.GetUserResult;
 import com.pulumi.cloudflare.outputs.GetZoneCacheReserveResult;
 import com.pulumi.cloudflare.outputs.GetZoneDnssecResult;
 import com.pulumi.cloudflare.outputs.GetZoneResult;
@@ -2202,6 +2203,288 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetRulesetsResult> getRulesetsPlain(GetRulesetsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getRulesets:getRulesets", TypeShape.of(GetRulesetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about the currently authenticated user.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.ApiToken;
+     * import com.pulumi.cloudflare.ApiTokenArgs;
+     * import com.pulumi.cloudflare.inputs.ApiTokenPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var me = CloudflareFunctions.getUser();
+     * 
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
+     * 
+     *         var example = new ApiToken(&#34;example&#34;, ApiTokenArgs.builder()        
+     *             .name(&#34;Terraform Cloud (Terraform)&#34;)
+     *             .policies(ApiTokenPolicyArgs.builder()
+     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().User Details Read()))
+     *                 .resources(Map.of(String.format(&#34;com.cloudflare.api.user.%s&#34;, me.applyValue(getUserResult -&gt; getUserResult.id())), &#34;*&#34;))
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetUserResult> getUser() {
+        return getUser(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about the currently authenticated user.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.ApiToken;
+     * import com.pulumi.cloudflare.ApiTokenArgs;
+     * import com.pulumi.cloudflare.inputs.ApiTokenPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var me = CloudflareFunctions.getUser();
+     * 
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
+     * 
+     *         var example = new ApiToken(&#34;example&#34;, ApiTokenArgs.builder()        
+     *             .name(&#34;Terraform Cloud (Terraform)&#34;)
+     *             .policies(ApiTokenPolicyArgs.builder()
+     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().User Details Read()))
+     *                 .resources(Map.of(String.format(&#34;com.cloudflare.api.user.%s&#34;, me.applyValue(getUserResult -&gt; getUserResult.id())), &#34;*&#34;))
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetUserResult> getUserPlain() {
+        return getUserPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about the currently authenticated user.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.ApiToken;
+     * import com.pulumi.cloudflare.ApiTokenArgs;
+     * import com.pulumi.cloudflare.inputs.ApiTokenPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var me = CloudflareFunctions.getUser();
+     * 
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
+     * 
+     *         var example = new ApiToken(&#34;example&#34;, ApiTokenArgs.builder()        
+     *             .name(&#34;Terraform Cloud (Terraform)&#34;)
+     *             .policies(ApiTokenPolicyArgs.builder()
+     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().User Details Read()))
+     *                 .resources(Map.of(String.format(&#34;com.cloudflare.api.user.%s&#34;, me.applyValue(getUserResult -&gt; getUserResult.id())), &#34;*&#34;))
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetUserResult> getUser(InvokeArgs args) {
+        return getUser(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about the currently authenticated user.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.ApiToken;
+     * import com.pulumi.cloudflare.ApiTokenArgs;
+     * import com.pulumi.cloudflare.inputs.ApiTokenPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var me = CloudflareFunctions.getUser();
+     * 
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
+     * 
+     *         var example = new ApiToken(&#34;example&#34;, ApiTokenArgs.builder()        
+     *             .name(&#34;Terraform Cloud (Terraform)&#34;)
+     *             .policies(ApiTokenPolicyArgs.builder()
+     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().User Details Read()))
+     *                 .resources(Map.of(String.format(&#34;com.cloudflare.api.user.%s&#34;, me.applyValue(getUserResult -&gt; getUserResult.id())), &#34;*&#34;))
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetUserResult> getUserPlain(InvokeArgs args) {
+        return getUserPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about the currently authenticated user.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.ApiToken;
+     * import com.pulumi.cloudflare.ApiTokenArgs;
+     * import com.pulumi.cloudflare.inputs.ApiTokenPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var me = CloudflareFunctions.getUser();
+     * 
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
+     * 
+     *         var example = new ApiToken(&#34;example&#34;, ApiTokenArgs.builder()        
+     *             .name(&#34;Terraform Cloud (Terraform)&#34;)
+     *             .policies(ApiTokenPolicyArgs.builder()
+     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().User Details Read()))
+     *                 .resources(Map.of(String.format(&#34;com.cloudflare.api.user.%s&#34;, me.applyValue(getUserResult -&gt; getUserResult.id())), &#34;*&#34;))
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetUserResult> getUser(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about the currently authenticated user.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.ApiToken;
+     * import com.pulumi.cloudflare.ApiTokenArgs;
+     * import com.pulumi.cloudflare.inputs.ApiTokenPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var me = CloudflareFunctions.getUser();
+     * 
+     *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
+     * 
+     *         var example = new ApiToken(&#34;example&#34;, ApiTokenArgs.builder()        
+     *             .name(&#34;Terraform Cloud (Terraform)&#34;)
+     *             .policies(ApiTokenPolicyArgs.builder()
+     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().User Details Read()))
+     *                 .resources(Map.of(String.format(&#34;com.cloudflare.api.user.%s&#34;, me.applyValue(getUserResult -&gt; getUserResult.id())), &#34;*&#34;))
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetUserResult> getUserPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to look up [zone](https://api.cloudflare.com/#zone-properties)

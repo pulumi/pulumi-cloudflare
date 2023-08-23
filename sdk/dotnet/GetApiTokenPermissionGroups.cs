@@ -51,39 +51,46 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Map of permissions for account level resources.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Account;
+        public readonly ImmutableDictionary<string, string> Account;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Checksum of permissions.
         /// </summary>
         public readonly string Id;
         /// <summary>
         /// Map of all permissions available. Should not be used as some permissions will overlap resource scope. Instead, use resource level specific attributes.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Permissions;
+        public readonly ImmutableDictionary<string, string> Permissions;
+        /// <summary>
+        /// Map of permissions for r2 level resources.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> R2;
         /// <summary>
         /// Map of permissions for user level resources.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> User;
+        public readonly ImmutableDictionary<string, string> User;
         /// <summary>
         /// Map of permissions for zone level resources.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Zone;
+        public readonly ImmutableDictionary<string, string> Zone;
 
         [OutputConstructor]
         private GetApiTokenPermissionGroupsResult(
-            ImmutableDictionary<string, object> account,
+            ImmutableDictionary<string, string> account,
 
             string id,
 
-            ImmutableDictionary<string, object> permissions,
+            ImmutableDictionary<string, string> permissions,
 
-            ImmutableDictionary<string, object> user,
+            ImmutableDictionary<string, string> r2,
 
-            ImmutableDictionary<string, object> zone)
+            ImmutableDictionary<string, string> user,
+
+            ImmutableDictionary<string, string> zone)
         {
             Account = account;
             Id = id;
             Permissions = permissions;
+            R2 = r2;
             User = user;
             Zone = zone;
         }

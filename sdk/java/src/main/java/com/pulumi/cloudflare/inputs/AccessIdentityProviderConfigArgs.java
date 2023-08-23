@@ -87,6 +87,13 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
         return Optional.ofNullable(this.clientSecret);
     }
 
+    @Import(name="conditionalAccessEnabled")
+    private @Nullable Output<Boolean> conditionalAccessEnabled;
+
+    public Optional<Output<Boolean>> conditionalAccessEnabled() {
+        return Optional.ofNullable(this.conditionalAccessEnabled);
+    }
+
     @Import(name="directoryId")
     private @Nullable Output<String> directoryId;
 
@@ -191,6 +198,7 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
         this.claims = $.claims;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
+        this.conditionalAccessEnabled = $.conditionalAccessEnabled;
         this.directoryId = $.directoryId;
         this.emailAttributeName = $.emailAttributeName;
         this.idpPublicCert = $.idpPublicCert;
@@ -320,6 +328,15 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
 
         public Builder clientSecret(String clientSecret) {
             return clientSecret(Output.of(clientSecret));
+        }
+
+        public Builder conditionalAccessEnabled(@Nullable Output<Boolean> conditionalAccessEnabled) {
+            $.conditionalAccessEnabled = conditionalAccessEnabled;
+            return this;
+        }
+
+        public Builder conditionalAccessEnabled(Boolean conditionalAccessEnabled) {
+            return conditionalAccessEnabled(Output.of(conditionalAccessEnabled));
         }
 
         public Builder directoryId(@Nullable Output<String> directoryId) {

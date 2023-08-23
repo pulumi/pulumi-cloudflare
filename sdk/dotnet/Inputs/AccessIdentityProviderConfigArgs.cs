@@ -52,6 +52,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }
 
+        [Input("conditionalAccessEnabled")]
+        public Input<bool>? ConditionalAccessEnabled { get; set; }
+
         [Input("directoryId")]
         public Input<string>? DirectoryId { get; set; }
 
